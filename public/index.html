@@ -483,7 +483,17 @@ function loadStage(i){
   // Platforming generation
   for(let x=400; x<s.len-400; x+=220+Math.random()*150){
     if(Math.random()<0.6){
-       G.obstacles.push({type:'plat', x, w: 100+Math.random()*80, y: 50+Math.random()*60, h: 20});
+       const y = 50+Math.random()*60;
+       G.obstacles.push({type:'plat', x, w: 100+Math.random()*80, y, h: 20});
+       if(Math.random()<0.2){
+         const rid=rollRarity();
+         if(Math.random()<0.5){
+           const pool=ARCHIDS.filter(a=>a!=='sword');
+           G.pickups.push({x,y:y+10,weapon:makeWeapon(pool[Math.floor(Math.random()*pool.length)],rid),bob:0});
+         }else{
+           G.pickups.push({x,y:y+10,armor:makeArmor(rid,SLOTIDS[Math.floor(Math.random()*3)]),bob:0});
+         }
+       }
     } else {
        G.obstacles.push({type:'pit', x, w: 120+Math.random()*60});
     }
@@ -554,10 +564,10 @@ function rollDrop(e){
   if(Math.random()<0.45){// weapon
     const pool=ARCHIDS.filter(a=>a!=='sword');
     const aid=pool[Math.floor(Math.random()*pool.length)];
-    G.pickups.push({x:e.x,weapon:makeWeapon(aid,rid),bob:0});
+    G.pickups.push({x:e.x,y:e.y,weapon:makeWeapon(aid,rid),bob:0});
   }else{// armor
     const slot=SLOTIDS[Math.floor(Math.random()*3)];
-    G.pickups.push({x:e.x,armor:makeArmor(rid,slot),bob:0});
+    G.pickups.push({x:e.x,y:e.y,armor:makeArmor(rid,slot),bob:0});
   }
 }
 
@@ -567,12 +577,12 @@ function addText(x,y,txt,color,big){G.texts.push({x,y,txt,color,big:!!big,vy:-40
 /* ================================================================
    SECTION 9: UPDATE LOOP
    ================================================================ */
-function getFloorY(x) {
+function getFloorY(x, oldY = 0) {
   let fy = 0;
   if(G&&G.obstacles) {
     for(const o of G.obstacles) {
       if(Math.abs(x - o.x) < o.w/2) {
-        if(o.type === 'plat') fy = Math.max(fy, o.y);
+        if(o.type === 'plat' && oldY >= o.y) fy = Math.max(fy, o.y);
         else if(o.type === 'pit') return -200;
       }
     }
@@ -618,18 +628,13 @@ function update(dt){
   input.jumpEdge=false;
 
   // Movement & Collision
-  const oldX = p.x;
   p.x+=p.vx*dt;
   if(p.x<20)p.x=20;if(p.x>s.len-20)p.x=s.len-20;
 
-  const floorY = getFloorY(p.x);
-  if(p.y < floorY && floorY > 0) {
-      p.x = oldX; // block horizontal movement into a wall
-  }
-
   // Gravity
-  const targetFloor = getFloorY(p.x);
+  const oldY = p.y;
   p.vy+=1400*dt;p.y-=p.vy*dt;
+  const targetFloor = getFloorY(p.x, oldY);
   if(p.y<=targetFloor && p.vy > 0){
       p.y=targetFloor;
       if(!p.onGround&&meta.soundOn&&targetFloor>=0)SFX.land();
@@ -732,11 +737,9 @@ function update(dt){
     
     // Enemy Gravity & Collision
     if(e.kind !== 'fly') {
-        const eFloor = getFloorY(e.x);
-        if(e.y < eFloor && eFloor > 0) {
-            e.x -= (e.vx*dt) || (dir*eff*dt); // pushback
-        }
+        const oldY = e.y;
         e.vy += 1400*dt; e.y -= e.vy*dt;
+        const eFloor = getFloorY(e.x, oldY);
         if(e.y <= eFloor && e.vy > 0) { e.y = eFloor; e.vy = 0; }
         if(e.y < -50) { e.hp = 0; killEnemy(e); }
     }
@@ -768,7 +771,7 @@ function update(dt){
 
   // Pickups
   for(const pk of G.pickups){pk.bob=(pk.bob||0)+dt*4;
-    if(Math.abs(pk.x-p.x)<34&&p.y<50){
+    if(Math.abs(pk.x-p.x)<34&&Math.abs(p.y-(pk.y||0))<40){
       if(pk.weapon)offerWeapon(pk.weapon);else if(pk.armor)offerArmor(pk.armor);pk.taken=true;}}
   G.pickups=G.pickups.filter(pk=>!pk.taken);
 
@@ -898,7 +901,7 @@ function drawEnemyFull(c,e){
 }
 function drawPickup(c,pk){
   const it=pk.weapon||pk.armor,rc=RARITY[it.rarity].color;
-  c.save();c.translate(pk.x,GROUND_Y);shadow(c,2,12);
+  c.save();c.translate(pk.x,GROUND_Y-(pk.y||0));shadow(c,2,12);
   c.translate(0,-26+Math.sin(pk.bob)*5);
   c.globalAlpha=0.16;c.fillStyle=rc;c.fillRect(-4,-44,8,64);
   c.globalAlpha=0.55;c.shadowColor=rc;c.shadowBlur=12;c.fillStyle=rc;c.beginPath();c.arc(0,0,13,0,6.28);c.fill();c.shadowBlur=0;c.globalAlpha=1;
