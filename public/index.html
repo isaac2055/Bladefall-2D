@@ -455,7 +455,7 @@ function beginRun(ngPlus,carrySnap,scales){
   const p=carrySnap?freshFromSnapshot(carrySnap):freshPlayer();
   recomputeArmor(p);
   if(!scales)scales=carrySnap?computeNgScales(p):{hp:1,dmg:1};
-  G={p,stageIndex:0,enemies:[],particles:[],texts:[],pickups:[],projectiles:[],cam:0,shake:0,
+  G={p,stageIndex:0,enemies:[],particles:[],texts:[],pickups:[],projectiles:[],obstacles:[],aoes:[],cam:0,shake:0,
      ngPlus:ngPlus||0,ngHp:scales.hp,ngDmg:scales.dmg,baseLoadout:snapOf(p),portal:null,stageBanner:0,
      killGoal:0,kills:0,boss:null,time:0,tookDamage:false,combo:0,comboT:0};
   if((ngPlus||0)>0)meta.ngPlus=Math.max(meta.ngPlus,ngPlus);
@@ -479,9 +479,18 @@ function showGameUI(v){['hud','controls','pausebtn'].forEach(id=>document.getEle
 /* Stage loading */
 function loadStage(i){
   const s=STAGES[i];G.stageIndex=i;
-  G.enemies=[];G.pickups=[];G.projectiles=[];G.portal=null;G.boss=null;
+  G.enemies=[];G.pickups=[];G.projectiles=[];G.obstacles=[];G.aoes=[];G.portal=null;G.boss=null;
   G.kills=0;G.killGoal=0;G.cam=0;G.tookDamage=false;G.combo=0;G.comboT=0;
   G.p.x=70;G.p.z=DEPTH*0.55;G.p.jy=0;G.p.vx=0;G.p.vz=0;G.p.vy=0;G.p.onGround=true;
+  
+  // Platforming generation
+  for(let x=400; x<s.len-400; x+=250+Math.random()*200){
+    if(Math.random()<0.6){
+       G.obstacles.push({type:'plat', x, z: 40+Math.random()*(DEPTH-80), w: 90+Math.random()*60, d: 50+Math.random()*30, h: 40+Math.random()*40});
+    } else {
+       G.obstacles.push({type:'pit', x, z: DEPTH/2, w: 100+Math.random()*60, d: DEPTH+100});
+    }
+  }
   G.stageBanner=2.6;document.getElementById('bosshpwrap').classList.remove('on');
   const place=(type,count)=>{for(let k=0;k<count;k++){spawnEnemy(type,360+Math.random()*(s.len-520));G.killGoal++;}};
   place('grunt',s.grunts||0);place('flyer',s.flyers||0);
@@ -497,7 +506,7 @@ function spawnEnemy(type,x,isBoss){
     dmg:a.dmg*G.ngDmg,speed:a.speed,color:a.color,xp:a.xp,boss:!!a.boss,label:a.label||'',
     ranged:!!a.ranged,kite:!!a.kite,shot:a.shot?Object.assign({},a.shot):null,shootCd:a.shootCd||2.2,shootT:1.0,
     hitFlash:0,lastHit:-1,active:false,dead:false,bob:Math.random()*6.28,
-    atkTimer:0,lunge:0,phase:1,summonT:4,hurtKb:0};
+    atkTimer:0,lunge:0,phase:1,summonT:4,aoeT:3,hurtKb:0};
   if(e.boss)G.boss=e;
   G.enemies.push(e);return e;
 }
@@ -562,6 +571,19 @@ function addText(x,y,txt,color,big){G.texts.push({x,y,txt,color,big:!!big,vy:-40
 /* ================================================================
    SECTION 9: UPDATE LOOP
    ================================================================ */
+function getFloorY(x, z) {
+  let fy = 0;
+  if(G&&G.obstacles) {
+    for(const o of G.obstacles) {
+      if(Math.abs(x - o.x) < o.w/2 && Math.abs(z - o.z) < o.d/2) {
+        if(o.type === 'plat') fy = Math.max(fy, o.h);
+        else if(o.type === 'pit') return -200;
+      }
+    }
+  }
+  return fy;
+}
+
 function update(dt){
   if(mode!=='play'||!G)return;
   G.time+=dt;G.shake*=0.88;if(G.stageBanner>0)G.stageBanner-=dt;
@@ -569,13 +591,13 @@ function update(dt){
 
   const p=G.p,s=STAGES[G.stageIndex];
   // Keyboard input
-  if(keyIsDown('ArrowLeft')||keyIsDown('KeyA'))input.left=true;else input.left=false;
-  if(keyIsDown('ArrowRight')||keyIsDown('KeyD'))input.right=true;else input.right=false;
-  if(keyIsDown('ArrowUp')||keyIsDown('KeyW'))input.up=true;else input.up=false;
-  if(keyIsDown('ArrowDown')||keyIsDown('KeyS'))input.down=true;else input.down=false;
-  if(keyIsDown('KeyJ')||meta.autoAttack)input.attack=true;// attack hold
-  if(keyWasPressed('Space')||keyWasPressed('ArrowUp')||keyWasPressed('KeyW'))input.jumpEdge=true;
-  if(keyWasPressed('KeyK')||keyWasPressed('ShiftLeft'))input.dodgeEdge=true;
+  if(keyIsDown('ArrowLeft'))input.left=true;else input.left=false;
+  if(keyIsDown('ArrowRight'))input.right=true;else input.right=false;
+  if(keyIsDown('ArrowUp'))input.up=true;else input.up=false;
+  if(keyIsDown('ArrowDown'))input.down=true;else input.down=false;
+  if(keyWasPressed('KeyW')||meta.autoAttack)input.attack=true;// attack tap
+  if(keyWasPressed('Space'))input.jumpEdge=true;
+  if(keyWasPressed('KeyD'))input.dodgeEdge=true;
   if(keyWasPressed('Escape'))openPause();
 
   const mx=moveX(),mz=moveZ();
@@ -599,15 +621,31 @@ function update(dt){
   }
   input.jumpEdge=false;
 
-  // Gravity
-  p.vy+=1400*dt;p.jy-=p.vy*dt;
-  if(p.jy<=0){p.jy=0;if(!p.onGround&&meta.soundOn)SFX.land();p.onGround=true;p.vy=0;p.jumps=0;}
-  if(p.jy>0)p.onGround=false;
-
-  // Position
+  // Movement & Collision
+  const oldX = p.x, oldZ = p.z;
   p.x+=p.vx*dt;p.z+=p.vz*dt;
   if(p.z<0)p.z=0;if(p.z>DEPTH)p.z=DEPTH;
   if(p.x<20)p.x=20;if(p.x>s.len-20)p.x=s.len-20;
+
+  const floorY = getFloorY(p.x, p.z);
+  if(p.jy < floorY && floorY > 0) {
+      p.x = oldX; p.z = oldZ; // block horizontal movement into a wall
+  }
+
+  // Gravity
+  const targetFloor = getFloorY(p.x, p.z);
+  p.vy+=1400*dt;p.jy-=p.vy*dt;
+  if(p.jy<=targetFloor && p.vy > 0){
+      p.jy=targetFloor;
+      if(!p.onGround&&meta.soundOn&&targetFloor>=0)SFX.land();
+      p.onGround=true;p.vy=0;p.jumps=0;
+  }
+  if(p.jy>targetFloor)p.onGround=false;
+  if(p.jy < -50) {
+      hurtPlayer(20, -p.face); // fall damage
+      p.x -= p.face * 100; p.z = Math.max(0, Math.min(DEPTH, p.z - 20));
+      p.jy = 200; p.vy = 0;
+  }
 
   // Facing
   if(mx!==0)p.face=mx>0?1:-1;
@@ -618,6 +656,7 @@ function update(dt){
   if(p.atkCd>0)p.atkCd-=dt;
   if(p.atkTimer>0)p.atkTimer-=dt;
   if(input.attack&&p.atkCd<=0&&p.dodgeTimer<=0){
+    input.attack=false; // prevent hold down spam
     const w=p.weapon,cd=w.cd/effAtkSpeed(p);
     p.atkCd=cd;p.atkTimer=w.cls==='melee'?0.26:0.18;p.swingId++;
     if(w.cls==='melee'){
@@ -670,7 +709,19 @@ function update(dt){
         if(!e.kite&&dist<240&&Math.abs(p.z-e.z)<60&&e.atkTimer<=0){e.lunge=0.45;e.atkTimer=1.8;G.shake=Math.min(G.shake+5,11);}
       }
       if(e.ranged&&e.shootT<=0&&Math.abs(p.x-e.x)<2000){bossShoot(e,p);e.shootT=e.shootCd*(e.phase>=2?0.7:1);}
-      if((e.type==='king'||e.type==='tyrant')&&e.hp/e.maxHp<0.7){e.summonT-=dt;if(e.summonT<=0){e.summonT=e.type==='tyrant'?5:6;for(let i=0;i<2;i++){const ne=spawnEnemy(Math.random()<0.5?'grunt':'flyer',e.x+(i?70:-70));ne.active=true;}addText(e.x,gy(e.z)-e.h-10,'SUMMON!','#ff5e54',true);}}
+      if((e.type==='king'||e.type==='tyrant')&&e.hp/e.maxHp<0.7){e.summonT-=dt;if(e.summonT<=0){
+          e.summonT=e.type==='tyrant'?4:5;
+          e.x = p.x + (Math.random()<0.5?110:-110);
+          e.z = Math.min(DEPTH-10, Math.max(10, p.z + (Math.random()*40-20)));
+          e.jy = p.jy + 90;
+          e.hitFlash = 0.3; G.shake = 6;
+          addText(e.x,gy(e.z)-e.h-10,'TELEPORT!','#c47bff',true);
+      }}
+      if((e.type==='sorcerer'||e.type==='colossus')&&e.hp/e.maxHp<0.8){e.aoeT-=dt;if(e.aoeT<=0){
+          e.aoeT=3.5;
+          G.aoes.push({x: p.x, z: p.z, r: e.type==='colossus'?80:60, t: 1.2, dmg: e.dmg*1.4, color: e.type==='sorcerer'?'#7fd6ff':'#ff7a3a'});
+          addText(e.x,gy(e.z)-e.h-10,'MAGIC!',e.type==='sorcerer'?'#7fd6ff':'#ff7a3a',true);
+      }}
       if(e.hp/e.maxHp<0.35&&e.phase<2){e.phase=2;e.speed*=1.22;
         if(e.type==='king'){e.ranged=true;e.shot={count:3,spread:0.22,speed:380,size:8,color:'#c47bff',shape:'orb',el:'void',glow:1};e.shootCd=2.0;e.shootT=0.8;}
         addText(e.x,gy(e.z)-e.h-20,'ENRAGED!','#ff5e54',true);}
@@ -685,6 +736,18 @@ function update(dt){
         e.x+=dir*eff*0.7*dt;e.z+=Math.sign(p.z-e.z)*Math.min(Math.abs(p.z-e.z),eff*0.4*dt);
       }
     }
+    
+    // Enemy Gravity & Collision
+    if(e.kind !== 'fly') {
+        const eFloor = getFloorY(e.x, e.z);
+        if(e.jy < eFloor && eFloor > 0) {
+            e.x -= (e.vx*dt) || (dir*eff*dt); // pushback
+        }
+        e.vy += 1400*dt; e.jy -= e.vy*dt;
+        if(e.jy <= eFloor && e.vy > 0) { e.jy = eFloor; e.vy = 0; }
+        if(e.jy < -50) { e.hp = 0; killEnemy(e); }
+    }
+
     // Boundary
     if(e.x<24)e.x=24;if(e.x>s.len-24)e.x=s.len-24;
     // Contact damage
@@ -726,6 +789,19 @@ function update(dt){
   G.texts=G.texts.filter(t=>t.life>0);
 
   if(queueLevelUp>0&&mode==='play'){queueLevelUp--;openLevelUp();}
+
+  // AOE processing
+  for(const a of G.aoes) {
+      a.t -= dt;
+      if(a.t <= 0 && !a.hit) {
+          a.hit = true; a.life = 0.3;
+          G.shake = Math.max(G.shake, 8);
+          if(Math.abs(p.x - a.x) < a.r && Math.abs(p.z - a.z) < a.r && p.jy < 50) hurtPlayer(a.dmg, Math.sign(p.x - a.x)||1);
+      }
+      if(a.hit) a.life -= dt;
+  }
+  G.aoes = G.aoes.filter(a => (a.hit ? a.life > 0 : true));
+
   hudUpdate();
 }
 
@@ -754,7 +830,7 @@ function nextStage(){
 function continueRun(){
   if(!meta.run)return;queueLevelUp=0;
   const p=freshPlayer();
-  G={p,stageIndex:0,enemies:[],particles:[],texts:[],pickups:[],projectiles:[],cam:0,shake:0,
+  G={p,stageIndex:0,enemies:[],particles:[],texts:[],pickups:[],projectiles:[],obstacles:[],aoes:[],cam:0,shake:0,
      ngPlus:meta.run.ngPlus,ngHp:meta.run.ngHp||1,ngDmg:meta.run.ngDmg||1,baseLoadout:meta.run.base||null,
      portal:null,stageBanner:0,killGoal:0,kills:0,boss:null,time:0,tookDamage:false,combo:0,comboT:0};
   restorePlayer(meta.run.p);loadStage(meta.run.stageIndex);restorePlayer(meta.run.p);
@@ -793,6 +869,8 @@ function render(){
   for(const e of G.enemies)if(!e.dead)draws.push({z:e.z,f:()=>drawEnemyFull(ctx,e)});
   draws.push({z:G.p.z,f:()=>drawHeroFull(ctx,G.p)});
   for(const pr of G.projectiles)draws.push({z:pr.z,f:()=>drawProjectile(ctx,pr)});
+  for(const o of G.obstacles)if(o.type==='plat')draws.push({z:o.z,f:()=>drawPlatform(ctx,o)});
+  for(const a of G.aoes)draws.push({z:a.z,f:()=>drawAOE(ctx,a)});
   draws.sort((a,b)=>a.z-b.z);
   for(const d of draws)d.f();
 
@@ -849,6 +927,29 @@ function drawProjectile(c,pr){
   else{c.beginPath();c.arc(0,0,pr.size,0,6.28);c.fill();c.globalAlpha=0.4;c.beginPath();c.arc(-pr.vx*0.012,(pr.vjy||0)*0.012,pr.size*0.7,0,6.28);c.fill();}
   c.restore();c.shadowBlur=0;
 }
+function drawPlatform(c, o) {
+  const s=scaleAt(o.z),fy=gy(o.z);
+  c.save();c.translate(o.x,fy);c.scale(s,s);
+  const w=o.w,h=o.h,d=o.d*0.4;
+  c.fillStyle='#3a4250';
+  c.beginPath();c.moveTo(-w/2,-h);c.lineTo(w/2,-h);c.lineTo(w/2+d,-h-d);c.lineTo(-w/2+d,-h-d);c.fill();
+  c.fillStyle='#242a33';c.fillRect(-w/2,-h,w,h);
+  c.fillStyle='#1c2128';
+  c.beginPath();c.moveTo(w/2,-h);c.lineTo(w/2+d,-h-d);c.lineTo(w/2+d,-d);c.lineTo(w/2,0);c.fill();
+  c.restore();
+}
+function drawAOE(c, a) {
+  c.save();c.translate(a.x,gy(a.z));c.scale(1,0.4);
+  if(a.hit){
+      c.fillStyle=a.color;c.globalAlpha=a.life/0.3;
+      c.beginPath();c.arc(0,0,a.r,0,6.28);c.fill();
+  }else{
+      c.strokeStyle=a.color;c.lineWidth=2;c.globalAlpha=0.5+0.5*Math.sin(a.t*15);
+      c.beginPath();c.arc(0,0,a.r,0,6.28);c.stroke();
+      c.fillStyle='rgba(255,0,0,0.15)';c.fill();
+  }
+  c.restore();
+}
 function drawPortal(c,po){
   const t=po.t;c.save();c.translate(po.x,gy(DEPTH*0.55));
   for(let i=0;i<3;i++){c.globalAlpha=0.5-i*0.12;c.fillStyle='#e8a33d';const r=42+i*12+Math.sin(t*3+i)*5;c.beginPath();c.ellipse(0,-58,r*0.55,r,0,0,6.28);c.fill();}
@@ -869,6 +970,15 @@ function drawGround(c,s){
   c.fillStyle=g;c.fillRect(0,GROUND_FAR,len,VH-GROUND_FAR+40);
   c.fillStyle='rgba(255,255,255,0.09)';c.fillRect(0,GROUND_FAR,len,3);
   c.fillStyle='rgba(0,0,0,0.12)';for(let k=1;k<4;k++)c.fillRect(0,gy(k*DEPTH/4),len,1.5);
+  if(G&&G.obstacles){
+      for(const o of G.obstacles)if(o.type==='pit'){
+          c.fillStyle='#050608';
+          const yBack=gy(o.z-o.d/2),yFront=gy(o.z+o.d/2);
+          c.fillRect(o.x-o.w/2,yBack,o.w,yFront-yBack);
+          c.fillStyle='rgba(0,0,0,0.5)';
+          c.fillRect(o.x-o.w/2,yBack,o.w,10);
+      }
+  }
   c.fillStyle='rgba(0,0,0,0.16)';
   for(let x=Math.floor(G.cam/46)*46;x<G.cam+VW+46;x+=46){c.fillRect(x,gy(DEPTH*0.2),2,7);c.fillRect(x+20,gy(DEPTH*0.72),3,10);}
 }
@@ -907,7 +1017,7 @@ function titleScreen(){
     ${hasRun?`<button class="bigbtn" id="contBtn">Continue — ${STAGES[meta.run.stageIndex].name}</button>`:''}
     <button class="bigbtn ${hasRun?'ghost':''}" id="newBtn">${hasRun?'New Run':'Start'}</button>
     <button class="bigbtn ghost" id="sndBtn">Sound: ${meta.soundOn?'On':'Off'}</button>
-    <p class="hint"><b>Controls:</b> WASD/arrows move · Space jump · <b>J attack</b> · <b>K dodge</b> · Esc pause<br>
+    <p class="hint"><b>Controls:</b> Arrows move · Space jump · <b>W attack</b> · <b>D dodge</b> · Esc pause<br>
       Loot weapons & 3-slot armor — neutral, elemental & ranged. Match elements to foes' weaknesses.<br>
       ${meta.ngPlus>0?`Best: <b>NG+${meta.ngPlus}</b> · `:''}
       <span style="opacity:.5">v${VERSION}</span></p></div>`);
