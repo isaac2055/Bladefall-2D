@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <title>BLADEFALL</title>
 <meta name="theme-color" content="#0b0c10">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -12,1370 +12,1015 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" href="icon.svg">
 <style>
-/* ================================================================
-   BLADEFALL — Global Styles
-   Premium dark-mode UI with CSS custom properties for theming.
-   All HUD/overlay styles live here; gameplay is canvas-rendered.
-   ================================================================ */
-:root {
-  --bg: #0b0c10;
-  --ink: #f3f1ea;
-  --muted: #8b8f9a;
-  --amber: #e8a33d;
-  --amber-dim: #5a4422;
-  --hp: #e8453d;
-  --xp: #3a9dd0;
-  --good: #3ad07f;
-  --danger: #ff5e54;
-  --panel: #15161c;
-  --line: #2a2c36;
-}
-* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; user-select: none; }
-html, body {
-  margin: 0; padding: 0; height: 100%; overflow: hidden;
-  background: var(--bg); color: var(--ink);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  touch-action: none; overscroll-behavior: none; position: fixed; width: 100%;
-}
-/* LittleJS creates its own canvases; we style the root container */
-#gameContainer { position: absolute; inset: 0; width: 100%; height: 100%; }
-/* HUD overlay (HTML-based, positioned above the canvas) */
-#hud {
-  position: absolute; left: 0; right: 0; top: 0;
-  padding: calc(env(safe-area-inset-top) + 8px) 12px 0;
-  pointer-events: none; z-index: 10;
-}
-.barwrap { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
-.barlabel { font-size: 10px; font-weight: 800; letter-spacing: .12em; width: 26px; color: var(--muted); }
-.bar { flex: 1; height: 12px; background: #0006; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
-.bar > i { display: block; height: 100%; width: 0; border-radius: 8px; transition: width .12s linear; }
-#hpFill { background: linear-gradient(90deg, #ff6a60, var(--hp)); }
-#xpFill { background: linear-gradient(90deg, #56b6e6, var(--xp)); }
-#hud .meta { display: flex; justify-content: space-between; align-items: center; margin-top: 2px; }
-#hud .left { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
-#lvlBadge { font-size: 11px; font-weight: 800; letter-spacing: .06em; color: var(--amber); background: var(--amber-dim); padding: 3px 8px; border-radius: 999px; }
-#weaponTag { font-size: 11px; font-weight: 700; color: var(--ink); opacity: .95; }
-#stageTag { font-size: 10px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
-
-/* Debug info panel */
-#debugInfo {
-  position: absolute; bottom: 8px; left: 8px; z-index: 20;
-  font-size: 11px; font-family: "SF Mono", "Menlo", monospace;
-  color: var(--amber); background: rgba(11,12,16,.85);
-  padding: 6px 10px; border-radius: 8px; border: 1px solid var(--amber-dim);
-  pointer-events: none; line-height: 1.5;
-}
+:root{--bg:#0b0c10;--ink:#f3f1ea;--muted:#8b8f9a;--amber:#e8a33d;--amber-dim:#5a4422;--hp:#e8453d;--xp:#3a9dd0;--good:#3ad07f;--danger:#ff5e54;--panel:#15161c;--line:#2a2c36;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;}
+html,body{margin:0;padding:0;height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;touch-action:none;overscroll-behavior:none;position:fixed;width:100%;}
+#gameContainer{position:absolute;inset:0;width:100%;height:100%;}
+#hud{position:absolute;left:0;right:0;top:0;padding:calc(env(safe-area-inset-top)+8px) 12px 0;pointer-events:none;z-index:5;}
+#hud.hide{display:none;}
+.barwrap{display:flex;align-items:center;gap:8px;margin-bottom:5px;}
+.barlabel{font-size:10px;font-weight:800;letter-spacing:.12em;width:26px;color:var(--muted);}
+.bar{flex:1;height:12px;background:#0006;border:1px solid var(--line);border-radius:8px;overflow:hidden;}
+.bar>i{display:block;height:100%;width:0;border-radius:8px;transition:width .12s linear;}
+#hpFill{background:linear-gradient(90deg,#ff6a60,var(--hp));}
+#xpFill{background:linear-gradient(90deg,#56b6e6,var(--xp));}
+#hud .meta{display:flex;justify-content:space-between;align-items:center;margin-top:2px;}
+#hud .left{display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+#lvlBadge{font-size:11px;font-weight:800;letter-spacing:.06em;color:var(--amber);background:var(--amber-dim);padding:3px 8px;border-radius:999px;}
+#weaponTag{font-size:11px;font-weight:700;color:var(--ink);opacity:.95;}
+#armorTag{font-size:11px;font-weight:700;color:#aeb9c6;display:flex;align-items:center;gap:4px;}
+#armorTag .pip{width:7px;height:7px;border-radius:2px;display:inline-block;background:#333;}
+#stageTag{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
+#bosshpwrap{position:absolute;left:50%;top:calc(env(safe-area-inset-top)+64px);transform:translateX(-50%);width:min(560px,86vw);display:none;z-index:5;pointer-events:none;}
+#bosshpwrap.on{display:block;}
+#bossname{text-align:center;font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--danger);margin-bottom:4px;text-shadow:0 1px 4px #000;}
+#bosshp{height:10px;background:#0008;border:1px solid #6b1c18;border-radius:6px;overflow:hidden;}
+#bosshp>i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#ff7a52,#c9281f);}
+.barwrap.map{margin-bottom:2px;}
+.barwrap.map .barlabel{font-size:8.5px;}
+.barwrap.map .bar{height:5px;}
+#progFill{background:#8b8f9a;}
+#controls{position:absolute;left:0;right:0;bottom:0;height:100%;pointer-events:none;z-index:6;}
+#controls.hide{display:none;}
+.btn{position:absolute;pointer-events:auto;touch-action:none;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(28,30,38,.42);border:1.5px solid rgba(255,255,255,.14);color:#fff;font-weight:800;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);font-size:13px;letter-spacing:.04em;transition:transform .05s,background .08s;}
+.btn.pressed{background:rgba(232,163,61,.55);border-color:#f3c272;transform:scale(.94);}
+.btn svg{width:46%;height:46%;fill:currentColor;}
+#joyzone{position:absolute;left:0;bottom:0;width:46%;height:46%;pointer-events:auto;}
+#joy{position:absolute;width:104px;height:104px;border-radius:50%;background:rgba(28,30,38,.35);border:1.5px solid rgba(255,255,255,.12);display:none;pointer-events:none;}
+#joyknob{position:absolute;width:46px;height:46px;border-radius:50%;background:rgba(232,163,61,.5);border:1.5px solid #f3c272;left:29px;top:29px;pointer-events:none;}
+#bAttack{width:86px;height:86px;right:calc(env(safe-area-inset-right)+16px);bottom:calc(env(safe-area-inset-bottom)+26px);font-size:15px;background:rgba(232,69,61,.34);border-color:rgba(255,140,134,.4);}
+#bAttack.pressed{background:rgba(232,69,61,.62);}
+#bAttack.ranged{background:rgba(120,90,210,.34);border-color:rgba(170,150,240,.45);}
+#bAttack.ranged.pressed{background:rgba(120,90,210,.62);}
+#bJump{width:66px;height:66px;right:calc(env(safe-area-inset-right)+104px);bottom:calc(env(safe-area-inset-bottom)+92px);}
+#bDodge{width:62px;height:62px;right:calc(env(safe-area-inset-right)+110px);bottom:calc(env(safe-area-inset-bottom)+18px);font-size:11px;background:rgba(58,157,208,.3);border-color:rgba(120,200,235,.4);}
+#bDodge.pressed{background:rgba(58,157,208,.6);}
+#bDodge.cooling{opacity:.4;}
+#pausebtn{position:absolute;top:calc(env(safe-area-inset-top)+8px);right:12px;z-index:7;width:34px;height:34px;border-radius:9px;background:rgba(28,30,38,.5);border:1px solid var(--line);color:var(--ink);font-size:13px;display:flex;align-items:center;justify-content:center;pointer-events:auto;}
+#pausebtn.hide{display:none;}
+#overlay{position:absolute;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(6,7,10,.82);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);text-align:center;overflow:auto;touch-action:pan-y;}
+#overlay.hide{display:none;}
+.card{width:100%;max-width:380px;}
+.title{font-size:clamp(34px,11vw,52px);font-weight:900;letter-spacing:.04em;margin:0;background:linear-gradient(180deg,#f7d79a,var(--amber));-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 4px 24px rgba(232,163,61,.25);}
+.subtitle{color:var(--muted);font-size:13px;letter-spacing:.22em;text-transform:uppercase;margin:6px 0 22px;}
+.bigbtn{display:block;width:100%;padding:15px;margin:9px 0;border:none;border-radius:14px;font-size:16px;font-weight:800;letter-spacing:.02em;cursor:pointer;color:#0b0c10;background:var(--amber);}
+.bigbtn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);}
+.bigbtn:active{transform:scale(.98);}
+.ovh{font-size:24px;font-weight:900;margin:0 0 4px;letter-spacing:.02em;}
+.ovsub{color:var(--muted);font-size:14px;margin:0 0 20px;line-height:1.5;}
+.choices{display:flex;flex-direction:column;gap:12px;}
+.choice{padding:14px 16px;border-radius:14px;background:var(--panel);border:1.5px solid var(--line);cursor:pointer;text-align:left;transition:border-color .1s,transform .05s;}
+.choice:active{transform:scale(.985);}
+.choice .cname{font-size:16px;font-weight:800;color:var(--amber);display:flex;align-items:center;gap:8px;}
+.choice .cdesc{font-size:13px;color:var(--muted);margin-top:3px;line-height:1.4;}
+.statgrid{text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0 0 20px;}
+.hint{font-size:11px;color:var(--muted);margin-top:14px;line-height:1.6;}
+.vsrow{display:flex;justify-content:space-between;gap:6px;font-size:12px;color:var(--muted);margin:3px 0;}
+.vsrow b{color:var(--ink);}
+.up{color:var(--good);}.down{color:var(--danger);}
+#toast{position:absolute;left:50%;top:30%;transform:translateX(-50%);z-index:25;background:rgba(20,21,27,.92);border:1px solid var(--amber-dim);color:var(--amber);font-weight:800;font-size:13px;letter-spacing:.04em;padding:10px 18px;border-radius:12px;opacity:0;transition:opacity .2s,top .2s;pointer-events:none;text-align:center;max-width:80vw;}
+#toast.show{opacity:1;top:24%;}
 </style>
 </head>
 <body>
-
-<!-- ============================================================
-     BLADEFALL — Step 1: Core Architecture Boilerplate
-     
-     Architecture:
-       1. Custom Vanilla JS Entity-Component-System (ECS)
-       2. LittleJS engine for render loop, input, & ZzFX audio
-       3. Integration layer bridging ECS ↔ LittleJS lifecycle
-       4. Proof-of-concept: Player entity with 2.5D depth rendering
-     
-     Design Principles:
-       • Data-only Components (plain objects, no methods)
-       • Logic-only Systems (functions that query components)
-       • LittleJS handles: RAF loop, canvas management, input polling,
-         camera transforms, and ZzFX procedural audio
-       • ECS handles: all game state, physics, AI, loot, combat, etc.
-     ============================================================ -->
-
-<!-- Game container — LittleJS will inject its canvases here -->
 <div id="gameContainer"></div>
-
-<!-- HUD overlay (HTML-based for crisp text rendering) -->
-<div id="hud">
+<div id="hud" class="hide">
   <div class="barwrap"><span class="barlabel">HP</span><div class="bar"><i id="hpFill"></i></div></div>
   <div class="barwrap"><span class="barlabel">XP</span><div class="bar"><i id="xpFill"></i></div></div>
-  <div class="meta">
-    <div class="left">
-      <span id="lvlBadge">LV 1</span>
-      <span id="weaponTag">Rusty Sword</span>
-    </div>
-    <span id="stageTag">Stage 1 — The Outskirts</span>
-  </div>
+  <div class="barwrap map"><span class="barlabel">MAP</span><div class="bar"><i id="progFill"></i></div></div>
+  <div class="meta"><div class="left"><span id="lvlBadge">LV 1</span><span id="weaponTag">Rusty Sword</span><span id="armorTag"></span></div><span id="stageTag">Stage 1</span></div>
 </div>
+<div id="bosshpwrap"><div id="bossname">Boss</div><div id="bosshp"><i></i></div></div>
+<button id="pausebtn" class="hide">II</button>
+<div id="controls" class="hide">
+  <div id="joyzone"><div id="joy"><div id="joyknob"></div></div></div>
+  <button class="btn" id="bDodge">DODGE</button>
+  <button class="btn" id="bJump"><svg viewBox="0 0 24 24"><path d="M12 4l7 8h-4v8h-6v-8H5z"/></svg></button>
+  <button class="btn" id="bAttack">SLASH</button>
+</div>
+<div id="toast"></div>
+<div id="overlay"><div class="card" id="ovcard"></div></div>
 
-<!-- Debug info (visible during development) -->
-<div id="debugInfo">Loading ECS…</div>
-
-<!-- ============================================================
-     LittleJS Engine (CDN — latest minified build)
-     Provides: engineInit, vec2, drawRect, drawTextScreen,
-               mainCanvas, mainContext, overlayCanvas, overlayContext,
-               cameraPos, cameraScale, mousePos, keyIsDown,
-               Sound (ZzFX wrapper), Color, Timer, etc.
-     ============================================================ -->
 <script src="https://cdn.jsdelivr.net/npm/littlejsengine@latest/dist/littlejs.min.js"></script>
-
 <script>
 'use strict';
+/* ================================================================
+   BLADEFALL v5.1.0 — Step 2: Full Playable Game
+   ECS architecture on LittleJS engine.
+   ================================================================ */
+const VERSION='5.1.0';
 
 /* ================================================================
-   ██████╗ ██╗      █████╗ ██████╗ ███████╗███████╗ █████╗ ██╗     ██╗     
-   ██╔══██╗██║     ██╔══██╗██╔══██╗██╔════╝██╔════╝██╔══██╗██║     ██║     
-   ██████╔╝██║     ███████║██║  ██║█████╗  █████╗  ███████║██║     ██║     
-   ██╔══██╗██║     ██╔══██║██║  ██║██╔══╝  ██╔══╝  ██╔══██║██║     ██║     
-   ██████╔╝███████╗██║  ██║██████╔╝███████╗██║     ██║  ██║███████╗███████╗
-   ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝╚═╝     ╚═╝  ╚═╝╚══════╝╚══════╝
-   
-   Step 1: Core Architecture Boilerplate
-   Version: 5.0.0-alpha (ECS Rebuild)
+   SECTION 1: ENTITY-COMPONENT-SYSTEM
    ================================================================ */
-
-const VERSION = '5.0.0-alpha';
-
-/* ================================================================
-   SECTION 1: ENTITY-COMPONENT-SYSTEM (ECS)
-   
-   A minimal, high-performance ECS designed for a 2D action-RPG.
-   
-   Terminology:
-     • Entity   — A unique integer ID. Nothing more.
-     • Component — A plain data object (no methods) attached to an entity.
-                   Identified by a string name (e.g., 'Position', 'Health').
-     • System   — A function that runs every frame, querying entities
-                   by their component signature and mutating their data.
-   
-   Why ECS?
-     • Composition over inheritance — mix & match capabilities freely.
-     • Cache-friendly iteration — systems process arrays of components.
-     • Easy to extend — adding a new mechanic = new Component + new System.
-     • Decoupled logic — systems don't know about each other.
-   ================================================================ */
-
-class EntityManager {
-  constructor() {
-    /**
-     * Auto-incrementing entity ID counter.
-     * Entity 0 is reserved (never created) so we can use 0 as "null entity".
-     */
-    this._nextId = 1;
-
-    /**
-     * Master component storage.
-     * Structure: Map<componentName, Map<entityId, componentData>>
-     * 
-     * Example:
-     *   _components.get('Position') => Map { 1 => {x:0, z:0, jy:0}, 2 => {x:100, z:50, jy:0} }
-     *   _components.get('Health')   => Map { 1 => {hp:100, maxHp:100} }
-     */
-    this._components = new Map();
-
-    /**
-     * Set of all living entity IDs.
-     * Used for fast existence checks and iteration.
-     */
-    this._entities = new Set();
-
-    /**
-     * Entities scheduled for destruction at end of frame.
-     * Deferred deletion prevents iterator invalidation during system updates.
-     */
-    this._destroyQueue = [];
-
-    /**
-     * Registered systems, executed in insertion order.
-     * Each entry: { name: string, requiredComponents: string[], fn: Function, phase: string }
-     * 
-     * Phases:
-     *   'update'     — runs during gameUpdate() (logic, physics, AI)
-     *   'render'     — runs during gameRender() (world-space drawing, behind objects)
-     *   'renderPost' — runs during gameRenderPost() (HUD, overlays, screen-space)
-     */
-    this._systems = [];
-
-    /**
-     * Component pool for recycling (optional optimization).
-     * Structure: Map<componentName, componentData[]>
-     * Not used in Step 1 but the slot is here for Step 2+.
-     */
-    this._pools = new Map();
+class EntityManager{
+  constructor(){this._nid=1;this._c=new Map;this._e=new Set;this._dq=[];this._sys=[];}
+  createEntity(){const id=this._nid++;this._e.add(id);return id;}
+  destroyEntity(id){this._dq.push(id);}
+  entityExists(id){return this._e.has(id);}
+  flush(){for(const id of this._dq){for(const[,s]of this._c)s.delete(id);this._e.delete(id);}this._dq.length=0;}
+  add(eid,name,data){if(!this._c.has(name))this._c.set(name,new Map);this._c.get(name).set(eid,data);return data;}
+  rem(eid,name){const s=this._c.get(name);return s?s.delete(eid):false;}
+  get(eid,name){const s=this._c.get(name);return s?s.get(eid):undefined;}
+  has(eid,name){const s=this._c.get(name);return s?s.has(eid):false;}
+  store(name){return this._c.get(name)||new Map;}
+  query(...names){
+    if(!names.length)return[];
+    let sn=names[0],ss=Infinity;
+    for(const n of names){const s=this._c.get(n);const sz=s?s.size:0;if(sz<ss){ss=sz;sn=n;}}
+    if(ss===0)return[];
+    const sm=this._c.get(sn),r=[];
+    for(const eid of sm.keys()){let ok=true;for(const n of names){if(n===sn)continue;const s=this._c.get(n);if(!s||!s.has(eid)){ok=false;break;}}if(ok)r.push(eid);}
+    return r;
   }
-
-  /* ────────────────────────────────────────────────────────────────
-     ENTITY LIFECYCLE
-     ──────────────────────────────────────────────────────────────── */
-
-  /**
-   * Create a new entity and return its ID.
-   * Entities start with zero components — attach them separately.
-   */
-  createEntity() {
-    const id = this._nextId++;
-    this._entities.add(id);
-    return id;
-  }
-
-  /**
-   * Schedule an entity for destruction at end of frame.
-   * All its components will be removed during the flush.
-   */
-  destroyEntity(id) {
-    this._destroyQueue.push(id);
-  }
-
-  /**
-   * Check if an entity still exists (hasn't been destroyed).
-   */
-  entityExists(id) {
-    return this._entities.has(id);
-  }
-
-  /**
-   * Flush the destroy queue. Called once per frame after all systems run.
-   */
-  flushDestroyQueue() {
-    for (const id of this._destroyQueue) {
-      // Remove all components for this entity
-      for (const [, store] of this._components) {
-        store.delete(id);
-      }
-      this._entities.delete(id);
-    }
-    this._destroyQueue.length = 0;
-  }
-
-  /* ────────────────────────────────────────────────────────────────
-     COMPONENT MANAGEMENT
-     
-     Components are plain objects. The ECS doesn't enforce a schema;
-     that's the responsibility of the factory functions (see Section 2).
-     ──────────────────────────────────────────────────────────────── */
-
-  /**
-   * Attach a component to an entity.
-   * @param {number} entityId
-   * @param {string} componentName — e.g., 'Position', 'Velocity', 'Health'
-   * @param {object} data — the component data object
-   * @returns {object} the attached data (for chaining)
-   */
-  addComponent(entityId, componentName, data) {
-    if (!this._components.has(componentName)) {
-      this._components.set(componentName, new Map());
-    }
-    this._components.get(componentName).set(entityId, data);
-    return data;
-  }
-
-  /**
-   * Remove a component from an entity.
-   * @returns {boolean} true if the component existed and was removed
-   */
-  removeComponent(entityId, componentName) {
-    const store = this._components.get(componentName);
-    return store ? store.delete(entityId) : false;
-  }
-
-  /**
-   * Get a single component for an entity.
-   * @returns {object|undefined} the component data, or undefined
-   */
-  getComponent(entityId, componentName) {
-    const store = this._components.get(componentName);
-    return store ? store.get(entityId) : undefined;
-  }
-
-  /**
-   * Check if an entity has a specific component.
-   */
-  hasComponent(entityId, componentName) {
-    const store = this._components.get(componentName);
-    return store ? store.has(entityId) : false;
-  }
-
-  /**
-   * Get the entire component store for a given component name.
-   * Returns Map<entityId, componentData> — useful for systems that
-   * need to iterate ALL entities with a given component.
-   */
-  getComponentStore(componentName) {
-    return this._components.get(componentName) || new Map();
-  }
-
-  /* ────────────────────────────────────────────────────────────────
-     QUERIES
-     
-     Query entities by component signature. Returns arrays of entity IDs
-     that possess ALL of the requested components.
-     ──────────────────────────────────────────────────────────────── */
-
-  /**
-   * Find all entity IDs that have ALL of the specified components.
-   * This is the primary query method used by systems.
-   * 
-   * Performance: O(n) where n = size of the smallest component store.
-   * For a game with ~100 entities, this is negligible.
-   * 
-   * @param {...string} componentNames — one or more component names
-   * @returns {number[]} array of matching entity IDs
-   */
-  query(...componentNames) {
-    if (componentNames.length === 0) return [];
-
-    // Start with the smallest store for efficiency
-    let smallestName = componentNames[0];
-    let smallestSize = Infinity;
-    for (const name of componentNames) {
-      const store = this._components.get(name);
-      const size = store ? store.size : 0;
-      if (size < smallestSize) {
-        smallestSize = size;
-        smallestName = name;
-      }
-    }
-
-    if (smallestSize === 0) return [];
-
-    const smallestStore = this._components.get(smallestName);
-    const results = [];
-
-    for (const entityId of smallestStore.keys()) {
-      let hasAll = true;
-      for (const name of componentNames) {
-        if (name === smallestName) continue;
-        const store = this._components.get(name);
-        if (!store || !store.has(entityId)) {
-          hasAll = false;
-          break;
-        }
-      }
-      if (hasAll) results.push(entityId);
-    }
-
-    return results;
-  }
-
-  /* ────────────────────────────────────────────────────────────────
-     SYSTEM REGISTRATION & EXECUTION
-     ──────────────────────────────────────────────────────────────── */
-
-  /**
-   * Register a system.
-   * 
-   * @param {string} name — human-readable name for debugging
-   * @param {string[]} requiredComponents — component signature for auto-query
-   * @param {Function} fn — system function: fn(entities[], ecs, dt)
-   * @param {string} [phase='update'] — when to run: 'update', 'render', 'renderPost'
-   */
-  registerSystem(name, requiredComponents, fn, phase = 'update') {
-    this._systems.push({ name, requiredComponents, fn, phase });
-  }
-
-  /**
-   * Run all systems for a given phase.
-   * Called by the LittleJS lifecycle hooks.
-   * 
-   * @param {string} phase — 'update', 'render', or 'renderPost'
-   * @param {number} dt — delta time in seconds
-   */
-  runSystems(phase, dt) {
-    for (const sys of this._systems) {
-      if (sys.phase !== phase) continue;
-
-      // Auto-query entities matching this system's required components
-      const entities = this.query(...sys.requiredComponents);
-
-      // Execute the system logic
-      sys.fn(entities, this, dt);
-    }
-  }
-
-  /* ────────────────────────────────────────────────────────────────
-     DEBUG / INTROSPECTION
-     ──────────────────────────────────────────────────────────────── */
-
-  /**
-   * Get a snapshot of the ECS state for debugging.
-   */
-  debugInfo() {
-    const componentCounts = {};
-    for (const [name, store] of this._components) {
-      componentCounts[name] = store.size;
-    }
-    return {
-      entities: this._entities.size,
-      components: componentCounts,
-      systems: this._systems.map(s => `${s.name} [${s.phase}]`),
-      pendingDestroy: this._destroyQueue.length,
-    };
-  }
+  register(name,req,fn,phase='update'){this._sys.push({name,req,fn,phase});}
+  run(phase,dt){for(const s of this._sys){if(s.phase!==phase)continue;s.fn(this.query(...s.req),this,dt);}}
+  info(){const cc={};for(const[n,s]of this._c)cc[n]=s.size;return{entities:this._e.size,components:cc,systems:this._sys.length};}
 }
 
 /* ================================================================
-   SECTION 2: COMPONENT FACTORIES
-   
-   Components are plain data objects created by factory functions.
-   This ensures consistent shape (V8 hidden classes) and serves
-   as self-documenting schema for each component type.
-   
-   Convention: factory names match component names exactly.
-   Example: Components.Position() creates a 'Position' component.
+   SECTION 2: GAME DATA — Rarity, Elements, Weapons, Armor, Stages, Enemies
    ================================================================ */
+const DEPTH=210;
+let VW=0,VH=0,GROUND_FAR=0,GROUND_NEAR=0;
+function gy(z){return GROUND_FAR+(z/DEPTH)*(GROUND_NEAR-GROUND_FAR);}
+function scaleAt(z){return 0.80+0.32*(z/DEPTH);}
+function recalcVP(){VW=mainCanvas.width;VH=mainCanvas.height;GROUND_NEAR=VH-Math.max(96,VH*0.13);GROUND_FAR=GROUND_NEAR-Math.max(140,VH*0.24);}
 
-const Components = {
+/* Rarity */
+const RARITY={common:{name:'Common',color:'#b9c0cc',base:1000,mul:1,tier:0},uncommon:{name:'Uncommon',color:'#5fd17a',base:300,mul:1.3,tier:1},rare:{name:'Rare',color:'#4aa3e0',base:80,mul:1.7,tier:2},epic:{name:'Epic',color:'#b06bff',base:16,mul:2.25,tier:3},legendary:{name:'Legendary',color:'#f0a93a',base:2.6,mul:3,tier:4}};
+const RORDER=['common','uncommon','rare','epic','legendary'];
+function rarGlow(r){return[0,3,6,10,15][RARITY[r].tier];}
+function rollRarity(){
+  const luck=(G.stageIndex*0.5)+(G.ngPlus*2.5)+(Math.floor(G.p.level/2)*0.2);
+  const boost=1+Math.min(luck,22)*0.085;let pool=[],total=0;
+  RORDER.forEach((r,i)=>{const w=RARITY[r].base*Math.pow(boost,i);pool.push(w);total+=w;});
+  let roll=Math.random()*total;for(let i=0;i<pool.length;i++){roll-=pool[i];if(roll<=0)return RORDER[i];}return'common';
+}
 
-  /**
-   * Position — world-space coordinates in the 2.5D plane.
-   * 
-   * x  — horizontal position (left/right scroll axis)
-   * z  — depth position (0 = far/top, DEPTH = near/bottom)
-   *       Controls both rendering sort order and perspective scale.
-   * jy — jump height above the ground plane (0 = on ground)
-   *       Separate from z to allow independent vertical movement.
-   */
-  Position(x = 0, z = 0, jy = 0) {
-    return { x, z, jy };
-  },
+/* Elements */
+const WEAK={fire:'ice',ice:'fire',poison:'holy',storm:'arcane',void:'holy',arcane:'storm',holy:'void'};
+function elColor(el){return{fire:'#ff7a3a',ice:'#7fd6ff',poison:'#86e05a',arcane:'#c47bff',void:'#b06bff',storm:'#9fe0ff',holy:'#ffe9a8'}[el]||null;}
+function elemMod(wEl,eEl){if(!wEl||!eEl)return 1;if(wEl==='void')return 1.15;if(wEl===eEl)return 0.6;if(WEAK[eEl]===wEl)return 1.5;return 1;}
 
-  /**
-   * Velocity — per-frame movement rates.
-   * 
-   * vx — horizontal velocity (pixels/sec)
-   * vz — depth velocity (pixels/sec)
-   * vy — vertical velocity for jump arcs (pixels/sec, negative = up)
-   */
-  Velocity(vx = 0, vz = 0, vy = 0) {
-    return { vx, vz, vy };
-  },
+/* Weapon archetypes */
+const ARCH={
+  sword:{disp:'Sword',cls:'melee',sch:'phys',dmg:11,cd:.38,kb:190,range:54,reach:30,art:'sword'},
+  dagger:{disp:'Daggers',cls:'melee',sch:'phys',dmg:7,cd:.18,kb:120,range:42,reach:26,art:'dagger'},
+  spear:{disp:'Spear',cls:'melee',sch:'phys',dmg:15,cd:.50,kb:230,range:88,reach:26,art:'spear'},
+  axe:{disp:'Battle Axe',cls:'melee',sch:'phys',dmg:20,cd:.56,kb:300,range:58,reach:36,art:'axe'},
+  great:{disp:'Greatsword',cls:'melee',sch:'phys',dmg:28,cd:.70,kb:340,range:66,reach:42,art:'great'},
+  hammer:{disp:'Warhammer',cls:'melee',sch:'phys',dmg:34,cd:.82,kb:430,range:60,reach:44,art:'hammer'},
+  scythe:{disp:'Scythe',cls:'melee',sch:'phys',dmg:22,cd:.52,kb:260,range:74,reach:40,art:'scythe'},
+  flameblade:{disp:'Flameblade',cls:'melee',sch:'mag',dmg:16,cd:.40,kb:200,range:58,reach:32,art:'sword',el:'fire'},
+  frostbrand:{disp:'Frostbrand',cls:'melee',sch:'mag',dmg:14,cd:.38,kb:200,range:58,reach:32,art:'sword',el:'ice'},
+  runeblade:{disp:'Runeblade',cls:'melee',sch:'mag',dmg:21,cd:.42,kb:240,range:62,reach:34,art:'great',el:'arcane'},
+  voidscythe:{disp:'Void Scythe',cls:'melee',sch:'mag',dmg:24,cd:.50,kb:260,range:76,reach:40,art:'scythe',el:'void',lifesteal:.12},
+  bow:{disp:'Longbow',cls:'ranged',sch:'phys',dmg:9,cd:.30,kb:110,art:'bow',proj:{speed:680,size:5,pierce:0,range:1150,color:'#d8c27a',shape:'arrow'}},
+  crossbow:{disp:'Crossbow',cls:'ranged',sch:'phys',dmg:16,cd:.50,kb:170,art:'cross',proj:{speed:780,size:6,pierce:1,range:900,color:'#cfd6df',shape:'arrow'}},
+  knives:{disp:'Throwing Knives',cls:'ranged',sch:'phys',dmg:6,cd:.16,kb:80,art:'dagger',proj:{speed:640,size:4,pierce:0,range:1000,color:'#9fe6c8',shape:'arrow'}},
+  firestaff:{disp:'Fire Staff',cls:'ranged',sch:'mag',dmg:20,cd:.54,kb:150,art:'staff',el:'fire',proj:{speed:470,size:10,pierce:0,range:360,color:'#ff7a3a',shape:'orb',glow:1}},
+  frostwand:{disp:'Frost Wand',cls:'ranged',sch:'mag',dmg:11,cd:.32,kb:120,art:'wand',el:'ice',proj:{speed:560,size:7,pierce:0,range:520,color:'#7fd6ff',shape:'orb',glow:1}},
+  stormrod:{disp:'Storm Rod',cls:'ranged',sch:'mag',dmg:16,cd:.40,kb:140,art:'rod',el:'storm',proj:{speed:740,size:6,pierce:1,range:780,color:'#9fe0ff',shape:'bolt',glow:1}},
+  holyscepter:{disp:'Holy Scepter',cls:'ranged',sch:'mag',dmg:22,cd:.56,kb:160,art:'scepter',el:'holy',proj:{speed:560,size:9,pierce:1,range:560,color:'#ffe9a8',shape:'orb',glow:1}},
+};
+const ARCHIDS=Object.keys(ARCH);
+function makeWeapon(aid,rid,nameO){const a=ARCH[aid],r=RARITY[rid];const w={arche:aid,art:a.art,cls:a.cls,sch:a.sch,el:a.el||null,rarity:rid,name:nameO||(r.name+' '+a.disp),dmg:+(a.dmg*r.mul).toFixed(1),cd:a.cd,kb:a.kb,lifesteal:(a.lifesteal||0)+(rid==='legendary'?0.05:0),color:r.color,blade:(a.sch==='mag'?(elColor(a.el)||'#c9a6ff'):'#dfe5ec')};if(a.cls==='melee'){w.range=a.range;w.reach=a.reach;}else{w.proj=Object.assign({},a.proj);}return w;}
+function startWeapon(){const w=makeWeapon('sword','common','Rusty Sword');w.dmg=9;w.blade='#bcae8a';return w;}
 
-  /**
-   * Dimensions — entity hitbox / visual bounds.
-   * 
-   * w — width in world units
-   * h — height in world units
-   */
-  Dimensions(w = 26, h = 44) {
-    return { w, h };
-  },
+/* Armor */
+const SLOTS={helmet:{label:'Helmet',def:[6,10,15,21,28]},chest:{label:'Chestplate',def:[9,15,22,30,40]},legs:{label:'Leggings',def:[7,11,17,23,31]}};
+const SLOTIDS=['helmet','chest','legs'];
+function makeArmor(rid,slot){const r=RARITY[rid],tier=r.tier,sl=SLOTS[slot];
+  const pool=[{stat:'hp',base:[10,16,22,30,40],f:v=>'+'+v+' Max HP'},{stat:'speedMul',base:[.04,.05,.07,.09,.11],f:v=>'+'+Math.round(v*100)+'% Speed'},{stat:'atkSpeedMul',base:[.03,.05,.06,.08,.10],f:v=>'+'+Math.round(v*100)+'% Atk Spd'},{stat:'lifesteal',base:[.02,.03,.04,.05,.07],f:v=>'+'+Math.round(v*100)+'% Lifesteal'},{stat:'dodgeMul',base:[.05,.07,.09,.11,.14],f:v=>'-'+Math.round(v*100)+'% Dodge CD'},{stat:'powerMul',base:[.04,.05,.07,.09,.11],f:v=>'+'+Math.round(v*100)+'% Damage'}];
+  const n=tier>=3?2:1,chosen=[],p2=[...pool];for(let i=0;i<n;i++){const a=p2.splice(Math.floor(Math.random()*p2.length),1)[0];chosen.push({stat:a.stat,val:a.base[tier],label:a.f(a.base[tier])});}
+  return{slot,rarity:rid,defense:sl.def[tier],color:r.color,name:r.name+' '+sl.label,affixes:chosen};
+}
 
-  /**
-   * DepthRenderable — marks an entity for 2.5D depth-sorted rendering.
-   * 
-   * The RenderSystem uses this to:
-   *   1. Compute screen Y from depth (z → ground line via perspective)
-   *   2. Compute scale from depth (far = smaller, near = larger)
-   *   3. Sort all renderables by z for painter's algorithm
-   * 
-   * drawFn — a function(ctx, entity, ecs, screenY, scale) that
-   *           performs the actual procedural canvas drawing.
-   *           This is set per-entity to allow unique visuals.
-   * visible — can be toggled to hide without removing the component.
-   * sortBias — allows fine-tuning sort order within same z.
-   */
-  DepthRenderable(drawFn = null, visible = true, sortBias = 0) {
-    return { drawFn, visible, sortBias };
-  },
+/* Stages */
+const STAGES=[
+  {name:'The Outskirts',len:1900,theme:'plains',sky:'#1a2233',ground:'#2a3340',grunts:6,flyers:0,type:'normal'},
+  {name:'Black Woods',len:2100,theme:'forest',sky:'#13211a',ground:'#1d3026',grunts:5,flyers:3,mix:{toxling:2},type:'normal'},
+  {name:'The Brute',len:1300,theme:'badlands',sky:'#241a1a',ground:'#33231f',grunts:2,flyers:1,type:'miniboss',boss:'brute'},
+  {name:'Hollow Pass',len:2100,theme:'canyon',sky:'#241e16',ground:'#352a1e',grunts:5,flyers:2,mix:{sparkling:3},type:'normal'},
+  {name:'Hollow Marksman',len:1500,theme:'canyon',sky:'#1f1a12',ground:'#312718',grunts:2,flyers:2,type:'miniboss',boss:'archer'},
+  {name:'Ruined Keep',len:2300,theme:'ruins',sky:'#1c1830',ground:'#2a2440',grunts:5,flyers:3,mix:{shadeling:2,toxling:2},type:'normal'},
+  {name:'The Warden',len:1400,theme:'dungeon',sky:'#2a1c2c',ground:'#3a2440',grunts:3,flyers:2,type:'miniboss',boss:'warden'},
+  {name:'Frostfell',len:2200,theme:'frost',sky:'#15202b',ground:'#243240',grunts:3,flyers:3,mix:{frostling:5},type:'normal'},
+  {name:'Frost Sorcerer',len:1500,theme:'frost',sky:'#10202c',ground:'#1e3340',grunts:2,flyers:2,mix:{frostling:2},type:'miniboss',boss:'sorcerer'},
+  {name:'Emberdeep',len:2200,theme:'volcano',sky:'#2a1410',ground:'#3a1c14',grunts:3,flyers:2,mix:{emberling:5},type:'normal'},
+  {name:'Ember Colossus',len:1600,theme:'volcano',sky:'#2c130c',ground:'#3d1a10',grunts:2,flyers:1,mix:{emberling:2},type:'miniboss',boss:'colossus'},
+  {name:'Abyss Approach',len:2000,theme:'void',sky:'#140b22',ground:'#241431',grunts:4,flyers:3,mix:{shadeling:4,sparkling:2},type:'normal'},
+  {name:'Abyss King',len:1500,theme:'void',sky:'#120b1c',ground:'#241431',grunts:0,flyers:0,type:'boss',boss:'king'},
+  {name:'The Void Tyrant',len:1600,theme:'apex',sky:'#0c0716',ground:'#1c1029',grunts:0,flyers:0,type:'boss',boss:'tyrant'}
+];
 
-  /**
-   * Health — hit points for damageable entities.
-   */
-  Health(hp = 100, maxHp = 100) {
-    return { hp, maxHp };
-  },
-
-  /**
-   * PlayerTag — empty marker component to identify the player entity.
-   * Systems can query for ['PlayerTag'] to find the player quickly.
-   */
-  PlayerTag() {
-    return { isPlayer: true };
-  },
-
-  /**
-   * PhysicsBody — flags for the physics system.
-   * 
-   * onGround — whether the entity is on the ground plane
-   * gravity  — gravitational acceleration (pixels/sec²)
-   * friction — horizontal deceleration multiplier (0-1 per frame)
-   */
-  PhysicsBody(gravity = 1400, friction = 0.85) {
-    return { onGround: true, gravity, friction };
-  },
-
-  /**
-   * Facing — which direction an entity faces (for sprite mirroring).
-   * face: 1 = right, -1 = left
-   */
-  Facing(face = 1) {
-    return { face };
-  },
-
-  /**
-   * AnimationState — tracks animation timers for procedural rendering.
-   */
-  AnimationState() {
-    return {
-      runAnim: 0,     // Leg cycle phase
-      idleBob: 0,     // Idle breathing bob
-      totalTime: 0,   // Accumulator for continuous animations
-    };
-  },
-
-  /**
-   * CameraTarget — marks this entity as the camera follow target.
-   */
-  CameraTarget() {
-    return { isCameraTarget: true };
-  },
-
-  /**
-   * InputReceiver — marks this entity as controlled by player input.
-   * The InputSystem will write movement intents here.
-   */
-  InputReceiver() {
-    return {
-      moveX: 0,   // -1 to 1 horizontal intent
-      moveZ: 0,   // -1 to 1 depth intent
-      jump: false,
-      attack: false,
-      dodge: false,
-    };
-  },
+/* Enemy archetypes */
+const EARCH={
+  grunt:{hp:22,dmg:8,speed:62,w:30,h:38,xp:13,color:'#7ec46a',kind:'walk'},
+  flyer:{hp:16,dmg:7,speed:52,w:30,h:26,xp:15,color:'#d07ad0',kind:'fly'},
+  emberling:{hp:24,dmg:9,speed:58,w:30,h:38,xp:17,color:'#ff7a3a',kind:'walk',element:'fire'},
+  frostling:{hp:28,dmg:8,speed:50,w:30,h:38,xp:17,color:'#7fd6ff',kind:'walk',element:'ice'},
+  toxling:{hp:24,dmg:8,speed:56,w:30,h:38,xp:17,color:'#9fd84a',kind:'walk',element:'poison'},
+  shadeling:{hp:27,dmg:9,speed:56,w:30,h:38,xp:19,color:'#b06bff',kind:'walk',element:'void'},
+  sparkling:{hp:18,dmg:8,speed:50,w:30,h:26,xp:19,color:'#9fe0ff',kind:'fly',element:'storm'},
+  brute:{hp:190,dmg:18,speed:46,w:60,h:74,xp:140,color:'#e0794a',kind:'boss',boss:true,label:'THE BRUTE'},
+  warden:{hp:270,dmg:22,speed:58,w:54,h:80,xp:200,color:'#c060c8',kind:'boss',boss:true,label:'THE WARDEN'},
+  archer:{hp:300,dmg:16,speed:54,w:54,h:80,xp:230,color:'#a7b06a',kind:'boss',boss:true,ranged:true,kite:true,label:'HOLLOW MARKSMAN',shot:{count:3,spread:0.10,speed:560,size:5,color:'#e6d28a',shape:'arrow'},shootCd:2.0},
+  sorcerer:{hp:330,dmg:18,speed:62,w:54,h:80,xp:250,color:'#6aa0d0',kind:'boss',boss:true,ranged:true,kite:true,label:'FROST SORCERER',shot:{count:3,spread:0.20,speed:430,size:8,color:'#7fd6ff',shape:'orb',el:'ice',glow:1},shootCd:2.1},
+  colossus:{hp:560,dmg:24,speed:40,w:78,h:104,xp:380,color:'#d06a3a',kind:'boss',boss:true,ranged:true,label:'EMBER COLOSSUS',shot:{count:1,spread:0,speed:380,size:13,color:'#ff7a3a',shape:'orb',el:'fire',glow:1,gravity:430},shootCd:2.6},
+  king:{hp:680,dmg:26,speed:50,w:78,h:104,xp:600,color:'#b06bff',kind:'boss',boss:true,label:'ABYSS KING'},
+  tyrant:{hp:900,dmg:28,speed:52,w:78,h:104,xp:800,color:'#8a4fd0',kind:'boss',boss:true,ranged:true,label:'VOID TYRANT',shot:{count:5,spread:0.16,speed:420,size:8,color:'#c47bff',shape:'orb',el:'void',glow:1},shootCd:2.4}
 };
 
+/* ================================================================
+   SECTION 3: PERSISTENCE & GAME STATE
+   ================================================================ */
+const SAVE_KEY='bladefall_v2';
+function loadSave(){try{return JSON.parse(localStorage.getItem(SAVE_KEY))||{};}catch(e){return{};}}
+function persist(){try{localStorage.setItem(SAVE_KEY,JSON.stringify(meta));}catch(e){}}
+const meta=Object.assign({ngPlus:0,bestStage:0,soundOn:true,totalKills:0,bossKills:0,kingKills:0,tyrantKills:0,magicBossKills:0,rangedBossKills:0,legendaryFound:0,flawlessStages:0,maxLevel:1,lastNgHp:1,lastNgDmg:1,autoAttack:false,autoKeep:false,run:null,achievements:{}},loadSave());
+
+/* Global mutable game state (non-ECS) */
+let G=null,mode='title',queueLevelUp=0;
+
+/* Player stat helpers */
+function freshGear(){return{helmet:null,chest:null,legs:null};}
+function recomputeArmor(p){const m={hp:0,speedMul:1,atkSpeedMul:1,lifesteal:0,dodgeMul:1,powerMul:1,defense:0};let total=0;
+  if(p.gear)for(const slot of SLOTIDS){const a=p.gear[slot];if(!a)continue;total+=a.defense;for(const af of a.affixes){if(af.stat==='hp')m.hp+=af.val;else if(af.stat==='lifesteal')m.lifesteal+=af.val;else if(af.stat==='speedMul')m.speedMul*=1+af.val;else if(af.stat==='atkSpeedMul')m.atkSpeedMul*=1+af.val;else if(af.stat==='dodgeMul')m.dodgeMul*=1-af.val;else if(af.stat==='powerMul')m.powerMul*=1+af.val;}}
+  m.defense=total/(total+200);p.armorMods=m;}
+function effMaxHp(p){return p.maxHp+(p.armorMods?p.armorMods.hp:0);}
+function effPower(p){return p.stats.power*(p.armorMods?p.armorMods.powerMul:1);}
+function effAtkSpeed(p){return p.stats.atkSpeed*(p.armorMods?p.armorMods.atkSpeedMul:1);}
+function effSpeed(p){return p.stats.speed*(p.armorMods?p.armorMods.speedMul:1);}
+function effLifesteal(p){return p.stats.lifesteal+(p.armorMods?p.armorMods.lifesteal:0)+((p.weapon&&p.weapon.lifesteal)||0);}
+function effDodgeCd(p){return p.stats.dodgeCd*(p.armorMods?p.armorMods.dodgeMul:1);}
+function defenseR(p){return p.armorMods?Math.min(0.5,p.armorMods.defense):0;}
+function totalDefense(p){let t=0;if(p.gear)for(const s of SLOTIDS){if(p.gear[s])t+=p.gear[s].defense;}return t;}
+function bestGearRarity(p){let best=-1,bc='#333';if(p.gear)for(const s of SLOTIDS){const a=p.gear[s];if(a&&RARITY[a.rarity].tier>best){best=RARITY[a.rarity].tier;bc=a.color;}}return bc;}
+
+/* Snapshot for save/NG+ */
+function snapOf(p){return{hp:p.hp,maxHp:p.maxHp,level:p.level,xp:p.xp,xpNext:p.xpNext,weapon:JSON.parse(JSON.stringify(p.weapon)),gear:cloneGear(p.gear),stats:JSON.parse(JSON.stringify(p.stats)),maxJumps:p.maxJumps};}
+function cloneGear(g){const o=freshGear();if(g)for(const s of SLOTIDS){if(g[s])o[s]=JSON.parse(JSON.stringify(g[s]));}return o;}
 
 /* ================================================================
-   SECTION 3: GAME CONSTANTS & 2.5D PERSPECTIVE
-   
-   These define the visual perspective of the pseudo-3D ground plane.
-   The depth band runs from z=0 (far/top) to z=DEPTH (near/bottom).
-   Entities at z=0 are smaller and drawn first (painter's algorithm).
+   SECTION 4: INPUT (Keyboard + Touch)
    ================================================================ */
+const input={left:false,right:false,up:false,down:false,jump:false,attack:false,dodge:false,jumpEdge:false,dodgeEdge:false,jx:0,jz:0,pause:false};
+function moveX(){return Math.max(-1,Math.min(1,input.jx+(input.right?1:0)-(input.left?1:0)));}
+function moveZ(){return Math.max(-1,Math.min(1,input.jz+(input.down?1:0)-(input.up?1:0)));}
 
-/** Total walkable depth band in world units */
-const DEPTH = 210;
-
-/** Viewport dimensions (updated on resize) */
-let VW = 0, VH = 0;
-
-/** Ground line screen-Y positions (updated on resize) */
-let GROUND_FAR = 0, GROUND_NEAR = 0;
-
-/**
- * Compute ground screen-Y for a given depth z.
- * z=0 → GROUND_FAR (top of ground band)
- * z=DEPTH → GROUND_NEAR (bottom of ground band)
- */
-function groundY(z) {
-  return GROUND_FAR + (z / DEPTH) * (GROUND_NEAR - GROUND_FAR);
+/* Touch button binding */
+function bindBtn(id,key){
+  const el=document.getElementById(id);let heldId=null;
+  const set=v=>{el.classList.toggle('pressed',v);
+    if(key==='jump'){if(v&&!input.jump)input.jumpEdge=true;input.jump=v;}
+    else if(key==='dodge'){if(v&&!input.dodge)input.dodgeEdge=true;input.dodge=v;}
+    else input[key]=v;};
+  el.addEventListener('pointerdown',e=>{if(heldId!==null)return;e.preventDefault();heldId=e.pointerId;set(true);el.setPointerCapture&&el.setPointerCapture(e.pointerId);});
+  const rel=e=>{if(e.pointerId!==heldId)return;e.preventDefault&&e.preventDefault();heldId=null;set(false);};
+  el.addEventListener('pointerup',rel);el.addEventListener('pointercancel',rel);el.addEventListener('lostpointercapture',rel);
+  el.addEventListener('contextmenu',e=>e.preventDefault());
 }
+bindBtn('bJump','jump');bindBtn('bAttack','attack');bindBtn('bDodge','dodge');
 
-/**
- * Compute perspective scale for a given depth z.
- * Far entities are ~80% scale, near entities are ~112% scale.
- * This creates the parallax depth illusion.
- */
-function scaleAtDepth(z) {
-  return 0.80 + 0.32 * (z / DEPTH);
-}
+/* Virtual joystick */
+(function(){
+  const zone=document.getElementById('joyzone'),joy=document.getElementById('joy'),knob=document.getElementById('joyknob');
+  let pid=null,ox=0,oy=0;const R=46;
+  function setKnob(dx,dy){knob.style.left=(29+dx)+'px';knob.style.top=(29+dy)+'px';}
+  zone.addEventListener('pointerdown',e=>{if(pid!==null)return;e.preventDefault();pid=e.pointerId;ox=e.clientX;oy=e.clientY;
+    joy.style.display='block';const zr=zone.getBoundingClientRect();joy.style.left=(ox-zr.left-52)+'px';joy.style.top=(oy-zr.top-52)+'px';setKnob(0,0);zone.setPointerCapture&&zone.setPointerCapture(e.pointerId);});
+  zone.addEventListener('pointermove',e=>{if(e.pointerId!==pid)return;e.preventDefault();let dx=e.clientX-ox,dy=e.clientY-oy;const d=Math.sqrt(dx*dx+dy*dy);if(d>R){dx=dx/d*R;dy=dy/d*R;}setKnob(dx,dy);input.jx=dx/R;input.jz=dy/R;});
+  const rel=e=>{if(e.pointerId!==pid)return;pid=null;joy.style.display='none';input.jx=0;input.jz=0;setKnob(0,0);};
+  zone.addEventListener('pointerup',rel);zone.addEventListener('pointercancel',rel);zone.addEventListener('lostpointercapture',rel);
+  zone.addEventListener('contextmenu',e=>e.preventDefault());
+})();
 
-/**
- * Recalculate viewport-dependent values.
- * Called on window resize and orientation change.
- */
-function recalcViewport() {
-  VW = mainCanvas.width;
-  VH = mainCanvas.height;
-  GROUND_NEAR = VH - Math.max(96, VH * 0.13);
-  GROUND_FAR = GROUND_NEAR - Math.max(140, VH * 0.24);
-}
+/* Pause button */
+document.getElementById('pausebtn').addEventListener('pointerdown',e=>{e.preventDefault();if(mode==='play')openPause();});
 
+/* iOS anti-zoom */
+['gesturestart','gesturechange','gestureend'].forEach(t=>document.addEventListener(t,e=>e.preventDefault()));
+let _lastTouchEnd=0;
+document.addEventListener('touchend',e=>{if(e.target.closest&&e.target.closest('#overlay'))return;const now=Date.now();if(now-_lastTouchEnd<=300)e.preventDefault();_lastTouchEnd=now;},{passive:false});
 
 /* ================================================================
-   SECTION 4: PROCEDURAL DRAWING UTILITIES
-   
-   Helper functions for the procedural canvas rendering pipeline.
-   These draw character parts, weapons, effects, etc. using only
-   the Canvas2D API — no sprite sheets, no external images.
+   SECTION 5: PROCEDURAL AUDIO (ZzFX)
    ================================================================ */
-
-/** Draw a shadow ellipse on the ground beneath an entity */
-function drawShadow(ctx, groundScreenY, width) {
-  ctx.save();
-  ctx.globalAlpha = 0.28;
-  ctx.fillStyle = '#000';
-  ctx.beginPath();
-  ctx.ellipse(0, groundScreenY, width, width * 0.28, 0, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.restore();
-}
-
-/** Draw a rounded rectangle path */
-function roundedRect(ctx, x, y, w, h, r) {
-  ctx.beginPath();
-  ctx.moveTo(x + r, y);
-  ctx.arcTo(x + w, y, x + w, y + h, r);
-  ctx.arcTo(x + w, y + h, x, y + h, r);
-  ctx.arcTo(x, y + h, x, y, r);
-  ctx.arcTo(x, y, x + w, y, r);
-  ctx.closePath();
-}
-
-/** Interpolate between two hex colors */
-function lerpColor(a, b, t) {
-  const pa = hexToRGB(a), pb = hexToRGB(b);
-  return `rgb(${Math.round(pa[0] + (pb[0] - pa[0]) * t)},${Math.round(pa[1] + (pb[1] - pa[1]) * t)},${Math.round(pa[2] + (pb[2] - pa[2]) * t)})`;
-}
-
-function hexToRGB(c) {
-  c = c.replace('#', '');
-  if (c.length === 3) c = c.split('').map(x => x + x).join('');
-  return [parseInt(c.substr(0, 2), 16), parseInt(c.substr(2, 2), 16), parseInt(c.substr(4, 2), 16)];
-}
-
-/** Draw a line between two points */
-function drawLine(ctx, x1, y1, x2, y2) {
-  ctx.beginPath();
-  ctx.moveTo(x1, y1);
-  ctx.lineTo(x2, y2);
-  ctx.stroke();
-}
-
-/** Draw a filled triangle */
-function drawTriangle(ctx, x1, y1, x2, y2, x3, y3) {
-  ctx.beginPath();
-  ctx.moveTo(x1, y1);
-  ctx.lineTo(x2, y2);
-  ctx.lineTo(x3, y3);
-  ctx.closePath();
-  ctx.fill();
-}
-
-
-/* ================================================================
-   SECTION 5: PROCEDURAL ENTITY RENDERERS
-   
-   These are the `drawFn` callbacks stored in DepthRenderable components.
-   Each function receives (ctx, entityId, ecs, scale) and draws the
-   entity's visual representation procedurally on the canvas.
-   
-   The ctx is already translated to the entity's screen position
-   and the ground-relative offset (jy) has been applied.
-   ================================================================ */
-
-/**
- * Draw the Player character — a detailed procedural knight.
- * Ported from the original Bladefall's skin system but adapted
- * for the ECS architecture.
- */
-function drawPlayer(ctx, entityId, ecs, scale) {
-  const pos = ecs.getComponent(entityId, 'Position');
-  const dim = ecs.getComponent(entityId, 'Dimensions');
-  const facing = ecs.getComponent(entityId, 'Facing');
-  const anim = ecs.getComponent(entityId, 'AnimationState');
-  const vel = ecs.getComponent(entityId, 'Velocity');
-  const physics = ecs.getComponent(entityId, 'PhysicsBody');
-  if (!pos || !dim || !facing) return;
-
-  const t = anim ? anim.totalTime : 0;
-  const moving = vel && Math.abs(vel.vx) > 20 && physics && physics.onGround;
-  const bob = moving
-    ? Math.sin((anim ? anim.runAnim : 0) * 2) * 1.0
-    : Math.sin(t * 2) * 0.6;
-  const legA = Math.sin(anim ? anim.runAnim : 0) * (moving ? 7 : 0);
-
-  // Skin colors (Knight theme — will become data-driven in Step 2+)
-  const ARMOR = '#3f566f';
-  const ARMOR_LT = '#5d7da0';
-  const TRIM = '#cfe0ef';
-  const CAPE = '#28384e';
-  const METAL = '#aeb9c6';
-  const GLOW = '#9fc4ff';
-  const TONE = '#f1d9c2';
-
-  ctx.save();
-  ctx.scale(facing.face, 1);
-
-  // ── Cape (behind body) ──
-  const sway = Math.sin(t * 4) * 3 + (moving ? 6 : 0) - (vel ? vel.vx * 0.02 : 0);
-  ctx.save();
-  ctx.translate(-5, -30 + bob);
-  ctx.fillStyle = CAPE;
-  ctx.beginPath();
-  ctx.moveTo(2, -6);
-  ctx.quadraticCurveTo(-13 - sway, 8, -10 - sway, 24);
-  ctx.lineTo(-1, 22);
-  ctx.quadraticCurveTo(-3, 4, 5, -2);
-  ctx.closePath();
-  ctx.fill();
-  ctx.restore();
-
-  // ── Legs ──
-  ctx.fillStyle = '#1c2530';
-  roundedRect(ctx, -8, -14, 7, 14 + legA, 2); ctx.fill();
-  roundedRect(ctx, 2, -14, 7, 14 - legA, 2); ctx.fill();
-  // Boot cuffs
-  ctx.fillStyle = METAL;
-  ctx.fillRect(-8, -3, 7, 3);
-  ctx.fillRect(2, -3, 7, 3);
-
-  ctx.save();
-  ctx.translate(0, bob);
-
-  // ── Body (plated armor) ──
-  ctx.fillStyle = ARMOR;
-  roundedRect(ctx, -10, -35, 20, 24, 4); ctx.fill();
-  ctx.fillStyle = ARMOR_LT;
-  roundedRect(ctx, -8, -34, 16, 11, 3); ctx.fill();
-  // Center seam
-  ctx.fillStyle = GLOW;
-  ctx.globalAlpha = 0.9;
-  ctx.fillRect(-1.5, -33, 3, 17);
-  ctx.globalAlpha = 1;
-  // Belt
-  ctx.fillStyle = TRIM;
-  ctx.fillRect(-10, -18, 20, 2.5);
-  // Pauldrons
-  ctx.fillStyle = ARMOR_LT;
-  ctx.beginPath(); ctx.arc(-9, -33, 5, 0, 6.28); ctx.fill();
-  ctx.beginPath(); ctx.arc(9, -33, 5, 0, 6.28); ctx.fill();
-  ctx.fillStyle = TRIM;
-  ctx.beginPath(); ctx.arc(-9, -33, 2, 0, 6.28); ctx.fill();
-  ctx.beginPath(); ctx.arc(9, -33, 2, 0, 6.28); ctx.fill();
-
-  // ── Head (helm) ──
-  // Face
-  ctx.fillStyle = TONE;
-  roundedRect(ctx, -6, -47, 12, 12, 3); ctx.fill();
-  // Helmet
-  ctx.fillStyle = ARMOR;
-  ctx.beginPath();
-  ctx.moveTo(-7, -46); ctx.lineTo(7, -46); ctx.lineTo(7, -40);
-  ctx.lineTo(3, -40); ctx.lineTo(3, -43); ctx.lineTo(-3, -43);
-  ctx.lineTo(-3, -40); ctx.lineTo(-7, -40);
-  ctx.closePath();
-  ctx.fill();
-  // Helmet band
-  ctx.fillStyle = ARMOR_LT;
-  ctx.fillRect(-7, -49, 14, 4);
-  // Visor eyes
-  ctx.fillStyle = GLOW;
-  ctx.fillRect(-3.2, -42, 2.6, 2);
-  ctx.fillRect(1, -42, 2.6, 2);
-  // Plume
-  ctx.fillStyle = GLOW;
-  ctx.beginPath();
-  ctx.moveTo(0, -53);
-  ctx.quadraticCurveTo(9, -53, 6, -44);
-  ctx.quadraticCurveTo(2, -48, -0.5, -49);
-  ctx.closePath();
-  ctx.fill();
-
-  ctx.restore(); // undo bob translate
-
-  // ── Arm + Weapon ──
-  ctx.save();
-  ctx.translate(6, -30 + bob);
-  const ang = -0.45 + Math.sin(t * 2) * 0.05; // idle sway
-  ctx.rotate(ang);
-  // Arm
-  ctx.strokeStyle = ARMOR_LT;
-  ctx.lineWidth = 5;
-  ctx.lineCap = 'round';
-  drawLine(ctx, -2, 0, 8, 2);
-  // Sword
-  ctx.translate(8, 2);
-  ctx.strokeStyle = '#dfe5ec';
-  ctx.lineWidth = 5;
-  drawLine(ctx, 0, 0, 28, 0);
-  ctx.strokeStyle = '#9a8550';
-  ctx.lineWidth = 3;
-  drawLine(ctx, 2, -5, 2, 5);
-  ctx.restore();
-
-  ctx.restore(); // undo facing scale
-}
-
-
-/* ================================================================
-   SECTION 6: SYSTEMS
-   
-   Logic-only functions that operate on entities via queries.
-   Each system:
-     1. Queries the ECS for entities with required components
-     2. Reads/writes component data
-     3. Has NO internal state (purely functional)
-   ================================================================ */
-
-/**
- * InputSystem — reads LittleJS input state and writes to InputReceiver.
- * Phase: 'update' (runs first so other systems can react to input)
- */
-function InputSystem(entities, ecs, dt) {
-  for (const id of entities) {
-    const input = ecs.getComponent(id, 'InputReceiver');
-
-    // Keyboard: WASD / Arrow keys
-    let mx = 0, mz = 0;
-    if (keyIsDown('ArrowLeft')  || keyIsDown('KeyA')) mx -= 1;
-    if (keyIsDown('ArrowRight') || keyIsDown('KeyD')) mx += 1;
-    if (keyIsDown('ArrowUp')    || keyIsDown('KeyW')) mz -= 1;
-    if (keyIsDown('ArrowDown')  || keyIsDown('KeyS')) mz += 1;
-
-    input.moveX = mx;
-    input.moveZ = mz;
-    input.jump = keyIsDown('Space') || keyIsDown('ArrowUp') || keyIsDown('KeyW');
-    input.attack = keyIsDown('KeyJ');
-    input.dodge = keyIsDown('KeyK') || keyIsDown('ShiftLeft');
-  }
-}
-
-/**
- * MovementSystem — applies InputReceiver intents to Velocity.
- * Phase: 'update'
- */
-function MovementSystem(entities, ecs, dt) {
-  const MOVE_SPEED = 200;
-  const DEPTH_SPEED = 120;
-
-  for (const id of entities) {
-    const input = ecs.getComponent(id, 'InputReceiver');
-    const vel = ecs.getComponent(id, 'Velocity');
-    const facing = ecs.getComponent(id, 'Facing');
-
-    if (!input || !vel) continue;
-
-    // Apply horizontal movement
-    vel.vx = input.moveX * MOVE_SPEED;
-    vel.vz = input.moveZ * DEPTH_SPEED;
-
-    // Update facing direction
-    if (facing && input.moveX !== 0) {
-      facing.face = input.moveX > 0 ? 1 : -1;
-    }
-
-    // Jump (simple: set vy if on ground)
-    const physics = ecs.getComponent(id, 'PhysicsBody');
-    if (input.jump && physics && physics.onGround) {
-      vel.vy = -480;
-      physics.onGround = false;
-
-      // Play jump sound via ZzFX
-      zzfx(...[.03,,230,.01,.08,.13,1,.5,,,,,,,,,,.8,.04]);
-    }
-  }
-}
-
-/**
- * PhysicsSystem — applies velocity to position, handles gravity & ground clamping.
- * Phase: 'update'
- */
-function PhysicsSystem(entities, ecs, dt) {
-  for (const id of entities) {
-    const pos = ecs.getComponent(id, 'Position');
-    const vel = ecs.getComponent(id, 'Velocity');
-    const physics = ecs.getComponent(id, 'PhysicsBody');
-    if (!pos || !vel) continue;
-
-    // Apply velocity
-    pos.x += vel.vx * dt;
-    pos.z += vel.vz * dt;
-
-    // Gravity & vertical movement
-    if (physics) {
-      vel.vy += physics.gravity * dt;
-      pos.jy -= vel.vy * dt; // jy increases upward
-
-      // Ground collision
-      if (pos.jy <= 0) {
-        pos.jy = 0;
-        vel.vy = 0;
-        if (!physics.onGround) {
-          physics.onGround = true;
-          // Land sound
-          zzfx(...[.02,,150,.01,.04,.08,1,1.5,,6,-50,.01,,,,,,,.04]);
-        }
-      }
-
-      // Horizontal friction when on ground
-      if (physics.onGround && vel.vx !== 0) {
-        // Applied per-frame, not per-dt, matching original Bladefall
-      }
-    }
-
-    // Clamp depth to walkable band
-    if (pos.z < 0) pos.z = 0;
-    if (pos.z > DEPTH) pos.z = DEPTH;
-
-    // Clamp horizontal position (stage bounds — placeholder: 0 to 2000)
-    if (pos.x < 20) pos.x = 20;
-    if (pos.x > 1980) pos.x = 1980;
-  }
-}
-
-/**
- * AnimationSystem — updates animation timers on entities.
- * Phase: 'update'
- */
-function AnimationSystem(entities, ecs, dt) {
-  for (const id of entities) {
-    const anim = ecs.getComponent(id, 'AnimationState');
-    const vel = ecs.getComponent(id, 'Velocity');
-    if (!anim) continue;
-
-    anim.totalTime += dt;
-
-    // Run cycle animation
-    if (vel && Math.abs(vel.vx) > 20) {
-      anim.runAnim += dt * 12; // leg cycle speed
-    } else {
-      // Smoothly return to neutral
-      anim.runAnim *= 0.85;
-    }
-  }
-}
-
-/**
- * CameraSystem — follows the CameraTarget entity.
- * Phase: 'update'
- * 
- * This system updates a global camera offset variable that the
- * RenderSystem uses to translate the world. LittleJS's built-in
- * cameraPos is in world-space tiles; we use our own pixel-based
- * camera for the 2.5D scrolling.
- */
-let cameraX = 0;  // Global camera X offset (pixels)
-
-function CameraSystem(entities, ecs, dt) {
-  for (const id of entities) {
-    const pos = ecs.getComponent(id, 'Position');
-    if (!pos) continue;
-
-    // Smooth camera follow (lerp toward player x, offset left-of-center)
-    const targetCam = pos.x - VW * 0.35;
-    cameraX += (targetCam - cameraX) * 0.08;
-
-    // Clamp camera to stage bounds
-    if (cameraX < 0) cameraX = 0;
-  }
-}
-
-/**
- * DepthRenderSystem — the core 2.5D rendering pipeline.
- * Phase: 'render'
- * 
- * This system:
- *   1. Collects all entities with Position + DepthRenderable
- *   2. Sorts them by z (depth) for painter's algorithm (far → near)
- *   3. For each entity, computes screen position and perspective scale
- *   4. Calls the entity's custom drawFn with a positioned/scaled canvas context
- */
-function DepthRenderSystem(entities, ecs, dt) {
-  const ctx = mainContext;
-
-  // Build sorted draw list
-  const drawList = [];
-  for (const id of entities) {
-    const renderable = ecs.getComponent(id, 'DepthRenderable');
-    if (!renderable || !renderable.visible || !renderable.drawFn) continue;
-
-    const pos = ecs.getComponent(id, 'Position');
-    if (!pos) continue;
-
-    drawList.push({
-      id,
-      z: pos.z + (renderable.sortBias || 0),
-      pos,
-      renderable,
-    });
-  }
-
-  // Sort far-to-near (painter's algorithm)
-  drawList.sort((a, b) => a.z - b.z);
-
-  // Render each entity
-  for (const entry of drawList) {
-    const pos = entry.pos;
-    const scale = scaleAtDepth(pos.z);
-    const screenY = groundY(pos.z);
-    const screenX = pos.x - cameraX;
-
-    ctx.save();
-    ctx.translate(screenX, screenY);
-    ctx.scale(scale, scale);
-
-    // Translate up by jump height
-    ctx.translate(0, -pos.jy);
-
-    // Draw ground shadow at feet level (not affected by jy)
-    const dim = ecs.getComponent(entry.id, 'Dimensions');
-    if (dim) {
-      // Undo jy translation for shadow, then reapply
-      ctx.save();
-      ctx.translate(0, pos.jy); // back to ground level
-      drawShadow(ctx, 2, 15 + Math.max(0, 6 - pos.jy * 0.05));
-      ctx.restore();
-    }
-
-    // Call the entity's custom draw function
-    entry.renderable.drawFn(ctx, entry.id, ecs, scale);
-
-    ctx.restore();
-  }
-}
-
-/**
- * HudSystem — updates the HTML HUD elements from ECS data.
- * Phase: 'renderPost'
- */
-function HudSystem(entities, ecs, dt) {
-  for (const id of entities) {
-    const health = ecs.getComponent(id, 'Health');
-    if (!health) continue;
-
-    // Update HP bar
-    const hpFill = document.getElementById('hpFill');
-    if (hpFill) {
-      hpFill.style.width = Math.max(0, health.hp / health.maxHp * 100) + '%';
-    }
-  }
-}
-
-/**
- * DebugSystem — updates the debug info panel.
- * Phase: 'renderPost'
- */
-function DebugSystem(entities, ecs, dt) {
-  const info = ecs.debugInfo();
-  const playerIds = ecs.query('PlayerTag', 'Position');
-  let playerInfo = 'No player';
-
-  if (playerIds.length > 0) {
-    const pos = ecs.getComponent(playerIds[0], 'Position');
-    const vel = ecs.getComponent(playerIds[0], 'Velocity');
-    const health = ecs.getComponent(playerIds[0], 'Health');
-    playerInfo = `Player #${playerIds[0]}  ` +
-      `x:${Math.round(pos.x)} z:${Math.round(pos.z)} jy:${Math.round(pos.jy)}  ` +
-      `vx:${Math.round(vel?.vx || 0)}  ` +
-      `hp:${Math.round(health?.hp || 0)}/${health?.maxHp || 0}`;
-  }
-
-  const el = document.getElementById('debugInfo');
-  if (el) {
-    el.innerHTML =
-      `BLADEFALL v${VERSION} · ECS · LittleJS<br>` +
-      `Entities: ${info.entities} · Systems: ${info.systems.length}<br>` +
-      `${playerInfo}<br>` +
-      `cam: ${Math.round(cameraX)} · FPS: ${Math.round(1 / dt)}`;
-  }
-}
-
-
-/* ================================================================
-   SECTION 7: WORLD RENDERING (BACKGROUND & ENVIRONMENT)
-   
-   These functions draw the scrolling ground plane, parallax layers,
-   and atmospheric effects. Called directly in the LittleJS gameRender
-   hook BEFORE the ECS DepthRenderSystem runs.
-   ================================================================ */
-
-/**
- * Draw the sky gradient background.
- */
-function drawSky(ctx) {
-  const skyGrad = ctx.createLinearGradient(0, 0, 0, VH);
-  skyGrad.addColorStop(0, '#1a2233');
-  skyGrad.addColorStop(1, '#070809');
-  ctx.fillStyle = skyGrad;
-  ctx.fillRect(0, 0, VW, VH);
-}
-
-/**
- * Draw parallax mountain/structure silhouettes behind the ground.
- */
-function drawParallax(ctx) {
-  // Far mountains (slow parallax)
-  ctx.fillStyle = 'rgba(255,255,255,0.045)';
-  for (let i = 0; i < 14; i++) {
-    const px = (i * 260) - (cameraX * 0.4) % (14 * 260);
-    const h = 90 + (i % 3) * 30;
-    const w = 70;
-    ctx.beginPath();
-    ctx.moveTo(px, GROUND_FAR);
-    ctx.lineTo(px + w * 0.45, GROUND_FAR - h);
-    ctx.lineTo(px + w, GROUND_FAR);
-    ctx.closePath();
-    ctx.fill();
-  }
-
-  // Mid-ground structures (medium parallax)
-  ctx.fillStyle = 'rgba(0,0,0,0.20)';
-  for (let i = 0; i < 22; i++) {
-    const px = (i * 180) - (cameraX * 0.65) % (22 * 180);
-    ctx.fillRect(px, GROUND_FAR - 130, 24, 130);
-  }
-}
-
-/**
- * Draw the walkable ground plane with depth guide lines.
- */
-function drawGround(ctx) {
-  const stageLen = 2000; // placeholder stage length
-
-  ctx.save();
-  ctx.translate(-cameraX, 0);
-
-  // Ground fill with depth gradient
-  const groundGrad = ctx.createLinearGradient(0, GROUND_FAR, 0, VH);
-  groundGrad.addColorStop(0, lerpColor('#2a3340', '#000', 0.35));
-  groundGrad.addColorStop(0.5, '#2a3340');
-  groundGrad.addColorStop(1, lerpColor('#2a3340', '#000', 0.12));
-  ctx.fillStyle = groundGrad;
-  ctx.fillRect(0, GROUND_FAR, stageLen, VH - GROUND_FAR + 40);
-
-  // Horizon edge highlight
-  ctx.fillStyle = 'rgba(255,255,255,0.09)';
-  ctx.fillRect(0, GROUND_FAR, stageLen, 3);
-
-  // Depth guide lines across the band
-  ctx.fillStyle = 'rgba(0,0,0,0.12)';
-  for (let k = 1; k < 4; k++) {
-    ctx.fillRect(0, groundY(k * DEPTH / 4), stageLen, 1.5);
-  }
-
-  // Ground texture ticks
-  ctx.fillStyle = 'rgba(0,0,0,0.16)';
-  const startTick = Math.floor(cameraX / 46) * 46;
-  for (let x = startTick; x < cameraX + VW + 46; x += 46) {
-    ctx.fillRect(x, groundY(DEPTH * 0.2), 2, 7);
-    ctx.fillRect(x + 20, groundY(DEPTH * 0.72), 3, 10);
-  }
-
-  ctx.restore();
-}
-
-/**
- * Draw the stage banner overlay (shown at stage start).
- */
-let stageBannerTimer = 2.6;
-
-function drawStageBanner(ctx, dt) {
-  if (stageBannerTimer <= 0) return;
-  stageBannerTimer -= dt;
-
-  const alpha = Math.min(1, stageBannerTimer) * Math.min(1, (2.6 - stageBannerTimer) * 3);
-  ctx.save();
-  ctx.globalAlpha = Math.max(0, alpha);
-  ctx.textAlign = 'center';
-  ctx.fillStyle = '#fff';
-  ctx.font = '900 26px -apple-system, sans-serif';
-  ctx.fillText('THE OUTSKIRTS', VW / 2, VH * 0.34);
-  ctx.fillStyle = '#e8a33d';
-  ctx.font = '800 12px -apple-system, sans-serif';
-  ctx.fillText('STAGE 1 / 14', VW / 2, VH * 0.34 + 22);
-  ctx.restore();
-}
-
-
-/* ================================================================
-   SECTION 8: ZzFX SOUND DEFINITIONS
-   
-   Procedural sound effects using LittleJS's built-in ZzFX engine.
-   Each sound is defined as a parameter array — no audio files needed.
-   
-   Use https://zzfx.3d2k.com/ to design new sounds.
-   ================================================================ */
-
-// Sound definitions (will be expanded in future steps)
-const SFX = {
-  // Played in MovementSystem on jump
-  jump:  [.03,,230,.01,.08,.13,1,.5,,,,,,,,,,.8,.04],
-  // Played in PhysicsSystem on land
-  land:  [.02,,150,.01,.04,.08,1,1.5,,6,-50,.01,,,,,,,.04],
-  // Placeholder attack sound
-  slash: [.04,,400,.01,.02,.08,2,2.5,,3,,,,,,,,.6,.02],
+const SFX={
+  slash(){zzfx(...[.04,,400,.01,.02,.08,2,2.5,,3,,,,,,,,.6,.02]);},
+  shoot(){zzfx(...[.03,,1500,.01,.03,.04,1,.8,,-3,,,,,,,,,.03]);},
+  hit(){zzfx(...[.05,,190,.01,.06,.12,1,1.2,,6,-50,.01,,,,,,,.04]);},
+  hurt(){zzfx(...[.06,,310,.02,.1,.2,3,.8,,,-100,.02,,,,,,,.06]);},
+  jump(){zzfx(...[.03,,230,.01,.08,.13,1,.5,,,,,,,,,,.8,.04]);},
+  land(){zzfx(...[.02,,150,.01,.04,.08,1,1.5,,6,-50,.01,,,,,,,.04]);},
+  dodge(){zzfx(...[.03,,900,.01,.08,.17,1,1.1,,,,,,,,,,,.05]);},
+  enemyDie(){zzfx(...[.05,,250,.02,.18,.34,3,.8,,,-50,.03,,,,,,,.04]);},
+  levelup(){zzfx(...[.04,,523,.01,.08,.16,1,.5,,,,,,,,,,.8,.04]);setTimeout(()=>zzfx(...[.04,,659,.01,.08,.16,1,.5,,,,,,,,,,.8,.04]),85);setTimeout(()=>zzfx(...[.04,,784,.01,.08,.14,1,.5,,,,,,,,,,.8,.04]),170);},
+  pickup(){zzfx(...[.03,,660,.01,.05,.1,1,.5,,,,,,,,,,.8,.03]);setTimeout(()=>zzfx(...[.03,,990,.01,.07,.16,1,.5,,,,,,,,,,.8,.03]),70);},
+  boss(){zzfx(...[.08,,105,.03,.4,.85,3,1.1,,,-18,.03,,,,,,,.06]);},
+  win(){zzfx(...[.04,,523,.01,.1,.2,1,.5,,,,,,,,,,.8,.04]);setTimeout(()=>zzfx(...[.04,,659,.01,.1,.2,1,.5,,,,,,,,,,.8,.04]),115);setTimeout(()=>zzfx(...[.04,,784,.01,.1,.2,1,.5,,,,,,,,,,.8,.04]),230);setTimeout(()=>zzfx(...[.04,,1047,.01,.12,.2,1,.5,,,,,,,,,,.8,.04]),345);},
+  magic(el){zzfx(...[.04,,520,.02,.1,.2,1,.8,,,,,,,,,,,.04]);}
 };
 
+/* ================================================================
+   SECTION 6: DRAWING UTILITIES
+   ================================================================ */
+function tint(a,b,t){const pa=hx(a),pb=hx(b);return'rgb('+Math.round(pa[0]+(pb[0]-pa[0])*t)+','+Math.round(pa[1]+(pb[1]-pa[1])*t)+','+Math.round(pa[2]+(pb[2]-pa[2])*t)+')';}
+function hx(c){c=c.replace('#','');if(c.length===3)c=c.split('').map(x=>x+x).join('');return[parseInt(c.substr(0,2),16),parseInt(c.substr(2,2),16),parseInt(c.substr(4,2),16)];}
+function rr(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath();}
+function shadow(c,cy,w){c.save();c.globalAlpha=0.28;c.fillStyle='#000';c.beginPath();c.ellipse(0,cy,w,w*0.28,0,0,6.28);c.fill();c.restore();}
+function lineC(c,a,b,cc,d){c.beginPath();c.moveTo(a,b);c.lineTo(cc,d);c.stroke();}
+function triC(c,x1,y1,x2,y2,x3,y3){c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.lineTo(x3,y3);c.closePath();c.fill();}
+function eyes(c,cx,cy,dark,glow){c.fillStyle=glow||'#fff';c.beginPath();c.arc(cx-6,cy,3.4,0,6.28);c.arc(cx+6,cy,3.4,0,6.28);c.fill();c.fillStyle=dark||'#000';c.beginPath();c.arc(cx-5,cy,1.6,0,6.28);c.arc(cx+7,cy,1.6,0,6.28);c.fill();}
+
+/* Weapon art */
+function drawWeaponArt(c,w){
+  const mag=w.sch==='mag',blade=w.blade||(mag?(elColor(w.el)||'#c9a6ff'):'#dfe5ec'),hilt='#6b5430';
+  c.save();c.shadowColor=w.color||'#fff';c.shadowBlur=rarGlow(w.rarity);c.lineCap='round';c.lineJoin='round';
+  switch(w.art){
+    case'sword':c.strokeStyle=blade;c.lineWidth=5;lineC(c,0,0,28,0);c.strokeStyle='#9a8550';c.lineWidth=3;lineC(c,2,-5,2,5);break;
+    case'dagger':c.strokeStyle=blade;c.lineWidth=4;lineC(c,0,0,16,0);break;
+    case'spear':c.strokeStyle=hilt;c.lineWidth=3;lineC(c,0,0,30,0);c.fillStyle=blade;triC(c,30,-4,42,0,30,4);break;
+    case'axe':c.strokeStyle=hilt;c.lineWidth=4;lineC(c,0,0,20,0);c.fillStyle=blade;c.beginPath();c.moveTo(18,-2);c.quadraticCurveTo(32,-12,34,0);c.quadraticCurveTo(32,12,18,2);c.closePath();c.fill();break;
+    case'great':c.strokeStyle=blade;c.lineWidth=8;lineC(c,0,0,34,0);c.strokeStyle='#9a8550';c.lineWidth=3;lineC(c,2,-7,2,7);break;
+    case'hammer':c.strokeStyle=hilt;c.lineWidth=4;lineC(c,0,0,22,0);c.fillStyle=blade;c.fillRect(18,-8,12,16);break;
+    case'scythe':c.strokeStyle=hilt;c.lineWidth=3;lineC(c,0,0,30,0);c.strokeStyle=blade;c.lineWidth=5;c.beginPath();c.arc(30,-6,12,-0.2,1.9);c.stroke();break;
+    case'bow':c.strokeStyle=blade;c.lineWidth=3;c.beginPath();c.arc(4,0,14,-1.3,1.3);c.stroke();c.strokeStyle='#eee';c.lineWidth=1;lineC(c,4+14*Math.cos(-1.3),14*Math.sin(-1.3),4+14*Math.cos(1.3),14*Math.sin(1.3));break;
+    case'cross':c.strokeStyle=hilt;c.lineWidth=4;lineC(c,0,0,18,0);c.strokeStyle=blade;c.lineWidth=3;lineC(c,12,-9,12,9);break;
+    default:{const len=w.art==='wand'?16:28;c.strokeStyle=hilt;c.lineWidth=3;lineC(c,0,0,len,0);c.fillStyle=blade;c.beginPath();c.arc(len,0,w.art==='wand'?4:6,0,6.28);c.fill();break;}
+  }
+  c.restore();c.shadowBlur=0;
+}
 
 /* ================================================================
-   SECTION 9: LITTLEJS ↔ ECS INTEGRATION
-   
-   This is the bridge between LittleJS's lifecycle and our ECS.
-   LittleJS calls these functions every frame at 60fps:
-   
-     gameInit()       → Create the ECS world, register systems, spawn entities
-     gameUpdate()     → Run ECS 'update' phase systems
-     gameUpdatePost() → Flush ECS destroy queue, update camera
-     gameRender()     → Draw world background, run ECS 'render' phase systems
-     gameRenderPost() → Run ECS 'renderPost' phase systems (HUD, debug)
+   SECTION 7: ENTITY RENDERERS
    ================================================================ */
-
-/** The single global ECS instance */
-let world;
-
-/** The player entity ID (cached for quick access) */
-let playerEntity;
-
-/**
- * gameInit — called once when LittleJS starts.
- * Sets up the ECS world, registers all systems, and spawns the player.
- */
-function gameInit() {
-  // ── Configure LittleJS ──
-  // Disable WebGL (we're doing all rendering via Canvas2D procedurally)
-  // Note: glEnable must be set before engineInit, which we do below
-  
-  // ── Create the ECS world ──
-  world = new EntityManager();
-
-  // ── Register Systems (order matters within each phase!) ──
-
-  // Update-phase systems (game logic)
-  world.registerSystem('InputSystem',     ['InputReceiver'],                          InputSystem,     'update');
-  world.registerSystem('MovementSystem',  ['InputReceiver', 'Velocity', 'Facing'],    MovementSystem,  'update');
-  world.registerSystem('PhysicsSystem',   ['Position', 'Velocity'],                   PhysicsSystem,   'update');
-  world.registerSystem('AnimationSystem', ['AnimationState'],                          AnimationSystem, 'update');
-  world.registerSystem('CameraSystem',    ['CameraTarget', 'Position'],               CameraSystem,    'update');
-
-  // Render-phase systems (world-space drawing)
-  world.registerSystem('DepthRenderSystem', ['Position', 'DepthRenderable'],           DepthRenderSystem, 'render');
-
-  // RenderPost-phase systems (HUD / overlays / debug)
-  world.registerSystem('HudSystem',   ['PlayerTag', 'Health'],                         HudSystem,   'renderPost');
-  world.registerSystem('DebugSystem', ['PlayerTag'],                                   DebugSystem, 'renderPost');
-
-  // ── Spawn Player Entity ──
-  playerEntity = world.createEntity();
-  world.addComponent(playerEntity, 'Position',        Components.Position(120, DEPTH * 0.55, 0));
-  world.addComponent(playerEntity, 'Velocity',        Components.Velocity());
-  world.addComponent(playerEntity, 'Dimensions',      Components.Dimensions(26, 44));
-  world.addComponent(playerEntity, 'PhysicsBody',     Components.PhysicsBody(1400, 0.85));
-  world.addComponent(playerEntity, 'Facing',          Components.Facing(1));
-  world.addComponent(playerEntity, 'AnimationState',  Components.AnimationState());
-  world.addComponent(playerEntity, 'Health',          Components.Health(100, 100));
-  world.addComponent(playerEntity, 'PlayerTag',       Components.PlayerTag());
-  world.addComponent(playerEntity, 'InputReceiver',   Components.InputReceiver());
-  world.addComponent(playerEntity, 'CameraTarget',    Components.CameraTarget());
-  world.addComponent(playerEntity, 'DepthRenderable', Components.DepthRenderable(drawPlayer, true, 0));
-
-  console.log('[BLADEFALL] ECS initialized.', world.debugInfo());
+/* Draw Player (Knight) */
+function drawHero(c,p){
+  const t=G.time,moving=Math.abs(p.vx)>20&&p.onGround;
+  const legA=Math.sin(p.runAnim||0)*(moving?7:0);
+  const bob=moving?Math.sin((p.runAnim||0)*2)*1.0:Math.sin(t*2)*0.6;
+  const A='#3f566f',AL='#5d7da0',TR='#cfe0ef',CAPE='#28384e',MET='#aeb9c6',GL='#9fc4ff',TONE='#f1d9c2';
+  const hurt=p.hurtFlash>0;
+  c.save();
+  if(p.invuln>0&&Math.floor(p.invuln*20)%2===0)c.globalAlpha=0.45;
+  if(p.dodgeTimer>0)c.globalAlpha=0.6;
+  c.scale(p.face,1);
+  // Cape
+  const sway=Math.sin(t*4)*3+(moving?6:0)-(p.vx||0)*0.02;
+  c.save();c.translate(-5,-30+bob);c.fillStyle=hurt?'#5a2020':CAPE;
+  c.beginPath();c.moveTo(2,-6);c.quadraticCurveTo(-13-sway,8,-10-sway,24);c.lineTo(-1,22);c.quadraticCurveTo(-3,4,5,-2);c.closePath();c.fill();c.restore();
+  // Legs
+  c.fillStyle='#1c2530';rr(c,-8,-14,7,14+legA,2);c.fill();rr(c,2,-14,7,14-legA,2);c.fill();
+  c.fillStyle=MET;c.fillRect(-8,-3,7,3);c.fillRect(2,-3,7,3);
+  c.save();c.translate(0,bob);
+  // Body
+  c.fillStyle=hurt?'#8a3030':A;rr(c,-10,-35,20,24,4);c.fill();
+  c.fillStyle=hurt?'#b04040':AL;rr(c,-8,-34,16,11,3);c.fill();
+  c.fillStyle=GL;c.globalAlpha=0.9;c.fillRect(-1.5,-33,3,17);c.globalAlpha=1;
+  c.fillStyle=TR;c.fillRect(-10,-18,20,2.5);
+  c.fillStyle=AL;c.beginPath();c.arc(-9,-33,5,0,6.28);c.fill();c.beginPath();c.arc(9,-33,5,0,6.28);c.fill();
+  c.fillStyle=TR;c.beginPath();c.arc(-9,-33,2,0,6.28);c.fill();c.beginPath();c.arc(9,-33,2,0,6.28);c.fill();
+  // Head
+  c.fillStyle=TONE;rr(c,-6,-47,12,12,3);c.fill();
+  c.fillStyle=hurt?'#8a3030':A;c.beginPath();c.moveTo(-7,-46);c.lineTo(7,-46);c.lineTo(7,-40);c.lineTo(3,-40);c.lineTo(3,-43);c.lineTo(-3,-43);c.lineTo(-3,-40);c.lineTo(-7,-40);c.closePath();c.fill();
+  c.fillStyle=AL;c.fillRect(-7,-49,14,4);
+  c.fillStyle=GL;c.fillRect(-3.2,-42,2.6,2);c.fillRect(1,-42,2.6,2);
+  c.fillStyle=GL;c.beginPath();c.moveTo(0,-53);c.quadraticCurveTo(9,-53,6,-44);c.quadraticCurveTo(2,-48,-0.5,-49);c.closePath();c.fill();
+  c.restore();
+  // Arm + Weapon
+  const w=p.weapon;
+  c.save();c.translate(6,-30+bob);
+  let ang;if(w.cls==='melee'){const swp=p.atkTimer>0?(1-(p.atkTimer/0.26)):0;ang=p.atkTimer>0?(-1.2+swp*2.5):-0.45+Math.sin(t*2)*0.05;}
+  else{const rec=p.atkTimer>0?(p.atkTimer/0.18):0;ang=-0.1+rec*0.5;}
+  c.rotate(ang);c.strokeStyle=AL;c.lineWidth=5;c.lineCap='round';lineC(c,-2,0,8,2);
+  c.translate(8,2);drawWeaponArt(c,w);
+  if(w.cls==='ranged'&&p.atkTimer>0){c.globalAlpha=0.8*(p.atkTimer/0.18);c.fillStyle=elColor(w.el)||'#fff';c.beginPath();c.arc(6,0,5,0,6.28);c.fill();c.globalAlpha=1;}
+  c.restore();
+  // Melee arc effect
+  if(w.cls==='melee'&&p.atkTimer>0){const swp=1-(p.atkTimer/0.26);if(swp<0.7){c.save();c.translate(6,-30+bob);c.globalAlpha=0.22*(1-swp);c.strokeStyle='#fff';c.lineWidth=5;c.beginPath();c.arc(0,0,(w.range||50)*0.7,-1.2,1.2);c.stroke();c.restore();c.globalAlpha=1;}}
+  c.restore();
 }
 
-/**
- * gameUpdate — called every frame (60fps) before physics/objects.
- * This is where all game logic runs via the ECS update phase.
- */
-function gameUpdate() {
-  // LittleJS provides a fixed timestep; we use 1/60
-  const dt = 1 / 60;
-
-  // Run all ECS update-phase systems
-  world.runSystems('update', dt);
+/* Draw Grunt */
+function drawGrunt(c,e,col){
+  c.fillStyle=col;rr(c,-e.w/2,-e.h,e.w,e.h,8);c.fill();
+  c.fillStyle='rgba(255,255,255,0.08)';rr(c,-e.w/2,-e.h,e.w,e.h*0.4,8);c.fill();
+  c.fillStyle='rgba(0,0,0,0.16)';c.fillRect(-e.w/2,-e.h*0.34,e.w,3);
+  c.fillStyle=tint(col,'#000',0.35);triC(c,-e.w/2+4,-e.h,-e.w/2-2,-e.h-9,-e.w/2+11,-e.h+1);triC(c,e.w/2-4,-e.h,e.w/2+2,-e.h-9,e.w/2-11,-e.h+1);
+  const eg=e.element?elColor(e.element):'#eaffd0';eyes(c,0,-e.h*0.62,'#143a10',eg);
+  c.fillStyle='#fff';triC(c,-3,-e.h*0.4,-1,-e.h*0.4,-2,-e.h*0.4+4);triC(c,3,-e.h*0.4,1,-e.h*0.4,2,-e.h*0.4+4);
 }
 
-/**
- * gameUpdatePost — called after physics/objects.
- * Used for cleanup and deferred operations.
- */
-function gameUpdatePost() {
-  // Flush any entities marked for destruction
-  world.flushDestroyQueue();
+/* Draw Flyer */
+function drawFlyer(c,e,col){
+  const flap=Math.sin(e.bob*2)*7;
+  c.fillStyle=tint(col,'#000',0.2);
+  c.beginPath();c.moveTo(-2,-e.h/2);c.quadraticCurveTo(-e.w*0.8,-e.h/2-flap,-e.w*0.55,-e.h/2+8);c.quadraticCurveTo(-e.w*0.5,-e.h/2,-2,-e.h/2+3);c.fill();
+  c.beginPath();c.moveTo(2,-e.h/2);c.quadraticCurveTo(e.w*0.8,-e.h/2-flap,e.w*0.55,-e.h/2+8);c.quadraticCurveTo(e.w*0.5,-e.h/2,2,-e.h/2+3);c.fill();
+  c.fillStyle=col;c.beginPath();c.ellipse(0,-e.h/2,e.w*0.32,e.h*0.5,0,0,6.28);c.fill();
+  const eg=e.element?elColor(e.element):'#ffd0ff';eyes(c,0,-e.h*0.55,'#220022',eg);
+  c.fillStyle=col;triC(c,-2,-2,2,-2,0,6);
 }
 
-/**
- * gameRender — called before objects are rendered.
- * Draws world background (sky, parallax, ground), then runs ECS render systems.
- */
-function gameRender() {
-  // Get the main 2D context (LittleJS exposes this globally)
-  const ctx = mainContext;
-
-  // Update viewport measurements
-  recalcViewport();
-
-  // Clear and draw world background
-  drawSky(ctx);
-  drawParallax(ctx);
-  drawGround(ctx);
-
-  // Run ECS render-phase systems (DepthRenderSystem draws entities)
-  world.runSystems('render', 1 / 60);
-
-  // Stage banner overlay
-  drawStageBanner(ctx, 1 / 60);
+/* Draw Boss */
+function drawBoss(c,e,col){
+  const t=G.time,H=e.h,W=e.w,en=e.lunge>0||e.phase>=2;
+  c.save();c.globalAlpha=0.2+0.07*Math.sin(t*5);c.fillStyle=col;c.beginPath();c.ellipse(0,-H*0.5,W*0.8,H*0.66,0,0,6.28);c.fill();c.restore();
+  c.fillStyle=col;rr(c,-W/2,-H,W,H,10);c.fill();
+  c.fillStyle='rgba(255,255,255,0.10)';rr(c,-W/2,-H,W,H*0.42,10);c.fill();
+  c.fillStyle=tint(col,'#000',0.3);c.fillRect(-W/2,-H*0.52,W,3);c.fillRect(-W/2,-H*0.26,W,2);
+  c.fillStyle=tint(col,'#000',0.22);c.fillRect(-2,-H,4,H);
+  c.fillStyle=tint(col,'#fff',0.18);rr(c,-W/2-5,-H*0.92,12,H*0.3,4);c.fill();rr(c,W/2-7,-H*0.92,12,H*0.3,4);c.fill();
+  const eyeGlow=en?'#ff3b3b':(e.shot?(e.shot.color||'#ff9a3b'):'#ff9a3b');
+  if(e.type==='king'){c.fillStyle='#f7d79a';for(let i=-2;i<=2;i++){c.beginPath();c.moveTo(i*12,-H);c.lineTo(i*12+5,-H-20);c.lineTo(i*12+10,-H);c.closePath();c.fill();}}
+  else if(e.type==='tyrant'){c.fillStyle='#fff';for(let i=0;i<10;i++){c.globalAlpha=0.3+0.5*Math.abs(Math.sin(t*2+i));c.fillRect(-W/2+6+(i*97%(W-12)),-H+8+(i*53%(H-16)),1.6,1.6);}c.globalAlpha=1;}
+  eyes(c,0,-H*0.74,'#400',eyeGlow);
 }
-
-/**
- * gameRenderPost — called after objects are rendered.
- * Draws HUD, overlays, and debug info via ECS renderPost systems.
- */
-function gameRenderPost() {
-  world.runSystems('renderPost', 1 / 60);
-}
-
 
 /* ================================================================
-   SECTION 10: ENGINE BOOTSTRAP
-   
-   Start the LittleJS engine with our lifecycle hooks.
-   LittleJS handles: requestAnimationFrame loop, canvas creation,
-   input polling, and ZzFX audio context initialization.
+   SECTION 8: CORE GAME LOGIC
    ================================================================ */
+function freshPlayer(){
+  return{x:80,z:DEPTH*0.55,jy:0,w:26,h:44,vx:0,vz:0,vy:0,face:1,onGround:true,jumps:0,maxJumps:1,
+    hp:100,maxHp:100,level:1,xp:0,xpNext:46,weapon:startWeapon(),gear:freshGear(),armorMods:null,
+    stats:{power:1.0,speed:1.0,atkSpeed:1.0,lifesteal:0,dodgeCd:0.75},
+    atkTimer:0,atkCd:0,swingId:0,dodgeTimer:0,dodgeCdT:0,dashX:1,dashZ:0,invuln:0,hurtFlash:0,runAnim:0,dead:false};
+}
 
-// Disable WebGL — we do all rendering via Canvas2D procedurally
-glEnable = false;
+function beginRun(ngPlus,carrySnap,scales){
+  queueLevelUp=0;
+  const p=carrySnap?freshFromSnapshot(carrySnap):freshPlayer();
+  recomputeArmor(p);
+  if(!scales)scales=carrySnap?computeNgScales(p):{hp:1,dmg:1};
+  G={p,stageIndex:0,enemies:[],particles:[],texts:[],pickups:[],projectiles:[],cam:0,shake:0,
+     ngPlus:ngPlus||0,ngHp:scales.hp,ngDmg:scales.dmg,baseLoadout:snapOf(p),portal:null,stageBanner:0,
+     killGoal:0,kills:0,boss:null,time:0,tookDamage:false,combo:0,comboT:0};
+  if((ngPlus||0)>0)meta.ngPlus=Math.max(meta.ngPlus,ngPlus);
+  meta.lastNgHp=scales.hp;meta.lastNgDmg=scales.dmg;persist();
+  loadStage(0);mode='play';showOverlay(false);showGameUI(true);hudUpdate();
+}
+function freshFromSnapshot(snap){
+  const p=freshPlayer();p.stats=Object.assign(p.stats,snap.stats);
+  p.weapon=snap.weapon?JSON.parse(JSON.stringify(snap.weapon)):startWeapon();
+  p.gear=cloneGear(snap.gear);p.maxHp=snap.maxHp||100;p.maxJumps=snap.maxJumps||1;p.level=snap.level||1;
+  p.xp=0;p.xpNext=Math.round(46+p.level*34+p.level*p.level*2);
+  recomputeArmor(p);p.hp=effMaxHp(p);return p;
+}
+function computeNgScales(p){
+  const off=Math.pow(Math.max(1,(p.weapon.dmg*effPower(p)*effAtkSpeed(p)/Math.max(.14,p.weapon.cd))/(9/.4)),0.85);
+  const tuf=Math.pow(Math.max(1,(effMaxHp(p)/100)/(1-defenseR(p))),0.85);
+  return{hp:Math.min(500,Math.max(off*1.05,(meta.lastNgHp||1)*1.08)),dmg:Math.min(500,Math.max(tuf*1.05,(meta.lastNgDmg||1)*1.08))};
+}
+function showGameUI(v){['hud','controls','pausebtn'].forEach(id=>document.getElementById(id).classList.toggle('hide',!v));}
 
-// Disable the LittleJS tile system (we don't use sprite sheets)
-// We pass no image sources to engineInit.
+/* Stage loading */
+function loadStage(i){
+  const s=STAGES[i];G.stageIndex=i;
+  G.enemies=[];G.pickups=[];G.projectiles=[];G.portal=null;G.boss=null;
+  G.kills=0;G.killGoal=0;G.cam=0;G.tookDamage=false;G.combo=0;G.comboT=0;
+  G.p.x=70;G.p.z=DEPTH*0.55;G.p.jy=0;G.p.vx=0;G.p.vz=0;G.p.vy=0;G.p.onGround=true;
+  G.stageBanner=2.6;document.getElementById('bosshpwrap').classList.remove('on');
+  const place=(type,count)=>{for(let k=0;k<count;k++){spawnEnemy(type,360+Math.random()*(s.len-520));G.killGoal++;}};
+  place('grunt',s.grunts||0);place('flyer',s.flyers||0);
+  if(s.mix)for(const t in s.mix)place(t,s.mix[t]);
+  if(s.type==='miniboss'||s.type==='boss'){spawnEnemy(s.boss,s.len-220,true);G.killGoal++;}
+  document.getElementById('stageTag').textContent=s.name;hudUpdate();
+}
+function spawnEnemy(type,x,isBoss){
+  const a=EARCH[type],hpScale=G.ngHp*(1+G.stageIndex*0.10);
+  const e={type,kind:a.kind,element:a.element||null,x,z:isBoss?DEPTH*0.5:10+Math.random()*(DEPTH-20),
+    jy:a.kind==='fly'?40+Math.random()*50:0,
+    w:a.w,h:a.h,vx:0,vy:0,face:-1,hp:Math.round(a.hp*hpScale),maxHp:Math.round(a.hp*hpScale),
+    dmg:a.dmg*G.ngDmg,speed:a.speed,color:a.color,xp:a.xp,boss:!!a.boss,label:a.label||'',
+    ranged:!!a.ranged,kite:!!a.kite,shot:a.shot?Object.assign({},a.shot):null,shootCd:a.shootCd||2.2,shootT:1.0,
+    hitFlash:0,lastHit:-1,active:false,dead:false,bob:Math.random()*6.28,
+    atkTimer:0,lunge:0,phase:1,summonT:4,hurtKb:0};
+  if(e.boss)G.boss=e;
+  G.enemies.push(e);return e;
+}
 
-// Tell LittleJS not to show its default loading screen text
-showSplashScreen = false;
+/* Combat */
+function hurtPlayer(dmg,dir){
+  const p=G.p;if(p.invuln>0||p.dodgeTimer>0||p.dead)return;
+  const actual=dmg*(1-defenseR(p));
+  p.hp-=actual;p.hurtFlash=0.18;p.invuln=0.5;
+  p.vx=dir*260;p.vy=-120;
+  G.shake=Math.min(G.shake+6,12);G.tookDamage=true;
+  if(meta.soundOn)SFX.hurt();
+  if(p.hp<=0){p.hp=0;p.dead=true;die();}
+}
+function hitEnemy(e,dmg,dir,kb,ls,el){
+  if(e.dead)return;
+  const mod=elemMod(el,e.element);
+  const actual=dmg*mod;e.hp-=actual;e.hitFlash=0.12;
+  e.vx=dir*(kb||150);e.hurtKb=0.15;
+  if(ls>0){const heal=actual*ls;G.p.hp=Math.min(G.p.hp+heal,effMaxHp(G.p));}
+  G.shake=Math.min(G.shake+3,10);G.combo++;G.comboT=2;
+  if(meta.soundOn)SFX.hit();
+  addText(e.x,gy(e.z)-e.jy-e.h-10,Math.round(actual).toString(),mod>1?'#ff6':mod<1?'#88f':'#fff',false);
+  if(e.hp<=0){killEnemy(e);}
+}
+function killEnemy(e){
+  e.dead=true;meta.totalKills++;G.kills++;
+  if(e.boss){meta.bossKills++;if(e.type==='king')meta.kingKills++;if(e.type==='tyrant')meta.tyrantKills++;
+    if(G.p.weapon.sch==='mag')meta.magicBossKills++;if(G.p.weapon.cls==='ranged')meta.rangedBossKills++;}
+  if(meta.soundOn)SFX.enemyDie();
+  // XP
+  const xpGain=e.xp;G.p.xp+=xpGain;addText(e.x,gy(e.z)-e.jy-e.h-26,'+'+xpGain+' XP','#3a9dd0',false);
+  while(G.p.xp>=G.p.xpNext){G.p.xp-=G.p.xpNext;G.p.level++;G.p.xpNext=Math.round(46+G.p.level*34+G.p.level*G.p.level*2);
+    meta.maxLevel=Math.max(meta.maxLevel,G.p.level);queueLevelUp++;if(meta.soundOn)SFX.levelup();}
+  // Particles
+  for(let i=0;i<12;i++){G.particles.push({x:e.x,y:gy(e.z)-e.jy-e.h*0.5,vx:(Math.random()-0.5)*260,vy:-Math.random()*300,sz:3+Math.random()*4,color:e.color,life:0.6+Math.random()*0.3});}
+  // Loot drop
+  rollDrop(e);
+  // Portal check
+  if(G.kills>=G.killGoal&&!G.portal){G.portal={x:G.p.x+200,t:0};if(meta.soundOn)SFX.pickup();}
+  // Boss bar
+  if(e.boss)document.getElementById('bosshpwrap').classList.remove('on');
+  persist();
+}
+function rollDrop(e){
+  const dropChance=e.boss?1.0:0.16+G.stageIndex*0.01;
+  if(Math.random()>dropChance)return;
+  const rid=rollRarity();if(rid==='legendary'){meta.legendaryFound++;}
+  if(Math.random()<0.45){// weapon
+    const pool=ARCHIDS.filter(a=>a!=='sword');
+    const aid=pool[Math.floor(Math.random()*pool.length)];
+    G.pickups.push({x:e.x,z:e.z,weapon:makeWeapon(aid,rid),bob:0});
+  }else{// armor
+    const slot=SLOTIDS[Math.floor(Math.random()*3)];
+    G.pickups.push({x:e.x,z:e.z,armor:makeArmor(rid,slot),bob:0});
+  }
+}
 
-// Initialize the LittleJS engine
-// Parameters: gameInit, gameUpdate, gameUpdatePost, gameRender, gameRenderPost, imageSources, rootElement
-engineInit(
-  gameInit,
-  gameUpdate,
-  gameUpdatePost,
-  gameRender,
-  gameRenderPost,
-  [],                                          // No image sources (all procedural)
-  document.getElementById('gameContainer')     // Root element for canvas injection
-);
+/* Floating text & particles */
+function addText(x,y,txt,color,big){G.texts.push({x,y,txt,color,big:!!big,vy:-40,life:1.2});}
 
 /* ================================================================
-   Debug Hook — expose ECS internals for headless testing.
-   Compatible with the original Bladefall's window.__BF interface.
+   SECTION 9: UPDATE LOOP
    ================================================================ */
-window.__BF = {
-  get world() { return world; },
-  get playerEntity() { return playerEntity; },
-  get version() { return VERSION; },
-  Components,
-  DEPTH,
-  groundY,
-  scaleAtDepth,
-  get cameraX() { return cameraX; },
-  snap() {
-    if (!world || !playerEntity) return { error: 'not initialized' };
-    const pos = world.getComponent(playerEntity, 'Position');
-    const vel = world.getComponent(playerEntity, 'Velocity');
-    const health = world.getComponent(playerEntity, 'Health');
-    const info = world.debugInfo();
-    return {
-      version: VERSION,
-      entities: info.entities,
-      systems: info.systems,
-      player: {
-        x: Math.round(pos?.x || 0),
-        z: Math.round(pos?.z || 0),
-        jy: Math.round(pos?.jy || 0),
-        vx: Math.round(vel?.vx || 0),
-        hp: health?.hp,
-        maxHp: health?.maxHp,
-      },
-      cam: Math.round(cameraX),
-    };
-  },
-};
+function update(dt){
+  if(mode!=='play'||!G)return;
+  G.time+=dt;G.shake*=0.88;if(G.stageBanner>0)G.stageBanner-=dt;
+  if(G.comboT>0){G.comboT-=dt;if(G.comboT<=0)G.combo=0;}
 
+  const p=G.p,s=STAGES[G.stageIndex];
+  // Keyboard input
+  if(keyIsDown('ArrowLeft')||keyIsDown('KeyA'))input.left=true;else input.left=false;
+  if(keyIsDown('ArrowRight')||keyIsDown('KeyD'))input.right=true;else input.right=false;
+  if(keyIsDown('ArrowUp')||keyIsDown('KeyW'))input.up=true;else input.up=false;
+  if(keyIsDown('ArrowDown')||keyIsDown('KeyS'))input.down=true;else input.down=false;
+  if(keyIsDown('KeyJ')||meta.autoAttack)input.attack=true;// attack hold
+  if(keyWasPressed('Space')||keyWasPressed('ArrowUp')||keyWasPressed('KeyW'))input.jumpEdge=true;
+  if(keyWasPressed('KeyK')||keyWasPressed('ShiftLeft'))input.dodgeEdge=true;
+  if(keyWasPressed('Escape'))openPause();
+
+  const mx=moveX(),mz=moveZ();
+  const spd=200*effSpeed(p);
+
+  // Dodge
+  if(p.dodgeCdT>0)p.dodgeCdT-=dt;
+  if(input.dodgeEdge&&p.dodgeCdT<=0&&p.dodgeTimer<=0){
+    p.dodgeTimer=0.22;p.dodgeCdT=effDodgeCd(p);
+    p.dashX=mx||p.face;p.dashZ=mz;
+    if(meta.soundOn)SFX.dodge();
+  }
+  input.dodgeEdge=false;
+  if(p.dodgeTimer>0){p.dodgeTimer-=dt;p.vx=p.dashX*spd*2.4;p.vz=p.dashZ*spd*1.5;}
+  else{p.vx=mx*spd;p.vz=mz*spd*0.6;}
+
+  // Jump
+  if(input.jumpEdge&&p.jumps<p.maxJumps){
+    p.vy=-480;p.jumps++;p.onGround=false;
+    if(meta.soundOn)SFX.jump();
+  }
+  input.jumpEdge=false;
+
+  // Gravity
+  p.vy+=1400*dt;p.jy-=p.vy*dt;
+  if(p.jy<=0){p.jy=0;if(!p.onGround&&meta.soundOn)SFX.land();p.onGround=true;p.vy=0;p.jumps=0;}
+  if(p.jy>0)p.onGround=false;
+
+  // Position
+  p.x+=p.vx*dt;p.z+=p.vz*dt;
+  if(p.z<0)p.z=0;if(p.z>DEPTH)p.z=DEPTH;
+  if(p.x<20)p.x=20;if(p.x>s.len-20)p.x=s.len-20;
+
+  // Facing
+  if(mx!==0)p.face=mx>0?1:-1;
+  // Animation
+  if(Math.abs(p.vx)>20&&p.onGround)p.runAnim+=dt*12;else p.runAnim*=0.85;
+
+  // Attack
+  if(p.atkCd>0)p.atkCd-=dt;
+  if(p.atkTimer>0)p.atkTimer-=dt;
+  if(input.attack&&p.atkCd<=0&&p.dodgeTimer<=0){
+    const w=p.weapon,cd=w.cd/effAtkSpeed(p);
+    p.atkCd=cd;p.atkTimer=w.cls==='melee'?0.26:0.18;p.swingId++;
+    if(w.cls==='melee'){
+      if(meta.soundOn)SFX.slash();
+      // Melee hit detection
+      for(const e of G.enemies){
+        if(e.dead)continue;
+        const dx=e.x-p.x,dz=Math.abs(e.z-p.z);
+        const inRange=Math.sign(dx)===p.face&&Math.abs(dx)<(w.range||50)&&dz<(w.reach||30);
+        const vOv=Math.abs(p.jy+p.h/2-(e.jy+e.h/2))<(p.h/2+e.h/2);
+        if(inRange&&vOv)hitEnemy(e,w.dmg*effPower(p),p.face,w.kb,effLifesteal(p),w.el);
+      }
+    }else{
+      if(meta.soundOn)(w.el?SFX.magic:SFX.shoot)();
+      const pr=w.proj;
+      G.projectiles.push({owner:'player',x:p.x+p.face*12,z:p.z,jy:p.jy+p.h*0.5,vx:p.face*pr.speed,vz:0,vjy:0,gravity:pr.gravity||0,size:pr.size,color:pr.color,shape:pr.shape,glow:pr.glow||0,dmg:w.dmg*effPower(p),kb:w.kb,pierce:pr.pierce||0,el:w.el,life:pr.range/pr.speed,hitSet:[]});
+    }
+  }
+
+  // Invulnerability/flash
+  if(p.invuln>0)p.invuln-=dt;
+  if(p.hurtFlash>0)p.hurtFlash-=dt;
+
+  // Camera
+  const targetCam=p.x-VW*0.35;G.cam+=(targetCam-G.cam)*0.08;
+  if(G.cam<0)G.cam=0;if(G.cam>s.len-VW)G.cam=s.len-VW;
+
+  // Enemies
+  for(const e of G.enemies){
+    if(e.dead)continue;
+    e.bob+=dt*4;if(e.hitFlash>0)e.hitFlash-=dt;
+    if(e.hurtKb>0){e.hurtKb-=dt;e.x+=e.vx*dt;e.vx*=0.85;}
+    else e.vx=0;
+
+    // Activate when player is near
+    if(!e.active&&Math.abs(e.x-p.x)<VW*0.6)e.active=true;
+    if(!e.active)continue;
+
+    const dir=Math.sign(p.x-e.x)||1;e.face=dir;
+    const eff=e.speed*(1+G.stageIndex*0.01);
+
+    if(e.boss){
+      // Boss AI
+      if(e.atkTimer>0)e.atkTimer-=dt;if(e.shootT>0)e.shootT-=dt;
+      const dist=Math.abs(p.x-e.x),dzs=Math.sign(p.z-e.z)||0;
+      e.z+=dzs*Math.min(Math.abs(p.z-e.z),eff*0.5*dt);
+      if(e.lunge>0){e.lunge-=dt;e.x+=dir*eff*2.6*dt;}
+      else{
+        if(e.kite&&dist<210)e.x-=dir*eff*0.6*dt;else e.x+=dir*eff*0.7*dt;
+        if(!e.kite&&dist<240&&Math.abs(p.z-e.z)<60&&e.atkTimer<=0){e.lunge=0.45;e.atkTimer=1.8;G.shake=Math.min(G.shake+5,11);}
+      }
+      if(e.ranged&&e.shootT<=0&&Math.abs(p.x-e.x)<2000){bossShoot(e,p);e.shootT=e.shootCd*(e.phase>=2?0.7:1);}
+      if((e.type==='king'||e.type==='tyrant')&&e.hp/e.maxHp<0.7){e.summonT-=dt;if(e.summonT<=0){e.summonT=e.type==='tyrant'?5:6;for(let i=0;i<2;i++){const ne=spawnEnemy(Math.random()<0.5?'grunt':'flyer',e.x+(i?70:-70));ne.active=true;}addText(e.x,gy(e.z)-e.h-10,'SUMMON!','#ff5e54',true);}}
+      if(e.hp/e.maxHp<0.35&&e.phase<2){e.phase=2;e.speed*=1.22;
+        if(e.type==='king'){e.ranged=true;e.shot={count:3,spread:0.22,speed:380,size:8,color:'#c47bff',shape:'orb',el:'void',glow:1};e.shootCd=2.0;e.shootT=0.8;}
+        addText(e.x,gy(e.z)-e.h-20,'ENRAGED!','#ff5e54',true);}
+      // Boss HP bar
+      if(!e.dead){document.getElementById('bosshpwrap').classList.add('on');document.getElementById('bossname').textContent=e.label;document.querySelector('#bosshp > i').style.width=Math.max(0,e.hp/e.maxHp*100)+'%';}
+    }else{
+      // Normal enemy AI
+      if(e.kind==='fly'){
+        e.x+=dir*eff*0.6*dt;e.z+=Math.sign(p.z-e.z)*eff*0.3*dt;
+        e.jy=40+Math.sin(e.bob)*12;
+      }else{
+        e.x+=dir*eff*0.7*dt;e.z+=Math.sign(p.z-e.z)*Math.min(Math.abs(p.z-e.z),eff*0.4*dt);
+      }
+    }
+    // Boundary
+    if(e.x<24)e.x=24;if(e.x>s.len-24)e.x=s.len-24;
+    // Contact damage
+    if(!e.dead&&Math.abs(e.x-p.x)<(e.w/2+p.w/2)&&Math.abs(e.z-p.z)<26){
+      const vOv=Math.abs((e.jy+e.h/2)-(p.jy+p.h/2))<(e.h/2+p.h/2);
+      if(vOv)hurtPlayer((e.boss&&e.lunge>0)?e.dmg*1.6:e.dmg,dir);
+    }
+  }
+
+  // Projectiles
+  for(const pr of G.projectiles){
+    pr.life-=dt;if(pr.gravity)pr.vjy-=pr.gravity*dt;
+    pr.x+=pr.vx*dt;pr.z+=(pr.vz||0)*dt;pr.jy+=(pr.vjy||0)*dt;
+    if(pr.owner==='player'){
+      for(const e of G.enemies){if(e.dead||pr.hitSet.indexOf(e)>=0)continue;
+        if(Math.abs(e.x-pr.x)<(e.w/2+pr.size)&&Math.abs(e.z-pr.z)<28&&Math.abs(pr.jy-(e.jy+e.h/2))<(e.h/2+pr.size)){
+          pr.hitSet.push(e);hitEnemy(e,pr.dmg,Math.sign(pr.vx)||1,pr.kb,effLifesteal(G.p),pr.el);
+          if(pr.pierce>0)pr.pierce--;else{pr.life=0;break;}}}
+    }else{
+      if(p.invuln<=0&&p.dodgeTimer<=0&&Math.abs(p.x-pr.x)<(p.w/2+pr.size)&&Math.abs(p.z-pr.z)<28&&Math.abs(pr.jy-(p.jy+p.h/2))<(p.h/2+pr.size)){hurtPlayer(pr.dmg,Math.sign(pr.vx)||1);pr.life=0;}
+    }
+    if(pr.jy<-4||pr.z<-30||pr.z>DEPTH+30)pr.life=0;
+  }
+  G.projectiles=G.projectiles.filter(pr=>pr.life>0);
+
+  // Pickups
+  for(const pk of G.pickups){pk.bob=(pk.bob||0)+dt*4;
+    if(Math.abs(pk.x-p.x)<34&&Math.abs((pk.z==null?p.z:pk.z)-p.z)<46&&p.jy<50){
+      if(pk.weapon)offerWeapon(pk.weapon);else if(pk.armor)offerArmor(pk.armor);pk.taken=true;}}
+  G.pickups=G.pickups.filter(pk=>!pk.taken);
+
+  // Portal
+  if(G.portal){G.portal.t+=dt;if(Math.abs(p.x-G.portal.x)<40)nextStage();}
+
+  // Particles & texts
+  for(const pt of G.particles){pt.vy+=600*dt;pt.x+=pt.vx*dt;pt.y+=pt.vy*dt;pt.life-=dt;}
+  G.particles=G.particles.filter(pt=>pt.life>0);
+  for(const t of G.texts){t.y+=t.vy*dt;t.vy*=0.92;t.life-=dt;}
+  G.texts=G.texts.filter(t=>t.life>0);
+
+  if(queueLevelUp>0&&mode==='play'){queueLevelUp--;openLevelUp();}
+  hudUpdate();
+}
+
+function bossShoot(e,p){
+  const cfg=e.shot,ox=e.x+e.face*10,ojy=e.jy+e.h*0.62;
+  const dx=p.x-ox,dirX=Math.sign(dx)||1,t=Math.max(0.25,Math.abs(dx)/cfg.speed);
+  for(let i=0;i<cfg.count;i++){
+    const fan=(cfg.count>1?(i-(cfg.count-1)/2)*cfg.spread*260:0);
+    const vx=dirX*cfg.speed,vz=(p.z-e.z)/t+fan;
+    let vjy=((p.jy+p.h*0.5)-ojy)/t;if(cfg.gravity)vjy+=cfg.gravity*0.5*t;
+    G.projectiles.push({owner:'enemy',x:ox,z:e.z,jy:ojy,vx,vz,vjy,gravity:cfg.gravity||0,size:cfg.size,color:cfg.color,shape:cfg.shape,glow:cfg.glow||1,dmg:e.dmg*0.8,kb:120,pierce:0,el:cfg.el||null,life:2.6,hitSet:[]});
+  }
+  if(cfg.el&&meta.soundOn)SFX.magic(cfg.el);else if(meta.soundOn)SFX.shoot();
+}
+
+/* ================================================================
+   SECTION 10: STAGE FLOW
+   ================================================================ */
+function nextStage(){
+  if(!G.tookDamage){meta.flawlessStages=(meta.flawlessStages||0)+1;}
+  const ni=G.stageIndex+1;if(ni>=STAGES.length){winGame();return;}
+  meta.bestStage=Math.max(meta.bestStage,ni);
+  meta.run={ngPlus:G.ngPlus,ngHp:G.ngHp,ngDmg:G.ngDmg,stageIndex:ni,p:snapOf(G.p),base:G.baseLoadout};
+  persist();loadStage(ni);if(meta.soundOn)SFX.pickup();
+}
+function continueRun(){
+  if(!meta.run)return;queueLevelUp=0;
+  const p=freshPlayer();
+  G={p,stageIndex:0,enemies:[],particles:[],texts:[],pickups:[],projectiles:[],cam:0,shake:0,
+     ngPlus:meta.run.ngPlus,ngHp:meta.run.ngHp||1,ngDmg:meta.run.ngDmg||1,baseLoadout:meta.run.base||null,
+     portal:null,stageBanner:0,killGoal:0,kills:0,boss:null,time:0,tookDamage:false,combo:0,comboT:0};
+  restorePlayer(meta.run.p);loadStage(meta.run.stageIndex);restorePlayer(meta.run.p);
+  if(!G.baseLoadout)G.baseLoadout=snapOf(G.p);
+  mode='play';showOverlay(false);showGameUI(true);hudUpdate();
+}
+function restorePlayer(snap){
+  const p=G.p;Object.assign(p,snap,{stats:Object.assign(p.stats,snap.stats)});
+  if(!p.weapon||typeof p.weapon!=='object'||!p.weapon.cls)p.weapon=startWeapon();
+  p.gear=cloneGear(snap.gear);recomputeArmor(p);p.hp=Math.min(snap.hp,effMaxHp(p));
+  p.x=70;p.z=DEPTH*0.55;p.jy=0;p.vx=0;p.vz=0;p.vy=0;p.onGround=true;p.atkTimer=0;p.atkCd=0;p.invuln=0;p.dead=false;
+}
+
+/* ================================================================
+   SECTION 11: RENDER
+   ================================================================ */
+function render(){
+  const ctx=mainContext,s=STAGES[G?G.stageIndex:0];
+  ctx.clearRect(0,0,VW,VH);
+  // Sky
+  const grd=ctx.createLinearGradient(0,0,0,VH);grd.addColorStop(0,s?s.sky:'#13151d');grd.addColorStop(1,'#070809');
+  ctx.fillStyle=grd;ctx.fillRect(0,0,VW,VH);
+  if(!G)return;
+  const shx=(Math.random()-0.5)*G.shake,shy=(Math.random()-0.5)*G.shake;
+  ctx.save();ctx.translate(-G.cam+shx,shy);
+
+  // Parallax
+  drawParallax(ctx,s);drawGround(ctx,s);
+
+  // Portal
+  if(G.portal)drawPortal(ctx,G.portal);
+
+  // Painter's sort (all entities by z)
+  const draws=[];
+  for(const pk of G.pickups)draws.push({z:(pk.z==null?DEPTH/2:pk.z),f:()=>drawPickup(ctx,pk)});
+  for(const e of G.enemies)if(!e.dead)draws.push({z:e.z,f:()=>drawEnemyFull(ctx,e)});
+  draws.push({z:G.p.z,f:()=>drawHeroFull(ctx,G.p)});
+  for(const pr of G.projectiles)draws.push({z:pr.z,f:()=>drawProjectile(ctx,pr)});
+  draws.sort((a,b)=>a.z-b.z);
+  for(const d of draws)d.f();
+
+  // Particles
+  for(const pt of G.particles){ctx.globalAlpha=Math.max(0,pt.life*2.5);ctx.fillStyle=pt.color;ctx.fillRect(pt.x-pt.sz/2,pt.y-pt.sz/2,pt.sz,pt.sz);}
+  ctx.globalAlpha=1;
+  // Floating text
+  for(const t of G.texts){ctx.globalAlpha=Math.max(0,t.life*1.4);ctx.fillStyle=t.color;ctx.font=`800 ${t.big?20:14}px -apple-system,sans-serif`;ctx.textAlign='center';ctx.fillText(t.txt,t.x,t.y);}
+  ctx.globalAlpha=1;ctx.restore();
+
+  // Combo counter
+  if(mode==='play'&&G.combo>=3){ctx.textAlign='center';ctx.fillStyle='#e8a33d';ctx.font='900 '+(15+Math.min(6,G.combo*0.2))+'px -apple-system,sans-serif';ctx.globalAlpha=Math.min(1,G.comboT);ctx.fillText(G.combo+' HITS',VW/2,VH*0.22);ctx.globalAlpha=1;}
+  // Progress bar
+  const pf=document.getElementById('progFill');if(pf)pf.style.width=Math.min(100,G.p.x/STAGES[G.stageIndex].len*100)+'%';
+  // Stage banner
+  if(G.stageBanner>0){const a=Math.min(1,G.stageBanner)*Math.min(1,(2.6-G.stageBanner)*3);
+    ctx.globalAlpha=Math.max(0,a);ctx.textAlign='center';
+    ctx.fillStyle='#fff';ctx.font='900 26px -apple-system,sans-serif';ctx.fillText(s.name.toUpperCase(),VW/2,VH*0.34);
+    ctx.fillStyle='#e8a33d';ctx.font='800 12px -apple-system,sans-serif';ctx.fillText('STAGE '+(G.stageIndex+1)+' / '+STAGES.length,VW/2,VH*0.34+22);ctx.globalAlpha=1;}
+}
+
+function drawHeroFull(c,p){
+  const s=scaleAt(p.z),fy=gy(p.z);
+  c.save();c.translate(p.x,fy);c.scale(s,s);
+  shadow(c,2,15+Math.max(0,6-p.jy*0.05));
+  c.translate(0,-p.jy);drawHero(c,p);c.restore();
+}
+function drawEnemyFull(c,e){
+  const s=scaleAt(e.z),fy=gy(e.z);
+  c.save();c.translate(e.x,fy);c.scale(s,s);shadow(c,2,e.w*0.52);c.translate(0,-e.jy);
+  if(e.element&&!e.boss){const ec=elColor(e.element);if(ec){c.save();c.globalAlpha=0.16+0.06*Math.sin(G.time*4+e.bob);c.fillStyle=ec;c.beginPath();c.ellipse(0,-e.h*0.5,e.w*0.62,e.h*0.6,0,0,6.28);c.fill();c.restore();}}
+  let col=e.hitFlash>0?'#ffffff':e.color;c.scale(e.face,1);
+  if(e.kind==='fly')drawFlyer(c,e,col);else if(e.boss)drawBoss(c,e,col);else drawGrunt(c,e,col);
+  c.restore();
+  // HP bar (non-boss)
+  if(!e.boss&&e.hp<e.maxHp){const by=fy-(e.jy+e.h)*s-10;c.fillStyle='#0008';c.fillRect(e.x-16,by,32,4);c.fillStyle='#e8453d';c.fillRect(e.x-16,by,32*(e.hp/e.maxHp),4);}
+}
+function drawPickup(c,pk){
+  const it=pk.weapon||pk.armor,rc=RARITY[it.rarity].color,z=(pk.z==null?DEPTH/2:pk.z),s=scaleAt(z);
+  c.save();c.translate(pk.x,gy(z));c.scale(s,s);shadow(c,2,12);
+  c.translate(0,-26+Math.sin(pk.bob)*5);
+  c.globalAlpha=0.16;c.fillStyle=rc;c.fillRect(-4,-44,8,64);
+  c.globalAlpha=0.55;c.shadowColor=rc;c.shadowBlur=12;c.fillStyle=rc;c.beginPath();c.arc(0,0,13,0,6.28);c.fill();c.shadowBlur=0;c.globalAlpha=1;
+  if(pk.weapon){c.rotate(-0.6);c.translate(-7,4);drawWeaponArt(c,pk.weapon);}
+  c.restore();
+}
+function drawProjectile(c,pr){
+  const s=scaleAt(pr.z),sy=gy(pr.z)-pr.jy,ang=Math.atan2(-(pr.vjy||0)+(pr.vz||0)*0.6,pr.vx);
+  c.save();c.globalAlpha=0.16;c.fillStyle='#000';c.beginPath();c.ellipse(pr.x,gy(pr.z),pr.size*0.8,pr.size*0.3,0,0,6.28);c.fill();c.globalAlpha=1;
+  c.translate(pr.x,sy);c.scale(s,s);
+  if(pr.glow){c.shadowColor=pr.color;c.shadowBlur=10;}c.fillStyle=pr.color;
+  if(pr.shape==='arrow'){c.rotate(ang);c.fillRect(-8,-1.4,15,2.8);c.beginPath();c.moveTo(8,-3);c.lineTo(13,0);c.lineTo(8,3);c.closePath();c.fill();}
+  else if(pr.shape==='bolt'){c.rotate(ang);c.fillRect(-8,-1.6,16,3.2);}
+  else{c.beginPath();c.arc(0,0,pr.size,0,6.28);c.fill();c.globalAlpha=0.4;c.beginPath();c.arc(-pr.vx*0.012,(pr.vjy||0)*0.012,pr.size*0.7,0,6.28);c.fill();}
+  c.restore();c.shadowBlur=0;
+}
+function drawPortal(c,po){
+  const t=po.t;c.save();c.translate(po.x,gy(DEPTH*0.55));
+  for(let i=0;i<3;i++){c.globalAlpha=0.5-i*0.12;c.fillStyle='#e8a33d';const r=42+i*12+Math.sin(t*3+i)*5;c.beginPath();c.ellipse(0,-58,r*0.55,r,0,0,6.28);c.fill();}
+  c.globalAlpha=1;c.fillStyle='#fff';c.font='800 11px -apple-system';c.textAlign='center';c.fillText('ENTER →',0,-130);c.restore();
+}
+function drawParallax(c,s){
+  const cam=G.cam,th=s.theme;
+  if(th==='void'||th==='apex'){c.fillStyle='rgba(255,255,255,0.5)';for(let i=0;i<60;i++){const x=((i*137)%(VW+200))+-(cam*0.2%(VW+200));const y=(i*53)%(GROUND_FAR-40);c.globalAlpha=0.2+0.5*((i*0.13)%1);c.fillRect(x,y,2,2);}c.globalAlpha=1;}
+  if(th==='volcano'){const g=c.createLinearGradient(0,GROUND_FAR-60,0,GROUND_FAR);g.addColorStop(0,'rgba(255,90,30,0)');g.addColorStop(1,'rgba(255,90,30,0.18)');c.fillStyle=g;c.fillRect(cam-10,GROUND_FAR-60,VW+20,60);}
+  c.fillStyle='rgba(255,255,255,0.045)';
+  for(let i=0;i<14;i++){const px=(i*260)-(cam*0.4)%(14*260);const h=90+(i%3)*30,w=70;c.beginPath();c.moveTo(px,GROUND_FAR);c.lineTo(px+w*0.45,GROUND_FAR-h);c.lineTo(px+w,GROUND_FAR);c.closePath();c.fill();}
+  c.fillStyle=(th==='void'||th==='apex')?'rgba(120,80,200,0.12)':'rgba(0,0,0,0.20)';
+  for(let i=0;i<22;i++){const px=(i*180)-(cam*0.65)%(22*180);c.fillRect(px,GROUND_FAR-130,24,130);}
+}
+function drawGround(c,s){
+  const len=s.len;
+  const g=c.createLinearGradient(0,GROUND_FAR,0,VH);g.addColorStop(0,tint(s.ground,'#000',0.35));g.addColorStop(0.5,s.ground);g.addColorStop(1,tint(s.ground,'#000',0.12));
+  c.fillStyle=g;c.fillRect(0,GROUND_FAR,len,VH-GROUND_FAR+40);
+  c.fillStyle='rgba(255,255,255,0.09)';c.fillRect(0,GROUND_FAR,len,3);
+  c.fillStyle='rgba(0,0,0,0.12)';for(let k=1;k<4;k++)c.fillRect(0,gy(k*DEPTH/4),len,1.5);
+  c.fillStyle='rgba(0,0,0,0.16)';
+  for(let x=Math.floor(G.cam/46)*46;x<G.cam+VW+46;x+=46){c.fillRect(x,gy(DEPTH*0.2),2,7);c.fillRect(x+20,gy(DEPTH*0.72),3,10);}
+}
+
+/* ================================================================
+   SECTION 12: HUD
+   ================================================================ */
+function hudUpdate(){
+  if(!G)return;const p=G.p;
+  document.getElementById('hpFill').style.width=Math.max(0,p.hp/effMaxHp(p)*100)+'%';
+  document.getElementById('xpFill').style.width=Math.max(0,p.xp/p.xpNext*100)+'%';
+  document.getElementById('lvlBadge').textContent='LV '+p.level;
+  const wt=document.getElementById('weaponTag');
+  wt.textContent=p.weapon.name+(G.ngPlus>0?' · NG+'+G.ngPlus:'');
+  wt.style.color=RARITY[p.weapon.rarity]?RARITY[p.weapon.rarity].color:'var(--ink)';
+  const at=document.getElementById('armorTag'),red=Math.round(defenseR(p)*100);
+  const pips=SLOTIDS.map(s=>{const a=p.gear[s];return`<span class="pip" style="background:${a?a.color:'#333'}"></span>`;}).join('');
+  at.innerHTML='🛡 <b style="color:'+bestGearRarity(p)+'">'+red+'%</b> '+pips;
+  document.getElementById('bAttack').classList.toggle('ranged',p.weapon.cls==='ranged');
+  document.getElementById('bAttack').textContent=p.weapon.cls==='ranged'?'FIRE':'SLASH';
+}
+
+/* ================================================================
+   SECTION 13: MENUS & OVERLAYS
+   ================================================================ */
+const overlay=document.getElementById('overlay'),ovcard=document.getElementById('ovcard');
+function showOverlay(v){overlay.classList.toggle('hide',!v);}
+function showOvHTML(html){ovcard.innerHTML=html;showOverlay(true);}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>{t.classList.remove('show');toast._t=null;},1400);}
+function resumePlay(){mode='play';showOverlay(false);hudUpdate();}
+
+function titleScreen(){
+  mode='title';showGameUI(false);document.getElementById('bosshpwrap').classList.remove('on');
+  const hasRun=!!meta.run;
+  showOvHTML(`<div class="card"><h1 class="title">BLADEFALL</h1><p class="subtitle">Action · Roguelite</p>
+    ${hasRun?`<button class="bigbtn" id="contBtn">Continue — ${STAGES[meta.run.stageIndex].name}</button>`:''}
+    <button class="bigbtn ${hasRun?'ghost':''}" id="newBtn">${hasRun?'New Run':'Start'}</button>
+    <button class="bigbtn ghost" id="sndBtn">Sound: ${meta.soundOn?'On':'Off'}</button>
+    <p class="hint"><b>Controls:</b> WASD/arrows move · Space jump · <b>J attack</b> · <b>K dodge</b> · Esc pause<br>
+      Loot weapons & 3-slot armor — neutral, elemental & ranged. Match elements to foes' weaknesses.<br>
+      ${meta.ngPlus>0?`Best: <b>NG+${meta.ngPlus}</b> · `:''}
+      <span style="opacity:.5">v${VERSION}</span></p></div>`);
+  if(hasRun)document.getElementById('contBtn').onclick=continueRun;
+  document.getElementById('newBtn').onclick=()=>beginRun(0,null,{hp:1,dmg:1});
+  document.getElementById('sndBtn').onclick=()=>{meta.soundOn=!meta.soundOn;persist();titleScreen();};
+}
+
+function die(){
+  mode='dead';if(meta.soundOn)SFX.hurt();
+  const ng=G.ngPlus,base=G.baseLoadout,sc={hp:G.ngHp,dmg:G.ngDmg};meta.run=null;persist();
+  showOvHTML(`<div class="card"><h2 class="title" style="font-size:42px;">YOU FELL</h2>
+    <p class="ovsub">Reached ${STAGES[G.stageIndex].name} · Level ${G.p.level}${ng>0?' · NG+'+ng:''}</p>
+    <button class="bigbtn" id="retryBtn">Try Again</button><button class="bigbtn ghost" id="menuBtn">Main Menu</button></div>`);
+  document.getElementById('retryBtn').onclick=()=>beginRun(ng,ng>0?base:null,ng>0?sc:{hp:1,dmg:1});
+  document.getElementById('menuBtn').onclick=titleScreen;
+}
+function winGame(){
+  mode='win';if(meta.soundOn)SFX.win();const ng=G.ngPlus+1;
+  const carry=snapOf(G.p),newScales=computeNgScales(G.p);
+  meta.ngPlus=Math.max(meta.ngPlus,ng);meta.run=null;persist();
+  showOvHTML(`<div class="card"><h2 class="title">VICTORY</h2><p class="ovsub">The Void Tyrant has fallen</p>
+    <div class="statgrid"><div class="vsrow"><span>Final level</span><b>${G.p.level}</b></div>
+      <div class="vsrow"><span>Weapon</span><b>${G.p.weapon.name}</b></div>
+      <div class="vsrow"><span>Difficulty</span><b>NG+${G.ngPlus}</b></div></div>
+    <p class="ovsub" style="margin-bottom:16px;">NG+${ng} — keep gear & stats. Foes scale to <b style="color:var(--danger)">×${newScales.hp.toFixed(1)} HP</b> · <b style="color:var(--danger)">×${newScales.dmg.toFixed(1)} dmg</b></p>
+    <button class="bigbtn" id="ngBtn">Begin NG+${ng}</button><button class="bigbtn ghost" id="menuBtn2">Main Menu</button></div>`);
+  document.getElementById('ngBtn').onclick=()=>beginRun(ng,carry,newScales);
+  document.getElementById('menuBtn2').onclick=titleScreen;
+}
+
+/* Level-up */
+const UPGRADE_POOL=[
+  {n:'Vitality',d:'+25 Max HP and heal 25',icon:'❤',apply:p=>{p.maxHp+=25;p.hp+=25;}},
+  {n:'Power',d:'+18% weapon damage',icon:'⚔',apply:p=>{p.stats.power*=1.18;}},
+  {n:'Swiftness',d:'+12% move speed',icon:'»',apply:p=>{p.stats.speed*=1.12;}},
+  {n:'Frenzy',d:'+15% attack speed',icon:'⚡',apply:p=>{p.stats.atkSpeed*=1.15;}},
+  {n:'Lifedrain',d:'+8% lifesteal',icon:'✛',apply:p=>{p.stats.lifesteal+=0.08;}},
+  {n:'Evasion',d:'-15% dodge cooldown',icon:'○',apply:p=>{p.stats.dodgeCd*=0.85;}},
+  {n:'Second Wind',d:'Heal to full',icon:'+',apply:p=>{p.hp=effMaxHp(p);}}
+];
+function pick3(){const pool=[...UPGRADE_POOL];if(G.p.maxJumps<2&&Math.random()<0.35)pool.push({n:'Aerial',d:'Gain a double jump',icon:'⇈',apply:p=>{p.maxJumps=2;}});const out=[];while(out.length<3&&pool.length)out.push(pool.splice(Math.floor(Math.random()*pool.length),1)[0]);return out;}
+function openLevelUp(){
+  mode='upgrade';const opts=pick3();
+  showOvHTML(`<div class="card"><p class="ovsub" style="color:var(--amber);letter-spacing:.22em;margin-bottom:2px;">LEVEL UP</p>
+    <h2 class="ovh">You reached Level ${G.p.level}</h2><p class="ovsub">Choose an upgrade</p>
+    <div class="choices">${opts.map((o,i)=>`<button class="choice" data-i="${i}"><div class="cname"><span>${o.icon}</span>${o.n}</div><div class="cdesc">${o.d}</div></button>`).join('')}</div></div>`);
+  document.querySelectorAll('.choice').forEach(b=>b.onclick=()=>{opts[+b.dataset.i].apply(G.p);if(meta.soundOn)SFX.pickup();resumePlay();});
+}
+
+/* Weapon/Armor swap */
+function fmt(n){return Math.round(n*100)/100;}
+function offerWeapon(nw){
+  if(meta.autoKeep){toast('Kept · '+nw.name+' dropped');resumePlay();return;}
+  mode='weapon';const cur=G.p.weapon;
+  const row=(label,a,b,better)=>{const up=better==='low'?b<a:b>a;const cls=(a===b)?'':(up?'up':'down');return`<div class="vsrow"><span>${label}</span><span><b>${fmt(a)}</b> → <b class="${cls}">${fmt(b)}</b></span></div>`;};
+  const reachRow=nw.cls==='ranged'?row('Range',(cur.proj&&cur.proj.range)||0,nw.proj.range||0):row('Range',cur.range||0,nw.range||0);
+  showOvHTML(`<div class="card">
+    <p class="ovsub" style="color:${RARITY[nw.rarity].color};margin-bottom:2px;letter-spacing:.16em;">${RARITY[nw.rarity].name.toUpperCase()}</p>
+    <h2 class="ovh" style="color:${RARITY[nw.rarity].color}">${nw.name}</h2>
+    <div class="statgrid">${row('Damage',cur.dmg,nw.dmg)}${reachRow}${row('Attack speed',cur.cd,nw.cd,'low')}${row('Knockback',cur.kb,nw.kb)}<div class="vsrow"><span>Element</span><b style="color:${elColor(nw.el)||'#cfd6df'};text-transform:capitalize">${nw.el||'Neutral'}</b></div></div>
+    <button class="bigbtn" id="equipBtn">Equip</button><button class="bigbtn ghost" id="keepBtn">Keep ${cur.name}</button></div>`);
+  document.getElementById('equipBtn').onclick=()=>{G.p.weapon=nw;if(meta.soundOn)SFX.pickup();toast(nw.name+' equipped');resumePlay();};
+  document.getElementById('keepBtn').onclick=()=>resumePlay();
+}
+function offerArmor(na){
+  if(meta.autoKeep){toast('Kept · '+na.name+' dropped');resumePlay();return;}
+  mode='weapon';const cur=G.p.gear[na.slot],curDef=cur?cur.defense:0;
+  const before=totalDefense(G.p),after=before-curDef+na.defense;
+  const reduc=d=>Math.round(d/(d+200)*100);
+  showOvHTML(`<div class="card">
+    <p class="ovsub" style="color:${RARITY[na.rarity].color};margin-bottom:2px;letter-spacing:.16em;">${RARITY[na.rarity].name.toUpperCase()} · ${SLOTS[na.slot].label.toUpperCase()}</p>
+    <h2 class="ovh" style="color:${RARITY[na.rarity].color}">${na.name}</h2>
+    <div class="statgrid">
+      <div class="vsrow"><span>Defense</span><span><b>${curDef}</b> → <b class="${na.defense>curDef?'up':'down'}">${na.defense}</b></span></div>
+      <div class="vsrow"><span>Total reduction</span><span><b>${reduc(before)}%</b> → <b class="${after>before?'up':'down'}">${reduc(after)}%</b></span></div>
+      ${na.affixes.map(a=>`<div class="vsrow"><span>Bonus</span><b style="color:var(--good)">${a.label}</b></div>`).join('')}
+    </div>
+    <button class="bigbtn" id="equipBtn">Equip</button><button class="bigbtn ghost" id="keepBtn">${cur?'Keep current':'Skip'}</button></div>`);
+  document.getElementById('equipBtn').onclick=()=>{G.p.gear[na.slot]=na;recomputeArmor(G.p);G.p.hp=Math.min(G.p.hp,effMaxHp(G.p));if(meta.soundOn)SFX.pickup();toast(na.name+' equipped');resumePlay();};
+  document.getElementById('keepBtn').onclick=()=>resumePlay();
+}
+function openPause(){
+  mode='pause';
+  showOvHTML(`<div class="card"><h2 class="ovh">Paused</h2>
+    <button class="bigbtn" id="resBtn">Resume</button>
+    <button class="bigbtn ghost" id="qmenu">Quit to Menu</button></div>`);
+  document.getElementById('resBtn').onclick=()=>{mode='play';showOverlay(false);};
+  document.getElementById('qmenu').onclick=titleScreen;
+}
+
+/* ================================================================
+   SECTION 14: LITTLEJS LIFECYCLE BRIDGE
+   ================================================================ */
+function gameInit(){recalcVP();}
+function gameUpdate(){const dt=1/60;update(dt);}
+function gameUpdatePost(){}
+function gameRender(){recalcVP();render();}
+function gameRenderPost(){}
+
+/* ================================================================
+   SECTION 15: ENGINE BOOTSTRAP
+   ================================================================ */
+glEnable=false;
+showSplashScreen=false;
+engineInit(gameInit,gameUpdate,gameUpdatePost,gameRender,gameRenderPost,[],document.getElementById('gameContainer'));
+titleScreen();
+
+/* Debug hook */
+window.__BF={get G(){return G;},get mode(){return mode;},get meta(){return meta;},VERSION,makeWeapon,makeArmor,rollRarity,STAGES,EARCH,ARCH,
+  snap(){if(!G||!G.p)return{};const p=G.p;return{version:VERSION,mode,stage:G.stageIndex,stageName:STAGES[G.stageIndex].name,
+    player:{x:Math.round(p.x),z:Math.round(p.z),jy:Math.round(p.jy),hp:Math.round(p.hp),maxHp:effMaxHp(p),lvl:p.level,weapon:p.weapon.name,weaponRarity:p.weapon.rarity},
+    enemies:G.enemies.filter(e=>!e.dead).length,ngPlus:G.ngPlus};}};
 </script>
 </body>
 </html>
