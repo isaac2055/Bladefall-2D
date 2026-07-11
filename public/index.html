@@ -539,9 +539,10 @@ function loadStage(i){
     curX += cols*TILE_W;
   }
   
-  // End ground
+  // End ground and Portal
   G.obstacles.push({type:'plat', x:curX+300, w:600, y:0, h:20});
   G.obstacles.push({type:'pit', x:s.len/2, w:s.len+2000});
+  G.portal = {x: curX+300, t:0};
   
   G.stageBanner=2.6;document.getElementById('bosshpwrap').classList.remove('on');
 
@@ -610,8 +611,6 @@ function killEnemy(e){
   for(let i=0;i<12;i++){G.particles.push({x:e.x,y:GROUND_Y-e.y-e.h*0.5,vx:(Math.random()-0.5)*260,vy:-Math.random()*300,sz:3+Math.random()*4,color:e.color,life:0.6+Math.random()*0.3});}
   // Loot drop
   rollDrop(e);
-  // Portal check
-  if(G.kills>=G.killGoal&&!G.portal){G.portal={x:G.p.x+200,t:0};if(meta.soundOn)SFX.pickup();}
   // Boss bar
   if(e.boss)document.getElementById('bosshpwrap').classList.remove('on');
   persist();
@@ -686,7 +685,7 @@ function update(dt){
   }
   input.dodgeEdge=false;
   if(p.dodgeTimer>0){p.dodgeTimer-=dt;p.vx=p.dashX*spd*2.4;}
-  else{p.vx=mx*spd;}
+  else{p.vx += (mx*spd - p.vx) * 15 * dt;}
 
   // Jump
   if(input.jumpEdge&&p.jumps<p.maxJumps){
