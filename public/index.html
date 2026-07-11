@@ -444,7 +444,7 @@ function freshPlayer(){
   return{x:80,y:0,w:26,h:44,vx:0,vy:0,face:1,onGround:true,jumps:0,maxJumps:1,
     hp:100,maxHp:100,level:1,xp:0,xpNext:46,weapon:startWeapon(),gear:freshGear(),armorMods:null,
     stats:{power:1.0,speed:1.0,atkSpeed:1.0,lifesteal:0,dodgeCd:0.75},
-    atkTimer:0,atkCd:0,swingId:0,dodgeTimer:0,dodgeCdT:0,dashX:1,invuln:0,hurtFlash:0,runAnim:0,dead:false};
+    atkTimer:0,atkCd:0,swingId:0,dodgeTimer:0,dodgeCdT:0,dashCharges:2,maxDashes:2,dashX:1,invuln:0,hurtFlash:0,runAnim:0,dead:false};
 }
 
 function beginRun(ngPlus,carrySnap,scales){
@@ -673,8 +673,14 @@ function update(dt){
 
   // Dodge
   if(p.dodgeCdT>0)p.dodgeCdT-=dt;
-  if(input.dodgeEdge&&p.dodgeCdT<=0&&p.dodgeTimer<=0){
-    p.dodgeTimer=0.22;p.dodgeCdT=effDodgeCd(p);
+  if(p.dodgeCdT<=0 && p.dashCharges<p.maxDashes){
+    p.dashCharges++;
+    if(p.dashCharges<p.maxDashes) p.dodgeCdT=effDodgeCd(p);
+  }
+  if(input.dodgeEdge&&p.dashCharges>0&&p.dodgeTimer<=0){
+    p.dashCharges--;
+    p.dodgeTimer=0.22;
+    if(p.dodgeCdT<=0) p.dodgeCdT=effDodgeCd(p);
     p.dashX=mx||p.face;
     if(meta.soundOn)SFX.dodge();
   }
