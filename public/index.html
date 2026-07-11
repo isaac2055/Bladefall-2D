@@ -257,7 +257,7 @@ function totalDefense(p){let t=0;if(p.gear)for(const s of SLOTIDS){if(p.gear[s])
 function bestGearRarity(p){let best=-1,bc='#333';if(p.gear)for(const s of SLOTIDS){const a=p.gear[s];if(a&&RARITY[a.rarity].tier>best){best=RARITY[a.rarity].tier;bc=a.color;}}return bc;}
 
 /* Snapshot for save/NG+ */
-function snapOf(p){return{hp:p.hp,maxHp:p.maxHp,level:p.level,xp:p.xp,xpNext:p.xpNext,weapon:JSON.parse(JSON.stringify(p.weapon)),gear:cloneGear(p.gear),stats:JSON.parse(JSON.stringify(p.stats)),maxJumps:p.maxJumps};}
+function snapOf(p){return{hp:p.hp,maxHp:p.maxHp,level:p.level,xp:p.xp,xpNext:p.xpNext,weapon:JSON.parse(JSON.stringify(p.weapon)),gear:cloneGear(p.gear),stats:JSON.parse(JSON.stringify(p.stats)),maxJumps:p.maxJumps,hasSlam:p.hasSlam};}
 function cloneGear(g){const o=freshGear();if(g)for(const s of SLOTIDS){if(g[s])o[s]=JSON.parse(JSON.stringify(g[s]));}return o;}
 
 /* ================================================================
@@ -441,10 +441,10 @@ function drawBoss(c,e,col){
    SECTION 8: CORE GAME LOGIC
    ================================================================ */
 function freshPlayer(){
-  return{x:80,y:0,w:26,h:44,vx:0,vy:0,face:1,onGround:true,jumps:0,maxJumps:1,
+  return{x:80,y:0,w:26,h:44,vx:0,vy:0,face:1,onGround:true,jumps:0,maxJumps:2,hasSlam:false,
     hp:100,maxHp:100,level:1,xp:0,xpNext:46,weapon:startWeapon(),gear:freshGear(),armorMods:null,
     stats:{power:1.0,speed:1.0,atkSpeed:1.0,lifesteal:0,dodgeCd:0.75},
-    atkTimer:0,atkCd:0,swingId:0,dodgeTimer:0,dodgeCdT:0,dashCharges:2,maxDashes:2,dashX:1,invuln:0,hurtFlash:0,runAnim:0,dead:false};
+    atkTimer:0,atkCd:0,swingId:0,dodgeTimer:0,dodgeCdT:0,dashCharges:2,maxDashes:2,dashX:1,invuln:0,hurtFlash:0,runAnim:0,dead:false,slamming:false};
 }
 
 function beginRun(ngPlus,carrySnap,scales){
@@ -462,7 +462,7 @@ function beginRun(ngPlus,carrySnap,scales){
 function freshFromSnapshot(snap){
   const p=freshPlayer();p.stats=Object.assign(p.stats,snap.stats);
   p.weapon=snap.weapon?JSON.parse(JSON.stringify(snap.weapon)):startWeapon();
-  p.gear=cloneGear(snap.gear);p.maxHp=snap.maxHp||100;p.maxJumps=snap.maxJumps||1;p.level=snap.level||1;
+  p.gear=cloneGear(snap.gear);p.maxHp=snap.maxHp||100;p.maxJumps=snap.maxJumps||2;p.hasSlam=!!snap.hasSlam;p.level=snap.level||1;
   p.xp=0;p.xpNext=Math.round(46+p.level*34+p.level*p.level*2);
   recomputeArmor(p);p.hp=effMaxHp(p);return p;
 }
@@ -695,6 +695,12 @@ function update(dt){
   }
   input.jumpEdge=false;
 
+  // Ground Slam
+  if(p.hasSlam && !p.onGround && input.down) {
+      p.vy = 1400; // fast fall
+      p.slamming = true;
+  }
+
   // Movement & Collision
   p.x+=p.vx*dt;
   if(p.x<20)p.x=20;if(p.x>s.len-20)p.x=s.len-20;
@@ -706,6 +712,11 @@ function update(dt){
   if(p.y<=targetFloor && p.vy > 0){
       p.y=targetFloor;
       if(!p.onGround&&meta.soundOn&&targetFloor>=0)SFX.land();
+      if(p.slamming && targetFloor>=0) {
+          p.slamming=false;
+          G.aoes.push({x:p.x, y:p.y, r:120, fromPlayer:true, dmg:35*effPower(p), color:'#ff5500'});
+          G.shake=8; if(meta.soundOn)SFX.hit();
+      }
       p.onGround=true;p.vy=0;p.jumps=0;
   }
   if(p.y>targetFloor)p.onGround=false;
@@ -861,11 +872,17 @@ function update(dt){
 
   // AOE processing
   for(const a of G.aoes) {
-      a.t -= dt;
-      if(a.t <= 0 && !a.hit) {
+      if(!a.fromPlayer) a.t -= dt;
+      if(a.t <= 0 && !a.hit && !a.fromPlayer) {
           a.hit = true; a.life = 0.3;
           G.shake = Math.max(G.shake, 8);
-          if(Math.abs(p.x - a.x) < a.r && p.y < 50) hurtPlayer(a.dmg, Math.sign(p.x - a.x)||1);
+          if(Math.abs(p.x - a.x) < a.r && Math.abs(p.y - (a.y||0)) < 60) hurtPlayer(a.dmg, Math.sign(p.x - a.x)||1);
+      }
+      if(a.fromPlayer && !a.hit) {
+          a.hit = true; a.life = 0.3;
+          for(const e of G.enemies) {
+             if(Math.abs(e.x - a.x) < a.r && Math.abs(e.y - (a.y||0)) < 80) hitEnemy(e, a.dmg, Math.sign(e.x - a.x)||1, 200, 0, 'phys');
+          }
       }
       if(a.hit) a.life -= dt;
   }
@@ -998,7 +1015,7 @@ function drawPlatform(c, o) {
   c.restore();
 }
 function drawAOE(c, a) {
-  c.save();c.translate(a.x,GROUND_Y);c.scale(1,0.4);
+  c.save();c.translate(a.x,GROUND_Y-(a.y||0));c.scale(1,0.4);
   if(a.hit){
       c.fillStyle=a.color;c.globalAlpha=a.life/0.3;
       c.beginPath();c.arc(0,0,a.r,0,6.28);c.fill();
@@ -1114,7 +1131,7 @@ const UPGRADE_POOL=[
   {n:'Evasion',d:'-15% dodge cooldown',icon:'○',apply:p=>{p.stats.dodgeCd*=0.85;}},
   {n:'Second Wind',d:'Heal to full',icon:'+',apply:p=>{p.hp=effMaxHp(p);}}
 ];
-function pick3(){const pool=[...UPGRADE_POOL];if(G.p.maxJumps<2&&Math.random()<0.35)pool.push({n:'Aerial',d:'Gain a double jump',icon:'⇈',apply:p=>{p.maxJumps=2;}});const out=[];while(out.length<3&&pool.length)out.push(pool.splice(Math.floor(Math.random()*pool.length),1)[0]);return out;}
+function pick3(){const pool=[...UPGRADE_POOL];if(!G.p.hasSlam&&Math.random()<0.35)pool.push({n:'Ground Slam',d:'Press DOWN in air',icon:'⇓',apply:p=>{p.hasSlam=true;}});const out=[];while(out.length<3&&pool.length)out.push(pool.splice(Math.floor(Math.random()*pool.length),1)[0]);return out;}
 function openLevelUp(){
   mode='upgrade';const opts=pick3();
   showOvHTML(`<div class="card"><p class="ovsub" style="color:var(--amber);letter-spacing:.22em;margin-bottom:2px;">LEVEL UP</p>
