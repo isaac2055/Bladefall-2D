@@ -264,7 +264,14 @@ function cloneGear(g){const o=freshGear();if(g)for(const s of SLOTIDS){if(g[s])o
    SECTION 4: INPUT (Keyboard + Touch)
    ================================================================ */
 const input={left:false,right:false,up:false,down:false,jump:false,attack:false,dodge:false,jumpEdge:false,dodgeEdge:false,jx:0,jz:0,pause:false};
-function moveX(){return Math.max(-1,Math.min(1,input.jx+(input.right?1:0)-(input.left?1:0)));}
+const RAW_KEYS = {};
+window.addEventListener('keydown', e => RAW_KEYS[e.code] = true);
+window.addEventListener('keyup', e => RAW_KEYS[e.code] = false);
+function moveX(){
+  const L = RAW_KEYS['ArrowLeft'] || input.left;
+  const R = RAW_KEYS['ArrowRight'] || input.right;
+  return Math.max(-1,Math.min(1,input.jx+(R?1:0)-(L?1:0)));
+}
 function moveZ(){return Math.max(-1,Math.min(1,input.jz+(input.down?1:0)-(input.up?1:0)));}
 
 /* Touch button binding */
@@ -689,8 +696,13 @@ function update(dt){
     p.dodgeTimer-=dt;
     const targetVx = mx ? mx*spd*3.0 : p.dashX*spd*2.4;
     p.vx += (targetVx - p.vx) * 15 * dt;
+  } else {
+    const targetVx = mx * spd;
+    let friction = 15;
+    if (mx === 0) friction = p.onGround ? 12 : 1.5; // coast in air!
+    else if (Math.sign(mx) !== Math.sign(p.vx) && Math.abs(p.vx) > 20) friction = p.onGround ? 25 : 8; // turn around
+    p.vx += (targetVx - p.vx) * friction * dt;
   }
-  else{p.vx += (mx*spd - p.vx) * 15 * dt;}
 
   // Jump
   if(input.jumpEdge&&p.jumps<p.maxJumps){
