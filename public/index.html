@@ -196,20 +196,20 @@ function makeArmor(rid,slot){const r=RARITY[rid],tier=r.tier,sl=SLOTS[slot];
 
 /* Stages */
 const STAGES=[
-  {name:'The Outskirts',len:1900,theme:'plains',sky:'#1a2233',ground:'#2a3340',grunts:6,flyers:0,type:'normal'},
-  {name:'Black Woods',len:2100,theme:'forest',sky:'#13211a',ground:'#1d3026',grunts:5,flyers:3,mix:{toxling:2},type:'normal'},
-  {name:'The Brute',len:1300,theme:'badlands',sky:'#241a1a',ground:'#33231f',grunts:2,flyers:1,type:'miniboss',boss:'brute'},
-  {name:'Hollow Pass',len:2100,theme:'canyon',sky:'#241e16',ground:'#352a1e',grunts:5,flyers:2,mix:{sparkling:3},type:'normal'},
-  {name:'Hollow Marksman',len:1500,theme:'canyon',sky:'#1f1a12',ground:'#312718',grunts:2,flyers:2,type:'miniboss',boss:'archer'},
-  {name:'Ruined Keep',len:2300,theme:'ruins',sky:'#1c1830',ground:'#2a2440',grunts:5,flyers:3,mix:{shadeling:2,toxling:2},type:'normal'},
-  {name:'The Warden',len:1400,theme:'dungeon',sky:'#2a1c2c',ground:'#3a2440',grunts:3,flyers:2,type:'miniboss',boss:'warden'},
-  {name:'Frostfell',len:2200,theme:'frost',sky:'#15202b',ground:'#243240',grunts:3,flyers:3,mix:{frostling:5},type:'normal'},
-  {name:'Frost Sorcerer',len:1500,theme:'frost',sky:'#10202c',ground:'#1e3340',grunts:2,flyers:2,mix:{frostling:2},type:'miniboss',boss:'sorcerer'},
-  {name:'Emberdeep',len:2200,theme:'volcano',sky:'#2a1410',ground:'#3a1c14',grunts:3,flyers:2,mix:{emberling:5},type:'normal'},
-  {name:'Ember Colossus',len:1600,theme:'volcano',sky:'#2c130c',ground:'#3d1a10',grunts:2,flyers:1,mix:{emberling:2},type:'miniboss',boss:'colossus'},
-  {name:'Abyss Approach',len:2000,theme:'void',sky:'#140b22',ground:'#241431',grunts:4,flyers:3,mix:{shadeling:4,sparkling:2},type:'normal'},
-  {name:'Abyss King',len:1500,theme:'void',sky:'#120b1c',ground:'#241431',grunts:0,flyers:0,type:'boss',boss:'king'},
-  {name:'The Void Tyrant',len:1600,theme:'apex',sky:'#0c0716',ground:'#1c1029',grunts:0,flyers:0,type:'boss',boss:'tyrant'}
+  {name:'The Outskirts',len:2400,theme:'plains',sky:'#1a2233',ground:'#2a3340',grunts:3,flyers:0,type:'normal'},
+  {name:'Black Woods',len:2800,theme:'forest',sky:'#13211a',ground:'#1d3026',grunts:2,flyers:2,mix:{toxling:1},type:'normal'},
+  {name:'The Brute',len:1800,theme:'badlands',sky:'#241a1a',ground:'#33231f',grunts:1,flyers:1,type:'miniboss',boss:'brute'},
+  {name:'Hollow Pass',len:2800,theme:'canyon',sky:'#241e16',ground:'#352a1e',grunts:2,flyers:1,mix:{sparkling:1},type:'normal'},
+  {name:'Hollow Marksman',len:1800,theme:'canyon',sky:'#1f1a12',ground:'#312718',grunts:1,flyers:1,type:'miniboss',boss:'archer'},
+  {name:'Ruined Keep',len:3200,theme:'ruins',sky:'#1c1830',ground:'#2a2440',grunts:2,flyers:2,mix:{shadeling:1,toxling:1},type:'normal'},
+  {name:'The Warden',len:2000,theme:'dungeon',sky:'#2a1c2c',ground:'#3a2440',grunts:1,flyers:1,type:'miniboss',boss:'warden'},
+  {name:'Frostfell',len:3200,theme:'frost',sky:'#15202b',ground:'#243240',grunts:2,flyers:1,mix:{frostling:3},type:'normal'},
+  {name:'Frost Sorcerer',len:2000,theme:'frost',sky:'#10202c',ground:'#1e3340',grunts:1,flyers:1,mix:{frostling:1},type:'miniboss',boss:'sorcerer'},
+  {name:'Emberdeep',len:3200,theme:'volcano',sky:'#2a1410',ground:'#3a1c14',grunts:2,flyers:1,mix:{emberling:3},type:'normal'},
+  {name:'Ember Colossus',len:2000,theme:'volcano',sky:'#2c130c',ground:'#3d1a10',grunts:1,flyers:1,mix:{emberling:1},type:'miniboss',boss:'colossus'},
+  {name:'Abyss Approach',len:3600,theme:'void',sky:'#140b22',ground:'#241431',grunts:2,flyers:2,mix:{shadeling:2,sparkling:1},type:'normal'},
+  {name:'Abyss King',len:2000,theme:'void',sky:'#120b1c',ground:'#241431',grunts:0,flyers:0,type:'boss',boss:'king'},
+  {name:'The Void Tyrant',len:2000,theme:'apex',sky:'#0c0716',ground:'#1c1029',grunts:0,flyers:0,type:'boss',boss:'tyrant'}
 ];
 
 /* Enemy archetypes */
@@ -473,6 +473,29 @@ function computeNgScales(p){
 }
 function showGameUI(v){['hud','controls','pausebtn'].forEach(id=>document.getElementById(id).classList.toggle('hide',!v));}
 
+const CHUNKS=[
+  [".......",
+   ".......",
+   ".......",
+   "XX...XX"],
+  [".......",
+   "......X",
+   "....X..",
+   "XX....."],
+  [".......",
+   "..XXX..",
+   ".......",
+   "X.....X"],
+  [".......",
+   ".......",
+   "...X...",
+   "X.....X"],
+  [".......",
+   "....X..",
+   "....X..",
+   "XX..X.X"]
+];
+
 /* Stage loading */
 function loadStage(i){
   const s=STAGES[i];G.stageIndex=i;
@@ -480,29 +503,65 @@ function loadStage(i){
   G.kills=0;G.killGoal=0;G.cam=0;G.tookDamage=false;G.combo=0;G.comboT=0;
   G.p.x=70;G.p.y=0;G.p.vx=0;G.p.vy=0;G.p.onGround=true;
   
-  // Platforming generation
-  for(let x=400; x<s.len-400; x+=220+Math.random()*150){
-    if(Math.random()<0.6){
-       const y = 50+Math.random()*60;
-       G.obstacles.push({type:'plat', x, w: 100+Math.random()*80, y, h: 20});
-       if(Math.random()<0.2){
-         const rid=rollRarity();
-         if(Math.random()<0.5){
-           const pool=ARCHIDS.filter(a=>a!=='sword');
-           G.pickups.push({x,y:y+10,weapon:makeWeapon(pool[Math.floor(Math.random()*pool.length)],rid),bob:0});
-         }else{
-           G.pickups.push({x,y:y+10,armor:makeArmor(rid,SLOTIDS[Math.floor(Math.random()*3)]),bob:0});
-         }
-       }
-    } else {
-       G.obstacles.push({type:'pit', x, w: 120+Math.random()*60});
+  const TILE_W=120, TILE_H=40;
+  let curX=200;
+  
+  // Start safe
+  G.obstacles.push({type:'plat', x:200, w:400, y:0, h:20});
+  curX=400;
+
+  while(curX < s.len-600){
+    const chunk = CHUNKS[Math.floor(Math.random()*CHUNKS.length)];
+    const rows = chunk.length, cols = chunk[0].length;
+    const spots = [];
+    
+    for(let r=0; r<rows; r++){
+      for(let c=0; c<cols; c++){
+        if(chunk[r][c]==='X'){
+           const px = curX + c*TILE_W + TILE_W/2;
+           const py = (rows - 1 - r) * TILE_H;
+           G.obstacles.push({type:'plat', x:px, w:TILE_W, y:py, h:20});
+           spots.push({x:px, y:py});
+        }
+      }
     }
+    
+    if(spots.length>0 && Math.random()<0.35){
+      const sp = spots[Math.floor(Math.random()*spots.length)];
+      const rid = rollRarity();
+      if(Math.random()<0.5){
+        const pool=ARCHIDS.filter(a=>a!=='sword');
+        G.pickups.push({x:sp.x, y:sp.y+10, weapon:makeWeapon(pool[Math.floor(Math.random()*pool.length)],rid), bob:0});
+      }else{
+        G.pickups.push({x:sp.x, y:sp.y+10, armor:makeArmor(rid,SLOTIDS[Math.floor(Math.random()*3)]), bob:0});
+      }
+    }
+    curX += cols*TILE_W;
   }
+  
+  // End ground
+  G.obstacles.push({type:'plat', x:curX+300, w:600, y:0, h:20});
+  G.obstacles.push({type:'pit', x:s.len/2, w:s.len+2000});
+  
   G.stageBanner=2.6;document.getElementById('bosshpwrap').classList.remove('on');
-  const place=(type,count)=>{for(let k=0;k<count;k++){spawnEnemy(type,360+Math.random()*(s.len-520));G.killGoal++;}};
+
+  const place=(type,count)=>{
+      for(let k=0;k<count;k++){
+          const valid = G.obstacles.filter(o => o.type==='plat');
+          const p = valid[Math.floor(Math.random()*valid.length)];
+          if(p){
+              const e = spawnEnemy(type, p.x);
+              e.y = p.y; G.killGoal++;
+          }
+      }
+  };
   place('grunt',s.grunts||0);place('flyer',s.flyers||0);
   if(s.mix)for(const t in s.mix)place(t,s.mix[t]);
-  if(s.type==='miniboss'||s.type==='boss'){spawnEnemy(s.boss,s.len-220,true);G.killGoal++;}
+  if(s.type==='miniboss'||s.type==='boss'){
+     const bp = G.obstacles[G.obstacles.length-2];
+     const e = spawnEnemy(s.boss, bp.x - 100, true);
+     e.y = bp.y; G.killGoal++;
+  }
   document.getElementById('stageTag').textContent=s.name;hudUpdate();
 }
 function spawnEnemy(type,x,isBoss){
@@ -989,7 +1048,7 @@ function hudUpdate(){
 const overlay=document.getElementById('overlay'),ovcard=document.getElementById('ovcard');
 function showOverlay(v){overlay.classList.toggle('hide',!v);}
 function showOvHTML(html){ovcard.innerHTML=html;showOverlay(true);}
-function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>{t.classList.remove('show');toast._t=null;},1400);}
+function toast(msg){const t=document.getElementById('toast');t.innerHTML=msg;t.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>{t.classList.remove('show');toast._t=null;},2000);}
 function resumePlay(){mode='play';showOverlay(false);hudUpdate();}
 
 function titleScreen(){
@@ -1053,34 +1112,27 @@ function openLevelUp(){
 /* Weapon/Armor swap */
 function fmt(n){return Math.round(n*100)/100;}
 function offerWeapon(nw){
-  if(meta.autoKeep){toast('Kept · '+nw.name+' dropped');resumePlay();return;}
-  mode='weapon';const cur=G.p.weapon;
-  const row=(label,a,b,better)=>{const up=better==='low'?b<a:b>a;const cls=(a===b)?'':(up?'up':'down');return`<div class="vsrow"><span>${label}</span><span><b>${fmt(a)}</b> → <b class="${cls}">${fmt(b)}</b></span></div>`;};
-  const reachRow=nw.cls==='ranged'?row('Range',(cur.proj&&cur.proj.range)||0,nw.proj.range||0):row('Range',cur.range||0,nw.range||0);
-  showOvHTML(`<div class="card">
-    <p class="ovsub" style="color:${RARITY[nw.rarity].color};margin-bottom:2px;letter-spacing:.16em;">${RARITY[nw.rarity].name.toUpperCase()}</p>
-    <h2 class="ovh" style="color:${RARITY[nw.rarity].color}">${nw.name}</h2>
-    <div class="statgrid">${row('Damage',cur.dmg,nw.dmg)}${reachRow}${row('Attack speed',cur.cd,nw.cd,'low')}${row('Knockback',cur.kb,nw.kb)}<div class="vsrow"><span>Element</span><b style="color:${elColor(nw.el)||'#cfd6df'};text-transform:capitalize">${nw.el||'Neutral'}</b></div></div>
-    <button class="bigbtn" id="equipBtn">Equip</button><button class="bigbtn ghost" id="keepBtn">Keep ${cur.name}</button></div>`);
-  document.getElementById('equipBtn').onclick=()=>{G.p.weapon=nw;if(meta.soundOn)SFX.pickup();toast(nw.name+' equipped');resumePlay();};
-  document.getElementById('keepBtn').onclick=()=>resumePlay();
+  const cur=G.p.weapon;
+  const curDps = cur.dmg / cur.cd;
+  const newDps = nw.dmg / nw.cd;
+  if(newDps > curDps){
+    G.p.weapon=nw;
+    if(meta.soundOn)SFX.pickup();
+    toast('Equipped: <b style="color:'+RARITY[nw.rarity].color+'">'+nw.name+'</b>');
+  } else {
+    toast('Ignored: <span style="opacity:0.5">'+nw.name+'</span>');
+  }
 }
 function offerArmor(na){
-  if(meta.autoKeep){toast('Kept · '+na.name+' dropped');resumePlay();return;}
-  mode='weapon';const cur=G.p.gear[na.slot],curDef=cur?cur.defense:0;
-  const before=totalDefense(G.p),after=before-curDef+na.defense;
-  const reduc=d=>Math.round(d/(d+200)*100);
-  showOvHTML(`<div class="card">
-    <p class="ovsub" style="color:${RARITY[na.rarity].color};margin-bottom:2px;letter-spacing:.16em;">${RARITY[na.rarity].name.toUpperCase()} · ${SLOTS[na.slot].label.toUpperCase()}</p>
-    <h2 class="ovh" style="color:${RARITY[na.rarity].color}">${na.name}</h2>
-    <div class="statgrid">
-      <div class="vsrow"><span>Defense</span><span><b>${curDef}</b> → <b class="${na.defense>curDef?'up':'down'}">${na.defense}</b></span></div>
-      <div class="vsrow"><span>Total reduction</span><span><b>${reduc(before)}%</b> → <b class="${after>before?'up':'down'}">${reduc(after)}%</b></span></div>
-      ${na.affixes.map(a=>`<div class="vsrow"><span>Bonus</span><b style="color:var(--good)">${a.label}</b></div>`).join('')}
-    </div>
-    <button class="bigbtn" id="equipBtn">Equip</button><button class="bigbtn ghost" id="keepBtn">${cur?'Keep current':'Skip'}</button></div>`);
-  document.getElementById('equipBtn').onclick=()=>{G.p.gear[na.slot]=na;recomputeArmor(G.p);G.p.hp=Math.min(G.p.hp,effMaxHp(G.p));if(meta.soundOn)SFX.pickup();toast(na.name+' equipped');resumePlay();};
-  document.getElementById('keepBtn').onclick=()=>resumePlay();
+  const cur=G.p.gear[na.slot];
+  const curDef=cur?cur.defense:-1;
+  if(na.defense > curDef){
+    G.p.gear[na.slot]=na;recomputeArmor(G.p);G.p.hp=Math.min(G.p.hp,effMaxHp(G.p));
+    if(meta.soundOn)SFX.pickup();
+    toast('Equipped: <b style="color:'+RARITY[na.rarity].color+'">'+na.name+'</b>');
+  } else {
+    toast('Ignored: <span style="opacity:0.5">'+na.name+'</span>');
+  }
 }
 function openPause(){
   mode='pause';
