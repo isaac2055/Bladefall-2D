@@ -637,16 +637,19 @@ function addText(x,y,txt,color,big){G.texts.push({x,y,txt,color,big:!!big,vy:-40
    SECTION 9: UPDATE LOOP
    ================================================================ */
 function getFloorY(x, oldY = 0) {
-  let fy = 0;
+  let fy = -200;
+  let hasPlat = false;
   if(G&&G.obstacles) {
     for(const o of G.obstacles) {
-      if(Math.abs(x - o.x) < o.w/2) {
-        if(o.type === 'plat' && oldY >= o.y) fy = Math.max(fy, o.y);
-        else if(o.type === 'pit') return -200;
+      if(o.type === 'plat' && Math.abs(x - o.x) < o.w/2) {
+        if(oldY >= o.y) {
+          fy = hasPlat ? Math.max(fy, o.y) : o.y;
+          hasPlat = true;
+        }
       }
     }
   }
-  return fy;
+  return hasPlat ? fy : -200;
 }
 
 function update(dt){
