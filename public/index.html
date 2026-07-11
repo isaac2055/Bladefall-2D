@@ -540,8 +540,9 @@ function loadStage(i){
   }
   
   // End ground and Portal
+  G.levelLength = curX + 600;
   G.obstacles.push({type:'plat', x:curX+300, w:600, y:0, h:20});
-  G.obstacles.push({type:'pit', x:s.len/2, w:s.len+2000});
+  G.obstacles.push({type:'pit', x:G.levelLength/2, w:G.levelLength+2000});
   G.portal = {x: curX+300, t:0};
   
   G.stageBanner=2.6;document.getElementById('bosshpwrap').classList.remove('on');
@@ -559,9 +560,9 @@ function loadStage(i){
   place('grunt',s.grunts||0);place('flyer',s.flyers||0);
   if(s.mix)for(const t in s.mix)place(t,s.mix[t]);
   if(s.type==='miniboss'||s.type==='boss'){
-     const bp = G.obstacles[G.obstacles.length-2];
-     const e = spawnEnemy(s.boss, bp.x - 100, true);
-     e.y = bp.y; G.killGoal++;
+    const bp = G.obstacles[G.obstacles.length-2];
+    const e = spawnEnemy(s.boss, bp.x - 100, true);
+    e.y = bp.y; G.killGoal++;
   }
   document.getElementById('stageTag').textContent=s.name;hudUpdate();
 }
@@ -706,7 +707,7 @@ function update(dt){
 
   // Movement & Collision
   p.x+=p.vx*dt;
-  if(p.x<20)p.x=20;if(p.x>s.len-20)p.x=s.len-20;
+  if(p.x<20)p.x=20;if(p.x>G.levelLength-20)p.x=G.levelLength-20;
 
   // Gravity
   const oldY = p.y;
@@ -769,7 +770,7 @@ function update(dt){
 
   // Camera
   const targetCam=p.x-VW*0.35;G.cam+=(targetCam-G.cam)*0.08;
-  if(G.cam<0)G.cam=0;if(G.cam>s.len-VW)G.cam=s.len-VW;
+  if(G.cam<0)G.cam=0;if(G.cam>G.levelLength-VW)G.cam=G.levelLength-VW;
 
   // Enemies
   for(const e of G.enemies){
@@ -832,7 +833,7 @@ function update(dt){
     }
 
     // Boundary
-    if(e.x<24)e.x=24;if(e.x>s.len-24)e.x=s.len-24;
+    if(e.x<24)e.x=24;if(e.x>G.levelLength-24)e.x=G.levelLength-24;
     // Contact damage
     if(!e.dead&&Math.abs(e.x-p.x)<(e.w/2+p.w/2)){
       const vOv=Math.abs((e.y+e.h/2)-(p.y+p.h/2))<(e.h/2+p.h/2);
@@ -1044,7 +1045,7 @@ function drawParallax(c,s){
   for(let i=0;i<22;i++){const px=(i*180)-(cam*0.65)%(22*180);c.fillRect(px,GROUND_Y-130,24,130);}
 }
 function drawGround(c,s){
-  const len=s.len;
+  const len=G.levelLength;
   const g=c.createLinearGradient(0,GROUND_Y,0,VH);g.addColorStop(0,tint(s.ground,'#000',0.35));g.addColorStop(0.5,s.ground);g.addColorStop(1,tint(s.ground,'#000',0.12));
   c.fillStyle=g;c.fillRect(0,GROUND_Y,len,VH-GROUND_Y+40);
   c.fillStyle='rgba(255,255,255,0.09)';c.fillRect(0,GROUND_Y,len,3);
