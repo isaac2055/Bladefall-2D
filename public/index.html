@@ -684,7 +684,11 @@ function update(dt){
     if(meta.soundOn)SFX.dodge();
   }
   input.dodgeEdge=false;
-  if(p.dodgeTimer>0){p.dodgeTimer-=dt;p.vx=p.dashX*spd*2.4;}
+  if(p.dodgeTimer>0){
+    p.dodgeTimer-=dt;
+    const targetVx = mx ? mx*spd*3.0 : p.dashX*spd*2.4;
+    p.vx += (targetVx - p.vx) * 15 * dt;
+  }
   else{p.vx += (mx*spd - p.vx) * 15 * dt;}
 
   // Jump
