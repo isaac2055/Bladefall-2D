@@ -700,9 +700,14 @@ function update(dt){
       p.onGround=true;p.vy=0;p.jumps=0;
   }
   if(p.y>targetFloor)p.onGround=false;
+  
+  if(p.onGround && targetFloor >= 0) {
+      p.safeX = p.x;
+  }
+  
   if(p.y < -50) {
-      hurtPlayer(20, -p.face); // fall damage
-      p.x -= p.face * 100;
+      hurtPlayer(20, 0); // fall damage, no knockback
+      p.x = p.safeX || 200;
       p.y = 200; p.vy = 0;
   }
 
