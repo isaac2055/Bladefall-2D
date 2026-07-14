@@ -100,6 +100,18 @@ html,body{margin:0;padding:0;height:100%;overflow:hidden;background:var(--bg);co
 </div>
 <div id="toast"></div>
 <div id="overlay"><div class="card" id="ovcard"></div></div>
+<audio id="bgMusic" loop preload="auto" src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Kevin_MacLeod_-_Five_Armies.ogg"></audio>
+<script>
+  let _musicStarted = false;
+  const tryStartMusic = () => {
+    if(!_musicStarted && (typeof meta !== 'undefined' ? meta.soundOn : true)){
+      const m = document.getElementById('bgMusic');
+      if(m) { m.volume = 0.4; m.play().then(()=>{_musicStarted=true;}).catch(()=>{}); }
+    }
+  };
+  document.addEventListener('click', tryStartMusic);
+  document.addEventListener('keydown', tryStartMusic);
+</script>
 
 <script src="littlejs.min.js"></script>
 <script>
@@ -313,13 +325,13 @@ document.addEventListener('touchend',e=>{if(e.target.closest&&e.target.closest('
    SECTION 5: PROCEDURAL AUDIO (ZzFX)
    ================================================================ */
 const SFX={
-  slash(){zzfx(...[.04,,400,.01,.02,.08,2,2.5,,3,,,,,,,,.6,.02]);},
-  shoot(){zzfx(...[.03,,1500,.01,.03,.04,1,.8,,-3,,,,,,,,,.03]);},
+  slash(){zzfx(...[.03,,400,.03,.02,.1,1,2,,,-40,,,,,,,,.5]);},
+  shoot(){zzfx(...[.03,,1000,.02,.03,.1,1,1.5,,-20,,,,,,,,.3]);},
   hit(){zzfx(...[.05,,190,.01,.06,.12,1,1.2,,6,-50,.01,,,,,,,.04]);},
   hurt(){zzfx(...[.06,,310,.02,.1,.2,3,.8,,,-100,.02,,,,,,,.06]);},
-  jump(){zzfx(...[.03,,230,.01,.08,.13,1,.5,,,,,,,,,,.8,.04]);},
+  jump(){zzfx(...[.03,,250,.03,.05,.12,1,1.2,,-10,,,,,,,,.3]);},
   land(){zzfx(...[.02,,150,.01,.04,.08,1,1.5,,6,-50,.01,,,,,,,.04]);},
-  dodge(){zzfx(...[.03,,900,.01,.08,.17,1,1.1,,,,,,,,,,,.05]);},
+  dodge(){zzfx(...[.04,,600,.04,.08,.15,1,1.1,,,,,,,,,,.5]);},
   enemyDie(){zzfx(...[.05,,250,.02,.18,.34,3,.8,,,-50,.03,,,,,,,.04]);},
   levelup(){zzfx(...[.04,,523,.01,.08,.16,1,.5,,,,,,,,,,.8,.04]);setTimeout(()=>zzfx(...[.04,,659,.01,.08,.16,1,.5,,,,,,,,,,.8,.04]),85);setTimeout(()=>zzfx(...[.04,,784,.01,.08,.14,1,.5,,,,,,,,,,.8,.04]),170);},
   pickup(){zzfx(...[.03,,660,.01,.05,.1,1,.5,,,,,,,,,,.8,.03]);setTimeout(()=>zzfx(...[.03,,990,.01,.07,.16,1,.5,,,,,,,,,,.8,.03]),70);},
@@ -1487,7 +1499,12 @@ function titleScreen(){
       <span style="opacity:.5">v${VERSION}</span></p></div>`);
   if(hasRun)document.getElementById('contBtn').onclick=continueRun;
   document.getElementById('newBtn').onclick=()=>beginRun(0,null,{hp:1,dmg:1});
-  document.getElementById('sndBtn').onclick=()=>{meta.soundOn=!meta.soundOn;persist();titleScreen();};
+  document.getElementById('sndBtn').onclick=()=>{
+    meta.soundOn=!meta.soundOn;
+    const m = document.getElementById('bgMusic');
+    if(m) { if(meta.soundOn) { m.play().catch(()=>{}); } else { m.pause(); } }
+    persist();titleScreen();
+  };
 }
 
 function die(){
