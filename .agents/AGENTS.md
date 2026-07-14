@@ -1,0 +1,1 @@
+- Do not deploy to Netlify (`netlify deploy`) unless explicitly instructed by the user, as they want to save their deployment credits.
