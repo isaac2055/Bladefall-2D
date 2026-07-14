@@ -550,7 +550,7 @@ function loadStage(i){
   G.levelLength = curX + 600;
   G.obstacles.push({type:'plat', x:curX+300, w:600, y:0, h:20});
   G.obstacles.push({type:'pit', x:G.levelLength/2, w:G.levelLength+2000});
-  G.portal = {x: curX+300, t:0};
+  G.portal = s.boss ? null : {x: curX+300, t:0};
   
   G.stageBanner=2.6;document.getElementById('bosshpwrap').classList.remove('on');
 
@@ -620,7 +620,10 @@ function killEnemy(e){
   // Loot drop
   rollDrop(e);
   // Boss bar
-  if(e.boss)document.getElementById('bosshpwrap').classList.remove('on');
+  if(e.boss){
+    document.getElementById('bosshpwrap').classList.remove('on');
+    G.portal = {x: G.levelLength - 300, t:0};
+  }
   persist();
 }
 function rollDrop(e){
