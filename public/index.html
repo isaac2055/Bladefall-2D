@@ -369,12 +369,7 @@ function drawHero(c,p){
   const A='#3f566f',AL='#5d7da0',TR='#cfe0ef',CAPE='#28384e',MET='#aeb9c6',GL='#9fc4ff',TONE='#f1d9c2';
   const hurt=p.hurtFlash>0;
   c.save();
-  if(p.invuln<=0||Math.floor(G.time*15)%2===0)drawPlayer(ctx,p);
-  if(p.hasJetpack && p.fuel < 100){
-      const fy = GROUND_Y-p.y-p.h-15;
-      ctx.fillStyle='#000'; ctx.fillRect(p.x-16, fy, 32, 4);
-      ctx.fillStyle='#e8a33d'; ctx.fillRect(p.x-16, fy, 32*(Math.max(0,p.fuel)/100), 4);
-  }
+  if(p.invuln>0&&Math.floor(p.invuln*20)%2===0)c.globalAlpha=0.45;
   if(p.dodgeTimer>0)c.globalAlpha=0.6;
   c.scale(p.face,1);
   // Cape
@@ -1248,6 +1243,11 @@ function render(){
   for(const pk of G.pickups)drawPickup(ctx,pk);
   for(const e of G.enemies)if(!e.dead)drawEnemyFull(ctx,e);
   drawHeroFull(ctx,G.p);
+  if(G.p.hasJetpack && G.p.fuel < 100){
+      const fy = GROUND_Y-G.p.y-G.p.h-15;
+      ctx.fillStyle='#000'; ctx.fillRect(G.p.x-16, fy, 32, 4);
+      ctx.fillStyle='#e8a33d'; ctx.fillRect(G.p.x-16, fy, 32*(Math.max(0,G.p.fuel)/100), 4);
+  }
   for(const pr of G.projectiles)drawProjectile(ctx,pr);
 
   // Particles
