@@ -494,26 +494,51 @@ function computeNgScales(p){
 function showGameUI(v){['hud','controls','pausebtn'].forEach(id=>document.getElementById(id).classList.toggle('hide',!v));}
 
 const CHUNKS=[
+  // Classic gap
   [".......",
    ".......",
    ".......",
    "XX...XX"],
+  // Vertical spring tower
+  ["...P...",
+   "...X...",
+   "..P.P..",
+   "X.....X"],
+  // Spring over spikes
+  [".......",
+   "...C...",
+   ".......",
+   "XPSSSXP"],
+  // Moving platforms under Traps
+  ["..T.T..",
+   "...M...",
+   ".......",
+   "XX...XX"],
+  // Spring launching into Trap (trick jump)
+  [".......",
+   ".......",
+   "...T...",
+   "X..P..X"],
+  // Crumbling platforms over spikes
+  [".......",
+   "..CCC..",
+   ".......",
+   "X.SSS.X"],
+  // Stairs up
   [".......",
    "......X",
    "....X..",
    "XX....."],
+  // Basic Spring
   [".......",
+   "...P...",
    "..XXX..",
-   ".......",
    "X.....X"],
+  // The Trap Hallway
   [".......",
+   "TTTTTTT",
    ".......",
-   "...X...",
-   "X.....X"],
-  [".......",
-   "....X..",
-   "....X..",
-   "XX..X.X"]
+   "XXXXXXX"]
 ];
 
 /* ================================================================
@@ -581,7 +606,7 @@ const LEVELS=[
   Pl(3640,100,30,{crumble:1}),Pl(3760,100,55,{crumble:1}),
   Gr(3800,4200),
  ],
- loot:[{x:250,y:100,kind:'jetpack'},{x:1300,y:360,kind:'weapon'},{x:1650,y:195,kind:'armor'}],
+ loot:[{x:1300,y:360,kind:'weapon'},{x:1650,y:195,kind:'armor'}],
  enemies:[{t:'grunt',x:930},{t:'toxling',x:1120},{t:'sparkling',x:2100},{t:'grunt',x:3290},{t:'toxling',x:3460},{t:'flyer',x:3950}]},
 
 /* ---- STAGE 3 · THE BRUTE — a gauntlet, then a fight ---- */
@@ -653,19 +678,28 @@ function loadStage(i){
   G.obstacles.push({type:'plat', x:200, w:400, y:0, h:20});
   curX=400;
 
+  let addedCheck = false;
   while(curX < s.len-600){
+    if(!addedCheck && curX > s.len/2) {
+       G.obstacles.push(Check(curX, 0));
+       addedCheck = true;
+       curX += 200;
+    }
     const chunk = CHUNKS[Math.floor(Math.random()*CHUNKS.length)];
     const rows = chunk.length, cols = chunk[0].length;
     const spots = [];
     
     for(let r=0; r<rows; r++){
       for(let c=0; c<cols; c++){
-        if(chunk[r][c]==='X'){
-           const px = curX + c*TILE_W + TILE_W/2;
-           const py = (rows - 1 - r) * TILE_H;
-           G.obstacles.push({type:'plat', x:px, w:TILE_W, y:py, h:20});
-           spots.push({x:px, y:py});
-        }
+        const char = chunk[r][c];
+        const px = curX + c*TILE_W + TILE_W/2;
+        const py = (rows - 1 - r) * TILE_H;
+        if(char==='X') { G.obstacles.push({type:'plat', x:px, w:TILE_W, y:py, h:20}); spots.push({x:px, y:py}); }
+        else if(char==='S') G.obstacles.push(Sp(px, py, {w:TILE_W, phase:Math.random()*2}));
+        else if(char==='T') G.obstacles.push(Trap(px, py+20)); // Traps hang from above
+        else if(char==='P') G.obstacles.push(Spring(px, py));
+        else if(char==='M') G.obstacles.push(Pl(px, TILE_W, py, {move:{dx:120, dy:0, period:3.0, phase:0}}));
+        else if(char==='C') G.obstacles.push(Pl(px, TILE_W, py, {crumble:1}));
       }
     }
     
@@ -768,6 +802,7 @@ function killEnemy(e){
   if(e.boss){
     document.getElementById('bosshpwrap').classList.remove('on');
     G.portal = {x: G.levelLength - 300, t:0};
+    if(e.type==='brute' && !G.p.hasJetpack) G.pickups.push({x: e.x, y: e.y + 40, jetpack: true, bob: 0});
   }
   persist();
 }
