@@ -18,6 +18,7 @@ const stages = (arg('stages', arg('stage', '0'))).split(',').map((s) => Number(s
 const goalX = arg('goal', null) === null ? null : Number(arg('goal'));
 const budget = arg('budget', null) === null ? undefined : Number(arg('budget'));
 const maxSegments = arg('segments', null) === null ? undefined : Number(arg('segments'));
+const muster = argv.includes('--muster');
 const outPath = resolve(arg('out', 'docs/bot/receipt.json'));
 
 const root = resolve('public');
@@ -56,7 +57,7 @@ try {
     const started = Date.now();
     let boot, result;
     try {
-      boot = await page.evaluate(bot.bootstrapStage, stage);
+      boot = await page.evaluate(bot.bootstrapStage, muster ? { stage, muster: true } : stage);
       result = await page.evaluate(bot.solveLevel, { goalX, totalExpansions: budget, maxSegments });
     } catch (error) {
       // One stage the TAS snapshot cannot serialize must not abort the sweep.
@@ -68,7 +69,7 @@ try {
     // Keep the receipt readable: the frame-by-frame inputs belong in the log,
     // not in a document a human is meant to scan.
     const { winningInputs, ...summary } = result;
-    runs.push({ stage, boot: { levelLength: boot.levelLength, capabilities: boot.capabilities, spawn: { x: Math.round(boot.p.x), y: Math.round(boot.p.y) } },
+    runs.push({ stage, muster, boot: { levelLength: boot.levelLength, capabilities: boot.capabilities, spawn: { x: Math.round(boot.p.x), y: Math.round(boot.p.y) } },
       seconds: +((Date.now() - started) / 1000).toFixed(1), ...summary,
       inputFrames: winningInputs ? winningInputs.length : 0 });
     const r = runs.at(-1);

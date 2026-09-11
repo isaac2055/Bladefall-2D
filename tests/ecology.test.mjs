@@ -9,7 +9,7 @@ test('ecology authority covers every ordinary species and boss family', () => {
   const ids = [...Object.keys(Ecology.SPECIES), ...Ecology.BOSSES];
   const validation = Ecology.validate(ids);
   assert.equal(validation.ok, true);
-  assert.equal(validation.ordinary, 17);
+  assert.equal(validation.ordinary, 20);
   assert.equal(validation.bosses, 7);
   assert.equal(Ecology.profile('stormmote').habitats.includes('updraft'), true);
 });

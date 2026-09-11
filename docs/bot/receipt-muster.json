@@ -1,0 +1,1537 @@
+{
+  "schema": "bladefall.traversal-bot",
+  "generatedAt": "2026-09-11T12:34:41.498Z",
+  "pass": true,
+  "runtimeErrors": [],
+  "runs": [
+    {
+      "stage": 0,
+      "muster": true,
+      "boot": {
+        "levelLength": 13800,
+        "capabilities": [
+          "jump",
+          "weapon",
+          "dash",
+          "portal-single",
+          "portal-pair",
+          "wall-jump",
+          "counter",
+          "double-jump"
+        ],
+        "spawn": {
+          "x": 70,
+          "y": 2
+        }
+      },
+      "seconds": 29.9,
+      "pass": true,
+      "direction": 1,
+      "goalX": 13680,
+      "goalKind": "level-end",
+      "crossedBoundary": true,
+      "reachedX": 13740,
+      "segments": 37,
+      "backtracks": 0,
+      "frames": 4297,
+      "replayFrames": 4296,
+      "expansions": 3126,
+      "replayIdentical": true,
+      "capabilities": {
+        "doubleJump": true,
+        "dash": true,
+        "weapon": false
+      },
+      "envelope": {
+        "maxRise": 233,
+        "maxReach": 659
+      },
+      "costedSegments": 0,
+      "blood": 5,
+      "mechanisms": [],
+      "history": [
+        {
+          "seg": 0,
+          "from": 600,
+          "to": "1150:58",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 1081
+        },
+        {
+          "seg": 0,
+          "from": 600,
+          "to": "730:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 685
+        },
+        {
+          "seg": 0,
+          "from": 600,
+          "to": "585:34",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 520
+        },
+        {
+          "seg": 0,
+          "from": 600,
+          "to": "585:34",
+          "blood": false,
+          "exp": 359,
+          "ok": true
+        },
+        {
+          "seg": 1,
+          "from": 1120,
+          "to": "1690:68",
+          "blood": false,
+          "exp": 2,
+          "ok": true
+        },
+        {
+          "seg": 2,
+          "from": 1290,
+          "to": "1880:0",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 3,
+          "from": 1650,
+          "to": "1880:0",
+          "blood": false,
+          "exp": 2,
+          "ok": true
+        },
+        {
+          "seg": 4,
+          "from": 1830,
+          "to": "1880:0",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 5,
+          "from": 2600,
+          "to": "3195:56",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 6,
+          "from": 3180,
+          "to": "3370:0",
+          "blood": false,
+          "exp": 5,
+          "ok": true
+        },
+        {
+          "seg": 7,
+          "from": 3830,
+          "to": "4240:0",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 8,
+          "from": 4010,
+          "to": "4240:0",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 9,
+          "from": 4218,
+          "to": "4700:0",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 10,
+          "from": 4700,
+          "to": "5305:58",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 11,
+          "from": 5040,
+          "to": "5580:42",
+          "blood": false,
+          "exp": 2,
+          "ok": true
+        },
+        {
+          "seg": 12,
+          "from": 5230,
+          "to": "5875:70",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 471
+        },
+        {
+          "seg": 12,
+          "from": 5230,
+          "to": "5580:42",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 166
+        },
+        {
+          "seg": 12,
+          "from": 5230,
+          "to": "5698:118",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 323
+        },
+        {
+          "seg": 12,
+          "from": 5230,
+          "to": "5305:58",
+          "blood": false,
+          "exp": 145,
+          "ok": true
+        },
+        {
+          "seg": 13,
+          "from": 5285,
+          "to": "5875:70",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 14,
+          "from": 5495,
+          "to": "5875:70",
+          "blood": false,
+          "exp": 2,
+          "ok": true
+        },
+        {
+          "seg": 15,
+          "from": 5780,
+          "to": "6340:55",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 365
+        },
+        {
+          "seg": 15,
+          "from": 5780,
+          "to": "6405:110",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 463
+        },
+        {
+          "seg": 15,
+          "from": 5780,
+          "to": "6180:44",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 199
+        },
+        {
+          "seg": 15,
+          "from": 5780,
+          "to": "6216:125",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 283
+        },
+        {
+          "seg": 15,
+          "from": 5780,
+          "to": "6180:44",
+          "blood": false,
+          "exp": 261,
+          "ok": true
+        },
+        {
+          "seg": 16,
+          "from": 6085,
+          "to": "6700:0",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 17,
+          "from": 6380,
+          "to": "7000:0",
+          "blood": false,
+          "exp": 2,
+          "ok": true
+        },
+        {
+          "seg": 18,
+          "from": 6505,
+          "to": "7000:0",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 19,
+          "from": 6690,
+          "to": "7000:0",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 20,
+          "from": 7000,
+          "to": "7570:72",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 21,
+          "from": 7550,
+          "to": "7790:0",
+          "blood": false,
+          "exp": 167,
+          "ok": true
+        },
+        {
+          "seg": 22,
+          "from": 8250,
+          "to": "8680:0",
+          "blood": false,
+          "exp": 2,
+          "ok": true
+        },
+        {
+          "seg": 23,
+          "from": 8445,
+          "to": "8680:0",
+          "blood": false,
+          "exp": 2,
+          "ok": true
+        },
+        {
+          "seg": 24,
+          "from": 8655,
+          "to": "9300:0",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 25,
+          "from": 9300,
+          "to": "9905:48",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 26,
+          "from": 9860,
+          "to": "10310:0",
+          "blood": false,
+          "exp": 2,
+          "ok": true
+        },
+        {
+          "seg": 27,
+          "from": 10055,
+          "to": "10310:0",
+          "blood": false,
+          "exp": 2,
+          "ok": true
+        },
+        {
+          "seg": 28,
+          "from": 10275,
+          "to": "10838:58",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 29,
+          "from": 10820,
+          "to": "11240:0",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 30,
+          "from": 11155,
+          "to": "11500:0",
+          "blood": false,
+          "exp": 4,
+          "ok": true
+        },
+        {
+          "seg": 31,
+          "from": 11920,
+          "to": "12380:28",
+          "blood": false,
+          "exp": 4,
+          "ok": true
+        },
+        {
+          "seg": 32,
+          "from": 12325,
+          "to": "12590:0",
+          "blood": false,
+          "exp": 6,
+          "ok": true
+        },
+        {
+          "seg": 33,
+          "from": 12560,
+          "to": "13055:42",
+          "blood": false,
+          "exp": 6,
+          "ok": true
+        },
+        {
+          "seg": 34,
+          "from": 13040,
+          "to": "13240:0",
+          "blood": false,
+          "exp": 2,
+          "ok": true
+        },
+        {
+          "seg": 35,
+          "from": 13225,
+          "to": "13240:0",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 36,
+          "from": 13800,
+          "to": "point:13680",
+          "blood": false,
+          "exp": 2,
+          "ok": true
+        }
+      ],
+      "solved": [
+        {
+          "seg": 0,
+          "from": {
+            "x0": 0,
+            "x1": 600,
+            "y": 0
+          },
+          "to": {
+            "x0": 730,
+            "x1": 1120,
+            "y": 0
+          },
+          "frames": 200,
+          "expansions": 359,
+          "depth": 16,
+          "costBlood": false,
+          "dFrom": 36.18666666666666,
+          "dTo": 34.75333333333333,
+          "via": "run",
+          "x": 783,
+          "y": 0
+        },
+        {
+          "seg": 1,
+          "from": {
+            "x0": 730,
+            "x1": 1120,
+            "y": 0
+          },
+          "to": {
+            "x0": 1150,
+            "x1": 1290,
+            "y": 58
+          },
+          "frames": 129,
+          "expansions": 2,
+          "depth": 2,
+          "costBlood": false,
+          "dFrom": 34.75333333333333,
+          "dTo": 34.47666666666667,
+          "via": "run",
+          "x": 1240,
+          "y": 58
+        },
+        {
+          "seg": 2,
+          "from": {
+            "x0": 1150,
+            "x1": 1290,
+            "y": 58
+          },
+          "to": {
+            "x0": 1310,
+            "x1": 1650,
+            "y": 0
+          },
+          "frames": 63,
+          "expansions": 3,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 34.47666666666667,
+          "dTo": 33.12,
+          "via": "run",
+          "x": 1450,
+          "y": 0
+        },
+        {
+          "seg": 3,
+          "from": {
+            "x0": 1310,
+            "x1": 1650,
+            "y": 0
+          },
+          "to": {
+            "x0": 1690,
+            "x1": 1830,
+            "y": 68
+          },
+          "frames": 96,
+          "expansions": 2,
+          "depth": 2,
+          "costBlood": false,
+          "dFrom": 33.12,
+          "dTo": 32.86,
+          "via": "run",
+          "x": 1770,
+          "y": 68
+        },
+        {
+          "seg": 4,
+          "from": {
+            "x0": 1690,
+            "x1": 1830,
+            "y": 68
+          },
+          "to": {
+            "x0": 1880,
+            "x1": 2600,
+            "y": 0
+          },
+          "frames": 66,
+          "expansions": 3,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 32.86,
+          "dTo": 31.35333333333333,
+          "via": "run",
+          "x": 1990,
+          "y": 0
+        },
+        {
+          "seg": 5,
+          "from": {
+            "x0": 1880,
+            "x1": 2600,
+            "y": 0
+          },
+          "to": {
+            "x0": 2600,
+            "x1": 3180,
+            "y": 0
+          },
+          "frames": 231,
+          "expansions": 3,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 31.35333333333333,
+          "dTo": 30.35333333333333,
+          "via": "run",
+          "x": 2760,
+          "y": 0
+        },
+        {
+          "seg": 6,
+          "from": {
+            "x0": 2600,
+            "x1": 3180,
+            "y": 0
+          },
+          "to": {
+            "x0": 3370,
+            "x1": 3830,
+            "y": 0
+          },
+          "frames": 186,
+          "expansions": 5,
+          "depth": 4,
+          "costBlood": false,
+          "dFrom": 30.35333333333333,
+          "dTo": 28.72,
+          "via": "run",
+          "x": 3652,
+          "y": 0
+        },
+        {
+          "seg": 7,
+          "from": {
+            "x0": 3370,
+            "x1": 3830,
+            "y": 0
+          },
+          "to": {
+            "x0": 3860,
+            "x1": 4010,
+            "y": 72
+          },
+          "frames": 64,
+          "expansions": 1,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": 28.72,
+          "dTo": 28.479999999999997,
+          "via": "approach40h21",
+          "x": 3921,
+          "y": 72
+        },
+        {
+          "seg": 8,
+          "from": {
+            "x0": 3860,
+            "x1": 4010,
+            "y": 72
+          },
+          "to": {
+            "x0": 4082.5,
+            "x1": 4217.5,
+            "y": 78
+          },
+          "frames": 74,
+          "expansions": 3,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 28.479999999999997,
+          "dTo": 27.81833333333333,
+          "via": "run",
+          "x": 4170,
+          "y": 78
+        },
+        {
+          "seg": 9,
+          "from": {
+            "x0": 4082.5,
+            "x1": 4217.5,
+            "y": 78
+          },
+          "to": {
+            "x0": 4240,
+            "x1": 4700,
+            "y": 0
+          },
+          "frames": 62,
+          "expansions": 3,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 27.81833333333333,
+          "dTo": 26.35333333333333,
+          "via": "run",
+          "x": 4377,
+          "y": 0
+        },
+        {
+          "seg": 10,
+          "from": {
+            "x0": 4240,
+            "x1": 4700,
+            "y": 0
+          },
+          "to": {
+            "x0": 4700,
+            "x1": 5040,
+            "y": 0
+          },
+          "frames": 145,
+          "expansions": 3,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 26.35333333333333,
+          "dTo": 25.35333333333333,
+          "via": "run",
+          "x": 4860,
+          "y": 0
+        },
+        {
+          "seg": 11,
+          "from": {
+            "x0": 4700,
+            "x1": 5040,
+            "y": 0
+          },
+          "to": {
+            "x0": 5050,
+            "x1": 5230,
+            "y": 38
+          },
+          "frames": 90,
+          "expansions": 2,
+          "depth": 2,
+          "costBlood": false,
+          "dFrom": 25.35333333333333,
+          "dTo": 24.423333333333332,
+          "via": "run",
+          "x": 5160,
+          "y": 38
+        },
+        {
+          "seg": 12,
+          "from": {
+            "x0": 5050,
+            "x1": 5230,
+            "y": 38
+          },
+          "to": {
+            "x0": 5195,
+            "x1": 5285,
+            "y": 110
+          },
+          "frames": 30,
+          "expansions": 145,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": 24.423333333333332,
+          "dTo": 24.28,
+          "via": "approach130h21",
+          "x": 5260,
+          "y": 110
+        },
+        {
+          "seg": 13,
+          "from": {
+            "x0": 5195,
+            "x1": 5285,
+            "y": 110
+          },
+          "to": {
+            "x0": 5305,
+            "x1": 5495,
+            "y": 58
+          },
+          "frames": 55,
+          "expansions": 3,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 24.28,
+          "dTo": 23.44,
+          "via": "run",
+          "x": 5443,
+          "y": 58
+        },
+        {
+          "seg": 14,
+          "from": {
+            "x0": 5305,
+            "x1": 5495,
+            "y": 58
+          },
+          "to": {
+            "x0": 5580,
+            "x1": 5780,
+            "y": 42
+          },
+          "frames": 47,
+          "expansions": 2,
+          "depth": 2,
+          "costBlood": false,
+          "dFrom": 23.44,
+          "dTo": 22.343333333333334,
+          "via": "approach40h21",
+          "x": 5581,
+          "y": 42
+        },
+        {
+          "seg": 15,
+          "from": {
+            "x0": 5580,
+            "x1": 5780,
+            "y": 42
+          },
+          "to": {
+            "x0": 5875,
+            "x1": 6085,
+            "y": 70
+          },
+          "frames": 102,
+          "expansions": 261,
+          "depth": 4,
+          "costBlood": false,
+          "dFrom": 22.343333333333334,
+          "dTo": 21.113333333333333,
+          "via": "run",
+          "x": 5921,
+          "y": 70
+        },
+        {
+          "seg": 16,
+          "from": {
+            "x0": 5875,
+            "x1": 6085,
+            "y": 70
+          },
+          "to": {
+            "x0": 6180,
+            "x1": 6380,
+            "y": 44
+          },
+          "frames": 97,
+          "expansions": 3,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 21.113333333333333,
+          "dTo": 20,
+          "via": "run",
+          "x": 6244,
+          "y": 44
+        },
+        {
+          "seg": 17,
+          "from": {
+            "x0": 6180,
+            "x1": 6380,
+            "y": 44
+          },
+          "to": {
+            "x0": 6405,
+            "x1": 6505,
+            "y": 110
+          },
+          "frames": 76,
+          "expansions": 2,
+          "depth": 2,
+          "costBlood": false,
+          "dFrom": 20,
+          "dTo": 19.913333333333334,
+          "via": "run",
+          "x": 6498,
+          "y": 110
+        },
+        {
+          "seg": 18,
+          "from": {
+            "x0": 6405,
+            "x1": 6505,
+            "y": 110
+          },
+          "to": {
+            "x0": 6470,
+            "x1": 6690,
+            "y": 72
+          },
+          "frames": 27,
+          "expansions": 1,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": 19.913333333333334,
+          "dTo": 19.10666666666667,
+          "via": "approach40h21",
+          "x": 6588,
+          "y": 72
+        },
+        {
+          "seg": 19,
+          "from": {
+            "x0": 6470,
+            "x1": 6690,
+            "y": 72
+          },
+          "to": {
+            "x0": 6700,
+            "x1": 7000,
+            "y": 0
+          },
+          "frames": 78,
+          "expansions": 3,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 19.10666666666667,
+          "dTo": 17.713333333333335,
+          "via": "run",
+          "x": 6848,
+          "y": 0
+        },
+        {
+          "seg": 20,
+          "from": {
+            "x0": 6700,
+            "x1": 7000,
+            "y": 0
+          },
+          "to": {
+            "x0": 7000,
+            "x1": 7550,
+            "y": 0
+          },
+          "frames": 93,
+          "expansions": 3,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 17.713333333333335,
+          "dTo": 16.713333333333335,
+          "via": "run",
+          "x": 7158,
+          "y": 0
+        },
+        {
+          "seg": 21,
+          "from": {
+            "x0": 7000,
+            "x1": 7550,
+            "y": 0
+          },
+          "to": {
+            "x0": 7790,
+            "x1": 8250,
+            "y": 0
+          },
+          "frames": 810,
+          "expansions": 167,
+          "depth": 65,
+          "costBlood": false,
+          "dFrom": 16.713333333333335,
+          "dTo": 14.913333333333334,
+          "via": "run",
+          "x": 7961,
+          "y": 0
+        },
+        {
+          "seg": 22,
+          "from": {
+            "x0": 7790,
+            "x1": 8250,
+            "y": 0
+          },
+          "to": {
+            "x0": 8275,
+            "x1": 8445,
+            "y": 55
+          },
+          "frames": 108,
+          "expansions": 2,
+          "depth": 2,
+          "costBlood": false,
+          "dFrom": 14.913333333333334,
+          "dTo": 14.538333333333334,
+          "via": "run",
+          "x": 8369,
+          "y": 55
+        },
+        {
+          "seg": 23,
+          "from": {
+            "x0": 8275,
+            "x1": 8445,
+            "y": 55
+          },
+          "to": {
+            "x0": 8505,
+            "x1": 8655,
+            "y": 78
+          },
+          "frames": 58,
+          "expansions": 2,
+          "depth": 2,
+          "costBlood": false,
+          "dFrom": 14.538333333333334,
+          "dTo": 13.953333333333333,
+          "via": "run",
+          "x": 8562,
+          "y": 78
+        },
+        {
+          "seg": 24,
+          "from": {
+            "x0": 8505,
+            "x1": 8655,
+            "y": 78
+          },
+          "to": {
+            "x0": 8680,
+            "x1": 9300,
+            "y": 0
+          },
+          "frames": 75,
+          "expansions": 3,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 13.953333333333333,
+          "dTo": 12.48,
+          "via": "run",
+          "x": 8812,
+          "y": 0
+        },
+        {
+          "seg": 25,
+          "from": {
+            "x0": 8680,
+            "x1": 9300,
+            "y": 0
+          },
+          "to": {
+            "x0": 9300,
+            "x1": 9860,
+            "y": 0
+          },
+          "frames": 194,
+          "expansions": 3,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 12.48,
+          "dTo": 11.48,
+          "via": "run",
+          "x": 9459,
+          "y": 0
+        },
+        {
+          "seg": 26,
+          "from": {
+            "x0": 9300,
+            "x1": 9860,
+            "y": 0
+          },
+          "to": {
+            "x0": 9905,
+            "x1": 10055,
+            "y": 48
+          },
+          "frames": 156,
+          "expansions": 2,
+          "depth": 2,
+          "costBlood": false,
+          "dFrom": 11.48,
+          "dTo": 11.07,
+          "via": "run",
+          "x": 9979,
+          "y": 48
+        },
+        {
+          "seg": 27,
+          "from": {
+            "x0": 9905,
+            "x1": 10055,
+            "y": 48
+          },
+          "to": {
+            "x0": 10125,
+            "x1": 10275,
+            "y": 78
+          },
+          "frames": 58,
+          "expansions": 2,
+          "depth": 2,
+          "costBlood": false,
+          "dFrom": 11.07,
+          "dTo": 10.486666666666668,
+          "via": "run",
+          "x": 10172,
+          "y": 78
+        },
+        {
+          "seg": 28,
+          "from": {
+            "x0": 10125,
+            "x1": 10275,
+            "y": 78
+          },
+          "to": {
+            "x0": 10310,
+            "x1": 10820,
+            "y": 0
+          },
+          "frames": 78,
+          "expansions": 3,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 10.486666666666668,
+          "dTo": 8.98,
+          "via": "run",
+          "x": 10432,
+          "y": 0
+        },
+        {
+          "seg": 29,
+          "from": {
+            "x0": 10310,
+            "x1": 10820,
+            "y": 0
+          },
+          "to": {
+            "x0": 11035,
+            "x1": 11155,
+            "y": 108
+          },
+          "frames": 152,
+          "expansions": 3,
+          "depth": 2,
+          "costBlood": false,
+          "dFrom": 8.98,
+          "dTo": 8.27,
+          "via": "run",
+          "x": 11123,
+          "y": 108
+        },
+        {
+          "seg": 30,
+          "from": {
+            "x0": 11035,
+            "x1": 11155,
+            "y": 108
+          },
+          "to": {
+            "x0": 11500,
+            "x1": 11920,
+            "y": 0
+          },
+          "frames": 66,
+          "expansions": 4,
+          "depth": 4,
+          "costBlood": false,
+          "dFrom": 8.27,
+          "dTo": 5.58,
+          "via": "run",
+          "x": 11508,
+          "y": 0
+        },
+        {
+          "seg": 31,
+          "from": {
+            "x0": 11500,
+            "x1": 11920,
+            "y": 0
+          },
+          "to": {
+            "x0": 12155,
+            "x1": 12325,
+            "y": 48
+          },
+          "frames": 165,
+          "expansions": 4,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 5.58,
+          "dTo": 3.7899999999999996,
+          "via": "run",
+          "x": 12311,
+          "y": 48
+        },
+        {
+          "seg": 32,
+          "from": {
+            "x0": 12155,
+            "x1": 12325,
+            "y": 48
+          },
+          "to": {
+            "x0": 12380,
+            "x1": 12560,
+            "y": 28
+          },
+          "frames": 50,
+          "expansions": 6,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 3.7899999999999996,
+          "dTo": 2.9066666666666667,
+          "via": "back",
+          "x": 12543,
+          "y": 28
+        },
+        {
+          "seg": 33,
+          "from": {
+            "x0": 12380,
+            "x1": 12560,
+            "y": 28
+          },
+          "to": {
+            "x0": 12590,
+            "x1": 13040,
+            "y": 0
+          },
+          "frames": 86,
+          "expansions": 6,
+          "depth": 5,
+          "costBlood": false,
+          "dFrom": 2.9066666666666667,
+          "dTo": 1.6666666666666665,
+          "via": "run",
+          "x": 12959,
+          "y": 0
+        },
+        {
+          "seg": 34,
+          "from": {
+            "x0": 12590,
+            "x1": 13040,
+            "y": 0
+          },
+          "to": {
+            "x0": 13055,
+            "x1": 13225,
+            "y": 42
+          },
+          "frames": 51,
+          "expansions": 2,
+          "depth": 2,
+          "costBlood": false,
+          "dFrom": 1.6666666666666665,
+          "dTo": 1.26,
+          "via": "run",
+          "x": 13214,
+          "y": 42
+        },
+        {
+          "seg": 35,
+          "from": {
+            "x0": 13055,
+            "x1": 13225,
+            "y": 42
+          },
+          "to": {
+            "x0": 13240,
+            "x1": 13800,
+            "y": 0
+          },
+          "frames": 58,
+          "expansions": 3,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 1.26,
+          "dTo": 0,
+          "via": "run",
+          "x": 13336,
+          "y": 0
+        },
+        {
+          "seg": 36,
+          "point": true,
+          "to": {
+            "x": 13680,
+            "y": 0
+          },
+          "frames": 121,
+          "expansions": 2,
+          "costBlood": false
+        }
+      ],
+      "inputFrames": 4297
+    },
+    {
+      "stage": 2,
+      "muster": true,
+      "boot": {
+        "levelLength": 14000,
+        "capabilities": [
+          "jump",
+          "weapon",
+          "dash",
+          "portal-single",
+          "portal-pair",
+          "wall-jump",
+          "counter",
+          "double-jump"
+        ],
+        "spawn": {
+          "x": 70,
+          "y": 0
+        }
+      },
+      "seconds": 42.5,
+      "pass": true,
+      "direction": 1,
+      "goalX": 13130,
+      "goalKind": "boss-threshold",
+      "crossedBoundary": false,
+      "reachedX": 13236,
+      "segments": 5,
+      "backtracks": 0,
+      "frames": 4123,
+      "replayFrames": 4123,
+      "expansions": 4546,
+      "replayIdentical": true,
+      "capabilities": {
+        "doubleJump": true,
+        "dash": true,
+        "weapon": true
+      },
+      "envelope": {
+        "maxRise": 233,
+        "maxReach": 659
+      },
+      "costedSegments": 1,
+      "blood": 4,
+      "mechanisms": [],
+      "history": [
+        {
+          "seg": 0,
+          "from": 2600,
+          "to": "2600:0",
+          "blood": false,
+          "exp": 9,
+          "ok": true
+        },
+        {
+          "seg": 1,
+          "from": 5600,
+          "to": "5600:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 2568
+        },
+        {
+          "seg": 1,
+          "from": 5600,
+          "to": "5810:70",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 2820
+        },
+        {
+          "seg": 1,
+          "from": 5600,
+          "to": "6035:135",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 3084
+        },
+        {
+          "seg": 1,
+          "from": 5600,
+          "to": "5600:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 1105
+        },
+        {
+          "seg": 1,
+          "from": 5600,
+          "to": "5810:70",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 1357
+        },
+        {
+          "seg": 1,
+          "from": 5600,
+          "to": "5600:0",
+          "blood": true,
+          "exp": 37,
+          "ok": true
+        },
+        {
+          "seg": 2,
+          "from": 8200,
+          "to": "8200:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 1613
+        },
+        {
+          "seg": 2,
+          "from": 8200,
+          "to": "8330:65",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 1380
+        },
+        {
+          "seg": 2,
+          "from": 8200,
+          "to": "8550:130",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 1639
+        },
+        {
+          "seg": 2,
+          "from": 8200,
+          "to": "8330:65",
+          "blood": false,
+          "exp": 570,
+          "ok": true
+        },
+        {
+          "seg": 3,
+          "from": 10500,
+          "to": "10500:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 1903
+        },
+        {
+          "seg": 3,
+          "from": 10500,
+          "to": "10750:65",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 2187
+        },
+        {
+          "seg": 3,
+          "from": 10500,
+          "to": "10760:92",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 2214
+        },
+        {
+          "seg": 3,
+          "from": 10500,
+          "to": "10500:0",
+          "blood": false,
+          "exp": 633,
+          "ok": true
+        },
+        {
+          "seg": 4,
+          "from": 14000,
+          "to": "point:13130",
+          "blood": false,
+          "exp": 7,
+          "ok": true
+        }
+      ],
+      "solved": [
+        {
+          "seg": 0,
+          "from": {
+            "x0": 0,
+            "x1": 2600,
+            "y": 0
+          },
+          "to": {
+            "x0": 2600,
+            "x1": 5600,
+            "y": 0
+          },
+          "frames": 799,
+          "expansions": 9,
+          "depth": 9,
+          "costBlood": false,
+          "dFrom": 4,
+          "dTo": 3,
+          "via": "run",
+          "x": 2726,
+          "y": 0
+        },
+        {
+          "seg": 1,
+          "from": {
+            "x0": 2600,
+            "x1": 5600,
+            "y": 0
+          },
+          "to": {
+            "x0": 5600,
+            "x1": 8200,
+            "y": 0
+          },
+          "frames": 898,
+          "expansions": 37,
+          "depth": 19,
+          "costBlood": true,
+          "dFrom": 3,
+          "dTo": 2,
+          "via": "run",
+          "x": 5746,
+          "y": 0
+        },
+        {
+          "seg": 2,
+          "from": {
+            "x0": 5600,
+            "x1": 8200,
+            "y": 0
+          },
+          "to": {
+            "x0": 8200,
+            "x1": 10500,
+            "y": 0
+          },
+          "frames": 772,
+          "expansions": 570,
+          "depth": 30,
+          "costBlood": false,
+          "dFrom": 2,
+          "dTo": 1,
+          "via": "run",
+          "x": 8357,
+          "y": 0
+        },
+        {
+          "seg": 3,
+          "from": {
+            "x0": 8200,
+            "x1": 10500,
+            "y": 0
+          },
+          "to": {
+            "x0": 10500,
+            "x1": 14000,
+            "y": 0
+          },
+          "frames": 871,
+          "expansions": 633,
+          "depth": 33,
+          "costBlood": false,
+          "dFrom": 1,
+          "dTo": 0,
+          "via": "run",
+          "x": 10626,
+          "y": 0
+        },
+        {
+          "seg": 4,
+          "point": true,
+          "to": {
+            "x": 13130,
+            "y": 0
+          },
+          "frames": 783,
+          "expansions": 7,
+          "costBlood": false
+        }
+      ],
+      "inputFrames": 4123
+    }
+  ]
+}

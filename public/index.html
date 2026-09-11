@@ -574,6 +574,12 @@ const EARCH={
   frostpike:{muster:1,hp:48,dmg:12,speed:82,w:36,h:54,xp:26,color:'#7896a9',kind:'walk',element:'ice'},
   frostsinger:{muster:1,hp:42,dmg:11,speed:38,w:32,h:58,xp:30,color:'#ada4cb',kind:'walk',element:'ice',ranged:true,shot:{count:2,spread:.12,speed:300,size:7,color:'#c8eaff',shape:'bolt',el:'ice',glow:1},shootCd:2.8},
   rimehulk:{muster:1,hp:92,dmg:24,speed:42,w:66,h:86,xp:55,color:'#697f94',kind:'walk',element:'ice'},
+  // The recall's soldiers. Organised rather than strong: a shield that has to
+  // be walked around, a bow that punishes standing still, a horn that wakes
+  // the posts around it. None rolls elite and none carries loot.
+  shieldbearer:{muster:1,hp:64,dmg:12,speed:44,w:44,h:58,xp:34,color:'#8a7a63',kind:'walk'},
+  linesman:{muster:1,hp:34,dmg:10,speed:36,w:30,h:50,xp:30,color:'#a08c70',kind:'walk',ranged:true,shot:{count:1,spread:0,speed:340,size:6,color:'#f1d6a0',shape:'bolt',glow:1},shootCd:2.6},
+  signaler:{muster:1,hp:30,dmg:8,speed:48,w:32,h:44,xp:28,color:'#c9a24a',kind:'walk'},
   frostling:{hp:28,dmg:8,speed:50,w:30,h:38,xp:17,color:'#7fd6ff',kind:'walk',element:'ice'},
   toxling:{hp:24,dmg:8,speed:56,w:30,h:38,xp:17,color:'#9fd84a',kind:'walk',element:'poison'},
   shadeling:{hp:27,dmg:9,speed:56,w:30,h:38,xp:19,color:'#b06bff',kind:'walk',element:'void'},
@@ -2032,6 +2038,13 @@ function drawEnemyVariant(c,e){
     if(e.type==='rimehulk'){c.fillStyle='#3b4b61';c.fillRect(-e.w*.65,-e.h*.77,e.w*1.3,16);for(let i=-1;i<=1;i++)triC(c,i*15-6,-e.h*.78,i*15+6,-e.h*.78,i*15,-e.h-8);}
     if(e.type==='frostsinger'){c.strokeStyle='#e1c5eb';c.beginPath();c.arc(0,-e.h*.78,e.w*.6,Math.PI,Math.PI*2);c.stroke();}
     c.restore();}
+  if(e.muster){c.save();c.strokeStyle='#e8d9b8';c.lineWidth=3;
+    const sf=e.shieldFace||e.face||-1;
+    if(e.type==='shieldbearer'){c.fillStyle='#4b4236';c.fillRect(sf*e.w*.42-8,-e.h*.94,16,e.h*.72);c.strokeRect(sf*e.w*.42-8,-e.h*.94,16,e.h*.72);}
+    if(e.type==='linesman'){c.beginPath();c.arc(-(e.face||1)*e.w*.3,-e.h*.55,e.h*.32,Math.PI*.5,Math.PI*1.5);c.stroke();}
+    if(e.type==='signaler'){lineC(c,e.w*.5,-8,e.w*.5,-e.h-26);c.fillStyle='#d9a441';triC(c,e.w*.5,-e.h-26,e.w*.5+22,-e.h-18,e.w*.5,-e.h-10);
+      if(e.signalT>0){c.strokeStyle='#ffd98a';c.globalAlpha=.7;c.beginPath();c.arc(0,-e.h*.6,e.w*.9+e.signalT*46,0,Math.PI*2);c.stroke();}}
+    c.restore();}
   if(e.type==='rifthound'){
     c.save();c.fillStyle='#221331';c.strokeStyle='#c9a2ff';c.lineWidth=2;
     c.beginPath();c.moveTo(e.w*0.18,-e.h*0.72);c.lineTo(e.w*0.7,-e.h*0.55);
@@ -3429,7 +3442,7 @@ const LEVELS=[
   OpeningBeat(Gr(4700,5040),'teach','route-choice'),
   AmbientFigure(4900,0,'cut-watcher',{residentId:'outskirts-roadkeeper',name:'Olan',title:'Road Keeper',
     silhouette:'watcher',accent:'#b8c5a0',dialogue:BFDialogueModule.text('outskirts.olan.first'),
-    revisitDialogue:BFDialogueModule.text('outskirts.olan.revisit')}),
+    revisitDialogue:BFDialogueModule.text('outskirts.olan.revisit'),musterDialogue:BFDialogueModule.text('outskirts.olan.muster')}),
   OpeningBeat(Pl(5140,180,38),'test','low-road'),
   OpeningBeat(Pl(5400,190,58),'test','low-road'),
   OpeningBeat(Pl(5680,200,42),'test','low-road'),
@@ -3533,7 +3546,7 @@ const LEVELS=[
   Scenery(1420,0,'resin-rack'),Scenery(2340,0,'boundary-lantern',{roomLandmark:1}),
   Scenery(1940,0,'white-trumpets',{daturaCorrespondence:1}),
   AmbientFigure(430,0,'clock-keeper',{residentId:'woods-clockkeeper',name:'Orra',title:'Clock Keeper',accent:'#c9bd8a',clockId:'pulse-one',clockTime:'3:40',
-    dialogue:BFDialogueModule.text('woods.orra.first'),revisitDialogue:BFDialogueModule.text('woods.orra.revisit')}),
+    dialogue:BFDialogueModule.text('woods.orra.first'),revisitDialogue:BFDialogueModule.text('woods.orra.revisit'),musterDialogue:BFDialogueModule.text('woods.orra.muster')}),
   AmbientFigure(1550,0,'resin-worker',{residentId:'woods-resinworker',name:'Pell',title:'Resin Worker',accent:'#d9a34a',
     dialogue:BFDialogueModule.text('woods.pell.first'),revisitDialogue:BFDialogueModule.text('woods.pell.revisit')}),
   AmbientFigure(2190,0,'quiet-veteran',{residentId:'woods-veteran',name:'Hale',title:'Quiet Veteran',accent:'#b98b83',
@@ -3679,7 +3692,7 @@ const LEVELS=[
   AmbientFigure(720,0,'chainwright',{
     residentId:'brute-chainwright',questActor:'oren',name:'Oren',title:'Causeway Chainwright',accent:'#d59a68',
     dialogue:BFDialogueModule.text('causeway.oren.first'),
-    revisitDialogue:BFDialogueModule.text('causeway.oren.revisit')
+    revisitDialogue:BFDialogueModule.text('causeway.oren.revisit'),musterDialogue:BFDialogueModule.text('causeway.oren.muster')
   }),
   AmbientFigure(1840,0,'stretcher-keeper',{
     residentId:'brute-stretcher',name:'Sable',title:'Stretcher-Keeper',accent:'#b9a7a0',
@@ -4235,6 +4248,91 @@ function installFrostMusterEnemies(){
     e.maxHp=Math.round(e.maxHp*1.55);e.hp=Math.ceil(e.maxHp*ratio);
     if(!e.frostMuster){e.frostMuster=true;e.musterMin=e.patrolMin??e.x-180;e.musterMax=e.patrolMax??e.x+180;}
   }
+}
+/* THE RECALL - the Muster Engine's bell reaches the rest of the world.
+   Frostfell's engine is the only source of the event: other regions read its
+   circuit rather than keeping a second flag. Each region on the long return
+   gets an authored roster of organised soldiers - pairs, ranged cover, a
+   signaler that wakes the posts around it - installed once by stable id before
+   zone hydration, so deaths persist the ordinary way and a reload never
+   duplicates a post or inflates health. Nothing existing is multiplied; the
+   difficulty is behaviour and position, not numbers. Safe sites, arrivals and
+   checkpoints are left alone. Rows: [type, x, y, patrolMin, patrolMax, extra]. */
+const MUSTER_ROSTERS=Object.freeze({
+  warden:[
+    ['standard',12800,0],
+    ['shieldbearer',13100,0,12950,13250],['linesman',13400,0,13330,13480],
+    ['linesman',10900,0,10850,10960],
+  ],
+  outskirts:[
+    ['standard',5000,0],['standard',11800,0],
+    ['signaler',7300,0,7220,7400],['grunt',7500,0,7440,7540,{noticeRange:170}],
+    ['linesman',12010,65,11940,12080],['shieldbearer',12700,0,12610,12800],
+  ],
+  'black-woods':[
+    ['standard',2600,0],['standard',9550,0],
+    ['shieldbearer',3900,0,3760,4050],
+    ['linesman',5700,250,5620,5780],['linesman',8510,280,8440,8580],
+    ['flyer',10500,380,10250,10750],
+  ],
+  brute:[
+    ['standard',2800,0],['standard',8400,0],
+    ['linesman',3050,0,3000,3120],['shieldbearer',3260,0,3140,3380],
+    ['shieldbearer',7700,0,7600,7850],
+    ['signaler',9300,0,9200,9450],['grunt',9950,0,9900,10100,{noticeRange:170}],
+  ],
+});
+function musterRecalled(){
+  if(!G)return false;
+  if(G.musterForced!==undefined&&G.musterForced!==null)return !!G.musterForced;
+  if(typeof window!=='undefined'&&window.__BF_MUSTER_FORCE!==undefined)return !!window.__BF_MUSTER_FORCE;   // harness/bot only
+  if(G.stageIndex===7)return persistentCircuitOpen('frost-muster');
+  const state=G.levelSelectMode?G.sessionZoneState:meta.zoneState;
+  try{return !!BFZoneStateModule.hydrate(state,'frostfell',[]).circuits['frost-muster']?.open;}catch(_error){return false;}
+}
+function installMusterRoster(zoneId){
+  const rows=MUSTER_ROSTERS[zoneId];
+  if(!G||!rows||G.musterRosterInstalled===zoneId)return;
+  G.musterRosterInstalled=zoneId;
+  for(const [i,row]of rows.entries()){
+    const [type,x,y,lo,hi,extra]=row;
+    if(type==='standard'){
+      G.obstacles.push(Object.assign(Scenery(x,y||0,'muster-standard',{w:40,h:120,musterStandard:1}),{zoneEntityId:'recall-standard-'+i}));
+      continue;
+    }
+    const e=spawnEnemy(type,x);
+    Object.assign(e,{zoneEntityId:'recall-'+i,x,y:y||0,baseY:y||0,safeX:x,safeY:y||0,patrolMin:lo,patrolMax:hi,musterMin:lo,musterMax:hi,
+      muster:true,authoredEncounter:true,noDrop:true,noticeRange:460},extra||{});
+    if(type==='shieldbearer'){e.frontShield=true;e.shieldFace=-1;e.turnDelay=1.15;}
+    if(type==='signaler')e.musterRole='signaler';
+    G.killGoal++;
+  }
+  // Bells answer in the distance as you arrive; the posts explain the rest.
+  if(meta.soundOn&&!G.levelSelectMode)tonalSfx('muster-bell',[[0,[.1,,98,.01,.9,2.2,0,.7,,,,,,,,,,.4,.12]],[70,[.05,,147,.01,.6,1.7,0,.6,,,,,,,,,,.3,.08]]],G.p.x+900);
+}
+/* The signaler winds up in the open, then wakes every post within earshot. A
+   strike during the wind-up breaks the call; it tries again later. */
+function updateMusterSignaler(e,p,dt){
+  e.signalCd=Math.max(0,(e.signalCd||0)-dt);
+  const struck=e._signalHp!==undefined&&e.hp<e._signalHp;
+  e._signalHp=e.hp;
+  if(struck&&e.signalT>0){e.signalT=0;e.signalCd=2.4;addText(e.x,GROUND_Y-e.y-e.h-26,'CALL BROKEN','#ffd98a',true);return false;}
+  if(e.signalT>0){
+    e.signalT+=dt;e.vx=0;e.face=Math.sign(p.x-e.x)||e.face;
+    if(Math.random()<.35)G.particles.push({x:e.x+(Math.random()-.5)*e.w,y:GROUND_Y-e.y-e.h-10-Math.random()*20,vx:(Math.random()-.5)*40,vy:-30-Math.random()*40,sz:2+Math.random()*2,color:'#ffd98a',life:.35+Math.random()*.25});
+    if(e.signalT>=1.3){
+      e.signalT=0;e.signalCd=7;let woke=0;
+      for(const o of G.enemies){if(o===e||o.dead||o.boss||o.active)continue;
+        if(Math.abs(o.x-e.x)<720&&Math.abs((o.y||0)-e.y)<420){o.active=true;o.roused=2.5;woke++;}}
+      addText(e.x,GROUND_Y-e.y-e.h-26,woke?'THE LINE ANSWERS':'NO ANSWER','#ffd98a',true);
+      G.shake=Math.min(G.shake+3,8);if(meta.soundOn)SFX.magic('storm',e.x);
+    }
+    return true;
+  }
+  if(e.signalCd<=0&&Math.hypot(p.x-e.x,(p.y||0)-e.y)<520){
+    e.signalT=.001;e.vx=0;addText(e.x,GROUND_Y-e.y-e.h-26,'SIGNAL','#ffd98a',false);return true;
+  }
+  return false;
 }
 function strikeFrostMuster(){
   if(!markPersistentCircuitOpen('frost-muster','muster-engine'))return;
@@ -5764,8 +5862,9 @@ function activateRuntimeCheckpoint(id,position,kind,siteId,save){
 function activateZonePersistence(endpointId){
   const zoneId=BFWorldModule.stageId(G.stageIndex);if(!zoneId)return;
   const state=G.levelSelectMode?G.sessionZoneState:meta.zoneState;
-  G.frostMusterRosterInstalled=false;G.frostMusterSequence=null;G.frostMineRequested=false;
+  G.frostMusterRosterInstalled=false;G.frostMusterSequence=null;G.frostMineRequested=false;G.musterRosterInstalled=null;
   if(G.stageIndex===7&&BFZoneStateModule.hydrate(state,zoneId,[]).circuits['frost-muster']?.open)installFrostMusterEnemies();
+  if(MUSTER_ROSTERS[zoneId]&&musterRecalled())installMusterRoster(zoneId);
   const manifest=buildZonePersistenceManifest();
   const view=BFZoneStateModule.hydrate(state,zoneId,manifest);
   applyZoneHydration(view,manifest);
@@ -6504,6 +6603,7 @@ function outskirtsAnnotationKind(source,options){
 }
 function ambientFigureDialogue(o,revisit){
   if(!o)return'';
+  if(o.musterDialogue&&musterRecalled())return o.musterDialogue;
   if(o.clockId==='pulse-one'){
     const time=openingClockTime();
     return (Number(meta.openingClockMinute)||0)>0
@@ -9675,6 +9775,7 @@ function updateWardenEnemy(e,target,dt,eff,directive){
   return true;
 }
 function updateOrdinaryEnemyAI(e,target,dt,eff,intent,directive){
+  if(e.musterRole==='signaler'&&updateMusterSignaler(e,target,dt))return;
   if(updateOutskirtsAvoidanceEncounter(e,target,dt,eff))return;
   if(updateForestEncounter(e,target,dt,eff))return;
   if(updateMarksmanRoadEnemy(e,target,dt,eff))return;
@@ -12347,7 +12448,7 @@ function update(dt){
 
     // Boundary
     if(e.x<24)e.x=24;if(e.x>G.levelLength-24)e.x=G.levelLength-24;
-    if(e.frostMuster){e.x=Math.max(e.musterMin,Math.min(e.musterMax,e.x));}
+    if(e.frostMuster||e.muster){e.x=Math.max(e.musterMin,Math.min(e.musterMax,e.x));}
     // Contact damage
     const contactAuthorized=e.openingContactDanger||e.forestContactDanger||e.boss||
       (!e.forestRole&&BFAISystem.directive(e).attack);
@@ -12359,7 +12460,7 @@ function update(dt){
         }
         else if(p.cloakT<=0){
           // The Frostfell lesson faces the actual strike, not a navigation waypoint.
-          const hitDir=(e.frostCounterLesson||e.frostMuster)?(Math.sign(p.x-e.x)||dir):dir;
+          const hitDir=(e.frostCounterLesson||e.frostMuster||e.muster)?(Math.sign(p.x-e.x)||dir):dir;
           if(!tryPlayerCounter('melee',hitDir,e))hurtPlayer((e.boss&&e.lunge>0)?e.dmg*1.6:e.dmg,hitDir,enemyDamageStaysInPlace(e),e.bloodDamage);
           // Thorns: the armor bites whatever touched it
           if(p.mods&&p.mods.thorns&&!e.dead&&!(e._pwCd>0)){e._pwCd=0.4;hitEnemy(e,e.dmg*echoModifier('player:hurt','contact-reflect:mul',0),Math.sign(e.x-p.x)||1,180,0,null,'echo');}
@@ -15714,6 +15815,15 @@ function drawScenery(c,o){
   if(o.frostArchitecture){drawFrostScenery(c,o);return;}
   const t=G.time,kind=o.kind||'ruin';
   c.save();c.translate(o.x,GROUND_Y-o.y);
+  if(o.musterStandard){
+    // A raised standard at a post that stood empty: the recall's insignia.
+    c.strokeStyle='#5b4a38';c.lineWidth=5;lineC(c,0,0,0,-118);
+    c.fillStyle='#7d1f2e';const wave=Math.sin(t*3+o.x*.01)*4;
+    c.beginPath();c.moveTo(0,-116);c.lineTo(44+wave,-104);c.lineTo(8,-92);c.lineTo(44+wave,-80);c.lineTo(0,-70);c.closePath();c.fill();
+    c.strokeStyle='#e8d9b8';c.lineWidth=2;lineC(c,10,-102,26+wave*.5,-93);lineC(c,10,-84,26+wave*.5,-93);
+    c.fillStyle='#3a3129';c.fillRect(-14,-6,28,6);
+    c.restore();return;
+  }
   if(o.keepWallJump){
     c.shadowColor=hasCapability('wall-jump')?'#d8c4a5':'#8f745c';c.shadowBlur=hasCapability('wall-jump')?10:18;
     c.fillStyle='#322923';rr(c,-48,-34,96,34,7);c.fill();c.strokeStyle='#8f745c';c.lineWidth=3;c.stroke();

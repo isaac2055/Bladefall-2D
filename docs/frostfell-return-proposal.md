@@ -4,6 +4,26 @@ Status: discussion proposal, 2026-09-10. No gameplay implementation authorized b
 
 These notes supplement the master vision, progression constitution, level charters, and owner decisions. The Gemini observations below are useful secondary review prompts, not a replacement design constitution or a mandate to reopen completed levels.
 
+## Implemented 2026-09-11: the recall on the return itinerary
+
+The world-wide encounter pass proposed below is now implemented for the four
+regions of the actual return, Warden, Outskirts, Black Woods and Broken
+Causeway, as `MUSTER_ROSTERS` in `public/index.html`. The event has one source:
+Frostfell's `frost-muster` circuit, read by `musterRecalled()` from any zone.
+Each region installs its roster once, by stable entity id, before zone
+hydration, exactly as Frostfell does, so deaths persist the ordinary way and a
+reload never duplicates a post. Nothing existing is multiplied. Three recall
+archetypes carry the difficulty as behaviour: the shieldbearer (a shield with a
+turn delay, walked around or Countered), the linesman (ranged cover), and the
+signaler, which winds up visibly and wakes the dormant posts within earshot
+unless struck first. Raised standards mark the occupied posts, and Orra, Oren
+and Olan each have one recalled line. `tests/muster-recall.test.mjs` proves
+placement hygiene, idempotent installation through the real hydration hook,
+the signaler's call and interruption, and the dialogue; the traversal bot
+completes the recalled Outskirts and reaches the Brute's threshold on the
+recalled Causeway with the return kit. Rewards, caches and shortcuts for the
+return remain the next pass.
+
 ## Subsequent scope decision
 
 The owner subsequently authorized the platforming finale and physical engine only. Those are now implemented. A subsequent request also authorized cinematic activation and enemy escalation within Frostfell, now implemented; the world-wide encounter pass remains future work. The owner explicitly chose surprise, superseding the foreshadowing suggestion below: do not add hints warning about the later enemy change.

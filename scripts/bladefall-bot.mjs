@@ -695,12 +695,21 @@ export function solveLevel(options) {
    capability prefix, without repositioning the knight. */
 export function bootstrapStage(stageIndex) {
   const tas = window.__BF.tas;
+  // bootstrapStage({ stage, muster: true }) loads the level as the recall left it.
+  let muster = false;
+  if (stageIndex && typeof stageIndex === 'object') { muster = !!stageIndex.muster; stageIndex = stageIndex.stage; }
+  if (typeof G !== 'undefined' && G) G.musterForced = muster || undefined;
+  window.__BF_MUSTER_FORCE = muster ? true : undefined;
   // Same TAS-safe entry the Frostfell validator uses: level select hydrates the
   // constitutional capability prefix for this stage, and the knight is left at
   // the authored spawn rather than being repositioned.
   tasPrepareRun();
   tasDeterministicCall(() => beginRun(0, null, { hp: 1, dmg: 1 },
     { startStage: stageIndex, levelSelect: true, testRun: true, runSeed: 0xB07 }));
+  if (muster && G && G.musterRosterInstalled == null) { G.musterForced = true; installMusterRoster(BFWorldModule.stageId(G.stageIndex)); }
+  if (muster && G && G.stageIndex === 2) G.causewayRepair = { quest: 'release-the-causeway', step: 2, completed: true, shortcut: true };
+  // Everything through Frostfell is owned by the time the bell rings.
+  if (muster && G) G.sessionCapabilities = levelSelectCapabilitiesForStage(8);
   for (let i = 0; i < 90 && !G.p.onGround; i++) tas.stepFrames(1, {});
   tas.stepFrames(2, {});
   return {
