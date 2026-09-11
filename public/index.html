@@ -7890,6 +7890,34 @@ function followerWarmthAt(x,y,range){
   return G.npcs.some(n=>n.kind==='escort'&&!n.relay&&travelerHas(n,'warmth')&&n.state!=='idle'&&
     n.state!=='dead'&&!n.done&&Math.hypot(n.x-x,(n.y||0)-y)<r);
 }
+function updateGiftRules(p,dt){
+  // RIME STEP - the first dash after touching ground drags a cold wake.
+  if(p.onGround&&!p._wasGround&&hasGift('rime-step'))p.rimeStepReady=true;
+  p._wasGround=!!p.onGround;
+  if((p.rimeWakeT||0)>0){
+    p.rimeWakeT=Math.max(0,p.rimeWakeT-dt);
+    for(const e of G.enemies){
+      if(e.dead||!e.active||e.boss)continue;
+      if(Math.abs(e.x-p.x)>96||Math.abs((e.y||0)-p.y)>72)continue;
+      e.slowT=Math.max(e.slowT||0,1.6);
+    }
+    if(Math.random()<.6)G.particles.push({x:p.x+(Math.random()-.5)*26,y:GROUND_Y-p.y-6,
+      vx:(Math.random()-.5)*40,vy:-14-Math.random()*34,sz:1.8+Math.random()*2.2,
+      color:Math.random()<.5?'#8fd8ff':'#dff2ff',life:.4+Math.random()*.3});
+  }
+  // HUSHED SHAPE - breaking sight and holding still lets an ordinary foe lose the
+  // trail. It never fires beside the player, so nothing stops dead in your face.
+  if(!hasGift('hushed-shape')){p.hushT=0;return;}
+  const still=p.onGround&&Math.abs(p.vx)<14&&(p.atkT||0)<=0&&!p.dodgeTimer;
+  p.hushT=still?(p.hushT||0)+dt:0;
+  if(p.hushT<1.1)return;
+  for(const e of G.enemies){
+    if(e.dead||!e.active||e.boss||e.vigilChallenge)continue;
+    if(Math.hypot(e.x-p.x,(e.y||0)-p.y)<190)continue;
+    if(BFAISystem.lineOfSight(e,p))continue;
+    e.active=false;e.vx=0;
+  }
+}
 function cacheSenseTarget(o){
   if(o.gone||o.read||o.taken)return false;
   return o.type==='coin'||!!o.sealedRecollection||!!o.vaultKeyId;
@@ -8649,6 +8677,14 @@ function hitEnemy(e,dmg,dir,kb,ls,el,src){
   const rawDamage=(meta.testMode?e.hp+1:dmg*mod)*critMul;
   const actual=e.wardenPortalFight&&e.wardenPhase===3?Math.min(rawDamage,Math.max(0,e.hp-1)):rawDamage;e.hp-=actual;e.hitFlash=0.12;
   if(bloodVow){G.p.bloodVowT=0;addText(e.x,GROUND_Y-e.y-e.h-30,'VOW ANSWERED','#d85c62',true);}
+  if(src==='melee'&&hasGift('cinder-oath')&&(G.p.cinderOathT||0)>0){
+    G.p.cinderOathT=0;
+    G.aoes.push({x:e.x,y:e.y,r:74,fromPlayer:true,dmg:11*effPower(G.p),color:'#ff9a5a',el:'fire',giftSource:'cinder-oath'});
+    addText(e.x,GROUND_Y-e.y-e.h-30,'OATH KINDLED','#ff9a5a',true);
+    for(let i=0;i<12;i++)G.particles.push({x:e.x+(Math.random()-.5)*34,y:GROUND_Y-e.y-Math.random()*e.h,
+      vx:(Math.random()-.5)*150,vy:-40-Math.random()*130,sz:2+Math.random()*3,
+      color:i%2?'#ff9a5a':'#ffd75a',life:.35+Math.random()*.3});
+  }
   if(faultBell){G.p.faultBellT=0;kb=Math.max(kb||0,290);addText(e.x,GROUND_Y-e.y-e.h-48,'FAULT BELL','#d59a68',true);}
   // Both campaign clients contribute to the same health pool. The hit is applied
   // locally first for instant feedback, then mirrored as a damage delta; the host
@@ -10628,6 +10664,7 @@ function update(dt){
   for(const o of G.obstacles)if(o.toolRevealedT>0)o.toolRevealedT=Math.max(0,o.toolRevealedT-dt);
   const p=G.p,s=STAGES[G.stageIndex];
   if(p.faultBellT>0)p.faultBellT=Math.max(0,p.faultBellT-dt);
+  if(p.cinderOathT>0)p.cinderOathT=Math.max(0,p.cinderOathT-dt);
   if(G.stageIndex===0&&p.onGround&&p.floorPlat)level1Terrain(p);
   const movement=movementProfile();
 
@@ -10682,7 +10719,7 @@ function update(dt){
   // Hitstop: on a kill the world holds its breath for a few frames.
   if(G.hitstop>0){G.hitstop--;return;}
 
-  updateCacheSense(p,dt);
+  updateCacheSense(p,dt);updateGiftRules(p,dt);
   G.time+=dt;G.shake*=0.88;if(G.stageBanner>0)G.stageBanner-=dt;if(p.toolCd>0)p.toolCd-=dt;if(p.bloodVowT>0)p.bloodVowT=Math.max(0,p.bloodVowT-dt);
   updateOutskirtsRoomPresentation(dt);
   updateOutskirtsAnnotation();
@@ -10730,6 +10767,8 @@ function update(dt){
     recordMovementUse('dash');
     resolveEchoEvent('player:dash',{x:p.x,y:p.y,direction:p.dashX});
     if(hasEcho('fault-bell'))p.faultBellT=1.5;
+    if(hasGift('cinder-oath'))p.cinderOathT=1.5;
+    if(hasGift('rime-step')&&p.rimeStepReady){p.rimeStepReady=false;p.rimeWakeT=.55;}
     if(meta.soundOn)SFX.dodge();
     // Burst particles
     for(let i=0;i<10;i++) G.particles.push({x:p.x,y:GROUND_Y-p.y-10,vx:(Math.random()-0.5)*300,vy:(Math.random()-0.5)*300,sz:2+Math.random()*4,color:'#7788aa',life:0.4});

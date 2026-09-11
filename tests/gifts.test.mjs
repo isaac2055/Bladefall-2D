@@ -38,3 +38,18 @@ test('Gilded Instinct is wired to the runtime and no longer advertises itself as
   assert.doesNotMatch(body, /\.taken=|\.read=|\.gone=|G\.pickups\.push|grantPermanentCapability/,
     'cache sense may only draw attention, never claim or unlock anything');
 });
+
+test('every Gift that promises an effect is wired to the runtime',async()=>{
+  const source=await readFile(new URL('../public/index.html',import.meta.url),'utf8');
+  // Gift hooks are declarative metadata; the runtime reads hasGift(), so a Gift
+  // with hooks and no hasGift() call silently promises an effect it never has.
+  const unwired=Gifts.uiModel({}).rows
+    .filter((row)=>(row.hooks||[]).length>0)
+    .filter((row)=>!source.includes(`hasGift('${row.id}')`))
+    .map((row)=>row.id);
+  assert.deepEqual(unwired,[],'these Gifts describe an effect but have no runtime hook');
+  // Steadfast is the deliberate exception: it declares no hooks and alters no rule.
+  const steadfast=Gifts.uiModel({}).rows.find((row)=>row.id==='steadfast');
+  assert.deepEqual(steadfast.hooks,[]);
+  assert.match(steadfast.description,/No altered rule/);
+});

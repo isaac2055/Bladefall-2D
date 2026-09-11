@@ -114,3 +114,36 @@ test('runtime wires persistence, rewards, refuge loadouts, HUD, hooks, and remov
   assert.doesNotMatch(source, /const SYNERGY_POOL=/);
   assert.doesNotMatch(source, /gameChance\('upgrade',0\.30\)/);
 });
+
+test('Echo hooks that no longer reach the runtime stay a known, shrinking list',async()=>{
+  const source=await readFile(new URL('../public/index.html',import.meta.url),'utf8');
+  // Echo hooks reach gameplay three ways: named directly, matched by one of the
+  // generic suffix filters in useTool(), or bridged through p.mods.
+  const suffixFilters=[...source.matchAll(/\/([a-z-]+:[a-z]+)\$\//g)].map((m)=>m[1]);
+  const bridged={ 'weapon:projectile/pierce:add':'pierce','enemy:defeated/attack-haste:seconds':'adren',
+    'player:dash/fire-trail:enable':'dashFire' };
+  const reaches=(echoId,hook)=>source.includes(`hasEcho('${echoId}')`)
+    ||source.includes(`'${hook.operation}'`)
+    ||suffixFilters.some((f)=>hook.operation.endsWith(f))
+    ||!!bridged[`${hook.event}/${hook.operation}`];
+
+  const dead=[];
+  for(const row of Echoes.uiModel({}).rows)
+    for(const hook of row.hooks||[])
+      if(!reaches(row.id,hook))dead.push(`${row.id}:${hook.event}/${hook.operation}`);
+
+  // Locking the list means a NEW dead hook fails here, and fixing one of these
+  // fails here too, so the list can only be edited deliberately downward.
+  assert.deepEqual(dead.sort(),[
+    'courier-loop:portal:projectile/return-damage:mul',
+    'far-thread:portal:projectile/precision:add',
+    'road-knot:traveler:helped/recovery:add',
+    'sky-kindling:environment:air/fire-prime:seconds',
+    'white-hush:status:ice/freeze-duration:mul',
+  ]);
+  // Every Echo must still deliver at least one effect.
+  for(const row of Echoes.uiModel({}).rows){
+    const live=(row.hooks||[]).filter((hook)=>reaches(row.id,hook));
+    assert.ok(live.length>0,`${row.id} has no working effect at all`);
+  }
+});
