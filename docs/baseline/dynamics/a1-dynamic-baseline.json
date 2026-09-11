@@ -1,0 +1,156 @@
+{
+  "schema": "bladefall.a1-dynamic-baseline",
+  "version": 1,
+  "gameVersion": "7.8.0",
+  "url": "http://127.0.0.1:8372/",
+  "browserBridge": "In-app browser-control bridge unavailable; version-verified local Chromium fallback used.",
+  "pageErrors": [],
+  "capturedProbes": 8,
+  "probes": [
+    {
+      "id": "portal-anchor-transit",
+      "stageIndex": 0,
+      "stageName": "The Outskirts",
+      "mechanic": "player mouth plus fixed anchor",
+      "evidenceClass": "state-positioned setup; keyboard activation and traversal attempt",
+      "result": {
+        "maxPlacedMouths": 1,
+        "maxPlayerX": 5579,
+        "anchorExitReached": false,
+        "status": "activation-observed-transit-unproven"
+      },
+      "video": "portal-anchor-transit/probe.mp4",
+      "receipt": "portal-anchor-transit/receipt.json"
+    },
+    {
+      "id": "water-current-response",
+      "stageIndex": 3,
+      "stageName": "The Updrafts",
+      "mechanic": "bounded water and horizontal current",
+      "evidenceClass": "state-positioned mechanic contact; keyboard movement",
+      "result": {
+        "maxSubmersion": 0.503,
+        "fluidKinds": [
+          "water"
+        ],
+        "displacementX": -1051,
+        "checkpointRewindObserved": true,
+        "status": "fluid-contact-and-rewind-observed"
+      },
+      "video": "water-current-response/probe.mp4",
+      "receipt": "water-current-response/receipt.json"
+    },
+    {
+      "id": "portal-anchor-speed-gate",
+      "stageIndex": 0,
+      "stageName": "The Outskirts",
+      "mechanic": "anchored portal minimum-speed gate and high-speed transit",
+      "evidenceClass": "state-positioned setup; keyboard activation; explicitly injected high-speed drop",
+      "result": {
+        "maxPlacedMouths": 1,
+        "maxPlayerX": 6728,
+        "forcedEntrySpeed": 950,
+        "anchorExitReached": true,
+        "status": "state-positioned-high-speed-transit-observed"
+      },
+      "video": "portal-anchor-speed-gate/probe.mp4",
+      "receipt": "portal-anchor-speed-gate/receipt.json"
+    },
+    {
+      "id": "updraft-response",
+      "stageIndex": 3,
+      "stageName": "The Updrafts",
+      "mechanic": "authored updraft lift",
+      "evidenceClass": "state-positioned mechanic contact; passive physics response",
+      "result": {
+        "verticalGain": 458,
+        "maxY": 466,
+        "checkpointRewindObserved": true,
+        "status": "lift-and-rewind-observed"
+      },
+      "video": "updraft-response/probe.mp4",
+      "receipt": "updraft-response/receipt.json"
+    },
+    {
+      "id": "follower-command-cycle",
+      "stageIndex": 5,
+      "stageName": "Ruined Keep",
+      "mechanic": "traveler follow, hold, and resume",
+      "evidenceClass": "state-positioned greeting range; keyboard commands",
+      "result": {
+        "observedStates": [
+          "follow",
+          "wait"
+        ],
+        "status": "hold-and-follow-observed"
+      },
+      "video": "follower-command-cycle/probe.mp4",
+      "receipt": "follower-command-cycle/receipt.json"
+    },
+    {
+      "id": "gravity-flip-cycle",
+      "stageIndex": 11,
+      "stageName": "The Inversion",
+      "mechanic": "gravity flip and righting",
+      "evidenceClass": "ordinary stage start; keyboard activation",
+      "result": {
+        "observedGravityStates": [
+          false,
+          true
+        ],
+        "status": "flip-and-righting-observed"
+      },
+      "video": "gravity-flip-cycle/probe.mp4",
+      "receipt": "gravity-flip-cycle/receipt.json"
+    },
+    {
+      "id": "deep-line-signal-collapse",
+      "stageIndex": 15,
+      "stageName": "The Deep Line",
+      "mechanic": "cart lean, first route signal, and collapsing rail",
+      "evidenceClass": "state-positioned approach; keyboard cart lean and jump",
+      "result": {
+        "maxSignals": 1,
+        "switchChoices": [
+          "high"
+        ],
+        "collapseTriggered": true,
+        "status": "signal-and-collapse-observed"
+      },
+      "video": "deep-line-signal-collapse/probe.mp4",
+      "receipt": "deep-line-signal-collapse/receipt.json"
+    },
+    {
+      "id": "checkpoint-forced-rewind",
+      "stageIndex": 14,
+      "stageName": "The Gilded Vault",
+      "mechanic": "checkpoint activation and hazard-style rewind",
+      "evidenceClass": "state-positioned approach; keyboard activation; explicitly forced out-of-bounds failure",
+      "result": {
+        "checkpointActivated": true,
+        "checkpointX": 2180,
+        "forcedFailureSetup": true,
+        "rewindObserved": true,
+        "status": "checkpoint-and-rewind-observed"
+      },
+      "video": "checkpoint-forced-rewind/probe.mp4",
+      "receipt": "checkpoint-forced-rewind/receipt.json"
+    }
+  ],
+  "coverage": {
+    "portalAnchorLowSpeedAttempt": "activation-observed-transit-unproven",
+    "portalAnchorSpeedGate": "state-positioned-high-speed-transit-observed",
+    "fluidCurrent": "fluid-contact-and-rewind-observed",
+    "updraft": "lift-and-rewind-observed",
+    "followerCommands": "hold-and-follow-observed",
+    "gravityFlip": "flip-and-righting-observed",
+    "deepLineSignalCollapse": "signal-and-collapse-observed",
+    "checkpointRewind": "checkpoint-and-rewind-observed"
+  },
+  "remaining": [
+    "Natural intended-route access and successful resolution for every dynamic room.",
+    "Failure and recovery clips for every portal puzzle and moving hazard.",
+    "Every boss phase, one death/restart, and a winning resolution.",
+    "Returning-save, optional, credible speedrun, and two-player routes."
+  ]
+}

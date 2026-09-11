@@ -1,0 +1,6449 @@
+{
+  "schema": "bladefall.a1-opening-route-attempt",
+  "version": 1,
+  "gameVersion": "7.60.0",
+  "url": "http://127.0.0.1:8372/",
+  "stage": {
+    "index": 2,
+    "id": "brute",
+    "name": "The Brute"
+  },
+  "browserBridge": "In-app browser-control bridge unavailable; version-verified local Chromium fallback used.",
+  "evidenceClass": "runtime-state-assisted keyboard-only stage-start route attempt",
+  "setup": {
+    "stageSelection": "development-stage-start-selection",
+    "healthNormalization": true,
+    "x": 70,
+    "y": 0,
+    "levelLength": 14000
+  },
+  "policy": {
+    "stateRead": "player motion, nearby hazard/wall flags, slate contact, portal count, enemy/boss presence, mode and checkpoint",
+    "allowedActions": [
+      "move",
+      "jump",
+      "dash",
+      "attack",
+      "place/clear portal",
+      "accept portal prompt"
+    ],
+    "positionInjectionAfterStart": false,
+    "hpInjectionAfterStart": false,
+    "invulnerability": false,
+    "testMode": false
+  },
+  "events": [
+    {
+      "tMs": 0,
+      "kind": "keyboard",
+      "input": "ArrowRight",
+      "action": "down"
+    },
+    {
+      "tMs": 252,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 752,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 1000,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 1000,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 1500,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 1752,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 2251,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 2502,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 2752,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 2752,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 3502,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 3752,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 4001,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 4001,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 4752,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 4752,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 5252,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 5500,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 5752,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 6001,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 6502,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 6752,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 7002,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 7251,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 7750,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 7750,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 8502,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 8502,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 8752,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 9002,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 9750,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 9750,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 10097,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 10333,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 10333,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 10553,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 10751,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 11002,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 11002,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 11500,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 11500,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 11500,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 12251,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 12502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 12750,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 13001,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 13500,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 13500,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 14000,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 14502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 14502,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 14752,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 15252,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 15502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 15752,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 16002,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 16502,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 16502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 17002,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 17502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 17502,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 17752,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 18250,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 18502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 18752,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 19002,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 19002,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 19002,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 19502,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 20002,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 20252,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 20502,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 20752,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 21002,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 21502,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 22000,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 22000,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 22000,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 22752,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 23002,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 23252,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 23502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 23502,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 24002,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 24502,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 24502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 25000,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 25250,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 25502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 25752,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 26502,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 26502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 26502,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 27001,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 27502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 27752,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 28003,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 28003,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 28251,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 28251,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 28502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 29002,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 29502,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 29502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 29502,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 30253,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 30502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 30752,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 31002,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 31252,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 31502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 32001,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 32502,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 32502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 32502,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 33252,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 33502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 33752,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 34002,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 34501,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 34501,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    }
+  ],
+  "samples": [
+    {
+      "tMs": 1,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 13580,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 252,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 112.3,
+        "y": 0,
+        "vx": 199.1,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 13538,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 162.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 13488,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 752,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 212.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 13438,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 1000,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 262.2,
+        "y": 16.3,
+        "vx": 200,
+        "vy": 133.3,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 13388,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 1252,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 312.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 13338,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 1500,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 362.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 13288,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 1752,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 412.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 13238,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 2000,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 462.2,
+        "y": 16.3,
+        "vx": 200,
+        "vy": 133.3,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 13188,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 2251,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 512.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 13138,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 2502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 562.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 13088,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 2752,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 612.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 13038,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 3002,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 662.2,
+        "y": 20.3,
+        "vx": 200,
+        "vy": 86.7,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 12988,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 3252,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 712.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 12938,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 3502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 762.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 12888,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 3752,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 812.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 12838,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 4001,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 862.2,
+        "y": 25.3,
+        "vx": 200,
+        "vy": 110,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 12788,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 4252,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 912.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 12738,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 4502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 962.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 12688,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 4752,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 1012.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 12638,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 5002,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 1062.2,
+        "y": 20.3,
+        "vx": 200,
+        "vy": 86.7,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 12588,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 5252,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 1112.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 12538,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 5500,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 1162.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 12488,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 5752,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 1212.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 12438,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 6001,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 1262.2,
+        "y": 16.3,
+        "vx": 200,
+        "vy": 133.3,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 12388,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 6251,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 1312.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 12338,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 6502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 1362.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 12288,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 6752,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 1412.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 12238,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 7002,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 1462.2,
+        "y": 16.3,
+        "vx": 200,
+        "vy": 133.3,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 12188,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 7251,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 1512.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 12138,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 7506,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 1562.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 12088,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 7750,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 1612.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 12038,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 8001,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 1662.2,
+        "y": 20.3,
+        "vx": 200,
+        "vy": 86.7,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 11988,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 8252,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 1712.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 11938,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 8502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 1762.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 11888,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 8752,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 1812.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 11838,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 9002,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 1862.2,
+        "y": 25.3,
+        "vx": 200,
+        "vy": 110,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 11788,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 9252,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 1912.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 11738,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 9502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 1962.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 11688,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 9750,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2012.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 11638,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 10097,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2082.2,
+        "y": 3.5,
+        "vx": 200,
+        "vy": 226.7,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 11568,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 10333,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2128.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 11521,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 10553,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2172.2,
+        "y": 22.8,
+        "vx": 200,
+        "vy": 40,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 11478,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 10751,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2212.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 11438,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 11002,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2262.2,
+        "y": 16.3,
+        "vx": 200,
+        "vy": 133.3,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 11388,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 11250,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2312.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 11338,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 11500,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2362.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 11288,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 11757,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2412.2,
+        "y": 20.3,
+        "vx": 200,
+        "vy": 86.7,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 11238,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 12001,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2462.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 11188,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 12251,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2512.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 11138,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 12502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2562.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 11088,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 12750,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2612.2,
+        "y": 16.3,
+        "vx": 200,
+        "vy": 133.3,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 70,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 11038,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 13001,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2662.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10988,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 13252,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2712.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10938,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 13500,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2762.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10888,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 13751,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2812.2,
+        "y": 20.3,
+        "vx": 200,
+        "vy": 86.7,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10838,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 14000,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2862.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10788,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 14251,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2912.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10738,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 14502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2962.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10688,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 14752,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3012.2,
+        "y": 16.3,
+        "vx": 200,
+        "vy": 133.3,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10638,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 15003,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3062.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10588,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 15252,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3112.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10538,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 15502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3162.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10488,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 15752,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3212.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10438,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 16002,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3262.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10388,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 16251,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3312.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10338,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 16502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3362.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10288,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 16752,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3412.2,
+        "y": 20.3,
+        "vx": 200,
+        "vy": 86.7,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10238,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 17002,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3462.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10188,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 17252,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3512.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10138,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 17502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3562.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10088,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 17752,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3612.2,
+        "y": 16.3,
+        "vx": 200,
+        "vy": 133.3,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10038,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 18001,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3662.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9988,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 18250,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3712.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9938,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 18502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3762.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9888,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 18752,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3812.2,
+        "y": 16.3,
+        "vx": 200,
+        "vy": 133.3,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9838,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 19002,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3862.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9788,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 19263,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3915.6,
+        "y": 18.5,
+        "vx": 200,
+        "vy": 110,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9734,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 19502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3962.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9688,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 19752,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 4012.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9638,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 20002,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 4062.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9588,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 20252,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 4112.2,
+        "y": 16.3,
+        "vx": 200,
+        "vy": 133.3,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9538,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 20502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 4162.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9488,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 20752,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 4212.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9438,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 21002,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 4262.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9388,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 21252,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 4312.2,
+        "y": 16.3,
+        "vx": 200,
+        "vy": 133.3,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9338,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 21502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 4362.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9288,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 21750,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 4412.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9238,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 22000,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 4462.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9188,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 22251,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 4512.2,
+        "y": 20.3,
+        "vx": 200,
+        "vy": 86.7,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9138,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 22502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 4562.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9088,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 22752,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 4612.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9038,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 23002,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2693.4,
+        "y": 26,
+        "vx": 133,
+        "vy": 186.7,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10957,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 23252,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2737.3,
+        "y": 0,
+        "vx": 198.6,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10913,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 23502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2787.3,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10863,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 23750,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2837.3,
+        "y": 25.3,
+        "vx": 200,
+        "vy": 110,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10813,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 24002,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2887.3,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10763,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 24252,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2937.3,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10713,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 24502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2987.3,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10663,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 24752,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3037.3,
+        "y": 20.3,
+        "vx": 200,
+        "vy": 86.7,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10613,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 25000,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3087.3,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10563,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 25250,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3137.3,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10513,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 25502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3187.3,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10463,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 25752,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3237.3,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10413,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 26003,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3287.3,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10363,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 26251,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3337.3,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10313,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 26502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3387.3,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10263,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 26750,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3437.3,
+        "y": 20.3,
+        "vx": 200,
+        "vy": 86.7,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10213,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 27001,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3487.3,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10163,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 27252,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3537.3,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10113,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 27502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3587.3,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10063,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 27752,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3637.3,
+        "y": 25.3,
+        "vx": 200,
+        "vy": 110,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10013,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 28003,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3687.3,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9963,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 28251,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3737.3,
+        "y": 25.3,
+        "vx": 200,
+        "vy": 110,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9913,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 28502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3787.3,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9863,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 28752,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3837.3,
+        "y": 16.3,
+        "vx": 200,
+        "vy": 133.3,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9813,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 29002,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3887.3,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9763,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 29252,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3937.3,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9713,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 29502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3987.3,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9663,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 29751,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 4037.3,
+        "y": 20.3,
+        "vx": 200,
+        "vy": 86.7,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9613,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 30002,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 4087.3,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9563,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 30253,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 4137.3,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9513,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 30502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 4187.3,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9463,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 30752,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 4237.3,
+        "y": 16.3,
+        "vx": 200,
+        "vy": 133.3,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9413,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 31002,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 4287.3,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 9363,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 31252,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2698.1,
+        "y": 18.6,
+        "vx": 145.8,
+        "vy": 233.3,
+        "hp": 84,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10952,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 31502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2744,
+        "y": 0,
+        "vx": 199.3,
+        "vy": 0,
+        "hp": 84,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10906,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 31752,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2793.9,
+        "y": 25.3,
+        "vx": 199.9,
+        "vy": 110,
+        "hp": 84,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10856,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 32001,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2843.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 84,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10806,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 32252,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2893.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 84,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10756,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 32502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2943.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 84,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10706,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 32751,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 2993.9,
+        "y": 20.3,
+        "vx": 200,
+        "vy": 86.7,
+        "hp": 84,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10656,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 33000,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3043.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 84,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10606,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 33252,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3093.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 84,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10556,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 33502,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3143.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 84,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10506,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 33752,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3193.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 84,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10456,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 34002,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3243.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 84,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10406,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 34251,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3293.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 84,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10356,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 34501,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3343.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 84,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10306,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 34752,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3393.9,
+        "y": 20.3,
+        "vx": 200,
+        "vy": 86.7,
+        "hp": 84,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10256,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    },
+    {
+      "tMs": 35003,
+      "stageIndex": 2,
+      "mode": "play",
+      "levelLength": 14000,
+      "player": {
+        "x": 3443.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 84,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2680,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": {
+          "type": "brute",
+          "x": 13650,
+          "distance": 10206,
+          "hpFraction": 1,
+          "phase": 1,
+          "specialRound": null
+        }
+      }
+    }
+  ],
+  "capture": {
+    "viewport": {
+      "width": 960,
+      "height": 600,
+      "deviceScaleFactor": 1
+    },
+    "fps": 4,
+    "requestedDurationMs": 35000,
+    "wallDurationMs": 35004,
+    "frames": 140,
+    "video": "runtime-assisted-route-attempt.mp4"
+  },
+  "result": {
+    "status": "extended-route-partial-progress",
+    "maxX": 4612,
+    "levelLength": 14000,
+    "progressFraction": 0.3261,
+    "resetCount": 2,
+    "checkpointXs": [
+      70,
+      2680
+    ],
+    "maxPortalsPlaced": 0,
+    "bossReached": false,
+    "transitionedToStage": null,
+    "finalObservedPosition": {
+      "x": 3443.9,
+      "y": 0
+    },
+    "humanPlayabilitySignoff": false
+  },
+  "limitations": [
+    "Runtime-assisted keyboard routing is not a human playability or puzzle-comprehension review.",
+    "Only The Outskirts begins from a genuine fresh-run transition; later stages use disclosed development stage selection.",
+    "No position, HP, invulnerability, test-mode, or geometry mutation occurs after stage start.",
+    "Failure to complete may reflect the simple controller, while completion would prove traversal execution but not clarity or fun.",
+    "Optional, revisit, speedrun, and co-op route classes remain separate."
+  ]
+}

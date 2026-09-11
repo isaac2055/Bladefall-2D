@@ -1,0 +1,61 @@
+{
+  "summary": {
+    "errors": 0,
+    "warnings": 4,
+    "encounters": 2,
+    "maxPressure": 8.86,
+    "provenReachability": 0.9
+  },
+  "validation": {
+    "errors": [],
+    "warnings": [
+      {
+        "severity": "warning",
+        "code": "circuit.target.missing",
+        "path": "circuits.1",
+        "message": "Circuit \"1\" has controllers but no target."
+      }
+    ]
+  },
+  "softlocks": {
+    "safe": true,
+    "graph": {
+      "nodes": 30,
+      "edges": 165,
+      "reachable": 27
+    },
+    "proofs": [],
+    "risks": [
+      {
+        "severity": "warning",
+        "code": "softlock.pickups.unreachable",
+        "path": "pickups.pickup-001",
+        "message": "Pickup is not reachable in the static traversal graph.",
+        "confidence": "low"
+      }
+    ],
+    "unknowns": [
+      {
+        "severity": "warning",
+        "code": "softlock.exit.unproven",
+        "path": "exit",
+        "message": "Static traversal graph cannot prove a route from start to exit.",
+        "confidence": "low",
+        "dynamicDependencies": [
+          "object-021",
+          "object-030",
+          "object-046",
+          "object-051"
+        ]
+      },
+      {
+        "severity": "warning",
+        "code": "softlock.required.unproven",
+        "path": "objects.object-059",
+        "message": "Required check is outside the proven static route.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "encounterWarnings": []
+}

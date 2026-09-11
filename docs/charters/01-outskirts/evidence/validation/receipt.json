@@ -1,0 +1,75 @@
+{
+  "schema": "bladefall.outskirts-validation",
+  "version": 1,
+  "gameVersion": "7.50.0",
+  "date": "2026-08-09",
+  "stageIndex": 0,
+  "stageId": "outskirts",
+  "levelLength": 13000,
+  "validationMode": "source, deterministic physics proof, module regression, and localhost HTTP audit",
+  "browserBridge": "The in-app browser-control bridge was unavailable in this session; no substitute browser automation was used.",
+  "probes": [
+    {
+      "name": "fresh-single-jump-route",
+      "pass": true,
+      "evidence": "tests/outskirts-stage.test.mjs",
+      "result": "The real 480 velocity, 1400 gravity, and 200 run-speed envelope reaches the east seam and returns west across mandatory surfaces."
+    },
+    {
+      "name": "progressive-loadout-contract",
+      "pass": true,
+      "evidence": "tests/outskirts-stage.test.mjs",
+      "result": "Fresh Outskirts has jump only, no portal, no weapon or armor pickups, no random ecology, no elite rolls, and no generic enemy drops."
+    },
+    {
+      "name": "room-and-encounter-authorship",
+      "pass": true,
+      "evidence": "tests/outskirts-stage.test.mjs",
+      "result": "Six named rooms own distinct scenery and five deterministic, bounded avoidance patrols."
+    },
+    {
+      "name": "return-visit-rewards",
+      "pass": true,
+      "evidence": "tests/outskirts-stage.test.mjs",
+      "result": "Double Jump reaches First Draught; Dash reaches the Watcher dead drop; Weapon enables the patrol cache and Sentinel Key; Wall Jump opens the western branch."
+    },
+    {
+      "name": "physical-world-seams",
+      "pass": true,
+      "evidence": "tests/outskirts-stage.test.mjs, tests/streaming.test.mjs, tests/world.test.mjs",
+      "result": "Mothlight Tunnel streams to and from Black Woods, and the capability-gated western breach streams to and from the Warden route without a transition portal."
+    },
+    {
+      "name": "people-place-and-persistence",
+      "pass": true,
+      "evidence": "tests/outskirts-stage.test.mjs, tests/story.test.mjs, tests/quests.test.mjs",
+      "result": "Mara requires a genuine return after ASH, GLASS, and IRON; Vey, Olan, 3:40, white flowers, memories, caches, and the Sentinel persist through campaign authorities."
+    },
+    {
+      "name": "accessibility-and-local-delivery",
+      "pass": true,
+      "evidence": "tests/outskirts-stage.test.mjs and localhost asset audit",
+      "result": "Room cues support semantic events, live labels, captions, Large Text, High Contrast, and Reduced Motion; all 48 linked localhost resources returned HTTP 200."
+    }
+  ],
+  "compile": {
+    "runtimeModules": 42,
+    "inlineScripts": 3,
+    "pass": true
+  },
+  "regression": {
+    "tests": 336,
+    "passed": 336,
+    "failed": 0
+  },
+  "release": {
+    "pass": true,
+    "serviceWorkerCache": "bladefall-v104",
+    "deployAssets": 55,
+    "canonicalMirrorParity": true
+  },
+  "limitations": [
+    "No claim of human visual approval, natural playthrough timing, or screenshot evidence is made in this receipt.",
+    "The stated first-visit and speedrun timing targets require player playtesting and remain tuning hypotheses."
+  ]
+}

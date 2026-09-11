@@ -1,0 +1,73 @@
+{
+  "summary": {
+    "errors": 0,
+    "warnings": 5,
+    "encounters": 3,
+    "maxPressure": 6.28,
+    "provenReachability": 0.875
+  },
+  "validation": {
+    "errors": [],
+    "warnings": [
+      {
+        "severity": "warning",
+        "code": "circuit.target.missing",
+        "path": "circuits.outskirts-air-4880",
+        "message": "Circuit \"outskirts-air-4880\" has controllers but no target."
+      }
+    ]
+  },
+  "softlocks": {
+    "safe": true,
+    "graph": {
+      "nodes": 32,
+      "edges": 152,
+      "reachable": 28
+    },
+    "proofs": [],
+    "risks": [
+      {
+        "severity": "warning",
+        "code": "softlock.pickups.unreachable",
+        "path": "pickups.pickup-001",
+        "message": "Pickup is not reachable in the static traversal graph.",
+        "confidence": "low"
+      }
+    ],
+    "unknowns": [
+      {
+        "severity": "warning",
+        "code": "softlock.exit.unproven",
+        "path": "exit",
+        "message": "Static traversal graph cannot prove a route from start to exit.",
+        "confidence": "low",
+        "dynamicDependencies": [
+          "object-027",
+          "object-028",
+          "object-040",
+          "object-041",
+          "object-042",
+          "object-045",
+          "object-054",
+          "object-058",
+          "object-066"
+        ]
+      },
+      {
+        "severity": "warning",
+        "code": "softlock.required.unproven",
+        "path": "objects.object-004",
+        "message": "Required coin is outside the proven static route.",
+        "confidence": "low"
+      },
+      {
+        "severity": "warning",
+        "code": "softlock.required.unproven",
+        "path": "objects.object-062",
+        "message": "Required check is outside the proven static route.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "encounterWarnings": []
+}

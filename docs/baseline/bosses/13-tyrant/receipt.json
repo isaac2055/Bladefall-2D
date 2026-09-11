@@ -1,0 +1,1927 @@
+{
+  "schema": "bladefall.a1-boss-probe",
+  "version": 1,
+  "gameVersion": "7.8.0",
+  "url": "http://127.0.0.1:8372/",
+  "stage": {
+    "index": 12,
+    "name": "The Void Tyrant"
+  },
+  "bossType": "tyrant",
+  "browserBridge": "In-app browser-control bridge unavailable; version-verified local Chromium fallback used.",
+  "evidenceClass": "state-positioned arena observation, disclosed invulnerability, forced HP thresholds, and synthetic lethal fall",
+  "setup": {
+    "stageIndex": 12,
+    "playerPosition": {
+      "x": 8440,
+      "y": 0
+    },
+    "support": {
+      "x": 8440,
+      "y": 0,
+      "w": 1280,
+      "type": "plat"
+    },
+    "invulnerabilityInjected": true,
+    "checkpointInjection": null,
+    "bossContract": {
+      "id": null,
+      "type": "tyrant",
+      "label": "VOID TYRANT",
+      "hp": 1540,
+      "maxHp": 1540,
+      "damage": 30,
+      "portalGate": "paradox",
+      "phase": 1,
+      "finalePhases": [
+        {
+          "index": 0,
+          "beat": "teach",
+          "label": "LEGS",
+          "y": 48
+        },
+        {
+          "index": 1,
+          "beat": "test",
+          "label": "TORSO",
+          "y": 178
+        },
+        {
+          "index": 2,
+          "beat": "twist",
+          "label": "HEAD",
+          "y": 302
+        }
+      ],
+      "reflectBanks": null,
+      "forgeHits": null,
+      "paradoxHits": 3,
+      "echoFractures": null,
+      "special": {
+        "brutePortalFight": false,
+        "wardenPortalFight": false,
+        "spellSiphonFight": false,
+        "forgeFight": false,
+        "paradoxFight": true,
+        "echoFight": false
+      }
+    }
+  },
+  "events": [
+    {
+      "tMs": 1502,
+      "kind": "state-injection",
+      "mutation": {
+        "hp": 739.1999999999999,
+        "maxHp": 1540,
+        "fraction": 0.48
+      },
+      "purpose": "cross generic enrage and Abyss King phase-two thresholds"
+    },
+    {
+      "tMs": 4833,
+      "kind": "state-injection",
+      "mutation": "player.hp=1, player.y=-90, invulnerability removed",
+      "purpose": "synthetic lethal out-of-bounds event to exercise boss-stage restart"
+    }
+  ],
+  "samples": [
+    {
+      "tMs": 0,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9998.6
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 1540,
+        "maxHp": 1540,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8724,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 168,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9998.5
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 1540,
+        "maxHp": 1540,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8717,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 335,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9998.3
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 1540,
+        "maxHp": 1540,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8709,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 502,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9998.1
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 1540,
+        "maxHp": 1540,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8702,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 667,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9998
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 1540,
+        "maxHp": 1540,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8695,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 5,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 834,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9997.8
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 1540,
+        "maxHp": 1540,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8687,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 5,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 1002,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9997.6
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 1540,
+        "maxHp": 1540,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8680,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 5,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 1169,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9997.5
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 1540,
+        "maxHp": 1540,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8673,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 4,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 1335,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9997.3
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 1540,
+        "maxHp": 1540,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8665,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 3,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 1502,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9997.1
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 739.2,
+        "maxHp": 1540,
+        "hpFraction": 0.48,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8658,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 2,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 1668,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9997
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 739.2,
+        "maxHp": 1540,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8650,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 2,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 1835,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9996.8
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 739.2,
+        "maxHp": 1540,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8650,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 2,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 2002,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9996.6
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 739.2,
+        "maxHp": 1540,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8650,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 2,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 2169,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9996.5
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 739.2,
+        "maxHp": 1540,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8650,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 2335,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9996.3
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 739.2,
+        "maxHp": 1540,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8650,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 2502,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9996.1
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 739.2,
+        "maxHp": 1540,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8650,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 2668,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9996
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 739.2,
+        "maxHp": 1540,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8650,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 6,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 2835,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9995.8
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 739.2,
+        "maxHp": 1540,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8650,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 6,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 3001,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9995.6
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 739.2,
+        "maxHp": 1540,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8650,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 6,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 3168,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9995.5
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 739.2,
+        "maxHp": 1540,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8650,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 4,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 3335,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9995.3
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 739.2,
+        "maxHp": 1540,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8650,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 3,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 3501,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9995.1
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 739.2,
+        "maxHp": 1540,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8650,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 3,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 3668,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9995
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 739.2,
+        "maxHp": 1540,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8650,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 3,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 3835,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9994.8
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 739.2,
+        "maxHp": 1540,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8650,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 2,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 4001,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9994.6
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 739.2,
+        "maxHp": 1540,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8650,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 7,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 4168,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9994.5
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 739.2,
+        "maxHp": 1540,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8650,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 7,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 4334,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9994.3
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 739.2,
+        "maxHp": 1540,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8650,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 6,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 4500,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9994.1
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 739.2,
+        "maxHp": 1540,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8650,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 5,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 4668,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9994
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 739.2,
+        "maxHp": 1540,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8650,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 4,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 4833,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 8440,
+        "y": -90,
+        "hp": 1,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 739.2,
+        "maxHp": 1540,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8650,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 4,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 5001,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0.8
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 1540,
+        "maxHp": 1540,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 5168,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0.7
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 1540,
+        "maxHp": 1540,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 5335,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0.5
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 1540,
+        "maxHp": 1540,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 5502,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0.3
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 1540,
+        "maxHp": 1540,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 5667,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0.2
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 1540,
+        "maxHp": 1540,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 5835,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 1540,
+        "maxHp": 1540,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 6001,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 1540,
+        "maxHp": 1540,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 6168,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 1540,
+        "maxHp": 1540,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 6334,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 1540,
+        "maxHp": 1540,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 6502,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 1540,
+        "maxHp": 1540,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 6667,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 1540,
+        "maxHp": 1540,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 6833,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 1540,
+        "maxHp": 1540,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 7001,
+      "mode": "play",
+      "stageIndex": 12,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "tyrant",
+        "hp": 1540,
+        "maxHp": 1540,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 8740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": 0,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 2
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    }
+  ],
+  "capture": {
+    "viewport": {
+      "width": 960,
+      "height": 600,
+      "deviceScaleFactor": 1
+    },
+    "fps": 6,
+    "frames": 42,
+    "wallDurationMs": 7002,
+    "video": "phase-reset-probe.mp4"
+  },
+  "result": {
+    "phasesObserved": [
+      1,
+      2
+    ],
+    "phase2Observed": true,
+    "phase3Observed": false,
+    "attackActivityObserved": true,
+    "syntheticDeathRestartObserved": true,
+    "checkpointReturnObserved": null,
+    "victoryObserved": false,
+    "status": "phase-and-synthetic-restart-observed"
+  },
+  "limitations": [
+    "This does not prove a natural boss phase transition, intended portal solution, or player victory.",
+    "Arena positioning and invulnerability are disclosed setup mutations used to observe attacks safely.",
+    "HP thresholds are forced directly and therefore validate runtime phase response, not balance or legitimate damage routing.",
+    "The lethal fall validates restart plumbing; it is not evidence of boss lethality.",
+    "Co-op boss ownership and synchronization remain untested."
+  ]
+}

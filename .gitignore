@@ -1,2 +1,21 @@
-# Local Netlify folder
-.netlify
+# Dependencies and generated output. Rebuild with `npm install` and
+# `./build-deploy.sh`; netlify-deploy/ is a mirror of public/ and is never
+# the editing source.
+node_modules/
+netlify-deploy/
+.netlify/
+
+# OS, editor and local tooling state.
+.DS_Store
+/.claude/
+
+# Historical evidence media: screenshots, contact sheets and route recordings
+# captured from past builds. They are archival proof, not the record the game
+# is built from, and they add ~170 MB to every clone. Keep them in the separate
+# local archive; the receipts, prose and JSON beside them stay tracked.
+docs/**/*.png
+docs/**/*.jpg
+docs/**/*.jpeg
+docs/**/*.gif
+docs/**/*.mp4
+docs/**/*.webm

@@ -1,0 +1,193 @@
+{
+  "schema": "bladefall.brute-validation",
+  "version": 3,
+  "gameVersion": "7.87.0",
+  "level": "Broken Causeway",
+  "stageIndex": 2,
+  "url": "http://127.0.0.1:8877/index.html",
+  "browserVisualSignoff": false,
+  "browserNote": "Local headless Chromium executed the real game and captured spatial evidence. Human visual and natural-playthrough signoff remains pending because the in-app browser-control runtime was not exposed.",
+  "automatedEvidence": {
+    "sourceParse": true,
+    "campaignValidation": true,
+    "releaseCheck": true,
+    "targetedBehaviorTests": 13,
+    "targetedBehaviorFailures": 0,
+    "lastRun": "2026-08-20T07:38:02.047Z",
+    "pageErrors": [],
+    "screenshot": "/Users/computer/Desktop/Bladefall-2D Antigravity/docs/charters/03-brute/evidence/validation/bow-perch-two-rivets.png",
+    "returnScreenshot": "/Users/computer/Desktop/Bladefall-2D Antigravity/docs/charters/03-brute/evidence/validation/arena-return-stair.png"
+  },
+  "probes": [
+    {
+      "name": "five-room-authored-topology",
+      "evidenceClass": "live production receipt and collision geometry",
+      "pass": true,
+      "observed": {
+        "length": 14000,
+        "rooms": 5,
+        "criticalCapabilities": [
+          "jump",
+          "weapon"
+        ],
+        "archerySteps": [
+          {
+            "x": 10840,
+            "y": 65,
+            "w": 180
+          },
+          {
+            "x": 11040,
+            "y": 130,
+            "w": 180
+          },
+          {
+            "x": 11240,
+            "y": 195,
+            "w": 180
+          },
+          {
+            "x": 11400,
+            "y": 260,
+            "w": 210
+          }
+        ],
+        "arenaReturnSteps": [
+          {
+            "x": 11840,
+            "y": 65,
+            "w": 150
+          },
+          {
+            "x": 11760,
+            "y": 130,
+            "w": 140
+          },
+          {
+            "x": 11680,
+            "y": 195,
+            "w": 130
+          },
+          {
+            "x": 11600,
+            "y": 260,
+            "w": 120
+          }
+        ]
+      }
+    },
+    {
+      "name": "dormant-boss-and-authored-bow",
+      "evidenceClass": "live browser state and equipment interaction",
+      "pass": true,
+      "observed": {
+        "before": {
+          "x": 13650,
+          "state": "dormant",
+          "dormant": true,
+          "active": false
+        },
+        "bossBarVisible": false,
+        "bow": {
+          "x": 11400,
+          "y": 278,
+          "name": "Chainwake Longbow"
+        },
+        "acquisition": {
+          "bagged": true,
+          "equipped": true,
+          "weapon": "bow",
+          "name": "Chainwake Longbow",
+          "pickupRemaining": false
+        }
+      }
+    },
+    {
+      "name": "three-distinct-airborne-rivets-awaken-brute",
+      "evidenceClass": "live mechanism-authority timeline",
+      "pass": true,
+      "observed": [
+        {
+          "rivet": 0,
+          "struck": true,
+          "hits": 1,
+          "state": "dormant",
+          "dormant": true,
+          "active": false
+        },
+        {
+          "rivet": 1,
+          "struck": true,
+          "hits": 2,
+          "state": "dormant",
+          "dormant": true,
+          "active": false
+        },
+        {
+          "rivet": 2,
+          "struck": true,
+          "hits": 3,
+          "state": "wake",
+          "dormant": false,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "missed-counterweight-rearms",
+      "evidenceClass": "live failure and recovery timeline",
+      "pass": true,
+      "observed": {
+        "armorBroken": false,
+        "weightActive": 0,
+        "releaseRearmed": true,
+        "weightY": 455
+      }
+    },
+    {
+      "name": "remote-counterweight-opens-transformation",
+      "evidenceClass": "live airborne release and successful impact outcome",
+      "pass": true,
+      "observed": {
+        "releaseStruck": true,
+        "armorBroken": true,
+        "bossState": "transform",
+        "weightActive": 2
+      }
+    },
+    {
+      "name": "counterweight-opens-vulnerable-pursuit",
+      "evidenceClass": "live progression and projectile authority",
+      "pass": true,
+      "observed": {
+        "granted": false,
+        "state": "recover",
+        "gate": null,
+        "armor": false,
+        "hp": 372,
+        "afterArrow": {
+          "state": "recover",
+          "gate": null,
+          "armor": false,
+          "hp": 356.7
+        }
+      }
+    },
+    {
+      "name": "dash-awakening-and-return",
+      "evidenceClass": "progression and physical-seam assertions",
+      "pass": true,
+      "observed": {
+        "reward": "dash",
+        "returnStage": 1
+      }
+    }
+  ],
+  "pendingHumanEvidence": [
+    "first-read room pacing",
+    "upper-versus-lower Chainwalk feel",
+    "bow/perch/three-rivet visual comprehension at ordinary play speed",
+    "natural full-route completion and fun review"
+  ],
+  "ok": true
+}

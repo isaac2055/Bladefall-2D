@@ -1,0 +1,49 @@
+{
+  "summary": {
+    "errors": 0,
+    "warnings": 2,
+    "encounters": 10,
+    "maxPressure": 4.4,
+    "provenReachability": 0.9655172413793104
+  },
+  "validation": {
+    "errors": [],
+    "warnings": []
+  },
+  "softlocks": {
+    "safe": true,
+    "graph": {
+      "nodes": 29,
+      "edges": 93,
+      "reachable": 28
+    },
+    "proofs": [],
+    "risks": [],
+    "unknowns": [
+      {
+        "severity": "warning",
+        "code": "softlock.exit.unproven",
+        "path": "exit",
+        "message": "Static traversal graph cannot prove a route from start to exit.",
+        "confidence": "low",
+        "dynamicDependencies": [
+          "object-014",
+          "object-016",
+          "object-021",
+          "object-022",
+          "object-023",
+          "object-024",
+          "object-034"
+        ]
+      },
+      {
+        "severity": "warning",
+        "code": "softlock.required.unproven",
+        "path": "objects.object-047",
+        "message": "Required check is outside the proven static route.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "encounterWarnings": []
+}

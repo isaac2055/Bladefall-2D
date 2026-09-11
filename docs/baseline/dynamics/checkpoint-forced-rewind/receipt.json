@@ -1,0 +1,1095 @@
+{
+  "schema": "bladefall.a1-dynamic-probe",
+  "version": 1,
+  "gameVersion": "7.8.0",
+  "url": "http://127.0.0.1:8372/",
+  "id": "checkpoint-forced-rewind",
+  "stage": {
+    "index": 14,
+    "name": "The Gilded Vault"
+  },
+  "mechanic": "checkpoint activation and hazard-style rewind",
+  "evidenceClass": "state-positioned approach; keyboard activation; explicitly forced out-of-bounds failure",
+  "browserBridge": "In-app browser-control bridge unavailable; version-verified local Chromium fallback used.",
+  "setup": {
+    "requested": {
+      "target": "checkpoint",
+      "x": 2180,
+      "playerX": 2140,
+      "playerY": 0,
+      "onGround": true
+    },
+    "resolvedTarget": {
+      "type": "check",
+      "x": 2180,
+      "y": 0,
+      "slate": false,
+      "id": null
+    },
+    "player": {
+      "x": 2140,
+      "y": 0,
+      "onGround": true
+    },
+    "support": {
+      "type": "plat",
+      "x": 1130,
+      "y": 0,
+      "id": null
+    }
+  },
+  "events": [
+    {
+      "tMs": 167,
+      "kind": "keyboard",
+      "input": "ArrowRight",
+      "action": "down"
+    },
+    {
+      "tMs": 1000,
+      "kind": "keyboard",
+      "input": "ArrowRight",
+      "action": "up"
+    },
+    {
+      "tMs": 1835,
+      "kind": "state-injection",
+      "mutation": "player.y=-90 and grounded state cleared",
+      "purpose": "force out-of-bounds checkpoint rewind"
+    }
+  ],
+  "samples": [
+    {
+      "tMs": 0,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2140,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 167,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2140,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 335,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2165.8,
+        "y": 0,
+        "vx": 194.4,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 502,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2198.9,
+        "y": 0,
+        "vx": 199.8,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 668,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2232.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 835,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2265.6,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 1000,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2298.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 1168,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2316.8,
+        "y": 0,
+        "vx": 57.8,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 1335,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2322,
+        "y": 0,
+        "vx": 16.7,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 1502,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2322.8,
+        "y": 0,
+        "vx": 0.6,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 1667,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2322.8,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 1835,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2322.8,
+        "y": -90,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": false,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 2001,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2180,
+        "y": 22.5,
+        "vx": 0,
+        "vy": 210,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": false,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 2168,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2180,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 2335,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2180,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 2502,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2180,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 2668,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2180,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 2835,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2180,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 3001,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2180,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 3168,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2180,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 3335,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2180,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 3500,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2180,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 3668,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2180,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 3835,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2180,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 4001,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2180,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 4167,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2180,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 4335,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2180,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 4503,
+      "mode": "play",
+      "stageIndex": 14,
+      "player": {
+        "x": 2180,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 2180,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    }
+  ],
+  "capture": {
+    "viewport": {
+      "width": 960,
+      "height": 600,
+      "deviceScaleFactor": 1
+    },
+    "fps": 6,
+    "frames": 27,
+    "wallDurationMs": 4504,
+    "video": "probe.mp4"
+  },
+  "result": {
+    "checkpointActivated": true,
+    "checkpointX": 2180,
+    "forcedFailureSetup": true,
+    "rewindObserved": true,
+    "status": "checkpoint-and-rewind-observed"
+  },
+  "limitations": [
+    "This is a targeted mechanic probe, not a complete level route or signoff.",
+    "State-positioned setup is disclosed above and cannot prove natural route access.",
+    "Only the listed events occurred during capture; forced failure is synthetic where explicitly identified.",
+    "Co-op ownership, complete puzzle resolution, and boss phase coverage remain separate requirements."
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "schema": "bladefall.charter-evidence-receipt",
+  "version": 1,
+  "gameVersion": "7.22.0",
+  "stageIndex": 1,
+  "stageId": "black-woods",
+  "stageName": "Black Woods",
+  "url": "http://127.0.0.1:8877/index.html",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "pageErrors": [],
+  "charterValidation": {
+    "ok": true,
+    "errors": [],
+    "warnings": []
+  },
+  "geometryAudit": {
+    "ok": true,
+    "errors": [],
+    "warnings": [],
+    "counts": {
+      "total": 79,
+      "owned": 79,
+      "critical": 0,
+      "fluids": 0,
+      "containedFluids": 0
+    },
+    "ownershipCoverage": 1
+  },
+  "analysis": {
+    "errors": 0,
+    "warnings": 3,
+    "encounters": 1,
+    "maxPressure": 9.7,
+    "provenReachability": 0.9285714285714286
+  },
+  "stills": [
+    {
+      "id": "entrance",
+      "label": "Entrance",
+      "x": 100,
+      "view": "route",
+      "location": {
+        "x": 100,
+        "y": 0,
+        "cameraX": 0,
+        "cameraY": 0
+      },
+      "file": "entrance-entrance-route.png"
+    },
+    {
+      "id": "entrance",
+      "label": "Entrance",
+      "x": 100,
+      "view": "upper",
+      "location": {
+        "x": 100,
+        "y": 0,
+        "cameraX": 0,
+        "cameraY": 0
+      },
+      "file": "entrance-entrance-upper.png"
+    },
+    {
+      "id": "act-01",
+      "label": "mothlight refuge",
+      "x": 600,
+      "view": "route",
+      "location": {
+        "x": 600,
+        "y": 0,
+        "cameraX": 53,
+        "cameraY": 0
+      },
+      "file": "act-01-mothlight-refuge-route.png"
+    },
+    {
+      "id": "act-01",
+      "label": "mothlight refuge",
+      "x": 600,
+      "view": "upper",
+      "location": {
+        "x": 600,
+        "y": 0,
+        "cameraX": 53,
+        "cameraY": 0
+      },
+      "file": "act-01-mothlight-refuge-upper.png"
+    },
+    {
+      "id": "act-02",
+      "label": "biting canopy",
+      "x": 2200,
+      "view": "route",
+      "location": {
+        "x": 2200,
+        "y": 0,
+        "cameraX": 1653,
+        "cameraY": 0
+      },
+      "file": "act-02-biting-canopy-route.png"
+    },
+    {
+      "id": "act-02",
+      "label": "biting canopy",
+      "x": 2200,
+      "view": "upper",
+      "location": {
+        "x": 2200,
+        "y": 490,
+        "cameraX": 1653,
+        "cameraY": 100
+      },
+      "file": "act-02-biting-canopy-upper.png"
+    },
+    {
+      "id": "act-03",
+      "label": "mirror thicket",
+      "x": 3600,
+      "view": "route",
+      "location": {
+        "x": 3600,
+        "y": 0,
+        "cameraX": 3053,
+        "cameraY": 0
+      },
+      "file": "act-03-mirror-thicket-route.png"
+    },
+    {
+      "id": "act-03",
+      "label": "mirror thicket",
+      "x": 3600,
+      "view": "upper",
+      "location": {
+        "x": 3600,
+        "y": 350,
+        "cameraX": 3053,
+        "cameraY": 0
+      },
+      "file": "act-03-mirror-thicket-upper.png"
+    },
+    {
+      "id": "act-04",
+      "label": "two-mouth hollow",
+      "x": 5000,
+      "view": "route",
+      "location": {
+        "x": 5000,
+        "y": 0,
+        "cameraX": 4453,
+        "cameraY": 0
+      },
+      "file": "act-04-two-mouth-hollow-route.png"
+    },
+    {
+      "id": "act-04",
+      "label": "two-mouth hollow",
+      "x": 5000,
+      "view": "upper",
+      "location": {
+        "x": 5000,
+        "y": 510,
+        "cameraX": 4453,
+        "cameraY": 120
+      },
+      "file": "act-04-two-mouth-hollow-upper.png"
+    },
+    {
+      "id": "exit",
+      "label": "Exit",
+      "x": 5900,
+      "view": "route",
+      "location": {
+        "x": 5900,
+        "y": 0,
+        "cameraX": 4960,
+        "cameraY": 0
+      },
+      "file": "exit-exit-route.png"
+    },
+    {
+      "id": "exit",
+      "label": "Exit",
+      "x": 5900,
+      "view": "upper",
+      "location": {
+        "x": 5900,
+        "y": 0,
+        "cameraX": 4960,
+        "cameraY": 0
+      },
+      "file": "exit-exit-upper.png"
+    }
+  ],
+  "limitations": [
+    "Camera-positioned stills support spatial planning; they do not prove route completion or human readability."
+  ]
+}

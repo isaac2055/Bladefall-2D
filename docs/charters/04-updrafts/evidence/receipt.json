@@ -1,0 +1,201 @@
+{
+  "schema": "bladefall.charter-evidence-receipt",
+  "version": 1,
+  "gameVersion": "7.30.0",
+  "stageIndex": 3,
+  "stageId": "updrafts",
+  "stageName": "The Updrafts",
+  "url": "http://127.0.0.1:8877/index.html",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "pageErrors": [],
+  "charterValidation": {
+    "ok": true,
+    "errors": [],
+    "warnings": []
+  },
+  "geometryAudit": {
+    "ok": true,
+    "errors": [],
+    "warnings": [],
+    "counts": {
+      "total": 90,
+      "owned": 90,
+      "critical": 8,
+      "fluids": 1,
+      "containedFluids": 1
+    },
+    "ownershipCoverage": 1
+  },
+  "analysis": {
+    "errors": 0,
+    "warnings": 4,
+    "encounters": 3,
+    "maxPressure": 7.45,
+    "provenReachability": 0.8461538461538461
+  },
+  "stills": [
+    {
+      "id": "entrance",
+      "label": "Entrance",
+      "x": 100,
+      "view": "route",
+      "location": {
+        "x": 100,
+        "y": 150,
+        "cameraX": 0,
+        "cameraY": 0
+      },
+      "file": "entrance-entrance-route.png"
+    },
+    {
+      "id": "entrance",
+      "label": "Entrance",
+      "x": 100,
+      "view": "upper",
+      "location": {
+        "x": 100,
+        "y": 150,
+        "cameraX": 0,
+        "cameraY": 0
+      },
+      "file": "entrance-entrance-upper.png"
+    },
+    {
+      "id": "act-01",
+      "label": "bellows rest",
+      "x": 650,
+      "view": "route",
+      "location": {
+        "x": 650,
+        "y": 0,
+        "cameraX": 103,
+        "cameraY": 0
+      },
+      "file": "act-01-bellows-rest-route.png"
+    },
+    {
+      "id": "act-01",
+      "label": "bellows rest",
+      "x": 650,
+      "view": "upper",
+      "location": {
+        "x": 650,
+        "y": 150,
+        "cameraX": 103,
+        "cameraY": 0
+      },
+      "file": "act-01-bellows-rest-upper.png"
+    },
+    {
+      "id": "act-02",
+      "label": "kite stair",
+      "x": 2750,
+      "view": "route",
+      "location": {
+        "x": 2750,
+        "y": 0,
+        "cameraX": 2203,
+        "cameraY": 0
+      },
+      "file": "act-02-kite-stair-route.png"
+    },
+    {
+      "id": "act-02",
+      "label": "kite stair",
+      "x": 2750,
+      "view": "upper",
+      "location": {
+        "x": 2750,
+        "y": 470,
+        "cameraX": 2203,
+        "cameraY": 80
+      },
+      "file": "act-02-kite-stair-upper.png"
+    },
+    {
+      "id": "act-03",
+      "label": "rain-catcher span",
+      "x": 4650,
+      "view": "route",
+      "location": {
+        "x": 4650,
+        "y": 0,
+        "cameraX": 4103,
+        "cameraY": 0
+      },
+      "file": "act-03-rain-catcher-span-route.png"
+    },
+    {
+      "id": "act-03",
+      "label": "rain-catcher span",
+      "x": 4650,
+      "view": "upper",
+      "location": {
+        "x": 4650,
+        "y": 370,
+        "cameraX": 4103,
+        "cameraY": 0
+      },
+      "file": "act-03-rain-catcher-span-upper.png"
+    },
+    {
+      "id": "act-04",
+      "label": "signal crown",
+      "x": 7000,
+      "view": "route",
+      "location": {
+        "x": 7000,
+        "y": 0,
+        "cameraX": 6453,
+        "cameraY": 0
+      },
+      "file": "act-04-signal-crown-route.png"
+    },
+    {
+      "id": "act-04",
+      "label": "signal crown",
+      "x": 7000,
+      "view": "upper",
+      "location": {
+        "x": 7000,
+        "y": 340,
+        "cameraX": 6453,
+        "cameraY": 0
+      },
+      "file": "act-04-signal-crown-upper.png"
+    },
+    {
+      "id": "exit",
+      "label": "Exit",
+      "x": 7900,
+      "view": "route",
+      "location": {
+        "x": 7900,
+        "y": 0,
+        "cameraX": 6960,
+        "cameraY": 0
+      },
+      "file": "exit-exit-route.png"
+    },
+    {
+      "id": "exit",
+      "label": "Exit",
+      "x": 7900,
+      "view": "upper",
+      "location": {
+        "x": 7900,
+        "y": 250,
+        "cameraX": 6960,
+        "cameraY": 0
+      },
+      "file": "exit-exit-upper.png"
+    }
+  ],
+  "limitations": [
+    "Camera-positioned stills support spatial planning; they do not prove route completion or human readability.",
+    "Enemy motion is frozen after assembly for deterministic composition; actors remain visible, but stills do not prove live AI behavior."
+  ]
+}

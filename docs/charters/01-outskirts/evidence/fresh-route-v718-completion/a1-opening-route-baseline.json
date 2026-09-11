@@ -1,0 +1,51 @@
+{
+  "schema": "bladefall.a1-opening-route-baseline",
+  "version": 1,
+  "gameVersion": "7.18.0",
+  "url": "http://127.0.0.1:8877/index.html",
+  "browserBridge": "In-app browser-control bridge unavailable; version-verified local Chromium fallback used.",
+  "pageErrors": [],
+  "capturedStages": 1,
+  "routeClass": "runtime-state-assisted keyboard-only stage-start attempts",
+  "stages": [
+    {
+      "index": 0,
+      "id": "outskirts",
+      "name": "The Outskirts",
+      "setupClass": "fresh-run-natural-first-stage",
+      "result": {
+        "status": "extended-route-repeated-resets",
+        "maxX": 5954,
+        "levelLength": 7700,
+        "progressFraction": 0.7712,
+        "resetCount": 13,
+        "checkpointXs": [
+          1740,
+          3430,
+          4000,
+          4920
+        ],
+        "maxPortalsPlaced": 0,
+        "bossReached": false,
+        "transitionedToStage": null,
+        "finalObservedPosition": {
+          "x": 894.6,
+          "y": 0
+        },
+        "humanPlayabilitySignoff": false
+      },
+      "video": "01-outskirts/runtime-assisted-route-attempt.mp4",
+      "receipt": "01-outskirts/receipt.json"
+    }
+  ],
+  "coverage": {
+    "openingStageAttempts": "partial",
+    "genuineFreshRunStart": "complete",
+    "stageTransitions": 0,
+    "humanIntendedRoute": "pending",
+    "returningRevisit": "pending",
+    "optionalCollectible": "pending",
+    "credibleSpeedrun": "pending",
+    "twoPlayer": "pending"
+  }
+}

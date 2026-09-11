@@ -1,0 +1,38 @@
+{
+  "summary": {
+    "errors": 0,
+    "warnings": 1,
+    "encounters": 2,
+    "maxPressure": 8,
+    "provenReachability": 1
+  },
+  "validation": {
+    "errors": [],
+    "warnings": [
+      {
+        "severity": "warning",
+        "code": "circuit.target.missing",
+        "path": "circuits.2",
+        "message": "Circuit \"2\" has controllers but no target."
+      }
+    ]
+  },
+  "softlocks": {
+    "safe": true,
+    "graph": {
+      "nodes": 16,
+      "edges": 74,
+      "reachable": 16
+    },
+    "proofs": [
+      {
+        "code": "route.start-to-exit",
+        "message": "Static traversal route reaches the exit.",
+        "node": 13
+      }
+    ],
+    "risks": [],
+    "unknowns": []
+  },
+  "encounterWarnings": []
+}

@@ -1,0 +1,28 @@
+{
+  "scripts": {
+    "serve": "node public/serve.mjs",
+    "test": "node --test",
+    "baseline:audit": "node scripts/baseline-audit.mjs --write",
+    "baseline:capture": "node scripts/capture-baseline.mjs",
+    "baseline:interact": "node scripts/interactive-baseline.mjs",
+    "baseline:dynamics": "node scripts/dynamic-baseline.mjs",
+    "baseline:bosses": "node scripts/boss-baseline.mjs",
+    "baseline:routes:opening": "node scripts/opening-route-baseline.mjs",
+    "tas:smoke": "node scripts/tas-smoke.mjs",
+    "validate:black-woods": "node scripts/validate-black-woods.mjs",
+    "validate:brute": "node scripts/validate-brute.mjs",
+    "validate:opening-package": "node scripts/validate-opening-package.mjs",
+    "validate:opening-systems": "node scripts/validate-opening-systems.mjs",
+    "validate:updrafts": "node scripts/validate-updrafts.mjs",
+    "validate:hollow-marksman": "node scripts/validate-hollow-marksman.mjs",
+    "validate:ruined-keep": "node scripts/validate-ruined-keep.mjs",
+    "validate:frostfell": "node scripts/validate-frostfell.mjs",
+    "validate:warden": "node scripts/validate-warden.mjs",
+    "validate:recollections": "node scripts/validate-recollections.mjs",
+    "release:check": "node scripts/release-check.mjs"
+  },
+  "dependencies": {
+    "jsdom": "^29.1.1",
+    "puppeteer": "^25.3.0"
+  }
+}

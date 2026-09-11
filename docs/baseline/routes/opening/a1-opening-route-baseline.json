@@ -1,0 +1,131 @@
+{
+  "schema": "bladefall.a1-opening-route-baseline",
+  "version": 1,
+  "gameVersion": "7.8.0",
+  "url": "http://127.0.0.1:8372/",
+  "browserBridge": "In-app browser-control bridge unavailable; version-verified local Chromium fallback used.",
+  "pageErrors": [],
+  "capturedStages": 4,
+  "routeClass": "runtime-state-assisted keyboard-only stage-start attempts",
+  "stages": [
+    {
+      "index": 0,
+      "id": "outskirts",
+      "name": "The Outskirts",
+      "setupClass": "fresh-run-natural-first-stage",
+      "result": {
+        "status": "extended-route-repeated-resets",
+        "maxX": 650,
+        "levelLength": 13800,
+        "progressFraction": 0.0422,
+        "resetCount": 11,
+        "checkpointXs": [
+          70
+        ],
+        "maxPortalsPlaced": 0,
+        "bossReached": false,
+        "transitionedToStage": null,
+        "finalObservedPosition": {
+          "x": 556.6,
+          "y": 16.3
+        },
+        "humanPlayabilitySignoff": false
+      },
+      "video": "01-outskirts/runtime-assisted-route-attempt.mp4",
+      "receipt": "01-outskirts/receipt.json"
+    },
+    {
+      "index": 1,
+      "id": "black-woods",
+      "name": "Black Woods",
+      "setupClass": "development-stage-start-selection",
+      "result": {
+        "status": "extended-route-repeated-resets",
+        "maxX": 3421,
+        "levelLength": 12400,
+        "progressFraction": 0.2717,
+        "resetCount": 3,
+        "checkpointXs": [
+          70,
+          110,
+          2480
+        ],
+        "maxPortalsPlaced": 0,
+        "bossReached": false,
+        "transitionedToStage": null,
+        "finalObservedPosition": {
+          "x": 3420.6,
+          "y": 16.3
+        },
+        "humanPlayabilitySignoff": false
+      },
+      "video": "02-black-woods/runtime-assisted-route-attempt.mp4",
+      "receipt": "02-black-woods/receipt.json"
+    },
+    {
+      "index": 2,
+      "id": "brute",
+      "name": "The Brute",
+      "setupClass": "development-stage-start-selection",
+      "result": {
+        "status": "extended-route-partial-progress",
+        "maxX": 4612,
+        "levelLength": 14000,
+        "progressFraction": 0.3261,
+        "resetCount": 2,
+        "checkpointXs": [
+          70,
+          2680
+        ],
+        "maxPortalsPlaced": 0,
+        "bossReached": false,
+        "transitionedToStage": null,
+        "finalObservedPosition": {
+          "x": 3443.9,
+          "y": 0
+        },
+        "humanPlayabilitySignoff": false
+      },
+      "video": "03-brute/runtime-assisted-route-attempt.mp4",
+      "receipt": "03-brute/receipt.json"
+    },
+    {
+      "index": 3,
+      "id": "updrafts",
+      "name": "The Updrafts",
+      "setupClass": "development-stage-start-selection",
+      "result": {
+        "status": "extended-route-partial-progress",
+        "maxX": 4130,
+        "levelLength": 8400,
+        "progressFraction": 0.4874,
+        "resetCount": 0,
+        "checkpointXs": [
+          90,
+          1880,
+          3960
+        ],
+        "maxPortalsPlaced": 0,
+        "bossReached": false,
+        "transitionedToStage": null,
+        "finalObservedPosition": {
+          "x": 4130,
+          "y": 0
+        },
+        "humanPlayabilitySignoff": false
+      },
+      "video": "04-updrafts/runtime-assisted-route-attempt.mp4",
+      "receipt": "04-updrafts/receipt.json"
+    }
+  ],
+  "coverage": {
+    "openingStageAttempts": "complete",
+    "genuineFreshRunStart": "complete",
+    "stageTransitions": 0,
+    "humanIntendedRoute": "pending",
+    "returningRevisit": "pending",
+    "optionalCollectible": "pending",
+    "credibleSpeedrun": "pending",
+    "twoPlayer": "pending"
+  }
+}

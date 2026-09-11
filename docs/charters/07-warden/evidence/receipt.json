@@ -1,0 +1,18 @@
+{
+  "schema": "bladefall.charter-planning-receipt",
+  "version": 1,
+  "stageIndex": 6,
+  "stageId": "warden",
+  "stageName": "The Warden",
+  "planningComplete": true,
+  "charter": "../charter.md",
+  "rooms": ["sentence-well", "red-court", "turning-cells", "hush-engine", "blind-gallery", "eastern-crown"],
+  "contracts": {
+    "direction": "east-to-west-first-visit",
+    "portal": "cross-body-personal-pair",
+    "environment": "contained-low-gravity-rotor-engine",
+    "ability": "counter-awakening",
+    "continuity": "outskirts-east-frostfell-west",
+    "music": "clockwork-to-element"
+  }
+}

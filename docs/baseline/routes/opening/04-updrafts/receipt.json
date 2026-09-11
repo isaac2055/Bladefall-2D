@@ -1,0 +1,5677 @@
+{
+  "schema": "bladefall.a1-opening-route-attempt",
+  "version": 1,
+  "gameVersion": "7.60.0",
+  "url": "http://127.0.0.1:8372/",
+  "stage": {
+    "index": 3,
+    "id": "updrafts",
+    "name": "The Updrafts"
+  },
+  "browserBridge": "In-app browser-control bridge unavailable; version-verified local Chromium fallback used.",
+  "evidenceClass": "runtime-state-assisted keyboard-only stage-start route attempt",
+  "setup": {
+    "stageSelection": "development-stage-start-selection",
+    "healthNormalization": true,
+    "x": 70,
+    "y": 0,
+    "levelLength": 8400
+  },
+  "policy": {
+    "stateRead": "player motion, nearby hazard/wall flags, slate contact, portal count, enemy/boss presence, mode and checkpoint",
+    "allowedActions": [
+      "move",
+      "jump",
+      "dash",
+      "attack",
+      "place/clear portal",
+      "accept portal prompt"
+    ],
+    "positionInjectionAfterStart": false,
+    "hpInjectionAfterStart": false,
+    "invulnerability": false,
+    "testMode": false
+  },
+  "events": [
+    {
+      "tMs": 0,
+      "kind": "keyboard",
+      "input": "ArrowRight",
+      "action": "down"
+    },
+    {
+      "tMs": 250,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 752,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 1002,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 1002,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 1501,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 1752,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 2251,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 2502,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 2752,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 2752,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 3502,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 3752,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 4000,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 4000,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 4752,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 4752,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 5250,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 5522,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 5522,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 6000,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 6500,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 6500,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 7002,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 7252,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 7502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 7750,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 8502,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 8502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 8502,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 9002,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 9002,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 9500,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 9750,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 10003,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 10252,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 10502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 11003,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 11501,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 11501,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 11501,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 12252,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 12502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 12752,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 13002,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 13501,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 13501,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 14001,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 14001,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 14501,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 14753,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 15002,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 15251,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 15751,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 16002,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 16002,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 16502,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 17000,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 17000,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 17501,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 17501,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 17751,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 18002,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 18252,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 18502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 19002,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 19002,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 19502,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 19502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 20252,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 20502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 20502,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 20752,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 21502,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 21502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 22002,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 22002,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 22502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 22752,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 23252,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 23502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 23502,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 24002,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 24002,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 24252,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 24502,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 24502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 24752,
+      "kind": "keyboard-policy",
+      "input": "ArrowLeft+Space",
+      "purpose": "commit away from wall direction 1 after wall jump"
+    },
+    {
+      "tMs": 25001,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 25001,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 25252,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 25252,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 25252,
+      "kind": "keyboard-policy",
+      "action": "resume-right"
+    },
+    {
+      "tMs": 25502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 25750,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 25750,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 26000,
+      "kind": "keyboard-policy",
+      "input": "ArrowLeft+Space",
+      "purpose": "commit away from wall direction 1 after wall jump"
+    },
+    {
+      "tMs": 26252,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 26502,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 26502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 26502,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 26502,
+      "kind": "keyboard-policy",
+      "action": "resume-right"
+    },
+    {
+      "tMs": 26753,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 27002,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 27002,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 27250,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 27502,
+      "kind": "keyboard-policy",
+      "input": "ArrowLeft+Space",
+      "purpose": "commit away from wall direction 1 after wall jump"
+    },
+    {
+      "tMs": 27752,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 27752,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 28000,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 28000,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 28000,
+      "kind": "keyboard-policy",
+      "action": "resume-right"
+    },
+    {
+      "tMs": 28252,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 28252,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 28502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 28751,
+      "kind": "keyboard-policy",
+      "input": "ArrowLeft+Space",
+      "purpose": "commit away from wall direction 1 after wall jump"
+    },
+    {
+      "tMs": 29002,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 29002,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 29252,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 29252,
+      "kind": "keyboard-policy",
+      "action": "resume-right"
+    },
+    {
+      "tMs": 29502,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 29502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 29502,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 29751,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 30002,
+      "kind": "keyboard-policy",
+      "input": "ArrowLeft+Space",
+      "purpose": "commit away from wall direction 1 after wall jump"
+    },
+    {
+      "tMs": 30253,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 30253,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 30502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 30502,
+      "kind": "keyboard-policy",
+      "action": "resume-right"
+    },
+    {
+      "tMs": 30752,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 30752,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 31001,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 31001,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 31261,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 31261,
+      "kind": "keyboard-policy",
+      "input": "ArrowLeft+Space",
+      "purpose": "commit away from wall direction 1 after wall jump"
+    },
+    {
+      "tMs": 31502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 31753,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 31753,
+      "kind": "keyboard-policy",
+      "action": "resume-right"
+    },
+    {
+      "tMs": 32002,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 32002,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 32252,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 32501,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 32501,
+      "kind": "keyboard-policy",
+      "input": "ArrowLeft+Space",
+      "purpose": "commit away from wall direction 1 after wall jump"
+    },
+    {
+      "tMs": 32501,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 32751,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 33002,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 33002,
+      "kind": "keyboard-policy",
+      "action": "resume-right"
+    },
+    {
+      "tMs": 33252,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 33252,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 33502,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 33751,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 33751,
+      "kind": "keyboard-policy",
+      "input": "ArrowLeft+Space",
+      "purpose": "commit away from wall direction 1 after wall jump"
+    },
+    {
+      "tMs": 34001,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 34001,
+      "kind": "keyboard",
+      "input": "KeyD",
+      "purpose": "dash"
+    },
+    {
+      "tMs": 34252,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 34252,
+      "kind": "keyboard-policy",
+      "action": "resume-right"
+    },
+    {
+      "tMs": 34503,
+      "kind": "keyboard",
+      "input": "KeyW",
+      "purpose": "attack"
+    },
+    {
+      "tMs": 34503,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    },
+    {
+      "tMs": 34752,
+      "kind": "keyboard",
+      "input": "Space",
+      "purpose": "jump/traversal response"
+    }
+  ],
+  "samples": [
+    {
+      "tMs": 1,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 250,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 112.3,
+        "y": 0,
+        "vx": 199.1,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 502,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 162.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 752,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 212.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 1002,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 262.2,
+        "y": 25.3,
+        "vx": 200,
+        "vy": 110,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 1250,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 312.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 1501,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 362.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 1752,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 412.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 2002,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 462.2,
+        "y": 25.3,
+        "vx": 200,
+        "vy": 110,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 2251,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 512.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 2502,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 562.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 2752,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 612.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 3002,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 662.2,
+        "y": 20.3,
+        "vx": 200,
+        "vy": 86.7,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 3250,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 712.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 3502,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 762.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 3752,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 812.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 4000,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 862.2,
+        "y": 25.3,
+        "vx": 200,
+        "vy": 110,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 4252,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 912.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 4502,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 962.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 4752,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1012.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 5046,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1072.2,
+        "y": 23.1,
+        "vx": 200,
+        "vy": 133.3,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 5250,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1112.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 5522,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1165.6,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 5787,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1218.9,
+        "y": 16.3,
+        "vx": 200,
+        "vy": 133.3,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 6000,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1262.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 6250,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1312.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 6500,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1362.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 6752,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1412.2,
+        "y": 20.3,
+        "vx": 200,
+        "vy": 86.7,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 7002,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1462.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 7252,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1512.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 7502,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1562.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 7750,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1612.2,
+        "y": 84.6,
+        "vx": 200,
+        "vy": -330,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 8002,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1662.2,
+        "y": 167.1,
+        "vx": 200,
+        "vy": -330,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 8252,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1712.2,
+        "y": 249.6,
+        "vx": 200,
+        "vy": -330,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 8502,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1762.2,
+        "y": 285.4,
+        "vx": 200,
+        "vy": 20,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 8773,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1815.6,
+        "y": 240.7,
+        "vx": 200,
+        "vy": 333.3,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 98.5
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 9002,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1862.2,
+        "y": 122.1,
+        "vx": 200,
+        "vy": 660,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 98.5
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 90,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 9253,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1912.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 9500,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1962.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 9750,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2012.2,
+        "y": 16.3,
+        "vx": 200,
+        "vy": 133.3,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 10003,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2062.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 10252,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2112.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 10502,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2162.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 10752,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1896.1,
+        "y": 14.3,
+        "vx": 137.2,
+        "vy": 256.7,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 11003,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1941.8,
+        "y": 0,
+        "vx": 199.4,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 11251,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1991.8,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 11501,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2041.8,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 11775,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2098.4,
+        "y": 16.3,
+        "vx": 200,
+        "vy": 133.3,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 12002,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2141.8,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 12252,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1905.9,
+        "y": 4.6,
+        "vx": 160.5,
+        "vy": 303.3,
+        "hp": 84,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 12502,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1954,
+        "y": 0,
+        "vx": 199.8,
+        "vy": 0,
+        "hp": 84,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 12752,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2003.9,
+        "y": 25.3,
+        "vx": 200,
+        "vy": 110,
+        "hp": 84,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 13002,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2053.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 84,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 13252,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2103.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 84,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 13501,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1905.9,
+        "y": 4.6,
+        "vx": 160.5,
+        "vy": 303.3,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 13751,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 1952.8,
+        "y": 20.3,
+        "vx": 195.1,
+        "vy": 86.7,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 14001,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2002.3,
+        "y": 0,
+        "vx": 199.9,
+        "vy": 0,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 9,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 14252,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2038.9,
+        "y": 23.8,
+        "vx": 200,
+        "vy": -6.7,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 14501,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2088.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 14753,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2138.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 15002,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2188.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 15251,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2238.9,
+        "y": 25.3,
+        "vx": 200,
+        "vy": 110,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 15501,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2288.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 15751,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2338.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 16002,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2388.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 16252,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2438.9,
+        "y": 16.3,
+        "vx": 200,
+        "vy": 133.3,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 16502,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2488.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 16752,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2538.9,
+        "y": 55,
+        "vx": 200,
+        "vy": -330,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 17000,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2588.9,
+        "y": 137.5,
+        "vx": 200,
+        "vy": -330,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 17251,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2638.9,
+        "y": 220,
+        "vx": 200,
+        "vy": -330,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 17501,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2688.9,
+        "y": 291.6,
+        "vx": 200,
+        "vy": -166.7,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 17751,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2738.9,
+        "y": 301.1,
+        "vx": 200,
+        "vy": 123.3,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 98.5
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 18002,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2788.9,
+        "y": 223.6,
+        "vx": 200,
+        "vy": 473.3,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 98.5
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 18252,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2838.9,
+        "y": 73.1,
+        "vx": 200,
+        "vy": 763.3,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 97
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 18502,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2888.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 18751,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2938.9,
+        "y": 25.3,
+        "vx": 200,
+        "vy": 110,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 19002,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 2988.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 19251,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 3038.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 19502,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 3088.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 19752,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 3138.9,
+        "y": 20.3,
+        "vx": 200,
+        "vy": 86.7,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 20002,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 3188.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 20252,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 3238.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 20502,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 3288.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 20752,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 3338.9,
+        "y": 16.3,
+        "vx": 200,
+        "vy": 133.3,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 21001,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 3388.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 21252,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 3438.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 21502,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 3488.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 21752,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 3538.9,
+        "y": 20.3,
+        "vx": 200,
+        "vy": 86.7,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 22002,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 3588.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 22252,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 3638.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 22502,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 3688.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 22752,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 3738.9,
+        "y": 25.3,
+        "vx": 200,
+        "vy": 110,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 23003,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 3788.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 23252,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 3838.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 23502,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 3888.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 76,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 1880,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 23752,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 3938.9,
+        "y": 25.3,
+        "vx": 200,
+        "vy": 110,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": false,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 24002,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 3988.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": false,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 24252,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4038.9,
+        "y": 20.3,
+        "vx": 200,
+        "vy": 86.7,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 24502,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4088.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 24752,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4130,
+        "y": 20.3,
+        "vx": 0,
+        "vy": 86.7,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": true,
+        "wallDir": 1,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 25001,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4101.8,
+        "y": 0,
+        "vx": -188.3,
+        "vy": 0,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 25252,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4052.9,
+        "y": 16.3,
+        "vx": -198.1,
+        "vy": 133.3,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 25502,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4056.2,
+        "y": 0,
+        "vx": 189.9,
+        "vy": 0,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 25750,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4105.3,
+        "y": 16.3,
+        "vx": 198.4,
+        "vy": 133.3,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 26000,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4130,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": true,
+        "wallDir": 1,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 26252,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4098.5,
+        "y": 16.3,
+        "vx": -168,
+        "vy": 133.3,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 26502,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4051.6,
+        "y": 0,
+        "vx": -199.1,
+        "vy": 0,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 26753,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4029.4,
+        "y": 20.3,
+        "vx": 71.8,
+        "vy": 86.7,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 27002,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4065.9,
+        "y": 0,
+        "vx": 194.2,
+        "vy": 0,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 27250,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4115.6,
+        "y": 20.3,
+        "vx": 199.4,
+        "vy": 86.7,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 27502,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4130,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": true,
+        "wallDir": 1,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 27752,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4098.5,
+        "y": 25.3,
+        "vx": -168,
+        "vy": 110,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 28000,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4051.9,
+        "y": 0,
+        "vx": -198.5,
+        "vy": 0,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 28252,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4039.5,
+        "y": 16.3,
+        "vx": 96.3,
+        "vy": 133.3,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 28502,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4080.1,
+        "y": 0,
+        "vx": 197.8,
+        "vy": 0,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 28751,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4129.9,
+        "y": 16.3,
+        "vx": 199.6,
+        "vy": 133.3,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": true,
+        "wallDir": 1,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 29002,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4101.3,
+        "y": 0,
+        "vx": -193.9,
+        "vy": 0,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 29252,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4058.3,
+        "y": 22.8,
+        "vx": -199.3,
+        "vy": 40,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 29502,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4057.9,
+        "y": 0,
+        "vx": 160.4,
+        "vy": 0,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 8,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 29751,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4092.4,
+        "y": 8,
+        "vx": 194.2,
+        "vy": 40,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 30002,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4130,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": true,
+        "wallDir": 1,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 30253,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4098.5,
+        "y": 25.3,
+        "vx": -168,
+        "vy": 110,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 30502,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4051.9,
+        "y": 0,
+        "vx": -198.5,
+        "vy": 0,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 30752,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4044.6,
+        "y": 16.3,
+        "vx": 106.6,
+        "vy": 133.3,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 31001,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4086.2,
+        "y": 0,
+        "vx": 198,
+        "vy": 0,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 31261,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4130,
+        "y": 13.7,
+        "vx": 0,
+        "vy": 156.7,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": true,
+        "wallDir": 1,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 31502,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4103.6,
+        "y": 0,
+        "vx": -194.1,
+        "vy": 0,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 31753,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4054.1,
+        "y": 16.3,
+        "vx": -199.1,
+        "vy": 133.3,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 32002,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4058.4,
+        "y": 0,
+        "vx": 189.2,
+        "vy": 0,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 32252,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4107.7,
+        "y": 20.3,
+        "vx": 199,
+        "vy": 86.7,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 32501,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4130,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": true,
+        "wallDir": 1,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 32751,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4104.1,
+        "y": 20.3,
+        "vx": -160.5,
+        "vy": 86.7,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 33002,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4058.2,
+        "y": 0,
+        "vx": -198.2,
+        "vy": 0,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 33252,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4056.2,
+        "y": 16.3,
+        "vx": 116,
+        "vy": 133.3,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 33502,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4098.6,
+        "y": 0,
+        "vx": 198.2,
+        "vy": 0,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 33751,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4130,
+        "y": 16.3,
+        "vx": 0,
+        "vy": 133.3,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": true,
+        "wallDir": 1,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 34001,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4101.9,
+        "y": 0,
+        "vx": -194.7,
+        "vy": 0,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 34252,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4052.4,
+        "y": 16.3,
+        "vx": -199.2,
+        "vy": 133.3,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 34503,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4056.7,
+        "y": 0,
+        "vx": 189.2,
+        "vy": 0,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 34752,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4106,
+        "y": 20.3,
+        "vx": 199,
+        "vy": 86.7,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": false,
+        "onWall": false,
+        "wallDir": 0,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": null
+      }
+    },
+    {
+      "tMs": 35004,
+      "stageIndex": 3,
+      "mode": "play",
+      "levelLength": 8400,
+      "player": {
+        "x": 4130,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 96,
+        "maxHp": 100,
+        "dead": false,
+        "onGround": true,
+        "onWall": true,
+        "wallDir": 1,
+        "hasJetpack": true,
+        "fuel": 100
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 3960,
+        "y": 40
+      },
+      "routeSensors": {
+        "onSlate": false,
+        "hazardAhead": true,
+        "wallAhead": true,
+        "portalsPlaced": 0,
+        "livingEnemies": 7,
+        "boss": null
+      }
+    }
+  ],
+  "capture": {
+    "viewport": {
+      "width": 960,
+      "height": 600,
+      "deviceScaleFactor": 1
+    },
+    "fps": 4,
+    "requestedDurationMs": 35000,
+    "wallDurationMs": 35004,
+    "frames": 140,
+    "video": "runtime-assisted-route-attempt.mp4"
+  },
+  "result": {
+    "status": "extended-route-partial-progress",
+    "maxX": 4130,
+    "levelLength": 8400,
+    "progressFraction": 0.4874,
+    "resetCount": 0,
+    "checkpointXs": [
+      90,
+      1880,
+      3960
+    ],
+    "maxPortalsPlaced": 0,
+    "bossReached": false,
+    "transitionedToStage": null,
+    "finalObservedPosition": {
+      "x": 4130,
+      "y": 0
+    },
+    "humanPlayabilitySignoff": false
+  },
+  "limitations": [
+    "Runtime-assisted keyboard routing is not a human playability or puzzle-comprehension review.",
+    "Only The Outskirts begins from a genuine fresh-run transition; later stages use disclosed development stage selection.",
+    "No position, HP, invulnerability, test-mode, or geometry mutation occurs after stage start.",
+    "Failure to complete may reflect the simple controller, while completion would prove traversal execution but not clarity or fun.",
+    "Optional, revisit, speedrun, and co-op route classes remain separate."
+  ]
+}

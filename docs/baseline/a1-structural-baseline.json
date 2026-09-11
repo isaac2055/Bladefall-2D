@@ -1,0 +1,2306 @@
+{
+  "schema": "bladefall.a1-structural-baseline",
+  "version": 1,
+  "game": {
+    "version": "7.49.0",
+    "serviceWorkerCache": "bladefall-v103",
+    "stageCount": 16
+  },
+  "baseline": {
+    "captureVersion": "7.8.0",
+    "currentVersion": "7.49.0",
+    "currentVersionMatched": false,
+    "scope": "archived-pre-reimagining"
+  },
+  "ownership": {
+    "canonicalSource": "public",
+    "generatedMirror": "netlify-deploy",
+    "mirrorParity": {
+      "ok": true,
+      "checked": 46,
+      "files": [
+        {
+          "filename": "bladefall-ai.js",
+          "sourceSha256": "e3013240798b2ec0c2fccd4580a979fffedafffc8abf66bff260201bd2be388e",
+          "mirrorSha256": "e3013240798b2ec0c2fccd4580a979fffedafffc8abf66bff260201bd2be388e",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-audio.js",
+          "sourceSha256": "88633a8461d33b1fb101399f32543b6410ca60ca322ff9e4bcd70aa7ba75d73d",
+          "mirrorSha256": "88633a8461d33b1fb101399f32543b6410ca60ca322ff9e4bcd70aa7ba75d73d",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-authoring.js",
+          "sourceSha256": "63b554a3d1b1840af24f3c428b5e563d80fce33491d636ba4b185593a6facc9e",
+          "mirrorSha256": "63b554a3d1b1840af24f3c428b5e563d80fce33491d636ba4b185593a6facc9e",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-camera.js",
+          "sourceSha256": "68fb0da25ae3c471e3c9cdef237d89f0ce7698965dba7239c93dcac5e3932a29",
+          "mirrorSha256": "68fb0da25ae3c471e3c9cdef237d89f0ce7698965dba7239c93dcac5e3932a29",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-campaign.js",
+          "sourceSha256": "1bb7b10903627ea65d97494d8120c1d34e09dc4d2282316f7a3e66afcd25a3da",
+          "mirrorSha256": "1bb7b10903627ea65d97494d8120c1d34e09dc4d2282316f7a3e66afcd25a3da",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-capabilities.js",
+          "sourceSha256": "5c549362b23b57ee268840311aef9e4436d8e379667a36be337c6fda0e172df6",
+          "mirrorSha256": "5c549362b23b57ee268840311aef9e4436d8e379667a36be337c6fda0e172df6",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-charters.js",
+          "sourceSha256": "85c67df463173bee09bcca3f86648122d8f30779f62c0b0eef5dda6a3f1fe368",
+          "mirrorSha256": "85c67df463173bee09bcca3f86648122d8f30779f62c0b0eef5dda6a3f1fe368",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-cinematics.js",
+          "sourceSha256": "e6e97fe68308709a6e19f2b47664b28a2ea8e05f40f36682d3d228ff7933eaf3",
+          "mirrorSha256": "e6e97fe68308709a6e19f2b47664b28a2ea8e05f40f36682d3d228ff7933eaf3",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-content.js",
+          "sourceSha256": "8b8816fdee8457145d87944cbf307a1cb223dd9f77fd747fbbb03836b438cc9a",
+          "mirrorSha256": "8b8816fdee8457145d87944cbf307a1cb223dd9f77fd747fbbb03836b438cc9a",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-core.js",
+          "sourceSha256": "f14e81e2893c7520de6ec8de1352fe48df1336867b5e8f6cf2a01b26fb8d6430",
+          "mirrorSha256": "f14e81e2893c7520de6ec8de1352fe48df1336867b5e8f6cf2a01b26fb8d6430",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-echoes.js",
+          "sourceSha256": "e0de3b3f6e4f41eed3206d41a2ef6cf529c4c76ece1c91a3671dc5e9702fab4c",
+          "mirrorSha256": "e0de3b3f6e4f41eed3206d41a2ef6cf529c4c76ece1c91a3671dc5e9702fab4c",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-ecology.js",
+          "sourceSha256": "228035cdac595e67fcad0be5a895ce2d083052ede0c0d90311aec87b2a500425",
+          "mirrorSha256": "228035cdac595e67fcad0be5a895ce2d083052ede0c0d90311aec87b2a500425",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-environment.js",
+          "sourceSha256": "8590cdbac330522c68c685783841a33181a65dcea6983cf600530c9ced54379d",
+          "mirrorSha256": "8590cdbac330522c68c685783841a33181a65dcea6983cf600530c9ced54379d",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-equipment-economy.js",
+          "sourceSha256": "268cded8bffa13e1cf3bd1c4ea7e0758fe41629bb02f46cba5c69362eb7bdc21",
+          "mirrorSha256": "268cded8bffa13e1cf3bd1c4ea7e0758fe41629bb02f46cba5c69362eb7bdc21",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-fluids.js",
+          "sourceSha256": "e59d1a18e978e0a212ae892241bc671487aae1c351b13d3dea9309f4fa0271ce",
+          "mirrorSha256": "e59d1a18e978e0a212ae892241bc671487aae1c351b13d3dea9309f4fa0271ce",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-foundation-audit.js",
+          "sourceSha256": "77e9f15ffb7409552c4cd81376722415ce217268238a78f677bfeebc2d213032",
+          "mirrorSha256": "77e9f15ffb7409552c4cd81376722415ce217268238a78f677bfeebc2d213032",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-input.js",
+          "sourceSha256": "2b819a697dc290ec4b77650db809c4ca42d153392a41e0d5e3731a97deb2f676",
+          "mirrorSha256": "2b819a697dc290ec4b77650db809c4ca42d153392a41e0d5e3731a97deb2f676",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-interactions.js",
+          "sourceSha256": "00198c06360e80cd022a5c5205a77d8bb150ece1b51413125c124f5a7f9da49d",
+          "mirrorSha256": "00198c06360e80cd022a5c5205a77d8bb150ece1b51413125c124f5a7f9da49d",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-milestones.js",
+          "sourceSha256": "d03a2abea90f25b940f9441eafe3bc4f6d3ffec5ba61eb1cd009429208c0d8b8",
+          "mirrorSha256": "d03a2abea90f25b940f9441eafe3bc4f6d3ffec5ba61eb1cd009429208c0d8b8",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-movement-progression.js",
+          "sourceSha256": "b17e40899ab9ed39b10a214bee07e93ec928ab155400151e3132229635db2af4",
+          "mirrorSha256": "b17e40899ab9ed39b10a214bee07e93ec928ab155400151e3132229635db2af4",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-multiplayer.js",
+          "sourceSha256": "d26de3997379a0adb2d17742ebf2bc163cf6e0ab7196d1c8132566fbbb672ef3",
+          "mirrorSha256": "d26de3997379a0adb2d17742ebf2bc163cf6e0ab7196d1c8132566fbbb672ef3",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-platformer.js",
+          "sourceSha256": "b00e5b354386c927bb68763953c918fd06881edf57fcd3e50f30718bcb6ae28c",
+          "mirrorSha256": "b00e5b354386c927bb68763953c918fd06881edf57fcd3e50f30718bcb6ae28c",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-portal-progression.js",
+          "sourceSha256": "d6770cbe3fdd17ca3272cda48d9ea0c99af42ba9a702f94d8ca90e7394ffab17",
+          "mirrorSha256": "d6770cbe3fdd17ca3272cda48d9ea0c99af42ba9a702f94d8ca90e7394ffab17",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-portals.js",
+          "sourceSha256": "40929b8f44ea64b5bffcd6891d6a063d5eedfcfc42b1dfd18eeef98bdaef6fc3",
+          "mirrorSha256": "40929b8f44ea64b5bffcd6891d6a063d5eedfcfc42b1dfd18eeef98bdaef6fc3",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-presentation.js",
+          "sourceSha256": "a1df93337f46b49d3c5ef01b5987d8ee9a9970e40c6f8e390de10bf7ca9aaf75",
+          "mirrorSha256": "a1df93337f46b49d3c5ef01b5987d8ee9a9970e40c6f8e390de10bf7ca9aaf75",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-progression.js",
+          "sourceSha256": "e25ad5ca4d89577b9a6b50ec28ca3d0da20ffef4cac9175f0dfd56696a5b94e1",
+          "mirrorSha256": "e25ad5ca4d89577b9a6b50ec28ca3d0da20ffef4cac9175f0dfd56696a5b94e1",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-quests.js",
+          "sourceSha256": "74c00944e220eb2f97e2b69f054e72ce6d731a86a3188c82a1bb9a1b46ad9830",
+          "mirrorSha256": "74c00944e220eb2f97e2b69f054e72ce6d731a86a3188c82a1bb9a1b46ad9830",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-reactions.js",
+          "sourceSha256": "6b069d959574a199e2bd895b69b626ccf8b01f38511a0dd20338d63234b2d5e0",
+          "mirrorSha256": "6b069d959574a199e2bd895b69b626ccf8b01f38511a0dd20338d63234b2d5e0",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-recovery.js",
+          "sourceSha256": "ab6e70da12990557cecad99ed94cb643af3b1bd7d81187865ddf0a462ae8dadf",
+          "mirrorSha256": "ab6e70da12990557cecad99ed94cb643af3b1bd7d81187865ddf0a462ae8dadf",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-release.js",
+          "sourceSha256": "aa6ec95c91fa7f8a82789d927301e816c7516225f3395afff3272527968c5a1d",
+          "mirrorSha256": "aa6ec95c91fa7f8a82789d927301e816c7516225f3395afff3272527968c5a1d",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-remix.js",
+          "sourceSha256": "c08c8f4cc6961508c6a668ce22d1d8fe3c2a1813d93fef6d129f8e299cbe0f33",
+          "mirrorSha256": "c08c8f4cc6961508c6a668ce22d1d8fe3c2a1813d93fef6d129f8e299cbe0f33",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-renderer.js",
+          "sourceSha256": "541bbb6c3cc01cb8a39cb5c24cedb4845e7e11a49b904174ccbe875933c92c23",
+          "mirrorSha256": "541bbb6c3cc01cb8a39cb5c24cedb4845e7e11a49b904174ccbe875933c92c23",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-secrets.js",
+          "sourceSha256": "0ec585f2a090109ee0f357afad3dfd1be631874b5ac2ce00ba92a88c9efd52dc",
+          "mirrorSha256": "0ec585f2a090109ee0f357afad3dfd1be631874b5ac2ce00ba92a88c9efd52dc",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-shops.js",
+          "sourceSha256": "3923fc4a7b3c4594d0d8b292ab841a7238b761b043663f811e14dd74161d5cd5",
+          "mirrorSha256": "3923fc4a7b3c4594d0d8b292ab841a7238b761b043663f811e14dd74161d5cd5",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-simulation.js",
+          "sourceSha256": "cc91c3fdb2ef7986b52b49a6ca11004e5937d4a01a486a2c2a7420d5f5b521db",
+          "mirrorSha256": "cc91c3fdb2ef7986b52b49a6ca11004e5937d4a01a486a2c2a7420d5f5b521db",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-storage.js",
+          "sourceSha256": "9304522be1d8108ccbd1667c4ef11cb013237cf742a28b876acb912229b29693",
+          "mirrorSha256": "9304522be1d8108ccbd1667c4ef11cb013237cf742a28b876acb912229b29693",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-story.js",
+          "sourceSha256": "86907147a2bd247fdd4c28c58c0ce2546e3b5b5815c05a19ec3c95a958f4a5ef",
+          "mirrorSha256": "86907147a2bd247fdd4c28c58c0ce2546e3b5b5815c05a19ec3c95a958f4a5ef",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-streaming.js",
+          "sourceSha256": "2090d733897079ebd4e9ce49c90ad7a6ab783cdd95aef37fa01155c19ce1e73d",
+          "mirrorSha256": "2090d733897079ebd4e9ce49c90ad7a6ab783cdd95aef37fa01155c19ce1e73d",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-weapon-progression.js",
+          "sourceSha256": "5b166af9095b00ceeab2012bfe5f6d2ce3bd3bb274c52eb907757721d14748da",
+          "mirrorSha256": "5b166af9095b00ceeab2012bfe5f6d2ce3bd3bb274c52eb907757721d14748da",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-world.js",
+          "sourceSha256": "836e5847dccdb5879f1265200a647126cff544ef5cf436c1b280337e4ad56563",
+          "mirrorSha256": "836e5847dccdb5879f1265200a647126cff544ef5cf436c1b280337e4ad56563",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-zone-state.js",
+          "sourceSha256": "3fe9abd9e16778aedea4be4135cf56e6b067ef31b168a4ca3ce588a8380f0376",
+          "mirrorSha256": "3fe9abd9e16778aedea4be4135cf56e6b067ef31b168a4ca3ce588a8380f0376",
+          "identical": true
+        },
+        {
+          "filename": "bladefall-zones.js",
+          "sourceSha256": "a8ab02e5f0d824473a4f755c49b14618b7b479cfa8334b07bb96d1fb98752bf2",
+          "mirrorSha256": "a8ab02e5f0d824473a4f755c49b14618b7b479cfa8334b07bb96d1fb98752bf2",
+          "identical": true
+        },
+        {
+          "filename": "index.html",
+          "sourceSha256": "c5ec6d0b1cb8f04df745d23e73dbc97b136d9aeab1d6426cd6600dbe8aa54bde",
+          "mirrorSha256": "c5ec6d0b1cb8f04df745d23e73dbc97b136d9aeab1d6426cd6600dbe8aa54bde",
+          "identical": true
+        },
+        {
+          "filename": "littlejs.min.js",
+          "sourceSha256": "97bed8aff668a75974d7b790d87f8cbc9ee318c707464051904db436cdc4f6c3",
+          "mirrorSha256": "97bed8aff668a75974d7b790d87f8cbc9ee318c707464051904db436cdc4f6c3",
+          "identical": true
+        },
+        {
+          "filename": "manifest.webmanifest",
+          "sourceSha256": "89c97b224ff5faa1e3c295eb81f3b37076c41c3a81166882495e8962977be4e8",
+          "mirrorSha256": "89c97b224ff5faa1e3c295eb81f3b37076c41c3a81166882495e8962977be4e8",
+          "identical": true
+        },
+        {
+          "filename": "sw.js",
+          "sourceSha256": "0ae678c6f283b0c3c3f4534c7acd0b8e523b08d3c40575bb9d73116f5f7c02af",
+          "mirrorSha256": "0ae678c6f283b0c3c3f4534c7acd0b8e523b08d3c40575bb9d73116f5f7c02af",
+          "identical": true
+        }
+      ]
+    },
+    "stageSources": {
+      "custom": 6,
+      "procedural": 8,
+      "bonus": 1,
+      "secret": 1
+    },
+    "lateMutationPasses": [
+      {
+        "name": "applyCampaignCadence",
+        "references": 3
+      },
+      {
+        "name": "applyPortalComposition",
+        "references": 3
+      },
+      {
+        "name": "applyFollowerUtility",
+        "references": 3
+      },
+      {
+        "name": "applyMasteryBalance",
+        "references": 3
+      },
+      {
+        "name": "applyCampaignBlueprint",
+        "references": 3
+      },
+      {
+        "name": "applyKeepActRemaster",
+        "references": 2
+      },
+      {
+        "name": "applyElementalActRemaster",
+        "references": 3
+      },
+      {
+        "name": "applyFinaleActRemaster",
+        "references": 3
+      },
+      {
+        "name": "applyPeopleAndPlace",
+        "references": 3
+      },
+      {
+        "name": "applyNgRemix",
+        "references": 3
+      },
+      {
+        "name": "dressEnvironmentalMechanisms",
+        "references": 3
+      },
+      {
+        "name": "dressFluidShowcase",
+        "references": 3
+      }
+    ]
+  },
+  "testContract": {
+    "structuralCommand": "npm test",
+    "releaseCommand": "npm run release:check",
+    "baselineCommand": "npm run baseline:audit",
+    "warning": "Passing automated tests do not satisfy the visual or experiential gate."
+  },
+  "stages": [
+    {
+      "index": 0,
+      "id": "outskirts",
+      "name": "The Outskirts",
+      "source": "custom",
+      "length": 3600,
+      "theme": "plains",
+      "type": "normal",
+      "boss": null,
+      "secret": false,
+      "signature": "Cross the distorted camp perimeter at a deliberate pace, learn recovery through optional routes, then convert a fall and a known current into the first portal escape.",
+      "systems": [
+        "movement-grammar",
+        "route-choice",
+        "wall-jump",
+        "crystal-recovery",
+        "portal-fling"
+      ],
+      "acts": [
+        "fallen verge",
+        "watcher’s cut",
+        "signal hollow",
+        "sealed breach"
+      ],
+      "portalVerb": "fling",
+      "composition": {
+        "recipe": "wind-lift",
+        "at": 0.72
+      },
+      "blueprintManifestCounts": {
+        "objects": 0,
+        "enemies": 0,
+        "pickups": 0,
+        "travelers": 0
+      },
+      "evidence": {
+        "status": "pending-visual-capture",
+        "stills": [
+          {
+            "id": "entrance",
+            "normalizedX": 0,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-01",
+            "label": "fallen verge",
+            "normalizedX": 0.125,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-02",
+            "label": "watcher’s cut",
+            "normalizedX": 0.375,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-03",
+            "label": "signal hollow",
+            "normalizedX": 0.625,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-04",
+            "label": "sealed breach",
+            "normalizedX": 0.875,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "exit",
+            "normalizedX": 1,
+            "views": [
+              "route"
+            ]
+          }
+        ],
+        "clips": [
+          {
+            "system": "portal-fling",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for portal-fling."
+          }
+        ],
+        "playthroughs": [
+          "fresh-save intended route",
+          "returning-save revisit route",
+          "collectible and optional-branch route",
+          "credible speedrun route",
+          "two-player route and transition"
+        ]
+      }
+    },
+    {
+      "index": 1,
+      "id": "black-woods",
+      "name": "Black Woods",
+      "source": "custom",
+      "length": 4200,
+      "theme": "forest",
+      "type": "normal",
+      "boss": null,
+      "secret": false,
+      "signature": "Leave the first refuge, learn the forest’s readable lies with or without Bram, then choose both honest mouths for the first independent fling.",
+      "systems": [
+        "false-surfaces",
+        "wall-jump",
+        "traveler-lamp",
+        "portals",
+        "pendulums"
+      ],
+      "acts": [
+        "mothlight refuge",
+        "biting canopy",
+        "mirror thicket",
+        "two-mouth hollow"
+      ],
+      "portalVerb": "self-fling",
+      "composition": {
+        "recipe": "pendulum-passage",
+        "at": 0.58
+      },
+      "blueprintManifestCounts": {
+        "objects": 0,
+        "enemies": 0,
+        "pickups": 0,
+        "travelers": 0
+      },
+      "evidence": {
+        "status": "pending-visual-capture",
+        "stills": [
+          {
+            "id": "entrance",
+            "normalizedX": 0,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-01",
+            "label": "mothlight refuge",
+            "normalizedX": 0.125,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-02",
+            "label": "biting canopy",
+            "normalizedX": 0.375,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-03",
+            "label": "mirror thicket",
+            "normalizedX": 0.625,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-04",
+            "label": "two-mouth hollow",
+            "normalizedX": 0.875,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "exit",
+            "normalizedX": 1,
+            "views": [
+              "route"
+            ]
+          }
+        ],
+        "clips": [
+          {
+            "system": "portals",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for portals."
+          },
+          {
+            "system": "pendulums",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for pendulums."
+          }
+        ],
+        "playthroughs": [
+          "fresh-save intended route",
+          "returning-save revisit route",
+          "collectible and optional-branch route",
+          "credible speedrun route",
+          "two-player route and transition"
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "id": "brute",
+      "name": "The Brute",
+      "source": "custom",
+      "length": 4000,
+      "theme": "badlands",
+      "type": "miniboss",
+      "boss": "brute",
+      "secret": false,
+      "signature": "Turn the Brute’s committed charge into the final counterweight: one portal impact permanently breaks its armor and transforms the arena from puzzle to pursuit.",
+      "systems": [
+        "counterweight-mass",
+        "trap-blocks",
+        "wall-jump",
+        "portal-payload",
+        "arena-collapse"
+      ],
+      "acts": [
+        "chainwake camp",
+        "drop yard",
+        "counterweight rise",
+        "broken gate"
+      ],
+      "portalVerb": "living-payload",
+      "composition": {
+        "recipe": "none",
+        "at": 0.42
+      },
+      "blueprintManifestCounts": {
+        "objects": 0,
+        "enemies": 0,
+        "pickups": 0,
+        "travelers": 0
+      },
+      "evidence": {
+        "status": "pending-visual-capture",
+        "stills": [
+          {
+            "id": "entrance",
+            "normalizedX": 0,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-01",
+            "label": "chainwake camp",
+            "normalizedX": 0.125,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-02",
+            "label": "drop yard",
+            "normalizedX": 0.375,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-03",
+            "label": "counterweight rise",
+            "normalizedX": 0.625,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-04",
+            "label": "broken gate",
+            "normalizedX": 0.875,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "exit",
+            "normalizedX": 1,
+            "views": [
+              "route"
+            ]
+          }
+        ],
+        "clips": [
+          {
+            "system": "portal-payload",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for portal-payload."
+          },
+          {
+            "system": "boss-brute",
+            "requirement": "Record every boss phase, one player death/restart, and the winning resolution."
+          }
+        ],
+        "playthroughs": [
+          "fresh-save intended route",
+          "returning-save revisit route",
+          "collectible and optional-branch route",
+          "credible speedrun route",
+          "two-player route and transition"
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "id": "updrafts",
+      "name": "The Updrafts",
+      "source": "custom",
+      "length": 5000,
+      "theme": "canyon",
+      "type": "normal",
+      "boss": null,
+      "secret": false,
+      "signature": "Borrow the windwrights’ harness, learn to land between thermals, then place both mouths to bend a living crosswind into the Signal Crown.",
+      "systems": [
+        "jetpack-rhythm",
+        "authored-thermals",
+        "contained-rain-cistern",
+        "portal-projected-airflow",
+        "wind-reactive-enemies"
+      ],
+      "acts": [
+        "bellows rest",
+        "kite stair",
+        "rain-catcher span",
+        "signal crown"
+      ],
+      "portalVerb": "redirect-airflow",
+      "composition": {
+        "recipe": "none",
+        "at": 0.5
+      },
+      "blueprintManifestCounts": {
+        "objects": 0,
+        "enemies": 0,
+        "pickups": 0,
+        "travelers": 0
+      },
+      "evidence": {
+        "status": "pending-visual-capture",
+        "stills": [
+          {
+            "id": "entrance",
+            "normalizedX": 0,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-01",
+            "label": "bellows rest",
+            "normalizedX": 0.125,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-02",
+            "label": "kite stair",
+            "normalizedX": 0.375,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-03",
+            "label": "rain-catcher span",
+            "normalizedX": 0.625,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-04",
+            "label": "signal crown",
+            "normalizedX": 0.875,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "exit",
+            "normalizedX": 1,
+            "views": [
+              "route"
+            ]
+          }
+        ],
+        "clips": [
+          {
+            "system": "portal-projected-airflow",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for portal-projected-airflow."
+          },
+          {
+            "system": "wind-reactive-enemies",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for wind-reactive-enemies."
+          }
+        ],
+        "playthroughs": [
+          "fresh-save intended route",
+          "returning-save revisit route",
+          "collectible and optional-branch route",
+          "credible speedrun route",
+          "two-player route and transition"
+        ]
+      }
+    },
+    {
+      "index": 4,
+      "id": "hollow-marksman",
+      "name": "Hollow Marksman",
+      "source": "custom",
+      "length": 7950,
+      "theme": "canyon",
+      "type": "miniboss",
+      "boss": "archer",
+      "secret": false,
+      "signature": "Survive an occupied watch road, turn one authored shot against the Marksman’s rangefinder, then fight him through the arena that shot transforms.",
+      "systems": [
+        "telegraphed-sightlines",
+        "moving-mantlets",
+        "vertical-cover",
+        "one-shot-rangefinder-bank",
+        "mobile-marksman-duel"
+      ],
+      "acts": [
+        "shotfall camp",
+        "mantlet road",
+        "windcut gallery",
+        "deadeye court"
+      ],
+      "portalVerb": "break-rangefinder",
+      "composition": {
+        "recipe": "none",
+        "at": 0.43
+      },
+      "blueprintManifestCounts": {
+        "objects": 0,
+        "enemies": 0,
+        "pickups": 0,
+        "travelers": 0
+      },
+      "evidence": {
+        "status": "pending-visual-capture",
+        "stills": [
+          {
+            "id": "entrance",
+            "normalizedX": 0,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-01",
+            "label": "shotfall camp",
+            "normalizedX": 0.125,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-02",
+            "label": "mantlet road",
+            "normalizedX": 0.375,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-03",
+            "label": "windcut gallery",
+            "normalizedX": 0.625,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-04",
+            "label": "deadeye court",
+            "normalizedX": 0.875,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "exit",
+            "normalizedX": 1,
+            "views": [
+              "route"
+            ]
+          }
+        ],
+        "clips": [
+          {
+            "system": "moving-mantlets",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for moving-mantlets."
+          },
+          {
+            "system": "boss-archer",
+            "requirement": "Record every boss phase, one player death/restart, and the winning resolution."
+          }
+        ],
+        "playthroughs": [
+          "fresh-save intended route",
+          "returning-save revisit route",
+          "collectible and optional-branch route",
+          "credible speedrun route",
+          "two-player route and transition"
+        ]
+      }
+    },
+    {
+      "index": 5,
+      "id": "ruined-keep",
+      "name": "Ruined Keep",
+      "source": "procedural",
+      "length": 8850,
+      "theme": "ruins",
+      "type": "normal",
+      "boss": null,
+      "secret": false,
+      "signature": "Move weight through space, then coordinate a traveler as a persistent second body.",
+      "systems": [
+        "crate-routing",
+        "companion-hold",
+        "doors",
+        "gravity-wells"
+      ],
+      "acts": [
+        "outer ruin",
+        "weight circuit",
+        "companion wing",
+        "keep exit"
+      ],
+      "portalVerb": "plate",
+      "composition": {
+        "recipe": "none",
+        "at": 0.66
+      },
+      "blueprintManifestCounts": {
+        "objects": 0,
+        "enemies": 0,
+        "pickups": 0,
+        "travelers": 0
+      },
+      "evidence": {
+        "status": "pending-visual-capture",
+        "stills": [
+          {
+            "id": "entrance",
+            "normalizedX": 0,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-01",
+            "label": "outer ruin",
+            "normalizedX": 0.125,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-02",
+            "label": "weight circuit",
+            "normalizedX": 0.375,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-03",
+            "label": "companion wing",
+            "normalizedX": 0.625,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-04",
+            "label": "keep exit",
+            "normalizedX": 0.875,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "exit",
+            "normalizedX": 1,
+            "views": [
+              "route"
+            ]
+          }
+        ],
+        "clips": [
+          {
+            "system": "gravity-wells",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for gravity-wells."
+          }
+        ],
+        "playthroughs": [
+          "fresh-save intended route",
+          "returning-save revisit route",
+          "collectible and optional-branch route",
+          "credible speedrun route",
+          "two-player route and transition"
+        ]
+      }
+    },
+    {
+      "index": 6,
+      "id": "warden",
+      "name": "The Warden",
+      "source": "procedural",
+      "length": 8100,
+      "theme": "dungeon",
+      "type": "miniboss",
+      "boss": "warden",
+      "secret": false,
+      "signature": "Use spatial repositioning to attack a protected facing.",
+      "systems": [
+        "shield-flank",
+        "portals",
+        "low-gravity",
+        "rotors"
+      ],
+      "acts": [
+        "dungeon route",
+        "flank rehearsal",
+        "warden arena"
+      ],
+      "portalVerb": null,
+      "composition": {
+        "recipe": "lowg-rotor",
+        "at": 0.38
+      },
+      "blueprintManifestCounts": {
+        "objects": 0,
+        "enemies": 0,
+        "pickups": 0,
+        "travelers": 0
+      },
+      "evidence": {
+        "status": "pending-visual-capture",
+        "stills": [
+          {
+            "id": "entrance",
+            "normalizedX": 0,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-01",
+            "label": "dungeon route",
+            "normalizedX": 0.1667,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-02",
+            "label": "flank rehearsal",
+            "normalizedX": 0.5,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-03",
+            "label": "warden arena",
+            "normalizedX": 0.8333,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "exit",
+            "normalizedX": 1,
+            "views": [
+              "route"
+            ]
+          }
+        ],
+        "clips": [
+          {
+            "system": "portals",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for portals."
+          },
+          {
+            "system": "low-gravity",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for low-gravity."
+          },
+          {
+            "system": "rotors",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for rotors."
+          },
+          {
+            "system": "boss-warden",
+            "requirement": "Record every boss phase, one player death/restart, and the winning resolution."
+          }
+        ],
+        "playthroughs": [
+          "fresh-save intended route",
+          "returning-save revisit route",
+          "collectible and optional-branch route",
+          "credible speedrun route",
+          "two-player route and transition"
+        ]
+      }
+    },
+    {
+      "index": 7,
+      "id": "frostfell",
+      "name": "Frostfell",
+      "source": "procedural",
+      "length": 8850,
+      "theme": "frost",
+      "type": "normal",
+      "boss": null,
+      "secret": false,
+      "signature": "Read decoy mouth surfaces and preserve control on ice by keeping the traveler close.",
+      "systems": [
+        "ice",
+        "traveler-warmth",
+        "signal-routing",
+        "wind"
+      ],
+      "acts": [
+        "white approach",
+        "warmth route",
+        "signal gallery",
+        "frost exit"
+      ],
+      "portalVerb": "sightline",
+      "composition": {
+        "recipe": "none",
+        "at": 0.61
+      },
+      "blueprintManifestCounts": {
+        "objects": 0,
+        "enemies": 0,
+        "pickups": 0,
+        "travelers": 0
+      },
+      "evidence": {
+        "status": "pending-visual-capture",
+        "stills": [
+          {
+            "id": "entrance",
+            "normalizedX": 0,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-01",
+            "label": "white approach",
+            "normalizedX": 0.125,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-02",
+            "label": "warmth route",
+            "normalizedX": 0.375,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-03",
+            "label": "signal gallery",
+            "normalizedX": 0.625,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-04",
+            "label": "frost exit",
+            "normalizedX": 0.875,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "exit",
+            "normalizedX": 1,
+            "views": [
+              "route"
+            ]
+          }
+        ],
+        "clips": [
+          {
+            "system": "signal-routing",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for signal-routing."
+          },
+          {
+            "system": "wind",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for wind."
+          }
+        ],
+        "playthroughs": [
+          "fresh-save intended route",
+          "returning-save revisit route",
+          "collectible and optional-branch route",
+          "credible speedrun route",
+          "two-player route and transition"
+        ]
+      }
+    },
+    {
+      "index": 8,
+      "id": "frost-sorcerer",
+      "name": "Frost Sorcerer",
+      "source": "procedural",
+      "length": 8100,
+      "theme": "frost",
+      "type": "miniboss",
+      "boss": "sorcerer",
+      "secret": false,
+      "signature": "Stay mobile and time three stolen spells through an oscillating siphon.",
+      "systems": [
+        "spell-capture",
+        "moving-siphon",
+        "water",
+        "chasing-boss"
+      ],
+      "acts": [
+        "frozen route",
+        "current crossing",
+        "moving-siphon arena"
+      ],
+      "portalVerb": null,
+      "composition": {
+        "recipe": "current-updraft",
+        "at": 0.46
+      },
+      "blueprintManifestCounts": {
+        "objects": 0,
+        "enemies": 0,
+        "pickups": 0,
+        "travelers": 0
+      },
+      "evidence": {
+        "status": "pending-visual-capture",
+        "stills": [
+          {
+            "id": "entrance",
+            "normalizedX": 0,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-01",
+            "label": "frozen route",
+            "normalizedX": 0.1667,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-02",
+            "label": "current crossing",
+            "normalizedX": 0.5,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-03",
+            "label": "moving-siphon arena",
+            "normalizedX": 0.8333,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "exit",
+            "normalizedX": 1,
+            "views": [
+              "route"
+            ]
+          }
+        ],
+        "clips": [
+          {
+            "system": "spell-capture",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for spell-capture."
+          },
+          {
+            "system": "moving-siphon",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for moving-siphon."
+          },
+          {
+            "system": "water",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for water."
+          },
+          {
+            "system": "chasing-boss",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for chasing-boss."
+          },
+          {
+            "system": "boss-sorcerer",
+            "requirement": "Record every boss phase, one player death/restart, and the winning resolution."
+          }
+        ],
+        "playthroughs": [
+          "fresh-save intended route",
+          "returning-save revisit route",
+          "collectible and optional-branch route",
+          "credible speedrun route",
+          "two-player route and transition"
+        ]
+      }
+    },
+    {
+      "index": 9,
+      "id": "emberdeep",
+      "name": "Emberdeep",
+      "source": "procedural",
+      "length": 8850,
+      "theme": "volcano",
+      "type": "normal",
+      "boss": null,
+      "secret": false,
+      "signature": "Pass a traveler through a selective barrier so their held relay materializes the only route across a live furnace.",
+      "systems": [
+        "traveler-relay",
+        "lava",
+        "timed-platforming",
+        "portals"
+      ],
+      "acts": [
+        "ember road",
+        "relay furnace",
+        "held bridge",
+        "deep exit"
+      ],
+      "portalVerb": "traveler-relay",
+      "composition": {
+        "recipe": "none",
+        "at": 0.7
+      },
+      "blueprintManifestCounts": {
+        "objects": 0,
+        "enemies": 0,
+        "pickups": 0,
+        "travelers": 0
+      },
+      "evidence": {
+        "status": "pending-visual-capture",
+        "stills": [
+          {
+            "id": "entrance",
+            "normalizedX": 0,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-01",
+            "label": "ember road",
+            "normalizedX": 0.125,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-02",
+            "label": "relay furnace",
+            "normalizedX": 0.375,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-03",
+            "label": "held bridge",
+            "normalizedX": 0.625,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-04",
+            "label": "deep exit",
+            "normalizedX": 0.875,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "exit",
+            "normalizedX": 1,
+            "views": [
+              "route"
+            ]
+          }
+        ],
+        "clips": [
+          {
+            "system": "lava",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for lava."
+          },
+          {
+            "system": "portals",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for portals."
+          }
+        ],
+        "playthroughs": [
+          "fresh-save intended route",
+          "returning-save revisit route",
+          "collectible and optional-branch route",
+          "credible speedrun route",
+          "two-player route and transition"
+        ]
+      }
+    },
+    {
+      "index": 10,
+      "id": "ember-colossus",
+      "name": "Ember Colossus",
+      "source": "procedural",
+      "length": 8550,
+      "theme": "volcano",
+      "type": "miniboss",
+      "boss": "colossus",
+      "secret": false,
+      "signature": "Capture a molten shot, force it through the coolant channel, and return the forged slug.",
+      "systems": [
+        "projectile-cooling",
+        "water-circuit",
+        "portal-capture",
+        "forged-ammunition"
+      ],
+      "acts": [
+        "forge route",
+        "coolant lesson",
+        "wet-forge arena"
+      ],
+      "portalVerb": null,
+      "composition": {
+        "recipe": "none",
+        "at": 0.49
+      },
+      "blueprintManifestCounts": {
+        "objects": 0,
+        "enemies": 0,
+        "pickups": 0,
+        "travelers": 0
+      },
+      "evidence": {
+        "status": "pending-visual-capture",
+        "stills": [
+          {
+            "id": "entrance",
+            "normalizedX": 0,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-01",
+            "label": "forge route",
+            "normalizedX": 0.1667,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-02",
+            "label": "coolant lesson",
+            "normalizedX": 0.5,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-03",
+            "label": "wet-forge arena",
+            "normalizedX": 0.8333,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "exit",
+            "normalizedX": 1,
+            "views": [
+              "route"
+            ]
+          }
+        ],
+        "clips": [
+          {
+            "system": "projectile-cooling",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for projectile-cooling."
+          },
+          {
+            "system": "water-circuit",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for water-circuit."
+          },
+          {
+            "system": "portal-capture",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for portal-capture."
+          },
+          {
+            "system": "boss-colossus",
+            "requirement": "Record every boss phase, one player death/restart, and the winning resolution."
+          }
+        ],
+        "playthroughs": [
+          "fresh-save intended route",
+          "returning-save revisit route",
+          "collectible and optional-branch route",
+          "credible speedrun route",
+          "two-player route and transition"
+        ]
+      }
+    },
+    {
+      "index": 11,
+      "id": "inversion",
+      "name": "The Inversion",
+      "source": "custom",
+      "length": 5200,
+      "theme": "void",
+      "type": "normal",
+      "boss": null,
+      "secret": false,
+      "signature": "Alternate between floor and ceiling under pressure, then apply both orientations to a two-mouth drop-lock.",
+      "systems": [
+        "gravity-flip",
+        "alternating-polarity",
+        "ceiling-route",
+        "portal-crate"
+      ],
+      "acts": [
+        "flip lesson",
+        "polarity gauntlet",
+        "drop-lock",
+        "inverted coda"
+      ],
+      "portalVerb": "gravity",
+      "composition": {
+        "recipe": "none",
+        "at": 0.76
+      },
+      "blueprintManifestCounts": {
+        "objects": 0,
+        "enemies": 0,
+        "pickups": 0,
+        "travelers": 0
+      },
+      "evidence": {
+        "status": "pending-visual-capture",
+        "stills": [
+          {
+            "id": "entrance",
+            "normalizedX": 0,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-01",
+            "label": "flip lesson",
+            "normalizedX": 0.125,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-02",
+            "label": "polarity gauntlet",
+            "normalizedX": 0.375,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-03",
+            "label": "drop-lock",
+            "normalizedX": 0.625,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-04",
+            "label": "inverted coda",
+            "normalizedX": 0.875,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "exit",
+            "normalizedX": 1,
+            "views": [
+              "route"
+            ]
+          }
+        ],
+        "clips": [
+          {
+            "system": "gravity-flip",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for gravity-flip."
+          },
+          {
+            "system": "portal-crate",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for portal-crate."
+          }
+        ],
+        "playthroughs": [
+          "fresh-save intended route",
+          "returning-save revisit route",
+          "collectible and optional-branch route",
+          "credible speedrun route",
+          "two-player route and transition"
+        ]
+      }
+    },
+    {
+      "index": 12,
+      "id": "void-tyrant",
+      "name": "The Void Tyrant",
+      "source": "procedural",
+      "length": 8550,
+      "theme": "apex",
+      "type": "miniboss",
+      "boss": "tyrant",
+      "secret": false,
+      "signature": "Rebuild the opposed pair at leg, torso, and head height while each successful phase accelerates the barrage.",
+      "systems": [
+        "two-mouth-placement",
+        "height-phases",
+        "paradox-loop",
+        "void-barrage"
+      ],
+      "acts": [
+        "apex route",
+        "paradox threshold",
+        "three-band arena"
+      ],
+      "portalVerb": null,
+      "composition": {
+        "recipe": "none",
+        "at": 0.34
+      },
+      "blueprintManifestCounts": {
+        "objects": 0,
+        "enemies": 0,
+        "pickups": 0,
+        "travelers": 0
+      },
+      "evidence": {
+        "status": "pending-visual-capture",
+        "stills": [
+          {
+            "id": "entrance",
+            "normalizedX": 0,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-01",
+            "label": "apex route",
+            "normalizedX": 0.1667,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-02",
+            "label": "paradox threshold",
+            "normalizedX": 0.5,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-03",
+            "label": "three-band arena",
+            "normalizedX": 0.8333,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "exit",
+            "normalizedX": 1,
+            "views": [
+              "route"
+            ]
+          }
+        ],
+        "clips": [
+          {
+            "system": "boss-tyrant",
+            "requirement": "Record every boss phase, one player death/restart, and the winning resolution."
+          }
+        ],
+        "playthroughs": [
+          "fresh-save intended route",
+          "returning-save revisit route",
+          "collectible and optional-branch route",
+          "credible speedrun route",
+          "two-player route and transition"
+        ]
+      }
+    },
+    {
+      "index": 13,
+      "id": "abyss-king",
+      "name": "The Abyss King",
+      "source": "procedural",
+      "length": 9600,
+      "theme": "void",
+      "type": "boss",
+      "boss": "king",
+      "secret": false,
+      "signature": "Construct an attack route the boss can steal, then survive the consequences of that geometry.",
+      "systems": [
+        "portal-hijack",
+        "echo-setup",
+        "crown-phases",
+        "spatial-offset"
+      ],
+      "acts": [
+        "void procession",
+        "crown threshold",
+        "royal echo arena"
+      ],
+      "portalVerb": null,
+      "composition": {
+        "recipe": "none",
+        "at": 0.37
+      },
+      "blueprintManifestCounts": {
+        "objects": 0,
+        "enemies": 0,
+        "pickups": 0,
+        "travelers": 0
+      },
+      "evidence": {
+        "status": "pending-visual-capture",
+        "stills": [
+          {
+            "id": "entrance",
+            "normalizedX": 0,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-01",
+            "label": "void procession",
+            "normalizedX": 0.1667,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-02",
+            "label": "crown threshold",
+            "normalizedX": 0.5,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-03",
+            "label": "royal echo arena",
+            "normalizedX": 0.8333,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "exit",
+            "normalizedX": 1,
+            "views": [
+              "route"
+            ]
+          }
+        ],
+        "clips": [
+          {
+            "system": "portal-hijack",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for portal-hijack."
+          },
+          {
+            "system": "boss-king",
+            "requirement": "Record every boss phase, one player death/restart, and the winning resolution."
+          }
+        ],
+        "playthroughs": [
+          "fresh-save intended route",
+          "returning-save revisit route",
+          "collectible and optional-branch route",
+          "credible speedrun route",
+          "two-player route and transition"
+        ]
+      }
+    },
+    {
+      "index": 14,
+      "id": "gilded-vault",
+      "name": "The Gilded Vault",
+      "source": "bonus",
+      "length": 9700,
+      "theme": "apex",
+      "type": "normal",
+      "boss": null,
+      "secret": false,
+      "signature": "A combat-free precision exam where portal exit height is one platforming decision among many.",
+      "systems": [
+        "furnace-cycles",
+        "needle-platforms",
+        "wall-jump",
+        "two-mouth-arc",
+        "moving-platforms"
+      ],
+      "acts": [
+        "furnace clock",
+        "needle walk",
+        "golden shaft",
+        "furnace fold",
+        "moving crucible",
+        "last measure"
+      ],
+      "portalVerb": null,
+      "composition": {
+        "recipe": "none",
+        "at": 0.5
+      },
+      "blueprintManifestCounts": {
+        "objects": 0,
+        "enemies": 0,
+        "pickups": 0,
+        "travelers": 0
+      },
+      "evidence": {
+        "status": "pending-visual-capture",
+        "stills": [
+          {
+            "id": "entrance",
+            "normalizedX": 0,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-01",
+            "label": "furnace clock",
+            "normalizedX": 0.0833,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-02",
+            "label": "needle walk",
+            "normalizedX": 0.25,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-03",
+            "label": "golden shaft",
+            "normalizedX": 0.4167,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-04",
+            "label": "furnace fold",
+            "normalizedX": 0.5833,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-05",
+            "label": "moving crucible",
+            "normalizedX": 0.75,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-06",
+            "label": "last measure",
+            "normalizedX": 0.9167,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "exit",
+            "normalizedX": 1,
+            "views": [
+              "route"
+            ]
+          }
+        ],
+        "clips": [
+          {
+            "system": "furnace-cycles",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for furnace-cycles."
+          },
+          {
+            "system": "moving-platforms",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for moving-platforms."
+          }
+        ],
+        "playthroughs": [
+          "fresh-save intended route",
+          "returning-save revisit route",
+          "collectible and optional-branch route",
+          "credible speedrun route",
+          "two-player route and transition"
+        ]
+      }
+    },
+    {
+      "index": 15,
+      "id": "deep-line",
+      "name": "The Deep Line",
+      "source": "secret",
+      "length": 6600,
+      "theme": "badlands",
+      "type": "normal",
+      "boss": null,
+      "secret": true,
+      "signature": "Bank route signals through dangerous high lines, then cash that history into the final black-gap launch.",
+      "systems": [
+        "minecart",
+        "route-lean",
+        "signal-memory",
+        "collapsing-rail",
+        "snipers"
+      ],
+      "acts": [
+        "signal descent",
+        "first fork",
+        "falling bridge",
+        "trick fork",
+        "sniper clock",
+        "black gap"
+      ],
+      "portalVerb": null,
+      "composition": {
+        "recipe": "none",
+        "at": 0.5
+      },
+      "blueprintManifestCounts": {
+        "objects": 0,
+        "enemies": 0,
+        "pickups": 0,
+        "travelers": 0
+      },
+      "evidence": {
+        "status": "pending-visual-capture",
+        "stills": [
+          {
+            "id": "entrance",
+            "normalizedX": 0,
+            "views": [
+              "route"
+            ]
+          },
+          {
+            "id": "act-01",
+            "label": "signal descent",
+            "normalizedX": 0.0833,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-02",
+            "label": "first fork",
+            "normalizedX": 0.25,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-03",
+            "label": "falling bridge",
+            "normalizedX": 0.4167,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-04",
+            "label": "trick fork",
+            "normalizedX": 0.5833,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-05",
+            "label": "sniper clock",
+            "normalizedX": 0.75,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "act-06",
+            "label": "black gap",
+            "normalizedX": 0.9167,
+            "views": [
+              "route",
+              "upper-layer"
+            ]
+          },
+          {
+            "id": "exit",
+            "normalizedX": 1,
+            "views": [
+              "route"
+            ]
+          }
+        ],
+        "clips": [
+          {
+            "system": "minecart",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for minecart."
+          },
+          {
+            "system": "signal-memory",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for signal-memory."
+          },
+          {
+            "system": "collapsing-rail",
+            "requirement": "Record setup, activation, failure/recovery, and successful resolution for collapsing-rail."
+          }
+        ],
+        "playthroughs": [
+          "fresh-save intended route",
+          "returning-save revisit route",
+          "collectible and optional-branch route",
+          "credible speedrun route",
+          "two-player route and transition"
+        ]
+      }
+    }
+  ],
+  "risks": [
+    {
+      "id": "fluid-showcase-surface-placement",
+      "severity": "high",
+      "detected": false,
+      "affectedStages": [
+        "updrafts"
+      ],
+      "evidence": "dressFluidShowcase places a water volume at y=0 on selected existing ground without authored basin walls.",
+      "gate": "No fluid may ship until containment, source, shore, collision, and exit checks pass."
+    },
+    {
+      "id": "automatic-environment-composition",
+      "severity": "high",
+      "detected": false,
+      "affectedStages": [
+        "outskirts",
+        "black-woods",
+        "warden",
+        "frost-sorcerer"
+      ],
+      "evidence": "Campaign recipes search for generic safe footing and add gameplay geometry after initial assembly.",
+      "gate": "Base-campaign geometry must be explicitly owned by a room manifest."
+    },
+    {
+      "id": "detached-blueprint-geometry",
+      "severity": "high",
+      "detected": true,
+      "affectedStages": [
+        "outskirts",
+        "black-woods",
+        "brute",
+        "updrafts",
+        "hollow-marksman",
+        "ruined-keep",
+        "warden",
+        "frostfell",
+        "frost-sorcerer",
+        "emberdeep",
+        "ember-colossus",
+        "inversion",
+        "void-tyrant",
+        "abyss-king",
+        "gilded-vault",
+        "deep-line"
+      ],
+      "evidence": "Blueprint authoring manifests describe intent but contain no assembled runtime geometry.",
+      "gate": "A level cannot pass planning until its runtime capture and room map are attached."
+    },
+    {
+      "id": "dynamic-route-proof-gap",
+      "severity": "high",
+      "detected": true,
+      "affectedStages": [
+        "outskirts",
+        "black-woods",
+        "brute",
+        "updrafts",
+        "hollow-marksman",
+        "ruined-keep",
+        "warden",
+        "frostfell",
+        "frost-sorcerer",
+        "emberdeep",
+        "ember-colossus",
+        "inversion",
+        "abyss-king",
+        "gilded-vault",
+        "deep-line"
+      ],
+      "evidence": "Static reachability reports dynamic paths as unknown and does not model fluid as a traversal dependency.",
+      "gate": "Dynamic rooms require recorded successful, failed, reset, and co-op traversals."
+    },
+    {
+      "id": "late-stage-mutation-stack",
+      "severity": "medium",
+      "detected": true,
+      "affectedStages": [
+        "outskirts",
+        "black-woods",
+        "brute",
+        "updrafts",
+        "hollow-marksman",
+        "ruined-keep",
+        "warden",
+        "frostfell",
+        "frost-sorcerer",
+        "emberdeep",
+        "ember-colossus",
+        "inversion",
+        "void-tyrant",
+        "abyss-king",
+        "gilded-vault",
+        "deep-line"
+      ],
+      "evidence": "Multiple late passes can change a level after its custom/procedural geometry is assembled.",
+      "gate": "Every final object must report its owning room and authoring pass."
+    },
+    {
+      "id": "visual-capture-incomplete",
+      "severity": "blocking",
+      "detected": false,
+      "affectedStages": [],
+      "evidence": "137 version-matched stills cover all 16 stages.",
+      "gate": "The static visual atlas must cover every stage without page errors."
+    },
+    {
+      "id": "interactive-evidence-incomplete",
+      "severity": "blocking",
+      "detected": true,
+      "affectedStages": [
+        "outskirts",
+        "black-woods",
+        "brute",
+        "updrafts",
+        "hollow-marksman",
+        "ruined-keep",
+        "warden",
+        "frostfell",
+        "frost-sorcerer",
+        "emberdeep",
+        "ember-colossus",
+        "inversion",
+        "void-tyrant",
+        "abyss-king",
+        "gilded-vault",
+        "deep-line"
+      ],
+      "evidence": "16 version-matched entrance probes, 8 disclosed mechanic probes, 7 forced-phase/reset boss probes, and 4 extended opening-route attempts are recorded; they do not prove human-readable dynamic resolution, legitimate boss victories, complete routes, speedrun routing, or co-op traversal.",
+      "gate": "A1 remains open until dynamic recordings and the five route reviews are complete."
+    }
+  ],
+  "visualEvidence": {
+    "schema": "bladefall.a1-visual-atlas",
+    "gameVersion": "7.8.0",
+    "scope": "archived-pre-reimagining",
+    "currentVersionMatched": false,
+    "url": "http://127.0.0.1:8372/",
+    "capturedStages": 16,
+    "capturedStills": 137,
+    "pageErrors": 0
+  },
+  "interactiveEvidence": {
+    "schema": "bladefall.a1-interactive-baseline",
+    "gameVersion": "7.8.0",
+    "scope": "archived-pre-reimagining",
+    "currentVersionMatched": false,
+    "url": "http://127.0.0.1:8372/",
+    "capturedStages": 16,
+    "routeClass": "input-only entrance locomotion probes",
+    "coverage": {
+      "entranceLocomotion": "complete",
+      "intendedRoute": "pending",
+      "revisitRoute": "pending",
+      "optionalRoute": "pending",
+      "credibleSpeedrunRoute": "pending",
+      "twoPlayerRouteAndTransition": "pending"
+    },
+    "pageErrors": 0
+  },
+  "dynamicEvidence": {
+    "schema": "bladefall.a1-dynamic-baseline",
+    "gameVersion": "7.8.0",
+    "scope": "archived-pre-reimagining",
+    "currentVersionMatched": false,
+    "url": "http://127.0.0.1:8372/",
+    "capturedProbes": 8,
+    "coverage": {
+      "portalAnchorLowSpeedAttempt": "activation-observed-transit-unproven",
+      "portalAnchorSpeedGate": "state-positioned-high-speed-transit-observed",
+      "fluidCurrent": "fluid-contact-and-rewind-observed",
+      "updraft": "lift-and-rewind-observed",
+      "followerCommands": "hold-and-follow-observed",
+      "gravityFlip": "flip-and-righting-observed",
+      "deepLineSignalCollapse": "signal-and-collapse-observed",
+      "checkpointRewind": "checkpoint-and-rewind-observed"
+    },
+    "pageErrors": 0
+  },
+  "bossEvidence": {
+    "schema": "bladefall.a1-boss-baseline",
+    "gameVersion": "7.8.0",
+    "scope": "archived-pre-reimagining",
+    "currentVersionMatched": false,
+    "url": "http://127.0.0.1:8372/",
+    "capturedBosses": 7,
+    "coverage": {
+      "contractInventory": "complete",
+      "forcedPhaseResponse": "complete",
+      "syntheticDeathRestart": "complete",
+      "abyssKingCheckpointRestart": "complete",
+      "naturalPhaseProgression": "pending",
+      "naturalDeathRestart": "pending",
+      "victories": "pending",
+      "coop": "pending"
+    },
+    "pageErrors": 0
+  },
+  "openingRouteEvidence": {
+    "schema": "bladefall.a1-opening-route-baseline",
+    "gameVersion": "7.8.0",
+    "scope": "archived-pre-reimagining",
+    "currentVersionMatched": false,
+    "url": "http://127.0.0.1:8372/",
+    "capturedStages": 4,
+    "routeClass": "runtime-state-assisted keyboard-only stage-start attempts",
+    "coverage": {
+      "openingStageAttempts": "complete",
+      "genuineFreshRunStart": "complete",
+      "stageTransitions": 0,
+      "humanIntendedRoute": "pending",
+      "returningRevisit": "pending",
+      "optionalCollectible": "pending",
+      "credibleSpeedrun": "pending",
+      "twoPlayer": "pending"
+    },
+    "pageErrors": 0
+  },
+  "completion": {
+    "structuralInventory": "complete",
+    "mirrorParity": "complete",
+    "visualAtlas": "complete",
+    "entranceLocomotionProbes": "complete",
+    "targetedDynamicProbeSet": "complete",
+    "targetedBossResetProbes": "complete",
+    "openingRouteAttemptSet": "complete",
+    "dynamicRoomRecordings": "partial",
+    "bossRecordings": "partial",
+    "naturalBossVictories": "pending",
+    "humanRouteReviews": "pending",
+    "humanDesignReview": "complete",
+    "a1Status": "open"
+  }
+}

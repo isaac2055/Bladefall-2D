@@ -1,0 +1,409 @@
+{
+  "version": "7.95.2",
+  "url": "http://127.0.0.1:8371/index.html",
+  "generatedAt": "2026-08-22T19:51:32.536Z",
+  "pass": true,
+  "errors": [],
+  "probes": [
+    {
+      "name": "authored-topology",
+      "pass": true,
+      "length": 18000,
+      "landmarks": [
+        "rootbreach-lift",
+        "bellows-rest",
+        "kite-stair",
+        "windwright-brace",
+        "needlewind-labyrinth",
+        "rain-catcher",
+        "signal-crown"
+      ],
+      "checks": 7,
+      "geometry": {
+        "ok": true,
+        "errors": [],
+        "warnings": [],
+        "counts": {
+          "total": 133,
+          "owned": 133,
+          "critical": 15,
+          "fluids": 1,
+          "containedFluids": 1
+        },
+        "ownershipCoverage": 1
+      }
+    },
+    {
+      "name": "clean-level-select-prefix",
+      "pass": true,
+      "acquired": [
+        "jump",
+        "weapon",
+        "dash"
+      ],
+      "gates": 0,
+      "shortcut": false
+    },
+    {
+      "name": "opening-requires-dash",
+      "pass": true,
+      "plain": {
+        "dash": false,
+        "landed": null,
+        "maxX": 421.4,
+        "x": 70,
+        "y": 0
+      },
+      "dashed": {
+        "dash": true,
+        "landed": 1,
+        "maxX": 610.6,
+        "x": 610.6,
+        "y": 70
+      }
+    },
+    {
+      "name": "bellows-commissioning",
+      "pass": true,
+      "before": {
+        "locked": true,
+        "door": false,
+        "returnHidden": true
+      },
+      "after": {
+        "released": true,
+        "pack": true,
+        "door": true
+      }
+    },
+    {
+      "name": "crystals-own-both-transfers",
+      "pass": true,
+      "bellowsPlain": {
+        "useCrystal": false,
+        "touched": false,
+        "landed": false,
+        "maxX": 3220,
+        "maxY": 277,
+        "x": 3204,
+        "y": 0,
+        "trace": []
+      },
+      "bellowsRefill": {
+        "useCrystal": true,
+        "touched": true,
+        "landed": true,
+        "maxX": 3136,
+        "maxY": 355,
+        "x": 3136,
+        "y": 340,
+        "trace": [
+          {
+            "frame": 31,
+            "x": 2913,
+            "y": 277,
+            "vy": 17,
+            "jumps": 0,
+            "airRefill": true,
+            "dash": -0.01
+          },
+          {
+            "frame": 32,
+            "x": 2922,
+            "y": 285,
+            "vy": -457,
+            "jumps": 1,
+            "airRefill": false,
+            "dash": -0.01
+          },
+          {
+            "frame": 33,
+            "x": 2931,
+            "y": 292,
+            "vy": -433,
+            "jumps": 1,
+            "airRefill": false,
+            "dash": -0.01
+          },
+          {
+            "frame": 34,
+            "x": 2939,
+            "y": 299,
+            "vy": -410,
+            "jumps": 1,
+            "airRefill": false,
+            "dash": -0.01
+          },
+          {
+            "frame": 35,
+            "x": 2948,
+            "y": 305,
+            "vy": -387,
+            "jumps": 1,
+            "airRefill": false,
+            "dash": -0.01
+          }
+        ]
+      },
+      "kiteMatrix": {
+        "allThree": {
+          "pack": true,
+          "dash": true,
+          "useCrystal": true,
+          "touched": true,
+          "landed": true,
+          "maxX": 5638,
+          "maxY": 1520,
+          "minFuel": 0,
+          "x": 5600,
+          "y": 1500
+        },
+        "noCrystal": {
+          "pack": true,
+          "dash": true,
+          "useCrystal": false,
+          "touched": false,
+          "landed": false,
+          "maxX": 5622,
+          "maxY": 1379,
+          "minFuel": 0,
+          "x": 5601,
+          "y": 0
+        },
+        "noDash": {
+          "pack": true,
+          "dash": false,
+          "useCrystal": true,
+          "touched": false,
+          "landed": false,
+          "maxX": 5469,
+          "maxY": 1352,
+          "minFuel": 0,
+          "x": 4965,
+          "y": 506
+        },
+        "noPack": {
+          "pack": false,
+          "dash": true,
+          "useCrystal": true,
+          "touched": false,
+          "landed": false,
+          "maxX": 5331,
+          "maxY": 787,
+          "minFuel": 0,
+          "x": 4805,
+          "y": 650
+        }
+      }
+    },
+    {
+      "name": "bellows-miss-is-reversible",
+      "pass": true,
+      "landedRetry": true,
+      "landedPerch": true,
+      "x": 2744,
+      "y": 150
+    },
+    {
+      "name": "three-reliable-machines",
+      "pass": true,
+      "gates": [
+        {
+          "id": "wind-gate-1",
+          "open": true
+        },
+        {
+          "id": "wind-gate-2",
+          "open": true
+        },
+        {
+          "id": "wind-gate-3",
+          "open": true
+        }
+      ],
+      "fire": {
+        "element": "fire",
+        "time": 999999989.4833434,
+        "hpBefore": 36,
+        "hpAfter": -0.29999999999998295,
+        "hurts": true
+      },
+      "collectorSequence": {
+        "heartRejected": true,
+        "westLatched": true,
+        "heartLatched": true,
+        "eastLatched": true
+      },
+      "collectors": [
+        {
+          "id": "collector-west",
+          "aligned": true
+        },
+        {
+          "id": "collector-heart",
+          "aligned": true
+        },
+        {
+          "id": "collector-east",
+          "aligned": true
+        }
+      ],
+      "forbidden": []
+    },
+    {
+      "name": "optional-two-way-service-lift",
+      "pass": true,
+      "opened": true,
+      "westX": 2410,
+      "returnCandidate": true,
+      "eastX": 13790
+    },
+    {
+      "name": "solved-rain-catcher-has-a-live-westbound-return",
+      "pass": true,
+      "vent": {
+        "x": 15270,
+        "w": 260,
+        "active": true
+      },
+      "wall": {
+        "x": 15200,
+        "w": 36
+      },
+      "crossed": true,
+      "clearedLip": true,
+      "landed": true,
+      "phase": "drift",
+      "maxY": 372,
+      "minX": 15023,
+      "player": {
+        "x": 15023,
+        "y": 300,
+        "dead": false
+      }
+    },
+    {
+      "name": "extended-branching-needlewind",
+      "pass": true,
+      "tunnels": [
+        {
+          "id": "needlewind-main",
+          "branch": false,
+          "deadEnd": false,
+          "force": 102,
+          "samples": 269
+        },
+        {
+          "id": "needlewind-inner-eye",
+          "branch": true,
+          "deadEnd": false,
+          "force": 82,
+          "samples": 83
+        },
+        {
+          "id": "needlewind-high-arc",
+          "branch": true,
+          "deadEnd": false,
+          "force": 76,
+          "samples": 48
+        },
+        {
+          "id": "needlewind-torn-sail",
+          "branch": true,
+          "deadEnd": true,
+          "force": 0,
+          "samples": 18
+        }
+      ],
+      "safePockets": [
+        "entrance",
+        "heart",
+        "exit"
+      ]
+    },
+    {
+      "name": "normal-speed-route-connectivity",
+      "pass": true,
+      "ratio": 0.963,
+      "maxX": 13196,
+      "x": 10070,
+      "y": 125,
+      "fuel": 100,
+      "minFuel": 0,
+      "blood": 4,
+      "resets": 0
+    },
+    {
+      "name": "recoverable-crown-and-exit",
+      "pass": true,
+      "fuel": 100,
+      "safe": true,
+      "authorized": true,
+      "premature": false,
+      "claimed": true,
+      "acquisition": {
+        "title": "LINKED PORTAL REMEMBERED",
+        "body": "One anchored mouth now answers the portal gun.",
+        "kind": "marker",
+        "radius": 420,
+        "anchored": true
+      },
+      "portal": true,
+      "ilyraDone": true,
+      "clearance": true,
+      "seam": {
+        "connector": "updrafts-marksman",
+        "zone": "updrafts",
+        "targetStage": 4,
+        "warm": true,
+        "cross": true,
+        "forward": true,
+        "commitClear": true,
+        "requires": "portal-single"
+      }
+    },
+    {
+      "name": "whole-blood-clean-respawn-and-crown-retry",
+      "pass": true,
+      "hits": [
+        {
+          "blood": 4,
+          "guard": 0.2
+        },
+        {
+          "blood": 3,
+          "guard": 0.4
+        },
+        {
+          "blood": 2,
+          "guard": 0.6
+        },
+        {
+          "blood": 1,
+          "guard": 0.8
+        },
+        {
+          "blood": 1,
+          "guard": 0
+        }
+      ],
+      "partial": {
+        "blood": 3,
+        "recovery": 0.4
+      },
+      "afterRecovery": 4,
+      "widths": [
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "0%"
+      ],
+      "notice": "◇  The wind carries you back. QUEST · Kindling the SkyIlyra believes a carried flame can reveal whether the world’s winds remember one another.",
+      "stageBanner": 0,
+      "returned": true,
+      "x": 17020,
+      "y": 0
+    }
+  ]
+}

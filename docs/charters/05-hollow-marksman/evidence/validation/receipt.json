@@ -1,0 +1,349 @@
+{
+  "schema": "bladefall.hollow-marksman-geometry-content-validation",
+  "version": 3,
+  "gameVersion": "7.90.0",
+  "url": "http://127.0.0.1:8371/index.html",
+  "browserBridge": "Version-verified project localhost Chromium runtime.",
+  "pageErrors": [],
+  "probes": [
+    {
+      "name": "continuous-shotfall-crystal-route",
+      "pass": true,
+      "player": {
+        "x": 1902,
+        "y": 0,
+        "dead": false
+      },
+      "westRefilled": true,
+      "eastRefilled": true,
+      "refills": [
+        {
+          "x": 1040,
+          "y": 76,
+          "for": "shotfall-west"
+        },
+        {
+          "x": 1625,
+          "y": 78,
+          "for": "shotfall-east"
+        }
+      ],
+      "expected": "From the entrance, two unsupported crystal touches restore one mid-air jump each and clear both mantlets without portals or wall-jump."
+    },
+    {
+      "name": "five-room-linked-mouth-topology",
+      "pass": true,
+      "levelLength": 15000,
+      "landmarks": [
+        "shotfall-camp",
+        "watching-road",
+        "mantlet-road",
+        "windcut-gallery",
+        "deadeye-court"
+      ],
+      "checkpoints": [
+        100,
+        2600,
+        5430,
+        8780,
+        9120,
+        11720,
+        12100
+      ],
+      "genericObjects": 0,
+      "portalProfile": {
+        "ownsSingle": true,
+        "ownsPair": false,
+        "mode": "single",
+        "maxPlayerMouths": 1,
+        "mayUseAuthoredFixedLessons": true,
+        "mayUseAnchoredPairs": true,
+        "mayUsePersonalPairs": false
+      },
+      "roles": [
+        "watch-runner",
+        "watch-sniper",
+        "mantlet-guard"
+      ],
+      "geometry": {
+        "ok": true,
+        "errors": [],
+        "warnings": [],
+        "counts": {
+          "total": 93,
+          "owned": 93,
+          "critical": 9,
+          "fluids": 0,
+          "containedFluids": 0
+        },
+        "ownershipCoverage": 1
+      },
+      "expected": "Five authored rooms, the one-mouth constitutional prefix, three authored enemy roles, and no generic coda objects."
+    },
+    {
+      "name": "actual-input-anchored-placement",
+      "pass": true,
+      "rows": [
+        {
+          "anchor": "crossing",
+          "mouths": 1,
+          "pair": true,
+          "distance": 760,
+          "supported": true
+        },
+        {
+          "anchor": "arrow-release",
+          "mouths": 1,
+          "pair": true,
+          "distance": 810,
+          "supported": true
+        },
+        {
+          "anchor": "gallery",
+          "mouths": 1,
+          "pair": true,
+          "distance": 970,
+          "supported": true
+        }
+      ],
+      "expected": "The real portal key places exactly one mouth; every lesson resolves to a nearby, supported authored anchor."
+    },
+    {
+      "name": "portal-routed-watch-arrow-release",
+      "pass": true,
+      "rejectedTimers": [
+        0,
+        0,
+        0
+      ],
+      "natural": {
+        "locked": true,
+        "spawned": true,
+        "hopped": true,
+        "sniperAlive": true,
+        "warded": true,
+        "mouth": {
+          "x": 7200,
+          "y": 0
+        },
+        "minDistance": 61,
+        "near": [
+          {
+            "x": 7110,
+            "y": 87,
+            "vx": 456,
+            "vy": -325
+          },
+          {
+            "x": 7118,
+            "y": 81,
+            "vx": 456,
+            "vy": -325
+          },
+          {
+            "x": 7125,
+            "y": 76,
+            "vx": 456,
+            "vy": -325
+          },
+          {
+            "x": 7133,
+            "y": 71,
+            "vx": 456,
+            "vy": -325
+          },
+          {
+            "x": 7141,
+            "y": 65,
+            "vx": 456,
+            "vy": -325
+          },
+          {
+            "x": 7148,
+            "y": 60,
+            "vx": 456,
+            "vy": -325
+          },
+          {
+            "x": 7156,
+            "y": 54,
+            "vx": 456,
+            "vy": -325
+          },
+          {
+            "x": 7163,
+            "y": 49,
+            "vx": 456,
+            "vy": -325
+          }
+        ]
+      },
+      "validTimer": 999999999.9666667,
+      "doorOpen": true,
+      "expected": "Direct, zero-hop, and player arrows fail; the live warded sniper locks, fires, and physically routes its renewable arrow through the linked mouth to open Mantlet Works."
+    },
+    {
+      "name": "mantlet-delayed-turn-flank-window",
+      "pass": true,
+      "delay": 0.85,
+      "heldFacing": -1,
+      "rearDamage": 1,
+      "turnedFacing": 1,
+      "frontDamage": 0,
+      "expected": "Crossing a mantlet guard leaves its shield facing behind for 0.85 seconds, permitting a rear hit before the shield turns and blocks again."
+    },
+    {
+      "name": "windcut-linked-transit-and-recovery",
+      "pass": false,
+      "player": {
+        "x": 9780,
+        "y": 33,
+        "dead": false
+      },
+      "barriers": [
+        620,
+        700
+      ],
+      "expected": "A real one-mouth transit clears the gallery tower and exits over supported ground; both barriers exceed the current movement envelope."
+    },
+    {
+      "name": "one-bank-three-phase-deadeye-court",
+      "pass": true,
+      "directDamageBeforeBreak": 0,
+      "atomic": {
+        "broken": true,
+        "state": "transform",
+        "gate": "rangefinderTransform",
+        "perchGone": true,
+        "railsActive": true,
+        "mouthsCleared": true
+      },
+      "escalation": {
+        "cover": true,
+        "rain": true,
+        "airborne": true
+      },
+      "secondCover": true,
+      "duel": true,
+      "expected": "One physically banked marked arrow changes the fight once; pursuit, ground denial, elevation changes, and two cover collapses form later phases."
+    },
+    {
+      "name": "marksman-raised-platform-pass-through",
+      "pass": true,
+      "crossed": true,
+      "landedY": 0,
+      "floorY": 0,
+      "shotWhileAirborne": true,
+      "noRainDuringLanding": true,
+      "rainBeforeHalfFrequency": false,
+      "rainAtHalfFrequency": true,
+      "expected": "While enraged, the Marksman keeps airborne shots, passes through raised platforms, and produces ground rain only after the full 9.8-second half-frequency interval."
+    },
+    {
+      "name": "deadeye-threshold-full-reset",
+      "pass": true,
+      "x": 12100,
+      "hp": 100,
+      "maxHp": 100,
+      "state": "warded",
+      "lensBroken": false,
+      "mouths": 0,
+      "projectiles": 0,
+      "expected": "Death returns to 12,100 with full Blood and a fresh lens, perch, rails, projectiles, and mouth state."
+    },
+    {
+      "name": "portal-pair-reward-and-bidirectional-watch-gate",
+      "pass": true,
+      "reward": {
+        "dead": true,
+        "pair": true,
+        "gateOpenOnVictory": true,
+        "portal": null,
+        "portalMode": "pair",
+        "maxPlayerMouths": 2,
+        "blood": 100,
+        "maxBlood": 100,
+        "keyDrops": 0,
+        "seam": {
+          "connector": "marksman-keep",
+          "zone": "hollow-marksman",
+          "targetStage": 5,
+          "warm": true,
+          "cross": false,
+          "forward": true,
+          "commitClear": true,
+          "requires": "portal-pair"
+        }
+      },
+      "proof": {
+        "slates": [
+          {
+            "x": 13020,
+            "y": 175
+          },
+          {
+            "x": 14180,
+            "y": 340
+          }
+        ],
+        "mouths": 2,
+        "proved": true,
+        "persisted": true,
+        "gateOpen": true
+      },
+      "east": {
+        "stage": 5,
+        "arrival": {
+          "connectorId": "marksman-keep",
+          "endpointId": "marksman-keep:ruined-keep",
+          "x": 70,
+          "y": 0,
+          "compatibility": true
+        }
+      },
+      "west": {
+        "stage": 4,
+        "arrival": {
+          "connectorId": "marksman-keep",
+          "endpointId": "marksman-keep:hollow-marksman",
+          "x": 14830,
+          "y": 0,
+          "compatibility": true
+        }
+      },
+      "expected": "Victory immediately grants a live two-mouth pair, restores Blood, and opens the watch gate. The pale slates still accept both personal mouths as an optional lesson, and the physical seam crosses both directions."
+    },
+    {
+      "name": "restrained-people-memory-and-immersive-signals",
+      "pass": true,
+      "residents": [
+        {
+          "id": "marksman-fletcher",
+          "met": true
+        },
+        {
+          "id": "marksman-veilmender",
+          "met": true
+        }
+      ],
+      "memory": {
+        "read": true,
+        "persisted": true
+      },
+      "forbiddenText": [],
+      "expected": "Up deliberately meets both workers and reads the optional command token; detection and boss-state labels remain absent."
+    }
+  ],
+  "screenshots": [
+    "docs/charters/05-hollow-marksman/evidence/validation/01-shotfall-camp.png",
+    "docs/charters/05-hollow-marksman/evidence/validation/02-watching-road.png",
+    "docs/charters/05-hollow-marksman/evidence/validation/03-mantlet-works.png",
+    "docs/charters/05-hollow-marksman/evidence/validation/04-windcut-gallery.png",
+    "docs/charters/05-hollow-marksman/evidence/validation/05-deadeye-court.png"
+  ],
+  "ok": false,
+  "limitations": [
+    "Actual-input placement, projectile transit, failure reset, rewards, and seams are automated; first-time human comprehension still requires a hands-on review.",
+    "Single-player is the current design authority; co-op is intentionally deferred."
+  ]
+}

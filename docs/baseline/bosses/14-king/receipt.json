@@ -1,0 +1,1946 @@
+{
+  "schema": "bladefall.a1-boss-probe",
+  "version": 1,
+  "gameVersion": "7.8.0",
+  "url": "http://127.0.0.1:8372/",
+  "stage": {
+    "index": 13,
+    "name": "The Abyss King"
+  },
+  "bossType": "king",
+  "browserBridge": "In-app browser-control bridge unavailable; version-verified local Chromium fallback used.",
+  "evidenceClass": "state-positioned arena observation, disclosed invulnerability, forced HP thresholds, and synthetic lethal fall",
+  "setup": {
+    "stageIndex": 13,
+    "playerPosition": {
+      "x": 9440,
+      "y": 0
+    },
+    "support": {
+      "x": 9240,
+      "y": 0,
+      "w": 1700,
+      "type": "plat"
+    },
+    "invulnerabilityInjected": true,
+    "checkpointInjection": {
+      "x": 7760,
+      "y": 0
+    },
+    "bossContract": {
+      "id": null,
+      "type": "king",
+      "label": "THE ABYSS KING",
+      "hp": 2760,
+      "maxHp": 2760,
+      "damage": 4.42,
+      "portalGate": "echoFracture",
+      "phase": 1,
+      "finalePhases": [
+        {
+          "index": 0,
+          "beat": "teach",
+          "separation": 150,
+          "hijack": false
+        },
+        {
+          "index": 1,
+          "beat": "test",
+          "separation": 450,
+          "hijack": false
+        },
+        {
+          "index": 2,
+          "beat": "test",
+          "separation": 750,
+          "hijack": true
+        },
+        {
+          "index": 3,
+          "beat": "twist",
+          "separation": 900,
+          "hijack": true
+        }
+      ],
+      "reflectBanks": null,
+      "forgeHits": null,
+      "paradoxHits": null,
+      "echoFractures": 4,
+      "special": {
+        "brutePortalFight": false,
+        "wardenPortalFight": false,
+        "spellSiphonFight": false,
+        "forgeFight": false,
+        "paradoxFight": false,
+        "echoFight": true
+      }
+    }
+  },
+  "events": [
+    {
+      "tMs": 1503,
+      "kind": "state-injection",
+      "mutation": {
+        "hp": 1324.8,
+        "maxHp": 2760,
+        "fraction": 0.48
+      },
+      "purpose": "cross generic enrage and Abyss King phase-two thresholds"
+    },
+    {
+      "tMs": 3335,
+      "kind": "state-injection",
+      "mutation": {
+        "hp": 662.4,
+        "maxHp": 2760,
+        "fraction": 0.24
+      },
+      "purpose": "cross Abyss King phase-three threshold"
+    },
+    {
+      "tMs": 4750,
+      "kind": "state-injection",
+      "mutation": "player.hp=1, player.y=-90, invulnerability removed",
+      "purpose": "synthetic lethal out-of-bounds event to exercise boss-stage restart"
+    }
+  ],
+  "samples": [
+    {
+      "tMs": 0,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9998.7
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 2760,
+        "maxHp": 2760,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 9712,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 168,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9998.5
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 2760,
+        "maxHp": 2760,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 9698,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 335,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9998.3
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 2760,
+        "maxHp": 2760,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 9685,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 501,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9998.2
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 2760,
+        "maxHp": 2760,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 9671,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 668,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9998
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 2760,
+        "maxHp": 2760,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 9658,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 3,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 835,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9997.8
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 2760,
+        "maxHp": 2760,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 9645,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 3,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 999,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9997.7
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 2760,
+        "maxHp": 2760,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 9631,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 3,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 1168,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9997.5
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 2760,
+        "maxHp": 2760,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 9618,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 2,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 1334,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9997.3
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 2760,
+        "maxHp": 2760,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 9604,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 2,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 1503,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9997.2
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 1324.8,
+        "maxHp": 2760,
+        "hpFraction": 0.48,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 9591,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 1668,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9997
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 1324.8,
+        "maxHp": 2760,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": true,
+        "phase3Started": false,
+        "x": 9572,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 1835,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9996.8
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 1324.8,
+        "maxHp": 2760,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": true,
+        "phase3Started": false,
+        "x": 9548,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 2003,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9996.7
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 1324.8,
+        "maxHp": 2760,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": true,
+        "phase3Started": false,
+        "x": 9501,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 2167,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9996.5
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 1324.8,
+        "maxHp": 2760,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": true,
+        "phase3Started": false,
+        "x": 9455,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 2335,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9996.3
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 1324.8,
+        "maxHp": 2760,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": true,
+        "phase3Started": false,
+        "x": 9440,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 2502,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9996.2
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 1324.8,
+        "maxHp": 2760,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": true,
+        "phase3Started": false,
+        "x": 9440,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 4,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 2666,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9996
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 1324.8,
+        "maxHp": 2760,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": true,
+        "phase3Started": false,
+        "x": 9440,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 4,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 2835,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9995.8
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 1324.8,
+        "maxHp": 2760,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": true,
+        "phase3Started": false,
+        "x": 9440,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 3001,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9995.7
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 1324.8,
+        "maxHp": 2760,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": true,
+        "phase3Started": false,
+        "x": 9440,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 3169,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9995.5
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 1324.8,
+        "maxHp": 2760,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": true,
+        "phase3Started": false,
+        "x": 9440,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 3335,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9995.3
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 662.4,
+        "maxHp": 2760,
+        "hpFraction": 0.24,
+        "phase": 2,
+        "phase2Started": true,
+        "phase3Started": false,
+        "x": 9444,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 9
+      }
+    },
+    {
+      "tMs": 3501,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9995.2
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 662.4,
+        "maxHp": 2760,
+        "hpFraction": 0.24,
+        "phase": 2,
+        "phase2Started": true,
+        "phase3Started": true,
+        "x": 9440,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 0.8
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 12
+      }
+    },
+    {
+      "tMs": 3668,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9995
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 662.4,
+        "maxHp": 2760,
+        "hpFraction": 0.24,
+        "phase": 2,
+        "phase2Started": true,
+        "phase3Started": true,
+        "x": 9570,
+        "y": 80,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 0.8
+      },
+      "activity": {
+        "projectiles": 10,
+        "aoes": 0,
+        "livingEnemies": 12
+      }
+    },
+    {
+      "tMs": 3919,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9994.8
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 662.4,
+        "maxHp": 2760,
+        "hpFraction": 0.24,
+        "phase": 2,
+        "phase2Started": true,
+        "phase3Started": true,
+        "x": 9536,
+        "y": 33,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 0.8
+      },
+      "activity": {
+        "projectiles": 7,
+        "aoes": 0,
+        "livingEnemies": 12
+      }
+    },
+    {
+      "tMs": 4192,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9994.5
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 662.4,
+        "maxHp": 2760,
+        "hpFraction": 0.24,
+        "phase": 2,
+        "phase2Started": true,
+        "phase3Started": true,
+        "x": 9494,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 0.8
+      },
+      "activity": {
+        "projectiles": 6,
+        "aoes": 0,
+        "livingEnemies": 12
+      }
+    },
+    {
+      "tMs": 4418,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9994.3
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 662.4,
+        "maxHp": 2760,
+        "hpFraction": 0.24,
+        "phase": 2,
+        "phase2Started": true,
+        "phase3Started": true,
+        "x": 9443,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 0.8
+      },
+      "activity": {
+        "projectiles": 3,
+        "aoes": 0,
+        "livingEnemies": 12
+      }
+    },
+    {
+      "tMs": 4572,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9994.1
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 662.4,
+        "maxHp": 2760,
+        "hpFraction": 0.24,
+        "phase": 2,
+        "phase2Started": true,
+        "phase3Started": true,
+        "x": 9437,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 0.8
+      },
+      "activity": {
+        "projectiles": 8,
+        "aoes": 0,
+        "livingEnemies": 12
+      }
+    },
+    {
+      "tMs": 4750,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 9440,
+        "y": -90,
+        "hp": 1,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 662.4,
+        "maxHp": 2760,
+        "hpFraction": 0.24,
+        "phase": 2,
+        "phase2Started": true,
+        "phase3Started": true,
+        "x": 9438,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 0.8
+      },
+      "activity": {
+        "projectiles": 6,
+        "aoes": 0,
+        "livingEnemies": 12
+      }
+    },
+    {
+      "tMs": 4889,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 7760,
+        "y": 26,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0.8
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 2760,
+        "maxHp": 2760,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 9740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 5038,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 7760,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0.7
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 2760,
+        "maxHp": 2760,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 9740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 5182,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 7760,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0.6
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 2760,
+        "maxHp": 2760,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 9740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 5332,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 7760,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0.4
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 2760,
+        "maxHp": 2760,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 9740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 5475,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 7760,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0.3
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 2760,
+        "maxHp": 2760,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 9740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 5622,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 7760,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0.1
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 2760,
+        "maxHp": 2760,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 9740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 5771,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 7760,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 2760,
+        "maxHp": 2760,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 9740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 5901,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 7760,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 2760,
+        "maxHp": 2760,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 9740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 6038,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 7760,
+        "y": 40,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0.9
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 2760,
+        "maxHp": 2760,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 9740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 6188,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 7760,
+        "y": 26,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0.8
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 2760,
+        "maxHp": 2760,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 9740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 6334,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 7760,
+        "y": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0.6
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 2760,
+        "maxHp": 2760,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 9740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 6501,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 7760,
+        "y": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0.4
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 2760,
+        "maxHp": 2760,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 9740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 6666,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 7760,
+        "y": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0.3
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 2760,
+        "maxHp": 2760,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 9740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 6834,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 7760,
+        "y": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0.1
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 2760,
+        "maxHp": 2760,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 9740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 7002,
+      "mode": "play",
+      "stageIndex": 13,
+      "player": {
+        "x": 7760,
+        "y": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 7760,
+        "y": 0
+      },
+      "boss": {
+        "type": "king",
+        "hp": 2760,
+        "maxHp": 2760,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 9740,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": 0,
+        "portalHijack": null,
+        "shootCd": 1.8
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    }
+  ],
+  "capture": {
+    "viewport": {
+      "width": 960,
+      "height": 600,
+      "deviceScaleFactor": 1
+    },
+    "fps": 6,
+    "frames": 42,
+    "wallDurationMs": 7003,
+    "video": "phase-reset-probe.mp4"
+  },
+  "result": {
+    "phasesObserved": [
+      1,
+      2
+    ],
+    "phase2Observed": true,
+    "phase3Observed": true,
+    "attackActivityObserved": true,
+    "syntheticDeathRestartObserved": true,
+    "checkpointReturnObserved": true,
+    "victoryObserved": false,
+    "status": "phase-and-synthetic-restart-observed"
+  },
+  "limitations": [
+    "This does not prove a natural boss phase transition, intended portal solution, or player victory.",
+    "Arena positioning and invulnerability are disclosed setup mutations used to observe attacks safely.",
+    "HP thresholds are forced directly and therefore validate runtime phase response, not balance or legitimate damage routing.",
+    "The lethal fall validates restart plumbing; it is not evidence of boss lethality.",
+    "Co-op boss ownership and synchronization remain untested."
+  ]
+}

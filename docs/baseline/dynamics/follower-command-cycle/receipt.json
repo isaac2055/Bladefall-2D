@@ -1,0 +1,1357 @@
+{
+  "schema": "bladefall.a1-dynamic-probe",
+  "version": 1,
+  "gameVersion": "7.8.0",
+  "url": "http://127.0.0.1:8372/",
+  "id": "follower-command-cycle",
+  "stage": {
+    "index": 5,
+    "name": "Ruined Keep"
+  },
+  "mechanic": "traveler follow, hold, and resume",
+  "evidenceClass": "state-positioned greeting range; keyboard commands",
+  "browserBridge": "In-app browser-control bridge unavailable; version-verified local Chromium fallback used.",
+  "setup": {
+    "requested": {
+      "target": "traveler",
+      "x": 1593,
+      "playerX": 1560,
+      "playerY": 0,
+      "onGround": true
+    },
+    "resolvedTarget": {
+      "type": "escort",
+      "x": 1593,
+      "y": 0,
+      "slate": false,
+      "id": null
+    },
+    "player": {
+      "x": 1560,
+      "y": 0,
+      "onGround": true
+    },
+    "support": {
+      "type": "plat",
+      "x": 1540,
+      "y": 0,
+      "id": null
+    }
+  },
+  "events": [
+    {
+      "tMs": 1501,
+      "kind": "keyboard",
+      "input": "KeyE",
+      "purpose": "command hold"
+    },
+    {
+      "tMs": 3166,
+      "kind": "keyboard",
+      "input": "KeyE",
+      "purpose": "command follow"
+    }
+  ],
+  "samples": [
+    {
+      "tMs": 0,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "follow",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 168,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "follow",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 336,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "follow",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 501,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "follow",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 667,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "follow",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 834,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "follow",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 999,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "follow",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 1168,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "follow",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 1334,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "follow",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 1501,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "wait",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 1698,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "wait",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 1838,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "wait",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 2002,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "wait",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 2167,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "wait",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 2334,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "wait",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 2502,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "wait",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 2668,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "wait",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 2834,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "wait",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 2999,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "wait",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 3166,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "follow",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 3353,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "follow",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 3506,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "follow",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 3668,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "follow",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 3833,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "follow",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 4001,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "follow",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 4168,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "follow",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 4334,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "follow",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 4501,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "follow",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 4671,
+      "mode": "play",
+      "stageIndex": 5,
+      "player": {
+        "x": 1560,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Tovin",
+          "kind": "escort",
+          "state": "follow",
+          "x": 1593,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    }
+  ],
+  "capture": {
+    "viewport": {
+      "width": 960,
+      "height": 600,
+      "deviceScaleFactor": 1
+    },
+    "fps": 6,
+    "frames": 28,
+    "wallDurationMs": 4671,
+    "video": "probe.mp4"
+  },
+  "result": {
+    "observedStates": [
+      "follow",
+      "wait"
+    ],
+    "status": "hold-and-follow-observed"
+  },
+  "limitations": [
+    "This is a targeted mechanic probe, not a complete level route or signoff.",
+    "State-positioned setup is disclosed above and cannot prove natural route access.",
+    "Only the listed events occurred during capture; forced failure is synthetic where explicitly identified.",
+    "Co-op ownership, complete puzzle resolution, and boss phase coverage remain separate requirements."
+  ]
+}

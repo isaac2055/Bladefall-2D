@@ -1,0 +1,201 @@
+{
+  "schema": "bladefall.charter-evidence-receipt",
+  "version": 1,
+  "gameVersion": "7.33.0",
+  "stageIndex": 4,
+  "stageId": "hollow-marksman",
+  "stageName": "Hollow Marksman",
+  "url": "http://127.0.0.1:8877/index.html",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "pageErrors": [],
+  "charterValidation": {
+    "ok": true,
+    "errors": [],
+    "warnings": []
+  },
+  "geometryAudit": {
+    "ok": true,
+    "errors": [],
+    "warnings": [],
+    "counts": {
+      "total": 84,
+      "owned": 84,
+      "critical": 5,
+      "fluids": 0,
+      "containedFluids": 0
+    },
+    "ownershipCoverage": 1
+  },
+  "analysis": {
+    "errors": 0,
+    "warnings": 11,
+    "encounters": 2,
+    "maxPressure": 12,
+    "provenReachability": 0.5185185185185185
+  },
+  "stills": [
+    {
+      "id": "entrance",
+      "label": "Entrance",
+      "x": 100,
+      "view": "route",
+      "location": {
+        "x": 100,
+        "y": 0,
+        "cameraX": 0,
+        "cameraY": 0
+      },
+      "file": "entrance-entrance-route.png"
+    },
+    {
+      "id": "entrance",
+      "label": "Entrance",
+      "x": 100,
+      "view": "upper",
+      "location": {
+        "x": 100,
+        "y": 0,
+        "cameraX": 0,
+        "cameraY": 0
+      },
+      "file": "entrance-entrance-upper.png"
+    },
+    {
+      "id": "act-01",
+      "label": "shotfall camp",
+      "x": 620,
+      "view": "route",
+      "location": {
+        "x": 620,
+        "y": 0,
+        "cameraX": 73,
+        "cameraY": 0
+      },
+      "file": "act-01-shotfall-camp-route.png"
+    },
+    {
+      "id": "act-01",
+      "label": "shotfall camp",
+      "x": 620,
+      "view": "upper",
+      "location": {
+        "x": 620,
+        "y": 0,
+        "cameraX": 73,
+        "cameraY": 0
+      },
+      "file": "act-01-shotfall-camp-upper.png"
+    },
+    {
+      "id": "act-02",
+      "label": "mantlet road",
+      "x": 2400,
+      "view": "route",
+      "location": {
+        "x": 2400,
+        "y": 0,
+        "cameraX": 1853,
+        "cameraY": 0
+      },
+      "file": "act-02-mantlet-road-route.png"
+    },
+    {
+      "id": "act-02",
+      "label": "mantlet road",
+      "x": 2400,
+      "view": "upper",
+      "location": {
+        "x": 2400,
+        "y": 270,
+        "cameraX": 1853,
+        "cameraY": 0
+      },
+      "file": "act-02-mantlet-road-upper.png"
+    },
+    {
+      "id": "act-03",
+      "label": "windcut gallery",
+      "x": 4350,
+      "view": "route",
+      "location": {
+        "x": 4350,
+        "y": 0,
+        "cameraX": 3803,
+        "cameraY": 0
+      },
+      "file": "act-03-windcut-gallery-route.png"
+    },
+    {
+      "id": "act-03",
+      "label": "windcut gallery",
+      "x": 4350,
+      "view": "upper",
+      "location": {
+        "x": 4350,
+        "y": 535,
+        "cameraX": 3803,
+        "cameraY": 145
+      },
+      "file": "act-03-windcut-gallery-upper.png"
+    },
+    {
+      "id": "act-04",
+      "label": "deadeye court",
+      "x": 6500,
+      "view": "route",
+      "location": {
+        "x": 6500,
+        "y": 0,
+        "cameraX": 5953,
+        "cameraY": 0
+      },
+      "file": "act-04-deadeye-court-route.png"
+    },
+    {
+      "id": "act-04",
+      "label": "deadeye court",
+      "x": 6500,
+      "view": "upper",
+      "location": {
+        "x": 6500,
+        "y": 185,
+        "cameraX": 5953,
+        "cameraY": 0
+      },
+      "file": "act-04-deadeye-court-upper.png"
+    },
+    {
+      "id": "exit",
+      "label": "Exit",
+      "x": 7100,
+      "view": "route",
+      "location": {
+        "x": 7100,
+        "y": 0,
+        "cameraX": 6160,
+        "cameraY": 0
+      },
+      "file": "exit-exit-route.png"
+    },
+    {
+      "id": "exit",
+      "label": "Exit",
+      "x": 7100,
+      "view": "upper",
+      "location": {
+        "x": 7100,
+        "y": 420,
+        "cameraX": 6160,
+        "cameraY": 30
+      },
+      "file": "exit-exit-upper.png"
+    }
+  ],
+  "limitations": [
+    "Camera-positioned stills support spatial planning; they do not prove route completion or human readability.",
+    "Enemy motion is frozen after assembly for deterministic composition; actors remain visible, but stills do not prove live AI behavior."
+  ]
+}

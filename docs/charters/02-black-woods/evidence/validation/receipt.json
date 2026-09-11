@@ -1,0 +1,577 @@
+{
+  "schema": "bladefall.black-woods-validation",
+  "version": 1,
+  "gameVersion": "7.87.0",
+  "url": "http://127.0.0.1:8877/index.html",
+  "browserBridge": "Version-verified local Chromium validation; in-app browser review is recorded separately.",
+  "pageErrors": [],
+  "screenshots": [
+    "oathblade-release-framing.png",
+    "black-woods-wind-shaft.png"
+  ],
+  "probes": [
+    {
+      "name": "five-room-production-contract",
+      "evidenceClass": "live runtime production receipt",
+      "pass": true,
+      "receipt": {
+        "version": 5,
+        "rooms": [
+          "mothlight-refuge",
+          "oathblade-clearing",
+          "biting-canopy",
+          "mirror-thicket",
+          "rootbound-passage"
+        ],
+        "length": 12400,
+        "criticalCapabilities": [
+          "jump",
+          "weapon"
+        ],
+        "portalFree": true,
+        "physicalEntry": "outskirts-black-woods",
+        "physicalExit": "black-woods-brute",
+        "firstWeapon": 2800,
+        "refugeResidents": [
+          "woods-clockkeeper",
+          "woods-resinworker",
+          "woods-veteran"
+        ],
+        "refugeEnemies": 0,
+        "authoredEncounters": [
+          {
+            "type": "grunt",
+            "role": "oathblade-guard",
+            "x": 3470,
+            "patrol": [
+              3260,
+              3820
+            ]
+          },
+          {
+            "type": "toxling",
+            "role": "canopy-controller",
+            "x": 4810,
+            "patrol": [
+              4700,
+              4930
+            ]
+          },
+          {
+            "type": "flyer",
+            "role": "canopy-diver",
+            "x": 5840,
+            "patrol": [
+              5500,
+              6220
+            ]
+          },
+          {
+            "type": "grunt",
+            "role": "mirror-pursuer",
+            "x": 8120,
+            "patrol": [
+              7860,
+              8450
+            ]
+          },
+          {
+            "type": "flyer",
+            "role": "mirror-diver",
+            "x": 9010,
+            "patrol": [
+              8700,
+              9340
+            ]
+          },
+          {
+            "type": "shadeling",
+            "role": "root-stalker",
+            "x": 10230,
+            "patrol": [
+              10155,
+              10305
+            ]
+          },
+          {
+            "type": "grunt",
+            "role": "root-guard",
+            "x": 10920,
+            "patrol": [
+              10845,
+              10995
+            ]
+          },
+          {
+            "type": "toxling",
+            "role": "tunnel-controller",
+            "x": 11760,
+            "patrol": [
+              11520,
+              12040
+            ]
+          }
+        ],
+        "returnHooks": [
+          {
+            "kind": "dash",
+            "x": 6470,
+            "key": "root-key"
+          }
+        ],
+        "memories": [
+          "red-clasp",
+          "sealed-black-woods"
+        ],
+        "recoverableCopies": 6,
+        "mirrorTruths": 8,
+        "windReversals": [
+          1,
+          -1
+        ],
+        "rootboundSteps": 8,
+        "rootThornBeds": 4,
+        "behaviorRoles": [
+          "oathblade-guard",
+          "canopy-controller",
+          "canopy-diver",
+          "mirror-pursuer",
+          "mirror-diver",
+          "root-stalker",
+          "root-guard",
+          "tunnel-controller"
+        ],
+        "roomAnnotations": true
+      },
+      "expected": "Five authored rooms, three refuge residents, eight encounters, a 6-copy/8-truth wind grammar, eight rootbound steps, four thorn beds, and no portal hardware."
+    },
+    {
+      "name": "anchored-refuge-dialogue",
+      "evidenceClass": "runtime deliberate-read and expiry probe",
+      "pass": true,
+      "near": {
+        "title": "ORRA · CLOCK KEEPER",
+        "sourceX": 430,
+        "radius": 250
+      },
+      "clearedAfterLeaving": true,
+      "expected": "Up deliberately reads Orra’s one compact point-anchored annotation, which clears outside its reading radius."
+    },
+    {
+      "name": "authored-oathblade-awakening",
+      "evidenceClass": "fresh-state ritual release and deliberate-bagging probe",
+      "pass": true,
+      "before": {
+        "capability": false,
+        "pickup": 2800
+      },
+      "ritual": {
+        "weightReleased": true,
+        "bladeUnlocked": true,
+        "bagged": true,
+        "cameraFocus": {
+          "x": 3110,
+          "y": 150,
+          "t": 2.65
+        }
+      },
+      "framing": {
+        "cam": 2572.3633894650484,
+        "viewport": 960,
+        "stumpX": 2800,
+        "counterweightX": 3425,
+        "focus": {
+          "x": 3110,
+          "y": 150,
+          "t": 2.133333333333335
+        }
+      },
+      "after": {
+        "capability": true,
+        "weapon": "sword",
+        "pickupRemaining": false,
+        "baggedWeapon": true,
+        "guardActive": true
+      },
+      "expected": "The player enters weaponless, releases the rooted Oathblade, sees stump and counterweight in one authored camera frame, and auto-equips the first weapon."
+    },
+    {
+      "name": "eight-authored-enemy-behaviors",
+      "evidenceClass": "live perception and state-machine timeline probe",
+      "pass": true,
+      "observations": {
+        "oathblade-guard": {
+          "modes": [
+            "challenge",
+            "advance",
+            "strike-wind",
+            "lunge",
+            "recover"
+          ],
+          "expectedModes": [
+            "challenge",
+            "advance",
+            "strike-wind",
+            "lunge",
+            "recover"
+          ],
+          "enteredAuthoredCommitment": true,
+          "committedContact": true
+        },
+        "canopy-controller": {
+          "modes": [
+            "seed-wind",
+            "seed-recover",
+            "hold"
+          ],
+          "expectedModes": [
+            "seed-wind",
+            "seed-recover"
+          ],
+          "enteredAuthoredCommitment": true,
+          "committedContact": false
+        },
+        "canopy-diver": {
+          "modes": [
+            "dive-mark",
+            "dive",
+            "rise",
+            "perch"
+          ],
+          "expectedModes": [
+            "dive-mark",
+            "dive",
+            "rise"
+          ],
+          "enteredAuthoredCommitment": true,
+          "committedContact": true
+        },
+        "mirror-pursuer": {
+          "modes": [
+            "challenge",
+            "strike-wind",
+            "lunge",
+            "recover"
+          ],
+          "expectedModes": [
+            "challenge",
+            "advance",
+            "strike-wind",
+            "lunge",
+            "recover"
+          ],
+          "enteredAuthoredCommitment": true,
+          "committedContact": true
+        },
+        "mirror-diver": {
+          "modes": [
+            "dive-mark",
+            "rise",
+            "perch"
+          ],
+          "expectedModes": [
+            "dive-mark",
+            "dive",
+            "rise"
+          ],
+          "enteredAuthoredCommitment": true,
+          "committedContact": false
+        },
+        "root-stalker": {
+          "modes": [
+            "veil",
+            "strike-wind",
+            "lunge",
+            "recover"
+          ],
+          "expectedModes": [
+            "veil",
+            "strike-wind",
+            "lunge",
+            "recover"
+          ],
+          "enteredAuthoredCommitment": true,
+          "committedContact": true
+        },
+        "root-guard": {
+          "modes": [
+            "challenge",
+            "strike-wind",
+            "lunge",
+            "recover"
+          ],
+          "expectedModes": [
+            "challenge",
+            "advance",
+            "strike-wind",
+            "lunge",
+            "recover"
+          ],
+          "enteredAuthoredCommitment": true,
+          "committedContact": true
+        },
+        "tunnel-controller": {
+          "modes": [
+            "seed-wind",
+            "seed-recover",
+            "hold"
+          ],
+          "expectedModes": [
+            "seed-wind",
+            "seed-recover"
+          ],
+          "enteredAuthoredCommitment": true,
+          "committedContact": false
+        }
+      },
+      "expected": "Every forest role leaves generic patrol and enters its terrain-authored, visibly telegraphed behavior loop when it perceives the player."
+    },
+    {
+      "name": "single-jump-canopy-contract",
+      "evidenceClass": "live collision geometry audit",
+      "pass": true,
+      "surfaces": [
+        {
+          "x": 4500,
+          "y": 65,
+          "w": 180
+        },
+        {
+          "x": 4720,
+          "y": 130,
+          "w": 170
+        },
+        {
+          "x": 4940,
+          "y": 195,
+          "w": 170
+        },
+        {
+          "x": 5160,
+          "y": 260,
+          "w": 170
+        },
+        {
+          "x": 5420,
+          "y": 325,
+          "w": 200
+        },
+        {
+          "x": 5700,
+          "y": 250,
+          "w": 180
+        },
+        {
+          "x": 5980,
+          "y": 185,
+          "w": 180
+        },
+        {
+          "x": 6260,
+          "y": 250,
+          "w": 360
+        }
+      ],
+      "rises": [
+        65,
+        65,
+        65,
+        65,
+        -75,
+        -65,
+        65
+      ],
+      "gaps": [
+        45,
+        50,
+        50,
+        75,
+        90,
+        100,
+        10
+      ],
+      "upwardGaps": [
+        45,
+        50,
+        50,
+        75,
+        10
+      ],
+      "recoveryGround": true,
+      "expected": "Every ascent rises no more than 65 px, leaves no upward gap wider than 75 px, and has continuous recovery ground below."
+    },
+    {
+      "name": "mirror-copy-safe-failure",
+      "evidenceClass": "state-positioned collision outcome probe",
+      "pass": true,
+      "fakeGone": true,
+      "landing": {
+        "x": 7935,
+        "y": 0,
+        "dead": false
+      },
+      "expected": "The false branch vanishes, but the continuous lower trail keeps the player alive and able to retry."
+    },
+    {
+      "name": "rootbound-bidirectional-high-route",
+      "evidenceClass": "live collision-geometry and hazard ownership probe",
+      "pass": true,
+      "steps": [
+        {
+          "x": 9770,
+          "y": 560,
+          "w": 170
+        },
+        {
+          "x": 10000,
+          "y": 490,
+          "w": 170
+        },
+        {
+          "x": 10230,
+          "y": 420,
+          "w": 170
+        },
+        {
+          "x": 10460,
+          "y": 350,
+          "w": 170
+        },
+        {
+          "x": 10690,
+          "y": 280,
+          "w": 170
+        },
+        {
+          "x": 10920,
+          "y": 210,
+          "w": 170
+        },
+        {
+          "x": 11150,
+          "y": 140,
+          "w": 170
+        },
+        {
+          "x": 11380,
+          "y": 70,
+          "w": 190
+        }
+      ],
+      "thornBeds": [
+        {
+          "x": 9900,
+          "w": 280,
+          "period": 3.4,
+          "phase": 0
+        },
+        {
+          "x": 10380,
+          "w": 300,
+          "period": 3.4,
+          "phase": 1.1
+        },
+        {
+          "x": 10780,
+          "w": 320,
+          "period": 3.4,
+          "phase": 2.2
+        },
+        {
+          "x": 11180,
+          "w": 300,
+          "period": 3.4,
+          "phase": 0.55
+        }
+      ],
+      "rises": [
+        60,
+        -60,
+        -70,
+        -70,
+        -70,
+        -70,
+        -70,
+        -70,
+        -70
+      ],
+      "gaps": [
+        33,
+        58,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        50
+      ],
+      "checkpoint": {
+        "x": 9780,
+        "y": 560
+      },
+      "expected": "The wall has reachable landings on both sides; eight 70 px steps remain reversible and protect a recoverable lower route over four timed root beds."
+    },
+    {
+      "name": "physical-root-tunnel-exit",
+      "evidenceClass": "live world-graph and landmark probe",
+      "pass": true,
+      "tunnel": {
+        "x": 12240,
+        "kind": "root-tunnel",
+        "routeReveal": "brute"
+      },
+      "portal": null,
+      "eligibility": {
+        "allowed": true,
+        "reason": "ready"
+      },
+      "expected": "The east boundary is a visible root tunnel with an eligible bidirectional world seam, never a completion portal."
+    },
+    {
+      "name": "conscious-wind-shaft-transition",
+      "evidenceClass": "live shaft creation, canopy threshold, streaming transition, and authored arrival",
+      "pass": true,
+      "opened": {
+        "seamX": 6470,
+        "shaft": {
+          "x": 6470,
+          "y": 0,
+          "w": 170,
+          "h": 1700
+        },
+        "threshold": 1480,
+        "stage": 1
+      },
+      "arrival": {
+        "stage": 3,
+        "x": 70,
+        "y": 0,
+        "checkpoint": {
+          "x": 70,
+          "y": 0,
+          "set": true
+        },
+        "rootbreach": true
+      },
+      "expected": "Breaking the seam leaves the player in Black Woods until they ride the visible current through the canopy, then places them safely at Rootbreach Lift."
+    },
+    {
+      "name": "reduced-motion-camera-readability",
+      "evidenceClass": "runtime accessibility-controller probe",
+      "pass": true,
+      "shake": {
+        "x": 0,
+        "y": 0
+      },
+      "lookAhead": 0,
+      "expected": "Reduced motion removes shake and velocity look-ahead while leaving collision and hazard timing unchanged."
+    }
+  ],
+  "ok": true,
+  "limitations": [
+    "State-positioned probes isolate authored outcomes and are not natural-route or human-comprehension evidence.",
+    "The canopy probe audits live collision geometry; the in-app browser pass supplies human-readable visual review.",
+    "Full fresh, optional/100%, speedrun, and live two-player routes remain human review gates."
+  ]
+}

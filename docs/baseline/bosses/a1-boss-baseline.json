@@ -1,0 +1,372 @@
+{
+  "schema": "bladefall.a1-boss-baseline",
+  "version": 1,
+  "gameVersion": "7.8.0",
+  "url": "http://127.0.0.1:8372/",
+  "browserBridge": "In-app browser-control bridge unavailable; version-verified local Chromium fallback used.",
+  "pageErrors": [],
+  "capturedBosses": 7,
+  "bosses": [
+    {
+      "stageIndex": 2,
+      "stageName": "The Brute",
+      "type": "brute",
+      "contract": {
+        "id": null,
+        "type": "brute",
+        "label": "THE BRUTE",
+        "hp": 372,
+        "maxHp": 372,
+        "damage": 24,
+        "portalGate": "bruteImpact",
+        "phase": 1,
+        "finalePhases": null,
+        "reflectBanks": null,
+        "forgeHits": null,
+        "paradoxHits": null,
+        "echoFractures": null,
+        "special": {
+          "brutePortalFight": true,
+          "wardenPortalFight": false,
+          "spellSiphonFight": false,
+          "forgeFight": false,
+          "paradoxFight": false,
+          "echoFight": false
+        }
+      },
+      "result": {
+        "phasesObserved": [
+          1,
+          2
+        ],
+        "phase2Observed": true,
+        "phase3Observed": false,
+        "attackActivityObserved": true,
+        "syntheticDeathRestartObserved": true,
+        "checkpointReturnObserved": null,
+        "victoryObserved": false,
+        "status": "phase-and-synthetic-restart-observed"
+      },
+      "video": "03-brute/phase-reset-probe.mp4",
+      "receipt": "03-brute/receipt.json"
+    },
+    {
+      "stageIndex": 4,
+      "stageName": "Hollow Marksman",
+      "type": "archer",
+      "contract": {
+        "id": null,
+        "type": "archer",
+        "label": "HOLLOW MARKSMAN",
+        "hp": 644,
+        "maxHp": 644,
+        "damage": 20,
+        "portalGate": "reflect",
+        "phase": 1,
+        "finalePhases": null,
+        "reflectBanks": 15,
+        "forgeHits": null,
+        "paradoxHits": null,
+        "echoFractures": null,
+        "special": {
+          "brutePortalFight": false,
+          "wardenPortalFight": false,
+          "spellSiphonFight": false,
+          "forgeFight": false,
+          "paradoxFight": false,
+          "echoFight": false
+        }
+      },
+      "result": {
+        "phasesObserved": [
+          1,
+          2
+        ],
+        "phase2Observed": true,
+        "phase3Observed": false,
+        "attackActivityObserved": true,
+        "syntheticDeathRestartObserved": true,
+        "checkpointReturnObserved": null,
+        "victoryObserved": false,
+        "status": "phase-and-synthetic-restart-observed"
+      },
+      "video": "05-archer/phase-reset-probe.mp4",
+      "receipt": "05-archer/receipt.json"
+    },
+    {
+      "stageIndex": 6,
+      "stageName": "The Warden",
+      "type": "warden",
+      "contract": {
+        "id": null,
+        "type": "warden",
+        "label": "THE WARDEN",
+        "hp": 672,
+        "maxHp": 672,
+        "damage": 28,
+        "portalGate": null,
+        "phase": 1,
+        "finalePhases": null,
+        "reflectBanks": null,
+        "forgeHits": null,
+        "paradoxHits": null,
+        "echoFractures": null,
+        "special": {
+          "brutePortalFight": false,
+          "wardenPortalFight": true,
+          "spellSiphonFight": false,
+          "forgeFight": false,
+          "paradoxFight": false,
+          "echoFight": false
+        }
+      },
+      "result": {
+        "phasesObserved": [
+          1,
+          2
+        ],
+        "phase2Observed": true,
+        "phase3Observed": false,
+        "attackActivityObserved": true,
+        "syntheticDeathRestartObserved": true,
+        "checkpointReturnObserved": null,
+        "victoryObserved": false,
+        "status": "phase-and-synthetic-restart-observed"
+      },
+      "video": "07-warden/phase-reset-probe.mp4",
+      "receipt": "07-warden/receipt.json"
+    },
+    {
+      "stageIndex": 8,
+      "stageName": "Frost Sorcerer",
+      "type": "sorcerer",
+      "contract": {
+        "id": null,
+        "type": "sorcerer",
+        "label": "FROST SORCERER",
+        "hp": 900,
+        "maxHp": 900,
+        "damage": 24,
+        "portalGate": "spellBreak",
+        "phase": 1,
+        "finalePhases": null,
+        "reflectBanks": null,
+        "forgeHits": null,
+        "paradoxHits": null,
+        "echoFractures": null,
+        "special": {
+          "brutePortalFight": false,
+          "wardenPortalFight": false,
+          "spellSiphonFight": true,
+          "forgeFight": false,
+          "paradoxFight": false,
+          "echoFight": false
+        }
+      },
+      "result": {
+        "phasesObserved": [
+          1,
+          2
+        ],
+        "phase2Observed": true,
+        "phase3Observed": false,
+        "attackActivityObserved": true,
+        "syntheticDeathRestartObserved": true,
+        "checkpointReturnObserved": null,
+        "victoryObserved": false,
+        "status": "phase-and-synthetic-restart-observed"
+      },
+      "video": "09-sorcerer/phase-reset-probe.mp4",
+      "receipt": "09-sorcerer/receipt.json"
+    },
+    {
+      "stageIndex": 10,
+      "stageName": "Ember Colossus",
+      "type": "colossus",
+      "contract": {
+        "id": null,
+        "type": "colossus",
+        "label": "EMBER COLOSSUS",
+        "hp": 1600,
+        "maxHp": 1600,
+        "damage": 32,
+        "portalGate": "forgeRam",
+        "phase": 1,
+        "finalePhases": null,
+        "reflectBanks": null,
+        "forgeHits": 6,
+        "paradoxHits": null,
+        "echoFractures": null,
+        "special": {
+          "brutePortalFight": false,
+          "wardenPortalFight": false,
+          "spellSiphonFight": false,
+          "forgeFight": true,
+          "paradoxFight": false,
+          "echoFight": false
+        }
+      },
+      "result": {
+        "phasesObserved": [
+          1,
+          2
+        ],
+        "phase2Observed": true,
+        "phase3Observed": false,
+        "attackActivityObserved": true,
+        "syntheticDeathRestartObserved": true,
+        "checkpointReturnObserved": null,
+        "victoryObserved": false,
+        "status": "phase-and-synthetic-restart-observed"
+      },
+      "video": "11-colossus/phase-reset-probe.mp4",
+      "receipt": "11-colossus/receipt.json"
+    },
+    {
+      "stageIndex": 12,
+      "stageName": "The Void Tyrant",
+      "type": "tyrant",
+      "contract": {
+        "id": null,
+        "type": "tyrant",
+        "label": "VOID TYRANT",
+        "hp": 1540,
+        "maxHp": 1540,
+        "damage": 30,
+        "portalGate": "paradox",
+        "phase": 1,
+        "finalePhases": [
+          {
+            "index": 0,
+            "beat": "teach",
+            "label": "LEGS",
+            "y": 48
+          },
+          {
+            "index": 1,
+            "beat": "test",
+            "label": "TORSO",
+            "y": 178
+          },
+          {
+            "index": 2,
+            "beat": "twist",
+            "label": "HEAD",
+            "y": 302
+          }
+        ],
+        "reflectBanks": null,
+        "forgeHits": null,
+        "paradoxHits": 3,
+        "echoFractures": null,
+        "special": {
+          "brutePortalFight": false,
+          "wardenPortalFight": false,
+          "spellSiphonFight": false,
+          "forgeFight": false,
+          "paradoxFight": true,
+          "echoFight": false
+        }
+      },
+      "result": {
+        "phasesObserved": [
+          1,
+          2
+        ],
+        "phase2Observed": true,
+        "phase3Observed": false,
+        "attackActivityObserved": true,
+        "syntheticDeathRestartObserved": true,
+        "checkpointReturnObserved": null,
+        "victoryObserved": false,
+        "status": "phase-and-synthetic-restart-observed"
+      },
+      "video": "13-tyrant/phase-reset-probe.mp4",
+      "receipt": "13-tyrant/receipt.json"
+    },
+    {
+      "stageIndex": 13,
+      "stageName": "The Abyss King",
+      "type": "king",
+      "contract": {
+        "id": null,
+        "type": "king",
+        "label": "THE ABYSS KING",
+        "hp": 2760,
+        "maxHp": 2760,
+        "damage": 4.42,
+        "portalGate": "echoFracture",
+        "phase": 1,
+        "finalePhases": [
+          {
+            "index": 0,
+            "beat": "teach",
+            "separation": 150,
+            "hijack": false
+          },
+          {
+            "index": 1,
+            "beat": "test",
+            "separation": 450,
+            "hijack": false
+          },
+          {
+            "index": 2,
+            "beat": "test",
+            "separation": 750,
+            "hijack": true
+          },
+          {
+            "index": 3,
+            "beat": "twist",
+            "separation": 900,
+            "hijack": true
+          }
+        ],
+        "reflectBanks": null,
+        "forgeHits": null,
+        "paradoxHits": null,
+        "echoFractures": 4,
+        "special": {
+          "brutePortalFight": false,
+          "wardenPortalFight": false,
+          "spellSiphonFight": false,
+          "forgeFight": false,
+          "paradoxFight": false,
+          "echoFight": true
+        }
+      },
+      "result": {
+        "phasesObserved": [
+          1,
+          2
+        ],
+        "phase2Observed": true,
+        "phase3Observed": true,
+        "attackActivityObserved": true,
+        "syntheticDeathRestartObserved": true,
+        "checkpointReturnObserved": true,
+        "victoryObserved": false,
+        "status": "phase-and-synthetic-restart-observed"
+      },
+      "video": "14-king/phase-reset-probe.mp4",
+      "receipt": "14-king/receipt.json"
+    }
+  ],
+  "coverage": {
+    "contractInventory": "complete",
+    "forcedPhaseResponse": "complete",
+    "syntheticDeathRestart": "complete",
+    "abyssKingCheckpointRestart": "complete",
+    "naturalPhaseProgression": "pending",
+    "naturalDeathRestart": "pending",
+    "victories": "pending",
+    "coop": "pending"
+  },
+  "remaining": [
+    "Complete each intended portal mechanic without state injection.",
+    "Record every authored mechanic phase and vulnerability window.",
+    "Record one boss-caused death and one legitimate victory for every boss.",
+    "Repeat boss ownership and transitions in two-player campaign play."
+  ]
+}

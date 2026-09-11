@@ -1,0 +1,291 @@
+{
+  "schema": "bladefall.warden-validation",
+  "version": 1,
+  "generatedAt": "2026-08-22T19:51:37.278Z",
+  "url": "http://127.0.0.1:8371/index.html?validation=1787428293356",
+  "gameVersion": "7.95.2",
+  "expectedVersion": "7.95.2",
+  "pass": true,
+  "pageErrors": [],
+  "probes": [
+    {
+      "name": "reverse-authored-topology",
+      "pass": true,
+      "spawn": {
+        "x": 14480,
+        "y": 709.6111111111111,
+        "face": -1
+      },
+      "length": 15000,
+      "landmarks": [
+        "eastern-crown",
+        "blind-gallery",
+        "hush-engine",
+        "turning-cells",
+        "red-court",
+        "sentence-well"
+      ],
+      "enemies": [
+        "turnkey",
+        "turnkey",
+        "gaol-hound",
+        "turnkey",
+        "cell-shadow",
+        "turnkey"
+      ],
+      "music": {
+        "id": "warden-clockwork",
+        "src": "./audio/music/clockwork.mp3",
+        "gain": 0.94,
+        "title": "ClockWork",
+        "artist": "project-owner supplied",
+        "mood": "descending cells and machinery turning out of sight",
+        "boss": {
+          "id": "warden-element",
+          "src": "./audio/music/element.mp3",
+          "gain": 0.98,
+          "title": "Element",
+          "artist": "project-owner supplied",
+          "mood": "the Warden’s measured sentence"
+        }
+      },
+      "geometry": {
+        "ok": true,
+        "errors": [],
+        "warnings": [],
+        "counts": {
+          "total": 90,
+          "owned": 90,
+          "critical": 1,
+          "fluids": 0,
+          "containedFluids": 0
+        },
+        "ownershipCoverage": 1
+      },
+      "restSite": {
+        "type": "restSite",
+        "id": "gaol-vigil",
+        "siteId": "gaol-vigil",
+        "zoneId": "warden",
+        "name": "Gaol Vigil",
+        "fastTravel": false,
+        "x": 4200,
+        "y": 0,
+        "w": 58,
+        "h": 64,
+        "compatibility": false,
+        "authoringRoom": "warden:02",
+        "authoringOwner": "custom-level"
+      }
+    },
+    {
+      "name": "authored-shield-turn-delay",
+      "pass": true,
+      "guards": [
+        {
+          "x": 12044.468960000002,
+          "shield": -1,
+          "delay": 1.05
+        },
+        {
+          "x": 11324.468960000002,
+          "shield": -1,
+          "delay": 1.05
+        },
+        {
+          "x": 7281.860000000001,
+          "shield": -1,
+          "delay": 1.05
+        },
+        {
+          "x": 5304.468960000002,
+          "shield": -1,
+          "delay": 1.05
+        }
+      ]
+    },
+    {
+      "name": "turning-cells-are-three-required-mechanisms",
+      "pass": true,
+      "rotors": [
+        {
+          "cell": 1,
+          "speed": 0.72,
+          "length": 165
+        },
+        {
+          "cell": 2,
+          "speed": -0.86,
+          "length": 185
+        },
+        {
+          "cell": 3,
+          "speed": 1.02,
+          "length": 205
+        }
+      ],
+      "slates": [
+        "east",
+        "west"
+      ],
+      "groundSegments": 4
+    },
+    {
+      "name": "turning-cells-run-on-live-movement-and-portal-physics",
+      "pass": true,
+      "firstTwo": {
+        "reached": 11,
+        "total": 11,
+        "x": 6262,
+        "y": 500,
+        "maxY": 718,
+        "minX": 6262,
+        "wallContacts": 23,
+        "wallJumps": 9,
+        "wallJumpOwned": true,
+        "dead": false
+      },
+      "finalCell": {
+        "pairCount": 1,
+        "transited": true,
+        "landedWest": true,
+        "x": 5440,
+        "y": 0,
+        "dead": false
+      }
+    },
+    {
+      "name": "turnkey-commits-and-yields-a-recovery-opening",
+      "pass": true,
+      "state": "recover",
+      "start": 7000,
+      "end": 6981.778291666652,
+      "committed": true,
+      "recovered": true
+    },
+    {
+      "name": "same-side-does-not-open-guard",
+      "pass": true,
+      "flank": 0,
+      "bossX": 1500
+    },
+    {
+      "name": "opposed-cross-opens-punish",
+      "pass": true,
+      "flank": 2.5,
+      "crosses": 1,
+      "hpBefore": 672,
+      "hpAfter": 652
+    },
+    {
+      "name": "final-sentence-requires-height-and-side-fold",
+      "pass": true,
+      "flat": 0,
+      "folded": 1.85
+    },
+    {
+      "name": "warden-telegraphs-and-breaks-one-mouth",
+      "pass": true,
+      "wind": "portalBreakWind",
+      "mouths": 1
+    },
+    {
+      "name": "final-portal-pair-survives-remote-pressure-without-an-extra-dash",
+      "pass": true,
+      "wind": "portalBreakWind",
+      "remoteHit": true,
+      "mouths": 2,
+      "postPressureState": "pursuit"
+    },
+    {
+      "name": "three-distinct-court-phases",
+      "pass": true,
+      "two": {
+        "phase": 2,
+        "rotors": 2
+      },
+      "three": {
+        "phase": 3,
+        "state": "sentenceWind",
+        "movers": 5
+      }
+    },
+    {
+      "name": "threefold-sentence-can-be-returned-through-player-pair",
+      "pass": true,
+      "state": "sentenceCrash",
+      "returns": 1,
+      "flank": 2.45,
+      "x": 2264,
+      "y": 234
+    },
+    {
+      "name": "sentence-well-death-return-cannot-be-barred",
+      "pass": true,
+      "checkpoint": 2760,
+      "barrier": false,
+      "threshold": true
+    },
+    {
+      "name": "counter-reward-and-physical-road",
+      "pass": true,
+      "counter": true,
+      "portal": null,
+      "mineGone": true,
+      "briefing": true,
+      "blood": [
+        5,
+        5
+      ],
+      "seam": {
+        "connector": "warden-frostfell",
+        "zone": "warden",
+        "targetStage": 7,
+        "warm": true,
+        "cross": true,
+        "forward": true,
+        "commitClear": true,
+        "requires": "counter"
+      }
+    },
+    {
+      "name": "counter-is-directional-and-direct-only",
+      "pass": true,
+      "direct": true,
+      "riposte": true,
+      "ground": false
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "screens/room-1.png",
+      "x": 13800,
+      "y": 700
+    },
+    {
+      "file": "screens/room-2.png",
+      "x": 11400,
+      "y": 260
+    },
+    {
+      "file": "screens/room-3.png",
+      "x": 8900,
+      "y": 300
+    },
+    {
+      "file": "screens/room-4.png",
+      "x": 6400,
+      "y": 500
+    },
+    {
+      "file": "screens/room-5.png",
+      "x": 4000,
+      "y": 0
+    },
+    {
+      "file": "screens/room-6.png",
+      "x": 1500,
+      "y": 0
+    }
+  ]
+}

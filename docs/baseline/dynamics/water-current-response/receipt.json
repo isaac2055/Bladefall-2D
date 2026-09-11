@@ -1,0 +1,1176 @@
+{
+  "schema": "bladefall.a1-dynamic-probe",
+  "version": 1,
+  "gameVersion": "7.8.0",
+  "url": "http://127.0.0.1:8372/",
+  "id": "water-current-response",
+  "stage": {
+    "index": 3,
+    "name": "The Updrafts"
+  },
+  "mechanic": "bounded water and horizontal current",
+  "evidenceClass": "state-positioned mechanic contact; keyboard movement",
+  "browserBridge": "In-app browser-control bridge unavailable; version-verified local Chromium fallback used.",
+  "setup": {
+    "requested": {
+      "x": 1300,
+      "playerX": 1300,
+      "playerY": 8,
+      "onGround": false
+    },
+    "resolvedTarget": null,
+    "player": {
+      "x": 1300,
+      "y": 8,
+      "onGround": false
+    },
+    "support": {
+      "type": "plat",
+      "x": 1010,
+      "y": 0,
+      "id": null
+    }
+  },
+  "events": [
+    {
+      "tMs": 502,
+      "kind": "keyboard",
+      "input": "ArrowRight",
+      "action": "down"
+    },
+    {
+      "tMs": 2680,
+      "kind": "keyboard",
+      "input": "ArrowRight",
+      "action": "up"
+    }
+  ],
+  "samples": [
+    {
+      "tMs": 0,
+      "mode": "play",
+      "stageIndex": 3,
+      "player": {
+        "x": 1300.6,
+        "y": 0,
+        "vx": 3.6,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0.503,
+        "fluidKind": "water"
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 80,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Ilyra",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 3400,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 166,
+      "mode": "play",
+      "stageIndex": 3,
+      "player": {
+        "x": 1301,
+        "y": 0,
+        "vx": 3.4,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0.501,
+        "fluidKind": "water"
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 80,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Ilyra",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 3400,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 334,
+      "mode": "play",
+      "stageIndex": 3,
+      "player": {
+        "x": 1301.4,
+        "y": 0,
+        "vx": 3.4,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0.5,
+        "fluidKind": "water"
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 80,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Ilyra",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 3400,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 502,
+      "mode": "play",
+      "stageIndex": 3,
+      "player": {
+        "x": 1301.8,
+        "y": 0,
+        "vx": 3.4,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0.499,
+        "fluidKind": "water"
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 80,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Ilyra",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 3400,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 682,
+      "mode": "play",
+      "stageIndex": 3,
+      "player": {
+        "x": 1330.2,
+        "y": 0,
+        "vx": 184.2,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0.5,
+        "fluidKind": "water"
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 80,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Ilyra",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 3400,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 845,
+      "mode": "play",
+      "stageIndex": 3,
+      "player": {
+        "x": 1361.9,
+        "y": 0,
+        "vx": 186.8,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0.5,
+        "fluidKind": "water"
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 80,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Ilyra",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 3400,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 1010,
+      "mode": "play",
+      "stageIndex": 3,
+      "player": {
+        "x": 1393.7,
+        "y": 0,
+        "vx": 186.9,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0.5,
+        "fluidKind": "water"
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 80,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Ilyra",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 3400,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 1176,
+      "mode": "play",
+      "stageIndex": 3,
+      "player": {
+        "x": 1425.5,
+        "y": 0,
+        "vx": 186.9,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0.5,
+        "fluidKind": "water"
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 80,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Ilyra",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 3400,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 1344,
+      "mode": "play",
+      "stageIndex": 3,
+      "player": {
+        "x": 1457.3,
+        "y": 0,
+        "vx": 186.9,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0.5,
+        "fluidKind": "water"
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 80,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Ilyra",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 3400,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 1511,
+      "mode": "play",
+      "stageIndex": 3,
+      "player": {
+        "x": 1489.6,
+        "y": 0,
+        "vx": 198.5,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 80,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Ilyra",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 3400,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 1676,
+      "mode": "play",
+      "stageIndex": 3,
+      "player": {
+        "x": 1522.8,
+        "y": -10.9,
+        "vx": 199.8,
+        "vy": 163.3,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": false,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 80,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Ilyra",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 3400,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 1844,
+      "mode": "play",
+      "stageIndex": 3,
+      "player": {
+        "x": 80.3,
+        "y": 39.6,
+        "vx": 20,
+        "vy": 23.3,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": false,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 80,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Ilyra",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 3400,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 2015,
+      "mode": "play",
+      "stageIndex": 3,
+      "player": {
+        "x": 96.1,
+        "y": 14.3,
+        "vx": 137.2,
+        "vy": 256.7,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": false,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 80,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Ilyra",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 3400,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 2178,
+      "mode": "play",
+      "stageIndex": 3,
+      "player": {
+        "x": 125.2,
+        "y": 0,
+        "vx": 196.2,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 80,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Ilyra",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 3400,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 2343,
+      "mode": "play",
+      "stageIndex": 3,
+      "player": {
+        "x": 158.4,
+        "y": 0,
+        "vx": 199.9,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 80,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Ilyra",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 3400,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 2509,
+      "mode": "play",
+      "stageIndex": 3,
+      "player": {
+        "x": 191.8,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 80,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Ilyra",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 3400,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 2680,
+      "mode": "play",
+      "stageIndex": 3,
+      "player": {
+        "x": 225.1,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 80,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Ilyra",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 3400,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 2838,
+      "mode": "play",
+      "stageIndex": 3,
+      "player": {
+        "x": 243,
+        "y": 0,
+        "vx": 57.8,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 80,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Ilyra",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 3400,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 3010,
+      "mode": "play",
+      "stageIndex": 3,
+      "player": {
+        "x": 248.2,
+        "y": 0,
+        "vx": 16.7,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 80,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Ilyra",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 3400,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 3179,
+      "mode": "play",
+      "stageIndex": 3,
+      "player": {
+        "x": 249,
+        "y": 0,
+        "vx": 0.6,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 80,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Ilyra",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 3400,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 3343,
+      "mode": "play",
+      "stageIndex": 3,
+      "player": {
+        "x": 249,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 80,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Ilyra",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 3400,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 3514,
+      "mode": "play",
+      "stageIndex": 3,
+      "player": {
+        "x": 249,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 80,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Ilyra",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 3400,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 3679,
+      "mode": "play",
+      "stageIndex": 3,
+      "player": {
+        "x": 249,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 80,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Ilyra",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 3400,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 3847,
+      "mode": "play",
+      "stageIndex": 3,
+      "player": {
+        "x": 249,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 80,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Ilyra",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 3400,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 4012,
+      "mode": "play",
+      "stageIndex": 3,
+      "player": {
+        "x": 249,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 92,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": true,
+        "x": 80,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Ilyra",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 3400,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    }
+  ],
+  "capture": {
+    "viewport": {
+      "width": 960,
+      "height": 600,
+      "deviceScaleFactor": 1
+    },
+    "fps": 6,
+    "frames": 24,
+    "wallDurationMs": 4013,
+    "video": "probe.mp4"
+  },
+  "result": {
+    "maxSubmersion": 0.503,
+    "fluidKinds": [
+      "water"
+    ],
+    "displacementX": -1051,
+    "checkpointRewindObserved": true,
+    "status": "fluid-contact-and-rewind-observed"
+  },
+  "limitations": [
+    "This is a targeted mechanic probe, not a complete level route or signoff.",
+    "State-positioned setup is disclosed above and cannot prove natural route access.",
+    "Only the listed events occurred during capture; forced failure is synthetic where explicitly identified.",
+    "Co-op ownership, complete puzzle resolution, and boss phase coverage remain separate requirements."
+  ]
+}

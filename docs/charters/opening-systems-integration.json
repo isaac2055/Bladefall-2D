@@ -1,0 +1,118 @@
+{
+  "schema": "bladefall.opening-systems-integration",
+  "version": 1,
+  "gameVersion": "7.87.0",
+  "url": "http://127.0.0.1:8877/index.html",
+  "pageErrors": [],
+  "probes": [
+    {
+      "name": "fresh-awakening-discloses-no-build-menu",
+      "pass": true,
+      "discovery": {
+        "bag": false,
+        "build": false,
+        "gifts": 1,
+        "recollections": 0
+      },
+      "pause": {
+        "bag": false,
+        "build": false
+      }
+    },
+    {
+      "name": "authored-oathblade-and-mantle-loop",
+      "pass": true,
+      "before": {
+        "bladeLocked": true,
+        "weapon": null,
+        "bag": false,
+        "mantleSource": "canopy-veteran-rack",
+        "mantleAuthored": true
+      },
+      "bladeTaken": true,
+      "afterBlade": {
+        "weapon": "Recovered Oathblade",
+        "capability": true,
+        "bag": true,
+        "inBag": true
+      },
+      "mantleTaken": true,
+      "mantle": {
+        "row": "Mothsilk Mantle",
+        "equipped": "Mothsilk Mantle",
+        "source": "canopy-veteran-rack"
+      }
+    },
+    {
+      "name": "boss-rewards-are-independent-and-immediately-usable",
+      "pass": true,
+      "skin": "warden",
+      "giftStatus": "owned",
+      "echo": {
+        "owned": [
+          "fault-bell"
+        ],
+        "equipped": [
+          "fault-bell"
+        ],
+        "capacity": 2
+      },
+      "vowPrimed": true,
+      "bellPrimed": true,
+      "damage": 12.5,
+      "faultBellConsumed": true
+    },
+    {
+      "name": "updraft-mastery-owns-distinct-rewards",
+      "pass": true,
+      "gale": {
+        "branch": 1,
+        "owned": true,
+        "capacity": 2
+      },
+      "blood": {
+        "highRoute": 1,
+        "fragments": 1
+      }
+    },
+    {
+      "name": "marksman-closes-the-constitutional-prefix",
+      "pass": true,
+      "before": {
+        "ownsSingle": true,
+        "ownsPair": false,
+        "mode": "single",
+        "maxPlayerMouths": 1,
+        "mayUseAuthoredFixedLessons": true,
+        "mayUseAnchoredPairs": true,
+        "mayUsePersonalPairs": false
+      },
+      "after": {
+        "ownsSingle": true,
+        "ownsPair": true,
+        "mode": "pair",
+        "maxPlayerMouths": 2,
+        "mayUseAuthoredFixedLessons": true,
+        "mayUseAnchoredPairs": true,
+        "mayUsePersonalPairs": true
+      },
+      "echo": {
+        "owned": [
+          "far-thread"
+        ],
+        "capacity": 3
+      },
+      "forgeSeals": {
+        "shelf": 1,
+        "afterBoss": 2
+      },
+      "sealedMaps": [
+        "hollow-marksman"
+      ]
+    }
+  ],
+  "ok": true,
+  "limitations": [
+    "Automated evidence proves runtime contracts and reward causality; first-read value and visual taste still require human play."
+  ]
+}

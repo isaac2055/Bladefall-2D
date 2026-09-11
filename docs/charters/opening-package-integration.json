@@ -1,0 +1,173 @@
+{
+  "schema": "bladefall.opening-package-integration",
+  "version": 2,
+  "gameVersion": "7.87.0",
+  "url": "http://127.0.0.1:8877/index.html",
+  "automatedEvidence": {
+    "targetedFiles": 7,
+    "targetedPass": true,
+    "pageErrors": []
+  },
+  "probes": [
+    {
+      "name": "silent-undiscovered-movement",
+      "pass": true,
+      "observed": {
+        "before": {
+          "texts": 0,
+          "blocked": {}
+        },
+        "after": {
+          "texts": 0,
+          "blocked": {
+            "dash": 1,
+            "double-jump": 1
+          }
+        },
+        "dash": true,
+        "doubleJump": true,
+        "acquired": [
+          "jump"
+        ]
+      }
+    },
+    {
+      "name": "clock-wins-nearby-discovery-overlap",
+      "pass": true,
+      "observed": {
+        "clock": {
+          "x": 3140,
+          "y": 0
+        },
+        "surveyLore": {
+          "x": 3036,
+          "y": 0
+        },
+        "candidate": {
+          "fieldClock": true,
+          "loreId": null,
+          "x": 3140
+        },
+        "target": {
+          "fieldClock": true,
+          "loreId": null,
+          "x": 3140
+        }
+      }
+    },
+    {
+      "name": "armed-vigil-remains-opt-in",
+      "pass": true,
+      "observed": {
+        "before": {
+          "challenge": false,
+          "active": false,
+          "opened": false
+        },
+        "interacted": true,
+        "after": {
+          "challenge": true,
+          "active": false,
+          "awakenT": 0.9,
+          "opened": true
+        }
+      }
+    },
+    {
+      "name": "dead-drop-requires-physical-footing",
+      "pass": true,
+      "observed": {
+        "cache": {
+          "x": 6830,
+          "y": 170
+        },
+        "floor": {
+          "x": 6830,
+          "y": 170
+        },
+        "floating": false,
+        "supported": true
+      }
+    },
+    {
+      "name": "enemy-damage-spends-hp-without-rewind",
+      "pass": true,
+      "observed": {
+        "before": {
+          "x": 520,
+          "hp": 100
+        },
+        "after": {
+          "x": 520,
+          "hp": 80,
+          "vx": 260,
+          "invuln": 0.5
+        },
+        "checkpoint": 120
+      }
+    },
+    {
+      "name": "source-specific-dialogue-and-local-mara-backtrack",
+      "pass": true,
+      "observed": {
+        "kinds": {
+          "person": "person",
+          "sign": "sign",
+          "marker": "marker",
+          "memory": "memory",
+          "object": "object"
+        },
+        "iron": {
+          "x": 11370,
+          "y": 62
+        },
+        "mara": {
+          "x": 10410,
+          "y": 0
+        },
+        "hale": {
+          "before": "The road’s blade is caught in the roots ahead. Free it before the trees learn your shape.",
+          "after": "That blade knows this road. Keep it between you and whatever knows your name."
+        }
+      }
+    },
+    {
+      "name": "opening-clock-advances-and-stays-consistent",
+      "pass": true,
+      "observed": {
+        "initial": "3:40",
+        "advanced": "3:41",
+        "field": "3:41",
+        "orra": "“3:41. It moved while you were gone. Only one minute.”",
+        "saved": 1
+      }
+    },
+    {
+      "name": "visible-cone-produces-alert-pursuit",
+      "pass": true,
+      "observed": {
+        "sense": {
+          "clear": true,
+          "awareness": "alert",
+          "engaged": true,
+          "lastX": 3205
+        },
+        "state": "pursue",
+        "beforeX": 3060,
+        "afterX": 3133.2,
+        "patrolMax": 3240,
+        "alertT": 4.2
+      }
+    }
+  ],
+  "linkedReceipts": [
+    "docs/charters/02-black-woods/evidence/validation/receipt.json",
+    "docs/charters/03-brute/evidence/validation/receipt.json"
+  ],
+  "pendingHumanEvidence": [
+    "natural fresh route",
+    "natural armed revisit",
+    "pacing and first-read clarity"
+  ],
+  "ok": true
+}

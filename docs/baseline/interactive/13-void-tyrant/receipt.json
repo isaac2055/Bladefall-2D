@@ -1,0 +1,869 @@
+{
+  "schema": "bladefall.a1-interactive-probe",
+  "version": 1,
+  "gameVersion": "7.8.0",
+  "url": "http://127.0.0.1:8372/",
+  "stage": {
+    "index": 12,
+    "id": "void-tyrant",
+    "name": "The Void Tyrant",
+    "levelLength": 9140
+  },
+  "evidenceClass": {
+    "stageLoad": "development-stage-selection",
+    "movement": "input-only-after-load",
+    "positionInjectionAfterLoad": false,
+    "invulnerability": false,
+    "probeScope": "entrance-locomotion"
+  },
+  "capture": {
+    "viewport": {
+      "width": 960,
+      "height": 600,
+      "deviceScaleFactor": 1
+    },
+    "requestedDurationMs": 6000,
+    "wallDurationMs": 6023,
+    "fps": 6,
+    "frames": 36,
+    "video": "entrance-input-probe.mp4"
+  },
+  "setup": {
+    "stageIndex": 12,
+    "x": 70,
+    "y": 0,
+    "hp": 100,
+    "maxHp": 100,
+    "levelLength": 9140
+  },
+  "inputs": [
+    {
+      "tMs": 0,
+      "input": "ArrowRight",
+      "action": "down"
+    },
+    {
+      "tMs": 334,
+      "input": "KeyW",
+      "action": "press"
+    },
+    {
+      "tMs": 510,
+      "input": "Space",
+      "action": "press"
+    },
+    {
+      "tMs": 1001,
+      "input": "KeyW",
+      "action": "press"
+    },
+    {
+      "tMs": 1001,
+      "input": "KeyD",
+      "action": "press"
+    },
+    {
+      "tMs": 1355,
+      "input": "Space",
+      "action": "press"
+    },
+    {
+      "tMs": 1834,
+      "input": "KeyW",
+      "action": "press"
+    },
+    {
+      "tMs": 2335,
+      "input": "Space",
+      "action": "press"
+    },
+    {
+      "tMs": 2335,
+      "input": "KeyD",
+      "action": "press"
+    },
+    {
+      "tMs": 2558,
+      "input": "KeyW",
+      "action": "press"
+    },
+    {
+      "tMs": 3186,
+      "input": "KeyW",
+      "action": "press"
+    },
+    {
+      "tMs": 3186,
+      "input": "Space",
+      "action": "press"
+    },
+    {
+      "tMs": 3677,
+      "input": "KeyD",
+      "action": "press"
+    },
+    {
+      "tMs": 4000,
+      "input": "KeyW",
+      "action": "press"
+    },
+    {
+      "tMs": 4000,
+      "input": "Space",
+      "action": "press"
+    },
+    {
+      "tMs": 4670,
+      "input": "KeyW",
+      "action": "press"
+    },
+    {
+      "tMs": 5000,
+      "input": "Space",
+      "action": "press"
+    },
+    {
+      "tMs": 5000,
+      "input": "KeyD",
+      "action": "press"
+    },
+    {
+      "tMs": 5364,
+      "input": "KeyW",
+      "action": "press"
+    },
+    {
+      "tMs": 5834,
+      "input": "Space",
+      "action": "press"
+    },
+    {
+      "tMs": 6022,
+      "input": "ArrowRight",
+      "action": "up"
+    }
+  ],
+  "samples": [
+    {
+      "tMs": 1,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 71,
+      "y": 0,
+      "vx": 60,
+      "vy": 0,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 167,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 99,
+      "y": 0,
+      "vx": 196,
+      "vy": 0,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 334,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 138.9,
+      "y": 0,
+      "vx": 199.9,
+      "vy": 0,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 510,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 175.6,
+      "y": 21.7,
+      "vx": 200,
+      "vy": -410,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 695,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 202.2,
+      "y": 30.3,
+      "vx": 200,
+      "vy": 16.7,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 834,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 232.2,
+      "y": 10.3,
+      "vx": 200,
+      "vy": 226.7,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 1001,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 283.5,
+      "y": 0,
+      "vx": 375,
+      "vy": 0,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 1216,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 353.3,
+      "y": 0,
+      "vx": 577.5,
+      "vy": 0,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 1355,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 454.8,
+      "y": 14.8,
+      "vx": 499.3,
+      "vy": -433.3,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 1528,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 518.5,
+      "y": 23.5,
+      "vx": 461.6,
+      "vy": 16.7,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 1668,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 584.6,
+      "y": 15.1,
+      "vx": 424.9,
+      "vy": -906.7,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 1834,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 665,
+      "y": 166.1,
+      "vx": 383.8,
+      "vy": -626.7,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 2015,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 714.4,
+      "y": 235.7,
+      "vx": 360.7,
+      "vy": -440,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 2167,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 772.2,
+      "y": 287.6,
+      "vx": 335.8,
+      "vy": -206.7,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 2335,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 850.3,
+      "y": 321,
+      "vx": 437.4,
+      "vy": -163,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 2558,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 952.5,
+      "y": 347,
+      "vx": 593.1,
+      "vy": -124.5,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 2740,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 1037.9,
+      "y": 348.2,
+      "vx": 545.2,
+      "vy": 85.5,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 2886,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 1115.6,
+      "y": 317.9,
+      "vx": 496.7,
+      "vy": 295.5,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 3039,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 1186.5,
+      "y": 256,
+      "vx": 455.1,
+      "vy": 505.5,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 3186,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 1279.1,
+      "y": 111.1,
+      "vx": 405,
+      "vy": 808.8,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 3404,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 1337.3,
+      "y": 0,
+      "vx": 371.7,
+      "vy": 0,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 3548,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 1383,
+      "y": 0,
+      "vx": 322.2,
+      "vy": 0,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 3677,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 1437.9,
+      "y": 123,
+      "vx": 433.6,
+      "vy": -759.7,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 3848,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 1520.2,
+      "y": 234.3,
+      "vx": 587.5,
+      "vy": -728.2,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 4000,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 1643.2,
+      "y": 363.9,
+      "vx": 533.7,
+      "vy": -433.3,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 4219,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 1719.3,
+      "y": 371.9,
+      "vx": 486.8,
+      "vy": 40,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 4368,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 1788.9,
+      "y": 348.4,
+      "vx": 446.6,
+      "vy": 250,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 4519,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 1852.9,
+      "y": 293.4,
+      "vx": 411.9,
+      "vy": 460,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 4670,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 1924.8,
+      "y": 183.4,
+      "vx": 376.2,
+      "vy": 716.7,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 4849,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 1973.2,
+      "y": 73.9,
+      "vx": 354,
+      "vy": 903.3,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 5000,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 2053.1,
+      "y": 20.3,
+      "vx": 435.7,
+      "vy": -163,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 5220,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 2135.5,
+      "y": 42.2,
+      "vx": 587.7,
+      "vy": -131.5,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 5364,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 2231.5,
+      "y": 49,
+      "vx": 551,
+      "vy": 62.2,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 5530,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 2301.6,
+      "y": 26.7,
+      "vx": 506.8,
+      "vy": 248.8,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 5667,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 2365.9,
+      "y": 0,
+      "vx": 454.8,
+      "vy": 0,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 5834,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 2450.8,
+      "y": 14.8,
+      "vx": 350.3,
+      "vy": -433.3,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    },
+    {
+      "tMs": 6022,
+      "stageIndex": 12,
+      "mode": "play",
+      "x": 2501.6,
+      "y": 22.8,
+      "vx": 329.2,
+      "vy": 40,
+      "hp": 100,
+      "maxHp": 100,
+      "dead": false,
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravityFlipped": false,
+      "enemyCount": 9
+    }
+  ],
+  "result": {
+    "status": "entrance-progress-observed",
+    "startX": 70,
+    "maxX": 2501.6,
+    "progressPx": 2432,
+    "progressFraction": 0.2681,
+    "resetCount": 0,
+    "deadFrames": 0,
+    "checkpointXs": [],
+    "transitionedTo": null
+  },
+  "limitations": [
+    "This is an entrance locomotion probe, not an intended-route completion or level signoff.",
+    "The stage was selected with the development reload API; all movement after load was ordinary keyboard input.",
+    "Full health was restored once at probe setup. Invulnerability, teleporting, jetpack grants, and live position edits were not used.",
+    "Frame-sequence video is visual evidence only; the JSON samples are the authoritative movement and reset receipt.",
+    "Optional, revisit, speedrun, and co-op route reviews remain separate A1 requirements."
+  ]
+}

@@ -1,0 +1,1476 @@
+{
+  "schema": "bladefall.a1-dynamic-probe",
+  "version": 1,
+  "gameVersion": "7.8.0",
+  "url": "http://127.0.0.1:8372/",
+  "id": "portal-anchor-transit",
+  "stage": {
+    "index": 0,
+    "name": "The Outskirts"
+  },
+  "mechanic": "player mouth plus fixed anchor",
+  "evidenceClass": "state-positioned setup; keyboard activation and traversal attempt",
+  "browserBridge": "In-app browser-control bridge unavailable; version-verified local Chromium fallback used.",
+  "setup": {
+    "requested": {
+      "target": "slate-floor",
+      "x": 5440,
+      "onGround": true
+    },
+    "resolvedTarget": {
+      "type": "plat",
+      "x": 5440,
+      "y": 0,
+      "slate": true,
+      "id": null
+    },
+    "player": {
+      "x": 5440,
+      "y": 0,
+      "onGround": true
+    },
+    "support": {
+      "type": "plat",
+      "x": 5430,
+      "y": 0,
+      "id": null
+    }
+  },
+  "events": [
+    {
+      "tMs": 523,
+      "kind": "keyboard",
+      "input": "KeyF",
+      "purpose": "place portal mouth"
+    },
+    {
+      "tMs": 1129,
+      "kind": "keyboard",
+      "input": "ArrowRight",
+      "action": "down"
+    },
+    {
+      "tMs": 1862,
+      "kind": "keyboard",
+      "input": "ArrowRight",
+      "action": "up"
+    },
+    {
+      "tMs": 1862,
+      "kind": "keyboard",
+      "input": "ArrowLeft",
+      "action": "down"
+    },
+    {
+      "tMs": 2764,
+      "kind": "keyboard",
+      "input": "ArrowLeft",
+      "action": "up"
+    }
+  ],
+  "samples": [
+    {
+      "tMs": 0,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5440,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 180,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5440,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 355,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5440,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 523,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5440,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [
+        {
+          "x": 5440,
+          "y": 0,
+          "nx": 0,
+          "ny": 1,
+          "surf": "floor"
+        }
+      ],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 760,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5440,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [
+        {
+          "x": 5440,
+          "y": 0,
+          "nx": 0,
+          "ny": 1,
+          "surf": "floor"
+        }
+      ],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 944,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5440,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [
+        {
+          "x": 5440,
+          "y": 0,
+          "nx": 0,
+          "ny": 1,
+          "surf": "floor"
+        }
+      ],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 1129,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5440,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [
+        {
+          "x": 5440,
+          "y": 0,
+          "nx": 0,
+          "ny": 1,
+          "surf": "floor"
+        }
+      ],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 1311,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5469,
+        "y": 0,
+        "vx": 196,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [
+        {
+          "x": 5440,
+          "y": 0,
+          "nx": 0,
+          "ny": 1,
+          "surf": "floor"
+        }
+      ],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 1495,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5505.6,
+        "y": 0,
+        "vx": 199.9,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [
+        {
+          "x": 5440,
+          "y": 0,
+          "nx": 0,
+          "ny": 1,
+          "surf": "floor"
+        }
+      ],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 1677,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5542.2,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [
+        {
+          "x": 5440,
+          "y": 0,
+          "nx": 0,
+          "ny": 1,
+          "surf": "floor"
+        }
+      ],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 1862,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5578.9,
+        "y": 0,
+        "vx": 200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [
+        {
+          "x": 5440,
+          "y": 0,
+          "nx": 0,
+          "ny": 1,
+          "surf": "floor"
+        }
+      ],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 2043,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5553.5,
+        "y": 0,
+        "vx": -194.5,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [
+        {
+          "x": 5440,
+          "y": 0,
+          "nx": 0,
+          "ny": 1,
+          "surf": "floor"
+        }
+      ],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 2225,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5517,
+        "y": 0,
+        "vx": -199.9,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [
+        {
+          "x": 5440,
+          "y": 0,
+          "nx": 0,
+          "ny": 1,
+          "surf": "floor"
+        }
+      ],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 2408,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5480.3,
+        "y": 0,
+        "vx": -200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [
+        {
+          "x": 5440,
+          "y": 0,
+          "nx": 0,
+          "ny": 1,
+          "surf": "floor"
+        }
+      ],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 2590,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5447,
+        "y": 0,
+        "vx": -200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [
+        {
+          "x": 5440,
+          "y": 0,
+          "nx": 0,
+          "ny": 1,
+          "surf": "floor"
+        }
+      ],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 2764,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5410.3,
+        "y": 0,
+        "vx": -200,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [
+        {
+          "x": 5440,
+          "y": 0,
+          "nx": 0,
+          "ny": 1,
+          "surf": "floor"
+        }
+      ],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 2937,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5392.4,
+        "y": 0,
+        "vx": -57.8,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [
+        {
+          "x": 5440,
+          "y": 0,
+          "nx": 0,
+          "ny": 1,
+          "surf": "floor"
+        }
+      ],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 3102,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5387.2,
+        "y": 0,
+        "vx": -16.7,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [
+        {
+          "x": 5440,
+          "y": 0,
+          "nx": 0,
+          "ny": 1,
+          "surf": "floor"
+        }
+      ],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 3267,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5386.4,
+        "y": 0,
+        "vx": -0.6,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [
+        {
+          "x": 5440,
+          "y": 0,
+          "nx": 0,
+          "ny": 1,
+          "surf": "floor"
+        }
+      ],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 3433,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5386.4,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [
+        {
+          "x": 5440,
+          "y": 0,
+          "nx": 0,
+          "ny": 1,
+          "surf": "floor"
+        }
+      ],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 3600,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5386.4,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [
+        {
+          "x": 5440,
+          "y": 0,
+          "nx": 0,
+          "ny": 1,
+          "surf": "floor"
+        }
+      ],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 3766,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5386.4,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [
+        {
+          "x": 5440,
+          "y": 0,
+          "nx": 0,
+          "ny": 1,
+          "surf": "floor"
+        }
+      ],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 3933,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5386.4,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [
+        {
+          "x": 5440,
+          "y": 0,
+          "nx": 0,
+          "ny": 1,
+          "surf": "floor"
+        }
+      ],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 4101,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5386.4,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [
+        {
+          "x": 5440,
+          "y": 0,
+          "nx": 0,
+          "ny": 1,
+          "surf": "floor"
+        }
+      ],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 4266,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5386.4,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [
+        {
+          "x": 5440,
+          "y": 0,
+          "nx": 0,
+          "ny": 1,
+          "surf": "floor"
+        }
+      ],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 4437,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5386.4,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [
+        {
+          "x": 5440,
+          "y": 0,
+          "nx": 0,
+          "ny": 1,
+          "surf": "floor"
+        }
+      ],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    },
+    {
+      "tMs": 4615,
+      "mode": "play",
+      "stageIndex": 0,
+      "player": {
+        "x": 5386.4,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "onGround": true,
+        "dead": false,
+        "fluidSubmersion": 0,
+        "fluidKind": null
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "gravity": {
+        "flipped": false,
+        "unlocked": false
+      },
+      "portals": [
+        {
+          "x": 5440,
+          "y": 0,
+          "nx": 0,
+          "ny": 1,
+          "surf": "floor"
+        }
+      ],
+      "followers": [
+        {
+          "name": "Mara",
+          "kind": "fetch",
+          "state": "idle",
+          "x": 2680,
+          "y": 0
+        }
+      ],
+      "deepLine": {
+        "cartMode": false,
+        "lean": 0,
+        "boost": 0,
+        "signals": 0,
+        "switches": [],
+        "collapsing": []
+      }
+    }
+  ],
+  "capture": {
+    "viewport": {
+      "width": 960,
+      "height": 600,
+      "deviceScaleFactor": 1
+    },
+    "fps": 6,
+    "frames": 26,
+    "wallDurationMs": 4615,
+    "video": "probe.mp4"
+  },
+  "result": {
+    "maxPlacedMouths": 1,
+    "maxPlayerX": 5579,
+    "anchorExitReached": false,
+    "status": "activation-observed-transit-unproven"
+  },
+  "limitations": [
+    "This is a targeted mechanic probe, not a complete level route or signoff.",
+    "State-positioned setup is disclosed above and cannot prove natural route access.",
+    "Only the listed events occurred during capture; forced failure is synthetic where explicitly identified.",
+    "Co-op ownership, complete puzzle resolution, and boss phase coverage remain separate requirements."
+  ]
+}

@@ -1,0 +1,680 @@
+{
+  "schema": "bladefall.ruined-keep-validation",
+  "version": 2,
+  "generatedAt": "2026-08-22T19:35:59.369Z",
+  "url": "http://127.0.0.1:8371/index.html?validation=1787427353917",
+  "gameVersion": "7.95.1",
+  "expectedVersion": "7.95.1",
+  "pass": true,
+  "pageErrors": [],
+  "probes": [
+    {
+      "name": "six-room-folded-keep",
+      "pass": true,
+      "rooms": [
+        "keep-gatehouse",
+        "fallen-refectory",
+        "weight-hall",
+        "masons-quarter",
+        "split-belfry",
+        "clinging-archive"
+      ],
+      "weights": 2,
+      "music": {
+        "id": "ruined-keep-floating-dream",
+        "src": "./audio/music/floating-dream.ogg",
+        "gain": 1.02,
+        "title": "Floating Dream",
+        "artist": "Pizza Doggy",
+        "mood": "quiet masonry, displaced rooms, and a Keep remembering its shape"
+      },
+      "geometry": {
+        "ok": true,
+        "errors": [],
+        "warnings": [],
+        "counts": {
+          "total": 126,
+          "owned": 126,
+          "critical": 12,
+          "fluids": 0,
+          "containedFluids": 0
+        },
+        "ownershipCoverage": 1
+      }
+    },
+    {
+      "name": "grip-grants-only-wall-jump",
+      "pass": true,
+      "wallJump": true,
+      "archiveComplete": false,
+      "bestBefore": 0,
+      "bestAfter": 0
+    },
+    {
+      "name": "bilateral-wall-contact",
+      "pass": true,
+      "results": [
+        {
+          "side": -1,
+          "onWall": true,
+          "wallDir": 1
+        },
+        {
+          "side": 1,
+          "onWall": true,
+          "wallDir": -1
+        }
+      ]
+    },
+    {
+      "name": "archive-climb-uses-live-wall-jump-physics",
+      "pass": true,
+      "reached": 10,
+      "total": 10,
+      "player": {
+        "x": 16718,
+        "y": 1120,
+        "dead": false
+      },
+      "maxY": 1142,
+      "minX": 14580,
+      "trace": [
+        {
+          "target": 0,
+          "x": 14800,
+          "y": 51,
+          "frame": 72
+        },
+        {
+          "target": 1,
+          "x": 15015,
+          "y": 550,
+          "frame": 263
+        },
+        {
+          "target": 2,
+          "x": 15395,
+          "y": 730,
+          "frame": 447
+        },
+        {
+          "target": 3,
+          "x": 15775,
+          "y": 935,
+          "frame": 629
+        },
+        {
+          "target": 4,
+          "x": 16160,
+          "y": 1114,
+          "frame": 716
+        },
+        {
+          "target": 5,
+          "x": 16301,
+          "y": 1015,
+          "frame": 732
+        },
+        {
+          "target": 6,
+          "x": 16465,
+          "y": 986,
+          "frame": 780
+        },
+        {
+          "target": 7,
+          "x": 16521,
+          "y": 1040,
+          "frame": 790
+        },
+        {
+          "target": 8,
+          "x": 16641,
+          "y": 1099,
+          "frame": 840
+        },
+        {
+          "target": 9,
+          "x": 16718,
+          "y": 1120,
+          "frame": 852
+        }
+      ]
+    },
+    {
+      "name": "belfry-fold-portal-weight",
+      "pass": true,
+      "transited": true,
+      "pressed": true,
+      "weight": {
+        "x": 12566.982353719817,
+        "y": 249.58333333333331,
+        "vx": -1201.2454911304446,
+        "vy": 128.33333333333334,
+        "released": true
+      },
+      "release": {
+        "timer": 1.2000000000000037,
+        "dur": 2.2,
+        "circuit": true
+      },
+      "mouths": [
+        {
+          "x": 11580,
+          "y": 0,
+          "nx": 0,
+          "ny": 1
+        },
+        {
+          "x": 12720,
+          "y": 256,
+          "nx": -1,
+          "ny": 0
+        }
+      ]
+    },
+    {
+      "name": "belfry-bell-portal-weight",
+      "pass": true,
+      "transited": true,
+      "pressed": true,
+      "weight": {
+        "x": 14305.89483302835,
+        "y": 729.5833333333334,
+        "vx": 1128.1262003659833,
+        "vy": 128.33333333333334,
+        "released": true
+      },
+      "release": {
+        "timer": 1.2583333333333369,
+        "dur": 2.2,
+        "circuit": true
+      },
+      "mouths": [
+        {
+          "x": 13540,
+          "y": 0,
+          "nx": 0,
+          "ny": 1
+        },
+        {
+          "x": 14160,
+          "y": 736,
+          "nx": 1,
+          "ny": 0
+        }
+      ]
+    },
+    {
+      "name": "level-select-archive-completes-and-opens-its-session-seal",
+      "pass": true,
+      "complete": true,
+      "sessionSeal": true,
+      "campaignSeal": false,
+      "key": {
+        "read": true,
+        "used": true
+      }
+    },
+    {
+      "name": "solved-keep-doors-remain-open-on-the-actual-westward-return",
+      "pass": true,
+      "before": [
+        {
+          "id": "keep-weight",
+          "x": 7900,
+          "open": true
+        },
+        {
+          "id": "belfry-fold",
+          "x": 13100,
+          "open": true
+        },
+        {
+          "id": "belfry-bell",
+          "x": 14440,
+          "open": true
+        }
+      ],
+      "after": [
+        {
+          "id": "keep-weight",
+          "x": 7900,
+          "open": true,
+          "persistent": true
+        },
+        {
+          "id": "belfry-fold",
+          "x": 13100,
+          "open": true,
+          "persistent": true
+        },
+        {
+          "id": "belfry-bell",
+          "x": 14440,
+          "open": true,
+          "persistent": true
+        }
+      ],
+      "firstBacktrackDoor": {
+        "id": "belfry-bell",
+        "x": 14440,
+        "open": true,
+        "persistent": true
+      }
+    },
+    {
+      "name": "archive-key-opens-the-westward-seam-chain",
+      "evidenceClass": "seam-contract-not-full-route-input",
+      "pass": true,
+      "legs": [
+        {
+          "stage": 5,
+          "x": 20,
+          "y": 0,
+          "face": -1,
+          "connector": "marksman-keep",
+          "targetStage": 4,
+          "cross": true
+        },
+        {
+          "stage": 4,
+          "x": 20,
+          "y": 0,
+          "face": -1,
+          "connector": "updrafts-marksman",
+          "targetStage": 3,
+          "cross": true
+        },
+        {
+          "stage": 3,
+          "x": 20,
+          "y": 0,
+          "face": -1,
+          "connector": "black-woods-updrafts",
+          "targetStage": 1,
+          "cross": true
+        },
+        {
+          "stage": 1,
+          "x": 20,
+          "y": 0,
+          "face": -1,
+          "connector": "outskirts-black-woods",
+          "targetStage": 0,
+          "cross": true
+        },
+        {
+          "stage": 0,
+          "x": 20,
+          "y": 500,
+          "face": -1,
+          "connector": "outskirts-warden",
+          "targetStage": 6,
+          "cross": true,
+          "requires": "wall-jump",
+          "requiresWorld": "keep-west-seal"
+        },
+        {
+          "stage": 6,
+          "x": 14980,
+          "y": 0,
+          "face": 1,
+          "connector": "outskirts-warden",
+          "targetStage": 0,
+          "cross": true
+        }
+      ]
+    },
+    {
+      "name": "every-marked-barrier-including-the-first-refectory-wall-becomes-a-grip-surface",
+      "pass": true,
+      "surfaces": [
+        {
+          "stage": 5,
+          "x": 4270,
+          "slickL": true,
+          "slickR": true,
+          "westFaceCling": true,
+          "eastFaceCling": true,
+          "refectoryScreen": true
+        },
+        {
+          "stage": 4,
+          "x": 4145,
+          "slickL": true,
+          "slickR": true,
+          "westFaceCling": true,
+          "eastFaceCling": true,
+          "refectoryScreen": false
+        },
+        {
+          "stage": 4,
+          "x": 10560,
+          "slickL": true,
+          "slickR": true,
+          "westFaceCling": true,
+          "eastFaceCling": true,
+          "refectoryScreen": false
+        },
+        {
+          "stage": 1,
+          "x": 9600,
+          "slickL": true,
+          "slickR": true,
+          "westFaceCling": true,
+          "eastFaceCling": true,
+          "refectoryScreen": false
+        }
+      ],
+      "refectory": {
+        "stage": 5,
+        "x": 4270,
+        "slickL": true,
+        "slickR": true,
+        "westFaceCling": true,
+        "eastFaceCling": true,
+        "refectoryScreen": true
+      },
+      "liveRefectoryContact": {
+        "onWall": true,
+        "wallDir": -1,
+        "isScreen": true,
+        "x": 4319,
+        "y": 119.33333333333333
+      }
+    },
+    {
+      "name": "western-breach-is-a-live-unlocked-return",
+      "pass": true,
+      "crossed": true,
+      "maxY": 486,
+      "wallJumps": 84,
+      "jumpSamples": [
+        {
+          "frame": 46,
+          "x": 92,
+          "y": 105,
+          "vy": -330,
+          "onWall": false
+        },
+        {
+          "frame": 67,
+          "x": 47,
+          "y": 220,
+          "vy": -330,
+          "onWall": true
+        },
+        {
+          "frame": 88,
+          "x": 98,
+          "y": 336,
+          "vy": -330,
+          "onWall": true
+        },
+        {
+          "frame": 109,
+          "x": 47,
+          "y": 451,
+          "vy": -330,
+          "onWall": true
+        },
+        {
+          "frame": 130,
+          "x": 47,
+          "y": 486,
+          "vy": 0,
+          "onWall": true
+        },
+        {
+          "frame": 151,
+          "x": 47,
+          "y": 486,
+          "vy": 0,
+          "onWall": true
+        },
+        {
+          "frame": 172,
+          "x": 47,
+          "y": 486,
+          "vy": 0,
+          "onWall": true
+        },
+        {
+          "frame": 193,
+          "x": 47,
+          "y": 486,
+          "vy": 0,
+          "onWall": true
+        }
+      ],
+      "wallJumpCapability": true,
+      "player": {
+        "x": 59,
+        "y": 486,
+        "dead": false
+      },
+      "seam": {
+        "connector": "outskirts-warden",
+        "targetStage": 6,
+        "cross": true
+      },
+      "arrival": {
+        "stage": 6,
+        "x": 14480,
+        "y": 700,
+        "crossing": false,
+        "streamer": {
+          "schema": "bladefall.zone-streamer",
+          "version": 1,
+          "phase": "settling",
+          "active": {
+            "token": 4,
+            "connectorId": "outskirts-warden",
+            "sourceZoneId": "outskirts",
+            "targetZoneId": "warden",
+            "cacheHit": false,
+            "committed": true,
+            "settleRemaining": 0.16333333333333339
+          },
+          "cache": [
+            {
+              "zoneId": "hollow-marksman",
+              "ready": true
+            },
+            {
+              "zoneId": "outskirts",
+              "ready": true
+            },
+            {
+              "zoneId": "warden",
+              "ready": true
+            }
+          ],
+          "counters": {
+            "completed": 1,
+            "rolledBack": 0,
+            "canceled": 1,
+            "cacheHits": 0
+          },
+          "lastFailure": null,
+          "events": [
+            {
+              "type": "phase",
+              "at": 606.6999999284744,
+              "previous": "idle",
+              "next": "preloading",
+              "token": 1,
+              "connectorId": "marksman-keep",
+              "targetZoneId": "hollow-marksman"
+            },
+            {
+              "type": "phase",
+              "at": 631.1999999284744,
+              "previous": "preloading",
+              "next": "armed",
+              "token": 1,
+              "connectorId": "marksman-keep",
+              "cacheHit": false
+            },
+            {
+              "type": "preload-ready",
+              "at": 631.1999999284744,
+              "token": 1,
+              "targetZoneId": "hollow-marksman"
+            },
+            {
+              "type": "canceled",
+              "at": 1341.3999999761581,
+              "token": 1,
+              "reason": "superseded"
+            },
+            {
+              "type": "phase",
+              "at": 1344.8999999761581,
+              "previous": "armed",
+              "next": "idle",
+              "token": null,
+              "canceled": true
+            },
+            {
+              "type": "phase",
+              "at": 1345,
+              "previous": "idle",
+              "next": "preloading",
+              "token": 3,
+              "connectorId": "outskirts-warden",
+              "targetZoneId": "outskirts"
+            },
+            {
+              "type": "phase",
+              "at": 1345,
+              "previous": "preloading",
+              "next": "armed",
+              "token": 3,
+              "connectorId": "outskirts-warden",
+              "cacheHit": false
+            },
+            {
+              "type": "preload-ready",
+              "at": 1345,
+              "token": 3,
+              "targetZoneId": "outskirts"
+            },
+            {
+              "type": "phase",
+              "at": 1345.0999999046326,
+              "previous": "armed",
+              "next": "committing",
+              "token": 3,
+              "connectorId": "outskirts-warden"
+            },
+            {
+              "type": "phase",
+              "at": 1350.1999999284744,
+              "previous": "committing",
+              "next": "settling",
+              "token": 3,
+              "connectorId": "outskirts-warden"
+            },
+            {
+              "type": "committed",
+              "at": 1350.1999999284744,
+              "token": 3,
+              "sourceZoneId": "warden",
+              "targetZoneId": "outskirts"
+            },
+            {
+              "type": "settled",
+              "at": 1401.2999999523163,
+              "token": 3,
+              "targetZoneId": "outskirts"
+            },
+            {
+              "type": "phase",
+              "at": 1401.2999999523163,
+              "previous": "settling",
+              "next": "idle",
+              "token": null,
+              "completed": true
+            },
+            {
+              "type": "phase",
+              "at": 1432,
+              "previous": "idle",
+              "next": "preloading",
+              "token": 4,
+              "connectorId": "outskirts-warden",
+              "targetZoneId": "warden"
+            },
+            {
+              "type": "phase",
+              "at": 2160,
+              "previous": "preloading",
+              "next": "armed",
+              "token": 4,
+              "connectorId": "outskirts-warden",
+              "cacheHit": false
+            },
+            {
+              "type": "preload-ready",
+              "at": 2160,
+              "token": 4,
+              "targetZoneId": "warden"
+            },
+            {
+              "type": "phase",
+              "at": 2160.0999999046326,
+              "previous": "armed",
+              "next": "committing",
+              "token": 4,
+              "connectorId": "outskirts-warden"
+            },
+            {
+              "type": "phase",
+              "at": 2163.6999999284744,
+              "previous": "committing",
+              "next": "settling",
+              "token": 4,
+              "connectorId": "outskirts-warden"
+            },
+            {
+              "type": "committed",
+              "at": 2163.6999999284744,
+              "token": 4,
+              "sourceZoneId": "outskirts",
+              "targetZoneId": "warden"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "screens/room-1.png",
+      "x": 3900,
+      "y": 260
+    },
+    {
+      "file": "screens/room-2.png",
+      "x": 6500,
+      "y": 300
+    },
+    {
+      "file": "screens/room-3.png",
+      "x": 12800,
+      "y": 520
+    },
+    {
+      "file": "screens/room-4.png",
+      "x": 13900,
+      "y": 820
+    },
+    {
+      "file": "screens/room-5.png",
+      "x": 16400,
+      "y": 930
+    }
+  ]
+}

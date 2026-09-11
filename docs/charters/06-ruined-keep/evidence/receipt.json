@@ -1,0 +1,25 @@
+{
+  "schema": "bladefall.charter-planning-receipt",
+  "version": 1,
+  "stageIndex": 5,
+  "stageId": "ruined-keep",
+  "stageName": "Ruined Keep",
+  "planningComplete": true,
+  "charter": "../charter.md",
+  "rooms": [
+    "gatehouse-hearth",
+    "fallen-refectory",
+    "weight-hall",
+    "masons-quarter",
+    "split-belfry",
+    "clinging-archive"
+  ],
+  "contracts": {
+    "portal": "independent-pair-reconstruction",
+    "keystone": "latched-with-auto-recall",
+    "ability": "masons-grip-wall-jump",
+    "reward": "masked-belfry-keep-key",
+    "continuity": "westward-return-to-the-warden-road",
+    "music": "floating-dream-continuous"
+  }
+}

@@ -1,0 +1,1908 @@
+{
+  "schema": "bladefall.a1-boss-probe",
+  "version": 1,
+  "gameVersion": "7.8.0",
+  "url": "http://127.0.0.1:8372/",
+  "stage": {
+    "index": 8,
+    "name": "Frost Sorcerer"
+  },
+  "bossType": "sorcerer",
+  "browserBridge": "In-app browser-control bridge unavailable; version-verified local Chromium fallback used.",
+  "evidenceClass": "state-positioned arena observation, disclosed invulnerability, forced HP thresholds, and synthetic lethal fall",
+  "setup": {
+    "stageIndex": 8,
+    "playerPosition": {
+      "x": 7600,
+      "y": 0
+    },
+    "support": {
+      "x": 7400,
+      "y": 0,
+      "w": 1600,
+      "type": "plat"
+    },
+    "invulnerabilityInjected": true,
+    "checkpointInjection": null,
+    "bossContract": {
+      "id": null,
+      "type": "sorcerer",
+      "label": "FROST SORCERER",
+      "hp": 900,
+      "maxHp": 900,
+      "damage": 24,
+      "portalGate": "spellBreak",
+      "phase": 1,
+      "finalePhases": null,
+      "reflectBanks": null,
+      "forgeHits": null,
+      "paradoxHits": null,
+      "echoFractures": null,
+      "special": {
+        "brutePortalFight": false,
+        "wardenPortalFight": false,
+        "spellSiphonFight": true,
+        "forgeFight": false,
+        "paradoxFight": false,
+        "echoFight": false
+      }
+    }
+  },
+  "events": [
+    {
+      "tMs": 1501,
+      "kind": "state-injection",
+      "mutation": {
+        "hp": 432,
+        "maxHp": 900,
+        "fraction": 0.48
+      },
+      "purpose": "cross generic enrage and Abyss King phase-two thresholds"
+    },
+    {
+      "tMs": 4835,
+      "kind": "state-injection",
+      "mutation": "player.hp=1, player.y=-90, invulnerability removed",
+      "purpose": "synthetic lethal out-of-bounds event to exercise boss-stage restart"
+    }
+  ],
+  "samples": [
+    {
+      "tMs": 0,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9998.6
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 900,
+        "maxHp": 900,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7860,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 168,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9998.5
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 900,
+        "maxHp": 900,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7843,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 335,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9998.3
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 900,
+        "maxHp": 900,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7825,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 501,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9998.1
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 900,
+        "maxHp": 900,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7807,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 667,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9998
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 900,
+        "maxHp": 900,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7789,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 834,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9997.8
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 900,
+        "maxHp": 900,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7771,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 999,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9997.7
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 900,
+        "maxHp": 900,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7755,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 1167,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9997.5
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 900,
+        "maxHp": 900,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7735,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 1334,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9997.3
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 900,
+        "maxHp": 900,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7717,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 1501,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9997.1
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 432,
+        "maxHp": 900,
+        "hpFraction": 0.48,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7672,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 1667,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9997
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 432,
+        "maxHp": 900,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7619,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 1835,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9996.8
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 432,
+        "maxHp": 900,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7602,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 2001,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9996.6
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 432,
+        "maxHp": 900,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7602,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 2167,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9996.5
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 432,
+        "maxHp": 900,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7602,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 2334,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9996.3
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 432,
+        "maxHp": 900,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7694,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 2500,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9996.1
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 432,
+        "maxHp": 900,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7672,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 4,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 2668,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9996
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 432,
+        "maxHp": 900,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7650,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 3,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 2834,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9995.8
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 432,
+        "maxHp": 900,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7628,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 3,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 3001,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9995.6
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 432,
+        "maxHp": 900,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7599,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 2,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 3167,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9995.5
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 432,
+        "maxHp": 900,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7599,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 2,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 3334,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9995.3
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 432,
+        "maxHp": 900,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7602,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 3501,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9995.1
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 432,
+        "maxHp": 900,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7598,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 4,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 3667,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9995
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 432,
+        "maxHp": 900,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7598,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 3,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 3834,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9994.8
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 432,
+        "maxHp": 900,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7598,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 2,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 4000,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9994.6
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 432,
+        "maxHp": 900,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7598,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 2,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 4167,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9994.5
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 432,
+        "maxHp": 900,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7595,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 4334,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9994.3
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 432,
+        "maxHp": 900,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7595,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 1,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 4501,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9994.1
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 432,
+        "maxHp": 900,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7595,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 4,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 4668,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 9994
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 432,
+        "maxHp": 900,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7502,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 3,
+        "aoes": 2,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 4835,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 7600,
+        "y": -90,
+        "hp": 1,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 432,
+        "maxHp": 900,
+        "hpFraction": 0.48,
+        "phase": 2,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7523,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 2,
+        "aoes": 2,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 5001,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0.8
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 900,
+        "maxHp": 900,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7900,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 5168,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0.7
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 900,
+        "maxHp": 900,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7900,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 5334,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0.5
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 900,
+        "maxHp": 900,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7900,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 5522,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0.3
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 900,
+        "maxHp": 900,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7900,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 5669,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0.2
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 900,
+        "maxHp": 900,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7900,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 5834,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 900,
+        "maxHp": 900,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7900,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 6001,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 900,
+        "maxHp": 900,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7900,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 6168,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 900,
+        "maxHp": 900,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7900,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 6334,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 900,
+        "maxHp": 900,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7900,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 6502,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 900,
+        "maxHp": 900,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7900,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 6668,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 900,
+        "maxHp": 900,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7900,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 6834,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 900,
+        "maxHp": 900,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7900,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    },
+    {
+      "tMs": 7001,
+      "mode": "play",
+      "stageIndex": 8,
+      "player": {
+        "x": 70,
+        "y": 0,
+        "hp": 100,
+        "maxHp": 100,
+        "dead": false,
+        "invuln": 0
+      },
+      "checkpoint": {
+        "set": false,
+        "x": 70,
+        "y": 0
+      },
+      "boss": {
+        "type": "sorcerer",
+        "hp": 900,
+        "maxHp": 900,
+        "hpFraction": 1,
+        "phase": 1,
+        "phase2Started": false,
+        "phase3Started": false,
+        "x": 7900,
+        "y": 0,
+        "bruteState": null,
+        "spellStunT": 0,
+        "forgeStunT": 0,
+        "paradoxRound": null,
+        "paradoxStunT": 0,
+        "echoRound": null,
+        "portalHijack": null,
+        "shootCd": 1.7
+      },
+      "activity": {
+        "projectiles": 0,
+        "aoes": 0,
+        "livingEnemies": 7
+      }
+    }
+  ],
+  "capture": {
+    "viewport": {
+      "width": 960,
+      "height": 600,
+      "deviceScaleFactor": 1
+    },
+    "fps": 6,
+    "frames": 42,
+    "wallDurationMs": 7003,
+    "video": "phase-reset-probe.mp4"
+  },
+  "result": {
+    "phasesObserved": [
+      1,
+      2
+    ],
+    "phase2Observed": true,
+    "phase3Observed": false,
+    "attackActivityObserved": true,
+    "syntheticDeathRestartObserved": true,
+    "checkpointReturnObserved": null,
+    "victoryObserved": false,
+    "status": "phase-and-synthetic-restart-observed"
+  },
+  "limitations": [
+    "This does not prove a natural boss phase transition, intended portal solution, or player victory.",
+    "Arena positioning and invulnerability are disclosed setup mutations used to observe attacks safely.",
+    "HP thresholds are forced directly and therefore validate runtime phase response, not balance or legitimate damage routing.",
+    "The lethal fall validates restart plumbing; it is not evidence of boss lethality.",
+    "Co-op boss ownership and synchronization remain untested."
+  ]
+}

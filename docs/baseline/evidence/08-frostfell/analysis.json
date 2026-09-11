@@ -1,0 +1,46 @@
+{
+  "summary": {
+    "errors": 0,
+    "warnings": 2,
+    "encounters": 5,
+    "maxPressure": 6.33,
+    "provenReachability": 0.9777777777777777
+  },
+  "validation": {
+    "errors": [],
+    "warnings": []
+  },
+  "softlocks": {
+    "safe": true,
+    "graph": {
+      "nodes": 45,
+      "edges": 279,
+      "reachable": 44
+    },
+    "proofs": [
+      {
+        "code": "route.start-to-exit",
+        "message": "Static traversal route reaches the exit.",
+        "node": 44
+      }
+    ],
+    "risks": [
+      {
+        "severity": "warning",
+        "code": "softlock.pickups.unreachable",
+        "path": "pickups.pickup-005",
+        "message": "Pickup is not reachable in the static traversal graph.",
+        "confidence": "low"
+      },
+      {
+        "severity": "warning",
+        "code": "softlock.pickups.unreachable",
+        "path": "pickups.pickup-006",
+        "message": "Pickup is not reachable in the static traversal graph.",
+        "confidence": "low"
+      }
+    ],
+    "unknowns": []
+  },
+  "encounterWarnings": []
+}

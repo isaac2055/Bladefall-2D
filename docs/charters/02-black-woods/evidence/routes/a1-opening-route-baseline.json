@@ -1,0 +1,49 @@
+{
+  "schema": "bladefall.a1-opening-route-baseline",
+  "version": 1,
+  "gameVersion": "7.21.0",
+  "url": "http://127.0.0.1:8877/index.html",
+  "browserBridge": "In-app browser-control bridge unavailable; version-verified local Chromium fallback used.",
+  "pageErrors": [],
+  "capturedStages": 1,
+  "routeClass": "runtime-state-assisted keyboard-only stage-start attempts",
+  "stages": [
+    {
+      "index": 1,
+      "id": "black-woods",
+      "name": "Black Woods",
+      "setupClass": "development-stage-start-selection",
+      "result": {
+        "status": "extended-route-partial-progress",
+        "maxX": 1946,
+        "levelLength": 6400,
+        "progressFraction": 0.2964,
+        "resetCount": 1,
+        "checkpointXs": [
+          110,
+          1460
+        ],
+        "maxPortalsPlaced": 0,
+        "bossReached": false,
+        "transitionedToStage": null,
+        "finalObservedPosition": {
+          "x": 1825.4,
+          "y": 16.3
+        },
+        "humanPlayabilitySignoff": false
+      },
+      "video": "02-black-woods/runtime-assisted-route-attempt.mp4",
+      "receipt": "02-black-woods/receipt.json"
+    }
+  ],
+  "coverage": {
+    "openingStageAttempts": "partial",
+    "genuineFreshRunStart": "missing",
+    "stageTransitions": 0,
+    "humanIntendedRoute": "pending",
+    "returningRevisit": "pending",
+    "optionalCollectible": "pending",
+    "credibleSpeedrun": "pending",
+    "twoPlayer": "pending"
+  }
+}

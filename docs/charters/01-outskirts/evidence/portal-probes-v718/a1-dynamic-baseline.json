@@ -1,0 +1,58 @@
+{
+  "schema": "bladefall.a1-dynamic-baseline",
+  "version": 1,
+  "gameVersion": "7.18.0",
+  "url": "http://127.0.0.1:8877/index.html",
+  "browserBridge": "In-app browser-control bridge unavailable; version-verified local Chromium fallback used.",
+  "pageErrors": [],
+  "capturedProbes": 2,
+  "probes": [
+    {
+      "id": "portal-anchor-transit",
+      "stageIndex": 0,
+      "stageName": "The Outskirts",
+      "mechanic": "player mouth plus fixed anchor",
+      "evidenceClass": "state-positioned setup; keyboard activation and traversal attempt",
+      "result": {
+        "maxPlacedMouths": 1,
+        "maxPlayerX": 5562,
+        "anchorExitReached": false,
+        "status": "activation-observed-transit-unproven"
+      },
+      "video": "portal-anchor-transit/probe.mp4",
+      "receipt": "portal-anchor-transit/receipt.json"
+    },
+    {
+      "id": "portal-anchor-speed-gate",
+      "stageIndex": 0,
+      "stageName": "The Outskirts",
+      "mechanic": "anchored portal minimum-speed gate and high-speed transit",
+      "evidenceClass": "state-positioned setup; keyboard activation; explicitly injected high-speed drop",
+      "result": {
+        "maxPlacedMouths": 1,
+        "maxPlayerX": 6728,
+        "forcedEntrySpeed": 950,
+        "anchorExitReached": true,
+        "status": "state-positioned-high-speed-transit-observed"
+      },
+      "video": "portal-anchor-speed-gate/probe.mp4",
+      "receipt": "portal-anchor-speed-gate/receipt.json"
+    }
+  ],
+  "coverage": {
+    "portalAnchorLowSpeedAttempt": "activation-observed-transit-unproven",
+    "portalAnchorSpeedGate": "state-positioned-high-speed-transit-observed",
+    "fluidCurrent": "missing",
+    "updraft": "missing",
+    "followerCommands": "missing",
+    "gravityFlip": "missing",
+    "deepLineSignalCollapse": "missing",
+    "checkpointRewind": "missing"
+  },
+  "remaining": [
+    "Natural intended-route access and successful resolution for every dynamic room.",
+    "Failure and recovery clips for every portal puzzle and moving hazard.",
+    "Every boss phase, one death/restart, and a winning resolution.",
+    "Returning-save, optional, credible speedrun, and two-player routes."
+  ]
+}

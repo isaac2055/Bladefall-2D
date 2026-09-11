@@ -1,0 +1,352 @@
+{
+  "schema": "bladefall.a1-interactive-baseline",
+  "version": 1,
+  "gameVersion": "7.8.0",
+  "url": "http://127.0.0.1:8372/",
+  "viewport": {
+    "width": 960,
+    "height": 600,
+    "deviceScaleFactor": 1
+  },
+  "captureMethod": "Puppeteer keyboard input plus PNG frame sequence encoded locally with ffmpeg",
+  "browserBridge": "In-app browser-control bridge unavailable; version-verified local Chromium fallback used.",
+  "pageErrors": [],
+  "capturedStages": 16,
+  "routeClass": "input-only entrance locomotion probes",
+  "stages": [
+    {
+      "index": 0,
+      "id": "outskirts",
+      "name": "The Outskirts",
+      "video": "01-outskirts/entrance-input-probe.mp4",
+      "receipt": "01-outskirts/receipt.json",
+      "result": {
+        "status": "entrance-progress-observed",
+        "startX": 70,
+        "maxX": 1784.2,
+        "progressPx": 1714,
+        "progressFraction": 0.2247,
+        "resetCount": 1,
+        "deadFrames": 0,
+        "checkpointXs": [],
+        "transitionedTo": null
+      },
+      "frames": 30
+    },
+    {
+      "index": 1,
+      "id": "black-woods",
+      "name": "Black Woods",
+      "video": "02-black-woods/entrance-input-probe.mp4",
+      "receipt": "02-black-woods/receipt.json",
+      "result": {
+        "status": "entrance-progress-observed",
+        "startX": 70,
+        "maxX": 1264,
+        "progressPx": 1194,
+        "progressFraction": 0.1886,
+        "resetCount": 0,
+        "deadFrames": 0,
+        "checkpointXs": [
+          810
+        ],
+        "transitionedTo": null
+      },
+      "frames": 31
+    },
+    {
+      "index": 2,
+      "id": "brute",
+      "name": "The Brute",
+      "video": "03-brute/entrance-input-probe.mp4",
+      "receipt": "03-brute/receipt.json",
+      "result": {
+        "status": "entrance-progress-observed",
+        "startX": 70,
+        "maxX": 1065.1,
+        "progressPx": 995,
+        "progressFraction": 0.2668,
+        "resetCount": 3,
+        "deadFrames": 0,
+        "checkpointXs": [
+          90
+        ],
+        "transitionedTo": null
+      },
+      "frames": 35
+    },
+    {
+      "index": 3,
+      "id": "updrafts",
+      "name": "The Updrafts",
+      "video": "04-updrafts/entrance-input-probe.mp4",
+      "receipt": "04-updrafts/receipt.json",
+      "result": {
+        "status": "entrance-progress-observed",
+        "startX": 70,
+        "maxX": 1550.7,
+        "progressPx": 1481,
+        "progressFraction": 0.1993,
+        "resetCount": 1,
+        "deadFrames": 0,
+        "checkpointXs": [
+          80
+        ],
+        "transitionedTo": null
+      },
+      "frames": 35
+    },
+    {
+      "index": 4,
+      "id": "hollow-marksman",
+      "name": "Hollow Marksman",
+      "video": "05-hollow-marksman/entrance-input-probe.mp4",
+      "receipt": "05-hollow-marksman/receipt.json",
+      "result": {
+        "status": "entrance-progress-observed",
+        "startX": 70,
+        "maxX": 2383.7,
+        "progressPx": 2314,
+        "progressFraction": 0.2811,
+        "resetCount": 0,
+        "deadFrames": 0,
+        "checkpointXs": [],
+        "transitionedTo": null
+      },
+      "frames": 35
+    },
+    {
+      "index": 5,
+      "id": "ruined-keep",
+      "name": "Ruined Keep",
+      "video": "06-ruined-keep/entrance-input-probe.mp4",
+      "receipt": "06-ruined-keep/receipt.json",
+      "result": {
+        "status": "entrance-progress-observed",
+        "startX": 70,
+        "maxX": 2162.5,
+        "progressPx": 2093,
+        "progressFraction": 0.2351,
+        "resetCount": 0,
+        "deadFrames": 0,
+        "checkpointXs": [
+          2120
+        ],
+        "transitionedTo": null
+      },
+      "frames": 35
+    },
+    {
+      "index": 6,
+      "id": "warden",
+      "name": "The Warden",
+      "video": "07-warden/entrance-input-probe.mp4",
+      "receipt": "07-warden/receipt.json",
+      "result": {
+        "status": "entrance-progress-observed",
+        "startX": 70,
+        "maxX": 2270.1,
+        "progressPx": 2200,
+        "progressFraction": 0.2673,
+        "resetCount": 0,
+        "deadFrames": 0,
+        "checkpointXs": [],
+        "transitionedTo": null
+      },
+      "frames": 36
+    },
+    {
+      "index": 7,
+      "id": "frostfell",
+      "name": "Frostfell",
+      "video": "08-frostfell/entrance-input-probe.mp4",
+      "receipt": "08-frostfell/receipt.json",
+      "result": {
+        "status": "entrance-progress-observed",
+        "startX": 70,
+        "maxX": 2321.4,
+        "progressPx": 2251,
+        "progressFraction": 0.2553,
+        "resetCount": 0,
+        "deadFrames": 0,
+        "checkpointXs": [],
+        "transitionedTo": null
+      },
+      "frames": 36
+    },
+    {
+      "index": 8,
+      "id": "frost-sorcerer",
+      "name": "Frost Sorcerer",
+      "video": "09-frost-sorcerer/entrance-input-probe.mp4",
+      "receipt": "09-frost-sorcerer/receipt.json",
+      "result": {
+        "status": "entrance-progress-observed",
+        "startX": 70,
+        "maxX": 2200,
+        "progressPx": 2130,
+        "progressFraction": 0.2588,
+        "resetCount": 0,
+        "deadFrames": 0,
+        "checkpointXs": [],
+        "transitionedTo": null
+      },
+      "frames": 36
+    },
+    {
+      "index": 9,
+      "id": "emberdeep",
+      "name": "Emberdeep",
+      "video": "10-emberdeep/entrance-input-probe.mp4",
+      "receipt": "10-emberdeep/receipt.json",
+      "result": {
+        "status": "entrance-progress-observed",
+        "startX": 70,
+        "maxX": 1576,
+        "progressPx": 1506,
+        "progressFraction": 0.1673,
+        "resetCount": 1,
+        "deadFrames": 0,
+        "checkpointXs": [],
+        "transitionedTo": null
+      },
+      "frames": 35
+    },
+    {
+      "index": 10,
+      "id": "ember-colossus",
+      "name": "Ember Colossus",
+      "video": "11-ember-colossus/entrance-input-probe.mp4",
+      "receipt": "11-ember-colossus/receipt.json",
+      "result": {
+        "status": "entrance-progress-observed",
+        "startX": 70,
+        "maxX": 1636.4,
+        "progressPx": 1566,
+        "progressFraction": 0.1727,
+        "resetCount": 1,
+        "deadFrames": 0,
+        "checkpointXs": [],
+        "transitionedTo": null
+      },
+      "frames": 35
+    },
+    {
+      "index": 11,
+      "id": "inversion",
+      "name": "The Inversion",
+      "video": "12-inversion/entrance-input-probe.mp4",
+      "receipt": "12-inversion/receipt.json",
+      "result": {
+        "status": "entrance-progress-observed",
+        "startX": 70,
+        "maxX": 1306.9,
+        "progressPx": 1237,
+        "progressFraction": 0.1132,
+        "resetCount": 1,
+        "deadFrames": 0,
+        "checkpointXs": [
+          80
+        ],
+        "transitionedTo": null
+      },
+      "frames": 36
+    },
+    {
+      "index": 12,
+      "id": "void-tyrant",
+      "name": "The Void Tyrant",
+      "video": "13-void-tyrant/entrance-input-probe.mp4",
+      "receipt": "13-void-tyrant/receipt.json",
+      "result": {
+        "status": "entrance-progress-observed",
+        "startX": 70,
+        "maxX": 2501.6,
+        "progressPx": 2432,
+        "progressFraction": 0.2681,
+        "resetCount": 0,
+        "deadFrames": 0,
+        "checkpointXs": [],
+        "transitionedTo": null
+      },
+      "frames": 36
+    },
+    {
+      "index": 13,
+      "id": "abyss-king",
+      "name": "The Abyss King",
+      "video": "14-abyss-king/entrance-input-probe.mp4",
+      "receipt": "14-abyss-king/receipt.json",
+      "result": {
+        "status": "entrance-progress-observed",
+        "startX": 70,
+        "maxX": 894,
+        "progressPx": 824,
+        "progressFraction": 0.0818,
+        "resetCount": 0,
+        "deadFrames": 0,
+        "checkpointXs": [],
+        "transitionedTo": null
+      },
+      "frames": 36
+    },
+    {
+      "index": 14,
+      "id": "gilded-vault",
+      "name": "The Gilded Vault",
+      "video": "15-gilded-vault/entrance-input-probe.mp4",
+      "receipt": "15-gilded-vault/receipt.json",
+      "result": {
+        "status": "entrance-progress-observed",
+        "startX": 70,
+        "maxX": 1351,
+        "progressPx": 1281,
+        "progressFraction": 0.1303,
+        "resetCount": 2,
+        "deadFrames": 0,
+        "checkpointXs": [
+          110
+        ],
+        "transitionedTo": null
+      },
+      "frames": 36
+    },
+    {
+      "index": 15,
+      "id": "deep-line",
+      "name": "The Deep Line",
+      "video": "16-deep-line/entrance-input-probe.mp4",
+      "receipt": "16-deep-line/receipt.json",
+      "result": {
+        "status": "entrance-progress-observed",
+        "startX": 70,
+        "maxX": 2821.5,
+        "progressPx": 2752,
+        "progressFraction": 0.1982,
+        "resetCount": 0,
+        "deadFrames": 0,
+        "checkpointXs": [
+          90,
+          1740
+        ],
+        "transitionedTo": null
+      },
+      "frames": 36
+    }
+  ],
+  "coverage": {
+    "entranceLocomotion": "complete",
+    "intendedRoute": "pending",
+    "revisitRoute": "pending",
+    "optionalRoute": "pending",
+    "credibleSpeedrunRoute": "pending",
+    "twoPlayerRouteAndTransition": "pending"
+  },
+  "limitations": [
+    "This is an entrance locomotion probe, not an intended-route completion or level signoff.",
+    "The stage was selected with the development reload API; all movement after load was ordinary keyboard input.",
+    "Full health was restored once at probe setup. Invulnerability, teleporting, jetpack grants, and live position edits were not used.",
+    "Frame-sequence video is visual evidence only; the JSON samples are the authoritative movement and reset receipt.",
+    "Optional, revisit, speedrun, and co-op route reviews remain separate A1 requirements."
+  ]
+}

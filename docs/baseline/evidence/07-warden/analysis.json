@@ -1,0 +1,46 @@
+{
+  "summary": {
+    "errors": 0,
+    "warnings": 2,
+    "encounters": 4,
+    "maxPressure": 10.2,
+    "provenReachability": 0.95
+  },
+  "validation": {
+    "errors": [],
+    "warnings": [
+      {
+        "severity": "warning",
+        "code": "circuit.controller.missing",
+        "path": "circuits.sq2080",
+        "message": "Circuit \"sq2080\" has targets but no controller."
+      }
+    ]
+  },
+  "softlocks": {
+    "safe": true,
+    "graph": {
+      "nodes": 60,
+      "edges": 463,
+      "reachable": 57
+    },
+    "proofs": [
+      {
+        "code": "route.start-to-exit",
+        "message": "Static traversal route reaches the exit.",
+        "node": 55
+      }
+    ],
+    "risks": [],
+    "unknowns": []
+  },
+  "encounterWarnings": [
+    {
+      "severity": "warning",
+      "code": "encounter.recovery-gap",
+      "path": "encounters.encounter-04",
+      "message": "Encounter \"encounter-04\" triggered recovery gap.",
+      "encounter": "encounter-04"
+    }
+  ]
+}

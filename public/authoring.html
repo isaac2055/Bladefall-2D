@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="icon.svg">
+  <title>Bladefall Level Workbench</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0b0911;--panel:#151220;--line:#332b45;--ink:#eee9ff;--muted:#9f96b5;--cyan:#68d8ff;--amber:#ffc45e;--red:#ff6f79;--green:#73e3a6}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 70% -20%,#291b42 0,#0b0911 43%);color:var(--ink);font:14px/1.45 Inter,ui-sans-serif,system-ui,sans-serif}
+    header{display:flex;align-items:center;gap:16px;padding:18px 22px;border-bottom:1px solid var(--line);background:#0b0911dd;position:sticky;top:0;z-index:2}
+    h1{font-size:18px;letter-spacing:.08em;text-transform:uppercase;margin:0}header p{color:var(--muted);margin:0;flex:1}
+    button,select,input{font:inherit;color:var(--ink);background:#211a30;border:1px solid #493b64;border-radius:7px;padding:8px 10px}
+    button{cursor:pointer}button:hover{border-color:var(--cyan)}button.primary{background:#174258;border-color:#2781a4}
+    main{display:grid;grid-template-columns:minmax(330px,42%) 1fr;gap:14px;padding:14px;min-height:calc(100vh - 74px)}
+    .panel{background:linear-gradient(160deg,#181421,#100e17);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+    .panel h2{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#c9bdea;margin:0;padding:12px 14px;border-bottom:1px solid var(--line)}
+    .tools{display:flex;gap:7px;flex-wrap:wrap;padding:10px;border-bottom:1px solid var(--line)}
+    textarea{display:block;width:100%;height:calc(100vh - 205px);min-height:560px;resize:vertical;padding:14px;border:0;outline:0;background:#0e0c14;color:#dcd5ed;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;tab-size:2}
+    .right{display:grid;grid-template-rows:minmax(260px,42vh) auto;gap:14px;min-width:0}
+    canvas{width:100%;height:100%;display:block;background:linear-gradient(#171226,#090810)}
+    .report{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding:12px}
+    .metric{padding:10px;border:1px solid var(--line);border-radius:8px;background:#0d0b13}.metric b{font-size:20px;display:block}.metric span{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+    .editor-row{display:flex;gap:7px;flex-wrap:wrap;padding:0 12px 12px}.editor-row input{width:92px}
+    .columns{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 12px 14px}
+    .list{max-height:240px;overflow:auto;border:1px solid var(--line);border-radius:8px}.item{padding:8px 10px;border-bottom:1px solid #292238}.item:last-child{border:0}.item b{color:var(--cyan)}.item small{display:block;color:var(--muted)}
+    .error{color:var(--red)}.warning{color:var(--amber)}.safe{color:var(--green)}.empty{padding:12px;color:var(--muted)}
+    #dropMask{display:none;position:fixed;inset:0;background:#0b0911ee;z-index:5;place-items:center;font-size:22px;color:var(--cyan);border:4px dashed var(--cyan);margin:18px}
+    @media(max-width:900px){main{grid-template-columns:1fr}.right{grid-template-rows:360px auto}textarea{height:560px}.columns{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bladefall Level Workbench</h1>
+    <p>Schema v1 · drafts are analyzed locally and never alter the campaign.</p>
+    <button id="download">Download JSON</button>
+  </header>
+  <main>
+    <section class="panel">
+      <h2>Manifest editor</h2>
+      <div class="tools">
+        <button class="primary" id="analyze">Analyze</button>
+        <button id="format">Format</button>
+        <button id="sample">Sample</button>
+        <button id="openGame">Open-game capture</button>
+        <button id="undo">Undo</button>
+        <button id="redo">Redo</button>
+        <label><input id="file" type="file" accept=".json,application/json" hidden><button type="button" id="choose">Import</button></label>
+      </div>
+      <textarea id="source" spellcheck="false" aria-label="Level manifest JSON"></textarea>
+    </section>
+    <section class="right">
+      <section class="panel" style="display:grid;grid-template-rows:auto 1fr">
+        <h2>Traversal and encounter preview</h2>
+        <canvas id="preview" width="1200" height="520"></canvas>
+      </section>
+      <section class="panel">
+        <h2>Analysis</h2>
+        <div class="report" id="metrics"></div>
+        <div class="editor-row">
+          <select id="addType" aria-label="Entity type">
+            <option value="platform">Platform</option><option value="spikes">Spikes</option>
+            <option value="checkpoint">Checkpoint</option><option value="enemy">Enemy</option>
+            <option value="pickup">Pickup</option><option value="traveler">Traveler</option>
+          </select>
+          <input id="addX" type="number" value="600" aria-label="X coordinate">
+          <input id="addY" type="number" value="0" aria-label="Y coordinate">
+          <button id="add">Add entity</button>
+        </div>
+        <div class="columns">
+          <div><h2 style="padding-left:0">Findings</h2><div class="list" id="findings"></div></div>
+          <div><h2 style="padding-left:0">Encounters</h2><div class="list" id="encounters"></div></div>
+        </div>
+      </section>
+    </section>
+  </main>
+  <div id="dropMask">Drop a Bladefall level manifest</div>
+  <script src="bladefall-authoring.js"></script>
+  <script>
+    'use strict';
+    const A=window.BladefallAuthoring,$=id=>document.getElementById(id);
+    const source=$('source'),ctx=$('preview').getContext('2d');
+    let editor=null,last=null,serial=0;
+    const sample=A.normalizeManifest({
+      id:'workbench-sample',meta:{name:'Workbench Sample',theme:'ruins',length:2400},
+      start:{x:70,y:0},exit:{type:'portal',x:2320,y:0},
+      objects:[
+        {id:'floor-a',type:'plat',x:300,y:0,w:600,h:20},
+        {id:'floor-b',type:'plat',x:920,y:80,w:480,h:20},
+        {id:'floor-c',type:'plat',x:1540,y:0,w:700,h:20},
+        {id:'floor-d',type:'plat',x:2180,y:0,w:440,h:20},
+        {id:'spikes-a',type:'spikes',x:1250,y:0,w:100},
+        {id:'check-a',type:'check',x:1500,y:0}
+      ],
+      enemies:[
+        {id:'hound-a',type:'rifthound',x:780,y:80,aiRole:'charger'},
+        {id:'caster-a',type:'sporecaster',x:1050,y:80,aiRole:'artillery',ranged:true},
+        {id:'mote-a',type:'stormmote',x:1650,y:160,aiRole:'artillery',kind:'fly',ranged:true}
+      ],
+      pickups:[{id:'reward-a',type:'weapon',x:1840,y:10}],
+      travelers:[{id:'traveler-a',type:'escort',x:350,y:0}]
+    });
+
+    function sync(value,resetHistory=true){
+      const imported=A.importManifest(value);
+      if(!imported.ok){showImportErrors(imported.report);return false}
+      if(resetHistory)editor=A.createEditor(imported.manifest);
+      source.value=editor.export();
+      renderReport(editor.analyze());
+      return true;
+    }
+    function showImportErrors(report){
+      const findings=$('findings');findings.innerHTML='';
+      for(const issue of report.errors)findings.append(issueNode(issue));
+      $('metrics').innerHTML='<div class="metric"><b class="error">'+report.errors.length+'</b><span>Import errors</span></div>';
+    }
+    function issueNode(issue){
+      const node=document.createElement('div');node.className='item '+issue.severity;
+      const title=document.createElement('b');title.textContent=issue.code;
+      const text=document.createElement('small');text.textContent=(issue.path?issue.path+' · ':'')+issue.message;
+      node.append(title,text);return node;
+    }
+    function renderReport(report){
+      last=report;
+      const all=[...report.validation.errors,...report.validation.warnings,...report.softlocks.risks,...report.softlocks.unknowns,...report.encounterWarnings];
+      $('metrics').innerHTML=[
+        ['Errors',report.summary.errors,report.summary.errors?'error':'safe'],
+        ['Warnings',report.summary.warnings,report.summary.warnings?'warning':'safe'],
+        ['Encounters',report.summary.encounters,''],
+        ['Route proven',Math.round(report.summary.provenReachability*100)+'%',report.softlocks.safe?'safe':'error']
+      ].map(([label,value,cls])=>'<div class="metric"><b class="'+cls+'">'+value+'</b><span>'+label+'</span></div>').join('');
+      const findings=$('findings');findings.innerHTML='';
+      if(!all.length)findings.innerHTML='<div class="empty safe">No findings.</div>';
+      for(const issue of all)findings.append(issueNode(issue));
+      const encounters=$('encounters');encounters.innerHTML='';
+      if(!report.encounters.length)encounters.innerHTML='<div class="empty">No combat groups.</div>';
+      for(const encounter of report.encounters){
+        const node=document.createElement('div');node.className='item';
+        const title=document.createElement('b');title.textContent=encounter.id+' · pressure '+encounter.pressure;
+        const detail=document.createElement('small');
+        detail.textContent=encounter.enemyIds.length+' enemies · '+Object.entries(encounter.roles).map(([k,v])=>v+' '+k).join(', ')+(encounter.issues.length?' · '+encounter.issues.join(', '):'');
+        node.append(title,detail);encounters.append(node);
+      }
+      draw(report);
+    }
+    function draw(report){
+      const c=ctx.canvas,w=c.width,h=c.height,m=report.manifest;
+      ctx.clearRect(0,0,w,h);ctx.fillStyle='#0d0a15';ctx.fillRect(0,0,w,h);
+      const sx=w/Math.max(1,m.meta.length),sy=.68,ground=h-70;
+      ctx.strokeStyle='#292039';ctx.lineWidth=1;
+      for(let x=0;x<m.meta.length;x+=500){const px=x*sx;ctx.beginPath();ctx.moveTo(px,0);ctx.lineTo(px,h);ctx.stroke()}
+      for(const encounter of report.encounters){
+        const x=encounter.bounds.left*sx,r=encounter.bounds.right*sx;
+        ctx.fillStyle=encounter.issues.length?'#ff7b5515':'#5fe0a410';ctx.fillRect(x,0,r-x,h);
+        ctx.fillStyle='#9d8fba';ctx.font='12px system-ui';ctx.fillText(encounter.id,x+8,18);
+      }
+      for(const o of m.objects){
+        const x=o.x*sx,y=ground-o.y*sy;
+        if(o.type==='plat'){ctx.fillStyle=o.crumble?'#9a714a':'#56627b';ctx.fillRect((o.x-(o.w||20)/2)*sx,y,Math.max(2,(o.w||20)*sx),Math.max(4,(o.h||14)*sy))}
+        else if(o.type==='spikes'){ctx.fillStyle='#ff6f79';ctx.fillRect((o.x-(o.w||60)/2)*sx,y-7,Math.max(3,(o.w||60)*sx),7)}
+        else if(o.type==='check'){ctx.fillStyle='#73e3a6';ctx.fillRect(x-2,y-50,4,50)}
+        else if(o.type==='door'){ctx.fillStyle='#a879e8';ctx.fillRect(x-3,y-(o.h||100)*sy,6,(o.h||100)*sy)}
+      }
+      for(const e of m.enemies){ctx.fillStyle=e.boss?'#ff6f79':e.ranged?'#ffc45e':'#c589ff';ctx.beginPath();ctx.arc(e.x*sx,ground-e.y*sy-12,6,0,Math.PI*2);ctx.fill()}
+      for(const p of m.pickups){ctx.fillStyle='#ffe86a';ctx.fillRect(p.x*sx-4,ground-p.y*sy-8,8,8)}
+      for(const n of m.travelers){ctx.fillStyle='#68d8ff';ctx.fillRect(n.x*sx-4,ground-n.y*sy-15,8,15)}
+      ctx.fillStyle='#fff';ctx.fillRect(m.start.x*sx-3,ground-m.start.y*sy-28,6,28);
+      ctx.strokeStyle='#68d8ff';ctx.lineWidth=3;ctx.beginPath();ctx.arc(m.exit.x*sx,ground-m.exit.y*sy-24,12,0,Math.PI*2);ctx.stroke();
+    }
+    function analyzeText(){sync(source.value)}
+    $('analyze').onclick=analyzeText;
+    $('format').onclick=()=>{const imported=A.importManifest(source.value);if(imported.ok)source.value=A.exportManifest(imported.manifest)};
+    $('sample').onclick=()=>sync(sample);
+    $('openGame').onclick=()=>{
+      try{
+        const text=window.opener&&window.opener.__BF&&window.opener.__BF.exportLevel();
+        if(!text)throw new Error('Open this workbench from a running game window.');
+        sync(text);
+      }catch(error){showImportErrors({errors:[{severity:'error',code:'capture.unavailable',path:'window.opener',message:error.message}]})}
+    };
+    $('undo').onclick=()=>{if(editor){source.value=JSON.stringify(editor.undo(),null,2);renderReport(editor.analyze())}};
+    $('redo').onclick=()=>{if(editor){source.value=JSON.stringify(editor.redo(),null,2);renderReport(editor.analyze())}};
+    $('add').onclick=()=>{
+      if(!editor||!sync(source.value))return;
+      const kind=$('addType').value,x=+$('addX').value||0,y=+$('addY').value||0,id=kind+'-'+(++serial);
+      if(kind==='enemy')editor.insert('enemies',{id,type:'grunt',x,y,aiRole:'pursuer'});
+      else if(kind==='pickup')editor.insert('pickups',{id,type:'weapon',x,y});
+      else if(kind==='traveler')editor.insert('travelers',{id,type:'escort',x,y});
+      else editor.insert('objects',kind==='platform'?{id,type:'plat',x,y,w:220,h:20}:kind==='checkpoint'?{id,type:'check',x,y}:{id,type:'spikes',x,y,w:90});
+      source.value=editor.export();renderReport(editor.analyze());
+    };
+    $('choose').onclick=()=>$('file').click();
+    $('file').onchange=async event=>{const file=event.target.files[0];if(file)sync(await file.text())};
+    $('download').onclick=()=>{
+      if(!sync(source.value))return;
+      const blob=new Blob([editor.export()],{type:'application/json'}),a=document.createElement('a');
+      a.href=URL.createObjectURL(blob);a.download=editor.snapshot().id+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),0);
+    };
+    let drag=0;addEventListener('dragenter',event=>{event.preventDefault();drag++;$('dropMask').style.display='grid'});
+    addEventListener('dragleave',()=>{if(--drag<=0){drag=0;$('dropMask').style.display='none'}});
+    addEventListener('dragover',event=>event.preventDefault());
+    addEventListener('drop',async event=>{event.preventDefault();drag=0;$('dropMask').style.display='none';const file=event.dataTransfer.files[0];if(file)sync(await file.text())});
+    sync(sample);
+  </script>
+</body>
+</html>

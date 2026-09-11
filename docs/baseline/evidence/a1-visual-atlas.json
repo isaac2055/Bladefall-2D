@@ -1,0 +1,2869 @@
+{
+  "schema": "bladefall.a1-visual-atlas",
+  "version": 1,
+  "gameVersion": "7.8.0",
+  "url": "http://127.0.0.1:8372/",
+  "viewport": {
+    "width": 1440,
+    "height": 900,
+    "deviceScaleFactor": 1
+  },
+  "capturedStages": 16,
+  "capturedStills": 137,
+  "pageErrors": [],
+  "stages": [
+    {
+      "index": 0,
+      "id": "outskirts",
+      "name": "The Outskirts",
+      "runtime": {
+        "levelLength": 7700,
+        "objects": 68,
+        "enemies": 7,
+        "pickups": 5,
+        "travelers": 1,
+        "fluids": []
+      },
+      "analysis": {
+        "errors": 0,
+        "warnings": 5,
+        "encounters": 3,
+        "maxPressure": 6.28,
+        "provenReachability": 0.875
+      },
+      "screenshots": 10
+    },
+    {
+      "index": 1,
+      "id": "black-woods",
+      "name": "Black Woods",
+      "runtime": {
+        "levelLength": 6400,
+        "objects": 64,
+        "enemies": 8,
+        "pickups": 4,
+        "travelers": 1,
+        "fluids": []
+      },
+      "analysis": {
+        "errors": 0,
+        "warnings": 4,
+        "encounters": 2,
+        "maxPressure": 8.86,
+        "provenReachability": 0.9
+      },
+      "screenshots": 10
+    },
+    {
+      "index": 2,
+      "id": "brute",
+      "name": "The Brute",
+      "runtime": {
+        "levelLength": 3800,
+        "objects": 41,
+        "enemies": 5,
+        "pickups": 2,
+        "travelers": 0,
+        "fluids": []
+      },
+      "analysis": {
+        "errors": 0,
+        "warnings": 1,
+        "encounters": 2,
+        "maxPressure": 8,
+        "provenReachability": 1
+      },
+      "screenshots": 8
+    },
+    {
+      "index": 3,
+      "id": "updrafts",
+      "name": "The Updrafts",
+      "runtime": {
+        "levelLength": 7500,
+        "objects": 53,
+        "enemies": 8,
+        "pickups": 4,
+        "travelers": 1,
+        "fluids": [
+          {
+            "id": "campaign-current-3",
+            "kind": "water",
+            "x": 4155,
+            "y": 0,
+            "w": 320,
+            "h": 22
+          },
+          {
+            "id": "updraft-cistern",
+            "kind": "water",
+            "x": 1300,
+            "y": 0,
+            "w": 320,
+            "h": 22
+          }
+        ]
+      },
+      "analysis": {
+        "errors": 0,
+        "warnings": 16,
+        "encounters": 4,
+        "maxPressure": 6.95,
+        "provenReachability": 0.25
+      },
+      "screenshots": 10
+    },
+    {
+      "index": 4,
+      "id": "hollow-marksman",
+      "name": "Hollow Marksman",
+      "runtime": {
+        "levelLength": 8300,
+        "objects": 102,
+        "enemies": 8,
+        "pickups": 1,
+        "travelers": 0,
+        "fluids": []
+      },
+      "analysis": {
+        "errors": 0,
+        "warnings": 2,
+        "encounters": 5,
+        "maxPressure": 10.2,
+        "provenReachability": 0.9491525423728814
+      },
+      "screenshots": 8
+    },
+    {
+      "index": 5,
+      "id": "ruined-keep",
+      "name": "Ruined Keep",
+      "runtime": {
+        "levelLength": 8970,
+        "objects": 93,
+        "enemies": 11,
+        "pickups": 7,
+        "travelers": 1,
+        "fluids": []
+      },
+      "analysis": {
+        "errors": 0,
+        "warnings": 2,
+        "encounters": 3,
+        "maxPressure": 7.1,
+        "provenReachability": 0.9811320754716981
+      },
+      "screenshots": 10
+    },
+    {
+      "index": 6,
+      "id": "warden",
+      "name": "The Warden",
+      "runtime": {
+        "levelLength": 8300,
+        "objects": 109,
+        "enemies": 8,
+        "pickups": 2,
+        "travelers": 0,
+        "fluids": []
+      },
+      "analysis": {
+        "errors": 0,
+        "warnings": 2,
+        "encounters": 4,
+        "maxPressure": 10.2,
+        "provenReachability": 0.95
+      },
+      "screenshots": 8
+    },
+    {
+      "index": 7,
+      "id": "frostfell",
+      "name": "Frostfell",
+      "runtime": {
+        "levelLength": 8890,
+        "objects": 81,
+        "enemies": 11,
+        "pickups": 6,
+        "travelers": 1,
+        "fluids": []
+      },
+      "analysis": {
+        "errors": 0,
+        "warnings": 2,
+        "encounters": 5,
+        "maxPressure": 6.33,
+        "provenReachability": 0.9777777777777777
+      },
+      "screenshots": 6
+    },
+    {
+      "index": 8,
+      "id": "frost-sorcerer",
+      "name": "Frost Sorcerer",
+      "runtime": {
+        "levelLength": 8300,
+        "objects": 75,
+        "enemies": 7,
+        "pickups": 2,
+        "travelers": 0,
+        "fluids": [
+          {
+            "id": "campaign-current-8",
+            "kind": "water",
+            "x": 1649,
+            "y": 0,
+            "w": 320,
+            "h": 22
+          }
+        ]
+      },
+      "analysis": {
+        "errors": 0,
+        "warnings": 2,
+        "encounters": 3,
+        "maxPressure": 8,
+        "provenReachability": 0.9782608695652174
+      },
+      "screenshots": 8
+    },
+    {
+      "index": 9,
+      "id": "emberdeep",
+      "name": "Emberdeep",
+      "runtime": {
+        "levelLength": 9070,
+        "objects": 89,
+        "enemies": 12,
+        "pickups": 6,
+        "travelers": 1,
+        "fluids": [
+          {
+            "id": "relay-furnace-9",
+            "kind": "lava",
+            "x": 3605,
+            "y": -60,
+            "w": 490,
+            "h": 105
+          }
+        ]
+      },
+      "analysis": {
+        "errors": 0,
+        "warnings": 2,
+        "encounters": 5,
+        "maxPressure": 7.98,
+        "provenReachability": 0.9795918367346939
+      },
+      "screenshots": 6
+    },
+    {
+      "index": 10,
+      "id": "ember-colossus",
+      "name": "Ember Colossus",
+      "runtime": {
+        "levelLength": 9140,
+        "objects": 88,
+        "enemies": 8,
+        "pickups": 4,
+        "travelers": 0,
+        "fluids": [
+          {
+            "id": "colossus-coolant",
+            "kind": "water",
+            "x": 8385,
+            "y": 125,
+            "w": 150,
+            "h": 190
+          }
+        ]
+      },
+      "analysis": {
+        "errors": 0,
+        "warnings": 1,
+        "encounters": 5,
+        "maxPressure": 8,
+        "provenReachability": 0.9791666666666666
+      },
+      "screenshots": 5
+    },
+    {
+      "index": 11,
+      "id": "inversion",
+      "name": "The Inversion",
+      "runtime": {
+        "levelLength": 11000,
+        "objects": 50,
+        "enemies": 23,
+        "pickups": 10,
+        "travelers": 0,
+        "fluids": []
+      },
+      "analysis": {
+        "errors": 0,
+        "warnings": 22,
+        "encounters": 3,
+        "maxPressure": 27.85,
+        "provenReachability": 0.09090909090909091
+      },
+      "screenshots": 10
+    },
+    {
+      "index": 12,
+      "id": "void-tyrant",
+      "name": "The Void Tyrant",
+      "runtime": {
+        "levelLength": 9140,
+        "objects": 96,
+        "enemies": 9,
+        "pickups": 2,
+        "travelers": 0,
+        "fluids": []
+      },
+      "analysis": {
+        "errors": 0,
+        "warnings": 1,
+        "encounters": 5,
+        "maxPressure": 8,
+        "provenReachability": 0.9411764705882353
+      },
+      "screenshots": 5
+    },
+    {
+      "index": 13,
+      "id": "abyss-king",
+      "name": "The Abyss King",
+      "runtime": {
+        "levelLength": 10140,
+        "objects": 108,
+        "enemies": 7,
+        "pickups": 6,
+        "travelers": 0,
+        "fluids": []
+      },
+      "analysis": {
+        "errors": 0,
+        "warnings": 1,
+        "encounters": 6,
+        "maxPressure": 8,
+        "provenReachability": 0.9552238805970149
+      },
+      "screenshots": 5
+    },
+    {
+      "index": 14,
+      "id": "gilded-vault",
+      "name": "The Gilded Vault",
+      "runtime": {
+        "levelLength": 9900,
+        "objects": 84,
+        "enemies": 0,
+        "pickups": 3,
+        "travelers": 0,
+        "fluids": []
+      },
+      "analysis": {
+        "errors": 0,
+        "warnings": 7,
+        "encounters": 0,
+        "maxPressure": 0,
+        "provenReachability": 0.6938775510204082
+      },
+      "screenshots": 14
+    },
+    {
+      "index": 15,
+      "id": "deep-line",
+      "name": "The Deep Line",
+      "runtime": {
+        "levelLength": 13950,
+        "objects": 50,
+        "enemies": 12,
+        "pickups": 2,
+        "travelers": 0,
+        "fluids": []
+      },
+      "analysis": {
+        "errors": 0,
+        "warnings": 2,
+        "encounters": 10,
+        "maxPressure": 4.4,
+        "provenReachability": 0.9655172413793104
+      },
+      "screenshots": 14
+    }
+  ],
+  "screenshots": [
+    {
+      "stageIndex": 0,
+      "stageId": "outskirts",
+      "stageName": "The Outskirts",
+      "stillId": "entrance",
+      "label": "entrance",
+      "view": "route",
+      "normalizedX": 0,
+      "location": {
+        "x": 80,
+        "y": 0,
+        "cameraX": 0,
+        "cameraY": 0,
+        "levelLength": 7700,
+        "supportType": "plat"
+      },
+      "relativePath": "01-outskirts/entrance-entrance-route.png"
+    },
+    {
+      "stageIndex": 0,
+      "stageId": "outskirts",
+      "stageName": "The Outskirts",
+      "stillId": "act-01",
+      "label": "movement school",
+      "view": "route",
+      "normalizedX": 0.125,
+      "location": {
+        "x": 1023,
+        "y": 0,
+        "cameraX": 475,
+        "cameraY": 0,
+        "levelLength": 7700,
+        "supportType": "plat"
+      },
+      "relativePath": "01-outskirts/act-01-movement-school-route.png"
+    },
+    {
+      "stageIndex": 0,
+      "stageId": "outskirts",
+      "stageName": "The Outskirts",
+      "stillId": "act-01",
+      "label": "movement school",
+      "view": "upper-layer",
+      "normalizedX": 0.125,
+      "location": {
+        "x": 1023,
+        "y": 190,
+        "cameraX": 475,
+        "cameraY": 0,
+        "levelLength": 7700,
+        "supportType": "plat"
+      },
+      "relativePath": "01-outskirts/act-01-movement-school-upper-layer.png"
+    },
+    {
+      "stageIndex": 0,
+      "stageId": "outskirts",
+      "stageName": "The Outskirts",
+      "stillId": "act-02",
+      "label": "vertical options",
+      "view": "route",
+      "normalizedX": 0.375,
+      "location": {
+        "x": 2908,
+        "y": 0,
+        "cameraX": 2360,
+        "cameraY": 0,
+        "levelLength": 7700,
+        "supportType": "plat"
+      },
+      "relativePath": "01-outskirts/act-02-vertical-options-route.png"
+    },
+    {
+      "stageIndex": 0,
+      "stageId": "outskirts",
+      "stageName": "The Outskirts",
+      "stillId": "act-02",
+      "label": "vertical options",
+      "view": "upper-layer",
+      "normalizedX": 0.375,
+      "location": {
+        "x": 2908,
+        "y": 0,
+        "cameraX": 2360,
+        "cameraY": 0,
+        "levelLength": 7700,
+        "supportType": "plat"
+      },
+      "relativePath": "01-outskirts/act-02-vertical-options-upper-layer.png"
+    },
+    {
+      "stageIndex": 0,
+      "stageId": "outskirts",
+      "stageName": "The Outskirts",
+      "stillId": "act-03",
+      "label": "timed traversal",
+      "view": "route",
+      "normalizedX": 0.625,
+      "location": {
+        "x": 4793,
+        "y": 0,
+        "cameraX": 4245,
+        "cameraY": 0,
+        "levelLength": 7700,
+        "supportType": "plat"
+      },
+      "relativePath": "01-outskirts/act-03-timed-traversal-route.png"
+    },
+    {
+      "stageIndex": 0,
+      "stageId": "outskirts",
+      "stageName": "The Outskirts",
+      "stillId": "act-03",
+      "label": "timed traversal",
+      "view": "upper-layer",
+      "normalizedX": 0.625,
+      "location": {
+        "x": 4793,
+        "y": 0,
+        "cameraX": 4245,
+        "cameraY": 0,
+        "levelLength": 7700,
+        "supportType": "plat"
+      },
+      "relativePath": "01-outskirts/act-03-timed-traversal-upper-layer.png"
+    },
+    {
+      "stageIndex": 0,
+      "stageId": "outskirts",
+      "stageName": "The Outskirts",
+      "stillId": "act-04",
+      "label": "portal coda",
+      "view": "route",
+      "normalizedX": 0.875,
+      "location": {
+        "x": 6678,
+        "y": 0,
+        "cameraX": 6130,
+        "cameraY": 0,
+        "levelLength": 7700,
+        "supportType": "plat"
+      },
+      "relativePath": "01-outskirts/act-04-portal-coda-route.png"
+    },
+    {
+      "stageIndex": 0,
+      "stageId": "outskirts",
+      "stageName": "The Outskirts",
+      "stillId": "act-04",
+      "label": "portal coda",
+      "view": "upper-layer",
+      "normalizedX": 0.875,
+      "location": {
+        "x": 6678,
+        "y": 0,
+        "cameraX": 6130,
+        "cameraY": 0,
+        "levelLength": 7700,
+        "supportType": "plat"
+      },
+      "relativePath": "01-outskirts/act-04-portal-coda-upper-layer.png"
+    },
+    {
+      "stageIndex": 0,
+      "stageId": "outskirts",
+      "stageName": "The Outskirts",
+      "stillId": "exit",
+      "label": "exit",
+      "view": "route",
+      "normalizedX": 1,
+      "location": {
+        "x": 7620,
+        "y": 0,
+        "cameraX": 6260,
+        "cameraY": 0,
+        "levelLength": 7700,
+        "supportType": "plat"
+      },
+      "relativePath": "01-outskirts/exit-exit-route.png"
+    },
+    {
+      "stageIndex": 1,
+      "stageId": "black-woods",
+      "stageName": "Black Woods",
+      "stillId": "entrance",
+      "label": "entrance",
+      "view": "route",
+      "normalizedX": 0,
+      "location": {
+        "x": 80,
+        "y": 0,
+        "cameraX": 0,
+        "cameraY": 0,
+        "levelLength": 6400,
+        "supportType": "plat"
+      },
+      "relativePath": "02-black-woods/entrance-entrance-route.png"
+    },
+    {
+      "stageIndex": 1,
+      "stageId": "black-woods",
+      "stageName": "Black Woods",
+      "stillId": "act-01",
+      "label": "false footing",
+      "view": "route",
+      "normalizedX": 0.125,
+      "location": {
+        "x": 860,
+        "y": 0,
+        "cameraX": 313,
+        "cameraY": 0,
+        "levelLength": 6400,
+        "supportType": "plat"
+      },
+      "relativePath": "02-black-woods/act-01-false-footing-route.png"
+    },
+    {
+      "stageIndex": 1,
+      "stageId": "black-woods",
+      "stageName": "Black Woods",
+      "stillId": "act-01",
+      "label": "false footing",
+      "view": "upper-layer",
+      "normalizedX": 0.125,
+      "location": {
+        "x": 860,
+        "y": 0,
+        "cameraX": 313,
+        "cameraY": 0,
+        "levelLength": 6400,
+        "supportType": "plat"
+      },
+      "relativePath": "02-black-woods/act-01-false-footing-upper-layer.png"
+    },
+    {
+      "stageIndex": 1,
+      "stageId": "black-woods",
+      "stageName": "Black Woods",
+      "stillId": "act-02",
+      "label": "biting chimney",
+      "view": "route",
+      "normalizedX": 0.375,
+      "location": {
+        "x": 2420,
+        "y": 0,
+        "cameraX": 1873,
+        "cameraY": 0,
+        "levelLength": 6400,
+        "supportType": "plat"
+      },
+      "relativePath": "02-black-woods/act-02-biting-chimney-route.png"
+    },
+    {
+      "stageIndex": 1,
+      "stageId": "black-woods",
+      "stageName": "Black Woods",
+      "stillId": "act-02",
+      "label": "biting chimney",
+      "view": "upper-layer",
+      "normalizedX": 0.375,
+      "location": {
+        "x": 2420,
+        "y": 310,
+        "cameraX": 1873,
+        "cameraY": 0,
+        "levelLength": 6400,
+        "supportType": "plat"
+      },
+      "relativePath": "02-black-woods/act-02-biting-chimney-upper-layer.png"
+    },
+    {
+      "stageIndex": 1,
+      "stageId": "black-woods",
+      "stageName": "Black Woods",
+      "stillId": "act-03",
+      "label": "lamp truth",
+      "view": "route",
+      "normalizedX": 0.625,
+      "location": {
+        "x": 3980,
+        "y": 0,
+        "cameraX": 3433,
+        "cameraY": 0,
+        "levelLength": 6400,
+        "supportType": "plat"
+      },
+      "relativePath": "02-black-woods/act-03-lamp-truth-route.png"
+    },
+    {
+      "stageIndex": 1,
+      "stageId": "black-woods",
+      "stageName": "Black Woods",
+      "stillId": "act-03",
+      "label": "lamp truth",
+      "view": "upper-layer",
+      "normalizedX": 0.625,
+      "location": {
+        "x": 3980,
+        "y": 60,
+        "cameraX": 3433,
+        "cameraY": 0,
+        "levelLength": 6400,
+        "supportType": "plat"
+      },
+      "relativePath": "02-black-woods/act-03-lamp-truth-upper-layer.png"
+    },
+    {
+      "stageIndex": 1,
+      "stageId": "black-woods",
+      "stageName": "Black Woods",
+      "stillId": "act-04",
+      "label": "self-fling coda",
+      "view": "route",
+      "normalizedX": 0.875,
+      "location": {
+        "x": 5540,
+        "y": 0,
+        "cameraX": 4960,
+        "cameraY": 0,
+        "levelLength": 6400,
+        "supportType": "plat"
+      },
+      "relativePath": "02-black-woods/act-04-self-fling-coda-route.png"
+    },
+    {
+      "stageIndex": 1,
+      "stageId": "black-woods",
+      "stageName": "Black Woods",
+      "stillId": "act-04",
+      "label": "self-fling coda",
+      "view": "upper-layer",
+      "normalizedX": 0.875,
+      "location": {
+        "x": 5540,
+        "y": 700,
+        "cameraX": 4960,
+        "cameraY": 280,
+        "levelLength": 6400,
+        "supportType": "wall"
+      },
+      "relativePath": "02-black-woods/act-04-self-fling-coda-upper-layer.png"
+    },
+    {
+      "stageIndex": 1,
+      "stageId": "black-woods",
+      "stageName": "Black Woods",
+      "stillId": "exit",
+      "label": "exit",
+      "view": "route",
+      "normalizedX": 1,
+      "location": {
+        "x": 6320,
+        "y": 0,
+        "cameraX": 4960,
+        "cameraY": 0,
+        "levelLength": 6400,
+        "supportType": "plat"
+      },
+      "relativePath": "02-black-woods/exit-exit-route.png"
+    },
+    {
+      "stageIndex": 2,
+      "stageId": "brute",
+      "stageName": "The Brute",
+      "stillId": "entrance",
+      "label": "entrance",
+      "view": "route",
+      "normalizedX": 0,
+      "location": {
+        "x": 80,
+        "y": 0,
+        "cameraX": 0,
+        "cameraY": 0,
+        "levelLength": 3800,
+        "supportType": "plat"
+      },
+      "relativePath": "03-brute/entrance-entrance-route.png"
+    },
+    {
+      "stageIndex": 2,
+      "stageId": "brute",
+      "stageName": "The Brute",
+      "stillId": "act-01",
+      "label": "badlands approach",
+      "view": "route",
+      "normalizedX": 0.1667,
+      "location": {
+        "x": 687,
+        "y": 0,
+        "cameraX": 140,
+        "cameraY": 0,
+        "levelLength": 3800,
+        "supportType": "plat"
+      },
+      "relativePath": "03-brute/act-01-badlands-approach-route.png"
+    },
+    {
+      "stageIndex": 2,
+      "stageId": "brute",
+      "stageName": "The Brute",
+      "stillId": "act-01",
+      "label": "badlands approach",
+      "view": "upper-layer",
+      "normalizedX": 0.1667,
+      "location": {
+        "x": 687,
+        "y": 0,
+        "cameraX": 140,
+        "cameraY": 0,
+        "levelLength": 3800,
+        "supportType": "plat"
+      },
+      "relativePath": "03-brute/act-01-badlands-approach-upper-layer.png"
+    },
+    {
+      "stageIndex": 2,
+      "stageId": "brute",
+      "stageName": "The Brute",
+      "stillId": "act-02",
+      "label": "mechanism rehearsal",
+      "view": "route",
+      "normalizedX": 0.5,
+      "location": {
+        "x": 1900,
+        "y": 0,
+        "cameraX": 1353,
+        "cameraY": 0,
+        "levelLength": 3800,
+        "supportType": "plat"
+      },
+      "relativePath": "03-brute/act-02-mechanism-rehearsal-route.png"
+    },
+    {
+      "stageIndex": 2,
+      "stageId": "brute",
+      "stageName": "The Brute",
+      "stillId": "act-02",
+      "label": "mechanism rehearsal",
+      "view": "upper-layer",
+      "normalizedX": 0.5,
+      "location": {
+        "x": 1900,
+        "y": 210,
+        "cameraX": 1353,
+        "cameraY": 0,
+        "levelLength": 3800,
+        "supportType": "plat"
+      },
+      "relativePath": "03-brute/act-02-mechanism-rehearsal-upper-layer.png"
+    },
+    {
+      "stageIndex": 2,
+      "stageId": "brute",
+      "stageName": "The Brute",
+      "stillId": "act-03",
+      "label": "brute arena",
+      "view": "route",
+      "normalizedX": 0.8333,
+      "location": {
+        "x": 3113,
+        "y": 0,
+        "cameraX": 2360,
+        "cameraY": 0,
+        "levelLength": 3800,
+        "supportType": "plat"
+      },
+      "relativePath": "03-brute/act-03-brute-arena-route.png"
+    },
+    {
+      "stageIndex": 2,
+      "stageId": "brute",
+      "stageName": "The Brute",
+      "stillId": "act-03",
+      "label": "brute arena",
+      "view": "upper-layer",
+      "normalizedX": 0.8333,
+      "location": {
+        "x": 3113,
+        "y": 190,
+        "cameraX": 2360,
+        "cameraY": 0,
+        "levelLength": 3800,
+        "supportType": "plat"
+      },
+      "relativePath": "03-brute/act-03-brute-arena-upper-layer.png"
+    },
+    {
+      "stageIndex": 2,
+      "stageId": "brute",
+      "stageName": "The Brute",
+      "stillId": "exit",
+      "label": "exit",
+      "view": "route",
+      "normalizedX": 1,
+      "location": {
+        "x": 3720,
+        "y": 0,
+        "cameraX": 2360,
+        "cameraY": 0,
+        "levelLength": 3800,
+        "supportType": "plat"
+      },
+      "relativePath": "03-brute/exit-exit-route.png"
+    },
+    {
+      "stageIndex": 3,
+      "stageId": "updrafts",
+      "stageName": "The Updrafts",
+      "stillId": "entrance",
+      "label": "entrance",
+      "view": "route",
+      "normalizedX": 0,
+      "location": {
+        "x": 80,
+        "y": 0,
+        "cameraX": 0,
+        "cameraY": 0,
+        "levelLength": 7500,
+        "supportType": "plat"
+      },
+      "relativePath": "04-updrafts/entrance-entrance-route.png"
+    },
+    {
+      "stageIndex": 3,
+      "stageId": "updrafts",
+      "stageName": "The Updrafts",
+      "stillId": "act-01",
+      "label": "fuel school",
+      "view": "route",
+      "normalizedX": 0.125,
+      "location": {
+        "x": 998,
+        "y": 0,
+        "cameraX": 450,
+        "cameraY": 0,
+        "levelLength": 7500,
+        "supportType": "plat"
+      },
+      "relativePath": "04-updrafts/act-01-fuel-school-route.png"
+    },
+    {
+      "stageIndex": 3,
+      "stageId": "updrafts",
+      "stageName": "The Updrafts",
+      "stillId": "act-01",
+      "label": "fuel school",
+      "view": "upper-layer",
+      "normalizedX": 0.125,
+      "location": {
+        "x": 998,
+        "y": 280,
+        "cameraX": 450,
+        "cameraY": 0,
+        "levelLength": 7500,
+        "supportType": "plat"
+      },
+      "relativePath": "04-updrafts/act-01-fuel-school-upper-layer.png"
+    },
+    {
+      "stageIndex": 3,
+      "stageId": "updrafts",
+      "stageName": "The Updrafts",
+      "stillId": "act-02",
+      "label": "wind ascent",
+      "view": "route",
+      "normalizedX": 0.375,
+      "location": {
+        "x": 2833,
+        "y": 0,
+        "cameraX": 2285,
+        "cameraY": 0,
+        "levelLength": 7500,
+        "supportType": "plat"
+      },
+      "relativePath": "04-updrafts/act-02-wind-ascent-route.png"
+    },
+    {
+      "stageIndex": 3,
+      "stageId": "updrafts",
+      "stageName": "The Updrafts",
+      "stillId": "act-02",
+      "label": "wind ascent",
+      "view": "upper-layer",
+      "normalizedX": 0.375,
+      "location": {
+        "x": 2833,
+        "y": 560,
+        "cameraX": 2285,
+        "cameraY": 140,
+        "levelLength": 7500,
+        "supportType": "plat"
+      },
+      "relativePath": "04-updrafts/act-02-wind-ascent-upper-layer.png"
+    },
+    {
+      "stageIndex": 3,
+      "stageId": "updrafts",
+      "stageName": "The Updrafts",
+      "stillId": "act-03",
+      "label": "current garden",
+      "view": "route",
+      "normalizedX": 0.625,
+      "location": {
+        "x": 4668,
+        "y": 0,
+        "cameraX": 4120,
+        "cameraY": 0,
+        "levelLength": 7500,
+        "supportType": "plat"
+      },
+      "relativePath": "04-updrafts/act-03-current-garden-route.png"
+    },
+    {
+      "stageIndex": 3,
+      "stageId": "updrafts",
+      "stageName": "The Updrafts",
+      "stillId": "act-03",
+      "label": "current garden",
+      "view": "upper-layer",
+      "normalizedX": 0.625,
+      "location": {
+        "x": 4668,
+        "y": 0,
+        "cameraX": 4120,
+        "cameraY": 0,
+        "levelLength": 7500,
+        "supportType": "plat"
+      },
+      "relativePath": "04-updrafts/act-03-current-garden-upper-layer.png"
+    },
+    {
+      "stageIndex": 3,
+      "stageId": "updrafts",
+      "stageName": "The Updrafts",
+      "stillId": "act-04",
+      "label": "sky circuit",
+      "view": "route",
+      "normalizedX": 0.875,
+      "location": {
+        "x": 6503,
+        "y": 0,
+        "cameraX": 5955,
+        "cameraY": 0,
+        "levelLength": 7500,
+        "supportType": "plat"
+      },
+      "relativePath": "04-updrafts/act-04-sky-circuit-route.png"
+    },
+    {
+      "stageIndex": 3,
+      "stageId": "updrafts",
+      "stageName": "The Updrafts",
+      "stillId": "act-04",
+      "label": "sky circuit",
+      "view": "upper-layer",
+      "normalizedX": 0.875,
+      "location": {
+        "x": 6503,
+        "y": 360,
+        "cameraX": 5955,
+        "cameraY": 0,
+        "levelLength": 7500,
+        "supportType": "plat"
+      },
+      "relativePath": "04-updrafts/act-04-sky-circuit-upper-layer.png"
+    },
+    {
+      "stageIndex": 3,
+      "stageId": "updrafts",
+      "stageName": "The Updrafts",
+      "stillId": "exit",
+      "label": "exit",
+      "view": "route",
+      "normalizedX": 1,
+      "location": {
+        "x": 7420,
+        "y": 0,
+        "cameraX": 6060,
+        "cameraY": 0,
+        "levelLength": 7500,
+        "supportType": "plat"
+      },
+      "relativePath": "04-updrafts/exit-exit-route.png"
+    },
+    {
+      "stageIndex": 4,
+      "stageId": "hollow-marksman",
+      "stageName": "Hollow Marksman",
+      "stillId": "entrance",
+      "label": "entrance",
+      "view": "route",
+      "normalizedX": 0,
+      "location": {
+        "x": 80,
+        "y": 0,
+        "cameraX": 0,
+        "cameraY": 0,
+        "levelLength": 8300,
+        "supportType": "plat"
+      },
+      "relativePath": "05-hollow-marksman/entrance-entrance-route.png"
+    },
+    {
+      "stageIndex": 4,
+      "stageId": "hollow-marksman",
+      "stageName": "Hollow Marksman",
+      "stillId": "act-01",
+      "label": "canyon approach",
+      "view": "route",
+      "normalizedX": 0.1667,
+      "location": {
+        "x": 1437,
+        "y": 0,
+        "cameraX": 890,
+        "cameraY": 0,
+        "levelLength": 8300,
+        "supportType": "plat"
+      },
+      "relativePath": "05-hollow-marksman/act-01-canyon-approach-route.png"
+    },
+    {
+      "stageIndex": 4,
+      "stageId": "hollow-marksman",
+      "stageName": "Hollow Marksman",
+      "stillId": "act-01",
+      "label": "canyon approach",
+      "view": "upper-layer",
+      "normalizedX": 0.1667,
+      "location": {
+        "x": 1437,
+        "y": 0,
+        "cameraX": 890,
+        "cameraY": 0,
+        "levelLength": 8300,
+        "supportType": "plat"
+      },
+      "relativePath": "05-hollow-marksman/act-01-canyon-approach-upper-layer.png"
+    },
+    {
+      "stageIndex": 4,
+      "stageId": "hollow-marksman",
+      "stageName": "Hollow Marksman",
+      "stillId": "act-02",
+      "label": "moving sightlines",
+      "view": "route",
+      "normalizedX": 0.5,
+      "location": {
+        "x": 4150,
+        "y": 0,
+        "cameraX": 3603,
+        "cameraY": 0,
+        "levelLength": 8300,
+        "supportType": "plat"
+      },
+      "relativePath": "05-hollow-marksman/act-02-moving-sightlines-route.png"
+    },
+    {
+      "stageIndex": 4,
+      "stageId": "hollow-marksman",
+      "stageName": "Hollow Marksman",
+      "stillId": "act-02",
+      "label": "moving sightlines",
+      "view": "upper-layer",
+      "normalizedX": 0.5,
+      "location": {
+        "x": 4150,
+        "y": 390,
+        "cameraX": 3603,
+        "cameraY": 0,
+        "levelLength": 8300,
+        "supportType": "plat"
+      },
+      "relativePath": "05-hollow-marksman/act-02-moving-sightlines-upper-layer.png"
+    },
+    {
+      "stageIndex": 4,
+      "stageId": "hollow-marksman",
+      "stageName": "Hollow Marksman",
+      "stillId": "act-03",
+      "label": "marksman arena",
+      "view": "route",
+      "normalizedX": 0.8333,
+      "location": {
+        "x": 6863,
+        "y": 0,
+        "cameraX": 6316,
+        "cameraY": 0,
+        "levelLength": 8300,
+        "supportType": "plat"
+      },
+      "relativePath": "05-hollow-marksman/act-03-marksman-arena-route.png"
+    },
+    {
+      "stageIndex": 4,
+      "stageId": "hollow-marksman",
+      "stageName": "Hollow Marksman",
+      "stillId": "act-03",
+      "label": "marksman arena",
+      "view": "upper-layer",
+      "normalizedX": 0.8333,
+      "location": {
+        "x": 6863,
+        "y": 530,
+        "cameraX": 6316,
+        "cameraY": 110,
+        "levelLength": 8300,
+        "supportType": "wall"
+      },
+      "relativePath": "05-hollow-marksman/act-03-marksman-arena-upper-layer.png"
+    },
+    {
+      "stageIndex": 4,
+      "stageId": "hollow-marksman",
+      "stageName": "Hollow Marksman",
+      "stillId": "exit",
+      "label": "exit",
+      "view": "route",
+      "normalizedX": 1,
+      "location": {
+        "x": 8220,
+        "y": 0,
+        "cameraX": 6860,
+        "cameraY": 0,
+        "levelLength": 8300,
+        "supportType": "plat"
+      },
+      "relativePath": "05-hollow-marksman/exit-exit-route.png"
+    },
+    {
+      "stageIndex": 5,
+      "stageId": "ruined-keep",
+      "stageName": "Ruined Keep",
+      "stillId": "entrance",
+      "label": "entrance",
+      "view": "route",
+      "normalizedX": 0,
+      "location": {
+        "x": 80,
+        "y": 0,
+        "cameraX": 0,
+        "cameraY": 0,
+        "levelLength": 8970,
+        "supportType": "plat"
+      },
+      "relativePath": "06-ruined-keep/entrance-entrance-route.png"
+    },
+    {
+      "stageIndex": 5,
+      "stageId": "ruined-keep",
+      "stageName": "Ruined Keep",
+      "stillId": "act-01",
+      "label": "outer ruin",
+      "view": "route",
+      "normalizedX": 0.125,
+      "location": {
+        "x": 1181,
+        "y": 0,
+        "cameraX": 634,
+        "cameraY": 0,
+        "levelLength": 8970,
+        "supportType": "plat"
+      },
+      "relativePath": "06-ruined-keep/act-01-outer-ruin-route.png"
+    },
+    {
+      "stageIndex": 5,
+      "stageId": "ruined-keep",
+      "stageName": "Ruined Keep",
+      "stillId": "act-01",
+      "label": "outer ruin",
+      "view": "upper-layer",
+      "normalizedX": 0.125,
+      "location": {
+        "x": 1181,
+        "y": 490,
+        "cameraX": 634,
+        "cameraY": 70,
+        "levelLength": 8970,
+        "supportType": "wall"
+      },
+      "relativePath": "06-ruined-keep/act-01-outer-ruin-upper-layer.png"
+    },
+    {
+      "stageIndex": 5,
+      "stageId": "ruined-keep",
+      "stageName": "Ruined Keep",
+      "stillId": "act-02",
+      "label": "weight circuit",
+      "view": "route",
+      "normalizedX": 0.375,
+      "location": {
+        "x": 3384,
+        "y": 0,
+        "cameraX": 2837,
+        "cameraY": 0,
+        "levelLength": 8970,
+        "supportType": "plat"
+      },
+      "relativePath": "06-ruined-keep/act-02-weight-circuit-route.png"
+    },
+    {
+      "stageIndex": 5,
+      "stageId": "ruined-keep",
+      "stageName": "Ruined Keep",
+      "stillId": "act-02",
+      "label": "weight circuit",
+      "view": "upper-layer",
+      "normalizedX": 0.375,
+      "location": {
+        "x": 3384,
+        "y": 350,
+        "cameraX": 2837,
+        "cameraY": 0,
+        "levelLength": 8970,
+        "supportType": "wall"
+      },
+      "relativePath": "06-ruined-keep/act-02-weight-circuit-upper-layer.png"
+    },
+    {
+      "stageIndex": 5,
+      "stageId": "ruined-keep",
+      "stageName": "Ruined Keep",
+      "stillId": "act-03",
+      "label": "companion wing",
+      "view": "route",
+      "normalizedX": 0.625,
+      "location": {
+        "x": 5586,
+        "y": 0,
+        "cameraX": 5039,
+        "cameraY": 0,
+        "levelLength": 8970,
+        "supportType": "plat"
+      },
+      "relativePath": "06-ruined-keep/act-03-companion-wing-route.png"
+    },
+    {
+      "stageIndex": 5,
+      "stageId": "ruined-keep",
+      "stageName": "Ruined Keep",
+      "stillId": "act-03",
+      "label": "companion wing",
+      "view": "upper-layer",
+      "normalizedX": 0.625,
+      "location": {
+        "x": 5586,
+        "y": 105,
+        "cameraX": 5039,
+        "cameraY": 0,
+        "levelLength": 8970,
+        "supportType": "plat"
+      },
+      "relativePath": "06-ruined-keep/act-03-companion-wing-upper-layer.png"
+    },
+    {
+      "stageIndex": 5,
+      "stageId": "ruined-keep",
+      "stageName": "Ruined Keep",
+      "stillId": "act-04",
+      "label": "keep exit",
+      "view": "route",
+      "normalizedX": 0.875,
+      "location": {
+        "x": 7789,
+        "y": 0,
+        "cameraX": 7242,
+        "cameraY": 0,
+        "levelLength": 8970,
+        "supportType": "plat"
+      },
+      "relativePath": "06-ruined-keep/act-04-keep-exit-route.png"
+    },
+    {
+      "stageIndex": 5,
+      "stageId": "ruined-keep",
+      "stageName": "Ruined Keep",
+      "stillId": "act-04",
+      "label": "keep exit",
+      "view": "upper-layer",
+      "normalizedX": 0.875,
+      "location": {
+        "x": 7789,
+        "y": 510,
+        "cameraX": 7242,
+        "cameraY": 90,
+        "levelLength": 8970,
+        "supportType": "wall"
+      },
+      "relativePath": "06-ruined-keep/act-04-keep-exit-upper-layer.png"
+    },
+    {
+      "stageIndex": 5,
+      "stageId": "ruined-keep",
+      "stageName": "Ruined Keep",
+      "stillId": "exit",
+      "label": "exit",
+      "view": "route",
+      "normalizedX": 1,
+      "location": {
+        "x": 8890,
+        "y": 0,
+        "cameraX": 7530,
+        "cameraY": 0,
+        "levelLength": 8970,
+        "supportType": "plat"
+      },
+      "relativePath": "06-ruined-keep/exit-exit-route.png"
+    },
+    {
+      "stageIndex": 6,
+      "stageId": "warden",
+      "stageName": "The Warden",
+      "stillId": "entrance",
+      "label": "entrance",
+      "view": "route",
+      "normalizedX": 0,
+      "location": {
+        "x": 80,
+        "y": 0,
+        "cameraX": 0,
+        "cameraY": 0,
+        "levelLength": 8300,
+        "supportType": "plat"
+      },
+      "relativePath": "07-warden/entrance-entrance-route.png"
+    },
+    {
+      "stageIndex": 6,
+      "stageId": "warden",
+      "stageName": "The Warden",
+      "stillId": "act-01",
+      "label": "dungeon route",
+      "view": "route",
+      "normalizedX": 0.1667,
+      "location": {
+        "x": 1437,
+        "y": 0,
+        "cameraX": 890,
+        "cameraY": 0,
+        "levelLength": 8300,
+        "supportType": "plat"
+      },
+      "relativePath": "07-warden/act-01-dungeon-route-route.png"
+    },
+    {
+      "stageIndex": 6,
+      "stageId": "warden",
+      "stageName": "The Warden",
+      "stillId": "act-01",
+      "label": "dungeon route",
+      "view": "upper-layer",
+      "normalizedX": 0.1667,
+      "location": {
+        "x": 1437,
+        "y": 120,
+        "cameraX": 890,
+        "cameraY": 0,
+        "levelLength": 8300,
+        "supportType": "plat"
+      },
+      "relativePath": "07-warden/act-01-dungeon-route-upper-layer.png"
+    },
+    {
+      "stageIndex": 6,
+      "stageId": "warden",
+      "stageName": "The Warden",
+      "stillId": "act-02",
+      "label": "flank rehearsal",
+      "view": "route",
+      "normalizedX": 0.5,
+      "location": {
+        "x": 4150,
+        "y": 0,
+        "cameraX": 3603,
+        "cameraY": 0,
+        "levelLength": 8300,
+        "supportType": "plat"
+      },
+      "relativePath": "07-warden/act-02-flank-rehearsal-route.png"
+    },
+    {
+      "stageIndex": 6,
+      "stageId": "warden",
+      "stageName": "The Warden",
+      "stillId": "act-02",
+      "label": "flank rehearsal",
+      "view": "upper-layer",
+      "normalizedX": 0.5,
+      "location": {
+        "x": 4150,
+        "y": 390,
+        "cameraX": 3603,
+        "cameraY": 0,
+        "levelLength": 8300,
+        "supportType": "plat"
+      },
+      "relativePath": "07-warden/act-02-flank-rehearsal-upper-layer.png"
+    },
+    {
+      "stageIndex": 6,
+      "stageId": "warden",
+      "stageName": "The Warden",
+      "stillId": "act-03",
+      "label": "warden arena",
+      "view": "route",
+      "normalizedX": 0.8333,
+      "location": {
+        "x": 6863,
+        "y": 0,
+        "cameraX": 6316,
+        "cameraY": 0,
+        "levelLength": 8300,
+        "supportType": "plat"
+      },
+      "relativePath": "07-warden/act-03-warden-arena-route.png"
+    },
+    {
+      "stageIndex": 6,
+      "stageId": "warden",
+      "stageName": "The Warden",
+      "stillId": "act-03",
+      "label": "warden arena",
+      "view": "upper-layer",
+      "normalizedX": 0.8333,
+      "location": {
+        "x": 6863,
+        "y": 0,
+        "cameraX": 6316,
+        "cameraY": 0,
+        "levelLength": 8300,
+        "supportType": "plat"
+      },
+      "relativePath": "07-warden/act-03-warden-arena-upper-layer.png"
+    },
+    {
+      "stageIndex": 6,
+      "stageId": "warden",
+      "stageName": "The Warden",
+      "stillId": "exit",
+      "label": "exit",
+      "view": "route",
+      "normalizedX": 1,
+      "location": {
+        "x": 8220,
+        "y": 0,
+        "cameraX": 6860,
+        "cameraY": 0,
+        "levelLength": 8300,
+        "supportType": "plat"
+      },
+      "relativePath": "07-warden/exit-exit-route.png"
+    },
+    {
+      "stageIndex": 7,
+      "stageId": "frostfell",
+      "stageName": "Frostfell",
+      "stillId": "entrance",
+      "label": "entrance",
+      "view": "route",
+      "normalizedX": 0,
+      "location": {
+        "x": 80,
+        "y": 0,
+        "cameraX": 0,
+        "cameraY": 0,
+        "levelLength": 8890,
+        "supportType": "plat"
+      },
+      "relativePath": "08-frostfell/entrance-entrance-route.png"
+    },
+    {
+      "stageIndex": 7,
+      "stageId": "frostfell",
+      "stageName": "Frostfell",
+      "stillId": "act-01",
+      "label": "white approach",
+      "view": "route",
+      "normalizedX": 0.125,
+      "location": {
+        "x": 1171,
+        "y": 0,
+        "cameraX": 624,
+        "cameraY": 0,
+        "levelLength": 8890,
+        "supportType": "plat"
+      },
+      "relativePath": "08-frostfell/act-01-white-approach-route.png"
+    },
+    {
+      "stageIndex": 7,
+      "stageId": "frostfell",
+      "stageName": "Frostfell",
+      "stillId": "act-02",
+      "label": "warmth route",
+      "view": "route",
+      "normalizedX": 0.375,
+      "location": {
+        "x": 3354,
+        "y": 0,
+        "cameraX": 2807,
+        "cameraY": 0,
+        "levelLength": 8890,
+        "supportType": "plat"
+      },
+      "relativePath": "08-frostfell/act-02-warmth-route-route.png"
+    },
+    {
+      "stageIndex": 7,
+      "stageId": "frostfell",
+      "stageName": "Frostfell",
+      "stillId": "act-03",
+      "label": "signal gallery",
+      "view": "route",
+      "normalizedX": 0.625,
+      "location": {
+        "x": 5536,
+        "y": 0,
+        "cameraX": 4989,
+        "cameraY": 0,
+        "levelLength": 8890,
+        "supportType": "plat"
+      },
+      "relativePath": "08-frostfell/act-03-signal-gallery-route.png"
+    },
+    {
+      "stageIndex": 7,
+      "stageId": "frostfell",
+      "stageName": "Frostfell",
+      "stillId": "act-04",
+      "label": "frost exit",
+      "view": "route",
+      "normalizedX": 0.875,
+      "location": {
+        "x": 7719,
+        "y": 0,
+        "cameraX": 7172,
+        "cameraY": 0,
+        "levelLength": 8890,
+        "supportType": "plat"
+      },
+      "relativePath": "08-frostfell/act-04-frost-exit-route.png"
+    },
+    {
+      "stageIndex": 7,
+      "stageId": "frostfell",
+      "stageName": "Frostfell",
+      "stillId": "exit",
+      "label": "exit",
+      "view": "route",
+      "normalizedX": 1,
+      "location": {
+        "x": 8810,
+        "y": 0,
+        "cameraX": 7450,
+        "cameraY": 0,
+        "levelLength": 8890,
+        "supportType": "plat"
+      },
+      "relativePath": "08-frostfell/exit-exit-route.png"
+    },
+    {
+      "stageIndex": 8,
+      "stageId": "frost-sorcerer",
+      "stageName": "Frost Sorcerer",
+      "stillId": "entrance",
+      "label": "entrance",
+      "view": "route",
+      "normalizedX": 0,
+      "location": {
+        "x": 80,
+        "y": 0,
+        "cameraX": 0,
+        "cameraY": 0,
+        "levelLength": 8300,
+        "supportType": "plat"
+      },
+      "relativePath": "09-frost-sorcerer/entrance-entrance-route.png"
+    },
+    {
+      "stageIndex": 8,
+      "stageId": "frost-sorcerer",
+      "stageName": "Frost Sorcerer",
+      "stillId": "act-01",
+      "label": "frozen route",
+      "view": "route",
+      "normalizedX": 0.1667,
+      "location": {
+        "x": 1437,
+        "y": 0,
+        "cameraX": 890,
+        "cameraY": 0,
+        "levelLength": 8300,
+        "supportType": "plat"
+      },
+      "relativePath": "09-frost-sorcerer/act-01-frozen-route-route.png"
+    },
+    {
+      "stageIndex": 8,
+      "stageId": "frost-sorcerer",
+      "stageName": "Frost Sorcerer",
+      "stillId": "act-01",
+      "label": "frozen route",
+      "view": "upper-layer",
+      "normalizedX": 0.1667,
+      "location": {
+        "x": 1437,
+        "y": 296,
+        "cameraX": 890,
+        "cameraY": 0,
+        "levelLength": 8300,
+        "supportType": "plat"
+      },
+      "relativePath": "09-frost-sorcerer/act-01-frozen-route-upper-layer.png"
+    },
+    {
+      "stageIndex": 8,
+      "stageId": "frost-sorcerer",
+      "stageName": "Frost Sorcerer",
+      "stillId": "act-02",
+      "label": "current crossing",
+      "view": "route",
+      "normalizedX": 0.5,
+      "location": {
+        "x": 4150,
+        "y": 0,
+        "cameraX": 3603,
+        "cameraY": 0,
+        "levelLength": 8300,
+        "supportType": "plat"
+      },
+      "relativePath": "09-frost-sorcerer/act-02-current-crossing-route.png"
+    },
+    {
+      "stageIndex": 8,
+      "stageId": "frost-sorcerer",
+      "stageName": "Frost Sorcerer",
+      "stillId": "act-02",
+      "label": "current crossing",
+      "view": "upper-layer",
+      "normalizedX": 0.5,
+      "location": {
+        "x": 4150,
+        "y": 390,
+        "cameraX": 3603,
+        "cameraY": 0,
+        "levelLength": 8300,
+        "supportType": "plat"
+      },
+      "relativePath": "09-frost-sorcerer/act-02-current-crossing-upper-layer.png"
+    },
+    {
+      "stageIndex": 8,
+      "stageId": "frost-sorcerer",
+      "stageName": "Frost Sorcerer",
+      "stillId": "act-03",
+      "label": "moving-siphon arena",
+      "view": "route",
+      "normalizedX": 0.8333,
+      "location": {
+        "x": 6863,
+        "y": 0,
+        "cameraX": 6316,
+        "cameraY": 0,
+        "levelLength": 8300,
+        "supportType": "plat"
+      },
+      "relativePath": "09-frost-sorcerer/act-03-moving-siphon-arena-route.png"
+    },
+    {
+      "stageIndex": 8,
+      "stageId": "frost-sorcerer",
+      "stageName": "Frost Sorcerer",
+      "stillId": "act-03",
+      "label": "moving-siphon arena",
+      "view": "upper-layer",
+      "normalizedX": 0.8333,
+      "location": {
+        "x": 6863,
+        "y": 0,
+        "cameraX": 6316,
+        "cameraY": 0,
+        "levelLength": 8300,
+        "supportType": "plat"
+      },
+      "relativePath": "09-frost-sorcerer/act-03-moving-siphon-arena-upper-layer.png"
+    },
+    {
+      "stageIndex": 8,
+      "stageId": "frost-sorcerer",
+      "stageName": "Frost Sorcerer",
+      "stillId": "exit",
+      "label": "exit",
+      "view": "route",
+      "normalizedX": 1,
+      "location": {
+        "x": 8220,
+        "y": 0,
+        "cameraX": 6860,
+        "cameraY": 0,
+        "levelLength": 8300,
+        "supportType": "plat"
+      },
+      "relativePath": "09-frost-sorcerer/exit-exit-route.png"
+    },
+    {
+      "stageIndex": 9,
+      "stageId": "emberdeep",
+      "stageName": "Emberdeep",
+      "stillId": "entrance",
+      "label": "entrance",
+      "view": "route",
+      "normalizedX": 0,
+      "location": {
+        "x": 80,
+        "y": 0,
+        "cameraX": 0,
+        "cameraY": 0,
+        "levelLength": 9070,
+        "supportType": "plat"
+      },
+      "relativePath": "10-emberdeep/entrance-entrance-route.png"
+    },
+    {
+      "stageIndex": 9,
+      "stageId": "emberdeep",
+      "stageName": "Emberdeep",
+      "stillId": "act-01",
+      "label": "ember road",
+      "view": "route",
+      "normalizedX": 0.125,
+      "location": {
+        "x": 1194,
+        "y": 0,
+        "cameraX": 647,
+        "cameraY": 0,
+        "levelLength": 9070,
+        "supportType": "plat"
+      },
+      "relativePath": "10-emberdeep/act-01-ember-road-route.png"
+    },
+    {
+      "stageIndex": 9,
+      "stageId": "emberdeep",
+      "stageName": "Emberdeep",
+      "stillId": "act-02",
+      "label": "relay furnace",
+      "view": "route",
+      "normalizedX": 0.375,
+      "location": {
+        "x": 3421,
+        "y": 0,
+        "cameraX": 2874,
+        "cameraY": 0,
+        "levelLength": 9070,
+        "supportType": "plat"
+      },
+      "relativePath": "10-emberdeep/act-02-relay-furnace-route.png"
+    },
+    {
+      "stageIndex": 9,
+      "stageId": "emberdeep",
+      "stageName": "Emberdeep",
+      "stillId": "act-03",
+      "label": "held bridge",
+      "view": "route",
+      "normalizedX": 0.625,
+      "location": {
+        "x": 5649,
+        "y": 0,
+        "cameraX": 5102,
+        "cameraY": 0,
+        "levelLength": 9070,
+        "supportType": "plat"
+      },
+      "relativePath": "10-emberdeep/act-03-held-bridge-route.png"
+    },
+    {
+      "stageIndex": 9,
+      "stageId": "emberdeep",
+      "stageName": "Emberdeep",
+      "stillId": "act-04",
+      "label": "deep exit",
+      "view": "route",
+      "normalizedX": 0.875,
+      "location": {
+        "x": 7876,
+        "y": 0,
+        "cameraX": 7329,
+        "cameraY": 0,
+        "levelLength": 9070,
+        "supportType": "plat"
+      },
+      "relativePath": "10-emberdeep/act-04-deep-exit-route.png"
+    },
+    {
+      "stageIndex": 9,
+      "stageId": "emberdeep",
+      "stageName": "Emberdeep",
+      "stillId": "exit",
+      "label": "exit",
+      "view": "route",
+      "normalizedX": 1,
+      "location": {
+        "x": 8990,
+        "y": 0,
+        "cameraX": 7630,
+        "cameraY": 0,
+        "levelLength": 9070,
+        "supportType": "plat"
+      },
+      "relativePath": "10-emberdeep/exit-exit-route.png"
+    },
+    {
+      "stageIndex": 10,
+      "stageId": "ember-colossus",
+      "stageName": "Ember Colossus",
+      "stillId": "entrance",
+      "label": "entrance",
+      "view": "route",
+      "normalizedX": 0,
+      "location": {
+        "x": 80,
+        "y": 0,
+        "cameraX": 0,
+        "cameraY": 0,
+        "levelLength": 9140,
+        "supportType": "plat"
+      },
+      "relativePath": "11-ember-colossus/entrance-entrance-route.png"
+    },
+    {
+      "stageIndex": 10,
+      "stageId": "ember-colossus",
+      "stageName": "Ember Colossus",
+      "stillId": "act-01",
+      "label": "forge route",
+      "view": "route",
+      "normalizedX": 0.1667,
+      "location": {
+        "x": 1577,
+        "y": 0,
+        "cameraX": 1030,
+        "cameraY": 0,
+        "levelLength": 9140,
+        "supportType": "plat"
+      },
+      "relativePath": "11-ember-colossus/act-01-forge-route-route.png"
+    },
+    {
+      "stageIndex": 10,
+      "stageId": "ember-colossus",
+      "stageName": "Ember Colossus",
+      "stillId": "act-02",
+      "label": "coolant lesson",
+      "view": "route",
+      "normalizedX": 0.5,
+      "location": {
+        "x": 4570,
+        "y": 0,
+        "cameraX": 4023,
+        "cameraY": 0,
+        "levelLength": 9140,
+        "supportType": "plat"
+      },
+      "relativePath": "11-ember-colossus/act-02-coolant-lesson-route.png"
+    },
+    {
+      "stageIndex": 10,
+      "stageId": "ember-colossus",
+      "stageName": "Ember Colossus",
+      "stillId": "act-03",
+      "label": "wet-forge arena",
+      "view": "route",
+      "normalizedX": 0.8333,
+      "location": {
+        "x": 7563,
+        "y": 0,
+        "cameraX": 7016,
+        "cameraY": 0,
+        "levelLength": 9140,
+        "supportType": "plat"
+      },
+      "relativePath": "11-ember-colossus/act-03-wet-forge-arena-route.png"
+    },
+    {
+      "stageIndex": 10,
+      "stageId": "ember-colossus",
+      "stageName": "Ember Colossus",
+      "stillId": "exit",
+      "label": "exit",
+      "view": "route",
+      "normalizedX": 1,
+      "location": {
+        "x": 9060,
+        "y": 0,
+        "cameraX": 7700,
+        "cameraY": 0,
+        "levelLength": 9140,
+        "supportType": "plat"
+      },
+      "relativePath": "11-ember-colossus/exit-exit-route.png"
+    },
+    {
+      "stageIndex": 11,
+      "stageId": "inversion",
+      "stageName": "The Inversion",
+      "stillId": "entrance",
+      "label": "entrance",
+      "view": "route",
+      "normalizedX": 0,
+      "location": {
+        "x": 80,
+        "y": 0,
+        "cameraX": 0,
+        "cameraY": 0,
+        "levelLength": 11000,
+        "supportType": "plat"
+      },
+      "relativePath": "12-inversion/entrance-entrance-route.png"
+    },
+    {
+      "stageIndex": 11,
+      "stageId": "inversion",
+      "stageName": "The Inversion",
+      "stillId": "act-01",
+      "label": "flip lesson",
+      "view": "route",
+      "normalizedX": 0.125,
+      "location": {
+        "x": 1435,
+        "y": 0,
+        "cameraX": 888,
+        "cameraY": 0,
+        "levelLength": 11000,
+        "supportType": "plat"
+      },
+      "relativePath": "12-inversion/act-01-flip-lesson-route.png"
+    },
+    {
+      "stageIndex": 11,
+      "stageId": "inversion",
+      "stageName": "The Inversion",
+      "stillId": "act-01",
+      "label": "flip lesson",
+      "view": "upper-layer",
+      "normalizedX": 0.125,
+      "location": {
+        "x": 1435,
+        "y": 1410,
+        "cameraX": 888,
+        "cameraY": 990,
+        "levelLength": 11000,
+        "supportType": "plat"
+      },
+      "relativePath": "12-inversion/act-01-flip-lesson-upper-layer.png"
+    },
+    {
+      "stageIndex": 11,
+      "stageId": "inversion",
+      "stageName": "The Inversion",
+      "stillId": "act-02",
+      "label": "polarity gauntlet",
+      "view": "route",
+      "normalizedX": 0.375,
+      "location": {
+        "x": 4145,
+        "y": 0,
+        "cameraX": 3598,
+        "cameraY": 0,
+        "levelLength": 11000,
+        "supportType": "plat"
+      },
+      "relativePath": "12-inversion/act-02-polarity-gauntlet-route.png"
+    },
+    {
+      "stageIndex": 11,
+      "stageId": "inversion",
+      "stageName": "The Inversion",
+      "stillId": "act-02",
+      "label": "polarity gauntlet",
+      "view": "upper-layer",
+      "normalizedX": 0.375,
+      "location": {
+        "x": 4145,
+        "y": 0,
+        "cameraX": 3598,
+        "cameraY": 0,
+        "levelLength": 11000,
+        "supportType": "plat"
+      },
+      "relativePath": "12-inversion/act-02-polarity-gauntlet-upper-layer.png"
+    },
+    {
+      "stageIndex": 11,
+      "stageId": "inversion",
+      "stageName": "The Inversion",
+      "stillId": "act-03",
+      "label": "drop-lock",
+      "view": "route",
+      "normalizedX": 0.625,
+      "location": {
+        "x": 6855,
+        "y": 1410,
+        "cameraX": 6308,
+        "cameraY": 990,
+        "levelLength": 11000,
+        "supportType": "plat"
+      },
+      "relativePath": "12-inversion/act-03-drop-lock-route.png"
+    },
+    {
+      "stageIndex": 11,
+      "stageId": "inversion",
+      "stageName": "The Inversion",
+      "stillId": "act-03",
+      "label": "drop-lock",
+      "view": "upper-layer",
+      "normalizedX": 0.625,
+      "location": {
+        "x": 6855,
+        "y": 1410,
+        "cameraX": 6308,
+        "cameraY": 990,
+        "levelLength": 11000,
+        "supportType": "plat"
+      },
+      "relativePath": "12-inversion/act-03-drop-lock-upper-layer.png"
+    },
+    {
+      "stageIndex": 11,
+      "stageId": "inversion",
+      "stageName": "The Inversion",
+      "stillId": "act-04",
+      "label": "inverted coda",
+      "view": "route",
+      "normalizedX": 0.875,
+      "location": {
+        "x": 9565,
+        "y": 0,
+        "cameraX": 9018,
+        "cameraY": 0,
+        "levelLength": 11000,
+        "supportType": "plat"
+      },
+      "relativePath": "12-inversion/act-04-inverted-coda-route.png"
+    },
+    {
+      "stageIndex": 11,
+      "stageId": "inversion",
+      "stageName": "The Inversion",
+      "stillId": "act-04",
+      "label": "inverted coda",
+      "view": "upper-layer",
+      "normalizedX": 0.875,
+      "location": {
+        "x": 9565,
+        "y": 1410,
+        "cameraX": 9018,
+        "cameraY": 990,
+        "levelLength": 11000,
+        "supportType": "plat"
+      },
+      "relativePath": "12-inversion/act-04-inverted-coda-upper-layer.png"
+    },
+    {
+      "stageIndex": 11,
+      "stageId": "inversion",
+      "stageName": "The Inversion",
+      "stillId": "exit",
+      "label": "exit",
+      "view": "route",
+      "normalizedX": 1,
+      "location": {
+        "x": 10920,
+        "y": 0,
+        "cameraX": 9560,
+        "cameraY": 0,
+        "levelLength": 11000,
+        "supportType": "plat"
+      },
+      "relativePath": "12-inversion/exit-exit-route.png"
+    },
+    {
+      "stageIndex": 12,
+      "stageId": "void-tyrant",
+      "stageName": "The Void Tyrant",
+      "stillId": "entrance",
+      "label": "entrance",
+      "view": "route",
+      "normalizedX": 0,
+      "location": {
+        "x": 80,
+        "y": 0,
+        "cameraX": 0,
+        "cameraY": 0,
+        "levelLength": 9140,
+        "supportType": "plat"
+      },
+      "relativePath": "13-void-tyrant/entrance-entrance-route.png"
+    },
+    {
+      "stageIndex": 12,
+      "stageId": "void-tyrant",
+      "stageName": "The Void Tyrant",
+      "stillId": "act-01",
+      "label": "apex route",
+      "view": "route",
+      "normalizedX": 0.1667,
+      "location": {
+        "x": 1577,
+        "y": 0,
+        "cameraX": 1030,
+        "cameraY": 0,
+        "levelLength": 9140,
+        "supportType": "plat"
+      },
+      "relativePath": "13-void-tyrant/act-01-apex-route-route.png"
+    },
+    {
+      "stageIndex": 12,
+      "stageId": "void-tyrant",
+      "stageName": "The Void Tyrant",
+      "stillId": "act-02",
+      "label": "paradox threshold",
+      "view": "route",
+      "normalizedX": 0.5,
+      "location": {
+        "x": 4570,
+        "y": 0,
+        "cameraX": 4023,
+        "cameraY": 0,
+        "levelLength": 9140,
+        "supportType": "plat"
+      },
+      "relativePath": "13-void-tyrant/act-02-paradox-threshold-route.png"
+    },
+    {
+      "stageIndex": 12,
+      "stageId": "void-tyrant",
+      "stageName": "The Void Tyrant",
+      "stillId": "act-03",
+      "label": "three-band arena",
+      "view": "route",
+      "normalizedX": 0.8333,
+      "location": {
+        "x": 7563,
+        "y": 0,
+        "cameraX": 7016,
+        "cameraY": 0,
+        "levelLength": 9140,
+        "supportType": "plat"
+      },
+      "relativePath": "13-void-tyrant/act-03-three-band-arena-route.png"
+    },
+    {
+      "stageIndex": 12,
+      "stageId": "void-tyrant",
+      "stageName": "The Void Tyrant",
+      "stillId": "exit",
+      "label": "exit",
+      "view": "route",
+      "normalizedX": 1,
+      "location": {
+        "x": 9060,
+        "y": 0,
+        "cameraX": 7700,
+        "cameraY": 0,
+        "levelLength": 9140,
+        "supportType": "plat"
+      },
+      "relativePath": "13-void-tyrant/exit-exit-route.png"
+    },
+    {
+      "stageIndex": 13,
+      "stageId": "abyss-king",
+      "stageName": "The Abyss King",
+      "stillId": "entrance",
+      "label": "entrance",
+      "view": "route",
+      "normalizedX": 0,
+      "location": {
+        "x": 80,
+        "y": 0,
+        "cameraX": 0,
+        "cameraY": 0,
+        "levelLength": 10140,
+        "supportType": "plat"
+      },
+      "relativePath": "14-abyss-king/entrance-entrance-route.png"
+    },
+    {
+      "stageIndex": 13,
+      "stageId": "abyss-king",
+      "stageName": "The Abyss King",
+      "stillId": "act-01",
+      "label": "void procession",
+      "view": "route",
+      "normalizedX": 0.1667,
+      "location": {
+        "x": 1744,
+        "y": 0,
+        "cameraX": 1196,
+        "cameraY": 0,
+        "levelLength": 10140,
+        "supportType": "plat"
+      },
+      "relativePath": "14-abyss-king/act-01-void-procession-route.png"
+    },
+    {
+      "stageIndex": 13,
+      "stageId": "abyss-king",
+      "stageName": "The Abyss King",
+      "stillId": "act-02",
+      "label": "crown threshold",
+      "view": "route",
+      "normalizedX": 0.5,
+      "location": {
+        "x": 5070,
+        "y": 0,
+        "cameraX": 4523,
+        "cameraY": 0,
+        "levelLength": 10140,
+        "supportType": "plat"
+      },
+      "relativePath": "14-abyss-king/act-02-crown-threshold-route.png"
+    },
+    {
+      "stageIndex": 13,
+      "stageId": "abyss-king",
+      "stageName": "The Abyss King",
+      "stillId": "act-03",
+      "label": "royal echo arena",
+      "view": "route",
+      "normalizedX": 0.8333,
+      "location": {
+        "x": 8396,
+        "y": 0,
+        "cameraX": 7849,
+        "cameraY": 0,
+        "levelLength": 10140,
+        "supportType": "plat"
+      },
+      "relativePath": "14-abyss-king/act-03-royal-echo-arena-route.png"
+    },
+    {
+      "stageIndex": 13,
+      "stageId": "abyss-king",
+      "stageName": "The Abyss King",
+      "stillId": "exit",
+      "label": "exit",
+      "view": "route",
+      "normalizedX": 1,
+      "location": {
+        "x": 10060,
+        "y": 0,
+        "cameraX": 8700,
+        "cameraY": 0,
+        "levelLength": 10140,
+        "supportType": "plat"
+      },
+      "relativePath": "14-abyss-king/exit-exit-route.png"
+    },
+    {
+      "stageIndex": 14,
+      "stageId": "gilded-vault",
+      "stageName": "The Gilded Vault",
+      "stillId": "entrance",
+      "label": "entrance",
+      "view": "route",
+      "normalizedX": 0,
+      "location": {
+        "x": 80,
+        "y": 0,
+        "cameraX": 0,
+        "cameraY": 0,
+        "levelLength": 9900,
+        "supportType": "plat"
+      },
+      "relativePath": "15-gilded-vault/entrance-entrance-route.png"
+    },
+    {
+      "stageIndex": 14,
+      "stageId": "gilded-vault",
+      "stageName": "The Gilded Vault",
+      "stillId": "act-01",
+      "label": "furnace clock",
+      "view": "route",
+      "normalizedX": 0.0833,
+      "location": {
+        "x": 891,
+        "y": 0,
+        "cameraX": 344,
+        "cameraY": 0,
+        "levelLength": 9900,
+        "supportType": "plat"
+      },
+      "relativePath": "15-gilded-vault/act-01-furnace-clock-route.png"
+    },
+    {
+      "stageIndex": 14,
+      "stageId": "gilded-vault",
+      "stageName": "The Gilded Vault",
+      "stillId": "act-01",
+      "label": "furnace clock",
+      "view": "upper-layer",
+      "normalizedX": 0.0833,
+      "location": {
+        "x": 891,
+        "y": 58,
+        "cameraX": 344,
+        "cameraY": 0,
+        "levelLength": 9900,
+        "supportType": "plat"
+      },
+      "relativePath": "15-gilded-vault/act-01-furnace-clock-upper-layer.png"
+    },
+    {
+      "stageIndex": 14,
+      "stageId": "gilded-vault",
+      "stageName": "The Gilded Vault",
+      "stillId": "act-02",
+      "label": "needle walk",
+      "view": "route",
+      "normalizedX": 0.25,
+      "location": {
+        "x": 2515,
+        "y": 0,
+        "cameraX": 1968,
+        "cameraY": 0,
+        "levelLength": 9900,
+        "supportType": "plat"
+      },
+      "relativePath": "15-gilded-vault/act-02-needle-walk-route.png"
+    },
+    {
+      "stageIndex": 14,
+      "stageId": "gilded-vault",
+      "stageName": "The Gilded Vault",
+      "stillId": "act-02",
+      "label": "needle walk",
+      "view": "upper-layer",
+      "normalizedX": 0.25,
+      "location": {
+        "x": 2515,
+        "y": 148,
+        "cameraX": 1968,
+        "cameraY": 0,
+        "levelLength": 9900,
+        "supportType": "plat"
+      },
+      "relativePath": "15-gilded-vault/act-02-needle-walk-upper-layer.png"
+    },
+    {
+      "stageIndex": 14,
+      "stageId": "gilded-vault",
+      "stageName": "The Gilded Vault",
+      "stillId": "act-03",
+      "label": "golden shaft",
+      "view": "route",
+      "normalizedX": 0.4167,
+      "location": {
+        "x": 4139,
+        "y": 0,
+        "cameraX": 3591,
+        "cameraY": 0,
+        "levelLength": 9900,
+        "supportType": "plat"
+      },
+      "relativePath": "15-gilded-vault/act-03-golden-shaft-route.png"
+    },
+    {
+      "stageIndex": 14,
+      "stageId": "gilded-vault",
+      "stageName": "The Gilded Vault",
+      "stillId": "act-03",
+      "label": "golden shaft",
+      "view": "upper-layer",
+      "normalizedX": 0.4167,
+      "location": {
+        "x": 4139,
+        "y": 0,
+        "cameraX": 3591,
+        "cameraY": 0,
+        "levelLength": 9900,
+        "supportType": "plat"
+      },
+      "relativePath": "15-gilded-vault/act-03-golden-shaft-upper-layer.png"
+    },
+    {
+      "stageIndex": 14,
+      "stageId": "gilded-vault",
+      "stageName": "The Gilded Vault",
+      "stillId": "act-04",
+      "label": "furnace fold",
+      "view": "route",
+      "normalizedX": 0.5833,
+      "location": {
+        "x": 5761,
+        "y": 0,
+        "cameraX": 5214,
+        "cameraY": 0,
+        "levelLength": 9900,
+        "supportType": "plat"
+      },
+      "relativePath": "15-gilded-vault/act-04-furnace-fold-route.png"
+    },
+    {
+      "stageIndex": 14,
+      "stageId": "gilded-vault",
+      "stageName": "The Gilded Vault",
+      "stillId": "act-04",
+      "label": "furnace fold",
+      "view": "upper-layer",
+      "normalizedX": 0.5833,
+      "location": {
+        "x": 5761,
+        "y": 650,
+        "cameraX": 5214,
+        "cameraY": 230,
+        "levelLength": 9900,
+        "supportType": "plat"
+      },
+      "relativePath": "15-gilded-vault/act-04-furnace-fold-upper-layer.png"
+    },
+    {
+      "stageIndex": 14,
+      "stageId": "gilded-vault",
+      "stageName": "The Gilded Vault",
+      "stillId": "act-05",
+      "label": "moving crucible",
+      "view": "route",
+      "normalizedX": 0.75,
+      "location": {
+        "x": 7385,
+        "y": 148,
+        "cameraX": 6838,
+        "cameraY": 0,
+        "levelLength": 9900,
+        "supportType": "plat"
+      },
+      "relativePath": "15-gilded-vault/act-05-moving-crucible-route.png"
+    },
+    {
+      "stageIndex": 14,
+      "stageId": "gilded-vault",
+      "stageName": "The Gilded Vault",
+      "stillId": "act-05",
+      "label": "moving crucible",
+      "view": "upper-layer",
+      "normalizedX": 0.75,
+      "location": {
+        "x": 7385,
+        "y": 248,
+        "cameraX": 6838,
+        "cameraY": 0,
+        "levelLength": 9900,
+        "supportType": "plat"
+      },
+      "relativePath": "15-gilded-vault/act-05-moving-crucible-upper-layer.png"
+    },
+    {
+      "stageIndex": 14,
+      "stageId": "gilded-vault",
+      "stageName": "The Gilded Vault",
+      "stillId": "act-06",
+      "label": "last measure",
+      "view": "route",
+      "normalizedX": 0.9167,
+      "location": {
+        "x": 9009,
+        "y": 154,
+        "cameraX": 8460,
+        "cameraY": 0,
+        "levelLength": 9900,
+        "supportType": "plat"
+      },
+      "relativePath": "15-gilded-vault/act-06-last-measure-route.png"
+    },
+    {
+      "stageIndex": 14,
+      "stageId": "gilded-vault",
+      "stageName": "The Gilded Vault",
+      "stillId": "act-06",
+      "label": "last measure",
+      "view": "upper-layer",
+      "normalizedX": 0.9167,
+      "location": {
+        "x": 9009,
+        "y": 286,
+        "cameraX": 8460,
+        "cameraY": 0,
+        "levelLength": 9900,
+        "supportType": "plat"
+      },
+      "relativePath": "15-gilded-vault/act-06-last-measure-upper-layer.png"
+    },
+    {
+      "stageIndex": 14,
+      "stageId": "gilded-vault",
+      "stageName": "The Gilded Vault",
+      "stillId": "exit",
+      "label": "exit",
+      "view": "route",
+      "normalizedX": 1,
+      "location": {
+        "x": 9820,
+        "y": 0,
+        "cameraX": 8460,
+        "cameraY": 0,
+        "levelLength": 9900,
+        "supportType": "plat"
+      },
+      "relativePath": "15-gilded-vault/exit-exit-route.png"
+    },
+    {
+      "stageIndex": 15,
+      "stageId": "deep-line",
+      "stageName": "The Deep Line",
+      "stillId": "entrance",
+      "label": "entrance",
+      "view": "route",
+      "normalizedX": 0,
+      "location": {
+        "x": 80,
+        "y": 300,
+        "cameraX": 0,
+        "cameraY": 0,
+        "levelLength": 13950,
+        "supportType": "plat"
+      },
+      "relativePath": "16-deep-line/entrance-entrance-route.png"
+    },
+    {
+      "stageIndex": 15,
+      "stageId": "deep-line",
+      "stageName": "The Deep Line",
+      "stillId": "act-01",
+      "label": "signal descent",
+      "view": "route",
+      "normalizedX": 0.0833,
+      "location": {
+        "x": 1229,
+        "y": 160,
+        "cameraX": 682,
+        "cameraY": 0,
+        "levelLength": 13950,
+        "supportType": "plat"
+      },
+      "relativePath": "16-deep-line/act-01-signal-descent-route.png"
+    },
+    {
+      "stageIndex": 15,
+      "stageId": "deep-line",
+      "stageName": "The Deep Line",
+      "stillId": "act-01",
+      "label": "signal descent",
+      "view": "upper-layer",
+      "normalizedX": 0.0833,
+      "location": {
+        "x": 1229,
+        "y": 300,
+        "cameraX": 682,
+        "cameraY": 0,
+        "levelLength": 13950,
+        "supportType": "plat"
+      },
+      "relativePath": "16-deep-line/act-01-signal-descent-upper-layer.png"
+    },
+    {
+      "stageIndex": 15,
+      "stageId": "deep-line",
+      "stageName": "The Deep Line",
+      "stillId": "act-02",
+      "label": "first fork",
+      "view": "route",
+      "normalizedX": 0.25,
+      "location": {
+        "x": 3528,
+        "y": 0,
+        "cameraX": 2980,
+        "cameraY": 0,
+        "levelLength": 13950,
+        "supportType": "plat"
+      },
+      "relativePath": "16-deep-line/act-02-first-fork-route.png"
+    },
+    {
+      "stageIndex": 15,
+      "stageId": "deep-line",
+      "stageName": "The Deep Line",
+      "stillId": "act-02",
+      "label": "first fork",
+      "view": "upper-layer",
+      "normalizedX": 0.25,
+      "location": {
+        "x": 3528,
+        "y": 220,
+        "cameraX": 2980,
+        "cameraY": 0,
+        "levelLength": 13950,
+        "supportType": "plat"
+      },
+      "relativePath": "16-deep-line/act-02-first-fork-upper-layer.png"
+    },
+    {
+      "stageIndex": 15,
+      "stageId": "deep-line",
+      "stageName": "The Deep Line",
+      "stillId": "act-03",
+      "label": "falling bridge",
+      "view": "route",
+      "normalizedX": 0.4167,
+      "location": {
+        "x": 5826,
+        "y": 0,
+        "cameraX": 5279,
+        "cameraY": 0,
+        "levelLength": 13950,
+        "supportType": "plat"
+      },
+      "relativePath": "16-deep-line/act-03-falling-bridge-route.png"
+    },
+    {
+      "stageIndex": 15,
+      "stageId": "deep-line",
+      "stageName": "The Deep Line",
+      "stillId": "act-03",
+      "label": "falling bridge",
+      "view": "upper-layer",
+      "normalizedX": 0.4167,
+      "location": {
+        "x": 5826,
+        "y": 0,
+        "cameraX": 5279,
+        "cameraY": 0,
+        "levelLength": 13950,
+        "supportType": "plat"
+      },
+      "relativePath": "16-deep-line/act-03-falling-bridge-upper-layer.png"
+    },
+    {
+      "stageIndex": 15,
+      "stageId": "deep-line",
+      "stageName": "The Deep Line",
+      "stillId": "act-04",
+      "label": "trick fork",
+      "view": "route",
+      "normalizedX": 0.5833,
+      "location": {
+        "x": 8124,
+        "y": 0,
+        "cameraX": 7577,
+        "cameraY": 0,
+        "levelLength": 13950,
+        "supportType": "plat"
+      },
+      "relativePath": "16-deep-line/act-04-trick-fork-route.png"
+    },
+    {
+      "stageIndex": 15,
+      "stageId": "deep-line",
+      "stageName": "The Deep Line",
+      "stillId": "act-04",
+      "label": "trick fork",
+      "view": "upper-layer",
+      "normalizedX": 0.5833,
+      "location": {
+        "x": 8124,
+        "y": 260,
+        "cameraX": 7577,
+        "cameraY": 0,
+        "levelLength": 13950,
+        "supportType": "plat"
+      },
+      "relativePath": "16-deep-line/act-04-trick-fork-upper-layer.png"
+    },
+    {
+      "stageIndex": 15,
+      "stageId": "deep-line",
+      "stageName": "The Deep Line",
+      "stillId": "act-05",
+      "label": "sniper clock",
+      "view": "route",
+      "normalizedX": 0.75,
+      "location": {
+        "x": 10423,
+        "y": 180,
+        "cameraX": 9875,
+        "cameraY": 0,
+        "levelLength": 13950,
+        "supportType": "plat"
+      },
+      "relativePath": "16-deep-line/act-05-sniper-clock-route.png"
+    },
+    {
+      "stageIndex": 15,
+      "stageId": "deep-line",
+      "stageName": "The Deep Line",
+      "stillId": "act-05",
+      "label": "sniper clock",
+      "view": "upper-layer",
+      "normalizedX": 0.75,
+      "location": {
+        "x": 10423,
+        "y": 180,
+        "cameraX": 9875,
+        "cameraY": 0,
+        "levelLength": 13950,
+        "supportType": "plat"
+      },
+      "relativePath": "16-deep-line/act-05-sniper-clock-upper-layer.png"
+    },
+    {
+      "stageIndex": 15,
+      "stageId": "deep-line",
+      "stageName": "The Deep Line",
+      "stillId": "act-06",
+      "label": "black gap",
+      "view": "route",
+      "normalizedX": 0.9167,
+      "location": {
+        "x": 12721,
+        "y": 0,
+        "cameraX": 12174,
+        "cameraY": 0,
+        "levelLength": 13950,
+        "supportType": "plat"
+      },
+      "relativePath": "16-deep-line/act-06-black-gap-route.png"
+    },
+    {
+      "stageIndex": 15,
+      "stageId": "deep-line",
+      "stageName": "The Deep Line",
+      "stillId": "act-06",
+      "label": "black gap",
+      "view": "upper-layer",
+      "normalizedX": 0.9167,
+      "location": {
+        "x": 12721,
+        "y": 0,
+        "cameraX": 12174,
+        "cameraY": 0,
+        "levelLength": 13950,
+        "supportType": "plat"
+      },
+      "relativePath": "16-deep-line/act-06-black-gap-upper-layer.png"
+    },
+    {
+      "stageIndex": 15,
+      "stageId": "deep-line",
+      "stageName": "The Deep Line",
+      "stillId": "exit",
+      "label": "exit",
+      "view": "route",
+      "normalizedX": 1,
+      "location": {
+        "x": 13870,
+        "y": 0,
+        "cameraX": 12510,
+        "cameraY": 0,
+        "levelLength": 13950,
+        "supportType": "plat"
+      },
+      "relativePath": "16-deep-line/exit-exit-route.png"
+    }
+  ],
+  "limitations": [
+    "Camera-positioned stills are visual inventory, not proof that a route is playable.",
+    "Dynamic-room recordings and complete human playthroughs remain required.",
+    "Upper-layer stills use nearby assembled support geometry and require human review."
+  ]
+}

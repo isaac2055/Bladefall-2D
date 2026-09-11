@@ -1,0 +1,188 @@
+{
+  "summary": {
+    "errors": 0,
+    "warnings": 22,
+    "encounters": 3,
+    "maxPressure": 27.85,
+    "provenReachability": 0.09090909090909091
+  },
+  "validation": {
+    "errors": [],
+    "warnings": []
+  },
+  "softlocks": {
+    "safe": true,
+    "graph": {
+      "nodes": 22,
+      "edges": 32,
+      "reachable": 2
+    },
+    "proofs": [],
+    "risks": [
+      {
+        "severity": "warning",
+        "code": "softlock.pickups.unreachable",
+        "path": "pickups.pickup-001",
+        "message": "Pickup is not reachable in the static traversal graph.",
+        "confidence": "low"
+      },
+      {
+        "severity": "warning",
+        "code": "softlock.pickups.unreachable",
+        "path": "pickups.pickup-002",
+        "message": "Pickup is not reachable in the static traversal graph.",
+        "confidence": "low"
+      },
+      {
+        "severity": "warning",
+        "code": "softlock.pickups.unreachable",
+        "path": "pickups.pickup-003",
+        "message": "Pickup is not reachable in the static traversal graph.",
+        "confidence": "low"
+      },
+      {
+        "severity": "warning",
+        "code": "softlock.pickups.unreachable",
+        "path": "pickups.pickup-004",
+        "message": "Pickup is not reachable in the static traversal graph.",
+        "confidence": "low"
+      },
+      {
+        "severity": "warning",
+        "code": "softlock.pickups.unreachable",
+        "path": "pickups.pickup-005",
+        "message": "Pickup is not reachable in the static traversal graph.",
+        "confidence": "low"
+      },
+      {
+        "severity": "warning",
+        "code": "softlock.pickups.unreachable",
+        "path": "pickups.pickup-006",
+        "message": "Pickup is not reachable in the static traversal graph.",
+        "confidence": "low"
+      },
+      {
+        "severity": "warning",
+        "code": "softlock.pickups.unreachable",
+        "path": "pickups.pickup-007",
+        "message": "Pickup is not reachable in the static traversal graph.",
+        "confidence": "low"
+      },
+      {
+        "severity": "warning",
+        "code": "softlock.pickups.unreachable",
+        "path": "pickups.pickup-008",
+        "message": "Pickup is not reachable in the static traversal graph.",
+        "confidence": "low"
+      },
+      {
+        "severity": "warning",
+        "code": "softlock.pickups.unreachable",
+        "path": "pickups.pickup-009",
+        "message": "Pickup is not reachable in the static traversal graph.",
+        "confidence": "low"
+      },
+      {
+        "severity": "warning",
+        "code": "softlock.pickups.unreachable",
+        "path": "pickups.pickup-010",
+        "message": "Pickup is not reachable in the static traversal graph.",
+        "confidence": "low"
+      }
+    ],
+    "unknowns": [
+      {
+        "severity": "warning",
+        "code": "softlock.exit.unproven",
+        "path": "exit",
+        "message": "Static traversal graph cannot prove a route from start to exit.",
+        "confidence": "low",
+        "dynamicDependencies": [
+          "object-013",
+          "object-017",
+          "object-020",
+          "object-042"
+        ]
+      },
+      {
+        "severity": "warning",
+        "code": "softlock.required.unproven",
+        "path": "objects.object-009",
+        "message": "Required check is outside the proven static route.",
+        "confidence": "low"
+      },
+      {
+        "severity": "warning",
+        "code": "softlock.required.unproven",
+        "path": "objects.object-012",
+        "message": "Required plate is outside the proven static route.",
+        "confidence": "low"
+      },
+      {
+        "severity": "warning",
+        "code": "softlock.required.unproven",
+        "path": "objects.object-016",
+        "message": "Required check is outside the proven static route.",
+        "confidence": "low"
+      },
+      {
+        "severity": "warning",
+        "code": "softlock.required.unproven",
+        "path": "objects.object-019",
+        "message": "Required check is outside the proven static route.",
+        "confidence": "low"
+      },
+      {
+        "severity": "warning",
+        "code": "softlock.required.unproven",
+        "path": "objects.object-024",
+        "message": "Required check is outside the proven static route.",
+        "confidence": "low"
+      },
+      {
+        "severity": "warning",
+        "code": "softlock.required.unproven",
+        "path": "objects.object-025",
+        "message": "Required coin is outside the proven static route.",
+        "confidence": "low"
+      },
+      {
+        "severity": "warning",
+        "code": "softlock.required.unproven",
+        "path": "objects.object-029",
+        "message": "Required check is outside the proven static route.",
+        "confidence": "low"
+      },
+      {
+        "severity": "warning",
+        "code": "softlock.required.unproven",
+        "path": "objects.object-041",
+        "message": "Required plate is outside the proven static route.",
+        "confidence": "low"
+      },
+      {
+        "severity": "warning",
+        "code": "softlock.required.unproven",
+        "path": "objects.object-044",
+        "message": "Required check is outside the proven static route.",
+        "confidence": "low"
+      },
+      {
+        "severity": "warning",
+        "code": "softlock.required.unproven",
+        "path": "objects.object-046",
+        "message": "Required check is outside the proven static route.",
+        "confidence": "low"
+      }
+    ]
+  },
+  "encounterWarnings": [
+    {
+      "severity": "warning",
+      "code": "encounter.crowded",
+      "path": "encounters.encounter-01",
+      "message": "Encounter \"encounter-01\" triggered crowded.",
+      "encounter": "encounter-01"
+    }
+  ]
+}
