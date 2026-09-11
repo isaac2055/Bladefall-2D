@@ -16,6 +16,8 @@ const arg = (name, fallback) => {
 };
 const stages = (arg('stages', arg('stage', '0'))).split(',').map((s) => Number(s.trim()));
 const goalX = arg('goal', null) === null ? null : Number(arg('goal'));
+const budget = arg('budget', null) === null ? undefined : Number(arg('budget'));
+const maxSegments = arg('segments', null) === null ? undefined : Number(arg('segments'));
 const outPath = resolve(arg('out', 'docs/bot/receipt.json'));
 
 const root = resolve('public');
@@ -55,7 +57,7 @@ try {
     let boot, result;
     try {
       boot = await page.evaluate(bot.bootstrapStage, stage);
-      result = await page.evaluate(bot.solveLevel, { goalX });
+      result = await page.evaluate(bot.solveLevel, { goalX, totalExpansions: budget, maxSegments });
     } catch (error) {
       // One stage the TAS snapshot cannot serialize must not abort the sweep.
       runs.push({ stage, pass: false, reason: 'harness error: ' + error.message,

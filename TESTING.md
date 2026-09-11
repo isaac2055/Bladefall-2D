@@ -68,43 +68,69 @@ The Frostfell route validator also covers the new 20-landing finale. It uses TAS
 
 ## General traversal bot
 
-`npm run bot -- --stage 0` (or `--stages 0,1,2`, `--goal 2600`, `--out path.json`)
-runs `scripts/bladefall-bot.mjs` in a headless browser and writes a receipt.
-Unlike `scripts/frostfell-route.mjs`, it reads no bespoke authoring flag: it
-derives its own segments from whatever geometry the level has loaded.
+`npm run bot -- --stage 0` (or `--stages 0,1,2`, `--goal 2600`, `--budget 20000`,
+`--segments 40`, `--out path.json`) runs `scripts/bladefall-bot.mjs` in a headless
+browser and writes a receipt. Unlike `scripts/frostfell-route.mjs` it reads no
+bespoke authoring flag: it derives its own route from whatever geometry the level
+has loaded. `node scripts/bot-geometry.mjs <stage> <xFrom> <xTo>` prints what the
+bot sees for a stretch of a level; read a failure with it before changing the bot.
 
-The loop is the one the owner specified:
+How it works, in the order the owner specified:
 
-1. **Geometry** - every standable surface is a `type:'plat'` (`Gr()` is a `Pl()`),
-   so ledges are extracted directly and ranked by progress toward the goal minus
-   the cost of reaching them.
-2. **Heuristic** - proportional steering with a velocity lookahead and a dead
-   zone that widens with speed.
-3. **Branching search** - when a hop stalls, `saveState`/`restoreState` replay it
-   under a different plan: launch inset, jump hold, double-jump and dash timing,
-   an idle delay (including `'clear'`, which waits for an actual opening rather
-   than guessing a patrol's period), and an evade trigger distance.
-4. **Report** - the winning inputs, or the exact failed segment with the ledge it
-   started from, the candidates it tried, and why each attempt ended.
+1. **Geometry.** Every standable surface is a `type:'plat'` (`Gr()` is a `Pl()`).
+   Ledges are keyed by their span, not by object, because `restoreState()` hands
+   back a fresh clone of the world; and a platform is split into separate ledges
+   at any wall or closed door standing on it.
+2. **Ledge graph.** Edges are envelope-reachable hops (run/jump/dash/double-jump
+   bounds read from the runtime) that no wall or closed door bars. Distances are
+   computed from the goal side, so a candidate is simply a neighbour closer to the
+   goal than the current ledge; a hop that fails removes its edge.
+3. **Hop search.** Depth-first over short macro-actions (runs, jumps with three
+   holds, edge-aware jumps, launch-point "approach" jumps before an elevated
+   target, crystal launches, dashes, waits, retreats) with `saveState`/`restoreState`
+   branching and pruning for Blood loss, pits, overshoots and stalled progress.
+   Each candidate gets a cheap pass, the closest two a deep pass, then one costed
+   pass that accepts spending Blood.
+4. **Mechanisms.** When the graph says the goal is unreachable and a closed door is
+   ahead, the bot works the level's activators: quest residents and catches (Up),
+   plain levers (a weapon swing), plates (stand). Each is a multi-segment detour in
+   its own direction, and activators are re-resolved by a stable id after every
+   restore.
+5. **Report.** The winning inputs, or the exact failed segment with the ledge it
+   started from, the candidates tried, and a histogram of why each attempt ended.
+   The inputs are replayed from the origin and compared, so `replayIdentical` is
+   real determinism evidence.
 
-The accumulated inputs are replayed from the origin and the resulting state
-compared, so `replayIdentical` in the receipt is real determinism evidence.
+Completion is the level's far zone seam when there is one, and the boss arena's
+threshold when a boss lies ahead, since a boss fight is not traversal.
 
-**Current reach, measured, not claimed.** The bot solves segments and pinpoints
-failures on every authored stage, but it does not yet complete a full level. On
-a 2600-unit goal in the Outskirts it solves four segments and replays them
-identically; on the full level it stops at the weaponless avoidance grunt, which
-the level deliberately builds as a timing lesson. Two classes of fix are still
-open: passing a pursuing body that patrols across the whole launch ledge, and
-levels whose spawn is not on an extractable ledge (the Warden's high eastern
-entry). Treat it as a working framework with honest failure reporting, not as a
-campaign-completing bot.
+**Measured reach** (from `docs/bot/receipt.json`; budgets of 20,000 expansions):
 
-Two bugs found by building it are worth remembering:
+| Stage | Result | What the run shows |
+| --- | --- | --- |
+| The Outskirts | complete | seam crossed; ~45 segments; patrols timed, no Blood spent |
+| Black Woods | complete | seam crossed; the high route over the root wall via approach jumps |
+| Broken Causeway | complete to the Brute | Oren, both elevated catches, door opened, threshold reached |
+| The Updrafts | opening only | the first door needs the Aerie Pack: a winch strike, then a pickup |
+| Hollow Marksman | opening only | the wall needs a crystal-refill jump the search does not yet land; the road beyond needs the linked portal |
+| Ruined Keep | opening only | the level is built on the twin-portal pair |
+| The Warden | entry only | wall-jumps up the entry wall but the cells need a personal portal pair |
+| Frostfell | opening only | portal-routed fire; the bespoke validator covers this level |
+
+So: traversal plus mechanisms is solved end to end on the three levels that are
+made of those verbs, and every later level is gated on a verb the bot does not
+have - portal placement first of all. That is the next tier, not a tuning
+problem, and the receipts say exactly where each level stops.
+
+Lessons that cost real time, recorded so they are not paid twice:
 
 - **A held button is one press.** Keeping `jump` true across frames presses once;
-  the knight then walks into the next obstacle with the button stuck down. Every
-  repeated hop must release between presses.
-- **Fixed frame budgets hide geometry.** Capping a walk at 220 frames is about
-  733 units at run speed, so any ledge wider than that was unreachable and looked
-  like a movement failure. Budgets are derived from the distance being covered.
+  every repeated hop must release between presses.
+- **`restoreState()` replaces every object.** Anything held across a restore (a
+  ledge, an activator, a door) must be addressed by geometry or a stable id.
+- **A wall can stand in the middle of a ledge.** "Is there a wall between these two
+  ledges" is the wrong question until the ledge has been split at its walls.
+- **A thin platform's underside is solid.** Jumping from directly beneath one
+  bonks; the launch point has to be short of its near edge.
+- **Fixed frame budgets hide geometry.** A 220-frame walk is about 733 units;
+   authored rooms are thousands wide.
