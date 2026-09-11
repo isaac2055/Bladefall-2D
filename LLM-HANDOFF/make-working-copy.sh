@@ -35,7 +35,7 @@ for path in scripts tests deploy-assets .agents LLM-HANDOFF docs/tas/README.md; 
   copy_path "$path"
 done
 
-PUBLIC_FILTERS=(--exclude '.DS_Store' --exclude 'index.html.pre-multiplayer.bak')
+PUBLIC_FILTERS=(--exclude '.DS_Store')
 PUBLIC_DESCRIPTION="canonical public runtime source (binary audio/images omitted)"
 if [[ "$MODE" == "code" ]]; then
   PUBLIC_FILTERS+=(--exclude 'audio/' --exclude 'music.mp3' --exclude '*.png')
@@ -82,7 +82,7 @@ Excluded:
 - node_modules (run npm install)
 - generated netlify-deploy (run ./build-deploy.sh)
 - historical screenshots, videos, contact sheets, and baseline media
-- local editor metadata and pre-multiplayer HTML backup
+- local editor metadata
 EOF
 
 echo "Created $MODE Bladefall working copy at $DEST"

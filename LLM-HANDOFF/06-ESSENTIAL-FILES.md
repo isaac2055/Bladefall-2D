@@ -21,6 +21,10 @@ Copy all of these:
 - `public/sw.js` and `public/manifest.webmanifest` — offline/PWA runtime.
 - `public/authoring.html`, `public/dialogue-editor.html`, and
   `public/recollection-player.html` — creator and postgame surfaces.
+- `public/index.html.pre-multiplayer.bak` — the preserved pre-reimagining game.
+  Despite the extension this is a runtime asset, not a backup:
+  `recollection-player.html` fetches it to run a sealed Recollection, and it
+  ships in `build-deploy.sh` and `sw.js`. Omitting it breaks the postgame.
 - icons in `public/icon.svg`, `public/icon-*.png`, and
   `public/apple-touch-icon.png`.
 - `package.json` and `package-lock.json` — test/validator dependencies and exact
@@ -77,8 +81,6 @@ Especially important existing documents:
 - `docs/**/screens`, screenshots, MP4 route recordings, contact sheets, and
   historical visual atlases — useful archival evidence but not required for
   ordinary coding handoff;
-- `public/index.html.pre-multiplayer.bak` — historical backup, not loaded by the
-  game; preserve in a master archive, omit from lean model copies;
 - `.DS_Store`, local `.claude/`, transient browser data, and editor caches.
 
 ## Git history

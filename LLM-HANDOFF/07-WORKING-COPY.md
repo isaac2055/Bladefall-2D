@@ -22,7 +22,11 @@ an existing non-empty project.
 - `node_modules/`;
 - generated `netlify-deploy/`;
 - historical screenshot/video atlases and contact sheets;
-- `.DS_Store`, local `.claude/`, and the old pre-multiplayer HTML backup.
+- `.DS_Store` and local `.claude/`.
+
+`public/index.html.pre-multiplayer.bak` is **not** excluded: it is the preserved
+original game that `recollection-player.html` loads, so a copy without it has a
+broken postgame Recollection player.
 
 ## Expected workflow in the copy
 
