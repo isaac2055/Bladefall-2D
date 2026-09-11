@@ -74,13 +74,18 @@ The generated `netlify-deploy/` directory is never the editing source. Edit
 `public/`, rebuild the mirror, and do not deploy to Netlify unless the owner
 explicitly requests it.
 
-## Snapshot identity — 2026-09-10
+## Snapshot identity — 2026-09-11
 
-- Source version `7.95.2`, service-worker cache `bladefall-v175` (unchanged despite
-  recent edits; a cached/deployed copy may be older).
-- Start through Warden complete in substance per owner; Frostfell's authored
-  settlement, finale and local Muster activation implemented and positively reviewed.
-- Latest retained evidence: 70 focused tests passed; Frostfell receipt 15/15 checks.
-- Full-suite/release parity figures from August are historical, not latest proof.
-- World-wide Muster escalation and Levels 9–16 remain future work.
-- Base single-player first; co-op and NG+ afterward. No deployment authorized.
+- Source version `7.96.0`, service-worker cache `bladefall-v176`. Both were bumped at
+  this release boundary; earlier deployed or cached copies are older.
+- The Git branch `chore/track-authoritative-tree` now tracks the whole authoritative
+  tree (352+ files). A fresh clone rebuilds the game. It has not been pushed or merged.
+- Start through Warden complete in substance per owner; Frostfell authored and
+  reviewed; the Muster recall now reaches Warden, Outskirts, Black Woods and Broken
+  Causeway with authored rosters.
+- Latest evidence: full `npm test` **500/500**, `release:check` ok with **93** assets
+  (the manifest is derived from `build-deploy.sh`), Frostfell receipt 15/15.
+- A general traversal bot (`npm run bot`) completes The Outskirts, Black Woods and
+  Broken Causeway from cold; later levels stop at portal placement.
+- Frost Sorcerer / White Court remains the next chapter to design. No deployment
+  authorized.

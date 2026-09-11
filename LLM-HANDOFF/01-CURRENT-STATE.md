@@ -1,4 +1,4 @@
-# Current state — 2026-09-10
+# Current state — 2026-09-11
 
 ## Production status
 
@@ -17,17 +17,18 @@ but neither is automatically authorized by this documentation request.
 
 ## Source identity and verification
 
-- Canonical runtime: `public/index.html`, version `7.95.2`.
-- Offline cache: `public/sw.js`, `bladefall-v175`.
-- Those identifiers have not changed with all recent source edits; they do not
-  prove that a deployed or cached browser build contains the latest game.
+- Canonical runtime: `public/index.html`, version `7.96.0`.
+- Offline cache: `public/sw.js`, `bladefall-v176`.
+- Both identifiers were bumped on 2026-09-11 at the release boundary. `sw.js` now
+  also caches `bladefall-harness.js`, which earlier builds never shipped.
 - Latest retained Frostfell validator receipt: **15/15 checks true**, `pass: true`,
   no runtime errors. Includes the settlement, finale, persistence, Muster and
   normal-keyboard mine crossings. See [verification](10-HANDOFF-VERIFICATION.md).
-- Latest focused test run: **70 passed, 0 failed** across eight test files.
-- Full `npm test`, deploy rebuild and release parity were **not rerun for these
-  latest changes or this documentation refresh**. The August receipt is history.
-- No Netlify deployment was performed or authorized.
+- Latest full run: **`npm test` 500 passed, 0 failed**; `npm run release:check` ok,
+  **93** assets checked (the manifest is parsed from `build-deploy.sh`, so it cannot
+  drift again). Mirror rebuilt. No Netlify deployment was performed or authorized.
+- The Git branch `chore/track-authoritative-tree` tracks the whole tree; a fresh
+  clone rebuilds and passes `release:check`.
 
 ## Current regional status
 
@@ -37,6 +38,7 @@ but neither is automatically authorized by this documentation request.
 | 6 | Ruined Keep: two Belfry payloads, Wall Jump, Archive, Keep Key and westward return implemented. |
 | 7 | Warden: Turning Cells and opposed-cross boss complete in substance; latest three-crash/final-strike rules below. |
 | 8 | Frostfell: authored 15,100-unit level, including active Frostfell-only Muster escalation. |
+| 1–3, 6 | The Muster recall installs authored rosters here once Frostfell's engine has struck. |
 | 9–16 | Existing foundations/legacy content; full current level passes remain. |
 
 ## Latest behavior to preserve
@@ -63,15 +65,16 @@ Frostfell setup, harness status and proposal boundaries; read the
 
 ## Outstanding limitations
 
-- Bram's lantern is already carried; no missing lantern-fetch quest exists.
-  His root-wall endpoint and legacy escort-reward mismatch remain a design issue.
-- Gilded Instinct honestly says it is inactive; its intended cache-glint effect
-  has not been implemented.
-- Save/restore exists for single-level TAS branching. A general segment-solving
-  and full-level bot has not been found in the current implementation; do not
-  confuse the Frostfell-specific route search with a campaign-playing bot.
-- The future White Court aqueduct is positioned but not cross-zone validated.
-- World-wide Muster rosters remain future work. Co-op and NG+ follow solo Base.
+- Bram's escort now concludes at the root wall with an authored payoff; Gilded
+  Instinct and the three formerly inert Gifts are implemented. Five secondary
+  Echo hooks remain unread (see `KNOWN_BUGS.md`).
+- The traversal bot (`npm run bot`) completes Outskirts, Black Woods and the
+  Causeway and reports the exact failed segment elsewhere; every later level
+  stops at a verb it lacks, portal placement first. It is not a campaign bot.
+- The White Court aqueduct's Frostfell half is validated; the far half waits for
+  that level's pass.
+- The recall's rewards, caches and shortcuts for the return are the next pass.
+  Co-op and NG+ follow solo Base.
 
 ## Working-copy and release caveats
 

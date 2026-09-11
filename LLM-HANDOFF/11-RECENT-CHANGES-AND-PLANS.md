@@ -5,6 +5,33 @@ and the owner's subsequent decisions. Implementation and future proposals are
 separated deliberately. Stable source symbols are preferable to obsolete line
 numbers in the large `public/index.html`.
 
+## 2026-09-11 — foundation, deferred issues, the bot, the recall
+
+Five commits on `chore/track-authoritative-tree`, each with its own evidence:
+
+- **Foundation.** The full suite, never rerun after Frostfell, had 8 failures: six
+  stale source-shape guards and two real shipping defects. `bladefall-harness.js`
+  was loaded by `index.html` but shipped by neither `sw.js` nor `build-deploy.sh`;
+  `release-check.mjs` only validated manifest→index and kept its own drifting
+  asset list. It now parses `build-deploy.sh` and checks index→manifest (73→93
+  assets). `make-working-copy.sh` excluded `index.html.pre-multiplayer.bak`, which
+  `recollection-player.html` loads, so lean copies had a broken postgame.
+- **Deferred issues.** Bram never completed at all (nothing set `done`; the
+  escort payoff lives in `nextStage()`, which Black Woods never calls); his lesson
+  now concludes at the root wall with a persisted quest event and a regional
+  payoff. Gilded Instinct, Rime Step, Cinder Oath and Hushed Shape are wired;
+  `gifts.test.mjs` fails on any Gift with hooks and no runtime call, and
+  `echoes.test.mjs` locks the five unread Echo hooks so the list can only shrink.
+  The aqueduct's Frostfell half is validated in the running game.
+- **The bot.** `scripts/bladefall-bot.mjs`: geometry-derived ledge graph, macro
+  search with save/restore branching, a mechanism layer for doors, exact failure
+  reports. It also exposed that `saveState()` threw on three stages because an
+  elite roll stored a function on the entity. See `TESTING.md` for reach and the
+  five lessons that cost the most time.
+- **The recall.** `MUSTER_ROSTERS` for Warden, Outskirts, Black Woods and Broken
+  Causeway; three archetypes (shieldbearer, linesman, signaler); one event source;
+  idempotent install; no health inflation. See `docs/frostfell-return-proposal.md`.
+
 ## Opening, followers and westward return
 
 - The startup softlock came from the Outskirts western updraft ignoring

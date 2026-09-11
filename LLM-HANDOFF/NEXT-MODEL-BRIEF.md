@@ -1,10 +1,10 @@
-# Brief for a fresh model session — 2026-09-10
+# Brief for a fresh model session — 2026-09-11
 
 Read `LLM-HANDOFF/README.md`, current state, recent changes and the relevant
-charter before editing. Source is `public/`; the Git index still tracks only 11
-files. Version `7.95.2` / cache `bladefall-v175` are unchanged despite newer source
-work. August release parity does not certify this working tree. Never deploy to
-Netlify without explicit owner instruction.
+charter before editing. Source is `public/`. Branch `chore/track-authoritative-tree`
+tracks the whole tree (not yet pushed or merged). Version `7.96.0` / cache
+`bladefall-v176`. `npm test` is 500/500 and `release:check` is green as of
+2026-09-11. Never deploy to Netlify without explicit owner instruction.
 
 Bladefall is a compact, interconnected, single-player action-adventure with
 portals as its signature. The knight's unnamed-on-screen Datura delirium is
@@ -34,16 +34,15 @@ Refuge/court/summit cycle after summit use; fresh Up each time. Both Warden mine
 entrances use Up, safe arrival `(330, 0)`, no held-Left bounce. Latest changes
 received positive owner feedback. White Court is not redesigned.
 
-Read `11-RECENT-CHANGES-AND-PLANS.md` and `docs/frostfell-return-proposal.md` for the
-planned world-wide recall and ancillary Gemini ideas. They are not automatic
-instructions to implement more. Keep the recall a surprise. Future boss work
+The recall now reaches Warden, Outskirts, Black Woods and Broken Causeway
+(`MUSTER_ROSTERS`); its rewards and shortcuts are the next pass. Keep it a
+surprise. `npm run bot` completes the first three levels from cold and reports
+exact failures elsewhere; portal placement is its next verb. Future boss work
 should offer active, recoverable setups and generous portal capture; never gate
 mandatory routes on optional Echoes or require an ability its own boss awards.
 
 TAS: `?tas=1`, `window.__BF.tas`, reset/input/read and named save/restore; see
 `TESTING.md`. Baseline Outskirts `(350, 0)`, run 200, jump 480, gravity 1400.
-Full single-level state replay is tested; general campaign bot is still a goal,
-not proven by the bespoke Frostfell solver. Latest evidence: 70 focused tests
-passed and Frostfell receipt has all 15 checks true, including normal-keyboard
-mine crossings. Full suite/release parity were not rerun for the latest pass.
-Bram's legacy reward mismatch and inactive Gilded Instinct remain known issues.
+Bram, Gilded Instinct and the inert Gifts are resolved; five secondary Echo hooks
+stay unread by design until their chapters. Frost Sorcerer / White Court is the
+next chapter to design.

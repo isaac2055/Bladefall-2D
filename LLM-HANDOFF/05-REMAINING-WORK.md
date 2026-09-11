@@ -10,13 +10,14 @@ requires Test Mode, stale saves, unexplained geometry, or model knowledge.
 
 ## Priority 0 — protect the current project
 
-1. Make a real source-control checkpoint of the entire authoritative working
-   tree. At present, most modern files are untracked and the Git remote cannot
-   recreate the game.
+1. Done on 2026-09-11: branch `chore/track-authoritative-tree` tracks the whole
+   authoritative tree and a fresh clone rebuilds the game. It still needs the
+   owner's decision to push and merge into `main`.
 2. Preserve an independent runnable lean copy using
-   `LLM-HANDOFF/make-working-copy.sh` before large future edits.
-3. Never delete the old evidence/archive until a separate backup exists, even
-   though it should not be copied into every model workspace.
+   `LLM-HANDOFF/make-working-copy.sh` before large future edits. The generator
+   now ships the preserved original game that the Recollection player loads.
+3. Never delete the old evidence/archive until a separate backup exists; it is
+   deliberately not tracked in Git.
 
 ## Priority 1 — preserve accepted opening; observed polish only
 
@@ -35,18 +36,17 @@ useful, but is not an unfulfilled order to redesign Frostfell.
 
 The next choices require a new implementation instruction:
 
-- Extend the permanent military recall to authored encounters across previous
-  and future regions. Only Frostfell changes now; regional roles, placement and
-  reward/route changes still need planning. Preserve progress and surprise.
+- The recall now reaches Warden, Outskirts, Black Woods and Broken Causeway with
+  authored rosters (`MUSTER_ROSTERS`). Still open: the return's rewards, caches
+  and shortcuts, and rosters for later regions as they receive their passes.
 - Design Frost Sorcerer / White Court with active spell/siphon/cold-state play
   and Attunement, respecting the high-shaft return itinerary.
-- Resume the autonomous-play tooling goal: heuristic segment policy, save/restore
-  branching search, then geometry-derived full-level chaining. Existing TAS and
-  the Frostfell-specific route search are groundwork, not that general bot.
+- Extend the traversal bot with portal placement; that single verb is what
+  every level from the Updrafts on stops at. See `TESTING.md`.
 
-Known deferred issues: Bram's root-wall/legacy reward mismatch; inactive Gilded
-Instinct cache-glint mechanic; future aqueduct connection validation. See
-`11-RECENT-CHANGES-AND-PLANS.md` and `KNOWN_BUGS.md`.
+Known deferred issues: five unread secondary Echo hooks; the far half of the
+White Court aqueduct. Bram, Gilded Instinct and the inert Gifts are resolved.
+See `11-RECENT-CHANGES-AND-PLANS.md` and `KNOWN_BUGS.md`.
 
 ## Priority 3 — Levels 9–16
 
