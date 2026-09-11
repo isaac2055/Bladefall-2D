@@ -164,3 +164,23 @@ test('the runtime exposes a Level 2 production receipt for playable acceptance',
   assert.match(source,/authoredEncounters:\(G\.enemies\|\|\[\]\)\.filter\(e=>e\.authoredEncounter\)/);
   assert.match(source,/blackWoodsState:\(\)=>G&&G\.blackWoodsProduction\|\|null/);
 });
+
+test('Bram’s truth lesson concludes at the root wall instead of a stage boundary Black Woods never reaches',()=>{
+  // Black Woods leaves through physical zone streaming, so nextStage()'s escort
+  // payoff cannot fire here and Bram was previously never marked done at all.
+  assert.match(source,/function concludeRootboundLesson\(n,p\)\{/);
+  assert.match(source,/if\(G\.stageIndex!==1\|\|n\.profileId!=='bram'\|\|n\.done\|\|n\.state!=='follow'\)return false;/);
+  // The conclusion is anchored to the authored wall, not a hard-coded x.
+  assert.match(source,/const wall=G\.obstacles\.find\(o=>o\.rootWall&&!o\.gone\);/);
+  assert.match(source,/if\(!wall\|\|p\.x<wall\.x\+wall\.w\|\|n\.x>=wall\.x\)return false;/);
+  assert.match(source,/rootWall:1/);
+  // It persists, so a reload or revisit restores his finished state.
+  assert.match(source,/recordQuestEvent\(\{type:'traveler-helped',target:n\.profileId\},true\);/);
+  assert.match(source,/if\(concludeRootboundLesson\(n,p\)\)continue;/);
+  // Authored levels pay in their own currency, not a random legendary.
+  assert.match(source,/if\(n\.profileId==='bram'\)\{\n\s*addGold\(60\);restoreBlood\(G\.p,Infinity\);persist\(\);/);
+  // The escort plate mechanism needs Companion Command, which is not earned
+  // until Emberdeep, so it must not be what gates his conclusion.
+  const conclusion=source.slice(source.indexOf('function concludeRootboundLesson'),source.indexOf('function followerPathBlocked'));
+  assert.doesNotMatch(conclusion,/followerOnly|FollowerPlate|companion/i);
+});

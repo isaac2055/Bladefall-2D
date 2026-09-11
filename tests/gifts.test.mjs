@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
 await import('../public/bladefall-gifts.js');
 const Gifts=globalThis.BladefallGifts;
 
@@ -18,4 +19,22 @@ test('Blood Vow replaces lifesteal with a discrete retaliation rule',()=>{
   assert.equal(gift.hooks.find(row=>row.operation==='damage:mul').value,1.25);
   assert.doesNotMatch(JSON.stringify(gift.hooks),/life|heal/i);
   assert.equal(Gifts.validate().ok,true);
+});
+
+test('Gilded Instinct is wired to the runtime and no longer advertises itself as inactive', async () => {
+  const source = await readFile(new URL('../public/index.html', import.meta.url), 'utf8');
+  const gift = globalThis.BladefallGifts.uiModel({}).rows.find((row) => row.id === 'gilded-instinct');
+  assert.ok(gift, 'gilded-instinct is present in the catalog');
+  assert.doesNotMatch(gift.description, /inactive|no gameplay effect/i);
+
+  // The Gift reveals placed, unclaimed treasure only. It must never open or
+  // move anything, so no route can come to depend on wearing it.
+  assert.match(source, /function updateCacheSense\(p,dt\)/);
+  assert.match(source, /if\(!hasGift\('gilded-instinct'\)\)/);
+  assert.match(source, /updateCacheSense\(p,dt\);/);
+  assert.match(source, /function cacheSenseTarget\(o\)\{\n\s*if\(o\.gone\|\|o\.read\|\|o\.taken\)return false;/);
+  assert.match(source, /return o\.type==='coin'\|\|!!o\.sealedRecollection\|\|!!o\.vaultKeyId;/);
+  const body = source.slice(source.indexOf('function updateCacheSense'), source.indexOf('function concludeRootboundLesson'));
+  assert.doesNotMatch(body, /\.taken=|\.read=|\.gone=|G\.pickups\.push|grantPermanentCapability/,
+    'cache sense may only draw attention, never claim or unlock anything');
 });

@@ -7890,6 +7890,41 @@ function followerWarmthAt(x,y,range){
   return G.npcs.some(n=>n.kind==='escort'&&!n.relay&&travelerHas(n,'warmth')&&n.state!=='idle'&&
     n.state!=='dead'&&!n.done&&Math.hypot(n.x-x,(n.y||0)-y)<r);
 }
+function cacheSenseTarget(o){
+  if(o.gone||o.read||o.taken)return false;
+  return o.type==='coin'||!!o.sealedRecollection||!!o.vaultKeyId;
+}
+function updateCacheSense(p,dt){
+  if(!hasGift('gilded-instinct')){p.cacheSenseT=0;p.cacheGlintT=0;return;}
+  const still=p.onGround&&Math.abs(p.vx)<14&&(p.atkT||0)<=0;
+  p.cacheSenseT=still?(p.cacheSenseT||0)+dt:0;
+  if(p.cacheSenseT<0.7){p.cacheGlintT=0;return;}
+  p.cacheGlintT=(p.cacheGlintT||0)-dt;
+  if(p.cacheGlintT>0)return;
+  p.cacheGlintT=1.1;
+  for(const o of G.obstacles){
+    if(!cacheSenseTarget(o)||Math.hypot(o.x-p.x,(o.y||0)-(p.y||0))>560)continue;
+    for(let i=0;i<4;i++)G.particles.push({x:o.x+(Math.random()-.5)*22,
+      y:GROUND_Y-(o.y||0)-14-Math.random()*20,vx:(Math.random()-.5)*26,vy:-18-Math.random()*26,
+      sz:1.5+Math.random()*1.6,color:i%2?'#e7c45d':'#fff0c0',life:.5+Math.random()*.35});
+  }
+}
+function concludeRootboundLesson(n,p){
+  if(G.stageIndex!==1||n.profileId!=='bram'||n.done||n.state!=='follow')return false;
+  const wall=G.obstacles.find(o=>o.rootWall&&!o.gone);
+  if(!wall||p.x<wall.x+wall.w||n.x>=wall.x)return false;
+  n.done=true;n.state='wait';n.waitX=n.x;n.waitY=n.y;
+  coopSendTravelerIntent(n,'done');
+  coopGrantTravelerReward(n);
+  recordQuestEvent({type:'traveler-helped',target:n.profileId},true);
+  const profile=travelerProfile(n);
+  showOutskirtsAnnotation(n,'<b>'+travelerLabel(n)+'</b><br>“'+
+    (profile.rescue||TRAVELER_PROFILES.wanderer.rescue)+'. Past the roots the road stops copying itself — go on.”',
+    {accent:n.accent,radius:300,kind:'person'});
+  addText(n.x,GROUND_Y-n.y-78,'THE LAMP STAYS HERE','#fff2b8',true);
+  if(meta.soundOn)SFX.win();
+  return true;
+}
 function followerPathBlocked(n,p){
   const lo=Math.min(n.x,p.x),hi=Math.max(n.x,p.x);
   for(const q of G.obstacles){
@@ -10647,6 +10682,7 @@ function update(dt){
   // Hitstop: on a kill the world holds its breath for a few frames.
   if(G.hitstop>0){G.hitstop--;return;}
 
+  updateCacheSense(p,dt);
   G.time+=dt;G.shake*=0.88;if(G.stageBanner>0)G.stageBanner-=dt;if(p.toolCd>0)p.toolCd-=dt;if(p.bloodVowT>0)p.bloodVowT=Math.max(0,p.bloodVowT-dt);
   updateOutskirtsRoomPresentation(dt);
   updateOutskirtsAnnotation();
@@ -11430,6 +11466,7 @@ function update(dt){
           (profile.greeting||TRAVELER_PROFILES.wanderer.greeting)+'”');
         if(meta.soundOn)SFX.pickup();
       } else if(n.state==='follow'||n.state==='wait'){
+        if(concludeRootboundLesson(n,p))continue;
         const dx=p.x-n.x;
         if(n.state==='follow'){
           // Catch-up remains an anti-softlock across open pits, but walls and
@@ -18637,6 +18674,12 @@ function coopGrantTravelerReward(n){
   if(n.kind==='survey'){
     meta.outskirtsFieldChart=true;meta.outskirtsMaraRelocated=true;addGold(35);persist();
     if(G.outskirtsProduction){G.outskirtsProduction.fieldChart=true;G.outskirtsProduction.maraRelocated=true;}
+    return true;
+  }
+  // Bram's escort concludes inside an authored level, so it pays in the
+  // region's own currency and a healed body rather than a random legendary.
+  if(n.profileId==='bram'){
+    addGold(60);restoreBlood(G.p,Infinity);persist();
     return true;
   }
   legendaryReward(n.x,n.y+10);

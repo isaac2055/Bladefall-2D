@@ -10,7 +10,7 @@
       'Losing a Blood measure empowers the next direct blade strike for six seconds.',
       [['player:wounded', 'blood-vow:prime', 6], ['weapon:melee-hit', 'damage:mul', 1.25]]],
     ['gilded-instinct', 'Gilded Instinct', 'gilded', '#e7c45d',
-      'Intended effect: stand still to make nearby hidden treasure caches glint. Currently inactive; equipping this Gift has no gameplay effect.',
+      'Stand still and nearby unclaimed caches, keys and sealed memories glint. It only shows what is already there.',
       [['exploration:observe', 'cache-sense:enable', 1]]],
     ['rime-step', 'Rime Step', 'frostbound', '#8fd8ff',
       'The first dash after touching ground leaves a brief slowing wake.',

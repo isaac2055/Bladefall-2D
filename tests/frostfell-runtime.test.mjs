@@ -63,3 +63,19 @@ test('holding left alone cannot cross either end of the folded mine',()=>{
  for(const stage of [6,7]){ctx.G.stageIndex=stage;ctx.G.frostMineRequested=false;assert.equal(ctx.physicalSeamSpec().cross,false);
  ctx.G.frostMineRequested=true;assert.equal(ctx.physicalSeamSpec().cross,true);}
 });
+
+test('the White Court aqueduct stays a sealed far-side shortcut with a supported Frostfell landing',async()=>{
+  const progression=await readFile(new URL('../public/bladefall-progression.js',import.meta.url),'utf8');
+  // It is opened from the Frost Sorcerer side, so it can never become a way to
+  // skip forward into an undesigned chapter from Frostfell.
+  assert.match(progression,/connector\('frostfell-sorcerer', 'frostfell', 'frost-sorcerer', 'frozen-aqueduct', \['double-jump'\], \{\n\s*shortcut: true, opensFrom: 'frost-sorcerer', initiallySealed: true,/);
+  // The in-world plaque says so plainly rather than implying a route exists.
+  assert.match(source,/The far sluice is barred from the White Court\. The old high shaft above the Causeway is still the way in\./);
+  // Arrivals land at (14920,650), which must sit on the summit deck.
+  assert.match(source,/if\(plan\.connectorId==='frostfell-sorcerer'&&plan\.targetZoneId==='frostfell'\)\{x=14920;y=650;\}/);
+  const level=source.slice(source.indexOf('/* FROSTFELL'),source.indexOf('function frostfellLit'));
+  const deck=[...level.matchAll(/Pl\((\d+),(\d+),(\d+)/g)]
+    .map(([,x,w,y])=>({x:+x,w:+w,y:+y}))
+    .find(p=>p.y===650&&14920>=p.x-p.w/2&&14920<=p.x+p.w/2);
+  assert.ok(deck,'the aqueduct arrival has a summit platform under it');
+});
