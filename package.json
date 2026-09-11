@@ -19,7 +19,8 @@
     "validate:frostfell": "node scripts/validate-frostfell.mjs",
     "validate:warden": "node scripts/validate-warden.mjs",
     "validate:recollections": "node scripts/validate-recollections.mjs",
-    "release:check": "node scripts/release-check.mjs"
+    "release:check": "node scripts/release-check.mjs",
+    "bot": "node scripts/run-bot.mjs"
   },
   "dependencies": {
     "jsdom": "^29.1.1",

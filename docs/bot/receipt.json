@@ -1,0 +1,1452 @@
+{
+  "schema": "bladefall.traversal-bot",
+  "generatedAt": "2026-09-11T07:02:50.754Z",
+  "pass": false,
+  "runtimeErrors": [],
+  "runs": [
+    {
+      "stage": 0,
+      "boot": {
+        "levelLength": 13800,
+        "capabilities": [
+          "jump"
+        ],
+        "spawn": {
+          "x": 70,
+          "y": 0
+        }
+      },
+      "seconds": 105.1,
+      "pass": false,
+      "failedSegment": 4,
+      "reason": "every candidate hop failed",
+      "from": {
+        "x0": 2600,
+        "x1": 3180,
+        "y": 0
+      },
+      "tried": [
+        {
+          "to": {
+            "x0": 3370,
+            "x1": 3830,
+            "y": 0
+          },
+          "attempts": [
+            {
+              "plan": "jump",
+              "inset": 84,
+              "hold": 22,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "blood",
+              "frames": 367,
+              "x": 3120,
+              "y": 11
+            },
+            {
+              "plan": "jump",
+              "inset": 84,
+              "hold": 6,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "blood",
+              "frames": 367,
+              "x": 3120,
+              "y": 11
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 16,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "blood",
+              "frames": 367,
+              "x": 3120,
+              "y": 11
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 10,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "blood",
+              "frames": 367,
+              "x": 3120,
+              "y": 11
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 22,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "blood",
+              "frames": 367,
+              "x": 3120,
+              "y": 11
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 6,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "blood",
+              "frames": 367,
+              "x": 3120,
+              "y": 11
+            }
+          ]
+        },
+        {
+          "to": {
+            "x0": 3195,
+            "x1": 3345,
+            "y": 56
+          },
+          "attempts": [
+            {
+              "plan": "jump",
+              "inset": 84,
+              "hold": 22,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "blood",
+              "frames": 367,
+              "x": 3120,
+              "y": 11
+            },
+            {
+              "plan": "jump",
+              "inset": 84,
+              "hold": 6,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "blood",
+              "frames": 367,
+              "x": 3120,
+              "y": 11
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 16,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "blood",
+              "frames": 367,
+              "x": 3120,
+              "y": 11
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 10,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "blood",
+              "frames": 367,
+              "x": 3120,
+              "y": 11
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 22,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "blood",
+              "frames": 367,
+              "x": 3120,
+              "y": 11
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 6,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "blood",
+              "frames": 367,
+              "x": 3120,
+              "y": 11
+            }
+          ]
+        },
+        {
+          "to": {
+            "x0": 3405,
+            "x1": 3535,
+            "y": 58
+          },
+          "attempts": [
+            {
+              "plan": "jump",
+              "inset": 84,
+              "hold": 22,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "blood",
+              "frames": 367,
+              "x": 3120,
+              "y": 11
+            },
+            {
+              "plan": "jump",
+              "inset": 84,
+              "hold": 6,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "blood",
+              "frames": 367,
+              "x": 3120,
+              "y": 11
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 16,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "blood",
+              "frames": 367,
+              "x": 3120,
+              "y": 11
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 10,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "blood",
+              "frames": 367,
+              "x": 3120,
+              "y": 11
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 22,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "blood",
+              "frames": 367,
+              "x": 3120,
+              "y": 11
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 6,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "blood",
+              "frames": 367,
+              "x": 3120,
+              "y": 11
+            }
+          ]
+        },
+        {
+          "to": {
+            "x0": 3370,
+            "x1": 3830,
+            "y": 0
+          },
+          "bloodAllowed": true,
+          "attempts": [
+            {
+              "plan": "jump",
+              "inset": 84,
+              "hold": 22,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3175,
+              "y": 2
+            },
+            {
+              "plan": "jump",
+              "inset": 84,
+              "hold": 6,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3175,
+              "y": 2
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 16,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3175,
+              "y": 2
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 10,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3175,
+              "y": 2
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 22,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3175,
+              "y": 2
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 6,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3175,
+              "y": 2
+            }
+          ]
+        },
+        {
+          "to": {
+            "x0": 3195,
+            "x1": 3345,
+            "y": 56
+          },
+          "bloodAllowed": true,
+          "attempts": [
+            {
+              "plan": "jump",
+              "inset": 84,
+              "hold": 22,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3175,
+              "y": 2
+            },
+            {
+              "plan": "jump",
+              "inset": 84,
+              "hold": 6,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3175,
+              "y": 2
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 16,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3175,
+              "y": 2
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 10,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3175,
+              "y": 2
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 22,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3175,
+              "y": 2
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 6,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3175,
+              "y": 2
+            }
+          ]
+        },
+        {
+          "to": {
+            "x0": 3405,
+            "x1": 3535,
+            "y": 58
+          },
+          "bloodAllowed": true,
+          "attempts": [
+            {
+              "plan": "jump",
+              "inset": 84,
+              "hold": 22,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3175,
+              "y": 2
+            },
+            {
+              "plan": "jump",
+              "inset": 84,
+              "hold": 6,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3175,
+              "y": 2
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 16,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3175,
+              "y": 2
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 10,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3175,
+              "y": 2
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 22,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3175,
+              "y": 2
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 6,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3175,
+              "y": 2
+            }
+          ]
+        }
+      ],
+      "solved": [
+        {
+          "seg": 0,
+          "to": {
+            "x0": 730,
+            "x1": 1120,
+            "y": 0
+          },
+          "plan": {
+            "plan": "jump",
+            "inset": 26,
+            "hold": 16,
+            "at": null,
+            "dashAt": null,
+            "delay": 0,
+            "evadeAt": 60,
+            "reason": "landed",
+            "frames": 208,
+            "x": 756,
+            "y": 0
+          },
+          "frames": 208,
+          "costBlood": false
+        },
+        {
+          "seg": 1,
+          "to": {
+            "x0": 1310,
+            "x1": 1650,
+            "y": 0
+          },
+          "plan": {
+            "plan": "jump",
+            "inset": 26,
+            "hold": 16,
+            "at": null,
+            "dashAt": null,
+            "delay": 0,
+            "evadeAt": 60,
+            "reason": "landed",
+            "frames": 177,
+            "x": 1346,
+            "y": 0
+          },
+          "frames": 177,
+          "costBlood": false
+        },
+        {
+          "seg": 2,
+          "to": {
+            "x0": 1880,
+            "x1": 2600,
+            "y": 0
+          },
+          "plan": {
+            "plan": "jump",
+            "inset": 26,
+            "hold": 16,
+            "at": null,
+            "dashAt": null,
+            "delay": 0,
+            "evadeAt": 60,
+            "reason": "landed",
+            "frames": 164,
+            "x": 1892,
+            "y": 0
+          },
+          "frames": 164,
+          "costBlood": false
+        },
+        {
+          "seg": 3,
+          "to": {
+            "x0": 2600,
+            "x1": 3180,
+            "y": 0
+          },
+          "plan": {
+            "plan": "walk",
+            "inset": null,
+            "hold": null,
+            "at": null,
+            "dashAt": null,
+            "delay": 0,
+            "evadeAt": 60,
+            "reason": "landed",
+            "frames": 211,
+            "x": 2596,
+            "y": 0
+          },
+          "frames": 211,
+          "costBlood": false
+        }
+      ],
+      "p": {
+        "frame": 762,
+        "x": 2595.5555555555625,
+        "y": 0,
+        "vx": 199.99999999999997,
+        "vy": 0,
+        "onGround": true,
+        "state": "grounded",
+        "onWall": false,
+        "slamming": false,
+        "dead": false,
+        "hp": 100,
+        "blood": 5,
+        "coyote": 0.1,
+        "wallCoyote": 0,
+        "dodgeCdT": 0,
+        "dodgeTimer": 0,
+        "jumpBuf": 0,
+        "atkBuf": 0,
+        "dashBuf": 0,
+        "slamCd": 0
+      },
+      "inputFrames": 0
+    },
+    {
+      "stage": 1,
+      "boot": {
+        "levelLength": 12400,
+        "capabilities": [
+          "jump"
+        ],
+        "spawn": {
+          "x": 70,
+          "y": 0
+        }
+      },
+      "seconds": 46.4,
+      "pass": false,
+      "failedSegment": 3,
+      "reason": "every candidate hop failed",
+      "from": {
+        "x0": 6700,
+        "x1": 9700,
+        "y": 0
+      },
+      "tried": [
+        {
+          "to": {
+            "x0": 9700,
+            "x1": 12400,
+            "y": 0
+          },
+          "attempts": [
+            {
+              "plan": "jump",
+              "inset": 84,
+              "hold": 22,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 7265,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 84,
+              "hold": 6,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 7265,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 16,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 7265,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 10,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 7265,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 22,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 7265,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 6,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 7265,
+              "y": 0
+            }
+          ]
+        },
+        {
+          "to": {
+            "x0": 9700,
+            "x1": 12400,
+            "y": 0
+          },
+          "bloodAllowed": true,
+          "attempts": [
+            {
+              "plan": "jump",
+              "inset": 84,
+              "hold": 22,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 7265,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 84,
+              "hold": 6,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 7265,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 16,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 7265,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 10,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 7265,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 22,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 7265,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 6,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 7265,
+              "y": 0
+            }
+          ]
+        }
+      ],
+      "solved": [
+        {
+          "seg": 0,
+          "to": {
+            "x0": 2400,
+            "x1": 4200,
+            "y": 0
+          },
+          "plan": {
+            "plan": "walk",
+            "inset": null,
+            "hold": null,
+            "at": null,
+            "dashAt": null,
+            "delay": 0,
+            "evadeAt": 60,
+            "reason": "landed",
+            "frames": 700,
+            "x": 2396,
+            "y": 0
+          },
+          "frames": 700,
+          "costBlood": false
+        },
+        {
+          "seg": 1,
+          "to": {
+            "x0": 4200,
+            "x1": 6700,
+            "y": 0
+          },
+          "plan": {
+            "plan": "walk",
+            "inset": null,
+            "hold": null,
+            "at": null,
+            "dashAt": null,
+            "delay": 0,
+            "evadeAt": 60,
+            "reason": "landed",
+            "frames": 540,
+            "x": 4196,
+            "y": 0
+          },
+          "frames": 540,
+          "costBlood": false
+        },
+        {
+          "seg": 2,
+          "to": {
+            "x0": 6700,
+            "x1": 9700,
+            "y": 0
+          },
+          "plan": {
+            "plan": "walk",
+            "inset": null,
+            "hold": null,
+            "at": null,
+            "dashAt": null,
+            "delay": 0,
+            "evadeAt": 60,
+            "reason": "landed",
+            "frames": 1410,
+            "x": 6697,
+            "y": 0
+          },
+          "frames": 1410,
+          "costBlood": true
+        }
+      ],
+      "p": {
+        "frame": 2652,
+        "x": 6697.287346843874,
+        "y": 0,
+        "vx": 199.99999999999997,
+        "vy": 0,
+        "onGround": true,
+        "state": "grounded",
+        "onWall": false,
+        "slamming": false,
+        "dead": false,
+        "hp": 40,
+        "blood": 2,
+        "coyote": 0.1,
+        "wallCoyote": 0,
+        "dodgeCdT": 0,
+        "dodgeTimer": 0,
+        "jumpBuf": 0,
+        "atkBuf": 0,
+        "dashBuf": 0,
+        "slamCd": 0
+      },
+      "inputFrames": 0
+    },
+    {
+      "stage": 2,
+      "boot": {
+        "levelLength": 14000,
+        "capabilities": [
+          "jump"
+        ],
+        "spawn": {
+          "x": 70,
+          "y": 0
+        }
+      },
+      "seconds": 67,
+      "pass": false,
+      "failedSegment": 1,
+      "reason": "every candidate hop failed",
+      "from": {
+        "x0": 2600,
+        "x1": 5600,
+        "y": 0
+      },
+      "tried": [
+        {
+          "to": {
+            "x0": 5600,
+            "x1": 8200,
+            "y": 0
+          },
+          "attempts": [
+            {
+              "plan": "jump",
+              "inset": 84,
+              "hold": 22,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3164,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 84,
+              "hold": 6,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3164,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 16,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3164,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 10,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3164,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 22,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3164,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 6,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3164,
+              "y": 0
+            }
+          ]
+        },
+        {
+          "to": {
+            "x0": 5810,
+            "x1": 5990,
+            "y": 70
+          },
+          "attempts": [
+            {
+              "plan": "jump",
+              "inset": 84,
+              "hold": 22,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3164,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 84,
+              "hold": 6,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3164,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 16,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3164,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 10,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3164,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 22,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3164,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 6,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3164,
+              "y": 0
+            }
+          ]
+        },
+        {
+          "to": {
+            "x0": 5600,
+            "x1": 8200,
+            "y": 0
+          },
+          "bloodAllowed": true,
+          "attempts": [
+            {
+              "plan": "jump",
+              "inset": 84,
+              "hold": 22,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3164,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 84,
+              "hold": 6,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3164,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 16,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3164,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 10,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3164,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 22,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3164,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 6,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3164,
+              "y": 0
+            }
+          ]
+        },
+        {
+          "to": {
+            "x0": 5810,
+            "x1": 5990,
+            "y": 70
+          },
+          "bloodAllowed": true,
+          "attempts": [
+            {
+              "plan": "jump",
+              "inset": 84,
+              "hold": 22,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3164,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 84,
+              "hold": 6,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3164,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 16,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3164,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 10,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3164,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 22,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3164,
+              "y": 0
+            },
+            {
+              "plan": "jump",
+              "inset": 120,
+              "hold": 6,
+              "at": null,
+              "dashAt": null,
+              "delay": 210,
+              "evadeAt": 130,
+              "reason": "timeout",
+              "frames": 380,
+              "x": 3164,
+              "y": 0
+            }
+          ]
+        }
+      ],
+      "solved": [
+        {
+          "seg": 0,
+          "to": {
+            "x0": 2600,
+            "x1": 5600,
+            "y": 0
+          },
+          "plan": {
+            "plan": "walk",
+            "inset": null,
+            "hold": null,
+            "at": null,
+            "dashAt": null,
+            "delay": 0,
+            "evadeAt": 60,
+            "reason": "landed",
+            "frames": 760,
+            "x": 2596,
+            "y": 0
+          },
+          "frames": 760,
+          "costBlood": false
+        }
+      ],
+      "p": {
+        "frame": 762,
+        "x": 2595.5555555555625,
+        "y": 0,
+        "vx": 199.99999999999997,
+        "vy": 0,
+        "onGround": true,
+        "state": "grounded",
+        "onWall": false,
+        "slamming": false,
+        "dead": false,
+        "hp": 100,
+        "blood": 5,
+        "coyote": 0.1,
+        "wallCoyote": 0,
+        "dodgeCdT": 0,
+        "dodgeTimer": 0,
+        "jumpBuf": 0,
+        "atkBuf": 0,
+        "dashBuf": 0,
+        "slamCd": 0
+      },
+      "inputFrames": 0
+    },
+    {
+      "stage": 3,
+      "pass": false,
+      "reason": "harness error: Unsupported TAS state value",
+      "seconds": 0.2
+    },
+    {
+      "stage": 4,
+      "pass": false,
+      "reason": "harness error: Unsupported TAS state value",
+      "seconds": 0
+    },
+    {
+      "stage": 5,
+      "pass": false,
+      "reason": "harness error: Unsupported TAS state value",
+      "seconds": 0
+    },
+    {
+      "stage": 6,
+      "boot": {
+        "levelLength": 15000,
+        "capabilities": [
+          "jump"
+        ],
+        "spawn": {
+          "x": 14480,
+          "y": 709
+        }
+      },
+      "seconds": 0,
+      "pass": false,
+      "reason": "the knight is not standing on any extractable ledge",
+      "p": {
+        "frame": 2,
+        "x": 14480,
+        "y": 708.8333333333333,
+        "vx": 0,
+        "vy": 46.666666666666664,
+        "onGround": false,
+        "state": "falling",
+        "onWall": false,
+        "slamming": false,
+        "dead": false,
+        "hp": 100,
+        "blood": 5,
+        "coyote": 0.08333333333333334,
+        "wallCoyote": 0,
+        "dodgeCdT": 0,
+        "dodgeTimer": 0,
+        "jumpBuf": 0,
+        "atkBuf": 0,
+        "dashBuf": 0,
+        "slamCd": 0
+      },
+      "inputFrames": 0
+    },
+    {
+      "stage": 7,
+      "pass": false,
+      "reason": "harness error: Runtime.callFunctionOn timed out. Increase the 'protocolTimeout' setting in launch/connect calls for a higher timeout if needed.",
+      "seconds": 180
+    }
+  ]
+}

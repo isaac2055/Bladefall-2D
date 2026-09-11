@@ -7137,8 +7137,13 @@ function spawnEnemy(type,x,isBoss){
   // meaner, triple XP, and a guaranteed rare-or-better drop.
   if(G.stageIndex>2&&!e.boss&&!e.creepy&&!a.muster&&gameChance('enemy',0.07+G.stageIndex*0.004)){
     const keys=Object.keys(ELITE_AFFIX),k=gamePick('enemy',keys);
-    e.elite=Object.assign({key:k},ELITE_AFFIX[k]);
-    ELITE_AFFIX[k].f(e);
+    // Copy only the data an elite carries. The affix function is applied once,
+    // here, and never read back off the entity - but copying it onto e.elite put
+    // a function inside the TAS snapshot, so saveState() threw on every level
+    // that rolled an elite.
+    const affix=ELITE_AFFIX[k];
+    e.elite={key:k,n:affix.n,c:affix.c};
+    affix.f(e);
     e.w=Math.round(e.w*1.15);e.h=Math.round(e.h*1.15);e.xp*=3;
   }
   if(e.boss)G.boss=e;

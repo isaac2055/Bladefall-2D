@@ -65,3 +65,46 @@ Run `npm run validate:frostfell` (Chrome, or set `PUPPETEER_EXECUTABLE_PATH`). I
 The stage bootstrap and isolated Counter encounter are in `scripts/frostfell-route.mjs`; the main traversal does not reposition the player or disable enemies. Preview jump strength now reads the same active capability state as jump count. Cross-zone streaming and the later White Court connection are outside this single-level check.
 
 The Frostfell route validator also covers the new 20-landing finale. It uses TAS save/restore to find a damage-free route, stores the winning inputs in the receipt, replays them, checks the three intermediate checkpoint recoveries, and takes the summit passage back to the refuge. The validator additionally checks the engine activation and persistent Frostfell reinforcements, exact two-Blood hulk contact, and the three-stop service cycle. A normal-play browser page exercises both mine crossings while Left stays held, then verifies the music shift and playback.
+
+## General traversal bot
+
+`npm run bot -- --stage 0` (or `--stages 0,1,2`, `--goal 2600`, `--out path.json`)
+runs `scripts/bladefall-bot.mjs` in a headless browser and writes a receipt.
+Unlike `scripts/frostfell-route.mjs`, it reads no bespoke authoring flag: it
+derives its own segments from whatever geometry the level has loaded.
+
+The loop is the one the owner specified:
+
+1. **Geometry** - every standable surface is a `type:'plat'` (`Gr()` is a `Pl()`),
+   so ledges are extracted directly and ranked by progress toward the goal minus
+   the cost of reaching them.
+2. **Heuristic** - proportional steering with a velocity lookahead and a dead
+   zone that widens with speed.
+3. **Branching search** - when a hop stalls, `saveState`/`restoreState` replay it
+   under a different plan: launch inset, jump hold, double-jump and dash timing,
+   an idle delay (including `'clear'`, which waits for an actual opening rather
+   than guessing a patrol's period), and an evade trigger distance.
+4. **Report** - the winning inputs, or the exact failed segment with the ledge it
+   started from, the candidates it tried, and why each attempt ended.
+
+The accumulated inputs are replayed from the origin and the resulting state
+compared, so `replayIdentical` in the receipt is real determinism evidence.
+
+**Current reach, measured, not claimed.** The bot solves segments and pinpoints
+failures on every authored stage, but it does not yet complete a full level. On
+a 2600-unit goal in the Outskirts it solves four segments and replays them
+identically; on the full level it stops at the weaponless avoidance grunt, which
+the level deliberately builds as a timing lesson. Two classes of fix are still
+open: passing a pursuing body that patrols across the whole launch ledge, and
+levels whose spawn is not on an extractable ledge (the Warden's high eastern
+entry). Treat it as a working framework with honest failure reporting, not as a
+campaign-completing bot.
+
+Two bugs found by building it are worth remembering:
+
+- **A held button is one press.** Keeping `jump` true across frames presses once;
+  the knight then walks into the next obstacle with the button stuck down. Every
+  repeated hop must release between presses.
+- **Fixed frame budgets hide geometry.** Capping a walk at 220 frames is about
+  733 units at run speed, so any ledge wider than that was unreachable and looked
+  like a movement failure. Budgets are derived from the distance being covered.
