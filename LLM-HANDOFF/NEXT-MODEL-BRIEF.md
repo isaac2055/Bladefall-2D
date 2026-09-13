@@ -2,7 +2,7 @@
 
 Read `LLM-HANDOFF/README.md`, current state, recent changes and the relevant
 charter before editing. Source is `public/`. Branch `chore/track-authoritative-tree`
-tracks the whole tree (not yet pushed or merged). Version `7.96.0` / cache
+tracks the whole tree (pushed; `main` fast-forwarded to `707e473` on 2026-09-13). Version `7.96.0` / cache
 `bladefall-v176`. `npm test` is 500/500 and `release:check` is green as of
 2026-09-11. Never deploy to Netlify without explicit owner instruction.
 

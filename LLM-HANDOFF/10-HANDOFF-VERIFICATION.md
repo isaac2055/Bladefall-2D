@@ -9,7 +9,7 @@ parsed from `build-deploy.sh`. Mirror rebuilt from `public/`. No deployment.
 
 Git: branch `chore/track-authoritative-tree` (from `main` at `dd2d9a7`) tracks the
 whole authoritative tree; a fresh clone rebuilt the mirror and passed
-`release:check`. Not pushed, not merged.
+`release:check`. Pushed 2026-09-13; GitHub `main` fast-forwarded `dd2d9a7` → `707e473`.
 
 ## Retained gameplay evidence
 

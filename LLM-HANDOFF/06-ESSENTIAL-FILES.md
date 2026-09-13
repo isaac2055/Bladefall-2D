@@ -85,12 +85,28 @@ Especially important existing documents:
 
 ## Git history
 
-The `.git/` directory is useful for provenance but is not currently a complete
-project representation because most important files are untracked. A lean copy
-may omit it. The correct long-term fix is to review secrets/licensing, expand
-`.gitignore` for generated bulk, then deliberately commit the authoritative
-modules, tests, scripts, compact docs, audio attribution/assets, and handoff
-records. Do not run a destructive cleanup while resolving this.
+Since 2026-09-11 the repository tracks the whole authoritative tree (modules,
+tests, scripts, compact docs, audio attribution and handoff records);
+`.gitignore` excludes `node_modules/`, `netlify-deploy/`, `.netlify/` and docs
+media. GitHub `main` was fast-forwarded to `707e473` (version `7.96.0`) on
+2026-09-13, so a fresh clone is a complete working copy after `npm install`.
+
+**Hazard — this working copy lives in iCloud-synced `~/Desktop`.** Under disk
+pressure macOS evicts file contents to iCloud and leaves `dataless` placeholders;
+any content read then blocks until iCloud returns the file, so `git status`,
+`cat` and the test suite hang rather than fail. On 2026-09-11/12 `.git/index` was
+evicted mid-session; on 2026-09-13 every loose object and most of `public/` were,
+and iCloud stalled for about ninety minutes while the account's storage was full.
+Before git work here, check:
+
+```bash
+find .git -type f -print0 | xargs -0 ls -lO | grep -c dataless
+```
+
+Anything above zero means wait for iCloud (Finder → folder → "Download Now"),
+not retry. Stats and directory listings never block; only content reads do. The
+durable fix is to keep the clone outside iCloud-synced folders. Do not run a
+destructive cleanup while resolving this.
 
 ## Canonical versus generated
 
