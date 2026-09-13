@@ -1,4 +1,4 @@
-# Current state — 2026-09-11
+# Current state — 2026-09-13
 
 ## Production status
 
@@ -12,8 +12,9 @@ That feedback is not a claim of exhaustive fresh-save or full-world acceptance.
 
 Levels 9–16 still need their dedicated current-design passes, even where legacy
 boss mechanics or custom geometry already exist. Frost Sorcerer / White Court is
-the next untouched chapter. A broader Muster encounter pass is also planned,
-but neither is automatically authorized by this documentation request.
+the next untouched chapter. The Muster recall already reaches Warden, Outskirts,
+Black Woods and Broken Causeway; its rewards, caches and shortcuts are the next
+recall pass. Neither is automatically authorized by this documentation request.
 
 ## Source identity and verification
 
@@ -27,8 +28,10 @@ but neither is automatically authorized by this documentation request.
 - Latest full run: **`npm test` 500 passed, 0 failed**; `npm run release:check` ok,
   **93** assets checked (the manifest is parsed from `build-deploy.sh`, so it cannot
   drift again). Mirror rebuilt. No Netlify deployment was performed or authorized.
-- The Git branch `chore/track-authoritative-tree` tracks the whole tree; a fresh
-  clone rebuilds and passes `release:check`.
+- Git tracks the whole tree. Pushed and merged on 2026-09-13: GitHub `main` is at
+  the release commit plus handoff-only commits. A fresh clone rebuilds and passes
+  `release:check`; re-verified after the 2026-09-13 iCloud rehydration (`git fsck`
+  clean, 500/500, 93 assets).
 
 ## Current regional status
 
@@ -37,7 +40,7 @@ but neither is automatically authorized by this documentation request.
 | 1–5 | Authored opening; observed startup, return, follower and interaction repairs incorporated. Marksman balance protected. |
 | 6 | Ruined Keep: two Belfry payloads, Wall Jump, Archive, Keep Key and westward return implemented. |
 | 7 | Warden: Turning Cells and opposed-cross boss complete in substance; latest three-crash/final-strike rules below. |
-| 8 | Frostfell: authored 15,100-unit level, including active Frostfell-only Muster escalation. |
+| 8 | Frostfell: authored 15,100-unit level; its Muster Engine is the single source of the world-wide recall. |
 | 1–3, 6 | The Muster recall installs authored rosters here once Frostfell's engine has struck. |
 | 9–16 | Existing foundations/legacy content; full current level passes remain. |
 
@@ -56,7 +59,8 @@ bounce between levels. The service route becomes **refuge → court → summit �
 refuge** after the summit passage is used, requiring fresh Up for every move.
 Muster activation is a six-second bell/camera sequence; the strike changes mood
 and music from Drifting Memories to ClockWork. Eleven authored reinforcements
-and a one-time 55% max-health increase apply **only in Frostfell**. Larger hulks
+and a one-time 55% max-health increase apply **only in Frostfell**; the recall
+elsewhere adds authored rosters with no health inflation. Larger hulks
 cost two Blood on contact. No boss revival, duplicate roster or stacking health.
 
 Read [recent changes](11-RECENT-CHANGES-AND-PLANS.md) for opening repairs, exact
@@ -78,11 +82,13 @@ Frostfell setup, harness status and proposal boundaries; read the
 
 ## Working-copy and release caveats
 
-The Git index still contains only **11 files** (rechecked on this refresh).
-The filesystem, not a clone of that index, is the working-game authority.
-Use [essential files](06-ESSENTIAL-FILES.md) and the lean-copy generator; preserve
-an independent archive before major work. Old size/copy measurements are dated
-in [working-copy instructions](07-WORKING-COPY.md).
+Git tracks the whole authoritative tree and GitHub `main` matches it, so a fresh
+clone is a complete working copy; the lean-copy generator remains the way to hand
+over a runnable folder without the historical evidence. The owner's own copy lives
+in iCloud-synced `~/Desktop`, which can evict files to placeholders that hang every
+read; see the Git section of [essential files](06-ESSENTIAL-FILES.md) for the
+one-line check. Preserve an independent archive before major work. Old size/copy
+measurements are dated in [working-copy instructions](07-WORKING-COPY.md).
 
 Edit `public/`, never the generated `netlify-deploy/`. At a release boundary,
 bump version/cache as appropriate, rebuild and run parity. Preserve save and

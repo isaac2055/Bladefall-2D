@@ -230,9 +230,10 @@ are useful prototypes, not permission to skip a dedicated future pass.
 Frostfell now demonstrates Counter, environmental heat routing and Double Jump,
 then tests Double Jump on exposed ice before an optional deliberate engine
 interaction changes its atmosphere and local enemies. The military recall is a
-world-story extension, not a replacement progression constitution. Its wider
-encounter pass is planned; only Frostfell is implemented. The owner explicitly
-prefers surprise, without advance hints warning of the escalation.
+world-story extension, not a replacement progression constitution. Since
+2026-09-11 the recall installs authored rosters in Warden, Outskirts, Black Woods
+and Broken Causeway; the return's rewards and later regions remain planned. The
+owner explicitly prefers surprise, without advance hints warning of the escalation.
 
 The broader return should change occupation, enemy roles, access and rewards,
 preserve solved progress and avoid reviving bosses. See

@@ -148,11 +148,14 @@ repeated owner feedback with the current accepted implementation direction.
   obey the Keep seal. Keep the real startup and westward return solvable.
 - The Updrafts harness remains stage-local but usable on a legitimate revisit.
   The Rain-Catcher lift can already be open before Keep; don't relock it.
-- Gilded Instinct stays honestly described as inactive until its mechanic is
-  separately requested; a description fix is not permission to implement it.
+- Gilded Instinct is implemented (2026-09-11, on request): standing still makes
+  unclaimed caches, keys and sealed memories glint. It reveals only what exists;
+  never let it invent treasure or replace level readability.
 - Frostfell's substantial exposed Double Jump finale and local Muster activation
   are implemented. The military escalation is a surprise, without warning hints.
-  Only Frostfell gets the new roster today. Don't claim world-wide coverage.
+  Since 2026-09-11 the recall installs authored rosters in Warden, Outskirts, Black
+  Woods and Broken Causeway too (`MUSTER_ROSTERS`); later regions get theirs with
+  their own passes. Don't claim coverage beyond those five.
 - The mine uses Up at both ends, not held-direction boundaries. Summit use adds
   the third service stop; require a fresh Up press for each cycle leg.
 - Muster is persistent and idempotent: no repeated HP stacking, duplicate roster,

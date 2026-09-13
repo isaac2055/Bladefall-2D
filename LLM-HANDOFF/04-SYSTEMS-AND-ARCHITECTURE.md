@@ -196,12 +196,21 @@ checkpoint and does not support arbitrary async cross-zone work.
 
 `scripts/frostfell-route.mjs` contains bespoke route/setup and finale branching;
 `scripts/frostfell-muster-checks.mjs` covers the engine and normal-play mine/music.
-Do not advertise these as a general geometry-derived full-level bot.
+The general geometry-derived bot is separate: `scripts/bladefall-bot.mjs`
+(`npm run bot`, driver `scripts/run-bot.mjs`) builds a ledge graph from live
+platform geometry, searches macro-actions with `saveState`/`restoreState`, drives
+door and switch detours, and writes `docs/bot/receipt.json`. It completes the first
+three levels; see `TESTING.md`.
 
 ## Frostfell persistence and presentation
 
-`FROSTFELL_LEVEL`, `frostfellFinale`, `interactFrostfell` and
-`FROST_MUSTER_ROSTER` are in the composition root. `frost-hearths`, individual
+`FROSTFELL_LEVEL`, `frostfellFinale`, `interactFrostfell`,
+`FROST_MUSTER_ROSTER` and the world-wide `MUSTER_ROSTERS` / `musterRecalled()` /
+`installMusterRoster()` are in the composition root; `activateZonePersistence`
+installs a region's recall roster once `frost-muster` is open, before hydration,
+with stable `zoneEntityId`s and no health inflation. Three recall archetypes
+(shieldbearer, linesman, signaler) share the ordinary AI; the signaler's call
+wakes nearby foes and breaks when it is struck. `frost-hearths`, individual
 brazier circuits, `frost-thermal` and `frost-muster` latch in existing zone state.
 Nim's Seal uses the valid campaign source `authored:frost-hearths`.
 `frost-service` opens the original return; `frost-summit-service` adds the third

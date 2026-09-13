@@ -1,6 +1,15 @@
-# Handoff verification — 2026-09-11
+# Handoff verification — 2026-09-13
 
-## This refresh
+## 2026-09-13 re-verification after the iCloud eviction
+
+The owner's working copy (iCloud-synced `~/Desktop`) had every loose Git object
+and most of `public/` evicted to placeholders; after iCloud released them:
+`git fsck --strict` clean, `git status` clean, `npm test` **500/500** (90 s),
+`npm run release:check` ok with **93** assets, zero evicted files anywhere in the
+project. Then pushed: `chore/track-authoritative-tree` and `main` both at the
+release commit `707e473` plus handoff-only commits. No deployment.
+
+## The 2026-09-11 release boundary
 
 Source version `7.96.0`, cache `bladefall-v176`, both bumped at this boundary.
 `npm test`: **500 tests, 500 pass, 0 fail** (includes the new bot, recall, gift,

@@ -1,10 +1,13 @@
-# Brief for a fresh model session — 2026-09-11
+# Brief for a fresh model session — 2026-09-13
 
 Read `LLM-HANDOFF/README.md`, current state, recent changes and the relevant
-charter before editing. Source is `public/`. Branch `chore/track-authoritative-tree`
-tracks the whole tree (pushed; `main` fast-forwarded to `707e473` on 2026-09-13). Version `7.96.0` / cache
-`bladefall-v176`. `npm test` is 500/500 and `release:check` is green as of
-2026-09-11. Never deploy to Netlify without explicit owner instruction.
+charter before editing. Source is `public/`; root `TESTING.md` and `KNOWN_BUGS.md`
+are the test and defect authorities. Git tracks the whole tree and GitHub `main`
+(`isaac2055/Bladefall-2D`) matches it since 2026-09-13. Version `7.96.0` / cache
+`bladefall-v176`. `npm test` is 500/500 and `release:check` is green, re-verified
+2026-09-13. Never deploy to Netlify without explicit owner instruction. The owner's
+copy lives in iCloud-synced `~/Desktop`: if any command there hangs, check for
+evicted placeholders first (`06-ESSENTIAL-FILES.md`, Git history) rather than retry.
 
 Bladefall is a compact, interconnected, single-player action-adventure with
 portals as its signature. The knight's unnamed-on-screen Datura delirium is
@@ -29,7 +32,8 @@ Frostfell is now authored, not the old next-to-build shell: 15,100 units, Nim's
 three persistent braziers/Forge Seal, portal-fire thermal works, protected Double
 Jump, galleries/recollection, and a 20-landing ice finale. Up activates the summit
 Muster Engine: cinematic bell strike, darker atmosphere, ClockWork, 11 new foes,
-one-time 55% HP upgrade, two-Blood hulks. This applies **only to Frostfell**.
+one-time 55% HP upgrade, two-Blood hulks. The upgrade and hulks apply **only to
+Frostfell**; the recall elsewhere adds rosters without inflation.
 Refuge/court/summit cycle after summit use; fresh Up each time. Both Warden mine
 entrances use Up, safe arrival `(330, 0)`, no held-Left bounce. Latest changes
 received positive owner feedback. White Court is not redesigned.

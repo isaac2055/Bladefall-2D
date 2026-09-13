@@ -153,13 +153,15 @@ reward, or environmental story needs it.
 ## September additions
 
 - `docs/frostfell-return-proposal.md`: original discussion plus subsequent scope
-  decisions. Finale and Frostfell-only Muster activation are implemented; the
-  world-wide encounter pass is still a proposal. The owner rejected the original
+  decisions. Finale, Frostfell's Muster activation and the four-region recall
+  rosters are implemented (2026-09-11); the return's rewards and later regions
+  are still a proposal. The owner rejected the original
   advance-warning suggestion. Gemini observations are ancillary review prompts.
 - `docs/charters/08-frostfell/README.md`: current eight-room level and implementation
   details; evidence receipt records what the bespoke validator exercised.
 - `TESTING.md` / `docs/tas/README.md`: manual fixed-frame testing, named save/restore
-  and smoke-run limits. The general autonomous campaign bot remains future work.
+  and smoke-run limits, plus the general traversal bot (`npm run bot`, 2026-09-11)
+  that completes the first three levels; a campaign-wide bot remains future work.
 - `KNOWN_BUGS.md`: startup updraft is marked fixed; Bram reward mismatch is not.
 
 Use `11-RECENT-CHANGES-AND-PLANS.md` for the reconciled follow-up timeline; do not

@@ -1,10 +1,13 @@
 # Essential files and copy authority
 
-## Critical warning
+## Copy authority
 
-Do **not** use the current Git index as the copy manifest. It tracks only 11
-files. The modern game depends on many untracked modules and assets. A working
-copy must be made from the current filesystem.
+Since 2026-09-11 Git tracks the whole authoritative tree, and GitHub `main` has
+matched it since 2026-09-13, so a fresh clone plus `npm install` is a complete
+working copy. The tiers below remain the checklist of what must be present, and
+the lean-copy generator in `07-WORKING-COPY.md` is still the way to hand over a
+folder without hundreds of megabytes of historical evidence. See “Git history”
+below for the iCloud eviction hazard that affects the owner's own copy.
 
 ## Tier A — required editable/runtime source
 

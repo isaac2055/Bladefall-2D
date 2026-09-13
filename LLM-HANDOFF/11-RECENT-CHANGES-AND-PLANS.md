@@ -1,13 +1,25 @@
-# Changes since the previous handoff — refreshed 2026-09-10
+# Changes since the previous handoff — refreshed 2026-09-13
 
 This reconciles the August handoff with current source, retained test evidence
 and the owner's subsequent decisions. Implementation and future proposals are
 separated deliberately. Stable source symbols are preferable to obsolete line
 numbers in the large `public/index.html`.
 
+## 2026-09-13 — pushed, merged, and the iCloud eviction
+
+The branch was pushed and GitHub `main` fast-forwarded (`dd2d9a7` → `707e473`,
+then handoff-only commits). Before that could happen, macOS had evicted almost
+the whole working copy — every loose Git object and most of `public/` — to iCloud
+placeholders, because the folder lives in iCloud-synced `~/Desktop` and the disk
+had filled; iCloud refused to return them for ninety minutes while the account's
+storage was full. Nothing was lost: after rehydration `git fsck` was clean and the
+suite was 500/500. The hazard and its one-line check are in
+`06-ESSENTIAL-FILES.md`. The public Netlify site was not redeployed.
+
 ## 2026-09-11 — foundation, deferred issues, the bot, the recall
 
-Five commits on `chore/track-authoritative-tree`, each with its own evidence:
+Eight commits on `chore/track-authoritative-tree` (`135fc6f` … `707e473`), grouped
+here by theme, each with its own evidence:
 
 - **Foundation.** The full suite, never rerun after Frostfell, had 8 failures: six
   stale source-shape guards and two real shipping defects. `bladefall-harness.js`
@@ -48,9 +60,9 @@ Five commits on `chore/track-authoritative-tree`, each with its own evidence:
   applying 8 damage every 0.5 seconds to eligible enemies. Nearby revealed fake
   and invisible platforms have distinct visual treatment, without obvious labels.
 - Bram already carries his lamp. There is no missing lantern pickup. His truth
-  lesson ends at the root wall near x=9600; the generic legendary escort reward
-  is in `nextStage()` but this exit streams zones. That reward/continuation
-  mismatch is still unresolved, recorded in `KNOWN_BUGS.md`. Do not invent a
+  lesson ends at the root wall near x=9600. The old reward/continuation mismatch
+  (the payoff lived in `nextStage()`, which this streamed exit never calls) was
+  resolved on 2026-09-11 by `concludeRootboundLesson`; see above. Do not invent a
   promised reward or fetch quest when explaining him.
 - The Aerie Harness is stage-local: it must not leak beyond Updrafts. Return
   handling restores access to its traversal rather than stranding a player who
@@ -67,9 +79,9 @@ Five commits on `chore/track-authoritative-tree`, each with its own evidence:
 - High sealed Recollections are optional return discoveries with later movement
   access, not initial-visit requirements; finding one does not make it playable
   before the Waking Key.
-- Gilded Instinct's description now says: standing still is intended to make
-  nearby hidden treasure caches glint, but the Gift is currently inactive and
-  has no gameplay effect. Only wording was authorized; no mechanic was added.
+- Gilded Instinct was implemented on 2026-09-11 (`updateCacheSense`): standing
+  still for 0.7 s makes unclaimed caches, keys and sealed memories within 560 units
+  glint. It reveals only what already exists; the description says so.
 
 ## Warden's accepted final fight
 
@@ -139,8 +151,8 @@ silhouettes and deal **two Blood** on contact; singers fire paired frost bolts.
 Patrol bounds protect refuge/shelter approaches. Stable IDs and installation
 before zone hydration prevent duplicate spawns or repeated HP multiplication;
 ordinary rest-reset persistence remains. No defeated boss is revived. The new
-roles are registered in ecology (17 ordinary species total). **Only Frostfell's
-roster changes today.**
+roles are registered in ecology (17 ordinary species total). **That was 2026-09-10; the four-region recall followed on 2026-09-11** (see the
+top of this file; 20 ordinary species now).
 
 Both mine terminals use deliberate Up and arrive at `(330,0)`. Holding Left
 alone cannot trigger another crossing. Counter still gates the Warden exit.
@@ -175,26 +187,30 @@ opt-in runner was extended, not replaced: `?tas=1`, `window.__BF.tas`.
   branched replay. Movement assertions use tolerances; replay identity is exact.
   `wall-slide` can appear while rising; check contacts and velocity together.
 
-The owner's broader goal is a local bot: heuristic toward a target, branching
+The owner's broader goal was a local bot: heuristic toward a target, branching
 search when stalled, then geometry-derived segments to the exit, reporting the
-winning inputs or the exact failed segment. **General segment/full-level solving
-is still future work in the inspected source.** `tas:smoke` is harness evidence,
-not campaign completion. Frostfell's specific solver does not establish general
-boss, puzzle or cross-zone automation. Respect stop-for-review boundaries when
-resuming staged bot work.
+winning inputs or the exact failed segment. **That bot exists since 2026-09-11**
+(`scripts/bladefall-bot.mjs`, `npm run bot`): it completes The Outskirts, Black
+Woods and Broken Causeway from cold with byte-identical replay and reports the
+exact failed segment elsewhere; portal placement is the verb it lacks. `tas:smoke`
+is harness evidence, not campaign completion, and Frostfell's bespoke solver is
+separate. See `TESTING.md` for reach and the lessons that cost the most time.
 
 ## Plans and design guidance — not new implementation orders
 
 Read the [return proposal](../docs/frostfell-return-proposal.md). Its original
 “proposal only” and foreshadowing paragraphs predate the subsequent decisions:
 finale and Frostfell activation are implemented; advance-warning hints were
-rejected; world-wide encounter escalation remains unimplemented.
+rejected; the world-wide recall's rosters are implemented for four regions (see the
+top of this file) while its rewards, caches and shortcuts are not.
 
 The proposed broader recall should make the long Warden → Outskirts → Woods →
 Causeway return interesting through authored new roles, access, rewards and
 changed occupation. Ultimately consider past and future regions, not only one
 return corridor. Preserve solved gates, dead bosses, NPC progress and fast travel;
-do not repeatedly inflate HP. Exact regional rosters/pacing still need design.
+do not repeatedly inflate HP. Rosters exist for Warden, Outskirts, Black Woods and
+Broken Causeway; later regions, the return's rewards, and a played pacing review of
+the long return are still open.
 
 Frost Sorcerer / White Court remains the next chapter to design: aggressive
 chase/blink and moving siphon, changing cold-state phases, active recoverable

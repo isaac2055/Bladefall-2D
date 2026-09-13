@@ -10,9 +10,10 @@ requires Test Mode, stale saves, unexplained geometry, or model knowledge.
 
 ## Priority 0 — protect the current project
 
-1. Done on 2026-09-11: branch `chore/track-authoritative-tree` tracks the whole
-   authoritative tree and a fresh clone rebuilds the game. It still needs the
-   owner's decision to push and merge into `main`.
+1. Done: since 2026-09-11 Git tracks the whole authoritative tree, and on
+   2026-09-13 it was pushed and `main` fast-forwarded. Keep `main` and the working
+   copy in step. The owner's copy is in iCloud-synced `~/Desktop`, which evicted the
+   whole tree once; moving the clone to a non-synced path is recommended, not done.
 2. Preserve an independent runnable lean copy using
    `LLM-HANDOFF/make-working-copy.sh` before large future edits. The generator
    now ships the preserved original game that the Recollection player loads.

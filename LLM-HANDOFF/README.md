@@ -1,7 +1,8 @@
 # Bladefall Antigravity — model handoff
 
 This folder is the durable starting point for a new Codex, Antigravity, Claude,
-or other engineering/design session. It summarizes the intended game, the
+ChatGPT or other engineering/design session. A model with no prior context should
+read [`NEXT-MODEL-BRIEF.md`](./NEXT-MODEL-BRIEF.md) first, then follow the order below. It summarizes the intended game, the
 current implementation, the level-by-level production state, and the files that
 must accompany a working copy.
 
@@ -40,7 +41,7 @@ When records conflict, use this order:
 1. Current files in `public/`, especially `public/index.html` and the loaded
    `public/bladefall-*.js` authorities.
 2. Current automated tests and live validators in `tests/` and `scripts/`.
-3. This handoff folder, whose snapshot date is 2026-09-10.
+3. This handoff folder, whose snapshot date is 2026-09-13.
 4. Current level charters under `docs/charters/`.
 5. Older roadmaps and baseline evidence. These are valuable history, but several
    status tables predate the completed Ruined Keep and Warden passes.
@@ -74,17 +75,22 @@ The generated `netlify-deploy/` directory is never the editing source. Edit
 `public/`, rebuild the mirror, and do not deploy to Netlify unless the owner
 explicitly requests it.
 
-## Snapshot identity — 2026-09-11
+## Snapshot identity — 2026-09-13
 
 - Source version `7.96.0`, service-worker cache `bladefall-v176`. Both were bumped at
   this release boundary; earlier deployed or cached copies are older.
-- The Git branch `chore/track-authoritative-tree` now tracks the whole authoritative
-  tree (352+ files). A fresh clone rebuilds the game. It has not been pushed or merged.
+- Git tracks the whole authoritative tree. GitHub `main`
+  (`https://github.com/isaac2055/Bladefall-2D.git`) was fast-forwarded to it on
+  2026-09-13; a fresh clone of `main` rebuilds the game after `npm install`.
+- The owner's working copy sits in iCloud-synced `~/Desktop`, which evicted the
+  whole tree on 2026-09-13; read the Git section of
+  [`06-ESSENTIAL-FILES.md`](./06-ESSENTIAL-FILES.md) before running git there.
 - Start through Warden complete in substance per owner; Frostfell authored and
   reviewed; the Muster recall now reaches Warden, Outskirts, Black Woods and Broken
   Causeway with authored rosters.
 - Latest evidence: full `npm test` **500/500**, `release:check` ok with **93** assets
-  (the manifest is derived from `build-deploy.sh`), Frostfell receipt 15/15.
+  (the manifest is derived from `build-deploy.sh`), Frostfell receipt 15/15; both
+  re-run on 2026-09-13 after the rehydration.
 - A general traversal bot (`npm run bot`) completes The Outskirts, Black Woods and
   Broken Causeway from cold; later levels stop at portal placement.
 - Frost Sorcerer / White Court remains the next chapter to design. No deployment

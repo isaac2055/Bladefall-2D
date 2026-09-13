@@ -18,7 +18,8 @@ an existing non-empty project.
 
 ## What the script excludes
 
-- `.git/` and its incomplete tracked state;
+- `.git/` (clone `main` from GitHub instead when history is needed; since
+  2026-09-13 it matches the tree);
 - `node_modules/`;
 - generated `netlify-deploy/`;
 - historical screenshot/video atlases and contact sheets;
