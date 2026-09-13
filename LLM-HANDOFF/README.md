@@ -33,6 +33,9 @@ must accompany a working copy.
     changes since August, current Frostfell behavior, harness limits and future plans.
 12. [`NEXT-MODEL-BRIEF.md`](./NEXT-MODEL-BRIEF.md) — concise context that can be
    pasted into a fresh model session after the working copy is attached.
+13. [`12-RECALL-WORK-ORDER.md`](./12-RECALL-WORK-ORDER.md) — the owner's 2026-09-13
+   review of the Muster recall, what actually exists, and the approved plan. This
+   is the current work item.
 
 ## Authority order
 
@@ -86,8 +89,9 @@ explicitly requests it.
   whole tree on 2026-09-13; read the Git section of
   [`06-ESSENTIAL-FILES.md`](./06-ESSENTIAL-FILES.md) before running git there.
 - Start through Warden complete in substance per owner; Frostfell authored and
-  reviewed; the Muster recall now reaches Warden, Outskirts, Black Woods and Broken
-  Causeway with authored rosters.
+  reviewed. The Muster recall outside Frostfell exists only as three to five posts
+  per region with no change to existing enemies; the owner reviewed it on
+  2026-09-13 as not noticeable. `12-RECALL-WORK-ORDER.md` is the current work item.
 - Latest evidence: full `npm test` **500/500**, `release:check` ok with **93** assets
   (the manifest is derived from `build-deploy.sh`), Frostfell receipt 15/15; both
   re-run on 2026-09-13 after the rehydration.

@@ -33,8 +33,10 @@ whole authoritative tree; a fresh clone rebuilt the mirror and passed
 ## Limits
 
 This is not proof of a full continuous fresh campaign, all optional routes, co-op,
-White Court streaming, or subjective balance. The recall's human pacing review of
-the long return has not been played. Positive owner feedback is recorded separately
+White Court streaming, or subjective balance. The owner played the long return on
+2026-09-13 and found the recall outside Frostfell not noticeable; the receipts
+above prove placement hygiene and completion, not impact. See
+`12-RECALL-WORK-ORDER.md`. Positive owner feedback is recorded separately
 from automated coverage.
 
 ## Historical August receipt — not current-tree certification

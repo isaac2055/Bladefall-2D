@@ -153,13 +153,16 @@ repeated owner feedback with the current accepted implementation direction.
   never let it invent treasure or replace level readability.
 - Frostfell's substantial exposed Double Jump finale and local Muster activation
   are implemented. The military escalation is a surprise, without warning hints.
-  Since 2026-09-11 the recall installs authored rosters in Warden, Outskirts, Black
-  Woods and Broken Causeway too (`MUSTER_ROSTERS`); later regions get theirs with
-  their own passes. Don't claim coverage beyond those five.
+  Owner decision 2026-09-13: the recall must be felt in every region — the
+  general enemies beefed up once across all maps (health, damage, awareness),
+  more of them, and a unique new enemy per map — not a few posts. The first
+  four-region implementation was rejected as not noticeable. `12-RECALL-WORK-ORDER.md`.
 - The mine uses Up at both ends, not held-direction boundaries. Summit use adds
   the third service stop; require a fresh Up press for each cycle leg.
-- Muster is persistent and idempotent: no repeated HP stacking, duplicate roster,
-  boss revival or reset of solved gates/NPC progress. Protect inhabited safe sites.
+- Muster is persistent and idempotent: no repeated HP stacking on reload, no
+  duplicate roster, boss revival or reset of solved gates/NPC progress. Protect
+  inhabited safe sites. This never meant "no buff": a one-time world-wide buff is
+  required (2026-09-13).
 - Larger Frostfell hulks are intentionally two-Blood threats, not instant-death
   checkpoint hazards. Keep their distinct silhouette and ordinary telegraphs.
 - TAS setup/state access stays opt-in. Float movement checks use tolerances;

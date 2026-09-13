@@ -33,14 +33,16 @@ three persistent braziers/Forge Seal, portal-fire thermal works, protected Doubl
 Jump, galleries/recollection, and a 20-landing ice finale. Up activates the summit
 Muster Engine: cinematic bell strike, darker atmosphere, ClockWork, 11 new foes,
 one-time 55% HP upgrade, two-Blood hulks. The upgrade and hulks apply **only to
-Frostfell**; the recall elsewhere adds rosters without inflation.
+Frostfell** today; the owner wants that baseline world-wide.
 Refuge/court/summit cycle after summit use; fresh Up each time. Both Warden mine
 entrances use Up, safe arrival `(330, 0)`, no held-Left bounce. Latest changes
 received positive owner feedback. White Court is not redesigned.
 
-The recall now reaches Warden, Outskirts, Black Woods and Broken Causeway
-(`MUSTER_ROSTERS`); its rewards and shortcuts are the next pass. Keep it a
-surprise. `npm run bot` completes the first three levels from cold and reports
+The recall outside Frostfell is the current work item: today it is three to five
+posts per region (`MUSTER_ROSTERS`) and no change to existing enemies, which the
+owner reviewed on 2026-09-13 as not noticeable. Read `12-RECALL-WORK-ORDER.md`
+for the spec: one-time world-wide buff of the general enemies, a re-garrisoned
+world, one unique enemy per region, evident on arrival. Keep it a surprise. `npm run bot` completes the first three levels from cold and reports
 exact failures elsewhere; portal placement is its next verb. Future boss work
 should offer active, recoverable setups and generous portal capture; never gate
 mandatory routes on optional Echoes or require an ability its own boss awards.

@@ -16,6 +16,19 @@ storage was full. Nothing was lost: after rehydration `git fsck` was clean and t
 suite was 500/500. The hazard and its one-line check are in
 `06-ESSENTIAL-FILES.md`. The public Netlify site was not redeployed.
 
+## 2026-09-13 — owner review: the recall outside Frostfell is not enough
+
+Playing `7.96.0` back from Frostfell, the owner met none of what Frostfell's
+strike delivers — new, more, larger, smarter, tougher enemies — in the Warden.
+Correct: the four return regions got three to five posts of three shared types
+and no change to any existing enemy, and the Warden's posts stand two thirds of
+the level away from the mine arrival while first-visit deaths persist. The
+automated evidence proved hygiene, not impact, and `tests/muster-recall.test.mjs`
+forbids the very buff the owner wants. The intent, the exact state and the
+approved plan are in `12-RECALL-WORK-ORDER.md`; it supersedes the recall wording
+below. Verified the same day: the event itself (strike → save → reload → any
+region) works; the shortfall is content, not plumbing.
+
 ## 2026-09-11 — foundation, deferred issues, the bot, the recall
 
 Eight commits on `chore/track-authoritative-tree` (`135fc6f` … `707e473`), grouped
@@ -42,7 +55,8 @@ here by theme, each with its own evidence:
   five lessons that cost the most time.
 - **The recall.** `MUSTER_ROSTERS` for Warden, Outskirts, Black Woods and Broken
   Causeway; three archetypes (shieldbearer, linesman, signaler); one event source;
-  idempotent install; no health inflation. See `docs/frostfell-return-proposal.md`.
+  idempotent install; deliberately no health inflation — which the owner has since
+  rejected (see the 2026-09-13 section and `12-RECALL-WORK-ORDER.md`).
 
 ## Opening, followers and westward return
 
@@ -201,16 +215,16 @@ separate. See `TESTING.md` for reach and the lessons that cost the most time.
 Read the [return proposal](../docs/frostfell-return-proposal.md). Its original
 “proposal only” and foreshadowing paragraphs predate the subsequent decisions:
 finale and Frostfell activation are implemented; advance-warning hints were
-rejected; the world-wide recall's rosters are implemented for four regions (see the
-top of this file) while its rewards, caches and shortcuts are not.
+rejected; the world-wide recall has a thin first implementation that the owner
+reviewed as not noticeable, and `12-RECALL-WORK-ORDER.md` now specifies it.
 
 The proposed broader recall should make the long Warden → Outskirts → Woods →
 Causeway return interesting through authored new roles, access, rewards and
 changed occupation. Ultimately consider past and future regions, not only one
 return corridor. Preserve solved gates, dead bosses, NPC progress and fast travel;
-do not repeatedly inflate HP. Rosters exist for Warden, Outskirts, Black Woods and
-Broken Causeway; later regions, the return's rewards, and a played pacing review of
-the long return are still open.
+do not repeatedly inflate HP on reload — but do apply the one-time world-wide
+buff the owner asked for on 2026-09-13. `12-RECALL-WORK-ORDER.md` is the spec;
+the return's rewards and later regions follow it.
 
 Frost Sorcerer / White Court remains the next chapter to design: aggressive
 chase/blink and moving siphon, changing cold-state phases, active recoverable

@@ -12,9 +12,10 @@ That feedback is not a claim of exhaustive fresh-save or full-world acceptance.
 
 Levels 9–16 still need their dedicated current-design passes, even where legacy
 boss mechanics or custom geometry already exist. Frost Sorcerer / White Court is
-the next untouched chapter. The Muster recall already reaches Warden, Outskirts,
-Black Woods and Broken Causeway; its rewards, caches and shortcuts are the next
-recall pass. Neither is automatically authorized by this documentation request.
+the next untouched chapter. The Muster recall outside Frostfell is the current
+work item: what exists is a handful of posts per region and no change to existing
+enemies, which the owner reviewed on 2026-09-13 as not noticeable. The intent and
+plan are in `12-RECALL-WORK-ORDER.md`.
 
 ## Source identity and verification
 
@@ -41,7 +42,7 @@ recall pass. Neither is automatically authorized by this documentation request.
 | 6 | Ruined Keep: two Belfry payloads, Wall Jump, Archive, Keep Key and westward return implemented. |
 | 7 | Warden: Turning Cells and opposed-cross boss complete in substance; latest three-crash/final-strike rules below. |
 | 8 | Frostfell: authored 15,100-unit level; its Muster Engine is the single source of the world-wide recall. |
-| 1–3, 6 | The Muster recall installs authored rosters here once Frostfell's engine has struck. |
+| 1–3, 6 | After Frostfell's strike: 3–5 recall posts each, no buff to existing enemies, first Warden post 10,900 units from the mine arrival. Rejected as insufficient on 2026-09-13; see `12-RECALL-WORK-ORDER.md`. |
 | 9–16 | Existing foundations/legacy content; full current level passes remain. |
 
 ## Latest behavior to preserve
@@ -59,8 +60,8 @@ bounce between levels. The service route becomes **refuge → court → summit �
 refuge** after the summit passage is used, requiring fresh Up for every move.
 Muster activation is a six-second bell/camera sequence; the strike changes mood
 and music from Drifting Memories to ClockWork. Eleven authored reinforcements
-and a one-time 55% max-health increase apply **only in Frostfell**; the recall
-elsewhere adds authored rosters with no health inflation. Larger hulks
+and a one-time 55% max-health increase apply **only in Frostfell** today; the
+owner wants the same baseline world-wide (`12-RECALL-WORK-ORDER.md`). Larger hulks
 cost two Blood on contact. No boss revival, duplicate roster or stacking health.
 
 Read [recent changes](11-RECENT-CHANGES-AND-PLANS.md) for opening repairs, exact
@@ -77,8 +78,9 @@ Frostfell setup, harness status and proposal boundaries; read the
   stops at a verb it lacks, portal placement first. It is not a campaign bot.
 - The White Court aqueduct's Frostfell half is validated; the far half waits for
   that level's pass.
-- The recall's rewards, caches and shortcuts for the return are the next pass.
-  Co-op and NG+ follow solo Base.
+- The recall outside Frostfell does not yet deliver more, larger, smarter or
+  tougher enemies; `12-RECALL-WORK-ORDER.md` is the spec. Its rewards, caches and
+  shortcuts follow. Co-op and NG+ follow solo Base.
 
 ## Working-copy and release caveats
 

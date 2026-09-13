@@ -37,9 +37,12 @@ useful, but is not an unfulfilled order to redesign Frostfell.
 
 The next choices require a new implementation instruction:
 
-- The recall now reaches Warden, Outskirts, Black Woods and Broken Causeway with
-  authored rosters (`MUSTER_ROSTERS`). Still open: the return's rewards, caches
-  and shortcuts, and rosters for later regions as they receive their passes.
+- **The world-wide recall is the current work item.** What exists (three to five
+  posts per region, no change to existing enemies) was reviewed by the owner on
+  2026-09-13 as not noticeable. The specification, exact current state and
+  approved plan — a one-time world-wide buff of the general enemies, a
+  re-garrisoned world, one unique enemy per region, evident on arrival — are in
+  `12-RECALL-WORK-ORDER.md`. The return's rewards, caches and shortcuts follow.
 - Design Frost Sorcerer / White Court with active spell/siphon/cold-state play
   and Attunement, respecting the high-shaft return itinerary.
 - Extend the traversal bot with portal placement; that single verb is what

@@ -210,7 +210,11 @@ three levels; see `TESTING.md`.
 installs a region's recall roster once `frost-muster` is open, before hydration,
 with stable `zoneEntityId`s and no health inflation. Three recall archetypes
 (shieldbearer, linesman, signaler) share the ordinary AI; the signaler's call
-wakes nearby foes and breaks when it is struck. `frost-hearths`, individual
+wakes nearby foes and breaks when it is struck. Only Frostfell's own install
+applies the ×1.55 health boost and `noticeRange` 480; the world-wide equivalent
+is specified but unbuilt (`12-RECALL-WORK-ORDER.md`), and
+`tests/muster-recall.test.mjs` currently asserts no unit's health is multiplied,
+so that test changes with the feature. `frost-hearths`, individual
 brazier circuits, `frost-thermal` and `frost-muster` latch in existing zone state.
 Nim's Seal uses the valid campaign source `authored:frost-hearths`.
 `frost-service` opens the original return; `frost-summit-service` adds the third

@@ -230,9 +230,11 @@ are useful prototypes, not permission to skip a dedicated future pass.
 Frostfell now demonstrates Counter, environmental heat routing and Double Jump,
 then tests Double Jump on exposed ice before an optional deliberate engine
 interaction changes its atmosphere and local enemies. The military recall is a
-world-story extension, not a replacement progression constitution. Since
-2026-09-11 the recall installs authored rosters in Warden, Outskirts, Black Woods
-and Broken Causeway; the return's rewards and later regions remain planned. The
+world-story extension, not a replacement progression constitution. Outside
+Frostfell the recall must be felt everywhere: the general enemies beefed up once
+across all maps, more of them, and a unique enemy per map (owner, 2026-09-13).
+The first four-region implementation fell short; `12-RECALL-WORK-ORDER.md` in
+the handoff folder specifies it. The
 owner explicitly prefers surprise, without advance hints warning of the escalation.
 
 The broader return should change occupation, enemy roles, access and rewards,

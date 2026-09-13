@@ -1,10 +1,12 @@
 # Level-by-level production record
 
 Updated 2026-09-13. “Implemented” means present in source; automated verification
-is reported separately from owner acceptance. Since 2026-09-11 the Muster recall
-installs authored rosters in The Outskirts, Black Woods, Broken Causeway and the
-Warden once Frostfell's engine has struck; the entries below describe the quiet
-first visit, and `MUSTER_ROSTERS` in `public/index.html` is the recall authority. The owner considers the opening
+is reported separately from owner acceptance. After Frostfell's engine strikes,
+The Outskirts, Black Woods, Broken Causeway and the Warden currently install only
+three to five recall posts each with no change to existing enemies; the owner
+reviewed that on 2026-09-13 as not noticeable, and `12-RECALL-WORK-ORDER.md`
+specifies what each region must become. The entries below describe the quiet
+first visit. The owner considers the opening
 through Warden complete in substance, with later polish deferred. Historical
 “Remaining” notes below are polish/review prompts, not orders to reopen those
 levels. Frostfell's latest changes received positive owner feedback. See
@@ -176,7 +178,7 @@ Focused mechanics/music evidence is recorded separately from full-route review.
 
 ## 8 — Frostfell — authored; latest changes positively reviewed
 
-The 15,100-unit custom settlement now contains the Banked Refuge, Working Streets, Workers’ Hearth, Thermal Works, and Thawed Court. Nim lights three permanent traction-providing braziers, grants one Forge Seal, and settles at the endpoint. Portal-routed fire through wind permanently thaws the works. Double Jump is acquired on safe ground and rehearsed on raised galleries, with an optional recollection and an upper service passage back to the refuge. The Rime Key retains its later Attunement/fire requirement; the eastern aqueduct remains a future connection. Music is Drifting Memories before activation, ClockWork afterward. Beyond the court, a 20-landing ice gauntlet leads to a Muster Engine and a summit return. Up activates a cinematic bell strike and a permanent reinforcement roster in Frostfell. The three service stops cycle once the summit has been used; the Warden mine now uses deliberate Up entrances to avoid held-direction bounce. Since 2026-09-11 the recall also installs authored rosters in The Outskirts, Black Woods, Broken Causeway and the Warden; the return's rewards, caches and shortcuts are unbuilt.
+The 15,100-unit custom settlement now contains the Banked Refuge, Working Streets, Workers’ Hearth, Thermal Works, and Thawed Court. Nim lights three permanent traction-providing braziers, grants one Forge Seal, and settles at the endpoint. Portal-routed fire through wind permanently thaws the works. Double Jump is acquired on safe ground and rehearsed on raised galleries, with an optional recollection and an upper service passage back to the refuge. The Rime Key retains its later Attunement/fire requirement; the eastern aqueduct remains a future connection. Music is Drifting Memories before activation, ClockWork afterward. Beyond the court, a 20-landing ice gauntlet leads to a Muster Engine and a summit return. Up activates a cinematic bell strike and a permanent reinforcement roster in Frostfell. The three service stops cycle once the summit has been used; the Warden mine now uses deliberate Up entrances to avoid held-direction bounce. Outside Frostfell the recall is so far only a few posts per region with no buff; the owner rejected that on 2026-09-13 and `12-RECALL-WORK-ORDER.md` specifies the real thing.
 
 See `docs/charters/08-frostfell/README.md` and its evidence receipt. `npm run validate:frostfell` exercises the actual TAS route and campaign persistence. The latest receipt also includes normal-keyboard mine crossings in both directions and actual music playback. A full continuous campaign playthrough and the future White Court seam remain separate from those checks. Frost Sorcerer has not been redesigned. See [recent changes](11-RECENT-CHANGES-AND-PLANS.md) for roster counts, shortcuts, setup coordinates and deferred world escalation.
 

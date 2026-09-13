@@ -153,9 +153,9 @@ reward, or environmental story needs it.
 ## September additions
 
 - `docs/frostfell-return-proposal.md`: original discussion plus subsequent scope
-  decisions. Finale, Frostfell's Muster activation and the four-region recall
-  rosters are implemented (2026-09-11); the return's rewards and later regions
-  are still a proposal. The owner rejected the original
+  decisions. Finale and Frostfell's Muster activation are implemented; the
+  four-region recall's first implementation (2026-09-11) was reviewed by the
+  owner as not noticeable, and `12-RECALL-WORK-ORDER.md` now carries the spec. The owner rejected the original
   advance-warning suggestion. Gemini observations are ancillary review prompts.
 - `docs/charters/08-frostfell/README.md`: current eight-room level and implementation
   details; evidence receipt records what the bespoke validator exercised.

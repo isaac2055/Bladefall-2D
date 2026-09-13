@@ -6,6 +6,10 @@ These notes supplement the master vision, progression constitution, level charte
 
 ## Implemented 2026-09-11: the recall on the return itinerary
 
+> **Owner review 2026-09-13:** this first implementation is not enough — a few posts
+> per region and no change to existing enemies is not noticeable on the backtrack.
+> `LLM-HANDOFF/12-RECALL-WORK-ORDER.md` carries the specification and plan.
+
 The world-wide encounter pass proposed below is now implemented for the four
 regions of the actual return, Warden, Outskirts, Black Woods and Broken
 Causeway, as `MUSTER_ROSTERS` in `public/index.html`. The event has one source:
