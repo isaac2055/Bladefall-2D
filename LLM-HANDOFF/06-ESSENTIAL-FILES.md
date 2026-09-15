@@ -2,12 +2,12 @@
 
 ## Copy authority
 
-Since 2026-09-11 Git tracks the whole authoritative tree, and GitHub `main` has
-matched it since 2026-09-13, so a fresh clone plus `npm install` is a complete
-working copy. The tiers below remain the checklist of what must be present, and
+Since 2026-09-11 Git tracks the whole authoritative tree, and a fresh clone of branch
+`chore/track-authoritative-tree` plus `npm install` is a complete working copy
+(`main` holds the previous release until that branch is merged). The tiers below remain the checklist of what must be present, and
 the lean-copy generator in `07-WORKING-COPY.md` is still the way to hand over a
 folder without hundreds of megabytes of historical evidence. See “Git history”
-below for the iCloud eviction hazard that affects the owner's own copy.
+below for why the owner's copy moved out of iCloud.
 
 ## Tier A — required editable/runtime source
 
@@ -93,23 +93,19 @@ tests, scripts, compact docs, audio attribution and handoff records);
 `.gitignore` excludes `node_modules/`, `netlify-deploy/`, `.netlify/` and docs
 media. GitHub `main` was fast-forwarded to `707e473` (version `7.96.0`) on
 2026-09-13, so a fresh clone is a complete working copy after `npm install`.
+Current work (7.101.1 onward) is on branch `chore/track-authoritative-tree` from
+`8c07a2c`, pushed 2026-09-15 and not yet merged to `main`.
 
-**Hazard — this working copy lives in iCloud-synced `~/Desktop`.** Under disk
-pressure macOS evicts file contents to iCloud and leaves `dataless` placeholders;
-any content read then blocks until iCloud returns the file, so `git status`,
-`cat` and the test suite hang rather than fail. On 2026-09-11/12 `.git/index` was
-evicted mid-session; on 2026-09-13 every loose object and most of `public/` were,
-and iCloud stalled for about ninety minutes while the account's storage was full.
-Before git work here, check:
-
-```bash
-find .git -type f -print0 | xargs -0 ls -lO | grep -c dataless
-```
-
-Anything above zero means wait for iCloud (Finder → folder → "Download Now"),
-not retry. Stats and directory listings never block; only content reads do. The
-durable fix is to keep the clone outside iCloud-synced folders. Do not run a
-destructive cleanup while resolving this.
+**Location — outside iCloud since 2026-09-15.** The owner's copy is
+`~/Projects/Bladefall-2D Antigravity`; `~/Desktop/Bladefall-2D Antigravity` is a
+symlink to it, and `~/Desktop/Bladefall-2D Antigravity (old iCloud copy)` is a stale
+pre-move snapshot the owner may delete: never edit or test there. It moved because
+`~/Desktop` is iCloud-synced on this Mac and macOS evicted file contents to
+`dataless` placeholders three times (2026-09-11/12 `.git/index`; 2026-09-13 every
+loose object and most of `public/`; 2026-09-15 most of `public/`, `.git` and the
+dependencies), and a read of a placeholder hangs git, tests and browsers alike.
+Never clone or move the project under `~/Desktop` or `~/Documents`. If a file ever
+hangs on read, check `ls -lO <file>` for `dataless` instead of retrying.
 
 ## Canonical versus generated
 

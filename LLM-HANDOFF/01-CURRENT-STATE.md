@@ -27,8 +27,10 @@ acceptance; the generic bot still fails at the Glassworks gate.
 - Frostfell receipt retains **15/15** checks true and no runtime errors.
 - Full suite **513/513**, recall/reserve focused checks **12/12**, and all eight
   directional shortcut checks pass. See `10-HANDOFF-VERIFICATION.md` for scope.
-- Git is a complete source repository; run 1–3 changes are local and uncommitted,
-  so GitHub main still reflects 7.96.0. The Desktop copy remains iCloud-synced.
+- Git is a complete source repository. The run 1–3 and White Court work is committed
+  on branch `chore/track-authoritative-tree` (from `8c07a2c`, pushed 2026-09-15);
+  GitHub `main` still reflects 7.96.0 until that branch is merged. The project moved
+  to `~/Projects/Bladefall-2D Antigravity`, outside iCloud, on 2026-09-15.
 
 ## Current regional status
 
@@ -89,12 +91,11 @@ Frostfell setup, harness status and proposal boundaries; read the
 ## Working-copy and release caveats
 
 Git tracks the whole authoritative tree; GitHub `main` is the previous release
-until these local run 1/run 2 changes are committed and pushed. A fresh clone contains
-the previous complete release; the lean-copy generator remains the way to hand
-over a runnable folder without the historical evidence. The owner's own copy lives
-in iCloud-synced `~/Desktop`, which can evict files to placeholders that hang every
-read; see the Git section of [essential files](06-ESSENTIAL-FILES.md) for the
-one-line check. Preserve an independent archive before major work. Old size/copy
+until branch `chore/track-authoritative-tree` (current work, pushed 2026-09-15) is
+merged. A fresh clone of `main` contains the previous complete release; the lean-copy generator remains the way to hand
+over a runnable folder without the historical evidence. The owner's copy lives at
+`~/Projects/Bladefall-2D Antigravity`, outside iCloud, since 2026-09-15; see the Git
+section of [essential files](06-ESSENTIAL-FILES.md). Preserve an independent archive before major work. Old size/copy
 measurements are dated in [working-copy instructions](07-WORKING-COPY.md).
 
 Edit `public/`, never the generated `netlify-deploy/`. At a release boundary,

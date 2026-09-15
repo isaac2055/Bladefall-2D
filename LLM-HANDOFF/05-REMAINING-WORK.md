@@ -12,8 +12,10 @@ requires Test Mode, stale saves, unexplained geometry, or model knowledge.
 
 1. Done: since 2026-09-11 Git tracks the whole authoritative tree, and on
    2026-09-13 it was pushed and `main` fast-forwarded. Keep `main` and the working
-   copy in step. The owner's copy is in iCloud-synced `~/Desktop`, which evicted the
-   whole tree once; moving the clone to a non-synced path is recommended, not done.
+   copy in step: current work is on branch `chore/track-authoritative-tree`, pushed
+   2026-09-15 and not yet merged. The owner's copy moved out of iCloud to
+   `~/Projects/Bladefall-2D Antigravity` on 2026-09-15; never move it back under
+   `~/Desktop` or `~/Documents`.
 2. Preserve an independent runnable lean copy using
    `LLM-HANDOFF/make-working-copy.sh` before large future edits. The generator
    now ships the preserved original game that the Recollection player loads.

@@ -1,6 +1,7 @@
 # Bladefall — concise current brief
 
-Project: /Users/computer/Desktop/Bladefall-2D Antigravity
+Project: /Users/computer/Projects/Bladefall-2D Antigravity (moved off the iCloud
+Desktop on 2026-09-15; the old Desktop path is now a symlink to it)
 Runtime: public/index.html plus public/bladefall-*.js. Build mirror with
 ./build-deploy.sh. Never deploy to Netlify without explicit authorization.
 Read USAGE-POLICY.md; owner explicitly prioritizes token/credit efficiency.
@@ -32,7 +33,8 @@ Version 7.101.1 / cache 184. Both changed runtime files are mirrored in
 netlify-deploy; no deployment performed. Validation: all seven dependency-free
 checks in tests/white-court-final.test.mjs pass, including inline-script syntax.
 Browser/full-suite validation was blocked by iCloud-evicted game modules and
-dependencies; that blocker was fixed on 2026-09-15 (see the last paragraph), but
+dependencies; that blocker was removed on 2026-09-15 by moving the project out of
+iCloud (see the last paragraph), but
 the browser validation of the new phase itself has not been run yet. Visual readability and difficulty still need human playtesting. Earlier541-test/5361-frame
 receipts predate this harder phase and must not be claimed as current proof.
 
@@ -49,10 +51,8 @@ Do not revive the previous giant goal or run TAS searches to certify difficulty.
 Use focused mechanics checks, one visual check if useful, then owner playtesting.
 Old first-phase-only winning policies/tests need adaptation where their final-death
 expectation is obsolete. Do not weaken the new phase to keep old bot inputs green.
-The Desktop is iCloud-backed; macOS evicts idle files to placeholders that hang any
-read. Dependencies are protected: node_modules is a symlink to node_modules.nosync,
-excluded from iCloud sync (verified 2026-09-15). Keep the symlink; use npm install,
-never delete the folder, and avoid npm ci (netlify-cli 26.2.0 is installed there
-outside the lockfile and ci would drop it). Source files can still be evicted: run
-scripts/hydrate-icloud.sh before browser tests or git (instant when nothing is
-evicted). Do not launch duplicate blocked reads.
+Since 2026-09-15 the project lives outside iCloud, so files are no longer evicted
+to placeholders that hang reads. Never move it back under ~/Desktop or ~/Documents,
+which iCloud syncs. The folder "~/Desktop/Bladefall-2D Antigravity (old iCloud
+copy)" is a stale pre-move snapshot: never edit or test in it. netlify-cli 26.2.0
+is installed in node_modules outside the lockfile, so prefer npm install over npm ci.
