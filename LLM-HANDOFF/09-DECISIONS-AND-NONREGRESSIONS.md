@@ -169,3 +169,22 @@ repeated owner feedback with the current accepted implementation direction.
   deterministic serialized replay checks deliberately require exact identity.
 - Future design prompts do not override ability order: no compulsory optional
   Echo, no unearned boss-reward requirement, no duplicate Marksman tutorial.
+
+## Run 1 preservation rules
+
+Preserve the single first-garrison transaction for ordinary enemies, with no
+boss/unique revival and no stat stacking. The implemented tuning defaults are
+×1.55 health, ×1.25 raw damage, minimum 480 notice; two-Blood hits are explicit
+large-unit attacks rather than a change to all Blood wounds. Regional identity,
+early encounters and safe settlement space matter alongside density. See
+`12-RECALL-WORK-ORDER.md`; run 2 and run 3 are separate work.
+
+## Run 2 bot evidence boundaries (2026-09-14)
+
+- Require full serialized simulation equality for a solve pass, not only player
+  state. Repeated bootstraps reset registered subsystem counters too.
+- Keep saved route inputs portable and replayable; replay success is separate
+  from a successful solve. Preserve exact failed segments and mechanism attempts.
+- Portal/flight/pickup/crystal probes prove their scoped routes. They do not prove
+  every later puzzle, boss combat, or a continuous campaign. No gameplay changes
+  were needed for run 2. See `12-RECALL-WORK-ORDER.md`.

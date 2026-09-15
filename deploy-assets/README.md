@@ -9,15 +9,16 @@ installable phone app, because it ships a web app manifest and a service worker.
 **Easiest — drag and drop:**
 
 1. Go to <https://app.netlify.com/drop>
-2. Drag this whole `netlify-deploy` folder onto the page.
+2. Drag this whole `netlify-deploy` folder onto the page. The source `public`
+   folder is also directly uploadable, with no build step; it includes `_headers`.
 3. Netlify gives you a URL like `https://your-site-name.netlify.app`. Done.
 
 To publish updates to the **same** site later, open that site in Netlify →
 **Deploys** tab → drag the freshly rebuilt folder onto the deploy area.
 
-**Or connect a Git repo:** point the Netlify site's *publish directory* at this
-folder (or run `./build-deploy.sh` in your build command and publish
-`netlify-deploy`).
+**Or connect the project Git repo:** the root `netlify.toml` sets the publish
+directory to `public` with no build command. Leave the base directory at the
+repository root. The game's `_headers` file applies to either upload method.
 
 ## How you and friends install it on a phone
 
@@ -46,4 +47,4 @@ That regenerates this folder from `public/` plus the config in `deploy-assets/`.
 
 `index.html` (the whole game), `littlejs.min.js` (engine), `music.mp3`,
 `manifest.webmanifest`, `sw.js` (offline/service worker), the icons, and
-`netlify.toml` (host config). That's everything the game needs.
+`netlify.toml` and `_headers` (host config). That's everything the game needs.

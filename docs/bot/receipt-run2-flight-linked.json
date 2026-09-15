@@ -1,0 +1,1976 @@
+{
+  "schema": "bladefall.traversal-bot",
+  "mode": "solve",
+  "generatedAt": "2026-09-14T17:43:08.865Z",
+  "pass": false,
+  "runtimeErrors": [],
+  "runs": [
+    {
+      "stage": 3,
+      "muster": false,
+      "inputFile": "receipt-run2-flight-linked.stage-3.inputs.json",
+      "boot": {
+        "levelLength": 18000,
+        "capabilities": [
+          "jump",
+          "weapon",
+          "dash"
+        ],
+        "spawn": {
+          "x": 70,
+          "y": 0
+        }
+      },
+      "seconds": 223.6,
+      "pass": false,
+      "routeReached": false,
+      "playerReplayIdentical": true,
+      "replayScope": "full-simulation",
+      "stateHash": "6feebd4c6ad0ad29fcda82ce0657aa771874504bb96ff492f0ea822ab1ebd728",
+      "evidence": {
+        "crystalRefills": 4,
+        "portalPlacements": 0,
+        "flightFrames": 1090
+      },
+      "direction": 1,
+      "goalX": 18000,
+      "goalKind": "level-end",
+      "crossedBoundary": false,
+      "reachedX": 7981,
+      "segments": 20,
+      "backtracks": 5,
+      "frames": 4154,
+      "replayFrames": 4154,
+      "expansions": 12000,
+      "replayIdentical": true,
+      "capabilities": {
+        "doubleJump": false,
+        "dash": true,
+        "weapon": true
+      },
+      "envelope": {
+        "maxRise": 135,
+        "maxReach": 536
+      },
+      "costedSegments": 0,
+      "blood": 5,
+      "equipment": {
+        "hasJetpack": true,
+        "fuel": 44.5
+      },
+      "mechanisms": [
+        {
+          "kind": "lever",
+          "id": "lever:aerie-pack-ready:3120:340",
+          "x": 3120,
+          "y": 340,
+          "how": "strike",
+          "before": false,
+          "after": true,
+          "frames": 102
+        },
+        {
+          "kind": "pickup",
+          "id": "pickup::3225:362",
+          "x": 3225,
+          "y": 362,
+          "how": "pickup",
+          "before": true,
+          "after": true,
+          "frames": 65
+        },
+        {
+          "kind": "lever",
+          "id": "lever:wind-gate-1:7240:115",
+          "x": 7240,
+          "y": 115,
+          "how": "strike",
+          "before": false,
+          "after": true,
+          "frames": 89
+        }
+      ],
+      "history": [
+        {
+          "seg": 0,
+          "from": 330,
+          "to": "540:70",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 1,
+          "from": 660,
+          "to": "900:150",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 2,
+          "from": 1040,
+          "to": "1360:250",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 3,
+          "from": 1540,
+          "to": "1500:0",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 4,
+          "from": 2250,
+          "to": "2350:75",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 6,
+          "from": 2470,
+          "to": "2630:150",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 7,
+          "from": 2750,
+          "to": "2805:75",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 8,
+          "from": 3105,
+          "to": "3100:0",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 9,
+          "from": 3500,
+          "to": "3325:170",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 9,
+          "from": 3500,
+          "to": "3105:340",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 9,
+          "from": 3500,
+          "to": "3325:170",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 9,
+          "from": 3500,
+          "to": "3105:340",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 9,
+          "from": 3500,
+          "to": "3325:170",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "backtrack": true,
+          "banned": "3100:3500:0",
+          "seg": 8
+        },
+        {
+          "seg": 8,
+          "from": 3105,
+          "to": "3325:170",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 9,
+          "from": 3535,
+          "to": "3100:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 9,
+          "from": 3535,
+          "to": "3700:390",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 10,
+          "from": 3940,
+          "to": "4210:520",
+          "blood": false,
+          "exp": 2,
+          "ok": true
+        },
+        {
+          "seg": 11,
+          "from": 4430,
+          "to": "4675:650",
+          "blood": false,
+          "exp": 2,
+          "ok": true
+        },
+        {
+          "seg": 12,
+          "from": 4885,
+          "to": "5600:0",
+          "blood": false,
+          "exp": 2,
+          "ok": true
+        },
+        {
+          "seg": 13,
+          "from": 5700,
+          "to": "5700:0",
+          "blood": false,
+          "exp": 2,
+          "ok": true
+        },
+        {
+          "seg": 14,
+          "from": 6335,
+          "to": "5700:0",
+          "blood": false,
+          "exp": 6,
+          "ok": true
+        },
+        {
+          "seg": 15,
+          "from": 8342,
+          "to": "7155:80",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 15,
+          "from": 8342,
+          "to": "6105:340",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 15,
+          "from": 8342,
+          "to": "7155:80",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 15,
+          "from": 8342,
+          "to": "6105:340",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 15,
+          "from": 8342,
+          "to": "7155:80",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "backtrack": true,
+          "banned": "5700:8342:0",
+          "seg": 14
+        },
+        {
+          "seg": 14,
+          "from": 6335,
+          "to": "6675:520",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 15,
+          "from": 6925,
+          "to": "7250:430",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 17,
+          "from": 7325,
+          "to": "5700:0",
+          "blood": false,
+          "exp": 20,
+          "ok": true
+        },
+        {
+          "seg": 18,
+          "from": 7490,
+          "to": "7155:80",
+          "blood": false,
+          "exp": 11,
+          "ok": true
+        },
+        {
+          "seg": 19,
+          "from": 8400,
+          "to": "8400:0",
+          "blood": false,
+          "exp": 2,
+          "ok": true
+        },
+        {
+          "seg": 20,
+          "from": 8580,
+          "to": "8430:105",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 20,
+          "from": 8580,
+          "to": "8430:105",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 20,
+          "from": 8580,
+          "to": "8430:105",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "backtrack": true,
+          "banned": "8400:8580:0",
+          "seg": 19
+        },
+        {
+          "seg": 19,
+          "from": 8400,
+          "to": "7155:80",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 19,
+          "from": 8400,
+          "to": "8430:105",
+          "blood": false,
+          "exp": 12,
+          "ok": true
+        },
+        {
+          "seg": 20,
+          "from": 8610,
+          "to": "8400:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 63
+        },
+        {
+          "seg": 20,
+          "from": 8610,
+          "to": "8400:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 63
+        },
+        {
+          "seg": 20,
+          "from": 8610,
+          "to": "8400:0",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 63
+        },
+        {
+          "backtrack": true,
+          "banned": "8430:8610:105",
+          "seg": 19
+        },
+        {
+          "seg": 19,
+          "from": 8400,
+          "to": "7155:80",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 19,
+          "from": 8400,
+          "to": "6105:340",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 678
+        },
+        {
+          "seg": 19,
+          "from": 8400,
+          "to": "7155:80",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 19,
+          "from": 8400,
+          "to": "6105:340",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 678
+        },
+        {
+          "seg": 19,
+          "from": 8400,
+          "to": "7155:80",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "backtrack": true,
+          "banned": "5700:8400:0",
+          "seg": 18
+        },
+        {
+          "seg": 18,
+          "from": 7490,
+          "to": "7155:80",
+          "blood": false,
+          "exp": 145,
+          "ok": true
+        },
+        {
+          "seg": 19,
+          "from": 8025,
+          "to": "5700:0",
+          "blood": false,
+          "exp": 91,
+          "ok": true
+        },
+        {
+          "seg": 20,
+          "from": 8400,
+          "to": "7155:80",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 896
+        },
+        {
+          "seg": 20,
+          "from": 8400,
+          "to": "6105:340",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 1864
+        },
+        {
+          "seg": 20,
+          "from": 8400,
+          "to": "7155:80",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 896
+        },
+        {
+          "seg": 20,
+          "from": 8400,
+          "to": "6105:340",
+          "blood": false,
+          "exp": 416,
+          "ok": false,
+          "bestH": 1864
+        },
+        {
+          "seg": 20,
+          "from": 8400,
+          "to": "7155:80",
+          "blood": true,
+          "exp": 0,
+          "ok": false,
+          "bestH": null
+        }
+      ],
+      "failedSegment": 20,
+      "reason": "expansion budget exhausted",
+      "from": {
+        "x0": 5700,
+        "x1": 8400,
+        "y": 0
+      },
+      "tried": [
+        {
+          "target": {
+            "x0": 7155,
+            "x1": 7325,
+            "y": 80
+          },
+          "bloodAllowed": false,
+          "budget": 210,
+          "expansions": 210,
+          "bestH": 896,
+          "histogram": {
+            "retreated": 1,
+            "blood": 53,
+            "ok": 156
+          },
+          "sample": [
+            {
+              "depth": 9,
+              "macro": "lift45",
+              "why": "ok",
+              "x": 9268,
+              "y": 708
+            },
+            {
+              "depth": 10,
+              "macro": "flyToLedge",
+              "why": "ok",
+              "x": 9268,
+              "y": 708
+            },
+            {
+              "depth": 10,
+              "macro": "fly45",
+              "why": "ok",
+              "x": 9431,
+              "y": 766
+            },
+            {
+              "depth": 10,
+              "macro": "lift45",
+              "why": "ok",
+              "x": 9376,
+              "y": 766
+            },
+            {
+              "depth": 10,
+              "macro": "fly20",
+              "why": "ok",
+              "x": 9347,
+              "y": 756
+            },
+            {
+              "depth": 10,
+              "macro": "lift20",
+              "why": "ok",
+              "x": 9331,
+              "y": 756
+            },
+            {
+              "depth": 10,
+              "macro": "fly75",
+              "why": "ok",
+              "x": 9533,
+              "y": 721
+            },
+            {
+              "depth": 10,
+              "macro": "lift75",
+              "why": "ok",
+              "x": 9410,
+              "y": 720
+            },
+            {
+              "depth": 10,
+              "macro": "run",
+              "why": "ok",
+              "x": 9306,
+              "y": 736
+            },
+            {
+              "depth": 10,
+              "macro": "dash",
+              "why": "ok",
+              "x": 9388,
+              "y": 746
+            },
+            {
+              "depth": 10,
+              "macro": "back",
+              "why": "blood",
+              "x": 8520,
+              "y": 125
+            },
+            {
+              "depth": 10,
+              "macro": "airJump",
+              "why": "ok",
+              "x": 9327,
+              "y": 747
+            }
+          ]
+        },
+        {
+          "target": {
+            "x0": 6105,
+            "x1": 6335,
+            "y": 340
+          },
+          "bloodAllowed": false,
+          "budget": 210,
+          "expansions": 210,
+          "bestH": 1864,
+          "histogram": {
+            "retreated": 1,
+            "blood": 53,
+            "ok": 156
+          },
+          "sample": [
+            {
+              "depth": 9,
+              "macro": "lift45",
+              "why": "ok",
+              "x": 9268,
+              "y": 708
+            },
+            {
+              "depth": 10,
+              "macro": "flyToLedge",
+              "why": "ok",
+              "x": 9268,
+              "y": 708
+            },
+            {
+              "depth": 10,
+              "macro": "fly45",
+              "why": "ok",
+              "x": 9431,
+              "y": 766
+            },
+            {
+              "depth": 10,
+              "macro": "lift45",
+              "why": "ok",
+              "x": 9376,
+              "y": 766
+            },
+            {
+              "depth": 10,
+              "macro": "fly20",
+              "why": "ok",
+              "x": 9347,
+              "y": 756
+            },
+            {
+              "depth": 10,
+              "macro": "lift20",
+              "why": "ok",
+              "x": 9331,
+              "y": 756
+            },
+            {
+              "depth": 10,
+              "macro": "fly75",
+              "why": "ok",
+              "x": 9533,
+              "y": 721
+            },
+            {
+              "depth": 10,
+              "macro": "lift75",
+              "why": "ok",
+              "x": 9410,
+              "y": 720
+            },
+            {
+              "depth": 10,
+              "macro": "run",
+              "why": "ok",
+              "x": 9306,
+              "y": 736
+            },
+            {
+              "depth": 10,
+              "macro": "dash",
+              "why": "ok",
+              "x": 9388,
+              "y": 746
+            },
+            {
+              "depth": 10,
+              "macro": "back",
+              "why": "blood",
+              "x": 8520,
+              "y": 125
+            },
+            {
+              "depth": 10,
+              "macro": "airJump",
+              "why": "ok",
+              "x": 9327,
+              "y": 747
+            }
+          ]
+        },
+        {
+          "target": {
+            "x0": 7155,
+            "x1": 7325,
+            "y": 80
+          },
+          "bloodAllowed": false,
+          "budget": 700,
+          "expansions": 700,
+          "bestH": 896,
+          "histogram": {
+            "retreated": 1,
+            "blood": 153,
+            "ok": 546
+          },
+          "sample": [
+            {
+              "depth": 10,
+              "macro": "back",
+              "why": "ok",
+              "x": 9137,
+              "y": 470
+            },
+            {
+              "depth": 10,
+              "macro": "airJump",
+              "why": "ok",
+              "x": 9186,
+              "y": 524
+            },
+            {
+              "depth": 10,
+              "macro": "wait",
+              "why": "ok",
+              "x": 9151,
+              "y": 474
+            },
+            {
+              "depth": 9,
+              "macro": "airJump",
+              "why": "ok",
+              "x": 9282,
+              "y": 503
+            },
+            {
+              "depth": 10,
+              "macro": "flyToLedge",
+              "why": "blood",
+              "x": 8520,
+              "y": 125
+            },
+            {
+              "depth": 10,
+              "macro": "fly45",
+              "why": "blood",
+              "x": 8520,
+              "y": 125
+            },
+            {
+              "depth": 10,
+              "macro": "lift45",
+              "why": "blood",
+              "x": 8520,
+              "y": 125
+            },
+            {
+              "depth": 10,
+              "macro": "fly20",
+              "why": "blood",
+              "x": 8520,
+              "y": 125
+            },
+            {
+              "depth": 10,
+              "macro": "lift20",
+              "why": "blood",
+              "x": 8520,
+              "y": 125
+            },
+            {
+              "depth": 10,
+              "macro": "fly75",
+              "why": "blood",
+              "x": 8520,
+              "y": 125
+            },
+            {
+              "depth": 10,
+              "macro": "lift75",
+              "why": "blood",
+              "x": 8520,
+              "y": 125
+            },
+            {
+              "depth": 10,
+              "macro": "run",
+              "why": "blood",
+              "x": 8520,
+              "y": 125
+            }
+          ]
+        },
+        {
+          "target": {
+            "x0": 6105,
+            "x1": 6335,
+            "y": 340
+          },
+          "bloodAllowed": false,
+          "budget": 700,
+          "expansions": 416,
+          "bestH": 1864,
+          "histogram": {
+            "retreated": 1,
+            "blood": 68,
+            "ok": 347
+          },
+          "sample": [
+            {
+              "depth": 10,
+              "macro": "lift75",
+              "why": "ok",
+              "x": 9651,
+              "y": 722
+            },
+            {
+              "depth": 10,
+              "macro": "run",
+              "why": "ok",
+              "x": 9454,
+              "y": 784
+            },
+            {
+              "depth": 10,
+              "macro": "dash",
+              "why": "ok",
+              "x": 9524,
+              "y": 793
+            },
+            {
+              "depth": 10,
+              "macro": "back",
+              "why": "ok",
+              "x": 9407,
+              "y": 782
+            },
+            {
+              "depth": 10,
+              "macro": "airJump",
+              "why": "ok",
+              "x": 9481,
+              "y": 791
+            },
+            {
+              "depth": 10,
+              "macro": "wait",
+              "why": "ok",
+              "x": 9450,
+              "y": 784
+            },
+            {
+              "depth": 9,
+              "macro": "dash",
+              "why": "ok",
+              "x": 9471,
+              "y": 775
+            },
+            {
+              "depth": 10,
+              "macro": "flyToLedge",
+              "why": "ok",
+              "x": 9471,
+              "y": 775
+            },
+            {
+              "depth": 10,
+              "macro": "fly45",
+              "why": "blood",
+              "x": 8520,
+              "y": 125
+            },
+            {
+              "depth": 10,
+              "macro": "lift45",
+              "why": "blood",
+              "x": 8520,
+              "y": 125
+            },
+            {
+              "depth": 10,
+              "macro": "fly20",
+              "why": "ok",
+              "x": 9688,
+              "y": 817
+            },
+            {
+              "depth": 10,
+              "macro": "lift20",
+              "why": "ok",
+              "x": 9674,
+              "y": 817
+            }
+          ]
+        },
+        {
+          "target": {
+            "x0": 7155,
+            "x1": 7325,
+            "y": 80
+          },
+          "bloodAllowed": true,
+          "budget": 490,
+          "expansions": 0,
+          "bestH": null,
+          "histogram": {},
+          "sample": []
+        }
+      ],
+      "solved": [
+        {
+          "seg": 0,
+          "from": {
+            "x0": 0,
+            "x1": 330,
+            "y": 0
+          },
+          "to": {
+            "x0": 540,
+            "x1": 660,
+            "y": 70
+          },
+          "frames": 120,
+          "expansions": 1,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "steeredDash16",
+          "x": 612,
+          "y": 70
+        },
+        {
+          "seg": 1,
+          "from": {
+            "x0": 540,
+            "x1": 660,
+            "y": 70
+          },
+          "to": {
+            "x0": 900,
+            "x1": 1040,
+            "y": 150
+          },
+          "frames": 45,
+          "expansions": 1,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "steeredDash16",
+          "x": 984,
+          "y": 150
+        },
+        {
+          "seg": 2,
+          "from": {
+            "x0": 900,
+            "x1": 1040,
+            "y": 150
+          },
+          "to": {
+            "x0": 1360,
+            "x1": 1540,
+            "y": 250
+          },
+          "frames": 78,
+          "expansions": 1,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "steeredDash16",
+          "x": 1462,
+          "y": 250
+        },
+        {
+          "seg": 3,
+          "from": {
+            "x0": 1360,
+            "x1": 1540,
+            "y": 250
+          },
+          "to": {
+            "x0": 1500,
+            "x1": 2250,
+            "y": 0
+          },
+          "frames": 86,
+          "expansions": 1,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "steeredDash16",
+          "x": 1901,
+          "y": 0
+        },
+        {
+          "seg": 4,
+          "from": {
+            "x0": 1500,
+            "x1": 2250,
+            "y": 0
+          },
+          "to": {
+            "x0": 2350,
+            "x1": 2470,
+            "y": 75
+          },
+          "frames": 143,
+          "expansions": 1,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "steeredDash16",
+          "x": 2453,
+          "y": 75
+        },
+        {
+          "seg": 5,
+          "mechanism": true,
+          "to": {
+            "x0": 2350,
+            "x1": 2470,
+            "y": 75
+          },
+          "frames": 167,
+          "doors": [
+            {
+              "x": 3335,
+              "circuit": "aerie-pack-owned"
+            }
+          ]
+        },
+        {
+          "seg": 6,
+          "from": {
+            "x0": 2350,
+            "x1": 2470,
+            "y": 75
+          },
+          "to": {
+            "x0": 2630,
+            "x1": 2750,
+            "y": 150
+          },
+          "frames": 181,
+          "expansions": 1,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "flyToLedge",
+          "x": 2696,
+          "y": 150
+        },
+        {
+          "seg": 7,
+          "from": {
+            "x0": 2630,
+            "x1": 2750,
+            "y": 150
+          },
+          "to": {
+            "x0": 2805,
+            "x1": 3105,
+            "y": 75
+          },
+          "frames": 63,
+          "expansions": 1,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "flyToLedge",
+          "x": 2900,
+          "y": 75
+        },
+        {
+          "seg": 8,
+          "from": {
+            "x0": 2805,
+            "x1": 3105,
+            "y": 75
+          },
+          "to": {
+            "x0": 3325,
+            "x1": 3535,
+            "y": 170
+          },
+          "frames": 175,
+          "expansions": 1,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "flyToLedge",
+          "x": 3425,
+          "y": 170
+        },
+        {
+          "seg": 9,
+          "from": {
+            "x0": 3325,
+            "x1": 3535,
+            "y": 170
+          },
+          "to": {
+            "x0": 3700,
+            "x1": 3940,
+            "y": 390
+          },
+          "frames": 147,
+          "expansions": 1,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "flyToLedge",
+          "x": 3803,
+          "y": 390
+        },
+        {
+          "seg": 10,
+          "from": {
+            "x0": 3700,
+            "x1": 3940,
+            "y": 390
+          },
+          "to": {
+            "x0": 4210,
+            "x1": 4430,
+            "y": 520
+          },
+          "frames": 101,
+          "expansions": 2,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "steeredDash16",
+          "x": 4353,
+          "y": 520
+        },
+        {
+          "seg": 11,
+          "from": {
+            "x0": 4210,
+            "x1": 4430,
+            "y": 520
+          },
+          "to": {
+            "x0": 4675,
+            "x1": 4885,
+            "y": 650
+          },
+          "frames": 102,
+          "expansions": 2,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "steeredDash16",
+          "x": 4778,
+          "y": 650
+        },
+        {
+          "seg": 12,
+          "from": {
+            "x0": 4675,
+            "x1": 4885,
+            "y": 650
+          },
+          "to": {
+            "x0": 5600,
+            "x1": 5700,
+            "y": 0
+          },
+          "frames": 284,
+          "expansions": 2,
+          "depth": 2,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "flyToLedge",
+          "x": 5635,
+          "y": 0
+        },
+        {
+          "seg": 13,
+          "from": {
+            "x0": 5600,
+            "x1": 5700,
+            "y": 0
+          },
+          "to": {
+            "x0": 6105,
+            "x1": 6335,
+            "y": 340
+          },
+          "frames": 205,
+          "expansions": 2,
+          "depth": 2,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "flyToLedge",
+          "x": 6229,
+          "y": 340
+        },
+        {
+          "seg": 14,
+          "from": {
+            "x0": 6105,
+            "x1": 6335,
+            "y": 340
+          },
+          "to": {
+            "x0": 6675,
+            "x1": 6925,
+            "y": 520
+          },
+          "frames": 162,
+          "expansions": 1,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "flyToLedge",
+          "x": 6769,
+          "y": 520
+        },
+        {
+          "seg": 15,
+          "from": {
+            "x0": 6675,
+            "x1": 6925,
+            "y": 520
+          },
+          "to": {
+            "x0": 7250,
+            "x1": 7490,
+            "y": 430
+          },
+          "frames": 186,
+          "expansions": 1,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "flyToLedge",
+          "x": 7380,
+          "y": 430
+        },
+        {
+          "seg": 16,
+          "mechanism": true,
+          "to": {
+            "x0": 7155,
+            "x1": 7325,
+            "y": 80
+          },
+          "frames": 89,
+          "doors": [
+            {
+              "x": 8360,
+              "circuit": "wind-gate-1"
+            }
+          ]
+        },
+        {
+          "seg": 17,
+          "from": {
+            "x0": 7155,
+            "x1": 7325,
+            "y": 80
+          },
+          "to": {
+            "x0": 7250,
+            "x1": 7490,
+            "y": 430
+          },
+          "frames": 768,
+          "expansions": 20,
+          "depth": 10,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "fly75",
+          "x": 7444,
+          "y": 430
+        },
+        {
+          "seg": 18,
+          "from": {
+            "x0": 7250,
+            "x1": 7490,
+            "y": 430
+          },
+          "to": {
+            "x0": 7855,
+            "x1": 8025,
+            "y": 570
+          },
+          "frames": 734,
+          "expansions": 145,
+          "depth": 13,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "refillDash60",
+          "x": 8000,
+          "y": 570
+        },
+        {
+          "seg": 19,
+          "from": {
+            "x0": 7855,
+            "x1": 8025,
+            "y": 570
+          },
+          "to": {
+            "x0": 5700,
+            "x1": 8400,
+            "y": 0
+          },
+          "frames": 318,
+          "expansions": 91,
+          "depth": 10,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "flyToLedge",
+          "x": 7981,
+          "y": 0
+        }
+      ],
+      "inputFrames": 4154
+    },
+    {
+      "stage": 4,
+      "muster": false,
+      "inputFile": "receipt-run2-flight-linked.stage-4.inputs.json",
+      "boot": {
+        "levelLength": 15000,
+        "capabilities": [
+          "jump",
+          "weapon",
+          "dash",
+          "portal-single"
+        ],
+        "spawn": {
+          "x": 70,
+          "y": 0
+        }
+      },
+      "seconds": 66.5,
+      "pass": false,
+      "routeReached": false,
+      "playerReplayIdentical": true,
+      "replayScope": "full-simulation",
+      "stateHash": "5c67768e76fe1d48495ace11c2d438c1d06b64b239d80bfd45f05f507f251ebb",
+      "evidence": {
+        "crystalRefills": 0,
+        "portalPlacements": 0,
+        "flightFrames": 0
+      },
+      "direction": 1,
+      "goalX": 14130,
+      "goalKind": "boss-threshold",
+      "crossedBoundary": false,
+      "reachedX": 70,
+      "segments": 0,
+      "backtracks": 3,
+      "frames": 0,
+      "replayFrames": 0,
+      "expansions": 7562,
+      "replayIdentical": true,
+      "capabilities": {
+        "doubleJump": false,
+        "dash": true,
+        "weapon": true
+      },
+      "envelope": {
+        "maxRise": 135,
+        "maxReach": 536
+      },
+      "costedSegments": 0,
+      "blood": 5,
+      "equipment": {
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "mechanisms": [],
+      "history": [
+        {
+          "seg": 0,
+          "from": 1091,
+          "to": "1149:0",
+          "blood": false,
+          "exp": 16,
+          "ok": true
+        },
+        {
+          "seg": 1,
+          "from": 1680,
+          "to": "1740:0",
+          "blood": false,
+          "exp": 123,
+          "ok": true
+        },
+        {
+          "seg": 2,
+          "from": 2500,
+          "to": "2500:0",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 3,
+          "from": 4080,
+          "to": "3500:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 703
+        },
+        {
+          "seg": 3,
+          "from": 4080,
+          "to": "4240:315",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 1632
+        },
+        {
+          "seg": 3,
+          "from": 4080,
+          "to": "3500:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 3,
+          "from": 4080,
+          "to": "4240:315",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 3,
+          "from": 4080,
+          "to": "3500:0",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "backtrack": true,
+          "banned": "2500:4080:0",
+          "seg": 2
+        },
+        {
+          "seg": 2,
+          "from": 2500,
+          "to": "1990:285",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 167
+        },
+        {
+          "seg": 2,
+          "from": 2500,
+          "to": "2295:650",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 354
+        },
+        {
+          "seg": 2,
+          "from": 2500,
+          "to": "1990:285",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 144
+        },
+        {
+          "seg": 2,
+          "from": 2500,
+          "to": "2295:650",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 354
+        },
+        {
+          "seg": 2,
+          "from": 2500,
+          "to": "1990:285",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 132
+        },
+        {
+          "backtrack": true,
+          "banned": "1740:2500:0",
+          "seg": 1
+        },
+        {
+          "seg": 1,
+          "from": 1680,
+          "to": "1355:145",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 67
+        },
+        {
+          "seg": 1,
+          "from": 1680,
+          "to": "1355:145",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 62
+        },
+        {
+          "seg": 1,
+          "from": 1680,
+          "to": "1355:145",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 48
+        },
+        {
+          "backtrack": true,
+          "banned": "1149:1680:0",
+          "seg": 0
+        },
+        {
+          "seg": 0,
+          "from": 1091,
+          "to": "1355:145",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 87
+        },
+        {
+          "seg": 0,
+          "from": 1091,
+          "to": "1355:145",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 71
+        },
+        {
+          "seg": 0,
+          "from": 1091,
+          "to": "1355:145",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 42
+        }
+      ],
+      "failedSegment": 0,
+      "reason": "every hop from the current ledge failed",
+      "from": {
+        "x0": 0,
+        "x1": 1091,
+        "y": 0
+      },
+      "tried": [
+        {
+          "target": {
+            "x0": 1355,
+            "x1": 1545,
+            "y": 145
+          },
+          "bloodAllowed": false,
+          "budget": 210,
+          "expansions": 210,
+          "bestH": 87,
+          "histogram": {
+            "ok": 198,
+            "blood": 12,
+            "overshot": 79
+          },
+          "sample": [
+            {
+              "depth": 11,
+              "macro": "run",
+              "why": "ok",
+              "x": 1667,
+              "y": 0
+            },
+            {
+              "depth": 11,
+              "macro": "dash",
+              "why": "ok",
+              "x": 1667,
+              "y": 0
+            },
+            {
+              "depth": 11,
+              "macro": "back",
+              "why": "ok",
+              "x": 1643,
+              "y": 0
+            },
+            {
+              "depth": 11,
+              "macro": "airJump",
+              "why": "ok",
+              "x": 1667,
+              "y": 0
+            },
+            {
+              "depth": 11,
+              "macro": "wait",
+              "why": "ok",
+              "x": 1667,
+              "y": 0
+            },
+            {
+              "depth": 10,
+              "macro": "wait",
+              "why": "ok",
+              "x": 1667,
+              "y": 41
+            },
+            {
+              "depth": 11,
+              "macro": "run",
+              "why": "ok",
+              "x": 1667,
+              "y": 0
+            },
+            {
+              "depth": 11,
+              "macro": "dash",
+              "why": "ok",
+              "x": 1667,
+              "y": 0
+            },
+            {
+              "depth": 11,
+              "macro": "back",
+              "why": "ok",
+              "x": 1652,
+              "y": 0
+            },
+            {
+              "depth": 11,
+              "macro": "airJump",
+              "why": "ok",
+              "x": 1667,
+              "y": 0
+            },
+            {
+              "depth": 11,
+              "macro": "wait",
+              "why": "ok",
+              "x": 1667,
+              "y": 0
+            },
+            {
+              "depth": 9,
+              "macro": "toEdge",
+              "why": "ok",
+              "x": 1667,
+              "y": 0
+            }
+          ]
+        },
+        {
+          "target": {
+            "x0": 1355,
+            "x1": 1545,
+            "y": 145
+          },
+          "bloodAllowed": false,
+          "budget": 700,
+          "expansions": 700,
+          "bestH": 71,
+          "histogram": {
+            "ok": 663,
+            "blood": 37,
+            "overshot": 300
+          },
+          "sample": [
+            {
+              "depth": 21,
+              "macro": "crystal28s25l5",
+              "why": "ok",
+              "x": 1625,
+              "y": 0
+            },
+            {
+              "depth": 21,
+              "macro": "approach40h21",
+              "why": "ok",
+              "x": 1625,
+              "y": 0
+            },
+            {
+              "depth": 21,
+              "macro": "approach40h21dash",
+              "why": "ok",
+              "x": 1625,
+              "y": 0
+            },
+            {
+              "depth": 21,
+              "macro": "approach40h12",
+              "why": "ok",
+              "x": 1625,
+              "y": 0
+            },
+            {
+              "depth": 21,
+              "macro": "approach40h12dash",
+              "why": "ok",
+              "x": 1625,
+              "y": 0
+            },
+            {
+              "depth": 21,
+              "macro": "approach70h21",
+              "why": "ok",
+              "x": 1625,
+              "y": 0
+            },
+            {
+              "depth": 21,
+              "macro": "approach70h21dash",
+              "why": "ok",
+              "x": 1625,
+              "y": 0
+            },
+            {
+              "depth": 21,
+              "macro": "approach70h12",
+              "why": "ok",
+              "x": 1625,
+              "y": 0
+            },
+            {
+              "depth": 21,
+              "macro": "approach70h12dash",
+              "why": "ok",
+              "x": 1625,
+              "y": 0
+            },
+            {
+              "depth": 21,
+              "macro": "approach100h21",
+              "why": "ok",
+              "x": 1625,
+              "y": 0
+            },
+            {
+              "depth": 21,
+              "macro": "approach100h21dash",
+              "why": "ok",
+              "x": 1625,
+              "y": 0
+            },
+            {
+              "depth": 21,
+              "macro": "approach100h12",
+              "why": "ok",
+              "x": 1625,
+              "y": 0
+            }
+          ]
+        },
+        {
+          "target": {
+            "x0": 1355,
+            "x1": 1545,
+            "y": 145
+          },
+          "bloodAllowed": true,
+          "budget": 490,
+          "expansions": 490,
+          "bestH": 42,
+          "histogram": {
+            "ok": 490,
+            "overshot": 27
+          },
+          "sample": [
+            {
+              "depth": 32,
+              "macro": "jumpUp",
+              "why": "ok",
+              "x": 1476,
+              "y": 74
+            },
+            {
+              "depth": 32,
+              "macro": "wait",
+              "why": "ok",
+              "x": 1480,
+              "y": 0
+            },
+            {
+              "depth": 32,
+              "macro": "back",
+              "why": "ok",
+              "x": 1449,
+              "y": 4
+            },
+            {
+              "depth": 32,
+              "macro": "backJump",
+              "why": "ok",
+              "x": 1433,
+              "y": 78
+            },
+            {
+              "depth": 32,
+              "macro": "edgeDouble",
+              "why": "ok",
+              "x": 1667,
+              "y": 0
+            },
+            {
+              "depth": 32,
+              "macro": "double",
+              "why": "ok",
+              "x": 1573,
+              "y": 30
+            },
+            {
+              "depth": 32,
+              "macro": "doubleLate",
+              "why": "ok",
+              "x": 1613,
+              "y": 0
+            },
+            {
+              "depth": 32,
+              "macro": "strike",
+              "why": "ok",
+              "x": 1520,
+              "y": 0
+            },
+            {
+              "depth": 31,
+              "macro": "back",
+              "why": "ok",
+              "x": 1457,
+              "y": 4
+            },
+            {
+              "depth": 32,
+              "macro": "run",
+              "why": "ok",
+              "x": 1460,
+              "y": 0
+            },
+            {
+              "depth": 32,
+              "macro": "dash",
+              "why": "ok",
+              "x": 1545,
+              "y": 5
+            },
+            {
+              "depth": 32,
+              "macro": "back",
+              "why": "ok",
+              "x": 1416,
+              "y": 0
+            }
+          ]
+        }
+      ],
+      "solved": [],
+      "inputFrames": 0
+    }
+  ]
+}

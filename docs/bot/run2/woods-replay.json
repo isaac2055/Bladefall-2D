@@ -1,0 +1,55 @@
+{
+  "schema": "bladefall.traversal-bot",
+  "mode": "replay",
+  "generatedAt": "2026-09-14T22:12:29.537Z",
+  "pass": true,
+  "runtimeErrors": [],
+  "runs": [
+    {
+      "stage": 1,
+      "muster": false,
+      "inputFile": "woods-replay.stage-1.inputs.json",
+      "boot": {
+        "levelLength": 12400,
+        "capabilities": [
+          "jump"
+        ],
+        "spawn": {
+          "x": 70,
+          "y": 0
+        }
+      },
+      "seconds": 1.2,
+      "pass": true,
+      "replayIdentical": true,
+      "replayScope": "full-simulation",
+      "stateHash": "4c2f86a9bdfac94395c83581403cd3cd8fca1a6fb0656e44ee493f29eddfd06e",
+      "frames": 4395,
+      "crossedBoundary": true,
+      "player": {
+        "frame": 4396,
+        "x": 12338.405176518687,
+        "y": 7.611111111111112,
+        "vx": 199.99999999999997,
+        "vy": -456.6666666666667,
+        "onGround": false,
+        "state": "rising",
+        "onWall": false,
+        "slamming": false,
+        "dead": false,
+        "hp": 100,
+        "blood": 5,
+        "coyote": 0.1,
+        "wallCoyote": 0,
+        "dodgeCdT": 0,
+        "dodgeTimer": 0,
+        "jumpBuf": 0,
+        "atkBuf": 0,
+        "dashBuf": 0,
+        "slamCd": 0
+      },
+      "reason": null,
+      "inputFrames": 0
+    }
+  ]
+}

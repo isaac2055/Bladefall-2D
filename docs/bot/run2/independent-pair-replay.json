@@ -1,0 +1,58 @@
+{
+  "schema": "bladefall.traversal-bot",
+  "generatedAt": "2026-09-14T17:17:30.682Z",
+  "pass": true,
+  "runtimeErrors": [],
+  "runs": [
+    {
+      "stage": 5,
+      "muster": false,
+      "boot": {
+        "levelLength": 18000,
+        "capabilities": [
+          "jump",
+          "weapon",
+          "dash",
+          "portal-single",
+          "portal-pair"
+        ],
+        "spawn": {
+          "x": 70,
+          "y": 0
+        }
+      },
+      "seconds": 0.9,
+      "pass": true,
+      "replayIdentical": true,
+      "replayScope": "full-simulation",
+      "stateHash": "009815511d93cc42edc39f08a929aaf6cc01f5b326d789c7a9b9ef98dc46ad59",
+      "frames": 1881,
+      "crossedBoundary": false,
+      "player": {
+        "frame": 1883,
+        "x": 4934.507828687004,
+        "y": 0,
+        "vx": 199.99999999999997,
+        "vy": 0,
+        "onGround": true,
+        "state": "grounded",
+        "onWall": false,
+        "slamming": false,
+        "dead": false,
+        "hp": 100,
+        "blood": 5,
+        "coyote": -1.1166666666666676,
+        "wallCoyote": 0,
+        "dodgeCdT": 0,
+        "dodgeTimer": 0,
+        "jumpBuf": 0,
+        "atkBuf": 0,
+        "dashBuf": 0,
+        "slamCd": 0
+      },
+      "reason": null,
+      "inputFrames": 0
+    }
+  ],
+  "mode": "replay"
+}

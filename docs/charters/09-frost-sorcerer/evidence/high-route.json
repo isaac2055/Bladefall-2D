@@ -1,0 +1,5167 @@
+{
+  "scope": "Geometry proof with damage suppressed and normal stage8 abilities. High route starts at authored arrival; gallery uses one initial position fixture. Search branches replayed continuously from one start.",
+  "start": {
+    "frame": 2,
+    "x": 4800,
+    "y": 0,
+    "vx": 0,
+    "vy": 0,
+    "onGround": true,
+    "state": "grounded",
+    "onWall": false,
+    "slamming": false,
+    "dead": false,
+    "hp": 100,
+    "blood": 5,
+    "coyote": 0.1,
+    "wallCoyote": 0,
+    "dodgeCdT": 0,
+    "dodgeTimer": 0,
+    "jumpBuf": 0,
+    "atkBuf": 0,
+    "dashBuf": 0,
+    "slamCd": 0
+  },
+  "solved": true,
+  "segments": [
+    {
+      "target": [
+        5750,
+        0
+      ],
+      "won": true,
+      "moveAt": 0,
+      "secondAt": 22,
+      "frames": 281,
+      "landing": {
+        "x": 5728.888888888828,
+        "y": 0
+      },
+      "attempts": 1
+    },
+    {
+      "target": [
+        5830,
+        70
+      ],
+      "won": true,
+      "moveAt": 0,
+      "secondAt": 22,
+      "frames": 61,
+      "landing": {
+        "x": 5823.785355069338,
+        "y": 70
+      },
+      "attempts": 1
+    },
+    {
+      "target": [
+        6010,
+        70
+      ],
+      "won": true,
+      "moveAt": 0,
+      "secondAt": 22,
+      "frames": 100,
+      "landing": {
+        "x": 5988.35666428374,
+        "y": 70
+      },
+      "attempts": 1
+    },
+    {
+      "target": [
+        6150,
+        130
+      ],
+      "won": true,
+      "moveAt": 0,
+      "secondAt": 22,
+      "frames": 62,
+      "landing": {
+        "x": 6164.237893689244,
+        "y": 130
+      },
+      "attempts": 1
+    },
+    {
+      "target": [
+        6350,
+        130
+      ],
+      "won": true,
+      "moveAt": 0,
+      "secondAt": 22,
+      "frames": 146,
+      "landing": {
+        "x": 6328.245725302526,
+        "y": 130
+      },
+      "attempts": 1
+    },
+    {
+      "target": [
+        6500,
+        210
+      ],
+      "won": true,
+      "moveAt": 0,
+      "secondAt": 22,
+      "frames": 60,
+      "landing": {
+        "x": 6514.03179461454,
+        "y": 210
+      },
+      "attempts": 1
+    },
+    {
+      "target": [
+        6730,
+        210
+      ],
+      "won": true,
+      "moveAt": 0,
+      "secondAt": 22,
+      "frames": 93,
+      "landing": {
+        "x": 6708.110248019273,
+        "y": 210
+      },
+      "attempts": 1
+    },
+    {
+      "target": [
+        6890,
+        300
+      ],
+      "won": true,
+      "moveAt": 0,
+      "secondAt": 22,
+      "frames": 58,
+      "landing": {
+        "x": 6893.286449834973,
+        "y": 300
+      },
+      "attempts": 1
+    },
+    {
+      "target": [
+        7090,
+        300
+      ],
+      "won": true,
+      "moveAt": 0,
+      "secondAt": 22,
+      "frames": 53,
+      "landing": {
+        "x": 7069.564788806598,
+        "y": 300
+      },
+      "attempts": 1
+    },
+    {
+      "target": [
+        7240,
+        420
+      ],
+      "won": true,
+      "moveAt": 0,
+      "secondAt": 22,
+      "frames": 53,
+      "landing": {
+        "x": 7245.685082266513,
+        "y": 420
+      },
+      "attempts": 1
+    },
+    {
+      "target": [
+        7340,
+        420
+      ],
+      "won": true,
+      "moveAt": 0,
+      "secondAt": 22,
+      "frames": 22,
+      "landing": {
+        "x": 7318.512914330754,
+        "y": 420
+      },
+      "attempts": 1
+    }
+  ],
+  "replay": {
+    "matches": true,
+    "state": {
+      "frame": 991,
+      "x": 7318.512914330754,
+      "y": 420,
+      "vx": 199.99491579058855,
+      "vy": 0,
+      "onGround": true,
+      "state": "grounded",
+      "onWall": false,
+      "slamming": false,
+      "dead": false,
+      "hp": 100,
+      "blood": 5,
+      "coyote": 0.1,
+      "wallCoyote": 0,
+      "dodgeCdT": 0,
+      "dodgeTimer": 0,
+      "jumpBuf": 0,
+      "atkBuf": 0,
+      "dashBuf": 0,
+      "slamCd": 0
+    }
+  },
+  "reward": true,
+  "inputs": [
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": false,
+      "left": true,
+      "jump": true
+    },
+    {
+      "right": false,
+      "left": true,
+      "jump": true
+    },
+    {
+      "right": false,
+      "left": true,
+      "jump": true
+    },
+    {
+      "right": false,
+      "left": true,
+      "jump": true
+    },
+    {
+      "right": false,
+      "left": true,
+      "jump": true
+    },
+    {
+      "right": false,
+      "left": true,
+      "jump": true
+    },
+    {
+      "right": false,
+      "left": true,
+      "jump": true
+    },
+    {
+      "right": false,
+      "left": true,
+      "jump": true
+    },
+    {
+      "right": false,
+      "left": true,
+      "jump": true
+    },
+    {
+      "right": false,
+      "left": true,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": true,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": true,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": true,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": true,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": true,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": true,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": true,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": true,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": true,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": true,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": true
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": false,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    },
+    {
+      "right": true,
+      "left": false,
+      "jump": false
+    }
+  ],
+  "errors": []
+}

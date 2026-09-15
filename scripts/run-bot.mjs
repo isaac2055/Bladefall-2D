@@ -3,10 +3,11 @@
  *   node scripts/run-bot.mjs --stage 0
  *   node scripts/run-bot.mjs --stages 0,1,2 --out docs/bot/receipt.json
  *   node scripts/run-bot.mjs --stage 7 --goal 8800
+ *   node scripts/run-bot.mjs --replay docs/bot/receipt.stage-0.inputs.json --out docs/bot/replay.json
  */
 import { createServer } from 'node:http';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
-import { resolve, extname, dirname } from 'node:path';
+import { resolve, extname, dirname, basename } from 'node:path';
 import puppeteer from 'puppeteer';
 
 const argv = process.argv.slice(2);
@@ -14,11 +15,13 @@ const arg = (name, fallback) => {
   const i = argv.indexOf('--' + name);
   return i >= 0 && argv[i + 1] ? argv[i + 1] : fallback;
 };
-const stages = (arg('stages', arg('stage', '0'))).split(',').map((s) => Number(s.trim()));
+const replayPath = arg('replay', null);
+const replayPlan = replayPath ? JSON.parse(await readFile(resolve(replayPath), 'utf8')) : null;
+const stages = (arg('stages', arg('stage', String(replayPlan?.stage ?? 0)))).split(',').map((s) => Number(s.trim()));
 const goalX = arg('goal', null) === null ? null : Number(arg('goal'));
 const budget = arg('budget', null) === null ? undefined : Number(arg('budget'));
 const maxSegments = arg('segments', null) === null ? undefined : Number(arg('segments'));
-const muster = argv.includes('--muster');
+const muster = replayPlan ? !!replayPlan.muster : argv.includes('--muster');
 const outPath = resolve(arg('out', 'docs/bot/receipt.json'));
 
 const root = resolve('public');
@@ -58,7 +61,7 @@ try {
     let boot, result;
     try {
       boot = await page.evaluate(bot.bootstrapStage, muster ? { stage, muster: true } : stage);
-      result = await page.evaluate(bot.solveLevel, { goalX, totalExpansions: budget, maxSegments });
+      result = replayPlan ? await page.evaluate(bot.replayInputs, replayPlan) : await page.evaluate(bot.solveLevel, { goalX, totalExpansions: budget, maxSegments });
     } catch (error) {
       // One stage the TAS snapshot cannot serialize must not abort the sweep.
       runs.push({ stage, pass: false, reason: 'harness error: ' + error.message,
@@ -66,10 +69,12 @@ try {
       console.log(`stage ${stage}: ERROR ${error.message}`);
       continue;
     }
-    // Keep the receipt readable: the frame-by-frame inputs belong in the log,
-    // not in a document a human is meant to scan.
+    // Keep every winning/partial route runnable locally, alongside its summary.
     const { winningInputs, ...summary } = result;
-    runs.push({ stage, muster, boot: { levelLength: boot.levelLength, capabilities: boot.capabilities, spawn: { x: Math.round(boot.p.x), y: Math.round(boot.p.y) } },
+    const inputPath = outPath.replace(/\.json$/, '') + '.stage-' + stage + '.inputs.json';
+    await mkdir(dirname(inputPath), { recursive: true });
+    await writeFile(inputPath, JSON.stringify({ stage, muster, stateHash: result.stateHash, inputs: winningInputs || replayPlan?.inputs || [] }) + '\n');
+    runs.push({ stage, muster, inputFile: basename(inputPath), boot: { levelLength: boot.levelLength, capabilities: boot.capabilities, spawn: { x: Math.round(boot.p.x), y: Math.round(boot.p.y) } },
       seconds: +((Date.now() - started) / 1000).toFixed(1), ...summary,
       inputFrames: winningInputs ? winningInputs.length : 0 });
     const r = runs.at(-1);
@@ -78,14 +83,17 @@ try {
       `${r.pass ? `replayIdentical=${r.replayIdentical}` : `failedSegment=${r.failedSegment} (${r.reason})`}`);
   }
 } finally {
+  const child = browser.process();
   await browser.close();
-  server.close();
+  for (const stream of child?.stdio || []) stream?.destroy();
+  server.closeAllConnections(); server.close();
 }
 
 const receipt = {
   schema: 'bladefall.traversal-bot',
+  mode: replayPlan ? 'replay' : 'solve',
   generatedAt: new Date().toISOString(),
-  pass: runs.length > 0 && runs.every((r) => r.pass),
+  pass: !errors.length && runs.length > 0 && runs.every((r) => r.pass && r.replayIdentical),
   runtimeErrors: errors,
   runs,
 };

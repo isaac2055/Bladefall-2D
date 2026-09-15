@@ -1,5 +1,5 @@
 # Netlify config for the Bladefall static site. When you drag-and-drop the
-# netlify-deploy folder, Netlify serves it as-is; these header rules still apply.
+# netlify-deploy folder, upload rules are also supplied by its _headers file.
 [build]
   publish = "."
 

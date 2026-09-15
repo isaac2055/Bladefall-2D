@@ -1,0 +1,633 @@
+{
+  "version": "7.98.0",
+  "scope": "Isolated invulnerable geometry fixtures, actual movement inputs; not campaign or combat completion.",
+  "errors": [],
+  "results": [
+    {
+      "zone": "warden",
+      "directions": [
+        {
+          "reverse": false,
+          "pass": true,
+          "allRoads": true,
+          "touched": [
+            "recall-return-warden-road-0",
+            "recall-return-warden-road-1"
+          ],
+          "segments": [
+            {
+              "target": [
+                6200,
+                0
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 6182.2222222221835,
+                  "y": 0
+                }
+              ]
+            },
+            {
+              "target": [
+                6880,
+                0
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 6862.222222222122,
+                  "y": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "reverse": true,
+          "pass": true,
+          "allRoads": true,
+          "touched": [
+            "recall-return-warden-road-1",
+            "recall-return-warden-road-0"
+          ],
+          "segments": [
+            {
+              "target": [
+                6200,
+                0
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 6217.777777777815,
+                  "y": 0
+                }
+              ]
+            },
+            {
+              "target": [
+                5500,
+                0
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 5517.777777777878,
+                  "y": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "zone": "outskirts",
+      "directions": [
+        {
+          "reverse": false,
+          "pass": true,
+          "allRoads": true,
+          "touched": [
+            "recall-return-outskirts-road-0",
+            "recall-return-outskirts-road-1"
+          ],
+          "segments": [
+            {
+              "target": [
+                7970,
+                0
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 7952.222222222195,
+                  "y": 0
+                }
+              ]
+            },
+            {
+              "target": [
+                8870,
+                0
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 8852.222222222294,
+                  "y": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "reverse": true,
+          "pass": true,
+          "allRoads": true,
+          "touched": [
+            "recall-return-outskirts-road-1",
+            "recall-return-outskirts-road-0"
+          ],
+          "segments": [
+            {
+              "target": [
+                7970,
+                0
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 7987.777777777726,
+                  "y": 0
+                }
+              ]
+            },
+            {
+              "target": [
+                7400,
+                0
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 7417.777777777778,
+                  "y": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "zone": "black-woods",
+      "directions": [
+        {
+          "reverse": false,
+          "pass": true,
+          "allRoads": true,
+          "touched": [
+            "recall-return-black-woods-road-0",
+            "recall-return-black-woods-road-1",
+            "recall-return-black-woods-road-2",
+            "recall-return-black-woods-road-3",
+            "recall-return-black-woods-road-4"
+          ],
+          "segments": [
+            {
+              "target": [
+                7620,
+                260
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 7600.089150123765,
+                  "y": 260
+                }
+              ]
+            },
+            {
+              "target": [
+                7840,
+                390
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 7820.088933372626,
+                  "y": 390
+                }
+              ]
+            },
+            {
+              "target": [
+                8060,
+                520
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 8040.088933369734,
+                  "y": 520
+                }
+              ]
+            },
+            {
+              "target": [
+                8280,
+                620
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 8260.088933369732,
+                  "y": 620
+                }
+              ]
+            },
+            {
+              "target": [
+                9600,
+                620
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 9580.088933369972,
+                  "y": 620
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "reverse": true,
+          "pass": true,
+          "allRoads": true,
+          "touched": [
+            "recall-return-black-woods-road-4",
+            "recall-return-black-woods-road-3",
+            "recall-return-black-woods-road-2",
+            "recall-return-black-woods-road-1",
+            "recall-return-black-woods-road-0"
+          ],
+          "segments": [
+            {
+              "target": [
+                8280,
+                620
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 8297.777777777594,
+                  "y": 620
+                }
+              ]
+            },
+            {
+              "target": [
+                8060,
+                520
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 8077.7777777775855,
+                  "y": 520
+                }
+              ]
+            },
+            {
+              "target": [
+                7840,
+                390
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 7857.7777777776055,
+                  "y": 390
+                }
+              ]
+            },
+            {
+              "target": [
+                7620,
+                260
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 7637.7777777776255,
+                  "y": 260
+                }
+              ]
+            },
+            {
+              "target": [
+                7400,
+                130
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 7417.7777777776455,
+                  "y": 130
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "zone": "brute",
+      "directions": [
+        {
+          "reverse": false,
+          "pass": true,
+          "allRoads": true,
+          "touched": [
+            "recall-return-brute-road-0",
+            "recall-return-brute-road-1",
+            "recall-return-brute-road-2"
+          ],
+          "segments": [
+            {
+              "target": [
+                5900,
+                70
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 5890.037737216302,
+                  "y": 70
+                }
+              ]
+            },
+            {
+              "target": [
+                6120,
+                135
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 6100.0084254481,
+                  "y": 135
+                }
+              ]
+            },
+            {
+              "target": [
+                6380,
+                200
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 6360.00840221295,
+                  "y": 200
+                }
+              ]
+            },
+            {
+              "target": [
+                6600,
+                265
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 6580.008402212858,
+                  "y": 265
+                }
+              ]
+            },
+            {
+              "target": [
+                7430,
+                265
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 7410.008402212782,
+                  "y": 265
+                }
+              ]
+            },
+            {
+              "target": [
+                7690,
+                200
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 7670.0084022127585,
+                  "y": 200
+                }
+              ]
+            },
+            {
+              "target": [
+                7970,
+                130
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 7950.008402212733,
+                  "y": 130
+                }
+              ]
+            },
+            {
+              "target": [
+                8160,
+                0
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 8143.341735546049,
+                  "y": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "reverse": true,
+          "pass": true,
+          "allRoads": true,
+          "touched": [
+            "recall-return-brute-road-2",
+            "recall-return-brute-road-1",
+            "recall-return-brute-road-0"
+          ],
+          "segments": [
+            {
+              "target": [
+                7970,
+                130
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 7989.909125102665,
+                  "y": 130
+                }
+              ]
+            },
+            {
+              "target": [
+                7690,
+                200
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 7709.914510545971,
+                  "y": 200
+                }
+              ]
+            },
+            {
+              "target": [
+                7430,
+                265
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 7449.914510547827,
+                  "y": 265
+                }
+              ]
+            },
+            {
+              "target": [
+                6600,
+                265
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 6619.914510547903,
+                  "y": 265
+                }
+              ]
+            },
+            {
+              "target": [
+                6380,
+                200
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 6399.914510547923,
+                  "y": 200
+                }
+              ]
+            },
+            {
+              "target": [
+                6120,
+                135
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 6139.9145105479465,
+                  "y": 135
+                }
+              ]
+            },
+            {
+              "target": [
+                5900,
+                70
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 5919.9145105479665,
+                  "y": 70
+                }
+              ]
+            },
+            {
+              "target": [
+                5710,
+                0
+              ],
+              "won": true,
+              "attempts": [
+                {
+                  "moveAt": 0,
+                  "hit": true,
+                  "x": 5729.914510547984,
+                  "y": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

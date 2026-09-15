@@ -26,7 +26,13 @@ async function openBot(t) {
   const browser = await puppeteer.launch({ headless: true, protocolTimeout: 1_800_000,
     executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
     args: ['--no-sandbox'] });
-  t.after(async () => { await browser.close(); server.close(); });
+  t.after(async () => {
+    const child = browser.process();
+    await browser.close();
+    // Chrome helpers can retain a closed browser's stderr pipe on macOS.
+    for (const stream of child?.stdio || []) stream?.destroy();
+    server.closeAllConnections(); server.close();
+  });
   const page = await browser.newPage();
   const errors = [];
   page.on('pageerror', (e) => errors.push(e.message));
@@ -77,5 +83,56 @@ test('the bot works the Causeway\u2019s mechanisms and reaches the Brute\u2019s 
   assert.ok(worked.some((id) => id.includes('causeway-catch-yard')), 'the yard catch was released');
   assert.ok(worked.some((id) => id.includes('causeway-catch-rise')), 'the rise catch was released');
   assert.ok(result.solved.some((s) => s.mechanism), 'the route records a mechanism segment');
+  assert.deepEqual(errors, []);
+});
+
+test('a failed Warden search reports only its committed inputs and replays the full simulation', async (t) => {
+  const { page, bot, errors } = await openBot(t);
+  await page.evaluate(bot.bootstrapStage, 6);
+  const result = await page.evaluate(bot.solveLevel, { totalExpansions: 3000 });
+  assert.equal(result.replayScope, 'full-simulation');
+  assert.equal(result.replayIdentical, true, result.reason);
+  assert.equal(result.frames, result.replayFrames);
+  assert.equal(result.pass, result.routeReached && result.replayIdentical);
+  assert.deepEqual(errors, []);
+});
+
+test('the bot uses crystal refills and places a linked mouth through Marksman’s opening', async (t) => {
+  const { page, bot, errors } = await openBot(t);
+  const boot = await page.evaluate(bot.bootstrapStage, 4);
+  assert.ok(!boot.capabilities.includes('double-jump'));
+  const result = await page.evaluate(bot.solveLevel, { goalX: 4700, totalExpansions: 6500 });
+  assert.equal(result.pass, true, `${result.reason}: ${JSON.stringify(result.from)}`);
+  assert.equal(result.replayIdentical, true);
+  assert.ok(result.winningInputs.some(i => i.portal), 'a real portal press belongs to the replay');
+  assert.ok(result.evidence.crystalRefills >= 2, 'the grounded prefix uses crystal refills');
+  assert.deepEqual(errors, []);
+});
+
+test('the bot builds and uses an independent pair over the Keep screen', async (t) => {
+  const { page, bot, errors } = await openBot(t);
+  await page.evaluate(bot.bootstrapStage, 5);
+  const result = await page.evaluate(bot.solveLevel, { goalX: 4800, totalExpansions: 4500 });
+  assert.equal(result.pass, true, `${result.reason}: ${JSON.stringify(result.from)}`);
+  assert.ok(result.solved.some(s => s.via === 'pair-momentum'));
+  assert.ok(result.evidence.portalPlacements >= 2);
+  assert.equal(result.replayIdentical, true);
+  // A fresh bootstrap must reproduce the artifact, not just an in-page restore.
+  await page.evaluate(bot.bootstrapStage, 5);
+  const replay = await page.evaluate(bot.replayInputs, { inputs: result.winningInputs, stateHash: result.stateHash });
+  assert.equal(replay.pass, true, replay.reason);
+  assert.deepEqual(errors, []);
+});
+
+test('the bot releases and acquires the Aerie Pack before flying past the Bellows gate', async (t) => {
+  const { page, bot, errors } = await openBot(t);
+  await page.evaluate(bot.bootstrapStage, 3);
+  const result = await page.evaluate(bot.solveLevel, { goalX: 4100, totalExpansions: 6500 });
+  assert.equal(result.pass, true, `${result.reason}: ${JSON.stringify(result.from)}`);
+  assert.equal(result.equipment.hasJetpack, true);
+  assert.ok(result.evidence.flightFrames > 0);
+  assert.ok(result.equipment.fuel < 100 && result.equipment.fuel >= 0, 'flight actually consumed fuel');
+  assert.ok(result.mechanisms.some(m => m.id?.includes('aerie-pack-ready') && m.after));
+  assert.equal(result.replayIdentical, true);
   assert.deepEqual(errors, []);
 });

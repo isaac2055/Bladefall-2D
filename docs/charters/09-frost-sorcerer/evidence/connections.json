@@ -1,0 +1,62 @@
+{
+  "scope": "Normal keyboard and automatic loop; isolated endpoint positions and victory fixture. Not approach geometry or a full campaign playthrough.",
+  "errors": [],
+  "results": [
+    {
+      "name": "aqueduct to Frostfell",
+      "stage": 7,
+      "x": 14920,
+      "y": 650,
+      "endpoint": "frostfell-sorcerer:frostfell",
+      "ability": true
+    },
+    {
+      "name": "aqueduct to White Court",
+      "stage": 8,
+      "x": 300,
+      "y": 0,
+      "endpoint": "frostfell-sorcerer:frost-sorcerer",
+      "ability": true
+    },
+    {
+      "name": "shaft to Causeway",
+      "stage": 2,
+      "x": 10980,
+      "y": 390,
+      "endpoint": "brute-sorcerer:brute",
+      "ability": true
+    },
+    {
+      "name": "shaft to White Court",
+      "stage": 8,
+      "x": 4800,
+      "y": 0,
+      "endpoint": "brute-sorcerer:frost-sorcerer",
+      "ability": true
+    },
+    {
+      "name": "Ember door locked before Attunement",
+      "stage": 8,
+      "x": 15500,
+      "y": 0,
+      "endpoint": "brute-sorcerer:frost-sorcerer",
+      "ability": true
+    },
+    {
+      "name": "Ember door after Attunement",
+      "stage": 9,
+      "x": 240,
+      "y": 0,
+      "endpoint": "sorcerer-emberdeep:emberdeep",
+      "ability": true
+    },
+    {
+      "name": "Emberdeep return",
+      "stage": 8,
+      "x": 15500,
+      "y": 0,
+      "endpoint": "sorcerer-emberdeep:frost-sorcerer",
+      "ability": true
+    }
+  ]
+}

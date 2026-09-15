@@ -1,0 +1,45 @@
+{
+  "scope": "Fresh-page reload of an isolated campaign-prefix fixture; normal keyboard latch/reward interactions, victory fixture.",
+  "rewards": {
+    "seals": 1,
+    "fragments": 1
+  },
+  "restored": {
+    "opened": true,
+    "wheel": true,
+    "cache": true,
+    "seals": 1,
+    "fragments": 1
+  },
+  "victoryRewards": {
+    "seals": 1,
+    "fragments": 2
+  },
+  "victory": {
+    "ability": true,
+    "bossAlive": false
+  },
+  "final": {
+    "seals": 1,
+    "fragments": 2
+  },
+  "results": [
+    {
+      "name": "saved-open aqueduct to Frostfell",
+      "stage": 7,
+      "x": 14920,
+      "y": 650,
+      "endpoint": "frostfell-sorcerer:frostfell",
+      "ability": true
+    },
+    {
+      "name": "saved-open aqueduct return",
+      "stage": 8,
+      "x": 300,
+      "y": 0,
+      "endpoint": "frostfell-sorcerer:frost-sorcerer",
+      "ability": true
+    }
+  ],
+  "errors": []
+}

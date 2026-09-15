@@ -91,11 +91,11 @@ test('Rootbound Passage gives the east side of the wall a reversible, hazardous 
 });
 
 test('Level 2 inherits compact anchored dialogue and Up-to-reread behavior',()=>{
-  assert.match(source,/if\(!G\|\|G\.stageIndex<0\|\|G\.stageIndex>6\|\|!source\)return false/);
-  assert.match(source,/const rooms=G\.stageIndex===0\?OUTSKIRTS_ROOM_CUES:G\.stageIndex===1\?BLACK_WOODS_ROOM_CUES:G\.stageIndex===2\?CAUSEWAY_ROOM_CUES:G\.stageIndex===5\?RUINED_KEEP_ROOM_CUES:G\.stageIndex===7\?FROSTFELL_ROOM_CUES:WARDEN_ROOM_CUES/);
+  assert.match(source,/if\(!G\|\|G\.stageIndex<0\|\|G\.stageIndex>9\|\|!source\)return false/);
+  assert.match(source,/const rooms=G\.stageIndex===0\?OUTSKIRTS_ROOM_CUES:G\.stageIndex===1\?BLACK_WOODS_ROOM_CUES:G\.stageIndex===2\?CAUSEWAY_ROOM_CUES:G\.stageIndex===5\?RUINED_KEEP_ROOM_CUES:G\.stageIndex===7\?FROSTFELL_ROOM_CUES:G\.stageIndex===8\?WHITE_COURT_ROOM_CUES:WARDEN_ROOM_CUES/);
   assert.match(source,/G\.stageIndex>=0&&G\.stageIndex<=4\)showOutskirtsAnnotation\(o,loreHtml/);
   assert.match(source,/if\(G\.stageIndex===1\)showOutskirtsAnnotation\(n,greeting/);
-  assert.match(source,/G\.stageIndex<0\|\|G\.stageIndex>6/);
+  assert.match(source,/G\.stageIndex<0\|\|G\.stageIndex>9/);
   assert.match(source,/wrapAnnotationLines\(c,a\.body,width-pad\*2,kind==='person'\?4:3\)/);
   assert.match(source,/function outskirtsAnnotationKind\(source,options\)/);
 });

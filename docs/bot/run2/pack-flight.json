@@ -1,0 +1,281 @@
+{
+  "schema": "bladefall.traversal-bot",
+  "generatedAt": "2026-09-14T17:29:04.040Z",
+  "pass": true,
+  "runtimeErrors": [],
+  "runs": [
+    {
+      "stage": 3,
+      "muster": false,
+      "boot": {
+        "levelLength": 18000,
+        "capabilities": [
+          "jump",
+          "weapon",
+          "dash"
+        ],
+        "spawn": {
+          "x": 70,
+          "y": 0
+        }
+      },
+      "seconds": 1.7,
+      "pass": true,
+      "routeReached": true,
+      "playerReplayIdentical": true,
+      "replayScope": "full-simulation",
+      "stateHash": "c1bb90687b9827d35c2926260d59232b8dd90b5c575d7b3ea1d3c34a3fe83c65",
+      "direction": 1,
+      "goalX": 4100,
+      "goalKind": "target",
+      "crossedBoundary": false,
+      "reachedX": 4108,
+      "segments": 7,
+      "backtracks": 0,
+      "frames": 893,
+      "replayFrames": 893,
+      "expansions": 21,
+      "replayIdentical": true,
+      "capabilities": {
+        "doubleJump": false,
+        "dash": true,
+        "weapon": true
+      },
+      "envelope": {
+        "maxRise": 135,
+        "maxReach": 536
+      },
+      "costedSegments": 0,
+      "blood": 5,
+      "equipment": {
+        "hasJetpack": true,
+        "fuel": 0
+      },
+      "mechanisms": [
+        {
+          "kind": "lever",
+          "id": "lever:aerie-pack-ready:3120:340",
+          "x": 3120,
+          "y": 340,
+          "how": "strike",
+          "before": false,
+          "after": true,
+          "frames": 102
+        },
+        {
+          "kind": "pickup",
+          "id": "pickup::3225:362",
+          "x": 3225,
+          "y": 362,
+          "how": "pickup",
+          "before": true,
+          "after": true,
+          "frames": 65
+        }
+      ],
+      "history": [
+        {
+          "seg": 0,
+          "from": 330,
+          "to": "540:70",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 1,
+          "from": 660,
+          "to": "900:150",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 2,
+          "from": 1040,
+          "to": "1360:250",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 3,
+          "from": 1540,
+          "to": "1500:0",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 4,
+          "from": 2250,
+          "to": "2350:75",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 6,
+          "from": 2470,
+          "to": "3105:340",
+          "blood": false,
+          "exp": 13,
+          "ok": true
+        }
+      ],
+      "solved": [
+        {
+          "seg": 0,
+          "from": {
+            "x0": 0,
+            "x1": 330,
+            "y": 0
+          },
+          "to": {
+            "x0": 540,
+            "x1": 660,
+            "y": 70
+          },
+          "frames": 120,
+          "expansions": 1,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "steeredDash16",
+          "x": 612,
+          "y": 70
+        },
+        {
+          "seg": 1,
+          "from": {
+            "x0": 540,
+            "x1": 660,
+            "y": 70
+          },
+          "to": {
+            "x0": 900,
+            "x1": 1040,
+            "y": 150
+          },
+          "frames": 45,
+          "expansions": 1,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "steeredDash16",
+          "x": 984,
+          "y": 150
+        },
+        {
+          "seg": 2,
+          "from": {
+            "x0": 900,
+            "x1": 1040,
+            "y": 150
+          },
+          "to": {
+            "x0": 1360,
+            "x1": 1540,
+            "y": 250
+          },
+          "frames": 78,
+          "expansions": 1,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "steeredDash16",
+          "x": 1462,
+          "y": 250
+        },
+        {
+          "seg": 3,
+          "from": {
+            "x0": 1360,
+            "x1": 1540,
+            "y": 250
+          },
+          "to": {
+            "x0": 1500,
+            "x1": 2250,
+            "y": 0
+          },
+          "frames": 86,
+          "expansions": 1,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "steeredDash16",
+          "x": 1901,
+          "y": 0
+        },
+        {
+          "seg": 4,
+          "from": {
+            "x0": 1500,
+            "x1": 2250,
+            "y": 0
+          },
+          "to": {
+            "x0": 2350,
+            "x1": 2470,
+            "y": 75
+          },
+          "frames": 143,
+          "expansions": 1,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "steeredDash16",
+          "x": 2453,
+          "y": 75
+        },
+        {
+          "seg": 5,
+          "mechanism": true,
+          "to": {
+            "x0": 2350,
+            "x1": 2470,
+            "y": 75
+          },
+          "frames": 167,
+          "doors": [
+            {
+              "x": 3335,
+              "circuit": "aerie-pack-owned"
+            }
+          ]
+        },
+        {
+          "seg": 6,
+          "from": {
+            "x0": 2350,
+            "x1": 2470,
+            "y": 75
+          },
+          "to": {
+            "x0": 2350,
+            "x1": 2470,
+            "y": 75
+          },
+          "frames": 254,
+          "expansions": 13,
+          "depth": 6,
+          "costBlood": false,
+          "dFrom": 9.225,
+          "dTo": 9.225,
+          "via": "dash",
+          "x": 4108,
+          "y": 3
+        }
+      ],
+      "inputFrames": 893,
+      "inputFile": "pack-flight.inputs.json"
+    }
+  ],
+  "mode": "solve"
+}

@@ -47,6 +47,15 @@
       ],
     },
     {
+      id: 'sluice-counter', stageIndex: 8, x: 4600, name: 'Sluice Counter',
+      keeper: 'Vey’s Service Drawer', accent: '#c3dfe6',
+      greeting: 'Leave the cost beneath the weight. The tools belong to whoever returns them.',
+      stock: [
+        { id: 'court-repair', name: 'Oil and Glass', description: 'Restore all weapon durability or ammunition.', price: 45, once: false, grant: { kind: 'repair' } },
+        { id: 'court-respite', name: 'Clear Measure', description: 'Restore two measures of Blood.', price: 38, once: false, grant: { kind: 'heal', amount: 40 } },
+      ],
+    },
+    {
       id: 'cinder-ledger', stageIndex: 9, x: 330, name: 'The Cinder Ledger',
       keeper: 'Sera the Courier', accent: '#ffb06a',
       greeting: 'Every ember arrives owing something.',

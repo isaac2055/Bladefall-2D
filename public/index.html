@@ -330,7 +330,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.96.0';
+const VERSION='7.101.1';
 /* Music is authored per place. Boss cues are nested beneath their level so the
    score does not announce an encounter from the far side of a long stage. */
 const LEVEL_MUSIC=Object.freeze({
@@ -350,6 +350,10 @@ const LEVEL_MUSIC=Object.freeze({
       title:'Abnormal Circumstances',artist:'project-owner supplied',mood:'Hollow Marksman encounter'})}),
   5:Object.freeze({id:'ruined-keep-floating-dream',src:'./audio/music/floating-dream.ogg',gain:1.02,
     title:'Floating Dream',artist:'Pizza Doggy',mood:'quiet masonry, displaced rooms, and a Keep remembering its shape'}),
+  8:Object.freeze({id:'white-court-floating-dream',src:'./audio/music/floating-dream.ogg',gain:.88,
+    title:'Floating Dream',artist:'Pizza Doggy',mood:'hushed glass halls and an absent court',
+    boss:Object.freeze({id:'white-court-abnormal-circumstances',src:'./audio/music/abnormal-circumstances.mp3',gain:.94,
+      title:'Abnormal Circumstances',artist:'project-owner supplied',mood:'the Sorcerer’s fractured ceremony'})}),
   7:Object.freeze({id:'frostfell-drifting-memories',src:'./audio/music/drifting-memories.ogg',gain:.88,
     title:'Drifting Memories',artist:'Pizza Doggy',mood:'snowbound streets and warmth returning to abandoned homes'}),
   6:Object.freeze({id:'warden-whispering-woods',src:'./audio/music/whispering-woods.ogg',gain:0.94,
@@ -580,6 +584,10 @@ const EARCH={
   shieldbearer:{muster:1,hp:64,dmg:12,speed:44,w:44,h:58,xp:34,color:'#8a7a63',kind:'walk'},
   linesman:{muster:1,hp:34,dmg:10,speed:36,w:30,h:50,xp:30,color:'#a08c70',kind:'walk',ranged:true,shot:{count:1,spread:0,speed:340,size:6,color:'#f1d6a0',shape:'bolt',glow:1},shootCd:2.6},
   signaler:{muster:1,hp:30,dmg:8,speed:48,w:32,h:44,xp:28,color:'#c9a24a',kind:'walk'},
+  gaoler:{muster:1,hp:82,dmg:18,speed:48,w:56,h:76,xp:38,color:'#756781',kind:'walk'},
+  outrider:{muster:1,hp:52,dmg:13,speed:104,w:38,h:54,xp:32,color:'#a07855',kind:'walk'},
+  canopywing:{muster:1,hp:44,dmg:12,speed:92,w:54,h:42,xp:32,color:'#779765',kind:'fly'},
+  chainmarshal:{muster:1,hp:88,dmg:18,speed:44,w:58,h:78,xp:40,color:'#8b7761',kind:'walk'},
   frostling:{hp:28,dmg:8,speed:50,w:30,h:38,xp:17,color:'#7fd6ff',kind:'walk',element:'ice'},
   toxling:{hp:24,dmg:8,speed:56,w:30,h:38,xp:17,color:'#9fd84a',kind:'walk',element:'poison'},
   shadeling:{hp:27,dmg:9,speed:56,w:30,h:38,xp:19,color:'#b06bff',kind:'walk',element:'void'},
@@ -2039,8 +2047,23 @@ function drawEnemyVariant(c,e){
     if(e.type==='frostsinger'){c.strokeStyle='#e1c5eb';c.beginPath();c.arc(0,-e.h*.78,e.w*.6,Math.PI,Math.PI*2);c.stroke();}
     c.restore();}
   if(e.muster){c.save();c.strokeStyle='#e8d9b8';c.lineWidth=3;
-    const sf=e.shieldFace||e.face||-1;
+    const sf=(e.shieldFace||e.face||-1)/(e.face||1);
     if(e.type==='shieldbearer'){c.fillStyle='#4b4236';c.fillRect(sf*e.w*.42-8,-e.h*.94,16,e.h*.72);c.strokeRect(sf*e.w*.42-8,-e.h*.94,16,e.h*.72);}
+    if(e.type==='gaoler'){
+      c.strokeStyle='#c5b6ce';lineC(c,-e.w*.55,-e.h*.8,e.w*.55,-e.h*.8);
+      for(let i=0;i<5;i++){c.beginPath();c.arc(sf*(e.w*.5+i*6),-e.h*.55+i*6,5,0,Math.PI*2);c.stroke();}
+      if(e.recallState==='windup'||e.chainFlash>0){c.save();c.globalAlpha=e.chainFlash>0?.9:.35;c.setLineDash([7,7]);
+        lineC(c,0,-e.h*.6,(e.recallAimX-e.x)/(e.face||1),-(e.recallAimY-e.y+18));c.restore();}
+    }
+    if(e.recallState==='windup'&&e.type!=='gaoler'){
+      c.save();c.strokeStyle='#ffd08a';c.globalAlpha=.65;c.lineWidth=2;
+      c.beginPath();c.arc(0,-e.h*.5,e.w*.7+6,-Math.PI/2,Math.PI*1.5);c.stroke();
+      if(e.type==='canopywing'){c.setLineDash([6,6]);lineC(c,0,-e.h*.5,(e.recallAimX-e.x)/(e.face||1),-(e.recallAimY-e.y));}
+      c.restore();
+    }
+    if(e.type==='outrider'){c.fillStyle='#bb7648';triC(c,-e.w*.5,-e.h*.7,-e.w*.95,-e.h*.2,e.w*.2,-e.h*.35);lineC(c,sf*12,-12,sf*28,-e.h*.85);}
+    if(e.type==='canopywing'){c.fillStyle='#465c35';for(const side of [-1,1])triC(c,side*8,-e.h*.65,side*(e.w*.9+Math.sin(G.time*8)*8),-e.h-16,side*e.w*.55,-8);}
+    if(e.type==='chainmarshal'){c.fillStyle='#594936';c.fillRect(sf*e.w*.4-13,-e.h,26,e.h*.9);c.strokeRect(sf*e.w*.4-13,-e.h,26,e.h*.9);lineC(c,-sf*20,-5,-sf*20,-e.h-30);triC(c,-sf*20,-e.h-30,-sf*38,-e.h-16,-sf*20,-e.h-8);}
     if(e.type==='linesman'){c.beginPath();c.arc(-(e.face||1)*e.w*.3,-e.h*.55,e.h*.32,Math.PI*.5,Math.PI*1.5);c.stroke();}
     if(e.type==='signaler'){lineC(c,e.w*.5,-8,e.w*.5,-e.h-26);c.fillStyle='#d9a441';triC(c,e.w*.5,-e.h-26,e.w*.5+22,-e.h-18,e.w*.5,-e.h-10);
       if(e.signalT>0){c.strokeStyle='#ffd98a';c.globalAlpha=.7;c.beginPath();c.arc(0,-e.h*.6,e.w*.9+e.signalT*46,0,Math.PI*2);c.stroke();}}
@@ -2140,13 +2163,13 @@ function drawFlyer(c,e,col){
 
 /* Draw Boss — Dark Souls style massive monstrosity with glowing cracks and chains */
 function drawBoss(c,e,col){
-  const t=G.time,H=e.h,W=e.w,en=e.lunge>0||e.phase>=2;
+  const t=e.whiteCourtFight&&meta.reducedMotion?0:G.time,H=e.h,W=e.w,en=e.lunge>0||(e.phase>=2&&!(e.whiteCourtFight&&e.courtBreaks>=3));
   const dark=tint(col,'#000',0.6),lit=tint(col,'#fff',0.1);
   const eyeGlow=en?'#ff1a1a':(e.shot?(e.shot.color||'#ff661a'):'#ff661a');
   const br=Math.sin(t*2)*1.2; // heavy breathing
   
   // Phase 2 transformation visuals
-  if(en && Math.random()<0.15) {
+  if(en && !(e.whiteCourtFight&&meta.reducedMotion) && Math.random()<0.15) {
     G.particles.push({x:e.x+(Math.random()-0.5)*W*1.2, y:GROUND_Y-e.y-Math.random()*H, vx:0, vy:-30-Math.random()*40, sz:2+Math.random()*3, color:eyeGlow, life:0.6});
   }
 
@@ -2182,10 +2205,22 @@ function drawBoss(c,e,col){
       for(let i=0;i<7;i++){const a=i/7*6.2832;
         c.beginPath();c.moveTo(Math.cos(a)*W*0.45,-H*0.5+Math.sin(a)*H*0.45);
         c.lineTo(Math.cos(a)*W*0.82,-H*0.5+Math.sin(a)*H*0.72);c.stroke();}
-    }else{
+    }else if(!e.whiteCourtFight||e.courtBreaks<3||(e.courtFinal&&!e.courtFinal.ruptured)){
       c.strokeStyle=rgba('#8fe0ff',0.55+0.2*Math.sin(t*6));c.lineWidth=3;
       c.shadowColor='#7fd6ff';c.shadowBlur=12;
-      c.beginPath();c.ellipse(0,-H*0.5,W*0.78,H*0.72,0,0,6.28);c.stroke();
+      for(let i=0;i<(e.courtFinal?1:e.whiteCourtFight?3-e.courtBreaks:1);i++){
+        c.beginPath();c.ellipse(0,-H*0.5,W*0.78,H*0.72,0,e.whiteCourtFight?i*2.094:0,e.whiteCourtFight?i*2.094+1.7:6.28);c.stroke();
+      }
+    }
+    if(e.whiteCourtFight&&(e.courtCastWind>0||e.courtSecondT>0)){
+      const follow=e.courtSecondT>0,tx=follow?e.courtSecondX:e.courtAimX,ty=follow?e.courtSecondY:e.courtAimY;
+      c.setLineDash(follow?[2,6]:[10,6]);c.strokeStyle=follow?'#cbb4ed':'#d5f7ff';c.lineWidth=2;
+      lineC(c,0,-H*.62,(tx-e.x)/(e.face||1),-(ty-e.y));c.setLineDash([]);
+      // Match the projectile silhouette at the casting hand, without labels.
+      c.beginPath();
+      if(follow){c.moveTo(-12,-H*.62-10);c.lineTo(0,-H*.62);c.lineTo(-12,-H*.62+10);}
+      else c.arc(0,-H*.62,15,0,Math.PI*2);
+      c.stroke();
     }
     c.restore();
   }
@@ -3902,6 +3937,8 @@ const UPDRAFTS_LEVEL={len:18000,portal:null,
     id:'needlewind-torn-sail',optionalNeedleBranch:1,deadEndBranch:1,force:0,accent:'#7f8e93'}),
   Scenery(9000,850,'needlewind-dead-sail',{w:135,h:120,deadEndLandmark:1}),
   SealedRecollection(9020,900,'updrafts','The Needlewind',{optionalNeedleBranch:1,deadEndBranch:1}),
+  // Quarter-tank relief at the last dip before the Needle platform.
+  Object.assign(Cry(13020,210),{packRefill:25,fullPackRefill:false}),
   Pl(13195,165,500,{aerieNest:1,safePocket:'exit'}),Check(13195,480),
   Object.assign(Plate(13195,500,'wind-gate-2',true),{windVane:1,vaneId:'needle',windVaneAutoLatch:1,authoringCritical:1}),
   Scenery(13230,0,'wind-gate-sail',{gateId:'wind-gate-2',w:190,h:420}),
@@ -4208,7 +4245,7 @@ const FROSTFELL_LEVEL={len:15100,portal:null,spawnX:120,spawnY:0,authoredEcology
   FrostScenery(1330,0,'frost-service',{w:100,h:100,frostReturnExit:1}),
   // A visible future seam. Fire requires the Sorcerer's Attunement memory.
   FrostScenery(14820,650,'frost-seam',{w:150,h:230,frostSeam:1,circuitId:'frost-rime-seam',vaultKeyId:'rime-key',landmarkId:'frost-aqueduct-seam'}),
-  FrostScenery(14950,650,'frost-aqueduct',{w:220,h:600,lore:{id:'frost-aqueduct-road',title:'WHITE COURT AQUEDUCT',text:'The far sluice is barred from the White Court. The old high shaft above the Causeway is still the way in.',accent:'#bddfea'}}),
+  FrostScenery(14950,650,'frost-aqueduct',{w:220,h:600,courtAction:'frost-aqueduct-return',lore:{id:'frost-aqueduct-road',title:'WHITE COURT AQUEDUCT',text:'The far sluice is barred from the White Court. The old high shaft above the Causeway is still the way in.',accent:'#bddfea'}}),
   Object.assign(Wl(15080,1550,900,40),{slickL:1,slickR:1}),
   ...frostfellFinale(),
  ],
@@ -4249,39 +4286,137 @@ function installFrostMusterEnemies(){
     if(!e.frostMuster){e.frostMuster=true;e.musterMin=e.patrolMin??e.x-180;e.musterMax=e.patrolMax??e.x+180;}
   }
 }
-/* THE RECALL - the Muster Engine's bell reaches the rest of the world.
-   Frostfell's engine is the only source of the event: other regions read its
-   circuit rather than keeping a second flag. Each region on the long return
-   gets an authored roster of organised soldiers - pairs, ranged cover, a
-   signaler that wakes the posts around it - installed once by stable id before
-   zone hydration, so deaths persist the ordinary way and a reload never
-   duplicates a post or inflates health. Nothing existing is multiplied; the
-   difficulty is behaviour and position, not numbers. Safe sites, arrivals and
-   checkpoints are left alone. Rows: [type, x, y, patrolMin, patrolMax, extra]. */
+/* THE RECALL: stable authored posts supplement each region's ordinary army.
+   Keep existing row indices stable: old saves address these entities by index.
+   New posts span the return road; unique regional roles announce the change.
+   Rows: [type, x, y, patrolMin, patrolMax, extra]. */
 const MUSTER_ROSTERS=Object.freeze({
   warden:[
     ['standard',12800,0],
     ['shieldbearer',13100,0,12950,13250],['linesman',13400,0,13330,13480],
     ['linesman',10900,0,10850,10960],
+    ['standard',610,0],['gaoler',850,0,690,1150],['linesman',1330,0,1220,1460],
+    ['shieldbearer',2040,0,1890,2170],['gaoler',3170,0,3000,3270],
+    ['linesman',5250,0,5170,5320],['gaoler',6220,0,6140,6290],
+    ['shieldbearer',6890,0,6810,6960],['linesman',8240,0,8150,8350],
+    ['gaoler',9270,0,9090,9450],['signaler',10280,0,10220,10350],
+    ['gaoler',13700,0,13580,13820],
   ],
   outskirts:[
     ['standard',5000,0],['standard',11800,0],
-    ['signaler',7300,0,7220,7400],['grunt',7500,0,7440,7540,{noticeRange:170}],
+    ['signaler',7300,0,7220,7400],['grunt',7500,0,7440,7540],
     ['linesman',12010,65,11940,12080],['shieldbearer',12700,0,12610,12800],
+    ['standard',420,0],['outrider',1460,0,1370,1550],
+    ['shieldbearer',2880,0,2770,2990],['outrider',3550,0,3450,3650],
+    ['linesman',5980,70,5930,6020],['outrider',8050,0,7900,8160],
+    ['shieldbearer',9530,0,9410,9690],['outrider',10540,0,10400,10670],
+    ['outrider',13390,0,13320,13500],
   ],
   'black-woods':[
     ['standard',2600,0],['standard',9550,0],
     ['shieldbearer',3900,0,3760,4050],
     ['linesman',5700,250,5620,5780],['linesman',8510,280,8440,8580],
     ['flyer',10500,380,10250,10750],
+    ['standard',620,0],['canopywing',660,200,550,950],
+    ['canopywing',3160,230,2920,3400],['linesman',3470,0,3380,3580],
+    ['canopywing',4850,240,4650,5130],['shieldbearer',6240,0,6160,6340],
+    ['canopywing',7870,300,7570,8130],['canopywing',9970,700,9790,10210],
+    ['shieldbearer',11060,0,10930,11160],['canopywing',11820,200,11570,12060],
   ],
   brute:[
     ['standard',2800,0],['standard',8400,0],
     ['linesman',3050,0,3000,3120],['shieldbearer',3260,0,3140,3380],
     ['shieldbearer',7700,0,7600,7850],
-    ['signaler',9300,0,9200,9450],['grunt',9950,0,9900,10100,{noticeRange:170}],
+    ['signaler',9300,0,9200,9450],['grunt',9950,0,9900,10100],
+    ['standard',300,0],['chainmarshal',340,0,260,370],
+    ['linesman',1110,0,1080,1210],['chainmarshal',3870,0,3710,3990],
+    ['linesman',4230,0,4130,4340],['chainmarshal',6230,0,6100,6360],
+    ['linesman',6630,0,6500,6730],['chainmarshal',8850,0,8690,9010],
+    ['linesman',9140,0,9080,9230],['chainmarshal',11480,0,11340,11600],
+    ['linesman',11800,0,11720,11900],
   ],
 });
+// The return gives access as well as opposition. Reserve ledges are visible on
+// the outward trip; their routes open once, after the recall, through normal Up.
+const RECALL_RETURN_ROUTES=Object.freeze({
+  warden:{x:4820,y:130,title:'TURNKEY’S RESERVE',accent:'#c7b2d5',reward:{vitalityFragments:1},
+    text:'A clean field dressing lies beneath the turnkey’s spare chain. The maintenance bridges have dropped beneath the turning cells.',
+    roads:[[5860,440,0],[6560,400,0]],resident:'gaol-prisoner-enna',
+    line:'“The reserve above the east end of the court is unsealed. Its chain lowers the two maintenance bridges. Take the dressing; nobody here can use it now.”'},
+  outskirts:{x:7180,y:130,title:'MILEKEEPER’S RESERVE',accent:'#d8c48f',reward:{forgeSeals:1},
+    text:'The old repair stamp still fits your palm. Two road gaps in the Hollow Mile have been bridged; the patrols keep their own route.',
+    roads:[[7670,280,0],[8465,470,0]],resident:'outskirts-roadkeeper',
+    line:'“The milekeeper left a reserve above the first stretch of Hollow Mile. Its release still carries the road bridges. The seal is yours if you can reach it.”'},
+  'black-woods':{x:7400,y:130,title:'RESINWORKERS’ RESERVE',accent:'#a5c48b',reward:{vitalityFragments:1},
+    text:'Dry bandages smell faintly of resin. The old canopy walk has unfolded above the copied paths. Its last board meets the root crown.',
+    roads:[[7620,180,260],[7840,180,390],[8060,180,520],[8280,220,620],[8990,1240,620]],
+    resident:'woods-clockkeeper',line:'“The workers kept dry wraps above the end of Briar Run. Their release lowers the honest canopy walk. The low path will still lie.”'},
+  brute:{x:1020,y:130,title:'CHAINWRIGHT’S RESERVE',accent:'#d59a68',reward:{forgeSeals:1},
+    text:'A spare forging seal rests in the winding drum. The Chainwalk service span has lowered between the high supports, above the floor teeth.',
+    roads:[[7040,1060,265],[7690,260,200],[7970,180,130]],resident:'brute-chainwright',
+    line:'“There is a spare seal on the camp’s high bracket. Unwind its drum and the Chainwalk service span comes down. The old repairs will hold either way.”'}
+});
+function installRecallReturnRoute(zoneId){
+  const route=RECALL_RETURN_ROUTES[zoneId];
+  if(!route||G.ngPlus!==0||G.obstacles.some(o=>o.recallReserve))return;
+  const id='recall-return-'+zoneId;
+  const tag={optionalRoute:1,returnHook:'double-jump',authoringOwner:'recall-return',authoringRoom:zoneId+':return'};
+  G.obstacles.push(Pl(route.x,180,route.y,Object.assign({},tag,{zoneEntityId:id+'-ledge',supportedBy:'reserve-bracket'})),
+    StoryRelic(route.x,route.y+22,id,Object.assign({},tag,{zoneEntityId:id+'-cache',recallReserve:true,
+      shortcutId:id,title:route.title,accent:route.accent,sourceId:'secret:'+id,description:route.text,advancement:route.reward})));
+  route.roads.forEach(([x,w,y],i)=>G.obstacles.push(Pl(x,w,y,Object.assign({},tag,{
+    zoneEntityId:id+'-road-'+i,recallRoad:id,recallAccent:route.accent,gone:true,supportedBy:'service-bridge'}))));
+}
+function syncRecallReturnRoute(){
+  if(!G)return;
+  const opened=G.openedZoneShortcuts||[];
+  for(const o of G.obstacles){
+    if(o.recallRoad)o.gone=!opened.includes(o.recallRoad);
+    if(o.recallReserve&&opened.includes(o.shortcutId)){o.read=true;o.opened=true;}
+  }
+}
+function interactRecallReserve(o){
+  if(!o||!o.recallReserve)return false;
+  if(!musterRecalled()&&!o.opened){
+    showOutskirtsAnnotation(o,'<b>'+escText(o.title)+'</b><br>The reserve is sealed.',{accent:o.accent});return true;
+  }
+  const wasOpen=(G.openedZoneShortcuts||[]).includes(o.shortcutId);
+  o.read=true;o.found=true;o.opened=true;
+  if(!wasOpen){
+    G.openedZoneShortcuts=G.openedZoneShortcuts||[];G.openedZoneShortcuts.push(o.shortcutId);
+    const zoneId=BFWorldModule.stageId(G.stageIndex),state=G.levelSelectMode?G.sessionZoneState:meta.zoneState;
+    const next=BFZoneStateModule.openShortcut(state,zoneId,o.shortcutId);
+    if(G.levelSelectMode)G.sessionZoneState=next;else meta.zoneState=next;
+    grantAuthoredAdvancementBundle(o.advancement,o.sourceId);
+    syncRecallReturnRoute();captureCurrentZonePersistence();if(!G.levelSelectMode)persist();
+    G.shake=Math.max(G.shake,3);if(meta.soundOn)SFX.windGate(180,o.x);
+  }
+  showOutskirtsAnnotation(o,'<b>'+escText(o.title)+'</b><br>'+o.description,{accent:o.accent});return true;
+}
+// Spawned stats are reconstructed on load, not stored in zone deltas. Apply
+// once to each fresh entity after hydration; do not persist only the marker.
+function applyRecallBaseline(e){
+  if(!e||e.boss||BFEcologyModule.isBoss(e.type))return;
+  if(!e.musterUpgraded){
+    const ratio=Math.max(0,Math.min(1,e.hp/Math.max(1,e.maxHp)));
+    e.maxHp=Math.round(e.maxHp*1.55);e.hp=Math.ceil(e.maxHp*ratio);e.musterUpgraded=true;
+  }
+  if(!e.recallDamageUpgraded){e.dmg*=1.25;e.recallDamageUpgraded=true;}
+  e.noticeRange=Math.max(480,e.noticeRange||0);
+}
+// A new army occupies each region once. Only ordinary rest-reset enemy death
+// deltas are cleared; unique encounters, bosses and every other save collection
+// keep their records. The zone-local circuit survives rest and later reloads.
+function regarrisonRecalledZone(state,zoneId){
+  if(BFZoneStateModule.hydrate(state,zoneId,[]).circuits['recall-garrisoned-v1']?.open)return state;
+  const next=BFZoneStateModule.setCircuit(state,zoneId,'recall-garrisoned-v1',{open:true,source:'frost-muster'});
+  const zone=next.zones[zoneId];
+  for(const [id,row] of Object.entries(zone.entities)){
+    if(row.collection==='enemies'&&row.policy==='rest-reset'&&!BFEcologyModule.isBoss(row.kind)&&
+       (row.present===false||row.state?.dead))delete zone.entities[id];
+  }
+  return next;
+}
 function musterRecalled(){
   if(!G)return false;
   if(G.musterForced!==undefined&&G.musterForced!==null)return !!G.musterForced;
@@ -4303,7 +4438,11 @@ function installMusterRoster(zoneId){
     const e=spawnEnemy(type,x);
     Object.assign(e,{zoneEntityId:'recall-'+i,x,y:y||0,baseY:y||0,safeX:x,safeY:y||0,patrolMin:lo,patrolMax:hi,musterMin:lo,musterMax:hi,
       muster:true,authoredEncounter:true,noDrop:true,noticeRange:460},extra||{});
-    if(type==='shieldbearer'){e.frontShield=true;e.shieldFace=-1;e.turnDelay=1.15;}
+    if(type==='shieldbearer'||type==='chainmarshal'){e.frontShield=true;e.shieldFace=-1;e.turnDelay=1.15;}
+    if(type==='gaoler'||type==='chainmarshal')e.bloodDamage=2;
+    if(['gaoler','outrider','canopywing','chainmarshal'].includes(type)){
+      e.musterRole=type;e.recallHomeY=y||0;e.recallCooldown=1.2;
+    }
     if(type==='signaler')e.musterRole='signaler';
     G.killGoal++;
   }
@@ -4336,9 +4475,11 @@ function updateMusterSignaler(e,p,dt){
 }
 function strikeFrostMuster(){
   if(!markPersistentCircuitOpen('frost-muster','muster-engine'))return;
+  markPersistentCircuitOpen('recall-garrisoned-v1','frost-muster');
   captureCurrentZonePersistence();
   for(const records of Object.values(zoneCollections()))for(const record of records)if(record._zoneEntityId)record.zoneEntityId=record._zoneEntityId.slice('frostfell:'.length);
   installFrostMusterEnemies();
+  G.recallBaselineActive=true;for(const e of G.enemies)applyRecallBaseline(e);
   G.zonePersistenceManifest=buildZonePersistenceManifest();captureCurrentZonePersistence();
   if(!G.levelSelectMode)persist();syncLevelMusic(true);
   if(meta.soundOn)tonalSfx('muster-bell',[[0,[.18,,98,.01,.9,2.2,0,.7,,,,,,,,,,.65,.12]],[70,[.09,,147,.01,.6,1.7,0,.6,,,,,,,,,,.5,.08]]],14400);
@@ -4825,7 +4966,432 @@ const SECRET_LEVEL={len:13950,portal:13750,cart:true,spawnY:300,
  ]};
 
 /* Sparse stage->level map: hand-made levels no longer need to be contiguous. */
-const CUSTOM_LEVELS={0:LEVELS[0],1:LEVELS[1],2:LEVELS[2],3:UPDRAFTS_LEVEL,4:HOLLOW_MARKSMAN_LEVEL,5:RUINED_KEEP_LEVEL,6:WARDEN_LEVEL,7:FROSTFELL_LEVEL,11:INVERSION_LEVEL,15:SECRET_LEVEL};
+/* White Court: authored spatial foundation. Cold-routing rooms and the boss
+   build on these stable object identities; the refuge task is permanent. */
+function CourtBeat(o,room){return Object.assign(o,{whiteCourtAuthored:1,authoringOwner:'white-court',courtRoom:room,authoringRoom:'frost-sorcerer:'+String(o.x<3600?1:o.x<5600?2:o.x<8200?3:o.x<10800?4:o.x<13000?5:6).padStart(2,'0')});}
+function CourtScenery(x,y,kind,extra){return CourtBeat(Scenery(x,y,kind,Object.assign({courtArchitecture:1,w:180,h:220},extra||{})),'place');}
+const WHITE_COURT_LEVEL={len:16000,spawnX:4800,spawnY:0,bossX:14300,bossSkipCapability:'attunement',portal:null,authoredEcology:true,
+ objects:[
+  // WEST SLUICE: a real lower recovery road, dry ledges above the channel.
+  Gr(0,5600),Check(4800,0),
+  CourtScenery(240,0,'court-aqueduct',{courtAction:'aqueduct',shortcutId:'frostfell-sorcerer',zoneEntityId:'court-aqueduct-latch',w:150,h:240}),
+  CourtScenery(1850,0,'court-channel',{w:2300,h:130}),
+  CourtBeat(Pl(1100,300,70),'west-sluice'),CourtBeat(Pl(1540,300,130),'west-sluice'),
+  CourtBeat(Pl(1970,300,190),'west-sluice'),CourtBeat(Pl(2410,360,130),'west-sluice'),
+  CourtScenery(3240,0,'court-wheel',{courtAction:'wheel',circuitId:'court-wheel',zoneEntityId:'court-service-wheel',w:170,h:190}),
+  CourtScenery(4100,0,'court-refuge',{w:1450,h:380,roomLandmark:1}),
+  CourtBeat(AmbientFigure(3880,0,'court-sluicekeeper',{residentId:'court-sluicekeeper-vey',name:'Vey',title:'Sluice Keeper',accent:'#c3dfe6',
+   courtAction:'keeper',dialogue:'“The wheel west of here is held by one catch. Release it; the water still knows the way to the court.”'}),'refuge'),
+  CourtBeat(AmbientFigure(4380,0,'court-glassworker',{residentId:'court-glassworker-ada',name:'Ada',title:'Glassworker',accent:'#c3dfe6',
+   courtAction:'glassworker',dialogue:'“I warm the molds every morning. Nobody remembers what the little cups were for.”'}),'refuge'),
+  CourtScenery(4800,0,'court-shaft',{courtAction:'causeway',zoneEntityId:'court-causeway-shaft',w:150,h:250}),
+  CourtScenery(5100,0,'court-bench',{restSiteAnchor:'white-antechamber',w:160,h:70}),
+  // THAW COURT: broad recovery ground and two elevated optional paths.
+  Gr(5600,6960),Gr(7260,8200),Check(5660,0),
+  CourtBeat(Pl(7110,300,-30,{deep:1}),'thaw-court'),
+  CourtBeat(Pl(7230,180,-40),'thaw-court'),
+  CourtBeat(Fluid(7110,300,-30,30,'water',{contained:true,basinId:'court-thaw-basin',courtThawBasin:true}),'thaw-court'),
+  CourtBeat(Pl(7110,300,8,{ice:1,gone:true,courtThawSurface:true,zoneEntityId:'court-thaw-ice'}),'thaw-court'),
+  CourtBeat(RuneEmitter(7110,350,'down',{el:'ice',courtThaw:true,period:8,speed:300}),'thaw-court'),
+  CourtBeat(Pl(5930,240,70,{ice:1}),'thaw-court'),CourtBeat(Pl(6260,260,130,{ice:1}),'thaw-court'),
+  CourtBeat(Pl(6620,280,210,{ice:1}),'thaw-court'),CourtBeat(Pl(6990,240,300),'thaw-court'),
+  CourtBeat(Pl(7340,240,420),'thaw-court'),
+  CourtScenery(7340,420,'court-lockbox',{courtAction:'cache',circuitId:'court-high-cache',zoneEntityId:'court-high-cache',w:60,h:55}),
+  CourtBeat(Pl(7690,300,300),'thaw-court'),
+  CourtBeat(Pl(6060,210,65),'thaw-court'),CourtBeat(Pl(6490,240,75),'thaw-court'),
+  CourtBeat(Pl(6900,250,70),'thaw-court'),CourtBeat(Pl(7370,280,65),'thaw-court'),
+  // GLASSWORKS: reserved slates and dry recovery footing for the cold circuit.
+  Gr(8200,9780),Gr(10240,10800),Check(8240,0),
+  CourtBeat(Pl(10010,460,-30,{deep:1}),'glassworks'),CourtBeat(Pl(10210,180,-40),'glassworks'),
+  CourtBeat(Fluid(10010,460,-30,22,'water',{contained:true,basinId:'court-glass-basin',authoringCritical:1}),'glassworks'),
+  CourtBeat(Pl(10010,500,0,{ice:1,gate:'court-glass-cold',zoneEntityId:'court-glass-ice-bridge'}),'glassworks'),
+  CourtBeat({type:'door',x:10420,w:42,y:900,h:900,circuit:'court-glass-cold',zoneEntityId:'court-glass-gate'},'glassworks'),
+  CourtBeat(RuneEmitter(8750,340,'down',{el:'ice',courtCold:true,period:3.2,speed:300}),'glassworks'),
+  CourtBeat(Anchor(9350,180,'wallR',{zoneEntityId:'court-glass-anchor'}),'glassworks'),
+  CourtBeat(Object.assign(SpellSiphon(9600,180,null),{courtCondenser:true,oscillate:true,y0:180,amplitude:45,period:5,
+   max:1,circuitId:'court-glass-cold',zoneEntityId:'court-glass-condenser'}),'glassworks'),
+  CourtScenery(9160,0,'court-glassworks',{w:1500,h:400,roomLandmark:1}),
+  CourtBeat(Slate(8750,340,0),'glassworks'),CourtBeat(SlateWall(10100,330,260),'glassworks'),
+  CourtBeat(Pl(9090,260,70),'glassworks'),CourtBeat(Pl(9430,260,135),'glassworks'),
+  CourtBeat(Pl(9780,300,200),'glassworks'),CourtBeat(Pl(10330,320,130),'glassworks'),
+  // PETITION GALLERY: a sheltered approach, memory, and final resting place.
+  Gr(10800,13000),Check(12400,0),
+  CourtScenery(11420,0,'court-gallery',{w:1050,h:340,roomLandmark:1}),
+  CourtBeat(Pl(11060,260,70),'petition-gallery'),CourtBeat(Pl(11370,240,150),'petition-gallery'),
+  CourtBeat(Pl(11710,280,270),'petition-gallery'),
+  CourtBeat(Slate(11250,400,0),'petition-gallery'),CourtBeat(Slate(11980,500,0),'petition-gallery'),
+  CourtBeat(RuneEmitter(11250,350,'down',{el:'ice',courtCold:true,period:3.5,speed:300}),'petition-gallery'),
+  CourtBeat(Object.assign(SpellSiphon(11980,180,null),{courtCondenser:true,courtGalleryReceiver:true,
+   max:1,w:92,h:110,circuitId:'court-gallery-cold',zoneEntityId:'court-gallery-condenser'}),'petition-gallery'),
+  CourtBeat(Pl(11980,420,260,{ice:1,gate:'court-gallery-cold',zoneEntityId:'court-gallery-bridge'}),'petition-gallery'),
+  CourtBeat(Pl(12250,300,130),'petition-gallery'),
+  CourtBeat(SealedRecollection(11710,320,'frost-sorcerer','The Cold Hand',{optionalRoute:1}),'petition-gallery'),
+  CourtScenery(12200,0,'court-bench',{w:150,h:65}),
+  CourtScenery(12600,0,'court-doors',{w:180,h:400}),
+  CourtBeat(Pl(12650,260,90),'petition-gallery'),
+  CourtBeat(Pl(12900,280,190),'petition-gallery'),
+  CourtScenery(12900,190,'court-overlook',{courtAction:'overlook',zoneEntityId:'court-overlook',w:150,h:65}),
+  Gr(13000,16000),
+  CourtScenery(15500,0,'court-ember-door',{courtAction:'emberdeep',zoneEntityId:'court-ember-door',w:180,h:280}),
+ ],
+ enemies:[
+  {t:'frostling',x:5800,y:0,patrol:[5660,6000]},
+  {t:'frostling',x:7110,y:0,patrol:[6810,7520]},
+  {t:'flyer',x:7830,y:210,patrol:[7680,8020]},
+  {t:'frostling',x:10580,y:0,patrol:[10450,10720]},
+  {t:'rifthound',x:11480,y:0,patrol:[11240,11700]},
+  {t:'frostling',x:12020,y:0,patrol:[11880,12140]},
+ ],loot:[]
+};
+function interactWhiteCourt(o){
+ if(!o||!o.courtAction)return false;
+ let title='',body='';
+ const wheel=persistentCircuitOpen('court-wheel');
+ if(o.courtAction==='wheel'){
+  markPersistentCircuitOpen('court-wheel','court-service-wheel');
+  grantAuthoredAdvancementBundle({forgeSeals:1},'authored:court-service-wheel');
+  captureCurrentZonePersistence();if(!G.levelSelectMode)persist();
+  title='SLUICE WHEEL';body='The catch lifts. Water moves beneath the court again. A spare forging seal lies in the service drawer.';
+ }else if(o.courtAction==='keeper'){
+  title='VEY · SLUICE KEEPER';body=wheel?'“There. A channel with water in it. The west aqueduct latch opens from this side; take that road back to the snow.”':'“Release the wheel west of the refuge. Its catch is low enough to reach. I kept one spare repair seal in the drawer.”';
+ }else if(o.courtAction==='glassworker'){
+  title='ADA · GLASSWORKER';body=wheel?'“The molds are cooling evenly now. The court still orders cups, though every petitioner leaves empty-handed.”':'“The dry molds crack. Vey needs the wheel released before I can work. Beyond the refuge, their cold spells can give a channel a floor.”';
+ }else if(o.courtAction==='cache'){
+  markPersistentCircuitOpen('court-high-cache','court-high-cache');grantAuthoredAdvancementBundle({vitalityFragments:1},'secret:court-high-cache');
+  captureCurrentZonePersistence();if(!G.levelSelectMode)persist();title='DRY WRAPS';body='A clean dressing survived above the thaw. The folds fit your hand.';
+ }else if(o.courtAction==='overlook'){
+  G.authoredCameraFocus={x:14200,y:170,t:4.5,courtLook:true,originX:G.p.x};
+  title='PETITIONERS’ GALLERY';body='Move to return. Below the moving glass, the etched floor waits for another petitioner.';
+ }else if(o.courtAction==='aqueduct'){
+  const id='frostfell-sorcerer';
+  if(!G.openedZoneShortcuts.includes(id)){
+   G.openedZoneShortcuts.push(id);o.opened=true;
+   if(G.levelSelectMode)G.sessionZoneState=BFZoneStateModule.openShortcut(G.sessionZoneState,'frost-sorcerer',id);
+   else meta.zoneState=BFZoneStateModule.openShortcut(meta.zoneState,'frost-sorcerer',id);
+   captureCurrentZonePersistence();if(!G.levelSelectMode)persist();
+   title='WEST AQUEDUCT';body='The bar lifts. The high road to Frostfell is open. Press Up again to cross.';
+  }else{G.courtTravelRequest={connector:id,zone:'frost-sorcerer',targetStage:7};updatePhysicalWorldSeams();return true;}
+ }else if(o.courtAction==='causeway-entry'){
+  if(!hasCapability('wall-jump')||!hasCapability('double-jump')){title='HIGH SHAFT';body='The white stair rises beyond a second step and a grip on stone.';}
+  else{G.courtTravelRequest={connector:'brute-sorcerer',zone:'brute',targetStage:8};updatePhysicalWorldSeams();return true;}
+ }else if(o.courtAction==='frost-aqueduct-return'){
+  const state=G.levelSelectMode?G.sessionZoneState:meta.zoneState;
+  if(!BFZoneStateModule.openedConnectors(state).includes('frostfell-sorcerer')){title='WHITE COURT AQUEDUCT';body='The far sluice is barred from the White Court. The high shaft above the Causeway is still the way in.';}
+  else{G.courtTravelRequest={connector:'frostfell-sorcerer',zone:'frostfell',targetStage:8};updatePhysicalWorldSeams();return true;}
+ }else if(o.courtAction==='causeway'){
+  G.courtTravelRequest={connector:'brute-sorcerer',zone:'frost-sorcerer',targetStage:2};updatePhysicalWorldSeams();return true;
+ }else if(o.courtAction==='emberdeep-return'){
+  G.courtTravelRequest={connector:'sorcerer-emberdeep',zone:'emberdeep',targetStage:8};updatePhysicalWorldSeams();return true;
+ }else if(o.courtAction==='emberdeep'){
+  if(!hasCapability('attunement')){title='EMBER DOOR';body='Cold glass covers the iron. The Sorcerer keeps the memory that can wake its heat.';}
+  else{G.courtTravelRequest={connector:'sorcerer-emberdeep',zone:'frost-sorcerer',targetStage:9};updatePhysicalWorldSeams();return true;}
+ }
+ showOutskirtsAnnotation(o,'<b>'+title+'</b><br>'+body,{accent:'#c3dfe6',manual:true});return true;
+}
+function installCourtConnections(){
+ if(G.stageIndex===9&&!G.obstacles.some(o=>o.courtAction==='emberdeep-return')){
+  const door=CourtScenery(180,0,'court-doors',{courtAction:'emberdeep-return',zoneEntityId:'court-ember-return',w:130,h:200});
+  delete door.authoringRoom;delete door.authoringOwner;G.obstacles.push(door);return;
+ }
+ if(G.stageIndex!==2||G.obstacles.some(o=>o.courtAction==='causeway-entry'))return;
+ const rows=[Pl(10720,260,130),Pl(11020,260,260),Pl(10760,260,390),Pl(10980,220,390),
+  CourtScenery(10980,390,'court-shaft',{courtAction:'causeway-entry',w:120,h:170})];
+ rows.forEach((o,i)=>{o.zoneEntityId='court-causeway-approach-'+i;delete o.authoringRoom;delete o.authoringOwner;G.obstacles.push(o);});
+}
+function setupWhiteCourtBoss(e,bx){
+ Object.assign(e,{whiteCourtFight:true,spellSiphonFight:true,portalGate:'spellBreak',spellStunT:0,courtBreaks:0,
+  courtCastCd:2.2,courtCastWind:0,courtSecondT:0,courtBlinkCd:6,courtBlinkWind:0,courtStormCd:5,
+  spellArenaL:13060,spellArenaR:14970,speed:80,kite:false,phase:1});
+ e.shot=Object.assign({},e.shot,{count:1,spread:0,speed:320,tracking:false});
+ // Every mouth is the player's. The Glassworks anchor remains in its own room.
+ G.obstacles=G.obstacles.filter(o=>!(o.type==='plat'&&o.deep&&o.x===14500&&o.w===3000));
+ G.obstacles.push(Gr(15200,16000),CourtBeat(Slate(13000,200,0),'white-court'),
+  CourtBeat(Slate(13465,330,0),'white-court'),
+  CourtBeat(Object.assign(Slate(13780,300,0),{courtFinalGlaze:true}),'white-court'),
+  CourtBeat(Slate(14165,470,0),'white-court'),
+  CourtBeat(Pl(13200,200,-30,{deep:1}),'white-court'),
+  CourtBeat(Slope(13080,13140,0,-30),'white-court'),
+  CourtBeat(Slope(13260,13320,-30,0),'white-court'),
+  CourtBeat(Fluid(13200,200,-30,22,'water',{contained:true,basinId:'court-boss-basin'}),'white-court'),
+  CourtBeat(Pl(13070,180,65),'white-court'),CourtBeat(Pl(13330,180,65),'white-court'),
+  CourtBeat(Object.assign(Slate(14550,300,0),{courtGlaze:true}),'white-court'),
+  CourtBeat(Slate(14950,500,0),'white-court'),
+  CourtBeat(SlateWall(15050,420,300),'white-court'),
+  CourtBeat(Pl(14770,300,130),'white-court'),
+  CourtBeat(Object.assign(SpellSiphon(13960,210,e),{courtBossReceiver:true,max:1,w:92,h:116,zoneEntityId:'court-boss-receiver'}),'white-court'),
+  CourtBeat(Object.assign(Lever(13400,0,'court-cast-paddle',0),{courtCastPaddle:true,zoneEntityId:'court-cast-paddle'}),'white-court'),
+  CourtBeat(Pl(13200,220,0,{ice:1,courtColdStep:true,gone:true,zoneEntityId:'court-cold-step'}),'white-court'),
+  CourtScenery(14300,0,'court-tribunal',{w:1100,h:450}));
+}
+function beginCourtFinal(e){
+ e.courtBreaks=3;
+ e.courtFinal={beat:'prepare',t:1.2,round:0,hits:0,station:13780,hazards:[],volley:0,nextVolley:.1};
+ e.hp=e.maxHp*.5;e.portalGate='spellBreak';e.spellStunT=0;e.exposeT=0;
+ e.courtCastWind=0;e.courtSecondT=0;e.courtBlinkWind=0;e.vx=0;
+ G.aoes=G.aoes.filter(a=>!a.courtAttack);G.projectiles=G.projectiles.filter(p=>p.sourceType!=='sorcerer');
+ addText(e.x,GROUND_Y-e.y-e.h-35,'THE COURT AWAKENS','#bceaff',true);
+}
+function beginCourtRupture(e){
+ const f=e.courtFinal;f.ruptured=true;f.beat='rupture';f.hazards=[];
+ f.elapsed=0;f.nextWave=1;f.volley=0;f.attack='windup';f.attackT=1.2;
+ e.portalGate=null;e.exposeT=0;e.spellStunT=0;e.courtCastWind=1.2;
+ e.face=Math.sign(G.p.x-e.x)||1;e.vx=0;
+ G.aoes=G.aoes.filter(a=>!a.courtAttack);G.projectiles=G.projectiles.filter(p=>p.sourceType!=='sorcerer');
+ addText(e.x,GROUND_Y-e.y-e.h-35,'THE CONDENSER RUPTURES','#e8fbff',true);
+}
+function updateCourtRupture(e,p,dt){
+ const f=e.courtFinal;f.elapsed+=dt;f.nextWave-=dt;f.attackT-=dt;
+ const cycle=Math.floor(f.elapsed/3),warn=f.elapsed%3<.8;
+ for(const o of G.obstacles)if(o.courtGlaze||o.courtFinalGlaze){
+  const selected=cycle%2?o.courtGlaze:o.courtFinalGlaze;
+  o.courtFrostWarn=!!selected&&warn;o.ice=!!selected&&!warn;
+ }
+ if(f.nextWave<=0){
+  const lane=f.volley++%5;
+  if(lane<3){
+   const high=lane===1;
+   f.hazards.push({x:high?e.spellArenaR:e.spellArenaL,y:high?112:14,r:high?25:14,vx:high?-660:660,warn:.8,hit:false});
+  }else{
+   // Commit to the player's column when warning begins; never track afterward.
+   f.hazards.push({x:Math.max(e.spellArenaL+30,Math.min(e.spellArenaR-30,p.x)),y:lane===3?-35:650,r:18,vx:0,vy:lane===3?480:-480,warn:.8,hit:false});
+  }
+  f.nextWave=2.1;
+ }
+ for(const h of f.hazards){
+  if(h.warn>0){h.warn-=dt;continue;}
+  h.x+=h.vx*dt;h.y+=(h.vy||0)*dt;
+  if(!h.hit&&Math.abs(p.x-h.x)<h.r+p.w/2&&p.y<h.y+h.r&&p.y+p.h>h.y-h.r){h.hit=true;hurtPlayer(e.dmg,Math.sign(h.vx)||Math.sign(p.x-h.x)||1,true,1);}
+ }
+ f.hazards=f.hazards.filter(h=>h.x>e.spellArenaL-50&&h.x<e.spellArenaR+50&&h.y>-70&&h.y<700);
+ e.vx=0;e.lunge=0;e.courtBlinkWind=0;
+ e.courtCastWind=f.attack==='windup'?Math.max(0,f.attackT):0;
+ if(f.attack==='rush'){
+  e.x=Math.max(e.spellArenaL,Math.min(e.spellArenaR,e.x+e.face*460*dt));
+  if(!f.rushHit&&Math.abs(p.x-e.x)<(p.w+e.w)/2&&p.y<e.y+e.h&&p.y+p.h>e.y){f.rushHit=true;hurtPlayer(e.dmg,e.face,true,1);}
+ }
+ if(f.attackT<=0){
+  if(f.attack==='windup'){f.attack='rush';f.attackT=.55;f.rushHit=false;}
+  else if(f.attack==='rush'){f.attack='recover';f.attackT=1.1;}
+  else{f.attack='windup';f.attackT=.85;e.face=Math.sign(p.x-e.x)||1;}
+ }
+}
+function courtFinalDamage(e,amount){
+ return e.courtFinal&&!e.courtFinal.ruptured?Math.min(amount,Math.max(0,e.hp-e.maxHp*.2)):amount;
+}
+function courtFinalBeat(e,beat,time){
+ const f=e.courtFinal;f.beat=beat;f.t=time;
+ if(beat==='prepare'){
+  f.round++;f.station=f.round%2?14140:13780;f.hazards=[];f.volley=0;f.nextVolley=.1;
+ }
+}
+function updateCourtFinal(e,p,dt){
+ if(!e.courtFinal.ruptured&&e.hp<=e.maxHp*.2)beginCourtRupture(e);
+ if(e.courtFinal.ruptured){updateCourtRupture(e,p,dt);return;}
+ const f=e.courtFinal,pace=Math.min(2,f.hits),interval=1.4-pace*.2;
+ e.vx=0;e.lunge=0;e.courtBlinkWind=0;
+ for(const o of G.obstacles)if(o.courtGlaze||o.courtFinalGlaze){
+  const selected=f.round%2?o.courtGlaze:o.courtFinalGlaze;
+  o.courtFrostWarn=!!selected&&f.beat==='prepare';
+  o.ice=!!selected&&f.beat==='barrage';
+ }
+ if(f.beat==='exposed'){
+  e.spellStunT=Math.max(0,e.spellStunT-dt);f.t-=dt;
+  if(f.t<=0){e.exposeT=0;courtFinalBeat(e,'prepare',1.8);}
+  return;
+ }
+ // A moving shutter warns the lane before each swept frost pulse. High lanes
+ // leave walking space; low lanes require a deliberate jump. No blink overlaps.
+ for(const h of f.hazards){
+  if(h.warn>0){h.warn-=dt;continue;}
+  h.x+=h.vx*dt;
+  if(!h.hit&&Math.abs(p.x-h.x)<h.r+p.w/2&&p.y<h.y+h.r&&p.y+p.h>h.y-h.r){
+   h.hit=true;hurtPlayer(e.dmg,Math.sign(h.vx),true,1);
+  }
+ }
+ f.hazards=f.hazards.filter(h=>h.x>e.spellArenaL-50&&h.x<e.spellArenaR+50);
+ f.t-=dt;
+ if(f.beat==='prepare'){
+  const dx=p.x-e.x;if(Math.abs(dx)>220)e.x+=Math.sign(dx)*120*dt;
+  if(f.t<=0)courtFinalBeat(e,'barrage',interval*3+1.1);
+ }else if(f.beat==='barrage'){
+  f.nextVolley-=dt;
+  if(f.volley<3&&f.nextVolley<=0){
+   const right=f.volley%2===0,high=f.volley%2===1;
+   f.hazards.push({x:right?e.spellArenaL:e.spellArenaR,y:high?112:14,r:high?25:14,vx:(right?1:-1)*(470+pace*70),warn:.85,hit:false});
+   f.volley++;f.nextVolley=interval;
+   // The final cycle adds one committed mark, never a tracking hitbox.
+   if(pace===2&&f.volley===2)G.aoes.push({x:p.x,y:0,r:65,t:1.3,dmg:e.dmg,bloodDamage:1,real:true,color:'#8fd7ef',courtAttack:true});
+  }
+  if(f.t<=0&&f.hazards.length===0){
+   f.beat='cast';f.t=1.2;e.courtCastWind=1.2;e.courtAimX=p.x;e.courtAimY=p.y+2;e.face=Math.sign(p.x-e.x)||1;
+  }
+ }else if(f.beat==='cast'){
+  e.courtCastWind=Math.max(0,f.t);
+  if(f.t<=0){bossShoot(e,{x:e.courtAimX,y:e.courtAimY,h:0},'payload');courtFinalBeat(e,'return',4.5);f.nextShot=1.4;}
+ }else if(f.beat==='return'){
+  // More chances to return the payload without repeating the entire barrage.
+  const previous=f.nextShot;f.nextShot-=dt;
+  if(previous>.6&&f.nextShot<=.6){e.courtAimX=p.x;e.courtAimY=p.y+2;e.face=Math.sign(p.x-e.x)||1;}
+  e.courtCastWind=f.nextShot<=.6?Math.max(0,f.nextShot):0;
+  if(f.nextShot<=0&&f.t>.5){bossShoot(e,{x:e.courtAimX,y:e.courtAimY,h:0},'payload');f.nextShot=1.4;}
+  if(f.t<=0){e.courtCastWind=0;courtFinalBeat(e,'prepare',1.8);}
+ }
+ e.x=Math.max(e.spellArenaL,Math.min(e.spellArenaR,e.x));
+}
+function drawCourtFinal(c){
+ const e=G.boss,f=e&&e.courtFinal;if(!f||e.dead)return;
+ c.save();
+ if(f.ruptured&&f.attack==='windup'){
+  c.strokeStyle='#ffdba0';c.lineWidth=5;c.setLineDash([10,8]);
+  lineC(c,e.x,GROUND_Y-e.y-8,Math.max(e.spellArenaL,Math.min(e.spellArenaR,e.x+e.face*253)),GROUND_Y-e.y-8);c.setLineDash([]);
+ }
+ // Shutters and station light are machinery, not fake standing platforms.
+ for(const x of [13780,14140]){
+  const y=GROUND_Y-440+((f.beat==='barrage'||f.ruptured)?Math.sin(G.time*(f.ruptured?6:3))*25:0);
+  c.fillStyle=x===f.station?'#bdeeff':'#405d6b';c.fillRect(x-18,y,36,110);
+  c.strokeStyle='#d8f7ff';c.lineWidth=2;
+  for(let k=0;k<5;k++)lineC(c,x-15,y+k*22,x+15,y+k*22+12);
+ }
+ for(const h of f.hazards){
+  c.strokeStyle=h.warn>0?'rgba(168,230,249,.55)':'#defaff';c.lineWidth=h.warn>0?2:4;
+  if(h.warn>0){c.setLineDash([12,12]);if(h.vy)lineC(c,h.x,GROUND_Y+35,h.x,GROUND_Y-650);else lineC(c,e.spellArenaL,GROUND_Y-h.y,e.spellArenaR,GROUND_Y-h.y);c.setLineDash([]);}
+  else{c.fillStyle='#71cce9';c.beginPath();c.moveTo(h.x,GROUND_Y-h.y-h.r);c.lineTo(h.x+16,GROUND_Y-h.y);c.lineTo(h.x,GROUND_Y-h.y+h.r);c.lineTo(h.x-16,GROUND_Y-h.y);c.closePath();c.fill();c.stroke();}
+ }
+ c.restore();
+}
+
+function updateCourtReceiver(o){
+ const e=o.boss;if(!e||e.dead)return;
+ if(e.courtFinal){const f=e.courtFinal;o.x+=(f.station-o.x)*((f.beat==='prepare'||f.beat==='barrage') ? .07 : 1);o.y=205;return;}
+ const phase=Math.min(2,e.courtBreaks||0),t=G.time;
+ if(phase===0){o.x=13960;o.y=210+Math.sin(t*1.05)*55;}
+ else if(phase===1){o.x=13960+Math.sin(t*.65)*180;o.y=205;}
+ else{
+  const beat=(t%8)/8;
+  const blend=beat<.35?0:beat<.5?(beat-.35)/.15:beat<.85?1:1-(beat-.85)/.15;
+  o.x=13780+360*blend;o.y=205;
+ }
+}
+function updateWhiteCourtBoss(e,p,dt){
+ if(e.courtFinal){updateCourtFinal(e,p,dt);return;}
+ e.vx=0;e.lunge=0;
+ // Local frost cycles independently of movement: warn, freeze briefly, then dry.
+ const frostActive=e.courtBreaks>=1&&e.courtBreaks<3&&!(e.spellStunT>0)&&!e.dead;
+ e.courtFrostT=frostActive?((e.courtFrostT||0)+dt)%6:0;
+ for(const o of G.obstacles)if(o.courtGlaze){
+  o.courtFrostWarn=frostActive&&e.courtFrostT<1;
+  o.ice=frostActive&&e.courtFrostT>=1&&e.courtFrostT<3;
+ }
+ if(e.spellStunT>0){e.spellStunT=Math.max(0,e.spellStunT-dt);return;}
+ // Losing the last ward is a conventional finish, even if the first opening expires.
+ const wardGone=e.courtBreaks>=3,phase=wardGone?0:Math.min(2,e.courtBreaks||0);
+ // First engagement must show both combatants; approach pursuit remains active.
+ const entryVisible=e.x-e.w/2>=G.cam+24&&e.x+e.w/2<=G.cam+VW-24&&p.x>=G.cam+24&&p.x<=G.cam+VW-24;
+ if(e.courtCastWind>0||phase>0)e.courtEngaged=true;
+ e.courtCastCd-=dt;e.courtBlinkCd-=dt;e.courtStormCd-=dt;
+ if(e.courtSecondT>0){e.courtSecondT-=dt;if(e.courtSecondT<=0)bossShoot(e,{x:e.courtSecondX,y:e.courtSecondY,h:0},'followup');}
+ if(e.courtBlinkWind>0){
+  e.courtBlinkWind-=dt;
+  if(e.courtBlinkWind<=0){e.courtBlinkWind=0;e.x=e.courtBlinkX;e.y=0;e.vy=0;e.hitFlash=.25;e.courtBlinkCd=6-phase;}
+ }else if(e.courtEngaged&&!wardGone&&e.courtBlinkCd<=0&&Math.abs(e.x-p.x)<240){
+  e.courtBlinkX=Math.max(e.spellArenaL,Math.min(e.spellArenaR,p.x+(e.x<p.x?300:-300)));
+  e.courtBlinkWind=.8;
+  G.aoes.push({x:e.courtBlinkX,y:0,r:45,t:.8,dmg:0,color:'#9adcf0',courtAttack:true});
+ }
+ if(e.courtCastWind>0){
+  e.courtCastWind-=dt;
+  if(e.courtCastWind<=0){
+   bossShoot(e,{x:e.courtAimX,y:e.courtAimY,h:0},'payload');e.courtCastCd=phase===0?3.8:3.2;
+   if(phase>=1){e.courtSecondX=p.x;e.courtSecondY=p.y+2;e.courtSecondT=.7;}
+  }
+ }else if(e.courtCastCd<=0&&(e.courtEngaged||entryVisible)){
+  e.courtEngaged=true;e.courtCastWind=1.05;e.courtAimX=p.x;e.courtAimY=p.y+2;e.face=Math.sign(p.x-e.x)||1;
+  G.aoes.push({x:p.x,y:p.y,r:24,t:1.05,dmg:0,color:'#d3f5ff',courtAttack:true});
+ }else if(!e.courtBlinkWind){
+  const dx=p.x-e.x;
+  if(Math.abs(dx)>180)e.x+=Math.sign(dx)*(80+phase*12)*dt;
+ }
+ if(phase>=1&&e.courtStormCd<=0){
+  e.courtStormCd=phase===2?4:6;
+  G.aoes.push({x:p.x,y:p.y,r:phase===2?95:65,t:1.3,dmg:e.dmg,bloodDamage:1,real:true,color:'#8fd7ef',courtAttack:true});
+ }
+ e.x=Math.max(e.spellArenaL,Math.min(e.spellArenaR,e.x));
+}
+function breakCourtWard(o,pr){
+ const e=o.boss;
+ if(e&&e.courtFinal){
+  const f=e.courtFinal;
+  if(e.dead||!['cast','return'].includes(f.beat)||!(pr.portalHops>0)||!pr.stolenSpell)return false;
+  pr.life=0;f.hits++;f.hazards=[];f.beat='exposed';f.t=5;e.exposeT=5;e.spellStunT=5;e.courtCastWind=0;
+  e.hp=Math.max(e.maxHp*.2,e.hp-e.maxHp*.1);o.flash=1;
+  G.aoes=G.aoes.filter(a=>!a.courtAttack);G.projectiles=G.projectiles.filter(p=>p.sourceType!=='sorcerer');
+  for(const p of G.obstacles)if(p.courtGlaze||p.courtFinalGlaze){p.ice=false;p.courtFrostWarn=false;}
+  addText(e.x,GROUND_Y-e.y-e.h-30,'THE CURRENT BREAKS','#e8fbff',true);return true;
+ }
+ if(!e||e.dead||e.courtBreaks>=3||e.spellStunT>0||!(pr.portalHops>0)||!pr.stolenSpell)return false;
+ pr.life=0;e.courtBreaks++;e.phase=e.courtBreaks+1;e.courtCastWind=0;e.courtSecondT=0;e.courtBlinkWind=0;
+ e.courtFrostT=0;
+ for(const p of G.obstacles)if(p.courtGlaze){p.ice=false;p.courtFrostWarn=false;}
+ e.exposeT=7;e.spellStunT=7;e.courtCastCd=2;e.vx=0;e.lunge=0;o.flash=1;o.charge=0;
+ if(e.courtBreaks===3){beginCourtFinal(e);return true;}
+ hitEnemy(e,e.maxHp*(e.courtBreaks===3?.4:.28),Math.sign(e.x-o.x)||1,0,0,null,'spellBreak');
+ if(e.courtBreaks===3&&!e.dead)e.hp=Math.min(e.hp,Math.max(1,e.maxHp*.08));
+ for(const p of G.obstacles)if(p.courtColdStep)p.gone=false;
+ G.aoes=G.aoes.filter(a=>!a.courtAttack);G.projectiles=G.projectiles.filter(p=>p.sourceType!=='sorcerer');
+ addText(e.x,GROUND_Y-e.y-e.h-30,e.courtBreaks===3?'THE WARD IS GONE':'WARD SHATTERED','#e8fbff',true);
+ G.shake=Math.max(G.shake,10);if(meta.soundOn)SFX.magic('ice');
+ for(let i=0;i<24;i++)G.particles.push({x:e.x,y:GROUND_Y-e.y-e.h*.55,vx:(Math.random()-.5)*320,vy:-60-Math.random()*200,sz:3+Math.random()*4,color:'#bceaff',life:.7});
+ return true;
+}
+
+function drawCourtScenery(c,o){
+ const open=o.courtAction==='wheel'?persistentCircuitOpen('court-wheel'):o.courtAction==='cache'?persistentCircuitOpen('court-high-cache'):o.opened;
+ c.save();c.translate(o.x,GROUND_Y-o.y);c.strokeStyle='#8caebd';c.fillStyle='#243d49';c.lineWidth=3;
+ if(o.kind==='court-wheel'){
+  c.fillRect(-60,-20,120,20);c.translate(0,-85);c.rotate(open?G.time*.35:0);c.beginPath();c.arc(0,0,65,0,Math.PI*2);c.stroke();
+  for(let i=0;i<8;i++){c.rotate(Math.PI/4);lineC(c,0,0,0,-64);}c.fillStyle='#d0b88c';c.fillRect(-8,-8,16,16);
+ }else if(o.kind==='court-channel'){
+  c.fillStyle='#122a37';c.fillRect(-o.w/2,-28,o.w,28);c.strokeStyle='#6b97aa';
+  for(let x=-o.w/2;x<o.w/2;x+=74){const y=-12+Math.sin(G.time*1.4+x*.02)*3;lineC(c,x,y,x+38,y);}
+ }else if(o.kind==='court-lockbox'){
+  // Low metal coffer: curved lid, binding straps and a readable opened interior.
+  c.fillStyle='#293f4b';c.fillRect(-30,-25,60,23);
+  c.strokeStyle='#a2bbc4';c.lineWidth=2;c.strokeRect(-30,-25,60,23);
+  c.fillStyle='#d3c4a0';for(const x of [-23,17])c.fillRect(x,-25,6,23);
+  c.fillStyle='#17232b';c.fillRect(-27,-27,54,6);
+  c.save();c.translate(0,-27);
+  if(open)c.rotate(-.65);
+  c.beginPath();c.moveTo(-31,0);c.lineTo(-31,-9);c.quadraticCurveTo(0,-29,31,-9);c.lineTo(31,0);c.closePath();
+  c.fillStyle='#657b84';c.fill();c.strokeStyle='#d3c4a0';c.stroke();
+  c.restore();
+  if(!open){
+    c.fillStyle='#f0dfb4';c.fillRect(-5,-28,10,12);
+    c.fillStyle='#263743';c.fillRect(-1,-24,2,5);
+  }else{
+    c.fillStyle='#121e27';c.fillRect(-24,-25,48,7);
+    c.fillStyle='#849ba4';c.fillRect(-21,-4,42,2);
+  }
+ }else if(o.kind==='court-bench'){
+  c.fillStyle='#54616a';c.fillRect(-o.w/2,-32,o.w,12);c.fillRect(-o.w/2+10,-20,12,20);c.fillRect(o.w/2-22,-20,12,20);
+ }else if(o.kind==='court-overlook'){
+  c.fillStyle='#72858e';c.fillRect(-o.w/2,-45,o.w,8);
+  for(const x of [-o.w/2+10,o.w/2-18])c.fillRect(x,-37,8,37);
+  c.fillStyle='#d4dce0';c.fillRect(-20,-35,40,27);
+  c.strokeStyle='#9bb5c1';lineC(c,-o.w/2,-46,o.w/2,-46);
+ }else if(o.courtAction||o.kind==='court-doors'){
+  c.fillRect(-o.w/2,-o.h,o.w,o.h);c.fillStyle='#101d29';c.fillRect(-o.w/2+18,-o.h+22,o.w-36,o.h-22);
+  c.strokeRect(-o.w/2,-o.h,o.w,o.h);c.strokeStyle='#d3c4a0';
+  if(o.courtAction==='aqueduct'&&!open)lineC(c,-o.w/2+18,-60,o.w/2-18,-60);
+  else{lineC(c,-24,-80,0,-105);lineC(c,0,-105,24,-80);}
+ }else{
+  c.globalAlpha=.75;c.fillRect(-o.w/2,-o.h,o.w,o.h);c.strokeRect(-o.w/2,-o.h,o.w,o.h);
+  for(let x=-o.w/2+50;x<o.w/2;x+=160){c.fillStyle='#172c38';c.fillRect(x,-o.h+45,75,o.h-70);c.strokeStyle='#597888';lineC(c,x,-o.h+45,x+75,-o.h+45);}
+  c.fillStyle='#d4dce0';c.globalAlpha=.28;c.fillRect(-o.w/2+22,-o.h+20,o.w-44,22);
+ }
+ c.restore();
+}
+
+const CUSTOM_LEVELS={0:LEVELS[0],1:LEVELS[1],2:LEVELS[2],3:UPDRAFTS_LEVEL,4:HOLLOW_MARKSMAN_LEVEL,5:RUINED_KEEP_LEVEL,6:WARDEN_LEVEL,7:FROSTFELL_LEVEL,8:WHITE_COURT_LEVEL,11:INVERSION_LEVEL,15:SECRET_LEVEL};
 
 /* ================================================================
    SET-PIECES — hand-authored rooms injected into the procedural stages.
@@ -5796,6 +6362,7 @@ function zoneRecordPolicy(record,collection){
   if(collection==='enemies')return BFEcologyModule.persistencePolicy(record);
   if(collection==='pickups')return(record.power||record.jetpack)?'rest-reset':'permanent';
   if(collection==='npcs')return'permanent';
+  if(record.courtCastPaddle)return 'session';
   if(record.bruteWakeLever||record.bruteDropRelease||record.type==='bruteWeight'||record.bruteBrace)return'session';
   if(!ZONE_MUTABLE_OBJECTS.has(record.type)&&!record.lore&&!record.shortcutId&&!record.circuitId)return'static';
   return record.type==='crumble'?'rest-reset':'permanent';
@@ -5861,13 +6428,19 @@ function activateRuntimeCheckpoint(id,position,kind,siteId,save){
 }
 function activateZonePersistence(endpointId){
   const zoneId=BFWorldModule.stageId(G.stageIndex);if(!zoneId)return;
-  const state=G.levelSelectMode?G.sessionZoneState:meta.zoneState;
+  let state=G.levelSelectMode?G.sessionZoneState:meta.zoneState;
   G.frostMusterRosterInstalled=false;G.frostMusterSequence=null;G.frostMineRequested=false;G.musterRosterInstalled=null;
   if(G.stageIndex===7&&BFZoneStateModule.hydrate(state,zoneId,[]).circuits['frost-muster']?.open)installFrostMusterEnemies();
   if(MUSTER_ROSTERS[zoneId]&&musterRecalled())installMusterRoster(zoneId);
+  installRecallReturnRoute(zoneId);
+  installCourtConnections();
   const manifest=buildZonePersistenceManifest();
+  if(musterRecalled())state=regarrisonRecalledZone(state,zoneId);
   const view=BFZoneStateModule.hydrate(state,zoneId,manifest);
   applyZoneHydration(view,manifest);
+  syncRecallReturnRoute();
+  G.recallBaselineActive=musterRecalled();
+  if(G.recallBaselineActive)for(const e of G.enemies)applyRecallBaseline(e);
   if(G.outskirtsSurvey)G.outskirtsSurvey.aligned=(G.obstacles||[]).filter(o=>o.type==='surveyStake'&&o.aligned).length;
   const entered=BFZoneStateModule.enter(state,zoneId,endpointId||G._pendingZoneEndpoint||G.zoneArrival&&G.zoneArrival.endpointId||null);
   if(G.levelSelectMode)G.sessionZoneState=entered;else meta.zoneState=entered;
@@ -5976,7 +6549,7 @@ function updateBlackWoodsWindShaft(){
   }
 }
 function zoneTraversalState(extra){
-  const source=extra&&typeof extra==='object'?extra:{},opened=new Set(BFZoneStateModule.openedConnectors(meta.zoneState));
+  const source=extra&&typeof extra==='object'?extra:{},opened=new Set(BFZoneStateModule.openedConnectors(G&&G.levelSelectMode?G.sessionZoneState:meta.zoneState));
   for(const id of source.openedConnectors||[])opened.add(id);
   return Object.assign({},source,{openedConnectors:[...opened],
     capabilities:activeCapabilityProgress()&&activeCapabilityProgress().acquired||[],
@@ -6026,7 +6599,7 @@ function loadStage(i){
   G.regionalShop=null;G.outskirtsProduction=null;G.blackWoodsProduction=null;G.causewayProduction=null;G.outskirtsRoomIndex=-1;G.outskirtsRoomCard=null;G.outskirtsRoomsSeen=[];G.outskirtsAnnotation=null;G.outskirtsAnnotationPending=null;
   G.authoredCameraFocus=null;G.blackWoodsWindShaft=null;
   G.ruinedKeepRewarded=false;G.wardenRewarded=false;G.suppressVariantEnemies=false;
-  G.physicalSeamCrossing=false;G.physicalDepartureCommitted=false;
+  G.physicalSeamCrossing=false;G.physicalDepartureCommitted=false;G.courtTravelRequest=null;
   G.openingActRemaster=null;G.keepActRemaster=null;G.elementalActRemaster=null;G.finaleActRemaster=null;
   G.ngRemix=null;G.remixFields=[];G._portalFieldTime=null;G._portalProjectedFields=[];G._activeEnvironmentFields=null;
   if (s.boss&&i!==6) G.obstacles.push({type: 'chest', x: 200, y: 0, w: 40, h: 30, opened: false, bossType: s.boss});
@@ -6367,6 +6940,10 @@ function compatibilityZoneArrival(plan){
   if(plan.connectorId==='warden-frostfell'&&plan.targetZoneId==='warden'){x=330;y=0;}
   if(plan.connectorId==='warden-frostfell'&&plan.targetZoneId==='frostfell'){x=330;y=0;}
   if(plan.connectorId==='frostfell-sorcerer'&&plan.targetZoneId==='frostfell'){x=14920;y=650;}
+  if(plan.connectorId==='frostfell-sorcerer'&&plan.targetZoneId==='frost-sorcerer'){x=300;y=0;}
+  if(plan.connectorId==='brute-sorcerer'&&plan.targetZoneId==='frost-sorcerer'){x=4800;y=0;}
+  if(plan.connectorId==='brute-sorcerer'&&plan.targetZoneId==='brute'){x=10980;y=390;}
+  if(plan.connectorId==='sorcerer-emberdeep'&&plan.targetZoneId==='frost-sorcerer'){x=15500;y=0;}
   return{x,y,face:plan.arrival.spawn.facing||1,compatibility:zone.authoring.geometryStatus!=='authored'};
 }
 const BFZoneStreamer=BFStreamingModule.createStreamer({zones:BFZonesModule,adapter:{
@@ -6462,6 +7039,7 @@ function commitPhysicalDeparture(targetStage){
 }
 function physicalSeamSpec(){
   if(!G)return null;
+  if(G.courtTravelRequest)return Object.assign({warm:true,cross:true,commitClear:false,forward:false},G.courtTravelRequest);
   if(G.stageIndex===0&&G.p.x>G.levelLength/2)return{connector:'outskirts-black-woods',zone:'outskirts',targetStage:1,
     warm:G.p.x>=G.levelLength-1400,cross:G.p.x>=G.levelLength-62&&G.p.face>0,forward:true,commitClear:true};
   if(G.stageIndex===0)return{connector:'outskirts-warden',zone:'outskirts',targetStage:6,
@@ -6541,10 +7119,18 @@ const WARDEN_ROOM_CUES=Object.freeze([
   {id:'blind-gallery',x1:10100,x2:12600,name:'BLIND GALLERY',line:'A committed guard leaves one side late.',ambience:'shield rims dragging across stone'},
   {id:'eastern-crown',x1:12600,x2:15001,name:'EASTERN CROWN',line:'The descent begins where the Outskirts wall broke open.',ambience:'cold air descending through bars'}
 ]);
+const WHITE_COURT_ROOM_CUES=Object.freeze([
+  {id:'west-sluice',x1:0,x2:3600,name:'WEST SLUICE',line:'The catch gives way toward the old aqueduct.',ambience:'water knocking beneath the wheel'},
+  {id:'sluice-refuge',x1:3600,x2:5600,name:'SLUICE REFUGE',line:'Warm molds wait for hands that never arrive.',ambience:'a small stove; glass settling on wood'},
+  {id:'thaw-court',x1:5600,x2:8200,name:'THAW COURT',line:'The cold holds for a moment.',ambience:'ice cracking between dry shelves'},
+  {id:'glassworks',x1:8200,x2:10800,name:'GLASSWORKS',line:'The empty condenser moves through the falling light.',ambience:'a measured pulse inside copper'},
+  {id:'petition-gallery',x1:10800,x2:13000,name:'PETITION GALLERY',line:'White cloth hangs where the court once listened.',ambience:'footsteps returning from an empty room'},
+  {id:'white-court',x1:13000,x2:16001,name:'THE COLD HAND',line:'The order is spoken again.',ambience:'a voice beneath the glass'}
+]);
 function updateOutskirtsRoomPresentation(dt){
-  if(!G||(G.stageIndex!==0&&G.stageIndex!==1&&G.stageIndex!==2&&G.stageIndex!==5&&G.stageIndex!==6&&G.stageIndex!==7))return;
+  if(!G||(G.stageIndex!==0&&G.stageIndex!==1&&G.stageIndex!==2&&G.stageIndex!==5&&G.stageIndex!==6&&G.stageIndex!==7&&G.stageIndex!==8))return;
   if(G.outskirtsRoomCard)G.outskirtsRoomCard.timer=Math.max(0,G.outskirtsRoomCard.timer-dt);
-  const rooms=G.stageIndex===0?OUTSKIRTS_ROOM_CUES:G.stageIndex===1?BLACK_WOODS_ROOM_CUES:G.stageIndex===2?CAUSEWAY_ROOM_CUES:G.stageIndex===5?RUINED_KEEP_ROOM_CUES:G.stageIndex===7?FROSTFELL_ROOM_CUES:WARDEN_ROOM_CUES;
+  const rooms=G.stageIndex===0?OUTSKIRTS_ROOM_CUES:G.stageIndex===1?BLACK_WOODS_ROOM_CUES:G.stageIndex===2?CAUSEWAY_ROOM_CUES:G.stageIndex===5?RUINED_KEEP_ROOM_CUES:G.stageIndex===7?FROSTFELL_ROOM_CUES:G.stageIndex===8?WHITE_COURT_ROOM_CUES:WARDEN_ROOM_CUES;
   const index=rooms.findIndex(room=>G.p.x>=room.x1&&G.p.x<room.x2);
   if(index<0||index===G.outskirtsRoomIndex)return;
   G.outskirtsRoomIndex=index;
@@ -6557,9 +7143,9 @@ function updateOutskirtsRoomPresentation(dt){
   // suppressed; accessibility captions still receive the room description.
   G.outskirtsRoomCard=null;
   const stageTag=document.getElementById('stageTag');
-  const stageName=G.stageIndex===0?'THE OUTSKIRTS':G.stageIndex===1?'BLACK WOODS':G.stageIndex===2?'BROKEN CAUSEWAY':G.stageIndex===5?'RUINED KEEP':G.stageIndex===7?'FROSTFELL':'THE GAOL';
+  const stageName=G.stageIndex===0?'THE OUTSKIRTS':G.stageIndex===1?'BLACK WOODS':G.stageIndex===2?'BROKEN CAUSEWAY':G.stageIndex===5?'RUINED KEEP':G.stageIndex===7?'FROSTFELL':G.stageIndex===8?'WHITE COURT':'THE GAOL';
   if(stageTag)stageTag.textContent=stageName+' · '+room.name;
-  BFPresentation.publish('location:room',{stage:G.stageIndex===0?'outskirts':G.stageIndex===1?'black-woods':G.stageIndex===2?'brute':G.stageIndex===5?'ruined-keep':G.stageIndex===7?'frostfell':'warden',room:room.id,name:room.name,line:room.line});
+  BFPresentation.publish('location:room',{stage:G.stageIndex===0?'outskirts':G.stageIndex===1?'black-woods':G.stageIndex===2?'brute':G.stageIndex===5?'ruined-keep':G.stageIndex===7?'frostfell':G.stageIndex===8?'frost-sorcerer':'warden',room:room.id,name:room.name,line:room.line});
   showSoundCaption(room.name+'. '+room.line+' ['+room.ambience+']',0);
 }
 function outskirtsHollowPatrolAlive(){
@@ -6568,6 +7154,7 @@ function outskirtsHollowPatrolAlive(){
     (e.spawnX||e.x)>=7000&&(e.spawnX||e.x)<9300).length;
 }
 function outskirtsStoryRelicText(o){
+  if(o.description)return o.description;
   return o.memoryId==='empty-scabbard'
     ?'The sheath fits the sword at your hip, but its inner leather is dry and unused—as if the blade was taken before this road began.'
     :o.memoryId==='watch-command-token'
@@ -6603,6 +7190,8 @@ function outskirtsAnnotationKind(source,options){
 }
 function ambientFigureDialogue(o,revisit){
   if(!o)return'';
+  const route=G&&RECALL_RETURN_ROUTES[BFWorldModule.stageId(G.stageIndex)];
+  if(route&&!o.musterDialogue&&o.residentId===route.resident&&musterRecalled())return route.line;
   if(o.musterDialogue&&musterRecalled())return o.musterDialogue;
   if(o.clockId==='pulse-one'){
     const time=openingClockTime();
@@ -6614,7 +7203,7 @@ function ambientFigureDialogue(o,revisit){
   return revisit?(o.revisitDialogue||o.dialogue):(o.dialogue||o.revisitDialogue);
 }
 function showOutskirtsAnnotation(source,html,options){
-  if(!G||G.stageIndex<0||G.stageIndex>6||!source)return false;
+  if(!G||G.stageIndex<0||G.stageIndex>9||!source)return false;
   const copy=outskirtsAnnotationParts(html),opts=options||{};
   const next={source,x:source.x,y:source.y||0,title:copy.title,body:copy.body,kind:outskirtsAnnotationKind(source,opts),
     accent:opts.accent||source.accent||'#d8c48f',radius:opts.radius||250,manual:!!opts.manual};
@@ -6624,7 +7213,7 @@ function showOutskirtsAnnotation(source,html,options){
 }
 function clearOutskirtsAnnotation(){if(G)G.outskirtsAnnotation=null;}
 function updateOutskirtsAnnotation(){
-  if(!G||G.stageIndex<0||G.stageIndex>6)return;
+  if(!G||G.stageIndex<0||G.stageIndex>9)return;
   const a=G.outskirtsAnnotation,source=a&&a.source;
   if(a&&(!source||Math.hypot(G.p.x-source.x,(G.p.y||0)-(source.y||0))>a.radius))clearOutskirtsAnnotation();
   // An annotation belongs only to the object the player deliberately read.
@@ -6641,7 +7230,7 @@ function wrapAnnotationLines(c,text,maxWidth,maxLines){
   return lines;
 }
 function drawOutskirtsAnnotation(c){
-  const a=G&&G.outskirtsAnnotation;if(!a||G.stageIndex<0||G.stageIndex>6)return;
+  const a=G&&G.outskirtsAnnotation;if(!a||G.stageIndex<0||G.stageIndex>9)return;
   const kind=a.kind||'object',style=kind==='person'
     ?{width:304,pad:14,fill:'rgba(17,19,25,.92)',stroke:a.accent,radius:14,title:10,body:12,leading:16}
     :kind==='sign'?{width:258,pad:13,fill:'rgba(42,31,20,.93)',stroke:'#b98a52',radius:3,title:9,body:11,leading:15}
@@ -6651,13 +7240,14 @@ function drawOutskirtsAnnotation(c){
   const width=style.width,pad=style.pad,sourceY=GROUND_Y-a.y-62;
   c.save();c.font='600 '+style.body+'px -apple-system,sans-serif';
   const lines=wrapAnnotationLines(c,a.body,width-pad*2,kind==='person'?4:3),height=34+lines.length*style.leading;
-  const cx=Math.max(G.cam+width/2+14,Math.min(G.cam+VW-width/2-14,a.x));
-  const bottom=Math.max(70,sourceY-18),top=bottom-height;
+  const courtLook=G.authoredCameraFocus?.courtLook&&a.source?.courtAction==='overlook';
+  const cx=courtLook?G.cam+VW-width/2-14:Math.max(G.cam+width/2+14,Math.min(G.cam+VW-width/2-14,a.x));
+  const bottom=courtLook?16-(G.camY||0)+height:Math.max(70,sourceY-18),top=bottom-height;
   c.fillStyle=style.fill;c.strokeStyle=style.stroke;c.globalAlpha=kind==='person'?1:.96;c.lineWidth=kind==='sign'?2:1;
   c.beginPath();c.roundRect(cx-width/2,top,width,height,style.radius);c.fill();c.stroke();
   if(kind==='marker'){c.fillStyle=a.accent;c.fillRect(cx-width/2,top,4,height);}
   if(kind==='sign'){c.strokeStyle='rgba(244,205,139,.24)';c.strokeRect(cx-width/2+5,top+5,width-10,height-10);}
-  c.strokeStyle=style.stroke;c.globalAlpha=.7;c.beginPath();c.moveTo(a.x,sourceY);c.lineTo(a.x,bottom);c.lineTo(cx,bottom);c.stroke();
+  if(!courtLook){c.strokeStyle=style.stroke;c.globalAlpha=.7;c.beginPath();c.moveTo(a.x,sourceY);c.lineTo(a.x,bottom);c.lineTo(cx,bottom);c.stroke();}
   if(kind==='person'){
     c.fillStyle=style.fill;c.strokeStyle=style.stroke;c.globalAlpha=1;c.beginPath();
     c.moveTo(Math.max(cx-width/2+22,Math.min(cx+width/2-22,a.x)),bottom);
@@ -6706,6 +7296,7 @@ function outskirtsReplayText(o){
 }
 function outskirtsAuthoredInteractable(o){
   if(!o)return false;
+  if(o.courtAction)return true;
   if(o.frostMemory||o.frostReturn||o.frostReturnExit||o.frostSeam||o.frostMusterEngine||o.frostMineDoor)return true;
   if(o.lore||o.type==='storyRelic'||o.type==='surveyStake'||o.type==='ambientFigure'||o.repairCatch||o.keepDropRelease)return true;
   return o.type==='scenery'&&!!(o.warmAsh||o.flowerClue||o.fieldClock||o.keepWallJump||o.keepVaultKey||o.sentinelVigil||
@@ -6736,7 +7327,7 @@ function standingOnOutskirtsReturn(o){
     (Math.abs(floor.x-o.x)<8&&Math.abs((floor.y||0)-(o.y||0))<8);
 }
 function outskirtsInteractionCandidate(){
-  if(!G||G.stageIndex<0||G.stageIndex>7)return null;
+  if(!G||G.stageIndex<0||G.stageIndex>9)return null;
   if(G.stageIndex===3&&G.p.x>16050&&updraftsGateCount()===3){
     const ilyra=(G.npcs||[]).find(n=>n.profileId==='ilyra');
     if(ilyra&&!ilyra.done){ilyra.x=16480;ilyra.y=0;}
@@ -6799,6 +7390,7 @@ function activateOutskirtsVigil(source){
 function beginOutskirtsInteraction(){
   const o=outskirtsInteractionCandidate();
   if(!o)return false;
+  if(o.courtAction)return interactWhiteCourt(o);
   if(o.frostMineDoor){
     if(G.stageIndex===6&&!hasCapability('counter'))return false;
     G.frostMineRequested=true;updatePhysicalWorldSeams();return true;
@@ -6853,7 +7445,7 @@ function beginOutskirtsInteraction(){
   return true;
 }
 function replayNearbyOutskirtsSource(){
-  if(!G||G.stageIndex<0||G.stageIndex>6)return false;
+  if(!G||G.stageIndex<0||G.stageIndex>9)return false;
   return beginOutskirtsInteraction();
 }
 function updatePhysicalWorldSeams(){
@@ -6875,7 +7467,7 @@ function updatePhysicalWorldSeams(){
     const result=await BFZoneStreamer.cross(spec.connector,spec.zone,state);
     if(!result.ok){restorePhysicalProgress(backup);throw new Error(result.reason||'seam-crossing-failed');}
   })().catch(error=>{
-    if(G){G.physicalSeamCrossing=false;G.p.x+=spec.forward?-48:48;G.p.vx=0;}
+    if(G){G.physicalSeamCrossing=false;G.courtTravelRequest=null;G.p.x+=spec.forward?-48:48;G.p.vx=0;}
     toast('The road shudders but holds. Try the threshold again.');
     console.warn('Bladefall physical seam:',error);
   });
@@ -8706,6 +9298,9 @@ function applyCrit(e,w,dmg){
 /* Damage-over-time that skips knockback/flash/combo — just the slow bleed. */
 function dotDamage(e,amt,color){
   if(e.dead||amt<=0)return;
+  if(e.courtFinal&&!e.courtFinal.ruptured&&!(e.exposeT>0))return;
+  amt=courtFinalDamage(e,amt);
+  if(e.whiteCourtFight&&e.courtBreaks<3)amt=Math.min(amt,Math.max(0,e.hp-e.maxHp*(e.courtBreaks===1?.66:.32)));
   if(e.wardenPortalFight&&e.wardenPhase===3)amt=Math.min(amt,Math.max(0,e.hp-1));
   e.hp-=amt;
   if(G.runStats)G.runStats.dmg+=amt;
@@ -8779,8 +9374,10 @@ function hitEnemy(e,dmg,dir,kb,ls,el,src){
   const critMul=crit?critProfile(G.p.weapon).mul:1;
   // Test mode: every hit is lethal, bosses included — no grinding through HP
   // bars just to check what's past them.
-  const rawDamage=(meta.testMode?e.hp+1:dmg*mod)*critMul;
-  const actual=e.wardenPortalFight&&e.wardenPhase===3?Math.min(rawDamage,Math.max(0,e.hp-1)):rawDamage;e.hp-=actual;e.hitFlash=0.12;
+  const rawDamage=courtFinalDamage(e,(meta.testMode?e.hp+1:dmg*mod)*critMul);
+  const wardFloor=e.whiteCourtFight&&e.courtBreaks<3?e.maxHp*(e.courtBreaks===1?.66:.32):e.whiteCourtFight&&src==='spellBreak'?e.maxHp*.08:0;
+  const courtDamage=e.whiteCourtFight?Math.min(rawDamage,Math.max(0,e.hp-Math.max(1,wardFloor))):rawDamage;
+  const actual=e.wardenPortalFight&&e.wardenPhase===3?Math.min(rawDamage,Math.max(0,e.hp-1)):(e.whiteCourtFight&&(e.courtBreaks<3||src==='spellBreak')?courtDamage:rawDamage);e.hp-=actual;e.hitFlash=0.12;
   if(bloodVow){G.p.bloodVowT=0;addText(e.x,GROUND_Y-e.y-e.h-30,'VOW ANSWERED','#d85c62',true);}
   if(src==='melee'&&hasGift('cinder-oath')&&(G.p.cinderOathT||0)>0){
     G.p.cinderOathT=0;
@@ -8832,6 +9429,7 @@ function killEnemy(e,coopOpts){
   if(e.dead)return;
   coopOpts=coopOpts||{};
   e.dead=true;meta.totalKills++;G.kills++;
+  if(e.courtFinal){e.courtFinal.hazards=[];for(const o of G.obstacles)if(o.courtGlaze||o.courtFinalGlaze){o.ice=false;o.courtFrostWarn=false;}}
   ngRemixEnemyDeath(e);
   resolveEchoEvent('enemy:defeated',{enemy:e.type,boss:!!e.boss,element:e.element||null});
   if(e.sentinelVigil){
@@ -8896,6 +9494,14 @@ function killEnemy(e,coopOpts){
       restoreBlood(G.p,Infinity);G.authoredCameraFocus={x:14870,y:120,t:2.1};
     }
     if(e.type==='warden'&&G.stageIndex===6&&G.ngPlus===0)completeWardenReward();
+    if(e.whiteCourtFight){
+      grantPermanentCapability('attunement','white-court-victory');
+      markPersistentCircuitOpen('court-defeated','white-court-victory');
+      G.aoes=G.aoes.filter(a=>!a.courtAttack);
+      G.projectiles=G.projectiles.filter(p=>p.sourceType!=='sorcerer');
+      restoreBlood(G.p,Infinity);
+      captureCurrentZonePersistence();
+    }
     grantEchoReward({type:'boss:defeated',boss:e.type});
     // The ability toast and Echo toast used to replace each other in ~2 seconds.
     // The route-changing Brute reward is a player-dismissed result screen instead.
@@ -8924,9 +9530,9 @@ function killEnemy(e,coopOpts){
       copy._coopEnemy=enemyIndex;
       G.pickups.push(copy);
     }
-  }else if(e.boss&&!(e.type==='archer'&&G.stageIndex===4)&&!(e.type==='warden'&&G.stageIndex===6)){
+  }else if(e.boss&&!e.whiteCourtFight&&!(e.type==='archer'&&G.stageIndex===4)&&!(e.type==='warden'&&G.stageIndex===6)){
     if(!G.bossRush)G.pickups.push({x:e.x,y:e.y,key:true,bob:0,_coopEnemy:enemyIndex}); // no chests in the arena
-  }else if(!e.noDrop){
+  }else if(!e.noDrop&&!e.whiteCourtFight){
     // The authored opening teaches world-bound sources, not a shower of legacy
     // roguelite gear. Later biomes may introduce enemy gear drops deliberately.
     if(G.stageIndex>4)rollDrop(e,!!e.elite);
@@ -8941,7 +9547,7 @@ function killEnemy(e,coopOpts){
     document.getElementById('bosshpwrap').classList.remove('on');
     // In the rush the next throne rises on a short beat; elsewhere a portal opens.
     if(G.bossRush){G.bossRush.pending=1.4;}
-    else if(e.type==='brute'||(e.type==='archer'&&G.stageIndex===4)||(e.type==='warden'&&G.stageIndex===6))G.portal=null;
+    else if(e.whiteCourtFight||e.type==='brute'||(e.type==='archer'&&G.stageIndex===4)||(e.type==='warden'&&G.stageIndex===6))G.portal=null;
     else G.portal = {x: G.levelLength - 300, t:0, askedTimer: 0};
   }
   if(coopActive()&&!battleActive()&&!coopOpts.remote){
@@ -9774,8 +10380,85 @@ function updateWardenEnemy(e,target,dt,eff,directive){
   }
   return true;
 }
+/* Regional attacks commit to a visible target, then leave a recovery opening.
+   No position snaps: lashes apply velocity; dives and charges travel continuously. */
+function recallSafeTarget(p){
+  return G.obstacles.some(o=>(o.type==='restSite'||o.type==='shop'||o.type==='check'||o.type==='ambientFigure')&&
+    Math.abs(o.x-p.x)<((o.type==='restSite'||o.type==='shop')?260:o.type==='check'?120:220)&&Math.abs((o.y||0)-p.y)<90)||
+    G.npcs.some(n=>Math.abs(n.x-p.x)<200&&Math.abs((n.y||0)-p.y)<90);
+}
+function updateRegionalRecallEnemy(e,p,dt,eff){
+  if(!['gaoler','outrider','canopywing','chainmarshal'].includes(e.musterRole))return false;
+  e.chainFlash=Math.max(0,(e.chainFlash||0)-dt);
+  const role=e.musterRole,dx=p.x-e.x,dy=p.y-e.y,dir=Math.sign(dx)||e.face||1;
+  e.recallCooldown=Math.max(0,(e.recallCooldown||0)-dt);
+  if(e.recallState==='windup'){
+    e.recallT-=dt;e.vx=0;e.face=e.recallDir;
+    if(e.recallT<=0){
+      e.recallState='strike';e.recallT=role==='canopywing'?.65:role==='gaoler'?.22:.5;
+      if(role==='gaoler'){
+        e.chainFlash=.3;
+        const hit=Math.abs(p.x-e.recallAimX)<65&&Math.abs(p.y-e.recallAimY)<65&&
+          Math.abs(p.x-e.x)<310&&BFAISystem.lineOfSight({x:e.x,y:e.y+e.h*.6},{x:p.x,y:p.y+p.h*.5});
+        if(hit&&!tryPlayerCounter('melee',Math.sign(p.x-e.x)||1,e)){
+          const before=p.blood;hurtPlayer(e.dmg,Math.sign(p.x-e.x)||1,true,e.bloodDamage);
+          if(p.blood<before&&!p.dead){p.vx=(Math.sign(e.x-p.x)||1)*240;p.vy=-100;p.onGround=false;p.floorPlat=null;}
+        }
+      }
+    }
+    return true;
+  }
+  if(e.recallState==='strike'){
+    e.recallT-=dt;e.lunge=1;
+    if(role==='canopywing'){
+      const dx=e.recallAimX-e.x,dy=e.recallAimY-e.y,dist=Math.hypot(dx,dy)||1,step=Math.min(dist,eff*3*dt);
+      e.x+=dx/dist*step;e.y+=dy/dist*step;
+    }else if(role!=='gaoler')e.x+=enemyGroundStep(e,e.recallDir*eff*(role==='outrider'?2.4:1.35)*dt,dt);
+    if(e.recallT<=0){e.recallState='recover';e.recallT=.95;e.lunge=0;}
+    return true;
+  }
+  if(e.recallState==='recover'){
+    e.recallT-=dt;e.lunge=0;
+    if(role==='canopywing')e.y+=(e.recallHomeY-e.y)*Math.min(1,dt*2.5);
+    if(e.recallT<=0){e.recallState='patrol';e.recallCooldown=1.1;}
+    return true;
+  }
+  e.face=dir;e.lunge=0;
+  if(role==='canopywing'){
+    e.y+=(Math.max(e.recallHomeY,p.y+110)-e.y)*Math.min(1,dt*.7);
+    e.x+=dir*eff*.35*dt;
+  }else if(Math.abs(dx)>200)e.x+=enemyGroundStep(e,dir*eff*.55*dt,dt);
+  // The marshal forms a slow shielded advance ahead of nearby ranged cover.
+  e.recallFormation=role==='chainmarshal'&&G.enemies.some(a=>!a.dead&&a.type==='linesman'&&Math.abs(a.x-e.x)<460);
+  const range=role==='gaoler'?300:role==='canopywing'?440:350;
+  if(e.recallCooldown<=0&&Math.abs(dx)<range&&Math.abs(dy)<(role==='canopywing'?620:220)&&
+     BFAISystem.lineOfSight({x:e.x,y:e.y+e.h*.6},{x:p.x,y:p.y+p.h*.5})){
+    e.recallState='windup';e.recallT=role==='gaoler'?.8:role==='canopywing'?.7:.6;
+    e.recallDir=dir;e.recallAimX=p.x;e.recallAimY=p.y+12;
+    e.aiTelegraphT=e.recallT;e.aiTelegraphColor=role==='gaoler'?'#d1a9ef':'#ffd08a';
+  }
+  return true;
+}
 function updateOrdinaryEnemyAI(e,target,dt,eff,intent,directive){
+  if(e.muster&&recallSafeTarget(target)){
+    e.recallState='patrol';e.recallCooldown=Math.max(e.recallCooldown||0,.8);e.lunge=0;
+    e.signalT=0;e.signalCd=Math.max(e.signalCd||0,.8);return;
+  }
+  if(updateRegionalRecallEnemy(e,target,dt,eff))return;
   if(e.musterRole==='signaler'&&updateMusterSignaler(e,target,dt))return;
+  if(e.muster&&e.type==='linesman'){
+    const marshal=G.enemies.find(a=>a.type==='chainmarshal'&&!a.dead&&Math.abs(a.x-e.x)<460);
+    if(marshal){
+      const dir=Math.sign(target.x-marshal.x)||1,behind=marshal.x-dir*150;
+      e.x+=enemyGroundStep(e,Math.max(-eff*.45*dt,Math.min(eff*.45*dt,behind-e.x)),dt);
+      e.face=dir;e.shootT-=dt;
+      if(e.shootT<=0&&BFAISystem.lineOfSight(e,target)){
+        if(e.recallVolleyT>0){e.recallVolleyT-=dt;if(e.recallVolleyT<=0){bossShoot(e,target);e.shootT=e.shootCd||2.6;}}
+        else{e.recallVolleyT=.65;e.aiTelegraphT=.65;e.aiTelegraphColor='#ffe0a0';}
+      }
+      return;
+    }
+  }
   if(updateOutskirtsAvoidanceEncounter(e,target,dt,eff))return;
   if(updateForestEncounter(e,target,dt,eff))return;
   if(updateMarksmanRoadEnemy(e,target,dt,eff))return;
@@ -9935,6 +10618,16 @@ function strikeBruteDropRelease(o,pr){
   if(meta.soundOn)SFX.hit();return true;
 }
 function pullLever(o,forceRepair){
+  if(o.courtCastPaddle){
+    const e=G.boss;
+    if(e&&e.whiteCourtFight&&!e.dead&&!(e.spellStunT>0)&&!(e.courtCastWind>0)&&!(o.flash>0)){
+      e.active=true;
+      if(e.courtFinal){if(e.courtFinal.beat==='prepare')e.courtFinal.t=Math.min(e.courtFinal.t,.6);}
+      else e.courtCastCd=Math.min(e.courtCastCd,.2);
+      o.flash=.7;
+    }
+    return;
+  }
   if(o.arrowOnly)return;
   if(o.bruteChain){
     return;
@@ -10088,12 +10781,24 @@ function triggerFakeLoot(pk) {
 function fireRuneEmitter(o){
   const v={right:[1,0],left:[-1,0],up:[0,1],down:[0,-1]}[o.dir]||[1,0];
   const speed=o.speed||360;
-  G.projectiles.push({owner:'player',puzzleOnly:1,x:o.x,y:o.y,vx:v[0]*speed,vy:v[1]*speed,
-    gravity:0,size:7,color:elColor(o.el)||'#8fe0ff',shape:'bolt',glow:1,dmg:0,kb:0,
-    pierce:0,el:o.el||null,life:5,hitSet:[],portalHops:0});
+  G.projectiles.push({owner:o.courtThaw?'enemy':'player',puzzleOnly:o.courtThaw?0:1,x:o.x,y:o.y,vx:v[0]*speed,vy:v[1]*speed,
+    gravity:0,size:7,color:elColor(o.el)||'#8fe0ff',shape:'bolt',glow:1,dmg:o.courtThaw?1:0,kb:0,
+    pierce:0,el:o.el||null,courtCold:!!o.courtCold,life:5,hitSet:[],portalHops:0});
   o.flash=0.22;
 }
 function captureSorcererSpell(o,pr){
+  if(o.courtBossReceiver){breakCourtWard(o,pr);return;}
+  if(o.courtCondenser){
+    if(!(pr.portalHops>0)||pr.el!=='ice')return;
+    pr.life=0;o.flash=.8;o.charge=1;
+    if(markPersistentCircuitOpen(o.circuitId||'court-glass-cold','returned-cold')){
+      captureCurrentZonePersistence();if(!G.levelSelectMode)persist();
+      G.authoredCameraFocus=o.courtGalleryReceiver?{x:11980,y:260,t:2}:{x:10010,y:35,t:2};
+      addText(o.x,GROUND_Y-o.y-70,o.courtGalleryReceiver?'THE UPPER GALLERY HOLDS':'THE CHANNEL HOLDS','#dff8ff',true);
+      if(meta.soundOn)SFX.magic('ice');
+    }
+    return;
+  }
   const e=o.boss&&!o.boss.dead?o.boss:null;
   pr.life=0;o.flash=0.35;
   if(!e||e.exposeT>0)return;
@@ -10358,6 +11063,17 @@ function updateObstacles(dt){
   // it. Portal jets are derived from the same pair list used by physical transit.
   const fluidFrame=BFFluidSystem.update(G.obstacles,portalPairs(),dt);
   G._fluidVolumes=fluidFrame.volumes;G._fluidJets=fluidFrame.jets;
+  // The local sheet follows the existing cold/water reaction's fixed lifetime.
+  // It is real collision geometry, with a recovery basin when it melts.
+  if(G.stageIndex===8){
+    const basin=G.obstacles.find(o=>o.courtThawBasin);
+    const sheet=G.obstacles.find(o=>o.courtThawSurface);
+    if(basin&&sheet){
+      const cold=BFReactionsModule.activeState(basin);
+      sheet.gone=!(cold&&cold.id==='flash-freeze');
+      sheet.courtThawTime=sheet.gone?0:cold.time;
+    }
+  }
   // The restored Crown is an audible machine, not a silent boolean. Each gate
   // adds one restrained harmonic; the full circuit breathes at a slower cadence.
   if(G.stageIndex===3){
@@ -10479,6 +11195,8 @@ function updateObstacles(dt){
     else if(o.type==='wall'&&o.marksmanShutter&&o.flash>0)o.flash-=dt;
     else if(o.type==='spellSiphon'){
       if(o.flash>0)o.flash-=dt;
+      if(o.courtBossReceiver)updateCourtReceiver(o);
+      if(o.courtGalleryReceiver)o.x=11980+Math.sin(G.time*.7)*120;
       if(o.oscillate){
         const period=Math.max(2.35,(o.period||4)-(o.charge||0)*.55);
         o.y=(o.y0==null?o.y:o.y0)+Math.sin(G.time/period*6.2832)*(o.amplitude||100);
@@ -11310,7 +12028,7 @@ function update(dt){
       const refill=BFMovementProgressionModule.refill(meta.capabilities);
       p.jumps=refill.jumps;p.airRefill=true;if(refill.dashReady)p.dodgeCdT=0;
       ngRemixCrystal(o);
-      if(p.hasJetpack)p.fuel=Math.min(100,p.fuel+50);
+      if(p.hasJetpack)p.fuel=Math.min(100,p.fuel+(o.packRefill??50));
       if(p.hasJetpack&&G.stageIndex===3&&o.fullPackRefill!==false)p.fuel=100;
       if(meta.soundOn)SFX.pickup();
       for(let i=0;i<10;i++){const a=i*0.628;
@@ -11404,6 +12122,7 @@ function update(dt){
   for(const o of G.obstacles){
     if(G.evidenceCapture)break;
     if(G.outskirtsInteractionTarget!==o)continue;
+    if(o.recallReserve&&Math.abs(p.x-o.x)<66&&Math.abs(p.y-o.y)<90){interactRecallReserve(o);continue;}
     if(o.type==='storyRelic'&&!o.read&&Math.abs(p.x-o.x)<66&&Math.abs(p.y-o.y)<90){
       if(o.sealedRecollection){
         o.found=true;o.read=true;discoverRecollection(o.sealedRecollection);
@@ -11987,9 +12706,10 @@ function update(dt){
     if(p.x-gx>span){p.x=gx+span;if(p.vx>0)p.vx=0;}
     else if(gx-p.x>span){p.x=gx-span;if(p.vx<0)p.vx=0;}
   }
+  if(G.authoredCameraFocus?.courtLook&&(input.left||input.right||keyDownFor('jump')||atkRaw||!p.onGround||Math.abs(p.x-G.authoredCameraFocus.originX)>90))G.authoredCameraFocus=null;
   const priorCamera=BFCamera.diagnostics();
   if(Math.abs((priorCamera.x||0)-(G.cam||0))>Math.max(1200,VW*1.5))BFCamera.sync(G.cam||0,G.camY||0);
-  const cameraFrame=BFCamera.update({
+  const cameraFrame=G.authoredCameraFocus?.courtLook?{x:G.cam,y:G.camY}:BFCamera.update({
     player:p,partner:coopActive()?NET.ghost:null,boss:G.boss,
     viewportWidth:Math.max(1,VW),levelLength:Math.max(VW,G.levelLength||VW),
     verticalThreshold:GROUND_Y-260
@@ -11998,8 +12718,8 @@ function update(dt){
   if(G.authoredCameraFocus&&G.authoredCameraFocus.t>0){
     const beat=G.authoredCameraFocus;beat.t-=dt;
     const targetX=Math.max(0,Math.min(Math.max(0,(G.levelLength||VW)-VW),beat.x-VW*.5));
-    const targetY=Math.max(0,beat.y-(GROUND_Y-260));
-    const blend=1-Math.exp(-8*dt);
+    const targetY=beat.courtLook?Math.max(0,Math.min(352,VH-8)-GROUND_Y):Math.max(0,beat.y-(GROUND_Y-260));
+    const blend=beat.courtLook&&meta.reducedMotion?1:1-Math.exp(-8*dt);
     G.cam+=(targetX-G.cam)*blend;G.camY+=(targetY-G.camY)*blend;
     BFCamera.sync(G.cam,G.camY);
     if(beat.t<=0)G.authoredCameraFocus=null;
@@ -12025,6 +12745,7 @@ function update(dt){
 
   // Enemies
   for(const e of G.enemies){
+    if(G.recallBaselineActive&&!e.musterUpgraded)applyRecallBaseline(e);
     if(e.dead)continue;
     // Broken Standard is entered in silence. Proximity and stray movement cannot
     // wake the Brute; only the three-arrow alarm-chain receipt does that.
@@ -12127,6 +12848,7 @@ function update(dt){
       if(e.bruteMachineryFight)updateBruteMachineryFight(e,enemyTarget,dt,eff);
       else if(e.marksmanPortalFight)updateMarksmanPortalFight(e,enemyTarget,dt,eff);
       else if(e.wardenPortalFight)updateWardenPortalFight(e,enemyTarget,dt,eff);
+      else if(e.whiteCourtFight)updateWhiteCourtBoss(e,enemyTarget,dt);
       else if(e.spellStunT>0){e.spellStunT-=dt;e.vx=0;e.lunge=0;}
       else if(e.forgeStunT>0){e.forgeStunT-=dt;e.vx=0;e.lunge=0;}
       else if(e.paradoxStunT>0){e.paradoxStunT-=dt;e.vx=0;e.lunge=0;}
@@ -12199,7 +12921,7 @@ function update(dt){
       }
 
       // === SORCERER: active pursuit, phase flanks and lingering ice zones ===
-      if(e.type==='sorcerer'&&e.spellSiphonFight&&!(e.spellStunT>0)){
+      if(e.type==='sorcerer'&&!e.whiteCourtFight&&e.spellSiphonFight&&!(e.spellStunT>0)){
         const mouth=G.cratePortals&&G.cratePortals[0];
         const camping=mouth&&Math.abs(enemyTarget.x-mouth.x)<82&&Math.abs((enemyTarget.y+enemyTarget.h*0.5)-(mouth.y+20))<90;
         e.mouthCampT=camping?(e.mouthCampT||0)+dt:Math.max(0,(e.mouthCampT||0)-dt*2);
@@ -12316,7 +13038,7 @@ function update(dt){
       }
 
       // === ENRAGE at <50% HP (moved up from 35%) ===
-      if(hpR<0.50&&e.phase<2){e.phase=2;e.speed*=1.22;
+      if(!e.whiteCourtFight&&hpR<0.50&&e.phase<2){e.phase=2;e.speed*=1.22;
         if(e.marksmanPortalFight)e.rainT=9.8;
         if(e.type==='sorcerer'){e.shot.count=3;e.shot.spread=0.5;e.shot.speed=220;}
         if(e.type!=='king')addText(e.x,GROUND_Y-e.h-20,'ENRAGED!','#ff5e54',true);}
@@ -12558,6 +13280,15 @@ function update(dt){
       if(pr.el==='fire'&&G.boss&&G.boss.forgeFight){pr.tracking=false;pr.moltenCapture=true;pr.color='#ffb04a';}
       if(pr.el==='void'&&G.boss&&G.boss.paradoxFight)chargeParadoxOrb(pr);
     }}}
+    // White Court's missed payloads end at the arena, not in the return route.
+    if(pr.sourceType==='sorcerer'&&G.boss?.whiteCourtFight&&
+      (pr.x<G.boss.spellArenaL||pr.x>G.boss.spellArenaR)){
+      const edge=Math.max(G.boss.spellArenaL,Math.min(G.boss.spellArenaR,pr.x));
+      for(let i=0;i<5;i++)G.particles.push({x:edge,y:GROUND_Y-pr.y,
+        vx:(Math.random()-.5)*90,vy:-20-Math.random()*60,sz:2,
+        color:'#dff8ff',life:.25});
+      pr.life=0;continue;
+    }
     // The Marksman's moving shutter owns the sightline in both directions:
     // incoming arrows provide safe beats while it is down, but a reflected arrow
     // also shatters on it. The player must bank during the open part of its cycle.
@@ -12612,7 +13343,7 @@ function update(dt){
       const verb=pr.reflected?'return-projectile':pr.el==='fire'?'elemental-thaw':null;
       if(verb&&activateVaultSecretObject(o,verb)){pr.life=0;break;}
     }
-    if(pr.stolenSpell&&pr.life>0)for(const o of G.obstacles){
+    if((pr.stolenSpell||(pr.courtCold&&pr.portalHops>0))&&pr.life>0)for(const o of G.obstacles){
       if(o.type!=='spellSiphon')continue;
       if(Math.abs(pr.x-o.x)<o.w/2+pr.size&&Math.abs(pr.y-o.y)<o.h/2+pr.size){captureSorcererSpell(o,pr);break;}
     }
@@ -12890,6 +13621,7 @@ function bossArena(e){
       }),'recovery','mobile-marksman-duel')
     );
   } else if(e.type==='sorcerer'){
+    if(G.stageIndex===8&&G.ngPlus===0&&!G.bossRush){setupWhiteCourtBoss(e,bx);return;}
     // SPELL THEFT: lure three tracking frost orbs into the floor mouth. The fixed
     // exit strips their homing, but the siphon now oscillates across that line.
     // Catching is only half the answer: the player must steal on its rhythm while
@@ -13395,7 +14127,7 @@ function updateWardenPortalFight(e,p,dt,eff){
   if(e.wardenPhase<3&&dist>250&&e.wardenRushCd<=0){e.wardenState='rushWind';e.wardenStateT=.52;e.wardenRushCd=2.75;e.vx=0;return;}
   e.wardenState='pursuit';e.lunge=0;e.x+=dir*eff*(e.wardenPhase===3?.92:.72)*dt;
 }
-function bossShoot(e,p){
+function bossShoot(e,p,courtCast=null){
   const cfg=e.shot,ox=e.x+e.face*10,oy=e.y+e.h*0.62;
   if(e.type==='archer'&&e.marksmanPortalFight)e.faceGlareUntil=G.time+.28;
   const dx=p.x-ox,dirX=Math.sign(dx)||1,t=Math.max(0.25,Math.abs(dx)/cfg.speed);
@@ -13403,7 +14135,7 @@ function bossShoot(e,p){
     const fan=(cfg.count>1?(i-(cfg.count-1)/2)*cfg.spread*260:0);
     const vx=dirX*cfg.speed;
     let vy=((p.y+p.h*0.5)-oy)/t + fan;if(cfg.gravity)vy+=cfg.gravity*0.5*t;
-    G.projectiles.push({owner:'enemy',sourceType:e.type,x:ox,y:oy,vx,vy,gravity:cfg.gravity||0,size:cfg.size,color:cfg.color,shape:cfg.shape,glow:cfg.glow||1,dmg:e.dmg*0.8,bloodDamage:e.bloodDamage,kb:120,pierce:0,el:cfg.el||null,life:e.paradoxFight?12:((e.spellSiphonFight||e.forgeFight)?5:2.6),hitSet:[],isBoss:e.boss,tracking:cfg.tracking,stealable:!!e.spellSiphonFight,forgeable:!!e.forgeFight});
+    G.projectiles.push({owner:'enemy',sourceType:e.type,courtCast:e.whiteCourtFight?courtCast:null,x:ox,y:oy,vx,vy,gravity:cfg.gravity||0,size:cfg.size,color:cfg.color,shape:cfg.shape,glow:cfg.glow||1,dmg:e.dmg*0.8,bloodDamage:e.bloodDamage,kb:120,pierce:0,el:cfg.el||null,life:e.paradoxFight?12:((e.spellSiphonFight||e.forgeFight)?5:2.6),hitSet:[],isBoss:e.boss,tracking:cfg.tracking,stealable:!!e.spellSiphonFight,forgeable:!!e.forgeFight});
   }
   if(cfg.el&&meta.soundOn)SFX.magic(cfg.el);else if(meta.soundOn)SFX.shoot();
 }
@@ -13493,7 +14225,7 @@ function nextStage(){
   G.p.hasJetpack=false;G.p.fuel=0;   // jetpack stays in its level (snapshot follows)
   const escorted=G.npcs&&G.npcs.find(n=>n.kind==='escort'&&n.state==='follow'&&n.hp>0);
   const escortProfile=escorted?travelerProfile(escorted):null;
-  meta.run={ngPlus:G.ngPlus,ngHp:G.ngHp,ngDmg:G.ngDmg,stageIndex:ni,p:snapOf(G.p),base:G.baseLoadout,simSeed:G.simSeed,
+  meta.run={...savedRunSession(G),ngPlus:G.ngPlus,ngHp:G.ngHp,ngDmg:G.ngDmg,stageIndex:ni,p:snapOf(G.p),base:G.baseLoadout,simSeed:G.simSeed,
     stats:G.runStats,time:G.time,completion:G.runCompletion,runCoinFound:G.runCoinFound,
     leaderboardEligible:G.leaderboardEligible,worldProgressEligible:G.worldProgressEligible};
   // In co-op the host picks the next stage's seed first, so the guest builds
@@ -13511,14 +14243,14 @@ function continueRun(){
   if(!meta.run)return;
   const simSeed=BFSimulation.startRun(meta.run.simSeed);
   const p=freshPlayer();
-  G={p,stageIndex:0,enemies:[],particles:[],texts:[],pickups:[],projectiles:[],obstacles:[],aoes:[],shadows:[],cam:0,shake:0,
+  G={...savedRunSession(meta.run),p,stageIndex:0,enemies:[],particles:[],texts:[],pickups:[],projectiles:[],obstacles:[],aoes:[],shadows:[],cam:0,shake:0,
      ngPlus:meta.run.ngPlus,ngHp:meta.run.ngHp||1,ngDmg:meta.run.ngDmg||1,baseLoadout:meta.run.base||null,
      portal:null,stageBanner:0,killGoal:0,kills:0,boss:null,time:meta.run.time||0,tookDamage:false,combo:0,comboT:0,
      runStats:Object.assign({dmg:0,taken:0,kills:0,gold:0,best:null},meta.run.stats||{}),
      runCompletion:BFMilestonesModule.createRun(meta.run.completion),
      runCoinFound:meta.run.runCoinFound||{},leaderboardEligible:meta.run.leaderboardEligible!==false,
      leaderboardSubmitted:false,worldProgressEligible:meta.run.worldProgressEligible!==false&&Number(meta.run.ngPlus||0)===0,simSeed};
-  const recoveryPoint=meta.recovery.activeCheckpoint&&meta.recovery.activeCheckpoint.zoneId===BFWorldModule.stageId(meta.run.stageIndex)
+  const recoveryPoint=!G.levelSelectMode&&meta.recovery.activeCheckpoint&&meta.recovery.activeCheckpoint.zoneId===BFWorldModule.stageId(meta.run.stageIndex)
     ?BFRecoveryModule.createState(meta.recovery).activeCheckpoint:null;
   restorePlayer(meta.run.p);if(recoveryPoint)G._suppressEntranceCheckpoint=true;
   loadStage(meta.run.stageIndex);delete G._suppressEntranceCheckpoint;restorePlayer(meta.run.p);
@@ -13660,6 +14392,10 @@ function render(){
   // Parallax + ground (drawGround paints the gradient ground itself)
   drawParallax(ctx,s);drawGround(ctx,s);
   if(BFRenderer)BFRenderer.beginLayer('world');
+  // Court buildings sit behind every traversable surface and receiver.
+  // Their insertion order must never conceal a moving capture target.
+  for(const o of G.obstacles)if(o.courtArchitecture&&vis(o))drawScenery(ctx,o);
+  drawCourtFinal(ctx);
   drawCircuitLinks(ctx);
 
   // Portal
@@ -13700,7 +14436,7 @@ function render(){
     else if(o.type==='forgeCoolant')drawForgeCoolant(ctx,o);
     else if(o.type==='bruteWeight')drawBruteWeight(ctx,o);
     else if(o.type==='lever')drawLever(ctx,o);
-    else if(o.type==='scenery')drawScenery(ctx,o);
+    else if(o.type==='scenery'&&!o.courtArchitecture)drawScenery(ctx,o);
     else if(o.type==='storyRelic')drawStoryRelic(ctx,o);
     else if(o.type==='surveyStake')drawSurveyStake(ctx,o);
     else if(o.type==='ambientFigure')drawAmbientFigure(ctx,o);
@@ -14608,6 +15344,13 @@ function drawProjectile(c,pr){
   const ang=Math.atan2(-(pr.vy||0),pr.vx);
   c.save();c.translate(pr.x,GROUND_Y-pr.y);
   if(pr.glow){c.shadowColor=pr.color;c.shadowBlur=12;}
+  if(pr.courtCast){
+    c.strokeStyle=pr.courtCast==='payload'?'#e8fbff':'#cbb4ed';c.lineWidth=2;c.beginPath();
+    const r=pr.size+6;
+    if(pr.courtCast==='payload')c.arc(0,0,r,0,Math.PI*2);
+    else {c.save();c.rotate(ang);c.moveTo(-r,-r);c.lineTo(0,0);c.lineTo(-r,r);c.stroke();c.restore();c.beginPath();}
+    c.stroke();
+  }
   c.fillStyle=pr.color;
   if(pr.shape==='axe'){ // the thrown axe, spinning end over end
     c.rotate(pr.spin||0);
@@ -14755,9 +15498,19 @@ function drawSlateSkin(c,x,y,w,h){
 }
 function drawPlatform(c, o) {
   const s=STAGES[G.stageIndex];
+  if((o.courtThawSurface||o.courtColdStep)&&o.gone)return;
+  if(o.recallRoad){
+    if(o.gone)return;
+    c.save();c.translate(o.x,GROUND_Y-o.y);c.fillStyle='#554b3f';c.fillRect(-o.w/2,0,o.w,14);
+    c.strokeStyle=o.recallAccent||'#bbad8c';c.lineWidth=2;lineC(c,-o.w/2,0,o.w/2,0);
+    c.strokeStyle='#292a27';for(let x=-o.w/2+22;x<o.w/2;x+=36)lineC(c,x,2,x,13);
+    c.strokeStyle='#81765d';c.lineWidth=2;
+    c.beginPath();c.moveTo(-o.w/2,-38);c.quadraticCurveTo(0,-4,o.w/2,-38);c.stroke();
+    lineC(c,-o.w/2,-38,-o.w/2,14);lineC(c,o.w/2,-38,o.w/2,14);c.restore();return;
+  }
   if(o.slope){ drawSlope(c,o); return; }
   if(o.gate&&!gateOpen(o)){ // closed gate: faint outline hints at the bridge
-    c.save();c.translate(o.x,GROUND_Y-o.y);c.globalAlpha=0.15;c.strokeStyle='#5fd17a';c.setLineDash([6,6]);c.strokeRect(-o.w/2,0,o.w,o.h);c.setLineDash([]);c.restore();return;
+    c.save();c.translate(o.x,GROUND_Y-o.y);c.globalAlpha=0.15;c.strokeStyle=o.ice&&o.whiteCourtAuthored?'#a7ddea':'#5fd17a';c.setLineDash([6,6]);c.strokeRect(-o.w/2,0,o.w,o.h);c.setLineDash([]);c.restore();return;
   }
   if(o.gone){
     if(o.fake)return; // fakes vanish in a poof
@@ -14815,6 +15568,12 @@ function drawPlatform(c, o) {
     c.fillRect(-w/2,60,w,VH);
     c.fillStyle=A.lit;c.fillRect(-w/2,0,w,3);
     slabDressing(c,-w/2,0,w,A,seed);
+  } else if(o.gate&&o.ice&&o.whiteCourtAuthored){
+    c.fillStyle=grad(c,'court-ice'+h,0,0,0,h,[[0,'#ecfbff'],[.35,'#a7ddea'],[1,'#36586a']]);
+    c.fillRect(-w/2,0,w,h);c.fillStyle='#f0fdff';c.fillRect(-w/2,0,w,3);
+    c.strokeStyle='#547e94';c.lineWidth=1.5;c.beginPath();
+    for(let x=-w/2+22;x<w/2;x+=58){c.moveTo(x,2);c.lineTo(x+9,h*.65);c.lineTo(x+3,h);}
+    c.stroke();
   } else if(o.gate){
     const lv=G.levers[o.gate],fading=lv&&lv.timer<1.4;
     c.globalAlpha=fading?(0.4+0.5*Math.abs(Math.sin(G.time*14))):1;
@@ -14852,6 +15611,12 @@ function drawPlatform(c, o) {
       c.fillStyle=selected?'#ffffff':'#cbb5df';c.fillText(String(o.echoPanel+1),0,-9);
       c.shadowBlur=0;
     }
+    if(o.courtFrostWarn){
+      // Static serrated outline remains readable with sound and motion disabled.
+      c.strokeStyle='#c7f1ff';c.lineWidth=2;c.beginPath();
+      for(let x=-w/2+4;x<w/2-8;x+=20){c.moveTo(x,-2);c.lineTo(x+6,-9);c.lineTo(x+12,-2);}
+      c.stroke();
+    }
     if(o.ice){ // glassy frozen cap — reads as "you will not stop cleanly here"
       c.fillStyle=rgba('#bfe9ff',0.55);c.fillRect(-w/2,0,w,h*0.6);
       c.fillStyle=grad(c,'ice'+h,0,0,0,h*0.6,[[0,'#eafcff'],[1,'#8fd6f2']]);
@@ -14862,6 +15627,11 @@ function drawPlatform(c, o) {
       c.fillStyle=rgba('#ffffff',0.6+0.2*Math.sin(G.time*2+seed));   // roving glint
       const gx=-w/2+((G.time*40+seed*30)%w);
       c.fillRect(gx,1,10,2);
+      if(o.courtThawSurface&&o.courtThawTime<1.2){
+        c.strokeStyle='#274756';c.lineWidth=3;c.beginPath();
+        for(let x=-w/2+12;x<w/2;x+=32){c.moveTo(x,0);c.lineTo(x+12,h*.7);c.lineTo(x+4,h);}
+        c.stroke();
+      }
     }
     if(o.brittle){ // fissured amber rock — reads as "hit me from above"
       c.fillStyle=rgba('#c9832a',0.28);c.fillRect(-w/2,0,w,h);
@@ -14914,6 +15684,14 @@ function drawPlatform(c, o) {
       c.shadowBlur=0;
     }
     if(o.slate)drawSlateSkin(c,-w/2,0,w,h);   // portalable panel — the pale rune-lit slate
+    if((o.courtGlaze||o.courtFinalGlaze)&&o.ice){
+      // Keep the active frost visible above the portal skin without hiding its runes.
+      c.fillStyle='#e5fbff';c.fillRect(-w/2,-2,w,4);
+      c.fillStyle='rgba(133,219,242,.65)';c.fillRect(-w/2,2,w,Math.min(5,h/2));
+      c.strokeStyle='#e5fbff';c.lineWidth=1.5;c.beginPath();
+      for(let x=-w/2+16;x<w/2-12;x+=35){c.moveTo(x,0);c.lineTo(x+8,7);c.lineTo(x+13,3);}
+      c.stroke();
+    }
     if(o.portalTruth){
       c.fillStyle='rgba(217,163,74,.78)';c.fillRect(-w/2+5,-3,w-10,3);
     }
@@ -15682,7 +16460,7 @@ function drawEchoSigil(c,o){
   c.restore();
 }
 function drawSpellSiphon(c,o){
-  const t=G.time,flash=o.flash>0,pulse=1+Math.sin(t*5)*0.05;
+  const t=meta.reducedMotion&&(o.courtBossReceiver||o.courtCondenser)?0:G.time,flash=o.flash>0,pulse=1+Math.sin(t*5)*0.05;
   c.save();c.translate(o.x,GROUND_Y-o.y);
   c.shadowColor=flash?'#ffffff':'#7fd6ff';c.shadowBlur=flash?28:14;
   c.strokeStyle='#8aa9bd';c.lineWidth=5;
@@ -15812,6 +16590,7 @@ function drawFrostScenery(c,o){
 }
 
 function drawScenery(c,o){
+  if(o.courtArchitecture){drawCourtScenery(c,o);return;}
   if(o.frostArchitecture){drawFrostScenery(c,o);return;}
   const t=G.time,kind=o.kind||'ruin';
   c.save();c.translate(o.x,GROUND_Y-o.y);
@@ -16352,7 +17131,12 @@ function drawStoryRelic(c,o){
     halo.addColorStop(0,rgba(accent,.24+.05*Math.sin(t*3)));halo.addColorStop(1,rgba(accent,0));
     c.fillStyle=halo;c.fillRect(-38,-48,76,52);
   }
-  if(o.sealedRecollection){
+  if(o.recallReserve){
+    c.fillStyle='#493c31';c.strokeStyle=accent;c.lineWidth=2;rr(c,-22,-24,44,24,3);c.fill();c.stroke();
+    c.fillStyle=o.opened?'#211d19':'#685640';c.fillRect(-22,o.opened?-34:-27,44,7);
+    c.strokeStyle=accent;lineC(c,-13,-23,-13,-1);lineC(c,13,-23,13,-1);
+    if(!o.opened){c.fillStyle=musterRecalled()?accent:'#73716b';c.fillRect(-4,-16,8,9);}
+  }else if(o.sealedRecollection){
     c.save();c.rotate(-.08);c.shadowColor=accent;c.shadowBlur=o.read?3:15;
     c.fillStyle=o.read?'#17131c':'#24182f';c.strokeStyle=accent;c.lineWidth=2;
     rr(c,-15,-27,30,24,3);c.fill();c.stroke();
@@ -18104,9 +18888,16 @@ function travelWorldTo(targetSiteId){
   mode='play';showOverlay(false);showGameUI(true);hudUpdate();
   toast('The waystation returns you to <b>'+escText(site.name)+'</b>.');
 }
+function savedRunSession(source){
+ const levelSelectMode=!!source.levelSelectMode;
+ return {levelSelectMode,
+  sessionCapabilities:levelSelectMode?JSON.parse(JSON.stringify(source.sessionCapabilities||levelSelectCapabilitiesForStage(source.stageIndex))):null,
+  sessionQuests:levelSelectMode?JSON.parse(JSON.stringify(source.sessionQuests||BFQuestsModule.createProgress())):null,
+  sessionZoneState:levelSelectMode?JSON.parse(JSON.stringify(source.sessionZoneState||BFZoneStateModule.createState())):null};
+}
 function saveRunAtStage(stageIndex,playerSnapshot){
   if(!G)return;
-  meta.run={ngPlus:G.ngPlus,ngHp:G.ngHp,ngDmg:G.ngDmg,stageIndex,p:playerSnapshot||snapOf(G.p),base:G.baseLoadout,simSeed:G.simSeed,
+  meta.run={...savedRunSession(G),ngPlus:G.ngPlus,ngHp:G.ngHp,ngDmg:G.ngDmg,stageIndex,p:playerSnapshot||snapOf(G.p),base:G.baseLoadout,simSeed:G.simSeed,
     stats:G.runStats,time:G.time,completion:G.runCompletion,runCoinFound:G.runCoinFound,
     leaderboardEligible:G.leaderboardEligible,worldProgressEligible:G.worldProgressEligible};
   persist();

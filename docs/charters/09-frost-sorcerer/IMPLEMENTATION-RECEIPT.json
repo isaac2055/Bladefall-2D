@@ -1,0 +1,90 @@
+{
+  "schema": "bladefall.white-court.implementation-receipt",
+  "version": "7.99.0",
+  "cache": "bladefall-v179",
+  "status": "implemented-awaiting-owner-playtest",
+  "deployed": false,
+  "source": [
+    {
+      "path": "public/index.html",
+      "sha256": "331868b1f9d2af6f9f7272864fed505a5d8d37512dad6987c7be90dc869ed075"
+    },
+    {
+      "path": "public/sw.js",
+      "sha256": "a4ec1434fb7938849deba4850b19da10bbc60271c63a3e4c420dd8af044f07ef"
+    },
+    {
+      "path": "public/bladefall-campaign.js",
+      "sha256": "d8a06ff61553a142a56ef34e5df56e547f1e07df2f13b24b18320c083ff57f30"
+    },
+    {
+      "path": "public/bladefall-shops.js",
+      "sha256": "74e7ffa77b15ceec1c6f91e3d9d9c1b7da471f509129f055d299f90a36662196"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "evidence/continuous-boss.json",
+      "sha256": "6139f3ddca4ff190357685147538c6774fb6532f596d66f861078a8c7549c1ba"
+    },
+    {
+      "path": "evidence/phase-review.json",
+      "sha256": "2cba9a357ba9866295d8d184ce5f7e6f4732c54ef8b7176c6014de4a09672e8b"
+    },
+    {
+      "path": "evidence/generic-bot-current.json",
+      "sha256": "ffa2ad00904d0572e86d8a25c599d6db763763a10c0f84ae599f956e91587e4e"
+    },
+    {
+      "path": "evidence/connections.json",
+      "sha256": "ba624892eae0bbf177e5c205bc6d60d964fe1c7107bd8dacafc5ef8a82f95ca0"
+    },
+    {
+      "path": "evidence/reload.json",
+      "sha256": "c22170bc83c2cae4192f78d12ff93d30b6a76977270b337483360ba9445bf2db"
+    },
+    {
+      "path": "evidence/aqueduct-route.json",
+      "sha256": "edb170dcbed5996b532327c7f25f65cf0617e99cc58693d8c7450adb3bacb13b"
+    },
+    {
+      "path": "evidence/route-pressure.json",
+      "sha256": "3b27dfb206c2eecb52b74679a0c0ec9cf6caaec44c6980542ff3f27074683bba"
+    }
+  ],
+  "verification": {
+    "fullRegression": {
+      "passed": 541,
+      "total": 541,
+      "note": "Before final visual-only frost cap and version/cache update; those changes verified by replay/capture and baseline/parity."
+    },
+    "release": {
+      "ok": true,
+      "assets": 93
+    },
+    "baseline": {
+      "passed": 7,
+      "total": 7
+    },
+    "continuousRoute": {
+      "passed": true,
+      "frames": 5361,
+      "initialCapabilityPrefixFixture": true,
+      "intermediateResets": false,
+      "endsAtUsableExit": true,
+      "asyncSeamVerifiedSeparately": true
+    },
+    "genericBot": {
+      "passed": false,
+      "segment": 4,
+      "x": 10386,
+      "expansions": 30000,
+      "seconds": 303.7,
+      "runtimeErrors": []
+    }
+  },
+  "pending": [
+    "Owner playthrough: pace, legibility and difficulty; scripted victories do not establish typical-player timing.",
+    "Final charter acceptance flags remain unapproved; do not ship on the basis of automation alone."
+  ]
+}

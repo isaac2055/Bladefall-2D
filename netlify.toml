@@ -1,0 +1,4 @@
+# The game is already static; Netlify can publish the source folder directly.
+[build]
+  command = ""
+  publish = "public"

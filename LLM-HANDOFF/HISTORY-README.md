@@ -1,0 +1,97 @@
+# Bladefall Antigravity — model handoff
+
+This folder is the durable starting point for a new Codex, Antigravity, Claude,
+ChatGPT or other engineering/design session. A model with no prior context should
+read [`NEXT-MODEL-BRIEF.md`](./NEXT-MODEL-BRIEF.md) first, then follow the order below. It summarizes the intended game, the
+current implementation, the level-by-level production state, and the files that
+must accompany a working copy.
+
+## Read in this order
+
+1. [`01-CURRENT-STATE.md`](./01-CURRENT-STATE.md) — what is actually true in the
+   current runtime, including version, validation, and known caveats.
+2. [`02-MASTER-VISION.md`](./02-MASTER-VISION.md) — the product, narrative,
+   world, progression, portal, reward, and pacing vision agreed with the owner.
+3. [`03-LEVEL-BY-LEVEL.md`](./03-LEVEL-BY-LEVEL.md) — current and intended state
+   of all sixteen playable regions.
+4. [`04-SYSTEMS-AND-ARCHITECTURE.md`](./04-SYSTEMS-AND-ARCHITECTURE.md) — how the
+   runtime, saves, progression, equipment, authoring, co-op, and deployment fit
+   together.
+5. [`05-REMAINING-WORK.md`](./05-REMAINING-WORK.md) — prioritized production
+   backlog and the quality gate for future work.
+6. [`06-ESSENTIAL-FILES.md`](./06-ESSENTIAL-FILES.md) — authoritative files,
+   derived files, disposable bulk, and the current Git hazard.
+7. [`07-WORKING-COPY.md`](./07-WORKING-COPY.md) — how to make a small runnable or
+   code-only copy without dragging along hundreds of megabytes of evidence.
+8. [`08-HISTORICAL-PLANS-INDEX.md`](./08-HISTORICAL-PLANS-INDEX.md) — what every
+   older roadmap contributed, what remains authoritative, and what was superseded.
+9. [`09-DECISIONS-AND-NONREGRESSIONS.md`](./09-DECISIONS-AND-NONREGRESSIONS.md) —
+   accumulated owner decisions, accepted boss anchors, and recurring pitfalls.
+10. [`10-HANDOFF-VERIFICATION.md`](./10-HANDOFF-VERIFICATION.md) — copy-generator,
+    documentation checks, latest focused evidence and dated release history.
+11. [`11-RECENT-CHANGES-AND-PLANS.md`](./11-RECENT-CHANGES-AND-PLANS.md) —
+    changes since August, current Frostfell behavior, harness limits and future plans.
+12. [`NEXT-MODEL-BRIEF.md`](./NEXT-MODEL-BRIEF.md) — concise context that can be
+   pasted into a fresh model session after the working copy is attached.
+13. [`12-RECALL-WORK-ORDER.md`](./12-RECALL-WORK-ORDER.md) — the owner's 2026-09-13
+   review of the Muster recall, what actually exists, and the approved plan. This
+   records runs 1–3 and their verification boundaries.
+
+## Authority order
+
+When records conflict, use this order:
+
+1. Current files in `public/`, especially `public/index.html` and the loaded
+   `public/bladefall-*.js` authorities.
+2. Current automated tests and live validators in `tests/` and `scripts/`.
+3. This handoff folder, whose snapshot date is 2026-09-14.
+4. Current level charters under `docs/charters/`.
+5. Older roadmaps and baseline evidence. These are valuable history, but several
+   status tables predate the completed Ruined Keep and Warden passes.
+
+Never infer that an old roadmap's “Complete” means the current reimagining is
+finished, and never infer that “Pending” is still accurate without checking the
+runtime and tests.
+
+## Fast start
+
+From the project root:
+
+```bash
+npm install
+npm run serve
+```
+
+Open `http://127.0.0.1:8371/index.html`. Use `?tas=1` only for the manual harness;
+see [TESTING.md](../TESTING.md). Relevant checks and the release-boundary workflow:
+
+```bash
+npm test
+npm run validate:ruined-keep
+npm run validate:warden
+npm run validate:frostfell
+./build-deploy.sh
+npm run release:check
+```
+
+The generated `netlify-deploy/` directory is never the editing source. Edit
+`public/`, rebuild the mirror, and do not deploy to Netlify unless the owner
+explicitly requests it.
+
+## Snapshot identity — runs 1–3, 2026-09-14
+
+- Source `7.98.0`, cache `bladefall-v178`; mirror rebuilt, release parity 93 assets.
+- Expanded recall implemented: 14 Warden / 12 Outskirts / 13 Woods / 15 Causeway
+  reinforcements, four regional roles, one-time global ordinary-enemy upgrades
+  and re-garrisoning. See [current work record](12-RECALL-WORK-ORDER.md).
+- Full suite **513/513**; eight directional shortcut checks pass. Prior Frostfell
+  validator 15/15 is retained historical evidence; see `10-HANDOFF-VERIFICATION.md`.
+- Run 2: full-state replay, independent repeat bootstraps, stored input replay,
+  crystal/portal/pickup/flight verbs. Full suite 510/510; seven focused bot tests.
+  The recalled Causeway now passes; later full-stage planner blocks remain explicit.
+- Run 3 implements four reserve rewards and physical shortcuts; White Court has
+  a design plan, with gameplay implementation still pending. Start through Warden remains complete in substance, with later polish.
+- Git tracks the authoritative tree, but these run 1–3 changes are local/uncommitted;
+  GitHub main still carries the previous release. No Netlify deployment authorized.
+- This Desktop working copy remains iCloud-synced; read `06-ESSENTIAL-FILES.md`
+  if file reads or Git commands stall. Nothing was moved in this run.

@@ -75,7 +75,8 @@ test('all 16 blueprints produce complete immutable charter stubs', () => {
   assert.ok(catalog[6].rooms.every((room) => room.status === 'assembled'));
   assert.deepEqual(catalog[6].rooms[2].bounds, { start: 5100, end: 7700 });
   assert.equal(catalog[6].rooms[5].focalX, 13800);
-  assert.ok(catalog.slice(7).every((charter) => charter.phases[0].status === 'pending'
+  assert.equal(catalog[8].phases[0].status, 'complete');
+  assert.ok(catalog.slice(7).filter(charter=>charter.id!=='frost-sorcerer').every((charter) => charter.phases[0].status === 'pending'
     && charter.phases[1].status === 'pending'&&charter.phases[2].status === 'pending'));
 });
 

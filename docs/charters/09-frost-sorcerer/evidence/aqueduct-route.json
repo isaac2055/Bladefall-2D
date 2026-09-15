@@ -1,0 +1,92 @@
+{
+  "scope": "One normal stage8 capability-prefix fixture at authored arrival; normal keyboard and automatic loop throughout. No endpoint repositioning, damage suppression or victory fixture. Existing Frostfell service interactions supply their authored travel.",
+  "start": {
+    "x": 4800,
+    "y": 0,
+    "blood": 5,
+    "testMode": false
+  },
+  "end": {
+    "x": 4806.136948806147,
+    "y": 0,
+    "blood": 5,
+    "testMode": false,
+    "checkpoint": 4800,
+    "opened": true
+  },
+  "results": [
+    {
+      "name": "walk from refuge to White Court latch",
+      "stage": 8,
+      "x": 213.8630511938307,
+      "y": 0,
+      "ability": true
+    },
+    {
+      "name": "aqueduct arrival on Frostfell summit",
+      "stage": 7,
+      "x": 14920,
+      "y": 650,
+      "endpoint": "frostfell-sorcerer:frostfell",
+      "ability": true
+    },
+    {
+      "name": "walk from aqueduct to summit service passage",
+      "stage": 7,
+      "x": 14653.863051193908,
+      "y": 650,
+      "endpoint": "frostfell-sorcerer:frostfell",
+      "ability": true
+    },
+    {
+      "name": "summit service to Frostfell refuge",
+      "stage": 7,
+      "x": 1330,
+      "y": 0,
+      "endpoint": "frostfell-sorcerer:frostfell",
+      "ability": true
+    },
+    {
+      "name": "refuge service to high gallery",
+      "stage": 7,
+      "x": 7220,
+      "y": 210,
+      "endpoint": "frostfell-sorcerer:frostfell",
+      "ability": true
+    },
+    {
+      "name": "high gallery service back to summit",
+      "stage": 7,
+      "x": 14680,
+      "y": 650,
+      "endpoint": "frostfell-sorcerer:frostfell",
+      "ability": true
+    },
+    {
+      "name": "walk back to Frostfell aqueduct",
+      "stage": 7,
+      "x": 14956.136948806123,
+      "y": 650,
+      "endpoint": "frostfell-sorcerer:frostfell",
+      "ability": true
+    },
+    {
+      "name": "aqueduct return to White Court",
+      "stage": 8,
+      "x": 300,
+      "y": 0,
+      "endpoint": "frostfell-sorcerer:frost-sorcerer",
+      "ability": true
+    },
+    {
+      "name": "walk back to White Court refuge",
+      "stage": 8,
+      "x": 4806.136948806147,
+      "y": 0,
+      "endpoint": "frostfell-sorcerer:frost-sorcerer",
+      "ability": true
+    }
+  ],
+  "damage": [],
+  "errors": []
+}

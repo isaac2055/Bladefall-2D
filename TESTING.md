@@ -66,71 +66,206 @@ The stage bootstrap and isolated Counter encounter are in `scripts/frostfell-rou
 
 The Frostfell route validator also covers the new 20-landing finale. It uses TAS save/restore to find a damage-free route, stores the winning inputs in the receipt, replays them, checks the three intermediate checkpoint recoveries, and takes the summit passage back to the refuge. The validator additionally checks the engine activation and persistent Frostfell reinforcements, exact two-Blood hulk contact, and the three-stop service cycle. A normal-play browser page exercises both mine crossings while Left stays held, then verifies the music shift and playback.
 
-## General traversal bot
+## General traversal bot (run 2)
 
-`npm run bot -- --stage 0` (or `--stages 0,1,2`, `--goal 2600`, `--budget 20000`,
-`--segments 40`, `--out path.json`) runs `scripts/bladefall-bot.mjs` in a headless
-browser and writes a receipt. Unlike `scripts/frostfell-route.mjs` it reads no
-bespoke authoring flag: it derives its own route from whatever geometry the level
-has loaded. `node scripts/bot-geometry.mjs <stage> <xFrom> <xTo>` prints what the
-bot sees for a stretch of a level; read a failure with it before changing the bot.
+The runner is local and needs no model during an attempt:
 
-How it works, in the order the owner specified:
+```sh
+npm run bot -- --stage 0 --out docs/bot/route.json
+npm run bot -- --stages 0,1,2 --budget 20000 --out docs/bot/routes.json
+npm run bot -- --stage 4 --goal 4700 --out docs/bot/linked.json
+npm run bot -- --replay docs/bot/linked.stage-4.inputs.json --out docs/bot/replayed.json
+node scripts/bot-geometry.mjs 4 3000 4600
+node --test tests/bot.test.mjs
+```
 
-1. **Geometry.** Every standable surface is a `type:'plat'` (`Gr()` is a `Pl()`).
-   Ledges are keyed by their span, not by object, because `restoreState()` hands
-   back a fresh clone of the world; and a platform is split into separate ledges
-   at any wall or closed door standing on it.
-2. **Ledge graph.** Edges are envelope-reachable hops (run/jump/dash/double-jump
-   bounds read from the runtime) that no wall or closed door bars. Distances are
-   computed from the goal side, so a candidate is simply a neighbour closer to the
-   goal than the current ledge; a hop that fails removes its edge.
-3. **Hop search.** Depth-first over short macro-actions (runs, jumps with three
-   holds, edge-aware jumps, launch-point "approach" jumps before an elevated
-   target, crystal launches, dashes, waits, retreats) with `saveState`/`restoreState`
-   branching and pruning for Blood loss, pits, overshoots and stalled progress.
-   Each candidate gets a cheap pass, the closest two a deep pass, then one costed
-   pass that accepts spending Blood.
-4. **Mechanisms.** When the graph says the goal is unreachable and a closed door is
-   ahead, the bot works the level's activators: quest residents and catches (Up),
-   plain levers (a weapon swing), plates (stand). Each is a multi-segment detour in
-   its own direction, and activators are re-resolved by a stable id after every
-   restore.
-5. **Report.** The winning inputs, or the exact failed segment with the ledge it
-   started from, the candidates tried, and a histogram of why each attempt ended.
-   The inputs are replayed from the origin and compared, so `replayIdentical` is
-   real determinism evidence.
+`--muster` loads the recall setup and earned return capabilities. `--segments`
+and `--budget` limit search. `--goal` sets a horizontal target, which may be
+reached in the air; it does not mean the level is complete. Defaults require the
+far zone seam, or stop at the boss threshold if a living boss lies ahead. Boss
+combat and asynchronous zone streaming are not part of this runner. The final
+boundary input attempt is included in the reported input-frame count.
 
-Completion is the level's far zone seam when there is one, and the boss arena's
-threshold when a boss lies ahead, since a boss fight is not traversal.
+Every receipt has a sibling `*.stage-N.inputs.json` containing the actual button
+states and a SHA-256 hash of the final full simulation snapshot. `--replay` checks
+that artifact without searching. A replay-mode pass means the stored route was
+reproduced, including a partial route; it does not upgrade that route to level
+completion. Use the same game source for matching hashes. Chrome is used by
+default; `PUPPETEER_EXECUTABLE_PATH` overrides its location.
 
-**Measured reach** (from `docs/bot/receipt.json`; budgets of 20,000 expansions):
+`scripts/bladefall-bot.mjs` derives ledges and connections from loaded geometry.
+It tries a direct movement policy, then branches over input macros using TAS
+save/restore. The movement envelope accounts for nearby refill crystals, acquired
+flight gear and linked anchors. Macros include steered jumps/dashes, jump releases
+around refills, and fuel-consuming flight. The mechanism driver visits quest
+actors/catches, strikes levers, stands on plates and approaches available pickups.
+For independent floor pairs it visits both slates and a geometry-selected high
+perch, then falls into the intake to launch over the obstruction. These are real
+inputs, not capability grants, coordinate changes or direct mechanism activation.
 
-| Stage | Result | What the run shows |
-| --- | --- | --- |
-| The Outskirts | complete | seam crossed; ~45 segments; patrols timed, no Blood spent |
-| Black Woods | complete | seam crossed; the high route over the root wall via approach jumps |
-| Broken Causeway | complete to the Brute | Oren, both elevated catches, door opened, threshold reached |
-| The Updrafts | opening only | the first door needs the Aerie Pack: a winch strike, then a pickup |
-| Hollow Marksman | opening only | the wall needs a crystal-refill jump the search does not yet land; the road beyond needs the linked portal |
-| Ruined Keep | opening only | the level is built on the twin-portal pair |
-| The Warden | entry only | wall-jumps up the entry wall but the cells need a personal portal pair |
-| Frostfell | opening only | portal-routed fire; the bespoke validator covers this level |
+`bootstrapStage` alone selects the stage and its constitutional capability prefix.
+It restores an initial runtime snapshot before independent attempts, including
+registered subsystem counters that `beginRun` alone does not reset. The harness
+remains opt-in and campaign storage is untouched.
 
-So: traversal plus mechanisms is solved end to end on the three levels that are
-made of those verbs, and every later level is gated on a verb the bot does not
-have - portal placement first of all. That is the next tier, not a tuning
-problem, and the receipts say exactly where each level stops.
+A solve pass requires the target/seam to be reached alive **and full serialized
+simulation equality** when the committed inputs are replayed. Failed branches
+cannot remain in the winning input list. Receipts retain the exact failing
+segment, its starting ledge, attempted candidates, failure reasons and setup
+visits. `evidence` counts actual crystal activations, successful portal placements
+and frames that consumed flight fuel during replay. Player-state equality is
+reported separately and is insufficient for a pass.
 
-Lessons that cost real time, recorded so they are not paid twice:
+Run 2's focused routes cover Marksman's two crystal walls and anchored crossing,
+Keep's independent-pair screen, and the Updrafts winch/pack/gate/flight sequence.
+The Outskirts/Woods exits and Causeway boss threshold remain the whole-route
+checks. See `LLM-HANDOFF/12-RECALL-WORK-ORDER.md` and `docs/bot/receipt-run2.json`
+for the final sweep and remaining blocks. These fixtures are individual stage
+attempts, not a continuous campaign or proof that every later puzzle is solved.
 
-- **A held button is one press.** Keeping `jump` true across frames presses once;
-  every repeated hop must release between presses.
-- **`restoreState()` replaces every object.** Anything held across a restore (a
-  ledge, an activator, a door) must be addressed by geometry or a stable id.
-- **A wall can stand in the middle of a ledge.** "Is there a wall between these two
-  ledges" is the wrong question until the ledge has been split at its walls.
-- **A thin platform's underside is solid.** Jumping from directly beneath one
-  bonks; the launch point has to be short of its near edge.
-- **Fixed frame budgets hide geometry.** A 220-frame walk is about 733 units;
-   authored rooms are thousands wide.
+Important implementation traps:
+
+- Held Jump is one press. Release it before spending a crystal refill.
+- Keep Jump held through a dash when the route needs the full jump arc.
+- Restores replace objects; resolve obstacles by stable identity or geometry.
+- Split ledges at walls, but do not forbid jumping over a low wall outright.
+- A slate can overlap ordinary ground. Detour completion must check the actual
+  target position, not require a particular `floorPlat` object.
+- A target can be reached during a macro. Stop immediately when its predicate is
+  satisfied; don't discard an airborne target because it is not a landing.
+- Nested detours must restore the parent graph/direction. Failed branches must
+  trim inputs to the committed save before reporting or trying another route.
+- Full snapshot identity is deliberately exact; movement tuning assertions use
+  tolerances. A fuel value of zero after flight is valid and is not a free refill.
+
+## Expanded recall (run 1, 7.97.0)
+
+`node --test tests/muster-recall.test.mjs` covers the world-wide one-time baseline,
+first ordinary-enemy re-garrison, later-death persistence, protected bosses and
+circuits/shortcuts, four regional attack cycles, placement, and a real-input
+Double Jump/Dash passage past the Causeway opening marshal.
+
+`node scripts/capture-muster-recall.mjs` writes staged arrival and telegraph
+screenshots to `docs/recall/evidence/`. It sets positions and hides defeated bosses
+explicitly; screenshots are not natural route or boss-victory evidence.
+`docs/bot/receipt-recall-run1.json` retains the unmodified bot's full sweep: recalled
+Outskirts/Woods pass, Warden/Causeway fail. It compares final player snapshots and
+uses per-stage bootstraps. Full-state replay and broader bot verbs belong to run 2.
+
+## Return reserves and shortcuts (run 3, 7.98.0)
+
+- `node --test tests/recall-return.test.mjs`: sealed first visits, idempotent
+  installation, one-time advancement, campaign serialization/reload/rest/death,
+  and real-input Double Jump access to each reserve (single jump cannot land).
+- `node scripts/validate-recall-return.mjs`: all four physical shortcuts in both
+  directions, with actual movement inputs after initial fixture setup. Writes
+  `docs/recall-return/receipt.json` and local PNG evidence. Damage is suppressed
+  to isolate geometry; this does not certify combat, a boss or continuous travel.
+- Recalled `bootstrapStage` grants and synchronizes the earned kit, including
+  `maxJumps`. A capability-list entry alone does not refresh player fields.
+- Stored run-2 input hashes belong to 7.97.0. New obstacles in 7.98.0 change full
+  snapshots; regenerate an artifact with the current build before expecting an
+  exact cross-process hash match. Historical receipts remain historical evidence.
+
+## White Court implementation (work in progress)
+
+- `node --test tests/white-court.test.mjs`: 25 focused checks, including actual
+  portal transport, unassisted Rusty Sword victory, delayed finishing retry,
+  temporary ice, unsolved Glassworks basin recovery, local routes and persistence.
+- `node scripts/white-court-boss-probe.mjs`: saves an unassisted arena receipt;
+  `--approach=left` verifies a left entry with channel recovery and a side change;
+  `--weapon=axe` checks another ordinary weapon and `--miss-finish` deliberately
+  waits out the last exposure. `--invulnerable` is diagnostic only.
+- `node scripts/validate-white-court-connections.mjs`: normal keyboard/automatic
+  loop, six connector directions and the locked Emberdeep door. Endpoint setup
+  and boss victory are fixtures, not full traversal or fight proof.
+- `node scripts/validate-white-court-reload.mjs`: actual page reloads in campaign
+  mode, saved-open aqueduct travel, reward idempotency, Attunement and absent boss.
+  Boss advancement changes currency legitimately; compare revisits against the
+  post-victory balance.
+
+Receipts live in `docs/charters/09-frost-sorcerer/evidence/`. The generic stage8
+bot receipt failed segment2 at its30,000-expansion budget; it is not a completed
+level or proof of a softlock. Read `IMPLEMENTATION-STATUS.md` in that charter for
+remaining acceptance work and fixture boundaries.
+
+White Court probe input gotchas: ward impact causes hitstop, which consumes a
+single-frame portal press without acting on it. Wait for hitstop to clear before
+cycling the pair. After teleporting, wait for actual grounding before placing a
+new mouth and verify the mouth count. A lure point inside the mouth teleports the
+player and redirects later shots toward the wrong end. Probe receipts include
+actual return coordinates, setup positions, damage and page errors. Victory heals
+Blood, so inspect the damage trace rather than inferring a flawless fight from
+final Blood alone.
+
+The probe and fight tests share `scripts/white-court-fight-policy.mjs`. The current
+winning right route rebuilds the entry on the dry eastern slate after its first
+ward. Do not compare an ice patch against ordinary ground braking. White Court
+blink completion must reset its timer to zero: a negative remainder previously
+froze pursuit, invalidating the old left-entry and earlier timing receipts.
+
+Current near-miss check uses real returned orbs at±50 and±65 horizontal offsets:
+the former capture and the latter miss. Channel recovery checks ordinary walking
+up both sloped banks before the first ward freezes the crossing. The left-entry
+fight now has a passing permanent check against active pursuit; its four wounds
+leave little margin, so this is completion evidence, not human balance approval.
+
+`node scripts/white-court-high-route-probe.mjs` searches and records the high-cache
+route; add `--gallery` for the recollection approach. Each searches jump timings
+with save/restore, then replays the whole winning sequence from one start before
+writing a receipt. This is local compute, with no model decisions per attempt.
+The two focused tests consume these input receipts and verify actual landings;
+the gallery test continues to the checkpoint. Damage suppression isolates geometry.
+Normal stage8 capabilities are used; optional Echoes are not granted.
+
+Add `--overlook` to the route probe to record the checkpoint-to-railing approach
+and desktop/narrow captures. The permanent overlook test uses no invulnerability,
+checks both1440×900 and640×360, verifies framing and quietness, then movement
+cancellation and timeout. After a TAS bootstrap, set canvas size and call
+`recalcVP()` before testing a particular viewport: snapshot restoration includes
+the initial viewport values. The narrow preview uses reduced motion and muted audio.
+
+`node scripts/validate-white-court-aqueduct-route.mjs` runs a normal-keyboard round
+trip from the White Court refuge through the aqueduct and Frostfell service loop
+and back. It takes real time (roughly a minute), does not reposition endpoints,
+and logs actual wounds as well as final health. Its only setup is the normal
+stage8 capability-prefix fixture. It does not certify recalled-enemy pressure or
+an entire campaign. Receipt: `evidence/aqueduct-route.json` in the White Court charter.
+
+### White Court routes with damage enabled
+
+Run `node scripts/validate-white-court-route-pressure.mjs` to replay the saved high
+cache and gallery inputs with damage enabled. It records actual Blood wounds,
+landing checks, rewards and the gallery checkpoint, plus four room captures in
+`docs/charters/09-frost-sorcerer/evidence/`. It exits nonzero if the routes fail or
+page errors occur. The initial stage8 capability-prefix fixture is explicit:
+high starts at4800; gallery starts at10820. No subsequent repositioning or restore
+is used. This does not certify a full campaign-state traversal.
+
+`node scripts/validate-white-court-continuous-approach.mjs` chains the authored
+arrival, high cache, Glassworks emitter/portal/bridge, gallery recollection and
+checkpoint12400 with damage enabled. It saves every input and wound in
+`evidence/continuous-approach.json`; nonzero exit means failure or page errors.
+There are no intermediate position fixtures or restores. The initial stage8
+capability prefix is a fixture, and the run stops before the arena.
+
+Add `--boss` to the continuous approach validator to walk into the arena and
+continue with the same player state. `runWhiteCourtFight(..., liveStart=true)`
+skips its initial position fixture and forbids weapon/invulnerability overrides.
+The receipt includes all fight inputs and `maxWard` (death resets current wards).
+The current continuous attempt passes all three wards, the Rusty Sword finish
+and the final walk to the usable Emberdeep door in5361frames. TAS intentionally
+stops before asynchronous crossings; normal connector validators cover the seam.
+
+`node scripts/capture-white-court-phases.mjs` replays the successful continuous
+receipt with muted audio/reduced motion and saves nine actual attack-state PNGs.
+Keep the original simulation viewport: changing its width changes encounter
+activation and can invalidate input replay. Export only VW/VH, not the larger
+backing canvas. The entrance visibility fix was verified in a refreshed first-cast capture.
+This script's success means replay/capture succeeded, not universal legibility.
+
+Phase capture now saves eleven views, including refuge and Glassworks. Frost and
+refuge close views temporarily center the camera for rendering only; restore it
+before advancing simulation. The active frost cap draws after the portal skin.
+Latest full regression:541/541; the subsequent visual-only cap change passes the
+continuous replay/capture and baseline/parity rerun.

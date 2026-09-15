@@ -1,0 +1,240 @@
+{
+  "schema": "bladefall.traversal-bot",
+  "mode": "solve",
+  "generatedAt": "2026-09-14T22:12:11.231Z",
+  "pass": true,
+  "runtimeErrors": [],
+  "runs": [
+    {
+      "stage": 2,
+      "muster": true,
+      "inputFile": "causeway-recall.stage-2.inputs.json",
+      "boot": {
+        "levelLength": 14000,
+        "capabilities": [
+          "jump",
+          "weapon",
+          "dash",
+          "portal-single",
+          "portal-pair",
+          "wall-jump",
+          "counter",
+          "double-jump"
+        ],
+        "spawn": {
+          "x": 70,
+          "y": 0
+        }
+      },
+      "seconds": 25,
+      "pass": true,
+      "routeReached": true,
+      "playerReplayIdentical": true,
+      "replayScope": "full-simulation",
+      "stateHash": "ee39b38e6e277846ab6e3b123f0c35394b90ea1e6ece7038f3f4936b3a0d4877",
+      "evidence": {
+        "crystalRefills": 0,
+        "portalPlacements": 0,
+        "flightFrames": 0
+      },
+      "direction": 1,
+      "goalX": 13130,
+      "goalKind": "boss-threshold",
+      "crossedBoundary": false,
+      "reachedX": 13134,
+      "segments": 5,
+      "backtracks": 0,
+      "frames": 2371,
+      "replayFrames": 2371,
+      "expansions": 1194,
+      "replayIdentical": true,
+      "capabilities": {
+        "doubleJump": true,
+        "dash": true,
+        "weapon": true
+      },
+      "envelope": {
+        "maxRise": 233,
+        "maxReach": 659
+      },
+      "costedSegments": 0,
+      "blood": 5,
+      "equipment": {
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "mechanisms": [],
+      "history": [
+        {
+          "seg": 0,
+          "from": 2600,
+          "to": "2600:0",
+          "blood": false,
+          "exp": 40,
+          "ok": true
+        },
+        {
+          "seg": 1,
+          "from": 5600,
+          "to": "5600:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 1818
+        },
+        {
+          "seg": 1,
+          "from": 5600,
+          "to": "5810:70",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 2037
+        },
+        {
+          "seg": 1,
+          "from": 5600,
+          "to": "6035:135",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 2301
+        },
+        {
+          "seg": 1,
+          "from": 5600,
+          "to": "5600:0",
+          "blood": false,
+          "exp": 346,
+          "ok": true
+        },
+        {
+          "seg": 2,
+          "from": 8200,
+          "to": "8200:0",
+          "blood": false,
+          "exp": 13,
+          "ok": true
+        },
+        {
+          "seg": 3,
+          "from": 10500,
+          "to": "10500:0",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 4,
+          "from": 14000,
+          "to": "point:13130",
+          "blood": false,
+          "exp": 164,
+          "ok": true
+        }
+      ],
+      "solved": [
+        {
+          "seg": 0,
+          "from": {
+            "x0": 0,
+            "x1": 2600,
+            "y": 0
+          },
+          "to": {
+            "x0": 2600,
+            "x1": 5600,
+            "y": 0
+          },
+          "frames": 516,
+          "expansions": 40,
+          "depth": 6,
+          "costBlood": false,
+          "dFrom": 4,
+          "dTo": 3,
+          "via": "runToZone",
+          "x": 2773,
+          "y": 0
+        },
+        {
+          "seg": 1,
+          "from": {
+            "x0": 2600,
+            "x1": 5600,
+            "y": 0
+          },
+          "to": {
+            "x0": 5600,
+            "x1": 8200,
+            "y": 0
+          },
+          "frames": 791,
+          "expansions": 346,
+          "depth": 22,
+          "costBlood": false,
+          "dFrom": 3,
+          "dTo": 2,
+          "via": "doubleDash",
+          "x": 8062,
+          "y": 0
+        },
+        {
+          "seg": 2,
+          "from": {
+            "x0": 5600,
+            "x1": 8200,
+            "y": 0
+          },
+          "to": {
+            "x0": 8200,
+            "x1": 10500,
+            "y": 0
+          },
+          "frames": 352,
+          "expansions": 13,
+          "depth": 8,
+          "costBlood": false,
+          "dFrom": 2,
+          "dTo": 1,
+          "via": "doubleDash",
+          "x": 10194,
+          "y": 0
+        },
+        {
+          "seg": 3,
+          "from": {
+            "x0": 8200,
+            "x1": 10500,
+            "y": 0
+          },
+          "to": {
+            "x0": 10500,
+            "x1": 14000,
+            "y": 0
+          },
+          "frames": 160,
+          "expansions": 1,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": 1,
+          "dTo": 0,
+          "via": "runToZone",
+          "x": 10835,
+          "y": 0
+        },
+        {
+          "seg": 4,
+          "point": true,
+          "to": {
+            "x": 13130,
+            "y": 0
+          },
+          "frames": 552,
+          "expansions": 164,
+          "costBlood": false
+        }
+      ],
+      "inputFrames": 2371
+    }
+  ]
+}

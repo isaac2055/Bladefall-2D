@@ -99,7 +99,7 @@ test('counterweight firing decks are reachable with opening jump and overlap the
 test('Brute defeat grants Dash, records completion, and creates no exit portal', () => {
   assert.match(source, /grantPermanentCapability\('dash','brute-counterweight'\)/);
   assert.match(source, /commitStageCompletion\(\);recordWorldClear\(\);recordStoryStageClear\(\);recordHelpedTravelers\(\)/);
-  assert.match(source, /else if\(e\.type==='brute'\|\|\(e\.type==='archer'&&G\.stageIndex===4\)\|\|\(e\.type==='warden'&&G\.stageIndex===6\)\)G\.portal=null/);
+  assert.match(source, /else if\(e\.whiteCourtFight\|\|e\.type==='brute'\|\|\(e\.type==='archer'&&G\.stageIndex===4\)\|\|\(e\.type==='warden'&&G\.stageIndex===6\)\)G\.portal=null/);
   assert.match(source, /G\.stageIndex===2&&G\.p\.x<G\.levelLength\/2.*targetStage:1/s);
   assert.match(source,/function showBruteDefeatBriefing\(\)/);
   assert.match(source,/This message waits until you dismiss it/);

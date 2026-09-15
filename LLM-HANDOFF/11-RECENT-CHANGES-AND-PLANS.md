@@ -1,9 +1,125 @@
 # Changes since the previous handoff — refreshed 2026-09-13
 
+## Run 3 — return payoff and White Court plan (2026-09-14)
+
+Source **7.98.0**, cache **bladefall-v178**. Four visible reserves now pay off the
+Frostfell return. They remain sealed before the Muster recall, with no explanation
+that spoils the surprise. Each sits on a 130-unit perch reachable with earned
+Double Jump; opening it with Up grants one existing advancement item and releases
+a permanent physical route. Fast travel and all existing routes remain available.
+
+| Region | Reserve perch | Reward | Released route |
+| --- | --- | --- | --- |
+| Warden | Red Court `(4820,130)` | 1 vitality fragment | Two floor maintenance bridges beneath Turning Cells, spanning `[5640,6080]` and `[6360,6760]`. Pillars, rotors and boss arena unchanged. |
+| Outskirts | Hollow Mile `(7180,130)` | 1 Forge Seal | Bridges across the two road gaps, `[7530,7810]` and `[8230,8700]`; patrols remain. |
+| Black Woods | Briar Run `(7400,130)` | 1 vitality fragment | Honest canopy stairs at x=7620/7840/8060/8280, heights 260/390/520/620, then a span to the root crown at x=9600. |
+| Causeway | Chainwake Camp `(1020,130)` | 1 Forge Seal | Upper Chainwalk service span at y=265, with eastward steps at `(7690,200)` and `(7970,130)` above the floor teeth. Oren's door and Brute unchanged. |
+
+Total: **two vitality fragments and two Forge Seals**, not two health upgrades
+(four fragments form a knot). Enna, Olan, Orra and Oren point to the reserves only
+on the recalled return. No new currency, ability, boss rule or progression gate.
+
+Implementation: `RECALL_RETURN_ROUTES`, `installRecallReturnRoute`,
+`syncRecallReturnRoute`, `interactRecallReserve` in `public/index.html`.
+Objects append with stable IDs before the zone manifest is built, preserving old
+object indices. Cache shortcut IDs use the existing permanent zone shortcut state;
+road visibility/collision is derived after hydration. Advancement claims use
+existing source-idempotent grants. Closed roads are not drawn as fallen slabs.
+The bot's recalled bootstrap now synchronizes movement/portal capabilities after
+granting the earned kit; previously its player still had maxJumps=1 despite owning
+Double Jump in the fixture's capability list.
+
+`tests/recall-return.test.mjs` covers sealed first visits, duplicate installation,
+one-time rewards, serialized campaign state, reload/rest/death, and actual-input
+reserve access with Double Jump versus single jump. `scripts/validate-recall-return.mjs`
+proves all four released routes in both directions, touching every new road;
+`docs/recall-return/receipt.json` records the targets and outcomes. Initial states
+are positioned fixtures with damage suppressed, not campaign/combat completion.
+Rendered cache/route fixtures are in `docs/recall-return/evidence/` (local ignored
+PNG files). Final suite/release evidence is in `10-HANDOFF-VERIFICATION.md`.
+
+White Court remains **design only**: see
+[`DESIGN-PLAN.md`](../docs/charters/09-frost-sorcerer/DESIGN-PLAN.md).
+It preserves the Causeway entry, far-side aqueduct unlock, Attunement and Emberdeep
+exit; proposes inhabited approach rooms and three changing cold/receiver phases,
+active player-requested casts and usable independent portal placement. Prototype
+and human pacing review are the next steps after a new implementation instruction.
+Do not mistake proposed ward counts, room dimensions or timing for shipped code.
+
+No deployment, commit, push or project relocation in this run. Prior bot artifacts
+are 7.97.0 evidence; their exact hashes are not expected to match 7.98.0 geometry.
+
+
+## 2026-09-14 — run 2: trustworthy bot routes and new traversal verbs
+
+Run 1 remains logged below. Run 2 fixes stale backtracked inputs, unrecorded
+settlement, nested detour graph restoration, target termination and full-state
+replay acceptance. Independent bootstraps now restore a pristine runtime so
+lifetime counters cannot make later attempts differ. The runner exports button
+sequences plus full-state hashes and supports local `--replay` without search.
+
+Crystal-refill jumps, steered dashes, pickups, flight and real portal placement
+are implemented. The independent floor-pair planner selects two slates and a
+high drop perch, visits them through normal inputs, and uses momentum to clear
+the Keep screen. Seven bot tests and the full **510/510** suite pass. The recalled
+Causeway failure is resolved. The eight-stage full sweep still has five failures;
+scoped new-verb successes do not imply campaign completion. Exact retained
+segments, evidence and next bot limitations are in `12-RECALL-WORK-ORDER.md`.
+
+Run 3 (return payoff, caches/shortcuts, White Court planning) remains separate.
+No gameplay rewrite, deployment, commit/push or workspace relocation in run 2.
+
+
 This reconciles the August handoff with current source, retained test evidence
 and the owner's subsequent decisions. Implementation and future proposals are
 separated deliberately. Stable source symbols are preferable to obsolete line
 numbers in the large `public/index.html`.
+
+## Run 1 of 3 — implemented 2026-09-13
+
+Source is now **7.97.0 / bladefall-v177**. Run 1 expands the recall's actual
+encounters: **14 Warden, 12 Outskirts, 13 Black Woods, 15 Causeway** reinforcement
+actors (plus standards), replacing the former handful of posts. The distinct
+regional roles are gaoler (telegraphed pulling lash), outrider (committed charge),
+canopywing (locked-target dive), and chainmarshal (large shielded advance with
+linesman support). Gaolers and marshals deliver two-Blood hits; ordinary wounds
+remain one Blood. Regional AI leaves warnings and recovery openings.
+
+Every ordinary enemy across all sixteen regions receives **one ×1.55 max-health
+and ×1.25 raw-damage boost**, with notice range at least 480. Raw damage does not
+change the ordinary one-Blood rule. These are the proposed implementation defaults,
+not a separately confirmed balance preference. Boss stats remain unchanged.
+The first recalled load of each region clears only dead ordinary rest-reset enemy
+deltas once (`recall-garrisoned-v1`); bosses, unique encounters, other objects,
+NPC progress, solved circuits and shortcuts remain intact. Later deaths use the
+existing persistence/rest rules. Frostfell retains its eleven authored actors,
+health boost and cinematic; its initial strike marks its local garrison transaction.
+
+Standards and encounters now appear early on the return route. Warden's gaoler
+is at x=850, 520 units beyond the mine arrival; Outskirts' first outrider is at
+x=1460 after the safe chimney descent; Woods' first canopywing is at (660,200);
+Causeway's first marshal is at x=340. Most new roles repeat deeper in the region.
+Recall AI pauses attacks near residents, shops, rest sites and checkpoints.
+
+**Evidence:** final full suite 506/506 (`npm test -- --test-concurrency=2`); release check 93 assets, parity OK; Frostfell
+validator 15/15. Nine focused recall tests cover all sixteen regional stat loads,
+no stacking, protected placement, live attack cycles, gaoler damage/pull, formation
+support, first garrison and preservation of bosses/circuits/shortcuts/later deaths.
+`docs/bot/receipt-recall-run1.json` records Outskirts and Woods traversal passes
+with identical final player snapshots. Warden and Causeway failed; this is not
+proof of a complete return or of full simulation replay identity. The bot uses
+its existing per-stage starting fixtures, not a continuous saved campaign.
+`node scripts/capture-muster-recall.mjs` reproduces isolated arrival/telegraph
+screenshots in `docs/recall/evidence/`; they explicitly hide defeated bosses and
+set player positions, so are presentation evidence only.
+
+**Next:** run 2 addresses bot replay reliability and missing traversal/interaction
+verbs, including these stopping points. Run 3 adds return rewards/shortcuts and
+plans the White Court continuation. Those runs have not been implemented here.
+The working copy is still on Desktop; Git commands remained responsive, but
+moving outside iCloud remains advisable. The release mirror was rebuilt locally;
+no Netlify deployment, commit or push was performed during run 1. GitHub main
+therefore still represents the previous release, not these uncommitted changes.
 
 ## 2026-09-13 — pushed, merged, and the iCloud eviction
 

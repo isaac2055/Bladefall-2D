@@ -37,16 +37,20 @@ useful, but is not an unfulfilled order to redesign Frostfell.
 
 The next choices require a new implementation instruction:
 
-- **The world-wide recall is the current work item.** What exists (three to five
-  posts per region, no change to existing enemies) was reviewed by the owner on
-  2026-09-13 as not noticeable. The specification, exact current state and
-  approved plan — a one-time world-wide buff of the general enemies, a
-  re-garrisoned world, one unique enemy per region, evident on arrival — are in
-  `12-RECALL-WORK-ORDER.md`. The return's rewards, caches and shortcuts follow.
-- Design Frost Sorcerer / White Court with active spell/siphon/cold-state play
-  and Attunement, respecting the high-shaft return itinerary.
-- Extend the traversal bot with portal placement; that single verb is what
-  every level from the Updrafts on stops at. See `TESTING.md`.
+- **Run 1 is implemented.** See `12-RECALL-WORK-ORDER.md` for the expanded
+  rosters, global stat/re-garrison policy and exact checks. Human difficulty review
+  remains distinct from the green tests and isolated screenshots.
+- **Run 2 is implemented.** Full-state replay, clean repeated bootstraps,
+  stored-input replay, and crystal/portal/pickup/flight verbs have focused proof.
+  The recalled Causeway failure is resolved. Whole later levels still have the
+  exact planner/mechanism blocks recorded in `12-RECALL-WORK-ORDER.md`; don't
+  reinterpret scoped success as a campaign clear or a boss victory.
+- **Run 3 is implemented.** Four reserves and physical shortcuts reward the return.
+  White Court is implemented in local review build7.99.0; its continuous route
+  wins the boss and reaches the usable exit. See the implementation receipt and
+  acceptance audit under `docs/charters/09-frost-sorcerer/`. Owner playtesting is
+  still required before final acceptance;
+  its gameplay implementation and human pacing review remain next.
 
 Known deferred issues: five unread secondary Echo hooks; the far half of the
 White Court aqueduct. Bram, Gilded Instinct and the inert Gifts are resolved.

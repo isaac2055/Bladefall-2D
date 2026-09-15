@@ -113,6 +113,8 @@ for f in "${ASSETS[@]}"; do
   mkdir -p "$(dirname "$OUT/$f")"
   cp "$SRC/$f" "$OUT/$f"
 done
+# Upload-ready headers ship from public, so both deployment folders behave alike.
+cp "$SRC/_headers" "$OUT/_headers"
 # Config + instructions live in the repo and are copied in verbatim.
 cp "$ROOT/deploy-assets/netlify.toml" "$OUT/netlify.toml"
 cp "$ROOT/deploy-assets/README.md"    "$OUT/README.md"

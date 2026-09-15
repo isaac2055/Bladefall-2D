@@ -64,6 +64,13 @@ for (const asset of assets) {
     failures.push(`missing deploy asset: ${asset}`);
   }
 }
+try {
+  const headers = await readFile(resolve(source, '_headers'), 'utf8');
+  const built = await readFile(resolve(mirror, '_headers'), 'utf8');
+  if (headers !== built) failures.push('deploy mirror differs: _headers');
+  if (!/\/sw\.js\s+Cache-Control: no-cache/.test(headers)) failures.push('missing service-worker revalidation header');
+  if (!headers.includes('Content-Type: application/manifest+json')) failures.push('missing manifest MIME header');
+} catch { failures.push('missing public or deploy _headers'); }
 if ((sizes['index.html'] || 0) > 1_600_000) failures.push('index.html exceeds the release size budget');
 for (const [asset, size] of Object.entries(sizes)) {
   if (asset.startsWith('bladefall-') && size > 320_000) failures.push(`${asset} exceeds the module size budget`);

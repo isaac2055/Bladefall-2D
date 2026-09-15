@@ -1,0 +1,293 @@
+{
+  "results": [
+    {
+      "name": "high",
+      "start": {
+        "frame": 2,
+        "x": 4800,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "onGround": true,
+        "state": "grounded",
+        "onWall": false,
+        "slamming": false,
+        "dead": false,
+        "hp": 100,
+        "blood": 5,
+        "coyote": 0.1,
+        "wallCoyote": 0,
+        "dodgeCdT": 0,
+        "dodgeTimer": 0,
+        "jumpBuf": 0,
+        "atkBuf": 0,
+        "dashBuf": 0,
+        "slamCd": 0
+      },
+      "end": {
+        "frame": 992,
+        "x": 7321.457283924337,
+        "y": 420,
+        "vx": 176.6621756150199,
+        "vy": 0,
+        "onGround": true,
+        "state": "grounded",
+        "onWall": false,
+        "slamming": false,
+        "dead": false,
+        "hp": 100,
+        "blood": 5,
+        "coyote": 0.1,
+        "wallCoyote": 0,
+        "dodgeCdT": 0,
+        "dodgeTimer": 0,
+        "jumpBuf": 0,
+        "atkBuf": 0,
+        "dashBuf": 0,
+        "slamCd": 0
+      },
+      "checkpoint": 5660,
+      "landings": [
+        {
+          "target": [
+            5750,
+            0
+          ],
+          "x": 5728.888888888828,
+          "y": 0,
+          "onGround": true,
+          "dead": false
+        },
+        {
+          "target": [
+            5830,
+            70
+          ],
+          "x": 5823.785355069338,
+          "y": 70,
+          "onGround": true,
+          "dead": false
+        },
+        {
+          "target": [
+            6010,
+            70
+          ],
+          "x": 5988.35666428374,
+          "y": 70,
+          "onGround": true,
+          "dead": false
+        },
+        {
+          "target": [
+            6150,
+            130
+          ],
+          "x": 6164.237893689244,
+          "y": 130,
+          "onGround": true,
+          "dead": false
+        },
+        {
+          "target": [
+            6350,
+            130
+          ],
+          "x": 6328.245725302526,
+          "y": 130,
+          "onGround": true,
+          "dead": false
+        },
+        {
+          "target": [
+            6500,
+            210
+          ],
+          "x": 6514.03179461454,
+          "y": 210,
+          "onGround": true,
+          "dead": false
+        },
+        {
+          "target": [
+            6730,
+            210
+          ],
+          "x": 6708.110248019273,
+          "y": 210,
+          "onGround": true,
+          "dead": false
+        },
+        {
+          "target": [
+            6890,
+            300
+          ],
+          "x": 6893.286449834973,
+          "y": 300,
+          "onGround": true,
+          "dead": false
+        },
+        {
+          "target": [
+            7090,
+            300
+          ],
+          "x": 7069.564788806598,
+          "y": 300,
+          "onGround": true,
+          "dead": false
+        },
+        {
+          "target": [
+            7240,
+            420
+          ],
+          "x": 7245.685082266513,
+          "y": 420,
+          "onGround": true,
+          "dead": false
+        },
+        {
+          "target": [
+            7340,
+            420
+          ],
+          "x": 7318.512914330754,
+          "y": 420,
+          "onGround": true,
+          "dead": false
+        }
+      ],
+      "wounds": [],
+      "reward": true,
+      "scope": "Damage enabled; fixed stage8 capability-prefix fixture. Gallery begins at10820. Existing geometry-route inputs replayed without branching or repositioning. Not a full campaign-state traversal.",
+      "routePassed": true
+    },
+    {
+      "name": "gallery",
+      "start": {
+        "frame": 2,
+        "x": 10820,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "onGround": true,
+        "state": "grounded",
+        "onWall": false,
+        "slamming": false,
+        "dead": false,
+        "hp": 100,
+        "blood": 5,
+        "coyote": 0.1,
+        "wallCoyote": 0,
+        "dodgeCdT": 0,
+        "dodgeTimer": 0,
+        "jumpBuf": 0,
+        "atkBuf": 0,
+        "dashBuf": 0,
+        "slamCd": 0
+      },
+      "end": {
+        "frame": 550,
+        "x": 12400.287147856472,
+        "y": 0,
+        "vx": 199.99999999999997,
+        "vy": 0,
+        "onGround": true,
+        "state": "grounded",
+        "onWall": false,
+        "slamming": false,
+        "dead": false,
+        "hp": 100,
+        "blood": 5,
+        "coyote": 0.1,
+        "wallCoyote": 0,
+        "dodgeCdT": 0,
+        "dodgeTimer": 0,
+        "jumpBuf": 0,
+        "atkBuf": 0,
+        "dashBuf": 0,
+        "slamCd": 0
+      },
+      "checkpoint": 12400,
+      "landings": [
+        {
+          "target": [
+            10900,
+            0
+          ],
+          "x": 10878.895094954047,
+          "y": 0,
+          "onGround": true,
+          "dead": false
+        },
+        {
+          "target": [
+            10950,
+            70
+          ],
+          "x": 10949.893191681313,
+          "y": 70,
+          "onGround": true,
+          "dead": false
+        },
+        {
+          "target": [
+            11160,
+            70
+          ],
+          "x": 11140.264520151126,
+          "y": 70,
+          "onGround": true,
+          "dead": false
+        },
+        {
+          "target": [
+            11270,
+            150
+          ],
+          "x": 11267.332839621682,
+          "y": 150,
+          "onGround": true,
+          "dead": false
+        },
+        {
+          "target": [
+            11460,
+            150
+          ],
+          "x": 11438.073630373636,
+          "y": 150,
+          "onGround": true,
+          "dead": false
+        },
+        {
+          "target": [
+            11590,
+            270
+          ],
+          "x": 11605.383521131796,
+          "y": 270,
+          "onGround": true,
+          "dead": false
+        },
+        {
+          "target": [
+            11710,
+            270
+          ],
+          "x": 11688.25070242419,
+          "y": 270,
+          "onGround": true,
+          "dead": false
+        }
+      ],
+      "wounds": [],
+      "reward": true,
+      "scope": "Damage enabled; fixed stage8 capability-prefix fixture. Gallery begins at10820. Existing geometry-route inputs replayed without branching or repositioning. Not a full campaign-state traversal.",
+      "routePassed": true
+    }
+  ],
+  "errors": []
+}

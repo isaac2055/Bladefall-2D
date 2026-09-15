@@ -1,0 +1,1087 @@
+{
+  "schema": "bladefall.traversal-bot",
+  "mode": "solve",
+  "generatedAt": "2026-09-15T18:02:41.952Z",
+  "pass": false,
+  "runtimeErrors": [],
+  "runs": [
+    {
+      "stage": 8,
+      "muster": false,
+      "inputFile": "generic-bot.stage-8.inputs.json",
+      "boot": {
+        "levelLength": 16000,
+        "capabilities": [
+          "jump",
+          "weapon",
+          "dash",
+          "portal-single",
+          "portal-pair",
+          "wall-jump",
+          "counter",
+          "double-jump"
+        ],
+        "spawn": {
+          "x": 4800,
+          "y": 0
+        }
+      },
+      "seconds": 286.9,
+      "pass": false,
+      "routeReached": false,
+      "playerReplayIdentical": true,
+      "replayScope": "full-simulation",
+      "stateHash": "a709a61ad3f26e72b63deec4451086d7c4b4cf96bd35844ed0b68374e9451c35",
+      "evidence": {
+        "crystalRefills": 0,
+        "portalPlacements": 0,
+        "flightFrames": 0
+      },
+      "direction": 1,
+      "goalX": 13780,
+      "goalKind": "boss-threshold",
+      "crossedBoundary": false,
+      "reachedX": 8162,
+      "segments": 2,
+      "backtracks": 13,
+      "frames": 551,
+      "replayFrames": 551,
+      "expansions": 30000,
+      "replayIdentical": true,
+      "capabilities": {
+        "doubleJump": true,
+        "dash": true,
+        "weapon": true
+      },
+      "envelope": {
+        "maxRise": 233,
+        "maxReach": 659
+      },
+      "costedSegments": 0,
+      "blood": 5,
+      "equipment": {
+        "hasJetpack": false,
+        "fuel": 0
+      },
+      "mechanisms": [],
+      "history": [
+        {
+          "seg": 0,
+          "from": 5600,
+          "to": "5600:0",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 1,
+          "from": 6050,
+          "to": "5955:65",
+          "blood": false,
+          "exp": 4,
+          "ok": true
+        },
+        {
+          "seg": 2,
+          "from": 7510,
+          "to": "7260:0",
+          "blood": false,
+          "exp": 5,
+          "ok": true
+        },
+        {
+          "seg": 3,
+          "from": 9780,
+          "to": "9760:0",
+          "blood": false,
+          "exp": 17,
+          "ok": true
+        },
+        {
+          "seg": 4,
+          "from": 9930,
+          "to": "8200:0",
+          "blood": false,
+          "exp": 5,
+          "ok": true
+        },
+        {
+          "seg": 5,
+          "from": 10399,
+          "to": "10240:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 5,
+          "from": 10399,
+          "to": "9760:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 86
+        },
+        {
+          "seg": 5,
+          "from": 10399,
+          "to": "10240:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 5,
+          "from": 10399,
+          "to": "9760:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 86
+        },
+        {
+          "seg": 5,
+          "from": 10399,
+          "to": "10240:0",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "backtrack": true,
+          "banned": "10170:10399:130",
+          "seg": 4
+        },
+        {
+          "seg": 4,
+          "from": 9930,
+          "to": "8200:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 128
+        },
+        {
+          "seg": 4,
+          "from": 9930,
+          "to": "9760:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 166
+        },
+        {
+          "seg": 4,
+          "from": 9930,
+          "to": "8200:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 128
+        },
+        {
+          "seg": 4,
+          "from": 9930,
+          "to": "9760:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 86
+        },
+        {
+          "seg": 4,
+          "from": 9930,
+          "to": "9760:0",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 138
+        },
+        {
+          "backtrack": true,
+          "banned": "9630:9930:200",
+          "seg": 3
+        },
+        {
+          "seg": 3,
+          "from": 9780,
+          "to": "9760:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 8
+        },
+        {
+          "seg": 3,
+          "from": 9780,
+          "to": "8580:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 3,
+          "from": 9780,
+          "to": "8580:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 3,
+          "from": 9780,
+          "to": "9760:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 8
+        },
+        {
+          "seg": 3,
+          "from": 9780,
+          "to": "8580:0",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "backtrack": true,
+          "banned": "8200:9780:0",
+          "seg": 2
+        },
+        {
+          "seg": 2,
+          "from": 7510,
+          "to": "7260:0",
+          "blood": false,
+          "exp": 11,
+          "ok": true
+        },
+        {
+          "seg": 3,
+          "from": 9930,
+          "to": "8200:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 128
+        },
+        {
+          "seg": 3,
+          "from": 9930,
+          "to": "9760:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 166
+        },
+        {
+          "seg": 3,
+          "from": 9930,
+          "to": "8200:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 128
+        },
+        {
+          "seg": 3,
+          "from": 9930,
+          "to": "9760:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 86
+        },
+        {
+          "seg": 3,
+          "from": 9930,
+          "to": "9760:0",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 138
+        },
+        {
+          "backtrack": true,
+          "banned": "9630:9930:200",
+          "seg": 2
+        },
+        {
+          "seg": 2,
+          "from": 7510,
+          "to": "7260:0",
+          "blood": false,
+          "exp": 40,
+          "ok": true
+        },
+        {
+          "seg": 3,
+          "from": 9560,
+          "to": "9630:200",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 4,
+          "from": 9930,
+          "to": "8200:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 128
+        },
+        {
+          "seg": 4,
+          "from": 9930,
+          "to": "9760:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 120
+        },
+        {
+          "seg": 4,
+          "from": 9930,
+          "to": "9760:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 116
+        },
+        {
+          "seg": 4,
+          "from": 9930,
+          "to": "8200:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 128
+        },
+        {
+          "seg": 4,
+          "from": 9930,
+          "to": "9760:0",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 120
+        },
+        {
+          "backtrack": true,
+          "banned": "9630:9930:200",
+          "seg": 3
+        },
+        {
+          "seg": 3,
+          "from": 9560,
+          "to": "8200:0",
+          "blood": false,
+          "exp": 13,
+          "ok": true
+        },
+        {
+          "seg": 4,
+          "from": 10399,
+          "to": "10240:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 4,
+          "from": 10399,
+          "to": "9760:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 86
+        },
+        {
+          "seg": 4,
+          "from": 10399,
+          "to": "10240:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 4,
+          "from": 10399,
+          "to": "9760:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 86
+        },
+        {
+          "seg": 4,
+          "from": 10399,
+          "to": "10240:0",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "backtrack": true,
+          "banned": "10170:10399:130",
+          "seg": 3
+        },
+        {
+          "seg": 3,
+          "from": 9560,
+          "to": "8200:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 89
+        },
+        {
+          "seg": 3,
+          "from": 9560,
+          "to": "9760:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 120
+        },
+        {
+          "seg": 3,
+          "from": 9560,
+          "to": "8200:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 89
+        },
+        {
+          "seg": 3,
+          "from": 9560,
+          "to": "9760:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 86
+        },
+        {
+          "seg": 3,
+          "from": 9560,
+          "to": "9760:0",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 120
+        },
+        {
+          "backtrack": true,
+          "banned": "9300:9560:135",
+          "seg": 2
+        },
+        {
+          "seg": 2,
+          "from": 7510,
+          "to": "7260:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 28
+        },
+        {
+          "seg": 2,
+          "from": 7510,
+          "to": "7260:0",
+          "blood": false,
+          "exp": 248,
+          "ok": true
+        },
+        {
+          "seg": 3,
+          "from": 10399,
+          "to": "10240:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 3,
+          "from": 10399,
+          "to": "9760:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 86
+        },
+        {
+          "seg": 3,
+          "from": 10399,
+          "to": "10240:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 3,
+          "from": 10399,
+          "to": "9760:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 86
+        },
+        {
+          "seg": 3,
+          "from": 10399,
+          "to": "10240:0",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "backtrack": true,
+          "banned": "10170:10399:130",
+          "seg": 2
+        },
+        {
+          "seg": 2,
+          "from": 7510,
+          "to": "7260:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 28
+        },
+        {
+          "seg": 2,
+          "from": 7510,
+          "to": "7260:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 28
+        },
+        {
+          "seg": 2,
+          "from": 7510,
+          "to": "7260:0",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 28
+        },
+        {
+          "backtrack": true,
+          "banned": "7230:7510:65",
+          "seg": 1
+        },
+        {
+          "seg": 1,
+          "from": 6050,
+          "to": "5955:65",
+          "blood": false,
+          "exp": 13,
+          "ok": true
+        },
+        {
+          "seg": 2,
+          "from": 9780,
+          "to": "9760:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 8
+        },
+        {
+          "seg": 2,
+          "from": 9780,
+          "to": "8580:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 2,
+          "from": 9780,
+          "to": "8580:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 2,
+          "from": 9780,
+          "to": "9760:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 8
+        },
+        {
+          "seg": 2,
+          "from": 9780,
+          "to": "8580:0",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "backtrack": true,
+          "banned": "8200:9780:0",
+          "seg": 1
+        },
+        {
+          "seg": 1,
+          "from": 6050,
+          "to": "5955:65",
+          "blood": false,
+          "exp": 28,
+          "ok": true
+        },
+        {
+          "seg": 2,
+          "from": 8200,
+          "to": "8200:0",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 3,
+          "from": 9780,
+          "to": "9760:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 8
+        },
+        {
+          "seg": 3,
+          "from": 9780,
+          "to": "8580:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 3,
+          "from": 9780,
+          "to": "8580:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 3,
+          "from": 9780,
+          "to": "9760:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 8
+        },
+        {
+          "seg": 3,
+          "from": 9780,
+          "to": "8580:0",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "backtrack": true,
+          "banned": "8200:9780:0",
+          "seg": 2
+        },
+        {
+          "seg": 2,
+          "from": 8200,
+          "to": "7230:65",
+          "blood": false,
+          "exp": 41,
+          "ok": true
+        },
+        {
+          "seg": 3,
+          "from": 9930,
+          "to": "8200:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 128
+        },
+        {
+          "seg": 3,
+          "from": 9930,
+          "to": "9760:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 166
+        },
+        {
+          "seg": 3,
+          "from": 9930,
+          "to": "8200:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 128
+        },
+        {
+          "seg": 3,
+          "from": 9930,
+          "to": "9760:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 86
+        },
+        {
+          "seg": 3,
+          "from": 9930,
+          "to": "9760:0",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 138
+        },
+        {
+          "backtrack": true,
+          "banned": "9630:9930:200",
+          "seg": 2
+        },
+        {
+          "seg": 2,
+          "from": 8200,
+          "to": "7230:65",
+          "blood": false,
+          "exp": 70,
+          "ok": true
+        },
+        {
+          "seg": 3,
+          "from": 9560,
+          "to": "8200:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 89
+        },
+        {
+          "seg": 3,
+          "from": 9560,
+          "to": "9760:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 120
+        },
+        {
+          "seg": 3,
+          "from": 9560,
+          "to": "8200:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 89
+        },
+        {
+          "seg": 3,
+          "from": 9560,
+          "to": "9760:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 86
+        },
+        {
+          "seg": 3,
+          "from": 9560,
+          "to": "9760:0",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 120
+        },
+        {
+          "backtrack": true,
+          "banned": "9300:9560:135",
+          "seg": 2
+        },
+        {
+          "seg": 2,
+          "from": 8200,
+          "to": "7230:65",
+          "blood": false,
+          "exp": 170,
+          "ok": false,
+          "bestH": 1060
+        },
+        {
+          "seg": 2,
+          "from": 8200,
+          "to": "8580:0",
+          "blood": false,
+          "exp": 0,
+          "ok": false,
+          "bestH": null
+        },
+        {
+          "seg": 2,
+          "from": 8200,
+          "to": "7230:65",
+          "blood": false,
+          "exp": 0,
+          "ok": false,
+          "bestH": null
+        },
+        {
+          "seg": 2,
+          "from": 8200,
+          "to": "8580:0",
+          "blood": false,
+          "exp": 0,
+          "ok": false,
+          "bestH": null
+        },
+        {
+          "seg": 2,
+          "from": 8200,
+          "to": "7230:65",
+          "blood": true,
+          "exp": 0,
+          "ok": false,
+          "bestH": null
+        }
+      ],
+      "failedSegment": 2,
+      "reason": "expansion budget exhausted",
+      "from": {
+        "x0": 7260,
+        "x1": 8200,
+        "y": 0
+      },
+      "tried": [
+        {
+          "target": {
+            "x0": 7230,
+            "x1": 7510,
+            "y": 65
+          },
+          "bloodAllowed": false,
+          "budget": 210,
+          "expansions": 170,
+          "bestH": 1060,
+          "histogram": {
+            "retreated": 3,
+            "ok": 167,
+            "overshot": 20
+          },
+          "sample": [
+            {
+              "depth": 10,
+              "macro": "back",
+              "why": "ok",
+              "x": 10060,
+              "y": 133
+            },
+            {
+              "depth": 10,
+              "macro": "wait",
+              "why": "ok",
+              "x": 10074,
+              "y": 133
+            },
+            {
+              "depth": 9,
+              "macro": "doubleDash",
+              "why": "ok",
+              "x": 9789,
+              "y": 277
+            },
+            {
+              "depth": 10,
+              "macro": "doubleDash",
+              "why": "ok",
+              "x": 10210,
+              "y": 306
+            },
+            {
+              "depth": 10,
+              "macro": "run",
+              "why": "ok",
+              "x": 9881,
+              "y": 225
+            },
+            {
+              "depth": 10,
+              "macro": "dash",
+              "why": "ok",
+              "x": 9896,
+              "y": 211
+            },
+            {
+              "depth": 10,
+              "macro": "airJump",
+              "why": "ok",
+              "x": 9924,
+              "y": 346
+            },
+            {
+              "depth": 10,
+              "macro": "back",
+              "why": "ok",
+              "x": 9813,
+              "y": 237
+            },
+            {
+              "depth": 10,
+              "macro": "wait",
+              "why": "ok",
+              "x": 9877,
+              "y": 225
+            },
+            {
+              "depth": 9,
+              "macro": "run",
+              "why": "ok",
+              "x": 10074,
+              "y": 147
+            },
+            {
+              "depth": 10,
+              "macro": "portalDrop",
+              "why": "ok",
+              "x": 9923,
+              "y": 200
+            },
+            {
+              "depth": 10,
+              "macro": "placeMouth",
+              "why": "ok",
+              "x": 10074,
+              "y": 133
+            }
+          ]
+        },
+        {
+          "target": {
+            "x0": 8580,
+            "x1": 8920,
+            "y": 0
+          },
+          "bloodAllowed": false,
+          "budget": 210,
+          "expansions": 0,
+          "bestH": null,
+          "histogram": {},
+          "sample": []
+        },
+        {
+          "target": {
+            "x0": 7230,
+            "x1": 7510,
+            "y": 65
+          },
+          "bloodAllowed": false,
+          "budget": 700,
+          "expansions": 0,
+          "bestH": null,
+          "histogram": {},
+          "sample": []
+        },
+        {
+          "target": {
+            "x0": 8580,
+            "x1": 8920,
+            "y": 0
+          },
+          "bloodAllowed": false,
+          "budget": 700,
+          "expansions": 0,
+          "bestH": null,
+          "histogram": {},
+          "sample": []
+        },
+        {
+          "target": {
+            "x0": 7230,
+            "x1": 7510,
+            "y": 65
+          },
+          "bloodAllowed": true,
+          "budget": 490,
+          "expansions": 0,
+          "bestH": null,
+          "histogram": {},
+          "sample": []
+        }
+      ],
+      "solved": [
+        {
+          "seg": 0,
+          "from": {
+            "x0": 0,
+            "x1": 5600,
+            "y": 0
+          },
+          "to": {
+            "x0": 5810,
+            "x1": 6050,
+            "y": 70
+          },
+          "frames": 260,
+          "expansions": 3,
+          "depth": 2,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "steeredDash16",
+          "x": 5811,
+          "y": 70
+        },
+        {
+          "seg": 1,
+          "from": {
+            "x0": 5810,
+            "x1": 6050,
+            "y": 70
+          },
+          "to": {
+            "x0": 7260,
+            "x1": 8200,
+            "y": 0
+          },
+          "frames": 291,
+          "expansions": 28,
+          "depth": 9,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "back",
+          "x": 8162,
+          "y": 0
+        }
+      ],
+      "inputFrames": 551
+    }
+  ]
+}

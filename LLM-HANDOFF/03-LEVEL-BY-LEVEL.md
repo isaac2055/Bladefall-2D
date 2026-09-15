@@ -12,6 +12,14 @@ through Warden complete in substance, with later polish deferred. Historical
 levels. Frostfell's latest changes received positive owner feedback. See
 [recent changes](11-RECENT-CHANGES-AND-PLANS.md) for the full follow-up record.
 
+## Recall follow-up, run 1
+
+The first four return regions now have substantial regional reinforcements and
+one unique role each; all campaign ordinary enemies receive the one-time recall
+baseline. See `12-RECALL-WORK-ORDER.md` for current counts and preservation rules.
+This changes post-Muster encounters, not the accepted first-visit boss designs.
+Frostfell's original eleven reinforcements and finale remain the reference.
+
 ## 1 — The Outskirts
 
 **Identity:** slow, unarmed awakening at a broken predawn military camp.
@@ -182,14 +190,19 @@ The 15,100-unit custom settlement now contains the Banked Refuge, Working Street
 
 See `docs/charters/08-frostfell/README.md` and its evidence receipt. `npm run validate:frostfell` exercises the actual TAS route and campaign persistence. The latest receipt also includes normal-keyboard mine crossings in both directions and actual music playback. A full continuous campaign playthrough and the future White Court seam remain separate from those checks. Frost Sorcerer has not been redesigned. See [recent changes](11-RECENT-CHANGES-AND-PLANS.md) for roster counts, shortcuts, setup coordinates and deferred world escalation.
 
+Run 3 adds one reserve and permanent physical shortcut in each return region;
+see `12-RECALL-WORK-ORDER.md` for exact coordinates, rewards and input proofs.
+
 ## 9 — Frost Sorcerer / White Court
 
 **Current runtime:** chasing/blinking boss, moving spell siphon, water/current
 composition, and prior anti-camping improvements exist; full current pass pending.
+Run 3 produced `docs/charters/09-frost-sorcerer/DESIGN-PLAN.md`, design only.
+Its proposed total ward-break count remains playtest tuning, not shipped behavior.
 
 **Target:** the Sorcerer must actively chase, blink, track shots, and deny ground.
-The player steals three spells through an oscillating siphon whose alignment
-window changes and accelerates each phase. Portals redirect/expose magic but do
+The player steals spells through a moving siphon whose alignment
+window and cold state change each phase. Portals redirect/expose magic but do
 not form permanent cover. Each phase changes the arena's cold state instead of
 repeating one projectile bank. Reward Attunement and make the real/dream command
 correspondence more legible without final diagnosis.

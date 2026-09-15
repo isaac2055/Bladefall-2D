@@ -1,5 +1,12 @@
 # Frostfell finale and the changed return
 
+Current implementation (2026-09-14): runs 1–3 supersede the early status below.
+The recall now includes expanded regional rosters, the one-time global ordinary
+stat boost/regarrison, and four reserve rewards with permanent physical shortcuts.
+See `../LLM-HANDOFF/12-RECALL-WORK-ORDER.md` for current behavior and evidence;
+the dated proposal and first-pass account below are historical, not runtime truth.
+
+
 Status: discussion proposal, 2026-09-10. No gameplay implementation authorized by this discussion. The owner found the first Frostfell pass uneventful and wants a more substantial Double Jump finale plus a thematic change that makes the long return interesting. Current runtime remains as documented in the Frostfell charter.
 
 These notes supplement the master vision, progression constitution, level charters, and owner decisions. The Gemini observations below are useful secondary review prompts, not a replacement design constitution or a mandate to reopen completed levels.

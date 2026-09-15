@@ -5,7 +5,7 @@ await import('../public/bladefall-shops.js');
 const Shops = globalThis.BladefallShops;
 
 test('regional catalog begins after the movement tutorial and is internally valid', () => {
-  assert.deepEqual(Shops.validateCatalog(), { ok: true, errors: [], shops: 6, items: 21 });
+  assert.deepEqual(Shops.validateCatalog(), { ok: true, errors: [], shops: 7, items: 23 });
   assert.equal(Shops.stageShop(0), null);
   assert.equal(Shops.stageShop(1).name, 'Ethereal Goods');
   assert.equal(Shops.stageShop(1).stock.find((item) => item.id === 'woods-draught').name, 'Bottled Respite');

@@ -1,0 +1,3336 @@
+{
+  "schema": "bladefall.traversal-bot",
+  "generatedAt": "2026-09-13T23:25:47.106Z",
+  "pass": false,
+  "runtimeErrors": [],
+  "runs": [
+    {
+      "stage": 6,
+      "muster": true,
+      "boot": {
+        "levelLength": 15000,
+        "capabilities": [
+          "jump",
+          "weapon",
+          "dash",
+          "portal-single",
+          "portal-pair",
+          "wall-jump",
+          "counter",
+          "double-jump"
+        ],
+        "spawn": {
+          "x": 14480,
+          "y": 709
+        }
+      },
+      "seconds": 96.4,
+      "pass": false,
+      "direction": -1,
+      "goalX": 2020,
+      "goalKind": "boss-threshold",
+      "crossedBoundary": false,
+      "reachedX": 13760,
+      "segments": 0,
+      "backtracks": 3,
+      "frames": 693,
+      "replayFrames": 693,
+      "expansions": 10632,
+      "replayIdentical": false,
+      "capabilities": {
+        "doubleJump": true,
+        "dash": true,
+        "weapon": true
+      },
+      "envelope": {
+        "maxRise": 233,
+        "maxReach": 659
+      },
+      "costedSegments": 0,
+      "blood": 5,
+      "mechanisms": [],
+      "history": [
+        {
+          "seg": 0,
+          "from": 14370,
+          "to": "14170:500",
+          "blood": false,
+          "exp": 6,
+          "ok": true
+        },
+        {
+          "seg": 1,
+          "from": 13747,
+          "to": "14170:500",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 300
+        },
+        {
+          "seg": 1,
+          "from": 13747,
+          "to": "8975:480",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 5079
+        },
+        {
+          "seg": 1,
+          "from": 13747,
+          "to": "14170:500",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 224
+        },
+        {
+          "seg": 1,
+          "from": 13747,
+          "to": "8975:480",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 4843
+        },
+        {
+          "seg": 1,
+          "from": 13747,
+          "to": "14170:500",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "backtrack": true,
+          "banned": "13747:14253:0",
+          "seg": 0
+        },
+        {
+          "seg": 0,
+          "from": 14370,
+          "to": "14170:500",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 63
+        },
+        {
+          "seg": 0,
+          "from": 14370,
+          "to": "15000:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 222
+        },
+        {
+          "seg": 0,
+          "from": 14370,
+          "to": "14170:500",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 63
+        },
+        {
+          "seg": 0,
+          "from": 14370,
+          "to": "15000:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 222
+        },
+        {
+          "seg": 0,
+          "from": 14370,
+          "to": "14170:500",
+          "blood": true,
+          "exp": 208,
+          "ok": true
+        },
+        {
+          "seg": 1,
+          "from": 13990,
+          "to": "13625:335",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 153
+        },
+        {
+          "seg": 1,
+          "from": 13990,
+          "to": "14253:0",
+          "blood": false,
+          "exp": 58,
+          "ok": true
+        },
+        {
+          "seg": 2,
+          "from": 13747,
+          "to": "14170:500",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 241
+        },
+        {
+          "seg": 2,
+          "from": 13747,
+          "to": "8975:480",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 4805
+        },
+        {
+          "seg": 2,
+          "from": 13747,
+          "to": "14170:500",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 224
+        },
+        {
+          "seg": 2,
+          "from": 13747,
+          "to": "8975:480",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 4799
+        },
+        {
+          "seg": 2,
+          "from": 13747,
+          "to": "14170:500",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 240
+        },
+        {
+          "backtrack": true,
+          "banned": "13747:14253:0",
+          "seg": 1
+        },
+        {
+          "seg": 1,
+          "from": 13990,
+          "to": "13625:335",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 153
+        },
+        {
+          "seg": 1,
+          "from": 13990,
+          "to": "13693:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 73
+        },
+        {
+          "seg": 1,
+          "from": 13990,
+          "to": "13693:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 73
+        },
+        {
+          "seg": 1,
+          "from": 13990,
+          "to": "13625:335",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 153
+        },
+        {
+          "seg": 1,
+          "from": 13990,
+          "to": "13693:0",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 73
+        },
+        {
+          "backtrack": true,
+          "banned": "13990:14170:500",
+          "seg": 0
+        },
+        {
+          "seg": 0,
+          "from": 14370,
+          "to": "15000:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 222
+        },
+        {
+          "seg": 0,
+          "from": 14370,
+          "to": "15000:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 222
+        },
+        {
+          "seg": 0,
+          "from": 14370,
+          "to": "15000:0",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 222
+        }
+      ],
+      "failedSegment": 0,
+      "reason": "every hop from the current ledge failed",
+      "from": {
+        "x0": 14370,
+        "x1": 14990,
+        "y": 700
+      },
+      "tried": [
+        {
+          "target": {
+            "x0": 14307,
+            "x1": 15000,
+            "y": 0
+          },
+          "bloodAllowed": false,
+          "budget": 210,
+          "expansions": 210,
+          "bestH": 222,
+          "histogram": {
+            "ok": 210,
+            "overshot": 14
+          },
+          "sample": [
+            {
+              "depth": 15,
+              "macro": "dash",
+              "why": "ok",
+              "x": 13760,
+              "y": 44
+            },
+            {
+              "depth": 15,
+              "macro": "airJump",
+              "why": "ok",
+              "x": 13767,
+              "y": 146
+            },
+            {
+              "depth": 15,
+              "macro": "back",
+              "why": "ok",
+              "x": 13774,
+              "y": 47
+            },
+            {
+              "depth": 15,
+              "macro": "wait",
+              "why": "ok",
+              "x": 13760,
+              "y": 46
+            },
+            {
+              "depth": 16,
+              "macro": "run",
+              "why": "ok",
+              "x": 13760,
+              "y": 30
+            },
+            {
+              "depth": 16,
+              "macro": "dash",
+              "why": "ok",
+              "x": 13760,
+              "y": 28
+            },
+            {
+              "depth": 16,
+              "macro": "airJump",
+              "why": "ok",
+              "x": 13767,
+              "y": 130
+            },
+            {
+              "depth": 16,
+              "macro": "back",
+              "why": "ok",
+              "x": 13774,
+              "y": 31
+            },
+            {
+              "depth": 16,
+              "macro": "wait",
+              "why": "ok",
+              "x": 13760,
+              "y": 30
+            },
+            {
+              "depth": 14,
+              "macro": "airJump",
+              "why": "ok",
+              "x": 13767,
+              "y": 164
+            },
+            {
+              "depth": 15,
+              "macro": "run",
+              "why": "ok",
+              "x": 13760,
+              "y": 156
+            },
+            {
+              "depth": 15,
+              "macro": "dash",
+              "why": "ok",
+              "x": 13760,
+              "y": 153
+            }
+          ]
+        },
+        {
+          "target": {
+            "x0": 14307,
+            "x1": 15000,
+            "y": 0
+          },
+          "bloodAllowed": false,
+          "budget": 700,
+          "expansions": 700,
+          "bestH": 222,
+          "histogram": {
+            "ok": 700,
+            "overshot": 76
+          },
+          "sample": [
+            {
+              "depth": 15,
+              "macro": "airJump",
+              "why": "ok",
+              "x": 13767,
+              "y": 178
+            },
+            {
+              "depth": 15,
+              "macro": "back",
+              "why": "ok",
+              "x": 13774,
+              "y": 79
+            },
+            {
+              "depth": 15,
+              "macro": "wait",
+              "why": "ok",
+              "x": 13760,
+              "y": 78
+            },
+            {
+              "depth": 16,
+              "macro": "run",
+              "why": "ok",
+              "x": 13760,
+              "y": 62
+            },
+            {
+              "depth": 16,
+              "macro": "dash",
+              "why": "ok",
+              "x": 13760,
+              "y": 60
+            },
+            {
+              "depth": 16,
+              "macro": "airJump",
+              "why": "ok",
+              "x": 13767,
+              "y": 162
+            },
+            {
+              "depth": 16,
+              "macro": "back",
+              "why": "ok",
+              "x": 13774,
+              "y": 63
+            },
+            {
+              "depth": 16,
+              "macro": "wait",
+              "why": "ok",
+              "x": 13760,
+              "y": 62
+            },
+            {
+              "depth": 13,
+              "macro": "back",
+              "why": "ok",
+              "x": 13774,
+              "y": 4
+            },
+            {
+              "depth": 14,
+              "macro": "run",
+              "why": "ok",
+              "x": 13760,
+              "y": 0
+            },
+            {
+              "depth": 14,
+              "macro": "dash",
+              "why": "ok",
+              "x": 13760,
+              "y": 0
+            },
+            {
+              "depth": 14,
+              "macro": "airJump",
+              "why": "ok",
+              "x": 13780,
+              "y": 87
+            }
+          ]
+        },
+        {
+          "target": {
+            "x0": 14307,
+            "x1": 15000,
+            "y": 0
+          },
+          "bloodAllowed": true,
+          "budget": 490,
+          "expansions": 490,
+          "bestH": 222,
+          "histogram": {
+            "ok": 490,
+            "overshot": 51
+          },
+          "sample": [
+            {
+              "depth": 15,
+              "macro": "run",
+              "why": "ok",
+              "x": 13760,
+              "y": 76
+            },
+            {
+              "depth": 15,
+              "macro": "dash",
+              "why": "ok",
+              "x": 13760,
+              "y": 73
+            },
+            {
+              "depth": 15,
+              "macro": "airJump",
+              "why": "ok",
+              "x": 13767,
+              "y": 175
+            },
+            {
+              "depth": 15,
+              "macro": "back",
+              "why": "ok",
+              "x": 13774,
+              "y": 76
+            },
+            {
+              "depth": 15,
+              "macro": "wait",
+              "why": "ok",
+              "x": 13760,
+              "y": 76
+            },
+            {
+              "depth": 13,
+              "macro": "airJump",
+              "why": "ok",
+              "x": 13773,
+              "y": 202
+            },
+            {
+              "depth": 14,
+              "macro": "run",
+              "why": "ok",
+              "x": 13760,
+              "y": 193
+            },
+            {
+              "depth": 15,
+              "macro": "run",
+              "why": "ok",
+              "x": 13760,
+              "y": 177
+            },
+            {
+              "depth": 15,
+              "macro": "dash",
+              "why": "ok",
+              "x": 13760,
+              "y": 175
+            },
+            {
+              "depth": 15,
+              "macro": "airJump",
+              "why": "ok",
+              "x": 13767,
+              "y": 277
+            },
+            {
+              "depth": 15,
+              "macro": "back",
+              "why": "ok",
+              "x": 13774,
+              "y": 178
+            },
+            {
+              "depth": 15,
+              "macro": "wait",
+              "why": "ok",
+              "x": 13760,
+              "y": 177
+            }
+          ]
+        }
+      ],
+      "solved": [],
+      "inputFrames": 693
+    },
+    {
+      "stage": 0,
+      "muster": true,
+      "boot": {
+        "levelLength": 13800,
+        "capabilities": [
+          "jump",
+          "weapon",
+          "dash",
+          "portal-single",
+          "portal-pair",
+          "wall-jump",
+          "counter",
+          "double-jump"
+        ],
+        "spawn": {
+          "x": 70,
+          "y": 2
+        }
+      },
+      "seconds": 41.2,
+      "pass": true,
+      "direction": 1,
+      "goalX": 13680,
+      "goalKind": "level-end",
+      "crossedBoundary": true,
+      "reachedX": 13739,
+      "segments": 36,
+      "backtracks": 0,
+      "frames": 6058,
+      "replayFrames": 6057,
+      "expansions": 3673,
+      "replayIdentical": true,
+      "capabilities": {
+        "doubleJump": true,
+        "dash": true,
+        "weapon": false
+      },
+      "envelope": {
+        "maxRise": 233,
+        "maxReach": 659
+      },
+      "costedSegments": 0,
+      "blood": 5,
+      "mechanisms": [],
+      "history": [
+        {
+          "seg": 0,
+          "from": 600,
+          "to": "1150:58",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 1081
+        },
+        {
+          "seg": 0,
+          "from": 600,
+          "to": "730:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 685
+        },
+        {
+          "seg": 0,
+          "from": 600,
+          "to": "585:34",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 520
+        },
+        {
+          "seg": 0,
+          "from": 600,
+          "to": "585:34",
+          "blood": false,
+          "exp": 359,
+          "ok": true
+        },
+        {
+          "seg": 1,
+          "from": 1120,
+          "to": "1690:68",
+          "blood": false,
+          "exp": 2,
+          "ok": true
+        },
+        {
+          "seg": 2,
+          "from": 1290,
+          "to": "1880:0",
+          "blood": false,
+          "exp": 5,
+          "ok": true
+        },
+        {
+          "seg": 3,
+          "from": 1650,
+          "to": "1880:0",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 4,
+          "from": 2600,
+          "to": "3195:56",
+          "blood": false,
+          "exp": 12,
+          "ok": true
+        },
+        {
+          "seg": 5,
+          "from": 3180,
+          "to": "3370:0",
+          "blood": false,
+          "exp": 107,
+          "ok": true
+        },
+        {
+          "seg": 6,
+          "from": 3535,
+          "to": "4083:78",
+          "blood": false,
+          "exp": 10,
+          "ok": true
+        },
+        {
+          "seg": 7,
+          "from": 3680,
+          "to": "4240:0",
+          "blood": false,
+          "exp": 30,
+          "ok": true
+        },
+        {
+          "seg": 8,
+          "from": 3830,
+          "to": "4240:0",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 9,
+          "from": 4010,
+          "to": "4240:0",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 10,
+          "from": 4218,
+          "to": "4700:0",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 11,
+          "from": 4700,
+          "to": "5305:58",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 12,
+          "from": 5040,
+          "to": "5580:42",
+          "blood": false,
+          "exp": 2,
+          "ok": true
+        },
+        {
+          "seg": 13,
+          "from": 5230,
+          "to": "5875:70",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 473
+        },
+        {
+          "seg": 13,
+          "from": 5230,
+          "to": "5580:42",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 167
+        },
+        {
+          "seg": 13,
+          "from": 5230,
+          "to": "5698:118",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 324
+        },
+        {
+          "seg": 13,
+          "from": 5230,
+          "to": "5305:58",
+          "blood": false,
+          "exp": 145,
+          "ok": true
+        },
+        {
+          "seg": 14,
+          "from": 5285,
+          "to": "5875:70",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 15,
+          "from": 5495,
+          "to": "5875:70",
+          "blood": false,
+          "exp": 2,
+          "ok": true
+        },
+        {
+          "seg": 16,
+          "from": 5780,
+          "to": "6340:55",
+          "blood": false,
+          "exp": 132,
+          "ok": true
+        },
+        {
+          "seg": 17,
+          "from": 6085,
+          "to": "6700:0",
+          "blood": false,
+          "exp": 101,
+          "ok": true
+        },
+        {
+          "seg": 18,
+          "from": 6380,
+          "to": "7000:0",
+          "blood": false,
+          "exp": 2,
+          "ok": true
+        },
+        {
+          "seg": 19,
+          "from": 6690,
+          "to": "7000:0",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 20,
+          "from": 7000,
+          "to": "7570:72",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 21,
+          "from": 7550,
+          "to": "7790:0",
+          "blood": false,
+          "exp": 167,
+          "ok": true
+        },
+        {
+          "seg": 22,
+          "from": 8250,
+          "to": "8680:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 684
+        },
+        {
+          "seg": 22,
+          "from": 8250,
+          "to": "8505:78",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 556
+        },
+        {
+          "seg": 22,
+          "from": 8250,
+          "to": "8275:55",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 312
+        },
+        {
+          "seg": 22,
+          "from": 8250,
+          "to": "8275:55",
+          "blood": false,
+          "exp": 430,
+          "ok": true
+        },
+        {
+          "seg": 23,
+          "from": 8445,
+          "to": "8680:0",
+          "blood": false,
+          "exp": 2,
+          "ok": true
+        },
+        {
+          "seg": 24,
+          "from": 8655,
+          "to": "9300:0",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 25,
+          "from": 9300,
+          "to": "9905:48",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 26,
+          "from": 9860,
+          "to": "10310:0",
+          "blood": false,
+          "exp": 82,
+          "ok": true
+        },
+        {
+          "seg": 27,
+          "from": 10275,
+          "to": "10838:58",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 28,
+          "from": 10820,
+          "to": "11240:0",
+          "blood": false,
+          "exp": 97,
+          "ok": true
+        },
+        {
+          "seg": 29,
+          "from": 11155,
+          "to": "11500:0",
+          "blood": false,
+          "exp": 4,
+          "ok": true
+        },
+        {
+          "seg": 30,
+          "from": 11920,
+          "to": "12380:28",
+          "blood": false,
+          "exp": 4,
+          "ok": true
+        },
+        {
+          "seg": 31,
+          "from": 12325,
+          "to": "12590:0",
+          "blood": false,
+          "exp": 6,
+          "ok": true
+        },
+        {
+          "seg": 32,
+          "from": 12560,
+          "to": "13055:42",
+          "blood": false,
+          "exp": 6,
+          "ok": true
+        },
+        {
+          "seg": 33,
+          "from": 13040,
+          "to": "13240:0",
+          "blood": false,
+          "exp": 2,
+          "ok": true
+        },
+        {
+          "seg": 34,
+          "from": 13225,
+          "to": "13240:0",
+          "blood": false,
+          "exp": 23,
+          "ok": true
+        },
+        {
+          "seg": 35,
+          "from": 13800,
+          "to": "point:13680",
+          "blood": false,
+          "exp": 20,
+          "ok": true
+        }
+      ],
+      "solved": [
+        {
+          "seg": 0,
+          "from": {
+            "x0": 0,
+            "x1": 600,
+            "y": 0
+          },
+          "to": {
+            "x0": 730,
+            "x1": 1120,
+            "y": 0
+          },
+          "frames": 200,
+          "expansions": 359,
+          "depth": 16,
+          "costBlood": false,
+          "dFrom": 36.18666666666666,
+          "dTo": 34.75333333333333,
+          "via": "run",
+          "x": 783,
+          "y": 0
+        },
+        {
+          "seg": 1,
+          "from": {
+            "x0": 730,
+            "x1": 1120,
+            "y": 0
+          },
+          "to": {
+            "x0": 1150,
+            "x1": 1290,
+            "y": 58
+          },
+          "frames": 129,
+          "expansions": 2,
+          "depth": 2,
+          "costBlood": false,
+          "dFrom": 34.75333333333333,
+          "dTo": 34.47666666666667,
+          "via": "run",
+          "x": 1240,
+          "y": 58
+        },
+        {
+          "seg": 2,
+          "from": {
+            "x0": 1150,
+            "x1": 1290,
+            "y": 58
+          },
+          "to": {
+            "x0": 1310,
+            "x1": 1650,
+            "y": 0
+          },
+          "frames": 77,
+          "expansions": 5,
+          "depth": 4,
+          "costBlood": false,
+          "dFrom": 34.47666666666667,
+          "dTo": 33.12,
+          "via": "run",
+          "x": 1639,
+          "y": 0
+        },
+        {
+          "seg": 3,
+          "from": {
+            "x0": 1310,
+            "x1": 1650,
+            "y": 0
+          },
+          "to": {
+            "x0": 1880,
+            "x1": 2600,
+            "y": 0
+          },
+          "frames": 51,
+          "expansions": 3,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 33.12,
+          "dTo": 31.35333333333333,
+          "via": "run",
+          "x": 1967,
+          "y": 0
+        },
+        {
+          "seg": 4,
+          "from": {
+            "x0": 1880,
+            "x1": 2600,
+            "y": 0
+          },
+          "to": {
+            "x0": 2600,
+            "x1": 3180,
+            "y": 0
+          },
+          "frames": 229,
+          "expansions": 12,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 31.35333333333333,
+          "dTo": 30.35333333333333,
+          "via": "dash",
+          "x": 2787,
+          "y": 0
+        },
+        {
+          "seg": 5,
+          "from": {
+            "x0": 2600,
+            "x1": 3180,
+            "y": 0
+          },
+          "to": {
+            "x0": 3405,
+            "x1": 3535,
+            "y": 58
+          },
+          "frames": 394,
+          "expansions": 107,
+          "depth": 31,
+          "costBlood": false,
+          "dFrom": 30.35333333333333,
+          "dTo": 30.009999999999998,
+          "via": "back",
+          "x": 3530,
+          "y": 58
+        },
+        {
+          "seg": 6,
+          "from": {
+            "x0": 3405,
+            "x1": 3535,
+            "y": 58
+          },
+          "to": {
+            "x0": 3550,
+            "x1": 3680,
+            "y": 116
+          },
+          "frames": 135,
+          "expansions": 10,
+          "depth": 10,
+          "costBlood": false,
+          "dFrom": 30.009999999999998,
+          "dTo": 29.799999999999997,
+          "via": "run",
+          "x": 3631,
+          "y": 116
+        },
+        {
+          "seg": 7,
+          "from": {
+            "x0": 3550,
+            "x1": 3680,
+            "y": 116
+          },
+          "to": {
+            "x0": 3370,
+            "x1": 3830,
+            "y": 0
+          },
+          "frames": 369,
+          "expansions": 30,
+          "depth": 29,
+          "costBlood": false,
+          "dFrom": 29.799999999999997,
+          "dTo": 28.72,
+          "via": "approach40h21",
+          "x": 3755,
+          "y": 0
+        },
+        {
+          "seg": 8,
+          "from": {
+            "x0": 3370,
+            "x1": 3830,
+            "y": 0
+          },
+          "to": {
+            "x0": 3860,
+            "x1": 4010,
+            "y": 72
+          },
+          "frames": 46,
+          "expansions": 1,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": 28.72,
+          "dTo": 28.479999999999997,
+          "via": "approach40h21",
+          "x": 3909,
+          "y": 72
+        },
+        {
+          "seg": 9,
+          "from": {
+            "x0": 3860,
+            "x1": 4010,
+            "y": 72
+          },
+          "to": {
+            "x0": 4082.5,
+            "x1": 4217.5,
+            "y": 78
+          },
+          "frames": 78,
+          "expansions": 3,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 28.479999999999997,
+          "dTo": 27.81833333333333,
+          "via": "run",
+          "x": 4169,
+          "y": 78
+        },
+        {
+          "seg": 10,
+          "from": {
+            "x0": 4082.5,
+            "x1": 4217.5,
+            "y": 78
+          },
+          "to": {
+            "x0": 4240,
+            "x1": 4700,
+            "y": 0
+          },
+          "frames": 62,
+          "expansions": 3,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 27.81833333333333,
+          "dTo": 26.35333333333333,
+          "via": "run",
+          "x": 4375,
+          "y": 0
+        },
+        {
+          "seg": 11,
+          "from": {
+            "x0": 4240,
+            "x1": 4700,
+            "y": 0
+          },
+          "to": {
+            "x0": 4700,
+            "x1": 5040,
+            "y": 0
+          },
+          "frames": 145,
+          "expansions": 3,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 26.35333333333333,
+          "dTo": 25.35333333333333,
+          "via": "run",
+          "x": 4859,
+          "y": 0
+        },
+        {
+          "seg": 12,
+          "from": {
+            "x0": 4700,
+            "x1": 5040,
+            "y": 0
+          },
+          "to": {
+            "x0": 5050,
+            "x1": 5230,
+            "y": 38
+          },
+          "frames": 90,
+          "expansions": 2,
+          "depth": 2,
+          "costBlood": false,
+          "dFrom": 25.35333333333333,
+          "dTo": 24.423333333333332,
+          "via": "run",
+          "x": 5159,
+          "y": 38
+        },
+        {
+          "seg": 13,
+          "from": {
+            "x0": 5050,
+            "x1": 5230,
+            "y": 38
+          },
+          "to": {
+            "x0": 5195,
+            "x1": 5285,
+            "y": 110
+          },
+          "frames": 31,
+          "expansions": 145,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": 24.423333333333332,
+          "dTo": 24.28,
+          "via": "approach130h21",
+          "x": 5262,
+          "y": 110
+        },
+        {
+          "seg": 14,
+          "from": {
+            "x0": 5195,
+            "x1": 5285,
+            "y": 110
+          },
+          "to": {
+            "x0": 5305,
+            "x1": 5495,
+            "y": 58
+          },
+          "frames": 55,
+          "expansions": 3,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 24.28,
+          "dTo": 23.44,
+          "via": "run",
+          "x": 5445,
+          "y": 58
+        },
+        {
+          "seg": 15,
+          "from": {
+            "x0": 5305,
+            "x1": 5495,
+            "y": 58
+          },
+          "to": {
+            "x0": 5580,
+            "x1": 5780,
+            "y": 42
+          },
+          "frames": 46,
+          "expansions": 2,
+          "depth": 2,
+          "costBlood": false,
+          "dFrom": 23.44,
+          "dTo": 22.343333333333334,
+          "via": "approach40h21",
+          "x": 5581,
+          "y": 42
+        },
+        {
+          "seg": 16,
+          "from": {
+            "x0": 5580,
+            "x1": 5780,
+            "y": 42
+          },
+          "to": {
+            "x0": 5875,
+            "x1": 6085,
+            "y": 70
+          },
+          "frames": 95,
+          "expansions": 132,
+          "depth": 2,
+          "costBlood": false,
+          "dFrom": 22.343333333333334,
+          "dTo": 21.113333333333333,
+          "via": "run",
+          "x": 5898,
+          "y": 70
+        },
+        {
+          "seg": 17,
+          "from": {
+            "x0": 5875,
+            "x1": 6085,
+            "y": 70
+          },
+          "to": {
+            "x0": 6180,
+            "x1": 6380,
+            "y": 44
+          },
+          "frames": 372,
+          "expansions": 101,
+          "depth": 29,
+          "costBlood": false,
+          "dFrom": 21.113333333333333,
+          "dTo": 20,
+          "via": "run",
+          "x": 6318,
+          "y": 44
+        },
+        {
+          "seg": 18,
+          "from": {
+            "x0": 6180,
+            "x1": 6380,
+            "y": 44
+          },
+          "to": {
+            "x0": 6470,
+            "x1": 6690,
+            "y": 72
+          },
+          "frames": 48,
+          "expansions": 2,
+          "depth": 2,
+          "costBlood": false,
+          "dFrom": 20,
+          "dTo": 19.10666666666667,
+          "via": "run",
+          "x": 6564,
+          "y": 72
+        },
+        {
+          "seg": 19,
+          "from": {
+            "x0": 6470,
+            "x1": 6690,
+            "y": 72
+          },
+          "to": {
+            "x0": 6700,
+            "x1": 7000,
+            "y": 0
+          },
+          "frames": 80,
+          "expansions": 3,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 19.10666666666667,
+          "dTo": 17.713333333333335,
+          "via": "run",
+          "x": 6854,
+          "y": 0
+        },
+        {
+          "seg": 20,
+          "from": {
+            "x0": 6700,
+            "x1": 7000,
+            "y": 0
+          },
+          "to": {
+            "x0": 7000,
+            "x1": 7550,
+            "y": 0
+          },
+          "frames": 91,
+          "expansions": 3,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 17.713333333333335,
+          "dTo": 16.713333333333335,
+          "via": "run",
+          "x": 7157,
+          "y": 0
+        },
+        {
+          "seg": 21,
+          "from": {
+            "x0": 7000,
+            "x1": 7550,
+            "y": 0
+          },
+          "to": {
+            "x0": 7790,
+            "x1": 8250,
+            "y": 0
+          },
+          "frames": 810,
+          "expansions": 167,
+          "depth": 65,
+          "costBlood": false,
+          "dFrom": 16.713333333333335,
+          "dTo": 14.913333333333334,
+          "via": "run",
+          "x": 7960,
+          "y": 0
+        },
+        {
+          "seg": 22,
+          "from": {
+            "x0": 7790,
+            "x1": 8250,
+            "y": 0
+          },
+          "to": {
+            "x0": 8275,
+            "x1": 8445,
+            "y": 55
+          },
+          "frames": 311,
+          "expansions": 430,
+          "depth": 23,
+          "costBlood": false,
+          "dFrom": 14.913333333333334,
+          "dTo": 14.538333333333334,
+          "via": "run",
+          "x": 8443,
+          "y": 55
+        },
+        {
+          "seg": 23,
+          "from": {
+            "x0": 8275,
+            "x1": 8445,
+            "y": 55
+          },
+          "to": {
+            "x0": 8505,
+            "x1": 8655,
+            "y": 78
+          },
+          "frames": 43,
+          "expansions": 2,
+          "depth": 2,
+          "costBlood": false,
+          "dFrom": 14.538333333333334,
+          "dTo": 13.953333333333333,
+          "via": "run",
+          "x": 8540,
+          "y": 78
+        },
+        {
+          "seg": 24,
+          "from": {
+            "x0": 8505,
+            "x1": 8655,
+            "y": 78
+          },
+          "to": {
+            "x0": 8680,
+            "x1": 9300,
+            "y": 0
+          },
+          "frames": 82,
+          "expansions": 3,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 13.953333333333333,
+          "dTo": 12.48,
+          "via": "run",
+          "x": 8813,
+          "y": 0
+        },
+        {
+          "seg": 25,
+          "from": {
+            "x0": 8680,
+            "x1": 9300,
+            "y": 0
+          },
+          "to": {
+            "x0": 9300,
+            "x1": 9860,
+            "y": 0
+          },
+          "frames": 194,
+          "expansions": 3,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 12.48,
+          "dTo": 11.48,
+          "via": "run",
+          "x": 9460,
+          "y": 0
+        },
+        {
+          "seg": 26,
+          "from": {
+            "x0": 9300,
+            "x1": 9860,
+            "y": 0
+          },
+          "to": {
+            "x0": 10125,
+            "x1": 10275,
+            "y": 78
+          },
+          "frames": 479,
+          "expansions": 82,
+          "depth": 36,
+          "costBlood": false,
+          "dFrom": 11.48,
+          "dTo": 10.486666666666668,
+          "via": "run",
+          "x": 10255,
+          "y": 78
+        },
+        {
+          "seg": 27,
+          "from": {
+            "x0": 10125,
+            "x1": 10275,
+            "y": 78
+          },
+          "to": {
+            "x0": 10310,
+            "x1": 10820,
+            "y": 0
+          },
+          "frames": 53,
+          "expansions": 3,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 10.486666666666668,
+          "dTo": 8.98,
+          "via": "run",
+          "x": 10452,
+          "y": 0
+        },
+        {
+          "seg": 28,
+          "from": {
+            "x0": 10310,
+            "x1": 10820,
+            "y": 0
+          },
+          "to": {
+            "x0": 11035,
+            "x1": 11155,
+            "y": 108
+          },
+          "frames": 735,
+          "expansions": 97,
+          "depth": 58,
+          "costBlood": false,
+          "dFrom": 8.98,
+          "dTo": 8.27,
+          "via": "run",
+          "x": 11123,
+          "y": 108
+        },
+        {
+          "seg": 29,
+          "from": {
+            "x0": 11035,
+            "x1": 11155,
+            "y": 108
+          },
+          "to": {
+            "x0": 11500,
+            "x1": 11920,
+            "y": 0
+          },
+          "frames": 66,
+          "expansions": 4,
+          "depth": 4,
+          "costBlood": false,
+          "dFrom": 8.27,
+          "dTo": 5.58,
+          "via": "run",
+          "x": 11509,
+          "y": 0
+        },
+        {
+          "seg": 30,
+          "from": {
+            "x0": 11500,
+            "x1": 11920,
+            "y": 0
+          },
+          "to": {
+            "x0": 12155,
+            "x1": 12325,
+            "y": 48
+          },
+          "frames": 165,
+          "expansions": 4,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 5.58,
+          "dTo": 3.7899999999999996,
+          "via": "run",
+          "x": 12312,
+          "y": 48
+        },
+        {
+          "seg": 31,
+          "from": {
+            "x0": 12155,
+            "x1": 12325,
+            "y": 48
+          },
+          "to": {
+            "x0": 12380,
+            "x1": 12560,
+            "y": 28
+          },
+          "frames": 50,
+          "expansions": 6,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 3.7899999999999996,
+          "dTo": 2.9066666666666667,
+          "via": "back",
+          "x": 12544,
+          "y": 28
+        },
+        {
+          "seg": 32,
+          "from": {
+            "x0": 12380,
+            "x1": 12560,
+            "y": 28
+          },
+          "to": {
+            "x0": 12590,
+            "x1": 13040,
+            "y": 0
+          },
+          "frames": 86,
+          "expansions": 6,
+          "depth": 5,
+          "costBlood": false,
+          "dFrom": 2.9066666666666667,
+          "dTo": 1.6666666666666665,
+          "via": "run",
+          "x": 12960,
+          "y": 0
+        },
+        {
+          "seg": 33,
+          "from": {
+            "x0": 12590,
+            "x1": 13040,
+            "y": 0
+          },
+          "to": {
+            "x0": 13055,
+            "x1": 13225,
+            "y": 42
+          },
+          "frames": 51,
+          "expansions": 2,
+          "depth": 2,
+          "costBlood": false,
+          "dFrom": 1.6666666666666665,
+          "dTo": 1.26,
+          "via": "run",
+          "x": 13214,
+          "y": 42
+        },
+        {
+          "seg": 34,
+          "from": {
+            "x0": 13055,
+            "x1": 13225,
+            "y": 42
+          },
+          "to": {
+            "x0": 13240,
+            "x1": 13800,
+            "y": 0
+          },
+          "frames": 65,
+          "expansions": 23,
+          "depth": 4,
+          "costBlood": false,
+          "dFrom": 1.26,
+          "dTo": 0,
+          "via": "run",
+          "x": 13647,
+          "y": 0
+        },
+        {
+          "seg": 35,
+          "point": true,
+          "to": {
+            "x": 13680,
+            "y": 0
+          },
+          "frames": 45,
+          "expansions": 20,
+          "costBlood": false
+        }
+      ],
+      "inputFrames": 6058
+    },
+    {
+      "stage": 1,
+      "muster": true,
+      "boot": {
+        "levelLength": 12400,
+        "capabilities": [
+          "jump",
+          "weapon",
+          "dash",
+          "portal-single",
+          "portal-pair",
+          "wall-jump",
+          "counter",
+          "double-jump"
+        ],
+        "spawn": {
+          "x": 70,
+          "y": 0
+        }
+      },
+      "seconds": 126.8,
+      "pass": true,
+      "direction": 1,
+      "goalX": 12280,
+      "goalKind": "level-end",
+      "crossedBoundary": true,
+      "reachedX": 12338,
+      "segments": 19,
+      "backtracks": 3,
+      "frames": 4102,
+      "replayFrames": 4101,
+      "expansions": 12361,
+      "replayIdentical": true,
+      "capabilities": {
+        "doubleJump": true,
+        "dash": true,
+        "weapon": false
+      },
+      "envelope": {
+        "maxRise": 233,
+        "maxReach": 659
+      },
+      "costedSegments": 0,
+      "blood": 5,
+      "mechanisms": [],
+      "history": [
+        {
+          "seg": 0,
+          "from": 2400,
+          "to": "2400:0",
+          "blood": false,
+          "exp": 9,
+          "ok": true
+        },
+        {
+          "seg": 1,
+          "from": 4200,
+          "to": "4200:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 822
+        },
+        {
+          "seg": 1,
+          "from": 4200,
+          "to": "4410:65",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 1057
+        },
+        {
+          "seg": 1,
+          "from": 4200,
+          "to": "2695:40",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 1,
+          "from": 4200,
+          "to": "2695:40",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 1,
+          "from": 4200,
+          "to": "4200:0",
+          "blood": false,
+          "exp": 336,
+          "ok": true
+        },
+        {
+          "seg": 2,
+          "from": 6700,
+          "to": "6700:0",
+          "blood": false,
+          "exp": 166,
+          "ok": true
+        },
+        {
+          "seg": 3,
+          "from": 9573,
+          "to": "8195:210",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 126
+        },
+        {
+          "seg": 3,
+          "from": 9573,
+          "to": "7965:140",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 87
+        },
+        {
+          "seg": 3,
+          "from": 9573,
+          "to": "7735:70",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 42
+        },
+        {
+          "seg": 3,
+          "from": 9573,
+          "to": "7735:70",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 24
+        },
+        {
+          "seg": 3,
+          "from": 9573,
+          "to": "7965:140",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 87
+        },
+        {
+          "seg": 3,
+          "from": 9573,
+          "to": "7735:70",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 42
+        },
+        {
+          "backtrack": true,
+          "banned": "6700:9573:0",
+          "seg": 2
+        },
+        {
+          "seg": 2,
+          "from": 6700,
+          "to": "5890:185",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 83
+        },
+        {
+          "seg": 2,
+          "from": 6700,
+          "to": "4410:65",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 357
+        },
+        {
+          "seg": 2,
+          "from": 6700,
+          "to": "4635:130",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 53
+        },
+        {
+          "seg": 2,
+          "from": 6700,
+          "to": "4635:130",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 52
+        },
+        {
+          "seg": 2,
+          "from": 6700,
+          "to": "5890:185",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 72
+        },
+        {
+          "seg": 2,
+          "from": 6700,
+          "to": "4635:130",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 41
+        },
+        {
+          "backtrack": true,
+          "banned": "4200:6700:0",
+          "seg": 1
+        },
+        {
+          "seg": 1,
+          "from": 4200,
+          "to": "4410:65",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 1057
+        },
+        {
+          "seg": 1,
+          "from": 4200,
+          "to": "4635:130",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 1321
+        },
+        {
+          "seg": 1,
+          "from": 4200,
+          "to": "3815:118",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 493
+        },
+        {
+          "seg": 1,
+          "from": 4200,
+          "to": "4855:195",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 1580
+        },
+        {
+          "seg": 1,
+          "from": 4200,
+          "to": "3815:118",
+          "blood": false,
+          "exp": 496,
+          "ok": true
+        },
+        {
+          "seg": 2,
+          "from": 4590,
+          "to": "4200:0",
+          "blood": false,
+          "exp": 129,
+          "ok": true
+        },
+        {
+          "seg": 3,
+          "from": 5245,
+          "to": "5890:185",
+          "blood": false,
+          "exp": 2,
+          "ok": true
+        },
+        {
+          "seg": 4,
+          "from": 5520,
+          "to": "6080:250",
+          "blood": false,
+          "exp": 3,
+          "ok": true
+        },
+        {
+          "seg": 5,
+          "from": 5790,
+          "to": "6080:250",
+          "blood": false,
+          "exp": 87,
+          "ok": true
+        },
+        {
+          "seg": 6,
+          "from": 6070,
+          "to": "6700:0",
+          "blood": false,
+          "exp": 7,
+          "ok": true
+        },
+        {
+          "seg": 7,
+          "from": 9573,
+          "to": "8195:210",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 126
+        },
+        {
+          "seg": 7,
+          "from": 9573,
+          "to": "7965:140",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 87
+        },
+        {
+          "seg": 7,
+          "from": 9573,
+          "to": "7735:70",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 42
+        },
+        {
+          "seg": 7,
+          "from": 9573,
+          "to": "7735:70",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 41
+        },
+        {
+          "seg": 7,
+          "from": 9573,
+          "to": "7965:140",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 87
+        },
+        {
+          "seg": 7,
+          "from": 9573,
+          "to": "7735:70",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 42
+        },
+        {
+          "backtrack": true,
+          "banned": "6700:9573:0",
+          "seg": 6
+        },
+        {
+          "seg": 6,
+          "from": 6070,
+          "to": "6080:250",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 110
+        },
+        {
+          "seg": 6,
+          "from": 6070,
+          "to": "4200:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 0
+        },
+        {
+          "seg": 6,
+          "from": 6070,
+          "to": "4200:0",
+          "blood": false,
+          "exp": 242,
+          "ok": true
+        },
+        {
+          "seg": 7,
+          "from": 7905,
+          "to": "8425:280",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 8,
+          "from": 8135,
+          "to": "8655:350",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 9,
+          "from": 8365,
+          "to": "8885:420",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 10,
+          "from": 8595,
+          "to": "9115:490",
+          "blood": false,
+          "exp": 4,
+          "ok": true
+        },
+        {
+          "seg": 11,
+          "from": 8825,
+          "to": "9320:560",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 12,
+          "from": 9055,
+          "to": "9490:620",
+          "blood": false,
+          "exp": 15,
+          "ok": true
+        },
+        {
+          "seg": 13,
+          "from": 9285,
+          "to": "9490:620",
+          "blood": false,
+          "exp": 1,
+          "ok": true
+        },
+        {
+          "seg": 14,
+          "from": 9540,
+          "to": "9490:620",
+          "blood": false,
+          "exp": 2,
+          "ok": true
+        },
+        {
+          "seg": 15,
+          "from": 9710,
+          "to": "9700:0",
+          "blood": false,
+          "exp": 36,
+          "ok": true
+        },
+        {
+          "seg": 16,
+          "from": 10085,
+          "to": "9700:0",
+          "blood": false,
+          "exp": 33,
+          "ok": true
+        },
+        {
+          "seg": 17,
+          "from": 10315,
+          "to": "9700:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 42
+        },
+        {
+          "seg": 17,
+          "from": 10315,
+          "to": "10835:210",
+          "blood": false,
+          "exp": 71,
+          "ok": true
+        },
+        {
+          "seg": 18,
+          "from": 12400,
+          "to": "point:12280",
+          "blood": false,
+          "exp": 358,
+          "ok": true
+        }
+      ],
+      "solved": [
+        {
+          "seg": 0,
+          "from": {
+            "x0": 0,
+            "x1": 2400,
+            "y": 0
+          },
+          "to": {
+            "x0": 2400,
+            "x1": 4200,
+            "y": 0
+          },
+          "frames": 739,
+          "expansions": 9,
+          "depth": 9,
+          "costBlood": false,
+          "dFrom": 16.383333333333333,
+          "dTo": 15.383333333333333,
+          "via": "run",
+          "x": 2526,
+          "y": 0
+        },
+        {
+          "seg": 1,
+          "from": {
+            "x0": 2400,
+            "x1": 4200,
+            "y": 0
+          },
+          "to": {
+            "x0": 4410,
+            "x1": 4590,
+            "y": 65
+          },
+          "frames": 814,
+          "expansions": 496,
+          "depth": 49,
+          "costBlood": false,
+          "dFrom": 23.829999999999995,
+          "dTo": 21.85833333333333,
+          "via": "run",
+          "x": 4491,
+          "y": 65
+        },
+        {
+          "seg": 2,
+          "from": {
+            "x0": 4410,
+            "x1": 4590,
+            "y": 65
+          },
+          "to": {
+            "x0": 5075,
+            "x1": 5245,
+            "y": 260
+          },
+          "frames": 194,
+          "expansions": 129,
+          "depth": 7,
+          "costBlood": false,
+          "dFrom": 21.85833333333333,
+          "dTo": 21.333333333333332,
+          "via": "run",
+          "x": 5145,
+          "y": 260
+        },
+        {
+          "seg": 3,
+          "from": {
+            "x0": 5075,
+            "x1": 5245,
+            "y": 260
+          },
+          "to": {
+            "x0": 5320,
+            "x1": 5520,
+            "y": 325
+          },
+          "frames": 66,
+          "expansions": 2,
+          "depth": 2,
+          "costBlood": false,
+          "dFrom": 21.333333333333332,
+          "dTo": 20.34166666666667,
+          "via": "run",
+          "x": 5365,
+          "y": 325
+        },
+        {
+          "seg": 4,
+          "from": {
+            "x0": 5320,
+            "x1": 5520,
+            "y": 325
+          },
+          "to": {
+            "x0": 5610,
+            "x1": 5790,
+            "y": 250
+          },
+          "frames": 94,
+          "expansions": 3,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 20.34166666666667,
+          "dTo": 19.066666666666666,
+          "via": "run",
+          "x": 5678,
+          "y": 250
+        },
+        {
+          "seg": 5,
+          "from": {
+            "x0": 5610,
+            "x1": 5790,
+            "y": 250
+          },
+          "to": {
+            "x0": 5890,
+            "x1": 6070,
+            "y": 185
+          },
+          "frames": 206,
+          "expansions": 87,
+          "depth": 16,
+          "costBlood": false,
+          "dFrom": 19.066666666666666,
+          "dTo": 17.40833333333333,
+          "via": "run",
+          "x": 6061,
+          "y": 185
+        },
+        {
+          "seg": 6,
+          "from": {
+            "x0": 5890,
+            "x1": 6070,
+            "y": 185
+          },
+          "to": {
+            "x0": 7735,
+            "x1": 7905,
+            "y": 70
+          },
+          "frames": 260,
+          "expansions": 242,
+          "depth": 13,
+          "costBlood": false,
+          "dFrom": 17.858333333333334,
+          "dTo": 14,
+          "via": "run",
+          "x": 7832,
+          "y": 70
+        },
+        {
+          "seg": 7,
+          "from": {
+            "x0": 7735,
+            "x1": 7905,
+            "y": 70
+          },
+          "to": {
+            "x0": 7965,
+            "x1": 8135,
+            "y": 140
+          },
+          "frames": 39,
+          "expansions": 1,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": 14,
+          "dTo": 12.883333333333333,
+          "via": "approach40h21",
+          "x": 8015,
+          "y": 140
+        },
+        {
+          "seg": 8,
+          "from": {
+            "x0": 7965,
+            "x1": 8135,
+            "y": 140
+          },
+          "to": {
+            "x0": 8195,
+            "x1": 8365,
+            "y": 210
+          },
+          "frames": 55,
+          "expansions": 1,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": 12.883333333333333,
+          "dTo": 11.333333333333332,
+          "via": "approach40h21",
+          "x": 8217,
+          "y": 210
+        },
+        {
+          "seg": 9,
+          "from": {
+            "x0": 8195,
+            "x1": 8365,
+            "y": 210
+          },
+          "to": {
+            "x0": 8425,
+            "x1": 8595,
+            "y": 280
+          },
+          "frames": 72,
+          "expansions": 1,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": 11.333333333333332,
+          "dTo": 10.216666666666667,
+          "via": "approach40h21",
+          "x": 8444,
+          "y": 280
+        },
+        {
+          "seg": 10,
+          "from": {
+            "x0": 8425,
+            "x1": 8595,
+            "y": 280
+          },
+          "to": {
+            "x0": 8655,
+            "x1": 8825,
+            "y": 350
+          },
+          "frames": 100,
+          "expansions": 4,
+          "depth": 4,
+          "costBlood": false,
+          "dFrom": 10.216666666666667,
+          "dTo": 9.1,
+          "via": "approach40h21",
+          "x": 8673,
+          "y": 350
+        },
+        {
+          "seg": 11,
+          "from": {
+            "x0": 8655,
+            "x1": 8825,
+            "y": 350
+          },
+          "to": {
+            "x0": 8885,
+            "x1": 9055,
+            "y": 420
+          },
+          "frames": 73,
+          "expansions": 1,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": 9.1,
+          "dTo": 7.55,
+          "via": "approach40h21",
+          "x": 8903,
+          "y": 420
+        },
+        {
+          "seg": 12,
+          "from": {
+            "x0": 8885,
+            "x1": 9055,
+            "y": 420
+          },
+          "to": {
+            "x0": 9115,
+            "x1": 9285,
+            "y": 490
+          },
+          "frames": 233,
+          "expansions": 15,
+          "depth": 15,
+          "costBlood": false,
+          "dFrom": 7.55,
+          "dTo": 6.433333333333334,
+          "via": "approach40h21",
+          "x": 9133,
+          "y": 490
+        },
+        {
+          "seg": 13,
+          "from": {
+            "x0": 9115,
+            "x1": 9285,
+            "y": 490
+          },
+          "to": {
+            "x0": 9320,
+            "x1": 9540,
+            "y": 560
+          },
+          "frames": 69,
+          "expansions": 1,
+          "depth": 1,
+          "costBlood": false,
+          "dFrom": 6.433333333333334,
+          "dTo": 5.3999999999999995,
+          "via": "approach40h21",
+          "x": 9363,
+          "y": 560
+        },
+        {
+          "seg": 14,
+          "from": {
+            "x0": 9320,
+            "x1": 9540,
+            "y": 560
+          },
+          "to": {
+            "x0": 9490,
+            "x1": 9710,
+            "y": 620
+          },
+          "frames": 64,
+          "expansions": 2,
+          "depth": 2,
+          "costBlood": false,
+          "dFrom": 5.3999999999999995,
+          "dTo": 4.1,
+          "via": "run",
+          "x": 9576,
+          "y": 620
+        },
+        {
+          "seg": 15,
+          "from": {
+            "x0": 9490,
+            "x1": 9710,
+            "y": 620
+          },
+          "to": {
+            "x0": 9915,
+            "x1": 10085,
+            "y": 490
+          },
+          "frames": 131,
+          "expansions": 36,
+          "depth": 6,
+          "costBlood": false,
+          "dFrom": 4.1,
+          "dTo": 4.05,
+          "via": "run",
+          "x": 10013,
+          "y": 490
+        },
+        {
+          "seg": 16,
+          "from": {
+            "x0": 9915,
+            "x1": 10085,
+            "y": 490
+          },
+          "to": {
+            "x0": 10145,
+            "x1": 10315,
+            "y": 420
+          },
+          "frames": 69,
+          "expansions": 33,
+          "depth": 3,
+          "costBlood": false,
+          "dFrom": 4.05,
+          "dTo": 3.7,
+          "via": "run",
+          "x": 10243,
+          "y": 420
+        },
+        {
+          "seg": 17,
+          "from": {
+            "x0": 10145,
+            "x1": 10315,
+            "y": 420
+          },
+          "to": {
+            "x0": 9700,
+            "x1": 12400,
+            "y": 0
+          },
+          "frames": 265,
+          "expansions": 71,
+          "depth": 17,
+          "costBlood": false,
+          "dFrom": 3.7,
+          "dTo": 0,
+          "via": "airJump",
+          "x": 11633,
+          "y": 0
+        },
+        {
+          "seg": 18,
+          "point": true,
+          "to": {
+            "x": 12280,
+            "y": 0
+          },
+          "frames": 559,
+          "expansions": 358,
+          "costBlood": false
+        }
+      ],
+      "inputFrames": 4102
+    },
+    {
+      "stage": 2,
+      "muster": true,
+      "boot": {
+        "levelLength": 14000,
+        "capabilities": [
+          "jump",
+          "weapon",
+          "dash",
+          "portal-single",
+          "portal-pair",
+          "wall-jump",
+          "counter",
+          "double-jump"
+        ],
+        "spawn": {
+          "x": 70,
+          "y": 0
+        }
+      },
+      "seconds": 25.7,
+      "pass": false,
+      "direction": 1,
+      "goalX": 13130,
+      "goalKind": "boss-threshold",
+      "crossedBoundary": false,
+      "reachedX": 70,
+      "segments": 0,
+      "backtracks": 0,
+      "frames": 0,
+      "replayFrames": 0,
+      "expansions": 2310,
+      "replayIdentical": true,
+      "capabilities": {
+        "doubleJump": true,
+        "dash": true,
+        "weapon": true
+      },
+      "envelope": {
+        "maxRise": 233,
+        "maxReach": 659
+      },
+      "costedSegments": 0,
+      "blood": 5,
+      "mechanisms": [],
+      "history": [
+        {
+          "seg": 0,
+          "from": 2600,
+          "to": "2600:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 2313
+        },
+        {
+          "seg": 0,
+          "from": 2600,
+          "to": "3115:65",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 2867
+        },
+        {
+          "seg": 0,
+          "from": 2600,
+          "to": "2600:0",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 2313
+        },
+        {
+          "seg": 0,
+          "from": 2600,
+          "to": "3115:65",
+          "blood": false,
+          "exp": 700,
+          "ok": false,
+          "bestH": 2867
+        },
+        {
+          "seg": 0,
+          "from": 2600,
+          "to": "2600:0",
+          "blood": true,
+          "exp": 490,
+          "ok": false,
+          "bestH": 2191
+        }
+      ],
+      "failedSegment": 0,
+      "reason": "every hop from the current ledge failed",
+      "from": {
+        "x0": 0,
+        "x1": 2600,
+        "y": 0
+      },
+      "tried": [
+        {
+          "target": {
+            "x0": 2600,
+            "x1": 5600,
+            "y": 0
+          },
+          "bloodAllowed": false,
+          "budget": 210,
+          "expansions": 210,
+          "bestH": 2313,
+          "histogram": {
+            "blood": 203,
+            "ok": 7
+          },
+          "sample": [
+            {
+              "depth": 7,
+              "macro": "approach130h21",
+              "why": "blood",
+              "x": 300,
+              "y": 0
+            },
+            {
+              "depth": 7,
+              "macro": "approach130h21dash",
+              "why": "blood",
+              "x": 300,
+              "y": 0
+            },
+            {
+              "depth": 7,
+              "macro": "approach130h21double",
+              "why": "blood",
+              "x": 300,
+              "y": 0
+            },
+            {
+              "depth": 7,
+              "macro": "approach130h12",
+              "why": "blood",
+              "x": 300,
+              "y": 0
+            },
+            {
+              "depth": 7,
+              "macro": "approach130h12dash",
+              "why": "blood",
+              "x": 300,
+              "y": 0
+            },
+            {
+              "depth": 7,
+              "macro": "approach130h12double",
+              "why": "blood",
+              "x": 300,
+              "y": 0
+            },
+            {
+              "depth": 7,
+              "macro": "wait",
+              "why": "ok",
+              "x": 293,
+              "y": 0
+            },
+            {
+              "depth": 8,
+              "macro": "strike",
+              "why": "blood",
+              "x": 300,
+              "y": 0
+            },
+            {
+              "depth": 8,
+              "macro": "approach40h21",
+              "why": "blood",
+              "x": 300,
+              "y": 0
+            },
+            {
+              "depth": 8,
+              "macro": "approach40h21dash",
+              "why": "blood",
+              "x": 300,
+              "y": 0
+            },
+            {
+              "depth": 8,
+              "macro": "approach40h21double",
+              "why": "blood",
+              "x": 300,
+              "y": 0
+            },
+            {
+              "depth": 8,
+              "macro": "approach40h12",
+              "why": "blood",
+              "x": 300,
+              "y": 0
+            }
+          ]
+        },
+        {
+          "target": {
+            "x0": 3115,
+            "x1": 3285,
+            "y": 65
+          },
+          "bloodAllowed": false,
+          "budget": 210,
+          "expansions": 210,
+          "bestH": 2867,
+          "histogram": {
+            "blood": 203,
+            "ok": 7
+          },
+          "sample": [
+            {
+              "depth": 7,
+              "macro": "approach130h12dash",
+              "why": "blood",
+              "x": 300,
+              "y": 0
+            },
+            {
+              "depth": 7,
+              "macro": "approach130h12double",
+              "why": "blood",
+              "x": 300,
+              "y": 0
+            },
+            {
+              "depth": 7,
+              "macro": "wait",
+              "why": "ok",
+              "x": 293,
+              "y": 0
+            },
+            {
+              "depth": 8,
+              "macro": "strike",
+              "why": "blood",
+              "x": 300,
+              "y": 0
+            },
+            {
+              "depth": 8,
+              "macro": "approach40h21",
+              "why": "blood",
+              "x": 300,
+              "y": 0
+            },
+            {
+              "depth": 8,
+              "macro": "approach40h21dash",
+              "why": "blood",
+              "x": 300,
+              "y": 0
+            },
+            {
+              "depth": 8,
+              "macro": "approach40h21double",
+              "why": "blood",
+              "x": 300,
+              "y": 0
+            },
+            {
+              "depth": 8,
+              "macro": "approach40h12",
+              "why": "blood",
+              "x": 300,
+              "y": 0
+            },
+            {
+              "depth": 8,
+              "macro": "approach40h12dash",
+              "why": "blood",
+              "x": 300,
+              "y": 0
+            },
+            {
+              "depth": 8,
+              "macro": "approach40h12double",
+              "why": "blood",
+              "x": 300,
+              "y": 0
+            },
+            {
+              "depth": 8,
+              "macro": "approach70h21",
+              "why": "blood",
+              "x": 300,
+              "y": 0
+            },
+            {
+              "depth": 8,
+              "macro": "approach70h21dash",
+              "why": "blood",
+              "x": 300,
+              "y": 0
+            }
+          ]
+        },
+        {
+          "target": {
+            "x0": 2600,
+            "x1": 5600,
+            "y": 0
+          },
+          "bloodAllowed": false,
+          "budget": 700,
+          "expansions": 700,
+          "bestH": 2313,
+          "histogram": {
+            "blood": 678,
+            "ok": 22
+          },
+          "sample": [
+            {
+              "depth": 22,
+              "macro": "approach130h12",
+              "why": "blood",
+              "x": 270,
+              "y": 0
+            },
+            {
+              "depth": 22,
+              "macro": "approach130h12dash",
+              "why": "blood",
+              "x": 270,
+              "y": 0
+            },
+            {
+              "depth": 22,
+              "macro": "approach130h12double",
+              "why": "blood",
+              "x": 270,
+              "y": 0
+            },
+            {
+              "depth": 22,
+              "macro": "wait",
+              "why": "ok",
+              "x": 244,
+              "y": 0
+            },
+            {
+              "depth": 23,
+              "macro": "strike",
+              "why": "blood",
+              "x": 270,
+              "y": 0
+            },
+            {
+              "depth": 23,
+              "macro": "approach40h21",
+              "why": "blood",
+              "x": 270,
+              "y": 0
+            },
+            {
+              "depth": 23,
+              "macro": "approach40h21dash",
+              "why": "blood",
+              "x": 270,
+              "y": 0
+            },
+            {
+              "depth": 23,
+              "macro": "approach40h21double",
+              "why": "blood",
+              "x": 270,
+              "y": 0
+            },
+            {
+              "depth": 23,
+              "macro": "approach40h12",
+              "why": "blood",
+              "x": 270,
+              "y": 0
+            },
+            {
+              "depth": 23,
+              "macro": "approach40h12dash",
+              "why": "blood",
+              "x": 270,
+              "y": 0
+            },
+            {
+              "depth": 23,
+              "macro": "approach40h12double",
+              "why": "blood",
+              "x": 270,
+              "y": 0
+            },
+            {
+              "depth": 23,
+              "macro": "approach70h21",
+              "why": "blood",
+              "x": 270,
+              "y": 0
+            }
+          ]
+        },
+        {
+          "target": {
+            "x0": 3115,
+            "x1": 3285,
+            "y": 65
+          },
+          "bloodAllowed": false,
+          "budget": 700,
+          "expansions": 700,
+          "bestH": 2867,
+          "histogram": {
+            "blood": 678,
+            "ok": 22
+          },
+          "sample": [
+            {
+              "depth": 23,
+              "macro": "strike",
+              "why": "blood",
+              "x": 270,
+              "y": 0
+            },
+            {
+              "depth": 23,
+              "macro": "approach40h21",
+              "why": "blood",
+              "x": 270,
+              "y": 0
+            },
+            {
+              "depth": 23,
+              "macro": "approach40h21dash",
+              "why": "blood",
+              "x": 270,
+              "y": 0
+            },
+            {
+              "depth": 23,
+              "macro": "approach40h21double",
+              "why": "blood",
+              "x": 270,
+              "y": 0
+            },
+            {
+              "depth": 23,
+              "macro": "approach40h12",
+              "why": "blood",
+              "x": 270,
+              "y": 0
+            },
+            {
+              "depth": 23,
+              "macro": "approach40h12dash",
+              "why": "blood",
+              "x": 270,
+              "y": 0
+            },
+            {
+              "depth": 23,
+              "macro": "approach40h12double",
+              "why": "blood",
+              "x": 270,
+              "y": 0
+            },
+            {
+              "depth": 23,
+              "macro": "approach70h21",
+              "why": "blood",
+              "x": 270,
+              "y": 0
+            },
+            {
+              "depth": 23,
+              "macro": "approach70h21dash",
+              "why": "blood",
+              "x": 270,
+              "y": 0
+            },
+            {
+              "depth": 23,
+              "macro": "approach70h21double",
+              "why": "blood",
+              "x": 270,
+              "y": 0
+            },
+            {
+              "depth": 23,
+              "macro": "approach70h12",
+              "why": "blood",
+              "x": 270,
+              "y": 0
+            },
+            {
+              "depth": 23,
+              "macro": "approach70h12dash",
+              "why": "blood",
+              "x": 270,
+              "y": 0
+            }
+          ]
+        },
+        {
+          "target": {
+            "x0": 2600,
+            "x1": 5600,
+            "y": 0
+          },
+          "bloodAllowed": true,
+          "budget": 490,
+          "expansions": 490,
+          "bestH": 2191,
+          "histogram": {
+            "ok": 466,
+            "wrong-seam": 24
+          },
+          "sample": [
+            {
+              "depth": 21,
+              "macro": "airJump",
+              "why": "ok",
+              "x": 151,
+              "y": 73
+            },
+            {
+              "depth": 21,
+              "macro": "back",
+              "why": "ok",
+              "x": 78,
+              "y": 0
+            },
+            {
+              "depth": 21,
+              "macro": "wait",
+              "why": "ok",
+              "x": 113,
+              "y": 0
+            },
+            {
+              "depth": 20,
+              "macro": "dash",
+              "why": "ok",
+              "x": 184,
+              "y": 28
+            },
+            {
+              "depth": 21,
+              "macro": "run",
+              "why": "ok",
+              "x": 294,
+              "y": 0
+            },
+            {
+              "depth": 21,
+              "macro": "dash",
+              "why": "ok",
+              "x": 310,
+              "y": 0
+            },
+            {
+              "depth": 21,
+              "macro": "airJump",
+              "why": "ok",
+              "x": 345,
+              "y": 96
+            },
+            {
+              "depth": 21,
+              "macro": "back",
+              "why": "ok",
+              "x": 216,
+              "y": 0
+            },
+            {
+              "depth": 21,
+              "macro": "wait",
+              "why": "ok",
+              "x": 286,
+              "y": 0
+            },
+            {
+              "depth": 20,
+              "macro": "airJump",
+              "why": "ok",
+              "x": 113,
+              "y": 117
+            },
+            {
+              "depth": 21,
+              "macro": "run",
+              "why": "ok",
+              "x": 151,
+              "y": 99
+            },
+            {
+              "depth": 21,
+              "macro": "dash",
+              "why": "ok",
+              "x": 232,
+              "y": 125
+            }
+          ]
+        }
+      ],
+      "solved": [],
+      "inputFrames": 0
+    }
+  ]
+}

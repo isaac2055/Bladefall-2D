@@ -1,4 +1,4 @@
-# Current state — 2026-09-13
+# Current state — 2026-09-14
 
 ## Production status
 
@@ -10,29 +10,25 @@ exposed ice finale, service network and active Muster Engine. The latest mine,
 shortcut and Frostfell reinforcement changes received the owner's “Love it.”
 That feedback is not a claim of exhaustive fresh-save or full-world acceptance.
 
-Levels 9–16 still need their dedicated current-design passes, even where legacy
-boss mechanics or custom geometry already exist. Frost Sorcerer / White Court is
-the next untouched chapter. The Muster recall outside Frostfell is the current
-work item: what exists is a handful of posts per region and no change to existing
-enemies, which the owner reviewed on 2026-09-13 as not noticeable. The intent and
-plan are in `12-RECALL-WORK-ORDER.md`.
+White Court (region9) is implemented locally and awaiting owner playtesting.
+Its continuous authored route wins the three-ward Sorcerer and reaches the usable
+Emberdeep exit in5361frames. Other later regions still need dedicated design passes. Run 1 of the three
+follow-up runs implements the expanded recall; run 2 adds verified bot reliability
+and traversal verbs. Run 3 implements return payoff and documents White Court planning. See `12-RECALL-WORK-ORDER.md`.
+
+See `../docs/charters/09-frost-sorcerer/ACCEPTANCE-AUDIT.md` for current evidence
+and the remaining human pacing/legibility gate. Automated success is not owner
+acceptance; the generic bot still fails at the Glassworks gate.
 
 ## Source identity and verification
 
-- Canonical runtime: `public/index.html`, version `7.96.0`.
-- Offline cache: `public/sw.js`, `bladefall-v176`.
-- Both identifiers were bumped on 2026-09-11 at the release boundary. `sw.js` now
-  also caches `bladefall-harness.js`, which earlier builds never shipped.
-- Latest retained Frostfell validator receipt: **15/15 checks true**, `pass: true`,
-  no runtime errors. Includes the settlement, finale, persistence, Muster and
-  normal-keyboard mine crossings. See [verification](10-HANDOFF-VERIFICATION.md).
-- Latest full run: **`npm test` 500 passed, 0 failed**; `npm run release:check` ok,
-  **93** assets checked (the manifest is parsed from `build-deploy.sh`, so it cannot
-  drift again). Mirror rebuilt. No Netlify deployment was performed or authorized.
-- Git tracks the whole tree. Pushed and merged on 2026-09-13: GitHub `main` is at
-  the release commit plus handoff-only commits. A fresh clone rebuilds and passes
-  `release:check`; re-verified after the 2026-09-13 iCloud rehydration (`git fsck`
-  clean, 500/500, 93 assets).
+- Source `public/index.html`: **7.99.0**; `public/sw.js`: **bladefall-v179**.
+- Mirror rebuilt; `release:check` passes all **93** assets. No deployment.
+- Frostfell receipt retains **15/15** checks true and no runtime errors.
+- Full suite **513/513**, recall/reserve focused checks **12/12**, and all eight
+  directional shortcut checks pass. See `10-HANDOFF-VERIFICATION.md` for scope.
+- Git is a complete source repository; run 1–3 changes are local and uncommitted,
+  so GitHub main still reflects 7.96.0. The Desktop copy remains iCloud-synced.
 
 ## Current regional status
 
@@ -42,8 +38,12 @@ plan are in `12-RECALL-WORK-ORDER.md`.
 | 6 | Ruined Keep: two Belfry payloads, Wall Jump, Archive, Keep Key and westward return implemented. |
 | 7 | Warden: Turning Cells and opposed-cross boss complete in substance; latest three-crash/final-strike rules below. |
 | 8 | Frostfell: authored 15,100-unit level; its Muster Engine is the single source of the world-wide recall. |
-| 1–3, 6 | After Frostfell's strike: 3–5 recall posts each, no buff to existing enemies, first Warden post 10,900 units from the mine arrival. Rejected as insufficient on 2026-09-13; see `12-RECALL-WORK-ORDER.md`. |
+| 1–3, 7 | Expanded return rosters: Outskirts 12, Woods 13, Causeway 15, Warden 14; four regional roles and early encounters. |
 | 9–16 | Existing foundations/legacy content; full current level passes remain. |
+
+Four reserve caches add two vitality fragments, two Forge Seals and permanent
+physical return routes. See `12-RECALL-WORK-ORDER.md` for coordinates and proof
+boundaries. White Court has a design plan, not new gameplay.
 
 ## Latest behavior to preserve
 
@@ -59,9 +59,10 @@ Frostfell's mine uses **Up at both ends**, arriving at `(330, 0)`. Held Left can
 bounce between levels. The service route becomes **refuge → court → summit →
 refuge** after the summit passage is used, requiring fresh Up for every move.
 Muster activation is a six-second bell/camera sequence; the strike changes mood
-and music from Drifting Memories to ClockWork. Eleven authored reinforcements
-and a one-time 55% max-health increase apply **only in Frostfell** today; the
-owner wants the same baseline world-wide (`12-RECALL-WORK-ORDER.md`). Larger hulks
+and music from Drifting Memories to ClockWork. Frostfell retains its eleven authored reinforcements. All ordinary campaign
+enemies now receive one ×1.55 health / ×1.25 raw-damage boost and at least 480
+notice. First recall loads re-garrison ordinary enemies once; bosses/unique
+encounters remain cleared (`12-RECALL-WORK-ORDER.md`). Larger hulks
 cost two Blood on contact. No boss revival, duplicate roster or stacking health.
 
 Read [recent changes](11-RECENT-CHANGES-AND-PLANS.md) for opening repairs, exact
@@ -73,19 +74,23 @@ Frostfell setup, harness status and proposal boundaries; read the
 - Bram's escort now concludes at the root wall with an authored payoff; Gilded
   Instinct and the three formerly inert Gifts are implemented. Five secondary
   Echo hooks remain unread (see `KNOWN_BUGS.md`).
-- The traversal bot (`npm run bot`) completes Outskirts, Black Woods and the
-  Causeway and reports the exact failed segment elsewhere; every later level
-  stops at a verb it lacks, portal placement first. It is not a campaign bot.
+- The traversal bot now requires full-state replay identity, stores replayable
+  input artifacts, and can perform crystal refills, pickups/flight, linked portals
+  and an independent floor-pair launch. The final sweep passes Outskirts/Woods
+  exits and the Brute threshold; five later full-stage attempts still fail. The
+  recalled Causeway now passes. See `12-RECALL-WORK-ORDER.md` for exact blocks.
+  Seven bot tests and the full 510-test suite pass. This is not a campaign bot.
 - The White Court aqueduct's Frostfell half is validated; the far half waits for
   that level's pass.
-- The recall outside Frostfell does not yet deliver more, larger, smarter or
-  tougher enemies; `12-RECALL-WORK-ORDER.md` is the spec. Its rewards, caches and
-  shortcuts follow. Co-op and NG+ follow solo Base.
+- The new recall has runtime/test evidence, but subjective balance remains for
+  player review. Rewards, caches and shortcuts follow in run 3. Co-op and NG+
+  follow solo Base.
 
 ## Working-copy and release caveats
 
-Git tracks the whole authoritative tree and GitHub `main` matches it, so a fresh
-clone is a complete working copy; the lean-copy generator remains the way to hand
+Git tracks the whole authoritative tree; GitHub `main` is the previous release
+until these local run 1/run 2 changes are committed and pushed. A fresh clone contains
+the previous complete release; the lean-copy generator remains the way to hand
 over a runnable folder without the historical evidence. The owner's own copy lives
 in iCloud-synced `~/Desktop`, which can evict files to placeholders that hang every
 read; see the Git section of [essential files](06-ESSENTIAL-FILES.md) for the

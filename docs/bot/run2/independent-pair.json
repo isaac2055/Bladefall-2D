@@ -1,0 +1,257 @@
+{
+  "schema": "bladefall.traversal-bot",
+  "generatedAt": "2026-09-14T17:15:50.336Z",
+  "pass": true,
+  "runtimeErrors": [],
+  "runs": [
+    {
+      "stage": 5,
+      "muster": false,
+      "boot": {
+        "levelLength": 18000,
+        "capabilities": [
+          "jump",
+          "weapon",
+          "dash",
+          "portal-single",
+          "portal-pair"
+        ],
+        "spawn": {
+          "x": 70,
+          "y": 0
+        }
+      },
+      "seconds": 3.2,
+      "pass": true,
+      "routeReached": true,
+      "playerReplayIdentical": true,
+      "replayScope": "full-simulation",
+      "stateHash": "009815511d93cc42edc39f08a929aaf6cc01f5b326d789c7a9b9ef98dc46ad59",
+      "direction": 1,
+      "goalX": 4800,
+      "goalKind": "target",
+      "crossedBoundary": false,
+      "reachedX": 4935,
+      "segments": 3,
+      "backtracks": 0,
+      "frames": 1881,
+      "replayFrames": 1881,
+      "expansions": 483,
+      "replayIdentical": true,
+      "capabilities": {
+        "doubleJump": false,
+        "dash": true,
+        "weapon": true
+      },
+      "envelope": {
+        "maxRise": 135,
+        "maxReach": 536
+      },
+      "costedSegments": 0,
+      "blood": 5,
+      "mechanisms": [
+        {
+          "kind": "pair-visit",
+          "x": 3150,
+          "y": 0,
+          "after": true,
+          "history": [
+            {
+              "seg": 0,
+              "from": 3000,
+              "to": "point:3150",
+              "blood": false,
+              "exp": 1,
+              "ok": true
+            }
+          ]
+        },
+        {
+          "kind": "pair-visit",
+          "x": 4160,
+          "y": 240,
+          "after": true,
+          "history": [
+            {
+              "seg": 0,
+              "from": 4234,
+              "to": "3480:120",
+              "blood": false,
+              "exp": 210,
+              "ok": false,
+              "bestH": 72
+            },
+            {
+              "seg": 0,
+              "from": 4234,
+              "to": "3260:60",
+              "blood": false,
+              "exp": 2,
+              "ok": true
+            },
+            {
+              "seg": 1,
+              "from": 3480,
+              "to": "3700:180",
+              "blood": false,
+              "exp": 2,
+              "ok": true
+            },
+            {
+              "seg": 2,
+              "from": 3700,
+              "to": "3930:240",
+              "blood": false,
+              "exp": 2,
+              "ok": true
+            },
+            {
+              "seg": 3,
+              "from": 3920,
+              "to": "3930:240",
+              "blood": false,
+              "exp": 2,
+              "ok": true
+            },
+            {
+              "seg": 4,
+              "from": 4190,
+              "to": "point:4160",
+              "blood": false,
+              "exp": 1,
+              "ok": true
+            }
+          ]
+        },
+        {
+          "kind": "pair-visit",
+          "x": 3202,
+          "y": 360,
+          "after": true,
+          "history": [
+            {
+              "seg": 0,
+              "from": 3930,
+              "to": "3550:360",
+              "blood": false,
+              "exp": 2,
+              "ok": true
+            },
+            {
+              "seg": 1,
+              "from": 3580,
+              "to": "3550:360",
+              "blood": false,
+              "exp": 2,
+              "ok": true
+            },
+            {
+              "seg": 2,
+              "from": 3190,
+              "to": "point:3202",
+              "blood": false,
+              "exp": 1,
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "history": [
+        {
+          "seg": 0,
+          "from": 3000,
+          "to": "3000:0",
+          "blood": false,
+          "exp": 6,
+          "ok": true
+        },
+        {
+          "seg": 2,
+          "from": 4700,
+          "to": "4306:0",
+          "blood": false,
+          "exp": 210,
+          "ok": false,
+          "bestH": 315
+        },
+        {
+          "seg": 2,
+          "from": 4700,
+          "to": "4800:0",
+          "blood": false,
+          "exp": 42,
+          "ok": true
+        }
+      ],
+      "solved": [
+        {
+          "seg": 0,
+          "from": {
+            "x0": 0,
+            "x1": 3000,
+            "y": 0
+          },
+          "to": {
+            "x0": 3000,
+            "x1": 4234,
+            "y": 0
+          },
+          "frames": 960,
+          "expansions": 6,
+          "depth": 6,
+          "costBlood": false,
+          "dFrom": null,
+          "dTo": null,
+          "via": "runToZone",
+          "x": 3262,
+          "y": 0
+        },
+        {
+          "seg": 1,
+          "from": {
+            "x0": 3000,
+            "x1": 4234,
+            "y": 0
+          },
+          "to": {
+            "x0": 4340,
+            "x1": 4700,
+            "y": 470
+          },
+          "frames": 744,
+          "expansions": 0,
+          "depth": 0,
+          "costBlood": false,
+          "via": "pair-momentum",
+          "x": 4345,
+          "y": 470
+        },
+        {
+          "seg": 2,
+          "from": {
+            "x0": 4340,
+            "x1": 4700,
+            "y": 470
+          },
+          "to": {
+            "x0": 4800,
+            "x1": 7900,
+            "y": 0
+          },
+          "frames": 177,
+          "expansions": 42,
+          "depth": 42,
+          "costBlood": false,
+          "dFrom": 3.35,
+          "dTo": 0,
+          "via": "run",
+          "x": 4935,
+          "y": 0
+        }
+      ],
+      "inputFrames": 1881,
+      "inputFile": "independent-pair.inputs.json"
+    }
+  ],
+  "mode": "solve"
+}

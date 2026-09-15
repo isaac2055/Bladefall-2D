@@ -199,8 +199,12 @@ checkpoint and does not support arbitrary async cross-zone work.
 The general geometry-derived bot is separate: `scripts/bladefall-bot.mjs`
 (`npm run bot`, driver `scripts/run-bot.mjs`) builds a ledge graph from live
 platform geometry, searches macro-actions with `saveState`/`restoreState`, drives
-door and switch detours, and writes `docs/bot/receipt.json`. It completes the first
-three levels; see `TESTING.md`.
+door/switch/pickup detours and portal/flight setup, and writes receipts plus input
+artifacts with full-state hashes. `--replay` reproduces an artifact without search.
+Run 2 passes the Outskirts/Woods seams and Causeway boss threshold; later full
+routes retain explicit planner failures despite scoped new-verb proofs. Clean
+bot bootstraps restore a pristine registered runtime, including lifetime counters.
+See `TESTING.md` and `12-RECALL-WORK-ORDER.md`.
 
 ## Frostfell persistence and presentation
 
@@ -228,3 +232,26 @@ rebuilding a manifest must not duplicate foes or erase solved progress.
 The three authored enemy types use shared AI/ecology; the two-Blood hulk passes
 an explicit damage override. `bladefall-audio.js` owns the bell cue. The changed
 music/atmosphere restore from the circuit without replaying the cinematic.
+
+## Run 1 recall implementation
+
+`applyRecallBaseline()` applies health/damage once to reconstructed entities after
+hydration (and new ordinary actors during update). Do not persist only its marker
+without stats: normal zone deltas deliberately do not store max-health/damage.
+`regarrisonRecalledZone()` creates a normalized state and removes only dead
+rest-reset enemy deltas on first receipt, guarded by `recall-garrisoned-v1`.
+Stable original reinforcement row indices were preserved for existing saves.
+`updateRegionalRecallEnemy()` owns locked-target warnings, movement and recovery;
+linesmen coordinate behind a nearby marshal. Source/role registration is in
+`index.html` and `bladefall-ecology.js` (24 ordinary species).
+
+## Run 3 return reserves (7.98.0)
+
+`RECALL_RETURN_ROUTES` in `public/index.html` appends stable-ID perches, caches
+and road platforms before zone-manifest construction. `shortcutId` gives each
+cache the existing permanent policy; roads are static geometry whose `gone`
+state is derived by `syncRecallReturnRoute` after hydration. Source-keyed
+advancement claims and shortcut saves stay in the existing schema. Never replace
+this with a transient cache flag or let absent roads render as fallen slabs.
+Closed reserves have no recall-spoiling dialogue. The bot recalled bootstrap must
+synchronize movement and portal fields after granting its capability prefix.

@@ -1,54 +1,58 @@
-# Brief for a fresh model session — 2026-09-13
+# Bladefall — concise current brief
 
-Read `LLM-HANDOFF/README.md`, current state, recent changes and the relevant
-charter before editing. Source is `public/`; root `TESTING.md` and `KNOWN_BUGS.md`
-are the test and defect authorities. Git tracks the whole tree and GitHub `main`
-(`isaac2055/Bladefall-2D`) matches it since 2026-09-13. Version `7.96.0` / cache
-`bladefall-v176`. `npm test` is 500/500 and `release:check` is green, re-verified
-2026-09-13. Never deploy to Netlify without explicit owner instruction. The owner's
-copy lives in iCloud-synced `~/Desktop`: if any command there hangs, check for
-evicted placeholders first (`06-ESSENTIAL-FILES.md`, Git history) rather than retry.
+Project: /Users/computer/Desktop/Bladefall-2D Antigravity
+Runtime: public/index.html plus public/bladefall-*.js. Build mirror with
+./build-deploy.sh. Never deploy to Netlify without explicit authorization.
+Read USAGE-POLICY.md; owner explicitly prioritizes token/credit efficiency.
 
-Bladefall is a compact, interconnected, single-player action-adventure with
-portals as its signature. The knight's unnamed-on-screen Datura delirium is
-revealed through clocks, flowers, military correspondences, people and physical
-evidence. Direct completion ends in death; Gilded Vault/Deep Line leads to the
-ambiguous rusty-axe rescue and “He who saved us has awoken.” Preserve the sixteen
-regions, constitutional ability/key order, named rewards, whole Blood, one Gift,
-bounded Echoes and cosmetic-only appearances. Solo Base precedes co-op and NG+.
+## Current task
+Owner beat White Court and found it too easy. Approved a genuinely harder second
+phase after the existing three ward breaks: environmental machinery, alternating
+high/low frost volleys, shifting ice, a stationary receiver during the committed
+heavy-orb return window, and earned melee relief. No hidden last-health assistance.
+Implementation is in public/index.html: beginCourtFinal, updateCourtFinal,
+courtFinalBeat, drawCourtFinal, updateCourtReceiver and breakCourtWard.
+Second phase uses prepare → barrage → cast → return → exposed. Three volleys
+alternate low/high/low; speed rises with successful returns; final escalation adds
+one committed ground mark. Five-second melee openings. Each return window now fires three payloads, 1.4s
+apart with .6s aim warnings; initial preparation is 1.2s. Misses repeat the sequence.
+Needlewind final dip has a 25%-tank air crystal at (13020,210), with the normal
+Updrafts full-tank override disabled. Final phase now starts at 20% HP (damage is capped there until transition):
+condenser ruptures, shield permanently drops, no HP refill. Alternating frost
+lanes/ice continue during committed rushes and 1.1s recovery windows.
+Frost barrage cadence is 1.4/1.2/1.0s, speed 470/540/610. Rupture fires
+every 2.1s: from left, right, left, then upward/downward committed columns
+(.8s warnings, horizontal speed 660, vertical 480; no tracking).
+Functions: beginCourtRupture, updateCourtRupture, courtFinalDamage.
+Level-select saves now preserve session capabilities, quests, zone state and mode
+via savedRunSession; Continue restores these before loading the level. Old saves
+that already lost these fields need a fresh level-select entry once.
+Phase one remains the existing encounter. Attunement is awarded only on real death.
+Version 7.101.1 / cache 184. Both changed runtime files are mirrored in
+netlify-deploy; no deployment performed. Validation: all seven dependency-free
+checks in tests/white-court-final.test.mjs pass, including inline-script syntax.
+Browser/full-suite validation was blocked by iCloud-evicted game modules and
+dependencies; that blocker was fixed on 2026-09-15 (see the last paragraph), but
+the browser validation of the new phase itself has not been run yet. Visual readability and difficulty still need human playtesting. Earlier541-test/5361-frame
+receipts predate this harder phase and must not be claimed as current proof.
 
-The owner considers start through Warden complete in substance; later polish is
-welcome when requested. Do not reopen Marksman balance or duplicate its already
-present projectile-redirection teaching. Keep Ruined Keep's two-weight Belfry,
-Wall Jump → Archive → Keep Key ordering and westward return.
+## Stable context
+Opening through Warden accepted in substance. Frostfell is authored; White Court
+has refuge workers/wheel, aqueduct, water/ice, Glassworks portal bridge, high cache,
+gallery recollection/overlook. White Court arrival4800/0; exit15500 requires
+Attunement. Public-folder Netlify upload is configured; no deployment performed.
+White Court music: Floating Dream exploration, Abnormal Circumstances boss.
+Preserve progression, endpoint identities, one-Blood damage and ordinary movement.
 
-Warden phase three: three returned rushes; clear the pair after each; remove one
-lure platform after each of the first two; keep pillars/rotors moving. Third
-crash immobilizes him, leaves one health and starts repeated player-targeted
-AOEs until a final weapon strike. Sentence damage is one Blood, no checkpoint
-teleport. No numeric crash labels. Whispering Woods exploration, Element combat.
-
-Frostfell is now authored, not the old next-to-build shell: 15,100 units, Nim's
-three persistent braziers/Forge Seal, portal-fire thermal works, protected Double
-Jump, galleries/recollection, and a 20-landing ice finale. Up activates the summit
-Muster Engine: cinematic bell strike, darker atmosphere, ClockWork, 11 new foes,
-one-time 55% HP upgrade, two-Blood hulks. The upgrade and hulks apply **only to
-Frostfell** today; the owner wants that baseline world-wide.
-Refuge/court/summit cycle after summit use; fresh Up each time. Both Warden mine
-entrances use Up, safe arrival `(330, 0)`, no held-Left bounce. Latest changes
-received positive owner feedback. White Court is not redesigned.
-
-The recall outside Frostfell is the current work item: today it is three to five
-posts per region (`MUSTER_ROSTERS`) and no change to existing enemies, which the
-owner reviewed on 2026-09-13 as not noticeable. Read `12-RECALL-WORK-ORDER.md`
-for the spec: one-time world-wide buff of the general enemies, a re-garrisoned
-world, one unique enemy per region, evident on arrival. Keep it a surprise. `npm run bot` completes the first three levels from cold and reports
-exact failures elsewhere; portal placement is its next verb. Future boss work
-should offer active, recoverable setups and generous portal capture; never gate
-mandatory routes on optional Echoes or require an ability its own boss awards.
-
-TAS: `?tas=1`, `window.__BF.tas`, reset/input/read and named save/restore; see
-`TESTING.md`. Baseline Outskirts `(350, 0)`, run 200, jump 480, gravity 1400.
-Bram, Gilded Instinct and the inert Gifts are resolved; five secondary Echo hooks
-stay unread by design until their chapters. Frost Sorcerer / White Court is the
-next chapter to design.
+## Working discipline
+Do not revive the previous giant goal or run TAS searches to certify difficulty.
+Use focused mechanics checks, one visual check if useful, then owner playtesting.
+Old first-phase-only winning policies/tests need adaptation where their final-death
+expectation is obsolete. Do not weaken the new phase to keep old bot inputs green.
+The Desktop is iCloud-backed; macOS evicts idle files to placeholders that hang any
+read. Dependencies are protected: node_modules is a symlink to node_modules.nosync,
+excluded from iCloud sync (verified 2026-09-15). Keep the symlink; use npm install,
+never delete the folder, and avoid npm ci (netlify-cli 26.2.0 is installed there
+outside the lockfile and ci would drop it). Source files can still be evicted: run
+scripts/hydrate-icloud.sh before browser tests or git (instant when nothing is
+evicted). Do not launch duplicate blocked reads.
