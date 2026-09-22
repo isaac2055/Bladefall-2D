@@ -135,11 +135,13 @@ test('he is not worn down: steel only lands while he is open', () => {
   assert.match(fn('rightHandSpent'), /THE THRONE TAKES HIM BACK/, 'and the King spends him, not you');
 });
 
-test('the King is telegraphed, deterministic, and heals you every phase', () => {
+test('the King is telegraphed, deterministic, and no longer heals you between phases', () => {
   assert.match(fn('kingMarkBlink'), /e\.kingSide=-\(e\.kingSide\|\|1\)/, 'the side alternates, never rolls');
   assert.match(fn('kingMarkBlink'), /type:'warning'/, 'and the destination is marked first');
   assert.match(fn('kingResolveBlink'), /e\.kingBlinkShoot\)\{e\.shootT=/, 'the volley is a beat after the arrival');
-  assert.match(fn('kingPhaseReset'), /restoreBlood\(G\.p,Infinity\)/, 'every phase starts whole');
+  // Owner, 7.168: "significantly easier and can drop his heals".
+  assert.doesNotMatch(fn('kingPhaseReset'), /restoreBlood/, 'a phase change no longer refills Blood');
+  assert.doesNotMatch(fn('fractureKingCrown'), /restoreBlood/, 'nor does a crown fracture');
   assert.match(fn('kingRetreats'), /meta\.kingRetreated=true/, 'he retreats rather than dies');
   const chase = fn('updateKingChase');
   for(const beat of ["'caught'", "'clash'", "'done'"]) assert.match(chase, new RegExp(beat));
@@ -285,6 +287,12 @@ test('the King holds the back of his hall, on one clock, and leaves no portal be
     'the fight opens wide and slow');
   assert.match(kingBlock, /e\.shot\.count=4;e\.shot\.spread=0\.48;/, 'phase 2 adds a bolt, stays wide');
   assert.match(kingBlock, /e\.shot\.count=5;e\.shot\.spread=0\.44;e\.shot\.speed=410;/, 'phase 3 likewise');
+  // Summons are back for the last phase only, and only in the air (owner, 7.168).
+  const p2 = kingBlock.slice(kingBlock.indexOf('e.phase2Started=true'), kingBlock.indexOf('e.phase3Started=true'));
+  assert.doesNotMatch(p2, /spawnEnemy\(|kingSummonWing\(/, 'no summons before the final phase');
+  assert.match(kingBlock, /kingSummonWing\(e,2\);e\.kingSummonT=KING_SUMMON_EVERY;/, 'the final phase opens with a wing');
+  assert.match(fn('kingSummonWing'), /spawnEnemy\('voidbat',x\)/, 'of fliers, never on the panel floor');
+  assert.match(source, /const KING_SUMMON_EVERY=7,KING_SUMMON_MAX=3;/);
   // 4. NO PORTAL. killEnemy spawns a completion portal for every boss NOT named in one
   //    exclusion list, and the King was missing from it — so felling him dropped an
   //    orange exit portal in a level whose way on is a seam.

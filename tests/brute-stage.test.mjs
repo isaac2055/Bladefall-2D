@@ -147,7 +147,8 @@ test('Brute defeat grants Dash, records completion, and creates no exit portal',
   assert.match(source, /G\.stageIndex===2&&G\.p\.x<G\.levelLength\/2.*targetStage:1/s);
   assert.match(source,/function showBruteDefeatBriefing\(\)/);
   const choice=functionSource('showBruteDefeatBriefing');
-  assert.match(choice,/bruteBladeReturn/);assert.match(choice,/bruteRoadReturn/);
+  // 7.168: both weapons are kept (B switches), so the card has one button and names the key.
+  assert.doesNotMatch(choice,/bruteBladeReturn/);assert.match(choice,/bruteRoadReturn/);assert.match(choice,/kbCode\('swap'\)/);
   assert.doesNotMatch(choice,/through the Causeway and Black Woods|in the bag/);
   assert.match(source,/if\(e\.type==='brute'&&G\.ngPlus===0\)showBruteDefeatBriefing\(\)/);
   assert.match(source,/function finishCausewayLoadout\(restoreBlade\)/);

@@ -33,7 +33,7 @@ the only way a player can complete a route.
 | Recovery/completion/leaderboards | `bladefall-recovery.js`, `bladefall-milestones.js` |
 | Narrative/dialogue/endings | `bladefall-story.js`, `bladefall-dialogue.js`, `bladefall-cinematics.js` |
 | Save/input/presentation/audio | `bladefall-storage.js`, `bladefall-input.js`, `bladefall-presentation.js`, `bladefall-audio.js` |
-| Co-op | `bladefall-multiplayer.js` plus network/runtime integration in `index.html` |
+| Co-op | `bladefall-multiplayer.js` (protocol), `bladefall-coop-journey.js` (the shared journey, 7.169) plus network/runtime integration in `index.html` |
 | Authoring/charters/validation | `bladefall-authoring.js`, `bladefall-charters.js`, `bladefall-foundation-audit.js`, `authoring.html` |
 | Release health | `bladefall-release.js`, `build-deploy.sh`, `scripts/release-check.mjs` |
 
@@ -149,9 +149,15 @@ support through `peerjs.min.js`. Earlier bugs included invisible partner weapons
 unsynchronized shots/enemy death, stale loadouts, unilateral level changes, and
 unstable join-later state; several were improved and tests exist.
 
-Nevertheless, co-op is not current single-player acceptance. After all Base
-levels are complete, run genuine two-device sessions for every world seam,
-mechanism, boss, loot drop, death/revive, traveler, shop boundary, and ending.
+7.169 (owner request: show a friend the game, with shared actions) turned it
+back on as a **co-op journey**: a session like Level Select that writes neither
+save. Both machines build each region from the host's seed and session, so the
+index-keyed snapshots stay aligned. The host runs every crossing, and the friend
+lands beside it. The friend's world-changing Up interactions, ground pounds,
+weight and Echo act on the host's world, and abilities are shared. See
+01-CURRENT-STATE "Latest change" and `tests/coop-runtime.test.mjs`. This has been
+verified in two browser contexts; genuine two-device sessions over the real
+PeerJS broker (every seam, boss, death/revive, traveler, ending) are still owed.
 
 ## Authoring and diagnostics
 

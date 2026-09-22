@@ -17,6 +17,7 @@ Copy all of these:
   game loop, compatibility runtime, UI, encounters, and version.
 - every `public/bladefall-*.js` module — all system authorities listed in
   `04-SYSTEMS-AND-ARCHITECTURE.md`.
+- `public/bladefall-respec-renderer.js` — the v4 pixel renderer (stages 0-13, 15).
 - `public/littlejs.min.js` — bundled engine dependency.
 - `public/peerjs.min.js` — bundled co-op dependency; retain even while solo is
   the current acceptance boundary.
@@ -42,7 +43,7 @@ Copy all of these:
 ## Tier B — required for a fully runnable/audio-faithful copy
 
 - all `public/audio/`, including attribution, music, and Level 1 SFX;
-- `public/music.mp3`, the legacy/original final-boss cue.
+- `public/music.mp3`, now only the fallback for a stage without a `LEVEL_MUSIC` cue.
 
 The August runnable copy measured about 79 MB versus a roughly 386 MB development
 folder. These are historical measurements, not current size limits. The runnable
@@ -93,8 +94,11 @@ tests, scripts, compact docs, audio attribution and handoff records);
 `.gitignore` excludes `node_modules/`, `netlify-deploy/`, `.netlify/` and docs
 media. GitHub `main` was fast-forwarded to `707e473` (version `7.96.0`) on
 2026-09-13, so a fresh clone is a complete working copy after `npm install`.
-Current work (7.101.1 onward) is on branch `chore/track-authoritative-tree` from
-`8c07a2c`, pushed 2026-09-15 and not yet merged to `main`.
+Current work is on branch `chore/track-authoritative-tree`. Its pushed head is
+`91be99f` (7.101.1, 2026-09-15); the local checkpoint `d7927b9` (2026-09-21) commits the whole
+7.166.0 tree, including the previously untracked `public/bladefall-respec-renderer.js`, the score,
+charters 10-14, `scripts/level-probe.mjs`, `scripts/necessity-audit.mjs` and 20 test files. A clone
+is complete only once that commit is pushed. Neither is merged to `main`.
 
 **Location — outside iCloud since 2026-09-15.** The owner's copy is
 `~/Projects/Bladefall-2D Antigravity`; `~/Desktop/Bladefall-2D Antigravity` is a

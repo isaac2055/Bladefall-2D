@@ -247,26 +247,27 @@ test('the Causeway bow equips on contact or pickup key despite a full bag and pr
     const h=bowHarness(),bag=JSON.stringify(h.meta.inventory);
     if(manual)assert.equal(h.context.collectNearbyItem(),true);else h.context.tickPickup();
     assert.equal(h.pk.taken,true);assert.equal(h.G.p.weapon.arche,'bow');
-    assert.equal(h.G.p.causewayBlade.arche,'sword');assert.notEqual(h.G.p.causewayBlade,h.blade);
+    assert.equal(h.G.p.stowedWeapon.arche,'sword');assert.notEqual(h.G.p.stowedWeapon,h.blade);
     assert.equal(h.G.p.blood,3);assert.equal(h.G.p.hp,60);assert.equal(JSON.stringify(h.meta.inventory),bag);
     assert.equal(h.G.p.atkTimer,0);assert.equal(h.G.p.atkCd,0);assert.equal(h.G.p.charging,false);
-    assert.equal(h.saved.at(-1).weapon.arche,'bow');assert.equal(h.saved.at(-1).causewayBlade.arche,'sword');
+    assert.equal(h.saved.at(-1).weapon.arche,'bow');assert.equal(h.saved.at(-1).stowedWeapon.arche,'sword');
     assert.equal(h.context.acquireCausewayBow(h.pk),false,'a used rack cannot replace the saved weapon again');
     assert.equal(h.context.finishCausewayLoadout(true),false,'the postfight choice cannot run before the boss falls');
   }
-  assert.match(source,/p\.causewayBlade=snap&&snap\.causewayBlade\?BFWeaponProgressionModule\.normalizeWeapon\(snap\.causewayBlade\):null/,
-    'loading the saved run restores the stowed blade');
+  assert.match(source,/p\.stowedWeapon=stowedFromSnapshot\(snap\);/,'loading the saved run restores the stowed blade');
+  assert.match(functionSource('stowedFromSnapshot'),/snap\.stowedWeapon\|\|snap\.causewayBlade/,'including a save from before the swap existed');
 });
 
-test('the compact postfight choice directly keeps the bow or restores the saved blade and resumes play',()=>{
-  for(const restoreBlade of [false,true]){
-    const h=bowHarness();h.context.tickPickup();h.G.boss.dead=true;
-    assert.equal(h.context.showBruteDefeatBriefing(),true);assert.equal(h.context.mode,'pause');
-    assert.doesNotMatch(h.context.html,/bag|eastern gate|return <b>west/i,'the choice does not become a management or route instruction panel');
-    const button=h.buttons[restoreBlade?'bruteBladeReturn':'bruteRoadReturn'];
-    assert.equal(typeof button.onclick,'function');button.onclick();
-    assert.equal(h.G.p.weapon.arche,restoreBlade?'sword':'bow');assert.equal(h.G.p.causewayBlade,null);
-    assert.equal(h.saved.at(-1).weapon.arche,restoreBlade?'sword':'bow');assert.equal(h.saved.at(-1).causewayBlade,null);
-    assert.equal(h.G.p.blood,3);assert.equal(h.context.mode,'play');
-  }
+test('the postfight card keeps BOTH weapons (B switches) and resumes play',()=>{
+  // Owner, 7.168: "pressing B should switch to bow, and pressing it again should switch back
+  // to oathblade." Nothing is discarded at the Brute any more, so there is no choice to make.
+  const h=bowHarness();h.context.tickPickup();h.G.boss.dead=true;
+  assert.equal(h.context.showBruteDefeatBriefing(),true);assert.equal(h.context.mode,'pause');
+  assert.doesNotMatch(h.context.html,/bag|eastern gate|return <b>west/i,'no management or route instruction panel');
+  assert.match(h.context.html,/swap · Switch between the bow and the blade/,'it names the key');
+  assert.equal(h.buttons.bruteBladeReturn,undefined,'no keep-one choice');
+  h.buttons.bruteRoadReturn.onclick();
+  assert.equal(h.G.p.weapon.arche,'bow');assert.equal(h.G.p.stowedWeapon.arche,'sword');
+  assert.equal(h.saved.at(-1).weapon.arche,'bow');assert.equal(h.saved.at(-1).stowedWeapon.arche,'sword');
+  assert.equal(h.G.p.blood,3);assert.equal(h.context.mode,'play');
 });

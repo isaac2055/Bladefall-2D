@@ -3,7 +3,7 @@
 ## Definition of “finished”
 
 The target is not “all systems exist” or “the test suite is green.” The Base
-single-player world is finished when all sixteen regions form one enjoyable,
+single-player world is finished when all fifteen reachable regions form one enjoyable,
 readable, persistent journey; every level passes its own human and automated
 acceptance gate; the two endings work; backtracking is rewarding; and no route
 requires Test Mode, stale saves, unexplained geometry, or model knowledge.
@@ -68,13 +68,13 @@ the live spatial plan is already stable.
 | 9 | Frost Sorcerer | Active chase plus changing moving-siphon/cold phases; Attunement reward; no portal camping. | **built**, owner-accepted |
 | 10 | Emberdeep | Coherent inhabited foundry; traveler relay physically changes the furnace route; Companion Command reward. | **built** (Run 3: a real 640-unit descent); **played 2026-09-19 and it was broken** — three datum bugs, fixed in Run 7; re-playtest pending |
 | 11 | Ember Colossus | One integrated molten-shot → coolant → forged-slug industrial failure; Downward Strike reward. | **played 2026-09-19**: level cut and rebuilt to owner's notes (7.132.0); **boss phases 2–3 rebuilt** (7.133.0: vertical escape, then three-plate pursuit; see the proposal's "As built"), playtest pending |
-| 12 | Inversion | Long unavoidable gravity commitments, ceiling/floor mastery, Zenith Key, two-mouth gravity synthesis. | **played 2026-09-19 and it was UNFINISHABLE**; road and Drop-Lock rebuilt in 7.134.0 and accepted; **now 13,500 wide** — the Path of Inversion added as room 7 in 7.135.0; re-playtest pending |
-| 13 | Void Tyrant | Low/middle/high opposed-pair body phases and narrative confirmation. | **played 2026-09-20**: approach rebuilt (Oren gate, a portal puzzle that rehearses the fight, lethal spent line, a shield that needs the Counter, coin route cut) and the fight is now the FIRST HALF — he withdraws rather than dies, and returns in the King's hall (proposal written) |
-| 14 | Abyss King | Hardest fair portal-hijack/crown fight, stable retry, final direct ending. | **AUTHORED 2026-09-20** (7.141.0): The Drowned Throne, 12,400, a two-boss level — the Right Hand at its middle and the echo fight at its end. Playtest pending |
+| 12 | Inversion | Long unavoidable gravity commitments, ceiling/floor mastery, Zenith Key, two-mouth gravity synthesis. | **played 2026-09-19 and it was UNFINISHABLE**; road and Drop-Lock rebuilt in 7.134.0 and accepted; the Path serpentine and the Last Breath tube added (7.135–7.137); **now 16,100 wide**; Last Breath verdict pending |
+| 13 | Void Tyrant | Low/middle/high opposed-pair body phases and narrative confirmation. | **played four times 2026-09-20..21.** He withdraws rather than dies; his seam is the road west. 7.166.0 restores room 2 as played plus the named wall and Oren's gated zipline, removes room 4's anchor portal, and rebuilds room 3 as T-towers. 7.168.0 drops the per-band Blood refill. Fourth playtest pending |
+| 14 | Abyss King | Hardest fair portal-hijack/crown fight, stable retry, final direct ending. | **The Drowned Throne, 18,600** (7.144.0), two bosses (Right Hand at 5850, the King at 17200) and the Echo verb. Played 2026-09-21; King cadence/position fixed in 7.157.0; 7.168.0 drops his per-phase heals and brings back air-only summons in his last phase. Holds the Act 1 beach and boat under its east end |
 | 15 | ~~Gilded Vault~~ | — | **CUT 2026-09-20.** Not a zone, node, recollection or rest site; its campaign slot is inert so later indices keep their numbers |
-| 16 | Deep Line | Truth-route synthesis, route signals, Waking Key, and rusty-axe ending. | procedural; now entered from the King and **surfaces at the Ruined Keep's east side** |
+| 16 | Deep Line | Truth-route synthesis, route signals, Waking Key, and rusty-axe ending. | **v4 rules and renderer (7.146.0)**; cart ride King → Keep, plus a mirrored westbound return (Keep → Throne) for the Act 1 ending. Played 2026-09-21; fixes 7.150/7.157/7.167. Its six acts are still the procedural-era design; no charter |
 
-**Levels 12–13 are done and unplayed; 10 and 11 were played on 2026-09-19** and
+**Levels 10–13 and 16 have all been played at least once (2026-09-19..21)** and
 rebuilt to the owner's notes (below, and each charter's OWNER CUTS section). The whole
 road from the White Court's Ember Door to the Throne Gate was walked in both directions
 in Run 6 and is green (`tests/late-game-road.test.mjs`). The owner's rule from those
@@ -95,8 +95,8 @@ raised to 460 with its inner faces left bare, a new ceiling-plate gate, and `Roo
 below ~800 units width gates nothing at all.**
 
 On 2026-09-20 the owner accepted that rebuild and asked for a finish like the jetpack
-path of pain, flipped, "about half the size" of the level. **The Inversion is now 13,500
-wide**: rooms 1-5 moved EAST by exactly 4,500, the Void Fissure (0-1400) did not move, and
+path of pain, flipped, "about half the size" of the level. **The Inversion became 13,500
+wide** (16,100 after the Last Breath, 7.137.0): rooms 1-5 moved EAST by exactly 4,500, the Void Fissure (0-1400) did not move, and
 the new Path of Inversion fills 1,400-5,900. **Every pre-7.135.0 coordinate in that region
 is its old value + 4,500** — the shift was verified object by object (66/66) rather than by
 eye, and the same dump script is the way to do the next one. Two numbers from it worth
@@ -130,10 +130,9 @@ Run 3 raised; the fissure arrival faced the wall behind the player; and Emberdee
 the Inversion's rest sites were named differently from their `BFRecovery` contracts, so
 both fell back to a ratio and landed in hazards.
 
-**Named and deferred:** the Drowned Throne, the Gilded Vault and the Deep Line all
-continue **west, underground**, under the opening regions, so the truth route ends
-beneath the Outskirts where the knight actually lies. None of the three is authored yet;
-the Throne Gate lands the player at stage 13's procedural west start as a stopgap.
+**Superseded 2026-09-20:** the Gilded Vault was cut, the Drowned Throne was authored,
+and the Deep Line now runs King → Ruined Keep (and back, westbound, for the Act 1 ending).
+The endings described in the master vision are not reachable on this route yet.
 
 1. Full topology and shortcut audit in both directions.
 2. Backtracking reward/economy balance: seven keys, Recollections, quests,
@@ -150,7 +149,10 @@ the Throne Gate lands the player at stage 13's procedural west start as a stopga
 
 ## Priority 5 — co-op adaptation
 
-Once solo Base is accepted, test on two real devices/processes:
+7.169.0 re-enabled co-op as a shared journey (see 01-CURRENT-STATE): one world,
+travel together, the friend's actions changing the host's world, shared
+abilities. It was verified in two browser contexts only. Still to test on two
+real devices/processes:
 
 - visible/synchronized partner weapon, projectiles, attacks, cosmetics, Gifts,
   and temporary gear;

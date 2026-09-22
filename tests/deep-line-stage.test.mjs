@@ -212,7 +212,8 @@ test('the knight rides IN the cart, and the 360 is visible', () => {
     'the hero draws BEFORE the tub, so the tub’s front face covers his legs');
   assert.match(ride, /ctx\.translate\(0, -Math\.round\(12 \* Z\)\)/,
     'and he stands on the tub floor, so head and shoulders ride above the rim');
-  assert.match(ride, /ctx\.rotate\(-prog \* 6\.2832\)/, 'the flip turns a full 360');
+  assert.match(ride, /ctx\.rotate\(-prog \* 6\.2832 \* \(curG\.cartDirection \|\| 1\)\)/,
+    'the flip turns a full 360, spinning the way the cart travels');
   assert.match(ride, /WY\(p\.y\) - Math\.round\(26 \* Z\)/, 'about the tub centre, so he stays in it');
   assert.match(source, /CART_FLIP_DUR,/, 'and the duration is bridged rather than guessed');
 });
@@ -228,7 +229,7 @@ test('the three ship parts are countable while you are still looking for them', 
   const spec = /const SHIP_PARTS=Object\.freeze\(\{[\s\S]*?\n\}\);/.exec(source)[0];
   for(const [zone, id, x, y] of [['updrafts', 'ship-part-keel', 15480, 400],
                                  ['hollow-marksman', 'ship-part-mast', 11040, 300],
-                                 ['ruined-keep', 'ship-part-sail', 16810, 1080]]){
+                                 ['ruined-keep', 'ship-part-sail', 16970, 1080]]){
     assert.ok(spec.includes(`id:'${id}',x:${x},y:${y}`), `${zone} keeps its part at ${x},${y}`);
   }
   // One per zone, and each of those three zones is a stage the installer runs in.

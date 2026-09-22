@@ -169,7 +169,7 @@ body.a11y-reduced-motion *,body.a11y-reduced-motion *::before,body.a11y-reduced-
 <div id="hud" class="hide">
   <div class="barwrap"><span class="barlabel">BLOOD</span><div id="bloodMeasures" class="blood-measures" title="Blood reserve"><i id="hpFill"></i></div><span id="bloodValue" style="min-width:34px;font-size:10px;font-weight:900;color:#ffb0a7;text-align:right"></span></div>
   <div class="barwrap map"><span class="barlabel">MAP</span><div class="bar"><i id="progFill"></i></div></div>
-  <div class="meta"><div class="left"><span id="weaponTag">Rusty Sword</span><span id="armorTag"></span><span id="toolTag" style="display:none"></span><span id="echoTag" style="display:none"></span><span id="keyTag" style="display:none;font-size:11px;font-weight:700;color:#ffd700;"></span><span id="coinTag" style="display:none;font-size:11px;font-weight:800;color:#ffd700;"></span><span id="shipTag" style="display:none;font-size:11px;font-weight:800;color:#9fe0ff;"></span><span id="goldTag" style="display:none;font-size:11px;font-weight:800;color:#ffd700;"></span><span id="powerTag" style="display:none;font-size:11px;font-weight:800;"></span><span id="slamTag" style="display:none;font-size:11px;font-weight:800;"></span><span id="dashTag" style="font-size:11px;font-weight:800;"></span><span id="fuelTag" style="display:none;"></span><span id="flipTag" style="display:none;"></span><span id="portalTag" style="display:none;"></span><span id="abilityTag"></span><span id="surveyTag" style="display:none;font-size:11px;font-weight:900;color:#e4d9a7;"></span><span id="companionTag" style="display:none;"></span><span id="echoVerbTag" style="display:none"></span><span id="remixTag" style="display:none;"></span><span id="testTag" style="display:none;font-size:11px;font-weight:800;color:#e8a33d;">🛠 TEST</span></div><span id="stageTag">Stage 1</span></div>
+  <div class="meta"><div class="left"><span id="weaponTag">Rusty Sword</span><span id="armorTag"></span><span id="toolTag" style="display:none"></span><span id="echoTag" style="display:none"></span><span id="keyTag" style="display:none;font-size:11px;font-weight:700;color:#ffd700;"></span><span id="coinTag" style="display:none;font-size:11px;font-weight:800;color:#ffd700;"></span><span id="shipTag" style="display:none;font-size:11px;font-weight:800;color:#9fe0ff;"></span><span id="partnerTag" style="display:none;color:#e6bb73"></span><span id="goldTag" style="display:none;font-size:11px;font-weight:800;color:#ffd700;"></span><span id="powerTag" style="display:none;font-size:11px;font-weight:800;"></span><span id="slamTag" style="display:none;font-size:11px;font-weight:800;"></span><span id="dashTag" style="font-size:11px;font-weight:800;"></span><span id="fuelTag" style="display:none;"></span><span id="flipTag" style="display:none;"></span><span id="portalTag" style="display:none;"></span><span id="abilityTag"></span><span id="surveyTag" style="display:none;font-size:11px;font-weight:900;color:#e4d9a7;"></span><span id="companionTag" style="display:none;"></span><span id="echoVerbTag" style="display:none"></span><span id="remixTag" style="display:none;"></span><span id="testTag" style="display:none;font-size:11px;font-weight:800;color:#e8a33d;">🛠 TEST</span></div><span id="stageTag">Stage 1</span></div>
 </div>
 <div id="bosshpwrap"><div id="bossname">Boss</div><div id="bosshp"><i></i></div></div>
 <button id="pausebtn" class="hide">II</button>
@@ -279,7 +279,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-core.js"></script>
 <script src="bladefall-simulation.js"></script>
 <script src="bladefall-renderer.js"></script>
-<script src="bladefall-respec-renderer.js?v=7.165.0"></script>
+<script src="bladefall-respec-renderer.js?v=7.169.0"></script>
 <script src="bladefall-platformer.js"></script>
 <script src="bladefall-environment.js"></script>
 <script src="bladefall-reactions.js"></script>
@@ -319,6 +319,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-content.js"></script>
 <script src="bladefall-presentation.js"></script>
 <script src="bladefall-multiplayer.js"></script>
+<script src="bladefall-coop-journey.js?v=7.169.0"></script>
 <script src="bladefall-audio.js"></script>
 <script src="bladefall-camera.js?v=7.129.0"></script>
 <script src="bladefall-release.js"></script>
@@ -332,7 +333,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.166.0';
+const VERSION='7.169.0';
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -614,6 +615,46 @@ const LOOTIDS=ARCHIDS.filter(a=>a!=='sword'&&a!=='fists');
 function randLootArch(){return gamePick('loot',LOOTIDS);}
 function makeWeapon(aid,rid,nameO){const a=ARCH[aid],r=RARITY[rid];const w={arche:aid,art:a.art,cls:a.cls,sch:a.sch,el:a.el||null,rarity:rid,name:nameO||(r.name+' '+a.disp),dmg:+(a.dmg*r.mul).toFixed(1),cd:a.cd,kb:a.kb,crit:0,lifesteal:(a.lifesteal||0)+(rid==='legendary'?0.03:0),color:r.color,blade:(a.sch==='mag'?(elColor(a.el)||'#c9a6ff'):'#dfe5ec')};if(a.cls==='melee'){w.range=a.range;w.reach=a.reach;w.maxDur=Math.round(120*r.mul);w.dur=w.maxDur;}else{w.proj=Object.assign({},a.proj);w.maxAmmo=Math.round(60*r.mul);w.ammo=w.maxAmmo;}if(aid==='fists'){w.dur=Infinity;w.maxDur=Infinity;return w;}w.baseDmg=w.dmg;w.temper=0;w.bound=true;w.weaponSchema=BFWeaponProgressionModule.SCHEMA;w.weaponVersion=BFWeaponProgressionModule.VERSION;return w;}
 function startWeapon(){const w=makeWeapon('sword','common','Rusty Sword');w.dmg=9;w.blade='#bcae8a';return w;}
+/*   TWO WEAPONS, ONE KEY. Owner: "After acquiring the bow in the broken causeway level,
+   and any level thereafter via level select, pressing B should switch to bow, and pressing
+   it again should switch back to oathblade. We will just have these two weapons for now."
+   The one you are not holding is p.stowedWeapon. Both are `bound` (makeWeapon), so neither
+   spends ammo or durability. The Brute can only be woken with arrows, so owning Dash means
+   the bow was taken: from then on the arsenal is made whole on every load, which also
+   returns the weapon an older save discarded at the old keep-one choice. */
+function oathbladeWeapon(){const F=BFWeaponProgressionModule.FIRST_WEAPON;return makeWeapon(F.archetype,F.rarity,F.name);}
+function causewayBowWeapon(){return makeWeapon('bow','rare','Chainwake Longbow');}
+function stowedFromSnapshot(snap){
+  const w=snap&&(snap.stowedWeapon||snap.causewayBlade);
+  return w?BFWeaponProgressionModule.normalizeWeapon(JSON.parse(JSON.stringify(w))):null;
+}
+function ensureTwoWeaponArsenal(p){
+  if(!p||!G||G.bossRush||G.battle||!hasCapability('weapon')||!hasCapability('dash'))return false;
+  const held=[p.weapon,p.stowedWeapon].filter(w=>w&&w.arche!=='fists');
+  const hasBow=held.some(w=>w.arche==='bow'),hasBlade=held.some(w=>w.arche!=='bow'&&w.cls==='melee');
+  if(hasBow&&hasBlade)return false;
+  const missing=[];if(!hasBlade)missing.push(oathbladeWeapon());if(!hasBow)missing.push(causewayBowWeapon());
+  for(const w of missing){
+    const n=BFWeaponProgressionModule.normalizeWeapon(w)||w;
+    if(!p.weapon||p.weapon.arche==='fists')p.weapon=n;
+    else p.stowedWeapon=n;
+  }
+  BFCachedWeaponProfile={key:null,weapon:null,value:null};
+  return true;
+}
+function swapWeapon(quiet){
+  const p=G&&G.p;
+  if(!p||p.dead||!p.stowedWeapon||G.cartMode||mode!=='play')return false;
+  const next=p.stowedWeapon;p.stowedWeapon=p.weapon||null;p.weapon=next;
+  p.atkTimer=p.atkCd=p.atkBuf=p.swingT=0;p.charging=false;
+  BFCachedWeaponProfile={key:null,weapon:null,value:null};
+  try{BFWeaponProgression.recordEquip(next.arche);}catch(_e){}
+  if(!quiet){
+    addText(p.x,GROUND_Y-p.y-70,next.arche==='bow'?'BOW':'BLADE','#e6bb73',false);
+    if(meta.soundOn)SFX.pickup();
+  }
+  hudUpdate();return true;
+}
 
 /* Armor */
 const SLOTS={helmet:{label:'Helmet',def:[6,10,15,21,28]},chest:{label:'Chestplate',def:[9,15,22,30,40]},legs:{label:'Leggings',def:[7,11,17,23,31]}};
@@ -826,6 +867,43 @@ function levelSelectCapabilitiesForStage(stageIndex){
   }).map(ability=>ability.id);
   return BFCapabilitiesModule.createState({acquired,history:acquired.map(id=>({id,source:'level-select-entry'}))});
 }
+/*   LEVEL SELECT STARTS IN A WORLD WHERE EVERYTHING BEFORE IT IS WON. Owner: "When I use
+   level select to choose the deep line, take it to ruined keep, get the three ship parts,
+   and travel back to get to abyss king, it still blocks me. Entering deep line from level
+   select should assume all levels before are completely cleared."
+     The kit already arrived that way (levelSelectCapabilitiesForStage). The WORLD did not:
+   a Level Select run starts on a fresh session zone state and never writes a campaign
+   clear, so a boss the menu skipped past had never been beaten as far as any gate could
+   tell. The Deep Line's west end asks "is the Abyss King cleared?" and got no.
+     So the run is seeded with what a real playthrough to this stage would hold: every
+   earlier zone in the session clears, and the handful of world latches that a gate or a
+   boss-skip reads — the Keep's Archive key, the Frostfell bell, and the three authored
+   bosses whose revisit is decided by a circuit. The latches are keyed to the stage that
+   earns them, so a stage's own boss is still there to fight when you select it. */
+const LEVEL_SELECT_PRIOR_LATCHES=Object.freeze([
+  {stage:5,zone:'ruined-keep',circuit:'keep-key-recovered'},   // the Keep's west seal and service lift
+  {stage:7,zone:'frostfell',circuit:'frost-muster'},           // the bell has been rung
+  {stage:10,zone:'ember-colossus',circuit:'foundry-colossus'}, // the three bossSkipCircuits
+  {stage:12,zone:'void-tyrant',circuit:'citadel-tyrant'},
+  {stage:13,zone:'abyss-king',circuit:'throne-king'}
+]);
+function seedLevelSelectPriorWorld(startStage){
+  if(!G||!G.levelSelectMode)return;
+  const target=Math.max(0,Math.floor(Number(startStage)||0));
+  G.sessionClearedZones=[];
+  for(let i=0;i<target;i++){
+    const id=BFWorldModule.stageId(i);
+    if(id&&!G.sessionClearedZones.includes(id))G.sessionClearedZones.push(id);
+  }
+  for(const latch of LEVEL_SELECT_PRIOR_LATCHES){
+    if(latch.stage>=target)continue;
+    // The bell follows musterRecalled()'s own rule: the automated harness keeps full
+    // control of its muster state, so it is never rung for it from the menu.
+    if(latch.circuit==='frost-muster'&&typeof window!=='undefined'&&window.BladefallHarness)continue;
+    G.sessionZoneState=BFZoneStateModule.setCircuit(G.sessionZoneState,latch.zone,latch.circuit,
+      {open:true,solved:true,source:'level-select-prior'});
+  }
+}
 let BFCachedMovementProfile={key:null,value:null};
 function movementProfile(){
   const state=activeCapabilityProgress()||{},key=`${state.version||0}:${state.revision||0}:${(state.acquired||[]).join(',')}`;
@@ -988,8 +1066,9 @@ function grantPermanentCapability(id,source,options){
   if(!result.changed)return result;
   if(sessionOnly)G.sessionCapabilities=result.state;else meta.capabilities=result.state;
   syncMovementCapabilities();syncPortalCapabilities();syncWeaponCapabilities();if(!sessionOnly)persist();hudUpdate();
-  if(!(options&&options.quiet))toast('<b style="color:#d8b7ff">'+(sessionOnly?'PREVIEW ABILITY':'PERMANENT ABILITY')+' · '+capabilityLabel(id).toUpperCase()+'</b><br>'+
-    (sessionOnly?'Available for the rest of this Level Select route.':'This memory cannot be unequipped or lost.'));
+  if(G.coopSession)coopBroadcastCaps();
+  if(!(options&&options.quiet))toast('<b style="color:#d8b7ff">'+(G.coopSession?'SHARED ABILITY':sessionOnly?'PREVIEW ABILITY':'PERMANENT ABILITY')+' · '+capabilityLabel(id).toUpperCase()+'</b><br>'+
+    (G.coopSession?'Both knights carry it for the rest of this co-op journey.':sessionOnly?'Available for the rest of this Level Select route.':'This memory cannot be unequipped or lost.'));
   if(meta.soundOn&&!(options&&options.quiet))SFX.levelup();
   return result;
 }
@@ -1083,22 +1162,23 @@ function restoreWardenVictory(){
 function showBruteDefeatBriefing(){
   if(!G||G.stageIndex!==2)return false;
   mode='pause';showGameUI(false);
-  const blade=G.p.causewayBlade;
+  // Owner: after the bow, B switches bow <-> Oathblade. Both are kept, so the old
+  // "keep the bow / return to the blade" choice is gone.
+  const both=!!G.p.stowedWeapon;
   showOvHTML(`<div class="card"><h2 class="ovh">Dash Remembered</h2>
     <p class="ovsub">${escText(keyLabel(kbCode('dash')))} · Burst in the direction you are moving.</p>
+    ${both?'<p class="ovsub">'+escText(keyLabel(kbCode('swap')))+' · Switch between the bow and the blade.</p>':''}
     ${!G.levelSelectMode&&hasGift('blood-vow')?'<p class="ovsub">Blood Vow · After losing Blood, your next blade hit within six seconds is stronger.</p>':''}
-    <button class="bigbtn" id="bruteRoadReturn">${blade?'Keep the bow':'Return to the road'}</button>
-    ${blade?'<button class="bigbtn" id="bruteBladeReturn">Return to the blade</button>':''}</div>`);
-  const resume=restore=>{finishCausewayLoadout(restore);mode='play';showOverlay(false);showGameUI(true);hudUpdate();};
-  document.getElementById('bruteRoadReturn').onclick=()=>resume(false);
-  if(blade)document.getElementById('bruteBladeReturn').onclick=()=>resume(true);
+    <button class="bigbtn" id="bruteRoadReturn">Return to the road</button></div>`);
+  const resume=()=>{finishCausewayLoadout(false);mode='play';showOverlay(false);showGameUI(true);hudUpdate();};
+  document.getElementById('bruteRoadReturn').onclick=resume;
   return true;
 }
 function finishCausewayLoadout(restoreBlade){
   if(!G||G.stageIndex!==2||!G.boss||!G.boss.dead)return false;
-  const blade=G.p.causewayBlade;
-  if(restoreBlade&&blade&&!equipProgressionWeapon(blade,{archetype:blade.arche}))return false;
-  G.p.causewayBlade=null;G.checkpointLoadout=snapOf(G.p);
+  // Nothing is discarded any more: the other weapon stays stowed for B.
+  if(restoreBlade&&G.p.stowedWeapon&&G.p.stowedWeapon.arche!=='bow'&&G.p.weapon&&G.p.weapon.arche==='bow')swapWeapon(true);
+  G.checkpointLoadout=snapOf(G.p);
   saveRunAtStage(G.stageIndex,G.checkpointLoadout);hudUpdate();return true;
 }
 function showMarksmanDefeatBriefing(){
@@ -1194,6 +1274,12 @@ function kingRetreats(e){
      where meta.world.cleared lacks 'abyss-king' — which is all of Level Select.
      Keyed to the KING, never to G.boss.dead: this hall also holds the Right Hand, and a
      dead-boss heuristic would clear the zone the moment HE falls. */
+  /*   AND HE STAYS GONE. The level's bossSkipCircuit is 'throne-king', which nothing ever
+     wrote (the chase writes 'king-line', three seconds later, for the rail cart), so every
+     reload of the hall stood him back up in his arena — including the Act 1 return, where
+     you arrive from the Deep Line fifty paces from where he fell. */
+  try{markPersistentCircuitOpen('throne-king','king-retreat');}catch(_e){}
+  G.enemies=(G.enemies||[]).filter(q=>!q.kingSummon);   // his wing goes with him
   try{recordWorldClear();persist();}catch(_e){}
   recordSessionClear(13);
   const oren=(G.npcs||[]).find(n=>n.kind==='escort'&&!n.dead);
@@ -1273,13 +1359,8 @@ function rightHandKnee(e,why){
   e.rightHandKnees=(e.rightHandKnees||0)+1;
   e.rightHandStun=1.4;e.rightHandSeamT=Math.max(e.rightHandSeamT||0,2.2);
   addText(e.x,GROUND_Y-e.y-e.h-46,(why||'A KNEE')+'  '+e.rightHandKnees+'/3','#f1d6ff',true);
-  /*   A KNEE IS A PHASE, SO IT PAYS LIKE ONE. setupRightHand sets paradoxFight:false, so
-     he never runs advanceTyrantParadox and never inherited the Citadel's per-band
-     restore — and his own HP never moves either (hitEnemy returns early for him), so the
-     HP-driven phase machinery never fires. This is the only place a phase completes for
-     this boss, which makes it the only place the restore can live. */
-  restoreBlood(G.p,Infinity);
-  addText(G.p.x,GROUND_Y-G.p.y-78,'BLOOD RESTORED','#ff6b81',false);
+  // A knee is where a phase completes for this boss (his HP never moves). It used to
+  // refill Blood; since 7.168 it does not — the owner's call, the same as his Citadel bands.
   G.shake=Math.min((G.shake||0)+11,16);
   for(let i=0;i<26;i++)G.particles.push({x:e.x+(Math.random()-0.5)*70,
     y:GROUND_Y-e.y-Math.random()*e.h,vx:(Math.random()-0.5)*300,vy:-60-Math.random()*200,
@@ -1389,13 +1470,24 @@ function kingResolveBlink(e,target,dt){
   // the volley is a separate beat from the arrival, always
   if(e.kingBlinkShoot){e.shootT=Math.max(e.shootT||0,0.34);e.kingBlinkShoot=false;}
 }
-/* EVERY PHASE STARTS WHOLE. The same rule the Tyrant's bands now hold: a phase is its
-   own problem, and carrying the last one's damage into it punishes the fight you have
-   already won rather than the one in front of you. */
+/* A phase change. Until 7.168 every phase also started with full Blood; the owner cut
+   the refills for both late bosses once their volleys became easy to dodge. */
+const KING_SUMMON_EVERY=7,KING_SUMMON_MAX=3;
+function kingSummonWing(e,count){
+  const L=Number.isFinite(e.echoArenaL)?e.echoArenaL+80:e.x-900,R=Number.isFinite(e.echoArenaR)?e.echoArenaR-40:e.x+300;
+  for(let i=0;i<count;i++){
+    e.kingSummonSide=-(e.kingSummonSide||1);
+    const x=Math.max(L,Math.min(R,e.x+e.kingSummonSide*(260+i*140)));
+    const b=spawnEnemy('voidbat',x);
+    Object.assign(b,{y:320,baseY:320,safeY:320,active:true,noDrop:true,kingSummon:true,noticeRange:900});
+    for(let k=0;k<14;k++)G.particles.push({x,y:GROUND_Y-320+(Math.random()-0.5)*30,vx:(Math.random()-0.5)*160,
+      vy:(Math.random()-0.5)*120,sz:2+Math.random()*3,color:k%2?'#c47bff':'#2a1033',life:0.5});
+  }
+}
 function kingPhaseReset(e){
-  restoreBlood(G.p,Infinity);
+  // No Blood refill between phases any more (owner, 7.168: "significantly easier and can
+  // drop his heals"). A phase change only resets his blink.
   e.kingBlinkT=0;e.summonT=Math.max(e.summonT||0,1.2);
-  addText(G.p.x,GROUND_Y-G.p.y-78,'BLOOD RESTORED','#ff6b81',false);
 }
 /* THE SEAM HE LEAVES BY IS THE ROAD WEST, and that is not decoration — it is the fix
    for a real dead end. The arena's two faces are 360 tall and deliberately outlive the
@@ -1838,7 +1930,7 @@ function totalDefense(p){let t=0;if(p.gear)for(const s of SLOTIDS){if(p.gear[s])
 function bestGearRarity(p){let best=-1,bc='#333';if(p.gear)for(const s of SLOTIDS){const a=p.gear[s];if(a&&RARITY[a.rarity].tier>best){best=RARITY[a.rarity].tier;bc=a.color;}}return bc;}
 
 /* Snapshot for save/NG+ */
-function snapOf(p){const authored=BFReleaseModule.normalizePlayerAdvancement(p);return{hp:authored.hp,blood:Number.isFinite(p.blood)?Math.round(p.blood):effMaxBlood(),maxBlood:effMaxBlood(),bloodGuard:p.bloodGuard||0,bloodRecovery:p.bloodRecovery||0,maxHp:100,level:1,xp:0,xpNext:46,weapon:JSON.parse(JSON.stringify(p.weapon)),causewayBlade:p.causewayBlade?JSON.parse(JSON.stringify(p.causewayBlade)):null,gear:cloneGear(p.gear),stats:JSON.parse(JSON.stringify(authored.stats)),hasJetpack:!!p.hasJetpack&&!p._tmJet,mods:Object.assign({},p.mods||{})};}
+function snapOf(p){const authored=BFReleaseModule.normalizePlayerAdvancement(p);return{hp:authored.hp,blood:Number.isFinite(p.blood)?Math.round(p.blood):effMaxBlood(),maxBlood:effMaxBlood(),bloodGuard:p.bloodGuard||0,bloodRecovery:p.bloodRecovery||0,maxHp:100,level:1,xp:0,xpNext:46,weapon:JSON.parse(JSON.stringify(p.weapon)),stowedWeapon:(p.stowedWeapon||p.causewayBlade)?JSON.parse(JSON.stringify(p.stowedWeapon||p.causewayBlade)):null,gear:cloneGear(p.gear),stats:JSON.parse(JSON.stringify(authored.stats)),hasJetpack:!!p.hasJetpack&&!p._tmJet,mods:Object.assign({},p.mods||{})};}
 function revokeTestModeLoaner(player){
   const p=player||(G&&G.p);if(!p||!p._tmJet)return false;
   p.hasJetpack=false;p.fuel=0;p._tmJet=false;return true;
@@ -1852,8 +1944,8 @@ const input={left:false,right:false,down:false,jump:false,attack:false,dodge:fal
 
 /* Rebindable keyboard controls. meta.keybinds holds any user overrides (persisted);
    KB_DEFAULTS fills in whatever hasn't been rebound, including on first run. */
-const KB_DEFAULTS={left:'ArrowLeft',right:'ArrowRight',jump:'Space',attack:'KeyW',dash:'KeyD',counter:'KeyS',slam:'ArrowDown',flip:'KeyG',portal:'KeyF',pickup:'KeyR',tool:'KeyT',companion:'KeyE',echo:'KeyQ',pause:'Escape'};
-const KB_LABELS={left:'Move Left',right:'Move Right',jump:'Jump',attack:'Attack',dash:'Dash',counter:'Guard / Counter',slam:'Ground Slam',flip:'Gravity Flip',portal:'Portal Mouth',pickup:'Take Item',tool:'Use Tool',companion:'Companion Order',echo:'Leave / Recall Echo',pause:'Pause'};
+const KB_DEFAULTS={left:'ArrowLeft',right:'ArrowRight',jump:'Space',attack:'KeyW',dash:'KeyD',counter:'KeyS',slam:'ArrowDown',flip:'KeyG',portal:'KeyF',pickup:'KeyR',tool:'KeyT',companion:'KeyE',echo:'KeyQ',swap:'KeyB',pause:'Escape'};
+const KB_LABELS={left:'Move Left',right:'Move Right',jump:'Jump',attack:'Attack',dash:'Dash',counter:'Guard / Counter',slam:'Ground Slam',flip:'Gravity Flip',portal:'Portal Mouth',pickup:'Take Item',tool:'Use Tool',companion:'Companion Order',echo:'Leave / Recall Echo',swap:'Switch Weapon',pause:'Pause'};
 meta.keybinds=Object.assign({},KB_DEFAULTS,meta.keybinds||{});
 // Two actions sharing one key is unplayable (a dash bound onto a direction key
 // fires both at once). A save carrying duplicates gets its controls reset.
@@ -2955,11 +3047,15 @@ function beginRun(ngPlus,carrySnap,scales,opts){
      sessionCapabilities:opts&&opts.levelSelect?levelSelectCapabilitiesForStage((opts&&opts.startStage)||0):null,
      sessionZoneState:opts&&opts.levelSelect?BFZoneStateModule.createState():null,simSeed,
      musicMix:opts&&opts.intro&&!(ngPlus||0)?.24:1,musicMixTarget:opts&&opts.intro&&!(ngPlus||0)?.24:1};
+  seedLevelSelectPriorWorld((opts&&opts.startStage)||0);
+  if(opts&&opts.coop){G.coopSession=true;if(opts.coopSession)applyCoopSession(opts.coopSession);}
   // Level Select mirrors the real constitutional loadout. Outskirts and Black
   // Woods begin unarmed; Causeway through Deadeye Court carry the recovered
   // Oathblade. Standalone legacy/challenge modes retain their compatibility blade.
   if(!G.worldProgressEligible&&!G.p.weapon){
-    const openingPreview=G.levelSelectMode&&(ngPlus||0)===0&&((opts&&opts.startStage)||0)<=4;
+    // Level Select carries the Oathblade into every stage once the weapon is earned (it
+    // used to hand stages 5+ the legacy Rusty Sword); past the Causeway the bow joins it.
+    const openingPreview=G.levelSelectMode;
     if(openingPreview&&hasCapability('weapon'))G.p.weapon=makeWeapon(
       BFWeaponProgressionModule.FIRST_WEAPON.archetype,
       BFWeaponProgressionModule.FIRST_WEAPON.rarity,
@@ -3255,7 +3351,7 @@ function playDaturaCinematic(scriptId,onComplete){
 function freshFromSnapshot(snap){
   const safe=BFReleaseModule.normalizePlayerAdvancement(snap),p=freshPlayer();
   p.weapon=safe.weapon?JSON.parse(JSON.stringify(safe.weapon)):null;
-  p.causewayBlade=snap&&snap.causewayBlade?BFWeaponProgressionModule.normalizeWeapon(snap.causewayBlade):null;
+  p.stowedWeapon=stowedFromSnapshot(snap);
   p.gear=cloneGear(safe.gear);p.hasJetpack=!!safe.hasJetpack;p.fuel=p.hasJetpack?100:0;p.mods=Object.assign({},safe.mods||{});
   syncMovementCapabilities(p);syncEchoRuntimeMods(p);
   recomputeArmor(p);p.blood=Number.isFinite(snap&&snap.blood)?snap.blood:effMaxBlood();
@@ -4166,9 +4262,12 @@ function recallEcho(){
    it is why the two-marks door can be answered alone — Oren is one answer, the echo is
    the other, and the King's arena asks for both at once. */
 function echoWeighs(o){
-  const e=echoStanding();if(!e||!o)return false;
-  const w=(o.w||40)/2+18;
-  return Math.abs(e.x-o.x)<w&&Math.abs(e.y-(o.y||0))<46;
+  if(!o)return false;
+  const w=(o.w||40)/2+18,e=echoStanding();
+  if(e&&Math.abs(e.x-o.x)<w&&Math.abs(e.y-(o.y||0))<46)return true;
+  // Co-op: the partner's standing Echo is as heavy as your own.
+  const g=G.coopSession&&coopActive()&&NET.isHost()&&NET.ghost,ge=g&&g.stage===G.stageIndex&&g.echo;
+  return !!(ge&&Math.abs(ge.x-o.x)<w&&Math.abs(ge.y-(o.y||0))<46);
 }
 function updateEcho(dt){
   if(!G)return;
@@ -5290,7 +5389,13 @@ const SHIP_PARTS=Object.freeze({
   'hollow-marksman':{id:'ship-part-mast',x:11040,y:300,title:'THE MAST',accent:'#e0c48f',
     text:'A rangefinder’s tower, unbolted from its mounting. Whoever took it down meant it to stand again somewhere with weather.',
     line:'The tower on the far rail is not a tower. It is a mast, lying down.'},
-  'ruined-keep':{id:'ship-part-sail',x:16810,y:1080,title:'THE SAIL',accent:'#d8c48f',
+  /*   NOT ON THE KEEP KEY. The sail was authored at 16810,1080 — the exact point of the
+     masked belfry, which is the Keep Key and is always an Up target. The nearest target
+     wins, the belfry sat 0 away against the sail's 22, so Up on the sail's own ledge read
+     the belfry every time; the sail only answered a press made mid-jump. The two reaches
+     (the belfry's 82, a relic's 66) must not overlap at all, or the belfry still wins on
+     the west half of the sail's ledge: 160 east keeps them apart. */
+  'ruined-keep':{id:'ship-part-sail',x:16970,y:1080,title:'THE SAIL',accent:'#d8c48f',
     text:'Waxed canvas, folded in eighths and still dry. The Keep stored it for a siege that never came; it will hold a wind instead.',
     line:'A great folded weight of canvas, kept dry in the high store.'}
 });
@@ -6647,10 +6752,12 @@ const INVERSION_LEVEL={len:16100,portal:null,flip:true,authoredEcology:true,auth
 };
 
 /* THE DEEP LINE — an authored rail expedition rather than one long speed curve.
-   Brass junctions read the rider's lean: forward takes the dangerous high line,
-   back stays on the slower hazard road. The second high line only answers a
-   fresh trick boost, so the preceding gap turns the 360 into a route decision. */
+   Brass junctions read the rider's lean as the cart passes the post: holding the way
+   you ride takes the dangerous high line, anything else stays on the slower hazard
+   road. Both switches answer that one rule (the second used to demand a banked 360). */
 function RailSwitch(x,y,o){return Object.assign({type:'railSwitch',x,y:y||0,w:104,h:56,pow:720,cool:0,choiceT:0},o||{});}
+// A cart's own jump tops out near 112 over the rail, so a hop over the points still counts.
+const RAIL_SWITCH_REACH=130,RAIL_SWITCH_LAUNCH=520;
 function RailCollapse(x,w,y,o){return Pl(x,w,y||0,Object.assign({
   crumble:1,railCollapse:1,collapseDelay:2.05,trigger:420,respawnDelay:2.2
 },o||{}));}
@@ -7130,10 +7237,10 @@ const SECRET_LEVEL={len:13950,portal:null,physicalExit:'deep-line-keep',cart:tru
   RailCollapse(6012,260,0),
   Gr(6166,6900),Check(6500,0),
 
-  // ACT IV — THE TRICK FORK. The takeoff gap is long enough to finish one 360.
-  // A clean landing leaves its boost alive at the switch and unlocks the high
-  // ore line; a plain jump naturally commits to the furnace road below.
-  Gr(7080,7600),RailSwitch(7480,0,{label:'TRICK',pow:1050,requireBoost:1,signalSlot:1}),
+  // ACT IV — THE SECOND FORK. The takeoff gap is long enough to finish one 360, and
+  // a clean landing still surges the cart; the switch past it asks only for the lean,
+  // the same as the first, and throws you onto the high ore line.
+  Gr(7080,7600),RailSwitch(7480,0,{label:'LEAN',pow:1050,launch:580,signalSlot:1}),
   Gr(7600,9900),
   FJ(7920,0,{w:112,period:2.6,phase:0.4,upT:0.92}),
   FJ(8580,0,{w:112,period:2.6,phase:1.25,upT:0.92}),
@@ -9971,6 +10078,17 @@ function buildCustomLevel(L,s){
     const zs=G.levelSelectMode?G.sessionZoneState:meta.zoneState;
     try{bossDone=!!(BFZoneStateModule.hydrate(zs,L.bossSkipZone||'ember-colossus',[]).circuits[L.bossSkipCircuit]||{}).open;}catch(_e){bossDone=false;}
   }
+  /*   A STAGE THE RUN ALREADY COUNTS AS WON DOES NOT STAND ITS BOSS BACK UP. Level Select
+     seeds every earlier stage as cleared, but only three bosses are skipped by a circuit;
+     the rest stay dead in a real run because their bodies are stored dead. So a session
+     started at the Deep Line met a live Brute in the Causeway, a live Right Hand in the
+     Throne, and — on the NG+ tabs, where the Marksman's restore does not run — a live
+     Marksman 180 units from the owner's own route. */
+  if(!bossDone&&G.levelSelectMode&&(G.sessionClearedZones||[]).includes(BFWorldModule.stageId(G.stageIndex)))bossDone=true;
+  // And a campaign save whose world already records the King as beaten — every save from
+  // before 'throne-king' was written — must not stand him back up, or leave a ghost G.boss
+  // that seals the rail head.
+  if(!bossDone&&G.stageIndex===13&&!G.levelSelectMode&&((meta.world&&meta.world.cleared)||[]).includes('abyss-king'))bossDone=true;
   if(s.boss&&!hasCapability(L.bossSkipCapability||'__never__')&&!bossDone){
     const e=spawnEnemy(s.boss,Number.isFinite(L.bossX)?L.bossX:L.len-350,true);e.y=0;G.killGoal++;G.portal=null;bossArena(e);registerCircuits();
   }
@@ -9982,6 +10100,16 @@ function buildCustomLevel(L,s){
   // Tyrant, so bossArena never pushes the floor, and without this there is a
   // 1,280-unit hole where the fight used to be.
   if(G.stageIndex===12&&bossDone&&!G.obstacles.some(o=>o.paradoxFloor)){installParadoxFloor(true);registerCircuits();}
+  // The Throne's too: bossArena pushes the hall floor across 15850-17550, and a hall whose
+  // King has already run must not be a 1,700-unit hole between the rail head and the stair.
+  G.throneHallEmpty=G.stageIndex===13&&bossDone;
+  if(G.throneHallEmpty){
+    if(!G.obstacles.some(o=>o.throneHallFloor)){
+      G.obstacles.push(FinaleBeat(Pl(THRONE_ARENA_X-500,1700,0,{throneHallFloor:1}),'teach','temporal-echo'));registerCircuits();}
+    // spawnEnemy made the Right Hand G.boss during build(); on a normal load the King
+    // replaces him. The Hand himself is retired after hydration (retireThroneHall).
+    if(G.boss&&G.boss.rightHandFight)G.boss=null;
+  }
   applyCampaignCadence();
   applyPortalComposition();
   applyFollowerUtility();
@@ -10149,9 +10277,11 @@ function installZoneRestSite(zoneId){
 }
 function activateRuntimeCheckpoint(id,position,kind,siteId,save){
   const zoneId=BFWorldModule.stageId(G.stageIndex);if(!zoneId)return null;
-  const result=BFRecoveryModule.activateCheckpoint(meta.recovery,{id,zoneId,kind:kind||'checkpoint',position,siteId:siteId||null});
-  meta.recovery=result.state;
-  const checkpoint=meta.recovery.activeCheckpoint;if(!checkpoint)return result;
+  // A co-op journey keeps its checkpoints on a copy (coopRecoveryState): your own Continue
+  // reads meta.recovery's checkpoint, so one touched while showing a friend round would move it.
+  const result=BFRecoveryModule.activateCheckpoint(G.coopSession?coopRecoveryState():meta.recovery,{id,zoneId,kind:kind||'checkpoint',position,siteId:siteId||null});
+  if(G.coopSession)G.coopRecovery=result.state;else meta.recovery=result.state;
+  const checkpoint=result.state.activeCheckpoint;if(!checkpoint)return result;
   G.p.ckX=checkpoint.position.x;G.p.ckY=checkpoint.position.y;G.p.ckSet=true;
   if(G.p.hasJetpack)G.p.fuel=100;
   G.checkpointLoadout=snapOf(G.p);
@@ -10171,6 +10301,7 @@ function activateZonePersistence(endpointId){
   if(musterRecalled())state=regarrisonRecalledZone(state,zoneId);
   const view=BFZoneStateModule.hydrate(state,zoneId,manifest);
   applyZoneHydration(view,manifest);
+  if(G.throneHallEmpty)retireThroneHall();
   syncRecallReturnRoute();
   syncShipParts();
   G.recallBaselineActive=musterRecalled();
@@ -10184,6 +10315,21 @@ function activateZonePersistence(endpointId){
   installZoneRestSite(zoneId);
   if(!G._suppressEntranceCheckpoint)activateRuntimeCheckpoint(`${zoneId}:entrance`,{x:G.p.x,y:G.p.y},'entrance',null,false);
   G.zonePersistenceManifest=manifest;G.zonePersistenceView=view;G.zonePersistenceZoneId=zoneId;
+}
+/*   A HALL WHOSE KING ALREADY RAN HAS NO RIGHT HAND AND NO OREN. The King only runs after
+   the Hand is spent, and Oren went after the King and did not come back ("neither body is
+   shown again"). build() stands the Hand up on every load, so left alone he is a revived
+   boss — and his death would also raise the generic next-stage portal on the rail head.
+   Retired AFTER the manifest and hydration, never before: an enemy without an authored id
+   is keyed by its index, and the Hand is index 0, so removing him earlier would shift
+   every guard's stored identity. Captured afterwards, both simply read as gone. */
+function retireThroneHall(){
+  if(!G||G.stageIndex!==13)return;
+  const before=G.enemies.length;
+  G.enemies=G.enemies.filter(e=>!e.rightHandFight);
+  G.killGoal=Math.max(0,(G.killGoal||0)-(before-G.enemies.length));
+  if(G.boss&&G.boss.rightHandFight)G.boss=null;
+  G.npcs=(G.npcs||[]).filter(n=>!(n.kind==='escort'&&n.profileId==='sera'));
 }
 function captureCurrentZonePersistence(){
   if(!G||!G.zonePersistenceManifest||!G.zonePersistenceZoneId)return null;
@@ -10282,6 +10428,18 @@ function updateBlackWoodsWindShaft(){
     beginPhysicalBranchTransition('black-woods-updrafts','black-woods',shaft.sourceObject);
   }
 }
+/*   A BOSS THE LEVEL TREATS AS BEATEN, THE GATE DOES TOO. The three bossSkip latches are
+   written the moment each boss falls, in every mode, and the level stops standing him up
+   once they are set. The clear a bossClear gate reads is written by other paths that can
+   miss (a run that records no campaign progress, a Continue from before the kill), which
+   left a hall with no King to fight and a rail head that would never open. Read raw, not
+   through hydrate(): this runs every frame the knight stands near a seam. */
+const BOSS_LATCH_CLEARS=Object.freeze([['abyss-king','throne-king'],['void-tyrant','citadel-tyrant'],['ember-colossus','foundry-colossus']]);
+function bossLatchClears(){
+  const state=G&&G.levelSelectMode?G.sessionZoneState:meta.zoneState,zones=state&&state.zones||{};
+  return BOSS_LATCH_CLEARS.filter(([zone,id])=>{const c=zones[zone]&&zones[zone].circuits&&zones[zone].circuits[id];
+    return c===true||!!(c&&(c.open===true||c.solved===true));}).map(([zone])=>zone);
+}
 function zoneTraversalState(extra){
   const source=extra&&typeof extra==='object'?extra:{},opened=new Set(BFZoneStateModule.openedConnectors(G&&G.levelSelectMode?G.sessionZoneState:meta.zoneState));
   for(const id of source.openedConnectors||[])opened.add(id);
@@ -10297,7 +10455,7 @@ function zoneTraversalState(extra){
        and it also repairs a campaign save whose meta.world drifted (clear() refuses a
        node that was never `visited`, which any warp or resumed save can produce). */
     clearedZones:[...new Set([...(meta.world&&meta.world.cleared||[]),
-      ...(G&&G.sessionClearedZones||[])])],
+      ...(G&&G.sessionClearedZones||[]),...bossLatchClears()])],
     vaultKeys:BFSecretsModule.vaultKeys(meta.secrets)});
 }
 function updateZoneCellDiscovery(){
@@ -10315,6 +10473,7 @@ function nearCurrentRestSite(){
 }
 function restAtNearbySite(){
   const marker=nearCurrentRestSite();if(!marker)return false;
+  if(G.coopSession){toast('The rest site waits until you travel alone.');return true;}
   captureCurrentZonePersistence();
   const visited=Object.keys(meta.zoneState.zones||{});
   const receipt=BFRecoveryModule.rest(meta.recovery,marker.siteId,visited);
@@ -10356,7 +10515,7 @@ function loadStage(i){
   G.gravityFlipped=false; // always start a stage the right way up
   G.p.charging=false;G.p.chargeTime=0;G.p.chargeReady=false;G.p.swingT=0;G.p.swingHits=[];
   G.p.flashT=0;G.p.flurry=0;G.fam=null;   // charged after-effects & familiar re-home
-  G.p.cartFlipT=0;G.p.cartTrick=false;G.padBoost=0;G.deepLineSignals=0;
+  G.p.cartFlipT=0;G.p.cartTrick=false;G.p.railSwitchFlight=false;G.padBoost=0;G.deepLineSignals=0;
   G.deepLineCompanionWitness=false; // cart tricks, pads, route memory & hidden feat witness
   G.p.slamCd=0;G.p.slamming=false;G.p.atkBuf=0;G.p.dashBuf=0;G.p.sqV=0;G.p.wallCoyote=0;G.p.dodgeCdT=0;G.p.dodgeTimer=0;G.p.wardenFlankT=0;G.p.counterT=0;G.p.counterCd=0;G.p.counterRiposteT=0;G.p.bloodVowT=0;G.p.faultBellT=0;
   G.hitstop=0;G.camFrac=0.35;G.plates={};G.npcs=[];G.cratePortals=[];G.flipSecret=false;G.cartMode=false;G.cartLean=0;G.cartBoost=0;G.secondMouthProved=!!meta.portalPairProved;
@@ -10378,6 +10537,7 @@ function loadStage(i){
   if(customL){
     buildCustomLevel(customL,s);
     syncPortalCapabilities();
+    ensureTwoWeaponArsenal(G.p);
     syncWeaponCapabilities(G.p);enforceWeaponPickupAccess();
     G.stageBannerMax=G.stageIndex===0?3.2:2.6;G.stageBanner=G.stageBannerMax;document.getElementById('bosshpwrap').classList.remove('on');
     document.getElementById('stageTag').textContent=s.name;hudUpdate();
@@ -10765,6 +10925,9 @@ const BFZoneStreamer=BFStreamingModule.createStreamer({zones:BFZonesModule,adapt
     if(plan.sourceZoneId==='black-woods'&&plan.targetZoneId==='outskirts')advanceOpeningClock('black-woods-return');
     const carry=snapOf(G.p);carry.hasJetpack=false; // level gear never crosses a zone seam
     G._pendingZoneEndpoint=plan.targetEndpointId;
+    // Co-op: both machines must build this region from the same seed and the same world
+    // state, because the shared world is synced by object position in the lists.
+    if(G.coopSession&&coopActive()&&NET.isHost())NET.stageSeed=BFSimulationModule.createSeed();
     loadStage(prepared.stageIndex);delete G._pendingZoneEndpoint;restorePlayer(carry);
     G.zoneTransition={connectorId:plan.connectorId,from:plan.sourceZoneId,to:plan.targetZoneId,
       token:null,compatibilityGeometry:prepared.geometryStatus!=='authored'};
@@ -10785,6 +10948,7 @@ const BFZoneStreamer=BFStreamingModule.createStreamer({zones:BFZonesModule,adapt
   },
   releaseSource:plan=>{
     G.zoneTransition=null;
+    if(G.coopSession&&coopActive()&&NET.isHost())coopBroadcastStage('seam',plan.targetEndpointId);
     saveRunAtStage(G.stageIndex,snapOf(G.p));
     persist();
     G.lastZoneTransition={connectorId:plan.connectorId,from:plan.sourceZoneId,to:plan.targetZoneId};
@@ -11089,6 +11253,7 @@ function showOutskirtsAnnotation(source,html,options){
   const next={source,x:source.x,y:source.y||0,title:copy.title,body:copy.body,kind:outskirtsAnnotationKind(source,opts),
     accent:opts.accent||source.accent||'#d8c48f',radius:opts.radius||250,manual:!!opts.manual};
   G.outskirtsAnnotation=next;G.outskirtsAnnotationPending=null;
+  if(G.coopSession&&NET.noteCapture&&G.obstacles)NET.noteCapture.push({i:G.obstacles.indexOf(source),html,accent:next.accent,manual:next.manual?1:0});
   BFPresentation.publish('location:annotation',{title:copy.title,body:copy.body,x:source.x,y:source.y||0,manual:!!opts.manual});
   return true;
 }
@@ -11188,7 +11353,11 @@ function outskirtsAuthoredInteractable(o){
   if(o.lore||o.type==='storyRelic'||o.type==='surveyStake'||o.type==='ambientFigure'||o.repairCatch||o.keepDropRelease)return true;
   return o.type==='scenery'&&!!(o.warmAsh||o.flowerClue||o.fieldClock||o.keepWallJump||o.keepVaultKey||o.sentinelVigil||
     o.dashOverlook||o.wallJumpOverlook||o.woodsReturnSecret||o.routeReveal||
-    o.patrolCache||o.searcherSign||o.rainShortcut||o.rainShortcutReturn);
+    o.patrolCache||o.searcherSign||o.rainShortcut||o.rainShortcutReturn||
+    /*   THE BOAT IS AN UP TARGET. Its claim sits in the targeted-interaction loop like the
+       ship parts', but a scenery prop only becomes the target if it is listed here, and
+       the boat never was — so Up on the beach did nothing and Act 1 could not end. */
+    o.throneBoat);
 }
 function updraftsShortcutOpen(id){
   if(!G||G.stageIndex!==3)return false;
@@ -11269,9 +11438,10 @@ function activateOutskirtsVigil(source){
   if(meta.soundOn)SFX.magic('earth');
   return true;
 }
-function beginOutskirtsInteraction(){
-  const o=outskirtsInteractionCandidate();
+function beginOutskirtsInteraction(forced){
+  const o=forced||outskirtsInteractionCandidate();
   if(!o)return false;
+  if(!forced&&G.coopSession&&coopActive()&&NET.isGuest()&&coopHostRunsInteraction(o)){coopSendUpIntent(o);return true;}
   if(o.courtAction)return interactWhiteCourt(o);
   if(o.frostMineDoor){
     if(G.stageIndex===6&&!hasCapability('counter'))return false;
@@ -11324,12 +11494,21 @@ function replayNearbyOutskirtsSource(){
   if(!G||G.stageIndex<0||G.stageIndex>V4_LAST_STAGE)return false;
   return beginOutskirtsInteraction();
 }
-function updatePhysicalWorldSeams(){
-  const spec=physicalSeamSpec();if(!spec||G.physicalSeamCrossing)return;
+function updatePhysicalWorldSeams(partnerSpec){
+  // partnerSpec: the host carrying out a co-op partner's crossing (coopHostSeamIntent).
+  const spec=partnerSpec||physicalSeamSpec();if(!spec||G.physicalSeamCrossing)return;
   if(spec.requires&&!hasCapability(spec.requires))return;
   if(spec.requiresWorld&&!worldRequirementOpen(spec.requiresWorld))return;
-  const state=zoneTraversalState();
   if(BF_TAS_ENABLED){if(spec.cross)throw new Error('TAS reached a zone boundary');return;}
+  /*   CO-OP: NO ONE CROSSES ALONE. The guest never streams a region itself — it asks the
+     host, who checks the same exit at the guest's position and takes BOTH knights through
+     (the guest lands beside the host). Either knight can lead the way. */
+  if(!partnerSpec&&G.coopSession&&coopActive()&&NET.isGuest()){
+    if(spec.cross)coopSendSeamIntent({connector:spec.connector,zone:spec.zone});
+    G.courtTravelRequest=null;G.frostMineRequested=false;
+    return;
+  }
+  const state=zoneTraversalState();
   if(spec.warm&&BFZoneStreamer.diagnostics().phase==='idle'){
     BFZoneStreamer.warm(spec.connector,spec.zone,state).catch(()=>{});
   }
@@ -11365,6 +11544,7 @@ function updatePhysicalWorldSeams(){
 function beginPhysicalBranchTransition(connector,zone,sourceObject){
   if(BF_TAS_ENABLED)throw new Error('TAS cannot start an asynchronous zone transition');
   if(!G||G.physicalSeamCrossing)return false;
+  if(G.coopSession&&coopActive()&&NET.isGuest()){coopSendSeamIntent({connector,zone,branch:1});return false;}
   const state=zoneTraversalState(),plan=BFZonesModule.planTransition(connector,zone,state);
   if(!plan.ok){toast('The opened road does not answer yet.');return false;}
   G.physicalSeamCrossing=true;G.p.vx=0;
@@ -13172,7 +13352,7 @@ function hurtPlayer(dmg,dir,dealsRealDamage,measureOverride){
       if(coopRespawnAtPartner(p)){/* rejoined your partner */}
       else if(p.ckSet){p.x=p.ckX;p.y=p.ckY||0;}
       else{p.x=p.safeX||200;p.y=200;}
-      p.vx=0;p.vy=0;p.slamming=false;p.floorPlat=null;p.dodgeTimer=0;p.dashBuf=0;p.invuln=0.9;
+      p.vx=0;p.vy=0;p.slamming=false;p.floorPlat=null;p.dodgeTimer=0;p.dashBuf=0;p.invuln=0.9;p.railSwitchFlight=false;
       if(p.hasJetpack)p.fuel=100;
       clearPlacedPortals(false);
     }
@@ -13198,7 +13378,7 @@ function hurtPlayer(dmg,dir,dealsRealDamage,measureOverride){
     if(coopRespawnAtPartner(p)){/* rejoined your partner */}
     else if(p.ckSet){p.x=p.ckX;p.y=p.ckY||0;}
     else{p.x=p.safeX||200;p.y=200;}
-    p.vx=0;p.vy=0; p.slamming=false; p.floorPlat=null;
+    p.vx=0;p.vy=0; p.slamming=false; p.floorPlat=null; p.railSwitchFlight=false;
     if(p.hasJetpack)p.fuel=100;
     p.dodgeTimer=0; p.dashBuf=0;   // never resume a stale dash after the rewind
     clearPlacedPortals(false);      // retry the room from a clean blue/orange state
@@ -13596,7 +13776,7 @@ function killEnemy(e,coopOpts){
     if(e.colossusForge){const outlet=G.obstacles.find(o=>o.foundryOutlet);if(outlet)outlet.gone=false;latchFoundryColossus();}
     // In the rush the next throne rises on a short beat; elsewhere a portal opens.
     if(G.bossRush){G.bossRush.pending=1.4;}
-    else if(e.whiteCourtFight||e.type==='brute'||(e.type==='archer'&&G.stageIndex===4)||(e.type==='warden'&&G.stageIndex===6)||(e.type==='colossus'&&G.stageIndex===10)||(e.type==='tyrant'&&G.stageIndex===12)||(e.type==='king'&&G.stageIndex===13))G.portal=null;
+    else if(e.whiteCourtFight||e.type==='brute'||(e.type==='archer'&&G.stageIndex===4)||(e.type==='warden'&&G.stageIndex===6)||(e.type==='colossus'&&G.stageIndex===10)||(e.type==='tyrant'&&(G.stageIndex===12||G.stageIndex===13))||(e.type==='king'&&G.stageIndex===13))G.portal=null;
     else G.portal = {x: G.levelLength - 300, t:0, askedTimer: 0};
   }
   if(coopActive()&&!battleActive()&&!coopOpts.remote){
@@ -13749,7 +13929,10 @@ function restoreSolvedBacktrackDoors(){
   return ids;
 }
 function restoreMarksmanVictory(){
-  if(!G||G.stageIndex!==4||G.ngPlus!==0||G.bossRush||!hasCapability('portal-pair'))return false;
+  // A Level Select session that counts the Marksman as won restores his court in every tier;
+  // otherwise the NG+ tabs left his perches and rail covers standing on the owner's route.
+  const sessionWon=G&&G.levelSelectMode&&(G.sessionClearedZones||[]).includes('hollow-marksman');
+  if(!G||G.stageIndex!==4||(G.ngPlus!==0&&!sessionWon)||G.bossRush||!hasCapability('portal-pair'))return false;
   if(G.boss&&G.boss.type==='archer'){
     G.boss.dead=true;G.boss.hp=0;G.boss.active=false;G.boss.rangefinderBroken=true;
     G.boss.marksmanAimT=0;G.boss.marksmanRecoverT=0;G.boss.portalGate=null;
@@ -14737,25 +14920,28 @@ function updateOrdinaryEnemyAI(e,target,dt,eff,intent,directive){
 const SLAM_CD=BFMovementProgressionModule.TUNING.downwardStrikeCooldownSeconds;
 /* Ground-slam landing: shockwave, screen shake, and it shatters brittle rock.
    Starting the cooldown here (not on the input) means the cost is paid per impact. */
-function slamImpact(p, aoeY, floorO){
-  p.slamming=false; p.slamCd=SLAM_CD;
-  resolveEchoEvent('player:slam',{x:p.x,y:aoeY});
-  G.aoes.push({x:p.x, y:aoeY, r:(p.mods&&p.mods.shockwave)?200:120, fromPlayer:true, dmg:35*effPower(p), color:'#ff5500', slamRing:1});
-  G.shake=Math.min(Math.max(G.shake,9),14);
-  G.hitstop=Math.max(G.hitstop||0,3);            // three frames. The blow lands before the world moves again.
-  if(meta.soundOn)SFX.hit();
-  // THE IMPACT BELONGS TO THE SURFACE. Thirty orange fireballs said "explosion" for
-  // an act whose whole meaning is cold stone. A ring runs out along the floor both
-  // ways and the floor chips in ITS OWN colour, so striking rock never looks like
-  // striking live metal.
-  const chipC=floorO&&floorO.heatCycle?(floorO.heatSet?'#b6c9d2':floorO.heatState===HEAT_SETTING?'#cdd8dc':'#e0561f')
-    :(floorO&&floorO.ice?'#cfe9ff':'#8a7f6e');
-  const ry=GROUND_Y-aoeY,gd=G.gravityFlipped?-1:1;
-  for(let sgn=-1;sgn<=1;sgn+=2)for(let k=0;k<7;k++)G.particles.push({x:p.x+sgn*(12+k*13),y:ry-(2+k)*gd,
-    vx:sgn*(170+k*28),vy:(-16-k*7)*gd,sz:3,color:k<3?'#ffffff':chipC,life:.18+k*.02});
-  for(let j=0;j<10;j++)G.particles.push({x:p.x+(Math.random()-0.5)*48,y:ry,
-    vx:(Math.random()-0.5)*210,vy:(-90-Math.random()*150)*gd,
-    sz:2+Math.random()*2,color:chipC,life:0.25+Math.random()*0.25});
+function slamImpact(p, aoeY, floorO, remote){
+  // remote: a co-op partner's strike, applied on the host — the world half only.
+  if(!remote){
+    p.slamming=false; p.slamCd=SLAM_CD;
+    resolveEchoEvent('player:slam',{x:p.x,y:aoeY});
+    G.aoes.push({x:p.x, y:aoeY, r:(p.mods&&p.mods.shockwave)?200:120, fromPlayer:true, dmg:35*effPower(p), color:'#ff5500', slamRing:1});
+    G.shake=Math.min(Math.max(G.shake,9),14);
+    G.hitstop=Math.max(G.hitstop||0,3);            // three frames. The blow lands before the world moves again.
+    if(meta.soundOn)SFX.hit();
+    // THE IMPACT BELONGS TO THE SURFACE. Thirty orange fireballs said "explosion" for
+    // an act whose whole meaning is cold stone. A ring runs out along the floor both
+    // ways and the floor chips in ITS OWN colour, so striking rock never looks like
+    // striking live metal.
+    const chipC=floorO&&floorO.heatCycle?(floorO.heatSet?'#b6c9d2':floorO.heatState===HEAT_SETTING?'#cdd8dc':'#e0561f')
+      :(floorO&&floorO.ice?'#cfe9ff':'#8a7f6e');
+    const ry=GROUND_Y-aoeY,gd=G.gravityFlipped?-1:1;
+    for(let sgn=-1;sgn<=1;sgn+=2)for(let k=0;k<7;k++)G.particles.push({x:p.x+sgn*(12+k*13),y:ry-(2+k)*gd,
+      vx:sgn*(170+k*28),vy:(-16-k*7)*gd,sz:3,color:k<3?'#ffffff':chipC,life:.18+k*.02});
+    for(let j=0;j<10;j++)G.particles.push({x:p.x+(Math.random()-0.5)*48,y:ry,
+      vx:(Math.random()-0.5)*210,vy:(-90-Math.random()*150)*gd,
+      sz:2+Math.random()*2,color:chipC,life:0.25+Math.random()*0.25});
+  }
   // Brittle rock yields to a slam from above — or a spring launch from below.
   for(const o of G.obstacles){
     if(o.type!=='plat'||!o.brittle||o.gone)continue;
@@ -14783,6 +14969,7 @@ function slamImpact(p, aoeY, floorO){
     // there first, and the reason a player who understands nothing still lands one.
     if(nearestBed.pourArm&&G.boss&&!G.boss.dead&&G.boss.colossusForge)resolveColossusQuench(G.boss,nearestBed,0.45);
   }
+  if(!remote&&G.coopSession&&coopActive()&&NET.isGuest())netSend({t:'slamIntent',x:Math.round(p.x),y:Math.round(aoeY)});
 }
 /* One mould, set for good: the constructive half of the strike. */
 function setHeatStone(o){
@@ -15119,11 +15306,8 @@ function advanceTyrantParadox(e){
   for(const q of G.projectiles)if(q.paradoxLoop||q.paradoxOrb)q.life=0;
   G._paradoxLoaded=null;                 // the next band may arm immediately
   e.paradoxStunT=0.95;e.shootT=0.45;
-  // A BAND IS A PHASE, AND A PHASE IS A CLEAN SLATE. Each band is its own puzzle —
-  // read the height, build the pair, charge the loop — and carrying a half-empty
-  // Blood bar into the next one punishes the band you already solved instead of the
-  // one you are about to. You come to every band whole.
-  restoreBlood(G.p,Infinity);
+  // NO REFILL BETWEEN BANDS (owner, 7.168): his volleys are now easy enough to dodge
+  // that the per-band full Blood made the fight free. Blood carries from band to band.
   if(e.paradoxRound<TYRANT_PARADOX_BANDS.length){
     const target=tyrantParadoxTarget(e);
     // THE LAST BAND FIRES A QUARTER SLOWER. Head height is the one band where the
@@ -15259,7 +15443,6 @@ function fractureKingCrown(e){
   for(const o of G.obstacles)if(o.type==='echoSigil'){o.lit=false;o.pulse=0;}
   G.shake=18;
   hitEnemy(e,e.maxHp/total+2,Math.sign(e.x-G.p.x)||1,70,0,null,'echoFracture');
-  restoreBlood(G.p,Infinity);
   if(!e.dead)setKingEchoSigils(e);
 }
 function updateKingEchoTrial(dt){
@@ -15448,12 +15631,33 @@ function updateObstacles(dt){
     }
     else if(o.type==='railSwitch'){
       if(o.cool>0)o.cool-=dt;if(o.choiceT>0)o.choiceT-=dt;
-      if(!G.cartMode||o.cool>0||!p.onGround||Math.abs(p.x-o.x)>=34||Math.abs(p.y-o.y)>18)continue;
-      const powered=!o.requireBoost||(G.padBoost||0)>0.18||(G.cartBoost||0)>0.72;
-      const high=G.cartLean>0.18&&powered;
+      /*   ONE RULE AT EVERY SWITCH: HOLD THE WAY YOU ARE RIDING AS YOU REACH IT. Owner:
+         "how activate the high line/low line thing? The switch is seemingly unreliable,
+         and activating it should be simpler." Measured, it had three hidden conditions:
+           - it read the rider only on a GROUNDED frame within 34 units of the post, so a
+             hop over the jet before it (or a bump on landing) passed it with no choice at
+             all — no text, just the low road;
+           - the second switch also wanted a banked boost, and full, unbroken lean reaches
+             0.64 of the 0.72 it asked for, so only a clean 360 (release jump, press again
+             inside ~0.2 s) could open it;
+           - and the launch kept whatever speed you had, so a light lean flew short of the
+             high line's first plank and dropped you back to the low one.
+         Now the choice is made the moment the cart passes the post, on the rail or just
+         over it, from the lean alone, and the high line throws you a fixed distance onto
+         its first plank. The 360 still pays in speed; it no longer decides the route. */
+      const cdir=G.cartDirection||1,wasX=o.riderX;o.riderX=p.x;
+      if(!G.cartMode||o.cool>0||wasX==null)continue;
+      const passed=cdir>0?(wasX<o.x&&p.x>=o.x):(wasX>o.x&&p.x<=o.x);
+      if(!passed||p.y-o.y>RAIL_SWITCH_REACH||p.y<o.y-24)continue;
+      const high=G.cartLean>0.18;
       o.cool=2.2;o.choiceT=1.1;o.choice=high?'high':'low';
       if(high){
         p.vy=-(o.pow||720);p.onGround=false;p.floorPlat=null;p.jumps=1;p.jumpCutOk=false;
+        p.vx=cdir*Math.max(Math.abs(p.vx),o.launch||RAIL_SWITCH_LAUNCH);
+        // ...and it HOLDS that speed until the cart lands, or a rider who lets go of the
+        // key once the switch has spoken drifts back to the base speed in the air and comes
+        // down short of the high plank (measured: every release at the second switch).
+        p.railSwitchFlight=true;
         G.padBoost=Math.max(G.padBoost||0,0.9);
         if(o.signalSlot!=null&&!o.signalLit){
           o.signalLit=true;
@@ -15465,7 +15669,7 @@ function updateObstacles(dt){
           vx:60+Math.random()*220,vy:-80-Math.random()*220,sz:2+Math.random()*3,color:i%2?'#ffd76a':'#ff9a3b',life:0.4});
         if(meta.soundOn)SFX.dodge();
       }else{
-        addText(o.x,GROUND_Y-o.y-72,o.requireBoost&&!powered?'TRICK MISSED · LOW LINE':'LOW LINE','#9aa4b4',true);
+        addText(o.x,GROUND_Y-o.y-72,'LOW LINE','#9aa4b4',true);
       }
     }
     else if(o.type==='lever'&&o.marksmanTarget){
@@ -15802,7 +16006,7 @@ function acquireCausewayBow(pk){
   if(!G||G.stageIndex!==2||!pk||pk.taken||pk.ritualLocked||pk.weaponMemoryLocked||!pk.causewayBow||!pk.weapon)return false;
   const p=G.p,previous=p.weapon;
   if(!equipProgressionWeapon(pk.weapon,{archetype:pk.weapon.arche,authored:true}))return false;
-  if(!p.causewayBlade&&previous&&previous.arche!=='bow')p.causewayBlade=JSON.parse(JSON.stringify(previous));
+  if(previous&&previous.arche!=='bow')p.stowedWeapon=JSON.parse(JSON.stringify(previous));
   pk.taken=true;coopRememberPickupTaken(pk);noteItem(p.weapon);
   p.atkTimer=p.atkCd=p.atkBuf=p.swingT=0;p.charging=false;
   G.checkpointLoadout=snapOf(p);saveRunAtStage(G.stageIndex,G.checkpointLoadout);
@@ -15941,6 +16145,7 @@ function update(dt){
   if(keyPressedFor('pickup'))collectNearbyItem();
   if(BF_TAS_ENABLED?!!(tasInjected&&tasInjected.pressed.interact):BFKeyboard.isPressed('ArrowUp'))beginOutskirtsInteraction();
   if(keyPressedFor('tool')||input.toolEdge)useEquippedTool();input.toolEdge=false;
+  if(keyPressedFor('swap'))swapWeapon();
   // THE ECHO: one key, two jobs. Leave a second body, or trade places with the one
   // already standing. Gated to the region that teaches it so no earlier level can be
   // broken open by a verb it was never balanced against.
@@ -16050,7 +16255,14 @@ function update(dt){
     // speed, lean back to rein in — but the sword still swings if a gargoyle
     // gets close.
     p.dashBuf=0;
-    G.cartLean+=(((input.right?1:0)-(input.left?1:0))-G.cartLean)*6*dt;
+    //   LEAN IS MEASURED ALONG THE RIDE, NOT ACROSS THE SCREEN. Owner: "when going
+    // backwards on deep line from ruined keep, you hold right to speed up still, which is
+    // backwards since you are going left." cartLean was right-minus-left in both
+    // directions, so the westbound rider sped up with the key that points behind him.
+    // Positive lean now means "toward where the cart is going" either way; the target
+    // speed, the momentum window and the switches all read it, so they follow for free.
+    const leanFwd=cdir>0?input.right:input.left,leanBack=cdir>0?input.left:input.right;
+    G.cartLean+=(((leanFwd?1:0)-(leanBack?1:0))-G.cartLean)*6*dt;
     // 360 flip in progress: spin the timer down; completing it mid-air primes
     // the landing reward (handled at touchdown).
     if(p.cartFlipT>0){p.cartFlipT-=dt;if(p.cartFlipT<=0){p.cartFlipT=0;p.cartTrick=true;}}
@@ -16088,7 +16300,8 @@ function update(dt){
     if(G.cartBoost>0.4&&Math.random()<G.cartBoost*0.6)
       G.particles.push({x:p.x-20,y:GROUND_Y-p.y-14,vx:-140-Math.random()*100,vy:(Math.random()-0.5)*50,sz:2+Math.random()*2.5,color:'#ffcf7a',life:0.3});
     const cartTarget=cdir*(270+G.cartLean*160+(G.cartBoost||0)*140+(G.padBoost>0?190:0));   // 110 .. 760 boosted
-    p.vx=BFPlatformer.blendVelocity(p.vx,cartTarget,p.onGround?10:3,dt);
+    if(p.onGround)p.railSwitchFlight=false;
+    if(!p.railSwitchFlight)p.vx=BFPlatformer.blendVelocity(p.vx,cartTarget,p.onGround?10:3,dt);
     // A real slope tugs momentum along its grade — downhill adds speed,
     // uphill bleeds it, the way rolling actually works (not just steering).
     if(p.onGround&&p.floorPlat&&p.floorPlat.slope){
@@ -17248,9 +17461,15 @@ function update(dt){
   // Co-op: one camera holds both knights, and neither may outrun the frame.
   // The tether is what makes a 14,000px stage a shared journey instead of two
   // people playing alone in the same file.
-  if(coopActive()&&NET.ghost){
+  if(coopActive()&&NET.ghost&&!G.cartMode&&!G.physicalSeamCrossing&&NET.ghost.synced!==false&&
+     (NET.ghost.stage==null||NET.ghost.stage===G.stageIndex)&&!NET.ghost.downed){
     // Floor the span: VW is 0 before the first resize (and in a background
     // tab), and a zero-width tether welds the two knights to the same pixel.
+    // (Only within one region: across a crossing the partner's x belongs to a
+    // different map, and dragging toward it pulled knights through whole levels.)
+    // Nor straight after a reload: the stage rebuild parks the partner's marker
+    // beside the entrance until their real position arrives, and a wipe that
+    // restarted the host at its checkpoint was dragged 2,000 units back to it.
     const gx=NET.ghost.x, span=Math.max(560,VW*0.78);
     if(p.x-gx>span){p.x=gx+span;if(p.vx>0)p.vx=0;}
     else if(gx-p.x>span){p.x=gx-span;if(p.vx<0)p.vx=0;}
@@ -17594,8 +17813,8 @@ function update(dt){
           addText(e.x,GROUND_Y-e.h-20,'THE ABYSS HUNGERS','#c47bff',true);
           kingPhaseReset(e);
           G.shake=14;
-          // NO SUMMONS. Owner: "no summons." Safe to delete outright — spawnEnemy never
-          // touches G.killGoal, so unkilled shadelings never gated the clear.
+          // No summons in phase 2: since 7.168 they return in the final phase only, and only
+          // in the air (see kingSummonWing below).
         }
         if(hpR<0.6&&hpR>=0.25){
           //   THE DAIS IS STILL THE DANGEROUS END. This is the only reason not to walk up
@@ -17617,7 +17836,17 @@ function update(dt){
           addText(e.x,GROUND_Y-e.h-20,'I AM THE ABYSS!','#ff3b3b',true);
           kingPhaseReset(e);
           G.shake=18;
-          // NO SUMMONS, second wave likewise.
+          kingSummonWing(e,2);e.kingSummonT=KING_SUMMON_EVERY;
+        }
+        /*   THE SUMMONS COME BACK FOR THE LAST PHASE ONLY, AND ONLY IN THE AIR. Owner (7.168):
+           "He can also have his summons back, but just for his very final phase, and only in
+           the air (so that they don't mess with the ground portal placement)." Void bats hold
+           ~105 above the knight and never stand on the echo panels; a small wing, topped up
+           on its own slow clock, never more than three alive. */
+        if(e.phase3Started&&!e.dead){
+          e.kingSummonT=(e.kingSummonT==null?KING_SUMMON_EVERY:e.kingSummonT)-dt;
+          if(e.kingSummonT<=0){e.kingSummonT=KING_SUMMON_EVERY;
+            if(G.enemies.filter(q=>q.kingSummon&&!q.dead).length<KING_SUMMON_MAX)kingSummonWing(e,1);}
         }
         if(hpR<0.25&&Math.random()<0.3)          // the void storm, as weather only
           G.particles.push({x:e.x+(Math.random()-0.5)*200,y:GROUND_Y-e.y-e.h+(Math.random()-0.5)*100,vx:(Math.random()-0.5)*200,vy:-60-Math.random()*120,sz:2+Math.random()*3,color:Math.random()<0.5?'#c47bff':'#ff3b3b',life:0.6});
@@ -18350,7 +18579,7 @@ function bossArena(e){
     let removed=0;
     G.enemies=G.enemies.filter(q=>{const cut=q!==e&&!q.boss&&q.x>=arenaL&&q.x<=arenaR;if(cut)removed++;return !cut;});
     G.killGoal=Math.max(1,G.killGoal-removed);
-    G.obstacles.push(FinaleBeat(Pl(bx-500,1700,0,{}),'teach','temporal-echo'));
+    G.obstacles.push(FinaleBeat(Pl(bx-500,1700,0,{throneHallFloor:1}),'teach','temporal-echo'));
     for(let i=0;i<KING_ECHO_PANELS.length;i++)
       G.obstacles.push(FinaleBeat(Object.assign(Slate(bx+KING_ECHO_PANELS[i],54,0),{
         echoPanel:i
@@ -18972,7 +19201,8 @@ function continueRun(){
 function restorePlayer(snap){
   const safe=BFReleaseModule.normalizePlayerAdvancement(snap),p=G.p;
   Object.assign(p,safe,{stats:Object.assign({},safe.stats)});
-  p.gear=cloneGear(safe.gear);recomputeArmor(p);
+  p.gear=cloneGear(safe.gear);recomputeArmor(p);p.stowedWeapon=stowedFromSnapshot(snap);delete p.causewayBlade;
+  ensureTwoWeaponArsenal(p);
   p.blood=Number.isFinite(snap&&snap.blood)?snap.blood:effMaxBlood()*(Math.min(safe.hp,effMaxHp(p))/Math.max(1,effMaxHp(p)));
   p.bloodGuard=Number(snap&&snap.bloodGuard)||0;p.bloodRecovery=Number(snap&&snap.bloodRecovery)||0;
   p.maxBlood=effMaxBlood();syncBloodMirror(p);
@@ -19227,7 +19457,7 @@ function render(){
   if(flipping){
     const prog=G.p.cartTrick?1:(1-G.p.cartFlipT/CART_FLIP_DUR);
     const fcx=G.p.x,fcy=GROUND_Y-G.p.y-26;
-    ctx.save();ctx.translate(fcx,fcy);ctx.rotate(-prog*6.2832);ctx.translate(-fcx,-fcy);
+    ctx.save();ctx.translate(fcx,fcy);ctx.rotate(-prog*6.2832*(G.cartDirection||1));ctx.translate(-fcx,-fcy);
   }
   drawTemporalEcho(ctx,G.echoTrial);
   // Your partner, drawn with the same body as you — dimmed slightly and
@@ -19341,7 +19571,7 @@ function interactionPrompt(){
   if(!G||!v4Region(G.stageIndex))return null;
   const target=outskirtsInteractionCandidate();
   if(!target||(G.outskirtsAnnotation&&G.outskirtsAnnotation.source===target))return null;
-  const verb=target.frostMineDoor?'↑  ENTER MINE':target.frostMusterEngine?(persistentCircuitOpen('frost-muster')?'MUSTER ENGINE':'↑  TURN'):target.frostReturn||target.frostReturnExit||target.keepReturn||target.keepReturnExit?'↑  PASSAGE':target.repairCatch||target.keepDropRelease?'↑  RELEASE':target.questActor||target.kind==='survey'||target.profileId==='bram'?'↑  TALK':target.sentinelVigil&&hasCapability('weapon')?'↑  CHALLENGE':target.keepWallJump||target.keepVaultKey?'↑  EXAMINE':target.type==='surveyStake'&&!target.aligned?'↑  ALIGN':'↑  READ';
+  const verb=target.frostMineDoor?'↑  ENTER MINE':target.frostMusterEngine?(persistentCircuitOpen('frost-muster')?'MUSTER ENGINE':'↑  TURN'):target.throneBoat?'↑  PUSH OFF':target.frostReturn||target.frostReturnExit||target.keepReturn||target.keepReturnExit?'↑  PASSAGE':target.repairCatch||target.keepDropRelease?'↑  RELEASE':target.questActor||target.kind==='survey'||target.profileId==='bram'?'↑  TALK':target.sentinelVigil&&hasCapability('weapon')?'↑  CHALLENGE':target.keepWallJump||target.keepVaultKey?'↑  EXAMINE':target.type==='surveyStake'&&!target.aligned?'↑  ALIGN':'↑  READ';
   return {target,verb};
 }
 function renderScreenTail(ctx,s,opt){
@@ -19774,10 +20004,10 @@ function drawBoost(c,o){
   c.restore();c.shadowBlur=0;
 }
 /* A readable mechanical fork: the live lean lights one route before the cart
-   reaches it. The TRICK switch keeps its upper lamp dark until boost is banked. */
+   reaches it, and both arrows point the way the cart is travelling — the westbound
+   return ride used to see the "forward" arrow aimed behind it. */
 function drawRailSwitch(c,o){
-  const highReady=!o.requireBoost||(G.padBoost||0)>0.18||(G.cartBoost||0)>0.72;
-  const choosingHigh=(G.cartLean||0)>0.18&&highReady;
+  const choosingHigh=(G.cartLean||0)>0.18;
   const hi=o.choiceT>0?o.choice==='high':choosingHigh;
   const lo=o.choiceT>0?o.choice==='low':!choosingHigh;
   c.save();c.translate(o.x,GROUND_Y-o.y);
@@ -19787,6 +20017,7 @@ function drawRailSwitch(c,o){
   c.strokeStyle='#80633b';c.lineWidth=2;c.stroke();
   c.font='900 10px -apple-system,sans-serif';c.textAlign='center';
   c.fillStyle='#d8c596';c.fillText(o.label||'FORK',0,-67);
+  c.scale(G.cartDirection||1,1);   // mirror the rails and arrows, never the lettering above
   // Upper diverging rail / forward arrow.
   c.strokeStyle=hi?'#ffd76a':'#5a5143';c.lineWidth=hi?4:2;
   c.shadowColor=hi?'#ffd76a':'transparent';c.shadowBlur=hi?12:0;
@@ -19796,11 +20027,7 @@ function drawRailSwitch(c,o){
   c.shadowBlur=0;c.strokeStyle=lo?'#b8c0ca':'#4c4f54';c.lineWidth=lo?4:2;
   c.beginPath();c.moveTo(-43,-27);c.lineTo(38,-27);c.stroke();
   c.beginPath();c.moveTo(-32,-34);c.lineTo(-42,-27);c.lineTo(-32,-20);c.stroke();
-  if(o.requireBoost&&!highReady){
-    c.fillStyle='#7a3f2b';c.beginPath();c.arc(36,-70,4.5,0,6.28);c.fill();
-  }else{
-    c.fillStyle=hi?'#fff2ae':'#6f5e3b';c.beginPath();c.arc(36,-70,4.5,0,6.28);c.fill();
-  }
+  c.fillStyle=hi?'#fff2ae':'#6f5e3b';c.beginPath();c.arc(36,-70,4.5,0,6.28);c.fill();
   if(o.signalSlot!=null){
     c.shadowBlur=o.signalLit?12:0;c.shadowColor='#fff2ae';
     c.fillStyle=o.signalLit?'#fff2ae':'#4b402e';
@@ -22353,7 +22580,7 @@ function drawLPortal(c,o){
 /* The mining cart: drawn over the rider's legs, tilting with the lean. */
 function drawCart(c,p){
   c.save();c.translate(p.x,GROUND_Y-p.y);
-  c.rotate((G.cartLean||0)*-0.10);
+  c.rotate((G.cartLean||0)*(G.cartDirection||1)*-0.10);   // lean is along the ride now
   const roll=p.x*0.06;
   for(const wx of [-15,15]){
     c.save();c.translate(wx,-4);c.rotate(roll);
@@ -22627,6 +22854,15 @@ function hudUpdate(){
      the discovery the owner is protecting. At 3/3 it changes colour and says so, and
      stops short of naming the throne — the card that hands you the last part is where
      that hint belongs. */
+  const partnerTag=document.getElementById('partnerTag');
+  if(partnerTag){
+    // Co-op: how your partner is doing, without looking for them.
+    const g=coopActive()&&!battleActive()&&NET.ghost;
+    partnerTag.style.display=g?'inline':'none';
+    if(g){const mb=Math.max(1,Math.min(12,g.maxBlood||5)),bl=Math.max(0,Math.min(mb,Math.round(g.blood||0)));
+      partnerTag.textContent='👥 '+(g.downed?'PARTNER DOWN — reach them':g.tag==='TRAVELLING'?'PARTNER · on the way':'PARTNER '+'♥'.repeat(bl)+'·'.repeat(mb-bl));
+      partnerTag.style.color=g.downed?'#ff6a5e':'#e6bb73';}
+  }
   const shipTag=document.getElementById('shipTag');
   if(shipTag){
     const held=shipPartsHeld(),total=SHIP_PART_IDS.length;
@@ -22861,9 +23097,10 @@ const CREDITS=[
    sequence — is currently UNREACHABLE on the intended route, because the road now runs
    King -> Deep Line -> Ruined Keep instead of ending at the King. Act 1's real finish had
    quietly become "the road stops". This is the finish. */
-function launchTheShip(){
+function launchTheShip(force){
   if(!G||G.actTwoPending)return false;
-  if(!shipComplete())return false;
+  if(!force&&!shipComplete())return false;
+  if(coopActive()&&NET.isHost())netSend({t:'coopEnding'});
   G.actTwoPending=true;
   mode='cutscene';showGameUI(false);
   try{document.getElementById('bosshpwrap').classList.remove('on');}catch(_e){}
@@ -22976,11 +23213,13 @@ function resetCampaignForNewGame(){
 function startFreshCampaign(){resetCampaignForNewGame();beginRun(0,null,{hp:1,dmg:1},{intro:true});}
 
 function titleScreen(){
+  coopQuitJourney();
   mode='title';showGameUI(false);document.getElementById('bosshpwrap').classList.remove('on');
   const hasRun=!!meta.run,journeyDepth=Math.max(meta.bestStage||0,meta.run&&meta.run.stageIndex||0);
   const hasExtraSkin=meta.skinsOwned&&Object.keys(meta.skinsOwned).filter(id=>meta.skinsOwned[id]).length>1;
   const hasLeaderboardRecords=Object.keys(BOARD_LABEL).some(key=>Array.isArray(leaderboards[key])&&leaderboards[key].length>0);
-  const showLevelSelect=journeyDepth>0||meta.devUnlocked,showCoop=journeyDepth>=2||meta.devUnlocked;
+  // Co-op is always offered: the friend being invited has a fresh save and no journey yet.
+  const showLevelSelect=journeyDepth>0||meta.devUnlocked,showCoop=true;
   const showMap=!!meta.outskirtsFieldChart,showBoards=!!(meta.kingKills||meta.bossRushBest||hasLeaderboardRecords),showSkins=hasExtraSkin||journeyDepth>0;
   showOvHTML(`<div class="card"><h1 class="title">BLADEFALL</h1><p class="subtitle">Dreambound Action-Adventure</p>
     ${hasRun?`<button class="bigbtn" id="contBtn">Continue — ${STAGES[meta.run.stageIndex].name}</button>`:''}
@@ -23456,7 +23695,9 @@ function die(){
   if(!meta.hardcore){
     captureCurrentZonePersistence();
     const zoneId=BFWorldModule.stageId(G.stageIndex),fallback={x:G.p.ckSet?G.p.ckX:70,y:G.p.ckSet?G.p.ckY:0};
-    const death=BFRecoveryModule.recordDeath(meta.recovery,zoneId,fallback);meta.recovery=death.state;
+    const death=G.coopSession?BFRecoveryModule.recordDeath(coopRecoveryState(),zoneId,fallback)
+      :BFRecoveryModule.recordDeath(meta.recovery,zoneId,fallback);
+    if(G.coopSession)G.coopRecovery=death.state;else meta.recovery=death.state;
     const snap=G.checkpointLoadout||meta.run&&meta.run.p||G.levelStartSnap,stage=BFZonesModule.zone(death.plan.zoneId).stageIndex;
     G.zonePersistenceManifest=null;G._suppressEntranceCheckpoint=true;
     loadStage(stage);delete G._suppressEntranceCheckpoint;
@@ -23857,6 +24098,7 @@ function openWorldMap(returnTo){
 }
 function travelWorldTo(targetSiteId){
   if(!G)return;
+  if(G.coopSession){toast('Fast travel is closed while you travel together.');return;}
   const journey=BFRecoveryModule.planFastTravel(meta.recovery,targetSiteId,worldTravelContext());
   if(!journey.ok){toast(WORLD_TRAVEL_REASON[journey.reason]||'Travel unavailable.');openWorldMap(openPause);return;}
   captureCurrentZonePersistence();
@@ -23884,10 +24126,16 @@ function savedRunSession(source){
  return {levelSelectMode,
   sessionCapabilities:levelSelectMode?JSON.parse(JSON.stringify(source.sessionCapabilities||levelSelectCapabilitiesForStage(source.stageIndex))):null,
   sessionQuests:levelSelectMode?JSON.parse(JSON.stringify(source.sessionQuests||BFQuestsModule.createProgress())):null,
-  sessionZoneState:levelSelectMode?JSON.parse(JSON.stringify(source.sessionZoneState||BFZoneStateModule.createState())):null};
+  sessionZoneState:levelSelectMode?JSON.parse(JSON.stringify(source.sessionZoneState||BFZoneStateModule.createState())):null,
+  /* Both used to live only on G, so a Continue forgot them: a resumed Level Select run
+     lost every session clear (and the Deep Line's west gate refused again), and a resumed
+     westbound ride reloaded the FORWARD line under the player. */
+  sessionClearedZones:Array.isArray(source.sessionClearedZones)?source.sessionClearedZones.map(String):[],
+  deepLineReturn:!!source.deepLineReturn};
 }
 function saveRunAtStage(stageIndex,playerSnapshot){
   if(!G)return;
+  if(G.coopSession)return;   // a co-op journey is a session: it never replaces either player's Continue
   meta.run={...savedRunSession(G),ngPlus:G.ngPlus,ngHp:G.ngHp,ngDmg:G.ngDmg,stageIndex,p:playerSnapshot||snapOf(G.p),base:G.baseLoadout,simSeed:G.simSeed,
     stats:G.runStats,time:G.time,completion:G.runCompletion,runCoinFound:G.runCoinFound,
     previewCheckpoint:G.levelSelectMode&&G.p.ckSet?{zoneId:BFWorldModule.stageId(stageIndex),position:{x:G.p.ckX,y:G.p.ckY}}:null,
@@ -24422,6 +24670,7 @@ function netResetGhost(){
   if(!NET.active())return;
   const g=NET.ghost||(NET.ghost=freshPlayer());
   g.x=G&&G.p?G.p.x-40:80;g.y=G&&G.p?G.p.y:0;g.vx=0;g.vy=0;g.tx=g.x;g.ty=g.y;g.dead=false;
+  g.synced=false;   // a guess until the partner's next body arrives: the tether must not act on it
   NET.lastWpSig=null;NET.lastWpAt=0;NET.txAcc=0;NET.worldAcc=0;NET.lagging=false;
   NET.remoteCanonical=null;NET.lastRemoteStateAt=0;
   NET.guestQuestItem=false;
@@ -24815,17 +25064,27 @@ function netPackPlayer(p,includeWeapon){
     vx:Math.round(p.vx||0),vy:Math.round(p.vy||0),f:p.face||1,
     ra:Math.round((p.runAnim||0)*100)/100,og:p.onGround?1:0,
     sw:p.swingT>0?1:0,at:p.atkTimer>0?1:0,hp:Math.round(p.hp),
-    mx:Math.round(effMaxHp(p)),dead:p.dead?1:0,dn:p.downed?1:0,lv:p.level};
+    mx:Math.round(effMaxHp(p)),dead:p.dead?1:0,dn:p.downed?1:0,lv:p.level,
+    // What the partner needs to DRAW you and to share your world: which region you are
+    // in, gravity, cart, dash/slam/cling poses, your Blood and your standing Echo.
+    st:G?G.stageIndex:-1,fl:G&&G.gravityFlipped?1:0,cm:G&&G.cartMode?1:0,
+    dt:p.dodgeTimer>0?1:0,sl:p.slamming?1:0,wl:p.onWall&&!p.onGround?1:0,wd:p.wallDir||1,
+    bl:Math.round(Number(p.blood)||0),mb:Math.round(Number(p.maxBlood)||0)};
+  const echo=typeof echoStanding==='function'&&G&&G.echoBody?echoStanding():null;
+  if(echo)state.ec=[Math.round(echo.x),Math.round(echo.y||0)];
   if(includeWeapon)state.wp=coopPackWeapon(p.weapon);
   return state;
 }
 function netApplyPlayerBody(g,state,sequence){
   if(!g||!state)return;
-  g.tx=state.x;g.ty=state.y;g.vx=state.vx;g.vy=state.vy;g.rxAt=performance.now();
+  g.tx=state.x;g.ty=state.y;g.vx=state.vx;g.vy=state.vy;g.rxAt=performance.now();g.synced=true;
   g.face=state.f||g.face||1;g.ra=state.ra||0;g.onGround=!!state.og;
   coopApplyWeapon(g,state.wp);
   g.swingT=state.sw?0.2:0;g.atkTimer=state.at?(g.weapon&&g.weapon.cls==='melee'?0.24:0.17):0;
   g.hp=state.hp;g.maxHp=state.mx;g.dead=!!state.dead;g.level=state.lv;g.downed=!!state.dn;
+  g.stage=Number.isFinite(state.st)?state.st:g.stage;g.flipped=!!state.fl;g.cartMode=!!state.cm;
+  g.dashing=!!state.dt;g.slamming=!!state.sl;g.onWall=!!state.wl;g.wallDir=state.wd||1;
+  g.blood=state.bl;g.maxBlood=state.mb;g.echo=Array.isArray(state.ec)?{x:state.ec[0],y:state.ec[1]}:null;
   if(NET.remoteBuffer)NET.remoteBuffer.push(state,performance.now(),sequence||Date.now());
   if(g.tx!=null&&Math.abs(g.tx-g.x)>600){g.x=g.tx;g.y=g.ty;}
 }
@@ -25039,11 +25298,7 @@ function netApplyWorldSnapshot(m,sequence){
   G.cratePortals=(m.portals||[]).map(o=>({x:o.x,y:o.y,nx:o.nx,ny:o.ny,surf:o.surf,t:o.t||0}));
   const g=NET.ghost||(NET.ghost=freshPlayer());
   if(m.players&&m.players.host)netApplyPlayerBody(g,m.players.host,sequence);
-  if(m.players&&m.players.guest&&G.p&&!G.p.dead){
-    const reconciled=BFMultiplayerModule.reconcileState(G.p,m.players.guest,{hardCorrection:220,softCorrection:0.10});
-    if(reconciled.corrected){G.p.x=reconciled.state.x;G.p.y=reconciled.state.y;
-      G.p.vx=reconciled.state.vx;G.p.vy=reconciled.state.vy;}
-  }
+  // No reconcile of the guest's own knight against the host's echo of it (see 'input').
 }
 /* Guests predict only their own knight. The host validates that input stream,
    owns every shared actor/device, and publishes sequenced 20Hz world snapshots. */
@@ -25075,15 +25330,27 @@ function netTick(dt){
   const g=NET.ghost;
   const sampled=NET.remoteBuffer&&NET.remoteBuffer.sample(performance.now());
   if(g&&sampled){
-    g.x=sampled.x;g.y=sampled.y;g.vx=sampled.vx;g.vy=sampled.vy;
-    g.face=sampled.f||g.face;g.runAnim=sampled.ra||0;
+    // A portal, a respawn or a crossing is a jump, not a slide through the walls.
+    if(g.tx!=null&&Math.hypot(sampled.x-g.tx,(sampled.y||0)-(g.ty||0))>420){
+      g.x=g.tx;g.y=g.ty;if(NET.remoteBuffer)NET.remoteBuffer.clear();
+    }else{
+      g.x=sampled.x;g.y=sampled.y;g.vx=sampled.vx;g.vy=sampled.vy;
+      g.face=sampled.f||g.face;g.runAnim=sampled.ra||0;
+    }
   }
+  if(g){
+    g.tag=battleActive()?(g.dead?'DEFEATED':'OPPONENT'):g.downed?'DOWNED':NET.lagging?'SYNCING…':
+      (g.stage!=null&&G&&g.stage!==G.stageIndex)?'TRAVELLING':'PARTNER';
+    g.hidden=!!(g.stage!=null&&G&&g.stage!==G.stageIndex);
+  }
+  coopGhostFooting();
 }
 function netSendResumeState(){
   if(!NET.isHost()||!G||!NET.active())return;
   netSend({t:'resumeState',token:NET.sessionToken,stage:G.stageIndex,seed:NET.stageSeed,
     ng:G.ngPlus||0,play:mode==='play'||mode==='portal_wait'||mode==='stage_transition'?1:0,
-    epoch:NET.protocol?NET.protocol.epoch:0});
+    epoch:NET.protocol?NET.protocol.epoch:0,coop:G.coopSession?1:0});
+  if(G.coopSession)coopBroadcastStage('resume');
   netSend({t:'snapshot',...netPackWorldSnapshot()},true);
 }
 function netOnMessage(m){
@@ -25115,6 +25382,7 @@ function netOnMessage(m){
   else if(m.t==='resumeState'&&NET.isGuest()){
     if(m.epoch!=null&&NET.protocol&&m.epoch!==NET.protocol.epoch)NET.protocol.syncEpoch(m.epoch);
     NET.stageSeed=m.seed;NET.sessionToken=m.token||NET.sessionToken;
+    if(m.coop)return;                       // a co-op journey follows as its own coopStage
     if(m.play&&(!G||G.stageIndex!==m.stage)){
       if(!G)beginRun(m.ng||0,null,{hp:1,dmg:1},{startStage:m.stage});
       else{
@@ -25127,8 +25395,12 @@ function netOnMessage(m){
   else if(m.t==='input'&&NET.isHost()){
     const g=NET.ghost||(NET.ghost=freshPlayer());
     const candidate={...(NET.remoteCanonical||{}),...(m.state||{})};
+    /*   THE GUEST OWNS ITS OWN KNIGHT. The 920 u/s clamp undid every zipline ride (1150),
+       every portal jump and every respawn beside the partner, and the guest then pulled
+       itself back to the host's clamped echo of it. Between two friends there is nothing
+       to police, so only the level's bounds apply. */
     const now=performance.now(),validated=BFMultiplayerModule.validateRemoteState(NET.remoteCanonical||g,candidate,
-      NET.lastRemoteStateAt?now-NET.lastRemoteStateAt:33,{maxX:G?G.levelLength-20:1e9,maxY:CEIL_Y+400});
+      NET.lastRemoteStateAt?now-NET.lastRemoteStateAt:33,{maxX:G?G.levelLength-20:1e9,maxY:CEIL_Y+400,maxSpeed:1e6,slack:1e6});
     NET.lastRemoteStateAt=now;NET.lastGuestInput=Math.max(NET.lastGuestInput,m.n||0);
     NET.remoteCanonical=validated.state;
     netApplyPlayerBody(g,validated.state,m.n);
@@ -25139,6 +25411,25 @@ function netOnMessage(m){
     if(m.cr)coopApplyGuestCrates(m.cr);
   }
   else if(m.t==='snapshot'&&NET.isGuest())netApplyWorldSnapshot(m,m._netSequence);
+  else if(m.t==='coopStage'&&NET.isGuest())coopEnterStage(m);
+  else if(m.t==='seamIntent'&&NET.isHost())coopHostSeamIntent(m);
+  else if(m.t==='upIntent'&&NET.isHost())coopHostUpIntent(m);
+  else if(m.t==='slamIntent'&&NET.isHost()&&G&&mode==='play'){slamImpact({x:Number(m.x)||0},Number(m.y)||0,null,true);}
+  else if(m.t==='caps')coopMergeCaps(m.a);
+  else if(m.t==='zoneSync'&&NET.isGuest()&&G&&G.coopSession){
+    if(m.zone)G.sessionZoneState=BFZoneStateModule.createState(m.zone);
+    coopMergeCaps(m.caps);syncShipParts();hudUpdate();
+  }
+  else if(m.t==='note'&&NET.isGuest()&&G&&G.p){
+    const o=G.obstacles[m.i]||{x:G.p.x,y:G.p.y};showOutskirtsAnnotation(o,m.html,{accent:m.accent,manual:!!m.manual});
+  }
+  else if(m.t==='teleport'&&NET.isGuest()&&G&&G.p){
+    Object.assign(G.p,{x:m.x,y:m.y,vx:0,vy:0,floorPlat:null,onGround:false,ckX:m.x,ckY:m.y,ckSet:true});
+  }
+  else if(m.t==='coopEnding'&&NET.isGuest()&&G){launchTheShip(true);}
+  else if(m.t==='coopQuit'&&G&&G.coopSession){
+    G._coopQuitSent=true;toast('Your partner returned to the menu.');titleScreen();openCoop();
+  }
   else if(m.t==='stageReady'&&G&&m.stage===G.stageIndex){
     const gate=coopStageGateForCurrent();gate.remote=!!m.ready;
     if(NET.transition)NET.transition.ready('remote',!!m.ready);
@@ -25211,7 +25502,8 @@ function netOnMessage(m){
     coopSyncPortals(true);
   }
   else if(m.t==='interact'&&NET.isHost()&&G){
-    const o=G.obstacles[m.i];if(o&&o.type==='lever')__origPullLever(o);
+    const o=G.obstacles[m.i];
+    if(o&&(o.type==='lever'||o.repairCatch||o.keepDropRelease||o.aeriePackRelease||o.choirDamper||o.windCollector))__origPullLever(o);
   }
   else if(m.t==='travelerIntent')coopHostTravelerIntent(m);
   else if(m.t==='remixIntent'&&NET.isHost()&&G&&m.kind==='crystal'){
@@ -25325,10 +25617,16 @@ function netHost(){
     NET.role='host';NET.code=netRoomCode();netInitProtocol('host');
     NET.peer=new Peer(netPeerId(NET.code),{debug:0});
     NET.peer.on('open',()=>{NET.status='waiting';openCoop();});
-    NET.peer.on('connection',c=>{netAttachConn(c);});
+    // A new incoming connection starts a new packet sequence. Without a fresh protocol
+    // the host dropped a reloaded tab's first hello as a duplicate and the friend waited
+    // on "Waiting for the host" forever.
+    NET.peer.on('connection',c=>{netInitProtocol('host');netAttachConn(c);});
+    NET.peer.on('disconnected',()=>{try{if(NET.peer&&!NET.peer.destroyed)NET.peer.reconnect();}catch(e){}});
     NET.peer.on('error',e=>{
       // ID collision just means that 4-letter room is taken — reroll once.
-      if(e&&e.type==='unavailable-id'){netTeardown();netHost();return;}
+      if(e&&e.type==='unavailable-id'&&!NET.conn){netTeardown();netHost();return;}
+      // The matchmaking socket can drop while the players' own link is fine.
+      if(NET.conn&&NET.conn.open)return;
       netTeardown('Could not reach the matchmaking service.');
     });
   }).catch(e=>netTeardown(e.message));
@@ -25346,7 +25644,7 @@ function netJoin(code){
       netAttachConn(c);
       setTimeout(()=>{if(NET.status==='waiting')netTeardown('No game found with that code.');},12000);
     });
-    NET.peer.on('error',()=>netTeardown('Could not reach that room.'));
+    NET.peer.on('error',()=>{if(NET.status==='connected'||NET.reconnecting)return;netTeardown('Could not reach that room.');});
   }).catch(e=>netTeardown(e.message));
 }
 
@@ -25382,8 +25680,8 @@ function coopCheckWipe(){
   if(!coopActive()||!NET.isHost()||!G||!G.p)return false;
   if(!(G.p.downed&&NET.ghost&&NET.ghost.downed))return false;
   G.p.downed=false;NET.ghost.downed=false;
-  netBroadcastStage(G.stageIndex);         // guest reloads on the new seed
-  G.p.dead=true;die();                     // host takes the normal restart path
+  G.p.dead=true;die();                     // host takes the normal restart path…
+  coopBroadcastStage('wipe');              // …and the guest restarts beside it, on the same world
   return true;
 }
 function coopUpdateRevive(dt){
@@ -25753,8 +26051,12 @@ function openCoop(){
   if(NET.status==='connected'){
     body=`<p class="ovsub">Connected — ${NET.isHost()?'you are hosting':'joined '+escText(NET.code||'')}</p>
       <div class="vsrow" style="margin-bottom:12px;"><span>Room</span><b style="letter-spacing:.3em;">${escText(NET.code||'')}</b></div>
-      ${NET.isHost()?'<button class="bigbtn" id="coopGo">Start Co-op Run</button>'
-                    :'<p class="ovsub">Waiting for the host to start the campaign…</p>'}
+      <p class="ovsub" style="font-size:12px;opacity:.85;">One world, two knights. Either of you can lead through an exit, and whatever either of you changes — a lever, a door, a bell — changes for both.</p>
+      ${NET.isHost()?`<button class="bigbtn" id="coopGo">Start from the Beginning</button>
+        ${meta.run&&STAGES[meta.run.stageIndex]&&!STAGES[meta.run.stageIndex].cut?`<button class="bigbtn ghost" id="coopContinue">Continue My Journey — ${escText(STAGES[meta.run.stageIndex].name)}</button>`:''}
+        <button class="bigbtn ghost" id="coopRegion">Choose a Region</button>
+        <p class="ovsub" style="font-size:11px;opacity:.7;">Your partner uses your abilities. Co-op never changes either save.</p>`
+                    :'<p class="ovsub">Waiting for the host to choose where you begin…</p>'}
       <button class="bigbtn ghost" id="coopBattle">⚔ Battle — Duel Your Friend</button>
       <button class="bigbtn ghost" id="coopLeave">Disconnect</button>`;
   }else if(NET.status==='reconnecting'){
@@ -25823,13 +26125,11 @@ function openCoop(){
   on('coopJoin',()=>netJoin(netTyped));
   on('coopBack',titleScreen);
   on('coopLeave',()=>{netSend({t:'bye'});netTeardown();titleScreen();});
-  on('coopGo',()=>{
-    // Pick and broadcast the seed BEFORE either machine builds the first stage.
-    // Previously the host built an unseeded level and only then told the guest a
-    // different seed, which desynchronized terrain and all authored pickups.
-    netBroadcastStage(0,false,true);
-    beginRun(0,null,{hp:1,dmg:1},{intro:false});
-  });
+  // The seed and the whole session are chosen BEFORE either machine builds the first
+  // stage and sent with it (coopStartRun), so both build the same world.
+  on('coopGo',()=>coopStartRun('fresh'));
+  on('coopContinue',()=>coopStartRun('continue'));
+  on('coopRegion',openCoopRegionPicker);
 }
 </script>
 </body>

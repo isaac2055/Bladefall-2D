@@ -422,10 +422,11 @@ test('the spent line is lethal under it, and one body must be answered', () => {
   assert.equal(shielded[0].citadelRole, 'vigil-guard');
 });
 
-test('a band restores Blood, the last one fires slower, and he does not die', () => {
+test('a band no longer restores Blood, the last one fires slower, and he does not die', () => {
   const adv = fn('advanceTyrantParadox');
-  assert.match(adv, /restoreBlood\(G\.p,Infinity\)/,
-    'every band is its own puzzle and you come to it whole');
+  // Owner, 7.168: his shots are easier to dodge, so the per-band refill goes (both fights).
+  assert.doesNotMatch(adv, /restoreBlood/, 'Blood carries from band to band');
+  assert.doesNotMatch(fn('rightHandKnee'), /restoreBlood/, 'and from knee to knee in the King\'s hall');
   assert.match(adv, /e\.shootCd=e\.paradoxRound===1\?1\.55:1\.15\/0\.75/,
     'the head band fires a quarter slower: rate x0.75 is interval /0.75');
   // HE DOES NOT FALL. The third band is the halfway point of a fight that finishes in

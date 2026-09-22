@@ -54,6 +54,8 @@ const FIGURE_PALS = {
   survey:    { cloak:'#7a5a44', cloakLit:'#a5836a', cloakDark:'#4b3328', hood:'#2b1e18', scarf:'#c99a72', eye:'#ffe9c4', skin:'#e8c5a4' },
   escort:    { cloak:'#8a6a3a', cloakLit:'#c49a58', cloakDark:'#5a4224', hood:'#2e2214', scarf:'#e0c080', eye:'#ffe9c4', skin:'#e8c5a4' },
   windwright:{ cloak:'#3a6a7a', cloakLit:'#6aa3b8', cloakDark:'#244450', hood:'#142a34', scarf:'#cfe3ef', eye:'#dff6ff', skin:'#e8c5a4' },
+  // Co-op: the second knight wears crimson, so two knights never read as one.
+  partner:   { cloak:'#8a3440', cloakLit:'#c75a5c', cloakDark:'#561d27', hood:P.hood, scarf:'#e6bb73', eye:P.eye, skin:P.skin },
 };
 const WALKER_PALS = {
   grunt:     { body:P.grunt, dark:P.gruntDark, lit:P.gruntLit, eye:P.gruntEye, mask:P.mask },
@@ -1853,7 +1855,7 @@ function drawRailIrons(pts, N){
    scenery, and it leans on G.cartLean the way the legacy one did. */
 function drawCartRig(p){
   const x = WX(p.x), y = WY(p.y);
-  ctx.save(); ctx.translate(x, y); ctx.rotate((curG.cartLean || 0) * -0.10); ctx.scale(Z, Z);
+  ctx.save(); ctx.translate(x, y); ctx.rotate((curG.cartLean || 0) * (curG.cartDirection || 1) * -0.10); ctx.scale(Z, Z);
   const roll = p.x * 0.06;
   for(const wx of [-15, 15]){
     ctx.save(); ctx.translate(wx, -4); ctx.rotate(roll);
@@ -1888,6 +1890,34 @@ function drawCartRig(p){
    landed, the world simply never turned. Owner: "you can't see the flip." Legacy rotates
    hero and cart together about the tub's centre; so does this, around the SAME point, or
    the rider shears out of his own cart halfway through the roll. */
+/*   THE PARTNER IS DRAWN LIKE A KNIGHT. It used to be one bare figure call — no weapon, no
+   swing, no dash, no downed pose, upright under flipped gravity, standing beside its cart,
+   and in the same blue as you. Now it carries what its player carries and says who it is. */
+const partnerAnim = { anim:0, idle:0 };
+function drawPartner(g){
+  if(!g || g.hidden) return;
+  partnerAnim.anim += dt * (Math.abs(g.vx || 0) > 20 ? Math.abs(g.vx) / 20 : 0); partnerAnim.idle += dt;
+  const st = { face:g.face || 1, run:!!g.onGround && Math.abs(g.vx || 0) > 20, air:!g.onGround,
+    wall:!!g.onWall, wallDir:g.wallDir || 1, dashing:!!g.dashing, squash:0, stretch:0, hurt:false,
+    slam:!!g.slamming, atkT:g.atkTimer > 0 ? Math.min(1, g.atkTimer / .22) : 0,
+    blade:!!g.weapon, bow:!!(g.weapon && g.weapon.arche === 'bow'), pack:false,
+    anim:partnerAnim.anim, idle:partnerAnim.idle, vx:g.vx || 0, vy:g.vy || 0,
+    pal:FIGURE_PALS.partner, down:!!(g.dead || g.downed) };
+  const top = WY(g.y) - 22;
+  const body = () => drawFigure(WX(g.x - 13), top, st);
+  if(g.dead) ctx.globalAlpha = .45;
+  if(g.cartMode && curG.cartMode){
+    ctx.save(); ctx.translate(0, -Math.round(12 * Z)); body(); ctx.restore(); drawCartRig(g);
+  } else if(g.flipped){ ctx.save(); ctx.translate(0, 2 * top + 22); ctx.scale(1, -1); body(); ctx.restore(); }
+  else body();
+  ctx.globalAlpha = 1;
+  const tag = g.tag || 'PARTNER', tx = WX(g.x), ty = g.flipped ? top + 34 : top - 6;
+  ctx.font = 'bold 6px monospace'; ctx.textAlign = 'center';
+  ctx.fillStyle = P.skyTop; ctx.fillText(tag, tx + 1, ty + 1);
+  ctx.fillStyle = tag === 'DOWNED' || tag === 'DEFEATED' ? '#ff6a5e' : tag === 'OPPONENT' ? '#ff9a6a' : '#e6bb73';
+  ctx.fillText(tag, tx, ty);
+  if(g.echo){ ctx.globalAlpha = .35; drawFigure(WX(g.echo.x - 13), WY(g.echo.y) - 22, { face:g.face || 1, ghost:true, pal:FIGURE_PALS.partner }); ctx.globalAlpha = 1; }
+}
 function drawCartRide(p){
   if(!curG.cartMode){ drawHeroAt(p); return; }
   const dur = L.CART_FLIP_DUR || 0.55;
@@ -1895,7 +1925,7 @@ function drawCartRide(p){
   if(flipping){
     const prog = p.cartTrick ? 1 : (1 - p.cartFlipT / dur);
     const fx = WX(p.x), fy = WY(p.y) - Math.round(26 * Z);   // the tub's centre, 26 units up
-    ctx.save(); ctx.translate(fx, fy); ctx.rotate(-prog * 6.2832); ctx.translate(-fx, -fy);
+    ctx.save(); ctx.translate(fx, fy); ctx.rotate(-prog * 6.2832 * (curG.cartDirection || 1)); ctx.translate(-fx, -fy);
   }
   //   AND HE RIDES IN IT, NOT BEHIND IT. Drawn at his own feet the tub's 34-unit rim
   // leaves 10 units of a 44-unit body showing — five screen pixels at this scale, a blue
@@ -4176,7 +4206,7 @@ function render(main, env){
   if(G.fam) legacyDraw(c => L.drawFamiliar(c, G.fam, 0), null);
   legacyDraw(c => L.drawKingPortalHijack(c, G.boss), null);
   legacyDraw(L.drawTemporalEcho, G.echoTrial);
-  if(env.ghost) drawFigure(WX(env.ghost.x - 13), WY(env.ghost.y) - 22, { face:env.ghost.face, air:!env.ghost.onGround, pal:FIGURE_PALS.hero, vx:env.ghost.vx, vy:env.ghost.vy });
+  if(env.ghost) drawPartner(env.ghost);
   drawCartRide(G.p);
   for(const pr of G.projectiles){if(G.stageIndex===7&&drawFrostProjectile(pr))continue;if(G.stageIndex===8&&drawCourtProjectile(pr))continue;legacyDraw(L.drawProjectile, pr);}
   // THE ECHO DRAWS IN NORMAL BLENDING, BEFORE THE ADDITIVE PASS. drawParticles runs

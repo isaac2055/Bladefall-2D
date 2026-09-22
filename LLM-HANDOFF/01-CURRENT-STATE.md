@@ -1,104 +1,139 @@
-# Current state — 2026-09-14
+# Current state — 2026-09-22
+
+Rewritten in place; the per-region table and engine orientation live in
+[`NEXT-MODEL-BRIEF.md`](./NEXT-MODEL-BRIEF.md). History before 7.134 is in
+`HISTORY-BRIEF-7.103-TO-7.133.md`; 7.134–7.166 in the owner's Claude Brain session logs.
 
 ## Production status
+Act 1 is built end to end: fifteen reachable regions (stage 14, the Gilded Vault, was cut on
+2026-09-20 and its slot is inert), the v4 pixel renderer and v4 rules (`V4_LAST_STAGE=15`) on the
+whole critical path, and an Act 1 ending (ship parts → westbound Deep Line → Throne beach → boat
+→ "ACT TWO / The Thunder Cliffs" card). Act 2 has no content yet.
 
-The owner considers the opening through the Warden fight complete in substance.
-More enemies, platforming adjustments and presentation polish can follow; do not
-restart those levels' design passes. Hollow Marksman remains an accepted anchor.
-Frostfell now has a full authored settlement, thermal puzzle, Double Jump reward,
-exposed ice finale, service network and active Muster Engine. The latest mine,
-shortcut and Frostfell reinforcement changes received the owner's “Love it.”
-That feedback is not a claim of exhaustive fresh-save or full-world acceptance.
-
-White Court (region9) is implemented locally and awaiting owner playtesting.
-Its continuous authored route wins the three-ward Sorcerer and reaches the usable
-Emberdeep exit in5361frames. Other later regions still need dedicated design passes. Run 1 of the three
-follow-up runs implements the expanded recall; run 2 adds verified bot reliability
-and traversal verbs. Run 3 implements return payoff and documents White Court planning. See `12-RECALL-WORK-ORDER.md`.
-
-See `../docs/charters/09-frost-sorcerer/ACCEPTANCE-AUDIT.md` for current evidence
-and the remaining human pacing/legibility gate. Automated success is not owner
-acceptance; the generic bot still fails at the Glassworks gate.
+Owner-accepted: the opening through the Warden, Frostfell, the White Court (beaten, then made
+harder), the Inversion rebuild. Built and awaiting the owner's next playtest: Emberdeep, the
+Foundry and Colossus (7.164 fixes), the Inversion's Last Breath, the Paradox Citadel (7.166
+restore), the Drowned Throne (7.157 fixes) and the Deep Line (7.150/7.157 fixes). Automated
+success is never owner acceptance.
 
 ## Source identity and verification
+- `public/index.html` **7.169.0**; `public/sw.js` **bladefall-v246**. Deploy mirror matches `public/`.
+- `d7927b9` on `chore/track-authoritative-tree` (local; not pushed) holds 7.166.0; 7.167–7.169 are
+  uncommitted. `main` = 2d6fe28. 7.169.0 is live on bladefall.netlify.app (deploy 6ab2ae5f, from `netlify-deploy/`; the site id is f8c7b854…, not the one in `.netlify/state.json`).
+- Full suite **847 tests / 825 pass / 22 fail** (7.169.0); the 22 are the long-standing baseline set,
+  identical by test name (list in the brief's Harness section).
+- `release:check` reports only astra-respec.js / fable-respec.js (standalone pages, by design).
 
-- Source `public/index.html`: **7.99.0**; `public/sw.js`: **bladefall-v179**.
-- Mirror rebuilt; `release:check` passes all **93** assets. No deployment.
-- Frostfell receipt retains **15/15** checks true and no runtime errors.
-- Full suite **513/513**, recall/reserve focused checks **12/12**, and all eight
-  directional shortcut checks pass. See `10-HANDOFF-VERIFICATION.md` for scope.
-- Git is a complete source repository. The run 1–3 and White Court work is committed
-  on branch `chore/track-authoritative-tree` (from `8c07a2c`, pushed 2026-09-15);
-  GitHub `main` still reflects 7.96.0 until that branch is merged. The project moved
-  to `~/Projects/Bladefall-2D Antigravity`, outside iCloud, on 2026-09-15.
+## Latest change — 7.169.0 / cache v246 (2026-09-22, uncommitted; deployed to bladefall.netlify.app at the owner's request)
+Owner request: "Please add co-op back into the game. This way, I can show my friend the game
+without him going crazy by showing him the way + helping him (so actions should be shared, only
+way it is really co-op.)"
+- **Co-op is on the title screen again** (`showCoop=true`): Co-op → Host → share the 4-letter code
+  → the friend joins. The host then picks **Start from the Beginning**, **Continue My Journey**
+  (a copy of the host's kit, zone state, clears and resume point) or **Choose a Region** (Level
+  Select rules). A co-op journey is a session like Level Select: `saveRunAtStage` is skipped and
+  checkpoints/deaths go to `G.coopRecovery`, so neither save or Continue is written.
+- **One world.** Snapshots sync obstacles/enemies by list index, so both machines build every
+  region from the host's seed and the host's session (`coopSessionPacket` / `applyCoopSession`).
+  Verified identical object and enemy counts on all 15 regions.
+- **Travel together.** Whichever knight reaches a seam, the host runs the crossing
+  (`coopHostSeamIntent` → `runPhysicalCrossing`) and the friend lands beside the host
+  (`coopBroadcastStage` / `coopEnterStage`, reasons start/seam/wipe/resume). The tether only acts
+  within one region and only on a fresh partner body (`ghost.synced`); a wipe restarts both at
+  the host's checkpoint. Fast travel and rest are closed while together. Quitting brings the
+  friend back to the lobby, still connected. The boat ends Act 1 on both saves.
+- **Shared actions.** The friend's world-changing Up interactions (ship parts, the boat, keys,
+  wall-jump and other grants, recall, dampers, collectors and the rest in
+  `coopHostRunsInteraction`) run on the host AS the friend (`coopAsGhost`), then zone state
+  syncs back. Ground pounds (`slamIntent` → `slamWorldEffects`), weight on plates, the Echo and
+  crumbling footing act on the host's world. Abilities earned by either knight are shared.
+- **The partner is drawn as a knight** in the v4 renderer (`drawPartner`, crimson cloak, weapon,
+  swing, dash/slam/wall/downed poses, cart, Echo) with a tag; the HUD shows the partner's Blood.
+- Reloading the friend's tab rejoins the host's journey where the host is (`resumeState.coop`).
+  A `resume` for the region the friend is already playing only refreshes the session. The
+  friend's connection hello can be answered after the host presses Start, and a reload there
+  pulled both knights back to the entrance.
+- The new journey code lives in `public/bladefall-coop-journey.js` (plain functions over the
+  page's globals). Moving it out keeps `index.html` inside its 1.6 MB release budget: the
+  page is 1,593,482 bytes, and it would be about 1,605,000 with the code inline. The network
+  layer (NET, netOnMessage, netTick, downs/revives) stays in `index.html`. Every co-op branch
+  added inside game code is gated on `G.coopSession` first, so solo play and the stage tests'
+  `vm` slices never reach a co-op name. The ground-pound world half stays inside `slamImpact`
+  (the host replays a partner's strike with `remote`), and the crossing stays inside
+  `updatePhysicalWorldSeams(partnerSpec)`, because tests read those functions' source.
+- Verified: `tests/coop-runtime.test.mjs` (10 tests, two real browser contexts with a relayed
+  PeerJS stand-in, no internet) — join from a fresh save, guest- and host-led crossings, the friend
+  claiming the sail / a grant / a ground pound on the host's world, Continue leaving the host's
+  save and recovery untouched, tab-reload rejoin, 15-region parity, wipe and quit, the Act 1 boat
+  for both, partner drawing, a stale resume after Start. Screens of both machines were looked at (partner, tag, swing, downed);
+  a Battle duel still starts with both at opposite ends. Full suite 847 / 825 / 22, failing set
+  identical to the baseline by name. **Not yet played on two real devices over the real PeerJS
+  broker.**
+- Known limits: gravity flip is per player; bats the friend summons may not show on the friend's
+  own screen; pickups remain personal copies.
 
-## Current regional status
+## Previous change — 7.168.0 / cache v245 (2026-09-22)
+- **Two weapons, one key.** After the Causeway bow, **B** (`swap`, rebindable) switches bow ⇄
+  Oathblade; the other is `p.stowedWeapon` (saved in `snapOf`, migrated from the old
+  `causewayBlade`). Both are `bound`, so neither spends ammo or durability. The post-Brute
+  "keep the bow / return to the blade" choice is gone. Owning Dash ⇒ the bow was taken (the Brute
+  wakes only to arrows), so `ensureTwoWeaponArsenal` makes the pair whole on every load; Level
+  Select now starts every stage with the Oathblade (it gave 5+ the legacy Rusty Sword).
+- **Void Tyrant:** no Blood refill between Citadel bands or on Right Hand knees.
+- **Abyss King:** no Blood refill between phases or on crown fractures; the final phase brings
+  void bats (2 at once, then 1 every 7 s, max 3), which hover in the air; they leave with him.
+- Verified in a real browser: B toggles both ways, bow fires with ammo fixed at max, old save
+  migrates, no heals at phase changes, bats airborne. Suite 837 / 815 / 22 (baseline set).
+  The White Court browser tests that expect the Rusty Sword were already in the failing baseline.
 
-| Stages | Status |
-| --- | --- |
-| 1–5 | Authored opening; observed startup, return, follower and interaction repairs incorporated. Marksman balance protected. |
-| 6 | Ruined Keep: two Belfry payloads, Wall Jump, Archive, Keep Key and westward return implemented. |
-| 7 | Warden: Turning Cells and opposed-cross boss complete in substance; latest three-crash/final-strike rules below. |
-| 8 | Frostfell: authored 15,100-unit level; its Muster Engine is the single source of the world-wide recall. |
-| 1–3, 7 | Expanded return rosters: Outskirts 12, Woods 13, Causeway 15, Warden 14; four regional roles and early encounters. |
-| 9–16 | Existing foundations/legacy content; full current level passes remain. |
-
-Four reserve caches add two vitality fragments, two Forge Seals and permanent
-physical return routes. See `12-RECALL-WORK-ORDER.md` for coordinates and proof
-boundaries. White Court has a design plan, not new gameplay.
-
-## Latest behavior to preserve
-
-Warden phase changes clear placed portals. Phase three requires three returned
-rushes, each consuming the pair. Crashes one and two remove the two lure platforms
-in order; moving pillars and rotors continue. Crash three leaves the boss fixed
-in place at one health, casting a telegraphed AOE at the player's current position
-at regular intervals. One final weapon hit kills him. Sentence AOEs cost one
-Blood without checkpoint teleport; Test Mode remains immune. Feedback is visual,
-not a `1/3` counter. Exploration is Iron Gavel Descent; combat is Sentence of the Shield Warden (score replaced 2026-09-19).
-
-Frostfell's mine uses **Up at both ends**, arriving at `(330, 0)`. Held Left cannot
-bounce between levels. The service route becomes **refuge → court → summit →
-refuge** after the summit passage is used, requiring fresh Up for every move.
-Muster activation is a six-second bell/camera sequence; the strike changes mood
-and music from Hearthfire in the Frost to Engine of the Frozen Garrison. Frostfell retains its eleven authored reinforcements. All ordinary campaign
-enemies now receive one ×1.55 health / ×1.25 raw-damage boost and at least 480
-notice. First recall loads re-garrison ordinary enemies once; bosses/unique
-encounters remain cleared (`12-RECALL-WORK-ORDER.md`). Larger hulks
-cost two Blood on contact. No boss revival, duplicate roster or stacking health.
-
-Read [recent changes](11-RECENT-CHANGES-AND-PLANS.md) for opening repairs, exact
-Frostfell setup, harness status and proposal boundaries; read the
-[Frostfell charter](../docs/charters/08-frostfell/README.md) for room details.
+## Before that — 7.167.0 / cache v244 (2026-09-21)
+Owner request: Level Select → Deep Line → Keep → three ship parts → back to the Abyss King was
+blocked; westbound, Right still sped the cart up; the high/low line switch was unreliable.
+- **Level Select assumes everything before the selected stage is won** (`seedLevelSelectPriorWorld`,
+  called from `beginRun`): session clears for every earlier zone, plus the latches a gate or a
+  boss-skip reads — `keep-key-recovered`, `frost-muster` (not under the test harness, matching the
+  amnesty), `foundry-colossus`, `citadel-tyrant`, `throne-king`. A stage's own boss is untouched.
+  `savedRunSession` now carries `sessionClearedZones` and `deepLineReturn`, so Continue keeps both.
+- **The King stays gone.** `kingRetreats` writes `throne-king` (the level's `bossSkipCircuit`,
+  which nothing wrote, so he respawned on every reload, including the Act 1 return). A skipped
+  King leaves his hall floor (`throneHallFloor`) and does not leave the Right Hand as `G.boss`.
+- **Cart lean is measured along the ride**: westbound, Left is speed and Right is brake.
+- **One switch rule**: hold the way you ride as the cart passes a brass switch → high line.
+  Decided on passing the post (a hop over it still counts), by lean alone (the second switch's
+  hidden banked-boost gate is gone), with a fixed launch floor so the high plank is always reached.
+  Switch arrows, cart tilt and the 360 spin mirror with direction.
+  The switch launch holds its speed until touchdown (`p.railSwitchFlight`), so letting go or
+  braking once it has spoken still lands on the plank; the second switch's floor is 580.
+- Found on the route and fixed: the sail sat on the Keep Key's belfry (Up always read the belfry)
+  — moved 16810 → 16970, clear of both reaches; the throne boat was never an Up target, so Act 1
+  could not end by input.
+- From an adversarial review (8 agents, findings verified in the engine): a hall whose King ran
+  has no Right Hand and no Oren (`retireThroneHall`, run AFTER hydration because enemy zone ids
+  are index-keyed and the Hand is index 0); his death can no longer raise the generic portal on
+  stage 13; a bossClear gate also accepts the boss's own skip latch (`bossLatchClears`), so a
+  Continue can't strand a King-less hall behind a sealed rail head; a pre-7.167 campaign save
+  whose world records the King beaten skips him too; a Level Select session skips the boss of any
+  stage it counts as won (the Brute, the Marksman on NG+ tabs, the Right Hand); `sw.js` precaches
+  every stamped script under the page's own stamp (offline boot was broken), and
+  `scripts/release-check.mjs` now understands stamps — it reports only astra/fable (standalone
+  pages, by design) and flags any service-worker stamp that differs from the page.
+Verification: TAS probes of the switch rule and landing margins in both directions (second switch
+lands ≥109 past the plank lip); a real-browser run of the owner's whole route with real seams and
+key presses (teleports only between seams) through the Act 2 card; `tests/act-one-return.test.mjs`
+(9, including that route and a campaign King-retreat reload); full suite 837 / 815 / 22, failing set
+identical to the baseline by name; release-check mirror parity clean. The owner still has to play it.
 
 ## Outstanding limitations
+- `winGame()`, credits, NG+ unlock and `meta.secretCleared` are unreachable on the current route
+  (they hang off `nextStage()`, and no campaign stage opens a completion portal).
+- Level Select is not isolated from the campaign save: `meta.run` is one slot, and some latches,
+  `meta.recovery` and `bestStage/reach` are written from Level Select.
+- Five secondary Echo-equipment hooks are declared but unread (`KNOWN_BUGS.md`).
+- Co-op (7.169) is verified in two browser contexts only, not on two devices over the real broker.
+  NG+ still follows a human-accepted solo Base journey and has not been adapted to stages 9–15.
 
-- Bram's escort now concludes at the root wall with an authored payoff; Gilded
-  Instinct and the three formerly inert Gifts are implemented. Five secondary
-  Echo hooks remain unread (see `KNOWN_BUGS.md`).
-- The traversal bot now requires full-state replay identity, stores replayable
-  input artifacts, and can perform crystal refills, pickups/flight, linked portals
-  and an independent floor-pair launch. The final sweep passes Outskirts/Woods
-  exits and the Brute threshold; five later full-stage attempts still fail. The
-  recalled Causeway now passes. See `12-RECALL-WORK-ORDER.md` for exact blocks.
-  Seven bot tests and the full 510-test suite pass. This is not a campaign bot.
-- The White Court aqueduct's Frostfell half is validated; the far half waits for
-  that level's pass.
-- The new recall has runtime/test evidence, but subjective balance remains for
-  player review. Rewards, caches and shortcuts follow in run 3. Co-op and NG+
-  follow solo Base.
-
-## Working-copy and release caveats
-
-Git tracks the whole authoritative tree; GitHub `main` is the previous release
-until branch `chore/track-authoritative-tree` (current work, pushed 2026-09-15) is
-merged. A fresh clone of `main` contains the previous complete release; the lean-copy generator remains the way to hand
-over a runnable folder without the historical evidence. The owner's copy lives at
-`~/Projects/Bladefall-2D Antigravity`, outside iCloud, since 2026-09-15; see the Git
-section of [essential files](06-ESSENTIAL-FILES.md). Preserve an independent archive before major work. Old size/copy
-measurements are dated in [working-copy instructions](07-WORKING-COPY.md).
-
-Edit `public/`, never the generated `netlify-deploy/`. At a release boundary,
-bump version/cache as appropriate, rebuild and run parity. Preserve save and
-leaderboard keys. Do not deploy without explicit owner instruction. Validate
-critical traversal with real inputs and record where setup used debug helpers.
+## Working-copy caveats
+Edit `public/`, never `netlify-deploy/`. At a release boundary bump `VERSION`, `CACHE_NAME` and
+the `?v=` stamp of every edited module, rebuild with `./build-deploy.sh`, and check mirror parity.
+Preserve save (`bladefall_v2`) and leaderboard (`bladefall_leaderboards_v1`) keys. Validate critical
+traversal with real inputs, and say where setup used debug helpers.

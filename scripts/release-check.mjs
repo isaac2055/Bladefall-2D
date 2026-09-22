@@ -35,14 +35,19 @@ const version = index.match(/const VERSION='([^']+)'/)?.[1] || null;
 const cache = worker.match(/const CACHE_NAME = '([^']+)'/)?.[1] || null;
 
 for (const asset of assets.filter((name) => name.endsWith('.js') && name !== 'littlejs.min.js' && name !== 'sw.js' && name !== 'peerjs.min.js')) {
-  if (!index.includes(`src="${asset}"`) && asset !== 'bladefall-release.js') failures.push(`index does not reference ${asset}`);
+  if (!index.includes(`src="${asset}"`) && !index.includes(`src="${asset}?v=`) && asset !== 'bladefall-release.js') failures.push(`index does not reference ${asset}`);
 }
 if (!sourceBytes.get('dialogue-editor.html')?.toString().includes('bladefall-dialogue.js')) failures.push('dialogue editor does not reference dialogue registry');
 if (!index.includes('src="bladefall-release.js"')) failures.push('index does not reference bladefall-release.js');
-for (const asset of assets) if (!worker.includes(`'./${asset}'`) && asset !== 'sw.js') failures.push(`service worker does not cache ${asset}`);
+for (const asset of assets) if (!worker.includes(`'./${asset}'`) && !worker.includes(`'./${asset}?v=`) && asset !== 'sw.js') failures.push(`service worker does not cache ${asset}`);
+/* Scripts carry hand-maintained ?v= stamps. A stamp is not drift; a stamp the service worker
+   precaches differently from the page IS: the page then requests a URL the offline cache
+   never stored, and the game cannot boot offline. */
 for (const [, src] of index.matchAll(/<script\s+src="([^"]+)"/g)) {
   if (/^(https?:)?\/\//.test(src)) continue;
-  if (!assets.includes(src)) failures.push(`index references unshipped script: ${src}`);
+  const file = src.split('?')[0];
+  if (!assets.includes(file)) failures.push(`index references unshipped script: ${src}`);
+  else if (src !== file && !worker.includes(`'./${src}'`)) failures.push(`service worker precaches ${file} under a different stamp than index (${src})`);
 }
 if (/https?:\/\/localhost|file:\/\//.test(index)) failures.push('index contains a local-only absolute URL');
 

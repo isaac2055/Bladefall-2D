@@ -64,6 +64,7 @@ ASSETS=(
   bladefall-content.js
   bladefall-presentation.js
   bladefall-multiplayer.js
+  bladefall-coop-journey.js
   bladefall-audio.js
   bladefall-camera.js
   bladefall-release.js

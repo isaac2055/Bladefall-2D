@@ -1,7 +1,7 @@
 /* Bladefall service worker — offline play + fast reloads once installed.
    Bump CACHE_NAME on a deploy where you want returning players to pick up
    the change immediately instead of waiting on the network-first refresh. */
-const CACHE_NAME = 'bladefall-v243';
+const CACHE_NAME = 'bladefall-v246';
 const CORE_ASSETS = [
   './',
   './index.html',
@@ -16,7 +16,7 @@ const CORE_ASSETS = [
   './bladefall-core.js',
   './bladefall-simulation.js',
   './bladefall-renderer.js',
-  './bladefall-respec-renderer.js?v=7.111.0',
+  './bladefall-respec-renderer.js?v=7.169.0',
   './bladefall-platformer.js',
   './bladefall-environment.js',
   './bladefall-reactions.js',
@@ -27,9 +27,9 @@ const CORE_ASSETS = [
   './bladefall-ecology.js',
   './bladefall-ai.js',
   './bladefall-authoring.js',
-  './bladefall-campaign.js',
+  './bladefall-campaign.js?v=7.146.0',
   './bladefall-charters.js',
-  './bladefall-progression.js',
+  './bladefall-progression.js?v=7.146.0',
   './bladefall-secrets.js',
   './bladefall-capabilities.js',
   './bladefall-movement-progression.js',
@@ -40,13 +40,13 @@ const CORE_ASSETS = [
   './bladefall-gifts.js',
   './bladefall-recollections.js',
   './bladefall-advancement.js',
-  './bladefall-zones.js',
+  './bladefall-zones.js?v=7.162.0',
   './bladefall-zone-state.js',
   './bladefall-recovery.js',
   './bladefall-streaming.js',
   './bladefall-world.js',
   './bladefall-story.js',
-  './bladefall-shops.js?v=7.112.0',
+  './bladefall-shops.js?v=7.130.0',
   './bladefall-quests.js?v=7.107.0',
   './bladefall-milestones.js',
   './bladefall-foundation-audit.js',
@@ -56,8 +56,9 @@ const CORE_ASSETS = [
   './bladefall-content.js',
   './bladefall-presentation.js',
   './bladefall-multiplayer.js',
+  './bladefall-coop-journey.js?v=7.169.0',
   './bladefall-audio.js',
-  './bladefall-camera.js?v=7.107.0',
+  './bladefall-camera.js?v=7.129.0',
   './bladefall-release.js',
   './bladefall-blood.js',
   './bladefall-inventory.js',
