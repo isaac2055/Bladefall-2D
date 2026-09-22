@@ -14,7 +14,7 @@ test('Updrafts is an 18k seven-room authored route with intentional negative spa
   assert.match(stage,/\{len:18000,portal:null,/);
   for(const landmark of ['rootbreach-lift','bellows-rest','kite-stair','windwright-brace','needlewind-labyrinth','rain-catcher','signal-crown'])
     assert.match(stage,new RegExp(`'${landmark}'`));
-  assert.equal((stage.match(/Check\(/g)||[]).length,9);
+  assert.equal((stage.match(/Check\(/g)||[]).length,8);   // the rainward perch and its checkpoint are gone
   assert.doesNotMatch(stage,/windDebris|windwright-route-board|airRefillPerch/);
 });
 
@@ -75,8 +75,12 @@ test('Needlewind is a long smooth main path with rewarding rejoin routes and an 
   assert.match(stage,/gale-stitch-cache/);
   assert.match(stage,/windwoven-thread-cache/);
   assert.match(source,/const authoredForce=Number\.isFinite\(tunnelFlow\.owner\.force\)\?tunnelFlow\.owner\.force:92/);
-  assert.equal((stage.match(/safePocket:/g)||[]).length,4);
-  assert.match(stage,/Pl\(11660,150,105.*safePocket:'rainward'.*Check\(11660,85\)/s);
+  // Three pockets, and nothing to stand on between the heart and the Needle platform: the
+  // last stretch is one flight, paid for by the quarter-tank crystal alone (owner, 2026-09-22).
+  assert.equal((stage.match(/safePocket:/g)||[]).length,3);
+  assert.doesNotMatch(stage,/safePocket:'rainward'/);
+  const stretch=stage.slice(stage.indexOf("safePocket:'heart'"),stage.indexOf("safePocket:'exit'"));
+  assert.doesNotMatch(stretch,/\bPl\(1[12]\d{3},/,'no platform stands between the heart and the exit');
 });
 
 test('Needlewind collision, art, and current share one sampled curve authority',()=>{

@@ -75,7 +75,7 @@ function recoveryHarness(){
 
 test('Needlewind safe pockets lie inside the real curve and one wound returns to the last pocket',()=>{
   const h=recoveryHarness(),p=h.G.p,pockets=h.objects.filter(o=>o.safePocket);
-  assert.equal(pockets.length,4,'the added rainward pocket bounds the long second half');
+  assert.equal(pockets.length,3,'entrance, heart and exit — the last stretch has no perch');
   for(const nest of pockets){
     Object.assign(p,{x:nest.x,y:nest.y,onGround:true,floorPlat:nest,fuel:12});
     assert.equal(h.context.activeWindTunnelState(p).hazardous,false,'a marked pocket cannot sit inside its own thorn boundary');
@@ -83,7 +83,8 @@ test('Needlewind safe pockets lie inside the real curve and one wound returns to
     assert.equal(p.ckX,nest.x);assert.equal(p.ckY,nest.y+40);assert.equal(p.fuel,100);
     const count=h.saved.length;h.context.tickNest();assert.equal(h.saved.length,count,'standing in a pocket does not resave every frame');
   }
-  const last=pockets.find(o=>o.safePocket==='rainward');
+  // A miss in the last stretch falls all the way back to the heart, not to a nearby perch.
+  const last=pockets.find(o=>o.safePocket==='heart');
   Object.assign(p,{x:last.x,y:last.y,onGround:true,floorPlat:last});h.context.tickNest();
   Object.assign(p,{x:11900,y:900,onGround:false,floorPlat:null,fuel:5,vx:150,vy:-120,slamming:true,dashBuf:.1,invuln:0,blood:4});
   h.context.hurtPlayer(18,1,false,1);

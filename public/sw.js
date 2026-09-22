@@ -1,7 +1,7 @@
 /* Bladefall service worker — offline play + fast reloads once installed.
    Bump CACHE_NAME on a deploy where you want returning players to pick up
    the change immediately instead of waiting on the network-first refresh. */
-const CACHE_NAME = 'bladefall-v246';
+const CACHE_NAME = 'bladefall-v247';
 const CORE_ASSETS = [
   './',
   './index.html',

@@ -24,6 +24,18 @@ success is never owner acceptance.
   identical by test name (list in the brief's Harness section).
 - `release:check` reports only astra-respec.js / fable-respec.js (standalone pages, by design).
 
+## Latest change — 7.169.1 / cache v247 (2026-09-22)
+Owner, with two screenshots: a platform stood at the bottom of the Needlewind's last stretch
+and trivialized it; only the jetpack refill below the Needle platform was wanted.
+- The fourth safe pocket `Pl(11660,150,105,{aerieNest:1,safePocket:'rainward'})` and its
+  `Check(11660,85)` are gone. Back to the authored three (entrance, heart, exit), which is what
+  `scripts/validate-updrafts.mjs` always expected. The heart → Needle platform run is now one
+  flight of ~3,125 units, relieved only by the quarter-tank crystal at the last dip (13020), and
+  a miss past the heart costs the whole second half.
+- Tests updated: three pockets, no platform between heart and exit, 8 `Check(` in the level, and
+  the rewind test now returns to the heart. `tests/updrafts-stage` + `updrafts-runtime` 22/22.
+  The owner said the flight is already proven, so no route re-validation was run.
+
 ## Latest change — 7.169.0 / cache v246 (2026-09-22; committed to `main`; deployed to bladefall.netlify.app at the owner's request)
 Owner request: "Please add co-op back into the game. This way, I can show my friend the game
 without him going crazy by showing him the way + helping him (so actions should be shared, only

@@ -333,7 +333,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.169.0';
+const VERSION='7.169.1';
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -4827,7 +4827,10 @@ const UPDRAFTS_LEVEL={len:18000,portal:null,
       force:102,needleMaze:1,curveSequence:['descending-hook','corkscrew','rising-s','final-crest']}),
   Pl(8520,180,105,{aerieNest:1,safePocket:'entrance'}),Check(8520,85),
   Pl(10070,150,105,{aerieNest:1,safePocket:'heart'}),Check(10070,85),
-  Pl(11660,150,105,{aerieNest:1,safePocket:'rainward'}),Check(11660,85),
+  /*   NO PERCH IN THE LAST STRETCH (owner, 2026-09-22). A fourth pocket stood in the dip at
+     11660 and made the run to the Needle platform two short hops instead of one long flight.
+     The only relief the owner wants there is the quarter-tank crystal at the last dip, so a
+     miss past the heart costs the whole second half. */
   // The optional inner eye leaves the main curve, crosses its own silhouette,
   // exposes Gale Stitch, and rejoins ahead. It is tighter but never a dead end.
   WindTunnel([[9970,540],[10120,700],[10360,830],[10610,720],[10700,500],
