@@ -67,7 +67,7 @@ test('named refuge residents persist independently from story clues', () => {
   assert.equal(Story.stageBrief('black-woods').residents.length, 3);
   assert.deepEqual(Story.stageBrief('brute').residents.map((resident) => resident.name), ['Oren', 'Sable']);
   assert.deepEqual(Story.stageBrief('updrafts').residents.map((resident) => resident.name), ['Talla', 'Edrin']);
-  assert.deepEqual(Story.stageBrief('hollow-marksman').residents.map((resident) => resident.name), ['Daro', 'Senn']);
+  assert.deepEqual(Story.stageBrief('hollow-marksman').residents.map((resident) => resident.name), ['Mara', 'Senn']);
 });
 
 test('ending selection requires the King and respects the Deep Line route', () => {

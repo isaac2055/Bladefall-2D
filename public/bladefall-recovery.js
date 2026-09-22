@@ -48,7 +48,6 @@
     ['inversion-plinth', 'inversion', 'Inversion Plinth', 0.40, true],
     ['paradox-vigil', 'void-tyrant', 'Paradox Vigil', 0.74, false],
     ['throne-watch', 'abyss-king', 'Throne Watch', 0.26, true],
-    ['vault-foyer', 'gilded-vault', 'Vault Foyer', 0.12, true],
     ['line-terminus', 'deep-line', 'Line Terminus', 0.08, true],
   ];
 

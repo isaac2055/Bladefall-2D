@@ -63,16 +63,56 @@ See `11-RECENT-CHANGES-AND-PLANS.md` and `KNOWN_BUGS.md`.
 Apply the same P/G/S/E/V approach, combining Society and Encounters only when
 the live spatial plan is already stable.
 
-| Order | Region | Non-negotiable outcome |
-| ---: | --- | --- |
-| 9 | Frost Sorcerer | Active chase plus changing moving-siphon/cold phases; Attunement reward; no portal camping. |
-| 10 | Emberdeep | Coherent inhabited foundry; traveler relay physically changes the furnace route; Companion Command reward. |
-| 11 | Ember Colossus | One integrated molten-shot → coolant → forged-slug industrial failure; Downward Strike reward. |
-| 12 | Inversion | Long unavoidable gravity commitments, ceiling/floor mastery, Zenith Key, two-mouth gravity synthesis. |
-| 13 | Void Tyrant | Low/middle/high opposed-pair body phases and narrative confirmation. |
-| 14 | Abyss King | Hardest fair portal-hijack/crown fight, stable retry, final direct ending. |
-| 15 | Gilded Vault | Seven-key combat-free precision platforming route with architectural portal arc. |
-| 16 | Deep Line | Truth-route synthesis, route signals, Waking Key, and rusty-axe ending. |
+| Order | Region | Non-negotiable outcome | State |
+| ---: | --- | --- | --- |
+| 9 | Frost Sorcerer | Active chase plus changing moving-siphon/cold phases; Attunement reward; no portal camping. | **built**, owner-accepted |
+| 10 | Emberdeep | Coherent inhabited foundry; traveler relay physically changes the furnace route; Companion Command reward. | **built** (Run 3: a real 640-unit descent); **played 2026-09-19 and it was broken** — three datum bugs, fixed in Run 7; re-playtest pending |
+| 11 | Ember Colossus | One integrated molten-shot → coolant → forged-slug industrial failure; Downward Strike reward. | **played 2026-09-19**: level cut and rebuilt to owner's notes (7.132.0); **boss phases 2–3 rebuilt** (7.133.0: vertical escape, then three-plate pursuit; see the proposal's "As built"), playtest pending |
+| 12 | Inversion | Long unavoidable gravity commitments, ceiling/floor mastery, Zenith Key, two-mouth gravity synthesis. | **played 2026-09-19 and it was UNFINISHABLE**; road and Drop-Lock rebuilt in 7.134.0 and accepted; **now 13,500 wide** — the Path of Inversion added as room 7 in 7.135.0; re-playtest pending |
+| 13 | Void Tyrant | Low/middle/high opposed-pair body phases and narrative confirmation. | **played 2026-09-20**: approach rebuilt (Oren gate, a portal puzzle that rehearses the fight, lethal spent line, a shield that needs the Counter, coin route cut) and the fight is now the FIRST HALF — he withdraws rather than dies, and returns in the King's hall (proposal written) |
+| 14 | Abyss King | Hardest fair portal-hijack/crown fight, stable retry, final direct ending. | **AUTHORED 2026-09-20** (7.141.0): The Drowned Throne, 12,400, a two-boss level — the Right Hand at its middle and the echo fight at its end. Playtest pending |
+| 15 | ~~Gilded Vault~~ | — | **CUT 2026-09-20.** Not a zone, node, recollection or rest site; its campaign slot is inert so later indices keep their numbers |
+| 16 | Deep Line | Truth-route synthesis, route signals, Waking Key, and rusty-axe ending. | procedural; now entered from the King and **surfaces at the Ruined Keep's east side** |
+
+**Levels 12–13 are done and unplayed; 10 and 11 were played on 2026-09-19** and
+rebuilt to the owner's notes (below, and each charter's OWNER CUTS section). The whole
+road from the White Court's Ember Door to the Throne Gate was walked in both directions
+in Run 6 and is green (`tests/late-game-road.test.mjs`). The owner's rule from those
+two playtests applies to the rest: **every section is mandatory, or it is cut.**
+
+**The Inversion had one on 2026-09-19 and it failed too, worse.** The owner crossed the
+whole region without once pressing the flip — every "unjumpable" 400-wide void falls to
+jump→dash→double-jump — and then hit a Drop-Lock that **could not be solved by anyone**:
+the bin's walls stand to 390 under a roof at 400, and the knight is 44 tall, so the only
+mouth that could fill the bin could only be placed inside the sealed bin. The region was
+unfinishable, with the Void Tyrant behind it. Rebuilt in 7.134.0: three 900-wide voids
+west of the anchor (against a measured 671–774 kit reach), a crumble that is now a
+stepping stone rather than a 620-wide corridor with a 0.45 s fuse, the bin's ceiling
+raised to 460 with its inner faces left bare, a new ceiling-plate gate, and `Roof()` made
+`ceilingOnly` so a roof can never be climbed on top of. Read
+`docs/charters/12-inversion/AUDIT-AND-FIX-PROPOSAL.md` before touching that region.
+**The rule it leaves behind: a gap can never gate a mechanic — only a mechanism can, and
+below ~800 units width gates nothing at all.**
+
+On 2026-09-20 the owner accepted that rebuild and asked for a finish like the jetpack
+path of pain, flipped, "about half the size" of the level. **The Inversion is now 13,500
+wide**: rooms 1-5 moved EAST by exactly 4,500, the Void Fissure (0-1400) did not move, and
+the new Path of Inversion fills 1,400-5,900. **Every pre-7.135.0 coordinate in that region
+is its old value + 4,500** — the shift was verified object by object (66/66) rather than by
+eye, and the same dump script is the way to do the next one. Two numbers from it worth
+carrying: a floor thorn only bites within 30 of the floor, so any bank under ~350 wide is
+cleared by a plain jump+dash and gates nothing; and a hazard at the region's ordinary
+12-14 damage is a toll, not a gate — a bot that never flipped tanked four banks on it.
+
+**Emberdeep has now had one, and it failed it.** On 2026-09-19 the owner reported
+"everything minus Emberdeep — that level isn't working at all". Three defects, all
+the same mistake: a literal `0` meaning "the floor" in the one region whose floor is
+at 640. The camera framed 354 units of solid rock, the Cinder Ledger floated in the
+void under the plateau, and the relay traveler fell out of the world and never
+returned — which made the region **unfinishable**, since the gated bridges need her
+on a pad. Fixed in Run 7 (`tests/level-datum.test.mjs`); Emberdeep's row below is
+now playtest-pending on the FIX, not on the build. Read that run's entry in
+`16-LATE-GAME-WORK-ORDER.md` before touching any level that raises its floor.
 
 Each level should be materially longer, more authored, and more inhabited than
 its legacy shell. Reuse mechanics and rendering primitives; do not reuse the
@@ -80,7 +120,20 @@ same puzzle answer.
 
 ## Priority 4 — cross-world integration
 
-After all Base level passes:
+After all Base level passes. **Item 1 is done for the late road** (Run 6, 2026-09-18):
+every seam from the Ember Door to the Throne Gate crosses in both directions, every
+arrival stands on solid ground facing the way its level runs, each of the three verbs
+is paid for at a protected midpoint and required before the exit past it, no region
+signposts, every recall roster is present, and Continue resumes mid-road. What that
+audit found and fixed: Emberdeep's return door was buried 640 units under the plateau
+Run 3 raised; the fissure arrival faced the wall behind the player; and Emberdeep's and
+the Inversion's rest sites were named differently from their `BFRecovery` contracts, so
+both fell back to a ratio and landed in hazards.
+
+**Named and deferred:** the Drowned Throne, the Gilded Vault and the Deep Line all
+continue **west, underground**, under the opening regions, so the truth route ends
+beneath the Outskirts where the knight actually lies. None of the three is authored yet;
+the Throne Gate lands the player at stage 13's procedural west start as a stopgap.
 
 1. Full topology and shortcut audit in both directions.
 2. Backtracking reward/economy balance: seven keys, Recollections, quests,

@@ -21,7 +21,9 @@
     secondJumpVelocity: 450,
     jumpBufferSeconds: 0.12,
     coyoteSeconds: 0.1,
-    jumpCutVelocity: 170,
+    jumpCutVelocity: 220,
+    apexGravityScale: 0.55,   // v4: gravity eases near the top of a held jump
+    apexBand: 60,
     dashDurationSeconds: 0.22,
     dashSpeedMultiplier: 3,
     dashGravityScale: 0.15,

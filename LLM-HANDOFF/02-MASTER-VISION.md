@@ -202,12 +202,14 @@ progression, leaderboards, or world state.
 - Pause/map surfaces preserve the current level cue.
 - The opening text uses the Outskirts music quietly and fades into normal level
   volume; it does not show literal story art that spoils the mystery.
-- Current assigned music includes Strange Worlds (Outskirts), light exploration
-  tracks such as Sunlight Through Leaves/Floating Dream/Drifting Memories,
-  Whispering Woods for Warden exploration, ClockWork for activated Frostfell,
-  Element/Abnormal Circumstances/Heat of Battle for selected bosses, Tides of
-  the Serpent for the second-to-last boss when integrated, and the original
-  `music.mp3` for the final boss.
+- Since 2026-09-19 the campaign has its own score: one ElevenLabs-generated
+  exploration cue per stage 0–13 and a boss cue for each of the seven bosses, all
+  sharing one palette (solo cello, felt piano, heartbeat pulse, detuned music box)
+  and rising in intensity toward the King. `LEVEL_MUSIC` in `public/index.html`
+  is the table; `public/audio/ATTRIBUTION.md` maps titles to stages;
+  `docs/music/ELEVENLABS-SCORE-PROMPTS.md` holds the prompts. ClockWork remains
+  the activated-Frostfell cue. `music.mp3` is now only the fallback for stages
+  without a cue (Gilded Vault, Deep Line).
 - Environmental SFX should be material-aware and restrained. Repetitive chainmail
   landing audio is reserved for meaningful heavy landings.
 

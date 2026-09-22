@@ -20,7 +20,7 @@ function assembled(charter, overrides = {}) {
   }, overrides);
 }
 
-test('all 16 blueprints produce complete immutable charter stubs', () => {
+test('all 16 blueprint slots produce complete immutable charter stubs', () => {
   const catalog = Charters.catalog(Campaign.blueprints);
   assert.equal(catalog.length, 16);
   for (const charter of catalog) {

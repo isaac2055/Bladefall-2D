@@ -1,5 +1,21 @@
 # Level-by-level production record
 
+> **The late road (stages 9–13) is built and unplayed.** Runs 2–6 of
+> `16-LATE-GAME-WORK-ORDER.md` authored Emberdeep, the Foundry, the Inversion and the
+> Paradox Citadel, and then walked the whole road from the White Court's Ember Door to
+> the Throne Gate in both directions (`tests/late-game-road.test.mjs`). Every seam
+> crosses, every arrival is on solid ground facing the way its level runs, each verb is
+> required before the exit past it, and Continue resumes mid-road. What this record calls
+> "playtest pending" below means exactly that.
+>
+> **2026-09-19 — the owner played it and Emberdeep was broken.** Verdict: "I can work
+> with all of this minus Emberdeep." Three defects, all one mistake — a literal `0`
+> standing for "the floor" in a region whose floor is at 640. The camera framed 354
+> units of solid rock, the counter floated in the void beneath the plateau, and the
+> relay traveler fell out of the world and stayed there, which made the region
+> **unfinishable**. Fixed in Run 7; see `16-LATE-GAME-WORK-ORDER.md` and
+> `tests/level-datum.test.mjs`. **Stages 10–13 are still unplayed.**
+
 Updated 2026-09-13. “Implemented” means present in source; automated verification
 is reported separately from owner acceptance. After Frostfell's engine strikes,
 The Outskirts, Black Woods, Broken Causeway and the Warden currently install only
@@ -209,54 +225,134 @@ correspondence more legible without final diagnosis.
 
 ## 10 — Emberdeep
 
-**Current runtime:** older foundry route with traveler relay, lava, timed
-platforming, and portals; full current pass pending.
+**Current runtime (2026-09-18):** authored v4 region, six rooms, and after Run 3 an
+actual **descent**. Rooms 1-5 stand on a plateau at `const ED=640` — deep ground at a
+height via `GrAt()`, filled to the world floor so nothing walks under it — and room 6
+walks you 640 units down off it in four switchback flights to y=0, where the east seam
+into the Foundry is an ordinary edge walk. Every y in the level is written through ED.
+A lava sump under the head of the stair means stepping off costs a rewind, not the
+whole descent, and the plateau rooms rewind at ED-160 rather than at the world's void.
 
-**Target:** a working industrial descent. Heat cycles, small supported landing
-targets, contained molten channels, tools, enemies, and portal-carried reactions
-must share one production logic. A specific traveler does not rubber-band through
-the selective barrier. The player intentionally sends/commands them through it;
-their held relay materializes a moving, crumbling bridge across the live furnace.
-Reward Companion Command. Add an inhabited safe counter without turning the
-whole level into exposition.
+Room 2 is now **two lines over one clock**: the low line is the slab rhythm, the high
+line is a chimney and a run of cold stone over the spouts — faster, and the slag falls
+on it. Room 3 has a lookout level with the top of the seal arch. Three of six plain
+emberlings are gone: two **slagwrights** (lob slag that lands as a burning pool and
+cools into footing) and a **cinderling pair** (burn out where they die) put the clock
+in the fight. Checkpoints cut from 12 to 7. In the stair, one **dead ladle** hangs
+jammed over a set mould with the slag gone hard up its arm — no text; it is what the
+player spends the next region doing.
+
+**Interior backdrop.** Stages 9-11 now use `INTERIOR_STAGES` in the renderer: tiled
+rock wrapped in both axes, pinned to nothing, no horizon, no abyss gradient, plus y
+culling. The outdoor backdrop assumed a sky, hills 196px above the GROUND LINE, and
+darkness below it — raise a floor 640 units and all three break at once.
+
+**Target (remaining):** owner playtest.
 
 ## 11 — Ember Colossus / The Foundry
 
-**Current runtime:** molten projectile capture/coolant/slug mechanic exists, but
-the stage remains below the current authored standard.
+**Current runtime (2026-09-18):** authored v4 region, five rooms, and a rebuilt
+fight. The wet-forge cannonball circuit described in earlier revisions of this file
+is GONE: the Colossus now runs "The Last Pour" (docs/charters/11-ember-colossus/
+BOSS-DESIGN-PLAN.md). You beat its arm to the mould it banked, set that mould cold
+with Downward Strike, and the pour is refused; progress counts refusals, not health.
+Run 1 of 16-LATE-GAME-WORK-ORDER.md made that legible — the banked bay is marked,
+the machine stands behind the bench at 2.2x, and a jam leaves its arm in the stone
+as the fight's melee window. Downward Strike is granted at the Anvil midpoint.
 
-**Target:** replace the old third-cannon feeling with one moving industrial
-failure. The Colossus changes machinery, heat, safe ground, and production state.
-The player captures a molten shot, routes it through a visibly bounded coolant
-current, and returns the forged slug as one integrated process. The boss stays
-aggressive rather than standing behind the portal answer. Reward Downward Strike;
-use it immediately as a physical foundry breach or combat-movement proof.
+Run 2 (7.125.0) rebuilt the region around the fight's own sentence. The new
+primitive is the **ladle** (`updateFoundryLadles`): a machine that goes to a
+mould, gathers over it — which holds it in its setting window — and pours. Pour
+into open stone and it fills; pour onto stone you set and it jams. Three of them,
+seizing at one, two and three refusals: the **Anvil** counterweight gate (the
+strike is required, the natural cold window is half a second and 560 units from
+the gate), the **Casting Line** whose belt stalls when you refuse two different
+bays, and the **Mould Hall feeder** that walks beneath your bed and whose wreck is
+the only step east. Rooms 2 and 3 swapped so the test follows the grant. The
+**Sluice** is the chapter's portal room: a mould whose setting window is a fifth
+of a second, a coolant header to stand a mouth in, and a slate under the mould —
+carry the cold to the stone. The arena's outlet anchor now declares a 700-unit
+envelope (`anchorRange`) so it stops demoting the Sluice to one-mouth mode.
+
+The region **leaves through its own floor**: three casting caps in the GROUND at
+the east end, a height-triggered crossing inside that band, and the recollection
+on a ledge inside the mouth. `colossus-inversion` is now ember-colossus `south` →
+inversion `north`, with authored arrivals at both ends.
+
+**Target (remaining):** owner playtest. The fight itself is playtest-pending, not
+accepted; Emberdeep's descent is Run 3.
 
 ## 12 — The Inversion
 
-**Current runtime:** custom gravity stage and two-mouth drop-lock exist; full
-current long-form pass pending.
+**Current runtime (2026-09-18):** rebuilt in Run 4 as the game's first **vertical**
+region. About 9,000 wide by 1,500 tall, entered at the top right by falling out of the
+Foundry's floor and left at the bottom left by the west gate at y=0 — right to left and
+downward, as the map draws it. The old 8,400-unit flat level, its procedural coda
+(`customExtension` 2600, `spGravity`, both weapon pickups, five signs) and the
+unconditional `populateVoid` spawn are gone; `populateVoid` now runs only for a level
+without `authoredEcology`.
 
-**Target:** make gravity a spatial language, not a short gimmick. Early openings
-must be long enough that Dash/Double Jump cannot bypass flipping. A sustained
-floor/ceiling/floor/ceiling sequence should require unmistakable commitments,
-with secrets visible for later mastery. The finale combines both orientations
-with a two-mouth payload/drop lock and plausible decoys. Reward/complete the
-Gravity Flip memory in a protected, legible way. Hide the Zenith Key in a ceiling
-sanctum reached through the actual ability.
+**The rule:** there are two floors and you may owe only one at a time. The grammar is
+the switchback — a floor run ends at a 400-wide gap (a double jump clears 355 in either
+orientation), the only thing over it is a roof whose UNDERSIDE you reach by stepping off
+the lip and flipping in the air, and that roof reaches ~200 past the gap over the next
+floor, where you right the world and drop. Six rooms, each owning its own x-span AND
+height band, because rooms are x-spans in this engine and two may never share one.
 
-## 13 — Void Tyrant / Paradox Citadel
+**Renderer.** The pixel path had no handling of `gravityFlipped` at all. Now: the hero
+and every non-flying walker mirror about their own box (`flipWrap`; `p.y` stays the box
+bottom either way, see `playerSlate`); `polarityTrim` moves each platform's lit cap to
+the side you currently owe and grows the hanging fringe on the other; a flip stamps
+`G.flipTellAt` and gets a half-second whole-screen tell with the motes reversed; the
+200,000-wide world roof is clamped to the view before its per-pixel brick loop; and the
+camera mirrors `verticalThreshold` when flipped and leads a long fall from `vy`.
 
-**Current runtime:** three band/height phases and later systemic cleanup exist;
-full current pass pending.
+**Cast.** Oren only, plus the **keelman** — a flyer that owes neither floor — as the
+region's recall unique. Eight authored bodies, all `noDrop`. No loot, no signs. The
+Zenith Key socket is claimed by standing beside it on the ceiling.
 
-**Target boss:** the player places opposed mouths low to attack legs, rebuilds
-at middle height for torso, then high for head. Each success clears/rejects the
-old solved layout and accelerates the barrage, making the three phases easier to
-lose without using unfair damage. The approach should remove unrelated relay,
-gravity-well, and random accent clutter. Fight and narrative reveal together
-confirm the real-world commander/right-hand correspondence and the delirium.
+**Target (remaining):** owner playtest. The Void Tyrant fight is Run 5.
+## 13 — The Void Tyrant / The Paradox Citadel
 
+**Current runtime (2026-09-18):** authored in Run 5, six rooms over 17,000 units, walked
+**east to west** — you arrive at the east gate out of the Inversion's bottom-left corner
+and the Throne Gate is beyond the arena at the west end. The Gaol's pattern: `spawnX`
+16700, `bossX` 1100, `build(){G.p.face=-1}`, every authored body facing the arrival.
+The charter (`docs/charters/13-void-tyrant/DESIGN-PLAN.md`) plans it west-to-east; read
+each of its x values as `17000 − x`.
+
+**The rule:** every answer is spent by being right. A ledge you use to solve something
+gives way behind you and does not come back — introduced in room 1 over floor you never
+leave, raised in rooms 3 and 4, and finally handed to a fight whose every correct
+alignment clears the pair that made it. The arena's geometry (two slate faces 1,100
+apart, 360 tall) is rehearsed as ordinary traversal **three times** before the arena.
+
+**The fight's maths is untouched.** `TYRANT_PARADOX_BANDS`, `tyrantPairStatus`,
+`chargeParadoxOrb` and `advanceTyrantParadox` are byte-for-byte what they were. What
+changed is that it is now *visible*: `setupParadoxBoss` builds the arena from absolute
+coordinates (an early return in `bossArena`'s tyrant branch, the `setupFoundryBoss`
+pattern) so the authored rooms are never purged by the legacy 1,270-unit sweep;
+`installParadoxFloor` keeps the floor, the faces and five stairs after the victory, so
+the region's only road still runs through its arena; `drawTyrantFigure` puts the three
+bands on the BODY as greaves, cuirass and crown with the live one lit; and
+`drawParadoxRails` draws the bands across the floor plus an alignment line that snaps
+straight when the pair answers and sags when it does not.
+
+**Three things that were outright broken and are not now.** The forward seam is the
+game's first `bossClear`-gated physical seam and **nothing recorded the clear** — the
+Throne Gate would have refused forever; `latchVoidTyrant` records it on the kill.
+`applyFinaleActRemaster` deleted every `lowg`/`updraft`/`gravityWell`/`rotor` in stages
+12–13, authored or not. And the seam-failure nudge assumed forward meant east, so a
+failed crossing pushed the player further into a west gate.
+
+**Also:** `right-hand-seal` — the memory that flips the story to *confirmed*, declared
+since the story module was written and placed nowhere in the runtime — is a found
+object in the Paradox Vigil. Oren only; a twelve-row `void-tyrant` Muster roster with
+the **crownguard** unique. The camera anchor now follows travel direction, so a
+westward run sees ahead of itself.
+
+**Target (remaining):** owner playtest. The Drowned Throne is still procedural and
+still left-to-right; the Throne Gate lands the player at its west start for now.
 ## 14 — Abyss King / Drowned Throne
 
 **Current runtime:** portal hijack, crown phases, checkpoints, crown healing, and
@@ -267,8 +363,12 @@ full current narrative/geography pass remains.
 the King steals/hijacks it, so hiding behind a mouth is unsafe. Crown destruction
 restores Blood and serves as phase punctuation. Damage, teleport density, and
 visual noise must preserve learnability. The last two phases use roughly 25%
-fewer teleports than the chaotic older version. The encounter should own the
-final-boss version of `music.mp3` unless later audio review changes it.
+fewer teleports than the chaotic older version. Music (2026-09-19): "The Black
+Procession" on the approach; "A Crown of Ashes" from the King's first notice. Its
+ten-second music-box intro plays once; repeats loop from the orchestral entrance
+(`loopFrom:9.98`). The hall's second boss, the Right Hand, takes the Tyrant's own
+"Iron Oath of the Night Attack" through the stage-13 `duel` cue (2026-09-20) — the
+walk's ambience must never play under that fight.
 
 ## 15 — The Gilded Vault
 

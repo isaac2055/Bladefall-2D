@@ -1,3 +1,5 @@
+// The Gilded Vault was cut on 2026-09-20; its campaign stage slot is kept inert so
+// that no stageIndex after it moves, but it is not a zone, a site or a recollection.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -11,7 +13,7 @@ test('archive mirrors the campaign and keeps discoveries sealed before the Wakin
   assert.equal(Recollections.status(state,'black-woods'),'missing');
   state=Recollections.grantKey(state).state;
   assert.equal(Recollections.status(state,'outskirts'),'playable');
-  assert.equal(Recollections.uiModel(state).rows.length,16);
+  assert.equal(Recollections.uiModel(state).rows.length,15);
   assert.equal(Recollections.validate().ok,true);
 });
 

@@ -1,11 +1,55 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import vm from 'node:vm';
 
 const source = await readFile(new URL('../public/index.html', import.meta.url), 'utf8');
 const start = source.indexOf('/* ---- STAGE 3 · BROKEN CAUSEWAY');
 const end = source.indexOf('const UPDRAFTS_LEVEL', start);
 const stage = source.slice(start, end);
+
+function functionSource(name){
+  const a=source.indexOf('function '+name+'('),b=source.indexOf('\nfunction ',a+1);
+  assert.ok(a>=0&&b>a,name+' exists');return source.slice(a,b);
+}
+const constructors=['Pl','Gr','Wl','Sp','Plate','Trap','Check','CoinOb','RepairCatch'].map(functionSource).join('\n');
+const makeObject=type=>(x,y,kind,options)=>({type,x,y,kind,...options});
+const stageExpression=stage.slice(stage.indexOf('{len:'),stage.indexOf('\n];')).trim().replace(/,$/,'');
+const authored=vm.runInNewContext(constructors+'\n('+stageExpression+')',{
+  BFDialogueModule:{text:id=>id},STAGE_LORE:{2:{}},
+  Scenery:makeObject('scenery'),AmbientFigure:makeObject('ambientFigure'),StoryRelic:makeObject('storyRelic'),
+  OpeningBeat:(o,beat,system)=>Object.assign(o,{openingActBeat:beat,openingActSystem:system}),
+  SealedRecollection:(x,y,id,title,options)=>({type:'storyRelic',x,y,id,title,...options}),
+  LoreMarker:(x,y)=>({type:'lore',x,y}),Sign:(x,y,text)=>({type:'sign',x,y,text})
+});
+const bossGeometry=vm.runInNewContext(constructors+functionSource('bossArena')+
+  ';const G={obstacles:[]};const e={type:"brute",x:'+String(authored.len-350)+',h:80};bossArena(e);({boss:e,objects:G.obstacles})',{
+  OpeningBeat:(o,beat,system)=>Object.assign(o,{openingActBeat:beat,openingActSystem:system}),Scenery:makeObject('scenery')
+});
+const movement=vm.runInNewContext(
+  await readFile(new URL('../public/bladefall-progression.js',import.meta.url),'utf8')+
+  await readFile(new URL('../public/bladefall-capabilities.js',import.meta.url),'utf8')+
+  await readFile(new URL('../public/bladefall-movement-progression.js',import.meta.url),'utf8')+
+  ';BladefallMovementProgression.profile(BladefallCapabilities.createState()).tuning');
+function jumpReach(rise){
+  const disc=movement.jumpVelocity**2-2*1400*rise;
+  return disc<0?-Infinity:movement.runSpeed*(movement.jumpVelocity+Math.sqrt(disc))/1400;
+}
+const platforms=Array.from(authored.objects).concat(Array.from(bossGeometry.objects))
+  .filter(o=>o.type==='plat'&&!o.fake&&!o.gone&&!o.returnHook)
+  .map(o=>({...o,left:o.x-o.w/2,right:o.x+o.w/2}));
+function gap(a,b){return a.right<b.left?b.left-a.right:b.right<a.left?a.left-b.right:0;}
+function routeExists(rows,from,to){
+  const matches=(o,p)=>o.left<=p.x&&o.right>=p.x&&o.y===p.y;
+  const seen=new Set(rows.flatMap((o,i)=>matches(o,from)?[i]:[])),queue=[...seen];
+  while(queue.length){
+    const i=queue.shift();if(matches(rows[i],to))return true;
+    for(let j=0;j<rows.length;j++)if(!seen.has(j)&&gap(rows[i],rows[j])<=jumpReach(rows[j].y-rows[i].y)){
+      seen.add(j);queue.push(j);
+    }
+  }
+  return false;
+}
 
 test('Broken Causeway owns five long-form rooms using jump and weapon only', () => {
   assert.match(stage, /\{len:14000,portal:null,physicalExit:'return-to-black-woods'/);
@@ -29,19 +73,19 @@ test('Drop Yard machinery is deterministic, recoverable, and cannot softlock', (
 
 test('Chainwalk and Counterweight Rise offer authored route and combat choices', () => {
   assert.equal((stage.match(/upperRoute:1/g)||[]).length, 7);
-  assert.equal((stage.match(/causewayRole:/g)||[]).length, 6);
-  assert.equal((stage.match(/patrol:\[/g)||[]).length, 6);
-  assert.equal((stage.match(/noticeRange:/g)||[]).length, 6);
+  assert.equal(authored.enemies.length,5);
+  assert.ok(authored.enemies.every(e=>e.noDrop&&Array.isArray(e.patrol)));
+  assert.ok(authored.enemies.every(e=>e.noticeRange>0));
   for (const rise of [65,130,195,260,325])assert.match(stage,new RegExp(`Pl\\(\\d+,\\d+,${rise}`));
   assert.match(stage, /StoryRelic\(9300,360,'wristguard-bearer'/);
   assert.match(source, /if\(en\.causewayRole\)\{e\.causewayRole=en\.causewayRole;e\.authoredEncounter=true;e\.active=false;\}/);
 });
 
-test('Brute uses airborne rivets, a remote release, and a resettable lure-and-drop transformation', () => {
+test('Brute uses physical arrow targets, a remote release, and a resettable lure-and-drop transformation', () => {
   assert.match(source, /e\.portalGate='bruteRivets';e\.bruteMachineryFight=true/);
   assert.equal((source.match(/bruteRivetIndex:/g)||[]).length,3);
   assert.match(source, /bruteDropRelease:1/);
-  assert.match(source, /if\(!pr\|\|pr\.shape!=='arrow'\|\|pr\.owner!=='player'\|\|!pr\.airborneShot\)return true/);
+  assert.doesNotMatch(functionSource('strikeBruteWakeLever')+functionSource('strikeBruteDropRelease'),/airborneShot/);
   assert.match(source, /weight\.active=1;weight\.vy=0;weight\.resetT=0/);
   assert.match(source, /o\.active===3/);
   assert.match(source, /o\.y=Math\.min\(o\.y0,o\.y\+520\*dt\)/);
@@ -70,7 +114,7 @@ test('Broken Standard introduces the bow through three physical precision rivets
   assert.equal((source.match(/bruteReleasePerch:1/g)||[]).length,2);
   assert.match(source,/Pl\(releaseX-300,80,55,\{bruteReleaseStep:1\}\)[\s\S]*Pl\(releaseX-220,80,110,\{bruteReleaseStep:1\}\)[\s\S]*Pl\(releaseX-105,190,170,\{bruteReleasePerch:1\}\)/);
   assert.match(source,/Pl\(weightX\+610,80,55,\{bruteReleaseStep:1\}\)[\s\S]*Pl\(weightX\+530,80,110,\{bruteReleaseStep:1\}\)[\s\S]*Pl\(weightX\+435,190,170,\{bruteReleasePerch:1\}\)/);
-  assert.match(source, /bossContract:\{airborneRivets:3,remoteRelease:true,lureUnderWeight:true,missResets:true,returnStair:true,portal:false\}/);
+  assert.match(source, /bossContract:\{arrowRivets:3,remoteRelease:true,lureUnderWeight:true,missResets:true,returnStair:true,portal:false\}/);
   assert.doesNotMatch(stage, /THREE RIVETS HOLD|CUT THE CHAIN|BAIT THE BRACE/);
   assert.doesNotMatch(stage, /focus|charged|hold attack/i);
 });
@@ -97,15 +141,16 @@ test('counterweight firing decks are reachable with opening jump and overlap the
 });
 
 test('Brute defeat grants Dash, records completion, and creates no exit portal', () => {
-  assert.match(source, /grantPermanentCapability\('dash','brute-counterweight'\)/);
+  assert.match(source, /grantPermanentCapability\('dash','brute-counterweight',\{quiet:true\}\)/);
   assert.match(source, /commitStageCompletion\(\);recordWorldClear\(\);recordStoryStageClear\(\);recordHelpedTravelers\(\)/);
-  assert.match(source, /else if\(e\.whiteCourtFight\|\|e\.type==='brute'\|\|\(e\.type==='archer'&&G\.stageIndex===4\)\|\|\(e\.type==='warden'&&G\.stageIndex===6\)\)G\.portal=null/);
+  assert.match(source, /else if\(e\.whiteCourtFight\|\|e\.type==='brute'\|\|\(e\.type==='archer'&&G\.stageIndex===4\)/);
   assert.match(source, /G\.stageIndex===2&&G\.p\.x<G\.levelLength\/2.*targetStage:1/s);
   assert.match(source,/function showBruteDefeatBriefing\(\)/);
-  assert.match(source,/This message waits until you dismiss it/);
-  assert.match(source,/return <b>west<\/b> through the Causeway and Black Woods/i);
+  const choice=functionSource('showBruteDefeatBriefing');
+  assert.match(choice,/bruteBladeReturn/);assert.match(choice,/bruteRoadReturn/);
+  assert.doesNotMatch(choice,/through the Causeway and Black Woods|in the bag/);
   assert.match(source,/if\(e\.type==='brute'&&G\.ngPlus===0\)showBruteDefeatBriefing\(\)/);
-  assert.match(source,/Oren’s repaired Drop Yard gate now holds open/);
+  assert.match(source,/function finishCausewayLoadout\(restoreBlade\)/);
 });
 
 test('Only Oren repair permanently opens the mandatory westbound Drop Yard gate', () => {
@@ -117,16 +162,18 @@ test('Only Oren repair permanently opens the mandatory westbound Drop Yard gate'
   assert.ok(catches.every(x=>x<gateX),`both mandatory catches (${catches}) must be reachable west of gate ${gateX}`);
 });
 
-test('Both mandatory catches disclose an Up interaction and have opening-jump approaches', () => {
+test('both repair catches and the bow have reversible approaches using the real opening jump', () => {
   assert.match(source,/target\.repairCatch\|\|target\.keepDropRelease\?'↑  RELEASE'/);
   assert.match(source,/if\(o\.repairCatch\)\{pullLever\(o\);return true;\}/);
   assert.match(stage,/Pl\(3200,170,65.*Pl\(3420,170,130/s);
   assert.match(stage,/Pl\(4700,150,50.*Pl\(4930,170,105/s);
-  const jumpHeight=(480*480)/(2*1400);
-  assert.ok(65<jumpHeight&&55<jumpHeight,`${jumpHeight}px opening jump must clear both repair approaches`);
-  // Platform edge gaps are 50px and 70px respectively, within a normal
-  // running jump rather than a future Dash or Wall Jump requirement.
-  assert.ok(50<100&&70<100);
+  const west=platforms.filter(o=>o.left<5333).map(o=>({...o,right:Math.min(o.right,5333)}));
+  for(const handle of authored.objects.filter(o=>o.repairCatch)){
+    assert.ok(routeExists(west,{x:2680,y:0},{x:handle.x,y:handle.y}),'a single-jump route reaches '+handle.repairCatch);
+    assert.ok(routeExists(west,{x:handle.x,y:handle.y},{x:2680,y:0}),'the route can return from '+handle.repairCatch);
+  }
+  assert.ok(routeExists(platforms,{x:10640,y:0},{x:11400,y:260}),'the bow can be reached before Dash');
+  assert.ok(routeExists(platforms,{x:11840,y:0},{x:11400,y:260}),'the bow can be recovered from the arena side');
 });
 
 test('Level Select can run Oren locally without granting Focus or mutating campaign quests', () => {
@@ -138,7 +185,7 @@ test('Level Select can run Oren locally without granting Focus or mutating campa
 
 test('Up Arrow starts Oren and releases either broad-stance safety catch', () => {
   assert.match(source,/if\(o\.questActor&&talkQuestContact\(\)\)return true/);
-  assert.match(source,/target\.questActor\?'↑  TALK'/);
+  assert.match(source,/target\.questActor\|\|target\.kind==='survey'\|\|target\.profileId==='bram'\?'↑  TALK'/);
   assert.match(source,/else if\(o\.repairCatch\|\|o\.keepDropRelease\)\{xr=108;yr=120;\}/);
 });
 
@@ -185,7 +232,7 @@ test('Causeway content is spatial, concise, and exposed for acceptance', () => {
   assert.match(stage, /residentId:'brute-stretcher'.*name:'Sable'/);
   assert.match(source, /const CAUSEWAY_ROOM_CUES=Object\.freeze/);
   assert.match(source, /G\.causewayProduction=G\.stageIndex===2\?/);
-  assert.match(source, /bossContract:\{airborneRivets:3,remoteRelease:true,lureUnderWeight:true,missResets:true,returnStair:true,portal:false\}/);
+  assert.match(source, /bossContract:\{arrowRivets:3,remoteRelease:true,lureUnderWeight:true,missResets:true,returnStair:true,portal:false\}/);
   assert.match(source, /causewayState:\(\)=>G&&G\.causewayProduction\|\|null/);
   assert.doesNotMatch(source,/JAMMED · ASK THE CHAINWRIGHT/);
   assert.match(source,/const repair=questRow\('release-the-causeway'\),disclosed=!!\(repair&&repair\.started\)/);
@@ -195,4 +242,33 @@ test('Brute deaths retry from the claimed boss-threshold checkpoint', () => {
   assert.match(source, /BFRecoveryModule\.recordDeath\(meta\.recovery,zoneId,fallback\)/);
   assert.match(source, /G\.p\.x=death\.plan\.position\.x;G\.p\.y=death\.plan\.position\.y/);
   assert.match(source, /captureCurrentZonePersistence\(\);/);
+});
+
+
+test('Counterweight Rise boards low lifts and transfers high on both sides of a real bulkhead',async()=>{
+  const environment=vm.runInNewContext(await readFile(new URL('../public/bladefall-environment.js',import.meta.url),'utf8')+
+    ';BladefallEnvironment.createEnvironment()');
+  const west=platforms.find(o=>o.x===8860&&o.move),east=platforms.find(o=>o.x===9520&&o.move);
+  assert.ok(west&&east,'both approaches own a moving lift');
+  const bulkhead=authored.objects.find(o=>o.causewayBulkhead);
+  assert.ok(bulkhead&&bulkhead.type==='wall'&&bulkhead.y===325&&bulkhead.h===325,
+    'the timing route is required by actual collision geometry');
+  const cap=platforms.find(o=>o.x===9300&&o.y===325),westStep=platforms.find(o=>o.x===8640),
+    upperWalk=platforms.find(o=>o.x===9080),eastStep=platforms.find(o=>o.x===9740);
+  const snapshots=(lift)=>{
+    const low={...lift},high={...lift},period=lift.move.period,phase=lift.move.phase||0;
+    environment.updateMechanism(low,(Math.PI*1.5-phase)*period/(Math.PI*2),.016);
+    environment.updateMechanism(high,(Math.PI*.5-phase)*period/(Math.PI*2),.016);
+    return{low,high};
+  };
+  const w=snapshots(west),e=snapshots(east);
+  for(const [step,lift] of [[westStep,w],[eastStep,e]]){
+    assert.ok(gap(step,lift.low)<=jumpReach(lift.low.y-step.y),'a low lift can be boarded without Dash');
+    assert.ok(gap(step,lift.high)>jumpReach(lift.high.y-step.y),'waiting for a lift is a meaningful timing choice');
+  }
+  assert.ok(gap(w.high,upperWalk)<=jumpReach(upperWalk.y-w.high.y));
+  assert.ok(gap(upperWalk,cap)<=jumpReach(cap.y-upperWalk.y));
+  assert.ok(gap(e.high,cap)<=jumpReach(cap.y-e.high.y),'the east lift can return to the crown before Dash');
+  assert.ok(gap(cap,e.high)<=jumpReach(e.high.y-cap.y));
+  assert.ok(!authored.enemies.some(e=>e.causewayRole==='rise-diver'),'the lift transfer does not overlap a second aerial encounter');
 });

@@ -34,7 +34,7 @@ export function musterScenario(){
  const persisted=persistentCircuitOpen('frost-muster')&&persistentCircuitOpen('frost-summit-service')&&!G.enemies.some(e=>e._zoneEntityId===id)&&G.enemies.find(e=>e.type==='rimehulk')?.maxHp===firstHp;
  const beforeAgain=G.enemies.length;captureCurrentZonePersistence();loadStage(7);tas.stepFrames(2,{});
  const noDuplicates=G.enemies.length===beforeAgain;
- const checks={charging,struck,added:added===11,boosted,finished,once,ring,twoBlood,shots:shots===2,persisted,noDuplicates,music:cue==='frostfell-muster-clockwork'};
+ const checks={charging,struck,added:added===11,boosted,finished,once,ring,twoBlood,shots:shots===2,persisted,noDuplicates,music:cue==='frostfell-muster-garrison'};
  return {pass:Object.values(checks).every(Boolean),checks,cycle,hit,added,firstHp,cue,alive:G.enemies.filter(e=>!e.dead).length};
 }
 
@@ -67,6 +67,6 @@ export async function mineAndMusicScenario(browser,url){
   await page.waitForFunction(()=>persistentCircuitOpen('frost-muster')&&!G.frostMusterSequence,{timeout:15000});
   await page.waitForFunction(()=>document.getElementById('bgMusic').readyState>=2,{timeout:15000});
   const music=await page.evaluate(()=>{const m=document.getElementById('bgMusic');return{cue:currentLevelMusicCue().id,src:m.getAttribute('src'),paused:m.paused,ready:m.readyState};});
-  return {pass:outward.stage===7&&outward.completed===1&&back.stage===6&&back.completed===2&&music.cue==='frostfell-muster-clockwork'&&music.src.endsWith('clockwork.mp3')&&!music.paused&&errors.length===0,outward,back,music,errors};
+  return {pass:outward.stage===7&&outward.completed===1&&back.stage===6&&back.completed===2&&music.cue==='frostfell-muster-garrison'&&music.src.endsWith('engine-of-the-frozen-garrison.mp3')&&!music.paused&&errors.length===0,outward,back,music,errors};
  }finally{await page.close();}
 }

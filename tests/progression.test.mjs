@@ -1,3 +1,5 @@
+// THE GILDED VAULT IS CUT (2026-09-20, owner). The road past the King is the Deep
+// Line, and the Deep Line surfaces at the Ruined Keep's east side.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
@@ -6,7 +8,7 @@ const Progression = globalThis.BladefallProgression;
 
 test('N01 constitution is internally valid and single-player authoritative', () => {
   assert.deepEqual(Progression.validate(), {
-    ok: true, errors: [], zones: 16, connectors: 16, abilities: 12, vaultKeys: 7, foundationRuns: 16,
+    ok: true, errors: [], zones: 15, connectors: 16, abilities: 12, vaultKeys: 7, foundationRuns: 16,
   });
   assert.equal(Progression.MODE, 'single-player');
   assert.deepEqual(Progression.foundationRuns.slice(0, 11).map((run) => [run.id, run.status]), [
@@ -36,13 +38,13 @@ test('permanent progression starts nearly empty and expands in the authored orde
   assert.ok(Progression.abilities.every((ability) => ability.permanent && ability.traversalCritical));
 });
 
-test('Vault route is a seven-key post-King lock and Deep Line follows it', () => {
-  const door = Progression.connector('king-vault');
-  assert.equal(door.form, 'seven-socket-door');
+test('the Deep Line is the post-King road and it comes out under the Keep', () => {
+  const door = Progression.connector('king-deep-line');
+  assert.equal(door.form, 'rail-tunnel');
   assert.equal(door.bossClear, 'abyss-king');
-  assert.equal(door.requiredKeys, 'all');
-  assert.equal(Progression.keys.length, 7);
-  assert.equal(Progression.connectionBetween('gilded-vault', 'deep-line').form, 'rail-tunnel');
+  assert.ok(Progression.connectionBetween('abyss-king', 'deep-line'), 'the King lets out onto the line');
+  assert.equal(Progression.connectionBetween('deep-line', 'ruined-keep').form, 'rail-tunnel');
+  assert.ok(!Progression.zone('gilded-vault'), 'and the Vault is not a zone any more');
 });
 
 test('secret keys deliberately reward later-ability return visits', () => {

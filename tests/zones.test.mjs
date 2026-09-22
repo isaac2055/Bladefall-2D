@@ -1,3 +1,5 @@
+// THE GILDED VAULT IS CUT (2026-09-20, owner). The road past the King is the Deep
+// Line, and the Deep Line surfaces at the Ruined Keep's east side.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
@@ -8,7 +10,7 @@ const Zones = globalThis.BladefallZones;
 
 test('N02 catalog covers every zone and physical connector', () => {
   assert.deepEqual(Zones.validateCatalog(), {
-    ok: true, errors: [], zones: 16, seams: 16, endpoints: 32, streamCells: 269,
+    ok: true, errors: [], zones: 15, seams: 16, endpoints: 32, streamCells: 243,
   });
   assert.equal(Progression.foundationRuns.find((run) => run.id === 'N02').status, 'complete');
   assert.ok(Zones.seams.every((seam) => seam.physical && !seam.transitionPortal));
@@ -66,17 +68,12 @@ test('the late aqueduct opens from White Court and stays bidirectional', () => {
   }).allowed, true);
 });
 
-test('the seven-socket door reports boss and key requirements separately', () => {
-  const keys = Progression.keys.map((key) => key.id);
-  assert.equal(Zones.eligibility('king-vault', 'abyss-king', { vaultKeys: keys }).reason, 'boss-clear-required');
-  const oneMissing = Zones.eligibility('king-vault', 'abyss-king', {
-    clearedZones: ['abyss-king'], vaultKeys: keys.slice(1),
-  });
-  assert.equal(oneMissing.reason, 'vault-keys-required');
-  assert.deepEqual(oneMissing.missing, [keys[0]]);
-  assert.equal(Zones.eligibility('king-vault', 'abyss-king', {
-    clearedZones: ['abyss-king'], vaultKeys: keys,
-  }).allowed, true);
+test('the road past the King is the Deep Line, and it surfaces at the Keep', () => {
+  assert.equal(Zones.eligibility('king-deep-line', 'abyss-king', {}).reason, 'boss-clear-required');
+  assert.equal(Zones.eligibility('king-deep-line', 'abyss-king', { clearedZones: ['abyss-king'] }).allowed, true);
+  const back = Zones.seam('deep-line-keep');
+  assert.ok(back, 'the line has a far end');
+  assert.ok(back.endpoints.some((e) => e.zoneId === 'ruined-keep'), 'and it is the Ruined Keep');
 });
 
 test('connector forms produce varied physical traversal verbs', () => {
@@ -90,4 +87,25 @@ test('zone validation rejects arrival geometry outside its local shell', () => {
   const report = Zones.validateZone(invalid);
   assert.equal(report.ok, false);
   assert.ok(report.errors.some((error) => error.startsWith('trigger-out-of-bounds')));
+});
+
+test('a seam you have already crossed is a road you have won', () => {
+  /* Owner: "even though I have all three ship parts, when I go back through the deep
+     line, it says 'the threshold does not know this road is won' when trying to return
+     to abyss king level from ruined keep."
+       `king-deep-line` is gated on clearing 'abyss-king', and the only writer of that
+     fact is recordWorldClear(), which refuses whenever G.worldProgressEligible is false
+     — Level Select, NG+, a test run — and which also refuses a world node never marked
+     `visited`. So the flag can be missing from the save of a player who plainly did the
+     killing. openedConnectors is written by the crossing itself and cannot drift. */
+  const base = { capabilities: [], clearedZones: [], openedConnectors: [], vaultKeys: [] };
+  const cold = Zones.planTransition('king-deep-line', 'deep-line', base);
+  assert.equal(cold.ok, false, 'with neither proof the Throne stays shut');
+  assert.equal(cold.reason, 'boss-clear-required');
+  const byClear = Zones.planTransition('king-deep-line', 'deep-line',
+    { ...base, clearedZones: ['abyss-king'] });
+  assert.equal(byClear.ok, true, 'a recorded world clear still opens it');
+  const byCrossing = Zones.planTransition('king-deep-line', 'deep-line',
+    { ...base, openedConnectors: ['king-deep-line'] });
+  assert.equal(byCrossing.ok, true, 'and so does having ridden it once');
 });

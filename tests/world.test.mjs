@@ -1,3 +1,5 @@
+// THE GILDED VAULT IS CUT (2026-09-20, owner). The road past the King is the Deep
+// Line, and the Deep Line surfaces at the Ruined Keep's east side.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
@@ -6,10 +8,11 @@ const World = globalThis.BladefallWorld;
 
 test('world graph covers every stage and preserves the mandatory late gate', () => {
   assert.deepEqual(World.validateGraph(), {
-    ok: true, errors: [], nodes: 16, routes: 16, endingRoutes: 2,
+    ok: true, errors: [], nodes: 15, routes: 16, endingRoutes: 2,
   });
-  assert.equal(new Set(World.nodes.map((node) => node.stageIndex)).size, 16);
-  assert.equal(World.stageId(14), 'gilded-vault');
+  assert.equal(new Set(World.nodes.map((node) => node.stageIndex)).size, 15);
+  assert.equal(World.stageId(14), null, 'stage 14 is the cut slot and is not a place');
+  assert.equal(World.stageId(15), 'deep-line');
   assert.equal(World.stageId(15), 'deep-line');
 });
 
@@ -61,13 +64,14 @@ test('the truth route continues beyond the King into the Vault and Deep Line', (
   });
   assert.deepEqual(World.outgoing(state), []);
   state = World.clear(state).progress;
-  assert.deepEqual(World.outgoing(state).map((route) => route.to), ['gilded-vault']);
-  state = World.enter(state, 'gilded-vault').progress;
+  assert.deepEqual(World.outgoing(state).map((route) => route.to), ['deep-line']);
   state = World.clear(state).progress;
   state = World.enter(state, 'deep-line').progress;
   state = World.clear(state).progress;
   assert.equal(World.ending(state), 'wake-armed');
-  assert.deepEqual(World.outgoing(state).map((route) => route.to), []);
+  // The line does not dead-end any more: it surfaces at the Ruined Keep, so the last
+  // place on the truth route leads back into the world the knight started in.
+  assert.deepEqual(World.outgoing(state).map((route) => route.to), ['ruined-keep']);
 });
 
 test('map projection distinguishes explored, frontier, and hidden places', () => {

@@ -54,8 +54,12 @@ test('Levels 1–3 dialogue has a separate reset-proof editor surface',async()=>
   assert.match(source,/window\.open\('\.\/dialogue-editor\.html'/);
 });
 
-test('first three levels use deliberate bagging, silent locked inputs, and visible armor slots',async()=>{
+test('forest acquisitions bypass the bag while legacy pickup controls, silent locks, and armor slots remain',async()=>{
   const source=await readFile(new URL('../public/index.html',import.meta.url),'utf8');
+  const first=source.slice(source.indexOf('function acquireAuthoredFirstWeapon('),source.indexOf('function enforceWeaponPickupAccess('));
+  assert.doesNotMatch(first,/BFInventoryModule\.collect|meta\.inventory/);
+  assert.match(first,/equipProgressionWeapon\(pk\.weapon,source\)/);
+  assert.match(source,/if\(best\.autoEquip&&best\.armor\)return acquireAuthoredMantle\(best\)/);
   assert.match(source,/pickup:'KeyR'/);
   assert.match(source,/if\(keyPressedFor\('pickup'\)\)collectNearbyItem\(\)/);
   assert.match(source,/keyLabel\(kbCode\('pickup'\)\)\+' · TAKE'/);

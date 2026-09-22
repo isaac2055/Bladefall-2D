@@ -18,13 +18,15 @@
     { name: 'The Warden', len: 8100, theme: 'dungeon', sky: '#2a1c2c', ground: '#3a2440', grunts: 1, flyers: 1, type: 'miniboss', boss: 'warden' },
     { name: 'Frostfell', len: 15100, theme: 'frost', sky: '#15202b', ground: '#243240', grunts: 3, flyers: 1, mix: { frostling: 3 }, type: 'normal' },
     { name: 'Frost Sorcerer', len: 16000, theme: 'frost', sky: '#10202c', ground: '#1e3340', grunts: 1, flyers: 1, mix: { frostling: 1 }, type: 'miniboss', boss: 'sorcerer' },
-    { name: 'Emberdeep', len: 8850, theme: 'volcano', sky: '#2a1410', ground: '#3a1c14', grunts: 3, flyers: 1, mix: { emberling: 3 }, type: 'normal' },
-    { name: 'Ember Colossus', len: 8550, theme: 'volcano', sky: '#2c130c', ground: '#3d1a10', grunts: 1, flyers: 1, mix: { emberling: 1 }, type: 'miniboss', boss: 'colossus' },
-    { name: 'The Inversion', len: 5200, theme: 'void', sky: '#140b22', ground: '#241431', grunts: 2, flyers: 1, type: 'normal' },
-    { name: 'The Void Tyrant', len: 8550, theme: 'apex', sky: '#0c0716', ground: '#1c1029', grunts: 1, flyers: 1, type: 'miniboss', boss: 'tyrant' },
-    { name: 'The Abyss King', len: 9600, theme: 'void', sky: '#0a0510', ground: '#180c24', grunts: 0, flyers: 0, type: 'boss', boss: 'king' },
-    { name: 'The Gilded Vault', len: 9700, theme: 'apex', sky: '#141020', ground: '#242030', grunts: 0, flyers: 0, type: 'normal' },
-    { name: 'The Deep Line', len: 6600, theme: 'badlands', sky: '#170f0c', ground: '#241610', grunts: 0, flyers: 0, type: 'normal', secret: true },
+    { name: 'Emberdeep', len: 16400, theme: 'volcano', sky: '#2a1410', ground: '#3a1c14', grunts: 3, flyers: 1, mix: { emberling: 3 }, type: 'normal' },
+    { name: 'Ember Colossus', len: 16600, theme: 'volcano', sky: '#2c130c', ground: '#3d1a10', grunts: 1, flyers: 1, mix: { emberling: 1 }, type: 'miniboss', boss: 'colossus' },
+    { name: 'The Inversion', len: 16100, theme: 'void', sky: '#140b22', ground: '#241431', grunts: 2, flyers: 1, type: 'normal' },
+    { name: 'The Void Tyrant', len: 17000, theme: 'apex', sky: '#0c0716', ground: '#1c1029', grunts: 1, flyers: 1, type: 'miniboss', boss: 'tyrant' },
+    { name: 'The Abyss King', len: 18600, theme: 'void', sky: '#0a0510', ground: '#180c24', grunts: 0, flyers: 0, type: 'boss', boss: 'king' },
+    // CUT 2026-09-20. The slot stays so every stageIndex after it keeps its number;
+    // nothing routes here, it has no world node, no recollection and no rest site.
+    { name: '(cut)', len: 9700, theme: 'apex', sky: '#141020', ground: '#242030', grunts: 0, flyers: 0, type: 'normal', cut: true },
+    { name: 'The Deep Line', len: 13950, theme: 'badlands', sky: '#170f0c', ground: '#241610', grunts: 0, flyers: 0, type: 'normal', secret: true },
   ];
 
   const details = [
@@ -198,22 +200,22 @@
     },
     {
       id: 'emberdeep',
-      source: 'procedural',
+      source: 'custom',
       portalVerb: 'traveler-relay',
       systems: ['traveler-relay', 'lava', 'timed-platforming', 'portals'],
       signature: 'Pass a traveler through a selective barrier so their held relay materializes the only route across a live furnace.',
-      acts: ['ember road', 'relay furnace', 'held bridge', 'deep exit'],
+      acts: ['cooling road', 'pour schedule', 'the draw', 'held bridge', 'pour floor', 'deep stair'],
       composition: { recipe: 'none', at: 0.70 },
       cadence: { adds: 0, foes: [], accents: [] },
     },
     {
       id: 'ember-colossus',
-      source: 'procedural',
+      source: 'custom',
       systems: ['projectile-cooling', 'water-circuit', 'portal-capture', 'forged-ammunition'],
       signature: 'Capture a molten shot, force it through the coolant channel, and return the forged slug.',
-      acts: ['forge route', 'coolant lesson', 'wet-forge arena'],
+      acts: ['receiving floor', 'casting line', 'the anvil', 'mould hall', 'casting pit', 'the fissure'],
       composition: { recipe: 'none', at: 0.49 },
-      cadence: { adds: 3, foes: ['emberling', 'rifthound', 'stormmote'], accents: [] },
+      cadence: { adds: 0, foes: [], accents: [] },
     },
     {
       id: 'inversion',
@@ -221,34 +223,53 @@
       portalVerb: 'gravity',
       systems: ['gravity-flip', 'alternating-polarity', 'ceiling-route', 'portal-crate'],
       signature: 'Alternate between floor and ceiling under pressure, then apply both orientations to a two-mouth drop-lock.',
-      acts: ['flip lesson', 'polarity gauntlet', 'drop-lock', 'inverted coda'],
+      // Six authored rooms, played right-to-left and downward as a diagonal of
+      // terraces. The procedural coda is gone: a region about which surface you owe
+      // cannot end in a generated hazard stretch laid on one flat floor.
+      acts: ['the fall in', 'the unreachable line', 'the reversal', 'polarity gauntlet', 'the drop-lock', 'the void fissure'],
       composition: { recipe: 'none', at: 0.76 },
-      customExtension: 2600,
+      customExtension: 0,
     },
     {
       id: 'void-tyrant',
-      source: 'procedural',
+      source: 'custom',
       systems: ['two-mouth-placement', 'height-phases', 'paradox-loop', 'void-barrage'],
       signature: 'Rebuild the opposed pair at leg, torso, and head height while each successful phase accelerates the barrage.',
-      acts: ['apex route', 'paradox threshold', 'three-band arena'],
+      // Six authored rooms walked EAST TO WEST, mirroring the charter, because the
+      // map puts the Inversion above this region's east gate and the Drowned Throne
+      // beyond its west one. Every room rehearses the arena before the arena.
+      acts: ['fissure mouth', 'rising ledgers', 'opposed faces', 'the spent line', 'paradox vigil', 'three-band arena'],
       composition: { recipe: 'none', at: 0.34 },
-      cadence: { adds: 3, foes: ['shadeling', 'stormmote', 'rifthound'], accents: [] },
+      cadence: { adds: 0, foes: [], accents: [] },
     },
     {
       id: 'abyss-king',
-      source: 'procedural',
+      source: 'custom',
       systems: ['portal-hijack', 'echo-setup', 'crown-phases', 'spatial-offset'],
       signature: 'Construct an attack route the boss can steal, then survive the consequences of that geometry.',
-      acts: ['void procession', 'crown threshold', 'royal echo arena'],
+      // Five authored rooms walked WEST TO EAST, and a TWO-boss region: the Void
+      // Tyrant did not die in the Citadel and holds the middle of it.
+      //   THIS BLUEPRINT WAS PROCEDURAL UNTIL 7.141.0 AND ITS LEFTOVERS WERE LIVE.
+      // `source` drives the authoring manifest's ownership tags, `acts` files every
+      // object into a room, and `cadence.adds` INJECTS ENEMIES — the old value of 3
+      // was dropping a shadeling at 5900 (inside the Right Hand's arena), a stormmote
+      // at 8840 and a sporecaster at 1460 into an authored region. Authoring a stage
+      // is not finished until its blueprint stops describing the generated one.
+      acts: ['the drowned stair', 'the two marks', 'the right hand', 'the long drowning',
+        'the divided stair', 'the last breath', 'the throne'],
       composition: { recipe: 'none', at: 0.37 },
-      cadence: { adds: 3, foes: ['shadeling', 'stormmote', 'sporecaster'], accents: [] },
+      cadence: { adds: 0, foes: [], accents: [] },
     },
     {
-      id: 'gilded-vault',
+      // CUT 2026-09-20. The blueprint pairs one-to-one with the stage table by index,
+      // so the slot must exist for every later stageIndex to keep its number. It has
+      // no world node, no connector, no recollection and no rest site: nothing routes
+      // here and nothing can.
+      id: 'cut-slot-14',
       source: 'bonus',
-      systems: ['furnace-cycles', 'needle-platforms', 'wall-jump', 'two-mouth-arc', 'moving-platforms'],
-      signature: 'A combat-free precision exam where portal exit height is one platforming decision among many.',
-      acts: ['furnace clock', 'needle walk', 'golden shaft', 'furnace fold', 'moving crucible', 'last measure'],
+      systems: ['cut', 'cut', 'cut', 'cut'],
+      signature: 'Cut region. The road past the King is the Deep Line.',
+      acts: ['cut', 'cut', 'cut', 'cut'],
       composition: { recipe: 'none', at: 0.5 },
     },
     {

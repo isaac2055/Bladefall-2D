@@ -10,7 +10,8 @@ test('precision profile preserves tuned acceleration, braking, turning, and ice 
     current: 0, target: 200, input: 1, grounded: true, dt,
   });
   assert.equal(accelerating.response, 'ground-accel');
-  assert.equal(accelerating.velocity, 60);
+  // v4 feel: one frame of ground acceleration is target * groundAccel / 60.
+  assert.ok(Math.abs(accelerating.velocity - 200 * 22 / 60) < 1e-9);
 
   const turning = Platformer.horizontalVelocity({
     current: 120, target: -200, input: -1, grounded: true, dt,

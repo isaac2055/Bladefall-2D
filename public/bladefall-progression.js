@@ -33,10 +33,18 @@
     ['emberdeep', 9, 'Emberdeep', 3, 3, 'settlement', 18000, 40, 9],
     ['ember-colossus', 10, 'The Foundry', 4, 3, 'boss', 16000, 35, 8],
     ['inversion', 11, 'The Inversion', 4, 4, 'threshold', 19000, 42, 10],
-    ['void-tyrant', 12, 'Paradox Citadel', 5, 4, 'boss', 17000, 38, 9],
-    ['abyss-king', 13, 'The Drowned Throne', 6, 4, 'final-boss', 18000, 42, 10],
-    ['gilded-vault', 14, 'The Gilded Vault', 7, 4, 'optional-mastery', 20000, 45, 11],
-    ['deep-line', 15, 'The Deep Line', 8, 4, 'truth-route', 21000, 48, 12],
+    // The last third is a RETURN JOURNEY under the first third: from the Inversion
+    // the road runs down-left and then west along the bottom row, ending beneath
+    // the Outskirts. The grid runs the way the map is drawn, not the way the
+    // stage numbers count.
+    ['void-tyrant', 12, 'Paradox Citadel', 3, 5, 'boss', 17000, 38, 9],
+    ['abyss-king', 13, 'The Drowned Throne', 2, 7, 'final-boss', 18600, 42, 10],
+    // THE GILDED VAULT IS CUT (2026-09-20, owner). It was an optional-mastery region
+    // hanging off the final boss and gating the only truth ending behind seven keys;
+    // the road now runs King -> Deep Line -> Ruined Keep and ends where the knight
+    // actually lies. Its stage slot survives in the campaign table only so that every
+    // stageIndex after it keeps its number.
+    ['deep-line', 15, 'The Deep Line', 0, 6, 'truth-route', 13950, 48, 12],
   ];
 
   const zones = zoneRecords.map(([id, stageIndex, name, column, row, role, targetLength, firstVisitMinutes, practicedMinutes]) => ({
@@ -88,10 +96,11 @@
     connector('colossus-inversion', 'ember-colossus', 'inversion', 'broken-gun-deck', ['downward-strike']),
     connector('inversion-tyrant', 'inversion', 'void-tyrant', 'void-fissure', ['gravity-flip']),
     connector('tyrant-king', 'void-tyrant', 'abyss-king', 'throne-gate', [], { bossClear: 'void-tyrant' }),
-    connector('king-vault', 'abyss-king', 'gilded-vault', 'seven-socket-door', [], {
-      bossClear: 'abyss-king', requiredKeys: 'all',
-    }),
-    connector('vault-deep-line', 'gilded-vault', 'deep-line', 'rail-tunnel', [], { bossClear: 'gilded-vault' }),
+    connector('king-deep-line', 'abyss-king', 'deep-line', 'rail-tunnel', [], { bossClear: 'abyss-king' }),
+    // AND THE LINE COMES OUT UNDER THE KEEP. The truth route ends beneath the regions
+    // it started in: the Deep Line's far end is the Ruined Keep's east side, which
+    // closes the world into a loop instead of a dead end.
+    connector('deep-line-keep', 'deep-line', 'ruined-keep', 'rail-tunnel', []),
   ];
 
   const keys = [
@@ -119,8 +128,8 @@
     'every-required-return-route-remains-recoverable',
     'secrets-telegraph-their-later-capability-before-they-become-reachable',
     'echoes-tools-charms-and-equipment-may-expand-solutions-but-never-gate-the-critical-path',
-    'gilded-vault-requires-the-abyss-king-clear-and-all-seven-vault-keys',
-    'deep-line-follows-the-gilded-vault-and-is-the-only-truth-ending-route',
+    'the-deep-line-follows-the-abyss-king-and-is-the-only-truth-ending-route',
+    'the-deep-line-surfaces-at-the-ruined-keep-so-the-world-closes-into-a-loop',
     'authored-geometry-must-pass-visual-playability-and-return-path-review',
   ];
 
@@ -173,7 +182,9 @@
     const errors = [];
     const unique = (values) => new Set(values).size === values.length;
     if (MODE !== 'single-player') errors.push('foundation mode must be single-player');
-    if (zones.length !== 16 || !unique(zones.map((zone) => zone.id)) || !unique(zones.map((zone) => zone.stageIndex))) errors.push('zones must uniquely cover all 16 stages');
+    // FIFTEEN since the Gilded Vault was cut; the campaign keeps its stage slot inert
+    // so that no stageIndex after it shifts, but it is not a zone any more.
+    if (zones.length !== 15 || !unique(zones.map((zone) => zone.id)) || !unique(zones.map((zone) => zone.stageIndex))) errors.push('zones must uniquely cover all 15 reachable stages');
     if (abilities.length !== 12 || !unique(abilities.map((ability) => ability.id)) || !unique(abilities.map((ability) => ability.order))) errors.push('abilities must have a unique 12-step progression');
     if (keys.length !== 7 || !unique(keys.map((key) => key.id))) errors.push('the Vault requires seven unique keys');
     if (foundationRuns.length !== 16 || foundationRuns.some((run) => run.status !== 'complete')) errors.push('foundation ledger must have N01 through N16 complete');
@@ -207,9 +218,10 @@
       if (!route) errors.push(`intended itinerary lacks a connector from ${previous} to ${zoneId}`);
       else for (const requirement of route.requirements) if (!acquired.has(requirement)) errors.push(`itinerary reaches ${route.id} before ${requirement}`);
     }
-    const vaultRoute = connectorById.get('king-vault');
-    if (vaultRoute?.bossClear !== 'abyss-king' || vaultRoute?.requiredKeys !== 'all') errors.push('Vault door must require the final boss and every key');
-    if (!connectionBetween('gilded-vault', 'deep-line')) errors.push('Deep Line must physically follow the Vault');
+    const lineRoute = connectorById.get('king-deep-line');
+    if (lineRoute?.bossClear !== 'abyss-king') errors.push('the Deep Line must require the final boss');
+    if (!connectionBetween('abyss-king', 'deep-line')) errors.push('Deep Line must physically follow the King');
+    if (!connectionBetween('deep-line', 'ruined-keep')) errors.push('the Deep Line must surface at the Ruined Keep');
     for (const zone of zones) if (zone.budget.targetLength < 12000 || zone.budget.firstVisitMinutes < 25) errors.push(`zone ${zone.id} is below the authored scale floor`);
 
     return Object.freeze({

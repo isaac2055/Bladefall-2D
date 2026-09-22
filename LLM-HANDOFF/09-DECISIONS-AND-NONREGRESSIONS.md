@@ -112,10 +112,13 @@ repeated owner feedback with the current accepted implementation direction.
 
 - Exploration music remains consistent across a non-boss level and resumes after
   pause/checkpoints without changing tracks.
-- Use the supplied light/ethereal Cozy Tunes tracks for exploration and selected
-  interiors, darker exploration sparingly, and dedicated combat music for bosses.
-- `BGM 13 Tides of the Serpent` is reserved for the second-to-last boss; the old
-  original full-game track is reserved for the final boss.
+- Dedicated combat music for bosses; exploration cues stay light enough to loop
+  under 25–45 minutes of play.
+- *Superseded 2026-09-19 by the owner:* the Cozy Tunes exploration tracks, the
+  `Tides of the Serpent` reservation for the second-to-last boss and `music.mp3`
+  for the final boss were all replaced by the owner-generated Bladefall score
+  (The Void Tyrant: "Iron Oath of the Night Attack"; The Abyss King: "A Crown of
+  Ashes"). See `public/audio/ATTRIBUTION.md`.
 - Avoid repetitive chainmail landing sounds and other high-frequency effects that
   fatigue the player.
 

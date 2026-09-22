@@ -12,6 +12,8 @@
     frostpike: row('charger', 'ground', ['frost', 'settlement'], 1.6, 'iron', 'ice'),
     frostsinger: row('artillery', 'ground', ['frost', 'settlement'], 1.8, 'prism', 'ice'),
     rimehulk: row('guardian', 'ground', ['frost', 'settlement'], 2.4, 'iron', 'ice'),
+    slagwright: row('guardian', 'ground', ['volcano', 'furnace'], 2.2, 'iron', 'fire'),
+    cinderling: row('skirmisher', 'ground', ['volcano', 'furnace'], 1.3, 'prism', 'fire'),
     shieldbearer: row('guardian', 'ground', ['road', 'ruin', 'settlement'], 1.9, 'iron'),
     linesman: row('artillery', 'ground', ['road', 'ruin', 'high-perch'], 1.6, 'iron'),
     gaoler: row('controller', 'ground', ['ruin', 'gaol'], 2.3, 'iron'),

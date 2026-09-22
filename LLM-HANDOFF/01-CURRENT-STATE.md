@@ -55,13 +55,13 @@ in order; moving pillars and rotors continue. Crash three leaves the boss fixed
 in place at one health, casting a telegraphed AOE at the player's current position
 at regular intervals. One final weapon hit kills him. Sentence AOEs cost one
 Blood without checkpoint teleport; Test Mode remains immune. Feedback is visual,
-not a `1/3` counter. Exploration is Whispering Woods; combat is Element.
+not a `1/3` counter. Exploration is Iron Gavel Descent; combat is Sentence of the Shield Warden (score replaced 2026-09-19).
 
 Frostfell's mine uses **Up at both ends**, arriving at `(330, 0)`. Held Left cannot
 bounce between levels. The service route becomes **refuge → court → summit →
 refuge** after the summit passage is used, requiring fresh Up for every move.
 Muster activation is a six-second bell/camera sequence; the strike changes mood
-and music from Drifting Memories to ClockWork. Frostfell retains its eleven authored reinforcements. All ordinary campaign
+and music from Hearthfire in the Frost to Engine of the Frozen Garrison. Frostfell retains its eleven authored reinforcements. All ordinary campaign
 enemies now receive one ×1.55 health / ×1.25 raw-damage boost and at least 480
 notice. First recall loads re-garrison ordinary enemies once; bosses/unique
 encounters remain cleared (`12-RECALL-WORK-ORDER.md`). Larger hulks

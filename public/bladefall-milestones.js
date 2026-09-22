@@ -21,7 +21,7 @@
     { type:'archer', zone:'hollow-marksman', required:['jump','weapon','dash','portal-single'], reward:'portal-pair', solution:'bank-one-marked-arrow-through-linked-mouth', phases:3, retry:'deadeye-threshold' },
     { type:'warden', zone:'warden', required:['jump','weapon','portal-pair','wall-jump'], solution:'portal-flank-the-guard', phases:2, retry:'gaol-checkpoint' },
     { type:'sorcerer', zone:'frost-sorcerer', required:['jump','weapon','portal-pair','double-jump'], solution:'route-spells-through-siphons', phases:3, retry:'court-checkpoint' },
-    { type:'colossus', zone:'ember-colossus', required:['jump','weapon','portal-pair','attunement','companion-command'], solution:'return-ember-through-forge-coolant', phases:3, retry:'foundry-checkpoint' },
+    { type:'colossus', zone:'ember-colossus', required:['jump','weapon','portal-pair','double-jump','downward-strike','companion-command'], solution:'make-the-ground-and-refuse-the-pour', phases:4, retry:'foundry-checkpoint' },
     { type:'tyrant', zone:'void-tyrant', required:['jump','weapon','portal-pair','gravity-flip'], solution:'align-low-mid-high-paradox-bands', phases:3, retry:'citadel-checkpoint' },
     { type:'king', zone:'abyss-king', required:['jump','weapon','portal-pair','counter','gravity-flip'], solution:'survive-hijack-and-shatter-crowns', phases:4, retry:'throne-checkpoint' },
   ]);

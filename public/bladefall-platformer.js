@@ -3,12 +3,13 @@
 
   const MOTION_PROFILES = Object.freeze({
     precision: Object.freeze({
-      groundAccel: 18,
-      groundTurn: 25,
-      groundBrake: 7,
+      // v4 feel (2026-09-16): snappier starts, stops and reversals; air momentum still carries.
+      groundAccel: 22,
+      groundTurn: 40,
+      groundBrake: 22,
       groundOverspeed: 2.5,
-      airAccel: 6,
-      airTurn: 8,
+      airAccel: 9,
+      airTurn: 14,
       airOverspeed: 1,
       iceCoast: 0.22,
       iceSteer: 0.55,

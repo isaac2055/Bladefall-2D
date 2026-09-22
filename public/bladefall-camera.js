@@ -24,12 +24,14 @@
     let x = 0;
     let y = 0;
     let lookAhead = 0;
+    let fallLook = 0;
+    let anchorBias = 1;
     let framing = 'player';
     let updates = 0;
     let last = null;
     // Private state participates in opt-in TAS branching.
-    root.BladefallHarness?.register("camera:createCameraController", () => ({ settings, x, y, lookAhead, framing, updates, last }),
-      state => ({ settings, x, y, lookAhead, framing, updates, last } = state));
+    root.BladefallHarness?.register("camera:createCameraController", () => ({ settings, x, y, lookAhead, fallLook, anchorBias, framing, updates, last }),
+      state => ({ settings, x, y, lookAhead, fallLook, anchorBias, framing, updates, last } = state));
 
     function applySettings(next) {
       settings = { ...settings, ...(next || {}) };
@@ -41,7 +43,7 @@
     function reset(nextX, nextY) {
       x = finite(nextX, 0);
       y = finite(nextY, 0);
-      lookAhead = 0;
+      lookAhead = 0; fallLook = 0; anchorBias = 1;
       framing = 'player';
       last = null;
     }
@@ -59,6 +61,7 @@
       const viewportWidth = Math.max(1, finite(state.viewportWidth, 1280));
       const levelLength = Math.max(viewportWidth, finite(state.levelLength, viewportWidth));
       const verticalThreshold = finite(state.verticalThreshold, 420);
+      const minimumY = finite(state.minimumY, 0);
       const face = finite(player.face, 1) || 1;
       const velocityLook = clamp(finite(player.vx, 0) * 0.18, -viewportWidth * 0.12, viewportWidth * 0.12);
       const facingLook = face * viewportWidth * 0.075;
@@ -79,9 +82,21 @@
         framing = partner ? 'coop-boss' : 'boss';
       }
 
-      const anchor = framing === 'player' ? viewportWidth * 0.38 : viewportWidth * 0.5;
+      // THE ANCHOR FOLLOWS TRAVEL. Fixed at .38 of the view from the left, a player
+      // walking WEST saw about 620 units ahead against 930 walking east — which is
+      // backwards in three regions that are now authored right to left. It eases,
+      // so it never snaps, and it reduces to the old value on a rightward run.
+      const lean = settings.cameraAssist && !settings.reducedMotion ? clamp(finite(player.vx, 0) / 200, -1, 1) : 0;
+      anchorBias = approach(anchorBias, lean, 2.6, dt);
+      const anchorFrac = framing === 'player' ? 0.5 - anchorBias * 0.12 : 0.5;
+      const anchor = viewportWidth * anchorFrac;
       const desiredX = clamp(focusX + lookAhead - anchor, 0, Math.max(0, levelLength - viewportWidth));
-      const desiredY = Math.max(0, highY - verticalThreshold);
+      // FALL LOOK-AHEAD. The camera only ever led horizontally, which is fine on a
+      // road and useless in a shaft: a long drop spent most of its time looking at
+      // where you had been. Smoothed, capped, and off under reduced motion.
+      const targetFall = settings.reducedMotion ? 0 : clamp(finite(player.vy, 0) * 0.17, -260, 260);
+      fallLook = approach(fallLook, targetFall, 4.5, dt);
+      const desiredY = Math.max(minimumY, highY - verticalThreshold + fallLook);
       const response = settings.reducedMotion ? 12 : framing.includes('boss') ? 5.6 : 7.2;
       x = approach(x, desiredX, response, dt);
       y = approach(y, desiredY, settings.reducedMotion ? 12 : 7.5, dt);

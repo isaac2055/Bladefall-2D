@@ -24,7 +24,6 @@
     ['inversion', 11, 'The Inversion', 11, 11, 'threshold', true],
     ['void-tyrant', 12, 'Paradox Citadel', 12, 12, 'boss', true],
     ['abyss-king', 13, 'The Drowned Throne', 13, 13, 'final-boss', false],
-    ['gilded-vault', 14, 'The Gilded Vault', 14, 14, 'optional', true],
     ['deep-line', 15, 'The Deep Line', 15, 15, 'truth-route', true],
   ];
 
@@ -53,8 +52,8 @@
     ['colossus-inversion', 'ember-colossus', 'inversion', 'spine', ['downward-strike']],
     ['inversion-tyrant', 'inversion', 'void-tyrant', 'spine', ['gravity-flip']],
     ['tyrant-king', 'void-tyrant', 'abyss-king', 'main-ending', []],
-    ['king-vault', 'abyss-king', 'gilded-vault', 'truth-branch', []],
-    ['vault-deep-line', 'gilded-vault', 'deep-line', 'truth-branch', []],
+    ['king-deep-line', 'abyss-king', 'deep-line', 'truth-branch', []],
+    ['deep-line-keep', 'deep-line', 'ruined-keep', 'truth-branch', []],
   ];
 
   const routes = routeRecords.map(([id, from, to, kind, capabilities]) => ({
@@ -136,12 +135,11 @@
     const cleared = nodes.filter((node) => node.stageIndex < furthest && node.stageIndex <= 13).map((node) => node.id);
     let current = nodeByStage.get(furthest).id;
     if (source.vaultCleared) {
-      for (const id of ['void-tyrant', 'gilded-vault']) if (!visited.includes(id)) visited.push(id);
-      if (!cleared.includes('gilded-vault')) cleared.push('gilded-vault');
+      for (const id of ['void-tyrant']) if (!visited.includes(id)) visited.push(id);
     }
     if (source.secretCleared) {
-      for (const id of ['void-tyrant', 'gilded-vault', 'deep-line']) if (!visited.includes(id)) visited.push(id);
-      for (const id of ['gilded-vault', 'deep-line']) if (!cleared.includes(id)) cleared.push(id);
+      for (const id of ['void-tyrant', 'deep-line']) if (!visited.includes(id)) visited.push(id);
+      for (const id of ['deep-line']) if (!cleared.includes(id)) cleared.push(id);
       current = 'deep-line';
     }
     return createProgress({
@@ -265,7 +263,6 @@
       return Object.freeze({ ok: false, reason: 'node-unvisited', progress: state });
     }
     if (!state.cleared.includes(id)) state.cleared.push(id);
-    if (id === 'gilded-vault') state.flags.vaultCleared = true;
     if (id === TRUTH_NODE) {
       state.flags.vaultCleared = true;
       state.flags.deepLineCleared = true;
@@ -284,7 +281,9 @@
 
   function validateGraph() {
     const errors = [];
-    if (nodes.length !== 16) errors.push('world graph must cover all 16 stages');
+    // FIFTEEN. The Gilded Vault was cut on 2026-09-20; its campaign stage slot is kept
+    // inert so no stageIndex after it moves, but it is not a place in the world.
+    if (nodes.length !== 15) errors.push('world graph must cover all 15 reachable stages');
     if (nodeById.size !== nodes.length || nodeByStage.size !== nodes.length) errors.push('world nodes must have unique ids and stage indices');
     const routeIds = new Set();
     for (const route of routes) {
@@ -292,14 +291,14 @@
       routeIds.add(route.id);
       if (!nodeById.has(route.from) || !nodeById.has(route.to)) errors.push(`route ${route.id} has an unknown endpoint`);
     }
-    if (!routes.some((route) => route.from === FINAL_NODE && route.to === 'gilded-vault')) errors.push('truth branch must begin after the Abyss King');
-    if (!routes.some((route) => route.from === 'gilded-vault' && route.to === TRUTH_NODE)) errors.push('Deep Line must follow the Gilded Vault');
+    if (!routes.some((route) => route.from === FINAL_NODE && route.to === TRUTH_NODE)) errors.push('truth branch must begin after the Abyss King');
+    if (!routes.some((route) => route.from === TRUTH_NODE && route.to === 'ruined-keep')) errors.push('the Deep Line must surface at the Ruined Keep');
     const beforeKing = new Set([START_NODE]);
     for (let pass = 0; pass < nodes.length; pass++) for (const route of routes) {
       if (beforeKing.has(route.from) && route.from !== FINAL_NODE) beforeKing.add(route.to);
     }
     if (!beforeKing.has(FINAL_NODE) || !beforeKing.has('void-tyrant')) errors.push('main descent does not reach the final command gate');
-    if (beforeKing.has('gilded-vault') || beforeKing.has(TRUTH_NODE)) errors.push('truth route can be entered before the Abyss King');
+    if (beforeKing.has(TRUTH_NODE)) errors.push('truth route can be entered before the Abyss King');
     return Object.freeze({ ok: errors.length === 0, errors: Object.freeze(errors), nodes: nodes.length, routes: routes.length, endingRoutes: 2 });
   }
 

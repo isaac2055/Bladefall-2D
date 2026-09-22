@@ -47,7 +47,6 @@
     ['inversion', 'seizure-and-time-loss', 4],
     ['void-tyrant', 'lucid-recognition', 4],
     ['abyss-king', 'unconsciousness', 5],
-    ['gilded-vault', 'inventory-of-effects', 3],
     ['deep-line', 'threshold-of-waking', 5],
   ].map(([stage, symptom, flowerDensity]) => ({ stage, symptom, flowerDensity }));
 
@@ -72,7 +71,7 @@
     { id: 'brute-stretcher', stage: 'brute', role: 'stretcher-keeper', name: 'Sable', occupation: 'Stretcher-Keeper' },
     { id: 'updrafts-kitemender', stage: 'updrafts', role: 'kite-mender', name: 'Talla', occupation: 'Kite-Mender' },
     { id: 'updrafts-rainkeeper', stage: 'updrafts', role: 'rain-keeper', name: 'Edrin', occupation: 'Rain-Catcher Keeper' },
-    { id: 'marksman-fletcher', stage: 'hollow-marksman', role: 'watch-fletcher', name: 'Daro', occupation: 'Surviving Fletcher' },
+    { id: 'marksman-fletcher', stage: 'hollow-marksman', role: 'watch-fletcher', name: 'Mara', occupation: 'Road Surveyor' },
     { id: 'marksman-veilmender', stage: 'hollow-marksman', role: 'veil-mender', name: 'Senn', occupation: 'Veil-Mender' },
   ];
 
@@ -258,7 +257,7 @@
     if (residents.filter((item) => item.stage === 'outskirts').length !== 2) errors.push('Outskirts requires Vey and Olan');
     if (residents.filter((item) => item.stage === 'black-woods').length !== 3) errors.push('Black Woods refuge requires three distinct residents');
     if (residents.filter((item) => item.stage === 'brute').length !== 2) errors.push('Broken Causeway requires Oren and Sable');
-    if (residents.filter((item) => item.stage === 'hollow-marksman').length !== 2) errors.push('Hollow Marksman requires Daro and Senn');
+    if (residents.filter((item) => item.stage === 'hollow-marksman').length !== 2) errors.push('Hollow Marksman requires its surveyor and veil-mender');
     return Object.freeze({ ok: errors.length === 0, errors: Object.freeze(errors), memories: memories.length, clocks: clocks.length, residents: residents.length, bosses: bossEchoes.length, facts: facts.length, endings: endings.length });
   }
 

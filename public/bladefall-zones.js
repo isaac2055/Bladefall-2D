@@ -118,11 +118,19 @@
     ['frostfell-sorcerer', 'frostfell', 'east', 'walk', 0.5, 'frost-sorcerer', 'west', 'walk', 0.5],
     ['sorcerer-emberdeep', 'frost-sorcerer', 'east', 'interact', 0.5, 'emberdeep', 'west', 'interact', 0.5],
     ['emberdeep-colossus', 'emberdeep', 'east', 'command', 0.5, 'ember-colossus', 'west', 'walk', 0.5],
-    ['colossus-inversion', 'ember-colossus', 'north', 'plunge', 0.62, 'inversion', 'south', 'emerge', 0.35],
-    ['inversion-tyrant', 'inversion', 'east', 'walk', 0.5, 'void-tyrant', 'west', 'walk', 0.5],
-    ['tyrant-king', 'void-tyrant', 'east', 'interact', 0.5, 'abyss-king', 'west', 'interact', 0.5],
-    ['king-vault', 'abyss-king', 'east', 'interact', 0.5, 'gilded-vault', 'west', 'interact', 0.5],
-    ['vault-deep-line', 'gilded-vault', 'east', 'ride', 0.5, 'deep-line', 'west', 'ride', 0.5],
+    // The Foundry leaves through its own floor. The drawn map puts the Inversion
+    // directly BENEATH the Foundry, so the fissure is a south edge at the works'
+    // east end and the Inversion is entered from its north.
+    ['colossus-inversion', 'ember-colossus', 'south', 'plunge', 0.88, 'inversion', 'north', 'emerge', 0.12],
+    // The Inversion is walked right to left, so its onward gate is its WEST edge and
+    // the Citadel is entered from the east.
+    ['inversion-tyrant', 'inversion', 'west', 'walk', 0.5, 'void-tyrant', 'east', 'walk', 0.5],
+    // The Citadel is walked right to left as well: the Throne Gate is its west edge.
+    ['tyrant-king', 'void-tyrant', 'west', 'interact', 0.5, 'abyss-king', 'west', 'interact', 0.5],
+    // The King's hall lets out onto the rail head, and the rail surfaces under the
+    // Ruined Keep's east side — the truth route ends beneath the regions it began in.
+    ['king-deep-line', 'abyss-king', 'east', 'ride', 0.5, 'deep-line', 'west', 'ride', 0.5],
+    ['deep-line-keep', 'deep-line', 'east', 'ride', 0.5, 'ruined-keep', 'east', 'ride', 0.5],
   ];
 
   const seams = seamSpecs.map(([id, zoneA, sideA, activationA, offsetA, zoneB, sideB, activationB, offsetB]) => {
@@ -219,7 +227,22 @@
     const state = normalizeState(sourceState);
     const missing = seam.gate.capabilities.filter((id) => !state.capabilities.has(id));
     if (missing.length) return Object.freeze({ allowed: false, reason: 'capability-required', missing: Object.freeze(missing) });
-    if (seam.gate.bossClear && !state.clearedZones.has(seam.gate.bossClear)) {
+    /*   A SEAM YOU HAVE ALREADY CROSSED IS A ROAD YOU HAVE WON.
+       Owner: "even though I have all three ship parts, when I go back through the deep
+       line, it says 'the threshold does not know this road is won' when trying to return
+       to abyss king level from ruined keep."
+         He had won it. `king-deep-line` is gated on clearing 'abyss-king', and the only
+       writer of that fact is recordWorldClear(), which refuses whenever
+       G.worldProgressEligible is false — Level Select, NG+, a test run — and which also
+       refuses a world node that was never marked `visited`, a state any warp or resumed
+       save can produce. So the evidence of the kill can be missing from a save belonging
+       to a player who plainly did the killing.
+         `openedConnectors` cannot lie the same way: it is written by the crossing itself.
+       You reach the Deep Line's west end only by leaving the Throne through this seam,
+       and physicalSeamSpec refuses to open that while the King still stands. Having
+       crossed it once is therefore strictly stronger proof than the flag it replaces. */
+    if (seam.gate.bossClear && !state.clearedZones.has(seam.gate.bossClear)
+        && !state.openedConnectors.has(seam.id)) {
       return Object.freeze({ allowed: false, reason: 'boss-clear-required', boss: seam.gate.bossClear });
     }
     if (seam.gate.requiredKeys === 'all') {

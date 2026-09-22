@@ -11,7 +11,7 @@
     ['frost-sorcerer', 8, 'The Cold Hand'], ['emberdeep', 9, 'The Buried Forge'],
     ['ember-colossus', 10, 'The Furnace General'], ['inversion', 11, 'The Upside-Down Road'],
     ['void-tyrant', 12, 'The Hollow Crown'], ['abyss-king', 13, 'The Last Enemy'],
-    ['gilded-vault', 14, 'The Golden Lie'], ['deep-line', 15, 'The Line Beneath'],
+    ['deep-line', 15, 'The Line Beneath'],   // the Gilded Vault was cut 2026-09-20
   ];
   const RECORDS = Object.freeze(ROWS.map(([id, stageIndex, title]) => Object.freeze({ id, stageIndex, title })));
   const BY_ID = new Map(RECORDS.map((row) => [row.id, row]));
@@ -43,7 +43,7 @@
   }
   function validate() {
     const errors = [];
-    if (RECORDS.length !== 16) errors.push('archive must mirror all sixteen campaign regions');
+    if (RECORDS.length !== 15) errors.push('archive must mirror all fifteen reachable campaign regions');
     if (new Set(RECORDS.map((row) => row.id)).size !== RECORDS.length) errors.push('recollection ids must be unique');
     if (new Set(RECORDS.map((row) => row.stageIndex)).size !== RECORDS.length) errors.push('recollection stages must be unique');
     return Object.freeze({ ok: errors.length === 0, errors: Object.freeze(errors), recollections: RECORDS.length });

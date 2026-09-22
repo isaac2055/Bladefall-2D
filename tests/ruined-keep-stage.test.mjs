@@ -67,7 +67,7 @@ test('the Folded Belfry composes two payload routes around Mason’s Grip', () =
   assert.match(stage, /keepWallJump:1.*title:'MASON’S GRIP'/s);
   assert.match(stage, /keepVaultKey:1,vaultKeyId:'keep-key'.*landmarkId:'masked-belfry'/s);
   assert.match(source, /grantMasonsGrip\(\)/);
-  assert.match(source, /grantPermanentCapability\('wall-jump','masons-grip'\)/);
+  assert.match(source, /grantPermanentCapability\('wall-jump','masons-grip',\{quiet:true\}\)/);
   assert.match(source, /if\(!hasCapability\('wall-jump'\)\|\|!circuitOpen\('belfry-bell'\)\)return false/);
   assert.match(source, /activateVaultSecretObject\(o,'wall-ascent'\)/);
   assert.match(source, /connector:'marksman-keep'.*targetStage:4.*forward:false/s);
@@ -75,8 +75,8 @@ test('the Folded Belfry composes two payload routes around Mason’s Grip', () =
 
 test('Keep Hearth and continuous supplied music are authored in place', async () => {
   assert.match(stage, /restSiteAnchor:'keep-hearth'/);
-  assert.match(source, /5:Object\.freeze\(\{id:'ruined-keep-floating-dream',src:'\.\/audio\/music\/floating-dream\.ogg'/);
-  assert.ok((await stat(new URL('../public/audio/music/floating-dream.ogg', import.meta.url))).size > 1000);
+  assert.match(source, /5:Object\.freeze\(\{id:'ruined-keep-stony-whispers',src:'\.\/audio\/music\/stony-whispers-of-the-keep\.mp3'/);
+  assert.ok((await stat(new URL('../public/audio/music/stony-whispers-of-the-keep.mp3', import.meta.url))).size > 1000);
 });
 
 test('the Keep carries concrete narrative evidence rather than instruction spam', () => {
@@ -92,7 +92,9 @@ test('the dedicated westward return converts old slick barriers into Grip surfac
   assert.match(stage,/Wl\(4270,520,520,72\).*refectoryScreen:1.*returnClingAfterGrip:1/s);
   assert.match(source,/function wallFaceSlick\(o,dir\)[\s\S]*o&&o\.returnClingAfterGrip&&hasCapability\('wall-jump'\)/);
   assert.doesNotMatch(source,/function wallFaceSlick\(o,dir\)[\s\S]{0,300}keepWestSealOpen/);
-  assert.match(source,/Marksman Road → Rain-Catcher Service Lift → Black Woods → Outskirts breach/);
+  assert.match(stage,/keepReturn:1/);
+  assert.match(stage,/keepReturnExit:1/);
+  assert.match(source,/if\(o\.keepReturn\|\|o\.keepReturnExit\)return useKeepReturn\(o\)/);
 });
 
 test('the first backtrack obstacles are solved doors, never substitute cling walls',()=>{

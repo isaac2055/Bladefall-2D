@@ -93,7 +93,8 @@ test('UI model exposes the earned set, one next destination, and locked remainde
 test('runtime wires migration, HUD, authored grants, and a campaign-only reset', async () => {
   const source = await readFile(new URL('../public/index.html', import.meta.url), 'utf8');
   assert.match(source, /BFCapabilitiesModule\.migrate\(meta\.capabilities,meta\)/);
-  assert.match(source, /function grantPermanentCapability\(id,source\)/);
+  assert.match(source, /function grantPermanentCapability\(id,source,options\)/);
+  assert.match(source, /if\(!\(options&&options\.quiet\)\)toast\(/);
   assert.match(source, /function resetCampaignForNewGame\(\)/);
   assert.match(source, /meta\.capabilities=BFCapabilitiesModule\.freshState\(\)/);
   assert.match(source, /Leaderboards, settings, achievements and earned cosmetic skins remain/);

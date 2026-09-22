@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>Bladefall — Fable Respec</title>
+<style>
+  :root{--ink:#e8e2f2;--dim:#8d86a3;--amber:#ffb454;}
+  html,body{margin:0;height:100%;background:#0a0812;color:var(--ink);font-family:ui-rounded,system-ui,-apple-system,"Segoe UI",sans-serif;overflow:hidden;}
+  #wrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;}
+  canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block;background:#0a0812;}
+  #top{position:fixed;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center;padding:calc(env(safe-area-inset-top) + 8px) 12px 6px;pointer-events:none;font-size:12px;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;}
+  #top a{pointer-events:auto;color:var(--ink);text-decoration:none;border:1px solid #3a3350;border-radius:10px;padding:6px 12px;background:rgba(10,8,18,.7);font-weight:700;letter-spacing:.02em;text-transform:none;font-size:13px;}
+  #top a:active{transform:scale(.97);}
+  #hint{position:fixed;left:0;right:0;bottom:calc(env(safe-area-inset-bottom) + 8px);text-align:center;font-size:12px;color:var(--dim);pointer-events:none;letter-spacing:.04em;}
+  #hint b{color:var(--ink);}
+  #touch{position:fixed;inset:0;display:none;pointer-events:none;}
+  #touch div{position:absolute;bottom:calc(env(safe-area-inset-bottom) + 18px);width:64px;height:64px;border-radius:50%;border:1.5px solid rgba(232,226,242,.35);background:rgba(232,226,242,.08);color:var(--ink);font-weight:800;font-size:18px;display:flex;align-items:center;justify-content:center;pointer-events:auto;user-select:none;-webkit-user-select:none;touch-action:none;}
+  #tL{left:18px}#tR{left:96px}#tJ{right:18px;border-color:var(--amber);color:var(--amber)}#tA{right:96px}#tD{right:174px;color:#9ff4ff;border-color:#9ff4ff}#tP{right:252px;color:#6be7ff;border-color:#6be7ff}
+  #tuner{position:fixed;left:12px;top:50%;transform:translateY(-50%);width:240px;max-height:90vh;overflow:auto;background:rgba(10,8,18,.92);border:1px solid #3a3350;border-radius:12px;padding:10px 12px;font-size:11px;color:var(--ink);z-index:5;}
+  #tuner h3{margin:0 0 6px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);}#tuner h3 span{float:right;color:var(--dim);font-weight:400;text-transform:none;letter-spacing:0;}
+  #tuner label{display:grid;grid-template-columns:86px 1fr 40px;align-items:center;gap:6px;margin:3px 0;}#tuner label span{color:var(--dim);}#tuner label b{text-align:right;font-weight:600;}
+  #tuner input[type=range]{width:100%;accent-color:var(--amber);margin:0;}#tuner button{margin-top:8px;width:100%;padding:6px;border-radius:8px;border:1px solid #3a3350;background:transparent;color:var(--ink);font-weight:700;cursor:pointer;}
+  @media (pointer:coarse){#touch{display:block}#hint{display:none}}
+</style>
+</head>
+<body>
+<div id="wrap"><canvas id="c" width="640" height="360"></canvas></div>
+<div id="top"><span>Fable Respec · look &amp; feel trial</span><a href="./index.html">← Title</a></div>
+<div id="hint"><b>←→</b> move · <b>Z / Space</b> jump (again in air) · <b>Shift / C</b> dash · <b>F</b> portal mouth (on slate) · hold into a wall to cling · <b>X / J</b> strike · <b>T</b> tuner · <b>R</b> restart</div>
+<div id="touch"><div id="tL">◀</div><div id="tR">▶</div><div id="tA">✕</div><div id="tD">»</div><div id="tP">◎</div><div id="tJ">▲</div></div>
+<script src="./fable-respec.js"></script>
+</body>
+</html>

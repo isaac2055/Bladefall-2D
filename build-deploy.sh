@@ -14,12 +14,17 @@ OUT="$ROOT/netlify-deploy"
 ASSETS=(
   index.html
   authoring.html
+  astra-respec.html
+  astra-respec.js
+  fable-respec.html
+  fable-respec.js
   dialogue-editor.html
   recollection-player.html
   index.html.pre-multiplayer.bak
   bladefall-core.js
   bladefall-simulation.js
   bladefall-renderer.js
+  bladefall-respec-renderer.js
   bladefall-platformer.js
   bladefall-environment.js
   bladefall-reactions.js
@@ -69,16 +74,29 @@ ASSETS=(
   littlejs.min.js
   music.mp3
   audio/ATTRIBUTION.md
-  audio/music/strange-worlds.ogg
-  audio/music/sunlight-through-leaves.ogg
-  audio/music/whispering-woods.ogg
-  audio/music/heat-of-battle.mp3
-  audio/music/wind-over-the-trees.ogg
-  audio/music/floating-dream.ogg
-  audio/music/drifting-memories.ogg
-  audio/music/abnormal-circumstances.mp3
-  audio/music/clockwork.mp3
-  audio/music/element.mp3
+  audio/music/midnight-field.mp3
+  audio/music/watchful-greenwood.mp3
+  audio/music/the-iron-causeway.mp3
+  audio/music/iron-juggernaut.mp3
+  audio/music/canyon-updrafts.mp3
+  audio/music/crosshairs-over-open-ground.mp3
+  audio/music/crosshairs-in-the-dark.mp3
+  audio/music/stony-whispers-of-the-keep.mp3
+  audio/music/iron-gavel-descent.mp3
+  audio/music/sentence-of-the-shield-warden.mp3
+  audio/music/hearthfire-in-the-frost.mp3
+  audio/music/glaciated-court-of-glass.mp3
+  audio/music/the-sorcerers-hall-of-mirrors.mp3
+  audio/music/the-eternal-furnace.mp3
+  audio/music/the-obsidian-foundry.mp3
+  audio/music/forge-of-the-molten-colossus.mp3
+  audio/music/chamber-of-inverted-gravity.mp3
+  audio/music/paradox-void-assault.mp3
+  audio/music/iron-oath-of-the-night-attack.mp3
+  audio/music/the-black-procession.mp3
+  audio/music/a-crown-of-ashes.mp3
+  audio/music/engine-of-the-frozen-garrison.mp3
+  audio/music/chasing-daylight-on-broken-rails.mp3
   audio/sfx/level1/dirt-chain-run-1.ogg
   audio/sfx/level1/dirt-chain-run-2.ogg
   audio/sfx/level1/dirt-chain-run-3.ogg

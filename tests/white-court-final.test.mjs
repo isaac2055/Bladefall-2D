@@ -4,7 +4,7 @@ import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 const html=readFileSync(new URL('../public/index.html',import.meta.url),'utf8');
 function setup(){
- const g={obstacles:[{courtGlaze:true},{courtFinalGlaze:true}],aoes:[],projectiles:[]};
+ const g={obstacles:[{courtGlaze:true},{courtFinalGlaze:true}],aoes:[],projectiles:[],particles:[],shake:0};
  const c=vm.createContext({G:g,GROUND_Y:480,meta:{soundOn:false},SFX:{},addText(){},hurtPlayer(){},bossShoot(e,p,kind){g.projectiles.push({kind});},hitEnemy(e,n){e.hp-=n;},Math});
  const start=html.indexOf('function beginCourtFinal('),end=html.indexOf('function drawCourtScenery(',start);
  vm.runInContext(html.slice(start,end),c);
@@ -42,11 +42,13 @@ test('missed returns and spent openings retry without permanently frozen footing
 test('all inline scripts parse',()=>{
  for(const [,code] of html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g))if(code.trim())new vm.Script(code);
 });
-test('rupture reserves the last fifth of health, drops the shield and keeps hazards active during recovery',()=>{
+test('rupture drains to the last fifth, then draws the court\u2019s cold back to 70% for a long finale',()=>{
  const {c,g,e,p}=setup();g.p=p;c.beginCourtFinal(e);
  assert.equal(c.courtFinalDamage(e,9999),270);
  e.hp-=c.courtFinalDamage(e,9999);c.updateCourtFinal(e,p,1/60);
- assert.equal(e.hp,180);assert.equal(e.portalGate,null);assert.equal(e.courtFinal.ruptured,true);
+ assert.equal(e.hp,630,'the rupture restores him to 70% of max');
+ assert.equal(e.portalGate,null);assert.equal(e.courtFinal.ruptured,true);
+ assert.ok(g.particles.length>0&&g.shake>0,'the refill reads as an event, not a silent heal');
  assert.equal(c.courtFinalDamage(e,9999),9999,'final phase can be killed normally');
  const attacks=new Set(),lanes=new Set();let recoveryWithHazard=false,sawIce=false,sawWarning=false;
  for(let i=0;i<600;i++){
@@ -57,10 +59,11 @@ test('rupture reserves the last fifth of health, drops the shield and keeps haza
   assert.ok(e.x>=e.spellArenaL&&e.x<=e.spellArenaR);
  }
  assert.deepEqual([...attacks].sort(),['recover','rush','windup']);assert.deepEqual([...lanes].sort((a,b)=>a-b),[14,112]);
- assert.ok(recoveryWithHazard&&sawIce&&sawWarning);assert.equal(e.hp,180,'no health refill');
+ assert.ok(recoveryWithHazard&&sawIce&&sawWarning);
+ assert.equal(e.hp,630,'the refill happens once, never topping up mid-phase');
 });
 test('saved level-select session survives JSON storage without becoming campaign progress',()=>{
- const meta={capabilities:{acquired:['campaign-only']}},g={levelSelectMode:true,stageIndex:8,
+ const meta={capabilities:{acquired:['campaign-only']}},g={levelSelectMode:true,stageIndex:8,p:{},
   sessionCapabilities:{acquired:['jump','dash','portal']},sessionQuests:{done:['preview']},sessionZoneState:{opened:['preview-door']}};
  const c=vm.createContext({G:g,meta,persist(){},snapOf(){return {};}});
  const start=html.indexOf('function savedRunSession('),end=html.indexOf('\n/* The Forge:',start);

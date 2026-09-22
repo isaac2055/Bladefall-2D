@@ -13,7 +13,7 @@ test('campaign blueprint catalog preserves all 16 progression-facing stages', ()
     'The Outskirts', 'Black Woods', 'Broken Causeway', 'The Updrafts',
     'Hollow Marksman', 'Ruined Keep', 'The Warden', 'Frostfell',
     'Frost Sorcerer', 'Emberdeep', 'Ember Colossus', 'The Inversion',
-    'The Void Tyrant', 'The Abyss King', 'The Gilded Vault', 'The Deep Line',
+    'The Void Tyrant', 'The Abyss King', '(cut)', 'The Deep Line',
   ]);
   assert.equal(stages[13].boss, 'king');
   assert.equal(stages[15].secret, true);
@@ -51,10 +51,15 @@ test('cadence, optional portal trials, and custom extension ownership moved into
   const extensions = Campaign.customExtensions();
 
   assert.equal(cadence[3], undefined);
-  assert.equal(cadence[10].adds, 3);
+  // The Foundry is authored now, so its blueprint seeds no procedural bodies —
+  // but it keeps a cadence object, which is what guarantees the boss-approach checkpoint.
+  assert.equal(cadence[10].adds, 0);
+  assert.ok(cadence[10], 'the boss-approach cadence block survives');
   assert.deepEqual(cadence[10].accents, []);
   assert.deepEqual(trials, {});
-  assert.deepEqual(extensions, { 11: 2600 });
+  // The Inversion was the last stage with a procedural coda. It is six authored
+  // rooms now, so no custom level grows a generated stretch past its own finale.
+  assert.deepEqual(extensions, {});
 });
 
 test('composition plans are optional, deterministic, and stage-specific', () => {
@@ -113,9 +118,18 @@ test('public blueprint data is immutable and catalog clones cannot mutate owners
   assert.equal(Campaign.blueprint(0).stage.name, 'The Outskirts');
 });
 
-test('campaign source modes cover custom, procedural, bonus, and secret construction', () => {
+test('every stage on the road is authored; only the cut slot and the secret are not', () => {
+  // 7.141.0: with the Drowned Throne authored, NO blueprint is procedural any more.
+  // The generator still exists and still runs for a stage without a CUSTOM_LEVELS
+  // entry — it is simply no longer the source of anything on the critical path.
   const modes = new Set(Campaign.blueprints.map((item) => item.source));
-  assert.deepEqual(modes, new Set(['custom', 'procedural', 'bonus', 'secret']));
+  assert.deepEqual(modes, new Set(['custom', 'bonus', 'secret']));
+  assert.equal(Campaign.blueprint(13).source, 'custom', 'the Throne is authored');
+  // A blueprint that still describes a generated stage injects enemies into an
+  // authored one, which is exactly how three foreign foes reached the finale.
+  for (const item of Campaign.blueprints) {
+    assert.equal(item.cadence ? item.cadence.adds : 0, 0, `${item.id} adds generated foes`);
+  }
   assert.equal(Campaign.blueprint(14).composition.recipe, 'none');
   assert.equal(Campaign.blueprint(15).composition.recipe, 'none');
 });

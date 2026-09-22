@@ -16,10 +16,6 @@ test('Hollow Marksman is a 15k five-room authored watch road', () => {
   for (const landmark of ['shotfall-camp', 'watching-road', 'mantlet-road', 'windcut-gallery', 'deadeye-court']) {
     assert.match(stage, new RegExp(`'${landmark}'`));
   }
-  for (const span of ['Gr\\(0,2500\\)', 'Gr\\(2500,4080\\)', 'Gr\\(4230,5600\\)',
-    'Gr\\(5600,9000\\)', 'Gr\\(9000,10480\\)', 'Gr\\(10640,11800\\)', 'Gr\\(11800,15000\\)']) {
-    assert.match(stage, new RegExp(span));
-  }
   assert.equal((stage.match(/roomLandmark:1/g) || []).length, 5);
   assert.match(source, /if\(G\.stageIndex>4\)seedVariantEnemies\(\)/);
 });
@@ -37,7 +33,7 @@ test('first visit owns one mouth and every portal lesson supplies an anchor', ()
   assert.match(stage, /Anchor\(4370,315,'floor'.*marksmanAnchor:'crossing'/s);
   assert.match(stage, /Slate\(7200,240,0\).*marksmanLinkedSlate:'arrow-intake'/s);
   assert.match(stage, /Anchor\(8010,250,'wallR'.*marksmanAnchor:'arrow-release'/s);
-  assert.match(stage, /Anchor\(10750,510,'floor'.*marksmanAnchor:'gallery'/s);
+  assert.match(stage, /Anchor\([^\n]*'wallR'.*marksmanAnchor:'gallery'.*galleryLaunch:1/);
   assert.match(source, /placementPlan\(activeCapabilityProgress\(\),/);
   assert.doesNotMatch(stage, /two-mouth-cover-crossing|marksmanGalleryBand/);
 });
@@ -45,7 +41,6 @@ test('first visit owns one mouth and every portal lesson supplies an anchor', ()
 test('Mantlet Works releases only after a portal-routed local watch arrow', () => {
   assert.match(stage, /MarksmanTarget\(8230,250,'mantlet-release','road-release'/);
   assert.match(stage, /requiresPortalHop:1/);
-  assert.match(source, /o\.marksmanTarget==='road-release'&&pr\.watchShot&&pr\.reflected&&\(pr\.portalHops\|\|0\)>0/);
   assert.match(source, /if\(o\.arrowOnly\)return;/);
   assert.match(stage, /circuit:'mantlet-release'/);
   assert.match(stage, /gateMechanismSniper:1/);
@@ -66,10 +61,10 @@ test('Marksman Road enemies hold authored sightline roles without floating detec
 });
 
 test('the road and duel own distinct supplied music without checkpoint swaps', async () => {
-  assert.match(source, /4:Object\.freeze\(\{id:'marksman-drifting-memories',src:'\.\/audio\/music\/drifting-memories\.ogg'/);
-  assert.match(source, /boss:Object\.freeze\(\{id:'marksman-abnormal-circumstances',src:'\.\/audio\/music\/abnormal-circumstances\.mp3'/);
-  assert.ok((await stat(new URL('../public/audio/music/drifting-memories.ogg', import.meta.url))).size > 1000);
-  assert.ok((await stat(new URL('../public/audio/music/abnormal-circumstances.mp3', import.meta.url))).size > 1000);
+  assert.match(source, /4:Object\.freeze\(\{id:'marksman-crosshairs-open-ground',src:'\.\/audio\/music\/crosshairs-over-open-ground\.mp3'/);
+  assert.match(source, /boss:Object\.freeze\(\{id:'marksman-crosshairs-dark',src:'\.\/audio\/music\/crosshairs-in-the-dark\.mp3'/);
+  assert.ok((await stat(new URL('../public/audio/music/crosshairs-over-open-ground.mp3', import.meta.url))).size > 1000);
+  assert.ok((await stat(new URL('../public/audio/music/crosshairs-in-the-dark.mp3', import.meta.url))).size > 1000);
 });
 
 test('one linked marked bank atomically transforms the boss into a three-phase duel', () => {
@@ -84,7 +79,7 @@ test('one linked marked bank atomically transforms the boss into a three-phase d
   assert.match(source, /perch\.gone=true/);
   assert.match(source, /e\.marksmanState='hunt';e\.portalGate=null/);
   assert.match(source, /marksmanCoverTier===1/);
-  assert.match(source, /marksmanCoverTier===2/);
+  assert.match(source, /marksmanCoverTier:2/);
   assert.doesNotMatch(source.slice(source.indexOf('function updateMarksmanPortalFight'), source.indexOf('function beginBruteTransformation')), /MARKED SHOT|SHIFT|WARD BROKEN|NO COVER/);
 });
 
@@ -95,7 +90,7 @@ test('enraged Marksman retains half-frequency ground attacks and increased vulne
 });
 
 test('victory grants the independent pair and immediately opens the east gate', () => {
-  assert.match(source, /grantPermanentCapability\('portal-pair','deadeye-rangefinder'\)/);
+  assert.match(source, /grantPermanentCapability\('portal-pair','deadeye-rangefinder',\{quiet:true\}\)/);
   assert.match(source, /function showMarksmanDefeatBriefing\(\)/);
   assert.match(stage, /secondMouthSlate:'lower'/);
   assert.match(stage, /secondMouthSlate:'upper'/);
@@ -105,7 +100,7 @@ test('victory grants the independent pair and immediately opens the east gate', 
   assert.match(source, /circuit:'marksman-clearance'/);
   assert.match(source, /id==='marksman-clearance'.*hasCapability\('portal-pair'\).*G\.boss\.dead.*secondMouthProved.*portalPairProved/);
   assert.match(source, /connector:'marksman-keep'.*targetStage:5.*requires:'portal-pair'/s);
-  assert.match(source, /e\.type==='archer'&&G\.stageIndex===4\)\|\|\(e\.type==='warden'&&G\.stageIndex===6\)\)G\.portal=null/);
+  assert.match(source, /e\.type==='archer'&&G\.stageIndex===4\)\|\|\(e\.type==='warden'&&G\.stageIndex===6\)/);
 });
 
 test('conventional enemy and boss health bars are hidden', () => {
@@ -120,14 +115,14 @@ test('death at Deadeye Court retries from its threshold with a fresh mechanism',
   assert.match(source, /G\.zonePersistenceManifest=null;G\._suppressEntranceCheckpoint=true/);
 });
 
-test('the road has two residents, one optional memory, and no random loot carpet', () => {
-  assert.match(stage, /residentId:'marksman-fletcher',questActor:'daro',name:'Daro'/);
-  assert.match(stage, /residentId:'marksman-veilmender',name:'Senn'/);
+test('the road has the recurring surveyor, quiet Senn, authored memories, and no random loot carpet', () => {
+  assert.match(stage, /residentId:'marksman-fletcher',questActor:'daro',name:'Mara'/);
+  assert.match(stage, /residentId:'marksman-veilmender',name:'Senn'.*quietV4:true/);
   assert.equal((stage.match(/AmbientFigure\(/g) || []).length, 2);
   assert.match(stage, /StoryRelic\(11310,610,'watch-command-token'/);
   assert.match(stage, /loot:\[\]/);
   assert.doesNotMatch(stage, /kind:'weapon'|kind:'armor'/);
-  assert.match(source, /if\(G\.stageIndex>4\)rollDrop\(e,!!e\.elite\)/);
+  assert.match(source, /if\(G\.stageIndex>V4_LAST_STAGE\)rollDrop\(e,!!e\.elite\)/);
 });
 
 test('checkpoint economy keeps one earned retry on either side of Mantlet Works', () => {

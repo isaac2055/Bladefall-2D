@@ -11,7 +11,7 @@
       greeting: 'Forgive the prices. I only inventory what was already yours.',
       stock: [
         { id: 'woods-draught', name: 'Bottled Respite', description: 'Restore two measures of Blood.', price: 28, once: false, grant: { kind: 'heal', amount: 40 } },
-        { id: 'woods-lens', name: 'Assessor Lens', description: 'Reveal nearby memories, loot, and false walls. Equip in the Tool Kit.', price: 80, once: true, grant: { kind: 'tool', toolId: 'assessor-lens' } },
+        { id: 'woods-lens', name: 'Assessor Lens', description: 'Reveal nearby memories, loot, and false walls. Ready to use on purchase.', price: 80, once: true, grant: { kind: 'tool', toolId: 'assessor-lens' } },
       ],
     },
     {
@@ -30,9 +30,9 @@
       greeting: 'The Keep remembers tools longer than names.',
       stock: [
         { id: 'keep-spear', name: 'Gate Measure', description: 'Equip a rare spear.', price: 230, once: true, grant: { kind: 'weapon', arche: 'spear', rarity: 'rare', name: 'Gate Measure' } },
-        { id: 'keep-chest', name: 'Second Warden Plate', description: 'Equip a rare chestplate.', price: 245, once: true, grant: { kind: 'armor', slot: 'chest', rarity: 'rare', name: 'Second Warden Plate' } },
+        { id: 'keep-chest', name: 'Second Warden Mantle', description: 'Wear a rare mantle that builds Ward against incoming blows.', price: 245, once: true, grant: { kind: 'armor', slot: 'chest', rarity: 'rare', name: 'Second Warden Mantle' } },
         { id: 'keep-repair', name: 'Stone and Rivet', description: 'Restore all weapon durability or ammunition.', price: 45, once: false, grant: { kind: 'repair' } },
-        { id: 'keep-coil', name: 'Retrieval Coil', description: 'Draw one nearby loose item safely to your hand.', price: 165, once: true, grant: { kind: 'tool', toolId: 'retrieval-coil' } },
+        { id: 'keep-coil', name: 'Retrieval Coil', description: 'Draw one nearby loose item safely to your hand. Replaces the carried field tool.', price: 165, once: true, grant: { kind: 'tool', toolId: 'retrieval-coil' } },
       ],
     },
     {
@@ -41,9 +41,9 @@
       greeting: 'Warmth is kept here. Nothing else survives the ledger.',
       stock: [
         { id: 'frost-wand', name: 'Four-Bone Wand', description: 'Equip a rare frost wand.', price: 275, once: true, grant: { kind: 'weapon', arche: 'frostwand', rarity: 'rare', name: 'Four-Bone Wand' } },
-        { id: 'frost-legs', name: 'Snow-Crossing Greaves', description: 'Equip rare leggings.', price: 240, once: true, grant: { kind: 'armor', slot: 'legs', rarity: 'rare', name: 'Snow-Crossing Greaves' } },
-        { id: 'frost-warmth', name: 'Banked Warmth', description: 'Restore 70 health.', price: 42, once: false, grant: { kind: 'heal', amount: 70 } },
-        { id: 'frost-rime', name: 'Rime Ampoule', description: 'Release a freezing pulse around the knight.', price: 220, once: true, grant: { kind: 'tool', toolId: 'rime-ampoule' } },
+        { id: 'frost-legs', name: 'Snow-Crossing Mantle', description: 'Wear a rare mantle that builds Ward against incoming blows.', price: 240, once: true, grant: { kind: 'armor', slot: 'chest', rarity: 'rare', name: 'Snow-Crossing Mantle' } },
+        { id: 'frost-warmth', name: 'Banked Warmth', description: 'Restore Blood.', price: 42, once: false, grant: { kind: 'heal', amount: 70 } },
+        { id: 'frost-rime', name: 'Rime Ampoule', description: 'Release a freezing pulse around the knight. Replaces the carried field tool.', price: 220, once: true, grant: { kind: 'tool', toolId: 'rime-ampoule' } },
       ],
     },
     {
@@ -56,7 +56,9 @@
       ],
     },
     {
-      id: 'cinder-ledger', stageIndex: 9, x: 330, name: 'The Cinder Ledger',
+      // Clear of the Ember Door arrival at 330 — you land beside the counter, not
+      // inside it. Every other region already separates the two by ~200.
+      id: 'cinder-ledger', stageIndex: 9, x: 560, name: 'The Cinder Ledger',
       keeper: 'Sera the Courier', accent: '#ffb06a',
       greeting: 'Every ember arrives owing something.',
       stock: [

@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
+import { runInNewContext } from 'node:vm';
 
 const source=readFileSync(new URL('../public/index.html',import.meta.url),'utf8');
 const world=readFileSync(new URL('../public/bladefall-world.js',import.meta.url),'utf8');
@@ -12,16 +14,30 @@ const start=source.indexOf('/* ---- STAGE 1 · THE OUTSKIRTS');
 const end=source.indexOf('/* ---- STAGE 2 · BLACK WOODS',start);
 const stage=source.slice(start,end);
 
+// Evaluate the authored data with the production floor constructors. This
+// covers negative elevations and object flags without regex-dropping surfaces.
+const Dialogue=createRequire(import.meta.url)('../public/bladefall-dialogue.js');
+const makeObject=type=>(x,y,kind,options)=>({type,x,y,kind,...options});
+const authored=runInNewContext(
+  source.slice(source.indexOf('function Pl('),source.indexOf('function Gr('))+
+  source.slice(source.indexOf('function Gr(')).split('\n')[0]+
+  '\n('+stage.slice(stage.indexOf('{len:')).trim().replace(/,$/,'')+')',{
+    BFDialogueModule:Dialogue,
+    OpeningBeat:(object,beat,system)=>Object.assign(object,{openingActBeat:beat,openingActSystem:system}),
+    Scenery:makeObject('scenery'),AmbientFigure:makeObject('ambientFigure'),
+    SurveyStake:makeObject('surveyStake'),StoryRelic:makeObject('storyRelic'),
+    SealedRecollection:(x,y,zone,title,options)=>({type:'storyRelic',x,y,zone,title,...options}),
+    Wl:(x,y,h,w)=>({type:'wall',x,y,h,w}),Spring:(x,y,power)=>({type:'spring',x,y,power}),
+    Check:(x,y)=>({type:'check',x,y}),CoinOb:(x,y)=>({type:'coin',x,y})
+  });
 function freshSurfaces(){
-  const rows=[];
-  for(const line of stage.split('\n')){
-    if(line.includes('returnHook:'))continue;
-    let match=line.match(/\bGr\((\d+),(\d+)\)/);
-    if(match)rows.push({left:+match[1],right:+match[2],y:0,line});
-    match=line.match(/\bPl\((\d+),(\d+),(\d+)/);
-    if(match){const x=+match[1],w=+match[2];rows.push({left:x-w/2,right:x+w/2,y:+match[3],line});}
-  }
-  return rows;
+  return authored.objects.filter(o=>o.type==='plat'&&!o.returnHook)
+    .map(o=>({...o,left:o.x-o.w/2,right:o.x+o.w/2}));
+}
+function sourceBetween(from,to){
+  const a=source.indexOf(from),b=source.indexOf(to,a+from.length);
+  assert.ok(a>=0&&b>a,'production source block exists: '+from);
+  return source.slice(a,b);
 }
 function jumpReach(rise){
   const velocity=480,gravity=1400,runSpeed=200,disc=velocity*velocity-2*gravity*rise;
@@ -29,8 +45,10 @@ function jumpReach(rise){
 }
 function gap(a,b){return a.right<b.left?b.left-a.right:b.right<a.left?a.left-b.right:0;}
 function routeExists(surfaces,fromX,toX){
-  const starts=surfaces.map((row,i)=>row.left<=fromX&&row.right>=fromX?i:-1).filter(i=>i>=0);
-  const goals=new Set(surfaces.map((row,i)=>row.left<=toX&&row.right>=toX?i:-1).filter(i=>i>=0));
+  const from=typeof fromX==='number'?{x:fromX}:fromX,to=typeof toX==='number'?{x:toX}:toX;
+  const matches=(row,point)=>row.left<=point.x&&row.right>=point.x&&(point.y===undefined||row.y===point.y);
+  const starts=surfaces.map((row,i)=>matches(row,from)?i:-1).filter(i=>i>=0);
+  const goals=new Set(surfaces.map((row,i)=>matches(row,to)?i:-1).filter(i=>i>=0));
   const seen=new Set(starts),queue=[...starts];
   while(queue.length){
     const i=queue.shift();if(goals.has(i))return true;
@@ -62,12 +80,56 @@ test('the mandatory authored surfaces are traversable and reversible with the re
   assert.match(stage,/Pl\(6830,120,170,\{returnHook:'dash',optional:true,dashOverlook:true/);
 });
 
+test('missed opening hops and the Camp Echo crossing land on shallow recoverable beds',()=>{
+  const floors=runInNewContext(
+    sourceBetween('function platTop(', 'function doorOpen(')+
+    sourceBetween('function getFloor(', 'function getFloorY(')+';getFloor',
+    {G:{obstacles:authored.objects}});
+  for(const [left,right,y] of [[600,730,-22],[1120,1310,-24],[1650,1880,-26],[3830,4240,-26]]){
+    for(let x=left+1;x<right;x+=17){
+      const floor=floors(x,-6);
+      assert.equal(floor.y,y,`missed hop at ${x} has the authored recovery floor`);
+      assert.ok(floor.o.openingCreek);
+    }
+    assert.ok(routeExists(freshSurfaces(),{x:(left+right)/2,y},{x:left-20,y:0}),'west bank is recoverable');
+    assert.ok(routeExists(freshSurfaces(),{x:(left+right)/2,y},{x:right+20,y:0}),'east bank is recoverable');
+  }
+});
+
+test('Watcher’s Cut has an independent optional high path above a reversible sheltered road',()=>{
+  const all=freshSurfaces(),banks=all.filter(o=>o.x>=4700&&o.x<=7000&&o.y===0);
+  const low=all.filter(o=>o.openingActSystem==='low-road').concat(banks);
+  const high=all.filter(o=>o.openingActSystem==='high-road').concat(banks);
+  for(const road of [low,high]){
+    assert.ok(routeExists(road,{x:4900,y:0},{x:6900,y:0}),'road independently reaches the east bank');
+  }
+  assert.ok(routeExists(low,{x:6900,y:0},{x:4900,y:0}),'the sheltered road independently returns west');
+  assert.ok(routeExists(high,{x:4900,y:0},{x:6000,y:175}),'GLASS is reachable with one jump at a time');
+  assert.ok(routeExists(high,{x:4900,y:0},{x:6520,y:170}),'coin has a reachable upper landing');
+  assert.ok(!routeExists(low,{x:4900,y:0},{x:6000,y:175}),'the sheltered bypass does not masquerade as the upper route');
+  const bed=low.find(o=>o.openingLowRoad);
+  assert.equal(bed.y,-22);
+  for(const perch of high.filter(o=>o.crumble)){
+    assert.ok(bed.left<=perch.left&&bed.right>=perch.right,'crumbling perches fall onto the sheltered road');
+  }
+});
+
+test('Broken Muster is a continuous peaceful rest with an optional reachable survey lookout',()=>{
+  const camp=freshSurfaces().find(o=>o.left===9300&&o.right===11500&&o.y===0);
+  assert.ok(camp,'the inhabited camp has an uninterrupted floor');
+  assert.ok(authored.enemies.every(e=>e.x<9300||e.x>11500),'no enemy is authored among the surveyor and last vane');
+  assert.ok(authored.enemies.every(e=>e.patrol[1]<9300||e.patrol[0]>11500),'patrol paths do not cut through the rest');
+  const lookout=freshSurfaces().filter(o=>o.openingActSystem==='survey-lookout').concat(camp);
+  assert.ok(routeExists(lookout,{x:10410,y:0},{x:11370,y:62}),'IRON is a short optional climb');
+  assert.ok(routeExists(lookout,{x:11370,y:62},{x:10410,y:0}),'the surveyor remains easy to revisit');
+});
+
 test('fresh route is weaponless and random ecology cannot contaminate it',()=>{
   assert.match(stage,/loot:\[\]/);
   assert.doesNotMatch(stage,/kind:'weapon'|kind:'armor'|kind:'firstWeapon'/);
-  assert.equal((stage.match(/\{t:'grunt'/g)||[]).length,6);
+  assert.equal((stage.match(/\{t:'grunt'/g)||[]).length,5);
   assert.equal((stage.match(/\{t:'shadeling'/g)||[]).length,1);
-  assert.equal((stage.match(/noDrop:true/g)||[]).length,7);
+  assert.equal((stage.match(/noDrop:true/g)||[]).length,6);
   assert.match(source,/if\(G\.stageIndex>4\)seedVariantEnemies\(\)/);
   assert.match(source,/if\(G\.stageIndex>2&&!e\.boss&&!e\.creepy&&!a\.muster&&gameChance\('enemy'/);
   assert.equal((stage.match(/CoinOb\(/g)||[]).length,1);
@@ -126,14 +188,61 @@ test('Mara moves forward, awards the field chart instead of healing, and visibly
   assert.match(source,/meta\.outskirtsMaraRelocated=true;persist\(\)/);
   assert.match(source,/n\.x=10280/);
   assert.match(source,/meta\.outskirtsFieldChart=true;meta\.outskirtsMaraRelocated=true;addGold\(35\);persist\(\)/);
-  assert.match(source,/FIELD CHART ACQUIRED · \+35g/);
-  assert.match(source,/MAP \+ JOURNAL UNLOCKED/);
+  assert.doesNotMatch(source,/FIELD CHART ACQUIRED · \+35g|MAP \+ JOURNAL UNLOCKED|MARA MOVES EAST/);
+  assert.match(source,/n\.departForMuster&&\(n\.x<G\.cam-80\|\|n\.x>G\.cam\+VW\+80\)/);
   const surveyBranch=source.slice(source.indexOf("} else if(n.kind==='survey'){"),source.indexOf("} else { // fetch",source.indexOf("} else if(n.kind==='survey'){")));
   assert.doesNotMatch(surveyBranch,/p\.hp=/);
   assert.match(quests,/Mara gives you her field chart/);
   assert.match(surveyBranch,/recordQuestEvent\(\{type:'traveler-helped',target:n\.profileId\},true\)/);
   assert.match(source,/chartOwned\?'<button class="bigbtn ghost" id="mapBtn">◇ Dream Map/);
   assert.doesNotMatch(source,/Journal · No field chart/);
+});
+
+test('Mara requires a deliberate interaction, relocates out of view, and grants the chart once without a bag',()=>{
+  const n={kind:'survey',profileId:'mara',x:1950,y:0,asked:false,done:false};
+  const G={stageIndex:0,cam:1400,npcs:[n],p:{x:1950,y:0,hp:3},outskirtsSurvey:{aligned:0,total:3},outskirtsProduction:{}};
+  const meta={soundOn:false,gold:0},annotations=[],events=[];
+  const profile=runInNewContext('({'+sourceBetween('  mara:{','  bram:{')+'}).mara',{BFDialogueModule:Dialogue});
+  const surveyStart="} else if(n.kind==='survey'){";
+  const surveyBody=sourceBetween(surveyStart,'} else { // fetch').slice(surveyStart.length);
+  const relocation=sourceBetween("    if(n.kind==='survey'&&n.departForMuster",'    const near=');
+  const api=runInNewContext(
+    sourceBetween('function outskirtsReplayText(', 'function outskirtsAuthoredInteractable(')+
+    sourceBetween('function beginOutskirtsInteraction(', 'function replayNearbyOutskirtsSource(')+
+    sourceBetween('function coopTravelerIndex(', 'function coopSendTravelerIntent(')+
+    `;({begin:beginOutskirtsInteraction,reward:()=>coopGrantTravelerReward(n),relocate(){${relocation}},tick(){
+      const residentInteraction=G.outskirtsInteractionTarget;G.outskirtsInteractionTarget=null;
+      const near=Math.abs(p.x-n.x)<52&&Math.abs(p.y-n.y)<70;
+      ${surveyBody}
+    }})`,{
+      n,p:G.p,G,meta,profile,VW:1024,
+      outskirtsInteractionCandidate:()=>n,travelerProfile:()=>profile,travelerLabel:()=>profile.name,
+      showOutskirtsAnnotation:(_,html)=>annotations.push(html),escText:s=>s,
+      coopSendTravelerIntent:()=>{},recordQuestEvent:event=>events.push(event),persist:()=>{},
+      addGold:amount=>{meta.gold+=amount;}
+    });
+  api.tick();
+  assert.equal(n.asked,false,'passing the surveyor does not begin dialogue');
+  assert.equal(annotations.length,0);
+  api.begin();api.tick();
+  assert.equal(n.asked,true);
+  assert.match(annotations.at(-1),/bearings/i);
+  assert.equal(n.x,1950,'talking does not teleport the surveyor on screen');
+  api.relocate();assert.equal(n.x,1950);
+  G.p.x=3500;G.cam=2900;api.relocate();assert.equal(n.x,10280);
+  G.p.x=n.x;api.begin();api.tick();
+  assert.match(annotations.at(-1),/stretch of road/,'an incomplete repeat talk uses real progress copy');
+  assert.doesNotMatch(annotations.at(-1),/undefined/);
+  G.outskirtsSurvey.aligned=3;
+  api.tick();assert.equal(n.done,false,'completion still requires interaction');
+  api.begin();api.tick();
+  assert.equal(n.done,true,'replay text must not swallow the reward interaction');
+  assert.equal(meta.outskirtsFieldChart,true);
+  assert.equal(meta.gold,35);
+  assert.equal(G.p.hp,3);
+  assert.equal(meta.inventory,undefined,'chart acquisition has no inventory dependency');
+  assert.ok(events.some(e=>e.type==='traveler-helped'&&e.target==='mara'));
+  api.reward();assert.equal(meta.gold,35,'repeated reward calls cannot duplicate currency');
 });
 
 test('the opening’s clue hierarchy keeps four concrete story observations legible',()=>{
@@ -145,24 +254,60 @@ test('the opening’s clue hierarchy keeps four concrete story observations legi
   assert.match(source,/Crushed white petals surround the cot and stain a discarded tin cup\./);
   assert.match(source,/The second hand shakes but does not move forward/);
   assert.match(dialogue,/A tin cup rolls from a gloved hand beside a tent/);
-  assert.match(dialogue,/You have no weapon\. Stay out of a patrol’s reach and jump past when it turns\./);
-  assert.match(dialogue,/The upper path is shorter and holds the GLASS stake/);
+  assert.equal(authored.objects.filter(o=>o.type==='ambientFigure'&&o.quietV4).length,2);
+  assert.match(source,/if\(!o\|\|o\.quietV4\)return false/);
+  const openingDialogue=Dialogue.catalog().filter(row=>row.id.startsWith('outskirts.'));
+  assert.ok(openingDialogue.every(row=>!(/Press|upper path|jump past|new ability|Return after/.test(row.text))));
 });
 
 test('avoidance encounters escalate deliberately and point to authored recovery ground',()=>{
-  assert.equal((stage.match(/noticeRange:/g)||[]).length,7);
-  assert.equal((stage.match(/openingSpeed:/g)||[]).length,7);
-  assert.equal((stage.match(/encounterRole:/g)||[]).length,7);
-  assert.equal((stage.match(/safeRefugeX:/g)||[]).length,7);
+  assert.equal((stage.match(/noticeRange:/g)||[]).length,6);
+  assert.equal((stage.match(/openingSpeed:/g)||[]).length,6);
+  assert.equal((stage.match(/encounterRole:/g)||[]).length,6);
+  assert.equal((stage.match(/safeRefugeX:/g)||[]).length,6);
   assert.match(source,/sensedDistance<\(e\.noticeRange\|\|VW\*0\.6\)/);
   assert.match(source,/e\.speed\*\(e\.openingSpeed\|\|1\)/);
   assert.match(source,/function updateOutskirtsAvoidanceEncounter\(e,target,dt,eff\)/);
   for(const role of ['turn-and-pass','platform-bypass','upper-sentry','commit-and-hop','short-recovery','final-feint'])
     assert.match(source,new RegExp(`e\\.encounterRole==='${role}'`));
-  for(const tell of ['TURNING','RUSH','RECOVER','INSPECTING STANDARD','LOOKING UP','GUARDING LOW','WATCH THE SHADOW','REAPPEAR'])
-    assert.match(source,new RegExp(tell));
+  const stateChange=sourceBetween('function outskirtsEncounterState(', 'function updateOutskirtsPerception(');
+  assert.match(stateChange,/e\.openingState=state;e\.openingTimer=timer/);
+  assert.doesNotMatch(stateChange,/addText|toast|showStationNotice/);
   assert.match(source,/if\(updateOutskirtsAvoidanceEncounter\(e,target,dt,eff\)\)return/);
   assert.match(source,/contactAuthorized&&!e\.openingIntangible&&!e\.dead/);
+});
+
+test('the upper sentry ignores the sheltered road and commits its shot before the player drops away',()=>{
+  const spec=authored.enemies.find(e=>e.encounterRole==='upper-sentry');
+  const e={...spec,face:-1,openingState:'watch',patrolMin:spec.patrol[0],patrolMax:spec.patrol[1]};
+  // At this range the old peripheral sight check could see directly through
+  // the sheltered road. Leave line-of-sight clear to exercise the lane rule.
+  const target={x:e.x-70,y:-22,h:44},shots=[];
+  const update=runInNewContext(
+    sourceBetween('function outskirtsEncounterState(', 'function forestEncounterState(')+
+    ';updateOutskirtsAvoidanceEncounter',{
+      G:{stageIndex:0,p:target},hasCapability:()=>false,
+      BFAISystem:{lineOfSight:()=>true},bossShoot:(_,aim)=>shots.push({...aim})
+    });
+  const frame=()=>update(e,target,1/60,100);
+  for(let i=0;i<60;i++)frame();
+  assert.equal(e.openingSight,0);
+  assert.equal(e.openingState,'watch');
+  assert.equal(shots.length,0);
+  target.y=175;
+  for(let i=0;i<30&&e.openingState!=='warn';i++)frame();
+  assert.equal(e.openingState,'warn','the exposed upper route is acquired');
+  assert.equal(shots.length,0,'the warning pose precedes the shot');
+  const committed={...target};
+  assert.deepEqual({...e.openingAim},committed);
+  target.x+=180;target.y=-22;
+  for(let i=0;i<45&&shots.length===0;i++)frame();
+  assert.equal(shots.length,1);
+  assert.deepEqual(shots[0],committed,'the projectile targets the warned position, not a player who has dropped away');
+  assert.equal(e.openingState,'recover');
+  assert.equal(e.openingAim,null);
+  for(let i=0;i<150;i++)frame();
+  assert.equal(shots.length,1,'remaining on the lower road does not reacquire the player');
 });
 
 test('Level 1 landing audio is quiet for small hops and reserves chainmail for hard falls',()=>{
@@ -206,14 +351,14 @@ test('rooms own distinct environmental compositions and bounded avoidance patrol
     assert.match(stage,new RegExp(`'${kind}'`));
     assert.match(source,new RegExp(`kind==='${kind}'`));
   }
-  assert.equal((stage.match(/patrol:\[/g)||[]).length,7);
+  assert.equal((stage.match(/patrol:\[/g)||[]).length,6);
   assert.match(source,/e\.patrolMin=en\.patrol\[0\];e\.patrolMax=en\.patrol\[1\]/);
   assert.match(source,/const pursuitX=e\.boss\?rawPursuitX:Math\.max\(20,Math\.min\(G\.levelLength-20,rawPursuitX\)\)/);
 });
 
 test('Outskirts exposes a room-level production diagnostic for acceptance',()=>{
   assert.match(source,/G\.outskirtsProduction=G\.stageIndex===0\?/);
-  assert.match(source,/version:2,rooms:/);
+  assert.match(source,/version:4,rooms:/);
   assert.match(source,/rooms:\['poisoned-verge','camp-echo','watchers-cut','hollow-mile','broken-muster','mothlight-descent'\]/);
   assert.match(source,/physicalReturnBranch:'outskirts-warden'/);
   assert.match(source,/maraX:\(G\.npcs\|\|\[\]\)\.find/);
@@ -249,9 +394,9 @@ test('all enemy attacks spend HP in place while environmental hazards retain rec
   assert.match(source,/hurtPlayer\(0, 0, false\)/);
 });
 
-test('Level 1 loops Strange Worlds quietly under the prologue and fades to exploration level',()=>{
-  assert.match(source,/0:Object\.freeze\(\{id:'outskirts-strange-worlds',src:'\.\/audio\/music\/strange-worlds\.ogg'/);
-  assert.match(source,/title:'Strange Worlds',artist:'Pizza Doggy'/);
+test('Level 1 loops Midnight Field quietly under the prologue and fades to exploration level',()=>{
+  assert.match(source,/0:Object\.freeze\(\{id:'outskirts-midnight-field',src:'\.\/audio\/music\/midnight-field\.mp3'/);
+  assert.match(source,/title:'Midnight Field',artist:'Bladefall score'/);
   assert.match(source,/function syncLevelMusic\(requestPlay\)/);
   assert.match(source,/syncLevelMusic\(false\)/);
   const musicSync=source.slice(source.indexOf('function syncLevelMusic(requestPlay)'),source.indexOf('const BFCore=',source.indexOf('function syncLevelMusic(requestPlay)')));
@@ -271,18 +416,20 @@ test('the opening is text-only, nonliteral, and carries only the quiet level sco
   assert.doesNotMatch(source,/mode==='cutscene'&&G\.stageIndex===0&&G\.time===0/);
 });
 
-test('Mara and the three stakes explain one concrete road-survey objective',()=>{
+test('Mara offers one optional road survey while the stakes respond without route banners',()=>{
   assert.match(stage,/Scenery\(2180,0,'survey-post'/);
   assert.match(stage,/SurveyStake\(2340,0,'verge',\{bearingName:'ASH'/);
-  assert.match(dialogue,/Three survey bearings mark the old road: ash by my camp, glass on the upper path, and iron beyond the broken platforms/i);
-  assert.match(source,/Western starting point fixed beside the abandoned camp/);
-  assert.match(source,/Elevated sightline fixed through Watcher’s Cut/);
-  assert.match(source,/Eastern endpoint fixed at Broken Muster/);
-  assert.match(dialogue,/All three agree\. The tunnel is real/);
-  assert.match(source,/surveyTag\.textContent='▤ MARA '\+aligned\+'\/3 · '\+next/);
-  assert.match(source,/A sword-shaped lock seals this platform\. Return after finding a weapon in Black Woods/);
   assert.match(stage,/SurveyStake\(11370,62,'muster',\{bearingName:'IRON'/);
-  assert.match(source,/Return west across the broken crossing to Mara/);
+  const ask=Dialogue.text('outskirts.mara.ask'),done=Dialogue.text('outskirts.mara.done');
+  assert.match(ask,/bearings/i);assert.match(ask,/chart/i);
+  assert.match(done,/tunnel reaches the woods/i);assert.match(done,/chart/i);
+  for(const line of [ask,done])assert.ok(line.split(/\s+/).length<=16,'Mara stays brief: '+line);
+  const alignment=sourceBetween("}else if(o.type==='surveyStake'&&!o.aligned",'// Incidental people establish');
+  assert.match(alignment,/o\.aligned=true;o\.flash=1/);
+  assert.match(alignment,/coopSendTravelerIntent/);
+  assert.match(alignment,/SFX\.pickup/);
+  assert.doesNotMatch(alignment,/addText|showOutskirtsAnnotation|NEXT:|Return west/);
+  assert.doesNotMatch(source,/surveyTag\.textContent='▤ MARA '|REPORT TO MARA/);
 });
 
 test('opening clocks drift by one minute on each Black Woods return and Hale reacts to the sword',()=>{
@@ -307,21 +454,28 @@ test('opening-zone discoveries use one deterministic Up interaction and never qu
   for(const kind of ['person','sign','marker','memory','object'])assert.match(source,new RegExp("'"+kind+"'"));
   assert.match(source,/wrapAnnotationLines\(c,a\.body,width-pad\*2,kind==='person'\?4:3\)/);
   assert.match(source,/const verb=target\./);
-  assert.match(source,/target\.repairCatch\|\|target\.keepDropRelease\?'↑  RELEASE':target\.questActor\?'↑  TALK':target\.sentinelVigil&&hasCapability\('weapon'\)\?'↑  CHALLENGE'/);
-  assert.match(source,/ctx\.fillText\(verb,target\.x/);
+  // The verb chain grows as regions land; assert each branch exists rather than
+  // pinning its exact order, which any new speaker would otherwise break.
+  const verbChain=source.slice(source.indexOf('const verb=target.'));
+  assert.match(verbChain,/target\.repairCatch\|\|target\.keepDropRelease\?'↑  RELEASE'/);
+  assert.match(verbChain,/target\.questActor\|\|target\.kind==='survey'[^?]*\?'↑  TALK'/);
+  assert.match(verbChain,/target\.sentinelVigil&&hasCapability\('weapon'\)\?'↑  CHALLENGE'/);
+  assert.match(source,/ctx\.fillText\(pr\.verb,pr\.target\.x/);
+  assert.match(source,/prompt:interactionPrompt\(\)/);
   assert.doesNotMatch(source,/G&&G\.stageIndex===0\?10000/);
 });
 
-test('Watcher’s Cut makes the upper route shorter, narrow, unstable, and watched',()=>{
+test('Watcher’s Cut makes the optional upper route elevated, unstable, and watched',()=>{
   assert.match(stage,/ROOM 3 · WATCHER'S CUT \(4700–7000\)/);
-  assert.match(stage,/Pl\(5140,180,38\).*'low-road'/);
-  assert.match(stage,/Pl\(5740,84,118,\{crumble:1\}\).*'high-road'/);
-  assert.match(stage,/Pl\(6260,88,125,\{crumble:1\}\).*'high-road'/);
+  const high=freshSurfaces().filter(o=>o.openingActSystem==='high-road');
+  assert.equal(high.filter(o=>o.crumble).length,2);
+  assert.ok(high.every(o=>o.y>=45));
+  assert.ok(high.every(o=>o.w<=200));
   assert.match(stage,/encounterRole:'upper-sentry'/);
   assert.match(source,/updateOutskirtsPerception\(e,target,dt\)/);
   assert.match(source,/BFAISystem\.lineOfSight\(e,target\)/);
   assert.match(source,/en\.encounterRole==='upper-sentry'\)e\.shot=\{count:1/);
-  assert.match(source,/bossShoot\(e,target\);e\.openingAlertT=0/);
+  assert.match(source,/bossShoot\(e,e\.openingAim\|\|target\);e\.openingAim=null;e\.openingAlertT=0/);
   for(const state of ['suspicious','alert','search'])assert.match(source,new RegExp(`'${state}'`));
 });
 

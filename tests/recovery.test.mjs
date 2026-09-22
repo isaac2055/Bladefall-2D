@@ -1,3 +1,5 @@
+// The Gilded Vault was cut on 2026-09-20; its campaign stage slot is kept inert so
+// that no stageIndex after it moves, but it is not a zone, a site or a recollection.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
@@ -8,7 +10,7 @@ const Recovery = globalThis.BladefallRecovery;
 
 test('N05 recovery catalog gives every zone a deliberate site and useful station network', () => {
   assert.equal(globalThis.BladefallProgression.foundationRuns.find((run) => run.id === 'N05').status, 'complete');
-  assert.deepEqual(Recovery.validateCatalog(), { ok: true, errors: [], sites: 16, stations: 10 });
+  assert.deepEqual(Recovery.validateCatalog(), { ok: true, errors: [], sites: 15, stations: 9 });
   assert.equal(Recovery.siteForZone('outskirts').id, 'march-camp');
   assert.equal(Recovery.siteForZone('brute').fastTravel, false);
   assert.equal(Recovery.siteForZone('deep-line').fastTravel, true);

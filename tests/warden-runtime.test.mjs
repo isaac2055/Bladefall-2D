@@ -25,7 +25,8 @@ function harness(){
     x0:500+i*350,y0:i*30,wardenTurnMove:{dx:i===4?260:0,dy:100+i*20,period:4,phase:i}}));
   obstacles.push({wardenCourtRotor:1,hazard:0,dormant:1},{wardenCourtRotor:1,hazard:0,dormant:1});
   const context=vm.createContext({Math,console,GROUND_Y:700,
-    G:{boss,p,obstacles,cratePortals:[],aoes:[],particles:[],shake:0},meta:{soundOn:false},
+    G:{boss,p,obstacles,cratePortals:[],aoes:[],particles:[],shake:0,stageIndex:6,time:0},meta:{soundOn:false},
+    courtFinalDamage:(e,amt)=>amt,restoreWardenVictory:()=>false,
     killEnemy(e){e.dead=true;},
     SFX:{},showStationNotice(message){context.notice=message;},addText(x,y,text){context.text=text;},
     clearPlacedPortals(){context.G.cratePortals=[];},portalTransit(){return context.returnRush?{x:2300,y:210}:null;}});
@@ -38,13 +39,14 @@ function harness(){
   return{context,boss,p,obstacles};
 }
 
-test('phase three turns the court and announces the new sentence contract',()=>{
+test('phase three turns the court with physical changes and no instructional banner',()=>{
   const h=harness();h.boss.hp=90;
   h.context.updateWardenPortalFight(h.boss,h.p,1/60,h.boss.speed);
   assert.equal(h.boss.wardenPhase,3);
   assert.equal(h.obstacles.filter(o=>o.wardenTurningCourt&&o.move).length,5);
   assert.equal(h.obstacles.filter(o=>o.wardenCourtRotor&&o.hazard).length,2);
-  assert.match(h.context.notice,/TURNING SENTENCE/);
+  assert.equal(h.context.notice,undefined);
+  assert.equal(h.context.text,undefined);
 });
 
 test('the threefold sentence telegraphs, rebounds, and can be returned through a pair',()=>{
@@ -164,4 +166,169 @@ test('zero-damage warning circles never call the damage or checkpoint handler',(
   vm.runInContext(statement,c);assert.equal(calls.length,0);
   Object.assign(c.a,{dmg:1,real:true,bloodDamage:1});vm.runInContext(statement,c);
   assert.deepEqual(calls,[[1,1,true,1]]);
+});
+
+
+// Evaluate the actual authored objects so recovery, field bounds and route tags
+// are checked together with the runtime that consumes them.
+const stageStart=source.indexOf('const WARDEN_LEVEL='),stageEnd=source.indexOf('/* ================================================================\n   THE INVERSION',stageStart);
+const constructors=['Pl','Gr','Wl','Slate','SlateWall','Cry','Plate','Check','CoinOb','Scenery','Sign',
+  'LoreMarker','StoryRelic','SealedRecollection','AmbientFigure','DoorSeal','WardenBeat'];
+const authored=vm.runInNewContext(constructors.map(functionSource).join('\n')+'\n'+source.slice(stageStart,stageEnd)+';WARDEN_LEVEL',{
+  STAGE_LORE:{6:{id:'warden-lore',title:'Gaol',text:'Stone'}}
+});
+const environment=vm.runInNewContext(await readFile(new URL('../public/bladefall-environment.js',import.meta.url),'utf8')+';BladefallEnvironment');
+function machineryHarness(){
+  const circuits=new Set(),receipts=[],objects=JSON.parse(JSON.stringify(authored.objects));
+  const context=vm.createContext({Math,G:{stageIndex:6,obstacles:objects,cratePortals:[],time:4,p:{wardenFlankT:1},aoes:[]},meta:{soundOn:false},
+    circuitOpen:id=>circuits.has(id),persistentCircuitOpen:id=>circuits.has(id),hasCapability:()=>false,
+    markPersistentCircuitOpen:(id,reason)=>{circuits.add(id);receipts.push({id,reason});},SFX:{}});
+  vm.runInContext(['updateGaolMachinery','recordGaolPassage','syncGaolMouths','updraftsVoidFloor',
+    'restoreWardenVictory','setWardenCourtRotors','setWardenTurningCourt'].map(functionSource).join('\n'),context);
+  return{context,circuits,objects,receipts};
+}
+
+test('Hush needs both distinct brakes, and a stopped wheel keeps its captured angle',()=>{
+  const h=machineryHarness(),rotors=h.objects.filter(o=>o.wardenRotor);
+  h.context.updateGaolMachinery();assert.equal(h.circuits.has('gaol-hush-open'),false);
+  h.circuits.add('gaol-hush-east');h.context.updateGaolMachinery();
+  assert.equal(h.circuits.has('gaol-hush-open'),false);
+  assert.equal(rotors[0].hazard,0);assert.equal(rotors[0].dormant,1);
+  assert.equal(rotors[1].hazard,1);assert.equal(rotors[0].gaolBrakeTime,4);
+  const angle=environment.rotorState(rotors[0],rotors[0].gaolBrakeTime).angle;
+  h.context.G.time=9;h.context.updateGaolMachinery();
+  assert.equal(environment.rotorState(rotors[0],rotors[0].gaolBrakeTime).angle,angle);
+  h.circuits.add('gaol-hush-west');h.context.updateGaolMachinery();
+  assert.equal(h.circuits.has('gaol-hush-open'),true);
+  assert.equal(rotors[1].hazard,0);assert.equal(rotors[1].gaolBrakeTime,9);
+  h.context.updateGaolMachinery();
+  assert.equal(h.receipts.filter(r=>r.id==='gaol-hush-open').length,1);
+});
+
+test('the visible Hush field matches its actual influence and has reachable local retries',()=>{
+  const h=machineryHarness(),field=h.objects.find(o=>o.wardenHushField);
+  assert.equal(field.w,field.r*2);
+  assert.equal(environment.sampleFields({x:9470,y:215,h:40},[field]).gravityScale,.35);
+  const retry=h.objects.find(o=>o.supportedBy==='engine-service-stair');
+  assert.equal(retry.y-(-120),70);
+  assert.equal(environment.sampleFields({x:retry.x,y:retry.y,h:40},[field]).gravityScale,.35);
+  assert.equal(environment.sampleFields({x:9950,y:0,h:40},[field]).gravityScale,1);
+  for(const x of [9740,8900,8100])assert.equal(h.context.updraftsVoidFloor({x}),-200);
+  assert.equal(h.context.updraftsVoidFloor({x:7840}),-50);
+  assert.equal(h.context.updraftsVoidFloor({x:6580}),-200);
+  assert.equal(h.context.updraftsVoidFloor({x:5845}),-200);
+  h.context.G.stageIndex=5;assert.equal(h.context.updraftsVoidFloor({x:8900}),-50);
+});
+
+test('only the high west-facing personal route releases the service gate',()=>{
+  const h=machineryHarness(),low=h.objects.find(o=>o.gaolRouteMouth==='entry'),high=h.objects.find(o=>o.gaolRouteMouth==='exit');
+  const route={pair:{source:{kind:'personal'}},entry:{x:low.x,y:low.y,_support:low},exit:{x:high.x-13,y:610,nx:-1,_support:high}};
+  assert.equal(h.context.recordGaolPassage({...route,pair:{kind:'fixed'}}),false);
+  assert.equal(h.context.recordGaolPassage({...route,exit:{...route.exit,nx:1}}),false);
+  assert.equal(h.context.recordGaolPassage({...route,exit:{...route.exit,y:120}}),false);
+  assert.equal(h.context.recordGaolPassage({...route,entry:{...route.entry,_support:{slate:1}}}),false);
+  assert.equal(h.circuits.size,0);
+  assert.equal(h.context.recordGaolPassage(route),true);
+  assert.equal(h.circuits.has('gaol-cell-passage'),true);
+  assert.ok(h.objects.find(o=>o.gaolCellGate).flash>0);
+  assert.equal(h.context.recordGaolPassage(route),false);
+  assert.match(functionSource('portalTransit'),/if\(ent===G\.p\)\{if\(G\.stageIndex===6\)recordGaolPassage\(result\)/);
+});
+
+test('a mouth follows only its own moving court support',()=>{
+  const h=machineryHarness(),support={x:900,y:210},other={x:700,y:90};
+  const mouth={_support:support,supportDx:-35,supportDy:15,x:0,y:0},fixed={_support:other,x:700,y:90};
+  h.context.G.cratePortals=[mouth,fixed];h.context.syncGaolMouths(support);
+  assert.equal(mouth.x,865);assert.equal(mouth.y,225);assert.equal(fixed.x,700);
+  support.x=1060;support.y=340;h.context.syncGaolMouths(support);
+  assert.equal(mouth.x,1025);assert.equal(mouth.y,355);
+});
+
+test('a committed mouth break removes just its chosen mouth even when side values match',()=>{
+  const h=harness();Object.assign(h.boss,{hp:150,phase:2,wardenPhase:2,wardenState:'pursuit',wardenPortalBreakCd:-1,wardenSentenceCd:9});
+  const first={x:600,y:0,side:0},second={x:2400,y:210,side:0};h.context.G.cratePortals=[first,second];
+  h.context.updateWardenPortalFight(h.boss,h.p,1/60,h.boss.speed);
+  assert.equal(h.boss.wardenTargetMouth,first);h.context.updateWardenPortalFight(h.boss,h.p,1,h.boss.speed);
+  assert.equal(h.context.G.cratePortals.length,1);assert.equal(h.context.G.cratePortals[0],second);
+});
+
+test('Continue preserves real Warden victory without awarding Counter early',()=>{
+  const h=machineryHarness(),gate=h.objects.find(o=>o.wardenMineGate);
+  h.context.G.boss={dead:false,hp:300,active:true,frontShield:true};
+  assert.equal(h.context.restoreWardenVictory(),false);assert.equal(gate.gone,false);
+  h.context.hasCapability=id=>id==='counter';h.context.G.aoes=[{type:'sentence'},{type:'slam'},{type:'other'}];
+  assert.equal(h.context.restoreWardenVictory(),true);assert.equal(gate.gone,true);
+  assert.equal(h.context.G.boss.dead,true);assert.equal(h.context.G.boss.hp,0);
+  assert.equal(h.context.G.wardenRewarded,true);assert.equal(h.context.G.aoes.length,1);
+  assert.ok(h.objects.filter(o=>o.wardenCourtRotor).every(o=>!o.hazard));
+});
+
+test('Gaol regression: rush, sentence and rebound keep their windup direction after a crossing',()=>{
+  const ordinary=harness();ordinary.boss.wardenRushCd=-1;
+  ordinary.context.updateWardenPortalFight(ordinary.boss,ordinary.p,1/60,76);
+  assert.equal(ordinary.boss.wardenState,'rushWind');assert.equal(ordinary.boss.wardenRushDir,1);
+  ordinary.p.x=900;ordinary.context.updateWardenPortalFight(ordinary.boss,ordinary.p,.53,76);
+  assert.equal(ordinary.boss.wardenState,'rush');assert.equal(ordinary.boss.face,1);
+  const start=ordinary.boss.x;ordinary.context.updateWardenPortalFight(ordinary.boss,ordinary.p,1/60,76);
+  assert.ok(ordinary.boss.x>start);assert.equal(ordinary.boss.wardenRushDir,1);
+
+  const sentence=harness();Object.assign(sentence.boss,{hp:90,phase:3,wardenPhase:3,wardenSentenceCd:-1});
+  sentence.context.updateWardenPortalFight(sentence.boss,sentence.p,1/60,76);
+  assert.equal(sentence.boss.wardenState,'sentenceWind');assert.equal(sentence.boss.wardenRushDir,1);
+  sentence.p.x=900;sentence.context.updateWardenPortalFight(sentence.boss,sentence.p,1.06,76);
+  assert.equal(sentence.boss.wardenState,'sentenceRush');assert.equal(sentence.boss.face,1);
+  const sentenceStart=sentence.boss.x;sentence.context.updateWardenPortalFight(sentence.boss,sentence.p,1/60,76);
+  assert.ok(sentence.boss.x>sentenceStart);
+  Object.assign(sentence.boss,{x:2698,wardenStateT:1});
+  sentence.context.updateWardenPortalFight(sentence.boss,sentence.p,1/60,76);
+  assert.equal(sentence.boss.wardenState,'sentenceRebound');assert.equal(sentence.boss.wardenRushDir,-1);
+  sentence.p.x=2850;sentence.context.updateWardenPortalFight(sentence.boss,sentence.p,.25,76);
+  assert.equal(sentence.boss.wardenState,'sentenceRush');assert.equal(sentence.boss.face,-1);
+  const reboundStart=sentence.boss.x;sentence.context.updateWardenPortalFight(sentence.boss,sentence.p,1/60,76);
+  assert.ok(sentence.boss.x<reboundStart);assert.equal(sentence.boss.wardenRushDir,-1);
+});
+
+test('Gaol regression: a replacement portal pair survives a strike committed to the old mouth',()=>{
+  const h=harness();Object.assign(h.boss,{hp:150,phase:2,wardenPhase:2,wardenPortalBreakCd:-1});
+  const oldTarget={x:600,y:0,side:0};h.context.G.cratePortals=[oldTarget,{x:2400,y:210,side:1}];
+  h.context.updateWardenPortalFight(h.boss,h.p,1/60,76);
+  assert.equal(h.boss.wardenState,'portalBreakWind');assert.equal(h.boss.wardenTargetMouth,oldTarget);
+  const first={x:900,y:200,side:0},second={x:2100,y:400,side:1};h.context.G.cratePortals=[first,second];
+  h.context.updateWardenPortalFight(h.boss,h.p,1,76);
+  assert.equal(h.context.G.cratePortals.length,2);
+  assert.equal(h.context.G.cratePortals[0],first);assert.equal(h.context.G.cratePortals[1],second);
+  const impact=h.context.G.aoes.at(-1);assert.equal(impact.x,600);assert.equal(impact.y,0);assert.equal(impact.real,true);
+  assert.equal(h.boss.wardenTargetMouth,null);
+});
+
+test('Gaol regression: Vey waits for Counter and relocates only when both places are out of view',()=>{
+  const h=machineryHarness(),enna=h.objects.find(o=>o.gaolKeeper);
+  Object.assign(h.context,{VW:1280,RECALL_RETURN_ROUTES:{},BFWorldModule:{stageId:()=> 'warden'},musterRecalled:()=>false});
+  vm.runInContext(['updateGaolKeeper','ambientFigureDialogue'].map(functionSource).join('\n'),h.context);
+  h.context.G.cam=2000;h.context.updateGaolKeeper();assert.equal(enna.x,4620);
+  const before=h.context.ambientFigureDialogue(enna,false);assert.match(before,/carry his keys/);
+  assert.ok(before.split(/\s+/).length<=15);
+  h.context.hasCapability=id=>id==='counter';
+  h.context.G.cam=4400;h.context.updateGaolKeeper();assert.equal(enna.x,4620,'old place remains visible');
+  h.context.G.cam=200;h.context.updateGaolKeeper();assert.equal(enna.x,4620,'new place remains visible');
+  h.context.G.cam=2000;h.context.updateGaolKeeper();assert.equal(enna.x,420);assert.equal(enna.y,0);
+  const after=h.context.ambientFigureDialogue(enna,true);assert.match(after,/set down heavier things/);
+  assert.ok(after.split(/\s+/).length<=15);assert.notEqual(after,before);
+  enna.x=4620;h.context.G.stageIndex=5;h.context.updateGaolKeeper();assert.equal(enna.x,4620);
+});
+
+test('Warden snapshots carry the committed tell, shield side and real exposure window',()=>{
+  const start=source.indexOf('const WARDEN_TELL_FIELDS=');
+  const context=vm.createContext({G:{p:{wardenFlankT:1.2}}});
+  vm.runInContext(source.slice(start,source.indexOf('\nfunction netPackWorldSnapshot',start)),context);
+  const host={wardenPortalFight:true,wardenState:'sentenceWind',wardenRushDir:-1,shieldFace:1,frontShield:true};
+  const remote={wardenPortalFight:true};
+  context.netApplyWardenTell(remote,JSON.parse(JSON.stringify(context.netPackWardenTell(host))));
+  assert.equal(remote.wardenState,'sentenceWind');assert.equal(remote.wardenRushDir,-1);
+  assert.equal(remote.shieldFace,1);assert.equal(remote.wardenExposureT,1.2);
+  context.G.p.wardenFlankT=0;host.wardenState='recover';
+  context.netApplyWardenTell(remote,context.netPackWardenTell(host));
+  assert.equal(remote.wardenExposureT,0,'a later closed guard cannot retain stale exposure');
+  assert.equal(remote.wardenState,'recover');
+  assert.equal(context.netPackWardenTell({type:'grunt'}),null);
 });
