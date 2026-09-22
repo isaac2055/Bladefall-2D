@@ -13,9 +13,8 @@ only. **The code wins over every document, including this one.** Session-by-sess
   (51 modules; `bladefall-coop-journey.js` is plain functions over the page's globals, not a
   module object) + `public/bladefall-respec-renderer.js` (the v4 pixel renderer). Edit `public/`,
   never `netlify-deploy/`. **Never deploy to Netlify without explicit owner permission.**
-- Branch `chore/track-authoritative-tree`; checkpoint commit `d7927b9` holds the full 7.166.0 tree;
-  the 7.167.0 Deep Line pass, the 7.168.0 bow/boss pass and the 7.169.0 co-op pass on top of it
-  are uncommitted.
+- `main` (pushed to github.com/isaac2055/Bladefall-2D) holds 7.169.0, the first full draft of
+  Act 1: commit `16b3408`, tag `act-1-draft`. `chore/track-authoritative-tree` is at the same commit.
   `main` is still at 2d6fe28. Commit or push only when asked.
 - `USAGE-POLICY.md` still applies: targeted reads, one implementation pass plus one focused
   validation pass, a full suite only at integration boundaries.

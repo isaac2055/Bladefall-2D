@@ -18,13 +18,13 @@ success is never owner acceptance.
 
 ## Source identity and verification
 - `public/index.html` **7.169.0**; `public/sw.js` **bladefall-v246**. Deploy mirror matches `public/`.
-- `d7927b9` on `chore/track-authoritative-tree` (local; not pushed) holds 7.166.0; 7.167–7.169 are
-  uncommitted. `main` = 2d6fe28. 7.169.0 is live on bladefall.netlify.app (deploy 6ab2ae5f, from `netlify-deploy/`; the site id is f8c7b854…, not the one in `.netlify/state.json`).
+- `main` = `16b3408` (tag `act-1-draft`), pushed to GitHub; `chore/track-authoritative-tree` is at
+  the same commit. 7.169.0 is live on bladefall.netlify.app (deploy 6ab2ae5f, from `netlify-deploy/`; the site id is f8c7b854…, not the one in `.netlify/state.json`).
 - Full suite **847 tests / 825 pass / 22 fail** (7.169.0); the 22 are the long-standing baseline set,
   identical by test name (list in the brief's Harness section).
 - `release:check` reports only astra-respec.js / fable-respec.js (standalone pages, by design).
 
-## Latest change — 7.169.0 / cache v246 (2026-09-22, uncommitted; deployed to bladefall.netlify.app at the owner's request)
+## Latest change — 7.169.0 / cache v246 (2026-09-22; committed to `main`; deployed to bladefall.netlify.app at the owner's request)
 Owner request: "Please add co-op back into the game. This way, I can show my friend the game
 without him going crazy by showing him the way + helping him (so actions should be shared, only
 way it is really co-op.)"
