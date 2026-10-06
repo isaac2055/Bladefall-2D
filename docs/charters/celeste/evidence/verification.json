@@ -1,0 +1,1160 @@
+{
+  "replay": [
+    {
+      "stage": 41,
+      "complete": true,
+      "deaths": 0,
+      "blood": 5,
+      "mode": "celeste-complete",
+      "events": [
+        {
+          "room": 0,
+          "kind": "dash-lab",
+          "next": 1,
+          "complete": false,
+          "required": [],
+          "used": []
+        },
+        {
+          "room": 1,
+          "kind": "tear",
+          "next": 2,
+          "complete": false,
+          "required": [
+            "1:tear"
+          ],
+          "used": [
+            "1:tear"
+          ]
+        },
+        {
+          "room": 2,
+          "kind": "ring",
+          "next": 3,
+          "complete": false,
+          "required": [
+            "2:ring",
+            "2:tension"
+          ],
+          "used": [
+            "2:ring",
+            "2:tension"
+          ]
+        },
+        {
+          "room": 3,
+          "kind": "weight",
+          "next": 4,
+          "complete": false,
+          "required": [
+            "3:weight"
+          ],
+          "used": [
+            "3:weight"
+          ]
+        },
+        {
+          "room": 4,
+          "kind": "anvil",
+          "next": 5,
+          "complete": false,
+          "required": [
+            "4:anvil"
+          ],
+          "used": [
+            "4:anvil"
+          ]
+        },
+        {
+          "room": 5,
+          "kind": "pogo",
+          "next": 6,
+          "complete": false,
+          "required": [
+            "5:pogo-1",
+            "5:pogo-2",
+            "5:pogo-3"
+          ],
+          "used": [
+            "5:pogo-1",
+            "5:pogo-2",
+            "5:pogo-3"
+          ]
+        },
+        {
+          "room": 6,
+          "kind": "uppercut",
+          "next": 7,
+          "complete": false,
+          "required": [
+            "6:uppercut-1",
+            "6:uppercut-2",
+            "6:uppercut-3"
+          ],
+          "used": [
+            "6:uppercut-1",
+            "6:uppercut-2",
+            "6:uppercut-3"
+          ]
+        },
+        {
+          "room": 7,
+          "kind": "gale",
+          "next": 8,
+          "complete": false,
+          "required": [
+            "7:gale",
+            "7:gale-refill"
+          ],
+          "used": [
+            "7:gale",
+            "7:gale-refill"
+          ]
+        },
+        {
+          "room": 8,
+          "kind": "gravity",
+          "next": 9,
+          "complete": false,
+          "required": [
+            "8:gravity"
+          ],
+          "used": [
+            "8:gravity"
+          ]
+        },
+        {
+          "room": 9,
+          "kind": "portal",
+          "next": 10,
+          "complete": false,
+          "required": [
+            "9:portal"
+          ],
+          "used": [
+            "9:portal"
+          ]
+        },
+        {
+          "room": 10,
+          "kind": "tear-ring",
+          "next": 11,
+          "complete": false,
+          "required": [
+            "10:tear",
+            "10:ring",
+            "10:tension"
+          ],
+          "used": [
+            "10:tear",
+            "10:ring",
+            "10:tension"
+          ]
+        },
+        {
+          "room": 11,
+          "kind": "weight-anvil",
+          "next": 12,
+          "complete": false,
+          "required": [
+            "11:weight",
+            "11:anvil"
+          ],
+          "used": [
+            "11:weight",
+            "11:anvil"
+          ]
+        },
+        {
+          "room": 12,
+          "kind": "gale-tear",
+          "next": 13,
+          "complete": false,
+          "required": [
+            "12:gale",
+            "12:gale-refill",
+            "12:tear"
+          ],
+          "used": [
+            "12:gale",
+            "12:gale-refill",
+            "12:tear"
+          ]
+        },
+        {
+          "room": 13,
+          "kind": "gravity-ring",
+          "next": 14,
+          "complete": false,
+          "required": [
+            "13:gravity",
+            "13:ring",
+            "13:tension"
+          ],
+          "used": [
+            "13:gravity",
+            "13:ring",
+            "13:tension"
+          ]
+        },
+        {
+          "room": 14,
+          "kind": "relay",
+          "next": 15,
+          "complete": false,
+          "required": [
+            "14:weight",
+            "14:anvil",
+            "14:tear",
+            "14:ring",
+            "14:tension"
+          ],
+          "used": [
+            "14:weight",
+            "14:anvil",
+            "14:tear",
+            "14:ring",
+            "14:tension"
+          ]
+        },
+        {
+          "room": 15,
+          "kind": "portal-gale",
+          "next": 16,
+          "complete": false,
+          "required": [
+            "15:portal",
+            "15:gale",
+            "15:gale-refill"
+          ],
+          "used": [
+            "15:portal",
+            "15:gale",
+            "15:gale-refill"
+          ]
+        },
+        {
+          "room": 16,
+          "kind": "pogo-tear",
+          "next": 17,
+          "complete": false,
+          "required": [
+            "16:pogo-1",
+            "16:uppercut-1",
+            "16:tear"
+          ],
+          "used": [
+            "16:pogo-1",
+            "16:uppercut-1",
+            "16:tear"
+          ]
+        },
+        {
+          "room": 17,
+          "kind": "uppercut-ring",
+          "next": 18,
+          "complete": false,
+          "required": [
+            "17:uppercut-1",
+            "17:pogo-1",
+            "17:ring",
+            "17:tension"
+          ],
+          "used": [
+            "17:uppercut-1",
+            "17:pogo-1",
+            "17:ring",
+            "17:tension"
+          ]
+        },
+        {
+          "room": 18,
+          "kind": "inversion-relay",
+          "next": 18,
+          "complete": true,
+          "required": [
+            "18:gravity",
+            "18:tear",
+            "18:gravity-up",
+            "18:gravity-down",
+            "18:ring",
+            "18:tension"
+          ],
+          "used": [
+            "18:tear",
+            "18:gravity",
+            "18:gravity-up",
+            "18:gravity-down",
+            "18:ring",
+            "18:tension"
+          ]
+        }
+      ],
+      "frames": 7641
+    },
+    {
+      "stage": 42,
+      "complete": true,
+      "deaths": 0,
+      "blood": 5,
+      "mode": "celeste-complete",
+      "events": [
+        {
+          "room": 0,
+          "kind": "tear-ring",
+          "next": 1,
+          "complete": false,
+          "required": [
+            "0:tear",
+            "0:ring",
+            "0:tension"
+          ],
+          "used": [
+            "0:tear",
+            "0:ring",
+            "0:tension",
+            "0:gravity"
+          ]
+        },
+        {
+          "room": 1,
+          "kind": "weight-anvil",
+          "next": 2,
+          "complete": false,
+          "required": [
+            "1:weight",
+            "1:anvil"
+          ],
+          "used": [
+            "1:weight",
+            "1:anvil"
+          ]
+        },
+        {
+          "room": 2,
+          "kind": "gale-tear",
+          "next": 3,
+          "complete": false,
+          "required": [
+            "2:gale",
+            "2:gale-refill",
+            "2:tear"
+          ],
+          "used": [
+            "2:gale",
+            "2:gale-refill",
+            "2:tear"
+          ]
+        },
+        {
+          "room": 3,
+          "kind": "gravity-ring",
+          "next": 4,
+          "complete": false,
+          "required": [
+            "3:gravity",
+            "3:ring",
+            "3:tension"
+          ],
+          "used": [
+            "3:gravity",
+            "3:ring",
+            "3:tension"
+          ]
+        },
+        {
+          "room": 4,
+          "kind": "relay",
+          "next": 5,
+          "complete": false,
+          "required": [
+            "4:weight",
+            "4:anvil",
+            "4:tear",
+            "4:ring",
+            "4:tension"
+          ],
+          "used": [
+            "4:weight",
+            "4:anvil",
+            "4:tear",
+            "4:ring",
+            "4:tension"
+          ]
+        },
+        {
+          "room": 5,
+          "kind": "portal-gale",
+          "next": 6,
+          "complete": false,
+          "required": [
+            "5:portal",
+            "5:gale",
+            "5:gale-refill"
+          ],
+          "used": [
+            "5:portal",
+            "5:gale",
+            "5:gale-refill"
+          ]
+        },
+        {
+          "room": 6,
+          "kind": "pogo-tear",
+          "next": 7,
+          "complete": false,
+          "required": [
+            "6:pogo-1",
+            "6:uppercut-1",
+            "6:tear"
+          ],
+          "used": [
+            "6:pogo-1",
+            "6:uppercut-1",
+            "6:tear"
+          ]
+        },
+        {
+          "room": 7,
+          "kind": "uppercut-ring",
+          "next": 8,
+          "complete": false,
+          "required": [
+            "7:uppercut-1",
+            "7:pogo-1",
+            "7:ring",
+            "7:tension"
+          ],
+          "used": [
+            "7:uppercut-1",
+            "7:pogo-1",
+            "7:ring",
+            "7:tension",
+            "7:gravity"
+          ]
+        },
+        {
+          "room": 8,
+          "kind": "inversion-relay",
+          "next": 8,
+          "complete": true,
+          "required": [
+            "8:gravity",
+            "8:tear",
+            "8:gravity-up",
+            "8:gravity-down",
+            "8:ring",
+            "8:tension"
+          ],
+          "used": [
+            "8:tear",
+            "8:gravity",
+            "8:gravity-up",
+            "8:gravity-down",
+            "8:ring",
+            "8:tension"
+          ]
+        }
+      ],
+      "frames": 4017
+    }
+  ],
+  "retry": [
+    {
+      "stage": 41,
+      "room": 3,
+      "pass": true
+    },
+    {
+      "stage": 41,
+      "room": 7,
+      "pass": true
+    },
+    {
+      "stage": 42,
+      "room": 1,
+      "pass": true
+    },
+    {
+      "stage": 42,
+      "room": 2,
+      "pass": true
+    },
+    {
+      "stage": 41,
+      "room": 5,
+      "pass": true
+    },
+    {
+      "stage": 41,
+      "room": 6,
+      "pass": true
+    },
+    {
+      "stage": 42,
+      "room": 6,
+      "pass": true
+    },
+    {
+      "stage": 42,
+      "room": 7,
+      "pass": true
+    }
+  ],
+  "ui": [
+    {
+      "stage": 41,
+      "x": 181.03134189767093,
+      "name": "Celeste Standard"
+    },
+    {
+      "stage": 42,
+      "name": "Fractured Celeste"
+    }
+  ],
+  "normalization": {
+    "speed": 212,
+    "dashCooldown": 0.75,
+    "movementGift": false,
+    "attackSpeed": 1,
+    "directionalBlade": true,
+    "weapon": "melee",
+    "stowed": null
+  },
+  "registration": {
+    "campaign": {
+      "ok": true,
+      "errors": [],
+      "warnings": [],
+      "stages": 45
+    },
+    "world": {
+      "ok": true,
+      "errors": [],
+      "nodes": 44,
+      "routes": 41,
+      "endingRoutes": 2
+    },
+    "progression": {
+      "ok": true,
+      "errors": [],
+      "zones": 43,
+      "connectors": 41,
+      "abilities": 13,
+      "vaultKeys": 7,
+      "foundationRuns": 16
+    }
+  },
+  "bladeMechanics": [
+    {
+      "kind": "pogo",
+      "keys": {
+        "down": true,
+        "attack": true
+      },
+      "pass": true
+    },
+    {
+      "kind": "pogo",
+      "keys": {
+        "attack": true
+      },
+      "pass": true
+    },
+    {
+      "kind": "pogo",
+      "keys": {
+        "up": true,
+        "attack": true
+      },
+      "pass": true
+    },
+    {
+      "kind": "pogo",
+      "keys": {
+        "down": true
+      },
+      "pass": true
+    },
+    {
+      "kind": "uppercut",
+      "keys": {
+        "up": true,
+        "attack": true
+      },
+      "pass": true
+    },
+    {
+      "kind": "uppercut",
+      "keys": {
+        "attack": true
+      },
+      "pass": true
+    },
+    {
+      "kind": "uppercut",
+      "keys": {
+        "down": true,
+        "attack": true
+      },
+      "pass": true
+    },
+    {
+      "kind": "hold-to-pound, tap and release rejection",
+      "pass": true
+    },
+    {
+      "kind": "brief endpoint momentum",
+      "stage": 41,
+      "room": 3,
+      "pass": true
+    },
+    {
+      "kind": "brief endpoint momentum",
+      "stage": 41,
+      "room": 11,
+      "pass": true
+    },
+    {
+      "kind": "brief endpoint momentum",
+      "stage": 41,
+      "room": 14,
+      "pass": true
+    },
+    {
+      "kind": "brief endpoint momentum",
+      "stage": 42,
+      "room": 1,
+      "pass": true
+    },
+    {
+      "kind": "brief endpoint momentum",
+      "stage": 42,
+      "room": 4,
+      "pass": true
+    },
+    {
+      "kind": "miss, single use, exact snapshot replay, retry",
+      "pass": true
+    },
+    {
+      "kind": "Pure Nail enemy down",
+      "pass": true
+    },
+    {
+      "kind": "Pure Nail enemy up",
+      "pass": true
+    }
+  ],
+  "feedbackChecks": [
+    {
+      "kind": "slash chord",
+      "direction": "down",
+      "attackBeforeDirectionFrames": -1,
+      "pass": true
+    },
+    {
+      "kind": "slash chord",
+      "direction": "down",
+      "attackBeforeDirectionFrames": 0,
+      "pass": true
+    },
+    {
+      "kind": "slash chord",
+      "direction": "down",
+      "attackBeforeDirectionFrames": 1,
+      "pass": true
+    },
+    {
+      "kind": "slash chord",
+      "direction": "down",
+      "attackBeforeDirectionFrames": 3,
+      "pass": true
+    },
+    {
+      "kind": "slash chord",
+      "direction": "up",
+      "attackBeforeDirectionFrames": -1,
+      "pass": true
+    },
+    {
+      "kind": "slash chord",
+      "direction": "up",
+      "attackBeforeDirectionFrames": 0,
+      "pass": true
+    },
+    {
+      "kind": "slash chord",
+      "direction": "up",
+      "attackBeforeDirectionFrames": 1,
+      "pass": true
+    },
+    {
+      "kind": "slash chord",
+      "direction": "up",
+      "attackBeforeDirectionFrames": 3,
+      "pass": true
+    },
+    {
+      "kind": "one anvil rebound per Down hold; release rearms",
+      "pass": true
+    },
+    {
+      "kind": "first tear burst",
+      "pass": true
+    },
+    {
+      "kind": "fixed portal burst",
+      "pass": true
+    },
+    {
+      "kind": "four-direction curved flight, bounded turn, dash exit",
+      "pass": true
+    }
+  ],
+  "extensions": {
+    "layouts": [
+      {
+        "stage": 41,
+        "length": 46040,
+        "rooms": [
+          {
+            "kind": "dash-lab",
+            "width": 2040,
+            "flight": [],
+            "timed": 0,
+            "rings": 0,
+            "bladeLabels": []
+          },
+          {
+            "kind": "tear",
+            "width": 1800,
+            "flight": [],
+            "timed": 0,
+            "rings": 0,
+            "bladeLabels": []
+          },
+          {
+            "kind": "ring",
+            "width": 1800,
+            "flight": [],
+            "timed": 0,
+            "rings": 3,
+            "bladeLabels": []
+          },
+          {
+            "kind": "weight",
+            "width": 2800,
+            "flight": [],
+            "timed": 0,
+            "rings": 0,
+            "bladeLabels": []
+          },
+          {
+            "kind": "anvil",
+            "width": 1800,
+            "flight": [],
+            "timed": 0,
+            "rings": 0,
+            "bladeLabels": []
+          },
+          {
+            "kind": "pogo",
+            "width": 1800,
+            "flight": [],
+            "timed": 0,
+            "rings": 0,
+            "bladeLabels": [
+              "pogo"
+            ]
+          },
+          {
+            "kind": "uppercut",
+            "width": 1800,
+            "flight": [],
+            "timed": 0,
+            "rings": 0,
+            "bladeLabels": [
+              "uppercut"
+            ]
+          },
+          {
+            "kind": "gale",
+            "width": 4400,
+            "flight": [
+              {
+                "refill": false,
+                "id": "7:gale"
+              },
+              {
+                "refill": true,
+                "id": "7:gale-refill"
+              }
+            ],
+            "timed": 0,
+            "rings": 0,
+            "bladeLabels": []
+          },
+          {
+            "kind": "gravity",
+            "width": 1800,
+            "flight": [],
+            "timed": 0,
+            "rings": 0,
+            "bladeLabels": []
+          },
+          {
+            "kind": "portal",
+            "width": 1800,
+            "flight": [],
+            "timed": 0,
+            "rings": 0,
+            "bladeLabels": []
+          },
+          {
+            "kind": "tear-ring",
+            "width": 1800,
+            "flight": [],
+            "timed": 1,
+            "rings": 2,
+            "bladeLabels": []
+          },
+          {
+            "kind": "weight-anvil",
+            "width": 2800,
+            "flight": [],
+            "timed": 0,
+            "rings": 0,
+            "bladeLabels": []
+          },
+          {
+            "kind": "gale-tear",
+            "width": 4400,
+            "flight": [
+              {
+                "refill": false,
+                "id": "12:gale"
+              },
+              {
+                "refill": true,
+                "id": "12:gale-refill"
+              }
+            ],
+            "timed": 0,
+            "rings": 0,
+            "bladeLabels": []
+          },
+          {
+            "kind": "gravity-ring",
+            "width": 1800,
+            "flight": [],
+            "timed": 0,
+            "rings": 2,
+            "bladeLabels": []
+          },
+          {
+            "kind": "relay",
+            "width": 2800,
+            "flight": [],
+            "timed": 0,
+            "rings": 1,
+            "bladeLabels": []
+          },
+          {
+            "kind": "portal-gale",
+            "width": 5200,
+            "flight": [
+              {
+                "refill": false,
+                "id": "15:gale"
+              },
+              {
+                "refill": true,
+                "id": "15:gale-refill"
+              }
+            ],
+            "timed": 0,
+            "rings": 0,
+            "bladeLabels": []
+          },
+          {
+            "kind": "pogo-tear",
+            "width": 1800,
+            "flight": [],
+            "timed": 0,
+            "rings": 0,
+            "bladeLabels": []
+          },
+          {
+            "kind": "uppercut-ring",
+            "width": 1800,
+            "flight": [],
+            "timed": 0,
+            "rings": 2,
+            "bladeLabels": []
+          },
+          {
+            "kind": "inversion-relay",
+            "width": 1800,
+            "flight": [],
+            "timed": 0,
+            "rings": 1,
+            "bladeLabels": []
+          }
+        ]
+      },
+      {
+        "stage": 42,
+        "length": 24200,
+        "rooms": [
+          {
+            "kind": "tear-ring",
+            "width": 1800,
+            "flight": [],
+            "timed": 2,
+            "rings": 2,
+            "bladeLabels": []
+          },
+          {
+            "kind": "weight-anvil",
+            "width": 2800,
+            "flight": [],
+            "timed": 0,
+            "rings": 0,
+            "bladeLabels": []
+          },
+          {
+            "kind": "gale-tear",
+            "width": 4400,
+            "flight": [
+              {
+                "refill": false,
+                "id": "2:gale"
+              },
+              {
+                "refill": true,
+                "id": "2:gale-refill"
+              }
+            ],
+            "timed": 0,
+            "rings": 0,
+            "bladeLabels": []
+          },
+          {
+            "kind": "gravity-ring",
+            "width": 1800,
+            "flight": [],
+            "timed": 1,
+            "rings": 2,
+            "bladeLabels": []
+          },
+          {
+            "kind": "relay",
+            "width": 2800,
+            "flight": [],
+            "timed": 1,
+            "rings": 1,
+            "bladeLabels": []
+          },
+          {
+            "kind": "portal-gale",
+            "width": 5200,
+            "flight": [
+              {
+                "refill": false,
+                "id": "5:gale"
+              },
+              {
+                "refill": true,
+                "id": "5:gale-refill"
+              }
+            ],
+            "timed": 0,
+            "rings": 0,
+            "bladeLabels": []
+          },
+          {
+            "kind": "pogo-tear",
+            "width": 1800,
+            "flight": [],
+            "timed": 0,
+            "rings": 0,
+            "bladeLabels": [
+              "pogo",
+              "uppercut"
+            ]
+          },
+          {
+            "kind": "uppercut-ring",
+            "width": 1800,
+            "flight": [],
+            "timed": 1,
+            "rings": 2,
+            "bladeLabels": []
+          },
+          {
+            "kind": "inversion-relay",
+            "width": 1800,
+            "flight": [],
+            "timed": 1,
+            "rings": 1,
+            "bladeLabels": []
+          }
+        ]
+      }
+    ],
+    "coldLifts": [
+      {
+        "stage": 41,
+        "room": 3,
+        "attempts": 48,
+        "reached": false,
+        "targetEdge": 2130,
+        "farthest": 2060.277102783769,
+        "highReach": 1802.6740730517922,
+        "gap": 1395
+      },
+      {
+        "stage": 41,
+        "room": 11,
+        "attempts": 48,
+        "reached": false,
+        "targetEdge": 1833,
+        "farthest": 1994.9400076019083,
+        "highReach": 1781.0617321622776,
+        "gap": 1148
+      },
+      {
+        "stage": 41,
+        "room": 14,
+        "attempts": 48,
+        "reached": false,
+        "targetEdge": 1663,
+        "farthest": 1884.9400076019083,
+        "highReach": 1652.2365536215293,
+        "gap": 1088
+      },
+      {
+        "stage": 42,
+        "room": 1,
+        "attempts": 48,
+        "reached": false,
+        "targetEdge": 1847,
+        "farthest": 1976.9400076019083,
+        "highReach": 1763.0617321622767,
+        "gap": 1180
+      },
+      {
+        "stage": 42,
+        "room": 4,
+        "attempts": 48,
+        "reached": false,
+        "targetEdge": 1677,
+        "farthest": 1866.9400076019028,
+        "highReach": 1634.236553621522,
+        "gap": 1120
+      }
+    ],
+    "missingRefills": [
+      {
+        "stage": 41,
+        "room": 7,
+        "kind": "gale",
+        "lostAt": 2525.655993483824,
+        "exit": 4240,
+        "land": 4080
+      },
+      {
+        "stage": 41,
+        "room": 12,
+        "kind": "gale-tear",
+        "lostAt": 2525.655993483844,
+        "exit": 4240,
+        "land": 4080
+      },
+      {
+        "stage": 41,
+        "room": 15,
+        "kind": "portal-gale",
+        "lostAt": 3357.4829415232816,
+        "exit": 5040,
+        "land": 4880
+      },
+      {
+        "stage": 42,
+        "room": 2,
+        "kind": "gale-tear",
+        "lostAt": 2262.6786937636753,
+        "exit": 4240,
+        "land": 4080
+      },
+      {
+        "stage": 42,
+        "room": 5,
+        "kind": "portal-gale",
+        "lostAt": 3121.022967503981,
+        "exit": 5040,
+        "land": 4880
+      }
+    ],
+    "rings": [
+      {
+        "release": "jump",
+        "caught": true,
+        "waits": true,
+        "inverted": true,
+        "corrected": true,
+        "expired": true,
+        "reset": true
+      },
+      {
+        "release": "down",
+        "caught": true,
+        "waits": true,
+        "inverted": true,
+        "corrected": true,
+        "expired": true,
+        "reset": true
+      },
+      {
+        "goldWait": {
+          "gold": true,
+          "held": true,
+          "deaths": 0,
+          "flipped": false
+        }
+      }
+    ]
+  },
+  "nativeBlade": [
+    {
+      "kind": "pogo",
+      "attackFirst": false,
+      "pass": true
+    },
+    {
+      "kind": "uppercut",
+      "attackFirst": false,
+      "pass": true
+    },
+    {
+      "kind": "pogo",
+      "attackFirst": true,
+      "pass": true
+    },
+    {
+      "kind": "uppercut",
+      "attackFirst": true,
+      "pass": true
+    }
+  ],
+  "sourceHashes": {
+    "index.html": "49ac7ed3f67137d26a39f06d4225d986ac00b2119e8c93bd838e9fae65f382db",
+    "bladefall-celeste.js": "93c78443e09653228180638ad277abac9b08207f896fbc696619943b1ed37eb6",
+    "bladefall-celeste-art.js": "79b39c3684c2f566cb36329d54085429a4f1d5df1e364438def2756fdacb2870",
+    "bladefall-act-two.js": "82df3da530aff1f646df473ebe8c496d264107bcb6e7c8da6c61108fb725a845",
+    "bladefall-platformer.js": "20578c7c42f241b98baaa3abd0f18a62de411bb32d6ad878fbc18639c4f72a12",
+    "bladefall-respec-renderer.js": "38e84b55799c3534fd2ad24f7c413f03ba361fb3e5c13e05e483f61950afaf25"
+  },
+  "errors": []
+}

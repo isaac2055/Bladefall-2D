@@ -1,0 +1,22 @@
+<!doctype html><meta charset="utf-8"><title>Climb sprite review</title><style>body{margin:24px;background:#10161e;color:#d6dce4;font:14px monospace}canvas{image-rendering:pixelated;width:1120px;height:720px}h1{font-size:20px}</style><h1>Bladefall · NPC & enemy detail review</h1><canvas width="560" height="360"></canvas>
+<script src="../../../public/bladefall-pcore-pitches-view.js"></script>
+<script>window.worlds=[];window.BladefallClimb={addWorld:w=>worlds.push(w)};</script>
+<script src="../../../public/bladefall-climb-worlds.js"></script>
+<script src="../../../public/bladefall-pcore-foes-view.js"></script>
+<script src="../../../public/bladefall-pcore-combat-view.js"></script>
+<script src="../../../public/bladefall-pcore-dev-rbr-marksman-view.js"></script>
+<script src="../../../public/bladefall-pcore-dev-rbr-gaol-view.js"></script>
+<script src="../../../public/bladefall-pcore-dev-rbr-sorcerer-view.js"></script>
+<script src="../../../public/bladefall-climb-art.js?v=7.270.art2"></script>
+<script>
+worlds.forEach(w=>Object.assign(BladefallPitchView.helpers.FOLK,w.folk));
+const b=document.querySelector('canvas').getContext('2d'),art=BladefallClimbArt,folk=Object.keys(BladefallPitchView.helpers.FOLK);
+function draw(){const t=Math.floor(performance.now()/17);b.fillStyle='#10161e';b.fillRect(0,0,560,360);b.font='7px monospace';
+folk.forEach((who,i)=>{const x=20+(i%10)*55,y=34+Math.floor(i/10)*47;art.person(b,x,y,who,t,i%2?1:-1);b.fillStyle='#a9b6c6';b.fillText(who,x-16,y+12);});
+const g={room:{id:'cl3-review',def:{}},frame:t,roomFrame:t,p:{parryTimer:0},bolts:[],foes:['moth','shell','ram','spit'].map((kind,i)=>({kind,x:22+i*65,y:182,w:kind==='moth'||kind==='spit'?8:16,h:12,alive:true,state:'walk',dir:1,dx:1,dy:0}))};
+BladefallPrecisionFoesView.draw(b,g);g.foes.forEach(f=>{b.fillStyle='#a9b6c6';b.fillText(f.kind,f.x,211)});
+g.combat={receivers:[],shots:[],enemies:['guard','wing','hound','archer'].map((kind,i)=>({kind,x:22+i*65,y:240,w:12,h:16,hp:2,face:1,state:'idle',exposed:0}))};g.ents=[];BladefallPrecisionCombatView.draw(b,g);g.combat.enemies.forEach(e=>{b.fillStyle='#a9b6c6';b.fillText(e.kind,e.x,278)});
+g.mk={x:330,y:181,w:10,h:16,face:1,state:'idle',need:3,hits:0};g.warden={x:400,y:178,w:16,h:24,dir:1,state:'idle',hp:3,wounds:0};g.sorc={x:480,y:181,w:10,h:18,face:1,state:'idle',need:3,hits:0,warded:true};
+for(const d of BladefallPrecisionDeviceViews)d.draw?.(b,g);b.fillStyle='#a9b6c6';b.fillText('Marksman',318,218);b.fillText('Warden',396,218);b.fillText('Sorcerer',466,218);
+requestAnimationFrame(draw);}draw();
+</script>

@@ -43,12 +43,13 @@ test('quest completes only after an explicit return and reward claims once',()=>
   const second=Quests.claim(first.progress);assert.equal(second.changed,false);assert.deepEqual(second.rewards,[]);
 });
 
-test('air reaction and returned projectile are distinct objective verbs',()=>{
+test('restored Choir flue replaces the obsolete fire-weapon objective',()=>{
   let state=Quests.createProgress();
   state=Quests.record(state,{type:'traveler-helped',target:'ilyra'}).progress;
   state=Quests.record(state,{type:'traveler-helped',target:'nim',stage:'frostfell'}).progress;
   assert.equal(Quests.record(state,{type:'return-projectile',target:'enemy'}).changed,false);
-  assert.equal(Quests.record(state,{type:'air-reaction',target:'fire'}).changed,true);
+  assert.equal(Quests.record(state,{type:'air-reaction',target:'fire'}).changed,false);
+  assert.equal(Quests.record(state,{type:'inspect',target:'choir-flue',stage:'updrafts'}).changed,true);
 
   let courier=Quests.createProgress();
   courier=Quests.record(courier,{type:'traveler-helped',target:'sera'}).progress;

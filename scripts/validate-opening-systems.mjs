@@ -2,14 +2,14 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import process from 'node:process';
-import puppeteer from 'puppeteer';
+import { launchChrome } from '../tests/launch-chrome.mjs';
 
 const ROOT=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const OUTPUT=resolve(ROOT,'docs/charters/opening-systems-integration.json');
 const URL=process.env.BLADEFALL_URL||'http://127.0.0.1:8877/index.html';
 const source=await readFile(resolve(ROOT,'public/index.html'),'utf8');
 const expectedVersion=source.match(/const VERSION='([^']+)'/)?.[1]||null;
-const browser=await puppeteer.launch({headless:true,protocolTimeout:60000,args:[
+const browser=await launchChrome({headless:true,protocolTimeout:60000,args:[
   '--no-sandbox','--disable-background-timer-throttling','--disable-renderer-backgrounding']});
 const page=await browser.newPage();const pageErrors=[];
 page.on('pageerror',error=>pageErrors.push(error.message));

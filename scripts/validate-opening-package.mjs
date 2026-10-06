@@ -3,7 +3,7 @@ import { spawnSync } from 'node:child_process';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import process from 'node:process';
-import puppeteer from 'puppeteer';
+import { launchChrome } from '../tests/launch-chrome.mjs';
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const output=resolve(root,'docs/charters/opening-package-integration.json');
@@ -18,7 +18,7 @@ const run=spawnSync(process.execPath,['--test',...tests],{cwd:root,encoding:'utf
 process.stdout.write(run.stdout||'');process.stderr.write(run.stderr||'');
 
 const pageErrors=[];
-const browser=await puppeteer.launch({headless:true,protocolTimeout:60000,args:[
+const browser=await launchChrome({headless:true,protocolTimeout:60000,args:[
   '--no-sandbox','--disable-background-timer-throttling','--disable-renderer-backgrounding']});
 const page=await browser.newPage();
 page.on('pageerror',error=>pageErrors.push(error.message));

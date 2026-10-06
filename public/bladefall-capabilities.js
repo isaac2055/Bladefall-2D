@@ -200,7 +200,8 @@
 
   function validate() {
     const errors = [];
-    if (abilities.length !== 12) errors.push('capability authority must cover all twelve constitutional abilities');
+    // THIRTEEN since Act Two: the Chainhook follows the gravity flip.
+    if (abilities.length !== 13) errors.push('capability authority must cover all thirteen constitutional abilities');
     if (abilities[0]?.id !== 'jump' || abilities[0]?.order !== 1) errors.push('jump must be the sole starting capability');
     for (let index = 0; index < abilities.length; index++) {
       const ability = abilities[index];

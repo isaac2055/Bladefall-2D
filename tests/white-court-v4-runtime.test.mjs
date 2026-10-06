@@ -66,12 +66,13 @@ test('Court victory grants direct Attunement once and saves a healed Ember-appro
  assert.ok(modules.capabilities.has(h.active(),'attunement'));
  assert.ok(h.circuits.has('court-defeated'));
  assert.equal(h.G.p.blood,5);assert.equal(h.G.p.fuel,100);
- assert.deepEqual([h.G.p.ckX,h.G.p.ckY],[15320,0]);
+ // 7.233 (owner): no automatic checkpoints — progress saves, the respawn point stays put.
+ assert.notDeepEqual([h.G.p.ckX,h.G.p.ckY],[15320,0]);
  assert.deepEqual([h.G.p.x,h.G.p.y],[start.x,start.y],'saving victory does not teleport the player');
  assert.equal(h.saves.length,1);assert.equal(h.saves[0].stage,8);
  assert.ok(modules.capabilities.has(h.saves[0].capabilities,'attunement'));
- assert.deepEqual([h.saves[0].snap.ckX,h.saves[0].snap.ckY],[15320,0]);
- assert.equal(h.meta.recovery.activeCheckpoint.zoneId,'frost-sorcerer');
+ assert.notDeepEqual([h.saves[0].snap.ckX,h.saves[0].snap.ckY],[15320,0]);
+ assert.notEqual(h.meta.recovery?.activeCheckpoint?.position?.x,15320);
  assert.equal(h.annotations.length,0);assert.equal(h.toasts.length,0);
  const stored=h.persistence;
  assert.equal(h.ctx.completeCourtReward(),false);assert.equal(h.saves.length,1);assert.equal(h.persistence,stored);
@@ -128,7 +129,8 @@ test('wheel and cache grant their authored contents once, silently, including re
  }
  assert.equal(h.grants.length,2);assert.equal(new Set(h.grants.map(g=>g.id)).size,2);
  assert.ok(h.circuits.has('court-wheel'));assert.ok(h.circuits.has('court-high-cache'));
- assert.equal(h.saves.length,2);assert.deepEqual(h.saves.map(s=>[s.snap.ckX,s.snap.ckY]),[[3240,0],[7340,420]]);
+ // 7.233 (owner): no automatic checkpoints — progress saves, the respawn point stays put.
+ assert.equal(h.saves.length,2);assert.ok(h.saves.every(s=>![3240,7340].includes(s.snap.ckX)));
  assert.equal(h.annotations.length,0);assert.equal(h.toasts.length,0);
  // Simulate freshly reconstructed objects whose completion lives in persistence.
  for(const action of ['wheel','cache'])h.ctx.interactWhiteCourt({courtAction:action,x:3000,y:0});
@@ -147,8 +149,9 @@ test('condensers accept only live authored cold routed through a portal and save
   }
   const valid=shot();h.ctx.captureSorcererSpell(receiver,valid);
   assert.equal(valid.life,0);assert.ok(h.circuits.has(receiver.circuitId));assert.equal(receiver.charge,1);
-  assert.deepEqual([h.G.p.ckX,h.G.p.ckY],[checkpoint,0]);assert.equal(h.saves.length,1);
-  assert.deepEqual([h.saves[0].snap.ckX,h.saves[0].snap.ckY],[checkpoint,0]);
+  // 7.233 (owner): no automatic checkpoints — progress saves, the respawn point stays put.
+  assert.notDeepEqual([h.G.p.ckX,h.G.p.ckY],[checkpoint,0]);assert.equal(h.saves.length,1);
+  assert.notDeepEqual([h.saves[0].snap.ckX,h.saves[0].snap.ckY],[checkpoint,0]);
   h.ctx.captureSorcererSpell(receiver,shot());assert.equal(h.saves.length,1);assert.equal(h.captures,1);
   assert.equal(h.annotations.length,0);assert.equal(h.toasts.length,0);
  }

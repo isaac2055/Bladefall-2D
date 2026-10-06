@@ -1,0 +1,31 @@
+{
+  "scope": "Mid-rescue saved-state fixture; real checkpoint placement, death recovery and normal movement completing the restored escort in campaign and preview.",
+  "results": [
+    {
+      "preview": false,
+      "journalButton": true,
+      "journalShowsObjective": true,
+      "placed": true,
+      "stage": 4,
+      "alive": true,
+      "phase": "active",
+      "step": 1,
+      "rescued": true,
+      "rescueDone": true,
+      "arrived": true
+    },
+    {
+      "preview": true,
+      "journalButton": true,
+      "journalShowsObjective": true,
+      "placed": true,
+      "stage": 4,
+      "alive": true,
+      "phase": "active",
+      "step": 1,
+      "rescued": true,
+      "rescueDone": true,
+      "arrived": true
+    }
+  ]
+}

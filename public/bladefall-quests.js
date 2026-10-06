@@ -17,9 +17,9 @@
       ],
       reward: { gold: 180 },
       dialogue: {
-        active: 'A road is not its stones. Bring me the windwrights’ note and the Keep’s oldest measure.',
-        turnIn: 'You found the same hand in sky and stone. Then this road was made to lead somewhere—not merely away.',
-        complete: 'The road has a name now, though I am no longer certain it belongs to this place.',
+        active: 'Two records left to compare. The Sky-Well plaque in the Updrafts. The foundation inscription at the Ruined Keep. Copy them down when you’re passing—no special trip.',
+        turnIn: 'They match. Same spacing on the plaque as on the Keep’s footings: same builders, same road. That goes on the chart as fact now, not a guess. Thank you.',
+        complete: 'Your notes are on the chart. Next person who takes a wagon out that way gets more than we had.',
       },
     },
     {
@@ -29,14 +29,14 @@
       intro: 'Ilyra believes a carried flame can reveal whether the world’s winds remember one another.',
       objectives: [
         { id: 'banked-flame', type: 'traveler-helped', target: 'nim', stage: 'frostfell', label: 'Bring Nim and the banked flame through Frostfell.' },
-        { id: 'ignite-current', type: 'air-reaction', target: 'fire', stage: null, label: 'Ignite a wind tunnel or updraft with a fire weapon.' },
+        { id: 'ignite-current', type: 'inspect', target: 'choir-flue', stage: 'updrafts', label: 'Return to the restored Choir flue in the Updrafts.' },
         { id: 'return-ilyra', type: 'talk', target: 'ilyra', stage: 'updrafts', label: 'Return to Ilyra in the Updraft Canyons.' },
       ],
       reward: { gold: 240 },
       dialogue: {
-        active: 'The frost tenders bank fire without consuming it. If their craft can enter a current, the sky may answer.',
-        turnIn: 'It sang the third note, didn’t it? Fire should roar. Here, it remembered a song.',
-        complete: 'I still hear that impossible note whenever the wind changes.',
+        active: 'Frostfell folk can bank a fire so it keeps for days. Help Nim carry one through Frostfell, then look in on the Choir flue here. I want to know if heat will ride this wind.',
+        turnIn: 'Heard it, did you? The flue sang. Fire ought to roar in a flue that size, and that one sang. I only mend them; don’t ask me why.',
+        complete: 'Every time the wind shifts I hear that note again. Can’t get it out of my head. Aye, I’ve tried.',
       },
     },
     {
@@ -51,9 +51,9 @@
       ],
       reward: { gold: 320 },
       dialogue: {
-        active: 'A courier is not the message. Turn one of theirs around and see whether the road changes it.',
-        turnIn: 'Returned steel, two floors, one road. Good. The seal was never deciding what could pass—only what it believed.',
-        complete: 'Every locked threshold now looks like an argument I have already won.',
+        active: 'Two things. Send one of their shots through your mouths. Then read the prayer in the Inversion. Come and tell me after.',
+        turnIn: 'You turned their shot round and read the prayer. Good. So that seal never cared what you are—only what it takes you for. I can work with that.',
+        complete: 'Every locked door I see now, I think: I’ve beaten one of you. Aye, it’s a good feeling.',
       },
     },
     {
@@ -69,9 +69,9 @@
       ],
       reward: { gold: 200 },
       dialogue: {
-        active: 'Three effects remain unpriced: a broken standard, a cold rhythm, and an ember returned.',
-        turnIn: 'Forgive me. I had hoped the list would become less familiar when complete.',
-        complete: 'Your effects are in order. I am sorry they were ever scattered.',
+        active: 'Three entries are still missing from my list, I’m afraid. The broken standard past the Woods. The Frost Court’s siphon record. The Foundry ledger. If you pass them, would you look for me?',
+        turnIn: 'Thank you. That completes it. I’d hoped the list would feel less familiar once it was finished. It doesn’t. Forgive me—that isn’t your concern.',
+        complete: 'Your things are all entered now, and in order. I’m sorry they were ever scattered like that.',
       },
     },
     {
@@ -86,10 +86,10 @@
       ],
       reward: { gold: 160 },
       dialogue: {
-        offer: 'The gate chain is under strain. I have been listening to it all morning.',
-        active: 'That lower cradle used to take the weight. Now the gate carries all of it.',
-        turnIn: 'There. Quiet at last.',
-        complete: 'I will keep this road open. You have somewhere to come back to.',
+        offer: 'Gate chain’s taking the whole load on its own. I’ve listened to it groan all morning. There’s two safety catches in the Drop Yard: knock the first loose, let the hoist settle on its cradle, then free the upper one.',
+        active: 'That lower cradle used to take the weight. Right now the gate’s carrying the lot. First catch, then the upper one.',
+        turnIn: 'Hear that? Nothing. That’s the sound of a chain that isn’t about to snap.',
+        complete: 'I’ll keep this road open. Whatever’s out there, you’ve somewhere to come back to.',
       },
     },
     {
@@ -104,10 +104,10 @@
       ],
       reward: { gold: 180 },
       dialogue: {
-        offer: 'My mark is on the old watch token. I left it above the gallery.',
-        active: 'I will wait at the far gate. The firing sounds different from there.',
-        turnIn: 'My mark. I made that before the masks. Here, take the purse.',
-        complete: 'I used to know every bow by its sound.',
+        offer: 'The old watch token’s got my mark on it. I left it up above the gallery. I’d like it back.',
+        active: 'I’ll be at the far gate, out of the line of fire. The token’s above the gallery.',
+        turnIn: 'That’s my mark. Cut it before any of them wore masks. Here—the purse is yours.',
+        complete: 'I used to know every archer on this watch by name. Couldn’t tell you one of them now.',
       },
     },
   ];

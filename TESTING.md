@@ -1,3 +1,76 @@
+# The Climb — 7.265.0
+
+- **Build check:** `npm run verify:climb` re-proves, for all nine worlds:
+  - every seam: the previous room's route carries the knight across, and a search reaches the next fire with no death;
+  - every room's own route from its fire;
+  - a safe idle at each fire;
+  - that `public/bladefall-climb-worlds.js` matches a fresh build.
+- **In a browser:** open `precision.html?pitch=climb&world=N`. For each section in `BladefallPitchView.climb.state().world.sections`:
+  1. call `retryRoom()` and a few idle frames (stand at the fire, which closes the seam);
+  2. play `BladefallPrecisionRooms.tapes[section.room]` with `BladefallPrecisionView.advance` until `view.g.room.id` changes.
+
+  Since 7.264, `advance` does nothing while `view.paused`, so unpause inside the evaluate. Quest doors use the `<room>#side` tapes.
+
+# Touch controls and the Android app — 7.258.0
+
+- **Touch:** `npm run verify:touch` (needs the dev server; the default URL is http://localhost:8371). It drives headless Chrome emulating a Galaxy S23 Ultra in landscape (824×384 at 2.8125 dppx) with real touch events through `page.touchscreen`, and reads the game's own events.
+  - Multi-touch uses two `touchStart` handles at once.
+  - Gesture timing runs on game time, so a check that holds a finger for N ms holds it in the game too.
+  - Headless touch moves can be slow. A swipe check moves in four quick steps; a slow stepped swipe reads as press-then-swipe (a jump-dash).
+- **APK:** `npm run build:apk`. The script checks itself with `apksigner verify`, and `aapt2 dump badging android/dist/*.apk` shows the manifest. It has not yet been run on an emulator; install and play on a phone (`android/README.md`).
+
+# Merge Pitches — 7.257.0
+
+`npm run verify:merge-pitches` (no browser) checks:
+- every pitch room finishes on its tape with no deaths;
+- the pitch rooms stay out of the Precision Courses (they register only with `?pitch=`; in node, set `globalThis.BLADEFALL_PITCHES=true` before requiring `public/bladefall-pcore-pitches.js`);
+- level numbering is unchanged.
+
+**Browser checks:**
+- **Pitches A and B:** open `precision.html?pitch=outskirts` or `?pitch=frostfell` and replay each room's tape with `BladefallPrecisionView.advance`. Room slides hold for 26 frames, so step through them before the next tape.
+- **Pitch C:** from the title, click `#mergeBtn`, then `#mpRoad`.
+  - Hold ArrowRight, and jump the small pits at about x 9250 and 11450.
+  - `BladefallMergeRoad.active().phase` steps through `road`, `opening`, `pocket` and `closing`.
+  - Inside the frame (`precision.html?pitch=pocket-a` or `pocket-b`), replay the room's tape. The host gets `pocket-cleared` and puts the knight back on the road.
+- `meta.run` must stay untouched throughout.
+
+Plan: `docs/plans/merge-pitches.md`.
+
+# Gate Trials — 7.251.0
+
+The campaign's gate walls (`public/bladefall-gate-trials.js`) open Precision Core trials in a frame (`precision.html?trial=<id>&from=<level>&to=<level>&start=<level>`).
+
+**Checking the flow:** drive the real page in headless Chrome, the way the headless-browser scripts do.
+- In the host, `beginRun(0,null,{hp:1,dmg:1})`, then walk right past Olan (x 4700).
+- Inside the trial frame, `BladefallPrecisionView.advance(frames)` plays a room's tape. Click `#pcNext` between levels and `#pcThrough` at the end.
+
+**Bypass switches:**
+- Route bots and regression runs that walk the regions should load `index.html?gates=off`.
+- TAS runs treat every gate as open unless the URL includes `?gates`.
+- The `OFF` constant at the top of the module removes every gate, for baseline comparisons.
+
+Plan and decisions: `docs/plans/gate-trials.md`.
+
+# Precision Core — 7.253.0
+
+`npm run verify:precision-core` (`scripts/verify-precision-core.mjs`, no browser) runs 282 checks, about 8 minutes (Parts I–VI and Momentum X1–X5; Part VI adds a wrong-strategy family per room and Isaac's skip family for Loop and Let Go; Part IV adds shared-rule fixtures for the merged foe sets, Part V adds portal-rule fixtures: slot snapping, colour alternation, relayed bolts, barrier close, dash-through, fling limit) on the new engine (`public/bladefall-pcore*.js`, page `precision.html`): movement rules measured against their constants (27 px jump, 9-frame dash after a 3-frame freeze, 5 coyote frames, 4-frame jump buffer, 4 px corner correction, super 260 / hyper 325 px/s, crystal ignores an unspent dash, slide-stone stop, lantern return, retry reset); every room's intended tape replays to its exit with no deaths and identically twice; and for every puzzle room, a family of tempting wrong strategies (single dashes, crossing without the object, pushing before flipping, and so on) all fail. These families are evidence against the obvious bypasses, not proof no other route exists. A family that tests a state rather than an exit must also require no deaths, because events from before a respawn stay in the log.
+
+Levels 75–199 (7.254, Parts VII–XX): `npm run verify:precision-parts` runs `scripts/verify-precision-devices.mjs` (50 device-rule fixtures) and every `scripts/verify-precision-part-NNN.mjs` (routes, a wrong-strategy family per room, adversarial beam searches for skips; 25–44 checks per part, 2–10 min each). Part design notes: `docs/design/precision-parts/`.
+
+`node scripts/pcore-validate.mjs` checks room shape. `node scripts/pcore-tape.mjs <room> '<tape>' [every]` prints a trace and ASCII picture; `scripts/pcore-plan.mjs` is the staged planner used to author tapes. In a browser, `BladefallPrecisionView.advance(frames)` steps exact inputs and draws, and `pump(n)` runs the real loop including keyboard state (useful when the page is hidden and `requestAnimationFrame` is paused). The main game's service worker caches the pcore files: after editing them, unregister it and clear caches before trusting a reload. Design and room list: `docs/design/PRECISION-CORE.md`. Automated checks do not establish fun or difficulty; the rooms await owner playtest.
+
+# Workshop review — 7.244.0
+
+`npm run verify:workshop-puzzles` independently replays all ten current candidates and tests menu counts, root-brake release, ballast movement, selective memory platforms, thorn warning/bloom, carriage programming, attempt resets and all four Q cable docks. Setup writes are used only for isolated device tests; completed-route evidence uses recorded buttons from the public room entrance.
+
+`verify:precision-workshop` covers all thirty internal rooms, the three visible playlists, applicable mechanism removals, timing probes and ordinary desktop/mobile picker access. Six retired A–F rooms stay in the internal data for stable IDs, but have no visible picker. `verify:workshop-bank` protects fourteen approved layouts and input hashes. `verify:workshop-flight` checks manual four-direction flight, two spring encounters and two deliberate cable exits per K variant. Optional spring routes are allowed: the previous forced-tube omission contract is retired.
+
+`verify:precision-workshop:coop` accepts a comma-separated room list and runs simultaneous/staggered routes through production packet handlers over in-memory transport. This review reruns the ten candidates; it does not claim internet latency/performance or repair unrelated campaign co-op issues.
+
+The route authoring helper may search with off-room obstacles omitted for speed, then restores the full world before recording each selected input sequence. The independent verifier always uses the full world. `/tmp/workshop-leaps244.json` is only a validated search cache, never shipping game state.
+
+Older candidate/shortcut evidence describes previous layouts and must not be presented as current proof. Current design and placement report: `docs/charters/celeste/WORKSHOP-244-PLACEMENT.md`. Approved rooms are banked for future adaptation, not inserted into the campaign.
+
 # Movement testing
 
 Run `npm run serve` and open `/index.html?tas=1` on the local server. The opt-in TAS harness is `window.__BF.tas`; automatic gameplay updates/rendering are gated off in this mode, so manual calls control movement frames. Normal play is unaffected. Determinism is scoped to player movement within one loaded level, not enemy AI, combat, cosmetics, or asynchronous zone transitions.
@@ -27,7 +100,7 @@ console.log(game.getPlayerState());
 
 ## Adding and running tests
 
-Add movement tests to `tests/tas-runtime.test.mjs`, following its `node:test`, `node:assert/strict`, and `openMovementHarness(t)` pattern. It starts an isolated server and fresh Puppeteer browser; no existing dev server is required. Chrome defaults to `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`; override with `PUPPETEER_EXECUTABLE_PATH` when needed. `openMovementHarness(t, {tas: false})` exercises normal play: the startup regression clicks Start, skips the intro, waits 120 automatic frames at the real spawn, then runs and jumps using keyboard events. A separate gate test checks both locked and unlocked western return machinery.
+Add movement tests to `tests/tas-runtime.test.mjs`, following its `node:test`, `node:assert/strict`, and `openMovementHarness(t)` pattern. It starts an isolated server and fresh Puppeteer browser; no existing dev server is required. Chrome defaults to `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`; override with `PUPPETEER_EXECUTABLE_PATH` when needed. Start every browser with `launchChrome()` from `tests/launch-chrome.mjs`, not `puppeteer.launch()`: it adds `--disable-features=MacAppCodeSignClone`, without which each killed or timed-out run leaves a 1.4 GB copy of Chrome in the macOS temp folder until reboot. `openMovementHarness(t, {tas: false})` exercises normal play: the startup regression clicks Start, skips the intro, waits 120 automatic frames at the real spawn, then runs and jumps using keyboard events. A separate gate test checks both locked and unlocked western return machinery.
 
 Use tolerance-based assertions for floating-point values, not exact equality. Existing arc/transport checks use `near()` with `1e-7`; the ground baseline uses `1e-9` numerical slack and a 1% final-speed allowance. Exact checks remain appropriate for booleans, state strings, and frame counts. Read movement tuning from `window.__BF.movementState().profile.tuning` and timestep from `window.__BF.simulation.fixedDt`; follow the existing source extraction for gravity instead of guessing constants.
 
@@ -269,3 +342,18 @@ refuge close views temporarily center the camera for rendering only; restore it
 before advancing simulation. The active frost cap draws after the portal skin.
 Latest full regression:541/541; the subsequent visual-only cap change passes the
 continuous replay/capture and baseline/parity rerun.
+
+## Precision courses
+
+Combat Rooms in the new Precision Core: `npm run verify:combat-rooms` runs 36 checks, including all ten death-free legal input routes with complete simulation-state comparison on every frame, route counterfactuals, safe inspection before moving, parry/launch/pogo rules, projectile and moving-solid interactions, and room resets. `node scripts/verify-combat-rooms.mjs --write` refreshes `docs/evidence/combat-rooms-verification.json`. `npm run verify:precision-core` passes 114 checks including the ten additional room recordings and the original movement/bypass suite. Browser review covers all ten layouts, selection/questions, first-room replay transition and final-room chapter completion. See `docs/design/COMBAT-ROOMS.md`; human difficulty and physical gamepad playtesting remain outstanding.
+
+`npm run verify:celeste` replays both complete recorded routes, checks checkpoint reset, blade direction/collision and Pure Nail enemy behavior, movement normalization, catalog registration, native directional attack input, and fresh-save UI entry. The blade tests use explicit isolated fixtures; the two complete routes use no positional corrections. Details and input tapes: `docs/charters/celeste/`. `scripts/celeste-check.mjs --course` regenerates the route receipts using legal-input policies; its `--rooms` mode uses explicitly isolated checkpoint fixtures and is not full-course evidence.
+
+
+Precision Workshop (stage 44): `npm run verify:precision-workshop` replays all twelve rooms and both playlists, 26 negative trials, native UI and retry/input checks, rail-drop and post-collapse coyote-jump checks. `npm run verify:precision-workshop:coop` runs both simultaneous and staggered clients using production packet handlers; moving-cutter recordings legally idle to align with their recorded world phase. Evidence: `docs/charters/celeste/evidence/workshop/`.
+
+Workshop owner-review regressions (7.239): `npm run verify:workshop-review` checks physical wall falls, corner grace, undashed-rift contact, backtracking in all twelve rooms, 96 dash vectors plus real keyboard aiming, late direction chords, H overshoot/finish, and a legal continuation from J's halfway rest. Scene fixtures establish collision edge cases; full room and checkpoint continuations use recorded/legal player inputs.
+
+7.240 bank/candidates: sixteen legal room tapes, three non-contiguous playlists; `npm run verify:workshop-bank` compares G/I/J/L authored geometry and verifies growth, moving strike, return-collapse, sluice, buffered crumble landing and first-three presentation. `--record-bank` deliberately replaces the approval fixture; do not use that flag to hide drift. `verify:workshop-review` now covers 128 vectors, native simultaneous event orders, both crumble jumps and timed airborne recharge. Current early-route recordings exclude the removed stage-0 carrier.
+
+7.241 independent candidates: `npm run verify:workshop-candidates` checks six normal routes,18 simple legal-input bypass attempts,role-specific state changes,retry cleanup,M's actual return-before-drop,N's delayed contact,K's finite slow projectile collision,O's three opposing recoil vectors and P's gate grace. `verify:precision-workshop` now replays17 rooms/three playlists/35 counterfactuals. `verify:workshop-bank` protects G/H/I/J/L geometry AND tape hashes. `verify:workshop-review` covers136 dash vectors plus native chord orders. Co-op covers17 rooms simultaneously and staggered with simulated transport. Old7.240 M–P tests are superseded, not proof about the replacement rooms.

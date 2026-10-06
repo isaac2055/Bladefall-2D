@@ -286,12 +286,22 @@ Instrumental only dark fantasy video game boss battle music, 144 BPM, fast 3/4 t
 ### 10 — Emberdeep · exploration · 3:30
 
 *A buried forge that never stopped running: cooling road, pour schedule, a held bridge over a
-live furnace. Symptom: fever rising. Returns to the home key, now hot. Mechanical,
-timetabled, sweating.*
+live furnace. Symptom: fever rising. Returns to the home key, now hot.*
+
+**Revised 2026-09-22.** The first take read as a metronome in play. The original prompt asked
+for "interlocking clockwork percussion… keeping strict time" and opened and closed on that
+ticking, so the grid became the whole track. This version leads with the cello melody, makes
+the percussion loose and human with gaps between clusters, and bans the ticking outright.
 
 ```text
-Instrumental only dark fantasy video game music for an underground volcanic forge that never stopped running, 100 BPM, D minor, hot, mechanical and driven. Interlocking clockwork percussion of ticking gears, ratchets and metal taps keeping strict time, rhythmic anvil strikes, a droning gritty hurdy-gurdy, low brass heaving like bellows, a pulsing low cello and contrabass ostinato, solo cello melody straining upward in slow climbing phrases, felt piano low octaves, an insistent heartbeat-like low pulse slightly too fast, heat-shimmer tape-warble on the sustained notes. Mood: oppressive heat, a rising fever, machinery working to a schedule nobody remembers, urgency and endurance. Structure: begins with clockwork ticking and drone alone, anvils and ostinato lock in, brass and cello climb to a sweltering peak in the final third, then drops back to ticking and drone. Seamless loop for a game level: steady tempo throughout, ends in the same sparse texture it began with, no fade-out and no final chord. No vocals, no choir, no spoken words.
+Instrumental only dark fantasy video game music for an underground volcanic forge that never stopped running, 96 BPM, D minor, hot, heaving and weary. A solo cello leads with a long climbing melody in uneven phrases that stretch and settle, answered by low brass swelling like a great bellows breathing in and out. Percussion is hand-played and human, never mechanical: anvil and hammer blows falling in loose irregular clusters, two quick then one late, with long gaps between them, plus deep scraping metal and distant furnace roar. A gritty hurdy-gurdy drone underneath, felt piano in low octaves, a slow heartbeat-like low pulse that is uneven like breath, and heat-shimmer tape-warble on the sustained notes. Strictly no ticking clock, no gears, no ratchets, no grid of repeated metal taps. Mood: oppressive heat, a rising fever, exhausted bodies keeping an old works alive, endurance rather than machinery. Structure: opens with the cello melody and drone alone, bellows brass and scattered hammers gather underneath, swells to a sweltering peak in the final third, then falls back to cello and drone. Seamless loop for a game level: steady tempo, ends in the same texture it began with, no fade-out and no final chord. No vocals, no choir, no spoken words.
 ```
+
+**Also exclude:** `clockwork, ticking, metronome, gears, ratchet, mechanical percussion, industrial techno, drum machine, quantized, steady pulse`
+
+Generated as **“Embers of the Weary Forge”** and wired to stage 9 on 2026-09-22, replacing
+“The Eternal Furnace”. Envelope check on the two takes: the old one's strongest recurrence
+was a 0.22 s tick (the metronome), the new one's is a 0.94 s phrase swell.
 
 ### 11 — Ember Colossus · mini-boss level (the Foundry) · 3:30
 

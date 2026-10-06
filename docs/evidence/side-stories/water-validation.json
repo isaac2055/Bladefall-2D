@@ -1,0 +1,10 @@
+{
+  "scope": "Cup-completed and local conduit/return checkpoint fixtures. Actual jump/slam opens existing tap; ordinary interaction selection beside Sable completes the optional water task.",
+  "result": {
+    "blocked": true,
+    "tapOpened": true,
+    "target": "water",
+    "step": 2,
+    "phase": "ready"
+  }
+}

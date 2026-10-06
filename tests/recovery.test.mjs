@@ -10,7 +10,7 @@ const Recovery = globalThis.BladefallRecovery;
 
 test('N05 recovery catalog gives every zone a deliberate site and useful station network', () => {
   assert.equal(globalThis.BladefallProgression.foundationRuns.find((run) => run.id === 'N05').status, 'complete');
-  assert.deepEqual(Recovery.validateCatalog(), { ok: true, errors: [], sites: 15, stations: 9 });
+  assert.deepEqual(Recovery.validateCatalog(), { ok: true, errors: [], sites: 40, stations: 9 });
   assert.equal(Recovery.siteForZone('outskirts').id, 'march-camp');
   assert.equal(Recovery.siteForZone('brute').fastTravel, false);
   assert.equal(Recovery.siteForZone('deep-line').fastTravel, true);
@@ -90,7 +90,8 @@ test('fog-of-war derives visited cells and frontier from persistent world eviden
   assert.equal(map.nodes.find((node) => node.id === 'outskirts').status, 'current');
   assert.equal(map.nodes.find((node) => node.id === 'outskirts').discoveredCells, 2);
   assert.equal(map.nodes.find((node) => node.id === 'black-woods').status, 'frontier');
-  assert.equal(map.nodes.find((node) => node.id === 'warden').status, 'frontier');
+  // 7.234: only the next zone on the road is named; the Gaol stays hidden from the Outskirts.
+  assert.equal(map.nodes.find((node) => node.id === 'warden').status, 'hidden');
   assert.equal(map.nodes.find((node) => node.id === 'deep-line').status, 'hidden');
   assert.equal(map.routes.find((route) => route.id === 'outskirts-black-woods').status, 'frontier');
 });

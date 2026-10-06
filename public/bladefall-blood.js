@@ -11,6 +11,7 @@
   // the fifth completes measure seven. Old fractional saves are rounded to a
   // whole measure so the HUD can never imply "part of a hit" again.
   function maxMeasures(vitalityKnots){
+    if(vitalityKnots&&typeof vitalityKnots==='object')return BASE_MEASURES+Math.max(0,Math.floor(Number(vitalityKnots.healthBonus)||0));
     const knots=Math.max(0,Math.floor(Number(vitalityKnots)||0));
     return BASE_MEASURES+(knots>=3?1:0)+(knots>=5?1:0);
   }

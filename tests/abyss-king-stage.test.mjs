@@ -27,7 +27,7 @@ const fn = n => fnFrom(source, n);
 const start = source.indexOf('const ABYSS_KING_LEVEL='),
       end = source.indexOf('\nconst CUSTOM_LEVELS=', start);
 assert.ok(start >= 0 && end > start);
-const ctors = ['Pl','Gr','GrAt','Wl','Slate','SlateWall','Check','DoorSeal','Plate','Scenery','CoinOb','Sp','Br',
+const ctors = ['LPortal','Pl','Gr','GrAt','Wl','Slate','SlateWall','Check','DoorSeal','Plate','Scenery','CoinOb','Sp','Br',
   'Crate','StoryRelic','SealedRecollection','ElementBeat','KingBeat','KingScenery','Seam','Sign',
   'setupRightHand'];   // the real one — build() calls it, so the test runs it for real
 const THRONE = Number(/const THRONE_ARENA_X=(\d+)/.exec(source)[1]);
@@ -198,7 +198,8 @@ test('the echo is a real verb: bound, gated, and it weighs', () => {
   assert.match(source, /echo:'Leave \/ Recall Echo'/, 'and a rebindable label');
   const avail = fn('echoVerbAvailable');
   assert.match(avail, /G\.stageIndex===13/, 'the Throne owns it');
-  assert.match(avail, /G\.echoTrial&&G\.echoTrial\.active/, "and it yields to the King's own trial");
+  assert.match(avail, /G\.stageIndex===12/, 'the first Tyrant duel unlocks the manual Echo too');
+  assert.doesNotMatch(avail, /!\(G\.echoTrial/, 'manual and portal Echoes may coexist');
   const leave = fn('leaveEcho'), recall = fn('recallEcho');
   assert.match(leave, /G\.echoBody=\{/, 'leaving stands a body up');
   assert.match(recall, /p\.x=e\.x;p\.y=Math\.max\(0,e\.y\)/, 'recall TRADES places');
@@ -283,8 +284,8 @@ test('the King holds the back of his hall, on one clock, and leaves no portal be
   assert.equal(/e\.shootCd=1\.05/.test(kingBlock), false,
     'and phase 3 no longer overwrites the cadence it was given');
   // 3. THE SHAPE. Wider than stock (0.22) at every phase, so a volley has gaps in it.
-  assert.match(source, /e\.shot=Object\.assign\(\{\},e\.shot,\{spread:0\.52\}\);\s*\n\s*e\.shootCd=3\.2;/,
-    'the fight opens wide and slow');
+  assert.match(source, /e\.shot=Object\.assign\(\{\},e\.shot,\{spread:0\.52\}\);\s*\n\s*e\.shootCd=2\.5;/,
+    'the opening volley retains dodge gaps at the new cadence');
   assert.match(kingBlock, /e\.shot\.count=4;e\.shot\.spread=0\.48;/, 'phase 2 adds a bolt, stays wide');
   assert.match(kingBlock, /e\.shot\.count=5;e\.shot\.spread=0\.44;e\.shot\.speed=410;/, 'phase 3 likewise');
   // Summons are back for the last phase only, and only in the air (owner, 7.168).
@@ -299,4 +300,17 @@ test('the King holds the back of his hall, on one clock, and leaves no portal be
   const kill = fn('killEnemy');
   assert.match(kill, /\(e\.type==='king'&&G\.stageIndex===13\)\)G\.portal=null;/,
     'the Abyss King is excluded from the completion portal');
+});
+
+test('the crown visibly loses one of its four teeth on every fracture', async()=>{
+ const renderer=await read('bladefall-respec-renderer.js');
+ const marks=[];
+ const c=vm.createContext({Math,Z:1,WX:x=>x,WY:y=>y,glow:()=>{},ctx:{fillRect(){}},B:(x,y,w,h,color)=>marks.push({w,color})});
+ vm.runInContext(fnFrom(renderer,'drawKingFigure'),c);
+ for(let round=0;round<=4;round++){
+ marks.length=0;c.e={x:0,y:0,w:60,h:90,echoFight:true,echoFractures:4,echoRound:round};
+ vm.runInContext('drawKingFigure(e)',c);
+ assert.equal(marks.filter(m=>m.w===3&&m.color==='#d8bd7a').length,4-round);
+ assert.equal(marks.filter(m=>m.w===3&&m.color==='#4a4947').length,round);
+ }
 });

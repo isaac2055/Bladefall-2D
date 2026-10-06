@@ -1,0 +1,374 @@
+{
+  "courses": [
+    {
+      "stage": 41,
+      "together": false,
+      "runs": [
+        {
+          "room": 0,
+          "kind": "dash-lab",
+          "bothCompleted": true,
+          "framesPerPlayer": 346
+        },
+        {
+          "room": 1,
+          "kind": "tear",
+          "bothCompleted": true,
+          "framesPerPlayer": 143
+        },
+        {
+          "room": 2,
+          "kind": "ring",
+          "bothCompleted": true,
+          "framesPerPlayer": 249
+        },
+        {
+          "room": 3,
+          "kind": "weight",
+          "bothCompleted": true,
+          "framesPerPlayer": 368
+        },
+        {
+          "room": 4,
+          "kind": "anvil",
+          "bothCompleted": true,
+          "framesPerPlayer": 365
+        },
+        {
+          "room": 5,
+          "kind": "pogo",
+          "bothCompleted": true,
+          "framesPerPlayer": 308
+        },
+        {
+          "room": 6,
+          "kind": "uppercut",
+          "bothCompleted": true,
+          "framesPerPlayer": 299
+        },
+        {
+          "room": 7,
+          "kind": "gale",
+          "bothCompleted": true,
+          "framesPerPlayer": 834
+        },
+        {
+          "room": 8,
+          "kind": "gravity",
+          "bothCompleted": true,
+          "framesPerPlayer": 397
+        },
+        {
+          "room": 9,
+          "kind": "portal",
+          "bothCompleted": true,
+          "framesPerPlayer": 160
+        },
+        {
+          "room": 10,
+          "kind": "tear-ring",
+          "bothCompleted": true,
+          "framesPerPlayer": 228
+        },
+        {
+          "room": 11,
+          "kind": "weight-anvil",
+          "bothCompleted": true,
+          "framesPerPlayer": 387
+        },
+        {
+          "room": 12,
+          "kind": "gale-tear",
+          "bothCompleted": true,
+          "framesPerPlayer": 829
+        },
+        {
+          "room": 13,
+          "kind": "gravity-ring",
+          "bothCompleted": true,
+          "framesPerPlayer": 390
+        },
+        {
+          "room": 14,
+          "kind": "relay",
+          "bothCompleted": true,
+          "framesPerPlayer": 384
+        },
+        {
+          "room": 15,
+          "kind": "portal-gale",
+          "bothCompleted": true,
+          "framesPerPlayer": 821
+        },
+        {
+          "room": 16,
+          "kind": "pogo-tear",
+          "bothCompleted": true,
+          "framesPerPlayer": 303
+        },
+        {
+          "room": 17,
+          "kind": "uppercut-ring",
+          "bothCompleted": true,
+          "framesPerPlayer": 278
+        },
+        {
+          "room": 18,
+          "kind": "inversion-relay",
+          "bothCompleted": true,
+          "framesPerPlayer": 318
+        }
+      ]
+    },
+    {
+      "stage": 42,
+      "together": false,
+      "runs": [
+        {
+          "room": 0,
+          "kind": "tear-ring",
+          "bothCompleted": true,
+          "framesPerPlayer": 217
+        },
+        {
+          "room": 1,
+          "kind": "weight-anvil",
+          "bothCompleted": true,
+          "framesPerPlayer": 365
+        },
+        {
+          "room": 2,
+          "kind": "gale-tear",
+          "bothCompleted": true,
+          "framesPerPlayer": 829
+        },
+        {
+          "room": 3,
+          "kind": "gravity-ring",
+          "bothCompleted": true,
+          "framesPerPlayer": 376
+        },
+        {
+          "room": 4,
+          "kind": "relay",
+          "bothCompleted": true,
+          "framesPerPlayer": 369
+        },
+        {
+          "room": 5,
+          "kind": "portal-gale",
+          "bothCompleted": true,
+          "framesPerPlayer": 821
+        },
+        {
+          "room": 6,
+          "kind": "pogo-tear",
+          "bothCompleted": true,
+          "framesPerPlayer": 344
+        },
+        {
+          "room": 7,
+          "kind": "uppercut-ring",
+          "bothCompleted": true,
+          "framesPerPlayer": 266
+        },
+        {
+          "room": 8,
+          "kind": "inversion-relay",
+          "bothCompleted": true,
+          "framesPerPlayer": 318
+        }
+      ]
+    },
+    {
+      "stage": 41,
+      "together": true,
+      "runs": [
+        {
+          "room": 0,
+          "kind": "dash-lab",
+          "bothCompleted": true,
+          "framesPerPlayer": 346
+        },
+        {
+          "room": 1,
+          "kind": "tear",
+          "bothCompleted": true,
+          "framesPerPlayer": 143
+        },
+        {
+          "room": 2,
+          "kind": "ring",
+          "bothCompleted": true,
+          "framesPerPlayer": 249
+        },
+        {
+          "room": 3,
+          "kind": "weight",
+          "bothCompleted": true,
+          "framesPerPlayer": 368
+        },
+        {
+          "room": 4,
+          "kind": "anvil",
+          "bothCompleted": true,
+          "framesPerPlayer": 365
+        },
+        {
+          "room": 5,
+          "kind": "pogo",
+          "bothCompleted": true,
+          "framesPerPlayer": 308
+        },
+        {
+          "room": 6,
+          "kind": "uppercut",
+          "bothCompleted": true,
+          "framesPerPlayer": 299
+        },
+        {
+          "room": 7,
+          "kind": "gale",
+          "bothCompleted": true,
+          "framesPerPlayer": 834
+        },
+        {
+          "room": 8,
+          "kind": "gravity",
+          "bothCompleted": true,
+          "framesPerPlayer": 397
+        },
+        {
+          "room": 9,
+          "kind": "portal",
+          "bothCompleted": true,
+          "framesPerPlayer": 160
+        },
+        {
+          "room": 10,
+          "kind": "tear-ring",
+          "bothCompleted": true,
+          "framesPerPlayer": 228
+        },
+        {
+          "room": 11,
+          "kind": "weight-anvil",
+          "bothCompleted": true,
+          "framesPerPlayer": 387
+        },
+        {
+          "room": 12,
+          "kind": "gale-tear",
+          "bothCompleted": true,
+          "framesPerPlayer": 829
+        },
+        {
+          "room": 13,
+          "kind": "gravity-ring",
+          "bothCompleted": true,
+          "framesPerPlayer": 390
+        },
+        {
+          "room": 14,
+          "kind": "relay",
+          "bothCompleted": true,
+          "framesPerPlayer": 384
+        },
+        {
+          "room": 15,
+          "kind": "portal-gale",
+          "bothCompleted": true,
+          "framesPerPlayer": 821
+        },
+        {
+          "room": 16,
+          "kind": "pogo-tear",
+          "bothCompleted": true,
+          "framesPerPlayer": 303
+        },
+        {
+          "room": 17,
+          "kind": "uppercut-ring",
+          "bothCompleted": true,
+          "framesPerPlayer": 278
+        },
+        {
+          "room": 18,
+          "kind": "inversion-relay",
+          "bothCompleted": true,
+          "framesPerPlayer": 318
+        }
+      ]
+    },
+    {
+      "stage": 42,
+      "together": true,
+      "runs": [
+        {
+          "room": 0,
+          "kind": "tear-ring",
+          "bothCompleted": true,
+          "framesPerPlayer": 217
+        },
+        {
+          "room": 1,
+          "kind": "weight-anvil",
+          "bothCompleted": true,
+          "framesPerPlayer": 365
+        },
+        {
+          "room": 2,
+          "kind": "gale-tear",
+          "bothCompleted": true,
+          "framesPerPlayer": 829
+        },
+        {
+          "room": 3,
+          "kind": "gravity-ring",
+          "bothCompleted": true,
+          "framesPerPlayer": 376
+        },
+        {
+          "room": 4,
+          "kind": "relay",
+          "bothCompleted": true,
+          "framesPerPlayer": 369
+        },
+        {
+          "room": 5,
+          "kind": "portal-gale",
+          "bothCompleted": true,
+          "framesPerPlayer": 821
+        },
+        {
+          "room": 6,
+          "kind": "pogo-tear",
+          "bothCompleted": true,
+          "framesPerPlayer": 344
+        },
+        {
+          "room": 7,
+          "kind": "uppercut-ring",
+          "bothCompleted": true,
+          "framesPerPlayer": 266
+        },
+        {
+          "room": 8,
+          "kind": "inversion-relay",
+          "bothCompleted": true,
+          "framesPerPlayer": 318
+        }
+      ]
+    }
+  ],
+  "scope": "Two browsers, production network encoding and handlers over queued in-memory transport. Legal movement inputs; fixture-only retry/reconnect checks. No external signaling service.",
+  "errors": [],
+  "menu": {
+    "removed": [],
+    "hint": "v7.234.0",
+    "version": "v7.234.0"
+  },
+  "personalRetry": true,
+  "reconnectCannotSkip": true,
+  "personalPortals": true
+}

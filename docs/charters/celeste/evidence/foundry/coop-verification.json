@@ -1,0 +1,38 @@
+{
+  "courses": [
+    {
+      "stage": 41,
+      "together": false,
+      "runs": [
+        {
+          "room": 0,
+          "kind": "dash-lab",
+          "bothCompleted": true,
+          "framesPerPlayer": 346
+        }
+      ]
+    },
+    {
+      "stage": 41,
+      "together": true,
+      "runs": [
+        {
+          "room": 0,
+          "kind": "dash-lab",
+          "bothCompleted": true,
+          "framesPerPlayer": 346
+        }
+      ]
+    }
+  ],
+  "scope": "Two browsers, production network encoding and handlers over queued in-memory transport. Legal movement inputs; fixture-only retry/reconnect checks. No external signaling service.",
+  "errors": [],
+  "menu": {
+    "removed": [],
+    "hint": "v7.238.0",
+    "version": "v7.238.0"
+  },
+  "personalRetry": true,
+  "reconnectCannotSkip": true,
+  "personalPortals": true
+}

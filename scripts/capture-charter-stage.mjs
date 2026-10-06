@@ -2,7 +2,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import process from 'node:process';
-import puppeteer from 'puppeteer';
+import { launchChrome } from '../tests/launch-chrome.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -53,7 +53,7 @@ const stageIndex = Number.parseInt(argument('--stage', '0'), 10);
 const url = argument('--url', 'http://127.0.0.1:8877/index.html');
 const blueprintSource = await readFile(resolve(ROOT, 'public/index.html'), 'utf8');
 const expectedVersion = blueprintSource.match(/const VERSION='([^']+)'/)?.[1];
-const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-background-timer-throttling'] });
+const browser = await launchChrome({ headless: true, args: ['--no-sandbox', '--disable-background-timer-throttling'] });
 const page = await browser.newPage();
 const pageErrors = [];
 page.on('pageerror', (error) => pageErrors.push(error.message));

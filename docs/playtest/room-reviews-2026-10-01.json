@@ -1,0 +1,4508 @@
+{
+  "active": true,
+  "rooms": {
+    "o1-road": {
+      "region": 1,
+      "name": "The Verge Road",
+      "runs": [
+        {
+          "at": "2026-10-02T01:49:12.311Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 564,
+          "rooms": {
+            "o1-road": {
+              "deaths": 0,
+              "frames": 564,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        },
+        {
+          "at": "2026-10-02T02:29:50.332Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": true,
+          "deaths": 0,
+          "frames": 514,
+          "rooms": {
+            "o1-road": {
+              "deaths": 0,
+              "frames": 514,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        },
+        {
+          "at": "2026-10-02T02:48:58.056Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": true,
+          "deaths": 0,
+          "frames": 2006,
+          "rooms": {
+            "o1-road": {
+              "deaths": 0,
+              "frames": 2006,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 5,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T02:49:53.537Z"
+      }
+    },
+    "o1-verge": {
+      "region": 1,
+      "name": "The Poisoned Verge",
+      "runs": [
+        {
+          "at": "2026-10-02T01:49:12.311Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 196,
+          "rooms": {
+            "o1-verge": {
+              "deaths": 0,
+              "frames": 196,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        },
+        {
+          "at": "2026-10-02T02:29:50.332Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": true,
+          "deaths": 0,
+          "frames": 194,
+          "rooms": {
+            "o1-verge": {
+              "deaths": 0,
+              "frames": 194,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        },
+        {
+          "at": "2026-10-02T02:48:58.056Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": true,
+          "deaths": 0,
+          "frames": 315,
+          "rooms": {
+            "o1-verge": {
+              "deaths": 0,
+              "frames": 315,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T02:50:20.804Z"
+      }
+    },
+    "o1-flowers": {
+      "region": 1,
+      "name": "White Flowers",
+      "runs": [
+        {
+          "at": "2026-10-02T01:49:12.311Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 297,
+          "rooms": {
+            "o1-flowers": {
+              "deaths": 0,
+              "frames": 297,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        },
+        {
+          "at": "2026-10-02T02:29:50.332Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": true,
+          "deaths": 0,
+          "frames": 346,
+          "rooms": {
+            "o1-flowers": {
+              "deaths": 0,
+              "frames": 346,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        },
+        {
+          "at": "2026-10-02T02:48:58.056Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": true,
+          "deaths": 0,
+          "frames": 339,
+          "rooms": {
+            "o1-flowers": {
+              "deaths": 0,
+              "frames": 339,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 5,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T02:50:29.986Z"
+      }
+    },
+    "v13-mouth": {
+      "region": 13,
+      "name": "The Fissure Mouth",
+      "runs": [
+        {
+          "at": "2026-10-02T01:49:47.544Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 236,
+          "rooms": {
+            "v13-mouth": {
+              "deaths": 0,
+              "frames": 236,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": null
+    },
+    "v13-ledgers": {
+      "region": 13,
+      "name": "The Rising Ledgers",
+      "runs": [
+        {
+          "at": "2026-10-02T01:49:47.544Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 244,
+          "rooms": {
+            "v13-ledgers": {
+              "deaths": 0,
+              "frames": 244,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": null
+    },
+    "v13-tower": {
+      "region": 13,
+      "name": "The Turn of the Stair",
+      "runs": [
+        {
+          "at": "2026-10-02T01:49:47.544Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 291,
+          "rooms": {
+            "v13-tower": {
+              "deaths": 0,
+              "frames": 291,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": null
+    },
+    "v13-rest": {
+      "region": 13,
+      "name": "A Place to Wait",
+      "runs": [
+        {
+          "at": "2026-10-02T01:49:47.544Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 187,
+          "rooms": {
+            "v13-rest": {
+              "deaths": 0,
+              "frames": 187,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": null
+    },
+    "v13-opposed": {
+      "region": 13,
+      "name": "The Opposed Faces",
+      "runs": [
+        {
+          "at": "2026-10-02T01:49:47.544Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 278,
+          "rooms": {
+            "v13-opposed": {
+              "deaths": 0,
+              "frames": 278,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": null
+    },
+    "s9-aqueduct": {
+      "region": 9,
+      "name": "The Aqueduct",
+      "runs": [
+        {
+          "at": "2026-10-02T01:58:33.682Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 831,
+          "rooms": {
+            "s9-aqueduct": {
+              "deaths": 0,
+              "frames": 831,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        },
+        {
+          "at": "2026-10-02T03:38:21.392Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": true,
+          "deaths": 0,
+          "frames": 543,
+          "rooms": {
+            "s9-aqueduct": {
+              "deaths": 0,
+              "frames": 543,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:38:33.416Z"
+      }
+    },
+    "s9-sluice": {
+      "region": 9,
+      "name": "West Sluice",
+      "runs": [
+        {
+          "at": "2026-10-02T01:58:33.682Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 1,
+          "frames": 313,
+          "rooms": {
+            "s9-sluice": {
+              "deaths": 1,
+              "frames": 313,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        },
+        {
+          "at": "2026-10-02T03:38:21.392Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": true,
+          "deaths": 0,
+          "frames": 190,
+          "rooms": {
+            "s9-sluice": {
+              "deaths": 0,
+              "frames": 190,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:38:39.516Z"
+      }
+    },
+    "s9-wheel": {
+      "region": 9,
+      "name": "The Service Wheel",
+      "runs": [
+        {
+          "at": "2026-10-02T01:58:33.682Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 715,
+          "rooms": {
+            "s9-wheel": {
+              "deaths": 0,
+              "frames": 715,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        },
+        {
+          "at": "2026-10-02T03:38:21.392Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": true,
+          "deaths": 1,
+          "frames": 841,
+          "rooms": {
+            "s9-wheel": {
+              "deaths": 1,
+              "frames": 841,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 3,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:38:56.400Z"
+      }
+    },
+    "s9-white": {
+      "region": 9,
+      "name": "The White Court",
+      "runs": [
+        {
+          "at": "2026-10-02T02:14:57.218Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 1,
+          "frames": 1172,
+          "rooms": {
+            "s9-white": {
+              "deaths": 1,
+              "frames": 1172,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        },
+        {
+          "at": "2026-10-02T03:38:21.392Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": true,
+          "deaths": 1,
+          "frames": 1243,
+          "rooms": {
+            "s9-white": {
+              "deaths": 1,
+              "frames": 1243,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:46:32.901Z"
+      }
+    },
+    "s9-gglass": {
+      "region": 9,
+      "name": "The Glass Gallery",
+      "runs": [
+        {
+          "at": "2026-10-02T02:14:57.218Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 494,
+          "rooms": {
+            "s9-gglass": {
+              "deaths": 0,
+              "frames": 494,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        },
+        {
+          "at": "2026-10-02T03:38:21.392Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": true,
+          "deaths": 0,
+          "frames": 409,
+          "rooms": {
+            "s9-gglass": {
+              "deaths": 0,
+              "frames": 409,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:46:42.185Z"
+      }
+    },
+    "s9-ward": {
+      "region": 9,
+      "name": "The Last Ward",
+      "runs": [
+        {
+          "at": "2026-10-02T02:14:57.218Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 2618,
+          "rooms": {
+            "s9-ward": {
+              "deaths": 0,
+              "frames": 2618,
+              "retries": 1,
+              "watched": true
+            }
+          }
+        },
+        {
+          "at": "2026-10-02T03:38:21.392Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": true,
+          "deaths": 0,
+          "frames": 1526,
+          "rooms": {
+            "s9-ward": {
+              "deaths": 0,
+              "frames": 1526,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 3,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:47:12.550Z"
+      }
+    },
+    "fo21-ash": {
+      "region": 21,
+      "name": "The Ash Verge",
+      "runs": [
+        {
+          "at": "2026-10-02T02:27:31.928Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 408,
+          "rooms": {
+            "fo21-ash": {
+              "deaths": 0,
+              "frames": 408,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": null
+    },
+    "fo21-glass": {
+      "region": 21,
+      "name": "The Glass Mile",
+      "runs": [
+        {
+          "at": "2026-10-02T02:27:31.928Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 242,
+          "rooms": {
+            "fo21-glass": {
+              "deaths": 0,
+              "frames": 242,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": null
+    },
+    "fo21-map": {
+      "region": 21,
+      "name": "The Survey Stone",
+      "runs": [
+        {
+          "at": "2026-10-02T02:27:31.928Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 329,
+          "rooms": {
+            "fo21-map": {
+              "deaths": 0,
+              "frames": 329,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": null
+    },
+    "fo21-winch": {
+      "region": 21,
+      "name": "The Fallen Winch",
+      "runs": [
+        {
+          "at": "2026-10-02T02:27:31.928Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 326,
+          "rooms": {
+            "fo21-winch": {
+              "deaths": 0,
+              "frames": 326,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": null
+    },
+    "fo21-chain": {
+      "region": 21,
+      "name": "The Chain Road",
+      "runs": [
+        {
+          "at": "2026-10-02T02:27:31.928Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 387,
+          "rooms": {
+            "fo21-chain": {
+              "deaths": 0,
+              "frames": 387,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": null
+    },
+    "fo21-lantern": {
+      "region": 21,
+      "name": "The Lantern Road",
+      "runs": [
+        {
+          "at": "2026-10-02T02:27:31.928Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 5386,
+          "rooms": {
+            "fo21-lantern": {
+              "deaths": 0,
+              "frames": 5386,
+              "retries": 0,
+              "watched": true
+            }
+          }
+        }
+      ],
+      "rating": null
+    },
+    "o1-camp": {
+      "region": 1,
+      "name": "Camp Echo",
+      "runs": [
+        {
+          "at": "2026-10-02T02:29:50.332Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 508,
+          "rooms": {
+            "o1-camp": {
+              "deaths": 0,
+              "frames": 508,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        },
+        {
+          "at": "2026-10-02T02:48:58.056Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": true,
+          "deaths": 0,
+          "frames": 360,
+          "rooms": {
+            "o1-camp": {
+              "deaths": 0,
+              "frames": 360,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        },
+        {
+          "at": "2026-10-02T02:48:58.056Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": true,
+          "deaths": 0,
+          "frames": 1229,
+          "rooms": {
+            "o1-camp": {
+              "deaths": 0,
+              "frames": 1229,
+              "retries": 1,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 4,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T02:51:24.177Z"
+      }
+    },
+    "o1-lookout": {
+      "region": 1,
+      "name": "The Lookout",
+      "runs": [
+        {
+          "at": "2026-10-02T02:29:50.332Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 1,
+          "frames": 268,
+          "rooms": {
+            "o1-lookout": {
+              "deaths": 1,
+              "frames": 268,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        },
+        {
+          "at": "2026-10-02T02:48:58.056Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": true,
+          "deaths": 0,
+          "frames": 152,
+          "rooms": {
+            "o1-lookout": {
+              "deaths": 0,
+              "frames": 152,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 3,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T02:51:35.862Z"
+      }
+    },
+    "o1-ridge": {
+      "region": 1,
+      "name": "Watcher’s Ridge",
+      "runs": [
+        {
+          "at": "2026-10-02T02:29:50.332Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 26,
+          "frames": 4003,
+          "rooms": {
+            "o1-ridge": {
+              "deaths": 26,
+              "frames": 4003,
+              "retries": 1,
+              "watched": true
+            }
+          }
+        },
+        {
+          "at": "2026-10-02T02:48:58.056Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": true,
+          "deaths": 14,
+          "frames": 2752,
+          "rooms": {
+            "o1-ridge": {
+              "deaths": 14,
+              "frames": 2752,
+              "retries": 0,
+              "watched": true
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 8,
+        "fun": 4,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T02:52:34.396Z"
+      }
+    },
+    "o1-q-yard": {
+      "region": 1,
+      "name": "The Bell Yard",
+      "runs": [
+        {
+          "at": "2026-10-02T02:48:58.056Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 220,
+          "rooms": {
+            "o1-q-yard": {
+              "deaths": 0,
+              "frames": 220,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T02:50:48.503Z"
+      }
+    },
+    "o1-q-tower": {
+      "region": 1,
+      "name": "The Old Bell Tower",
+      "runs": [
+        {
+          "at": "2026-10-02T02:48:58.056Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 290,
+          "rooms": {
+            "o1-q-tower": {
+              "deaths": 0,
+              "frames": 290,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 4,
+        "fun": 4,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T02:51:00.107Z"
+      }
+    },
+    "o1-cut": {
+      "region": 1,
+      "name": "Watcher’s Cut",
+      "runs": [
+        {
+          "at": "2026-10-02T02:48:58.056Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 2,
+          "frames": 694,
+          "rooms": {
+            "o1-cut": {
+              "deaths": 2,
+              "frames": 694,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 3,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T02:52:48.730Z"
+      }
+    },
+    "o1-cracked": {
+      "region": 1,
+      "name": "Cracked Road",
+      "runs": [
+        {
+          "at": "2026-10-02T02:48:58.056Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 306,
+          "rooms": {
+            "o1-cracked": {
+              "deaths": 0,
+              "frames": 306,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T02:52:57.762Z"
+      }
+    },
+    "o1-mile": {
+      "region": 1,
+      "name": "The Hollow Mile",
+      "runs": [
+        {
+          "at": "2026-10-02T02:48:58.056Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 1,
+          "frames": 364,
+          "rooms": {
+            "o1-mile": {
+              "deaths": 1,
+              "frames": 364,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T02:53:08.362Z"
+      }
+    },
+    "o1-muster": {
+      "region": 1,
+      "name": "Broken Muster",
+      "runs": [
+        {
+          "at": "2026-10-02T02:48:58.056Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 430,
+          "rooms": {
+            "o1-muster": {
+              "deaths": 0,
+              "frames": 430,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T02:53:21.629Z"
+      }
+    },
+    "o1-yard": {
+      "region": 1,
+      "name": "Muster Yard",
+      "runs": [
+        {
+          "at": "2026-10-02T02:48:58.056Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 250,
+          "rooms": {
+            "o1-yard": {
+              "deaths": 0,
+              "frames": 250,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T02:53:28.947Z"
+      }
+    },
+    "o1-gate": {
+      "region": 1,
+      "name": "The Gatehouse",
+      "runs": [
+        {
+          "at": "2026-10-02T02:48:58.056Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 300,
+          "rooms": {
+            "o1-gate": {
+              "deaths": 0,
+              "frames": 300,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T02:53:36.996Z"
+      }
+    },
+    "w2-tunnel": {
+      "region": 2,
+      "name": "The Root Tunnel",
+      "runs": [
+        {
+          "at": "2026-10-02T02:53:38.596Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 250,
+          "rooms": {
+            "w2-tunnel": {
+              "deaths": 0,
+              "frames": 250,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T02:53:45.030Z"
+      }
+    },
+    "w2-refuge": {
+      "region": 2,
+      "name": "Mothlight Refuge",
+      "runs": [
+        {
+          "at": "2026-10-02T02:53:38.596Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 450,
+          "rooms": {
+            "w2-refuge": {
+              "deaths": 0,
+              "frames": 450,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        },
+        {
+          "at": "2026-10-02T02:53:38.596Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": true,
+          "deaths": 0,
+          "frames": 1518,
+          "rooms": {
+            "w2-refuge": {
+              "deaths": 0,
+              "frames": 1518,
+              "retries": 1,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T02:54:27.680Z"
+      }
+    },
+    "w2-clearing": {
+      "region": 2,
+      "name": "Oathblade Clearing",
+      "runs": [
+        {
+          "at": "2026-10-02T02:53:38.596Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 362,
+          "rooms": {
+            "w2-clearing": {
+              "deaths": 0,
+              "frames": 362,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T02:54:36.397Z"
+      }
+    },
+    "w2-descent": {
+      "region": 2,
+      "name": "Mothlight Descent",
+      "runs": [
+        {
+          "at": "2026-10-02T02:53:38.596Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 217,
+          "rooms": {
+            "w2-descent": {
+              "deaths": 0,
+              "frames": 217,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 3,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T02:54:44.597Z"
+      }
+    },
+    "w2-briar": {
+      "region": 2,
+      "name": "Briar Run",
+      "runs": [
+        {
+          "at": "2026-10-02T02:53:38.596Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 246,
+          "rooms": {
+            "w2-briar": {
+              "deaths": 0,
+              "frames": 246,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 4,
+        "fun": 4,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T02:54:51.846Z"
+      }
+    },
+    "w2-canopy": {
+      "region": 2,
+      "name": "Biting Canopy",
+      "runs": [
+        {
+          "at": "2026-10-02T02:53:38.596Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 21,
+          "frames": 3746,
+          "rooms": {
+            "w2-canopy": {
+              "deaths": 21,
+              "frames": 3746,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 7,
+        "fun": 4,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T02:55:58.013Z"
+      }
+    },
+    "w2-kitchen": {
+      "region": 2,
+      "name": "Elsie’s Kitchen",
+      "runs": [
+        {
+          "at": "2026-10-02T02:53:38.596Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 1,
+          "frames": 847,
+          "rooms": {
+            "w2-kitchen": {
+              "deaths": 1,
+              "frames": 847,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        },
+        {
+          "at": "2026-10-02T02:53:38.596Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": true,
+          "deaths": 14,
+          "frames": 4199,
+          "rooms": {
+            "w2-kitchen": {
+              "deaths": 14,
+              "frames": 4199,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 5,
+        "fun": 4,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:01:38.316Z"
+      }
+    },
+    "w2-q-fork": {
+      "region": 2,
+      "name": "The Lantern Tree",
+      "runs": [
+        {
+          "at": "2026-10-02T02:53:38.596Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 1,
+          "frames": 515,
+          "rooms": {
+            "w2-q-fork": {
+              "deaths": 1,
+              "frames": 515,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 4,
+        "fun": 4,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T02:56:33.180Z"
+      }
+    },
+    "w2-q-bough": {
+      "region": 2,
+      "name": "The Lantern Bough",
+      "runs": [
+        {
+          "at": "2026-10-02T02:53:38.596Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 61,
+          "frames": 13579,
+          "rooms": {
+            "w2-q-bough": {
+              "deaths": 61,
+              "frames": 13579,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 9,
+        "fun": 5,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:00:24.732Z"
+      }
+    },
+    "w2-edge": {
+      "region": 2,
+      "name": "Thicket’s Edge",
+      "runs": [
+        {
+          "at": "2026-10-02T02:53:38.596Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 1221,
+          "rooms": {
+            "w2-edge": {
+              "deaths": 0,
+              "frames": 1221,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 3,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:02:04.367Z"
+      }
+    },
+    "w2-mirror": {
+      "region": 2,
+      "name": "Mirror Thicket",
+      "runs": [
+        {
+          "at": "2026-10-02T02:53:38.596Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 5,
+          "frames": 761,
+          "rooms": {
+            "w2-mirror": {
+              "deaths": 5,
+              "frames": 761,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 3,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:02:21.650Z"
+      }
+    },
+    "w2-called": {
+      "region": 2,
+      "name": "The Called Name",
+      "runs": [
+        {
+          "at": "2026-10-02T02:53:38.596Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 5,
+          "frames": 1060,
+          "rooms": {
+            "w2-called": {
+              "deaths": 5,
+              "frames": 1060,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 4,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:02:44.150Z"
+      }
+    },
+    "w2-rootbound": {
+      "region": 2,
+      "name": "Rootbound Passage",
+      "runs": [
+        {
+          "at": "2026-10-02T02:53:38.596Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 2,
+          "frames": 569,
+          "rooms": {
+            "w2-rootbound": {
+              "deaths": 2,
+              "frames": 569,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 4,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:02:57.851Z"
+      }
+    },
+    "w2-door": {
+      "region": 2,
+      "name": "The Root Door",
+      "runs": [
+        {
+          "at": "2026-10-02T02:53:38.596Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 24,
+          "frames": 4835,
+          "rooms": {
+            "w2-door": {
+              "deaths": 24,
+              "frames": 4835,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 8,
+        "fun": 5,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:04:24.634Z"
+      }
+    },
+    "c3-camp": {
+      "region": 3,
+      "name": "Chainwake Camp",
+      "runs": [
+        {
+          "at": "2026-10-02T03:04:26.299Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 1509,
+          "rooms": {
+            "c3-camp": {
+              "deaths": 0,
+              "frames": 1509,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:04:57.501Z"
+      }
+    },
+    "c3-drop": {
+      "region": 3,
+      "name": "Drop Yard",
+      "runs": [
+        {
+          "at": "2026-10-02T03:04:26.299Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 269,
+          "rooms": {
+            "c3-drop": {
+              "deaths": 0,
+              "frames": 269,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:05:06.118Z"
+      }
+    },
+    "c3-hoist": {
+      "region": 3,
+      "name": "The Hoist",
+      "runs": [
+        {
+          "at": "2026-10-02T03:04:26.299Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 1,
+          "frames": 409,
+          "rooms": {
+            "c3-hoist": {
+              "deaths": 1,
+              "frames": 409,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:05:17.018Z"
+      }
+    },
+    "c3-patrol": {
+      "region": 3,
+      "name": "The Patrol Road",
+      "runs": [
+        {
+          "at": "2026-10-02T03:04:26.299Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 253,
+          "rooms": {
+            "c3-patrol": {
+              "deaths": 0,
+              "frames": 253,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        },
+        {
+          "at": "2026-10-02T03:04:26.299Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": true,
+          "deaths": 0,
+          "frames": 146,
+          "rooms": {
+            "c3-patrol": {
+              "deaths": 0,
+              "frames": 146,
+              "retries": 1,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:05:34.667Z"
+      }
+    },
+    "c3-chain": {
+      "region": 3,
+      "name": "Chainwalk",
+      "runs": [
+        {
+          "at": "2026-10-02T03:04:26.299Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 297,
+          "rooms": {
+            "c3-chain": {
+              "deaths": 0,
+              "frames": 297,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:05:45.085Z"
+      }
+    },
+    "c3-upper": {
+      "region": 3,
+      "name": "The Upper Chain",
+      "runs": [
+        {
+          "at": "2026-10-02T03:04:26.299Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 1,
+          "frames": 555,
+          "rooms": {
+            "c3-upper": {
+              "deaths": 1,
+              "frames": 555,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 3,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:05:56.885Z"
+      }
+    },
+    "c3-rise": {
+      "region": 3,
+      "name": "Counterweight Rise",
+      "runs": [
+        {
+          "at": "2026-10-02T03:04:26.299Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 2,
+          "frames": 1149,
+          "rooms": {
+            "c3-rise": {
+              "deaths": 2,
+              "frames": 1149,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 3,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:06:19.801Z"
+      }
+    },
+    "c3-well": {
+      "region": 3,
+      "name": "The Weigh Well",
+      "runs": [
+        {
+          "at": "2026-10-02T03:04:26.299Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 264,
+          "rooms": {
+            "c3-well": {
+              "deaths": 0,
+              "frames": 264,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:06:27.601Z"
+      }
+    },
+    "c3-gantry": {
+      "region": 3,
+      "name": "Rise Gantry",
+      "runs": [
+        {
+          "at": "2026-10-02T03:04:26.299Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 16,
+          "frames": 5520,
+          "rooms": {
+            "c3-gantry": {
+              "deaths": 16,
+              "frames": 5520,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 6,
+        "fun": 5,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:08:05.453Z"
+      }
+    },
+    "c3-road": {
+      "region": 3,
+      "name": "The Standard Road",
+      "runs": [
+        {
+          "at": "2026-10-02T03:04:26.299Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 448,
+          "rooms": {
+            "c3-road": {
+              "deaths": 0,
+              "frames": 448,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 3,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:08:15.720Z"
+      }
+    },
+    "c3-brace": {
+      "region": 3,
+      "name": "Broken Standard",
+      "runs": [
+        {
+          "at": "2026-10-02T03:04:26.299Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 1,
+          "frames": 998,
+          "rooms": {
+            "c3-brace": {
+              "deaths": 1,
+              "frames": 998,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:08:36.720Z"
+      }
+    },
+    "c3-counterweight": {
+      "region": 3,
+      "name": "The Counterweight",
+      "runs": [
+        {
+          "at": "2026-10-02T03:04:26.299Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 378,
+          "rooms": {
+            "c3-counterweight": {
+              "deaths": 0,
+              "frames": 378,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:08:47.354Z"
+      }
+    },
+    "u4-lift": {
+      "region": 4,
+      "name": "Rootbreach Lift",
+      "runs": [
+        {
+          "at": "2026-10-02T03:08:48.719Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 273,
+          "rooms": {
+            "u4-lift": {
+              "deaths": 0,
+              "frames": 273,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:08:56.470Z"
+      }
+    },
+    "u4-shaft": {
+      "region": 4,
+      "name": "The Old Shaft",
+      "runs": [
+        {
+          "at": "2026-10-02T03:08:48.719Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 191,
+          "rooms": {
+            "u4-shaft": {
+              "deaths": 0,
+              "frames": 191,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:09:01.988Z"
+      }
+    },
+    "u4-bellows": {
+      "region": 4,
+      "name": "Bellows Rest",
+      "runs": [
+        {
+          "at": "2026-10-02T03:08:48.719Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 304,
+          "rooms": {
+            "u4-bellows": {
+              "deaths": 0,
+              "frames": 304,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:09:10.003Z"
+      }
+    },
+    "u4-draw": {
+      "region": 4,
+      "name": "The Draw",
+      "runs": [
+        {
+          "at": "2026-10-02T03:08:48.719Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 142,
+          "rooms": {
+            "u4-draw": {
+              "deaths": 0,
+              "frames": 142,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:09:14.638Z"
+      }
+    },
+    "u4-kites": {
+      "region": 4,
+      "name": "Kite Terraces",
+      "runs": [
+        {
+          "at": "2026-10-02T03:08:48.719Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 197,
+          "rooms": {
+            "u4-kites": {
+              "deaths": 0,
+              "frames": 197,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:09:19.954Z"
+      }
+    },
+    "u4-lines": {
+      "region": 4,
+      "name": "The Kite Lines",
+      "runs": [
+        {
+          "at": "2026-10-02T03:08:48.719Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 221,
+          "rooms": {
+            "u4-lines": {
+              "deaths": 0,
+              "frames": 221,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:09:26.022Z"
+      }
+    },
+    "u4-choir": {
+      "region": 4,
+      "name": "Choir of Drafts",
+      "runs": [
+        {
+          "at": "2026-10-02T03:08:48.719Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 210,
+          "rooms": {
+            "u4-choir": {
+              "deaths": 0,
+              "frames": 210,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        },
+        {
+          "at": "2026-10-02T03:08:48.719Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": true,
+          "deaths": 0,
+          "frames": 52,
+          "rooms": {
+            "u4-choir": {
+              "deaths": 0,
+              "frames": 52,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:10:09.496Z"
+      }
+    },
+    "u4-q-channel": {
+      "region": 4,
+      "name": "The Upper Channel",
+      "runs": [
+        {
+          "at": "2026-10-02T03:08:48.719Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 2,
+          "frames": 1427,
+          "rooms": {
+            "u4-q-channel": {
+              "deaths": 2,
+              "frames": 1427,
+              "retries": 1,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 3,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:09:59.238Z"
+      }
+    },
+    "u4-q-funnel": {
+      "region": 4,
+      "name": "The Measuring Funnel",
+      "runs": [
+        {
+          "at": "2026-10-02T03:08:48.719Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 1,
+          "frames": 361,
+          "rooms": {
+            "u4-q-funnel": {
+              "deaths": 1,
+              "frames": 361,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 3,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:10:08.021Z"
+      }
+    },
+    "u4-flue": {
+      "region": 4,
+      "name": "The Choir Flue",
+      "runs": [
+        {
+          "at": "2026-10-02T03:10:13.529Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 3,
+          "frames": 837,
+          "rooms": {
+            "u4-flue": {
+              "deaths": 3,
+              "frames": 837,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 4,
+        "fun": 4,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:10:37.055Z"
+      }
+    },
+    "u4-needle": {
+      "region": 4,
+      "name": "Needlewind Labyrinth",
+      "runs": [
+        {
+          "at": "2026-10-02T03:10:13.529Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 144,
+          "rooms": {
+            "u4-needle": {
+              "deaths": 0,
+              "frames": 144,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:10:41.788Z"
+      }
+    },
+    "u4-eye": {
+      "region": 4,
+      "name": "The Needle’s Eye",
+      "runs": [
+        {
+          "at": "2026-10-02T03:10:13.529Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 1,
+          "frames": 445,
+          "rooms": {
+            "u4-eye": {
+              "deaths": 1,
+              "frames": 445,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:10:53.438Z"
+      }
+    },
+    "u4-catcher": {
+      "region": 4,
+      "name": "Rain-Catcher",
+      "runs": [
+        {
+          "at": "2026-10-02T03:10:13.529Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 223,
+          "rooms": {
+            "u4-catcher": {
+              "deaths": 0,
+              "frames": 223,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:11:00.222Z"
+      }
+    },
+    "u4-span": {
+      "region": 4,
+      "name": "The Catcher Span",
+      "runs": [
+        {
+          "at": "2026-10-02T03:10:13.529Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 292,
+          "rooms": {
+            "u4-span": {
+              "deaths": 0,
+              "frames": 292,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:11:10.055Z"
+      }
+    },
+    "u4-crown": {
+      "region": 4,
+      "name": "Signal Crown",
+      "runs": [
+        {
+          "at": "2026-10-02T03:10:13.529Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 298,
+          "rooms": {
+            "u4-crown": {
+              "deaths": 0,
+              "frames": 298,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 3,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:11:19.088Z"
+      }
+    },
+    "m5-camp": {
+      "region": 5,
+      "name": "Shotfall Camp",
+      "runs": [
+        {
+          "at": "2026-10-02T03:11:20.483Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 288,
+          "rooms": {
+            "m5-camp": {
+              "deaths": 0,
+              "frames": 288,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:11:27.105Z"
+      }
+    },
+    "m5-watch": {
+      "region": 5,
+      "name": "Shotfall Watch",
+      "runs": [
+        {
+          "at": "2026-10-02T03:11:20.483Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 2,
+          "frames": 534,
+          "rooms": {
+            "m5-watch": {
+              "deaths": 2,
+              "frames": 534,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:11:40.325Z"
+      }
+    },
+    "m5-road": {
+      "region": 5,
+      "name": "The Watching Road",
+      "runs": [
+        {
+          "at": "2026-10-02T03:11:20.483Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 2,
+          "frames": 1419,
+          "rooms": {
+            "m5-road": {
+              "deaths": 2,
+              "frames": 1419,
+              "retries": 1,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 3,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:12:07.738Z"
+      }
+    },
+    "m5-post": {
+      "region": 5,
+      "name": "The Watchpost",
+      "runs": [
+        {
+          "at": "2026-10-02T03:11:20.483Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 2,
+          "frames": 5060,
+          "rooms": {
+            "m5-post": {
+              "deaths": 2,
+              "frames": 5060,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 4,
+        "fun": 4,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:13:37.555Z"
+      }
+    },
+    "m5-works": {
+      "region": 5,
+      "name": "Mantlet Works",
+      "runs": [
+        {
+          "at": "2026-10-02T03:11:20.483Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 3,
+          "frames": 1073,
+          "rooms": {
+            "m5-works": {
+              "deaths": 3,
+              "frames": 1073,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 5,
+        "fun": 5,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:14:00.555Z"
+      }
+    },
+    "m5-drop": {
+      "region": 5,
+      "name": "Windcut Drop",
+      "runs": [
+        {
+          "at": "2026-10-02T03:11:20.483Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 70,
+          "frames": 11421,
+          "rooms": {
+            "m5-drop": {
+              "deaths": 70,
+              "frames": 11421,
+              "retries": 1,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 9,
+        "fun": 5,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:17:19.390Z"
+      }
+    },
+    "m5-gallery": {
+      "region": 5,
+      "name": "Windcut Gallery",
+      "runs": [
+        {
+          "at": "2026-10-02T03:11:20.483Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 18,
+          "frames": 3590,
+          "rooms": {
+            "m5-gallery": {
+              "deaths": 18,
+              "frames": 3590,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 8,
+        "fun": 5,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:18:23.023Z"
+      }
+    },
+    "m5-release": {
+      "region": 5,
+      "name": "The Brass Release",
+      "runs": [
+        {
+          "at": "2026-10-02T03:11:20.483Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 1,
+          "frames": 1152,
+          "rooms": {
+            "m5-release": {
+              "deaths": 1,
+              "frames": 1152,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:18:50.775Z"
+      }
+    },
+    "m5-approach": {
+      "region": 5,
+      "name": "Deadeye Approach",
+      "runs": [
+        {
+          "at": "2026-10-02T03:11:20.483Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 91,
+          "frames": 24364,
+          "rooms": {
+            "m5-approach": {
+              "deaths": 91,
+              "frames": 24364,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 10,
+        "fun": 5,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:25:43.111Z"
+      }
+    },
+    "m5-court": {
+      "region": 5,
+      "name": "Deadeye Court",
+      "runs": [
+        {
+          "at": "2026-10-02T03:11:20.483Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 2470,
+          "rooms": {
+            "m5-court": {
+              "deaths": 0,
+              "frames": 2470,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 5,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:26:31.228Z"
+      }
+    },
+    "m5-tiers": {
+      "region": 5,
+      "name": "The Court Tiers",
+      "runs": [
+        {
+          "at": "2026-10-02T03:11:20.483Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 2632,
+          "rooms": {
+            "m5-tiers": {
+              "deaths": 0,
+              "frames": 2632,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 6,
+        "fun": 4,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:27:19.161Z"
+      }
+    },
+    "m5-perch": {
+      "region": 5,
+      "name": "The Last Perch",
+      "runs": [
+        {
+          "at": "2026-10-02T03:11:20.483Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 1,
+          "frames": 1571,
+          "rooms": {
+            "m5-perch": {
+              "deaths": 1,
+              "frames": 1571,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 5,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:27:49.095Z"
+      }
+    },
+    "k6-hearth": {
+      "region": 6,
+      "name": "Gatehouse Hearth",
+      "runs": [
+        {
+          "at": "2026-10-02T03:27:58.861Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 508,
+          "rooms": {
+            "k6-hearth": {
+              "deaths": 0,
+              "frames": 508,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:28:10.795Z"
+      }
+    },
+    "k6-refectory": {
+      "region": 6,
+      "name": "Fallen Refectory",
+      "runs": [
+        {
+          "at": "2026-10-02T03:27:58.861Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 372,
+          "rooms": {
+            "k6-refectory": {
+              "deaths": 0,
+              "frames": 372,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:28:19.012Z"
+      }
+    },
+    "k6-table": {
+      "region": 6,
+      "name": "The Long Table",
+      "runs": [
+        {
+          "at": "2026-10-02T03:27:58.861Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 342,
+          "rooms": {
+            "k6-table": {
+              "deaths": 0,
+              "frames": 342,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:28:27.461Z"
+      }
+    },
+    "k6-weight": {
+      "region": 6,
+      "name": "Weight Hall",
+      "runs": [
+        {
+          "at": "2026-10-02T03:27:58.861Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 369,
+          "rooms": {
+            "k6-weight": {
+              "deaths": 0,
+              "frames": 369,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:28:37.612Z"
+      }
+    },
+    "k6-cradle": {
+      "region": 6,
+      "name": "The Cradle",
+      "runs": [
+        {
+          "at": "2026-10-02T03:27:58.861Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 336,
+          "rooms": {
+            "k6-cradle": {
+              "deaths": 0,
+              "frames": 336,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:28:49.646Z"
+      }
+    },
+    "k6-quarter": {
+      "region": 6,
+      "name": "Mason’s Quarter",
+      "runs": [
+        {
+          "at": "2026-10-02T03:27:58.861Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 1153,
+          "rooms": {
+            "k6-quarter": {
+              "deaths": 0,
+              "frames": 1153,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:29:12.095Z"
+      }
+    },
+    "k6-cells": {
+      "region": 6,
+      "name": "The Cells",
+      "runs": [
+        {
+          "at": "2026-10-02T03:27:58.861Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 492,
+          "rooms": {
+            "k6-cells": {
+              "deaths": 0,
+              "frames": 492,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:29:23.395Z"
+      }
+    },
+    "k6-belfry": {
+      "region": 6,
+      "name": "Split Belfry",
+      "runs": [
+        {
+          "at": "2026-10-02T03:27:58.861Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 518,
+          "rooms": {
+            "k6-belfry": {
+              "deaths": 0,
+              "frames": 518,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:29:34.413Z"
+      }
+    },
+    "k6-loft": {
+      "region": 6,
+      "name": "The Bell Loft",
+      "runs": [
+        {
+          "at": "2026-10-02T03:27:58.861Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 943,
+          "rooms": {
+            "k6-loft": {
+              "deaths": 0,
+              "frames": 943,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:29:58.096Z"
+      }
+    },
+    "k6-archive": {
+      "region": 6,
+      "name": "Clinging Archive",
+      "runs": [
+        {
+          "at": "2026-10-02T03:27:58.861Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 1027,
+          "rooms": {
+            "k6-archive": {
+              "deaths": 0,
+              "frames": 1027,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 3,
+        "fun": 4,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:30:20.580Z"
+      }
+    },
+    "k6-stacks": {
+      "region": 6,
+      "name": "The Upper Stacks",
+      "runs": [
+        {
+          "at": "2026-10-02T03:27:58.861Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 1250,
+          "rooms": {
+            "k6-stacks": {
+              "deaths": 0,
+              "frames": 1250,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 4,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:30:44.663Z"
+      }
+    },
+    "k6-arch": {
+      "region": 6,
+      "name": "The Broken Arch",
+      "runs": [
+        {
+          "at": "2026-10-02T03:27:58.861Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 1176,
+          "rooms": {
+            "k6-arch": {
+              "deaths": 0,
+              "frames": 1176,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:31:06.913Z"
+      }
+    },
+    "g7-crown": {
+      "region": 7,
+      "name": "Eastern Crown",
+      "runs": [
+        {
+          "at": "2026-10-02T03:31:08.716Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 320,
+          "rooms": {
+            "g7-crown": {
+              "deaths": 0,
+              "frames": 320,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:31:16.613Z"
+      }
+    },
+    "g7-gallery": {
+      "region": 7,
+      "name": "Blind Gallery",
+      "runs": [
+        {
+          "at": "2026-10-02T03:31:08.716Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 234,
+          "rooms": {
+            "g7-gallery": {
+              "deaths": 0,
+              "frames": 234,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:31:24.647Z"
+      }
+    },
+    "g7-door": {
+      "region": 7,
+      "name": "The Gallery Door",
+      "runs": [
+        {
+          "at": "2026-10-02T03:31:08.716Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 7,
+          "frames": 1303,
+          "rooms": {
+            "g7-door": {
+              "deaths": 7,
+              "frames": 1303,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:31:50.780Z"
+      }
+    },
+    "g7-engine": {
+      "region": 7,
+      "name": "Hush Engine",
+      "runs": [
+        {
+          "at": "2026-10-02T03:31:08.716Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 1,
+          "frames": 792,
+          "rooms": {
+            "g7-engine": {
+              "deaths": 1,
+              "frames": 792,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:32:08.764Z"
+      }
+    },
+    "g7-bellows": {
+      "region": 7,
+      "name": "The Bellows",
+      "runs": [
+        {
+          "at": "2026-10-02T03:31:08.716Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 429,
+          "rooms": {
+            "g7-bellows": {
+              "deaths": 0,
+              "frames": 429,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:32:21.164Z"
+      }
+    },
+    "g7-cells": {
+      "region": 7,
+      "name": "Turning Cells",
+      "runs": [
+        {
+          "at": "2026-10-02T03:31:08.716Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 900,
+          "rooms": {
+            "g7-cells": {
+              "deaths": 0,
+              "frames": 900,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        },
+        {
+          "at": "2026-10-02T03:31:08.716Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": true,
+          "deaths": 1,
+          "frames": 800,
+          "rooms": {
+            "g7-cells": {
+              "deaths": 1,
+              "frames": 800,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:33:40.614Z"
+      }
+    },
+    "g7-q-shaft": {
+      "region": 7,
+      "name": "The Jammed Latch",
+      "runs": [
+        {
+          "at": "2026-10-02T03:31:08.716Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 496,
+          "rooms": {
+            "g7-q-shaft": {
+              "deaths": 0,
+              "frames": 496,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 3,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:32:53.881Z"
+      }
+    },
+    "g7-q-catwalk": {
+      "region": 7,
+      "name": "The Service Catwalk",
+      "runs": [
+        {
+          "at": "2026-10-02T03:31:08.716Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 5,
+          "frames": 1526,
+          "rooms": {
+            "g7-q-catwalk": {
+              "deaths": 5,
+              "frames": 1526,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 4,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:33:24.731Z"
+      }
+    },
+    "g7-back": {
+      "region": 7,
+      "name": "The Back Cell",
+      "runs": [
+        {
+          "at": "2026-10-02T03:31:08.716Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 3,
+          "frames": 2084,
+          "rooms": {
+            "g7-back": {
+              "deaths": 3,
+              "frames": 2084,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 4,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:34:19.114Z"
+      }
+    },
+    "g7-pair": {
+      "region": 7,
+      "name": "Two Cells",
+      "runs": [
+        {
+          "at": "2026-10-02T03:31:08.716Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 794,
+          "rooms": {
+            "g7-pair": {
+              "deaths": 0,
+              "frames": 794,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 3,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:34:34.948Z"
+      }
+    },
+    "g7-vigil": {
+      "region": 7,
+      "name": "Gaol Vigil",
+      "runs": [
+        {
+          "at": "2026-10-02T03:31:08.716Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 2,
+          "frames": 838,
+          "rooms": {
+            "g7-vigil": {
+              "deaths": 2,
+              "frames": 838,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:34:51.848Z"
+      }
+    },
+    "g7-court": {
+      "region": 7,
+      "name": "Red Court",
+      "runs": [
+        {
+          "at": "2026-10-02T03:31:08.716Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 3,
+          "frames": 1061,
+          "rooms": {
+            "g7-court": {
+              "deaths": 3,
+              "frames": 1061,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 3,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:35:12.031Z"
+      }
+    },
+    "g7-mouth": {
+      "region": 7,
+      "name": "The Well Mouth",
+      "runs": [
+        {
+          "at": "2026-10-02T03:31:08.716Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 1,
+          "frames": 763,
+          "rooms": {
+            "g7-mouth": {
+              "deaths": 1,
+              "frames": 763,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 3,
+        "fun": 4,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:35:31.983Z"
+      }
+    },
+    "g7-well": {
+      "region": 7,
+      "name": "Sentence Well",
+      "runs": [
+        {
+          "at": "2026-10-02T03:31:08.716Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 1,
+          "frames": 987,
+          "rooms": {
+            "g7-well": {
+              "deaths": 1,
+              "frames": 987,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:35:51.198Z"
+      }
+    },
+    "g7-sentence": {
+      "region": 7,
+      "name": "The Sentence",
+      "runs": [
+        {
+          "at": "2026-10-02T03:31:08.716Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 2,
+          "frames": 1342,
+          "rooms": {
+            "g7-sentence": {
+              "deaths": 2,
+              "frames": 1342,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:36:17.131Z"
+      }
+    },
+    "f8-refuge": {
+      "region": 8,
+      "name": "Banked Refuge",
+      "runs": [
+        {
+          "at": "2026-10-02T03:36:18.464Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 272,
+          "rooms": {
+            "f8-refuge": {
+              "deaths": 0,
+              "frames": 272,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "off": false,
+        "at": "2026-10-02T03:36:27.999Z"
+      }
+    },
+    "f8-streets": {
+      "region": 8,
+      "name": "Working Streets",
+      "runs": [
+        {
+          "at": "2026-10-02T03:36:18.464Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 216,
+          "rooms": {
+            "f8-streets": {
+              "deaths": 0,
+              "frames": 216,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:36:34.116Z"
+      }
+    },
+    "f8-shelves": {
+      "region": 8,
+      "name": "Raised Shelves",
+      "runs": [
+        {
+          "at": "2026-10-02T03:36:18.464Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 352,
+          "rooms": {
+            "f8-shelves": {
+              "deaths": 0,
+              "frames": 352,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:36:43.282Z"
+      }
+    },
+    "f8-hearth": {
+      "region": 8,
+      "name": "Workers’ Hearth",
+      "runs": [
+        {
+          "at": "2026-10-02T03:36:18.464Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 343,
+          "rooms": {
+            "f8-hearth": {
+              "deaths": 0,
+              "frames": 343,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        },
+        {
+          "at": "2026-10-02T03:36:18.464Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": true,
+          "deaths": 0,
+          "frames": 288,
+          "rooms": {
+            "f8-hearth": {
+              "deaths": 0,
+              "frames": 288,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:37:16.016Z"
+      }
+    },
+    "f8-q-steps": {
+      "region": 8,
+      "name": "The Dreadful Steps",
+      "runs": [
+        {
+          "at": "2026-10-02T03:36:18.464Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 239,
+          "rooms": {
+            "f8-q-steps": {
+              "deaths": 0,
+              "frames": 239,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:37:00.649Z"
+      }
+    },
+    "f8-q-shelter": {
+      "region": 8,
+      "name": "The Upper Shelter",
+      "runs": [
+        {
+          "at": "2026-10-02T03:36:18.464Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 243,
+          "rooms": {
+            "f8-q-shelter": {
+              "deaths": 0,
+              "frames": 243,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:37:10.033Z"
+      }
+    },
+    "f8-works": {
+      "region": 8,
+      "name": "Thermal Works",
+      "runs": [
+        {
+          "at": "2026-10-02T03:36:18.464Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 242,
+          "rooms": {
+            "f8-works": {
+              "deaths": 0,
+              "frames": 242,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:37:22.266Z"
+      }
+    },
+    "f8-court": {
+      "region": 8,
+      "name": "Thawed Court",
+      "runs": [
+        {
+          "at": "2026-10-02T03:36:18.464Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 209,
+          "rooms": {
+            "f8-court": {
+              "deaths": 0,
+              "frames": 209,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:37:27.849Z"
+      }
+    },
+    "f8-rehearsal": {
+      "region": 8,
+      "name": "The Rehearsal",
+      "runs": [
+        {
+          "at": "2026-10-02T03:36:18.464Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 311,
+          "rooms": {
+            "f8-rehearsal": {
+              "deaths": 0,
+              "frames": 311,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 3,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:37:35.815Z"
+      }
+    },
+    "f8-stair": {
+      "region": 8,
+      "name": "Frozen Stair",
+      "runs": [
+        {
+          "at": "2026-10-02T03:36:18.464Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 2,
+          "frames": 524,
+          "rooms": {
+            "f8-stair": {
+              "deaths": 2,
+              "frames": 524,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 3,
+        "fun": 4,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:37:47.332Z"
+      }
+    },
+    "f8-galleries": {
+      "region": 8,
+      "name": "Exposed Galleries",
+      "runs": [
+        {
+          "at": "2026-10-02T03:36:18.464Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 288,
+          "rooms": {
+            "f8-galleries": {
+              "deaths": 0,
+              "frames": 288,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 3,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:37:54.633Z"
+      }
+    },
+    "f8-landings": {
+      "region": 8,
+      "name": "The Twenty Landings",
+      "runs": [
+        {
+          "at": "2026-10-02T03:36:18.464Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 1,
+          "frames": 495,
+          "rooms": {
+            "f8-landings": {
+              "deaths": 1,
+              "frames": 495,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:38:07.317Z"
+      }
+    },
+    "f8-engine": {
+      "region": 8,
+      "name": "Muster Engine",
+      "runs": [
+        {
+          "at": "2026-10-02T03:36:18.464Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 241,
+          "rooms": {
+            "f8-engine": {
+              "deaths": 0,
+              "frames": 241,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:38:13.733Z"
+      }
+    },
+    "f8-crown": {
+      "region": 8,
+      "name": "Muster Crown",
+      "runs": [
+        {
+          "at": "2026-10-02T03:36:18.464Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 243,
+          "rooms": {
+            "f8-crown": {
+              "deaths": 0,
+              "frames": 243,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:38:20.217Z"
+      }
+    },
+    "s9-refuge": {
+      "region": 9,
+      "name": "The Sluice Refuge",
+      "runs": [
+        {
+          "at": "2026-10-02T03:38:21.392Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 1,
+          "frames": 585,
+          "rooms": {
+            "s9-refuge": {
+              "deaths": 1,
+              "frames": 585,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:39:08.782Z"
+      }
+    },
+    "s9-court": {
+      "region": 9,
+      "name": "Thaw Court",
+      "runs": [
+        {
+          "at": "2026-10-02T03:38:21.392Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 4,
+          "frames": 779,
+          "rooms": {
+            "s9-court": {
+              "deaths": 4,
+              "frames": 779,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 4,
+        "fun": 4,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:39:25.565Z"
+      }
+    },
+    "s9-cache": {
+      "region": 9,
+      "name": "The High Cache",
+      "runs": [
+        {
+          "at": "2026-10-02T03:38:21.392Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 478,
+          "rooms": {
+            "s9-cache": {
+              "deaths": 0,
+              "frames": 478,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 3,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:39:35.548Z"
+      }
+    },
+    "s9-glass": {
+      "region": 9,
+      "name": "The Glassworks",
+      "runs": [
+        {
+          "at": "2026-10-02T03:38:21.392Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 77,
+          "rooms": {
+            "s9-glass": {
+              "deaths": 0,
+              "frames": 77,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        },
+        {
+          "at": "2026-10-02T03:38:21.392Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": true,
+          "deaths": 1,
+          "frames": 814,
+          "rooms": {
+            "s9-glass": {
+              "deaths": 1,
+              "frames": 814,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 2,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:45:23.301Z"
+      }
+    },
+    "s9-q-intake": {
+      "region": 9,
+      "name": "The Cold Intake",
+      "runs": [
+        {
+          "at": "2026-10-02T03:38:21.392Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 43,
+          "frames": 16591,
+          "rooms": {
+            "s9-q-intake": {
+              "deaths": 43,
+              "frames": 16591,
+              "retries": 0,
+              "watched": true
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 10,
+        "fun": 2,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:44:37.834Z"
+      }
+    },
+    "s9-q-pen": {
+      "region": 9,
+      "name": "The Pen Line",
+      "runs": [
+        {
+          "at": "2026-10-02T03:38:21.392Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 1650,
+          "rooms": {
+            "s9-q-pen": {
+              "deaths": 0,
+              "frames": 1650,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 4,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:45:06.300Z"
+      }
+    },
+    "s9-gallery": {
+      "region": 9,
+      "name": "Petition Gallery",
+      "runs": [
+        {
+          "at": "2026-10-02T03:38:21.392Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 3,
+          "frames": 1029,
+          "rooms": {
+            "s9-gallery": {
+              "deaths": 3,
+              "frames": 1029,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 3,
+        "fun": 4,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:45:44.784Z"
+      }
+    },
+    "s9-overlook": {
+      "region": 9,
+      "name": "The Overlook",
+      "runs": [
+        {
+          "at": "2026-10-02T03:38:21.392Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 0,
+          "frames": 221,
+          "rooms": {
+            "s9-overlook": {
+              "deaths": 0,
+              "frames": 221,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 1,
+        "fun": 1,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:45:54.150Z"
+      }
+    },
+    "s9-ante": {
+      "region": 9,
+      "name": "The Cold Antechamber",
+      "runs": [
+        {
+          "at": "2026-10-02T03:38:21.392Z",
+          "assist": {
+            "infiniteStamina": false,
+            "speed": 1
+          },
+          "seenBefore": false,
+          "deaths": 2,
+          "frames": 764,
+          "rooms": {
+            "s9-ante": {
+              "deaths": 2,
+              "frames": 764,
+              "retries": 0,
+              "watched": false
+            }
+          }
+        }
+      ],
+      "rating": {
+        "diff": 3,
+        "fun": 3,
+        "flags": [],
+        "note": "",
+        "at": "2026-10-02T03:46:09.435Z"
+      }
+    }
+  }
+}

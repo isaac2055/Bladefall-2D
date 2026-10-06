@@ -4,7 +4,7 @@ import { dirname, relative, resolve } from 'node:path';
 import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import process from 'node:process';
-import puppeteer from 'puppeteer';
+import { launchChrome } from '../tests/launch-chrome.mjs';
 
 const SCRIPT_PATH = fileURLToPath(import.meta.url);
 const ROOT = resolve(dirname(SCRIPT_PATH), '..');
@@ -243,7 +243,7 @@ async function runInteractiveBaseline() {
   const fps = Number(argument('--fps', DEFAULT_FPS));
   const sourceReport = JSON.parse(await readFile(BASELINE_PATH, 'utf8'));
   const expectedVersion = await readExpectedVersion();
-  const browser = await puppeteer.launch({
+  const browser = await launchChrome({
     headless: true,
     args: ['--disable-background-timer-throttling', '--disable-renderer-backgrounding'],
   });

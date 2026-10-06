@@ -1,0 +1,272 @@
+{
+  "scope": "Explicit partial-work fixtures followed by harsh choice and real stage reload for all 20 stories; refuge timing and all 20 Fractured stages contain no side-story objects.",
+  "result": {
+    "rows": [
+      {
+        "id": "gatekeeper",
+        "phase": "harsh",
+        "step": 1,
+        "expectedStep": 1,
+        "keptSteps": 1,
+        "rewardHidden": true,
+        "gateClosed": null
+      },
+      {
+        "id": "refuge",
+        "phase": "harsh",
+        "step": 1,
+        "expectedStep": 1,
+        "keptSteps": 1,
+        "rewardHidden": true,
+        "gateClosed": null
+      },
+      {
+        "id": "defector",
+        "phase": "harsh",
+        "step": 1,
+        "expectedStep": 1,
+        "keptSteps": 1,
+        "rewardHidden": true,
+        "gateClosed": null
+      },
+      {
+        "id": "cartographer",
+        "phase": "harsh",
+        "step": 1,
+        "expectedStep": 1,
+        "keptSteps": 1,
+        "rewardHidden": true,
+        "gateClosed": null
+      },
+      {
+        "id": "recruit",
+        "phase": "harsh",
+        "step": 1,
+        "expectedStep": 1,
+        "keptSteps": 1,
+        "rewardHidden": true,
+        "gateClosed": null
+      },
+      {
+        "id": "archivist",
+        "phase": "harsh",
+        "step": 1,
+        "expectedStep": 1,
+        "keptSteps": 1,
+        "rewardHidden": true,
+        "gateClosed": null
+      },
+      {
+        "id": "keeper",
+        "phase": "harsh",
+        "step": 1,
+        "expectedStep": 1,
+        "keptSteps": 1,
+        "rewardHidden": true,
+        "gateClosed": true
+      },
+      {
+        "id": "winter",
+        "phase": "harsh",
+        "step": 1,
+        "expectedStep": 1,
+        "keptSteps": 1,
+        "rewardHidden": true,
+        "gateClosed": null
+      },
+      {
+        "id": "ember-pet",
+        "phase": "harsh",
+        "step": 1,
+        "expectedStep": 1,
+        "keptSteps": 1,
+        "rewardHidden": true,
+        "gateClosed": null
+      },
+      {
+        "id": "quota",
+        "phase": "harsh",
+        "step": 1,
+        "expectedStep": 1,
+        "keptSteps": 1,
+        "rewardHidden": true,
+        "gateClosed": null
+      },
+      {
+        "id": "automaton",
+        "phase": "harsh",
+        "step": 1,
+        "expectedStep": 1,
+        "keptSteps": 1,
+        "rewardHidden": true,
+        "gateClosed": null
+      },
+      {
+        "id": "neighbors",
+        "phase": "harsh",
+        "step": 1,
+        "expectedStep": 1,
+        "keptSteps": 1,
+        "rewardHidden": true,
+        "gateClosed": null
+      },
+      {
+        "id": "figure",
+        "phase": "harsh",
+        "step": 1,
+        "expectedStep": 1,
+        "keptSteps": 1,
+        "rewardHidden": true,
+        "gateClosed": null
+      },
+      {
+        "id": "alarm",
+        "phase": "harsh",
+        "step": 1,
+        "expectedStep": 1,
+        "keptSteps": 1,
+        "rewardHidden": true,
+        "gateClosed": null
+      },
+      {
+        "id": "miner",
+        "phase": "harsh",
+        "step": 2,
+        "expectedStep": 2,
+        "keptSteps": 2,
+        "rewardHidden": true,
+        "gateClosed": null
+      },
+      {
+        "id": "sailors",
+        "phase": "harsh",
+        "step": 1,
+        "expectedStep": 1,
+        "keptSteps": 1,
+        "rewardHidden": true,
+        "gateClosed": null
+      },
+      {
+        "id": "birthday",
+        "phase": "harsh",
+        "step": 2,
+        "expectedStep": 2,
+        "keptSteps": 2,
+        "rewardHidden": true,
+        "gateClosed": null
+      },
+      {
+        "id": "mother",
+        "phase": "harsh",
+        "step": 1,
+        "expectedStep": 1,
+        "keptSteps": 1,
+        "rewardHidden": true,
+        "gateClosed": null
+      },
+      {
+        "id": "pilgrim",
+        "phase": "harsh",
+        "step": 1,
+        "expectedStep": 1,
+        "keptSteps": 1,
+        "rewardHidden": true,
+        "gateClosed": null
+      },
+      {
+        "id": "garden",
+        "phase": "harsh",
+        "step": 1,
+        "expectedStep": 1,
+        "keptSteps": 1,
+        "rewardHidden": true,
+        "gateClosed": null
+      }
+    ],
+    "presentDuringSupper": true,
+    "goneOnReturn": true,
+    "rewardStillAvailable": true,
+    "fractured": [
+      {
+        "stage": 21,
+        "count": 0
+      },
+      {
+        "stage": 22,
+        "count": 0
+      },
+      {
+        "stage": 23,
+        "count": 0
+      },
+      {
+        "stage": 24,
+        "count": 0
+      },
+      {
+        "stage": 25,
+        "count": 0
+      },
+      {
+        "stage": 26,
+        "count": 0
+      },
+      {
+        "stage": 27,
+        "count": 0
+      },
+      {
+        "stage": 28,
+        "count": 0
+      },
+      {
+        "stage": 29,
+        "count": 0
+      },
+      {
+        "stage": 30,
+        "count": 0
+      },
+      {
+        "stage": 31,
+        "count": 0
+      },
+      {
+        "stage": 32,
+        "count": 0
+      },
+      {
+        "stage": 33,
+        "count": 0
+      },
+      {
+        "stage": 34,
+        "count": 0
+      },
+      {
+        "stage": 35,
+        "count": 0
+      },
+      {
+        "stage": 36,
+        "count": 0
+      },
+      {
+        "stage": 37,
+        "count": 0
+      },
+      {
+        "stage": 38,
+        "count": 0
+      },
+      {
+        "stage": 39,
+        "count": 0
+      },
+      {
+        "stage": 40,
+        "count": 0
+      }
+    ]
+  }
+}

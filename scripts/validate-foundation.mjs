@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
-import puppeteer from 'puppeteer';
+import { launchChrome } from '../tests/launch-chrome.mjs';
 
 const url=process.argv[2]||'http://127.0.0.1:8877/index.html';
-const browser=await puppeteer.launch({headless:true,args:['--disable-background-timer-throttling']});
+const browser=await launchChrome({headless:true,args:['--disable-background-timer-throttling']});
 const page=await browser.newPage(),pageErrors=[];
 page.on('pageerror',error=>pageErrors.push(error.message));
 page.on('console',message=>{if(message.type()==='error')pageErrors.push(`console: ${message.text()}`);});

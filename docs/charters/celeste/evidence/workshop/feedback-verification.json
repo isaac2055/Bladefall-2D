@@ -1,0 +1,274 @@
+{
+  "independentLayouts": [
+    {
+      "hard": 17,
+      "base": 16,
+      "count": 6,
+      "shared": 0
+    },
+    {
+      "hard": 19,
+      "base": 12,
+      "count": 7,
+      "shared": 0
+    },
+    {
+      "hard": 20,
+      "base": 13,
+      "count": 4,
+      "shared": 0
+    },
+    {
+      "hard": 21,
+      "base": 14,
+      "count": 7,
+      "shared": 0
+    },
+    {
+      "hard": 24,
+      "base": 23,
+      "count": 3,
+      "shared": 0
+    }
+  ],
+  "noFlight": [
+    {
+      "carrying": false,
+      "interval": 24,
+      "maxY": 136.33333333333334,
+      "landings": 96,
+      "dashes": 38,
+      "ready": 1,
+      "deaths": 0
+    },
+    {
+      "carrying": false,
+      "interval": 30,
+      "maxY": 112.16666666666667,
+      "landings": 60,
+      "dashes": 30,
+      "ready": 1,
+      "deaths": 0
+    },
+    {
+      "carrying": false,
+      "interval": 45,
+      "maxY": 112.16666666666667,
+      "landings": 160,
+      "dashes": 20,
+      "ready": 1,
+      "deaths": 0
+    },
+    {
+      "carrying": true,
+      "interval": 24,
+      "maxY": 137.5,
+      "landings": 189,
+      "dashes": 38,
+      "ready": 1,
+      "deaths": 0
+    },
+    {
+      "carrying": true,
+      "interval": 30,
+      "maxY": 119.16666666666666,
+      "landings": 90,
+      "dashes": 30,
+      "ready": 1,
+      "deaths": 0
+    },
+    {
+      "carrying": true,
+      "interval": 45,
+      "maxY": 112.16666666666667,
+      "landings": 130,
+      "dashes": 20,
+      "ready": 1,
+      "deaths": 0
+    }
+  ],
+  "freeAir": [
+    {
+      "carrying": false,
+      "direction": "up",
+      "frames": 152,
+      "deaths": 1,
+      "maxY": 736.3333333333333,
+      "dashes": 7,
+      "readySeen": true
+    },
+    {
+      "carrying": false,
+      "direction": "diagonal",
+      "frames": 141,
+      "deaths": 1,
+      "maxY": 680.5341990348134,
+      "dashes": 6,
+      "readySeen": true
+    },
+    {
+      "carrying": false,
+      "direction": "right",
+      "frames": 123,
+      "deaths": 1,
+      "maxY": 600,
+      "dashes": 6,
+      "readySeen": true
+    },
+    {
+      "carrying": true,
+      "direction": "up",
+      "frames": 177,
+      "deaths": 1,
+      "maxY": 737.5,
+      "dashes": 8,
+      "readySeen": true
+    },
+    {
+      "carrying": true,
+      "direction": "diagonal",
+      "frames": 167,
+      "deaths": 1,
+      "maxY": 680.5341990348134,
+      "dashes": 7,
+      "readySeen": true
+    },
+    {
+      "carrying": true,
+      "direction": "right",
+      "frames": 146,
+      "deaths": 1,
+      "maxY": 600,
+      "dashes": 7,
+      "readySeen": true
+    }
+  ],
+  "lanternReturn": {
+    "launch": {
+      "x": 96513.65897885272,
+      "y": 148
+    },
+    "automatic": {
+      "x": 96513.65897885272,
+      "y": 148,
+      "rest": true,
+      "recalls": 1
+    },
+    "recovered": true,
+    "manual": true,
+    "deaths": 0
+  },
+  "telemetry": [
+    {
+      "id": 10,
+      "complete": true,
+      "receipts": [
+        {
+          "x": 600,
+          "remaining": null,
+          "capacity": 4.76,
+          "refill": false,
+          "at": 0.6833333333333338,
+          "room": 10
+        },
+        {
+          "x": 2040,
+          "remaining": 0.32666666666667826,
+          "capacity": 4.81,
+          "refill": true,
+          "at": 5.116666666666654,
+          "room": 10
+        },
+        {
+          "x": 5320,
+          "remaining": null,
+          "capacity": 4.76,
+          "refill": false,
+          "at": 11.800000000000166,
+          "room": 10
+        },
+        {
+          "x": 6680,
+          "remaining": 0.32666666666667826,
+          "capacity": 4.71,
+          "refill": true,
+          "at": 16.233333333333693,
+          "room": 10
+        },
+        {
+          "x": 10200,
+          "remaining": null,
+          "capacity": 4.8500000000000005,
+          "refill": false,
+          "at": 23.049999999999972,
+          "room": 10
+        },
+        {
+          "x": 10540,
+          "remaining": 0.383333333333346,
+          "capacity": 4.83,
+          "refill": true,
+          "at": 27.516666666666385,
+          "room": 10
+        }
+      ],
+      "display": "Aether pickup times\n\nTime left just before each pickup. Refills aim for less than 0.50s.\n\nPickup\tTime left\tNew charge\n1 · Form\tNew transformation\t4.76s\n2 · Refill\t0.33s\t4.81s\n3 · Form\tNew transformation\t4.76s\n4 · Refill\t0.33s\t4.71s\n5 · Form\tNew transformation\t4.85s\n6 · Refill\t0.38s\t4.83s"
+    },
+    {
+      "id": 18,
+      "complete": true,
+      "receipts": [
+        {
+          "x": 600,
+          "remaining": null,
+          "capacity": 4.7,
+          "refill": false,
+          "at": 0.6833333333333338,
+          "room": 18
+        },
+        {
+          "x": 2030,
+          "remaining": 0.2166666666666785,
+          "capacity": 5.1,
+          "refill": true,
+          "at": 5.166666666666654,
+          "room": 18
+        },
+        {
+          "x": 5410,
+          "remaining": null,
+          "capacity": 3.93,
+          "refill": false,
+          "at": 12.383333333333528,
+          "room": 18
+        },
+        {
+          "x": 5570,
+          "remaining": 0.31333333333334235,
+          "capacity": 5.11,
+          "refill": true,
+          "at": 16.000000000000373,
+          "room": 18
+        },
+        {
+          "x": 9500,
+          "remaining": null,
+          "capacity": 4.88,
+          "refill": false,
+          "at": 23.59999999999994,
+          "room": 18
+        },
+        {
+          "x": 11100,
+          "remaining": 0.3466666666666788,
+          "capacity": 4.87,
+          "refill": true,
+          "at": 28.133333333333017,
+          "room": 18
+        }
+      ],
+      "display": "Aether pickup times\n\nTime left just before each pickup. Refills aim for less than 0.50s.\n\nPickup\tTime left\tNew charge\n1 · Form\tNew transformation\t4.70s\n2 · Refill\t0.22s\t5.10s\n3 · Form\tNew transformation\t3.93s\n4 · Refill\t0.31s\t5.11s\n5 · Form\tNew transformation\t4.88s\n6 · Refill\t0.35s\t4.87s"
+    }
+  ],
+  "errors": []
+}

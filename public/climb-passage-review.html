@@ -1,0 +1,73 @@
+<!doctype html><meta charset="utf-8"><title>Climb passage review</title>
+<style>body{min-width:1180px;margin:0;background:#111720;color:#dce3e7;font:14px system-ui}header{display:flex;gap:8px;align-items:center;padding:10px;flex-wrap:wrap}button,select{font:inherit;background:#263447;color:inherit;border:1px solid #526174;border-radius:4px;padding:7px}iframe{width:100%;height:calc(100vh - 115px);border:0}output{display:block;padding:10px;font:13px monospace}</style>
+<header><select id="passage" aria-label="Passage"></select><button id="middle">Show midpoint</button><button id="left">Inspect left exit</button><button id="right">Inspect right exit</button><button id="lift">Board counterweight</button><button id="walk">Walk</button><button id="dash">Dash</button><button id="finish">Finish Outskirts</button><button id="entrance">View selected entrance</button><button id="route">Walk selected road</button><select id="road" aria-label="Road"></select><button id="pixels">Audit seam scenery</button><button id="step">Step 1 frame</button><button id="cross">Step 18 frames</button></header>
+<output id="status">Loading the actual game renderer…</output><iframe id="game" title="Passage preview" src="precision.html?pitch=climb&world=1&review"></iframe>
+<script>
+let win,V,PV,C,CL,R,def,owner,edge='right',keys='r';
+const $=id=>document.getElementById(id);
+function state(){const g=V.view.g,p=g.p,cam=V.view.cam;$('status').textContent=`${g.room.name} | ${g.room.id} | ${p.state} | position ${p.x.toFixed(1)}, ${p.y.toFixed(1)} | velocity ${p.vx.toFixed(1)}, ${p.vy.toFixed(1)} | screen ${(p.x-cam.x).toFixed(1)}, ${(p.y-cam.y).toFixed(1)} | deaths ${g.deaths}`;}
+function draw(){V.view.paused=true;V.advance([]);state();}
+function select(){def=R.all.find(r=>r.id===$('passage').value);owner=CL.world(def.atlasTransit?.a)||CL.worlds.find(w=>w.rooms.includes(def));PV.climb.startWorld(owner.n);C.enterRoom(V.view.g,R.all.findIndex(r=>r.id===def.id));const st=PV.climb.state();st.cam=null;st.passageCool=0;st.enteredAt=0;V.view.g.frame=120;for(const w of CL.worlds)for(const s of w.sections)st.atlas.solve(s.room);V.view.replay=null;V.view.trail=[];V.view.parts=[];roads();}
+function roads(){ $('road').replaceChildren();for(const [i,s] of (def.atlasSockets||[]).entries())if(!s.preview)$('road').add(new Option(`${s.link||'Return'} · ${s.edge} @ ${s.floor}`,i));}
+function pose(x,y){const p=V.view.g.p;Object.assign(p,{x,y,vx:0,vy:0,state:'normal',onGround:true,dashes:1});V.view.scarf=Array.from({length:5},(_,i)=>({x:x+2-i,y:y+4}));draw();}
+function end(side){edge=side;keys=side==='left'?'l':'r';select();const g=V.view.g,s=def.atlasSockets.find(s=>s.edge===side);pose(side==='left'?18:g.room.w-26,s.floor*8-11);}
+$('middle').onclick=()=>{select();if(def.atlasTransit){const p=def.atlasTransit.route[Math.floor(def.atlasTransit.route.length/2)];pose(p.c*8,p.r*8-11);}else pose(V.view.g.room.spawn.x,V.view.g.room.spawn.y);};
+$('left').onclick=()=>end('left');$('right').onclick=()=>end('right');
+$('lift').onclick=()=>{select();const spec=def.atlasTransit?.lift;if(!spec){$('status').textContent='The counterweight is in The Chainwell.';return;}pose(spec.x+spec.w/2-4,spec.bottom-11);keys='';};
+$('walk').onclick=()=>{const p=V.view.g.p;p.vx=edge==='left'?-90:90;p.state='normal';draw();};
+$('dash').onclick=()=>{const p=V.view.g.p,sign=edge==='left'?-1:1;Object.assign(p,{state:'dash',dashTimer:16,dashAim:false,dashDir:{x:sign,y:0},vx:sign*240,vy:0,dashes:0,dashFlash:7});draw();};
+function step(n){V.view.paused=false;for(let i=0;i<n;i++)V.advance([keys]);V.view.paused=true;state();}
+$('finish').onclick=()=>{
+ PV.climb.startWorld(1);const w=CL.world(1);C.enterRoom(V.view.g,R.all.findIndex(r=>r.id===w.atlasEnd));V.view.replay=null;V.view.trail=[];V.view.parts=[];
+ const st=PV.climb.state();st.cam=null;st.enteredAt=0;V.view.g.frame=120;
+ for(const sec of w.sections)if(sec.room!==w.atlasEnd)st.atlas.solve(sec.room);
+ V.view.paused=false;
+ outer:for(const [count,input] of R.tapes[w.atlasEnd])for(let i=0;i<count;i++){V.advance([input]);if(V.view.g.room.id!==w.atlasEnd)break outer;}
+ V.view.paused=true;def=V.view.g.room.def;$('passage').value=def.id;roads();state();
+};
+$('entrance').onclick=()=>{const s=def.atlasSockets[Number($('road').value)];edge=s.edge;keys=edge==='left'?'l':'r';pose(edge==='left'?18:V.view.g.room.w-26,s.floor*8-11);};
+$('route').onclick=()=>{
+ const g=V.view.g,s=def.atlasSockets[Number($('road').value)],road=def.atlasRoads?.find(r=>r.edge===s.edge&&r.floor===s.floor);
+ if(!road){$('status').textContent='Select a junction road first.';return;}
+ // Travel from the hearth through the authored bank, with normal jump/dash inputs.
+ let i=0,hold=0,aim=0,last=-100;
+ const points=road.points.map(p=>({x:p.c*8+4,y:p.r*8}));V.view.paused=false;
+ for(let f=0;f<2000&&g.room.id===def.id;f++){
+  const p=g.p,t=points[i],sign=s.edge==='left'?'l':'r';let input='';
+  if(!t)input=sign;
+  else{const dx=t.x-(p.x+4);if(Math.abs(dx)<9&&p.y+p.h<=t.y+2&&p.onGround){i++;continue;}
+   input=dx<-3?'l':dx>3?'r':'';
+   if(p.onGround&&f-last>24&&p.y+p.h>t.y+2){hold=19;last=f;}
+   if(hold-->0)input+='j';
+   if(!aim&&!p.onGround&&p.vy>0&&p.y+p.h>t.y+1&&Math.abs(dx)<55&&p.dashes>0){input+='x';aim=14;}
+   if(aim>0){aim--;input=input.replace(/[lr]/g,'')+'u';}
+  }
+  V.advance([input]);
+ }
+ V.view.paused=true;state();
+};
+$('pixels').onclick=()=>{
+ const report=[];
+ for(const w of CL.worlds)for(const d of w.rooms.filter(r=>r.atlasSockets?.length))for(const socket of d.atlasSockets.filter(s=>!s.preview)){
+  const side=socket.edge;PV.climb.startWorld(w.n);C.enterRoom(V.view.g,R.all.findIndex(r=>r.id===d.id));V.view.paused=true;V.view.replay=null;V.view.trail=[];V.view.parts=[];
+  const st=PV.climb.state();st.cam=null;st.passageCool=0;st.enteredAt=0;V.view.g.frame=120;for(const world of CL.worlds)for(const sec of world.sections)st.atlas.solve(sec.room);
+  const g=V.view.g,p=g.p,sign=side==='left'?-1:1;pose(sign<0?18:g.room.w-26,socket.floor*8-11);
+  // First initialise the room's open seams, then render a stationary body
+  // straddling the seam on each side of the ownership transfer.
+  PV.holding();p.x=sign<0?-4:g.room.w-4;p.vx=sign*90;V.view.lastInput=sign<0?{l:true}:{r:true};PV.climb.state().cam=null;draw();
+  const canvas=V.view.buf,context=canvas.getContext('2d'),a=context.getImageData(0,0,canvas.width,canvas.height).data;
+  const oldScreen={x:p.x-Math.round(V.view.cam.x),y:p.y-Math.round(V.view.cam.y)};
+  PV.holding();draw();const q=g.p,dx=q.x-Math.round(V.view.cam.x)-oldScreen.x,dy=q.y-Math.round(V.view.cam.y)-oldScreen.y;
+  const b=context.getImageData(0,0,canvas.width,canvas.height).data;let changed=0,total=0;
+  for(let y=8;y<canvas.height-8;y++)for(let x=8;x<canvas.width-8;x++){
+   const xx=x+dx,yy=y+dy;if(xx<0||yy<0||xx>=canvas.width||yy>=canvas.height)continue;
+   const i=(y*canvas.width+x)*4,j=(yy*canvas.width+xx)*4;
+   if(Math.max(Math.abs(a[i]-b[j]),Math.abs(a[i+1]-b[j+1]),Math.abs(a[i+2]-b[j+2]))>12)changed++;total++;
+  }
+  report.push(`${d.id} ${side}@${socket.floor}: ${(changed/total*100).toFixed(2)}% pixels changed`);
+ }
+ $('status').textContent=report.join(' | ');
+};
+$('step').onclick=()=>step(1);$('cross').onclick=()=>step(18);
+const ready=setInterval(()=>{win=$('game').contentWindow;if(!win.BladefallPrecisionView?.view?.g)return;clearInterval(ready);V=win.BladefallPrecisionView;PV=win.BladefallPitchView;C=win.BladefallPrecisionCore;CL=win.BladefallClimb;R=win.BladefallPrecisionRooms;for(const w of CL.worlds)for(const d of w.rooms.filter(d=>d.atlasTransit||d.atlasJunction||d.atlasMouth||d.atlasSockets?.some(s=>s.preview))){$('passage').add(new Option(d.name+(d.atlasTransit?'':' [approach]'),d.id));}$('middle').click();},100);
+</script>

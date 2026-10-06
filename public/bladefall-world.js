@@ -25,6 +25,35 @@
     ['void-tyrant', 12, 'Paradox Citadel', 12, 12, 'boss', true],
     ['abyss-king', 13, 'The Drowned Throne', 13, 13, 'final-boss', false],
     ['deep-line', 15, 'The Deep Line', 15, 15, 'truth-route', true],
+    ['thunder-cliffs', 16, 'Thunder Cliffs', 16, 16, 'boss', false],
+    ['landing-shores', 17, 'The Landing Shores', 17, 17, 'wilds', false],
+    ['colony', 18, 'The Colony', 18, 18, 'settlement', false],
+    ['palace-path', 19, 'The Path to the Palace', 19, 19, 'wilds', false],
+    ['sunspire', 20, 'Sunspire Palace', 20, 20, 'boss', false],
+    ['fractured-outskirts', 21, 'The Fractured Outskirts', 21, 21, 'boss', false],
+    ['fractured-woods', 22, 'The Fractured Woods', 22, 22, 'boss', false],
+    ['fractured-updrafts', 23, 'The Fractured Updrafts', 23, 23, 'boss', false],
+    ['fractured-marksman', 24, 'The Fractured Marksman', 24, 24, 'boss', false],
+    ['fractured-causeway', 25, 'The Fractured Causeway', 25, 25, 'boss', false],
+    ['fractured-keep', 26, 'The Fractured Keep', 26, 26, 'boss', false],
+    ['fractured-warden', 27, 'The Fractured Warden', 27, 27, 'boss', false],
+    ['fractured-frostfell', 28, 'The Fractured Frostfell', 28, 28, 'boss', false],
+    ['fractured-sorcerer', 29, 'The Fractured Sorcerer', 29, 29, 'boss', false],
+    ['fractured-emberdeep', 30, 'The Fractured Emberdeep', 30, 30, 'boss', false],
+    ['fractured-colossus', 31, 'The Fractured Colossus', 31, 31, 'boss', false],
+    ['fractured-inversion', 32, 'The Fractured Inversion', 32, 32, 'boss', false],
+    ['fractured-tyrant', 33, 'The Fractured Tyrant', 33, 33, 'boss', false],
+    ['fractured-king', 34, 'The Fractured King', 34, 34, 'boss', false],
+    ['fractured-line', 35, 'The Fractured Line', 35, 35, 'boss', false],
+    ['fractured-cliffs', 36, 'Fractured Cliffs', 36, 36, 'boss', false],
+    ['fractured-shores', 37, 'Fractured Shores', 37, 37, 'boss', false],
+    ['fractured-colony', 38, 'The Fractured Colony', 38, 38, 'boss', false],
+    ['fractured-path', 39, 'The Fractured Path', 39, 39, 'boss', false],
+    ['fractured-palace', 40, 'Fractured Palace', 40, 40, 'boss', false],
+    ['celeste-standard', 41, 'Celeste Standard', 42, 1, 'route', false],
+    ['fractured-celeste', 42, 'Fractured Celeste', 42, 2, 'route', false],
+    ['cloaked-man', 43, 'The Cloaked Man', 43, 3, 'boss', false],
+    ['precision-workshop', 44, 'Precision Workshop', 44, 1, 'route', false],
   ];
 
   const nodes = nodeRecords.map(([id, stageIndex, name, column, depth, kind, anchor]) => {
@@ -54,6 +83,32 @@
     ['tyrant-king', 'void-tyrant', 'abyss-king', 'main-ending', []],
     ['king-deep-line', 'abyss-king', 'deep-line', 'truth-branch', []],
     ['deep-line-keep', 'deep-line', 'ruined-keep', 'truth-branch', []],
+    // ACT TWO: out from the Throne's beach in the three-country boat.
+    ['king-thunder-cliffs', 'abyss-king', 'thunder-cliffs', 'act-two', []],
+    ['cliffs-landing', 'thunder-cliffs', 'landing-shores', 'act-two', ['chain-hook']],
+    ['shores-colony', 'landing-shores', 'colony', 'act-two', []],
+    ['colony-path', 'colony', 'palace-path', 'act-two', []],
+    ['path-sunspire', 'palace-path', 'sunspire', 'act-two', []],
+    ['sunspire-fractured', 'sunspire', 'fractured-outskirts', 'act-three', []],
+    ['fo-fw', 'fractured-outskirts', 'fractured-woods', 'act-three', []],
+    ['fw-fc', 'fractured-woods', 'fractured-causeway', 'act-three', []],
+    ['fu-fm', 'fractured-updrafts', 'fractured-marksman', 'act-three', []],
+    ['fc-fu', 'fractured-causeway', 'fractured-updrafts', 'act-three', []],
+    ['fm-fk', 'fractured-marksman', 'fractured-keep', 'act-three', []],
+    ['fk-fw', 'fractured-keep', 'fractured-warden', 'act-three', []],
+    ['fw-ff', 'fractured-warden', 'fractured-frostfell', 'act-three', []],
+    ['ff-fs', 'fractured-frostfell', 'fractured-sorcerer', 'act-three', []],
+    ['fs-fe', 'fractured-sorcerer', 'fractured-emberdeep', 'act-three', []],
+    ['fe-fcl', 'fractured-emberdeep', 'fractured-colossus', 'act-three', []],
+    ['fcl-fi', 'fractured-colossus', 'fractured-inversion', 'act-three', []],
+    ['fi-ft', 'fractured-inversion', 'fractured-tyrant', 'act-three', []],
+    ['ft-fk', 'fractured-tyrant', 'fractured-king', 'act-three', []],
+    ['fk-fl', 'fractured-king', 'fractured-line', 'act-three', []],
+    ['fl-fc', 'fractured-line', 'fractured-cliffs', 'act-three', []],
+    ['fc-fs', 'fractured-cliffs', 'fractured-shores', 'act-three', []],
+    ['fs-fco', 'fractured-shores', 'fractured-colony', 'act-three', []],
+    ['fco-fp', 'fractured-colony', 'fractured-path', 'act-three', []],
+    ['fp-fpa', 'fractured-path', 'fractured-palace', 'act-three', []],
   ];
 
   const routes = routeRecords.map(([id, from, to, kind, capabilities]) => ({
@@ -283,7 +338,8 @@
     const errors = [];
     // FIFTEEN. The Gilded Vault was cut on 2026-09-20; its campaign stage slot is kept
     // inert so no stageIndex after it moves, but it is not a place in the world.
-    if (nodes.length !== 15) errors.push('world graph must cover all 15 reachable stages');
+    // SIXTEEN since Act Two's first region (Thunder Cliffs, stage 16).
+    if (nodes.length !== 44) errors.push('world catalog must cover 40 campaign regions, two standalone courses, the workshop and the final battle');
     if (nodeById.size !== nodes.length || nodeByStage.size !== nodes.length) errors.push('world nodes must have unique ids and stage indices');
     const routeIds = new Set();
     for (const route of routes) {

@@ -8,6 +8,10 @@ const SCRIPT_PATH = fileURLToPath(import.meta.url);
 const ROOT = resolve(dirname(SCRIPT_PATH), '..');
 const DEFAULT_OUTPUT = resolve(ROOT, 'docs/baseline/a1-structural-baseline.json');
 const A1_CAPTURE_VERSION = '7.8.0';
+// The A1 evidence was captured for the Act One campaign: sixteen stage slots (fifteen regions
+// and the inert cut slot). Act Two's stages were never part of it, so a later act does not make
+// that archive "incomplete" — the A1 baseline is compared against the campaign it recorded.
+const A1_STAGE_COUNT = 16;
 
 await import('../public/bladefall-authoring.js');
 await import('../public/bladefall-campaign.js');
@@ -169,8 +173,8 @@ export async function buildBaseline(root = ROOT) {
   const visualAtlasComplete = !!(visualAtlas
     && visualAtlas.schema === 'bladefall.a1-visual-atlas'
     && visualAtlas.gameVersion === A1_CAPTURE_VERSION
-    && visualAtlas.capturedStages === stages.length
-    && visualAtlas.capturedStills >= stages.length * 3
+    && visualAtlas.capturedStages === A1_STAGE_COUNT
+    && visualAtlas.capturedStills >= A1_STAGE_COUNT * 3
     && Array.isArray(visualAtlas.pageErrors)
     && visualAtlas.pageErrors.length === 0);
   const visualReviewComplete = await fileExists(
@@ -182,7 +186,7 @@ export async function buildBaseline(root = ROOT) {
   const entranceProbeComplete = !!(interactiveBaseline
     && interactiveBaseline.schema === 'bladefall.a1-interactive-baseline'
     && interactiveBaseline.gameVersion === A1_CAPTURE_VERSION
-    && interactiveBaseline.capturedStages === stages.length
+    && interactiveBaseline.capturedStages === A1_STAGE_COUNT
     && interactiveBaseline.coverage?.entranceLocomotion === 'complete'
     && Array.isArray(interactiveBaseline.pageErrors)
     && interactiveBaseline.pageErrors.length === 0);

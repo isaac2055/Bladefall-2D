@@ -49,6 +49,39 @@
     ['paradox-vigil', 'void-tyrant', 'Paradox Vigil', 0.74, false],
     ['throne-watch', 'abyss-king', 'Throne Watch', 0.26, true],
     ['line-terminus', 'deep-line', 'Line Terminus', 0.08, true],
+    // Act Two's rests are NOT fast-travel stations: Act One stays behind the sea until the
+    // act's own ending carries the knight back. Thunder Cliffs rests on the ship itself —
+    // the harbour slides in only when the boat docks, so it cannot hold a marker placed at load.
+    ['stern-lantern', 'thunder-cliffs', 'The Stern Lantern', 0.06, false],
+    // The holed boat, where the current left it on the strand.
+    ['holed-boat', 'landing-shores', 'The Holed Boat', 0.03, false],
+    // Sable's dry well, until the tap is opened.
+    ['sables-spring', 'colony', 'Sable’s Spring', 0.66, false],
+    // A pilgrims' shelter at the foot of the road.
+    ['pilgrims-shelter', 'palace-path', 'The Pilgrims’ Shelter', 0.04, false],
+    // The first fountain in the Sun Court, running over with the colony's water.
+    ['servants-fountain', 'sunspire', 'The Servants’ Fountain', 0.05, false],
+    // The first echo: a watchfire gone to embers at the start of the road.
+    ['ash-watchfire', 'fractured-outskirts', 'The Ash Watchfire', 0.03, false],
+    ['woods-embers', 'fractured-woods', 'The Refuge Embers', 0.03, false],
+    ['aerie-cinders', 'fractured-updrafts', 'The Aerie Cinders', 0.03, false],
+    ['watch-embers', 'fractured-marksman', 'The Watch Embers', 0.03, false],
+    ['chainwake-embers', 'fractured-causeway', 'The Chainwake Embers', 0.03, false],
+    ['hearth-ash', 'fractured-keep', 'The Hearth Ash', 0.03, false],
+    ['vigil-ash', 'fractured-warden', 'The Cold Vigil', 0.03, false],
+    ['refuge-ash', 'fractured-frostfell', 'The Untended Hearth', 0.03, false],
+    ['sluice-ash', 'fractured-sorcerer', 'The Cold Brazier', 0.03, false],
+    ['furnace-ash', 'fractured-emberdeep', 'The Last Coal', 0.03, false],
+    ['crucible-ash', 'fractured-colossus', 'The Warm Crucible', 0.03, false],
+    ['keel-ash', 'fractured-inversion', 'The Upturned Hearth', 0.03, false],
+    ['tear-ash', 'fractured-tyrant', 'The Mended Hearth', 0.03, false],
+    ['crown-ash', 'fractured-king', 'The Drained Hearth', 0.03, false],
+    ['line-ash', 'fractured-line', 'The Dead Lamp', 0.03, false],
+    ['wreck-ash', 'fractured-cliffs', 'The Wreck Fire', 0.03, false],
+    ['strand-ash', 'fractured-shores', 'The Strand Fire', 0.03, false],
+    ['colony-ash', 'fractured-colony', 'The Cold Pit', 0.03, false],
+    ['path-ash', 'fractured-path', 'The Noon Shade', 0.03, false],
+    ['palace-ash', 'fractured-palace', 'The Last Hearth', 0.03, false],
   ];
 
   const sites = siteRecords.map(([id, zoneId, name, ratio, fastTravel]) => {
@@ -242,6 +275,13 @@
       const [a, b] = seam.endpoints.map((endpoint) => endpoint.zoneId);
       if (visited.has(a) && !visited.has(b)) frontier.add(b);
       if (visited.has(b) && !visited.has(a)) frontier.add(a);
+    }
+    // Only the next place on the road is named (owner 7.234: after the Brute the map also showed the White
+    // Court and the Gaol). Stage order follows the campaign road, so the lowest unvisited stage is next.
+    if (frontier.size > 1) {
+      const order = (id) => { const z = zones.zone(id); return z && Number.isFinite(z.stageIndex) ? z.stageIndex : 999; };
+      const next = [...frontier].sort((a, b) => order(a) - order(b))[0];
+      frontier.clear(); frontier.add(next);
     }
     const nodeModels = progression.zones.map((zone) => {
       const status = zone.id === currentZoneId ? 'current' : visited.has(zone.id) ? 'visited' : frontier.has(zone.id) ? 'frontier' : 'hidden';

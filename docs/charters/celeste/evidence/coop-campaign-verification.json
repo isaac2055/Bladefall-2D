@@ -1,0 +1,25 @@
+{
+  "version": "7.227.0",
+  "scope": "Production handlers in paired browsers using an in-memory transport; campaign regression fixtures, not full campaign traversal or external WebRTC signaling.",
+  "checks": [
+    "Both players independently complete all 27 precision rooms, with staggered starts and simultaneous inputs",
+    "Personal precision retries and reconnect attempts do not complete the partner\u2019s devices",
+    "Both arrivals required at campaign/Act Two/Fractured exits and final ending",
+    "Both players board before Act One ends",
+    "Untethered movement and independent cameras",
+    "Personal pit, wipe and reconnect checkpoints",
+    "Personal portal collision arrays; remote mouths only drawn as outlines",
+    "Guest kills synchronize to host; host kills synchronize to guest",
+    "Existing shared actions, dialogue, session save isolation and matching builds across all 40 campaign/Fractured regions"
+  ],
+  "sourceHashes": {
+    "index.html": "a8a84db0dedc888b5ca4a5609feaced44a461c42f8b1f3e0ef957ebc5ee23af8",
+    "bladefall-coop-journey.js": "c7ba68085f9bd9bc3851db171b9bad2c13c8475cb4ea1f629a9c9b59891c374f",
+    "bladefall-celeste.js": "0149b5a12c338b495e14dff4974082b7ba6fc89979f269533e2a629789fb4e50",
+    "bladefall-act-two.js": "2da244d9f429225014f31b2df9af9ad03e1660de78b50014b0031d7d0c9e01e0",
+    "bladefall-fractured.js": "bd0aa5740436a8540df79945bb8c9625141cf824ce8ab7979100484dbc0e6f7b",
+    "bladefall-fractured-palace.js": "840bc28e0d004ee916ec80ad276a07bb0234774504b2bb04f598b15f26518cb1",
+    "bladefall-sunspire.js": "082a40fae0f602e3d2034015e9c70e74587988c5f8c82621d0824dcc7e40ba0c",
+    "bladefall-respec-renderer.js": "28e234c182d278d3219e2dde38660647022f4a0c9b719d759015b9c27d27b60e"
+  }
+}

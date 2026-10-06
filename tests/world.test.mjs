@@ -8,9 +8,15 @@ const World = globalThis.BladefallWorld;
 
 test('world graph covers every stage and preserves the mandatory late gate', () => {
   assert.deepEqual(World.validateGraph(), {
-    ok: true, errors: [], nodes: 15, routes: 16, endingRoutes: 2,
+    ok: true, errors: [], nodes: 44, routes: 41, endingRoutes: 2,
   });
-  assert.equal(new Set(World.nodes.map((node) => node.stageIndex)).size, 15);
+  assert.equal(new Set(World.nodes.map((node) => node.stageIndex)).size, 44);
+  assert.equal(World.stageId(16), 'thunder-cliffs');
+  assert.equal(World.stageId(17), 'landing-shores');
+  assert.equal(World.stageId(18), 'colony');
+  assert.equal(World.stageId(19), 'palace-path');
+  assert.equal(World.stageId(20), 'sunspire');
+  assert.equal(World.stageId(21), 'fractured-outskirts');
   assert.equal(World.stageId(14), null, 'stage 14 is the cut slot and is not a place');
   assert.equal(World.stageId(15), 'deep-line');
   assert.equal(World.stageId(15), 'deep-line');
@@ -64,7 +70,8 @@ test('the truth route continues beyond the King into the Vault and Deep Line', (
   });
   assert.deepEqual(World.outgoing(state), []);
   state = World.clear(state).progress;
-  assert.deepEqual(World.outgoing(state).map((route) => route.to), ['deep-line']);
+  // Past the King: the Deep Line, and (Act Two) the boat to Thunder Cliffs.
+  assert.deepEqual(World.outgoing(state).map((route) => route.to), ['deep-line', 'thunder-cliffs']);
   state = World.clear(state).progress;
   state = World.enter(state, 'deep-line').progress;
   state = World.clear(state).progress;

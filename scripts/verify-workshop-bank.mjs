@@ -1,0 +1,25 @@
+import assert from 'node:assert/strict';
+import {createServer} from 'node:http';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {resolve,extname} from 'node:path';
+import {launchChrome} from '../tests/launch-chrome.mjs';
+import {bootstrapStage} from './bladefall-bot.mjs';
+const out='docs/charters/celeste/evidence/workshop',root=resolve('public'),errors=[];
+await mkdir(out,{recursive:true});
+const server=createServer(async(req,res)=>{try{const p=resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://x').pathname));if(!p.startsWith(root+'/'))throw Error();res.setHeader('Content-Type',extname(p)==='.js'?'text/javascript':extname(p)==='.mp3'?'audio/mpeg':'text/html');res.end(await readFile(p));}catch{res.statusCode=404;res.end();}});
+await new Promise(r=>server.listen(0,'127.0.0.1',r));const browser=await launchChrome({headless:true});
+try{
+ const page=await browser.newPage();page.on('pageerror',e=>errors.push(e.message));await page.setViewport({width:1440,height:900});await page.goto(`http://127.0.0.1:${server.address().port}/index.html?tas=1`);await page.waitForFunction(()=>window.__BF?.tas);await page.evaluate(bootstrapStage,44);
+ const routes=JSON.parse(await readFile(`${out}/routes.json`)),report={};
+ const bank=await page.evaluate(()=>{const C=BladefallCeleste,W=BladefallPrecisionWorkshop,L=C.level(44);return W.BANK.map(i=>{const r=L.ceRooms[i];const objects=L.objects.filter(o=>o.ceRoom===i).map(o=>JSON.parse(JSON.stringify(o,(k,v)=>typeof v==='number'&&['x','x0','ax','bx','ceHomeX','ceToX'].includes(k)?v-r.x:v)));return {...(i>11?{index:i}:{}),letter:i>11?r.title.split(' · ')[0]:String.fromCharCode(65+i),title:r.title,width:r.width,objects};});});
+ const bankFile='docs/charters/celeste/BANKED-ROOMS.json';if(process.argv.includes('--record-bank'))await writeFile(bankFile,JSON.stringify({version:'7.240.0',status:'Approved and preserved; campaign placement pending',rooms:bank},null,2));assert.deepEqual(bank,JSON.parse(await readFile(bankFile)).rooms);report.bank=bank.map(r=>r.letter);for(const [i,h]of Object.entries(JSON.parse(await readFile(bankFile)).approvedTapeHashes))assert.equal(createHash('sha256').update(JSON.stringify(routes[+i].tape)).digest('hex'),h,'approved input tape drift');
+ const baseBank=await page.evaluate(()=>{const L=BladefallCeleste.level(44);return BladefallPrecisionWorkshop.BASEBANK.map(i=>{const r=L.ceRooms[i];return {index:i,title:r.title,width:r.width,objects:L.objects.filter(o=>o.ceRoom===i).map(o=>JSON.parse(JSON.stringify(o,(k,v)=>typeof v==='number'&&['x','x0','ax','bx','ceHomeX','ceToX','ceOriginX','ceTargetX','ceAnchorX'].includes(k)?v-r.x:v)))};});});
+ const approvedBase=JSON.parse(await readFile('docs/charters/celeste/BASE-BANKED-ROOMS.json'));assert.deepEqual(baseBank,approvedBase.rooms);for(const [i,h]of Object.entries(approvedBase.approvedTapeHashes))assert.equal(createHash('sha256').update(JSON.stringify(routes[+i].tape)).digest('hex'),h);report.baseBank=baseBank.map(r=>r.title);
+ report.bufferedLanding=await page.evaluate(()=>{BladefallPrecisionWorkshop.select(8);__BF.tas.stepFrames(2,{});const p=G.p,o=G.obstacles.find(o=>o.ceRoom===8&&o.ceCrumble),l=BladefallCeleste.labState();Object.assign(p,{x:o.x-12,y:o.y+2,onGround:false,floorPlat:null,jumps:2,vy:0,dodgeTimer:.06});Object.assign(l,{dx:1,dy:0,speed:720,charge:0});__BF.tas.stepFrames(1,{jump:true});const landed=p.onGround;__BF.tas.stepFrames(1,{jump:true});const first=p.jumps;__BF.tas.stepFrames(8,{});__BF.tas.stepFrames(1,{jump:true});return {landed,first,second:p.jumps,vy:p.vy};});assert.ok(report.bufferedLanding.landed&&report.bufferedLanding.first===1&&report.bufferedLanding.second===2&&report.bufferedLanding.vy<0,JSON.stringify(report.bufferedLanding));
+ // First-three campaign presentation: no movement or ability changes.
+ report.opening=[];for(const [stage,x,y]of [[0,1220,58],[1,4510,0],[2,8530,65]]){
+  await page.evaluate(bootstrapStage,stage);const result=await page.evaluate(({stage,x,y})=>{Object.assign(G.p,{x,y,vx:0,vy:0});G.cam=Math.max(0,x-250);G.camY=0;G.stageBanner=0;recalcVP();render();return {stage,decor:G.obstacles.filter(o=>o.type==='earlyDressing').length,pods:G.obstacles.filter(o=>o.type==='earlyBlade').length,carriers:G.obstacles.filter(o=>o.earlyCarrier&&!o.earlyQuest).length,kit:movementProfile(),png:mainCanvas.toDataURL('image/png').split(',')[1]};},{stage,x,y});await writeFile(`${out}/campaign-${stage}.png`,Buffer.from(result.png,'base64'));delete result.png;assert.equal(result.kit.doubleJump,false);assert.equal(result.kit.dash,false);if(stage===0)assert.ok(result.decor>5);if(stage===1)assert.equal(result.pods,4);if(stage===2)assert.equal(result.carriers,1);report.opening.push(result);
+ }
+ assert.deepEqual(errors,[]);report.errors=errors;await writeFile(`${out}/bank-verification.json`,JSON.stringify(report,null,2));console.log('PASS: fourteen banked layouts, buffered crumble landing and first-three campaign presentation.');
+}finally{await browser.close();server.closeAllConnections();await new Promise(r=>server.close(r));}

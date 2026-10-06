@@ -1,0 +1,6007 @@
+{
+  "routes": [
+    {
+      "i": 17,
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 8,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0,
+        "phase": 0
+      },
+      "workshop": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 1,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "used": [
+        "17:ring",
+        "17:tension",
+        "17:pogo-1"
+      ],
+      "anvilHits": 0,
+      "refills": [],
+      "gravity": false,
+      "backtrack": 26,
+      "rootMax": 0,
+      "shrunk": false,
+      "maxTrail": 0,
+      "pods": [],
+      "frames": [
+        {
+          "n": 0,
+          "x": 121.29555555555271,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 20,
+          "x": 188.09738639820716,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 40,
+          "x": 258.76363640854834,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 60,
+          "x": 323.74155131471343,
+          "y": 58.61111111111113,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 80,
+          "x": 437.7162795416589,
+          "y": 157.31197681259164,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 1
+        },
+        {
+          "n": 100,
+          "x": 507.30183924881567,
+          "y": 179.42308792370275,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 1
+        },
+        {
+          "n": 120,
+          "x": 576.0122396379156,
+          "y": 202.76197681259168,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 1
+        },
+        {
+          "n": 140,
+          "x": 574.499734041332,
+          "y": 134.83333333333334,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 1
+        },
+        {
+          "n": 160,
+          "x": 651.9422718808273,
+          "y": 223.5669552338269,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 0
+        },
+        {
+          "n": 180,
+          "x": 750.9239281495466,
+          "y": 261.645310145925,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 0
+        },
+        {
+          "n": 200,
+          "x": 821.4368162626415,
+          "y": 326.9480879237028,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 0
+        },
+        {
+          "n": 220,
+          "x": 892.0975225446746,
+          "y": 275.32864347925846,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 0
+        },
+        {
+          "n": 240,
+          "x": 956.2918125708093,
+          "y": 347.5,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 0
+        },
+        {
+          "n": 260,
+          "x": 1146.8087267124356,
+          "y": 328.79665565217414,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 1
+        },
+        {
+          "n": 280,
+          "x": 1342.1055740474112,
+          "y": 397.2777777777777,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 1
+        },
+        {
+          "n": 300,
+          "x": 1507.0767193229694,
+          "y": 402.2777777777777,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 1
+        },
+        {
+          "n": 320,
+          "x": 1552.8612455160037,
+          "y": 251.72222222222223,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 1
+        },
+        {
+          "n": 340,
+          "x": 1595.318294017401,
+          "y": 306.50000000000006,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 1
+        },
+        {
+          "n": 360,
+          "x": 1751.529557778762,
+          "y": 290.61111111111114,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 0
+        },
+        {
+          "n": 380,
+          "x": 1838.5087454012391,
+          "y": 189.0555555555556,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 0
+        },
+        {
+          "n": 400,
+          "x": 1920.621067030792,
+          "y": 308.50000000000006,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 0
+        },
+        {
+          "n": 420,
+          "x": 2022.587341076869,
+          "y": 338.42640687119297,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 1
+        },
+        {
+          "n": 440,
+          "x": 2111.620707014881,
+          "y": 420.3675323681473,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 1
+        },
+        {
+          "n": 460,
+          "x": 2182.11725577325,
+          "y": 437.50364347925847,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 1
+        },
+        {
+          "n": 480,
+          "x": 2221.9872989947617,
+          "y": 488.6111111111111,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 1
+        },
+        {
+          "n": 500,
+          "x": 2373.6088768310437,
+          "y": 492.2777777777777,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 0
+        },
+        {
+          "n": 520,
+          "x": 2458.3629373949952,
+          "y": 499.01111111111106,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 0
+        },
+        {
+          "n": 540,
+          "x": 2512.5932103910454,
+          "y": 379.5666666666666,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 0
+        },
+        {
+          "n": 560,
+          "x": 2527.3871467470453,
+          "y": 310,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 0
+        },
+        {
+          "n": 580,
+          "x": 2595.429630682571,
+          "y": 384.3333333333333,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 0
+        },
+        {
+          "n": 600,
+          "x": 2674.4619756784086,
+          "y": 403.28333333333336,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 1
+        },
+        {
+          "n": 620,
+          "x": 2902.4196397568594,
+          "y": 462.95,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 1
+        },
+        {
+          "n": 640,
+          "x": 3118.0816163304116,
+          "y": 455.2750000000001,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 1
+        },
+        {
+          "n": 660,
+          "x": 3250.8850200486486,
+          "y": 513.3333333333333,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 1
+        },
+        {
+          "n": 680,
+          "x": 3355.225421195966,
+          "y": 584.1666666666665,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 1
+        },
+        {
+          "n": 700,
+          "x": 3396.899999999994,
+          "y": 557.8833333333333,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 1
+        },
+        {
+          "n": 720,
+          "x": 3588.899999999994,
+          "y": 535.85,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 0
+        },
+        {
+          "n": 740,
+          "x": 3827.4833852704323,
+          "y": 476.35,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 0
+        },
+        {
+          "n": 760,
+          "x": 4046.391962208989,
+          "y": 262.46111111111105,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0,
+          "phase": 0
+        }
+      ],
+      "zipEntries": [],
+      "contacts": [
+        {
+          "x": 2457.8329373949964,
+          "y": 501.4444444444444,
+          "type": "ceHazard"
+        },
+        {
+          "x": 3440.827333682668,
+          "y": 566.5666666666667,
+          "type": "ceVein"
+        },
+        {
+          "x": 3397.429999999993,
+          "y": 562.4194444444445,
+          "type": "ceVein"
+        },
+        {
+          "x": 3397.429999999993,
+          "y": 557.8833333333333,
+          "type": "ceVein"
+        },
+        {
+          "x": 3397.429999999993,
+          "y": 552.9583333333334,
+          "type": "ceVein"
+        },
+        {
+          "x": 3397.429999999993,
+          "y": 547.6444444444445,
+          "type": "ceVein"
+        },
+        {
+          "x": 3397.429999999993,
+          "y": 541.9416666666667,
+          "type": "ceVein"
+        },
+        {
+          "x": 3397.429999999993,
+          "y": 535.85,
+          "type": "ceVein"
+        }
+      ],
+      "flightEvents": []
+    },
+    {
+      "i": 10,
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "shots": 6,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      },
+      "workshop": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0,
+        "springs": 14,
+        "springDirection": "→"
+      },
+      "used": [
+        "10:portal",
+        "10:gale",
+        "10:gale-refill",
+        "10:tear"
+      ],
+      "anvilHits": 0,
+      "refills": [
+        {
+          "x": 600,
+          "remaining": null,
+          "capacity": 4.76,
+          "refill": false,
+          "at": 0.6833333333333338,
+          "room": 10
+        },
+        {
+          "x": 2040,
+          "remaining": 0.32666666666667826,
+          "capacity": 4.81,
+          "refill": true,
+          "at": 5.116666666666654,
+          "room": 10
+        },
+        {
+          "x": 5320,
+          "remaining": null,
+          "capacity": 4.76,
+          "refill": false,
+          "at": 11.800000000000166,
+          "room": 10
+        },
+        {
+          "x": 6680,
+          "remaining": 0.32666666666667826,
+          "capacity": 4.71,
+          "refill": true,
+          "at": 16.233333333333693,
+          "room": 10
+        },
+        {
+          "x": 10200,
+          "remaining": null,
+          "capacity": 4.8500000000000005,
+          "refill": false,
+          "at": 23.049999999999972,
+          "room": 10
+        },
+        {
+          "x": 10540,
+          "remaining": 0.383333333333346,
+          "capacity": 4.83,
+          "refill": true,
+          "at": 27.516666666666385,
+          "room": 10
+        }
+      ],
+      "gravity": false,
+      "backtrack": 59,
+      "rootMax": 0,
+      "shrunk": false,
+      "maxTrail": 0,
+      "pods": [],
+      "frames": [
+        {
+          "n": 0,
+          "x": 121.29555555555635,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 20,
+          "x": 188.09738639820716,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 40,
+          "x": 617.1035626079865,
+          "y": 238,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 60,
+          "x": 749.7145751895623,
+          "y": 238,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 80,
+          "x": 886.3069599605551,
+          "y": 238,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 100,
+          "x": 1022.9722661068517,
+          "y": 238,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 120,
+          "x": 1180,
+          "y": 256.1338190640075,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 140,
+          "x": 1180,
+          "y": 401.7169424848831,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 160,
+          "x": 1180,
+          "y": 538.5469197536269,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 180,
+          "x": 1180,
+          "y": 675.2165775583079,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 200,
+          "x": 1288.392659041554,
+          "y": 748,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 220,
+          "x": 1425.8682084155625,
+          "y": 748,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 240,
+          "x": 1562.5496902857994,
+          "y": 748,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 260,
+          "x": 1699.2166283023762,
+          "y": 748,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 280,
+          "x": 1835.8832999389924,
+          "y": 748,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 300,
+          "x": 1972.5499666966862,
+          "y": 748,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 320,
+          "x": 2109.2166333650202,
+          "y": 748,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 340,
+          "x": 2245.8833000317136,
+          "y": 748,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 360,
+          "x": 2382.549966698356,
+          "y": 748,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 380,
+          "x": 2519.2166333649984,
+          "y": 748,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 400,
+          "x": 2600,
+          "y": 646.6231044796596,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 420,
+          "x": 2600,
+          "y": 508.9684662432252,
+          "flight": true,
+          "shots": 1,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 440,
+          "x": 2600,
+          "y": 372.2837042460544,
+          "flight": true,
+          "shots": 1,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 460,
+          "x": 2642.7318791881553,
+          "y": 238,
+          "flight": true,
+          "shots": 1,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 480,
+          "x": 2784.2920010742528,
+          "y": 238,
+          "flight": true,
+          "shots": 1,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 500,
+          "x": 2921.048294499633,
+          "y": 238,
+          "flight": true,
+          "shots": 1,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 520,
+          "x": 3057.716602737659,
+          "y": 238,
+          "flight": true,
+          "shots": 1,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 540,
+          "x": 3194.38329947077,
+          "y": 238,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 560,
+          "x": 3331.0499666881224,
+          "y": 238,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 580,
+          "x": 3467.716633364871,
+          "y": 238,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 600,
+          "x": 3602.478406761118,
+          "y": 224,
+          "flight": false,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 620,
+          "x": 3798.1674533363694,
+          "y": 82.12208496032798,
+          "flight": false,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 640,
+          "x": 4179.84198670007,
+          "y": 123.34293456360781,
+          "flight": false,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 660,
+          "x": 4561.516520063778,
+          "y": 164.56378416688773,
+          "flight": false,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 680,
+          "x": 4943.191053427479,
+          "y": 205.7846337701676,
+          "flight": false,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 700,
+          "x": 5266.1396692124545,
+          "y": 237.66666666666669,
+          "flight": false,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 720,
+          "x": 5422.112422115613,
+          "y": 238,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 740,
+          "x": 5558.477860841376,
+          "y": 238,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 760,
+          "x": 5695.139010325838,
+          "y": 238,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 780,
+          "x": 5830,
+          "y": 280.73187918815563,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 800,
+          "x": 5830,
+          "y": 422.2920010742613,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 820,
+          "x": 5830,
+          "y": 559.0482944996454,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 840,
+          "x": 5830,
+          "y": 695.7166027376596,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 860,
+          "x": 5880.468795157227,
+          "y": 828,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 880,
+          "x": 6021.141884100849,
+          "y": 828,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 900,
+          "x": 6157.881930951175,
+          "y": 828,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 920,
+          "x": 6294.549941622798,
+          "y": 828,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 940,
+          "x": 6431.216632905787,
+          "y": 828,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 960,
+          "x": 6567.883300023321,
+          "y": 828,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 980,
+          "x": 6704.549966698236,
+          "y": 828,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1000,
+          "x": 6841.21663336506,
+          "y": 828,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1020,
+          "x": 6977.883300031775,
+          "y": 828,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1040,
+          "x": 7114.549966698491,
+          "y": 828,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1060,
+          "x": 7251.216633365206,
+          "y": 828,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1080,
+          "x": 7310,
+          "y": 705.6690264747452,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1100,
+          "x": 7310,
+          "y": 568.4601495144599,
+          "flight": true,
+          "shots": 3,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1120,
+          "x": 7310,
+          "y": 431.7835519198535,
+          "flight": true,
+          "shots": 3,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1140,
+          "x": 7439.264426668466,
+          "y": 378,
+          "flight": true,
+          "shots": 3,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1160,
+          "x": 7576.375017577149,
+          "y": 378,
+          "flight": true,
+          "shots": 3,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1180,
+          "x": 7713.04981499994,
+          "y": 378,
+          "flight": true,
+          "shots": 3,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1200,
+          "x": 7849.716630586598,
+          "y": 378,
+          "flight": true,
+          "shots": 3,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1220,
+          "x": 7986.383299980844,
+          "y": 378,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1240,
+          "x": 8123.049966697465,
+          "y": 378,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1260,
+          "x": 8258.22691139498,
+          "y": 367.1111111111111,
+          "flight": false,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1280,
+          "x": 8378.306993927807,
+          "y": 230.99999999999997,
+          "flight": false,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1300,
+          "x": 8765,
+          "y": 182.4127906976744,
+          "flight": false,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1320,
+          "x": 9148.333333333336,
+          "y": 187.31589147286823,
+          "flight": false,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1340,
+          "x": 9531.666666666664,
+          "y": 192.21899224806202,
+          "flight": false,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1360,
+          "x": 9915,
+          "y": 197.12209302325584,
+          "flight": false,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1380,
+          "x": 10205.468782078206,
+          "y": 198,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1400,
+          "x": 10336.085123815654,
+          "y": 198,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1420,
+          "x": 10472.640974915754,
+          "y": 198,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1440,
+          "x": 10609.305611924508,
+          "y": 198,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1460,
+          "x": 10745.972241416697,
+          "y": 198,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1480,
+          "x": 10790,
+          "y": 341.0801768180462,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1500,
+          "x": 10790,
+          "y": 478.04441480306065,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1520,
+          "x": 10790,
+          "y": 614.7165316785376,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1540,
+          "x": 10688.623104479666,
+          "y": 698,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1560,
+          "x": 10550.968466243234,
+          "y": 698,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1580,
+          "x": 10414.283704246052,
+          "y": 698,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1600,
+          "x": 10340,
+          "y": 806.3926590415495,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1620,
+          "x": 10340,
+          "y": 943.8682084155516,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1640,
+          "x": 10448.392659041543,
+          "y": 1018,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1660,
+          "x": 10585.868208415544,
+          "y": 1018,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1680,
+          "x": 10722.549690285792,
+          "y": 1018,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1700,
+          "x": 10859.216628302383,
+          "y": 1018,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1720,
+          "x": 10995.883299939007,
+          "y": 1018,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1740,
+          "x": 11132.5499666967,
+          "y": 1018,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1760,
+          "x": 11280,
+          "y": 991.3864126943771,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1780,
+          "x": 11280,
+          "y": 847.4195686745497,
+          "flight": true,
+          "shots": 5,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1800,
+          "x": 11280,
+          "y": 710.6191945956587,
+          "flight": true,
+          "shots": 5,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1820,
+          "x": 11280,
+          "y": 573.950078992313,
+          "flight": true,
+          "shots": 5,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1840,
+          "x": 11345.4809422697,
+          "y": 458,
+          "flight": true,
+          "shots": 5,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1860,
+          "x": 11484.833194101491,
+          "y": 458,
+          "flight": true,
+          "shots": 5,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1880,
+          "x": 11621.549048976252,
+          "y": 458,
+          "flight": true,
+          "shots": 5,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1900,
+          "x": 11758.216616556383,
+          "y": 458,
+          "flight": true,
+          "shots": 6,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1920,
+          "x": 11894.883299723871,
+          "y": 458,
+          "flight": true,
+          "shots": 6,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1940,
+          "x": 12031.223618083604,
+          "y": 455.66666666666663,
+          "flight": false,
+          "shots": 6,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1960,
+          "x": 12154.739900278255,
+          "y": 350.66666666666663,
+          "flight": false,
+          "shots": 6,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1980,
+          "x": 12410.090757771519,
+          "y": 195.72054559452062,
+          "flight": false,
+          "shots": 6,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 2000,
+          "x": 12790.272273314564,
+          "y": 151.1616367835618,
+          "flight": false,
+          "shots": 6,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 2020,
+          "x": 13170.453788857609,
+          "y": 106.602727972603,
+          "flight": false,
+          "shots": 6,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 2040,
+          "x": 13550.635304400654,
+          "y": 62.04381916164422,
+          "flight": false,
+          "shots": 6,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 2060,
+          "x": 13930.816819943691,
+          "y": 17.484910350685425,
+          "flight": false,
+          "shots": 6,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 2080,
+          "x": 14117.677523190425,
+          "y": 0,
+          "flight": false,
+          "shots": 6,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 2100,
+          "x": 14188.324441832105,
+          "y": 0,
+          "flight": false,
+          "shots": 6,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 2120,
+          "x": 14258.99110636981,
+          "y": 0,
+          "flight": false,
+          "shots": 6,
+          "rebounds": 0,
+          "catches": 0
+        }
+      ],
+      "zipEntries": [
+        {
+          "x": 3723.144512464205,
+          "flight": false,
+          "expired": 1
+        },
+        {
+          "x": 8395.901599029552,
+          "flight": false,
+          "expired": 2
+        },
+        {
+          "x": 12217.108819053043,
+          "flight": false,
+          "expired": 3
+        }
+      ],
+      "contacts": [],
+      "flightEvents": [
+        {
+          "kind": "expired",
+          "x": 3549.7166333650384,
+          "y": 238,
+          "at": 9.916666666666739
+        },
+        {
+          "kind": "expired",
+          "x": 8211.883300031659,
+          "y": 378,
+          "at": 20.933333333333426
+        },
+        {
+          "kind": "expired",
+          "x": 12011.049966688122,
+          "y": 458,
+          "at": 32.33333333333278
+        }
+      ]
+    },
+    {
+      "i": 18,
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "shots": 9,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      },
+      "workshop": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0,
+        "springs": 12,
+        "springDirection": "→"
+      },
+      "used": [
+        "18:portal",
+        "18:gale",
+        "18:gale-refill",
+        "18:tear"
+      ],
+      "anvilHits": 0,
+      "refills": [
+        {
+          "x": 600,
+          "remaining": null,
+          "capacity": 4.7,
+          "refill": false,
+          "at": 0.6833333333333338,
+          "room": 18
+        },
+        {
+          "x": 2030,
+          "remaining": 0.2166666666666785,
+          "capacity": 5.1,
+          "refill": true,
+          "at": 5.166666666666654,
+          "room": 18
+        },
+        {
+          "x": 5410,
+          "remaining": null,
+          "capacity": 3.93,
+          "refill": false,
+          "at": 12.383333333333528,
+          "room": 18
+        },
+        {
+          "x": 5570,
+          "remaining": 0.31333333333334235,
+          "capacity": 5.11,
+          "refill": true,
+          "at": 16.000000000000373,
+          "room": 18
+        },
+        {
+          "x": 9500,
+          "remaining": null,
+          "capacity": 4.88,
+          "refill": false,
+          "at": 23.59999999999994,
+          "room": 18
+        },
+        {
+          "x": 11100,
+          "remaining": 0.3466666666666788,
+          "capacity": 4.87,
+          "refill": true,
+          "at": 28.133333333333017,
+          "room": 18
+        }
+      ],
+      "gravity": false,
+      "backtrack": 66,
+      "rootMax": 0,
+      "shrunk": false,
+      "maxTrail": 0,
+      "pods": [],
+      "frames": [
+        {
+          "n": 0,
+          "x": 121.29555555555271,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 20,
+          "x": 188.09738639820716,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 40,
+          "x": 617.1035626079829,
+          "y": 818,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 60,
+          "x": 749.7145751895732,
+          "y": 818,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 80,
+          "x": 886.3069599605806,
+          "y": 818,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 100,
+          "x": 1022.9722661068663,
+          "y": 818,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 120,
+          "x": 1110,
+          "y": 723.6792585476359,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 140,
+          "x": 1110,
+          "y": 585.8058806806712,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 160,
+          "x": 1110,
+          "y": 449.1171123274168,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 180,
+          "x": 1110,
+          "y": 278,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 200,
+          "x": 1259.9684570680547,
+          "y": 278,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 220,
+          "x": 1396.8787545242521,
+          "y": 278,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 240,
+          "x": 1533.5498834445025,
+          "y": 278,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 260,
+          "x": 1670.216631840187,
+          "y": 278,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 280,
+          "x": 1806.8833000037412,
+          "y": 278,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 300,
+          "x": 1943.5499666978285,
+          "y": 278,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 320,
+          "x": 2080.2166333650384,
+          "y": 278,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 340,
+          "x": 2216.883300031608,
+          "y": 278,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 360,
+          "x": 2353.5499666981777,
+          "y": 278,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 380,
+          "x": 2430,
+          "y": 386.3926590415495,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 400,
+          "x": 2430,
+          "y": 523.8682084155515,
+          "flight": true,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 420,
+          "x": 2430,
+          "y": 660.5496902857892,
+          "flight": true,
+          "shots": 1,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 440,
+          "x": 2430,
+          "y": 797.2166283023746,
+          "flight": true,
+          "shots": 1,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 460,
+          "x": 2502.8101722677093,
+          "y": 908,
+          "flight": true,
+          "shots": 1,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 480,
+          "x": 2641.6756100990606,
+          "y": 908,
+          "flight": true,
+          "shots": 1,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 500,
+          "x": 2778.382548664362,
+          "y": 908,
+          "flight": true,
+          "shots": 1,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 520,
+          "x": 2915.0499529365916,
+          "y": 908,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 540,
+          "x": 3051.71663311297,
+          "y": 908,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 560,
+          "x": 3188.3833000270533,
+          "y": 908,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 580,
+          "x": 3325.0499666982796,
+          "y": 908,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 600,
+          "x": 3461.716633364995,
+          "y": 908,
+          "flight": true,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 620,
+          "x": 3596.8935780614847,
+          "y": 897.1111111111111,
+          "flight": false,
+          "shots": 2,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 640,
+          "x": 3716.9736605940852,
+          "y": 761,
+          "flight": false,
+          "shots": 3,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 660,
+          "x": 4029.7192583318683,
+          "y": 748.2794636558833,
+          "flight": false,
+          "shots": 3,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 680,
+          "x": 4402.678269441036,
+          "y": 841.985415197061,
+          "flight": false,
+          "shots": 3,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 700,
+          "x": 4775.637280550203,
+          "y": 935.6913667382389,
+          "flight": false,
+          "shots": 3,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 720,
+          "x": 5148.596291659371,
+          "y": 1029.397318279417,
+          "flight": false,
+          "shots": 3,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 740,
+          "x": 5415.468782078198,
+          "y": 1078,
+          "flight": true,
+          "shots": 3,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 760,
+          "x": 5546.0851238156465,
+          "y": 1078,
+          "flight": true,
+          "shots": 3,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 780,
+          "x": 5682.640974915776,
+          "y": 1078,
+          "flight": true,
+          "shots": 3,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 800,
+          "x": 5819.305611924545,
+          "y": 1078,
+          "flight": true,
+          "shots": 3,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 820,
+          "x": 5955.9722414167045,
+          "y": 1078,
+          "flight": true,
+          "shots": 3,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 840,
+          "x": 6070,
+          "y": 1012.5190577302991,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 860,
+          "x": 6070,
+          "y": 873.1668058984991,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 880,
+          "x": 6070,
+          "y": 736.4509510237428,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 900,
+          "x": 5997.189827732291,
+          "y": 628,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 920,
+          "x": 5858.324389900939,
+          "y": 628,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 940,
+          "x": 5721.617451335638,
+          "y": 628,
+          "flight": true,
+          "shots": 4,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 960,
+          "x": 5570,
+          "y": 601.3864126943771,
+          "flight": true,
+          "shots": 5,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 980,
+          "x": 5570,
+          "y": 457.41956867454974,
+          "flight": true,
+          "shots": 5,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1000,
+          "x": 5570,
+          "y": 320.6191945956589,
+          "flight": true,
+          "shots": 5,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1020,
+          "x": 5604.794907531308,
+          "y": 178,
+          "flight": true,
+          "shots": 5,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1040,
+          "x": 5747.438453899944,
+          "y": 178,
+          "flight": true,
+          "shots": 5,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1060,
+          "x": 5884.21459093687,
+          "y": 178,
+          "flight": true,
+          "shots": 5,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1080,
+          "x": 6020.883262623334,
+          "y": 178,
+          "flight": true,
+          "shots": 6,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1100,
+          "x": 6157.549966013219,
+          "y": 178,
+          "flight": true,
+          "shots": 6,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1120,
+          "x": 6294.216633352451,
+          "y": 178,
+          "flight": true,
+          "shots": 6,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1140,
+          "x": 6430.883300031463,
+          "y": 178,
+          "flight": true,
+          "shots": 6,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1160,
+          "x": 6567.549966698352,
+          "y": 178,
+          "flight": true,
+          "shots": 6,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1180,
+          "x": 6704.216633364922,
+          "y": 178,
+          "flight": true,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1200,
+          "x": 6840.883300031492,
+          "y": 178,
+          "flight": true,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1220,
+          "x": 6977.549966698061,
+          "y": 178,
+          "flight": true,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1240,
+          "x": 7114.216633364631,
+          "y": 178,
+          "flight": true,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1260,
+          "x": 7250.883300031201,
+          "y": 178,
+          "flight": true,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1280,
+          "x": 7379.838321782416,
+          "y": 118.50000000000001,
+          "flight": false,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1300,
+          "x": 7679.040847484182,
+          "y": 162.54028153925594,
+          "flight": false,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1320,
+          "x": 8020.5277724615735,
+          "y": 340.45496945247845,
+          "flight": false,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1340,
+          "x": 8362.014697438965,
+          "y": 518.369657365701,
+          "flight": false,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1360,
+          "x": 8703.501622416356,
+          "y": 696.2843452789243,
+          "flight": false,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1380,
+          "x": 9044.988547393761,
+          "y": 874.199033192148,
+          "flight": false,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1400,
+          "x": 9386.475472371152,
+          "y": 1052.1137211053715,
+          "flight": false,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1420,
+          "x": 9548.658735776087,
+          "y": 1078,
+          "flight": true,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1440,
+          "x": 9683.833410684383,
+          "y": 1078,
+          "flight": true,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1460,
+          "x": 9820.472750568777,
+          "y": 1078,
+          "flight": true,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1480,
+          "x": 9957.138916727941,
+          "y": 1078,
+          "flight": true,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1500,
+          "x": 10093.805574227503,
+          "y": 1078,
+          "flight": true,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1520,
+          "x": 10230.47224072626,
+          "y": 1078,
+          "flight": true,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1540,
+          "x": 10300,
+          "y": 962.6246464200136,
+          "flight": true,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1560,
+          "x": 10300,
+          "y": 825.2957226052183,
+          "flight": true,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1580,
+          "x": 10334.794907531308,
+          "y": 678,
+          "flight": true,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1600,
+          "x": 10477.438453899944,
+          "y": 678,
+          "flight": true,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1620,
+          "x": 10614.21459093687,
+          "y": 678,
+          "flight": true,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1640,
+          "x": 10750.883262623334,
+          "y": 678,
+          "flight": true,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1660,
+          "x": 10887.54996601322,
+          "y": 678,
+          "flight": true,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1680,
+          "x": 11024.216633352451,
+          "y": 678,
+          "flight": true,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1700,
+          "x": 11100,
+          "y": 569.6073409584505,
+          "flight": true,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1720,
+          "x": 11100,
+          "y": 432.1317915844485,
+          "flight": true,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1740,
+          "x": 11100,
+          "y": 295.45030971421096,
+          "flight": true,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1760,
+          "x": 11165.480942269714,
+          "y": 178,
+          "flight": true,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1780,
+          "x": 11304.833194101491,
+          "y": 178,
+          "flight": true,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1800,
+          "x": 11441.54904897623,
+          "y": 178,
+          "flight": true,
+          "shots": 7,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1820,
+          "x": 11578.216616556369,
+          "y": 178,
+          "flight": true,
+          "shots": 8,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1840,
+          "x": 11714.883299723835,
+          "y": 178,
+          "flight": true,
+          "shots": 8,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1860,
+          "x": 11851.549966692692,
+          "y": 178,
+          "flight": true,
+          "shots": 8,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1880,
+          "x": 11988.216633364922,
+          "y": 178,
+          "flight": true,
+          "shots": 8,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1900,
+          "x": 12124.883300031666,
+          "y": 178,
+          "flight": true,
+          "shots": 8,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1920,
+          "x": 12261.549966698236,
+          "y": 178,
+          "flight": true,
+          "shots": 8,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1940,
+          "x": 12398.216633364806,
+          "y": 178,
+          "flight": true,
+          "shots": 9,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1960,
+          "x": 12534.883300031375,
+          "y": 178,
+          "flight": true,
+          "shots": 9,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 1980,
+          "x": 12671.22361808685,
+          "y": 175.66666666666669,
+          "flight": false,
+          "shots": 9,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 2000,
+          "x": 12800.96458838429,
+          "y": 79.61111111111113,
+          "flight": false,
+          "shots": 9,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 2020,
+          "x": 13203.138258259205,
+          "y": 30.255716056462784,
+          "flight": false,
+          "shots": 9,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 2040,
+          "x": 13586.276516518425,
+          "y": 22.51143211292557,
+          "flight": false,
+          "shots": 9,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 2060,
+          "x": 13969.41477477763,
+          "y": 14.76714816938837,
+          "flight": false,
+          "shots": 9,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 2080,
+          "x": 14352.553033036835,
+          "y": 7.022864225851194,
+          "flight": false,
+          "shots": 9,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 2100,
+          "x": 14702.245072108635,
+          "y": 0,
+          "flight": false,
+          "shots": 9,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 2120,
+          "x": 14770.686800186086,
+          "y": 0,
+          "flight": false,
+          "shots": 9,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 2140,
+          "x": 14841.35322698881,
+          "y": 0,
+          "flight": false,
+          "shots": 9,
+          "rebounds": 0,
+          "catches": 0
+        }
+      ],
+      "zipEntries": [
+        {
+          "x": 3751.1482345832337,
+          "flight": false,
+          "expired": 1
+        },
+        {
+          "x": 7421.297921717516,
+          "flight": false,
+          "expired": 2
+        },
+        {
+          "x": 12800.96458838429,
+          "flight": false,
+          "expired": 3
+        }
+      ],
+      "contacts": [],
+      "flightEvents": [
+        {
+          "kind": "expired",
+          "x": 3550.549966698265,
+          "y": 908,
+          "at": 10.266666666666756
+        },
+        {
+          "kind": "expired",
+          "x": 7271.383300031186,
+          "y": 178,
+          "at": 21.100000000000083
+        },
+        {
+          "kind": "expired",
+          "x": 12651.04996669796,
+          "y": 178,
+          "at": 32.99999999999941
+        }
+      ]
+    },
+    {
+      "i": 12,
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 4,
+        "returns": 1,
+        "roots": 6,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0,
+        "hoistLift": 22.22222222222222,
+        "hoistGrace": 0
+      },
+      "workshop": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "used": [],
+      "anvilHits": 0,
+      "refills": [],
+      "gravity": false,
+      "backtrack": 83,
+      "rootMax": 1,
+      "shrunk": true,
+      "maxTrail": 0,
+      "pods": [],
+      "frames": [
+        {
+          "n": 0,
+          "x": 121.29555555555271,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 20,
+          "x": 188.09738639820716,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 40,
+          "x": 258.76363640854834,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 60,
+          "x": 329.43030302900297,
+          "y": 65.66666666666669,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 80,
+          "x": 400.0969696952816,
+          "y": 60.29166666666675,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 100,
+          "x": 482.60808080639254,
+          "y": 67.77777777777777,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 120,
+          "x": 578.9043771026845,
+          "y": 130.74074074074073,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 140,
+          "x": 681.6501349343525,
+          "y": 227.8703703703705,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 160,
+          "x": 803.0425650657853,
+          "y": 330.2777777777779,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 180,
+          "x": 965.3539046127262,
+          "y": 392.38888888888897,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 200,
+          "x": 1070.7054609043844,
+          "y": 325.88888888888897,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 220,
+          "x": 1173.312001518425,
+          "y": 300,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 240,
+          "x": 1295.5342237406512,
+          "y": 300,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 260,
+          "x": 1417.7564459628702,
+          "y": 300,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 280,
+          "x": 1386.589779296206,
+          "y": 300,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 300,
+          "x": 1294.9231126295344,
+          "y": 300,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 320,
+          "x": 1203.2564459628702,
+          "y": 300,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 340,
+          "x": 1111.589779296206,
+          "y": 300,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 360,
+          "x": 1087.7564459628702,
+          "y": 253.19822222222226,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 380,
+          "x": 1087.7564459628702,
+          "y": 54.86488888888893,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 400,
+          "x": 1341.089779296206,
+          "y": 78.33333333333333,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 420,
+          "x": 1622.5712607776877,
+          "y": 115.37037037037041,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 440,
+          "x": 1917.5901153700397,
+          "y": 214.74074074074082,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 460,
+          "x": 2098.024995712549,
+          "y": 325.23566773392645,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 480,
+          "x": 2165.7242307290653,
+          "y": 236.90233440059308,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 500,
+          "x": 2230.24651705585,
+          "y": 245.66666666666669,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 520,
+          "x": 2344.4478067945383,
+          "y": 337.8925323681473,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 540,
+          "x": 2414.033366501695,
+          "y": 360.00364347925836,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 560,
+          "x": 2484.6581299695463,
+          "y": 383.3425323681473,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 580,
+          "x": 2521.5705446512075,
+          "y": 273.1758657014807,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 600,
+          "x": 2617.798427019028,
+          "y": 235.1851851851852,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 620,
+          "x": 2765.9465751671814,
+          "y": 242.5925925925926,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 640,
+          "x": 2923.0444124529095,
+          "y": 295.1111111111112,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 660,
+          "x": 3095.2450539260753,
+          "y": 326.40740740740756,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 680,
+          "x": 3239.6402046107833,
+          "y": 385.997161997777,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 700,
+          "x": 3282.0781991079057,
+          "y": 320,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 720,
+          "x": 3352.5243585357384,
+          "y": 320,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 740,
+          "x": 3416.9874833644353,
+          "y": 391.16666666666663,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 760,
+          "x": 3531.0956535486985,
+          "y": 479.170310145925,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 780,
+          "x": 3548.315263746692,
+          "y": 525.8777777777779,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 800,
+          "x": 3696.4523702056467,
+          "y": 492.4333333333334,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 820,
+          "x": 3785.269409869412,
+          "y": 326.3222222222223,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 840,
+          "x": 3868.9049060029283,
+          "y": 4.655555555555495,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 860,
+          "x": 3947.0125252791186,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        }
+      ],
+      "zipEntries": [],
+      "contacts": [
+        {
+          "x": 3249.9736783318003,
+          "y": 383.8304953311104,
+          "type": "ceHazard"
+        },
+        {
+          "x": 3247.4300000000003,
+          "y": 381.9416064422215,
+          "type": "ceHazard"
+        },
+        {
+          "x": 3247.4300000000003,
+          "y": 379.6638286644437,
+          "type": "ceHazard"
+        },
+        {
+          "x": 3544.8405712626336,
+          "y": 478.98888888888894,
+          "type": "ceHazard"
+        },
+        {
+          "x": 3543.029776812029,
+          "y": 475.8777777777778,
+          "type": "ceHazard"
+        }
+      ],
+      "flightEvents": []
+    },
+    {
+      "i": 19,
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 4,
+        "returns": 1,
+        "roots": 7,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0,
+        "hoistLift": 211.11111111111111,
+        "hoistGrace": 0
+      },
+      "workshop": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 1,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "used": [
+        "19:anvil",
+        "19:tear",
+        "19:ring",
+        "19:tension"
+      ],
+      "anvilHits": 1,
+      "refills": [],
+      "gravity": false,
+      "backtrack": 90,
+      "rootMax": 1,
+      "shrunk": true,
+      "maxTrail": 0,
+      "pods": [],
+      "frames": [
+        {
+          "n": 0,
+          "x": 121.29555555555271,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 20,
+          "x": 188.09738639820716,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 40,
+          "x": 258.76363640857744,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 60,
+          "x": 329.4303030290612,
+          "y": 65.66666666666669,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 80,
+          "x": 400.09696969532524,
+          "y": 63.96666666666675,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 100,
+          "x": 428.3636363619298,
+          "y": 80.92592592592592,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 120,
+          "x": 428.3636363619298,
+          "y": 173.51851851851848,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 140,
+          "x": 433.5606170896208,
+          "y": 294.22222222222246,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 160,
+          "x": 481.4303297439619,
+          "y": 427.0555555555557,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 180,
+          "x": 625.7436883672053,
+          "y": 391.6666666666668,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 200,
+          "x": 713.8260644090624,
+          "y": 449.06388888888904,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 220,
+          "x": 796.9366276814108,
+          "y": 403.99722222222243,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 240,
+          "x": 807.7316170515987,
+          "y": 264.8333333333333,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 260,
+          "x": 886.1161531356775,
+          "y": 353.56695523382683,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 280,
+          "x": 985.0978094043676,
+          "y": 391.64531014592495,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 300,
+          "x": 1055.610697517448,
+          "y": 456.94808792370276,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 320,
+          "x": 1103.0887780453922,
+          "y": 405.3286434792584,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 340,
+          "x": 1150.2210704919853,
+          "y": 363.3333333333333,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 360,
+          "x": 1268.7395890105108,
+          "y": 415.18518518518516,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 380,
+          "x": 1387.2581075290218,
+          "y": 467.0370370370372,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 400,
+          "x": 1408.8877371586568,
+          "y": 476.4999999999999,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 420,
+          "x": 1319.9988482697663,
+          "y": 437.61111111111114,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 440,
+          "x": 1231.1099593808758,
+          "y": 398.7222222222224,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 460,
+          "x": 1142.2210704919853,
+          "y": 359.83333333333366,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 480,
+          "x": 1096.8877371586568,
+          "y": 318.47600000000006,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 500,
+          "x": 1096.8877371586568,
+          "y": 159.03155555555566,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 520,
+          "x": 1203.5544038253283,
+          "y": 106.66666666666666,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 540,
+          "x": 1381.3321816030948,
+          "y": 151.11111111111111,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 560,
+          "x": 1565.5146553706145,
+          "y": 229.7222222222223,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 580,
+          "x": 1767.1001579528238,
+          "y": 313.6111111111112,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 600,
+          "x": 1900.4348299244884,
+          "y": 391.14531014592507,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 620,
+          "x": 1963.5020347195823,
+          "y": 334.8333333333333,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 640,
+          "x": 2027.1287716944644,
+          "y": 412.16666666666663,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 660,
+          "x": 2097.522573987415,
+          "y": 467.56944444444446,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 680,
+          "x": 2288.302115290906,
+          "y": 504.89444444444445,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 700,
+          "x": 2506.437281991748,
+          "y": 528.2333333333335,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 720,
+          "x": 2597.6927630352147,
+          "y": 487.5925925925926,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 740,
+          "x": 2708.8038741463242,
+          "y": 557.9629629629629,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 760,
+          "x": 2819.9149852574337,
+          "y": 628.3333333333335,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 780,
+          "x": 2953.7909767382807,
+          "y": 776.2037037037037,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 800,
+          "x": 3088.8362239101843,
+          "y": 784.9074074074074,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 820,
+          "x": 3214.004413755858,
+          "y": 638.0555555555554,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 840,
+          "x": 3324.0233310402546,
+          "y": 321.99999999999994,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 860,
+          "x": 3430.019670950569,
+          "y": 544.7777777777775,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 880,
+          "x": 3702.2656985913054,
+          "y": 474.03300901427224,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 900,
+          "x": 3996.189473238672,
+          "y": 242.99525126821072,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 920,
+          "x": 4280,
+          "y": 292,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 940,
+          "x": 4440.998785770571,
+          "y": 396.7222222222222,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 960,
+          "x": 4603.244017766003,
+          "y": 376.5555555555555,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 980,
+          "x": 4690.319986961811,
+          "y": 217.1111111111111,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        }
+      ],
+      "zipEntries": [
+        {
+          "x": 3535.126095668442,
+          "flight": false,
+          "expired": 0
+        }
+      ],
+      "contacts": [
+        {
+          "x": 3805.1390197178844,
+          "y": 393.16979380315064,
+          "type": "ceHazard"
+        },
+        {
+          "x": 3819.835208450255,
+          "y": 381.6179059158476,
+          "type": "ceHazard"
+        }
+      ],
+      "flightEvents": []
+    },
+    {
+      "i": 20,
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0,
+        "wakeStarted": true
+      },
+      "workshop": {
+        "vault": 0,
+        "vaults": 1,
+        "prisms": 0,
+        "bells": 1,
+        "wind": 0,
+        "crumbles": 1,
+        "springCue": 0,
+        "vaultDir": 1,
+        "vaultLaunch": false
+      },
+      "used": [
+        "20:tear",
+        "20:pogo-1",
+        "20:ring",
+        "20:tension"
+      ],
+      "anvilHits": 0,
+      "refills": [],
+      "gravity": false,
+      "backtrack": 8,
+      "rootMax": 0,
+      "shrunk": false,
+      "maxTrail": 127,
+      "pods": [],
+      "frames": [
+        {
+          "n": 0,
+          "x": 121.29555555555271,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 20,
+          "x": 188.09738639820716,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 40,
+          "x": 330.40298872046696,
+          "y": 68.56497071403034,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 60,
+          "x": 533.0895801902079,
+          "y": 405.6647754742324,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 80,
+          "x": 689.0285965416988,
+          "y": 675.7222222222222,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 100,
+          "x": 753.0725112758519,
+          "y": 717.8444444444444,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 120,
+          "x": 823.4824831831211,
+          "y": 630.8361111111112,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 140,
+          "x": 896.7561212873115,
+          "y": 508.1111111111111,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 160,
+          "x": 1007.1499139975931,
+          "y": 558.1111111111111,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 180,
+          "x": 1127.717031487773,
+          "y": 518.5555555555555,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 200,
+          "x": 1213.2189420106442,
+          "y": 580.8611111111111,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 220,
+          "x": 1235.5277105123241,
+          "y": 515.6111111111113,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 240,
+          "x": 1239.6473604932835,
+          "y": 296.55555555555577,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 260,
+          "x": 1289.944448731825,
+          "y": 356.5,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 280,
+          "x": 1360.0828479675547,
+          "y": 426.3333333333333,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 300,
+          "x": 1511.777081976994,
+          "y": 437.1166666666667,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 320,
+          "x": 1713.9579483976268,
+          "y": 492.5194444444445,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 340,
+          "x": 1879.644575371247,
+          "y": 449.6111111111111,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 360,
+          "x": 1951.9067918716755,
+          "y": 360.16666666666663,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 380,
+          "x": 2104.2944302828837,
+          "y": 297.16666666666663,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 400,
+          "x": 2182.510176962809,
+          "y": 299.9259259259259,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 420,
+          "x": 2252.3609760045365,
+          "y": 323.737037037037,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 440,
+          "x": 2373.7981258140353,
+          "y": 262.05925925925925,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 460,
+          "x": 2611.726816030321,
+          "y": 302.44814814814805,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 480,
+          "x": 2836.095837634057,
+          "y": 466.61481481481474,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 500,
+          "x": 3086.818825316368,
+          "y": 551.0967597557491,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 520,
+          "x": 3245.7910575515853,
+          "y": 650.7222222222222,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 540,
+          "x": 3419.67149014234,
+          "y": 647.0555555555554,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 560,
+          "x": 3507.596052437555,
+          "y": 633.0555555555554,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 580,
+          "x": 3590.593854414721,
+          "y": 539.1666666666665,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 600,
+          "x": 3670.071380836205,
+          "y": 289.722222222222,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        }
+      ],
+      "zipEntries": [
+        {
+          "x": 265.096970137849,
+          "flight": false,
+          "expired": 0
+        }
+      ],
+      "contacts": [],
+      "flightEvents": []
+    },
+    {
+      "i": 21,
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 3,
+        "throws": 0,
+        "catches": 0,
+        "pods": [
+          0,
+          1,
+          2
+        ]
+      },
+      "workshop": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 2,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 1,
+        "springCue": 0
+      },
+      "used": [
+        "21:gravity",
+        "21:tear",
+        "21:ring",
+        "21:tension"
+      ],
+      "anvilHits": 0,
+      "refills": [],
+      "gravity": false,
+      "backtrack": 76,
+      "rootMax": 0,
+      "shrunk": false,
+      "maxTrail": 0,
+      "pods": [
+        {
+          "dx": -0.7071067811865475,
+          "dy": 0.7071067811865475,
+          "vx": 791.9595949289331,
+          "vy": 791.9595949289331
+        },
+        {
+          "dx": 0.7071067811865475,
+          "dy": -0.7071067811865475,
+          "vx": -791.9595949289331,
+          "vy": -791.9595949289331
+        },
+        {
+          "dx": -0.7071067811865475,
+          "dy": -0.7071067811865475,
+          "vx": 791.9595949289331,
+          "vy": -791.9595949289331
+        }
+      ],
+      "frames": [
+        {
+          "n": 0,
+          "x": 121.29555555555271,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 20,
+          "x": 188.09738639820716,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 40,
+          "x": 258.76363640857744,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 60,
+          "x": 329.43030302955594,
+          "y": 62.33333333333335,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 80,
+          "x": 444.06381897223764,
+          "y": 158.14531014592498,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 100,
+          "x": 513.8115447233431,
+          "y": 183.81197681259164,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 120,
+          "x": 584.4425936710177,
+          "y": 200.9480879237028,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 140,
+          "x": 596.5128003288846,
+          "y": 174.16666666666669,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 160,
+          "x": 560.0526077448885,
+          "y": 267.64862909341514,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 1,
+          "catches": 0
+        },
+        {
+          "n": 180,
+          "x": 821.1721185433271,
+          "y": 329.95418464897074,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 1,
+          "catches": 0
+        },
+        {
+          "n": 200,
+          "x": 824.6250911647949,
+          "y": 264.7041846489708,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 1,
+          "catches": 0
+        },
+        {
+          "n": 220,
+          "x": 825.5820686324732,
+          "y": 87.61111111111111,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 1,
+          "catches": 0
+        },
+        {
+          "n": 240,
+          "x": 898.819181179686,
+          "y": 175.08167385958834,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 1,
+          "catches": 0
+        },
+        {
+          "n": 260,
+          "x": 1002.7810171260935,
+          "y": 225.08975459036955,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 1,
+          "catches": 0
+        },
+        {
+          "n": 280,
+          "x": 1073.2667678473663,
+          "y": 286.4869768125918,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 1,
+          "catches": 0
+        },
+        {
+          "n": 300,
+          "x": 1107.5453708010464,
+          "y": 210.45696242674867,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 1,
+          "catches": 0
+        },
+        {
+          "n": 320,
+          "x": 867.250368546549,
+          "y": 378.8699972244499,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 2,
+          "catches": 0
+        },
+        {
+          "n": 340,
+          "x": 861.9781645690673,
+          "y": 413.41208442298307,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 2,
+          "catches": 0
+        },
+        {
+          "n": 360,
+          "x": 906.5487710140587,
+          "y": 471.16666666666663,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 2,
+          "catches": 0
+        },
+        {
+          "n": 380,
+          "x": 1059.4269793712883,
+          "y": 469.9444444444444,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 2,
+          "catches": 0
+        },
+        {
+          "n": 400,
+          "x": 1147.6440483720653,
+          "y": 488.2777777777777,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 2,
+          "catches": 0
+        },
+        {
+          "n": 420,
+          "x": 1200.164255744734,
+          "y": 454.75925925925924,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 2,
+          "catches": 0
+        },
+        {
+          "n": 440,
+          "x": 1281.210770892736,
+          "y": 543.4928811597526,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 2,
+          "catches": 0
+        },
+        {
+          "n": 460,
+          "x": 1380.1924271614262,
+          "y": 581.5712360718504,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 2,
+          "catches": 0
+        },
+        {
+          "n": 480,
+          "x": 1450.7053152745066,
+          "y": 646.8740138496281,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 2,
+          "catches": 0
+        },
+        {
+          "n": 500,
+          "x": 1521.3660215565615,
+          "y": 595.2545694051838,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 2,
+          "catches": 0
+        },
+        {
+          "n": 520,
+          "x": 1584.6727100372227,
+          "y": 591.1605457760385,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 3,
+          "catches": 0
+        },
+        {
+          "n": 540,
+          "x": 1810.5167719443707,
+          "y": 711.2581885301272,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 3,
+          "catches": 0
+        },
+        {
+          "n": 560,
+          "x": 1787.3057700363715,
+          "y": 728.1111111111111,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 3,
+          "catches": 0
+        },
+        {
+          "n": 580,
+          "x": 1851.8940652473102,
+          "y": 777.9583333333333,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 3,
+          "catches": 0
+        },
+        {
+          "n": 600,
+          "x": 1947.7311060935463,
+          "y": 719.0666666666666,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 3,
+          "catches": 0
+        },
+        {
+          "n": 620,
+          "x": 2131.217657121393,
+          "y": 780,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 3,
+          "catches": 0
+        },
+        {
+          "n": 640,
+          "x": 2275.1954747367563,
+          "y": 780,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 3,
+          "catches": 0
+        },
+        {
+          "n": 660,
+          "x": 2446.698799633392,
+          "y": 747.8333333333333,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 3,
+          "catches": 0
+        },
+        {
+          "n": 680,
+          "x": 2695.9874750364543,
+          "y": 579.5979248071992,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 3,
+          "catches": 0
+        },
+        {
+          "n": 700,
+          "x": 2965.7879682084604,
+          "y": 361.19770793305605,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 3,
+          "catches": 0
+        },
+        {
+          "n": 720,
+          "x": 3240.529999999999,
+          "y": 389.6111111111111,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 3,
+          "catches": 0
+        },
+        {
+          "n": 740,
+          "x": 3409.39065343955,
+          "y": 487.9444444444444,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 3,
+          "catches": 0
+        },
+        {
+          "n": 760,
+          "x": 3567.7353505827778,
+          "y": 462.2777777777777,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 3,
+          "catches": 0
+        },
+        {
+          "n": 780,
+          "x": 3654.5378314031113,
+          "y": 295.0555555555555,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 3,
+          "catches": 0
+        }
+      ],
+      "zipEntries": [
+        {
+          "x": 2594.05444274981,
+          "flight": false,
+          "expired": 0
+        }
+      ],
+      "contacts": [
+        {
+          "x": 1164.6334281110467,
+          "y": 497.2777777777777,
+          "type": "ceHazard"
+        }
+      ],
+      "flightEvents": []
+    },
+    {
+      "i": 22,
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 13,
+        "rebounds": 0,
+        "throws": 3,
+        "catches": 4,
+        "phase": 1,
+        "sockets": 3
+      },
+      "workshop": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 2,
+        "springCue": 0
+      },
+      "used": [],
+      "anvilHits": 0,
+      "refills": [],
+      "gravity": false,
+      "backtrack": 49,
+      "rootMax": 0,
+      "shrunk": false,
+      "maxTrail": 0,
+      "pods": [],
+      "frames": [
+        {
+          "n": 0,
+          "x": 121.29555555555271,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 20,
+          "x": 188.09738639820716,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 40,
+          "x": 255.26698972661688,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 1
+        },
+        {
+          "n": 60,
+          "x": 325.89660279784584,
+          "y": 58.61111111111113,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 1
+        },
+        {
+          "n": 80,
+          "x": 440.6986828529043,
+          "y": 157.31197681259164,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 1,
+          "phase": 1
+        },
+        {
+          "n": 100,
+          "x": 510.28424256008293,
+          "y": 180.5897545903695,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 1,
+          "phase": 1
+        },
+        {
+          "n": 120,
+          "x": 525.2887710832292,
+          "y": 203.92864347925843,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 1,
+          "phase": 1
+        },
+        {
+          "n": 140,
+          "x": 531.8523447794869,
+          "y": 145.45086570148084,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 1,
+          "phase": 1
+        },
+        {
+          "n": 160,
+          "x": 547.0142378610326,
+          "y": 110,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 1,
+          "phase": 1
+        },
+        {
+          "n": 180,
+          "x": 617.2646384960826,
+          "y": 74.61111111111111,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 1,
+          "phase": 1
+        },
+        {
+          "n": 200,
+          "x": 731.8679064663011,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 1,
+          "phase": 0
+        },
+        {
+          "n": 220,
+          "x": 802.5279617055494,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 1,
+          "phase": 0
+        },
+        {
+          "n": 240,
+          "x": 873.1946276594535,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 1,
+          "phase": 0
+        },
+        {
+          "n": 260,
+          "x": 943.861294326096,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 1,
+          "phase": 0
+        },
+        {
+          "n": 280,
+          "x": 981.5948047962593,
+          "y": 71.16666666666669,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 1,
+          "phase": 0
+        },
+        {
+          "n": 300,
+          "x": 987.0117464668438,
+          "y": 189.94444444444449,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 1,
+          "phase": 1
+        },
+        {
+          "n": 320,
+          "x": 1038.4322428558953,
+          "y": 101.61111111111119,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 1,
+          "phase": 1
+        },
+        {
+          "n": 340,
+          "x": 1096.6157385698025,
+          "y": 170.50000000000003,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 2,
+          "phase": 1
+        },
+        {
+          "n": 360,
+          "x": 1210.4915923014341,
+          "y": 248.97864347925838,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 2,
+          "phase": 0
+        },
+        {
+          "n": 380,
+          "x": 1280.8116808468912,
+          "y": 297.1453101459251,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 2,
+          "phase": 0
+        },
+        {
+          "n": 400,
+          "x": 1351.406010425184,
+          "y": 279.17308792370306,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 2,
+          "phase": 0
+        },
+        {
+          "n": 420,
+          "x": 1353.2395120996807,
+          "y": 230,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 2,
+          "phase": 0
+        },
+        {
+          "n": 440,
+          "x": 1371.1453478437325,
+          "y": 307.50000000000006,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 2,
+          "phase": 0
+        },
+        {
+          "n": 460,
+          "x": 1380.5449489650782,
+          "y": 451.9444444444444,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 2,
+          "phase": 1
+        },
+        {
+          "n": 480,
+          "x": 1443.95293183389,
+          "y": 487.6888888888889,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 2,
+          "phase": 1
+        },
+        {
+          "n": 500,
+          "x": 1480.3180984620558,
+          "y": 393.07777777777784,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 2,
+          "phase": 1
+        },
+        {
+          "n": 520,
+          "x": 1480.3641603433352,
+          "y": 413.6111111111111,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 2,
+          "phase": 1
+        },
+        {
+          "n": 540,
+          "x": 1482.5272012124624,
+          "y": 535.2777777777777,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 2,
+          "phase": 0
+        },
+        {
+          "n": 560,
+          "x": 1545.417697601515,
+          "y": 600.4138888888888,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 2,
+          "phase": 1
+        },
+        {
+          "n": 580,
+          "x": 1694.5107203435182,
+          "y": 510.9837239583333,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 3,
+          "phase": 1
+        },
+        {
+          "n": 600,
+          "x": 1756.3481120082288,
+          "y": 588.9646267361111,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 3,
+          "phase": 1
+        },
+        {
+          "n": 620,
+          "x": 1914.6928091514565,
+          "y": 565.853515625,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 3,
+          "phase": 0
+        },
+        {
+          "n": 640,
+          "x": 2001.49528997179,
+          "y": 620.7424045138889,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 3,
+          "phase": 0
+        },
+        {
+          "n": 660,
+          "x": 2157.9643396185857,
+          "y": 568.7146267361112,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 3,
+          "phase": 1
+        },
+        {
+          "n": 680,
+          "x": 2149.797074468661,
+          "y": 507.60351562500034,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 3,
+          "phase": 1
+        },
+        {
+          "n": 700,
+          "x": 2142.837405677943,
+          "y": 500,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 3,
+          "phase": 1
+        },
+        {
+          "n": 720,
+          "x": 2213.289878557145,
+          "y": 486,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 3,
+          "phase": 1
+        },
+        {
+          "n": 740,
+          "x": 2283.9559759081603,
+          "y": 342.1111111111111,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 3,
+          "phase": 1
+        },
+        {
+          "n": 760,
+          "x": 2437.3455145869375,
+          "y": 273.66666666666663,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 3,
+          "phase": 0
+        },
+        {
+          "n": 780,
+          "x": 2525.5625835877145,
+          "y": 292,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 3,
+          "phase": 0
+        },
+        {
+          "n": 800,
+          "x": 2490.6492029354995,
+          "y": 257.9694444444445,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 3,
+          "phase": 1
+        },
+        {
+          "n": 820,
+          "x": 2537.636268407223,
+          "y": 99.63611111111119,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 3,
+          "phase": 1
+        },
+        {
+          "n": 840,
+          "x": 2595.7074318681553,
+          "y": 164.35351562500003,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 4,
+          "phase": 1
+        },
+        {
+          "n": 860,
+          "x": 2751.956752263024,
+          "y": 148.96462673611117,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 4,
+          "phase": 0
+        },
+        {
+          "n": 880,
+          "x": 2839.310845230517,
+          "y": 194.79796006944463,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 4,
+          "phase": 0
+        },
+        {
+          "n": 900,
+          "x": 2996.0668603907397,
+          "y": 145.4340711805558,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 4,
+          "phase": 1
+        },
+        {
+          "n": 920,
+          "x": 3084.2839293915167,
+          "y": 84.32296006944473,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 4,
+          "phase": 1
+        },
+        {
+          "n": 940,
+          "x": 3167.4907336620818,
+          "y": 23.21184895833359,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 4,
+          "phase": 1
+        },
+        {
+          "n": 960,
+          "x": 3246.383865455762,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 4,
+          "phase": 1
+        }
+      ],
+      "zipEntries": [],
+      "contacts": [],
+      "flightEvents": []
+    },
+    {
+      "i": 23,
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      },
+      "workshop": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "used": [
+        "23:weight",
+        "23:anvil",
+        "23:tear",
+        "23:ring",
+        "23:tension"
+      ],
+      "anvilHits": 1,
+      "refills": [],
+      "gravity": false,
+      "backtrack": 0,
+      "rootMax": 0,
+      "shrunk": false,
+      "maxTrail": 0,
+      "pods": [],
+      "frames": [
+        {
+          "n": 0,
+          "x": 121.29555555555271,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 20,
+          "x": 188.09738639820716,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 40,
+          "x": 258.76363640857744,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 60,
+          "x": 339.62400070876174,
+          "y": 44.67948717948719,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 80,
+          "x": 424.24102546418726,
+          "y": 97.2435897435898,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 100,
+          "x": 508.85641025638324,
+          "y": 149.80769230769218,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 120,
+          "x": 593.4717948717735,
+          "y": 202.37179487179455,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 140,
+          "x": 817.1242185030715,
+          "y": 348.3333333333333,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 160,
+          "x": 1124.2691818978055,
+          "y": 410,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 180,
+          "x": 1426.2656319785601,
+          "y": 466.9444444444444,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 200,
+          "x": 1723.2256601706176,
+          "y": 440.66111111111115,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 220,
+          "x": 1928.191832462253,
+          "y": 270.3333333333333,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 240,
+          "x": 2001.0624556727562,
+          "y": 469.77777777777754,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 260,
+          "x": 2244.766352473089,
+          "y": 492.41844082913843,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 280,
+          "x": 2618.598114838518,
+          "y": 414.5106449748307,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 300,
+          "x": 2992.4298772039474,
+          "y": 336.60284912052293,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 320,
+          "x": 3360,
+          "y": 260,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 340,
+          "x": 3660,
+          "y": 257,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 360,
+          "x": 3838.9590753966186,
+          "y": 349.7777777777777,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 380,
+          "x": 3959.5261928867985,
+          "y": 296.8888888888888,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 400,
+          "x": 4045.0281034096697,
+          "y": 90.77777777777766,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        }
+      ],
+      "zipEntries": [
+        {
+          "x": 2126.1810976643173,
+          "flight": false,
+          "expired": 0
+        }
+      ],
+      "contacts": [],
+      "flightEvents": []
+    },
+    {
+      "i": 24,
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      },
+      "workshop": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 1,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "used": [
+        "24:anvil",
+        "24:tear",
+        "24:weight",
+        "24:ring",
+        "24:tension",
+        "24:uppercut-1"
+      ],
+      "anvilHits": 2,
+      "refills": [],
+      "gravity": false,
+      "backtrack": 0,
+      "rootMax": 0,
+      "shrunk": false,
+      "maxTrail": 0,
+      "pods": [],
+      "frames": [
+        {
+          "n": 0,
+          "x": 121.29555555555271,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 20,
+          "x": 188.09738639820716,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 40,
+          "x": 258.76363640857744,
+          "y": 0,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 60,
+          "x": 329.43030302955594,
+          "y": 62.33333333333335,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 80,
+          "x": 479.6406178441539,
+          "y": 75.77777777777781,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 100,
+          "x": 555.9804388640187,
+          "y": 81.99999999999999,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 120,
+          "x": 644.2586833078094,
+          "y": 311.2111111111111,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 140,
+          "x": 988.4505219900602,
+          "y": 289.72395824079473,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 160,
+          "x": 1360,
+          "y": 260,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 180,
+          "x": 1394.3519942978892,
+          "y": 273.46153846153845,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 200,
+          "x": 1394.408141114909,
+          "y": 347.8205128205129,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 220,
+          "x": 1394.4081471679237,
+          "y": 422.1794871794871,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 240,
+          "x": 1394.408147168564,
+          "y": 496.5384615384612,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 260,
+          "x": 1483.221198104351,
+          "y": 608.5726495726494,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 280,
+          "x": 1771.8098319047567,
+          "y": 743.9999999999998,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 300,
+          "x": 2055.653953567191,
+          "y": 790.2222222222218,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 320,
+          "x": 2334.8568587608315,
+          "y": 761.8888888888886,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 340,
+          "x": 2609.519594241792,
+          "y": 198.00000000000009,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 360,
+          "x": 2687.7747738876787,
+          "y": 362.83333333333326,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 380,
+          "x": 2755.871124436235,
+          "y": 507.83333333333303,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 400,
+          "x": 2885.1709234365408,
+          "y": 518.6666666666662,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 420,
+          "x": 3290.715205685614,
+          "y": 465.60961230009184,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 440,
+          "x": 3669.2876564474136,
+          "y": 412.9536259668605,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 460,
+          "x": 4047.8601072091988,
+          "y": 360.29763963362916,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 480,
+          "x": 4349.136392832705,
+          "y": 391.9078819021552,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 500,
+          "x": 4494.198993721613,
+          "y": 493.1111111111111,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 520,
+          "x": 4655.039221487925,
+          "y": 587.9444444444445,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 540,
+          "x": 4800.496043792518,
+          "y": 744.0555555555554,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 560,
+          "x": 5015.604687813247,
+          "y": 816.8805555555555,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 580,
+          "x": 5241.549804475901,
+          "y": 820.8333333333333,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 600,
+          "x": 5481.410309200277,
+          "y": 754.9999999999999,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 620,
+          "x": 5717.284264800008,
+          "y": 634.4444444444443,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        },
+        {
+          "n": 640,
+          "x": 5918.238623510551,
+          "y": 358.33333333333314,
+          "flight": false,
+          "shots": 0,
+          "rebounds": 0,
+          "catches": 0
+        }
+      ],
+      "zipEntries": [
+        {
+          "x": 725.0652797860384,
+          "flight": false,
+          "expired": 0
+        },
+        {
+          "x": 2909.1709234365408,
+          "flight": false,
+          "expired": 0
+        }
+      ],
+      "contacts": [],
+      "flightEvents": []
+    }
+  ],
+  "bypasses": [
+    {
+      "i": 17,
+      "policy": "diagonal-spam",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 582.2615694215783
+    },
+    {
+      "i": 17,
+      "policy": "horizontal-spam",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 719.1007236249425
+    },
+    {
+      "i": 17,
+      "policy": "jump-run",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 532.9479882364249
+    },
+    {
+      "i": 10,
+      "policy": "diagonal-spam",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 670.3313918717758
+    },
+    {
+      "i": 10,
+      "policy": "horizontal-spam",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 713.0274750908357
+    },
+    {
+      "i": 10,
+      "policy": "jump-run",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 1206.9000000000015
+    },
+    {
+      "i": 18,
+      "policy": "diagonal-spam",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 670.331391871805
+    },
+    {
+      "i": 18,
+      "policy": "horizontal-spam",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 707.1290019372391
+    },
+    {
+      "i": 18,
+      "policy": "jump-run",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 1128.4104999999981
+    },
+    {
+      "i": 12,
+      "policy": "diagonal-spam",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 705.2360608565577
+    },
+    {
+      "i": 12,
+      "policy": "horizontal-spam",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 719.1007236249425
+    },
+    {
+      "i": 12,
+      "policy": "jump-run",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 501.1479882377025
+    },
+    {
+      "i": 19,
+      "policy": "diagonal-spam",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 691.8999999999942
+    },
+    {
+      "i": 19,
+      "policy": "horizontal-spam",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 691.8999999999942
+    },
+    {
+      "i": 19,
+      "policy": "jump-run",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 501.14798823765886
+    },
+    {
+      "i": 20,
+      "policy": "diagonal-spam",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 1054.3999999999942
+    },
+    {
+      "i": 20,
+      "policy": "horizontal-spam",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 1946.2095941641455
+    },
+    {
+      "i": 20,
+      "policy": "jump-run",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 532.9479882363812
+    },
+    {
+      "i": 21,
+      "policy": "diagonal-spam",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 582.2615694213891
+    },
+    {
+      "i": 21,
+      "policy": "horizontal-spam",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 708
+    },
+    {
+      "i": 21,
+      "policy": "jump-run",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 532.9479882363812
+    },
+    {
+      "i": 22,
+      "policy": "diagonal-spam",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 582.2615694213891
+    },
+    {
+      "i": 22,
+      "policy": "horizontal-spam",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 719.1007236249425
+    },
+    {
+      "i": 22,
+      "policy": "jump-run",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 532.9479882363812
+    },
+    {
+      "i": 23,
+      "policy": "diagonal-spam",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 582.2615694213891
+    },
+    {
+      "i": 23,
+      "policy": "horizontal-spam",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 719.1007236249425
+    },
+    {
+      "i": 23,
+      "policy": "jump-run",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 532.9479882363812
+    },
+    {
+      "i": 24,
+      "policy": "diagonal-spam",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 621.8999999999942
+    },
+    {
+      "i": 24,
+      "policy": "horizontal-spam",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 621.8999999999942
+    },
+    {
+      "i": 24,
+      "policy": "jump-run",
+      "complete": false,
+      "deaths": 1,
+      "maxX": 532.9479882363812
+    }
+  ],
+  "dependencies": [
+    {
+      "i": 17,
+      "feature": "bell",
+      "complete": false,
+      "deaths": 1
+    },
+    {
+      "i": 17,
+      "feature": "pogo",
+      "complete": false,
+      "deaths": 1
+    },
+    {
+      "i": 17,
+      "feature": "ring",
+      "complete": false,
+      "deaths": 1
+    },
+    {
+      "i": 19,
+      "feature": "anvil",
+      "complete": false,
+      "deaths": 1
+    },
+    {
+      "i": 19,
+      "feature": "roots",
+      "complete": false,
+      "deaths": 1
+    },
+    {
+      "i": 19,
+      "feature": "bell",
+      "complete": false,
+      "deaths": 1
+    },
+    {
+      "i": 20,
+      "feature": "ring",
+      "complete": false,
+      "deaths": 1
+    },
+    {
+      "i": 20,
+      "feature": "vault",
+      "complete": false,
+      "deaths": 1
+    },
+    {
+      "i": 20,
+      "feature": "pogo",
+      "complete": false,
+      "deaths": 1
+    },
+    {
+      "i": 21,
+      "feature": "prism",
+      "complete": false,
+      "deaths": 1
+    },
+    {
+      "i": 21,
+      "feature": "pressure",
+      "complete": false,
+      "deaths": 1
+    },
+    {
+      "i": 22,
+      "feature": "folds",
+      "complete": false,
+      "deaths": 1
+    },
+    {
+      "i": 22,
+      "feature": "lantern",
+      "complete": false,
+      "deaths": 1
+    },
+    {
+      "i": 23,
+      "feature": "lift-momentum",
+      "complete": false,
+      "deaths": 1
+    },
+    {
+      "i": 23,
+      "feature": "anvil",
+      "complete": false,
+      "deaths": 1
+    },
+    {
+      "i": 23,
+      "feature": "ring",
+      "complete": false,
+      "deaths": 1
+    },
+    {
+      "i": 24,
+      "feature": "lift-momentum",
+      "complete": false,
+      "deaths": 1
+    },
+    {
+      "i": 24,
+      "feature": "anvil",
+      "complete": false,
+      "deaths": 1
+    },
+    {
+      "i": 24,
+      "feature": "uppercut",
+      "complete": false,
+      "deaths": 1
+    },
+    {
+      "i": 24,
+      "feature": "bell",
+      "complete": false,
+      "deaths": 1
+    }
+  ],
+  "refillRemoval": [
+    {
+      "i": 10,
+      "x": 2040,
+      "complete": false,
+      "deaths": 1,
+      "expiredBeforeZipline": true
+    },
+    {
+      "i": 10,
+      "x": 6680,
+      "complete": false,
+      "deaths": 1,
+      "expiredBeforeZipline": true
+    },
+    {
+      "i": 10,
+      "x": 10540,
+      "complete": false,
+      "deaths": 1,
+      "expiredBeforeZipline": true
+    },
+    {
+      "i": 18,
+      "x": 2030,
+      "complete": false,
+      "deaths": 1,
+      "expiredBeforeZipline": true
+    },
+    {
+      "i": 18,
+      "x": 5570,
+      "complete": false,
+      "deaths": 1,
+      "expiredBeforeZipline": true
+    },
+    {
+      "i": 18,
+      "x": 11100,
+      "complete": false,
+      "deaths": 1,
+      "expiredBeforeZipline": true
+    }
+  ],
+  "contours": [
+    {
+      "i": 10,
+      "refills": [
+        2040,
+        6680,
+        10540
+      ],
+      "strips": 97,
+      "curvedHeights": 66,
+      "samples": 614,
+      "blocked": 0
+    },
+    {
+      "i": 18,
+      "refills": [
+        2030,
+        5570,
+        11100
+      ],
+      "strips": 94,
+      "curvedHeights": 63,
+      "samples": 600,
+      "blocked": 0
+    }
+  ],
+  "rightwardRoots": [
+    {
+      "i": 12,
+      "anchor": 50535,
+      "half": {
+        "left": 50535,
+        "right": 50610,
+        "gone": false
+      },
+      "full": {
+        "left": 50535,
+        "right": 50685,
+        "gone": false
+      },
+      "expired": true
+    },
+    {
+      "i": 19,
+      "anchor": 84338,
+      "half": {
+        "left": 84338,
+        "right": 84390,
+        "gone": false
+      },
+      "full": {
+        "left": 84338,
+        "right": 84442,
+        "gone": false
+      },
+      "expired": true
+    }
+  ],
+  "lanternLift": {
+    "carried": 160,
+    "released": 500
+  },
+  "returnTrap": {
+    "sawReturn": true,
+    "premature": false,
+    "age": 2.33333333333333,
+    "detached": true,
+    "returns": 1
+  },
+  "withoutRoots": {
+    "complete": false,
+    "deaths": 1
+  },
+  "wakeWait": {
+    "hits": 16,
+    "deaths": 1
+  },
+  "sporeHit": {
+    "hit": true,
+    "finite": true,
+    "shots": 2
+  },
+  "lanternGate": {
+    "initial": true,
+    "grace": true,
+    "closed": true,
+    "duration": 1.7999999999999998
+  },
+  "errors": [],
+  "scope": "Successful legal input tapes, 30 simple bypass attempts, stateful mechanic assertions and isolated failure fixtures. The separate shortcut and flight-omission scripts explore adaptive alternatives; none is an exhaustive path search or a human difficulty rating."
+}

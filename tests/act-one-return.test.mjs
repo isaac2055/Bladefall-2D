@@ -16,10 +16,11 @@ import { readFile } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { fileURLToPath } from 'node:url';
 import { resolve, sep, extname } from 'node:path';
-import puppeteer from 'puppeteer';
+import { launchChrome } from './launch-chrome.mjs';
 
 const source = await readFile(new URL('../public/index.html', import.meta.url), 'utf8');
 await import('../public/bladefall-progression.js');
+await import('../public/bladefall-side-stories.js');
 await import('../public/bladefall-zones.js');
 await import('../public/bladefall-world.js');
 await import('../public/bladefall-zone-state.js');
@@ -68,7 +69,7 @@ test('a selected stage still owns its own boss', () => {
 
 test('Continue keeps the session clears and the direction of the ride', () => {
   const body = fn('savedRunSession');
-  const ctx = vm.createContext({ JSON, Array, String, BFQuestsModule: { createProgress: () => ({}) },
+  const ctx = vm.createContext({ JSON, Array, String, BladefallSideStories: globalThis.BladefallSideStories, BFQuestsModule: { createProgress: () => ({}) },
     BFZoneStateModule: ZoneState, levelSelectCapabilitiesForStage: () => ({}) });
   vm.runInContext(body, ctx);
   const saved = JSON.parse(JSON.stringify(ctx.savedRunSession({ levelSelectMode: true, stageIndex: 15,
@@ -122,7 +123,7 @@ async function openGame(t, query = '') {
   });
   t.after(() => new Promise(done => { server.close(() => done()); server.closeAllConnections(); }));
   await new Promise((ok, fail) => { server.once('error', fail); server.listen(0, '127.0.0.1', ok); });
-  const browser = await puppeteer.launch({ headless: true,
+  const browser = await launchChrome({ headless: true,
     executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
     args: ['--no-sandbox', '--disable-background-timer-throttling', '--disable-renderer-backgrounding'] });
   t.after(() => browser.close());

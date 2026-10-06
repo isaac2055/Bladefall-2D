@@ -1,0 +1,64 @@
+{
+  "scope": "Two browser instances with an in-memory transport exercising production packet encoding, netOnMessage and quest handlers; guest decisions/tasks, host reward acknowledgment, stage-session transfer, conflicting decisions and solo isolation. Includes host-authoritative follower movement led solely by guest-body fixtures and matching guest poses. Does not exercise real WebRTC signaling.",
+  "completed": [
+    {
+      "row": {
+        "phase": "completed",
+        "route": "short",
+        "node": "return",
+        "step": 3,
+        "reward": 2,
+        "claimed": true,
+        "visits": 2,
+        "answers": [],
+        "resolution": null,
+        "rescued": false
+      },
+      "soloUntouched": true,
+      "blood": 5
+    },
+    {
+      "row": {
+        "phase": "completed",
+        "route": "short",
+        "node": "return",
+        "step": 3,
+        "reward": 2,
+        "claimed": true,
+        "visits": 2,
+        "answers": [],
+        "resolution": null,
+        "rescued": false
+      },
+      "soloUntouched": true,
+      "blood": 4
+    }
+  ],
+  "refused": [
+    {
+      "phase": "harsh",
+      "rewardHidden": true,
+      "soloUntouched": true
+    },
+    {
+      "phase": "harsh",
+      "rewardHidden": true,
+      "soloUntouched": true
+    }
+  ],
+  "beforeAck": 2,
+  "recoveredReward": {
+    "once": 4,
+    "twice": 4
+  },
+  "hostEscort": {
+    "x": 6770,
+    "finished": true,
+    "phase": "ready"
+  },
+  "guestEscort": {
+    "x": 6770,
+    "finished": true,
+    "phase": "ready"
+  }
+}

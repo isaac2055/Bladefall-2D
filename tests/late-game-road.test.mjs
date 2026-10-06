@@ -150,7 +150,7 @@ test('the recall reaches every region on the road, and each has its own cue', ()
   }
   // Each late region asks for its own cue rather than falling through to the legacy
   // score — walking four regions to one loop is how a road stops feeling like travel.
-  for(const id of ['emberdeep-eternal-furnace','foundry-obsidian-foundry','inversion-inverted-gravity','tyrant-paradox-void-assault'])
+  for(const id of ['emberdeep-weary-forge','foundry-obsidian-foundry','inversion-inverted-gravity','tyrant-paradox-void-assault'])
     assert.ok(audio.includes("id:'" + id + "'") || audio.includes("id: '" + id + "'"), `no cue ${id}`);
   // The late road's placeholders were replaced by its own score (2026-09-19);
   // nothing on it may slip back to a flagged stand-in.

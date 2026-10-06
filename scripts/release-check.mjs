@@ -35,7 +35,11 @@ const version = index.match(/const VERSION='([^']+)'/)?.[1] || null;
 const cache = worker.match(/const CACHE_NAME = '([^']+)'/)?.[1] || null;
 
 for (const asset of assets.filter((name) => name.endsWith('.js') && name !== 'littlejs.min.js' && name !== 'sw.js' && name !== 'peerjs.min.js')) {
-  if (!index.includes(`src="${asset}"`) && !index.includes(`src="${asset}?v=`) && asset !== 'bladefall-release.js') failures.push(`index does not reference ${asset}`);
+  // Editor-only data (the text catalog, 7.233) counts when the Dialogue Editor loads it.
+  const editorPage = sourceBytes.get('dialogue-editor.html')?.toString() || '';
+  // The Precision Core (7.245) is its own page with its own engine; its scripts count when that page loads them.
+  const precisionPage = sourceBytes.get('precision.html')?.toString() || '';
+  if (!index.includes(`src="${asset}"`) && !index.includes(`src="${asset}?v=`) && !editorPage.includes(asset) && !precisionPage.includes(`src="${asset}?v=`) && asset !== 'bladefall-release.js') failures.push(`index does not reference ${asset}`);
 }
 if (!sourceBytes.get('dialogue-editor.html')?.toString().includes('bladefall-dialogue.js')) failures.push('dialogue editor does not reference dialogue registry');
 if (!index.includes('src="bladefall-release.js"')) failures.push('index does not reference bladefall-release.js');

@@ -243,3 +243,19 @@ test('the three ship parts are countable while you are still looking for them', 
     'it appears with the first part — at zero it would be a marker for an unrevealed goal');
   assert.match(hud, /held>=total\?' · SEAWORTHY':''/, 'and says when the ship is whole');
 });
+
+test('collapsing spans give identical approach warning in either direction',()=>{
+ const approach=vm.runInNewContext('('+fn('railCollapseApproached')+')');
+ for(const o of at(o=>o.railCollapse))for(const offset of [-700,-350,-140,0,140,700]){
+ const p={x:o.x+offset},mirror={...o,x:LEVEL.len-o.x};
+ assert.equal(approach(o,p,1),approach(mirror,{x:LEVEL.len-p.x},-1));
+ }
+ assert.equal(approach({x:1000,w:280},{x:1500},-1),true);
+ assert.equal(approach({x:1000,w:280},{x:500},-1),false);
+});
+test('the shore remains safe beyond the narrow shaft, but its edges are still void',()=>{
+ const c=vm.createContext({G:{stageIndex:13},THRONE_BEACH_Y:-900,throneBeachOpen:()=>true,inThroneHole:x=>x>17600&&x<17980});
+ vm.runInContext(fn('updraftsVoidFloor'),c);
+ for(const x of [17200,17790,18370]){c.p={x,y:-900};assert.equal(vm.runInContext('updraftsVoidFloor(p)',c),-1020);}
+ c.p={x:18500,y:-900};assert.equal(vm.runInContext('updraftsVoidFloor(p)',c),-50);
+});

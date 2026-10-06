@@ -1,0 +1,94 @@
+{
+  "scope": "Outcome/UI fixtures, real keyboard/touch choice activation; not route proof.",
+  "results": [
+    {
+      "stage": 0,
+      "mobile": false,
+      "harsh": false,
+      "file": "docs/charters/opening-quest-refresh/presentation/0-supper-desktop.png",
+      "overflow": false,
+      "top": 58,
+      "bottom": 287.046875,
+      "viewport": 800,
+      "phase": "completed"
+    },
+    {
+      "stage": 0,
+      "mobile": false,
+      "harsh": true,
+      "file": "docs/charters/opening-quest-refresh/presentation/0-refusal-desktop.png",
+      "overflow": false,
+      "top": 58,
+      "bottom": 223.265625,
+      "viewport": 800,
+      "phase": "harsh"
+    },
+    {
+      "stage": 1,
+      "mobile": false,
+      "harsh": false,
+      "file": "docs/charters/opening-quest-refresh/presentation/1-supper-desktop.png",
+      "overflow": false,
+      "top": 58,
+      "bottom": 287.046875,
+      "viewport": 800,
+      "phase": "completed"
+    },
+    {
+      "stage": 1,
+      "mobile": false,
+      "harsh": true,
+      "file": "docs/charters/opening-quest-refresh/presentation/1-refusal-desktop.png",
+      "overflow": false,
+      "top": 58,
+      "bottom": 255.15625,
+      "viewport": 800,
+      "phase": "harsh"
+    },
+    {
+      "stage": 0,
+      "mobile": true,
+      "harsh": false,
+      "file": "docs/charters/opening-quest-refresh/presentation/0-supper-mobile.png",
+      "overflow": false,
+      "top": 58,
+      "bottom": 225.6875,
+      "viewport": 390,
+      "phase": "completed"
+    },
+    {
+      "stage": 0,
+      "mobile": true,
+      "harsh": true,
+      "file": "docs/charters/opening-quest-refresh/presentation/0-refusal-mobile.png",
+      "overflow": false,
+      "top": 58,
+      "bottom": 191.515625,
+      "viewport": 390,
+      "phase": "harsh"
+    },
+    {
+      "stage": 1,
+      "mobile": true,
+      "harsh": false,
+      "file": "docs/charters/opening-quest-refresh/presentation/1-supper-mobile.png",
+      "overflow": false,
+      "top": 58,
+      "bottom": 214.453125,
+      "viewport": 390,
+      "phase": "completed"
+    },
+    {
+      "stage": 1,
+      "mobile": true,
+      "harsh": true,
+      "file": "docs/charters/opening-quest-refresh/presentation/1-refusal-mobile.png",
+      "overflow": false,
+      "top": 58,
+      "bottom": 214.453125,
+      "viewport": 390,
+      "phase": "harsh"
+    }
+  ],
+  "errors": []
+}

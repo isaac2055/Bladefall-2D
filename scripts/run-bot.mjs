@@ -8,7 +8,7 @@
 import { createServer } from 'node:http';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { resolve, extname, dirname, basename } from 'node:path';
-import puppeteer from 'puppeteer';
+import { launchChrome } from '../tests/launch-chrome.mjs';
 
 const argv = process.argv.slice(2);
 const arg = (name, fallback) => {
@@ -39,7 +39,7 @@ const server = createServer(async (req, res) => {
 });
 await new Promise((r) => server.listen(0, '127.0.0.1', r));
 
-const browser = await puppeteer.launch({
+const browser = await launchChrome({
   headless: true,
   protocolTimeout: 1_800_000,   // a hard level can search for minutes in-page
   executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',

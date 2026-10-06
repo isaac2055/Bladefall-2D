@@ -131,6 +131,38 @@
     // Ruined Keep's east side — the truth route ends beneath the regions it began in.
     ['king-deep-line', 'abyss-king', 'east', 'ride', 0.5, 'deep-line', 'west', 'ride', 0.5],
     ['deep-line-keep', 'deep-line', 'east', 'ride', 0.5, 'ruined-keep', 'east', 'ride', 0.5],
+    // ACT TWO. The boat leaves from the beach under the Throne's east end and comes out
+    // on the deck at Thunder Cliffs' west (stern) end.
+    ['king-thunder-cliffs', 'abyss-king', 'east', 'interact', 0.88, 'thunder-cliffs', 'west', 'ride', 0.5],
+    // The helm's cast-off at Thunder Cliffs' east (bow) end; the holed boat grounds at the
+    // Landing Shores' west end.
+    ['cliffs-landing', 'thunder-cliffs', 'east', 'interact', 0.5, 'landing-shores', 'west', 'ride', 0.5],
+    // The Colony Gate is walked, both ways.
+    ['shores-colony', 'landing-shores', 'east', 'walk', 0.5, 'colony', 'west', 'walk', 0.5],
+    ['colony-path', 'colony', 'east', 'walk', 0.5, 'palace-path', 'west', 'walk', 0.5],
+    // Through the broken Sun Gate, walked both ways.
+    ['path-sunspire', 'palace-path', 'east', 'walk', 0.5, 'sunspire', 'west', 'walk', 0.5],
+    // Act Three: the hydra's ride from the sea terrace to the first road's echo.
+    ['sunspire-fractured', 'sunspire', 'east', 'ride', 0.5, 'fractured-outskirts', 'west', 'walk', 0.5],
+    ['fo-fw', 'fractured-outskirts', 'east', 'walk', 0.5, 'fractured-woods', 'west', 'walk', 0.5],
+    ['fw-fc', 'fractured-woods', 'east', 'walk', 0.5, 'fractured-causeway', 'west', 'walk', 0.5],
+    ['fu-fm', 'fractured-updrafts', 'east', 'walk', 0.5, 'fractured-marksman', 'west', 'walk', 0.5],
+    ['fc-fu', 'fractured-causeway', 'east', 'walk', 0.5, 'fractured-updrafts', 'west', 'walk', 0.5],
+    ['fm-fk', 'fractured-marksman', 'east', 'walk', 0.5, 'fractured-keep', 'west', 'walk', 0.5],
+    ['fk-fw', 'fractured-keep', 'east', 'walk', 0.5, 'fractured-warden', 'west', 'walk', 0.5],
+    ['fw-ff', 'fractured-warden', 'east', 'walk', 0.5, 'fractured-frostfell', 'west', 'walk', 0.5],
+    ['ff-fs', 'fractured-frostfell', 'east', 'walk', 0.5, 'fractured-sorcerer', 'west', 'walk', 0.5],
+    ['fs-fe', 'fractured-sorcerer', 'east', 'walk', 0.5, 'fractured-emberdeep', 'west', 'walk', 0.5],
+    ['fe-fcl', 'fractured-emberdeep', 'east', 'walk', 0.5, 'fractured-colossus', 'west', 'walk', 0.5],
+    ['fcl-fi', 'fractured-colossus', 'east', 'walk', 0.5, 'fractured-inversion', 'west', 'walk', 0.5],
+    ['fi-ft', 'fractured-inversion', 'east', 'walk', 0.5, 'fractured-tyrant', 'west', 'walk', 0.5],
+    ['ft-fk', 'fractured-tyrant', 'east', 'walk', 0.5, 'fractured-king', 'west', 'walk', 0.5],
+    ['fk-fl', 'fractured-king', 'east', 'walk', 0.5, 'fractured-line', 'west', 'walk', 0.5],
+    ['fl-fc', 'fractured-line', 'east', 'walk', 0.5, 'fractured-cliffs', 'west', 'walk', 0.5],
+    ['fc-fs', 'fractured-cliffs', 'east', 'walk', 0.5, 'fractured-shores', 'west', 'walk', 0.5],
+    ['fs-fco', 'fractured-shores', 'east', 'walk', 0.5, 'fractured-colony', 'west', 'walk', 0.5],
+    ['fco-fp', 'fractured-colony', 'east', 'walk', 0.5, 'fractured-path', 'west', 'walk', 0.5],
+    ['fp-fpa', 'fractured-path', 'east', 'walk', 0.5, 'fractured-palace', 'west', 'walk', 0.5],
   ];
 
   const seams = seamSpecs.map(([id, zoneA, sideA, activationA, offsetA, zoneB, sideB, activationB, offsetB]) => {
@@ -188,6 +220,7 @@
       stageIndex: source.stageIndex,
       name: source.name,
       role: source.role,
+      standalone: !!source.standalone,
       worldPosition: clone(source.position),
       localBounds: bounds,
       streamCells: cells,

@@ -1,0 +1,25 @@
+✖ what the friend does changes the host's world: a ship part, an ability, a ground pound (9663.123416ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9918.546667
+
+✖ failing tests:
+
+test at scripts/.side-story-coop-comparison.mjs:199:1
+✖ what the friend does changes the host's world: a ship part, an ability, a ground pound (9663.123416ms)
+  AssertionError [ERR_ASSERTION]: the host's rock breaks under the friend's strike
+      at TestContext.<anonymous> (file:///Users/computer/Projects/Bladefall-2D%20Antigravity/scripts/.side-story-coop-comparison.mjs:232:10)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

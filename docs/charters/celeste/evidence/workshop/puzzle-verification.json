@@ -1,0 +1,146 @@
+{
+  "menu": {
+    "candidates": {
+      "cards": 10,
+      "proposals": 0,
+      "original": false,
+      "overflow": false
+    },
+    "base-bank": {
+      "cards": 4,
+      "proposals": 20,
+      "original": false,
+      "overflow": false
+    },
+    "bank": {
+      "cards": 10,
+      "proposals": 20,
+      "original": false,
+      "overflow": false
+    }
+  },
+  "devices": {
+    "rootLocked": true,
+    "rootReleased": true,
+    "ballastRaised": true,
+    "ballastLowered": true,
+    "memory": true,
+    "thornTell": true,
+    "thornBloom": true,
+    "thornSettles": true,
+    "programUp": true,
+    "retry25": true,
+    "retry26": true,
+    "retry27": true,
+    "retry28": true,
+    "retry29": true,
+    "docks": true
+  },
+  "replay": [
+    {
+      "i": 10,
+      "complete": true,
+      "deaths": 0,
+      "contacts": 0,
+      "puzzle": null
+    },
+    {
+      "i": 18,
+      "complete": true,
+      "deaths": 0,
+      "contacts": 0,
+      "puzzle": null
+    },
+    {
+      "i": 12,
+      "complete": true,
+      "deaths": 0,
+      "contacts": 5,
+      "puzzle": null
+    },
+    {
+      "i": 21,
+      "complete": true,
+      "deaths": 0,
+      "contacts": 0,
+      "puzzle": null
+    },
+    {
+      "i": 23,
+      "complete": true,
+      "deaths": 0,
+      "contacts": 0,
+      "puzzle": null
+    },
+    {
+      "i": 25,
+      "complete": true,
+      "deaths": 0,
+      "contacts": 0,
+      "puzzle": {
+        "recorded": [],
+        "echoOpen": false,
+        "program": 0,
+        "commands": 0,
+        "ballastRides": 0
+      }
+    },
+    {
+      "i": 26,
+      "complete": true,
+      "deaths": 0,
+      "contacts": 0,
+      "puzzle": {
+        "recorded": [],
+        "echoOpen": false,
+        "program": 0,
+        "commands": 0,
+        "ballastRides": 71
+      }
+    },
+    {
+      "i": 27,
+      "complete": true,
+      "deaths": 0,
+      "contacts": 0,
+      "puzzle": {
+        "recorded": [
+          0,
+          1,
+          2
+        ],
+        "echoOpen": true,
+        "program": 0,
+        "commands": 0,
+        "ballastRides": 0
+      }
+    },
+    {
+      "i": 28,
+      "complete": true,
+      "deaths": 0,
+      "contacts": 0,
+      "puzzle": {
+        "recorded": [],
+        "echoOpen": false,
+        "program": 0,
+        "commands": 0,
+        "ballastRides": 0
+      }
+    },
+    {
+      "i": 29,
+      "complete": true,
+      "deaths": 0,
+      "contacts": 0,
+      "puzzle": {
+        "recorded": [],
+        "echoOpen": false,
+        "program": 0,
+        "commands": 2,
+        "ballastRides": 0
+      }
+    }
+  ],
+  "errors": []
+}

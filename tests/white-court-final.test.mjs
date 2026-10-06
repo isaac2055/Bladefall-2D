@@ -1,3 +1,4 @@
+import '../public/bladefall-side-stories.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -65,7 +66,7 @@ test('rupture drains to the last fifth, then draws the court\u2019s cold back to
 test('saved level-select session survives JSON storage without becoming campaign progress',()=>{
  const meta={capabilities:{acquired:['campaign-only']}},g={levelSelectMode:true,stageIndex:8,p:{},
   sessionCapabilities:{acquired:['jump','dash','portal']},sessionQuests:{done:['preview']},sessionZoneState:{opened:['preview-door']}};
- const c=vm.createContext({G:g,meta,persist(){},snapOf(){return {};}});
+ const c=vm.createContext({BladefallSideStories:globalThis.BladefallSideStories,G:g,meta,persist(){},snapOf(){return {};}});
  const start=html.indexOf('function savedRunSession('),end=html.indexOf('\n/* The Forge:',start);
  vm.runInContext(html.slice(start,end),c);c.saveRunAtStage(8,{});
  const stored=JSON.parse(JSON.stringify(meta.run)),restored=c.savedRunSession(stored);

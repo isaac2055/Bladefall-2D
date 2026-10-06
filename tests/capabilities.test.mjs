@@ -7,7 +7,7 @@ await import('../public/bladefall-capabilities.js');
 const Capabilities = globalThis.BladefallCapabilities;
 
 test('N06 authority covers the constitution and starts with jump alone', () => {
-  assert.deepEqual(Capabilities.validate(), { ok: true, errors: [], abilities: 12, starting: ['jump'] });
+  assert.deepEqual(Capabilities.validate(), { ok: true, errors: [], abilities: 13, starting: ['jump'] });
   const fresh = Capabilities.freshState();
   assert.deepEqual(fresh.acquired, ['jump']);
   assert.equal(fresh.grants.jump.source, 'awakening');
@@ -83,7 +83,7 @@ test('normalization repairs holes and discards unknown or executable save data',
 test('UI model exposes the earned set, one next destination, and locked remainder', () => {
   const model = Capabilities.uiModel(Capabilities.freshState());
   assert.equal(model.acquired, 1);
-  assert.equal(model.total, 12);
+  assert.equal(model.total, 13);
   assert.equal(model.next.id, 'weapon');
   assert.deepEqual(model.rows.slice(0, 3).map((row) => row.status), ['acquired', 'next', 'locked']);
   assert.ok(Object.isFrozen(model));

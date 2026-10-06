@@ -1,0 +1,3936 @@
+{
+  "runs": [
+    {
+      "room": 0,
+      "landingRoom": 0,
+      "used": [],
+      "variant": "normal",
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 1,
+        "dashes": 3,
+        "launches": 2,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 0.7071067811865475,
+        "dy": 0.7071067811865475,
+        "speed": 720,
+        "aimUntil": 3.9333333333333247,
+        "aimInput": {
+          "x": 1,
+          "y": 1
+        },
+        "ride": false,
+        "lift": 507.6923076923077,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 1,
+      "landingRoom": 1,
+      "used": [
+        "1:ring",
+        "1:tension"
+      ],
+      "variant": "normal",
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 2,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0,
+        "vaultDir": 1,
+        "vaultLaunch": false
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 2,
+        "dashes": 4,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 3.966666666666658,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 2,
+      "landingRoom": 2,
+      "used": [],
+      "variant": "normal",
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 4,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 5,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 5.266666666666653,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 3,
+      "landingRoom": 3,
+      "used": [
+        "3:gravity",
+        "3:gravity-700",
+        "3:gravity-1320",
+        "3:ring",
+        "3:tension"
+      ],
+      "variant": "normal",
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 1,
+        "prisms": 2,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0,
+        "vaultDir": 1,
+        "vaultLaunch": false
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 2,
+        "dashes": 5,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 4.433333333333323,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 4,
+      "landingRoom": 4,
+      "used": [
+        "4:portal",
+        "4:gale",
+        "4:tear"
+      ],
+      "variant": "normal",
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0,
+        "springs": 1,
+        "springDirection": "→"
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 2,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 5.23333333333332,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 5,
+      "landingRoom": 5,
+      "used": [
+        "5:pogo-1",
+        "5:tear"
+      ],
+      "variant": "normal",
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 3,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 4,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 3.699999999999992,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 6,
+      "landingRoom": 6,
+      "used": [],
+      "variant": "normal",
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 2,
+        "prisms": 0,
+        "bells": 1,
+        "wind": 0,
+        "crumbles": 1,
+        "springCue": 0,
+        "vaultDir": 1,
+        "vaultLaunch": false
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 2,
+        "dashes": 5,
+        "launches": 2,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 6.333333333333316,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "lift": 507.6923076923077,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 7,
+      "landingRoom": 7,
+      "used": [
+        "7:uppercut-1"
+      ],
+      "variant": "normal",
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 4,
+        "prisms": 0,
+        "bells": 2,
+        "wind": 0,
+        "crumbles": 1,
+        "springCue": 0,
+        "vaultDir": 1,
+        "vaultLaunch": false
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 4,
+        "dashes": 9,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 7.816666666666644,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 8,
+      "landingRoom": 8,
+      "used": [
+        "8:pogo-1"
+      ],
+      "variant": "normal",
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 1,
+        "prisms": 0,
+        "bells": 1,
+        "wind": 0,
+        "crumbles": 5,
+        "springCue": 0,
+        "vaultDir": 1,
+        "vaultLaunch": false
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 1,
+        "dashes": 8,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 8.750000000000009,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 9,
+      "landingRoom": 9,
+      "used": [
+        "9:gravity",
+        "9:gravity-700",
+        "9:gravity-1320",
+        "9:ring",
+        "9:tension",
+        "9:gravity-2640",
+        "9:gravity-3210"
+      ],
+      "variant": "normal",
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 1,
+        "prisms": 4,
+        "bells": 1,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0,
+        "vaultDir": 1,
+        "vaultLaunch": false
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 3,
+        "dashes": 9,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 6.716666666666648,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 10,
+      "landingRoom": 10,
+      "used": [
+        "10:portal",
+        "10:gale",
+        "10:gale-refill",
+        "10:tear"
+      ],
+      "variant": "normal",
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0,
+        "springs": 14,
+        "springDirection": "→"
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 4,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 32.98333333333275,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false
+      },
+      "candidate": {
+        "shots": 6,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 11,
+      "landingRoom": 11,
+      "used": [
+        "11:pogo-1",
+        "11:tear",
+        "11:uppercut-1"
+      ],
+      "variant": "normal",
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 1,
+        "prisms": 0,
+        "bells": 4,
+        "wind": 0,
+        "crumbles": 1,
+        "springCue": 0,
+        "vaultDir": 1,
+        "vaultLaunch": false
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 1,
+        "dashes": 8,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 6.799999999999981,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 12,
+      "landingRoom": 12,
+      "used": [],
+      "variant": "normal",
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 10,
+        "launches": 3,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 13.283333333333568,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "lift": 444.44444444444446,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 4,
+        "returns": 1,
+        "roots": 6,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0,
+        "hoistLift": 22.22222222222222,
+        "hoistGrace": 0
+      }
+    },
+    {
+      "room": 13,
+      "landingRoom": 13,
+      "used": [
+        "13:tear"
+      ],
+      "variant": "normal",
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 12,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 13.40000000000024,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0,
+        "wakeStarted": true
+      }
+    },
+    {
+      "room": 14,
+      "landingRoom": 14,
+      "used": [],
+      "variant": "normal",
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 12,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 10.516666666666763,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 3,
+        "throws": 0,
+        "catches": 0,
+        "pods": [
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "room": 15,
+      "landingRoom": 15,
+      "used": [],
+      "variant": "normal",
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 13,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 15.500000000000345,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 3,
+        "catches": 4,
+        "sockets": 3
+      }
+    },
+    {
+      "room": 16,
+      "landingRoom": 16,
+      "used": [],
+      "variant": "normal",
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 9,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 13.150000000000228,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 9,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0,
+        "phase": 1
+      }
+    },
+    {
+      "room": 17,
+      "landingRoom": 17,
+      "used": [
+        "17:ring",
+        "17:tension",
+        "17:pogo-1"
+      ],
+      "variant": "normal",
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 1,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 1,
+        "dashes": 8,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 1,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 11.900000000000166,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 8,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0,
+        "phase": 0
+      }
+    },
+    {
+      "room": 18,
+      "landingRoom": 18,
+      "used": [
+        "18:portal",
+        "18:gale",
+        "18:gale-refill",
+        "18:tear"
+      ],
+      "variant": "normal",
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0,
+        "springs": 12,
+        "springDirection": "→"
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 4,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 33.48333333333272,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false
+      },
+      "candidate": {
+        "shots": 9,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 19,
+      "landingRoom": 19,
+      "used": [
+        "19:anvil",
+        "19:tear",
+        "19:ring",
+        "19:tension"
+      ],
+      "variant": "normal",
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 1,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 10,
+        "launches": 3,
+        "recharge": 0,
+        "airDashes": 1,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 15.850000000000362,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "lift": 333.3333333333333,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 4,
+        "returns": 1,
+        "roots": 7,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0,
+        "hoistLift": 211.11111111111111,
+        "hoistGrace": 0
+      }
+    },
+    {
+      "room": 20,
+      "landingRoom": 20,
+      "used": [
+        "20:tear",
+        "20:pogo-1",
+        "20:ring",
+        "20:tension"
+      ],
+      "variant": "normal",
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 1,
+        "prisms": 0,
+        "bells": 1,
+        "wind": 0,
+        "crumbles": 1,
+        "springCue": 0,
+        "vaultDir": 1,
+        "vaultLaunch": false
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 1,
+        "dashes": 6,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 1,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 8.900000000000016,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0,
+        "wakeStarted": true
+      }
+    },
+    {
+      "room": 21,
+      "landingRoom": 21,
+      "used": [
+        "21:gravity",
+        "21:tear",
+        "21:ring",
+        "21:tension"
+      ],
+      "variant": "normal",
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 2,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 1,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 11,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 1,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 12.500000000000195,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 3,
+        "throws": 0,
+        "catches": 0,
+        "pods": [
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "room": 22,
+      "landingRoom": 22,
+      "used": [],
+      "variant": "normal",
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 2,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 13,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 14.916666666666982,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 13,
+        "rebounds": 0,
+        "throws": 3,
+        "catches": 4,
+        "phase": 1,
+        "sockets": 3
+      }
+    },
+    {
+      "room": 23,
+      "landingRoom": 23,
+      "used": [
+        "23:weight",
+        "23:anvil",
+        "23:tear",
+        "23:ring",
+        "23:tension"
+      ],
+      "variant": "normal",
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 2,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 1,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 6.083333333333317,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 24,
+      "landingRoom": 24,
+      "used": [
+        "24:anvil",
+        "24:tear",
+        "24:weight",
+        "24:ring",
+        "24:tension",
+        "24:uppercut-1"
+      ],
+      "variant": "normal",
+      "complete": true,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 1,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 1,
+        "dashes": 5,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 2,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 9.716666666666724,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    }
+  ],
+  "counterfactuals": [
+    {
+      "room": 0,
+      "landingRoom": 0,
+      "used": [],
+      "variant": "no-dash",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 0,
+      "landingRoom": 0,
+      "used": [],
+      "variant": "missing-feature",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 0,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 3,
+        "launches": 1,
+        "recharge": 0.18000000000000005,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 3.9499999999999913,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "lift": 600,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 1,
+      "landingRoom": 1,
+      "used": [],
+      "variant": "no-dash",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "phase": null,
+        "ride": false
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 1,
+      "landingRoom": 1,
+      "used": [],
+      "variant": "missing-feature",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 1,
+        "dashes": 2,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 2.2333333333333307,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 2,
+      "landingRoom": 2,
+      "used": [],
+      "variant": "no-dash",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 1,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "phase": null,
+        "ride": false
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 2,
+      "landingRoom": 2,
+      "used": [],
+      "variant": "missing-feature",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 1,
+        "springCue": 0,
+        "coyoteEvents": 1
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 2,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 0.7071067811865475,
+        "dy": 0.7071067811865475,
+        "speed": 720,
+        "aimUntil": 2.3333333333333304,
+        "aimInput": {
+          "x": 1,
+          "y": 1
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 3,
+      "landingRoom": 3,
+      "used": [],
+      "variant": "no-dash",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 3,
+      "landingRoom": 3,
+      "used": [],
+      "variant": "missing-feature",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 1,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 1.1666666666666679,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 4,
+      "used": [
+        "4:portal",
+        "4:gale",
+        "4:gale-refill"
+      ],
+      "variant": "no-dash",
+      "complete": false,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0,
+        "springs": 1,
+        "springDirection": "→"
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 4,
+      "landingRoom": 4,
+      "used": [],
+      "variant": "missing-feature",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 1,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 0.7500000000000003,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 4,
+      "landingRoom": 4,
+      "used": [
+        "4:portal",
+        "4:gale",
+        "4:tear"
+      ],
+      "variant": "no-rebound",
+      "complete": false,
+      "deaths": 0,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 2,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 5.23333333333332,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 5,
+      "landingRoom": 5,
+      "used": [],
+      "variant": "no-dash",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 5,
+      "landingRoom": 5,
+      "used": [],
+      "variant": "missing-feature",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 3,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 3.0999999999999943,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 6,
+      "landingRoom": 6,
+      "used": [],
+      "variant": "no-dash",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 6,
+      "landingRoom": 6,
+      "used": [],
+      "variant": "missing-feature",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 2,
+        "launches": 1,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 3.5666666666666593,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "lift": 600,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 7,
+      "landingRoom": 7,
+      "used": [],
+      "variant": "no-dash",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "phase": null,
+        "ride": false
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 7,
+      "landingRoom": 7,
+      "used": [],
+      "variant": "missing-feature",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 1,
+        "dashes": 2,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 2.2499999999999973,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 8,
+      "landingRoom": 8,
+      "used": [],
+      "variant": "no-dash",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 1,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "phase": null,
+        "ride": false
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 8,
+      "landingRoom": 8,
+      "used": [],
+      "variant": "missing-feature",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 1,
+        "springCue": 0,
+        "coyoteEvents": 1
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 2,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 0.7071067811865475,
+        "dy": 0.7071067811865475,
+        "speed": 720,
+        "aimUntil": 2.3333333333333304,
+        "aimInput": {
+          "x": 1,
+          "y": 1
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 9,
+      "landingRoom": 9,
+      "used": [],
+      "variant": "no-dash",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 9,
+      "landingRoom": 9,
+      "used": [],
+      "variant": "missing-feature",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 1,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 1.1666666666666679,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 10,
+      "landingRoom": 10,
+      "used": [],
+      "variant": "no-dash",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0,
+        "springs": 4,
+        "springDirection": "→"
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0
+      },
+      "candidate": {
+        "shots": 2,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 10,
+      "landingRoom": 10,
+      "used": [],
+      "variant": "missing-feature",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 1,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 1,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 0.7500000000000003,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 10,
+      "landingRoom": 10,
+      "used": [],
+      "variant": "no-rebound",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 1,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 0.7500000000000003,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 11,
+      "landingRoom": 11,
+      "used": [],
+      "variant": "no-dash",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 11,
+      "landingRoom": 11,
+      "used": [],
+      "variant": "missing-feature",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 3,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 3.0999999999999943,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 12,
+      "landingRoom": 12,
+      "used": [],
+      "variant": "no-dash",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 12,
+      "landingRoom": 12,
+      "used": [],
+      "variant": "missing-feature",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 3,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 2,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 3.583333333333326,
+        "aimInput": {
+          "x": 0,
+          "y": 0
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 1,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 13,
+      "landingRoom": 13,
+      "used": [],
+      "variant": "no-dash",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0,
+        "wakeStarted": true
+      }
+    },
+    {
+      "room": 14,
+      "landingRoom": 14,
+      "used": [],
+      "variant": "no-dash",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 14,
+      "landingRoom": 14,
+      "used": [],
+      "variant": "missing-feature",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 5,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 4.7499999999999885,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 15,
+      "landingRoom": 15,
+      "used": [],
+      "variant": "no-dash",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 1,
+        "catches": 1
+      }
+    },
+    {
+      "room": 15,
+      "landingRoom": 15,
+      "used": [],
+      "variant": "missing-feature",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 4,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 0.7071067811865475,
+        "dy": 0.7071067811865475,
+        "speed": 720,
+        "aimUntil": 5.866666666666651,
+        "aimInput": {
+          "x": 1,
+          "y": 1
+        },
+        "ride": false
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 16,
+      "landingRoom": 16,
+      "used": [],
+      "variant": "no-dash",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 16,
+      "landingRoom": 16,
+      "used": [],
+      "variant": "missing-feature",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 1,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 0.7071067811865475,
+        "dy": 0.7071067811865475,
+        "speed": 720,
+        "aimUntil": 1.3166666666666673,
+        "aimInput": {
+          "x": 1,
+          "y": 1
+        },
+        "ride": false
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 1,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0,
+        "phase": 1
+      }
+    },
+    {
+      "room": 17,
+      "landingRoom": 17,
+      "used": [],
+      "variant": "no-dash",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 17,
+      "landingRoom": 17,
+      "used": [],
+      "variant": "missing-feature",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 0,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 2,
+        "launches": 0,
+        "recharge": 0.06333333333333341,
+        "airDashes": 2,
+        "dx": 0.7071067811865475,
+        "dy": 0.7071067811865475,
+        "speed": 720,
+        "aimUntil": 2.7833333333333288,
+        "aimInput": {
+          "x": 1,
+          "y": 1
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 2,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0,
+        "phase": 0
+      }
+    },
+    {
+      "room": 18,
+      "landingRoom": 18,
+      "used": [],
+      "variant": "no-dash",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0,
+        "springs": 4,
+        "springDirection": "→"
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0
+      },
+      "candidate": {
+        "shots": 3,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 18,
+      "landingRoom": 18,
+      "used": [],
+      "variant": "missing-feature",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 1,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 1,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 0.7500000000000003,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 18,
+      "landingRoom": 18,
+      "used": [],
+      "variant": "no-rebound",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 1,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 0.7500000000000003,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 19,
+      "landingRoom": 19,
+      "used": [],
+      "variant": "no-dash",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "phase": null,
+        "ride": false
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 19,
+      "landingRoom": 19,
+      "used": [],
+      "variant": "missing-feature",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 2,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 1,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 2.7999999999999954,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 1,
+        "returns": 0,
+        "roots": 2,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 20,
+      "landingRoom": 20,
+      "used": [],
+      "variant": "no-dash",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0,
+        "wakeStarted": true
+      }
+    },
+    {
+      "room": 20,
+      "landingRoom": 20,
+      "used": [],
+      "variant": "missing-feature",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 1,
+        "prisms": 0,
+        "bells": 1,
+        "wind": 0,
+        "crumbles": 1,
+        "springCue": 0,
+        "vaultDir": 1,
+        "vaultLaunch": false
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 1,
+        "dashes": 6,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 1,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 8.900000000000016,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0,
+        "wakeStarted": true
+      }
+    },
+    {
+      "room": 21,
+      "landingRoom": 21,
+      "used": [],
+      "variant": "no-dash",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 21,
+      "landingRoom": 21,
+      "used": [],
+      "variant": "missing-feature",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 6,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 2,
+        "dx": 0.7071067811865475,
+        "dy": 0.7071067811865475,
+        "speed": 720,
+        "aimUntil": 7.449999999999979,
+        "aimInput": {
+          "x": 1,
+          "y": 1
+        },
+        "ride": false
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 22,
+      "landingRoom": 22,
+      "used": [],
+      "variant": "no-dash",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 1,
+        "catches": 1
+      }
+    },
+    {
+      "room": 22,
+      "landingRoom": 22,
+      "used": [],
+      "variant": "missing-feature",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 5,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 2,
+        "dx": 0,
+        "dy": 1,
+        "speed": 720,
+        "aimUntil": 7.516666666666645,
+        "aimInput": {
+          "x": 0,
+          "y": 1
+        },
+        "ride": false
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 5,
+        "rebounds": 0,
+        "throws": 2,
+        "catches": 2,
+        "phase": 1,
+        "sockets": 2
+      }
+    },
+    {
+      "room": 23,
+      "landingRoom": 23,
+      "used": [],
+      "variant": "no-dash",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0,
+        "phase": null,
+        "ride": false
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 23,
+      "landingRoom": 23,
+      "used": [],
+      "variant": "missing-feature",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 0,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 1,
+        "launches": 0,
+        "recharge": 0.06333333333333341,
+        "airDashes": 1,
+        "phase": null,
+        "ride": false,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 4.29999999999999,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        }
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 24,
+      "landingRoom": 24,
+      "used": [],
+      "variant": "no-dash",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0,
+        "recharge": 0,
+        "airDashes": 0
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    },
+    {
+      "room": 24,
+      "landingRoom": 24,
+      "used": [],
+      "variant": "missing-feature",
+      "complete": false,
+      "deaths": 1,
+      "stats": {
+        "vault": 0,
+        "vaults": 0,
+        "prisms": 0,
+        "bells": 0,
+        "wind": 0,
+        "crumbles": 0,
+        "springCue": 0
+      },
+      "lab": {
+        "charge": 0,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 2,
+        "launches": 0,
+        "recharge": 0.16333333333333339,
+        "airDashes": 1,
+        "dx": 1,
+        "dy": 0,
+        "speed": 720,
+        "aimUntil": 2.1999999999999975,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "phase": null
+      },
+      "candidate": {
+        "shots": 0,
+        "hits": 0,
+        "hoists": 0,
+        "returns": 0,
+        "roots": 0,
+        "switches": 0,
+        "rebounds": 0,
+        "throws": 0,
+        "catches": 0
+      }
+    }
+  ],
+  "timing": [
+    {
+      "room": 0,
+      "event": "jump",
+      "outcomes": [
+        {
+          "shift": -8,
+          "ok": false
+        },
+        {
+          "shift": -4,
+          "ok": false
+        },
+        {
+          "shift": -2,
+          "ok": false
+        },
+        {
+          "shift": 0,
+          "ok": true
+        },
+        {
+          "shift": 2,
+          "ok": true
+        },
+        {
+          "shift": 4,
+          "ok": true
+        },
+        {
+          "shift": 8,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "room": 1,
+      "event": "vault",
+      "outcomes": [
+        {
+          "shift": -8,
+          "ok": false
+        },
+        {
+          "shift": -4,
+          "ok": true
+        },
+        {
+          "shift": -2,
+          "ok": true
+        },
+        {
+          "shift": 0,
+          "ok": true
+        },
+        {
+          "shift": 2,
+          "ok": true
+        },
+        {
+          "shift": 4,
+          "ok": false
+        },
+        {
+          "shift": 8,
+          "ok": false
+        }
+      ]
+    },
+    {
+      "room": 5,
+      "event": "bell",
+      "outcomes": [
+        {
+          "shift": -8,
+          "ok": true
+        },
+        {
+          "shift": -4,
+          "ok": true
+        },
+        {
+          "shift": -2,
+          "ok": true
+        },
+        {
+          "shift": 0,
+          "ok": true
+        },
+        {
+          "shift": 2,
+          "ok": false
+        },
+        {
+          "shift": 4,
+          "ok": false
+        },
+        {
+          "shift": 8,
+          "ok": false
+        }
+      ]
+    },
+    {
+      "room": 6,
+      "event": "jump",
+      "outcomes": [
+        {
+          "shift": -8,
+          "ok": false
+        },
+        {
+          "shift": -4,
+          "ok": false
+        },
+        {
+          "shift": -2,
+          "ok": false
+        },
+        {
+          "shift": 0,
+          "ok": true
+        },
+        {
+          "shift": 2,
+          "ok": true
+        },
+        {
+          "shift": 4,
+          "ok": true
+        },
+        {
+          "shift": 8,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "room": 7,
+      "event": "vault",
+      "outcomes": [
+        {
+          "shift": -8,
+          "ok": false
+        },
+        {
+          "shift": -4,
+          "ok": false
+        },
+        {
+          "shift": -2,
+          "ok": false
+        },
+        {
+          "shift": 0,
+          "ok": true
+        },
+        {
+          "shift": 2,
+          "ok": true
+        },
+        {
+          "shift": 4,
+          "ok": false
+        },
+        {
+          "shift": 8,
+          "ok": false
+        }
+      ]
+    },
+    {
+      "room": 8,
+      "event": "bell",
+      "outcomes": [
+        {
+          "shift": -8,
+          "ok": false
+        },
+        {
+          "shift": -4,
+          "ok": false
+        },
+        {
+          "shift": -2,
+          "ok": true
+        },
+        {
+          "shift": 0,
+          "ok": true
+        },
+        {
+          "shift": 2,
+          "ok": false
+        },
+        {
+          "shift": 4,
+          "ok": false
+        },
+        {
+          "shift": 8,
+          "ok": false
+        }
+      ]
+    },
+    {
+      "room": 9,
+      "event": "bell",
+      "outcomes": [
+        {
+          "shift": -8,
+          "ok": true
+        },
+        {
+          "shift": -4,
+          "ok": true
+        },
+        {
+          "shift": -2,
+          "ok": true
+        },
+        {
+          "shift": 0,
+          "ok": true
+        },
+        {
+          "shift": 2,
+          "ok": true
+        },
+        {
+          "shift": 4,
+          "ok": false
+        },
+        {
+          "shift": 8,
+          "ok": false
+        }
+      ]
+    },
+    {
+      "room": 10,
+      "event": "zip",
+      "outcomes": [
+        {
+          "shift": -8,
+          "ok": false
+        },
+        {
+          "shift": -4,
+          "ok": false
+        },
+        {
+          "shift": -2,
+          "ok": true
+        },
+        {
+          "shift": 0,
+          "ok": true
+        },
+        {
+          "shift": 2,
+          "ok": true
+        },
+        {
+          "shift": 4,
+          "ok": false
+        },
+        {
+          "shift": 8,
+          "ok": false
+        }
+      ]
+    },
+    {
+      "room": 11,
+      "event": "bell",
+      "outcomes": [
+        {
+          "shift": -8,
+          "ok": true
+        },
+        {
+          "shift": -4,
+          "ok": true
+        },
+        {
+          "shift": -2,
+          "ok": true
+        },
+        {
+          "shift": 0,
+          "ok": true
+        },
+        {
+          "shift": 2,
+          "ok": true
+        },
+        {
+          "shift": 4,
+          "ok": false
+        },
+        {
+          "shift": 8,
+          "ok": false
+        }
+      ]
+    }
+  ],
+  "railDrop": {
+    "caught": true,
+    "dropped": true,
+    "retries": 1
+  },
+  "crumble": {
+    "gone": true,
+    "sag": 6,
+    "grace": 0.05000000000000002,
+    "vy": -456.6666666666667,
+    "jumps": 1
+  },
+  "playlists": [
+    "A–F",
+    "G,H-old,I,J,L",
+    "H,N,O,P",
+    "H-F,K,K-F,M,M-F,N-F,O-F,P-F,Q,Q-F"
+  ],
+  "nativeDoubleJump": false,
+  "uiSkipped": true,
+  "music": null,
+  "errors": [],
+  "hashes": {
+    "index.html": "690fae92f08f0cdd06e0caaa411539b770329042b39af2a4b79f99fa9b67507f",
+    "bladefall-act-two.js": "82df3da530aff1f646df473ebe8c496d264107bcb6e7c8da6c61108fb725a845",
+    "bladefall-celeste.js": "c16712e3d8b1bbf66685e956816ebb8627cbc2e54d00de59129ba8a4286c1c45",
+    "bladefall-celeste-art.js": "79b39c3684c2f566cb36329d54085429a4f1d5df1e364438def2756fdacb2870",
+    "bladefall-precision-workshop.js": "58b9c0af9ff0804363cfd7389ed57bd076fbf170990342e9a55bebf76945019d",
+    "bladefall-precision-art.js": "16bf67a32be7aa81f04308ef25837bd4fff8db1cf746339410c9422790812e15",
+    "bladefall-precision-candidates.js": "8458f3ad24ff0523dc02edd806bee227bbe6e3d8575c58c71f056fff1131b139",
+    "bladefall-precision-fractured.js": "4199135855cf507628975e642dee19f93ee61c7f7f9ed5d9f43efc473b98527b"
+  }
+}

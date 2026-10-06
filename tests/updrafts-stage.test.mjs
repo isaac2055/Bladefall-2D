@@ -115,7 +115,7 @@ test('Signal Crown has unconditional recovery plus a gate-powered lift and physi
   assert.match(stage,/Wl\(17810,760,760,42\).*crownExitCliff:1.*Pl\(17920,120,810.*crownExitLip:1/s);
   assert.doesNotMatch(stage,/Gr\(17840,18000\)/);
   assert.match(source,/connector:'updrafts-marksman'.*G\.p\.y>=720/s);
-  assert.match(source,/const x=\[2050,8450,13520,16440\]\[updraftsGateCount\(\)\]/);
+  assert.match(source,/const x=\[2200,8450,13520,16440\]\[updraftsGateCount\(\)\]/);
   assert.match(stage,/Scenery\(16600,0,'portal-gun-plinth'/);
   assert.match(stage,/kind:'portalSingle',ritualLocked:true,sourceKind:'portal-gun-plinth'/);
   assert.match(source,/if\(crownGun\)return claimSignalCrownPortal\(crownGun\)/);

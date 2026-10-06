@@ -7,8 +7,8 @@
   const shopRecords = [
     {
       id: 'ethereal-goods', stageIndex: 1, x: 980, name: 'Ethereal Goods',
-      keeper: 'The Assessor', accent: '#c7d6b4',
-      greeting: 'Forgive the prices. I only inventory what was already yours.',
+      keeper: 'Tamsin · The Assessor', accent: '#c7d6b4',
+      greeting: 'Come in. What’s left is on the shelf. The bottles are sealed, and I’ve checked the lens myself. Do tell me what you need before you go into the trees.',
       stock: [
         { id: 'woods-draught', name: 'Bottled Respite', description: 'Restore two measures of Blood.', price: 28, once: false, grant: { kind: 'heal', amount: 40 } },
         { id: 'woods-lens', name: 'Assessor Lens', description: 'Reveal nearby memories, loot, and false walls. Ready to use on purchase.', price: 80, once: true, grant: { kind: 'tool', toolId: 'assessor-lens' } },
@@ -17,7 +17,7 @@
     {
       id: 'bellows-exchange', stageIndex: 3, x: 2150, name: 'Bellows Exchange',
       keeper: 'Aven the Sail-Cutter', accent: '#9fe0ff',
-      greeting: 'Nothing here defeats the wind. It only makes your mistakes survivable.',
+      greeting: 'Nothing I sell beats the wind. It just lets you live through your mistakes. Most of them.',
       stock: [
         { id: 'bellows-wrap', name: 'Windwoven Mantle', description: 'A visible mantle that softens one kind of mistake: blood lost to hazards.', price: 135, once: true, grant: { kind: 'armor', slot: 'chest', rarity: 'uncommon', name: 'Windwoven Mantle' } },
         { id: 'bellows-repair', name: 'Restring and Oil', description: 'Restore all weapon durability or ammunition.', price: 34, once: false, grant: { kind: 'repair' } },
@@ -27,7 +27,7 @@
     {
       id: 'keepers-counter', stageIndex: 5, x: 320, name: "Keeper's Counter",
       keeper: 'Tovin the Mason', accent: '#c6b0dc',
-      greeting: 'The Keep remembers tools longer than names.',
+      greeting: 'Come in, come in! I never remember a name, friend, but I remember tools, and the Keep’s still got a few good ones. Have a look.',
       stock: [
         { id: 'keep-spear', name: 'Gate Measure', description: 'Equip a rare spear.', price: 230, once: true, grant: { kind: 'weapon', arche: 'spear', rarity: 'rare', name: 'Gate Measure' } },
         { id: 'keep-chest', name: 'Second Warden Mantle', description: 'Wear a rare mantle that builds Ward against incoming blows.', price: 245, once: true, grant: { kind: 'armor', slot: 'chest', rarity: 'rare', name: 'Second Warden Mantle' } },
@@ -38,7 +38,7 @@
     {
       id: 'white-exchange', stageIndex: 7, x: 330, name: 'The White Exchange',
       keeper: 'Venn, Stove Factor', accent: '#bcefff',
-      greeting: 'Warmth is kept here. Nothing else survives the ledger.',
+      greeting: 'Warmth costs, same as everything. Coal’s dear this far up, so don’t go expecting bargains. What’ll it be?',
       stock: [
         { id: 'frost-wand', name: 'Four-Bone Wand', description: 'Equip a rare frost wand.', price: 275, once: true, grant: { kind: 'weapon', arche: 'frostwand', rarity: 'rare', name: 'Four-Bone Wand' } },
         { id: 'frost-legs', name: 'Snow-Crossing Mantle', description: 'Wear a rare mantle that builds Ward against incoming blows.', price: 240, once: true, grant: { kind: 'armor', slot: 'chest', rarity: 'rare', name: 'Snow-Crossing Mantle' } },
@@ -60,7 +60,7 @@
       // inside it. Every other region already separates the two by ~200.
       id: 'cinder-ledger', stageIndex: 9, x: 560, name: 'The Cinder Ledger',
       keeper: 'Sera the Courier', accent: '#ffb06a',
-      greeting: 'Every ember arrives owing something.',
+      greeting: 'Everything down here came through the fire on somebody’s back. Mostly mine. Prices reflect that.',
       stock: [
         { id: 'ember-blade', name: 'Courier Flame', description: 'Equip an epic flameblade.', price: 460, once: true, grant: { kind: 'weapon', arche: 'flameblade', rarity: 'epic', name: 'Courier Flame' } },
         { id: 'ember-chest', name: 'Relay Harness', description: 'Equip an epic chestplate.', price: 430, once: true, grant: { kind: 'armor', slot: 'chest', rarity: 'epic', name: 'Relay Harness' } },
@@ -71,7 +71,7 @@
     {
       id: 'last-inventory', stageIndex: 11, x: 330, name: 'The Last Inventory',
       keeper: 'The Sleepless Clerk', accent: '#d8b7ff',
-      greeting: 'Above and below, your effects total the same.',
+      greeting: 'Whichever way up you’re standing, your total comes out the same. I’ve checked. Several times. I don’t sleep.',
       stock: [
         { id: 'inverse-rod', name: 'Rod of the Other Floor', description: 'Equip an epic storm rod.', price: 520, once: true, grant: { kind: 'weapon', arche: 'stormrod', rarity: 'epic', name: 'Rod of the Other Floor' } },
         { id: 'inverse-helm', name: 'Sleepless Visor', description: 'Equip an epic helmet.', price: 480, once: true, grant: { kind: 'armor', slot: 'helmet', rarity: 'epic', name: 'Sleepless Visor' } },

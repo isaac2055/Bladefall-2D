@@ -1,3 +1,4 @@
+import '../public/bladefall-side-stories.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
@@ -192,7 +193,8 @@ test('Grip is granted on contact without a bag or modal and immediately saves it
   assert.equal(runtimeSystems.capabilities.has(h.active(),'wall-jump'),false);assert.equal(h.saved.length,0);
   h.G.p.x=13280-20;h.context.touchGrip();
   assert.equal(runtimeSystems.capabilities.has(h.active(),'wall-jump'),true);
-  assert.equal(h.G.p.blood,5);assert.equal(h.G.p.ckX,13280);assert.equal(h.G.p.ckY,0);
+  // 7.233 (owner): no automatic checkpoints — a mechanism no longer moves the respawn point.
+  assert.equal(h.G.p.blood,5);assert.notEqual(h.G.p.ckX,13280);
   assert.equal(h.saved.length,1);assert.equal(runtimeSystems.capabilities.has(h.saved[0].capabilities,'wall-jump'),true);
   assert.equal(h.toasts.length,0);assert.equal(h.annotations.length,1);
   assert.equal(h.context.circuitOpen('keep-weight'),true);assert.equal(h.context.circuitOpen('belfry-fold'),true);
@@ -239,8 +241,9 @@ test('the service lift requires the earned key and saves safe reciprocal arrival
   assert.equal(h.G.p.x,lower.x);assert.equal(h.G.p.y,lower.y);
   assert.equal(h.G.p.vx,0);assert.equal(h.G.p.vy,0);assert.equal(h.G.p.onWall,false);
   assert.equal(h.G.p.floorPlat,null);assert.equal(h.G.p._restMouth,null);
-  assert.equal(h.G.p.ckX,lower.x);assert.equal(h.saved.at(-1).snap.ckY,lower.y);
-  assert.equal(h.context.useKeepReturn(lower),true);assert.equal(h.G.p.x,upper.x);assert.equal(h.G.p.ckY,upper.y);
+  // 7.233 (owner): no automatic checkpoints — a mechanism no longer moves the respawn point.
+  assert.notEqual(h.G.p.ckX,lower.x);
+  assert.equal(h.context.useKeepReturn(lower),true);assert.equal(h.G.p.x,upper.x);assert.notEqual(h.G.p.ckY,upper.y);
 });
 
 test('Continue chooses only the saved preview checkpoint and preserves campaign recovery isolation',()=>{
@@ -249,7 +252,7 @@ test('Continue chooses only the saved preview checkpoint and preserves campaign 
     meta={recovery:{activeCheckpoint:campaignPoint}},
     G={stageIndex:5,levelSelectMode:true,p:{ckSet:true,ckX:16810,ckY:1080,blood:5},
       sessionCapabilities:{acquired:['wall-jump']},sessionQuests:{},sessionZoneState:{}},persisted=[],
-    context=vm.createContext({meta,G,BFWorldModule:{stageId:i=>i===5?'ruined-keep':'black-woods'},BFRecoveryModule:runtimeSystems.recovery,
+    context=vm.createContext({BladefallSideStories:globalThis.BladefallSideStories,meta,G,BFWorldModule:{stageId:i=>i===5?'ruined-keep':'black-woods'},BFRecoveryModule:runtimeSystems.recovery,
       snapOf:p=>({blood:p.blood}),persist:()=>persisted.push(JSON.parse(JSON.stringify(meta.run)))});
   vm.runInContext(['runRecoveryPoint','savedRunSession','saveRunAtStage'].map(fn).join('\n'),context);
   const run={stageIndex:5,levelSelectMode:true,previewCheckpoint:previewPoint};

@@ -1,0 +1,11 @@
+Climb visual detail pass — 2026-10-03
+
+Added: world backgrounds and terrain, individual NPC details, enemy and boss details.
+Knight sprite, scarf/dash colors and knight animation source compared byte-for-byte with pre-edit copy: identical. No simulation, world layout, dialogue or save code edited.
+
+PASS: node scripts/verify-climb-art.mjs — 225 sections across nine worlds, NPCs, foes and boss poses. Checks finite coordinates, balanced canvas state, frozen simulation objects and isolation from other game modes.
+PASS: syntax checks for all changed JavaScript files.
+PASS: browser rendering of all nine worlds; character gallery reviewed; no browser errors observed.
+
+Direct route replay using current Climb flags and closed seams where required: 133/134 authored routes finish without death. cl4-u4-crown does not exit with springUp=true, including with no art loaded (existing stored-route mismatch). 91 passage/connector rooms have no stored tape. No gameplay fixes made.
+The much broader verify:precision-core and verify:climb search suites were stopped before completion; do not treat them as full passes.

@@ -2,7 +2,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import process from 'node:process';
-import puppeteer from 'puppeteer';
+import { launchChrome } from '../tests/launch-chrome.mjs';
 
 const ROOT=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const FOLDER=resolve(ROOT,'docs/charters/04-updrafts/evidence/validation');
@@ -11,7 +11,7 @@ const delay=ms=>new Promise(done=>setTimeout(done,ms));
 await mkdir(FOLDER,{recursive:true});
 const source=await readFile(resolve(ROOT,'public/index.html'),'utf8');
 const expectedVersion=source.match(/const VERSION='([^']+)'/)?.[1]||null;
-const browser=await puppeteer.launch({headless:true,args:['--no-sandbox','--disable-background-timer-throttling']});
+const browser=await launchChrome({headless:true,args:['--no-sandbox','--disable-background-timer-throttling']});
 const page=await browser.newPage();await page.setViewport({width:1440,height:900,deviceScaleFactor:1});
 const errors=[];page.on('pageerror',error=>errors.push(error.message));
 await page.goto(URL,{waitUntil:'domcontentloaded',timeout:60000});

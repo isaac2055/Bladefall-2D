@@ -64,7 +64,8 @@ test('Outskirts is an extended six-room jump-only opening with no completion por
   for(const room of ['POISONED VERGE','CAMP ECHO','WATCHER\'S CUT','HOLLOW MILE','BROKEN MUSTER','MOTHLIGHT DESCENT'])
     assert.match(stage,new RegExp(room));
   assert.doesNotMatch(stage,/\bCry\(/);
-  assert.doesNotMatch(stage.split('\n').filter(line=>!line.includes('returnHook:')).join('\n'),/\bWl\(/);
+  // The only walls are return-visit climbs and the gatehouse's invisible stop at the Mothlight door (7.231).
+  assert.doesNotMatch(stage.split('\n').filter(line=>!line.includes('returnHook:')&&!line.includes('gatehouseWall:1')).join('\n'),/\bWl\(/);
   assert.doesNotMatch(stage,/\bSp\(/);
   assert.doesNotMatch(stage,/portal:/);
   assert.match(source,/else G\.portal=L\.portal==null\?null:/);
@@ -76,7 +77,10 @@ test('the mandatory authored surfaces are traversable and reversible with the re
   assert.ok(routeExists(surfaces,13738,70),'the same surfaces must support walking back west');
   assert.ok(surfaces.some(row=>row.left<=6520&&row.right>=6520&&row.y===170),'fresh coin has an authored landing');
   assert.equal(jumpReach(0)<160,true,'the dash overlook gap must exceed an ordinary level jump');
-  assert.match(stage,/Pl\(6540,140,170,\{returnHook:'dash'/);
+  // 7.231: the three dash stepping plats (one sat on top of 6520/170) were cut; one single-jump step
+  // (6420/64) climbs back from the east landing to the high road, and the overlook is a dash east off it.
+  assert.doesNotMatch(stage,/Pl\(6540,140,170,\{returnHook:'dash'/);
+  assert.match(stage,/Pl\(6420,100,64,\{eastReturnStep:true\}\)/);
   assert.match(stage,/Pl\(6830,120,170,\{returnHook:'dash',optional:true,dashOverlook:true/);
 });
 
@@ -114,14 +118,14 @@ test('Watcher’s Cut has an independent optional high path above a reversible s
   }
 });
 
-test('Broken Muster is a continuous peaceful rest with an optional reachable survey lookout',()=>{
+test('Broken Muster is a continuous peaceful rest and IRON stands on its floor',()=>{
   const camp=freshSurfaces().find(o=>o.left===9300&&o.right===11500&&o.y===0);
   assert.ok(camp,'the inhabited camp has an uninterrupted floor');
   assert.ok(authored.enemies.every(e=>e.x<9300||e.x>11500),'no enemy is authored among the surveyor and last vane');
   assert.ok(authored.enemies.every(e=>e.patrol[1]<9300||e.patrol[0]>11500),'patrol paths do not cut through the rest');
-  const lookout=freshSurfaces().filter(o=>o.openingActSystem==='survey-lookout').concat(camp);
-  assert.ok(routeExists(lookout,{x:10410,y:0},{x:11370,y:62}),'IRON is a short optional climb');
-  assert.ok(routeExists(lookout,{x:11370,y:62},{x:10410,y:0}),'the surveyor remains easy to revisit');
+  // 7.231 (owner: "platforms above the ground are completely pointless"): no lookout over a safe floor.
+  assert.equal(freshSurfaces().filter(o=>o.openingActSystem==='survey-lookout').length,0);
+  assert.match(stage,/SurveyStake\(11370,0,'muster'/);
 });
 
 test('fresh route is weaponless and random ecology cannot contaminate it',()=>{
@@ -134,7 +138,7 @@ test('fresh route is weaponless and random ecology cannot contaminate it',()=>{
   assert.match(source,/if\(G\.stageIndex>2&&!e\.boss&&!e\.creepy&&!a\.muster&&gameChance\('enemy'/);
   assert.equal((stage.match(/CoinOb\(/g)||[]).length,1);
   assert.match(stage,/CoinOb\(6520,192\)/);
-  assert.match(stage,/StoryRelic\(1480,237,'first-draught'.*returnHook:'double-jump'/);
+  assert.match(stage,/StoryRelic\(2060,237,'first-draught'.*returnHook:'double-jump'/);
   assert.doesNotMatch(stage,/StoryRelic\([^\n]*'red-clasp'/);
 });
 
@@ -175,7 +179,7 @@ test('the Watcher’s Cut dash gap owns a persistent dead-drop reward',()=>{
 });
 
 test('every later-ability return owns a distinct persistent payoff',()=>{
-  assert.match(stage,/StoryRelic\(1480,237,'first-draught'.*returnHook:'double-jump'/);
+  assert.match(stage,/StoryRelic\(2060,237,'first-draught'.*returnHook:'double-jump'/);
   assert.match(stage,/sentinelVigil:true.*vaultKeyId:'sentinel-key'/s);
   assert.match(stage,/patrolCache:true,returnHook:'weapon'/);
   assert.match(stage,/wallJumpOverlook:true/);
@@ -186,10 +190,13 @@ test('every later-ability return owns a distinct persistent payoff',()=>{
 
 test('Mara moves forward, awards the field chart instead of healing, and visibly starts the wider road quest',()=>{
   assert.match(source,/meta\.outskirtsMaraRelocated=true;persist\(\)/);
-  assert.match(source,/n\.x=10280/);
+  assert.match(source,/const MARA_MUSTER_X=10410/);
+  assert.match(source,/n\.x=10410;n\.y=0;n\.vy=0;n\.anchoredResident=true;n\.asked=true;   \/\/ MARA_MUSTER_X/);
   assert.match(source,/meta\.outskirtsFieldChart=true;meta\.outskirtsMaraRelocated=true;addGold\(35\);persist\(\)/);
   assert.doesNotMatch(source,/FIELD CHART ACQUIRED · \+35g|MAP \+ JOURNAL UNLOCKED|MARA MOVES EAST/);
-  assert.match(source,/n\.departForMuster&&\(n\.x<G\.cam-80\|\|n\.x>G\.cam\+VW\+80\)/);
+  // 7.233 (owner): she runs there in plain sight instead of vanishing once off camera.
+  assert.doesNotMatch(source,/departForMuster/);
+  assert.match(source,/if\(n\.maraRun\)\{updateMaraRun\(n,dt\);continue;\}/);
   const surveyBranch=source.slice(source.indexOf("} else if(n.kind==='survey'){"),source.indexOf("} else { // fetch",source.indexOf("} else if(n.kind==='survey'){")));
   assert.doesNotMatch(surveyBranch,/p\.hp=/);
   assert.match(quests,/Mara gives you her field chart/);
@@ -198,27 +205,28 @@ test('Mara moves forward, awards the field chart instead of healing, and visibly
   assert.doesNotMatch(source,/Journal · No field chart/);
 });
 
-test('Mara requires a deliberate interaction, relocates out of view, and grants the chart once without a bag',()=>{
+test('Mara requires a deliberate interaction, runs to Broken Muster in sight, and grants the chart once without a bag',()=>{
   const n={kind:'survey',profileId:'mara',x:1950,y:0,asked:false,done:false};
-  const G={stageIndex:0,cam:1400,npcs:[n],p:{x:1950,y:0,hp:3},outskirtsSurvey:{aligned:0,total:3},outskirtsProduction:{}};
+  const G={stageIndex:0,cam:1400,time:0,npcs:[n],p:{x:1950,y:0,hp:3},outskirtsSurvey:{aligned:0,total:3},outskirtsProduction:{},obstacles:[],enemies:[]};
   const meta={soundOn:false,gold:0},annotations=[],events=[];
   const profile=runInNewContext('({'+sourceBetween('  mara:{','  bram:{')+'}).mara',{BFDialogueModule:Dialogue});
   const surveyStart="} else if(n.kind==='survey'){";
   const surveyBody=sourceBetween(surveyStart,'} else { // fetch').slice(surveyStart.length);
-  const relocation=sourceBetween("    if(n.kind==='survey'&&n.departForMuster",'    const near=');
   const api=runInNewContext(
     sourceBetween('function outskirtsReplayText(', 'function outskirtsAuthoredInteractable(')+
     sourceBetween('function beginOutskirtsInteraction(', 'function replayNearbyOutskirtsSource(')+
     sourceBetween('function coopTravelerIndex(', 'function coopSendTravelerIntent(')+
-    `;({begin:beginOutskirtsInteraction,reward:()=>coopGrantTravelerReward(n),relocate(){${relocation}},tick(){
+    sourceBetween('const MARA_MUSTER_X=', 'function applyPeopleAndPlace(')+
+    `;({begin:beginOutskirtsInteraction,reward:()=>coopGrantTravelerReward(n),run(dt){G.time+=dt;if(n.maraRun)updateMaraRun(n,dt);},tick(){
       const residentInteraction=G.outskirtsInteractionTarget;G.outskirtsInteractionTarget=null;
       const near=Math.abs(p.x-n.x)<52&&Math.abs(p.y-n.y)<70;
       ${surveyBody}
     }})`,{
       n,p:G.p,G,meta,profile,VW:1024,
       outskirtsInteractionCandidate:()=>n,travelerProfile:()=>profile,travelerLabel:()=>profile.name,
-      showOutskirtsAnnotation:(_,html)=>annotations.push(html),escText:s=>s,
+      showOutskirtsAnnotation:(_,html)=>annotations.push(html),escText:s=>s,interactEchoMachine:()=>false,
       coopSendTravelerIntent:()=>{},recordQuestEvent:event=>events.push(event),persist:()=>{},
+      journeyActive:()=>false,coopActive:()=>false,NET:{isGuest:()=>false},
       addGold:amount=>{meta.gold+=amount;}
     });
   api.tick();
@@ -227,11 +235,19 @@ test('Mara requires a deliberate interaction, relocates out of view, and grants 
   api.begin();api.tick();
   assert.equal(n.asked,true);
   assert.match(annotations.at(-1),/bearings/i);
+  assert.equal(meta.outskirtsMaraRelocated,true,'the save puts her at the Muster from the moment she sets off');
   assert.equal(n.x,1950,'talking does not teleport the surveyor on screen');
-  api.relocate();assert.equal(n.x,1950);
-  G.p.x=3500;G.cam=2900;api.relocate();assert.equal(n.x,10280);
+  const at=seconds=>{const out=[];for(let i=0;i<seconds*60&&n.maraRun;i++){api.run(1/60);out.push(n.x);}return out;};
+  at(1);assert.equal(n.x,1950,'she folds her board while the words are still up');
+  const first=at(2.5),second=at(1);
+  assert.ok(n.x>first[0],'then she runs east');
+  assert.ok(second.at(-1)-second[0]>=211*1.4,'faster than the knight: '+Math.round(second.at(-1)-second[0])+' u/s');
+  const rest=at(60);
+  assert.ok([...first,...second,...rest].every((x,i,a)=>!i||x>=a[i-1]),'she never turns back');
+  assert.equal(n.x,10410);assert.equal(n.y,0);assert.equal(n.maraRun,null);assert.equal(n.maraPose,null);
+  assert.equal(n.anchoredResident,true);assert.equal(G.outskirtsProduction.maraX,10410);
   G.p.x=n.x;api.begin();api.tick();
-  assert.match(annotations.at(-1),/stretch of road/,'an incomplete repeat talk uses real progress copy');
+  assert.ok(annotations.at(-1).includes(Dialogue.text('outskirts.mara.progress')),'an incomplete repeat talk uses real progress copy');
   assert.doesNotMatch(annotations.at(-1),/undefined/);
   G.outskirtsSurvey.aligned=3;
   api.tick();assert.equal(n.done,false,'completion still requires interaction');
@@ -245,11 +261,57 @@ test('Mara requires a deliberate interaction, relocates out of view, and grants 
   api.reward();assert.equal(meta.gold,35,'repeated reward calls cannot duplicate currency');
 });
 
+test('Mara’s run is authored on real Outskirts surfaces, off the blight, and she cannot be talked to mid-run',()=>{
+  const run=runInNewContext(sourceBetween('const MARA_MUSTER_X=','function beginMaraRun(')+';({route:MARA_RUN_ROUTE,muster:MARA_MUSTER_X,speed:MARA_RUN_SPEED})');
+  assert.ok(run.speed>=320&&run.speed<=360,'clearly faster than the knight’s 211');
+  const plats=authored.objects.filter(o=>o.type==='plat').map(o=>({...o,left:o.x-o.w/2,right:o.x+o.w/2}));
+  const bad=plats.filter(o=>o.openingCreek||o.openingLowRoad);
+  const on=(x,y)=>plats.some(o=>o.y===y&&x>=o.left-.5&&x<=o.right+.5&&!o.openingCreek&&!o.openingLowRoad);
+  let x=1950,y=0;
+  for(const leg of run.route){
+    assert.ok(leg[1]>x,'every leg moves east: '+JSON.stringify(leg));
+    if(leg[0]==='run'){for(let s=x;s<=leg[1];s+=5)assert.ok(on(s,y),`runs on a real surface at ${s},${y}`);}
+    else{assert.equal(leg[0],'jump');y=leg[2];assert.ok(on(leg[1],y),`lands on a real surface at ${leg[1]},${y}`);}
+    x=leg[1];
+    assert.ok(!bad.some(o=>o.y===y&&x>=o.left&&x<=o.right),'never on a blighted creek bed or the low road');
+  }
+  assert.equal(x,run.muster);assert.equal(y,0);
+  // Watcher's Cut is taken on the high road.
+  assert.ok(run.route.some(l=>l[0]==='jump'&&l[1]===5995&&l[2]===175),'past the GLASS bearing on the high road');
+  const candidate=sourceBetween("for(const n of G.npcs||[]){\n    if((n.profileId!=='mara'",'rows.sort(');
+  assert.match(candidate,/n\.maraRun\|\|n\.maraPose\)continue/,'the Up target never follows her mid-run');
+  assert.match(source,/coopHostTravelerIntent[\s\S]*?if\(n\.kind==='survey'\)beginMaraRun\(n\)/,'a partner’s first talk starts the same run on the host');
+  assert.match(source,/maraPose:n\.maraPose\|\|null/,'co-op snapshots carry her pose');
+  assert.match(source,/if\(coopActive\(\)&&NET\.isGuest\(\)\)return false;/,'a guest never runs its own copy');
+});
+
+test('Road Survey counter: hidden until a stake, 1/3 and 2/3, green at 3/3, then gone for good',()=>{
+  const tag={dataset:{},textContent:'',style:{display:'none'},cls:new Set(),classList:{toggle(c,on){on?tag.cls.add(c):tag.cls.delete(c);}}};
+  const G={stageIndex:0,time:0,npcs:[{kind:'survey',done:false}],outskirtsSurvey:{aligned:0,total:3}};
+  const update=runInNewContext(sourceBetween('function updateSurveyTag(tag){','function hudUpdate(){')+';updateSurveyTag',{G,window:{}});
+  const show=()=>{update(tag);return tag.style.display==='none'?'':tag.textContent+(tag.cls.has('done')?' (done)':'');};
+  assert.equal(show(),'','nothing before the zone restores its stakes');
+  G.outskirtsSurvey.hudBase=0;assert.equal(show(),'');
+  G.outskirtsSurvey.aligned=1;assert.equal(show(),'Road Survey: 1/3');
+  G.outskirtsSurvey.aligned=2;assert.equal(show(),'Road Survey: 2/3');
+  G.outskirtsSurvey.aligned=3;G.time=10;assert.equal(show(),'Road Survey: 3/3 (done)');
+  G.time=12.4;assert.equal(show(),'Road Survey: 3/3 (done)');
+  G.time=12.6;assert.equal(show(),'');
+  G.time=99;assert.equal(show(),'');
+  G.outskirtsSurvey={aligned:3,total:3,hudBase:3};assert.equal(show(),'','a reload with all three never replays it');
+  G.outskirtsSurvey={aligned:2,total:3,hudBase:2};G.npcs[0].done=true;assert.equal(show(),'','nothing once Mara has the survey');
+  G.stageIndex=1;G.npcs[0].done=false;assert.equal(show(),'','Outskirts only');
+  assert.match(source,/G\.outskirtsSurvey\.hudBase=G\.outskirtsSurvey\.aligned;/);
+  assert.match(source,/if\(surveyTag\)updateSurveyTag\(surveyTag\);/);
+  assert.match(source,/#surveyTag\.done\{color:#8ff09a!important/);
+  assert.match(source,/BladefallText\.applyPlain\(text\)/,'the counter goes through the text override layer');
+});
+
 test('the opening’s clue hierarchy keeps four concrete story observations legible',()=>{
   assert.match(stage,/warmAsh:1/);
   assert.match(stage,/flowerClue:1/);
   assert.match(stage,/fieldClock:true,clockTime:'3:40'/);
-  assert.match(stage,/StoryRelic\(1480,237,'first-draught'/);
+  assert.match(stage,/StoryRelic\(2060,237,'first-draught'/);
   assert.match(source,/The camp was abandoned recently\. The coals are still warm\./);
   assert.match(source,/Crushed white petals surround the cot and stain a discarded tin cup\./);
   assert.match(source,/The second hand shakes but does not move forward/);
@@ -419,7 +481,7 @@ test('the opening is text-only, nonliteral, and carries only the quiet level sco
 test('Mara offers one optional road survey while the stakes respond without route banners',()=>{
   assert.match(stage,/Scenery\(2180,0,'survey-post'/);
   assert.match(stage,/SurveyStake\(2340,0,'verge',\{bearingName:'ASH'/);
-  assert.match(stage,/SurveyStake\(11370,62,'muster',\{bearingName:'IRON'/);
+  assert.match(stage,/SurveyStake\(11370,0,'muster',\{bearingName:'IRON'/);
   const ask=Dialogue.text('outskirts.mara.ask'),done=Dialogue.text('outskirts.mara.done');
   assert.match(ask,/bearings/i);assert.match(ask,/chart/i);
   assert.match(done,/tunnel reaches the woods/i);assert.match(done,/chart/i);

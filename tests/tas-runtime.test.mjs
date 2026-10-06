@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { fileURLToPath } from 'node:url';
 import { resolve, sep, extname } from 'node:path';
-import puppeteer from 'puppeteer';
+import { launchChrome } from './launch-chrome.mjs';
 
 const source=await readFile(new URL('../public/index.html',import.meta.url),'utf8');
 const manifest=await readFile(new URL('../package.json',import.meta.url),'utf8');
@@ -45,7 +45,7 @@ async function openMovementHarness(t, { tas = true } = {}) {
     server.once('error', rejectListen);
     server.listen(0, '127.0.0.1', resolveListen);
   });
-  const browser = await puppeteer.launch({
+  const browser = await launchChrome({
     headless: true,
     executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
     args: ['--no-sandbox', '--disable-background-timer-throttling', '--disable-renderer-backgrounding'],
@@ -128,7 +128,9 @@ test('basic jump has correct initial velocity and arcs under gravity', { timeout
       near(state.vy, 0, 'landing stops vertical velocity');
       break;
     }
-    near(state.vy, previousVy + gravity * dt, `frame ${index + 1}: gravity increment`);
+    // Held jumps ease gravity near the apex; ordinary ascent/descent uses full gravity.
+    const gravityScale = Math.abs(previousVy) < tuning.apexBand ? tuning.apexGravityScale : 1;
+    near(state.vy, previousVy + gravity * dt * gravityScale, `frame ${index + 1}: gravity increment`);
     if (state.vy < -movementTolerance) assert.equal(state.state, 'rising');
     if (state.vy > movementTolerance) {
       sawFalling = true;

@@ -1,0 +1,104 @@
+[
+  {
+    "id": 10,
+    "complete": true,
+    "deaths": 0,
+    "contacts": 0,
+    "exits": 2,
+    "inputs": [
+      "down",
+      "left",
+      "right",
+      "up"
+    ],
+    "open": true,
+    "chapters": 2,
+    "forced": false,
+    "springs": 2,
+    "receipts": [
+      {
+        "x": 620,
+        "remaining": null,
+        "capacity": 5.1,
+        "refill": false,
+        "at": 0.6833333333333338,
+        "room": 10
+      },
+      {
+        "x": 2200,
+        "remaining": 0.6666666666666798,
+        "capacity": 3.1,
+        "refill": true,
+        "at": 5.116666666666654,
+        "room": 10
+      },
+      {
+        "x": 4760,
+        "remaining": null,
+        "capacity": 5.2,
+        "refill": false,
+        "at": 9.683333333333394,
+        "room": 10
+      },
+      {
+        "x": 6180,
+        "remaining": 0.41666666666668023,
+        "capacity": 3.4,
+        "refill": true,
+        "at": 14.466666666666965,
+        "room": 10
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "complete": true,
+    "deaths": 0,
+    "contacts": 0,
+    "exits": 2,
+    "inputs": [
+      "down",
+      "left",
+      "right",
+      "up"
+    ],
+    "open": true,
+    "chapters": 2,
+    "forced": false,
+    "springs": 2,
+    "receipts": [
+      {
+        "x": 620,
+        "remaining": null,
+        "capacity": 5.6,
+        "refill": false,
+        "at": 0.6833333333333338,
+        "room": 18
+      },
+      {
+        "x": 1920,
+        "remaining": 1.1166666666666822,
+        "capacity": 3.1,
+        "refill": true,
+        "at": 5.166666666666654,
+        "room": 18
+      },
+      {
+        "x": 4490,
+        "remaining": null,
+        "capacity": 6.4,
+        "refill": false,
+        "at": 10.183333333333419,
+        "room": 18
+      },
+      {
+        "x": 6090,
+        "remaining": 0.9000000000000192,
+        "capacity": 3.7,
+        "refill": true,
+        "at": 15.683333333333692,
+        "room": 18
+      }
+    ]
+  }
+]

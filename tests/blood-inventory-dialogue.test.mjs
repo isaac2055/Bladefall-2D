@@ -60,7 +60,8 @@ test('forest acquisitions bypass the bag while legacy pickup controls, silent lo
   assert.doesNotMatch(first,/BFInventoryModule\.collect|meta\.inventory/);
   assert.match(first,/equipProgressionWeapon\(pk\.weapon,source\)/);
   assert.match(source,/if\(best\.autoEquip&&best\.armor\)return acquireAuthoredMantle\(best\)/);
-  assert.match(source,/pickup:'KeyR'/);
+  assert.match(source,/pickup:'KeyC'/);
+  assert.match(source,/checkpoint:'KeyR'/);
   assert.match(source,/if\(keyPressedFor\('pickup'\)\)collectNearbyItem\(\)/);
   assert.match(source,/keyLabel\(kbCode\('pickup'\)\)\+' · TAKE'/);
   assert.match(source,/function lockedWeaponFeedback[\s\S]*BFWeaponProgression\.recordBlocked[\s\S]*return true/);

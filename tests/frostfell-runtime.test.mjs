@@ -36,7 +36,8 @@ test('Nim lights permanent hearths in reach and rewards once without teleporting
  h.ctx.updateFrostfell(1/60);assert.equal(h.circuits.size,0);
  for(const o of h.ctx.G.obstacles){h.nim.x=o.x;h.G.p.x=o.x;h.G.cam=o.x-400;h.ctx.updateFrostfell(1/60);assert.equal(o.lit,true);}
  assert.ok(h.circuits.has('frost-hearths'));assert.equal(h.nim.done,true);assert.equal(h.nim.x,2400);assert.equal(h.rewards.length,1);
- assert.equal(h.G.p.ckX,4300);assert.equal(h.G.p.ckY,0);assert.equal(h.saved.length,1);assert.equal(h.annotations.length,0);
+ // 7.233 (owner): no automatic checkpoints — a mechanism no longer moves the respawn point.
+ assert.notEqual(h.G.p.ckX,4300);assert.equal(h.saved.length,1);assert.equal(h.annotations.length,0);
  h.ctx.updateFrostfell(1/60);assert.equal(h.rewards.length,1);
  h.nim.done=false;for(const o of h.ctx.G.obstacles)o.lit=false;
  h.ctx.updateFrostfell(1/60);assert.equal(h.rewards.length,1);assert.ok(h.nim.done);
@@ -66,7 +67,8 @@ test('the second-step memory requires thawed works and grants a quiet permanent 
  h.circuits.add('frost-thermal');h.G.p.x=7210;h.ctx.updateFrostfell(1/60);assert.equal(h.ctx.hasCapability('double-jump'),false);
  h.G.p.x=7230;h.ctx.updateFrostfell(1/60);
  assert.ok(h.ctx.hasCapability('double-jump'));assert.ok(h.circuits.has('frost-complete'));assert.equal(memory.read,true);
- assert.equal(h.G.p.blood,5);assert.equal(h.G.p.ckX,7250);assert.equal(h.G.p.ckY,0);
+ // 7.233 (owner): no automatic checkpoints — a mechanism no longer moves the respawn point.
+ assert.equal(h.G.p.blood,5);assert.notEqual(h.G.p.ckX,7250);
  assert.equal(h.saved.length,1);assert.ok(modules.capabilities.has(h.saved[0].capabilities,'double-jump'));
  assert.equal(h.toasts.length,0);assert.equal(h.annotations.length,1);assert.match(h.annotations[0].html,/Space again in the air/);
  assert.equal(h.meta.bestStage,8);assert.equal(h.meta.reach[0],8);assert.deepEqual(h.events,['stage','world','story','travelers']);
@@ -77,7 +79,7 @@ test('preview memory saves its local Double Jump checkpoint without awarding cam
  const h=harness({preview:true}),memory={x:7250,y:0,frostMemory:1};h.G.obstacles.push(memory);h.G.p.x=7250;h.circuits.add('frost-thermal');
  h.ctx.updateFrostfell(1/60);assert.ok(h.ctx.hasCapability('double-jump'));
  assert.equal(modules.capabilities.has(h.meta.capabilities,'double-jump'),false);assert.equal(h.meta.bestStage,7);
- assert.equal(h.events.length,0);assert.equal(h.saved.length,1);assert.equal(h.saved[0].snap.ckX,7250);
+ assert.equal(h.events.length,0);assert.equal(h.saved.length,1);assert.notEqual(h.saved[0].snap.ckX,7250);
  assert.ok(modules.capabilities.has(h.saved[0].capabilities,'double-jump'));assert.equal(h.toasts.length,0);
 });
 test('the heat coil accepts only a live source flame with a portal hop and real firestream reaction',()=>{
@@ -167,10 +169,10 @@ test('Frostfell passages cycle through the summit only once reached and save eac
  ctx.interactFrostfell({frostReturn:1});assert.equal(ctx.G.p.x,1330);
  ctx.interactFrostfell({frostReturn:1,frostSummitReturn:1});assert.ok(circuits.has('frost-summit-service'));
  ctx.interactFrostfell({frostReturnExit:1});assert.equal(ctx.G.p.x,7220);
- ctx.interactFrostfell({frostReturn:1});assert.equal(ctx.G.p.x,14680);assert.equal(ctx.G.p.y,650);assert.equal(ctx.G.p.ckX,14680);assert.equal(ctx.G.p.ckY,650);
+ ctx.interactFrostfell({frostReturn:1});assert.equal(ctx.G.p.x,14680);assert.equal(ctx.G.p.y,650);assert.notEqual(ctx.G.p.ckX,14680); // 7.233: arrival no longer moves the respawn point
  ctx.interactFrostfell({frostReturn:1,frostSummitReturn:1});assert.equal(ctx.G.p.x,1330);assert.equal(ctx.G.p.y,0);
- assert.equal(ctx.G.p.ckX,1330);assert.equal(ctx.G.p.ckY,0);assert.equal(saved.length,7);
- assert.deepEqual(saved.map(row=>[row.snap.ckX,row.snap.ckY]),[[1330,0],[7220,210],[1330,0],[1330,0],[7220,210],[14680,650],[1330,0]]);
+ // Every passage still saves progress (7 saves) but none moves the respawn point (7.233).
+ assert.equal(saved.length,7);assert.ok(saved.every(row=>![1330,7220,14680].includes(row.snap.ckX)));
 });
 test('holding left alone cannot cross either end of the folded mine',()=>{
  const ctx=vm.createContext({G:{stageIndex:6,levelLength:15000,p:{x:20,y:0,face:-1}}});

@@ -1,0 +1,16 @@
+71 walk-through seams carry momentum into clear arrivals; no interaction key or chapter reset.
+105 original authored sections still pass.
+All 12 borderlands traversed in both directions with one dash, no deaths and any service shutters closed.
+All three service winches open their physical gates and survive room reload.
+Approach rooms do not overlap existing rooms or optional branches.
+All twelve shipped demonstrations traverse their complete passage.
+39 junction outlets reachable from their fire with ordinary movement.
+All nine final authored routes enter safe junctions and return; all eight arrival mouths support return travel.
+Passage rendering: finite geometry, balanced canvas state, frozen simulation.
+284 real walking, jumping, active-dash and dash-start crossings: continuous motion/pose/scarf/camera, safe follow-through, sealed route and non-Climb bounds verified.
+Chainwell counterweight: smooth full-height ride, dismount, automatic empty return and respawn verified.
+Fresh application state restores passage checkpoint/entry and all shutters; older-layout winches remain open.
+Continuous zero-death trip: Outskirts ending → 1-2 → playable region 2; waiting, banking, return sockets and normal tick order included.
+Continuous zero-death trip: Outskirts ending → 1-3 → 2-3 → playable region 2; waiting, banking, return sockets and normal tick order included.
+Continuous zero-death trip: Outskirts ending → 1-3 → 2-3 → 1-2 → playable region 1; waiting, banking, return sockets and normal tick order included.
+39 junction apertures stay visible at every height. Three 10-second cleared Gatehouse visits are silent; uncleared pressure gates still close normally.

@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import puppeteer from 'puppeteer';
+import { launchChrome } from '../tests/launch-chrome.mjs';
 
 const ROOT=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const OUTPUT=resolve(ROOT,'docs/tas/tas-smoke-receipt.json');
@@ -27,7 +27,7 @@ function projection(receipt){
   return JSON.stringify({checksum:receipt.checksum,ticks:receipt.ticks,samples:receipt.samples,nativeTrace:receipt.nativeTrace,errors:receipt.errors});
 }
 
-const browser=await puppeteer.launch({headless:true,protocolTimeout:60000,
+const browser=await launchChrome({headless:true,protocolTimeout:60000,
   executablePath:process.env.PUPPETEER_EXECUTABLE_PATH||'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
   args:['--no-sandbox','--disable-background-timer-throttling','--disable-renderer-backgrounding']});
 const page=await browser.newPage();await page.setViewport({width:1280,height:720,deviceScaleFactor:1});

@@ -1,0 +1,26 @@
+{
+  "version": "7.243.0",
+  "scope": "Final source movement proof, ten candidates, targeted omission searches, P-F recovery/recharge, final affected-room co-op. Native UI limitations are documented in WORKSHOP-REVIEW-243.md.",
+  "sourceHashes": {
+    "index.html": "690fae92f08f0cdd06e0caaa411539b770329042b39af2a4b79f99fa9b67507f",
+    "bladefall-act-two.js": "82df3da530aff1f646df473ebe8c496d264107bcb6e7c8da6c61108fb725a845",
+    "bladefall-celeste.js": "c16712e3d8b1bbf66685e956816ebb8627cbc2e54d00de59129ba8a4286c1c45",
+    "bladefall-celeste-art.js": "79b39c3684c2f566cb36329d54085429a4f1d5df1e364438def2756fdacb2870",
+    "bladefall-precision-workshop.js": "58b9c0af9ff0804363cfd7389ed57bd076fbf170990342e9a55bebf76945019d",
+    "bladefall-precision-art.js": "16bf67a32be7aa81f04308ef25837bd4fff8db1cf746339410c9422790812e15",
+    "bladefall-precision-candidates.js": "8458f3ad24ff0523dc02edd806bee227bbe6e3d8575c58c71f056fff1131b139",
+    "bladefall-precision-fractured.js": "4199135855cf507628975e642dee19f93ee61c7f7f9ed5d9f43efc473b98527b"
+  },
+  "reports": {
+    "movement-verification.json": "96a75e895f00f580b093f31f43fa696c999890cbb974fe612c455620dc403edf",
+    "candidate-verification.json": "93621e79e5d5dda074374e641bab8085eaa265e42def1ecc93c1b2a4e9eaf972",
+    "flight-shortcuts.json": "70da90a470f5bb175656de82f7632563af6c152ff9f582fdb27e0069f997df1c",
+    "movement-shortcuts.json": "f6e6cc0adfa6a135976cc0f1bc71bd16169004c1d54a0895b7fa3dc63c2ee5bc",
+    "feedback-verification.json": "3cd084feb750fbe98c57f5389a970be90a2e64542477ac50c5227b11b3496a51",
+    "coop-revised-verification.json": "806fc73ede3427d505847d09dbf5be0c0df3276e9b6d2c1e2fd4e24c7faf8b47",
+    "routes.json": "a2590bc4b9c6ce26ad4836cdcc99eeefa66ee74a1ff6f39c1d3583a069a9ef7b"
+  },
+  "shortcutTrials": 980,
+  "bypassesFound": 0,
+  "published": false
+}

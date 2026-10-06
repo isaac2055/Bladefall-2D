@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import puppeteer from 'puppeteer';
+import { launchChrome } from '../tests/launch-chrome.mjs';
 
 const ROOT=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const FOLDER=resolve(ROOT,'docs/charters/07-warden/evidence/validation');
@@ -11,7 +11,7 @@ const URL=`${BASE_URL}${BASE_URL.includes('?')?'&':'?'}validation=${Date.now()}`
 const source=await readFile(resolve(ROOT,'public/index.html'),'utf8');
 const expectedVersion=source.match(/const VERSION='([^']+)'/)?.[1]||null;
 await mkdir(resolve(FOLDER,'screens'),{recursive:true});
-const browser=await puppeteer.launch({headless:true,protocolTimeout:60000,
+const browser=await launchChrome({headless:true,protocolTimeout:60000,
   executablePath:process.env.PUPPETEER_EXECUTABLE_PATH||'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
   args:['--no-sandbox','--disable-background-timer-throttling','--disable-renderer-backgrounding']});
 const page=await browser.newPage();await page.setViewport({width:1440,height:900,deviceScaleFactor:1});

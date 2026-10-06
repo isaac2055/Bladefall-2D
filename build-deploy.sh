@@ -47,6 +47,241 @@ ASSETS=(
   bladefall-echoes.js
   bladefall-gifts.js
   bladefall-recollections.js
+  bladefall-conversation.js
+  bladefall-journey.js
+  bladefall-act-two.js
+  bladefall-act-two-art.js
+  bladefall-landing-shores.js
+  bladefall-landing-shores-art.js
+  bladefall-colony.js
+  bladefall-colony-art.js
+  bladefall-palace-path.js
+  bladefall-palace-path-art.js
+  bladefall-sunspire.js
+  bladefall-sunspire-art.js
+  bladefall-rift-shards.js
+  bladefall-fractured.js
+  bladefall-fractured-outskirts.js
+  bladefall-fractured-outskirts-art.js
+  bladefall-fractured-woods.js
+  bladefall-fractured-woods-art.js
+  bladefall-fractured-updrafts.js
+  bladefall-fractured-updrafts-art.js
+  bladefall-fractured-marksman.js
+  bladefall-fractured-marksman-art.js
+  bladefall-fractured-causeway.js
+  bladefall-fractured-causeway-art.js
+  bladefall-fractured-keep.js
+  bladefall-fractured-keep-art.js
+  bladefall-fractured-warden.js
+  bladefall-fractured-warden-art.js
+  bladefall-fractured-frostfell.js
+  bladefall-fractured-frostfell-art.js
+  bladefall-fractured-sorcerer.js
+  bladefall-fractured-sorcerer-art.js
+  bladefall-fractured-emberdeep.js
+  bladefall-fractured-emberdeep-art.js
+  bladefall-fractured-colossus.js
+  bladefall-fractured-colossus-art.js
+  bladefall-fractured-inversion.js
+  bladefall-fractured-inversion-art.js
+  bladefall-fractured-tyrant.js
+  bladefall-fractured-tyrant-art.js
+  bladefall-fractured-king.js
+  bladefall-fractured-king-art.js
+  bladefall-fractured-line.js
+  bladefall-fractured-line-art.js
+  bladefall-fractured-cliffs.js
+  bladefall-fractured-cliffs-art.js
+  bladefall-fractured-shores.js
+  bladefall-fractured-shores-art.js
+  bladefall-fractured-colony.js
+  bladefall-fractured-colony-art.js
+  bladefall-fractured-path.js
+  bladefall-fractured-path-art.js
+  bladefall-fractured-palace.js
+  bladefall-fractured-palace-art.js
+  precision.html
+  bladefall-pcore.js
+  bladefall-pcore-foes.js
+  bladefall-pcore-foes-view.js
+  bladefall-pcore-portals.js
+  bladefall-pcore-portals-view.js
+  bladefall-pcore-combat.js
+  bladefall-pcore-combat-rooms.js
+  bladefall-pcore-combat-tapes.js
+  bladefall-pcore-combat-view.js
+  bladefall-pcore-rooms.js
+  # pcore-late:start
+  bladefall-pcore-dev-beam.js
+  bladefall-pcore-dev-citadel.js
+  bladefall-pcore-dev-ember.js
+  bladefall-pcore-dev-foundry.js
+  bladefall-pcore-dev-frost.js
+  bladefall-pcore-dev-gaol.js
+  bladefall-pcore-dev-gravity.js
+  bladefall-pcore-dev-hook.js
+  bladefall-pcore-dev-rail.js
+  bladefall-pcore-dev-relay.js
+  bladefall-pcore-dev-throne.js
+  bladefall-pcore-dev-void.js
+  bladefall-pcore-dev-watch.js
+  bladefall-pcore-dev-water.js
+  bladefall-pcore-dev-beam-view.js
+  bladefall-pcore-dev-citadel-view.js
+  bladefall-pcore-dev-ember-view.js
+  bladefall-pcore-dev-foundry-view.js
+  bladefall-pcore-dev-frost-view.js
+  bladefall-pcore-dev-gaol-view.js
+  bladefall-pcore-dev-gravity-view.js
+  bladefall-pcore-dev-hook-view.js
+  bladefall-pcore-dev-rail-view.js
+  bladefall-pcore-dev-relay-view.js
+  bladefall-pcore-dev-throne-view.js
+  bladefall-pcore-dev-void-view.js
+  bladefall-pcore-dev-watch-view.js
+  bladefall-pcore-dev-water-view.js
+  bladefall-pcore-parts.js
+  bladefall-pcore-part-075-gaol.js
+  bladefall-pcore-part-083-frostfell.js
+  bladefall-pcore-part-091-white-court.js
+  bladefall-pcore-part-099-emberdeep.js
+  bladefall-pcore-part-107-foundry.js
+  bladefall-pcore-part-115-inversion.js
+  bladefall-pcore-part-123-citadel.js
+  bladefall-pcore-part-132-throne.js
+  bladefall-pcore-part-140-deep-line.js
+  bladefall-pcore-part-150-thunder-cliffs.js
+  bladefall-pcore-part-160-landing-shores.js
+  bladefall-pcore-part-170-colony.js
+  bladefall-pcore-part-180-palace-path.js
+  bladefall-pcore-part-190-sunspire.js
+  bladefall-pcore-part-200-capstone.js
+  bladefall-pcore-part-901-bonus-relay.js
+  bladefall-pcore-part-902-bonus-void.js
+  bladefall-pcore-part-903-bonus-crossings.js
+  # pcore-late:end
+  bladefall-pcore-tapes.js
+  bladefall-pcore-survey.js
+  bladefall-pcore-touch.js
+  bladefall-pcore-pitches.js
+  bladefall-pcore-pitches-view.js
+  bladefall-rbr.js
+  bladefall-rbr-view.js
+  bladefall-climb.js
+  bladefall-climb-worlds.js
+  bladefall-climb-view.js
+  bladefall-climb-atlas.js
+  bladefall-climb-passages.js
+  bladefall-climb-passage-tapes.js
+  bladefall-climb-geography.js
+  bladefall-climb-geography-build.js
+  bladefall-climb-art.js
+  bladefall-climb-passage-art.js
+  bladefall-climb-map.js
+  bladefall-climb-coop.js
+  # rbr-regions:start
+  bladefall-rbr-01-outskirts.js
+  bladefall-rbr-03-causeway.js
+  bladefall-pcore-dev-rbr-causeway.js
+  bladefall-pcore-dev-rbr-causeway-view.js
+  bladefall-rbr-04-updrafts.js
+  bladefall-pcore-dev-rbr-updrafts.js
+  bladefall-rbr-02-woods.js
+  bladefall-rbr-05-marksman.js
+  bladefall-pcore-dev-rbr-marksman.js
+  bladefall-pcore-dev-rbr-marksman-view.js
+  bladefall-rbr-06-keep.js
+  bladefall-pcore-dev-rbr-keep.js
+  bladefall-pcore-dev-rbr-keep-view.js
+  bladefall-rbr-07-gaol.js
+  bladefall-pcore-dev-rbr-gaol.js
+  bladefall-pcore-dev-rbr-gaol-view.js
+  bladefall-rbr-08-frostfell.js
+  bladefall-pcore-dev-rbr-frostfell.js
+  bladefall-rbr-09-sorcerer.js
+  bladefall-pcore-dev-rbr-sorcerer.js
+  bladefall-pcore-dev-rbr-sorcerer-view.js
+  bladefall-rbr-10-emberdeep.js
+  bladefall-pcore-dev-rbr-emberdeep.js
+  bladefall-rbr-11-colossus.js
+  bladefall-pcore-dev-rbr-colossus.js
+  bladefall-pcore-dev-rbr-colossus-view.js
+  bladefall-rbr-12-inversion.js
+  bladefall-rbr-13-tyrant.js
+  bladefall-pcore-dev-rbr-tyrant.js
+  bladefall-pcore-dev-rbr-tyrant-view.js
+  bladefall-rbr-14-king.js
+  bladefall-pcore-dev-rbr-king.js
+  bladefall-pcore-dev-rbr-king-view.js
+  bladefall-rbr-15-deepline.js
+  bladefall-pcore-dev-rbr-deepline.js
+  bladefall-pcore-dev-rbr-deepline-view.js
+  bladefall-rbr-16-cliffs.js
+  bladefall-rbr-17-shores.js
+  bladefall-rbr-18-colony.js
+  bladefall-rbr-19-path.js
+  bladefall-pcore-dev-rbr-path.js
+  bladefall-pcore-dev-rbr-path-view.js
+  bladefall-rbr-20-sunspire.js
+  bladefall-pcore-dev-rbr-sunspire.js
+  bladefall-pcore-dev-rbr-sunspire-view.js
+  bladefall-pcore-dev-rbr-cliffs.js
+  bladefall-pcore-dev-rbr-cliffs-view.js
+  bladefall-rbr-21-f-outskirts.js
+  bladefall-pcore-dev-rbr-f-outskirts.js
+  bladefall-pcore-dev-rbr-f-outskirts-view.js
+  bladefall-rbr-22-f-woods.js
+  bladefall-pcore-dev-rbr-f-woods.js
+  bladefall-pcore-dev-rbr-f-woods-view.js
+  bladefall-rbr-23-f-causeway.js
+  bladefall-rbr-24-f-updrafts.js
+  bladefall-pcore-dev-rbr-f-updrafts.js
+  bladefall-pcore-dev-rbr-f-updrafts-view.js
+  bladefall-pcore-dev-zipline.js
+  bladefall-pcore-dev-zipline-view.js
+  bladefall-pcore-dev-fault.js
+  bladefall-pcore-dev-fault-view.js
+  bladefall-pcore-dev-shade.js
+  bladefall-pcore-dev-shade-view.js
+  bladefall-pcore-dev-mirror.js
+  bladefall-pcore-dev-mirror-view.js
+  bladefall-rbr-25-f-marksman.js
+  bladefall-rbr-26-f-keep.js
+  bladefall-rbr-27-f-gaol.js
+  bladefall-rbr-28-f-frostfell.js
+  bladefall-rbr-29-f-court.js
+  bladefall-rbr-30-f-emberdeep.js
+  bladefall-rbr-31-f-foundry.js
+  bladefall-rbr-32-f-inversion.js
+  bladefall-rbr-33-f-citadel.js
+  bladefall-rbr-34-f-throne.js
+  bladefall-rbr-35-f-deepline.js
+  bladefall-rbr-36-f-cliffs.js
+  bladefall-rbr-37-f-shores.js
+  bladefall-rbr-38-f-colony.js
+  bladefall-rbr-39-f-path.js
+  bladefall-rbr-40-f-sunspire.js
+  # rbr-regions:end
+  bladefall-pcore-view.js
+  bladefall-precision-puzzles.js
+  bladefall-precision-fractured.js
+  bladefall-precision-candidates.js
+  bladefall-precision-workshop.js
+  bladefall-precision-art.js
+  bladefall-celeste.js
+  bladefall-celeste-art.js
+  bladefall-cloaked-man.js
+  bladefall-cloaked-man-art.js
+  bladefall-causeway-story.js
+  bladefall-early-platforming.js
+  bladefall-resident-art.js
+  bladefall-portraits.js
+  bladefall-side-stories.js
+  bladefall-opening-stories.js
+  bladefall-side-story-world.js
+  bladefall-gate-trials.js
+  bladefall-merge-road.js
   bladefall-advancement.js
   bladefall-zones.js
   bladefall-zone-state.js
@@ -71,6 +306,8 @@ ASSETS=(
   bladefall-blood.js
   bladefall-inventory.js
   bladefall-dialogue.js
+  bladefall-text.js
+  bladefall-text-catalog.js
   bladefall-harness.js
   littlejs.min.js
   music.mp3
@@ -88,7 +325,22 @@ ASSETS=(
   audio/music/hearthfire-in-the-frost.mp3
   audio/music/glaciated-court-of-glass.mp3
   audio/music/the-sorcerers-hall-of-mirrors.mp3
-  audio/music/the-eternal-furnace.mp3
+  audio/music/embers-of-the-weary-forge.mp3
+  audio/music/navigating-the-red-wake.mp3
+  audio/music/chains-of-the-deep.mp3
+  audio/music/unburdening-the-colossus.mp3
+  audio/music/the-shore-of-broken-ships.mp3
+  audio/music/safe-harbor.mp3
+  audio/music/the-last-spark-of-darrow.mp3
+  audio/music/the-breaking-of-the-keeps.mp3
+  audio/music/the-waystation-refuge.mp3
+  audio/music/village-vigil.mp3
+  audio/music/towering-sea-cliffs.mp3
+  audio/music/white-marble-palace.mp3
+  audio/music/the-fallen-champion-duel.mp3
+  audio/music/passing-the-flame.mp3
+  audio/music/through-the-void-breach.mp3
+  audio/music/crystalline-trials.mp3
   audio/music/the-obsidian-foundry.mp3
   audio/music/forge-of-the-molten-colossus.mp3
   audio/music/chamber-of-inverted-gravity.mp3
@@ -98,6 +350,43 @@ ASSETS=(
   audio/music/a-crown-of-ashes.mp3
   audio/music/engine-of-the-frozen-garrison.mp3
   audio/music/chasing-daylight-on-broken-rails.mp3
+  audio/music/hall-of-the-violet-discipline.mp3
+  audio/music/the-archive-of-violet-portals.mp3
+  audio/music/fractured-canyon-updrafts.mp3
+  audio/music/archives-of-the-archmage.mp3
+  audio/music/fractured-crosshairs-over-open-ground.mp3
+  audio/music/the-wayfarers-hearth.mp3
+  audio/music/fractured-the-iron-causeway.mp3
+  audio/music/fractured-iron-juggernaut.mp3
+  audio/music/fractured-stony-whispers-of-the-keep.mp3
+  audio/music/fractured-iron-gavel-descent.mp3
+  audio/music/fractured-sentence-of-the-shield-warden.mp3
+  audio/music/fractured-hearthfire-in-the-frost.mp3
+  audio/music/fractured-engine-of-the-frozen-garrison.mp3
+  audio/music/fractured-glaciated-court-of-glass.mp3
+  audio/music/fractured-the-sorcerers-hall-of-mirrors.mp3
+  audio/music/fractured-embers-of-the-weary-forge.mp3
+  audio/music/fractured-the-eternal-furnace.mp3
+  audio/music/fractured-the-obsidian-foundry.mp3
+  audio/music/fractured-forge-of-the-molten-colossus.mp3
+  audio/music/fractured-chamber-of-inverted-gravity.mp3
+  audio/music/fractured-abnormal-circumstances.mp3
+  audio/music/fractured-paradox-void-assault.mp3
+  audio/music/fractured-heat-of-battle.mp3
+  audio/music/fractured-the-black-procession.mp3
+  audio/music/fractured-a-crown-of-ashes.mp3
+  audio/music/fractured-chasing-daylight-on-broken-rails.mp3
+  audio/music/fractured-clockwork.mp3
+  audio/music/fractured-navigating-the-red-wake.mp3
+  audio/music/fractured-chains-of-the-deep.mp3
+  audio/music/fractured-the-shore-of-broken-ships.mp3
+  audio/music/fractured-the-last-spark-of-darrow.mp3
+  audio/music/fractured-the-waystation-refuge.mp3
+  audio/music/fractured-village-vigil.mp3
+  audio/music/fractured-towering-sea-cliffs.mp3
+  audio/music/fractured-element.mp3
+  audio/music/fractured-white-marble-palace.mp3
+  audio/music/fractured-the-fallen-champion-duel.mp3
   audio/sfx/level1/dirt-chain-run-1.ogg
   audio/sfx/level1/dirt-chain-run-2.ogg
   audio/sfx/level1/dirt-chain-run-3.ogg
@@ -137,6 +426,16 @@ cp "$SRC/_headers" "$OUT/_headers"
 # Config + instructions live in the repo and are copied in verbatim.
 cp "$ROOT/deploy-assets/netlify.toml" "$OUT/netlify.toml"
 cp "$ROOT/deploy-assets/README.md"    "$OUT/README.md"
+
+# Every script a page loads must be in the folder (7.273.41: eight Climb scripts were left off the list above and
+# the published Climb opened to a black screen). Dynamic names built in code ('+f+') are skipped.
+missing=0
+for page in "$OUT"/*.html; do
+  for f in $(grep -o 'src="[^"]*"' "$page" | sed 's/src="//;s/"$//;s/?.*//' | grep -v "'" | grep -v '^https\?:' | grep -v '^data:'); do
+    if [ ! -e "$OUT/$f" ]; then echo "MISSING from the deploy list: $f (loaded by $(basename "$page"))"; missing=1; fi
+  done
+done
+if [ "$missing" = 1 ]; then echo "Add the files above to ASSETS in build-deploy.sh"; exit 1; fi
 
 echo "Built $OUT with ${#ASSETS[@]} game files + netlify.toml + README.md"
 echo "Publish it: drag the netlify-deploy folder onto https://app.netlify.com/drop"

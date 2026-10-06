@@ -1,0 +1,47 @@
+{
+  "scope": "Earned-capability and local actor checkpoint fixtures; actual walking/jumping, dash, downward-strike and gravity keys. No synthetic action flags.",
+  "results": [
+    {
+      "id": "defector",
+      "reached": true,
+      "activated": true,
+      "step": 1,
+      "player": {
+        "x": 10923.608092464936,
+        "y": 186
+      },
+      "target": {
+        "x": 10890,
+        "y": 186
+      }
+    },
+    {
+      "id": "automaton",
+      "reached": true,
+      "activated": true,
+      "step": 1,
+      "player": {
+        "x": 1389.013973686372,
+        "y": 56
+      },
+      "target": {
+        "x": 1370,
+        "y": 56
+      }
+    },
+    {
+      "id": "neighbors",
+      "reached": true,
+      "activated": true,
+      "step": 1,
+      "player": {
+        "x": 15254.847159701165,
+        "y": 1261.8333333333335
+      },
+      "target": {
+        "x": 15270,
+        "y": 1256
+      }
+    }
+  ]
+}

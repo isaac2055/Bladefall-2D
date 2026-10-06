@@ -1,8 +1,8 @@
 {
   "schema": "bladefall.opening-systems-integration",
   "version": 1,
-  "gameVersion": "7.87.0",
-  "url": "http://127.0.0.1:8877/index.html",
+  "gameVersion": "7.229.0",
+  "url": "http://localhost:8371/",
   "pageErrors": [],
   "probes": [
     {
@@ -21,7 +21,7 @@
     },
     {
       "name": "authored-oathblade-and-mantle-loop",
-      "pass": true,
+      "pass": false,
       "before": {
         "bladeLocked": true,
         "weapon": null,
@@ -33,28 +33,23 @@
       "afterBlade": {
         "weapon": "Recovered Oathblade",
         "capability": true,
-        "bag": true,
-        "inBag": true
+        "bag": false,
+        "inBag": false
       },
       "mantleTaken": true,
       "mantle": {
-        "row": "Mothsilk Mantle",
         "equipped": "Mothsilk Mantle",
         "source": "canopy-veteran-rack"
       }
     },
     {
       "name": "boss-rewards-are-independent-and-immediately-usable",
-      "pass": true,
+      "pass": false,
       "skin": "warden",
       "giftStatus": "owned",
       "echo": {
-        "owned": [
-          "fault-bell"
-        ],
-        "equipped": [
-          "fault-bell"
-        ],
+        "owned": [],
+        "equipped": [],
         "capacity": 2
       },
       "vowPrimed": true,
@@ -64,20 +59,20 @@
     },
     {
       "name": "updraft-mastery-owns-distinct-rewards",
-      "pass": true,
+      "pass": false,
       "gale": {
         "branch": 1,
-        "owned": true,
+        "owned": false,
         "capacity": 2
       },
       "blood": {
         "highRoute": 1,
-        "fragments": 1
+        "fragments": 0
       }
     },
     {
       "name": "marksman-closes-the-constitutional-prefix",
-      "pass": true,
+      "pass": false,
       "before": {
         "ownsSingle": true,
         "ownsPair": false,
@@ -97,21 +92,19 @@
         "mayUsePersonalPairs": true
       },
       "echo": {
-        "owned": [
-          "far-thread"
-        ],
-        "capacity": 3
+        "owned": [],
+        "capacity": 2
       },
       "forgeSeals": {
-        "shelf": 1,
-        "afterBoss": 2
+        "shelf": 0,
+        "afterBoss": 0
       },
       "sealedMaps": [
         "hollow-marksman"
       ]
     }
   ],
-  "ok": true,
+  "ok": false,
   "limitations": [
     "Automated evidence proves runtime contracts and reward causality; first-read value and visual taste still require human play."
   ]

@@ -19,7 +19,7 @@
 import { createServer } from 'node:http';
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve, extname } from 'node:path';
-import puppeteer from 'puppeteer';
+import { launchChrome } from '../tests/launch-chrome.mjs';
 
 const argv = process.argv.slice(2);
 const arg = (n, f) => { const i = argv.indexOf('--' + n); return i >= 0 && argv[i + 1] ? argv[i + 1] : f; };
@@ -278,7 +278,7 @@ const PROBE_API = () => {
   return true;
 };
 
-const browser = await puppeteer.launch({ headless:true, protocolTimeout:1_800_000,
+const browser = await launchChrome({ headless:true, protocolTimeout:1_800_000,
   executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
   args:['--no-sandbox'] });
 const page = await browser.newPage();

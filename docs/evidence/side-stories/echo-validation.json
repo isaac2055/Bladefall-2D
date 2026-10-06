@@ -1,0 +1,16 @@
+{
+  "scope": "Local approach, jumping, actual Echo key and release on a post-Tyrant return fixture; no teleport between contacts or synthetic Echo body.",
+  "result": {
+    "lockedBefore": true,
+    "availableAfter": true,
+    "first": 40,
+    "middle": 33,
+    "last": 36,
+    "echoPlaced": true,
+    "echoAlive": true,
+    "step": 1,
+    "x": 4527.566656413409,
+    "y": 168,
+    "dialogue": "GLASS RELEASE\n\nDone. Return to The Figure.\n\nContinue"
+  }
+}

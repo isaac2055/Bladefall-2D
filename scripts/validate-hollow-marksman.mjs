@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import puppeteer from 'puppeteer';
+import { launchChrome } from '../tests/launch-chrome.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const FOLDER = resolve(ROOT, 'docs/charters/05-hollow-marksman/evidence/validation');
@@ -12,7 +12,7 @@ const expectedVersion = source.match(/const VERSION='([^']+)'/)?.[1] || null;
 const delay = (ms) => new Promise((done) => setTimeout(done, ms));
 
 await mkdir(FOLDER, { recursive: true });
-const browser = await puppeteer.launch({
+const browser = await launchChrome({
   headless: true,
   executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
   protocolTimeout: 60000,

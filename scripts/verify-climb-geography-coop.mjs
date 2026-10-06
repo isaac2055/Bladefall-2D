@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';import vm from 'node:vm';
+import {bootFixture} from './climb-passage-fixture.mjs';
+const {ctx,Core,worlds,view,PV,st,R}=bootFixture([],true,true);
+ctx.addEventListener=()=>{};ctx.document={getElementById:()=>null};
+let drawn=0;ctx.BladefallPrecisionView.drawKnight=()=>drawn++;
+vm.runInContext(fs.readFileSync(new URL('../public/bladefall-climb-coop.js',import.meta.url),'utf8'),ctx);
+const co=ctx.BladefallClimbCoop;
+PV.climb.startWorld(1);
+const w=worlds[1],d=w.rooms.find(d=>d.id===w.atlasStart),pl=ctx.BladefallClimb.place(w,d.id);
+const probe=Core.createGame([d]);
+co.remote={world:2,room:d.id,x:pl.x+probe.p.x,y:pl.y+probe.p.y,f:1,st:'normal',g:1,at:Date.now()};
+const paint=new Proxy({},{get:()=>()=>{},set:()=>true});
+co.draw(paint,view.g,PV.climb.sectionOf(view.g));assert.equal(drawn,1,'partner visible across region boundaries');
+co.tDown=true;for(let i=0;i<51;i++)co.tick(view.g);
+assert.equal(st.world.n,2);assert.equal(view.g.room.id,d.id);assert.ok(!Core.solidAt(view.g,view.g.p.x,view.g.p.y,view.g.p.w,view.g.p.h));
+assert.equal(ctx.BladefallClimb.place(st.world,d.id).x+view.g.p.x,co.remote.x-10);
+console.log('Co-op draws partners across region boundaries and hold-T transfers to their correct world coordinates.');

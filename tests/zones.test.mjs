@@ -10,7 +10,7 @@ const Zones = globalThis.BladefallZones;
 
 test('N02 catalog covers every zone and physical connector', () => {
   assert.deepEqual(Zones.validateCatalog(), {
-    ok: true, errors: [], zones: 15, seams: 16, endpoints: 32, streamCells: 243,
+    ok: true, errors: [], zones: 43, seams: 41, endpoints: 82, streamCells: 616,
   });
   assert.equal(Progression.foundationRuns.find((run) => run.id === 'N02').status, 'complete');
   assert.ok(Zones.seams.every((seam) => seam.physical && !seam.transitionPortal));
@@ -29,7 +29,8 @@ test('stream cells continuously cover each authored shell', () => {
     for (let index = 1; index < zone.streamCells.length; index++) {
       assert.equal(zone.streamCells[index - 1].bounds.x2, zone.streamCells[index].bounds.x1);
     }
-    assert.ok(zone.entrances.length >= 1);
+    if(zone.standalone) assert.equal(zone.entrances.length,0,'courses are launched from their own menu');
+    else assert.ok(zone.entrances.length >= 1);
   }
 });
 

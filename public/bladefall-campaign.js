@@ -27,6 +27,40 @@
     // nothing routes here, it has no world node, no recollection and no rest site.
     { name: '(cut)', len: 9700, theme: 'apex', sky: '#141020', ground: '#242030', grunts: 0, flyers: 0, type: 'normal', cut: true },
     { name: 'The Deep Line', len: 13950, theme: 'badlands', sky: '#170f0c', ground: '#241610', grunts: 0, flyers: 0, type: 'normal', secret: true },
+    // ACT TWO. The level and its logic live in bladefall-act-two.js, because index.html is
+    // over its release budget; this row is only the catalog entry the loader reads.
+    { name: 'Thunder Cliffs', len: 6400, theme: 'storm', sky: '#0d1419', ground: '#1f2a33', grunts: 0, flyers: 0, type: 'miniboss', boss: 'hydra' },
+    { name: 'The Landing Shores', len: 12800, theme: 'shore', sky: '#8f9aa3', ground: '#b8ab92', grunts: 0, flyers: 0, type: 'normal' },
+    { name: 'The Colony', len: 10800, theme: 'colony', sky: '#a3aaa6', ground: '#9a8c72', grunts: 0, flyers: 0, type: 'normal' },
+    { name: 'The Path to the Palace', len: 10400, theme: 'path', sky: '#aac7d6', ground: '#d7cdb5', grunts: 0, flyers: 0, type: 'normal' },
+    // The King in Daylight is spawned by bladefall-sunspire.js, not by a boss key here.
+    { name: 'Sunspire Palace', len: 11800, theme: 'sunspire', sky: '#cfe0ea', ground: '#ece6d8', grunts: 0, flyers: 0, type: 'normal' },
+    // ACT THREE: the echoes. Listed on Level Select's Fractured tab, not the Base list (act: 3).
+    { name: 'The Fractured Outskirts', len: 9900, theme: 'fractured', sky: '#140d22', ground: '#2b2530', grunts: 0, flyers: 0, type: 'normal', act: 3 },
+    { name: 'The Fractured Woods', len: 10400, theme: 'fractured', sky: '#0c1020', ground: '#221e28', grunts: 0, flyers: 0, type: 'normal', act: 3 },
+    { name: 'The Fractured Updrafts', len: 10400, theme: 'fractured', sky: '#0c1020', ground: '#221e28', grunts: 0, flyers: 0, type: 'normal', act: 3 },
+    { name: 'The Fractured Marksman', len: 10800, theme: 'fractured', sky: '#0c1020', ground: '#221e28', grunts: 0, flyers: 0, type: 'normal', act: 3 },
+    { name: 'The Fractured Causeway', len: 11400, theme: 'fractured', sky: '#0c1020', ground: '#221e28', grunts: 0, flyers: 0, type: 'normal', act: 3 },
+    { name: 'The Fractured Keep', len: 10600, theme: 'fractured', sky: '#0c1020', ground: '#221e28', grunts: 0, flyers: 0, type: 'normal', act: 3 },
+    { name: 'The Fractured Warden', len: 9600, theme: 'fractured', sky: '#0c1020', ground: '#221e28', grunts: 0, flyers: 0, type: 'normal', act: 3 },
+    { name: 'The Fractured Frostfell', len: 9800, theme: 'fractured', sky: '#0c1020', ground: '#221e28', grunts: 0, flyers: 0, type: 'normal', act: 3 },
+    { name: 'The Fractured Sorcerer', len: 9600, theme: 'fractured', sky: '#0c1020', ground: '#221e28', grunts: 0, flyers: 0, type: 'normal', act: 3 },
+    { name: 'The Fractured Emberdeep', len: 10000, theme: 'fractured', sky: '#0c1020', ground: '#221e28', grunts: 0, flyers: 0, type: 'normal', act: 3 },
+    { name: 'The Fractured Colossus', len: 9000, theme: 'fractured', sky: '#0c1020', ground: '#221e28', grunts: 0, flyers: 0, type: 'normal', act: 3 },
+    { name: 'The Fractured Inversion', len: 10000, theme: 'fractured', sky: '#0c1020', ground: '#221e28', grunts: 0, flyers: 0, type: 'normal', act: 3 },
+    { name: 'The Fractured Tyrant', len: 10000, theme: 'fractured', sky: '#0c1020', ground: '#221e28', grunts: 0, flyers: 0, type: 'normal', act: 3 },
+    { name: 'The Fractured King', len: 10400, theme: 'fractured', sky: '#0c1020', ground: '#221e28', grunts: 0, flyers: 0, type: 'normal', act: 3 },
+    { name: 'The Fractured Line', len: 13900, theme: 'fractured', sky: '#0c1020', ground: '#221e28', grunts: 0, flyers: 0, type: 'normal', act: 3 },
+    { name: 'Fractured Cliffs', len: 9800, theme: 'fractured', sky: '#0c1020', ground: '#221e28', grunts: 0, flyers: 0, type: 'normal', act: 3 },
+    { name: 'Fractured Shores', len: 10000, theme: 'fractured', sky: '#0c1020', ground: '#221e28', grunts: 0, flyers: 0, type: 'normal', act: 3 },
+    { name: 'The Fractured Colony', len: 10000, theme: 'fractured', sky: '#0c1020', ground: '#221e28', grunts: 0, flyers: 0, type: 'normal', act: 3 },
+    { name: 'The Fractured Path', len: 10400, theme: 'fractured', sky: '#0c1020', ground: '#221e28', grunts: 0, flyers: 0, type: 'normal', act: 3 },
+    { name: 'Fractured Palace', len: 10200, theme: 'fractured', sky: '#0c1020', ground: '#221e28', grunts: 0, flyers: 0, type: 'normal', act: 3 },
+    { name: 'Celeste Standard', len: 44000, theme: 'ruins', sky: '#101c2b', ground: '#263444', grunts: 0, flyers: 0, type: 'normal', act: 0, precisionCourse: true },
+    { name: 'Fractured Celeste', len: 24200, theme: 'fractured', sky: '#0c1020', ground: '#221e28', grunts: 0, flyers: 0, type: 'normal', act: 3, precisionCourse: true },
+    // Battle 42: the last fight in the game, a four-phase boss (bladefall-cloaked-man.js). Level Select only for now.
+    { name: 'The Cloaked Man', len: 5000, theme: 'fractured', sky: '#07060f', ground: '#22202a', grunts: 0, flyers: 0, type: 'normal', act: 0, finalBattle: true, selectTag: '42' },
+    { name: 'Precision Workshop', len: 129380, theme: 'ruins', sky: '#101c2b', ground: '#263444', grunts: 0, flyers: 0, type: 'normal', act: 0, precisionCourse: true },
   ];
 
   const details = [
@@ -280,6 +314,278 @@
       acts: ['signal descent', 'first fork', 'falling bridge', 'trick fork', 'sniper clock', 'black gap'],
       composition: { recipe: 'none', at: 0.5 },
     },
+    {
+      // ACT TWO, REGION ONE (2026-09-23). The boat out of the Drowned Throne crosses a storm
+      // to the King's sea-gate, where his three-headed beast is chained to the harbour. The
+      // voyage is TIMED, not walked: the ship stands still and the sea goes past it, so its
+      // acts are legs of the crossing rather than x-spans — no roomSpans on purpose.
+      id: 'thunder-cliffs',
+      source: 'custom',
+      systems: ['rolling-deck-voyage', 'taut-line-seams', 'storm-lightning', 'chained-hydra', 'chain-hook'],
+      signature: 'Hold a rolling deck through the storm, learn that a taut line is a road, then ride the Chained Hydra’s own chains to break the locks that hold it, and take the hook it leaves behind.',
+      acts: ['push-off', 'the red wake', 'the rigging', 'the tow', 'the chain gate', 'the harbour of chains'],
+      composition: { recipe: 'none', at: 0.5 },
+      cadence: { adds: 0, foes: [], accents: [] },
+      customExtension: 0,
+    },
+    {
+      // ACT TWO, REGION TWO (2026-09-23). The holed boat grounds on a strand of older wrecks.
+      // The Chainhook is taught across and up; the tide is the region's own rule; the King's
+      // conscripts are driven by a bell; and at the Colony Gate the act's one choice is made.
+      id: 'landing-shores',
+      source: 'custom',
+      systems: ['chain-hook', 'tide-cycle', 'bell-driven-conscripts', 'the-choice'],
+      signature: 'Hook across the wreck line and up a stranded hull, cross the flats on the tide, live through the Sunguard’s bell, silence it at the Colony Gate, and decide what to do about the man kneeling there.',
+      acts: ['the wreck line', 'the tide flats', 'the king’s landing', 'the bell cliff', 'the colony gate'],
+      composition: { recipe: 'none', at: 0.5 },
+      cadence: { adds: 0, foes: [], accents: [] },
+      customExtension: 0,
+    },
+    {
+      // ACT TWO, REGION THREE (2026-09-24). Inside the gate the King keeps his sick. The
+      // Sunguard's glasses sweep the tents (smoke and canvas hide you); Sable's dry well and the
+      // King's tap on the conduit; the shackled yard — silenced alone, or freed by Oren's hammer.
+      id: 'colony',
+      source: 'custom',
+      systems: ['sun-glass-watch', 'pit-smoke-cover', 'alms-bell-lure', 'king-tap-and-counterweight', 'shackled-conscripts', 'the-cure'],
+      signature: 'Slip the Sunguard’s glasses through smoke and tents, open the King’s tap so Sable can give water, and silence or free the shackled yard — the colony turns for a knight who came in by the hand.',
+      acts: ['the gate', 'the tents', 'sable’s spring', 'the conscription yard'],
+      composition: { recipe: 'none', at: 0.5 },
+      cadence: { adds: 0, foes: [], accents: [] },
+      customExtension: 0,
+    },
+    {
+      // ACT TWO, REGION FOUR (2026-09-24). Up the mountain in painful light: the Sunspire's
+      // mirrors burn; the Hydra Overlook is crossed on the Chainhook; the Sun Gate is opened by
+      // its counterweight alone, or by Oren and the turned colony. Forsaken, the sick fight for him.
+      id: 'palace-path',
+      source: 'custom',
+      systems: ['burning-mirrors', 'shelter-and-smoke-cover', 'chain-hook', 'sun-gate-counterweight', 'colony-allies', 'forsaken-sick'],
+      signature: 'Climb shelter to shelter under the Sunspire’s burning mirrors, swing the Hydra Overlook on the Chainhook, and open the Sun Gate — alone at its counterweight, or with Oren and the colony at your back.',
+      acts: ['the smoke line', 'the mirror stair', 'the hydra overlook', 'the sun gate'],
+      composition: { recipe: 'none', at: 0.5 },
+      cadence: { adds: 0, foes: [], accents: [] },
+      customExtension: 0,
+    },
+    {
+      // ACT TWO, REGION FIVE (2026-09-24). Light is a portal noun: the King's shafts are caught
+      // in a mouth on slate and let out of its twin, three locks deep. The colony's water goes home;
+      // the King in Daylight is touched from two sides at once; the hydra comes, and you ride it.
+      id: 'sunspire',
+      source: 'custom',
+      systems: ['sun-shafts', 'light-through-portals', 'sun-seals', 'aqueduct-sluice', 'two-sided-touch', 'colony-allies', 'forsaken-sick'],
+      signature: 'Catch the King’s sunlight in a portal mouth and let it out of its twin — up into a seal, across a hall, down from a ring — send the colony’s water home, and break the King in Daylight by touching him from two sides at once.',
+      acts: ['the sun court', 'the hall of hours', 'the aqueduct crown', 'the throne of noon', 'the sea terrace'],
+      composition: { recipe: 'none', at: 0.5 },
+      cadence: { adds: 0, foes: [], accents: [] },
+      customExtension: 0,
+    },
+    {
+      // ACT THREE, THE FIRST ECHO (2026-09-24). The Outskirts as a B-side: one jump, no steel, at night,
+      // with the Muster on the road; and a C-side — the Mile Sentinel, a pattern to learn, bound by bells.
+      id: 'fractured-outskirts',
+      source: 'custom',
+      systems: ['single-jump-precision', 'muster-evasion', 'crumbling-stones', 'pattern-boss', 'bell-binding', 'weaponless'],
+      signature: 'The first road after the Echo walked it backwards: exact single jumps over the void, the Muster to slip past with no blade, and the Mile Sentinel — learn its three moves and stand on what each leaves behind to ring the bells that bind it.',
+      acts: ['the ash verge', 'the vigil camp', 'the muster road', 'the hollow mile', 'the mothlight gate'],
+      composition: { recipe: 'none', at: 0.5 },
+      cadence: { adds: 0, foes: [], accents: [] },
+      customExtension: 0,
+    },
+    {
+      id: 'fractured-woods',
+      source: 'custom',
+      systems: ['single-jump-precision', 'muster-evasion', 'wind-rhythm', 'counterweight-release', 'crumbling-stones'],
+      signature: "Black Woods after the Echo: the refuge lanterns out, the Oathblade root-bound in its stump until the counterweight is stood on, the Muster on the road, and the Thicket \u2014 branches that hold only while the wind blows against their resin, climbed on its beat.",
+      acts: ['the dark refuge', 'the counterweight clearing', 'the muster road', 'the thicket', 'the root stair'],
+      composition: { recipe: 'none', at: 0.5 },
+      cadence: { adds: 0, foes: [], accents: [] },
+      customExtension: 0,
+    },
+    {
+      id: 'fractured-updrafts',
+      source: 'custom',
+      systems: ['dash-precision', 'breathing-thermals', 'exhale-downdrafts', 'crystal-refill', 'muster-evasion', 'canyon-teeth'],
+      signature: "Updraft Canyons after the Echo, in a storm: the thermals breathe \u2014 they lift on the inhale and throw you down on the exhale \u2014 the Pack is gone, and the Lung is climbed by leaving each breath for the next.",
+      acts: ['the rootbreach', 'the first breath', 'the bellows', 'the empty aerie', 'the kite drop', 'the choir floor', 'the lung', 'the signal crown'],
+      composition: { recipe: 'none', at: 0.5 },
+      cadence: { adds: 0, foes: [], accents: [] },
+      customExtension: 0,
+    },
+    {
+      id: 'fractured-marksman',
+      source: 'custom',
+      systems: ['telegraphed-sightlines', 'linked-mouth-traversal', 'anchored-arrow-redirection', 'drop-speed-crossing', 'pattern-boss', 'muster-evasion'],
+      signature: "Marksman Road after the Echo, at night: archers that see you past no mantlet draw, lock and loose; one linked mouth on the slate; the works gate that opens only to its own watch\u2019s arrow sent back; and the Tallyman, who counts \u2014 only its third shot, the Reckoning, turned back through your mouth, brings it down to the blade.",
+      acts: ['the shotfall', 'the watching road', 'the mantlet works', 'the windcut', 'the tally court'],
+      composition: { recipe: 'none', at: 0.5 },
+      cadence: { adds: 0, foes: [], accents: [] },
+      customExtension: 0,
+    },
+    {
+      id: 'fractured-causeway',
+      source: 'custom',
+      systems: ['committed-mass', 'falling-hoists', 'plate-and-mass', 'lift-timing', 'pattern-boss', 'muster-evasion'],
+      signature: "The Broken Causeway after the Echo, the machines running backwards: masses let go on whoever walks under, a yard gate held by a plate only a mass can press, lifts over the void, and the Iron Echo \u2014 armoured, committed, crushed only by what you drop on it.",
+      acts: ['chainwake camp', 'the drop yard', 'the chainwalk', 'the counterweight rise', 'the broken standard', 'the iron echo'],
+      composition: { recipe: 'none', at: 0.5 },
+      cadence: { adds: 0, foes: [], accents: [] },
+      customExtension: 0,
+    },
+    {
+      id: 'fractured-keep',
+      source: 'custom',
+      systems: ['independent-portal-pair', 'momentum-through-mouths', 'keystone-routing', 'wall-jump', 'moving-cradle', 'muster-evasion'],
+      signature: "The Ruined Keep after the Echo, every gate open: fall into one of your own mouths and rise out of the other, carry the keystone through them onto its dock, take the Grip and climb the wet Archive, and throw the bell-stone through your mouths into a swinging cradle.",
+      acts: ['the cold hearth', 'the fallen refectory', 'the weight hall', 'the mason quarter', 'the clinging archive', 'the belfry'],
+      composition: { recipe: 'none', at: 0.5 },
+      cadence: { adds: 0, foes: [], accents: [] },
+      customExtension: 0,
+    },
+    {
+      id: 'fractured-warden',
+      source: 'custom',
+      systems: ['turnkeys', 'low-roof', 'darkness', 'low-gravity', 'rotors', 'moving-cage', 'twin-mouths', 'riding-mouth', 'shield-boss'],
+      signature: "Its own rush, sent back through your mouths",
+      acts: ['gallery', 'engine', 'cell', 'well'],
+      composition: { recipe: 'none', at: 0.5 },
+      cadence: { adds: 0, foes: [], accents: [] },
+      customExtension: 0,
+    },
+    {
+      id: 'fractured-frostfell',
+      source: 'custom',
+      systems: ['counter', 'thin-ice', 'ice', 'double-jump', 'timed-spikes', 'pattern-boss'],
+      signature: "A guard nothing breaks but its own countered thrust",
+      acts: ['toll', 'streets', 'memory', 'stair', 'crown'],
+      composition: { recipe: 'none', at: 0.5 },
+      cadence: { adds: 0, foes: [], accents: [] },
+      customExtension: 0,
+    },
+    {
+      id: 'fractured-sorcerer',
+      source: 'custom',
+      systems: ['rune-emitter', 'anchor', 'twin-mouths', 'condenser', 'timed-bridge', 'counter', 'pattern-boss'],
+      signature: "Its own spell, sent back three ways",
+      acts: ['glassworks', 'gallery', 'mirror'],
+      composition: { recipe: 'none', at: 0.5 },
+      cadence: { adds: 0, foes: [], accents: [] },
+      customExtension: 0,
+    },
+    {
+      id: 'fractured-emberdeep',
+      source: 'custom',
+      systems: ['heat-cycle', 'pour-spouts', 'slag-rain', 'timed-spikes', 'chase'],
+      signature: "The cooling runs against you; the purge runs after you",
+      acts: ['schedule', 'slag-stair', 'post', 'purge'],
+      composition: { recipe: 'none', at: 0.5 },
+      cadence: { adds: 0, foes: [], accents: [] },
+      customExtension: 0,
+    },
+    {
+      id: 'fractured-colossus',
+      source: 'custom',
+      systems: ['downward-strike', 'heat-set', 'rising-lava', 'counter', 'pattern-boss'],
+      signature: "Set the bay before the pour; counter the slug; strike from above",
+      acts: ['anvil', 'line', 'shaft', 'machine'],
+      composition: { recipe: 'none', at: 0.5 },
+      cadence: { adds: 0, foes: [], accents: [] },
+      customExtension: 0,
+    },
+    {
+      id: 'fractured-inversion',
+      source: 'custom',
+      systems: ['gravity-flip', 'crumble', 'timed-spikes', 'pattern-boss'],
+      signature: "Flip to the floor that is not broken; strike the Keel from the side it shows",
+      acts: ['anchor', 'crossings', 'weave', 'keel'],
+      composition: { recipe: 'none', at: 0.5 },
+      cadence: { adds: 0, foes: [], accents: [] },
+      customExtension: 0,
+    },
+    {
+      id: 'fractured-tyrant',
+      source: 'custom',
+      systems: ['seams', 'portal-pair', 'seam-carry', 'pattern-boss'],
+      signature: "Take the tear as it opens; ride the tear into your own mouth; ride through what cannot be cut",
+      acts: ['road', 'chain', 'line', 'tearer'],
+      composition: { recipe: 'none', at: 0.5 },
+      cadence: { adds: 0, foes: [], accents: [] },
+      customExtension: 0,
+    },
+    {
+      id: 'fractured-king',
+      source: 'custom',
+      systems: ['echo', 'echo-plates', 'seams', 'pattern-boss'],
+      signature: "Leave the echo on its mark; trade places to come back; weigh two marks at once",
+      acts: ['first-mark', 'return', 'two-marks', 'crown'],
+      composition: { recipe: 'none', at: 0.5 },
+      cadence: { adds: 0, foes: [], accents: [] },
+      customExtension: 0,
+    },
+    {
+      id: 'fractured-line',
+      source: 'custom',
+      systems: ['cart', 'rail-switch', 'rail-collapse', 'cart-trick', 'beat-span'],
+      signature: "Lean at the post or fall; a clean 360 buys the next gap; pace the cart to the beat",
+      acts: ['descent', 'cut-fork', 'falling-bridge', 'trick-gaps', 'black-line'],
+      composition: { recipe: 'none', at: 0.5 },
+      cadence: { adds: 0, foes: [], accents: [] },
+      customExtension: 0,
+    },
+    {
+      id: 'fractured-cliffs',
+      source: 'custom',
+      systems: ['chain-hook', 'downward-strike', 'lightning', 'breakers', 'pattern-boss'],
+      signature: "Follow the lightning along the iron; hang while the sea passes; strike the lock from above",
+      acts: ['wreck', 'iron-road', 'breakers', 'last-head'],
+      composition: { recipe: 'none', at: 0.5 },
+      cadence: { adds: 0, foes: [], accents: [] },
+      customExtension: 0,
+    },
+    {
+      id: 'fractured-shores',
+      source: 'custom',
+      systems: ['chain-hook', 'tide', 'bell', 'pattern-boss'],
+      signature: "Cross the flats in the low water; strike its back on the toll",
+      acts: ['gut', 'flats', 'sunguard'],
+      composition: { recipe: 'none', at: 0.5 },
+      cadence: { adds: 0, foes: [], accents: [] },
+      customExtension: 0,
+    },
+    {
+      id: 'fractured-colony',
+      source: 'custom',
+      systems: ['stealth', 'chain-hook', 'downward-strike', 'pattern-boss'],
+      signature: "Out of the lamps, tent to tent; over his head by the rings, behind him before he turns",
+      acts: ['watch', 'spring', 'ringer'],
+      composition: { recipe: 'none', at: 0.5 },
+      cadence: { adds: 0, foes: [], accents: [] },
+      customExtension: 0,
+    },
+    {
+      id: 'fractured-path',
+      source: 'custom',
+      systems: ['sunlight', 'chain-hook', 'downward-strike', 'windlass'],
+      signature: "Shade to shade; iron in the sun burns; strike the windlass lit and leave the light",
+      acts: ['noon-road', 'stair', 'overlook', 'sun-gate'],
+      composition: { recipe: 'none', at: 0.5 },
+      cadence: { adds: 0, foes: [], accents: [] },
+      customExtension: 0,
+    },
+    {
+      id: 'fractured-palace',
+      source: 'custom',
+      systems: ['portal-pair', 'light', 'pattern-boss', 'finale'],
+      signature: "Send the light through your mouths; strike only what it touches",
+      acts: ['sun-court', 'hall-of-hours', 'king-in-the-dark'],
+      composition: { recipe: 'none', at: 0.5 },
+      cadence: { adds: 0, foes: [], accents: [] },
+      customExtension: 0,
+    },
+    { id: 'celeste-standard', source: 'custom', systems: ['tear-relays', 'chain-hook', 'counterweights', 'blade-rebounds', 'pogo-strikes', 'upward-slashes', 'gale-flight', 'gravity-weaves', 'portal-momentum'], signature: 'Celeste Standard', acts: ['tear', 'ring', 'weight', 'anvil', 'pogo', 'uppercut', 'gale', 'gravity', 'portal', 'tear-ring', 'weight-anvil', 'gale-tear', 'gravity-ring', 'relay', 'portal-gale', 'pogo-tear', 'uppercut-ring', 'inversion-relay'], composition: { recipe: 'none', at: 0.5 }, cadence: { adds: 0, foes: [], accents: [] }, customExtension: 0 },
+    { id: 'fractured-celeste', source: 'custom', systems: ['tear-relays', 'chain-hook', 'counterweights', 'blade-rebounds', 'pogo-strikes', 'upward-slashes', 'gale-flight', 'gravity-weaves', 'portal-momentum'], signature: 'Fractured Celeste', acts: ['tear-ring', 'weight-anvil', 'gale-tear', 'gravity-ring', 'relay', 'portal-gale', 'pogo-tear', 'uppercut-ring', 'inversion-relay'], composition: { recipe: 'none', at: 0.5 }, cadence: { adds: 0, foes: [], accents: [] }, customExtension: 0 },
+    { id: 'cloaked-man', source: 'custom', systems: ['four-phase-boss', 'bat-grab', 'phantom-slash', 'bat-swarm', 'giant-arena'], signature: 'The Cloaked Man', acts: ['approach', 'the-cloaked-man', 'unbound', 'the-bones', 'all-of-him'], composition: { recipe: 'none', at: 0.5 }, cadence: { adds: 0, foes: [], accents: [] }, customExtension: 0 },
+    { id: 'precision-workshop', source: 'custom', systems: ['dash-rails','vein-vault','crumble','gravity-prism','ricochet','aether-rebound','return-collapse','growing-root','dash-fold','delayed-pursuer','aimed-recoil','carried-lantern','spore-sentry'], signature: 'Precision Workshop', acts: ['linked-rails', 'violet-vault', 'borrowed-seconds', 'polarity', 'stormglass', 'recoil', 'last-departure', 'needle-thread', 'faultline', 'inside-out', 'storm-chase', 'mercy', 'rootworks', 'wake-behind', 'recoil-well', 'lantern-thief', 'switchback-engine', 'switchback-fractured', 'storm-fractured', 'rootworks-fractured', 'wake-fractured', 'recoil-fractured', 'lantern-fractured', 'return-stroke', 'return-stroke-fractured'], composition: { recipe: 'none', at: 0.5 }, cadence: { adds: 0, foes: [], accents: [] }, customExtension: 0 },
   ];
 
   function clone(value) {
@@ -515,7 +821,8 @@
     const errors = [];
     const warnings = [];
     const ids = new Set();
-    if (blueprints.length !== 16) errors.push({ code: 'campaign.count', message: 'Campaign must define exactly 16 stages.' });
+    // Stable campaign identities 0–40, the two standalone precision courses (41, 42), then the final battle (43) and selectable workshop (44).
+    if (blueprints.length !== 45) errors.push({ code: 'campaign.count', message: 'Campaign must define exactly 45 stages (including two precision courses, the workshop and the final battle).' });
     for (let index = 0; index < blueprints.length; index++) {
       const item = blueprints[index];
       if (item.index !== index) errors.push({ code: 'campaign.index', stage: item.id });

@@ -1,14 +1,14 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import puppeteer from 'puppeteer';
+import { launchChrome } from '../tests/launch-chrome.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const URL = process.env.BLADEFALL_URL || 'http://127.0.0.1:8877/index.html';
 const OUTPUT = resolve(ROOT, 'docs/charters/05-hollow-marksman/evidence/baseline-dynamics.json');
 const EXECUTABLE = process.env.PUPPETEER_EXECUTABLE_PATH;
 
-const browser = await puppeteer.launch({
+const browser = await launchChrome({
   headless: 'new',
   executablePath: EXECUTABLE || undefined,
   args: ['--no-sandbox'],

@@ -55,7 +55,8 @@ test('Broken Causeway owns five long-form rooms using jump and weapon only', () 
   assert.match(stage, /\{len:14000,portal:null,physicalExit:'return-to-black-woods'/);
   for (const landmark of ['chainwake-camp', 'drop-hoist', 'causeway-gears', 'broken-causeway-gate'])
     assert.match(stage, new RegExp(`'${landmark}'`));
-  for (const boundary of ['Gr(0,2600)', 'Gr(2600,5600)', 'Gr(5600,8200)', 'Gr(8200,10500)', 'Gr(10500,14000)'])
+  // 7.233: Room 4's floor stops at the freight lift's void (8560–9225).
+  for (const boundary of ['Gr(0,2600)', 'Gr(2600,5600)', 'Gr(5600,8200)', 'Gr(8200,8560),Gr(9225,10500)', 'Gr(10500,14000)'])
     assert.ok(stage.includes(boundary), boundary);
   assert.doesNotMatch(stage, /\bSlate\(|\bAnchor\(|portalTruth|portalDecoy/);
   assert.match(source, /criticalCapabilities:\['jump','weapon'\]/);
@@ -198,7 +199,7 @@ test('Brute grants run-local Dash in Level Select and the seam accepts it', () =
   assert.match(source,/function activeCapabilityProgress\(\)\{return G&&G\.sessionCapabilities\|\|meta\.capabilities;\}/);
   assert.match(source,/const sessionOnly=!!G\.levelSelectMode/);
   assert.match(source,/if\(sessionOnly\)G\.sessionCapabilities=result\.state;else meta\.capabilities=result\.state/);
-  assert.match(source,/G\.levelSelectMode&&hasCapability\('dash'\)/);
+  assert.match(source,/if\(verb!=='dash-impact'\|\|!hasCapability\('dash'\)\)return false;/);
   assert.match(source,/capabilities:activeCapabilityProgress\(\)&&activeCapabilityProgress\(\)\.acquired\|\|\[\]/);
 });
 
@@ -209,7 +210,8 @@ test('Level Select hydrates fresh encounters instead of campaign boss clears', (
 });
 
 test('Dash turns the bruised Black Woods seam into the Updrafts road and preserves a return', () => {
-  assert.match(source,/if\(o\.woodsReturnSecret&&verb==='dash-impact'\)openBlackWoodsWindShaft\(o\)/);
+  // 7.234: the seam is the mandatory road, so it opens the shaft in every mode and awards no Vault key.
+  assert.match(source,/if\(o\.woodsReturnSecret\)\{\s*if\(verb!=='dash-impact'\|\|!hasCapability\('dash'\)\)return false;[\s\S]{0,400}openBlackWoodsWindShaft\(o\);return true;/);
   assert.match(source,/function openBlackWoodsWindShaft\(sourceObject\)/);
   assert.match(source,/blackWoodsAscent:1/);
   assert.match(source,/h:1700/);
@@ -246,30 +248,26 @@ test('Brute deaths retry from the claimed boss-threshold checkpoint', () => {
 });
 
 
-test('Counterweight Rise boards low lifts and transfers high on both sides of a real bulkhead',async()=>{
+test('Counterweight Rise: the freight lift over a real void, and a lift east of the bulkhead',async()=>{
+  // 7.233 (owner): the counterweight is introduced here. No walkway under it, and the jump off its top
+  // is wide and high enough that only its lit launch reaches the landing.
   const environment=vm.runInNewContext(await readFile(new URL('../public/bladefall-environment.js',import.meta.url),'utf8')+
     ';BladefallEnvironment.createEnvironment()');
-  const west=platforms.find(o=>o.x===8860&&o.move),east=platforms.find(o=>o.x===9520&&o.move);
-  assert.ok(west&&east,'both approaches own a moving lift');
+  const early=await readFile(new URL('../public/bladefall-early-platforming.js',import.meta.url),'utf8');
+  assert.match(early,/2:\{name:'The freight crossing',finishY:260,start:8330,end:9230,spawn:\[8420,65\],carriers:\[\[8520,65,8790,200,140,\.7\]\]/);
+  assert.doesNotMatch(early,/earlyBridge:true,gate:'early-return-/);
+  assert.ok(!platforms.some(o=>(o.y||0)<=10&&o.x+o.w/2>8560&&o.x-o.w/2<9225),'nothing to walk on beneath the lift');
+  const landing=platforms.find(o=>o.freightLanding),cap=platforms.find(o=>o.x===9300&&o.y===325);
+  assert.ok(landing&&landing.y===300&&landing.x-landing.w/2===9020,'the landing is 100 above the lift top, 160 across');
+  assert.equal(jumpReach(landing.y-200),-Infinity,'a plain jump cannot rise the 100 to it');
+  assert.ok(gap(landing,cap)<=jumpReach(cap.y-landing.y),'the landing reaches the bulkhead crown');
   const bulkhead=authored.objects.find(o=>o.causewayBulkhead);
-  assert.ok(bulkhead&&bulkhead.type==='wall'&&bulkhead.y===325&&bulkhead.h===325,
-    'the timing route is required by actual collision geometry');
-  const cap=platforms.find(o=>o.x===9300&&o.y===325),westStep=platforms.find(o=>o.x===8640),
-    upperWalk=platforms.find(o=>o.x===9080),eastStep=platforms.find(o=>o.x===9740);
-  const snapshots=(lift)=>{
-    const low={...lift},high={...lift},period=lift.move.period,phase=lift.move.phase||0;
-    environment.updateMechanism(low,(Math.PI*1.5-phase)*period/(Math.PI*2),.016);
-    environment.updateMechanism(high,(Math.PI*.5-phase)*period/(Math.PI*2),.016);
-    return{low,high};
-  };
-  const w=snapshots(west),e=snapshots(east);
-  for(const [step,lift] of [[westStep,w],[eastStep,e]]){
-    assert.ok(gap(step,lift.low)<=jumpReach(lift.low.y-step.y),'a low lift can be boarded without Dash');
-    assert.ok(gap(step,lift.high)>jumpReach(lift.high.y-step.y),'waiting for a lift is a meaningful timing choice');
-  }
-  assert.ok(gap(w.high,upperWalk)<=jumpReach(upperWalk.y-w.high.y));
-  assert.ok(gap(upperWalk,cap)<=jumpReach(cap.y-upperWalk.y));
-  assert.ok(gap(e.high,cap)<=jumpReach(cap.y-e.high.y),'the east lift can return to the crown before Dash');
-  assert.ok(gap(cap,e.high)<=jumpReach(e.high.y-cap.y));
+  assert.ok(bulkhead&&bulkhead.type==='wall'&&bulkhead.y===325&&bulkhead.h===325,'the bulkhead is real collision');
+  const east=platforms.find(o=>o.x===9520&&o.move),eastStep=platforms.find(o=>o.x===9740);
+  const low={...east},high={...east},period=east.move.period,phase=east.move.phase||0;
+  environment.updateMechanism(low,(Math.PI*1.5-phase)*period/(Math.PI*2),.016);
+  environment.updateMechanism(high,(Math.PI*.5-phase)*period/(Math.PI*2),.016);
+  assert.ok(gap(eastStep,low)<=jumpReach(low.y-eastStep.y),'the east lift can be boarded low');
+  assert.ok(gap(high,cap)<=jumpReach(cap.y-high.y),'the east lift returns to the crown');
   assert.ok(!authored.enemies.some(e=>e.causewayRole==='rise-diver'),'the lift transfer does not overlap a second aerial encounter');
 });

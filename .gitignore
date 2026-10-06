@@ -4,6 +4,10 @@
 node_modules
 netlify-deploy/
 .netlify/
+# Android app build output (./android/build-apk.sh). The signing key android/bladefall.keystore is NOT
+# ignored on purpose: every update must be signed with it.
+android/build/
+android/dist/
 
 # OS, editor and local tooling state.
 .DS_Store
@@ -19,3 +23,4 @@ docs/**/*.jpeg
 docs/**/*.gif
 docs/**/*.mp4
 docs/**/*.webm
+scripts/climb/.cache/

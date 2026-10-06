@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#07080b">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Bladefall · Precision Core</title>
+<style>
+ html,body{margin:0;height:100%;background:#07080b;overflow:hidden;color:#e9dcc0;font-family:ui-monospace,Menlo,Consolas,monospace}
+ html.pcPocket,body.pcPocket{background:transparent!important}
+ #pcCanvas{display:block;width:100vw;height:100vh;image-rendering:pixelated;image-rendering:crisp-edges;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
+ /* Touch (7.258): bigger targets, menus that swipe, and a nudge to turn the phone sideways. */
+ html.pcTouch #pcOverlay{padding:max(8px,env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left));-webkit-tap-highlight-color:transparent}
+ html.pcTouch .pcCard{padding:14px 14px}
+ html.pcTouch .pcBtn{padding:13px 12px;font-size:15px}
+ html.pcTouch .pcChoice{padding:12px;min-height:64px}
+ html.pcTouch .pcMini{min-width:44px;min-height:40px}
+ html.pcTouch .pcOpt select{font-size:15px;padding:6px 4px;max-width:100%}
+ .pcTouchRow{justify-content:space-between;flex-wrap:wrap}.pcTouchRow>span{flex:1 1 150px}
+ .pcTabs{display:flex;gap:6px;overflow-x:auto;padding:2px 0 8px;scrollbar-width:none}.pcTabs::-webkit-scrollbar{display:none}
+ .pcTab{flex:0 0 auto;min-width:44px;padding:9px 10px;background:#1f2430;color:#dcd3bf;border:1px solid #3a4150;font:inherit;font-size:14px}
+ .pcTab.on{border-color:#c9a86a;color:#f0d9a8;background:#2a2f3c}
+ .pcPages{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;scrollbar-width:none;margin-bottom:10px}
+ .pcPages::-webkit-scrollbar{display:none}
+ .pcPage{flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always;box-sizing:border-box;padding:0 2px;max-height:calc(100vh - 175px);min-height:160px;overflow-y:auto;overscroll-behavior-y:contain}
+ html.pcTouch .pcCard.wide>h1{font-size:18px;margin-bottom:4px}html.pcTouch .pcCard.wide>.pcSub{display:none}
+ .pcPage .pcPart{margin-top:2px}
+ #pcRotate{display:none;position:fixed;inset:0;align-items:center;justify-content:center;text-align:center;background:#07080bf2;color:#e9dcc0;font-size:16px;padding:24px;z-index:5}
+ @media (orientation:portrait){html.pcTouch.pcPlaying #pcRotate{display:flex}}
+ #pcOverlay{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:#07080bcc;padding:16px;box-sizing:border-box;overflow:auto}
+ #pcOverlay.show{display:flex}
+ .pcCard{margin:auto;background:#12151c;border:1px solid #3a3f4c;box-shadow:0 0 0 1px #000,0 12px 40px #000a;padding:20px 22px;max-width:520px;width:100%;box-sizing:border-box}
+ .pcCard.wide{max-width:980px}
+ .pcCard h1{margin:0 0 6px;font-size:22px;letter-spacing:.06em;color:#f0d9a8;font-weight:600}
+ .pcSub{color:#aab0bd;font-size:13px;line-height:1.5;margin:6px 0 14px}
+ .pcGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:8px;margin-bottom:14px}
+ .pcPart{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#c9a86a;margin:14px 0 8px;font-weight:600}
+ .pcChoice{display:grid;grid-template-columns:30px 1fr;grid-template-rows:auto auto auto;text-align:left;background:#1a1e27;border:1px solid #333948;color:inherit;padding:10px 12px;cursor:pointer;font:inherit;gap:2px 8px}
+ .pcChoice:hover,body.pcNav .pcChoice:focus{border-color:#c9a86a;background:#20242e;outline:none}
+ .pcNum{grid-row:1/4;font-size:20px;color:#c9a86a;align-self:center}
+ .pcName{font-size:15px;color:#f0e2c2}.pcName em{color:#8fe0a0;font-style:normal}
+ .pcDesc{font-size:12px;color:#a9afbb;line-height:1.4}.pcMeta{font-size:11px;color:#7d8494}
+ .pcRow{display:flex;flex-wrap:wrap;gap:8px}
+ .pcBtn{display:block;width:100%;margin:6px 0;padding:10px 12px;background:#c9a86a;color:#1a1408;border:0;font:inherit;font-size:14px;cursor:pointer;text-align:center;text-decoration:none;box-sizing:border-box}
+ .pcRow .pcBtn{width:auto;flex:1 1 180px}
+ .pcBtn.ghost{background:#1f2430;color:#dcd3bf;border:1px solid #3a4150}
+ .pcBtn:hover{filter:brightness(1.1)}
+ .pcTable{width:100%;border-collapse:collapse;font-size:13px;margin:6px 0 12px}.pcTable td{padding:5px 4px;border-bottom:1px solid #2a2f3a}.pcTable td:first-child{color:#aab0bd}
+ .pcOpt{display:flex;gap:8px;align-items:center;margin:8px 0;font-size:14px}
+ .pcOpt select{background:#1f2430;color:#e9dcc0;border:1px solid #3a4150;font:inherit}
+ .pcMiniRow{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+ .pcMini{min-width:38px;padding:6px;background:#1f2430;color:#dcd3bf;border:1px solid #3a4150;font:inherit;cursor:pointer}
+ .pcMini.on{border-color:#c9a86a;color:#f0d9a8}
+ .pcCard.mid{max-width:760px}
+ body.pcNav #pcOverlay :focus{outline:2px solid #f0d9a8;outline-offset:2px}
+ .pcBinds th{text-align:left;color:#c9a86a;font-weight:600;padding:5px 4px;border-bottom:1px solid #3a3f4c;font-size:12px;letter-spacing:.05em}
+ .pcBinds td{vertical-align:middle}
+ .pcChips{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+ .pcChip{background:#252a36;color:#f0e2c2;border:1px solid #454c5c;font:inherit;font-size:12px;padding:3px 7px;cursor:pointer}
+ .pcChip:hover{border-color:#c96a6a}.pcChip span{color:#8a7f70}
+ .pcAdd{background:none;color:#c9a86a;border:1px dashed #5a513e;font:inherit;font-size:12px;padding:3px 7px;cursor:pointer}
+ .pcAdd.on{border-style:solid;border-color:#f0d9a8;color:#f0d9a8;animation:pcBlink 1s steps(2) infinite}
+ @keyframes pcBlink{50%{opacity:.55}}
+ .pcNone{color:#c96a6a;font-size:12px}
+ .pcNote{min-height:1.5em;color:#d8c27a}
+</style>
+</head>
+<body>
+<canvas id="pcCanvas"></canvas>
+<div id="pcRotate"><div><div style="font-size:42px">⟳</div>Turn your phone sideways to play.<br><small style="color:#aab0bd">Menus work either way.</small></div></div>
+<div id="pcOverlay"></div>
+<script src="bladefall-pcore.js?v=7.275.1"></script>
+<script src="bladefall-pcore-foes.js?v=7.250.0"></script>
+<script src="bladefall-pcore-foes-view.js?v=7.270.art2"></script>
+<script src="bladefall-pcore-portals.js?v=7.252.0"></script>
+<script src="bladefall-pcore-portals-view.js?v=7.252.0"></script>
+<script src="bladefall-pcore-combat.js?v=7.250.0"></script>
+<script src="bladefall-pcore-rooms.js?v=7.253.0"></script>
+<script src="bladefall-pcore-tapes.js?v=7.253.0"></script>
+<script src="bladefall-pcore-combat-rooms.js?v=7.250.0"></script>
+<script src="bladefall-pcore-combat-tapes.js?v=7.250.0"></script>
+<script src="bladefall-pcore-combat-view.js?v=7.270.art2"></script>
+<!-- pcore-late:start -->
+<!-- (7.280) device modules load in sorted file order, the order scripts/pcore-tape.mjs verifies every route in -->
+<script src="bladefall-pcore-dev-beam.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-citadel.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-ember.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-fault.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-foundry.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-frost.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-gaol.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-gravity.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-hook.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-mirror.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-rail.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-rbr-causeway.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-rbr-cliffs.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-rbr-colossus.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-rbr-deepline.js?v=7.264.0"></script>
+<script src="bladefall-pcore-dev-rbr-emberdeep.js?v=7.259.0"></script>
+<script src="bladefall-pcore-dev-rbr-f-outskirts.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-rbr-f-updrafts.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-rbr-f-woods.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-rbr-frostfell.js?v=7.259.0"></script>
+<script src="bladefall-pcore-dev-rbr-gaol.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-rbr-keep.js?v=7.259.0"></script>
+<script src="bladefall-pcore-dev-rbr-king.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-rbr-marksman.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-rbr-path.js?v=7.264.0"></script>
+<script src="bladefall-pcore-dev-rbr-sorcerer.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-rbr-sunspire.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-rbr-tyrant.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-rbr-updrafts.js?v=7.259.0"></script>
+<script src="bladefall-pcore-dev-relay.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-shade.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-throne.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-void.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-watch.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-water.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-zipline.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-beam-view.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-citadel-view.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-ember-view.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-foundry-view.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-frost-view.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-gaol-view.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-gravity-view.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-hook-view.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-rail-view.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-relay-view.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-throne-view.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-void-view.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-watch-view.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-water-view.js?v=7.257.0"></script>
+<script src="bladefall-pcore-dev-rbr-causeway-view.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-rbr-marksman-view.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-rbr-keep-view.js?v=7.259.0"></script>
+<script src="bladefall-pcore-dev-rbr-gaol-view.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-rbr-sorcerer-view.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-rbr-colossus-view.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-rbr-tyrant-view.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-rbr-king-view.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-rbr-deepline-view.js?v=7.264.0"></script>
+<script src="bladefall-pcore-dev-rbr-path-view.js?v=7.264.0"></script>
+<script src="bladefall-pcore-dev-rbr-sunspire-view.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-rbr-cliffs-view.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-rbr-f-outskirts-view.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-rbr-f-woods-view.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-rbr-f-updrafts-view.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-zipline-view.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-fault-view.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-shade-view.js?v=7.280.0"></script>
+<script src="bladefall-pcore-dev-mirror-view.js?v=7.280.0"></script>
+<script src="bladefall-pcore-parts.js?v=7.257.0"></script>
+<script src="bladefall-pcore-part-075-gaol.js?v=7.257.0"></script>
+<script src="bladefall-pcore-part-083-frostfell.js?v=7.257.0"></script>
+<script src="bladefall-pcore-part-091-white-court.js?v=7.257.0"></script>
+<script src="bladefall-pcore-part-099-emberdeep.js?v=7.257.0"></script>
+<script src="bladefall-pcore-part-107-foundry.js?v=7.257.0"></script>
+<script src="bladefall-pcore-part-115-inversion.js?v=7.257.0"></script>
+<script src="bladefall-pcore-part-123-citadel.js?v=7.257.0"></script>
+<script src="bladefall-pcore-part-132-throne.js?v=7.257.0"></script>
+<script src="bladefall-pcore-part-140-deep-line.js?v=7.257.0"></script>
+<script src="bladefall-pcore-part-150-thunder-cliffs.js?v=7.257.0"></script>
+<script src="bladefall-pcore-part-160-landing-shores.js?v=7.257.0"></script>
+<script src="bladefall-pcore-part-170-colony.js?v=7.257.0"></script>
+<script src="bladefall-pcore-part-180-palace-path.js?v=7.257.0"></script>
+<script src="bladefall-pcore-part-190-sunspire.js?v=7.257.0"></script>
+<script src="bladefall-pcore-part-200-capstone.js?v=7.257.0"></script>
+<script src="bladefall-pcore-part-901-bonus-relay.js?v=7.257.0"></script>
+<script src="bladefall-pcore-part-902-bonus-void.js?v=7.257.0"></script>
+<script src="bladefall-pcore-part-903-bonus-crossings.js?v=7.257.0"></script>
+<!-- pcore-late:end -->
+<script src="bladefall-rbr.js?v=7.280.0"></script>
+<script>/* Room by Room (7.259): its regions load only on its own page. */
+if(/[?&]pitch=rbr/.test(location.search)){const q=new URLSearchParams(location.search),more=k=>(q.get(k)||'').split(',').filter(f=>/^[\w-]+$/.test(f));
+ // rbrdev/rbrfile: a region (and its own device module) still being built, before it joins FILES.
+ for(const f of more('rbrdev'))document.write('<script src="bladefall-pcore-dev-rbr-'+f+'.js?v=7.264.0"><\/script><script src="bladefall-pcore-dev-rbr-'+f+'-view.js?v=7.259.0" onerror="0"><\/script>');
+ for(const f of [...BladefallRoomByRoom.FILES,...more('rbrfile').filter(f=>!BladefallRoomByRoom.FILES.includes(f))])document.write('<script src="bladefall-rbr-'+f+'.js?v=7.264.0"><\/script>');}</script>
+<script src="bladefall-pcore-survey.js?v=7.264.0"></script>
+<script src="bladefall-pcore-touch.js?v=7.258.0"></script>
+<script src="bladefall-pcore-pitches.js?v=7.257.0"></script>
+<script src="bladefall-pcore-pitches-view.js?v=7.259.0"></script>
+<script src="bladefall-rbr-view.js?v=7.264.0"></script>
+<script src="bladefall-climb.js?v=7.273.40"></script>
+<script src="bladefall-climb-atlas.js?v=7.279.0"></script>
+<script src="bladefall-climb-passages.js?v=7.279.0"></script>
+<script src="bladefall-climb-passage-tapes.js?v=7.273.40"></script>
+<script>if(/[?&]pitch=climb/.test(location.search))document.write('<script src="bladefall-climb-worlds.js?v=7.280.0"><\/script>');</script>
+<script src="bladefall-climb-geography.js?v=7.275.1"></script>
+<script src="bladefall-climb-geography-build.js?v=7.279.0"></script>
+<script src="bladefall-climb-art.js?v=7.278.0"></script>
+<script src="bladefall-climb-passage-art.js?v=7.280.0"></script>
+<script src="bladefall-climb-map.js?v=7.280.0"></script>
+<script src="bladefall-climb-view.js?v=7.280.0"></script>
+<script src="bladefall-climb-coop.js?v=7.273.41"></script>
+<script src="bladefall-pcore-view.js?v=7.273.40"></script>
+<script>/* Offline play once installed (the main game registers the same worker). Not inside a frame. */
+if('serviceWorker' in navigator&&window.parent===window&&location.protocol!=='file:')addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));</script>
+</body>
+</html>

@@ -75,7 +75,7 @@ test('the procedural coda, its pickups and its void population are gone', () => 
 test('it is entered at the top right and left at the bottom left', () => {
   assert.equal(LEVEL.spawnX, 15800);
   assert.ok(LEVEL.spawnY >= 1100, 'you arrive on the high terrace, not the floor');
-  assert.match(source.slice(start, end), /build\(\)\{G\.p\.face=-1;\}/, 'and facing the way you are going');
+  assert.match(source.slice(start, end), /build\(\)\{\s*G\.p\.face=-1;/, 'and facing the way you are going');
   const spec = fn('physicalSeamSpec');
   assert.match(spec, /connector:'inversion-tyrant',zone:'inversion',targetStage:12,\s*warm:G\.p\.x<=1400,\s*cross:G\.p\.x<=62&&G\.p\.face<0/,
     'the onward gate is the WEST edge');
@@ -198,7 +198,7 @@ test('neither floor is a route on its own', () => {
   assert.ok(roofs.some(r => !r.o.crumble && r.under > crumble[0].under &&
     r.left <= crumble[0].left && r.right >= crumble[0].right),
     'and a perch above it to be dropped onto, so giving way is a setback and not a death');
-  assert.equal(gaunt.filter(r => r.o.move).length, 1, 'one that does not wait');
+  assert.equal(gaunt.filter(r => r.o.move).length, 0, 'the unnecessary moving roof is now a stable crossing');
   // TEETH ON THE ROAD, not 620 units above it. The gauntlet's five sets of CeilTeeth
   // hung at the world ceiling while the road they were meant to threaten ran at 874.
   const roadTeeth = at(o => o.type === 'spikes' && o.ceil && o.y < CEIL_Y - 400 && o.x > 8500);
@@ -266,7 +266,7 @@ test('the drop-lock needs both orientations and no pickup pays for it', () => {
   assert.ok(keel, 'the ceiling plate exists');
   assert.ok(roofs.some(r => Math.abs(r.under - PLAYER_H - keel.y) < 8 && r.left <= keel.x && r.right >= keel.x),
     'it sits exactly where a flipped knight standing on that roof does');
-  assert.ok(!floors.some(f => Math.abs(f.y - keel.y) < 12), 'and on no floor the right way up');
+  assert.ok(!floors.some(f => Math.abs(f.y - keel.y) < 12 && f.left <= keel.x && f.right >= keel.x), 'and on no floor the right way up');
   const keelDoor = at(o => o.type === 'door' && o.circuit === 'inv-keel')[0];
   assert.ok(keelDoor && keelDoor.x < keel.x && keelDoor.x > plate.x, 'its door stands between the plate and the bin');
   for(const id of ['inv-keel', 'inv-lock']){
@@ -565,4 +565,30 @@ test('the lash bites the crossing, and wall thorns bite what they draw', () => {
   assert.match(draw, /half = Math\.round\(\(o\.len \|\| 80\) \* Z \/ 2\)/,
     'and the band runs `len` ALONG the wall, which is also what the collision reads');
   assert.doesNotMatch(draw, /for\(let k = 0; k < len; k\+\+\)/, 'the sideways bar is gone');
+});
+
+
+test('opening allows a return jump, and side collisions match its masonry', () => {
+  const openingRoofs = roofs.filter(r => r.left >= 13700 && r.right <= 14900);
+  for(const r of openingRoofs) for(const f of floors.filter(f=>f.o.deep&&f.left<r.right&&f.right>r.left))
+    assert.ok(r.under-f.y >= 180, 'headroom for a full double jump');
+  assert.match(LEVEL.build.toString(), /o.type==='plat'&&o.deep/);
+  assert.match(LEVEL.build.toString(), /o.wallCling=1/);
+});
+test('upper serpentine lanes cannot be entered from the puzzle room', () => {
+  const roof = at(o=>o.type==='plat'&&o.y===454)[0];
+  const seal = at(o=>o.type==='wall'&&o.x===8666)[0];
+  assert.ok(seal);
+  assert.ok(seal.x-seal.w/2 <= roof.x+roof.w/2);
+  assert.equal(seal.y-seal.h,454);
+  assert.equal(seal.y,CEIL_Y);
+  assert.ok(seal.slickL&&seal.slickR);
+});
+test('Inversion upgrades require reaching and inspecting optional caches', () => {
+  const caches=at(o=>o.journeyCache);
+  assert.equal(caches.length,2);
+  assert.ok(caches.every(o=>o.lore&&o.title&&o.text));
+  assert.doesNotMatch(fn('updateInversion'), /grantJourneyReward/);
+  assert.ok(caches.some(o=>o.x>13700&&o.y>1200),'return to the overhead route');
+  assert.ok(caches.some(o=>o.x>10000&&o.x<10200),'leave the main road for a side ledge');
 });

@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
-import puppeteer from 'puppeteer';
+import { launchChrome } from '../tests/launch-chrome.mjs';
 
 const url=process.env.BLADEFALL_URL||'http://127.0.0.1:8877/index.html';
 const origin=new URL(url).origin;
-const browser=await puppeteer.launch({headless:true,protocolTimeout:60000,args:[
+const browser=await launchChrome({headless:true,protocolTimeout:60000,args:[
   '--no-sandbox','--disable-background-timer-throttling','--disable-renderer-backgrounding',
 ]});
 const page=await browser.newPage(),errors=[];

@@ -1,0 +1,11 @@
+✔ Continue keeps the session clears and the direction of the ride (3.117417ms)
+✔ Continue chooses only the saved preview checkpoint and preserves campaign recovery isolation (4.206791ms)
+✔ saved level-select session survives JSON storage without becoming campaign progress (3.714166ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 225.278833

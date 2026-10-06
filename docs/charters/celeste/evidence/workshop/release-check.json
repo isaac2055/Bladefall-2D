@@ -1,0 +1,13 @@
+{
+  "ok": false,
+  "version": "7.240.0",
+  "cache": "bladefall-v350-banked-candidates",
+  "assets": 233,
+  "sourceBytes": 357550247,
+  "failures": [
+    "index does not reference astra-respec.js",
+    "index does not reference fable-respec.js",
+    "index.html exceeds the release size budget",
+    "bladefall-respec-renderer.js exceeds the module size budget"
+  ]
+}

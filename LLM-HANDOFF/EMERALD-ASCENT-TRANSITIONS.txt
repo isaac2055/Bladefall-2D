@@ -1,0 +1,286 @@
+BLADEFALL — EMERALD ASCENT AND THE WORKING TRANSITION DESIGN
+Handoff verified against the code on October 3, 2026.
+
+Repository: /Users/computer/Projects/Bladefall-2D Antigravity
+Launch: public/precision.html?pitch=climb
+Working baseline: main scripts 7.273.40; service-worker cache v434-grounded-scenes.
+Approved full-map concept: LLM-HANDOFF/emerald-ascent-map.html
+Current implementation notes: docs/plans/climb-shared-geography.md
+
+Read this before extending the connected Climb. The user confirmed the last
+revision works. Preserve that implementation rather than recreating an earlier
+attempt. This handoff describes both the implemented lower map and the larger
+approved design; those are not the same implementation scope.
+
+1. Preserve the game the user likes
+
+The knight's design, animation, scarf, dash colours, dash feel, and movement
+constants must remain unchanged. Each of Claude's original first nine worlds
+remains one intact continuous climb: original main-section ordering, challenge
+maps, relative section placement, optional errands, secrets, and returns.
+Do not reorganize the original rooms into switchbacks or subdivide a world into
+new travel groups. Translate a whole world when positioning it on the atlas.
+Only interworld connections use the compact folded corridors described below.
+
+Keep fires/checkpoints, death costing only the current section, room selection,
+level selection, connecting-passage selection, world map, return to title,
+Continue, existing saves, and co-op. First-nine challenge layouts were preserved;
+the junctions outside them were changed to make the geography work.
+
+2. The map: Emerald Ascent
+
+The visual intention is a faceted emerald / nested diamond with a trippy,
+fractal-like repetition of branches. Braided Ascent forms the inner structure.
+A bigger crown and an outer circuit repeat that shape around it. It should read
+as connected geography with recognizable places, rather than a row of level
+buttons or a succession of generic doors.
+
+IMPLEMENTED INNER MAP: regions 1–9
+
+                       9 Frost Sorcerer
+                      /               \
+             8 Frostfell — 6 Keep — 7 Warden
+                          /      \
+                 4 Updrafts <--> 5 Hollow Marksman
+                     |                 |
+                 2 Black Woods <--> 3 Broken Causeway
+                          \      /
+                         1 Outskirts
+
+This diagram expresses connectivity. In the approved regional drawing,
+Frostfell, Ruined Keep, and Warden occupy the same horizontal row.
+
+Exact main roads:
+1–2, 1–3, 2–4, 3–5, 4–6, 5–6, 6–8, 6–7, 8–9, 7–9.
+Two cross-connections: 2–3 and 4–5. Total: 12 interworld passages.
+
+The lower braid splits from Outskirts into Black Woods on the left and Broken
+Causeway on the right, ascends through Updrafts / Hollow Marksman, and converges
+at Ruined Keep. The upper braid splits toward Frostfell / Warden and reconverges
+at Frost Sorcerer. These are actual routes into the original playable climbs,
+not a network that merely loops between connector rooms.
+
+Progression is owned by bladefall-climb-atlas.js. In the CURRENT code, a main
+road opens when its source region's final original room is solved. A cross-road
+opens when BOTH connected regions' final original rooms are solved. Open roads
+are bidirectional. Do not copy the older note claiming middle sections unlock
+cross-roads; inspect refresh() in the current atlas.
+
+Passage identities:
+1–2 Rootwater Descent; 1–3 Pilgrims’ Viaduct;
+2–4 The Canopy Vent; 3–5 Sentry’s Aqueduct;
+4–6 Bellwind Stair; 5–6 The Forgotten Siegeway;
+6–8 Thawline Cloister; 6–7 The Chainwell;
+8–9 Glasswater Gallery; 7–9 Condemned Procession;
+2–3 The Buried Spillway; 4–5 Windcut Underpass.
+
+Important lower junctions:
+Outskirts' Gatehouse connects to Wayside Arches. Its Woods route crosses
+Rootwater Descent into Rootwater Hollow, which has an explicit entrance into
+the original Black Woods climb. Its Causeway route crosses Pilgrims’ Viaduct
+into Pilgrims’ Landing, which also reaches the original Causeway climb.
+The Buried Spillway links the Woods and Causeway arrival junctions.
+Keep climb-entry signs distinct from passage destination signs.
+
+APPROVED EXPANSION: regions 10–20, not implemented in this connected Climb
+
+The six-region crown above Frost Sorcerer is:
+10 Emberdeep (left), 11 Ember Colossus (centre), 12 The Inversion (right),
+13 The Void Tyrant (raised left shoulder), 14 The Abyss King (raised right
+shoulder), and 15 The Deep Line (the apex).
+The 10/11/12 row mirrors the Frostfell / Keep / Warden row below. The user moved
+13 and 14 upward and inward toward 15. All five crown regions connect to 15.
+
+Crown edges: 9–10, 9–11, 9–12, 10–13, 12–14,
+13–15, 10–15, 11–15, 12–15, 14–15.
+
+The outside left descends from 13 through 16 Thunder Cliffs, 17 Landing Shores,
+18 The Colony, and 19 Path to the Palace, the new bottom point below Outskirts.
+The user asked to spread 16, 17, and 18 apart. Inner spokes connect 16–8,
+17–4, 18–2, and 19–1.
+
+20 Sunspire Palace is ONE continuous region forming the ENTIRE outer right
+flank, from 14 Abyss King down to 19 Path to the Palace. Do not draw it as just
+one small node beside Hollow Marksman, and do not split it into three levels.
+It has separate entrances opposite Warden (7), Hollow Marksman (5), and Broken
+Causeway (3). Outer edges: 13–16–17–18–19–20–14.
+Together with the crown, this closes the outer emerald around the inner braid.
+
+Approved conceptual coordinates (x rightward, y downward; NOT collision units):
+1 (0,7.5); 2 (-1.2,6.35); 3 (1.2,6.35);
+4 (-1.2,5.15); 5 (1.2,5.15);
+6 (0,3.95); 7 (1.2,3.95); 8 (-1.2,3.95); 9 (0,2.8);
+10 (-1.2,1.65); 11 (0,1.65); 12 (1.2,1.65);
+13 (-1.45,0.6); 14 (1.45,0.6); 15 (0,0);
+16 (-2.1,2.5); 17 (-2.65,4.8); 18 (-1.9,7.1); 19 (0,8.65).
+20's label is at (2.43,4.8), but its territory spans the whole right edge.
+The HTML map contains the actual territory polygon and entrance positions.
+
+3. Separate three coordinate systems
+
+A. Regional map topology: where worlds sit in the emerald and which connect.
+B. Authored world coordinates: each original continuous climb, translated intact.
+C. Compact passage coordinates: a short corridor linking distant regional mouths.
+
+Map distance must not become literal walking distance. An early attempt created
+long routed corridors and internal switchbacks. The working version keeps the
+original climbs intact and uses only 12 short folded interworld corridors.
+They are stored away from regional geometry, then projected at their mouths.
+The map marker projects passage progress onto the corresponding regional link.
+
+Current passage dimensions: 8px tiles, 48 columns, 8 rows; walking floor row 6.
+Mouth planes are x=32 and x=352: 40 tiles / 320px of actual travel between them.
+There is one ceiling row, five clear rows, and two supporting floor rows. The
+64px collision envelope fits the visible passage. Decorative apron space lies
+outside the mouth planes and must not become a secret walkable platform.
+
+Junctions are 56 columns wide with supported tiered roads. Their height and
+mouth placement depend on the neighbouring original room's footprint. Outgoing
+mouths sharing a side with a terminal room are moved clear above it; incoming
+mouths sharing a side with a first room are moved clear below it. Preserve the
+original room's joining elevation while resizing the junction. Hearths sit near
+forks, avoiding long climbs just to travel onward. Current complete trips take
+8.4–9.8 seconds between hearths at normal speed, mean 9.2.
+
+4. Crossing a mouth: preserve the simulation, translate coordinates
+
+Use reciprocal sockets with destination room/world, edge, mouth plane, and floor.
+Trigger the handoff at the player's body centre while moving through an open
+walking aperture. Core's boundary checks must admit the whole body, otherwise
+the knight collides with the old room bounds before the centre can cross.
+
+For a folded seam:
+  newPlayerX = destinationPlane + (oldPlayerX - sourcePlane)
+  newPlayerY = oldPlayerY + (destinationFloor - sourceFloor) * 8
+The production formula spells out the centre and half-width explicitly.
+
+Carry the full motion snapshot: velocity, facing, jump/dash state and timers,
+dash direction and remaining count, input buffers, etc. Do not reset the knight
+to normal, refill a dash, or drop a simulation frame at the crossing. Translate
+scarf, trail, and particle positions too. Translate the world camera by the same
+world-position delta so the knight keeps the same screen position; then resume
+normal following. Do not snap to a new room clamp or hide the change with a fade.
+
+Folded corridor collision bounds use its actual mouth planes, not the outer
+decorative map rectangle. Outside the walking aperture those boundaries block
+movement. This prevents standing on an invisible apron beyond a mouth.
+
+5. Rendering: one stable scene on both sides, with protected physical terrain
+
+The visible destination must be the actual destination, drawn using the matching
+mouth transform and translated local camera. That same camera must reach terrain
+culling in drawStatic/drawOther; translating only the canvas is insufficient.
+Use consistent integer camera coordinates for preview and live rendering.
+
+Every entrance gets a permanent vertical view interval determined by geometry.
+Display all openings simultaneously. Never choose which doorway exists based
+on player height. A jump must not turn another route into a wall.
+
+drawConnectedGeography composes reusable corridor and endpoint scene layers.
+Near each mouth the regional scene is projected into the corridor's frame.
+It stays continuous for 80px, then blends spatially into the interior over 64px.
+Both endpoints are composed independently; there is no nearest-end scene swap
+at the corridor midpoint. Distant atmospheric selection can blend, but the
+entrance geometry and physical room footprints must remain fixed.
+
+The critical constraints are:
+- A projected corridor must not geometrically overlap an original room.
+- clipExterior subtracts the UNION of physical regional footprints from projected
+  views. Do not use overlapping even/odd rectangles that punch holes in each other.
+- maskEndpoint keeps physical regional footprints opaque. A whole-scene blend
+  must never wash out a real room, erase its floor, or recolour its playable area.
+- Keep scene donors available even when their entrance is offscreen. A junction
+  can have left the viewport while its connected corridor remains visible.
+  The working query extends a full viewport beyond the visible area. Determine
+  culling from contributed scenery, not only the source room/entrance rectangle.
+- Visible ceiling, headroom, and floor must agree with collision geometry.
+
+6. Why the earlier versions failed
+
+The Woods preview occupied the Gatehouse's physical space. A narrow doorway
+preview made this look superficially plausible, but moving exposed competing
+room images. Then whole-scene blending let green passage scenery paint over
+the original level and its floor. Separately, viewport-based culling dropped
+the source junction while its corridor was still visible. The floor remained
+solid in physics but vanished in the image, producing 'standing on air'.
+
+Fixing only the exact ownership-transfer frame did NOT solve this. A stationary
+before/after pixel test passed while steps farther along the corridor still
+failed. The final fix combines physical layout clearance, matching visual and
+collision bounds, protected terrain masks, and retained offscreen scene donors.
+Do not revert to fades, active-room background swaps, player-height-selected
+doorways, or broad unprotected overlays as a shortcut.
+
+The separate Gatehouse buzz was a state loop: restore-progress opened a solved
+pressure gate each tick, then pressure logic closed it again and emitted audio.
+Solved pressure gates now latch open, and Core honours latchedOpen. Preserve
+normal behaviour for unsolved gates.
+
+7. Where to work and how to extend safely
+
+public/bladefall-climb-atlas.js: regional graph, progression, future reservations.
+public/bladefall-climb-geography-build.js: intact-world placement, junction
+clearance, compact corridor construction, reciprocal sockets.
+public/bladefall-climb-geography.js: spatial queries, camera targeting, overview.
+public/bladefall-climb-view.js: enterPassage, visibleSockets, clipExterior,
+drawFoldedViews, paintRegion, paintCorridor, maskEndpoint,
+drawConnectedGeography, saves, menus, cleared-room restoration.
+public/bladefall-pcore.js: explicit walking-seam boundary exceptions and gate latch.
+public/bladefall-pcore-view.js: drawStatic/drawOther translated-camera support.
+public/bladefall-climb-passage-art.js: original themed passage art/materials.
+public/climb-geography-review.html: actual renderer and simulation review controls.
+
+Extend in this order: graph -> reciprocal sockets -> non-overlapping physical
+footprints -> playable junction roads -> matching render/collision envelopes ->
+motion/camera handoff -> shared rendering -> full movement and scrolling tests.
+Reuse the existing helpers instead of building separate transition implementations
+for each biome. Later regions are reserved in this Climb integration; existing
+content for them in other game modes is not proof they are connected here.
+
+CAUTION: docs/plans/climb-emerald-atlas.md contains historical iterations. Long
+passages, 84–104-column junctions, old winches/lift requirements, earlier scenery
+audits, and middle-section unlock descriptions there are not the current design.
+The runtime geography builder overrides earlier passage definitions. Inspect the
+installed default Climb, not only the original passage generator or legacy mode.
+
+8. Validation required before calling an extension finished
+
+Run these from the repository root:
+node scripts/verify-climb-projected-terrain.mjs
+node scripts/verify-climb-geography-journeys.mjs
+node scripts/verify-climb-geography-traversal.mjs
+node scripts/verify-climb-geography-runtime.mjs
+node scripts/verify-climb-folds.mjs
+node scripts/verify-climb-mouth-views.mjs
+node scripts/verify-climb-geography-footprints.mjs
+node scripts/verify-climb-geography-resume.mjs
+node scripts/verify-climb-contained-worlds.mjs
+node scripts/verify-climb-junction-regressions.mjs --geography
+node scripts/verify-climb-geography-coop.mjs
+
+In the browser review page run BOTH 'Audit folded crossings' AND 'Audit ground
+and scrolling'. The latter is asynchronous; wait for its result rather than
+restarting it after a browser-command timeout. Also visually walk the full route,
+jump/dash through it, reverse direction, wait at junctions, and check saved entry.
+
+Final baseline evidence:
+- 24 projected corridor footprints clear all original rooms.
+- 24 mouth boundaries block decorative apron access.
+- 24 full repeated-jump/dash trips arrive correctly without deaths.
+- All 12 links in both directions and lower-map multi-region journeys pass.
+- 71 directed seams and 105 original challenge replays pass.
+- 48 active-dash handoffs preserve motion; 39 junction roads work both ways.
+- 24 saved passage entries resume correctly; nine original climbs remain intact.
+- 2,808 floor-render probes across all corridors/camera offsets: zero hidden floors.
+- One-pixel scrolling comparisons, compensating for camera motion: maximum changed
+  area Gatehouse 0.312%, Rootwater Descent 1.948%, Viaduct 0.365% at a 32-level
+  colour threshold. This permits ordinary parallax; it is not a claim of zero
+  animation or pixel change during walking.
+- All 48 fixed-frame folded boundary comparisons pass the 0.05% scene-change
+  threshold. Both Wayside routes and their returns show zero changed scene pixels.
+- Cleared Gatehouse visits emit no repeating gate audio; unsolved gates still work.
+
+These are targeted regressions plus integrated regional trips, not a claimed
+fresh-save uninterrupted playthrough of every world. Update test counts and map
+coverage when extending beyond nine regions. Bump actual script URLs and the
+service-worker cache together so the user receives the tested revision.

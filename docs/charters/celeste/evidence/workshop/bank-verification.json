@@ -1,0 +1,143 @@
+{
+  "bank": [
+    "G",
+    "H",
+    "I",
+    "J",
+    "L",
+    "H-F",
+    "M-F",
+    "N-F",
+    "P-F",
+    "Q-F"
+  ],
+  "baseBank": [
+    "H · Switchback Engine",
+    "N · The Wake Behind",
+    "O · Recoil Well",
+    "P · The Lantern Thief"
+  ],
+  "bufferedLanding": {
+    "landed": true,
+    "first": 1,
+    "second": 2,
+    "vy": -426.6666666666667
+  },
+  "opening": [
+    {
+      "stage": 0,
+      "decor": 22,
+      "pods": 0,
+      "carriers": 0,
+      "kit": {
+        "jump": true,
+        "dash": false,
+        "wallJump": false,
+        "doubleJump": false,
+        "downwardStrike": false,
+        "gravityFlip": false,
+        "maxJumps": 1,
+        "acquired": [
+          "jump"
+        ],
+        "tuning": {
+          "runSpeed": 200,
+          "jumpVelocity": 480,
+          "secondJumpVelocity": 450,
+          "jumpBufferSeconds": 0.12,
+          "coyoteSeconds": 0.1,
+          "jumpCutVelocity": 220,
+          "apexGravityScale": 0.55,
+          "apexBand": 60,
+          "dashDurationSeconds": 0.22,
+          "dashSpeedMultiplier": 3,
+          "dashGravityScale": 0.15,
+          "dashFallCap": 140,
+          "wallCoyoteSeconds": 0.09,
+          "wallJumpHorizontalVelocity": 350,
+          "wallJumpVerticalVelocity": 500,
+          "wallSlideVelocity": 80,
+          "downwardStrikeVelocity": 1400,
+          "downwardStrikeCooldownSeconds": 1.3
+        }
+      }
+    },
+    {
+      "stage": 1,
+      "decor": 0,
+      "pods": 4,
+      "carriers": 0,
+      "kit": {
+        "jump": true,
+        "dash": false,
+        "wallJump": false,
+        "doubleJump": false,
+        "downwardStrike": false,
+        "gravityFlip": false,
+        "maxJumps": 1,
+        "acquired": [
+          "jump"
+        ],
+        "tuning": {
+          "runSpeed": 200,
+          "jumpVelocity": 480,
+          "secondJumpVelocity": 450,
+          "jumpBufferSeconds": 0.12,
+          "coyoteSeconds": 0.1,
+          "jumpCutVelocity": 220,
+          "apexGravityScale": 0.55,
+          "apexBand": 60,
+          "dashDurationSeconds": 0.22,
+          "dashSpeedMultiplier": 3,
+          "dashGravityScale": 0.15,
+          "dashFallCap": 140,
+          "wallCoyoteSeconds": 0.09,
+          "wallJumpHorizontalVelocity": 350,
+          "wallJumpVerticalVelocity": 500,
+          "wallSlideVelocity": 80,
+          "downwardStrikeVelocity": 1400,
+          "downwardStrikeCooldownSeconds": 1.3
+        }
+      }
+    },
+    {
+      "stage": 2,
+      "decor": 0,
+      "pods": 0,
+      "carriers": 1,
+      "kit": {
+        "jump": true,
+        "dash": false,
+        "wallJump": false,
+        "doubleJump": false,
+        "downwardStrike": false,
+        "gravityFlip": false,
+        "maxJumps": 1,
+        "acquired": [
+          "jump"
+        ],
+        "tuning": {
+          "runSpeed": 200,
+          "jumpVelocity": 480,
+          "secondJumpVelocity": 450,
+          "jumpBufferSeconds": 0.12,
+          "coyoteSeconds": 0.1,
+          "jumpCutVelocity": 220,
+          "apexGravityScale": 0.55,
+          "apexBand": 60,
+          "dashDurationSeconds": 0.22,
+          "dashSpeedMultiplier": 3,
+          "dashGravityScale": 0.15,
+          "dashFallCap": 140,
+          "wallCoyoteSeconds": 0.09,
+          "wallJumpHorizontalVelocity": 350,
+          "wallJumpVerticalVelocity": 500,
+          "wallSlideVelocity": 80,
+          "downwardStrikeVelocity": 1400,
+          "downwardStrikeCooldownSeconds": 1.3
+        }
+      }
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,701 @@
+{
+  "schema": "bladefall.tas-smoke",
+  "version": 1,
+  "gameVersion": "7.220.3",
+  "expectedVersion": "7.220.3",
+  "url": "http://127.0.0.1:8371/index.html?tas=1",
+  "plan": {
+    "id": "opening-movement-smoke",
+    "commands": [
+      {
+        "ticks": 80,
+        "held": [
+          "right"
+        ],
+        "label": "walk from the fresh Outskirts spawn"
+      },
+      {
+        "ticks": 1,
+        "held": [
+          "right",
+          "jump"
+        ],
+        "press": [
+          "jump"
+        ],
+        "label": "jump initiation"
+      },
+      {
+        "ticks": 46,
+        "held": [
+          "right",
+          "jump"
+        ],
+        "label": "hold the first leap"
+      },
+      {
+        "ticks": 100,
+        "held": [
+          "right"
+        ],
+        "label": "recover and continue"
+      },
+      {
+        "ticks": 1,
+        "held": [
+          "right",
+          "jump"
+        ],
+        "press": [
+          "jump"
+        ],
+        "label": "second jump initiation"
+      },
+      {
+        "ticks": 52,
+        "held": [
+          "right",
+          "jump"
+        ],
+        "label": "hold the second leap"
+      },
+      {
+        "ticks": 180,
+        "held": [
+          "right"
+        ],
+        "label": "continue through live opening terrain"
+      }
+    ]
+  },
+  "pass": true,
+  "replayMatch": true,
+  "maxX": 764.24,
+  "pageErrors": [],
+  "first": {
+    "schema": "bladefall.tas-receipt",
+    "version": 1,
+    "gameVersion": "7.220.3",
+    "seed": 1515870810,
+    "ticks": 460,
+    "complete": true,
+    "stopped": null,
+    "commands": [
+      {
+        "ticks": 80,
+        "held": [
+          "right"
+        ],
+        "press": [],
+        "label": "walk from the fresh Outskirts spawn"
+      },
+      {
+        "ticks": 1,
+        "held": [
+          "right",
+          "jump"
+        ],
+        "press": [
+          "jump"
+        ],
+        "label": "jump initiation"
+      },
+      {
+        "ticks": 46,
+        "held": [
+          "right",
+          "jump"
+        ],
+        "press": [],
+        "label": "hold the first leap"
+      },
+      {
+        "ticks": 100,
+        "held": [
+          "right"
+        ],
+        "press": [],
+        "label": "recover and continue"
+      },
+      {
+        "ticks": 1,
+        "held": [
+          "right",
+          "jump"
+        ],
+        "press": [
+          "jump"
+        ],
+        "label": "second jump initiation"
+      },
+      {
+        "ticks": 52,
+        "held": [
+          "right",
+          "jump"
+        ],
+        "press": [],
+        "label": "hold the second leap"
+      },
+      {
+        "ticks": 180,
+        "held": [
+          "right"
+        ],
+        "press": [],
+        "label": "continue through live opening terrain"
+      }
+    ],
+    "events": [
+      {
+        "tick": 0,
+        "type": "command",
+        "command": 0,
+        "label": "walk from the fresh Outskirts spawn",
+        "held": [
+          "right"
+        ],
+        "press": []
+      },
+      {
+        "tick": 80,
+        "type": "command",
+        "command": 1,
+        "label": "jump initiation",
+        "held": [
+          "right",
+          "jump"
+        ],
+        "press": [
+          "jump"
+        ]
+      },
+      {
+        "tick": 81,
+        "type": "command",
+        "command": 2,
+        "label": "hold the first leap",
+        "held": [
+          "right",
+          "jump"
+        ],
+        "press": []
+      },
+      {
+        "tick": 127,
+        "type": "command",
+        "command": 3,
+        "label": "recover and continue",
+        "held": [
+          "right"
+        ],
+        "press": []
+      },
+      {
+        "tick": 227,
+        "type": "command",
+        "command": 4,
+        "label": "second jump initiation",
+        "held": [
+          "right",
+          "jump"
+        ],
+        "press": [
+          "jump"
+        ]
+      },
+      {
+        "tick": 228,
+        "type": "command",
+        "command": 5,
+        "label": "hold the second leap",
+        "held": [
+          "right",
+          "jump"
+        ],
+        "press": []
+      },
+      {
+        "tick": 280,
+        "type": "command",
+        "command": 6,
+        "label": "continue through live opening terrain",
+        "held": [
+          "right"
+        ],
+        "press": []
+      }
+    ],
+    "samples": [
+      {
+        "tick": 0,
+        "stage": 0,
+        "mode": "play",
+        "player": {
+          "x": 70,
+          "y": 0,
+          "vx": 0,
+          "vy": 0,
+          "blood": 5,
+          "dead": false,
+          "onGround": true,
+          "onWall": false,
+          "checkpoint": {
+            "x": 70,
+            "y": 0
+          }
+        },
+        "capabilities": [
+          "jump"
+        ],
+        "portals": 0,
+        "boss": null
+      },
+      {
+        "tick": 30,
+        "stage": 0,
+        "mode": "play",
+        "player": {
+          "x": 164.24,
+          "y": 0,
+          "vx": 200,
+          "vy": 0,
+          "blood": 5,
+          "dead": false,
+          "onGround": true,
+          "onWall": false,
+          "checkpoint": {
+            "x": 70,
+            "y": 0
+          }
+        },
+        "capabilities": [
+          "jump"
+        ],
+        "portals": 0,
+        "boss": null
+      },
+      {
+        "tick": 60,
+        "stage": 0,
+        "mode": "play",
+        "player": {
+          "x": 264.24,
+          "y": 0,
+          "vx": 200,
+          "vy": 0,
+          "blood": 5,
+          "dead": false,
+          "onGround": true,
+          "onWall": false,
+          "checkpoint": {
+            "x": 70,
+            "y": 0
+          }
+        },
+        "capabilities": [
+          "jump"
+        ],
+        "portals": 0,
+        "boss": null
+      },
+      {
+        "tick": 90,
+        "stage": 0,
+        "mode": "play",
+        "player": {
+          "x": 364.24,
+          "y": 58.61,
+          "vx": 200,
+          "vy": -246.67,
+          "blood": 5,
+          "dead": false,
+          "onGround": false,
+          "onWall": false,
+          "checkpoint": {
+            "x": 70,
+            "y": 0
+          }
+        },
+        "capabilities": [
+          "jump"
+        ],
+        "portals": 0,
+        "boss": null
+      },
+      {
+        "tick": 120,
+        "stage": 0,
+        "mode": "play",
+        "player": {
+          "x": 464.24,
+          "y": 25.61,
+          "vx": 200,
+          "vy": 369.33,
+          "blood": 5,
+          "dead": false,
+          "onGround": false,
+          "onWall": false,
+          "checkpoint": {
+            "x": 70,
+            "y": 0
+          }
+        },
+        "capabilities": [
+          "jump"
+        ],
+        "portals": 0,
+        "boss": null
+      },
+      {
+        "tick": 150,
+        "stage": 0,
+        "mode": "play",
+        "player": {
+          "x": 564.24,
+          "y": 0,
+          "vx": 200,
+          "vy": 0,
+          "blood": 5,
+          "dead": false,
+          "onGround": true,
+          "onWall": false,
+          "checkpoint": {
+            "x": 70,
+            "y": 0
+          }
+        },
+        "capabilities": [
+          "jump"
+        ],
+        "portals": 0,
+        "boss": null
+      },
+      {
+        "tick": 180,
+        "stage": 0,
+        "mode": "play",
+        "player": {
+          "x": 664.24,
+          "y": -22,
+          "vx": 200,
+          "vy": 0,
+          "blood": 5,
+          "dead": false,
+          "onGround": true,
+          "onWall": false,
+          "checkpoint": {
+            "x": 70,
+            "y": 0
+          }
+        },
+        "capabilities": [
+          "jump"
+        ],
+        "portals": 0,
+        "boss": null
+      },
+      {
+        "tick": 210,
+        "stage": 0,
+        "mode": "play",
+        "player": {
+          "x": 764.24,
+          "y": -36,
+          "vx": 200,
+          "vy": 186.67,
+          "blood": 5,
+          "dead": false,
+          "onGround": false,
+          "onWall": false,
+          "checkpoint": {
+            "x": 70,
+            "y": 0
+          }
+        },
+        "capabilities": [
+          "jump"
+        ],
+        "portals": 0,
+        "boss": null
+      },
+      {
+        "tick": 240,
+        "stage": 0,
+        "mode": "play",
+        "player": {
+          "x": 148.94,
+          "y": 0,
+          "vx": 200,
+          "vy": 0,
+          "blood": 4,
+          "dead": false,
+          "onGround": true,
+          "onWall": false,
+          "checkpoint": {
+            "x": 70,
+            "y": 0
+          }
+        },
+        "capabilities": [
+          "jump"
+        ],
+        "portals": 0,
+        "boss": null
+      },
+      {
+        "tick": 270,
+        "stage": 0,
+        "mode": "play",
+        "player": {
+          "x": 248.93,
+          "y": 0,
+          "vx": 200,
+          "vy": 0,
+          "blood": 4,
+          "dead": false,
+          "onGround": true,
+          "onWall": false,
+          "checkpoint": {
+            "x": 70,
+            "y": 0
+          }
+        },
+        "capabilities": [
+          "jump"
+        ],
+        "portals": 0,
+        "boss": null
+      },
+      {
+        "tick": 300,
+        "stage": 0,
+        "mode": "play",
+        "player": {
+          "x": 348.93,
+          "y": 0,
+          "vx": 200,
+          "vy": 0,
+          "blood": 4,
+          "dead": false,
+          "onGround": true,
+          "onWall": false,
+          "checkpoint": {
+            "x": 70,
+            "y": 0
+          }
+        },
+        "capabilities": [
+          "jump"
+        ],
+        "portals": 0,
+        "boss": null
+      },
+      {
+        "tick": 330,
+        "stage": 0,
+        "mode": "play",
+        "player": {
+          "x": 448.93,
+          "y": 0,
+          "vx": 200,
+          "vy": 0,
+          "blood": 4,
+          "dead": false,
+          "onGround": true,
+          "onWall": false,
+          "checkpoint": {
+            "x": 70,
+            "y": 0
+          }
+        },
+        "capabilities": [
+          "jump"
+        ],
+        "portals": 0,
+        "boss": null
+      },
+      {
+        "tick": 360,
+        "stage": 0,
+        "mode": "play",
+        "player": {
+          "x": 548.93,
+          "y": 0,
+          "vx": 200,
+          "vy": 0,
+          "blood": 4,
+          "dead": false,
+          "onGround": true,
+          "onWall": false,
+          "checkpoint": {
+            "x": 70,
+            "y": 0
+          }
+        },
+        "capabilities": [
+          "jump"
+        ],
+        "portals": 0,
+        "boss": null
+      },
+      {
+        "tick": 390,
+        "stage": 0,
+        "mode": "play",
+        "player": {
+          "x": 648.93,
+          "y": -22,
+          "vx": 200,
+          "vy": 0,
+          "blood": 4,
+          "dead": false,
+          "onGround": true,
+          "onWall": false,
+          "checkpoint": {
+            "x": 70,
+            "y": 0
+          }
+        },
+        "capabilities": [
+          "jump"
+        ],
+        "portals": 0,
+        "boss": null
+      },
+      {
+        "tick": 420,
+        "stage": 0,
+        "mode": "play",
+        "player": {
+          "x": 748.93,
+          "y": -24.33,
+          "vx": 200,
+          "vy": 70,
+          "blood": 4,
+          "dead": false,
+          "onGround": false,
+          "onWall": false,
+          "checkpoint": {
+            "x": 70,
+            "y": 0
+          }
+        },
+        "capabilities": [
+          "jump"
+        ],
+        "portals": 0,
+        "boss": null
+      },
+      {
+        "tick": 450,
+        "stage": 0,
+        "mode": "play",
+        "player": {
+          "x": 132.27,
+          "y": 0,
+          "vx": 199.98,
+          "vy": 0,
+          "blood": 3,
+          "dead": false,
+          "onGround": true,
+          "onWall": false,
+          "checkpoint": {
+            "x": 70,
+            "y": 0
+          }
+        },
+        "capabilities": [
+          "jump"
+        ],
+        "portals": 0,
+        "boss": null
+      },
+      {
+        "tick": 460,
+        "stage": 0,
+        "mode": "play",
+        "player": {
+          "x": 165.61,
+          "y": 0,
+          "vx": 200,
+          "vy": 0,
+          "blood": 3,
+          "dead": false,
+          "onGround": true,
+          "onWall": false,
+          "checkpoint": {
+            "x": 70,
+            "y": 0
+          }
+        },
+        "capabilities": [
+          "jump"
+        ],
+        "portals": 0,
+        "boss": null
+      }
+    ],
+    "nativeTrace": {
+      "version": 1,
+      "fixedHz": 60,
+      "runSeed": 1515870810,
+      "ticks": 460,
+      "truncated": false,
+      "stages": [
+        {
+          "tick": 0,
+          "stage": 0,
+          "seed": 1994704311
+        }
+      ],
+      "frames": [
+        [
+          0,
+          80,
+          2,
+          0,
+          0
+        ],
+        [
+          80,
+          47,
+          10,
+          0,
+          0
+        ],
+        [
+          127,
+          100,
+          2,
+          0,
+          0
+        ],
+        [
+          227,
+          53,
+          10,
+          0,
+          0
+        ],
+        [
+          280,
+          180,
+          2,
+          0,
+          0
+        ]
+      ]
+    },
+    "errors": [],
+    "checksum": 2473656732
+  },
+  "replay": {
+    "checksum": 2473656732,
+    "ticks": 460
+  },
+  "limitations": [
+    "This verifies deterministic fresh-run input playback and replay equivalence.",
+    "It is not a full campaign completion; no level, puzzle, boss, or ending is certified until a route pack reaches it through declared inputs."
+  ]
+}

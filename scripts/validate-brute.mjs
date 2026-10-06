@@ -3,7 +3,7 @@ import { spawnSync } from 'node:child_process';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import process from 'node:process';
-import puppeteer from 'puppeteer';
+import { launchChrome } from '../tests/launch-chrome.mjs';
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const evidenceDir=resolve(root,'docs/charters/03-brute/evidence/validation');
@@ -23,7 +23,7 @@ process.stderr.write(run.stderr||'');
 
 await mkdir(evidenceDir,{recursive:true});
 const pageErrors=[];
-const browser=await puppeteer.launch({
+const browser=await launchChrome({
   headless:true,protocolTimeout:60000,
   args:['--no-sandbox','--disable-background-timer-throttling','--disable-renderer-backgrounding']
 });

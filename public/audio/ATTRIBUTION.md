@@ -18,7 +18,7 @@ boss cue for each boss:
 | The Warden | “Iron Gavel Descent” | “Sentence of the Shield Warden” |
 | Frostfell | “Hearthfire in the Frost” | — |
 | Frost Sorcerer | “Glaciated Court of Glass” | “The Sorcerer’s Hall of Mirrors” |
-| Emberdeep | “The Eternal Furnace” | — |
+| Emberdeep | “Embers of the Weary Forge” | — |
 | Ember Colossus | “The Obsidian Foundry” | “Forge of the Molten Colossus” |
 | The Inversion | “Chamber of Inverted Gravity” | — |
 | The Void Tyrant | “Paradox Void Assault” | “Iron Oath of the Night Attack” |
@@ -39,6 +39,49 @@ gives way to **“Engine of the Frozen Garrison.”**
   at 192 kbps. Keep the original downloads with the project records.
 - Usage rights follow the owner's ElevenLabs plan terms at the time of generation;
   preserve that record with the project.
+
+## Act Two: the Aerth score
+
+Act Two uses the owner's **Aerth** score (generated 2026-09-20 for the 3D Bladefall, prompts
+in `docs/music/AERTH-SCORE-PROMPTS.md`), with the owner's permission (2026-09-23). Its warmer,
+folk-coloured palette is deliberate: out of the underworld, the light changes.
+
+| Stage | Exploration | Boss | Event |
+| --- | --- | --- | --- |
+| Thunder Cliffs | “Navigating the Red Wake” (the crossing) | “Chains of the Deep” (the Chained Hydra) | “Unburdening the Colossus” — plays once, when the last lock breaks |
+| The Landing Shores | “The Shore of Broken Ships” | “The Last Spark of Darrow” (while the Sunguard's bell rings) | “Safe Harbor” — once, at landfall; “The Breaking of the Keeps” — once, when the bell is silenced |
+| The Colony | “The Waystation Refuge” | “The Last Spark of Darrow” (a bell fight) | “Village Vigil” — once the colony has turned |
+| The Path to the Palace | “Towering Sea Cliffs” | “The Last Spark of Darrow” (the Sun Gate) | — |
+| Sunspire Palace | “White Marble Palace above the Clouds” | “The Fallen Champion Duel” (the King in Daylight) | “Chains of the Deep” — the hydra comes up out of the sea; “Passing the Flame” — the ride that ends Act Two |
+| The Fractured Outskirts (Act Three) | “Through the Void Breach” | “Crystalline Trials” (the Mile Sentinel) | — |
+| The Fractured Woods (Act Three) | “Hall of the Violet Discipline” | “The Archive of Violet Portals” (the C-side) | — |
+| The Fractured Updrafts (Act Three) | “Canyon Updrafts (fractured)” | “Archives of the Archmage” (the C-side) | — |
+| The Fractured Marksman (Act Three) | “Crosshairs over Open Ground (fractured)” | “The Wayfarer’s Hearth” (the C-side) | — |
+| The Fractured Causeway (Act Three) | “The Iron Causeway (fractured)” | “Iron Juggernaut (fractured)” (the C-side) | — |
+| The Fractured Keep (Act Three) | “Stony Whispers of the Keep (fractured)” | “Crystalline Trials” (the C-side) | — |
+| The Fractured Warden (Act Three) | “Iron Gavel Descent (fractured)” | “Sentence of the Shield Warden (fractured)” (the C-side) | — |
+| The Fractured Frostfell (Act Three) | “Hearthfire in the Frost (fractured)” | “Engine of the Frozen Garrison (fractured)” (the C-side) | — |
+| The Fractured Sorcerer (Act Three) | “Glaciated Court of Glass (fractured)” | “The Sorcerer’s Hall of Mirrors (fractured)” (the C-side) | — |
+| The Fractured Emberdeep (Act Three) | “Embers of the Weary Forge (fractured)” | “The Eternal Furnace (fractured)” (the C-side) | — |
+| The Fractured Colossus (Act Three) | “The Obsidian Foundry (fractured)” | “Forge of the Molten Colossus (fractured)” (the C-side) | — |
+| The Fractured Inversion (Act Three) | “Chamber of Inverted Gravity (fractured)” | “Abnormal Circumstances (fractured)” (the C-side) | — |
+| The Fractured Tyrant (Act Three) | “Paradox Void Assault (fractured)” | “Heat of Battle (fractured)” (the C-side) | — |
+| The Fractured King (Act Three) | “The Black Procession (fractured)” | “A Crown of Ashes (fractured)” (the C-side) | — |
+| The Fractured Line (Act Three) | “Chasing Daylight on Broken Rails (fractured)” | “ClockWork (fractured)” (the C-side) | — |
+| Fractured Cliffs (Act Three) | “Navigating the Red Wake (fractured)” | “Chains of the Deep (fractured)” (the C-side) | — |
+| Fractured Shores (Act Three) | “The Shore of Broken Ships (fractured)” | “The Last Spark of Darrow (fractured)” (the C-side) | — |
+| The Fractured Colony (Act Three) | “The Waystation Refuge (fractured)” | “Village Vigil (fractured)” (the C-side) | — |
+| The Fractured Path (Act Three) | “Towering Sea Cliffs (fractured)” | “Element (fractured)” (the C-side) | — |
+| Fractured Palace (Act Three) | “White Marble Palace above the Clouds (fractured)” | “The Fallen Champion (fractured)” (the C-side) | — |
+
+- Source downloads: `~/Downloads/songs (2)/` (19 takes). Prepared the same way as the
+  Bladefall score, to the Aerth doc's own targets: the crossing and the boss at −18 LUFS,
+  the release cue at −21 LUFS, true peak under −1 dBTP, 192 kbps MP3 (measured after:
+  −18.25, −18.26, −21.37 LUFS).
+- Landing Shores (2026-09-23), same two-pass loudnorm: the shore and the landfall at −21, the
+  bell fights and their stopping (the Aerth doc's 11C pair) at −18 (measured after: −21.26,
+  −21.33, −18.26, −18.26 LUFS). The Colony and the Path (2026-09-24), the same way at −21: −21.26,
+  −21.26, −21.63 LUFS.
 
 ## Retired from the score
 

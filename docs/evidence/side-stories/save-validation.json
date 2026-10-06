@@ -1,0 +1,67 @@
+{
+  "scope": "Real keyboard selection, Escape, browser reload and Continue; campaign and isolated level-select refusal persistence; in-progress rescue and completed/unclaimed refuge checkpoint fixtures survive browser reload/Continue.",
+  "results": [
+    {
+      "phase": "harsh",
+      "preview": false,
+      "actor": true,
+      "rewardHidden": true,
+      "soloAffected": true
+    },
+    {
+      "phase": "harsh",
+      "preview": true,
+      "actor": true,
+      "rewardHidden": true,
+      "soloAffected": false
+    },
+    {
+      "preview": false,
+      "checkpoint": "mid-rescue",
+      "phase": "active",
+      "step": 1,
+      "rescued": true,
+      "claimed": false,
+      "actorGone": false,
+      "rewardHidden": true,
+      "rescueDone": true,
+      "soloAffected": true
+    },
+    {
+      "preview": false,
+      "checkpoint": "completed-unclaimed",
+      "phase": "completed",
+      "step": 2,
+      "rescued": false,
+      "claimed": false,
+      "actorGone": true,
+      "rewardHidden": false,
+      "rescueDone": false,
+      "soloAffected": true
+    },
+    {
+      "preview": true,
+      "checkpoint": "mid-rescue",
+      "phase": "active",
+      "step": 1,
+      "rescued": true,
+      "claimed": false,
+      "actorGone": false,
+      "rewardHidden": true,
+      "rescueDone": true,
+      "soloAffected": false
+    },
+    {
+      "preview": true,
+      "checkpoint": "completed-unclaimed",
+      "phase": "completed",
+      "step": 2,
+      "rescued": false,
+      "claimed": false,
+      "actorGone": true,
+      "rewardHidden": false,
+      "rescueDone": false,
+      "soloAffected": false
+    }
+  ]
+}

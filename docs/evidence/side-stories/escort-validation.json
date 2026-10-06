@@ -1,0 +1,38 @@
+{
+  "scope": "Normal movement from local escort checkpoint. Earlier retrieval/destruction uses a saved-state fixture; no follower teleport or artificial movement.",
+  "result": [
+    {
+      "id": "recruit",
+      "waits": true,
+      "arrived": true,
+      "frames": 227,
+      "actorX": 6770,
+      "playerX": 6765,
+      "destination": 6770,
+      "helmetDropped": true,
+      "rescued": true
+    },
+    {
+      "id": "miner",
+      "waits": true,
+      "arrived": true,
+      "frames": 140,
+      "actorX": 1116,
+      "playerX": 1124.666666666667,
+      "destination": 1116,
+      "helmetDropped": false,
+      "rescued": false
+    },
+    {
+      "id": "defector",
+      "waits": true,
+      "arrived": true,
+      "frames": 101,
+      "actorX": 10950,
+      "playerX": 10943.333333333268,
+      "destination": 10950,
+      "helmetDropped": false,
+      "rescued": false
+    }
+  ]
+}

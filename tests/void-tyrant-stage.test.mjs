@@ -382,7 +382,7 @@ test('the crate puzzle is cut, and the climb the owner asked for is in its place
     const rise = byX[i].y - byX[i - 1].y;
     if(rise < 210){
       drops++;
-      const col = rungs.find(w => !shelves.some(sh => sh.x === w.x) && w.x < byX[i - 1].x && w.x > byX[i].x);
+      const col = rungs.find(w => w.x <= byX[i - 1].x && w.x > byX[i].x && w.y > byX[i].y);
       assert.ok(col && col.y > byX[i].y, `the ${rise} step at ${byX[i].x} has no drop column over it`);
     } else assert.ok(rise <= 350, `a ${rise} rise is beyond the kit`);
   }
@@ -515,4 +515,23 @@ test('room 4: the pair is the player\'s, and the zip-line is what throws you acr
   assert.match(carry, /if\(Math\.abs\(ex\.nx\|\|0\)>0\.7\)ent\.vy=-\(tune\.lift\|\|SEAM_CARRY_LIFT\);/, 'out of a wall mouth it arcs');
   assert.match(source, /const SEAM_CARRY_MAX=1200;/);
   assert.match(source, /const SEAM_CARRY_LIFT=1100;/);
+});
+
+test('refinement rewards live in optional places, not route triggers',()=>{
+ const caches=at(o=>o.journeyCache);
+ assert.equal(caches.length,2);
+ assert.ok(caches.every(o=>o.lore&&o.title&&o.text));
+ const loft=caches.find(o=>o.journeyCache==='secret:citadel-refuge-loft');
+ const vigil=caches.find(o=>o.journeyCache==='secret:citadel-vigil-cache');
+ assert.ok(loft&&loft.x>15300&&loft.y>200,'loft is over safe entry ground, not a crossing bypass');
+ assert.ok(vigil&&vigil.x>4180&&vigil.x<4560&&vigil.y<300,'cache is inside the optional chapel');
+ assert.doesNotMatch(fn('advanceTyrantParadox'),/BLOOD RESTORED|grantJourneyReward/);
+});
+
+test('last three T caps have five-bar slime and the former bare top is capped',()=>{
+ const tops=objAt(o=>o.voidSlime).sort((a,b)=>b.x-a.x);
+ assert.deepEqual(Array.from(tops,o=>o.x),[9520,9280,9040]);
+ assert.equal(tops[1].y,1680);assert.equal(tops[1].w,180);
+ assert.doesNotMatch(fn('completeTyrantReward'),/restoreBlood/);
+ assert.match(fn('setupParadoxBoss'),/bloodDamage:2/);
 });

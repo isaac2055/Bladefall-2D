@@ -1,0 +1,286 @@
+{
+  "scope": "Two browsers using production packet handlers over in-memory transport; simultaneous and staggered legal routes. Staggered moving-cutter recordings wait on the entrance for their recorded world phase using only idle frames.",
+  "runs": [
+    {
+      "room": 10,
+      "together": true,
+      "states": [
+        {
+          "complete": true,
+          "deaths": 0
+        },
+        {
+          "complete": true,
+          "deaths": 0
+        }
+      ]
+    },
+    {
+      "room": 12,
+      "together": true,
+      "states": [
+        {
+          "complete": true,
+          "deaths": 0
+        },
+        {
+          "complete": true,
+          "deaths": 0
+        }
+      ]
+    },
+    {
+      "room": 18,
+      "together": true,
+      "states": [
+        {
+          "complete": true,
+          "deaths": 0
+        },
+        {
+          "complete": true,
+          "deaths": 0
+        }
+      ]
+    },
+    {
+      "room": 21,
+      "together": true,
+      "states": [
+        {
+          "complete": true,
+          "deaths": 0
+        },
+        {
+          "complete": true,
+          "deaths": 0
+        }
+      ]
+    },
+    {
+      "room": 23,
+      "together": true,
+      "states": [
+        {
+          "complete": true,
+          "deaths": 0
+        },
+        {
+          "complete": true,
+          "deaths": 0
+        }
+      ]
+    },
+    {
+      "room": 25,
+      "together": true,
+      "states": [
+        {
+          "complete": true,
+          "deaths": 0
+        },
+        {
+          "complete": true,
+          "deaths": 0
+        }
+      ]
+    },
+    {
+      "room": 26,
+      "together": true,
+      "states": [
+        {
+          "complete": true,
+          "deaths": 0
+        },
+        {
+          "complete": true,
+          "deaths": 0
+        }
+      ]
+    },
+    {
+      "room": 27,
+      "together": true,
+      "states": [
+        {
+          "complete": true,
+          "deaths": 0
+        },
+        {
+          "complete": true,
+          "deaths": 0
+        }
+      ]
+    },
+    {
+      "room": 28,
+      "together": true,
+      "states": [
+        {
+          "complete": true,
+          "deaths": 0
+        },
+        {
+          "complete": true,
+          "deaths": 0
+        }
+      ]
+    },
+    {
+      "room": 29,
+      "together": true,
+      "states": [
+        {
+          "complete": true,
+          "deaths": 0
+        },
+        {
+          "complete": true,
+          "deaths": 0
+        }
+      ]
+    },
+    {
+      "room": 10,
+      "together": false,
+      "states": [
+        {
+          "complete": true,
+          "deaths": 0
+        },
+        {
+          "complete": true,
+          "deaths": 0
+        }
+      ]
+    },
+    {
+      "room": 12,
+      "together": false,
+      "states": [
+        {
+          "complete": true,
+          "deaths": 0
+        },
+        {
+          "complete": true,
+          "deaths": 0
+        }
+      ]
+    },
+    {
+      "room": 18,
+      "together": false,
+      "states": [
+        {
+          "complete": true,
+          "deaths": 0
+        },
+        {
+          "complete": true,
+          "deaths": 0
+        }
+      ]
+    },
+    {
+      "room": 21,
+      "together": false,
+      "states": [
+        {
+          "complete": true,
+          "deaths": 0
+        },
+        {
+          "complete": true,
+          "deaths": 0
+        }
+      ]
+    },
+    {
+      "room": 23,
+      "together": false,
+      "states": [
+        {
+          "complete": true,
+          "deaths": 0
+        },
+        {
+          "complete": true,
+          "deaths": 0
+        }
+      ]
+    },
+    {
+      "room": 25,
+      "together": false,
+      "states": [
+        {
+          "complete": true,
+          "deaths": 0
+        },
+        {
+          "complete": true,
+          "deaths": 0
+        }
+      ]
+    },
+    {
+      "room": 26,
+      "together": false,
+      "states": [
+        {
+          "complete": true,
+          "deaths": 0
+        },
+        {
+          "complete": true,
+          "deaths": 0
+        }
+      ]
+    },
+    {
+      "room": 27,
+      "together": false,
+      "states": [
+        {
+          "complete": true,
+          "deaths": 0
+        },
+        {
+          "complete": true,
+          "deaths": 0
+        }
+      ]
+    },
+    {
+      "room": 28,
+      "together": false,
+      "states": [
+        {
+          "complete": true,
+          "deaths": 0
+        },
+        {
+          "complete": true,
+          "deaths": 0
+        }
+      ]
+    },
+    {
+      "room": 29,
+      "together": false,
+      "states": [
+        {
+          "complete": true,
+          "deaths": 0
+        },
+        {
+          "complete": true,
+          "deaths": 0
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

@@ -6,15 +6,22 @@ await import('../public/bladefall-campaign.js');
 
 const Campaign = globalThis.BladefallCampaign;
 
-test('campaign blueprint catalog preserves all 16 progression-facing stages', () => {
+test('campaign blueprint catalog preserves campaign identities and appends two precision courses and the final battle', () => {
   const stages = Campaign.stageCatalog();
-  assert.equal(stages.length, 16);
+  assert.equal(stages.length, 45);
   assert.deepEqual(stages.map((stage) => stage.name), [
     'The Outskirts', 'Black Woods', 'Broken Causeway', 'The Updrafts',
     'Hollow Marksman', 'Ruined Keep', 'The Warden', 'Frostfell',
     'Frost Sorcerer', 'Emberdeep', 'Ember Colossus', 'The Inversion',
     'The Void Tyrant', 'The Abyss King', '(cut)', 'The Deep Line',
+    'Thunder Cliffs', 'The Landing Shores', 'The Colony', 'The Path to the Palace', 'Sunspire Palace',   // Act Two, stages 16-20
+    'The Fractured Outskirts', 'The Fractured Woods', 'The Fractured Updrafts', 'The Fractured Marksman', 'The Fractured Causeway', 'The Fractured Keep', 'The Fractured Warden', 'The Fractured Frostfell', 'The Fractured Sorcerer', 'The Fractured Emberdeep', 'The Fractured Colossus', 'The Fractured Inversion', 'The Fractured Tyrant', 'The Fractured King', 'The Fractured Line', 'Fractured Cliffs', 'Fractured Shores', 'The Fractured Colony', 'The Fractured Path', 'Fractured Palace', 'Celeste Standard', 'Fractured Celeste',   // Act Three's echoes, stages 21+
+    'The Cloaked Man', 'Precision Workshop',   // stage 43: Battle 42, the last fight
   ]);
+  assert.equal(stages[43].finalBattle, true);
+  assert.equal(stages[43].selectTag, '42');
+  assert.equal(stages[16].boss, 'hydra');
+  assert.equal(stages[17].boss, undefined, 'the Landing Shores end on a choice, not a boss');
   assert.equal(stages[13].boss, 'king');
   assert.equal(stages[15].secret, true);
   assert.equal(stages[14].len, 9700);
@@ -22,8 +29,8 @@ test('campaign blueprint catalog preserves all 16 progression-facing stages', ()
 
 test('blueprints validate and retain unique ids, systems, acts, and recipes', () => {
   const report = Campaign.validateBlueprints();
-  assert.deepEqual(report, { ok: true, errors: [], warnings: [], stages: 16 });
-  assert.equal(new Set(Campaign.blueprints.map((item) => item.id)).size, 16);
+  assert.deepEqual(report, { ok: true, errors: [], warnings: [], stages: 45 });
+  assert.equal(new Set(Campaign.blueprints.map((item) => item.id)).size, 45);
   assert.ok(Campaign.blueprints.every((item) => item.systems.length >= 4));
   assert.ok(Campaign.blueprints.every((item) => item.acts.length >= 3));
 });

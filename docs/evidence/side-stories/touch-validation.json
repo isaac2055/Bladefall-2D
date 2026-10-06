@@ -1,0 +1,13 @@
+{
+  "scope": "Native mobile landscape touch taps through two consecutive dialogue nodes, not programmatic clicks; native swipe scrolls the active dialogue without choosing an option.",
+  "result": {
+    "mode": "play",
+    "phase": "active",
+    "panel": false
+  },
+  "swipe": {
+    "node": "active",
+    "scroll": 83,
+    "mode": "conversation"
+  }
+}

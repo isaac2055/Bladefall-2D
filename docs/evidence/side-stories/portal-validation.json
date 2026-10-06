@@ -1,0 +1,111 @@
+{
+  "scope": "Actual portal key and walking/jumping between local slates. Earned-capability checkpoint fixture; tea-service retrieval is precompleted. Checks both wind funnel and chimes, cold channel and tea-table connections.",
+  "results": [
+    {
+      "id": "cartographer",
+      "first": [
+        {
+          "x": 1915,
+          "y": 0
+        }
+      ],
+      "chimesReached": true,
+      "chimesStep": 2,
+      "firstStep": 1,
+      "reached": true,
+      "player": {
+        "x": 2130.949371866522,
+        "y": 112
+      },
+      "target": {
+        "x": 2050,
+        "y": 56
+      },
+      "pair": [
+        {
+          "id": "anchor:side-story-wind",
+          "a": {
+            "x": 1915,
+            "y": 0
+          },
+          "b": {
+            "x": 2050,
+            "y": 56
+          }
+        }
+      ],
+      "step": 2,
+      "dialogue": "WIND CHIMES\n\nDone. Return to The Cartographer.\n\nContinue"
+    },
+    {
+      "id": "ember-pet",
+      "first": [
+        {
+          "x": 5215,
+          "y": 0
+        }
+      ],
+      "chimesReached": null,
+      "chimesStep": null,
+      "firstStep": 1,
+      "reached": true,
+      "player": {
+        "x": 5322.50537597271,
+        "y": 56
+      },
+      "target": {
+        "x": 5350,
+        "y": 56
+      },
+      "pair": [
+        {
+          "id": "player-pair",
+          "a": {
+            "x": 5215,
+            "y": 0
+          },
+          "b": {
+            "x": 5320.274239812298,
+            "y": 56
+          }
+        }
+      ],
+      "step": 1
+    },
+    {
+      "id": "neighbors",
+      "first": [
+        {
+          "x": 15405,
+          "y": 1200
+        }
+      ],
+      "chimesReached": null,
+      "chimesStep": null,
+      "firstStep": 2,
+      "reached": true,
+      "player": {
+        "x": 15285.198585417711,
+        "y": 1200
+      },
+      "target": {
+        "x": 15255,
+        "y": 1200
+      },
+      "pair": [
+        {
+          "id": "player-pair",
+          "a": {
+            "x": 15405,
+            "y": 1200
+          },
+          "b": {
+            "x": 15287.436362940249,
+            "y": 1200
+          }
+        }
+      ],
+      "step": 2
+    }
+  ]
+}

@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { resolve, extname } from 'node:path';
-import puppeteer from 'puppeteer';
+import { launchChrome } from './launch-chrome.mjs';
 
 // White Court foundation: authored arrival and permanent local service work.
 async function openHarness(t) {
@@ -21,7 +21,7 @@ async function openHarness(t) {
     } catch { res.writeHead(404); res.end(); }
   });
   await new Promise((r) => server.listen(0, '127.0.0.1', r));
-  const browser = await puppeteer.launch({ headless: true, protocolTimeout: 600_000,
+  const browser = await launchChrome({ headless: true, protocolTimeout: 600_000,
     executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
     args: ['--no-sandbox'] });
   t.after(async () => { const child=browser.process(); await browser.close(); for(const stream of child?.stdio||[])stream?.destroy(); server.closeAllConnections(); server.close(); });

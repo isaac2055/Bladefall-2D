@@ -1,0 +1,232 @@
+{
+  "generatedAt": "2026-09-29T19:55:34.349Z",
+  "checks": 36,
+  "scope": "Full-state deterministic input replays and focused combat interactions; not a human difficulty playtest.",
+  "rooms": [
+    {
+      "id": "combat-01",
+      "name": "An Opening",
+      "frames": 219,
+      "deaths": 0,
+      "parries": 1,
+      "pogos": 0,
+      "kills": 1,
+      "coils": 0,
+      "events": [
+        "enemy-tell",
+        "parry-ready",
+        "parry",
+        "strike",
+        "enemy-defeat",
+        "combat-gate",
+        "exit"
+      ]
+    },
+    {
+      "id": "combat-02",
+      "name": "Borrowed Wings",
+      "frames": 168,
+      "deaths": 0,
+      "parries": 0,
+      "pogos": 1,
+      "kills": 0,
+      "coils": 0,
+      "events": [
+        "jump",
+        "dash",
+        "strike",
+        "refill-dash",
+        "enemy-pogo",
+        "enemy-hit",
+        "land",
+        "exit"
+      ]
+    },
+    {
+      "id": "combat-03",
+      "name": "Return to Sender",
+      "frames": 226,
+      "deaths": 0,
+      "parries": 1,
+      "pogos": 0,
+      "kills": 0,
+      "coils": 1,
+      "events": [
+        "enemy-tell",
+        "enemy-shot",
+        "parry-ready",
+        "parry",
+        "shot-return",
+        "receiver-lit",
+        "combat-gate",
+        "exit"
+      ]
+    },
+    {
+      "id": "combat-04",
+      "name": "Keep the Landing",
+      "frames": 197,
+      "deaths": 0,
+      "parries": 0,
+      "pogos": 2,
+      "kills": 0,
+      "coils": 0,
+      "events": [
+        "jump",
+        "strike",
+        "enemy-pogo",
+        "enemy-hit",
+        "land",
+        "exit"
+      ]
+    },
+    {
+      "id": "combat-05",
+      "name": "Aim Above",
+      "frames": 263,
+      "deaths": 0,
+      "parries": 1,
+      "pogos": 0,
+      "kills": 0,
+      "coils": 1,
+      "events": [
+        "enemy-tell",
+        "enemy-shot",
+        "parry-ready",
+        "parry",
+        "shot-return",
+        "receiver-lit",
+        "combat-gate",
+        "exit"
+      ]
+    },
+    {
+      "id": "combat-06",
+      "name": "The Passing Shot",
+      "frames": 353,
+      "deaths": 0,
+      "parries": 1,
+      "pogos": 0,
+      "kills": 0,
+      "coils": 1,
+      "events": [
+        "jump",
+        "land",
+        "zip-start",
+        "enemy-tell",
+        "zip-stop",
+        "enemy-shot",
+        "parry-ready",
+        "parry",
+        "shot-return",
+        "dash",
+        "receiver-lit",
+        "combat-gate",
+        "zip-home",
+        "grab",
+        "climbhop",
+        "refill-dash",
+        "exit"
+      ]
+    },
+    {
+      "id": "combat-07",
+      "name": "Make a Breach",
+      "frames": 227,
+      "deaths": 0,
+      "parries": 0,
+      "pogos": 0,
+      "kills": 0,
+      "coils": 0,
+      "events": [
+        "jump",
+        "dash",
+        "enemy-tell",
+        "land",
+        "refill-dash",
+        "breach",
+        "exit"
+      ]
+    },
+    {
+      "id": "combat-08",
+      "name": "Leave the Light",
+      "frames": 254,
+      "deaths": 0,
+      "parries": 1,
+      "pogos": 0,
+      "kills": 0,
+      "coils": 1,
+      "events": [
+        "pickup",
+        "plate",
+        "held-open",
+        "enemy-tell",
+        "throw",
+        "lantern-land",
+        "enemy-shot",
+        "parry-ready",
+        "parry",
+        "shot-return",
+        "receiver-lit",
+        "combat-gate",
+        "exit"
+      ]
+    },
+    {
+      "id": "combat-09",
+      "name": "Two Angles",
+      "frames": 632,
+      "deaths": 0,
+      "parries": 2,
+      "pogos": 0,
+      "kills": 0,
+      "coils": 2,
+      "events": [
+        "phase",
+        "dash",
+        "refill-dash",
+        "enemy-tell",
+        "enemy-shot",
+        "parry-ready",
+        "parry",
+        "shot-return",
+        "receiver-lit",
+        "grab",
+        "climbhop",
+        "shard",
+        "land",
+        "combat-gate",
+        "exit"
+      ]
+    },
+    {
+      "id": "combat-10",
+      "name": "The Living Stair",
+      "frames": 345,
+      "deaths": 0,
+      "parries": 3,
+      "pogos": 1,
+      "kills": 2,
+      "coils": 1,
+      "events": [
+        "enemy-tell",
+        "parry-ready",
+        "parry",
+        "strike",
+        "enemy-defeat",
+        "jump",
+        "land",
+        "zip-start",
+        "zip-stop",
+        "enemy-pogo",
+        "enemy-shot",
+        "shot-return",
+        "receiver-lit",
+        "combat-gate",
+        "zip-home",
+        "exit"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "scope": "Task-transition clocks and carried-prop assertions; rendered completion fixtures for survey, escort and shop gift.",
+  "receipt": [
+    {
+      "stage": 0,
+      "task": "ballast",
+      "start": 0,
+      "end": 2.5,
+      "carried": false
+    },
+    {
+      "stage": 0,
+      "task": "bell",
+      "start": 0,
+      "end": 2.5,
+      "carried": true
+    },
+    {
+      "stage": 0,
+      "task": "hang",
+      "start": 0,
+      "end": 2.5,
+      "carried": false
+    },
+    {
+      "stage": 1,
+      "task": "line",
+      "start": 0,
+      "end": 2.5,
+      "carried": false
+    },
+    {
+      "stage": 1,
+      "task": "lantern",
+      "start": 0,
+      "end": 2.5,
+      "carried": true
+    },
+    {
+      "stage": 1,
+      "task": "floor",
+      "start": 0,
+      "end": 2.5,
+      "carried": true
+    },
+    {
+      "stage": 1,
+      "task": "table",
+      "start": 0,
+      "end": 2.5,
+      "carried": false
+    }
+  ],
+  "captures": [
+    {
+      "kind": "mara",
+      "t": 0,
+      "file": "docs/charters/opening-quest-refresh/presentation/animation-mara-0.png"
+    },
+    {
+      "kind": "mara",
+      "t": 0.8,
+      "file": "docs/charters/opening-quest-refresh/presentation/animation-mara-0.8.png"
+    },
+    {
+      "kind": "mara",
+      "t": 2,
+      "file": "docs/charters/opening-quest-refresh/presentation/animation-mara-2.png"
+    },
+    {
+      "kind": "bram",
+      "t": 0,
+      "file": "docs/charters/opening-quest-refresh/presentation/animation-bram-0.png"
+    },
+    {
+      "kind": "bram",
+      "t": 0.8,
+      "file": "docs/charters/opening-quest-refresh/presentation/animation-bram-0.8.png"
+    },
+    {
+      "kind": "bram",
+      "t": 2,
+      "file": "docs/charters/opening-quest-refresh/presentation/animation-bram-2.png"
+    },
+    {
+      "kind": "assessor",
+      "t": 0,
+      "file": "docs/charters/opening-quest-refresh/presentation/animation-assessor-0.png"
+    },
+    {
+      "kind": "assessor",
+      "t": 0.8,
+      "file": "docs/charters/opening-quest-refresh/presentation/animation-assessor-0.8.png"
+    },
+    {
+      "kind": "assessor",
+      "t": 2,
+      "file": "docs/charters/opening-quest-refresh/presentation/animation-assessor-2.png"
+    }
+  ]
+}

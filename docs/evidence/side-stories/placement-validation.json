@@ -1,0 +1,412 @@
+{
+  "scope": "Movement from each existing regional rest checkpoint to the optional actor. Earned-capability fixtures; approach diagnostic, not full campaign traversal.",
+  "results": [
+    {
+      "id": "gatekeeper",
+      "stage": 0,
+      "rest": {
+        "x": 414,
+        "y": 0
+      },
+      "actor": {
+        "x": 564,
+        "y": 0
+      },
+      "reached": true,
+      "position": {
+        "x": 531.5757578391701,
+        "y": 0
+      },
+      "mode": "play",
+      "nearbyWalls": []
+    },
+    {
+      "id": "refuge",
+      "stage": 1,
+      "rest": {
+        "x": 1240,
+        "y": 0
+      },
+      "actor": {
+        "x": 1390,
+        "y": 0
+      },
+      "reached": true,
+      "position": {
+        "x": 1357.5757578391697,
+        "y": 0
+      },
+      "mode": "play",
+      "nearbyWalls": []
+    },
+    {
+      "id": "defector",
+      "stage": 2,
+      "rest": {
+        "x": 10640,
+        "y": 130
+      },
+      "actor": {
+        "x": 10811.178164967701,
+        "y": 130
+      },
+      "reached": true,
+      "position": {
+        "x": 10777.57575759276,
+        "y": 130
+      },
+      "mode": "play",
+      "nearbyWalls": []
+    },
+    {
+      "id": "cartographer",
+      "stage": 3,
+      "rest": {
+        "x": 1800,
+        "y": 0
+      },
+      "actor": {
+        "x": 1950,
+        "y": 0
+      },
+      "reached": true,
+      "position": {
+        "x": 1917.5757578391697,
+        "y": 0
+      },
+      "mode": "play",
+      "nearbyWalls": []
+    },
+    {
+      "id": "recruit",
+      "stage": 4,
+      "rest": {
+        "x": 6300,
+        "y": 0
+      },
+      "actor": {
+        "x": 6450,
+        "y": 0
+      },
+      "reached": true,
+      "position": {
+        "x": 6417.57575783917,
+        "y": 0
+      },
+      "mode": "play",
+      "nearbyWalls": [
+        {
+          "x": 6500,
+          "y": 437.98911711937427,
+          "w": 62,
+          "h": 230
+        }
+      ]
+    },
+    {
+      "id": "archivist",
+      "stage": 5,
+      "rest": {
+        "x": 1600,
+        "y": 0
+      },
+      "actor": {
+        "x": 1750,
+        "y": 0
+      },
+      "reached": true,
+      "position": {
+        "x": 1717.5757578391697,
+        "y": 0
+      },
+      "mode": "play",
+      "nearbyWalls": []
+    },
+    {
+      "id": "keeper",
+      "stage": 6,
+      "rest": {
+        "x": 4200,
+        "y": 0
+      },
+      "actor": {
+        "x": 4050,
+        "y": 0
+      },
+      "reached": true,
+      "position": {
+        "x": 4082.436362940254,
+        "y": 0
+      },
+      "mode": "play",
+      "nearbyWalls": [
+        {
+          "x": 3895,
+          "y": 124,
+          "w": 18,
+          "h": 68
+        }
+      ]
+    },
+    {
+      "id": "winter",
+      "stage": 7,
+      "rest": {
+        "x": 980,
+        "y": 0
+      },
+      "actor": {
+        "x": 1130,
+        "y": 0
+      },
+      "reached": true,
+      "position": {
+        "x": 1097.563637059746,
+        "y": 0
+      },
+      "mode": "play",
+      "nearbyWalls": []
+    },
+    {
+      "id": "ember-pet",
+      "stage": 8,
+      "rest": {
+        "x": 5100,
+        "y": 0
+      },
+      "actor": {
+        "x": 5250,
+        "y": 0
+      },
+      "reached": true,
+      "position": {
+        "x": 5217.563637059745,
+        "y": 0
+      },
+      "mode": "play",
+      "nearbyWalls": []
+    },
+    {
+      "id": "quota",
+      "stage": 9,
+      "rest": {
+        "x": 980,
+        "y": 640
+      },
+      "actor": {
+        "x": 1130,
+        "y": 640
+      },
+      "reached": true,
+      "position": {
+        "x": 1097.563637059746,
+        "y": 640
+      },
+      "mode": "play",
+      "nearbyWalls": []
+    },
+    {
+      "id": "automaton",
+      "stage": 10,
+      "rest": {
+        "x": 1120,
+        "y": 0
+      },
+      "actor": {
+        "x": 1270,
+        "y": 0
+      },
+      "reached": true,
+      "position": {
+        "x": 1237.563637059746,
+        "y": 0
+      },
+      "mode": "play",
+      "nearbyWalls": []
+    },
+    {
+      "id": "neighbors",
+      "stage": 11,
+      "rest": {
+        "x": 15520,
+        "y": 1200
+      },
+      "actor": {
+        "x": 15370,
+        "y": 1200
+      },
+      "reached": true,
+      "position": {
+        "x": 15402.436362940249,
+        "y": 1200
+      },
+      "mode": "play",
+      "nearbyWalls": []
+    },
+    {
+      "id": "figure",
+      "stage": 12,
+      "rest": {
+        "x": 4300,
+        "y": 0
+      },
+      "actor": {
+        "x": 4240,
+        "y": 0
+      },
+      "reached": true,
+      "position": {
+        "x": 4274.202975799248,
+        "y": 0
+      },
+      "mode": "play",
+      "nearbyWalls": [
+        {
+          "x": 4180,
+          "y": 220,
+          "w": 26,
+          "h": 220
+        },
+        {
+          "x": 3950,
+          "y": 1500,
+          "w": 40,
+          "h": 1500
+        }
+      ]
+    },
+    {
+      "id": "alarm",
+      "stage": 13,
+      "rest": {
+        "x": 520,
+        "y": 0
+      },
+      "actor": {
+        "x": 670,
+        "y": 0
+      },
+      "reached": true,
+      "position": {
+        "x": 637.5636370597458,
+        "y": 0
+      },
+      "mode": "play",
+      "nearbyWalls": []
+    },
+    {
+      "id": "miner",
+      "stage": 15,
+      "rest": {
+        "x": 1116,
+        "y": 300
+      },
+      "actor": {
+        "x": 1266,
+        "y": 160
+      },
+      "reached": true,
+      "position": {
+        "x": 1231.2034457068607,
+        "y": 160
+      },
+      "mode": "play",
+      "nearbyWalls": []
+    },
+    {
+      "id": "sailors",
+      "stage": 16,
+      "rest": {
+        "x": 650,
+        "y": 100
+      },
+      "actor": {
+        "x": 800,
+        "y": 100
+      },
+      "reached": true,
+      "position": {
+        "x": 767.5636370597458,
+        "y": 100
+      },
+      "mode": "play",
+      "nearbyWalls": []
+    },
+    {
+      "id": "birthday",
+      "stage": 17,
+      "rest": {
+        "x": 340,
+        "y": 200
+      },
+      "actor": {
+        "x": 490,
+        "y": 200
+      },
+      "reached": true,
+      "position": {
+        "x": 457.563637059746,
+        "y": 200
+      },
+      "mode": "play",
+      "nearbyWalls": []
+    },
+    {
+      "id": "mother",
+      "stage": 18,
+      "rest": {
+        "x": 7150,
+        "y": 0
+      },
+      "actor": {
+        "x": 7300,
+        "y": 0
+      },
+      "reached": true,
+      "position": {
+        "x": 7267.563637059745,
+        "y": 0
+      },
+      "mode": "play",
+      "nearbyWalls": []
+    },
+    {
+      "id": "pilgrim",
+      "stage": 19,
+      "rest": {
+        "x": 410,
+        "y": 0
+      },
+      "actor": {
+        "x": 560,
+        "y": 0
+      },
+      "reached": true,
+      "position": {
+        "x": 527.5636370597459,
+        "y": 0
+      },
+      "mode": "play",
+      "nearbyWalls": []
+    },
+    {
+      "id": "garden",
+      "stage": 20,
+      "rest": {
+        "x": 620,
+        "y": 0
+      },
+      "actor": {
+        "x": 770,
+        "y": 0
+      },
+      "reached": true,
+      "position": {
+        "x": 737.5636370597458,
+        "y": 0
+      },
+      "mode": "play",
+      "nearbyWalls": []
+    }
+  ]
+}

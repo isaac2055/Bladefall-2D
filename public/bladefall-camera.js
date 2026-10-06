@@ -62,6 +62,9 @@
       const levelLength = Math.max(viewportWidth, finite(state.levelLength, viewportWidth));
       const verticalThreshold = finite(state.verticalThreshold, 420);
       const minimumY = finite(state.minimumY, 0);
+      // A region may also cap how high the view climbs (the Fractured Inversion keeps both of its floors
+      // in view while you stand on either). The floor still wins over the cap.
+      const maximumY = finite(state.maximumY, Infinity);
       const face = finite(player.face, 1) || 1;
       const velocityLook = clamp(finite(player.vx, 0) * 0.18, -viewportWidth * 0.12, viewportWidth * 0.12);
       const facingLook = face * viewportWidth * 0.075;
@@ -96,7 +99,7 @@
       // where you had been. Smoothed, capped, and off under reduced motion.
       const targetFall = settings.reducedMotion ? 0 : clamp(finite(player.vy, 0) * 0.17, -260, 260);
       fallLook = approach(fallLook, targetFall, 4.5, dt);
-      const desiredY = Math.max(minimumY, highY - verticalThreshold + fallLook);
+      const desiredY = Math.max(minimumY, Math.min(maximumY, highY - verticalThreshold + fallLook));
       const response = settings.reducedMotion ? 12 : framing.includes('boss') ? 5.6 : 7.2;
       x = approach(x, desiredX, response, dt);
       y = approach(y, desiredY, settings.reducedMotion ? 12 : 7.5, dt);

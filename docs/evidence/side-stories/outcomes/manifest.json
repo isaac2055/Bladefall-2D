@@ -1,0 +1,245 @@
+{
+  "scope": "Rendered return-visit outcome fixtures after all tasks, for completed and harsh branches of all 20 stories. Visual QA only; route mechanics are verified separately.",
+  "images": [
+    {
+      "id": "gatekeeper",
+      "title": "The Gatekeeper",
+      "branch": "completed",
+      "file": "docs/evidence/side-stories/outcomes/gatekeeper-completed.png"
+    },
+    {
+      "id": "gatekeeper",
+      "title": "The Gatekeeper",
+      "branch": "harsh",
+      "file": "docs/evidence/side-stories/outcomes/gatekeeper-harsh.png"
+    },
+    {
+      "id": "refuge",
+      "title": "The Place That Will Not Remain",
+      "branch": "completed",
+      "file": "docs/evidence/side-stories/outcomes/refuge-completed.png"
+    },
+    {
+      "id": "refuge",
+      "title": "The Place That Will Not Remain",
+      "branch": "harsh",
+      "file": "docs/evidence/side-stories/outcomes/refuge-harsh.png"
+    },
+    {
+      "id": "defector",
+      "title": "The Clockwork Defector",
+      "branch": "completed",
+      "file": "docs/evidence/side-stories/outcomes/defector-completed.png"
+    },
+    {
+      "id": "defector",
+      "title": "The Clockwork Defector",
+      "branch": "harsh",
+      "file": "docs/evidence/side-stories/outcomes/defector-harsh.png"
+    },
+    {
+      "id": "cartographer",
+      "title": "The Blind Cartographer",
+      "branch": "completed",
+      "file": "docs/evidence/side-stories/outcomes/cartographer-completed.png"
+    },
+    {
+      "id": "cartographer",
+      "title": "The Blind Cartographer",
+      "branch": "harsh",
+      "file": "docs/evidence/side-stories/outcomes/cartographer-harsh.png"
+    },
+    {
+      "id": "recruit",
+      "title": "Borrowed Courage",
+      "branch": "completed",
+      "file": "docs/evidence/side-stories/outcomes/recruit-completed.png"
+    },
+    {
+      "id": "recruit",
+      "title": "Borrowed Courage",
+      "branch": "harsh",
+      "file": "docs/evidence/side-stories/outcomes/recruit-harsh.png"
+    },
+    {
+      "id": "archivist",
+      "title": "The Archivist’s Burden",
+      "branch": "completed",
+      "file": "docs/evidence/side-stories/outcomes/archivist-completed.png"
+    },
+    {
+      "id": "archivist",
+      "title": "The Archivist’s Burden",
+      "branch": "harsh",
+      "file": "docs/evidence/side-stories/outcomes/archivist-harsh.png"
+    },
+    {
+      "id": "keeper",
+      "title": "Stand Aside",
+      "branch": "completed",
+      "file": "docs/evidence/side-stories/outcomes/keeper-completed.png"
+    },
+    {
+      "id": "keeper",
+      "title": "Stand Aside",
+      "branch": "harsh",
+      "file": "docs/evidence/side-stories/outcomes/keeper-harsh.png"
+    },
+    {
+      "id": "winter",
+      "title": "The Perfect Day",
+      "branch": "completed",
+      "file": "docs/evidence/side-stories/outcomes/winter-completed.png"
+    },
+    {
+      "id": "winter",
+      "title": "The Perfect Day",
+      "branch": "harsh",
+      "file": "docs/evidence/side-stories/outcomes/winter-harsh.png"
+    },
+    {
+      "id": "ember-pet",
+      "title": "A Little Winter",
+      "branch": "completed",
+      "file": "docs/evidence/side-stories/outcomes/ember-pet-completed.png"
+    },
+    {
+      "id": "ember-pet",
+      "title": "A Little Winter",
+      "branch": "harsh",
+      "file": "docs/evidence/side-stories/outcomes/ember-pet-harsh.png"
+    },
+    {
+      "id": "quota",
+      "title": "The Quota",
+      "branch": "completed",
+      "file": "docs/evidence/side-stories/outcomes/quota-completed.png"
+    },
+    {
+      "id": "quota",
+      "title": "The Quota",
+      "branch": "harsh",
+      "file": "docs/evidence/side-stories/outcomes/quota-harsh.png"
+    },
+    {
+      "id": "automaton",
+      "title": "Small Work",
+      "branch": "completed",
+      "file": "docs/evidence/side-stories/outcomes/automaton-completed.png"
+    },
+    {
+      "id": "automaton",
+      "title": "Small Work",
+      "branch": "harsh",
+      "file": "docs/evidence/side-stories/outcomes/automaton-harsh.png"
+    },
+    {
+      "id": "neighbors",
+      "title": "Tea on the Ceiling",
+      "branch": "completed",
+      "file": "docs/evidence/side-stories/outcomes/neighbors-completed.png"
+    },
+    {
+      "id": "neighbors",
+      "title": "Tea on the Ceiling",
+      "branch": "harsh",
+      "file": "docs/evidence/side-stories/outcomes/neighbors-harsh.png"
+    },
+    {
+      "id": "figure",
+      "title": "The Other Side",
+      "branch": "completed",
+      "file": "docs/evidence/side-stories/outcomes/figure-completed.png"
+    },
+    {
+      "id": "figure",
+      "title": "The Other Side",
+      "branch": "harsh",
+      "file": "docs/evidence/side-stories/outcomes/figure-harsh.png"
+    },
+    {
+      "id": "alarm",
+      "title": "The Last Alarm",
+      "branch": "completed",
+      "file": "docs/evidence/side-stories/outcomes/alarm-completed.png"
+    },
+    {
+      "id": "alarm",
+      "title": "The Last Alarm",
+      "branch": "harsh",
+      "file": "docs/evidence/side-stories/outcomes/alarm-harsh.png"
+    },
+    {
+      "id": "miner",
+      "title": "The Bell Below",
+      "branch": "completed",
+      "file": "docs/evidence/side-stories/outcomes/miner-completed.png"
+    },
+    {
+      "id": "miner",
+      "title": "The Bell Below",
+      "branch": "harsh",
+      "file": "docs/evidence/side-stories/outcomes/miner-harsh.png"
+    },
+    {
+      "id": "sailors",
+      "title": "Good Luck",
+      "branch": "completed",
+      "file": "docs/evidence/side-stories/outcomes/sailors-completed.png"
+    },
+    {
+      "id": "sailors",
+      "title": "Good Luck",
+      "branch": "harsh",
+      "file": "docs/evidence/side-stories/outcomes/sailors-harsh.png"
+    },
+    {
+      "id": "birthday",
+      "title": "All at Once",
+      "branch": "completed",
+      "file": "docs/evidence/side-stories/outcomes/birthday-completed.png"
+    },
+    {
+      "id": "birthday",
+      "title": "All at Once",
+      "branch": "harsh",
+      "file": "docs/evidence/side-stories/outcomes/birthday-harsh.png"
+    },
+    {
+      "id": "mother",
+      "title": "One Spoon at a Time",
+      "branch": "completed",
+      "file": "docs/evidence/side-stories/outcomes/mother-completed.png"
+    },
+    {
+      "id": "mother",
+      "title": "One Spoon at a Time",
+      "branch": "harsh",
+      "file": "docs/evidence/side-stories/outcomes/mother-harsh.png"
+    },
+    {
+      "id": "pilgrim",
+      "title": "The Lightest Pilgrim",
+      "branch": "completed",
+      "file": "docs/evidence/side-stories/outcomes/pilgrim-completed.png"
+    },
+    {
+      "id": "pilgrim",
+      "title": "The Lightest Pilgrim",
+      "branch": "harsh",
+      "file": "docs/evidence/side-stories/outcomes/pilgrim-harsh.png"
+    },
+    {
+      "id": "garden",
+      "title": "The Night Garden",
+      "branch": "completed",
+      "file": "docs/evidence/side-stories/outcomes/garden-completed.png"
+    },
+    {
+      "id": "garden",
+      "title": "The Night Garden",
+      "branch": "harsh",
+      "file": "docs/evidence/side-stories/outcomes/garden-harsh.png"
+    }
+  ]
+}

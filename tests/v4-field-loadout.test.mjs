@@ -1,3 +1,4 @@
+import '../public/bladefall-side-stories.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
@@ -37,7 +38,7 @@ function harness({stage=2,capability=true,preview=false}={}){
  const meta={soundOn:false,gold:500,run:null,capabilities:modules.capabilities.createState({acquired:capability?['jump','weapon']:['jump']}),
   equipment:modules.equipment.createState(),inventory:modules.inventory.createState(),shops:modules.shops.createProgress()};
  if(preview)G.sessionCapabilities=plain(meta.capabilities);
- const ctx=vm.createContext({Math,G,meta,console,mode:'play',SLOTIDS:['helmet','chest','legs'],QUICK_ITEM_X:58,QUICK_ITEM_Y:54,V4_LAST_STAGE:9,v4Region:i=>i>=0&&i<=9,
+ const ctx=vm.createContext({BladefallSideStories:globalThis.BladefallSideStories,Math,G,meta,console,mode:'play',SLOTIDS:['helmet','chest','legs'],QUICK_ITEM_X:58,QUICK_ITEM_Y:54,V4_LAST_STAGE:9,v4Region:i=>i>=0&&i<=9,
   GROUND_Y:700,RARITY:{common:{color:'#aaa'},rare:{color:'#ccf'}},BFCachedWeaponProfile:{key:null,weapon:null,value:null},
   BFWeaponProgressionModule:modules.weapons,BFEquipmentEconomyModule:modules.equipment,
   BFInventoryModule:modules.inventory,BFBloodModule:modules.blood,

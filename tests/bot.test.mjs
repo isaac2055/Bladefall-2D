@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { resolve, extname } from 'node:path';
-import puppeteer from 'puppeteer';
+import { launchChrome } from './launch-chrome.mjs';
 
 // The traversal bot must complete a whole authored level from its real spawn
 // with only that level's constitutional capabilities, and the inputs it reports
@@ -23,7 +23,7 @@ async function openBot(t) {
     } catch { res.writeHead(404); res.end(); }
   });
   await new Promise((r) => server.listen(0, '127.0.0.1', r));
-  const browser = await puppeteer.launch({ headless: true, protocolTimeout: 1_800_000,
+  const browser = await launchChrome({ headless: true, protocolTimeout: 1_800_000,
     executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
     args: ['--no-sandbox'] });
   t.after(async () => {

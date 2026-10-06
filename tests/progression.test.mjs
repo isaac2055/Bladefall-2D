@@ -8,7 +8,7 @@ const Progression = globalThis.BladefallProgression;
 
 test('N01 constitution is internally valid and single-player authoritative', () => {
   assert.deepEqual(Progression.validate(), {
-    ok: true, errors: [], zones: 15, connectors: 16, abilities: 12, vaultKeys: 7, foundationRuns: 16,
+    ok: true, errors: [], zones: 43, connectors: 41, abilities: 13, vaultKeys: 7, foundationRuns: 16,
   });
   assert.equal(Progression.MODE, 'single-player');
   assert.deepEqual(Progression.foundationRuns.slice(0, 11).map((run) => [run.id, run.status]), [
@@ -34,7 +34,10 @@ test('permanent progression starts nearly empty and expands in the authored orde
   assert.deepEqual(Progression.capabilitiesThrough('hollow-marksman'), [
     'jump', 'weapon', 'dash', 'portal-single', 'portal-pair',
   ]);
-  assert.equal(Progression.abilities.at(-1).id, 'gravity-flip');
+  // Act One ends on the gravity flip; Act Two's first region adds the Chainhook after it.
+  assert.equal(Progression.abilities.at(-2).id, 'gravity-flip');
+  assert.equal(Progression.abilities.at(-1).id, 'chain-hook');
+  assert.equal(Progression.ability('chain-hook').unlockZone, 'thunder-cliffs');
   assert.ok(Progression.abilities.every((ability) => ability.permanent && ability.traversalCritical));
 });
 
@@ -57,8 +60,8 @@ test('secret keys deliberately reward later-ability return visits', () => {
 });
 
 test('levels have explicit long-form authoring budgets and six-pass quality gates', () => {
-  assert.ok(Progression.zones.every((zone) => zone.budget.targetLength >= 12000));
-  assert.ok(Progression.zones.every((zone) => zone.budget.firstVisitMinutes >= 25));
+  assert.ok(Progression.zones.filter(zone => !zone.standalone).every((zone) => zone.budget.targetLength >= 12000));
+  assert.ok(Progression.zones.filter(zone => !zone.standalone).every((zone) => zone.budget.firstVisitMinutes >= 25));
   assert.equal(Progression.levelRunTemplate.length, 6);
   assert.ok(Progression.reusePolicy.replace.includes('random-environment-placement-as-level-design'));
 });

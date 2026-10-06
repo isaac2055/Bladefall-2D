@@ -1,0 +1,506 @@
+{
+  "scope": "Normal movement from regional rest checkpoint through simple quest props; earned capability fixtures. Diagnostic checks ordinary interaction selection.",
+  "results": [
+    {
+      "id": "gatekeeper",
+      "reached": true,
+      "tasks": [
+        {
+          "task": "bell",
+          "approach": true,
+          "arrived": true,
+          "selected": "bell",
+          "position": {
+            "x": 153.90595386380585,
+            "y": 56
+          },
+          "target": {
+            "x": 164,
+            "y": 56
+          }
+        },
+        {
+          "task": "hang",
+          "approach": true,
+          "arrived": true,
+          "selected": "hang",
+          "position": {
+            "x": 341.4227931062927,
+            "y": 0
+          },
+          "target": {
+            "x": 374,
+            "y": 0
+          }
+        }
+      ],
+      "returnReached": true,
+      "finished": true,
+      "rewardReached": true,
+      "rewardSelected": "reward",
+      "state": {
+        "phase": "completed",
+        "route": "short",
+        "node": "ending",
+        "step": 2,
+        "reward": 2,
+        "claimed": true,
+        "visits": 1,
+        "answers": [],
+        "resolution": null,
+        "rescued": false
+      }
+    },
+    {
+      "id": "refuge",
+      "reached": true,
+      "tasks": [
+        {
+          "task": "lantern",
+          "approach": true,
+          "arrived": true,
+          "selected": "lantern",
+          "position": {
+            "x": 1493.912779165228,
+            "y": 56
+          },
+          "target": {
+            "x": 1490,
+            "y": 56
+          }
+        },
+        {
+          "task": "table",
+          "approach": true,
+          "arrived": true,
+          "selected": "table",
+          "position": {
+            "x": 1470.4307837292772,
+            "y": 0
+          },
+          "target": {
+            "x": 1505,
+            "y": 0
+          }
+        }
+      ],
+      "returnReached": true,
+      "finished": true,
+      "rewardReached": true,
+      "rewardSelected": "reward",
+      "state": {
+        "phase": "completed",
+        "route": "short",
+        "node": "ending",
+        "step": 2,
+        "reward": 2,
+        "claimed": true,
+        "visits": 1,
+        "answers": [],
+        "resolution": null,
+        "rescued": false
+      }
+    },
+    {
+      "id": "archivist",
+      "reached": true,
+      "tasks": [
+        {
+          "task": "volume-one",
+          "approach": true,
+          "arrived": true,
+          "selected": "volume-one",
+          "position": {
+            "x": 1853.912779165228,
+            "y": 56
+          },
+          "target": {
+            "x": 1850,
+            "y": 56
+          }
+        },
+        {
+          "task": "volume-two",
+          "approach": true,
+          "arrived": true,
+          "selected": "volume-two",
+          "position": {
+            "x": 1948.4848058941107,
+            "y": 112
+          },
+          "target": {
+            "x": 1940,
+            "y": 112
+          }
+        },
+        {
+          "task": "volume-three",
+          "approach": true,
+          "arrived": true,
+          "selected": "volume-three",
+          "position": {
+            "x": 2042.344842146692,
+            "y": 168
+          },
+          "target": {
+            "x": 2030,
+            "y": 168
+          }
+        }
+      ],
+      "returnReached": true,
+      "finished": true,
+      "rewardReached": true,
+      "rewardSelected": "reward",
+      "state": {
+        "phase": "completed",
+        "route": "short",
+        "node": "ending",
+        "step": 3,
+        "reward": 2,
+        "claimed": true,
+        "visits": 1,
+        "answers": [],
+        "resolution": "keep",
+        "rescued": false
+      }
+    },
+    {
+      "id": "keeper",
+      "reached": true,
+      "tasks": [
+        {
+          "task": "door",
+          "approach": true,
+          "arrived": true,
+          "selected": "door",
+          "position": {
+            "x": 4011.769696969623,
+            "y": 0
+          },
+          "target": {
+            "x": 3980,
+            "y": 0
+          }
+        },
+        {
+          "task": "lunch",
+          "approach": true,
+          "arrived": true,
+          "selected": "lunch",
+          "position": {
+            "x": 3851.7054495199627,
+            "y": 112
+          },
+          "target": {
+            "x": 3860,
+            "y": 112
+          }
+        }
+      ],
+      "returnReached": true,
+      "finished": true,
+      "rewardReached": true,
+      "rewardSelected": "reward",
+      "state": {
+        "phase": "completed",
+        "route": "short",
+        "node": "ending",
+        "step": 2,
+        "reward": 2,
+        "claimed": true,
+        "visits": 1,
+        "answers": [],
+        "resolution": null,
+        "rescued": false
+      },
+      "gate": true
+    },
+    {
+      "id": "winter",
+      "reached": true,
+      "tasks": [
+        {
+          "task": "coal",
+          "approach": true,
+          "arrived": true,
+          "selected": "coal",
+          "position": {
+            "x": 1240.0261307755093,
+            "y": 56
+          },
+          "target": {
+            "x": 1230,
+            "y": 56
+          }
+        },
+        {
+          "task": "stove",
+          "approach": true,
+          "arrived": true,
+          "selected": "stove",
+          "position": {
+            "x": 1210.1006336260753,
+            "y": 0
+          },
+          "target": {
+            "x": 1245,
+            "y": 0
+          }
+        }
+      ],
+      "returnReached": true,
+      "finished": true,
+      "rewardReached": true,
+      "rewardSelected": "reward",
+      "state": {
+        "phase": "completed",
+        "route": "short",
+        "node": "ending",
+        "step": 2,
+        "reward": 2,
+        "claimed": true,
+        "visits": 1,
+        "answers": [],
+        "resolution": null,
+        "rescued": false
+      }
+    },
+    {
+      "id": "quota",
+      "reached": true,
+      "tasks": [
+        {
+          "task": "counter",
+          "approach": true,
+          "arrived": true,
+          "selected": "counter",
+          "position": {
+            "x": 1240.0261307755093,
+            "y": 696
+          },
+          "target": {
+            "x": 1230,
+            "y": 696
+          }
+        },
+        {
+          "task": "loop",
+          "approach": true,
+          "arrived": true,
+          "selected": "loop",
+          "position": {
+            "x": 1328.0607044222115,
+            "y": 752
+          },
+          "target": {
+            "x": 1320,
+            "y": 752
+          }
+        }
+      ],
+      "returnReached": true,
+      "finished": true,
+      "rewardReached": true,
+      "rewardSelected": "reward",
+      "state": {
+        "phase": "completed",
+        "route": "short",
+        "node": "ending",
+        "step": 2,
+        "reward": 2,
+        "claimed": true,
+        "visits": 1,
+        "answers": [],
+        "resolution": null,
+        "rescued": false
+      }
+    },
+    {
+      "id": "alarm",
+      "reached": true,
+      "tasks": [
+        {
+          "task": "signal",
+          "approach": true,
+          "arrived": true,
+          "selected": "signal",
+          "position": {
+            "x": 780.0261307755092,
+            "y": 56
+          },
+          "target": {
+            "x": 770,
+            "y": 56
+          }
+        }
+      ],
+      "returnReached": true,
+      "finished": true,
+      "rewardReached": true,
+      "rewardSelected": "reward",
+      "state": {
+        "phase": "completed",
+        "route": "short",
+        "node": "ending",
+        "step": 1,
+        "reward": 2,
+        "claimed": true,
+        "visits": 1,
+        "answers": [],
+        "resolution": null,
+        "rescued": false
+      }
+    },
+    {
+      "id": "birthday",
+      "reached": true,
+      "tasks": [
+        {
+          "task": "candles",
+          "approach": true,
+          "arrived": true,
+          "selected": "candles",
+          "position": {
+            "x": 600.0261307755092,
+            "y": 256
+          },
+          "target": {
+            "x": 590,
+            "y": 256
+          }
+        },
+        {
+          "task": "invite",
+          "approach": true,
+          "arrived": true,
+          "selected": "invite",
+          "position": {
+            "x": 570.100633626076,
+            "y": 200
+          },
+          "target": {
+            "x": 605,
+            "y": 200
+          }
+        }
+      ],
+      "returnReached": true,
+      "finished": true,
+      "rewardReached": true,
+      "rewardSelected": "reward",
+      "state": {
+        "phase": "completed",
+        "route": "short",
+        "node": "ending",
+        "step": 2,
+        "reward": 2,
+        "claimed": true,
+        "visits": 1,
+        "answers": [],
+        "resolution": null,
+        "rescued": false
+      }
+    },
+    {
+      "id": "pilgrim",
+      "reached": true,
+      "tasks": [
+        {
+          "task": "sack",
+          "approach": true,
+          "arrived": true,
+          "selected": "sack",
+          "position": {
+            "x": 670.0261307755093,
+            "y": 56
+          },
+          "target": {
+            "x": 660,
+            "y": 56
+          }
+        }
+      ],
+      "returnReached": true,
+      "finished": true,
+      "rewardReached": true,
+      "rewardSelected": "reward",
+      "state": {
+        "phase": "completed",
+        "route": "short",
+        "node": "ending",
+        "step": 1,
+        "reward": 2,
+        "claimed": true,
+        "visits": 1,
+        "answers": [],
+        "resolution": null,
+        "rescued": false
+      }
+    },
+    {
+      "id": "garden",
+      "reached": true,
+      "tasks": [
+        {
+          "task": "shutter-one",
+          "approach": true,
+          "arrived": true,
+          "selected": "shutter-one",
+          "position": {
+            "x": 880.0261307755092,
+            "y": 56
+          },
+          "target": {
+            "x": 870,
+            "y": 56
+          }
+        },
+        {
+          "task": "shutter-two",
+          "approach": true,
+          "arrived": true,
+          "selected": "shutter-two",
+          "position": {
+            "x": 968.0607044222112,
+            "y": 112
+          },
+          "target": {
+            "x": 960,
+            "y": 112
+          }
+        },
+        {
+          "task": "shutter-three",
+          "approach": true,
+          "arrived": true,
+          "selected": "shutter-three",
+          "position": {
+            "x": 1057.898000912236,
+            "y": 168
+          },
+          "target": {
+            "x": 1050,
+            "y": 168
+          }
+        }
+      ],
+      "returnReached": true,
+      "finished": true,
+      "rewardReached": true,
+      "rewardSelected": "reward",
+      "state": {
+        "phase": "completed",
+        "route": "short",
+        "node": "ending",
+        "step": 3,
+        "reward": 2,
+        "claimed": true,
+        "visits": 1,
+        "answers": [],
+        "resolution": null,
+        "rescued": false
+      }
+    }
+  ]
+}

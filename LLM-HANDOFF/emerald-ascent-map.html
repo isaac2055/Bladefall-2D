@@ -1,0 +1,110 @@
+<div id="bf-emerald-map">
+  <div class="viz-row"><h3>The Emerald Ascent</h3><span class="text-small text-muted">20 regions · nested diamonds</span></div>
+  <div class="em-map" aria-label="Proposed Bladefall world map"></div>
+  <div class="viz-row text-small em-legend"><span>━ Inner ascent</span><span class="em-green">━ Crown & outer circuit</span><span class="em-purple">┄ Unlockable connections</span></div>
+  <div class="em-detail" aria-live="polite"></div>
+</div>
+<style>
+#bf-emerald-map .em-map{position:relative}
+#bf-emerald-map svg{width:100%;display:block}
+#bf-emerald-map .em-node{position:absolute;transform:translate(-50%,-50%);display:flex;justify-content:center;align-items:center}
+#bf-emerald-map .em-node .btn{max-width:100%;white-space:normal}
+#bf-emerald-map .em-label{font-size:12px;fill:var(--foreground);font-weight:400}
+#bf-emerald-map .em-caption{font-size:12px;fill:var(--muted-foreground);font-weight:400}
+#bf-emerald-map .em-green{color:var(--green)}
+#bf-emerald-map .em-purple{color:var(--purple)}
+#bf-emerald-map .em-legend{gap:16px;margin-top:12px}
+#bf-emerald-map .em-detail{margin-top:12px;min-height:5em}
+</style>
+<script>
+(()=>{
+const root=document.getElementById('bf-emerald-map'),map=root.querySelector('.em-map');
+const regions=[
+ {id:1,name:'The Outskirts',x:0,y:7.5,detail:'The original start sits inside the expanded diamond. A path beneath it eventually opens into the Path to the Palace.'},
+ {id:2,name:'Black Woods',x:-1.2,y:6.35,detail:'The lower left of the original braid. A later passage connects the roots to the Colony on the outer descent.'},
+ {id:3,name:'Broken Causeway',x:1.2,y:6.35,detail:'The lower right of the original braid. Its outer bridge reaches the lower entrance of Sunspire Palace.'},
+ {id:4,name:'The Updrafts',x:-1.2,y:5.15,detail:'The middle left of the original braid. The Landing Shores connect from outside through a passage opened by restoring the windworks.'},
+ {id:5,name:'Hollow Marksman',x:1.2,y:5.15,detail:'The middle right of the original braid. A watchpost connection reaches the central terrace of Sunspire Palace.'},
+ {id:6,name:'Ruined Keep',x:0,y:3.95,detail:'The inner crossroads. The lower pair of paths meet here before the upper diamond splits toward Frostfell and the Warden.'},
+ {id:7,name:'The Warden',x:1.2,y:3.95,detail:'The upper right of the original braid. An opened prison passage reaches the high entrance of Sunspire Palace.'},
+ {id:8,name:'Frostfell',x:-1.2,y:3.95,detail:'The upper left of the original braid. Thunder Cliffs wrap around its outside; a restored lift connects the two.'},
+ {id:9,name:'Frost Sorcerer',x:0,y:2.8,detail:'The join between the existing nine regions and the new upper crown. The routes above mirror the three regions below.'},
+ {id:10,name:'Emberdeep',x:-1.2,y:1.65,detail:'The left inner facet of the new crown, mirroring Frostfell. It connects outward to the Void Tyrant and upward to the Deep Line.'},
+ {id:11,name:'Ember Colossus',x:0,y:1.65,detail:'The central crown region, mirroring Ruined Keep. A direct vertical route connects Frost Sorcerer to the Deep Line through the foundry.'},
+ {id:12,name:'The Inversion',x:1.2,y:1.65,detail:'The right inner facet of the crown, mirroring the Warden. It connects outward to the Abyss King and upward to the Deep Line.'},
+ {id:13,name:'The Void Tyrant',x:-1.45,y:.6,detail:'The crown’s raised left shoulder, tucked toward the Deep Line. Its outer route descends into Thunder Cliffs and around the original map.'},
+ {id:14,name:'The Abyss King',x:1.45,y:.6,detail:'The crown’s raised right shoulder, tucked toward the Deep Line. Its outer connection descends toward the upper reaches of Sunspire Palace.'},
+ {id:15,name:'The Deep Line',x:0,y:0,detail:'The new top point. All five upper-crown regions connect here, creating the converging facets of the emerald.'},
+ {id:16,name:'Thunder Cliffs',x:-2.1,y:2.5,detail:'The outer route beside Frostfell. It descends from the Void Tyrant toward the Landing Shores and opens a connection into Frostfell.'},
+ {id:17,name:'The Landing Shores',x:-2.65,y:4.8,detail:'The outer route beside the Updrafts, between Thunder Cliffs and the Colony.'},
+ {id:18,name:'The Colony',x:-1.9,y:7.1,detail:'The outer route beside Black Woods. It leads down toward the Path to the Palace.'},
+ {id:19,name:'The Path to the Palace',x:0,y:8.65,detail:'The new bottom point, below Outskirts. The Colony and Sunspire Palace meet here, closing the outer diamond.'},
+ {id:20,name:'Sunspire Palace',x:2.43,y:4.8,detail:'One continuous region forming the entire right edge of the emerald, from the Abyss King down to the Path to the Palace. Separate entrances connect it to the Warden, Hollow Marksman, and Broken Causeway; its outer ends connect to the Abyss King and the Path to the Palace.'}
+];
+const byId=Object.fromEntries(regions.map(r=>[r.id,r]));
+const inner=[[1,2],[1,3],[2,4],[3,5],[4,6],[5,6],[6,8],[6,7],[8,9],[7,9]];
+const crown=[[9,10],[9,11],[9,12],[10,13],[12,14],[13,15],[10,15],[11,15],[12,15],[14,15]];
+const outer=[[13,16],[16,17],[17,18],[18,19],[19,20],[20,14]];
+const spokes=[[16,8],[17,4],[18,2],[19,1],[20,7],[20,5],[20,3],[2,3],[4,5]];
+const edges=[...inner.map(e=>({e,kind:'inner'})),...crown.map(e=>({e,kind:'crown'})),...outer.map(e=>({e,kind:'outer'})),...spokes.map(e=>({e,kind:'spoke'}))];
+let selected=20;
+const saved=window.openai?.widgetState?.modelContent;if(byId[saved?.region])selected=saved.region;
+const ns='http://www.w3.org/2000/svg';
+function el(tag,attrs,parent){const e=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,v);parent.appendChild(e);return e;}
+function updateDetail(){const r=byId[selected],detail=root.querySelector('.em-detail');detail.replaceChildren();const title=document.createElement('strong');title.textContent=r.id+' · '+r.name;detail.appendChild(title);const text=document.createElement('div');text.className='text-small';text.textContent=r.detail;detail.appendChild(text);}
+function remember(){window.openai?.setWidgetState({modelContent:{map:'emerald-ascent',region:selected},privateContent:null})?.catch(()=>{});}
+function draw(){
+ const width=map.clientWidth;if(width<200)return;
+ const compact=width<600,margin=compact?28:67,step=compact?71:78,top=34,height=top+8.65*step+56;
+ const sx=(width-2*margin)/5.3;
+ const coord=(x,y)=>[width/2+x*sx,top+y*step];
+ const point=id=>{const r=byId[id];return coord(r.x,r.y);};
+ const nwidth=compact?42:Math.min(120,sx*1.1),nh=compact?38:44;
+ map.replaceChildren();map.style.height=height+'px';
+ const svg=el('svg',{viewBox:`0 0 ${width} ${height}`,width,height,role:'img','aria-label':'Twenty regions forming nested emerald diamonds: the original nine inside, a six-region crown above, four regions down the outer left and bottom, and Sunspire Palace spanning the outer right.'},map);
+ el('title',{},svg).textContent='The Emerald Ascent — proposed world topology';
+ el('desc',{},svg).textContent='The Deep Line is the apex. The Path to the Palace is the bottom point. Sunspire Palace is a single tall region on the right with three connections to the original braid.';
+ const polygon=(ids,opacity)=>el('polygon',{points:ids.map(id=>point(id).join(',')).join(' '),fill:'var(--green)','fill-opacity':opacity,stroke:'none'},svg);
+ // The large facets follow the proposed topology, with three smaller diamonds inside it.
+ el('polygon',{points:[point(15),point(13),point(16),point(17),point(18),point(19),coord(1.9,7.1),coord(2.65,4.8),coord(2.1,2.5),point(14)].map(p=>p.join(',')).join(' '),fill:'var(--green)','fill-opacity':.035,stroke:'none'},svg);
+ polygon([15,13,9],.07);polygon([15,9,14],.045);
+ polygon([13,16,8,9],.04);polygon([14,9,7,20],.075);
+ polygon([16,17,4,8],.08);polygon([17,18,2,4],.04);
+ polygon([18,19,1,2],.09);polygon([20,19,1,3],.045);
+ polygon([1,2,4,6,5,3],.045);polygon([6,8,9,7],.09);polygon([9,10,15,12],.04);
+ // Sunspire is the entire outer right flank, drawn as one continuous territory.
+ const palaceOuter=[[1.45,.6],[2.1,2.5],[2.65,4.8],[1.9,7.1],[0,8.65]];
+ const palaceInner=[[1.45,.6],[1.62,2.58],[2.18,4.8],[1.48,6.92],[.35,8.02],[0,8.65]];
+ const palacePoints=[...palaceOuter,...palaceInner.slice(1,-1).reverse()];
+ el('polygon',{'data-region-territory':'20',points:palacePoints.map(p=>coord(...p).join(',')).join(' '),fill:'var(--green)','fill-opacity':selected===20?.17:.1,stroke:'var(--green)','stroke-opacity':.6,'stroke-width':1.3},svg);
+ function palacePort(id){
+  const y=byId[id].y;
+  for(let i=1;i<palaceInner.length;i++){
+   const [x0,y0]=palaceInner[i-1],[x1,y1]=palaceInner[i];
+   if(y>=y0&&y<=y1)return coord(x0+(x1-x0)*(y-y0)/(y1-y0),y);
+  }
+  return point(20);
+ }
+ function end(id,other){return id===20&&[7,5,3].includes(other)?palacePort(other):point(id);}
+ for(const {e:[a,b],kind} of edges){
+  const [x,y]=end(a,b),[xx,yy]=end(b,a),on=a===selected||b===selected;
+  const color=kind==='spoke'?'var(--purple)':kind==='inner'?'var(--foreground)':'var(--green)';
+  let path=`M${x},${y}L${xx},${yy}`;
+  if(kind==='outer'&&[a,b].includes(20)){const other=a===20?b:a,route=other===14?[point(20),coord(1.86,2.54),point(14)]:[point(20),coord(1.69,7.01),point(19)];path=route.map((p,i)=>(i?'L':'M')+p.join(',')).join('');}
+  el('path',{d:path,fill:'none',stroke:color,'stroke-width':on?2:1.3,'stroke-opacity':on?.9:kind==='inner'?.27:.43,'stroke-dasharray':kind==='spoke'?'4 5':'none'},svg);
+ }
+ for(const id of [7,5,3]){const [x,y]=palacePort(id);el('circle',{cx:x,cy:y,r:2.7,fill:'var(--purple)'},svg);}
+ for(const r of regions){
+  const [x,y]=point(r.id),host=document.createElement('div');host.className='em-node';host.style.left=x+'px';host.style.top=y+'px';host.style.width=nwidth+'px';
+  const button=document.createElement('button');button.type='button';button.className='btn btn-block';button.textContent=compact?String(r.id):r.id+' · '+r.name;button.setAttribute('aria-label',r.id+' · '+r.name);button.setAttribute('aria-pressed',String(r.id===selected));button.dataset.tooltip=r.id+' · '+r.name;host.appendChild(button);map.appendChild(host);
+  button.addEventListener('click',()=>{selected=r.id;draw();remember();});
+ }
+ if(!compact){const [x,y]=point(20);const t=el('text',{x,y:y+55,class:'em-caption','text-anchor':'middle'},svg);t.textContent='Entire right flank';}
+ const [startX,startY]=point(1);const start=el('text',{x:startX,y:startY+37,class:'em-caption','text-anchor':'middle'},svg);start.textContent='Original start';
+ updateDetail();
+}
+new ResizeObserver(draw).observe(map);
+window.addEventListener('openai:set_globals',event=>{const state=event.detail?.globals?.widgetState?.modelContent;if(byId[state?.region]){selected=state.region;draw();}});
+draw();
+})();
+</script>

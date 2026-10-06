@@ -1,0 +1,39 @@
+{
+  "scope": "Local checkpoint and earned Chainhook fixtures. Actual cart pushing, follower movement, cart resume and Chainhook input; real ship drift from a harbour-wake event fixture.",
+  "result": {
+    "miner": {
+      "wasRiding": true,
+      "parked": true,
+      "pushed": 80.66666666666333,
+      "frames": 62,
+      "raised": true,
+      "arrived": true,
+      "ready": true,
+      "resumed": true,
+      "player": {
+        "x": 822.2854934947586,
+        "y": 278.9738351664734
+      },
+      "hoist": {
+        "x": 1476,
+        "y": 160
+      }
+    },
+    "sailors": {
+      "hooked": true,
+      "recovered": true,
+      "player": {
+        "x": 900,
+        "y": 188
+      },
+      "target": {
+        "x": 900,
+        "y": 156
+      },
+      "shipShift": -250.00000000000057,
+      "actorShift": -250.00000000000057,
+      "supportOffset": 45,
+      "hookOffset": 100
+    }
+  }
+}

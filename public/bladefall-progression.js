@@ -45,10 +45,41 @@
     // actually lies. Its stage slot survives in the campaign table only so that every
     // stageIndex after it keeps its number.
     ['deep-line', 15, 'The Deep Line', 0, 6, 'truth-route', 13950, 48, 12],
+    // ACT TWO. Across the sea from the Throne's beach; the act draws on its own chart, so
+    // its grid position only has to sit clear of Act One's rows.
+    ['thunder-cliffs', 16, 'Thunder Cliffs', 2, 8, 'boss', 12000, 25, 8],
+    ['landing-shores', 17, 'The Landing Shores', 3, 8, 'wilds', 12800, 25, 8],
+    ['colony', 18, 'The Colony', 4, 8, 'settlement', 12000, 25, 8],
+    ['palace-path', 19, 'The Path to the Palace', 5, 8, 'wilds', 12000, 25, 8],
+    ['sunspire', 20, 'Sunspire Palace', 6, 8, 'boss', 12000, 30, 10],
+    ['fractured-outskirts', 21, 'The Fractured Outskirts', 1, 9, 'boss', 12000, 25, 8],
+    ['fractured-woods', 22, 'The Fractured Woods', 2, 9, 'boss', 12000, 25, 8],
+    ['fractured-updrafts', 23, 'The Fractured Updrafts', 4, 9, 'boss', 12000, 25, 8],
+    ['fractured-marksman', 24, 'The Fractured Marksman', 5, 9, 'boss', 12000, 25, 8],
+    ['fractured-causeway', 25, 'The Fractured Causeway', 3, 9, 'boss', 12000, 25, 8],
+    ['fractured-keep', 26, 'The Fractured Keep', 6, 9, 'boss', 12000, 25, 8],
+    ['fractured-warden', 27, 'The Fractured Warden', 7, 9, 'boss', 12000, 25, 8],
+    ['fractured-frostfell', 28, 'The Fractured Frostfell', 8, 9, 'boss', 12000, 25, 8],
+    ['fractured-sorcerer', 29, 'The Fractured Sorcerer', 9, 9, 'boss', 12000, 25, 8],
+    ['fractured-emberdeep', 30, 'The Fractured Emberdeep', 10, 9, 'boss', 12000, 25, 8],
+    ['fractured-colossus', 31, 'The Fractured Colossus', 11, 9, 'boss', 12000, 25, 8],
+    ['fractured-inversion', 32, 'The Fractured Inversion', 12, 9, 'boss', 12000, 25, 8],
+    ['fractured-tyrant', 33, 'The Fractured Tyrant', 13, 9, 'boss', 12000, 25, 8],
+    ['fractured-king', 34, 'The Fractured King', 14, 9, 'boss', 12000, 25, 8],
+    ['fractured-line', 35, 'The Fractured Line', 15, 9, 'boss', 12000, 25, 8],
+    ['fractured-cliffs', 36, 'Fractured Cliffs', 16, 9, 'boss', 12000, 25, 8],
+    ['fractured-shores', 37, 'Fractured Shores', 17, 9, 'boss', 12000, 25, 8],
+    ['fractured-colony', 38, 'The Fractured Colony', 18, 9, 'boss', 12000, 25, 8],
+    ['fractured-path', 39, 'The Fractured Path', 19, 9, 'boss', 12000, 25, 8],
+    ['fractured-palace', 40, 'Fractured Palace', 20, 9, 'boss', 12000, 25, 8],
+    ['celeste-standard', 41, 'Celeste Standard', 22, 1, 'route', 44000, 20, 2],
+    ['fractured-celeste', 42, 'Fractured Celeste', 22, 2, 'route', 24200, 18, 1],
+    ['cloaked-man', 43, 'The Cloaked Man', 22, 3, 'boss', 5000, 12, 6],
   ];
 
   const zones = zoneRecords.map(([id, stageIndex, name, column, row, role, targetLength, firstVisitMinutes, practicedMinutes]) => ({
     id, stageIndex, name, position: { column, row }, role,
+    standalone: stageIndex === 41 || stageIndex === 42 || stageIndex === 43,
     budget: { targetLength, firstVisitMinutes, practicedMinutes },
   }));
 
@@ -65,6 +96,8 @@
     ['companion-command', 'emberdeep', 'companion', 10],
     ['downward-strike', 'ember-colossus', 'combat-movement', 11],
     ['gravity-flip', 'inversion', 'movement', 12],
+    // Act Two's one new verb: Oren's hook, left in the Chained Hydra's broken collar.
+    ['chain-hook', 'thunder-cliffs', 'movement', 13],
   ];
 
   const abilities = abilityRecords.map(([id, unlockZone, family, order]) => ({
@@ -101,6 +134,39 @@
     // it started in: the Deep Line's far end is the Ruined Keep's east side, which
     // closes the world into a loop instead of a dead end.
     connector('deep-line-keep', 'deep-line', 'ruined-keep', 'rail-tunnel', []),
+    // ACT TWO. The boat built from the three ship parts goes out from the Throne's beach.
+    // The topology is two-way like every road; the RIDE back is Act Two's ending (the
+    // hydra carries you), so no runtime branch returns across it yet.
+    connector('king-thunder-cliffs', 'abyss-king', 'thunder-cliffs', 'sea-crossing', []),
+    // Cast off from the harbour and the current runs the holed boat onto the Landing Shores.
+    connector('cliffs-landing', 'thunder-cliffs', 'landing-shores', 'sea-crossing', ['chain-hook']),
+    // The Colony's gate: walked both ways, so the man kneeling at it can still be reached.
+    connector('shores-colony', 'landing-shores', 'colony', 'colony-gate', []),
+    // Out of the Colony by the road east, up the mountain. Leaving closes the choice.
+    connector('colony-path', 'colony', 'palace-path', 'mountain-road', []),
+    // Through the broken Sun Gate into the palace.
+    connector('path-sunspire', 'palace-path', 'sunspire', 'sun-gate', []),
+    // Act Three: the hydra carries you back to the first road, now an echo.
+    connector('sunspire-fractured', 'sunspire', 'fractured-outskirts', 'hydra-ride', []),
+    connector('fo-fw', 'fractured-outskirts', 'fractured-woods', 'echo-road', []),
+    connector('fw-fc', 'fractured-woods', 'fractured-causeway', 'echo-road', []),
+    connector('fu-fm', 'fractured-updrafts', 'fractured-marksman', 'echo-road', []),
+    connector('fc-fu', 'fractured-causeway', 'fractured-updrafts', 'echo-road', []),
+    connector('fm-fk', 'fractured-marksman', 'fractured-keep', 'echo-road', []),
+    connector('fk-fw', 'fractured-keep', 'fractured-warden', 'echo-road', []),
+    connector('fw-ff', 'fractured-warden', 'fractured-frostfell', 'echo-road', []),
+    connector('ff-fs', 'fractured-frostfell', 'fractured-sorcerer', 'echo-road', []),
+    connector('fs-fe', 'fractured-sorcerer', 'fractured-emberdeep', 'echo-road', []),
+    connector('fe-fcl', 'fractured-emberdeep', 'fractured-colossus', 'echo-road', []),
+    connector('fcl-fi', 'fractured-colossus', 'fractured-inversion', 'echo-road', []),
+    connector('fi-ft', 'fractured-inversion', 'fractured-tyrant', 'echo-road', []),
+    connector('ft-fk', 'fractured-tyrant', 'fractured-king', 'echo-road', []),
+    connector('fk-fl', 'fractured-king', 'fractured-line', 'echo-road', []),
+    connector('fl-fc', 'fractured-line', 'fractured-cliffs', 'echo-road', []),
+    connector('fc-fs', 'fractured-cliffs', 'fractured-shores', 'echo-road', []),
+    connector('fs-fco', 'fractured-shores', 'fractured-colony', 'echo-road', []),
+    connector('fco-fp', 'fractured-colony', 'fractured-path', 'echo-road', []),
+    connector('fp-fpa', 'fractured-path', 'fractured-palace', 'echo-road', []),
   ];
 
   const keys = [
@@ -118,6 +184,7 @@
     'ruined-keep', 'hollow-marksman', 'updrafts', 'black-woods', 'outskirts', 'warden',
     'frostfell', 'warden', 'outskirts', 'black-woods', 'brute', 'frost-sorcerer',
     'emberdeep', 'ember-colossus', 'inversion', 'void-tyrant', 'abyss-king',
+    'thunder-cliffs', 'landing-shores', 'colony', 'palace-path', 'sunspire',
   ];
 
   const invariants = [
@@ -184,8 +251,9 @@
     if (MODE !== 'single-player') errors.push('foundation mode must be single-player');
     // FIFTEEN since the Gilded Vault was cut; the campaign keeps its stage slot inert
     // so that no stageIndex after it shifts, but it is not a zone any more.
-    if (zones.length !== 15 || !unique(zones.map((zone) => zone.id)) || !unique(zones.map((zone) => zone.stageIndex))) errors.push('zones must uniquely cover all 15 reachable stages');
-    if (abilities.length !== 12 || !unique(abilities.map((ability) => ability.id)) || !unique(abilities.map((ability) => ability.order))) errors.push('abilities must have a unique 12-step progression');
+    // SIXTEEN with Act Two's first region; the Chainhook makes the ladder thirteen.
+    if (zones.length !== 43 || !unique(zones.map((zone) => zone.id)) || !unique(zones.map((zone) => zone.stageIndex))) errors.push('zones must uniquely cover 40 campaign regions, two standalone courses and the final battle');
+    if (abilities.length !== 13 || !unique(abilities.map((ability) => ability.id)) || !unique(abilities.map((ability) => ability.order))) errors.push('abilities must have a unique 13-step progression');
     if (keys.length !== 7 || !unique(keys.map((key) => key.id))) errors.push('the Vault requires seven unique keys');
     if (foundationRuns.length !== 16 || foundationRuns.some((run) => run.status !== 'complete')) errors.push('foundation ledger must have N01 through N16 complete');
 
@@ -206,8 +274,12 @@
       if (reached.has(item.endpoints[0])) reached.add(item.endpoints[1]);
       if (reached.has(item.endpoints[1])) reached.add(item.endpoints[0]);
     }
-    if (reached.size !== zones.length) errors.push('physical world graph is disconnected');
+    if (zones.some(zone => !zone.standalone && !reached.has(zone.id))) errors.push('physical world graph is disconnected');
 
+    for (const zone of zones.filter(zone => zone.standalone)) {
+      if (connectors.some(item => item.endpoints.includes(zone.id))) errors.push(`standalone course ${zone.id} leaked into the campaign graph`);
+      if (zone.budget.targetLength <= 0) errors.push(`standalone course ${zone.id} needs a positive length`);
+    }
     const acquired = new Set();
     for (let index = 0; index < intendedItinerary.length; index++) {
       const zoneId = intendedItinerary[index];
@@ -222,7 +294,7 @@
     if (lineRoute?.bossClear !== 'abyss-king') errors.push('the Deep Line must require the final boss');
     if (!connectionBetween('abyss-king', 'deep-line')) errors.push('Deep Line must physically follow the King');
     if (!connectionBetween('deep-line', 'ruined-keep')) errors.push('the Deep Line must surface at the Ruined Keep');
-    for (const zone of zones) if (zone.budget.targetLength < 12000 || zone.budget.firstVisitMinutes < 25) errors.push(`zone ${zone.id} is below the authored scale floor`);
+    for (const zone of zones.filter(zone => !zone.standalone)) if (zone.budget.targetLength < 12000 || zone.budget.firstVisitMinutes < 25) errors.push(`zone ${zone.id} is below the authored scale floor`);
 
     return Object.freeze({
       ok: errors.length === 0,

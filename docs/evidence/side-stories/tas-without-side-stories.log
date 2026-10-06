@@ -1,0 +1,27 @@
+✖ basic jump has correct initial velocity and arcs under gravity (3736.634208ms)
+✔ coyote time works at both boundaries (3564.602625ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 1
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7539.268209
+
+✖ failing tests:
+
+test at scripts/.side-story-tas-comparison.mjs:100:1
+✖ basic jump has correct initial velocity and arcs under gravity (3736.634208ms)
+  AssertionError [ERR_ASSERTION]: frame 20: gravity increment: -23.833333333333464 vs -13.333333333333467
+      at near (file:///Users/computer/Projects/Bladefall-2D%20Antigravity/scripts/.side-story-tas-comparison.mjs:96:10)
+      at TestContext.<anonymous> (file:///Users/computer/Projects/Bladefall-2D%20Antigravity/scripts/.side-story-tas-comparison.mjs:131:5)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

@@ -1,0 +1,486 @@
+{
+  "scope": "Dialogue choices, task dispatch, persistence and reward integration. Does not prove physical route or unique task mechanics.",
+  "results": [
+    {
+      "id": "gatekeeper",
+      "stage": 0,
+      "route": "short",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "gatekeeper",
+      "stage": 0,
+      "route": "medium",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "gatekeeper",
+      "stage": 0,
+      "route": "harsh",
+      "phase": "harsh",
+      "reward": 0,
+      "claimed": false
+    },
+    {
+      "id": "refuge",
+      "stage": 1,
+      "route": "short",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "refuge",
+      "stage": 1,
+      "route": "medium",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "refuge",
+      "stage": 1,
+      "route": "harsh",
+      "phase": "harsh",
+      "reward": 0,
+      "claimed": false
+    },
+    {
+      "id": "defector",
+      "stage": 2,
+      "route": "short",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "defector",
+      "stage": 2,
+      "route": "medium",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "defector",
+      "stage": 2,
+      "route": "harsh",
+      "phase": "harsh",
+      "reward": 0,
+      "claimed": false
+    },
+    {
+      "id": "cartographer",
+      "stage": 3,
+      "route": "short",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "cartographer",
+      "stage": 3,
+      "route": "medium",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "cartographer",
+      "stage": 3,
+      "route": "harsh",
+      "phase": "harsh",
+      "reward": 0,
+      "claimed": false
+    },
+    {
+      "id": "recruit",
+      "stage": 4,
+      "route": "short",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "recruit",
+      "stage": 4,
+      "route": "medium",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "recruit",
+      "stage": 4,
+      "route": "harsh",
+      "phase": "harsh",
+      "reward": 0,
+      "claimed": false
+    },
+    {
+      "id": "archivist",
+      "stage": 5,
+      "route": "short",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "archivist",
+      "stage": 5,
+      "route": "medium",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "archivist",
+      "stage": 5,
+      "route": "harsh",
+      "phase": "harsh",
+      "reward": 0,
+      "claimed": false
+    },
+    {
+      "id": "keeper",
+      "stage": 6,
+      "route": "short",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "keeper",
+      "stage": 6,
+      "route": "medium",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "keeper",
+      "stage": 6,
+      "route": "harsh",
+      "phase": "harsh",
+      "reward": 0,
+      "claimed": false
+    },
+    {
+      "id": "winter",
+      "stage": 7,
+      "route": "short",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "winter",
+      "stage": 7,
+      "route": "medium",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "winter",
+      "stage": 7,
+      "route": "harsh",
+      "phase": "harsh",
+      "reward": 0,
+      "claimed": false
+    },
+    {
+      "id": "ember-pet",
+      "stage": 8,
+      "route": "short",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "ember-pet",
+      "stage": 8,
+      "route": "medium",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "ember-pet",
+      "stage": 8,
+      "route": "harsh",
+      "phase": "harsh",
+      "reward": 0,
+      "claimed": false
+    },
+    {
+      "id": "quota",
+      "stage": 9,
+      "route": "short",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "quota",
+      "stage": 9,
+      "route": "medium",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "quota",
+      "stage": 9,
+      "route": "harsh",
+      "phase": "harsh",
+      "reward": 0,
+      "claimed": false
+    },
+    {
+      "id": "automaton",
+      "stage": 10,
+      "route": "short",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "automaton",
+      "stage": 10,
+      "route": "medium",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "automaton",
+      "stage": 10,
+      "route": "harsh",
+      "phase": "harsh",
+      "reward": 0,
+      "claimed": false
+    },
+    {
+      "id": "neighbors",
+      "stage": 11,
+      "route": "short",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "neighbors",
+      "stage": 11,
+      "route": "medium",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "neighbors",
+      "stage": 11,
+      "route": "harsh",
+      "phase": "harsh",
+      "reward": 0,
+      "claimed": false
+    },
+    {
+      "id": "figure",
+      "stage": 12,
+      "route": "short",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "figure",
+      "stage": 12,
+      "route": "medium",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "figure",
+      "stage": 12,
+      "route": "harsh",
+      "phase": "harsh",
+      "reward": 0,
+      "claimed": false
+    },
+    {
+      "id": "alarm",
+      "stage": 13,
+      "route": "short",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "alarm",
+      "stage": 13,
+      "route": "medium",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "alarm",
+      "stage": 13,
+      "route": "harsh",
+      "phase": "harsh",
+      "reward": 0,
+      "claimed": false
+    },
+    {
+      "id": "miner",
+      "stage": 15,
+      "route": "short",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "miner",
+      "stage": 15,
+      "route": "medium",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "miner",
+      "stage": 15,
+      "route": "harsh",
+      "phase": "harsh",
+      "reward": 0,
+      "claimed": false
+    },
+    {
+      "id": "sailors",
+      "stage": 16,
+      "route": "short",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "sailors",
+      "stage": 16,
+      "route": "medium",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "sailors",
+      "stage": 16,
+      "route": "harsh",
+      "phase": "harsh",
+      "reward": 0,
+      "claimed": false
+    },
+    {
+      "id": "birthday",
+      "stage": 17,
+      "route": "short",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "birthday",
+      "stage": 17,
+      "route": "medium",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "birthday",
+      "stage": 17,
+      "route": "harsh",
+      "phase": "harsh",
+      "reward": 0,
+      "claimed": false
+    },
+    {
+      "id": "mother",
+      "stage": 18,
+      "route": "short",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "mother",
+      "stage": 18,
+      "route": "medium",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "mother",
+      "stage": 18,
+      "route": "harsh",
+      "phase": "harsh",
+      "reward": 0,
+      "claimed": false
+    },
+    {
+      "id": "pilgrim",
+      "stage": 19,
+      "route": "short",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "pilgrim",
+      "stage": 19,
+      "route": "medium",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "pilgrim",
+      "stage": 19,
+      "route": "harsh",
+      "phase": "harsh",
+      "reward": 0,
+      "claimed": false
+    },
+    {
+      "id": "garden",
+      "stage": 20,
+      "route": "short",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "garden",
+      "stage": 20,
+      "route": "medium",
+      "phase": "completed",
+      "reward": 2,
+      "claimed": true
+    },
+    {
+      "id": "garden",
+      "stage": 20,
+      "route": "harsh",
+      "phase": "harsh",
+      "reward": 0,
+      "claimed": false
+    }
+  ],
+  "errors": []
+}

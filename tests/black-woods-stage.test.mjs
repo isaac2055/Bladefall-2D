@@ -91,26 +91,29 @@ test('the refuge is enemy-free and spaces each resident, shop, and boundary land
 });
 
 test('the Oathblade owns a quiet acquisition beat before the first authored duel',()=>{
-  assert.match(stage,/Scenery\(2800,0,'oathblade-stump'.*weaponAwakening:1/);
-  assert.match(stage,/loot:\[\{x:2800,y:40,kind:'firstWeapon',sourceKind:'oathblade-stump'\}/);
+  // 7.233 (owner): the stump stands down-right of the counterweight so the release is framed centre-screen.
+  assert.match(stage,/Scenery\(3640,0,'oathblade-stump'.*weaponAwakening:1/);
+  assert.match(stage,/loot:\[\{x:3640,y:40,kind:'firstWeapon',sourceKind:'oathblade-stump'\}/);
+  assert.match(source,/G\.authoredCameraFocus=\{x:\(o\.x\+rootX\)\/2,y:110,t:2\.65\}/);
   assert.match(source,/if\(best\.acquisitionId===BFWeaponProgressionModule\.FIRST_WEAPON\.id\)\s*return acquireAuthoredFirstWeapon\(best\)/);
-  assert.match(stage,/\{t:'grunt',x:3650,patrol:\[3540,3900\].*forestRole:'oathblade-guard'/);
+  assert.match(stage,/\{t:'grunt',x:3990,patrol:\[3900,4160\].*forestRole:'oathblade-guard'/);
   assert.match(source,/if\(en\.forestRole\)\{e\.forestRole=en\.forestRole;e\.authoredEncounter=true;e\.active=hasCapability\('weapon'\);[\s\S]*?e\.forestCooldown=\.4\+\(en\.x%7\)\*\.11;/);
   assert.match(source,/for\(const enemy of G\.enemies\|\|\[\]\)if\(enemy\.authoredEncounter&&!enemy\.dead\)enemy\.active=true/);
   assert.match(source,/if\(G\.stageIndex>2&&!e\.boss&&!e\.creepy&&!a\.muster&&gameChance\('enemy'/);
 });
 
 test('Biting Canopy combines only single-jump rises, recoverable ground, thorn rhythm, and combat',()=>{
-  assert.match(stage,/Gr\(4200,6700\),Check\(4280,0\)/);
+  // 7.233 (owner): two up-strike lessons — a 240 pit (4480–4720) and a 540 pit (6200–6740).
+  assert.match(stage,/Gr\(4200,4480\),Gr\(4720,6200\),Check\(4280,0\)/);
   for(const rise of [65,130,195,260,325,250,185])assert.match(stage,new RegExp(`Pl\\(\\d+,\\d+,${rise}`));
-  assert.equal((stage.match(/Sp\([^\n]+period:3\.[02]/g)||[]).length,3);
+  assert.equal((stage.match(/Sp\([^\n]+period:3\.[02]/g)||[]).length,2);
   assert.match(stage,/StoryRelic\(5420,360,'red-clasp'/);
   assert.match(stage,/forestRole:'canopy-controller'/);
   assert.match(stage,/forestRole:'canopy-diver'/);
 });
 
 test('Mirror Thicket uses wind-facing resin as one rule without an alternating answer pattern',()=>{
-  assert.match(stage,/Gr\(6700,9700\),Check\(6780,0\)/);
+  assert.match(stage,/Gr\(6740,9700\),Check\(6780,0\)/);
   const thicket=stage.slice(stage.indexOf('// ROOM 4'),stage.indexOf('// ROOM 5'));
   assert.equal((thicket.match(/mirrorCopy:1/g)||[]).length,6);
   assert.equal((thicket.match(/mirrorTruth:1/g)||[]).length,8);
@@ -159,7 +162,9 @@ test('Level 2 inherits compact anchored dialogue and Up-to-reread behavior',()=>
 });
 
 test('the dash return secret is visible early, capability-gated, and persistent',()=>{
-  assert.match(stage,/Scenery\(6470,260,'root-seam'.*returnHook:'dash'.*vaultKeyId:'root-key'.*secretVerb:'dash-impact'/s);
+  // 7.234: the seam is a mandatory road, so it carries no Vault key (keys come from quests).
+  assert.match(stage,/Scenery\(6470,260,'root-seam',\{returnHook:'dash',secretVerb:'dash-impact',/);
+  assert.doesNotMatch(stage,/'root-seam'[^)]*vaultKeyId/);
   assert.match(stage,/secretCue:'One old root seam is bruised as if it remembers speed\.'/);
   assert.match(source,/meta\.loreRead\['black-woods-root-seam'\]=true;sightVaultSecretObject\(o\);persist\(\)/);
   assert.match(source,/o\.read=!!meta\.loreRead\['black-woods-root-seam'\]/);
@@ -195,7 +200,10 @@ test('forest roles telegraph their commitments and react to the authored landsca
   assert.match(source,/e\.forestRole==='mirror-pursuer'\|\|e\.forestRole==='mirror-diver'/);
   assert.match(source,/e\.forestNoiseX=o\.x;e\.forestNoiseY=o\.y;e\.forestNoiseT=3\.2/);
   assert.match(source,/forestEncounterState\(e,'seed-wind'.*'ROOTS'/s);
-  assert.match(source,/G\.aoes\.push\(\{x:e\.forestAimX,y:e\.forestAimY,r:radius,t:\.72/);
+  // 7.234: roots erupt from the floor only; a knight in the air gets a drifting spore cloud (a projectile).
+  assert.match(source,/const y1=floorAt\(e\.forestAimX\);if\(y1!==null\)G\.aoes\.push\(\{x:e\.forestAimX,y:y1,r:radius,t:\.72/);
+  assert.match(source,/forestEncounterState\(e,'spore-wind',\.6,'SPORES'/);
+  assert.match(source,/G\.projectiles\.push\(\{owner:'enemy',sourceType:e\.type,gasCloud:true/);
   assert.match(source,/forestEncounterState\(e,'dive-mark'.*mirror\?'FEINT':'DIVE'/s);
   assert.match(source,/forestEncounterState\(e,'veil',\.62\)/);
   assert.match(source,/cue:'SALUTE'/);
@@ -210,7 +218,7 @@ test('forest roles telegraph their commitments and react to the authored landsca
 test('Black Woods and Broken Causeway share a bidirectional physical root tunnel',()=>{
   assert.match(source,/G\.stageIndex===1&&G\.p\.x>G\.levelLength\/2.*connector:'black-woods-brute'.*zone:'black-woods'.*targetStage:2/s);
   assert.match(source,/G\.stageIndex===2&&G\.p\.x<G\.levelLength\/2.*connector:'black-woods-brute'.*zone:'brute'.*targetStage:1/s);
-  assert.match(stage,/Scenery\(12240,0,'root-tunnel'.*routeReveal:'brute'/);
+  assert.match(stage,/Scenery\(12250,0,'root-tunnel'.*routeReveal:'brute'.*gatehouse:'root'/);
   assert.ok(!authored.objects.some(o=>o.type==='sign'),'the physical tunnel does not need an instructional exit sign');
 });
 
@@ -247,7 +255,7 @@ test('the mirror ascent and root wall remain reversible with the real single jum
   const rows=surfaces(),truths=rows.filter(o=>o.mirrorTruth).sort((a,b)=>a.x-b.x);
   assert.equal(systems.movement.profile(systems.capabilities.createState()).maxJumps,1);
   assert.equal(truths.length,8);
-  const route=[rows.find(o=>o.left===6700&&o.y===0),...truths,rows.find(o=>o.rootboundCrown)];
+  const route=[rows.find(o=>o.left===6740&&o.y===0),...truths,rows.find(o=>o.rootboundCrown)];
   for(let i=1;i<route.length;i++){
     assert.ok(gap(route[i-1],route[i])<=jumpReach(route[i].y-route[i-1].y),`single jump reaches truth ${i}`);
     assert.ok(gap(route[i-1],route[i])<=jumpReach(route[i-1].y-route[i].y),`single jump returns from truth ${i}`);

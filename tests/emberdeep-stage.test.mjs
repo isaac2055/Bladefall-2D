@@ -184,10 +184,10 @@ test('rooms 1-5 stand on a plateau, and room 6 walks you down off it', () => {
     assert.ok(g.y - (at(o => o.deep && o.x === (g.left + g.right) / 2)[0].h) <= 0,
       'the plateau is filled to the world floor, so nothing walks under it');
   }
-  // The stair: four flights, a landing each, and the foot at the world's own datum.
+  // The stair retains two switchback landings and the foot at world datum.
   const landings = at(o => o.emberLanding).sort((a, b) => b.y - a.y);
-  assert.ok(landings.length >= 3, 'a recovery landing per flight');
-  assert.ok(landings[0].y < ED && landings[landings.length - 1].y < 160, 'they descend');
+  assert.equal(landings.length,2, 'two switchback landings without the redundant exit shelf');
+  assert.ok(landings[0].y < ED && landings[landings.length - 1].y < landings[0].y, 'they descend');
   const foot = deeps.filter(g => g.y === 0);
   assert.ok(foot.length === 1 && foot[0].right >= 16400, 'and the shaft floor runs out east at y=0');
   assert.ok(at(o => o.physicalSeam === 'emberdeep-colossus')[0].y === 0, 'so the east seam is an edge walk');
@@ -287,8 +287,8 @@ test('every room owns a checkpoint, and no room owns three', () => {
   const checks = at(o => o.type === 'check').map(o => o.x);
   for(const [lo, hi] of [[0,2700],[2700,6000],[6000,9000],[9000,12200],[12200,14400],[14400,16400]])
     assert.ok(checks.some(x => x >= lo && x < hi), `room ${lo}-${hi} has a checkpoint`);
-  // Sparse and intentional: one per room, plus one on the way down the stair.
-  assert.equal(checks.length, 7, `${checks.length} checkpoints is a trail of breadcrumbs`);
+  // One per room; the stair landing serves the exit approach too.
+  assert.equal(checks.length, 6, `${checks.length} checkpoints is a trail of breadcrumbs`);
 });
 
 test('the recall finally reaches this region, with a unique of its own', () => {
@@ -354,4 +354,99 @@ test('the camera holds still: no screen shake and no haptics anywhere in the reg
   assert.equal((source.match(/BFCamera\.shakeOffset\(/g) || []).length, 1,
     'a second shake consumer appeared and bypasses the still-camera gate');
   assert.match(fn('buzz'), /!levelIsStill\(\)/, 'haptic vibration is no longer gated');
+});
+
+
+test('Emberdeep recovery reunites Oren and clears stale pad/send state', () => {
+  for(const state of ['idle','follow','wait','send']){
+    const n={kind:'escort',profileId:'sera',state,x:840,y:640,relay:true,
+      relayHome:840,relayHold:true,padWaiting:true,sendPostId:'ember-draw',waitX:7760,_tpCd:2};
+    const G={stageIndex:9,p:{x:15180,y:480},npcs:[n]};
+    vm.runInNewContext(fn('recoverEmberCompanion')+';recoverEmberCompanion();',{G});
+    assert.equal(n.state,'follow');assert.equal(n.x,15156);assert.equal(n.y,480);
+    assert.equal(n.relayHome,15180);assert.equal(n.relayHold,false);assert.equal(n.padWaiting,false);
+    assert.equal(n.sendPostId,null);assert.equal(n.waitX,null);assert.equal(n._tpCd,0);
+  }
+});
+test('recovery preserves an unmet Oren at the entrance and leaves other stages alone', () => {
+  for(const stage of [9,10]){
+    const n={kind:'escort',profileId:'sera',state:'idle',x:840};
+    const G={stageIndex:stage,p:{x:330,y:680},npcs:[n]};
+    vm.runInNewContext(fn('recoverEmberCompanion')+';recoverEmberCompanion();',{G});
+    assert.equal(n.x,840);assert.equal(n.state,'idle');
+  }
+});
+test('the exit purge waits for approach and warns before each staggered burst', () => {
+  const machine={emberPurgeMachine:1},vents=at(o=>o.emberPurge);
+  assert.equal(vents.length,3);
+  const G={time:0,obstacles:[machine]};
+  const ctx=vm.createContext({G});vm.runInContext(fn('emberPurgeClock')+fn('spikesUp')+fn('spikesWarn'),ctx);
+  for(const v of vents){ctx.vent=v;assert.equal(vm.runInContext('spikesUp(vent)||spikesWarn(vent)',ctx),false);}
+  machine.purgeStartedAt=10;
+  for(const v of vents){ctx.vent=v;G.time=10+2+v.purgeOrder*.9-.35;
+    assert.equal(vm.runInContext('spikesWarn(vent)&&!spikesUp(vent)',ctx),true);
+    G.time+=.5;assert.equal(vm.runInContext('spikesUp(vent)',ctx),true);
+    G.time+=1;assert.equal(vm.runInContext('spikesUp(vent)',ctx),false);
+  }
+});
+
+
+test('the forge doorway, not the far boundary, owns Emberdeep departure', () => {
+  const door=at(o=>o.kind==='ember-forge-door')[0];
+  const G={stageIndex:9,obstacles:[door],p:{x:door.x,y:0,face:1}};
+  const ctx=vm.createContext({G});vm.runInContext(fn('emberExitDoor')+fn('atEmberExitDoor'),ctx);
+  assert.equal(vm.runInContext('atEmberExitDoor()',ctx),true);
+  G.p.x=LEVEL.len-62;assert.equal(vm.runInContext('atEmberExitDoor()',ctx),false);
+  G.p.x=door.x;G.p.y=100;assert.equal(vm.runInContext('atEmberExitDoor()',ctx),false);
+  G.p.y=0;G.p.face=-1;assert.equal(vm.runInContext('atEmberExitDoor()',ctx),false);
+});
+test('door entry finishes its walk before requesting the next region', () => {
+  let crossings=0;
+  const G={stageIndex:9,time:0,p:{x:16150,y:0},emberDoorEntry:{t:0,fromX:16150,x:16180,y:0}};
+  const ctx=vm.createContext({G,updatePhysicalWorldSeams(){crossings++;}});
+  vm.runInContext(fn('updateEmberDoorEntry')+';updateEmberDoorEntry(.3);',ctx);
+  assert.equal(crossings,0);assert.ok(G.p.x>16150&&G.p.x<16180);
+  vm.runInContext('updateEmberDoorEntry(.3);',ctx);
+  assert.equal(crossings,0);assert.equal(G.p.x,16180);assert.ok(G.p.y>0);
+  vm.runInContext('updateEmberDoorEntry(.31);',ctx);
+  assert.equal(crossings,1);assert.equal(G.emberDoorEntry.ready,true);assert.equal(G.p.y,18);
+});
+
+
+test('return through the forge door emerges leftward without crossing again', () => {
+  const door=at(o=>o.kind==='ember-forge-door')[0];
+  const G={stageIndex:9,time:0,obstacles:[door],p:{x:16060,y:0,ckX:16060,ckY:0}};
+  let reunited=0;
+  const ctx=vm.createContext({G,recoverEmberCompanion(){reunited++;},updatePhysicalWorldSeams(){throw Error('return crossed again');}});
+  vm.runInContext(fn('emberExitDoor')+fn('beginEmberDoorArrival')+fn('updateEmberDoorEntry'),ctx);
+  vm.runInContext("beginEmberDoorArrival({connectorId:'emberdeep-colossus',targetZoneId:'emberdeep'});",ctx);
+  assert.equal(G.p.x,door.x);assert.equal(G.p.y,18);assert.equal(G.p.ckX,16060);
+  vm.runInContext('updateEmberDoorEntry(.3);',ctx);
+  assert.ok(G.p.y>0&&G.p.y<18);assert.equal(G.p.face,-1);
+  vm.runInContext('updateEmberDoorEntry(.6);updateEmberDoorEntry(.01);',ctx);
+  assert.equal(G.emberDoorEntry,null);assert.equal(G.p.x,16060);assert.equal(G.p.y,0);assert.equal(reunited,1);
+});
+test('the cleaned exit keeps a climbable return and one checkpoint surface', () => {
+  assert.equal(at(o=>o.type==='plat'&&o.x>15550&&!o.deep).length,0);
+  const mould=at(o=>o.deadMould)[0];
+  assert.ok(mould.y<=CEILING,'return jump reaches the permanent mould');
+  assert.ok(span(mould).right>=15550,'mould meets the floor edge');
+  assert.equal(at(o=>o.type==='plat'&&o.y>=440&&o.y<=460&&Math.abs(o.x-15180)<100).length,1);
+});
+
+
+test('Colossus entrance emerges east and returns west through its own door', () => {
+  const door={kind:'ember-forge-door',physicalSeam:'emberdeep-colossus',x:200,y:0};
+  const G={stageIndex:10,time:0,obstacles:[door],p:{x:320,y:0,ckX:320}};
+  let crossings=0;
+  const ctx=vm.createContext({G,recoverEmberCompanion(){},updatePhysicalWorldSeams(){crossings++;}});
+  vm.runInContext(fn('emberExitDoor')+fn('atEmberExitDoor')+fn('beginEmberDoorArrival')+fn('updateEmberDoorEntry'),ctx);
+  vm.runInContext("beginEmberDoorArrival({connectorId:'emberdeep-colossus',targetZoneId:'ember-colossus'});updateEmberDoorEntry(.9);",ctx);
+  assert.equal(G.p.x,320);assert.equal(G.p.face,1);assert.equal(G.emberDoorEntry,null);assert.equal(crossings,0);
+  G.p.x=230;G.p.face=-1;
+  assert.equal(vm.runInContext('atEmberExitDoor()',ctx),true);
+  G.emberDoorEntry={t:0,fromX:230,x:200,y:0};
+  vm.runInContext('updateEmberDoorEntry(.9);',ctx);
+  assert.equal(G.p.x,200);assert.equal(G.p.face,-1);assert.equal(crossings,1);
+  G.p.x=62;assert.equal(vm.runInContext('atEmberExitDoor()',ctx),false);
 });

@@ -1,0 +1,291 @@
+Movement rules
+  ok   full jump rises 27 px (27)
+  ok   a tapped jump is short (variable height)
+  ok   ground dash covers 46 px
+  ok   dash lasts 9 frames after a 3-frame freeze
+  ok   coyote time: a jump is still accepted for 5 frames after leaving a ledge
+  ok   jump buffer: a press up to 4 frames before landing still jumps
+  ok   jumping out of a ground dash is a super (260 px/s)
+  ok   from a down-diagonal dash it is a hyper (325 px/s)
+  ok   upward corner correction slides a 3 px overlap past a ceiling corner (x 75→72, top 132)
+  ok   a crystal ignores a knight who still has a dash
+  ok   the same crystal restores a spent dash
+  ok   a pushed slide stone stops flush against the post (x=144)
+  ok   a lantern thrown into thorns floats back to where it started
+  ok   retry returns stones, machinery and lanterns to their places
+Intended routes
+  ok   f1 First Steps: exits at frame 317, no deaths
+  ok   f2 The Dash: exits at frame 221, no deaths
+  ok   f3 Ground Again: exits at frame 170, no deaths
+  ok   d1 Green Glass: exits at frame 170, no deaths
+  ok   d2 Height First: exits at frame 224, no deaths
+  ok   d3 Spend It Low: exits at frame 310, no deaths
+  ok   b1 Seed Pods: exits at frame 208, no deaths
+  ok   b2 Above It: exits at frame 114, no deaths
+  ok   b3 Cut Back: exits at frame 168, no deaths
+  ok   t1 Tally: exits at frame 275, no deaths
+  ok   t2 Beyond the Thorns: exits at frame 312, no deaths
+  ok   t3 Last One Home: exits at frame 359, no deaths
+  ok   s1 Cyan and Amber: exits at frame 194, no deaths
+  ok   s2 Count: exits at frame 233, no deaths
+  ok   s3 The Bell: exits at frame 159, no deaths
+  ok   k1 Stepping Stone: exits at frame 247, no deaths
+  ok   k2 A Step Up: exits at frame 314, no deaths
+  ok   k3 Down the Well: exits at frame 372, no deaths
+  ok   l1 Seed Lantern: exits at frame 202, no deaths
+  ok   l2 The Plate: exits at frame 243, no deaths
+  ok   l3 Under the Door: exits at frame 308, no deaths
+  ok   z1 Ride: exits at frame 194, no deaths
+  ok   z2 Wait for It: exits at frame 148, no deaths
+  ok   m1 Full Hands: exits at frame 251, no deaths
+  ok   m2 Machine Step: exits at frame 345, no deaths
+  ok   r1 There and Back: exits at frame 498, no deaths
+  ok   r2 Hang Time: exits at frame 440, no deaths
+  ok   g1 Pollen Count: exits at frame 224, no deaths
+  ok   g2 Cut Back Twice: exits at frame 150, no deaths
+  ok   w1 Glass Counts Too: exits at frame 225, no deaths
+  ok   w2 Read the Colors: exits at frame 254, no deaths
+  ok   n1 Far Stone First: exits at frame 513, no deaths
+  ok   n2 Bell Stop: exits at frame 290, no deaths
+  ok   q1 Hold the Door for the Light: exits at frame 270, no deaths
+  ok   q2 Separate Ways: exits at frame 325, no deaths
+  ok   y1 Zip Tally: exits at frame 154, no deaths
+  ok   y2 Handoff: exits at frame 264, no deaths
+  ok   o1 Stone Cart: exits at frame 400, no deaths
+  ok   o2 Lamp Down the Well: exits at frame 812, no deaths
+  ok   h1 Sealed: exits at frame 277, no deaths
+  ok   h2 Stepping Tally: exits at frame 298, no deaths
+  ok   v1 Zip Colors: exits at frame 92, no deaths
+  ok   v2 Bell Tower: exits at frame 346, no deaths
+  ok   u1 The Counted Crossing: exits at frame 182, no deaths
+  ok   u2 Lantern Line: exits at frame 215, no deaths
+  ok   u3 The Deep Climb: exits at frame 247, no deaths
+  ok   e1 Unbroken: exits at frame 268, no deaths
+  ok   e2 Glass Ladder: exits at frame 381, no deaths
+  ok   i1 Downstroke: exits at frame 151, no deaths
+  ok   i2 Double Cut: exits at frame 194, no deaths
+  ok   j1 Inside Out: exits at frame 143, no deaths
+  ok   j2 Ghost Wall: exits at frame 322, no deaths
+  ok   a1 Plumb: exits at frame 272, no deaths
+  ok   a2 Across, Then Down: exits at frame 335, no deaths
+  ok   c1 Lamp Stairs: exits at frame 483, no deaths
+  ok   c2 The Slot: exits at frame 332, no deaths
+  ok   p1 Slingshot: exits at frame 145, no deaths
+  ok   p2 Relay: exits at frame 219, no deaths
+  ok   st1 Mason's Count: exits at frame 285, no deaths
+  ok   st2 Sealed Step: exits at frame 373, no deaths
+  ok   lr1 Lift and Toss: exits at frame 441, no deaths
+  ok   lr2 Under the Roof: exits at frame 142, no deaths
+  ok   en1 Upstroke: exits at frame 326, no deaths
+  ok   en2 Doorstop: exits at frame 436, no deaths
+  ok   ts1 The Push Counts: exits at frame 345, no deaths
+  ok   ts2 Last Lamp: exits at frame 567, no deaths
+  ok   ts3 Third Summit: exits at frame 275, no deaths
+  ok   combat-01 An Opening: exits at frame 218, no deaths
+  ok   fa1 Moth Wing: exits at frame 167, no deaths
+  ok   combat-03 Return to Sender: exits at frame 225, no deaths
+  ok   fa3 Up the Shaft: exits at frame 412, no deaths
+  ok   combat-05 Aim Above: exits at frame 262, no deaths
+  ok   combat-07 Make a Breach: exits at frame 226, no deaths
+  ok   fa2 Belly Up: exits at frame 418, no deaths
+  ok   fa5 Stand Your Ground: exits at frame 245, no deaths
+  ok   fc1 Shieldbreaker: exits at frame 401, no deaths
+  ok   fc2 Knock It Over: exits at frame 428, no deaths
+  ok   fc3 Moth and Coil: exits at frame 367, no deaths
+  ok   combat-04 Keep the Landing: exits at frame 196, no deaths
+  ok   fb1 Shell Road: exits at frame 266, no deaths
+  ok   combat-08 Leave the Light: exits at frame 253, no deaths
+  ok   combat-06 The Passing Shot: exits at frame 352, no deaths
+  ok   fb3 Second Wind: exits at frame 179, no deaths
+  ok   combat-09 Two Angles: exits at frame 631, no deaths
+  ok   fb4 Stepping Ram: exits at frame 253, no deaths
+  ok   fb5 Hunting Ground: exits at frame 332, no deaths
+  ok   fd1 Wardens' Hall: exits at frame 460, no deaths
+  ok   fd2 Bank Shot: exits at frame 238, no deaths
+  ok   combat-10 The Living Stair: exits at frame 344, no deaths
+  ok   pv0 Where You Stand: exits at frame 94, no deaths
+  ok   pv1 Speedy Thing: exits at frame 288, no deaths
+  ok   pv2 Dash Goes Vertical: exits at frame 163, no deaths
+  ok   pv3 Special Delivery: exits at frame 257, no deaths
+  ok   pv4 Catch and Move: exits at frame 310, no deaths
+  ok   pw0 Both Ends: exits at frame 160, no deaths
+  ok   pw1 Loop and Let Go: exits at frame 94, no deaths
+  ok   pw2 Stone Through Stone: exits at frame 382, no deaths
+  ok   pw3 Bolt Relay: exits at frame 638, no deaths
+  ok   pw4 Thinking with Portals: exits at frame 204, no deaths
+  ok   vi0 Spring Loaded: exits at frame 122, no deaths
+  ok   vi1 Behind the Cyan: exits at frame 263, no deaths
+  ok   vi2 Bell from Afar: exits at frame 590, no deaths
+  ok   vi3 Parry Through: exits at frame 449, no deaths
+  ok   vi4 Lantern Flight: exits at frame 282, no deaths
+  ok   vi5 Tally Tour: exits at frame 423, no deaths
+  ok   vi6 Moth Flight: exits at frame 157, no deaths
+  ok   vi7 Hold the Door: exits at frame 107, no deaths
+  ok   vi8 Ram Breach: exits at frame 318, no deaths
+  ok   vi9 Everything Before: exits at frame 187, no deaths
+  ok   x1 Super: exits at frame 155, no deaths
+  ok   x2 Low Road: exits at frame 137, no deaths
+  ok   xm2 Two Flips: exits at frame 97, no deaths
+  ok   xm3 Pod in the Arc: exits at frame 166, no deaths
+  ok   xm4 Clear the Lane: exits at frame 164, no deaths
+  ok   xm5 Both at the End: exits at frame 272, no deaths
+  ok   p75 Committed: exits at frame 306, no deaths
+  ok   p76 Stagger: exits at frame 262, no deaths
+  ok   p77 Recoil Well: exits at frame 215, no deaths
+  ok   p78 Back Door: exits at frame 129, no deaths
+  ok   p79 Up and Over: exits at frame 257, no deaths
+  ok   p80 Two Wardens: exits at frame 273, no deaths
+  ok   p81 On the Lip: exits at frame 218, no deaths
+  ok   p82a Roof Door: exits at frame 169, no deaths
+  ok   p82b Sentence: exits at frame 249, no deaths
+  ok   p83 Frost Feather: exits at frame 189, no deaths
+  ok   p84 Black Ice: exits at frame 188, no deaths
+  ok   p85 Updraft: exits at frame 248, no deaths
+  ok   p86 One at a Time: exits at frame 186, no deaths
+  ok   p87 Kite: exits at frame 350, no deaths
+  ok   p88 Faultline: exits at frame 196, no deaths
+  ok   p89 Moth Wing: exits at frame 182, no deaths
+  ok   p90 Muster Crown: exits at frame 214, no deaths
+  ok   p91 Still Water: exits at frame 195, no deaths
+  ok   p92 Hands Full: exits at frame 235, no deaths
+  ok   p93 Undertow: exits at frame 194, no deaths
+  ok   p94 Downstream: exits at frame 343, no deaths
+  ok   p95 Under the Warder: exits at frame 259, no deaths
+  ok   p96 Down Is a Door: exits at frame 84, no deaths
+  ok   p97 Drains: exits at frame 225, no deaths
+  ok   p98a Refresh: exits at frame 253, no deaths
+  ok   p98b Two Lanes: exits at frame 287, no deaths
+  ok   px99 Cooling Road: exits at frame 308, no deaths
+  ok   px100 Glass Door: exits at frame 499, no deaths
+  ok   px101 Slow Fall: exits at frame 382, no deaths
+  ok   px102 Two Doors: exits at frame 270, no deaths
+  ok   px103 Pod Hours: exits at frame 438, no deaths
+  ok   px104 Open Window: exits at frame 322, no deaths
+  ok   px105 Glass Underfoot: exits at frame 395, no deaths
+  ok   px106a Carried Down: exits at frame 469, no deaths
+  ok   px106b The Last Pour: exits at frame 488, no deaths
+  ok   p107 First Stroke: exits at frame 225, no deaths
+  ok   p108 Iron and Seed: exits at frame 158, no deaths
+  ok   p109 Cold Cast: exits at frame 197, no deaths
+  ok   p110 Passenger: exits at frame 386, no deaths
+  ok   p111 Down the Shaft: exits at frame 318, no deaths
+  ok   p112 Sideways: exits at frame 86, no deaths
+  ok   p113 Iron Island: exits at frame 259, no deaths
+  ok   p114a Three Strokes: exits at frame 182, no deaths
+  ok   p114b Grille: exits at frame 224, no deaths
+  ok   p115 The Other Floor: exits at frame 214, no deaths
+  ok   p116 Falling Up: exits at frame 169, no deaths
+  ok   p117 Pogo Up: exits at frame 163, no deaths
+  ok   p118 Plumb Up: exits at frame 324, no deaths
+  ok   p119 The Light Falls: exits at frame 363, no deaths
+  ok   p120 The Long Fall: exits at frame 102, no deaths
+  ok   p121 Count the Prism: exits at frame 247, no deaths
+  ok   p122 Inside Out: exits at frame 187, no deaths
+  ok   p123 Good Once: exits at frame 189, no deaths
+  ok   p124 Out and Back: exits at frame 311, no deaths
+  ok   p125 Thrown Through: exits at frame 171, no deaths
+  ok   p126 One Stand: exits at frame 156, no deaths
+  ok   p127 Moth Road: exits at frame 261, no deaths
+  ok   p128 First Step: exits at frame 254, no deaths
+  ok   p129 Clear the Way: exits at frame 356, no deaths
+  ok   p130 Leave a Body: exits at frame 182, no deaths
+  ok   p131 The Citadel: exits at frame 305, no deaths
+  ok   p132 Hold the Door: exits at frame 210, no deaths
+  ok   p133 Still Moving: exits at frame 364, no deaths
+  ok   p134 Re-aimed: exits at frame 123, no deaths
+  ok   p135 Wake Behind: exits at frame 513, no deaths
+  ok   p136 Swap Past It: exits at frame 335, no deaths
+  ok   p137 Onto the Plate: exits at frame 326, no deaths
+  ok   p138 Room Above: exits at frame 490, no deaths
+  ok   p139 The Throne: exits at frame 255, no deaths
+  ok   p140 Thorn Line: exits at frame 139, no deaths
+  ok   p141 Buffer Stop: exits at frame 137, no deaths
+  ok   p142 Back Up: exits at frame 104, no deaths
+  ok   p143 High Line: exits at frame 139, no deaths
+  ok   p144 The Cut Fork: exits at frame 149, no deaths
+  ok   p145 Westbound: exits at frame 155, no deaths
+  ok   p146 Tally Line: exits at frame 157, no deaths
+  ok   p147 Bell Line: exits at frame 143, no deaths
+  ok   p148 Speedy Line: exits at frame 124, no deaths
+  ok   p149a Lamp Car: exits at frame 127, no deaths
+  ok   p149b Moth Line: exits at frame 86, no deaths
+  ok   p149c The Boat: exits at frame 160, no deaths
+  ok   p150 First Chain: exits at frame 211, no deaths
+  ok   p151 Let Go: exits at frame 189, no deaths
+  ok   p152 Deck: exits at frame 387, no deaths
+  ok   p153 Running Start: exits at frame 132, no deaths
+  ok   p154 Chain Ladder: exits at frame 89, no deaths
+  ok   p155 Deck to Ring: exits at frame 161, no deaths
+  ok   p156 Moth Between: exits at frame 173, no deaths
+  ok   p157 Long Chain: exits at frame 302, no deaths
+  ok   p158 Returned Fire: exits at frame 261, no deaths
+  ok   p159a The Staple: exits at frame 165, no deaths
+  ok   p159b The Lip: exits at frame 188, no deaths
+  ok   p160 Slack Water: exits at frame 354, no deaths
+  ok   p161 Wreck Lift: exits at frame 246, no deaths
+  ok   p162 Spring Tide: exits at frame 167, no deaths
+  ok   p163 Launch: exits at frame 227, no deaths
+  ok   p164 Tern: exits at frame 294, no deaths
+  ok   p165 Buoy: exits at frame 228, no deaths
+  ok   p166 Mooring Ring: exits at frame 225, no deaths
+  ok   p167 Spring Super: exits at frame 183, no deaths
+  ok   p168 Belled: exits at frame 207, no deaths
+  ok   p169 Landfall: exits at frame 177, no deaths
+  ok   p170 Lamplight: exits at frame 337, no deaths
+  ok   p171 Pit Smoke: exits at frame 360, no deaths
+  ok   p172 A Glance: exits at frame 158, no deaths
+  ok   p173 Lantern Thief: exits at frame 185, no deaths
+  ok   p174 Faster Than a Hop: exits at frame 275, no deaths
+  ok   p175 Low Road: exits at frame 277, no deaths
+  ok   p176 Fling: exits at frame 260, no deaths
+  ok   p177 Let Go: exits at frame 283, no deaths
+  ok   p178 Shade: exits at frame 334, no deaths
+  ok   p179 The Watch: exits at frame 151, no deaths
+  ok   p180 Sun Window: exits at frame 269, no deaths
+  ok   p181 Turn the Glass: exits at frame 224, no deaths
+  ok   p182 Light It, Then Turn It Back: exits at frame 296, no deaths
+  ok   p183 Carried Shade: exits at frame 195, no deaths
+  ok   p184 Switchback Engine: exits at frame 179, no deaths
+  ok   p185 Beat and Glass: exits at frame 233, no deaths
+  ok   p186 Throw the Shade: exits at frame 270, no deaths
+  ok   p187 Low Light: exits at frame 132, no deaths
+  ok   p188 Belly Shade: exits at frame 188, no deaths
+  ok   p189a The Engine Road: exits at frame 108, no deaths
+  ok   p189b The Sun Gate: exits at frame 144, no deaths
+  ok   p190 Sun Through Stone: exits at frame 198, no deaths
+  ok   p191 Light It, Then Let Go: exits at frame 199, no deaths
+  ok   p192 Both Ends: exits at frame 593, no deaths
+  ok   p193 Glass in the Dark: exits at frame 377, no deaths
+  ok   p194 Lantern Post: exits at frame 324, no deaths
+  ok   p195 The Light’s Door: exits at frame 227, no deaths
+  ok   p196 Ring Light: exits at frame 118, no deaths
+  ok   p197 Noon Engine: exits at frame 182, no deaths
+  ok   p198 Two Deliveries: exits at frame 290, no deaths
+  ok   p199a The Sun Court: exits at frame 146, no deaths
+  ok   p199b The Hall of Hours: exits at frame 277, no deaths
+  ok   p200a Lamp Flight: exits at frame 149, no deaths
+  ok   p200b Frozen Fall: exits at frame 321, no deaths
+  ok   p200c Iron Both Ways: exits at frame 146, no deaths
+  ok   p200d Borrowed Speed: exits at frame 386, no deaths
+  ok   p200e Thrown to the Chain: exits at frame 290, no deaths
+  ok   p200f The Summit: exits at frame 477, no deaths
+  ok   br1 Hold the Door: exits at frame 231, no deaths
+  ok   br2 A Leg Up: exits at frame 246, no deaths
+  ok   br3 Under His Shield: exits at frame 245, no deaths
+  ok   br4 Through After You: exits at frame 389, no deaths
+  ok   br5 Lantern or Oren: exits at frame 247, no deaths
+  ok   br6 Shield, Then Shoulders: exits at frame 369, no deaths
+  ok   bv1 Into the Night: exits at frame 133, no deaths
+  ok   bv2 Kept Speed: exits at frame 188, no deaths
+  ok   bv3 Which Way In: exits at frame 151, no deaths
+  ok   bv4 Rock Behind: exits at frame 195, no deaths
+  ok   bv5 Behind the Shield: exits at frame 273, no deaths
+  ok   bv6 Night Crossing: exits at frame 131, no deaths
+  ok   bc1 Ice Throws Shade: exits at frame 197, no deaths
+  ok   bc2 Shade on Wheels: exits at frame 267, no deaths
+  ok   bc3 Roof Underfoot: exits at frame 272, no deaths
+  ok   bc4 High Wind: exits at frame 156, no deaths
+  ok   bc5 The Last of It: exits at frame 192, no deaths
+  ok   bc6 Hang From the Roof: exits at frame 176, no deaths
+
+Movement and intended routes: 287 passed, 0 failed

@@ -1,0 +1,175 @@
+{
+  "scope": "Fixture start at giver; real frame movement and device interactions thereafter. No position writes during routes.",
+  "rows": [
+    {
+      "stage": 0,
+      "id": "gatekeeper",
+      "ok": true,
+      "phase": "ready",
+      "legs": [
+        {
+          "x": 1035,
+          "y": 0,
+          "pass": true,
+          "at": {
+            "x": 1008,
+            "y": 0
+          }
+        },
+        {
+          "x": 1220,
+          "y": 58,
+          "pass": true,
+          "at": {
+            "x": 1192,
+            "y": 58
+          }
+        },
+        {
+          "x": 1300,
+          "y": 114,
+          "pass": true,
+          "at": {
+            "x": 1272,
+            "y": 114
+          }
+        },
+        {
+          "x": 1190,
+          "y": 170,
+          "pass": true,
+          "at": {
+            "x": 1183,
+            "y": 170
+          }
+        },
+        {
+          "x": 1300,
+          "y": 226,
+          "pass": true,
+          "at": {
+            "x": 1284,
+            "y": 226
+          }
+        },
+        {
+          "x": 1370,
+          "y": 282,
+          "pass": true,
+          "at": {
+            "x": 1380,
+            "y": 282
+          }
+        },
+        {
+          "x": 360,
+          "y": 0,
+          "pass": true,
+          "at": {
+            "x": 385,
+            "y": 0
+          }
+        },
+        {
+          "x": 250,
+          "y": 0,
+          "pass": true,
+          "at": {
+            "x": 275,
+            "y": 0
+          }
+        }
+      ]
+    },
+    {
+      "stage": 1,
+      "id": "refuge",
+      "ok": true,
+      "phase": "ready",
+      "legs": [
+        {
+          "x": 1260,
+          "y": 56,
+          "pass": true,
+          "at": {
+            "x": 1234,
+            "y": 56
+          }
+        },
+        {
+          "x": 1390,
+          "y": 112,
+          "pass": true,
+          "at": {
+            "x": 1364,
+            "y": 112
+          }
+        },
+        {
+          "x": 1520,
+          "y": 168,
+          "pass": true,
+          "at": {
+            "x": 1494,
+            "y": 168
+          }
+        },
+        {
+          "x": 1650,
+          "y": 168,
+          "pass": true,
+          "at": {
+            "x": 1658,
+            "y": 168
+          }
+        },
+        {
+          "x": 1770,
+          "y": 224,
+          "pass": true,
+          "at": {
+            "x": 1759,
+            "y": 224
+          }
+        },
+        {
+          "x": 1900,
+          "y": 280,
+          "pass": true,
+          "at": {
+            "x": 1875,
+            "y": 280
+          }
+        },
+        {
+          "x": 780,
+          "y": 0,
+          "pass": true,
+          "at": {
+            "x": 807,
+            "y": 0
+          }
+        },
+        {
+          "x": 850,
+          "y": 0,
+          "pass": true,
+          "at": {
+            "x": 824,
+            "y": 0
+          }
+        },
+        {
+          "x": 700,
+          "y": 0,
+          "pass": true,
+          "at": {
+            "x": 727,
+            "y": 0
+          }
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

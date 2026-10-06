@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { resolve, extname } from 'node:path';
-import puppeteer from 'puppeteer';
+import { launchChrome } from './launch-chrome.mjs';
 
 // The recall is Frostfell's Muster Engine reaching the rest of the world. These
 // tests load each return region as the recall left it, through the same zone
@@ -24,7 +24,7 @@ async function openHarness(t) {
     } catch { res.writeHead(404); res.end(); }
   });
   await new Promise((r) => server.listen(0, '127.0.0.1', r));
-  const browser = await puppeteer.launch({ headless: true, protocolTimeout: 600_000,
+  const browser = await launchChrome({ headless: true, protocolTimeout: 600_000,
     executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
     args: ['--no-sandbox'] });
   t.after(async () => { await browser.close(); server.close(); });
@@ -174,7 +174,7 @@ test('recalled residents say so, and only once the recall has happened', async (
   });
   assert.equal(r.recalled, r.registry);
   assert.notEqual(r.before, r.registry);
-  assert.match(r.recalled, /chain counted/);
+  assert.match(r.recalled, /Chain rattled end to end/);
 });
 
 test('the recall strengthens ordinary enemies in all sixteen regions exactly once, never bosses', async (t) => {

@@ -236,9 +236,9 @@ test('all three gates physically release the Crown; contact or pickup key grants
 
 test('Ilyra recurs only out of view and her deliberate conversation does not gate the machinery',()=>{
   const h=acquisitionHarness(),n=h.G.npcs[0];
-  assert.equal(n.x,2050);h.G.cam=1500;h.circuits.add('wind-gate-1');
-  h.context.updateUpdraftsKeeper();assert.equal(n.x,2050,'she cannot disappear while visible');
-  h.G.cam=8100;h.context.updateUpdraftsKeeper();assert.equal(n.x,2050,'she cannot arrive while visible');
+  assert.equal(n.x,2200);h.G.cam=1500;h.circuits.add('wind-gate-1');
+  h.context.updateUpdraftsKeeper();assert.equal(n.x,2200,'she cannot disappear while visible');
+  h.G.cam=8100;h.context.updateUpdraftsKeeper();assert.equal(n.x,2200,'she cannot arrive while visible');
   h.G.cam=5000;h.context.updateUpdraftsKeeper();assert.equal(n.x,8450);
   const gates=h.context.updraftsGateCount();
   h.context.interactWithIlyra(n);assert.equal(n.asked,true);assert.equal(h.context.updraftsGateCount(),gates);

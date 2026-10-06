@@ -22,7 +22,7 @@ function assembled(charter, overrides = {}) {
 
 test('all 16 blueprint slots produce complete immutable charter stubs', () => {
   const catalog = Charters.catalog(Campaign.blueprints);
-  assert.equal(catalog.length, 16);
+  assert.equal(catalog.length, 41);
   for (const charter of catalog) {
     assert.equal(Charters.validateCharter(charter).ok, true, charter.id);
     assert.deepEqual(charter.routes.map((route) => route.id), ['fresh', 'revisit', 'optional', 'speedrun']);

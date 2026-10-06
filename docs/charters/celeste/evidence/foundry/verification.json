@@ -1,0 +1,290 @@
+{
+  "preserved": {
+    "fractured": true,
+    "previousStandardRooms": true
+  },
+  "trials": [
+    {
+      "variant": "normal",
+      "room": 1,
+      "retries": 0,
+      "maxJumps": 2,
+      "stats": {
+        "charge": 1,
+        "grace": 0,
+        "refill": true,
+        "veins": 1,
+        "dashes": 5,
+        "launches": 1,
+        "dx": 0.7071067811865475,
+        "dy": 0.7071067811865475,
+        "speed": 720,
+        "recharge": 0.38,
+        "aimUntil": 3.3499999999999934,
+        "aimInput": {
+          "x": 1,
+          "y": 1
+        },
+        "ride": false,
+        "lift": 661.5384615384615,
+        "phase": null
+      }
+    },
+    {
+      "variant": "no-refill",
+      "room": 0,
+      "retries": 1,
+      "maxJumps": 2,
+      "stats": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0
+      }
+    },
+    {
+      "variant": "no-shuttle-motion",
+      "room": 0,
+      "retries": 1,
+      "maxJumps": 2,
+      "stats": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0
+      }
+    },
+    {
+      "variant": "no-exit-dash",
+      "room": 0,
+      "retries": 1,
+      "maxJumps": 2,
+      "stats": {
+        "charge": 1,
+        "grace": 0,
+        "refill": true,
+        "veins": 1,
+        "dashes": 4,
+        "launches": 1,
+        "dx": 1,
+        "dy": 0,
+        "speed": 730.6384818707188,
+        "recharge": 0.38,
+        "aimUntil": 2.9333333333333282,
+        "aimInput": {
+          "x": 1,
+          "y": 0
+        },
+        "ride": false,
+        "lift": 661.5384615384615,
+        "phase": null
+      }
+    },
+    {
+      "variant": "no-diagonal-entry",
+      "room": 0,
+      "retries": 1,
+      "maxJumps": 2,
+      "stats": {
+        "charge": 1,
+        "grace": 0,
+        "refill": false,
+        "veins": 0,
+        "dashes": 0,
+        "launches": 0
+      }
+    }
+  ],
+  "remoteDash": {
+    "moved": true,
+    "carried": false,
+    "vx": 720
+  },
+  "vectors": [
+    {
+      "x": 1,
+      "y": 0,
+      "initial": {
+        "vx": 720,
+        "vy": 0
+      },
+      "locked": {
+        "vx": 720,
+        "vy": 0
+      },
+      "spent": {
+        "charge": 0,
+        "dashes": 1,
+        "slamming": false
+      },
+      "reset": {
+        "charge": 1,
+        "refill": false,
+        "phase": null
+      }
+    },
+    {
+      "x": -1,
+      "y": 0,
+      "initial": {
+        "vx": -720,
+        "vy": 0
+      },
+      "locked": {
+        "vx": -720,
+        "vy": 0
+      },
+      "spent": {
+        "charge": 0,
+        "dashes": 1,
+        "slamming": false
+      },
+      "reset": {
+        "charge": 1,
+        "refill": false,
+        "phase": null
+      }
+    },
+    {
+      "x": 0,
+      "y": 1,
+      "initial": {
+        "vx": 0,
+        "vy": -720
+      },
+      "locked": {
+        "vx": 0,
+        "vy": -720
+      },
+      "spent": {
+        "charge": 0,
+        "dashes": 1,
+        "slamming": false
+      },
+      "reset": {
+        "charge": 1,
+        "refill": false,
+        "phase": null
+      }
+    },
+    {
+      "x": 0,
+      "y": -1,
+      "initial": {
+        "vx": 0,
+        "vy": 720
+      },
+      "locked": {
+        "vx": 0,
+        "vy": 720
+      },
+      "spent": {
+        "charge": 0,
+        "dashes": 1,
+        "slamming": false
+      },
+      "reset": {
+        "charge": 1,
+        "refill": false,
+        "phase": null
+      }
+    },
+    {
+      "x": 1,
+      "y": 1,
+      "initial": {
+        "vx": 509.1168824543142,
+        "vy": -509.1168824543142
+      },
+      "locked": {
+        "vx": 509.1168824543142,
+        "vy": -509.1168824543142
+      },
+      "spent": {
+        "charge": 0,
+        "dashes": 1,
+        "slamming": false
+      },
+      "reset": {
+        "charge": 1,
+        "refill": false,
+        "phase": null
+      }
+    },
+    {
+      "x": -1,
+      "y": 1,
+      "initial": {
+        "vx": -509.1168824543142,
+        "vy": -509.1168824543142
+      },
+      "locked": {
+        "vx": -509.1168824543142,
+        "vy": -509.1168824543142
+      },
+      "spent": {
+        "charge": 0,
+        "dashes": 1,
+        "slamming": false
+      },
+      "reset": {
+        "charge": 1,
+        "refill": false,
+        "phase": null
+      }
+    },
+    {
+      "x": 1,
+      "y": -1,
+      "initial": {
+        "vx": 509.1168824543142,
+        "vy": 509.1168824543142
+      },
+      "locked": {
+        "vx": 509.1168824543142,
+        "vy": 509.1168824543142
+      },
+      "spent": {
+        "charge": 0,
+        "dashes": 1,
+        "slamming": false
+      },
+      "reset": {
+        "charge": 1,
+        "refill": false,
+        "phase": null
+      }
+    },
+    {
+      "x": -1,
+      "y": -1,
+      "initial": {
+        "vx": -509.1168824543142,
+        "vy": 509.1168824543142
+      },
+      "locked": {
+        "vx": -509.1168824543142,
+        "vy": 509.1168824543142
+      },
+      "spent": {
+        "charge": 0,
+        "dashes": 1,
+        "slamming": false
+      },
+      "reset": {
+        "charge": 1,
+        "refill": false,
+        "phase": null
+      }
+    }
+  ],
+  "native": {
+    "dx": 0.7071067811865475,
+    "dy": 0.7071067811865475
+  },
+  "errors": []
+}

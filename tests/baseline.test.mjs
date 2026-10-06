@@ -7,7 +7,7 @@ test('A1 baseline inventories the complete campaign and canonical deploy mirror'
   const report = await buildBaseline();
 
   assert.equal(report.schema, 'bladefall.a1-structural-baseline');
-  assert.equal(report.game.stageCount, 16);
+  assert.equal(report.game.stageCount, 41);
   assert.deepEqual(report.ownership.stageSources, {
     custom: 10,
     procedural: 4,

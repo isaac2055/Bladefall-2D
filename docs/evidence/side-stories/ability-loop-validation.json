@@ -1,0 +1,179 @@
+{
+  "scope": "Continuous walking/jumping, actual dash/slam/hook, DOM conversation choices, Silas/recruit escorts and ordinary turn-in/reward selection from regional rest checkpoints. Only initial earned-capability/checkpoint fixtures (including a restored Colony spring); no intermediate teleports or state/task fixtures.",
+  "results": [
+    {
+      "diagnostic": {
+        "player": {
+          "x": 10698.640627166154,
+          "y": 130
+        },
+        "actor": {
+          "x": 10950,
+          "y": 130
+        },
+        "mode": "play",
+        "dead": false,
+        "hook": false,
+        "step": 1
+      },
+      "id": "defector",
+      "actorReached": true,
+      "accepted": true,
+      "targetReached": true,
+      "abilityWorked": true,
+      "descended": true,
+      "second": true,
+      "returned": true,
+      "finished": true,
+      "escorted": true,
+      "rewardReached": true,
+      "claimed": true,
+      "phase": "completed"
+    },
+    {
+      "diagnostic": {
+        "player": {
+          "x": 1178.0433745926046,
+          "y": 0
+        },
+        "actor": {
+          "x": 1270,
+          "y": 0
+        },
+        "mode": "play",
+        "dead": false,
+        "hook": false,
+        "step": 2
+      },
+      "id": "automaton",
+      "actorReached": true,
+      "accepted": true,
+      "targetReached": true,
+      "abilityWorked": true,
+      "descended": true,
+      "second": true,
+      "returned": true,
+      "finished": true,
+      "escorted": true,
+      "rewardReached": true,
+      "claimed": true,
+      "phase": "completed"
+    },
+    {
+      "diagnostic": {
+        "player": {
+          "x": 6359.757575757549,
+          "y": 0
+        },
+        "actor": {
+          "x": 6770,
+          "y": 0
+        },
+        "mode": "play",
+        "dead": false,
+        "hook": false,
+        "step": 2
+      },
+      "id": "recruit",
+      "actorReached": true,
+      "accepted": true,
+      "targetReached": true,
+      "abilityWorked": true,
+      "descended": true,
+      "second": true,
+      "returned": true,
+      "finished": true,
+      "escorted": true,
+      "rewardReached": true,
+      "claimed": true,
+      "phase": "completed"
+    },
+    {
+      "diagnostic": {
+        "player": {
+          "x": 708.2380558284194,
+          "y": 100
+        },
+        "actor": {
+          "x": 820,
+          "y": 100
+        },
+        "mode": "play",
+        "dead": false,
+        "hook": false,
+        "step": 2
+      },
+      "id": "sailors",
+      "actorReached": true,
+      "accepted": true,
+      "targetReached": true,
+      "abilityWorked": true,
+      "descended": true,
+      "second": true,
+      "returned": true,
+      "finished": true,
+      "escorted": true,
+      "rewardReached": true,
+      "claimed": true,
+      "phase": "completed"
+    },
+    {
+      "diagnostic": {
+        "player": {
+          "x": 1156.8146854662461,
+          "y": 162.95274373497884
+        },
+        "actor": {
+          "x": 1116,
+          "y": 160
+        },
+        "mode": "play",
+        "dead": false,
+        "hook": false,
+        "step": 2
+      },
+      "id": "miner",
+      "actorReached": true,
+      "accepted": true,
+      "targetReached": true,
+      "abilityWorked": true,
+      "descended": true,
+      "second": true,
+      "returned": true,
+      "finished": true,
+      "escorted": true,
+      "rewardReached": true,
+      "claimed": true,
+      "phase": "completed"
+    },
+    {
+      "diagnostic": {
+        "player": {
+          "x": 7209.6573258360695,
+          "y": 0
+        },
+        "actor": {
+          "x": 7300,
+          "y": 0
+        },
+        "mode": "play",
+        "dead": false,
+        "hook": false,
+        "step": 2
+      },
+      "id": "mother",
+      "actorReached": true,
+      "accepted": true,
+      "targetReached": true,
+      "abilityWorked": true,
+      "descended": true,
+      "second": true,
+      "returned": true,
+      "finished": true,
+      "escorted": true,
+      "rewardReached": true,
+      "claimed": true,
+      "phase": "completed"
+    }
+  ]
+}
