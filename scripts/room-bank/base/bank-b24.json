@@ -82,7 +82,7 @@
   "bank": {
     "side": "base",
     "batch": 15,
-    "acceptance": "revised",
+    "acceptance": "banked",
     "difficulty": 4,
     "role": "Deliver shade through a freight-only opening, then use a timed blade route underneath",
     "worlds": [
@@ -113,7 +113,7 @@
       "pod",
       "dash"
     ],
-    "humanReview": "Revised after the user found the original too easy. Fun, difficulty and suitability await human review; numeric difficulty remains an author estimate.",
+    "humanReview": "User approved the final revision (all remaining rooms pass except B60; F32/F59 have separate conditional edits). Numeric ratings remain unmeasured.",
     "solution": "Take the lantern, wait for the first thorn to descend, and glide through the overhead beam to the middle island. Throw right from the island lip: the lantern lands in the feeder and slides through a low cargo-only slot onto the plate, holding the exit. Move down beside the feeder wall and release the horizontal input long enough to fall below its underside. Dash right toward the pod and cut down when the dash ends. The rebound restores the dash under the solid roof; clear the roof edge and dash up-right behind the low returning thorn into the far bank.",
     "nearestExisting": "The original B24 was two ordinary lantern glides separated by broad safe shelves. This revision preserves its first committed shade descent but changes the middle island into a dispatch point: the cargo takes the upper slot, while the knight spends and recovers a dash beneath it. F58 also separates cargo and player briefly, but recatches the lantern in flight; here the lantern stays delivered and physically holds the door.",
     "novelty": "The lantern changes jobs from mobile shade to a remote door weight. Its eight-pixel freight opening excludes the knight, and the full-height freight housing prevents an upper jump/dash escape. The lower pod is a continuation resource, not a bonus beside an already-complete route.",
@@ -880,7 +880,11 @@
         "vy": -135,
         "i": 258
       }
-    ]
+    ],
+    "finalApproval20261009": {
+      "decision": "banked",
+      "comment": "Final revision accepted."
+    }
   },
   "tape": [
     [

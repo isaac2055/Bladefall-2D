@@ -34,7 +34,7 @@
       "########^^^^^^^^^^^^^^^^^^^^^^^^^^^^<###",
       "########################################"
     ],
-    "hint": "The key opens the island’s underside; its spent top cannot catch your return.",
+    "hint": "The key opens the island\u2019s underside; its spent top cannot catch your return.",
     "question": "If the island cannot catch you twice, where must the returning deck launch you?",
     "decks": [
       {
@@ -126,7 +126,7 @@
   "bank": {
     "side": "fractured",
     "batch": 15,
-    "acceptance": "revised",
+    "acceptance": "banked",
     "difficulty": 5,
     "role": "Open the freight underpass after spending the island top, then launch from the returning deck",
     "worlds": [
@@ -147,11 +147,11 @@
     "newMechanics": [],
     "status": "route-proven",
     "author": "Codex",
-    "humanReview": "Revised after the user found the original too easy. Fun, difficulty and suitability await human review; numeric difficulty remains an author estimate.",
+    "humanReview": "User approved the final revision (all remaining rooms pass except B60; F32/F59 have separate conditional edits). Numeric ratings remain unmeasured.",
     "entrance": "Lower western dock; the closed freight gate makes the outward island transfer necessary.",
     "exit": "Upper western balcony beyond the tally gate, reached after the returning-deck loft.",
     "solution": "Board the outward deck and jump/updash onto the island because its lower freight passage is closed. Cross the island and leave its marked top for the far deck and tally, spending that top. The tally opens both the western exit and the underpass below the island. Dash left to catch the returning deck, ride beneath the spent body, and watch the pod approach the western edge. Jump left and hold Jump with a downcut to loft from the pod. Pass above the descending home thorn, then dash straight up beside the exit lip before moving left onto it. A diagonal dash too early goes under the balcony instead of over its edge.",
-    "nearestExisting": "The original F25 used the same safe island in both directions. B58 taught that a used top can remain a useful ceiling, and F57 joined a moving launch to a timed loft. This revision keeps the original moving freight but gives the tally a second physical job: it opens the island’s underside after the first departure has made its top unusable.",
+    "nearestExisting": "The original F25 used the same safe island in both directions. B58 taught that a used top can remain a useful ceiling, and F57 joined a moving launch to a timed loft. This revision keeps the original moving freight but gives the tally a second physical job: it opens the island\u2019s underside after the first departure has made its top unusable.",
     "novelty": "One visit changes which side of the island is useful. The outward gate forces the upper transfer, and the same distant tally opens the lower return. The deck is intercepted from the opposite shore; the final loft and vertical dash continue its movement instead of returning to the old unlimited rest.",
     "timing": {
       "principle": "Spend the upper refuge outward, then use the newly opened lower passage and moving launch home.",
@@ -1142,7 +1142,11 @@
         "vy": -210,
         "i": 324
       }
-    ]
+    ],
+    "finalApproval20261009": {
+      "decision": "banked",
+      "comment": "Final revision accepted."
+    }
   },
   "tape": [
     [

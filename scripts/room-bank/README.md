@@ -1,3 +1,7 @@
+# Current state: 7.303
+
+97 individually saved approved rooms,54 Base/43 Fractured. B60/F62 are archived. Catalog batch16 records final F32/F59 changes; menu defaults to Banked. No campaign imports. Placement analysis: `docs/room-bank/WORLD-PLACEMENT-7.303.md`; structured plan: `docs/room-bank/world-placement-7.303.json`; audit: `node scripts/room-bank/placement-check.mjs --write`. Older workflow notes below are historical where their counts/default groups differ.
+
 # Spare-room bank
 
 The active contract is `catalog.json`. The final review update (7.302.0) has **98 rooms: 89 approved and nine revised**. There are **55 Base / 43 Fractured** rooms; the approved bank is **51 / 38**. F62 is archived. The current guide is `docs/room-bank/FINAL-REVIEW-7.302.md`; the menu gathers remaining revisions in **Final review**, alongside **Banked**. Stable IDs and original run metadata are preserved. No room is inserted into a campaign.

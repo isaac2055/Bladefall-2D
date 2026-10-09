@@ -9,8 +9,8 @@
       "portal",
       "parry"
     ],
-    "hint": "Reverse through the low openings; spend the last wall in a bounce, then stay with the crystals.",
-    "question": "Turn a spent landing into a reverse launch through a moving opening.",
+    "hint": "Wavedash or reverse from the runway; cross both patrols, then bounce from the marked wall.",
+    "question": "Time a low momentum crossing, then turn the far wall into an airborne return.",
     "map": [
       "################################################",
       "#...........#>................................G#",
@@ -21,30 +21,22 @@
       "#...........#>................................G.",
       "#...........#>................................G.",
       "#...........#>...................###############",
-      "#...........#>................................<#",
+      "#...........#>...^^^^^^^^^^^^^................<#",
+      "#................#############................<#",
+      "#................vvvvvvvvvvvvv................<#",
       "#.............................................<#",
       "#.............................................<#",
-      "#.............^^^^^^^^^^^^^^^^................<#",
-      "#.............################................<#",
-      "#.............vvvvvvvvvvvvvvvv................<#",
+      "#.............................................<#",
       "#.............................................<#",
       "#.............................................<#",
       "#..............................P...c..........<#",
-      "#.............................................<#",
+      "#.............................#########.......<#",
       "#.............................................<#",
       "#.............................................<#",
       "#..^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<#",
       "################################################"
     ],
     "spentThorns": [
-      {
-        "id": "Run-up",
-        "c": 30,
-        "r": 18,
-        "w": 9,
-        "h": 1,
-        "face": "up"
-      },
       {
         "id": "Return grip",
         "c": 12,
@@ -110,15 +102,31 @@
   },
   "tape": [
     [
-      13,
-      "rdx"
+      1,
+      "d"
+    ],
+    [
+      24,
+      ""
+    ],
+    [
+      25,
+      "r"
+    ],
+    [
+      6,
+      "lj"
+    ],
+    [
+      11,
+      "ldx"
     ],
     [
       12,
       "lj"
     ],
     [
-      16,
+      10,
       "l"
     ],
     [
@@ -164,19 +172,20 @@
   ],
   "bank": {
     "side": "fractured",
-    "batch": 15,
+    "batch": 16,
     "run": 7,
     "collection": "run7",
     "format": "compact",
-    "acceptance": "revised",
+    "acceptance": "banked",
     "status": "route-proven",
     "difficulty": 4,
-    "role": "Carry a reverse-hyper approach through two patrol windows into a spent-wall wallbounce and aerial return.",
+    "role": "Reusable wavedash runway through two patrol windows into a spent-wall wallbounce and aerial return.",
     "worlds": [],
     "tags": [
-      "spent-floor",
+      "wavedash",
+      "reusable-runway",
+      "reverse-hyper-alternative",
       "spent-wall",
-      "reverse-hyper",
       "wallbounce",
       "aerial-refill-chain",
       "offset-patrols"
@@ -185,7 +194,7 @@
       "departure-armed persistent surface"
     ],
     "author": "Codex",
-    "humanReview": "Lower reverse launch and matching ceiling raised eight pixels above the unchanged spike floor, preserving headroom while adding fall clearance. Awaiting review.",
+    "humanReview": "Banked under the player\u2019s conditional approval after removing departure arming from the first platform, raising the overhead hazard substantially, and proving the wavedash route. The original reverse route also still completes; numeric ratings remain unmeasured.",
     "learningFamily": "spent-faces",
     "lessonRole": "combine",
     "preparesFor": [
@@ -196,210 +205,54 @@
       "bank-b59"
     ],
     "timing": {
-      "kind": "reverse-hyper into two offset patrol openings, wallbounce and aerial refill chain",
+      "kind": "wavedash or reverse-hyper through two offset patrol openings, then wallbounce and aerial refill chain",
       "warningFrames": 18,
       "patrolPeriod": 150,
       "phaseOffset": 75,
-      "cue": "Use the lower windows to reach the wall; the upper return has no landing before the last crystal."
+      "cue": "Watch the first patrol descend and use the opening over it. Dash left again before sinking into the second patrol\u2019s sweep."
     },
-    "solution": "Dash down-right along the folded runway to take its tally and recover the dash on the ground. Jump left during the reverse grace to leave with a low reverse hyper. Carry that launch through the first patrol window, then spend the retained dash left through the second and catch the marked return wall. Climb through its upward crystal. Dash up alongside the wall and jump away right into a wallbounce before the upper thorn cap. Collect the first rightward crystal in the bounce, dash up-right, cross the second airborne crystal and dash up-right again onto the high gallery. The original runway and the wall have armed behind you, so neither can be used to reset a failed airborne continuation.",
-    "nearestExisting": "F31 introduced the reverse launch toward an exit. This is an explicit later application of that vocabulary: two offset lower patrols feed a marked wall, and the wallbounce returns above the thorned roof through a continuous refill chain. B58/B59 teach why a departed runway or grip cannot serve as a recovery point.",
-    "novelty": "Carry a reverse-hyper approach through two patrol windows into a spent-wall wallbounce and aerial return.",
-    "endingForgiveness": "The wallbounce and airborne chain are deliberately the more demanding finish. Both one-frame earlier/later reverse launches and a two-frame earlier final dash complete cleanly. The receiving gallery is broad, but getting to it still requires the refilled airborne sequence.",
+    "solution": "The nine-tile launch runway is ordinary ground: jump, land again, stop, or reset your takeoff there. Collect the tally on its right half, watch the patrols, then make a short leftward hop. Dash down-left back into the runway and jump left from that landing while the dash is still active; the dash has refilled, so this is an actual wavedash. Carry the low launch over the first patrol, then dash left through the second opening and grab the marked return wall. Climb through its upward crystal. Dash up and wallbounce right before the wall\u2019s upper thorns; take both rightward crystals and continue with the two up-right dashes onto the high gallery. The original grounded reverse-hyper entry remains a working alternative. Only the marked return wall arms on departure.",
+    "nearestExisting": "F31 introduced the reverse launch toward an exit. F59 keeps its offset patrols and marked-wall aerial return, but its reusable runway now also supports an airborne wavedash setup. B59 teaches the one remaining spent surface: the return grip, not the takeoff floor.",
+    "novelty": "Reusable wavedash runway through two patrol windows into a spent-wall wallbounce and aerial return.",
+    "endingForgiveness": "The marked-wall wallbounce and three-crystal return remain the demanding finish. The takeoff runway can be reused without arming; the low overhead beam is 24px higher and begins 24px farther from the return wall.",
     "positiveChecks": [
       {
-        "name": "Reverse one frame earlier",
+        "name": "Jump and land on the reusable runway before the wavedash",
         "tape": [
           [
             12,
-            "rdx"
+            "j"
           ],
           [
-            12,
-            "lj"
+            138,
+            ""
           ],
           [
-            16,
-            "l"
-          ],
-          [
-            12,
-            "lx"
-          ],
-          [
-            7,
-            "lg"
-          ],
-          [
-            50,
-            "ug"
-          ],
-          [
-            12,
-            "ux"
-          ],
-          [
-            22,
-            "rj"
-          ],
-          [
-            2,
-            "r"
-          ],
-          [
-            12,
-            "rux"
-          ],
-          [
-            26,
-            "r"
-          ],
-          [
-            12,
-            "rux"
-          ],
-          [
-            110,
-            "r"
-          ]
-        ],
-        "exited": true,
-        "deaths": 0,
-        "frames": 294
-      },
-      {
-        "name": "Reverse one frame later",
-        "tape": [
-          [
-            14,
-            "rdx"
-          ],
-          [
-            12,
-            "lj"
-          ],
-          [
-            16,
-            "l"
-          ],
-          [
-            12,
-            "lx"
-          ],
-          [
-            7,
-            "lg"
-          ],
-          [
-            50,
-            "ug"
-          ],
-          [
-            12,
-            "ux"
-          ],
-          [
-            22,
-            "rj"
-          ],
-          [
-            2,
-            "r"
-          ],
-          [
-            12,
-            "rux"
-          ],
-          [
-            26,
-            "r"
-          ],
-          [
-            12,
-            "rux"
-          ],
-          [
-            110,
-            "r"
-          ]
-        ],
-        "exited": true,
-        "deaths": 0,
-        "frames": 296
-      },
-      {
-        "name": "Second aerial dash two frames earlier",
-        "tape": [
-          [
-            13,
-            "rdx"
-          ],
-          [
-            12,
-            "lj"
-          ],
-          [
-            16,
-            "l"
-          ],
-          [
-            12,
-            "lx"
-          ],
-          [
-            7,
-            "lg"
-          ],
-          [
-            50,
-            "ug"
-          ],
-          [
-            12,
-            "ux"
-          ],
-          [
-            22,
-            "rj"
-          ],
-          [
-            2,
-            "r"
-          ],
-          [
-            12,
-            "rux"
+            1,
+            "d"
           ],
           [
             24,
+            ""
+          ],
+          [
+            25,
             "r"
           ],
           [
-            12,
-            "rux"
+            6,
+            "lj"
           ],
           [
-            110,
-            "r"
-          ]
-        ],
-        "exited": true,
-        "deaths": 0,
-        "frames": 295
-      },
-      {
-        "name": "Low dash 2 frames later",
-        "tape": [
-          [
-            13,
-            "rdx"
+            11,
+            "ldx"
           ],
           [
             12,
             "lj"
           ],
           [
-            18,
+            10,
             "l"
           ],
           [
@@ -445,7 +298,80 @@
         ]
       },
       {
-        "name": "Low dash 4 frames later",
+        "name": "Wavedash departure three frames earlier in the patrol cycle",
+        "tape": [
+          [
+            1,
+            "d"
+          ],
+          [
+            21,
+            ""
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            6,
+            "lj"
+          ],
+          [
+            11,
+            "ldx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            10,
+            "l"
+          ],
+          [
+            12,
+            "lx"
+          ],
+          [
+            7,
+            "lg"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            22,
+            "rj"
+          ],
+          [
+            2,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            26,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Original reverse-hyper route remains usable",
         "tape": [
           [
             13,
@@ -456,7 +382,7 @@
             "lj"
           ],
           [
-            20,
+            16,
             "l"
           ],
           [
@@ -534,10 +460,7 @@
             100,
             "r"
           ]
-        ],
-        "exited": false,
-        "deaths": 3,
-        "frames": null
+        ]
       },
       {
         "name": "Use a short ordinary jump-dash for the low crossing",
@@ -566,10 +489,7 @@
             150,
             "ug"
           ]
-        ],
-        "exited": false,
-        "deaths": 2,
-        "frames": null
+        ]
       },
       {
         "name": "Ordinary walljump-dash instead of the wallbounce",
@@ -610,14 +530,12 @@
             160,
             "rgu"
           ]
-        ],
-        "exited": false,
-        "deaths": 2,
-        "frames": null
+        ]
       }
     ],
     "requiredEvents": [
-      "reverse-hyper",
+      "ultra",
+      "hyper",
       "wallbounce",
       "vector-refill",
       "spent-thorn-arm",
@@ -625,92 +543,114 @@
     ],
     "requiredEventCounts": {
       "vector-refill": 3,
-      "spent-thorn-touch": 2
+      "spent-thorn-touch": 1
     },
     "route": {
       "exited": true,
-      "frames": 295,
+      "frames": 343,
       "deaths": 0,
       "events": [
-        "spent-thorn-touch",
-        "dash",
-        "ultra",
-        "refill-dash",
         "stone-lit",
         "gate-open",
+        "jump",
+        "dash",
+        "land",
+        "ultra",
+        "refill-dash",
         "hyper",
-        "reverse-hyper",
-        "late-reverse",
-        "spent-thorn-leave",
-        "spent-thorn-arm",
+        "spent-thorn-touch",
         "grab",
         "refill",
         "vector-refill",
         "wallbounce",
-        "land",
+        "spent-thorn-leave",
+        "spent-thorn-arm",
         "refill-back",
         "exit"
       ],
       "eventCounts": {
-        "spent-thorn-touch": 2,
-        "dash": 5,
-        "ultra": 1,
-        "refill-dash": 5,
         "stone-lit": 1,
         "gate-open": 1,
+        "jump": 1,
+        "dash": 5,
+        "land": 2,
+        "ultra": 1,
+        "refill-dash": 5,
         "hyper": 1,
-        "reverse-hyper": 1,
-        "late-reverse": 1,
-        "spent-thorn-leave": 2,
-        "spent-thorn-arm": 2,
+        "spent-thorn-touch": 1,
         "grab": 1,
         "refill": 3,
         "vector-refill": 3,
         "wallbounce": 1,
-        "land": 1,
+        "spent-thorn-leave": 1,
+        "spent-thorn-arm": 1,
         "refill-back": 1,
         "exit": 1
       },
       "firstFailure": null
     },
-    "designNotes": "Departure-thorn bodies remain solid. Only the visibly marked face arms after departure; continuous first contact is safe. Room completion uses ordinary physical geometry and visible tallies, with no hidden movement-event gate. The patrol clock begins with input and resets per attempt. Review15: raised launch and matching ceiling 8px over unchanged spike floor; preserved canonical and reverse timing. Added successful low-dash +2/+4-frame delay checks to target reported bottom-spike collision.",
+    "designNotes": "The initial Run-up spent-thorn entity was replaced by nine ordinary solid tiles at columns 30\u201338, row 18. The overhead beam moved from rows 12/13/14 to rows 9/10/11; its three western tiles were removed so the unchanged wallbounce can rise beside it. Patrol paths, phases, exit, tally, all three crystals and the spent Return grip are unchanged. Completion remains physical with no hidden event lock. Wave and original reverse tapes both complete cleanly.",
     "timingCues": [
-      "Use the lower windows to reach the wall; the upper return has no landing before the last crystal.",
-      "Folded hairs mark a safe first contact; an amber warning after departure precedes the permanently red face."
+      "The initial runway is plain reusable stone; only the far wall retains the folded-hair warning.",
+      "Cross above the descending first patrol, then spend the retained dash before dropping into the second sweep.",
+      "Leave the marked wall in a wallbounce and follow the crystal arrows for the upper return."
     ],
     "routeMovement": [
       {
+        "type": "jump",
+        "frame": 51,
+        "x": 286,
+        "y": 144,
+        "lift": 0
+      },
+      {
         "type": "dash",
-        "frame": 5,
-        "x": 252,
-        "y": 147,
-        "dx": 0.7071067811865475,
+        "frame": 61,
+        "x": 287,
+        "y": 129,
+        "dx": -0.7071067811865475,
         "dy": 0.7071067811865475
       },
       {
-        "type": "hyper",
-        "frame": 14,
-        "x": 282,
-        "y": 152
+        "type": "land",
+        "frame": 65,
+        "x": 275,
+        "y": 144,
+        "speed": 169.70562748477138
       },
       {
-        "type": "reverse-hyper",
-        "frame": 14,
-        "x": 282,
-        "y": 152,
-        "dir": -1
+        "type": "ultra",
+        "frame": 65
+      },
+      {
+        "type": "refill-dash",
+        "frame": 66,
+        "x": 272,
+        "y": 133
+      },
+      {
+        "type": "hyper",
+        "frame": 68,
+        "x": 265,
+        "y": 144
       },
       {
         "type": "dash",
-        "frame": 46,
-        "x": 157,
-        "y": 156,
+        "frame": 94,
+        "x": 163,
+        "y": 134,
         "dx": -1,
         "dy": 0
       },
       {
+        "type": "refill-dash",
+        "frame": 123,
+        "x": 108,
+        "y": 135
+      },
+      {
         "type": "vector-refill",
-        "frame": 94,
+        "frame": 123,
         "x": 108,
         "y": 132,
         "dx": 0,
@@ -719,22 +659,28 @@
       },
       {
         "type": "dash",
-        "frame": 116,
+        "frame": 164,
         "x": 108,
-        "y": 130,
+        "y": 116,
         "dx": 0,
         "dy": -1
       },
       {
         "type": "wallbounce",
-        "frame": 123,
+        "frame": 171,
         "x": 104,
-        "y": 102,
+        "y": 88,
         "dir": 1
       },
       {
+        "type": "refill-dash",
+        "frame": 189,
+        "x": 150,
+        "y": 34
+      },
+      {
         "type": "vector-refill",
-        "frame": 141,
+        "frame": 189,
         "x": 156,
         "y": 44,
         "dx": 1,
@@ -743,15 +689,21 @@
       },
       {
         "type": "dash",
-        "frame": 151,
+        "frame": 199,
         "x": 154,
-        "y": 50,
+        "y": 36,
         "dx": 0.7071067811865475,
         "dy": -0.7071067811865475
       },
       {
+        "type": "refill-dash",
+        "frame": 224,
+        "x": 205,
+        "y": 40
+      },
+      {
         "type": "vector-refill",
-        "frame": 178,
+        "frame": 224,
         "x": 212,
         "y": 52,
         "dx": 1,
@@ -760,15 +712,310 @@
       },
       {
         "type": "dash",
-        "frame": 189,
+        "frame": 237,
         "x": 214,
-        "y": 56,
+        "y": 62,
         "dx": 0.7071067811865475,
         "dy": -0.7071067811865475
+      },
+      {
+        "type": "land",
+        "frame": 266,
+        "x": 269,
+        "y": 64,
+        "speed": 160
+      },
+      {
+        "type": "refill-dash",
+        "frame": 266,
+        "x": 269,
+        "y": 53
       }
     ],
     "review": {
-      "revision15": "Raised the spent launch runway, spawn/tally, and low ceiling one tile. Floor spikes and upper route are unchanged."
+      "revision15": "Raised the spent launch runway, spawn/tally, and low ceiling one tile. Floor spikes and upper route are unchanged.",
+      "currentRevision": "Batch 16: removed spent behavior only from the starting runway; raised the long overhead beam 24px and retracted its western tip 24px; preserved the marked return grip, both patrols, tally, exit and crystals. Saved both actual wavedash and original reverse completions.",
+      "reusableRunwayProof": {
+        "tapeName": "Jump and land on the reusable runway before the wavedash",
+        "firstJumpFrame": 1,
+        "firstLandingFrame": 35,
+        "initialPlatformArms": false
+      },
+      "conditionalBanking": "Player authorized banking once the revised wavedash worked; verified full zero-death completion."
+    },
+    "wavedashProof": {
+      "description": "Normal-key tape proves an airborne down-left dash, landing/ultra, grounded refill, then hyper with the retained dash. No injected state or engine changes.",
+      "airborneDownDashFrame": 61,
+      "landingAndUltraFrame": 65,
+      "refillFrame": 66,
+      "hyperFrame": 68,
+      "patrolCrossings": [
+        {
+          "frame": 80,
+          "id": "First opening",
+          "knight": {
+            "x": 197,
+            "y": 122,
+            "w": 8,
+            "h": 11
+          },
+          "hazard": {
+            "x": 204,
+            "y": 140.32,
+            "radius": 3
+          },
+          "state": "normal"
+        },
+        {
+          "frame": 108,
+          "id": "Second opening",
+          "knight": {
+            "x": 110,
+            "y": 133,
+            "w": 8,
+            "h": 11
+          },
+          "hazard": {
+            "x": 116,
+            "y": 157.06666666666666,
+            "radius": 3
+          },
+          "state": "normal"
+        }
+      ],
+      "trace": [
+        {
+          "frame": 50,
+          "x": 282,
+          "y": 133,
+          "vx": 90,
+          "vy": 0,
+          "onGround": true,
+          "dashes": 1,
+          "state": "normal",
+          "events": []
+        },
+        {
+          "frame": 51,
+          "x": 283,
+          "y": 131,
+          "vx": 33.33333333333333,
+          "vy": -105,
+          "onGround": true,
+          "dashes": 1,
+          "state": "normal",
+          "events": [
+            "jump"
+          ]
+        },
+        {
+          "frame": 52,
+          "x": 283,
+          "y": 130,
+          "vx": 22.499999999999993,
+          "vy": -105,
+          "onGround": false,
+          "dashes": 1,
+          "state": "normal",
+          "events": []
+        },
+        {
+          "frame": 53,
+          "x": 283,
+          "y": 128,
+          "vx": 11.666666666666659,
+          "vy": -105,
+          "onGround": false,
+          "dashes": 1,
+          "state": "normal",
+          "events": []
+        },
+        {
+          "frame": 54,
+          "x": 283,
+          "y": 126,
+          "vx": 0.833333333333325,
+          "vy": -105,
+          "onGround": false,
+          "dashes": 1,
+          "state": "normal",
+          "events": []
+        },
+        {
+          "frame": 55,
+          "x": 283,
+          "y": 124,
+          "vx": -10.000000000000009,
+          "vy": -105,
+          "onGround": false,
+          "dashes": 1,
+          "state": "normal",
+          "events": []
+        },
+        {
+          "frame": 56,
+          "x": 283,
+          "y": 123,
+          "vx": -20.833333333333343,
+          "vy": -105,
+          "onGround": false,
+          "dashes": 1,
+          "state": "normal",
+          "events": []
+        },
+        {
+          "frame": 57,
+          "x": 283,
+          "y": 123,
+          "vx": 0,
+          "vy": 0,
+          "onGround": false,
+          "dashes": 0,
+          "state": "dash",
+          "events": []
+        },
+        {
+          "frame": 58,
+          "x": 283,
+          "y": 123,
+          "vx": 0,
+          "vy": 0,
+          "onGround": false,
+          "dashes": 0,
+          "state": "dash",
+          "events": []
+        },
+        {
+          "frame": 59,
+          "x": 283,
+          "y": 123,
+          "vx": 0,
+          "vy": 0,
+          "onGround": false,
+          "dashes": 0,
+          "state": "dash",
+          "events": []
+        },
+        {
+          "frame": 60,
+          "x": 283,
+          "y": 123,
+          "vx": 0,
+          "vy": 0,
+          "onGround": false,
+          "dashes": 0,
+          "state": "dash",
+          "events": []
+        },
+        {
+          "frame": 61,
+          "x": 280,
+          "y": 125,
+          "vx": -169.70562748477138,
+          "vy": 169.70562748477138,
+          "onGround": false,
+          "dashes": 0,
+          "state": "dash",
+          "events": [
+            "dash"
+          ]
+        },
+        {
+          "frame": 62,
+          "x": 277,
+          "y": 128,
+          "vx": -169.70562748477138,
+          "vy": 169.70562748477138,
+          "onGround": false,
+          "dashes": 0,
+          "state": "dash",
+          "events": []
+        },
+        {
+          "frame": 63,
+          "x": 274,
+          "y": 131,
+          "vx": -169.70562748477138,
+          "vy": 169.70562748477138,
+          "onGround": false,
+          "dashes": 0,
+          "state": "dash",
+          "events": []
+        },
+        {
+          "frame": 64,
+          "x": 271,
+          "y": 133,
+          "vx": -169.70562748477138,
+          "vy": 0,
+          "onGround": false,
+          "dashes": 0,
+          "state": "dash",
+          "events": []
+        },
+        {
+          "frame": 65,
+          "x": 268,
+          "y": 133,
+          "vx": -203.64675298172565,
+          "vy": 0,
+          "onGround": true,
+          "dashes": 0,
+          "state": "dash",
+          "events": [
+            "land",
+            "ultra"
+          ]
+        },
+        {
+          "frame": 66,
+          "x": 265,
+          "y": 133,
+          "vx": -203.64675298172565,
+          "vy": 0,
+          "onGround": true,
+          "dashes": 1,
+          "state": "dash",
+          "events": [
+            "refill-dash"
+          ]
+        },
+        {
+          "frame": 67,
+          "x": 261,
+          "y": 133,
+          "vx": -203.64675298172565,
+          "vy": 0,
+          "onGround": true,
+          "dashes": 1,
+          "state": "dash",
+          "events": []
+        },
+        {
+          "frame": 68,
+          "x": 256,
+          "y": 132,
+          "vx": -325,
+          "vy": -52.5,
+          "onGround": true,
+          "dashes": 1,
+          "state": "normal",
+          "events": [
+            "hyper"
+          ]
+        },
+        {
+          "frame": 69,
+          "x": 251,
+          "y": 131,
+          "vx": -320.6666666666667,
+          "vy": -52.5,
+          "onGround": false,
+          "dashes": 1,
+          "state": "normal",
+          "events": []
+        }
+      ]
     }
   }
 }

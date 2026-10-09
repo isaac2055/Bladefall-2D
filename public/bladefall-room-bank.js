@@ -3978,7 +3978,7 @@ const records=[
   "bank": {
    "side": "base",
    "batch": 15,
-   "acceptance": "revised",
+   "acceptance": "banked",
    "difficulty": 4,
    "role": "Deliver shade through a freight-only opening, then use a timed blade route underneath",
    "worlds": [
@@ -4009,7 +4009,7 @@ const records=[
     "pod",
     "dash"
    ],
-   "humanReview": "Revised after the user found the original too easy. Fun, difficulty and suitability await human review; numeric difficulty remains an author estimate.",
+   "humanReview": "User approved the final revision (all remaining rooms pass except B60; F32/F59 have separate conditional edits). Numeric ratings remain unmeasured.",
    "solution": "Take the lantern, wait for the first thorn to descend, and glide through the overhead beam to the middle island. Throw right from the island lip: the lantern lands in the feeder and slides through a low cargo-only slot onto the plate, holding the exit. Move down beside the feeder wall and release the horizontal input long enough to fall below its underside. Dash right toward the pod and cut down when the dash ends. The rebound restores the dash under the solid roof; clear the roof edge and dash up-right behind the low returning thorn into the far bank.",
    "nearestExisting": "The original B24 was two ordinary lantern glides separated by broad safe shelves. This revision preserves its first committed shade descent but changes the middle island into a dispatch point: the cargo takes the upper slot, while the knight spends and recovers a dash beneath it. F58 also separates cargo and player briefly, but recatches the lantern in flight; here the lantern stays delivered and physically holds the door.",
    "novelty": "The lantern changes jobs from mobile shade to a remote door weight. Its eight-pixel freight opening excludes the knight, and the full-height freight housing prevents an upper jump/dash escape. The lower pod is a continuation resource, not a bonus beside an already-complete route.",
@@ -4777,6 +4777,10 @@ const records=[
      "i": 258
     }
    ],
+   "finalApproval20261009": {
+    "decision": "banked",
+    "comment": "Final revision accepted."
+   },
    "revision": "2918a7ce5913",
    "source": "scripts/room-bank/base/bank-b24.json"
   },
@@ -35142,7 +35146,7 @@ const records=[
   "bank": {
    "side": "fractured",
    "batch": 15,
-   "acceptance": "revised",
+   "acceptance": "banked",
    "difficulty": 4,
    "role": "Read both portal ends while carrying a low launch into an uninterrupted rebound",
    "worlds": [
@@ -35162,7 +35166,7 @@ const records=[
    "newMechanics": [],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "Revised after the user found the original too easy. Fun, difficulty and suitability await human review; numeric difficulty remains an author estimate.",
+   "humanReview": "User approved the final revision (all remaining rooms pass except B60; F32/F59 have separate conditional edits). Numeric ratings remain unmeasured.",
    "entrance": "Western runway beneath a low roof; both patrols are observable.",
    "exit": "High eastern bank after the uninterrupted portal/pogo phrase.",
    "solution": "Hop into a down-right wavedash on the western runway, then jump low after ground contact returns the dash. Pass above the descending approach thorn and carry the launch into the fixed mouth. At the upper arrival, the other thorn must already be below the crossing. Continue directly to the pod and cut low under the receiving roof. Once the roof ends, dash up-right to the high bank. There is no receiving shelf to stop and erase the arrival timing.",
@@ -35852,6 +35856,10 @@ const records=[
      "i": 47
     }
    ],
+   "finalApproval20261009": {
+    "decision": "banked",
+    "comment": "Final revision accepted."
+   },
    "revision": "d0e8e7312ba0",
    "source": "scripts/room-bank/fractured/24-bank-f24.json"
   },
@@ -36018,7 +36026,7 @@ const records=[
   "bank": {
    "side": "fractured",
    "batch": 15,
-   "acceptance": "revised",
+   "acceptance": "banked",
    "difficulty": 5,
    "role": "Open the freight underpass after spending the island top, then launch from the returning deck",
    "worlds": [
@@ -36039,7 +36047,7 @@ const records=[
    "newMechanics": [],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "Revised after the user found the original too easy. Fun, difficulty and suitability await human review; numeric difficulty remains an author estimate.",
+   "humanReview": "User approved the final revision (all remaining rooms pass except B60; F32/F59 have separate conditional edits). Numeric ratings remain unmeasured.",
    "entrance": "Lower western dock; the closed freight gate makes the outward island transfer necessary.",
    "exit": "Upper western balcony beyond the tally gate, reached after the returning-deck loft.",
    "solution": "Board the outward deck and jump/updash onto the island because its lower freight passage is closed. Cross the island and leave its marked top for the far deck and tally, spending that top. The tally opens both the western exit and the underpass below the island. Dash left to catch the returning deck, ride beneath the spent body, and watch the pod approach the western edge. Jump left and hold Jump with a downcut to loft from the pod. Pass above the descending home thorn, then dash straight up beside the exit lip before moving left onto it. A diagonal dash too early goes under the balcony instead of over its edge.",
@@ -37035,6 +37043,10 @@ const records=[
      "i": 324
     }
    ],
+   "finalApproval20261009": {
+    "decision": "banked",
+    "comment": "Final revision accepted."
+   },
    "revision": "186f0d418946",
    "source": "scripts/room-bank/fractured/25-bank-f25.json"
   },
@@ -41242,7 +41254,7 @@ const records=[
     "#......................l.l.l.l.l.......#",
     "#.................................P...c#",
     "#......________..................YY....#",
-    "#BBBBBBBBBBBBBBBBBB....................#",
+    "#BBBBBBBBBBBBBBBBBBBBBB................#",
     "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#"
    ],
    "movement": "survive-2",
@@ -41291,9 +41303,9 @@ const records=[
   },
   "bank": {
    "side": "fractured",
-   "batch": 15,
+   "batch": 16,
    "run": 2,
-   "acceptance": "revised",
+   "acceptance": "banked",
    "difficulty": 5,
    "role": "momentum cargo transfer",
    "worlds": [
@@ -41326,8 +41338,8 @@ const records=[
     "held-open",
     "foothold-spent"
    ],
-   "humanReview": "Requested three extra seed lanterns: two left of the existing pair and one right. All previous room geometry and mechanisms preserved; awaiting review.",
-   "solution": "Dash down-right toward the outside tally, and cut during the dash. The dash raises the shade over the beam and makes the western shore solid. Once the tally lights, jump left: the late reversal grace lets this follow the cut as a readable sequence. The spent launch tongue still disappears behind you. Catch any of the five suspended lanterns on the return, carry its shade across the second beam, and land on the widened western shore. Drop the lantern on the extended brass strip to hold the roof open, then climb the west wall empty-handed.",
+   "humanReview": "Approved conditionally after extending the receiving platform to the second beam; western phase-solid shore extended through column22 (32px added). Numeric ratings remain unmeasured.",
+   "solution": "Dash down-right toward the outside tally, and cut during the dash. The dash raises the shade over the beam and makes the western shore solid. Once the tally lights, jump left: the late reversal grace lets this follow the cut as a readable sequence. The spent launch tongue still disappears behind you. Catch any of the five suspended lanterns on the return, carry its shade across the second beam, and land on the western shore, now extended directly beneath the second beam. Drop the lantern on the extended brass strip to hold the roof open, then climb the west wall empty-handed.",
    "nearestExisting": "F31 supplies the committed reverse launch. B34 uses a lantern catch to keep upward dash speed, while Return Freight recovers cargo from a moving deck. Here a horizontal reverse arc must acquire its shade in flight, then surrender that same cargo as a lasting roof weight.",
    "novelty": "The outward/reverse commitment is now physical: a dash-operated shade permits the cut, and the spent footing removes the second launch setup. The return must then collect portable shade, cross a second beam, and turn that cargo into stationary weight so the knight can climb empty-handed.",
    "designNotes": "The complete starting ceiling and its downward spikes are raised one 8-pixel tile (roughly half a knight), including the departure beam mount. Two lanterns replace the single center lantern: one tile left and one tile right of its former position. Both catches complete the same shade-to-weight puzzle, so an early or late Grab can succeed without changing the departure commitment. The two-grab target yields eleven consecutive successful Grab start times (10–20 frames after reversal) for the canonical delayed Strike/reversal; no shared movement changes.",
@@ -42568,7 +42580,7 @@ const records=[
     }
    ],
    "hintTeaching": "Strike can now follow the ground dash instead of sharing its exact frame. Once the right tally lights, hold Left and press Jump; a short grace accepts the reversal even just after the dash ends. Press Grab near the hanging lantern; the wider receiving floor and brass strip make the handoff unhurried.",
-   "revision": "350e5e8addb7",
+   "revision": "c36f1a8b9536",
    "userFeedback": {
     "date": "2026-10-09",
     "comment": "Raise the whole initial spike ceiling about half a knight and replace one lantern with two, left and right, to make the catch more forgiving."
@@ -42625,7 +42637,10 @@ const records=[
     }
    ],
    "review": {
-    "revision15": "Added three clasp-held seed lanterns at columns 23, 25 and 31 around the existing columns 27 and 29; no other room geometry changed."
+    "revision15": "Added three clasp-held seed lanterns at columns 23, 25 and 31 around the existing columns 27 and 29; no other room geometry changed.",
+    "revision16": "User wrote B32; lantern/second-beam description unambiguously identifies F32. Extended receiving B platform row21 from column18 through column22, directly beneath beam column22; added32px of landing width. B32 untouched.",
+    "decision": "banked",
+    "date": "2026-10-09"
    },
    "source": "scripts/room-bank/fractured/32-bank-f32.json"
   },
@@ -50017,7 +50032,7 @@ const records=[
    "batch": 15,
    "run": 4,
    "collection": "superrooms",
-   "acceptance": "revised",
+   "acceptance": "banked",
    "difficulty": 4,
    "role": "interconnected superroom",
    "worlds": [],
@@ -50034,7 +50049,7 @@ const records=[
    "newMechanics": [],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "Final transfer revised for another review. No approval or numeric player scores assigned.",
+   "humanReview": "User approved the final revision (all remaining rooms pass except B60; F32/F59 have separate conditional edits). Numeric ratings remain unmeasured.",
    "approvedIngredients": [
     "bank-f16",
     "bank-f19",
@@ -50764,6 +50779,10 @@ const records=[
      "deaths": 0,
      "reason": "Echo left before the original narrow plate; door remains closed."
     }
+   },
+   "finalApproval20261009": {
+    "decision": "banked",
+    "comment": "Final revision accepted."
    },
    "revision": "4ac1eaa1f1e3",
    "source": "scripts/room-bank/fractured/45-bank-f45.json"
@@ -64289,7 +64308,7 @@ const records=[
    "run": 7,
    "collection": "run7",
    "format": "compact",
-   "acceptance": "revised",
+   "acceptance": "banked",
    "status": "route-proven",
    "difficulty": 4,
    "author": "Codex",
@@ -64311,7 +64330,7 @@ const records=[
     "bank-b59"
    ],
    "prerequisites": [],
-   "humanReview": "Rebuilt after human feedback; unreviewed revised candidate. Difficulty is an author estimate, not a human rating.",
+   "humanReview": "User approved the final revision (all remaining rooms pass except B60; F32/F59 have separate conditional edits). Numeric ratings remain unmeasured.",
    "solution": "Jump the first fixed knot and brake onto the first landing before the vertical needle. Let the needle move away, then cross into the narrow landing before the second knot. Jump that knot to the far landing and cut the tally while the looping patrol travels away. On the return, land between the patches spent outbound: first beyond the second knot, then in the middle gap, then just right of the first knot. Rise vertically before crossing that knot; brake onto the untouched patch beyond the old starting trail. The last jump clears those original footprints and reaches the open exit. Only the small patches actually touched become dangerous.",
    "nearestExisting": "Replaces the former switch-and-walk B58. F59/F60 still spend entire marked faces; this room instead uses small persistent footprints, making the same floor a different return puzzle. The fixed knots determine launch shape and the two moving routes constrain when those shapes are safe.",
    "novelty": "Outbound movement manufactures the lethal pattern that the return must solve; untouched gaps retain their exact physical locations.",
@@ -65130,6 +65149,10 @@ const records=[
     "reproductionNote": "The prior canonical 380-frame route itself demonstrates the reported trivial tally-and-walk structure; the complaint was lack of consequence rather than a separate exact-input shortcut."
    },
    "designNotes": "Per-patch spending is opt-in through segment:4; approved F59/F60 keep whole-face behavior. Each backing body remains solid. Only touched patches arm, and visible geometry/hazards enforce routing; no hidden action-event gate is used. Stationary thorns and moving patrols have no drawn path guides.",
+   "finalApproval20261009": {
+    "decision": "banked",
+    "comment": "Final revision accepted."
+   },
    "revision": "0fbe18f85e73",
    "source": "scripts/room-bank/base/bank-b58.json"
   },
@@ -65427,7 +65450,7 @@ const records=[
    "run": 7,
    "collection": "run7",
    "format": "extended",
-   "acceptance": "revised",
+   "acceptance": "banked",
    "status": "route-proven",
    "difficulty": 4,
    "author": "Codex",
@@ -65452,7 +65475,7 @@ const records=[
    "prerequisites": [
     "bank-b58"
    ],
-   "humanReview": "Rebuilt after human feedback; unreviewed revised candidate. Difficulty is an author estimate, not a human rating.",
+   "humanReview": "User approved the final revision (all remaining rooms pass except B60; F32/F59 have separate conditional edits). Numeric ratings remain unmeasured.",
    "solution": "Leave the starting shelf to catch the west seam. Descend toward the first fixed knot, then jump outward, fall past it and re-grab fresh patches below while the lower shuttle is away. Descend to the underpass and walljump right; dash horizontally through the rightward refill, then dash up-right beyond the pier to catch the east seam. Climb through its refill. Jump away from the second fixed knot and dash back above it onto fresh wall patches. Read the returning upper shuttle before climbing to the eastern lip and exiting. The solid central pier and sealed backs prevent a direct or outer-wall ascent.",
    "nearestExisting": "Replaces the former two-wall B59 and its accessible outer side. Unlike F60’s upward alternation between whole faces, this room first descends around a fixed obstacle and later ascends around another, returning to untouched portions of each same wall. A solid central pier forces a low dash/refill transfer between them.",
    "novelty": "The same patch rule supports opposite movement problems: release and fall around one knot, then jump away and regain height around the other.",
@@ -66050,6 +66073,10 @@ const records=[
     "reproductionNote": "The exact human rightmost-wall input sequence was not reproduced. The new layout explicitly removes access to those outer faces; a direct jump/dash toward the far outer wall is recorded and fails at the visible thorned pier."
    },
    "designNotes": "Per-patch spending is opt-in through segment:4; approved F59/F60 keep whole-face behavior. Each backing body remains solid. Only touched patches arm, and visible geometry/hazards enforce routing; no hidden action-event gate is used. Stationary thorns and moving patrols have no drawn path guides.",
+   "finalApproval20261009": {
+    "decision": "banked",
+    "comment": "Final revision accepted."
+   },
    "revision": "011071a0efd9",
    "source": "scripts/room-bank/base/bank-b59.json"
   },
@@ -66124,711 +66151,6 @@ const records=[
    ],
    [
     120,
-    "r"
-   ]
-  ]
- },
- {
-  "room": {
-   "id": "bank-b60",
-   "name": "Let the Reply Through",
-   "palette": "sunspire",
-   "study": true,
-   "movement": "survive-2",
-   "aim8": true,
-   "exit": "right",
-   "lock": [
-    "portal"
-   ],
-   "map": [
-    "########################################",
-    "#.......................................",
-    "#.......................................",
-    "#.......................................",
-    "#.......................................",
-    "#.......................................",
-    "#.......................................",
-    "#.....................BBBBB.............",
-    "#.....................B........#########",
-    "#.....................B........#########",
-    "#^^^^^^...............B........vvvvvvvvv",
-    "#######>..............B...............<#",
-    "#.....................B...........x...<v",
-    "#######>..............B...........x...<#",
-    "#.....................................<#",
-    "#.....................................<#",
-    "#.....................................<#",
-    "#.....................................<#",
-    "#..P..................................<#",
-    "########..............................<#",
-    "########..............................<#",
-    "########^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
-    "########################################"
-   ],
-   "hint": "Parry right, then dash to let the reply through. Catch the wall when the bell restores it.",
-   "question": "Can the same wall first admit your reply, then catch your fall?",
-   "foes": [
-    {
-     "kind": "spit",
-     "x": 5,
-     "y": 12,
-     "dir": [
-      1,
-      0
-     ],
-     "every": 160,
-     "offset": 122,
-     "speed": 220
-    }
-   ],
-   "showHintAtRest": true
-  },
-  "bank": {
-   "side": "base",
-   "batch": 15,
-   "run": 7,
-   "collection": "run7",
-   "acceptance": "revised",
-   "status": "route-proven",
-   "difficulty": 3,
-   "role": "Two airborne dashes, one returned pulse, and a wall that must open before it can catch you",
-   "worlds": [],
-   "tags": [
-    "airborne-parry",
-    "phase-wall",
-    "projectile-shutter",
-    "delayed-bell",
-    "dash-budget",
-    "climb"
-   ],
-   "newMechanics": [],
-   "author": "Codex",
-   "humanReview": "Reinvented after the player climbed the old far wall and parried beside its shooter. The old shortcut was reproduced cleanly (251 frames); this revised physical puzzle awaits review. No new human ratings assigned.",
-   "learningFamily": "reply-and-cycle",
-   "lessonRole": "introduce",
-   "preparesFor": [
-    "bank-f61"
-   ],
-   "prerequisites": [],
-   "format": "compact",
-   "requiredEvents": [
-    "parry",
-    "bell",
-    "grab",
-    "climbhop"
-   ],
-   "solution": "Jump and dash up-right from the ledge into the pulse coming from the protected western emitter. Aim the parry RIGHT so the pulse continues toward the paired eastern bells, restoring your spent dash. Dash up-right again before the returned pulse reaches the brass wall: this removes the wall so the pulse can pass through. Its later bell strike restores the same wall. Catch that returning face, climb onto its five-tile crest, then jump and dash to the eastern shelf. You may rest on the crest before the final crossing.",
-   "nearestExisting": "Original B60 only used a pulse to refill a dash and open a remote exit door; its far wall allowed a grounded parry shortcut. F51 gives a phase bridge separate landing and projectile-shutter jobs. This room instead makes the returned shot pass through the absent wall and restore that exact wall for the airborne knight, using ordinary Base movement.",
-   "novelty": "The parry supplies the dash that opens its own projectile path. The projectile then undoes that opening in time to become the knight’s grip; waiting for it before dashing leaves it blocked.",
-   "entrance": "Low west ledge under a protected, visibly firing pulse alcove.",
-   "exit": "Eastern shelf reached from the restored wall crest.",
-   "positiveChecks": [
-    {
-     "name": "Parry input one frame earlier",
-     "tape": [
-      [
-       24,
-       "r"
-      ],
-      [
-       12,
-       "rj"
-      ],
-      [
-       11,
-       "rux"
-      ],
-      [
-       8,
-       "rp"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       30,
-       "rg"
-      ],
-      [
-       88,
-       "rug"
-      ],
-      [
-       18,
-       "rj"
-      ],
-      [
-       12,
-       "rx"
-      ],
-      [
-       100,
-       "r"
-      ]
-     ]
-    },
-    {
-     "name": "Parry input four frames later",
-     "tape": [
-      [
-       24,
-       "r"
-      ],
-      [
-       12,
-       "rj"
-      ],
-      [
-       16,
-       "rux"
-      ],
-      [
-       3,
-       "rp"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       30,
-       "rg"
-      ],
-      [
-       88,
-       "rug"
-      ],
-      [
-       18,
-       "rj"
-      ],
-      [
-       12,
-       "rx"
-      ],
-      [
-       100,
-       "r"
-      ]
-     ]
-    },
-    {
-     "name": "Second dash input six frames later",
-     "tape": [
-      [
-       24,
-       "r"
-      ],
-      [
-       12,
-       "rj"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       13,
-       "rp"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       30,
-       "rg"
-      ],
-      [
-       88,
-       "rug"
-      ],
-      [
-       18,
-       "rj"
-      ],
-      [
-       12,
-       "rx"
-      ],
-      [
-       100,
-       "r"
-      ]
-     ]
-    }
-   ],
-   "shortcutChecks": [
-    {
-     "name": "Original reported wall-climb then grounded parry",
-     "tape": [
-      [
-       49,
-       "r"
-      ],
-      [
-       12,
-       "rj"
-      ],
-      [
-       18,
-       "r"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       35,
-       "rg"
-      ],
-      [
-       50,
-       "rug"
-      ],
-      [
-       10,
-       "r"
-      ],
-      [
-       8,
-       "p"
-      ],
-      [
-       110,
-       "r"
-      ]
-     ]
-    },
-    {
-     "name": "True furthest edge jump-dash-climb",
-     "tape": [
-      [
-       33,
-       "r"
-      ],
-      [
-       12,
-       "rj"
-      ],
-      [
-       18,
-       "r"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       35,
-       "rg"
-      ],
-      [
-       125,
-       "rug"
-      ],
-      [
-       18,
-       "rj"
-      ],
-      [
-       12,
-       "rx"
-      ],
-      [
-       100,
-       "r"
-      ]
-     ]
-    },
-    {
-     "name": "Furthest edge higher arc",
-     "tape": [
-      [
-       33,
-       "r"
-      ],
-      [
-       12,
-       "rj"
-      ],
-      [
-       12,
-       "r"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       35,
-       "rg"
-      ],
-      [
-       125,
-       "rug"
-      ],
-      [
-       18,
-       "rj"
-      ],
-      [
-       12,
-       "rx"
-      ],
-      [
-       100,
-       "r"
-      ]
-     ]
-    },
-    {
-     "name": "Wait for the reply before removing its wall",
-     "tape": [
-      [
-       24,
-       "r"
-      ],
-      [
-       12,
-       "rj"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       25,
-       "rp"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       30,
-       "rg"
-      ],
-      [
-       88,
-       "rug"
-      ],
-      [
-       18,
-       "rj"
-      ],
-      [
-       12,
-       "rx"
-      ],
-      [
-       100,
-       "r"
-      ]
-     ]
-    },
-    {
-     "name": "Return the pulse toward its emitter instead of through the wall",
-     "tape": [
-      [
-       24,
-       "r"
-      ],
-      [
-       12,
-       "rj"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       7,
-       "p"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       30,
-       "rg"
-      ],
-      [
-       88,
-       "rug"
-      ],
-      [
-       18,
-       "rj"
-      ],
-      [
-       12,
-       "rx"
-      ],
-      [
-       100,
-       "r"
-      ]
-     ]
-    },
-    {
-     "name": "Climb the emitter enclosure roof for a free high launch",
-     "tape": [
-      [
-       24,
-       "r"
-      ],
-      [
-       12,
-       "rj"
-      ],
-      [
-       12,
-       "luxg"
-      ],
-      [
-       40,
-       "ulg"
-      ],
-      [
-       12,
-       "rj"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       100,
-       "rug"
-      ],
-      [
-       20,
-       "rj"
-      ],
-      [
-       12,
-       "rx"
-      ],
-      [
-       100,
-       "r"
-      ]
-     ]
-    }
-   ],
-   "timingCues": [
-    "The western muzzle flashes before its pulse catches up from behind.",
-    "Aim the parry right toward the paired bells; the pulse keeps that line.",
-    "Dash while the reply is between you and the wall; the wall outline admits it.",
-    "The bell flash makes that same outline solid again for your hands."
-   ],
-   "routeMovement": [
-    {
-     "type": "jump",
-     "frame": 25,
-     "x": 61,
-     "y": 152,
-     "lift": 0
-    },
-    {
-     "type": "dash",
-     "frame": 41,
-     "x": 82,
-     "y": 126,
-     "dx": 0.7071067811865475,
-     "dy": -0.7071067811865475
-    },
-    {
-     "type": "parry",
-     "frame": 55,
-     "x": 124,
-     "y": 98
-    },
-    {
-     "type": "dash",
-     "frame": 63,
-     "x": 116,
-     "y": 99,
-     "dx": 0.7071067811865475,
-     "dy": -0.7071067811865475
-    },
-    {
-     "type": "bell",
-     "frame": 86,
-     "x": 276,
-     "y": 100
-    },
-    {
-     "type": "grab",
-     "frame": 92,
-     "x": 176,
-     "y": 95
-    },
-    {
-     "type": "climbhop",
-     "frame": 156
-    },
-    {
-     "type": "land",
-     "frame": 171,
-     "x": 192,
-     "y": 56,
-     "speed": 75
-    },
-    {
-     "type": "jump",
-     "frame": 186,
-     "x": 214,
-     "y": 56,
-     "lift": 0
-    },
-    {
-     "type": "dash",
-     "frame": 208,
-     "x": 245,
-     "y": 25,
-     "dx": 1,
-     "dy": 0
-    },
-    {
-     "type": "land",
-     "frame": 235,
-     "x": 315,
-     "y": 64,
-     "speed": 160
-    }
-   ],
-   "requiredEventCounts": {
-    "dash": 3
-   },
-   "endingForgiveness": "Five-tile restored crest allows a full grounded pause/refill before the last jump and dash. The difficult timing remains the airborne parry and wall restoration.",
-   "review": {
-    "reportedBypasses": [
-     {
-      "name": "Original nearest-edge jump, late diagonal dash, wall climb and grounded parry",
-      "tape": [
-       [
-        49,
-        "r"
-       ],
-       [
-        12,
-        "rj"
-       ],
-       [
-        18,
-        "r"
-       ],
-       [
-        12,
-        "rux"
-       ],
-       [
-        35,
-        "rg"
-       ],
-       [
-        50,
-        "rug"
-       ],
-       [
-        10,
-        "r"
-       ],
-       [
-        8,
-        "p"
-       ],
-       [
-        110,
-        "r"
-       ]
-      ],
-      "originalFrames": 251,
-      "originalDeaths": 0
-     }
-    ],
-    "revision15": "Rebuilt room rather than merely blocking its old far wall. The new wall is too high for the farthest ledge jump/dash; first launch raises the knight to a pulse from behind. The refilled dash physically opens the returned-shot lane, and the delayed bell restores the same climb face. No completion event lock exists."
-   },
-   "route": {
-    "exited": true,
-    "frames": 239,
-    "deaths": 0,
-    "events": [
-     "jump",
-     "phase",
-     "enemy-shot",
-     "dash",
-     "parry-ready",
-     "refill-dash",
-     "parry",
-     "bell",
-     "grab",
-     "climbhop",
-     "land",
-     "exit"
-    ],
-    "eventCounts": {
-     "jump": 2,
-     "phase": 4,
-     "enemy-shot": 2,
-     "dash": 3,
-     "parry-ready": 1,
-     "refill-dash": 3,
-     "parry": 1,
-     "bell": 1,
-     "grab": 1,
-     "climbhop": 1,
-     "land": 2,
-     "exit": 1
-    },
-    "firstFailure": null
-   },
-   "revision": "85fd79f3d7c2",
-   "source": "scripts/room-bank/base/bank-b60.json"
-  },
-  "tape": [
-   [
-    24,
-    "r"
-   ],
-   [
-    12,
-    "rj"
-   ],
-   [
-    12,
-    "rux"
-   ],
-   [
-    7,
-    "rp"
-   ],
-   [
-    12,
-    "rux"
-   ],
-   [
-    30,
-    "rg"
-   ],
-   [
-    88,
-    "rug"
-   ],
-   [
-    18,
-    "rj"
-   ],
-   [
-    12,
-    "rx"
-   ],
-   [
-    100,
     "r"
    ]
   ]
@@ -71196,8 +70518,8 @@ const records=[
     "portal",
     "parry"
    ],
-   "hint": "Reverse through the low openings; spend the last wall in a bounce, then stay with the crystals.",
-   "question": "Turn a spent landing into a reverse launch through a moving opening.",
+   "hint": "Wavedash or reverse from the runway; cross both patrols, then bounce from the marked wall.",
+   "question": "Time a low momentum crossing, then turn the far wall into an airborne return.",
    "map": [
     "################################################",
     "#...........#>................................G#",
@@ -71208,30 +70530,22 @@ const records=[
     "#...........#>................................G.",
     "#...........#>................................G.",
     "#...........#>...................###############",
-    "#...........#>................................<#",
+    "#...........#>...^^^^^^^^^^^^^................<#",
+    "#................#############................<#",
+    "#................vvvvvvvvvvvvv................<#",
     "#.............................................<#",
     "#.............................................<#",
-    "#.............^^^^^^^^^^^^^^^^................<#",
-    "#.............################................<#",
-    "#.............vvvvvvvvvvvvvvvv................<#",
+    "#.............................................<#",
     "#.............................................<#",
     "#.............................................<#",
     "#..............................P...c..........<#",
-    "#.............................................<#",
+    "#.............................#########.......<#",
     "#.............................................<#",
     "#.............................................<#",
     "#..^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<#",
     "################################################"
    ],
    "spentThorns": [
-    {
-     "id": "Run-up",
-     "c": 30,
-     "r": 18,
-     "w": 9,
-     "h": 1,
-     "face": "up"
-    },
     {
      "id": "Return grip",
      "c": 12,
@@ -71297,19 +70611,20 @@ const records=[
   },
   "bank": {
    "side": "fractured",
-   "batch": 15,
+   "batch": 16,
    "run": 7,
    "collection": "run7",
    "format": "compact",
-   "acceptance": "revised",
+   "acceptance": "banked",
    "status": "route-proven",
    "difficulty": 4,
-   "role": "Carry a reverse-hyper approach through two patrol windows into a spent-wall wallbounce and aerial return.",
+   "role": "Reusable wavedash runway through two patrol windows into a spent-wall wallbounce and aerial return.",
    "worlds": [],
    "tags": [
-    "spent-floor",
+    "wavedash",
+    "reusable-runway",
+    "reverse-hyper-alternative",
     "spent-wall",
-    "reverse-hyper",
     "wallbounce",
     "aerial-refill-chain",
     "offset-patrols"
@@ -71318,7 +70633,7 @@ const records=[
     "departure-armed persistent surface"
    ],
    "author": "Codex",
-   "humanReview": "Lower reverse launch and matching ceiling raised eight pixels above the unchanged spike floor, preserving headroom while adding fall clearance. Awaiting review.",
+   "humanReview": "Banked under the player’s conditional approval after removing departure arming from the first platform, raising the overhead hazard substantially, and proving the wavedash route. The original reverse route also still completes; numeric ratings remain unmeasured.",
    "learningFamily": "spent-faces",
    "lessonRole": "combine",
    "preparesFor": [
@@ -71329,210 +70644,54 @@ const records=[
     "bank-b59"
    ],
    "timing": {
-    "kind": "reverse-hyper into two offset patrol openings, wallbounce and aerial refill chain",
+    "kind": "wavedash or reverse-hyper through two offset patrol openings, then wallbounce and aerial refill chain",
     "warningFrames": 18,
     "patrolPeriod": 150,
     "phaseOffset": 75,
-    "cue": "Use the lower windows to reach the wall; the upper return has no landing before the last crystal."
+    "cue": "Watch the first patrol descend and use the opening over it. Dash left again before sinking into the second patrol’s sweep."
    },
-   "solution": "Dash down-right along the folded runway to take its tally and recover the dash on the ground. Jump left during the reverse grace to leave with a low reverse hyper. Carry that launch through the first patrol window, then spend the retained dash left through the second and catch the marked return wall. Climb through its upward crystal. Dash up alongside the wall and jump away right into a wallbounce before the upper thorn cap. Collect the first rightward crystal in the bounce, dash up-right, cross the second airborne crystal and dash up-right again onto the high gallery. The original runway and the wall have armed behind you, so neither can be used to reset a failed airborne continuation.",
-   "nearestExisting": "F31 introduced the reverse launch toward an exit. This is an explicit later application of that vocabulary: two offset lower patrols feed a marked wall, and the wallbounce returns above the thorned roof through a continuous refill chain. B58/B59 teach why a departed runway or grip cannot serve as a recovery point.",
-   "novelty": "Carry a reverse-hyper approach through two patrol windows into a spent-wall wallbounce and aerial return.",
-   "endingForgiveness": "The wallbounce and airborne chain are deliberately the more demanding finish. Both one-frame earlier/later reverse launches and a two-frame earlier final dash complete cleanly. The receiving gallery is broad, but getting to it still requires the refilled airborne sequence.",
+   "solution": "The nine-tile launch runway is ordinary ground: jump, land again, stop, or reset your takeoff there. Collect the tally on its right half, watch the patrols, then make a short leftward hop. Dash down-left back into the runway and jump left from that landing while the dash is still active; the dash has refilled, so this is an actual wavedash. Carry the low launch over the first patrol, then dash left through the second opening and grab the marked return wall. Climb through its upward crystal. Dash up and wallbounce right before the wall’s upper thorns; take both rightward crystals and continue with the two up-right dashes onto the high gallery. The original grounded reverse-hyper entry remains a working alternative. Only the marked return wall arms on departure.",
+   "nearestExisting": "F31 introduced the reverse launch toward an exit. F59 keeps its offset patrols and marked-wall aerial return, but its reusable runway now also supports an airborne wavedash setup. B59 teaches the one remaining spent surface: the return grip, not the takeoff floor.",
+   "novelty": "Reusable wavedash runway through two patrol windows into a spent-wall wallbounce and aerial return.",
+   "endingForgiveness": "The marked-wall wallbounce and three-crystal return remain the demanding finish. The takeoff runway can be reused without arming; the low overhead beam is 24px higher and begins 24px farther from the return wall.",
    "positiveChecks": [
     {
-     "name": "Reverse one frame earlier",
+     "name": "Jump and land on the reusable runway before the wavedash",
      "tape": [
       [
        12,
-       "rdx"
+       "j"
       ],
       [
-       12,
-       "lj"
+       138,
+       ""
       ],
       [
-       16,
-       "l"
-      ],
-      [
-       12,
-       "lx"
-      ],
-      [
-       7,
-       "lg"
-      ],
-      [
-       50,
-       "ug"
-      ],
-      [
-       12,
-       "ux"
-      ],
-      [
-       22,
-       "rj"
-      ],
-      [
-       2,
-       "r"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       26,
-       "r"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       110,
-       "r"
-      ]
-     ],
-     "exited": true,
-     "deaths": 0,
-     "frames": 294
-    },
-    {
-     "name": "Reverse one frame later",
-     "tape": [
-      [
-       14,
-       "rdx"
-      ],
-      [
-       12,
-       "lj"
-      ],
-      [
-       16,
-       "l"
-      ],
-      [
-       12,
-       "lx"
-      ],
-      [
-       7,
-       "lg"
-      ],
-      [
-       50,
-       "ug"
-      ],
-      [
-       12,
-       "ux"
-      ],
-      [
-       22,
-       "rj"
-      ],
-      [
-       2,
-       "r"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       26,
-       "r"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       110,
-       "r"
-      ]
-     ],
-     "exited": true,
-     "deaths": 0,
-     "frames": 296
-    },
-    {
-     "name": "Second aerial dash two frames earlier",
-     "tape": [
-      [
-       13,
-       "rdx"
-      ],
-      [
-       12,
-       "lj"
-      ],
-      [
-       16,
-       "l"
-      ],
-      [
-       12,
-       "lx"
-      ],
-      [
-       7,
-       "lg"
-      ],
-      [
-       50,
-       "ug"
-      ],
-      [
-       12,
-       "ux"
-      ],
-      [
-       22,
-       "rj"
-      ],
-      [
-       2,
-       "r"
-      ],
-      [
-       12,
-       "rux"
+       1,
+       "d"
       ],
       [
        24,
+       ""
+      ],
+      [
+       25,
        "r"
       ],
       [
-       12,
-       "rux"
+       6,
+       "lj"
       ],
       [
-       110,
-       "r"
-      ]
-     ],
-     "exited": true,
-     "deaths": 0,
-     "frames": 295
-    },
-    {
-     "name": "Low dash 2 frames later",
-     "tape": [
-      [
-       13,
-       "rdx"
+       11,
+       "ldx"
       ],
       [
        12,
        "lj"
       ],
       [
-       18,
+       10,
        "l"
       ],
       [
@@ -71578,7 +70737,80 @@ const records=[
      ]
     },
     {
-     "name": "Low dash 4 frames later",
+     "name": "Wavedash departure three frames earlier in the patrol cycle",
+     "tape": [
+      [
+       1,
+       "d"
+      ],
+      [
+       21,
+       ""
+      ],
+      [
+       25,
+       "r"
+      ],
+      [
+       6,
+       "lj"
+      ],
+      [
+       11,
+       "ldx"
+      ],
+      [
+       12,
+       "lj"
+      ],
+      [
+       10,
+       "l"
+      ],
+      [
+       12,
+       "lx"
+      ],
+      [
+       7,
+       "lg"
+      ],
+      [
+       50,
+       "ug"
+      ],
+      [
+       12,
+       "ux"
+      ],
+      [
+       22,
+       "rj"
+      ],
+      [
+       2,
+       "r"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       26,
+       "r"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       110,
+       "r"
+      ]
+     ]
+    },
+    {
+     "name": "Original reverse-hyper route remains usable",
      "tape": [
       [
        13,
@@ -71589,7 +70821,7 @@ const records=[
        "lj"
       ],
       [
-       20,
+       16,
        "l"
       ],
       [
@@ -71667,10 +70899,7 @@ const records=[
        100,
        "r"
       ]
-     ],
-     "exited": false,
-     "deaths": 3,
-     "frames": null
+     ]
     },
     {
      "name": "Use a short ordinary jump-dash for the low crossing",
@@ -71699,10 +70928,7 @@ const records=[
        150,
        "ug"
       ]
-     ],
-     "exited": false,
-     "deaths": 2,
-     "frames": null
+     ]
     },
     {
      "name": "Ordinary walljump-dash instead of the wallbounce",
@@ -71743,14 +70969,12 @@ const records=[
        160,
        "rgu"
       ]
-     ],
-     "exited": false,
-     "deaths": 2,
-     "frames": null
+     ]
     }
    ],
    "requiredEvents": [
-    "reverse-hyper",
+    "ultra",
+    "hyper",
     "wallbounce",
     "vector-refill",
     "spent-thorn-arm",
@@ -71758,92 +70982,114 @@ const records=[
    ],
    "requiredEventCounts": {
     "vector-refill": 3,
-    "spent-thorn-touch": 2
+    "spent-thorn-touch": 1
    },
    "route": {
     "exited": true,
-    "frames": 295,
+    "frames": 343,
     "deaths": 0,
     "events": [
-     "spent-thorn-touch",
-     "dash",
-     "ultra",
-     "refill-dash",
      "stone-lit",
      "gate-open",
+     "jump",
+     "dash",
+     "land",
+     "ultra",
+     "refill-dash",
      "hyper",
-     "reverse-hyper",
-     "late-reverse",
-     "spent-thorn-leave",
-     "spent-thorn-arm",
+     "spent-thorn-touch",
      "grab",
      "refill",
      "vector-refill",
      "wallbounce",
-     "land",
+     "spent-thorn-leave",
+     "spent-thorn-arm",
      "refill-back",
      "exit"
     ],
     "eventCounts": {
-     "spent-thorn-touch": 2,
-     "dash": 5,
-     "ultra": 1,
-     "refill-dash": 5,
      "stone-lit": 1,
      "gate-open": 1,
+     "jump": 1,
+     "dash": 5,
+     "land": 2,
+     "ultra": 1,
+     "refill-dash": 5,
      "hyper": 1,
-     "reverse-hyper": 1,
-     "late-reverse": 1,
-     "spent-thorn-leave": 2,
-     "spent-thorn-arm": 2,
+     "spent-thorn-touch": 1,
      "grab": 1,
      "refill": 3,
      "vector-refill": 3,
      "wallbounce": 1,
-     "land": 1,
+     "spent-thorn-leave": 1,
+     "spent-thorn-arm": 1,
      "refill-back": 1,
      "exit": 1
     },
     "firstFailure": null
    },
-   "designNotes": "Departure-thorn bodies remain solid. Only the visibly marked face arms after departure; continuous first contact is safe. Room completion uses ordinary physical geometry and visible tallies, with no hidden movement-event gate. The patrol clock begins with input and resets per attempt. Review15: raised launch and matching ceiling 8px over unchanged spike floor; preserved canonical and reverse timing. Added successful low-dash +2/+4-frame delay checks to target reported bottom-spike collision.",
+   "designNotes": "The initial Run-up spent-thorn entity was replaced by nine ordinary solid tiles at columns 30–38, row 18. The overhead beam moved from rows 12/13/14 to rows 9/10/11; its three western tiles were removed so the unchanged wallbounce can rise beside it. Patrol paths, phases, exit, tally, all three crystals and the spent Return grip are unchanged. Completion remains physical with no hidden event lock. Wave and original reverse tapes both complete cleanly.",
    "timingCues": [
-    "Use the lower windows to reach the wall; the upper return has no landing before the last crystal.",
-    "Folded hairs mark a safe first contact; an amber warning after departure precedes the permanently red face."
+    "The initial runway is plain reusable stone; only the far wall retains the folded-hair warning.",
+    "Cross above the descending first patrol, then spend the retained dash before dropping into the second sweep.",
+    "Leave the marked wall in a wallbounce and follow the crystal arrows for the upper return."
    ],
    "routeMovement": [
     {
+     "type": "jump",
+     "frame": 51,
+     "x": 286,
+     "y": 144,
+     "lift": 0
+    },
+    {
      "type": "dash",
-     "frame": 5,
-     "x": 252,
-     "y": 147,
-     "dx": 0.7071067811865475,
+     "frame": 61,
+     "x": 287,
+     "y": 129,
+     "dx": -0.7071067811865475,
      "dy": 0.7071067811865475
     },
     {
-     "type": "hyper",
-     "frame": 14,
-     "x": 282,
-     "y": 152
+     "type": "land",
+     "frame": 65,
+     "x": 275,
+     "y": 144,
+     "speed": 169.70562748477138
     },
     {
-     "type": "reverse-hyper",
-     "frame": 14,
-     "x": 282,
-     "y": 152,
-     "dir": -1
+     "type": "ultra",
+     "frame": 65
+    },
+    {
+     "type": "refill-dash",
+     "frame": 66,
+     "x": 272,
+     "y": 133
+    },
+    {
+     "type": "hyper",
+     "frame": 68,
+     "x": 265,
+     "y": 144
     },
     {
      "type": "dash",
-     "frame": 46,
-     "x": 157,
-     "y": 156,
+     "frame": 94,
+     "x": 163,
+     "y": 134,
      "dx": -1,
      "dy": 0
     },
     {
+     "type": "refill-dash",
+     "frame": 123,
+     "x": 108,
+     "y": 135
+    },
+    {
      "type": "vector-refill",
-     "frame": 94,
+     "frame": 123,
      "x": 108,
      "y": 132,
      "dx": 0,
@@ -71852,22 +71098,28 @@ const records=[
     },
     {
      "type": "dash",
-     "frame": 116,
+     "frame": 164,
      "x": 108,
-     "y": 130,
+     "y": 116,
      "dx": 0,
      "dy": -1
     },
     {
      "type": "wallbounce",
-     "frame": 123,
+     "frame": 171,
      "x": 104,
-     "y": 102,
+     "y": 88,
      "dir": 1
     },
     {
+     "type": "refill-dash",
+     "frame": 189,
+     "x": 150,
+     "y": 34
+    },
+    {
      "type": "vector-refill",
-     "frame": 141,
+     "frame": 189,
      "x": 156,
      "y": 44,
      "dx": 1,
@@ -71876,15 +71128,21 @@ const records=[
     },
     {
      "type": "dash",
-     "frame": 151,
+     "frame": 199,
      "x": 154,
-     "y": 50,
+     "y": 36,
      "dx": 0.7071067811865475,
      "dy": -0.7071067811865475
     },
     {
+     "type": "refill-dash",
+     "frame": 224,
+     "x": 205,
+     "y": 40
+    },
+    {
      "type": "vector-refill",
-     "frame": 178,
+     "frame": 224,
      "x": 212,
      "y": 52,
      "dx": 1,
@@ -71893,30 +71151,341 @@ const records=[
     },
     {
      "type": "dash",
-     "frame": 189,
+     "frame": 237,
      "x": 214,
-     "y": 56,
+     "y": 62,
      "dx": 0.7071067811865475,
      "dy": -0.7071067811865475
+    },
+    {
+     "type": "land",
+     "frame": 266,
+     "x": 269,
+     "y": 64,
+     "speed": 160
+    },
+    {
+     "type": "refill-dash",
+     "frame": 266,
+     "x": 269,
+     "y": 53
     }
    ],
    "review": {
-    "revision15": "Raised the spent launch runway, spawn/tally, and low ceiling one tile. Floor spikes and upper route are unchanged."
+    "revision15": "Raised the spent launch runway, spawn/tally, and low ceiling one tile. Floor spikes and upper route are unchanged.",
+    "currentRevision": "Batch 16: removed spent behavior only from the starting runway; raised the long overhead beam 24px and retracted its western tip 24px; preserved the marked return grip, both patrols, tally, exit and crystals. Saved both actual wavedash and original reverse completions.",
+    "reusableRunwayProof": {
+     "tapeName": "Jump and land on the reusable runway before the wavedash",
+     "firstJumpFrame": 1,
+     "firstLandingFrame": 35,
+     "initialPlatformArms": false
+    },
+    "conditionalBanking": "Player authorized banking once the revised wavedash worked; verified full zero-death completion."
    },
-   "revision": "dea401db08ab",
+   "wavedashProof": {
+    "description": "Normal-key tape proves an airborne down-left dash, landing/ultra, grounded refill, then hyper with the retained dash. No injected state or engine changes.",
+    "airborneDownDashFrame": 61,
+    "landingAndUltraFrame": 65,
+    "refillFrame": 66,
+    "hyperFrame": 68,
+    "patrolCrossings": [
+     {
+      "frame": 80,
+      "id": "First opening",
+      "knight": {
+       "x": 197,
+       "y": 122,
+       "w": 8,
+       "h": 11
+      },
+      "hazard": {
+       "x": 204,
+       "y": 140.32,
+       "radius": 3
+      },
+      "state": "normal"
+     },
+     {
+      "frame": 108,
+      "id": "Second opening",
+      "knight": {
+       "x": 110,
+       "y": 133,
+       "w": 8,
+       "h": 11
+      },
+      "hazard": {
+       "x": 116,
+       "y": 157.06666666666666,
+       "radius": 3
+      },
+      "state": "normal"
+     }
+    ],
+    "trace": [
+     {
+      "frame": 50,
+      "x": 282,
+      "y": 133,
+      "vx": 90,
+      "vy": 0,
+      "onGround": true,
+      "dashes": 1,
+      "state": "normal",
+      "events": []
+     },
+     {
+      "frame": 51,
+      "x": 283,
+      "y": 131,
+      "vx": 33.33333333333333,
+      "vy": -105,
+      "onGround": true,
+      "dashes": 1,
+      "state": "normal",
+      "events": [
+       "jump"
+      ]
+     },
+     {
+      "frame": 52,
+      "x": 283,
+      "y": 130,
+      "vx": 22.499999999999993,
+      "vy": -105,
+      "onGround": false,
+      "dashes": 1,
+      "state": "normal",
+      "events": []
+     },
+     {
+      "frame": 53,
+      "x": 283,
+      "y": 128,
+      "vx": 11.666666666666659,
+      "vy": -105,
+      "onGround": false,
+      "dashes": 1,
+      "state": "normal",
+      "events": []
+     },
+     {
+      "frame": 54,
+      "x": 283,
+      "y": 126,
+      "vx": 0.833333333333325,
+      "vy": -105,
+      "onGround": false,
+      "dashes": 1,
+      "state": "normal",
+      "events": []
+     },
+     {
+      "frame": 55,
+      "x": 283,
+      "y": 124,
+      "vx": -10.000000000000009,
+      "vy": -105,
+      "onGround": false,
+      "dashes": 1,
+      "state": "normal",
+      "events": []
+     },
+     {
+      "frame": 56,
+      "x": 283,
+      "y": 123,
+      "vx": -20.833333333333343,
+      "vy": -105,
+      "onGround": false,
+      "dashes": 1,
+      "state": "normal",
+      "events": []
+     },
+     {
+      "frame": 57,
+      "x": 283,
+      "y": 123,
+      "vx": 0,
+      "vy": 0,
+      "onGround": false,
+      "dashes": 0,
+      "state": "dash",
+      "events": []
+     },
+     {
+      "frame": 58,
+      "x": 283,
+      "y": 123,
+      "vx": 0,
+      "vy": 0,
+      "onGround": false,
+      "dashes": 0,
+      "state": "dash",
+      "events": []
+     },
+     {
+      "frame": 59,
+      "x": 283,
+      "y": 123,
+      "vx": 0,
+      "vy": 0,
+      "onGround": false,
+      "dashes": 0,
+      "state": "dash",
+      "events": []
+     },
+     {
+      "frame": 60,
+      "x": 283,
+      "y": 123,
+      "vx": 0,
+      "vy": 0,
+      "onGround": false,
+      "dashes": 0,
+      "state": "dash",
+      "events": []
+     },
+     {
+      "frame": 61,
+      "x": 280,
+      "y": 125,
+      "vx": -169.70562748477138,
+      "vy": 169.70562748477138,
+      "onGround": false,
+      "dashes": 0,
+      "state": "dash",
+      "events": [
+       "dash"
+      ]
+     },
+     {
+      "frame": 62,
+      "x": 277,
+      "y": 128,
+      "vx": -169.70562748477138,
+      "vy": 169.70562748477138,
+      "onGround": false,
+      "dashes": 0,
+      "state": "dash",
+      "events": []
+     },
+     {
+      "frame": 63,
+      "x": 274,
+      "y": 131,
+      "vx": -169.70562748477138,
+      "vy": 169.70562748477138,
+      "onGround": false,
+      "dashes": 0,
+      "state": "dash",
+      "events": []
+     },
+     {
+      "frame": 64,
+      "x": 271,
+      "y": 133,
+      "vx": -169.70562748477138,
+      "vy": 0,
+      "onGround": false,
+      "dashes": 0,
+      "state": "dash",
+      "events": []
+     },
+     {
+      "frame": 65,
+      "x": 268,
+      "y": 133,
+      "vx": -203.64675298172565,
+      "vy": 0,
+      "onGround": true,
+      "dashes": 0,
+      "state": "dash",
+      "events": [
+       "land",
+       "ultra"
+      ]
+     },
+     {
+      "frame": 66,
+      "x": 265,
+      "y": 133,
+      "vx": -203.64675298172565,
+      "vy": 0,
+      "onGround": true,
+      "dashes": 1,
+      "state": "dash",
+      "events": [
+       "refill-dash"
+      ]
+     },
+     {
+      "frame": 67,
+      "x": 261,
+      "y": 133,
+      "vx": -203.64675298172565,
+      "vy": 0,
+      "onGround": true,
+      "dashes": 1,
+      "state": "dash",
+      "events": []
+     },
+     {
+      "frame": 68,
+      "x": 256,
+      "y": 132,
+      "vx": -325,
+      "vy": -52.5,
+      "onGround": true,
+      "dashes": 1,
+      "state": "normal",
+      "events": [
+       "hyper"
+      ]
+     },
+     {
+      "frame": 69,
+      "x": 251,
+      "y": 131,
+      "vx": -320.6666666666667,
+      "vy": -52.5,
+      "onGround": false,
+      "dashes": 1,
+      "state": "normal",
+      "events": []
+     }
+    ]
+   },
+   "revision": "be55f0ee34d4",
    "source": "scripts/room-bank/fractured/59-bank-f59.json"
   },
   "tape": [
    [
-    13,
-    "rdx"
+    1,
+    "d"
+   ],
+   [
+    24,
+    ""
+   ],
+   [
+    25,
+    "r"
+   ],
+   [
+    6,
+    "lj"
+   ],
+   [
+    11,
+    "ldx"
    ],
    [
     12,
     "lj"
    ],
    [
-    16,
+    10,
     "l"
    ],
    [
@@ -73544,7 +73113,7 @@ const records=[
   ]
  }
 ];
-const B={version:'7.302.0',activeRun:7,defaultGroup:"pending",groups:["pending","banked"],records};
+const B={version:'7.303.0',activeRun:7,defaultGroup:"banked",groups:["banked"],records};
 root.BladefallRoomBank=B;
 if(!root.BLADEFALL_ROOM_BANK&&!(root.location&&new URLSearchParams(root.location.search).get('pitch')==='bank'))return;
 const R=root.BladefallPrecisionRooms;

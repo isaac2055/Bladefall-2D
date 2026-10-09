@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-09T22:42:54.356Z",
+  "checkedAt": "2026-10-09T23:33:10.737Z",
   "kind": "One saved zero-death route per room; human fun/difficulty/suitability unmeasured",
   "rooms": [
     {
@@ -338,7 +338,7 @@
       }
     },
     {
-      "acceptance": "revised",
+      "acceptance": "banked",
       "shortcutChecks": 4,
       "positiveChecks": 3,
       "id": "bank-b24",
@@ -1396,7 +1396,7 @@
       }
     },
     {
-      "acceptance": "revised",
+      "acceptance": "banked",
       "shortcutChecks": 5,
       "positiveChecks": 3,
       "id": "bank-f24",
@@ -1420,7 +1420,7 @@
       }
     },
     {
-      "acceptance": "revised",
+      "acceptance": "banked",
       "shortcutChecks": 4,
       "positiveChecks": 3,
       "id": "bank-f25",
@@ -1566,7 +1566,7 @@
       }
     },
     {
-      "acceptance": "revised",
+      "acceptance": "banked",
       "shortcutChecks": 7,
       "positiveChecks": 5,
       "id": "bank-f32",
@@ -1750,7 +1750,7 @@
       }
     },
     {
-      "acceptance": "revised",
+      "acceptance": "banked",
       "shortcutChecks": 4,
       "positiveChecks": 3,
       "id": "bank-f45",
@@ -2183,7 +2183,7 @@
       }
     },
     {
-      "acceptance": "revised",
+      "acceptance": "banked",
       "shortcutChecks": 3,
       "positiveChecks": 3,
       "id": "bank-b58",
@@ -2207,7 +2207,7 @@
       }
     },
     {
-      "acceptance": "revised",
+      "acceptance": "banked",
       "shortcutChecks": 4,
       "positiveChecks": 3,
       "id": "bank-b59",
@@ -2229,31 +2229,6 @@
         "refill-back": 2,
         "climbhop": 1,
         "land": 1,
-        "exit": 1
-      }
-    },
-    {
-      "acceptance": "revised",
-      "shortcutChecks": 6,
-      "positiveChecks": 3,
-      "id": "bank-b60",
-      "name": "Let the Reply Through",
-      "side": "base",
-      "estimatedDifficulty": 3,
-      "frames": 239,
-      "deaths": 0,
-      "events": {
-        "jump": 2,
-        "phase": 4,
-        "enemy-shot": 2,
-        "dash": 3,
-        "parry-ready": 1,
-        "refill-dash": 3,
-        "parry": 1,
-        "bell": 1,
-        "grab": 1,
-        "climbhop": 1,
-        "land": 2,
         "exit": 1
       }
     },
@@ -2386,32 +2361,31 @@
       }
     },
     {
-      "acceptance": "revised",
+      "acceptance": "banked",
       "shortcutChecks": 3,
-      "positiveChecks": 5,
+      "positiveChecks": 3,
       "id": "bank-f59",
       "name": "Reverse the Departure",
       "side": "fractured",
       "estimatedDifficulty": 4,
-      "frames": 295,
+      "frames": 343,
       "deaths": 0,
       "events": {
-        "spent-thorn-touch": 2,
-        "dash": 5,
-        "ultra": 1,
-        "refill-dash": 5,
         "stone-lit": 1,
         "gate-open": 1,
+        "jump": 1,
+        "dash": 5,
+        "land": 2,
+        "ultra": 1,
+        "refill-dash": 5,
         "hyper": 1,
-        "reverse-hyper": 1,
-        "late-reverse": 1,
-        "spent-thorn-leave": 2,
-        "spent-thorn-arm": 2,
+        "spent-thorn-touch": 1,
         "grab": 1,
         "refill": 3,
         "vector-refill": 3,
         "wallbounce": 1,
-        "land": 1,
+        "spent-thorn-leave": 1,
+        "spent-thorn-arm": 1,
         "refill-back": 1,
         "exit": 1
       }

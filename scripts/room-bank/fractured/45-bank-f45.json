@@ -101,7 +101,7 @@
     "batch": 15,
     "run": 4,
     "collection": "superrooms",
-    "acceptance": "revised",
+    "acceptance": "banked",
     "difficulty": 4,
     "role": "interconnected superroom",
     "worlds": [],
@@ -118,7 +118,7 @@
     "newMechanics": [],
     "status": "route-proven",
     "author": "Codex",
-    "humanReview": "Final transfer revised for another review. No approval or numeric player scores assigned.",
+    "humanReview": "User approved the final revision (all remaining rooms pass except B60; F32/F59 have separate conditional edits). Numeric ratings remain unmeasured.",
     "approvedIngredients": [
       "bank-f16",
       "bank-f19",
@@ -175,7 +175,7 @@
     "exit": "Upper east gallery, across the same shaft and over both freight floors.",
     "nearestExisting": "F16 supplies the separate freight/knight routes, B43 the rising cargo handoff, and F19 the echo that must keep a plate occupied while cargo and launch travel away. Here those are three elevations of one shaft: recovery supplies the shade needed at the original overlook, and the lower machine changes the traversability of that original address.",
     "novelty": "The player first sees the final gap and locked high gate, then solves their causes on two floors below. The only lantern has a physical continuous itinerary through the cargo duct, clasp, receiving well, launch carriage and final gallery. The return crosses above the outbound route rather than exiting into a separate room.",
-    "designNotes": "64×48 tiles, 3.34 normal screen areas. One room state, one echo and one lantern; no scripted checkpoints or event-count exit locks. The clasp makes cargo retrieval deliberate rather than requiring a narrow returning-freight rendezvous. The final swap works across eight consecutive timings. A slower stationary swap leaves the weight correctly but loses the useful carriage speed and cannot reach the upper receiving balcony.",
+    "designNotes": "64\u00d748 tiles, 3.34 normal screen areas. One room state, one echo and one lantern; no scripted checkpoints or event-count exit locks. The clasp makes cargo retrieval deliberate rather than requiring a narrow returning-freight rendezvous. The final swap works across eight consecutive timings. A slower stationary swap leaves the weight correctly but loses the useful carriage speed and cannot reach the upper receiving balcony.",
     "positiveChecks": [
       {
         "name": "Swap then jump one frame later",
@@ -848,6 +848,10 @@
         "deaths": 0,
         "reason": "Echo left before the original narrow plate; door remains closed."
       }
+    },
+    "finalApproval20261009": {
+      "decision": "banked",
+      "comment": "Final revision accepted."
     }
   },
   "tape": [

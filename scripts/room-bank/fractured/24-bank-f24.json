@@ -90,7 +90,7 @@
   "bank": {
     "side": "fractured",
     "batch": 15,
-    "acceptance": "revised",
+    "acceptance": "banked",
     "difficulty": 4,
     "role": "Read both portal ends while carrying a low launch into an uninterrupted rebound",
     "worlds": [
@@ -110,7 +110,7 @@
     "newMechanics": [],
     "status": "route-proven",
     "author": "Codex",
-    "humanReview": "Revised after the user found the original too easy. Fun, difficulty and suitability await human review; numeric difficulty remains an author estimate.",
+    "humanReview": "User approved the final revision (all remaining rooms pass except B60; F32/F59 have separate conditional edits). Numeric ratings remain unmeasured.",
     "entrance": "Western runway beneath a low roof; both patrols are observable.",
     "exit": "High eastern bank after the uninterrupted portal/pogo phrase.",
     "solution": "Hop into a down-right wavedash on the western runway, then jump low after ground contact returns the dash. Pass above the descending approach thorn and carry the launch into the fixed mouth. At the upper arrival, the other thorn must already be below the crossing. Continue directly to the pod and cut low under the receiving roof. Once the roof ends, dash up-right to the high bank. There is no receiving shelf to stop and erase the arrival timing.",
@@ -799,7 +799,11 @@
         "vy": -135,
         "i": 47
       }
-    ]
+    ],
+    "finalApproval20261009": {
+      "decision": "banked",
+      "comment": "Final revision accepted."
+    }
   },
   "tape": [
     [

@@ -1,0 +1,5274 @@
+{
+  "version": "7.303",
+  "preparedUTC": "2026-10-09T23:36:35.810646+00:00",
+  "scope": "Read-only planning; no campaign edits or placements",
+  "source": "public/bladefall-climb-worlds.js",
+  "report": "docs/room-bank/WORLD-INVENTORY-7.303.md",
+  "worldCount": 40,
+  "authoredMainRoomCount": 490,
+  "candidateCount": 72,
+  "methodCaveats": [
+    "A limited geometry / B repetition review, neither is a new human rating",
+    "Stored tape length includes exit padding and is not completion difficulty",
+    "Old difficulty /10 only W1–9; do not convert to current /5",
+    "Connectors, passages, optional quest rooms, secrets and sockets excluded from main counts",
+    "No campaign import, new room, superroom or finale assigned"
+  ],
+  "worlds": [
+    {
+      "id": 1,
+      "key": "outskirts",
+      "name": "The Outskirts",
+      "side": "base",
+      "authoredMainCount": 11,
+      "allDefinitionCount": 23,
+      "authoredOrder": [
+        "cl1-o1-road",
+        "cl1-o1-verge",
+        "cl1-o1-flowers",
+        "cl1-o1-camp",
+        "cl1-o1-lookout",
+        "cl1-o1-cut",
+        "cl1-o1-cracked",
+        "cl1-o1-mile",
+        "cl1-o1-muster",
+        "cl1-o1-yard",
+        "cl1-o1-gate"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": 1,
+        "max": 3,
+        "mean": 1.9
+      },
+      "lateMechanics": "Cracked footing + refill crystal, then cargo weight/held gate",
+      "lateRoomIds": [
+        "cl1-o1-muster",
+        "cl1-o1-yard",
+        "cl1-o1-gate"
+      ],
+      "keep": [
+        {
+          "id": "cl1-o1-road",
+          "origin": "o1-road",
+          "name": "The Verge Road"
+        },
+        {
+          "id": "cl1-o1-verge",
+          "origin": "o1-verge",
+          "name": "The Poisoned Verge"
+        },
+        {
+          "id": "cl1-o1-flowers",
+          "origin": "o1-flowers",
+          "name": "White Flowers"
+        },
+        {
+          "id": "cl1-o1-camp",
+          "origin": "o1-camp",
+          "name": "Camp Echo"
+        },
+        {
+          "id": "cl1-o1-cut",
+          "origin": "o1-cut",
+          "name": "Watcher’s Cut"
+        },
+        {
+          "id": "cl1-o1-cracked",
+          "origin": "o1-cracked",
+          "name": "Cracked Road"
+        },
+        {
+          "id": "cl1-o1-gate",
+          "origin": "o1-gate",
+          "name": "The Gatehouse"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl1-o1-mile",
+          "origin": "o1-mile",
+          "name": "The Hollow Mile",
+          "slot": 8,
+          "grade": "B",
+          "evidence": "Four separated three-tile cracked islands form a single rightward line, followed by one reachable tally. The immediately preceding Cracked Road already introduces collapse; this repeats timed departure rather than introducing a new verb. Preserve at least one chained-crumble application before Muster Yard.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 1,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 144,
+          "heldInputSegments": 11,
+          "historicalRating": {
+            "id": "o1-mile",
+            "region": "1",
+            "name": "The Hollow Mile",
+            "difficulty": "2",
+            "fun": "2",
+            "off": "false",
+            "note": "",
+            "runs": "1"
+          },
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 2,
+      "key": "woods",
+      "name": "Black Woods",
+      "side": "base",
+      "authoredMainCount": 10,
+      "allDefinitionCount": 21,
+      "authoredOrder": [
+        "cl2-w2-tunnel",
+        "cl2-w2-refuge",
+        "cl2-w2-clearing",
+        "cl2-w2-descent",
+        "cl2-w2-briar",
+        "cl2-w2-kitchen",
+        "cl2-w2-edge",
+        "cl2-w2-mirror",
+        "cl2-w2-called",
+        "cl2-w2-rootbound"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": 1,
+        "max": 5,
+        "mean": 2.9
+      },
+      "lateMechanics": "Dash-swapped branches; sword bell correction; pod + bell in one cut",
+      "lateRoomIds": [
+        "cl2-w2-mirror",
+        "cl2-w2-called",
+        "cl2-w2-rootbound"
+      ],
+      "keep": [
+        {
+          "id": "cl2-w2-clearing",
+          "origin": "w2-clearing",
+          "name": "Oathblade Clearing"
+        },
+        {
+          "id": "cl2-w2-descent",
+          "origin": "w2-descent",
+          "name": "Mothlight Descent"
+        },
+        {
+          "id": "cl2-w2-briar",
+          "origin": "w2-briar",
+          "name": "Briar Run"
+        },
+        {
+          "id": "cl2-w2-edge",
+          "origin": "w2-edge",
+          "name": "Thicket’s Edge"
+        },
+        {
+          "id": "cl2-w2-mirror",
+          "origin": "w2-mirror",
+          "name": "Mirror Thicket"
+        },
+        {
+          "id": "cl2-w2-kitchen",
+          "origin": "w2-kitchen",
+          "name": "Elsie’s Kitchen"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl2-w2-tunnel",
+          "origin": "w2-tunnel",
+          "name": "The Root Tunnel",
+          "slot": 1,
+          "grade": "A",
+          "evidence": "No active entity or switch: a thorn gap and climbable high bank, using only travel/jump/grab inputs. Wall climbing was taught by White Flowers in W1. Keep the arrival/rest function if replacing it.",
+          "dependencies": {
+            "summary": "NPC/dialogue",
+            "exit": "right",
+            "checkpoint": {
+              "c": 2,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [
+              "mara"
+            ],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 274,
+          "heldInputSegments": 6,
+          "historicalRating": {
+            "id": "w2-tunnel",
+            "region": "2",
+            "name": "The Root Tunnel",
+            "difficulty": "1",
+            "fun": "1",
+            "off": "false",
+            "note": "",
+            "runs": "1"
+          },
+          "recommendation": "Review as a demonstrated limited-geometry slot; preserve rest/story/entry purpose when replacing."
+        },
+        {
+          "id": "cl2-w2-called",
+          "origin": "w2-called",
+          "name": "The Called Name",
+          "slot": 9,
+          "grade": "B",
+          "evidence": "Two bells and twenty cyan phase tiles extend the same dash/strike parity lesson as Mirror Thicket; Rootbound Passage immediately adds the more consequential pod-plus-bell combined cut. A new phase puzzle can occupy this middle repetition without removing the first bell lesson.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 1,
+              "r": 13
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 216,
+          "heldInputSegments": 16,
+          "historicalRating": {
+            "id": "w2-called",
+            "region": "2",
+            "name": "The Called Name",
+            "difficulty": "4",
+            "fun": "3",
+            "off": "false",
+            "note": "",
+            "runs": "1"
+          },
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 3,
+      "key": "causeway",
+      "name": "Broken Causeway",
+      "side": "base",
+      "authoredMainCount": 12,
+      "allDefinitionCount": 22,
+      "authoredOrder": [
+        "cl3-c3-camp",
+        "cl3-c3-drop",
+        "cl3-c3-hoist",
+        "cl3-c3-patrol",
+        "cl3-c3-chain",
+        "cl3-c3-upper",
+        "cl3-c3-rise",
+        "cl3-c3-well",
+        "cl3-c3-road",
+        "cl3-c3-gantry",
+        "cl3-c3-brace",
+        "cl3-c3-counterweight"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": 1,
+        "max": 6,
+        "mean": 2.2
+      },
+      "lateMechanics": "Moving weight/lift interaction, Brute breach, two-weight armour kill",
+      "lateRoomIds": [
+        "cl3-c3-gantry",
+        "cl3-c3-brace",
+        "cl3-c3-counterweight"
+      ],
+      "keep": [
+        {
+          "id": "cl3-c3-camp",
+          "origin": "c3-camp",
+          "name": "Chainwake Camp"
+        },
+        {
+          "id": "cl3-c3-hoist",
+          "origin": "c3-hoist",
+          "name": "The Hoist"
+        },
+        {
+          "id": "cl3-c3-rise",
+          "origin": "c3-rise",
+          "name": "Counterweight Rise"
+        },
+        {
+          "id": "cl3-c3-well",
+          "origin": "c3-well",
+          "name": "The Weigh Well"
+        },
+        {
+          "id": "cl3-c3-brace",
+          "origin": "c3-brace",
+          "name": "Broken Standard"
+        },
+        {
+          "id": "cl3-c3-counterweight",
+          "origin": "c3-counterweight",
+          "name": "The Counterweight"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl3-c3-drop",
+          "origin": "c3-drop",
+          "name": "Drop Yard",
+          "slot": 2,
+          "grade": "A",
+          "evidence": "One four-tile vertical lift rises eleven tiles beside a thorned far bank. The saved route includes a 56-frame idle ride and no blade interaction; Chainwake Camp already establishes weight-triggered lift travel, while The Hoist follows with its new momentum lesson.",
+          "dependencies": {
+            "summary": "NPC/dialogue",
+            "exit": "right",
+            "checkpoint": {
+              "c": 2,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [
+              "oren"
+            ],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 216,
+          "heldInputSegments": 8,
+          "historicalRating": {
+            "id": "c3-drop",
+            "region": "3",
+            "name": "Drop Yard",
+            "difficulty": "1",
+            "fun": "1",
+            "off": "false",
+            "note": "",
+            "runs": "1"
+          },
+          "recommendation": "Review as a demonstrated limited-geometry slot; preserve rest/story/entry purpose when replacing."
+        },
+        {
+          "id": "cl3-c3-patrol",
+          "origin": "c3-patrol",
+          "name": "The Patrol Road",
+          "slot": 4,
+          "grade": "B",
+          "evidence": "One four-tile flat lift and a far landing; the three-segment route is another lift throw after The Hoist. This is also the defector quest entrance: preserve that branch and its dialogue rather than deleting the junction.",
+          "dependencies": {
+            "summary": "quest branch, NPC/dialogue",
+            "exit": "right",
+            "checkpoint": {
+              "c": 7,
+              "r": 13
+            },
+            "questBranches": [
+              "defector"
+            ],
+            "sideQuest": "defector",
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [
+              "silas"
+            ],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 129,
+          "heldInputSegments": 3,
+          "historicalRating": {
+            "id": "c3-patrol",
+            "region": "3",
+            "name": "The Patrol Road",
+            "difficulty": "1",
+            "fun": "2",
+            "off": "false",
+            "note": "",
+            "runs": "2"
+          },
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 4,
+      "key": "updrafts",
+      "name": "The Updrafts",
+      "side": "base",
+      "authoredMainCount": 13,
+      "allDefinitionCount": 27,
+      "authoredOrder": [
+        "cl4-u4-lift",
+        "cl4-u4-shaft",
+        "cl4-u4-bellows",
+        "cl4-u4-draw",
+        "cl4-u4-kites",
+        "cl4-u4-lines",
+        "cl4-u4-choir",
+        "cl4-u4-needle",
+        "cl4-u4-eye",
+        "cl4-u4-catcher",
+        "cl4-u4-span",
+        "cl4-u4-flue",
+        "cl4-u4-crown"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": 1,
+        "max": 4,
+        "mean": 1.5
+      },
+      "lateMechanics": "Weak-draft/pod recovery, single draft/pod, spring/wind/pod summit chain",
+      "lateRoomIds": [
+        "cl4-u4-span",
+        "cl4-u4-flue",
+        "cl4-u4-crown"
+      ],
+      "keep": [
+        {
+          "id": "cl4-u4-lift",
+          "origin": "u4-lift",
+          "name": "Rootbreach Lift"
+        },
+        {
+          "id": "cl4-u4-shaft",
+          "origin": "u4-shaft",
+          "name": "The Old Shaft"
+        },
+        {
+          "id": "cl4-u4-bellows",
+          "origin": "u4-bellows",
+          "name": "Bellows Rest"
+        },
+        {
+          "id": "cl4-u4-kites",
+          "origin": "u4-kites",
+          "name": "Kite Terraces"
+        },
+        {
+          "id": "cl4-u4-lines",
+          "origin": "u4-lines",
+          "name": "The Kite Lines"
+        },
+        {
+          "id": "cl4-u4-needle",
+          "origin": "u4-needle",
+          "name": "Needlewind Labyrinth"
+        },
+        {
+          "id": "cl4-u4-crown",
+          "origin": "u4-crown",
+          "name": "Signal Crown"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl4-u4-flue",
+          "origin": "u4-flue",
+          "name": "The Choir Flue",
+          "slot": 12,
+          "grade": "B",
+          "evidence": "One four-tile-wide updraft and one pod beside a tall thorned wall; the tape has one downward strike and then a long held up/right exit. The preceding Catcher Span already combines draft, spring and two pods, so this late single-pod reprise is a stronger replacement candidate than the wind introductions.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 2,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 180,
+          "heldInputSegments": 7,
+          "historicalRating": {
+            "id": "u4-flue",
+            "region": "4",
+            "name": "The Choir Flue",
+            "difficulty": "4",
+            "fun": "4",
+            "off": "false",
+            "note": "",
+            "runs": "1"
+          },
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 5,
+      "key": "marksman",
+      "name": "Hollow Marksman",
+      "side": "base",
+      "authoredMainCount": 9,
+      "allDefinitionCount": 29,
+      "authoredOrder": [
+        "cl5-m5-camp",
+        "cl5-m5-watch",
+        "cl5-m5-road",
+        "cl5-m5-post",
+        "cl5-m5-works",
+        "cl5-m5-release",
+        "cl5-m5-court",
+        "cl5-m5-tiers",
+        "cl5-m5-perch"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": 1,
+        "max": 6,
+        "mean": 3.7
+      },
+      "lateMechanics": "Marksman lens, moving perches/cover, airborne parry dash refill",
+      "lateRoomIds": [
+        "cl5-m5-court",
+        "cl5-m5-tiers",
+        "cl5-m5-perch"
+      ],
+      "keep": [
+        {
+          "id": "cl5-m5-camp",
+          "origin": "m5-camp",
+          "name": "Shotfall Camp"
+        },
+        {
+          "id": "cl5-m5-watch",
+          "origin": "m5-watch",
+          "name": "Shotfall Watch"
+        },
+        {
+          "id": "cl5-m5-road",
+          "origin": "m5-road",
+          "name": "The Watching Road"
+        },
+        {
+          "id": "cl5-m5-works",
+          "origin": "m5-works",
+          "name": "Mantlet Works"
+        },
+        {
+          "id": "cl5-m5-release",
+          "origin": "m5-release",
+          "name": "The Brass Release"
+        },
+        {
+          "id": "cl5-m5-court",
+          "origin": "m5-court",
+          "name": "Deadeye Court"
+        },
+        {
+          "id": "cl5-m5-tiers",
+          "origin": "m5-tiers",
+          "name": "The Court Tiers"
+        },
+        {
+          "id": "cl5-m5-perch",
+          "origin": "m5-perch",
+          "name": "The Last Perch"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl5-m5-post",
+          "origin": "m5-post",
+          "name": "The Watchpost",
+          "slot": 4,
+          "grade": "B",
+          "evidence": "A single watchman on a pillar asks for his own arrows to be returned; directional returns have already been taught in Watching Road, and the later Marksman courts revisit aimed returns with lens/perch changes. This is a repetition candidate, not a demonstrated easy room: the old human difficulty rating should decide whether its longer encounter is worth keeping.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 2,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 515,
+          "heldInputSegments": 15,
+          "historicalRating": {
+            "id": "m5-post",
+            "region": "5",
+            "name": "The Watchpost",
+            "difficulty": "4",
+            "fun": "4",
+            "off": "false",
+            "note": "",
+            "runs": "1"
+          },
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 6,
+      "key": "keep",
+      "name": "Ruined Keep",
+      "side": "base",
+      "authoredMainCount": 12,
+      "allDefinitionCount": 23,
+      "authoredOrder": [
+        "cl6-k6-hearth",
+        "cl6-k6-refectory",
+        "cl6-k6-table",
+        "cl6-k6-weight",
+        "cl6-k6-cradle",
+        "cl6-k6-quarter",
+        "cl6-k6-cells",
+        "cl6-k6-belfry",
+        "cl6-k6-loft",
+        "cl6-k6-archive",
+        "cl6-k6-stacks",
+        "cl6-k6-arch"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": 1,
+        "max": 3,
+        "mean": 1.3
+      },
+      "lateMechanics": "Portal momentum + cargo transfer, warded portal-shot slit",
+      "lateRoomIds": [
+        "cl6-k6-archive",
+        "cl6-k6-stacks",
+        "cl6-k6-arch"
+      ],
+      "keep": [
+        {
+          "id": "cl6-k6-refectory",
+          "origin": "k6-refectory",
+          "name": "Fallen Refectory"
+        },
+        {
+          "id": "cl6-k6-table",
+          "origin": "k6-table",
+          "name": "The Long Table"
+        },
+        {
+          "id": "cl6-k6-quarter",
+          "origin": "k6-quarter",
+          "name": "Mason’s Quarter"
+        },
+        {
+          "id": "cl6-k6-cells",
+          "origin": "k6-cells",
+          "name": "The Cells"
+        },
+        {
+          "id": "cl6-k6-belfry",
+          "origin": "k6-belfry",
+          "name": "Split Belfry"
+        },
+        {
+          "id": "cl6-k6-loft",
+          "origin": "k6-loft",
+          "name": "The Bell Loft"
+        },
+        {
+          "id": "cl6-k6-archive",
+          "origin": "k6-archive",
+          "name": "Clinging Archive"
+        },
+        {
+          "id": "cl6-k6-arch",
+          "origin": "k6-arch",
+          "name": "The Broken Arch"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl6-k6-hearth",
+          "origin": "k6-hearth",
+          "name": "Gatehouse Hearth",
+          "slot": 1,
+          "grade": "A",
+          "evidence": "The lantern starts inside a sealed overhead pocket directly above its plate; the eighteen door tiles are already held open. The saved tape contains only rightward walking/jumping and no pickup/throw. W1 Gatehouse already taught active plate weighting. Good slot for an early cargo puzzle that requires the player to establish the state.",
+          "dependencies": {
+            "summary": "NPC/dialogue",
+            "exit": "right",
+            "checkpoint": {
+              "c": 1,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [
+              "veya",
+              "tovin"
+            ],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 198,
+          "heldInputSegments": 7,
+          "historicalRating": {
+            "id": "k6-hearth",
+            "region": "6",
+            "name": "Gatehouse Hearth",
+            "difficulty": "1",
+            "fun": "1",
+            "off": "false",
+            "note": "",
+            "runs": "1"
+          },
+          "recommendation": "Review as a demonstrated limited-geometry slot; preserve rest/story/entry purpose when replacing."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 7,
+      "key": "gaol",
+      "name": "The Warden",
+      "side": "base",
+      "authoredMainCount": 13,
+      "allDefinitionCount": 25,
+      "authoredOrder": [
+        "cl7-g7-crown",
+        "cl7-g7-gallery",
+        "cl7-g7-door",
+        "cl7-g7-engine",
+        "cl7-g7-bellows",
+        "cl7-g7-cells",
+        "cl7-g7-back",
+        "cl7-g7-pair",
+        "cl7-g7-vigil",
+        "cl7-g7-court",
+        "cl7-g7-mouth",
+        "cl7-g7-well",
+        "cl7-g7-sentence"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": 1,
+        "max": 4,
+        "mean": 2.2
+      },
+      "lateMechanics": "Pod/jailer combinations, Warden rush reflection, parry-only duel",
+      "lateRoomIds": [
+        "cl7-g7-mouth",
+        "cl7-g7-well",
+        "cl7-g7-sentence"
+      ],
+      "keep": [
+        {
+          "id": "cl7-g7-gallery",
+          "origin": "g7-gallery",
+          "name": "Blind Gallery"
+        },
+        {
+          "id": "cl7-g7-door",
+          "origin": "g7-door",
+          "name": "The Gallery Door"
+        },
+        {
+          "id": "cl7-g7-engine",
+          "origin": "g7-engine",
+          "name": "Hush Engine"
+        },
+        {
+          "id": "cl7-g7-cells",
+          "origin": "g7-cells",
+          "name": "Turning Cells"
+        },
+        {
+          "id": "cl7-g7-mouth",
+          "origin": "g7-mouth",
+          "name": "The Well Mouth"
+        },
+        {
+          "id": "cl7-g7-well",
+          "origin": "g7-well",
+          "name": "Sentence Well"
+        },
+        {
+          "id": "cl7-g7-sentence",
+          "origin": "g7-sentence",
+          "name": "The Sentence"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl7-g7-crown",
+          "origin": "g7-crown",
+          "name": "Eastern Crown",
+          "slot": 1,
+          "grade": "A",
+          "evidence": "The jailer/gate sits in a sealed side pocket while the main road descends around it. The four-segment route uses only left and jump, including 144 frames held left; no combat input. Keep the region arrival, but the actual shield/back and parry lessons are the next two rooms.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "left",
+            "checkpoint": {
+              "c": 34,
+              "r": 6
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 192,
+          "heldInputSegments": 4,
+          "historicalRating": {
+            "id": "g7-crown",
+            "region": "7",
+            "name": "Eastern Crown",
+            "difficulty": "1",
+            "fun": "1",
+            "off": "false",
+            "note": "",
+            "runs": "1"
+          },
+          "recommendation": "Review as a demonstrated limited-geometry slot; preserve rest/story/entry purpose when replacing."
+        },
+        {
+          "id": "cl7-g7-bellows",
+          "origin": "g7-bellows",
+          "name": "The Bellows",
+          "slot": 5,
+          "grade": "B",
+          "evidence": "Two vertically staged pressure pods repeat Hush Engine’s newly introduced reversal/refill in a second launch. A replacement can combine that known resource with another decision, provided it still supplies a forgiving second pod practice before the jailer combinations.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "left",
+            "checkpoint": {
+              "c": 33,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 230,
+          "heldInputSegments": 9,
+          "historicalRating": {
+            "id": "g7-bellows",
+            "region": "7",
+            "name": "The Bellows",
+            "difficulty": "2",
+            "fun": "3",
+            "off": "false",
+            "note": "",
+            "runs": "1"
+          },
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 8,
+      "key": "frostfell",
+      "name": "Frostfell",
+      "side": "base",
+      "authoredMainCount": 12,
+      "allDefinitionCount": 23,
+      "authoredOrder": [
+        "cl8-f8-refuge",
+        "cl8-f8-streets",
+        "cl8-f8-shelves",
+        "cl8-f8-hearth",
+        "cl8-f8-works",
+        "cl8-f8-court",
+        "cl8-f8-rehearsal",
+        "cl8-f8-stair",
+        "cl8-f8-galleries",
+        "cl8-f8-landings",
+        "cl8-f8-engine",
+        "cl8-f8-crown"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": 1,
+        "max": 3,
+        "mean": 1.7
+      },
+      "lateMechanics": "Feather + temporary landings + crystal; draft/feather lift; icy summit",
+      "lateRoomIds": [
+        "cl8-f8-landings",
+        "cl8-f8-engine",
+        "cl8-f8-crown"
+      ],
+      "keep": [
+        {
+          "id": "cl8-f8-refuge",
+          "origin": "f8-refuge",
+          "name": "Banked Refuge"
+        },
+        {
+          "id": "cl8-f8-streets",
+          "origin": "f8-streets",
+          "name": "Working Streets"
+        },
+        {
+          "id": "cl8-f8-shelves",
+          "origin": "f8-shelves",
+          "name": "Raised Shelves"
+        },
+        {
+          "id": "cl8-f8-court",
+          "origin": "f8-court",
+          "name": "Thawed Court"
+        },
+        {
+          "id": "cl8-f8-stair",
+          "origin": "f8-stair",
+          "name": "Frozen Stair"
+        },
+        {
+          "id": "cl8-f8-crown",
+          "origin": "f8-crown",
+          "name": "Muster Crown"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl8-f8-rehearsal",
+          "origin": "f8-rehearsal",
+          "name": "The Rehearsal",
+          "slot": 7,
+          "grade": "B",
+          "evidence": "One feather over a fully solid floor and a single high thorn-faced exit bank. Thawed Court immediately precedes it with the first feather pickup lesson, while Frozen Stair follows with two feather expenditures. This intermediate one-feather height demonstration is replaceable if the new room still rehearses pressing jump again.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 2,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 230,
+          "heldInputSegments": 7,
+          "historicalRating": {
+            "id": "f8-rehearsal",
+            "region": "8",
+            "name": "The Rehearsal",
+            "difficulty": "3",
+            "fun": "3",
+            "off": "false",
+            "note": "",
+            "runs": "1"
+          },
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        },
+        {
+          "id": "cl8-f8-engine",
+          "origin": "f8-engine",
+          "name": "Muster Engine",
+          "slot": 11,
+          "grade": "B",
+          "evidence": "One feather at the top of wind and a single far bank, with no switches/cargo/enemies. Thermal Works already combines drafts with unstable icy arrivals and Frozen Stair teaches feather budgeting; this is a focused repeat of the two established resources before the fuller Crown.",
+          "dependencies": {
+            "summary": "NPC/dialogue",
+            "exit": "right",
+            "checkpoint": {
+              "c": 2,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [
+              "sentinel"
+            ],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 150,
+          "heldInputSegments": 15,
+          "historicalRating": {
+            "id": "f8-engine",
+            "region": "8",
+            "name": "Muster Engine",
+            "difficulty": "1",
+            "fun": "1",
+            "off": "false",
+            "note": "",
+            "runs": "1"
+          },
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 9,
+      "key": "court",
+      "name": "Frost Sorcerer",
+      "side": "base",
+      "authoredMainCount": 13,
+      "allDefinitionCount": 25,
+      "authoredOrder": [
+        "cl9-s9-aqueduct",
+        "cl9-s9-sluice",
+        "cl9-s9-wheel",
+        "cl9-s9-refuge",
+        "cl9-s9-court",
+        "cl9-s9-cache",
+        "cl9-s9-glass",
+        "cl9-s9-gallery",
+        "cl9-s9-overlook",
+        "cl9-s9-ante",
+        "cl9-s9-white",
+        "cl9-s9-gglass",
+        "cl9-s9-ward"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": 1,
+        "max": 4,
+        "mean": 2.3
+      },
+      "lateMechanics": "Multi-pool freeze timing; Sorcerer ward, condenser, reflected frost",
+      "lateRoomIds": [
+        "cl9-s9-white",
+        "cl9-s9-gglass",
+        "cl9-s9-ward"
+      ],
+      "keep": [
+        {
+          "id": "cl9-s9-aqueduct",
+          "origin": "s9-aqueduct",
+          "name": "The Aqueduct"
+        },
+        {
+          "id": "cl9-s9-sluice",
+          "origin": "s9-sluice",
+          "name": "West Sluice"
+        },
+        {
+          "id": "cl9-s9-wheel",
+          "origin": "s9-wheel",
+          "name": "The Service Wheel"
+        },
+        {
+          "id": "cl9-s9-refuge",
+          "origin": "s9-refuge",
+          "name": "The Sluice Refuge"
+        },
+        {
+          "id": "cl9-s9-glass",
+          "origin": "s9-glass",
+          "name": "The Glassworks"
+        },
+        {
+          "id": "cl9-s9-gallery",
+          "origin": "s9-gallery",
+          "name": "Petition Gallery"
+        },
+        {
+          "id": "cl9-s9-white",
+          "origin": "s9-white",
+          "name": "The White Court"
+        },
+        {
+          "id": "cl9-s9-gglass",
+          "origin": "s9-gglass",
+          "name": "The Glass Gallery"
+        },
+        {
+          "id": "cl9-s9-ward",
+          "origin": "s9-ward",
+          "name": "The Last Ward"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl9-s9-court",
+          "origin": "s9-court",
+          "name": "Thaw Court",
+          "slot": 5,
+          "grade": "B",
+          "evidence": "Three independent basins form a forward ladder; the solution repeats freezing each basin on arrival. It develops rather than introduces freezing, after Sluice/Service Wheel/Refuge. Replace only with a room retaining repeated blade-to-water use, not an unrelated early lesson.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 2,
+              "r": 18
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 195,
+          "heldInputSegments": 16,
+          "historicalRating": {
+            "id": "s9-court",
+            "region": "9",
+            "name": "Thaw Court",
+            "difficulty": "4",
+            "fun": "4",
+            "off": "false",
+            "note": "",
+            "runs": "1"
+          },
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        },
+        {
+          "id": "cl9-s9-overlook",
+          "origin": "s9-overlook",
+          "name": "The Overlook",
+          "slot": 9,
+          "grade": "B",
+          "evidence": "A large pool, one three-tile cracked landing and a high thorn-faced exit. Its added dependency is two expiring floors; the next Cold Antechamber is the stronger multi-pool/condenser timing combination. Suitable for a bank room with a more consequential freeze/thaw state change.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 1,
+              "r": 12
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 209,
+          "heldInputSegments": 12,
+          "historicalRating": {
+            "id": "s9-overlook",
+            "region": "9",
+            "name": "The Overlook",
+            "difficulty": "1",
+            "fun": "1",
+            "off": "false",
+            "note": "",
+            "runs": "1"
+          },
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 10,
+      "key": "emberdeep",
+      "name": "Emberdeep",
+      "side": "base",
+      "authoredMainCount": 13,
+      "allDefinitionCount": 23,
+      "authoredOrder": [
+        "cl10-e10-door",
+        "cl10-e10-cooling",
+        "cl10-e10-draw",
+        "cl10-e10-schedule",
+        "cl10-e10-spouts",
+        "cl10-e10-bridge",
+        "cl10-e10-line",
+        "cl10-e10-ledger",
+        "cl10-e10-moulds",
+        "cl10-e10-window",
+        "cl10-e10-pourfloor",
+        "cl10-e10-stair",
+        "cl10-e10-foot"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Multi-phase slab route, travelling safe stair, single timed slab exit",
+      "lateRoomIds": [
+        "cl10-e10-pourfloor",
+        "cl10-e10-stair",
+        "cl10-e10-foot"
+      ],
+      "keep": [
+        {
+          "id": "cl10-e10-door",
+          "origin": "e10-door",
+          "name": "The Ember Door"
+        },
+        {
+          "id": "cl10-e10-draw",
+          "origin": "e10-draw",
+          "name": "The Draw"
+        },
+        {
+          "id": "cl10-e10-spouts",
+          "origin": "e10-spouts",
+          "name": "Under the Spouts"
+        },
+        {
+          "id": "cl10-e10-schedule",
+          "origin": "e10-schedule",
+          "name": "The Pour Schedule"
+        },
+        {
+          "id": "cl10-e10-pourfloor",
+          "origin": "e10-pourfloor",
+          "name": "The Pour Floor"
+        },
+        {
+          "id": "cl10-e10-stair",
+          "origin": "e10-stair",
+          "name": "The Deep Stair"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl10-e10-foot",
+          "origin": "e10-foot",
+          "name": "The Stair Foot",
+          "slot": 13,
+          "grade": "A",
+          "evidence": "A six-tile heat slab lies flush with otherwise continuous row-18 floor. Saved tape is exactly right 65, idle 55, right 133; no jump/dash/weapon input. It revisits the first cycle lesson after the multi-slab descent. Keep a short arrival-safe seam if replacing this post-sequence breather.",
+          "dependencies": {
+            "summary": "NPC/dialogue",
+            "exit": "right",
+            "checkpoint": {
+              "c": 2,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [
+              "oren"
+            ],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 253,
+          "heldInputSegments": 3,
+          "historicalRating": null,
+          "recommendation": "Review as a demonstrated limited-geometry slot; preserve rest/story/entry purpose when replacing."
+        },
+        {
+          "id": "cl10-e10-window",
+          "origin": "e10-window",
+          "name": "The Casting Window",
+          "slot": 10,
+          "grade": "B",
+          "evidence": "One five-tile heat window plus an anchored portal: a shot crosses when the slab is not stone, followed by portal travel. This is the first shot/slab combination, so a richer replacement must retain that specific readable lesson rather than simply remove it.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 1,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 229,
+          "heldInputSegments": 7,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 11,
+      "key": "foundry",
+      "name": "Ember Colossus",
+      "side": "base",
+      "authoredMainCount": 13,
+      "allDefinitionCount": 27,
+      "authoredOrder": [
+        "cl11-f11-stair",
+        "cl11-f11-anvil",
+        "cl11-f11-gate",
+        "cl11-f11-climb",
+        "cl11-f11-hall",
+        "cl11-f11-crane",
+        "cl11-f11-line",
+        "cl11-f11-heap",
+        "cl11-f11-feeder",
+        "cl11-f11-look",
+        "cl11-f11-pit",
+        "cl11-f11-bed",
+        "cl11-f11-pour"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Mould/anvil descent; Colossus pours refused by pre-cast iron",
+      "lateRoomIds": [
+        "cl11-f11-pit",
+        "cl11-f11-bed",
+        "cl11-f11-pour"
+      ],
+      "keep": [
+        {
+          "id": "cl11-f11-stair",
+          "origin": "f11-stair",
+          "name": "The Deep Stair"
+        },
+        {
+          "id": "cl11-f11-anvil",
+          "origin": "f11-anvil",
+          "name": "The Anvil"
+        },
+        {
+          "id": "cl11-f11-climb",
+          "origin": "f11-climb",
+          "name": "The Slab Climb"
+        },
+        {
+          "id": "cl11-f11-hall",
+          "origin": "f11-hall",
+          "name": "The Mould Hall"
+        },
+        {
+          "id": "cl11-f11-crane",
+          "origin": "f11-crane",
+          "name": "The Crane"
+        },
+        {
+          "id": "cl11-f11-feeder",
+          "origin": "f11-feeder",
+          "name": "The Feeder"
+        },
+        {
+          "id": "cl11-f11-pit",
+          "origin": "f11-pit",
+          "name": "The Casting Pit"
+        },
+        {
+          "id": "cl11-f11-bed",
+          "origin": "f11-bed",
+          "name": "The Bed"
+        },
+        {
+          "id": "cl11-f11-pour",
+          "origin": "f11-pour",
+          "name": "The Last Pour"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl11-f11-line",
+          "origin": "f11-line",
+          "name": "The Casting Line",
+          "slot": 7,
+          "grade": "B",
+          "evidence": "One lantern, one plate and a leftward belt solve a remote held hatch; there are no moulds, anvils or hazards in the map. The later Feeder adds a cast stop to the same belt/cargo/plate problem. Strong place to substitute a cargo machinery puzzle while keeping belt introduction in Deep Stair.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 26,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 173,
+          "heldInputSegments": 10,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        },
+        {
+          "id": "cl11-f11-look",
+          "origin": "f11-look",
+          "name": "The Overlook",
+          "slot": 10,
+          "grade": "B",
+          "evidence": "Three mould tiles provide sequential stops in a downward shaft over lava, without another state-bearing entity. Mould casting/landing is already taught by Slab Climb, Mould Hall and Crane. A replacement should preserve the downward exit and transition to the boss pit.",
+          "dependencies": {
+            "summary": "NPC/dialogue",
+            "exit": "down",
+            "checkpoint": {
+              "c": 2,
+              "r": 7
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [
+              "oren"
+            ],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 225,
+          "heldInputSegments": 16,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 12,
+      "key": "inversion",
+      "name": "The Inversion",
+      "side": "base",
+      "authoredMainCount": 12,
+      "allDefinitionCount": 26,
+      "authoredOrder": [
+        "cl12-i12-fall",
+        "cl12-i12-line",
+        "cl12-i12-reversal",
+        "cl12-i12-lip",
+        "cl12-i12-alternating",
+        "cl12-i12-landing",
+        "cl12-i12-court",
+        "cl12-i12-divide",
+        "cl12-i12-glass",
+        "cl12-i12-lock",
+        "cl12-i12-fissure",
+        "cl12-i12-threshold"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Lantern to ceiling plate via gravity; repeated flips; ordinary exit road",
+      "lateRoomIds": [
+        "cl12-i12-lock",
+        "cl12-i12-fissure",
+        "cl12-i12-threshold"
+      ],
+      "keep": [
+        {
+          "id": "cl12-i12-fall",
+          "origin": "i12-fall",
+          "name": "The Fall In"
+        },
+        {
+          "id": "cl12-i12-reversal",
+          "origin": "i12-reversal",
+          "name": "The Reversal"
+        },
+        {
+          "id": "cl12-i12-lip",
+          "origin": "i12-lip",
+          "name": "The Roof Has Teeth"
+        },
+        {
+          "id": "cl12-i12-alternating",
+          "origin": "i12-alternating",
+          "name": "The Second Down"
+        },
+        {
+          "id": "cl12-i12-landing",
+          "origin": "i12-landing",
+          "name": "The Hanging Landing"
+        },
+        {
+          "id": "cl12-i12-lock",
+          "origin": "i12-lock",
+          "name": "The Drop-Lock"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl12-i12-line",
+          "origin": "i12-line",
+          "name": "The Unreachable Line",
+          "slot": 2,
+          "grade": "A",
+          "evidence": "Two shallow thorn beds in the row-18 road and one overhead stone block; no prism or other active device. Tape uses only walking/jump/dash. At W12, this repeats the W1 movement lesson immediately before the actual gravity introduction.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 2,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 166,
+          "heldInputSegments": 8,
+          "historicalRating": null,
+          "recommendation": "Review as a demonstrated limited-geometry slot; preserve rest/story/entry purpose when replacing."
+        },
+        {
+          "id": "cl12-i12-threshold",
+          "origin": "i12-threshold",
+          "name": "The Quiet Threshold",
+          "slot": 12,
+          "grade": "A",
+          "evidence": "Two five-tile thorn beds and a short solid block on a steady floor; no prisms, gravity cargo, crystal or switch. It follows Void Fissure’s repeated gravity reversals. An obvious low-complexity slot, although its breather/region-exit purpose should be retained.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 2,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 159,
+          "heldInputSegments": 9,
+          "historicalRating": null,
+          "recommendation": "Review as a demonstrated limited-geometry slot; preserve rest/story/entry purpose when replacing."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 13,
+      "key": "citadel",
+      "name": "The Void Tyrant",
+      "side": "base",
+      "authoredMainCount": 15,
+      "allDefinitionCount": 27,
+      "authoredOrder": [
+        "cl13-v13-mouth",
+        "cl13-v13-ledgers",
+        "cl13-v13-tower",
+        "cl13-v13-rest",
+        "cl13-v13-opposed",
+        "cl13-v13-spent",
+        "cl13-v13-tear",
+        "cl13-v13-vigil",
+        "cl13-v13-tears",
+        "cl13-v13-broken",
+        "cl13-v13-high",
+        "cl13-v13-crossing",
+        "cl13-v13-low",
+        "cl13-v13-middle",
+        "cl13-v13-crown"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Tear chains/spent ledges, then portal-routed Tyrant bolts to changing bands",
+      "lateRoomIds": [
+        "cl13-v13-low",
+        "cl13-v13-middle",
+        "cl13-v13-crown"
+      ],
+      "keep": [
+        {
+          "id": "cl13-v13-mouth",
+          "origin": "v13-mouth",
+          "name": "The Fissure Mouth"
+        },
+        {
+          "id": "cl13-v13-ledgers",
+          "origin": "v13-ledgers",
+          "name": "The Rising Ledgers"
+        },
+        {
+          "id": "cl13-v13-tear",
+          "origin": "v13-tear",
+          "name": "The First Tear"
+        },
+        {
+          "id": "cl13-v13-tears",
+          "origin": "v13-tears",
+          "name": "Tear to Tear"
+        },
+        {
+          "id": "cl13-v13-low",
+          "origin": "v13-low",
+          "name": "The Lower Ward"
+        },
+        {
+          "id": "cl13-v13-middle",
+          "origin": "v13-middle",
+          "name": "The Middle Ward"
+        },
+        {
+          "id": "cl13-v13-crown",
+          "origin": "v13-crown",
+          "name": "The Crown Does Not Fall"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl13-v13-opposed",
+          "origin": "v13-opposed",
+          "name": "The Opposed Faces",
+          "slot": 5,
+          "grade": "A",
+          "evidence": "A pale-face wall crossing with anchored portal, no hazard glyphs or dynamic obstacle besides the portal pair. Portal joining has already been taught extensively in W6. Preserve the attached secret doorway if this becomes a more developed portal problem.",
+          "dependencies": {
+            "summary": "attached door/secret or socket, secret host",
+            "exit": "right",
+            "checkpoint": {
+              "c": 2,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [
+              "secret-13"
+            ],
+            "doors": [
+              {
+                "edge": "up",
+                "cols": [
+                  1,
+                  2
+                ],
+                "to": "secret-13"
+              }
+            ],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 207,
+          "heldInputSegments": 6,
+          "historicalRating": null,
+          "recommendation": "Review as a demonstrated limited-geometry slot; preserve rest/story/entry purpose when replacing."
+        },
+        {
+          "id": "cl13-v13-crossing",
+          "origin": "v13-crossing",
+          "name": "The Vigil Crossing",
+          "slot": 12,
+          "grade": "B",
+          "evidence": "Three tears carry the knight through a thorn field; there is no spent ledge, pod or crystal in the map. The six-segment saved tape revisits chain transfer after Tear to Tear already adds a disappearing perch. Keep the pre-boss transition but give its route a second consequential resource.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 2,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 79,
+          "heldInputSegments": 6,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 14,
+      "key": "throne",
+      "name": "The Abyss King",
+      "side": "base",
+      "authoredMainCount": 15,
+      "allDefinitionCount": 30,
+      "authoredOrder": [
+        "cl14-k14-stair",
+        "cl14-k14-marks",
+        "cl14-k14-seam",
+        "cl14-k14-hand",
+        "cl14-k14-alcove",
+        "cl14-k14-echo",
+        "cl14-k14-return",
+        "cl14-k14-trade",
+        "cl14-k14-wake",
+        "cl14-k14-climb",
+        "cl14-k14-bellkeeper",
+        "cl14-k14-hall",
+        "cl14-k14-throne",
+        "cl14-k14-last",
+        "cl14-k14-rail"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Echo/crown occupancy, timed seal hold, wake pursuit, ordinary rail exit",
+      "lateRoomIds": [
+        "cl14-k14-throne",
+        "cl14-k14-last",
+        "cl14-k14-rail"
+      ],
+      "keep": [
+        {
+          "id": "cl14-k14-marks",
+          "origin": "k14-marks",
+          "name": "The Two Marks"
+        },
+        {
+          "id": "cl14-k14-seam",
+          "origin": "k14-seam",
+          "name": "The King’s Seam"
+        },
+        {
+          "id": "cl14-k14-hand",
+          "origin": "k14-hand",
+          "name": "The Right Hand"
+        },
+        {
+          "id": "cl14-k14-alcove",
+          "origin": "k14-alcove",
+          "name": "The Empty Alcove"
+        },
+        {
+          "id": "cl14-k14-echo",
+          "origin": "k14-echo",
+          "name": "The Borrowed Body"
+        },
+        {
+          "id": "cl14-k14-return",
+          "origin": "k14-return",
+          "name": "The Place You Left"
+        },
+        {
+          "id": "cl14-k14-trade",
+          "origin": "k14-trade",
+          "name": "Ride Away, Trade Back"
+        },
+        {
+          "id": "cl14-k14-wake",
+          "origin": "k14-wake",
+          "name": "The Long Drowning"
+        },
+        {
+          "id": "cl14-k14-throne",
+          "origin": "k14-throne",
+          "name": "The First Seal"
+        },
+        {
+          "id": "cl14-k14-last",
+          "origin": "k14-last",
+          "name": "The Last Seal"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl14-k14-hall",
+          "origin": "k14-hall",
+          "name": "The Audience Hall",
+          "slot": 12,
+          "grade": "B",
+          "evidence": "Two-body crown occupancy repeats Borrowed Body after the more involved momentum swap and one-way-tear return rooms. Its map has only gate tiles and seven floor thorns beside the echo/crown state. Preserve a last crown rehearsal before the seals, but a bank replacement can ask more than leaving the echo on the low mark.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 2,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 177,
+          "heldInputSegments": 9,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        },
+        {
+          "id": "cl14-k14-rail",
+          "origin": "k14-rail",
+          "name": "The Rail Head",
+          "slot": 15,
+          "grade": "A",
+          "evidence": "One five-tile thorn bed and a two-tile-high stone bump, with only movement inputs. No echo, wake, crown or rail entity. This is an explicit post-boss breather; replace only if the plan deliberately wants challenge after the boss, otherwise insert before the seals instead.",
+          "dependencies": {
+            "summary": "NPC/dialogue",
+            "exit": "right",
+            "checkpoint": {
+              "c": 2,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [
+              "oren"
+            ],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 150,
+          "heldInputSegments": 10,
+          "historicalRating": null,
+          "recommendation": "Review as a demonstrated limited-geometry slot; preserve rest/story/entry purpose when replacing."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 15,
+      "key": "deepline",
+      "name": "The Deep Line",
+      "side": "base",
+      "authoredMainCount": 13,
+      "allDefinitionCount": 27,
+      "authoredOrder": [
+        "cl15-d15-thorn",
+        "cl15-d15-buffer",
+        "cl15-d15-backup",
+        "cl15-d15-high",
+        "cl15-d15-siding",
+        "cl15-d15-fork",
+        "cl15-d15-west",
+        "cl15-d15-tally",
+        "cl15-d15-bell",
+        "cl15-d15-speed",
+        "cl15-d15-lamp",
+        "cl15-d15-moths",
+        "cl15-d15-boat"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Cart + portal momentum, lantern glide, moth pogo, pod-assisted dismount",
+      "lateRoomIds": [
+        "cl15-d15-lamp",
+        "cl15-d15-moths",
+        "cl15-d15-boat"
+      ],
+      "keep": [
+        {
+          "id": "cl15-d15-thorn",
+          "origin": "d15-thorn",
+          "name": "Thorn Line"
+        },
+        {
+          "id": "cl15-d15-buffer",
+          "origin": "d15-buffer",
+          "name": "Buffer Stop"
+        },
+        {
+          "id": "cl15-d15-backup",
+          "origin": "d15-backup",
+          "name": "Back Up"
+        },
+        {
+          "id": "cl15-d15-high",
+          "origin": "d15-high",
+          "name": "High Line"
+        },
+        {
+          "id": "cl15-d15-fork",
+          "origin": "d15-fork",
+          "name": "The Cut Fork"
+        },
+        {
+          "id": "cl15-d15-tally",
+          "origin": "d15-tally",
+          "name": "Tally Line"
+        },
+        {
+          "id": "cl15-d15-bell",
+          "origin": "d15-bell",
+          "name": "Bell Line"
+        },
+        {
+          "id": "cl15-d15-boat",
+          "origin": "d15-boat",
+          "name": "The Boat"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl15-d15-west",
+          "origin": "d15-west",
+          "name": "Westbound",
+          "slot": 7,
+          "grade": "B",
+          "evidence": "One cart on seventeen rail tiles, one refill crystal and a tall exit over spikes. The decision is a conventional second dash after dismount, whereas subsequent carts change bell state, portal momentum or cargo/enemy jobs. Preserve the westward road turn and receiving checkpoint if substituting.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "left",
+            "checkpoint": {
+              "c": 36,
+              "r": 14
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 178,
+          "heldInputSegments": 7,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 16,
+      "key": "cliffs",
+      "name": "Thunder Cliffs",
+      "side": "base",
+      "authoredMainCount": 17,
+      "allDefinitionCount": 32,
+      "authoredOrder": [
+        "cl16-t16-chain",
+        "cl16-t16-release",
+        "cl16-t16-deck",
+        "cl16-t16-run",
+        "cl16-t16-ladder",
+        "cl16-t16-sailors",
+        "cl16-t16-deck-ring",
+        "cl16-t16-seam",
+        "cl16-t16-moth",
+        "cl16-t16-long",
+        "cl16-t16-return",
+        "cl16-t16-staple",
+        "cl16-t16-lip",
+        "cl16-t16-bite",
+        "cl16-t16-tide-head",
+        "cl16-t16-storm",
+        "cl16-t16-tide"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Chain + enemy/landing side, three Hydra collar fights, plain shore transition",
+      "lateRoomIds": [
+        "cl16-t16-tide-head",
+        "cl16-t16-storm",
+        "cl16-t16-tide"
+      ],
+      "keep": [
+        {
+          "id": "cl16-t16-chain",
+          "origin": "t16-chain",
+          "name": "First Chain"
+        },
+        {
+          "id": "cl16-t16-release",
+          "origin": "t16-release",
+          "name": "Let Go"
+        },
+        {
+          "id": "cl16-t16-run",
+          "origin": "t16-run",
+          "name": "Running Start"
+        },
+        {
+          "id": "cl16-t16-ladder",
+          "origin": "t16-ladder",
+          "name": "Chain Ladder"
+        },
+        {
+          "id": "cl16-t16-deck-ring",
+          "origin": "t16-deck-ring",
+          "name": "Deck to Ring"
+        },
+        {
+          "id": "cl16-t16-long",
+          "origin": "t16-long",
+          "name": "Long Chain"
+        },
+        {
+          "id": "cl16-t16-bite",
+          "origin": "t16-bite",
+          "name": "The First Chain"
+        },
+        {
+          "id": "cl16-t16-tide-head",
+          "origin": "t16-tide-head",
+          "name": "The Tidal Chain"
+        },
+        {
+          "id": "cl16-t16-storm",
+          "origin": "t16-storm",
+          "name": "The Storm Chain"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl16-t16-deck",
+          "origin": "t16-deck",
+          "name": "Deck",
+          "slot": 3,
+          "grade": "A",
+          "evidence": "One five-tile deck cycles vertically eleven tiles over a small safe approach; the saved tape includes idle blocks of 70 and 120 frames, then jump/right. It teaches autonomous deck riding, so any replacement must retain readable deck arrival before Running Start uses its momentum.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 2,
+              "r": 19
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 407,
+          "heldInputSegments": 6,
+          "historicalRating": null,
+          "recommendation": "Review as a demonstrated limited-geometry slot; preserve rest/story/entry purpose when replacing."
+        },
+        {
+          "id": "cl16-t16-tide",
+          "origin": "t16-tide",
+          "name": "The Tide Below",
+          "slot": 17,
+          "grade": "A",
+          "evidence": "A five-tile thorn bed and a low solid block; no chain, deck, tide or enemy. Movement-only tape after the Hydra trilogy. As with W14 Rail Head, this is a post-boss decompression slot rather than proof that the boss needs more difficulty.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 2,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 150,
+          "heldInputSegments": 9,
+          "historicalRating": null,
+          "recommendation": "Review as a demonstrated limited-geometry slot; preserve rest/story/entry purpose when replacing."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 17,
+      "key": "shores",
+      "name": "The Landing Shores",
+      "side": "base",
+      "authoredMainCount": 10,
+      "allDefinitionCount": 26,
+      "authoredOrder": [
+        "cl17-s17-slack",
+        "cl17-s17-wreck",
+        "cl17-s17-spring",
+        "cl17-s17-line",
+        "cl17-s17-tern",
+        "cl17-s17-porch",
+        "cl17-s17-mooring",
+        "cl17-s17-belled",
+        "cl17-s17-landfall",
+        "cl17-s17-road"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Float-to-ring momentum, behind-shield landing, float/moth/ring flight",
+      "lateRoomIds": [
+        "cl17-s17-belled",
+        "cl17-s17-landfall",
+        "cl17-s17-road"
+      ],
+      "keep": [
+        {
+          "id": "cl17-s17-slack",
+          "origin": "s17-slack",
+          "name": "Slack Water"
+        },
+        {
+          "id": "cl17-s17-wreck",
+          "origin": "s17-wreck",
+          "name": "Wreck Lift"
+        },
+        {
+          "id": "cl17-s17-spring",
+          "origin": "s17-spring",
+          "name": "Spring Tide"
+        },
+        {
+          "id": "cl17-s17-line",
+          "origin": "s17-line",
+          "name": "The Tide Line"
+        },
+        {
+          "id": "cl17-s17-mooring",
+          "origin": "s17-mooring",
+          "name": "Mooring Ring"
+        },
+        {
+          "id": "cl17-s17-landfall",
+          "origin": "s17-landfall",
+          "name": "Landfall"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl17-s17-road",
+          "origin": "s17-road",
+          "name": "The Colony Road",
+          "slot": 10,
+          "grade": "A",
+          "evidence": "A single five-tile thorn bed and a three-tile-high block on dry continuous floor; no tide or float. The ten-segment tape contains only ordinary movement after Landfall’s multi-entity flight. Strong geometry-based replacement slot if retaining a short safe transition into the Colony.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 2,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 151,
+          "heldInputSegments": 10,
+          "historicalRating": null,
+          "recommendation": "Review as a demonstrated limited-geometry slot; preserve rest/story/entry purpose when replacing."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 18,
+      "key": "colony",
+      "name": "The Colony",
+      "side": "base",
+      "authoredMainCount": 11,
+      "allDefinitionCount": 26,
+      "authoredOrder": [
+        "cl18-c18-lamps",
+        "cl18-c18-smoke",
+        "cl18-c18-glance",
+        "cl18-c18-lantern",
+        "cl18-c18-family",
+        "cl18-c18-line",
+        "cl18-c18-fling",
+        "cl18-c18-release",
+        "cl18-c18-shade",
+        "cl18-c18-watch",
+        "cl18-c18-road"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Portal-speed sightline crossing, concealed rope release, moving shade",
+      "lateRoomIds": [
+        "cl18-c18-shade",
+        "cl18-c18-watch",
+        "cl18-c18-road"
+      ],
+      "keep": [
+        {
+          "id": "cl18-c18-lamps",
+          "origin": "c18-lamps",
+          "name": "Lamplight"
+        },
+        {
+          "id": "cl18-c18-smoke",
+          "origin": "c18-smoke",
+          "name": "Pit Smoke"
+        },
+        {
+          "id": "cl18-c18-glance",
+          "origin": "c18-glance",
+          "name": "A Glance"
+        },
+        {
+          "id": "cl18-c18-lantern",
+          "origin": "c18-lantern",
+          "name": "Lantern Thief"
+        },
+        {
+          "id": "cl18-c18-shade",
+          "origin": "c18-shade",
+          "name": "Shade"
+        },
+        {
+          "id": "cl18-c18-watch",
+          "origin": "c18-watch",
+          "name": "The Watch"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl18-c18-road",
+          "origin": "c18-road",
+          "name": "Beyond the Watch",
+          "slot": 11,
+          "grade": "A",
+          "evidence": "One five-tile thorn bed plus a three-tile-high block; no watch light, smoke or moving cover. It repeats the same plain transition family as W17 Colony Road, one tile farther right. Keep its seam/checkpoint but it need not consume a whole challenge slot.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 2,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 168,
+          "heldInputSegments": 8,
+          "historicalRating": null,
+          "recommendation": "Review as a demonstrated limited-geometry slot; preserve rest/story/entry purpose when replacing."
+        },
+        {
+          "id": "cl18-c18-fling",
+          "origin": "c18-fling",
+          "name": "Fling",
+          "slot": 7,
+          "grade": "B",
+          "evidence": "Portal momentum crosses one otherwise open light curtain; the map has no glyph hazards, cargo or switches. This is a distinct speed-through-vision lesson, so replace only with a richer room that still makes portal entry speed matter. Avoid replacing Smoke or Lamplight’s first cover lessons instead.",
+          "dependencies": {
+            "summary": "entrance closes while played",
+            "exit": "right",
+            "checkpoint": {
+              "c": 4,
+              "r": 19
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": true
+          },
+          "storedTapeFrames": 283,
+          "heldInputSegments": 7,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 19,
+      "key": "path",
+      "name": "The Path to the Palace",
+      "side": "base",
+      "authoredMainCount": 12,
+      "allDefinitionCount": 26,
+      "authoredOrder": [
+        "cl19-p19-windows",
+        "cl19-p19-glass",
+        "cl19-p19-tally",
+        "cl19-p19-lantern",
+        "cl19-p19-pilgrim",
+        "cl19-p19-engine",
+        "cl19-p19-beat",
+        "cl19-p19-throw",
+        "cl19-p19-line",
+        "cl19-p19-shade",
+        "cl19-p19-road",
+        "cl19-p19-gate"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Shutter/tear alignment, enemy belly shade, phase shadow and low beam crossing",
+      "lateRoomIds": [
+        "cl19-p19-shade",
+        "cl19-p19-road",
+        "cl19-p19-gate"
+      ],
+      "keep": [
+        {
+          "id": "cl19-p19-windows",
+          "origin": "p19-windows",
+          "name": "Sun Window"
+        },
+        {
+          "id": "cl19-p19-glass",
+          "origin": "p19-glass",
+          "name": "Turn the Glass"
+        },
+        {
+          "id": "cl19-p19-tally",
+          "origin": "p19-tally",
+          "name": "Light It, Then Turn It Back"
+        },
+        {
+          "id": "cl19-p19-lantern",
+          "origin": "p19-lantern",
+          "name": "Carried Shade"
+        },
+        {
+          "id": "cl19-p19-engine",
+          "origin": "p19-engine",
+          "name": "Switchback Engine"
+        },
+        {
+          "id": "cl19-p19-shade",
+          "origin": "p19-shade",
+          "name": "Belly Shade"
+        },
+        {
+          "id": "cl19-p19-gate",
+          "origin": "p19-gate",
+          "name": "The Sun Gate"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl19-p19-line",
+          "origin": "p19-line",
+          "name": "The Sun Line",
+          "slot": 9,
+          "grade": "B",
+          "evidence": "Two shutter tiles and a tear span a single thorn field; only four held-input segments are saved. It revisits shutter departure timing without the mirror preparation in Beat and Glass. Good slot for two linked timing/arrival decisions while retaining the Sun Line’s clear beam cue.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 2,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 153,
+          "heldInputSegments": 4,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        },
+        {
+          "id": "cl19-p19-road",
+          "origin": "p19-road",
+          "name": "The Engine Road",
+          "slot": 11,
+          "grade": "B",
+          "evidence": "Nine phase tiles over a thorn road, toggled by dash and tied to beam shade. Switchback Engine already teaches that same dual effect; the later room adds jumps but no new object role. Prefer a replacement with a meaningful state return, while preserving the region’s phase/light identity.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 2,
+              "r": 19
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 157,
+          "heldInputSegments": 10,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 20,
+      "key": "sunspire",
+      "name": "Sunspire Palace",
+      "side": "base",
+      "authoredMainCount": 14,
+      "allDefinitionCount": 33,
+      "authoredOrder": [
+        "cl20-s20-court",
+        "cl20-s20-hours",
+        "cl20-s20-ends",
+        "cl20-s20-glass",
+        "cl20-s20-garden",
+        "cl20-s20-shade",
+        "cl20-s20-flume",
+        "cl20-s20-crown",
+        "cl20-s20-engine",
+        "cl20-s20-deliveries",
+        "cl20-s20-dawn",
+        "cl20-s20-morning",
+        "cl20-s20-noon",
+        "cl20-s20-sea"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Rope/phase/portal light routing, bolt-before-light delivery, Day King sequence",
+      "lateRoomIds": [
+        "cl20-s20-morning",
+        "cl20-s20-noon",
+        "cl20-s20-sea"
+      ],
+      "keep": [
+        {
+          "id": "cl20-s20-court",
+          "origin": "s20-court",
+          "name": "Sun Through Stone"
+        },
+        {
+          "id": "cl20-s20-ends",
+          "origin": "s20-ends",
+          "name": "Both Ends"
+        },
+        {
+          "id": "cl20-s20-glass",
+          "origin": "s20-glass",
+          "name": "Glass in the Dark"
+        },
+        {
+          "id": "cl20-s20-shade",
+          "origin": "s20-shade",
+          "name": "Lantern Post"
+        },
+        {
+          "id": "cl20-s20-flume",
+          "origin": "s20-flume",
+          "name": "The Light’s Door"
+        },
+        {
+          "id": "cl20-s20-crown",
+          "origin": "s20-crown",
+          "name": "Ring Light"
+        },
+        {
+          "id": "cl20-s20-deliveries",
+          "origin": "s20-deliveries",
+          "name": "Two Deliveries"
+        },
+        {
+          "id": "cl20-s20-dawn",
+          "origin": "s20-dawn",
+          "name": "The Throne at Dawn"
+        },
+        {
+          "id": "cl20-s20-morning",
+          "origin": "s20-morning",
+          "name": "The Glove of Morning"
+        },
+        {
+          "id": "cl20-s20-noon",
+          "origin": "s20-noon",
+          "name": "The Last Noon"
+        },
+        {
+          "id": "cl20-s20-sea",
+          "origin": "s20-sea",
+          "name": "The Sea Terrace"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl20-s20-hours",
+          "origin": "s20-hours",
+          "name": "Light It, Then Let Go",
+          "slot": 2,
+          "grade": "B",
+          "evidence": "One seal/tally, one anchored portal and a single one-way ledge; the five-segment solution lights the seal then removes the hazardous route. Persistent illumination was already taught in W19 Tally, while Court introduces portal-carried light. Useful order-of-operations lesson, but a reasonable replacement slot for a stronger version of that same idea.",
+          "dependencies": {
+            "summary": "entrance closes while played",
+            "exit": "right",
+            "checkpoint": {
+              "c": 2,
+              "r": 19
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": true
+          },
+          "storedTapeFrames": 217,
+          "heldInputSegments": 5,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        },
+        {
+          "id": "cl20-s20-engine",
+          "origin": "s20-engine",
+          "name": "Noon Engine",
+          "slot": 9,
+          "grade": "B",
+          "evidence": "Cyan/gold machinery controls both a portal aiming position and the beam. It revisits W19 Engine/Road’s phase-and-shadow system with a portal alignment added. This is a lower-confidence repetition candidate, not an easy-room claim; preserve the more distinctive Two Deliveries and all three boss rooms.",
+          "dependencies": {
+            "summary": "attached door/secret or socket",
+            "exit": "right",
+            "checkpoint": {
+              "c": 2,
+              "r": 19
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [
+              {
+                "edge": "up",
+                "cols": [
+                  35,
+                  36
+                ],
+                "to": "socket-20-5"
+              }
+            ],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 228,
+          "heldInputSegments": 7,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 21,
+      "key": "f-outskirts",
+      "name": "The Fractured Outskirts",
+      "side": "fractured",
+      "authoredMainCount": 13,
+      "allDefinitionCount": 30,
+      "authoredOrder": [
+        "cl21-fo21-ash",
+        "cl21-fo21-mile",
+        "cl21-fo21-ridge",
+        "cl21-fo21-map",
+        "cl21-fo21-lookout",
+        "cl21-fo21-cracked",
+        "cl21-fo21-camp",
+        "cl21-fo21-torn",
+        "cl21-fo21-gate",
+        "cl21-fo21-yard",
+        "cl21-fo21-hammer",
+        "cl21-fo21-shoulder",
+        "cl21-fo21-last"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Super from enemy-created footholds, cracked runways and crystal recovery",
+      "lateRoomIds": [
+        "cl21-fo21-hammer",
+        "cl21-fo21-shoulder",
+        "cl21-fo21-last"
+      ],
+      "keep": [
+        {
+          "id": "cl21-fo21-ash",
+          "origin": "fo21-ash",
+          "name": "The Ash Verge"
+        },
+        {
+          "id": "cl21-fo21-mile",
+          "origin": "fo21-mile",
+          "name": "The Hollow Mile"
+        },
+        {
+          "id": "cl21-fo21-ridge",
+          "origin": "fo21-ridge",
+          "name": "Watcher’s Ridge"
+        },
+        {
+          "id": "cl21-fo21-map",
+          "origin": "fo21-map",
+          "name": "The Survey Stone"
+        },
+        {
+          "id": "cl21-fo21-camp",
+          "origin": "fo21-camp",
+          "name": "Camp Echo, Empty"
+        },
+        {
+          "id": "cl21-fo21-hammer",
+          "origin": "fo21-hammer",
+          "name": "The Centre Bell"
+        },
+        {
+          "id": "cl21-fo21-shoulder",
+          "origin": "fo21-shoulder",
+          "name": "The East Bell"
+        },
+        {
+          "id": "cl21-fo21-last",
+          "origin": "fo21-last",
+          "name": "The West Bell"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl21-fo21-cracked",
+          "origin": "fo21-cracked",
+          "name": "The Cracked Road",
+          "slot": 6,
+          "grade": "B",
+          "evidence": "Eleven cracked tiles form islands over thirty-five thorn tiles; the central long gap is the super and shorter gaps are jumps. Hollow Mile and Survey Stone already teach repeated supers on unstable footing. Preserve its secret door if substituted.",
+          "dependencies": {
+            "summary": "attached door/secret or socket, secret host",
+            "exit": "right",
+            "checkpoint": {
+              "c": 1,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [
+              "secret-21"
+            ],
+            "doors": [
+              {
+                "edge": "up",
+                "cols": [
+                  1,
+                  2
+                ],
+                "to": "secret-21"
+              }
+            ],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 176,
+          "heldInputSegments": 14,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        },
+        {
+          "id": "cl21-fo21-torn",
+          "origin": "fo21-torn",
+          "name": "The Torn Mile",
+          "slot": 8,
+          "grade": "B",
+          "evidence": "Three tears deliver to cracked perches before a last super; the next Muster Yard adds a crystal to the same tear/perch/super chain. A new room can replace this intermediate chain while retaining the first tear lesson in Camp Echo.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 1,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 159,
+          "heldInputSegments": 13,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 22,
+      "key": "f-woods",
+      "name": "The Fractured Woods",
+      "side": "fractured",
+      "authoredMainCount": 12,
+      "allDefinitionCount": 26,
+      "authoredOrder": [
+        "cl22-fw22-refuge",
+        "cl22-fw22-root-loop",
+        "cl22-fw22-clearing",
+        "cl22-fw22-canopy",
+        "cl22-fw22-briar",
+        "cl22-fw22-kitchen",
+        "cl22-fw22-edge",
+        "cl22-fw22-wind",
+        "cl22-fw22-tower",
+        "cl22-fw22-oath1",
+        "cl22-fw22-oath2",
+        "cl22-fw22-oath3"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Low launch with phase/lash timing, resin wind, Oath Root crown circuits",
+      "lateRoomIds": [
+        "cl22-fw22-oath1",
+        "cl22-fw22-oath2",
+        "cl22-fw22-oath3"
+      ],
+      "keep": [
+        {
+          "id": "cl22-fw22-refuge",
+          "origin": "fw22-refuge",
+          "name": "The Burnt Refuge"
+        },
+        {
+          "id": "cl22-fw22-root-loop",
+          "origin": "fw22-root-loop",
+          "name": "The Root Loop"
+        },
+        {
+          "id": "cl22-fw22-clearing",
+          "origin": "fw22-clearing",
+          "name": "The Bound Oathblade"
+        },
+        {
+          "id": "cl22-fw22-edge",
+          "origin": "fw22-edge",
+          "name": "Thicket’s Broken Edge"
+        },
+        {
+          "id": "cl22-fw22-wind",
+          "origin": "fw22-wind",
+          "name": "The Resin Crown"
+        },
+        {
+          "id": "cl22-fw22-oath1",
+          "origin": "fw22-oath1",
+          "name": "The Oath Root"
+        },
+        {
+          "id": "cl22-fw22-oath2",
+          "origin": "fw22-oath2",
+          "name": "The Oath Root, Waking"
+        },
+        {
+          "id": "cl22-fw22-oath3",
+          "origin": "fw22-oath3",
+          "name": "The Oath Root’s Crown"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl22-fw22-tower",
+          "origin": "fw22-tower",
+          "name": "The Hollow Crown",
+          "slot": 9,
+          "grade": "B",
+          "evidence": "A tear, one pod and eight cracked tiles form a lift/cut/low-launch sequence. All three verbs have been introduced earlier, while this room does not use the chapter’s lashes or resin wind. A replacement can combine low launch with a more consequential timed arrival; retain any attached secret host.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "left",
+            "checkpoint": {
+              "c": 35,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 158,
+          "heldInputSegments": 12,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 23,
+      "key": "f-causeway",
+      "name": "The Fractured Causeway",
+      "side": "fractured",
+      "authoredMainCount": 13,
+      "allDefinitionCount": 32,
+      "authoredOrder": [
+        "cl23-fc23-camp",
+        "cl23-fc23-yard",
+        "cl23-fc23-relay",
+        "cl23-fc23-silas",
+        "cl23-fc23-rise",
+        "cl23-fc23-counterpoise",
+        "cl23-fc23-chainwalk",
+        "cl23-fc23-well",
+        "cl23-fc23-gantry",
+        "cl23-fc23-standard",
+        "cl23-fc23-west",
+        "cl23-fc23-east",
+        "cl23-fc23-middle"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Ultra/lift/cracked-sill combinations, then three weight-and-Brute courts",
+      "lateRoomIds": [
+        "cl23-fc23-west",
+        "cl23-fc23-east",
+        "cl23-fc23-middle"
+      ],
+      "keep": [
+        {
+          "id": "cl23-fc23-camp",
+          "origin": "fc23-camp",
+          "name": "Chainwake, After the Bell"
+        },
+        {
+          "id": "cl23-fc23-yard",
+          "origin": "fc23-yard",
+          "name": "The Drop Yard"
+        },
+        {
+          "id": "cl23-fc23-relay",
+          "origin": "fc23-relay",
+          "name": "The Relay Gantry"
+        },
+        {
+          "id": "cl23-fc23-silas",
+          "origin": "fc23-silas",
+          "name": "The Forty-First Pace"
+        },
+        {
+          "id": "cl23-fc23-gantry",
+          "origin": "fc23-gantry",
+          "name": "The Last Gantry"
+        },
+        {
+          "id": "cl23-fc23-standard",
+          "origin": "fc23-standard",
+          "name": "The Broken Standard"
+        },
+        {
+          "id": "cl23-fc23-west",
+          "origin": "fc23-west",
+          "name": "The West Counterweight"
+        },
+        {
+          "id": "cl23-fc23-east",
+          "origin": "fc23-east",
+          "name": "The East Counterweight"
+        },
+        {
+          "id": "cl23-fc23-middle",
+          "origin": "fc23-middle",
+          "name": "The Last Count"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl23-fc23-well",
+          "origin": "fc23-well",
+          "name": "The Unlit Well",
+          "slot": 8,
+          "grade": "A",
+          "evidence": "A descending solid staircase with no hazard glyph, enemy or device; the entire saved route is [200, left]. The hint explicitly calls it a breath before the courts. This is the clearest Fractured low-complexity slot, but keep some safe boss preparation rather than filling every breather.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "left",
+            "checkpoint": {
+              "c": 34,
+              "r": 5
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 200,
+          "heldInputSegments": 1,
+          "historicalRating": null,
+          "recommendation": "Review as a demonstrated limited-geometry slot; preserve rest/story/entry purpose when replacing."
+        },
+        {
+          "id": "cl23-fc23-rise",
+          "origin": "fc23-rise",
+          "name": "The Counterweight Rise",
+          "slot": 5,
+          "grade": "B",
+          "evidence": "One rising lift launches to a cracked lip and then a second cracked sill; the main demand is two supers in succession. The first lift/ultra route and Relay Gantry already teach lift momentum and unstable arrival, while Last Gantry is the fuller combination. Preserve vertical/horizontal seam orientation.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 2,
+              "r": 19
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 166,
+          "heldInputSegments": 14,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 24,
+      "key": "f-updrafts",
+      "name": "The Fractured Updrafts",
+      "side": "fractured",
+      "authoredMainCount": 12,
+      "allDefinitionCount": 24,
+      "authoredOrder": [
+        "cl24-fu24-lift",
+        "cl24-fu24-shaft",
+        "cl24-fu24-draw",
+        "cl24-fu24-kites",
+        "cl24-fu24-choir",
+        "cl24-fu24-flue",
+        "cl24-fu24-needle",
+        "cl24-fu24-catcher",
+        "cl24-fu24-span",
+        "cl24-fu24-eye",
+        "cl24-fu24-lung",
+        "cl24-fu24-crown"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Wallbounce from wind/tear arrivals; alternating breathing air summit",
+      "lateRoomIds": [
+        "cl24-fu24-eye",
+        "cl24-fu24-lung",
+        "cl24-fu24-crown"
+      ],
+      "keep": [
+        {
+          "id": "cl24-fu24-lift",
+          "origin": "fu24-lift",
+          "name": "Rootbreach in the Storm"
+        },
+        {
+          "id": "cl24-fu24-shaft",
+          "origin": "fu24-shaft",
+          "name": "The Polished Shaft"
+        },
+        {
+          "id": "cl24-fu24-draw",
+          "origin": "fu24-draw",
+          "name": "The Empty Aerie"
+        },
+        {
+          "id": "cl24-fu24-choir",
+          "origin": "fu24-choir",
+          "name": "The Silent Choir"
+        },
+        {
+          "id": "cl24-fu24-eye",
+          "origin": "fu24-eye",
+          "name": "The Lung’s Lower Turn"
+        },
+        {
+          "id": "cl24-fu24-lung",
+          "origin": "fu24-lung",
+          "name": "The Lung"
+        },
+        {
+          "id": "cl24-fu24-crown",
+          "origin": "fu24-crown",
+          "name": "The Lung’s Crown"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl24-fu24-catcher",
+          "origin": "fu24-catcher",
+          "name": "The Cracked Rain-Catcher",
+          "slot": 8,
+          "grade": "B",
+          "evidence": "Four cracked cups alternate between polished walls; the repeated action is landing and immediately wallbouncing to the next cup. It develops an already established wallbounce chain, whereas the following lung rooms add changing wind direction. Replace with a distinctive wallbounce combination, not an ordinary jump room.",
+          "dependencies": {
+            "summary": "entrance closes while played",
+            "exit": "right",
+            "checkpoint": {
+              "c": 26,
+              "r": 18
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": true
+          },
+          "storedTapeFrames": 292,
+          "heldInputSegments": 16,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 25,
+      "key": "f-marksman",
+      "name": "The Fractured Marksman",
+      "side": "fractured",
+      "authoredMainCount": 10,
+      "allDefinitionCount": 24,
+      "authoredOrder": [
+        "cl25-fm25-seam",
+        "cl25-fm25-shaft",
+        "cl25-fm25-bowline",
+        "cl25-fm25-air",
+        "cl25-fm25-works",
+        "cl25-fm25-release",
+        "cl25-fm25-approach",
+        "cl25-fm25-court",
+        "cl25-fm25-tiers",
+        "cl25-fm25-perch"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Fault perches under projectile timing, then Marksman fights on failing ground",
+      "lateRoomIds": [
+        "cl25-fm25-court",
+        "cl25-fm25-tiers",
+        "cl25-fm25-perch"
+      ],
+      "keep": [
+        {
+          "id": "cl25-fm25-seam",
+          "origin": "fm25-seam",
+          "name": "The Seam"
+        },
+        {
+          "id": "cl25-fm25-bowline",
+          "origin": "fm25-bowline",
+          "name": "The Bow Line"
+        },
+        {
+          "id": "cl25-fm25-air",
+          "origin": "fm25-air",
+          "name": "Windcut Seams"
+        },
+        {
+          "id": "cl25-fm25-works",
+          "origin": "fm25-works",
+          "name": "Mantlet Seams"
+        },
+        {
+          "id": "cl25-fm25-release",
+          "origin": "fm25-release",
+          "name": "The Brass Release"
+        },
+        {
+          "id": "cl25-fm25-court",
+          "origin": "fm25-court",
+          "name": "Deadeye Court"
+        },
+        {
+          "id": "cl25-fm25-tiers",
+          "origin": "fm25-tiers",
+          "name": "The Court Tiers"
+        },
+        {
+          "id": "cl25-fm25-perch",
+          "origin": "fm25-perch",
+          "name": "The Last Perch"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl25-fm25-shaft",
+          "origin": "fm25-shaft",
+          "name": "The Cracked Shaft",
+          "slot": 2,
+          "grade": "B",
+          "evidence": "Exactly five separate three-tile fault ledges climb a shaft, with no projectile, moving cover or other object. The author source describes each as a jump and dash from the last. Keep Seam as the first fault lesson; this second single-system repetition can become a broader fault application.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "left",
+            "checkpoint": {
+              "c": 35,
+              "r": 18
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 250,
+          "heldInputSegments": 17,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        },
+        {
+          "id": "cl25-fm25-approach",
+          "origin": "fm25-approach",
+          "name": "Deadeye Approach",
+          "slot": 7,
+          "grade": "B",
+          "evidence": "Two bolt lines over a fault runway/perch and one exit tear; the nine-segment route repeats airborne parry refill after Windcut Seams already uses two projectile lines. Lower confidence: it is a legitimate pre-boss synthesis, so prefer replacing the shaft first.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "left",
+            "checkpoint": {
+              "c": 35,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 153,
+          "heldInputSegments": 9,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 26,
+      "key": "f-keep",
+      "name": "The Fractured Keep",
+      "side": "fractured",
+      "authoredMainCount": 10,
+      "allDefinitionCount": 21,
+      "authoredOrder": [
+        "cl26-fk26-hearth",
+        "cl26-fk26-table",
+        "cl26-fk26-refectory",
+        "cl26-fk26-weight",
+        "cl26-fk26-cradle",
+        "cl26-fk26-quarter",
+        "cl26-fk26-cells",
+        "cl26-fk26-archive",
+        "cl26-fk26-stacks",
+        "cl26-fk26-arch"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Cargo throw/catch before fault failure; tear logistics; portal archive",
+      "lateRoomIds": [
+        "cl26-fk26-archive",
+        "cl26-fk26-stacks",
+        "cl26-fk26-arch"
+      ],
+      "keep": [
+        {
+          "id": "cl26-fk26-hearth",
+          "origin": "fk26-hearth",
+          "name": "Gatehouse Seam"
+        },
+        {
+          "id": "cl26-fk26-table",
+          "origin": "fk26-table",
+          "name": "The Long Table"
+        },
+        {
+          "id": "cl26-fk26-refectory",
+          "origin": "fk26-refectory",
+          "name": "Fallen Refectory"
+        },
+        {
+          "id": "cl26-fk26-weight",
+          "origin": "fk26-weight",
+          "name": "Weight Hall"
+        },
+        {
+          "id": "cl26-fk26-cradle",
+          "origin": "fk26-cradle",
+          "name": "The Cradle"
+        },
+        {
+          "id": "cl26-fk26-cells",
+          "origin": "fk26-cells",
+          "name": "The Cells"
+        },
+        {
+          "id": "cl26-fk26-stacks",
+          "origin": "fk26-stacks",
+          "name": "The Torn Stacks"
+        },
+        {
+          "id": "cl26-fk26-arch",
+          "origin": "fk26-arch",
+          "name": "The Broken Arch"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl26-fk26-quarter",
+          "origin": "fk26-quarter",
+          "name": "Mason’s Quarter",
+          "slot": 6,
+          "grade": "B",
+          "evidence": "One anchored portal crosses the masons’ full wall from fault footing; the palette/fault pressure changes, but the portal topology repeats Base Mason’s Quarter. A stronger portal/cargo state puzzle can go here without removing portal training from W6.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "left",
+            "checkpoint": {
+              "c": 35,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 153,
+          "heldInputSegments": 13,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        },
+        {
+          "id": "cl26-fk26-archive",
+          "origin": "fk26-archive",
+          "name": "Clinging Archive",
+          "slot": 8,
+          "grade": "B",
+          "evidence": "The map retains the long thorned portal-fling shaft and has no fault/shade fields; its fourteen-segment 328-frame tape length matches the Base Archive. This is a reflected reprise and also an archivist-echo branch host: any replacement must retain the branch access and fling prerequisite.",
+          "dependencies": {
+            "summary": "quest branch, NPC/dialogue",
+            "exit": "up",
+            "checkpoint": {
+              "c": 36,
+              "r": 17
+            },
+            "questBranches": [
+              "archivist-echo"
+            ],
+            "sideQuest": "archivist-echo",
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [
+              "archivist"
+            ],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 328,
+          "heldInputSegments": 14,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 27,
+      "key": "f-gaol",
+      "name": "The Fractured Warden",
+      "side": "fractured",
+      "authoredMainCount": 14,
+      "allDefinitionCount": 24,
+      "authoredOrder": [
+        "cl27-fg27-shadow",
+        "cl27-fg27-crown",
+        "cl27-fg27-gallery",
+        "cl27-fg27-door",
+        "cl27-fg27-engine",
+        "cl27-fg27-bellows",
+        "cl27-fg27-cells",
+        "cl27-fg27-back",
+        "cl27-fg27-pair",
+        "cl27-fg27-vigil",
+        "cl27-fg27-court",
+        "cl27-fg27-mouth",
+        "cl27-fg27-well",
+        "cl27-fg27-sentence"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Shade-chased pod/jailer combinations; Warden rush parries without resting",
+      "lateRoomIds": [
+        "cl27-fg27-mouth",
+        "cl27-fg27-well",
+        "cl27-fg27-sentence"
+      ],
+      "keep": [
+        {
+          "id": "cl27-fg27-shadow",
+          "origin": "fg27-shadow",
+          "name": "Your Own Shadow"
+        },
+        {
+          "id": "cl27-fg27-gallery",
+          "origin": "fg27-gallery",
+          "name": "Blind Gallery"
+        },
+        {
+          "id": "cl27-fg27-door",
+          "origin": "fg27-door",
+          "name": "The Gallery Door"
+        },
+        {
+          "id": "cl27-fg27-engine",
+          "origin": "fg27-engine",
+          "name": "Hush Engine"
+        },
+        {
+          "id": "cl27-fg27-cells",
+          "origin": "fg27-cells",
+          "name": "Turning Cells"
+        },
+        {
+          "id": "cl27-fg27-mouth",
+          "origin": "fg27-mouth",
+          "name": "The Well Mouth"
+        },
+        {
+          "id": "cl27-fg27-well",
+          "origin": "fg27-well",
+          "name": "Sentence Well"
+        },
+        {
+          "id": "cl27-fg27-sentence",
+          "origin": "fg27-sentence",
+          "name": "The Sentence"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl27-fg27-crown",
+          "origin": "fg27-crown",
+          "name": "Eastern Crown",
+          "slot": 2,
+          "grade": "B",
+          "evidence": "A descending jailer-gate arrival with shade and twenty floor thorns; the shield/back problem is developed more directly in the next Gallery/Door pair. The new shade rule already has its own first room, so this is a sensible early repeated traversal slot.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 3,
+              "r": 6
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 146,
+          "heldInputSegments": 9,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        },
+        {
+          "id": "cl27-fg27-bellows",
+          "origin": "fg27-bellows",
+          "name": "The Bellows",
+          "slot": 6,
+          "grade": "B",
+          "evidence": "Two pressure pods with shade and thorned walls repeat the Hush Engine launch/refill, before subsequent rooms add jailer facing and cells. Keep Hush Engine’s first pod practice; replace this duplicate family with another pressure-pod interaction if matching bank material exists.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 4,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 180,
+          "heldInputSegments": 14,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 28,
+      "key": "f-frostfell",
+      "name": "The Fractured Frostfell",
+      "side": "fractured",
+      "authoredMainCount": 12,
+      "allDefinitionCount": 23,
+      "authoredOrder": [
+        "cl28-ff28-refuge",
+        "cl28-ff28-streets",
+        "cl28-ff28-shelves",
+        "cl28-ff28-hearth",
+        "cl28-ff28-works",
+        "cl28-ff28-court",
+        "cl28-ff28-rehearsal",
+        "cl28-ff28-stair",
+        "cl28-ff28-galleries",
+        "cl28-ff28-landings",
+        "cl28-ff28-engine",
+        "cl28-ff28-crown"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Feather, fault, ice and shade budget; wind/feather summit",
+      "lateRoomIds": [
+        "cl28-ff28-landings",
+        "cl28-ff28-engine",
+        "cl28-ff28-crown"
+      ],
+      "keep": [
+        {
+          "id": "cl28-ff28-refuge",
+          "origin": "ff28-refuge",
+          "name": "Glazed Street"
+        },
+        {
+          "id": "cl28-ff28-streets",
+          "origin": "ff28-streets",
+          "name": "Working Streets"
+        },
+        {
+          "id": "cl28-ff28-shelves",
+          "origin": "ff28-shelves",
+          "name": "Raised Shelves"
+        },
+        {
+          "id": "cl28-ff28-court",
+          "origin": "ff28-court",
+          "name": "Thawed Court"
+        },
+        {
+          "id": "cl28-ff28-stair",
+          "origin": "ff28-stair",
+          "name": "Frozen Stair"
+        },
+        {
+          "id": "cl28-ff28-galleries",
+          "origin": "ff28-galleries",
+          "name": "Exposed Galleries"
+        },
+        {
+          "id": "cl28-ff28-crown",
+          "origin": "ff28-crown",
+          "name": "Muster Crown"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl28-ff28-rehearsal",
+          "origin": "ff28-rehearsal",
+          "name": "The Rehearsal",
+          "slot": 7,
+          "grade": "B",
+          "evidence": "Two feathers plus one three-tile fault perch repeat the preceding Court’s two-feather climb and the next Stair’s longer turning climb. Replace the middle repeat while retaining Court’s readable first feather-in-Fractured explanation.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "left",
+            "checkpoint": {
+              "c": 35,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 141,
+          "heldInputSegments": 13,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        },
+        {
+          "id": "cl28-ff28-engine",
+          "origin": "ff28-engine",
+          "name": "Muster Engine",
+          "slot": 11,
+          "grade": "B",
+          "evidence": "One feather at the top of a draft, shade pursuit and no fault glyph despite a fault option. This preserves the Base Engine’s single wind/feather idea rather than adding another object state. A more developed aerial resource chain can fit before Crown without taking away the introductory ice rooms.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "left",
+            "checkpoint": {
+              "c": 35,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 172,
+          "heldInputSegments": 8,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 29,
+      "key": "f-court",
+      "name": "The Fractured Sorcerer",
+      "side": "fractured",
+      "authoredMainCount": 13,
+      "allDefinitionCount": 25,
+      "authoredOrder": [
+        "cl29-fs29-pane",
+        "cl29-fs29-stair",
+        "cl29-fs29-sluice",
+        "cl29-fs29-falls",
+        "cl29-fs29-court",
+        "cl29-fs29-glass",
+        "cl29-fs29-cache",
+        "cl29-fs29-overlook",
+        "cl29-fs29-glazed",
+        "cl29-fs29-ante",
+        "cl29-fs29-white",
+        "cl29-fs29-gglass",
+        "cl29-fs29-ward"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Mirrored freeze/fall routes, then Sorcerer basins reached by redirected frost",
+      "lateRoomIds": [
+        "cl29-fs29-white",
+        "cl29-fs29-gglass",
+        "cl29-fs29-ward"
+      ],
+      "keep": [
+        {
+          "id": "cl29-fs29-pane",
+          "origin": "fs29-pane",
+          "name": "The Cold Pane"
+        },
+        {
+          "id": "cl29-fs29-stair",
+          "origin": "fs29-stair",
+          "name": "The Pane Stair"
+        },
+        {
+          "id": "cl29-fs29-sluice",
+          "origin": "fs29-sluice",
+          "name": "The Mirrored Sluice"
+        },
+        {
+          "id": "cl29-fs29-falls",
+          "origin": "fs29-falls",
+          "name": "The Two Falls"
+        },
+        {
+          "id": "cl29-fs29-glass",
+          "origin": "fs29-glass",
+          "name": "The Glassworks"
+        },
+        {
+          "id": "cl29-fs29-ante",
+          "origin": "fs29-ante",
+          "name": "The Cold Antechamber"
+        },
+        {
+          "id": "cl29-fs29-white",
+          "origin": "fs29-white",
+          "name": "The White Court"
+        },
+        {
+          "id": "cl29-fs29-gglass",
+          "origin": "fs29-gglass",
+          "name": "The Glass Gallery"
+        },
+        {
+          "id": "cl29-fs29-ward",
+          "origin": "fs29-ward",
+          "name": "The Last Ward"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl29-fs29-glazed",
+          "origin": "fs29-glazed",
+          "name": "The Glazed Gallery",
+          "slot": 9,
+          "grade": "B",
+          "evidence": "Four full-height panes, two crystals and one four-tile fault perch; the core task is repeated left/right remapping with refill management. Pane Stair already teaches four-pane traversal on fault ledges. This later pane-only reprise is a stronger replacement candidate than the first mirror lesson.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "left",
+            "checkpoint": {
+              "c": 35,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 221,
+          "heldInputSegments": 18,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        },
+        {
+          "id": "cl29-fs29-court",
+          "origin": "fs29-court",
+          "name": "Thaw Court",
+          "slot": 5,
+          "grade": "B",
+          "evidence": "Three freeze basins and one eleven-tile pane repeat the Base Thaw Court ladder with a final handedness change. Sluice/Falls have already introduced mirrored water use; a replacement can make freeze timing change the route rather than add another basin ladder.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "left",
+            "checkpoint": {
+              "c": 35,
+              "r": 18
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 207,
+          "heldInputSegments": 16,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 30,
+      "key": "f-emberdeep",
+      "name": "The Fractured Emberdeep",
+      "side": "fractured",
+      "authoredMainCount": 12,
+      "allDefinitionCount": 25,
+      "authoredOrder": [
+        "cl30-fe30-door",
+        "cl30-fe30-cooling",
+        "cl30-fe30-draw",
+        "cl30-fe30-schedule",
+        "cl30-fe30-spouts",
+        "cl30-fe30-tear",
+        "cl30-fe30-line",
+        "cl30-fe30-shift",
+        "cl30-fe30-moulds",
+        "cl30-fe30-pourfloor",
+        "cl30-fe30-stair",
+        "cl30-fe30-foot"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Slab/pane/fault timing, shade through hatches, timed descent and tear exit",
+      "lateRoomIds": [
+        "cl30-fe30-pourfloor",
+        "cl30-fe30-stair",
+        "cl30-fe30-foot"
+      ],
+      "keep": [
+        {
+          "id": "cl30-fe30-door",
+          "origin": "fe30-door",
+          "name": "The Ember Door"
+        },
+        {
+          "id": "cl30-fe30-draw",
+          "origin": "fe30-draw",
+          "name": "The Draw"
+        },
+        {
+          "id": "cl30-fe30-schedule",
+          "origin": "fe30-schedule",
+          "name": "The Pour Schedule"
+        },
+        {
+          "id": "cl30-fe30-spouts",
+          "origin": "fe30-spouts",
+          "name": "Under the Spouts"
+        },
+        {
+          "id": "cl30-fe30-moulds",
+          "origin": "fe30-moulds",
+          "name": "The Mould Pits"
+        },
+        {
+          "id": "cl30-fe30-pourfloor",
+          "origin": "fe30-pourfloor",
+          "name": "The Pour Floor"
+        },
+        {
+          "id": "cl30-fe30-stair",
+          "origin": "fe30-stair",
+          "name": "The Deep Stair"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl30-fe30-cooling",
+          "origin": "fe30-cooling",
+          "name": "The Cooling Road",
+          "slot": 2,
+          "grade": "B",
+          "evidence": "One four-tile fault perch and one four-tile heat slab, with no mirror or shade. It reprises the basic temporary-floor handoff after Ember Door already chains three slabs with a pane. Good compact slot for a more causal timing problem.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "left",
+            "checkpoint": {
+              "c": 34,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 175,
+          "heldInputSegments": 10,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        },
+        {
+          "id": "cl30-fe30-shift",
+          "origin": "fe30-shift",
+          "name": "The Glass Shift",
+          "slot": 8,
+          "grade": "B",
+          "evidence": "Two heat slabs on opposite beats separated by one pane; the theme is the same beat-plus-handedness transfer as Door and Schedule. Retain the broader Pour Floor synthesis; this intermediate two-stop reprise is the more replaceable slot.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "left",
+            "checkpoint": {
+              "c": 35,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 178,
+          "heldInputSegments": 14,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 31,
+      "key": "f-foundry",
+      "name": "The Fractured Colossus",
+      "side": "fractured",
+      "authoredMainCount": 12,
+      "allDefinitionCount": 22,
+      "authoredOrder": [
+        "cl31-ff31-stair",
+        "cl31-ff31-anvils",
+        "cl31-ff31-bridge",
+        "cl31-ff31-shaft",
+        "cl31-ff31-crane",
+        "cl31-ff31-mouth",
+        "cl31-ff31-heap",
+        "cl31-ff31-hot",
+        "cl31-ff31-look",
+        "cl31-ff31-pit",
+        "cl31-ff31-bed",
+        "cl31-ff31-pour"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Anvil/mould/glass/fault paths, then Colossus pours that destroy footing",
+      "lateRoomIds": [
+        "cl31-ff31-pit",
+        "cl31-ff31-bed",
+        "cl31-ff31-pour"
+      ],
+      "keep": [
+        {
+          "id": "cl31-ff31-stair",
+          "origin": "ff31-stair",
+          "name": "The Cracked Stair"
+        },
+        {
+          "id": "cl31-ff31-anvils",
+          "origin": "ff31-anvils",
+          "name": "Off the Glass"
+        },
+        {
+          "id": "cl31-ff31-bridge",
+          "origin": "ff31-bridge",
+          "name": "The Mould Bridge"
+        },
+        {
+          "id": "cl31-ff31-shaft",
+          "origin": "ff31-shaft",
+          "name": "The Cold Shaft"
+        },
+        {
+          "id": "cl31-ff31-look",
+          "origin": "ff31-look",
+          "name": "The Overlook"
+        },
+        {
+          "id": "cl31-ff31-pit",
+          "origin": "ff31-pit",
+          "name": "The Casting Pit"
+        },
+        {
+          "id": "cl31-ff31-bed",
+          "origin": "ff31-bed",
+          "name": "The Bed"
+        },
+        {
+          "id": "cl31-ff31-pour",
+          "origin": "ff31-pour",
+          "name": "The Last Pour"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl31-ff31-crane",
+          "origin": "ff31-crane",
+          "name": "The Crane",
+          "slot": 5,
+          "grade": "B",
+          "evidence": "One anvil, one cast landing group, one full pane and a refill crystal reproduce Base Crane’s throw-over-teeth/set-a-landing idea with mirror/shade. By this point Anvils, Mould Bridge and Cold Shaft have covered those resources individually. A replacement should still join a launch to manufactured footing.",
+          "dependencies": {
+            "summary": "quest branch, NPC/dialogue",
+            "exit": "left",
+            "checkpoint": {
+              "c": 32,
+              "r": 17
+            },
+            "questBranches": [
+              "automaton-echo"
+            ],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [
+              "automaton"
+            ],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 177,
+          "heldInputSegments": 21,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        },
+        {
+          "id": "cl31-ff31-hot",
+          "origin": "ff31-hot",
+          "name": "The Hot Line",
+          "slot": 8,
+          "grade": "B",
+          "evidence": "Two anvils, two full panes and one three-tile fault perch form another stepping-stone line. The previous Slag Heap already combines anvils, glass, fault and shade with a meaningful low roof. Prefer replacing this repeated forward line before the richer Overlook.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "left",
+            "checkpoint": {
+              "c": 35,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 167,
+          "heldInputSegments": 13,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 32,
+      "key": "f-inversion",
+      "name": "The Fractured Inversion",
+      "side": "fractured",
+      "authoredMainCount": 12,
+      "allDefinitionCount": 24,
+      "authoredOrder": [
+        "cl32-fi32-fall",
+        "cl32-fi32-line",
+        "cl32-fi32-reversal",
+        "cl32-fi32-lip",
+        "cl32-fi32-alternating",
+        "cl32-fi32-landing",
+        "cl32-fi32-court",
+        "cl32-fi32-divide",
+        "cl32-fi32-glass",
+        "cl32-fi32-lock",
+        "cl32-fi32-fissure",
+        "cl32-fi32-threshold"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Three-pass gravity/fault routes; mirror remapping; shade pursuit",
+      "lateRoomIds": [
+        "cl32-fi32-lock",
+        "cl32-fi32-fissure",
+        "cl32-fi32-threshold"
+      ],
+      "keep": [
+        {
+          "id": "cl32-fi32-fall",
+          "origin": "fi32-fall",
+          "name": "The Fall Up"
+        },
+        {
+          "id": "cl32-fi32-line",
+          "origin": "fi32-line",
+          "name": "Both Ways"
+        },
+        {
+          "id": "cl32-fi32-reversal",
+          "origin": "fi32-reversal",
+          "name": "The Cracked Roof"
+        },
+        {
+          "id": "cl32-fi32-alternating",
+          "origin": "fi32-alternating",
+          "name": "Prism to Prism"
+        },
+        {
+          "id": "cl32-fi32-glass",
+          "origin": "fi32-glass",
+          "name": "Glass Between Floors"
+        },
+        {
+          "id": "cl32-fi32-fissure",
+          "origin": "fi32-fissure",
+          "name": "The Void Fissure"
+        },
+        {
+          "id": "cl32-fi32-threshold",
+          "origin": "fi32-threshold",
+          "name": "The Quiet Threshold"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl32-fi32-lip",
+          "origin": "fi32-lip",
+          "name": "The Turned Teeth",
+          "slot": 4,
+          "grade": "B",
+          "evidence": "One prism strip, one vertical pane and a thorned cracked roof produce a single remapped inverted run. Both Ways already traverses pane/gravity combinations on three passes. This shorter one-pass repetition is a review candidate, not proof of low execution difficulty.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "left",
+            "checkpoint": {
+              "c": 35,
+              "r": 14
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 148,
+          "heldInputSegments": 9,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        },
+        {
+          "id": "cl32-fi32-lock",
+          "origin": "fi32-lock",
+          "name": "Polarity Gauntlet",
+          "slot": 10,
+          "grade": "B",
+          "evidence": "Four prism crossings across short fault slabs with one pane; no cargo or held gate despite the former Drop-Lock ancestry. Prism to Prism already asks for repeated flips and refills. A replacement could restore a causal gravity/object task to a world dominated by traversal strings.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "left",
+            "checkpoint": {
+              "c": 35,
+              "r": 14
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 163,
+          "heldInputSegments": 9,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 33,
+      "key": "f-citadel",
+      "name": "The Fractured Tyrant",
+      "side": "fractured",
+      "authoredMainCount": 12,
+      "allDefinitionCount": 26,
+      "authoredOrder": [
+        "cl33-fv33-mouth",
+        "cl33-fv33-blink",
+        "cl33-fv33-spent",
+        "cl33-fv33-ledgers",
+        "cl33-fv33-thrown",
+        "cl33-fv33-faults",
+        "cl33-fv33-vigil",
+        "cl33-fv33-broken",
+        "cl33-fv33-high",
+        "cl33-fv33-low",
+        "cl33-fv33-middle",
+        "cl33-fv33-crown"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Blinking/one-use tears and fault perches; Tyrant seams to lit bands",
+      "lateRoomIds": [
+        "cl33-fv33-low",
+        "cl33-fv33-middle",
+        "cl33-fv33-crown"
+      ],
+      "keep": [
+        {
+          "id": "cl33-fv33-mouth",
+          "origin": "fv33-mouth",
+          "name": "The Fissure Mouth"
+        },
+        {
+          "id": "cl33-fv33-blink",
+          "origin": "fv33-blink",
+          "name": "The Blinking Seam"
+        },
+        {
+          "id": "cl33-fv33-spent",
+          "origin": "fv33-spent",
+          "name": "The Spent Seam"
+        },
+        {
+          "id": "cl33-fv33-ledgers",
+          "origin": "fv33-ledgers",
+          "name": "The Rising Ledgers"
+        },
+        {
+          "id": "cl33-fv33-broken",
+          "origin": "fv33-broken",
+          "name": "The Broken Ledger"
+        },
+        {
+          "id": "cl33-fv33-low",
+          "origin": "fv33-low",
+          "name": "The Lower Ward"
+        },
+        {
+          "id": "cl33-fv33-middle",
+          "origin": "fv33-middle",
+          "name": "The Middle Ward"
+        },
+        {
+          "id": "cl33-fv33-crown",
+          "origin": "fv33-crown",
+          "name": "The Crown Does Not Fall"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl33-fv33-thrown",
+          "origin": "fv33-thrown",
+          "name": "The Thrown Line",
+          "slot": 5,
+          "grade": "B",
+          "evidence": "A forward chain of one-way tears over thorns, with no fault perch, cargo, enemy, tally or second resource in the room. It repeats sequential mouth-to-mouth transfer after Spent Seam already establishes one-way commitment.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 0,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 130,
+          "heldInputSegments": 12,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        },
+        {
+          "id": "cl33-fv33-faults",
+          "origin": "fv33-faults",
+          "name": "Three on Fault",
+          "slot": 6,
+          "grade": "B",
+          "evidence": "Three tear stops on fourteen fault tiles, with no other active object. Fissure Mouth and the two following tear rooms already teach leaving a failing perch quickly; Broken Ledger later adds the more distinctive pod-to-mouth height decision. Good place to vary what a tear is used for.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 0,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 147,
+          "heldInputSegments": 9,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 34,
+      "key": "f-throne",
+      "name": "The Fractured King",
+      "side": "fractured",
+      "authoredMainCount": 12,
+      "allDefinitionCount": 26,
+      "authoredOrder": [
+        "cl34-fk34-stair",
+        "cl34-fk34-marks",
+        "cl34-fk34-seam",
+        "cl34-fk34-gallery",
+        "cl34-fk34-echo",
+        "cl34-fk34-hand",
+        "cl34-fk34-wake",
+        "cl34-fk34-climb",
+        "cl34-fk34-bellkeeper",
+        "cl34-fk34-hall",
+        "cl34-fk34-throne",
+        "cl34-fk34-last"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Two shades as pursuit/weight, echo occupancy, crown timing and return",
+      "lateRoomIds": [
+        "cl34-fk34-hall",
+        "cl34-fk34-throne",
+        "cl34-fk34-last"
+      ],
+      "keep": [
+        {
+          "id": "cl34-fk34-stair",
+          "origin": "fk34-stair",
+          "name": "Two Behind"
+        },
+        {
+          "id": "cl34-fk34-marks",
+          "origin": "fk34-marks",
+          "name": "Your Second Body"
+        },
+        {
+          "id": "cl34-fk34-echo",
+          "origin": "fk34-echo",
+          "name": "The Borrowed Body"
+        },
+        {
+          "id": "cl34-fk34-hand",
+          "origin": "fk34-hand",
+          "name": "The Right Hand"
+        },
+        {
+          "id": "cl34-fk34-wake",
+          "origin": "fk34-wake",
+          "name": "The Long Drowning"
+        },
+        {
+          "id": "cl34-fk34-throne",
+          "origin": "fk34-throne",
+          "name": "The First Seal"
+        },
+        {
+          "id": "cl34-fk34-last",
+          "origin": "fk34-last",
+          "name": "The Last Seal"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl34-fk34-seam",
+          "origin": "fk34-seam",
+          "name": "The King’s Seam",
+          "slot": 3,
+          "grade": "B",
+          "evidence": "Blinking tears plus one three-tile fault perch and two following shades; no mark or other object state. Two Behind has already introduced that timing pressure, while Your Second Body makes it consequential for a crown. Replace a movement-only repeat before removing either of those lessons.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 1,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 124,
+          "heldInputSegments": 12,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        },
+        {
+          "id": "cl34-fk34-climb",
+          "origin": "fk34-climb",
+          "name": "The Drowning Stair",
+          "slot": 8,
+          "grade": "B",
+          "evidence": "Nine spent foothold tiles and six fault tiles climb with the shades behind; this repeats Long Drowning’s consumed footholds and pursuit but lacks its return over the earlier route. Keep that stronger return problem and use the later climb slot for a different shared-state application.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 2,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 168,
+          "heldInputSegments": 14,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 35,
+      "key": "f-deepline",
+      "name": "The Fractured Line",
+      "side": "fractured",
+      "authoredMainCount": 11,
+      "allDefinitionCount": 26,
+      "authoredOrder": [
+        "cl35-fd35-thorn",
+        "cl35-fd35-buffer",
+        "cl35-fd35-backup",
+        "cl35-fd35-high",
+        "cl35-fd35-siding",
+        "cl35-fd35-fork",
+        "cl35-fd35-blink",
+        "cl35-fd35-boat",
+        "cl35-fd35-roof",
+        "cl35-fd35-shadeline",
+        "cl35-fd35-glass"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Cart launch/fork timing, low launch under roof, shade and glass through tears",
+      "lateRoomIds": [
+        "cl35-fd35-roof",
+        "cl35-fd35-shadeline",
+        "cl35-fd35-glass"
+      ],
+      "keep": [
+        {
+          "id": "cl35-fd35-thorn",
+          "origin": "fd35-thorn",
+          "name": "Cracking Line"
+        },
+        {
+          "id": "cl35-fd35-buffer",
+          "origin": "fd35-buffer",
+          "name": "Two Carts"
+        },
+        {
+          "id": "cl35-fd35-backup",
+          "origin": "fd35-backup",
+          "name": "Back Up"
+        },
+        {
+          "id": "cl35-fd35-high",
+          "origin": "fd35-high",
+          "name": "High Line"
+        },
+        {
+          "id": "cl35-fd35-fork",
+          "origin": "fd35-fork",
+          "name": "The Cut Fork"
+        },
+        {
+          "id": "cl35-fd35-blink",
+          "origin": "fd35-blink",
+          "name": "The Blinking Line"
+        },
+        {
+          "id": "cl35-fd35-boat",
+          "origin": "fd35-boat",
+          "name": "The Boat"
+        },
+        {
+          "id": "cl35-fd35-glass",
+          "origin": "fd35-glass",
+          "name": "Glass on the Line"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl35-fd35-roof",
+          "origin": "fd35-roof",
+          "name": "The Low Roof",
+          "slot": 9,
+          "grade": "B",
+          "evidence": "A fault runway, low thorn roof and tears with shade; there is no cart or rail glyph in the room. Low launch was introduced in W22 and revisited in W23. This is a plausible slot for a new cart or other world-object job, provided any secret entrance stays connected.",
+          "dependencies": {
+            "summary": "attached door/secret or socket, secret host",
+            "exit": "right",
+            "checkpoint": {
+              "c": 0,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [
+              "secret-35"
+            ],
+            "doors": [
+              {
+                "edge": "up",
+                "cols": [
+                  1,
+                  2
+                ],
+                "to": "secret-35"
+              }
+            ],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 166,
+          "heldInputSegments": 16,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        },
+        {
+          "id": "cl35-fd35-shadeline",
+          "origin": "fd35-shadeline",
+          "name": "Shade on the Line",
+          "slot": 10,
+          "grade": "B",
+          "evidence": "One cart on three rail tiles hands into a long fault/tear chain with shade. Two Carts already ties moving seats to shade pressure, and Blinking Line adds a route-relevant arrival phase. This later single-seat continuation is a lower-confidence repetition candidate.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 1,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 229,
+          "heldInputSegments": 12,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 36,
+      "key": "f-cliffs",
+      "name": "The Fractured Cliffs",
+      "side": "fractured",
+      "authoredMainCount": 12,
+      "allDefinitionCount": 24,
+      "authoredOrder": [
+        "cl36-ft36-chain",
+        "cl36-ft36-release",
+        "cl36-ft36-run",
+        "cl36-ft36-ladder",
+        "cl36-ft36-sailors",
+        "cl36-ft36-deck-ring",
+        "cl36-ft36-moth",
+        "cl36-ft36-long",
+        "cl36-ft36-staple",
+        "cl36-ft36-bite",
+        "cl36-ft36-tide-head",
+        "cl36-ft36-storm"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Rope/tear/glass transfer, adjustable rope tally, shade-chased Hydra fights",
+      "lateRoomIds": [
+        "cl36-ft36-bite",
+        "cl36-ft36-tide-head",
+        "cl36-ft36-storm"
+      ],
+      "keep": [
+        {
+          "id": "cl36-ft36-chain",
+          "origin": "ft36-chain",
+          "name": "Glass Chain"
+        },
+        {
+          "id": "cl36-ft36-release",
+          "origin": "ft36-release",
+          "name": "Two Panes"
+        },
+        {
+          "id": "cl36-ft36-ladder",
+          "origin": "ft36-ladder",
+          "name": "Glass Ladder"
+        },
+        {
+          "id": "cl36-ft36-deck-ring",
+          "origin": "ft36-deck-ring",
+          "name": "Deck to Ring"
+        },
+        {
+          "id": "cl36-ft36-long",
+          "origin": "ft36-long",
+          "name": "Long Chain"
+        },
+        {
+          "id": "cl36-ft36-bite",
+          "origin": "ft36-bite",
+          "name": "The First Chain"
+        },
+        {
+          "id": "cl36-ft36-tide-head",
+          "origin": "ft36-tide-head",
+          "name": "The Tidal Chain"
+        },
+        {
+          "id": "cl36-ft36-storm",
+          "origin": "ft36-storm",
+          "name": "The Storm Chain"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl36-ft36-moth",
+          "origin": "ft36-moth",
+          "name": "Glass Between",
+          "slot": 7,
+          "grade": "B",
+          "evidence": "Despite its stable ID, this room has no moth: one ring, two panes, two three-tile fault perches and two tears. Glass Seam already combines one ring, two panes, fault perches and tears; the geometry differs, but the object jobs repeat. Stronger slot for actual rope/enemy or rope/cargo interaction.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 1,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 142,
+          "heldInputSegments": 12,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        },
+        {
+          "id": "cl36-ft36-staple",
+          "origin": "ft36-staple",
+          "name": "The Staple",
+          "slot": 9,
+          "grade": "B",
+          "evidence": "One ring, one pane, one three-tile fault perch and tear transfer repeat the resources already used through Glass Chain, Glass Seam and Glass Between. Unlike Long Chain there is no rope-length-dependent tally. Replace this simple resource chain before the adjustable-rope puzzle.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 1,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 141,
+          "heldInputSegments": 9,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 37,
+      "key": "f-shores",
+      "name": "The Fractured Shores",
+      "side": "fractured",
+      "authoredMainCount": 11,
+      "allDefinitionCount": 30,
+      "authoredOrder": [
+        "cl37-fs37-slack",
+        "cl37-fs37-wreck",
+        "cl37-fs37-launch",
+        "cl37-fs37-spring",
+        "cl37-fs37-tern",
+        "cl37-fs37-porch",
+        "cl37-fs37-buoy",
+        "cl37-fs37-super",
+        "cl37-fs37-belled",
+        "cl37-fs37-landfall",
+        "cl37-fs37-road"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Low launch from rising floats, mirror, behind-shield arrivals, aerial synthesis",
+      "lateRoomIds": [
+        "cl37-fs37-belled",
+        "cl37-fs37-landfall",
+        "cl37-fs37-road"
+      ],
+      "keep": [
+        {
+          "id": "cl37-fs37-slack",
+          "origin": "fs37-slack",
+          "name": "Slack Water"
+        },
+        {
+          "id": "cl37-fs37-launch",
+          "origin": "fs37-launch",
+          "name": "Launch"
+        },
+        {
+          "id": "cl37-fs37-spring",
+          "origin": "fs37-spring",
+          "name": "Spring Tide"
+        },
+        {
+          "id": "cl37-fs37-buoy",
+          "origin": "fs37-buoy",
+          "name": "Buoy"
+        },
+        {
+          "id": "cl37-fs37-super",
+          "origin": "fs37-super",
+          "name": "Spring Super"
+        },
+        {
+          "id": "cl37-fs37-belled",
+          "origin": "fs37-belled",
+          "name": "Belled"
+        },
+        {
+          "id": "cl37-fs37-landfall",
+          "origin": "fs37-landfall",
+          "name": "Landfall"
+        },
+        {
+          "id": "cl37-fs37-road",
+          "origin": "fs37-road",
+          "name": "The Colony Road"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl37-fs37-wreck",
+          "origin": "fs37-wreck",
+          "name": "Wreck Lift",
+          "slot": 2,
+          "grade": "B",
+          "evidence": "Sixteen float tiles lift fault perches toward a tear while shade follows. Slack Water has already used tide/floats in a three-lane sequence, and Launch follows with a stronger two-launch relationship. This isolated lift reprise is a possible slot for a new tide-controlled object role.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "left",
+            "checkpoint": {
+              "c": 36,
+              "r": 19
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 169,
+          "heldInputSegments": 14,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        },
+        {
+          "id": "cl37-fs37-tern",
+          "origin": "fs37-tern",
+          "name": "Under the Spray",
+          "slot": 5,
+          "grade": "B",
+          "evidence": "No tern or other enemy is present: fault footing, a low roof, a tear and shade form a super-to-rise transfer. The later Landfall really combines float, moth and ring. Prefer the latter for the enemy lesson; this former enemy slot can regain an interactive timing target.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "left",
+            "checkpoint": {
+              "c": 35,
+              "r": 16
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 141,
+          "heldInputSegments": 13,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 38,
+      "key": "f-colony",
+      "name": "The Fractured Colony",
+      "side": "fractured",
+      "authoredMainCount": 12,
+      "allDefinitionCount": 28,
+      "authoredOrder": [
+        "cl38-fc38-lamps",
+        "cl38-fc38-smoke",
+        "cl38-fc38-glance",
+        "cl38-fc38-line",
+        "cl38-fc38-family",
+        "cl38-fc38-speed",
+        "cl38-fc38-low",
+        "cl38-fc38-glass",
+        "cl38-fc38-release",
+        "cl38-fc38-shade",
+        "cl38-fc38-watch",
+        "cl38-fc38-road"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Watch-light timing over fault, low launches, pane reversal, smoke/rope release",
+      "lateRoomIds": [
+        "cl38-fc38-shade",
+        "cl38-fc38-watch",
+        "cl38-fc38-road"
+      ],
+      "keep": [
+        {
+          "id": "cl38-fc38-lamps",
+          "origin": "fc38-lamps",
+          "name": "Lamplight"
+        },
+        {
+          "id": "cl38-fc38-smoke",
+          "origin": "fc38-smoke",
+          "name": "Pit Smoke"
+        },
+        {
+          "id": "cl38-fc38-glance",
+          "origin": "fc38-glance",
+          "name": "A Glance"
+        },
+        {
+          "id": "cl38-fc38-family",
+          "origin": "fc38-family",
+          "name": "A Quiet Question"
+        },
+        {
+          "id": "cl38-fc38-speed",
+          "origin": "fc38-speed",
+          "name": "Faster Than a Hop"
+        },
+        {
+          "id": "cl38-fc38-release",
+          "origin": "fc38-release",
+          "name": "Let Go"
+        },
+        {
+          "id": "cl38-fc38-watch",
+          "origin": "fc38-watch",
+          "name": "The Watch"
+        },
+        {
+          "id": "cl38-fc38-road",
+          "origin": "fc38-road",
+          "name": "Beyond the Watch"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl38-fc38-line",
+          "origin": "fc38-line",
+          "name": "Lines Out",
+          "slot": 4,
+          "grade": "B",
+          "evidence": "Two tear crossings pass thorn curtains under a sweeping lamp; ten fault tiles are the perches. It repeats the tear/sightline interaction of W18 Washing Line and the immediately preceding smoke/tear teaching. A more developed exposure/arrival problem can fit here.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 0,
+              "r": 15
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 111,
+          "heldInputSegments": 9,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        },
+        {
+          "id": "cl38-fc38-shade",
+          "origin": "fc38-shade",
+          "name": "Two Shadows",
+          "slot": 10,
+          "grade": "B",
+          "evidence": "A short line of smoke-covered fault stones with a lamp ahead and shade behind. Lamplight/Smoke already establish shelter departure and Glance adds shade across three lanes. This later one-line restatement has fewer distinct object jobs than the neighbouring Release/Watch combinations.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 1,
+              "r": 16
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 106,
+          "heldInputSegments": 9,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 39,
+      "key": "f-path",
+      "name": "The Fractured Path",
+      "side": "fractured",
+      "authoredMainCount": 11,
+      "allDefinitionCount": 26,
+      "authoredOrder": [
+        "cl39-fp39-windows",
+        "cl39-fp39-engine",
+        "cl39-fp39-low",
+        "cl39-fp39-pilgrim",
+        "cl39-fp39-beat",
+        "cl39-fp39-line",
+        "cl39-fp39-panes",
+        "cl39-fp39-shade",
+        "cl39-fp39-road",
+        "cl39-fp39-glass",
+        "cl39-fp39-gate"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Phase shade, timed windows, mirrored low launch, then all machines combined",
+      "lateRoomIds": [
+        "cl39-fp39-road",
+        "cl39-fp39-glass",
+        "cl39-fp39-gate"
+      ],
+      "keep": [
+        {
+          "id": "cl39-fp39-windows",
+          "origin": "fp39-windows",
+          "name": "Sun Window"
+        },
+        {
+          "id": "cl39-fp39-engine",
+          "origin": "fp39-engine",
+          "name": "Switchback Engine"
+        },
+        {
+          "id": "cl39-fp39-low",
+          "origin": "fp39-low",
+          "name": "Low Light"
+        },
+        {
+          "id": "cl39-fp39-beat",
+          "origin": "fp39-beat",
+          "name": "The Beat"
+        },
+        {
+          "id": "cl39-fp39-pilgrim",
+          "origin": "fp39-pilgrim",
+          "name": "The Lower Rest"
+        },
+        {
+          "id": "cl39-fp39-shade",
+          "origin": "fp39-shade",
+          "name": "The Shade"
+        },
+        {
+          "id": "cl39-fp39-gate",
+          "origin": "fp39-gate",
+          "name": "The Sun Gate"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl39-fp39-line",
+          "origin": "fp39-line",
+          "name": "Line of Sun",
+          "slot": 6,
+          "grade": "B",
+          "evidence": "A tear crosses one thorn curtain to fault footing under two shutters. Beat already combines shutters with phase, glass and a longer route. Keep the two-mouth arrival timing if replacing this shorter reprise; it also hosts a secret doorway.",
+          "dependencies": {
+            "summary": "attached door/secret or socket, secret host",
+            "exit": "right",
+            "checkpoint": {
+              "c": 1,
+              "r": 16
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [
+              "secret-39"
+            ],
+            "doors": [
+              {
+                "edge": "up",
+                "cols": [
+                  1,
+                  2
+                ],
+                "to": "secret-39"
+              }
+            ],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 154,
+          "heldInputSegments": 10,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        },
+        {
+          "id": "cl39-fp39-panes",
+          "origin": "fp39-panes",
+          "name": "Panes",
+          "slot": 7,
+          "grade": "B",
+          "evidence": "Two panes, six phase tiles, six fault tiles and a tear, but no beam/shutter field. It repeats remapped dash parity after Low Light and Beat without making a light change matter. A bank replacement should restore a physical light/state consequence rather than merely add another pane.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 1,
+              "r": 17
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 113,
+          "heldInputSegments": 13,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    },
+    {
+      "id": 40,
+      "key": "f-sunspire",
+      "name": "The Fractured Palace",
+      "side": "fractured",
+      "authoredMainCount": 14,
+      "allDefinitionCount": 28,
+      "authoredOrder": [
+        "cl40-fs40-court",
+        "cl40-fs40-hours",
+        "cl40-fs40-ends",
+        "cl40-fs40-glass",
+        "cl40-fs40-garden",
+        "cl40-fs40-shade",
+        "cl40-fs40-flume",
+        "cl40-fs40-crown",
+        "cl40-fs40-engine",
+        "cl40-fs40-deliveries",
+        "cl40-fs40-dawn",
+        "cl40-fs40-morning",
+        "cl40-fs40-noon",
+        "cl40-fs40-sea"
+      ],
+      "historicalDifficultyScale": 10,
+      "historicalDifficulty": {
+        "min": null,
+        "max": null,
+        "mean": null
+      },
+      "lateMechanics": "Timed optics/phase/rope lanes, then three Day King fights and hydra return",
+      "lateRoomIds": [
+        "cl40-fs40-morning",
+        "cl40-fs40-noon",
+        "cl40-fs40-sea"
+      ],
+      "keep": [
+        {
+          "id": "cl40-fs40-court",
+          "origin": "fs40-court",
+          "name": "Sun Through Stone"
+        },
+        {
+          "id": "cl40-fs40-ends",
+          "origin": "fs40-ends",
+          "name": "Both Ends"
+        },
+        {
+          "id": "cl40-fs40-glass",
+          "origin": "fs40-glass",
+          "name": "Glass in the Dark"
+        },
+        {
+          "id": "cl40-fs40-flume",
+          "origin": "fs40-flume",
+          "name": "The Light’s Door"
+        },
+        {
+          "id": "cl40-fs40-crown",
+          "origin": "fs40-crown",
+          "name": "Ring Light"
+        },
+        {
+          "id": "cl40-fs40-engine",
+          "origin": "fs40-engine",
+          "name": "Noon Engine"
+        },
+        {
+          "id": "cl40-fs40-dawn",
+          "origin": "fs40-dawn",
+          "name": "The Throne at Dawn"
+        },
+        {
+          "id": "cl40-fs40-morning",
+          "origin": "fs40-morning",
+          "name": "The Glove of Morning"
+        },
+        {
+          "id": "cl40-fs40-noon",
+          "origin": "fs40-noon",
+          "name": "The Last Noon"
+        },
+        {
+          "id": "cl40-fs40-sea",
+          "origin": "fs40-sea",
+          "name": "The Sea Terrace"
+        }
+      ],
+      "candidates": [
+        {
+          "id": "cl40-fs40-hours",
+          "origin": "fs40-hours",
+          "name": "The Hours",
+          "slot": 2,
+          "grade": "B",
+          "evidence": "Four timed tears over thorn curtains onto six fault tiles; no beam, portal or phase field. It repeats the sequenced tear-clock family established in W33/W35. Keep the chapter opening synthesis in Court; this early reprise can be replaced by a fresh timing problem.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 1,
+              "r": 16
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 110,
+          "heldInputSegments": 10,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        },
+        {
+          "id": "cl40-fs40-deliveries",
+          "origin": "fs40-deliveries",
+          "name": "Two Deliveries",
+          "slot": 10,
+          "grade": "B",
+          "evidence": "Three folded lanes use fault footholds, shade and two connecting tears; no lantern, projectile, beam or portal remains. The saved route repeatedly performs low long launches from similar fault stones. This is a concrete repetitive-pattern candidate immediately before the boss, not a claim that its execution is easy.",
+          "dependencies": {
+            "summary": "no named quest/secret/bearing attachment detected in this room definition",
+            "exit": "right",
+            "checkpoint": {
+              "c": 1,
+              "r": 19
+            },
+            "questBranches": [],
+            "sideQuest": null,
+            "secretHosts": [],
+            "doors": [],
+            "bearing": null,
+            "people": [],
+            "entranceClosesWhilePlayed": false
+          },
+          "storedTapeFrames": 292,
+          "heldInputSegments": 25,
+          "historicalRating": null,
+          "recommendation": "Compare as a repeated-interaction slot; not a measured claim of low difficulty. Preserve the earlier introduction."
+        }
+      ],
+      "recommendation": "Use candidate slots first, with a separate checkpointed insertion where fewer than two responsible replacements exist. No superroom/finale assignment; preserve scaffolds and story hosts."
+    }
+  ]
+}

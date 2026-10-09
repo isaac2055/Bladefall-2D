@@ -1,0 +1,33 @@
+{
+  "version": "7.303.0",
+  "banked": 97,
+  "unchangedRoomDefinitionsAndRoutes": 95,
+  "unchangedPriorApprovals": 89,
+  "unchangedRuntime": 435,
+  "ordinaryAssigned": 87,
+  "worlds": 40,
+  "worldsWithTwo": 33,
+  "worldsWithThree": 7,
+  "superroomsReserved": [
+    "bank-b44",
+    "bank-b45",
+    "bank-b48",
+    "bank-b49",
+    "bank-b52",
+    "bank-b53",
+    "bank-f45",
+    "bank-f46",
+    "bank-f49",
+    "bank-f50"
+  ],
+  "cut": [
+    "bank-b60"
+  ],
+  "actionKitsChecked": true,
+  "prerequisiteOrderChecked": true,
+  "nativeWallbounceOrderChecked": true,
+  "existingMainRooms": 490,
+  "replacementReviewCandidates": 72,
+  "campaignImported": false,
+  "superroomsAssigned": false
+}

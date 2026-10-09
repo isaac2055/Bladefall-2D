@@ -30,12 +30,12 @@
       "#......................l.l.l.l.l.......#",
       "#.................................P...c#",
       "#......________..................YY....#",
-      "#BBBBBBBBBBBBBBBBBB....................#",
+      "#BBBBBBBBBBBBBBBBBBBBBB................#",
       "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#"
     ],
     "movement": "survive-2",
     "exit": "left",
-    "hint": "Dash Down-Right, Strike, then Jump Left · Catch a lantern; carry its shade, then leave its weight on brass.",
+    "hint": "Dash Down-Right, Strike, then Jump Left \u00b7 Catch a lantern; carry its shade, then leave its weight on brass.",
     "question": "When does the thing you must carry become the thing you must leave behind?",
     "cargoClasps": [
       {
@@ -79,9 +79,9 @@
   },
   "bank": {
     "side": "fractured",
-    "batch": 15,
+    "batch": 16,
     "run": 2,
-    "acceptance": "revised",
+    "acceptance": "banked",
     "difficulty": 5,
     "role": "momentum cargo transfer",
     "worlds": [
@@ -114,11 +114,11 @@
       "held-open",
       "foothold-spent"
     ],
-    "humanReview": "Requested three extra seed lanterns: two left of the existing pair and one right. All previous room geometry and mechanisms preserved; awaiting review.",
-    "solution": "Dash down-right toward the outside tally, and cut during the dash. The dash raises the shade over the beam and makes the western shore solid. Once the tally lights, jump left: the late reversal grace lets this follow the cut as a readable sequence. The spent launch tongue still disappears behind you. Catch any of the five suspended lanterns on the return, carry its shade across the second beam, and land on the widened western shore. Drop the lantern on the extended brass strip to hold the roof open, then climb the west wall empty-handed.",
+    "humanReview": "Approved conditionally after extending the receiving platform to the second beam; western phase-solid shore extended through column22 (32px added). Numeric ratings remain unmeasured.",
+    "solution": "Dash down-right toward the outside tally, and cut during the dash. The dash raises the shade over the beam and makes the western shore solid. Once the tally lights, jump left: the late reversal grace lets this follow the cut as a readable sequence. The spent launch tongue still disappears behind you. Catch any of the five suspended lanterns on the return, carry its shade across the second beam, and land on the western shore, now extended directly beneath the second beam. Drop the lantern on the extended brass strip to hold the roof open, then climb the west wall empty-handed.",
     "nearestExisting": "F31 supplies the committed reverse launch. B34 uses a lantern catch to keep upward dash speed, while Return Freight recovers cargo from a moving deck. Here a horizontal reverse arc must acquire its shade in flight, then surrender that same cargo as a lasting roof weight.",
     "novelty": "The outward/reverse commitment is now physical: a dash-operated shade permits the cut, and the spent footing removes the second launch setup. The return must then collect portable shade, cross a second beam, and turn that cargo into stationary weight so the knight can climb empty-handed.",
-    "designNotes": "The complete starting ceiling and its downward spikes are raised one 8-pixel tile (roughly half a knight), including the departure beam mount. Two lanterns replace the single center lantern: one tile left and one tile right of its former position. Both catches complete the same shade-to-weight puzzle, so an early or late Grab can succeed without changing the departure commitment. The two-grab target yields eleven consecutive successful Grab start times (10–20 frames after reversal) for the canonical delayed Strike/reversal; no shared movement changes.",
+    "designNotes": "The complete starting ceiling and its downward spikes are raised one 8-pixel tile (roughly half a knight), including the departure beam mount. Two lanterns replace the single center lantern: one tile left and one tile right of its former position. Both catches complete the same shade-to-weight puzzle, so an early or late Grab can succeed without changing the departure commitment. The two-grab target yields eleven consecutive successful Grab start times (10\u201320 frames after reversal) for the canonical delayed Strike/reversal; no shared movement changes.",
     "positiveChecks": [
       {
         "name": "Catch right lantern, Grab 10 frames after reversal",
@@ -1417,7 +1417,10 @@
       }
     ],
     "review": {
-      "revision15": "Added three clasp-held seed lanterns at columns 23, 25 and 31 around the existing columns 27 and 29; no other room geometry changed."
+      "revision15": "Added three clasp-held seed lanterns at columns 23, 25 and 31 around the existing columns 27 and 29; no other room geometry changed.",
+      "revision16": "User wrote B32; lantern/second-beam description unambiguously identifies F32. Extended receiving B platform row21 from column18 through column22, directly beneath beam column22; added32px of landing width. B32 untouched.",
+      "decision": "banked",
+      "date": "2026-10-09"
     }
   },
   "tape": [

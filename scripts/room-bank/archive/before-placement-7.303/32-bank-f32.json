@@ -1,0 +1,1469 @@
+{
+  "room": {
+    "id": "bank-f32",
+    "name": "Take the Shade With You",
+    "palette": "sunspire",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "map": [
+      "########################################",
+      "#G.............#########################",
+      "#G.............#########################",
+      "#G.............#########################",
+      "#G.............#########################",
+      "#G.............#########################",
+      "#G.............#########################",
+      "#G.............#########################",
+      ".G.............#########################",
+      ".G.............#########################",
+      ".G.............#########################",
+      "#HHHHHHHHHHHHHH#########################",
+      "#..............#########################",
+      "#..............####################B####",
+      "#..............vvvvvvvvvvvvvvvvvvvvvvvv#",
+      "#......................................#",
+      "#......................................#",
+      "#.............................AAAAA.AA.#",
+      "#......................l.l.l.l.l.......#",
+      "#.................................P...c#",
+      "#......________..................YY....#",
+      "#BBBBBBBBBBBBBBBBBB....................#",
+      "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#"
+    ],
+    "movement": "survive-2",
+    "exit": "left",
+    "hint": "Dash Down-Right, Strike, then Jump Left · Catch a lantern; carry its shade, then leave its weight on brass.",
+    "question": "When does the thing you must carry become the thing you must leave behind?",
+    "cargoClasps": [
+      {
+        "id": "A",
+        "c": 27,
+        "r": 18
+      },
+      {
+        "id": "B",
+        "c": 29,
+        "r": 18
+      },
+      {
+        "id": "Outer left",
+        "c": 23,
+        "r": 18
+      },
+      {
+        "id": "Inner left",
+        "c": 25,
+        "r": 18
+      },
+      {
+        "id": "Outer right",
+        "c": 31,
+        "r": 18
+      }
+    ],
+    "beams": [
+      {
+        "c": 22,
+        "r": 15,
+        "dir": "d"
+      },
+      {
+        "c": 35,
+        "r": 12,
+        "dir": "d"
+      }
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 15,
+    "run": 2,
+    "acceptance": "revised",
+    "difficulty": 5,
+    "role": "momentum cargo transfer",
+    "worlds": [
+      25,
+      34,
+      40
+    ],
+    "tags": [
+      "reverse-hyper",
+      "cargo-clasp",
+      "lantern",
+      "beam",
+      "held-door",
+      "regrab",
+      "spent-foothold",
+      "phase-shield"
+    ],
+    "newMechanics": [
+      "reverse-dash-jump"
+    ],
+    "entrance": "Small eastern launch perch beneath the phase cap.",
+    "exit": "Upper western chamber, above a pressure-held roof.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "reverse-hyper",
+      "clasp-take",
+      "pickup",
+      "throw",
+      "held-open",
+      "foothold-spent"
+    ],
+    "humanReview": "Requested three extra seed lanterns: two left of the existing pair and one right. All previous room geometry and mechanisms preserved; awaiting review.",
+    "solution": "Dash down-right toward the outside tally, and cut during the dash. The dash raises the shade over the beam and makes the western shore solid. Once the tally lights, jump left: the late reversal grace lets this follow the cut as a readable sequence. The spent launch tongue still disappears behind you. Catch any of the five suspended lanterns on the return, carry its shade across the second beam, and land on the widened western shore. Drop the lantern on the extended brass strip to hold the roof open, then climb the west wall empty-handed.",
+    "nearestExisting": "F31 supplies the committed reverse launch. B34 uses a lantern catch to keep upward dash speed, while Return Freight recovers cargo from a moving deck. Here a horizontal reverse arc must acquire its shade in flight, then surrender that same cargo as a lasting roof weight.",
+    "novelty": "The outward/reverse commitment is now physical: a dash-operated shade permits the cut, and the spent footing removes the second launch setup. The return must then collect portable shade, cross a second beam, and turn that cargo into stationary weight so the knight can climb empty-handed.",
+    "designNotes": "The complete starting ceiling and its downward spikes are raised one 8-pixel tile (roughly half a knight), including the departure beam mount. Two lanterns replace the single center lantern: one tile left and one tile right of its former position. Both catches complete the same shade-to-weight puzzle, so an early or late Grab can succeed without changing the departure commitment. The two-grab target yields eleven consecutive successful Grab start times (10–20 frames after reversal) for the canonical delayed Strike/reversal; no shared movement changes.",
+    "positiveChecks": [
+      {
+        "name": "Catch right lantern, Grab 10 frames after reversal",
+        "tape": [
+          [
+            5,
+            "rdx"
+          ],
+          [
+            8,
+            "rds"
+          ],
+          [
+            10,
+            "lj"
+          ],
+          [
+            2,
+            "ljg"
+          ],
+          [
+            57,
+            "l"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            35,
+            "l"
+          ],
+          [
+            150,
+            "lug"
+          ],
+          [
+            30,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 302,
+          "deaths": 0,
+          "events": [
+            "clasp-catch",
+            "phase",
+            "dash",
+            "ultra",
+            "strike",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "late-reverse",
+            "pickup",
+            "clasp-take",
+            "land",
+            "refill-dash",
+            "plate",
+            "held-open",
+            "throw",
+            "lantern-land",
+            "grab",
+            "climbhop",
+            "exit"
+          ],
+          "eventCounts": {
+            "clasp-catch": 2,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "strike": 1,
+            "stone-lit": 1,
+            "foothold-spent": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "late-reverse": 1,
+            "pickup": 1,
+            "clasp-take": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "plate": 8,
+            "held-open": 1,
+            "throw": 1,
+            "lantern-land": 1,
+            "grab": 1,
+            "climbhop": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Catch right lantern, Grab 12 frames after reversal",
+        "tape": [
+          [
+            5,
+            "rdx"
+          ],
+          [
+            8,
+            "rds"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            2,
+            "ljg"
+          ],
+          [
+            57,
+            "l"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            35,
+            "l"
+          ],
+          [
+            150,
+            "lug"
+          ],
+          [
+            30,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 302,
+          "deaths": 0,
+          "events": [
+            "clasp-catch",
+            "phase",
+            "dash",
+            "ultra",
+            "strike",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "late-reverse",
+            "pickup",
+            "clasp-take",
+            "land",
+            "refill-dash",
+            "plate",
+            "held-open",
+            "throw",
+            "lantern-land",
+            "grab",
+            "climbhop",
+            "exit"
+          ],
+          "eventCounts": {
+            "clasp-catch": 2,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "strike": 1,
+            "stone-lit": 1,
+            "foothold-spent": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "late-reverse": 1,
+            "pickup": 1,
+            "clasp-take": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "plate": 8,
+            "held-open": 1,
+            "throw": 1,
+            "lantern-land": 1,
+            "grab": 1,
+            "climbhop": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Catch right lantern, Grab 15 frames after reversal",
+        "tape": [
+          [
+            5,
+            "rdx"
+          ],
+          [
+            8,
+            "rds"
+          ],
+          [
+            15,
+            "lj"
+          ],
+          [
+            2,
+            "ljg"
+          ],
+          [
+            57,
+            "l"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            35,
+            "l"
+          ],
+          [
+            150,
+            "lug"
+          ],
+          [
+            30,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 301,
+          "deaths": 0,
+          "events": [
+            "clasp-catch",
+            "phase",
+            "dash",
+            "ultra",
+            "strike",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "late-reverse",
+            "pickup",
+            "clasp-take",
+            "land",
+            "refill-dash",
+            "plate",
+            "held-open",
+            "throw",
+            "lantern-land",
+            "grab",
+            "climbhop",
+            "exit"
+          ],
+          "eventCounts": {
+            "clasp-catch": 2,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "strike": 1,
+            "stone-lit": 1,
+            "foothold-spent": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "late-reverse": 1,
+            "pickup": 1,
+            "clasp-take": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "plate": 8,
+            "held-open": 1,
+            "throw": 1,
+            "lantern-land": 1,
+            "grab": 1,
+            "climbhop": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Catch left lantern, Grab 17 frames after reversal",
+        "tape": [
+          [
+            5,
+            "rdx"
+          ],
+          [
+            8,
+            "rds"
+          ],
+          [
+            17,
+            "lj"
+          ],
+          [
+            2,
+            "ljg"
+          ],
+          [
+            57,
+            "l"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            35,
+            "l"
+          ],
+          [
+            150,
+            "lug"
+          ],
+          [
+            30,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 301,
+          "deaths": 0,
+          "events": [
+            "clasp-catch",
+            "phase",
+            "dash",
+            "ultra",
+            "strike",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "late-reverse",
+            "pickup",
+            "clasp-take",
+            "land",
+            "refill-dash",
+            "plate",
+            "held-open",
+            "throw",
+            "lantern-land",
+            "grab",
+            "climbhop",
+            "exit"
+          ],
+          "eventCounts": {
+            "clasp-catch": 2,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "strike": 1,
+            "stone-lit": 1,
+            "foothold-spent": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "late-reverse": 1,
+            "pickup": 1,
+            "clasp-take": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "plate": 8,
+            "held-open": 1,
+            "throw": 1,
+            "lantern-land": 1,
+            "grab": 1,
+            "climbhop": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Catch left lantern, Grab 20 frames after reversal",
+        "tape": [
+          [
+            5,
+            "rdx"
+          ],
+          [
+            8,
+            "rds"
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            2,
+            "ljg"
+          ],
+          [
+            57,
+            "l"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            35,
+            "l"
+          ],
+          [
+            150,
+            "lug"
+          ],
+          [
+            30,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 301,
+          "deaths": 0,
+          "events": [
+            "clasp-catch",
+            "phase",
+            "dash",
+            "ultra",
+            "strike",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "late-reverse",
+            "pickup",
+            "clasp-take",
+            "land",
+            "refill-dash",
+            "plate",
+            "held-open",
+            "throw",
+            "lantern-land",
+            "grab",
+            "climbhop",
+            "exit"
+          ],
+          "eventCounts": {
+            "clasp-catch": 2,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "strike": 1,
+            "stone-lit": 1,
+            "foothold-spent": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "late-reverse": 1,
+            "pickup": 1,
+            "clasp-take": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "plate": 8,
+            "held-open": 1,
+            "throw": 1,
+            "lantern-land": 1,
+            "grab": 1,
+            "climbhop": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      }
+    ],
+    "route": {
+      "exited": true,
+      "frames": 301,
+      "deaths": 0,
+      "events": [
+        "clasp-catch",
+        "phase",
+        "dash",
+        "ultra",
+        "strike",
+        "stone-lit",
+        "foothold-spent",
+        "gate-open",
+        "hyper",
+        "reverse-hyper",
+        "late-reverse",
+        "pickup",
+        "clasp-take",
+        "land",
+        "refill-dash",
+        "plate",
+        "held-open",
+        "throw",
+        "lantern-land",
+        "grab",
+        "climbhop",
+        "exit"
+      ],
+      "eventCounts": {
+        "clasp-catch": 5,
+        "phase": 1,
+        "dash": 1,
+        "ultra": 1,
+        "strike": 1,
+        "stone-lit": 1,
+        "foothold-spent": 1,
+        "gate-open": 1,
+        "hyper": 1,
+        "reverse-hyper": 1,
+        "late-reverse": 1,
+        "pickup": 1,
+        "clasp-take": 1,
+        "land": 1,
+        "refill-dash": 1,
+        "plate": 8,
+        "held-open": 1,
+        "throw": 1,
+        "lantern-land": 1,
+        "grab": 1,
+        "climbhop": 1,
+        "exit": 1
+      },
+      "firstFailure": null
+    },
+    "shortcutChecks": [
+      {
+        "name": "Original successful ordinary-jump route",
+        "tape": [
+          [
+            1,
+            "rs"
+          ],
+          [
+            11,
+            "l"
+          ],
+          [
+            9,
+            "lj"
+          ],
+          [
+            12,
+            "lx"
+          ],
+          [
+            19,
+            "l"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            170,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 4,
+          "events": [
+            "clasp-catch",
+            "strike",
+            "jump",
+            "foothold-spent",
+            "phase",
+            "dash",
+            "death",
+            "lantern-lost",
+            "respawn"
+          ],
+          "eventCounts": {
+            "clasp-catch": 8,
+            "strike": 1,
+            "jump": 1,
+            "foothold-spent": 4,
+            "phase": 1,
+            "dash": 1,
+            "death": 4,
+            "lantern-lost": 6,
+            "respawn": 3
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 48,
+            "x": 183,
+            "y": 176,
+            "cause": "light",
+            "vx": -99.3333333333333,
+            "vy": 160,
+            "i": 47
+          }
+        }
+      },
+      {
+        "name": "Keep the launch but miss the cargo catch",
+        "tape": [
+          [
+            8,
+            "rdxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            160,
+            "l"
+          ],
+          [
+            150,
+            "lug"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 5,
+          "events": [
+            "clasp-catch",
+            "strike",
+            "phase",
+            "dash",
+            "ultra",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "death",
+            "lantern-lost",
+            "respawn"
+          ],
+          "eventCounts": {
+            "clasp-catch": 12,
+            "strike": 1,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "stone-lit": 1,
+            "foothold-spent": 5,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "death": 5,
+            "lantern-lost": 10,
+            "respawn": 5
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 31,
+            "x": 183,
+            "y": 151,
+            "cause": "light",
+            "vx": -229.66666666666688,
+            "vy": 112.5,
+            "i": 30
+          }
+        }
+      },
+      {
+        "name": "Carry the lantern rather than leave its weight",
+        "tape": [
+          [
+            8,
+            "rdxs"
+          ],
+          [
+            10,
+            "lj"
+          ],
+          [
+            2,
+            "ljg"
+          ],
+          [
+            57,
+            "l"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            65,
+            "l"
+          ],
+          [
+            160,
+            "lug"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 0,
+          "events": [
+            "clasp-catch",
+            "strike",
+            "phase",
+            "dash",
+            "ultra",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "pickup",
+            "clasp-take",
+            "land",
+            "refill-dash",
+            "plate",
+            "held-open",
+            "held-close",
+            "throw",
+            "grab",
+            "lantern-land"
+          ],
+          "eventCounts": {
+            "clasp-catch": 2,
+            "strike": 1,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "stone-lit": 1,
+            "foothold-spent": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "pickup": 1,
+            "clasp-take": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "plate": 8,
+            "held-open": 1,
+            "held-close": 1,
+            "throw": 1,
+            "grab": 1,
+            "lantern-land": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Carry past the brass strip and drop against the west wall",
+        "tape": [
+          [
+            13,
+            "rdxs"
+          ],
+          [
+            13,
+            "lj"
+          ],
+          [
+            2,
+            "ljg"
+          ],
+          [
+            115,
+            "l"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            150,
+            "lug"
+          ],
+          [
+            30,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 0,
+          "events": [
+            "clasp-catch",
+            "strike",
+            "phase",
+            "dash",
+            "ultra",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "late-reverse",
+            "pickup",
+            "clasp-take",
+            "land",
+            "refill-dash",
+            "plate",
+            "held-open",
+            "held-close",
+            "throw",
+            "grab",
+            "lantern-land"
+          ],
+          "eventCounts": {
+            "clasp-catch": 2,
+            "strike": 1,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "stone-lit": 1,
+            "foothold-spent": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "late-reverse": 1,
+            "pickup": 2,
+            "clasp-take": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "plate": 8,
+            "held-open": 1,
+            "held-close": 1,
+            "throw": 1,
+            "grab": 1,
+            "lantern-land": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Independent walk-cut-return then ordinary forward hyper",
+        "tape": [
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            10,
+            "l"
+          ],
+          [
+            6,
+            "ldx"
+          ],
+          [
+            8,
+            "lj"
+          ],
+          [
+            2,
+            "ljg"
+          ],
+          [
+            57,
+            "l"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            35,
+            "l"
+          ],
+          [
+            150,
+            "lug"
+          ],
+          [
+            30,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 5,
+          "events": [
+            "clasp-catch",
+            "death",
+            "foothold-spent",
+            "lantern-lost",
+            "respawn"
+          ],
+          "eventCounts": {
+            "clasp-catch": 12,
+            "death": 5,
+            "foothold-spent": 6,
+            "lantern-lost": 10,
+            "respawn": 5
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 5,
+            "x": 280,
+            "y": 155,
+            "cause": "light",
+            "vx": 83.33333333333334,
+            "vy": 0,
+            "i": 4
+          }
+        },
+        "before": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 297,
+          "events": [
+            "clasp-catch",
+            "strike",
+            "stone-lit",
+            "gate-open",
+            "phase",
+            "dash",
+            "ultra",
+            "hyper",
+            "pickup",
+            "clasp-take",
+            "land",
+            "refill-dash",
+            "plate",
+            "held-open",
+            "throw",
+            "lantern-land",
+            "grab",
+            "climbhop",
+            "exit"
+          ],
+          "eventCounts": {
+            "clasp-catch": 1,
+            "strike": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "hyper": 1,
+            "pickup": 1,
+            "clasp-take": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "plate": 4,
+            "held-open": 1,
+            "throw": 1,
+            "lantern-land": 1,
+            "grab": 1,
+            "climbhop": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        },
+        "beforeSource": "../run23-f3x-before-commitment.json"
+      },
+      {
+        "name": "Pre-toggle the beam shade downward before cutting and forward-hypering",
+        "tape": [
+          [
+            1,
+            "dx"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            6,
+            "ldx"
+          ],
+          [
+            8,
+            "lj"
+          ],
+          [
+            2,
+            "ljg"
+          ],
+          [
+            57,
+            "l"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            35,
+            "l"
+          ],
+          [
+            150,
+            "lug"
+          ],
+          [
+            30,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 5,
+          "events": [
+            "clasp-catch",
+            "phase",
+            "dash",
+            "refill-dash",
+            "foothold-spent",
+            "strike",
+            "stone-lit",
+            "gate-open",
+            "death",
+            "lantern-lost",
+            "respawn"
+          ],
+          "eventCounts": {
+            "clasp-catch": 12,
+            "phase": 2,
+            "dash": 2,
+            "refill-dash": 1,
+            "foothold-spent": 6,
+            "strike": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "death": 5,
+            "lantern-lost": 10,
+            "respawn": 5
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 35,
+            "x": 283,
+            "y": 158,
+            "cause": "light",
+            "vx": -169.70562748477138,
+            "vy": 169.70562748477138,
+            "i": 34
+          }
+        }
+      },
+      {
+        "name": "Walk-cut then coyote-jump back to recover the launch tongue",
+        "tape": [
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            6,
+            "ldx"
+          ],
+          [
+            8,
+            "lj"
+          ],
+          [
+            2,
+            "ljg"
+          ],
+          [
+            57,
+            "l"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            35,
+            "l"
+          ],
+          [
+            150,
+            "lug"
+          ],
+          [
+            30,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 1,
+          "events": [
+            "clasp-catch",
+            "death",
+            "foothold-spent",
+            "lantern-lost",
+            "respawn",
+            "phase",
+            "dash",
+            "super",
+            "pickup",
+            "clasp-take",
+            "land",
+            "refill-dash",
+            "plate",
+            "held-open",
+            "throw",
+            "lantern-land",
+            "grab"
+          ],
+          "eventCounts": {
+            "clasp-catch": 4,
+            "death": 1,
+            "foothold-spent": 2,
+            "lantern-lost": 2,
+            "respawn": 1,
+            "phase": 1,
+            "dash": 1,
+            "super": 1,
+            "pickup": 1,
+            "clasp-take": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "plate": 8,
+            "held-open": 1,
+            "throw": 1,
+            "lantern-land": 1,
+            "grab": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 5,
+            "x": 280,
+            "y": 155,
+            "cause": "light",
+            "vx": 83.33333333333334,
+            "vy": 0,
+            "i": 4
+          }
+        }
+      }
+    ],
+    "hintTeaching": "Strike can now follow the ground dash instead of sharing its exact frame. Once the right tally lights, hold Left and press Jump; a short grace accepts the reversal even just after the dash ends. Press Grab near the hanging lantern; the wider receiving floor and brass strip make the handoff unhurried.",
+    "revision": {
+      "date": "2026-10-09",
+      "archive": "scripts/room-bank/archive/run4-before-superrooms/fractured/32-bank-f32.json",
+      "latestChanges": "Raised full starting spike ceiling by 8 px and replaced the center lantern with two alternate catches, 8 px left and right."
+    },
+    "userFeedback": {
+      "date": "2026-10-09",
+      "comment": "Raise the whole initial spike ceiling about half a knight and replace one lantern with two, left and right, to make the catch more forgiving."
+    },
+    "feedbackHistory": [
+      {
+        "date": "2026-10-08",
+        "decision": "revise-forgiveness",
+        "comment": "Good design, but same too-hard reverse-cut mechanic as F31; make it easier to hit."
+      }
+    ],
+    "allowedAlternatives": [
+      {
+        "name": "Deposit near the eastern end of the widened brass strip",
+        "tape": [
+          [
+            8,
+            "rdxs"
+          ],
+          [
+            10,
+            "lj"
+          ],
+          [
+            2,
+            "ljg"
+          ],
+          [
+            39,
+            "l"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            60,
+            "l"
+          ],
+          [
+            160,
+            "lug"
+          ]
+        ],
+        "meaning": "This older off-strip probe is now a legitimate on-strip deposit after the pressure area was expanded."
+      }
+    ],
+    "review": {
+      "revision15": "Added three clasp-held seed lanterns at columns 23, 25 and 31 around the existing columns 27 and 29; no other room geometry changed."
+    }
+  },
+  "tape": [
+    [
+      5,
+      "rdx"
+    ],
+    [
+      8,
+      "rds"
+    ],
+    [
+      13,
+      "lj"
+    ],
+    [
+      2,
+      "ljg"
+    ],
+    [
+      57,
+      "l"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      1,
+      "dg"
+    ],
+    [
+      30,
+      ""
+    ],
+    [
+      35,
+      "l"
+    ],
+    [
+      150,
+      "lug"
+    ],
+    [
+      30,
+      "l"
+    ]
+  ]
+}

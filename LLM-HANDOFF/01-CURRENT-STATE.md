@@ -1,3 +1,15 @@
+## 7.303.0: Bank complete; 40-world allocation analyzed (2026-10-09)
+
+All final approvals are handled. B60 is cut/archived. User’s “B32” lantern description identifies F32; its receiving phase platform extends 32px to the second beam and is banked. B32 stays unchanged. F59 has an ordinary reusable runway and a 24px higher overhead beam with a shorter west tip. A genuine wavedash route and preparatory jump/relanding pass; original reverse-hyper also still works. F59 is banked. Total **97 approved (54 Base /43 Fractured)**, nothing pending. Menu defaults to Banked.
+
+**Analysis only:** all 87 non-superrooms are assigned exactly once across 40 actual Survive worlds (Base 1–20, Fractured 21–40). Every world gets2–3; third rooms go to 8/11/12/14/15/17/19. B56→21 and B57→26 use the user-approved early-Fractured alternatives, without changing saved bank.side. Existing 10 superrooms remain unassigned; no new superrooms, campaign imports/cuts, checkpoint changes or finale shortfall calculation. Last slot in each world is reserved for a later superroom decision.
+
+Primary plan: docs/room-bank/WORLD-PLACEMENT-7.303.md; authoritative allocation: docs/room-bank/world-placement-7.303.json. Source inventory: docs/room-bank/WORLD-INVENTORY-7.303.md and world-inventory-7.303.json, covering 490 authored main rooms and 72 replacement-review candidates (14 limited-challenge,58 repetition candidates). Do not treat that shortlist as72 approved cuts. Preserve tutorials, quest/secret links, bosses, breathers and narrative exits. Retire early filler separately from locating additions later, after required teaching.
+
+Native curriculum correction: World 21 B56/F40;23 B46/F23;24 F59/F60 after native wallbounce lessons;26 B57/F34. F61’s obsolete B60 preparation is replaced in the plan by F33/F28. F41 remains an explicit user-approved Base 14 reverse-super teaching exception. Every proposed bank/native prerequisite and action kit is checked. Numeric difficulty distribution still needs human tests; old campaign /10 ratings are not the current /5 scale.
+
+Checks:97 canonical completions,412 positive variations,262 shortcut probes; focused F32/F59 browser routes/UI/camera pass. placement-check.mjs preserves 95 room definitions/tapes,89 prior approval records and 435 runtime/campaign sources; verifies all 87 IDs,40 quotas, actual candidate IDs and prerequisite order. Result: docs/room-bank/placement-7.303-audit.json. Version7.303.0/cachev468-room-bank-placement; catalog batch16. All further imports/finale work await a new user instruction. Earlier entries are historical.
+
 ## 7.302.0: Final review after all-room feedback (2026-10-09)
 
 39 new approvals are banked at the requested Base/Fractured difficulty bands, bringing the bank to **89 (51 Base / 38 Fractured)**. Eight side transfers preserve stable IDs. F62 is archived/removed. Active pool **98 (55 / 43)**; exactly nine revisions remain: **B24/B58/B59/B60/F24/F25/F32/F45/F59**. Room Bank now opens to **Final review**, with **Banked** beside it; approved superrooms retain their labels. No new rooms or campaign imports.

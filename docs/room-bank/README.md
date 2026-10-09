@@ -1,8 +1,10 @@
-# Room bank — current final review
+# Room bank — approved pool and placement plan
 
-The 7.302 update has **89 approved rooms (51 Base / 38 Fractured)** and **nine revisions (4 Base / 5 Fractured)**. F62 is removed from the active pool. Open **Extras → Room Bank → Final review** for the remaining rooms; **Banked** holds the approved reserve with qualitative placement notes. No campaign imports are included.
+The 7.303 update has **97 approved rooms (54 Base / 43 Fractured)** and no pending reviews. B60 and F62 are removed from play and archived. Open **Extras → Room Bank → Banked** locally, or use the direct bank links in the plan. All existing side labels and human feedback remain recorded.
 
-See [the current guide](FINAL-REVIEW-7.302.md) for decisions, changes and release evidence. Historical run guides below describe their original sets and may contain superseded counts or approval status.
+The [40-world placement plan](WORLD-PLACEMENT-7.303.md) assigns all 87 ordinary rooms exactly once, with 2–3 per world. Existing superrooms remain reserved for a separate finale pass. This update does not import rooms into the campaign. [Final fixes and approvals](FINAL-APPROVALS-7.303.md).
+
+Historical guides below retain their original counts and review status.
 
 ---
 

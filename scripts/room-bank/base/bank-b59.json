@@ -239,7 +239,7 @@
     "run": 7,
     "collection": "run7",
     "format": "extended",
-    "acceptance": "revised",
+    "acceptance": "banked",
     "status": "route-proven",
     "difficulty": 4,
     "author": "Codex",
@@ -264,7 +264,7 @@
     "prerequisites": [
       "bank-b58"
     ],
-    "humanReview": "Rebuilt after human feedback; unreviewed revised candidate. Difficulty is an author estimate, not a human rating.",
+    "humanReview": "User approved the final revision (all remaining rooms pass except B60; F32/F59 have separate conditional edits). Numeric ratings remain unmeasured.",
     "solution": "Leave the starting shelf to catch the west seam. Descend toward the first fixed knot, then jump outward, fall past it and re-grab fresh patches below while the lower shuttle is away. Descend to the underpass and walljump right; dash horizontally through the rightward refill, then dash up-right beyond the pier to catch the east seam. Climb through its refill. Jump away from the second fixed knot and dash back above it onto fresh wall patches. Read the returning upper shuttle before climbing to the eastern lip and exiting. The solid central pier and sealed backs prevent a direct or outer-wall ascent.",
     "nearestExisting": "Replaces the former two-wall B59 and its accessible outer side. Unlike F60\u2019s upward alternation between whole faces, this room first descends around a fixed obstacle and later ascends around another, returning to untouched portions of each same wall. A solid central pier forces a low dash/refill transfer between them.",
     "novelty": "The same patch rule supports opposite movement problems: release and fall around one knot, then jump away and regain height around the other.",
@@ -861,6 +861,10 @@
       "reportedBypasses": [],
       "reproductionNote": "The exact human rightmost-wall input sequence was not reproduced. The new layout explicitly removes access to those outer faces; a direct jump/dash toward the far outer wall is recorded and fails at the visible thorned pier."
     },
-    "designNotes": "Per-patch spending is opt-in through segment:4; approved F59/F60 keep whole-face behavior. Each backing body remains solid. Only touched patches arm, and visible geometry/hazards enforce routing; no hidden action-event gate is used. Stationary thorns and moving patrols have no drawn path guides."
+    "designNotes": "Per-patch spending is opt-in through segment:4; approved F59/F60 keep whole-face behavior. Each backing body remains solid. Only touched patches arm, and visible geometry/hazards enforce routing; no hidden action-event gate is used. Stationary thorns and moving patrols have no drawn path guides.",
+    "finalApproval20261009": {
+      "decision": "banked",
+      "comment": "Final revision accepted."
+    }
   }
 }

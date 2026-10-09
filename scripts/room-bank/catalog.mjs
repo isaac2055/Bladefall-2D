@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 export const catalog=JSON.parse(readFileSync(new URL('./catalog.json',import.meta.url),'utf8'));
 export function bankGroups(activeRun=catalog.activeRun){
+ if(catalog.defaultGroup==='banked')return ['banked'];
  if(catalog.defaultGroup==='pending')return ['pending','banked'];
  const runs=Array.from({length:activeRun},(_,i)=>'run'+(activeRun-i));
  return [...runs.filter(x=>+x.slice(3)>=5),'superrooms',...runs.filter(x=>+x.slice(3)<5),'review','banked'];

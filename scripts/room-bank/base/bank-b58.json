@@ -245,7 +245,7 @@
     "run": 7,
     "collection": "run7",
     "format": "compact",
-    "acceptance": "revised",
+    "acceptance": "banked",
     "status": "route-proven",
     "difficulty": 4,
     "author": "Codex",
@@ -267,7 +267,7 @@
       "bank-b59"
     ],
     "prerequisites": [],
-    "humanReview": "Rebuilt after human feedback; unreviewed revised candidate. Difficulty is an author estimate, not a human rating.",
+    "humanReview": "User approved the final revision (all remaining rooms pass except B60; F32/F59 have separate conditional edits). Numeric ratings remain unmeasured.",
     "solution": "Jump the first fixed knot and brake onto the first landing before the vertical needle. Let the needle move away, then cross into the narrow landing before the second knot. Jump that knot to the far landing and cut the tally while the looping patrol travels away. On the return, land between the patches spent outbound: first beyond the second knot, then in the middle gap, then just right of the first knot. Rise vertically before crossing that knot; brake onto the untouched patch beyond the old starting trail. The last jump clears those original footprints and reaches the open exit. Only the small patches actually touched become dangerous.",
     "nearestExisting": "Replaces the former switch-and-walk B58. F59/F60 still spend entire marked faces; this room instead uses small persistent footprints, making the same floor a different return puzzle. The fixed knots determine launch shape and the two moving routes constrain when those shapes are safe.",
     "novelty": "Outbound movement manufactures the lethal pattern that the return must solve; untouched gaps retain their exact physical locations.",
@@ -1085,6 +1085,10 @@
       "reportedBypasses": [],
       "reproductionNote": "The prior canonical 380-frame route itself demonstrates the reported trivial tally-and-walk structure; the complaint was lack of consequence rather than a separate exact-input shortcut."
     },
-    "designNotes": "Per-patch spending is opt-in through segment:4; approved F59/F60 keep whole-face behavior. Each backing body remains solid. Only touched patches arm, and visible geometry/hazards enforce routing; no hidden action-event gate is used. Stationary thorns and moving patrols have no drawn path guides."
+    "designNotes": "Per-patch spending is opt-in through segment:4; approved F59/F60 keep whole-face behavior. Each backing body remains solid. Only touched patches arm, and visible geometry/hazards enforce routing; no hidden action-event gate is used. Stationary thorns and moving patrols have no drawn path guides.",
+    "finalApproval20261009": {
+      "decision": "banked",
+      "comment": "Final revision accepted."
+    }
   }
 }
