@@ -1,0 +1,745 @@
+{
+  "room": {
+    "id": "bank-f47",
+    "name": "Spend the Return",
+    "palette": "foundry",
+    "study": true,
+    "movement": "survive-2",
+    "aim8": true,
+    "cols": 40,
+    "rows": 23,
+    "exit": "right",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "hint": "Dash down into the pod. Its return carries you up; spend the new dash, then cut the bell.",
+    "question": "What must you spend before the return can put a floor beneath you?",
+    "map": [
+      "########################################",
+      "#..........##..........................#",
+      "#..........##..........................#",
+      "#..........##...........................",
+      "#..........##.......x...................",
+      "#..........##...........................",
+      "#..........##...........................",
+      "#..........##AAAAAAAAAAAAAAA############",
+      "#..........##..............<############",
+      "#..........##..............<############",
+      "#..........##..............<############",
+      "#..........##..............<############",
+      "#..........##..............<############",
+      "#..........##..............<############",
+      "#..........................<############",
+      "#..........................<############",
+      "#...................R......<############",
+      "#..................###.....<############",
+      "#...P......................<############",
+      "############^^^^^^^^^^^^^^^<############",
+      "########################################",
+      "########################################",
+      "########################################"
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 13,
+    "run": 5,
+    "collection": "run5",
+    "format": "compact",
+    "acceptance": "banked",
+    "difficulty": 4,
+    "role": "Use the pod’s upward return to pass a phase ceiling, then restore its landing",
+    "worlds": [],
+    "tags": [
+      "pressure-pod",
+      "phase",
+      "blade",
+      "return-trajectory",
+      "dash-resource"
+    ],
+    "newMechanics": [],
+    "status": "route-proven",
+    "author": "Codex",
+    "humanReview": "Approved for middle Base. Numeric player ratings remain unmeasured.",
+    "requiredEvents": [
+      "recoil",
+      "bell"
+    ],
+    "solution": "Jump and dash under the western partition onto the small pod island. Stop there and line up above the pod. Jump, then dash down into it: the pod reverses the dash into a stronger upward throw and returns the spent dash. Use that fresh dash upward while still rising; this removes the high phase ceiling so you can pass through it. Cut upward at the bell to restore the same surface beneath you. Land on the broad bridge and walk along the safe eastern gallery.",
+    "nearestExisting": "F34 combines a wallbounce and an aerial phase bell. Here a down-dash first buys an upward pressure-pod return and a fresh dash; that returned resource must then open the ceiling during the rise. The original western-pillar route and the ordinary jump-dash from the pod island both bypassed this idea and are now saved as successful-before/failing-after regressions.",
+    "novelty": "The direction reversal and returned dash solve different parts of the same crossing: the pod supplies height, the next dash removes the ceiling, and the blade restores the landing. The clear downward entry replaces the former hard-to-read diagonal approach.",
+    "positiveChecks": [
+      {
+        "name": "Enter the pod two frames earlier",
+        "tape": [
+          [
+            32,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            12,
+            "dx"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            20,
+            "ux"
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            120,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 256,
+          "events": [
+            "jump",
+            "phase",
+            "dash",
+            "land",
+            "refill-dash",
+            "recoil",
+            "strike",
+            "bell",
+            "recoil-back",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "phase": 4,
+            "dash": 3,
+            "land": 2,
+            "refill-dash": 3,
+            "recoil": 1,
+            "strike": 1,
+            "bell": 1,
+            "recoil-back": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Enter the pod two frames later",
+        "tape": [
+          [
+            32,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            16,
+            "j"
+          ],
+          [
+            12,
+            "dx"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            20,
+            "ux"
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            120,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 260,
+          "events": [
+            "jump",
+            "phase",
+            "dash",
+            "land",
+            "refill-dash",
+            "recoil",
+            "strike",
+            "bell",
+            "recoil-back",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "phase": 4,
+            "dash": 3,
+            "land": 2,
+            "refill-dash": 3,
+            "recoil": 1,
+            "strike": 1,
+            "bell": 1,
+            "recoil-back": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Cut the bell four frames later",
+        "tape": [
+          [
+            32,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            14,
+            "j"
+          ],
+          [
+            12,
+            "dx"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            24,
+            "ux"
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            120,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 261,
+          "events": [
+            "jump",
+            "phase",
+            "dash",
+            "land",
+            "refill-dash",
+            "recoil",
+            "strike",
+            "bell",
+            "recoil-back",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "phase": 4,
+            "dash": 3,
+            "land": 2,
+            "refill-dash": 3,
+            "recoil": 1,
+            "strike": 1,
+            "bell": 1,
+            "recoil-back": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Climb the western pillar and jump-dash across",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            10,
+            "j"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            12,
+            "rg"
+          ],
+          [
+            90,
+            "ug"
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            15,
+            "rx"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "before": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 280,
+          "events": [
+            "jump",
+            "phase",
+            "dash",
+            "grab",
+            "climbhop",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "phase": 2,
+            "dash": 2,
+            "grab": 1,
+            "climbhop": 1,
+            "land": 2,
+            "refill-dash": 2,
+            "exit": 1
+          }
+        },
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 289,
+          "events": [
+            "jump",
+            "phase",
+            "dash",
+            "grab",
+            "walljump",
+            "land",
+            "refill-dash",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "phase": 1,
+            "dash": 1,
+            "grab": 1,
+            "walljump": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "death": 1,
+            "respawn": 1
+          }
+        }
+      },
+      {
+        "name": "Jump and dash up from the pod island, without touching the pod",
+        "tape": [
+          [
+            32,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            7,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            15,
+            "j"
+          ],
+          [
+            15,
+            "ux"
+          ],
+          [
+            30,
+            "rg"
+          ],
+          [
+            40,
+            "ug"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "before": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 265,
+          "events": [
+            "jump",
+            "phase",
+            "dash",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "phase": 2,
+            "dash": 2,
+            "land": 1,
+            "refill-dash": 2,
+            "exit": 1
+          }
+        },
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 293,
+          "events": [
+            "jump",
+            "phase",
+            "dash",
+            "land",
+            "refill-dash",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "phase": 2,
+            "dash": 2,
+            "land": 1,
+            "refill-dash": 1,
+            "death": 2,
+            "respawn": 2
+          }
+        }
+      },
+      {
+        "name": "Spend the return but leave the bridge absent",
+        "tape": [
+          [
+            32,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            14,
+            "j"
+          ],
+          [
+            12,
+            "dx"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            20,
+            "ux"
+          ],
+          [
+            1,
+            "u"
+          ],
+          [
+            120,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 262,
+          "events": [
+            "jump",
+            "phase",
+            "dash",
+            "land",
+            "refill-dash",
+            "recoil",
+            "recoil-back",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "phase": 3,
+            "dash": 3,
+            "land": 1,
+            "refill-dash": 2,
+            "recoil": 1,
+            "recoil-back": 1,
+            "death": 1,
+            "respawn": 1
+          }
+        }
+      }
+    ],
+    "approvedIngredients": [
+      "bank-f34",
+      "bank-b32"
+    ],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 257,
+      "events": [
+        "jump",
+        "phase",
+        "dash",
+        "land",
+        "refill-dash",
+        "recoil",
+        "strike",
+        "bell",
+        "recoil-back",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 2,
+        "phase": 4,
+        "dash": 3,
+        "land": 2,
+        "refill-dash": 3,
+        "recoil": 1,
+        "strike": 1,
+        "bell": 1,
+        "recoil-back": 1,
+        "exit": 1
+      }
+    },
+    "entrance": "Lower-west shelf, underneath the phase crossing.",
+    "exit": "Broad upper-east gallery.",
+    "endingForgiveness": "The island is a grounded staging point, and the receiving bridge is fifteen tiles wide before the full safe exit gallery. Pod entry works two frames earlier and later; the bell cut also works four frames later. There is no final catch after landing.",
+    "review": {
+      "reportedBypasses": [
+        {
+          "name": "Climb the western pillar and jump-dash across",
+          "tape": [
+            [
+              26,
+              "r"
+            ],
+            [
+              10,
+              "j"
+            ],
+            [
+              12,
+              "ux"
+            ],
+            [
+              12,
+              "rg"
+            ],
+            [
+              90,
+              "ug"
+            ],
+            [
+              24,
+              "rj"
+            ],
+            [
+              15,
+              "rx"
+            ],
+            [
+              100,
+              "r"
+            ]
+          ],
+          "originalFrames": 280,
+          "originalDeaths": 0
+        },
+        {
+          "name": "Jump and dash up from the pod island, without touching the pod",
+          "tape": [
+            [
+              32,
+              "r"
+            ],
+            [
+              12,
+              "rj"
+            ],
+            [
+              12,
+              "rx"
+            ],
+            [
+              7,
+              "r"
+            ],
+            [
+              20,
+              ""
+            ],
+            [
+              15,
+              "j"
+            ],
+            [
+              15,
+              "ux"
+            ],
+            [
+              30,
+              "rg"
+            ],
+            [
+              40,
+              "ug"
+            ],
+            [
+              110,
+              "r"
+            ]
+          ],
+          "originalFrames": 265,
+          "originalDeaths": 0
+        }
+      ]
+    },
+    "designNotes": "The western partition now meets the ceiling. The phase bridge is higher and extends back to that partition, removing the old climb-over route and the exposed bridge edge reachable by an ordinary island jump. Both actually successful shortcuts were reproduced on the archived source.",
+    "placementBand": "middle Base",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "middle Base",
+      "geometryPreserved": true
+    },
+    "reclassifiedFrom": "fractured"
+  },
+  "tape": [
+    [
+      32,
+      "r"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      12,
+      "rx"
+    ],
+    [
+      5,
+      "r"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      14,
+      "j"
+    ],
+    [
+      12,
+      "dx"
+    ],
+    [
+      14,
+      ""
+    ],
+    [
+      20,
+      "ux"
+    ],
+    [
+      1,
+      "us"
+    ],
+    [
+      120,
+      "r"
+    ]
+  ]
+}

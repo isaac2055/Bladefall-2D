@@ -53,7 +53,7 @@
   "bank": {
     "side": "base",
     "batch": 3,
-    "acceptance": "revised",
+    "acceptance": "banked",
     "difficulty": 4,
     "role": "solve",
     "worlds": [
@@ -301,7 +301,14 @@
       "scope": "Focused wrong-timing route and obvious shortcut review; not an exhaustive search.",
       "result": "The premature departure burns after the pier removes its own shade. A brief low grab followed by the direct lower approach did not reach the tally; the safe return uses the lower roof below the beam."
     },
-    "archivedBeforeRevision": "scripts/room-bank/archive/batch-03-before-review/base/bank-b18.json"
+    "archivedBeforeRevision": "scripts/room-bank/archive/batch-03-before-review/base/bank-b18.json",
+    "placementBand": "middle Base",
+    "humanReview": "Approved for middle Base. Numeric player ratings remain unmeasured.",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "middle Base",
+      "geometryPreserved": true
+    }
   },
   "tape": [
     [

@@ -106,7 +106,7 @@
     "batch": 14,
     "run": 7,
     "collection": "run7",
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "status": "route-proven",
     "difficulty": 4,
     "role": "Maintain a low launch through an airborne reply",
@@ -120,7 +120,7 @@
     ],
     "newMechanics": [],
     "author": "Codex",
-    "humanReview": "Unreviewed candidate. Difficulty is an author estimate; no human ratings assigned.",
+    "humanReview": "Approved for late Fractured. Numeric player ratings remain unmeasured.",
     "learningFamily": "reply-and-cycle",
     "lessonRole": "combine",
     "preparesFor": [],
@@ -677,7 +677,13 @@
         "x": 166,
         "y": 136
       }
-    ]
+    ],
+    "placementBand": "late Fractured",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "late Fractured",
+      "geometryPreserved": true
+    }
   },
   "tape": [
     [

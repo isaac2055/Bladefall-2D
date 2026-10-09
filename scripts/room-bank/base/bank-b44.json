@@ -92,7 +92,7 @@
         "dir": "d"
       }
     ],
-    "hint": "Send the lantern through the vent \u00b7 Follow beneath; reclaim it for the upper return.",
+    "hint": "Send the lantern through the vent · Follow beneath; reclaim it for the upper return.",
     "question": "How does your travelling shade become the key to its own return journey?"
   },
   "bank": {
@@ -100,7 +100,7 @@
     "batch": 10,
     "run": 4,
     "collection": "superrooms",
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "status": "route-proven",
     "difficulty": 4,
     "role": "interconnected superroom",
@@ -119,7 +119,7 @@
     ],
     "newMechanics": [],
     "author": "Codex",
-    "humanReview": "Unmeasured; author estimate only.",
+    "humanReview": "Approved for Base superroom. Numeric player ratings remain unmeasured.",
     "requiredEvents": [
       "recoil-jump",
       "pickup",
@@ -1110,7 +1110,13 @@
       }
     ],
     "designNotes": "The pressure gate blocks the knight underneath the same conveyor that transports its weight. Reclaiming that weight closes the old route, sending the shared lantern up the eastern lift and back above the previous journey. Long trips have safe staging floors; the main execution is choosing when to leave each rising recoil support and maintaining shade during the return jumps. Static room geometry and beam/cargo collisions determine access; the exit has no invisible device-use receipt.",
-    "interconnection": "A folded circuit uses the same lantern for lift loading, outgoing shade, remote door weight and returning shade; the return passes above the apparatus that separated knight and cargo. The cargo duct and gate run above/below one another. The return route crosses back over both outgoing machinery stages."
+    "interconnection": "A folded circuit uses the same lantern for lift loading, outgoing shade, remote door weight and returning shade; the return passes above the apparatus that separated knight and cargo. The cargo duct and gate run above/below one another. The return route crosses back over both outgoing machinery stages.",
+    "placementBand": "Base superroom",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "Base superroom",
+      "geometryPreserved": true
+    }
   },
   "tape": [
     [

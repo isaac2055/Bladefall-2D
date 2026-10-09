@@ -76,7 +76,7 @@
   "bank": {
     "side": "fractured",
     "batch": 4,
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "difficulty": 5,
     "role": "timing-puzzle",
     "worlds": [
@@ -96,7 +96,7 @@
     ],
     "status": "route-proven",
     "author": "Codex",
-    "humanReview": "Author difficulty estimate only; fun/difficulty/suitability ratings pending.",
+    "humanReview": "Approved for early–middle Fractured. Numeric player ratings remain unmeasured.",
     "entrance": "High western takeoff.",
     "exit": "High eastern gate beyond the second ring.",
     "solution": "Catch the first ring and shorten the chain to wait above the horizontal sweep. After the thorns pass the tally and continue away, pay out the chain, collect it, then haul back to the short safe hang. Watch the vertical patrol between rings; release and dash toward the second ring while its crossing is clear. Reel in again, then launch to the high exit.",
@@ -290,7 +290,13 @@
           }
         }
       }
-    ]
+    ],
+    "placementBand": "early–middle Fractured",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "early–middle Fractured",
+      "geometryPreserved": true
+    }
   },
   "tape": [
     [

@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 export const catalog=JSON.parse(readFileSync(new URL('./catalog.json',import.meta.url),'utf8'));
 export function bankGroups(activeRun=catalog.activeRun){
+ if(catalog.defaultGroup==='pending')return ['pending','banked'];
  const runs=Array.from({length:activeRun},(_,i)=>'run'+(activeRun-i));
  return [...runs.filter(x=>+x.slice(3)>=5),'superrooms',...runs.filter(x=>+x.slice(3)<5),'review','banked'];
 }
@@ -17,7 +18,7 @@ export function assertBatch(records){
  assert.equal(records.length,catalog.retained.length+quotas.base+quotas.fractured,'Active bank size');
  assert.deepEqual(records.filter(x=>x.bank.batch!==catalog.activeBatch).map(x=>x.room.id).sort(),[...catalog.retained].sort(),'Only explicitly retained earlier rooms belong in the bank');
  for(const side of ['base','fractured'])assert.equal(fresh.filter(x=>x.bank.side===side).length,quotas[side],`${side}: current batch count`);
- if(catalog.reviewCycle)assert.deepEqual(fresh.map(x=>({id:x.room.id,side:x.bank.side,run:x.bank.run,acceptance:x.bank.acceptance})).sort((a,b)=>a.id.localeCompare(b.id)),[...catalog.reviewRecords].sort((a,b)=>a.id.localeCompare(b.id)),'Every requested revision and variant belongs to its original run and correct side');
+ if(catalog.reviewCycle)assert.deepEqual(fresh.map(x=>({id:x.room.id,side:x.bank.side,run:x.bank.run??null,acceptance:x.bank.acceptance})).sort((a,b)=>a.id.localeCompare(b.id)),[...catalog.reviewRecords].sort((a,b)=>a.id.localeCompare(b.id)),'Every requested revision and variant belongs to its original run and correct side');
  if(catalog.activeRun&&!catalog.reviewCycle)for(const x of fresh)assert.equal(x.bank.run,catalog.activeRun,`${x.room.id}: active run`);
  for(const req of catalog.newTechRequirements||[])assert.ok(fresh.filter(x=>x.bank.side===req.side&&x.bank.newMechanics.includes(req.tag)&&x.room.movement==='survive-2').length>=req.minimum,`${req.side}: at least ${req.minimum} ${req.tag} rooms with the new movement profile`);
  for(const req of catalog.newEntityRequirements||[])assert.ok(fresh.filter(x=>x.bank.side===req.side&&x.bank.newMechanics.includes(req.tag)&&x.room[req.field]?.length).length>=req.minimum,`${req.side}: at least ${req.minimum} ${req.tag} entity rooms`);

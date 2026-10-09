@@ -46,7 +46,7 @@
   "bank": {
     "side": "fractured",
     "batch": 3,
-    "acceptance": "revised",
+    "acceptance": "banked",
     "difficulty": 4,
     "role": "solve",
     "worlds": [
@@ -78,7 +78,7 @@
     "solution": "Drop into the lower service passage and jump onto the temporary foothold. Jump left from it, then dash straight up into the plug. The foothold disappears and the stone parks as a canopy above the exit. Return left, climb to the void entrance and dash through; use its exit jump grace to bridge the thorned receiving shaft.",
     "nearestExisting": "bv4 Rock Behind puts a static obstruction behind void. pw2 Stone Through Stone relocates a sliding stone into useful terrain. Here the obstruction must be serviced from its underside before entering an unsteerable route, and its new position still has to shield the receiving space.",
     "novelty": "Preparation consumes its own launch height. The moved plug still shelters the receiving shaft, but the spent foothold means the lower service passage cannot simply become the final ascent.",
-    "humanReview": "Author difficulty estimate only; ratings pending.",
+    "humanReview": "Approved for early–middle Fractured. Numeric player ratings remain unmeasured.",
     "route": {
       "frames": 602,
       "deaths": 0,
@@ -174,6 +174,12 @@
         }
       },
       "verifiedAt": "2026-10-07"
+    },
+    "placementBand": "early–middle Fractured",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "early–middle Fractured",
+      "geometryPreserved": true
     }
   },
   "tape": [

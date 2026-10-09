@@ -1,13 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "bladefall-2d",
-  "main": "cloudflare/worker.js",
-  "compatibility_date": "2026-10-09",
-  "assets": {
-    "directory": "./public",
-    "binding": "ASSETS",
-    "run_worker_first": ["/api/*", "/.netlify/functions/*"]
-  },
-  "durable_objects": {"bindings": [{"name": "PLAYTEST", "class_name": "PlaytestStore"}]},
-  "migrations": [{"tag": "v1", "new_sqlite_classes": ["PlaytestStore"]}]
+  "name": "bladefall2d",
+  "pages_build_output_dir": "./public",
+  "compatibility_date": "2026-10-09"
 }

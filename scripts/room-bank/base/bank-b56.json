@@ -81,7 +81,7 @@
     "run": 7,
     "collection": "run7",
     "format": "compact",
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "status": "route-proven",
     "difficulty": 3,
     "author": "Codex",
@@ -106,7 +106,7 @@
       "bank-f58"
     ],
     "prerequisites": [],
-    "humanReview": "Awaiting playtest; route evidence does not establish enjoyment or human difficulty.",
+    "humanReview": "Approved for late Base; early Fractured alternative. Numeric player ratings remain unmeasured.",
     "entrance": "Western stone dock level with the hanging freight ring.",
     "exit": "Eastern ledge beyond the raised thorned stone.",
     "solution": "Jump from the dock and catch the moving ring. Reel in while boarding, then pay out as the thorn approaches along the short-rope lane. Hold below its path until it has passed left. Reel back up before the raised stone reaches your feet. Pump right near the eastern rail turn, jump free, and dash up-right onto the exit ledge.",
@@ -553,7 +553,13 @@
           }
         }
       }
-    ]
+    ],
+    "placementBand": "late Base; early Fractured alternative",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "late Base; early Fractured alternative",
+      "geometryPreserved": true
+    }
   },
   "tape": [
     [

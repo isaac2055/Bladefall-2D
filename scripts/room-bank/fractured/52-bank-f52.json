@@ -54,7 +54,7 @@
     "run": 6,
     "collection": "run6",
     "format": "compact",
-    "acceptance": "revised",
+    "acceptance": "banked",
     "status": "route-proven",
     "difficulty": 4,
     "role": "Set the seed’s height on one floor and launch from the other",
@@ -72,7 +72,7 @@
     ],
     "newMechanics": [],
     "author": "Codex",
-    "humanReview": "Unreviewed; difficulty is an author estimate.",
+    "humanReview": "Approved for early–middle Fractured. Numeric player ratings remain unmeasured.",
     "requiredEvents": [
       "impulse-prime",
       "gravity",
@@ -693,6 +693,12 @@
         "impulse-reset": 1,
         "exit": 1
       }
+    },
+    "placementBand": "early–middle Fractured",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "early–middle Fractured",
+      "geometryPreserved": true
     }
   },
   "tape": [

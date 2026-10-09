@@ -52,7 +52,7 @@
     "run": 6,
     "collection": "run6",
     "format": "compact",
-    "acceptance": "revised",
+    "acceptance": "banked",
     "status": "route-proven",
     "difficulty": 3,
     "role": "Turn the delivery portal into the physical stop that parks its own cargo",
@@ -70,7 +70,7 @@
     ],
     "newMechanics": [],
     "author": "Codex",
-    "humanReview": "User liked the concept and requested deliberate portal relinking in place of the automatic clearing line. Revised version awaits review.",
+    "humanReview": "Approved for middle Base. Numeric player ratings remain unmeasured.",
     "requiredEvents": [
       "portal-open",
       "portal-pass",
@@ -312,6 +312,12 @@
       "original": "scripts/room-bank/archive/before-run56-feedback/base/bank-b50.json",
       "changes": "Removed automatic grill; added small upper portal surface and deliberate receiving-mouth relocation.",
       "date": "2026-10-09"
+    },
+    "placementBand": "middle Base",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "middle Base",
+      "geometryPreserved": true
     }
   },
   "tape": [

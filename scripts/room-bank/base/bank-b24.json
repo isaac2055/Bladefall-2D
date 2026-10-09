@@ -10,39 +10,39 @@
     ],
     "map": [
       "########################################",
-      "#.....................................H#",
-      "#.....................................H#",
-      "#.....................................H#",
-      "#.....................................H#",
-      "#.....................................H#",
-      "#..P.l................................H#",
-      "########..............................H#",
-      "########>.............................H#",
-      "########>.............................H#",
-      "########>.............................H#",
-      "########>.............................H#",
-      "########>.............................H#",
-      "########>........#####................H#",
-      "########>........#####................H#",
-      "########>.......<#####>...............H#",
-      "########>.......<#####>...............H#",
-      "########>.......<#####>...............H.",
-      "########>.......<#####>...............H.",
-      "########>.......<#####>............_..H.",
-      "########>.......<#####>...........######",
-      "########.^^^^^^^^^^^^^^^^^^^^^^^^^######",
+      "#...........................########..H#",
+      "#...........................########..H#",
+      "#...........................########..H#",
+      "#...........................########..H#",
+      "#...........................########..H#",
+      "#..P.l......................########..H#",
+      "########....................########..H#",
+      "########>...................########..H#",
+      "########>...................########..H#",
+      "########>...................########..H#",
+      "########>....................#######..H#",
+      "########>........................._#..H#",
+      "########>........#####...###########..H.",
+      "########>........#####...#######......H.",
+      "########>.......<#####................H.",
+      "########>.......<#####................H.",
+      "########>.......<#####.............#####",
+      "########>.......<#####............<#####",
+      "########>.......<#####............<#####",
+      "########>.......<#####.......b....<#####",
+      "########^^^^^^^^^^^^^^^^^^^^^^^^^<<#####",
       "########################################"
     ],
     "beams": [
       {
-        "c": 31,
+        "c": 12,
         "r": 0,
         "dir": "d"
       }
     ],
     "sweepers": [
       {
-        "id": "drop",
+        "id": "Drop",
         "path": [
           [
             12,
@@ -54,42 +54,37 @@
           ]
         ],
         "period": 200,
-        "phase": 10
+        "phase": 10,
+        "radius": 4
       },
       {
-        "id": "circuit",
+        "id": "Departure",
         "path": [
           [
-            24,
-            14.5
+            33,
+            12
           ],
           [
-            29,
-            14.5
-          ],
-          [
-            29,
-            19.5
-          ],
-          [
-            24,
-            19.5
+            33,
+            20
           ]
         ],
-        "period": 220,
-        "phase": 70,
-        "loop": true
+        "period": 180,
+        "phase": 0,
+        "radius": 4
       }
     ],
-    "hint": "Carrying the lantern slows your fall, but leaves no dash to correct the timing. Both stone shelves are safe.",
-    "question": "Where will the thorn be when your slower fall reaches its path?"
+    "hint": "Freight fits the low slot. Send the lantern ahead, then take the blade route beneath it.",
+    "question": "When the lantern takes the upper opening, how can you cross underneath its delivery?",
+    "movement": "survive-2",
+    "showHintAtRest": true
   },
   "bank": {
     "side": "base",
-    "batch": 4,
-    "acceptance": "candidate",
+    "batch": 15,
+    "acceptance": "revised",
     "difficulty": 4,
-    "role": "timing",
+    "role": "Deliver shade through a freight-only opening, then use a timed blade route underneath",
     "worlds": [
       11,
       19,
@@ -101,198 +96,789 @@
       "cargo",
       "glide",
       "lantern-shade",
-      "plate"
+      "plate",
+      "pogo",
+      "separate-routes"
     ],
     "newMechanics": [],
-    "entrance": "Safe west observation bay.",
-    "exit": "East landing.",
+    "entrance": "High western cargo shelf; observe the descending first thorn.",
+    "exit": "Eastern shelf beyond the held door, reached from below the freight housing.",
     "status": "route-proven",
     "author": "Codex",
     "requiredEvents": [
       "pickup",
+      "throw",
       "plate",
-      "held-open"
+      "held-open",
+      "pod",
+      "dash"
     ],
-    "humanReview": "Author difficulty estimate; fun/difficulty/suitability pending.",
-    "solution": "Take the lantern and wait until the first thorn descends into its lower arc. Walk off and glide behind it to the middle pier. Let the second patrol clear the upper side of its square loop before the longer second drop. Keep the lantern to shade the vertical beam, land on the far shelf, and release it over the plate to hold the final door.",
-    "nearestExisting": "The Long Way First routes cargo by an echo and a long glide; Return Freight requires catching moving shade. Here the cargo is held throughout two slow, committed falls, so the timing must account for future intersection instead of the hazard being clear right now.",
-    "novelty": "Carrying removes the dash that could rescue a mistimed crossing. The second drop begins from a safe pier but has a different fall distance and patrol period; an early departure that clears the beginning can still meet the returning thorn at the far side.",
+    "humanReview": "Revised after the user found the original too easy. Fun, difficulty and suitability await human review; numeric difficulty remains an author estimate.",
+    "solution": "Take the lantern, wait for the first thorn to descend, and glide through the overhead beam to the middle island. Throw right from the island lip: the lantern lands in the feeder and slides through a low cargo-only slot onto the plate, holding the exit. Move down beside the feeder wall and release the horizontal input long enough to fall below its underside. Dash right toward the pod and cut down when the dash ends. The rebound restores the dash under the solid roof; clear the roof edge and dash up-right behind the low returning thorn into the far bank.",
+    "nearestExisting": "The original B24 was two ordinary lantern glides separated by broad safe shelves. This revision preserves its first committed shade descent but changes the middle island into a dispatch point: the cargo takes the upper slot, while the knight spends and recovers a dash beneath it. F58 also separates cargo and player briefly, but recatches the lantern in flight; here the lantern stays delivered and physically holds the door.",
+    "novelty": "The lantern changes jobs from mobile shade to a remote door weight. Its eight-pixel freight opening excludes the knight, and the full-height freight housing prevents an upper jump/dash escape. The lower pod is a continuation resource, not a bonus beside an already-complete route.",
     "timing": {
-      "principle": "Read where a patrol will be during a slow cargo descent, not only at takeoff.",
+      "principle": "The cargo goes ahead while the knight takes a lower resource-carrying phrase.",
       "stages": [
         {
-          "cue": "The first thorn descends into the lower half of its route.",
-          "action": "Leave the high shelf carrying the lantern and glide to the middle pier.",
-          "rest": "Middle pier, outside both patrol paths."
+          "cue": "Leave the first shelf when the vertical thorn moves down away from the glide.",
+          "action": "Glide behind the first thorn with carried shade.",
+          "rest": "Middle dispatch island."
         },
         {
-          "cue": "The loop patrol leaves the upper crossing and turns down the far side.",
-          "action": "Commit to the longer glide, shade the beam, and land with the cargo.",
-          "rest": "Exit loading shelf."
+          "cue": "After the delivery, let the near thorn descend below the lower departure lane before dropping.",
+          "action": "Deliver cargo, drop below its housing, dash to the rebound and use the returned dash to finish.",
+          "rest": "Exit shelf."
         }
       ]
     },
+    "shortcutChecks": [
+      {
+        "name": "Ordinary jump and dash from the island after delivery",
+        "tape": [
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            82,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            100,
+            "rgu"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0,
+          "frames": null,
+          "events": [
+            "pickup",
+            "land",
+            "throw",
+            "lantern-land",
+            "plate",
+            "held-open",
+            "jump",
+            "dash",
+            "grab"
+          ],
+          "eventCounts": {
+            "pickup": 1,
+            "land": 1,
+            "throw": 1,
+            "lantern-land": 1,
+            "plate": 1,
+            "held-open": 1,
+            "jump": 1,
+            "dash": 1,
+            "grab": 1
+          }
+        }
+      },
+      {
+        "name": "Use the upper freight lip then jump-dash around it",
+        "tape": [
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            82,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            90,
+            "rgu"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0,
+          "frames": null,
+          "events": [
+            "pickup",
+            "land",
+            "throw",
+            "lantern-land",
+            "plate",
+            "held-open",
+            "jump",
+            "dash",
+            "grab"
+          ],
+          "eventCounts": {
+            "pickup": 1,
+            "land": 1,
+            "throw": 1,
+            "lantern-land": 1,
+            "plate": 1,
+            "held-open": 1,
+            "jump": 1,
+            "dash": 1,
+            "grab": 1
+          }
+        }
+      },
+      {
+        "name": "Keep cargo while attempting the lower route",
+        "tape": [
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            82,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            51,
+            ""
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            4,
+            "ds"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            70,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": null,
+          "events": [
+            "pickup",
+            "land",
+            "death",
+            "lantern-lost",
+            "respawn"
+          ],
+          "eventCounts": {
+            "pickup": 1,
+            "land": 1,
+            "death": 1,
+            "lantern-lost": 1,
+            "respawn": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 306,
+            "x": 266,
+            "y": 166,
+            "cause": "spikes",
+            "vx": 90,
+            "vy": 45,
+            "i": 305
+          }
+        }
+      },
+      {
+        "name": "Leave before the lower patrol clears",
+        "tape": [
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            82,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            4,
+            "ds"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            70,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": null,
+          "events": [
+            "pickup",
+            "land",
+            "throw",
+            "lantern-land",
+            "plate",
+            "held-open",
+            "dash",
+            "strike",
+            "pogo-low",
+            "refill-dash",
+            "pod",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "pickup": 1,
+            "land": 1,
+            "throw": 1,
+            "lantern-land": 1,
+            "plate": 1,
+            "held-open": 1,
+            "dash": 1,
+            "strike": 1,
+            "pogo-low": 1,
+            "refill-dash": 1,
+            "pod": 1,
+            "death": 2,
+            "respawn": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 227,
+            "x": 261,
+            "y": 129,
+            "cause": "sweeper",
+            "vx": 90,
+            "vy": 67.5,
+            "i": 226
+          }
+        }
+      }
+    ],
+    "positiveChecks": [
+      {
+        "name": "First glide two frames later",
+        "tape": [
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            42,
+            ""
+          ],
+          [
+            82,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            4,
+            "ds"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            70,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 315,
+          "events": [
+            "pickup",
+            "land",
+            "throw",
+            "lantern-land",
+            "plate",
+            "held-open",
+            "dash",
+            "strike",
+            "pogo-low",
+            "refill-dash",
+            "pod",
+            "exit"
+          ],
+          "eventCounts": {
+            "pickup": 1,
+            "land": 2,
+            "throw": 1,
+            "lantern-land": 1,
+            "plate": 1,
+            "held-open": 1,
+            "dash": 2,
+            "strike": 1,
+            "pogo-low": 1,
+            "refill-dash": 2,
+            "pod": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Drop two frames later",
+        "tape": [
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            82,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            52,
+            ""
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            4,
+            "ds"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            70,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 315,
+          "events": [
+            "pickup",
+            "land",
+            "throw",
+            "lantern-land",
+            "plate",
+            "held-open",
+            "dash",
+            "strike",
+            "pogo-low",
+            "refill-dash",
+            "pod",
+            "exit"
+          ],
+          "eventCounts": {
+            "pickup": 1,
+            "land": 2,
+            "throw": 1,
+            "lantern-land": 1,
+            "plate": 1,
+            "held-open": 1,
+            "dash": 2,
+            "strike": 1,
+            "pogo-low": 1,
+            "refill-dash": 2,
+            "pod": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Cut one frame later",
+        "tape": [
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            82,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            13,
+            "rx"
+          ],
+          [
+            4,
+            "ds"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            70,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 313,
+          "events": [
+            "pickup",
+            "land",
+            "throw",
+            "lantern-land",
+            "plate",
+            "held-open",
+            "dash",
+            "strike",
+            "pogo-low",
+            "refill-dash",
+            "pod",
+            "exit"
+          ],
+          "eventCounts": {
+            "pickup": 1,
+            "land": 2,
+            "throw": 1,
+            "lantern-land": 1,
+            "plate": 1,
+            "held-open": 1,
+            "dash": 2,
+            "strike": 1,
+            "pogo-low": 1,
+            "refill-dash": 2,
+            "pod": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "review": {
+      "request": "The user found this room too easy and requested more consequential timing and problem solving.",
+      "sourceBefore": "scripts/room-bank/archive/before-final-review-7.302/base/bank-b24.json",
+      "revision": "Spiced-up route for 7.302 review; no approval inferred.",
+      "scope": "One canonical route, three meaningful input variants, and focused active ordinary-route/timing attempts. No exhaustive shortcut search or invisible exit-event gates."
+    },
+    "learningFamily": "cargo-route-separation",
+    "lessonRole": "combine",
+    "timingCues": [
+      "Leave the first shelf when the vertical thorn moves down away from the glide.",
+      "After the delivery, let the near thorn descend below the lower departure lane before dropping.",
+      "Release Right beside the feeder so the knight falls below its underside before dashing toward the pod."
+    ],
+    "format": "compact",
+    "prerequisites": [],
+    "preparesFor": [],
     "route": {
-      "frames": 353,
+      "exited": true,
       "deaths": 0,
+      "frames": 313,
       "events": [
         "pickup",
         "land",
-        "plate",
-        "held-open",
         "throw",
         "lantern-land",
+        "plate",
+        "held-open",
+        "dash",
+        "strike",
+        "pogo-low",
+        "refill-dash",
+        "pod",
         "exit"
       ],
-      "movement": "Ordinary jump, dash, grab and device actions; no advanced momentum exploit."
+      "eventCounts": {
+        "pickup": 1,
+        "land": 2,
+        "throw": 1,
+        "lantern-land": 1,
+        "plate": 1,
+        "held-open": 1,
+        "dash": 2,
+        "strike": 1,
+        "pogo-low": 1,
+        "refill-dash": 2,
+        "pod": 1,
+        "exit": 1
+      }
     },
-    "shortcutChecks": [
+    "actualMovementEvents": [
+      "pickup",
+      "land",
+      "throw",
+      "lantern-land",
+      "plate",
+      "held-open",
+      "dash",
+      "strike",
+      "pogo-low",
+      "refill-dash",
+      "pod",
+      "exit"
+    ],
+    "routeMovement": [
       {
-        "name": "Remove both observation waits",
-        "tape": [
-          [
-            8,
-            "r"
-          ],
-          [
-            1,
-            "g"
-          ],
-          [
-            82,
-            "r"
-          ],
-          [
-            20,
-            ""
-          ],
-          [
-            79,
-            "r"
-          ],
-          [
-            20,
-            ""
-          ],
-          [
-            1,
-            "dg"
-          ],
-          [
-            15,
-            ""
-          ],
-          [
-            35,
-            "r"
-          ]
-        ],
-        "after": {
-          "exited": false,
-          "deaths": 2
-        }
+        "type": "pickup",
+        "frame": 9,
+        "i": 8
       },
       {
-        "name": "Leave the middle pier immediately",
-        "tape": [
-          [
-            8,
-            "r"
-          ],
-          [
-            1,
-            "g"
-          ],
-          [
-            40,
-            ""
-          ],
-          [
-            82,
-            "r"
-          ],
-          [
-            20,
-            ""
-          ],
-          [
-            79,
-            "r"
-          ],
-          [
-            20,
-            ""
-          ],
-          [
-            1,
-            "dg"
-          ],
-          [
-            15,
-            ""
-          ],
-          [
-            35,
-            "r"
-          ]
-        ],
-        "after": {
-          "exited": false,
-          "deaths": 1
-        }
+        "type": "throw",
+        "frame": 156,
+        "dir": 1,
+        "i": 155
       },
       {
-        "name": "Attempt the same route without carrying shade",
-        "tape": [
-          [
-            8,
-            "r"
-          ],
-          [
-            1,
-            ""
-          ],
-          [
-            40,
-            ""
-          ],
-          [
-            82,
-            "r"
-          ],
-          [
-            20,
-            ""
-          ],
-          [
-            60,
-            ""
-          ],
-          [
-            79,
-            "r"
-          ],
-          [
-            20,
-            ""
-          ],
-          [
-            1,
-            "d"
-          ],
-          [
-            15,
-            ""
-          ],
-          [
-            35,
-            "r"
-          ]
-        ],
-        "after": {
-          "exited": false,
-          "deaths": 2
-        }
+        "type": "plate",
+        "frame": 188,
+        "x": 276,
+        "y": 102,
+        "i": 187
+      },
+      {
+        "type": "pogo-low",
+        "frame": 259,
+        "x": 233,
+        "y": 148,
+        "vy": -135,
+        "i": 258
       }
     ]
   },
@@ -318,27 +904,43 @@
       ""
     ],
     [
-      60,
-      ""
-    ],
-    [
-      79,
+      4,
       "r"
     ],
     [
-      20,
+      1,
+      "g"
+    ],
+    [
+      50,
       ""
     ],
     [
-      1,
-      "dg"
+      25,
+      "r"
+    ],
+    [
+      14,
+      ""
+    ],
+    [
+      12,
+      "rx"
+    ],
+    [
+      4,
+      "ds"
     ],
     [
       15,
-      ""
+      "r"
     ],
     [
-      35,
+      12,
+      "rux"
+    ],
+    [
+      70,
       "r"
     ]
   ]

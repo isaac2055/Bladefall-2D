@@ -79,7 +79,7 @@
     "batch": 14,
     "run": 7,
     "collection": "run7",
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "status": "route-proven",
     "difficulty": 3,
     "role": "Store launch energy while a ceiling becomes passable",
@@ -94,7 +94,7 @@
     ],
     "newMechanics": [],
     "author": "Codex",
-    "humanReview": "Unreviewed candidate. Difficulty is an author estimate; no human ratings assigned.",
+    "humanReview": "Approved for late Base; early Fractured alternative. Numeric player ratings remain unmeasured.",
     "learningFamily": "reply-and-cycle",
     "lessonRole": "develop",
     "preparesFor": [
@@ -521,7 +521,13 @@
         "vx": 56.66666666666667,
         "vy": -225
       }
-    ]
+    ],
+    "placementBand": "late Base; early Fractured alternative",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "late Base; early Fractured alternative",
+      "geometryPreserved": true
+    }
   },
   "tape": [
     [

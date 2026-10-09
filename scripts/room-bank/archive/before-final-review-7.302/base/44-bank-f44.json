@@ -1,0 +1,1221 @@
+{
+  "room": {
+    "id": "bank-f44",
+    "name": "Take the Moving Passenger",
+    "palette": "cliffs",
+    "study": true,
+    "movement": "survive-2",
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "exit": "right",
+    "movingHooks": [
+      {
+        "id": "Freight",
+        "c": 10,
+        "r": 12,
+        "w": 6,
+        "to": [
+          15,
+          0
+        ],
+        "period": 420
+      }
+    ],
+    "beams": [
+      {
+        "c": 34,
+        "r": 0,
+        "dir": "d"
+      },
+      {
+        "c": 37,
+        "r": 0,
+        "dir": "d"
+      },
+      {
+        "c": 39,
+        "r": 0,
+        "dir": "d"
+      }
+    ],
+    "map": [
+      "########################################",
+      "#..............########.................",
+      "#..............########.................",
+      "#..............########.................",
+      "#..............########.................",
+      "#..............########.................",
+      "#..............########.................",
+      "#..............########.................",
+      "#..............########.................",
+      "#..............########.................",
+      "#..............########.................",
+      "#..............l.................<######",
+      "#................................<######",
+      "#................................<######",
+      "#................................<######",
+      "#....P...........................<######",
+      "#########........................<######",
+      "#########........................<######",
+      "#########........................<######",
+      "#########........................<######",
+      "#########........................<######",
+      "#########^^^^^^^^^^^^^^^^^^^^^^^^<######",
+      "########################################"
+    ],
+    "hint": "Ride below the roof \u00b7 Swing beyond the cargo edge, Jump free, then Updash and hold Grab to rise with it.",
+    "question": "How can you take the passenger without making the train stop?",
+    "showHintAtRest": true
+  },
+  "bank": {
+    "side": "base",
+    "batch": 9,
+    "run": 4,
+    "acceptance": "banked",
+    "difficulty": 4,
+    "role": "moving cargo rendezvous",
+    "worlds": [
+      16,
+      18,
+      20
+    ],
+    "tags": [
+      "moving-hook",
+      "cargo-dash-catch",
+      "rope-length",
+      "beam-shield",
+      "moving-cargo"
+    ],
+    "newMechanics": [
+      "moving-hook",
+      "cargo-dash-catch"
+    ],
+    "composition": {
+      "movement": "Cargo dash catch",
+      "entity": "Moving hook carrier",
+      "dependency": "The lantern travels on the carrier above a roofed passage while the knight rides below. Taking it during the upward dash preserves the rise needed to reach the sunlit exit."
+    },
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "moving-hook",
+      "moving-unhook",
+      "cargo-dash-catch"
+    ],
+    "humanReview": "Qualitative user approval; numeric ratings remain unmeasured.",
+    "entrance": "Lower west bank beneath the loaded carriage.",
+    "exit": "Raised eastern gallery crossed by three sun shafts.",
+    "solution": "Catch the freight ring and reel in below the low roof. The lantern fits above the carriage; the knight does not. As the train emerges, pay out and pump toward its cargo edge. Jump free during the rising outward swing, dash straight up beside the platform, and hold Grab after starting the dash. The moving lantern ends the burst while retaining its full upward speed. Steer right on the carrying glide and keep the pack above the knight through the sun shafts.",
+    "nearestExisting": "B38 loads a carriage and retrieves its cargo from a stationary dock. Run 4 B43 also has a stationary pickup. Here the freight never parks its cargo: rope length, a live edge rendezvous, and the new velocity-preserving catch replace docking. The wide receiving shelf keeps the final landing forgiving.",
+    "novelty": "The moving platform simultaneously carries the required shade above the route and the knight below it. Departure changes attachment from its rope to its moving cargo, and the act of catching supplies the usable vertical continuation.",
+    "designNotes": "The roof has exactly cargo clearance, so riding on top is not the intended passage. The far ledge is broad and the catch is possible across several nearby swing/ride/release timings. Grab can be held shortly after starting the upward dash; it does not demand one particular catch frame. No hidden technique-name gate.",
+    "positiveChecks": [
+      {
+        "name": "Train ride 126",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            126,
+            "ug"
+          ],
+          [
+            22,
+            "rdg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            13,
+            "ug"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 261,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "pickup",
+            "cargo-dash-catch",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "pickup": 1,
+            "cargo-dash-catch": 1,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Train ride 128",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            128,
+            "ug"
+          ],
+          [
+            22,
+            "rdg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            13,
+            "ug"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 264,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "pickup",
+            "cargo-dash-catch",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "pickup": 1,
+            "cargo-dash-catch": 1,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Train ride 130",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            130,
+            "ug"
+          ],
+          [
+            22,
+            "rdg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            13,
+            "ug"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 265,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "pickup",
+            "cargo-dash-catch",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "pickup": 1,
+            "cargo-dash-catch": 1,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Rope payout 20",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            125,
+            "ug"
+          ],
+          [
+            20,
+            "rdg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            13,
+            "ug"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 259,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "pickup",
+            "cargo-dash-catch",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "pickup": 1,
+            "cargo-dash-catch": 1,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Rope payout 24",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            125,
+            "ug"
+          ],
+          [
+            24,
+            "rdg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            13,
+            "ug"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 263,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "pickup",
+            "cargo-dash-catch",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "pickup": 1,
+            "cargo-dash-catch": 1,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Rising swing 21",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            125,
+            "ug"
+          ],
+          [
+            22,
+            "rdg"
+          ],
+          [
+            21,
+            "rg"
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            13,
+            "ug"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 261,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "pickup",
+            "cargo-dash-catch",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "pickup": 1,
+            "cargo-dash-catch": 1,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Release before dash 8",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            125,
+            "ug"
+          ],
+          [
+            22,
+            "rdg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            13,
+            "ug"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 262,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "pickup",
+            "cargo-dash-catch",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "pickup": 1,
+            "cargo-dash-catch": 1,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Release before dash 9",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            125,
+            "ug"
+          ],
+          [
+            22,
+            "rdg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            9,
+            "rj"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            13,
+            "ug"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 262,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "pickup",
+            "cargo-dash-catch",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "pickup": 1,
+            "cargo-dash-catch": 1,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Hold Grab 2 frames after Dash",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            125,
+            "ug"
+          ],
+          [
+            22,
+            "rdg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            2,
+            "ux"
+          ],
+          [
+            12,
+            "ug"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 260,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "pickup",
+            "cargo-dash-catch",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "pickup": 1,
+            "cargo-dash-catch": 1,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Hold Grab 6 frames after Dash",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            125,
+            "ug"
+          ],
+          [
+            22,
+            "rdg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            6,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 260,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "pickup",
+            "cargo-dash-catch",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "pickup": 1,
+            "cargo-dash-catch": 1,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Hold Grab 10 frames after Dash",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            125,
+            "ug"
+          ],
+          [
+            22,
+            "rdg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            10,
+            "ux"
+          ],
+          [
+            4,
+            "ug"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 260,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "pickup",
+            "cargo-dash-catch",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "pickup": 1,
+            "cargo-dash-catch": 1,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Release and dash upward without retrieving cargo",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            125,
+            "ug"
+          ],
+          [
+            22,
+            "rdg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            13,
+            "u"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "moving-hook-turn",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "moving-hook-turn": 1,
+            "death": 2,
+            "respawn": 2
+          }
+        }
+      },
+      {
+        "name": "Let go of the rope and try the direct diagonal dash",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            125,
+            "ug"
+          ],
+          [
+            22,
+            "rdg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            13,
+            "rux"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 3,
+          "frames": 0,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "death": 3,
+            "respawn": 2
+          }
+        }
+      },
+      {
+        "name": "Take the low carrying pickup after the upward burst expires",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            125,
+            "ug"
+          ],
+          [
+            22,
+            "rdg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            22,
+            "ux"
+          ],
+          [
+            5,
+            "g"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "moving-hook-turn",
+            "pickup",
+            "death",
+            "lantern-lost",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "moving-hook-turn": 1,
+            "pickup": 1,
+            "death": 2,
+            "lantern-lost": 1,
+            "respawn": 2
+          }
+        }
+      }
+    ],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 260,
+      "events": [
+        "jump",
+        "hook",
+        "moving-hook",
+        "moving-unhook",
+        "unhook",
+        "dash",
+        "pickup",
+        "cargo-dash-catch",
+        "moving-hook-turn",
+        "land",
+        "refill-dash",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 2,
+        "hook": 1,
+        "moving-hook": 1,
+        "moving-unhook": 1,
+        "unhook": 1,
+        "dash": 1,
+        "pickup": 1,
+        "cargo-dash-catch": 1,
+        "moving-hook-turn": 1,
+        "land": 1,
+        "refill-dash": 1,
+        "exit": 1
+      }
+    },
+    "tolerance": {
+      "note": "18 successful full-route variations sampled one input at a time around the saved route; multiple ride, swing, release and Grab choices retained."
+    },
+    "review": {
+      "decision": "banked",
+      "comment": "Bank as a harder Base-game level."
+    },
+    "feedbackHistory": [
+      {
+        "decision": "banked-base",
+        "comment": "Bank as a harder Base-game level."
+      }
+    ],
+    "reclassifiedFrom": "fractured",
+    "reclassificationReason": "Bank as a harder Base-game level."
+  },
+  "tape": [
+    [
+      10,
+      "r"
+    ],
+    [
+      12,
+      "rjg"
+    ],
+    [
+      125,
+      "ug"
+    ],
+    [
+      22,
+      "rdg"
+    ],
+    [
+      20,
+      "rg"
+    ],
+    [
+      7,
+      "rj"
+    ],
+    [
+      1,
+      "ux"
+    ],
+    [
+      13,
+      "ug"
+    ],
+    [
+      150,
+      "r"
+    ]
+  ]
+}

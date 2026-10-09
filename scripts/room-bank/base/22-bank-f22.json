@@ -1,0 +1,372 @@
+{
+  "room": {
+    "id": "bank-f22",
+    "name": "The Return Window",
+    "palette": "foundry",
+    "study": true,
+    "exit": "left",
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "map": [
+      "########################################",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......##########################......#",
+      "#......................................#",
+      "#..P...........................c.......#",
+      "#######YYYYYYYYYYY######...######......#",
+      "#.................######...######>.....#",
+      "#.................###############>.....#",
+      "#.................###############>.....#",
+      "#.................###############>.....#",
+      "#..G..............###############>.....#",
+      "#..G.............................>.....#",
+      "...G...................................#",
+      "...G...................................#",
+      "...G...................................#",
+      "######################...###############",
+      "######################...###############",
+      "########################################"
+    ],
+    "hint": "The pale bridge disappears behind you. The recessed pockets lie outside the moving thorns’ paths.",
+    "question": "The crossing out and the crossing back look similar. Which way will the next pass be moving?",
+    "sweepers": [
+      {
+        "id": "A",
+        "path": [
+          [
+            8,
+            9
+          ],
+          [
+            31,
+            9
+          ]
+        ],
+        "period": 300,
+        "phase": 150,
+        "radius": 4,
+        "loop": false
+      },
+      {
+        "id": "B",
+        "path": [
+          [
+            7,
+            18
+          ],
+          [
+            35,
+            18
+          ]
+        ],
+        "period": 340,
+        "phase": 60,
+        "radius": 5,
+        "loop": false
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 4,
+    "acceptance": "banked",
+    "difficulty": 4,
+    "role": "timing-puzzle",
+    "worlds": [
+      26,
+      34,
+      40
+    ],
+    "tags": [
+      "timing",
+      "sweeper",
+      "spent-foothold",
+      "return-route"
+    ],
+    "newMechanics": [
+      "sweeper"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "humanReview": "Approved for early Base, above B21. Numeric player ratings remain unmeasured.",
+    "entrance": "Upper western shelf.",
+    "exit": "Lower western gate.",
+    "solution": "Let the upper patrol turn away, cross the low spent bridge and drop into the recessed pocket. Leave that pocket after the patrol passes westward, take the eastern tally and descend outside the thorned face. Wait at the far-right floor for the lower patrol to move left; return behind it, using the lower recess if needed. The spent bridge and low roof prevent simply running the upper route backward.",
+    "nearestExisting": "p123 Good Once spends a road; Crossings C5 preserves a shield. The consumed bridge here changes which side of the patrol the return must use, while two recessed stone pockets supply visible pauses along a folded route.",
+    "novelty": "The upper and lower traversals have opposite travel directions and separate clocks. The same “follow a pass” rule must be applied from the other side on the return.",
+    "timing": {
+      "principle": "A safe pocket lets the patrol reverse before the knight chooses the next direction.",
+      "stages": [
+        {
+          "cue": "The upper patrol turns at its western end and moves east.",
+          "action": "Follow across the spent bridge into the recess.",
+          "rest": "Upper recessed pocket."
+        },
+        {
+          "cue": "The upper patrol passes the pocket heading west.",
+          "action": "Jump out eastward and take the tally.",
+          "rest": "Far-right descent shelf."
+        },
+        {
+          "cue": "The lower patrol turns westward away from the right landing.",
+          "action": "Return behind it through the lower passage.",
+          "rest": "Lower recessed pocket, then western gate."
+        },
+        {
+          "cue": "From the lower recess, the patrol has turned at the west end and passes back east above you.",
+          "action": "Jump out westward behind its pass and complete the return.",
+          "rest": "Western exit floor."
+        }
+      ]
+    },
+    "requiredEvents": [
+      "foothold-spent",
+      "stone-lit",
+      "gate-open"
+    ],
+    "route": {
+      "frames": 843,
+      "deaths": 0,
+      "events": [
+        "foothold-spent",
+        "land",
+        "jump",
+        "stone-lit",
+        "gate-open",
+        "exit"
+      ]
+    },
+    "bypassCheck": {
+      "withoutUpperPocketPause": {
+        "exited": false,
+        "firstFailure": {
+          "frame": 314,
+          "cause": "sweeper"
+        }
+      },
+      "withoutLowerPocketPause": {
+        "exited": false,
+        "firstFailure": {
+          "frame": 637,
+          "cause": "sweeper"
+        }
+      },
+      "geometry": "The consumed 88px bridge has a 16px roof clearance: its missing floor cannot be re-crossed by a level dash."
+    },
+    "verifiedAt": "2026-10-07",
+    "shortcutChecks": [
+      {
+        "name": "Leave the upper pocket before the westbound pass",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            150,
+            ""
+          ],
+          [
+            121,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            24,
+            "r"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            82,
+            "l"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            145,
+            ""
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "firstFailure": {
+            "frame": 314,
+            "cause": "sweeper"
+          }
+        }
+      },
+      {
+        "name": "Leave the lower pocket before the return pass",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            150,
+            ""
+          ],
+          [
+            121,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            65,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            24,
+            "r"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            82,
+            "l"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "firstFailure": {
+            "frame": 637,
+            "cause": "sweeper"
+          }
+        }
+      }
+    ],
+    "placementBand": "early Base, above B21",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "early Base, above B21",
+      "geometryPreserved": true
+    },
+    "reclassifiedFrom": "fractured"
+  },
+  "tape": [
+    [
+      1,
+      "r"
+    ],
+    [
+      150,
+      ""
+    ],
+    [
+      121,
+      "r"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      65,
+      ""
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      24,
+      "r"
+    ],
+    [
+      35,
+      "r"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      82,
+      "l"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      145,
+      ""
+    ],
+    [
+      20,
+      "lj"
+    ],
+    [
+      150,
+      "l"
+    ]
+  ]
+}

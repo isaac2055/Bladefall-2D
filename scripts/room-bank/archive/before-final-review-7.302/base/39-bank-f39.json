@@ -1,0 +1,1465 @@
+{
+  "room": {
+    "id": "bank-f39",
+    "name": "Leave Someone at the Station",
+    "palette": "throne",
+    "study": true,
+    "lock": [
+      "parry"
+    ],
+    "map": [
+      "########################################",
+      "#.................H....................#",
+      "#.................H....................#",
+      "#.................H....................#",
+      "#.................H....................#",
+      "#.................H....................#",
+      "#.................H....................#",
+      "#.................H....................#",
+      "#.................H.....................",
+      "#.................H.....................",
+      "#.................H.....................",
+      "#.................H.....................",
+      "#.................H..............#######",
+      "#.................H.............<#######",
+      "#.................H.............<#######",
+      "#...P.............H.............<#######",
+      "########........................<#######",
+      "########........................<#######",
+      "########......_______...........<#######",
+      "########......#######...........<#######",
+      "########......#######...........<#######",
+      "#^^^^^^^^^^^^^#######^^^^^^^^^^^^^^^^^^#",
+      "########################################"
+    ],
+    "dashes": 0,
+    "movingHooks": [
+      {
+        "id": "Lower",
+        "c": 8,
+        "r": 10,
+        "w": 2,
+        "to": [
+          12,
+          0
+        ],
+        "period": 280
+      },
+      {
+        "id": "Upper",
+        "c": 21,
+        "r": 5,
+        "w": 2,
+        "to": [
+          12,
+          0
+        ],
+        "period": 280,
+        "phase": 80
+      }
+    ],
+    "hint": "{echo} leaves an echo to hold the plate \u00b7 One carriage waits; the other keeps moving.",
+    "echo": true,
+    "question": "What must remain below before both travellers can leave?"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 8,
+    "run": 3,
+    "acceptance": "banked",
+    "difficulty": 3,
+    "role": "echo-held gate and moving-train transfer",
+    "worlds": [
+      12,
+      16,
+      20
+    ],
+    "tags": [
+      "moving-hook",
+      "echo",
+      "held-plate",
+      "handoff",
+      "rail-stop"
+    ],
+    "newMechanics": [
+      "moving-hook"
+    ],
+    "entrance": "Western low boarding bank.",
+    "exit": "High eastern transfer gallery.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "echo-place",
+      "held-open",
+      "moving-carrier-stop",
+      "moving-hook",
+      "moving-unhook"
+    ],
+    "solution": "Catch the lower carriage and let its rail stop at the held gate. Pay out onto the broad station plate below; it briefly restarts the train. Leave an echo on the plate before reeling away, so the gate stays open as the train carries you out. Shorten the rope, then jump-release into the independently moving upper carriage when it comes alongside. The higher rail supplies the final approach to the east gallery.",
+    "nearestExisting": "F37 Catch the Other Train is an open two-carriage handoff. F19 The Weight Must Stay leaves an echo as a launch weight; this room instead interrupts the lower train and makes the knight give up that attachment before arranging a new rendezvous with an independently moving upper train.",
+    "novelty": "The platform is first a locked station lift and later the lower half of a moving transfer. Arriving on the plate starts the train leaving: the echo must preserve that permission while the knight reels back up. The meeting with the independently moving upper train is downstream of this spatial preparation.",
+    "humanReview": "User qualitative approval recorded; numeric ratings remain unmeasured.",
+    "positiveChecks": [
+      {
+        "name": "Station payout 33 frames",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            33,
+            "dg"
+          ],
+          [
+            1,
+            "qg"
+          ],
+          [
+            45,
+            "ug"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            1,
+            "rjg"
+          ],
+          [
+            135,
+            "ug"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 376,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-hook-turn",
+            "moving-carrier-stop",
+            "plate",
+            "held-open",
+            "echo-place",
+            "land",
+            "moving-unhook",
+            "unhook",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 2,
+            "moving-hook": 2,
+            "moving-hook-turn": 5,
+            "moving-carrier-stop": 1,
+            "plate": 3,
+            "held-open": 1,
+            "echo-place": 1,
+            "land": 2,
+            "moving-unhook": 2,
+            "unhook": 2,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Station payout 35 frames",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            35,
+            "dg"
+          ],
+          [
+            1,
+            "qg"
+          ],
+          [
+            45,
+            "ug"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            1,
+            "rjg"
+          ],
+          [
+            135,
+            "ug"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 378,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-hook-turn",
+            "moving-carrier-stop",
+            "plate",
+            "held-open",
+            "land",
+            "echo-place",
+            "moving-unhook",
+            "unhook",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 2,
+            "moving-hook": 2,
+            "moving-hook-turn": 5,
+            "moving-carrier-stop": 1,
+            "plate": 3,
+            "held-open": 1,
+            "land": 2,
+            "echo-place": 1,
+            "moving-unhook": 2,
+            "unhook": 2,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Station payout 36 frames",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            36,
+            "dg"
+          ],
+          [
+            1,
+            "qg"
+          ],
+          [
+            45,
+            "ug"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            1,
+            "rjg"
+          ],
+          [
+            135,
+            "ug"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 381,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-hook-turn",
+            "moving-carrier-stop",
+            "plate",
+            "held-open",
+            "land",
+            "echo-place",
+            "moving-unhook",
+            "unhook",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 2,
+            "moving-hook": 2,
+            "moving-hook-turn": 5,
+            "moving-carrier-stop": 1,
+            "plate": 3,
+            "held-open": 1,
+            "land": 2,
+            "echo-place": 1,
+            "moving-unhook": 2,
+            "unhook": 2,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Station payout 37 frames",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            37,
+            "dg"
+          ],
+          [
+            1,
+            "qg"
+          ],
+          [
+            45,
+            "ug"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            1,
+            "rjg"
+          ],
+          [
+            135,
+            "ug"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 381,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-hook-turn",
+            "moving-carrier-stop",
+            "plate",
+            "held-open",
+            "land",
+            "echo-place",
+            "moving-unhook",
+            "unhook",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 2,
+            "moving-hook": 2,
+            "moving-hook-turn": 5,
+            "moving-carrier-stop": 1,
+            "plate": 3,
+            "held-open": 1,
+            "land": 2,
+            "echo-place": 1,
+            "moving-unhook": 2,
+            "unhook": 2,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Station payout 38 frames",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            38,
+            "dg"
+          ],
+          [
+            1,
+            "qg"
+          ],
+          [
+            45,
+            "ug"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            1,
+            "rjg"
+          ],
+          [
+            135,
+            "ug"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 383,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-hook-turn",
+            "moving-carrier-stop",
+            "plate",
+            "held-open",
+            "land",
+            "echo-place",
+            "moving-unhook",
+            "unhook",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 2,
+            "moving-hook": 2,
+            "moving-hook-turn": 5,
+            "moving-carrier-stop": 1,
+            "plate": 4,
+            "held-open": 1,
+            "land": 2,
+            "echo-place": 1,
+            "moving-unhook": 2,
+            "unhook": 2,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Station payout 39 frames",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            39,
+            "dg"
+          ],
+          [
+            1,
+            "qg"
+          ],
+          [
+            45,
+            "ug"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            1,
+            "rjg"
+          ],
+          [
+            135,
+            "ug"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 384,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-hook-turn",
+            "moving-carrier-stop",
+            "plate",
+            "held-open",
+            "land",
+            "echo-place",
+            "moving-unhook",
+            "unhook",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 2,
+            "moving-hook": 2,
+            "moving-hook-turn": 5,
+            "moving-carrier-stop": 1,
+            "plate": 4,
+            "held-open": 1,
+            "land": 2,
+            "echo-place": 1,
+            "moving-unhook": 2,
+            "unhook": 2,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Transfer preparation 9 frames",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            34,
+            "dg"
+          ],
+          [
+            1,
+            "qg"
+          ],
+          [
+            45,
+            "ug"
+          ],
+          [
+            9,
+            "rug"
+          ],
+          [
+            1,
+            "rjg"
+          ],
+          [
+            135,
+            "ug"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 374,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-hook-turn",
+            "moving-carrier-stop",
+            "plate",
+            "held-open",
+            "land",
+            "echo-place",
+            "moving-unhook",
+            "unhook",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 2,
+            "moving-hook": 2,
+            "moving-hook-turn": 5,
+            "moving-carrier-stop": 1,
+            "plate": 3,
+            "held-open": 1,
+            "land": 2,
+            "echo-place": 1,
+            "moving-unhook": 2,
+            "unhook": 2,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Transfer preparation 10 frames",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            34,
+            "dg"
+          ],
+          [
+            1,
+            "qg"
+          ],
+          [
+            45,
+            "ug"
+          ],
+          [
+            10,
+            "rug"
+          ],
+          [
+            1,
+            "rjg"
+          ],
+          [
+            135,
+            "ug"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 376,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-hook-turn",
+            "moving-carrier-stop",
+            "plate",
+            "held-open",
+            "land",
+            "echo-place",
+            "moving-unhook",
+            "unhook",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 2,
+            "moving-hook": 2,
+            "moving-hook-turn": 5,
+            "moving-carrier-stop": 1,
+            "plate": 3,
+            "held-open": 1,
+            "land": 2,
+            "echo-place": 1,
+            "moving-unhook": 2,
+            "unhook": 2,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Transfer preparation 11 frames",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            34,
+            "dg"
+          ],
+          [
+            1,
+            "qg"
+          ],
+          [
+            45,
+            "ug"
+          ],
+          [
+            11,
+            "rug"
+          ],
+          [
+            1,
+            "rjg"
+          ],
+          [
+            135,
+            "ug"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 375,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-hook-turn",
+            "moving-carrier-stop",
+            "plate",
+            "held-open",
+            "land",
+            "echo-place",
+            "moving-unhook",
+            "unhook",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 2,
+            "moving-hook": 2,
+            "moving-hook-turn": 5,
+            "moving-carrier-stop": 1,
+            "plate": 3,
+            "held-open": 1,
+            "land": 2,
+            "echo-place": 1,
+            "moving-unhook": 2,
+            "unhook": 2,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Transfer preparation 13 frames",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            34,
+            "dg"
+          ],
+          [
+            1,
+            "qg"
+          ],
+          [
+            45,
+            "ug"
+          ],
+          [
+            13,
+            "rug"
+          ],
+          [
+            1,
+            "rjg"
+          ],
+          [
+            135,
+            "ug"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 377,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-hook-turn",
+            "moving-carrier-stop",
+            "plate",
+            "held-open",
+            "land",
+            "echo-place",
+            "moving-unhook",
+            "unhook",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 2,
+            "moving-hook": 2,
+            "moving-hook-turn": 5,
+            "moving-carrier-stop": 1,
+            "plate": 3,
+            "held-open": 1,
+            "land": 2,
+            "echo-place": 1,
+            "moving-unhook": 2,
+            "unhook": 2,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Transfer preparation 14 frames",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            34,
+            "dg"
+          ],
+          [
+            1,
+            "qg"
+          ],
+          [
+            45,
+            "ug"
+          ],
+          [
+            14,
+            "rug"
+          ],
+          [
+            1,
+            "rjg"
+          ],
+          [
+            135,
+            "ug"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 381,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-hook-turn",
+            "moving-carrier-stop",
+            "plate",
+            "held-open",
+            "land",
+            "echo-place",
+            "moving-unhook",
+            "unhook",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 2,
+            "moving-hook": 2,
+            "moving-hook-turn": 5,
+            "moving-carrier-stop": 1,
+            "plate": 3,
+            "held-open": 1,
+            "land": 2,
+            "echo-place": 1,
+            "moving-unhook": 2,
+            "unhook": 2,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Leave the plate without an echo",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            34,
+            "dg"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            45,
+            "ug"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            1,
+            "rjg"
+          ],
+          [
+            135,
+            "ug"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 3,
+          "frames": 477,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-hook-turn",
+            "moving-carrier-stop",
+            "plate",
+            "held-open",
+            "land",
+            "held-close",
+            "moving-unhook",
+            "moving-hook-blocked",
+            "unhook",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-hook-turn": 4,
+            "moving-carrier-stop": 3,
+            "plate": 7,
+            "held-open": 2,
+            "land": 2,
+            "held-close": 2,
+            "moving-unhook": 1,
+            "moving-hook-blocked": 1,
+            "unhook": 1,
+            "death": 3,
+            "respawn": 2
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 223,
+            "x": 174,
+            "y": 171,
+            "cause": "spikes",
+            "vx": 0,
+            "vy": 0,
+            "i": 222
+          }
+        }
+      },
+      {
+        "name": "Attempt the original open-rail transfer without visiting the station",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            14,
+            "rug"
+          ],
+          [
+            1,
+            "rjg"
+          ],
+          [
+            35,
+            "g"
+          ],
+          [
+            70,
+            "ug"
+          ],
+          [
+            10,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 337,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-hook-turn",
+            "moving-carrier-stop",
+            "moving-unhook",
+            "unhook",
+            "grab",
+            "walljump",
+            "plate",
+            "held-open",
+            "land",
+            "held-close",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-hook-turn": 2,
+            "moving-carrier-stop": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "grab": 1,
+            "walljump": 1,
+            "plate": 7,
+            "held-open": 1,
+            "land": 1,
+            "held-close": 1,
+            "death": 1,
+            "respawn": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 281,
+            "x": 194,
+            "y": 171,
+            "cause": "spikes",
+            "vx": 90,
+            "vy": 160,
+            "i": 280
+          }
+        }
+      },
+      {
+        "name": "Keep the lower attachment instead of transferring upward",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            34,
+            "dg"
+          ],
+          [
+            1,
+            "qg"
+          ],
+          [
+            45,
+            "ug"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            1,
+            "rg"
+          ],
+          [
+            135,
+            "ug"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 477,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-hook-turn",
+            "moving-carrier-stop",
+            "plate",
+            "held-open",
+            "land",
+            "echo-place",
+            "moving-unhook",
+            "unhook",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-hook-turn": 5,
+            "moving-carrier-stop": 1,
+            "plate": 8,
+            "held-open": 1,
+            "land": 2,
+            "echo-place": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "death": 1,
+            "respawn": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 425,
+            "x": 193,
+            "y": 171,
+            "cause": "spikes",
+            "vx": 90,
+            "vy": 160,
+            "i": 424
+          }
+        }
+      }
+    ],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 376,
+      "events": [
+        "jump",
+        "hook",
+        "moving-hook",
+        "moving-hook-turn",
+        "moving-carrier-stop",
+        "plate",
+        "held-open",
+        "land",
+        "echo-place",
+        "moving-unhook",
+        "unhook",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 3,
+        "hook": 2,
+        "moving-hook": 2,
+        "moving-hook-turn": 5,
+        "moving-carrier-stop": 1,
+        "plate": 3,
+        "held-open": 1,
+        "land": 2,
+        "echo-place": 1,
+        "moving-unhook": 2,
+        "unhook": 2,
+        "exit": 1
+      },
+      "firstFailure": null
+    },
+    "requiredEventCounts": {
+      "moving-hook": 2,
+      "moving-unhook": 2,
+      "echo-place": 1
+    },
+    "tolerance": {
+      "note": "Saved complete normal-spawn positive timing variants cover the main spatial action and the later transfer/departure. They are examples of usable windows, not an exhaustive solvability proof."
+    },
+    "companionOf": "bank-f37",
+    "companionReason": "Harder Fractured companion; original F37 is banked unchanged as Base.",
+    "feedbackHistory": [
+      {
+        "date": "2026-10-08",
+        "decision": "banked-base",
+        "comment": "Bank as Base; still pretty easy."
+      }
+    ],
+    "review": {
+      "date": "2026-10-08",
+      "decision": "banked",
+      "comment": "Bank as Base; still pretty easy."
+    },
+    "reclassifiedFrom": "fractured",
+    "reclassificationReason": "User approved the unchanged room as Base material.",
+    "placementNote": "Author placement estimate updated from qualitative user feedback; not a numeric user rating."
+  },
+  "tape": [
+    [
+      14,
+      "r"
+    ],
+    [
+      12,
+      "rjg"
+    ],
+    [
+      80,
+      "ug"
+    ],
+    [
+      34,
+      "dg"
+    ],
+    [
+      1,
+      "qg"
+    ],
+    [
+      45,
+      "ug"
+    ],
+    [
+      12,
+      "rug"
+    ],
+    [
+      1,
+      "rjg"
+    ],
+    [
+      135,
+      "ug"
+    ],
+    [
+      12,
+      "rug"
+    ],
+    [
+      1,
+      "rj"
+    ],
+    [
+      100,
+      "r"
+    ]
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "room": {
     "id": "bank-b60",
-    "name": "Catch the Reply in Flight",
+    "name": "Let the Reply Through",
     "palette": "sunspire",
     "study": true,
     "movement": "survive-2",
@@ -12,86 +12,68 @@
     ],
     "map": [
       "########################################",
-      "#......................................#",
-      "#......................................#",
-      "#......................................#",
-      "#......................................#",
-      "#......................................#",
-      "#......................................#",
-      "#......................................#",
-      "#......................................#",
       "#.......................................",
       "#.......................................",
       "#.......................................",
       "#.......................................",
       "#.......................................",
-      "#..........................#############",
-      "#..........................#############",
-      "#..........................#############",
-      "#..........................#############",
-      "#...P.....................<#############",
-      "############..............<#############",
-      "############..............<#############",
-      "############^^^^^^^^^^^^^^^#############",
+      "#.......................................",
+      "#.....................BBBBB.............",
+      "#.....................B........#########",
+      "#.....................B........#########",
+      "#^^^^^^...............B........vvvvvvvvv",
+      "#######>..............B...............<#",
+      "#.....................B...........x...<v",
+      "#######>..............B...........x...<#",
+      "#.....................................<#",
+      "#.....................................<#",
+      "#.....................................<#",
+      "#.....................................<#",
+      "#..P..................................<#",
+      "########..............................<#",
+      "########..............................<#",
+      "########^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
       "########################################"
     ],
-    "hint": "Parries return a spent dash. Watch where the pulse will be when you leave the ledge.",
-    "question": "Can a passing attack become the missing landing?",
+    "hint": "Parry right, then dash to let the reply through. Catch the wall when the bell restores it.",
+    "question": "Can the same wall first admit your reply, then catch your fall?",
     "foes": [
       {
         "kind": "spit",
-        "x": 33,
+        "x": 5,
         "y": 12,
         "dir": [
-          -1,
+          1,
           0
         ],
         "every": 160,
-        "offset": 140,
-        "speed": 180
+        "offset": 122,
+        "speed": 220
       }
     ],
-    "combat": {
-      "waitForMove": true,
-      "enemies": [],
-      "receivers": [
-        {
-          "id": "Reply",
-          "x": 245,
-          "y": 94
-        }
-      ],
-      "doors": [
-        {
-          "x": 296,
-          "y": 8,
-          "w": 8,
-          "h": 104,
-          "coils": [
-            "Reply"
-          ]
-        }
-      ]
-    }
+    "showHintAtRest": true
   },
   "bank": {
     "side": "base",
-    "batch": 14,
+    "batch": 15,
     "run": 7,
     "collection": "run7",
-    "acceptance": "candidate",
+    "acceptance": "revised",
     "status": "route-proven",
     "difficulty": 3,
-    "role": "Airborne parry replaces a missing landing",
+    "role": "Two airborne dashes, one returned pulse, and a wall that must open before it can catch you",
     "worlds": [],
     "tags": [
-      "parry",
+      "airborne-parry",
+      "phase-wall",
+      "projectile-shutter",
+      "delayed-bell",
       "dash-budget",
-      "arrival-timing"
+      "climb"
     ],
     "newMechanics": [],
     "author": "Codex",
-    "humanReview": "Unreviewed candidate. Difficulty is an author estimate; no human ratings assigned.",
+    "humanReview": "Reinvented after the player climbed the old far wall and parried beside its shooter. The old shortcut was reproduced cleanly (251 frames); this revised physical puzzle awaits review. No new human ratings assigned.",
     "learningFamily": "reply-and-cycle",
     "lessonRole": "introduce",
     "preparesFor": [
@@ -101,20 +83,111 @@
     "format": "compact",
     "requiredEvents": [
       "parry",
-      "receiver-lit",
-      "combat-gate"
+      "bell",
+      "grab",
+      "climbhop"
     ],
-    "solution": "Jump and dash up-right from the left ledge to meet the pulse above the pit. Parry right while airborne: the same reply restores the spent dash and opens the far door. Dash up-right again, catch the far wall and climb over its lip. Cut the emitter from the bank and recover from the weapon recoil before continuing east.",
-    "nearestExisting": "F28 replies during a carriage/portal trajectory. Here an ordinary dash spends the only airborne resource, and the projectile supplies the continuation in open flight.",
-    "novelty": "The hostile timing cue is simultaneously a refill and the key carried ahead of the knight.",
-    "entrance": "Left ledge; observe projectile from safe ground.",
-    "exit": "Raised east bank behind a ceiling-sealed projectile door.",
+    "solution": "Jump and dash up-right from the ledge into the pulse coming from the protected western emitter. Aim the parry RIGHT so the pulse continues toward the paired eastern bells, restoring your spent dash. Dash up-right again before the returned pulse reaches the brass wall: this removes the wall so the pulse can pass through. Its later bell strike restores the same wall. Catch that returning face, climb onto its five-tile crest, then jump and dash to the eastern shelf. You may rest on the crest before the final crossing.",
+    "nearestExisting": "Original B60 only used a pulse to refill a dash and open a remote exit door; its far wall allowed a grounded parry shortcut. F51 gives a phase bridge separate landing and projectile-shutter jobs. This room instead makes the returned shot pass through the absent wall and restore that exact wall for the airborne knight, using ordinary Base movement.",
+    "novelty": "The parry supplies the dash that opens its own projectile path. The projectile then undoes that opening in time to become the knight’s grip; waiting for it before dashing leaves it blocked.",
+    "entrance": "Low west ledge under a protected, visibly firing pulse alcove.",
+    "exit": "Eastern shelf reached from the restored wall crest.",
     "positiveChecks": [
       {
-        "name": "Parry two frames earlier",
+        "name": "Parry input one frame earlier",
         "tape": [
           [
+            24,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            11,
+            "rux"
+          ],
+          [
+            8,
+            "rp"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
             30,
+            "rg"
+          ],
+          [
+            88,
+            "rug"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Parry input four frames later",
+        "tape": [
+          [
+            24,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            16,
+            "rux"
+          ],
+          [
+            3,
+            "rp"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            30,
+            "rg"
+          ],
+          [
+            88,
+            "rug"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Second dash input six frames later",
+        "tape": [
+          [
+            24,
             "r"
           ],
           [
@@ -126,11 +199,7 @@
             "rux"
           ],
           [
-            3,
-            "r"
-          ],
-          [
-            10,
+            13,
             "rp"
           ],
           [
@@ -138,59 +207,202 @@
             "rux"
           ],
           [
-            100,
-            "rgu"
+            30,
+            "rg"
           ],
           [
-            1,
-            "rs"
+            88,
+            "rug"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ]
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Original reported wall-climb then grounded parry",
+        "tape": [
+          [
+            49,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            35,
+            "rg"
+          ],
+          [
+            50,
+            "rug"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            8,
+            "p"
           ],
           [
             110,
             "r"
           ]
-        ],
-        "exited": true,
-        "deaths": 0,
-        "frames": 267,
-        "events": [
-          "enemy-shot",
-          "jump",
-          "dash",
-          "parry-ready",
-          "refill-dash",
-          "parry",
-          "receiver-lit",
-          "combat-gate",
-          "grab",
-          "climbhop",
-          "land",
-          "strike",
-          "enemy-defeat",
-          "exit"
-        ],
-        "eventCounts": {
-          "enemy-shot": 1,
-          "jump": 1,
-          "dash": 2,
-          "parry-ready": 1,
-          "refill-dash": 2,
-          "parry": 1,
-          "receiver-lit": 1,
-          "combat-gate": 1,
-          "grab": 1,
-          "climbhop": 1,
-          "land": 2,
-          "strike": 1,
-          "enemy-defeat": 1,
-          "exit": 1
-        }
+        ]
       },
       {
-        "name": "Parry two frames later",
+        "name": "True furthest edge jump-dash-climb",
         "tape": [
           [
+            33,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            35,
+            "rg"
+          ],
+          [
+            125,
+            "rug"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Furthest edge higher arc",
+        "tape": [
+          [
+            33,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            35,
+            "rg"
+          ],
+          [
+            125,
+            "rug"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Wait for the reply before removing its wall",
+        "tape": [
+          [
+            24,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            25,
+            "rp"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
             30,
+            "rg"
+          ],
+          [
+            88,
+            "rug"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Return the pulse toward its emitter instead of through the wall",
+        "tape": [
+          [
+            24,
             "r"
           ],
           [
@@ -203,205 +415,19 @@
           ],
           [
             7,
-            "r"
-          ],
-          [
-            6,
-            "rp"
+            "p"
           ],
           [
             12,
             "rux"
           ],
-          [
-            100,
-            "rgu"
-          ],
-          [
-            1,
-            "rs"
-          ],
-          [
-            110,
-            "r"
-          ]
-        ],
-        "exited": true,
-        "deaths": 0,
-        "frames": 267,
-        "events": [
-          "enemy-shot",
-          "jump",
-          "dash",
-          "parry-ready",
-          "refill-dash",
-          "parry",
-          "receiver-lit",
-          "combat-gate",
-          "grab",
-          "climbhop",
-          "land",
-          "strike",
-          "enemy-defeat",
-          "exit"
-        ],
-        "eventCounts": {
-          "enemy-shot": 1,
-          "jump": 1,
-          "dash": 2,
-          "parry-ready": 1,
-          "refill-dash": 2,
-          "parry": 1,
-          "receiver-lit": 1,
-          "combat-gate": 1,
-          "grab": 1,
-          "climbhop": 1,
-          "land": 2,
-          "strike": 1,
-          "enemy-defeat": 1,
-          "exit": 1
-        }
-      },
-      {
-        "name": "Jump two frames later",
-        "tape": [
-          [
-            32,
-            "r"
-          ],
-          [
-            12,
-            "rj"
-          ],
-          [
-            12,
-            "rux"
-          ],
-          [
-            5,
-            "r"
-          ],
-          [
-            8,
-            "rp"
-          ],
-          [
-            12,
-            "rux"
-          ],
-          [
-            100,
-            "rgu"
-          ],
-          [
-            1,
-            "rs"
-          ],
-          [
-            110,
-            "r"
-          ]
-        ],
-        "exited": true,
-        "deaths": 0,
-        "frames": 214,
-        "events": [
-          "enemy-shot",
-          "jump",
-          "dash",
-          "parry-ready",
-          "refill-dash",
-          "parry",
-          "receiver-lit",
-          "combat-gate",
-          "grab",
-          "climbhop",
-          "land",
-          "strike",
-          "exit"
-        ],
-        "eventCounts": {
-          "enemy-shot": 2,
-          "jump": 1,
-          "dash": 2,
-          "parry-ready": 1,
-          "refill-dash": 2,
-          "parry": 1,
-          "receiver-lit": 1,
-          "combat-gate": 1,
-          "grab": 1,
-          "climbhop": 1,
-          "land": 1,
-          "strike": 1,
-          "exit": 1
-        }
-      }
-    ],
-    "shortcutChecks": [
-      {
-        "name": "Omit parry and use remaining movement",
-        "tape": [
           [
             30,
-            "r"
+            "rg"
           ],
           [
-            12,
-            "rj"
-          ],
-          [
-            12,
-            "rux"
-          ],
-          [
-            5,
-            "r"
-          ],
-          [
-            8,
-            "r"
-          ],
-          [
-            12,
-            "rux"
-          ],
-          [
-            100,
-            "rgu"
-          ],
-          [
-            1,
-            "rs"
-          ],
-          [
-            110,
-            "r"
-          ]
-        ],
-        "exited": false,
-        "deaths": 3,
-        "frames": 0,
-        "events": [
-          "enemy-shot",
-          "jump",
-          "dash",
-          "death",
-          "respawn"
-        ],
-        "eventCounts": {
-          "enemy-shot": 3,
-          "jump": 1,
-          "dash": 1,
-          "death": 3,
-          "respawn": 3
-        }
-      },
-      {
-        "name": "Furthest shore ordinary jump dash and climb",
-        "tape": [
-          [
-            36,
-            "r"
+            88,
+            "rug"
           ],
           [
             18,
@@ -409,95 +435,232 @@
           ],
           [
             12,
-            "rux"
-          ],
-          [
-            180,
-            "rgu"
-          ],
-          [
-            1,
-            "rs"
+            "rx"
           ],
           [
             100,
             "r"
           ]
-        ],
-        "exited": false,
-        "deaths": 4,
-        "frames": 0,
-        "events": [
-          "enemy-shot",
-          "jump",
-          "dash",
-          "death",
-          "respawn",
-          "strike"
-        ],
-        "eventCounts": {
-          "enemy-shot": 4,
-          "jump": 1,
-          "dash": 1,
-          "death": 4,
-          "respawn": 3,
-          "strike": 1
-        }
+        ]
+      },
+      {
+        "name": "Climb the emitter enclosure roof for a free high launch",
+        "tape": [
+          [
+            24,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "luxg"
+          ],
+          [
+            40,
+            "ulg"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "rug"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ]
       }
     ],
     "timingCues": [
-      "The left-moving pulse is visible from the starting ledge; intercept its horizontal line in flight.",
-      "Parry while the pulse reaches the knight, then use the returned dash before falling below the far face."
+      "The western muzzle flashes before its pulse catches up from behind.",
+      "Aim the parry right toward the paired bells; the pulse keeps that line.",
+      "Dash while the reply is between you and the wall; the wall outline admits it.",
+      "The bell flash makes that same outline solid again for your hands."
     ],
-    "routeProof": {
+    "routeMovement": [
+      {
+        "type": "jump",
+        "frame": 25,
+        "x": 61,
+        "y": 152,
+        "lift": 0
+      },
+      {
+        "type": "dash",
+        "frame": 41,
+        "x": 82,
+        "y": 126,
+        "dx": 0.7071067811865475,
+        "dy": -0.7071067811865475
+      },
+      {
+        "type": "parry",
+        "frame": 55,
+        "x": 124,
+        "y": 98
+      },
+      {
+        "type": "dash",
+        "frame": 63,
+        "x": 116,
+        "y": 99,
+        "dx": 0.7071067811865475,
+        "dy": -0.7071067811865475
+      },
+      {
+        "type": "bell",
+        "frame": 86,
+        "x": 276,
+        "y": 100
+      },
+      {
+        "type": "grab",
+        "frame": 92,
+        "x": 176,
+        "y": 95
+      },
+      {
+        "type": "climbhop",
+        "frame": 156
+      },
+      {
+        "type": "land",
+        "frame": 171,
+        "x": 192,
+        "y": 56,
+        "speed": 75
+      },
+      {
+        "type": "jump",
+        "frame": 186,
+        "x": 214,
+        "y": 56,
+        "lift": 0
+      },
+      {
+        "type": "dash",
+        "frame": 208,
+        "x": 245,
+        "y": 25,
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "land",
+        "frame": 235,
+        "x": 315,
+        "y": 64,
+        "speed": 160
+      }
+    ],
+    "requiredEventCounts": {
+      "dash": 3
+    },
+    "endingForgiveness": "Five-tile restored crest allows a full grounded pause/refill before the last jump and dash. The difficult timing remains the airborne parry and wall restoration.",
+    "review": {
+      "reportedBypasses": [
+        {
+          "name": "Original nearest-edge jump, late diagonal dash, wall climb and grounded parry",
+          "tape": [
+            [
+              49,
+              "r"
+            ],
+            [
+              12,
+              "rj"
+            ],
+            [
+              18,
+              "r"
+            ],
+            [
+              12,
+              "rux"
+            ],
+            [
+              35,
+              "rg"
+            ],
+            [
+              50,
+              "rug"
+            ],
+            [
+              10,
+              "r"
+            ],
+            [
+              8,
+              "p"
+            ],
+            [
+              110,
+              "r"
+            ]
+          ],
+          "originalFrames": 251,
+          "originalDeaths": 0
+        }
+      ],
+      "revision15": "Rebuilt room rather than merely blocking its old far wall. The new wall is too high for the farthest ledge jump/dash; first launch raises the knight to a pulse from behind. The refilled dash physically opens the returned-shot lane, and the delayed bell restores the same climb face. No completion event lock exists."
+    },
+    "route": {
       "exited": true,
+      "frames": 239,
       "deaths": 0,
-      "frames": 267,
       "events": [
-        "enemy-shot",
         "jump",
+        "phase",
+        "enemy-shot",
         "dash",
         "parry-ready",
         "refill-dash",
         "parry",
-        "receiver-lit",
-        "combat-gate",
+        "bell",
         "grab",
         "climbhop",
         "land",
-        "strike",
-        "enemy-defeat",
         "exit"
       ],
       "eventCounts": {
-        "enemy-shot": 1,
-        "jump": 1,
-        "dash": 2,
+        "jump": 2,
+        "phase": 4,
+        "enemy-shot": 2,
+        "dash": 3,
         "parry-ready": 1,
-        "refill-dash": 2,
+        "refill-dash": 3,
         "parry": 1,
-        "receiver-lit": 1,
-        "combat-gate": 1,
+        "bell": 1,
         "grab": 1,
         "climbhop": 1,
         "land": 2,
-        "strike": 1,
-        "enemy-defeat": 1,
         "exit": 1
-      }
-    },
-    "routeMovement": [
-      {
-        "type": "parry",
-        "frame": 62,
-        "x": 143,
-        "y": 98
-      }
-    ]
+      },
+      "firstFailure": null
+    }
   },
   "tape": [
     [
-      30,
+      24,
       "r"
     ],
     [
@@ -509,11 +672,7 @@
       "rux"
     ],
     [
-      5,
-      "r"
-    ],
-    [
-      8,
+      7,
       "rp"
     ],
     [
@@ -521,15 +680,23 @@
       "rux"
     ],
     [
+      30,
+      "rg"
+    ],
+    [
+      88,
+      "rug"
+    ],
+    [
+      18,
+      "rj"
+    ],
+    [
+      12,
+      "rx"
+    ],
+    [
       100,
-      "rgu"
-    ],
-    [
-      1,
-      "rs"
-    ],
-    [
-      110,
       "r"
     ]
   ]

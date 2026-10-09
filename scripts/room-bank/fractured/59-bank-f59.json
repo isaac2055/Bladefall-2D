@@ -24,13 +24,13 @@
       "#...........#>................................<#",
       "#.............................................<#",
       "#.............................................<#",
-      "#.............................................<#",
       "#.............^^^^^^^^^^^^^^^^................<#",
       "#.............################................<#",
       "#.............vvvvvvvvvvvvvvvv................<#",
       "#.............................................<#",
       "#.............................................<#",
       "#..............................P...c..........<#",
+      "#.............................................<#",
       "#.............................................<#",
       "#.............................................<#",
       "#..^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<#",
@@ -40,7 +40,7 @@
       {
         "id": "Run-up",
         "c": 30,
-        "r": 19,
+        "r": 18,
         "w": 9,
         "h": 1,
         "face": "up"
@@ -164,11 +164,11 @@
   ],
   "bank": {
     "side": "fractured",
-    "batch": 14,
+    "batch": 15,
     "run": 7,
     "collection": "run7",
     "format": "compact",
-    "acceptance": "candidate",
+    "acceptance": "revised",
     "status": "route-proven",
     "difficulty": 4,
     "role": "Carry a reverse-hyper approach through two patrol windows into a spent-wall wallbounce and aerial return.",
@@ -185,7 +185,7 @@
       "departure-armed persistent surface"
     ],
     "author": "Codex",
-    "humanReview": "Unreviewed Run 7 candidate. Author difficulty is provisional; intended-route and bounded input evidence are not human feel ratings.",
+    "humanReview": "Lower reverse launch and matching ceiling raised eight pixels above the unchanged spike floor, preserving headroom while adding fall clearance. Awaiting review.",
     "learningFamily": "spent-faces",
     "lessonRole": "combine",
     "preparesFor": [
@@ -386,6 +386,120 @@
         "exited": true,
         "deaths": 0,
         "frames": 295
+      },
+      {
+        "name": "Low dash 2 frames later",
+        "tape": [
+          [
+            13,
+            "rdx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            18,
+            "l"
+          ],
+          [
+            12,
+            "lx"
+          ],
+          [
+            7,
+            "lg"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            22,
+            "rj"
+          ],
+          [
+            2,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            26,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Low dash 4 frames later",
+        "tape": [
+          [
+            13,
+            "rdx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            12,
+            "lx"
+          ],
+          [
+            7,
+            "lg"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            22,
+            "rj"
+          ],
+          [
+            2,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            26,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ]
       }
     ],
     "shortcutChecks": [
@@ -515,8 +629,8 @@
     },
     "route": {
       "exited": true,
-      "deaths": 0,
       "frames": 295,
+      "deaths": 0,
       "events": [
         "spent-thorn-touch",
         "dash",
@@ -536,9 +650,30 @@
         "land",
         "refill-back",
         "exit"
-      ]
+      ],
+      "eventCounts": {
+        "spent-thorn-touch": 2,
+        "dash": 5,
+        "ultra": 1,
+        "refill-dash": 5,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "hyper": 1,
+        "reverse-hyper": 1,
+        "late-reverse": 1,
+        "spent-thorn-leave": 2,
+        "spent-thorn-arm": 2,
+        "grab": 1,
+        "refill": 3,
+        "vector-refill": 3,
+        "wallbounce": 1,
+        "land": 1,
+        "refill-back": 1,
+        "exit": 1
+      },
+      "firstFailure": null
     },
-    "designNotes": "Departure-thorn bodies remain solid. Only the visibly marked face arms after departure; continuous first contact is safe. Room completion uses ordinary physical geometry and visible tallies, with no hidden movement-event gate. The patrol clock begins with input and resets per attempt.",
+    "designNotes": "Departure-thorn bodies remain solid. Only the visibly marked face arms after departure; continuous first contact is safe. Room completion uses ordinary physical geometry and visible tallies, with no hidden movement-event gate. The patrol clock begins with input and resets per attempt. Review15: raised launch and matching ceiling 8px over unchanged spike floor; preserved canonical and reverse timing. Added successful low-dash +2/+4-frame delay checks to target reported bottom-spike collision.",
     "timingCues": [
       "Use the lower windows to reach the wall; the upper return has no landing before the last crystal.",
       "Folded hairs mark a safe first contact; an amber warning after departure precedes the permanently red face."
@@ -631,6 +766,9 @@
         "dx": 0.7071067811865475,
         "dy": -0.7071067811865475
       }
-    ]
+    ],
+    "review": {
+      "revision15": "Raised the spent launch runway, spawn/tally, and low ceiling one tile. Floor spikes and upper route are unchanged."
+    }
   }
 }

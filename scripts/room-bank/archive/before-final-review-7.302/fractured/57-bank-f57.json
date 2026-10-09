@@ -1,0 +1,739 @@
+{
+  "room": {
+    "id": "bank-f57",
+    "name": "Arrive on the Other Beat",
+    "palette": "cliffs",
+    "study": true,
+    "movement": "survive-2",
+    "cols": 56,
+    "rows": 30,
+    "exit": "right",
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "map": [
+      "########################################################",
+      "#.........#######################......................#",
+      "#.........#######################......................#",
+      "#.........#######################......................#",
+      "#.........#######################......................#",
+      "#.........#######################......................#",
+      "#.........#######################.......................",
+      "#.........#######################.......................",
+      "#.........#######################.......................",
+      "#.........#######################.......................",
+      "#.........#######################.......................",
+      "#.........#######################.......................",
+      "#.........#######################.......................",
+      "#.........#######################.............<#########",
+      "#................................^^^..........<#########",
+      "#.............................................<#########",
+      "#.............................................<#########",
+      "#.............................................<#########",
+      "#.............................................<#########",
+      "#.............................................<#########",
+      "#...P.........................................<#########",
+      "#########..........................b..........<#########",
+      "#########.....................................<#########",
+      "#########.....................................<#########",
+      "#########.....................................<#########",
+      "#########.....................................<#########",
+      "#########.....................................<#########",
+      "#########.....................................<#########",
+      "#########^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#########",
+      "########################################################"
+    ],
+    "movingHooks": [
+      {
+        "id": "Launch",
+        "c": 10,
+        "r": 15,
+        "w": 3,
+        "to": [
+          22,
+          0
+        ],
+        "period": 360
+      }
+    ],
+    "sweepers": [
+      {
+        "id": "Cross",
+        "path": [
+          [
+            19,
+            18
+          ],
+          [
+            32,
+            18
+          ]
+        ],
+        "period": 190,
+        "phase": 70,
+        "radius": 4
+      },
+      {
+        "id": "Rebound",
+        "path": [
+          [
+            34,
+            13
+          ],
+          [
+            44,
+            23
+          ]
+        ],
+        "period": 240,
+        "phase": 30,
+        "radius": 4
+      }
+    ],
+    "hint": "Leave the moving ring behind the thorn. Hold Jump for the loft; dash at the top.",
+    "question": "When must you leave the ring so your rebound passes behind the diagonal patrol?",
+    "showHintAtRest": true
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 14,
+    "run": 7,
+    "collection": "run7",
+    "format": "compact",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "difficulty": 5,
+    "author": "Codex",
+    "role": "moving anchor release into timed loft",
+    "worlds": [],
+    "tags": [
+      "moving-hook",
+      "rope-length",
+      "sweeper",
+      "controlled-pogo",
+      "pogo-loft",
+      "arrival-timing"
+    ],
+    "newMechanics": [],
+    "requiredEvents": [
+      "moving-hook",
+      "moving-unhook",
+      "pogo-loft",
+      "pod",
+      "dash"
+    ],
+    "learningFamily": "moving-anchor-and-cargo-timing",
+    "lessonRole": "develop",
+    "preparesFor": [
+      "bank-f58"
+    ],
+    "prerequisites": [
+      "bank-b56"
+    ],
+    "humanReview": "Awaiting playtest; route evidence does not establish enjoyment or human difficulty.",
+    "entrance": "Western dock beneath the outward-moving anchor.",
+    "exit": "High eastern bank beyond the rebound pocket.",
+    "solution": "Board the moving ring and duck below the first patrol by paying out. Reel in again and follow the carrier toward its eastern turn. Jump free toward the suspended pod as the diagonal thorn climbs back left above it. Hold Jump while cutting down for the high rebound; continue right behind the passing thorn, then dash up-right near the loft’s apex. There is no standing platform between the starting dock and the final bank.",
+    "nearestExisting": "B56 introduces the moving-rope duck and recovery used here. F27 Catch the Passenger transfers from a zip to a moving enemy, while F23 joins fixed hooks. This room turns the moving-anchor release into a controlled loft whose climb crosses an opposing diagonal patrol; the timing of departure controls that encounter.",
+    "novelty": "The anchor is not the delivery endpoint: its departure time sets the meeting between the falling knight, suspended rebound target, and diagonal moving thorn.",
+    "designNotes": "Top-connected masonry prevents riding the approach roof. Visible teeth over the exposed carrier end discourage a free ground refill before the long jump. The exit height and guarded face defeat the saved direct up-right dash from the actual rebound approach. The pod is one use, so the timing phrase remains continuous.",
+    "timingCues": [
+      "Duck as the first thorn crosses the short-rope lane, then reel in once it has moved left.",
+      "Near the carrier’s eastern turn, the diagonal thorn is moving up-left above the pod. Jump toward the pod behind it.",
+      "Hold Jump for the loft and cross to the thorn’s right before it turns back down; dash near the top of the rebound."
+    ],
+    "endingForgiveness": "The airborne sequence remains demanding through the loft and dash. Both earlier and later downward cuts and an earlier continuation dash reach the bank; no one-frame cut is required by the saved evidence.",
+    "approvedIngredients": [
+      "F23 Shorten the Arc",
+      "revised B52 active rope-length controls"
+    ],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 295,
+      "events": [
+        "jump",
+        "hook",
+        "moving-hook",
+        "moving-unhook",
+        "unhook",
+        "moving-hook-turn",
+        "strike",
+        "pogo-loft",
+        "pod",
+        "dash",
+        "land",
+        "refill-dash",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 2,
+        "hook": 1,
+        "moving-hook": 1,
+        "moving-unhook": 1,
+        "unhook": 1,
+        "moving-hook-turn": 1,
+        "strike": 1,
+        "pogo-loft": 1,
+        "pod": 1,
+        "dash": 1,
+        "land": 1,
+        "refill-dash": 1,
+        "exit": 1
+      }
+    },
+    "routeMovement": [
+      {
+        "event": "moving-hook",
+        "frame": 15
+      },
+      {
+        "event": "moving-unhook",
+        "frame": 169,
+        "vx": 2.7080125640615442,
+        "vy": -18.244128665810422
+      },
+      {
+        "event": "pogo-loft",
+        "frame": 188
+      },
+      {
+        "event": "dash",
+        "frame": 216
+      }
+    ],
+    "positiveChecks": [
+      {
+        "name": "Earlier downward cut",
+        "tape": [
+          [
+            12,
+            "r"
+          ],
+          [
+            15,
+            "rjg"
+          ],
+          [
+            25,
+            "ug"
+          ],
+          [
+            24,
+            "dg"
+          ],
+          [
+            20,
+            "g"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            22,
+            "rg"
+          ],
+          [
+            17,
+            "rj"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            23,
+            "rj"
+          ],
+          [
+            14,
+            "rux"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 295,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "moving-hook-turn",
+            "strike",
+            "pogo-loft",
+            "pod",
+            "dash",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "moving-hook-turn": 1,
+            "strike": 1,
+            "pogo-loft": 1,
+            "pod": 1,
+            "dash": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Later downward cut",
+        "tape": [
+          [
+            12,
+            "r"
+          ],
+          [
+            15,
+            "rjg"
+          ],
+          [
+            25,
+            "ug"
+          ],
+          [
+            24,
+            "dg"
+          ],
+          [
+            20,
+            "g"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            22,
+            "rg"
+          ],
+          [
+            21,
+            "rj"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            23,
+            "rj"
+          ],
+          [
+            14,
+            "rux"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 295,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "moving-hook-turn",
+            "strike",
+            "pogo-loft",
+            "pod",
+            "dash",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "moving-hook-turn": 1,
+            "strike": 1,
+            "pogo-loft": 1,
+            "pod": 1,
+            "dash": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Earlier continuation dash",
+        "tape": [
+          [
+            12,
+            "r"
+          ],
+          [
+            15,
+            "rjg"
+          ],
+          [
+            25,
+            "ug"
+          ],
+          [
+            24,
+            "dg"
+          ],
+          [
+            20,
+            "g"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            22,
+            "rg"
+          ],
+          [
+            19,
+            "rj"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            21,
+            "rj"
+          ],
+          [
+            14,
+            "rux"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 295,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "moving-hook-turn",
+            "strike",
+            "pogo-loft",
+            "pod",
+            "dash",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "moving-hook-turn": 1,
+            "strike": 1,
+            "pogo-loft": 1,
+            "pod": 1,
+            "dash": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "nearest spawn edge jump-dash",
+        "tape": [
+          [
+            23,
+            "r"
+          ],
+          [
+            14,
+            "rj"
+          ],
+          [
+            14,
+            "ruxg"
+          ],
+          [
+            170,
+            "rg"
+          ],
+          [
+            14,
+            "rj"
+          ],
+          [
+            14,
+            "rux"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 3,
+          "frames": 0,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "death",
+            "respawn",
+            "moving-unhook",
+            "unhook",
+            "dash"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 2,
+            "moving-hook": 2,
+            "death": 3,
+            "respawn": 3,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1
+          }
+        }
+      },
+      {
+        "name": "Direct up-right dash from the rebound approach without cutting",
+        "tape": [
+          [
+            12,
+            "r"
+          ],
+          [
+            15,
+            "rjg"
+          ],
+          [
+            25,
+            "ug"
+          ],
+          [
+            24,
+            "dg"
+          ],
+          [
+            20,
+            "g"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            22,
+            "rg"
+          ],
+          [
+            19,
+            "rj"
+          ],
+          [
+            14,
+            "rux"
+          ],
+          [
+            190,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "moving-hook-turn",
+            "dash",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "moving-hook-turn": 1,
+            "dash": 1,
+            "death": 2,
+            "respawn": 2
+          }
+        }
+      },
+      {
+        "name": "updash onto forward carrier roof for refill",
+        "tape": [
+          [
+            12,
+            "r"
+          ],
+          [
+            15,
+            "rjg"
+          ],
+          [
+            25,
+            "ug"
+          ],
+          [
+            24,
+            "dg"
+          ],
+          [
+            20,
+            "g"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            22,
+            "rg"
+          ],
+          [
+            10,
+            "rj"
+          ],
+          [
+            14,
+            "ux"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            14,
+            "rj"
+          ],
+          [
+            14,
+            "ruxg"
+          ],
+          [
+            160,
+            "rg"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "moving-hook-turn",
+            "dash",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 2,
+            "moving-hook": 2,
+            "moving-unhook": 2,
+            "unhook": 2,
+            "moving-hook-turn": 1,
+            "dash": 1,
+            "death": 2,
+            "respawn": 1
+          }
+        }
+      }
+    ]
+  },
+  "tape": [
+    [
+      12,
+      "r"
+    ],
+    [
+      15,
+      "rjg"
+    ],
+    [
+      25,
+      "ug"
+    ],
+    [
+      24,
+      "dg"
+    ],
+    [
+      20,
+      "g"
+    ],
+    [
+      50,
+      "ug"
+    ],
+    [
+      22,
+      "rg"
+    ],
+    [
+      19,
+      "rj"
+    ],
+    [
+      1,
+      "djs"
+    ],
+    [
+      23,
+      "rj"
+    ],
+    [
+      14,
+      "rux"
+    ],
+    [
+      150,
+      "r"
+    ]
+  ]
+}

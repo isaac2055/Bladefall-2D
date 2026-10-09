@@ -126,7 +126,7 @@
     "batch": 10,
     "run": 4,
     "collection": "superrooms",
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "status": "route-proven",
     "difficulty": 4,
     "role": "interconnected superroom",
@@ -146,7 +146,7 @@
     ],
     "newMechanics": [],
     "author": "Codex",
-    "humanReview": "Unmeasured; author estimate only.",
+    "humanReview": "Approved for late Base superroom. Numeric player ratings remain unmeasured.",
     "approvedIngredients": [
       "bank-b36",
       "bank-b11",
@@ -1744,7 +1744,13 @@
         }
       }
     ],
-    "designNotes": "One open atrium carries both ascent and return; the transformed bridge and the same moving carrier are revisited in opposite directions. The carrier can be boarded on top using ordinary movement, with safe waiting on the broad bridge. The lantern stays behind because full hands cannot prepare the seed or climb the hanging arm. Echo transfers the recovered cargo to the dock physically reached earlier. Two visible tallies and ordinary sunlight/cargo collision govern the exit; there are no hidden interaction receipts. Numeric player ratings remain unmeasured. A three-tile one-way landing beside the hinge hub gives room to stage the carrier jump and catches a short return; it does not reach the west tally without turning the arm."
+    "designNotes": "One open atrium carries both ascent and return; the transformed bridge and the same moving carrier are revisited in opposite directions. The carrier can be boarded on top using ordinary movement, with safe waiting on the broad bridge. The lantern stays behind because full hands cannot prepare the seed or climb the hanging arm. Echo transfers the recovered cargo to the dock physically reached earlier. Two visible tallies and ordinary sunlight/cargo collision govern the exit; there are no hidden interaction receipts. Numeric player ratings remain unmeasured. A three-tile one-way landing beside the hinge hub gives room to stage the carrier jump and catches a short return; it does not reach the west tally without turning the arm.",
+    "placementBand": "late Base superroom",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "late Base superroom",
+      "geometryPreserved": true
+    }
   },
   "tape": [
     [

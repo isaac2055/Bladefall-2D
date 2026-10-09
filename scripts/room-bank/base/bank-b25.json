@@ -98,7 +98,7 @@
   "bank": {
     "side": "base",
     "batch": 4,
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "difficulty": 4,
     "role": "timing",
     "worlds": [
@@ -337,7 +337,14 @@
           }
         }
       }
-    ]
+    ],
+    "placementBand": "middle Base",
+    "humanReview": "Approved for middle Base. Numeric player ratings remain unmeasured.",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "middle Base",
+      "geometryPreserved": true
+    }
   },
   "tape": [
     [

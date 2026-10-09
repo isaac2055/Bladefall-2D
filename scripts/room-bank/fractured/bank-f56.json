@@ -148,7 +148,7 @@
     "run": 7,
     "collection": "run7",
     "format": "extended",
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "status": "route-proven",
     "difficulty": 4,
     "role": "Turn the outbound climb into a return runway, then reverse-launch through a second aerial patrol phrase",
@@ -165,7 +165,7 @@
     ],
     "newMechanics": [],
     "author": "Codex",
-    "humanReview": "Unreviewed candidate. Author difficulty is provisional.",
+    "humanReview": "Approved for Fractured. Numeric player ratings and exact campaign position remain unmeasured.",
     "learningFamily": "timed-launch-and-pogo",
     "lessonRole": "master",
     "prerequisites": [
@@ -1168,6 +1168,12 @@
     ],
     "review": {
       "authorEvidence": "One zero-death canonical route, two or three saved timing/contact variants, and active ordinary-route bypass attempts. Human fun/difficulty/suitability review remains pending."
+    },
+    "placementBand": "Fractured",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "Fractured",
+      "geometryPreserved": true
     }
   },
   "tape": [

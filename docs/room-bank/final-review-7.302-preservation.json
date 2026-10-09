@@ -1,0 +1,45 @@
+{
+  "version": "7.302.0",
+  "unchangedPriorApprovals": 50,
+  "approvedGeometryAndTapesPreserved": 89,
+  "removed": [
+    "bank-f62"
+  ],
+  "revised": [
+    "bank-b24",
+    "bank-b58",
+    "bank-b59",
+    "bank-b60",
+    "bank-f24",
+    "bank-f25",
+    "bank-f32",
+    "bank-f45",
+    "bank-f59"
+  ],
+  "counts": {
+    "base": {
+      "all": 55,
+      "banked": 51,
+      "review": 4
+    },
+    "fractured": {
+      "all": 43,
+      "banked": 38,
+      "review": 5
+    }
+  },
+  "runtimeUnchanged": 305,
+  "expectedChangedRuntime": [
+    "public/bladefall-playtest.js",
+    "public/bladefall-room-bank-view.js",
+    "public/bladefall-pcore-dev-sweeper-view.js",
+    "public/bladefall-pcore-dev-sweeper.js",
+    "public/bladefall-room-bank.js",
+    "public/bladefall-pcore-dev-spent-thorn.js",
+    "public/sw.js",
+    "public/bladefall-pcore-dev-spent-thorn-view.js",
+    "public/index.html",
+    "public/precision.html",
+    "wrangler.jsonc"
+  ]
+}

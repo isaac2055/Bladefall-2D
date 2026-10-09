@@ -1,157 +1,261 @@
 {
   "room": {
     "id": "bank-b59",
-    "name": "One Grip at a Time",
+    "name": "Down One Side, Up the Other",
     "palette": "woods",
     "study": true,
     "exit": "right",
+    "cols": 44,
+    "rows": 36,
     "lock": [
       "portal",
       "parry"
     ],
-    "hint": "Hold one marked face until the opening comes. The upward crystal restores dash and stamina.",
-    "question": "Time a wall departure through a patrol, refill in air, and reach a fresh grip.",
     "map": [
-      "########################################",
-      "#...........#>..........................",
-      "#...........#>..........................",
-      "#...........#>..........................",
-      "#...........#>..........................",
-      "#...........#>..........................",
-      "#...........#>..........................",
-      "#...........#>...........###############",
-      "#...........#>.........................#",
-      "#...........#>.........................#",
-      "#...........#>.........................#",
-      "#...........#>.........................#",
-      "#...........#>.........................#",
-      "#...........#>.........................#",
-      "#...........#>.........................#",
-      "#...........#>.........................#",
-      "#......................................#",
-      "#......................................#",
-      "#......................................#",
-      "#......................................#",
-      "#......................................#",
-      "#......................................#",
-      "#......................................#",
-      "#......................................#",
-      "#......................................#",
-      "#......................................#",
-      "#......................................#",
-      "#......................................#",
-      "#......................................#",
-      "#................P.....................#",
-      "#^^^^^^^^^^^^^######^^^^^^^^^^^^^^^^^^^#",
-      "########################################"
+      "###################<####>###################",
+      "#############......<####>...................",
+      "#############......<####>...................",
+      "#############......<####>...................",
+      "#############......<####>...................",
+      "#############......<####>...................",
+      "#############......<####>...................",
+      "#############...P..<####>...................",
+      "#############.####.<####>...................",
+      "#############......<####>...................",
+      "#############......<####>...................",
+      "#############......<####>......#############",
+      "#############......<####>......#############",
+      "#############......<####>......#############",
+      "#############......<####>......#############",
+      "#############......<####>......#############",
+      "#############......<####>......#############",
+      "#############......<####>......#############",
+      "#############......<####>......#############",
+      "#############......<####>......#############",
+      "#############......<####>......#############",
+      "#############......<####>......#############",
+      "#############......<####>......#############",
+      "#############......<####>......#############",
+      "#############......<####>......#############",
+      "#############......<####>......#############",
+      "#############......<####>......#############",
+      "#############..................#############",
+      "#############..................#############",
+      "#############..................#############",
+      "#############..................#############",
+      "#############..................#############",
+      "#############..................#############",
+      "#############..................#############",
+      "#############^^^^^^^^^^^^^^^^^^#############",
+      "############################################"
     ],
     "spentThorns": [
       {
-        "id": "First grip",
+        "id": "Descending seam",
         "c": 12,
-        "r": 16,
+        "r": 6,
         "w": 1,
-        "h": 13,
-        "face": "right"
+        "h": 28,
+        "face": "right",
+        "segment": 4,
+        "arm": 30
       },
       {
-        "id": "Next grip",
-        "c": 25,
-        "r": 7,
+        "id": "Ascending seam",
+        "c": 31,
+        "r": 11,
         "w": 1,
-        "h": 19,
-        "face": "left"
+        "h": 23,
+        "face": "left",
+        "segment": 4,
+        "arm": 30
       }
     ],
-    "rows": 32,
     "vectorRefills": [
       {
-        "c": 19,
-        "r": 15,
+        "c": 21,
+        "r": 28,
+        "dir": "right"
+      },
+      {
+        "c": 30,
+        "r": 26,
         "dir": "up"
       }
     ],
     "sweepers": [
       {
-        "id": "Crossing",
+        "id": "Lower knot",
         "path": [
           [
-            20,
-            10
+            13.5,
+            17.5
+          ]
+        ],
+        "radius": 4
+      },
+      {
+        "id": "Lower shuttle",
+        "path": [
+          [
+            13,
+            24
           ],
           [
-            20,
+            18,
+            24
+          ],
+          [
+            18,
+            22
+          ],
+          [
+            13,
             22
           ]
         ],
-        "period": 210,
-        "phase": 0,
+        "loop": true,
+        "period": 240,
+        "phase": 80,
+        "radius": 3
+      },
+      {
+        "id": "Upper knot",
+        "path": [
+          [
+            29.5,
+            21
+          ]
+        ],
         "radius": 4
+      },
+      {
+        "id": "Rising shuttle",
+        "path": [
+          [
+            26,
+            12
+          ],
+          [
+            30,
+            12
+          ],
+          [
+            30,
+            19
+          ],
+          [
+            26,
+            19
+          ]
+        ],
+        "loop": true,
+        "period": 240,
+        "phase": 80,
+        "radius": 3
       }
     ],
+    "hint": "Drop past the first knot, turn under the pier, then climb fresh patches past the next.",
+    "question": "Can you change from a controlled descent to a climb without a floor reset?",
     "showHintAtRest": true
   },
   "tape": [
     [
-      25,
-      "lgu"
+      20,
+      "lg"
     ],
     [
-      86,
-      "ug"
+      60,
+      "gd"
     ],
     [
-      16,
+      10,
       "rj"
+    ],
+    [
+      33,
+      ""
+    ],
+    [
+      22,
+      "lg"
+    ],
+    [
+      30,
+      "gd"
+    ],
+    [
+      18,
+      "rj"
+    ],
+    [
+      12,
+      "rx"
+    ],
+    [
+      10,
+      "r"
     ],
     [
       12,
       "rux"
     ],
     [
-      32,
+      24,
       "rg"
-    ],
-    [
-      85,
-      "ug"
-    ],
-    [
-      12,
-      "ux"
     ],
     [
       50,
       "ug"
     ],
     [
-      100,
+      16,
+      "g"
+    ],
+    [
+      18,
+      "lj"
+    ],
+    [
+      12,
+      "rux"
+    ],
+    [
+      22,
+      "rg"
+    ],
+    [
+      90,
+      "ug"
+    ],
+    [
+      120,
       "r"
     ]
   ],
   "bank": {
     "side": "base",
-    "batch": 14,
+    "batch": 15,
     "run": 7,
     "collection": "run7",
-    "format": "compact",
-    "acceptance": "candidate",
+    "format": "extended",
+    "acceptance": "revised",
     "status": "route-proven",
-    "difficulty": 3,
-    "role": "Teach a wall-to-wall patrol crossing that carries restored dash and stamina into its continuation.",
+    "difficulty": 4,
+    "author": "Codex",
     "worlds": [],
+    "role": "Turn a descending grip into an ascending route, reusing fresh parts of both walls around fixed knots and patrols.",
     "tags": [
-      "spent-wall",
-      "stamina",
-      "directional-refill",
-      "patrol-opening",
-      "teaching"
+      "segmented-spent-wall",
+      "controlled-descent",
+      "underpass-transfer",
+      "wall-refill",
+      "stationary-thorns",
+      "patrol-timing"
     ],
     "newMechanics": [
-      "departure-armed persistent surface"
+      "independently spent surface patches"
     ],
-    "author": "Codex",
-    "humanReview": "Unreviewed Run 7 candidate. Author difficulty is provisional; intended-route and bounded input evidence are not human feel ratings.",
     "learningFamily": "spent-faces",
     "lessonRole": "develop",
     "preparesFor": [
@@ -160,156 +264,454 @@
     "prerequisites": [
       "bank-b58"
     ],
+    "humanReview": "Rebuilt after human feedback; unreviewed revised candidate. Difficulty is an author estimate, not a human rating.",
+    "solution": "Leave the starting shelf to catch the west seam. Descend toward the first fixed knot, then jump outward, fall past it and re-grab fresh patches below while the lower shuttle is away. Descend to the underpass and walljump right; dash horizontally through the rightward refill, then dash up-right beyond the pier to catch the east seam. Climb through its refill. Jump away from the second fixed knot and dash back above it onto fresh wall patches. Read the returning upper shuttle before climbing to the eastern lip and exiting. The solid central pier and sealed backs prevent a direct or outer-wall ascent.",
+    "nearestExisting": "Replaces the former two-wall B59 and its accessible outer side. Unlike F60\u2019s upward alternation between whole faces, this room first descends around a fixed obstacle and later ascends around another, returning to untouched portions of each same wall. A solid central pier forces a low dash/refill transfer between them.",
+    "novelty": "The same patch rule supports opposite movement problems: release and fall around one knot, then jump away and regain height around the other.",
+    "timingCues": [
+      "Watch the low shuttle before dropping through its horizontal stroke.",
+      "Read the high shuttle before leaving the fresh grip above the second knot.",
+      "Each departed patch warns for thirty frames; fresh patches farther along the same wall remain safe."
+    ],
     "timing": {
-      "kind": "stamina-limited wall hold plus vertical patrol",
-      "patrolPeriod": 210,
-      "warningFrames": 18,
-      "cue": "Leave the first grip while the patrol is below the airborne crystal."
+      "warningFrames": 30,
+      "segmentPixels": 4,
+      "patrolPeriods": [
+        240,
+        240
+      ]
     },
-    "solution": "Walk off the small starting ledge and hold Grab toward the first marked wall. Climb until the upward crystal is within the coming jump-dash arc. Read the vertical patrol: when it is below the crossing, walljump right and dash up-right through the crystal. Catch the next fresh marked wall. Climb, then spend the restored dash straight upward alongside it and resume the grab to crest the receiving gallery. Each departed grip remains solid but its marked side closes behind you.",
-    "nearestExisting": "B58 introduces a spent top and changed return. F51 studies an approach-gated crystal in a portal/tally circuit. This lesson instead joins a finite grip, a visible patrol opening, an upward resource transfer and a second climb that spends the returned dash.",
-    "novelty": "Teach a wall-to-wall patrol crossing that carries restored dash and stamina into its continuation.",
-    "endingForgiveness": "The second climb still needs the returned dash. First departures three frames earlier and later and a three-frame earlier second boost finish cleanly; direct spawn-to-second-wall and no-crystal alternatives do not finish.",
+    "endingForgiveness": "The final knot and returning shuttle remain part of the challenge. An earlier first departure, a two-frame longer knot jump, and a four-frame longer upper hold all finish without deaths. A forty-frame extra wait on the upper grip lets the shuttle return into the climb. Thirty-frame patch warnings allow the wall catch to settle before climbing back through briefly brushed patches.",
     "positiveChecks": [
       {
-        "name": "First departure three frames earlier",
+        "name": "First departure two frames earlier",
         "tape": [
           [
-            25,
-            "lgu"
+            20,
+            "lg"
           ],
           [
-            83,
-            "ug"
+            58,
+            "gd"
           ],
           [
-            16,
+            10,
             "rj"
+          ],
+          [
+            33,
+            ""
+          ],
+          [
+            22,
+            "lg"
+          ],
+          [
+            30,
+            "gd"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            10,
+            "r"
           ],
           [
             12,
             "rux"
           ],
           [
-            32,
+            24,
             "rg"
-          ],
-          [
-            85,
-            "ug"
-          ],
-          [
-            12,
-            "ux"
           ],
           [
             50,
             "ug"
           ],
           [
-            100,
+            16,
+            "g"
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            22,
+            "rg"
+          ],
+          [
+            90,
+            "ug"
+          ],
+          [
+            120,
             "r"
           ]
         ],
         "exited": true,
         "deaths": 0,
-        "frames": 388
+        "frames": 519
       },
       {
-        "name": "First departure three frames later",
+        "name": "Upper knot jump two frames longer",
         "tape": [
           [
-            25,
-            "lgu"
+            20,
+            "lg"
           ],
           [
-            89,
-            "ug"
+            60,
+            "gd"
           ],
           [
-            16,
+            10,
             "rj"
+          ],
+          [
+            33,
+            ""
+          ],
+          [
+            22,
+            "lg"
+          ],
+          [
+            30,
+            "gd"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            10,
+            "r"
           ],
           [
             12,
             "rux"
           ],
           [
-            32,
+            24,
             "rg"
-          ],
-          [
-            85,
-            "ug"
-          ],
-          [
-            12,
-            "ux"
           ],
           [
             50,
             "ug"
           ],
           [
-            100,
+            16,
+            "g"
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            22,
+            "rg"
+          ],
+          [
+            90,
+            "ug"
+          ],
+          [
+            120,
             "r"
           ]
         ],
         "exited": true,
         "deaths": 0,
-        "frames": 394
+        "frames": 525
       },
       {
-        "name": "Boost second climb three frames earlier",
+        "name": "Hold before upper knot four frames longer",
         "tape": [
           [
-            25,
-            "lgu"
+            20,
+            "lg"
           ],
           [
-            86,
-            "ug"
+            60,
+            "gd"
           ],
           [
-            16,
+            10,
             "rj"
+          ],
+          [
+            33,
+            ""
+          ],
+          [
+            22,
+            "lg"
+          ],
+          [
+            30,
+            "gd"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            10,
+            "r"
           ],
           [
             12,
             "rux"
           ],
           [
-            32,
+            24,
             "rg"
-          ],
-          [
-            82,
-            "ug"
-          ],
-          [
-            12,
-            "ux"
           ],
           [
             50,
             "ug"
           ],
           [
-            100,
+            20,
+            "g"
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            22,
+            "rg"
+          ],
+          [
+            90,
+            "ug"
+          ],
+          [
+            120,
             "r"
           ]
         ],
         "exited": true,
         "deaths": 0,
-        "frames": 388
+        "frames": 528
       }
     ],
     "shortcutChecks": [
       {
-        "name": "Jump-dash directly from spawn to the second grip",
+        "name": "Hug west wall straight downward",
         "tape": [
           [
-            14,
+            20,
+            "lg"
+          ],
+          [
+            100,
+            "gd"
+          ]
+        ],
+        "exited": false,
+        "deaths": 1,
+        "frames": 0,
+        "firstDeath": {
+          "type": "death",
+          "frame": 84,
+          "x": 108,
+          "y": 136,
+          "cause": "sweeper",
+          "vx": 0,
+          "vy": 80,
+          "i": 83
+        }
+      },
+      {
+        "name": "Climb east wall through the fixed knot",
+        "tape": [
+          [
+            20,
+            "lg"
+          ],
+          [
+            60,
+            "gd"
+          ],
+          [
+            10,
+            "rj"
+          ],
+          [
+            33,
+            ""
+          ],
+          [
+            22,
+            "lg"
+          ],
+          [
+            30,
+            "gd"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            24,
+            "rg"
+          ],
+          [
+            100,
+            "ug"
+          ]
+        ],
+        "exited": false,
+        "deaths": 1,
+        "frames": 0,
+        "firstDeath": {
+          "type": "death",
+          "frame": 325,
+          "x": 244,
+          "y": 181,
+          "cause": "sweeper",
+          "vx": 0,
+          "vy": -45,
+          "i": 324
+        }
+      },
+      {
+        "name": "Wait until upper shuttle returns",
+        "tape": [
+          [
+            20,
+            "lg"
+          ],
+          [
+            60,
+            "gd"
+          ],
+          [
+            10,
+            "rj"
+          ],
+          [
+            33,
+            ""
+          ],
+          [
+            22,
+            "lg"
+          ],
+          [
+            30,
+            "gd"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            24,
+            "rg"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            16,
+            "g"
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            22,
+            "rg"
+          ],
+          [
+            40,
+            "g"
+          ],
+          [
+            110,
+            "ug"
+          ]
+        ],
+        "exited": false,
+        "deaths": 1,
+        "frames": 0,
+        "firstDeath": {
+          "type": "death",
+          "frame": 458,
+          "x": 244,
+          "y": 109,
+          "cause": "sweeper",
+          "vx": 0,
+          "vy": -45,
+          "i": 457
+        }
+      },
+      {
+        "name": "Dash directly to the far outer wall",
+        "tape": [
+          [
+            10,
             "r"
           ],
           [
@@ -321,40 +723,8 @@
             "rux"
           ],
           [
-            170,
+            220,
             "rgu"
-          ],
-          [
-            40,
-            "rj"
-          ],
-          [
-            100,
-            "r"
-          ]
-        ],
-        "exited": false,
-        "deaths": 2,
-        "frames": null
-      },
-      {
-        "name": "Cross without the airborne refill then try the climb",
-        "tape": [
-          [
-            25,
-            "lgu"
-          ],
-          [
-            86,
-            "ug"
-          ],
-          [
-            20,
-            "rj"
-          ],
-          [
-            55,
-            "rg"
           ],
           [
             12,
@@ -370,8 +740,18 @@
           ]
         ],
         "exited": false,
-        "deaths": 3,
-        "frames": null
+        "deaths": 7,
+        "frames": 0,
+        "firstDeath": {
+          "type": "death",
+          "frame": 15,
+          "x": 154,
+          "y": 50,
+          "cause": "spikes",
+          "vx": 112.66666666666669,
+          "vy": -105,
+          "i": 14
+        }
       }
     ],
     "requiredEvents": [
@@ -383,71 +763,104 @@
       "climbhop"
     ],
     "requiredEventCounts": {
-      "spent-thorn-touch": 2,
-      "vector-refill": 1
+      "vector-refill": 2,
+      "walljump": 3
     },
     "route": {
       "exited": true,
       "deaths": 0,
-      "frames": 391,
+      "frames": 524,
       "events": [
-        "grab",
         "spent-thorn-touch",
-        "walljump",
+        "grab",
         "spent-thorn-leave",
-        "dash",
         "spent-thorn-arm",
+        "walljump",
+        "dash",
         "refill-dash",
         "refill",
         "vector-refill",
-        "climbhop",
         "refill-back",
+        "climbhop",
         "land",
         "exit"
       ]
     },
-    "designNotes": "Departure-thorn bodies remain solid. Only the visibly marked face arms after departure; continuous first contact is safe. Room completion uses ordinary physical geometry and visible tallies, with no hidden movement-event gate. The patrol clock begins with input and resets per attempt.",
-    "timingCues": [
-      "Leave the first grip while the patrol is below the airborne crystal.",
-      "Folded hairs mark a safe first contact; an amber warning after departure precedes the permanently red face."
-    ],
     "routeMovement": [
       {
         "type": "walljump",
-        "frame": 113,
+        "frame": 82,
         "x": 104,
-        "y": 174,
+        "y": 132,
+        "dir": 1
+      },
+      {
+        "type": "walljump",
+        "frame": 177,
+        "x": 104,
+        "y": 253,
         "dir": 1
       },
       {
         "type": "dash",
-        "frame": 132,
-        "x": 134,
-        "y": 149,
+        "frame": 198,
+        "x": 137,
+        "y": 227,
+        "dx": 1,
+        "dy": 0
+      },
+      {
+        "type": "vector-refill",
+        "frame": 204,
+        "x": 172,
+        "y": 228,
+        "dx": 1,
+        "dy": 0,
+        "once": false
+      },
+      {
+        "type": "dash",
+        "frame": 220,
+        "x": 189,
+        "y": 234,
         "dx": 0.7071067811865475,
         "dy": -0.7071067811865475
       },
       {
         "type": "vector-refill",
-        "frame": 137,
-        "x": 156,
-        "y": 124,
+        "frame": 270,
+        "x": 244,
+        "y": 212,
         "dx": 0,
         "dy": -1,
         "once": false
       },
       {
+        "type": "walljump",
+        "frame": 319,
+        "x": 248,
+        "y": 198,
+        "dir": -1
+      },
+      {
         "type": "dash",
-        "frame": 262,
-        "x": 196,
-        "y": 95,
-        "dx": 0,
-        "dy": -1
+        "frame": 340,
+        "x": 215,
+        "y": 172,
+        "dx": 0.7071067811865475,
+        "dy": -0.7071067811865475
       },
       {
         "type": "climbhop",
-        "frame": 291
+        "frame": 450
       }
-    ]
+    ],
+    "review": {
+      "feedback": "Rightmost-wall shortcut bypassed the old intended transfer; replace the room and make marked wall patches independent.",
+      "response": "Full geometry and route reinvention. Both outer sides are filled with solid backing; the central pier blocks direct access to the ascent.",
+      "reportedBypasses": [],
+      "reproductionNote": "The exact human rightmost-wall input sequence was not reproduced. The new layout explicitly removes access to those outer faces; a direct jump/dash toward the far outer wall is recorded and fails at the visible thorned pier."
+    },
+    "designNotes": "Per-patch spending is opt-in through segment:4; approved F59/F60 keep whole-face behavior. Each backing body remains solid. Only touched patches arm, and visible geometry/hazards enforce routing; no hidden action-event gate is used. Stationary thorns and moving patrols have no drawn path guides."
   }
 }

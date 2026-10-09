@@ -71,7 +71,7 @@
   "bank": {
     "side": "base",
     "batch": 4,
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "difficulty": 4,
     "role": "timing",
     "worlds": [
@@ -94,7 +94,7 @@
       "jump",
       "dash"
     ],
-    "humanReview": "Author difficulty estimate; fun/difficulty/suitability pending.",
+    "humanReview": "Approved for early Base. Numeric player ratings remain unmeasured.",
     "solution": "Use the low ledge to watch the lower patrol approach its far turn, then jump/dash over its returning line and land behind it at the far right end of the middle ledge. Wait for the upper patrol to leave the left landing, cross back with a left/up dash, and settle in the left pocket. From there, climb to the open finish gallery.",
     "nearestExisting": "Earlier gauntlets time permanent lasers and gates while climbing. This uses mobile threats at the handoff between a dash, wall catch, and safe standing ground.",
     "novelty": "The landing is safe only at its sheltered far end; committing when a patrol merely leaves the wall is not enough unless it also gives time to climb over the lip. Each transfer reverses direction.",
@@ -260,7 +260,13 @@
           "deaths": 3
         }
       }
-    ]
+    ],
+    "placementBand": "early Base",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "early Base",
+      "geometryPreserved": true
+    }
   },
   "tape": [
     [

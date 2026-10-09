@@ -1,0 +1,1259 @@
+{
+  "room": {
+    "id": "bank-f50",
+    "name": "Walk the Answer Twice",
+    "palette": "throne",
+    "study": true,
+    "movement": "survive-2",
+    "aim8": true,
+    "cols": 64,
+    "rows": 48,
+    "exit": "left",
+    "lock": [
+      "parry"
+    ],
+    "hint": "{companion}: hold Oren on the plate. Cross below; call him onward to restore your return wall.",
+    "question": "When does your open door become the missing climbing wall?",
+    "map": [
+      "###########################G####################################",
+      "#..........................G..................................<#",
+      "#..........................G..................................<#",
+      "#..........................G..................................<#",
+      ".G.........................G..................................<#",
+      ".G.........................G..................................<#",
+      ".G.........................G..................................<#",
+      ".G.........................G..................................<#",
+      ".G.........................G..................................<#",
+      ".G...P.....................G..................................<#",
+      "##############.............G..................................<#",
+      "##############...=========.G..................................<#",
+      "#..........................G..................................<#",
+      "#..........................G..................................<#",
+      "#..........................G..................................<#",
+      "#..........................G<HHHH.............................<#",
+      "#..........................G<HHHH.............................<#",
+      "#..........................G<HHHH.............................<#",
+      "#..........................G<HHHH.............................<#",
+      "#..........................G<HHHH.............................<#",
+      "#..........................G<HHHH.............................<#",
+      "#..........................G<HHHH.............................<#",
+      "#..........................G<HHHH.............................<#",
+      "#...............________...G<HHHH.............................<#",
+      "#..............##########..G<HHHH.............................<#",
+      "#..............##########..G<HHHH......===========............<#",
+      "#..........................G<HHHH.............................<#",
+      "#..........................G<HHHH.............................<#",
+      "#..........................G<HHHH.............................<#",
+      "#..........................G<HHHH.............................<#",
+      "#..........................G<HHHH.............................<#",
+      "#..........................G<HHHH.............................<#",
+      "#..........................G<HHHH.............................<#",
+      "#..........................G<HHHH.............................<#",
+      "#..........................G<HHHH.............................<#",
+      "#..........................G<HHHH.............................<#",
+      "#..........................G<HHHH.............................<#",
+      "#..........................G<HHHH.............................<#",
+      "#..........................G<HHHH.............................<#",
+      "#..........................G<HHHH.............................<#",
+      "#............................HHHH.............................<#",
+      "#............................HHHH.............................<#",
+      "#............................HHHH.............................<#",
+      "#............................HHHH........................c....<#",
+      "################################################################",
+      "################################################################",
+      "################################################################",
+      "################################################################"
+    ],
+    "companion": {
+      "delay": 20
+    },
+    "recoilPlatforms": [
+      {
+        "id": "Return",
+        "c": 34,
+        "r": 41,
+        "w": 7,
+        "depth": 2,
+        "loadFrames": 30,
+        "releaseSpeed": 130
+      }
+    ],
+    "showHintAtRest": true
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 11,
+    "run": 5,
+    "collection": "run5",
+    "format": "superroom",
+    "acceptance": "banked",
+    "difficulty": 2,
+    "role": "Hold the passage open, then close it into the return wall",
+    "worlds": [],
+    "tags": [
+      "companion",
+      "held-door",
+      "recoil-platform",
+      "wallbounce",
+      "return-route"
+    ],
+    "newMechanics": [],
+    "status": "route-proven",
+    "author": "Codex",
+    "humanReview": "User approved for harder Base or easier Fractured. Kept as easier Fractured because the saved route uses a late wallbounce; geometry and movement unchanged. Numeric ratings remain unmeasured.",
+    "requiredEvents": [
+      "oren-hold",
+      "oren-go",
+      "plate",
+      "held-open",
+      "held-close",
+      "recoil-jump",
+      "late-wallbounce",
+      "gate-open"
+    ],
+    "solution": "Drop from the western overlook onto the broad middle pressure shelf. Walk to its right end so Oren has genuinely followed the route onto the shelf, then press the companion action to hold him there. His weight keeps the central pier open. Drop down beside the visible tally curtain and cross through the open pier along the lower gallery to the east tally; it opens the exit and upper curtain. Return onto the recoil plate near the pier. Call Oren onward: leaving his plate closes the pier, which is now the missing climbing wall. Fully compress the recoil plate, release Down, jump left as it rises, then Updash beside the restored wall and hold Jump for a wallbounce. Land on the broad one-way middle rest. Jump/dash back toward the pier, climb its right side and hop onto its top. Take the upper shelf west and make the ordinary final jump onto the original overlook.",
+    "nearestExisting": "F19 asks that a weight stay while the knight leaves, and F34 makes a wall useful only in one machinery state. B39 (Borrow Only Enough) supplies the compress–release–jump timing of the recoil platform. Here the helper must first copy a real descent to a distant plate, then be explicitly called off it after the lower crossing. The same central pier changes from obstruction to open passage to recoil-assisted wallbounce face to upper return support.",
+    "novelty": "Oren cannot be placed remotely or teleported: the knight authors the helper path before requesting the hold. Keeping the convenient passage open is exactly what prevents the return launch. The east tally opens a visibly gated upper approach, preventing an initial hop over the helper puzzle; the pier’s west teeth prevent climbing the outbound side. The useful new recoil platform and late wallbounce only work together after the old companion interaction changes shared geometry.",
+    "positiveChecks": [
+      {
+        "name": "Wallbounce two frames earlier",
+        "tape": [
+          [
+            87,
+            "r"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            259,
+            "r"
+          ],
+          [
+            80,
+            "l"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            10,
+            "l"
+          ],
+          [
+            18,
+            ""
+          ],
+          [
+            23,
+            "l"
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            13,
+            "ux"
+          ],
+          [
+            30,
+            "rj"
+          ],
+          [
+            22,
+            ""
+          ],
+          [
+            16,
+            "lj"
+          ],
+          [
+            14,
+            "ulx"
+          ],
+          [
+            18,
+            "lg"
+          ],
+          [
+            65,
+            "ug"
+          ],
+          [
+            14,
+            "lj"
+          ],
+          [
+            14,
+            "ulx"
+          ],
+          [
+            24,
+            "l"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            110,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 975,
+          "events": [
+            "plate",
+            "held-open",
+            "land",
+            "held-close",
+            "oren-hold",
+            "stone-lit",
+            "gate-open",
+            "jump",
+            "oren-go",
+            "recoil-load",
+            "recoil-release",
+            "recoil-jump",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "refill-dash",
+            "grab",
+            "climbhop",
+            "exit"
+          ],
+          "eventCounts": {
+            "plate": 5,
+            "held-open": 2,
+            "land": 7,
+            "held-close": 2,
+            "oren-hold": 1,
+            "stone-lit": 1,
+            "gate-open": 2,
+            "jump": 5,
+            "oren-go": 1,
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "recoil-jump": 1,
+            "dash": 3,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "refill-dash": 3,
+            "grab": 1,
+            "climbhop": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Wallbounce two frames later",
+        "tape": [
+          [
+            87,
+            "r"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            259,
+            "r"
+          ],
+          [
+            80,
+            "l"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            10,
+            "l"
+          ],
+          [
+            18,
+            ""
+          ],
+          [
+            23,
+            "l"
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            17,
+            "ux"
+          ],
+          [
+            30,
+            "rj"
+          ],
+          [
+            22,
+            ""
+          ],
+          [
+            16,
+            "lj"
+          ],
+          [
+            14,
+            "ulx"
+          ],
+          [
+            18,
+            "lg"
+          ],
+          [
+            65,
+            "ug"
+          ],
+          [
+            14,
+            "lj"
+          ],
+          [
+            14,
+            "ulx"
+          ],
+          [
+            24,
+            "l"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            110,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 979,
+          "events": [
+            "plate",
+            "held-open",
+            "land",
+            "held-close",
+            "oren-hold",
+            "stone-lit",
+            "gate-open",
+            "jump",
+            "oren-go",
+            "recoil-load",
+            "recoil-release",
+            "recoil-jump",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "refill-dash",
+            "grab",
+            "climbhop",
+            "exit"
+          ],
+          "eventCounts": {
+            "plate": 5,
+            "held-open": 2,
+            "land": 7,
+            "held-close": 2,
+            "oren-hold": 1,
+            "stone-lit": 1,
+            "gate-open": 2,
+            "jump": 5,
+            "oren-go": 1,
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "recoil-jump": 1,
+            "dash": 3,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "refill-dash": 3,
+            "grab": 1,
+            "climbhop": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Three-second rest after the hardest transfer",
+        "tape": [
+          [
+            87,
+            "r"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            259,
+            "r"
+          ],
+          [
+            80,
+            "l"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            10,
+            "l"
+          ],
+          [
+            18,
+            ""
+          ],
+          [
+            23,
+            "l"
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            15,
+            "ux"
+          ],
+          [
+            30,
+            "rj"
+          ],
+          [
+            202,
+            ""
+          ],
+          [
+            16,
+            "lj"
+          ],
+          [
+            14,
+            "ulx"
+          ],
+          [
+            18,
+            "lg"
+          ],
+          [
+            65,
+            "ug"
+          ],
+          [
+            14,
+            "lj"
+          ],
+          [
+            14,
+            "ulx"
+          ],
+          [
+            24,
+            "l"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            110,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 1157,
+          "events": [
+            "plate",
+            "held-open",
+            "land",
+            "held-close",
+            "oren-hold",
+            "stone-lit",
+            "gate-open",
+            "jump",
+            "oren-go",
+            "recoil-load",
+            "recoil-release",
+            "recoil-jump",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "refill-dash",
+            "grab",
+            "climbhop",
+            "exit"
+          ],
+          "eventCounts": {
+            "plate": 5,
+            "held-open": 2,
+            "land": 7,
+            "held-close": 2,
+            "oren-hold": 1,
+            "stone-lit": 1,
+            "gate-open": 2,
+            "jump": 5,
+            "oren-go": 1,
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "recoil-jump": 1,
+            "dash": 3,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "refill-dash": 3,
+            "grab": 1,
+            "climbhop": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Reported upper-gallery hop over the closed pier without Oren",
+        "tape": [
+          [
+            43,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            14,
+            "rx"
+          ],
+          [
+            200,
+            "r"
+          ],
+          [
+            80,
+            ""
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            40,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0,
+          "frames": 459,
+          "events": [
+            "jump",
+            "dash",
+            "land",
+            "refill-dash"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "dash": 1,
+            "land": 2,
+            "refill-dash": 1
+          }
+        }
+      },
+      {
+        "name": "Omit Oren’s first hold",
+        "tape": [
+          [
+            87,
+            "r"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            259,
+            "r"
+          ],
+          [
+            80,
+            "l"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            10,
+            "l"
+          ],
+          [
+            18,
+            ""
+          ],
+          [
+            23,
+            "l"
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            15,
+            "ux"
+          ],
+          [
+            30,
+            "rj"
+          ],
+          [
+            22,
+            ""
+          ],
+          [
+            16,
+            "lj"
+          ],
+          [
+            14,
+            "ulx"
+          ],
+          [
+            18,
+            "lg"
+          ],
+          [
+            65,
+            "ug"
+          ],
+          [
+            14,
+            "lj"
+          ],
+          [
+            14,
+            "ulx"
+          ],
+          [
+            24,
+            "l"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            110,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0,
+          "frames": 1006,
+          "events": [
+            "plate",
+            "held-open",
+            "land",
+            "held-close",
+            "jump",
+            "oren-hold",
+            "dash",
+            "refill-dash",
+            "grab",
+            "walljump"
+          ],
+          "eventCounts": {
+            "plate": 3,
+            "held-open": 1,
+            "land": 5,
+            "held-close": 1,
+            "jump": 3,
+            "oren-hold": 1,
+            "dash": 2,
+            "refill-dash": 2,
+            "grab": 1,
+            "walljump": 2
+          }
+        }
+      },
+      {
+        "name": "Keep the pier open and launch directly toward the middle rest",
+        "tape": [
+          [
+            87,
+            "r"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            259,
+            "r"
+          ],
+          [
+            80,
+            "l"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            10,
+            "l"
+          ],
+          [
+            18,
+            ""
+          ],
+          [
+            23,
+            "l"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            27,
+            "rj"
+          ],
+          [
+            15,
+            "ux"
+          ],
+          [
+            40,
+            "rg"
+          ],
+          [
+            60,
+            "ug"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0,
+          "frames": 741,
+          "events": [
+            "plate",
+            "held-open",
+            "land",
+            "held-close",
+            "oren-hold",
+            "stone-lit",
+            "gate-open",
+            "jump",
+            "recoil-load",
+            "recoil-release",
+            "recoil-jump",
+            "dash",
+            "refill-dash"
+          ],
+          "eventCounts": {
+            "plate": 5,
+            "held-open": 2,
+            "land": 4,
+            "held-close": 1,
+            "oren-hold": 1,
+            "stone-lit": 1,
+            "gate-open": 2,
+            "jump": 2,
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "recoil-jump": 1,
+            "dash": 1,
+            "refill-dash": 1
+          }
+        }
+      },
+      {
+        "name": "Skip recoil compression",
+        "tape": [
+          [
+            87,
+            "r"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            259,
+            "r"
+          ],
+          [
+            80,
+            "l"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            10,
+            "l"
+          ],
+          [
+            18,
+            ""
+          ],
+          [
+            23,
+            "l"
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            15,
+            "ux"
+          ],
+          [
+            30,
+            "rj"
+          ],
+          [
+            22,
+            ""
+          ],
+          [
+            16,
+            "lj"
+          ],
+          [
+            14,
+            "ulx"
+          ],
+          [
+            18,
+            "lg"
+          ],
+          [
+            65,
+            "ug"
+          ],
+          [
+            14,
+            "lj"
+          ],
+          [
+            14,
+            "ulx"
+          ],
+          [
+            24,
+            "l"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            110,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0,
+          "frames": 1006,
+          "events": [
+            "plate",
+            "held-open",
+            "land",
+            "held-close",
+            "oren-hold",
+            "stone-lit",
+            "gate-open",
+            "jump",
+            "oren-go",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "refill-dash",
+            "grab",
+            "walljump"
+          ],
+          "eventCounts": {
+            "plate": 5,
+            "held-open": 2,
+            "land": 5,
+            "held-close": 2,
+            "oren-hold": 1,
+            "stone-lit": 1,
+            "gate-open": 2,
+            "jump": 2,
+            "oren-go": 1,
+            "dash": 2,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "refill-dash": 2,
+            "grab": 1,
+            "walljump": 2
+          }
+        }
+      }
+    ],
+    "approvedIngredients": [
+      "bank-f19",
+      "bank-f34",
+      "bank-b39"
+    ],
+    "causalInterconnection": [
+      "The knight must really visit the middle pressure shelf before Oren can replay that path and hold it.",
+      "The helper opens the central pier for the outward lower crossing, then must leave the same plate to restore it as the recoil-assisted return wall.",
+      "The restored pier also supports the upper return across the same room to the original entrance gate."
+    ],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 977,
+      "events": [
+        "plate",
+        "held-open",
+        "land",
+        "held-close",
+        "oren-hold",
+        "stone-lit",
+        "gate-open",
+        "jump",
+        "oren-go",
+        "recoil-load",
+        "recoil-release",
+        "recoil-jump",
+        "dash",
+        "wallbounce",
+        "late-wallbounce",
+        "refill-dash",
+        "grab",
+        "climbhop",
+        "exit"
+      ],
+      "eventCounts": {
+        "plate": 5,
+        "held-open": 2,
+        "land": 7,
+        "held-close": 2,
+        "oren-hold": 1,
+        "stone-lit": 1,
+        "gate-open": 2,
+        "jump": 5,
+        "oren-go": 1,
+        "recoil-load": 1,
+        "recoil-release": 1,
+        "recoil-jump": 1,
+        "dash": 3,
+        "wallbounce": 1,
+        "late-wallbounce": 1,
+        "refill-dash": 3,
+        "grab": 1,
+        "climbhop": 1,
+        "exit": 1
+      }
+    },
+    "endingForgiveness": "The recoil-to-wallbounce transfer has clean early and late variants and lands on an eleven-tile one-way rest. Missing it drops to a safe local floor beside the reusable recoil plate. From that rest onward, the return is a climb, a broad upper shelf and an ordinary jump to the twelve-tile entrance balcony. A three-second pause on the middle return shelf remains valid.",
+    "entrance": "Upper-west overlook with the closed exit visible.",
+    "exit": "The same overlook after circling below and returning over the restored central pier.",
+    "interconnection": "The knight must really visit the middle pressure shelf before Oren can replay that path and hold it. The helper opens the central pier for the outward lower crossing, then must leave the same plate to restore it as the recoil-assisted return wall. The restored pier also supports the upper return across the same room to the original entrance gate.",
+    "designNotes": "64×48 tiles (3.34 normal screen areas), with upper overlook, middle companion shelf, lower gallery and an upper return through the same central structure. No hidden action receipts gate the exit. The single east tally opens real gates; Oren’s pressure and the central pier retain their ordinary device behavior. The far-east outer wall has visible inward teeth and no intermediate shelf, so it cannot replace the central return pier.",
+    "feedback20261009": {
+      "decision": "banked",
+      "note": "User approved for harder Base or easier Fractured. Kept as easier Fractured because the saved route uses a late wallbounce; geometry and movement unchanged."
+    },
+    "placementBand": "early Fractured"
+  },
+  "tape": [
+    [
+      87,
+      "r"
+    ],
+    [
+      50,
+      ""
+    ],
+    [
+      20,
+      "r"
+    ],
+    [
+      1,
+      "q"
+    ],
+    [
+      259,
+      "r"
+    ],
+    [
+      80,
+      "l"
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      10,
+      "l"
+    ],
+    [
+      18,
+      ""
+    ],
+    [
+      23,
+      "l"
+    ],
+    [
+      1,
+      "q"
+    ],
+    [
+      30,
+      "d"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      15,
+      "ux"
+    ],
+    [
+      30,
+      "rj"
+    ],
+    [
+      22,
+      ""
+    ],
+    [
+      16,
+      "lj"
+    ],
+    [
+      14,
+      "ulx"
+    ],
+    [
+      18,
+      "lg"
+    ],
+    [
+      65,
+      "ug"
+    ],
+    [
+      14,
+      "lj"
+    ],
+    [
+      14,
+      "ulx"
+    ],
+    [
+      24,
+      "l"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      16,
+      "l"
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      110,
+      "l"
+    ]
+  ]
+}

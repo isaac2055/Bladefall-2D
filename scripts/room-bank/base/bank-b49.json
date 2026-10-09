@@ -162,7 +162,7 @@
     "run": 5,
     "collection": "run5",
     "format": "superroom",
-    "acceptance": "revised",
+    "acceptance": "banked",
     "status": "route-proven",
     "difficulty": 4,
     "role": "Time two crossings of the changed bridge, then leave the rising return lift before its patrol",
@@ -183,7 +183,7 @@
     ],
     "newMechanics": [],
     "author": "Codex",
-    "humanReview": "Owner: the starting door could be climbed over; the underlying room was decent but lacked engagement. Revision awaits review.",
+    "humanReview": "Approved for middle–late Base superroom. Numeric player ratings remain unmeasured.",
     "requiredEvents": [
       "recoil-jump",
       "step-relay",
@@ -945,6 +945,12 @@
         }
       ],
       "revisionSummary": "The exit gate now reaches the ceiling. Two existing path sweepers add readable crossing and departure timing; neither controls a hidden event gate. The hub and tally ledge give waiting space. The final home platform has an extra tile of safe landing surface so the added middle timing does not make the ending precise."
+    },
+    "placementBand": "middle–late Base superroom",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "middle–late Base superroom",
+      "geometryPreserved": true
     }
   },
   "tape": [

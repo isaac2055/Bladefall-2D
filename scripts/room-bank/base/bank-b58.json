@@ -1,75 +1,119 @@
 {
   "room": {
     "id": "bank-b58",
-    "name": "Under What You Spent",
+    "name": "Leave Yourself a Landing",
     "palette": "woods",
     "study": true,
     "exit": "left",
+    "cols": 48,
     "lock": [
       "portal",
       "parry"
     ],
-    "hint": "Folded hairs welcome a first touch. Leave them, and the same stone needs a different approach.",
-    "question": "Use a marked top once, then return beneath the same solid body.",
     "map": [
-      "########################################",
-      "#.G....................................#",
-      "#.G....................................#",
-      "#.G....................................#",
-      "#.G....................................#",
-      "#.G....................................#",
-      "#.G....................................#",
-      "#.G....................................#",
-      "#.G....................................#",
-      "#.G....................................#",
-      "#.G....................................#",
-      "#.G....................................#",
-      "#.G................................c...#",
-      "#.G..........................###########",
-      "#.G....................................#",
-      "#.G............P.......................#",
-      "#.G....................................#",
-      "#.G....................................#",
-      "#.G....................................#",
-      "..G...........GGGGGGGG.................#",
-      "..G...........GGGGGGGG.................#",
-      "..G...........GGGGGGGG.................#",
-      "########################################"
+      "################################################",
+      "################################################",
+      "################################################",
+      "################################################",
+      "################################################",
+      "################################################",
+      "################################################",
+      "################################################",
+      "################################################",
+      "################################################",
+      "################################################",
+      "################################################",
+      "################################################",
+      "#..............................................#",
+      "#..............................................#",
+      "#..............................................#",
+      "#..............................................#",
+      "..G............................................#",
+      "..G............................................#",
+      "..G............................................#",
+      "..G..P......................................c..#",
+      "################################################",
+      "################################################"
     ],
     "spentThorns": [
       {
-        "id": "First top",
-        "c": 14,
-        "r": 16,
-        "w": 8,
-        "h": 3,
-        "face": "up"
+        "id": "Remembered floor",
+        "c": 3,
+        "r": 21,
+        "w": 44,
+        "h": 1,
+        "face": "up",
+        "segment": 4
       }
     ],
     "sweepers": [
       {
-        "id": "Underpass",
+        "id": "First knot",
         "path": [
           [
-            12,
-            18
-          ],
-          [
-            12,
-            21
+            14,
+            19.25
           ]
         ],
-        "period": 160,
+        "radius": 5
+      },
+      {
+        "id": "Second knot",
+        "path": [
+          [
+            32,
+            19.25
+          ]
+        ],
+        "radius": 5
+      },
+      {
+        "id": "Crossing needle",
+        "path": [
+          [
+            23,
+            14
+          ],
+          [
+            23,
+            20
+          ]
+        ],
+        "period": 180,
+        "phase": 30,
+        "radius": 4
+      },
+      {
+        "id": "Return hook",
+        "path": [
+          [
+            38,
+            15
+          ],
+          [
+            43,
+            15
+          ],
+          [
+            43,
+            20
+          ],
+          [
+            38,
+            20
+          ]
+        ],
+        "loop": true,
+        "period": 240,
+        "phase": 80,
         "radius": 3
       }
     ],
+    "hint": "Each patch remembers your feet. Leave fresh landing places for the way back.",
+    "question": "What part of this floor will still welcome you on the return?",
     "showHintAtRest": true
   },
   "tape": [
-    [
-      12,
-      ""
-    ],
     [
       30,
       "r"
@@ -83,70 +127,168 @@
       "rux"
     ],
     [
-      55,
+      20,
       "r"
     ],
     [
-      124,
-      "l"
-    ],
-    [
-      40,
+      46,
       ""
     ],
     [
-      100,
+      18,
+      "rj"
+    ],
+    [
+      12,
+      "rux"
+    ],
+    [
+      7,
+      "r"
+    ],
+    [
+      28,
+      ""
+    ],
+    [
+      18,
+      "rj"
+    ],
+    [
+      12,
+      "rux"
+    ],
+    [
+      30,
+      "r"
+    ],
+    [
+      16,
+      ""
+    ],
+    [
+      1,
+      "rs"
+    ],
+    [
+      18,
+      "lj"
+    ],
+    [
+      12,
+      "lux"
+    ],
+    [
+      38,
+      ""
+    ],
+    [
+      18,
+      "lj"
+    ],
+    [
+      12,
+      "lux"
+    ],
+    [
+      7,
+      "l"
+    ],
+    [
+      28,
+      ""
+    ],
+    [
+      18,
+      "lj"
+    ],
+    [
+      12,
+      "lux"
+    ],
+    [
+      20,
+      "l"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      10,
+      "j"
+    ],
+    [
+      18,
+      "lj"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      18,
+      "lj"
+    ],
+    [
+      12,
+      "lux"
+    ],
+    [
+      90,
       "l"
     ]
   ],
   "bank": {
     "side": "base",
-    "batch": 14,
+    "batch": 15,
     "run": 7,
     "collection": "run7",
     "format": "compact",
-    "acceptance": "candidate",
+    "acceptance": "revised",
     "status": "route-proven",
-    "difficulty": 2,
-    "role": "Teach safe first contact, permanent face consumption and an alternate return under retained stone.",
+    "difficulty": 4,
+    "author": "Codex",
     "worlds": [],
+    "role": "Remember outbound footprints while choosing fresh return landings through fixed knots and moving needles.",
     "tags": [
-      "spent-floor",
-      "retained-solid",
+      "segmented-spent-floor",
       "return-route",
-      "vertical-patrol",
-      "teaching"
+      "stationary-thorns",
+      "patrol-timing",
+      "landing-reservation"
     ],
     "newMechanics": [
-      "departure-armed persistent surface"
+      "independently spent surface patches"
     ],
-    "author": "Codex",
-    "humanReview": "Unreviewed Run 7 candidate. Author difficulty is provisional; intended-route and bounded input evidence are not human feel ratings.",
     "learningFamily": "spent-faces",
     "lessonRole": "introduce",
     "preparesFor": [
-      "bank-b59",
-      "bank-f59"
+      "bank-b59"
     ],
     "prerequisites": [],
+    "humanReview": "Rebuilt after human feedback; unreviewed revised candidate. Difficulty is an author estimate, not a human rating.",
+    "solution": "Jump the first fixed knot and brake onto the first landing before the vertical needle. Let the needle move away, then cross into the narrow landing before the second knot. Jump that knot to the far landing and cut the tally while the looping patrol travels away. On the return, land between the patches spent outbound: first beyond the second knot, then in the middle gap, then just right of the first knot. Rise vertically before crossing that knot; brake onto the untouched patch beyond the old starting trail. The last jump clears those original footprints and reaches the open exit. Only the small patches actually touched become dangerous.",
+    "nearestExisting": "Replaces the former switch-and-walk B58. F59/F60 still spend entire marked faces; this room instead uses small persistent footprints, making the same floor a different return puzzle. The fixed knots determine launch shape and the two moving routes constrain when those shapes are safe.",
+    "novelty": "Outbound movement manufactures the lethal pattern that the return must solve; untouched gaps retain their exact physical locations.",
+    "timingCues": [
+      "Hold a fresh landing while the vertical needle moves upward out of the crossing.",
+      "At the far tally, read the looping patrol before reversing.",
+      "Pale contact hairs flatten; amber patches count down after departure, then stay red."
+    ],
     "timing": {
-      "kind": "departure-armed surface plus vertical patrol",
       "warningFrames": 18,
-      "patrolPeriod": 160,
-      "cue": "On the lower return, let the patrol lift away from the low passage."
+      "segmentPixels": 4,
+      "patrolPeriods": [
+        180,
+        240
+      ]
     },
-    "solution": "Stand on the folded top and observe that it stays safe while held. Walk toward its right edge, jump and dash up-right to the tally gallery. Once the tally opens the lower gate, walk off the gallery and drop beneath the original stone. Its top is now visibly lethal, but its underside is still ordinary solid. Pause in its lower shelter and pass the vertical patrol when it lifts away from the low passage. Continue left through the open exit.",
-    "nearestExisting": "Crumbles remove the support, and faults break it after a fuse. Here the first top stays physically present and becomes a ceiling over a different return approach. The only patrol is a simple readable vertical stroke; this introduces the spent-face rule before B59/F59/F60.",
-    "novelty": "Teach safe first contact, permanent face consumption and an alternate return under retained stone.",
-    "endingForgiveness": "The lower patrol remains part of the finish. Crossing eight frames earlier and later both work; a three-second longer first hold is also safe. Jumping back onto the used top demonstrably dies to the marked face.",
+    "endingForgiveness": "The last section still asks the player to land between old footprints and a fixed knot. Both four-frame shifts of the first needle departure and a two-frame change to the final short landing complete cleanly. A long final jump that ignores the fresh patch lands on the spent starting trail.",
     "positiveChecks": [
       {
-        "name": "Lower opening eight frames earlier",
+        "name": "Needle departure four frames earlier",
         "tape": [
-          [
-            12,
-            ""
-          ],
           [
             30,
             "r"
@@ -160,33 +302,125 @@
             "rux"
           ],
           [
-            55,
+            20,
             "r"
           ],
           [
-            124,
-            "l"
-          ],
-          [
-            32,
+            42,
             ""
           ],
           [
-            100,
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            7,
+            "r"
+          ],
+          [
+            28,
+            ""
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            16,
+            ""
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            38,
+            ""
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            7,
+            "l"
+          ],
+          [
+            28,
+            ""
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            10,
+            "j"
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            90,
             "l"
           ]
         ],
         "exited": true,
         "deaths": 0,
-        "frames": 372
+        "frames": 587
       },
       {
-        "name": "Lower opening eight frames later",
+        "name": "Needle departure four frames later",
         "tape": [
-          [
-            12,
-            ""
-          ],
           [
             30,
             "r"
@@ -200,33 +434,125 @@
             "rux"
           ],
           [
-            55,
+            20,
             "r"
           ],
           [
-            124,
-            "l"
-          ],
-          [
-            48,
+            50,
             ""
           ],
           [
-            100,
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            7,
+            "r"
+          ],
+          [
+            28,
+            ""
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            16,
+            ""
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            38,
+            ""
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            7,
+            "l"
+          ],
+          [
+            28,
+            ""
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            10,
+            "j"
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            90,
             "l"
           ]
         ],
         "exited": true,
         "deaths": 0,
-        "frames": 388
+        "frames": 595
       },
       {
-        "name": "Stay on the first face three seconds longer",
+        "name": "Last fresh landing two frames shorter",
         "tape": [
-          [
-            192,
-            ""
-          ],
           [
             30,
             "r"
@@ -240,47 +566,127 @@
             "rux"
           ],
           [
-            55,
+            20,
             "r"
           ],
           [
-            124,
-            "l"
-          ],
-          [
-            40,
+            46,
             ""
           ],
           [
-            100,
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            7,
+            "r"
+          ],
+          [
+            28,
+            ""
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            16,
+            ""
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            38,
+            ""
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            7,
+            "l"
+          ],
+          [
+            28,
+            ""
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            10,
+            "j"
+          ],
+          [
+            16,
+            "lj"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            90,
             "l"
           ]
         ],
         "exited": true,
         "deaths": 0,
-        "frames": 560
+        "frames": 591
       }
     ],
     "shortcutChecks": [
       {
-        "name": "Try the exit before the tally",
+        "name": "Retrace floor after tally",
         "tape": [
-          [
-            140,
-            "l"
-          ]
-        ],
-        "exited": false,
-        "deaths": 0,
-        "frames": null
-      },
-      {
-        "name": "Jump back onto the spent top",
-        "tape": [
-          [
-            12,
-            ""
-          ],
           [
             30,
             "r"
@@ -294,25 +700,243 @@
             "rux"
           ],
           [
-            55,
+            20,
             "r"
           ],
           [
-            55,
-            "l"
-          ],
-          [
-            40,
-            "lj"
-          ],
-          [
-            60,
+            46,
             ""
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            7,
+            "r"
+          ],
+          [
+            28,
+            ""
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            16,
+            ""
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            80,
+            "l"
           ]
         ],
         "exited": false,
         "deaths": 1,
-        "frames": null
+        "frames": 0,
+        "firstDeath": {
+          "type": "death",
+          "frame": 319,
+          "x": 268,
+          "y": 163,
+          "cause": "sweeper",
+          "vx": -90,
+          "vy": 0,
+          "i": 318
+        }
+      },
+      {
+        "name": "Jump before the needle clears",
+        "tape": [
+          [
+            30,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            16,
+            ""
+          ],
+          [
+            18,
+            "rj"
+          ]
+        ],
+        "exited": false,
+        "deaths": 1,
+        "frames": 0,
+        "firstDeath": {
+          "type": "death",
+          "frame": 102,
+          "x": 183,
+          "y": 153,
+          "cause": "sweeper",
+          "vx": 90,
+          "vy": -105,
+          "i": 101
+        }
+      },
+      {
+        "name": "Skip the final fresh landing",
+        "tape": [
+          [
+            30,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            46,
+            ""
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            7,
+            "r"
+          ],
+          [
+            28,
+            ""
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            16,
+            ""
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            38,
+            ""
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            7,
+            "l"
+          ],
+          [
+            28,
+            ""
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            10,
+            "j"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            40,
+            "l"
+          ]
+        ],
+        "exited": false,
+        "deaths": 1,
+        "frames": 0,
+        "firstDeath": {
+          "type": "death",
+          "frame": 534,
+          "x": 51,
+          "y": 161,
+          "cause": "spent-thorn",
+          "vx": -90,
+          "vy": 160,
+          "i": 533
+        }
       }
     ],
     "requiredEvents": [
@@ -326,41 +950,141 @@
     "route": {
       "exited": true,
       "deaths": 0,
-      "frames": 380,
+      "frames": 591,
       "events": [
         "spent-thorn-touch",
-        "jump",
         "spent-thorn-leave",
         "spent-thorn-arm",
+        "jump",
         "dash",
         "land",
         "refill-dash",
+        "strike",
         "stone-lit",
         "gate-open",
         "exit"
       ]
     },
-    "designNotes": "Departure-thorn bodies remain solid. Only the visibly marked face arms after departure; continuous first contact is safe. Room completion uses ordinary physical geometry and visible tallies, with no hidden movement-event gate. The patrol clock begins with input and resets per attempt.",
-    "timingCues": [
-      "On the lower return, let the patrol lift away from the low passage.",
-      "Folded hairs mark a safe first contact; an amber warning after departure precedes the permanently red face."
-    ],
     "routeMovement": [
       {
         "type": "jump",
-        "frame": 43,
-        "x": 166,
-        "y": 128,
+        "frame": 31,
+        "x": 86,
+        "y": 168,
         "lift": 0
       },
       {
         "type": "dash",
-        "frame": 65,
-        "x": 196,
-        "y": 97,
+        "frame": 53,
+        "x": 116,
+        "y": 137,
         "dx": 0.7071067811865475,
         "dy": -0.7071067811865475
+      },
+      {
+        "type": "jump",
+        "frame": 127,
+        "x": 175,
+        "y": 168,
+        "lift": 0
+      },
+      {
+        "type": "dash",
+        "frame": 149,
+        "x": 201,
+        "y": 137,
+        "dx": 0.7071067811865475,
+        "dy": -0.7071067811865475
+      },
+      {
+        "type": "jump",
+        "frame": 192,
+        "x": 241,
+        "y": 168,
+        "lift": 0
+      },
+      {
+        "type": "dash",
+        "frame": 214,
+        "x": 267,
+        "y": 137,
+        "dx": 0.7071067811865475,
+        "dy": -0.7071067811865475
+      },
+      {
+        "type": "jump",
+        "frame": 269,
+        "x": 339,
+        "y": 168,
+        "lift": 0
+      },
+      {
+        "type": "dash",
+        "frame": 291,
+        "x": 315,
+        "y": 137,
+        "dx": -0.7071067811865475,
+        "dy": -0.7071067811865475
+      },
+      {
+        "type": "jump",
+        "frame": 337,
+        "x": 281,
+        "y": 168,
+        "lift": 0
+      },
+      {
+        "type": "dash",
+        "frame": 359,
+        "x": 256,
+        "y": 137,
+        "dx": -0.7071067811865475,
+        "dy": -0.7071067811865475
+      },
+      {
+        "type": "jump",
+        "frame": 402,
+        "x": 216,
+        "y": 168,
+        "lift": 0
+      },
+      {
+        "type": "dash",
+        "frame": 424,
+        "x": 190,
+        "y": 137,
+        "dx": -0.7071067811865475,
+        "dy": -0.7071067811865475
+      },
+      {
+        "type": "jump",
+        "frame": 472,
+        "x": 130,
+        "y": 168,
+        "lift": 0
+      },
+      {
+        "type": "jump",
+        "frame": 525,
+        "x": 103,
+        "y": 168,
+        "lift": 0
+      },
+      {
+        "type": "dash",
+        "frame": 547,
+        "x": 78,
+        "y": 137,
+        "dx": -0.7071067811865475,
+        "dy": -0.7071067811865475
       }
-    ]
+    ],
+    "review": {
+      "feedback": "Prior room reduced to dash to the tally and walk back; replace it with a meaningful route.",
+      "response": "Full geometry, route and hazard reinvention. The return now crosses a floor permanently altered by outbound contacts.",
+      "reportedBypasses": [],
+      "reproductionNote": "The prior canonical 380-frame route itself demonstrates the reported trivial tally-and-walk structure; the complaint was lack of consequence rather than a separate exact-input shortcut."
+    },
+    "designNotes": "Per-patch spending is opt-in through segment:4; approved F59/F60 keep whole-face behavior. Each backing body remains solid. Only touched patches arm, and visible geometry/hazards enforce routing; no hidden action-event gate is used. Stationary thorns and moving patrols have no drawn path guides."
   }
 }

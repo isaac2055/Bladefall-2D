@@ -100,7 +100,7 @@
     "batch": 10,
     "run": 4,
     "collection": "superrooms",
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "difficulty": 4,
     "role": "interconnected superroom",
     "worlds": [],
@@ -118,7 +118,7 @@
     "newMechanics": [],
     "status": "route-proven",
     "author": "Codex",
-    "humanReview": "Unreviewed; difficulty is an author estimate.",
+    "humanReview": "Approved for late Fractured superroom. Numeric player ratings remain unmeasured.",
     "approvedIngredients": [
       "bank-f19",
       "bank-f43",
@@ -1462,7 +1462,13 @@
           "deaths": 2
         }
       }
-    ]
+    ],
+    "placementBand": "late Fractured superroom",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "late Fractured superroom",
+      "geometryPreserved": true
+    }
   },
   "tape": [
     [

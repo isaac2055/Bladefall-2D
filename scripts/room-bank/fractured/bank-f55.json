@@ -80,7 +80,7 @@
     "run": 7,
     "collection": "run7",
     "format": "compact",
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "status": "route-proven",
     "difficulty": 4,
     "role": "Carry wavedash momentum into a low pogo and spend its restored dash inside the next patrol window",
@@ -94,7 +94,7 @@
     ],
     "newMechanics": [],
     "author": "Codex",
-    "humanReview": "Unreviewed candidate. Author difficulty is provisional.",
+    "humanReview": "Approved for Fractured. Numeric player ratings and exact campaign position remain unmeasured.",
     "learningFamily": "timed-launch-and-pogo",
     "lessonRole": "combine",
     "prerequisites": [
@@ -619,6 +619,12 @@
     ],
     "review": {
       "authorEvidence": "One zero-death canonical route, two or three saved timing/contact variants, and active ordinary-route bypass attempts. Human fun/difficulty/suitability review remains pending."
+    },
+    "placementBand": "Fractured",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "Fractured",
+      "geometryPreserved": true
     }
   },
   "tape": [

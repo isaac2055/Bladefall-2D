@@ -54,7 +54,7 @@
   "bank": {
     "side": "base",
     "batch": 3,
-    "acceptance": "revised",
+    "acceptance": "banked",
     "difficulty": 4,
     "role": "solve",
     "worlds": [
@@ -204,7 +204,14 @@
       "scope": "Focused wrong-timing route and obvious shortcut review; not an exhaustive search.",
       "result": "The 8px heat throat admits only cargo. Bad release timing loses the lantern and leaves the remote receiver empty; waiting does not eventually complete that delivery."
     },
-    "archivedBeforeRevision": "scripts/room-bank/archive/batch-03-before-review/base/bank-b17.json"
+    "archivedBeforeRevision": "scripts/room-bank/archive/batch-03-before-review/base/bank-b17.json",
+    "placementBand": "middle Base",
+    "humanReview": "Approved for middle Base. Numeric player ratings remain unmeasured.",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "middle Base",
+      "geometryPreserved": true
+    }
   },
   "tape": [
     [

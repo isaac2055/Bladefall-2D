@@ -23,19 +23,19 @@
       "#......................................#",
       "#......................................#",
       "#......................................#",
-      "#................######................#",
-      "#................######...............c#",
-      "#................######..............###",
+      "#......................................#",
+      "#.....................................c#",
       "#....................................###",
-      "#...................................<###",
-      "#..P................................<###",
-      "########............................<###",
-      "########............................<###",
+      "#................GGGGGG..............###",
+      "#...........b....GGGGGG.............<###",
+      "#..P.............GGGGGG.............<###",
+      "########.........GGGGGG.............<###",
+      "########.........GGGGGG.............<###",
       "########^^^^^^^^^^^^^^^^^^^^^^^^^^^^<###",
       "########################################"
     ],
-    "hint": "The deck keeps its schedule. The stone island stays above the low patrol.",
-    "question": "The outward crossing earns the key. What changes when the deck returns underneath you?",
+    "hint": "The key opens the island’s underside; its spent top cannot catch your return.",
+    "question": "If the island cannot catch you twice, where must the returning deck launch you?",
     "decks": [
       {
         "c": 7,
@@ -52,21 +52,29 @@
     ],
     "sweepers": [
       {
-        "id": "A",
+        "id": "Around the island",
         "path": [
           [
             13,
             17
           ],
           [
-            27,
+            25,
             17
+          ],
+          [
+            25,
+            10
+          ],
+          [
+            13,
+            10
           ]
         ],
         "period": 260,
-        "phase": 80,
-        "radius": 5,
-        "loop": false
+        "phase": 125,
+        "radius": 4,
+        "loop": true
       },
       {
         "id": "B",
@@ -84,15 +92,43 @@
         "phase": 165,
         "radius": 5,
         "loop": false
+      },
+      {
+        "id": "Home stroke",
+        "path": [
+          [
+            8.75,
+            6
+          ],
+          [
+            8.75,
+            13
+          ]
+        ],
+        "period": 160,
+        "phase": 60,
+        "radius": 4
+      }
+    ],
+    "movement": "survive-2",
+    "showHintAtRest": true,
+    "spentThorns": [
+      {
+        "id": "Passing island",
+        "c": 17,
+        "r": 13,
+        "w": 6,
+        "h": 3,
+        "face": "up"
       }
     ]
   },
   "bank": {
     "side": "fractured",
-    "batch": 4,
-    "acceptance": "candidate",
+    "batch": 15,
+    "acceptance": "revised",
     "difficulty": 5,
-    "role": "timing-puzzle",
+    "role": "Open the freight underpass after spending the island top, then launch from the returning deck",
     "worlds": [
       26,
       36,
@@ -103,62 +139,52 @@
       "sweeper",
       "moving-deck",
       "interception",
-      "return-route"
+      "return-route",
+      "spent-thorn",
+      "pogo-loft",
+      "shared-gate"
     ],
-    "newMechanics": [
-      "sweeper"
-    ],
+    "newMechanics": [],
     "status": "route-proven",
     "author": "Codex",
-    "humanReview": "Author difficulty estimate only; fun/difficulty/suitability ratings pending.",
-    "entrance": "Lower western dock.",
-    "exit": "Upper western gate.",
-    "solution": "Board the outward deck and jump/dash onto the central island before the low patrol reaches the track. Move to its eastern edge while the patrol passes below and away, then jump/dash onto the deck near the far dock. Jump to the tally while the vertical patrol is below the transfer. From the far dock, dash left to catch the returning deck during that same clear window. Jump/dash back onto the island before the low patrol reaches the deck again; the now-open exit is a separate jump/dash above the original western dock.",
-    "nearestExisting": "F16 Return Freight intercepts cargo carried through a low tunnel; p152 Deck rides an elevator and p153 Running Start borrows its speed. Here the knight makes two different interceptions of one continuously moving deck, choosing a static refuge while the patrol occupies its track and a different takeoff on the return.",
-    "novelty": "The island is neither the destination nor merely an intermediate jump. It lets the deck and hazard move independently, then becomes the return launch toward an exit behind the start.",
+    "humanReview": "Revised after the user found the original too easy. Fun, difficulty and suitability await human review; numeric difficulty remains an author estimate.",
+    "entrance": "Lower western dock; the closed freight gate makes the outward island transfer necessary.",
+    "exit": "Upper western balcony beyond the tally gate, reached after the returning-deck loft.",
+    "solution": "Board the outward deck and jump/updash onto the island because its lower freight passage is closed. Cross the island and leave its marked top for the far deck and tally, spending that top. The tally opens both the western exit and the underpass below the island. Dash left to catch the returning deck, ride beneath the spent body, and watch the pod approach the western edge. Jump left and hold Jump with a downcut to loft from the pod. Pass above the descending home thorn, then dash straight up beside the exit lip before moving left onto it. A diagonal dash too early goes under the balcony instead of over its edge.",
+    "nearestExisting": "The original F25 used the same safe island in both directions. B58 taught that a used top can remain a useful ceiling, and F57 joined a moving launch to a timed loft. This revision keeps the original moving freight but gives the tally a second physical job: it opens the island’s underside after the first departure has made its top unusable.",
+    "novelty": "One visit changes which side of the island is useful. The outward gate forces the upper transfer, and the same distant tally opens the lower return. The deck is intercepted from the opposite shore; the final loft and vertical dash continue its movement instead of returning to the old unlimited rest.",
     "timing": {
-      "principle": "Leave the moving deck for a fixed refuge, then choose a new interception from the opposite side.",
+      "principle": "Spend the upper refuge outward, then use the newly opened lower passage and moving launch home.",
       "stages": [
         {
-          "cue": "The deck brings the island within reach while the low patrol approaches its track.",
-          "action": "Jump/dash onto the island and let the patrol move below you.",
-          "rest": "Central stone island."
+          "cue": "Leave the deck for the island before the closed freight gate reaches the knight.",
+          "action": "Reach and leave the marked island, then take the far tally.",
+          "rest": "Far tally dock."
         },
         {
-          "cue": "The low patrol has passed the island to the west; the deck is near the far dock and the vertical patrol is below the transfer.",
-          "action": "Intercept the outward deck and jump to the far tally.",
-          "rest": "Eastern dock."
+          "cue": "At the far tally, catch the returning deck while the vertical thorn is below the crossing.",
+          "action": "Intercept the returning deck through the now-open lower passage.",
+          "rest": "Moving deck only."
         },
         {
-          "cue": "The deck is returning while the vertical patrol remains below the leftward crossing.",
-          "action": "Dash onto the deck, then jump/dash to the island before the low sweep returns.",
-          "rest": "Central island; then upper-west exit."
+          "cue": "Ride through the opened underpass; jump as the pod comes alongside and loft while the home thorn descends below the ascent.",
+          "action": "Loft from the pod and dash vertically past the exit lip.",
+          "rest": "Upper western exit."
         }
       ]
     },
-    "verifiedAt": "2026-10-07",
-    "route": {
-      "frames": 413,
-      "deaths": 0,
-      "events": [
-        "jump",
-        "land",
-        "dash",
-        "refill-dash",
-        "stone-lit",
-        "gate-open",
-        "exit"
-      ],
-      "movement": "Outward interception, far-dock jump, leftward dash to the returning deck, opposite transfer to the island, and upper-west exit jump."
-    },
     "requiredEvents": [
+      "spent-thorn-touch",
+      "spent-thorn-arm",
       "stone-lit",
       "gate-open",
+      "pogo-loft",
+      "pod",
       "dash"
     ],
     "shortcutChecks": [
       {
-        "name": "Stay aboard instead of leaving for the return refuge",
+        "name": "Use the original island return",
         "tape": [
           [
             16,
@@ -218,94 +244,6 @@
           ],
           [
             10,
-            ""
-          ],
-          [
-            6,
-            "lx"
-          ],
-          [
-            35,
-            "l"
-          ],
-          [
-            6,
-            ""
-          ]
-        ],
-        "after": {
-          "exited": false,
-          "firstFailure": {
-            "frame": 268,
-            "cause": "sweeper"
-          }
-        }
-      },
-      {
-        "name": "Miss the far-dock return window",
-        "tape": [
-          [
-            16,
-            "r"
-          ],
-          [
-            12,
-            "rj"
-          ],
-          [
-            20,
-            "r"
-          ],
-          [
-            10,
-            ""
-          ],
-          [
-            12,
-            "rj"
-          ],
-          [
-            6,
-            "ux"
-          ],
-          [
-            12,
-            "r"
-          ],
-          [
-            20,
-            ""
-          ],
-          [
-            28,
-            "r"
-          ],
-          [
-            12,
-            "rj"
-          ],
-          [
-            6,
-            "rx"
-          ],
-          [
-            35,
-            "r"
-          ],
-          [
-            2,
-            ""
-          ],
-          [
-            20,
-            "rj"
-          ],
-          [
-            10,
-            ""
-          ],
-          [
-            50,
             ""
           ],
           [
@@ -351,31 +289,860 @@
         ],
         "after": {
           "exited": false,
+          "deaths": 1,
+          "frames": null,
+          "events": [
+            "jump",
+            "land",
+            "dash",
+            "spent-thorn-touch",
+            "refill-dash",
+            "spent-thorn-leave",
+            "spent-thorn-arm",
+            "stone-lit",
+            "gate-open",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 6,
+            "land": 6,
+            "dash": 5,
+            "spent-thorn-touch": 1,
+            "refill-dash": 4,
+            "spent-thorn-leave": 1,
+            "spent-thorn-arm": 1,
+            "stone-lit": 1,
+            "gate-open": 2,
+            "death": 1,
+            "respawn": 1
+          },
           "firstFailure": {
-            "frame": 278,
-            "cause": "sweeper"
+            "type": "death",
+            "frame": 287,
+            "x": 177,
+            "y": 98,
+            "cause": "spent-thorn",
+            "vx": 0,
+            "vy": 110.14718625761431,
+            "i": 286
+          }
+        }
+      },
+      {
+        "name": "Jump directly from far tally to the high west exit",
+        "tape": [
+          [
+            16,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            6,
+            "ux"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            6,
+            "rx"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            2,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            12,
+            "lx"
+          ],
+          [
+            100,
+            "lgu"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": null,
+          "events": [
+            "jump",
+            "land",
+            "dash",
+            "spent-thorn-touch",
+            "refill-dash",
+            "spent-thorn-leave",
+            "spent-thorn-arm",
+            "stone-lit",
+            "gate-open",
+            "grab",
+            "death"
+          ],
+          "eventCounts": {
+            "jump": 5,
+            "land": 5,
+            "dash": 3,
+            "spent-thorn-touch": 1,
+            "refill-dash": 3,
+            "spent-thorn-leave": 1,
+            "spent-thorn-arm": 1,
+            "stone-lit": 1,
+            "gate-open": 2,
+            "grab": 1,
+            "death": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 364,
+            "x": 68,
+            "y": 171,
+            "cause": "spikes",
+            "vx": 0,
+            "vy": 0,
+            "i": 363
+          }
+        }
+      },
+      {
+        "name": "Skip the return loft and dash from freight",
+        "tape": [
+          [
+            16,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            6,
+            "ux"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            6,
+            "rx"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            2,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            6,
+            "lx"
+          ],
+          [
+            22,
+            "l"
+          ],
+          [
+            74,
+            ""
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            100,
+            "lgu"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": null,
+          "events": [
+            "jump",
+            "land",
+            "dash",
+            "spent-thorn-touch",
+            "refill-dash",
+            "spent-thorn-leave",
+            "spent-thorn-arm",
+            "stone-lit",
+            "gate-open",
+            "death",
+            "respawn",
+            "grab"
+          ],
+          "eventCounts": {
+            "jump": 5,
+            "land": 6,
+            "dash": 3,
+            "spent-thorn-touch": 1,
+            "refill-dash": 3,
+            "spent-thorn-leave": 1,
+            "spent-thorn-arm": 1,
+            "stone-lit": 1,
+            "gate-open": 2,
+            "death": 1,
+            "respawn": 1,
+            "grab": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 342,
+            "x": 79,
+            "y": 112,
+            "cause": "sweeper",
+            "vx": -90,
+            "vy": -15,
+            "i": 341
+          }
+        }
+      },
+      {
+        "name": "Remain on outward deck beneath the island",
+        "tape": [
+          [
+            16,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            115,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 3,
+          "frames": null,
+          "events": [
+            "jump",
+            "land",
+            "death",
+            "respawn",
+            "dash"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "land": 1,
+            "death": 3,
+            "respawn": 3,
+            "dash": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 92,
+            "x": 132,
+            "y": 171,
+            "cause": "spikes",
+            "vx": 0,
+            "vy": 160,
+            "i": 91
           }
         }
       }
     ],
-    "bypassCheck": {
-      "stayAboardReturn": {
-        "exited": false,
-        "firstFailure": {
-          "frame": 268,
-          "cause": "sweeper"
+    "positiveChecks": [
+      {
+        "name": "Return boarding two frames later",
+        "tape": [
+          [
+            16,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            6,
+            "ux"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            6,
+            "rx"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            2,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            6,
+            "lx"
+          ],
+          [
+            22,
+            "l"
+          ],
+          [
+            74,
+            ""
+          ],
+          [
+            1,
+            "lj"
+          ],
+          [
+            1,
+            "ldjs"
+          ],
+          [
+            24,
+            "l"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            70,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 418,
+          "events": [
+            "jump",
+            "land",
+            "dash",
+            "spent-thorn-touch",
+            "refill-dash",
+            "spent-thorn-leave",
+            "spent-thorn-arm",
+            "stone-lit",
+            "gate-open",
+            "strike",
+            "pogo-loft",
+            "pod",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 5,
+            "land": 6,
+            "dash": 4,
+            "spent-thorn-touch": 1,
+            "refill-dash": 4,
+            "spent-thorn-leave": 1,
+            "spent-thorn-arm": 1,
+            "stone-lit": 1,
+            "gate-open": 2,
+            "strike": 1,
+            "pogo-loft": 1,
+            "pod": 1,
+            "exit": 1
+          }
         }
       },
-      "lateReturn": {
-        "exited": false,
-        "firstFailure": {
-          "frame": 278,
-          "cause": "sweeper"
-        },
-        "extraDockWait": 50
+      {
+        "name": "Final loft two frames earlier",
+        "tape": [
+          [
+            16,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            6,
+            "ux"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            6,
+            "rx"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            2,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            6,
+            "lx"
+          ],
+          [
+            22,
+            "l"
+          ],
+          [
+            72,
+            ""
+          ],
+          [
+            1,
+            "lj"
+          ],
+          [
+            1,
+            "ldjs"
+          ],
+          [
+            24,
+            "l"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            70,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 415,
+          "events": [
+            "jump",
+            "land",
+            "dash",
+            "spent-thorn-touch",
+            "refill-dash",
+            "spent-thorn-leave",
+            "spent-thorn-arm",
+            "stone-lit",
+            "gate-open",
+            "strike",
+            "pogo-loft",
+            "pod",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 5,
+            "land": 6,
+            "dash": 4,
+            "spent-thorn-touch": 1,
+            "refill-dash": 4,
+            "spent-thorn-leave": 1,
+            "spent-thorn-arm": 1,
+            "stone-lit": 1,
+            "gate-open": 2,
+            "strike": 1,
+            "pogo-loft": 1,
+            "pod": 1,
+            "exit": 1
+          }
+        }
       },
-      "scope": "Two focused timing mistakes; no broad route search."
-    }
+      {
+        "name": "Final upward dash two frames earlier",
+        "tape": [
+          [
+            16,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            6,
+            "ux"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            6,
+            "rx"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            2,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            6,
+            "lx"
+          ],
+          [
+            22,
+            "l"
+          ],
+          [
+            74,
+            ""
+          ],
+          [
+            1,
+            "lj"
+          ],
+          [
+            1,
+            "ldjs"
+          ],
+          [
+            22,
+            "l"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            70,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 416,
+          "events": [
+            "jump",
+            "land",
+            "dash",
+            "spent-thorn-touch",
+            "refill-dash",
+            "spent-thorn-leave",
+            "spent-thorn-arm",
+            "stone-lit",
+            "gate-open",
+            "strike",
+            "pogo-loft",
+            "pod",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 5,
+            "land": 6,
+            "dash": 4,
+            "spent-thorn-touch": 1,
+            "refill-dash": 4,
+            "spent-thorn-leave": 1,
+            "spent-thorn-arm": 1,
+            "stone-lit": 1,
+            "gate-open": 2,
+            "strike": 1,
+            "pogo-loft": 1,
+            "pod": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "review": {
+      "request": "The user found this room too easy and requested more consequential timing and problem solving.",
+      "sourceBefore": "scripts/room-bank/archive/before-final-review-7.302/fractured/25-bank-f25.json",
+      "revision": "Spiced-up route for 7.302 review; no approval inferred.",
+      "scope": "One canonical route, three meaningful input variants, and focused active ordinary-route/timing attempts. No exhaustive shortcut search or invisible exit-event gates."
+    },
+    "learningFamily": "spent-freight-return",
+    "lessonRole": "combine",
+    "timingCues": [
+      "Leave the deck for the island before the closed freight gate reaches the knight.",
+      "At the far tally, catch the returning deck while the vertical thorn is below the crossing.",
+      "Ride through the opened underpass; jump as the pod comes alongside and loft while the home thorn descends below the ascent."
+    ],
+    "format": "compact",
+    "prerequisites": [],
+    "preparesFor": [],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 416,
+      "events": [
+        "jump",
+        "land",
+        "dash",
+        "spent-thorn-touch",
+        "refill-dash",
+        "spent-thorn-leave",
+        "spent-thorn-arm",
+        "stone-lit",
+        "gate-open",
+        "strike",
+        "pogo-loft",
+        "pod",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 5,
+        "land": 6,
+        "dash": 4,
+        "spent-thorn-touch": 1,
+        "refill-dash": 4,
+        "spent-thorn-leave": 1,
+        "spent-thorn-arm": 1,
+        "stone-lit": 1,
+        "gate-open": 2,
+        "strike": 1,
+        "pogo-loft": 1,
+        "pod": 1,
+        "exit": 1
+      }
+    },
+    "actualMovementEvents": [
+      "jump",
+      "land",
+      "dash",
+      "spent-thorn-touch",
+      "refill-dash",
+      "spent-thorn-leave",
+      "spent-thorn-arm",
+      "stone-lit",
+      "gate-open",
+      "strike",
+      "pogo-loft",
+      "pod",
+      "exit"
+    ],
+    "routeMovement": [
+      {
+        "type": "spent-thorn-leave",
+        "frame": 137,
+        "x": 160,
+        "y": 104,
+        "id": "Passing island",
+        "face": "up",
+        "i": 136
+      },
+      {
+        "type": "gate-open",
+        "frame": 215,
+        "x": 28,
+        "y": 40,
+        "i": 214
+      },
+      {
+        "type": "gate-open",
+        "frame": 215,
+        "x": 160,
+        "y": 148,
+        "i": 214
+      },
+      {
+        "type": "pogo-loft",
+        "frame": 325,
+        "x": 108,
+        "y": 141,
+        "vy": -210,
+        "i": 324
+      }
+    ]
   },
   "tape": [
     [
@@ -447,35 +1214,27 @@
       "l"
     ],
     [
-      12,
-      "lj"
-    ],
-    [
-      6,
-      "lux"
-    ],
-    [
-      25,
+      74,
       ""
     ],
     [
-      28,
+      1,
+      "lj"
+    ],
+    [
+      1,
+      "ldjs"
+    ],
+    [
+      24,
       "l"
     ],
     [
-      5,
-      ""
-    ],
-    [
       12,
-      "lj"
+      "ux"
     ],
     [
-      6,
-      "lux"
-    ],
-    [
-      80,
+      70,
       "l"
     ]
   ]

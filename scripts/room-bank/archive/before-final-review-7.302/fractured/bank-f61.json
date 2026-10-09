@@ -1,0 +1,724 @@
+{
+  "room": {
+    "id": "bank-f61",
+    "name": "Answer Without Landing",
+    "palette": "sunspire",
+    "study": true,
+    "movement": "survive-2",
+    "aim8": true,
+    "exit": "right",
+    "lock": [
+      "portal"
+    ],
+    "map": [
+      "########################################",
+      "#...............####...#...............#",
+      "#...............####...#...............#",
+      "#...............####...#...............#",
+      "#...............####...#...............#",
+      "#...............####...#...............#",
+      "#...............####...#...............#",
+      "#...............####...#...............#",
+      "#...............####...#...............#",
+      "#...............####...#...............#",
+      "#...............####...#...............#",
+      "#...............####...#...............#",
+      "#...............####...#...............#",
+      "#...............####...#...............#",
+      "#...............####...#...............#",
+      "#...............vvvvvvvv...............#",
+      "#.......................................",
+      "#.......................................",
+      "#.............................##########",
+      "#...P.........................##########",
+      "################..............##########",
+      "################^^^^^^^^^^^^^^##########",
+      "########################################"
+    ],
+    "hint": "Keep the launch low. Send the reply up the shaft, then dash only after the thorn roof ends.",
+    "question": "Can you meet the attack without giving up the speed that carries you past it?",
+    "foes": [
+      {
+        "kind": "spit",
+        "x": 37,
+        "y": 17,
+        "dir": [
+          -1,
+          0
+        ],
+        "every": 150,
+        "offset": 145,
+        "speed": 180
+      }
+    ],
+    "sweepers": [
+      {
+        "id": "Orbit",
+        "path": [
+          [
+            25,
+            12
+          ],
+          [
+            30,
+            12
+          ],
+          [
+            30,
+            18
+          ],
+          [
+            25,
+            18
+          ]
+        ],
+        "loop": true,
+        "period": 160,
+        "phase": 20,
+        "radius": 4
+      }
+    ],
+    "combat": {
+      "waitForMove": true,
+      "enemies": [],
+      "receivers": [
+        {
+          "id": "Reply",
+          "x": 163,
+          "y": 60
+        }
+      ],
+      "doors": [
+        {
+          "x": 304,
+          "y": 8,
+          "w": 8,
+          "h": 136,
+          "coils": [
+            "Reply"
+          ]
+        }
+      ]
+    }
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 14,
+    "run": 7,
+    "collection": "run7",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "difficulty": 4,
+    "role": "Maintain a low launch through an airborne reply",
+    "worlds": [],
+    "tags": [
+      "wavedash",
+      "hyper",
+      "parry",
+      "patrol",
+      "arrival-timing"
+    ],
+    "newMechanics": [],
+    "author": "Codex",
+    "humanReview": "Unreviewed candidate. Difficulty is an author estimate; no human ratings assigned.",
+    "learningFamily": "reply-and-cycle",
+    "lessonRole": "combine",
+    "preparesFor": [],
+    "prerequisites": [
+      "bank-b60"
+    ],
+    "format": "compact",
+    "requiredEvents": [
+      "hyper",
+      "parry",
+      "receiver-lit",
+      "combat-gate"
+    ],
+    "solution": "Hop into a down-right wavedash and jump out low beneath the thorn roof. As the incoming pulse reaches the shaft, parry straight up to the receiver above. Continue right and use the preserved airborne dash after the roof ends, crossing the orbiting patrol to the far bank. Catch the side, climb over its lip and leave through the opened door. The receiver is physically shielded from a ground-level reply; the launch supplies the low moving interception.",
+    "nearestExisting": "F33 uses a stationary guard, destroys its shield, then retreats to wavedash. Here the incoming attack must be answered during the moving low launch itself, without a return to a runway.",
+    "novelty": "A low momentum launch must align an upward reply through a narrow overhead shaft, then change height after the roof while an orbiting hazard changes the landing approach.",
+    "entrance": "Western runway; watch the pulse and crossing patrol.",
+    "exit": "Raised east bank under a sealed reply door.",
+    "positiveChecks": [
+      {
+        "name": "Answer one frame earlier",
+        "tape": [
+          [
+            12,
+            "r"
+          ],
+          [
+            6,
+            "j"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            9,
+            "up"
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            70,
+            "rgu"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            60,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 156,
+        "events": [
+          "enemy-shot",
+          "jump",
+          "dash",
+          "land",
+          "ultra",
+          "refill-dash",
+          "hyper",
+          "parry-ready",
+          "parry",
+          "receiver-lit",
+          "combat-gate",
+          "grab",
+          "climbhop",
+          "strike",
+          "exit"
+        ],
+        "eventCounts": {
+          "enemy-shot": 1,
+          "jump": 1,
+          "dash": 2,
+          "land": 2,
+          "ultra": 1,
+          "refill-dash": 2,
+          "hyper": 1,
+          "parry-ready": 1,
+          "parry": 1,
+          "receiver-lit": 1,
+          "combat-gate": 1,
+          "grab": 1,
+          "climbhop": 1,
+          "strike": 1,
+          "exit": 1
+        }
+      },
+      {
+        "name": "Answer one frame later",
+        "tape": [
+          [
+            12,
+            "r"
+          ],
+          [
+            6,
+            "j"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            3,
+            "r"
+          ],
+          [
+            7,
+            "up"
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            70,
+            "rgu"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            60,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 141,
+        "events": [
+          "enemy-shot",
+          "jump",
+          "dash",
+          "land",
+          "ultra",
+          "refill-dash",
+          "hyper",
+          "parry-ready",
+          "parry",
+          "receiver-lit",
+          "combat-gate",
+          "exit"
+        ],
+        "eventCounts": {
+          "enemy-shot": 1,
+          "jump": 1,
+          "dash": 2,
+          "land": 2,
+          "ultra": 1,
+          "refill-dash": 2,
+          "hyper": 1,
+          "parry-ready": 1,
+          "parry": 1,
+          "receiver-lit": 1,
+          "combat-gate": 1,
+          "exit": 1
+        }
+      },
+      {
+        "name": "Answer two frames later",
+        "tape": [
+          [
+            12,
+            "r"
+          ],
+          [
+            6,
+            "j"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            6,
+            "up"
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            70,
+            "rgu"
+          ],
+          [
+            15,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 140
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Omit airborne reply",
+        "tape": [
+          [
+            12,
+            "r"
+          ],
+          [
+            6,
+            "j"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            2,
+            "r"
+          ],
+          [
+            8,
+            "u"
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            70,
+            "rgu"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            60,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 2,
+        "frames": 0,
+        "events": [
+          "enemy-shot",
+          "jump",
+          "dash",
+          "land",
+          "ultra",
+          "refill-dash",
+          "hyper",
+          "death",
+          "respawn",
+          "strike"
+        ],
+        "eventCounts": {
+          "enemy-shot": 3,
+          "jump": 1,
+          "dash": 1,
+          "land": 1,
+          "ultra": 1,
+          "refill-dash": 1,
+          "hyper": 1,
+          "death": 2,
+          "respawn": 2,
+          "strike": 1
+        }
+      },
+      {
+        "name": "Ordinary edge jump and dash into reply",
+        "tape": [
+          [
+            54,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            8,
+            "up"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            180,
+            "rgu"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 3,
+        "frames": 0,
+        "events": [
+          "enemy-shot",
+          "jump",
+          "death",
+          "respawn",
+          "strike",
+          "dash"
+        ],
+        "eventCounts": {
+          "enemy-shot": 4,
+          "jump": 1,
+          "death": 3,
+          "respawn": 3,
+          "strike": 1,
+          "dash": 1
+        }
+      },
+      {
+        "name": "Aim reply straight ahead",
+        "tape": [
+          [
+            12,
+            "r"
+          ],
+          [
+            6,
+            "j"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            2,
+            "r"
+          ],
+          [
+            8,
+            "rp"
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            70,
+            "rgu"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            60,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 0,
+        "frames": 0,
+        "events": [
+          "enemy-shot",
+          "jump",
+          "dash",
+          "land",
+          "ultra",
+          "refill-dash",
+          "hyper",
+          "parry-ready",
+          "parry",
+          "enemy-hit",
+          "grab",
+          "strike",
+          "enemy-defeat"
+        ],
+        "eventCounts": {
+          "enemy-shot": 1,
+          "jump": 1,
+          "dash": 3,
+          "land": 2,
+          "ultra": 1,
+          "refill-dash": 3,
+          "hyper": 1,
+          "parry-ready": 1,
+          "parry": 1,
+          "enemy-hit": 1,
+          "grab": 1,
+          "strike": 1,
+          "enemy-defeat": 1
+        }
+      }
+    ],
+    "timingCues": [
+      "Meet the pulse beneath the clear shaft: the reply must travel up through the roof.",
+      "The patrol orbits the far approach; continue beneath its upper pass, then change height after the roof ends."
+    ],
+    "routeProof": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 143,
+      "events": [
+        "enemy-shot",
+        "jump",
+        "dash",
+        "land",
+        "ultra",
+        "refill-dash",
+        "hyper",
+        "parry-ready",
+        "parry",
+        "receiver-lit",
+        "combat-gate",
+        "exit"
+      ],
+      "eventCounts": {
+        "enemy-shot": 1,
+        "jump": 1,
+        "dash": 2,
+        "land": 2,
+        "ultra": 1,
+        "refill-dash": 2,
+        "hyper": 1,
+        "parry-ready": 1,
+        "parry": 1,
+        "receiver-lit": 1,
+        "combat-gate": 1,
+        "exit": 1
+      }
+    },
+    "routeMovement": [
+      {
+        "type": "ultra",
+        "frame": 27
+      },
+      {
+        "type": "hyper",
+        "frame": 31,
+        "x": 80,
+        "y": 160
+      },
+      {
+        "type": "parry",
+        "frame": 48,
+        "x": 166,
+        "y": 136
+      }
+    ]
+  },
+  "tape": [
+    [
+      12,
+      "r"
+    ],
+    [
+      6,
+      "j"
+    ],
+    [
+      12,
+      "rdx"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      2,
+      "r"
+    ],
+    [
+      8,
+      "up"
+    ],
+    [
+      4,
+      "r"
+    ],
+    [
+      12,
+      "rux"
+    ],
+    [
+      70,
+      "rgu"
+    ],
+    [
+      15,
+      "r"
+    ]
+  ]
+}

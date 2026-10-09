@@ -16,3 +16,10 @@ Core.resetRoom(g);const old=structuredClone(g.sweepers[0]);globalThis.BladefallP
 Core.resetRoom(g);assert.equal(g.flipped,false);assert.equal(g.sweepers[0].y,84);
 const loop={...def,sweepers:[{path:[[4,4],[8,4],[8,8],[4,8]],period:128,loop:true}]};const h=Core.createGame([loop]);assert.deepEqual(D.at(h.sweepers[0],32),{x:68,y:36});assert.deepEqual(D.at(h.sweepers[0],128),{x:36,y:36});
 console.log('Sweepers: opt-in, input clock, reset, paths, non-solid, swept dash collision, echo/portal discontinuity, and gravity PASS.');
+
+const fixed=Core.createGame([{...def,sweepers:[{path:[[12,10]],radius:5}]}]);
+assert.deepEqual(D.at(fixed.sweepers[0],999),{x:100,y:84},'stationary thorn stays fixed');
+for(let i=0;i<30;i++)Core.step(fixed,{r:true});assert.equal(fixed.sweepers[0].x,100);assert.equal(fixed.sweepers[0].y,84);
+Object.assign(fixed.p,{x:96,y:78,state:'normal'});dev.before(fixed);dev.after(fixed);assert.equal(fixed.p.state,'dead','stationary thorn is lethal');
+Core.resetRoom(fixed);globalThis.BladefallPrecisionGravity.mirror(fixed);assert.deepEqual(D.at(fixed.sweepers[0],300),{x:100,y:100},'stationary thorn mirrors');
+console.log('Stationary thorns: position, collision, reset and mirroring PASS.');

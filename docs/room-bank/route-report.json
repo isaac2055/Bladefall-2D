@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-09T20:37:42.627Z",
+  "checkedAt": "2026-10-09T22:42:54.356Z",
   "kind": "One saved zero-death route per room; human fun/difficulty/suitability unmeasured",
   "rooms": [
     {
@@ -150,7 +150,7 @@
       }
     },
     {
-      "acceptance": "revised",
+      "acceptance": "banked",
       "shortcutChecks": 1,
       "positiveChecks": 0,
       "id": "bank-b16",
@@ -177,7 +177,7 @@
       }
     },
     {
-      "acceptance": "revised",
+      "acceptance": "banked",
       "shortcutChecks": 1,
       "positiveChecks": 0,
       "id": "bank-b17",
@@ -206,7 +206,7 @@
       }
     },
     {
-      "acceptance": "revised",
+      "acceptance": "banked",
       "shortcutChecks": 2,
       "positiveChecks": 0,
       "id": "bank-b18",
@@ -261,7 +261,7 @@
       }
     },
     {
-      "acceptance": "revised",
+      "acceptance": "banked",
       "shortcutChecks": 2,
       "positiveChecks": 0,
       "id": "bank-b20",
@@ -288,7 +288,7 @@
       }
     },
     {
-      "acceptance": "candidate",
+      "acceptance": "banked",
       "shortcutChecks": 2,
       "positiveChecks": 0,
       "id": "bank-b21",
@@ -304,7 +304,7 @@
       }
     },
     {
-      "acceptance": "candidate",
+      "acceptance": "banked",
       "shortcutChecks": 2,
       "positiveChecks": 0,
       "id": "bank-b22",
@@ -322,7 +322,7 @@
       }
     },
     {
-      "acceptance": "candidate",
+      "acceptance": "banked",
       "shortcutChecks": 3,
       "positiveChecks": 0,
       "id": "bank-b23",
@@ -338,27 +338,32 @@
       }
     },
     {
-      "acceptance": "candidate",
-      "shortcutChecks": 3,
-      "positiveChecks": 0,
+      "acceptance": "revised",
+      "shortcutChecks": 4,
+      "positiveChecks": 3,
       "id": "bank-b24",
       "name": "Carry the Quiet Moment",
       "side": "base",
       "estimatedDifficulty": 4,
-      "frames": 353,
+      "frames": 313,
       "deaths": 0,
       "events": {
         "pickup": 1,
         "land": 2,
-        "plate": 1,
-        "held-open": 1,
         "throw": 1,
         "lantern-land": 1,
+        "plate": 1,
+        "held-open": 1,
+        "dash": 2,
+        "strike": 1,
+        "pogo-low": 1,
+        "refill-dash": 2,
+        "pod": 1,
         "exit": 1
       }
     },
     {
-      "acceptance": "candidate",
+      "acceptance": "banked",
       "shortcutChecks": 2,
       "positiveChecks": 0,
       "id": "bank-b25",
@@ -613,7 +618,7 @@
       }
     },
     {
-      "acceptance": "revised",
+      "acceptance": "banked",
       "shortcutChecks": 1,
       "positiveChecks": 2,
       "id": "bank-b37",
@@ -681,7 +686,7 @@
       }
     },
     {
-      "acceptance": "revised",
+      "acceptance": "banked",
       "shortcutChecks": 4,
       "positiveChecks": 6,
       "id": "bank-b41",
@@ -708,7 +713,7 @@
       }
     },
     {
-      "acceptance": "revised",
+      "acceptance": "banked",
       "shortcutChecks": 4,
       "positiveChecks": 7,
       "id": "bank-b42",
@@ -767,7 +772,7 @@
       }
     },
     {
-      "acceptance": "candidate",
+      "acceptance": "banked",
       "shortcutChecks": 3,
       "positiveChecks": 3,
       "id": "bank-b44",
@@ -796,7 +801,7 @@
       }
     },
     {
-      "acceptance": "candidate",
+      "acceptance": "banked",
       "shortcutChecks": 3,
       "positiveChecks": 3,
       "id": "bank-b45",
@@ -827,12 +832,12 @@
       }
     },
     {
-      "acceptance": "revised",
+      "acceptance": "banked",
       "shortcutChecks": 3,
       "positiveChecks": 3,
       "id": "bank-b46",
       "name": "Let the Train Go Low",
-      "side": "base",
+      "side": "fractured",
       "estimatedDifficulty": 3,
       "frames": 97,
       "deaths": 0,
@@ -887,7 +892,7 @@
       }
     },
     {
-      "acceptance": "revised",
+      "acceptance": "banked",
       "shortcutChecks": 3,
       "positiveChecks": 3,
       "id": "bank-b49",
@@ -938,7 +943,7 @@
       }
     },
     {
-      "acceptance": "revised",
+      "acceptance": "banked",
       "shortcutChecks": 6,
       "positiveChecks": 5,
       "id": "bank-f35",
@@ -1256,7 +1261,7 @@
       }
     },
     {
-      "acceptance": "revised",
+      "acceptance": "banked",
       "shortcutChecks": 1,
       "positiveChecks": 0,
       "id": "bank-f17",
@@ -1330,12 +1335,12 @@
       }
     },
     {
-      "acceptance": "candidate",
+      "acceptance": "banked",
       "shortcutChecks": 2,
       "positiveChecks": 0,
       "id": "bank-f21",
       "name": "Between Passes",
-      "side": "fractured",
+      "side": "base",
       "estimatedDifficulty": 4,
       "frames": 461,
       "deaths": 0,
@@ -1350,12 +1355,12 @@
       }
     },
     {
-      "acceptance": "candidate",
+      "acceptance": "banked",
       "shortcutChecks": 2,
       "positiveChecks": 0,
       "id": "bank-f22",
       "name": "The Return Window",
-      "side": "fractured",
+      "side": "base",
       "estimatedDifficulty": 4,
       "frames": 843,
       "deaths": 0,
@@ -1369,7 +1374,7 @@
       }
     },
     {
-      "acceptance": "candidate",
+      "acceptance": "banked",
       "shortcutChecks": 2,
       "positiveChecks": 0,
       "id": "bank-f23",
@@ -1391,41 +1396,52 @@
       }
     },
     {
-      "acceptance": "candidate",
-      "shortcutChecks": 2,
-      "positiveChecks": 0,
+      "acceptance": "revised",
+      "shortcutChecks": 5,
+      "positiveChecks": 3,
       "id": "bank-f24",
       "name": "Both Ends Clear",
       "side": "fractured",
       "estimatedDifficulty": 4,
-      "frames": 271,
+      "frames": 89,
       "deaths": 0,
       "events": {
-        "jump": 2,
-        "land": 2,
-        "portal-pass": 1,
-        "dash": 1,
+        "jump": 1,
+        "dash": 2,
+        "land": 1,
+        "ultra": 1,
         "refill-dash": 1,
+        "hyper": 1,
+        "portal-pass": 1,
+        "strike": 1,
+        "pogo-low": 1,
+        "pod": 1,
         "exit": 1
       }
     },
     {
-      "acceptance": "candidate",
-      "shortcutChecks": 2,
-      "positiveChecks": 0,
+      "acceptance": "revised",
+      "shortcutChecks": 4,
+      "positiveChecks": 3,
       "id": "bank-f25",
       "name": "Freight Has Right of Way",
       "side": "fractured",
       "estimatedDifficulty": 5,
-      "frames": 413,
+      "frames": 416,
       "deaths": 0,
       "events": {
-        "jump": 6,
-        "land": 7,
-        "dash": 5,
-        "refill-dash": 5,
+        "jump": 5,
+        "land": 6,
+        "dash": 4,
+        "spent-thorn-touch": 1,
+        "refill-dash": 4,
+        "spent-thorn-leave": 1,
+        "spent-thorn-arm": 1,
         "stone-lit": 1,
-        "gate-open": 1,
+        "gate-open": 2,
+        "strike": 1,
+        "pogo-loft": 1,
+        "pod": 1,
         "exit": 1
       }
     },
@@ -1560,7 +1576,7 @@
       "frames": 301,
       "deaths": 0,
       "events": {
-        "clasp-catch": 2,
+        "clasp-catch": 5,
         "phase": 1,
         "dash": 1,
         "ultra": 1,
@@ -1734,14 +1750,14 @@
       }
     },
     {
-      "acceptance": "candidate",
+      "acceptance": "revised",
       "shortcutChecks": 4,
-      "positiveChecks": 4,
+      "positiveChecks": 3,
       "id": "bank-f45",
       "name": "The Upper Address",
       "side": "fractured",
       "estimatedDifficulty": 4,
-      "frames": 606,
+      "frames": 600,
       "deaths": 0,
       "events": {
         "jump": 3,
@@ -1757,7 +1773,7 @@
         "pickup": 1,
         "cargo-dash-catch": 1,
         "clasp-take": 1,
-        "zip-home": 2,
+        "zip-home": 1,
         "plate": 2,
         "held-open": 1,
         "echo-swap": 1,
@@ -1765,7 +1781,7 @@
       }
     },
     {
-      "acceptance": "candidate",
+      "acceptance": "banked",
       "shortcutChecks": 4,
       "positiveChecks": 5,
       "id": "bank-f46",
@@ -1803,12 +1819,12 @@
       }
     },
     {
-      "acceptance": "revised",
+      "acceptance": "banked",
       "shortcutChecks": 3,
       "positiveChecks": 3,
       "id": "bank-f47",
       "name": "Spend the Return",
-      "side": "fractured",
+      "side": "base",
       "estimatedDifficulty": 4,
       "frames": 257,
       "deaths": 0,
@@ -1826,12 +1842,12 @@
       }
     },
     {
-      "acceptance": "candidate",
+      "acceptance": "banked",
       "shortcutChecks": 3,
       "positiveChecks": 4,
       "id": "bank-f48",
       "name": "Bring the Ram Down",
-      "side": "fractured",
+      "side": "base",
       "estimatedDifficulty": 4,
       "frames": 928,
       "deaths": 0,
@@ -1918,7 +1934,7 @@
       }
     },
     {
-      "acceptance": "revised",
+      "acceptance": "banked",
       "shortcutChecks": 2,
       "positiveChecks": 2,
       "id": "bank-b50",
@@ -1942,12 +1958,12 @@
       }
     },
     {
-      "acceptance": "revised",
+      "acceptance": "banked",
       "shortcutChecks": 4,
       "positiveChecks": 3,
       "id": "bank-b52",
       "name": "Send the Bolt Upwind",
-      "side": "base",
+      "side": "fractured",
       "estimatedDifficulty": 4,
       "frames": 966,
       "deaths": 0,
@@ -1976,7 +1992,7 @@
       }
     },
     {
-      "acceptance": "revised",
+      "acceptance": "banked",
       "shortcutChecks": 5,
       "positiveChecks": 3,
       "id": "bank-b53",
@@ -2004,7 +2020,7 @@
       }
     },
     {
-      "acceptance": "revised",
+      "acceptance": "banked",
       "shortcutChecks": 3,
       "positiveChecks": 3,
       "id": "bank-f51",
@@ -2058,7 +2074,7 @@
       }
     },
     {
-      "acceptance": "revised",
+      "acceptance": "banked",
       "shortcutChecks": 3,
       "positiveChecks": 3,
       "id": "bank-f52",
@@ -2082,12 +2098,12 @@
       }
     },
     {
-      "acceptance": "candidate",
+      "acceptance": "banked",
       "shortcutChecks": 5,
       "positiveChecks": 3,
       "id": "bank-b54",
       "name": "Two Heights, One Breath",
-      "side": "base",
+      "side": "fractured",
       "estimatedDifficulty": 3,
       "frames": 177,
       "deaths": 0,
@@ -2104,12 +2120,12 @@
       }
     },
     {
-      "acceptance": "candidate",
+      "acceptance": "banked",
       "shortcutChecks": 4,
       "positiveChecks": 3,
       "id": "bank-b55",
       "name": "Meet It After the Turn",
-      "side": "base",
+      "side": "fractured",
       "estimatedDifficulty": 3,
       "frames": 229,
       "deaths": 0,
@@ -2126,7 +2142,7 @@
       }
     },
     {
-      "acceptance": "candidate",
+      "acceptance": "banked",
       "shortcutChecks": 3,
       "positiveChecks": 3,
       "id": "bank-b56",
@@ -2149,7 +2165,7 @@
       }
     },
     {
-      "acceptance": "candidate",
+      "acceptance": "banked",
       "shortcutChecks": 3,
       "positiveChecks": 3,
       "id": "bank-b57",
@@ -2167,83 +2183,82 @@
       }
     },
     {
-      "acceptance": "candidate",
-      "shortcutChecks": 2,
+      "acceptance": "revised",
+      "shortcutChecks": 3,
       "positiveChecks": 3,
       "id": "bank-b58",
-      "name": "Under What You Spent",
+      "name": "Leave Yourself a Landing",
       "side": "base",
-      "estimatedDifficulty": 2,
-      "frames": 380,
+      "estimatedDifficulty": 4,
+      "frames": 591,
       "deaths": 0,
       "events": {
-        "spent-thorn-touch": 1,
-        "jump": 1,
-        "spent-thorn-leave": 1,
-        "spent-thorn-arm": 1,
-        "dash": 1,
-        "land": 2,
-        "refill-dash": 1,
+        "spent-thorn-touch": 33,
+        "spent-thorn-leave": 33,
+        "spent-thorn-arm": 33,
+        "jump": 8,
+        "dash": 7,
+        "land": 8,
+        "refill-dash": 7,
+        "strike": 1,
         "stone-lit": 1,
-        "gate-open": 2,
+        "gate-open": 1,
         "exit": 1
       }
     },
     {
-      "acceptance": "candidate",
-      "shortcutChecks": 2,
+      "acceptance": "revised",
+      "shortcutChecks": 4,
       "positiveChecks": 3,
       "id": "bank-b59",
-      "name": "One Grip at a Time",
+      "name": "Down One Side, Up the Other",
       "side": "base",
-      "estimatedDifficulty": 3,
-      "frames": 391,
+      "estimatedDifficulty": 4,
+      "frames": 524,
       "deaths": 0,
       "events": {
-        "grab": 3,
-        "spent-thorn-touch": 2,
-        "walljump": 1,
-        "spent-thorn-leave": 2,
-        "dash": 2,
-        "spent-thorn-arm": 2,
-        "refill-dash": 2,
-        "refill": 1,
-        "vector-refill": 1,
+        "spent-thorn-touch": 62,
+        "grab": 4,
+        "spent-thorn-leave": 62,
+        "spent-thorn-arm": 62,
+        "walljump": 3,
+        "dash": 3,
+        "refill-dash": 3,
+        "refill": 2,
+        "vector-refill": 2,
+        "refill-back": 2,
         "climbhop": 1,
-        "refill-back": 1,
         "land": 1,
         "exit": 1
       }
     },
     {
-      "acceptance": "candidate",
-      "shortcutChecks": 2,
+      "acceptance": "revised",
+      "shortcutChecks": 6,
       "positiveChecks": 3,
       "id": "bank-b60",
-      "name": "Catch the Reply in Flight",
+      "name": "Let the Reply Through",
       "side": "base",
       "estimatedDifficulty": 3,
-      "frames": 267,
+      "frames": 239,
       "deaths": 0,
       "events": {
-        "enemy-shot": 1,
-        "jump": 1,
-        "dash": 2,
+        "jump": 2,
+        "phase": 4,
+        "enemy-shot": 2,
+        "dash": 3,
         "parry-ready": 1,
-        "refill-dash": 2,
+        "refill-dash": 3,
         "parry": 1,
-        "receiver-lit": 1,
-        "combat-gate": 1,
+        "bell": 1,
         "grab": 1,
         "climbhop": 1,
         "land": 2,
-        "strike": 1,
-        "enemy-defeat": 1,
         "exit": 1
       }
     },
     {
-      "acceptance": "candidate",
+      "acceptance": "banked",
       "shortcutChecks": 3,
       "positiveChecks": 3,
       "id": "bank-b61",
@@ -2267,7 +2282,7 @@
       }
     },
     {
-      "acceptance": "candidate",
+      "acceptance": "banked",
       "shortcutChecks": 4,
       "positiveChecks": 2,
       "id": "bank-f55",
@@ -2290,7 +2305,7 @@
       }
     },
     {
-      "acceptance": "candidate",
+      "acceptance": "banked",
       "shortcutChecks": 4,
       "positiveChecks": 3,
       "id": "bank-f56",
@@ -2319,7 +2334,7 @@
       }
     },
     {
-      "acceptance": "candidate",
+      "acceptance": "banked",
       "shortcutChecks": 3,
       "positiveChecks": 3,
       "id": "bank-f57",
@@ -2345,7 +2360,7 @@
       }
     },
     {
-      "acceptance": "candidate",
+      "acceptance": "banked",
       "shortcutChecks": 4,
       "positiveChecks": 3,
       "id": "bank-f58",
@@ -2371,9 +2386,9 @@
       }
     },
     {
-      "acceptance": "candidate",
+      "acceptance": "revised",
       "shortcutChecks": 3,
-      "positiveChecks": 3,
+      "positiveChecks": 5,
       "id": "bank-f59",
       "name": "Reverse the Departure",
       "side": "fractured",
@@ -2402,7 +2417,7 @@
       }
     },
     {
-      "acceptance": "candidate",
+      "acceptance": "banked",
       "shortcutChecks": 3,
       "positiveChecks": 3,
       "id": "bank-f60",
@@ -2431,7 +2446,7 @@
       }
     },
     {
-      "acceptance": "candidate",
+      "acceptance": "banked",
       "shortcutChecks": 3,
       "positiveChecks": 3,
       "id": "bank-f61",
@@ -2454,37 +2469,6 @@
         "combat-gate": 1,
         "exit": 1
       }
-    },
-    {
-      "acceptance": "candidate",
-      "shortcutChecks": 5,
-      "positiveChecks": 3,
-      "id": "bank-f62",
-      "name": "The Window You Return Through",
-      "side": "fractured",
-      "estimatedDifficulty": 5,
-      "frames": 530,
-      "deaths": 0,
-      "events": {
-        "recoil-load": 2,
-        "slab-molten": 5,
-        "slab-glass": 5,
-        "recoil-release": 2,
-        "jump": 2,
-        "recoil-jump": 2,
-        "land": 3,
-        "slab-stone": 4,
-        "dash": 4,
-        "refill-dash": 4,
-        "stone-lit": 1,
-        "gate-open": 1,
-        "super": 1,
-        "reverse-super": 1,
-        "refill": 1,
-        "vector-refill": 1,
-        "exit": 1
-      }
     }
-  ],
-  "run7TargetedFollowups": "B61 phase50 canonical and3variants rechecked; late landing killed by sweeper before molten. F62 ordinary return during open glass rechecked and fails physically below high refill. All other room geometries unchanged after full99 check."
+  ]
 }

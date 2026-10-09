@@ -1,9 +1,10 @@
 /* Opt-in path sweepers. Points are tile centers; period is a full out/back or loop circuit.
-   Non-solid moving thorns: no footing, damage, parry or cargo interaction. Clock starts on input. */
+   A single point creates a stationary thorn. Non-solid thorns: no footing, damage, parry or cargo interaction. Clock starts on input. */
 (function(root){
 'use strict';
 const C=()=>root.BladefallPrecisionCore;
 function at(e,clock){
+ if(e.path.length===1)return {x:e.path[0][0],y:e.path[0][1]};
  let u=(((clock+e.phase)%e.period)+e.period)%e.period/e.period;
  if(!e.loop)u=u<.5?u*2:2-u*2;
  let distance=u*e.length;
@@ -14,10 +15,10 @@ function at(e,clock){
 function reset(g){
  g.sweeperClock=0;g.sweeperAwake=!!g.awake;g.sweeperPlayerBefore=null;
  g.sweepers=(g.room.def.sweepers||[]).map((d,i)=>{
-  if(!Array.isArray(d.path)||d.path.length<2||d.path.some(q=>!Array.isArray(q)||q.length!==2||q.some(v=>!Number.isFinite(v))))throw new Error('Invalid sweeper path in '+g.room.id);
+  if(!Array.isArray(d.path)||d.path.length<1||d.path.some(q=>!Array.isArray(q)||q.length!==2||q.some(v=>!Number.isFinite(v))))throw new Error('Invalid sweeper path in '+g.room.id);
   const e={id:String(d.id??i),path:d.path.map(([c,r])=>[c*8+4,r*8+4]),period:d.period??180,phase:d.phase??0,radius:d.radius??4,loop:!!d.loop};
   if(!Number.isFinite(e.period)||!Number.isFinite(e.phase)||!Number.isFinite(e.radius)||e.period<30||e.radius<2||e.radius>12)throw new Error('Invalid sweeper timing or radius in '+g.room.id);
-  e.lengths=e.path.slice(0,e.loop?undefined:-1).map((a,j)=>Math.hypot(a[0]-e.path[(j+1)%e.path.length][0],a[1]-e.path[(j+1)%e.path.length][1]));
+  e.lengths=e.path.length===1?[]:e.path.slice(0,e.loop?undefined:-1).map((a,j)=>Math.hypot(a[0]-e.path[(j+1)%e.path.length][0],a[1]-e.path[(j+1)%e.path.length][1]));
   if(e.lengths.some(n=>n===0))throw new Error('Zero-length sweeper segment in '+g.room.id);
   e.length=e.lengths.reduce((a,b)=>a+b,0);Object.assign(e,at(e,0));e.prevX=e.x;e.prevY=e.y;return e;
  });

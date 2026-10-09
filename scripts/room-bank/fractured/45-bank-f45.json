@@ -42,7 +42,7 @@
         "dir": "d"
       }
     ],
-    "hint": "Save the high echo. Freight the lantern below; bring its shade and a moving launch back up.",
+    "hint": "At the final dock: swap on the lit plate, then Jump. Bring the moving launch and shade back.",
     "question": "Can one lantern, one moving launch and one echo solve three floors of the same shaft?",
     "showHintAtRest": true,
     "map": [
@@ -88,8 +88,8 @@
       "###################################............................#",
       "#.............................#########........................#",
       "#..............................................................#",
-      "#.......................................................____...#",
-      "#.......................................ZZZZ............####...#",
+      "#.....................................................______...#",
+      "#.......................................ZZZZ..........######...#",
       "#.......................................................####...#",
       "#.......................................................####...#",
       "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^###############^^^^^^^^^^^^###^^^#",
@@ -98,10 +98,10 @@
   },
   "bank": {
     "side": "fractured",
-    "batch": 10,
+    "batch": 15,
     "run": 4,
     "collection": "superrooms",
-    "acceptance": "candidate",
+    "acceptance": "revised",
     "difficulty": 4,
     "role": "interconnected superroom",
     "worlds": [],
@@ -118,7 +118,7 @@
     "newMechanics": [],
     "status": "route-proven",
     "author": "Codex",
-    "humanReview": "Unreviewed; difficulty is an author estimate.",
+    "humanReview": "Final transfer revised for another review. No approval or numeric player scores assigned.",
     "approvedIngredients": [
       "bank-f16",
       "bank-f19",
@@ -141,11 +141,12 @@
       "echo-swap",
       "held-open"
     ],
-    "solution": "Jump to the isolated upper lip and save an echo. Drop west onto the loaded freight deck, dispatch it, and let its low duct push you into the lower void route. Dash through the void. Use its outgoing speed for the small jump toward the receiving clasp, then dash Up while holding Grab to catch the suspended lantern. Drift down the open receiving well with that same shade to the lower carriage. Step toward its leading edge as it accelerates; when your feet overlap the adjacent pressure strip, Jump and Echo together. The echo keeps the distant high gate open, while the lantern and carriage launch return to your upper address. Keep right through the long high arc and carry the shade across the upper sun shafts.",
+    "solution": "Jump to the isolated upper lip and save an echo. Drop west onto the loaded freight deck, dispatch it, and let its low duct push you into the lower void route. Dash through the void. Use its outgoing speed for the small jump toward the receiving clasp, then dash Up while holding Grab to catch the suspended lantern. Drift down the open receiving well with that same shade to the lower carriage. Step toward its leading edge as it accelerates. The receiving pressure dock begins two tiles earlier, over the arriving carriage. Swap while that plate is lit, then press Jump shortly afterward at the upper address; the preview separates those inputs by three simulation frames. The echo keeps the distant high gate open, while the lantern and carriage launch return to your upper address. Keep right through the long high arc and carry the shade across the upper sun shafts.",
     "route": {
+      "name": "canonical",
       "exited": true,
       "deaths": 0,
-      "frames": 606,
+      "frames": 600,
       "events": [
         "jump",
         "land",
@@ -165,27 +166,7 @@
         "held-open",
         "echo-swap",
         "exit"
-      ],
-      "eventCounts": {
-        "jump": 3,
-        "land": 5,
-        "echo-place": 1,
-        "zip-start": 2,
-        "clasp-catch": 1,
-        "zip-stop": 2,
-        "dash": 2,
-        "void-in": 1,
-        "refill-dash": 2,
-        "void-out": 1,
-        "pickup": 1,
-        "cargo-dash-catch": 1,
-        "clasp-take": 1,
-        "zip-home": 2,
-        "plate": 2,
-        "held-open": 1,
-        "echo-swap": 1,
-        "exit": 1
-      }
+      ]
     },
     "requiredEventCounts": {
       "zip-start": 2
@@ -194,10 +175,10 @@
     "exit": "Upper east gallery, across the same shaft and over both freight floors.",
     "nearestExisting": "F16 supplies the separate freight/knight routes, B43 the rising cargo handoff, and F19 the echo that must keep a plate occupied while cargo and launch travel away. Here those are three elevations of one shaft: recovery supplies the shade needed at the original overlook, and the lower machine changes the traversability of that original address.",
     "novelty": "The player first sees the final gap and locked high gate, then solves their causes on two floors below. The only lantern has a physical continuous itinerary through the cargo duct, clasp, receiving well, launch carriage and final gallery. The return crosses above the outbound route rather than exiting into a separate room.",
-    "designNotes": "64\u00d748 tiles, 3.34 normal screen areas. One room state, one echo and one lantern; no scripted checkpoints or event-count exit locks. The clasp makes cargo retrieval deliberate rather than requiring a narrow returning-freight rendezvous. The final swap works across eight consecutive timings. A slower stationary swap leaves the weight correctly but loses the useful carriage speed and cannot reach the upper receiving balcony.",
+    "designNotes": "64×48 tiles, 3.34 normal screen areas. One room state, one echo and one lantern; no scripted checkpoints or event-count exit locks. The clasp makes cargo retrieval deliberate rather than requiring a narrow returning-freight rendezvous. The final swap works across eight consecutive timings. A slower stationary swap leaves the weight correctly but loses the useful carriage speed and cannot reach the upper receiving balcony.",
     "positiveChecks": [
       {
-        "name": "Upper exchange after 17 forward ticks",
+        "name": "Swap then jump one frame later",
         "tape": [
           [
             15,
@@ -252,66 +233,44 @@
             ""
           ],
           [
-            17,
+            14,
             "r"
           ],
           [
             1,
-            "rjq"
+            "rq"
           ],
           [
-            180,
+            190,
             "rj"
           ]
         ],
-        "after": {
-          "exited": true,
-          "deaths": 0,
-          "frames": 603,
-          "events": [
-            "jump",
-            "land",
-            "echo-place",
-            "zip-start",
-            "clasp-catch",
-            "zip-stop",
-            "dash",
-            "void-in",
-            "refill-dash",
-            "void-out",
-            "pickup",
-            "cargo-dash-catch",
-            "clasp-take",
-            "zip-home",
-            "plate",
-            "held-open",
-            "echo-swap",
-            "exit"
-          ],
-          "eventCounts": {
-            "jump": 3,
-            "land": 5,
-            "echo-place": 1,
-            "zip-start": 2,
-            "clasp-catch": 1,
-            "zip-stop": 2,
-            "dash": 2,
-            "void-in": 1,
-            "refill-dash": 2,
-            "void-out": 1,
-            "pickup": 1,
-            "cargo-dash-catch": 1,
-            "clasp-take": 1,
-            "zip-home": 2,
-            "plate": 1,
-            "held-open": 1,
-            "echo-swap": 1,
-            "exit": 1
-          }
-        }
+        "exited": true,
+        "deaths": 0,
+        "frames": 600,
+        "events": [
+          "jump",
+          "land",
+          "echo-place",
+          "zip-start",
+          "clasp-catch",
+          "zip-stop",
+          "dash",
+          "void-in",
+          "refill-dash",
+          "void-out",
+          "pickup",
+          "cargo-dash-catch",
+          "clasp-take",
+          "zip-home",
+          "plate",
+          "held-open",
+          "echo-swap",
+          "exit"
+        ]
       },
       {
-        "name": "Upper exchange after 19 forward ticks",
+        "name": "Swap then jump five frames later",
         "tape": [
           [
             15,
@@ -366,66 +325,44 @@
             ""
           ],
           [
-            19,
+            14,
             "r"
           ],
           [
-            1,
-            "rjq"
+            5,
+            "rq"
           ],
           [
-            180,
+            190,
             "rj"
           ]
         ],
-        "after": {
-          "exited": true,
-          "deaths": 0,
-          "frames": 605,
-          "events": [
-            "jump",
-            "land",
-            "echo-place",
-            "zip-start",
-            "clasp-catch",
-            "zip-stop",
-            "dash",
-            "void-in",
-            "refill-dash",
-            "void-out",
-            "pickup",
-            "cargo-dash-catch",
-            "clasp-take",
-            "zip-home",
-            "plate",
-            "held-open",
-            "echo-swap",
-            "exit"
-          ],
-          "eventCounts": {
-            "jump": 3,
-            "land": 5,
-            "echo-place": 1,
-            "zip-start": 2,
-            "clasp-catch": 1,
-            "zip-stop": 2,
-            "dash": 2,
-            "void-in": 1,
-            "refill-dash": 2,
-            "void-out": 1,
-            "pickup": 1,
-            "cargo-dash-catch": 1,
-            "clasp-take": 1,
-            "zip-home": 2,
-            "plate": 2,
-            "held-open": 1,
-            "echo-swap": 1,
-            "exit": 1
-          }
-        }
+        "exited": true,
+        "deaths": 0,
+        "frames": 600,
+        "events": [
+          "jump",
+          "land",
+          "echo-place",
+          "zip-start",
+          "clasp-catch",
+          "zip-stop",
+          "dash",
+          "void-in",
+          "refill-dash",
+          "void-out",
+          "pickup",
+          "cargo-dash-catch",
+          "clasp-take",
+          "zip-home",
+          "plate",
+          "held-open",
+          "echo-swap",
+          "exit"
+        ]
       },
       {
-        "name": "Upper exchange after 23 forward ticks",
+        "name": "Approach the dock one frame later",
         "tape": [
           [
             15,
@@ -480,177 +417,41 @@
             ""
           ],
           [
-            23,
-            "r"
-          ],
-          [
-            1,
-            "rjq"
-          ],
-          [
-            180,
-            "rj"
-          ]
-        ],
-        "after": {
-          "exited": true,
-          "deaths": 0,
-          "frames": 609,
-          "events": [
-            "jump",
-            "land",
-            "echo-place",
-            "zip-start",
-            "clasp-catch",
-            "zip-stop",
-            "dash",
-            "void-in",
-            "refill-dash",
-            "void-out",
-            "pickup",
-            "cargo-dash-catch",
-            "clasp-take",
-            "zip-home",
-            "plate",
-            "held-open",
-            "echo-swap",
-            "exit"
-          ],
-          "eventCounts": {
-            "jump": 3,
-            "land": 5,
-            "echo-place": 1,
-            "zip-start": 2,
-            "clasp-catch": 1,
-            "zip-stop": 2,
-            "dash": 2,
-            "void-in": 1,
-            "refill-dash": 2,
-            "void-out": 1,
-            "pickup": 1,
-            "cargo-dash-catch": 1,
-            "clasp-take": 1,
-            "zip-home": 2,
-            "plate": 2,
-            "held-open": 1,
-            "echo-swap": 1,
-            "exit": 1
-          }
-        }
-      },
-      {
-        "name": "Upper exchange after 24 forward ticks",
-        "tape": [
-          [
             15,
             "r"
           ],
           [
-            12,
-            "rj"
+            3,
+            "rq"
           ],
           [
-            22,
-            "r"
-          ],
-          [
-            25,
-            ""
-          ],
-          [
-            1,
-            "q"
-          ],
-          [
-            30,
-            "l"
-          ],
-          [
-            82,
-            ""
-          ],
-          [
-            1,
-            "rx"
-          ],
-          [
-            43,
-            "r"
-          ],
-          [
-            11,
-            "rj"
-          ],
-          [
-            15,
-            "uxg"
-          ],
-          [
-            28,
-            "r"
-          ],
-          [
-            150,
-            ""
-          ],
-          [
-            24,
-            "r"
-          ],
-          [
-            1,
-            "rjq"
-          ],
-          [
-            180,
+            190,
             "rj"
           ]
         ],
-        "after": {
-          "exited": true,
-          "deaths": 0,
-          "frames": 610,
-          "events": [
-            "jump",
-            "land",
-            "echo-place",
-            "zip-start",
-            "clasp-catch",
-            "zip-stop",
-            "dash",
-            "void-in",
-            "refill-dash",
-            "void-out",
-            "pickup",
-            "cargo-dash-catch",
-            "clasp-take",
-            "zip-home",
-            "plate",
-            "held-open",
-            "echo-swap",
-            "exit"
-          ],
-          "eventCounts": {
-            "jump": 3,
-            "land": 5,
-            "echo-place": 1,
-            "zip-start": 2,
-            "clasp-catch": 1,
-            "zip-stop": 2,
-            "dash": 2,
-            "void-in": 1,
-            "refill-dash": 2,
-            "void-out": 1,
-            "pickup": 1,
-            "cargo-dash-catch": 1,
-            "clasp-take": 1,
-            "zip-home": 2,
-            "plate": 2,
-            "held-open": 1,
-            "echo-swap": 1,
-            "exit": 1
-          }
-        }
+        "exited": true,
+        "deaths": 0,
+        "frames": 601,
+        "events": [
+          "jump",
+          "land",
+          "echo-place",
+          "zip-start",
+          "clasp-catch",
+          "zip-stop",
+          "dash",
+          "void-in",
+          "refill-dash",
+          "void-out",
+          "pickup",
+          "cargo-dash-catch",
+          "clasp-take",
+          "zip-home",
+          "plate",
+          "held-open",
+          "echo-swap",
+          "exit"
+        ]
       }
     ],
     "shortcutChecks": [
@@ -907,7 +708,147 @@
         }
       }
     ],
-    "interconnection": "The cargo dispatched in the upper freight duct is the only shade for the final gallery. The lower exchange plate holds the high gate open only when the echo is left behind. Freight recovery routes beneath the same machinery that supplies the launch returned to the initial high balcony."
+    "interconnection": "The cargo dispatched in the upper freight duct is the only shade for the final gallery. The lower exchange plate holds the high gate open only when the echo is left behind. Freight recovery routes beneath the same machinery that supplies the launch returned to the initial high balcony.",
+    "review": {
+      "revisionSummary": "The pressure landing and supporting floor extend 16 pixels toward the incoming carriage. The saved preview swaps while on the plate, then jumps three frames later, preserving inherited motion without a same-frame chord. Global echo/plate/movement rules are unchanged.",
+      "finaleBefore": [
+        [
+          15,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          22,
+          "r"
+        ],
+        [
+          25,
+          ""
+        ],
+        [
+          1,
+          "q"
+        ],
+        [
+          30,
+          "l"
+        ],
+        [
+          82,
+          ""
+        ],
+        [
+          1,
+          "rx"
+        ],
+        [
+          43,
+          "r"
+        ],
+        [
+          11,
+          "rj"
+        ],
+        [
+          15,
+          "uxg"
+        ],
+        [
+          28,
+          "r"
+        ],
+        [
+          150,
+          ""
+        ],
+        [
+          20,
+          "r"
+        ],
+        [
+          1,
+          "rjq"
+        ],
+        [
+          180,
+          "rj"
+        ]
+      ],
+      "originalSequentialAttempt": {
+        "tape": [
+          [
+            15,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            22,
+            "r"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            30,
+            "l"
+          ],
+          [
+            82,
+            ""
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            43,
+            "r"
+          ],
+          [
+            11,
+            "rj"
+          ],
+          [
+            15,
+            "uxg"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            ""
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            3,
+            "rq"
+          ],
+          [
+            190,
+            "rj"
+          ]
+        ],
+        "exited": false,
+        "deaths": 0,
+        "reason": "Echo left before the original narrow plate; door remains closed."
+      }
+    }
   },
   "tape": [
     [
@@ -963,15 +904,15 @@
       ""
     ],
     [
-      20,
+      14,
       "r"
     ],
     [
-      1,
-      "rjq"
+      3,
+      "rq"
     ],
     [
-      180,
+      190,
       "rj"
     ]
   ]

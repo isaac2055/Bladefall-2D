@@ -71,7 +71,7 @@
   "bank": {
     "side": "base",
     "batch": 4,
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "difficulty": 3,
     "role": "timing",
     "worlds": [
@@ -93,7 +93,7 @@
     "requiredEvents": [
       "jump"
     ],
-    "humanReview": "Author difficulty estimate; fun/difficulty/suitability pending.",
+    "humanReview": "Approved for early Base. Numeric player ratings remain unmeasured.",
     "solution": "Wait until the west patrol leaves, then follow it into the first low passage. Drop into its narrow recessed pocket before it returns. Let it pass overhead heading west, jump out behind it, and cross to the broad central bay. Read the independent eastern patrol, then repeat the follow, duck, and climb exchange to reach the exit.",
     "nearestExisting": "The timing slabs of Emberdeep change a surface in place; Return Freight times a moving cargo rendezvous. These narrow passages instead turn the same outward and return motion into moving exclusion zones, with below-path rest pockets.",
     "novelty": "Two high passages share a deep protected passing bay. The knight follows behind a patrol in a passage too low to jump over it, then leaves its route vertically before the return.",
@@ -206,7 +206,13 @@
           "deaths": 1
         }
       }
-    ]
+    ],
+    "placementBand": "early Base",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "early Base",
+      "geometryPreserved": true
+    }
   },
   "tape": [
     [

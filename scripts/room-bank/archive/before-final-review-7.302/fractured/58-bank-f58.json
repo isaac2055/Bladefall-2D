@@ -1,0 +1,1076 @@
+{
+  "room": {
+    "id": "bank-f58",
+    "name": "Three Bodies, One Opening",
+    "palette": "cliffs",
+    "study": true,
+    "movement": "survive-2",
+    "cols": 80,
+    "rows": 36,
+    "exit": "right",
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "map": [
+      "################################################################################",
+      "#..............##############..................................................#",
+      "#..............##############..................................................#",
+      "#..............##############..................................................#",
+      "#..............##############..................................................#",
+      "#..............##############..................................................#",
+      "#..............##############..................................................#",
+      "#..............##############..................................................#",
+      "#..............##############..................................................#",
+      "#..............##############..................................................#",
+      "#..............##############..................................................#",
+      "#..............##############..................................................#",
+      "#..............##############..................................................#",
+      "#..............##############..................................................#",
+      "#..............##############...................................................",
+      "#..............##############...................................................",
+      "#..............l.........................<########..............................",
+      "#........................................<########..............................",
+      "#........................................<########..............................",
+      "#........................................<########......................<#######",
+      "#........................................<########......................<#######",
+      "#...P....................................<########......................<#######",
+      "#########................................<########......................<#######",
+      "#########................................<########......................<#######",
+      "#########................................<########......................<#######",
+      "#########................................<########......................<#######",
+      "#########................................<########......................<#######",
+      "#########................................<########......................<#######",
+      "#########................................<########......................<#######",
+      "#########................................<########......................<#######",
+      "#########................................<########......................<#######",
+      "#########................................<########......................<#######",
+      "#########................................<########......................<#######",
+      "#########................................<########......................<#######",
+      "#########^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^###########^^^^^^^^^^^^^^^^^^^^^^^#######",
+      "################################################################################"
+    ],
+    "movingHooks": [
+      {
+        "id": "Freight",
+        "c": 10,
+        "r": 17,
+        "w": 6,
+        "to": [
+          22,
+          0
+        ],
+        "period": 480
+      }
+    ],
+    "sweepers": [
+      {
+        "id": "Approach",
+        "path": [
+          [
+            19,
+            20
+          ],
+          [
+            31,
+            20
+          ]
+        ],
+        "period": 220,
+        "phase": 110,
+        "radius": 4
+      },
+      {
+        "id": "Follow",
+        "path": [
+          [
+            58,
+            8
+          ],
+          [
+            58,
+            22
+          ]
+        ],
+        "period": 180,
+        "phase": 0,
+        "radius": 5
+      },
+      {
+        "id": "Arrival",
+        "path": [
+          [
+            70,
+            8
+          ],
+          [
+            70,
+            24
+          ]
+        ],
+        "period": 210,
+        "phase": 108,
+        "radius": 5
+      }
+    ],
+    "beams": [
+      {
+        "c": 42,
+        "r": 0,
+        "dir": "d"
+      },
+      {
+        "c": 46,
+        "r": 0,
+        "dir": "d"
+      },
+      {
+        "c": 74,
+        "r": 0,
+        "dir": "d"
+      },
+      {
+        "c": 77,
+        "r": 0,
+        "dir": "d"
+      }
+    ],
+    "hint": "Pump out beside the cargo. Catch upward; later throw, dash, and catch through both patrols.",
+    "question": "How do you change from the ring\u2019s path to the cargo\u2019s path, then make the cargo carry your dash?",
+    "showHintAtRest": true
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 14,
+    "run": 7,
+    "collection": "run7",
+    "format": "extended",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "difficulty": 5,
+    "author": "Codex",
+    "role": "scrolling rope and cargo timing combination",
+    "worlds": [],
+    "tags": [
+      "moving-hook",
+      "rope-length",
+      "swing-pump",
+      "moving-cargo",
+      "cargo-dash-catch",
+      "sweeper",
+      "throw-regrab",
+      "momentum",
+      "beam-shield"
+    ],
+    "newMechanics": [],
+    "requiredEvents": [
+      "moving-hook",
+      "moving-unhook",
+      "cargo-dash-catch",
+      "throw",
+      "dash"
+    ],
+    "learningFamily": "moving-anchor-and-cargo-timing",
+    "lessonRole": "master",
+    "preparesFor": [],
+    "prerequisites": [
+      "bank-b56",
+      "bank-b57"
+    ],
+    "humanReview": "Awaiting playtest; route evidence does not establish enjoyment or human difficulty.",
+    "entrance": "Low western freight dock beneath the loaded carriage.",
+    "exit": "Raised eastern sun gallery beyond two vertical patrol lanes.",
+    "solution": "Catch the freight ring and reel in. Pay out to let the oncoming thorn pass above, then reel up. As the carriage emerges from its roof, pump left briefly to prepare the opposite swing, pay out while pumping right, and jump free beyond the carriage\u2019s cargo edge. Dash upward beside the carrier and press Grab during the burst to take its moving lantern and retain the rise. Glide onto the middle gallery and read the two patrols. When the first thorn rises past the gallery\u2019s foot height, jump right, throw the lantern, immediately dash right, and press Grab again during the burst. The horizontal catch preserves speed: pass beneath the first retreating thorn and below the second before it descends into the route, then carry shade onto the raised sun gallery.",
+    "nearestExisting": "F44 already combines a moving carrier with an upward cargo catch; that ingredient is reused honestly, now preceded by a moving-thorn rope-length decision and an active counter-pump. B56 and B57 teach the rope and horizontal interception separately. The second half differs from a normal lantern walk: throwing reopens the dash, and catching transfers its horizontal speed into a long glide through two live patrols.",
+    "novelty": "The same cargo serves two different transfers. First the knight changes attachment from moving rope to rising cargo; after one planning shelf, the knight sends the cargo forward and catches it again to change the timing and reach of the final crossing.",
+    "designNotes": "This is an 80-tile scrolling combination, not a claim that every tile of its 80\u00d736 bounds is occupied by a normal room. It has one middle planning shelf and two continuous movement phrases. An ordinary carry-jump originally reached the low ending; the visible final bank was raised, and a saved jump from the nearest usable edge now fails. No technique-name gate or hidden event requirement controls the exit.",
+    "interconnection": "The lantern collected from the first moving carriage is the same object thrown and caught on the final crossing. Both sun galleries require its shade. The middle shelf lets the player read two different future patrol encounters; ground contact there intentionally ends the first velocity transfer, making the second necessary for reach.",
+    "timingCues": [
+      "Duck below the oncoming thorn while the freight keeps moving; reel up after it passes left.",
+      "Counter-pump left, then pay out and pump right as the carriage clears its roof. Release outside the cargo edge before dashing up.",
+      "From the middle gallery, launch when the first vertical thorn rises through the height of your feet. Its retreat opens the near lane while the far thorn is still above the later arrival.",
+      "Throw and immediately dash; a fresh Grab during that burst retains horizontal speed. An early launch meets the near thorn, and a plain carrying jump cannot reach the raised bank."
+    ],
+    "endingForgiveness": "The ending is intentionally the harder timing phrase, with a full observation shelf before it. Final departure samples two frames before and after the saved cue both work, as does a longer release before the first upward catch. These are bounded author samples, not a human playtest.",
+    "approvedIngredients": [
+      "F44 moving passenger catch",
+      "F23 rope-length decisions",
+      "B56/B57 learning sequence"
+    ],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 382,
+      "events": [
+        "jump",
+        "hook",
+        "moving-hook",
+        "moving-unhook",
+        "unhook",
+        "dash",
+        "pickup",
+        "cargo-dash-catch",
+        "moving-hook-turn",
+        "land",
+        "refill-dash",
+        "throw",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 3,
+        "hook": 1,
+        "moving-hook": 1,
+        "moving-unhook": 1,
+        "unhook": 1,
+        "dash": 2,
+        "pickup": 2,
+        "cargo-dash-catch": 2,
+        "moving-hook-turn": 1,
+        "land": 2,
+        "refill-dash": 2,
+        "throw": 1,
+        "exit": 1
+      }
+    },
+    "routeMovement": [
+      {
+        "event": "moving-hook",
+        "frame": 13
+      },
+      {
+        "event": "moving-unhook",
+        "frame": 216,
+        "vx": 14.734060665224433,
+        "vy": -45.27388674734425
+      },
+      {
+        "event": "dash",
+        "frame": 227
+      },
+      {
+        "event": "cargo-dash-catch",
+        "frame": 234,
+        "vx": 0,
+        "vy": -240
+      },
+      {
+        "event": "throw",
+        "frame": 316
+      },
+      {
+        "event": "dash",
+        "frame": 321
+      },
+      {
+        "event": "cargo-dash-catch",
+        "frame": 321,
+        "vx": 240,
+        "vy": 0
+      }
+    ],
+    "positiveChecks": [
+      {
+        "name": "Earlier final departure",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            30,
+            "ug"
+          ],
+          [
+            22,
+            "dg"
+          ],
+          [
+            30,
+            "g"
+          ],
+          [
+            46,
+            "ug"
+          ],
+          [
+            20,
+            "lg"
+          ],
+          [
+            30,
+            "rdg"
+          ],
+          [
+            15,
+            "rg"
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            13,
+            "ug"
+          ],
+          [
+            55,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            1,
+            "rg"
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            12,
+            "rg"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 380,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "pickup",
+            "cargo-dash-catch",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "throw",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 2,
+            "pickup": 2,
+            "cargo-dash-catch": 2,
+            "moving-hook-turn": 1,
+            "land": 2,
+            "refill-dash": 2,
+            "throw": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Later final departure",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            30,
+            "ug"
+          ],
+          [
+            22,
+            "dg"
+          ],
+          [
+            30,
+            "g"
+          ],
+          [
+            46,
+            "ug"
+          ],
+          [
+            20,
+            "lg"
+          ],
+          [
+            30,
+            "rdg"
+          ],
+          [
+            15,
+            "rg"
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            13,
+            "ug"
+          ],
+          [
+            55,
+            "r"
+          ],
+          [
+            19,
+            ""
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            1,
+            "rg"
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            12,
+            "rg"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 384,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "pickup",
+            "cargo-dash-catch",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "throw",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 2,
+            "pickup": 2,
+            "cargo-dash-catch": 2,
+            "moving-hook-turn": 1,
+            "land": 2,
+            "refill-dash": 2,
+            "throw": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Longer release before upward catch",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            30,
+            "ug"
+          ],
+          [
+            22,
+            "dg"
+          ],
+          [
+            30,
+            "g"
+          ],
+          [
+            46,
+            "ug"
+          ],
+          [
+            20,
+            "lg"
+          ],
+          [
+            30,
+            "rdg"
+          ],
+          [
+            15,
+            "rg"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            13,
+            "ug"
+          ],
+          [
+            55,
+            "r"
+          ],
+          [
+            17,
+            ""
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            1,
+            "rg"
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            12,
+            "rg"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 383,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "pickup",
+            "cargo-dash-catch",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "throw",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 2,
+            "pickup": 2,
+            "cargo-dash-catch": 2,
+            "moving-hook-turn": 1,
+            "land": 2,
+            "refill-dash": 2,
+            "throw": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "ground edge roof ride",
+        "tape": [
+          [
+            23,
+            "r"
+          ],
+          [
+            14,
+            "uj"
+          ],
+          [
+            14,
+            "uxg"
+          ],
+          [
+            100,
+            "ug"
+          ],
+          [
+            150,
+            "rg"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            14,
+            "rux"
+          ],
+          [
+            250,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 4,
+          "frames": 0,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "death",
+            "respawn",
+            "moving-unhook",
+            "unhook",
+            "dash"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 3,
+            "moving-hook": 3,
+            "death": 4,
+            "respawn": 4,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1
+          }
+        }
+      },
+      {
+        "name": "Ordinary full-height carry jump from the nearest shelf edge",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            30,
+            "ug"
+          ],
+          [
+            22,
+            "dg"
+          ],
+          [
+            30,
+            "g"
+          ],
+          [
+            46,
+            "ug"
+          ],
+          [
+            20,
+            "lg"
+          ],
+          [
+            30,
+            "rdg"
+          ],
+          [
+            15,
+            "rg"
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            13,
+            "ug"
+          ],
+          [
+            55,
+            "r"
+          ],
+          [
+            17,
+            ""
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            210,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "pickup",
+            "cargo-dash-catch",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "death",
+            "lantern-lost",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "pickup": 1,
+            "cargo-dash-catch": 1,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "death": 2,
+            "lantern-lost": 1,
+            "respawn": 1
+          }
+        }
+      },
+      {
+        "name": "late ordinary cargo pickup",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            30,
+            "ug"
+          ],
+          [
+            22,
+            "dg"
+          ],
+          [
+            30,
+            "g"
+          ],
+          [
+            46,
+            "ug"
+          ],
+          [
+            20,
+            "lg"
+          ],
+          [
+            30,
+            "rdg"
+          ],
+          [
+            15,
+            "rg"
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            16,
+            "ux"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "pickup",
+            "moving-hook-turn",
+            "death",
+            "lantern-lost",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "pickup": 1,
+            "moving-hook-turn": 1,
+            "death": 2,
+            "lantern-lost": 1,
+            "respawn": 1
+          }
+        }
+      },
+      {
+        "name": "Final departure before the first patrol clears",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            30,
+            "ug"
+          ],
+          [
+            22,
+            "dg"
+          ],
+          [
+            30,
+            "g"
+          ],
+          [
+            46,
+            "ug"
+          ],
+          [
+            20,
+            "lg"
+          ],
+          [
+            30,
+            "rdg"
+          ],
+          [
+            15,
+            "rg"
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            13,
+            "ug"
+          ],
+          [
+            55,
+            "r"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            1,
+            "rg"
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            12,
+            "rg"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "pickup",
+            "cargo-dash-catch",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "throw",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 2,
+            "pickup": 2,
+            "cargo-dash-catch": 2,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "throw": 1,
+            "death": 2,
+            "respawn": 2
+          }
+        }
+      }
+    ]
+  },
+  "tape": [
+    [
+      10,
+      "r"
+    ],
+    [
+      12,
+      "rjg"
+    ],
+    [
+      30,
+      "ug"
+    ],
+    [
+      22,
+      "dg"
+    ],
+    [
+      30,
+      "g"
+    ],
+    [
+      46,
+      "ug"
+    ],
+    [
+      20,
+      "lg"
+    ],
+    [
+      30,
+      "rdg"
+    ],
+    [
+      15,
+      "rg"
+    ],
+    [
+      7,
+      "rj"
+    ],
+    [
+      1,
+      "ux"
+    ],
+    [
+      13,
+      "ug"
+    ],
+    [
+      55,
+      "r"
+    ],
+    [
+      17,
+      ""
+    ],
+    [
+      7,
+      "rj"
+    ],
+    [
+      1,
+      "rg"
+    ],
+    [
+      1,
+      "rx"
+    ],
+    [
+      12,
+      "rg"
+    ],
+    [
+      150,
+      "r"
+    ]
+  ]
+}

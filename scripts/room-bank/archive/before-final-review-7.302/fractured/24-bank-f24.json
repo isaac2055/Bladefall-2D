@@ -1,0 +1,341 @@
+{
+  "room": {
+    "id": "bank-f24",
+    "name": "Both Ends Clear",
+    "palette": "inversion",
+    "study": true,
+    "exit": "right",
+    "lock": [
+      "parry"
+    ],
+    "map": [
+      "########################################",
+      "#.................#####................#",
+      "#.................#####................#",
+      "#.................#####.................",
+      "#.................#####.................",
+      "#.................#####.................",
+      "#.................####%............#####",
+      "#.................####%...........<#####",
+      "#.................#####...........<#####",
+      "#.................#########.......<#####",
+      "#.................#####...........<#####",
+      "#.................#####...........<#####",
+      "#.................#####...........<#####",
+      "#.................#####...........<#####",
+      "#.................#####...........<#####",
+      "#.................#####...........<#####",
+      "#.................#####...........<#####",
+      "#.................%####...........<#####",
+      "#.................%####...........<#####",
+      "#..P........###########...........<#####",
+      "##########........#####...........<#####",
+      "##########^^^^^^^^#####^^^^^^^^^^^<#####",
+      "########################################"
+    ],
+    "portalMode": "fixed",
+    "portals": [
+      {
+        "color": "blue",
+        "c": 18,
+        "r": 17,
+        "face": "l"
+      },
+      {
+        "color": "orange",
+        "c": 22,
+        "r": 6,
+        "face": "r"
+      }
+    ],
+    "hint": "The fixed mouths connect the two chambers. Moving thorns keep their routes across both ends.",
+    "question": "A clear approach is only half of a safe crossing. What is happening at the receiving mouth?",
+    "sweepers": [
+      {
+        "id": "A",
+        "path": [
+          [
+            15,
+            12
+          ],
+          [
+            15,
+            20
+          ]
+        ],
+        "period": 180,
+        "phase": 45,
+        "radius": 5,
+        "loop": false
+      },
+      {
+        "id": "B",
+        "path": [
+          [
+            23,
+            6
+          ],
+          [
+            34,
+            6
+          ]
+        ],
+        "period": 240,
+        "phase": 100,
+        "radius": 5,
+        "loop": false
+      }
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 4,
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "timing-puzzle",
+    "worlds": [
+      29,
+      33,
+      40
+    ],
+    "tags": [
+      "timing",
+      "sweeper",
+      "portal",
+      "arrival-window"
+    ],
+    "newMechanics": [
+      "sweeper"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "humanReview": "Author difficulty estimate only; fun/difficulty/suitability ratings pending.",
+    "entrance": "Lower western platform and protected launch shelf.",
+    "exit": "High eastern ledge.",
+    "solution": "Reach the outer end of the launch shelf. Wait for the vertical patrol to clear that height and for the horizontal patrol to move away from the receiving mouth; then walk into the fixed portal. Settle on the receiving shelf below the horizontal path. Advance to its edge and jump/dash while the patrol is ahead and moving east, or after a clear westward pass, to the raised eastern exit.",
+    "nearestExisting": "p137 Onto the Plate uses a fixed arrival to relocate the knight; portal crossing courses often ask for a momentum transfer. Here the portal preserves an ordinary approach and makes the player read two visible patrols at different positions, followed by a separate departure decision from a safe receiving shelf.",
+    "novelty": "The two portal ends share a decision but not a clock. The receiving shelf intentionally separates the entry window from the final jump window.",
+    "timing": {
+      "principle": "Check the destination before committing, then reset safely after arrival.",
+      "stages": [
+        {
+          "cue": "The vertical approach patrol has left the shelf height, and the horizontal patrol is away from the receiving mouth.",
+          "action": "Cross the approach and enter the portal.",
+          "rest": "Outer launch shelf; then receiving shelf below the horizontal line."
+        },
+        {
+          "cue": "The horizontal patrol is moving away ahead of the jump, or has completed a clear westward pass.",
+          "action": "Jump and dash east behind it to the raised exit.",
+          "rest": "Eastern exit ledge."
+        }
+      ]
+    },
+    "requiredEvents": [
+      "portal-pass",
+      "dash"
+    ],
+    "route": {
+      "frames": 271,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "land",
+        "portal-pass",
+        "dash",
+        "refill-dash",
+        "exit"
+      ]
+    },
+    "bypassCheck": {
+      "approachClearButArrivalOccupied": {
+        "exited": false,
+        "firstFailure": {
+          "frame": 126,
+          "cause": "sweeper"
+        },
+        "portalCrossedAt": 124,
+        "launchWait": 30
+      },
+      "departIntoPassingPatrol": {
+        "exited": false,
+        "firstFailure": {
+          "frame": 335,
+          "cause": "sweeper"
+        },
+        "extraReceivingWait": 120
+      },
+      "noLaunchWait": {
+        "exited": false,
+        "firstFailure": {
+          "frame": 77,
+          "cause": "sweeper"
+        }
+      }
+    },
+    "verifiedAt": "2026-10-07",
+    "shortcutChecks": [
+      {
+        "name": "Enter when only the approach is clear",
+        "tape": [
+          [
+            30,
+            "r"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            17,
+            "rj"
+          ],
+          [
+            6,
+            "rx"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "firstFailure": {
+            "frame": 126,
+            "cause": "sweeper"
+          }
+        }
+      },
+      {
+        "name": "Leave the receiving shelf during its pass",
+        "tape": [
+          [
+            30,
+            "r"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            80,
+            ""
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            120,
+            ""
+          ],
+          [
+            17,
+            "rj"
+          ],
+          [
+            6,
+            "rx"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "firstFailure": {
+            "frame": 335,
+            "cause": "sweeper"
+          }
+        }
+      }
+    ]
+  },
+  "tape": [
+    [
+      30,
+      "r"
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      80,
+      ""
+    ],
+    [
+      28,
+      "r"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      5,
+      ""
+    ],
+    [
+      17,
+      "rj"
+    ],
+    [
+      6,
+      "rx"
+    ],
+    [
+      100,
+      "r"
+    ]
+  ]
+}

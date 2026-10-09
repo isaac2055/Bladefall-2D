@@ -1,0 +1,636 @@
+{
+  "room": {
+    "id": "bank-f59",
+    "name": "Reverse the Departure",
+    "palette": "woods",
+    "study": true,
+    "exit": "right",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "hint": "Reverse through the low openings; spend the last wall in a bounce, then stay with the crystals.",
+    "question": "Turn a spent landing into a reverse launch through a moving opening.",
+    "map": [
+      "################################################",
+      "#...........#>................................G#",
+      "#...........#>................................G#",
+      "#...........#>................................G#",
+      "#...........#>................................G#",
+      "#...........#>................................G.",
+      "#...........#>................................G.",
+      "#...........#>................................G.",
+      "#...........#>...................###############",
+      "#...........#>................................<#",
+      "#.............................................<#",
+      "#.............................................<#",
+      "#.............................................<#",
+      "#.............^^^^^^^^^^^^^^^^................<#",
+      "#.............################................<#",
+      "#.............vvvvvvvvvvvvvvvv................<#",
+      "#.............................................<#",
+      "#.............................................<#",
+      "#..............................P...c..........<#",
+      "#.............................................<#",
+      "#.............................................<#",
+      "#..^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<#",
+      "################################################"
+    ],
+    "spentThorns": [
+      {
+        "id": "Run-up",
+        "c": 30,
+        "r": 19,
+        "w": 9,
+        "h": 1,
+        "face": "up"
+      },
+      {
+        "id": "Return grip",
+        "c": 12,
+        "r": 10,
+        "w": 1,
+        "h": 12,
+        "face": "right"
+      }
+    ],
+    "movement": "survive-2",
+    "cols": 48,
+    "sweepers": [
+      {
+        "id": "First opening",
+        "path": [
+          [
+            25,
+            14
+          ],
+          [
+            25,
+            20
+          ]
+        ],
+        "period": 150,
+        "phase": 35,
+        "radius": 3
+      },
+      {
+        "id": "Second opening",
+        "path": [
+          [
+            14,
+            15
+          ],
+          [
+            14,
+            20
+          ]
+        ],
+        "period": 150,
+        "phase": 110,
+        "radius": 3
+      }
+    ],
+    "vectorRefills": [
+      {
+        "c": 13,
+        "r": 16,
+        "dir": "up"
+      },
+      {
+        "c": 19,
+        "r": 5,
+        "dir": "right"
+      },
+      {
+        "c": 26,
+        "r": 6,
+        "dir": "right"
+      }
+    ]
+  },
+  "tape": [
+    [
+      13,
+      "rdx"
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      16,
+      "l"
+    ],
+    [
+      12,
+      "lx"
+    ],
+    [
+      7,
+      "lg"
+    ],
+    [
+      50,
+      "ug"
+    ],
+    [
+      12,
+      "ux"
+    ],
+    [
+      22,
+      "rj"
+    ],
+    [
+      2,
+      "r"
+    ],
+    [
+      12,
+      "rux"
+    ],
+    [
+      26,
+      "r"
+    ],
+    [
+      12,
+      "rux"
+    ],
+    [
+      110,
+      "r"
+    ]
+  ],
+  "bank": {
+    "side": "fractured",
+    "batch": 14,
+    "run": 7,
+    "collection": "run7",
+    "format": "compact",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "difficulty": 4,
+    "role": "Carry a reverse-hyper approach through two patrol windows into a spent-wall wallbounce and aerial return.",
+    "worlds": [],
+    "tags": [
+      "spent-floor",
+      "spent-wall",
+      "reverse-hyper",
+      "wallbounce",
+      "aerial-refill-chain",
+      "offset-patrols"
+    ],
+    "newMechanics": [
+      "departure-armed persistent surface"
+    ],
+    "author": "Codex",
+    "humanReview": "Unreviewed Run 7 candidate. Author difficulty is provisional; intended-route and bounded input evidence are not human feel ratings.",
+    "learningFamily": "spent-faces",
+    "lessonRole": "combine",
+    "preparesFor": [
+      "bank-f60"
+    ],
+    "prerequisites": [
+      "bank-b58",
+      "bank-b59"
+    ],
+    "timing": {
+      "kind": "reverse-hyper into two offset patrol openings, wallbounce and aerial refill chain",
+      "warningFrames": 18,
+      "patrolPeriod": 150,
+      "phaseOffset": 75,
+      "cue": "Use the lower windows to reach the wall; the upper return has no landing before the last crystal."
+    },
+    "solution": "Dash down-right along the folded runway to take its tally and recover the dash on the ground. Jump left during the reverse grace to leave with a low reverse hyper. Carry that launch through the first patrol window, then spend the retained dash left through the second and catch the marked return wall. Climb through its upward crystal. Dash up alongside the wall and jump away right into a wallbounce before the upper thorn cap. Collect the first rightward crystal in the bounce, dash up-right, cross the second airborne crystal and dash up-right again onto the high gallery. The original runway and the wall have armed behind you, so neither can be used to reset a failed airborne continuation.",
+    "nearestExisting": "F31 introduced the reverse launch toward an exit. This is an explicit later application of that vocabulary: two offset lower patrols feed a marked wall, and the wallbounce returns above the thorned roof through a continuous refill chain. B58/B59 teach why a departed runway or grip cannot serve as a recovery point.",
+    "novelty": "Carry a reverse-hyper approach through two patrol windows into a spent-wall wallbounce and aerial return.",
+    "endingForgiveness": "The wallbounce and airborne chain are deliberately the more demanding finish. Both one-frame earlier/later reverse launches and a two-frame earlier final dash complete cleanly. The receiving gallery is broad, but getting to it still requires the refilled airborne sequence.",
+    "positiveChecks": [
+      {
+        "name": "Reverse one frame earlier",
+        "tape": [
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            12,
+            "lx"
+          ],
+          [
+            7,
+            "lg"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            22,
+            "rj"
+          ],
+          [
+            2,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            26,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 294
+      },
+      {
+        "name": "Reverse one frame later",
+        "tape": [
+          [
+            14,
+            "rdx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            12,
+            "lx"
+          ],
+          [
+            7,
+            "lg"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            22,
+            "rj"
+          ],
+          [
+            2,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            26,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 296
+      },
+      {
+        "name": "Second aerial dash two frames earlier",
+        "tape": [
+          [
+            13,
+            "rdx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            12,
+            "lx"
+          ],
+          [
+            7,
+            "lg"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            22,
+            "rj"
+          ],
+          [
+            2,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            24,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 295
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Jump-updash directly to the upper exit",
+        "tape": [
+          [
+            25,
+            "r"
+          ],
+          [
+            21,
+            "l"
+          ],
+          [
+            18,
+            "j"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            140,
+            "rgu"
+          ],
+          [
+            40,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 3,
+        "frames": null
+      },
+      {
+        "name": "Use a short ordinary jump-dash for the low crossing",
+        "tape": [
+          [
+            25,
+            "r"
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            4,
+            "lj"
+          ],
+          [
+            12,
+            "lx"
+          ],
+          [
+            100,
+            "lgu"
+          ],
+          [
+            150,
+            "ug"
+          ]
+        ],
+        "exited": false,
+        "deaths": 2,
+        "frames": null
+      },
+      {
+        "name": "Ordinary walljump-dash instead of the wallbounce",
+        "tape": [
+          [
+            13,
+            "rdx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            12,
+            "lx"
+          ],
+          [
+            7,
+            "lg"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            160,
+            "rgu"
+          ]
+        ],
+        "exited": false,
+        "deaths": 2,
+        "frames": null
+      }
+    ],
+    "requiredEvents": [
+      "reverse-hyper",
+      "wallbounce",
+      "vector-refill",
+      "spent-thorn-arm",
+      "stone-lit"
+    ],
+    "requiredEventCounts": {
+      "vector-refill": 3,
+      "spent-thorn-touch": 2
+    },
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 295,
+      "events": [
+        "spent-thorn-touch",
+        "dash",
+        "ultra",
+        "refill-dash",
+        "stone-lit",
+        "gate-open",
+        "hyper",
+        "reverse-hyper",
+        "late-reverse",
+        "spent-thorn-leave",
+        "spent-thorn-arm",
+        "grab",
+        "refill",
+        "vector-refill",
+        "wallbounce",
+        "land",
+        "refill-back",
+        "exit"
+      ]
+    },
+    "designNotes": "Departure-thorn bodies remain solid. Only the visibly marked face arms after departure; continuous first contact is safe. Room completion uses ordinary physical geometry and visible tallies, with no hidden movement-event gate. The patrol clock begins with input and resets per attempt.",
+    "timingCues": [
+      "Use the lower windows to reach the wall; the upper return has no landing before the last crystal.",
+      "Folded hairs mark a safe first contact; an amber warning after departure precedes the permanently red face."
+    ],
+    "routeMovement": [
+      {
+        "type": "dash",
+        "frame": 5,
+        "x": 252,
+        "y": 147,
+        "dx": 0.7071067811865475,
+        "dy": 0.7071067811865475
+      },
+      {
+        "type": "hyper",
+        "frame": 14,
+        "x": 282,
+        "y": 152
+      },
+      {
+        "type": "reverse-hyper",
+        "frame": 14,
+        "x": 282,
+        "y": 152,
+        "dir": -1
+      },
+      {
+        "type": "dash",
+        "frame": 46,
+        "x": 157,
+        "y": 156,
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "type": "vector-refill",
+        "frame": 94,
+        "x": 108,
+        "y": 132,
+        "dx": 0,
+        "dy": -1,
+        "once": false
+      },
+      {
+        "type": "dash",
+        "frame": 116,
+        "x": 108,
+        "y": 130,
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "wallbounce",
+        "frame": 123,
+        "x": 104,
+        "y": 102,
+        "dir": 1
+      },
+      {
+        "type": "vector-refill",
+        "frame": 141,
+        "x": 156,
+        "y": 44,
+        "dx": 1,
+        "dy": 0,
+        "once": false
+      },
+      {
+        "type": "dash",
+        "frame": 151,
+        "x": 154,
+        "y": 50,
+        "dx": 0.7071067811865475,
+        "dy": -0.7071067811865475
+      },
+      {
+        "type": "vector-refill",
+        "frame": 178,
+        "x": 212,
+        "y": 52,
+        "dx": 1,
+        "dy": 0,
+        "once": false
+      },
+      {
+        "type": "dash",
+        "frame": 189,
+        "x": 214,
+        "y": 56,
+        "dx": 0.7071067811865475,
+        "dy": -0.7071067811865475
+      }
+    ]
+  }
+}

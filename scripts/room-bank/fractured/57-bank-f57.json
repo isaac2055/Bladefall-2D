@@ -101,7 +101,7 @@
     "run": 7,
     "collection": "run7",
     "format": "compact",
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "status": "route-proven",
     "difficulty": 5,
     "author": "Codex",
@@ -131,7 +131,7 @@
     "prerequisites": [
       "bank-b56"
     ],
-    "humanReview": "Awaiting playtest; route evidence does not establish enjoyment or human difficulty.",
+    "humanReview": "Approved for very late Fractured. Numeric player ratings remain unmeasured.",
     "entrance": "Western dock beneath the outward-moving anchor.",
     "exit": "High eastern bank beyond the rebound pocket.",
     "solution": "Board the moving ring and duck below the first patrol by paying out. Reel in again and follow the carrier toward its eastern turn. Jump free toward the suspended pod as the diagonal thorn climbs back left above it. Hold Jump while cutting down for the high rebound; continue right behind the passing thorn, then dash up-right near the loft’s apex. There is no standing platform between the starting dock and the final bank.",
@@ -684,7 +684,13 @@
           }
         }
       }
-    ]
+    ],
+    "placementBand": "very late Fractured",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "very late Fractured",
+      "geometryPreserved": true
+    }
   },
   "tape": [
     [

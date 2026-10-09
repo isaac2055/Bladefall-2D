@@ -1,3 +1,13 @@
+## 7.302.0: Final review after all-room feedback (2026-10-09)
+
+39 new approvals are banked at the requested Base/Fractured difficulty bands, bringing the bank to **89 (51 Base / 38 Fractured)**. Eight side transfers preserve stable IDs. F62 is archived/removed. Active pool **98 (55 / 43)**; exactly nine revisions remain: **B24/B58/B59/B60/F24/F25/F32/F45/F59**. Room Bank now opens to **Final review**, with **Banked** beside it; approved superrooms retain their labels. No new rooms or campaign imports.
+
+B58/B59 rebuild around independently spent patches, fixed thorns and varied patrols; dust-bunny routes are hidden globally. B60’s airborne reply restores the same wall needed for its catch. B24/F24/F25 are rebuilt around more consequential cargo, portal and return timing. F32 has five lanterns; F45 has a wider final pressure dock and sequential swap/jump; F59 gains8px lower-spike clearance. Guide/review links: docs/room-bank/FINAL-REVIEW-7.302.md. Full handoff: LLM-HANDOFF/ROOM-BANK-FINAL-REVIEW-7.302.md.
+
+All98 saved routes pass with zero deaths, plus417 positive variations and268 targeted shortcut probes. Nine-room browser checks cover routes, menus/counts, historical links, review/revision/CSV, play timer/pause and scrolling. All89 approved definitions/tapes,50 prior approval records, movement constants, campaign checkpoints and unrelated runtime are preserved. These are route checks, not human ratings or exhaustive shortcut proof.
+
+Version7.302.0/cachev467-room-bank-final-review; catalog batch15, reviewCycle/defaultGroup pending. Publication uses the authorized GitHub main push to Cloudflare Pages. Root Pages config now publishes public/; original Worker config is preserved as wrangler.worker.jsonc. The separate online API still requires deployment/connection—do not claim it is live. Build439 assets and Worker dry run pass. No further run is underway; await the nine-room review. Earlier entries below are historical.
+
 ## 7.299.0: Run 7 ready for human review (2026-10-09)
 
 The user authorized a new set after the Run 5/6 synthesis. Run 7 is complete locally: **16 candidates, eight Base B54–B61 and eight Fractured F55–F62**, saved individually. Extras → Room Bank defaults to Run 7. Four learning families connect smaller encounters to later combinations: timed launch/pogo, moving anchor/cargo, spent faces/resource-carrying climbs, and airborne replies/thermal cycles. Twelve rooms are compact and four are extended; no padded superroom claim. Guide: docs/room-bank/RUN-7.md. Full handoff: LLM-HANDOFF/ROOM-BANK-RUN-7-7.299.md.

@@ -85,7 +85,7 @@
     "run": 6,
     "collection": "run6",
     "format": "superroom",
-    "acceptance": "revised",
+    "acceptance": "banked",
     "status": "route-proven",
     "difficulty": 4,
     "role": "Use the tide-borne crate to reach the gallery, then turn a lower sluice into an upper return.",
@@ -104,7 +104,7 @@
     ],
     "newMechanics": [],
     "author": "Codex",
-    "humanReview": "User identified a needless float, a jump-dash bypass around the anvil, and unused lower-right space. All three are revised; awaiting another review.",
+    "humanReview": "Approved for middle Base. Numeric player ratings remain unmeasured.",
     "requiredEvents": [
       "stone-hit",
       "stone-stop",
@@ -1329,6 +1329,12 @@
       "original": "scripts/room-bank/archive/before-run56-feedback/base/bank-b53.json",
       "changes": "Removed the direct stone-to-gallery float bypass; made the float a necessary high takeoff in both directions. Replaced unused lower-right fill with a required underpass, broad 96-pixel anvil transfer and return column behind the existing tally gate. Preserved a stable final stone and sheltered exit.",
       "date": "2026-10-09"
+    },
+    "placementBand": "middle Base",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "middle Base",
+      "geometryPreserved": true
     }
   },
   "tape": [

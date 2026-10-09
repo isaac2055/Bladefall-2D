@@ -1,0 +1,1096 @@
+{
+  "room": {
+    "id": "bank-f49",
+    "name": "Open It on the Way Out",
+    "palette": "foundry",
+    "study": true,
+    "movement": "survive-2",
+    "aim8": true,
+    "cols": 72,
+    "rows": 40,
+    "exit": "left",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "hint": "Cross the cracked roof first. Its falling seam opens the lower return and the anvil chimney.",
+    "question": "What passage did your first crossing open below your feet?",
+    "map": [
+      "########################################################################",
+      "#......................................................................#",
+      "#......................................................................#",
+      "#......................................................................#",
+      "#......................................................................#",
+      "#......................................................................#",
+      "#......................................................................#",
+      ".G.....................................................................#",
+      ".G.........................##..................##......................#",
+      ".G.........................##..................##......................#",
+      ".G.........................##..................##......................#",
+      ".G...P.....................##..................##.................c....#",
+      "############TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT###....#",
+      "############..........................TT........................###....#",
+      "#.....................................TT...............................#",
+      "#.....................................TT...............................#",
+      "#.....................................TT...............................#",
+      "#.....................................TT...............................#",
+      "#.....................................TT...............................#",
+      "#.....................................TT...............................#",
+      "#.....................................TT...............................#",
+      "#....................N................TT...............................#",
+      "#..............=========..............TT...............................#",
+      "#.....................................TT...............................#",
+      "#.....................................TT...............................#",
+      "#.....................................TT...............................#",
+      "#.....................................TT.....^^^^^^....................#",
+      "#.......................^^^^^.........TT.....######....................#",
+      "#.......................#####.........TT..b..######....................#",
+      "#.......................#####.........TT.....######....................#",
+      "#.......................#####....f....TT.....######....................#",
+      "#.......................#####.........TT.....######....................#",
+      "#.............N.........#####.........TT.....######....b.c.............#",
+      "########################################################################",
+      "########################################################################",
+      "########################################################################",
+      "########################################################################",
+      "########################################################################",
+      "########################################################################",
+      "########################################################################"
+    ],
+    "fault": {
+      "fuse": 48,
+      "spread": 8,
+      "rest": 3600
+    }
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 11,
+    "run": 5,
+    "collection": "run5",
+    "format": "superroom",
+    "acceptance": "banked",
+    "difficulty": 4,
+    "role": "Break the outward road to open the lower return and home chimney",
+    "worlds": [],
+    "tags": [
+      "fault",
+      "anvil",
+      "controlled-pogo",
+      "feather",
+      "return-route",
+      "changing-ceiling",
+      "shared-crack"
+    ],
+    "newMechanics": [],
+    "status": "route-proven",
+    "author": "Codex",
+    "humanReview": "User approved: genuine puzzle, good decisions, fun platforming. Banked in Fractured unchanged. Numeric ratings remain unmeasured.",
+    "requiredEvents": [
+      "fault-crack",
+      "fault-fall",
+      "pogo-loft",
+      "pod",
+      "feather-jump",
+      "anvil",
+      "gate-open"
+    ],
+    "solution": "Cross the upper fault deck, jumping and dashing over the two raised piers. Touching it sends one connected crack into the lower seam and under the future anvil chimney. Collect the east tally and drop around the far end. Collect the lower tally, hold Jump during the first downward pod cut for a lofted pogo, and dash left over the furnace cap. Pogo the suspended seed on the far side; continue through the broken seam, take the falling feather and spend its air jump to cross the second furnace cap. On the quiet west floor, down-cut the first anvil into the wide one-way shelf. Rest on the broad shelf, then use the second anvil and a left dash through the missing fault ceiling to return to the now-open entrance gate.",
+    "nearestExisting": "F13 changes a later return by spending an earlier surface; F18 uses a changing track and F42 chains deliberate blade launches. This foundry ties those decisions to one connected fault line: the upper road, middle return wall and ceiling above the final anvil are physically the same crack network.",
+    "novelty": "The outgoing road is also the obstruction of the route underneath it. Crossing the entire upper deck prepares both the lower wall opening and the final upward return, while actual tallies make the east descent consequential. The lower route changes the movement question from keeping ahead of the crack to chaining a lofted pogo, a suspended refill target and a feather recovery. The ending is the resolved return to the place visible at spawn.",
+    "positiveChecks": [
+      {
+        "name": "Three-second pause on final safe shelf",
+        "tape": [
+          [
+            102,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            14,
+            "urx"
+          ],
+          [
+            93,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            14,
+            "urx"
+          ],
+          [
+            115,
+            "r"
+          ],
+          [
+            90,
+            "l"
+          ],
+          [
+            10,
+            "j"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            28,
+            "l"
+          ],
+          [
+            14,
+            "ulx"
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            56,
+            "l"
+          ],
+          [
+            16,
+            "lj"
+          ],
+          [
+            14,
+            "ulx"
+          ],
+          [
+            50,
+            "l"
+          ],
+          [
+            8,
+            "lj"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            22,
+            "rj"
+          ],
+          [
+            235,
+            ""
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            14,
+            "lx"
+          ],
+          [
+            110,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 1070,
+          "events": [
+            "fault-crack",
+            "fault-fall",
+            "jump",
+            "dash",
+            "land",
+            "refill-dash",
+            "stone-lit",
+            "gate-open",
+            "strike",
+            "pogo-loft",
+            "pod",
+            "feather",
+            "feather-jump",
+            "anvil",
+            "feather-back",
+            "exit"
+          ],
+          "eventCounts": {
+            "fault-crack": 1,
+            "fault-fall": 92,
+            "jump": 6,
+            "dash": 5,
+            "land": 6,
+            "refill-dash": 5,
+            "stone-lit": 2,
+            "gate-open": 1,
+            "strike": 4,
+            "pogo-loft": 2,
+            "pod": 2,
+            "feather": 1,
+            "feather-jump": 1,
+            "anvil": 2,
+            "feather-back": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Final anvil dash three frames earlier",
+        "tape": [
+          [
+            102,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            14,
+            "urx"
+          ],
+          [
+            93,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            14,
+            "urx"
+          ],
+          [
+            115,
+            "r"
+          ],
+          [
+            90,
+            "l"
+          ],
+          [
+            10,
+            "j"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            28,
+            "l"
+          ],
+          [
+            14,
+            "ulx"
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            56,
+            "l"
+          ],
+          [
+            16,
+            "lj"
+          ],
+          [
+            14,
+            "ulx"
+          ],
+          [
+            50,
+            "l"
+          ],
+          [
+            8,
+            "lj"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            22,
+            "rj"
+          ],
+          [
+            55,
+            ""
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            27,
+            "lj"
+          ],
+          [
+            14,
+            "lx"
+          ],
+          [
+            110,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 890,
+          "events": [
+            "fault-crack",
+            "fault-fall",
+            "jump",
+            "dash",
+            "land",
+            "refill-dash",
+            "stone-lit",
+            "gate-open",
+            "strike",
+            "pogo-loft",
+            "pod",
+            "feather",
+            "feather-jump",
+            "anvil",
+            "feather-back",
+            "exit"
+          ],
+          "eventCounts": {
+            "fault-crack": 1,
+            "fault-fall": 92,
+            "jump": 6,
+            "dash": 5,
+            "land": 6,
+            "refill-dash": 5,
+            "stone-lit": 2,
+            "gate-open": 1,
+            "strike": 4,
+            "pogo-loft": 2,
+            "pod": 2,
+            "feather": 1,
+            "feather-jump": 1,
+            "anvil": 2,
+            "feather-back": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Final anvil dash three frames later",
+        "tape": [
+          [
+            102,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            14,
+            "urx"
+          ],
+          [
+            93,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            14,
+            "urx"
+          ],
+          [
+            115,
+            "r"
+          ],
+          [
+            90,
+            "l"
+          ],
+          [
+            10,
+            "j"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            28,
+            "l"
+          ],
+          [
+            14,
+            "ulx"
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            56,
+            "l"
+          ],
+          [
+            16,
+            "lj"
+          ],
+          [
+            14,
+            "ulx"
+          ],
+          [
+            50,
+            "l"
+          ],
+          [
+            8,
+            "lj"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            22,
+            "rj"
+          ],
+          [
+            55,
+            ""
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            33,
+            "lj"
+          ],
+          [
+            14,
+            "lx"
+          ],
+          [
+            110,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 890,
+          "events": [
+            "fault-crack",
+            "fault-fall",
+            "jump",
+            "dash",
+            "land",
+            "refill-dash",
+            "stone-lit",
+            "gate-open",
+            "strike",
+            "pogo-loft",
+            "pod",
+            "feather",
+            "feather-jump",
+            "anvil",
+            "feather-back",
+            "exit"
+          ],
+          "eventCounts": {
+            "fault-crack": 1,
+            "fault-fall": 92,
+            "jump": 6,
+            "dash": 5,
+            "land": 6,
+            "refill-dash": 5,
+            "stone-lit": 2,
+            "gate-open": 1,
+            "strike": 4,
+            "pogo-loft": 2,
+            "pod": 2,
+            "feather": 1,
+            "feather-jump": 1,
+            "anvil": 2,
+            "feather-back": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Omit the first lofted pogo",
+        "tape": [
+          [
+            102,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            14,
+            "urx"
+          ],
+          [
+            93,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            14,
+            "urx"
+          ],
+          [
+            115,
+            "r"
+          ],
+          [
+            90,
+            "l"
+          ],
+          [
+            10,
+            "j"
+          ],
+          [
+            1,
+            "j"
+          ],
+          [
+            28,
+            "l"
+          ],
+          [
+            14,
+            "ulx"
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            56,
+            "l"
+          ],
+          [
+            16,
+            "lj"
+          ],
+          [
+            14,
+            "ulx"
+          ],
+          [
+            50,
+            "l"
+          ],
+          [
+            8,
+            "lj"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            22,
+            "rj"
+          ],
+          [
+            55,
+            ""
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            14,
+            "lx"
+          ],
+          [
+            110,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 930,
+          "events": [
+            "fault-crack",
+            "fault-fall",
+            "jump",
+            "dash",
+            "land",
+            "refill-dash",
+            "stone-lit",
+            "gate-open",
+            "strike",
+            "walljump",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "fault-crack": 1,
+            "fault-fall": 92,
+            "jump": 6,
+            "dash": 5,
+            "land": 7,
+            "refill-dash": 4,
+            "stone-lit": 2,
+            "gate-open": 1,
+            "strike": 3,
+            "walljump": 1,
+            "death": 1,
+            "respawn": 1
+          }
+        }
+      },
+      {
+        "name": "Fall past the feather without spending it",
+        "tape": [
+          [
+            102,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            14,
+            "urx"
+          ],
+          [
+            93,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            14,
+            "urx"
+          ],
+          [
+            115,
+            "r"
+          ],
+          [
+            90,
+            "l"
+          ],
+          [
+            10,
+            "j"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            28,
+            "l"
+          ],
+          [
+            14,
+            "ulx"
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            56,
+            "l"
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            14,
+            "ulx"
+          ],
+          [
+            50,
+            "l"
+          ],
+          [
+            8,
+            "lj"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            22,
+            "rj"
+          ],
+          [
+            55,
+            ""
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            14,
+            "lx"
+          ],
+          [
+            110,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0,
+          "frames": 930,
+          "events": [
+            "fault-crack",
+            "fault-fall",
+            "jump",
+            "dash",
+            "land",
+            "refill-dash",
+            "stone-lit",
+            "gate-open",
+            "strike",
+            "pogo-loft",
+            "pod",
+            "feather",
+            "feather-melt",
+            "feather-back"
+          ],
+          "eventCounts": {
+            "fault-crack": 1,
+            "fault-fall": 92,
+            "jump": 5,
+            "dash": 5,
+            "land": 7,
+            "refill-dash": 5,
+            "stone-lit": 2,
+            "gate-open": 1,
+            "strike": 4,
+            "pogo-loft": 2,
+            "pod": 2,
+            "feather": 1,
+            "feather-melt": 1,
+            "feather-back": 1
+          }
+        }
+      },
+      {
+        "name": "Try the exit immediately",
+        "tape": [
+          [
+            90,
+            "l"
+          ],
+          [
+            25,
+            "ulx"
+          ],
+          [
+            120,
+            "ljg"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0,
+          "frames": 235,
+          "events": [
+            "dash",
+            "grab",
+            "jump",
+            "climbjump"
+          ],
+          "eventCounts": {
+            "dash": 1,
+            "grab": 2,
+            "jump": 1,
+            "climbjump": 1
+          }
+        }
+      }
+    ],
+    "approvedIngredients": [
+      "bank-f13",
+      "bank-f18",
+      "bank-f42"
+    ],
+    "causalInterconnection": [
+      "Touching the upper fault deck starts the connected crack down through the lower return wall.",
+      "That same deck is the ceiling above the final anvil; its disappearance permits the return launch.",
+      "The outbound east tally and lower return tally open the visible gate beside the original entrance."
+    ],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 890,
+      "events": [
+        "fault-crack",
+        "fault-fall",
+        "jump",
+        "dash",
+        "land",
+        "refill-dash",
+        "stone-lit",
+        "gate-open",
+        "strike",
+        "pogo-loft",
+        "pod",
+        "feather",
+        "feather-jump",
+        "anvil",
+        "feather-back",
+        "exit"
+      ],
+      "eventCounts": {
+        "fault-crack": 1,
+        "fault-fall": 92,
+        "jump": 6,
+        "dash": 5,
+        "land": 6,
+        "refill-dash": 5,
+        "stone-lit": 2,
+        "gate-open": 1,
+        "strike": 4,
+        "pogo-loft": 2,
+        "pod": 2,
+        "feather": 1,
+        "feather-jump": 1,
+        "anvil": 2,
+        "feather-back": 1,
+        "exit": 1
+      }
+    },
+    "requiredEventCounts": {
+      "stone-lit": 2,
+      "anvil": 2
+    },
+    "endingForgiveness": "Two reusable anvils and a nine-tile one-way rest shelf finish on an eleven-tile entrance balcony. Missing either final jump drops to safe ground; the cracked route stays open for a full minute. A three-second rest before the last launch remains valid.",
+    "entrance": "Upper-west gate overlook.",
+    "exit": "The same upper-west overlook after a clockwise circuit of both floors.",
+    "interconnection": "Touching the upper fault deck starts the connected crack down through the lower return wall. That same deck is the ceiling above the final anvil; its disappearance permits the return launch. The outbound east tally and lower return tally open the visible gate beside the original entrance.",
+    "designNotes": "72×40 tiles (3.13 normal screen areas). The canonical route spans x=-7..560 and upper/lower floors with real horizontal and vertical camera travel. There are no event-proof exits; both tally stones open the normal visible gate. Safe ground beneath the final two anvils allows retries of the ending without death.",
+    "feedback20261009": {
+      "decision": "banked",
+      "note": "User approved: genuine puzzle, good decisions, fun platforming. Banked in Fractured unchanged."
+    }
+  },
+  "tape": [
+    [
+      102,
+      "r"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      14,
+      "urx"
+    ],
+    [
+      93,
+      "r"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      14,
+      "urx"
+    ],
+    [
+      115,
+      "r"
+    ],
+    [
+      90,
+      "l"
+    ],
+    [
+      10,
+      "j"
+    ],
+    [
+      1,
+      "djs"
+    ],
+    [
+      28,
+      "l"
+    ],
+    [
+      14,
+      "ulx"
+    ],
+    [
+      25,
+      "l"
+    ],
+    [
+      1,
+      "djs"
+    ],
+    [
+      56,
+      "l"
+    ],
+    [
+      16,
+      "lj"
+    ],
+    [
+      14,
+      "ulx"
+    ],
+    [
+      50,
+      "l"
+    ],
+    [
+      8,
+      "lj"
+    ],
+    [
+      1,
+      "djs"
+    ],
+    [
+      22,
+      "rj"
+    ],
+    [
+      55,
+      ""
+    ],
+    [
+      10,
+      "r"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      1,
+      "djs"
+    ],
+    [
+      30,
+      "lj"
+    ],
+    [
+      14,
+      "lx"
+    ],
+    [
+      110,
+      "l"
+    ]
+  ]
+}

@@ -53,7 +53,7 @@
     "side": "base",
     "batch": 8,
     "run": 3,
-    "acceptance": "revised",
+    "acceptance": "banked",
     "difficulty": 3,
     "role": "controlled partial spring and separated cargo route",
     "worlds": [
@@ -86,7 +86,7 @@
       "recoil-jump",
       "held-open"
     ],
-    "humanReview": "User rejected the prior trivial full spring jump. The low spike ceiling and higher bridge now require a controlled arc; awaits re-review for Base.",
+    "humanReview": "Approved for Base. Numeric player ratings remain unmeasured.",
     "positiveChecks": [
       {
         "name": "Partial load 9 frames",
@@ -933,7 +933,13 @@
     "designNotes": "Restored the intended partial spring problem instead of opening the roof. The bridge is one tile higher than the preceding revision, and a long downward spike ceiling leaves a three-tile passage above it. The normal partial-load route has ten consecutive successful manual load durations (9–18 frames), and seven departure step timings (6–12 frames) succeed at the demonstrated 11-frame charge. No dash is available. Full charge with a held jump hits the teeth; near-zero charge and waiting for the spring to settle miss the landing. Variable jump height remains an honest alternate: a precisely shortened jump can tame a larger charge, which still requires choosing the arc rather than taking the automatic full launch. The lantern still separately opens the lower weight gate.",
     "placementNote": "Author placement estimate updated from qualitative user feedback; not a numeric user rating.",
     "reclassifiedFrom": "fractured",
-    "reclassificationReason": "User requested Base placement after a precision spring revision; acceptance is revised pending that review."
+    "reclassificationReason": "User requested Base placement after a precision spring revision; acceptance is revised pending that review.",
+    "placementBand": "Base",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "Base",
+      "geometryPreserved": true
+    }
   },
   "tape": [
     [

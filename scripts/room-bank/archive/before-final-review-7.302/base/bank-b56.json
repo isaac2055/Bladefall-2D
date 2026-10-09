@@ -1,0 +1,600 @@
+{
+  "room": {
+    "id": "bank-b56",
+    "name": "Pass Below the Passing Thorn",
+    "palette": "cliffs",
+    "study": true,
+    "movement": "survive-2",
+    "cols": 48,
+    "rows": 26,
+    "exit": "right",
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "map": [
+      "################################################",
+      "#.........#########################............#",
+      "#.........#########################............#",
+      "#.........#########################............#",
+      "#.........#########################............#",
+      "#.........#########################............#",
+      "#.........#########################.............",
+      "#.........#########################.............",
+      "#.........#########################.............",
+      "#.........#########################.............",
+      "#...............................................",
+      "#...............................................",
+      "#...............................................",
+      "#...............................................",
+      "#......................................<########",
+      "#......................................<########",
+      "#...P..................................<########",
+      "#########..................^^^^^.......<########",
+      "#########..................#####.......<########",
+      "#########..................#####.......<########",
+      "#########..................#####.......<########",
+      "#########..................#####.......<########",
+      "#########..................#####.......<########",
+      "#########..................#####.......<########",
+      "#########^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^########",
+      "################################################"
+    ],
+    "movingHooks": [
+      {
+        "id": "Crossing",
+        "c": 10,
+        "r": 11,
+        "w": 3,
+        "to": [
+          25,
+          0
+        ],
+        "period": 400
+      }
+    ],
+    "sweepers": [
+      {
+        "id": "Overtake",
+        "path": [
+          [
+            15,
+            14
+          ],
+          [
+            33,
+            14
+          ]
+        ],
+        "period": 240,
+        "phase": 120,
+        "radius": 4
+      }
+    ],
+    "hint": "Hold Grab; Down ducks under the thorn. Reel Up over the stone, then jump free.",
+    "question": "How do you move below a passing thorn without leaving the moving ring?",
+    "showHintAtRest": true
+  },
+  "bank": {
+    "side": "base",
+    "batch": 14,
+    "run": 7,
+    "collection": "run7",
+    "format": "compact",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "difficulty": 3,
+    "author": "Codex",
+    "role": "moving-anchor timing introduction",
+    "worlds": [],
+    "tags": [
+      "moving-hook",
+      "rope-length",
+      "sweeper",
+      "arrival-timing"
+    ],
+    "newMechanics": [],
+    "requiredEvents": [
+      "moving-hook",
+      "moving-unhook",
+      "dash"
+    ],
+    "learningFamily": "moving-anchor-and-cargo-timing",
+    "lessonRole": "introduce",
+    "preparesFor": [
+      "bank-f57",
+      "bank-f58"
+    ],
+    "prerequisites": [],
+    "humanReview": "Awaiting playtest; route evidence does not establish enjoyment or human difficulty.",
+    "entrance": "Western stone dock level with the hanging freight ring.",
+    "exit": "Eastern ledge beyond the raised thorned stone.",
+    "solution": "Jump from the dock and catch the moving ring. Reel in while boarding, then pay out as the thorn approaches along the short-rope lane. Hold below its path until it has passed left. Reel back up before the raised stone reaches your feet. Pump right near the eastern rail turn, jump free, and dash up-right onto the exit ledge.",
+    "nearestExisting": "F23 Shorten the Arc uses fixed hooks and a tally dip. Revised B52 changes rope length around static teeth while the carrier moves. Here the opposing patrol and moving anchor jointly determine the safe rope length, and the raised stone makes staying low insufficient. F57 develops the same boarding vocabulary into a timed blade rebound.",
+    "novelty": "A moving reference point makes a passing hazard overtake the safe short-rope lane; the knight changes orbit while transport continues.",
+    "designNotes": "The roof connects to the top boundary and leaves only freight clearance above the carrier. The patrol visibly occupies the short-rope path. The later raised stone prevents simply keeping maximum payout through the room. This is a teaching room with one connected timing phrase.",
+    "timingCues": [
+      "The thorn comes left along the height of a fully reeled knight; pay out before it reaches the ring.",
+      "When it passes the knight to the left, reel up for the raised thorned stone.",
+      "Leave near the eastern rail turn while there is room to jump and dash over the landing face."
+    ],
+    "endingForgiveness": "The ending is a normal jump/dash after the rope timing. Two nearby payout lengths and a later dash complete cleanly; no claim of universal timing tolerance.",
+    "approvedIngredients": [
+      "F23 Shorten the Arc",
+      "revised B52 active rope-length controls"
+    ],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 242,
+      "events": [
+        "jump",
+        "hook",
+        "moving-hook",
+        "moving-unhook",
+        "unhook",
+        "dash",
+        "moving-hook-turn",
+        "land",
+        "refill-dash",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 2,
+        "hook": 1,
+        "moving-hook": 1,
+        "moving-unhook": 1,
+        "unhook": 1,
+        "dash": 1,
+        "moving-hook-turn": 1,
+        "land": 1,
+        "refill-dash": 1,
+        "exit": 1
+      }
+    },
+    "routeMovement": [
+      {
+        "event": "moving-hook",
+        "frame": 15
+      },
+      {
+        "event": "moving-unhook",
+        "frame": 187,
+        "vx": 54.620369946284896,
+        "vy": -49.734849781389094
+      },
+      {
+        "event": "dash",
+        "frame": 195
+      }
+    ],
+    "positiveChecks": [
+      {
+        "name": "Shorter payout",
+        "tape": [
+          [
+            12,
+            "r"
+          ],
+          [
+            15,
+            "rjg"
+          ],
+          [
+            25,
+            "ug"
+          ],
+          [
+            21,
+            "dg"
+          ],
+          [
+            20,
+            "g"
+          ],
+          [
+            70,
+            "ug"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            4,
+            "rj"
+          ],
+          [
+            14,
+            "rux"
+          ],
+          [
+            90,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 240,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Longer payout",
+        "tape": [
+          [
+            12,
+            "r"
+          ],
+          [
+            15,
+            "rjg"
+          ],
+          [
+            25,
+            "ug"
+          ],
+          [
+            27,
+            "dg"
+          ],
+          [
+            20,
+            "g"
+          ],
+          [
+            70,
+            "ug"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            4,
+            "rj"
+          ],
+          [
+            14,
+            "rux"
+          ],
+          [
+            90,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 245,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Later exit dash",
+        "tape": [
+          [
+            12,
+            "r"
+          ],
+          [
+            15,
+            "rjg"
+          ],
+          [
+            25,
+            "ug"
+          ],
+          [
+            24,
+            "dg"
+          ],
+          [
+            20,
+            "g"
+          ],
+          [
+            70,
+            "ug"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            6,
+            "rj"
+          ],
+          [
+            14,
+            "rux"
+          ],
+          [
+            90,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 242,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "nearest edge jump-dash under rail",
+        "tape": [
+          [
+            23,
+            "r"
+          ],
+          [
+            14,
+            "rj"
+          ],
+          [
+            14,
+            "rx"
+          ],
+          [
+            95,
+            "r"
+          ],
+          [
+            15,
+            "rj"
+          ],
+          [
+            14,
+            "rux"
+          ],
+          [
+            150,
+            "rg"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 0,
+          "events": [
+            "jump",
+            "dash",
+            "death",
+            "respawn",
+            "grab",
+            "moving-hook-turn"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "dash": 2,
+            "death": 1,
+            "respawn": 1,
+            "grab": 1,
+            "moving-hook-turn": 1
+          }
+        }
+      },
+      {
+        "name": "ground approach to carrier roof",
+        "tape": [
+          [
+            23,
+            "r"
+          ],
+          [
+            14,
+            "uj"
+          ],
+          [
+            14,
+            "uxg"
+          ],
+          [
+            75,
+            "ug"
+          ],
+          [
+            170,
+            "rg"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 4,
+          "frames": 0,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "death",
+            "respawn",
+            "moving-unhook",
+            "unhook"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "hook": 3,
+            "moving-hook": 3,
+            "death": 4,
+            "respawn": 3,
+            "moving-unhook": 1,
+            "unhook": 1
+          }
+        }
+      },
+      {
+        "name": "short rope ignores passing thorn",
+        "tape": [
+          [
+            12,
+            "r"
+          ],
+          [
+            15,
+            "rjg"
+          ],
+          [
+            139,
+            "ug"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            4,
+            "rj"
+          ],
+          [
+            14,
+            "rux"
+          ],
+          [
+            90,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "death",
+            "respawn",
+            "dash"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "death": 2,
+            "respawn": 2,
+            "dash": 1
+          }
+        }
+      }
+    ]
+  },
+  "tape": [
+    [
+      12,
+      "r"
+    ],
+    [
+      15,
+      "rjg"
+    ],
+    [
+      25,
+      "ug"
+    ],
+    [
+      24,
+      "dg"
+    ],
+    [
+      20,
+      "g"
+    ],
+    [
+      70,
+      "ug"
+    ],
+    [
+      20,
+      "rg"
+    ],
+    [
+      4,
+      "rj"
+    ],
+    [
+      14,
+      "rux"
+    ],
+    [
+      90,
+      "r"
+    ]
+  ]
+}

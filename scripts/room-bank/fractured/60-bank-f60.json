@@ -258,7 +258,7 @@
     "run": 7,
     "collection": "run7",
     "format": "extended",
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "status": "route-proven",
     "difficulty": 5,
     "role": "Learn one continuous climb rhythm across three consumed grips, finite stamina, refills and returning patrols.",
@@ -275,7 +275,7 @@
       "departure-armed persistent surface"
     ],
     "author": "Codex",
-    "humanReview": "Unreviewed Run 7 candidate. Author difficulty is provisional; intended-route and bounded input evidence are not human feel ratings.",
+    "humanReview": "Approved for early Fractured; late Base alternative. Numeric player ratings remain unmeasured.",
     "learningFamily": "spent-faces",
     "lessonRole": "master",
     "preparesFor": [],
@@ -837,6 +837,12 @@
         "dx": 0.7071067811865475,
         "dy": -0.7071067811865475
       }
-    ]
+    ],
+    "placementBand": "early Fractured; late Base alternative",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "early Fractured; late Base alternative",
+      "geometryPreserved": true
+    }
   }
 }

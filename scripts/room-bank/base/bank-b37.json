@@ -54,7 +54,7 @@
     "side": "base",
     "batch": 8,
     "run": 3,
-    "acceptance": "revised",
+    "acceptance": "banked",
     "difficulty": 3,
     "role": "solve",
     "worlds": [
@@ -79,7 +79,7 @@
       "grab",
       "climbhop"
     ],
-    "humanReview": "Revised at user request: keep the discovered slingshot to the end wall; fix the divider in its upright pose. Awaiting re-review.",
+    "humanReview": "Approved for Base. Numeric player ratings remain unmeasured.",
     "entrance": "West shelf beneath the approaching carriage.",
     "exit": "Raised east gallery across the gulf.",
     "solution": "Wake the carriage, let it travel ahead, then run off the west shelf. Catch its hook as you fall, keep swinging right, and jump-release beneath the fixed divider toward the far wall. Hold Grab and Up on the wall to climb into the east gallery.",
@@ -281,6 +281,12 @@
     "userFeedback": {
       "date": "2026-10-08",
       "comment": "Preferred late-hook slingshot to end wall; remove rotation from the central arm while preserving its length."
+    },
+    "placementBand": "Base",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "Base",
+      "geometryPreserved": true
     }
   },
   "tape": [

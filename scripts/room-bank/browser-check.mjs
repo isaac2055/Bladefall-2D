@@ -4,10 +4,10 @@ import {resolve} from 'node:path';
 import {mkdirSync,readFileSync,readdirSync,writeFileSync} from 'node:fs';
 import {launchChrome} from '../../tests/launch-chrome.mjs';
 import {catalog,bankGroups} from './catalog.mjs';
-const groups=bankGroups(),activeGroup='run'+catalog.activeRun;
-const buttonFor=group=>group==='superrooms'?'bankSuperrooms':group==='banked'?'bankApproved':group==='review'?'bankReview':'bankRun'+group.slice(3);
+const groups=bankGroups(),activeGroup=catalog.defaultGroup||('run'+catalog.activeRun);
+const buttonFor=group=>group==='pending'?'bankPending':group==='superrooms'?'bankSuperrooms':group==='banked'?'bankApproved':group==='review'?'bankReview':'bankRun'+group.slice(3);
 const expected=['base','fractured'].flatMap(side=>readdirSync(resolve('scripts/room-bank',side)).filter(f=>f.endsWith('.json')).map(f=>JSON.parse(readFileSync(resolve('scripts/room-bank',side,f),'utf8')))).filter(x=>x.bank.status==='route-proven');
-const groupOf=x=>x.bank.acceptance==='banked'?'banked':x.bank.collection==='superrooms'?'superrooms':x.bank.run>=2?'run'+x.bank.run:x.bank.run===1?'run1':'review';
+const groupOf=x=>x.bank.acceptance==='banked'?'banked':catalog.defaultGroup==='pending'?'pending':x.bank.collection==='superrooms'?'superrooms':x.bank.run>=2?'run'+x.bank.run:x.bank.run===1?'run1':'review';
 const idsFor=(side,group)=>expected.filter(x=>x.bank.side===side&&groupOf(x)===group).map(x=>x.room.id).sort();
 const out=resolve('scripts/climb/.cache/room-bank');mkdirSync(out,{recursive:true});
 const b=await launchChrome({headless:true,args:['--no-sandbox']});
@@ -22,7 +22,7 @@ try{
   const expectedCount=expected.filter(x=>groupOf(x)===group).length;
   assert.match(await p.$eval('#'+button,e=>e.textContent),new RegExp('· '+expectedCount+'$'));
  }
- await p.click('#bankReview');assert.deepEqual((await visibleIds()).sort(),idsFor('base','review'));
+ await p.click('#'+buttonFor(activeGroup));assert.deepEqual((await visibleIds()).sort(),idsFor('base',activeGroup));
  await p.click('#bankApproved');assert.deepEqual((await visibleIds()).sort(),idsFor('base','banked'));
  for(const id of ['bank-f20','bank-f37','bank-f38','bank-f39','bank-f41','bank-f44'])assert.match(await p.$eval('[data-bank-room='+id+']',e=>e.textContent),/moved to Base/);
  assert.ok((await visibleIds()).includes('bank-b26'),'approved B26 is now banked');
@@ -64,10 +64,10 @@ try{
   const moved=await p.evaluate(()=>({side:BladefallPrecisionView.view.g.room.def.bank.side,href:document.querySelector('#bsBar a').href}));
   assert.equal(moved.side,target);assert.ok(moved.href.includes('side='+target));assert.ok(moved.href.includes('group='+group));assert.ok(moved.href.includes('room='+room));
  }
- await p.goto('http://localhost:8371/precision.html?pitch=bank&mode=play&side=fractured&group=review');await p.waitForSelector('[data-bank-room]');await p.click('[data-bank-room]');
+ await p.goto('http://localhost:8371/precision.html?pitch=bank&mode=play&side=fractured&group='+activeGroup);await p.waitForSelector('[data-bank-room]');await p.click('[data-bank-room]');
  const playRoom=await p.evaluate(()=>BladefallPrecisionView.view.g.room.id);
  const clock=await p.evaluate(()=>{const V=BladefallPrecisionView,S=BladefallClimbSession;const a=S.state().run.frames;V.advance(Array(60).fill(''));const b=S.state().run.frames;V.view.paused=true;V.advance(Array(60).fill(''));return [a,b,S.state().run.frames];});assert.equal(clock[1]-clock[0],60);assert.equal(clock[2],clock[1]);assert.equal(await p.$('#bsRate'),null);
- const modeLink=await p.$eval('#bsBar a',e=>e.href);assert.ok(modeLink.includes('side=fractured'));assert.ok(modeLink.includes('group=review'));assert.ok(modeLink.includes('room='+playRoom));
+ const modeLink=await p.$eval('#bsBar a',e=>e.href);assert.ok(modeLink.includes('side=fractured'));assert.ok(modeLink.includes('group='+activeGroup));assert.ok(modeLink.includes('room='+playRoom));
  await p.evaluate(()=>{BladefallPrecisionView.view.paused=false;});await p.keyboard.press('Escape');await p.waitForSelector('[data-room]');
  await p.evaluate(()=>document.querySelectorAll('[data-room]')[document.querySelectorAll('[data-room]').length-1].click());
  assert.equal(await p.evaluate(()=>BladefallClimbSession.state().run.eligible),false,'pause room selection must invalidate set time');
@@ -104,5 +104,5 @@ try{
   assert.match(await p.$eval('.pcBinds',e=>e.textContent),/Oren · hold \/ follow/);
   await p.screenshot({path:resolve(out,'run5-companion-controls.png')});
  }
- assert.deepEqual(errors,[]);console.log(`PASS: Extras entry; default Run ${catalog.activeRun} and all groups/counts; actual-dimension scrolling routes; combined completion reviews with stable revisions; CSV; play clock/pause; ${ids.length} rendered rooms.`);
+ assert.deepEqual(errors,[]);console.log(`PASS: Extras entry; default ${activeGroup} and all groups/counts; actual-dimension scrolling routes; combined completion reviews with stable revisions; CSV; play clock/pause; ${ids.length} rendered rooms.`);
 }finally{await b.close();}

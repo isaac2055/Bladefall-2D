@@ -65,7 +65,7 @@
   "bank": {
     "side": "base",
     "batch": 3,
-    "acceptance": "revised",
+    "acceptance": "banked",
     "difficulty": 4,
     "role": "solve",
     "worlds": [
@@ -239,7 +239,14 @@
       "scope": "Focused wrong-timing route and obvious shortcut review; not an exhaustive search.",
       "result": "The receiver is inside an 8px cargo-only duct. The knight can wait on its roof, but reaching the lower exit requires crossing the beam below it; an immediate descent burns."
     },
-    "archivedBeforeRevision": "scripts/room-bank/archive/batch-03-before-review/base/bank-b16.json"
+    "archivedBeforeRevision": "scripts/room-bank/archive/batch-03-before-review/base/bank-b16.json",
+    "placementBand": "middle Base",
+    "humanReview": "Approved for middle Base. Numeric player ratings remain unmeasured.",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "middle Base",
+      "geometryPreserved": true
+    }
   },
   "tape": [
     [

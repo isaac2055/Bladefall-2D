@@ -65,7 +65,7 @@
     "side": "base",
     "batch": 9,
     "run": 4,
-    "acceptance": "revised",
+    "acceptance": "banked",
     "difficulty": 4,
     "role": "keep a living floor weight until the cargo return is complete",
     "worlds": [
@@ -100,7 +100,7 @@
       "enemy-defeat",
       "recoil-jump"
     ],
-    "humanReview": "User rejected the overhead bypass and the simple enemy-to-spring demonstration. Reinvented as an out-and-back cargo puzzle where killing the weight prematurely closes the essential passage. Awaiting review.",
+    "humanReview": "Approved for Base. Numeric player ratings remain unmeasured.",
     "route": {
       "exited": true,
       "frames": 469,
@@ -1328,6 +1328,12 @@
     "userFeedback": {
       "date": "2026-10-09",
       "comment": "The guard can be skipped overhead and the intended enemy-to-spring interaction is too simplistic. Reinvent the level."
+    },
+    "placementBand": "Base",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "Base",
+      "geometryPreserved": true
     }
   },
   "tape": [

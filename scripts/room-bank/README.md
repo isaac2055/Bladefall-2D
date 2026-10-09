@@ -1,6 +1,8 @@
 # Spare-room bank
 
-The active contract is `catalog.json`. Run 7 adds **16 new candidates: eight Base and eight Fractured**, bringing the source pool to **99 rooms: 50 approved, 18 revised, 31 candidate**. All 83 pre-Run-7 records and previous decisions are preserved. The public guide is `docs/room-bank/RUN-7.md`; the set is ready for local review in 7.299.0, with saved routes and browser checks complete. No new candidate is approved or placed in a campaign.
+The active contract is `catalog.json`. The final review update (7.302.0) has **98 rooms: 89 approved and nine revised**. There are **55 Base / 43 Fractured** rooms; the approved bank is **51 / 38**. F62 is archived. The current guide is `docs/room-bank/FINAL-REVIEW-7.302.md`; the menu gathers remaining revisions in **Final review**, alongside **Banked**. Stable IDs and original run metadata are preserved. No room is inserted into a campaign.
+
+The latest feedback approves 39 rooms and reclassifies eight; approved geometry and tapes are unchanged. Nine requested revisions are B24, B58, B59, B60, F24, F25, F32, F45 and F59. Do not create another run without a new request.
 
 Read `docs/design/SURVIVE-ROOM-SYNTHESIS.md` before further authoring. The original five-run sequence remains in `docs/room-bank/RUN-PLAN.md`; Run 7 follows the later request for meaningful timing and movement progression. The Run 5/6 feedback guide is `docs/room-bank/RUN-56-REVIEW.md`.
 
@@ -18,7 +20,7 @@ A clean intended tape proves feasibility, not that the puzzle matters. Actively 
 
 Use a focused zero-death completion, two or three useful early/late/contact variants and a handful of relevant bypass attempts. Save before searching; avoid endless parameter sweeps. `requiredEvents` document authoring evidence and must not become invisible gameplay prerequisites. Base routes use ordinary jump/dash/climb plus taught weapon/object interactions, without super, hyper, ultra or wallbounce; the catalog preserves the earlier explicit F41 Base exception. Fractured may demand linked execution. `status:"route-proven"` says nothing about human fun, measured difficulty, suitability or approval. `acceptance:"banked"` requires the user's decision.
 
-Run 7's opt-in `spentThorns` device keeps each rectangle solid. Its marked face is safe throughout first contact; departure begins a visible 18-frame warning, then makes that face lethal until reset. Recontact does not cancel the warning and unmarked faces remain usable. Runtime/view sources are `public/bladefall-pcore-dev-spent-thorn.js` and `-view.js`; the focused contract is `spent-thorn-check.mjs`. Existing cargo-clasp and hinge rules remain in `docs/design/CARGO-CLASP.md` and `docs/room-bank/hinge.md`.
+The opt-in `spentThorns` device keeps each rectangle solid. Optional `segment:4` makes each contacted four-pixel patch independently spent; only B58/B59 opt in, preserving existing whole-face rooms. Its marked face is safe throughout first contact; departure begins a visible 18-frame warning, then makes that face lethal until reset. Recontact does not cancel the warning and unmarked faces remain usable. Runtime/view sources are `public/bladefall-pcore-dev-spent-thorn.js` and `-view.js`; the focused contract is `spent-thorn-check.mjs`. Existing cargo-clasp and hinge rules remain in `docs/design/CARGO-CLASP.md` and `docs/room-bank/hinge.md`.
 
 Commands from the repo root:
 
@@ -27,4 +29,6 @@ Commands from the repo root:
 - `node scripts/room-bank/spent-thorn-check.mjs` checks the new opt-in device's interaction contract.
 - `node scripts/room-bank/browser-check.mjs` checks group membership, reviews/revisions/CSV, the play clock and rendering against the local server. Optional IDs limit route captures.
 
-`register.mjs` loads active sources for authoring tools. The generated public registry separates approved/review groups and corresponding timer sets. Current totals are 55 Base / 44 Fractured; the approved bank is 27 / 23 and the pending review pool is 28 / 21. Player review decides promotion. Local bundle assembly does not authorize publishing.
+`register.mjs` loads active sources for authoring tools. The generated public registry separates approved/review groups and corresponding timer sets. Current totals are 55 Base / 43 Fractured; the approved bank is 51 / 38 and the pending review pool is 4 / 5. Player review decides promotion. After relevant checks, commit and push the completed change set to GitHub main under the standing authorization in `.agents/AGENTS.md`; never force-push or deploy to Netlify. Keep private submissions and local caches out of Git.
+
+Dust-bunny path guides and endpoint markers are hidden globally. Keep accepted motion unchanged unless asked. A single-point sweeper path creates a stationary thorn; multi-point and loop paths support less predictable crossings. Players learn their motion by observation.

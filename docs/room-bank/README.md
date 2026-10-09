@@ -1,3 +1,11 @@
+# Room bank — current final review
+
+The 7.302 update has **89 approved rooms (51 Base / 38 Fractured)** and **nine revisions (4 Base / 5 Fractured)**. F62 is removed from the active pool. Open **Extras → Room Bank → Final review** for the remaining rooms; **Banked** holds the approved reserve with qualitative placement notes. No campaign imports are included.
+
+See [the current guide](FINAL-REVIEW-7.302.md) for decisions, changes and release evidence. Historical run guides below describe their original sets and may contain superseded counts or approval status.
+
+---
+
 # Room bank
 
 The room bank is a reserve outside campaign progression. The latest set is **Run 7: sixteen new candidates, eight Base and eight Fractured**, with smaller lessons preparing later timing and movement sequences. See the [Run 7 guide](RUN-7.md) and [synthesis report](../design/SURVIVE-ROOM-SYNTHESIS.md). Run 7 is ready for review locally in 7.299.0; the guide records the completed evidence and remaining human assessment.

@@ -1,0 +1,1064 @@
+{
+  "room": {
+    "id": "bank-b49",
+    "name": "The Rooms Trade Their Floors",
+    "palette": "foundry",
+    "study": true,
+    "dashes": 0,
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "map": [
+      "####################################################################################",
+      "#..G...............................................................................#",
+      "#..G...............................................................................#",
+      "#..G...............................................................................#",
+      "#..G...............................................................................#",
+      "#..G.......###.....................................................................#",
+      "#..G........c.............................................................\\........#",
+      "#..G.......###.....................................................................#",
+      "#..G...............................................................................#",
+      "#..G....................................................................../........#",
+      "#..G..............................c................................................#",
+      "#..G.............................####............MMM..#########################....#",
+      "#..G...............................................................................#",
+      "#..G...............................................................................#",
+      "#..G...............................................................................#",
+      "#..G...............................................................................#",
+      "#..G...............................................................................#",
+      "#..G...............................................................................#",
+      "#..G...............................................................................#",
+      "#..G................................############...................................#",
+      "#..G...............................................................................#",
+      "#..G...............................................................................#",
+      "#..G...............................................................................#",
+      "#..G...............................................................................#",
+      "#..G...............................................................................#",
+      "#..G...............................................................................#",
+      "#..G...............................................................................#",
+      "#..G...............................................................................#",
+      "...G...............................................................................#",
+      "...G...............................................................................#",
+      "...G...............................................................................#",
+      ".##G############...................................................................#",
+      "###############>...................................................................#",
+      "###############>...................................................................#",
+      "###############>...................................................................#",
+      "###############>...................................................................#",
+      "###############>P..................................................................#",
+      "##################........{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{##########",
+      "##################........##########################################################",
+      "####################################################################################"
+    ],
+    "hint": "Watch the bridge patrol. Land on the far lift to reverse the circuit, then leave as it rises.",
+    "question": "Linked landing relays swap the jobs of a central bridge and a remote light shutter. A hinge turns the outward climb into a return gallery, and walking rather than landing preserves the prepared final route.",
+    "exit": "left",
+    "cols": 84,
+    "rows": 40,
+    "recoilPlatforms": [
+      {
+        "id": "Home",
+        "c": 18,
+        "r": 37,
+        "w": 8,
+        "depth": 1,
+        "loadFrames": 24,
+        "releaseSpeed": 90
+      }
+    ],
+    "stepRelays": [
+      {
+        "id": "A",
+        "duration": 70,
+        "platforms": [
+          {
+            "c": 28,
+            "r": 31,
+            "w": 8,
+            "h": 1,
+            "to": [
+              0,
+              -12
+            ]
+          },
+          {
+            "c": 68,
+            "r": 19,
+            "w": 10,
+            "h": 1,
+            "to": [
+              0,
+              12
+            ]
+          },
+          {
+            "c": 65,
+            "r": 3,
+            "w": 3,
+            "h": 3,
+            "to": [
+              0,
+              3
+            ]
+          }
+        ]
+      }
+    ],
+    "hingeArms": [
+      {
+        "id": "Bridge",
+        "c": 48,
+        "r": 11,
+        "length": 10,
+        "dir": "down"
+      }
+    ],
+    "beams": [
+      {
+        "c": 83,
+        "r": 9,
+        "dir": "l"
+      }
+    ],
+    "sweepers": [
+      {
+        "id": "Bridge patrol",
+        "path": [
+          [
+            38.5,
+            9.5
+          ],
+          [
+            46.5,
+            9.5
+          ]
+        ],
+        "period": 180,
+        "phase": 0,
+        "radius": 4
+      },
+      {
+        "id": "Upper dock patrol",
+        "path": [
+          [
+            66.5,
+            17.5
+          ],
+          [
+            79.5,
+            17.5
+          ]
+        ],
+        "period": 210,
+        "phase": 20,
+        "radius": 5
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 13,
+    "run": 5,
+    "collection": "run5",
+    "format": "superroom",
+    "acceptance": "revised",
+    "status": "route-proven",
+    "difficulty": 4,
+    "role": "Time two crossings of the changed bridge, then leave the rising return lift before its patrol",
+    "worlds": [
+      12,
+      16,
+      20
+    ],
+    "tags": [
+      "recoil-platform",
+      "step-relay",
+      "hinge",
+      "beam",
+      "return-route",
+      "path-sweeper",
+      "two-way-timing",
+      "active-lift-exit"
+    ],
+    "newMechanics": [],
+    "author": "Codex",
+    "humanReview": "Owner: the starting door could be climbed over; the underlying room was decent but lacked engagement. Revision awaits review.",
+    "requiredEvents": [
+      "recoil-jump",
+      "step-relay",
+      "hinge-turn",
+      "mirror",
+      "stone-lit",
+      "gate-open"
+    ],
+    "solution": "Load the Home spring and launch right onto the low landing relay. Walk from its raised position to the hanging arm, climb to its hub and cut downward to make the bridge. Read the bridge patrol, jump over it and then jump to the western tally ledge. Watch the same patrol on the return crossing before reaching the eastern mirror. Turn that mirror, drop around the upper gallery onto the low far relay, and leave left as the lift rises rather than riding into the upper dock patrol. The linked shutter completes the prepared light circuit behind you. Follow the lower conveyor to Home, load the same spring and launch left onto the widened home landing, then walk through the opened, ceiling-sealed exit.",
+    "nearestExisting": "B35 supplies the reusable recoil lift, B11/B12 supply a climbing arm that becomes a bridge, and B31 supplies a changed optical return. Here two opposed lifts and their shared optical shutter trade positions together: the first landing grants ascent, the far landing completes a circuit and returns the near lift below.",
+    "novelty": "The same converted bridge now has a visible patrol on both crossings. The far relay still completes the shared circuit, but its rising destination is patrolled: the useful move is to activate the lift and leave while the remote shutter finishes. The final home spring lands on a wider safe cap.",
+    "approvedIngredients": [
+      "bank-b35",
+      "bank-b11",
+      "bank-b12",
+      "bank-b31"
+    ],
+    "positiveChecks": [
+      {
+        "name": "Begin the first bridge jump two frames earlier",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            32,
+            "rj"
+          ],
+          [
+            85,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ],
+          [
+            94,
+            "rgu"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            22,
+            "l"
+          ],
+          [
+            40,
+            "lj"
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            28,
+            "lj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            50,
+            "r"
+          ],
+          [
+            36,
+            "rj"
+          ],
+          [
+            80,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            40,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            190,
+            "l"
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            34,
+            "lj"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 1147
+        }
+      },
+      {
+        "name": "Begin the first bridge jump two frames later",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            32,
+            "rj"
+          ],
+          [
+            85,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ],
+          [
+            94,
+            "rgu"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            26,
+            "l"
+          ],
+          [
+            40,
+            "lj"
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            28,
+            "lj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            50,
+            "r"
+          ],
+          [
+            36,
+            "rj"
+          ],
+          [
+            80,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            40,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            190,
+            "l"
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            34,
+            "lj"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 1144
+        }
+      },
+      {
+        "name": "Leave the far lift four frames later",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            32,
+            "rj"
+          ],
+          [
+            85,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ],
+          [
+            94,
+            "rgu"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            24,
+            "l"
+          ],
+          [
+            40,
+            "lj"
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            28,
+            "lj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            50,
+            "r"
+          ],
+          [
+            36,
+            "rj"
+          ],
+          [
+            80,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            40,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            192,
+            "l"
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            34,
+            "lj"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 1151
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Use the spring immediately left and climb over the closed door",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            34,
+            "lj"
+          ],
+          [
+            100,
+            "lgu"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0
+        },
+        "firstFailure": "Exit remains closed."
+      },
+      {
+        "name": "Walk through the bridge patrol instead of jumping",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            32,
+            "rj"
+          ],
+          [
+            85,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ],
+          [
+            94,
+            "rgu"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            24,
+            "l"
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            28,
+            "lj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            50,
+            "r"
+          ],
+          [
+            36,
+            "rj"
+          ],
+          [
+            80,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            40,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            190,
+            "l"
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            34,
+            "lj"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 9
+        },
+        "firstFailure": "sweeper"
+      },
+      {
+        "name": "Ride the far lift all the way to the patrolled upper dock",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            32,
+            "rj"
+          ],
+          [
+            85,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ],
+          [
+            94,
+            "rgu"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            24,
+            "l"
+          ],
+          [
+            40,
+            "lj"
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            28,
+            "lj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            50,
+            "r"
+          ],
+          [
+            36,
+            "rj"
+          ],
+          [
+            80,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            40,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            90,
+            ""
+          ],
+          [
+            190,
+            "l"
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            34,
+            "lj"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 9
+        },
+        "firstFailure": "sweeper"
+      }
+    ],
+    "interconnection": "Both lifts and the optical shutter still share one landing relay. The hinge is climbed, converted, and crossed in both directions under the same patrol cycle. Landing on the far relay reverses the circuit; leaving it early avoids its patrolled upper stop while the optical shutter completes the remote opening. The home spring is reused in the opposite direction.",
+    "superroom": {
+      "screenAreas": 3.652173913043478,
+      "stages": [
+        "Launch right from Home and exchange the lift positions",
+        "Turn the hanging climb into the upper return bridge",
+        "Prepare the far mirror, then land on the lowered far relay",
+        "Return below and launch left from the same Home spring"
+      ],
+      "routeExtent": {
+        "minX": -6,
+        "maxX": 642,
+        "minY": 50,
+        "maxY": 293
+      }
+    },
+    "requiredEventCounts": {
+      "recoil-jump": 2,
+      "step-relay": 2,
+      "stone-lit": 2
+    },
+    "designNotes": "The exit gate now reaches the ceiling. Two existing path sweepers add readable crossing and departure timing; neither controls a hidden event gate. The hub and tally ledge give waiting space. The final home platform has an extra tile of safe landing surface so the added middle timing does not make the ending precise.",
+    "route": {
+      "frames": 1146,
+      "deaths": 0,
+      "events": [
+        "recoil-load",
+        "recoil-release",
+        "jump",
+        "recoil-jump",
+        "step-relay",
+        "land",
+        "grab",
+        "climbhop",
+        "strike",
+        "hinge-turn",
+        "stone-lit",
+        "mirror",
+        "gate-open",
+        "exit"
+      ],
+      "eventCounts": {
+        "recoil-load": 2,
+        "recoil-release": 2,
+        "jump": 6,
+        "recoil-jump": 2,
+        "step-relay": 2,
+        "land": 9,
+        "grab": 1,
+        "climbhop": 1,
+        "strike": 2,
+        "hinge-turn": 1,
+        "stone-lit": 2,
+        "mirror": 1,
+        "gate-open": 1,
+        "exit": 1
+      },
+      "movement": "Ordinary recoil jump, climb, blade and landing; zero dash."
+    },
+    "feedbackRevision": "Requested Run 5/6 owner-feedback revision complete; original successful bypasses and revised regressions saved.",
+    "review": {
+      "reportedBypasses": [
+        {
+          "name": "Use the spring immediately left and climb over the closed door",
+          "tape": [
+            [
+              26,
+              "r"
+            ],
+            [
+              30,
+              "d"
+            ],
+            [
+              8,
+              "l"
+            ],
+            [
+              34,
+              "lj"
+            ],
+            [
+              100,
+              "lgu"
+            ],
+            [
+              100,
+              "l"
+            ]
+          ],
+          "originalFrames": 238,
+          "originalDeaths": 0,
+          "archive": "scripts/room-bank/archive/before-run56-feedback/base/bank-b49.json"
+        }
+      ],
+      "revisionSummary": "The exit gate now reaches the ceiling. Two existing path sweepers add readable crossing and departure timing; neither controls a hidden event gate. The hub and tally ledge give waiting space. The final home platform has an extra tile of safe landing surface so the added middle timing does not make the ending precise."
+    }
+  },
+  "tape": [
+    [
+      26,
+      "r"
+    ],
+    [
+      30,
+      "d"
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      32,
+      "rj"
+    ],
+    [
+      85,
+      ""
+    ],
+    [
+      100,
+      "r"
+    ],
+    [
+      94,
+      "rgu"
+    ],
+    [
+      1,
+      "ds"
+    ],
+    [
+      24,
+      "l"
+    ],
+    [
+      40,
+      "lj"
+    ],
+    [
+      1,
+      "l"
+    ],
+    [
+      28,
+      "lj"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      28,
+      "rj"
+    ],
+    [
+      50,
+      "r"
+    ],
+    [
+      36,
+      "rj"
+    ],
+    [
+      80,
+      "r"
+    ],
+    [
+      1,
+      "rs"
+    ],
+    [
+      40,
+      "r"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      40,
+      "l"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      190,
+      "l"
+    ],
+    [
+      30,
+      "d"
+    ],
+    [
+      8,
+      "l"
+    ],
+    [
+      34,
+      "lj"
+    ],
+    [
+      100,
+      "l"
+    ]
+  ]
+}

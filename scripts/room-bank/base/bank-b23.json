@@ -95,7 +95,7 @@
   "bank": {
     "side": "base",
     "batch": 4,
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "difficulty": 4,
     "role": "timing",
     "worlds": [
@@ -117,7 +117,7 @@
     "requiredEvents": [
       "jump"
     ],
-    "humanReview": "Author difficulty estimate; fun/difficulty/suitability pending.",
+    "humanReview": "Approved for early Base, above B21. Numeric player ratings remain unmeasured.",
     "solution": "Board the low ferry only when its next pass beneath the first patrol will be clear. Stay low under the thorned ceiling, move to its front, and jump up to the central pier. Let the second ferry and its diagonal route come to you, board it after the upper patrol clears, then jump from its high end onto the exit landing.",
     "nearestExisting": "Return Freight dispatches a zip, leaves it for a void shortcut and catches its returning cargo. This room uses two unsummoned cyclic ferries, a low roof preventing an aerial shortcut, and a central pier where the player must let an unsafe connection go.",
     "novelty": "A successful first boarding can deliver the knight to an unsafe second connection. The intermediate pier is a deliberate place to miss one ferry and synchronize with the independent second patrol.",
@@ -282,7 +282,13 @@
           "deaths": 2
         }
       }
-    ]
+    ],
+    "placementBand": "early Base, above B21",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "early Base, above B21",
+      "geometryPreserved": true
+    }
   },
   "tape": [
     [

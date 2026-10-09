@@ -1,0 +1,1271 @@
+{
+  "room": {
+    "id": "bank-f56",
+    "name": "The Return Has Teeth",
+    "palette": "citadel",
+    "study": true,
+    "movement": "survive-2",
+    "aim8": true,
+    "exit": "left",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "cols": 48,
+    "rows": 36,
+    "map": [
+      "################################################",
+      "#..............................................#",
+      "#..............................................#",
+      "#..............................................#",
+      "#..............................................#",
+      "#..............................................#",
+      "#..............................................#",
+      "#..............................................#",
+      "#..............................................#",
+      "#..............................................#",
+      "...............................................#",
+      "...............................................#",
+      "..........................^^^^^^^^^^^^^^^^^^...#",
+      "..........................##################...#",
+      "################..........######################",
+      "################>.........vvvvvvvvvvvvvvvvvv####",
+      "################>...........................####",
+      "################>..............................#",
+      "################>..............................#",
+      "################>..............................#",
+      "################>..............................#",
+      "################>...........................####",
+      "################>...........................####",
+      "################>...........................####",
+      "################>^^^^^^^^^^^^^^.............####",
+      "#........######################....#############",
+      "#........vvvvvvvvvvvvvvvvvvvvvv...<#############",
+      "#.................................<#############",
+      "#.................................<#############",
+      "#..P..............................<#############",
+      "###########.......................<#############",
+      "###########.......................<#############",
+      "###########................b......<#############",
+      "###########.......................<#############",
+      "###########^^^^^^^^^^^^^^^^^^^^^^^^#############",
+      "################################################"
+    ],
+    "hint": "Turn the climb into a runway. Reverse low, dash to the moth, then loft past the last patrol.",
+    "sweepers": [
+      {
+        "id": "Low entry",
+        "path": [
+          [
+            14,
+            27
+          ],
+          [
+            14,
+            32
+          ]
+        ],
+        "period": 150,
+        "phase": 70,
+        "radius": 4
+      },
+      {
+        "id": "Low exit",
+        "path": [
+          [
+            31,
+            22
+          ],
+          [
+            31,
+            32
+          ]
+        ],
+        "period": 150,
+        "phase": 55,
+        "radius": 4
+      },
+      {
+        "id": "High entry",
+        "path": [
+          [
+            30,
+            17
+          ],
+          [
+            30,
+            23
+          ]
+        ],
+        "period": 180,
+        "phase": 45,
+        "radius": 4
+      },
+      {
+        "id": "Home pass",
+        "path": [
+          [
+            11,
+            11
+          ],
+          [
+            21,
+            11
+          ]
+        ],
+        "period": 180,
+        "phase": 15,
+        "radius": 4
+      }
+    ],
+    "hingeArms": [
+      {
+        "id": "Return runway",
+        "c": 43,
+        "r": 19,
+        "length": 6,
+        "dir": "down"
+      }
+    ],
+    "foes": [
+      {
+        "kind": "moth",
+        "x": 20,
+        "y": 22,
+        "path": [
+          2,
+          0
+        ],
+        "period": 180,
+        "phase": 0
+      }
+    ],
+    "question": "When the climb becomes your runway, which dash must you keep for the returning moth?"
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 14,
+    "run": 7,
+    "collection": "run7",
+    "format": "extended",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "difficulty": 4,
+    "role": "Turn the outbound climb into a return runway, then reverse-launch through a second aerial patrol phrase",
+    "worlds": [],
+    "tags": [
+      "wavedash",
+      "reverse-hyper",
+      "pogo-low",
+      "pogo-loft",
+      "moving-target",
+      "hinge",
+      "sweeper",
+      "folded-route"
+    ],
+    "newMechanics": [],
+    "author": "Codex",
+    "humanReview": "Unreviewed candidate. Author difficulty is provisional.",
+    "learningFamily": "timed-launch-and-pogo",
+    "lessonRole": "master",
+    "prerequisites": [
+      "bank-b55",
+      "bank-f55"
+    ],
+    "preparesFor": [],
+    "timingCues": [
+      "The lower thorn descends away from the launch line; the small teaching room supplies this first rhythm.",
+      "Climb the hub, cut downward as the knight crests it, and settle on the newly horizontal runway.",
+      "The upper vertical thorn is retreating down when the reverse launch crosses above it. Preserve the runway-refilled dash to reach the moth.",
+      "The moth is near its far turn as the return dash arrives. Loft from the cut, then spend its new dash below and behind the home patrol."
+    ],
+    "requiredEvents": [
+      "hyper",
+      "pogo-low",
+      "hinge-turn",
+      "reverse-hyper",
+      "pogo-loft",
+      "enemy-defeat"
+    ],
+    "solution": "Use the low wavedash and pod crossing learned in F55 to reach the eastern pier. Climb the vertical hinge and cut down at its hub as you crest it; the climb turns into a six-tile launch runway. Step left for room, dash down-right along it, then jump left after the ground contact restores your dash. This reverse hyper stays beneath the upper thorn roof and above the descending patrol. Carry its momentum, dash left to the returning moth, and cut with Jump held. Loft and spend the new dash up-left through the final patrol lane to the home balcony.",
+    "nearestExisting": "F55 teaches the exact lower launch phrase, while B55 introduces meeting a returning moth. F56 combines those learned arrivals with a reverse launch from architecture the knight changed on the outbound climb. F49 has a folded return but uses a collapsing seam; F56 instead makes the same hinged body a climb and then a launch runway.",
+    "novelty": "The first phrase prepares both the player and the room: the visible climb becomes the floor needed to build the upper return. The reverse launch must preserve a dash for a second airborne extension before the moving target supplies the final loft and resource reset.",
+    "positiveChecks": [
+      {
+        "name": "Observe for four more frames on the new runway",
+        "tape": [
+          [
+            6,
+            "j"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            40,
+            "rgu"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            4,
+            ""
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            12,
+            "lx"
+          ],
+          [
+            6,
+            "l"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            24,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 399,
+        "events": [
+          "jump",
+          "dash",
+          "land",
+          "ultra",
+          "refill-dash",
+          "hyper",
+          "strike",
+          "pogo-low",
+          "pod",
+          "grab",
+          "climbhop",
+          "hinge-turn",
+          "reverse-hyper",
+          "pogo-loft",
+          "enemy-defeat",
+          "exit"
+        ],
+        "eventCounts": {
+          "jump": 2,
+          "dash": 6,
+          "land": 3,
+          "ultra": 2,
+          "refill-dash": 6,
+          "hyper": 2,
+          "strike": 3,
+          "pogo-low": 1,
+          "pod": 1,
+          "grab": 1,
+          "climbhop": 1,
+          "hinge-turn": 1,
+          "reverse-hyper": 1,
+          "pogo-loft": 1,
+          "enemy-defeat": 1,
+          "exit": 1
+        }
+      },
+      {
+        "name": "Leave the final loft four frames earlier",
+        "tape": [
+          [
+            6,
+            "j"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            40,
+            "rgu"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            12,
+            "lx"
+          ],
+          [
+            6,
+            "l"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 394,
+        "events": [
+          "jump",
+          "dash",
+          "land",
+          "ultra",
+          "refill-dash",
+          "hyper",
+          "strike",
+          "pogo-low",
+          "pod",
+          "grab",
+          "climbhop",
+          "hinge-turn",
+          "reverse-hyper",
+          "pogo-loft",
+          "enemy-defeat",
+          "exit"
+        ],
+        "eventCounts": {
+          "jump": 2,
+          "dash": 6,
+          "land": 3,
+          "ultra": 2,
+          "refill-dash": 6,
+          "hyper": 2,
+          "strike": 3,
+          "pogo-low": 1,
+          "pod": 1,
+          "grab": 1,
+          "climbhop": 1,
+          "hinge-turn": 1,
+          "reverse-hyper": 1,
+          "pogo-loft": 1,
+          "enemy-defeat": 1,
+          "exit": 1
+        }
+      },
+      {
+        "name": "Leave the final loft four frames later",
+        "tape": [
+          [
+            6,
+            "j"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            40,
+            "rgu"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            12,
+            "lx"
+          ],
+          [
+            6,
+            "l"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            28,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 394,
+        "events": [
+          "jump",
+          "dash",
+          "land",
+          "ultra",
+          "refill-dash",
+          "hyper",
+          "strike",
+          "pogo-low",
+          "pod",
+          "grab",
+          "climbhop",
+          "hinge-turn",
+          "reverse-hyper",
+          "pogo-loft",
+          "enemy-defeat",
+          "exit"
+        ],
+        "eventCounts": {
+          "jump": 2,
+          "dash": 6,
+          "land": 3,
+          "ultra": 2,
+          "refill-dash": 6,
+          "hyper": 2,
+          "strike": 3,
+          "pogo-low": 1,
+          "pod": 1,
+          "grab": 1,
+          "climbhop": 1,
+          "hinge-turn": 1,
+          "reverse-hyper": 1,
+          "pogo-loft": 1,
+          "enemy-defeat": 1,
+          "exit": 1
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Short-hop from the nearest hinge edge and spend the ordinary dash",
+        "tape": [
+          [
+            6,
+            "j"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            40,
+            "rgu"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            9,
+            "l"
+          ],
+          [
+            6,
+            "lj"
+          ],
+          [
+            12,
+            "lx"
+          ],
+          [
+            22,
+            "l"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            24,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "exited": false,
+        "deaths": 1,
+        "frames": 398,
+        "events": [
+          "jump",
+          "dash",
+          "land",
+          "ultra",
+          "refill-dash",
+          "hyper",
+          "strike",
+          "pogo-low",
+          "pod",
+          "grab",
+          "climbhop",
+          "hinge-turn",
+          "death",
+          "respawn"
+        ],
+        "eventCounts": {
+          "jump": 3,
+          "dash": 4,
+          "land": 2,
+          "ultra": 1,
+          "refill-dash": 3,
+          "hyper": 1,
+          "strike": 3,
+          "pogo-low": 1,
+          "pod": 1,
+          "grab": 1,
+          "climbhop": 1,
+          "hinge-turn": 1,
+          "death": 1,
+          "respawn": 1
+        },
+        "death": {
+          "type": "death",
+          "frame": 267,
+          "x": 223,
+          "y": 195,
+          "cause": "spikes",
+          "vx": -90,
+          "vy": 0,
+          "i": 266
+        }
+      },
+      {
+        "name": "Try an ordinary jump-dash from the unturned hinge head",
+        "tape": [
+          [
+            6,
+            "j"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            40,
+            "rgu"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            6,
+            "lj"
+          ],
+          [
+            12,
+            "lx"
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            24,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "exited": false,
+        "deaths": 1,
+        "frames": 377,
+        "events": [
+          "jump",
+          "dash",
+          "land",
+          "ultra",
+          "refill-dash",
+          "hyper",
+          "strike",
+          "pogo-low",
+          "pod",
+          "grab",
+          "climbhop",
+          "hinge-turn",
+          "death",
+          "respawn"
+        ],
+        "eventCounts": {
+          "jump": 4,
+          "dash": 5,
+          "land": 4,
+          "ultra": 1,
+          "refill-dash": 4,
+          "hyper": 1,
+          "strike": 2,
+          "pogo-low": 1,
+          "pod": 1,
+          "grab": 1,
+          "climbhop": 1,
+          "hinge-turn": 1,
+          "death": 1,
+          "respawn": 1
+        },
+        "death": {
+          "type": "death",
+          "frame": 276,
+          "x": 315,
+          "y": 127,
+          "cause": "spikes",
+          "vx": -169.70562748477138,
+          "vy": -169.70562748477138,
+          "i": 275
+        }
+      },
+      {
+        "name": "Carry the return launch past the moth without cutting it",
+        "tape": [
+          [
+            6,
+            "j"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            40,
+            "rgu"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            12,
+            "lx"
+          ],
+          [
+            6,
+            "l"
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            24,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "exited": false,
+        "deaths": 1,
+        "frames": 407,
+        "events": [
+          "jump",
+          "dash",
+          "land",
+          "ultra",
+          "refill-dash",
+          "hyper",
+          "strike",
+          "pogo-low",
+          "pod",
+          "grab",
+          "climbhop",
+          "hinge-turn",
+          "reverse-hyper",
+          "death",
+          "respawn"
+        ],
+        "eventCounts": {
+          "jump": 2,
+          "dash": 5,
+          "land": 2,
+          "ultra": 2,
+          "refill-dash": 4,
+          "hyper": 2,
+          "strike": 2,
+          "pogo-low": 1,
+          "pod": 1,
+          "grab": 1,
+          "climbhop": 1,
+          "hinge-turn": 1,
+          "reverse-hyper": 1,
+          "death": 1,
+          "respawn": 1
+        },
+        "death": {
+          "type": "death",
+          "frame": 285,
+          "x": 162,
+          "y": 195,
+          "cause": "spikes",
+          "vx": -90,
+          "vy": 0,
+          "i": 284
+        }
+      },
+      {
+        "name": "Climb from the starting room onto the roof",
+        "tape": [
+          [
+            25,
+            "r"
+          ],
+          [
+            15,
+            "rj"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            100,
+            "rgu"
+          ],
+          [
+            50,
+            "l"
+          ]
+        ],
+        "exited": false,
+        "deaths": 2,
+        "frames": 202,
+        "events": [
+          "jump",
+          "death",
+          "respawn"
+        ],
+        "eventCounts": {
+          "jump": 1,
+          "death": 2,
+          "respawn": 2
+        },
+        "death": {
+          "type": "death",
+          "frame": 36,
+          "x": 82,
+          "y": 216,
+          "cause": "spikes",
+          "vx": 90,
+          "vy": -105,
+          "i": 35
+        }
+      }
+    ],
+    "interconnection": "The outbound climb is the same hinged body used as the upper return launch runway. The thorned roof over the first crossing becomes the floor hazard below the returning moth interception.",
+    "superroom": {
+      "screenAreas": 1.8782608695652174,
+      "scaleNote": "A 48\u00d736 folded scrolling combination, about 1.9 normal areas; no claim of a three-screen superroom. The route crosses the lower lane eastward then the upper lane westward.",
+      "stages": [
+        "Wavedash below the first roof into a low pogo",
+        "Climb and turn the same hinge into a runway",
+        "Reverse launch into the moving moth",
+        "Loft behind the final returning patrol"
+      ]
+    },
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 394,
+      "events": [
+        "jump",
+        "dash",
+        "land",
+        "ultra",
+        "refill-dash",
+        "hyper",
+        "strike",
+        "pogo-low",
+        "pod",
+        "grab",
+        "climbhop",
+        "hinge-turn",
+        "reverse-hyper",
+        "pogo-loft",
+        "enemy-defeat",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 2,
+        "dash": 6,
+        "land": 3,
+        "ultra": 2,
+        "refill-dash": 6,
+        "hyper": 2,
+        "strike": 3,
+        "pogo-low": 1,
+        "pod": 1,
+        "grab": 1,
+        "climbhop": 1,
+        "hinge-turn": 1,
+        "reverse-hyper": 1,
+        "pogo-loft": 1,
+        "enemy-defeat": 1,
+        "exit": 1
+      }
+    },
+    "requiredEventCounts": {
+      "hyper": 2
+    },
+    "actualMovementEvents": [
+      "jump",
+      "dash",
+      "land",
+      "ultra",
+      "refill-dash",
+      "hyper",
+      "strike",
+      "pogo-low",
+      "pod",
+      "grab",
+      "climbhop",
+      "hinge-turn",
+      "reverse-hyper",
+      "pogo-loft",
+      "enemy-defeat",
+      "exit"
+    ],
+    "designNotes": "The lower roof has visible thorns on both faces so its top cannot become an ordinary bypass. The upper roof limits ordinary jump height. An active short-hop/dash from the nearest converted-runway edge falls short; an ordinary jump/dash from the unturned hinge also fails. The small air pocket east of the hinge removes the immediate wall against which its narrow vertical head could otherwise replenish a dash. Advanced alternate routes have not been exhaustively searched; no event receipt is used to seal the exit.",
+    "endingForgiveness": "The return is the more demanding half: reverse launch, retained-dash extension, moving interception and final rising dash. Its last departure succeeds four frames earlier and later, and four extra observation frames on the converted runway also succeed. The challenge remains in the sequence rather than a single contact frame.",
+    "approvedIngredients": [
+      "bank-f33",
+      "bank-f49",
+      "bank-f23"
+    ],
+    "review": {
+      "authorEvidence": "One zero-death canonical route, two or three saved timing/contact variants, and active ordinary-route bypass attempts. Human fun/difficulty/suitability review remains pending."
+    }
+  },
+  "tape": [
+    [
+      6,
+      "j"
+    ],
+    [
+      12,
+      "rdx"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      14,
+      "r"
+    ],
+    [
+      12,
+      "rx"
+    ],
+    [
+      6,
+      "r"
+    ],
+    [
+      1,
+      "ds"
+    ],
+    [
+      20,
+      "r"
+    ],
+    [
+      12,
+      "rux"
+    ],
+    [
+      30,
+      "r"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      40,
+      "rgu"
+    ],
+    [
+      1,
+      "ds"
+    ],
+    [
+      20,
+      "l"
+    ],
+    [
+      14,
+      "l"
+    ],
+    [
+      12,
+      "rdx"
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      16,
+      "l"
+    ],
+    [
+      12,
+      "lx"
+    ],
+    [
+      6,
+      "l"
+    ],
+    [
+      1,
+      "djs"
+    ],
+    [
+      24,
+      "lj"
+    ],
+    [
+      12,
+      "lux"
+    ],
+    [
+      100,
+      "l"
+    ]
+  ]
+}

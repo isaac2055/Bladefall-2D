@@ -1459,7 +1459,7 @@ const records=[
   "bank": {
    "side": "base",
    "batch": 3,
-   "acceptance": "revised",
+   "acceptance": "banked",
    "difficulty": 4,
    "role": "solve",
    "worlds": [
@@ -1634,6 +1634,13 @@ const records=[
     "result": "The receiver is inside an 8px cargo-only duct. The knight can wait on its roof, but reaching the lower exit requires crossing the beam below it; an immediate descent burns."
    },
    "archivedBeforeRevision": "scripts/room-bank/archive/batch-03-before-review/base/bank-b16.json",
+   "placementBand": "middle Base",
+   "humanReview": "Approved for middle Base. Numeric player ratings remain unmeasured.",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "middle Base",
+    "geometryPreserved": true
+   },
    "revision": "890b55b10e9e",
    "source": "scripts/room-bank/base/bank-b16.json"
   },
@@ -1796,7 +1803,7 @@ const records=[
   "bank": {
    "side": "base",
    "batch": 3,
-   "acceptance": "revised",
+   "acceptance": "banked",
    "difficulty": 4,
    "role": "solve",
    "worlds": [
@@ -1947,6 +1954,13 @@ const records=[
     "result": "The 8px heat throat admits only cargo. Bad release timing loses the lantern and leaves the remote receiver empty; waiting does not eventually complete that delivery."
    },
    "archivedBeforeRevision": "scripts/room-bank/archive/batch-03-before-review/base/bank-b17.json",
+   "placementBand": "middle Base",
+   "humanReview": "Approved for middle Base. Numeric player ratings remain unmeasured.",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "middle Base",
+    "geometryPreserved": true
+   },
    "revision": "7b103f141982",
    "source": "scripts/room-bank/base/bank-b17.json"
   },
@@ -2080,7 +2094,7 @@ const records=[
   "bank": {
    "side": "base",
    "batch": 3,
-   "acceptance": "revised",
+   "acceptance": "banked",
    "difficulty": 4,
    "role": "solve",
    "worlds": [
@@ -2329,6 +2343,13 @@ const records=[
     "result": "The premature departure burns after the pier removes its own shade. A brief low grab followed by the direct lower approach did not reach the tally; the safe return uses the lower roof below the beam."
    },
    "archivedBeforeRevision": "scripts/room-bank/archive/batch-03-before-review/base/bank-b18.json",
+   "placementBand": "middle Base",
+   "humanReview": "Approved for middle Base. Numeric player ratings remain unmeasured.",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "middle Base",
+    "geometryPreserved": true
+   },
    "revision": "a2e52ae20d29",
    "source": "scripts/room-bank/base/bank-b18.json"
   },
@@ -2685,7 +2706,7 @@ const records=[
   "bank": {
    "side": "base",
    "batch": 3,
-   "acceptance": "revised",
+   "acceptance": "banked",
    "difficulty": 4,
    "role": "solve",
    "worlds": [
@@ -2851,6 +2872,13 @@ const records=[
     "result": "The wrong phase parks the stone past the beam, so the lower crossing still burns. Tally-first play removes the only ladder before the stone can be moved."
    },
    "archivedBeforeRevision": "scripts/room-bank/archive/batch-03-before-review/base/bank-b20.json",
+   "placementBand": "middle Base",
+   "humanReview": "Approved for middle Base. Numeric player ratings remain unmeasured.",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "middle Base",
+    "geometryPreserved": true
+   },
    "revision": "08fca2e957d8",
    "source": "scripts/room-bank/base/bank-b20.json"
   },
@@ -2974,7 +3002,7 @@ const records=[
   "bank": {
    "side": "base",
    "batch": 4,
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "difficulty": 3,
    "role": "timing",
    "worlds": [
@@ -2996,7 +3024,7 @@ const records=[
    "requiredEvents": [
     "jump"
    ],
-   "humanReview": "Author difficulty estimate; fun/difficulty/suitability pending.",
+   "humanReview": "Approved for early Base. Numeric player ratings remain unmeasured.",
    "solution": "Wait until the west patrol leaves, then follow it into the first low passage. Drop into its narrow recessed pocket before it returns. Let it pass overhead heading west, jump out behind it, and cross to the broad central bay. Read the independent eastern patrol, then repeat the follow, duck, and climb exchange to reach the exit.",
    "nearestExisting": "The timing slabs of Emberdeep change a surface in place; Return Freight times a moving cargo rendezvous. These narrow passages instead turn the same outward and return motion into moving exclusion zones, with below-path rest pockets.",
    "novelty": "Two high passages share a deep protected passing bay. The knight follows behind a patrol in a passage too low to jump over it, then leaves its route vertically before the return.",
@@ -3110,6 +3138,12 @@ const records=[
      }
     }
    ],
+   "placementBand": "early Base",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "early Base",
+    "geometryPreserved": true
+   },
    "revision": "e99618470fd6",
    "source": "scripts/room-bank/base/bank-b21.json"
   },
@@ -3253,7 +3287,7 @@ const records=[
   "bank": {
    "side": "base",
    "batch": 4,
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "difficulty": 4,
    "role": "timing",
    "worlds": [
@@ -3276,7 +3310,7 @@ const records=[
     "jump",
     "dash"
    ],
-   "humanReview": "Author difficulty estimate; fun/difficulty/suitability pending.",
+   "humanReview": "Approved for early Base. Numeric player ratings remain unmeasured.",
    "solution": "Use the low ledge to watch the lower patrol approach its far turn, then jump/dash over its returning line and land behind it at the far right end of the middle ledge. Wait for the upper patrol to leave the left landing, cross back with a left/up dash, and settle in the left pocket. From there, climb to the open finish gallery.",
    "nearestExisting": "Earlier gauntlets time permanent lasers and gates while climbing. This uses mobile threats at the handoff between a dash, wall catch, and safe standing ground.",
    "novelty": "The landing is safe only at its sheltered far end; committing when a patrol merely leaves the wall is not enough unless it also gives time to climb over the lip. Each transfer reverses direction.",
@@ -3443,6 +3477,12 @@ const records=[
      }
     }
    ],
+   "placementBand": "early Base",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "early Base",
+    "geometryPreserved": true
+   },
    "revision": "1bbb41af5f88",
    "source": "scripts/room-bank/base/bank-b22.json"
   },
@@ -3614,7 +3654,7 @@ const records=[
   "bank": {
    "side": "base",
    "batch": 4,
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "difficulty": 4,
    "role": "timing",
    "worlds": [
@@ -3636,7 +3676,7 @@ const records=[
    "requiredEvents": [
     "jump"
    ],
-   "humanReview": "Author difficulty estimate; fun/difficulty/suitability pending.",
+   "humanReview": "Approved for early Base, above B21. Numeric player ratings remain unmeasured.",
    "solution": "Board the low ferry only when its next pass beneath the first patrol will be clear. Stay low under the thorned ceiling, move to its front, and jump up to the central pier. Let the second ferry and its diagonal route come to you, board it after the upper patrol clears, then jump from its high end onto the exit landing.",
    "nearestExisting": "Return Freight dispatches a zip, leaves it for a void shortcut and catches its returning cargo. This room uses two unsummoned cyclic ferries, a low roof preventing an aerial shortcut, and a central pier where the player must let an unsafe connection go.",
    "novelty": "A successful first boarding can deliver the knight to an unsafe second connection. The intermediate pier is a deliberate place to miss one ferry and synchronize with the independent second patrol.",
@@ -3802,6 +3842,12 @@ const records=[
      }
     }
    ],
+   "placementBand": "early Base, above B21",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "early Base, above B21",
+    "geometryPreserved": true
+   },
    "revision": "4cd098decb30",
    "source": "scripts/room-bank/base/bank-b23.json"
   },
@@ -3860,39 +3906,39 @@ const records=[
    ],
    "map": [
     "########################################",
-    "#.....................................H#",
-    "#.....................................H#",
-    "#.....................................H#",
-    "#.....................................H#",
-    "#.....................................H#",
-    "#..P.l................................H#",
-    "########..............................H#",
-    "########>.............................H#",
-    "########>.............................H#",
-    "########>.............................H#",
-    "########>.............................H#",
-    "########>.............................H#",
-    "########>........#####................H#",
-    "########>........#####................H#",
-    "########>.......<#####>...............H#",
-    "########>.......<#####>...............H#",
-    "########>.......<#####>...............H.",
-    "########>.......<#####>...............H.",
-    "########>.......<#####>............_..H.",
-    "########>.......<#####>...........######",
-    "########.^^^^^^^^^^^^^^^^^^^^^^^^^######",
+    "#...........................########..H#",
+    "#...........................########..H#",
+    "#...........................########..H#",
+    "#...........................########..H#",
+    "#...........................########..H#",
+    "#..P.l......................########..H#",
+    "########....................########..H#",
+    "########>...................########..H#",
+    "########>...................########..H#",
+    "########>...................########..H#",
+    "########>....................#######..H#",
+    "########>........................._#..H#",
+    "########>........#####...###########..H.",
+    "########>........#####...#######......H.",
+    "########>.......<#####................H.",
+    "########>.......<#####................H.",
+    "########>.......<#####.............#####",
+    "########>.......<#####............<#####",
+    "########>.......<#####............<#####",
+    "########>.......<#####.......b....<#####",
+    "########^^^^^^^^^^^^^^^^^^^^^^^^^<<#####",
     "########################################"
    ],
    "beams": [
     {
-     "c": 31,
+     "c": 12,
      "r": 0,
      "dir": "d"
     }
    ],
    "sweepers": [
     {
-     "id": "drop",
+     "id": "Drop",
      "path": [
       [
        12,
@@ -3904,42 +3950,37 @@ const records=[
       ]
      ],
      "period": 200,
-     "phase": 10
+     "phase": 10,
+     "radius": 4
     },
     {
-     "id": "circuit",
+     "id": "Departure",
      "path": [
       [
-       24,
-       14.5
+       33,
+       12
       ],
       [
-       29,
-       14.5
-      ],
-      [
-       29,
-       19.5
-      ],
-      [
-       24,
-       19.5
+       33,
+       20
       ]
      ],
-     "period": 220,
-     "phase": 70,
-     "loop": true
+     "period": 180,
+     "phase": 0,
+     "radius": 4
     }
    ],
-   "hint": "Carrying the lantern slows your fall, but leaves no dash to correct the timing. Both stone shelves are safe.",
-   "question": "Where will the thorn be when your slower fall reaches its path?"
+   "hint": "Freight fits the low slot. Send the lantern ahead, then take the blade route beneath it.",
+   "question": "When the lantern takes the upper opening, how can you cross underneath its delivery?",
+   "movement": "survive-2",
+   "showHintAtRest": true
   },
   "bank": {
    "side": "base",
-   "batch": 4,
-   "acceptance": "candidate",
+   "batch": 15,
+   "acceptance": "revised",
    "difficulty": 4,
-   "role": "timing",
+   "role": "Deliver shade through a freight-only opening, then use a timed blade route underneath",
    "worlds": [
     11,
     19,
@@ -3951,99 +3992,45 @@ const records=[
     "cargo",
     "glide",
     "lantern-shade",
-    "plate"
+    "plate",
+    "pogo",
+    "separate-routes"
    ],
    "newMechanics": [],
-   "entrance": "Safe west observation bay.",
-   "exit": "East landing.",
+   "entrance": "High western cargo shelf; observe the descending first thorn.",
+   "exit": "Eastern shelf beyond the held door, reached from below the freight housing.",
    "status": "route-proven",
    "author": "Codex",
    "requiredEvents": [
     "pickup",
+    "throw",
     "plate",
-    "held-open"
+    "held-open",
+    "pod",
+    "dash"
    ],
-   "humanReview": "Author difficulty estimate; fun/difficulty/suitability pending.",
-   "solution": "Take the lantern and wait until the first thorn descends into its lower arc. Walk off and glide behind it to the middle pier. Let the second patrol clear the upper side of its square loop before the longer second drop. Keep the lantern to shade the vertical beam, land on the far shelf, and release it over the plate to hold the final door.",
-   "nearestExisting": "The Long Way First routes cargo by an echo and a long glide; Return Freight requires catching moving shade. Here the cargo is held throughout two slow, committed falls, so the timing must account for future intersection instead of the hazard being clear right now.",
-   "novelty": "Carrying removes the dash that could rescue a mistimed crossing. The second drop begins from a safe pier but has a different fall distance and patrol period; an early departure that clears the beginning can still meet the returning thorn at the far side.",
+   "humanReview": "Revised after the user found the original too easy. Fun, difficulty and suitability await human review; numeric difficulty remains an author estimate.",
+   "solution": "Take the lantern, wait for the first thorn to descend, and glide through the overhead beam to the middle island. Throw right from the island lip: the lantern lands in the feeder and slides through a low cargo-only slot onto the plate, holding the exit. Move down beside the feeder wall and release the horizontal input long enough to fall below its underside. Dash right toward the pod and cut down when the dash ends. The rebound restores the dash under the solid roof; clear the roof edge and dash up-right behind the low returning thorn into the far bank.",
+   "nearestExisting": "The original B24 was two ordinary lantern glides separated by broad safe shelves. This revision preserves its first committed shade descent but changes the middle island into a dispatch point: the cargo takes the upper slot, while the knight spends and recovers a dash beneath it. F58 also separates cargo and player briefly, but recatches the lantern in flight; here the lantern stays delivered and physically holds the door.",
+   "novelty": "The lantern changes jobs from mobile shade to a remote door weight. Its eight-pixel freight opening excludes the knight, and the full-height freight housing prevents an upper jump/dash escape. The lower pod is a continuation resource, not a bonus beside an already-complete route.",
    "timing": {
-    "principle": "Read where a patrol will be during a slow cargo descent, not only at takeoff.",
+    "principle": "The cargo goes ahead while the knight takes a lower resource-carrying phrase.",
     "stages": [
      {
-      "cue": "The first thorn descends into the lower half of its route.",
-      "action": "Leave the high shelf carrying the lantern and glide to the middle pier.",
-      "rest": "Middle pier, outside both patrol paths."
+      "cue": "Leave the first shelf when the vertical thorn moves down away from the glide.",
+      "action": "Glide behind the first thorn with carried shade.",
+      "rest": "Middle dispatch island."
      },
      {
-      "cue": "The loop patrol leaves the upper crossing and turns down the far side.",
-      "action": "Commit to the longer glide, shade the beam, and land with the cargo.",
-      "rest": "Exit loading shelf."
+      "cue": "After the delivery, let the near thorn descend below the lower departure lane before dropping.",
+      "action": "Deliver cargo, drop below its housing, dash to the rebound and use the returned dash to finish.",
+      "rest": "Exit shelf."
      }
     ]
    },
-   "route": {
-    "frames": 353,
-    "deaths": 0,
-    "events": [
-     "pickup",
-     "land",
-     "plate",
-     "held-open",
-     "throw",
-     "lantern-land",
-     "exit"
-    ],
-    "movement": "Ordinary jump, dash, grab and device actions; no advanced momentum exploit."
-   },
    "shortcutChecks": [
     {
-     "name": "Remove both observation waits",
-     "tape": [
-      [
-       8,
-       "r"
-      ],
-      [
-       1,
-       "g"
-      ],
-      [
-       82,
-       "r"
-      ],
-      [
-       20,
-       ""
-      ],
-      [
-       79,
-       "r"
-      ],
-      [
-       20,
-       ""
-      ],
-      [
-       1,
-       "dg"
-      ],
-      [
-       15,
-       ""
-      ],
-      [
-       35,
-       "r"
-      ]
-     ],
-     "after": {
-      "exited": false,
-      "deaths": 2
-     }
-    },
-    {
-     "name": "Leave the middle pier immediately",
+     "name": "Ordinary jump and dash from the island after delivery",
      "tape": [
       [
        8,
@@ -4066,33 +4053,64 @@ const records=[
        ""
       ],
       [
-       79,
+       4,
+       "r"
+      ],
+      [
+       1,
+       "g"
+      ],
+      [
+       50,
+       ""
+      ],
+      [
+       10,
        "r"
       ],
       [
        20,
-       ""
+       "rj"
       ],
       [
-       1,
-       "dg"
+       12,
+       "rx"
       ],
       [
-       15,
-       ""
-      ],
-      [
-       35,
-       "r"
+       100,
+       "rgu"
       ]
      ],
      "after": {
       "exited": false,
-      "deaths": 1
+      "deaths": 0,
+      "frames": null,
+      "events": [
+       "pickup",
+       "land",
+       "throw",
+       "lantern-land",
+       "plate",
+       "held-open",
+       "jump",
+       "dash",
+       "grab"
+      ],
+      "eventCounts": {
+       "pickup": 1,
+       "land": 1,
+       "throw": 1,
+       "lantern-land": 1,
+       "plate": 1,
+       "held-open": 1,
+       "jump": 1,
+       "dash": 1,
+       "grab": 1
+      }
      }
     },
     {
-     "name": "Attempt the same route without carrying shade",
+     "name": "Use the upper freight lip then jump-dash around it",
      "tape": [
       [
        8,
@@ -4100,7 +4118,7 @@ const records=[
       ],
       [
        1,
-       ""
+       "g"
       ],
       [
        40,
@@ -4115,11 +4133,79 @@ const records=[
        ""
       ],
       [
-       60,
+       4,
+       "r"
+      ],
+      [
+       1,
+       "g"
+      ],
+      [
+       50,
        ""
       ],
       [
-       79,
+       12,
+       "rj"
+      ],
+      [
+       16,
+       "r"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       90,
+       "rgu"
+      ]
+     ],
+     "after": {
+      "exited": false,
+      "deaths": 0,
+      "frames": null,
+      "events": [
+       "pickup",
+       "land",
+       "throw",
+       "lantern-land",
+       "plate",
+       "held-open",
+       "jump",
+       "dash",
+       "grab"
+      ],
+      "eventCounts": {
+       "pickup": 1,
+       "land": 1,
+       "throw": 1,
+       "lantern-land": 1,
+       "plate": 1,
+       "held-open": 1,
+       "jump": 1,
+       "dash": 1,
+       "grab": 1
+      }
+     }
+    },
+    {
+     "name": "Keep cargo while attempting the lower route",
+     "tape": [
+      [
+       8,
+       "r"
+      ],
+      [
+       1,
+       "g"
+      ],
+      [
+       40,
+       ""
+      ],
+      [
+       82,
        "r"
       ],
       [
@@ -4127,25 +4213,571 @@ const records=[
        ""
       ],
       [
-       1,
-       "d"
+       4,
+       "r"
       ],
       [
-       15,
+       51,
        ""
       ],
       [
-       35,
+       25,
+       "r"
+      ],
+      [
+       14,
+       ""
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       4,
+       "ds"
+      ],
+      [
+       15,
+       "r"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       70,
        "r"
       ]
      ],
      "after": {
       "exited": false,
-      "deaths": 2
+      "deaths": 1,
+      "frames": null,
+      "events": [
+       "pickup",
+       "land",
+       "death",
+       "lantern-lost",
+       "respawn"
+      ],
+      "eventCounts": {
+       "pickup": 1,
+       "land": 1,
+       "death": 1,
+       "lantern-lost": 1,
+       "respawn": 1
+      },
+      "firstFailure": {
+       "type": "death",
+       "frame": 306,
+       "x": 266,
+       "y": 166,
+       "cause": "spikes",
+       "vx": 90,
+       "vy": 45,
+       "i": 305
+      }
+     }
+    },
+    {
+     "name": "Leave before the lower patrol clears",
+     "tape": [
+      [
+       8,
+       "r"
+      ],
+      [
+       1,
+       "g"
+      ],
+      [
+       40,
+       ""
+      ],
+      [
+       82,
+       "r"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       4,
+       "r"
+      ],
+      [
+       1,
+       "g"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       25,
+       "r"
+      ],
+      [
+       14,
+       ""
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       4,
+       "ds"
+      ],
+      [
+       15,
+       "r"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       70,
+       "r"
+      ]
+     ],
+     "after": {
+      "exited": false,
+      "deaths": 2,
+      "frames": null,
+      "events": [
+       "pickup",
+       "land",
+       "throw",
+       "lantern-land",
+       "plate",
+       "held-open",
+       "dash",
+       "strike",
+       "pogo-low",
+       "refill-dash",
+       "pod",
+       "death",
+       "respawn"
+      ],
+      "eventCounts": {
+       "pickup": 1,
+       "land": 1,
+       "throw": 1,
+       "lantern-land": 1,
+       "plate": 1,
+       "held-open": 1,
+       "dash": 1,
+       "strike": 1,
+       "pogo-low": 1,
+       "refill-dash": 1,
+       "pod": 1,
+       "death": 2,
+       "respawn": 1
+      },
+      "firstFailure": {
+       "type": "death",
+       "frame": 227,
+       "x": 261,
+       "y": 129,
+       "cause": "sweeper",
+       "vx": 90,
+       "vy": 67.5,
+       "i": 226
+      }
      }
     }
    ],
-   "revision": "cebf2c130dfd",
+   "positiveChecks": [
+    {
+     "name": "First glide two frames later",
+     "tape": [
+      [
+       8,
+       "r"
+      ],
+      [
+       1,
+       "g"
+      ],
+      [
+       42,
+       ""
+      ],
+      [
+       82,
+       "r"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       4,
+       "r"
+      ],
+      [
+       1,
+       "g"
+      ],
+      [
+       50,
+       ""
+      ],
+      [
+       25,
+       "r"
+      ],
+      [
+       14,
+       ""
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       4,
+       "ds"
+      ],
+      [
+       15,
+       "r"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       70,
+       "r"
+      ]
+     ],
+     "after": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 315,
+      "events": [
+       "pickup",
+       "land",
+       "throw",
+       "lantern-land",
+       "plate",
+       "held-open",
+       "dash",
+       "strike",
+       "pogo-low",
+       "refill-dash",
+       "pod",
+       "exit"
+      ],
+      "eventCounts": {
+       "pickup": 1,
+       "land": 2,
+       "throw": 1,
+       "lantern-land": 1,
+       "plate": 1,
+       "held-open": 1,
+       "dash": 2,
+       "strike": 1,
+       "pogo-low": 1,
+       "refill-dash": 2,
+       "pod": 1,
+       "exit": 1
+      }
+     }
+    },
+    {
+     "name": "Drop two frames later",
+     "tape": [
+      [
+       8,
+       "r"
+      ],
+      [
+       1,
+       "g"
+      ],
+      [
+       40,
+       ""
+      ],
+      [
+       82,
+       "r"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       4,
+       "r"
+      ],
+      [
+       1,
+       "g"
+      ],
+      [
+       52,
+       ""
+      ],
+      [
+       25,
+       "r"
+      ],
+      [
+       14,
+       ""
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       4,
+       "ds"
+      ],
+      [
+       15,
+       "r"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       70,
+       "r"
+      ]
+     ],
+     "after": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 315,
+      "events": [
+       "pickup",
+       "land",
+       "throw",
+       "lantern-land",
+       "plate",
+       "held-open",
+       "dash",
+       "strike",
+       "pogo-low",
+       "refill-dash",
+       "pod",
+       "exit"
+      ],
+      "eventCounts": {
+       "pickup": 1,
+       "land": 2,
+       "throw": 1,
+       "lantern-land": 1,
+       "plate": 1,
+       "held-open": 1,
+       "dash": 2,
+       "strike": 1,
+       "pogo-low": 1,
+       "refill-dash": 2,
+       "pod": 1,
+       "exit": 1
+      }
+     }
+    },
+    {
+     "name": "Cut one frame later",
+     "tape": [
+      [
+       8,
+       "r"
+      ],
+      [
+       1,
+       "g"
+      ],
+      [
+       40,
+       ""
+      ],
+      [
+       82,
+       "r"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       4,
+       "r"
+      ],
+      [
+       1,
+       "g"
+      ],
+      [
+       50,
+       ""
+      ],
+      [
+       25,
+       "r"
+      ],
+      [
+       14,
+       ""
+      ],
+      [
+       13,
+       "rx"
+      ],
+      [
+       4,
+       "ds"
+      ],
+      [
+       15,
+       "r"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       70,
+       "r"
+      ]
+     ],
+     "after": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 313,
+      "events": [
+       "pickup",
+       "land",
+       "throw",
+       "lantern-land",
+       "plate",
+       "held-open",
+       "dash",
+       "strike",
+       "pogo-low",
+       "refill-dash",
+       "pod",
+       "exit"
+      ],
+      "eventCounts": {
+       "pickup": 1,
+       "land": 2,
+       "throw": 1,
+       "lantern-land": 1,
+       "plate": 1,
+       "held-open": 1,
+       "dash": 2,
+       "strike": 1,
+       "pogo-low": 1,
+       "refill-dash": 2,
+       "pod": 1,
+       "exit": 1
+      }
+     }
+    }
+   ],
+   "review": {
+    "request": "The user found this room too easy and requested more consequential timing and problem solving.",
+    "sourceBefore": "scripts/room-bank/archive/before-final-review-7.302/base/bank-b24.json",
+    "revision": "Spiced-up route for 7.302 review; no approval inferred.",
+    "scope": "One canonical route, three meaningful input variants, and focused active ordinary-route/timing attempts. No exhaustive shortcut search or invisible exit-event gates."
+   },
+   "learningFamily": "cargo-route-separation",
+   "lessonRole": "combine",
+   "timingCues": [
+    "Leave the first shelf when the vertical thorn moves down away from the glide.",
+    "After the delivery, let the near thorn descend below the lower departure lane before dropping.",
+    "Release Right beside the feeder so the knight falls below its underside before dashing toward the pod."
+   ],
+   "format": "compact",
+   "prerequisites": [],
+   "preparesFor": [],
+   "route": {
+    "exited": true,
+    "deaths": 0,
+    "frames": 313,
+    "events": [
+     "pickup",
+     "land",
+     "throw",
+     "lantern-land",
+     "plate",
+     "held-open",
+     "dash",
+     "strike",
+     "pogo-low",
+     "refill-dash",
+     "pod",
+     "exit"
+    ],
+    "eventCounts": {
+     "pickup": 1,
+     "land": 2,
+     "throw": 1,
+     "lantern-land": 1,
+     "plate": 1,
+     "held-open": 1,
+     "dash": 2,
+     "strike": 1,
+     "pogo-low": 1,
+     "refill-dash": 2,
+     "pod": 1,
+     "exit": 1
+    }
+   },
+   "actualMovementEvents": [
+    "pickup",
+    "land",
+    "throw",
+    "lantern-land",
+    "plate",
+    "held-open",
+    "dash",
+    "strike",
+    "pogo-low",
+    "refill-dash",
+    "pod",
+    "exit"
+   ],
+   "routeMovement": [
+    {
+     "type": "pickup",
+     "frame": 9,
+     "i": 8
+    },
+    {
+     "type": "throw",
+     "frame": 156,
+     "dir": 1,
+     "i": 155
+    },
+    {
+     "type": "plate",
+     "frame": 188,
+     "x": 276,
+     "y": 102,
+     "i": 187
+    },
+    {
+     "type": "pogo-low",
+     "frame": 259,
+     "x": 233,
+     "y": 148,
+     "vy": -135,
+     "i": 258
+    }
+   ],
+   "revision": "2918a7ce5913",
    "source": "scripts/room-bank/base/bank-b24.json"
   },
   "tape": [
@@ -4170,27 +4802,43 @@ const records=[
     ""
    ],
    [
-    60,
-    ""
-   ],
-   [
-    79,
+    4,
     "r"
    ],
    [
-    20,
+    1,
+    "g"
+   ],
+   [
+    50,
     ""
    ],
    [
-    1,
-    "dg"
+    25,
+    "r"
+   ],
+   [
+    14,
+    ""
+   ],
+   [
+    12,
+    "rx"
+   ],
+   [
+    4,
+    "ds"
    ],
    [
     15,
-    ""
+    "r"
    ],
    [
-    35,
+    12,
+    "rux"
+   ],
+   [
+    70,
     "r"
    ]
   ]
@@ -4295,7 +4943,7 @@ const records=[
   "bank": {
    "side": "base",
    "batch": 4,
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "difficulty": 4,
    "role": "timing",
    "worlds": [
@@ -4535,6 +5183,13 @@ const records=[
      }
     }
    ],
+   "placementBand": "middle Base",
+   "humanReview": "Approved for middle Base. Numeric player ratings remain unmeasured.",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "middle Base",
+    "geometryPreserved": true
+   },
    "revision": "a866dd700839",
    "source": "scripts/room-bank/base/bank-b25.json"
   },
@@ -12707,7 +13362,7 @@ const records=[
    "side": "base",
    "batch": 8,
    "run": 3,
-   "acceptance": "revised",
+   "acceptance": "banked",
    "difficulty": 3,
    "role": "solve",
    "worlds": [
@@ -12732,7 +13387,7 @@ const records=[
     "grab",
     "climbhop"
    ],
-   "humanReview": "Revised at user request: keep the discovered slingshot to the end wall; fix the divider in its upright pose. Awaiting re-review.",
+   "humanReview": "Approved for Base. Numeric player ratings remain unmeasured.",
    "entrance": "West shelf beneath the approaching carriage.",
    "exit": "Raised east gallery across the gulf.",
    "solution": "Wake the carriage, let it travel ahead, then run off the west shelf. Catch its hook as you fall, keep swinging right, and jump-release beneath the fixed divider toward the far wall. Hold Grab and Up on the wall to climb into the east gallery.",
@@ -12927,6 +13582,12 @@ const records=[
    "userFeedback": {
     "date": "2026-10-08",
     "comment": "Preferred late-hook slingshot to end wall; remove rotation from the central arm while preserving its length."
+   },
+   "placementBand": "Base",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "Base",
+    "geometryPreserved": true
    },
    "source": "scripts/room-bank/base/bank-b37.json"
   },
@@ -14251,7 +14912,7 @@ const records=[
    "side": "base",
    "batch": 9,
    "run": 4,
-   "acceptance": "revised",
+   "acceptance": "banked",
    "difficulty": 4,
    "role": "low rebound that creates a transfer, then spend that transfer to make the exit",
    "worlds": [
@@ -15297,7 +15958,7 @@ const records=[
     },
     "firstFailure": null
    },
-   "humanReview": "User rejected the direct-swing skip and the simple ramp-to-pogo sequence. Rebuilt as a two-phase lift-transfer puzzle; awaits review.",
+   "humanReview": "Approved for Base. Numeric player ratings remain unmeasured.",
    "requiredEventCounts": {
     "moving-hook": 2,
     "moving-unhook": 2,
@@ -15308,6 +15969,12 @@ const records=[
    "userFeedback": {
     "date": "2026-10-09",
     "comment": "Direct ramp swing skips first pogo, and ramp into pogo is too simple. Make the puzzle harder and more complex."
+   },
+   "placementBand": "Base",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "Base",
+    "geometryPreserved": true
    },
    "source": "scripts/room-bank/base/bank-b41.json"
   },
@@ -15441,7 +16108,7 @@ const records=[
    "side": "base",
    "batch": 9,
    "run": 4,
-   "acceptance": "revised",
+   "acceptance": "banked",
    "difficulty": 4,
    "role": "keep a living floor weight until the cargo return is complete",
    "worlds": [
@@ -15476,7 +16143,7 @@ const records=[
     "enemy-defeat",
     "recoil-jump"
    ],
-   "humanReview": "User rejected the overhead bypass and the simple enemy-to-spring demonstration. Reinvented as an out-and-back cargo puzzle where killing the weight prematurely closes the essential passage. Awaiting review.",
+   "humanReview": "Approved for Base. Numeric player ratings remain unmeasured.",
    "route": {
     "exited": true,
     "frames": 469,
@@ -16700,6 +17367,12 @@ const records=[
    "userFeedback": {
     "date": "2026-10-09",
     "comment": "The guard can be skipped overhead and the intended enemy-to-spring interaction is too simplistic. Reinvent the level."
+   },
+   "placementBand": "Base",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "Base",
+    "geometryPreserved": true
    },
    "source": "scripts/room-bank/base/bank-b42.json"
   },
@@ -18249,7 +18922,7 @@ const records=[
    "batch": 10,
    "run": 4,
    "collection": "superrooms",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "status": "route-proven",
    "difficulty": 4,
    "role": "interconnected superroom",
@@ -18268,7 +18941,7 @@ const records=[
    ],
    "newMechanics": [],
    "author": "Codex",
-   "humanReview": "Unmeasured; author estimate only.",
+   "humanReview": "Approved for Base superroom. Numeric player ratings remain unmeasured.",
    "requiredEvents": [
     "recoil-jump",
     "pickup",
@@ -19260,6 +19933,12 @@ const records=[
    ],
    "designNotes": "The pressure gate blocks the knight underneath the same conveyor that transports its weight. Reclaiming that weight closes the old route, sending the shared lantern up the eastern lift and back above the previous journey. Long trips have safe staging floors; the main execution is choosing when to leave each rising recoil support and maintaining shade during the return jumps. Static room geometry and beam/cargo collisions determine access; the exit has no invisible device-use receipt.",
    "interconnection": "A folded circuit uses the same lantern for lift loading, outgoing shade, remote door weight and returning shade; the return passes above the apparatus that separated knight and cargo. The cargo duct and gate run above/below one another. The return route crosses back over both outgoing machinery stages.",
+   "placementBand": "Base superroom",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "Base superroom",
+    "geometryPreserved": true
+   },
    "revision": "45078ba41f05",
    "source": "scripts/room-bank/base/bank-b44.json"
   },
@@ -19538,7 +20217,7 @@ const records=[
    "batch": 10,
    "run": 4,
    "collection": "superrooms",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "status": "route-proven",
    "difficulty": 4,
    "role": "interconnected superroom",
@@ -19558,7 +20237,7 @@ const records=[
    ],
    "newMechanics": [],
    "author": "Codex",
-   "humanReview": "Unmeasured; author estimate only.",
+   "humanReview": "Approved for late Base superroom. Numeric player ratings remain unmeasured.",
    "approvedIngredients": [
     "bank-b36",
     "bank-b11",
@@ -21157,6 +21836,12 @@ const records=[
     }
    ],
    "designNotes": "One open atrium carries both ascent and return; the transformed bridge and the same moving carrier are revisited in opposite directions. The carrier can be boarded on top using ordinary movement, with safe waiting on the broad bridge. The lantern stays behind because full hands cannot prepare the seed or climb the hanging arm. Echo transfers the recovered cargo to the dock physically reached earlier. Two visible tallies and ordinary sunlight/cargo collision govern the exit; there are no hidden interaction receipts. Numeric player ratings remain unmeasured. A three-tile one-way landing beside the hinge hub gives room to stage the carrier jump and catches a short return; it does not reach the west tally without turning the arm.",
+   "placementBand": "late Base superroom",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "late Base superroom",
+    "geometryPreserved": true
+   },
    "revision": "8e15c4e317b1",
    "source": "scripts/room-bank/base/bank-b45.json"
   },
@@ -21466,12 +22151,12 @@ const records=[
    ]
   },
   "bank": {
-   "side": "base",
+   "side": "fractured",
    "batch": 13,
    "run": 5,
    "collection": "run5",
    "format": "compact",
-   "acceptance": "revised",
+   "acceptance": "banked",
    "status": "route-proven",
    "difficulty": 3,
    "role": "Leave the vehicle on the low branch and cut the light circuit during the separate feather flight",
@@ -21492,7 +22177,7 @@ const records=[
    ],
    "newMechanics": [],
    "author": "Codex",
-   "humanReview": "Owner: high-cart route could be ridden to the door, reversed, and exited via the nearby tally. Requested a redo; revision awaits review.",
+   "humanReview": "Approved for early Fractured. Numeric player ratings remain unmeasured.",
    "requiredEvents": [
     "boost",
     "switch-low",
@@ -21800,8 +22485,15 @@ const records=[
     ],
     "revisionSummary": "The remote receiver sits behind two solid rows and a three-tile side wall, out of body and blade reach. The mirror begins facing away from it; the shutter alone cannot pre-light the gate. The high cart is trapped across the only optical approach. All exit-door tiles meet the room ceiling. The five-tile low cart and broad exit landing are retained."
    },
+   "placementBand": "early Fractured",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "early Fractured",
+    "geometryPreserved": true
+   },
+   "reclassifiedFrom": "base",
    "revision": "38f14604a334",
-   "source": "scripts/room-bank/base/bank-b46.json"
+   "source": "scripts/room-bank/fractured/bank-b46.json"
   },
   "tape": [
    [
@@ -22804,7 +23496,7 @@ const records=[
    "run": 5,
    "collection": "run5",
    "format": "superroom",
-   "acceptance": "revised",
+   "acceptance": "banked",
    "status": "route-proven",
    "difficulty": 4,
    "role": "Time two crossings of the changed bridge, then leave the rising return lift before its patrol",
@@ -22825,7 +23517,7 @@ const records=[
    ],
    "newMechanics": [],
    "author": "Codex",
-   "humanReview": "Owner: the starting door could be climbed over; the underlying room was decent but lacked engagement. Revision awaits review.",
+   "humanReview": "Approved for middle–late Base superroom. Numeric player ratings remain unmeasured.",
    "requiredEvents": [
     "recoil-jump",
     "step-relay",
@@ -23588,6 +24280,12 @@ const records=[
     ],
     "revisionSummary": "The exit gate now reaches the ceiling. Two existing path sweepers add readable crossing and departure timing; neither controls a hidden event gate. The hub and tally ledge give waiting space. The final home platform has an extra tile of safe landing surface so the added middle timing does not make the ending precise."
    },
+   "placementBand": "middle–late Base superroom",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "middle–late Base superroom",
+    "geometryPreserved": true
+   },
    "revision": "a45e4aff3556",
    "source": "scripts/room-bank/base/bank-b49.json"
   },
@@ -24006,7 +24704,7 @@ const records=[
    "side": "base",
    "batch": 8,
    "run": 3,
-   "acceptance": "revised",
+   "acceptance": "banked",
    "difficulty": 3,
    "role": "controlled partial spring and separated cargo route",
    "worlds": [
@@ -24039,7 +24737,7 @@ const records=[
     "recoil-jump",
     "held-open"
    ],
-   "humanReview": "User rejected the prior trivial full spring jump. The low spike ceiling and higher bridge now require a controlled arc; awaits re-review for Base.",
+   "humanReview": "Approved for Base. Numeric player ratings remain unmeasured.",
    "positiveChecks": [
     {
      "name": "Partial load 9 frames",
@@ -24883,6 +25581,12 @@ const records=[
    "placementNote": "Author placement estimate updated from qualitative user feedback; not a numeric user rating.",
    "reclassifiedFrom": "fractured",
    "reclassificationReason": "User requested Base placement after a precision spring revision; acceptance is revised pending that review.",
+   "placementBand": "Base",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "Base",
+    "geometryPreserved": true
+   },
    "source": "scripts/room-bank/base/35-bank-f35.json"
   },
   "tape": [
@@ -32440,7 +33144,7 @@ const records=[
   "bank": {
    "side": "fractured",
    "batch": 3,
-   "acceptance": "revised",
+   "acceptance": "banked",
    "difficulty": 4,
    "role": "solve",
    "worlds": [
@@ -32472,7 +33176,7 @@ const records=[
    "solution": "Drop into the lower service passage and jump onto the temporary foothold. Jump left from it, then dash straight up into the plug. The foothold disappears and the stone parks as a canopy above the exit. Return left, climb to the void entrance and dash through; use its exit jump grace to bridge the thorned receiving shaft.",
    "nearestExisting": "bv4 Rock Behind puts a static obstruction behind void. pw2 Stone Through Stone relocates a sliding stone into useful terrain. Here the obstruction must be serviced from its underside before entering an unsteerable route, and its new position still has to shield the receiving space.",
    "novelty": "Preparation consumes its own launch height. The moved plug still shelters the receiving shaft, but the spent foothold means the lower service passage cannot simply become the final ascent.",
-   "humanReview": "Author difficulty estimate only; ratings pending.",
+   "humanReview": "Approved for early–middle Fractured. Numeric player ratings remain unmeasured.",
    "route": {
     "frames": 602,
     "deaths": 0,
@@ -32568,6 +33272,12 @@ const records=[
      }
     },
     "verifiedAt": "2026-10-07"
+   },
+   "placementBand": "early–middle Fractured",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "early–middle Fractured",
+    "geometryPreserved": true
    },
    "revision": "d8b8323d49e2",
    "source": "scripts/room-bank/fractured/17-bank-f17.json"
@@ -33245,9 +33955,9 @@ const records=[
    ]
   },
   "bank": {
-   "side": "fractured",
+   "side": "base",
    "batch": 4,
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "difficulty": 4,
    "role": "timing-puzzle",
    "worlds": [
@@ -33264,7 +33974,7 @@ const records=[
    ],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "Author difficulty estimate only; fun/difficulty/suitability ratings pending.",
+   "humanReview": "Approved for middle Base. Numeric player ratings remain unmeasured.",
    "entrance": "Lower western shelf.",
    "exit": "Eastern balcony below the crossing patrol.",
    "solution": "Jump to the low step and dash upward to the projecting shelf. Wait on its outer edge until the wall patrol is below you and moving down, then jump to the spine, climb and crest it. Cross to the hanging ledge while the upper patrol is ahead. Stay below its path until it passes left of your departure, then jump/dash behind it to the eastern balcony.",
@@ -33512,8 +34222,15 @@ const records=[
      }
     }
    ],
+   "placementBand": "middle Base",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "middle Base",
+    "geometryPreserved": true
+   },
+   "reclassifiedFrom": "fractured",
    "revision": "655712ffe7a8",
-   "source": "scripts/room-bank/fractured/21-bank-f21.json"
+   "source": "scripts/room-bank/base/21-bank-f21.json"
   },
   "tape": [
    [
@@ -33678,9 +34395,9 @@ const records=[
    ]
   },
   "bank": {
-   "side": "fractured",
+   "side": "base",
    "batch": 4,
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "difficulty": 4,
    "role": "timing-puzzle",
    "worlds": [
@@ -33699,7 +34416,7 @@ const records=[
    ],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "Author difficulty estimate only; fun/difficulty/suitability ratings pending.",
+   "humanReview": "Approved for early Base, above B21. Numeric player ratings remain unmeasured.",
    "entrance": "Upper western shelf.",
    "exit": "Lower western gate.",
    "solution": "Let the upper patrol turn away, cross the low spent bridge and drop into the recessed pocket. Leave that pocket after the patrol passes westward, take the eastern tally and descend outside the thorned face. Wait at the far-right floor for the lower patrol to move left; return behind it, using the lower recess if needed. The spent bridge and low roof prevent simply running the upper route backward.",
@@ -33903,8 +34620,15 @@ const records=[
      }
     }
    ],
+   "placementBand": "early Base, above B21",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "early Base, above B21",
+    "geometryPreserved": true
+   },
+   "reclassifiedFrom": "fractured",
    "revision": "00bec145e4d6",
-   "source": "scripts/room-bank/fractured/22-bank-f22.json"
+   "source": "scripts/room-bank/base/22-bank-f22.json"
   },
   "tape": [
    [
@@ -34047,7 +34771,7 @@ const records=[
   "bank": {
    "side": "fractured",
    "batch": 4,
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "difficulty": 5,
    "role": "timing-puzzle",
    "worlds": [
@@ -34067,7 +34791,7 @@ const records=[
    ],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "Author difficulty estimate only; fun/difficulty/suitability ratings pending.",
+   "humanReview": "Approved for early–middle Fractured. Numeric player ratings remain unmeasured.",
    "entrance": "High western takeoff.",
    "exit": "High eastern gate beyond the second ring.",
    "solution": "Catch the first ring and shorten the chain to wait above the horizontal sweep. After the thorns pass the tally and continue away, pay out the chain, collect it, then haul back to the short safe hang. Watch the vertical patrol between rings; release and dash toward the second ring while its crossing is clear. Reel in again, then launch to the high exit.",
@@ -34262,6 +34986,12 @@ const records=[
      }
     }
    ],
+   "placementBand": "early–middle Fractured",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "early–middle Fractured",
+    "geometryPreserved": true
+   },
    "revision": "223ddaf5528a",
    "source": "scripts/room-bank/fractured/23-bank-f23.json"
   },
@@ -34332,27 +35062,27 @@ const records=[
    ],
    "map": [
     "########################################",
-    "#.................#####................#",
-    "#.................#####................#",
-    "#.................#####.................",
-    "#.................#####.................",
-    "#.................#####.................",
-    "#.................####%............#####",
-    "#.................####%...........<#####",
-    "#.................#####...........<#####",
-    "#.................#########.......<#####",
-    "#.................#####...........<#####",
-    "#.................#####...........<#####",
-    "#.................#####...........<#####",
-    "#.................#####...........<#####",
-    "#.................#####...........<#####",
-    "#.................#####...........<#####",
-    "#.................#####...........<#####",
-    "#.................%####...........<#####",
-    "#.................%####...........<#####",
-    "#..P........###########...........<#####",
-    "##########........#####...........<#####",
-    "##########^^^^^^^^#####^^^^^^^^^^^<#####",
+    "#........########################.......",
+    "#........########################.......",
+    "#........########################.......",
+    "#........########################.......",
+    "#........##############vvvvvvvvvv.......",
+    "#........#############%.................",
+    "#........#############%.............####",
+    "#........##############............<####",
+    "#........##############............<####",
+    "#........##############............<####",
+    "#........##############.......b....<####",
+    "#........vvvvvvvvv#####............<####",
+    "#.................#####............<####",
+    "#.................#####............<####",
+    "#.................%####............<####",
+    "#.................%####............<####",
+    "#..P..............#####............<####",
+    "#############.....#####............<####",
+    "#############.....#####............<####",
+    "#############.....#####............<####",
+    "#############^^^^^#####^^^^^^^^^^^^^####",
     "########################################"
    ],
    "portalMode": "fixed",
@@ -34360,7 +35090,7 @@ const records=[
     {
      "color": "blue",
      "c": 18,
-     "r": 17,
+     "r": 15,
      "face": "l"
     },
     {
@@ -34370,51 +35100,51 @@ const records=[
      "face": "r"
     }
    ],
-   "hint": "The fixed mouths connect the two chambers. Moving thorns keep their routes across both ends.",
-   "question": "A clear approach is only half of a safe crossing. What is happening at the receiving mouth?",
+   "hint": "The receiving mouth has no resting shelf. Keep speed, cut low, then rise after the roof.",
+   "question": "Can one launch clear the approach and arrive low enough for the next rebound?",
    "sweepers": [
     {
-     "id": "A",
+     "id": "Approach",
      "path": [
       [
        15,
-       12
+       13
       ],
       [
        15,
-       20
+       18
       ]
      ],
      "period": 180,
-     "phase": 45,
-     "radius": 5,
-     "loop": false
+     "phase": 42,
+     "radius": 4
     },
     {
-     "id": "B",
+     "id": "Arrival",
      "path": [
       [
-       23,
-       6
+       25,
+       5
       ],
       [
-       34,
-       6
+       25,
+       12
       ]
      ],
-     "period": 240,
-     "phase": 100,
-     "radius": 5,
-     "loop": false
+     "period": 150,
+     "phase": 50,
+     "radius": 4
     }
-   ]
+   ],
+   "movement": "survive-2",
+   "showHintAtRest": true
   },
   "bank": {
    "side": "fractured",
-   "batch": 4,
-   "acceptance": "candidate",
+   "batch": 15,
+   "acceptance": "revised",
    "difficulty": 4,
-   "role": "timing-puzzle",
+   "role": "Read both portal ends while carrying a low launch into an uninterrupted rebound",
    "worlds": [
     29,
     33,
@@ -34424,120 +35154,72 @@ const records=[
     "timing",
     "sweeper",
     "portal",
-    "arrival-window"
+    "arrival-window",
+    "wavedash",
+    "pogo-low",
+    "continuous-phrase"
    ],
-   "newMechanics": [
-    "sweeper"
-   ],
+   "newMechanics": [],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "Author difficulty estimate only; fun/difficulty/suitability ratings pending.",
-   "entrance": "Lower western platform and protected launch shelf.",
-   "exit": "High eastern ledge.",
-   "solution": "Reach the outer end of the launch shelf. Wait for the vertical patrol to clear that height and for the horizontal patrol to move away from the receiving mouth; then walk into the fixed portal. Settle on the receiving shelf below the horizontal path. Advance to its edge and jump/dash while the patrol is ahead and moving east, or after a clear westward pass, to the raised eastern exit.",
-   "nearestExisting": "p137 Onto the Plate uses a fixed arrival to relocate the knight; portal crossing courses often ask for a momentum transfer. Here the portal preserves an ordinary approach and makes the player read two visible patrols at different positions, followed by a separate departure decision from a safe receiving shelf.",
-   "novelty": "The two portal ends share a decision but not a clock. The receiving shelf intentionally separates the entry window from the final jump window.",
+   "humanReview": "Revised after the user found the original too easy. Fun, difficulty and suitability await human review; numeric difficulty remains an author estimate.",
+   "entrance": "Western runway beneath a low roof; both patrols are observable.",
+   "exit": "High eastern bank after the uninterrupted portal/pogo phrase.",
+   "solution": "Hop into a down-right wavedash on the western runway, then jump low after ground contact returns the dash. Pass above the descending approach thorn and carry the launch into the fixed mouth. At the upper arrival, the other thorn must already be below the crossing. Continue directly to the pod and cut low under the receiving roof. Once the roof ends, dash up-right to the high bank. There is no receiving shelf to stop and erase the arrival timing.",
+   "nearestExisting": "The original F24 separated portal entry from its last jump with a safe receiving shelf. F55 proved a useful low launch/pogo phrase. This revision carries that execution across fixed mouths at different heights: the entry timing now determines the destination encounter and the following rebound without a floor reset.",
+   "novelty": "A clear approach does not guarantee a safe arrival, and the arrival is now the beginning of a moving continuation. The pod is required by the checked direct upward-dash alternatives: an early ascent meets the roof and a late one meets the raised exit face. The wavedash is the demonstrated efficient approach, not an invisible requirement or a claim that every other launch has been excluded.",
    "timing": {
-    "principle": "Check the destination before committing, then reset safely after arrival.",
+    "principle": "One departure must create a useful arrival and a viable rebound, with no destination reset.",
     "stages": [
      {
-      "cue": "The vertical approach patrol has left the shelf height, and the horizontal patrol is away from the receiving mouth.",
-      "action": "Cross the approach and enter the portal.",
-      "rest": "Outer launch shelf; then receiving shelf below the horizontal line."
+      "cue": "Build the low launch while the approach thorn descends below the portal line.",
+      "action": "Carry the low launch into the mouth while the receiving patrol also clears.",
+      "rest": "Only the initial runway."
      },
      {
-      "cue": "The horizontal patrol is moving away ahead of the jump, or has completed a clear westward pass.",
-      "action": "Jump and dash east behind it to the raised exit.",
-      "rest": "Eastern exit ledge."
+      "cue": "Cut the pod low, then wait until the roof edge is behind the knight before changing height.",
+      "action": "Cut low, clear the roof and ascend into the exit.",
+      "rest": "Final bank."
      }
     ]
    },
    "requiredEvents": [
     "portal-pass",
+    "pogo-low",
+    "pod",
     "dash"
    ],
-   "route": {
-    "frames": 271,
-    "deaths": 0,
-    "events": [
-     "jump",
-     "land",
-     "portal-pass",
-     "dash",
-     "refill-dash",
-     "exit"
-    ]
-   },
-   "bypassCheck": {
-    "approachClearButArrivalOccupied": {
-     "exited": false,
-     "firstFailure": {
-      "frame": 126,
-      "cause": "sweeper"
-     },
-     "portalCrossedAt": 124,
-     "launchWait": 30
-    },
-    "departIntoPassingPatrol": {
-     "exited": false,
-     "firstFailure": {
-      "frame": 335,
-      "cause": "sweeper"
-     },
-     "extraReceivingWait": 120
-    },
-    "noLaunchWait": {
-     "exited": false,
-     "firstFailure": {
-      "frame": 77,
-      "cause": "sweeper"
-     }
-    }
-   },
-   "verifiedAt": "2026-10-07",
    "shortcutChecks": [
     {
-     "name": "Enter when only the approach is clear",
+     "name": "Ordinary edge jump-dash into receiving pod",
      "tape": [
       [
-       30,
+       46,
        "r"
-      ],
-      [
-       20,
-       "rj"
-      ],
-      [
-       20,
-       ""
-      ],
-      [
-       30,
-       ""
-      ],
-      [
-       28,
-       "r"
-      ],
-      [
-       20,
-       ""
-      ],
-      [
-       8,
-       "r"
-      ],
-      [
-       5,
-       ""
-      ],
-      [
-       17,
-       "rj"
       ],
       [
        6,
+       "rj"
+      ],
+      [
+       12,
        "rx"
+      ],
+      [
+       10,
+       "r"
+      ],
+      [
+       4,
+       "ds"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       12,
+       "rux"
       ],
       [
        100,
@@ -34546,58 +35228,218 @@ const records=[
      ],
      "after": {
       "exited": false,
+      "deaths": 2,
+      "frames": null,
+      "events": [
+       "jump",
+       "dash",
+       "portal-pass",
+       "death",
+       "respawn"
+      ],
+      "eventCounts": {
+       "jump": 1,
+       "dash": 1,
+       "portal-pass": 1,
+       "death": 2,
+       "respawn": 2
+      },
       "firstFailure": {
-       "frame": 126,
-       "cause": "sweeper"
+       "type": "death",
+       "frame": 70,
+       "x": 198,
+       "y": 61,
+       "cause": "sweeper",
+       "vx": 155.66666666666666,
+       "vy": 75,
+       "i": 69
       }
      }
     },
     {
-     "name": "Leave the receiving shelf during its pass",
+     "name": "Enter while only the approach is clear",
      "tape": [
       [
+       1,
+       "r"
+      ],
+      [
        30,
-       "r"
-      ],
-      [
-       20,
-       "rj"
-      ],
-      [
-       20,
        ""
-      ],
-      [
-       80,
-       ""
-      ],
-      [
-       28,
-       "r"
-      ],
-      [
-       20,
-       ""
-      ],
-      [
-       8,
-       "r"
-      ],
-      [
-       5,
-       ""
-      ],
-      [
-       120,
-       ""
-      ],
-      [
-       17,
-       "rj"
       ],
       [
        6,
-       "rx"
+       "j"
+      ],
+      [
+       12,
+       "rdx"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       15,
+       "r"
+      ],
+      [
+       1,
+       "rds"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       70,
+       "r"
+      ]
+     ],
+     "after": {
+      "exited": false,
+      "deaths": 2,
+      "frames": null,
+      "events": [
+       "jump",
+       "dash",
+       "land",
+       "ultra",
+       "refill-dash",
+       "hyper",
+       "portal-pass",
+       "death",
+       "respawn"
+      ],
+      "eventCounts": {
+       "jump": 1,
+       "dash": 1,
+       "land": 1,
+       "ultra": 1,
+       "refill-dash": 1,
+       "hyper": 1,
+       "portal-pass": 1,
+       "death": 2,
+       "respawn": 2
+      },
+      "firstFailure": {
+       "type": "death",
+       "frame": 71,
+       "x": 200,
+       "y": 61,
+       "cause": "sweeper",
+       "vx": 247.00000000000026,
+       "vy": 97.5,
+       "i": 70
+      }
+     }
+    },
+    {
+     "name": "Ignore the low approach return",
+     "tape": [
+      [
+       1,
+       "r"
+      ],
+      [
+       70,
+       ""
+      ],
+      [
+       6,
+       "j"
+      ],
+      [
+       12,
+       "rdx"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       15,
+       "r"
+      ],
+      [
+       1,
+       "rds"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       70,
+       "r"
+      ]
+     ],
+     "after": {
+      "exited": false,
+      "deaths": 2,
+      "frames": null,
+      "events": [
+       "jump",
+       "dash",
+       "land",
+       "ultra",
+       "refill-dash",
+       "hyper",
+       "death",
+       "respawn"
+      ],
+      "eventCounts": {
+       "jump": 1,
+       "dash": 1,
+       "land": 1,
+       "ultra": 1,
+       "refill-dash": 1,
+       "hyper": 1,
+       "death": 2,
+       "respawn": 2
+      },
+      "firstFailure": {
+       "type": "death",
+       "frame": 102,
+       "x": 118,
+       "y": 128,
+       "cause": "sweeper",
+       "vx": 273.0000000000002,
+       "vy": -37.5,
+       "i": 101
+      }
+     }
+    },
+    {
+     "name": "Dash upward directly before the pod",
+     "tape": [
+      [
+       6,
+       "j"
+      ],
+      [
+       12,
+       "rdx"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       15,
+       "r"
+      ],
+      [
+       12,
+       "rux"
       ],
       [
        100,
@@ -34606,59 +35448,444 @@ const records=[
      ],
      "after": {
       "exited": false,
+      "deaths": 2,
+      "frames": null,
+      "events": [
+       "jump",
+       "dash",
+       "land",
+       "ultra",
+       "refill-dash",
+       "hyper",
+       "portal-pass",
+       "death",
+       "respawn"
+      ],
+      "eventCounts": {
+       "jump": 1,
+       "dash": 2,
+       "land": 1,
+       "ultra": 1,
+       "refill-dash": 1,
+       "hyper": 1,
+       "portal-pass": 1,
+       "death": 2,
+       "respawn": 2
+      },
       "firstFailure": {
-       "frame": 335,
-       "cause": "sweeper"
+       "type": "death",
+       "frame": 59,
+       "x": 258,
+       "y": 48,
+       "cause": "spikes",
+       "vx": 112.1035833020516,
+       "vy": -69.85281374238569,
+       "i": 58
+      }
+     }
+    },
+    {
+     "name": "Delay the direct upward dash toward the roof end",
+     "tape": [
+      [
+       6,
+       "j"
+      ],
+      [
+       12,
+       "rdx"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       15,
+       "r"
+      ],
+      [
+       6,
+       "r"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       100,
+       "r"
+      ]
+     ],
+     "after": {
+      "exited": false,
+      "deaths": 2,
+      "frames": null,
+      "events": [
+       "jump",
+       "dash",
+       "land",
+       "ultra",
+       "refill-dash",
+       "hyper",
+       "portal-pass",
+       "death",
+       "respawn"
+      ],
+      "eventCounts": {
+       "jump": 1,
+       "dash": 2,
+       "land": 1,
+       "ultra": 1,
+       "refill-dash": 1,
+       "hyper": 1,
+       "portal-pass": 1,
+       "death": 2,
+       "respawn": 2
+      },
+      "firstFailure": {
+       "type": "death",
+       "frame": 65,
+       "x": 282,
+       "y": 70,
+       "cause": "spikes",
+       "vx": 112.1035833020516,
+       "vy": -69.85281374238569,
+       "i": 64
       }
      }
     }
    ],
-   "revision": "e80338780218",
+   "positiveChecks": [
+    {
+     "name": "Launch two frames later",
+     "tape": [
+      [
+       8,
+       "j"
+      ],
+      [
+       12,
+       "rdx"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       15,
+       "r"
+      ],
+      [
+       1,
+       "rds"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       70,
+       "r"
+      ]
+     ],
+     "after": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 94,
+      "events": [
+       "jump",
+       "dash",
+       "land",
+       "refill-dash",
+       "ultra",
+       "hyper",
+       "portal-pass",
+       "strike",
+       "pogo-low",
+       "pod",
+       "exit"
+      ],
+      "eventCounts": {
+       "jump": 1,
+       "dash": 2,
+       "land": 2,
+       "refill-dash": 2,
+       "ultra": 1,
+       "hyper": 1,
+       "portal-pass": 1,
+       "strike": 1,
+       "pogo-low": 1,
+       "pod": 1,
+       "exit": 1
+      }
+     }
+    },
+    {
+     "name": "Cut one frame later",
+     "tape": [
+      [
+       6,
+       "j"
+      ],
+      [
+       12,
+       "rdx"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       16,
+       "r"
+      ],
+      [
+       1,
+       "rds"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       70,
+       "r"
+      ]
+     ],
+     "after": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 90,
+      "events": [
+       "jump",
+       "dash",
+       "land",
+       "ultra",
+       "refill-dash",
+       "hyper",
+       "portal-pass",
+       "strike",
+       "pogo-low",
+       "pod",
+       "exit"
+      ],
+      "eventCounts": {
+       "jump": 1,
+       "dash": 2,
+       "land": 1,
+       "ultra": 1,
+       "refill-dash": 1,
+       "hyper": 1,
+       "portal-pass": 1,
+       "strike": 1,
+       "pogo-low": 1,
+       "pod": 1,
+       "exit": 1
+      }
+     }
+    },
+    {
+     "name": "Final dash one frame earlier",
+     "tape": [
+      [
+       6,
+       "j"
+      ],
+      [
+       12,
+       "rdx"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       15,
+       "r"
+      ],
+      [
+       1,
+       "rds"
+      ],
+      [
+       11,
+       "r"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       70,
+       "r"
+      ]
+     ],
+     "after": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 91,
+      "events": [
+       "jump",
+       "dash",
+       "land",
+       "ultra",
+       "refill-dash",
+       "hyper",
+       "portal-pass",
+       "strike",
+       "pogo-low",
+       "pod",
+       "exit"
+      ],
+      "eventCounts": {
+       "jump": 1,
+       "dash": 2,
+       "land": 2,
+       "ultra": 1,
+       "refill-dash": 2,
+       "hyper": 1,
+       "portal-pass": 1,
+       "strike": 1,
+       "pogo-low": 1,
+       "pod": 1,
+       "exit": 1
+      }
+     }
+    }
+   ],
+   "review": {
+    "request": "The user found this room too easy and requested more consequential timing and problem solving.",
+    "sourceBefore": "scripts/room-bank/archive/before-final-review-7.302/fractured/24-bank-f24.json",
+    "revision": "Spiced-up route for 7.302 review; no approval inferred.",
+    "scope": "One canonical route, three meaningful input variants, and focused active ordinary-route/timing attempts. No exhaustive shortcut search or invisible exit-event gates."
+   },
+   "learningFamily": "timed-launch-and-pogo",
+   "lessonRole": "combine",
+   "timingCues": [
+    "Build the low launch while the approach thorn descends below the portal line.",
+    "Check that the receiving thorn is also low: the same departure must clear both ends.",
+    "Cut the pod low, then wait until the roof edge is behind the knight before changing height."
+   ],
+   "format": "compact",
+   "prerequisites": [],
+   "preparesFor": [],
+   "route": {
+    "exited": true,
+    "deaths": 0,
+    "frames": 89,
+    "events": [
+     "jump",
+     "dash",
+     "land",
+     "ultra",
+     "refill-dash",
+     "hyper",
+     "portal-pass",
+     "strike",
+     "pogo-low",
+     "pod",
+     "exit"
+    ],
+    "eventCounts": {
+     "jump": 1,
+     "dash": 2,
+     "land": 1,
+     "ultra": 1,
+     "refill-dash": 1,
+     "hyper": 1,
+     "portal-pass": 1,
+     "strike": 1,
+     "pogo-low": 1,
+     "pod": 1,
+     "exit": 1
+    }
+   },
+   "actualMovementEvents": [
+    "jump",
+    "dash",
+    "land",
+    "ultra",
+    "refill-dash",
+    "hyper",
+    "portal-pass",
+    "strike",
+    "pogo-low",
+    "pod",
+    "exit"
+   ],
+   "routeMovement": [
+    {
+     "type": "ultra",
+     "frame": 15,
+     "i": 14
+    },
+    {
+     "type": "hyper",
+     "frame": 19,
+     "x": 53,
+     "y": 144,
+     "i": 18
+    },
+    {
+     "type": "portal-pass",
+     "frame": 37,
+     "x": 188,
+     "y": 56,
+     "kind": "knight",
+     "from": "blue",
+     "i": 36
+    },
+    {
+     "type": "pogo-low",
+     "frame": 48,
+     "x": 233,
+     "y": 88,
+     "vy": -135,
+     "i": 47
+    }
+   ],
+   "revision": "d0e8e7312ba0",
    "source": "scripts/room-bank/fractured/24-bank-f24.json"
   },
   "tape": [
    [
-    30,
-    "r"
-   ],
-   [
-    20,
-    "rj"
-   ],
-   [
-    20,
-    ""
-   ],
-   [
-    80,
-    ""
-   ],
-   [
-    28,
-    "r"
-   ],
-   [
-    20,
-    ""
-   ],
-   [
-    8,
-    "r"
-   ],
-   [
-    5,
-    ""
-   ],
-   [
-    17,
-    "rj"
-   ],
-   [
     6,
-    "rx"
+    "j"
    ],
    [
-    100,
+    12,
+    "rdx"
+   ],
+   [
+    12,
+    "rj"
+   ],
+   [
+    15,
+    "r"
+   ],
+   [
+    1,
+    "rds"
+   ],
+   [
+    12,
+    "r"
+   ],
+   [
+    12,
+    "rux"
+   ],
+   [
+    70,
     "r"
    ]
   ]
@@ -34688,19 +35915,19 @@ const records=[
     "#......................................#",
     "#......................................#",
     "#......................................#",
-    "#................######................#",
-    "#................######...............c#",
-    "#................######..............###",
+    "#......................................#",
+    "#.....................................c#",
     "#....................................###",
-    "#...................................<###",
-    "#..P................................<###",
-    "########............................<###",
-    "########............................<###",
+    "#................GGGGGG..............###",
+    "#...........b....GGGGGG.............<###",
+    "#..P.............GGGGGG.............<###",
+    "########.........GGGGGG.............<###",
+    "########.........GGGGGG.............<###",
     "########^^^^^^^^^^^^^^^^^^^^^^^^^^^^<###",
     "########################################"
    ],
-   "hint": "The deck keeps its schedule. The stone island stays above the low patrol.",
-   "question": "The outward crossing earns the key. What changes when the deck returns underneath you?",
+   "hint": "The key opens the island’s underside; its spent top cannot catch your return.",
+   "question": "If the island cannot catch you twice, where must the returning deck launch you?",
    "decks": [
     {
      "c": 7,
@@ -34717,21 +35944,29 @@ const records=[
    ],
    "sweepers": [
     {
-     "id": "A",
+     "id": "Around the island",
      "path": [
       [
        13,
        17
       ],
       [
-       27,
+       25,
        17
+      ],
+      [
+       25,
+       10
+      ],
+      [
+       13,
+       10
       ]
      ],
      "period": 260,
-     "phase": 80,
-     "radius": 5,
-     "loop": false
+     "phase": 125,
+     "radius": 4,
+     "loop": true
     },
     {
      "id": "B",
@@ -34749,15 +35984,43 @@ const records=[
      "phase": 165,
      "radius": 5,
      "loop": false
+    },
+    {
+     "id": "Home stroke",
+     "path": [
+      [
+       8.75,
+       6
+      ],
+      [
+       8.75,
+       13
+      ]
+     ],
+     "period": 160,
+     "phase": 60,
+     "radius": 4
+    }
+   ],
+   "movement": "survive-2",
+   "showHintAtRest": true,
+   "spentThorns": [
+    {
+     "id": "Passing island",
+     "c": 17,
+     "r": 13,
+     "w": 6,
+     "h": 3,
+     "face": "up"
     }
    ]
   },
   "bank": {
    "side": "fractured",
-   "batch": 4,
-   "acceptance": "candidate",
+   "batch": 15,
+   "acceptance": "revised",
    "difficulty": 5,
-   "role": "timing-puzzle",
+   "role": "Open the freight underpass after spending the island top, then launch from the returning deck",
    "worlds": [
     26,
     36,
@@ -34768,62 +36031,52 @@ const records=[
     "sweeper",
     "moving-deck",
     "interception",
-    "return-route"
+    "return-route",
+    "spent-thorn",
+    "pogo-loft",
+    "shared-gate"
    ],
-   "newMechanics": [
-    "sweeper"
-   ],
+   "newMechanics": [],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "Author difficulty estimate only; fun/difficulty/suitability ratings pending.",
-   "entrance": "Lower western dock.",
-   "exit": "Upper western gate.",
-   "solution": "Board the outward deck and jump/dash onto the central island before the low patrol reaches the track. Move to its eastern edge while the patrol passes below and away, then jump/dash onto the deck near the far dock. Jump to the tally while the vertical patrol is below the transfer. From the far dock, dash left to catch the returning deck during that same clear window. Jump/dash back onto the island before the low patrol reaches the deck again; the now-open exit is a separate jump/dash above the original western dock.",
-   "nearestExisting": "F16 Return Freight intercepts cargo carried through a low tunnel; p152 Deck rides an elevator and p153 Running Start borrows its speed. Here the knight makes two different interceptions of one continuously moving deck, choosing a static refuge while the patrol occupies its track and a different takeoff on the return.",
-   "novelty": "The island is neither the destination nor merely an intermediate jump. It lets the deck and hazard move independently, then becomes the return launch toward an exit behind the start.",
+   "humanReview": "Revised after the user found the original too easy. Fun, difficulty and suitability await human review; numeric difficulty remains an author estimate.",
+   "entrance": "Lower western dock; the closed freight gate makes the outward island transfer necessary.",
+   "exit": "Upper western balcony beyond the tally gate, reached after the returning-deck loft.",
+   "solution": "Board the outward deck and jump/updash onto the island because its lower freight passage is closed. Cross the island and leave its marked top for the far deck and tally, spending that top. The tally opens both the western exit and the underpass below the island. Dash left to catch the returning deck, ride beneath the spent body, and watch the pod approach the western edge. Jump left and hold Jump with a downcut to loft from the pod. Pass above the descending home thorn, then dash straight up beside the exit lip before moving left onto it. A diagonal dash too early goes under the balcony instead of over its edge.",
+   "nearestExisting": "The original F25 used the same safe island in both directions. B58 taught that a used top can remain a useful ceiling, and F57 joined a moving launch to a timed loft. This revision keeps the original moving freight but gives the tally a second physical job: it opens the island’s underside after the first departure has made its top unusable.",
+   "novelty": "One visit changes which side of the island is useful. The outward gate forces the upper transfer, and the same distant tally opens the lower return. The deck is intercepted from the opposite shore; the final loft and vertical dash continue its movement instead of returning to the old unlimited rest.",
    "timing": {
-    "principle": "Leave the moving deck for a fixed refuge, then choose a new interception from the opposite side.",
+    "principle": "Spend the upper refuge outward, then use the newly opened lower passage and moving launch home.",
     "stages": [
      {
-      "cue": "The deck brings the island within reach while the low patrol approaches its track.",
-      "action": "Jump/dash onto the island and let the patrol move below you.",
-      "rest": "Central stone island."
+      "cue": "Leave the deck for the island before the closed freight gate reaches the knight.",
+      "action": "Reach and leave the marked island, then take the far tally.",
+      "rest": "Far tally dock."
      },
      {
-      "cue": "The low patrol has passed the island to the west; the deck is near the far dock and the vertical patrol is below the transfer.",
-      "action": "Intercept the outward deck and jump to the far tally.",
-      "rest": "Eastern dock."
+      "cue": "At the far tally, catch the returning deck while the vertical thorn is below the crossing.",
+      "action": "Intercept the returning deck through the now-open lower passage.",
+      "rest": "Moving deck only."
      },
      {
-      "cue": "The deck is returning while the vertical patrol remains below the leftward crossing.",
-      "action": "Dash onto the deck, then jump/dash to the island before the low sweep returns.",
-      "rest": "Central island; then upper-west exit."
+      "cue": "Ride through the opened underpass; jump as the pod comes alongside and loft while the home thorn descends below the ascent.",
+      "action": "Loft from the pod and dash vertically past the exit lip.",
+      "rest": "Upper western exit."
      }
     ]
    },
-   "verifiedAt": "2026-10-07",
-   "route": {
-    "frames": 413,
-    "deaths": 0,
-    "events": [
-     "jump",
-     "land",
-     "dash",
-     "refill-dash",
-     "stone-lit",
-     "gate-open",
-     "exit"
-    ],
-    "movement": "Outward interception, far-dock jump, leftward dash to the returning deck, opposite transfer to the island, and upper-west exit jump."
-   },
    "requiredEvents": [
+    "spent-thorn-touch",
+    "spent-thorn-arm",
     "stone-lit",
     "gate-open",
+    "pogo-loft",
+    "pod",
     "dash"
    ],
    "shortcutChecks": [
     {
-     "name": "Stay aboard instead of leaving for the return refuge",
+     "name": "Use the original island return",
      "tape": [
       [
        16,
@@ -34883,94 +36136,6 @@ const records=[
       ],
       [
        10,
-       ""
-      ],
-      [
-       6,
-       "lx"
-      ],
-      [
-       35,
-       "l"
-      ],
-      [
-       6,
-       ""
-      ]
-     ],
-     "after": {
-      "exited": false,
-      "firstFailure": {
-       "frame": 268,
-       "cause": "sweeper"
-      }
-     }
-    },
-    {
-     "name": "Miss the far-dock return window",
-     "tape": [
-      [
-       16,
-       "r"
-      ],
-      [
-       12,
-       "rj"
-      ],
-      [
-       20,
-       "r"
-      ],
-      [
-       10,
-       ""
-      ],
-      [
-       12,
-       "rj"
-      ],
-      [
-       6,
-       "ux"
-      ],
-      [
-       12,
-       "r"
-      ],
-      [
-       20,
-       ""
-      ],
-      [
-       28,
-       "r"
-      ],
-      [
-       12,
-       "rj"
-      ],
-      [
-       6,
-       "rx"
-      ],
-      [
-       35,
-       "r"
-      ],
-      [
-       2,
-       ""
-      ],
-      [
-       20,
-       "rj"
-      ],
-      [
-       10,
-       ""
-      ],
-      [
-       50,
        ""
       ],
       [
@@ -35016,32 +36181,861 @@ const records=[
      ],
      "after": {
       "exited": false,
+      "deaths": 1,
+      "frames": null,
+      "events": [
+       "jump",
+       "land",
+       "dash",
+       "spent-thorn-touch",
+       "refill-dash",
+       "spent-thorn-leave",
+       "spent-thorn-arm",
+       "stone-lit",
+       "gate-open",
+       "death",
+       "respawn"
+      ],
+      "eventCounts": {
+       "jump": 6,
+       "land": 6,
+       "dash": 5,
+       "spent-thorn-touch": 1,
+       "refill-dash": 4,
+       "spent-thorn-leave": 1,
+       "spent-thorn-arm": 1,
+       "stone-lit": 1,
+       "gate-open": 2,
+       "death": 1,
+       "respawn": 1
+      },
       "firstFailure": {
-       "frame": 278,
-       "cause": "sweeper"
+       "type": "death",
+       "frame": 287,
+       "x": 177,
+       "y": 98,
+       "cause": "spent-thorn",
+       "vx": 0,
+       "vy": 110.14718625761431,
+       "i": 286
+      }
+     }
+    },
+    {
+     "name": "Jump directly from far tally to the high west exit",
+     "tape": [
+      [
+       16,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       20,
+       "r"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       6,
+       "ux"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       28,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       6,
+       "rx"
+      ],
+      [
+       35,
+       "r"
+      ],
+      [
+       2,
+       ""
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       20,
+       "lj"
+      ],
+      [
+       12,
+       "lx"
+      ],
+      [
+       100,
+       "lgu"
+      ]
+     ],
+     "after": {
+      "exited": false,
+      "deaths": 1,
+      "frames": null,
+      "events": [
+       "jump",
+       "land",
+       "dash",
+       "spent-thorn-touch",
+       "refill-dash",
+       "spent-thorn-leave",
+       "spent-thorn-arm",
+       "stone-lit",
+       "gate-open",
+       "grab",
+       "death"
+      ],
+      "eventCounts": {
+       "jump": 5,
+       "land": 5,
+       "dash": 3,
+       "spent-thorn-touch": 1,
+       "refill-dash": 3,
+       "spent-thorn-leave": 1,
+       "spent-thorn-arm": 1,
+       "stone-lit": 1,
+       "gate-open": 2,
+       "grab": 1,
+       "death": 1
+      },
+      "firstFailure": {
+       "type": "death",
+       "frame": 364,
+       "x": 68,
+       "y": 171,
+       "cause": "spikes",
+       "vx": 0,
+       "vy": 0,
+       "i": 363
+      }
+     }
+    },
+    {
+     "name": "Skip the return loft and dash from freight",
+     "tape": [
+      [
+       16,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       20,
+       "r"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       6,
+       "ux"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       28,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       6,
+       "rx"
+      ],
+      [
+       35,
+       "r"
+      ],
+      [
+       2,
+       ""
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       6,
+       "lx"
+      ],
+      [
+       22,
+       "l"
+      ],
+      [
+       74,
+       ""
+      ],
+      [
+       20,
+       "lj"
+      ],
+      [
+       12,
+       "lux"
+      ],
+      [
+       100,
+       "lgu"
+      ]
+     ],
+     "after": {
+      "exited": false,
+      "deaths": 1,
+      "frames": null,
+      "events": [
+       "jump",
+       "land",
+       "dash",
+       "spent-thorn-touch",
+       "refill-dash",
+       "spent-thorn-leave",
+       "spent-thorn-arm",
+       "stone-lit",
+       "gate-open",
+       "death",
+       "respawn",
+       "grab"
+      ],
+      "eventCounts": {
+       "jump": 5,
+       "land": 6,
+       "dash": 3,
+       "spent-thorn-touch": 1,
+       "refill-dash": 3,
+       "spent-thorn-leave": 1,
+       "spent-thorn-arm": 1,
+       "stone-lit": 1,
+       "gate-open": 2,
+       "death": 1,
+       "respawn": 1,
+       "grab": 1
+      },
+      "firstFailure": {
+       "type": "death",
+       "frame": 342,
+       "x": 79,
+       "y": 112,
+       "cause": "sweeper",
+       "vx": -90,
+       "vy": -15,
+       "i": 341
+      }
+     }
+    },
+    {
+     "name": "Remain on outward deck beneath the island",
+     "tape": [
+      [
+       16,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       20,
+       "r"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       115,
+       ""
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       100,
+       "r"
+      ]
+     ],
+     "after": {
+      "exited": false,
+      "deaths": 3,
+      "frames": null,
+      "events": [
+       "jump",
+       "land",
+       "death",
+       "respawn",
+       "dash"
+      ],
+      "eventCounts": {
+       "jump": 2,
+       "land": 1,
+       "death": 3,
+       "respawn": 3,
+       "dash": 1
+      },
+      "firstFailure": {
+       "type": "death",
+       "frame": 92,
+       "x": 132,
+       "y": 171,
+       "cause": "spikes",
+       "vx": 0,
+       "vy": 160,
+       "i": 91
       }
      }
     }
    ],
-   "bypassCheck": {
-    "stayAboardReturn": {
-     "exited": false,
-     "firstFailure": {
-      "frame": 268,
-      "cause": "sweeper"
+   "positiveChecks": [
+    {
+     "name": "Return boarding two frames later",
+     "tape": [
+      [
+       16,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       20,
+       "r"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       6,
+       "ux"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       28,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       6,
+       "rx"
+      ],
+      [
+       35,
+       "r"
+      ],
+      [
+       2,
+       ""
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       12,
+       ""
+      ],
+      [
+       6,
+       "lx"
+      ],
+      [
+       22,
+       "l"
+      ],
+      [
+       74,
+       ""
+      ],
+      [
+       1,
+       "lj"
+      ],
+      [
+       1,
+       "ldjs"
+      ],
+      [
+       24,
+       "l"
+      ],
+      [
+       12,
+       "ux"
+      ],
+      [
+       70,
+       "l"
+      ]
+     ],
+     "after": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 418,
+      "events": [
+       "jump",
+       "land",
+       "dash",
+       "spent-thorn-touch",
+       "refill-dash",
+       "spent-thorn-leave",
+       "spent-thorn-arm",
+       "stone-lit",
+       "gate-open",
+       "strike",
+       "pogo-loft",
+       "pod",
+       "exit"
+      ],
+      "eventCounts": {
+       "jump": 5,
+       "land": 6,
+       "dash": 4,
+       "spent-thorn-touch": 1,
+       "refill-dash": 4,
+       "spent-thorn-leave": 1,
+       "spent-thorn-arm": 1,
+       "stone-lit": 1,
+       "gate-open": 2,
+       "strike": 1,
+       "pogo-loft": 1,
+       "pod": 1,
+       "exit": 1
+      }
      }
     },
-    "lateReturn": {
-     "exited": false,
-     "firstFailure": {
-      "frame": 278,
-      "cause": "sweeper"
-     },
-     "extraDockWait": 50
+    {
+     "name": "Final loft two frames earlier",
+     "tape": [
+      [
+       16,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       20,
+       "r"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       6,
+       "ux"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       28,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       6,
+       "rx"
+      ],
+      [
+       35,
+       "r"
+      ],
+      [
+       2,
+       ""
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       6,
+       "lx"
+      ],
+      [
+       22,
+       "l"
+      ],
+      [
+       72,
+       ""
+      ],
+      [
+       1,
+       "lj"
+      ],
+      [
+       1,
+       "ldjs"
+      ],
+      [
+       24,
+       "l"
+      ],
+      [
+       12,
+       "ux"
+      ],
+      [
+       70,
+       "l"
+      ]
+     ],
+     "after": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 415,
+      "events": [
+       "jump",
+       "land",
+       "dash",
+       "spent-thorn-touch",
+       "refill-dash",
+       "spent-thorn-leave",
+       "spent-thorn-arm",
+       "stone-lit",
+       "gate-open",
+       "strike",
+       "pogo-loft",
+       "pod",
+       "exit"
+      ],
+      "eventCounts": {
+       "jump": 5,
+       "land": 6,
+       "dash": 4,
+       "spent-thorn-touch": 1,
+       "refill-dash": 4,
+       "spent-thorn-leave": 1,
+       "spent-thorn-arm": 1,
+       "stone-lit": 1,
+       "gate-open": 2,
+       "strike": 1,
+       "pogo-loft": 1,
+       "pod": 1,
+       "exit": 1
+      }
+     }
     },
-    "scope": "Two focused timing mistakes; no broad route search."
+    {
+     "name": "Final upward dash two frames earlier",
+     "tape": [
+      [
+       16,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       20,
+       "r"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       6,
+       "ux"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       28,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       6,
+       "rx"
+      ],
+      [
+       35,
+       "r"
+      ],
+      [
+       2,
+       ""
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       6,
+       "lx"
+      ],
+      [
+       22,
+       "l"
+      ],
+      [
+       74,
+       ""
+      ],
+      [
+       1,
+       "lj"
+      ],
+      [
+       1,
+       "ldjs"
+      ],
+      [
+       22,
+       "l"
+      ],
+      [
+       12,
+       "ux"
+      ],
+      [
+       70,
+       "l"
+      ]
+     ],
+     "after": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 416,
+      "events": [
+       "jump",
+       "land",
+       "dash",
+       "spent-thorn-touch",
+       "refill-dash",
+       "spent-thorn-leave",
+       "spent-thorn-arm",
+       "stone-lit",
+       "gate-open",
+       "strike",
+       "pogo-loft",
+       "pod",
+       "exit"
+      ],
+      "eventCounts": {
+       "jump": 5,
+       "land": 6,
+       "dash": 4,
+       "spent-thorn-touch": 1,
+       "refill-dash": 4,
+       "spent-thorn-leave": 1,
+       "spent-thorn-arm": 1,
+       "stone-lit": 1,
+       "gate-open": 2,
+       "strike": 1,
+       "pogo-loft": 1,
+       "pod": 1,
+       "exit": 1
+      }
+     }
+    }
+   ],
+   "review": {
+    "request": "The user found this room too easy and requested more consequential timing and problem solving.",
+    "sourceBefore": "scripts/room-bank/archive/before-final-review-7.302/fractured/25-bank-f25.json",
+    "revision": "Spiced-up route for 7.302 review; no approval inferred.",
+    "scope": "One canonical route, three meaningful input variants, and focused active ordinary-route/timing attempts. No exhaustive shortcut search or invisible exit-event gates."
    },
-   "revision": "0abf253a6312",
+   "learningFamily": "spent-freight-return",
+   "lessonRole": "combine",
+   "timingCues": [
+    "Leave the deck for the island before the closed freight gate reaches the knight.",
+    "At the far tally, catch the returning deck while the vertical thorn is below the crossing.",
+    "Ride through the opened underpass; jump as the pod comes alongside and loft while the home thorn descends below the ascent."
+   ],
+   "format": "compact",
+   "prerequisites": [],
+   "preparesFor": [],
+   "route": {
+    "exited": true,
+    "deaths": 0,
+    "frames": 416,
+    "events": [
+     "jump",
+     "land",
+     "dash",
+     "spent-thorn-touch",
+     "refill-dash",
+     "spent-thorn-leave",
+     "spent-thorn-arm",
+     "stone-lit",
+     "gate-open",
+     "strike",
+     "pogo-loft",
+     "pod",
+     "exit"
+    ],
+    "eventCounts": {
+     "jump": 5,
+     "land": 6,
+     "dash": 4,
+     "spent-thorn-touch": 1,
+     "refill-dash": 4,
+     "spent-thorn-leave": 1,
+     "spent-thorn-arm": 1,
+     "stone-lit": 1,
+     "gate-open": 2,
+     "strike": 1,
+     "pogo-loft": 1,
+     "pod": 1,
+     "exit": 1
+    }
+   },
+   "actualMovementEvents": [
+    "jump",
+    "land",
+    "dash",
+    "spent-thorn-touch",
+    "refill-dash",
+    "spent-thorn-leave",
+    "spent-thorn-arm",
+    "stone-lit",
+    "gate-open",
+    "strike",
+    "pogo-loft",
+    "pod",
+    "exit"
+   ],
+   "routeMovement": [
+    {
+     "type": "spent-thorn-leave",
+     "frame": 137,
+     "x": 160,
+     "y": 104,
+     "id": "Passing island",
+     "face": "up",
+     "i": 136
+    },
+    {
+     "type": "gate-open",
+     "frame": 215,
+     "x": 28,
+     "y": 40,
+     "i": 214
+    },
+    {
+     "type": "gate-open",
+     "frame": 215,
+     "x": 160,
+     "y": 148,
+     "i": 214
+    },
+    {
+     "type": "pogo-loft",
+     "frame": 325,
+     "x": 108,
+     "y": 141,
+     "vy": -210,
+     "i": 324
+    }
+   ],
+   "revision": "186f0d418946",
    "source": "scripts/room-bank/fractured/25-bank-f25.json"
   },
   "tape": [
@@ -35114,35 +37108,27 @@ const records=[
     "l"
    ],
    [
-    12,
-    "lj"
-   ],
-   [
-    6,
-    "lux"
-   ],
-   [
-    25,
+    74,
     ""
    ],
    [
-    28,
+    1,
+    "lj"
+   ],
+   [
+    1,
+    "ldjs"
+   ],
+   [
+    24,
     "l"
    ],
    [
-    5,
-    ""
-   ],
-   [
     12,
-    "lj"
+    "ux"
    ],
    [
-    6,
-    "lux"
-   ],
-   [
-    80,
+    70,
     "l"
    ]
   ]
@@ -39253,7 +41239,7 @@ const records=[
     "#......................................#",
     "#......................................#",
     "#.............................AAAAA.AA.#",
-    "#..........................l.l.........#",
+    "#......................l.l.l.l.l.......#",
     "#.................................P...c#",
     "#......________..................YY....#",
     "#BBBBBBBBBBBBBBBBBB....................#",
@@ -39261,7 +41247,7 @@ const records=[
    ],
    "movement": "survive-2",
    "exit": "left",
-   "hint": "Dash Down-Right, Strike, then Jump Left · Catch either lantern; carry its shade, then leave its weight on brass.",
+   "hint": "Dash Down-Right, Strike, then Jump Left · Catch a lantern; carry its shade, then leave its weight on brass.",
    "question": "When does the thing you must carry become the thing you must leave behind?",
    "cargoClasps": [
     {
@@ -39272,6 +41258,21 @@ const records=[
     {
      "id": "B",
      "c": 29,
+     "r": 18
+    },
+    {
+     "id": "Outer left",
+     "c": 23,
+     "r": 18
+    },
+    {
+     "id": "Inner left",
+     "c": 25,
+     "r": 18
+    },
+    {
+     "id": "Outer right",
+     "c": 31,
      "r": 18
     }
    ],
@@ -39290,7 +41291,7 @@ const records=[
   },
   "bank": {
    "side": "fractured",
-   "batch": 8,
+   "batch": 15,
    "run": 2,
    "acceptance": "revised",
    "difficulty": 5,
@@ -39325,8 +41326,8 @@ const records=[
     "held-open",
     "foothold-spent"
    ],
-   "humanReview": "User nearly completed it but requested extra ceiling clearance and two alternate cargo catches. Revised; awaits another review.",
-   "solution": "Dash down-right toward the outside tally, and cut during the dash. The dash raises the shade over the beam and makes the western shore solid. Once the tally lights, jump left: the late reversal grace lets this follow the cut as a readable sequence. The spent launch tongue still disappears behind you. Catch either of the two suspended lanterns on the return, carry its shade across the second beam, and land on the widened western shore. Drop the lantern on the extended brass strip to hold the roof open, then climb the west wall empty-handed.",
+   "humanReview": "Requested three extra seed lanterns: two left of the existing pair and one right. All previous room geometry and mechanisms preserved; awaiting review.",
+   "solution": "Dash down-right toward the outside tally, and cut during the dash. The dash raises the shade over the beam and makes the western shore solid. Once the tally lights, jump left: the late reversal grace lets this follow the cut as a readable sequence. The spent launch tongue still disappears behind you. Catch any of the five suspended lanterns on the return, carry its shade across the second beam, and land on the widened western shore. Drop the lantern on the extended brass strip to hold the roof open, then climb the west wall empty-handed.",
    "nearestExisting": "F31 supplies the committed reverse launch. B34 uses a lantern catch to keep upward dash speed, while Return Freight recovers cargo from a moving deck. Here a horizontal reverse arc must acquire its shade in flight, then surrender that same cargo as a lasting roof weight.",
    "novelty": "The outward/reverse commitment is now physical: a dash-operated shade permits the cut, and the spent footing removes the second launch setup. The return must then collect portable shade, cross a second beam, and turn that cargo into stationary weight so the knight can climb empty-handed.",
    "designNotes": "The complete starting ceiling and its downward spikes are raised one 8-pixel tile (roughly half a knight), including the departure beam mount. Two lanterns replace the single center lantern: one tile left and one tile right of its former position. Both catches complete the same shade-to-weight puzzle, so an early or late Grab can succeed without changing the departure commitment. The two-grab target yields eleven consecutive successful Grab start times (10–20 frames after reversal) for the canonical delayed Strike/reversal; no shared movement changes.",
@@ -39876,7 +41877,7 @@ const records=[
      "exit"
     ],
     "eventCounts": {
-     "clasp-catch": 2,
+     "clasp-catch": 5,
      "phase": 1,
      "dash": 1,
      "ultra": 1,
@@ -40567,7 +42568,7 @@ const records=[
     }
    ],
    "hintTeaching": "Strike can now follow the ground dash instead of sharing its exact frame. Once the right tally lights, hold Left and press Jump; a short grace accepts the reversal even just after the dash ends. Press Grab near the hanging lantern; the wider receiving floor and brass strip make the handoff unhurried.",
-   "revision": "78953a2c1d7a",
+   "revision": "350e5e8addb7",
    "userFeedback": {
     "date": "2026-10-09",
     "comment": "Raise the whole initial spike ceiling about half a knight and replace one lantern with two, left and right, to make the catch more forgiving."
@@ -40623,6 +42624,9 @@ const records=[
      "meaning": "This older off-strip probe is now a legitimate on-strip deposit after the pressure area was expanded."
     }
    ],
+   "review": {
+    "revision15": "Added three clasp-held seed lanterns at columns 23, 25 and 31 around the existing columns 27 and 29; no other room geometry changed."
+   },
    "source": "scripts/room-bank/fractured/32-bank-f32.json"
   },
   "tape": [
@@ -47954,7 +49958,7 @@ const records=[
      "dir": "d"
     }
    ],
-   "hint": "Save the high echo. Freight the lantern below; bring its shade and a moving launch back up.",
+   "hint": "At the final dock: swap on the lit plate, then Jump. Bring the moving launch and shade back.",
    "question": "Can one lantern, one moving launch and one echo solve three floors of the same shaft?",
    "showHintAtRest": true,
    "map": [
@@ -48000,8 +50004,8 @@ const records=[
     "###################################............................#",
     "#.............................#########........................#",
     "#..............................................................#",
-    "#.......................................................____...#",
-    "#.......................................ZZZZ............####...#",
+    "#.....................................................______...#",
+    "#.......................................ZZZZ..........######...#",
     "#.......................................................####...#",
     "#.......................................................####...#",
     "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^###############^^^^^^^^^^^^###^^^#",
@@ -48010,10 +50014,10 @@ const records=[
   },
   "bank": {
    "side": "fractured",
-   "batch": 10,
+   "batch": 15,
    "run": 4,
    "collection": "superrooms",
-   "acceptance": "candidate",
+   "acceptance": "revised",
    "difficulty": 4,
    "role": "interconnected superroom",
    "worlds": [],
@@ -48030,7 +50034,7 @@ const records=[
    "newMechanics": [],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "Unreviewed; difficulty is an author estimate.",
+   "humanReview": "Final transfer revised for another review. No approval or numeric player scores assigned.",
    "approvedIngredients": [
     "bank-f16",
     "bank-f19",
@@ -48053,11 +50057,12 @@ const records=[
     "echo-swap",
     "held-open"
    ],
-   "solution": "Jump to the isolated upper lip and save an echo. Drop west onto the loaded freight deck, dispatch it, and let its low duct push you into the lower void route. Dash through the void. Use its outgoing speed for the small jump toward the receiving clasp, then dash Up while holding Grab to catch the suspended lantern. Drift down the open receiving well with that same shade to the lower carriage. Step toward its leading edge as it accelerates; when your feet overlap the adjacent pressure strip, Jump and Echo together. The echo keeps the distant high gate open, while the lantern and carriage launch return to your upper address. Keep right through the long high arc and carry the shade across the upper sun shafts.",
+   "solution": "Jump to the isolated upper lip and save an echo. Drop west onto the loaded freight deck, dispatch it, and let its low duct push you into the lower void route. Dash through the void. Use its outgoing speed for the small jump toward the receiving clasp, then dash Up while holding Grab to catch the suspended lantern. Drift down the open receiving well with that same shade to the lower carriage. Step toward its leading edge as it accelerates. The receiving pressure dock begins two tiles earlier, over the arriving carriage. Swap while that plate is lit, then press Jump shortly afterward at the upper address; the preview separates those inputs by three simulation frames. The echo keeps the distant high gate open, while the lantern and carriage launch return to your upper address. Keep right through the long high arc and carry the shade across the upper sun shafts.",
    "route": {
+    "name": "canonical",
     "exited": true,
     "deaths": 0,
-    "frames": 606,
+    "frames": 600,
     "events": [
      "jump",
      "land",
@@ -48077,27 +50082,7 @@ const records=[
      "held-open",
      "echo-swap",
      "exit"
-    ],
-    "eventCounts": {
-     "jump": 3,
-     "land": 5,
-     "echo-place": 1,
-     "zip-start": 2,
-     "clasp-catch": 1,
-     "zip-stop": 2,
-     "dash": 2,
-     "void-in": 1,
-     "refill-dash": 2,
-     "void-out": 1,
-     "pickup": 1,
-     "cargo-dash-catch": 1,
-     "clasp-take": 1,
-     "zip-home": 2,
-     "plate": 2,
-     "held-open": 1,
-     "echo-swap": 1,
-     "exit": 1
-    }
+    ]
    },
    "requiredEventCounts": {
     "zip-start": 2
@@ -48109,7 +50094,7 @@ const records=[
    "designNotes": "64×48 tiles, 3.34 normal screen areas. One room state, one echo and one lantern; no scripted checkpoints or event-count exit locks. The clasp makes cargo retrieval deliberate rather than requiring a narrow returning-freight rendezvous. The final swap works across eight consecutive timings. A slower stationary swap leaves the weight correctly but loses the useful carriage speed and cannot reach the upper receiving balcony.",
    "positiveChecks": [
     {
-     "name": "Upper exchange after 17 forward ticks",
+     "name": "Swap then jump one frame later",
      "tape": [
       [
        15,
@@ -48164,66 +50149,44 @@ const records=[
        ""
       ],
       [
-       17,
+       14,
        "r"
       ],
       [
        1,
-       "rjq"
+       "rq"
       ],
       [
-       180,
+       190,
        "rj"
       ]
      ],
-     "after": {
-      "exited": true,
-      "deaths": 0,
-      "frames": 603,
-      "events": [
-       "jump",
-       "land",
-       "echo-place",
-       "zip-start",
-       "clasp-catch",
-       "zip-stop",
-       "dash",
-       "void-in",
-       "refill-dash",
-       "void-out",
-       "pickup",
-       "cargo-dash-catch",
-       "clasp-take",
-       "zip-home",
-       "plate",
-       "held-open",
-       "echo-swap",
-       "exit"
-      ],
-      "eventCounts": {
-       "jump": 3,
-       "land": 5,
-       "echo-place": 1,
-       "zip-start": 2,
-       "clasp-catch": 1,
-       "zip-stop": 2,
-       "dash": 2,
-       "void-in": 1,
-       "refill-dash": 2,
-       "void-out": 1,
-       "pickup": 1,
-       "cargo-dash-catch": 1,
-       "clasp-take": 1,
-       "zip-home": 2,
-       "plate": 1,
-       "held-open": 1,
-       "echo-swap": 1,
-       "exit": 1
-      }
-     }
+     "exited": true,
+     "deaths": 0,
+     "frames": 600,
+     "events": [
+      "jump",
+      "land",
+      "echo-place",
+      "zip-start",
+      "clasp-catch",
+      "zip-stop",
+      "dash",
+      "void-in",
+      "refill-dash",
+      "void-out",
+      "pickup",
+      "cargo-dash-catch",
+      "clasp-take",
+      "zip-home",
+      "plate",
+      "held-open",
+      "echo-swap",
+      "exit"
+     ]
     },
     {
-     "name": "Upper exchange after 19 forward ticks",
+     "name": "Swap then jump five frames later",
      "tape": [
       [
        15,
@@ -48278,66 +50241,44 @@ const records=[
        ""
       ],
       [
-       19,
+       14,
        "r"
       ],
       [
-       1,
-       "rjq"
+       5,
+       "rq"
       ],
       [
-       180,
+       190,
        "rj"
       ]
      ],
-     "after": {
-      "exited": true,
-      "deaths": 0,
-      "frames": 605,
-      "events": [
-       "jump",
-       "land",
-       "echo-place",
-       "zip-start",
-       "clasp-catch",
-       "zip-stop",
-       "dash",
-       "void-in",
-       "refill-dash",
-       "void-out",
-       "pickup",
-       "cargo-dash-catch",
-       "clasp-take",
-       "zip-home",
-       "plate",
-       "held-open",
-       "echo-swap",
-       "exit"
-      ],
-      "eventCounts": {
-       "jump": 3,
-       "land": 5,
-       "echo-place": 1,
-       "zip-start": 2,
-       "clasp-catch": 1,
-       "zip-stop": 2,
-       "dash": 2,
-       "void-in": 1,
-       "refill-dash": 2,
-       "void-out": 1,
-       "pickup": 1,
-       "cargo-dash-catch": 1,
-       "clasp-take": 1,
-       "zip-home": 2,
-       "plate": 2,
-       "held-open": 1,
-       "echo-swap": 1,
-       "exit": 1
-      }
-     }
+     "exited": true,
+     "deaths": 0,
+     "frames": 600,
+     "events": [
+      "jump",
+      "land",
+      "echo-place",
+      "zip-start",
+      "clasp-catch",
+      "zip-stop",
+      "dash",
+      "void-in",
+      "refill-dash",
+      "void-out",
+      "pickup",
+      "cargo-dash-catch",
+      "clasp-take",
+      "zip-home",
+      "plate",
+      "held-open",
+      "echo-swap",
+      "exit"
+     ]
     },
     {
-     "name": "Upper exchange after 23 forward ticks",
+     "name": "Approach the dock one frame later",
      "tape": [
       [
        15,
@@ -48392,177 +50333,41 @@ const records=[
        ""
       ],
       [
-       23,
-       "r"
-      ],
-      [
-       1,
-       "rjq"
-      ],
-      [
-       180,
-       "rj"
-      ]
-     ],
-     "after": {
-      "exited": true,
-      "deaths": 0,
-      "frames": 609,
-      "events": [
-       "jump",
-       "land",
-       "echo-place",
-       "zip-start",
-       "clasp-catch",
-       "zip-stop",
-       "dash",
-       "void-in",
-       "refill-dash",
-       "void-out",
-       "pickup",
-       "cargo-dash-catch",
-       "clasp-take",
-       "zip-home",
-       "plate",
-       "held-open",
-       "echo-swap",
-       "exit"
-      ],
-      "eventCounts": {
-       "jump": 3,
-       "land": 5,
-       "echo-place": 1,
-       "zip-start": 2,
-       "clasp-catch": 1,
-       "zip-stop": 2,
-       "dash": 2,
-       "void-in": 1,
-       "refill-dash": 2,
-       "void-out": 1,
-       "pickup": 1,
-       "cargo-dash-catch": 1,
-       "clasp-take": 1,
-       "zip-home": 2,
-       "plate": 2,
-       "held-open": 1,
-       "echo-swap": 1,
-       "exit": 1
-      }
-     }
-    },
-    {
-     "name": "Upper exchange after 24 forward ticks",
-     "tape": [
-      [
        15,
        "r"
       ],
       [
-       12,
-       "rj"
+       3,
+       "rq"
       ],
       [
-       22,
-       "r"
-      ],
-      [
-       25,
-       ""
-      ],
-      [
-       1,
-       "q"
-      ],
-      [
-       30,
-       "l"
-      ],
-      [
-       82,
-       ""
-      ],
-      [
-       1,
-       "rx"
-      ],
-      [
-       43,
-       "r"
-      ],
-      [
-       11,
-       "rj"
-      ],
-      [
-       15,
-       "uxg"
-      ],
-      [
-       28,
-       "r"
-      ],
-      [
-       150,
-       ""
-      ],
-      [
-       24,
-       "r"
-      ],
-      [
-       1,
-       "rjq"
-      ],
-      [
-       180,
+       190,
        "rj"
       ]
      ],
-     "after": {
-      "exited": true,
-      "deaths": 0,
-      "frames": 610,
-      "events": [
-       "jump",
-       "land",
-       "echo-place",
-       "zip-start",
-       "clasp-catch",
-       "zip-stop",
-       "dash",
-       "void-in",
-       "refill-dash",
-       "void-out",
-       "pickup",
-       "cargo-dash-catch",
-       "clasp-take",
-       "zip-home",
-       "plate",
-       "held-open",
-       "echo-swap",
-       "exit"
-      ],
-      "eventCounts": {
-       "jump": 3,
-       "land": 5,
-       "echo-place": 1,
-       "zip-start": 2,
-       "clasp-catch": 1,
-       "zip-stop": 2,
-       "dash": 2,
-       "void-in": 1,
-       "refill-dash": 2,
-       "void-out": 1,
-       "pickup": 1,
-       "cargo-dash-catch": 1,
-       "clasp-take": 1,
-       "zip-home": 2,
-       "plate": 2,
-       "held-open": 1,
-       "echo-swap": 1,
-       "exit": 1
-      }
-     }
+     "exited": true,
+     "deaths": 0,
+     "frames": 601,
+     "events": [
+      "jump",
+      "land",
+      "echo-place",
+      "zip-start",
+      "clasp-catch",
+      "zip-stop",
+      "dash",
+      "void-in",
+      "refill-dash",
+      "void-out",
+      "pickup",
+      "cargo-dash-catch",
+      "clasp-take",
+      "zip-home",
+      "plate",
+      "held-open",
+      "echo-swap",
+      "exit"
+     ]
     }
    ],
    "shortcutChecks": [
@@ -48820,7 +50625,147 @@ const records=[
     }
    ],
    "interconnection": "The cargo dispatched in the upper freight duct is the only shade for the final gallery. The lower exchange plate holds the high gate open only when the echo is left behind. Freight recovery routes beneath the same machinery that supplies the launch returned to the initial high balcony.",
-   "revision": "ba6c5f2b9cae",
+   "review": {
+    "revisionSummary": "The pressure landing and supporting floor extend 16 pixels toward the incoming carriage. The saved preview swaps while on the plate, then jumps three frames later, preserving inherited motion without a same-frame chord. Global echo/plate/movement rules are unchanged.",
+    "finaleBefore": [
+     [
+      15,
+      "r"
+     ],
+     [
+      12,
+      "rj"
+     ],
+     [
+      22,
+      "r"
+     ],
+     [
+      25,
+      ""
+     ],
+     [
+      1,
+      "q"
+     ],
+     [
+      30,
+      "l"
+     ],
+     [
+      82,
+      ""
+     ],
+     [
+      1,
+      "rx"
+     ],
+     [
+      43,
+      "r"
+     ],
+     [
+      11,
+      "rj"
+     ],
+     [
+      15,
+      "uxg"
+     ],
+     [
+      28,
+      "r"
+     ],
+     [
+      150,
+      ""
+     ],
+     [
+      20,
+      "r"
+     ],
+     [
+      1,
+      "rjq"
+     ],
+     [
+      180,
+      "rj"
+     ]
+    ],
+    "originalSequentialAttempt": {
+     "tape": [
+      [
+       15,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       22,
+       "r"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       1,
+       "q"
+      ],
+      [
+       30,
+       "l"
+      ],
+      [
+       82,
+       ""
+      ],
+      [
+       1,
+       "rx"
+      ],
+      [
+       43,
+       "r"
+      ],
+      [
+       11,
+       "rj"
+      ],
+      [
+       15,
+       "uxg"
+      ],
+      [
+       28,
+       "r"
+      ],
+      [
+       150,
+       ""
+      ],
+      [
+       14,
+       "r"
+      ],
+      [
+       3,
+       "rq"
+      ],
+      [
+       190,
+       "rj"
+      ]
+     ],
+     "exited": false,
+     "deaths": 0,
+     "reason": "Echo left before the original narrow plate; door remains closed."
+    }
+   },
+   "revision": "4ac1eaa1f1e3",
    "source": "scripts/room-bank/fractured/45-bank-f45.json"
   },
   "tape": [
@@ -48877,15 +50822,15 @@ const records=[
     ""
    ],
    [
-    20,
+    14,
     "r"
    ],
    [
-    1,
-    "rjq"
+    3,
+    "rq"
    ],
    [
-    180,
+    190,
     "rj"
    ]
   ]
@@ -48992,7 +50937,7 @@ const records=[
    "batch": 10,
    "run": 4,
    "collection": "superrooms",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "difficulty": 4,
    "role": "interconnected superroom",
    "worlds": [],
@@ -49010,7 +50955,7 @@ const records=[
    "newMechanics": [],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "Unreviewed; difficulty is an author estimate.",
+   "humanReview": "Approved for late Fractured superroom. Numeric player ratings remain unmeasured.",
    "approvedIngredients": [
     "bank-f19",
     "bank-f43",
@@ -50355,6 +52300,12 @@ const records=[
      }
     }
    ],
+   "placementBand": "late Fractured superroom",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "late Fractured superroom",
+    "geometryPreserved": true
+   },
    "revision": "1dae8b51fc2d",
    "source": "scripts/room-bank/fractured/46-bank-f46.json"
   },
@@ -50505,12 +52456,12 @@ const records=[
    ]
   },
   "bank": {
-   "side": "fractured",
+   "side": "base",
    "batch": 13,
    "run": 5,
    "collection": "run5",
    "format": "compact",
-   "acceptance": "revised",
+   "acceptance": "banked",
    "difficulty": 4,
    "role": "Use the pod’s upward return to pass a phase ceiling, then restore its landing",
    "worlds": [],
@@ -50524,7 +52475,7 @@ const records=[
    "newMechanics": [],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "Unreviewed; difficulty is an author estimate.",
+   "humanReview": "Approved for middle Base. Numeric player ratings remain unmeasured.",
    "requiredEvents": [
     "recoil",
     "bell"
@@ -51151,8 +53102,15 @@ const records=[
     ]
    },
    "designNotes": "The western partition now meets the ceiling. The phase bridge is higher and extends back to that partition, removing the old climb-over route and the exposed bridge edge reachable by an ordinary island jump. Both actually successful shortcuts were reproduced on the archived source.",
+   "placementBand": "middle Base",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "middle Base",
+    "geometryPreserved": true
+   },
+   "reclassifiedFrom": "fractured",
    "revision": "ed4fb96bce01",
-   "source": "scripts/room-bank/fractured/47-bank-f47.json"
+   "source": "scripts/room-bank/base/47-bank-f47.json"
   },
   "tape": [
    [
@@ -51279,12 +53237,12 @@ const records=[
    "question": "How can the enemy reach the sealed lower passage—and help you come back up?"
   },
   "bank": {
-   "side": "fractured",
+   "side": "base",
    "batch": 11,
    "run": 5,
    "collection": "run5",
    "format": "compact",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "difficulty": 4,
    "role": "Deliver one ram to a lower chamber and reuse it for the return ascent",
    "worlds": [
@@ -51303,7 +53261,7 @@ const records=[
    "newMechanics": [],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "User liked the cute, fun design and found it easy, possibly Base difficulty. Retained unchanged as a candidate; no explicit banking or side-transfer instruction. Numeric ratings unmeasured.",
+   "humanReview": "Approved for late Base. Numeric player ratings remain unmeasured.",
    "requiredEvents": [
     "hinge-turn",
     "breach",
@@ -52127,8 +54085,15 @@ const records=[
     "decision": "retain candidate",
     "note": "Positive feedback; easy, perhaps Base-level difficulty."
    },
+   "placementBand": "late Base",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "late Base",
+    "geometryPreserved": true
+   },
+   "reclassifiedFrom": "fractured",
    "revision": "1295e1a31cc1",
-   "source": "scripts/room-bank/fractured/48-bank-f48.json"
+   "source": "scripts/room-bank/base/48-bank-f48.json"
   },
   "tape": [
    [
@@ -54650,7 +56615,7 @@ const records=[
    "run": 6,
    "collection": "run6",
    "format": "compact",
-   "acceptance": "revised",
+   "acceptance": "banked",
    "status": "route-proven",
    "difficulty": 3,
    "role": "Turn the delivery portal into the physical stop that parks its own cargo",
@@ -54668,7 +56633,7 @@ const records=[
    ],
    "newMechanics": [],
    "author": "Codex",
-   "humanReview": "User liked the concept and requested deliberate portal relinking in place of the automatic clearing line. Revised version awaits review.",
+   "humanReview": "Approved for middle Base. Numeric player ratings remain unmeasured.",
    "requiredEvents": [
     "portal-open",
     "portal-pass",
@@ -54906,6 +56871,12 @@ const records=[
     "portal-open": 2
    },
    "revision": "3494aa828114",
+   "placementBand": "middle Base",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "middle Base",
+    "geometryPreserved": true
+   },
    "source": "scripts/room-bank/base/bank-b50.json"
   },
   "tape": [
@@ -55107,12 +57078,12 @@ const records=[
    "watchClarity": true
   },
   "bank": {
-   "side": "base",
+   "side": "fractured",
    "batch": 13,
    "run": 6,
    "collection": "run6",
    "format": "superroom",
-   "acceptance": "revised",
+   "acceptance": "banked",
    "status": "route-proven",
    "difficulty": 4,
    "role": "Send a bolt upwind, then circle below and above its lane to build the return screen",
@@ -55132,7 +57103,7 @@ const records=[
    ],
    "newMechanics": [],
    "author": "Codex",
-   "humanReview": "User found the top-deck ride dull and the smoke/light protection unclear. Revised with a required hook pattern and opt-in watch/smoke presentation; awaits approval.",
+   "humanReview": "Approved for early–middle Fractured. Numeric player ratings remain unmeasured.",
    "requiredEvents": [
     "parry",
     "receiver-lit",
@@ -55943,7 +57914,14 @@ const records=[
      }
     ]
    },
-   "source": "scripts/room-bank/base/bank-b52.json"
+   "placementBand": "early–middle Fractured",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "early–middle Fractured",
+    "geometryPreserved": true
+   },
+   "reclassifiedFrom": "base",
+   "source": "scripts/room-bank/fractured/bank-b52.json"
   },
   "tape": [
    [
@@ -56127,7 +58105,7 @@ const records=[
    "run": 6,
    "collection": "run6",
    "format": "superroom",
-   "acceptance": "revised",
+   "acceptance": "banked",
    "status": "route-proven",
    "difficulty": 4,
    "role": "Use the tide-borne crate to reach the gallery, then turn a lower sluice into an upper return.",
@@ -56146,7 +58124,7 @@ const records=[
    ],
    "newMechanics": [],
    "author": "Codex",
-   "humanReview": "User identified a needless float, a jump-dash bypass around the anvil, and unused lower-right space. All three are revised; awaiting another review.",
+   "humanReview": "Approved for middle Base. Numeric player ratings remain unmeasured.",
    "requiredEvents": [
     "stone-hit",
     "stone-stop",
@@ -57367,6 +59345,12 @@ const records=[
     ]
    },
    "revision": "12ab40cb183d",
+   "placementBand": "middle Base",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "middle Base",
+    "geometryPreserved": true
+   },
    "source": "scripts/room-bank/base/bank-b53.json"
   },
   "tape": [
@@ -57618,7 +59602,7 @@ const records=[
    "run": 6,
    "collection": "run6",
    "format": "compact",
-   "acceptance": "revised",
+   "acceptance": "banked",
    "difficulty": 3,
    "role": "Spend a dash entering the portal, recover it on the fall, then withdraw the shot’s bridge",
    "worlds": [],
@@ -57633,7 +59617,7 @@ const records=[
    "newMechanics": [],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "Unreviewed; difficulty is an author estimate.",
+   "humanReview": "Approved for early–middle Fractured. Numeric player ratings remain unmeasured.",
    "requiredEvents": [
     "portal-pass",
     "vector-refill",
@@ -58230,6 +60214,12 @@ const records=[
     ]
    },
    "designNotes": "The initial permanent floor was replaced by a phase departure shelf above a visible pit. The western gun gate now reaches the ceiling, so its top cannot become a refill perch. The existing down-only crystal is lower to match the revised inlet arc; its direction rule is unchanged. The actual former shortcut, a revised ground-preparation attempt, and a crystal-removal diagnostic are recorded.",
+   "placementBand": "early–middle Fractured",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "early–middle Fractured",
+    "geometryPreserved": true
+   },
    "revision": "5de9c1bb49a9",
    "source": "scripts/room-bank/fractured/51-bank-f51.json"
   },
@@ -58788,7 +60778,7 @@ const records=[
    "run": 6,
    "collection": "run6",
    "format": "compact",
-   "acceptance": "revised",
+   "acceptance": "banked",
    "status": "route-proven",
    "difficulty": 4,
    "role": "Set the seed’s height on one floor and launch from the other",
@@ -58806,7 +60796,7 @@ const records=[
    ],
    "newMechanics": [],
    "author": "Codex",
-   "humanReview": "Unreviewed; difficulty is an author estimate.",
+   "humanReview": "Approved for early–middle Fractured. Numeric player ratings remain unmeasured.",
    "requiredEvents": [
     "impulse-prime",
     "gravity",
@@ -59428,6 +61418,12 @@ const records=[
      "exit": 1
     }
    },
+   "placementBand": "early–middle Fractured",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "early–middle Fractured",
+    "geometryPreserved": true
+   },
    "revision": "d03dc06931be",
    "source": "scripts/room-bank/fractured/52-bank-f52.json"
   },
@@ -59563,12 +61559,12 @@ const records=[
    ]
   },
   "bank": {
-   "side": "base",
+   "side": "fractured",
    "batch": 14,
    "run": 7,
    "collection": "run7",
    "format": "compact",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "status": "route-proven",
    "difficulty": 3,
    "role": "Choose two rebound heights while the same departure determines both patrol crossings",
@@ -59580,7 +61576,7 @@ const records=[
    ],
    "newMechanics": [],
    "author": "Codex",
-   "humanReview": "Unreviewed candidate. Author difficulty is provisional.",
+   "humanReview": "Approved for late Fractured. Numeric player ratings remain unmeasured.",
    "learningFamily": "timed-launch-and-pogo",
    "lessonRole": "introduce",
    "prerequisites": [],
@@ -60229,8 +62225,15 @@ const records=[
    "review": {
     "authorEvidence": "One zero-death canonical route, two or three saved timing/contact variants, and active ordinary-route bypass attempts. Human fun/difficulty/suitability review remains pending."
    },
+   "placementBand": "late Fractured",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "late Fractured",
+    "geometryPreserved": true
+   },
+   "reclassifiedFrom": "base",
    "revision": "66b1327ba39e",
-   "source": "scripts/room-bank/base/bank-b54.json"
+   "source": "scripts/room-bank/fractured/bank-b54.json"
   },
   "tape": [
    [
@@ -60380,12 +62383,12 @@ const records=[
    ]
   },
   "bank": {
-   "side": "base",
+   "side": "fractured",
    "batch": 14,
    "run": 7,
    "collection": "run7",
    "format": "compact",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "status": "route-proven",
    "difficulty": 3,
    "role": "Intercept a predictable moving launch target when its return creates the next safe angle",
@@ -60399,7 +62402,7 @@ const records=[
    ],
    "newMechanics": [],
    "author": "Codex",
-   "humanReview": "Unreviewed candidate. Author difficulty is provisional.",
+   "humanReview": "Approved for late Fractured. Numeric player ratings remain unmeasured.",
    "learningFamily": "timed-launch-and-pogo",
    "lessonRole": "develop",
    "prerequisites": [
@@ -60976,8 +62979,15 @@ const records=[
    "review": {
     "authorEvidence": "One zero-death canonical route, two or three saved timing/contact variants, and active ordinary-route bypass attempts. Human fun/difficulty/suitability review remains pending."
    },
+   "placementBand": "late Fractured",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "late Fractured",
+    "geometryPreserved": true
+   },
+   "reclassifiedFrom": "base",
    "revision": "d006e6cf55c0",
-   "source": "scripts/room-bank/base/bank-b55.json"
+   "source": "scripts/room-bank/fractured/bank-b55.json"
   },
   "tape": [
    [
@@ -61109,7 +63119,7 @@ const records=[
    "run": 7,
    "collection": "run7",
    "format": "compact",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "status": "route-proven",
    "difficulty": 3,
    "author": "Codex",
@@ -61134,7 +63144,7 @@ const records=[
     "bank-f58"
    ],
    "prerequisites": [],
-   "humanReview": "Awaiting playtest; route evidence does not establish enjoyment or human difficulty.",
+   "humanReview": "Approved for late Base; early Fractured alternative. Numeric player ratings remain unmeasured.",
    "entrance": "Western stone dock level with the hanging freight ring.",
    "exit": "Eastern ledge beyond the raised thorned stone.",
    "solution": "Jump from the dock and catch the moving ring. Reel in while boarding, then pay out as the thorn approaches along the short-rope lane. Hold below its path until it has passed left. Reel back up before the raised stone reaches your feet. Pump right near the eastern rail turn, jump free, and dash up-right onto the exit ledge.",
@@ -61582,6 +63592,12 @@ const records=[
      }
     }
    ],
+   "placementBand": "late Base; early Fractured alternative",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "late Base; early Fractured alternative",
+    "geometryPreserved": true
+   },
    "revision": "9fb88289e1e3",
    "source": "scripts/room-bank/base/bank-b56.json"
   },
@@ -61725,7 +63741,7 @@ const records=[
    "run": 7,
    "collection": "run7",
    "format": "compact",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "status": "route-proven",
    "difficulty": 4,
    "author": "Codex",
@@ -61749,7 +63765,7 @@ const records=[
     "bank-f58"
    ],
    "prerequisites": [],
-   "humanReview": "Awaiting playtest; route evidence does not establish enjoyment or human difficulty.",
+   "humanReview": "Approved for late Base; early Fractured alternative. Numeric player ratings remain unmeasured.",
    "entrance": "Western launch lip opposite the rising two-tile freight cradle.",
    "exit": "Raised eastern sun gallery across the long gap.",
    "solution": "Approach the western lip and watch the freight rise. Jump as the lantern nears the low ceiling and the vertical thorn travels down out of the crossing. Dash horizontally toward the passenger and press Grab during the moving part of the dash. Catch from the cradle’s right edge so the knight remains airborne: touching down would shed the crossing speed. Keep right through the patrol lane and use the carried shade to enter the sun gallery.",
@@ -62116,6 +64132,12 @@ const records=[
      }
     }
    ],
+   "placementBand": "late Base; early Fractured alternative",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "late Base; early Fractured alternative",
+    "geometryPreserved": true
+   },
    "revision": "ea9706b41a8e",
    "source": "scripts/room-bank/base/bank-b57.json"
   },
@@ -62149,118 +64171,168 @@ const records=[
  {
   "room": {
    "id": "bank-b58",
-   "name": "Under What You Spent",
+   "name": "Leave Yourself a Landing",
    "palette": "woods",
    "study": true,
    "exit": "left",
+   "cols": 48,
    "lock": [
     "portal",
     "parry"
    ],
-   "hint": "Folded hairs welcome a first touch. Leave them, and the same stone needs a different approach.",
-   "question": "Use a marked top once, then return beneath the same solid body.",
    "map": [
-    "########################################",
-    "#.G....................................#",
-    "#.G....................................#",
-    "#.G....................................#",
-    "#.G....................................#",
-    "#.G....................................#",
-    "#.G....................................#",
-    "#.G....................................#",
-    "#.G....................................#",
-    "#.G....................................#",
-    "#.G....................................#",
-    "#.G....................................#",
-    "#.G................................c...#",
-    "#.G..........................###########",
-    "#.G....................................#",
-    "#.G............P.......................#",
-    "#.G....................................#",
-    "#.G....................................#",
-    "#.G....................................#",
-    "..G...........GGGGGGGG.................#",
-    "..G...........GGGGGGGG.................#",
-    "..G...........GGGGGGGG.................#",
-    "########################################"
+    "################################################",
+    "################################################",
+    "################################################",
+    "################################################",
+    "################################################",
+    "################################################",
+    "################################################",
+    "################################################",
+    "################################################",
+    "################################################",
+    "################################################",
+    "################################################",
+    "################################################",
+    "#..............................................#",
+    "#..............................................#",
+    "#..............................................#",
+    "#..............................................#",
+    "..G............................................#",
+    "..G............................................#",
+    "..G............................................#",
+    "..G..P......................................c..#",
+    "################################################",
+    "################################################"
    ],
    "spentThorns": [
     {
-     "id": "First top",
-     "c": 14,
-     "r": 16,
-     "w": 8,
-     "h": 3,
-     "face": "up"
+     "id": "Remembered floor",
+     "c": 3,
+     "r": 21,
+     "w": 44,
+     "h": 1,
+     "face": "up",
+     "segment": 4
     }
    ],
    "sweepers": [
     {
-     "id": "Underpass",
+     "id": "First knot",
      "path": [
       [
-       12,
-       18
-      ],
-      [
-       12,
-       21
+       14,
+       19.25
       ]
      ],
-     "period": 160,
+     "radius": 5
+    },
+    {
+     "id": "Second knot",
+     "path": [
+      [
+       32,
+       19.25
+      ]
+     ],
+     "radius": 5
+    },
+    {
+     "id": "Crossing needle",
+     "path": [
+      [
+       23,
+       14
+      ],
+      [
+       23,
+       20
+      ]
+     ],
+     "period": 180,
+     "phase": 30,
+     "radius": 4
+    },
+    {
+     "id": "Return hook",
+     "path": [
+      [
+       38,
+       15
+      ],
+      [
+       43,
+       15
+      ],
+      [
+       43,
+       20
+      ],
+      [
+       38,
+       20
+      ]
+     ],
+     "loop": true,
+     "period": 240,
+     "phase": 80,
      "radius": 3
     }
    ],
+   "hint": "Each patch remembers your feet. Leave fresh landing places for the way back.",
+   "question": "What part of this floor will still welcome you on the return?",
    "showHintAtRest": true
   },
   "bank": {
    "side": "base",
-   "batch": 14,
+   "batch": 15,
    "run": 7,
    "collection": "run7",
    "format": "compact",
-   "acceptance": "candidate",
+   "acceptance": "revised",
    "status": "route-proven",
-   "difficulty": 2,
-   "role": "Teach safe first contact, permanent face consumption and an alternate return under retained stone.",
+   "difficulty": 4,
+   "author": "Codex",
    "worlds": [],
+   "role": "Remember outbound footprints while choosing fresh return landings through fixed knots and moving needles.",
    "tags": [
-    "spent-floor",
-    "retained-solid",
+    "segmented-spent-floor",
     "return-route",
-    "vertical-patrol",
-    "teaching"
+    "stationary-thorns",
+    "patrol-timing",
+    "landing-reservation"
    ],
    "newMechanics": [
-    "departure-armed persistent surface"
+    "independently spent surface patches"
    ],
-   "author": "Codex",
-   "humanReview": "Unreviewed Run 7 candidate. Author difficulty is provisional; intended-route and bounded input evidence are not human feel ratings.",
    "learningFamily": "spent-faces",
    "lessonRole": "introduce",
    "preparesFor": [
-    "bank-b59",
-    "bank-f59"
+    "bank-b59"
    ],
    "prerequisites": [],
+   "humanReview": "Rebuilt after human feedback; unreviewed revised candidate. Difficulty is an author estimate, not a human rating.",
+   "solution": "Jump the first fixed knot and brake onto the first landing before the vertical needle. Let the needle move away, then cross into the narrow landing before the second knot. Jump that knot to the far landing and cut the tally while the looping patrol travels away. On the return, land between the patches spent outbound: first beyond the second knot, then in the middle gap, then just right of the first knot. Rise vertically before crossing that knot; brake onto the untouched patch beyond the old starting trail. The last jump clears those original footprints and reaches the open exit. Only the small patches actually touched become dangerous.",
+   "nearestExisting": "Replaces the former switch-and-walk B58. F59/F60 still spend entire marked faces; this room instead uses small persistent footprints, making the same floor a different return puzzle. The fixed knots determine launch shape and the two moving routes constrain when those shapes are safe.",
+   "novelty": "Outbound movement manufactures the lethal pattern that the return must solve; untouched gaps retain their exact physical locations.",
+   "timingCues": [
+    "Hold a fresh landing while the vertical needle moves upward out of the crossing.",
+    "At the far tally, read the looping patrol before reversing.",
+    "Pale contact hairs flatten; amber patches count down after departure, then stay red."
+   ],
    "timing": {
-    "kind": "departure-armed surface plus vertical patrol",
     "warningFrames": 18,
-    "patrolPeriod": 160,
-    "cue": "On the lower return, let the patrol lift away from the low passage."
+    "segmentPixels": 4,
+    "patrolPeriods": [
+     180,
+     240
+    ]
    },
-   "solution": "Stand on the folded top and observe that it stays safe while held. Walk toward its right edge, jump and dash up-right to the tally gallery. Once the tally opens the lower gate, walk off the gallery and drop beneath the original stone. Its top is now visibly lethal, but its underside is still ordinary solid. Pause in its lower shelter and pass the vertical patrol when it lifts away from the low passage. Continue left through the open exit.",
-   "nearestExisting": "Crumbles remove the support, and faults break it after a fuse. Here the first top stays physically present and becomes a ceiling over a different return approach. The only patrol is a simple readable vertical stroke; this introduces the spent-face rule before B59/F59/F60.",
-   "novelty": "Teach safe first contact, permanent face consumption and an alternate return under retained stone.",
-   "endingForgiveness": "The lower patrol remains part of the finish. Crossing eight frames earlier and later both work; a three-second longer first hold is also safe. Jumping back onto the used top demonstrably dies to the marked face.",
+   "endingForgiveness": "The last section still asks the player to land between old footprints and a fixed knot. Both four-frame shifts of the first needle departure and a two-frame change to the final short landing complete cleanly. A long final jump that ignores the fresh patch lands on the spent starting trail.",
    "positiveChecks": [
     {
-     "name": "Lower opening eight frames earlier",
+     "name": "Needle departure four frames earlier",
      "tape": [
-      [
-       12,
-       ""
-      ],
       [
        30,
        "r"
@@ -62274,33 +64346,125 @@ const records=[
        "rux"
       ],
       [
-       55,
+       20,
        "r"
       ],
       [
-       124,
-       "l"
-      ],
-      [
-       32,
+       42,
        ""
       ],
       [
-       100,
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       7,
+       "r"
+      ],
+      [
+       28,
+       ""
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       30,
+       "r"
+      ],
+      [
+       16,
+       ""
+      ],
+      [
+       1,
+       "rs"
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       12,
+       "lux"
+      ],
+      [
+       38,
+       ""
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       12,
+       "lux"
+      ],
+      [
+       7,
+       "l"
+      ],
+      [
+       28,
+       ""
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       12,
+       "lux"
+      ],
+      [
+       20,
+       "l"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       10,
+       "j"
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       12,
+       "lux"
+      ],
+      [
+       90,
        "l"
       ]
      ],
      "exited": true,
      "deaths": 0,
-     "frames": 372
+     "frames": 587
     },
     {
-     "name": "Lower opening eight frames later",
+     "name": "Needle departure four frames later",
      "tape": [
-      [
-       12,
-       ""
-      ],
       [
        30,
        "r"
@@ -62314,33 +64478,125 @@ const records=[
        "rux"
       ],
       [
-       55,
+       20,
        "r"
       ],
       [
-       124,
-       "l"
-      ],
-      [
-       48,
+       50,
        ""
       ],
       [
-       100,
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       7,
+       "r"
+      ],
+      [
+       28,
+       ""
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       30,
+       "r"
+      ],
+      [
+       16,
+       ""
+      ],
+      [
+       1,
+       "rs"
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       12,
+       "lux"
+      ],
+      [
+       38,
+       ""
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       12,
+       "lux"
+      ],
+      [
+       7,
+       "l"
+      ],
+      [
+       28,
+       ""
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       12,
+       "lux"
+      ],
+      [
+       20,
+       "l"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       10,
+       "j"
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       12,
+       "lux"
+      ],
+      [
+       90,
        "l"
       ]
      ],
      "exited": true,
      "deaths": 0,
-     "frames": 388
+     "frames": 595
     },
     {
-     "name": "Stay on the first face three seconds longer",
+     "name": "Last fresh landing two frames shorter",
      "tape": [
-      [
-       192,
-       ""
-      ],
       [
        30,
        "r"
@@ -62354,47 +64610,127 @@ const records=[
        "rux"
       ],
       [
-       55,
+       20,
        "r"
       ],
       [
-       124,
-       "l"
-      ],
-      [
-       40,
+       46,
        ""
       ],
       [
-       100,
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       7,
+       "r"
+      ],
+      [
+       28,
+       ""
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       30,
+       "r"
+      ],
+      [
+       16,
+       ""
+      ],
+      [
+       1,
+       "rs"
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       12,
+       "lux"
+      ],
+      [
+       38,
+       ""
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       12,
+       "lux"
+      ],
+      [
+       7,
+       "l"
+      ],
+      [
+       28,
+       ""
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       12,
+       "lux"
+      ],
+      [
+       20,
+       "l"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       10,
+       "j"
+      ],
+      [
+       16,
+       "lj"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       12,
+       "lux"
+      ],
+      [
+       90,
        "l"
       ]
      ],
      "exited": true,
      "deaths": 0,
-     "frames": 560
+     "frames": 591
     }
    ],
    "shortcutChecks": [
     {
-     "name": "Try the exit before the tally",
+     "name": "Retrace floor after tally",
      "tape": [
-      [
-       140,
-       "l"
-      ]
-     ],
-     "exited": false,
-     "deaths": 0,
-     "frames": null
-    },
-    {
-     "name": "Jump back onto the spent top",
-     "tape": [
-      [
-       12,
-       ""
-      ],
       [
        30,
        "r"
@@ -62408,25 +64744,243 @@ const records=[
        "rux"
       ],
       [
-       55,
+       20,
        "r"
       ],
       [
-       55,
-       "l"
-      ],
-      [
-       40,
-       "lj"
-      ],
-      [
-       60,
+       46,
        ""
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       7,
+       "r"
+      ],
+      [
+       28,
+       ""
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       30,
+       "r"
+      ],
+      [
+       16,
+       ""
+      ],
+      [
+       1,
+       "rs"
+      ],
+      [
+       80,
+       "l"
       ]
      ],
      "exited": false,
      "deaths": 1,
-     "frames": null
+     "frames": 0,
+     "firstDeath": {
+      "type": "death",
+      "frame": 319,
+      "x": 268,
+      "y": 163,
+      "cause": "sweeper",
+      "vx": -90,
+      "vy": 0,
+      "i": 318
+     }
+    },
+    {
+     "name": "Jump before the needle clears",
+     "tape": [
+      [
+       30,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       20,
+       "r"
+      ],
+      [
+       16,
+       ""
+      ],
+      [
+       18,
+       "rj"
+      ]
+     ],
+     "exited": false,
+     "deaths": 1,
+     "frames": 0,
+     "firstDeath": {
+      "type": "death",
+      "frame": 102,
+      "x": 183,
+      "y": 153,
+      "cause": "sweeper",
+      "vx": 90,
+      "vy": -105,
+      "i": 101
+     }
+    },
+    {
+     "name": "Skip the final fresh landing",
+     "tape": [
+      [
+       30,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       20,
+       "r"
+      ],
+      [
+       46,
+       ""
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       7,
+       "r"
+      ],
+      [
+       28,
+       ""
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       30,
+       "r"
+      ],
+      [
+       16,
+       ""
+      ],
+      [
+       1,
+       "rs"
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       12,
+       "lux"
+      ],
+      [
+       38,
+       ""
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       12,
+       "lux"
+      ],
+      [
+       7,
+       "l"
+      ],
+      [
+       28,
+       ""
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       12,
+       "lux"
+      ],
+      [
+       20,
+       "l"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       10,
+       "j"
+      ],
+      [
+       12,
+       "lj"
+      ],
+      [
+       12,
+       "lux"
+      ],
+      [
+       40,
+       "l"
+      ]
+     ],
+     "exited": false,
+     "deaths": 1,
+     "frames": 0,
+     "firstDeath": {
+      "type": "death",
+      "frame": 534,
+      "x": 51,
+      "y": 161,
+      "cause": "spent-thorn",
+      "vx": -90,
+      "vy": 160,
+      "i": 533
+     }
     }
    ],
    "requiredEvents": [
@@ -62440,50 +64994,146 @@ const records=[
    "route": {
     "exited": true,
     "deaths": 0,
-    "frames": 380,
+    "frames": 591,
     "events": [
      "spent-thorn-touch",
-     "jump",
      "spent-thorn-leave",
      "spent-thorn-arm",
+     "jump",
      "dash",
      "land",
      "refill-dash",
+     "strike",
      "stone-lit",
      "gate-open",
      "exit"
     ]
    },
-   "designNotes": "Departure-thorn bodies remain solid. Only the visibly marked face arms after departure; continuous first contact is safe. Room completion uses ordinary physical geometry and visible tallies, with no hidden movement-event gate. The patrol clock begins with input and resets per attempt.",
-   "timingCues": [
-    "On the lower return, let the patrol lift away from the low passage.",
-    "Folded hairs mark a safe first contact; an amber warning after departure precedes the permanently red face."
-   ],
    "routeMovement": [
     {
      "type": "jump",
-     "frame": 43,
-     "x": 166,
-     "y": 128,
+     "frame": 31,
+     "x": 86,
+     "y": 168,
      "lift": 0
     },
     {
      "type": "dash",
-     "frame": 65,
-     "x": 196,
-     "y": 97,
+     "frame": 53,
+     "x": 116,
+     "y": 137,
      "dx": 0.7071067811865475,
+     "dy": -0.7071067811865475
+    },
+    {
+     "type": "jump",
+     "frame": 127,
+     "x": 175,
+     "y": 168,
+     "lift": 0
+    },
+    {
+     "type": "dash",
+     "frame": 149,
+     "x": 201,
+     "y": 137,
+     "dx": 0.7071067811865475,
+     "dy": -0.7071067811865475
+    },
+    {
+     "type": "jump",
+     "frame": 192,
+     "x": 241,
+     "y": 168,
+     "lift": 0
+    },
+    {
+     "type": "dash",
+     "frame": 214,
+     "x": 267,
+     "y": 137,
+     "dx": 0.7071067811865475,
+     "dy": -0.7071067811865475
+    },
+    {
+     "type": "jump",
+     "frame": 269,
+     "x": 339,
+     "y": 168,
+     "lift": 0
+    },
+    {
+     "type": "dash",
+     "frame": 291,
+     "x": 315,
+     "y": 137,
+     "dx": -0.7071067811865475,
+     "dy": -0.7071067811865475
+    },
+    {
+     "type": "jump",
+     "frame": 337,
+     "x": 281,
+     "y": 168,
+     "lift": 0
+    },
+    {
+     "type": "dash",
+     "frame": 359,
+     "x": 256,
+     "y": 137,
+     "dx": -0.7071067811865475,
+     "dy": -0.7071067811865475
+    },
+    {
+     "type": "jump",
+     "frame": 402,
+     "x": 216,
+     "y": 168,
+     "lift": 0
+    },
+    {
+     "type": "dash",
+     "frame": 424,
+     "x": 190,
+     "y": 137,
+     "dx": -0.7071067811865475,
+     "dy": -0.7071067811865475
+    },
+    {
+     "type": "jump",
+     "frame": 472,
+     "x": 130,
+     "y": 168,
+     "lift": 0
+    },
+    {
+     "type": "jump",
+     "frame": 525,
+     "x": 103,
+     "y": 168,
+     "lift": 0
+    },
+    {
+     "type": "dash",
+     "frame": 547,
+     "x": 78,
+     "y": 137,
+     "dx": -0.7071067811865475,
      "dy": -0.7071067811865475
     }
    ],
-   "revision": "442e3fd047c0",
+   "review": {
+    "feedback": "Prior room reduced to dash to the tally and walk back; replace it with a meaningful route.",
+    "response": "Full geometry, route and hazard reinvention. The return now crosses a floor permanently altered by outbound contacts.",
+    "reportedBypasses": [],
+    "reproductionNote": "The prior canonical 380-frame route itself demonstrates the reported trivial tally-and-walk structure; the complaint was lack of consequence rather than a separate exact-input shortcut."
+   },
+   "designNotes": "Per-patch spending is opt-in through segment:4; approved F59/F60 keep whole-face behavior. Each backing body remains solid. Only touched patches arm, and visible geometry/hazards enforce routing; no hidden action-event gate is used. Stationary thorns and moving patrols have no drawn path guides.",
+   "revision": "0fbe18f85e73",
    "source": "scripts/room-bank/base/bank-b58.json"
   },
   "tape": [
-   [
-    12,
-    ""
-   ],
    [
     30,
     "r"
@@ -62497,19 +65147,115 @@ const records=[
     "rux"
    ],
    [
-    55,
+    20,
     "r"
    ],
    [
-    124,
-    "l"
-   ],
-   [
-    40,
+    46,
     ""
    ],
    [
-    100,
+    18,
+    "rj"
+   ],
+   [
+    12,
+    "rux"
+   ],
+   [
+    7,
+    "r"
+   ],
+   [
+    28,
+    ""
+   ],
+   [
+    18,
+    "rj"
+   ],
+   [
+    12,
+    "rux"
+   ],
+   [
+    30,
+    "r"
+   ],
+   [
+    16,
+    ""
+   ],
+   [
+    1,
+    "rs"
+   ],
+   [
+    18,
+    "lj"
+   ],
+   [
+    12,
+    "lux"
+   ],
+   [
+    38,
+    ""
+   ],
+   [
+    18,
+    "lj"
+   ],
+   [
+    12,
+    "lux"
+   ],
+   [
+    7,
+    "l"
+   ],
+   [
+    28,
+    ""
+   ],
+   [
+    18,
+    "lj"
+   ],
+   [
+    12,
+    "lux"
+   ],
+   [
+    20,
+    "l"
+   ],
+   [
+    20,
+    ""
+   ],
+   [
+    10,
+    "j"
+   ],
+   [
+    18,
+    "lj"
+   ],
+   [
+    25,
+    ""
+   ],
+   [
+    18,
+    "lj"
+   ],
+   [
+    12,
+    "lux"
+   ],
+   [
+    90,
     "l"
    ]
   ]
@@ -62517,119 +65263,187 @@ const records=[
  {
   "room": {
    "id": "bank-b59",
-   "name": "One Grip at a Time",
+   "name": "Down One Side, Up the Other",
    "palette": "woods",
    "study": true,
    "exit": "right",
+   "cols": 44,
+   "rows": 36,
    "lock": [
     "portal",
     "parry"
    ],
-   "hint": "Hold one marked face until the opening comes. The upward crystal restores dash and stamina.",
-   "question": "Time a wall departure through a patrol, refill in air, and reach a fresh grip.",
    "map": [
-    "########################################",
-    "#...........#>..........................",
-    "#...........#>..........................",
-    "#...........#>..........................",
-    "#...........#>..........................",
-    "#...........#>..........................",
-    "#...........#>..........................",
-    "#...........#>...........###############",
-    "#...........#>.........................#",
-    "#...........#>.........................#",
-    "#...........#>.........................#",
-    "#...........#>.........................#",
-    "#...........#>.........................#",
-    "#...........#>.........................#",
-    "#...........#>.........................#",
-    "#...........#>.........................#",
-    "#......................................#",
-    "#......................................#",
-    "#......................................#",
-    "#......................................#",
-    "#......................................#",
-    "#......................................#",
-    "#......................................#",
-    "#......................................#",
-    "#......................................#",
-    "#......................................#",
-    "#......................................#",
-    "#......................................#",
-    "#......................................#",
-    "#................P.....................#",
-    "#^^^^^^^^^^^^^######^^^^^^^^^^^^^^^^^^^#",
-    "########################################"
+    "###################<####>###################",
+    "#############......<####>...................",
+    "#############......<####>...................",
+    "#############......<####>...................",
+    "#############......<####>...................",
+    "#############......<####>...................",
+    "#############......<####>...................",
+    "#############...P..<####>...................",
+    "#############.####.<####>...................",
+    "#############......<####>...................",
+    "#############......<####>...................",
+    "#############......<####>......#############",
+    "#############......<####>......#############",
+    "#############......<####>......#############",
+    "#############......<####>......#############",
+    "#############......<####>......#############",
+    "#############......<####>......#############",
+    "#############......<####>......#############",
+    "#############......<####>......#############",
+    "#############......<####>......#############",
+    "#############......<####>......#############",
+    "#############......<####>......#############",
+    "#############......<####>......#############",
+    "#############......<####>......#############",
+    "#############......<####>......#############",
+    "#############......<####>......#############",
+    "#############......<####>......#############",
+    "#############..................#############",
+    "#############..................#############",
+    "#############..................#############",
+    "#############..................#############",
+    "#############..................#############",
+    "#############..................#############",
+    "#############..................#############",
+    "#############^^^^^^^^^^^^^^^^^^#############",
+    "############################################"
    ],
    "spentThorns": [
     {
-     "id": "First grip",
+     "id": "Descending seam",
      "c": 12,
-     "r": 16,
+     "r": 6,
      "w": 1,
-     "h": 13,
-     "face": "right"
+     "h": 28,
+     "face": "right",
+     "segment": 4,
+     "arm": 30
     },
     {
-     "id": "Next grip",
-     "c": 25,
-     "r": 7,
+     "id": "Ascending seam",
+     "c": 31,
+     "r": 11,
      "w": 1,
-     "h": 19,
-     "face": "left"
+     "h": 23,
+     "face": "left",
+     "segment": 4,
+     "arm": 30
     }
    ],
-   "rows": 32,
    "vectorRefills": [
     {
-     "c": 19,
-     "r": 15,
+     "c": 21,
+     "r": 28,
+     "dir": "right"
+    },
+    {
+     "c": 30,
+     "r": 26,
      "dir": "up"
     }
    ],
    "sweepers": [
     {
-     "id": "Crossing",
+     "id": "Lower knot",
      "path": [
       [
-       20,
-       10
+       13.5,
+       17.5
+      ]
+     ],
+     "radius": 4
+    },
+    {
+     "id": "Lower shuttle",
+     "path": [
+      [
+       13,
+       24
       ],
       [
-       20,
+       18,
+       24
+      ],
+      [
+       18,
+       22
+      ],
+      [
+       13,
        22
       ]
      ],
-     "period": 210,
-     "phase": 0,
+     "loop": true,
+     "period": 240,
+     "phase": 80,
+     "radius": 3
+    },
+    {
+     "id": "Upper knot",
+     "path": [
+      [
+       29.5,
+       21
+      ]
+     ],
      "radius": 4
+    },
+    {
+     "id": "Rising shuttle",
+     "path": [
+      [
+       26,
+       12
+      ],
+      [
+       30,
+       12
+      ],
+      [
+       30,
+       19
+      ],
+      [
+       26,
+       19
+      ]
+     ],
+     "loop": true,
+     "period": 240,
+     "phase": 80,
+     "radius": 3
     }
    ],
+   "hint": "Drop past the first knot, turn under the pier, then climb fresh patches past the next.",
+   "question": "Can you change from a controlled descent to a climb without a floor reset?",
    "showHintAtRest": true
   },
   "bank": {
    "side": "base",
-   "batch": 14,
+   "batch": 15,
    "run": 7,
    "collection": "run7",
-   "format": "compact",
-   "acceptance": "candidate",
+   "format": "extended",
+   "acceptance": "revised",
    "status": "route-proven",
-   "difficulty": 3,
-   "role": "Teach a wall-to-wall patrol crossing that carries restored dash and stamina into its continuation.",
+   "difficulty": 4,
+   "author": "Codex",
    "worlds": [],
+   "role": "Turn a descending grip into an ascending route, reusing fresh parts of both walls around fixed knots and patrols.",
    "tags": [
-    "spent-wall",
-    "stamina",
-    "directional-refill",
-    "patrol-opening",
-    "teaching"
+    "segmented-spent-wall",
+    "controlled-descent",
+    "underpass-transfer",
+    "wall-refill",
+    "stationary-thorns",
+    "patrol-timing"
    ],
    "newMechanics": [
-    "departure-armed persistent surface"
+    "independently spent surface patches"
    ],
-   "author": "Codex",
-   "humanReview": "Unreviewed Run 7 candidate. Author difficulty is provisional; intended-route and bounded input evidence are not human feel ratings.",
    "learningFamily": "spent-faces",
    "lessonRole": "develop",
    "preparesFor": [
@@ -62638,156 +65452,454 @@ const records=[
    "prerequisites": [
     "bank-b58"
    ],
+   "humanReview": "Rebuilt after human feedback; unreviewed revised candidate. Difficulty is an author estimate, not a human rating.",
+   "solution": "Leave the starting shelf to catch the west seam. Descend toward the first fixed knot, then jump outward, fall past it and re-grab fresh patches below while the lower shuttle is away. Descend to the underpass and walljump right; dash horizontally through the rightward refill, then dash up-right beyond the pier to catch the east seam. Climb through its refill. Jump away from the second fixed knot and dash back above it onto fresh wall patches. Read the returning upper shuttle before climbing to the eastern lip and exiting. The solid central pier and sealed backs prevent a direct or outer-wall ascent.",
+   "nearestExisting": "Replaces the former two-wall B59 and its accessible outer side. Unlike F60’s upward alternation between whole faces, this room first descends around a fixed obstacle and later ascends around another, returning to untouched portions of each same wall. A solid central pier forces a low dash/refill transfer between them.",
+   "novelty": "The same patch rule supports opposite movement problems: release and fall around one knot, then jump away and regain height around the other.",
+   "timingCues": [
+    "Watch the low shuttle before dropping through its horizontal stroke.",
+    "Read the high shuttle before leaving the fresh grip above the second knot.",
+    "Each departed patch warns for thirty frames; fresh patches farther along the same wall remain safe."
+   ],
    "timing": {
-    "kind": "stamina-limited wall hold plus vertical patrol",
-    "patrolPeriod": 210,
-    "warningFrames": 18,
-    "cue": "Leave the first grip while the patrol is below the airborne crystal."
+    "warningFrames": 30,
+    "segmentPixels": 4,
+    "patrolPeriods": [
+     240,
+     240
+    ]
    },
-   "solution": "Walk off the small starting ledge and hold Grab toward the first marked wall. Climb until the upward crystal is within the coming jump-dash arc. Read the vertical patrol: when it is below the crossing, walljump right and dash up-right through the crystal. Catch the next fresh marked wall. Climb, then spend the restored dash straight upward alongside it and resume the grab to crest the receiving gallery. Each departed grip remains solid but its marked side closes behind you.",
-   "nearestExisting": "B58 introduces a spent top and changed return. F51 studies an approach-gated crystal in a portal/tally circuit. This lesson instead joins a finite grip, a visible patrol opening, an upward resource transfer and a second climb that spends the returned dash.",
-   "novelty": "Teach a wall-to-wall patrol crossing that carries restored dash and stamina into its continuation.",
-   "endingForgiveness": "The second climb still needs the returned dash. First departures three frames earlier and later and a three-frame earlier second boost finish cleanly; direct spawn-to-second-wall and no-crystal alternatives do not finish.",
+   "endingForgiveness": "The final knot and returning shuttle remain part of the challenge. An earlier first departure, a two-frame longer knot jump, and a four-frame longer upper hold all finish without deaths. A forty-frame extra wait on the upper grip lets the shuttle return into the climb. Thirty-frame patch warnings allow the wall catch to settle before climbing back through briefly brushed patches.",
    "positiveChecks": [
     {
-     "name": "First departure three frames earlier",
+     "name": "First departure two frames earlier",
      "tape": [
       [
-       25,
-       "lgu"
+       20,
+       "lg"
       ],
       [
-       83,
-       "ug"
+       58,
+       "gd"
       ],
       [
-       16,
+       10,
        "rj"
+      ],
+      [
+       33,
+       ""
+      ],
+      [
+       22,
+       "lg"
+      ],
+      [
+       30,
+       "gd"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       10,
+       "r"
       ],
       [
        12,
        "rux"
       ],
       [
-       32,
+       24,
        "rg"
-      ],
-      [
-       85,
-       "ug"
-      ],
-      [
-       12,
-       "ux"
       ],
       [
        50,
        "ug"
       ],
       [
-       100,
+       16,
+       "g"
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       22,
+       "rg"
+      ],
+      [
+       90,
+       "ug"
+      ],
+      [
+       120,
        "r"
       ]
      ],
      "exited": true,
      "deaths": 0,
-     "frames": 388
+     "frames": 519
     },
     {
-     "name": "First departure three frames later",
+     "name": "Upper knot jump two frames longer",
      "tape": [
       [
-       25,
-       "lgu"
+       20,
+       "lg"
       ],
       [
-       89,
-       "ug"
+       60,
+       "gd"
       ],
       [
-       16,
+       10,
        "rj"
+      ],
+      [
+       33,
+       ""
+      ],
+      [
+       22,
+       "lg"
+      ],
+      [
+       30,
+       "gd"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       10,
+       "r"
       ],
       [
        12,
        "rux"
       ],
       [
-       32,
+       24,
        "rg"
-      ],
-      [
-       85,
-       "ug"
-      ],
-      [
-       12,
-       "ux"
       ],
       [
        50,
        "ug"
       ],
       [
-       100,
+       16,
+       "g"
+      ],
+      [
+       20,
+       "lj"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       22,
+       "rg"
+      ],
+      [
+       90,
+       "ug"
+      ],
+      [
+       120,
        "r"
       ]
      ],
      "exited": true,
      "deaths": 0,
-     "frames": 394
+     "frames": 525
     },
     {
-     "name": "Boost second climb three frames earlier",
+     "name": "Hold before upper knot four frames longer",
      "tape": [
       [
-       25,
-       "lgu"
+       20,
+       "lg"
       ],
       [
-       86,
-       "ug"
+       60,
+       "gd"
       ],
       [
-       16,
+       10,
        "rj"
+      ],
+      [
+       33,
+       ""
+      ],
+      [
+       22,
+       "lg"
+      ],
+      [
+       30,
+       "gd"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       10,
+       "r"
       ],
       [
        12,
        "rux"
       ],
       [
-       32,
+       24,
        "rg"
-      ],
-      [
-       82,
-       "ug"
-      ],
-      [
-       12,
-       "ux"
       ],
       [
        50,
        "ug"
       ],
       [
-       100,
+       20,
+       "g"
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       22,
+       "rg"
+      ],
+      [
+       90,
+       "ug"
+      ],
+      [
+       120,
        "r"
       ]
      ],
      "exited": true,
      "deaths": 0,
-     "frames": 388
+     "frames": 528
     }
    ],
    "shortcutChecks": [
     {
-     "name": "Jump-dash directly from spawn to the second grip",
+     "name": "Hug west wall straight downward",
      "tape": [
       [
-       14,
+       20,
+       "lg"
+      ],
+      [
+       100,
+       "gd"
+      ]
+     ],
+     "exited": false,
+     "deaths": 1,
+     "frames": 0,
+     "firstDeath": {
+      "type": "death",
+      "frame": 84,
+      "x": 108,
+      "y": 136,
+      "cause": "sweeper",
+      "vx": 0,
+      "vy": 80,
+      "i": 83
+     }
+    },
+    {
+     "name": "Climb east wall through the fixed knot",
+     "tape": [
+      [
+       20,
+       "lg"
+      ],
+      [
+       60,
+       "gd"
+      ],
+      [
+       10,
+       "rj"
+      ],
+      [
+       33,
+       ""
+      ],
+      [
+       22,
+       "lg"
+      ],
+      [
+       30,
+       "gd"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       10,
+       "r"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       24,
+       "rg"
+      ],
+      [
+       100,
+       "ug"
+      ]
+     ],
+     "exited": false,
+     "deaths": 1,
+     "frames": 0,
+     "firstDeath": {
+      "type": "death",
+      "frame": 325,
+      "x": 244,
+      "y": 181,
+      "cause": "sweeper",
+      "vx": 0,
+      "vy": -45,
+      "i": 324
+     }
+    },
+    {
+     "name": "Wait until upper shuttle returns",
+     "tape": [
+      [
+       20,
+       "lg"
+      ],
+      [
+       60,
+       "gd"
+      ],
+      [
+       10,
+       "rj"
+      ],
+      [
+       33,
+       ""
+      ],
+      [
+       22,
+       "lg"
+      ],
+      [
+       30,
+       "gd"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       10,
+       "r"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       24,
+       "rg"
+      ],
+      [
+       50,
+       "ug"
+      ],
+      [
+       16,
+       "g"
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       22,
+       "rg"
+      ],
+      [
+       40,
+       "g"
+      ],
+      [
+       110,
+       "ug"
+      ]
+     ],
+     "exited": false,
+     "deaths": 1,
+     "frames": 0,
+     "firstDeath": {
+      "type": "death",
+      "frame": 458,
+      "x": 244,
+      "y": 109,
+      "cause": "sweeper",
+      "vx": 0,
+      "vy": -45,
+      "i": 457
+     }
+    },
+    {
+     "name": "Dash directly to the far outer wall",
+     "tape": [
+      [
+       10,
        "r"
       ],
       [
@@ -62799,40 +65911,8 @@ const records=[
        "rux"
       ],
       [
-       170,
+       220,
        "rgu"
-      ],
-      [
-       40,
-       "rj"
-      ],
-      [
-       100,
-       "r"
-      ]
-     ],
-     "exited": false,
-     "deaths": 2,
-     "frames": null
-    },
-    {
-     "name": "Cross without the airborne refill then try the climb",
-     "tape": [
-      [
-       25,
-       "lgu"
-      ],
-      [
-       86,
-       "ug"
-      ],
-      [
-       20,
-       "rj"
-      ],
-      [
-       55,
-       "rg"
       ],
       [
        12,
@@ -62848,8 +65928,18 @@ const records=[
       ]
      ],
      "exited": false,
-     "deaths": 3,
-     "frames": null
+     "deaths": 7,
+     "frames": 0,
+     "firstDeath": {
+      "type": "death",
+      "frame": 15,
+      "x": 154,
+      "y": 50,
+      "cause": "spikes",
+      "vx": 112.66666666666669,
+      "vy": -105,
+      "i": 14
+     }
     }
    ],
    "requiredEvents": [
@@ -62861,110 +65951,179 @@ const records=[
     "climbhop"
    ],
    "requiredEventCounts": {
-    "spent-thorn-touch": 2,
-    "vector-refill": 1
+    "vector-refill": 2,
+    "walljump": 3
    },
    "route": {
     "exited": true,
     "deaths": 0,
-    "frames": 391,
+    "frames": 524,
     "events": [
-     "grab",
      "spent-thorn-touch",
-     "walljump",
+     "grab",
      "spent-thorn-leave",
-     "dash",
      "spent-thorn-arm",
+     "walljump",
+     "dash",
      "refill-dash",
      "refill",
      "vector-refill",
-     "climbhop",
      "refill-back",
+     "climbhop",
      "land",
      "exit"
     ]
    },
-   "designNotes": "Departure-thorn bodies remain solid. Only the visibly marked face arms after departure; continuous first contact is safe. Room completion uses ordinary physical geometry and visible tallies, with no hidden movement-event gate. The patrol clock begins with input and resets per attempt.",
-   "timingCues": [
-    "Leave the first grip while the patrol is below the airborne crystal.",
-    "Folded hairs mark a safe first contact; an amber warning after departure precedes the permanently red face."
-   ],
    "routeMovement": [
     {
      "type": "walljump",
-     "frame": 113,
+     "frame": 82,
      "x": 104,
-     "y": 174,
+     "y": 132,
+     "dir": 1
+    },
+    {
+     "type": "walljump",
+     "frame": 177,
+     "x": 104,
+     "y": 253,
      "dir": 1
     },
     {
      "type": "dash",
-     "frame": 132,
-     "x": 134,
-     "y": 149,
+     "frame": 198,
+     "x": 137,
+     "y": 227,
+     "dx": 1,
+     "dy": 0
+    },
+    {
+     "type": "vector-refill",
+     "frame": 204,
+     "x": 172,
+     "y": 228,
+     "dx": 1,
+     "dy": 0,
+     "once": false
+    },
+    {
+     "type": "dash",
+     "frame": 220,
+     "x": 189,
+     "y": 234,
      "dx": 0.7071067811865475,
      "dy": -0.7071067811865475
     },
     {
      "type": "vector-refill",
-     "frame": 137,
-     "x": 156,
-     "y": 124,
+     "frame": 270,
+     "x": 244,
+     "y": 212,
      "dx": 0,
      "dy": -1,
      "once": false
     },
     {
+     "type": "walljump",
+     "frame": 319,
+     "x": 248,
+     "y": 198,
+     "dir": -1
+    },
+    {
      "type": "dash",
-     "frame": 262,
-     "x": 196,
-     "y": 95,
-     "dx": 0,
-     "dy": -1
+     "frame": 340,
+     "x": 215,
+     "y": 172,
+     "dx": 0.7071067811865475,
+     "dy": -0.7071067811865475
     },
     {
      "type": "climbhop",
-     "frame": 291
+     "frame": 450
     }
    ],
-   "revision": "ca488be03cae",
+   "review": {
+    "feedback": "Rightmost-wall shortcut bypassed the old intended transfer; replace the room and make marked wall patches independent.",
+    "response": "Full geometry and route reinvention. Both outer sides are filled with solid backing; the central pier blocks direct access to the ascent.",
+    "reportedBypasses": [],
+    "reproductionNote": "The exact human rightmost-wall input sequence was not reproduced. The new layout explicitly removes access to those outer faces; a direct jump/dash toward the far outer wall is recorded and fails at the visible thorned pier."
+   },
+   "designNotes": "Per-patch spending is opt-in through segment:4; approved F59/F60 keep whole-face behavior. Each backing body remains solid. Only touched patches arm, and visible geometry/hazards enforce routing; no hidden action-event gate is used. Stationary thorns and moving patrols have no drawn path guides.",
+   "revision": "011071a0efd9",
    "source": "scripts/room-bank/base/bank-b59.json"
   },
   "tape": [
    [
-    25,
-    "lgu"
+    20,
+    "lg"
    ],
    [
-    86,
-    "ug"
+    60,
+    "gd"
    ],
    [
-    16,
+    10,
     "rj"
+   ],
+   [
+    33,
+    ""
+   ],
+   [
+    22,
+    "lg"
+   ],
+   [
+    30,
+    "gd"
+   ],
+   [
+    18,
+    "rj"
+   ],
+   [
+    12,
+    "rx"
+   ],
+   [
+    10,
+    "r"
    ],
    [
     12,
     "rux"
    ],
    [
-    32,
+    24,
     "rg"
-   ],
-   [
-    85,
-    "ug"
-   ],
-   [
-    12,
-    "ux"
    ],
    [
     50,
     "ug"
    ],
    [
-    100,
+    16,
+    "g"
+   ],
+   [
+    18,
+    "lj"
+   ],
+   [
+    12,
+    "rux"
+   ],
+   [
+    22,
+    "rg"
+   ],
+   [
+    90,
+    "ug"
+   ],
+   [
+    120,
     "r"
    ]
   ]
@@ -62972,7 +66131,7 @@ const records=[
  {
   "room": {
    "id": "bank-b60",
-   "name": "Catch the Reply in Flight",
+   "name": "Let the Reply Through",
    "palette": "sunspire",
    "study": true,
    "movement": "survive-2",
@@ -62983,86 +66142,68 @@ const records=[
    ],
    "map": [
     "########################################",
-    "#......................................#",
-    "#......................................#",
-    "#......................................#",
-    "#......................................#",
-    "#......................................#",
-    "#......................................#",
-    "#......................................#",
-    "#......................................#",
     "#.......................................",
     "#.......................................",
     "#.......................................",
     "#.......................................",
     "#.......................................",
-    "#..........................#############",
-    "#..........................#############",
-    "#..........................#############",
-    "#..........................#############",
-    "#...P.....................<#############",
-    "############..............<#############",
-    "############..............<#############",
-    "############^^^^^^^^^^^^^^^#############",
+    "#.......................................",
+    "#.....................BBBBB.............",
+    "#.....................B........#########",
+    "#.....................B........#########",
+    "#^^^^^^...............B........vvvvvvvvv",
+    "#######>..............B...............<#",
+    "#.....................B...........x...<v",
+    "#######>..............B...........x...<#",
+    "#.....................................<#",
+    "#.....................................<#",
+    "#.....................................<#",
+    "#.....................................<#",
+    "#..P..................................<#",
+    "########..............................<#",
+    "########..............................<#",
+    "########^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
     "########################################"
    ],
-   "hint": "Parries return a spent dash. Watch where the pulse will be when you leave the ledge.",
-   "question": "Can a passing attack become the missing landing?",
+   "hint": "Parry right, then dash to let the reply through. Catch the wall when the bell restores it.",
+   "question": "Can the same wall first admit your reply, then catch your fall?",
    "foes": [
     {
      "kind": "spit",
-     "x": 33,
+     "x": 5,
      "y": 12,
      "dir": [
-      -1,
+      1,
       0
      ],
      "every": 160,
-     "offset": 140,
-     "speed": 180
+     "offset": 122,
+     "speed": 220
     }
    ],
-   "combat": {
-    "waitForMove": true,
-    "enemies": [],
-    "receivers": [
-     {
-      "id": "Reply",
-      "x": 245,
-      "y": 94
-     }
-    ],
-    "doors": [
-     {
-      "x": 296,
-      "y": 8,
-      "w": 8,
-      "h": 104,
-      "coils": [
-       "Reply"
-      ]
-     }
-    ]
-   }
+   "showHintAtRest": true
   },
   "bank": {
    "side": "base",
-   "batch": 14,
+   "batch": 15,
    "run": 7,
    "collection": "run7",
-   "acceptance": "candidate",
+   "acceptance": "revised",
    "status": "route-proven",
    "difficulty": 3,
-   "role": "Airborne parry replaces a missing landing",
+   "role": "Two airborne dashes, one returned pulse, and a wall that must open before it can catch you",
    "worlds": [],
    "tags": [
-    "parry",
+    "airborne-parry",
+    "phase-wall",
+    "projectile-shutter",
+    "delayed-bell",
     "dash-budget",
-    "arrival-timing"
+    "climb"
    ],
    "newMechanics": [],
    "author": "Codex",
-   "humanReview": "Unreviewed candidate. Difficulty is an author estimate; no human ratings assigned.",
+   "humanReview": "Reinvented after the player climbed the old far wall and parried beside its shooter. The old shortcut was reproduced cleanly (251 frames); this revised physical puzzle awaits review. No new human ratings assigned.",
    "learningFamily": "reply-and-cycle",
    "lessonRole": "introduce",
    "preparesFor": [
@@ -63072,20 +66213,111 @@ const records=[
    "format": "compact",
    "requiredEvents": [
     "parry",
-    "receiver-lit",
-    "combat-gate"
+    "bell",
+    "grab",
+    "climbhop"
    ],
-   "solution": "Jump and dash up-right from the left ledge to meet the pulse above the pit. Parry right while airborne: the same reply restores the spent dash and opens the far door. Dash up-right again, catch the far wall and climb over its lip. Cut the emitter from the bank and recover from the weapon recoil before continuing east.",
-   "nearestExisting": "F28 replies during a carriage/portal trajectory. Here an ordinary dash spends the only airborne resource, and the projectile supplies the continuation in open flight.",
-   "novelty": "The hostile timing cue is simultaneously a refill and the key carried ahead of the knight.",
-   "entrance": "Left ledge; observe projectile from safe ground.",
-   "exit": "Raised east bank behind a ceiling-sealed projectile door.",
+   "solution": "Jump and dash up-right from the ledge into the pulse coming from the protected western emitter. Aim the parry RIGHT so the pulse continues toward the paired eastern bells, restoring your spent dash. Dash up-right again before the returned pulse reaches the brass wall: this removes the wall so the pulse can pass through. Its later bell strike restores the same wall. Catch that returning face, climb onto its five-tile crest, then jump and dash to the eastern shelf. You may rest on the crest before the final crossing.",
+   "nearestExisting": "Original B60 only used a pulse to refill a dash and open a remote exit door; its far wall allowed a grounded parry shortcut. F51 gives a phase bridge separate landing and projectile-shutter jobs. This room instead makes the returned shot pass through the absent wall and restore that exact wall for the airborne knight, using ordinary Base movement.",
+   "novelty": "The parry supplies the dash that opens its own projectile path. The projectile then undoes that opening in time to become the knight’s grip; waiting for it before dashing leaves it blocked.",
+   "entrance": "Low west ledge under a protected, visibly firing pulse alcove.",
+   "exit": "Eastern shelf reached from the restored wall crest.",
    "positiveChecks": [
     {
-     "name": "Parry two frames earlier",
+     "name": "Parry input one frame earlier",
      "tape": [
       [
+       24,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       11,
+       "rux"
+      ],
+      [
+       8,
+       "rp"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
        30,
+       "rg"
+      ],
+      [
+       88,
+       "rug"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       100,
+       "r"
+      ]
+     ]
+    },
+    {
+     "name": "Parry input four frames later",
+     "tape": [
+      [
+       24,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       16,
+       "rux"
+      ],
+      [
+       3,
+       "rp"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       30,
+       "rg"
+      ],
+      [
+       88,
+       "rug"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       100,
+       "r"
+      ]
+     ]
+    },
+    {
+     "name": "Second dash input six frames later",
+     "tape": [
+      [
+       24,
        "r"
       ],
       [
@@ -63097,11 +66329,7 @@ const records=[
        "rux"
       ],
       [
-       3,
-       "r"
-      ],
-      [
-       10,
+       13,
        "rp"
       ],
       [
@@ -63109,59 +66337,202 @@ const records=[
        "rux"
       ],
       [
-       100,
-       "rgu"
+       30,
+       "rg"
       ],
       [
-       1,
-       "rs"
+       88,
+       "rug"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       100,
+       "r"
+      ]
+     ]
+    }
+   ],
+   "shortcutChecks": [
+    {
+     "name": "Original reported wall-climb then grounded parry",
+     "tape": [
+      [
+       49,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       18,
+       "r"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       35,
+       "rg"
+      ],
+      [
+       50,
+       "rug"
+      ],
+      [
+       10,
+       "r"
+      ],
+      [
+       8,
+       "p"
       ],
       [
        110,
        "r"
       ]
-     ],
-     "exited": true,
-     "deaths": 0,
-     "frames": 267,
-     "events": [
-      "enemy-shot",
-      "jump",
-      "dash",
-      "parry-ready",
-      "refill-dash",
-      "parry",
-      "receiver-lit",
-      "combat-gate",
-      "grab",
-      "climbhop",
-      "land",
-      "strike",
-      "enemy-defeat",
-      "exit"
-     ],
-     "eventCounts": {
-      "enemy-shot": 1,
-      "jump": 1,
-      "dash": 2,
-      "parry-ready": 1,
-      "refill-dash": 2,
-      "parry": 1,
-      "receiver-lit": 1,
-      "combat-gate": 1,
-      "grab": 1,
-      "climbhop": 1,
-      "land": 2,
-      "strike": 1,
-      "enemy-defeat": 1,
-      "exit": 1
-     }
+     ]
     },
     {
-     "name": "Parry two frames later",
+     "name": "True furthest edge jump-dash-climb",
      "tape": [
       [
+       33,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       18,
+       "r"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       35,
+       "rg"
+      ],
+      [
+       125,
+       "rug"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       100,
+       "r"
+      ]
+     ]
+    },
+    {
+     "name": "Furthest edge higher arc",
+     "tape": [
+      [
+       33,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       35,
+       "rg"
+      ],
+      [
+       125,
+       "rug"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       100,
+       "r"
+      ]
+     ]
+    },
+    {
+     "name": "Wait for the reply before removing its wall",
+     "tape": [
+      [
+       24,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       25,
+       "rp"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
        30,
+       "rg"
+      ],
+      [
+       88,
+       "rug"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       100,
+       "r"
+      ]
+     ]
+    },
+    {
+     "name": "Return the pulse toward its emitter instead of through the wall",
+     "tape": [
+      [
+       24,
        "r"
       ],
       [
@@ -63174,205 +66545,19 @@ const records=[
       ],
       [
        7,
-       "r"
-      ],
-      [
-       6,
-       "rp"
+       "p"
       ],
       [
        12,
        "rux"
       ],
-      [
-       100,
-       "rgu"
-      ],
-      [
-       1,
-       "rs"
-      ],
-      [
-       110,
-       "r"
-      ]
-     ],
-     "exited": true,
-     "deaths": 0,
-     "frames": 267,
-     "events": [
-      "enemy-shot",
-      "jump",
-      "dash",
-      "parry-ready",
-      "refill-dash",
-      "parry",
-      "receiver-lit",
-      "combat-gate",
-      "grab",
-      "climbhop",
-      "land",
-      "strike",
-      "enemy-defeat",
-      "exit"
-     ],
-     "eventCounts": {
-      "enemy-shot": 1,
-      "jump": 1,
-      "dash": 2,
-      "parry-ready": 1,
-      "refill-dash": 2,
-      "parry": 1,
-      "receiver-lit": 1,
-      "combat-gate": 1,
-      "grab": 1,
-      "climbhop": 1,
-      "land": 2,
-      "strike": 1,
-      "enemy-defeat": 1,
-      "exit": 1
-     }
-    },
-    {
-     "name": "Jump two frames later",
-     "tape": [
-      [
-       32,
-       "r"
-      ],
-      [
-       12,
-       "rj"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       5,
-       "r"
-      ],
-      [
-       8,
-       "rp"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       100,
-       "rgu"
-      ],
-      [
-       1,
-       "rs"
-      ],
-      [
-       110,
-       "r"
-      ]
-     ],
-     "exited": true,
-     "deaths": 0,
-     "frames": 214,
-     "events": [
-      "enemy-shot",
-      "jump",
-      "dash",
-      "parry-ready",
-      "refill-dash",
-      "parry",
-      "receiver-lit",
-      "combat-gate",
-      "grab",
-      "climbhop",
-      "land",
-      "strike",
-      "exit"
-     ],
-     "eventCounts": {
-      "enemy-shot": 2,
-      "jump": 1,
-      "dash": 2,
-      "parry-ready": 1,
-      "refill-dash": 2,
-      "parry": 1,
-      "receiver-lit": 1,
-      "combat-gate": 1,
-      "grab": 1,
-      "climbhop": 1,
-      "land": 1,
-      "strike": 1,
-      "exit": 1
-     }
-    }
-   ],
-   "shortcutChecks": [
-    {
-     "name": "Omit parry and use remaining movement",
-     "tape": [
       [
        30,
-       "r"
+       "rg"
       ],
       [
-       12,
-       "rj"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       5,
-       "r"
-      ],
-      [
-       8,
-       "r"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       100,
-       "rgu"
-      ],
-      [
-       1,
-       "rs"
-      ],
-      [
-       110,
-       "r"
-      ]
-     ],
-     "exited": false,
-     "deaths": 3,
-     "frames": 0,
-     "events": [
-      "enemy-shot",
-      "jump",
-      "dash",
-      "death",
-      "respawn"
-     ],
-     "eventCounts": {
-      "enemy-shot": 3,
-      "jump": 1,
-      "dash": 1,
-      "death": 3,
-      "respawn": 3
-     }
-    },
-    {
-     "name": "Furthest shore ordinary jump dash and climb",
-     "tape": [
-      [
-       36,
-       "r"
+       88,
+       "rug"
       ],
       [
        18,
@@ -63380,97 +66565,234 @@ const records=[
       ],
       [
        12,
-       "rux"
-      ],
-      [
-       180,
-       "rgu"
-      ],
-      [
-       1,
-       "rs"
+       "rx"
       ],
       [
        100,
        "r"
       ]
-     ],
-     "exited": false,
-     "deaths": 4,
-     "frames": 0,
-     "events": [
-      "enemy-shot",
-      "jump",
-      "dash",
-      "death",
-      "respawn",
-      "strike"
-     ],
-     "eventCounts": {
-      "enemy-shot": 4,
-      "jump": 1,
-      "dash": 1,
-      "death": 4,
-      "respawn": 3,
-      "strike": 1
-     }
+     ]
+    },
+    {
+     "name": "Climb the emitter enclosure roof for a free high launch",
+     "tape": [
+      [
+       24,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       12,
+       "luxg"
+      ],
+      [
+       40,
+       "ulg"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       100,
+       "rug"
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       100,
+       "r"
+      ]
+     ]
     }
    ],
    "timingCues": [
-    "The left-moving pulse is visible from the starting ledge; intercept its horizontal line in flight.",
-    "Parry while the pulse reaches the knight, then use the returned dash before falling below the far face."
+    "The western muzzle flashes before its pulse catches up from behind.",
+    "Aim the parry right toward the paired bells; the pulse keeps that line.",
+    "Dash while the reply is between you and the wall; the wall outline admits it.",
+    "The bell flash makes that same outline solid again for your hands."
    ],
-   "routeProof": {
+   "routeMovement": [
+    {
+     "type": "jump",
+     "frame": 25,
+     "x": 61,
+     "y": 152,
+     "lift": 0
+    },
+    {
+     "type": "dash",
+     "frame": 41,
+     "x": 82,
+     "y": 126,
+     "dx": 0.7071067811865475,
+     "dy": -0.7071067811865475
+    },
+    {
+     "type": "parry",
+     "frame": 55,
+     "x": 124,
+     "y": 98
+    },
+    {
+     "type": "dash",
+     "frame": 63,
+     "x": 116,
+     "y": 99,
+     "dx": 0.7071067811865475,
+     "dy": -0.7071067811865475
+    },
+    {
+     "type": "bell",
+     "frame": 86,
+     "x": 276,
+     "y": 100
+    },
+    {
+     "type": "grab",
+     "frame": 92,
+     "x": 176,
+     "y": 95
+    },
+    {
+     "type": "climbhop",
+     "frame": 156
+    },
+    {
+     "type": "land",
+     "frame": 171,
+     "x": 192,
+     "y": 56,
+     "speed": 75
+    },
+    {
+     "type": "jump",
+     "frame": 186,
+     "x": 214,
+     "y": 56,
+     "lift": 0
+    },
+    {
+     "type": "dash",
+     "frame": 208,
+     "x": 245,
+     "y": 25,
+     "dx": 1,
+     "dy": 0
+    },
+    {
+     "type": "land",
+     "frame": 235,
+     "x": 315,
+     "y": 64,
+     "speed": 160
+    }
+   ],
+   "requiredEventCounts": {
+    "dash": 3
+   },
+   "endingForgiveness": "Five-tile restored crest allows a full grounded pause/refill before the last jump and dash. The difficult timing remains the airborne parry and wall restoration.",
+   "review": {
+    "reportedBypasses": [
+     {
+      "name": "Original nearest-edge jump, late diagonal dash, wall climb and grounded parry",
+      "tape": [
+       [
+        49,
+        "r"
+       ],
+       [
+        12,
+        "rj"
+       ],
+       [
+        18,
+        "r"
+       ],
+       [
+        12,
+        "rux"
+       ],
+       [
+        35,
+        "rg"
+       ],
+       [
+        50,
+        "rug"
+       ],
+       [
+        10,
+        "r"
+       ],
+       [
+        8,
+        "p"
+       ],
+       [
+        110,
+        "r"
+       ]
+      ],
+      "originalFrames": 251,
+      "originalDeaths": 0
+     }
+    ],
+    "revision15": "Rebuilt room rather than merely blocking its old far wall. The new wall is too high for the farthest ledge jump/dash; first launch raises the knight to a pulse from behind. The refilled dash physically opens the returned-shot lane, and the delayed bell restores the same climb face. No completion event lock exists."
+   },
+   "route": {
     "exited": true,
+    "frames": 239,
     "deaths": 0,
-    "frames": 267,
     "events": [
-     "enemy-shot",
      "jump",
+     "phase",
+     "enemy-shot",
      "dash",
      "parry-ready",
      "refill-dash",
      "parry",
-     "receiver-lit",
-     "combat-gate",
+     "bell",
      "grab",
      "climbhop",
      "land",
-     "strike",
-     "enemy-defeat",
      "exit"
     ],
     "eventCounts": {
-     "enemy-shot": 1,
-     "jump": 1,
-     "dash": 2,
+     "jump": 2,
+     "phase": 4,
+     "enemy-shot": 2,
+     "dash": 3,
      "parry-ready": 1,
-     "refill-dash": 2,
+     "refill-dash": 3,
      "parry": 1,
-     "receiver-lit": 1,
-     "combat-gate": 1,
+     "bell": 1,
      "grab": 1,
      "climbhop": 1,
      "land": 2,
-     "strike": 1,
-     "enemy-defeat": 1,
      "exit": 1
-    }
+    },
+    "firstFailure": null
    },
-   "routeMovement": [
-    {
-     "type": "parry",
-     "frame": 62,
-     "x": 143,
-     "y": 98
-    }
-   ],
-   "revision": "9452694e4cda",
+   "revision": "85fd79f3d7c2",
    "source": "scripts/room-bank/base/bank-b60.json"
   },
   "tape": [
    [
-    30,
+    24,
     "r"
    ],
    [
@@ -63482,11 +66804,7 @@ const records=[
     "rux"
    ],
    [
-    5,
-    "r"
-   ],
-   [
-    8,
+    7,
     "rp"
    ],
    [
@@ -63494,15 +66812,23 @@ const records=[
     "rux"
    ],
    [
+    30,
+    "rg"
+   ],
+   [
+    88,
+    "rug"
+   ],
+   [
+    18,
+    "rj"
+   ],
+   [
+    12,
+    "rx"
+   ],
+   [
     100,
-    "rgu"
-   ],
-   [
-    1,
-    "rs"
-   ],
-   [
-    110,
     "r"
    ]
   ]
@@ -63588,7 +66914,7 @@ const records=[
    "batch": 14,
    "run": 7,
    "collection": "run7",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "status": "route-proven",
    "difficulty": 3,
    "role": "Store launch energy while a ceiling becomes passable",
@@ -63603,7 +66929,7 @@ const records=[
    ],
    "newMechanics": [],
    "author": "Codex",
-   "humanReview": "Unreviewed candidate. Difficulty is an author estimate; no human ratings assigned.",
+   "humanReview": "Approved for late Base; early Fractured alternative. Numeric player ratings remain unmeasured.",
    "learningFamily": "reply-and-cycle",
    "lessonRole": "develop",
    "preparesFor": [
@@ -64031,6 +67357,12 @@ const records=[
      "vy": -225
     }
    ],
+   "placementBand": "late Base; early Fractured alternative",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "late Base; early Fractured alternative",
+    "geometryPreserved": true
+   },
    "revision": "140c82c9d2c4",
    "source": "scripts/room-bank/base/bank-b61.json"
   },
@@ -64151,7 +67483,7 @@ const records=[
    "run": 7,
    "collection": "run7",
    "format": "compact",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "status": "route-proven",
    "difficulty": 4,
    "role": "Carry wavedash momentum into a low pogo and spend its restored dash inside the next patrol window",
@@ -64165,7 +67497,7 @@ const records=[
    ],
    "newMechanics": [],
    "author": "Codex",
-   "humanReview": "Unreviewed candidate. Author difficulty is provisional.",
+   "humanReview": "Approved for Fractured. Numeric player ratings and exact campaign position remain unmeasured.",
    "learningFamily": "timed-launch-and-pogo",
    "lessonRole": "combine",
    "prerequisites": [
@@ -64691,6 +68023,12 @@ const records=[
    "review": {
     "authorEvidence": "One zero-death canonical route, two or three saved timing/contact variants, and active ordinary-route bypass attempts. Human fun/difficulty/suitability review remains pending."
    },
+   "placementBand": "Fractured",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "Fractured",
+    "geometryPreserved": true
+   },
    "revision": "a8bf6de2acb1",
    "source": "scripts/room-bank/fractured/bank-f55.json"
   },
@@ -64887,7 +68225,7 @@ const records=[
    "run": 7,
    "collection": "run7",
    "format": "extended",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "status": "route-proven",
    "difficulty": 4,
    "role": "Turn the outbound climb into a return runway, then reverse-launch through a second aerial patrol phrase",
@@ -64904,7 +68242,7 @@ const records=[
    ],
    "newMechanics": [],
    "author": "Codex",
-   "humanReview": "Unreviewed candidate. Author difficulty is provisional.",
+   "humanReview": "Approved for Fractured. Numeric player ratings and exact campaign position remain unmeasured.",
    "learningFamily": "timed-launch-and-pogo",
    "lessonRole": "master",
    "prerequisites": [
@@ -65908,6 +69246,12 @@ const records=[
    "review": {
     "authorEvidence": "One zero-death canonical route, two or three saved timing/contact variants, and active ordinary-route bypass attempts. Human fun/difficulty/suitability review remains pending."
    },
+   "placementBand": "Fractured",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "Fractured",
+    "geometryPreserved": true
+   },
    "revision": "31a03e791986",
    "source": "scripts/room-bank/fractured/bank-f56.json"
   },
@@ -66113,7 +69457,7 @@ const records=[
    "run": 7,
    "collection": "run7",
    "format": "compact",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "status": "route-proven",
    "difficulty": 5,
    "author": "Codex",
@@ -66143,7 +69487,7 @@ const records=[
    "prerequisites": [
     "bank-b56"
    ],
-   "humanReview": "Awaiting playtest; route evidence does not establish enjoyment or human difficulty.",
+   "humanReview": "Approved for very late Fractured. Numeric player ratings remain unmeasured.",
    "entrance": "Western dock beneath the outward-moving anchor.",
    "exit": "High eastern bank beyond the rebound pocket.",
    "solution": "Board the moving ring and duck below the first patrol by paying out. Reel in again and follow the carrier toward its eastern turn. Jump free toward the suspended pod as the diagonal thorn climbs back left above it. Hold Jump while cutting down for the high rebound; continue right behind the passing thorn, then dash up-right near the loft’s apex. There is no standing platform between the starting dock and the final bank.",
@@ -66697,6 +70041,12 @@ const records=[
      }
     }
    ],
+   "placementBand": "very late Fractured",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "very late Fractured",
+    "geometryPreserved": true
+   },
    "revision": "384099ee3f78",
    "source": "scripts/room-bank/fractured/57-bank-f57.json"
   },
@@ -66898,7 +70248,7 @@ const records=[
    "run": 7,
    "collection": "run7",
    "format": "extended",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "status": "route-proven",
    "difficulty": 5,
    "author": "Codex",
@@ -66930,7 +70280,7 @@ const records=[
     "bank-b56",
     "bank-b57"
    ],
-   "humanReview": "Awaiting playtest; route evidence does not establish enjoyment or human difficulty.",
+   "humanReview": "Approved for late Fractured. Numeric player ratings remain unmeasured.",
    "entrance": "Low western freight dock beneath the loaded carriage.",
    "exit": "Raised eastern sun gallery beyond two vertical patrol lanes.",
    "solution": "Catch the freight ring and reel in. Pay out to let the oncoming thorn pass above, then reel up. As the carriage emerges from its roof, pump left briefly to prepare the opposite swing, pay out while pumping right, and jump free beyond the carriage’s cargo edge. Dash upward beside the carrier and press Grab during the burst to take its moving lantern and retain the rise. Glide onto the middle gallery and read the two patrols. When the first thorn rises past the gallery’s foot height, jump right, throw the lantern, immediately dash right, and press Grab again during the burst. The horizontal catch preserves speed: pass beneath the first retreating thorn and below the second before it descends into the route, then carry shade onto the raised sun gallery.",
@@ -67747,6 +71097,12 @@ const records=[
      }
     }
    ],
+   "placementBand": "late Fractured",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "late Fractured",
+    "geometryPreserved": true
+   },
    "revision": "2a048a6e6423",
    "source": "scripts/room-bank/fractured/58-bank-f58.json"
   },
@@ -67855,13 +71211,13 @@ const records=[
     "#...........#>................................<#",
     "#.............................................<#",
     "#.............................................<#",
-    "#.............................................<#",
     "#.............^^^^^^^^^^^^^^^^................<#",
     "#.............################................<#",
     "#.............vvvvvvvvvvvvvvvv................<#",
     "#.............................................<#",
     "#.............................................<#",
     "#..............................P...c..........<#",
+    "#.............................................<#",
     "#.............................................<#",
     "#.............................................<#",
     "#..^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<#",
@@ -67871,7 +71227,7 @@ const records=[
     {
      "id": "Run-up",
      "c": 30,
-     "r": 19,
+     "r": 18,
      "w": 9,
      "h": 1,
      "face": "up"
@@ -67941,11 +71297,11 @@ const records=[
   },
   "bank": {
    "side": "fractured",
-   "batch": 14,
+   "batch": 15,
    "run": 7,
    "collection": "run7",
    "format": "compact",
-   "acceptance": "candidate",
+   "acceptance": "revised",
    "status": "route-proven",
    "difficulty": 4,
    "role": "Carry a reverse-hyper approach through two patrol windows into a spent-wall wallbounce and aerial return.",
@@ -67962,7 +71318,7 @@ const records=[
     "departure-armed persistent surface"
    ],
    "author": "Codex",
-   "humanReview": "Unreviewed Run 7 candidate. Author difficulty is provisional; intended-route and bounded input evidence are not human feel ratings.",
+   "humanReview": "Lower reverse launch and matching ceiling raised eight pixels above the unchanged spike floor, preserving headroom while adding fall clearance. Awaiting review.",
    "learningFamily": "spent-faces",
    "lessonRole": "combine",
    "preparesFor": [
@@ -68163,6 +71519,120 @@ const records=[
      "exited": true,
      "deaths": 0,
      "frames": 295
+    },
+    {
+     "name": "Low dash 2 frames later",
+     "tape": [
+      [
+       13,
+       "rdx"
+      ],
+      [
+       12,
+       "lj"
+      ],
+      [
+       18,
+       "l"
+      ],
+      [
+       12,
+       "lx"
+      ],
+      [
+       7,
+       "lg"
+      ],
+      [
+       50,
+       "ug"
+      ],
+      [
+       12,
+       "ux"
+      ],
+      [
+       22,
+       "rj"
+      ],
+      [
+       2,
+       "r"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       26,
+       "r"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       110,
+       "r"
+      ]
+     ]
+    },
+    {
+     "name": "Low dash 4 frames later",
+     "tape": [
+      [
+       13,
+       "rdx"
+      ],
+      [
+       12,
+       "lj"
+      ],
+      [
+       20,
+       "l"
+      ],
+      [
+       12,
+       "lx"
+      ],
+      [
+       7,
+       "lg"
+      ],
+      [
+       50,
+       "ug"
+      ],
+      [
+       12,
+       "ux"
+      ],
+      [
+       22,
+       "rj"
+      ],
+      [
+       2,
+       "r"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       26,
+       "r"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       110,
+       "r"
+      ]
+     ]
     }
    ],
    "shortcutChecks": [
@@ -68292,8 +71762,8 @@ const records=[
    },
    "route": {
     "exited": true,
-    "deaths": 0,
     "frames": 295,
+    "deaths": 0,
     "events": [
      "spent-thorn-touch",
      "dash",
@@ -68313,9 +71783,30 @@ const records=[
      "land",
      "refill-back",
      "exit"
-    ]
+    ],
+    "eventCounts": {
+     "spent-thorn-touch": 2,
+     "dash": 5,
+     "ultra": 1,
+     "refill-dash": 5,
+     "stone-lit": 1,
+     "gate-open": 1,
+     "hyper": 1,
+     "reverse-hyper": 1,
+     "late-reverse": 1,
+     "spent-thorn-leave": 2,
+     "spent-thorn-arm": 2,
+     "grab": 1,
+     "refill": 3,
+     "vector-refill": 3,
+     "wallbounce": 1,
+     "land": 1,
+     "refill-back": 1,
+     "exit": 1
+    },
+    "firstFailure": null
    },
-   "designNotes": "Departure-thorn bodies remain solid. Only the visibly marked face arms after departure; continuous first contact is safe. Room completion uses ordinary physical geometry and visible tallies, with no hidden movement-event gate. The patrol clock begins with input and resets per attempt.",
+   "designNotes": "Departure-thorn bodies remain solid. Only the visibly marked face arms after departure; continuous first contact is safe. Room completion uses ordinary physical geometry and visible tallies, with no hidden movement-event gate. The patrol clock begins with input and resets per attempt. Review15: raised launch and matching ceiling 8px over unchanged spike floor; preserved canonical and reverse timing. Added successful low-dash +2/+4-frame delay checks to target reported bottom-spike collision.",
    "timingCues": [
     "Use the lower windows to reach the wall; the upper return has no landing before the last crystal.",
     "Folded hairs mark a safe first contact; an amber warning after departure precedes the permanently red face."
@@ -68409,7 +71900,10 @@ const records=[
      "dy": -0.7071067811865475
     }
    ],
-   "revision": "a5d71b5951b9",
+   "review": {
+    "revision15": "Raised the spent launch runway, spawn/tally, and low ceiling one tile. Floor spikes and upper route are unchanged."
+   },
+   "revision": "dea401db08ab",
    "source": "scripts/room-bank/fractured/59-bank-f59.json"
   },
   "tape": [
@@ -68649,7 +72143,7 @@ const records=[
    "run": 7,
    "collection": "run7",
    "format": "extended",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "status": "route-proven",
    "difficulty": 5,
    "role": "Learn one continuous climb rhythm across three consumed grips, finite stamina, refills and returning patrols.",
@@ -68666,7 +72160,7 @@ const records=[
     "departure-armed persistent surface"
    ],
    "author": "Codex",
-   "humanReview": "Unreviewed Run 7 candidate. Author difficulty is provisional; intended-route and bounded input evidence are not human feel ratings.",
+   "humanReview": "Approved for early Fractured; late Base alternative. Numeric player ratings remain unmeasured.",
    "learningFamily": "spent-faces",
    "lessonRole": "master",
    "preparesFor": [],
@@ -69229,6 +72723,12 @@ const records=[
      "dy": -0.7071067811865475
     }
    ],
+   "placementBand": "early Fractured; late Base alternative",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "early Fractured; late Base alternative",
+    "geometryPreserved": true
+   },
    "revision": "16aa067f3c6b",
    "source": "scripts/room-bank/fractured/60-bank-f60.json"
   },
@@ -69419,7 +72919,7 @@ const records=[
    "batch": 14,
    "run": 7,
    "collection": "run7",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "status": "route-proven",
    "difficulty": 4,
    "role": "Maintain a low launch through an airborne reply",
@@ -69433,7 +72933,7 @@ const records=[
    ],
    "newMechanics": [],
    "author": "Codex",
-   "humanReview": "Unreviewed candidate. Difficulty is an author estimate; no human ratings assigned.",
+   "humanReview": "Approved for late Fractured. Numeric player ratings remain unmeasured.",
    "learningFamily": "reply-and-cycle",
    "lessonRole": "combine",
    "preparesFor": [],
@@ -69991,6 +73491,12 @@ const records=[
      "y": 136
     }
    ],
+   "placementBand": "late Fractured",
+   "finalReview20261009": {
+    "decision": "banked",
+    "placement": "late Fractured",
+    "geometryPreserved": true
+   },
    "revision": "335aeaf4c278",
    "source": "scripts/room-bank/fractured/bank-f61.json"
   },
@@ -70036,1116 +73542,14 @@ const records=[
     "r"
    ]
   ]
- },
- {
-  "room": {
-   "id": "bank-f62",
-   "name": "The Window You Return Through",
-   "palette": "ember",
-   "study": true,
-   "movement": "survive-2",
-   "cols": 48,
-   "rows": 36,
-   "exit": "left",
-   "lock": [
-    "portal",
-    "parry"
-   ],
-   "map": [
-    "################################################",
-    "##########.....................................#",
-    "##########.....................................#",
-    "##########.....................................#",
-    "##########.....................................#",
-    "##########.....................................#",
-    "##########.....................................#",
-    "##########....................##################",
-    "##########...................Evvvvvvvvvvvvvvvvv#",
-    "##########...................E.................#",
-    "##########...................E.................#",
-    "##########...................E.................#",
-    ".G...........................E.................#",
-    ".G...........................E.................#",
-    ".G...........................E.................#",
-    ".G...........................E.................#",
-    ".G...........................E.................#",
-    "###############..............E.................#",
-    "##########...................E.................#",
-    "##########...................E.................#",
-    "##########...................E.................#",
-    "##########...................E..........c......#",
-    "##########...................E.................#",
-    "##########...................E.................#",
-    "##########...................E.................#",
-    "##########...................E.................#",
-    "##########EEEEEEEEEEEEEEEE.....................#",
-    "##########..............<#.....................#",
-    "##########..............<#.....................#",
-    "##########..............<#.....................#",
-    "##########..............<#.....................#",
-    "##########....P.........<#.....................#",
-    "##########..............<#.....................#",
-    "##########..............<#.....................#",
-    "##########^^^^^^^^^^^^^^^#^^^^^^^^^^^^^^^^^^^^^#",
-    "################################################"
-   ],
-   "hint": "Store the launch while the window changes. Return high through the glass to the leftward crystal.",
-   "question": "When does the outward opening become useful for a much higher return?",
-   "recoilPlatforms": [
-    {
-     "id": "Low",
-     "c": 12,
-     "r": 32,
-     "w": 6,
-     "depth": 2,
-     "loadFrames": 30,
-     "releaseSpeed": 120
-    },
-    {
-     "id": "Return",
-     "c": 33,
-     "r": 22,
-     "w": 10,
-     "depth": 2,
-     "loadFrames": 30,
-     "releaseSpeed": 120
-    }
-   ],
-   "slabs": [
-    {
-     "stone": 80,
-     "molten": 60,
-     "glass": 120,
-     "offset": 60
-    },
-    {
-     "stone": 60,
-     "molten": 45,
-     "glass": 70
-    }
-   ],
-   "vectorRefills": [
-    {
-     "c": 24,
-     "r": 8,
-     "dir": "left"
-    }
-   ]
-  },
-  "bank": {
-   "side": "fractured",
-   "batch": 14,
-   "run": 7,
-   "collection": "run7",
-   "acceptance": "candidate",
-   "status": "route-proven",
-   "difficulty": 5,
-   "role": "Read the same thermal window on two trajectories",
-   "worlds": [],
-   "tags": [
-    "recoil-platform",
-    "reverse-super",
-    "heat-slab",
-    "return-route",
-    "timing",
-    "vector-refill",
-    "lift-inheritance"
-   ],
-   "newMechanics": [],
-   "author": "Codex",
-   "humanReview": "Unreviewed candidate. Difficulty is an author estimate; no human ratings assigned.",
-   "learningFamily": "reply-and-cycle",
-   "lessonRole": "master",
-   "preparesFor": [],
-   "prerequisites": [
-    "bank-b61"
-   ],
-   "format": "extended",
-   "requiredEvents": [
-    "recoil-jump",
-    "reverse-super",
-    "stone-lit",
-    "gate-open",
-    "slab-glass",
-    "vector-refill"
-   ],
-   "solution": "Compress the low plate, release and jump through the first cooling ceiling. Land on the glass and jump-dash through the vertical window to the far plate, touching the tally that opens the western exit. Reposition on that plate, compress it and watch the next glass interval. Release, dash right along the rising plate, then jump left into a reverse super. Carry the inherited lift back through the window, dash up-left through the leftward crystal, and use its refill to continue up-left onto the high western gallery. The route crosses the same window low on the outward leg and high on the return.",
-   "nearestExisting": "B61 introduces a recoil launch through cooling glass. This folds the route back through a vertical thermal partition at a different height, coupling stored lift, reverse launch and the second glass interval.",
-   "novelty": "The window admits the low outward dash before becoming the timing gate for a faster, higher reverse return.",
-   "entrance": "Low western recoil well.",
-   "exit": "Western high gallery, opened by the far visible tally.",
-   "interconnection": "Both journeys share the same changing partition and low launch floor; the far tally opens an exit above the original well.",
-   "positiveChecks": [
-    {
-     "name": "Release return plate two frames earlier",
-     "tape": [
-      [
-       95,
-       "d"
-      ],
-      [
-       7,
-       ""
-      ],
-      [
-       25,
-       "rj"
-      ],
-      [
-       20,
-       "r"
-      ],
-      [
-       8,
-       ""
-      ],
-      [
-       20,
-       "rj"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       65,
-       "rgu"
-      ],
-      [
-       30,
-       "l"
-      ],
-      [
-       48,
-       "d"
-      ],
-      [
-       1,
-       ""
-      ],
-      [
-       12,
-       "rx"
-      ],
-      [
-       26,
-       "lj"
-      ],
-      [
-       12,
-       "lux"
-      ],
-      [
-       10,
-       "l"
-      ],
-      [
-       12,
-       "lux"
-      ],
-      [
-       220,
-       "lgu"
-      ]
-     ],
-     "exited": true,
-     "deaths": 0,
-     "frames": 528,
-     "events": [
-      "recoil-load",
-      "slab-molten",
-      "slab-glass",
-      "recoil-release",
-      "jump",
-      "recoil-jump",
-      "land",
-      "slab-stone",
-      "dash",
-      "refill-dash",
-      "stone-lit",
-      "gate-open",
-      "super",
-      "reverse-super",
-      "refill",
-      "vector-refill",
-      "exit"
-     ],
-     "eventCounts": {
-      "recoil-load": 2,
-      "slab-molten": 5,
-      "slab-glass": 5,
-      "recoil-release": 2,
-      "jump": 2,
-      "recoil-jump": 2,
-      "land": 3,
-      "slab-stone": 4,
-      "dash": 4,
-      "refill-dash": 4,
-      "stone-lit": 1,
-      "gate-open": 1,
-      "super": 1,
-      "reverse-super": 1,
-      "refill": 1,
-      "vector-refill": 1,
-      "exit": 1
-     }
-    },
-    {
-     "name": "Release return plate two frames later",
-     "tape": [
-      [
-       95,
-       "d"
-      ],
-      [
-       7,
-       ""
-      ],
-      [
-       25,
-       "rj"
-      ],
-      [
-       20,
-       "r"
-      ],
-      [
-       8,
-       ""
-      ],
-      [
-       20,
-       "rj"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       65,
-       "rgu"
-      ],
-      [
-       30,
-       "l"
-      ],
-      [
-       52,
-       "d"
-      ],
-      [
-       1,
-       ""
-      ],
-      [
-       12,
-       "rx"
-      ],
-      [
-       26,
-       "lj"
-      ],
-      [
-       12,
-       "lux"
-      ],
-      [
-       10,
-       "l"
-      ],
-      [
-       12,
-       "lux"
-      ],
-      [
-       220,
-       "lgu"
-      ]
-     ],
-     "exited": true,
-     "deaths": 0,
-     "frames": 532,
-     "events": [
-      "recoil-load",
-      "slab-molten",
-      "slab-glass",
-      "recoil-release",
-      "jump",
-      "recoil-jump",
-      "land",
-      "slab-stone",
-      "dash",
-      "refill-dash",
-      "stone-lit",
-      "gate-open",
-      "super",
-      "reverse-super",
-      "refill",
-      "vector-refill",
-      "exit"
-     ],
-     "eventCounts": {
-      "recoil-load": 2,
-      "slab-molten": 5,
-      "slab-glass": 5,
-      "recoil-release": 2,
-      "jump": 2,
-      "recoil-jump": 2,
-      "land": 3,
-      "slab-stone": 4,
-      "dash": 4,
-      "refill-dash": 4,
-      "stone-lit": 1,
-      "gate-open": 1,
-      "super": 1,
-      "reverse-super": 1,
-      "refill": 1,
-      "vector-refill": 1,
-      "exit": 1
-     }
-    },
-    {
-     "name": "First launch two frames later",
-     "tape": [
-      [
-       97,
-       "d"
-      ],
-      [
-       7,
-       ""
-      ],
-      [
-       25,
-       "rj"
-      ],
-      [
-       20,
-       "r"
-      ],
-      [
-       8,
-       ""
-      ],
-      [
-       20,
-       "rj"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       65,
-       "rgu"
-      ],
-      [
-       30,
-       "l"
-      ],
-      [
-       50,
-       "d"
-      ],
-      [
-       1,
-       ""
-      ],
-      [
-       12,
-       "rx"
-      ],
-      [
-       26,
-       "lj"
-      ],
-      [
-       12,
-       "lux"
-      ],
-      [
-       10,
-       "l"
-      ],
-      [
-       12,
-       "lux"
-      ],
-      [
-       220,
-       "lgu"
-      ]
-     ],
-     "exited": true,
-     "deaths": 0,
-     "frames": 532,
-     "events": [
-      "recoil-load",
-      "slab-molten",
-      "slab-glass",
-      "recoil-release",
-      "jump",
-      "recoil-jump",
-      "land",
-      "slab-stone",
-      "dash",
-      "refill-dash",
-      "stone-lit",
-      "gate-open",
-      "super",
-      "reverse-super",
-      "refill",
-      "vector-refill",
-      "exit"
-     ],
-     "eventCounts": {
-      "recoil-load": 2,
-      "slab-molten": 5,
-      "slab-glass": 5,
-      "recoil-release": 2,
-      "jump": 2,
-      "recoil-jump": 2,
-      "land": 3,
-      "slab-stone": 4,
-      "dash": 4,
-      "refill-dash": 4,
-      "stone-lit": 1,
-      "gate-open": 1,
-      "super": 1,
-      "reverse-super": 1,
-      "refill": 1,
-      "vector-refill": 1,
-      "exit": 1
-     }
-    }
-   ],
-   "shortcutChecks": [
-    {
-     "name": "Ordinary jump from far plate",
-     "tape": [
-      [
-       95,
-       "d"
-      ],
-      [
-       7,
-       ""
-      ],
-      [
-       25,
-       "rj"
-      ],
-      [
-       20,
-       "r"
-      ],
-      [
-       8,
-       ""
-      ],
-      [
-       20,
-       "rj"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       65,
-       "rgu"
-      ],
-      [
-       30,
-       "l"
-      ],
-      [
-       50,
-       ""
-      ],
-      [
-       26,
-       "lj"
-      ],
-      [
-       12,
-       "lux"
-      ],
-      [
-       10,
-       "l"
-      ],
-      [
-       12,
-       "lux"
-      ],
-      [
-       220,
-       "lgu"
-      ]
-     ],
-     "exited": false,
-     "deaths": 3,
-     "frames": 0,
-     "events": [
-      "recoil-load",
-      "slab-molten",
-      "slab-glass",
-      "recoil-release",
-      "jump",
-      "recoil-jump",
-      "land",
-      "slab-stone",
-      "dash",
-      "refill-dash",
-      "stone-lit",
-      "gate-open",
-      "death",
-      "respawn",
-      "grab"
-     ],
-     "eventCounts": {
-      "recoil-load": 1,
-      "slab-molten": 9,
-      "slab-glass": 4,
-      "recoil-release": 1,
-      "jump": 3,
-      "recoil-jump": 1,
-      "land": 3,
-      "slab-stone": 3,
-      "dash": 2,
-      "refill-dash": 2,
-      "stone-lit": 1,
-      "gate-open": 1,
-      "death": 3,
-      "respawn": 2,
-      "grab": 2
-     }
-    },
-    {
-     "name": "Unloaded reverse super from far plate",
-     "tape": [
-      [
-       95,
-       "d"
-      ],
-      [
-       7,
-       ""
-      ],
-      [
-       25,
-       "rj"
-      ],
-      [
-       20,
-       "r"
-      ],
-      [
-       8,
-       ""
-      ],
-      [
-       20,
-       "rj"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       65,
-       "rgu"
-      ],
-      [
-       30,
-       "l"
-      ],
-      [
-       50,
-       ""
-      ],
-      [
-       1,
-       ""
-      ],
-      [
-       12,
-       "rx"
-      ],
-      [
-       26,
-       "lj"
-      ],
-      [
-       12,
-       "lux"
-      ],
-      [
-       10,
-       "l"
-      ],
-      [
-       12,
-       "lux"
-      ],
-      [
-       220,
-       "lgu"
-      ]
-     ],
-     "exited": false,
-     "deaths": 3,
-     "frames": 0,
-     "events": [
-      "recoil-load",
-      "slab-molten",
-      "slab-glass",
-      "recoil-release",
-      "jump",
-      "recoil-jump",
-      "land",
-      "slab-stone",
-      "dash",
-      "refill-dash",
-      "stone-lit",
-      "gate-open",
-      "super",
-      "reverse-super",
-      "death",
-      "respawn",
-      "grab"
-     ],
-     "eventCounts": {
-      "recoil-load": 1,
-      "slab-molten": 9,
-      "slab-glass": 4,
-      "recoil-release": 1,
-      "jump": 2,
-      "recoil-jump": 1,
-      "land": 2,
-      "slab-stone": 3,
-      "dash": 3,
-      "refill-dash": 2,
-      "stone-lit": 1,
-      "gate-open": 1,
-      "super": 1,
-      "reverse-super": 1,
-      "death": 3,
-      "respawn": 2,
-      "grab": 2
-     }
-    },
-    {
-     "name": "Return during molten window",
-     "tape": [
-      [
-       95,
-       "d"
-      ],
-      [
-       7,
-       ""
-      ],
-      [
-       25,
-       "rj"
-      ],
-      [
-       20,
-       "r"
-      ],
-      [
-       8,
-       ""
-      ],
-      [
-       20,
-       "rj"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       65,
-       "rgu"
-      ],
-      [
-       30,
-       "l"
-      ],
-      [
-       1,
-       "d"
-      ],
-      [
-       1,
-       ""
-      ],
-      [
-       12,
-       "rx"
-      ],
-      [
-       26,
-       "lj"
-      ],
-      [
-       12,
-       "lux"
-      ],
-      [
-       10,
-       "l"
-      ],
-      [
-       12,
-       "lux"
-      ],
-      [
-       220,
-       "lgu"
-      ]
-     ],
-     "exited": false,
-     "deaths": 3,
-     "frames": 0,
-     "events": [
-      "recoil-load",
-      "slab-molten",
-      "slab-glass",
-      "recoil-release",
-      "jump",
-      "recoil-jump",
-      "land",
-      "slab-stone",
-      "dash",
-      "refill-dash",
-      "stone-lit",
-      "gate-open",
-      "super",
-      "reverse-super",
-      "death",
-      "respawn",
-      "grab"
-     ],
-     "eventCounts": {
-      "recoil-load": 2,
-      "slab-molten": 8,
-      "slab-glass": 3,
-      "recoil-release": 2,
-      "jump": 2,
-      "recoil-jump": 1,
-      "land": 2,
-      "slab-stone": 2,
-      "dash": 3,
-      "refill-dash": 2,
-      "stone-lit": 1,
-      "gate-open": 1,
-      "super": 1,
-      "reverse-super": 1,
-      "death": 3,
-      "respawn": 3,
-      "grab": 2
-     }
-    },
-    {
-     "name": "First launch left into locked exit",
-     "tape": [
-      [
-       95,
-       "d"
-      ],
-      [
-       7,
-       ""
-      ],
-      [
-       25,
-       "lj"
-      ],
-      [
-       12,
-       "lux"
-      ],
-      [
-       180,
-       "lgu"
-      ]
-     ],
-     "exited": false,
-     "deaths": 0,
-     "frames": 0,
-     "events": [
-      "recoil-load",
-      "slab-molten",
-      "slab-glass",
-      "recoil-release",
-      "jump",
-      "recoil-jump",
-      "dash",
-      "grab",
-      "slab-stone",
-      "land",
-      "refill-dash"
-     ],
-     "eventCounts": {
-      "recoil-load": 1,
-      "slab-molten": 4,
-      "slab-glass": 4,
-      "recoil-release": 1,
-      "jump": 1,
-      "recoil-jump": 1,
-      "dash": 1,
-      "grab": 1,
-      "slab-stone": 2,
-      "land": 1,
-      "refill-dash": 1
-     }
-    },
-    {
-     "name": "Ordinary return from nearest edge during confirmed glass",
-     "tape": [
-      [
-       95,
-       "d"
-      ],
-      [
-       7,
-       ""
-      ],
-      [
-       25,
-       "rj"
-      ],
-      [
-       20,
-       "r"
-      ],
-      [
-       8,
-       ""
-      ],
-      [
-       20,
-       "rj"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       65,
-       "rgu"
-      ],
-      [
-       40,
-       ""
-      ],
-      [
-       50,
-       "l"
-      ],
-      [
-       18,
-       "lj"
-      ],
-      [
-       12,
-       "lux"
-      ],
-      [
-       140,
-       "lgu"
-      ],
-      [
-       12,
-       "lux"
-      ],
-      [
-       100,
-       "lgu"
-      ]
-     ],
-     "exited": false,
-     "deaths": 3,
-     "explanation": "The ordinary jump and up-left dash pass through the open window, but peak below the high directional refill and fall short of the western gallery."
-    }
-   ],
-   "timingCues": [
-    "The low ceiling must be glass as the recoil launch reaches it.",
-    "The far tally opens the high western exit; it cannot be skipped by launching left at the start.",
-    "Hold the far plate until the vertical window approaches glass again, then reverse-launch through it.",
-    "The leftward crystal is positioned on the high return, beyond the window; reaching it too low cannot restore the continuation."
-   ],
-   "scale": "48×36 tiles; 1.88 normal-room areas, one connected outward-and-return route.",
-   "routeProof": {
-    "exited": true,
-    "deaths": 0,
-    "frames": 530,
-    "events": [
-     "recoil-load",
-     "slab-molten",
-     "slab-glass",
-     "recoil-release",
-     "jump",
-     "recoil-jump",
-     "land",
-     "slab-stone",
-     "dash",
-     "refill-dash",
-     "stone-lit",
-     "gate-open",
-     "super",
-     "reverse-super",
-     "refill",
-     "vector-refill",
-     "exit"
-    ],
-    "eventCounts": {
-     "recoil-load": 2,
-     "slab-molten": 5,
-     "slab-glass": 5,
-     "recoil-release": 2,
-     "jump": 2,
-     "recoil-jump": 2,
-     "land": 3,
-     "slab-stone": 4,
-     "dash": 4,
-     "refill-dash": 4,
-     "stone-lit": 1,
-     "gate-open": 1,
-     "super": 1,
-     "reverse-super": 1,
-     "refill": 1,
-     "vector-refill": 1,
-     "exit": 1
-    }
-   },
-   "routeMovement": [
-    {
-     "type": "recoil-jump",
-     "frame": 103,
-     "x": 117,
-     "y": 252,
-     "source": "recoil:Low",
-     "vx": 56.66666666666667,
-     "vy": -225
-    },
-    {
-     "type": "super",
-     "frame": 346,
-     "x": 334,
-     "y": 176
-    },
-    {
-     "type": "reverse-super",
-     "frame": 346,
-     "x": 334,
-     "y": 176,
-     "dir": -1
-    },
-    {
-     "type": "recoil-jump",
-     "frame": 346,
-     "x": 330,
-     "y": 172,
-     "source": "recoil:Return",
-     "vx": -260,
-     "vy": -225
-    },
-    {
-     "type": "vector-refill",
-     "frame": 395,
-     "x": 196,
-     "y": 68,
-     "dx": -1,
-     "dy": 0,
-     "once": false
-    }
-   ],
-   "revision": "17a098707bb0",
-   "source": "scripts/room-bank/fractured/bank-f62.json"
-  },
-  "tape": [
-   [
-    95,
-    "d"
-   ],
-   [
-    7,
-    ""
-   ],
-   [
-    25,
-    "rj"
-   ],
-   [
-    20,
-    "r"
-   ],
-   [
-    8,
-    ""
-   ],
-   [
-    20,
-    "rj"
-   ],
-   [
-    12,
-    "rux"
-   ],
-   [
-    65,
-    "rgu"
-   ],
-   [
-    30,
-    "l"
-   ],
-   [
-    50,
-    "d"
-   ],
-   [
-    1,
-    ""
-   ],
-   [
-    12,
-    "rx"
-   ],
-   [
-    26,
-    "lj"
-   ],
-   [
-    12,
-    "lux"
-   ],
-   [
-    10,
-    "l"
-   ],
-   [
-    12,
-    "lux"
-   ],
-   [
-    220,
-    "lgu"
-   ]
-  ]
  }
 ];
-const B={version:'7.299.0',activeRun:7,groups:["run7","run6","run5","superrooms","run4","run3","run2","run1","review","banked"],records};
+const B={version:'7.302.0',activeRun:7,defaultGroup:"pending",groups:["pending","banked"],records};
 root.BladefallRoomBank=B;
 if(!root.BLADEFALL_ROOM_BANK&&!(root.location&&new URLSearchParams(root.location.search).get('pitch')==='bank'))return;
 const R=root.BladefallPrecisionRooms;
 for(const side of ['base','fractured'])for(const group of B.groups){
- const set=records.filter(x=>x.bank.side===side&&(x.bank.acceptance==='banked'?'banked':x.bank.collection==='superrooms'?'superrooms':x.bank.run>=2?'run'+x.bank.run:x.bank.run===1?'run1':'review')===group);
- if(set.length)R.addPart({part:'spares',title:'Room Bank',chapters:[{id:'bank-'+side+'-'+group,name:(side==='base'?'Base':'Fractured')+(group==='superrooms'?' Superrooms':group==='run1'?' Run 1 Revisions':group.startsWith('run')?' Run '+group.slice(3):group==='banked'?' Banked':' Review'),bonus:true,pitch:'bank',bank:side,bankGroup:group,palette:side==='base'?'causeway':'throne',rooms:set.map(x=>({...x.room,bank:x.bank}))}],tapes:Object.fromEntries(set.map(x=>[x.room.id,x.tape]))});
+ const set=records.filter(x=>x.bank.side===side&&(x.bank.acceptance==='banked'?'banked':B.defaultGroup==='pending'?'pending':x.bank.collection==='superrooms'?'superrooms':x.bank.run>=2?'run'+x.bank.run:x.bank.run===1?'run1':'review')===group);
+ if(set.length)R.addPart({part:'spares',title:'Room Bank',chapters:[{id:'bank-'+side+'-'+group,name:(side==='base'?'Base':'Fractured')+(group==='pending'?' Final Review':group==='superrooms'?' Superrooms':group==='run1'?' Run 1 Revisions':group.startsWith('run')?' Run '+group.slice(3):group==='banked'?' Banked':' Review'),bonus:true,pitch:'bank',bank:side,bankGroup:group,palette:side==='base'?'causeway':'throne',rooms:set.map(x=>({...x.room,bank:x.bank}))}],tapes:Object.fromEntries(set.map(x=>[x.room.id,x.tape]))});
 }
 })(globalThis);

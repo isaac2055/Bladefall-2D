@@ -1,0 +1,798 @@
+{
+  "room": {
+    "id": "bank-b54",
+    "name": "Two Heights, One Breath",
+    "palette": "cliffs",
+    "study": true,
+    "movement": "survive-2",
+    "aim8": true,
+    "exit": "right",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "cols": 40,
+    "rows": 23,
+    "map": [
+      "########################################",
+      "#.........#########....................#",
+      "#.........#########....................#",
+      "#.........#########.....................",
+      "#.........#########.....................",
+      "#.........#########.....................",
+      "#.........#########.....................",
+      "#.........#########.....................",
+      "#.........#########...............######",
+      "#.........#########..............<######",
+      "#.........#########..............<######",
+      "#.........vvvvvvvvv..............<######",
+      "#................................<######",
+      "#................................<######",
+      "#................................<######",
+      "#...P............................<######",
+      "########.........................<######",
+      "########.........................<######",
+      "########......b..........b.......<######",
+      "########.........................<######",
+      "########.........................<######",
+      "########^^^^^^^^^^^^^^^^^^^^^^^^^^######",
+      "########################################"
+    ],
+    "hint": "Release Jump for the low cut. Hold it for the second; watch where the patrol will return.",
+    "sweepers": [
+      {
+        "id": "Low return",
+        "path": [
+          [
+            16,
+            12
+          ],
+          [
+            16,
+            18
+          ]
+        ],
+        "period": 160,
+        "phase": 60,
+        "radius": 4
+      },
+      {
+        "id": "High return",
+        "path": [
+          [
+            30,
+            4
+          ],
+          [
+            30,
+            14
+          ]
+        ],
+        "period": 160,
+        "phase": 40,
+        "radius": 4
+      }
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 14,
+    "run": 7,
+    "collection": "run7",
+    "format": "compact",
+    "acceptance": "banked",
+    "status": "route-proven",
+    "difficulty": 3,
+    "role": "Choose two rebound heights while the same departure determines both patrol crossings",
+    "worlds": [],
+    "tags": [
+      "timed-pogo",
+      "sweeper",
+      "arrival-phase"
+    ],
+    "newMechanics": [],
+    "author": "Codex",
+    "humanReview": "Approved for late Fractured. Numeric player ratings remain unmeasured.",
+    "learningFamily": "timed-launch-and-pogo",
+    "lessonRole": "introduce",
+    "prerequisites": [],
+    "preparesFor": [
+      "bank-b55",
+      "bank-f55"
+    ],
+    "timingCues": [
+      "From the starting lip, leave while the first thorn is descending through the middle of its marked route.",
+      "The first low rebound passes above that thorn’s lower turn. Delay too long and it returns into your arc.",
+      "The far thorn is near its upper turn as the loft reaches its apex; dash beneath its downward departure."
+    ],
+    "requiredEvents": [
+      "pogo-low",
+      "pogo-loft",
+      "pod",
+      "dash"
+    ],
+    "solution": "Jump from the western lip to the first pod. Release Jump before cutting down so the low rebound stays below the thorned roof. Cross above the first patrol’s lower turn and dash right while that rebound is level. Cut the second pod with Jump held to loft. Near the apex, dash up-right beneath the second patrol as it starts down, reach the high shelf, and run out. There is no intermediate ground refill.",
+    "nearestExisting": "F33 shows a useful momentum-preserving launch; B21–25/F21–25 separated most patrol crossings with full resets. This room joins the crossings through an airborne decision.",
+    "novelty": "Choose two rebound heights while the same departure determines both patrol crossings",
+    "positiveChecks": [
+      {
+        "name": "Leave three frames later",
+        "tape": [
+          [
+            15,
+            "r"
+          ],
+          [
+            3,
+            ""
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 181,
+        "events": [
+          "jump",
+          "strike",
+          "pogo-low",
+          "pod",
+          "dash",
+          "pogo-loft",
+          "refill-dash",
+          "land",
+          "exit"
+        ],
+        "eventCounts": {
+          "jump": 1,
+          "strike": 2,
+          "pogo-low": 1,
+          "pod": 2,
+          "dash": 2,
+          "pogo-loft": 1,
+          "refill-dash": 2,
+          "land": 1,
+          "exit": 1
+        }
+      },
+      {
+        "name": "Cut the first pod one frame earlier",
+        "tape": [
+          [
+            15,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            17,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            21,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 177,
+        "events": [
+          "jump",
+          "strike",
+          "pogo-low",
+          "pod",
+          "dash",
+          "pogo-loft",
+          "refill-dash",
+          "land",
+          "exit"
+        ],
+        "eventCounts": {
+          "jump": 1,
+          "strike": 2,
+          "pogo-low": 1,
+          "pod": 2,
+          "dash": 2,
+          "pogo-loft": 1,
+          "refill-dash": 2,
+          "land": 1,
+          "exit": 1
+        }
+      },
+      {
+        "name": "Spend the lofted dash two frames earlier",
+        "tape": [
+          [
+            15,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 177,
+        "events": [
+          "jump",
+          "strike",
+          "pogo-low",
+          "pod",
+          "dash",
+          "pogo-loft",
+          "refill-dash",
+          "land",
+          "exit"
+        ],
+        "eventCounts": {
+          "jump": 1,
+          "strike": 2,
+          "pogo-low": 1,
+          "pod": 2,
+          "dash": 2,
+          "pogo-loft": 1,
+          "refill-dash": 2,
+          "land": 1,
+          "exit": 1
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Jump and dash directly from the nearest starting edge",
+        "tape": [
+          [
+            21,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            30,
+            "rgu"
+          ]
+        ],
+        "exited": false,
+        "deaths": 1,
+        "frames": 116,
+        "events": [
+          "jump",
+          "dash",
+          "death",
+          "respawn"
+        ],
+        "eventCounts": {
+          "jump": 1,
+          "dash": 1,
+          "death": 1,
+          "respawn": 1
+        },
+        "death": {
+          "type": "death",
+          "frame": 85,
+          "x": 188,
+          "y": 171,
+          "cause": "spikes",
+          "vx": 90,
+          "vy": 0,
+          "i": 84
+        }
+      },
+      {
+        "name": "Climb onto the low roof with an up-dash",
+        "tape": [
+          [
+            15,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            80,
+            "rgu"
+          ],
+          [
+            60,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 2,
+        "frames": 179,
+        "events": [
+          "jump",
+          "dash",
+          "death",
+          "respawn"
+        ],
+        "eventCounts": {
+          "jump": 1,
+          "dash": 1,
+          "death": 2,
+          "respawn": 2
+        },
+        "death": {
+          "type": "death",
+          "frame": 33,
+          "x": 77,
+          "y": 94,
+          "cause": "spikes",
+          "vx": 0,
+          "vy": -240,
+          "i": 32
+        }
+      },
+      {
+        "name": "Use a lofted first pogo under the thorn roof",
+        "tape": [
+          [
+            15,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 3,
+        "frames": 235,
+        "events": [
+          "jump",
+          "strike",
+          "pogo-loft",
+          "pod",
+          "death",
+          "respawn",
+          "dash"
+        ],
+        "eventCounts": {
+          "jump": 1,
+          "strike": 1,
+          "pogo-loft": 1,
+          "pod": 1,
+          "death": 3,
+          "respawn": 2,
+          "dash": 1
+        },
+        "death": {
+          "type": "death",
+          "frame": 66,
+          "x": 130,
+          "y": 96,
+          "cause": "spikes",
+          "vx": 90,
+          "vy": -135,
+          "i": 65
+        }
+      },
+      {
+        "name": "Use a low final pogo and dash for the shelf",
+        "tape": [
+          [
+            15,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            26,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 2,
+        "frames": 235,
+        "events": [
+          "jump",
+          "strike",
+          "pogo-low",
+          "pod",
+          "dash",
+          "refill-dash",
+          "death",
+          "respawn"
+        ],
+        "eventCounts": {
+          "jump": 1,
+          "strike": 2,
+          "pogo-low": 2,
+          "pod": 2,
+          "dash": 2,
+          "refill-dash": 1,
+          "death": 2,
+          "respawn": 1
+        },
+        "death": {
+          "type": "death",
+          "frame": 140,
+          "x": 266,
+          "y": 82,
+          "cause": "spikes",
+          "vx": 95.80375165651428,
+          "vy": -24.852813742385692,
+          "i": 139
+        }
+      },
+      {
+        "name": "Leave during the returning low patrol",
+        "tape": [
+          [
+            15,
+            "r"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 3,
+        "frames": 270,
+        "events": [
+          "jump",
+          "strike",
+          "pogo-low",
+          "pod",
+          "death",
+          "respawn",
+          "dash"
+        ],
+        "eventCounts": {
+          "jump": 1,
+          "strike": 1,
+          "pogo-low": 1,
+          "pod": 1,
+          "death": 3,
+          "respawn": 2,
+          "dash": 1
+        },
+        "death": {
+          "type": "death",
+          "frame": 100,
+          "x": 128,
+          "y": 110,
+          "cause": "sweeper",
+          "vx": 90,
+          "vy": -75,
+          "i": 99
+        }
+      }
+    ],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 177,
+      "events": [
+        "jump",
+        "strike",
+        "pogo-low",
+        "pod",
+        "dash",
+        "pogo-loft",
+        "refill-dash",
+        "land",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 1,
+        "strike": 2,
+        "pogo-low": 1,
+        "pod": 2,
+        "dash": 2,
+        "pogo-loft": 1,
+        "refill-dash": 2,
+        "land": 1,
+        "exit": 1
+      }
+    },
+    "requiredEventCounts": {
+      "pod": 2
+    },
+    "actualMovementEvents": [
+      "jump",
+      "strike",
+      "pogo-low",
+      "pod",
+      "dash",
+      "pogo-loft",
+      "refill-dash",
+      "land",
+      "exit"
+    ],
+    "designNotes": "The first roof is joined to the top boundary, preventing a roof ride. The second shelf is too high for the low rebound route; its visible thorned face blocks the ordinary dash-and-climb shortcut. The first patrol is timing-consequential: a saved late departure hits its return. The two different blade heights are a Base lesson, not an advanced launch requirement.",
+    "endingForgiveness": "The final loft/dash is part of the challenge. The tested two-frame earlier dash still lands; the receiving shelf is six tiles wide.",
+    "approvedIngredients": [
+      "bank-f33",
+      "bank-f49",
+      "bank-f23"
+    ],
+    "review": {
+      "authorEvidence": "One zero-death canonical route, two or three saved timing/contact variants, and active ordinary-route bypass attempts. Human fun/difficulty/suitability review remains pending."
+    },
+    "placementBand": "late Fractured",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "late Fractured",
+      "geometryPreserved": true
+    },
+    "reclassifiedFrom": "base"
+  },
+  "tape": [
+    [
+      15,
+      "r"
+    ],
+    [
+      18,
+      "rj"
+    ],
+    [
+      18,
+      "r"
+    ],
+    [
+      1,
+      "ds"
+    ],
+    [
+      20,
+      "r"
+    ],
+    [
+      12,
+      "rx"
+    ],
+    [
+      12,
+      "r"
+    ],
+    [
+      1,
+      "djs"
+    ],
+    [
+      26,
+      "rj"
+    ],
+    [
+      12,
+      "rux"
+    ],
+    [
+      100,
+      "r"
+    ]
+  ]
+}

@@ -24,3 +24,20 @@ for(const face of ['up','down','left','right']){
 // Departing on the last warning frame is safe: the newly armed strip must not hit an old position.
 {const{g,e}=test();pose(g,e.x+8,e.y-11);tick(g);tick(g,()=>pose(g,240,40));for(let i=0;i<17;i++)tick(g);pose(g,e.x+8,e.y-11);tick(g,()=>pose(g,240,40));assert.equal(e.state,'armed');assert.equal(g.p.state,'normal');}
 console.log('Spent-thorn: four faces, indefinite first hold, warning/recontact, lethal retained solid, reset, actual jump, dimensions, mirror and opt-in checks passed.');
+// Segmented opt-in: only covered patches spend; the untouched continuation remains usable.
+for(const face of ['up','down','left','right']){
+ const g=Core.createGame([room([{...spec,face,segment:4,w:4,h:4}])]),e=ST.all(g)[0];
+ const at=face==='up'?[e.x,e.y-11]:face==='down'?[e.x,e.y+e.h]:face==='left'?[e.x-8,e.y]:[e.x+e.w,e.y];
+ pose(g,...at);tick(g);const used=e.segments.filter(s=>s.state==='contact');assert.equal(used.length,face==='up'||face==='down'?2:3);
+ for(let i=0;i<60;i++)tick(g);assert(used.every(s=>s.state==='contact'));
+ tick(g,()=>pose(g,240,40));for(let i=0;i<18;i++)tick(g);assert(used.every(s=>s.state==='armed'));assert(e.segments.some(s=>s.state==='dormant'));
+ const fresh=face==='up'?[e.x+20,e.y-11]:face==='down'?[e.x+20,e.y+e.h]:face==='left'?[e.x-8,e.y+20]:[e.x+e.w,e.y+20];
+ // A discontinuous arrival must not sweep the intervening spent patches.
+ device.before(g);pose(g,...fresh);g.events.push({type:'portal-pass',kind:'knight'});device.after(g);assert.equal(g.p.state,'normal');
+ pose(g,...at);tick(g);assert.equal(g.p.state,'dead');Core.resetRoom(g);assert(ST.all(g)[0].segments.every(s=>s.state==='dormant'));
+}
+// Sliding along one face starts independent timers, instead of spending its whole length.
+{const g=Core.createGame([room([{...spec,segment:4}])]),e=ST.all(g)[0];pose(g,e.x,e.y-11);tick(g);tick(g,()=>pose(g,e.x+4,e.y-11));assert.equal(e.segments[0].state,'arming');assert.equal(e.segments[1].state,'contact');assert.equal(e.segments[2].state,'contact');assert.equal(e.segments[3].state,'dormant');}
+// Vertical patch offsets reflect with gravity while preserving their individual spent states.
+{const g=Core.createGame([room([{...spec,face:'left',h:4,segment:4}])]),e=ST.all(g)[0];e.segments[0].state='armed';e.y=g.room.h-e.y-e.h;device.mirror(g);assert.equal(e.segments[0].start,28);assert.equal(ST.faces(e)[0].y,e.y+28);device.mirror(g);assert.equal(e.segments[0].start,0);}
+console.log('Segmented spent-thorn: independent patches, preserved neighbours, sliding departure, teleport, reset, and vertical gravity reflection passed.');

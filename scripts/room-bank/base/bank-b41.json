@@ -67,7 +67,7 @@
     "side": "base",
     "batch": 9,
     "run": 4,
-    "acceptance": "revised",
+    "acceptance": "banked",
     "difficulty": 4,
     "role": "low rebound that creates a transfer, then spend that transfer to make the exit",
     "worlds": [
@@ -1113,7 +1113,7 @@
       },
       "firstFailure": null
     },
-    "humanReview": "User rejected the direct-swing skip and the simple ramp-to-pogo sequence. Rebuilt as a two-phase lift-transfer puzzle; awaits review.",
+    "humanReview": "Approved for Base. Numeric player ratings remain unmeasured.",
     "requiredEventCounts": {
       "moving-hook": 2,
       "moving-unhook": 2,
@@ -1128,6 +1128,12 @@
     "userFeedback": {
       "date": "2026-10-09",
       "comment": "Direct ramp swing skips first pogo, and ramp into pogo is too simple. Make the puzzle harder and more complex."
+    },
+    "placementBand": "Base",
+    "finalReview20261009": {
+      "decision": "banked",
+      "placement": "Base",
+      "geometryPreserved": true
     }
   },
   "tape": [
