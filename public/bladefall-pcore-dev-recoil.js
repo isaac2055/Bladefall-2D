@@ -63,7 +63,7 @@ function before(g,inp){
 }
 function after(g){
  const p=g.p;if(!p.recoilSource||g.frame>p.recoilSourceUntil)return;
- const jump=g.events.find(e=>e.frame===g.frame&&((e.type==='jump'&&e.lift)||(['hyper','super','wallbounce'].includes(e.type)&&p.liftY<0))); 
+ const jump=g.events.find(e=>e.frame===g.frame&&((e.type==='jump'&&e.lift)||(['hyper','super','wallbounce'].includes(e.type)&&p.liftY<0)));
  if(jump){C().emit(g,'recoil-jump',{x:p.x+4,y:p.y+p.h,source:p.recoilSource,vx:p.vx,vy:p.vy});p.recoilSource=null;}
 }
 function mirror(g){for(const e of platforms(g))e.axis=-e.axis;g.p.recoilSource=null;}
