@@ -94,7 +94,7 @@ function endCard(behind, title, subtitle, line, built){
 }
 function clear(stage){
   try{ commitStageCompletion(); }catch(_e){}
-  try{ recordWorldClear(); }catch(_e){}
+  try{ offerExploreWorldClear();recordWorldClear(); }catch(_e){}
   try{ recordSessionClear(stage); }catch(_e){}
 }
 

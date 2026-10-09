@@ -1,0 +1,927 @@
+{
+  "room": {
+    "id": "bank-f42",
+    "name": "Two Jobs in One Cut",
+    "palette": "gaol",
+    "study": true,
+    "movement": "survive-2",
+    "aim8": true,
+    "dashes": 0,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "exit": "right",
+    "impulseSeeds": [
+      {
+        "id": "A",
+        "c": 13,
+        "r": 13
+      }
+    ],
+    "map": [
+      "########################################",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......########........................",
+      "#.......vvvvvvvv........................",
+      "#.......................................",
+      "#...............................<#######",
+      "#....P..........................<#######",
+      "#########.......................<#######",
+      "#########...............bb......<#######",
+      "#########.......................<#######",
+      "#########...b...................<#######",
+      "#########.......................<#######",
+      "#########.......................<#######",
+      "#########.......................<#######",
+      "#########.......................<#######",
+      "#########.......................<#######",
+      "#########.......................<#######",
+      "#########.......................<#######",
+      "#########^^^^^^^^^^^^^^^^^^^^^^^########",
+      "########################################"
+    ],
+    "hint": "Low cut sends the seed below · Meet gold on the fall; hold Jump for the far rebound. No dash.",
+    "question": "Can the first rebound prepare the launch you will need on the way down?",
+    "showHintAtRest": true
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 9,
+    "run": 4,
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "one stroke, two preparations",
+    "worlds": [
+      25,
+      31,
+      34
+    ],
+    "tags": [
+      "controlled-pogo",
+      "impulse-seed",
+      "blade",
+      "aim8",
+      "return-trajectory",
+      "no-dash"
+    ],
+    "newMechanics": [
+      "controlled-pogo",
+      "impulse-seed"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "pogo-low",
+      "impulse-prime",
+      "impulse-ready",
+      "impulse-burst",
+      "pogo-loft"
+    ],
+    "humanReview": "Unreviewed; difficulty is an author estimate.",
+    "entrance": "West balcony above the paired pod and seed.",
+    "exit": "High eastern balcony beyond the second pod.",
+    "solution": "Walk off the west balcony. Cut diagonally down-right with Jump released: the same blade contact makes a low pod rebound and knocks the adjacent impulse seed down-right. Drift past the moved seed while its charge finishes, then face down-left and cut its gold face during the descent. The seed launches up-right toward the distant pod pair. Hold Jump on the next downward cut to loft onto the high exit, preserving the seed's lateral speed.",
+    "nearestExisting": "B32 chooses low and lofted rebounds around a portal, while F36 relocates an impulse before a separate return climb. Here the first low rebound is also the physical preparation of the later seed launch; the return interception occurs during that rebound, and its sideways speed carries through the final loft.",
+    "novelty": "One diagonal blade stroke prepares two different objects at once. The knight goes up while the seed goes down, then the same arc brings them together in a new relative position. Low versus lofted rebound is selected twice for opposite purposes.",
+    "designNotes": "Zero dashes makes the seed the necessary lateral bridge. First roof rejects loft, lower thorns reject walking into an easy seed setup, and the exit face denies a climb shortcut. No secret exit-event condition. The starting pod and seed are adjacent and separately visible. Their double-contact window spans ten approach timings (32–41 frames), each producing both low rebound and seed preparation. Different early cuts change the later interception; the player still aims at the moved seed. The far two-pod cluster widens the landing contact.",
+    "positiveChecks": [
+      {
+        "name": "Approach 36; drift 26; fall 8; far cut 23",
+        "tape": [
+          [
+            36,
+            "r"
+          ],
+          [
+            1,
+            "rds"
+          ],
+          [
+            26,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            1,
+            "lds"
+          ],
+          [
+            23,
+            "r"
+          ],
+          [
+            1,
+            "rdjs"
+          ],
+          [
+            100,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 167,
+          "events": [
+            "strike",
+            "pogo-low",
+            "pod",
+            "impulse-prime",
+            "impulse-ready",
+            "impulse-burst",
+            "pogo-loft",
+            "impulse-reset",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 3,
+            "pogo-low": 1,
+            "pod": 3,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "impulse-burst": 1,
+            "pogo-loft": 2,
+            "impulse-reset": 1,
+            "land": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Approach 36; drift 27; fall 8; far cut 23",
+        "tape": [
+          [
+            36,
+            "r"
+          ],
+          [
+            1,
+            "rds"
+          ],
+          [
+            27,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            1,
+            "lds"
+          ],
+          [
+            23,
+            "r"
+          ],
+          [
+            1,
+            "rdjs"
+          ],
+          [
+            100,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 153,
+          "events": [
+            "strike",
+            "pogo-low",
+            "pod",
+            "impulse-prime",
+            "impulse-ready",
+            "impulse-burst",
+            "pogo-loft",
+            "impulse-reset",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 3,
+            "pogo-low": 1,
+            "pod": 3,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "impulse-burst": 1,
+            "pogo-loft": 2,
+            "impulse-reset": 1,
+            "land": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Approach 37; drift 25; fall 9; far cut 22",
+        "tape": [
+          [
+            37,
+            "r"
+          ],
+          [
+            1,
+            "rds"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            9,
+            ""
+          ],
+          [
+            1,
+            "lds"
+          ],
+          [
+            22,
+            "r"
+          ],
+          [
+            1,
+            "rdjs"
+          ],
+          [
+            100,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 167,
+          "events": [
+            "strike",
+            "pogo-low",
+            "pod",
+            "impulse-prime",
+            "impulse-ready",
+            "impulse-burst",
+            "pogo-loft",
+            "impulse-reset",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 3,
+            "pogo-low": 1,
+            "pod": 3,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "impulse-burst": 1,
+            "pogo-loft": 2,
+            "impulse-reset": 1,
+            "land": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Approach 37; drift 26; fall 9; far cut 19",
+        "tape": [
+          [
+            37,
+            "r"
+          ],
+          [
+            1,
+            "rds"
+          ],
+          [
+            26,
+            "r"
+          ],
+          [
+            9,
+            ""
+          ],
+          [
+            1,
+            "lds"
+          ],
+          [
+            19,
+            "r"
+          ],
+          [
+            1,
+            "rdjs"
+          ],
+          [
+            100,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 156,
+          "events": [
+            "strike",
+            "pogo-low",
+            "pod",
+            "impulse-prime",
+            "impulse-ready",
+            "impulse-burst",
+            "pogo-loft",
+            "impulse-reset",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 3,
+            "pogo-low": 1,
+            "pod": 3,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "impulse-burst": 1,
+            "pogo-loft": 2,
+            "impulse-reset": 1,
+            "land": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Approach 37; drift 27; fall 8; far cut 21",
+        "tape": [
+          [
+            37,
+            "r"
+          ],
+          [
+            1,
+            "rds"
+          ],
+          [
+            27,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            1,
+            "lds"
+          ],
+          [
+            21,
+            "r"
+          ],
+          [
+            1,
+            "rdjs"
+          ],
+          [
+            100,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 142,
+          "events": [
+            "strike",
+            "pogo-low",
+            "pod",
+            "impulse-prime",
+            "impulse-ready",
+            "impulse-burst",
+            "pogo-loft",
+            "impulse-reset",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 3,
+            "pogo-low": 1,
+            "pod": 3,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "impulse-burst": 1,
+            "pogo-loft": 2,
+            "impulse-reset": 1,
+            "land": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Approach 38; drift 25; fall 8; far cut 22",
+        "tape": [
+          [
+            38,
+            "r"
+          ],
+          [
+            1,
+            "rds"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            1,
+            "lds"
+          ],
+          [
+            22,
+            "r"
+          ],
+          [
+            1,
+            "rdjs"
+          ],
+          [
+            100,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 153,
+          "events": [
+            "strike",
+            "pogo-low",
+            "pod",
+            "impulse-prime",
+            "impulse-ready",
+            "impulse-burst",
+            "pogo-loft",
+            "impulse-reset",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 3,
+            "pogo-low": 1,
+            "pod": 3,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "impulse-burst": 1,
+            "pogo-loft": 2,
+            "impulse-reset": 1,
+            "land": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Approach 38; drift 26; fall 8; far cut 19",
+        "tape": [
+          [
+            38,
+            "r"
+          ],
+          [
+            1,
+            "rds"
+          ],
+          [
+            26,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            1,
+            "lds"
+          ],
+          [
+            19,
+            "r"
+          ],
+          [
+            1,
+            "rdjs"
+          ],
+          [
+            100,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 143,
+          "events": [
+            "strike",
+            "pogo-low",
+            "pod",
+            "impulse-prime",
+            "impulse-ready",
+            "impulse-burst",
+            "pogo-loft",
+            "impulse-reset",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 3,
+            "pogo-low": 1,
+            "pod": 3,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "impulse-burst": 1,
+            "pogo-loft": 2,
+            "impulse-reset": 1,
+            "land": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Approach 38; drift 27; fall 8; far cut 20",
+        "tape": [
+          [
+            38,
+            "r"
+          ],
+          [
+            1,
+            "rds"
+          ],
+          [
+            27,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            1,
+            "lds"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            1,
+            "rdjs"
+          ],
+          [
+            100,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 132,
+          "events": [
+            "strike",
+            "pogo-low",
+            "pod",
+            "impulse-prime",
+            "impulse-ready",
+            "impulse-burst",
+            "pogo-loft",
+            "impulse-reset",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 3,
+            "pogo-low": 1,
+            "pod": 2,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "impulse-burst": 1,
+            "pogo-loft": 1,
+            "impulse-reset": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Hold Jump on the first double contact",
+        "tape": [
+          [
+            37,
+            "r"
+          ],
+          [
+            1,
+            "rdjs"
+          ],
+          [
+            26,
+            "r"
+          ],
+          [
+            9,
+            ""
+          ],
+          [
+            1,
+            "lds"
+          ],
+          [
+            21,
+            "r"
+          ],
+          [
+            1,
+            "rdjs"
+          ],
+          [
+            90,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 3,
+          "frames": 0,
+          "events": [
+            "strike",
+            "pogo-loft",
+            "pod",
+            "impulse-prime",
+            "death",
+            "respawn",
+            "jump"
+          ],
+          "eventCounts": {
+            "strike": 2,
+            "pogo-loft": 1,
+            "pod": 1,
+            "impulse-prime": 1,
+            "death": 3,
+            "respawn": 2,
+            "jump": 1
+          }
+        }
+      },
+      {
+        "name": "Skip the relocation contact",
+        "tape": [
+          [
+            37,
+            "r"
+          ],
+          [
+            1,
+            "rd"
+          ],
+          [
+            26,
+            "r"
+          ],
+          [
+            9,
+            ""
+          ],
+          [
+            1,
+            "lds"
+          ],
+          [
+            21,
+            "r"
+          ],
+          [
+            1,
+            "rdjs"
+          ],
+          [
+            90,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "death": 2,
+            "respawn": 2
+          }
+        }
+      },
+      {
+        "name": "Skip the charged second strike",
+        "tape": [
+          [
+            37,
+            "r"
+          ],
+          [
+            1,
+            "rds"
+          ],
+          [
+            26,
+            "r"
+          ],
+          [
+            9,
+            ""
+          ],
+          [
+            1,
+            "ld"
+          ],
+          [
+            21,
+            "r"
+          ],
+          [
+            1,
+            "rdjs"
+          ],
+          [
+            90,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "strike",
+            "pogo-low",
+            "pod",
+            "impulse-prime",
+            "impulse-ready",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "strike": 2,
+            "pogo-low": 1,
+            "pod": 1,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "death": 2,
+            "respawn": 1
+          }
+        }
+      },
+      {
+        "name": "Use the low rebound at the far pod",
+        "tape": [
+          [
+            37,
+            "r"
+          ],
+          [
+            1,
+            "rds"
+          ],
+          [
+            26,
+            "r"
+          ],
+          [
+            9,
+            ""
+          ],
+          [
+            1,
+            "lds"
+          ],
+          [
+            21,
+            "r"
+          ],
+          [
+            1,
+            "rds"
+          ],
+          [
+            90,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 0,
+          "events": [
+            "strike",
+            "pogo-low",
+            "pod",
+            "impulse-prime",
+            "impulse-ready",
+            "impulse-burst",
+            "impulse-reset",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "strike": 3,
+            "pogo-low": 3,
+            "pod": 3,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "impulse-burst": 1,
+            "impulse-reset": 1,
+            "death": 1,
+            "respawn": 1
+          }
+        }
+      }
+    ],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 154,
+      "events": [
+        "strike",
+        "pogo-low",
+        "pod",
+        "impulse-prime",
+        "impulse-ready",
+        "impulse-burst",
+        "pogo-loft",
+        "impulse-reset",
+        "land",
+        "exit"
+      ],
+      "eventCounts": {
+        "strike": 3,
+        "pogo-low": 1,
+        "pod": 3,
+        "impulse-prime": 1,
+        "impulse-ready": 1,
+        "impulse-burst": 1,
+        "pogo-loft": 2,
+        "impulse-reset": 1,
+        "land": 1,
+        "exit": 1
+      }
+    },
+    "tolerance": {
+      "note": "86 successful sampled full tapes across approach, drift, descent and second-pod timing. Representative complete routes saved; no claim all independent combinations work."
+    },
+    "composition": {
+      "movement": "Selected low and lofted pogos",
+      "entity": "Movable impulse seed",
+      "dependency": "One diagonal cut both creates the low rebound and relocates the seed beneath its return arc; the later seed burst supplies the lateral speed kept through the lofted final rebound."
+    }
+  },
+  "tape": [
+    [
+      37,
+      "r"
+    ],
+    [
+      1,
+      "rds"
+    ],
+    [
+      26,
+      "r"
+    ],
+    [
+      9,
+      ""
+    ],
+    [
+      1,
+      "lds"
+    ],
+    [
+      21,
+      "r"
+    ],
+    [
+      1,
+      "rdjs"
+    ],
+    [
+      90,
+      "rj"
+    ]
+  ]
+}

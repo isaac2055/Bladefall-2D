@@ -1,0 +1,646 @@
+{
+  "room": {
+    "id": "bank-b37",
+    "name": "Pay Out After the Wall",
+    "palette": "cliffs",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "map": [
+      "########################################",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#...P............................#######",
+      "########.........^^^^^^..........#######",
+      "########.........######..........#######",
+      "########.........######........c.#######",
+      "########.........######..........#######",
+      "########.........######..........#######",
+      "########.........######..........#######",
+      "########.........######..........#######",
+      "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+      "########################################"
+    ],
+    "dashes": 0,
+    "movingHooks": [
+      {
+        "id": "A",
+        "c": 9,
+        "r": 8,
+        "w": 2,
+        "to": [
+          21,
+          0
+        ],
+        "period": 360
+      }
+    ],
+    "hint": "Hold Grab to catch the moving ring · Up reels in; Down pays out."
+  },
+  "bank": {
+    "side": "base",
+    "batch": 7,
+    "run": 3,
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "solve",
+    "worlds": [
+      13,
+      16,
+      20
+    ],
+    "tags": [
+      "moving-hook",
+      "rope-length",
+      "low-objective",
+      "clearance"
+    ],
+    "newMechanics": [
+      "moving-hook"
+    ],
+    "entrance": "West bank beside the rail.",
+    "exit": "Raised east landing.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "moving-hook",
+      "moving-unhook",
+      "stone-lit"
+    ],
+    "humanReview": "Author estimate; human fun/difficulty/suitability pending.",
+    "solution": "Board the moving ring and shorten the chain above the central wall. Once the wall is behind, pay out to the low tally, then reel back up and release toward the high exit.",
+    "nearestExisting": "F23 Shorten the Arc moves the knight around fixed rings. This makes the carrier advance the rope origin while the player changes its length across a high obstacle and a low objective.",
+    "novelty": "The clearance constraint and the objective demand opposite rope lengths on the same travelling anchor.",
+    "route": {
+      "frames": 235,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "hook",
+        "moving-hook",
+        "stone-lit",
+        "gate-open",
+        "moving-hook-turn",
+        "moving-unhook",
+        "unhook",
+        "land",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 2,
+        "hook": 1,
+        "moving-hook": 1,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "moving-hook-turn": 1,
+        "moving-unhook": 1,
+        "unhook": 1,
+        "land": 1,
+        "exit": 1
+      }
+    },
+    "shortcutChecks": [
+      {
+        "name": "Keep the first chain long above the raised wall",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            45,
+            "rg"
+          ],
+          [
+            50,
+            "g"
+          ],
+          [
+            35,
+            "rdg"
+          ],
+          [
+            24,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "firstFailure": {
+            "type": "death",
+            "frame": 245,
+            "x": 260,
+            "y": 171,
+            "cause": "spikes",
+            "vx": 10.833333333333334,
+            "vy": 121.11111111111111,
+            "i": 244
+          }
+        }
+      },
+      {
+        "name": "Do not pay out for the low tally",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            45,
+            "rug"
+          ],
+          [
+            50,
+            "g"
+          ],
+          [
+            35,
+            "rug"
+          ],
+          [
+            24,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0
+        }
+      }
+    ],
+    "positiveChecks": [
+      {
+        "name": "Final release preparation 22 frames",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            45,
+            "rug"
+          ],
+          [
+            50,
+            "g"
+          ],
+          [
+            35,
+            "rdg"
+          ],
+          [
+            22,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "normalSpawn": true,
+        "frames": 233,
+        "deaths": 0
+      },
+      {
+        "name": "Final release preparation 23 frames",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            45,
+            "rug"
+          ],
+          [
+            50,
+            "g"
+          ],
+          [
+            35,
+            "rdg"
+          ],
+          [
+            23,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "normalSpawn": true,
+        "frames": 234,
+        "deaths": 0
+      },
+      {
+        "name": "Final release preparation 24 frames",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            45,
+            "rug"
+          ],
+          [
+            50,
+            "g"
+          ],
+          [
+            35,
+            "rdg"
+          ],
+          [
+            24,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "normalSpawn": true,
+        "frames": 235,
+        "deaths": 0
+      },
+      {
+        "name": "Final release preparation 25 frames",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            45,
+            "rug"
+          ],
+          [
+            50,
+            "g"
+          ],
+          [
+            35,
+            "rdg"
+          ],
+          [
+            25,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "normalSpawn": true,
+        "frames": 236,
+        "deaths": 0
+      },
+      {
+        "name": "Final release preparation 26 frames",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            45,
+            "rug"
+          ],
+          [
+            50,
+            "g"
+          ],
+          [
+            35,
+            "rdg"
+          ],
+          [
+            26,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "normalSpawn": true,
+        "frames": 238,
+        "deaths": 0
+      },
+      {
+        "name": "Final release preparation 27 frames",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            45,
+            "rug"
+          ],
+          [
+            50,
+            "g"
+          ],
+          [
+            35,
+            "rdg"
+          ],
+          [
+            27,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "normalSpawn": true,
+        "frames": 239,
+        "deaths": 0
+      },
+      {
+        "name": "Earlier rope decision 33 frames",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            45,
+            "rug"
+          ],
+          [
+            50,
+            "g"
+          ],
+          [
+            33,
+            "rdg"
+          ],
+          [
+            24,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "normalSpawn": true,
+        "frames": 234,
+        "deaths": 0
+      },
+      {
+        "name": "Earlier rope decision 34 frames",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            45,
+            "rug"
+          ],
+          [
+            50,
+            "g"
+          ],
+          [
+            34,
+            "rdg"
+          ],
+          [
+            24,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "normalSpawn": true,
+        "frames": 235,
+        "deaths": 0
+      },
+      {
+        "name": "Earlier rope decision 36 frames",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            45,
+            "rug"
+          ],
+          [
+            50,
+            "g"
+          ],
+          [
+            36,
+            "rdg"
+          ],
+          [
+            24,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "normalSpawn": true,
+        "frames": 235,
+        "deaths": 0
+      },
+      {
+        "name": "Earlier rope decision 37 frames",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            45,
+            "rug"
+          ],
+          [
+            50,
+            "g"
+          ],
+          [
+            37,
+            "rdg"
+          ],
+          [
+            24,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "normalSpawn": true,
+        "frames": 236,
+        "deaths": 0
+      }
+    ],
+    "designNotes": "The carrier is visible and solid. The mounted ring uses actual carrier velocity once and a collision-aware rope. Ten full normal-spawn timing examples cover both an earlier rope decision and final departure; none use a blocked-rope detach to complete. No survive-2 profile or advanced ground movement is required."
+  },
+  "tape": [
+    [
+      14,
+      "r"
+    ],
+    [
+      12,
+      "rjg"
+    ],
+    [
+      45,
+      "rug"
+    ],
+    [
+      50,
+      "g"
+    ],
+    [
+      35,
+      "rdg"
+    ],
+    [
+      24,
+      "rug"
+    ],
+    [
+      1,
+      "rj"
+    ],
+    [
+      100,
+      "r"
+    ]
+  ]
+}

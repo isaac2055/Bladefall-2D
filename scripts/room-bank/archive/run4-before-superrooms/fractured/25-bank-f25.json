@@ -1,0 +1,482 @@
+{
+  "room": {
+    "id": "bank-f25",
+    "name": "Freight Has Right of Way",
+    "palette": "deepline",
+    "study": true,
+    "exit": "left",
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "map": [
+      "########################################",
+      "#..G...................................#",
+      "#..G...................................#",
+      "#..G...................................#",
+      "#..G...................................#",
+      "#..G...................................#",
+      "...G...................................#",
+      "...G...................................#",
+      "...G...................................#",
+      "########...............................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#................######................#",
+      "#................######...............c#",
+      "#................######..............###",
+      "#....................................###",
+      "#...................................<###",
+      "#..P................................<###",
+      "########............................<###",
+      "########............................<###",
+      "########^^^^^^^^^^^^^^^^^^^^^^^^^^^^<###",
+      "########################################"
+    ],
+    "hint": "The deck keeps its schedule. The stone island stays above the low patrol.",
+    "question": "The outward crossing earns the key. What changes when the deck returns underneath you?",
+    "decks": [
+      {
+        "c": 7,
+        "r": 18,
+        "w": 4,
+        "h": 1,
+        "to": [
+          26,
+          0
+        ],
+        "period": 360,
+        "phase": 0
+      }
+    ],
+    "sweepers": [
+      {
+        "id": "A",
+        "path": [
+          [
+            13,
+            17
+          ],
+          [
+            27,
+            17
+          ]
+        ],
+        "period": 260,
+        "phase": 80,
+        "radius": 5,
+        "loop": false
+      },
+      {
+        "id": "B",
+        "path": [
+          [
+            35,
+            10
+          ],
+          [
+            35,
+            20
+          ]
+        ],
+        "period": 240,
+        "phase": 165,
+        "radius": 5,
+        "loop": false
+      }
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 4,
+    "acceptance": "candidate",
+    "difficulty": 5,
+    "role": "timing-puzzle",
+    "worlds": [
+      26,
+      36,
+      40
+    ],
+    "tags": [
+      "timing",
+      "sweeper",
+      "moving-deck",
+      "interception",
+      "return-route"
+    ],
+    "newMechanics": [
+      "sweeper"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "humanReview": "Author difficulty estimate only; fun/difficulty/suitability ratings pending.",
+    "entrance": "Lower western dock.",
+    "exit": "Upper western gate.",
+    "solution": "Board the outward deck and jump/dash onto the central island before the low patrol reaches the track. Move to its eastern edge while the patrol passes below and away, then jump/dash onto the deck near the far dock. Jump to the tally while the vertical patrol is below the transfer. From the far dock, dash left to catch the returning deck during that same clear window. Jump/dash back onto the island before the low patrol reaches the deck again; the now-open exit is a separate jump/dash above the original western dock.",
+    "nearestExisting": "F16 Return Freight intercepts cargo carried through a low tunnel; p152 Deck rides an elevator and p153 Running Start borrows its speed. Here the knight makes two different interceptions of one continuously moving deck, choosing a static refuge while the patrol occupies its track and a different takeoff on the return.",
+    "novelty": "The island is neither the destination nor merely an intermediate jump. It lets the deck and hazard move independently, then becomes the return launch toward an exit behind the start.",
+    "timing": {
+      "principle": "Leave the moving deck for a fixed refuge, then choose a new interception from the opposite side.",
+      "stages": [
+        {
+          "cue": "The deck brings the island within reach while the low patrol approaches its track.",
+          "action": "Jump/dash onto the island and let the patrol move below you.",
+          "rest": "Central stone island."
+        },
+        {
+          "cue": "The low patrol has passed the island to the west; the deck is near the far dock and the vertical patrol is below the transfer.",
+          "action": "Intercept the outward deck and jump to the far tally.",
+          "rest": "Eastern dock."
+        },
+        {
+          "cue": "The deck is returning while the vertical patrol remains below the leftward crossing.",
+          "action": "Dash onto the deck, then jump/dash to the island before the low sweep returns.",
+          "rest": "Central island; then upper-west exit."
+        }
+      ]
+    },
+    "verifiedAt": "2026-10-07",
+    "route": {
+      "frames": 413,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "land",
+        "dash",
+        "refill-dash",
+        "stone-lit",
+        "gate-open",
+        "exit"
+      ],
+      "movement": "Outward interception, far-dock jump, leftward dash to the returning deck, opposite transfer to the island, and upper-west exit jump."
+    },
+    "requiredEvents": [
+      "stone-lit",
+      "gate-open",
+      "dash"
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Stay aboard instead of leaving for the return refuge",
+        "tape": [
+          [
+            16,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            6,
+            "ux"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            6,
+            "rx"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            2,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            6,
+            "lx"
+          ],
+          [
+            35,
+            "l"
+          ],
+          [
+            6,
+            ""
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "firstFailure": {
+            "frame": 268,
+            "cause": "sweeper"
+          }
+        }
+      },
+      {
+        "name": "Miss the far-dock return window",
+        "tape": [
+          [
+            16,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            6,
+            "ux"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            6,
+            "rx"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            2,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            6,
+            "lx"
+          ],
+          [
+            22,
+            "l"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            6,
+            "lux"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            28,
+            "l"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            6,
+            "lux"
+          ],
+          [
+            80,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "firstFailure": {
+            "frame": 278,
+            "cause": "sweeper"
+          }
+        }
+      }
+    ],
+    "bypassCheck": {
+      "stayAboardReturn": {
+        "exited": false,
+        "firstFailure": {
+          "frame": 268,
+          "cause": "sweeper"
+        }
+      },
+      "lateReturn": {
+        "exited": false,
+        "firstFailure": {
+          "frame": 278,
+          "cause": "sweeper"
+        },
+        "extraDockWait": 50
+      },
+      "scope": "Two focused timing mistakes; no broad route search."
+    }
+  },
+  "tape": [
+    [
+      16,
+      "r"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      20,
+      "r"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      6,
+      "ux"
+    ],
+    [
+      12,
+      "r"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      28,
+      "r"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      6,
+      "rx"
+    ],
+    [
+      35,
+      "r"
+    ],
+    [
+      2,
+      ""
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      6,
+      "lx"
+    ],
+    [
+      22,
+      "l"
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      6,
+      "lux"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      28,
+      "l"
+    ],
+    [
+      5,
+      ""
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      6,
+      "lux"
+    ],
+    [
+      80,
+      "l"
+    ]
+  ]
+}

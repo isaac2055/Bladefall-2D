@@ -1,0 +1,239 @@
+{
+  "room": {
+    "id": "bank-b26",
+    "name": "One More Hit",
+    "palette": "combat",
+    "study": true,
+    "exit": "right",
+    "hint": "An upward cut lifts a living target. A downward cut rebounds and returns the dash.",
+    "question": "Where should the last living contact happen?",
+    "map": [
+      "########################################",
+      "#>......................................",
+      "#>......................................",
+      "#>......................................",
+      "#>......................................",
+      "#>.....................MMMMMMMMMMMMMMMMM",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>...............MMMM.................<#",
+      "#..P..................................<#",
+      "########################################"
+    ],
+    "combat": {
+      "waitForMove": true,
+      "enemies": [
+        {
+          "kind": "guard",
+          "x": 144,
+          "y": 144,
+          "face": 1,
+          "delay": 0
+        }
+      ],
+      "receivers": [],
+      "doors": []
+    }
+  },
+  "bank": {
+    "side": "base",
+    "batch": 5,
+    "run": 1,
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "combat-traversal",
+    "worlds": [
+      4,
+      11,
+      16
+    ],
+    "tags": [
+      "uppercut",
+      "finite-target",
+      "pogo",
+      "vertical-intercept"
+    ],
+    "newMechanics": [],
+    "status": "route-proven",
+    "author": "Codex",
+    "entrance": "Lower observation bank.",
+    "exit": "Raised eastern gallery.",
+    "solution": "Raise the guard with an upward cut from below its one-way stand. Jump and dash beside it, cross above the rising body and use a downward cut for the last rebound and refreshed dash into the high eastern gallery.",
+    "nearestExisting": "combat-10 The Living Stair sequences several enemies; fb4 Stepping Ram uses a stationary temporary step before a moth. This uses the same finite body twice, changing its height before spending its last hit.",
+    "novelty": "The first contact changes where the second contact can occur. Killing or pogoing the target at its original height cannot supply the final high departure.",
+    "requiredEvents": [
+      "enemy-hit",
+      "enemy-pogo",
+      "enemy-defeat"
+    ],
+    "route": {
+      "frames": 246,
+      "deaths": 0,
+      "events": [
+        "enemy-tell",
+        "jump",
+        "strike",
+        "enemy-hit",
+        "dash",
+        "refill-dash",
+        "enemy-pogo",
+        "enemy-defeat",
+        "land",
+        "exit"
+      ],
+      "movement": "Ordinary jump/dash/climb and blade; no super, hyper, ultra or wallbounce."
+    },
+    "shortcutChecks": [
+      {
+        "name": "Pogo the unlaunched target, then spend the refreshed dash upward",
+        "tape": [
+          [
+            82,
+            "r"
+          ],
+          [
+            8,
+            "j"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            27,
+            ""
+          ],
+          [
+            5,
+            "ds"
+          ],
+          [
+            22,
+            "r"
+          ],
+          [
+            5,
+            "ux"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "note": "Pogo and dash both occur, but the feet peak below the one-way gallery."
+        }
+      },
+      {
+        "name": "Attempt the same ascent without the finishing pogo",
+        "tape": [
+          [
+            82,
+            "r"
+          ],
+          [
+            8,
+            "j"
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            19,
+            ""
+          ],
+          [
+            22,
+            "r"
+          ],
+          [
+            5,
+            "ux"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "note": "No renewed aerial resource; the raised target alone is not footing."
+        }
+      }
+    ],
+    "humanReview": "Designer estimate only; user fun/difficulty/suitability ratings pending."
+  },
+  "tape": [
+    [
+      82,
+      "r"
+    ],
+    [
+      8,
+      "j"
+    ],
+    [
+      1,
+      "us"
+    ],
+    [
+      1,
+      "ux"
+    ],
+    [
+      14,
+      ""
+    ],
+    [
+      5,
+      "ds"
+    ],
+    [
+      22,
+      "r"
+    ],
+    [
+      5,
+      "ux"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      100,
+      "r"
+    ]
+  ]
+}

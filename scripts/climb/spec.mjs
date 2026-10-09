@@ -82,20 +82,20 @@ export const WORLDS=[
  // each keeps its designed order. A Fractured world's errand is its echo: only someone holding the base quest's
  // keepsake can enter it (q.needs, sealed in the page). Secrets come from the optional courses no world uses yet:
  // Momentum X (21), the vertical dash and spring sets (22), the portal set (23), the summit set (24).
- {n:21,mirror:['fo21-yard','fo21-hammer','fo21-last'],   // (7.280) laid reflected: the road meets them from the far side after a room that turns back
+ {n:21,questCeilings:{'mara-echo':{force:true,hosts:['fo21-map']},'rowan-echo':{force:true,hosts:['fo21-shoulder']}},mirror:['fo21-yard','fo21-hammer','fo21-last'],   // (7.280) laid reflected: the road meets them from the far side after a room that turns back
  secret:{rooms:['x1','x2','xm2','xm3','xm4','xm5']},order:['fo21-ash','fo21-mile','fo21-ridge','fo21-map','fo21-lookout','fo21-cracked','fo21-camp','fo21-torn','fo21-gate','fo21-yard','fo21-hammer','fo21-shoulder','fo21-last'],
   quests:['mara-echo','rowan-echo'],
   // (7.278) The Ash Steps is climbed up its left wall, so an arrival junction on that side would break it: the road
   // down from the Path to the Palace ends at a gate room over the first rooms instead, as 19–1 does in the Outskirts
   sockets:[{link:'19-21',name:'The Cracked Postern',minX:-999,hosts:['fo21-ash','fo21-mile','fo21-ridge']}]},
- {n:22,mirror:['fw22-briar','fw22-kitchen','fw22-edge','fw22-wind','fw22-tower','fw22-oath1','fw22-oath2'],   // (7.280) laid reflected: the road meets them from the far side after a room that turns back
- secret:{rooms:['p113','pv1','pv2','pv3','pv4','vi1']},order:['fw22-refuge','fw22-root-loop','fw22-clearing','fw22-canopy','fw22-briar','fw22-kitchen','fw22-edge','fw22-wind','fw22-tower','fw22-oath1','fw22-oath2','fw22-oath3'],
+ {n:22,roadLifts:{'fw22-oath2':32},mirror:['fw22-briar','fw22-kitchen','fw22-edge','fw22-wind','fw22-tower','fw22-oath1','fw22-oath2'],   // (7.280) laid reflected: the road meets them from the far side after a room that turns back
+ secret:{hosts:['fw22-oath3','fw22-tower'],rooms:['p113','pv1','pv2','pv3','pv4','vi1']},order:['fw22-refuge','fw22-root-loop','fw22-clearing','fw22-canopy','fw22-briar','fw22-kitchen','fw22-edge','fw22-wind','fw22-tower','fw22-oath1','fw22-oath2','fw22-oath3'],
   quests:['elsie-echo']},
- {n:23,mirror:['fc23-counterpoise','fc23-well','fc23-gantry'],   // (7.280) laid reflected: the road meets them from the far side after a room that turns back
- secret:{rooms:['p117','pw2','pw3','pw4','vi8','vi9']},order:['fc23-camp','fc23-yard','fc23-relay','fc23-silas','fc23-rise','fc23-counterpoise','fc23-chainwalk','fc23-well','fc23-gantry','fc23-standard','fc23-west','fc23-east','fc23-middle'],
+ {n:23,questCeilings:{'silas-echo':{force:true,hosts:['fc23-camp']}},roadRises:{'fc23-east':32,'fc23-middle':32},roadEntrances:{'fc23-standard':{side:'right',height:32}},roadLifts:{'fc23-chainwalk':32},roadGaps:{'fc23-well':48},mirror:['fc23-counterpoise','fc23-well','fc23-gantry'],   // (7.280) laid reflected: the road meets them from the far side after a room that turns back
+ secret:{hosts:['fc23-middle','fc23-standard'],rooms:['p117','pw2','pw3','pw4','vi8','vi9']},order:['fc23-camp','fc23-yard','fc23-relay','fc23-silas','fc23-rise','fc23-counterpoise','fc23-chainwalk','fc23-well','fc23-gantry','fc23-standard','fc23-west','fc23-east','fc23-middle'],
   quests:['silas-echo']},
- {n:24,mirror:['fu24-draw','fu24-kites','fu24-choir','fu24-flue','fu24-catcher'],   // (7.280) laid reflected: the road meets them from the far side after a room that turns back
- secret:{rooms:['p200b','p200c','p200d','p200e','fa1','fa3']},order:['fu24-lift','fu24-shaft','fu24-draw','fu24-kites','fu24-choir','fu24-flue','fu24-needle','fu24-catcher','fu24-span','fu24-eye','fu24-lung','fu24-crown'],
+ {n:24,entryOptions:{'fu24-catcher':[0]},roadLifts:{'fu24-catcher':64},roadGaps:{'fu24-span':48},mirror:['fu24-draw','fu24-kites','fu24-choir','fu24-flue','fu24-catcher'],   // (7.280) laid reflected: the road meets them from the far side after a room that turns back
+ secret:{hosts:['fu24-needle','fu24-shaft'],rooms:['p200b','p200c','p200d','p200e','fa1','fa3']},order:['fu24-lift','fu24-shaft','fu24-draw','fu24-kites','fu24-choir','fu24-flue','fu24-needle','fu24-catcher','fu24-span','fu24-eye','fu24-lung','fu24-crown'],
   quests:['cartographer-echo']},
  // (7.278) The Fractured worlds 25–40: Room by Room regions made by scripts/rbr-src/fracture.mjs from 5–20 (each base room
  // reflected, or kept where its reflection does not play), in the base world's Climb order, so its ratings and saved rooms
@@ -112,25 +112,25 @@ export const WORLDS=[
   quests:['creature-echo']},
  {n:30,secret:{rooms:['px106a','px106b','o1','d1','d2','d3']},order:['fe30-door','fe30-cooling','fe30-draw','fe30-schedule','fe30-spouts','fe30-tear','fe30-line','fe30-shift','fe30-moulds','fe30-pourfloor','fe30-stair','fe30-foot'],
   quests:['quota-echo']},
- {n:31,secret:{rooms:['p114b','w1','en1','v1']},order:['ff31-stair','ff31-anvils','ff31-bridge','ff31-shaft','ff31-crane','ff31-mouth','ff31-heap','ff31-hot','ff31-look','ff31-pit','ff31-bed','ff31-pour'],
+ {n:31,questCeilings:{'automaton-echo':{force:true,hosts:['ff31-anvils'],entry:'left',height:48}},secret:{hosts:['ff31-anvils','ff31-look'],rooms:['p114b','w1','v1']},order:['ff31-stair','ff31-anvils','ff31-bridge','ff31-shaft','ff31-crane','ff31-mouth','ff31-heap','ff31-hot','ff31-look','ff31-pit','ff31-bed','ff31-pour'],
   quests:['automaton-echo']},
- {n:32,secret:{hosts:['fi32-line','fi32-reversal','fi32-lip','fi32-alternating','fi32-landing','fi32-court','fi32-divide','fi32-glass','fi32-lock','fi32-fissure','fi32-threshold'],rooms:['j1','i1','g1','r1','n1','bv6']},order:['fi32-fall','fi32-line','fi32-reversal','fi32-lip','fi32-alternating','fi32-landing','fi32-court','fi32-divide','fi32-glass','fi32-lock','fi32-fissure','fi32-threshold'],
+ {n:32,secret:{wide:true,hosts:['fi32-threshold','fi32-line','fi32-lip'],rooms:['j1','i1','g1']},order:['fi32-fall','fi32-line','fi32-reversal','fi32-lip','fi32-alternating','fi32-landing','fi32-court','fi32-divide','fi32-glass','fi32-lock','fi32-fissure','fi32-threshold'],
   quests:['neighbours-echo']},
  {n:33,secret:{rooms:['p131','k1','k2','k3','a1','st1']},order:['fv33-mouth','fv33-blink','fv33-spent','fv33-ledgers','fv33-thrown','fv33-faults','fv33-vigil','fv33-broken','fv33-high','fv33-low','fv33-middle','fv33-crown'],
   quests:['figure-echo']},
  {n:34,secret:{rooms:['p139','t1','t2','t3','s1','s2']},order:['fk34-stair','fk34-marks','fk34-seam','fk34-gallery','fk34-echo','fk34-hand','fk34-wake','fk34-climb','fk34-bellkeeper','fk34-hall','fk34-throne','fk34-last'],
   quests:['alarm-echo']},
  {n:35,reserve:[{x:-56,y:-2,C:56,R:50},{x:-96,y:10,C:40,R:30},{x:0,y:24,C:40,R:20}],   // World 15's arrival ground (7.280: the rebuilt first room is entered from the left again)
-  secret:{hosts:['fd35-buffer','fd35-backup','fd35-thorn','fd35-high'],rooms:['p149a','p149b','p149c','y1','lr1','p194']},order:['fd35-thorn','fd35-buffer','fd35-backup','fd35-high','fd35-siding','fd35-fork','fd35-blink','fd35-boat','fd35-roof','fd35-shadeline','fd35-glass'],
+  secret:{hosts:['fd35-roof','fd35-siding'],rooms:['y1','lr1','p194']},order:['fd35-thorn','fd35-buffer','fd35-backup','fd35-high','fd35-siding','fd35-fork','fd35-blink','fd35-boat','fd35-roof','fd35-shadeline','fd35-glass'],
   quests:['miner-echo']},
  {n:36,mirror:['ft36-ladder'],   // (7.280) laid reflected: the road meets them from the far side after a room that turns back
  secret:{rooms:['p159b','p154','p159a','p1','z1','z2']},order:['ft36-chain','ft36-release','ft36-run','ft36-ladder','ft36-sailors','ft36-deck-ring','ft36-moth','ft36-long','ft36-staple','ft36-bite','ft36-tide-head','ft36-storm'],
   quests:['sailors-echo']},
  {n:37,secret:{rooms:['p163','p165','p167','p168','p169']},order:['fs37-slack','fs37-wreck','fs37-launch','fs37-spring','fs37-tern','fs37-porch','fs37-buoy','fs37-super','fs37-belled','fs37-landfall','fs37-road'],
   quests:['birthday-echo']},
- {n:38,secret:{wide:true,hosts:['fc38-speed','fc38-release','fc38-smoke','fc38-lamps','fc38-watch'],rooms:['p174','p175','p179','p200a']},order:['fc38-lamps','fc38-smoke','fc38-glance','fc38-line','fc38-family','fc38-speed','fc38-low','fc38-glass','fc38-release','fc38-shade','fc38-watch','fc38-road'],
+ {n:38,questCeilings:{'mother-echo':{force:true,hosts:['fc38-family']}},secret:{wide:true,hosts:['fc38-family','fc38-lamps','fc38-line'],rooms:['p174','p175','p179']},order:['fc38-lamps','fc38-smoke','fc38-glance','fc38-line','fc38-family','fc38-speed','fc38-low','fc38-glass','fc38-release','fc38-shade','fc38-watch','fc38-road'],
   quests:['mother-echo']},
- {n:39,secret:{wide:true,shaft:true,hosts:['fp39-beat','fp39-shade','fp39-engine','fp39-road','fp39-low','fp39-gate'],rooms:['p187','p189a','p189b','br1','p75','p81']},order:['fp39-windows','fp39-engine','fp39-low','fp39-pilgrim','fp39-beat','fp39-line','fp39-panes','fp39-shade','fp39-road','fp39-glass','fp39-gate'],
+ {n:39,secret:{wide:true,shaft:true,hosts:['fp39-line','fp39-glass'],rooms:['p187','p189a','p189b']},order:['fp39-windows','fp39-engine','fp39-low','fp39-pilgrim','fp39-beat','fp39-line','fp39-panes','fp39-shade','fp39-road','fp39-glass','fp39-gate'],
   quests:['pilgrim-echo']},
  {n:40,secret:{wide:true,hosts:['fs40-crown','fs40-engine','fs40-flume','fs40-glass','fs40-ends','fs40-hours'],rooms:['p198','p199a','p199b','p200f']},order:['fs40-court','fs40-hours','fs40-ends','fs40-glass','fs40-garden','fs40-shade','fs40-flume','fs40-crown','fs40-engine','fs40-deliveries','fs40-dawn','fs40-morning','fs40-noon','fs40-sea'],
   quests:['garden-echo']},

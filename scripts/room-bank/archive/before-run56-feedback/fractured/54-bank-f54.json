@@ -1,0 +1,670 @@
+{
+  "room": {
+    "id": "bank-f54",
+    "name": "Open the Fall",
+    "palette": "foundry",
+    "study": true,
+    "movement": "survive-2",
+    "cols": 80,
+    "rows": 36,
+    "aim8": true,
+    "exit": "right",
+    "hint": "Send the shot through first. The lid traps the lift and leaves too little fall for your launch.",
+    "question": "Which journey through the outlet creates the runway for the next?",
+    "map": [
+      "################################################################################",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#.......................................####...###.............................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#.....................................................<^^................######.",
+      "#.....................................................<##................######.",
+      "#....P................%#..............................<%........................",
+      "###########...........%#..............................<%.................######.",
+      "#.....................................................<##................######.",
+      "#.....................................................<##................######.",
+      "#.....................................................<.........................",
+      "#...............................................................................",
+      "################################.....................................<##########",
+      "################################.........#......#....................<##########",
+      "################################.........#......#....................<##########",
+      "################################.........#......#....................<##########",
+      "################################.........###%%###....................<##########",
+      "################################.........########....................<##########",
+      "################################^^^##############^^^^^^^^^^^^^^^^^^^^<##########",
+      "################################################################################"
+    ],
+    "portalMode": "one",
+    "portals": [
+      {
+        "color": "orange",
+        "c": 55,
+        "r": 22,
+        "face": "r"
+      }
+    ],
+    "foes": [
+      {
+        "kind": "spit",
+        "x": 3,
+        "y": 22,
+        "dir": [
+          1,
+          0
+        ],
+        "every": 90,
+        "speed": 150
+      }
+    ],
+    "movingHooks": [
+      {
+        "id": "Fall line",
+        "c": 35,
+        "r": 30,
+        "w": 5,
+        "h": 1,
+        "to": [
+          0,
+          -22
+        ],
+        "period": 320
+      }
+    ],
+    "combat": {
+      "waitForMove": true,
+      "enemies": [],
+      "receivers": [
+        {
+          "id": "Headroom",
+          "x": 604,
+          "y": 176
+        }
+      ],
+      "doors": [
+        {
+          "x": 280,
+          "y": 232,
+          "w": 112,
+          "h": 8,
+          "coils": [
+            "Headroom"
+          ]
+        }
+      ]
+    }
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 12,
+    "run": 6,
+    "collection": "run6",
+    "format": "superroom",
+    "acceptance": "candidate",
+    "difficulty": 3,
+    "role": "Send a shot to open the height needed for your own portal launch",
+    "worlds": [],
+    "tags": [
+      "portal",
+      "projectile",
+      "moving-carrier",
+      "fall-momentum",
+      "shared-outlet"
+    ],
+    "newMechanics": [],
+    "status": "route-proven",
+    "author": "Codex",
+    "humanReview": "Unreviewed; difficulty is an author estimate.",
+    "requiredEvents": [
+      "portal-open",
+      "moving-carrier-stop",
+      "receiver-lit",
+      "combat-gate",
+      "moving-hook-turn",
+      "portal-pass"
+    ],
+    "solution": "Place the blue portal on the exposed western shot wall. A hostile bolt enters it and emerges friendly from the distant orange mouth, reaching the sealed receiver. Advance to the carrier and get aboard; the receiver retracts the lid which had stopped its upward rail. Ride to the high staging ledge. Move over the marked well, relocate the blue portal to its floor, and fall into it. The same orange outlet now turns your long drop into the range needed to clear the moat and land on the wide eastern bank. The reopened lid was necessary for both the ride and that fall.",
+    "nearestExisting": "F28 Reply in Passing and B29 The Shield You Send route converted bolts through portals, while B36 Short Runway, Tall Exit prepares a useful entrance velocity. Here the bolt is not a separate lock at the end: its delivery removes the actual horizontal lid which traps the carrier and caps the later falling runway. The same outlet first carries the opening shot, then the knight whose launch the shot made possible.",
+    "novelty": "The first passenger through the portal changes the physical journey available to its second passenger. A closed lid is simultaneously a carrier stop and a height limit; opening it creates both the approach and its stored fall momentum.",
+    "positiveChecks": [
+      {
+        "name": "Leave carrier ten frames earlier",
+        "tape": [
+          [
+            1,
+            "rq"
+          ],
+          [
+            130,
+            "r"
+          ],
+          [
+            20,
+            "rjg"
+          ],
+          [
+            210,
+            "ug"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "dq"
+          ],
+          [
+            60,
+            ""
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 504,
+          "events": [
+            "portal-open",
+            "moving-carrier-stop",
+            "land",
+            "enemy-shot",
+            "jump",
+            "portal-pass",
+            "grab",
+            "climbhop",
+            "receiver-lit",
+            "combat-gate",
+            "moving-hook-turn",
+            "enemy-hit",
+            "exit"
+          ],
+          "eventCounts": {
+            "portal-open": 2,
+            "moving-carrier-stop": 1,
+            "land": 4,
+            "enemy-shot": 5,
+            "jump": 2,
+            "portal-pass": 4,
+            "grab": 1,
+            "climbhop": 1,
+            "receiver-lit": 1,
+            "combat-gate": 1,
+            "moving-hook-turn": 1,
+            "enemy-hit": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Leave carrier eight frames later",
+        "tape": [
+          [
+            1,
+            "rq"
+          ],
+          [
+            130,
+            "r"
+          ],
+          [
+            20,
+            "rjg"
+          ],
+          [
+            228,
+            "ug"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "dq"
+          ],
+          [
+            60,
+            ""
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 517,
+          "events": [
+            "portal-open",
+            "moving-carrier-stop",
+            "land",
+            "enemy-shot",
+            "jump",
+            "portal-pass",
+            "grab",
+            "climbhop",
+            "receiver-lit",
+            "combat-gate",
+            "moving-hook-turn",
+            "enemy-hit",
+            "exit"
+          ],
+          "eventCounts": {
+            "portal-open": 2,
+            "moving-carrier-stop": 1,
+            "land": 4,
+            "enemy-shot": 5,
+            "jump": 2,
+            "portal-pass": 5,
+            "grab": 1,
+            "climbhop": 1,
+            "receiver-lit": 1,
+            "combat-gate": 1,
+            "moving-hook-turn": 1,
+            "enemy-hit": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Place floor portal thirteen frames later",
+        "tape": [
+          [
+            1,
+            "rq"
+          ],
+          [
+            130,
+            "r"
+          ],
+          [
+            20,
+            "rjg"
+          ],
+          [
+            220,
+            "ug"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            28,
+            ""
+          ],
+          [
+            1,
+            "dq"
+          ],
+          [
+            60,
+            ""
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 512,
+          "events": [
+            "portal-open",
+            "moving-carrier-stop",
+            "land",
+            "enemy-shot",
+            "jump",
+            "portal-pass",
+            "grab",
+            "climbhop",
+            "receiver-lit",
+            "combat-gate",
+            "moving-hook-turn",
+            "enemy-hit",
+            "exit"
+          ],
+          "eventCounts": {
+            "portal-open": 2,
+            "moving-carrier-stop": 1,
+            "land": 4,
+            "enemy-shot": 5,
+            "jump": 2,
+            "portal-pass": 5,
+            "grab": 1,
+            "climbhop": 1,
+            "receiver-lit": 1,
+            "combat-gate": 1,
+            "moving-hook-turn": 1,
+            "enemy-hit": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Bypass both deliveries using the outlet roof",
+        "tape": [
+          [
+            130,
+            "r"
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            17,
+            "rj"
+          ],
+          [
+            1,
+            "rxg"
+          ],
+          [
+            22,
+            "rg"
+          ],
+          [
+            38,
+            "ug"
+          ],
+          [
+            18,
+            "rjg"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            1,
+            "rxg"
+          ],
+          [
+            65,
+            "rg"
+          ],
+          [
+            60,
+            "ug"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 592,
+          "events": [
+            "moving-carrier-stop",
+            "land",
+            "enemy-shot",
+            "jump",
+            "enemy-hit",
+            "dash",
+            "death",
+            "respawn",
+            "grab"
+          ],
+          "eventCounts": {
+            "moving-carrier-stop": 3,
+            "land": 4,
+            "enemy-shot": 4,
+            "jump": 4,
+            "enemy-hit": 2,
+            "dash": 2,
+            "death": 2,
+            "respawn": 2,
+            "grab": 1
+          }
+        }
+      },
+      {
+        "name": "Open lid but replace high fall with shallow dash and wall catch",
+        "tape": [
+          [
+            1,
+            "rq"
+          ],
+          [
+            130,
+            "r"
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            42,
+            "r"
+          ],
+          [
+            1,
+            "dq"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            6,
+            "ruxg"
+          ],
+          [
+            70,
+            "rg"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 487,
+          "events": [
+            "portal-open",
+            "moving-carrier-stop",
+            "land",
+            "enemy-shot",
+            "jump",
+            "portal-pass",
+            "receiver-lit",
+            "combat-gate",
+            "dash",
+            "enemy-hit",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "portal-open": 2,
+            "moving-carrier-stop": 2,
+            "land": 3,
+            "enemy-shot": 4,
+            "jump": 1,
+            "portal-pass": 2,
+            "receiver-lit": 1,
+            "combat-gate": 1,
+            "dash": 1,
+            "enemy-hit": 2,
+            "death": 1,
+            "respawn": 1
+          }
+        }
+      }
+    ],
+    "approvedIngredients": [
+      "bank-f28",
+      "bank-b29",
+      "bank-b36"
+    ],
+    "causalInterconnection": [
+      "The first blue placement feeds the sealed receiver through the fixed orange outlet.",
+      "That receiver removes the lid across both the carrier rail and marked fall well.",
+      "The freed carrier supplies the height the reopened well needs; the relocated entrance converts that height at the original outlet."
+    ],
+    "requiredEventCounts": {
+      "portal-open": 2,
+      "portal-pass": 2
+    },
+    "entrance": "Raised western gun gallery.",
+    "exit": "Wide eastern bank beyond the momentum gap.",
+    "interconnection": "One orange outlet serves both deliveries. The first delivery removes the shared carrier obstruction and fall ceiling needed for the second.",
+    "endingForgiveness": "The final bank is ten tiles wide and requires no last dash or wall catch. Carrier departure works earlier and later, and floor-portal placement can be delayed substantially. The inward teeth mark the low wall-catch shortcut while leaving the intended landing surface clear.",
+    "designNotes": "80×36 single continuous room (2880 tiles, 3.13 normal room areas). Travel uses the low western approach, upper central ride and long well, then eastern receiver and landing. Height matters physically: two previously successful shortcuts are now blocked by visible teeth, with exact regression tapes saved.",
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 512,
+      "events": [
+        "portal-open",
+        "moving-carrier-stop",
+        "land",
+        "enemy-shot",
+        "jump",
+        "portal-pass",
+        "grab",
+        "climbhop",
+        "receiver-lit",
+        "combat-gate",
+        "moving-hook-turn",
+        "enemy-hit",
+        "exit"
+      ],
+      "eventCounts": {
+        "portal-open": 2,
+        "moving-carrier-stop": 1,
+        "land": 4,
+        "enemy-shot": 5,
+        "jump": 2,
+        "portal-pass": 5,
+        "grab": 1,
+        "climbhop": 1,
+        "receiver-lit": 1,
+        "combat-gate": 1,
+        "moving-hook-turn": 1,
+        "enemy-hit": 1,
+        "exit": 1
+      }
+    }
+  },
+  "tape": [
+    [
+      1,
+      "rq"
+    ],
+    [
+      130,
+      "r"
+    ],
+    [
+      20,
+      "rjg"
+    ],
+    [
+      220,
+      "ug"
+    ],
+    [
+      18,
+      "r"
+    ],
+    [
+      8,
+      "rj"
+    ],
+    [
+      10,
+      "r"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      1,
+      "dq"
+    ],
+    [
+      60,
+      ""
+    ],
+    [
+      80,
+      "r"
+    ]
+  ]
+}

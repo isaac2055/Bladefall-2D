@@ -1,0 +1,345 @@
+{
+  "room": {
+    "id": "bank-b24",
+    "name": "Carry the Quiet Moment",
+    "palette": "path",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "map": [
+      "########################################",
+      "#.....................................H#",
+      "#.....................................H#",
+      "#.....................................H#",
+      "#.....................................H#",
+      "#.....................................H#",
+      "#..P.l................................H#",
+      "########..............................H#",
+      "########>.............................H#",
+      "########>.............................H#",
+      "########>.............................H#",
+      "########>.............................H#",
+      "########>.............................H#",
+      "########>........#####................H#",
+      "########>........#####................H#",
+      "########>.......<#####>...............H#",
+      "########>.......<#####>...............H#",
+      "########>.......<#####>...............H.",
+      "########>.......<#####>...............H.",
+      "########>.......<#####>............_..H.",
+      "########>.......<#####>...........######",
+      "########.^^^^^^^^^^^^^^^^^^^^^^^^^######",
+      "########################################"
+    ],
+    "beams": [
+      {
+        "c": 31,
+        "r": 0,
+        "dir": "d"
+      }
+    ],
+    "sweepers": [
+      {
+        "id": "drop",
+        "path": [
+          [
+            12,
+            2.5
+          ],
+          [
+            12,
+            11.5
+          ]
+        ],
+        "period": 200,
+        "phase": 10
+      },
+      {
+        "id": "circuit",
+        "path": [
+          [
+            24,
+            14.5
+          ],
+          [
+            29,
+            14.5
+          ],
+          [
+            29,
+            19.5
+          ],
+          [
+            24,
+            19.5
+          ]
+        ],
+        "period": 220,
+        "phase": 70,
+        "loop": true
+      }
+    ],
+    "hint": "Carrying the lantern slows your fall, but leaves no dash to correct the timing. Both stone shelves are safe.",
+    "question": "Where will the thorn be when your slower fall reaches its path?"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 4,
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "timing",
+    "worlds": [
+      11,
+      19,
+      24
+    ],
+    "tags": [
+      "timing",
+      "sweeper",
+      "cargo",
+      "glide",
+      "lantern-shade",
+      "plate"
+    ],
+    "newMechanics": [],
+    "entrance": "Safe west observation bay.",
+    "exit": "East landing.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "pickup",
+      "plate",
+      "held-open"
+    ],
+    "humanReview": "Author difficulty estimate; fun/difficulty/suitability pending.",
+    "solution": "Take the lantern and wait until the first thorn descends into its lower arc. Walk off and glide behind it to the middle pier. Let the second patrol clear the upper side of its square loop before the longer second drop. Keep the lantern to shade the vertical beam, land on the far shelf, and release it over the plate to hold the final door.",
+    "nearestExisting": "The Long Way First routes cargo by an echo and a long glide; Return Freight requires catching moving shade. Here the cargo is held throughout two slow, committed falls, so the timing must account for future intersection instead of the hazard being clear right now.",
+    "novelty": "Carrying removes the dash that could rescue a mistimed crossing. The second drop begins from a safe pier but has a different fall distance and patrol period; an early departure that clears the beginning can still meet the returning thorn at the far side.",
+    "timing": {
+      "principle": "Read where a patrol will be during a slow cargo descent, not only at takeoff.",
+      "stages": [
+        {
+          "cue": "The first thorn descends into the lower half of its route.",
+          "action": "Leave the high shelf carrying the lantern and glide to the middle pier.",
+          "rest": "Middle pier, outside both patrol paths."
+        },
+        {
+          "cue": "The loop patrol leaves the upper crossing and turns down the far side.",
+          "action": "Commit to the longer glide, shade the beam, and land with the cargo.",
+          "rest": "Exit loading shelf."
+        }
+      ]
+    },
+    "route": {
+      "frames": 353,
+      "deaths": 0,
+      "events": [
+        "pickup",
+        "land",
+        "plate",
+        "held-open",
+        "throw",
+        "lantern-land",
+        "exit"
+      ],
+      "movement": "Ordinary jump, dash, grab and device actions; no advanced momentum exploit."
+    },
+    "shortcutChecks": [
+      {
+        "name": "Remove both observation waits",
+        "tape": [
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            82,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            79,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            35,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2
+        }
+      },
+      {
+        "name": "Leave the middle pier immediately",
+        "tape": [
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            82,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            79,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            35,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1
+        }
+      },
+      {
+        "name": "Attempt the same route without carrying shade",
+        "tape": [
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            82,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            60,
+            ""
+          ],
+          [
+            79,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "d"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            35,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2
+        }
+      }
+    ]
+  },
+  "tape": [
+    [
+      8,
+      "r"
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      40,
+      ""
+    ],
+    [
+      82,
+      "r"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      60,
+      ""
+    ],
+    [
+      79,
+      "r"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      1,
+      "dg"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      35,
+      "r"
+    ]
+  ]
+}

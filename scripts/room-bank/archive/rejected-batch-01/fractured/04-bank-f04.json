@@ -1,0 +1,171 @@
+{
+  "room": {
+    "id": "bank-f04",
+    "name": "Crosswind Receipt",
+    "palette": "fractured",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "exit": "right",
+    "winds": [
+      {
+        "c": 6,
+        "r": 11,
+        "w": 27,
+        "h": 9,
+        "dx": 95,
+        "dy": 0
+      }
+    ],
+    "hint": "Brake beneath the hanging tooth. The final arrow crystal only refills while rising: approach it from below before the last dash.",
+    "question": "When should you stop accepting the wind’s help?",
+    "map": [
+      "########################################",
+      "#................##....................#",
+      "#................##....................#",
+      "#................##....................#",
+      "#................##.....................",
+      "#................##.....................",
+      "#................##.....................",
+      "#................##.....................",
+      "#................##.....................",
+      "#................##..............<######",
+      "#................vv....o.........<######",
+      "#................................<######",
+      "#................................<######",
+      "#.........................^^^....<######",
+      "#.............o...........###....<######",
+      "#.........................###....<######",
+      "#.........................###....<######",
+      "#..P......................###....<######",
+      "######....................###....<######",
+      "######....................###....<######",
+      "######....................###....<######",
+      "######^^^^^^^^^^^^^^^^^^^^###^^^^^######",
+      "########################################"
+    ],
+    "study": true,
+    "vectorRefills": [
+      {
+        "c": 31,
+        "r": 7,
+        "dir": "up"
+      }
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 1,
+    "difficulty": 4,
+    "role": "combination",
+    "worlds": [
+      24,
+      28
+    ],
+    "tags": [
+      "wind",
+      "braking",
+      "refill",
+      "slalom",
+      "vector-refill",
+      "directional-refill"
+    ],
+    "newMechanics": [
+      "vector-refill"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "refill",
+      "vector-refill"
+    ],
+    "solution": "Use the tailwind to reach the first crystal, brake beneath the roof tooth, dash up at the second refill, then carry the high route over the thorned pier. The final crystal is upward-only. Turn the wind-assisted traverse into a rising approach; drifting sideways or dropping onto that crystal gives no dash for the exit.",
+    "entrance": "left floor at 18",
+    "exit": "right opening rows 4–8",
+    "proof": {
+      "frames": 148,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "dash",
+        "refill-dash",
+        "refill",
+        "grab",
+        "climbhop",
+        "vector-refill",
+        "land",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 1,
+        "dash": 3,
+        "refill-dash": 3,
+        "refill": 2,
+        "grab": 1,
+        "climbhop": 1,
+        "vector-refill": 1,
+        "land": 1,
+        "exit": 1
+      },
+      "vectorEntry": {
+        "dir": "up",
+        "vx": 65,
+        "vy": -30
+      },
+      "withoutVectorPickup": "same intended tape fails with one death",
+      "verifiedAt": "2026-10-07"
+    },
+    "vectorDesign": "The final crystal is upward-only. Turn the wind-assisted traverse into a rising approach; drifting sideways or dropping onto that crystal gives no dash for the exit."
+  },
+  "tape": [
+    [
+      20,
+      "ru"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      6,
+      "r"
+    ],
+    [
+      5,
+      "rux"
+    ],
+    [
+      20,
+      "lu"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      20,
+      "rgu"
+    ],
+    [
+      5,
+      "ux"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      12,
+      "r"
+    ]
+  ]
+}

@@ -1,5 +1,7 @@
 // tiny local dev server (no deps)
 import {createServer} from 'http';
+import {handle as playtestRequest} from '../server/playtest-service.mjs';
+import {localStore} from '../scripts/playtest-release/local-store.mjs';
 import {readFile} from 'fs/promises';
 import {dirname, extname, resolve, sep} from 'path';
 import {fileURLToPath} from 'url';
@@ -7,6 +9,12 @@ const ROOT=dirname(fileURLToPath(import.meta.url));
 const PORT=Number.parseInt(process.env.PORT||'8371',10);
 const MIME={'.html':'text/html','.js':'text/javascript','.svg':'image/svg+xml','.png':'image/png','.mp3':'audio/mpeg','.webmanifest':'application/manifest+json'};
 createServer(async (req,res)=>{
+  if(['/api/playtest','/.netlify/functions/playtest'].includes(req.url.split('?')[0])){
+    try{const chunks=[];let size=0;for await(const chunk of req){size+=chunk.length;if(size>16384){res.writeHead(413);res.end();return;}chunks.push(chunk);}
+      const host=req.headers.host||'localhost:'+PORT;const request=new Request('http://'+host+req.url,{method:req.method,headers:req.headers,...(req.method==='POST'?{body:Buffer.concat(chunks)}:{})});
+      const result=await playtestRequest(request,localStore(process.env.PLAYTEST_DATA_DIR||resolve(ROOT,'../scripts/playtest-release/.cache/submissions')));res.writeHead(result.status,Object.fromEntries(result.headers));res.end(await result.text());
+    }catch{res.writeHead(503);res.end('storage unavailable');}return;
+  }
   // Strip the query BEFORE testing for the root, or `/?tas` (the harness flag the game
   // itself reads off location.search) resolves to the directory and 404s.
   const bare=req.url.split('?')[0];

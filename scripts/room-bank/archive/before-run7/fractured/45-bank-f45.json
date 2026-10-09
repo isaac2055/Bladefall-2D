@@ -1,0 +1,978 @@
+{
+  "room": {
+    "id": "bank-f45",
+    "name": "The Upper Address",
+    "palette": "throne",
+    "study": true,
+    "movement": "survive-2",
+    "aim8": true,
+    "cols": 64,
+    "rows": 48,
+    "exit": "right",
+    "lock": [
+      "parry"
+    ],
+    "echo": true,
+    "cargoClasps": [
+      {
+        "id": "Receiving",
+        "c": 37,
+        "r": 30
+      }
+    ],
+    "zips": [
+      [
+        28,
+        0
+      ],
+      [
+        12,
+        0
+      ]
+    ],
+    "beams": [
+      {
+        "c": 50,
+        "r": 0,
+        "dir": "d"
+      },
+      {
+        "c": 58,
+        "r": 0,
+        "dir": "d"
+      }
+    ],
+    "hint": "Save the high echo. Freight the lantern below; bring its shade and a moving launch back up.",
+    "question": "Can one lantern, one moving launch and one echo solve three floors of the same shaft?",
+    "showHintAtRest": true,
+    "map": [
+      "################################################################",
+      "#......................H.......................................#",
+      "#......................H.......................................#",
+      "#......................H.......................................#",
+      "#......................H.......................................#",
+      "#......................H.......................................#",
+      "#......................H.......................................#",
+      "#......................H.......................................#",
+      "#......................H.......................................#",
+      "#....P.................H.......................................#",
+      "###########............H........................................",
+      "###########............H........................................",
+      "#.............#........H........................................",
+      "#......................H........................................",
+      "#......................H........................................",
+      "#......................H........................................",
+      "#......................H........................................",
+      "#......................H....................<###################",
+      "#...........................................<###################",
+      "#...........................................<###################",
+      "#...........................................<###################",
+      "#...........................................<..................#",
+      "#...........................................<..................#",
+      "#...........................................<..................#",
+      "#...........##################.................................#",
+      "#...........##################.................................#",
+      "#...........##################.................................#",
+      "#...........##################.................................#",
+      "#...........##################.................................#",
+      "#...........##################.................................#",
+      "#.........l....................................................#",
+      "########ZZZZ...................................................#",
+      "########....^^^^^^^^^^^^^^^^^^.................................#",
+      "########....VVVVVVVVVVVVVVVVVV.................................#",
+      "########....VVVVVVVVVVVVVVVVVV.................................#",
+      "#...........VVVVVVVVVVVVVVVVVV.................................#",
+      "################################...............................#",
+      "###################################............................#",
+      "###################################............................#",
+      "###################################............................#",
+      "#.............................#########........................#",
+      "#..............................................................#",
+      "#.......................................................____...#",
+      "#.......................................ZZZZ............####...#",
+      "#.......................................................####...#",
+      "#.......................................................####...#",
+      "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^###############^^^^^^^^^^^^###^^^#",
+      "################################################################"
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 10,
+    "run": 4,
+    "collection": "superrooms",
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "interconnected superroom",
+    "worlds": [],
+    "tags": [
+      "superroom",
+      "echo",
+      "cargo",
+      "freight",
+      "void",
+      "carried-shade",
+      "launch-transfer",
+      "cargo-dash-catch"
+    ],
+    "newMechanics": [],
+    "status": "route-proven",
+    "author": "Codex",
+    "humanReview": "Unreviewed; difficulty is an author estimate.",
+    "approvedIngredients": [
+      "bank-f16",
+      "bank-f19",
+      "bank-b43"
+    ],
+    "causalInterconnection": [
+      "The cargo dispatched in the upper freight duct is the only shade for the final gallery.",
+      "The lower exchange plate holds the high gate open only when the echo is left behind.",
+      "Freight recovery routes beneath the same machinery that supplies the launch returned to the initial high balcony."
+    ],
+    "requiredEvents": [
+      "echo-place",
+      "zip-start",
+      "void-in",
+      "void-out",
+      "clasp-catch",
+      "cargo-dash-catch",
+      "pickup",
+      "plate",
+      "echo-swap",
+      "held-open"
+    ],
+    "solution": "Jump to the isolated upper lip and save an echo. Drop west onto the loaded freight deck, dispatch it, and let its low duct push you into the lower void route. Dash through the void. Use its outgoing speed for the small jump toward the receiving clasp, then dash Up while holding Grab to catch the suspended lantern. Drift down the open receiving well with that same shade to the lower carriage. Step toward its leading edge as it accelerates; when your feet overlap the adjacent pressure strip, Jump and Echo together. The echo keeps the distant high gate open, while the lantern and carriage launch return to your upper address. Keep right through the long high arc and carry the shade across the upper sun shafts.",
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 606,
+      "events": [
+        "jump",
+        "land",
+        "echo-place",
+        "zip-start",
+        "clasp-catch",
+        "zip-stop",
+        "dash",
+        "void-in",
+        "refill-dash",
+        "void-out",
+        "pickup",
+        "cargo-dash-catch",
+        "clasp-take",
+        "zip-home",
+        "plate",
+        "held-open",
+        "echo-swap",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 3,
+        "land": 5,
+        "echo-place": 1,
+        "zip-start": 2,
+        "clasp-catch": 1,
+        "zip-stop": 2,
+        "dash": 2,
+        "void-in": 1,
+        "refill-dash": 2,
+        "void-out": 1,
+        "pickup": 1,
+        "cargo-dash-catch": 1,
+        "clasp-take": 1,
+        "zip-home": 2,
+        "plate": 2,
+        "held-open": 1,
+        "echo-swap": 1,
+        "exit": 1
+      }
+    },
+    "requiredEventCounts": {
+      "zip-start": 2
+    },
+    "entrance": "Upper west overlook, with the return address on the small isolated lip.",
+    "exit": "Upper east gallery, across the same shaft and over both freight floors.",
+    "nearestExisting": "F16 supplies the separate freight/knight routes, B43 the rising cargo handoff, and F19 the echo that must keep a plate occupied while cargo and launch travel away. Here those are three elevations of one shaft: recovery supplies the shade needed at the original overlook, and the lower machine changes the traversability of that original address.",
+    "novelty": "The player first sees the final gap and locked high gate, then solves their causes on two floors below. The only lantern has a physical continuous itinerary through the cargo duct, clasp, receiving well, launch carriage and final gallery. The return crosses above the outbound route rather than exiting into a separate room.",
+    "designNotes": "64\u00d748 tiles, 3.34 normal screen areas. One room state, one echo and one lantern; no scripted checkpoints or event-count exit locks. The clasp makes cargo retrieval deliberate rather than requiring a narrow returning-freight rendezvous. The final swap works across eight consecutive timings. A slower stationary swap leaves the weight correctly but loses the useful carriage speed and cannot reach the upper receiving balcony.",
+    "positiveChecks": [
+      {
+        "name": "Upper exchange after 17 forward ticks",
+        "tape": [
+          [
+            15,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            22,
+            "r"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            30,
+            "l"
+          ],
+          [
+            82,
+            ""
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            43,
+            "r"
+          ],
+          [
+            11,
+            "rj"
+          ],
+          [
+            15,
+            "uxg"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            ""
+          ],
+          [
+            17,
+            "r"
+          ],
+          [
+            1,
+            "rjq"
+          ],
+          [
+            180,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 603,
+          "events": [
+            "jump",
+            "land",
+            "echo-place",
+            "zip-start",
+            "clasp-catch",
+            "zip-stop",
+            "dash",
+            "void-in",
+            "refill-dash",
+            "void-out",
+            "pickup",
+            "cargo-dash-catch",
+            "clasp-take",
+            "zip-home",
+            "plate",
+            "held-open",
+            "echo-swap",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "land": 5,
+            "echo-place": 1,
+            "zip-start": 2,
+            "clasp-catch": 1,
+            "zip-stop": 2,
+            "dash": 2,
+            "void-in": 1,
+            "refill-dash": 2,
+            "void-out": 1,
+            "pickup": 1,
+            "cargo-dash-catch": 1,
+            "clasp-take": 1,
+            "zip-home": 2,
+            "plate": 1,
+            "held-open": 1,
+            "echo-swap": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Upper exchange after 19 forward ticks",
+        "tape": [
+          [
+            15,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            22,
+            "r"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            30,
+            "l"
+          ],
+          [
+            82,
+            ""
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            43,
+            "r"
+          ],
+          [
+            11,
+            "rj"
+          ],
+          [
+            15,
+            "uxg"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            ""
+          ],
+          [
+            19,
+            "r"
+          ],
+          [
+            1,
+            "rjq"
+          ],
+          [
+            180,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 605,
+          "events": [
+            "jump",
+            "land",
+            "echo-place",
+            "zip-start",
+            "clasp-catch",
+            "zip-stop",
+            "dash",
+            "void-in",
+            "refill-dash",
+            "void-out",
+            "pickup",
+            "cargo-dash-catch",
+            "clasp-take",
+            "zip-home",
+            "plate",
+            "held-open",
+            "echo-swap",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "land": 5,
+            "echo-place": 1,
+            "zip-start": 2,
+            "clasp-catch": 1,
+            "zip-stop": 2,
+            "dash": 2,
+            "void-in": 1,
+            "refill-dash": 2,
+            "void-out": 1,
+            "pickup": 1,
+            "cargo-dash-catch": 1,
+            "clasp-take": 1,
+            "zip-home": 2,
+            "plate": 2,
+            "held-open": 1,
+            "echo-swap": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Upper exchange after 23 forward ticks",
+        "tape": [
+          [
+            15,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            22,
+            "r"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            30,
+            "l"
+          ],
+          [
+            82,
+            ""
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            43,
+            "r"
+          ],
+          [
+            11,
+            "rj"
+          ],
+          [
+            15,
+            "uxg"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            ""
+          ],
+          [
+            23,
+            "r"
+          ],
+          [
+            1,
+            "rjq"
+          ],
+          [
+            180,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 609,
+          "events": [
+            "jump",
+            "land",
+            "echo-place",
+            "zip-start",
+            "clasp-catch",
+            "zip-stop",
+            "dash",
+            "void-in",
+            "refill-dash",
+            "void-out",
+            "pickup",
+            "cargo-dash-catch",
+            "clasp-take",
+            "zip-home",
+            "plate",
+            "held-open",
+            "echo-swap",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "land": 5,
+            "echo-place": 1,
+            "zip-start": 2,
+            "clasp-catch": 1,
+            "zip-stop": 2,
+            "dash": 2,
+            "void-in": 1,
+            "refill-dash": 2,
+            "void-out": 1,
+            "pickup": 1,
+            "cargo-dash-catch": 1,
+            "clasp-take": 1,
+            "zip-home": 2,
+            "plate": 2,
+            "held-open": 1,
+            "echo-swap": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Upper exchange after 24 forward ticks",
+        "tape": [
+          [
+            15,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            22,
+            "r"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            30,
+            "l"
+          ],
+          [
+            82,
+            ""
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            43,
+            "r"
+          ],
+          [
+            11,
+            "rj"
+          ],
+          [
+            15,
+            "uxg"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            ""
+          ],
+          [
+            24,
+            "r"
+          ],
+          [
+            1,
+            "rjq"
+          ],
+          [
+            180,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 610,
+          "events": [
+            "jump",
+            "land",
+            "echo-place",
+            "zip-start",
+            "clasp-catch",
+            "zip-stop",
+            "dash",
+            "void-in",
+            "refill-dash",
+            "void-out",
+            "pickup",
+            "cargo-dash-catch",
+            "clasp-take",
+            "zip-home",
+            "plate",
+            "held-open",
+            "echo-swap",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "land": 5,
+            "echo-place": 1,
+            "zip-start": 2,
+            "clasp-catch": 1,
+            "zip-stop": 2,
+            "dash": 2,
+            "void-in": 1,
+            "refill-dash": 2,
+            "void-out": 1,
+            "pickup": 1,
+            "cargo-dash-catch": 1,
+            "clasp-take": 1,
+            "zip-home": 2,
+            "plate": 2,
+            "held-open": 1,
+            "echo-swap": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Walk through the void without its dash",
+        "tape": [
+          [
+            15,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            22,
+            "r"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            30,
+            "l"
+          ],
+          [
+            82,
+            ""
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            43,
+            "r"
+          ],
+          [
+            11,
+            "rj"
+          ],
+          [
+            15,
+            "uxg"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            ""
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            1,
+            "rjq"
+          ],
+          [
+            180,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1
+        }
+      },
+      {
+        "name": "Leave the lantern in the receiving clasp",
+        "tape": [
+          [
+            15,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            22,
+            "r"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            30,
+            "l"
+          ],
+          [
+            82,
+            ""
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            43,
+            "r"
+          ],
+          [
+            11,
+            "rj"
+          ],
+          [
+            15,
+            "ux"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            ""
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            1,
+            "rjq"
+          ],
+          [
+            180,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0
+        }
+      },
+      {
+        "name": "Stationary swap after the stored launch has faded",
+        "tape": [
+          [
+            15,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            22,
+            "r"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            30,
+            "l"
+          ],
+          [
+            82,
+            ""
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            43,
+            "r"
+          ],
+          [
+            11,
+            "rj"
+          ],
+          [
+            15,
+            "uxg"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            ""
+          ],
+          [
+            26,
+            "r"
+          ],
+          [
+            1,
+            "rjq"
+          ],
+          [
+            180,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1
+        }
+      },
+      {
+        "name": "Dash directly from the original upper overlook",
+        "tape": [
+          [
+            15,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            22,
+            "r"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            1,
+            "rjx"
+          ],
+          [
+            250,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1
+        }
+      }
+    ],
+    "interconnection": "The cargo dispatched in the upper freight duct is the only shade for the final gallery. The lower exchange plate holds the high gate open only when the echo is left behind. Freight recovery routes beneath the same machinery that supplies the launch returned to the initial high balcony."
+  },
+  "tape": [
+    [
+      15,
+      "r"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      22,
+      "r"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      1,
+      "q"
+    ],
+    [
+      30,
+      "l"
+    ],
+    [
+      82,
+      ""
+    ],
+    [
+      1,
+      "rx"
+    ],
+    [
+      43,
+      "r"
+    ],
+    [
+      11,
+      "rj"
+    ],
+    [
+      15,
+      "uxg"
+    ],
+    [
+      28,
+      "r"
+    ],
+    [
+      150,
+      ""
+    ],
+    [
+      20,
+      "r"
+    ],
+    [
+      1,
+      "rjq"
+    ],
+    [
+      180,
+      "rj"
+    ]
+  ]
+}

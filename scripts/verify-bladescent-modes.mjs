@@ -1,0 +1,32 @@
+import assert from 'node:assert/strict';
+import {launchChrome} from '../tests/launch-chrome.mjs';
+const browser=await launchChrome({headless:true,args:['--no-sandbox']});
+try{
+ const page=await browser.newPage();await page.setViewport({width:1280,height:900});const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ const open=async mode=>{await page.goto(`http://localhost:8371/precision.html?pitch=climb&world=1&mode=${mode}`);await page.waitForFunction(()=>window.BladefallPrecisionView?.view.g);};
+ await open('review');
+ const before=await page.evaluate(()=>{const V=BladefallPrecisionView,st=BladefallPitchView.climb.state();V.view.paused=false;const id=V.view.g.room.id,tape=BladefallPrecisionRooms.tapes[id];for(const [n,k]of tape)for(let i=0;i<n;i++)V.advance([k]);return {id,pending:BladefallClimbSession.state().pending,room:V.view.g.room.id,paused:V.view.paused};});
+ assert.equal(before.pending,true);assert.equal(before.room,before.id);assert.equal(before.paused,true);
+ await page.click('#bsDialog button[type=submit]');assert.equal(await page.$eval('#bsDialog',d=>d.open),true,'scores required');
+ await page.select('[name=fun]','8');await page.select('[name=difficulty]','3');await page.select('[name=suitability]','4');
+ await page.type('[name=comment]','Nice rhythm, but N should stay text.');
+ await page.screenshot({path:'scripts/climb/.cache/review-mode-form.png'});
+ await page.click('#bsDialog button[type=submit]');
+ const saved=await page.evaluate(()=>({rows:JSON.parse(localStorage.getItem('bladescent.reviews.v1')),room:BladefallPrecisionView.view.g.room.id,paused:BladefallPrecisionView.view.paused}));
+ assert.equal(saved.rows.length,1);assert.equal(saved.rows[0].comment,'Nice rhythm, but N should stay text.');assert.equal(saved.rows[0].difficulty,3);assert.notEqual(saved.room,before.id);assert.equal(saved.paused,false);
+ await page.keyboard.press('n');await page.waitForSelector('#bsDialog[open]');
+ await page.select('[name=fun]','2');await page.select('[name=difficulty]','5');await page.select('[name=suitability]','2');await page.click('#bsDialog button[type=submit]');
+ assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('bladescent.reviews.v1')).at(-1).outcome),'skipped');
+ const exported=await page.evaluate(async()=>{const original=URL.createObjectURL;let blob;URL.createObjectURL=b=>{blob=b;return original(b);};BladefallClimbSession.exportReviews();URL.createObjectURL=original;return blob.text();});
+ assert.ok(exported.startsWith('"tester","session","build","world","room"'));assert.ok(exported.includes('"skipped"'));assert.ok(exported.includes('Nice rhythm, but N should stay text.'));
+ await open('play');
+ const clock=await page.evaluate(()=>{const V=BladefallPrecisionView,S=BladefallClimbSession;V.view.paused=false;const a=S.state().run.frames;V.advance(Array(60).fill(''));const b=S.state().run.frames;V.view.paused=true;V.advance(Array(60).fill(''));return [a,b,S.state().run.frames];});assert.equal(clock[1]-clock[0],60);assert.equal(clock[2],clock[1]);
+ assert.equal(await page.$('#bsRate'),null);
+ const trial=await page.evaluate(()=>{const S=BladefallClimbSession,st=BladefallPitchView.climb.state();S.complete(st.world.rooms.find(d=>d.id===st.world.atlasEnd),()=>{});return JSON.parse(localStorage.getItem('bladescent.times.v1'));});assert.equal(trial.length,1);assert.equal(trial[0].world,1);
+ await page.evaluate(()=>{BladefallPitchView.climb.startWorld(1);BladefallClimbSession.invalidate('skip');const st=BladefallPitchView.climb.state();BladefallClimbSession.complete(st.world.rooms.find(d=>d.id===st.world.atlasEnd),()=>{});});assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('bladescent.times.v1')).length),1,'practice excluded');
+ await page.screenshot({path:'scripts/climb/.cache/play-mode-timer.png'});
+ await page.goto('http://localhost:8371/index.html');await page.waitForSelector('#bladescentBtn');
+ assert.equal(await page.$eval('#newBtn',e=>e.textContent),'🧭 Explore');assert.ok(await page.$('#lvlSelBtn'));assert.ok(await page.$('#boardsBtn'));assert.equal(await page.$('#precisionBtn'),null);
+ await page.screenshot({path:'scripts/climb/.cache/bladefall-menu.png'});await page.click('#extrasBtn');await page.waitForSelector('#precisionBtn');assert.ok(await page.$('#mergeBtn'));assert.ok(await page.$('#dialogueEditorBtn'));
+ assert.deepEqual(errors,[]);console.log('PASS: real completion review/pause/resume, required scales, text input, skipped-room reviews, persistent records, play timer/pause, local times eligibility, title menu and Extras.');
+}finally{await browser.close();}

@@ -1,0 +1,517 @@
+{
+  "room": {
+    "id": "bank-b29",
+    "name": "The Shield You Send",
+    "palette": "foundry",
+    "study": true,
+    "aim8": true,
+    "exit": "right",
+    "lock": [
+      "portal"
+    ],
+    "map": [
+      "########################################",
+      "################.......................#",
+      "####%.........##.......................#",
+      "####%.........##.......................#",
+      "################........................",
+      "################.........##%%###........",
+      "#.......................................",
+      "#.......................................",
+      "#.................................######",
+      "#..###............................######",
+      "#..###........#####...............######",
+      "#..###............................######",
+      "#..###............................######",
+      "#..###.................................#",
+      "#..###.....KK.....................######",
+      "#..###.....KK.....................######",
+      "#..###.....KK..........................#",
+      "#..###..P..KK.................##..######",
+      "##############................##..######",
+      "##############................##..######",
+      "##############................##..######",
+      "##############^^^^^^^^^^^^^^^.^^^^######",
+      "########################################"
+    ],
+    "beams": [
+      {
+        "c": 29,
+        "r": 22,
+        "dir": "u"
+      }
+    ],
+    "portalMode": "fixed",
+    "portals": [
+      {
+        "color": "blue",
+        "c": 27,
+        "r": 5,
+        "face": "d"
+      },
+      {
+        "color": "orange",
+        "c": 4,
+        "r": 2,
+        "face": "r"
+      }
+    ],
+    "foes": [
+      {
+        "kind": "spit",
+        "x": 37,
+        "y": 16,
+        "dir": [
+          -1,
+          0
+        ],
+        "every": 125,
+        "offset": 60,
+        "speed": 125
+      },
+      {
+        "kind": "spit",
+        "x": 37,
+        "y": 13,
+        "dir": [
+          -1,
+          0
+        ],
+        "every": 110,
+        "offset": 30,
+        "speed": 120
+      }
+    ],
+    "combat": {
+      "waitForMove": true,
+      "enemies": [],
+      "receivers": [
+        {
+          "id": "return",
+          "x": 100,
+          "y": 19
+        }
+      ],
+      "doors": [
+        {
+          "x": 288,
+          "y": 8,
+          "w": 8,
+          "h": 56,
+          "coils": [
+            "return"
+          ]
+        }
+      ]
+    },
+    "hint": "A moving stone stops at masonry and blocks light. A parry sends the bolt in the direction held.",
+    "question": "What must replace the shield when you send it ahead?"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 5,
+    "run": 1,
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "puzzle",
+    "worlds": [
+      5,
+      13,
+      19
+    ],
+    "tags": [
+      "slide",
+      "projectile",
+      "parry",
+      "portal",
+      "beam",
+      "role-change"
+    ],
+    "newMechanics": [],
+    "status": "route-proven",
+    "author": "Codex",
+    "humanReview": "Run 1 candidate; fun/difficulty/suitability unmeasured.",
+    "entrance": "Lower western sheltered bay.",
+    "exit": "High eastern gallery.",
+    "solution": "Dash the shield east, then climb the western pillar and take the upper approach. The stone stops in the upward beam and creates shade with an optional landing. Redirect the upper bolt into the ceiling portal while arriving in that shadow; its distant exit feeds the protected coil. Either land on the stone before the last jump, or use the restored dash to fly straight to the eastern gallery.",
+    "nearestExisting": "vi3 Parry Through joins an aimed shot and portals. Bank F15 Borrow the Mouth repurposes portal cargo as beam cover. Here the stone itself stays in the room: dispatching the original shot shield creates a second shielding/aiming job beyond a separate upper approach.",
+    "novelty": "The object that protects the start must be sent away. Its final shadow makes the remote shot and crossing possible. It can be a safer landing, or the knight can parry during descent and fly directly through its shadow to the gallery.",
+    "requiredEvents": [
+      "stone-hit",
+      "stone-stop",
+      "parry",
+      "portal-pass",
+      "receiver-lit",
+      "combat-gate"
+    ],
+    "route": {
+      "frames": 325,
+      "deaths": 0,
+      "events": [
+        "dash",
+        "stone-hit",
+        "grab",
+        "stone-stop",
+        "enemy-shot",
+        "enemy-hit",
+        "climbhop",
+        "land",
+        "refill-dash",
+        "jump",
+        "parry-ready",
+        "parry",
+        "portal-pass",
+        "receiver-lit",
+        "combat-gate",
+        "exit"
+      ],
+      "eventCounts": {
+        "dash": 4,
+        "stone-hit": 1,
+        "grab": 1,
+        "stone-stop": 1,
+        "enemy-shot": 5,
+        "enemy-hit": 3,
+        "climbhop": 1,
+        "land": 3,
+        "refill-dash": 4,
+        "jump": 3,
+        "parry-ready": 1,
+        "parry": 1,
+        "portal-pass": 1,
+        "receiver-lit": 1,
+        "combat-gate": 1,
+        "exit": 1
+      }
+    },
+    "alternateRoutes": [
+      {
+        "name": "Parry and fly through the stone\u2019s shade without landing",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            94,
+            "lgu"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            7,
+            "r"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            1,
+            "up"
+          ],
+          [
+            13,
+            "rux"
+          ],
+          [
+            100,
+            "rgu"
+          ]
+        ],
+        "frames": 314,
+        "deaths": 0
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Parry successfully without sending the beam shield",
+        "tape": [
+          [
+            12,
+            "l"
+          ],
+          [
+            116,
+            "lgu"
+          ],
+          [
+            101,
+            ""
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            7,
+            "r"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            1,
+            "up"
+          ],
+          [
+            13,
+            "rux"
+          ],
+          [
+            8,
+            "rgu"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "cause": "light",
+          "parry": 1
+        }
+      },
+      {
+        "name": "Destroy the incoming bolt, then jump and dash to the exit",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            94,
+            "lgu"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            7,
+            "r"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            32,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            28,
+            "rgu"
+          ],
+          [
+            60,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0,
+          "receiverLit": 0
+        }
+      },
+      {
+        "name": "Let hostile bolts route through the portal without a parry",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            650,
+            ""
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0,
+          "portalPass": 0,
+          "receiverLit": 0
+        }
+      }
+    ]
+  },
+  "tape": [
+    [
+      1,
+      "r"
+    ],
+    [
+      12,
+      "rx"
+    ],
+    [
+      8,
+      "l"
+    ],
+    [
+      94,
+      "lgu"
+    ],
+    [
+      12,
+      "r"
+    ],
+    [
+      8,
+      "rj"
+    ],
+    [
+      12,
+      "rx"
+    ],
+    [
+      18,
+      "r"
+    ],
+    [
+      18,
+      "r"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      12,
+      "rx"
+    ],
+    [
+      7,
+      "r"
+    ],
+    [
+      14,
+      ""
+    ],
+    [
+      1,
+      "up"
+    ],
+    [
+      32,
+      ""
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      12,
+      "rux"
+    ],
+    [
+      28,
+      "rgu"
+    ],
+    [
+      60,
+      "r"
+    ]
+  ]
+}

@@ -1,0 +1,1100 @@
+{
+  "room": {
+    "id": "bank-f62",
+    "name": "The Window You Return Through",
+    "palette": "ember",
+    "study": true,
+    "movement": "survive-2",
+    "cols": 48,
+    "rows": 36,
+    "exit": "left",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "map": [
+      "################################################",
+      "##########.....................................#",
+      "##########.....................................#",
+      "##########.....................................#",
+      "##########.....................................#",
+      "##########.....................................#",
+      "##########.....................................#",
+      "##########....................##################",
+      "##########...................Evvvvvvvvvvvvvvvvv#",
+      "##########...................E.................#",
+      "##########...................E.................#",
+      "##########...................E.................#",
+      ".G...........................E.................#",
+      ".G...........................E.................#",
+      ".G...........................E.................#",
+      ".G...........................E.................#",
+      ".G...........................E.................#",
+      "###############..............E.................#",
+      "##########...................E.................#",
+      "##########...................E.................#",
+      "##########...................E.................#",
+      "##########...................E..........c......#",
+      "##########...................E.................#",
+      "##########...................E.................#",
+      "##########...................E.................#",
+      "##########...................E.................#",
+      "##########EEEEEEEEEEEEEEEE.....................#",
+      "##########..............<#.....................#",
+      "##########..............<#.....................#",
+      "##########..............<#.....................#",
+      "##########..............<#.....................#",
+      "##########....P.........<#.....................#",
+      "##########..............<#.....................#",
+      "##########..............<#.....................#",
+      "##########^^^^^^^^^^^^^^^#^^^^^^^^^^^^^^^^^^^^^#",
+      "################################################"
+    ],
+    "hint": "Store the launch while the window changes. Return high through the glass to the leftward crystal.",
+    "question": "When does the outward opening become useful for a much higher return?",
+    "recoilPlatforms": [
+      {
+        "id": "Low",
+        "c": 12,
+        "r": 32,
+        "w": 6,
+        "depth": 2,
+        "loadFrames": 30,
+        "releaseSpeed": 120
+      },
+      {
+        "id": "Return",
+        "c": 33,
+        "r": 22,
+        "w": 10,
+        "depth": 2,
+        "loadFrames": 30,
+        "releaseSpeed": 120
+      }
+    ],
+    "slabs": [
+      {
+        "stone": 80,
+        "molten": 60,
+        "glass": 120,
+        "offset": 60
+      },
+      {
+        "stone": 60,
+        "molten": 45,
+        "glass": 70
+      }
+    ],
+    "vectorRefills": [
+      {
+        "c": 24,
+        "r": 8,
+        "dir": "left"
+      }
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 14,
+    "run": 7,
+    "collection": "run7",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "difficulty": 5,
+    "role": "Read the same thermal window on two trajectories",
+    "worlds": [],
+    "tags": [
+      "recoil-platform",
+      "reverse-super",
+      "heat-slab",
+      "return-route",
+      "timing",
+      "vector-refill",
+      "lift-inheritance"
+    ],
+    "newMechanics": [],
+    "author": "Codex",
+    "humanReview": "Unreviewed candidate. Difficulty is an author estimate; no human ratings assigned.",
+    "learningFamily": "reply-and-cycle",
+    "lessonRole": "master",
+    "preparesFor": [],
+    "prerequisites": [
+      "bank-b61"
+    ],
+    "format": "extended",
+    "requiredEvents": [
+      "recoil-jump",
+      "reverse-super",
+      "stone-lit",
+      "gate-open",
+      "slab-glass",
+      "vector-refill"
+    ],
+    "solution": "Compress the low plate, release and jump through the first cooling ceiling. Land on the glass and jump-dash through the vertical window to the far plate, touching the tally that opens the western exit. Reposition on that plate, compress it and watch the next glass interval. Release, dash right along the rising plate, then jump left into a reverse super. Carry the inherited lift back through the window, dash up-left through the leftward crystal, and use its refill to continue up-left onto the high western gallery. The route crosses the same window low on the outward leg and high on the return.",
+    "nearestExisting": "B61 introduces a recoil launch through cooling glass. This folds the route back through a vertical thermal partition at a different height, coupling stored lift, reverse launch and the second glass interval.",
+    "novelty": "The window admits the low outward dash before becoming the timing gate for a faster, higher reverse return.",
+    "entrance": "Low western recoil well.",
+    "exit": "Western high gallery, opened by the far visible tally.",
+    "interconnection": "Both journeys share the same changing partition and low launch floor; the far tally opens an exit above the original well.",
+    "positiveChecks": [
+      {
+        "name": "Release return plate two frames earlier",
+        "tape": [
+          [
+            95,
+            "d"
+          ],
+          [
+            7,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            65,
+            "rgu"
+          ],
+          [
+            30,
+            "l"
+          ],
+          [
+            48,
+            "d"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            26,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            10,
+            "l"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            220,
+            "lgu"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 528,
+        "events": [
+          "recoil-load",
+          "slab-molten",
+          "slab-glass",
+          "recoil-release",
+          "jump",
+          "recoil-jump",
+          "land",
+          "slab-stone",
+          "dash",
+          "refill-dash",
+          "stone-lit",
+          "gate-open",
+          "super",
+          "reverse-super",
+          "refill",
+          "vector-refill",
+          "exit"
+        ],
+        "eventCounts": {
+          "recoil-load": 2,
+          "slab-molten": 5,
+          "slab-glass": 5,
+          "recoil-release": 2,
+          "jump": 2,
+          "recoil-jump": 2,
+          "land": 3,
+          "slab-stone": 4,
+          "dash": 4,
+          "refill-dash": 4,
+          "stone-lit": 1,
+          "gate-open": 1,
+          "super": 1,
+          "reverse-super": 1,
+          "refill": 1,
+          "vector-refill": 1,
+          "exit": 1
+        }
+      },
+      {
+        "name": "Release return plate two frames later",
+        "tape": [
+          [
+            95,
+            "d"
+          ],
+          [
+            7,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            65,
+            "rgu"
+          ],
+          [
+            30,
+            "l"
+          ],
+          [
+            52,
+            "d"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            26,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            10,
+            "l"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            220,
+            "lgu"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 532,
+        "events": [
+          "recoil-load",
+          "slab-molten",
+          "slab-glass",
+          "recoil-release",
+          "jump",
+          "recoil-jump",
+          "land",
+          "slab-stone",
+          "dash",
+          "refill-dash",
+          "stone-lit",
+          "gate-open",
+          "super",
+          "reverse-super",
+          "refill",
+          "vector-refill",
+          "exit"
+        ],
+        "eventCounts": {
+          "recoil-load": 2,
+          "slab-molten": 5,
+          "slab-glass": 5,
+          "recoil-release": 2,
+          "jump": 2,
+          "recoil-jump": 2,
+          "land": 3,
+          "slab-stone": 4,
+          "dash": 4,
+          "refill-dash": 4,
+          "stone-lit": 1,
+          "gate-open": 1,
+          "super": 1,
+          "reverse-super": 1,
+          "refill": 1,
+          "vector-refill": 1,
+          "exit": 1
+        }
+      },
+      {
+        "name": "First launch two frames later",
+        "tape": [
+          [
+            97,
+            "d"
+          ],
+          [
+            7,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            65,
+            "rgu"
+          ],
+          [
+            30,
+            "l"
+          ],
+          [
+            50,
+            "d"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            26,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            10,
+            "l"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            220,
+            "lgu"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 532,
+        "events": [
+          "recoil-load",
+          "slab-molten",
+          "slab-glass",
+          "recoil-release",
+          "jump",
+          "recoil-jump",
+          "land",
+          "slab-stone",
+          "dash",
+          "refill-dash",
+          "stone-lit",
+          "gate-open",
+          "super",
+          "reverse-super",
+          "refill",
+          "vector-refill",
+          "exit"
+        ],
+        "eventCounts": {
+          "recoil-load": 2,
+          "slab-molten": 5,
+          "slab-glass": 5,
+          "recoil-release": 2,
+          "jump": 2,
+          "recoil-jump": 2,
+          "land": 3,
+          "slab-stone": 4,
+          "dash": 4,
+          "refill-dash": 4,
+          "stone-lit": 1,
+          "gate-open": 1,
+          "super": 1,
+          "reverse-super": 1,
+          "refill": 1,
+          "vector-refill": 1,
+          "exit": 1
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Ordinary jump from far plate",
+        "tape": [
+          [
+            95,
+            "d"
+          ],
+          [
+            7,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            65,
+            "rgu"
+          ],
+          [
+            30,
+            "l"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            26,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            10,
+            "l"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            220,
+            "lgu"
+          ]
+        ],
+        "exited": false,
+        "deaths": 3,
+        "frames": 0,
+        "events": [
+          "recoil-load",
+          "slab-molten",
+          "slab-glass",
+          "recoil-release",
+          "jump",
+          "recoil-jump",
+          "land",
+          "slab-stone",
+          "dash",
+          "refill-dash",
+          "stone-lit",
+          "gate-open",
+          "death",
+          "respawn",
+          "grab"
+        ],
+        "eventCounts": {
+          "recoil-load": 1,
+          "slab-molten": 9,
+          "slab-glass": 4,
+          "recoil-release": 1,
+          "jump": 3,
+          "recoil-jump": 1,
+          "land": 3,
+          "slab-stone": 3,
+          "dash": 2,
+          "refill-dash": 2,
+          "stone-lit": 1,
+          "gate-open": 1,
+          "death": 3,
+          "respawn": 2,
+          "grab": 2
+        }
+      },
+      {
+        "name": "Unloaded reverse super from far plate",
+        "tape": [
+          [
+            95,
+            "d"
+          ],
+          [
+            7,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            65,
+            "rgu"
+          ],
+          [
+            30,
+            "l"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            26,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            10,
+            "l"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            220,
+            "lgu"
+          ]
+        ],
+        "exited": false,
+        "deaths": 3,
+        "frames": 0,
+        "events": [
+          "recoil-load",
+          "slab-molten",
+          "slab-glass",
+          "recoil-release",
+          "jump",
+          "recoil-jump",
+          "land",
+          "slab-stone",
+          "dash",
+          "refill-dash",
+          "stone-lit",
+          "gate-open",
+          "super",
+          "reverse-super",
+          "death",
+          "respawn",
+          "grab"
+        ],
+        "eventCounts": {
+          "recoil-load": 1,
+          "slab-molten": 9,
+          "slab-glass": 4,
+          "recoil-release": 1,
+          "jump": 2,
+          "recoil-jump": 1,
+          "land": 2,
+          "slab-stone": 3,
+          "dash": 3,
+          "refill-dash": 2,
+          "stone-lit": 1,
+          "gate-open": 1,
+          "super": 1,
+          "reverse-super": 1,
+          "death": 3,
+          "respawn": 2,
+          "grab": 2
+        }
+      },
+      {
+        "name": "Return during molten window",
+        "tape": [
+          [
+            95,
+            "d"
+          ],
+          [
+            7,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            65,
+            "rgu"
+          ],
+          [
+            30,
+            "l"
+          ],
+          [
+            1,
+            "d"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            26,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            10,
+            "l"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            220,
+            "lgu"
+          ]
+        ],
+        "exited": false,
+        "deaths": 3,
+        "frames": 0,
+        "events": [
+          "recoil-load",
+          "slab-molten",
+          "slab-glass",
+          "recoil-release",
+          "jump",
+          "recoil-jump",
+          "land",
+          "slab-stone",
+          "dash",
+          "refill-dash",
+          "stone-lit",
+          "gate-open",
+          "super",
+          "reverse-super",
+          "death",
+          "respawn",
+          "grab"
+        ],
+        "eventCounts": {
+          "recoil-load": 2,
+          "slab-molten": 8,
+          "slab-glass": 3,
+          "recoil-release": 2,
+          "jump": 2,
+          "recoil-jump": 1,
+          "land": 2,
+          "slab-stone": 2,
+          "dash": 3,
+          "refill-dash": 2,
+          "stone-lit": 1,
+          "gate-open": 1,
+          "super": 1,
+          "reverse-super": 1,
+          "death": 3,
+          "respawn": 3,
+          "grab": 2
+        }
+      },
+      {
+        "name": "First launch left into locked exit",
+        "tape": [
+          [
+            95,
+            "d"
+          ],
+          [
+            7,
+            ""
+          ],
+          [
+            25,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            180,
+            "lgu"
+          ]
+        ],
+        "exited": false,
+        "deaths": 0,
+        "frames": 0,
+        "events": [
+          "recoil-load",
+          "slab-molten",
+          "slab-glass",
+          "recoil-release",
+          "jump",
+          "recoil-jump",
+          "dash",
+          "grab",
+          "slab-stone",
+          "land",
+          "refill-dash"
+        ],
+        "eventCounts": {
+          "recoil-load": 1,
+          "slab-molten": 4,
+          "slab-glass": 4,
+          "recoil-release": 1,
+          "jump": 1,
+          "recoil-jump": 1,
+          "dash": 1,
+          "grab": 1,
+          "slab-stone": 2,
+          "land": 1,
+          "refill-dash": 1
+        }
+      },
+      {
+        "name": "Ordinary return from nearest edge during confirmed glass",
+        "tape": [
+          [
+            95,
+            "d"
+          ],
+          [
+            7,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            65,
+            "rgu"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            50,
+            "l"
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            140,
+            "lgu"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            100,
+            "lgu"
+          ]
+        ],
+        "exited": false,
+        "deaths": 3,
+        "explanation": "The ordinary jump and up-left dash pass through the open window, but peak below the high directional refill and fall short of the western gallery."
+      }
+    ],
+    "timingCues": [
+      "The low ceiling must be glass as the recoil launch reaches it.",
+      "The far tally opens the high western exit; it cannot be skipped by launching left at the start.",
+      "Hold the far plate until the vertical window approaches glass again, then reverse-launch through it.",
+      "The leftward crystal is positioned on the high return, beyond the window; reaching it too low cannot restore the continuation."
+    ],
+    "scale": "48×36 tiles; 1.88 normal-room areas, one connected outward-and-return route.",
+    "routeProof": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 530,
+      "events": [
+        "recoil-load",
+        "slab-molten",
+        "slab-glass",
+        "recoil-release",
+        "jump",
+        "recoil-jump",
+        "land",
+        "slab-stone",
+        "dash",
+        "refill-dash",
+        "stone-lit",
+        "gate-open",
+        "super",
+        "reverse-super",
+        "refill",
+        "vector-refill",
+        "exit"
+      ],
+      "eventCounts": {
+        "recoil-load": 2,
+        "slab-molten": 5,
+        "slab-glass": 5,
+        "recoil-release": 2,
+        "jump": 2,
+        "recoil-jump": 2,
+        "land": 3,
+        "slab-stone": 4,
+        "dash": 4,
+        "refill-dash": 4,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "super": 1,
+        "reverse-super": 1,
+        "refill": 1,
+        "vector-refill": 1,
+        "exit": 1
+      }
+    },
+    "routeMovement": [
+      {
+        "type": "recoil-jump",
+        "frame": 103,
+        "x": 117,
+        "y": 252,
+        "source": "recoil:Low",
+        "vx": 56.66666666666667,
+        "vy": -225
+      },
+      {
+        "type": "super",
+        "frame": 346,
+        "x": 334,
+        "y": 176
+      },
+      {
+        "type": "reverse-super",
+        "frame": 346,
+        "x": 334,
+        "y": 176,
+        "dir": -1
+      },
+      {
+        "type": "recoil-jump",
+        "frame": 346,
+        "x": 330,
+        "y": 172,
+        "source": "recoil:Return",
+        "vx": -260,
+        "vy": -225
+      },
+      {
+        "type": "vector-refill",
+        "frame": 395,
+        "x": 196,
+        "y": 68,
+        "dx": -1,
+        "dy": 0,
+        "once": false
+      }
+    ]
+  },
+  "tape": [
+    [
+      95,
+      "d"
+    ],
+    [
+      7,
+      ""
+    ],
+    [
+      25,
+      "rj"
+    ],
+    [
+      20,
+      "r"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      12,
+      "rux"
+    ],
+    [
+      65,
+      "rgu"
+    ],
+    [
+      30,
+      "l"
+    ],
+    [
+      50,
+      "d"
+    ],
+    [
+      1,
+      ""
+    ],
+    [
+      12,
+      "rx"
+    ],
+    [
+      26,
+      "lj"
+    ],
+    [
+      12,
+      "lux"
+    ],
+    [
+      10,
+      "l"
+    ],
+    [
+      12,
+      "lux"
+    ],
+    [
+      220,
+      "lgu"
+    ]
+  ]
+}

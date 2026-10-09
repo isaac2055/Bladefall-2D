@@ -1,0 +1,802 @@
+{
+  "room": {
+    "id": "bank-f31",
+    "name": "Take It Back",
+    "palette": "cliffs",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "map": [
+      "########################################",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#.......................AAAAAAAAAAAAAAA#",
+      "#.............c........................#",
+      "#..............BBBBBBBBBB..............#",
+      "#.................................Pc...#",
+      "#........................AAAAAAAAAA....#",
+      "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+      "########################################"
+    ],
+    "movement": "survive-2",
+    "exit": "right",
+    "hint": "Dash out for each tally · Hold the opposite direction and Jump during the dash.",
+    "question": "Which direction must the dash begin, and which direction must its jump leave?"
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 6,
+    "run": 2,
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "solve",
+    "worlds": [
+      25,
+      34,
+      40
+    ],
+    "tags": [
+      "reverse-super",
+      "dash-jump",
+      "phase",
+      "two-return-arcs"
+    ],
+    "newMechanics": [
+      "reverse-dash-jump"
+    ],
+    "entrance": "Low eastern phase floor.",
+    "exit": "Raised eastern return shelf.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "reverse-super",
+      "stone-lit",
+      "phase"
+    ],
+    "humanReview": "Author estimate; human fun/difficulty/suitability pending.",
+    "solution": "Two opposed outgoing dashes collect the tallies outside the supports. Reverse each dash jump toward the next phase shelf. The second rising return reaches the upper eastern exit.",
+    "nearestExisting": "p005 phase-floor departures and the Switchback phase rooms use the dash to change terrain; this makes the outward contact and the return jump disagree in direction twice.",
+    "novelty": "The direction required to touch each tally points away from the landing. Reversing preserves a useful jump launch while the same dash changes which shore exists.",
+    "hintTeaching": "An outgoing dash and its jump can now point in opposite directions: hold Left or Right when pressing Jump. Let the dash collect the outside tally first.",
+    "designNotes": "The canonical route uses two reversals. A carefully positioned ordinary super that solves the same phase and trajectory problem is a legitimate advanced alternative, not ruled out by an arbitrary route lock.",
+    "positiveChecks": [
+      {
+        "name": "First dash 5, second dash 5",
+        "outgoingDashFrames": 5,
+        "returnDashFrames": 5,
+        "walkToSecondEdge": 53,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 171,
+        "tape": [
+          [
+            5,
+            "rx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            53,
+            "l"
+          ],
+          [
+            5,
+            "lx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. The walk duration is part of this variant, positioning at the visible second edge; this does not claim the two launch timings are independent under an unchanged approach."
+      },
+      {
+        "name": "First dash 5, second dash 6",
+        "outgoingDashFrames": 5,
+        "returnDashFrames": 6,
+        "walkToSecondEdge": 53,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 174,
+        "tape": [
+          [
+            5,
+            "rx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            53,
+            "l"
+          ],
+          [
+            6,
+            "lx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. The walk duration is part of this variant, positioning at the visible second edge; this does not claim the two launch timings are independent under an unchanged approach."
+      },
+      {
+        "name": "First dash 5, second dash 7",
+        "outgoingDashFrames": 5,
+        "returnDashFrames": 7,
+        "walkToSecondEdge": 53,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 178,
+        "tape": [
+          [
+            5,
+            "rx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            53,
+            "l"
+          ],
+          [
+            7,
+            "lx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. The walk duration is part of this variant, positioning at the visible second edge; this does not claim the two launch timings are independent under an unchanged approach."
+      },
+      {
+        "name": "First dash 5, second dash 8",
+        "outgoingDashFrames": 5,
+        "returnDashFrames": 8,
+        "walkToSecondEdge": 53,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 182,
+        "tape": [
+          [
+            5,
+            "rx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            53,
+            "l"
+          ],
+          [
+            8,
+            "lx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. The walk duration is part of this variant, positioning at the visible second edge; this does not claim the two launch timings are independent under an unchanged approach."
+      },
+      {
+        "name": "First dash 6, second dash 5",
+        "outgoingDashFrames": 6,
+        "returnDashFrames": 5,
+        "walkToSecondEdge": 56,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 175,
+        "tape": [
+          [
+            6,
+            "rx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            56,
+            "l"
+          ],
+          [
+            5,
+            "lx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. The walk duration is part of this variant, positioning at the visible second edge; this does not claim the two launch timings are independent under an unchanged approach."
+      },
+      {
+        "name": "First dash 6, second dash 6",
+        "outgoingDashFrames": 6,
+        "returnDashFrames": 6,
+        "walkToSecondEdge": 56,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 179,
+        "tape": [
+          [
+            6,
+            "rx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            56,
+            "l"
+          ],
+          [
+            6,
+            "lx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. The walk duration is part of this variant, positioning at the visible second edge; this does not claim the two launch timings are independent under an unchanged approach."
+      },
+      {
+        "name": "First dash 6, second dash 7",
+        "outgoingDashFrames": 6,
+        "returnDashFrames": 7,
+        "walkToSecondEdge": 56,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 182,
+        "tape": [
+          [
+            6,
+            "rx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            56,
+            "l"
+          ],
+          [
+            7,
+            "lx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. The walk duration is part of this variant, positioning at the visible second edge; this does not claim the two launch timings are independent under an unchanged approach."
+      },
+      {
+        "name": "First dash 6, second dash 8",
+        "outgoingDashFrames": 6,
+        "returnDashFrames": 8,
+        "walkToSecondEdge": 56,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 186,
+        "tape": [
+          [
+            6,
+            "rx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            56,
+            "l"
+          ],
+          [
+            8,
+            "lx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. The walk duration is part of this variant, positioning at the visible second edge; this does not claim the two launch timings are independent under an unchanged approach."
+      },
+      {
+        "name": "First dash 7, second dash 5",
+        "outgoingDashFrames": 7,
+        "returnDashFrames": 5,
+        "walkToSecondEdge": 59,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 179,
+        "tape": [
+          [
+            7,
+            "rx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            59,
+            "l"
+          ],
+          [
+            5,
+            "lx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. The walk duration is part of this variant, positioning at the visible second edge; this does not claim the two launch timings are independent under an unchanged approach."
+      },
+      {
+        "name": "First dash 7, second dash 6",
+        "outgoingDashFrames": 7,
+        "returnDashFrames": 6,
+        "walkToSecondEdge": 59,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 183,
+        "tape": [
+          [
+            7,
+            "rx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            59,
+            "l"
+          ],
+          [
+            6,
+            "lx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. The walk duration is part of this variant, positioning at the visible second edge; this does not claim the two launch timings are independent under an unchanged approach."
+      },
+      {
+        "name": "First dash 7, second dash 7",
+        "outgoingDashFrames": 7,
+        "returnDashFrames": 7,
+        "walkToSecondEdge": 59,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 187,
+        "tape": [
+          [
+            7,
+            "rx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            59,
+            "l"
+          ],
+          [
+            7,
+            "lx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. The walk duration is part of this variant, positioning at the visible second edge; this does not claim the two launch timings are independent under an unchanged approach."
+      },
+      {
+        "name": "First dash 7, second dash 8",
+        "outgoingDashFrames": 7,
+        "returnDashFrames": 8,
+        "walkToSecondEdge": 59,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 190,
+        "tape": [
+          [
+            7,
+            "rx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            59,
+            "l"
+          ],
+          [
+            8,
+            "lx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. The walk duration is part of this variant, positioning at the visible second edge; this does not claim the two launch timings are independent under an unchanged approach."
+      },
+      {
+        "name": "First dash 8, second dash 5",
+        "outgoingDashFrames": 8,
+        "returnDashFrames": 5,
+        "walkToSecondEdge": 61,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 182,
+        "tape": [
+          [
+            8,
+            "rx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            61,
+            "l"
+          ],
+          [
+            5,
+            "lx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. The walk duration is part of this variant, positioning at the visible second edge; this does not claim the two launch timings are independent under an unchanged approach."
+      },
+      {
+        "name": "First dash 8, second dash 6",
+        "outgoingDashFrames": 8,
+        "returnDashFrames": 6,
+        "walkToSecondEdge": 61,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 185,
+        "tape": [
+          [
+            8,
+            "rx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            61,
+            "l"
+          ],
+          [
+            6,
+            "lx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. The walk duration is part of this variant, positioning at the visible second edge; this does not claim the two launch timings are independent under an unchanged approach."
+      },
+      {
+        "name": "First dash 8, second dash 7",
+        "outgoingDashFrames": 8,
+        "returnDashFrames": 7,
+        "walkToSecondEdge": 61,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 189,
+        "tape": [
+          [
+            8,
+            "rx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            61,
+            "l"
+          ],
+          [
+            7,
+            "lx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. The walk duration is part of this variant, positioning at the visible second edge; this does not claim the two launch timings are independent under an unchanged approach."
+      },
+      {
+        "name": "First dash 8, second dash 8",
+        "outgoingDashFrames": 8,
+        "returnDashFrames": 8,
+        "walkToSecondEdge": 61,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 193,
+        "tape": [
+          [
+            8,
+            "rx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            61,
+            "l"
+          ],
+          [
+            8,
+            "lx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. The walk duration is part of this variant, positioning at the visible second edge; this does not claim the two launch timings are independent under an unchanged approach."
+      }
+    ],
+    "route": {
+      "frames": 179,
+      "deaths": 0,
+      "events": [
+        "phase",
+        "dash",
+        "stone-lit",
+        "super",
+        "reverse-super",
+        "land",
+        "refill-dash",
+        "gate-open",
+        "exit"
+      ],
+      "eventCounts": {
+        "phase": 2,
+        "dash": 2,
+        "stone-lit": 2,
+        "super": 2,
+        "reverse-super": 2,
+        "land": 2,
+        "refill-dash": 2,
+        "gate-open": 1,
+        "exit": 1
+      }
+    },
+    "shortcutChecks": [
+      {
+        "name": "Do not reverse-jump the first outgoing dash",
+        "tape": [
+          [
+            6,
+            "rx"
+          ],
+          [
+            12,
+            "l"
+          ],
+          [
+            56,
+            "l"
+          ],
+          [
+            6,
+            "lx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 3,
+          "firstFailure": {
+            "type": "death",
+            "frame": 24,
+            "x": 307,
+            "y": 171,
+            "cause": "spikes",
+            "vx": -21.666666666666668,
+            "vy": 160,
+            "i": 23
+          }
+        }
+      },
+      {
+        "name": "Skip the outside eastern tally with a direct leftward launch",
+        "tape": [
+          [
+            5,
+            "lx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            56,
+            "l"
+          ],
+          [
+            6,
+            "lx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0
+        }
+      }
+    ]
+  },
+  "tape": [
+    [
+      6,
+      "rx"
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      56,
+      "l"
+    ],
+    [
+      6,
+      "lx"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      110,
+      "r"
+    ]
+  ]
+}

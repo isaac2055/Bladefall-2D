@@ -1,0 +1,577 @@
+{
+  "room": {
+    "id": "bank-b48",
+    "name": "The Train Comes Back Empty",
+    "palette": "foundry",
+    "study": true,
+    "dashes": 1,
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "map": [
+      "####################################################################################################",
+      "#..................................................................................................#",
+      "#..................................................................................................#",
+      "#..................................................................................................#",
+      "#..................................................................................................#",
+      "#..................................................................................................#",
+      "#..................................................................................................#",
+      "#..................................................................................................#",
+      "#................................................................./..............................\\.#",
+      "#..................................................................................................#",
+      "#...............................................................................................#.##",
+      "#................................................................................................c.#",
+      "#...............................................................................................#.##",
+      "#..................................................................................................#",
+      "#..................................................................................................#",
+      "#................................................................................................/.#",
+      "#..................................................................................................#",
+      "#.....................................................................................##########...#",
+      "#..................................................................................................#",
+      "#........................................................................f.........................#",
+      "#..................................................................................................#",
+      "#..................................................................................................#",
+      "#....................................................................n.............................#",
+      "#..............................---GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-----------.......................#",
+      "#..................................................................................................#",
+      "..G..........................................................................................##....#",
+      "..G.P........................................................................................##....#",
+      "..G.CC......................................................................wwwwwwwwwwwwwwwww##....#",
+      "###########-------)-----k-.........................................................................#",
+      "###########........................................................................................#",
+      "###########........................................................................................#",
+      "###########........................................................................................#",
+      "###########........................................................................................#",
+      "###########{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{({{{{{{{{{{-#",
+      "####################################################################################################",
+      "####################################################################################################"
+    ],
+    "hint": "Lean for the upper track. After the thaw, send the empty train back below your first route.",
+    "question": "When opening the home door also removes your outgoing track, where must the same train go next?",
+    "exit": "left",
+    "cols": 100,
+    "rows": 36,
+    "thaw": 180,
+    "beams": [
+      {
+        "c": 99,
+        "r": 15,
+        "dir": "l"
+      },
+      {
+        "c": 10,
+        "r": 32,
+        "dir": "r"
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 11,
+    "run": 5,
+    "collection": "run5",
+    "format": "superroom",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "difficulty": 4,
+    "role": "Send one train out high and back low after opening the road",
+    "worlds": [
+      12,
+      16,
+      20
+    ],
+    "tags": [
+      "cart",
+      "track-fork",
+      "freeze",
+      "beam",
+      "return-route"
+    ],
+    "newMechanics": [],
+    "author": "Codex",
+    "humanReview": "Unmeasured; author estimate only.",
+    "requiredEvents": [
+      "switch-high",
+      "condenser",
+      "feather-jump",
+      "mirror",
+      "stone-lit",
+      "thaw",
+      "stone-hit",
+      "boost"
+    ],
+    "solution": "Stay seated and lean across the first fork to take the high line. Cut the condenser while approaching the end, then jump out, collect the feather and make the second jump onto the far observation gallery. Turn the mirror from the left: it lights the sealed receiver, opens the home exit and also removes the long track you used to get here. Watch the ice thaw and the train fall into the lower vault. Drop on its eastern side and dash it west; the empty train parks at the opposite stop, putting the lower conveyor route in its shadow. Follow underneath the missing outbound bridge, then jump and dash up at the western end of the overhead rail and walk back to the home exit.",
+    "nearestExisting": "F18 is the nearest cart/thaw/shadow room, and B29 sends a movable shield ahead. This switchyard adds a piloted high fork, an optical latch that physically removes the outgoing rail, access to the train’s far face after thaw, and an explicit reversal that shades the lower return.",
+    "novelty": "Unlike F18, the cart has a piloted high-fork journey, a separate thawed arrival, and an intentional reversal from the newly accessible eastern face. The optical completion removes the outgoing bridge, so the return must be redrawn below it; the same train creates that lower shadow.",
+    "approvedIngredients": [
+      "bank-f18",
+      "bank-b29",
+      "bank-b13"
+    ],
+    "positiveChecks": [
+      {
+        "name": "Watch the thaw longer",
+        "tape": [
+          [
+            137,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            15,
+            "l"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            210,
+            ""
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            75,
+            ""
+          ],
+          [
+            18,
+            "l"
+          ],
+          [
+            1,
+            "lx"
+          ],
+          [
+            220,
+            "l"
+          ],
+          [
+            8,
+            "j"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            165,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0
+        }
+      },
+      {
+        "name": "Shorter observation wait",
+        "tape": [
+          [
+            137,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            15,
+            "l"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            138,
+            ""
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            75,
+            ""
+          ],
+          [
+            18,
+            "l"
+          ],
+          [
+            1,
+            "lx"
+          ],
+          [
+            220,
+            "l"
+          ],
+          [
+            8,
+            "j"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            165,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Take the low fork first",
+        "tape": [
+          [
+            63,
+            "r"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            230,
+            "r"
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0
+        }
+      },
+      {
+        "name": "Try to walk past the parked train without reversing it",
+        "tape": [
+          [
+            137,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            15,
+            "l"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            150,
+            ""
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            75,
+            ""
+          ],
+          [
+            18,
+            "l"
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            220,
+            "l"
+          ],
+          [
+            8,
+            "j"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            165,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0
+        }
+      }
+    ],
+    "interconnection": "One train occupies both routes in opposite directions. The upper optical latch opens the home exit and simultaneously removes the outward rail; freezing temporarily catches the train, thawing gives access to its east face, and reversing it creates the return shadow below the missing bridge.",
+    "superroom": {
+      "screenAreas": 3.4782608695652173,
+      "stages": [
+        "Pilot the high fork while the outgoing bridge is solid",
+        "Freeze the receiving pool and take the feather route to the optical gallery",
+        "Open the exit and remove the outgoing bridge",
+        "Reverse the thawed train to shade the lower return"
+      ],
+      "routeExtent": {
+        "minX": -6,
+        "maxX": 780,
+        "minY": 125,
+        "maxY": 253
+      }
+    },
+    "route": {
+      "frames": 858,
+      "deaths": 0,
+      "events": [
+        "boost",
+        "switch-high",
+        "cart-land",
+        "strike",
+        "freeze",
+        "condenser",
+        "jump",
+        "feather",
+        "feather-jump",
+        "cart-bump",
+        "mirror",
+        "stone-lit",
+        "gate-open",
+        "feather-back",
+        "thaw",
+        "land",
+        "stone-hit",
+        "refill-dash",
+        "dash",
+        "exit"
+      ],
+      "eventCounts": {
+        "boost": 2,
+        "switch-high": 1,
+        "cart-land": 3,
+        "strike": 2,
+        "freeze": 1,
+        "condenser": 1,
+        "jump": 3,
+        "feather": 1,
+        "feather-jump": 1,
+        "cart-bump": 2,
+        "mirror": 1,
+        "stone-lit": 1,
+        "gate-open": 2,
+        "feather-back": 1,
+        "thaw": 1,
+        "land": 3,
+        "stone-hit": 1,
+        "refill-dash": 2,
+        "dash": 1,
+        "exit": 1
+      },
+      "movement": "Ordinary movement and device momentum; no advanced dash tech."
+    },
+    "requiredEventCounts": {
+      "gate-open": 2,
+      "boost": 2
+    },
+    "designNotes": "The sealed receiver powers two ordinary G bodies: the home gate and the long outgoing rail. Its persistent light means reversing the mirror cannot put the rail back. The player watches thaw from a broad ledge, reaches the train from the newly available east side, and returns on a fast lower conveyor. The final rise is a roomy ordinary jump and upward dash, with no narrow catch."
+  },
+  "tape": [
+    [
+      137,
+      "r"
+    ],
+    [
+      1,
+      "rs"
+    ],
+    [
+      1,
+      "r"
+    ],
+    [
+      8,
+      "rj"
+    ],
+    [
+      1,
+      "r"
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      15,
+      "l"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      1,
+      "r"
+    ],
+    [
+      1,
+      "rs"
+    ],
+    [
+      150,
+      ""
+    ],
+    [
+      12,
+      "r"
+    ],
+    [
+      75,
+      ""
+    ],
+    [
+      18,
+      "l"
+    ],
+    [
+      1,
+      "lx"
+    ],
+    [
+      220,
+      "l"
+    ],
+    [
+      8,
+      "j"
+    ],
+    [
+      1,
+      "ux"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      165,
+      "l"
+    ]
+  ]
+}

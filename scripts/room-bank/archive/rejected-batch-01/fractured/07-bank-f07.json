@@ -1,0 +1,147 @@
+{
+  "room": {
+    "id": "bank-f07",
+    "name": "The Unfinished Bridge",
+    "palette": "fractured",
+    "lock": [
+      "strike",
+      "portal",
+      "parry"
+    ],
+    "exit": "right",
+    "stepRelays": [
+      {
+        "id": "A",
+        "duration": 48,
+        "platforms": [
+          {
+            "c": 9,
+            "r": 17,
+            "w": 5,
+            "h": 1,
+            "to": [
+              0,
+              -7
+            ]
+          }
+        ]
+      }
+    ],
+    "hint": "Land to raise the bridge. A low dash-jump from the moving deck inherits its upward speed: take off before it stops.",
+    "question": "Can a low jump borrow enough height from a moving runway?",
+    "map": [
+      "########################################",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.............................<#########",
+      "#.............................<#########",
+      "#.............................<#########",
+      "#.............................<#########",
+      "#.............................<#########",
+      "#.............................<#########",
+      "#.............................<#########",
+      "#.............................<#########",
+      "#.............................<#########",
+      "#..P..........................<#########",
+      "######........................<#########",
+      "######........................<#########",
+      "######........................<#########",
+      "######^^^^^^^^^^^^^^^^^^^^^^^^.#########",
+      "########################################"
+    ],
+    "study": true
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 1,
+    "difficulty": 4,
+    "role": "combination",
+    "worlds": [
+      24,
+      31
+    ],
+    "tags": [
+      "step-relay",
+      "hyper",
+      "lift-momentum"
+    ],
+    "newMechanics": [
+      "step-relay"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "step-relay",
+      "hyper"
+    ],
+    "solution": "Land on the relay runway, then launch a low ground-dash jump while the deck is rising. Its upward momentum gives the normally low hyper enough height to cross the gap to the high right bank.",
+    "entrance": "left floor at 18",
+    "exit": "right high window",
+    "proof": {
+      "frames": 118,
+      "deaths": 0,
+      "events": [
+        "dash",
+        "super",
+        "step-relay",
+        "land",
+        "refill-dash",
+        "ultra",
+        "hyper",
+        "exit"
+      ],
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  "tape": [
+    [
+      2,
+      "rx"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      20,
+      "lu"
+    ],
+    [
+      22,
+      ""
+    ],
+    [
+      5,
+      "rdx"
+    ],
+    [
+      2,
+      "rx"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      6,
+      "r"
+    ]
+  ]
+}

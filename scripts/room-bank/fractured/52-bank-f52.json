@@ -1,0 +1,752 @@
+{
+  "room": {
+    "id": "bank-f52",
+    "name": "Put It on the Other Floor",
+    "palette": "inversion",
+    "study": true,
+    "movement": "survive-2",
+    "aim8": true,
+    "cols": 40,
+    "rows": 23,
+    "exit": "right",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "impulseSeeds": [
+      {
+        "id": "Uppercut",
+        "c": 10,
+        "r": 16
+      }
+    ],
+    "map": [
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "############################............",
+      "#.............vvvvvvvvvvvvvv............",
+      "#...........#...........................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#...........Q...........................",
+      "#...........Q.^^^^^^^^^^^^^^...........#",
+      "#.......P...Q.##############^^^^^^^^^^^#",
+      "########################################",
+      "########################################",
+      "########################################"
+    ],
+    "hint": "Move the seed into the slit before turning gravity. The blade chooses the launch line.",
+    "question": "What height must the seed keep when the roof becomes your floor?"
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 13,
+    "run": 6,
+    "collection": "run6",
+    "format": "compact",
+    "acceptance": "revised",
+    "status": "route-proven",
+    "difficulty": 4,
+    "role": "Set the seed’s height on one floor and launch from the other",
+    "worlds": [
+      28,
+      33,
+      37
+    ],
+    "tags": [
+      "gravity",
+      "impulse-seed",
+      "blade",
+      "launch-position",
+      "clearance"
+    ],
+    "newMechanics": [],
+    "author": "Codex",
+    "humanReview": "Unreviewed; difficulty is an author estimate.",
+    "requiredEvents": [
+      "impulse-prime",
+      "gravity",
+      "impulse-burst"
+    ],
+    "solution": "From the original floor, cut upward to position and charge the floating seed. Dash through the prism to invert the room, then jump left onto the stable tooth beside the prepared seed. A leftward blade strike throws you right through the thorn-lined passage. Carry that burst into a horizontal dash near the middle of the crossing to reach the farther receiving ceiling. Land and walk out. The seed keeps its position relative to the architecture while gravity changes the floor from which you can reach its useful side.",
+    "nearestExisting": "B36 places a launch beside a portal, F36 revisits a seed from its other side, and B14 uses inversion to deliver cargo. Here gravity changes access to a seed that must retain the correct absolute height for a thorn-lined launch opening.",
+    "novelty": "The original floor prepares the object; inversion prepares the player’s approach to it. The corrected crossing now requires the prepared burst followed by an airborne dash, rather than letting an ordinary edge jump substitute for the entire setup.",
+    "positiveChecks": [
+      {
+        "name": "Continue the seed burst with a dash four frames earlier",
+        "tape": [
+          [
+            9,
+            "r"
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            6,
+            "l"
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            15,
+            "rx"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 244,
+          "events": [
+            "strike",
+            "impulse-prime",
+            "impulse-ready",
+            "dash",
+            "gravity",
+            "land",
+            "refill-dash",
+            "jump",
+            "impulse-burst",
+            "impulse-reset",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 2,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "dash": 2,
+            "gravity": 1,
+            "land": 3,
+            "refill-dash": 2,
+            "jump": 1,
+            "impulse-burst": 1,
+            "impulse-reset": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Continue the seed burst with a dash four frames later",
+        "tape": [
+          [
+            9,
+            "r"
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            6,
+            "l"
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            26,
+            "r"
+          ],
+          [
+            15,
+            "rx"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 231,
+          "events": [
+            "strike",
+            "impulse-prime",
+            "impulse-ready",
+            "dash",
+            "gravity",
+            "land",
+            "refill-dash",
+            "jump",
+            "impulse-burst",
+            "impulse-reset",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 2,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "dash": 2,
+            "gravity": 1,
+            "land": 3,
+            "refill-dash": 2,
+            "jump": 1,
+            "impulse-burst": 1,
+            "impulse-reset": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Rest ten frames longer before triggering the seed",
+        "tape": [
+          [
+            9,
+            "r"
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            6,
+            "l"
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            22,
+            "r"
+          ],
+          [
+            15,
+            "rx"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 248,
+          "events": [
+            "strike",
+            "impulse-prime",
+            "impulse-ready",
+            "dash",
+            "gravity",
+            "land",
+            "refill-dash",
+            "jump",
+            "impulse-burst",
+            "impulse-reset",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 2,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "dash": 2,
+            "gravity": 1,
+            "land": 3,
+            "refill-dash": 2,
+            "jump": 1,
+            "impulse-burst": 1,
+            "impulse-reset": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Walk to the original floor edge, jump-dash over spikes, and climb exit lip",
+        "tape": [
+          [
+            22,
+            "r"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            48,
+            "r"
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            15,
+            "rx"
+          ],
+          [
+            40,
+            "rg"
+          ],
+          [
+            30,
+            "ug"
+          ],
+          [
+            50,
+            "r"
+          ]
+        ],
+        "before": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 187,
+          "events": [
+            "jump",
+            "land",
+            "dash",
+            "grab",
+            "climbhop",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "land": 1,
+            "dash": 1,
+            "grab": 1,
+            "climbhop": 1,
+            "exit": 1
+          }
+        },
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 250,
+          "events": [
+            "jump",
+            "death",
+            "respawn",
+            "dash"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "death": 2,
+            "respawn": 2,
+            "dash": 1
+          }
+        }
+      },
+      {
+        "name": "Invert first, then jump-dash from the actual thorn edge without preparing a seed",
+        "tape": [
+          [
+            9,
+            "r"
+          ],
+          [
+            21,
+            ""
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            18,
+            "rx"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "before": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 209,
+          "events": [
+            "dash",
+            "gravity",
+            "land",
+            "refill-dash",
+            "jump",
+            "exit"
+          ],
+          "eventCounts": {
+            "dash": 2,
+            "gravity": 1,
+            "land": 2,
+            "refill-dash": 2,
+            "jump": 1,
+            "exit": 1
+          }
+        },
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 225,
+          "events": [
+            "dash",
+            "gravity",
+            "land",
+            "refill-dash",
+            "jump",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "dash": 2,
+            "gravity": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "jump": 1,
+            "death": 1,
+            "respawn": 1
+          }
+        }
+      },
+      {
+        "name": "Use the revised route without preparing the seed",
+        "tape": [
+          [
+            9,
+            "r"
+          ],
+          [
+            1,
+            "u"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            6,
+            "l"
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            22,
+            "r"
+          ],
+          [
+            15,
+            "rx"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 280,
+          "events": [
+            "dash",
+            "gravity",
+            "land",
+            "refill-dash",
+            "jump",
+            "strike",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "dash": 1,
+            "gravity": 1,
+            "land": 2,
+            "refill-dash": 1,
+            "jump": 1,
+            "strike": 1,
+            "death": 1,
+            "respawn": 1
+          }
+        }
+      }
+    ],
+    "endingForgiveness": "Prepare and trigger the seed from a stable foothold. The continuation dash passes four frames earlier and later; an extra ten-frame rest before the seed strike also passes. The receiving ceiling remains twelve tiles wide, and no late swing or catch is required after landing.",
+    "review": {
+      "reportedBypasses": [
+        {
+          "name": "Walk to the original floor edge, jump-dash over spikes, and climb exit lip",
+          "tape": [
+            [
+              22,
+              "r"
+            ],
+            [
+              20,
+              "rj"
+            ],
+            [
+              48,
+              "r"
+            ],
+            [
+              25,
+              "rj"
+            ],
+            [
+              15,
+              "rx"
+            ],
+            [
+              40,
+              "rg"
+            ],
+            [
+              30,
+              "ug"
+            ],
+            [
+              50,
+              "r"
+            ]
+          ],
+          "originalFrames": 187,
+          "originalDeaths": 0
+        },
+        {
+          "name": "Invert first, then jump-dash from the actual thorn edge without preparing a seed",
+          "tape": [
+            [
+              9,
+              "r"
+            ],
+            [
+              21,
+              ""
+            ],
+            [
+              1,
+              "rx"
+            ],
+            [
+              50,
+              ""
+            ],
+            [
+              26,
+              "rj"
+            ],
+            [
+              18,
+              "rx"
+            ],
+            [
+              100,
+              "r"
+            ]
+          ],
+          "originalFrames": 209,
+          "originalDeaths": 0
+        }
+      ]
+    },
+    "designNotes": "The original walkable middle ledge now has visible thorns. The thorn-lined crossing extends three tiles farther, because testing also found a second shortcut after inversion: a jump and dash from the actual corner, not the old canonical launch position. Both successful original edge approaches are saved as failing revised regressions.",
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 238,
+      "events": [
+        "strike",
+        "impulse-prime",
+        "impulse-ready",
+        "dash",
+        "gravity",
+        "land",
+        "refill-dash",
+        "jump",
+        "impulse-burst",
+        "impulse-reset",
+        "exit"
+      ],
+      "eventCounts": {
+        "strike": 2,
+        "impulse-prime": 1,
+        "impulse-ready": 1,
+        "dash": 2,
+        "gravity": 1,
+        "land": 3,
+        "refill-dash": 2,
+        "jump": 1,
+        "impulse-burst": 1,
+        "impulse-reset": 1,
+        "exit": 1
+      }
+    }
+  },
+  "tape": [
+    [
+      9,
+      "r"
+    ],
+    [
+      1,
+      "us"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      1,
+      "rx"
+    ],
+    [
+      50,
+      ""
+    ],
+    [
+      6,
+      "l"
+    ],
+    [
+      12,
+      "j"
+    ],
+    [
+      8,
+      "l"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      1,
+      "ls"
+    ],
+    [
+      22,
+      "r"
+    ],
+    [
+      15,
+      "rx"
+    ],
+    [
+      110,
+      "r"
+    ]
+  ]
+}

@@ -19,11 +19,11 @@
 (function(root){
 'use strict';
 const C=()=>root.BladefallPrecisionCore;
-const TILE=8,COLS=40,ROWS=23,DT=1/60,H=ROWS*TILE;
+const TILE=8,DT=1/60;
 const CK=Object.freeze({lean:260,leanMax:150,coast:40,boost:300,hop:-310,gravity:900,maxFall:240,push:200,home:40});
 const overlap=(ax,ay,aw,ah,bx,by,bw,bh)=>ax<bx+bw&&ax+aw>bx&&ay<by+bh&&ay+ah>by;
 function reset(g){
- const def=g.room.def,Core=C(),room=g.room;
+ const def=g.room.def,Core=C(),room=g.room,COLS=room.cols,ROWS=room.rows;
  room.boost=room.boost||new Int8Array(COLS*ROWS);
  def.map.forEach((row,r)=>{for(let c=0;c<COLS;c++){const ch=row[c],i=r*COLS+c;
   if(ch==='-'||ch==='('||ch===')'){room.grid[i]=Core.SOLID;room.rail=room.rail||new Uint8Array(COLS*ROWS);room.rail[i]=1;if(ch!=='-')room.boost[i]=ch==='('?-1:1;}
@@ -33,10 +33,10 @@ function reset(g){
  g.p.seat=null;
 }
 function supported(g,e){return C().solidAt(g,e.x,e.y+1,e.w,e.h,e);}
-function boostUnder(g,e){const r=(e.y+e.h)/TILE;if(r!==Math.floor(r)||r>=ROWS)return 0;let d=0;for(let c=Math.floor(e.x/TILE);c<=Math.floor((e.x+e.w-1)/TILE);c++)d=g.room.boost[r*COLS+c]||d;return d;}
+function boostUnder(g,e){const COLS=g.room.cols,ROWS=g.room.rows,r=(e.y+e.h)/TILE;if(r!==Math.floor(r)||r>=ROWS)return 0;let d=0;for(let c=Math.floor(e.x/TILE);c<=Math.floor((e.x+e.w-1)/TILE);c++)d=g.room.boost[r*COLS+c]||d;return d;}
 function seatedIn(g,e){const p=g.p;return p.state!=='dead'&&p.y+p.h===e.y&&p.x+4>=e.x&&p.x+4<e.x+e.w&&p.vy>=0;}
 function before(g,inp){
- const Core=C(),p=g.p;
+ const Core=C(),p=g.p,H=g.room.h;
  for(const e of g.ents){
   if(e.type!=='cart')continue;
   if(e.lost>0){if(--e.lost===0){e.x=e.ox;e.y=e.oy;e.vx=e.vy=0;e.remX=e.remY=0;e.gone=false;e.solid=true;Core.emit(g,'cart-home',{x:e.x+e.w/2,y:e.y});}continue;}

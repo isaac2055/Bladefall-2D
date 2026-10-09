@@ -3,10 +3,10 @@
    solid iron, still glowing for a moment. */
 (function(root){
 'use strict';
-const TILE=8,COLS=40,ROWS=23;
+const TILE=8;
 const px=(b,x,y,w,h,c)=>{b.fillStyle=c;b.fillRect(Math.round(x),Math.round(y),w,h);};
 function drawBack(b,g){
- const room=g.room;if(!room.belt)return;const t=g.frame;
+ const room=g.room,COLS=room.cols,ROWS=room.rows;if(!room.belt)return;const t=g.frame;
  for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){const d=room.belt[r*COLS+c];if(!d)continue;const x=c*TILE,y=r*TILE;
   px(b,x,y,8,8,'#2b2a2e');px(b,x,y,8,2,'#55535a');
   const o=((t*d)>>2)&3;for(let k=-1;k<3;k++){const xx=x+((k*4+o)%8+8)%8;px(b,xx,y+3,1,3,'#c9a24a');px(b,xx+(d>0?1:-1),y+4,1,1,'#c9a24a');}

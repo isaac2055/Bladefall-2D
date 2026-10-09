@@ -1,0 +1,11 @@
+{
+  "cut": {
+    "bank-b47": "Too easy even for Base; user requested cut.",
+    "bank-f53": "Cargo delivery followed by easy climbs felt boring; user requested cut.",
+    "bank-f54": "Unmarked portal surface and direct exit bypass; user requested cut."
+  },
+  "archive": "scripts/room-bank/archive/before-run56-feedback",
+  "fulfilledConditionalApproval": {
+    "bank-b48": "Banked Base after cart timing and exit-seal fixes; canonical route, timing variants and actual original shortcuts checked."
+  }
+}

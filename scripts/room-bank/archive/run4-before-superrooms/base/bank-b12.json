@@ -1,0 +1,217 @@
+{
+  "room": {
+    "id": "bank-b12",
+    "name": "Umbrella Exchange",
+    "hint": "A lantern stops sunlight. Strike the brass hub to turn the arm.",
+    "question": "If the arm becomes the bridge, what keeps the lower way in shadow?",
+    "map": [
+      "########################################",
+      "##################.....................#",
+      "##################.....................#",
+      "##################.....................#",
+      "##################.....................#",
+      "##################.....................#",
+      "##################.....................#",
+      "#......................................#",
+      "#.c....................................#",
+      "#####..................................#",
+      "#####..................................#",
+      "#####..................................#",
+      "#####..................................#",
+      "#####..................................#",
+      "#####..................................#",
+      "#####..................###.............#",
+      "#####.....................###........G..",
+      "#####................................G..",
+      "#####........................####....G..",
+      "#####.............................lP.G..",
+      "#####........###########################",
+      "#####^^^^^^^^###########################",
+      "########################################"
+    ],
+    "palette": "path",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "hingeArms": [
+      {
+        "id": "A",
+        "c": 17,
+        "r": 9,
+        "length": 10,
+        "dir": "down"
+      }
+    ],
+    "beams": [
+      {
+        "c": 6,
+        "r": 14,
+        "dir": "r"
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 2,
+    "difficulty": 4,
+    "role": "solve",
+    "worlds": [
+      11,
+      19
+    ],
+    "tags": [
+      "hinge-arm",
+      "beam",
+      "lantern",
+      "state-order",
+      "return-route"
+    ],
+    "newMechanics": [
+      "hinge-arm"
+    ],
+    "entrance": "Lower right, beside the closed exit.",
+    "exit": "Lower right after the upper-left tally.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "pickup",
+      "throw",
+      "hinge-turn",
+      "stone-lit",
+      "gate-open"
+    ],
+    "solution": "Carry the lantern up the small stairs while the downward arm blocks the beam. Leave it on the shelf intersecting the light. Descend and climb the arm to its hub; turn it left to bridge the low passage into the tally pocket. Its next upward pose jams against the ceiling, so the old beam shield cannot simply be restored. Return across the arm, jump right into the lantern’s shadow, and descend to the now-open exit.",
+    "nearestExisting": "bc2 Shade on Wheels uses a cart as a travelling shield; p19-throw relocates a lantern’s shade for a second passage. Here the original shield must become an irreversible low bridge; the cargo supplies its abandoned function before the knight commits.",
+    "novelty": "Changing one object’s job removes a safety property elsewhere. The lantern is staged before the bridge is made, and the far objective forces a return through the newly exposed region.",
+    "route": {
+      "frames": 571,
+      "deaths": 0,
+      "events": [
+        "pickup",
+        "jump",
+        "land",
+        "throw",
+        "lantern-land",
+        "grab",
+        "climbhop",
+        "strike",
+        "hinge-turn",
+        "dash",
+        "refill-dash",
+        "stone-lit",
+        "gate-open",
+        "exit"
+      ],
+      "movement": "Ordinary jump, dash, climb and device actions; no advanced momentum."
+    },
+    "acceptance": "banked",
+    "userFeedback": {
+      "date": "2026-10-07",
+      "comment": "Excellent; bank as is."
+    }
+  },
+  "tape": [
+    [
+      1,
+      "g"
+    ],
+    [
+      6,
+      "l"
+    ],
+    [
+      18,
+      "lj"
+    ],
+    [
+      22,
+      ""
+    ],
+    [
+      18,
+      "lj"
+    ],
+    [
+      22,
+      ""
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      37,
+      ""
+    ],
+    [
+      1,
+      "dg"
+    ],
+    [
+      25,
+      "l"
+    ],
+    [
+      130,
+      "lgu"
+    ],
+    [
+      1,
+      "lds"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      32,
+      "l"
+    ],
+    [
+      3,
+      "lj"
+    ],
+    [
+      5,
+      "lx"
+    ],
+    [
+      30,
+      "l"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      14,
+      "r"
+    ],
+    [
+      3,
+      "rj"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      32,
+      "r"
+    ],
+    [
+      3,
+      "rj"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      130,
+      "r"
+    ]
+  ]
+}

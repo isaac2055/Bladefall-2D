@@ -1,0 +1,20 @@
+{
+  "version": "7.299.0",
+  "priorSourcesUnchanged": 83,
+  "baselineFilesChecked": 415,
+  "unchangedBaselineFiles": 409,
+  "expectedChangedFiles": [
+    "public/precision.html",
+    "public/bladefall-room-bank-view.js",
+    "public/index.html",
+    "public/bladefall-room-bank.js",
+    "public/sw.js",
+    "docs/design/SURVIVE-ROOM-SYNTHESIS.md"
+  ],
+  "banked": 50,
+  "revised": 18,
+  "candidate": 31,
+  "oldMovementRuntimeUnchanged": true,
+  "originalTechAndEntityReportsUnchanged": true,
+  "worldLockUnchanged": true
+}

@@ -1,0 +1,375 @@
+{
+  "room": {
+    "id": "bank-f11",
+    "name": "Inside the Elbow",
+    "palette": "sunspire",
+    "study": true,
+    "exit": "right",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "hint": "Strike a brass hub to turn its arm clockwise. A blocked destination cannot turn.",
+    "hingeArms": [
+      {
+        "id": "A",
+        "c": 14,
+        "r": 13,
+        "length": 7,
+        "dir": "left"
+      },
+      {
+        "id": "B",
+        "c": 20,
+        "r": 6,
+        "length": 8,
+        "dir": "down"
+      }
+    ],
+    "beams": [
+      {
+        "c": 28,
+        "r": 11,
+        "dir": "l"
+      }
+    ],
+    "question": "The upper arm opens the sunlight, but the lower arm is your only way back to it. What must each be when you return?",
+    "map": [
+      "########################################",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#..................<..................G.",
+      "#..................<.#................G.",
+      "#..................<..................G.",
+      "######.............<..................G.",
+      "######.............<..........##########",
+      "######.............<.........<##########",
+      "#c.................<.........<##########",
+      "######P............<.........<##########",
+      "########...........<.........<##########",
+      "########.....................<##########",
+      "########.....................<##########",
+      "########....##...............<##########",
+      "########.....................<##########",
+      "########.....................<##########",
+      "########.....................<##########",
+      "########.....................<##########",
+      "########^^^^^^^^^^^^^^^^^^^^^^##########",
+      "########################################"
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 2,
+    "difficulty": 5,
+    "role": "puzzle",
+    "worlds": [
+      31,
+      39
+    ],
+    "tags": [
+      "hinge-arm",
+      "beam",
+      "return-route",
+      "wallbounce",
+      "persistent-state"
+    ],
+    "newMechanics": [
+      "hinge-arm"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "hinge-turn",
+      "stone-lit"
+    ],
+    "solution": "Turn A from left to up, climb it, and settle on its top before jumping/dashing over B’s thorn guard to the hub-side landing. Hop and strike B downward to turn it left; B now supplies the high bridge and clears A’s right-hand destination. Jump back over the guard, leave B’s western lip, and return to the service perch. Turn A right to shine sunlight through the deep western duct, then cycle down, left and up to restore the shielded climbing wall. Revisit B: it now forms a roof over A, requiring a kick around its western lip and a dash back onto its top. Jump over the guard to the hub landing, then jump/dash to the east gate.",
+    "nearestExisting": "Precision p182 lights a tally and restores a safe beam path. Here the beam blockers are the actual access wall and departure bridge: A cannot turn right while B hangs down, and B becomes a roof over the return climb. The player must change both the machine order and their approach side.",
+    "entrance": "west covered ledge, 6/12",
+    "exit": "east high window, rows5–8",
+    "designNotes": "The beam is not a reaction timer: the knight chooses when the room changes. No hint supplies the order.",
+    "proof": {
+      "frames": 687,
+      "deaths": 0,
+      "events": [
+        "strike",
+        "hinge-turn",
+        "land",
+        "jump",
+        "grab",
+        "climbjump",
+        "stone-lit",
+        "gate-open",
+        "walljump",
+        "dash",
+        "refill-dash",
+        "exit"
+      ],
+      "hingeSequence": [
+        "A:up",
+        "B:left",
+        "A:right",
+        "A:down",
+        "A:left",
+        "A:up"
+      ],
+      "verifiedAt": "2026-10-07"
+    },
+    "requiredEventCounts": {
+      "hinge-turn": 6
+    },
+    "acceptance": "banked",
+    "revision": 2,
+    "review": {
+      "feedback": "All hinges can be skipped; retain the intended puzzle but make its physical order necessary.",
+      "changes": [
+        "Rebuilt the western tally as a deep, eight-pixel beam duct with three-tile masonry above it, beyond touch and blade reach.",
+        "Moved the safe start two tiles east to preserve access to the first arm.",
+        "Added a visible thorn guard along B’s low approach and a small hub-side landing; A must become the high launch wall before B can be reached.",
+        "The guard is crossed from above on both visits, while B’s left pose still changes the return ascent into a roof."
+      ],
+      "bypassBefore": {
+        "description": "Strike the former shallow tally niche from the start, then climb unchanged B and exit without rotating any arm.",
+        "tape": [
+          [
+            2,
+            "l"
+          ],
+          [
+            2,
+            "j"
+          ],
+          [
+            1,
+            "s"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            46,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            6,
+            "rux"
+          ],
+          [
+            15,
+            "rgu"
+          ],
+          [
+            10,
+            "rgj"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            6,
+            "rx"
+          ],
+          [
+            90,
+            "r"
+          ]
+        ],
+        "result": {
+          "exited": true,
+          "deaths": 0,
+          "hingeTurns": 0
+        }
+      },
+      "bypassAfter": {
+        "exited": false,
+        "deaths": 2,
+        "stoneLit": false,
+        "hingeTurns": 0,
+        "description": "The original direct receiver strike no longer reaches; its later low dash into unchanged B hits the visible guard.",
+        "wrongOrder": {
+          "description": "Try turning A right before preparing B.",
+          "event": "hinge-jam",
+          "reason": "arm"
+        },
+        "intended": {
+          "frames": 687,
+          "deaths": 0,
+          "hingeTurns": 6,
+          "receiverLitBy": "beam"
+        }
+      },
+      "verifiedAt": "2026-10-07"
+    },
+    "userFeedback": {
+      "date": "2026-10-07",
+      "comment": "Approved; bank."
+    },
+    "humanReview": "User approved banking; numeric Fun /10, Difficulty /5 and Suitability /5 ratings remain pending."
+  },
+  "tape": [
+    [
+      38,
+      "r"
+    ],
+    [
+      1,
+      "s"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      12,
+      "j"
+    ],
+    [
+      65,
+      "rgu"
+    ],
+    [
+      12,
+      "rgj"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      12,
+      "j"
+    ],
+    [
+      6,
+      "rx"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      1,
+      "j"
+    ],
+    [
+      1,
+      "ds"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      38,
+      "l"
+    ],
+    [
+      65,
+      ""
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      5,
+      ""
+    ],
+    [
+      1,
+      "us"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      1,
+      "us"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      1,
+      "us"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      1,
+      "us"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      12,
+      "j"
+    ],
+    [
+      65,
+      "rgu"
+    ],
+    [
+      10,
+      "lj"
+    ],
+    [
+      6,
+      "rux"
+    ],
+    [
+      24,
+      "r"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      14,
+      "r"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      6,
+      "rx"
+    ],
+    [
+      90,
+      "r"
+    ]
+  ]
+}

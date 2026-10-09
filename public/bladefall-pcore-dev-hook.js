@@ -16,7 +16,7 @@ const TILE=8,DT=1/60;
 const HK=Object.freeze({reach:56,pump:260,gravity:900,reel:70,minLen:12,maxLen:80,takeUp:32,jumpLift:-90});
 function reset(g){
  const def=g.room.def,Core=C();
- def.map.forEach((row,r)=>{for(let c=0;c<40;c++)if(row[c]==='O')g.ents.push({type:'ring',dev:true,x:c*TILE,y:r*TILE,w:8,h:8,id:'rg'+g.ents.length});});
+ def.map.forEach((row,r)=>{for(let c=0;c<(def.cols||Core.COLS);c++)if(row[c]==='O')g.ents.push({type:'ring',dev:true,x:c*TILE,y:r*TILE,w:8,h:8,id:'rg'+g.ents.length});});
  (def.decks||[]).forEach((d,i)=>g.ents.push({type:'deck',dev:true,solid:true,x:d.c*TILE,y:d.r*TILE,w:d.w*TILE,h:(d.h||1)*TILE,ox:d.c*TILE,oy:d.r*TILE,
   dx:d.to[0]*TILE,dy:d.to[1]*TILE,period:d.period||180,phase:d.phase||0,remX:0,remY:0,clock:0,id:'dk'+i}));
  g.p.hook=null;g.p.lastRing=null;g.decksAwake=false;
@@ -28,6 +28,7 @@ function ringFor(g,p,skip){
  return best?{ring:best,len:Math.max(HK.minLen,bd)}:null;
 }
 function release(g,p,why){
+ if(p.hook?.ring.movingHook)root.BladefallPrecisionMovingHook?.release(g,p,why);
  p.lastRing=p.hook&&p.hook.ring;p.hook=null;p.state='normal';p.coast=true;p.fling=false;p.maxFall=Math.max(p.maxFall,C().K.maxFall);
  C().emit(g,'unhook',{x:p.x+4,y:p.y+4,why});
 }
@@ -57,7 +58,7 @@ function before(g,inp){
  }
 }
 function forces(g,p,inp){
- if(p.state!=='hook'||!p.hook)return;
+ if(p.state!=='hook'||!p.hook||p.hook.ring.movingHook)return;
  const h=p.hook,rx=h.ring.x+4,ry=h.ring.y+4;
  // Reel in or pay out.
  if(inp.my<0)h.len=Math.max(HK.minLen,h.len-HK.reel*DT);else if(inp.my>0)h.len=Math.min(HK.maxLen,h.len+HK.reel*DT);
@@ -74,5 +75,5 @@ function forces(g,p,inp){
  if(p.vx)p.facing=Math.sign(p.vx);
 }
 (root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'hook',reset,before,forces});
-root.BladefallPrecisionHook=Object.freeze({HK,ringFor});
+root.BladefallPrecisionHook=Object.freeze({HK,ringFor,release});
 })(typeof window!=='undefined'?window:globalThis);

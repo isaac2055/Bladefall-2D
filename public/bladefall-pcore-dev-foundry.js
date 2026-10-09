@@ -10,11 +10,11 @@
 (function(root){
 'use strict';
 const C=()=>root.BladefallPrecisionCore;
-const TILE=8,COLS=40,ROWS=23,DT=1/60;
+const TILE=8,DT=1/60;
 const NK=Object.freeze({anvil:-330,belt:60});
 const overlap=(ax,ay,aw,ah,bx,by,bw,bh)=>ax<bx+bw&&ax+aw>bx&&ay<by+bh&&ay+ah>by;
 function reset(g){
- const def=g.room.def,Core=C(),room=g.room;
+ const def=g.room.def,Core=C(),room=g.room,COLS=room.cols,ROWS=room.rows;
  room.belt=room.belt||new Int8Array(COLS*ROWS);
  def.map.forEach((row,r)=>{for(let c=0;c<COLS;c++){const ch=row[c];
   if(ch==='{'||ch==='}'){room.grid[r*COLS+c]=Core.SOLID;room.belt[r*COLS+c]=ch==='{'?-1:1;}
@@ -23,7 +23,7 @@ function reset(g){
  }});
 }
 function beltUnder(g,x,y,w,h){
- const room=g.room;if(!room.belt)return 0;const bottom=y+h;if(bottom%TILE)return 0;const r=bottom/TILE;if(r>=ROWS)return 0;
+ const room=g.room,COLS=room.cols,ROWS=room.rows;if(!room.belt)return 0;const bottom=y+h;if(bottom%TILE)return 0;const r=bottom/TILE;if(r>=ROWS)return 0;
  const c0=Math.floor(x/TILE),c1=Math.floor((x+w-1)/TILE);let d=0;
  for(let c=c0;c<=c1;c++){const v=room.belt[r*COLS+c];if(v)d=v;}
  return d;

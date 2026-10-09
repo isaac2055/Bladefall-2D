@@ -4,7 +4,7 @@ The hourly routine (`bladefall-climb-15-20-fractured`) keeps this file. The newe
 `docs/plans/climb-worlds-10-20.md`; the working design is `LLM-HANDOFF/EMERALD-ASCENT-TRANSITIONS.txt`.
 Worlds 10–14 belong to the other chat (built at 7.274.0). This routine does not edit them.
 
-## Status at a glance (7.279.0, 2026-10-04, end of run 5: worlds 25–40 summarised in the run 5 entry)
+## Historical status at a glance (7.279.0, 2026-10-04, end of run 5: worlds 25–40 summarised in the run 5 entry)
 
 | World | Road | Branches | Atlas / junctions | Art | page-check |
 |---|---|---|---|---|---|
@@ -30,6 +30,105 @@ Ratings: **none of regions 15–20 are rated** (checked `docs/playtest/room-revi
 2026-10-04). Every world keeps Room by Room's designed order, as worlds 10–14 did. The cap (7) still applies to anything rated later.
 
 ## Run log
+
+### 2026-10-06, run 7 — completed locally at 7.281.0
+
+All autonomous implementation and verification work is complete. Full report: `LLM-HANDOFF/CLIMB-COMPLETION-7.281.md`.
+Integrated/repaired this run: **21, 22, 23, 24, 29, 31, 32, 35, 36, 37, 38, 39, 40**. All their browser roads, branches,
+rewards, return passages/reverse entrances and applicable lift/drop checks pass at zero deaths.
+
+35 uses Lift and Toss above Roof; cart-start candidates lacked a return shaft. Its new arrival needs verified side choices
+for 30/31/32 on the right and 33/34 on the left, plus a compact middle-height hearth. Simply deleting every old SIDE override
+was insufficient: 30/31's departures cross their own road on the right, and 32's rebuilt departure needs a left mouth.
+32–34 also uses the left departure to clear the new secret. Crowded legacy hubs allow a fourth tier including their main entrance.
+37's broken one-tile return segment and its successor are merged into one two-tile-high corner; no challenge room changed.
+The redundant 37 search was stopped after its repair passed browser, containment and footprint checks.
+
+38/40's return corner recordings were corrected; the builder now emits the proven recording for that exact shape.
+Shade lift checks no longer idle at the landing until the shade catches up; immediate return is proven with zero deaths.
+The fixture now supplies the browser gravity module, fixing a false inverted-arrival failure in 32.
+
+All section-8 verifiers passed, including complete journeys (<10 seconds between hearths), 378 seams/490 authored routes,
+134 projection/jump-dash trips, 206 junction roads and 67 corridors. Both browser audits passed: 268 fold comparisons,
+worst 0.033913%; 15,678 ground probes, zero hidden floors; scrolling worst 1.9763%. Feature checks passed without page errors.
+All changed screenshots inspected. Detailed log names and remaining user decisions are in the completion report.
+
+Changed scripts synchronized to 7.281.0; service-worker cache `bladefall-v445-climb-complete`; local `netlify-deploy/` built
+(397 assets) and matches changed runtime files. Not published, committed or APK-built. No build jobs remain. Caches preserved.
+The earlier in-progress notes below are historical and describe intermediate states, not pending work.
+
+### 2026-10-06, run 7 — completion work in progress
+
+User authorized finishing all work that needs no design input, followed by a done/pending-input report.
+This is not release completion. Decisions in CODEX-RESUME-7.280.md §4 remain open. Per .agents/AGENTS.md,
+prepare locally but do not publish to Netlify. Do not commit or build the APK. Version/cache bump is still pending.
+
+**Integrated and checked this run: 21, 22, 24, 29, 31, 36, 39.** All pass browser road, quest/secret entry,
+rewards, returns, reverse entrances and lift/drop checks at zero deaths. Sealed echoes tested in 21/31 stay shut.
+Viewed their branch screenshots and World 29's junction. World 21's gate has no reward/return passage by design.
+
+- 29/36 came from completed run-6 caches. World 29 gained a third departure slot and left-wall mouths for
+  29–30/31/32 with reciprocal destination sides; its previous projected-terrain conflict is resolved.
+- 21: Mara opens above Map and Rowan above Shoulder, clear of Yard/Hammer. Both returns now work.
+- 22: raised Oath2 clears the U-turn; secret is above Oath3. Its return demonstration needed a browser-proven
+  corner tape: `cl22-pass-13#through = [[60,"rgu"],[20,"lj"],[10,"l"]]`.
+- 24: raised Catcher and a gap before Span clear the road. Secret above Needle returns to the preceding Flue.
+  Shaft's entrance now closes while played: with it open, the route left at frame173/y141 through its entrance;
+  with it closed, frame154/y29 through the authored exit. The builder now compares open/closed crossing positions.
+  Removed the stale World 24 Crown tape override in atlas.js; it referenced the old base-world reflection.
+  The temporary Crown seam-closure experiment was removed; its current authored route is unchanged.
+- 31: raised side-entry elbow reaches the quest's high ledge. Its secret return demonstration also needed
+  `cl31-pass-11#through = [[60,"rgu"],[20,"lj"],[10,"l"]]`.
+- 39: secret above Line and a raised last quest room leave space for both returns.
+
+The two corrected corner tapes and World 24 Shaft's closeWhilePlayed flag are in both `worlds-r7/wN.json` and
+`worlds/wN.json`, then assembled into public. Retain/reverify these adjustments after any rebuild; no challenge
+geometry was changed by the tape corrections. Evidence is in `scripts/climb/.cache/worlds-r7/`: page21.log,
+page22-final.log, page24-final.log, page31-final.log, page39.log, corresponding lift/terrain logs,
+wayback22-fixed.log, wayback31-fixed.log and shaft24-seam.log. Prior failed trials are retained there too.
+
+**Remaining builds (check live processes, not just these notes):**
+
+| World | Current work |
+|---|---|
+| 23 | New road complete, cached as road-23-fdbc4e04a6f58776.json. Standard uses a side-entry elbow; East/Middle use rises. East stays unmirrored because its reflected combat tape fails. Echo placed above Camp; secret hosts now Middle/Standard. |
+| 32 | Echo fits with a 10-tile shaft. Secret hosts Threshold/Line/Lip use thick-ceiling cuts; former thin candidates had spikes below them. Secret return search running. |
+| 35 | Echo and secret placement searches running, secret restricted to stationary Roof/Siding. Remove all five 3x–35 SIDE overrides only when this new build is integrated. |
+| 37 | Rebuild enforces two-tile passage entrances. Existing cl37-pass-165 has a one-tile side entrance and the browser probe confirms a stall. Return search running. |
+| 38 | Echo placed above Family; secret p174 placed above Lamps. Return proofs running. |
+| 40 | Redesigned road complete, cached as road-40-ef6dd4df057cdf9a.json. Quest/secret placed; return proofs running. |
+
+Live tool handles are in `.cache/worlds-r7/active-sessions.json`; revalidate them before use. Do not restart a live
+build just because an observation times out. Current source may include improvements older processes did not load;
+page-check every completed output before accepting it. Original caches are retained. Roads 21/31/32/35/38/39 were
+compared against current source maps/order (reversing seam cuts); reuse is valid. New roads 22 and 24 are also cached.
+
+Builder work: explicit lifts/gaps/rises/side-entry elbows; forced ceiling quest hosts; mirrored side/bearing tapes;
+checkpoint-side corner ordering before interior ceiling candidates; skip shafts with spikes immediately below;
+checkpoint-weighted return targets; replay-validated successful proof cache; cached connector tapes/IDs preserved.
+These changes are exercised by the integrated builds, but remaining placements still require their own checks.
+
+**Shared fixes and verification:**
+
+- Door beams use the owning world's branches, preventing disappearance across world boundaries. Lower folded
+  mouths draw first so their trim cannot cover higher floors. The browser review uses four crossings per actual
+  atlas link instead of a stale fixed total.
+- On the 29/36 assembly: 268 folded pixel comparisons pass (worst 0.03392%, limit 0.05%); 15,678 ground probes have
+  zero hidden floors; scroll worst 1.9763% (limit 5%). `render-after-fixes.log`. Repeat after final assembly.
+- Current assembly passes 378 runtime seams and 490 authored routes, footprints, containment and junction
+  regressions: `runtime-through31-fixed.log` and `*-through31.log`. Each integration also passed 134 projected
+  corridors and jump/dash trips. Earlier traversal passed 67 corridors both ways and 206 junction roads.
+- Room by Room: all 40 regions/578 rooms pass. Base 1–20: 322 road/quest/side/bearing tapes have no advanced momentum
+  events; all 20 selected base secrets finish with no deaths or advanced momentum events. Logs base-momentum.log
+  and base-secret-momentum.log.
+- Full geography journeys previously stalled in old World 35's arrival (`verify-climb-geography-journeys-29-36.log`).
+  Recheck after its replacement and SIDE cleanup; fix if still present. Other earlier checks passed: folds,
+  Continue/resume, mouth views and co-op. Final verification remains required after all changes are integrated.
+
+**Still required:** finish/integrate 23,32,35,37,38,40; remove old World 35 SIDE entries; complete all final checks,
+including journeys and browser render audits; inspect screenshots; bump all changed script versions (including
+atlas.js) and CACHE_NAME together; run local build-deploy; update handoff/current-state and deliver final report.
+
 
 ### 2026-10-05 evening, run 6 resumed (latest; read this first)
 

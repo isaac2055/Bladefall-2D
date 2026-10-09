@@ -1,0 +1,216 @@
+{
+  "room": {
+    "id": "bank-f14",
+    "name": "Empty Your Hands",
+    "hint": "The lantern fits the water duct. You fit the dark passage only with empty hands.",
+    "question": "Your route cannot carry the shade you will need beyond it. How can it arrive separately?",
+    "map": [
+      "########################################",
+      "#.......################..............<#",
+      "#.......################..............<#",
+      "#.......################..............<#",
+      "#.......################..............<#",
+      "#.......################..............<#",
+      "#.......################..............<#",
+      "#.......################..............<#",
+      "#.......www#############..............<#",
+      "#.......www#############..............<#",
+      "#.......www#############..............<#",
+      "#.......wwwwwwwwwwwwwwwwww............<#",
+      "#.P.l...################ww............<#",
+      "######..################ww............<#",
+      "#.......################ww............<#",
+      "#.......VVVVVVVVVVVVVVVV####..........<#",
+      "#.......VVVVVVVVVVVVVVVV................",
+      "#.......VVVVVVVVVVVVVVVV................",
+      "############################............",
+      "############################.........###",
+      "############################.........###",
+      "############################^^^^^^^^^###",
+      "########################################"
+    ],
+    "palette": "court",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "currents": [
+      {
+        "c": 8,
+        "r": 8,
+        "w": 3,
+        "h": 4,
+        "dx": 80,
+        "dy": 110
+      },
+      {
+        "c": 11,
+        "r": 11,
+        "w": 13,
+        "h": 1,
+        "dx": 90,
+        "dy": 60
+      },
+      {
+        "c": 24,
+        "r": 11,
+        "w": 2,
+        "h": 4,
+        "dx": 0,
+        "dy": 110
+      }
+    ],
+    "beams": [
+      {
+        "c": 31,
+        "r": 0,
+        "dir": "d"
+      },
+      {
+        "c": 35,
+        "r": 0,
+        "dir": "d"
+      }
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 2,
+    "difficulty": 4,
+    "role": "solve",
+    "worlds": [
+      29,
+      33,
+      40
+    ],
+    "tags": [
+      "cargo-routing",
+      "water-current",
+      "void",
+      "lantern-shade",
+      "glide",
+      "braking"
+    ],
+    "newMechanics": [],
+    "entrance": "Upper left loading shelf; P at 2/12.",
+    "exit": "Right opening over the low landing at rows 16–18.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "throw",
+      "void-in",
+      "void-out",
+      "pickup"
+    ],
+    "solution": "Carry the lantern to the loading shelf edge and throw it into the water intake. The current sends it through the one-tile duct where the knight cannot fit. Drop to the lower approach and dash through void stone with empty hands, then jump up to meet the lantern at its receiving dock. Recover it before the descent: its shade carries you through the two vertical beams and its slow fall reaches the far landing. Brake after the second beam and let the lantern lower you beneath the thorned exit lip before moving into the landing.",
+    "nearestExisting": "p194 Lantern Post sends a lantern through a portal to shade a route, and bv1 Into the Night teaches void transit. Here cargo and knight take different routes through the same wall: a physical 8px current duct versus a dash-only lower passage, followed by a reunited shade/glide crossing.",
+    "novelty": "The object cannot follow the player and the player cannot follow the object. Sending cargo first is a spatial transport problem; a direct carrying route is physically excluded by the narrow duct and dash-only void.",
+    "humanReview": "Fun, difficulty and suitability await human ratings.",
+    "route": {
+      "frames": 277,
+      "deaths": 0,
+      "events": [
+        "pickup",
+        "throw",
+        "land",
+        "dash",
+        "void-in",
+        "refill-dash",
+        "void-out",
+        "splash",
+        "jump",
+        "exit"
+      ],
+      "eventCounts": {
+        "pickup": 2,
+        "throw": 1,
+        "land": 3,
+        "dash": 2,
+        "void-in": 1,
+        "refill-dash": 2,
+        "void-out": 1,
+        "splash": 1,
+        "jump": 1,
+        "exit": 1
+      }
+    },
+    "requiredEventCounts": {
+      "pickup": 2,
+      "throw": 1,
+      "void-in": 1,
+      "void-out": 1
+    },
+    "acceptance": "banked",
+    "userFeedback": {
+      "date": "2026-10-07",
+      "comment": "Great; bank and explore more void-based rooms."
+    }
+  },
+  "tape": [
+    [
+      7,
+      "r"
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      6,
+      "r"
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      15,
+      "r"
+    ],
+    [
+      24,
+      ""
+    ],
+    [
+      39,
+      "rx"
+    ],
+    [
+      4,
+      "l"
+    ],
+    [
+      7,
+      "r"
+    ],
+    [
+      5,
+      "ux"
+    ],
+    [
+      37,
+      "l"
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      19,
+      "r"
+    ],
+    [
+      54,
+      "rj"
+    ],
+    [
+      35,
+      ""
+    ],
+    [
+      24,
+      "r"
+    ]
+  ]
+}

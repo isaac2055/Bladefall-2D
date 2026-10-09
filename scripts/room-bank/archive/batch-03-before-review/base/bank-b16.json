@@ -1,0 +1,194 @@
+{
+  "room": {
+    "id": "bank-b16",
+    "name": "Hands for the Chimney",
+    "hint": "Loose lanterns catch in open rings. Grab retrieves; strike releases. Carrying prevents wall climbing.",
+    "question": "How can the lantern keep this chimney dark while both hands climb?",
+    "map": [
+      "########################################",
+      "#..................##.#.............H..#",
+      "#..................##.#.............H..#",
+      "#..................##.#.............H..#",
+      "#..................##.#.............H..#",
+      "#............########.#.............H...",
+      "#.P.l...............................H...",
+      "#######...##}}}}}}}}}...............H...",
+      "#..................##.........._....H...",
+      "#..................##.##################",
+      "#..................##.#................#",
+      "#..................##.#................#",
+      "#..................##.#................#",
+      "#..................##.#................#",
+      "#..................##.#................#",
+      "#..................##.#................#",
+      "#..................##.#................#",
+      "#..................##.#................#",
+      "#.....................#................#",
+      "#.....................#................#",
+      "#######################................#",
+      "#######################................#",
+      "########################################"
+    ],
+    "palette": "path",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "cargoClasps": [
+      {
+        "id": "A",
+        "c": 21,
+        "r": 6
+      }
+    ],
+    "beams": [
+      {
+        "c": 21,
+        "r": 0,
+        "dir": "d"
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 3,
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "solve",
+    "worlds": [
+      11,
+      19
+    ],
+    "tags": [
+      "cargo-clasp",
+      "belt",
+      "beam",
+      "cargo-routing",
+      "climb"
+    ],
+    "newMechanics": [
+      "cargo-clasp"
+    ],
+    "entrance": "Upper-left loading ledge.",
+    "exit": "Upper-right lantern plate.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "clasp-catch",
+      "clasp-take",
+      "plate",
+      "held-open"
+    ],
+    "solution": "Carry the lantern across the loading gap and release it onto the belt. The low duct admits the lantern but not the knight, delivering it into the ring over the chimney. Drop to the basement, pass under the divider, and climb the now-shaded shaft empty-handed. From the upper-right alcove retrieve the lantern sideways and leave it on the exit plate.",
+    "nearestExisting": "F14 Empty Your Hands splits cargo and knight across a low duct; B12 Umbrella Exchange replaces an indispensable shade. Here the split route is vertical and carrying itself prevents the sustained action needed to reunite: the shade must wait above a long climb.",
+    "novelty": "The suspended cargo is a temporary remote safety fixture. Neither carrying nor a loose moving throw lasts through the climb, and the same object is recovered from a different face for a second job.",
+    "route": {
+      "frames": 616,
+      "deaths": 0,
+      "events": [
+        "pickup",
+        "jump",
+        "land",
+        "throw",
+        "lantern-land",
+        "clasp-catch",
+        "grab",
+        "climbhop",
+        "clasp-take",
+        "plate",
+        "held-open",
+        "exit"
+      ],
+      "movement": "Ordinary jump, dash, climb and device actions; no advanced momentum."
+    },
+    "bypassReview": {
+      "scope": "One obvious ordinary-movement shortcut, plus geometry review; not an exhaustive solver search.",
+      "attempt": "Ignored the lantern and ran/dashed into the climbing route.",
+      "result": "The uncovered beam killed the knight; the held exit stayed closed.",
+      "dependency": "Replaying the saved route without the clasp lets the lantern fall down the shaft and fails with a death."
+    }
+  },
+  "tape": [
+    [
+      8,
+      "r"
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      7,
+      "r"
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      10,
+      "r"
+    ],
+    [
+      30,
+      ""
+    ],
+    [
+      1,
+      "dg"
+    ],
+    [
+      100,
+      ""
+    ],
+    [
+      36,
+      "l"
+    ],
+    [
+      42,
+      ""
+    ],
+    [
+      70,
+      "r"
+    ],
+    [
+      142,
+      "rgu"
+    ],
+    [
+      17,
+      "l"
+    ],
+    [
+      6,
+      ""
+    ],
+    [
+      1,
+      "j"
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      49,
+      "r"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      1,
+      "dg"
+    ],
+    [
+      65,
+      "r"
+    ]
+  ]
+}

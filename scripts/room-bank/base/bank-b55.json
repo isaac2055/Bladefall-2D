@@ -1,0 +1,745 @@
+{
+  "room": {
+    "id": "bank-b55",
+    "name": "Meet It After the Turn",
+    "palette": "cliffs",
+    "study": true,
+    "movement": "survive-2",
+    "aim8": true,
+    "exit": "right",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "cols": 40,
+    "rows": 23,
+    "map": [
+      "########################################",
+      "#......................................#",
+      "#......................................#",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#...............................########",
+      "#..............................<########",
+      "#..............................<########",
+      "#..............................<########",
+      "#..............................<########",
+      "#..............................<########",
+      "#..............................<########",
+      "#..............................<########",
+      "#...P..........................<########",
+      "#########......................<########",
+      "#########......................<########",
+      "#########......................<########",
+      "#########......................<########",
+      "#########......................<########",
+      "#########^^^^^^^^^^^^^^^^^^^^^^^########",
+      "########################################"
+    ],
+    "hint": "Meet the moth on its return. Your cut chooses where the second crossing begins.",
+    "foes": [
+      {
+        "kind": "moth",
+        "x": 14,
+        "y": 18,
+        "path": [
+          8,
+          0
+        ],
+        "period": 180,
+        "phase": 0
+      },
+      {
+        "kind": "moth",
+        "x": 22,
+        "y": 17,
+        "path": [
+          4,
+          0
+        ],
+        "period": 180,
+        "phase": 0
+      }
+    ],
+    "sweepers": [
+      {
+        "id": "Crossing",
+        "path": [
+          [
+            18,
+            10
+          ],
+          [
+            18,
+            19
+          ]
+        ],
+        "period": 180,
+        "phase": 140,
+        "radius": 4
+      },
+      {
+        "id": "Crown",
+        "path": [
+          [
+            24,
+            8
+          ],
+          [
+            30,
+            8
+          ]
+        ],
+        "period": 180,
+        "phase": 0,
+        "radius": 4
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 14,
+    "run": 7,
+    "collection": "run7",
+    "format": "compact",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "difficulty": 3,
+    "role": "Intercept a predictable moving launch target when its return creates the next safe angle",
+    "worlds": [],
+    "tags": [
+      "moving-target",
+      "moth",
+      "pogo-low",
+      "pogo-loft",
+      "arrival-phase"
+    ],
+    "newMechanics": [],
+    "author": "Codex",
+    "humanReview": "Unreviewed candidate. Author difficulty is provisional.",
+    "learningFamily": "timed-launch-and-pogo",
+    "lessonRole": "develop",
+    "prerequisites": [
+      "bank-b54"
+    ],
+    "preparesFor": [
+      "bank-f56"
+    ],
+    "timingCues": [
+      "Wait at the starting lip until the wide moth is close to its far turn; the vertical thorn should be moving down away from your jump line.",
+      "Dash above the moth, then cut as its return carries it beneath your falling blade.",
+      "The short moth returns beneath the low rebound. Loft from it only after the upper thorn has passed left of your final ascent."
+    ],
+    "requiredEvents": [
+      "pogo-low",
+      "pogo-loft",
+      "enemy-defeat"
+    ],
+    "solution": "Advance to the lip and watch the moth approach its far turn. Jump and dash across the descending vertical patrol to intercept the larger moth route on its return. Cut down without Jump for a low rebound; continue right to meet the second moth as it returns. Hold Jump with the second cut, then dash up-right from the loft through the space behind the upper patrol. The two moths are consumed, so missing either interception cannot be repaired by standing on a target.",
+    "nearestExisting": "F33 preserves launch speed after a combat setup, while B54 introduces two fixed rebound heights. Here both targets are moving and disappear when cut: the first interception position determines the second, and the upper patrol punishes simply taking the highest rebound immediately.",
+    "novelty": "Intercept a predictable moving launch target when its return creates the next safe angle",
+    "positiveChecks": [
+      {
+        "name": "Leave two frames before the reference turn",
+        "tape": [
+          [
+            20,
+            "r"
+          ],
+          [
+            48,
+            ""
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            17,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            26,
+            "r"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 227,
+        "events": [
+          "jump",
+          "dash",
+          "strike",
+          "pogo-low",
+          "refill-dash",
+          "enemy-defeat",
+          "pogo-loft",
+          "land",
+          "exit"
+        ],
+        "eventCounts": {
+          "jump": 1,
+          "dash": 2,
+          "strike": 2,
+          "pogo-low": 1,
+          "refill-dash": 2,
+          "enemy-defeat": 2,
+          "pogo-loft": 1,
+          "land": 1,
+          "exit": 1
+        }
+      },
+      {
+        "name": "Leave two frames after the reference turn",
+        "tape": [
+          [
+            20,
+            "r"
+          ],
+          [
+            52,
+            ""
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            17,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            26,
+            "r"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 231,
+        "events": [
+          "jump",
+          "dash",
+          "strike",
+          "pogo-low",
+          "refill-dash",
+          "enemy-defeat",
+          "pogo-loft",
+          "land",
+          "exit"
+        ],
+        "eventCounts": {
+          "jump": 1,
+          "dash": 2,
+          "strike": 2,
+          "pogo-low": 1,
+          "refill-dash": 2,
+          "enemy-defeat": 2,
+          "pogo-loft": 1,
+          "land": 1,
+          "exit": 1
+        }
+      },
+      {
+        "name": "Wait two more frames for the high departure",
+        "tape": [
+          [
+            20,
+            "r"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            17,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            26,
+            "r"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 224,
+        "events": [
+          "jump",
+          "dash",
+          "strike",
+          "pogo-low",
+          "refill-dash",
+          "enemy-defeat",
+          "pogo-loft",
+          "land",
+          "exit"
+        ],
+        "eventCounts": {
+          "jump": 1,
+          "dash": 2,
+          "strike": 2,
+          "pogo-low": 1,
+          "refill-dash": 2,
+          "enemy-defeat": 2,
+          "pogo-loft": 1,
+          "land": 1,
+          "exit": 1
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Jump and dash from the lip without using a moth",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "rgu"
+          ]
+        ],
+        "exited": false,
+        "deaths": 1,
+        "frames": 158,
+        "events": [
+          "jump",
+          "dash",
+          "death",
+          "respawn"
+        ],
+        "eventCounts": {
+          "jump": 1,
+          "dash": 1,
+          "death": 1,
+          "respawn": 1
+        },
+        "death": {
+          "type": "death",
+          "frame": 108,
+          "x": 204,
+          "y": 171,
+          "cause": "spikes",
+          "vx": 90,
+          "vy": 0,
+          "i": 107
+        }
+      },
+      {
+        "name": "Loft from the first moth and skip the second interception",
+        "tape": [
+          [
+            20,
+            "r"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            17,
+            "r"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "rgu"
+          ]
+        ],
+        "exited": false,
+        "deaths": 2,
+        "frames": 254,
+        "events": [
+          "jump",
+          "dash",
+          "strike",
+          "pogo-loft",
+          "refill-dash",
+          "enemy-defeat",
+          "death",
+          "respawn"
+        ],
+        "eventCounts": {
+          "jump": 1,
+          "dash": 2,
+          "strike": 1,
+          "pogo-loft": 1,
+          "refill-dash": 1,
+          "enemy-defeat": 1,
+          "death": 2,
+          "respawn": 1
+        },
+        "death": {
+          "type": "death",
+          "frame": 152,
+          "x": 209,
+          "y": 68,
+          "cause": "sweeper",
+          "vx": 169.70562748477138,
+          "vy": -169.70562748477138,
+          "i": 151
+        }
+      },
+      {
+        "name": "Spend the first recovery without cutting the second moth",
+        "tape": [
+          [
+            20,
+            "r"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            17,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            26,
+            "r"
+          ],
+          [
+            1,
+            "j"
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 2,
+        "frames": 281,
+        "events": [
+          "jump",
+          "dash",
+          "strike",
+          "pogo-low",
+          "refill-dash",
+          "enemy-defeat",
+          "death",
+          "respawn"
+        ],
+        "eventCounts": {
+          "jump": 1,
+          "dash": 1,
+          "strike": 1,
+          "pogo-low": 1,
+          "refill-dash": 1,
+          "enemy-defeat": 1,
+          "death": 2,
+          "respawn": 1
+        },
+        "death": {
+          "type": "death",
+          "frame": 167,
+          "x": 230,
+          "y": 171,
+          "cause": "spikes",
+          "vx": 90,
+          "vy": 160,
+          "i": 166
+        }
+      },
+      {
+        "name": "Leave before the moth returns into reach",
+        "tape": [
+          [
+            20,
+            "r"
+          ],
+          [
+            0,
+            ""
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            17,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            26,
+            "r"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 2,
+        "frames": 231,
+        "events": [
+          "jump",
+          "dash",
+          "death",
+          "respawn",
+          "strike"
+        ],
+        "eventCounts": {
+          "jump": 2,
+          "dash": 2,
+          "death": 2,
+          "respawn": 2,
+          "strike": 1
+        },
+        "death": {
+          "type": "death",
+          "frame": 57,
+          "x": 142,
+          "y": 102,
+          "cause": "sweeper",
+          "vx": 133.99999999999994,
+          "vy": 90,
+          "i": 56
+        }
+      }
+    ],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 229,
+      "events": [
+        "jump",
+        "dash",
+        "strike",
+        "pogo-low",
+        "refill-dash",
+        "enemy-defeat",
+        "pogo-loft",
+        "land",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 1,
+        "dash": 2,
+        "strike": 2,
+        "pogo-low": 1,
+        "refill-dash": 2,
+        "enemy-defeat": 2,
+        "pogo-loft": 1,
+        "land": 1,
+        "exit": 1
+      }
+    },
+    "requiredEventCounts": {
+      "enemy-defeat": 2
+    },
+    "actualMovementEvents": [
+      "jump",
+      "dash",
+      "strike",
+      "pogo-low",
+      "refill-dash",
+      "enemy-defeat",
+      "pogo-loft",
+      "land",
+      "exit"
+    ],
+    "designNotes": "Both moth paths share a deterministic 180-frame clock, so the arrival is learnable rather than random enemy behaviour. They move at different horizontal speeds. The low first rebound meets the second target; a saved loft-first shortcut instead runs into the upper patrol. The exit\u2019s thorned western face prevents a low dash followed by a free climb.",
+    "endingForgiveness": "The final loft and patrol crossing remain demanding. The receiving shelf is eight tiles wide; an alternate departure two frames later passes.",
+    "approvedIngredients": [
+      "bank-f33",
+      "bank-f49",
+      "bank-f23"
+    ],
+    "review": {
+      "authorEvidence": "One zero-death canonical route, two or three saved timing/contact variants, and active ordinary-route bypass attempts. Human fun/difficulty/suitability review remains pending."
+    }
+  },
+  "tape": [
+    [
+      20,
+      "r"
+    ],
+    [
+      50,
+      ""
+    ],
+    [
+      18,
+      "rj"
+    ],
+    [
+      12,
+      "rx"
+    ],
+    [
+      17,
+      "r"
+    ],
+    [
+      1,
+      "ds"
+    ],
+    [
+      26,
+      "r"
+    ],
+    [
+      1,
+      "djs"
+    ],
+    [
+      24,
+      "rj"
+    ],
+    [
+      12,
+      "rux"
+    ],
+    [
+      100,
+      "r"
+    ]
+  ]
+}

@@ -1,0 +1,1112 @@
+{
+  "room": {
+    "id": "bank-f41",
+    "name": "Cut Under the Eaves",
+    "palette": "foundry",
+    "study": true,
+    "movement": "survive-2",
+    "aim8": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "exit": "left",
+    "beams": [
+      {
+        "c": 30,
+        "r": 1,
+        "dir": "d"
+      }
+    ],
+    "recoilPlatforms": [
+      {
+        "id": "A",
+        "c": 19,
+        "r": 16,
+        "w": 13,
+        "depth": 4,
+        "loadFrames": 36,
+        "releaseSpeed": 130
+      }
+    ],
+    "map": [
+      "########################################",
+      "#G..............................########",
+      "#G..............................########",
+      ".G..............................########",
+      ".G..............................########",
+      ".G..............................########",
+      ".G..............................########",
+      ".G..............................########",
+      ".G..............................########",
+      ".G..............................########",
+      ".G..............................########",
+      ".G..............................########",
+      "#BBBBBBBBBBBBBBBBB..............########",
+      "#.............................B.########",
+      "#^^^^^^^^^^^^^^^^^^.............########",
+      "#^^^^^^^^^^^^^^^^^^..........P..########",
+      "#^^^^^^^^^^^^^^^^^^.............########",
+      "#^^^^^^^^^^^^^^^^^^.............########",
+      "#^^^^^^^^^^^^^^^^^^.............vvvvvvv#",
+      "#^^^^^^^^^^^^^^^^^^..............c.....#",
+      "#^^^^^^^^^^^^^^^^^^....................#",
+      "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+      "########################################"
+    ],
+    "hint": "Sink the plate \u00b7 Dash Right, cut the low tally, then Jump Left to borrow the returning lift.",
+    "question": "Why must the floor go down before you can use it to go up?",
+    "showHintAtRest": true
+  },
+  "bank": {
+    "side": "base",
+    "batch": 9,
+    "run": 4,
+    "acceptance": "banked",
+    "difficulty": 2,
+    "role": "compress to reach; release to return",
+    "worlds": [
+      8,
+      12,
+      15
+    ],
+    "tags": [
+      "recoil-platform",
+      "reverse-dash-jump",
+      "reverse-super",
+      "phase",
+      "blade",
+      "lift"
+    ],
+    "newMechanics": [
+      "recoil-platform",
+      "reverse-dash-jump"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "recoil-load",
+      "recoil-release",
+      "stone-lit",
+      "reverse-super",
+      "recoil-jump"
+    ],
+    "humanReview": "Qualitative user approval; numeric ratings remain unmeasured.",
+    "entrance": "Eastern side of the long recoil plate.",
+    "exit": "Western phase balcony above a thorn field.",
+    "solution": "Hold Down until the plate sinks and the tally sits beside the blade under the eaves. Dash Right, then Strike during the outward slide: the dash shades the live beam and creates the opposite shore. At the visible right wall, hold Left and press Jump, including just after the burst ends, to reverse that dash into a super with the rising floor's lift. The high westward arc reaches the opposite landing; another dash switches that landing off.",
+    "nearestExisting": "F31 makes a low reverse cut across spent ground. This room instead makes compression solve access to a low target, then uses that same stored displacement for a high return. F35 sends away a lantern weight; here the knight alone controls the spring and the single phase change must be kept.",
+    "novelty": "The temporary low position is needed for the outward cut, while the returning lift is needed for the high exit. The new reverse super joins both purposes without a second phase-changing dash.",
+    "designNotes": "The broad plate continues supporting the knight at the visible right wall. The shared survive-2 reverse grace now remains available on that original support until a new landing or unrelated state change. The canonical return is genuinely late. Compression has no deadline and Strike can follow Dash rather than requiring a simultaneous chord. Geometry and phase state enforce the puzzle; there is no named-tech exit condition.",
+    "positiveChecks": [
+      {
+        "name": "Reverse 7 frames after Dash; Strike follows by one frame",
+        "tape": [
+          [
+            36,
+            "d"
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            6,
+            "rxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 172,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "phase",
+            "dash",
+            "strike",
+            "stone-lit",
+            "gate-open",
+            "super",
+            "reverse-super",
+            "recoil-jump",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "phase": 1,
+            "dash": 1,
+            "strike": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "super": 1,
+            "reverse-super": 1,
+            "recoil-jump": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Reverse 8 frames after Dash; Strike follows by one frame",
+        "tape": [
+          [
+            36,
+            "d"
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            7,
+            "rxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 176,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "phase",
+            "dash",
+            "strike",
+            "stone-lit",
+            "gate-open",
+            "super",
+            "reverse-super",
+            "recoil-jump",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "phase": 1,
+            "dash": 1,
+            "strike": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "super": 1,
+            "reverse-super": 1,
+            "recoil-jump": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Reverse 10 frames after Dash; Strike follows by one frame",
+        "tape": [
+          [
+            36,
+            "d"
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            9,
+            "rxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 178,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "phase",
+            "dash",
+            "strike",
+            "stone-lit",
+            "gate-open",
+            "refill-dash",
+            "super",
+            "reverse-super",
+            "recoil-jump",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "phase": 1,
+            "dash": 1,
+            "strike": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "refill-dash": 1,
+            "super": 1,
+            "reverse-super": 1,
+            "recoil-jump": 1,
+            "land": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Reverse 12 frames after Dash; Strike follows by one frame",
+        "tape": [
+          [
+            36,
+            "d"
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            11,
+            "rxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 180,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "phase",
+            "dash",
+            "strike",
+            "stone-lit",
+            "gate-open",
+            "refill-dash",
+            "super",
+            "reverse-super",
+            "recoil-jump",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "phase": 1,
+            "dash": 1,
+            "strike": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "refill-dash": 1,
+            "super": 1,
+            "reverse-super": 1,
+            "recoil-jump": 1,
+            "land": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Reverse 13 frames after Dash; Strike follows by one frame",
+        "tape": [
+          [
+            36,
+            "d"
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            12,
+            "rxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 181,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "phase",
+            "dash",
+            "strike",
+            "stone-lit",
+            "gate-open",
+            "refill-dash",
+            "super",
+            "reverse-super",
+            "late-reverse",
+            "recoil-jump",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "phase": 1,
+            "dash": 1,
+            "strike": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "refill-dash": 1,
+            "super": 1,
+            "reverse-super": 1,
+            "late-reverse": 1,
+            "recoil-jump": 1,
+            "land": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Reverse 14 frames after Dash; Strike follows by one frame",
+        "tape": [
+          [
+            36,
+            "d"
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            13,
+            "rxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 180,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "phase",
+            "dash",
+            "strike",
+            "stone-lit",
+            "gate-open",
+            "refill-dash",
+            "super",
+            "reverse-super",
+            "late-reverse",
+            "recoil-jump",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "phase": 1,
+            "dash": 1,
+            "strike": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "refill-dash": 1,
+            "super": 1,
+            "reverse-super": 1,
+            "late-reverse": 1,
+            "recoil-jump": 1,
+            "land": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Reverse 15 frames after Dash; Strike follows by one frame",
+        "tape": [
+          [
+            36,
+            "d"
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            14,
+            "rxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 181,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "phase",
+            "dash",
+            "strike",
+            "stone-lit",
+            "gate-open",
+            "refill-dash",
+            "super",
+            "reverse-super",
+            "late-reverse",
+            "recoil-jump",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "phase": 1,
+            "dash": 1,
+            "strike": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "refill-dash": 1,
+            "super": 1,
+            "reverse-super": 1,
+            "late-reverse": 1,
+            "recoil-jump": 1,
+            "land": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Strike delay 3; load 36; late reverse 14",
+        "tape": [
+          [
+            36,
+            "d"
+          ],
+          [
+            3,
+            "rx"
+          ],
+          [
+            11,
+            "rxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 180,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "phase",
+            "dash",
+            "strike",
+            "stone-lit",
+            "gate-open",
+            "refill-dash",
+            "super",
+            "reverse-super",
+            "late-reverse",
+            "recoil-jump",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "phase": 1,
+            "dash": 1,
+            "strike": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "refill-dash": 1,
+            "super": 1,
+            "reverse-super": 1,
+            "late-reverse": 1,
+            "recoil-jump": 1,
+            "land": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Strike delay 5; load 36; late reverse 14",
+        "tape": [
+          [
+            36,
+            "d"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            9,
+            "rxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 180,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "phase",
+            "dash",
+            "strike",
+            "stone-lit",
+            "gate-open",
+            "refill-dash",
+            "super",
+            "reverse-super",
+            "late-reverse",
+            "recoil-jump",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "phase": 1,
+            "dash": 1,
+            "strike": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "refill-dash": 1,
+            "super": 1,
+            "reverse-super": 1,
+            "late-reverse": 1,
+            "recoil-jump": 1,
+            "land": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Strike delay 1; load 40; late reverse 14",
+        "tape": [
+          [
+            40,
+            "d"
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            13,
+            "rxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 184,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "phase",
+            "dash",
+            "strike",
+            "stone-lit",
+            "gate-open",
+            "refill-dash",
+            "super",
+            "reverse-super",
+            "late-reverse",
+            "recoil-jump",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "phase": 1,
+            "dash": 1,
+            "strike": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "refill-dash": 1,
+            "super": 1,
+            "reverse-super": 1,
+            "late-reverse": 1,
+            "recoil-jump": 1,
+            "land": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Strike delay 1; load 50; late reverse 14",
+        "tape": [
+          [
+            50,
+            "d"
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            13,
+            "rxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 194,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "phase",
+            "dash",
+            "strike",
+            "stone-lit",
+            "gate-open",
+            "refill-dash",
+            "super",
+            "reverse-super",
+            "late-reverse",
+            "recoil-jump",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "phase": 1,
+            "dash": 1,
+            "strike": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "refill-dash": 1,
+            "super": 1,
+            "reverse-super": 1,
+            "late-reverse": 1,
+            "recoil-jump": 1,
+            "land": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "No compression: same outward cut and reverse jump",
+        "tape": [
+          [
+            1,
+            "d"
+          ],
+          [
+            10,
+            "rxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "strike",
+            "phase",
+            "dash",
+            "refill-dash",
+            "super",
+            "reverse-super",
+            "recoil-jump",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "strike": 1,
+            "phase": 1,
+            "dash": 1,
+            "refill-dash": 1,
+            "super": 1,
+            "reverse-super": 1,
+            "recoil-jump": 1,
+            "death": 2,
+            "respawn": 2
+          }
+        }
+      },
+      {
+        "name": "Replace reverse launch with walking left",
+        "tape": [
+          [
+            36,
+            "d"
+          ],
+          [
+            10,
+            "rxs"
+          ],
+          [
+            170,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 0,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "strike",
+            "phase",
+            "dash",
+            "stone-lit",
+            "gate-open",
+            "refill-dash",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "strike": 1,
+            "phase": 1,
+            "dash": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "refill-dash": 1,
+            "death": 1,
+            "respawn": 1
+          }
+        }
+      },
+      {
+        "name": "Walk to the tally while keeping the plate loaded",
+        "tape": [
+          [
+            36,
+            "d"
+          ],
+          [
+            12,
+            "rd"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            10,
+            "lx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "recoil-load",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "death": 2,
+            "respawn": 2
+          }
+        }
+      },
+      {
+        "name": "Finish outgoing dash, then make a new forward dash-jump",
+        "tape": [
+          [
+            36,
+            "d"
+          ],
+          [
+            20,
+            "rxs"
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            10,
+            "lx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "strike",
+            "phase",
+            "dash",
+            "stone-lit",
+            "gate-open",
+            "refill-dash",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "strike": 1,
+            "phase": 2,
+            "dash": 2,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "refill-dash": 1,
+            "death": 2,
+            "respawn": 2
+          }
+        }
+      },
+      {
+        "name": "Omit blade contact",
+        "tape": [
+          [
+            36,
+            "d"
+          ],
+          [
+            10,
+            "rx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0,
+          "frames": 0,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "phase",
+            "dash",
+            "refill-dash",
+            "super",
+            "reverse-super",
+            "recoil-jump",
+            "land"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "phase": 1,
+            "dash": 1,
+            "refill-dash": 1,
+            "super": 1,
+            "reverse-super": 1,
+            "recoil-jump": 1,
+            "land": 1
+          }
+        }
+      }
+    ],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 180,
+      "events": [
+        "recoil-load",
+        "recoil-release",
+        "phase",
+        "dash",
+        "strike",
+        "stone-lit",
+        "gate-open",
+        "refill-dash",
+        "super",
+        "reverse-super",
+        "late-reverse",
+        "recoil-jump",
+        "land",
+        "exit"
+      ],
+      "eventCounts": {
+        "recoil-load": 1,
+        "recoil-release": 1,
+        "phase": 1,
+        "dash": 1,
+        "strike": 1,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "refill-dash": 1,
+        "super": 1,
+        "reverse-super": 1,
+        "late-reverse": 1,
+        "recoil-jump": 1,
+        "land": 1,
+        "exit": 1
+      }
+    },
+    "tolerance": {
+      "note": "Nine consecutive reversal timings (7\u201315 frames from Dash) succeed on the full plate; representative early and late routes, separate Strike delays and longer load waits are saved. The canonical uses the late grace."
+    },
+    "composition": {
+      "movement": "Reverse super with late input grace",
+      "entity": "Recoil plate",
+      "dependency": "Compression exposes a low tally; the same plate's released upward motion raises the opposite return launch, which must keep its one phase change."
+    },
+    "review": {
+      "decision": "banked",
+      "comment": "Approved as an easier Base-game component."
+    },
+    "feedbackHistory": [
+      {
+        "decision": "banked-base",
+        "comment": "Approved as an easier Base-game component."
+      }
+    ],
+    "reclassifiedFrom": "fractured",
+    "reclassificationReason": "Approved as an easier Base-game component.",
+    "baseMovementException": "User explicitly approved this reverse-super component as Base; geometry and demonstrated technique retained."
+  },
+  "tape": [
+    [
+      36,
+      "d"
+    ],
+    [
+      1,
+      "rx"
+    ],
+    [
+      13,
+      "rxs"
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      150,
+      "l"
+    ]
+  ]
+}

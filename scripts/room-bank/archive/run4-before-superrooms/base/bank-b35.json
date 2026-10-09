@@ -1,0 +1,807 @@
+{
+  "room": {
+    "id": "bank-b35",
+    "name": "Put the Weight Back",
+    "palette": "keep",
+    "study": true,
+    "exit": "right",
+    "map": [
+      "########################################",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#........................c.............#",
+      "#....................MMMMMMMMMMM.......#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#...............Pl.....................#",
+      "#......................................#",
+      "#......................................#",
+      "#....................................G..",
+      "#....................................G..",
+      "#..........................#############",
+      "#..........................#############",
+      "#^^^^^^^^^^^^^^^^^^^^^^^^^^#############",
+      "########################################"
+    ],
+    "recoilPlatforms": [
+      {
+        "id": "A",
+        "c": 9,
+        "r": 15,
+        "w": 10,
+        "depth": 2,
+        "loadFrames": 30,
+        "releaseSpeed": 120
+      }
+    ],
+    "beams": [
+      {
+        "c": 5,
+        "r": 17,
+        "dir": "r"
+      }
+    ],
+    "hint": "Hold Down to compress; release, then Jump as the plate rises \u00b7 Loose cargo keeps it loaded.",
+    "question": "What must leave the plate so you can rise\u2014and what must return before you leave?"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 7,
+    "run": 3,
+    "acceptance": "banked",
+    "difficulty": 4,
+    "role": "weight exchange and lift",
+    "worlds": [
+      12,
+      18,
+      20
+    ],
+    "tags": [
+      "recoil-platform",
+      "cargo",
+      "lift",
+      "beam-shade",
+      "return-weight"
+    ],
+    "newMechanics": [
+      "recoil-platform"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "entrance": "The recoil plate beside its loose lantern.",
+    "exit": "Lower eastern beam corridor beyond the tally gate.",
+    "solution": "Let the lantern load the plate. Pick it up, let the plate rise, and jump late with its lift while carrying the lantern to the high tally gallery. Collect the tally, then carry the lantern back over the plate and drop it. Return to the plate as it reloads into the beam; its weight makes the lower eastern crossing safe.",
+    "nearestExisting": "B12 Umbrella Exchange substitutes one source of shade for another; B35 instead removes and restores the same weight. The moving shield is also the only ordinary carrying launch to the high gallery.",
+    "novelty": "The useful launch requires removing the weight that makes the final descent safe. The player must carry that weight upward, then send it back to restore a physical beam obstruction. No new-move receipt controls the exit.",
+    "requiredEvents": [
+      "recoil-load",
+      "recoil-release",
+      "recoil-jump",
+      "pickup",
+      "throw",
+      "stone-lit",
+      "gate-open"
+    ],
+    "humanReview": "User qualitative approval recorded; numeric ratings remain unmeasured.",
+    "positiveChecks": [
+      {
+        "name": "Release wait 8, return 51",
+        "tape": [
+          [
+            35,
+            "d"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            5,
+            "d"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            51,
+            "l"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            107,
+            "r"
+          ]
+        ],
+        "frames": 345,
+        "normalSpawn": true,
+        "deaths": 0
+      },
+      {
+        "name": "Release wait 9, return 51",
+        "tape": [
+          [
+            35,
+            "d"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            5,
+            "d"
+          ],
+          [
+            9,
+            ""
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            51,
+            "l"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            107,
+            "r"
+          ]
+        ],
+        "frames": 346,
+        "normalSpawn": true,
+        "deaths": 0
+      },
+      {
+        "name": "Release wait 10, return 51",
+        "tape": [
+          [
+            35,
+            "d"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            5,
+            "d"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            51,
+            "l"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            107,
+            "r"
+          ]
+        ],
+        "frames": 347,
+        "normalSpawn": true,
+        "deaths": 0
+      },
+      {
+        "name": "Release wait 11, return 51",
+        "tape": [
+          [
+            35,
+            "d"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            5,
+            "d"
+          ],
+          [
+            11,
+            ""
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            51,
+            "l"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            107,
+            "r"
+          ]
+        ],
+        "frames": 348,
+        "normalSpawn": true,
+        "deaths": 0
+      },
+      {
+        "name": "Release wait 12, return 48",
+        "tape": [
+          [
+            35,
+            "d"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            5,
+            "d"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            48,
+            "l"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            107,
+            "r"
+          ]
+        ],
+        "frames": 343,
+        "normalSpawn": true,
+        "deaths": 0
+      },
+      {
+        "name": "Release wait 12, return 54",
+        "tape": [
+          [
+            35,
+            "d"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            5,
+            "d"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            54,
+            "l"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            107,
+            "r"
+          ]
+        ],
+        "frames": 355,
+        "normalSpawn": true,
+        "deaths": 0
+      },
+      {
+        "name": "Release wait 13, return 50",
+        "tape": [
+          [
+            35,
+            "d"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            5,
+            "d"
+          ],
+          [
+            13,
+            ""
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            50,
+            "l"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            107,
+            "r"
+          ]
+        ],
+        "frames": 348,
+        "normalSpawn": true,
+        "deaths": 0
+      },
+      {
+        "name": "Release wait 14, return 52",
+        "tape": [
+          [
+            35,
+            "d"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            5,
+            "d"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            52,
+            "l"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            107,
+            "r"
+          ]
+        ],
+        "frames": 353,
+        "normalSpawn": true,
+        "deaths": 0
+      },
+      {
+        "name": "Release wait 15, return 51",
+        "tape": [
+          [
+            35,
+            "d"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            5,
+            "d"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            51,
+            "l"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            107,
+            "r"
+          ]
+        ],
+        "frames": 352,
+        "normalSpawn": true,
+        "deaths": 0
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Leave lantern loaded and jump/up-dash to the tally",
+        "tape": [
+          [
+            35,
+            "d"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            90,
+            "r"
+          ]
+        ],
+        "result": "No exit; 0 deaths in the actual normal-input replay."
+      },
+      {
+        "name": "Jump immediately after pickup without rising lift",
+        "tape": [
+          [
+            35,
+            "d"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "result": "No exit; 0 deaths in the actual normal-input replay."
+      },
+      {
+        "name": "Keep lantern after tally and descend directly to exit",
+        "tape": [
+          [
+            35,
+            "d"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            5,
+            "d"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            200,
+            "r"
+          ]
+        ],
+        "result": "No exit; 1 deaths in the actual normal-input replay."
+      }
+    ],
+    "route": {
+      "frames": 349,
+      "deaths": 0,
+      "events": [
+        "recoil-load",
+        "pickup",
+        "recoil-release",
+        "jump",
+        "recoil-jump",
+        "stone-lit",
+        "gate-open",
+        "throw",
+        "land",
+        "lantern-land",
+        "dash",
+        "refill-dash",
+        "exit"
+      ],
+      "movement": "Ordinary jump/dash/climb and blade; no super, hyper, ultra or wallbounce."
+    },
+    "requiredEventCounts": {
+      "recoil-load": 2
+    },
+    "tolerance": "Nine complete zero-death variations include release-to-jump waits of 8, 9, 10, 11, 12, 13, 14 and 15 frames, plus earlier/later return drops. A sampled 16-frame wait failed because the ordinary lift grace had expired. All successful saved routes return the actual lantern; none uses lantern-lost/lantern-back reset.",
+    "designChecks": "Three saved probes: leave the lantern loading the plate and try a normal jump/up-dash; jump immediately after pickup without waiting for lift; keep the lantern after collecting the tally and descend directly to the exit. None exits. The beam crosses the entry height of the lower exit, so crossing the slit above the light is not the intended escape.",
+    "feedbackHistory": [
+      {
+        "date": "2026-10-08",
+        "decision": "banked",
+        "comment": "Fun; bank it."
+      }
+    ],
+    "review": {
+      "date": "2026-10-08",
+      "decision": "banked",
+      "comment": "Fun; bank it."
+    }
+  },
+  "tape": [
+    [
+      35,
+      "d"
+    ],
+    [
+      1,
+      "dg"
+    ],
+    [
+      5,
+      "d"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      35,
+      "rj"
+    ],
+    [
+      20,
+      "r"
+    ],
+    [
+      51,
+      "l"
+    ],
+    [
+      1,
+      "dg"
+    ],
+    [
+      8,
+      "l"
+    ],
+    [
+      70,
+      ""
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      12,
+      "rx"
+    ],
+    [
+      87,
+      "r"
+    ]
+  ]
+}

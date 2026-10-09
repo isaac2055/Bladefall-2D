@@ -1,0 +1,179 @@
+{
+  "room": {
+    "id": "bank-b17",
+    "name": "Ceiling Keeps the Key",
+    "hint": "Prisms reverse gravity. A ring keeps its lantern until Grab or a blade releases it.",
+    "question": "Can the ceiling keep the weight when you need the floor back?",
+    "map": [
+      "########################################",
+      "########################################",
+      "########################################",
+      "#......Q......##########################",
+      "#.............##########################",
+      "#.............#_########################",
+      "#.............#.########################",
+      "#.............#.########################",
+      "#.............#.########################",
+      "#.............#.########################",
+      "#.............#.########################",
+      "#.............#.########################",
+      "#.............#.########################",
+      "#.............#.########################",
+      "#.............#.########################",
+      "#............##.########################",
+      "#.P.l...........########################",
+      "#########...}}}}########################",
+      "#...............########################",
+      "#...............########################",
+      "#......Q............H...................",
+      "#...................H...................",
+      "########################################"
+    ],
+    "palette": "path",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "cargoClasps": [
+      {
+        "id": "A",
+        "c": 15,
+        "r": 5
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 3,
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "solve",
+    "worlds": [
+      11,
+      19
+    ],
+    "tags": [
+      "cargo-clasp",
+      "gravity",
+      "held-gate",
+      "cargo-routing"
+    ],
+    "newMechanics": [
+      "cargo-clasp"
+    ],
+    "entrance": "Left gallery above the prism well.",
+    "exit": "Low corridor underneath the cargo shaft.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "clasp-catch",
+      "gravity",
+      "plate",
+      "held-open"
+    ],
+    "solution": "Carry the lantern over the gap and feed it into the low belt duct. Return to the prism well, turn gravity upward, and let the lantern rise through its separate narrow shaft into the clasp and ceiling plate. Use the ceiling prism to restore ordinary gravity: the lantern remains aloft while the knight falls back to the basement and passes beneath the cargo shaft through the held exit.",
+    "nearestExisting": "B14 Upside Delivery uses gravity as a cargo conveyor but must bring the cargo down onto a floor plate; i12-lock uses a ceiling receiver while gravity stays reversed. This room asks for opposite persistent gravity states for the cargo and knight.",
+    "novelty": "The correct cargo position is deliberately unreachable from the knight route. Two gravity passes are useful because the ring stores the first pass\u2019s cargo result while the second returns the knight to the lower route.",
+    "route": {
+      "frames": 743,
+      "deaths": 0,
+      "events": [
+        "pickup",
+        "jump",
+        "land",
+        "throw",
+        "grab",
+        "lantern-land",
+        "dash",
+        "gravity",
+        "refill-dash",
+        "plate",
+        "held-open",
+        "clasp-catch",
+        "exit"
+      ],
+      "movement": "Ordinary jump, dash, climb and device actions; no advanced momentum."
+    },
+    "bypassReview": {
+      "scope": "One obvious ordinary-movement shortcut, plus geometry review; not an exhaustive solver search.",
+      "attempt": "Ignored the cargo and used ordinary running plus a dash through the bottom corridor.",
+      "result": "Stopped at the closed held gate (x152,y165); the inaccessible ceiling receiver was never pressed.",
+      "dependency": "Without the clasp, the saved second gravity flip returns the lantern from the ceiling and closes the route."
+    }
+  },
+  "tape": [
+    [
+      8,
+      "r"
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      18,
+      "r"
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      65,
+      ""
+    ],
+    [
+      1,
+      "dg"
+    ],
+    [
+      45,
+      ""
+    ],
+    [
+      28,
+      "l"
+    ],
+    [
+      45,
+      ""
+    ],
+    [
+      9,
+      "l"
+    ],
+    [
+      1,
+      "lx"
+    ],
+    [
+      85,
+      ""
+    ],
+    [
+      50,
+      "r"
+    ],
+    [
+      65,
+      ""
+    ],
+    [
+      14,
+      "l"
+    ],
+    [
+      1,
+      "lx"
+    ],
+    [
+      80,
+      ""
+    ],
+    [
+      220,
+      "r"
+    ]
+  ]
+}

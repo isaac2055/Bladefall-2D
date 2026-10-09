@@ -1,0 +1,842 @@
+{
+  "room": {
+    "id": "bank-f60",
+    "name": "The Faces Left to You",
+    "palette": "woods",
+    "study": true,
+    "exit": "right",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "hint": "Spend the next fresh grip, refill while rising, and leave before the returning patrol.",
+    "question": "Carry a wall rhythm through refills while earlier grips become unusable.",
+    "map": [
+      "########################################",
+      "#...........#>...........G..............",
+      "#...........#>...........G..............",
+      "#...........#>...........G..............",
+      "#...........#>...........G..............",
+      "#...........#>...........G..............",
+      "#...........#>...........G..............",
+      "#...........#>...........G..............",
+      "#...........#>...........G..............",
+      "#...........#>...........G..............",
+      "#...........#>...........G.#############",
+      "#...........#>...........G.............#",
+      "#........................G.............#",
+      "#........................G.............#",
+      "#........................G.............#",
+      "#........................G.............#",
+      "#.............c..........G.............#",
+      "#........................G.............#",
+      "#........................G.............#",
+      "#........................G.............#",
+      "#........................G.............#",
+      "#........................G.............#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#...........#>.........................#",
+      "#...........#>.........................#",
+      "#...........#>.........................#",
+      "#...........#>.........................#",
+      "#...........#>.........................#",
+      "#...........#>.........................#",
+      "#...........#>.........................#",
+      "#...........#>.........................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#................P.....................#",
+      "#^^^^^^^^^^^^^######^^^^^^^^^^^^^^^^^^^#",
+      "########################################"
+    ],
+    "spentThorns": [
+      {
+        "id": "Lower west",
+        "c": 12,
+        "r": 35,
+        "w": 1,
+        "h": 14,
+        "face": "right"
+      },
+      {
+        "id": "Middle east",
+        "c": 25,
+        "r": 22,
+        "w": 1,
+        "h": 18,
+        "face": "left"
+      },
+      {
+        "id": "Upper west",
+        "c": 12,
+        "r": 12,
+        "w": 1,
+        "h": 15,
+        "face": "right"
+      }
+    ],
+    "movement": "survive-2",
+    "rows": 52,
+    "vectorRefills": [
+      {
+        "c": 19,
+        "r": 35,
+        "dir": "up"
+      },
+      {
+        "c": 24,
+        "r": 36,
+        "dir": "up"
+      },
+      {
+        "c": 19,
+        "r": 21,
+        "dir": "up"
+      },
+      {
+        "c": 19,
+        "r": 7,
+        "dir": "right"
+      }
+    ],
+    "sweepers": [
+      {
+        "id": "Lower circuit",
+        "path": [
+          [
+            20,
+            25
+          ],
+          [
+            20,
+            43
+          ],
+          [
+            21,
+            43
+          ],
+          [
+            21,
+            25
+          ]
+        ],
+        "loop": true,
+        "period": 480,
+        "radius": 3
+      },
+      {
+        "id": "Upper crossing",
+        "path": [
+          [
+            19,
+            20
+          ],
+          [
+            19,
+            30
+          ]
+        ],
+        "period": 180,
+        "phase": 20,
+        "radius": 3
+      },
+      {
+        "id": "Last stroke",
+        "path": [
+          [
+            25,
+            4
+          ],
+          [
+            25,
+            13
+          ]
+        ],
+        "period": 210,
+        "phase": 95,
+        "radius": 3
+      }
+    ]
+  },
+  "tape": [
+    [
+      25,
+      "lgu"
+    ],
+    [
+      86,
+      "ug"
+    ],
+    [
+      18,
+      "g"
+    ],
+    [
+      16,
+      "rj"
+    ],
+    [
+      12,
+      "rux"
+    ],
+    [
+      32,
+      "rg"
+    ],
+    [
+      12,
+      "ux"
+    ],
+    [
+      110,
+      "ug"
+    ],
+    [
+      75,
+      "g"
+    ],
+    [
+      16,
+      "lj"
+    ],
+    [
+      12,
+      "lux"
+    ],
+    [
+      32,
+      "lg"
+    ],
+    [
+      85,
+      "ug"
+    ],
+    [
+      1,
+      "rs"
+    ],
+    [
+      12,
+      "ux"
+    ],
+    [
+      24,
+      "rj"
+    ],
+    [
+      4,
+      "r"
+    ],
+    [
+      12,
+      "rux"
+    ],
+    [
+      110,
+      "r"
+    ]
+  ],
+  "bank": {
+    "side": "fractured",
+    "batch": 14,
+    "run": 7,
+    "collection": "run7",
+    "format": "extended",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "difficulty": 5,
+    "role": "Learn one continuous climb rhythm across three consumed grips, finite stamina, refills and returning patrols.",
+    "worlds": [],
+    "tags": [
+      "spent-wall",
+      "stamina-budget",
+      "alternating-grips",
+      "wallbounce",
+      "airborne-refill",
+      "continuous-pattern"
+    ],
+    "newMechanics": [
+      "departure-armed persistent surface"
+    ],
+    "author": "Codex",
+    "humanReview": "Unreviewed Run 7 candidate. Author difficulty is provisional; intended-route and bounded input evidence are not human feel ratings.",
+    "learningFamily": "spent-faces",
+    "lessonRole": "master",
+    "preparesFor": [],
+    "prerequisites": [
+      "bank-b59",
+      "bank-f59"
+    ],
+    "timing": {
+      "kind": "continuous alternating grips with three authored patrol phases",
+      "warningFrames": 18,
+      "patrolPeriods": [
+        480,
+        180,
+        210
+      ],
+      "cue": "Read the next crossing while climbing; an old grip cannot be used to reset the pattern.",
+      "staminaAtSecondDeparture": 17.9
+    },
+    "solution": "Catch the lower west grip and climb. Wait for the lower circuit to move below the first crossing, then walljump and dash up-right through the airborne refill to the east grip. Immediately dash upward along that wall through its crystal, then climb toward the next transfer. Hold briefly while the next patrol moves down; the reference route departs with about eighteen stamina remaining. Walljump left and dash up-left through the middle crystal to the fresh upper west face. Climb, then cut right to light the nearby tally and open the upper pier. Dash upward beside the wall and jump right into a wallbounce; collect the last airborne crystal, then dash up-right through the final patrol stroke to the receiving gallery. No floor resets the three-grip phrase.",
+    "nearestExisting": "B59 supplies the one-grip/refill/next-grip lesson; F59 supplies the wallbounce-to-aerial-refill finish. This taller synthesis alternates three individually spent faces, uses an early wall boost to set the later stamina budget, and changes the upper pier with a blade cut before the final timed departure. It is a continuous shaft, not three safe floor resets.",
+    "novelty": "Learn one continuous climb rhythm across three consumed grips, finite stamina, refills and returning patrols.",
+    "endingForgiveness": "The last wallbounce/refill crossing remains a demanding part of the room. A six-frame later first departure and second departures six frames earlier/later all finish without deaths. The middle hold is deliberately close to the stamina limit; the final gallery receives success without erasing the preceding sequence.",
+    "positiveChecks": [
+      {
+        "name": "First patrol departure six frames later",
+        "tape": [
+          [
+            25,
+            "lgu"
+          ],
+          [
+            86,
+            "ug"
+          ],
+          [
+            24,
+            "g"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            32,
+            "rg"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            110,
+            "ug"
+          ],
+          [
+            75,
+            "g"
+          ],
+          [
+            16,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            32,
+            "lg"
+          ],
+          [
+            85,
+            "ug"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 682
+      },
+      {
+        "name": "Second patrol departure six frames earlier",
+        "tape": [
+          [
+            25,
+            "lgu"
+          ],
+          [
+            86,
+            "ug"
+          ],
+          [
+            18,
+            "g"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            32,
+            "rg"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            110,
+            "ug"
+          ],
+          [
+            69,
+            "g"
+          ],
+          [
+            16,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            32,
+            "lg"
+          ],
+          [
+            85,
+            "ug"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 670
+      },
+      {
+        "name": "Second patrol departure six frames later",
+        "tape": [
+          [
+            25,
+            "lgu"
+          ],
+          [
+            86,
+            "ug"
+          ],
+          [
+            18,
+            "g"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            32,
+            "rg"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            110,
+            "ug"
+          ],
+          [
+            81,
+            "g"
+          ],
+          [
+            16,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            32,
+            "lg"
+          ],
+          [
+            85,
+            "ug"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 682
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Jump-dash directly to the middle grip",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            220,
+            "rgu"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            140,
+            "ug"
+          ],
+          [
+            120,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 6,
+        "frames": null
+      },
+      {
+        "name": "Try to reset on the already spent first grip",
+        "tape": [
+          [
+            25,
+            "lgu"
+          ],
+          [
+            86,
+            "ug"
+          ],
+          [
+            18,
+            "g"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            12,
+            "lx"
+          ],
+          [
+            100,
+            "lgu"
+          ]
+        ],
+        "exited": false,
+        "deaths": 1,
+        "frames": null
+      },
+      {
+        "name": "Ordinary jump-dash instead of the final wallbounce",
+        "tape": [
+          [
+            25,
+            "lgu"
+          ],
+          [
+            86,
+            "ug"
+          ],
+          [
+            18,
+            "g"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            32,
+            "rg"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            110,
+            "ug"
+          ],
+          [
+            75,
+            "g"
+          ],
+          [
+            16,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            32,
+            "lg"
+          ],
+          [
+            85,
+            "ug"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            160,
+            "rgu"
+          ]
+        ],
+        "exited": false,
+        "deaths": 0,
+        "frames": null
+      }
+    ],
+    "requiredEvents": [
+      "walljump",
+      "wallbounce",
+      "vector-refill",
+      "spent-thorn-arm",
+      "stone-lit",
+      "gate-open"
+    ],
+    "requiredEventCounts": {
+      "vector-refill": 4,
+      "spent-thorn-touch": 3,
+      "spent-thorn-arm": 3
+    },
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 676,
+      "events": [
+        "grab",
+        "spent-thorn-touch",
+        "walljump",
+        "spent-thorn-leave",
+        "dash",
+        "spent-thorn-arm",
+        "refill-dash",
+        "refill",
+        "vector-refill",
+        "refill-back",
+        "strike",
+        "stone-lit",
+        "gate-open",
+        "wallbounce",
+        "land",
+        "exit"
+      ]
+    },
+    "designNotes": "Departure-thorn bodies remain solid. Only the visibly marked face arms after departure; continuous first contact is safe. Room completion uses ordinary physical geometry and visible tallies, with no hidden movement-event gate. The patrol clock begins with input and resets per attempt. The 40×52 map is a tall extended shaft (2.26 screen areas); it is not labelled a superroom or padded to a size quota.",
+    "timingCues": [
+      "Read the next crossing while climbing; an old grip cannot be used to reset the pattern.",
+      "Folded hairs mark a safe first contact; an amber warning after departure precedes the permanently red face."
+    ],
+    "routeMovement": [
+      {
+        "type": "walljump",
+        "frame": 131,
+        "x": 104,
+        "y": 334,
+        "dir": 1
+      },
+      {
+        "type": "dash",
+        "frame": 150,
+        "x": 134,
+        "y": 309,
+        "dx": 0.7071067811865475,
+        "dy": -0.7071067811865475
+      },
+      {
+        "type": "vector-refill",
+        "frame": 155,
+        "x": 156,
+        "y": 284,
+        "dx": 0,
+        "dy": -1,
+        "once": false
+      },
+      {
+        "type": "dash",
+        "frame": 195,
+        "x": 196,
+        "y": 318,
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "vector-refill",
+        "frame": 199,
+        "x": 196,
+        "y": 292,
+        "dx": 0,
+        "dy": -1,
+        "once": false
+      },
+      {
+        "type": "walljump",
+        "frame": 388,
+        "x": 200,
+        "y": 218,
+        "dir": -1
+      },
+      {
+        "type": "dash",
+        "frame": 407,
+        "x": 170,
+        "y": 193,
+        "dx": -0.7071067811865475,
+        "dy": -0.7071067811865475
+      },
+      {
+        "type": "vector-refill",
+        "frame": 411,
+        "x": 156,
+        "y": 172,
+        "dx": 0,
+        "dy": -1,
+        "once": false
+      },
+      {
+        "type": "dash",
+        "frame": 537,
+        "x": 108,
+        "y": 139,
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "wallbounce",
+        "frame": 545,
+        "x": 104,
+        "y": 107,
+        "dir": 1
+      },
+      {
+        "type": "vector-refill",
+        "frame": 563,
+        "x": 156,
+        "y": 60,
+        "dx": 1,
+        "dy": 0,
+        "once": false
+      },
+      {
+        "type": "dash",
+        "frame": 577,
+        "x": 160,
+        "y": 54,
+        "dx": 0.7071067811865475,
+        "dy": -0.7071067811865475
+      }
+    ]
+  }
+}

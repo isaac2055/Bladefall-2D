@@ -1,3 +1,62 @@
+## 7.299.0: Run 7 ready for human review (2026-10-09)
+
+The user authorized a new set after the Run 5/6 synthesis. Run 7 is complete locally: **16 candidates, eight Base B54–B61 and eight Fractured F55–F62**, saved individually. Extras → Room Bank defaults to Run 7. Four learning families connect smaller encounters to later combinations: timed launch/pogo, moving anchor/cargo, spent faces/resource-carrying climbs, and airborne replies/thermal cycles. Twelve rooms are compact and four are extended; no padded superroom claim. Guide: docs/room-bank/RUN-7.md. Full handoff: LLM-HANDOFF/ROOM-BANK-RUN-7-7.299.md.
+
+The user's latest clarification governs difficulty: endings may be the hardest part. Do not automatically soften them or require broad safe resets; make the execution readable, learnable and human-achievable. The synthesis was corrected accordingly. The two original tech/entity reports remain unchanged. Prior specific requests about older endings remain deferred and do not imply a blanket rule for new work.
+
+Active pool: **99 (55 Base / 44 Fractured)**; banked **50 (27 / 23)**, revised 18, candidate 31. All 83 prior source records are byte-for-byte unchanged, and all prior approval/side decisions are retained. All 16 new rooms await human review; none is inserted into a campaign. The four older Superrooms stay in their separate pending-review group. No numeric human ratings are inferred from the authoring results.
+
+A new opt-in spent-thorn device keeps a marked face safe during first contact, warns for 18 simulation frames after departure, then makes only that face lethal until reset while the body stays solid. Four new rooms use it. Its view communicates the actual face and warning. Existing movement code is unchanged. Other rooms use existing systems in consequential timed sequences; there are no invisible required-event exit locks.
+
+All 99 canonical routes finish with zero deaths. Saved checks pass 410 positive variations and 260 specific shortcut probes; Run 7 contributes 47/53. The focused spent-thorn contract passes. Actual routes include wavedash/hyper, reverse launch, wallbounce, controlled pogo, cargo dash catch, airborne parry and recoil. These establish feasible routes and named checks, not exhaustive anti-cheese proof or measured human fun/difficulty/suitability.
+
+Browser checks complete all 16, review/revision/CSV, play timer/pause and camera travel. The final six-room hint/format/phase refresh passes; 16 entrance views and 17 intermediate views were inspected without an observed rendering/camera issue. The local 418-file bundle is rebuilt with relevant byte parity confirmed. Version 7.299.0; cache bladefall-v464-room-bank-run7; catalog batch 14 / active Run 7. Nothing published or committed.
+
+Preservation: docs/room-bank/run-7-baseline.json and scripts/room-bank/archive/before-run7/. Result docs/room-bank/run-7-preservation.json records 415 baseline hashes: 409 unchanged, 6 expected shared integration/synthesis changes; all old sources, movement runtime, original reports and world lock preserved. Movement evidence: docs/room-bank/run-7-movement-audit.json. Browser receipt: scripts/climb/.cache/room-bank/run7-browser-review.json. Stop for human review; no next set or campaign placement is underway. Older entries below are historical.
+
+## 7.298.0: Run 5/6 feedback applied; synthesis saved (2026-10-09)
+
+Current scope is complete: B47/F53/F54 cut; B48 banked after fixes; F49 banked Fractured; F50 banked early Fractured; B51 moved to middle Fractured and banked without geometry/tape changes. F48 remains unchanged and available for review. Nine rooms revised: B46/B48/B49/B50/B52/B53/F47/F51/F52. Eight await approval; B48 fulfills conditional approval. No new rooms or next run were authorized or created.
+
+Guide: docs/room-bank/RUN-56-REVIEW.md. New synthesis: docs/design/SURVIVE-ROOM-SYNTHESIS.md. Both original Celeste reports remain byte-for-byte unchanged. The synthesis examines temporal pattern learning, movement/entity composition, presentation, weak centrality tests and neglected existing systems. Its reproducible audit finds zero super/hyper/wavedash/ultra-family uses in the 16 pre-feedback Run 5/6 author routes; recommendations remain future work.
+
+Active pool: 83 (47 Base / 36 Fractured); banked 50 (27 / 23). Seventy source records outside this feedback remain byte-for-byte unchanged; the four old Superrooms remain candidates with edits deferred. B52 alone opts into clearer smoke/watch drawing; B53 alone adds a sight glass showing the real tide when the float is below the camera. Detection and all movement rules are unchanged. No broad door retrofit or campaign integration.
+
+All 83 canonical routes finish without deaths; 363 positive variations and 207 specific shortcut probes pass. 12 archived successful shortcuts now fail on the revisions. Browser playback covers all nine revisions plus B51/F49/F50, including real scrolling, groups, reviews/revisions/CSV and timer/pause. Visual layouts and intermediate views inspected. These checks establish working routes and named fixes, not exhaustive uniqueness or human quality.
+
+Version 7.298.0; cache v463-room-bank-review56; catalog batch13, reviewCycle true, activeRun6. Local bundle rebuilt; nothing published or committed. Exact originals: scripts/room-bank/archive/before-run56-feedback/. Baseline: docs/room-bank/run56-feedback-baseline.json. Main preservation check: scripts/room-bank/run56-preservation-check.mjs. Full handoff: LLM-HANDOFF/ROOM-BANK-REVIEW-7.298.md. Stop for human review; do not start another run or implement synthesis proposals without user direction. Older entries below are historical.
+
+## 7.297.0: Run 6 ready for review (2026-10-09)
+
+The user requested another set after Run 5. Run 6 now contains eight new candidates: Base B50–B53 and Fractured F51–F54, with two compact rooms and two continuous superrooms per side. Extras → Room Bank defaults to Run 6. Each room is saved individually with a complete route and focused variations/probes. New guide: docs/room-bank/RUN-6.md. Full handoff: LLM-HANDOFF/ROOM-BANK-RUN-6-7.297.md.
+
+All 78 earlier sources are byte-for-byte unchanged, including Run 5 and the four earlier Superrooms. All previous banking/side decisions remain intact; approved bank stays 46 (26 Base / 20 Fractured). Total active pool: 86 (49 Base / 37 Fractured). Do not infer approvals for any new candidate. Both existing design reports and the unrelated world lock are preserved.
+
+All 86 canonical routes finish with zero deaths. Saved checks pass 371 positive variations and 214 targeted bypass probes, including 23/24 for Run 6. Actual browser checks cover all eight, scrolling, review/revision/CSV, play timer/pause and all menu groups. Layouts and intermediate views were inspected. This establishes working routes and the checked protections, not human quality or exhaustive uniqueness.
+
+Version 7.297.0; cache v462-room-bank-run6. Local bundle rebuilt; nothing published or committed. Baseline docs/room-bank/run-6-baseline.json; originals scripts/room-bank/archive/before-run6/; current audit scripts/room-bank/run6-preservation-check.mjs. Catalog batch 12 / active Run 6. Stop for human review; no further run is underway. Earlier entries below are historical.
+
+## 7.296.0: Run 5 ready for review (2026-10-09)
+
+Run 5 is complete: eight new candidates, four Base B46–B49 and four Fractured F47–F50. Each side has two compact rooms and two continuous superrooms. Extras → Room Bank now defaults to Run 5. The user strongly liked the previous four Superrooms; all four remain unchanged in their separate Superrooms review queue. Their smaller edits, especially more forgiving Fractured endings, are deferred. Do not infer banking from that praise.
+
+Run 5 synthesizes track choice and beam shade, linked landing relays and optics, an outbound/return cart route, repeated recoil through changed architecture, pressure-pod approach direction and phase control, a ram transported by a hinged floor for three later uses, a travelling fault opening its own lower return, and Oren's recorded path changing a door into a recoil-assisted return wall. New rooms are saved individually with routes and focused checks. All 70 older records are unchanged byte-for-byte, including their approval/side classifications; bank size remains 46. Total active pool: 78, with 45 Base / 33 Fractured.
+
+All 78 canonical routes complete with zero deaths; 348 saved positive variations and 190 specific bypass probes pass. The new set contributes 24 variations and 24 probes. Browser checks complete all 8, verify actual large-map camera travel, existing review/revision/CSV flows, play timer/pause and Oren's contextual Controls label. Runtime changes are narrow: rail/water parsing, collision and drawing use actual room dimensions; companion hints use the remappable Portal binding. No ordinary movement constants changed. These checks establish feasibility and the specified protections, not measured fun or proof against every alternate route.
+
+Version 7.296.0, cache v461-room-bank-run5. Local bundle rebuilt, no publication or commits. Current guide: docs/room-bank/RUN-5.md; full handoff: LLM-HANDOFF/ROOM-BANK-RUN-5-7.296.md. Catalog batch 11 / active Run 5. Baseline docs/room-bank/run-5-baseline.json and originals scripts/room-bank/archive/before-run5/. Current audit scripts/room-bank/run5-preservation-check.mjs; focused large-device fixture run5-device-check.mjs. Both existing design reports and the unrelated world lock are preserved. Stop for user review; no additional run is underway. Earlier entries below are historical.
+
+## 7.295.0: Feedback applied and four Superrooms ready (2026-10-09)
+
+Seven approvals banked: F31, B40, B43, F41, F42, F43 and F44. B40 is now late Fractured; F41/F44 are Base. F35's old approval is superseded and its new controlled-recoil revision awaits review. F32 has a higher spike roof and two lanterns. B41/B42 are substantially redesigned. Approved geometry/tapes are preserved. Bank: 46 approved, 26 Base / 20 Fractured; total active: 70, 41 Base / 29 Fractured.
+
+Four continuous Superroom candidates B44/B45/F45/F46 each exceed three normal room areas and use shared state/return paths. Extras → Room Bank now defaults to Superrooms. All 70 saved routes, focused variations/bypass probes, browser review/play flows and real scrolling pass. Larger-room device bounds and teleport/respawn camera behavior are fixed. Local bundle rebuilt; nothing published. Version 7.295.0, cache v460-room-bank-superrooms.
+
+Current guide: docs/room-bank/SUPERROOMS.md. Full handoff: LLM-HANDOFF/ROOM-BANK-SUPERROOMS-7.295.md. Plan: docs/room-bank/RUN-5-PLAN.md. Run 5 is planned but NOT BUILT; stop for review. Original records are archived in scripts/room-bank/archive/run4-before-superrooms/. Current audit: scripts/room-bank/superrooms-preservation-check.mjs. Older state below is historical.
+
+> Superseded by [the 7.281 completion report](CLIMB-COMPLETION-7.281.md), 2026-10-06.
+> Technical cleanup is complete locally; the decisions in §4 remain open. The original brief below is retained as history.
+
 # Resume brief for Codex: The Climb, 7.280 cleanup (written 2026-10-06)
 
 Read this first, then the 7.280.0 entry at the top of `LLM-HANDOFF/01-CURRENT-STATE.md` and the run-6 entries at the top of

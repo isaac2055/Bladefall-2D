@@ -1,0 +1,1089 @@
+{
+  "room": {
+    "id": "bank-b52",
+    "name": "Send the Bolt Upwind",
+    "palette": "colony",
+    "study": true,
+    "aim8": true,
+    "dashes": 0,
+    "lock": [
+      "portal"
+    ],
+    "map": [
+      "################################################################################################",
+      "###############################....................#...........................................#",
+      "###############################....................#...........................................#",
+      "###############################....................#...........................................#",
+      "###############################....................#...........................................#",
+      "###############################....................#...........................................#",
+      "###############################....................#...........................................#",
+      "###############################....................#...........................................#",
+      "###############################....................#...........................................#",
+      "###############################....................#...........................................#",
+      "###############################....................#...........................................#",
+      "###############################....................#...........................................#",
+      "###############################....................#..################################.........#",
+      "###############################....................#..#........................................#",
+      "###############################....................#..#........................................#",
+      "###############################....................#..#........................................#",
+      "###############################....................#..#........................................#",
+      "##############################SSSSSSSSSSSSSSSSSSSS.#..#........................................#",
+      "##############################SSSSSSSSSSSSSSSSSSSS.SSS#SSSSSSSSSSSSSSSSSSSSSSSSSSSSSS..........#",
+      "##############################SSSSSSSSSSSSSSSSSSSS.SSS#SSSSSSSSSSSSSSSSSSSSSSSSSSSSSS..........#",
+      "..............................SSSSSSSSSSSSSSSSSSSS.SSS#SSSSSSSSSSSSSSSSSSSSSSSSSSSSSS..........#",
+      "..............................SSSSSSSSSSSSSSSSSSSSUSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS..........#",
+      "..............................SSSSSPSSSSSSSSSSSSSSUSUSS^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^..........#",
+      "######################################.............##################################...#NNNN..#",
+      "#####################.....................#############################################.#####..#",
+      "#####################...................................................................#####..#",
+      "#####################...................................................................#####..#",
+      "#####################...................................................................########",
+      "#####################...................................................................########",
+      "#####################............................................vvvv...................########",
+      "#####################..............................................................#############",
+      "#####################...................................................................########",
+      "#####################.................................^^^^^................^^^^^........########",
+      "#########################...............................................................########",
+      "########################^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^########",
+      "################################################################################################"
+    ],
+    "hint": "Smoke hides you from watchlight. Below the freight roof, read the teeth and change your rope.",
+    "question": "What can travel against the wind before you can, and what must become solid for your return?",
+    "exit": "left",
+    "cols": 96,
+    "rows": 36,
+    "winds": [
+      {
+        "c": 1,
+        "r": 19,
+        "w": 29,
+        "h": 4,
+        "dx": -135,
+        "dy": 0
+      },
+      {
+        "c": 40,
+        "r": 1,
+        "w": 12,
+        "h": 22,
+        "dx": -170,
+        "dy": 0
+      },
+      {
+        "c": 54,
+        "r": 1,
+        "w": 31,
+        "h": 22,
+        "dx": -135,
+        "dy": 0
+      }
+    ],
+    "lights": [
+      {
+        "c": 70,
+        "r": 21.75,
+        "dir": 180,
+        "sweep": 0,
+        "range": 580,
+        "width": 12
+      }
+    ],
+    "foes": [
+      {
+        "kind": "spit",
+        "x": 84,
+        "y": 22,
+        "dir": [
+          -1,
+          0
+        ],
+        "every": 240,
+        "offset": 239,
+        "speed": 180
+      }
+    ],
+    "combat": {
+      "waitForMove": true,
+      "enemies": [],
+      "receivers": [
+        {
+          "id": "Upwind",
+          "x": 616,
+          "y": 175
+        }
+      ],
+      "doors": [
+        {
+          "x": 48,
+          "y": 152,
+          "w": 8,
+          "h": 32,
+          "coils": [
+            "Upwind"
+          ]
+        },
+        {
+          "x": 360,
+          "y": 192,
+          "w": 8,
+          "h": 72,
+          "coils": [
+            "Upwind"
+          ]
+        }
+      ]
+    },
+    "movingHooks": [
+      {
+        "id": "Underpass",
+        "c": 41,
+        "r": 26,
+        "w": 4,
+        "h": 1,
+        "to": [
+          39,
+          0
+        ],
+        "period": 660
+      }
+    ],
+    "watchClarity": true
+  },
+  "bank": {
+    "side": "base",
+    "batch": 13,
+    "run": 6,
+    "collection": "run6",
+    "format": "superroom",
+    "acceptance": "revised",
+    "status": "route-proven",
+    "difficulty": 4,
+    "role": "Send a bolt upwind, then circle below and above its lane to build the return screen",
+    "worlds": [
+      12,
+      16,
+      20
+    ],
+    "tags": [
+      "wind",
+      "returned-shot",
+      "mould",
+      "watch-light",
+      "moving-hook",
+      "shared-return",
+      "anvil"
+    ],
+    "newMechanics": [],
+    "author": "Codex",
+    "humanReview": "User found the top-deck ride dull and the smoke/light protection unclear. Revised with a required hook pattern and opt-in watch/smoke presentation; awaits approval.",
+    "requiredEvents": [
+      "parry",
+      "receiver-lit",
+      "combat-gate",
+      "moving-hook",
+      "moving-unhook",
+      "anvil",
+      "cast"
+    ],
+    "solution": "From the smoke, parry the bolt right through the empty casting frame into the distant coil. Drop beside the carriage and hold Grab to catch its lower ring. The freight roof leaves no standing clearance. Hold Up with Grab to shorten the chain over the first low teeth; pay out with Down in the wide gap to pass below the hanging teeth; reel in again before the last low teeth. Jump-release onto the broad receiving shelf and climb to the anvil. Make a small jump and downward cut to reach the high return gallery. Let the gale carry you back into the casting pocket. A left cut sets the screen and its small rear guard; the guard stops later shots while the main screen blocks the watchlight. Hop left into the starting smoke and follow the long shadow home.",
+    "nearestExisting": "B29 combines transported shade with a returned shot, B30 casts shade during a swing, and B12 replaces a temporary shield. Here a shot can cross the gale that prevents the knight from reaching the casting face. Its coil releases both the lower carriage and the home door; a lower ride and upper anvil return approach the same frame from its useful side before the final walk uses its permanent shadow.",
+    "novelty": "The shared passage has three different uses at three heights: a bolt travels upwind through the empty frame, a carrier takes the knight below the thorn-covered firing lane, and the anvil returns the knight above that same lane into the casting pocket. Only then can the frame become the screen needed for the long downwind home route.",
+    "approvedIngredients": [
+      "bank-b29",
+      "bank-b30",
+      "bank-b12",
+      "bank-b37"
+    ],
+    "positiveChecks": [
+      {
+        "name": "Pay out four frames earlier",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            119,
+            ""
+          ],
+          [
+            1,
+            "rp"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            45,
+            "g"
+          ],
+          [
+            146,
+            "ug"
+          ],
+          [
+            20,
+            "dg"
+          ],
+          [
+            36,
+            "g"
+          ],
+          [
+            95,
+            "ug"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            100,
+            "rgu"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            6,
+            "j"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            75,
+            "l"
+          ],
+          [
+            35,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            15,
+            "l"
+          ],
+          [
+            40,
+            "lj"
+          ],
+          [
+            155,
+            "l"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 966
+      },
+      {
+        "name": "Pay out four frames later",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            119,
+            ""
+          ],
+          [
+            1,
+            "rp"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            45,
+            "g"
+          ],
+          [
+            154,
+            "ug"
+          ],
+          [
+            20,
+            "dg"
+          ],
+          [
+            28,
+            "g"
+          ],
+          [
+            95,
+            "ug"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            100,
+            "rgu"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            6,
+            "j"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            75,
+            "l"
+          ],
+          [
+            35,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            15,
+            "l"
+          ],
+          [
+            40,
+            "lj"
+          ],
+          [
+            155,
+            "l"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 966
+      },
+      {
+        "name": "Rest three seconds in the completed screen",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            119,
+            ""
+          ],
+          [
+            1,
+            "rp"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            45,
+            "g"
+          ],
+          [
+            150,
+            "ug"
+          ],
+          [
+            20,
+            "dg"
+          ],
+          [
+            32,
+            "g"
+          ],
+          [
+            95,
+            "ug"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            100,
+            "rgu"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            6,
+            "j"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            75,
+            "l"
+          ],
+          [
+            35,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            15,
+            "l"
+          ],
+          [
+            180,
+            ""
+          ],
+          [
+            40,
+            "lj"
+          ],
+          [
+            155,
+            "l"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 1146
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Original top-deck ride",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            119,
+            ""
+          ],
+          [
+            1,
+            "rp"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            450,
+            ""
+          ],
+          [
+            23,
+            "r"
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            6,
+            "j"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            75,
+            "l"
+          ],
+          [
+            35,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            15,
+            "l"
+          ],
+          [
+            40,
+            "lj"
+          ],
+          [
+            155,
+            "l"
+          ]
+        ],
+        "exited": false,
+        "deaths": 6,
+        "frames": 0
+      },
+      {
+        "name": "Stay reeled in beneath the hanging teeth",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            119,
+            ""
+          ],
+          [
+            1,
+            "rp"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            45,
+            "g"
+          ],
+          [
+            150,
+            "ug"
+          ],
+          [
+            20,
+            "ug"
+          ],
+          [
+            32,
+            "g"
+          ],
+          [
+            95,
+            "ug"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            100,
+            "rgu"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            6,
+            "j"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            75,
+            "l"
+          ],
+          [
+            35,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            15,
+            "l"
+          ],
+          [
+            40,
+            "lj"
+          ],
+          [
+            155,
+            "l"
+          ]
+        ],
+        "exited": false,
+        "deaths": 6,
+        "frames": 0
+      },
+      {
+        "name": "Keep the rope long for the last floor teeth",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            119,
+            ""
+          ],
+          [
+            1,
+            "rp"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            45,
+            "g"
+          ],
+          [
+            150,
+            "ug"
+          ],
+          [
+            20,
+            "dg"
+          ],
+          [
+            32,
+            "g"
+          ],
+          [
+            95,
+            "g"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            100,
+            "rgu"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            6,
+            "j"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            75,
+            "l"
+          ],
+          [
+            35,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            15,
+            "l"
+          ],
+          [
+            40,
+            "lj"
+          ],
+          [
+            155,
+            "l"
+          ]
+        ],
+        "exited": false,
+        "deaths": 6,
+        "frames": 0
+      },
+      {
+        "name": "Leave the casting screen empty",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            119,
+            ""
+          ],
+          [
+            1,
+            "rp"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            45,
+            "g"
+          ],
+          [
+            150,
+            "ug"
+          ],
+          [
+            20,
+            "dg"
+          ],
+          [
+            32,
+            "g"
+          ],
+          [
+            95,
+            "ug"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            100,
+            "rgu"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            6,
+            "j"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            75,
+            "l"
+          ],
+          [
+            35,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            15,
+            "l"
+          ],
+          [
+            40,
+            "lj"
+          ],
+          [
+            155,
+            "l"
+          ]
+        ],
+        "exited": false,
+        "deaths": 3,
+        "frames": 0
+      }
+    ],
+    "interconnection": "The mould stands in the outgoing shot line and the returning watch-light line. One distant coil opens the exit beside the starting station and releases the lower carrier. The carrier delivers the knight to the anvil beyond the thorn field; that anvil reaches the high return gallery, which drops onto the windward casting face. The final gust returns to the original parry platform and home door.",
+    "superroom": {
+      "screenAreas": 3.756521739130435,
+      "stages": [
+        "Send a bolt upwind through the empty screen",
+        "Ride under the shared firing lane to the far anvil",
+        "Return above the thorns into the casting pocket",
+        "Cast the screen and ride the gale home"
+      ],
+      "scaleNote": "One continuous 96\u00d736 room. The route travels from the centre to the far right, rises to the high gallery, descends to the shared frame, and returns across the original station to the far-left exit."
+    },
+    "requiredEventCounts": {
+      "cast": 3
+    },
+    "route": {
+      "exited": true,
+      "frames": 966,
+      "deaths": 0
+    },
+    "endingForgiveness": "The rope-height changes each have a six-tile transition gap; four-frame earlier and later payout variants pass. The receiving shelf is six tiles wide and allows a normal climb to the anvil. The casting pocket gains a visible rear guard with the same cut, preventing a late bolt from making the ending depend on arrival phase. A three-second rest behind the completed screen passes.",
+    "designNotes": "Only B52 opts into watchClarity presentation. The roof leaves eight pixels over the carrier\u2014enough for the deck but not the knight. Alternating floor/hanging/floor teeth make rope length consequential. The original top-riding tape and fixed-rope alternatives fail. Grab is remappable: hold Grab; Up reels in; Down pays out; Jump releases. Added one visible mould cell in the casting pocket to shelter the delayed final jump from later shots.",
+    "revision": {
+      "request": "Run 5\u20136 user feedback",
+      "original": "scripts/room-bank/archive/before-run56-feedback/base/bank-b52.json",
+      "changes": "Hook-only freight tunnel with alternating rope-height decisions, broad receiving shelf, readable watch cover and safer casting pocket.",
+      "date": "2026-10-09"
+    },
+    "review": {
+      "reportedBypasses": [
+        {
+          "name": "Original top-deck ride",
+          "tape": [
+            [
+              1,
+              "r"
+            ],
+            [
+              119,
+              ""
+            ],
+            [
+              1,
+              "rp"
+            ],
+            [
+              25,
+              "r"
+            ],
+            [
+              30,
+              ""
+            ],
+            [
+              450,
+              ""
+            ],
+            [
+              23,
+              "r"
+            ],
+            [
+              25,
+              "rj"
+            ],
+            [
+              15,
+              ""
+            ],
+            [
+              6,
+              "j"
+            ],
+            [
+              1,
+              "ds"
+            ],
+            [
+              75,
+              "l"
+            ],
+            [
+              35,
+              "l"
+            ],
+            [
+              35,
+              ""
+            ],
+            [
+              1,
+              "ls"
+            ],
+            [
+              15,
+              "l"
+            ],
+            [
+              40,
+              "lj"
+            ],
+            [
+              155,
+              "l"
+            ]
+          ],
+          "originalFrames": 1004
+        }
+      ]
+    }
+  },
+  "tape": [
+    [
+      1,
+      "r"
+    ],
+    [
+      119,
+      ""
+    ],
+    [
+      1,
+      "rp"
+    ],
+    [
+      25,
+      "r"
+    ],
+    [
+      45,
+      "g"
+    ],
+    [
+      150,
+      "ug"
+    ],
+    [
+      20,
+      "dg"
+    ],
+    [
+      32,
+      "g"
+    ],
+    [
+      95,
+      "ug"
+    ],
+    [
+      20,
+      "rg"
+    ],
+    [
+      1,
+      "rj"
+    ],
+    [
+      30,
+      "r"
+    ],
+    [
+      100,
+      "rgu"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      6,
+      "j"
+    ],
+    [
+      1,
+      "ds"
+    ],
+    [
+      75,
+      "l"
+    ],
+    [
+      35,
+      "l"
+    ],
+    [
+      35,
+      ""
+    ],
+    [
+      1,
+      "ls"
+    ],
+    [
+      15,
+      "l"
+    ],
+    [
+      40,
+      "lj"
+    ],
+    [
+      155,
+      "l"
+    ]
+  ]
+}

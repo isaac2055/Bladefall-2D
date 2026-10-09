@@ -1,0 +1,431 @@
+{
+  "room": {
+    "id": "bank-f21",
+    "name": "Between Passes",
+    "palette": "citadel",
+    "study": true,
+    "exit": "right",
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "map": [
+      "########################################",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#.................####.................#",
+      "#.................####.................#",
+      "#.................####.................#",
+      "#.................####.................#",
+      "#.................####..................",
+      "#.................####..................",
+      "#.................####....###...........",
+      "#.................####..................",
+      "#..............#######...........#######",
+      "#.................####..........<#######",
+      "#.................####..........<#######",
+      "#.................####..........<#######",
+      "#.................####..........<#######",
+      "#..........####...####..........<#######",
+      "#.................####..........<#######",
+      "#..P..............####..........<#######",
+      "##########........####..........<#######",
+      "##########^^^^^^^^####^^^^^^^^^^<#######",
+      "########################################"
+    ],
+    "hint": "The moving thorns repeat the dotted route. Stone pockets stay safe.",
+    "question": "Which side of the climb gives you room to wait, and when is the far ledge clear?",
+    "sweepers": [
+      {
+        "id": "A",
+        "path": [
+          [
+            17,
+            5
+          ],
+          [
+            17,
+            18
+          ]
+        ],
+        "period": 220,
+        "phase": 70,
+        "radius": 4,
+        "loop": false
+      },
+      {
+        "id": "B",
+        "path": [
+          [
+            24,
+            6
+          ],
+          [
+            31,
+            6
+          ]
+        ],
+        "period": 150,
+        "phase": 20,
+        "radius": 5,
+        "loop": false
+      }
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 4,
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "timing-puzzle",
+    "worlds": [
+      26,
+      34,
+      40
+    ],
+    "tags": [
+      "timing",
+      "sweeper"
+    ],
+    "newMechanics": [
+      "sweeper"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "humanReview": "Author difficulty estimate only; fun/difficulty/suitability ratings pending.",
+    "entrance": "Lower western shelf.",
+    "exit": "Eastern balcony below the crossing patrol.",
+    "solution": "Jump to the low step and dash upward to the projecting shelf. Wait on its outer edge until the wall patrol is below you and moving down, then jump to the spine, climb and crest it. Cross to the hanging ledge while the upper patrol is ahead. Stay below its path until it passes left of your departure, then jump/dash behind it to the eastern balcony.",
+    "nearestExisting": "Fractured cliff courses combine moving decks and linked movement. This room makes a stationary projecting shelf the control point: the same wall is a route only while its patroller is elsewhere, and the final crossing has an independent horizontal clock.",
+    "novelty": "Two orientations of timing—following a vertical pass up a wall, then crossing behind a horizontal pass—meet at a genuinely safe summit rather than one uninterrupted cycle chain.",
+    "timing": {
+      "principle": "Wait in geometry that stays clear throughout the cycle, then act after a visible pass.",
+      "stages": [
+        {
+          "cue": "The wall patrol drops below the projecting shelf and continues downward.",
+          "action": "Jump onto the wall, climb and crest the spine.",
+          "rest": "Outer edge of the projecting shelf; then central summit."
+        },
+        {
+          "cue": "The upper patrol is ahead and moving away from the approach.",
+          "action": "Cross to the hanging ledge without chasing it at its height.",
+          "rest": "Hanging ledge below the dotted patrol line."
+        },
+        {
+          "cue": "The upper patrol passes to the left of the hanging ledge.",
+          "action": "Jump and dash to the east behind its departure.",
+          "rest": "Eastern exit balcony."
+        }
+      ]
+    },
+    "requiredEvents": [
+      "grab",
+      "climbjump",
+      "dash"
+    ],
+    "route": {
+      "frames": 461,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "dash",
+        "land",
+        "refill-dash",
+        "grab",
+        "climbjump",
+        "exit"
+      ]
+    },
+    "bypassCheck": {
+      "withoutWallPause": {
+        "exited": false,
+        "firstFailure": {
+          "frame": 131,
+          "cause": "sweeper"
+        }
+      },
+      "withoutDeparturePause": {
+        "exited": false,
+        "firstFailure": {
+          "frame": 364,
+          "cause": "sweeper"
+        }
+      },
+      "scope": "Two specific no-pause replays; no exhaustive route search."
+    },
+    "verifiedAt": "2026-10-07",
+    "shortcutChecks": [
+      {
+        "name": "Climb before the wall patrol clears",
+        "tape": [
+          [
+            20,
+            "r"
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            6,
+            "ux"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            50,
+            "rgu"
+          ],
+          [
+            12,
+            "rgj"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            6,
+            "rx"
+          ],
+          [
+            90,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "firstFailure": {
+            "frame": 131,
+            "cause": "sweeper"
+          }
+        }
+      },
+      {
+        "name": "Leave the hanging ledge before its pass",
+        "tape": [
+          [
+            20,
+            "r"
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            6,
+            "ux"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            80,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            50,
+            "rgu"
+          ],
+          [
+            12,
+            "rgj"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            6,
+            "rx"
+          ],
+          [
+            90,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "firstFailure": {
+            "frame": 364,
+            "cause": "sweeper"
+          }
+        }
+      }
+    ]
+  },
+  "tape": [
+    [
+      20,
+      "r"
+    ],
+    [
+      26,
+      "rj"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      10,
+      "r"
+    ],
+    [
+      12,
+      "j"
+    ],
+    [
+      6,
+      "ux"
+    ],
+    [
+      12,
+      "r"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      80,
+      ""
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      50,
+      "rgu"
+    ],
+    [
+      12,
+      "rgj"
+    ],
+    [
+      10,
+      "r"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      26,
+      "rj"
+    ],
+    [
+      12,
+      "r"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      40,
+      ""
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      6,
+      "rx"
+    ],
+    [
+      90,
+      "r"
+    ]
+  ]
+}

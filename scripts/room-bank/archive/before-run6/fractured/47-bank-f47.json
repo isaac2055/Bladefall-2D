@@ -1,0 +1,561 @@
+{
+  "room": {
+    "id": "bank-f47",
+    "name": "Come From the Wrong Side",
+    "palette": "foundry",
+    "study": true,
+    "movement": "survive-2",
+    "aim8": true,
+    "cols": 40,
+    "rows": 23,
+    "exit": "right",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "hint": "Circle the pressure pod. Its incoming diagonal decides the return; cut the bell after launch.",
+    "question": "What must change here before you can come back?",
+    "map": [
+      "########################################",
+      "#......................................#",
+      "#......................................#",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................x...............",
+      "#.......................................",
+      "#.......................................",
+      "#..........##........AAAAAAA############",
+      "#..........##..............<############",
+      "#..........##..............<############",
+      "#..........##..............<############",
+      "#..........##..............<############",
+      "#..........................<############",
+      "#..........................<############",
+      "#...................R......<############",
+      "#..................###.....<############",
+      "#...P......................<############",
+      "############^^^^^^^^^^^^^^^<############",
+      "########################################",
+      "########################################",
+      "########################################"
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 11,
+    "run": 5,
+    "collection": "run5",
+    "format": "compact",
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "Choose the pod\u2019s approach direction, then restore the bridge below the launch",
+    "worlds": [],
+    "tags": [
+      "pressure-pod",
+      "phase",
+      "blade",
+      "return-trajectory",
+      "dash-resource"
+    ],
+    "newMechanics": [],
+    "status": "route-proven",
+    "author": "Codex",
+    "humanReview": "Unreviewed; difficulty is an author estimate.",
+    "requiredEvents": [
+      "recoil",
+      "bell"
+    ],
+    "solution": "Jump and dash beneath the west overhang onto the small pressure-pod island. Jump past its right edge, then dash diagonally down-left back into the pod: it reverses that approach into an up-right throw and returns the dash. Spend the restored dash straight up through the now-open phase bridge. Cut upward at the bell near the apex to put the bridge back beneath you. The entire eastern gallery is then a safe walk out.",
+    "nearestExisting": "F34 uses a wallbounce and an aerial phase bell. This chamber instead makes the approach direction to a pressure pod and the parity of two successive dashes inseparable: the return launch must clear an island lip, spend a recovered dash through the bridge, then restore the bridge with the blade.",
+    "novelty": "The apparent destination is a low island directly beneath a bridge that cannot be reached from a normal dash. The solution first moves away from the exit, approaching the pressure pod from its far side so its recoil returns both useful direction and a fresh dash. The final blade input changes the same bridge just crossed, and the landing is seven tiles wide followed by the whole exit floor.",
+    "positiveChecks": [
+      {
+        "name": "Cut the bell two frames later",
+        "tape": [
+          [
+            32,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            14,
+            "rj"
+          ],
+          [
+            12,
+            "ldx"
+          ],
+          [
+            9,
+            "r"
+          ],
+          [
+            17,
+            "ux"
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 205,
+          "events": [
+            "jump",
+            "phase",
+            "dash",
+            "land",
+            "refill-dash",
+            "recoil",
+            "strike",
+            "bell",
+            "recoil-back",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "phase": 4,
+            "dash": 3,
+            "land": 2,
+            "refill-dash": 3,
+            "recoil": 1,
+            "strike": 1,
+            "bell": 1,
+            "recoil-back": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Approach the pod one frame later",
+        "tape": [
+          [
+            32,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            15,
+            "rj"
+          ],
+          [
+            12,
+            "ldx"
+          ],
+          [
+            9,
+            "r"
+          ],
+          [
+            15,
+            "ux"
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 206,
+          "events": [
+            "jump",
+            "phase",
+            "dash",
+            "land",
+            "refill-dash",
+            "recoil",
+            "strike",
+            "bell",
+            "recoil-back",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "phase": 4,
+            "dash": 3,
+            "land": 1,
+            "refill-dash": 3,
+            "recoil": 1,
+            "strike": 1,
+            "bell": 1,
+            "recoil-back": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Approach the pod one frame earlier",
+        "tape": [
+          [
+            32,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            13,
+            "rj"
+          ],
+          [
+            12,
+            "ldx"
+          ],
+          [
+            9,
+            "r"
+          ],
+          [
+            15,
+            "ux"
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 203,
+          "events": [
+            "jump",
+            "phase",
+            "dash",
+            "land",
+            "refill-dash",
+            "recoil",
+            "strike",
+            "bell",
+            "recoil-back",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "phase": 4,
+            "dash": 3,
+            "land": 1,
+            "refill-dash": 3,
+            "recoil": 1,
+            "strike": 1,
+            "bell": 1,
+            "recoil-back": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Skip the pressure reversal and dash straight up from the island",
+        "tape": [
+          [
+            32,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            15,
+            "j"
+          ],
+          [
+            16,
+            "ux"
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            100,
+            "rjg"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0,
+          "frames": 0,
+          "events": [
+            "jump",
+            "phase",
+            "dash",
+            "land",
+            "refill-dash",
+            "strike"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "phase": 2,
+            "dash": 2,
+            "land": 1,
+            "refill-dash": 2,
+            "strike": 1
+          }
+        }
+      },
+      {
+        "name": "Keep the launch but omit the bell cut",
+        "tape": [
+          [
+            32,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            14,
+            "rj"
+          ],
+          [
+            12,
+            "ldx"
+          ],
+          [
+            9,
+            "r"
+          ],
+          [
+            15,
+            "ux"
+          ],
+          [
+            1,
+            "u"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "jump",
+            "phase",
+            "dash",
+            "land",
+            "refill-dash",
+            "recoil",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "phase": 3,
+            "dash": 3,
+            "land": 1,
+            "refill-dash": 2,
+            "recoil": 1,
+            "death": 2,
+            "respawn": 1
+          }
+        }
+      },
+      {
+        "name": "Dash directly toward the east wall",
+        "tape": [
+          [
+            32,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            14,
+            "rj"
+          ],
+          [
+            20,
+            "urx"
+          ],
+          [
+            100,
+            "rjg"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "jump",
+            "phase",
+            "dash",
+            "land",
+            "refill-dash",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "phase": 2,
+            "dash": 2,
+            "land": 1,
+            "refill-dash": 1,
+            "death": 2,
+            "respawn": 1
+          }
+        }
+      }
+    ],
+    "approvedIngredients": [
+      "bank-f34",
+      "bank-b32"
+    ],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 203,
+      "events": [
+        "jump",
+        "phase",
+        "dash",
+        "land",
+        "refill-dash",
+        "recoil",
+        "strike",
+        "bell",
+        "recoil-back",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 2,
+        "phase": 4,
+        "dash": 3,
+        "land": 2,
+        "refill-dash": 3,
+        "recoil": 1,
+        "strike": 1,
+        "bell": 1,
+        "recoil-back": 1,
+        "exit": 1
+      }
+    },
+    "entrance": "Lower-west shelf, underneath the phase crossing.",
+    "exit": "Broad upper-east gallery.",
+    "endingForgiveness": "Seven-tile receiving bridge continues into a full safe exit gallery. The final bell cut and pressure-pod approach both tolerate several consecutive input timings."
+  },
+  "tape": [
+    [
+      32,
+      "r"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      12,
+      "rx"
+    ],
+    [
+      5,
+      "r"
+    ],
+    [
+      14,
+      "rj"
+    ],
+    [
+      12,
+      "ldx"
+    ],
+    [
+      9,
+      "r"
+    ],
+    [
+      15,
+      "ux"
+    ],
+    [
+      1,
+      "us"
+    ],
+    [
+      110,
+      "r"
+    ]
+  ]
+}

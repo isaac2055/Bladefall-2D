@@ -1,0 +1,536 @@
+{
+  "room": {
+    "id": "bank-b60",
+    "name": "Catch the Reply in Flight",
+    "palette": "sunspire",
+    "study": true,
+    "movement": "survive-2",
+    "aim8": true,
+    "exit": "right",
+    "lock": [
+      "portal"
+    ],
+    "map": [
+      "########################################",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#..........................#############",
+      "#..........................#############",
+      "#..........................#############",
+      "#..........................#############",
+      "#...P.....................<#############",
+      "############..............<#############",
+      "############..............<#############",
+      "############^^^^^^^^^^^^^^^#############",
+      "########################################"
+    ],
+    "hint": "Parries return a spent dash. Watch where the pulse will be when you leave the ledge.",
+    "question": "Can a passing attack become the missing landing?",
+    "foes": [
+      {
+        "kind": "spit",
+        "x": 33,
+        "y": 12,
+        "dir": [
+          -1,
+          0
+        ],
+        "every": 160,
+        "offset": 140,
+        "speed": 180
+      }
+    ],
+    "combat": {
+      "waitForMove": true,
+      "enemies": [],
+      "receivers": [
+        {
+          "id": "Reply",
+          "x": 245,
+          "y": 94
+        }
+      ],
+      "doors": [
+        {
+          "x": 296,
+          "y": 8,
+          "w": 8,
+          "h": 104,
+          "coils": [
+            "Reply"
+          ]
+        }
+      ]
+    }
+  },
+  "bank": {
+    "side": "base",
+    "batch": 14,
+    "run": 7,
+    "collection": "run7",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "difficulty": 3,
+    "role": "Airborne parry replaces a missing landing",
+    "worlds": [],
+    "tags": [
+      "parry",
+      "dash-budget",
+      "arrival-timing"
+    ],
+    "newMechanics": [],
+    "author": "Codex",
+    "humanReview": "Unreviewed candidate. Difficulty is an author estimate; no human ratings assigned.",
+    "learningFamily": "reply-and-cycle",
+    "lessonRole": "introduce",
+    "preparesFor": [
+      "bank-f61"
+    ],
+    "prerequisites": [],
+    "format": "compact",
+    "requiredEvents": [
+      "parry",
+      "receiver-lit",
+      "combat-gate"
+    ],
+    "solution": "Jump and dash up-right from the left ledge to meet the pulse above the pit. Parry right while airborne: the same reply restores the spent dash and opens the far door. Dash up-right again, catch the far wall and climb over its lip. Cut the emitter from the bank and recover from the weapon recoil before continuing east.",
+    "nearestExisting": "F28 replies during a carriage/portal trajectory. Here an ordinary dash spends the only airborne resource, and the projectile supplies the continuation in open flight.",
+    "novelty": "The hostile timing cue is simultaneously a refill and the key carried ahead of the knight.",
+    "entrance": "Left ledge; observe projectile from safe ground.",
+    "exit": "Raised east bank behind a ceiling-sealed projectile door.",
+    "positiveChecks": [
+      {
+        "name": "Parry two frames earlier",
+        "tape": [
+          [
+            30,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            3,
+            "r"
+          ],
+          [
+            10,
+            "rp"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "rgu"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 267,
+        "events": [
+          "enemy-shot",
+          "jump",
+          "dash",
+          "parry-ready",
+          "refill-dash",
+          "parry",
+          "receiver-lit",
+          "combat-gate",
+          "grab",
+          "climbhop",
+          "land",
+          "strike",
+          "enemy-defeat",
+          "exit"
+        ],
+        "eventCounts": {
+          "enemy-shot": 1,
+          "jump": 1,
+          "dash": 2,
+          "parry-ready": 1,
+          "refill-dash": 2,
+          "parry": 1,
+          "receiver-lit": 1,
+          "combat-gate": 1,
+          "grab": 1,
+          "climbhop": 1,
+          "land": 2,
+          "strike": 1,
+          "enemy-defeat": 1,
+          "exit": 1
+        }
+      },
+      {
+        "name": "Parry two frames later",
+        "tape": [
+          [
+            30,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            7,
+            "r"
+          ],
+          [
+            6,
+            "rp"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "rgu"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 267,
+        "events": [
+          "enemy-shot",
+          "jump",
+          "dash",
+          "parry-ready",
+          "refill-dash",
+          "parry",
+          "receiver-lit",
+          "combat-gate",
+          "grab",
+          "climbhop",
+          "land",
+          "strike",
+          "enemy-defeat",
+          "exit"
+        ],
+        "eventCounts": {
+          "enemy-shot": 1,
+          "jump": 1,
+          "dash": 2,
+          "parry-ready": 1,
+          "refill-dash": 2,
+          "parry": 1,
+          "receiver-lit": 1,
+          "combat-gate": 1,
+          "grab": 1,
+          "climbhop": 1,
+          "land": 2,
+          "strike": 1,
+          "enemy-defeat": 1,
+          "exit": 1
+        }
+      },
+      {
+        "name": "Jump two frames later",
+        "tape": [
+          [
+            32,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            8,
+            "rp"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "rgu"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 214,
+        "events": [
+          "enemy-shot",
+          "jump",
+          "dash",
+          "parry-ready",
+          "refill-dash",
+          "parry",
+          "receiver-lit",
+          "combat-gate",
+          "grab",
+          "climbhop",
+          "land",
+          "strike",
+          "exit"
+        ],
+        "eventCounts": {
+          "enemy-shot": 2,
+          "jump": 1,
+          "dash": 2,
+          "parry-ready": 1,
+          "refill-dash": 2,
+          "parry": 1,
+          "receiver-lit": 1,
+          "combat-gate": 1,
+          "grab": 1,
+          "climbhop": 1,
+          "land": 1,
+          "strike": 1,
+          "exit": 1
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Omit parry and use remaining movement",
+        "tape": [
+          [
+            30,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "rgu"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 3,
+        "frames": 0,
+        "events": [
+          "enemy-shot",
+          "jump",
+          "dash",
+          "death",
+          "respawn"
+        ],
+        "eventCounts": {
+          "enemy-shot": 3,
+          "jump": 1,
+          "dash": 1,
+          "death": 3,
+          "respawn": 3
+        }
+      },
+      {
+        "name": "Furthest shore ordinary jump dash and climb",
+        "tape": [
+          [
+            36,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            180,
+            "rgu"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 4,
+        "frames": 0,
+        "events": [
+          "enemy-shot",
+          "jump",
+          "dash",
+          "death",
+          "respawn",
+          "strike"
+        ],
+        "eventCounts": {
+          "enemy-shot": 4,
+          "jump": 1,
+          "dash": 1,
+          "death": 4,
+          "respawn": 3,
+          "strike": 1
+        }
+      }
+    ],
+    "timingCues": [
+      "The left-moving pulse is visible from the starting ledge; intercept its horizontal line in flight.",
+      "Parry while the pulse reaches the knight, then use the returned dash before falling below the far face."
+    ],
+    "routeProof": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 267,
+      "events": [
+        "enemy-shot",
+        "jump",
+        "dash",
+        "parry-ready",
+        "refill-dash",
+        "parry",
+        "receiver-lit",
+        "combat-gate",
+        "grab",
+        "climbhop",
+        "land",
+        "strike",
+        "enemy-defeat",
+        "exit"
+      ],
+      "eventCounts": {
+        "enemy-shot": 1,
+        "jump": 1,
+        "dash": 2,
+        "parry-ready": 1,
+        "refill-dash": 2,
+        "parry": 1,
+        "receiver-lit": 1,
+        "combat-gate": 1,
+        "grab": 1,
+        "climbhop": 1,
+        "land": 2,
+        "strike": 1,
+        "enemy-defeat": 1,
+        "exit": 1
+      }
+    },
+    "routeMovement": [
+      {
+        "type": "parry",
+        "frame": 62,
+        "x": 143,
+        "y": 98
+      }
+    ]
+  },
+  "tape": [
+    [
+      30,
+      "r"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      12,
+      "rux"
+    ],
+    [
+      5,
+      "r"
+    ],
+    [
+      8,
+      "rp"
+    ],
+    [
+      12,
+      "rux"
+    ],
+    [
+      100,
+      "rgu"
+    ],
+    [
+      1,
+      "rs"
+    ],
+    [
+      110,
+      "r"
+    ]
+  ]
+}

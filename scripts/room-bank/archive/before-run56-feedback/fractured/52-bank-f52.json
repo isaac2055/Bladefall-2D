@@ -1,0 +1,447 @@
+{
+  "room": {
+    "id": "bank-f52",
+    "name": "Put It on the Other Floor",
+    "palette": "inversion",
+    "study": true,
+    "movement": "survive-2",
+    "aim8": true,
+    "cols": 40,
+    "rows": 23,
+    "exit": "right",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "impulseSeeds": [
+      {
+        "id": "Uppercut",
+        "c": 10,
+        "r": 16
+      }
+    ],
+    "map": [
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "#########################...............",
+      "#.............vvvvvvvvvvv...............",
+      "#...........#...........................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#...........Q...........................",
+      "#...........Q.###########..............#",
+      "#.......P...Q.###########^^^^^^^^^^^^^^#",
+      "########################################",
+      "########################################",
+      "########################################"
+    ],
+    "hint": "Move the seed into the slit before turning gravity. The blade chooses the launch line.",
+    "question": "What height must the seed keep when the roof becomes your floor?"
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 12,
+    "run": 6,
+    "collection": "run6",
+    "format": "compact",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "difficulty": 4,
+    "role": "Set the seed’s height on one floor and launch from the other",
+    "worlds": [
+      28,
+      33,
+      37
+    ],
+    "tags": [
+      "gravity",
+      "impulse-seed",
+      "blade",
+      "launch-position",
+      "clearance"
+    ],
+    "newMechanics": [],
+    "author": "Codex",
+    "humanReview": "Unreviewed; difficulty is an author estimate.",
+    "requiredEvents": [
+      "impulse-prime",
+      "gravity",
+      "impulse-burst"
+    ],
+    "solution": "From the original floor, strike the seed upward into the narrow passage's absolute height. Dash through the prism to turn the room upside down. Jump left onto the small stable tooth beside the charged seed, then strike left while standing: the seed throws you right through the thorn-lined slit. The old floor briefly limits the arc overhead. Land on the broad far ceiling and walk out. The seed's position survives the gravity change; preparing it after the flip would move it in the wrong world direction.",
+    "nearestExisting": "B36 places a launch beside a portal, F36 revisits a seed from its other side, and B14 uses inversion to deliver cargo. Here gravity changes access to a seed that must retain the correct absolute height for a thorn-lined launch opening.",
+    "novelty": "Preparing the launch object and preparing the player use different floors. Inversion changes the approach without transporting the floating object to a new height; the earlier blade direction remains visible in the eventual launch clearance.",
+    "positiveChecks": [
+      {
+        "name": "Ten-frame extra rest before second strike",
+        "frames": 229,
+        "deaths": 0,
+        "tape": [
+          [
+            9,
+            "r"
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            6,
+            "l"
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Twenty-frame extra rest before second strike",
+        "frames": 239,
+        "deaths": 0,
+        "tape": [
+          [
+            9,
+            "r"
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            6,
+            "l"
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            45,
+            ""
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Approach one frame earlier",
+        "frames": 211,
+        "deaths": 0,
+        "tape": [
+          [
+            9,
+            "r"
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            6,
+            "l"
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            7,
+            "l"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ]
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Omit original upward seed cut",
+        "result": "No seed burst; fails to cross.",
+        "tape": [
+          [
+            9,
+            "r"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            6,
+            "l"
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Jump plus horizontal dash from the launch tooth",
+        "result": "Falls short into the central thorns.",
+        "tape": [
+          [
+            9,
+            "r"
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            6,
+            "l"
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            130,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Jump plus diagonal dash from the launch tooth",
+        "result": "Falls short into the central thorns.",
+        "tape": [
+          [
+            9,
+            "r"
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            6,
+            "l"
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            1,
+            "rdx"
+          ],
+          [
+            130,
+            "r"
+          ]
+        ]
+      }
+    ],
+    "endingForgiveness": "The second strike is performed from a stable foothold, not during a jump. Ten- and twenty-frame extra waits and a one-frame approach change finish without deaths. The 14-tile receiving ceiling supports a long safe walk to the exit; no late swing, dash or catch is required."
+  },
+  "tape": [
+    [
+      9,
+      "r"
+    ],
+    [
+      1,
+      "us"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      1,
+      "rx"
+    ],
+    [
+      50,
+      ""
+    ],
+    [
+      6,
+      "l"
+    ],
+    [
+      12,
+      "j"
+    ],
+    [
+      8,
+      "l"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      1,
+      "ls"
+    ],
+    [
+      110,
+      "r"
+    ]
+  ]
+}

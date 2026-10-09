@@ -1,0 +1,266 @@
+{
+  "room": {
+    "id": "bank-b30",
+    "name": "Make Your Own Shade",
+    "palette": "cliffs",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "map": [
+      "########################################",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#................O.....................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#.......................................",
+      "#..P....................................",
+      "#######......................O..........",
+      "#######>................U.........######",
+      "#######>..........................######",
+      "#######>..........................######",
+      "#######>..........................######",
+      "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#"
+    ],
+    "beams": [
+      {
+        "c": 24,
+        "r": 0,
+        "dir": "d"
+      }
+    ],
+    "hint": "Cut the empty frame into iron. The light stops at iron; the ring beyond it is lower.",
+    "question": "How does making shade change the route your body can take?"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 5,
+    "run": 1,
+    "acceptance": "banked",
+    "difficulty": 4,
+    "role": "solve",
+    "worlds": [
+      25,
+      34,
+      40
+    ],
+    "tags": [
+      "hook",
+      "mould",
+      "beam",
+      "blade",
+      "trajectory"
+    ],
+    "newMechanics": [],
+    "entrance": "Western takeoff over a thorn well.",
+    "exit": "Eastern landing beyond the sunbeam.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "hook",
+      "cast",
+      "unhook"
+    ],
+    "humanReview": "Fantastic; best Base room yet; a genuinely novel combination.",
+    "solution": "Jump and dash from the takeoff to catch the first ring. Pay out the chain while pumping toward the mould, then cut right to set it before reaching the beam. Release and slide around the new iron: it now blocks the body as well as the light. Catch the second, lower ring from underneath the mould and reel in through the low arc before releasing up toward the exit.",
+    "nearestExisting": "Cold Cast creates landing surfaces; Roof Underfoot supplies moving shelter. This room uses an aerial weapon cut to create permanent shade before the swing can cross a previously lethal column.",
+    "novelty": "One aerial cut removes a lethal column below the mould but simultaneously creates an obstruction where the outgoing swing wanted to pass. The knight must turn a blocked crossing into a downward release and low catch, then reverse the descent by actively shortening the second chain.",
+    "requiredEventCounts": {
+      "hook": 2,
+      "unhook": 2
+    },
+    "route": {
+      "frames": 179,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "dash",
+        "hook",
+        "strike",
+        "cast",
+        "unhook",
+        "land",
+        "refill-dash",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 2,
+        "dash": 1,
+        "hook": 2,
+        "strike": 1,
+        "cast": 1,
+        "unhook": 2,
+        "land": 1,
+        "refill-dash": 1,
+        "exit": 1
+      }
+    },
+    "shortcutChecks": [
+      {
+        "name": "Follow the same swing without casting the shade",
+        "tape": [
+          [
+            15,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            10,
+            "rx"
+          ],
+          [
+            26,
+            "rdg"
+          ],
+          [
+            1,
+            "rg"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            23,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            90,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "firstFailure": {
+            "type": "death",
+            "frame": 73,
+            "x": 192,
+            "y": 148,
+            "cause": "light",
+            "vx": 115.08888061468923,
+            "vy": 77.11419309853625,
+            "i": 72
+          }
+        }
+      },
+      {
+        "name": "Cast, but skip the low recovery catch",
+        "tape": [
+          [
+            15,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            10,
+            "rx"
+          ],
+          [
+            26,
+            "rdg"
+          ],
+          [
+            1,
+            "rsg"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            23,
+            "ru"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            90,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "firstFailure": {
+            "type": "death",
+            "frame": 101,
+            "x": 200,
+            "y": 180,
+            "cause": "spikes",
+            "vx": 90,
+            "vy": 160,
+            "i": 100
+          }
+        }
+      }
+    ],
+    "review": {
+      "decision": "banked",
+      "date": "2026-10-08",
+      "feedback": "Fantastic; best Base room yet; a genuinely novel combination.",
+      "numericRatings": "Not supplied"
+    }
+  },
+  "tape": [
+    [
+      15,
+      "r"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      10,
+      "rx"
+    ],
+    [
+      26,
+      "rdg"
+    ],
+    [
+      1,
+      "rsg"
+    ],
+    [
+      28,
+      "r"
+    ],
+    [
+      23,
+      "rug"
+    ],
+    [
+      1,
+      "rj"
+    ],
+    [
+      90,
+      "r"
+    ]
+  ]
+}

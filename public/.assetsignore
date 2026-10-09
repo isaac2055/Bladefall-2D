@@ -1,0 +1,4 @@
+serve.mjs
+*.bak
+*.orig
+*.map

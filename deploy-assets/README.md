@@ -6,19 +6,15 @@ installable phone app, because it ships a web app manifest and a service worker.
 
 ## Publish it to Netlify
 
-**Easiest — drag and drop:**
+This folder is the static game. **Online leaderboards and feedback also need the
+Netlify Function from the repository.** A drag-and-drop static upload alone cannot
+provide that server. Offline saves remain on the player's device until an API is available.
 
-1. Go to <https://app.netlify.com/drop>
-2. Drag this whole `netlify-deploy` folder onto the page. The source `public`
-   folder is also directly uploadable, with no build step; it includes `_headers`.
-3. Netlify gives you a URL like `https://your-site-name.netlify.app`. Done.
-
-To publish updates to the **same** site later, open that site in Netlify →
-**Deploys** tab → drag the freshly rebuilt folder onto the deploy area.
-
-**Or connect the project Git repo:** the root `netlify.toml` sets the publish
-directory to `public` with no build command. Leave the base directory at the
-repository root. The game's `_headers` file applies to either upload method.
+Deploy from the repository root using its `netlify.toml` and `netlify/functions`,
+with `public` as the publish directory. Run `./build-deploy.sh` locally first to
+prepare local submissions as a private function seed. See
+`docs/playtest/RELEASE-7.300.md` in the repository for data transfer and organizer exports.
+No deployment is performed by the build script.
 
 ## How you and friends install it on a phone
 

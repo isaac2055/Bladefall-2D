@@ -1,0 +1,1333 @@
+{
+  "room": {
+    "id": "bank-f33",
+    "name": "The Shield You Spend",
+    "palette": "gaol",
+    "movement": "survive-2",
+    "study": true,
+    "exit": "right",
+    "lock": [
+      "portal"
+    ],
+    "jailers": [
+      {
+        "x": 15,
+        "y": 19,
+        "dir": -1,
+        "turn": 0,
+        "keys": false
+      }
+    ],
+    "beams": [
+      {
+        "c": 39,
+        "r": 19,
+        "dir": "l"
+      }
+    ],
+    "map": [
+      "########################################",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.......vvvvvvvvvvvvvv................G#",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#.....................................G.",
+      "######......................############",
+      "#c....P................................#",
+      "##################.....................#",
+      "##################^^^^^^^^^^^^^^^^^^^^^#",
+      "########################################"
+    ],
+    "hint": "Parry, cut and retreat to the left shelf · Wavedash back above the beam; save the returned dash.",
+    "question": "When the shield is gone, where can you safely build the speed to cross its beam?"
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 8,
+    "run": 2,
+    "acceptance": "banked",
+    "difficulty": 4,
+    "role": "retreat to build the crossing",
+    "worlds": [
+      25,
+      31,
+      34
+    ],
+    "tags": [
+      "jailer",
+      "parry",
+      "wavedash",
+      "extended-hyper",
+      "beam",
+      "inaccessible-tally",
+      "retreat"
+    ],
+    "newMechanics": [],
+    "status": "route-proven",
+    "author": "Codex",
+    "entrance": "Western floor in the jailer’s beam shadow.",
+    "exit": "Raised eastern receiving shelf.",
+    "requiredEvents": [
+      "parry",
+      "jailer-fell",
+      "stone-lit",
+      "ultra",
+      "hyper"
+    ],
+    "solution": "Parry the shielded guard, then jump as you cut the staggered guard. His fall opens the beam onto the sealed tally. Dash up-left to the raised western shelf and land safely above the beam. Hop, dash down-right onto that shelf, and jump after the ground contact has returned the dash: the wavedash carries you low beneath the teeth and over the exposed beam. Spend the returned dash up-right into the receiving shelf, then walk out.",
+    "nearestExisting": "Replaces Below the Lip, which repeated the ordinary wallbounce idea. Existing jailer rooms use shields and lethal back attacks, and B31 selects pogo height. Here the living enemy is a temporary beam occluder, a reusable low-pogo support, a remote tally shutter, and the final one-use sideways launch.",
+    "novelty": "The successful player-discovered route becomes the preview: first destroy the shelter, then retreat to the only safe runway and spend its extended wavedash to cross the newly exposed beam. The retreat changes the guard fight into a launch setup.",
+    "positiveChecks": [
+      {
+        "name": "Runway hop held 4 frames",
+        "tape": [
+          [
+            38,
+            "r"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            10,
+            "p"
+          ],
+          [
+            1,
+            "js"
+          ],
+          [
+            7,
+            "j"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            33,
+            "l"
+          ],
+          [
+            4,
+            "j"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 252,
+          "events": [
+            "enemy-tell",
+            "parry-ready",
+            "jailer-thrust",
+            "parry",
+            "strike",
+            "jump",
+            "jailer-fell",
+            "stone-lit",
+            "gate-open",
+            "dash",
+            "land",
+            "refill-dash",
+            "ultra",
+            "hyper",
+            "exit"
+          ],
+          "eventCounts": {
+            "enemy-tell": 1,
+            "parry-ready": 1,
+            "jailer-thrust": 1,
+            "parry": 1,
+            "strike": 1,
+            "jump": 2,
+            "jailer-fell": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "dash": 3,
+            "land": 3,
+            "refill-dash": 3,
+            "ultra": 1,
+            "hyper": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Runway hop held 6 frames",
+        "tape": [
+          [
+            38,
+            "r"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            10,
+            "p"
+          ],
+          [
+            1,
+            "js"
+          ],
+          [
+            7,
+            "j"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            33,
+            "l"
+          ],
+          [
+            6,
+            "j"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 255,
+          "events": [
+            "enemy-tell",
+            "parry-ready",
+            "jailer-thrust",
+            "parry",
+            "strike",
+            "jump",
+            "jailer-fell",
+            "stone-lit",
+            "gate-open",
+            "dash",
+            "land",
+            "refill-dash",
+            "ultra",
+            "hyper",
+            "exit"
+          ],
+          "eventCounts": {
+            "enemy-tell": 1,
+            "parry-ready": 1,
+            "jailer-thrust": 1,
+            "parry": 1,
+            "strike": 1,
+            "jump": 2,
+            "jailer-fell": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "dash": 3,
+            "land": 3,
+            "refill-dash": 3,
+            "ultra": 1,
+            "hyper": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Runway hop held 8 frames",
+        "tape": [
+          [
+            38,
+            "r"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            10,
+            "p"
+          ],
+          [
+            1,
+            "js"
+          ],
+          [
+            7,
+            "j"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            33,
+            "l"
+          ],
+          [
+            8,
+            "j"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 257,
+          "events": [
+            "enemy-tell",
+            "parry-ready",
+            "jailer-thrust",
+            "parry",
+            "strike",
+            "jump",
+            "jailer-fell",
+            "stone-lit",
+            "gate-open",
+            "dash",
+            "land",
+            "refill-dash",
+            "ultra",
+            "hyper",
+            "exit"
+          ],
+          "eventCounts": {
+            "enemy-tell": 1,
+            "parry-ready": 1,
+            "jailer-thrust": 1,
+            "parry": 1,
+            "strike": 1,
+            "jump": 2,
+            "jailer-fell": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "dash": 3,
+            "land": 3,
+            "refill-dash": 3,
+            "ultra": 1,
+            "hyper": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Runway hop held 10 frames",
+        "tape": [
+          [
+            38,
+            "r"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            10,
+            "p"
+          ],
+          [
+            1,
+            "js"
+          ],
+          [
+            7,
+            "j"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            33,
+            "l"
+          ],
+          [
+            10,
+            "j"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 260,
+          "events": [
+            "enemy-tell",
+            "parry-ready",
+            "jailer-thrust",
+            "parry",
+            "strike",
+            "jump",
+            "jailer-fell",
+            "stone-lit",
+            "gate-open",
+            "dash",
+            "land",
+            "refill-dash",
+            "ultra",
+            "hyper",
+            "exit"
+          ],
+          "eventCounts": {
+            "enemy-tell": 1,
+            "parry-ready": 1,
+            "jailer-thrust": 1,
+            "parry": 1,
+            "strike": 1,
+            "jump": 2,
+            "jailer-fell": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "dash": 3,
+            "land": 3,
+            "refill-dash": 3,
+            "ultra": 1,
+            "hyper": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Final dash 14 frames after held-jump segment",
+        "tape": [
+          [
+            38,
+            "r"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            10,
+            "p"
+          ],
+          [
+            1,
+            "js"
+          ],
+          [
+            7,
+            "j"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            33,
+            "l"
+          ],
+          [
+            6,
+            "j"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 256,
+          "events": [
+            "enemy-tell",
+            "parry-ready",
+            "jailer-thrust",
+            "parry",
+            "strike",
+            "jump",
+            "jailer-fell",
+            "stone-lit",
+            "gate-open",
+            "dash",
+            "land",
+            "refill-dash",
+            "ultra",
+            "hyper",
+            "exit"
+          ],
+          "eventCounts": {
+            "enemy-tell": 1,
+            "parry-ready": 1,
+            "jailer-thrust": 1,
+            "parry": 1,
+            "strike": 1,
+            "jump": 2,
+            "jailer-fell": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "dash": 3,
+            "land": 3,
+            "refill-dash": 3,
+            "ultra": 1,
+            "hyper": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Final dash 15 frames after held-jump segment",
+        "tape": [
+          [
+            38,
+            "r"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            10,
+            "p"
+          ],
+          [
+            1,
+            "js"
+          ],
+          [
+            7,
+            "j"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            33,
+            "l"
+          ],
+          [
+            6,
+            "j"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 255,
+          "events": [
+            "enemy-tell",
+            "parry-ready",
+            "jailer-thrust",
+            "parry",
+            "strike",
+            "jump",
+            "jailer-fell",
+            "stone-lit",
+            "gate-open",
+            "dash",
+            "land",
+            "refill-dash",
+            "ultra",
+            "hyper",
+            "exit"
+          ],
+          "eventCounts": {
+            "enemy-tell": 1,
+            "parry-ready": 1,
+            "jailer-thrust": 1,
+            "parry": 1,
+            "strike": 1,
+            "jump": 2,
+            "jailer-fell": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "dash": 3,
+            "land": 3,
+            "refill-dash": 3,
+            "ultra": 1,
+            "hyper": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Final dash 17 frames after held-jump segment",
+        "tape": [
+          [
+            38,
+            "r"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            10,
+            "p"
+          ],
+          [
+            1,
+            "js"
+          ],
+          [
+            7,
+            "j"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            33,
+            "l"
+          ],
+          [
+            6,
+            "j"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            17,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 254,
+          "events": [
+            "enemy-tell",
+            "parry-ready",
+            "jailer-thrust",
+            "parry",
+            "strike",
+            "jump",
+            "jailer-fell",
+            "stone-lit",
+            "gate-open",
+            "dash",
+            "land",
+            "refill-dash",
+            "ultra",
+            "hyper",
+            "exit"
+          ],
+          "eventCounts": {
+            "enemy-tell": 1,
+            "parry-ready": 1,
+            "jailer-thrust": 1,
+            "parry": 1,
+            "strike": 1,
+            "jump": 2,
+            "jailer-fell": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "dash": 3,
+            "land": 3,
+            "refill-dash": 3,
+            "ultra": 1,
+            "hyper": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Use a lofted pogo under the teeth",
+        "tape": [
+          [
+            30,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            32,
+            "j"
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "jump",
+            "enemy-tell",
+            "jailer-thrust",
+            "strike",
+            "pogo-loft",
+            "enemy-pogo",
+            "death",
+            "respawn",
+            "dash",
+            "land",
+            "refill-dash"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "enemy-tell": 2,
+            "jailer-thrust": 2,
+            "strike": 1,
+            "pogo-loft": 1,
+            "enemy-pogo": 1,
+            "death": 2,
+            "respawn": 2,
+            "dash": 1,
+            "land": 1,
+            "refill-dash": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 71,
+            "x": 139,
+            "y": 96,
+            "cause": "spikes",
+            "vx": 0,
+            "vy": -105,
+            "i": 70
+          }
+        }
+      },
+      {
+        "name": "Keep the jailer alive and try to leave after the low rebound",
+        "tape": [
+          [
+            30,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            32,
+            ""
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "jump",
+            "enemy-tell",
+            "jailer-thrust",
+            "strike",
+            "pogo-low",
+            "enemy-pogo",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "enemy-tell": 2,
+            "jailer-thrust": 2,
+            "strike": 1,
+            "pogo-low": 1,
+            "enemy-pogo": 1,
+            "death": 2,
+            "respawn": 2
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 96,
+            "x": 141,
+            "y": 154,
+            "cause": "light",
+            "vx": 54.16666666666667,
+            "vy": 160,
+            "i": 95
+          }
+        }
+      },
+      {
+        "name": "Spend the shield but omit the escape dash",
+        "tape": [
+          [
+            30,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            32,
+            ""
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "jump",
+            "enemy-tell",
+            "jailer-thrust",
+            "strike",
+            "pogo-low",
+            "enemy-pogo",
+            "jailer-fell",
+            "stone-lit",
+            "gate-open",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "enemy-tell": 2,
+            "jailer-thrust": 2,
+            "strike": 2,
+            "pogo-low": 1,
+            "enemy-pogo": 1,
+            "jailer-fell": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "death": 2,
+            "respawn": 2
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 111,
+            "x": 181,
+            "y": 153,
+            "cause": "light",
+            "vx": 116.33333333333321,
+            "vy": 160,
+            "i": 110
+          }
+        }
+      },
+      {
+        "name": "Try to light the sealed tally with a floor-level sword",
+        "tape": [
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            90,
+            "l"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "s"
+          ],
+          [
+            40,
+            ""
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0,
+          "frames": 0,
+          "events": [
+            "strike"
+          ],
+          "eventCounts": {
+            "strike": 2
+          },
+          "firstFailure": null
+        }
+      }
+    ],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 255,
+      "events": [
+        "enemy-tell",
+        "parry-ready",
+        "jailer-thrust",
+        "parry",
+        "strike",
+        "jump",
+        "jailer-fell",
+        "stone-lit",
+        "gate-open",
+        "dash",
+        "land",
+        "refill-dash",
+        "ultra",
+        "hyper",
+        "exit"
+      ],
+      "eventCounts": {
+        "enemy-tell": 1,
+        "parry-ready": 1,
+        "jailer-thrust": 1,
+        "parry": 1,
+        "strike": 1,
+        "jump": 2,
+        "jailer-fell": 1,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "dash": 3,
+        "land": 3,
+        "refill-dash": 3,
+        "ultra": 1,
+        "hyper": 1,
+        "exit": 1
+      },
+      "firstFailure": null
+    },
+    "designNotes": "Geometry and entity settings are unchanged. The recorded intended route follows the player’s parry/retreat/wavedash/final-dash solution. A jump-cut after the parry is included because parry staggers the guard and the blade removes its beam-blocking body. The previous back-cut route remains an allowed alternative; it no longer defines the preview. No hidden technique gate was added.",
+    "humanReview": "User: “great!” The player-preferred parry, retreat, wavedash and final dash route is now intended. Qualitative approval recorded; numeric ratings remain unmeasured.",
+    "hintTeaching": "Parry, then jump-cut. Retreat up-left and land; the short hop/down-right dash must touch the shelf long enough to refill before jumping again. Keep that dash for the eastern shelf.",
+    "revision": {
+      "date": "2026-10-08",
+      "archive": "scripts/room-bank/archive/runs-2-3-before-review/fractured/33-bank-f33.json"
+    },
+    "userFeedback": {
+      "date": "2026-10-08",
+      "comment": "Wallbounce already existed; this felt redundant. Replace with a different problem."
+    },
+    "allowedAlternatives": [
+      {
+        "name": "Ordinary jump instead of low pogo",
+        "tape": [
+          [
+            30,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 169,
+          "events": [
+            "jump",
+            "enemy-tell",
+            "jailer-thrust",
+            "strike",
+            "jailer-fell",
+            "stone-lit",
+            "gate-open",
+            "dash",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "enemy-tell": 1,
+            "jailer-thrust": 1,
+            "strike": 1,
+            "jailer-fell": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "dash": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        },
+        "meaning": "Skips the helmet rebound but still requires the one-time back cut to remove the shade, light the inaccessible tally, and launch toward the exit. Accepted by design; no user approval implied."
+      },
+      {
+        "name": "Previous back-cut departure",
+        "tape": [
+          [
+            30,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            32,
+            ""
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "route": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 203,
+          "events": [
+            "jump",
+            "enemy-tell",
+            "jailer-thrust",
+            "strike",
+            "pogo-low",
+            "enemy-pogo",
+            "jailer-fell",
+            "stone-lit",
+            "gate-open",
+            "dash",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "enemy-tell": 1,
+            "jailer-thrust": 1,
+            "strike": 2,
+            "pogo-low": 1,
+            "enemy-pogo": 1,
+            "jailer-fell": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "dash": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        },
+        "solution": "The jailer blocks a horizontal beam, keeping the starting floor safe but hiding a tally in its low western duct. Jump over his shield and use a low downward cut on the helm; the low rebound stays beneath the thorn ceiling while letting you settle on his back side. Turn left and cut his back as you descend. That one cut destroys the beam shield, lights the inaccessible tally, and recoils you rightward above the now-open beam. Spend the returned dash diagonally right before falling to beam height, then land on the far shelf.",
+        "meaning": "Legal alternate retained in the unchanged room; the player-preferred retreat and wavedash route is now canonical."
+      }
+    ],
+    "review": {
+      "date": "2026-10-08",
+      "decision": "banked",
+      "comment": "Great! Preferred parry, dash back to the left platform, wavedash and final dash over the previous intended route."
+    },
+    "feedbackHistory": [
+      {
+        "date": "2026-10-08",
+        "decision": "banked",
+        "comment": "Great! Preferred parry, dash back to the left platform, wavedash and final dash over the previous intended route."
+      }
+    ]
+  },
+  "tape": [
+    [
+      38,
+      "r"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      10,
+      "p"
+    ],
+    [
+      1,
+      "js"
+    ],
+    [
+      7,
+      "j"
+    ],
+    [
+      12,
+      "lux"
+    ],
+    [
+      33,
+      "l"
+    ],
+    [
+      6,
+      "j"
+    ],
+    [
+      12,
+      "rdx"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      16,
+      "r"
+    ],
+    [
+      12,
+      "rux"
+    ],
+    [
+      100,
+      "r"
+    ]
+  ]
+}

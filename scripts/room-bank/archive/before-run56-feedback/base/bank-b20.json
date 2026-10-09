@@ -1,0 +1,270 @@
+{
+  "room": {
+    "id": "bank-b20",
+    "name": "The Door You Need Closed",
+    "hint": "Lit tallies open their doors permanently. Heat slabs cycle through solid, molten, and glass. Solid stone stops light.",
+    "question": "When can the high stone stop underneath the light?",
+    "map": [
+      "########################################",
+      "#>............................<#########",
+      "#>............................<#########",
+      "#>..................KK....E...<#########",
+      "#>................GGKK....E...<#########",
+      "#>................GGMMMMMMMMMM<#########",
+      "#>................GG..........<#########",
+      "#>................GG..........<#########",
+      "#>................GG..........<#########",
+      "#>................GG..........<#########",
+      "#>................GG..........<#########",
+      "#>................GG..........<#########",
+      "#>................GG..........<#########",
+      "#>................GG..........<#########",
+      "#>................GG..........<#########",
+      "#>................GG..........<#########",
+      "#>................GG..........<#########",
+      "#>........c.......GG..........<#########",
+      "#>................GG................G..#",
+      "#.................GG................G...",
+      "#..P..............GG................G...",
+      "########################################",
+      "########################################"
+    ],
+    "palette": "path",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "beams": [
+      {
+        "c": 25,
+        "r": 0,
+        "dir": "d"
+      }
+    ],
+    "slabs": [
+      {
+        "stone": 80,
+        "molten": 70,
+        "glass": 150,
+        "offset": 0
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 3,
+    "acceptance": "revised",
+    "difficulty": 4,
+    "role": "solve",
+    "worlds": [
+      3,
+      11
+    ],
+    "tags": [
+      "gate",
+      "sliding-stone",
+      "beam",
+      "climb",
+      "order-of-operations",
+      "heat-slab",
+      "timed-stop"
+    ],
+    "newMechanics": [],
+    "entrance": "Bottom-left below a tempting tally.",
+    "exit": "Bottom-right, beyond the beam and tally door.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "stone-hit",
+      "stone-stop",
+      "gate-open",
+      "slab-stone"
+    ],
+    "solution": "Leave the tally dark and climb its closed door. Wait safely on the high gate perch until the cycling stop is solid, then dash the high stone right so the temporary stop parks it beneath the beam. The stone stays parked after the stop changes phase. Return left and light the tally, removing the ladder and opening the lower exit; cross beneath the newly positioned shade.",
+    "nearestExisting": "The Useful Ceiling makes normally adverse geometry useful from another side. B13 manufactures a stopper for a returning stone. Here the ordinary objective is postponed because its closed door is the only ladder to the face of a high stone; that stone must shade the lower route before the ladder is removed.",
+    "novelty": "Opening a door is initially harmful. Use its closed body to create a separate, persistent change at the far side, then accept the open route after losing that body. No carried cargo or special exit-use flags.",
+    "userFeedback": {
+      "date": "2026-10-07",
+      "comment": "Make this harder and more interesting, then show it again for review; not banked."
+    },
+    "revisionNotes": "Replaced the permanent right-hand stop with a visible cycling heat stop and moved the permanent wall farther away. The stone must reach the stop while it is solid to park beneath the beam. An early/open-phase push overshoots the only shading position. The closed tally gate remains the safe waiting perch and necessary ladder.",
+    "route": {
+      "frames": 591,
+      "deaths": 0,
+      "events": [
+        "slab-molten",
+        "jump",
+        "dash",
+        "grab",
+        "slab-glass",
+        "climbhop",
+        "land",
+        "refill-dash",
+        "slab-stone",
+        "stone-hit",
+        "stone-stop",
+        "stone-lit",
+        "gate-open",
+        "exit"
+      ],
+      "movement": "Ordinary jump, dash, climb and device actions; no advanced momentum."
+    },
+    "shortcutChecks": [
+      {
+        "name": "Push the high stone while the temporary stop is glass",
+        "tape": [
+          [
+            85,
+            "r"
+          ],
+          [
+            20,
+            "ju"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            18,
+            "u"
+          ],
+          [
+            110,
+            "rgu"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            180,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "cargoLost": false,
+          "stoneStops": [
+            [
+              240,
+              32
+            ]
+          ],
+          "failure": "light"
+        }
+      },
+      {
+        "name": "Light the tally first, then try the permanent-wall approach",
+        "tape": [
+          [
+            37,
+            "r"
+          ],
+          [
+            20,
+            "j"
+          ],
+          [
+            44,
+            "r"
+          ],
+          [
+            20,
+            "j"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            18,
+            "u"
+          ],
+          [
+            130,
+            "rgu"
+          ],
+          [
+            180,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "stoneMoved": false
+        }
+      }
+    ],
+    "bypassReview": {
+      "scope": "Focused wrong-timing route and obvious shortcut review; not an exhaustive search.",
+      "result": "The wrong phase parks the stone past the beam, so the lower crossing still burns. Tally-first play removes the only ladder before the stone can be moved."
+    },
+    "archivedBeforeRevision": "scripts/room-bank/archive/batch-03-before-review/base/bank-b20.json"
+  },
+  "tape": [
+    [
+      85,
+      "r"
+    ],
+    [
+      20,
+      "ju"
+    ],
+    [
+      1,
+      "ux"
+    ],
+    [
+      18,
+      "u"
+    ],
+    [
+      110,
+      "rgu"
+    ],
+    [
+      90,
+      ""
+    ],
+    [
+      1,
+      "rx"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      40,
+      "l"
+    ],
+    [
+      40,
+      ""
+    ],
+    [
+      161,
+      "r"
+    ]
+  ]
+}

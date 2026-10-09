@@ -1,0 +1,936 @@
+{
+  "room": {
+    "id": "bank-b36",
+    "name": "Plant the Exit",
+    "palette": "lantern",
+    "study": true,
+    "dashes": 0,
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "exit": "right",
+    "impulseSeeds": [
+      {
+        "id": "A",
+        "c": 12,
+        "r": 18
+      }
+    ],
+    "map": [
+      "########################################",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#...................<###################",
+      "##############......<###################",
+      "#...................<###################",
+      "#...................<###################",
+      "#...................<###################",
+      "#........P..........<###################",
+      "####################<###################",
+      "########################################",
+      "########################################"
+    ],
+    "hint": "No dash · First cut moves; a fresh cut while gold launches you away.",
+    "question": "Where must a launch grow so its height is useful?",
+    "aim8": true
+  },
+  "bank": {
+    "side": "base",
+    "batch": 7,
+    "run": 3,
+    "acceptance": "candidate",
+    "difficulty": 3,
+    "role": "prepared impulse",
+    "worlds": [
+      8,
+      18
+    ],
+    "tags": [
+      "impulse-seed",
+      "blade",
+      "positioning"
+    ],
+    "newMechanics": [
+      "impulse-seed"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "impulse-prime",
+      "impulse-ready",
+      "impulse-burst"
+    ],
+    "humanReview": "Candidate: no user scores assigned.",
+    "entrance": "Low west canopy tunnel beside the seed.",
+    "exit": "High east balcony beyond a thorned face.",
+    "solution": "With no dash, side-cut the seed out from under the low roof. Follow into the open, then jump past its centre and cut down from above and slightly east. The prepared origin gives a rising rightward launch onto the thorn-fronted balcony. Staying on the original west side sends the burst back toward the low tunnel.",
+    "nearestExisting": "Ordinary b pods reward an immediate downward cut from their fixed location. This seed first changes its launch origin and charges; the useful launch must be prepared outside the enclosing roof.",
+    "novelty": "The first contact is positioning only, with no rebound or refill. A separate approach sets the launch vector, and an otherwise harmless roof makes the original position unsuitable.",
+    "positiveChecks": [
+      {
+        "name": "Top-cut timing -3 frames from preview",
+        "tape": [
+          [
+            6,
+            "r"
+          ],
+          [
+            1,
+            "s"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 168,
+          "events": [
+            "strike",
+            "impulse-prime",
+            "impulse-ready",
+            "jump",
+            "impulse-burst",
+            "land",
+            "impulse-reset",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 2,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "jump": 1,
+            "impulse-burst": 1,
+            "land": 1,
+            "impulse-reset": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Top-cut timing -2 frames from preview",
+        "tape": [
+          [
+            6,
+            "r"
+          ],
+          [
+            1,
+            "s"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 163,
+          "events": [
+            "strike",
+            "impulse-prime",
+            "impulse-ready",
+            "jump",
+            "impulse-burst",
+            "land",
+            "impulse-reset",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 2,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "jump": 1,
+            "impulse-burst": 1,
+            "land": 1,
+            "impulse-reset": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Top-cut timing -1 frames from preview",
+        "tape": [
+          [
+            6,
+            "r"
+          ],
+          [
+            1,
+            "s"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            9,
+            "rj"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 161,
+          "events": [
+            "strike",
+            "impulse-prime",
+            "impulse-ready",
+            "jump",
+            "impulse-burst",
+            "land",
+            "impulse-reset",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 2,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "jump": 1,
+            "impulse-burst": 1,
+            "land": 1,
+            "impulse-reset": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Top-cut timing 1 frames from preview",
+        "tape": [
+          [
+            6,
+            "r"
+          ],
+          [
+            1,
+            "s"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            11,
+            "rj"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 153,
+          "events": [
+            "strike",
+            "impulse-prime",
+            "impulse-ready",
+            "jump",
+            "impulse-burst",
+            "land",
+            "impulse-reset",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 2,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "jump": 1,
+            "impulse-burst": 1,
+            "land": 1,
+            "impulse-reset": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Top-cut timing 2 frames from preview",
+        "tape": [
+          [
+            6,
+            "r"
+          ],
+          [
+            1,
+            "s"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 146,
+          "events": [
+            "strike",
+            "impulse-prime",
+            "impulse-ready",
+            "jump",
+            "impulse-burst",
+            "land",
+            "impulse-reset",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 2,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "jump": 1,
+            "impulse-burst": 1,
+            "land": 1,
+            "impulse-reset": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Top-cut timing 3 frames from preview",
+        "tape": [
+          [
+            6,
+            "r"
+          ],
+          [
+            1,
+            "s"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            13,
+            "rj"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 146,
+          "events": [
+            "strike",
+            "impulse-prime",
+            "impulse-ready",
+            "jump",
+            "impulse-burst",
+            "land",
+            "impulse-reset",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 2,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "jump": 1,
+            "impulse-burst": 1,
+            "land": 1,
+            "impulse-reset": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Top-cut timing 4 frames from preview",
+        "tape": [
+          [
+            6,
+            "r"
+          ],
+          [
+            1,
+            "s"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            14,
+            "rj"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 141,
+          "events": [
+            "strike",
+            "impulse-prime",
+            "impulse-ready",
+            "jump",
+            "impulse-burst",
+            "land",
+            "impulse-reset",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 2,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "jump": 1,
+            "impulse-burst": 1,
+            "land": 1,
+            "impulse-reset": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Pause 10 frames after priming before approaching",
+        "tape": [
+          [
+            6,
+            "r"
+          ],
+          [
+            1,
+            "s"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            19,
+            "r"
+          ],
+          [
+            10,
+            "rj"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 165,
+          "events": [
+            "strike",
+            "impulse-prime",
+            "impulse-ready",
+            "jump",
+            "impulse-burst",
+            "land",
+            "impulse-reset",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 2,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "jump": 1,
+            "impulse-burst": 1,
+            "land": 1,
+            "impulse-reset": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Pause 25 frames after priming before approaching",
+        "tape": [
+          [
+            6,
+            "r"
+          ],
+          [
+            1,
+            "s"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            19,
+            "r"
+          ],
+          [
+            10,
+            "rj"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 180,
+          "events": [
+            "strike",
+            "impulse-prime",
+            "impulse-ready",
+            "jump",
+            "impulse-burst",
+            "land",
+            "impulse-reset",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 2,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "jump": 1,
+            "impulse-burst": 1,
+            "land": 1,
+            "impulse-reset": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Pause 60 frames after priming before approaching",
+        "tape": [
+          [
+            6,
+            "r"
+          ],
+          [
+            1,
+            "s"
+          ],
+          [
+            60,
+            ""
+          ],
+          [
+            19,
+            "r"
+          ],
+          [
+            10,
+            "rj"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 215,
+          "events": [
+            "strike",
+            "impulse-prime",
+            "impulse-ready",
+            "jump",
+            "impulse-burst",
+            "land",
+            "impulse-reset",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 2,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "jump": 1,
+            "impulse-burst": 1,
+            "land": 1,
+            "impulse-reset": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Pause 95 frames after priming before approaching",
+        "tape": [
+          [
+            6,
+            "r"
+          ],
+          [
+            1,
+            "s"
+          ],
+          [
+            95,
+            ""
+          ],
+          [
+            19,
+            "r"
+          ],
+          [
+            10,
+            "rj"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 250,
+          "events": [
+            "strike",
+            "impulse-prime",
+            "impulse-ready",
+            "jump",
+            "impulse-burst",
+            "land",
+            "impulse-reset",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 2,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "jump": 1,
+            "impulse-burst": 1,
+            "land": 1,
+            "impulse-reset": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Approach and top-cut without moving the seed",
+        "tape": [
+          [
+            6,
+            "r"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            10,
+            "rj"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            90,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 156,
+          "events": [
+            "jump",
+            "strike",
+            "land",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "strike": 1,
+            "land": 1,
+            "death": 1,
+            "respawn": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 58,
+            "x": 163,
+            "y": 155,
+            "cause": "spikes",
+            "vx": 90,
+            "vy": 0,
+            "i": 57
+          }
+        }
+      },
+      {
+        "name": "Burst from the same west side as the priming cut",
+        "tape": [
+          [
+            6,
+            "r"
+          ],
+          [
+            1,
+            "s"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 164,
+          "events": [
+            "strike",
+            "impulse-prime",
+            "impulse-ready",
+            "impulse-burst",
+            "impulse-reset",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "strike": 2,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "impulse-burst": 1,
+            "impulse-reset": 1,
+            "death": 1,
+            "respawn": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 116,
+            "x": 162,
+            "y": 155,
+            "cause": "spikes",
+            "vx": 90,
+            "vy": 0,
+            "i": 115
+          }
+        }
+      },
+      {
+        "name": "Ordinary jump without spending the charged seed",
+        "tape": [
+          [
+            6,
+            "r"
+          ],
+          [
+            1,
+            "s"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            90,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 180,
+          "events": [
+            "strike",
+            "impulse-prime",
+            "impulse-ready",
+            "jump",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "strike": 1,
+            "impulse-prime": 1,
+            "impulse-ready": 1,
+            "jump": 1,
+            "death": 1,
+            "respawn": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 58,
+            "x": 163,
+            "y": 130,
+            "cause": "spikes",
+            "vx": 90,
+            "vy": -45,
+            "i": 57
+          }
+        }
+      }
+    ],
+    "designNotes": "The exit was extended west before saving the final route so eight consecutive downward-cut timings work. The first strike changes position only; a second cut from the wrong side produces a valid but unhelpful launch. Pauses up to 95 frames after priming retain a successful route. Uses the existing eight-direction blade option, no Run 2 movement profile.",
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 154,
+      "events": [
+        "strike",
+        "impulse-prime",
+        "impulse-ready",
+        "jump",
+        "impulse-burst",
+        "land",
+        "impulse-reset",
+        "exit"
+      ],
+      "eventCounts": {
+        "strike": 2,
+        "impulse-prime": 1,
+        "impulse-ready": 1,
+        "jump": 1,
+        "impulse-burst": 1,
+        "land": 1,
+        "impulse-reset": 1,
+        "exit": 1
+      },
+      "firstFailure": null
+    }
+  },
+  "tape": [
+    [
+      6,
+      "r"
+    ],
+    [
+      1,
+      "s"
+    ],
+    [
+      18,
+      "r"
+    ],
+    [
+      10,
+      "rj"
+    ],
+    [
+      1,
+      "ds"
+    ],
+    [
+      150,
+      "r"
+    ]
+  ]
+}

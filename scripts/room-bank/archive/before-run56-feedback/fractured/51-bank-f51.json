@@ -1,0 +1,624 @@
+{
+  "room": {
+    "id": "bank-f51",
+    "name": "Wait for the Arrow",
+    "palette": "sunspire",
+    "study": true,
+    "movement": "survive-2",
+    "cols": 40,
+    "rows": 23,
+    "aim8": true,
+    "exit": "right",
+    "hint": "Fall through the arrow; land on the bridge. Its tally feeds a shot, but the bridge blocks it.",
+    "question": "Which part must change before the same route can carry you back?",
+    "map": [
+      "########################################",
+      "#..............###.....................#",
+      "#..............###.....................#",
+      "#..............###.....................#",
+      "#..............###.....................#",
+      "#..............###.....................#",
+      "#..............###.....................#",
+      "#..............###..####...............#",
+      "#..............###..#..#................",
+      "#..............###..#..#................",
+      "#..............###..#..#................",
+      "#..............###......................",
+      "#..............###......................",
+      "#..............###......................",
+      "#..............###......................",
+      "#..............###......................",
+      "##################......................",
+      "##.............###..........c...........",
+      "##%............###AAAAAAAAAAAA##########",
+      "##%.PG.........###...........<##########",
+      "##################^^^%%^^^^^^<##########",
+      "############################.<##########",
+      "########################################"
+    ],
+    "portalMode": "fixed",
+    "portals": [
+      {
+        "color": "blue",
+        "c": 2,
+        "r": 18,
+        "face": "r"
+      },
+      {
+        "color": "orange",
+        "c": 21,
+        "r": 20,
+        "face": "u"
+      }
+    ],
+    "vectorRefills": [
+      {
+        "c": 21,
+        "r": 15,
+        "dir": "down"
+      }
+    ],
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "foes": [
+      {
+        "kind": "spit",
+        "x": 10,
+        "y": 19,
+        "dir": [
+          -1,
+          0
+        ],
+        "every": 80,
+        "speed": 150
+      }
+    ],
+    "combat": {
+      "waitForMove": true,
+      "enemies": [],
+      "receivers": [
+        {
+          "id": "Release",
+          "x": 172,
+          "y": 64
+        }
+      ],
+      "doors": [
+        {
+          "x": 280,
+          "y": 8,
+          "w": 8,
+          "h": 136,
+          "coils": [
+            "Release"
+          ]
+        }
+      ]
+    }
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 12,
+    "run": 6,
+    "collection": "run6",
+    "format": "compact",
+    "acceptance": "candidate",
+    "difficulty": 3,
+    "role": "Restore the bridge to land, then withdraw it to free the shot",
+    "worlds": [],
+    "tags": [
+      "directional-refill",
+      "portal",
+      "phase",
+      "falling-recovery",
+      "projectile",
+      "opposing-roles"
+    ],
+    "newMechanics": [],
+    "status": "route-proven",
+    "author": "Codex",
+    "humanReview": "Unreviewed; difficulty is an author estimate.",
+    "requiredEvents": [
+      "portal-pass",
+      "vector-refill",
+      "stone-lit",
+      "gate-open",
+      "receiver-lit",
+      "combat-gate"
+    ],
+    "solution": "Make a short hop in the low western throat, then dash left into the portal while airborne. The outlet turns the remaining dash upward through the floor your dash removed. Let the rise finish: the down-arrow crystal rejects the ascent and restores the dash on the fall. Dash right after that recovery to restore the phase bridge under you. Touch its visible tally: this opens the gun feed below, but the bridge now blocks the shot. Jump and dash off the bridge onto the broad eastern bank. Removing your old landing lets the converted portal shot reach the sealed receiver and open the last door; walk out when it retracts.",
+    "nearestExisting": "F47 also restores an aerial phase landing; F13 spends a useful surface to open a later optical route. This room combines a direction-sensitive falling recovery with an opposing second use of that exact phase bridge: it must first catch the knight, then disappear as a projectile shutter. The bridge tally physically opens the shot feed only after arrival, so simply leaving the bridge absent cannot solve both jobs.",
+    "novelty": "Recovering on the fall and restoring the bridge is only the arrival problem. The same portal subsequently carries a shot, and the useful landing has become the last obstruction in its path. The correct second use of the bridge is to leave it behind while withdrawing it; the final bank is safe while the shot completes its route.",
+    "positiveChecks": [
+      {
+        "name": "Recover and leave two frames earlier",
+        "tape": [
+          [
+            4,
+            "j"
+          ],
+          [
+            7,
+            "lx"
+          ],
+          [
+            17,
+            ""
+          ],
+          [
+            15,
+            "rx"
+          ],
+          [
+            13,
+            "r"
+          ],
+          [
+            4,
+            "rj"
+          ],
+          [
+            15,
+            "rx"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 171,
+          "events": [
+            "jump",
+            "phase",
+            "dash",
+            "portal-pass",
+            "refill-dash",
+            "refill",
+            "vector-refill",
+            "stone-lit",
+            "gate-open",
+            "land",
+            "enemy-shot",
+            "receiver-lit",
+            "combat-gate",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "phase": 3,
+            "dash": 3,
+            "portal-pass": 2,
+            "refill-dash": 3,
+            "refill": 1,
+            "vector-refill": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "land": 2,
+            "enemy-shot": 2,
+            "receiver-lit": 1,
+            "combat-gate": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Recover and leave two frames later",
+        "tape": [
+          [
+            4,
+            "j"
+          ],
+          [
+            7,
+            "lx"
+          ],
+          [
+            21,
+            ""
+          ],
+          [
+            15,
+            "rx"
+          ],
+          [
+            13,
+            "r"
+          ],
+          [
+            4,
+            "rj"
+          ],
+          [
+            15,
+            "rx"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 171,
+          "events": [
+            "jump",
+            "phase",
+            "dash",
+            "portal-pass",
+            "refill-dash",
+            "refill",
+            "vector-refill",
+            "stone-lit",
+            "gate-open",
+            "land",
+            "enemy-shot",
+            "receiver-lit",
+            "combat-gate",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "phase": 3,
+            "dash": 3,
+            "portal-pass": 2,
+            "refill-dash": 3,
+            "refill": 1,
+            "vector-refill": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "land": 2,
+            "enemy-shot": 2,
+            "receiver-lit": 1,
+            "combat-gate": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Longer ordinary jump off the bridge",
+        "tape": [
+          [
+            4,
+            "j"
+          ],
+          [
+            7,
+            "lx"
+          ],
+          [
+            19,
+            ""
+          ],
+          [
+            15,
+            "rx"
+          ],
+          [
+            13,
+            "r"
+          ],
+          [
+            6,
+            "rj"
+          ],
+          [
+            15,
+            "rx"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 171,
+          "events": [
+            "jump",
+            "phase",
+            "dash",
+            "portal-pass",
+            "refill-dash",
+            "refill",
+            "vector-refill",
+            "stone-lit",
+            "gate-open",
+            "land",
+            "enemy-shot",
+            "receiver-lit",
+            "combat-gate",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "phase": 3,
+            "dash": 3,
+            "portal-pass": 2,
+            "refill-dash": 3,
+            "refill": 1,
+            "vector-refill": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "land": 2,
+            "enemy-shot": 2,
+            "receiver-lit": 1,
+            "combat-gate": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Spend before the falling recovery",
+        "tape": [
+          [
+            4,
+            "j"
+          ],
+          [
+            7,
+            "lx"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            15,
+            "rx"
+          ],
+          [
+            13,
+            "r"
+          ],
+          [
+            4,
+            "rj"
+          ],
+          [
+            15,
+            "rx"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 203,
+          "events": [
+            "jump",
+            "phase",
+            "dash",
+            "portal-pass",
+            "death",
+            "respawn",
+            "enemy-shot",
+            "enemy-hit"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "phase": 1,
+            "dash": 1,
+            "portal-pass": 1,
+            "death": 1,
+            "respawn": 1,
+            "enemy-shot": 1,
+            "enemy-hit": 1
+          }
+        }
+      },
+      {
+        "name": "Leave the bridge solid after touching its tally",
+        "tape": [
+          [
+            4,
+            "j"
+          ],
+          [
+            7,
+            "lx"
+          ],
+          [
+            19,
+            ""
+          ],
+          [
+            15,
+            "rx"
+          ],
+          [
+            180,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0,
+          "frames": 225,
+          "events": [
+            "jump",
+            "phase",
+            "dash",
+            "portal-pass",
+            "refill-dash",
+            "refill",
+            "vector-refill",
+            "stone-lit",
+            "gate-open",
+            "land",
+            "enemy-shot",
+            "enemy-hit",
+            "refill-back"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "phase": 2,
+            "dash": 2,
+            "portal-pass": 3,
+            "refill-dash": 2,
+            "refill": 1,
+            "vector-refill": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "land": 1,
+            "enemy-shot": 2,
+            "enemy-hit": 2,
+            "refill-back": 1
+          }
+        }
+      },
+      {
+        "name": "Grounded portal entry omits the useful ascent",
+        "tape": [
+          [
+            11,
+            "lx"
+          ],
+          [
+            19,
+            ""
+          ],
+          [
+            15,
+            "rx"
+          ],
+          [
+            13,
+            "r"
+          ],
+          [
+            4,
+            "rj"
+          ],
+          [
+            15,
+            "rx"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 217,
+          "events": [
+            "phase",
+            "dash",
+            "portal-pass",
+            "refill-dash",
+            "jump",
+            "enemy-shot",
+            "death",
+            "respawn",
+            "enemy-hit"
+          ],
+          "eventCounts": {
+            "phase": 2,
+            "dash": 2,
+            "portal-pass": 2,
+            "refill-dash": 2,
+            "jump": 1,
+            "enemy-shot": 2,
+            "death": 1,
+            "respawn": 1,
+            "enemy-hit": 1
+          }
+        }
+      }
+    ],
+    "approvedIngredients": [
+      "bank-b32",
+      "bank-f34"
+    ],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 171,
+      "events": [
+        "jump",
+        "phase",
+        "dash",
+        "portal-pass",
+        "refill-dash",
+        "refill",
+        "vector-refill",
+        "stone-lit",
+        "gate-open",
+        "land",
+        "enemy-shot",
+        "receiver-lit",
+        "combat-gate",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 2,
+        "phase": 3,
+        "dash": 3,
+        "portal-pass": 2,
+        "refill-dash": 3,
+        "refill": 1,
+        "vector-refill": 1,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "land": 2,
+        "enemy-shot": 2,
+        "receiver-lit": 1,
+        "combat-gate": 1,
+        "exit": 1
+      }
+    },
+    "entrance": "Low western portal throat.",
+    "exit": "Broad eastern gallery after the phase floor.",
+    "endingForgiveness": "The last dash leaves the old bridge for a broad solid bank. The receiver fires repeatedly and there is no final aim window or catch; wait safely at the door if the next shot has not arrived.",
+    "requiredEventCounts": {
+      "portal-pass": 2
+    }
+  },
+  "tape": [
+    [
+      4,
+      "j"
+    ],
+    [
+      7,
+      "lx"
+    ],
+    [
+      19,
+      ""
+    ],
+    [
+      15,
+      "rx"
+    ],
+    [
+      13,
+      "r"
+    ],
+    [
+      4,
+      "rj"
+    ],
+    [
+      15,
+      "rx"
+    ],
+    [
+      140,
+      "r"
+    ]
+  ]
+}

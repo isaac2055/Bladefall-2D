@@ -1,0 +1,157 @@
+{
+  "room": {
+    "id": "bank-b10",
+    "name": "One Switch at a Time",
+    "hint": "Feet move the lettered lift; dashes change the coloured blocks. Save the dash for amber.",
+    "question": "Two familiar verbs control separate machines, and using one too early erases a landing.",
+    "map": [
+      "########################################",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.....................................##",
+      "#...............................BBB...##",
+      "#...............................BBB...##",
+      "#.....................................##",
+      "#.........................AAA.........##",
+      "#.........................AAA.........##",
+      "#.....................................##",
+      "#.....................................##",
+      "#.....................................##",
+      "#.....................................##",
+      "#.....................................##",
+      "#.P...................................##",
+      "########..............................##",
+      "########..............................##",
+      "########^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^##"
+    ],
+    "palette": "causeway",
+    "study": true,
+    "lock": [
+      "strike",
+      "parry",
+      "portal"
+    ],
+    "stepRelays": [
+      {
+        "id": "L",
+        "duration": 54,
+        "platforms": [
+          {
+            "c": 9,
+            "r": 18,
+            "w": 5,
+            "h": 1,
+            "to": [
+              9,
+              -6
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 1,
+    "difficulty": 4,
+    "role": "combination",
+    "worlds": [
+      6,
+      20,
+      32
+    ],
+    "tags": [
+      "step-relay",
+      "phase-platforms",
+      "diagonal-lift",
+      "dash-preservation"
+    ],
+    "newMechanics": [
+      "step-relay"
+    ],
+    "solution": "Ride the diagonal relay up and right. Jump onto the still-solid blue shelf without dashing; from there spend a dash to activate the amber shelf and reach the final lip.",
+    "entrance": "Left bank, spawn tile 2/19",
+    "exit": "Right edge, open rows 4–7",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "step-relay",
+      "phase"
+    ],
+    "route": {
+      "frames": 159,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "step-relay",
+        "land",
+        "phase",
+        "dash",
+        "refill-dash",
+        "exit"
+      ],
+      "movement": "ordinary jump/dash/climb; no super, hyper, ultra or wallbounce",
+      "eventCounts": {
+        "jump": 3,
+        "step-relay": 1,
+        "land": 3,
+        "phase": 1,
+        "dash": 1,
+        "refill-dash": 1,
+        "exit": 1
+      }
+    },
+    "routeNotes": "The blue shelf is a rest for the patient route. The saved faster route leaves the rising relay early, inherits its lift speed, and activates amber just before settling on blue. Both use ordinary movement rather than the Fractured momentum techniques."
+  },
+  "tape": [
+    [
+      20,
+      "ru"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      12,
+      "r"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      5,
+      "rux"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      12,
+      "r"
+    ]
+  ]
+}

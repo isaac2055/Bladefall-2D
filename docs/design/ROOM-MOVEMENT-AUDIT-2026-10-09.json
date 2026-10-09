@@ -1,0 +1,588 @@
+{
+  "scope": "The 16 delivered Run5/Run6 author routes before the 9 October feedback. Presence shows use in that tape, not necessity; absence does not prove the engine lacks a move. Wavedashes log hyper/ultra, not a distinct wavedash event.",
+  "sets": [
+    {
+      "run": 5,
+      "rooms": 8,
+      "families": {
+        "dashLaunch": [],
+        "wallbounce": [
+          "bank-f50"
+        ],
+        "controlledPogo": [
+          "bank-f48",
+          "bank-f49"
+        ],
+        "cargoDashCatch": [],
+        "parry": [
+          "bank-f48"
+        ],
+        "movingHook": [],
+        "anyHook": [],
+        "portal": []
+      },
+      "pathSweepers": []
+    },
+    {
+      "run": 6,
+      "rooms": 8,
+      "families": {
+        "dashLaunch": [],
+        "wallbounce": [
+          "bank-f53"
+        ],
+        "controlledPogo": [],
+        "cargoDashCatch": [],
+        "parry": [
+          "bank-b52"
+        ],
+        "movingHook": [],
+        "anyHook": [],
+        "portal": [
+          "bank-b50",
+          "bank-f51",
+          "bank-f54"
+        ]
+      },
+      "pathSweepers": []
+    },
+    {
+      "run": "both",
+      "rooms": 16,
+      "families": {
+        "dashLaunch": [],
+        "wallbounce": [
+          "bank-f50",
+          "bank-f53"
+        ],
+        "controlledPogo": [
+          "bank-f48",
+          "bank-f49"
+        ],
+        "cargoDashCatch": [],
+        "parry": [
+          "bank-b52",
+          "bank-f48"
+        ],
+        "movingHook": [],
+        "anyHook": [],
+        "portal": [
+          "bank-b50",
+          "bank-f51",
+          "bank-f54"
+        ]
+      },
+      "pathSweepers": []
+    }
+  ],
+  "rooms": [
+    {
+      "id": "bank-b46",
+      "run": 5,
+      "side": "base",
+      "format": "compact",
+      "movement": "default",
+      "events": {
+        "boost": 1,
+        "jump": 2,
+        "switch-low": 1,
+        "feather": 1,
+        "feather-jump": 1,
+        "cart-land": 1,
+        "cart-bump": 1,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "land": 1,
+        "exit": 1
+      },
+      "hasPathSweepers": false,
+      "tags": [
+        "cart",
+        "track-fork",
+        "feather",
+        "beam",
+        "separate-routes"
+      ]
+    },
+    {
+      "id": "bank-b47",
+      "run": 5,
+      "side": "base",
+      "format": "compact",
+      "movement": "default",
+      "events": {
+        "jump": 2,
+        "step-relay": 2,
+        "land": 2,
+        "strike": 1,
+        "mirror": 1,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "exit": 1
+      },
+      "hasPathSweepers": false,
+      "tags": [
+        "step-relay",
+        "mirror",
+        "beam",
+        "return-route",
+        "remote-shutter"
+      ]
+    },
+    {
+      "id": "bank-b48",
+      "run": 5,
+      "side": "base",
+      "format": "superroom",
+      "movement": "default",
+      "events": {
+        "boost": 2,
+        "switch-high": 1,
+        "cart-land": 3,
+        "strike": 2,
+        "freeze": 1,
+        "condenser": 1,
+        "jump": 3,
+        "feather": 1,
+        "feather-jump": 1,
+        "cart-bump": 2,
+        "mirror": 1,
+        "stone-lit": 1,
+        "gate-open": 2,
+        "feather-back": 1,
+        "thaw": 1,
+        "land": 3,
+        "stone-hit": 1,
+        "refill-dash": 2,
+        "dash": 1,
+        "exit": 1
+      },
+      "hasPathSweepers": false,
+      "tags": [
+        "cart",
+        "track-fork",
+        "freeze",
+        "beam",
+        "return-route"
+      ]
+    },
+    {
+      "id": "bank-b49",
+      "run": 5,
+      "side": "base",
+      "format": "superroom",
+      "movement": "default",
+      "events": {
+        "recoil-load": 2,
+        "recoil-release": 2,
+        "jump": 5,
+        "recoil-jump": 2,
+        "step-relay": 2,
+        "land": 8,
+        "grab": 1,
+        "climbhop": 1,
+        "strike": 2,
+        "hinge-turn": 1,
+        "stone-lit": 2,
+        "mirror": 1,
+        "gate-open": 1,
+        "exit": 1
+      },
+      "hasPathSweepers": false,
+      "tags": [
+        "recoil-platform",
+        "step-relay",
+        "hinge",
+        "beam",
+        "return-route"
+      ]
+    },
+    {
+      "id": "bank-b50",
+      "run": 6,
+      "side": "base",
+      "format": "compact",
+      "movement": "default",
+      "events": {
+        "portal-open": 1,
+        "pickup": 1,
+        "portal-pass": 1,
+        "plate": 2,
+        "held-open": 4,
+        "land": 2,
+        "held-close": 2,
+        "portal-close": 1,
+        "throw": 1,
+        "jump": 1,
+        "lantern-land": 1,
+        "exit": 1
+      },
+      "hasPathSweepers": false,
+      "tags": [
+        "portal",
+        "grill",
+        "conveyor",
+        "lantern",
+        "pressure-plate",
+        "state-reversal"
+      ]
+    },
+    {
+      "id": "bank-b51",
+      "run": 6,
+      "side": "base",
+      "format": "compact",
+      "movement": "default",
+      "events": {
+        "strike": 3,
+        "freeze": 1,
+        "condenser": 1,
+        "impulse-prime": 1,
+        "impulse-ready": 1,
+        "jump": 1,
+        "thaw": 1,
+        "impulse-burst": 1,
+        "splash": 1,
+        "land": 1,
+        "impulse-reset": 1,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "exit": 1
+      },
+      "hasPathSweepers": false,
+      "tags": [
+        "freeze",
+        "watch-light",
+        "impulse-seed",
+        "shelter"
+      ]
+    },
+    {
+      "id": "bank-b52",
+      "run": 6,
+      "side": "base",
+      "format": "superroom",
+      "movement": "default",
+      "events": {
+        "enemy-shot": 5,
+        "moving-carrier-stop": 1,
+        "parry-ready": 1,
+        "parry": 1,
+        "glimpse": 1,
+        "land": 5,
+        "receiver-lit": 1,
+        "combat-gate": 2,
+        "moving-hook-turn": 1,
+        "jump": 3,
+        "strike": 2,
+        "anvil": 3,
+        "cast": 2,
+        "exit": 1
+      },
+      "hasPathSweepers": false,
+      "tags": [
+        "wind",
+        "returned-shot",
+        "mould",
+        "watch-light",
+        "moving-hook",
+        "shared-return",
+        "anvil"
+      ]
+    },
+    {
+      "id": "bank-b53",
+      "run": 6,
+      "side": "base",
+      "format": "superroom",
+      "movement": "default",
+      "events": {
+        "land": 8,
+        "splash": 1,
+        "dash": 1,
+        "stone-hit": 1,
+        "stone-stop": 1,
+        "grab": 1,
+        "climbhop": 1,
+        "refill-dash": 1,
+        "jump": 4,
+        "strike": 2,
+        "hinge-turn": 1,
+        "anvil": 2,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "exit": 1
+      },
+      "hasPathSweepers": false,
+      "tags": [
+        "tide",
+        "float",
+        "slide-stone",
+        "hinge",
+        "anvil",
+        "return-route"
+      ]
+    },
+    {
+      "id": "bank-f47",
+      "run": 5,
+      "side": "fractured",
+      "format": "compact",
+      "movement": "survive-2",
+      "events": {
+        "jump": 2,
+        "phase": 4,
+        "dash": 3,
+        "land": 2,
+        "refill-dash": 3,
+        "recoil": 1,
+        "strike": 1,
+        "bell": 1,
+        "recoil-back": 1,
+        "exit": 1
+      },
+      "hasPathSweepers": false,
+      "tags": [
+        "pressure-pod",
+        "phase",
+        "blade",
+        "return-trajectory",
+        "dash-resource"
+      ]
+    },
+    {
+      "id": "bank-f48",
+      "run": 5,
+      "side": "fractured",
+      "format": "compact",
+      "movement": "survive-2",
+      "events": {
+        "enemy-tell": 3,
+        "breach": 2,
+        "enemy-hit": 3,
+        "strike": 2,
+        "hinge-turn": 1,
+        "grab": 2,
+        "climbhop": 2,
+        "dash": 2,
+        "land": 6,
+        "refill-dash": 2,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "jump": 3,
+        "parry-ready": 1,
+        "parry": 1,
+        "pogo-loft": 1,
+        "enemy-pogo": 1,
+        "exit": 1
+      },
+      "hasPathSweepers": false,
+      "tags": [
+        "ram",
+        "breach",
+        "hinge",
+        "enemy-relocation",
+        "pogo",
+        "return-route"
+      ]
+    },
+    {
+      "id": "bank-f49",
+      "run": 5,
+      "side": "fractured",
+      "format": "superroom",
+      "movement": "survive-2",
+      "events": {
+        "fault-crack": 1,
+        "fault-fall": 92,
+        "jump": 6,
+        "dash": 5,
+        "land": 6,
+        "refill-dash": 5,
+        "stone-lit": 2,
+        "gate-open": 1,
+        "strike": 4,
+        "pogo-loft": 2,
+        "pod": 2,
+        "feather": 1,
+        "feather-jump": 1,
+        "anvil": 2,
+        "feather-back": 1,
+        "exit": 1
+      },
+      "hasPathSweepers": false,
+      "tags": [
+        "fault",
+        "anvil",
+        "controlled-pogo",
+        "feather",
+        "return-route",
+        "changing-ceiling",
+        "shared-crack"
+      ]
+    },
+    {
+      "id": "bank-f50",
+      "run": 5,
+      "side": "fractured",
+      "format": "superroom",
+      "movement": "survive-2",
+      "events": {
+        "plate": 5,
+        "held-open": 2,
+        "land": 7,
+        "held-close": 2,
+        "oren-hold": 1,
+        "stone-lit": 1,
+        "gate-open": 2,
+        "jump": 5,
+        "oren-go": 1,
+        "recoil-load": 1,
+        "recoil-release": 1,
+        "recoil-jump": 1,
+        "dash": 3,
+        "wallbounce": 1,
+        "late-wallbounce": 1,
+        "refill-dash": 3,
+        "grab": 1,
+        "climbhop": 1,
+        "exit": 1
+      },
+      "hasPathSweepers": false,
+      "tags": [
+        "companion",
+        "held-door",
+        "recoil-platform",
+        "wallbounce",
+        "return-route"
+      ]
+    },
+    {
+      "id": "bank-f51",
+      "run": 6,
+      "side": "fractured",
+      "format": "compact",
+      "movement": "survive-2",
+      "events": {
+        "jump": 2,
+        "phase": 3,
+        "dash": 3,
+        "portal-pass": 2,
+        "refill-dash": 3,
+        "refill": 1,
+        "vector-refill": 1,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "land": 2,
+        "enemy-shot": 2,
+        "receiver-lit": 1,
+        "combat-gate": 1,
+        "exit": 1
+      },
+      "hasPathSweepers": false,
+      "tags": [
+        "directional-refill",
+        "portal",
+        "phase",
+        "falling-recovery",
+        "projectile",
+        "opposing-roles"
+      ]
+    },
+    {
+      "id": "bank-f52",
+      "run": 6,
+      "side": "fractured",
+      "format": "compact",
+      "movement": "survive-2",
+      "events": {
+        "strike": 2,
+        "impulse-prime": 1,
+        "impulse-ready": 1,
+        "dash": 1,
+        "gravity": 1,
+        "land": 3,
+        "refill-dash": 1,
+        "jump": 1,
+        "impulse-burst": 1,
+        "impulse-reset": 1,
+        "exit": 1
+      },
+      "hasPathSweepers": false,
+      "tags": [
+        "gravity",
+        "impulse-seed",
+        "blade",
+        "launch-position",
+        "clearance"
+      ]
+    },
+    {
+      "id": "bank-f53",
+      "run": 6,
+      "side": "fractured",
+      "format": "superroom",
+      "movement": "survive-2",
+      "events": {
+        "pickup": 2,
+        "throw": 1,
+        "clasp-catch": 1,
+        "strike": 1,
+        "freeze": 1,
+        "condenser": 1,
+        "grab": 2,
+        "climbhop": 2,
+        "land": 6,
+        "jump": 5,
+        "dash": 4,
+        "recoil-load": 1,
+        "refill-dash": 4,
+        "recoil-release": 1,
+        "recoil-jump": 1,
+        "wallbounce": 1,
+        "clasp-take": 1,
+        "exit": 1
+      },
+      "hasPathSweepers": false,
+      "tags": [
+        "cargo-routing",
+        "water-current",
+        "freeze",
+        "recoil-platform",
+        "wallbounce",
+        "lantern-shade",
+        "opposing-roles"
+      ]
+    },
+    {
+      "id": "bank-f54",
+      "run": 6,
+      "side": "fractured",
+      "format": "superroom",
+      "movement": "survive-2",
+      "events": {
+        "portal-open": 2,
+        "moving-carrier-stop": 1,
+        "land": 4,
+        "enemy-shot": 5,
+        "jump": 2,
+        "portal-pass": 5,
+        "grab": 1,
+        "climbhop": 1,
+        "receiver-lit": 1,
+        "combat-gate": 1,
+        "moving-hook-turn": 1,
+        "enemy-hit": 1,
+        "exit": 1
+      },
+      "hasPathSweepers": false,
+      "tags": [
+        "portal",
+        "projectile",
+        "moving-carrier",
+        "fall-momentum",
+        "shared-outlet"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,804 @@
+{
+  "room": {
+    "id": "bank-b48",
+    "name": "The Train Comes Back Empty",
+    "palette": "foundry",
+    "study": true,
+    "dashes": 1,
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "map": [
+      "####################################################################################################",
+      "#.G................................................................................................#",
+      "#.G................................................................................................#",
+      "#.G................................................................................................#",
+      "#.G................................................................................................#",
+      "#.G................................................................................................#",
+      "#.G................................................................................................#",
+      "#.G................................................................................................#",
+      "#.G.............................................................../..............................\\.#",
+      "#.G................................................................................................#",
+      "#.G.............................................................................................#.##",
+      "#.G..............................................................................................c.#",
+      "#.G.............................................................................................#.##",
+      "#.G................................................................................................#",
+      "#.G................................................................................................#",
+      "#.G............................................................................................../.#",
+      "#.G................................................................................................#",
+      "#.G...................................................................................##########...#",
+      "#.G................................................................................................#",
+      "#.G......................................................................f.........................#",
+      "#.G................................................................................................#",
+      "#.G................................................................................................#",
+      "#.G..................................................................n.............................#",
+      "#.G............................---GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-----------.......................#",
+      "#.G................................................................................................#",
+      "..G..........................................................................................##....#",
+      "..G.P........................................................................................##....#",
+      "..G.CC......................................................................wwwwwwwwwwwwwwwww##....#",
+      "###########-------)-----k-.........................................................................#",
+      "###########........................................................................................#",
+      "###########........................................................................................#",
+      "###########........................................................................................#",
+      "###########........................................................................................#",
+      "###########{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{({{{{{{{{{{-#",
+      "####################################################################################################",
+      "####################################################################################################"
+    ],
+    "hint": "Freeze before the water. The corner is a trap; reverse the train from its safe eastern face.",
+    "question": "When opening the home door also removes your outgoing track, where must the same train go next?",
+    "exit": "left",
+    "cols": 100,
+    "rows": 36,
+    "thaw": 180,
+    "beams": [
+      {
+        "c": 99,
+        "r": 15,
+        "dir": "l"
+      },
+      {
+        "c": 10,
+        "r": 32,
+        "dir": "r"
+      },
+      {
+        "c": 97,
+        "r": 28,
+        "dir": "d"
+      },
+      {
+        "c": 98,
+        "r": 28,
+        "dir": "d"
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 13,
+    "run": 5,
+    "collection": "run5",
+    "format": "superroom",
+    "acceptance": "banked",
+    "status": "route-proven",
+    "difficulty": 4,
+    "role": "Send one train out high and back low after opening the road",
+    "worlds": [
+      12,
+      16,
+      20
+    ],
+    "tags": [
+      "cart",
+      "track-fork",
+      "freeze",
+      "beam",
+      "return-route"
+    ],
+    "newMechanics": [],
+    "author": "Codex",
+    "humanReview": "User approved banking after the cart timing and exit bypass fixes. Revised route and original shortcut regressions verified; numeric human ratings remain unmeasured.",
+    "requiredEvents": [
+      "switch-high",
+      "condenser",
+      "feather-jump",
+      "mirror",
+      "stone-lit",
+      "thaw",
+      "stone-hit",
+      "boost"
+    ],
+    "solution": "Stay seated and lean through the fork onto the high line. Strike the condenser before the train reaches the water, then take the feather flight to the observation gallery. Turn its mirror to light the receiver: this opens the sealed home exit and removes the outgoing track. Let the frozen track thaw and the train settle in the safe western part of the lower vault. Step off the gallery and steer back left once below its edge, staying west of the two permanent corner beams. Dash the train west from its eastern face and follow its moving shadow below the missing outbound bridge. Jump and dash up at the western rail end, then walk through the open home door.",
+    "nearestExisting": "F18 is the nearest cart/thaw/shadow room, and B29 sends a movable shield ahead. This switchyard adds a piloted high fork, an optical latch that physically removes the outgoing rail, access to the train’s far face after thaw, and an explicit reversal that shades the lower return.",
+    "novelty": "Unlike F18, the cart has a piloted high-fork journey, a separate thawed arrival, and an intentional reversal from the newly accessible eastern face. The optical completion removes the outgoing bridge, so the return must be redrawn below it; the same train creates that lower shadow.",
+    "approvedIngredients": [
+      "bank-f18",
+      "bank-b29",
+      "bank-b13"
+    ],
+    "positiveChecks": [
+      {
+        "name": "Cut the condenser one frame earlier",
+        "tape": [
+          [
+            136,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            15,
+            "l"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            150,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            52,
+            ""
+          ],
+          [
+            18,
+            "l"
+          ],
+          [
+            1,
+            "lx"
+          ],
+          [
+            220,
+            "l"
+          ],
+          [
+            8,
+            "j"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            165,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 853
+        }
+      },
+      {
+        "name": "Cut the condenser one frame later",
+        "tape": [
+          [
+            138,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            15,
+            "l"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            150,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            52,
+            ""
+          ],
+          [
+            18,
+            "l"
+          ],
+          [
+            1,
+            "lx"
+          ],
+          [
+            220,
+            "l"
+          ],
+          [
+            8,
+            "j"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            165,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 855
+        }
+      },
+      {
+        "name": "Pause four frames longer after clearing the gallery edge",
+        "tape": [
+          [
+            137,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            15,
+            "l"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            150,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            19,
+            ""
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            52,
+            ""
+          ],
+          [
+            18,
+            "l"
+          ],
+          [
+            1,
+            "lx"
+          ],
+          [
+            220,
+            "l"
+          ],
+          [
+            8,
+            "j"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            165,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 858
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Jump over the starting door",
+        "tape": [
+          [
+            1,
+            "l"
+          ],
+          [
+            25,
+            "lj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0
+        },
+        "firstFailure": "Exit remains closed."
+      },
+      {
+        "name": "Miss the freeze, board the cart in its corner, and ride it home",
+        "tape": [
+          [
+            138,
+            "r"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            14,
+            "rj"
+          ],
+          [
+            21,
+            "l"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            150,
+            ""
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            48,
+            ""
+          ],
+          [
+            100,
+            "l"
+          ],
+          [
+            22,
+            "rj"
+          ],
+          [
+            62,
+            "l"
+          ],
+          [
+            8,
+            "j"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            200,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1
+        },
+        "firstFailure": "light"
+      }
+    ],
+    "interconnection": "One train occupies both routes in opposite directions. The upper optical latch opens the home exit and simultaneously removes the outward rail; freezing temporarily catches the train, thawing gives access to its east face, and reversing it creates the return shadow below the missing bridge.",
+    "superroom": {
+      "screenAreas": 3.4782608695652173,
+      "stages": [
+        "Pilot the high fork while the outgoing bridge is solid",
+        "Freeze the receiving pool and take the feather route to the optical gallery",
+        "Open the exit and remove the outgoing bridge",
+        "Reverse the thawed train to shade the lower return"
+      ],
+      "routeExtent": {
+        "minX": -6,
+        "maxX": 780,
+        "minY": 125,
+        "maxY": 253
+      }
+    },
+    "route": {
+      "frames": 854,
+      "deaths": 0,
+      "events": [
+        "boost",
+        "switch-high",
+        "cart-land",
+        "strike",
+        "freeze",
+        "condenser",
+        "jump",
+        "feather",
+        "feather-jump",
+        "cart-bump",
+        "mirror",
+        "stone-lit",
+        "gate-open",
+        "feather-back",
+        "thaw",
+        "land",
+        "stone-hit",
+        "refill-dash",
+        "dash",
+        "exit"
+      ],
+      "eventCounts": {
+        "boost": 2,
+        "switch-high": 1,
+        "cart-land": 3,
+        "strike": 2,
+        "freeze": 1,
+        "condenser": 1,
+        "jump": 3,
+        "feather": 1,
+        "feather-jump": 1,
+        "cart-bump": 2,
+        "mirror": 1,
+        "stone-lit": 1,
+        "gate-open": 2,
+        "feather-back": 1,
+        "thaw": 1,
+        "land": 3,
+        "stone-hit": 1,
+        "refill-dash": 2,
+        "dash": 1,
+        "exit": 1
+      },
+      "movement": "Ordinary movement and device momentum; no advanced dash tech."
+    },
+    "requiredEventCounts": {
+      "gate-open": 2,
+      "boost": 2
+    },
+    "designNotes": "Two independent downward beams cover both columns occupied by the cart if it overruns the unfrozen water into the far corner. Turning the gallery mirror no longer removes those rays. A frozen crossing stops the train west of that trap, preserving an accessible eastern face. The descent follows the visible safe side of the beam pair. The starting door now joins the ceiling.",
+    "feedbackRevision": "Requested Run 5/6 owner-feedback revision complete; original successful bypasses and revised regressions saved.",
+    "review": {
+      "reportedBypasses": [
+        {
+          "name": "Jump over the starting door",
+          "tape": [
+            [
+              1,
+              "l"
+            ],
+            [
+              25,
+              "lj"
+            ],
+            [
+              20,
+              ""
+            ],
+            [
+              100,
+              "l"
+            ]
+          ],
+          "originalFrames": 58,
+          "originalDeaths": 0,
+          "archive": "scripts/room-bank/archive/before-run56-feedback/base/bank-b48.json"
+        },
+        {
+          "name": "Miss the freeze, board the cart in its corner, and ride it home",
+          "tape": [
+            [
+              138,
+              "r"
+            ],
+            [
+              8,
+              "rj"
+            ],
+            [
+              1,
+              "r"
+            ],
+            [
+              14,
+              "rj"
+            ],
+            [
+              21,
+              "l"
+            ],
+            [
+              20,
+              ""
+            ],
+            [
+              1,
+              "r"
+            ],
+            [
+              1,
+              "rs"
+            ],
+            [
+              150,
+              ""
+            ],
+            [
+              16,
+              "r"
+            ],
+            [
+              48,
+              ""
+            ],
+            [
+              100,
+              "l"
+            ],
+            [
+              22,
+              "rj"
+            ],
+            [
+              62,
+              "l"
+            ],
+            [
+              8,
+              "j"
+            ],
+            [
+              1,
+              "ux"
+            ],
+            [
+              12,
+              ""
+            ],
+            [
+              200,
+              "l"
+            ]
+          ],
+          "originalFrames": 780,
+          "originalDeaths": 0,
+          "archive": "scripts/room-bank/archive/before-run56-feedback/base/bank-b48.json"
+        }
+      ],
+      "conditionalBanking": "Owner approved banking after these fixes; parent integration will set acceptance after independent checks.",
+      "revisionSummary": "Two independent downward beams cover both columns occupied by the cart if it overruns the unfrozen water into the far corner. Turning the gallery mirror no longer removes those rays. A frozen crossing stops the train west of that trap, preserving an accessible eastern face. The descent follows the visible safe side of the beam pair. The starting door now joins the ceiling."
+    },
+    "feedback20261009": {
+      "decision": "banked after requested fixes",
+      "note": "Keep freeze-before-corner timing consequential; seal exit bypass."
+    }
+  },
+  "tape": [
+    [
+      137,
+      "r"
+    ],
+    [
+      1,
+      "rs"
+    ],
+    [
+      1,
+      "r"
+    ],
+    [
+      8,
+      "rj"
+    ],
+    [
+      1,
+      "r"
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      15,
+      "l"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      1,
+      "r"
+    ],
+    [
+      1,
+      "rs"
+    ],
+    [
+      150,
+      ""
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      8,
+      "l"
+    ],
+    [
+      52,
+      ""
+    ],
+    [
+      18,
+      "l"
+    ],
+    [
+      1,
+      "lx"
+    ],
+    [
+      220,
+      "l"
+    ],
+    [
+      8,
+      "j"
+    ],
+    [
+      1,
+      "ux"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      165,
+      "l"
+    ]
+  ]
+}

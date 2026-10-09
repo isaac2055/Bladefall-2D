@@ -1,0 +1,131 @@
+{
+  "room": {
+    "id": "bank-b02",
+    "name": "Late Departure",
+    "hint": "Stay aboard beneath the teeth; jump after the carriage clears them.",
+    "question": "A rising jump is wrong while the roof is close.",
+    "map": [
+      "########################################",
+      "#..............#############...........#",
+      "#..............#############...........#",
+      "#..............#############...........#",
+      "#..............#############...........#",
+      "#..............#############...........#",
+      "#..............#############...........#",
+      "#..............#############...........#",
+      "#..............#############...........#",
+      "#..............#############...........#",
+      "#..............#############...........#",
+      "#..............#############...........#",
+      "#..............#############...........#",
+      "#..............#############............",
+      "#..............vvvvvvvvvvvvv............",
+      "#.......................................",
+      "#.......................................",
+      "#.P.............................########",
+      "########.ZZZZ...................########",
+      "########........................########",
+      "########........................########",
+      "########^^^^^^^^^^^^^^^^^^^^^^^^########",
+      "########################################"
+    ],
+    "palette": "causeway",
+    "lock": [
+      "strike",
+      "parry",
+      "portal"
+    ],
+    "zips": [
+      [
+        18,
+        0
+      ]
+    ],
+    "study": true
+  },
+  "bank": {
+    "side": "base",
+    "batch": 1,
+    "difficulty": 2,
+    "role": "combination",
+    "worlds": [
+      4,
+      10
+    ],
+    "tags": [
+      "zip",
+      "moving-platform",
+      "low-ceiling"
+    ],
+    "newMechanics": [],
+    "solution": "Board the carriage and use its safe low passage. Ride past the suspended roof before jumping and dashing onto the final ledge.",
+    "entrance": "Left bank, spawn tile 2/17",
+    "exit": "Right edge, open rows 13–16",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "zip-start"
+    ],
+    "route": {
+      "frames": 120,
+      "deaths": 0,
+      "events": [
+        "dash",
+        "refill-dash",
+        "zip-start",
+        "zip-stop",
+        "grab",
+        "climbhop",
+        "land",
+        "jump",
+        "exit"
+      ],
+      "movement": "ordinary jump/dash/climb; no super, hyper, ultra or wallbounce",
+      "eventCounts": {
+        "dash": 2,
+        "refill-dash": 2,
+        "zip-start": 1,
+        "zip-stop": 1,
+        "grab": 1,
+        "climbhop": 1,
+        "land": 1,
+        "jump": 1,
+        "exit": 1
+      }
+    }
+  },
+  "tape": [
+    [
+      5,
+      "rx"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      20,
+      "rgu"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      20,
+      "rgu"
+    ],
+    [
+      20,
+      "rgu"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      12,
+      "rj"
+    ]
+  ]
+}

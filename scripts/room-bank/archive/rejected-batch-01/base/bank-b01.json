@@ -1,0 +1,135 @@
+{
+  "room": {
+    "id": "bank-b01",
+    "name": "Borrowed Breath",
+    "hint": "Spend the dash before the crystal; the middle shelf lets you breathe.",
+    "question": "Two rising gaps ask for a different dash angle each time.",
+    "map": [
+      "########################################",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.........................o.............",
+      "#..............................#########",
+      "#..............................#########",
+      "#..............................#########",
+      "#...........o.....####.........#########",
+      "#.................####.........#########",
+      "#.................####.........#########",
+      "#.P...............####.........#########",
+      "########..........####.........#########",
+      "########..........####.........#########",
+      "########..........####.........#########",
+      "########^^^^^^^^^^####^^^^^^^^^#########",
+      "########################################"
+    ],
+    "palette": "causeway",
+    "lock": [
+      "strike",
+      "parry",
+      "portal"
+    ],
+    "study": true
+  },
+  "bank": {
+    "side": "base",
+    "batch": 1,
+    "difficulty": 2,
+    "role": "combination",
+    "worlds": [
+      3,
+      16
+    ],
+    "tags": [
+      "refill",
+      "dash-economy",
+      "perches"
+    ],
+    "newMechanics": [],
+    "solution": "Jump from the first bank, dash toward the low crystal, then turn the returned dash upward onto the central rest. Repeat with a higher catch to reach the door.",
+    "entrance": "Left bank, spawn tile 2/17",
+    "exit": "Right edge, open rows 7–10",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "refill"
+    ],
+    "route": {
+      "frames": 167,
+      "deaths": 0,
+      "events": [
+        "dash",
+        "jump",
+        "refill-dash",
+        "refill",
+        "land",
+        "exit"
+      ],
+      "movement": "ordinary jump/dash/climb; no super, hyper, ultra or wallbounce",
+      "eventCounts": {
+        "dash": 3,
+        "jump": 3,
+        "refill-dash": 3,
+        "refill": 2,
+        "land": 2,
+        "exit": 1
+      }
+    }
+  },
+  "tape": [
+    [
+      5,
+      "rux"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      5,
+      "rux"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      6,
+      "r"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      5,
+      "rux"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      40,
+      "ru"
+    ],
+    [
+      12,
+      "rj"
+    ]
+  ]
+}

@@ -3,10 +3,10 @@
    with an arrow up to the high line. A cart is an iron tub on two wheels; the knight rides in it. */
 (function(root){
 'use strict';
-const TILE=8,COLS=40,ROWS=23;
+const TILE=8;
 const px=(b,x,y,w,h,c)=>{b.fillStyle=c;b.fillRect(Math.round(x),Math.round(y),w,h);};
 function drawBack(b,g){
- const room=g.room;if(!room.rail)return;const t=g.frame;
+ const room=g.room,COLS=room.cols,ROWS=room.rows;if(!room.rail)return;const t=g.frame;
  for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){const i=r*COLS+c;if(!room.rail[i])continue;const x=c*TILE,y=r*TILE;
   px(b,x,y,8,8,'#2a2320');px(b,x+1,y+2,2,6,'#5a4330');px(b,x+5,y+2,2,6,'#5a4330');px(b,x,y,8,1,'#c8ccd4');px(b,x,y+1,8,1,'#6a6e76');
   const d=room.boost[i];if(d){const on=((t>>2)+c)%3===0;px(b,x+(d>0?2:4),y+3,2,1,on?'#ffe07a':'#b08a2a');px(b,x+(d>0?4:2),y+4,2,1,on?'#ffe07a':'#b08a2a');px(b,x+(d>0?2:4),y+5,2,1,on?'#ffe07a':'#b08a2a');}

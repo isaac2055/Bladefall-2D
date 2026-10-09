@@ -1,0 +1,168 @@
+{
+  "room": {
+    "id": "bank-f02",
+    "name": "Refund Below",
+    "palette": "fractured",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "exit": "right",
+    "hint": "The low arrow crystal refills only while falling. Drop underneath the hanging pier; collect it before spending upward.",
+    "question": "Can a loss of height become the resource for the next ascent?",
+    "map": [
+      "########################################",
+      "#............###.......................#",
+      "#............###.......................#",
+      "#............###.......................#",
+      "#............###.......................#",
+      "#............###........................",
+      "#............###........................",
+      "#............###........................",
+      "#............###........................",
+      "#............###........................",
+      "#..P.........###............o....<######",
+      "#######......###.................<######",
+      "#######......###.................<######",
+      "#######......vvv.................<######",
+      "#######................^^^.......<######",
+      "#######................###.......<######",
+      "#######................###.......<######",
+      "#######................###.......<######",
+      "#######................###.......<######",
+      "#######................###.......<######",
+      "#######................###.......<######",
+      "#######^^^^^^^^^^^^^^^^###^^^^^^^^######",
+      "########################################"
+    ],
+    "study": true,
+    "vectorRefills": [
+      {
+        "c": 18,
+        "r": 16,
+        "dir": "down"
+      }
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 1,
+    "difficulty": 3,
+    "role": "combination",
+    "worlds": [
+      23,
+      28
+    ],
+    "tags": [
+      "refill",
+      "slalom",
+      "descending-dash",
+      "vector-refill",
+      "directional-refill"
+    ],
+    "newMechanics": [
+      "vector-refill"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "refill",
+      "vector-refill"
+    ],
+    "solution": "Drop under the hanging pier, collect the low refill, dash up past the floor pier and take the second refill for the right ledge. The low crystal is downward-only. Let the underpass drop reach it before reversing vertically with the recovered dash; an early up-dash passes through it without refilling.",
+    "entrance": "left ledge at 11",
+    "exit": "right opening rows 5–9",
+    "proof": {
+      "frames": 203,
+      "deaths": 0,
+      "events": [
+        "dash",
+        "refill-dash",
+        "refill",
+        "vector-refill",
+        "grab",
+        "climbhop",
+        "walljump",
+        "land",
+        "exit"
+      ],
+      "eventCounts": {
+        "dash": 3,
+        "refill-dash": 3,
+        "refill": 2,
+        "vector-refill": 1,
+        "grab": 1,
+        "climbhop": 1,
+        "walljump": 2,
+        "land": 1,
+        "exit": 1
+      },
+      "vectorEntry": {
+        "dir": "down",
+        "vx": 116.7,
+        "vy": 150
+      },
+      "withoutVectorPickup": "same intended tape fails with one death",
+      "verifiedAt": "2026-10-07"
+    },
+    "vectorDesign": "The low crystal is downward-only. Let the underpass drop reach it before reversing vertically with the recovered dash; an early up-dash passes through it without refilling."
+  },
+  "tape": [
+    [
+      40,
+      "ru"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      20,
+      "rgu"
+    ],
+    [
+      12,
+      "j"
+    ],
+    [
+      8,
+      "rj"
+    ],
+    [
+      12,
+      "ru"
+    ],
+    [
+      4,
+      "lj"
+    ],
+    [
+      12,
+      "j"
+    ],
+    [
+      12,
+      "r"
+    ],
+    [
+      5,
+      "rux"
+    ],
+    [
+      40,
+      "ru"
+    ]
+  ]
+}

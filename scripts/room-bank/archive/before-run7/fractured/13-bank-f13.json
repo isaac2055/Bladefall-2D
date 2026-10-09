@@ -1,0 +1,321 @@
+{
+  "room": {
+    "id": "bank-f13",
+    "name": "Break the Wrong Bridge",
+    "palette": "sunspire",
+    "study": true,
+    "exit": "left",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "hint": "A spent foothold falls when you leave it. Sunlight stops at solid stone.",
+    "question": "One foothold must go and one must stay. Which direction should the lower mirror face when light arrives?",
+    "map": [
+      "########################################",
+      "#......###.............................#",
+      "#......###.............................#",
+      "#......###.............................#",
+      "#......###.............................#",
+      "#......###.............................#",
+      "#......###........../..................#",
+      "#......###.............................#",
+      "#......###.............................#",
+      "#......###########.....................#",
+      "#......###########.YYY.................#",
+      "#......###########.....................#",
+      "#...G..#....c.......\\...###............#",
+      "#...G..###########.....................#",
+      "#...G..###########.....................#",
+      "....G..###########.....................#",
+      "....G..............YYY.....###.........#",
+      "....G..................................#",
+      "....G..................................#",
+      "....G..............................P...#",
+      "########....################...#########",
+      "########^^^^^^^^^^^^^^^^^^^^^^^#########",
+      "########################################"
+    ],
+    "beams": [
+      {
+        "c": 9,
+        "r": 6,
+        "dir": "r"
+      },
+      {
+        "c": 20,
+        "r": 13,
+        "dir": "d"
+      }
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 2,
+    "difficulty": 4,
+    "role": "puzzle",
+    "worlds": [
+      33,
+      39
+    ],
+    "tags": [
+      "spent-foothold",
+      "sunlight",
+      "mirror",
+      "irreversible-choice",
+      "return-route",
+      "optical-junction"
+    ],
+    "newMechanics": [],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "foothold-spent",
+      "mirror",
+      "stone-lit"
+    ],
+    "solution": "Take the eastern stair rather than the lower spent foothold. Step off the middle ledge, turn the lower junction from its right side so it sends descending light left into the sealed duct, and dash upward to the upper spent foothold. Jump off that upper shutter and strike the high mirror from the right; the shutter disappears and the prepared junction lights the receiver. Descend east of both beams. The untouched lower foothold shades the low crossing: pass beneath it and the receiver masonry, then jump/dash the low western gap. The tall west masonry blocks a high retreat; trying to descend its eastern edge instead crosses the exposed horizontal light at the duct mouth.",
+    "nearestExisting": "Crossings C5 The Last of It preserves one spent beam shield. Here the upper shutter must be destroyed, the lower one retained, and an optical junction prepared from its safe side before the high mirror activates light across the approach. The deep receiver duct and tall west masonry make the return cross below the machine.",
+    "entrance": "lower-east shelf, 35/19",
+    "exit": "western low gallery, rows15–19",
+    "designNotes": "The receiver is protected by physical masonry, not an event requirement. The second sun-window keeps the lower shield meaningful independently of the receiver beam. The junction has a visible wrong orientation; no hidden flag locks its order.",
+    "proof": {
+      "frames": 370,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "dash",
+        "land",
+        "refill-dash",
+        "strike",
+        "mirror",
+        "foothold-spent",
+        "stone-lit",
+        "gate-open",
+        "exit"
+      ],
+      "preservedLowerShield": [
+        {
+          "x": 152,
+          "y": 128
+        }
+      ],
+      "verifiedAt": "2026-10-07",
+      "mirrorSequence": [
+        "lower junction at 20/12",
+        "upper switch at 20/6"
+      ]
+    },
+    "acceptance": "banked",
+    "revision": 2,
+    "review": {
+      "feedback": "The receiver can be touched or struck without using the laser. Isolate it physically and add one further puzzle decision.",
+      "changes": [
+        "Put the receiver deep inside a horizontal eight-pixel light duct with three-tile masonry above and below.",
+        "Added a lower optical junction: prepare its leftward route before activating the upper mirror, otherwise sunlight is sent across the eastern approach.",
+        "A separate downward sun-window preserves the lower spent foothold’s role as the return shield.",
+        "Joined the receiver masonry to the ceiling so the upper route cannot simply drop into the western exit behind the light."
+      ],
+      "bypassBefore": {
+        "description": "Dash left from the eastern middle shelf to touch the exposed receiver, then leave without manipulating the beam.",
+        "tape": [
+          [
+            12,
+            "lj"
+          ],
+          [
+            10,
+            "lux"
+          ],
+          [
+            10,
+            "l"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            7,
+            "ux"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            4,
+            "l"
+          ],
+          [
+            6,
+            "lx"
+          ],
+          [
+            18,
+            ""
+          ],
+          [
+            24,
+            "l"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            25,
+            "lj"
+          ],
+          [
+            80,
+            "l"
+          ]
+        ],
+        "result": {
+          "exited": true,
+          "deaths": 0,
+          "mirrorTurns": 0
+        }
+      },
+      "bypassAfter": {
+        "exited": false,
+        "deaths": 1,
+        "stoneLit": false,
+        "mirrorTurns": 0,
+        "description": "The recorded direct-touch shortcut no longer reaches or lights the receiver; the western gate remains shut.",
+        "wrongOrder": {
+          "description": "Activate the high mirror without preparing the lower junction, then follow the former return.",
+          "exited": false,
+          "firstDeath": {
+            "cause": "light",
+            "frame": 191
+          },
+          "stoneLit": false
+        },
+        "intended": {
+          "frames": 370,
+          "deaths": 0,
+          "mirrorTurns": 2,
+          "receiverLitBy": "beam",
+          "lowerShield": "preserved"
+        }
+      },
+      "verifiedAt": "2026-10-07"
+    },
+    "requiredEventCounts": {
+      "mirror": 2
+    },
+    "userFeedback": {
+      "date": "2026-10-07",
+      "comment": "Approved; bank."
+    },
+    "humanReview": "User approved banking; numeric Fun /10, Difficulty /5 and Suitability /5 ratings remain pending."
+  },
+  "tape": [
+    [
+      12,
+      "lj"
+    ],
+    [
+      10,
+      "lux"
+    ],
+    [
+      10,
+      "l"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      12,
+      "j"
+    ],
+    [
+      7,
+      "ux"
+    ],
+    [
+      20,
+      "l"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      14,
+      "l"
+    ],
+    [
+      1,
+      "ls"
+    ],
+    [
+      4,
+      ""
+    ],
+    [
+      6,
+      "ux"
+    ],
+    [
+      14,
+      "l"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      11,
+      "j"
+    ],
+    [
+      1,
+      "ls"
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      10,
+      "l"
+    ],
+    [
+      50,
+      ""
+    ],
+    [
+      47,
+      "l"
+    ],
+    [
+      10,
+      "lj"
+    ],
+    [
+      6,
+      "lx"
+    ],
+    [
+      65,
+      "l"
+    ]
+  ]
+}

@@ -1,0 +1,212 @@
+{
+  "room": {
+    "id": "bank-b13",
+    "name": "The Missing Stop",
+    "palette": "foundry",
+    "study": true,
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "hint": "Dash into the sliding stone to send it across. Empty moulds become permanent iron when struck.",
+    "question": "The stone must pass this spot on the way out. Where should it stop on the way back?",
+    "map": [
+      "########################################",
+      "########################################",
+      "#########################..........#####",
+      "#########################..........#####",
+      "#########################..#.........G..",
+      "#########################..#.........G..",
+      "#########################..#MMMMMMM..G..",
+      "########################>..#.......#####",
+      "########################>.............<#",
+      "########################>.............<#",
+      "########################>.............<#",
+      "########################>.............<#",
+      "########################>.............<#",
+      "########################>.............<#",
+      "#.............##########>.............<#",
+      "#.............##########>.............<#",
+      "#.............##########>.............<#",
+      "#.............KK.....................c<#",
+      "#.P...........KK........U..........#..<#",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################"
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 2,
+    "difficulty": 3,
+    "role": "puzzle",
+    "worlds": [
+      11,
+      16
+    ],
+    "tags": [
+      "slide-stone",
+      "mould",
+      "manufactured-stop",
+      "return-route"
+    ],
+    "newMechanics": [],
+    "solution": "Send the stone through the still-empty mould into the receiving vault. Collect the tally beyond the stone. Cast the mould only after the stone has passed it, then dash into the stone from its right: it parks against your new stop beneath the hanging wall. Use the parked stone to climb the vault and reach the upper exit.",
+    "nearestExisting": "n2 Bell Stop positions a slide stone against an existing stopper; p109 Cold Cast creates a landing. Here the necessary stopper must be absent during the outbound delivery and manufactured for the returning stone. Casting first traps the stone in the low tunnel before the vault.",
+    "novelty": "An irreversible construction changes the same corridor from transit to precise positioning. The knight must get around the delivered stone and send it back; the exit uses the return position rather than the delivery destination.",
+    "entrance": "West low tunnel, tile 2/18.",
+    "exit": "East upper window, rows 4–6.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "stone-hit",
+      "stone-stop",
+      "cast",
+      "stone-lit",
+      "gate-open"
+    ],
+    "requiredEventCounts": {
+      "stone-hit": 2,
+      "stone-stop": 2
+    },
+    "route": {
+      "frames": 727,
+      "deaths": 0,
+      "movement": "ordinary jump/dash/climb; no advanced momentum",
+      "eventCounts": {
+        "dash": 3,
+        "stone-hit": 2,
+        "stone-stop": 2,
+        "land": 10,
+        "refill-dash": 3,
+        "jump": 6,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "strike": 1,
+        "cast": 1,
+        "grab": 1,
+        "climbhop": 1,
+        "exit": 1
+      }
+    }
+  },
+  "tape": [
+    [
+      61,
+      "r"
+    ],
+    [
+      1,
+      "rx"
+    ],
+    [
+      157,
+      "r"
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      18,
+      ""
+    ],
+    [
+      10,
+      "r"
+    ],
+    [
+      18,
+      ""
+    ],
+    [
+      40,
+      "lj"
+    ],
+    [
+      12,
+      "l"
+    ],
+    [
+      6,
+      ""
+    ],
+    [
+      1,
+      "ls"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      32,
+      "r"
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      18,
+      ""
+    ],
+    [
+      10,
+      "r"
+    ],
+    [
+      18,
+      ""
+    ],
+    [
+      7,
+      "j"
+    ],
+    [
+      1,
+      "lx"
+    ],
+    [
+      35,
+      "l"
+    ],
+    [
+      30,
+      "l"
+    ],
+    [
+      10,
+      "lj"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      1,
+      "r"
+    ],
+    [
+      18,
+      "j"
+    ],
+    [
+      1,
+      "ux"
+    ],
+    [
+      45,
+      "gu"
+    ],
+    [
+      32,
+      "gu"
+    ],
+    [
+      85,
+      "r"
+    ]
+  ]
+}

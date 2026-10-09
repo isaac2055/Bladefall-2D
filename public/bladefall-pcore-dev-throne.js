@@ -4,7 +4,7 @@
    Echo (room def `echo:true`): the portal key leaves an echo of the knight where he stands. Press it again
    and you trade places with your echo: you appear where it stood, still moving as you were, and it takes
    your old place. It stands where it is left, in the air if need be, and it holds a plate down as a
-   lantern would. A trade that would put you inside something solid fizzles.
+   lantern would. A trade releases a held rope and preserves its departure velocity. A trade that would put you inside something solid fizzles.
    Wake (room def `wake:{delay}`): a shade walks your exact path `delay` frames behind you, from your
    first move. Touching it is death. Never double back through where you have just been.
    Re-aimed portals (room def `portalMode:'fixed'` and `reaim:{every,sets:[[end,end],…]}`): both ends
@@ -34,7 +34,12 @@ function before(g,inp){
   else{
    const e=g.echo;
    if(Core.solidAt(g,e.x,e.y,p.w,p.h)){Core.emit(g,'echo-fizzle',{x:e.x+4,y:e.y+5});}
-   else{const ox=p.x,oy=p.y;p.x=e.x;p.y=e.y;p.remX=p.remY=0;e.x=ox;e.y=oy;e.facing=p.facing;
+   else{
+    // A spatial exchange ends the old tether. Keeping it would pull the knight back toward
+    // the old ring on this same frame and turn teleport distance into enormous velocity.
+    // Release through the hook module so moving-ring velocity is inherited exactly once.
+    if(p.hook)root.BladefallPrecisionHook.release(g,p,'echo');
+    const ox=p.x,oy=p.y;p.x=e.x;p.y=e.y;p.remX=p.remY=0;e.x=ox;e.y=oy;e.facing=p.facing;
     if(p.state==='climb')p.state='normal';p.onGround=false;
     if(p.carrying){p.carrying.x=p.x;p.carrying.y=p.y-8;}
     Core.emit(g,'echo-swap',{x:p.x+4,y:p.y+5,fx:ox+4,fy:oy+5});}

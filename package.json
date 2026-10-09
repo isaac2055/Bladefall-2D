@@ -43,10 +43,20 @@
     "build:climb": "node scripts/climb/build-climbs.mjs",
     "verify:climb": "node scripts/climb/build-climbs.mjs --check",
     "verify:rbr": "node scripts/verify-rbr.mjs",
-    "verify:rbr-survey": "node scripts/verify-rbr-survey.mjs"
+    "verify:rbr-survey": "node scripts/verify-rbr-survey.mjs",
+    "verify:playtest": "node scripts/playtest-release/check-service.mjs",
+    "verify:playtest-browser": "node scripts/playtest-release/check-browser.mjs",
+    "build": "node scripts/playtest-release/check-cloudflare-assets.mjs",
+    "deploy": "wrangler deploy",
+    "dev:cloudflare": "wrangler dev",
+    "verify:cloudflare": "wrangler deploy --dry-run --outdir cloudflare-dist"
   },
   "dependencies": {
+    "@netlify/blobs": "^11.1.4",
     "jsdom": "^29.1.1",
     "puppeteer": "^25.3.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.149.0"
   }
 }

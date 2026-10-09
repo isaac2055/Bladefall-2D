@@ -1,0 +1,721 @@
+{
+  "room": {
+    "id": "bank-f33",
+    "name": "Below the Lip",
+    "palette": "frostfell",
+    "movement": "survive-2",
+    "study": true,
+    "exit": "left",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "slick": [
+      [
+        21,
+        3,
+        22,
+        13
+      ]
+    ],
+    "map": [
+      "########################################",
+      "#G.....................#################",
+      "#G.....................#################",
+      "#G...................###################",
+      ".G...................###################",
+      ".G...................###################",
+      ".G...................###################",
+      ".G...................###################",
+      ".G...................###################",
+      "#############........###################",
+      "#vvvvvvvv............###################",
+      "#....................###################",
+      "#...P................###################",
+      "#########............###################",
+      "#########...............################",
+      "#########...............################",
+      "#########...............################",
+      "#########...............################",
+      "#########...............################",
+      "#########..........c....################",
+      "#########.......########################",
+      "#########^^^^^^^########################",
+      "########################################"
+    ],
+    "hint": "Dash straight up beside polished stone · Jump as the burst ends to wallbounce.",
+    "question": "Can the height you lose buy a route above the ledge you left?"
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 6,
+    "run": 2,
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "late-contact ascent",
+    "worlds": [
+      27,
+      33
+    ],
+    "tags": [
+      "wallbounce",
+      "slick",
+      "return-route",
+      "tally"
+    ],
+    "newMechanics": [
+      "wallbounce-grace"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "entrance": "West middle ledge above a lower tally pocket.",
+    "exit": "Upper west shelf.",
+    "requiredEvents": [
+      "stone-lit",
+      "late-wallbounce"
+    ],
+    "solution": "Drop into the tally pocket, move to the hanging wall and dash straight up. As the burst finishes, keep rising and press Jump at the polished face. Its wallbounce reaches the upper west shelf.",
+    "nearestExisting": "The ordinary slick-wall wallbounce rooms in World 27 contact the wall during the dash. Here the lower approach deliberately finishes its burst just below the wall, leaving the short residual rise useful.",
+    "novelty": "The same hanging wall separates the outbound drop from the return ascent. The new grace converts the last upward drift into a second movement opportunity instead of a dead dash.",
+    "positiveChecks": [
+      {
+        "name": "Jump on post-dash frame 1",
+        "tape": [
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            13,
+            "ux"
+          ],
+          [
+            4,
+            "j"
+          ],
+          [
+            25,
+            "lj"
+          ],
+          [
+            90,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 193,
+          "events": [
+            "dash",
+            "land",
+            "refill-dash",
+            "stone-lit",
+            "gate-open",
+            "wallbounce",
+            "late-wallbounce",
+            "exit"
+          ],
+          "eventCounts": {
+            "dash": 2,
+            "land": 2,
+            "refill-dash": 2,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Jump on post-dash frame 2",
+        "tape": [
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            14,
+            "ux"
+          ],
+          [
+            4,
+            "j"
+          ],
+          [
+            25,
+            "lj"
+          ],
+          [
+            90,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 194,
+          "events": [
+            "dash",
+            "land",
+            "refill-dash",
+            "stone-lit",
+            "gate-open",
+            "wallbounce",
+            "late-wallbounce",
+            "exit"
+          ],
+          "eventCounts": {
+            "dash": 2,
+            "land": 2,
+            "refill-dash": 2,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Jump on post-dash frame 3",
+        "tape": [
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            15,
+            "ux"
+          ],
+          [
+            4,
+            "j"
+          ],
+          [
+            25,
+            "lj"
+          ],
+          [
+            90,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 195,
+          "events": [
+            "dash",
+            "land",
+            "refill-dash",
+            "stone-lit",
+            "gate-open",
+            "wallbounce",
+            "late-wallbounce",
+            "exit"
+          ],
+          "eventCounts": {
+            "dash": 2,
+            "land": 2,
+            "refill-dash": 2,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Jump on post-dash frame 4",
+        "tape": [
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            16,
+            "ux"
+          ],
+          [
+            4,
+            "j"
+          ],
+          [
+            25,
+            "lj"
+          ],
+          [
+            90,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 196,
+          "events": [
+            "dash",
+            "land",
+            "refill-dash",
+            "stone-lit",
+            "gate-open",
+            "wallbounce",
+            "late-wallbounce",
+            "exit"
+          ],
+          "eventCounts": {
+            "dash": 2,
+            "land": 2,
+            "refill-dash": 2,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Jump on post-dash frame 5",
+        "tape": [
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            17,
+            "ux"
+          ],
+          [
+            4,
+            "j"
+          ],
+          [
+            25,
+            "lj"
+          ],
+          [
+            90,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 197,
+          "events": [
+            "dash",
+            "land",
+            "refill-dash",
+            "stone-lit",
+            "gate-open",
+            "wallbounce",
+            "late-wallbounce",
+            "exit"
+          ],
+          "eventCounts": {
+            "dash": 2,
+            "land": 2,
+            "refill-dash": 2,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Jump on post-dash frame 6",
+        "tape": [
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            18,
+            "ux"
+          ],
+          [
+            4,
+            "j"
+          ],
+          [
+            25,
+            "lj"
+          ],
+          [
+            90,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 198,
+          "events": [
+            "dash",
+            "land",
+            "refill-dash",
+            "stone-lit",
+            "gate-open",
+            "wallbounce",
+            "late-wallbounce",
+            "exit"
+          ],
+          "eventCounts": {
+            "dash": 2,
+            "land": 2,
+            "refill-dash": 2,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Omit the wallbounce",
+        "tape": [
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            17,
+            "ux"
+          ],
+          [
+            110,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 204,
+          "events": [
+            "dash",
+            "land",
+            "refill-dash",
+            "stone-lit",
+            "gate-open",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "dash": 2,
+            "land": 2,
+            "refill-dash": 2,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "death": 1,
+            "respawn": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 133,
+            "x": 108,
+            "y": 171,
+            "cause": "spikes",
+            "vx": -90,
+            "vy": 160,
+            "i": 132
+          }
+        }
+      },
+      {
+        "name": "Ordinary jump and diagonal dash back toward the exit",
+        "tape": [
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            13,
+            "lux"
+          ],
+          [
+            110,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 212,
+          "events": [
+            "dash",
+            "land",
+            "refill-dash",
+            "stone-lit",
+            "gate-open",
+            "jump",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "dash": 2,
+            "land": 1,
+            "refill-dash": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "jump": 1,
+            "death": 1,
+            "respawn": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 146,
+            "x": 76,
+            "y": 171,
+            "cause": "spikes",
+            "vx": -10.833333333333334,
+            "vy": 49.16666666666667,
+            "i": 145
+          }
+        }
+      }
+    ],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 195,
+      "events": [
+        "dash",
+        "land",
+        "refill-dash",
+        "stone-lit",
+        "gate-open",
+        "wallbounce",
+        "late-wallbounce",
+        "exit"
+      ],
+      "eventCounts": {
+        "dash": 2,
+        "land": 2,
+        "refill-dash": 2,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "wallbounce": 1,
+        "late-wallbounce": 1,
+        "exit": 1
+      },
+      "firstFailure": null
+    },
+    "allowedAlternatives": [
+      {
+        "name": "Jump first, then execute a conventional earlier wallbounce",
+        "tape": [
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            9,
+            "j"
+          ],
+          [
+            9,
+            "ux"
+          ],
+          [
+            25,
+            "lj"
+          ],
+          [
+            110,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 196,
+          "events": [
+            "dash",
+            "land",
+            "refill-dash",
+            "stone-lit",
+            "gate-open",
+            "jump",
+            "wallbounce",
+            "exit"
+          ],
+          "eventCounts": {
+            "dash": 2,
+            "land": 2,
+            "refill-dash": 2,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "jump": 1,
+            "wallbounce": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        },
+        "meaning": "A skilled conventional wallbounce remains legal. The new grace supplies a simpler grounded launch from the lower tally pocket; it is not an invisible progression gate."
+      }
+    ],
+    "designNotes": "Every one of the six post-dash Jump press timings completes from the recorded lower rest. Buffered Jump waits for the first real wall contact. The polished face rejects ordinary wall kicks. This experimental room compares a forgiving grounded late contact with an allowed conventional jump-before-dash wallbounce.",
+    "humanReview": "Candidate: no fun, difficulty or suitability scores assigned."
+  },
+  "tape": [
+    [
+      20,
+      "r"
+    ],
+    [
+      12,
+      "rx"
+    ],
+    [
+      35,
+      "r"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      15,
+      "ux"
+    ],
+    [
+      4,
+      "j"
+    ],
+    [
+      25,
+      "lj"
+    ],
+    [
+      90,
+      "l"
+    ]
+  ]
+}

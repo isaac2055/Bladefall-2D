@@ -1,0 +1,135 @@
+{
+  "room": {
+    "id": "bank-b07",
+    "name": "Step and Stay",
+    "hint": "Land on A to raise it. Stay aboard; jumping again can send it back.",
+    "question": "A landing is a switch, so the calmest move is sometimes no move.",
+    "map": [
+      "########################################",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................################",
+      "#.......................################",
+      "#.......................################",
+      "#.......................################",
+      "#.......................################",
+      "#.......................################",
+      "#.......................################",
+      "#.......................################",
+      "#.P.....................################",
+      "########................################",
+      "########................################",
+      "########^^^^^^^^^^^^^^^^################"
+    ],
+    "palette": "causeway",
+    "study": true,
+    "lock": [
+      "strike",
+      "parry",
+      "portal"
+    ],
+    "stepRelays": [
+      {
+        "id": "A",
+        "duration": 45,
+        "platforms": [
+          {
+            "c": 10,
+            "r": 19,
+            "w": 5,
+            "h": 1,
+            "to": [
+              0,
+              -7
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 1,
+    "difficulty": 1,
+    "role": "introduction",
+    "worlds": [
+      1,
+      4
+    ],
+    "tags": [
+      "step-relay",
+      "vertical-lift",
+      "dash-preservation"
+    ],
+    "newMechanics": [
+      "step-relay"
+    ],
+    "solution": "Jump onto the low relay, stay on it as it rises, then jump to the broad exit bank. The dash remains available as a forgiving correction; the saved route does not need it.",
+    "entrance": "Left bank, spawn tile 2/19",
+    "exit": "Right edge, open rows 7–10",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "step-relay"
+    ],
+    "route": {
+      "frames": 199,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "step-relay",
+        "land",
+        "exit"
+      ],
+      "movement": "ordinary jump/dash/climb; no super, hyper, ultra or wallbounce",
+      "eventCounts": {
+        "jump": 2,
+        "step-relay": 1,
+        "land": 2,
+        "exit": 1
+      }
+    }
+  },
+  "tape": [
+    [
+      20,
+      "ru"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      40,
+      "ru"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      40,
+      "ru"
+    ],
+    [
+      20,
+      "rgu"
+    ],
+    [
+      40,
+      "ru"
+    ],
+    [
+      20,
+      "rgu"
+    ]
+  ]
+}

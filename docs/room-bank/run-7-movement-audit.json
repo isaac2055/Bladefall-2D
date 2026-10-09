@@ -1,0 +1,583 @@
+{
+  "version": "7.299.0",
+  "note": "Actual canonical movement events, not a human assessment. Candidate difficulty remains provisional.",
+  "rooms": [
+    {
+      "id": "bank-b54",
+      "side": "base",
+      "name": "Two Heights, One Breath",
+      "format": "compact",
+      "dimensions": [
+        40,
+        23
+      ],
+      "frames": 177,
+      "deaths": 0,
+      "exited": true,
+      "family": "timed-launch-and-pogo",
+      "movement": [
+        {
+          "type": "pogo-low",
+          "frame": 52,
+          "x": 114,
+          "y": 135,
+          "vy": -135
+        },
+        {
+          "type": "pogo-loft",
+          "frame": 97,
+          "x": 200,
+          "y": 132,
+          "vy": -210
+        }
+      ],
+      "positiveChecks": 3,
+      "shortcutChecks": 5
+    },
+    {
+      "id": "bank-b55",
+      "side": "base",
+      "name": "Meet It After the Turn",
+      "format": "compact",
+      "dimensions": [
+        40,
+        23
+      ],
+      "frames": 229,
+      "deaths": 0,
+      "exited": true,
+      "family": "timed-launch-and-pogo",
+      "movement": [
+        {
+          "type": "pogo-low",
+          "frame": 118,
+          "x": 161,
+          "y": 134,
+          "vy": -135
+        },
+        {
+          "type": "pogo-loft",
+          "frame": 148,
+          "x": 201,
+          "y": 125,
+          "vy": -210
+        }
+      ],
+      "positiveChecks": 3,
+      "shortcutChecks": 4
+    },
+    {
+      "id": "bank-b56",
+      "side": "base",
+      "name": "Pass Below the Passing Thorn",
+      "format": "compact",
+      "dimensions": [
+        48,
+        26
+      ],
+      "frames": 242,
+      "deaths": 0,
+      "exited": true,
+      "family": "moving-anchor-and-cargo-timing",
+      "movement": [],
+      "positiveChecks": 3,
+      "shortcutChecks": 3
+    },
+    {
+      "id": "bank-b57",
+      "side": "base",
+      "name": "Meet It After the Crossing",
+      "format": "compact",
+      "dimensions": [
+        48,
+        28
+      ],
+      "frames": 175,
+      "deaths": 0,
+      "exited": true,
+      "family": "moving-anchor-and-cargo-timing",
+      "movement": [
+        {
+          "type": "cargo-dash-catch",
+          "frame": 121,
+          "x": 170,
+          "y": 81,
+          "vx": 240,
+          "vy": 0
+        }
+      ],
+      "positiveChecks": 3,
+      "shortcutChecks": 3
+    },
+    {
+      "id": "bank-b58",
+      "side": "base",
+      "name": "Under What You Spent",
+      "format": "compact",
+      "dimensions": [
+        40,
+        23
+      ],
+      "frames": 380,
+      "deaths": 0,
+      "exited": true,
+      "family": "spent-faces",
+      "movement": [],
+      "positiveChecks": 3,
+      "shortcutChecks": 2
+    },
+    {
+      "id": "bank-b59",
+      "side": "base",
+      "name": "One Grip at a Time",
+      "format": "compact",
+      "dimensions": [
+        40,
+        32
+      ],
+      "frames": 391,
+      "deaths": 0,
+      "exited": true,
+      "family": "spent-faces",
+      "movement": [
+        {
+          "type": "vector-refill",
+          "frame": 137,
+          "x": 156,
+          "y": 124,
+          "dx": 0,
+          "dy": -1,
+          "once": false
+        }
+      ],
+      "positiveChecks": 3,
+      "shortcutChecks": 2
+    },
+    {
+      "id": "bank-b60",
+      "side": "base",
+      "name": "Catch the Reply in Flight",
+      "format": "compact",
+      "dimensions": [
+        40,
+        23
+      ],
+      "frames": 267,
+      "deaths": 0,
+      "exited": true,
+      "family": "reply-and-cycle",
+      "movement": [
+        {
+          "type": "parry",
+          "frame": 62,
+          "x": 143,
+          "y": 98
+        }
+      ],
+      "positiveChecks": 3,
+      "shortcutChecks": 2
+    },
+    {
+      "id": "bank-b61",
+      "side": "base",
+      "name": "Load Before the Window",
+      "format": "compact",
+      "dimensions": [
+        40,
+        23
+      ],
+      "frames": 243,
+      "deaths": 0,
+      "exited": true,
+      "family": "reply-and-cycle",
+      "movement": [
+        {
+          "type": "recoil-jump",
+          "frame": 103,
+          "x": 117,
+          "y": 148,
+          "source": "recoil:Kiln",
+          "vx": 56.66666666666667,
+          "vy": -225
+        }
+      ],
+      "positiveChecks": 3,
+      "shortcutChecks": 3
+    },
+    {
+      "id": "bank-f55",
+      "side": "fractured",
+      "name": "Beat the Returning Teeth",
+      "format": "compact",
+      "dimensions": [
+        40,
+        23
+      ],
+      "frames": 129,
+      "deaths": 0,
+      "exited": true,
+      "family": "timed-launch-and-pogo",
+      "movement": [
+        {
+          "type": "ultra",
+          "frame": 15
+        },
+        {
+          "type": "hyper",
+          "frame": 19,
+          "x": 53,
+          "y": 136
+        },
+        {
+          "type": "pogo-low",
+          "frame": 63,
+          "x": 219,
+          "y": 145,
+          "vy": -135
+        }
+      ],
+      "positiveChecks": 2,
+      "shortcutChecks": 4
+    },
+    {
+      "id": "bank-f56",
+      "side": "fractured",
+      "name": "The Return Has Teeth",
+      "format": "extended",
+      "dimensions": [
+        48,
+        36
+      ],
+      "frames": 394,
+      "deaths": 0,
+      "exited": true,
+      "family": "timed-launch-and-pogo",
+      "movement": [
+        {
+          "type": "ultra",
+          "frame": 15
+        },
+        {
+          "type": "hyper",
+          "frame": 19,
+          "x": 53,
+          "y": 240
+        },
+        {
+          "type": "pogo-low",
+          "frame": 63,
+          "x": 219,
+          "y": 249,
+          "vy": -135
+        },
+        {
+          "type": "ultra",
+          "frame": 217
+        },
+        {
+          "type": "hyper",
+          "frame": 225,
+          "x": 359,
+          "y": 152
+        },
+        {
+          "type": "reverse-hyper",
+          "frame": 225,
+          "x": 359,
+          "y": 152,
+          "dir": -1
+        },
+        {
+          "type": "pogo-loft",
+          "frame": 271,
+          "x": 186,
+          "y": 166,
+          "vy": -210
+        }
+      ],
+      "positiveChecks": 3,
+      "shortcutChecks": 4
+    },
+    {
+      "id": "bank-f57",
+      "side": "fractured",
+      "name": "Arrive on the Other Beat",
+      "format": "compact",
+      "dimensions": [
+        56,
+        30
+      ],
+      "frames": 295,
+      "deaths": 0,
+      "exited": true,
+      "family": "moving-anchor-and-cargo-timing",
+      "movement": [
+        {
+          "type": "pogo-loft",
+          "frame": 188,
+          "x": 288,
+          "y": 155,
+          "vy": -210
+        }
+      ],
+      "positiveChecks": 3,
+      "shortcutChecks": 3
+    },
+    {
+      "id": "bank-f58",
+      "side": "fractured",
+      "name": "Three Bodies, One Opening",
+      "format": "extended",
+      "dimensions": [
+        80,
+        36
+      ],
+      "frames": 382,
+      "deaths": 0,
+      "exited": true,
+      "family": "moving-anchor-and-cargo-timing",
+      "movement": [
+        {
+          "type": "cargo-dash-catch",
+          "frame": 234,
+          "x": 309,
+          "y": 144,
+          "vx": 0,
+          "vy": -240
+        },
+        {
+          "type": "cargo-dash-catch",
+          "frame": 321,
+          "x": 400,
+          "y": 108,
+          "vx": 240,
+          "vy": 0
+        }
+      ],
+      "positiveChecks": 3,
+      "shortcutChecks": 4
+    },
+    {
+      "id": "bank-f59",
+      "side": "fractured",
+      "name": "Reverse the Departure",
+      "format": "compact",
+      "dimensions": [
+        48,
+        23
+      ],
+      "frames": 295,
+      "deaths": 0,
+      "exited": true,
+      "family": "spent-faces",
+      "movement": [
+        {
+          "type": "ultra",
+          "frame": 5
+        },
+        {
+          "type": "hyper",
+          "frame": 14,
+          "x": 282,
+          "y": 152
+        },
+        {
+          "type": "reverse-hyper",
+          "frame": 14,
+          "x": 282,
+          "y": 152,
+          "dir": -1
+        },
+        {
+          "type": "vector-refill",
+          "frame": 94,
+          "x": 108,
+          "y": 132,
+          "dx": 0,
+          "dy": -1,
+          "once": false
+        },
+        {
+          "type": "wallbounce",
+          "frame": 123,
+          "x": 104,
+          "y": 102,
+          "dir": 1
+        },
+        {
+          "type": "vector-refill",
+          "frame": 141,
+          "x": 156,
+          "y": 44,
+          "dx": 1,
+          "dy": 0,
+          "once": false
+        },
+        {
+          "type": "vector-refill",
+          "frame": 178,
+          "x": 212,
+          "y": 52,
+          "dx": 1,
+          "dy": 0,
+          "once": false
+        }
+      ],
+      "positiveChecks": 3,
+      "shortcutChecks": 3
+    },
+    {
+      "id": "bank-f60",
+      "side": "fractured",
+      "name": "The Faces Left to You",
+      "format": "extended",
+      "dimensions": [
+        40,
+        52
+      ],
+      "frames": 676,
+      "deaths": 0,
+      "exited": true,
+      "family": "spent-faces",
+      "movement": [
+        {
+          "type": "vector-refill",
+          "frame": 155,
+          "x": 156,
+          "y": 284,
+          "dx": 0,
+          "dy": -1,
+          "once": false
+        },
+        {
+          "type": "vector-refill",
+          "frame": 199,
+          "x": 196,
+          "y": 292,
+          "dx": 0,
+          "dy": -1,
+          "once": false
+        },
+        {
+          "type": "vector-refill",
+          "frame": 411,
+          "x": 156,
+          "y": 172,
+          "dx": 0,
+          "dy": -1,
+          "once": false
+        },
+        {
+          "type": "wallbounce",
+          "frame": 545,
+          "x": 104,
+          "y": 107,
+          "dir": 1
+        },
+        {
+          "type": "vector-refill",
+          "frame": 563,
+          "x": 156,
+          "y": 60,
+          "dx": 1,
+          "dy": 0,
+          "once": false
+        }
+      ],
+      "positiveChecks": 3,
+      "shortcutChecks": 3
+    },
+    {
+      "id": "bank-f61",
+      "side": "fractured",
+      "name": "Answer Without Landing",
+      "format": "compact",
+      "dimensions": [
+        40,
+        23
+      ],
+      "frames": 143,
+      "deaths": 0,
+      "exited": true,
+      "family": "reply-and-cycle",
+      "movement": [
+        {
+          "type": "ultra",
+          "frame": 27
+        },
+        {
+          "type": "hyper",
+          "frame": 31,
+          "x": 80,
+          "y": 160
+        },
+        {
+          "type": "parry",
+          "frame": 48,
+          "x": 166,
+          "y": 136
+        }
+      ],
+      "positiveChecks": 3,
+      "shortcutChecks": 3
+    },
+    {
+      "id": "bank-f62",
+      "side": "fractured",
+      "name": "The Window You Return Through",
+      "format": "extended",
+      "dimensions": [
+        48,
+        36
+      ],
+      "frames": 530,
+      "deaths": 0,
+      "exited": true,
+      "family": "reply-and-cycle",
+      "movement": [
+        {
+          "type": "recoil-jump",
+          "frame": 103,
+          "x": 117,
+          "y": 252,
+          "source": "recoil:Low",
+          "vx": 56.66666666666667,
+          "vy": -225
+        },
+        {
+          "type": "super",
+          "frame": 346,
+          "x": 334,
+          "y": 176
+        },
+        {
+          "type": "reverse-super",
+          "frame": 346,
+          "x": 334,
+          "y": 176,
+          "dir": -1
+        },
+        {
+          "type": "recoil-jump",
+          "frame": 346,
+          "x": 330,
+          "y": 172,
+          "source": "recoil:Return",
+          "vx": -260,
+          "vy": -225
+        },
+        {
+          "type": "vector-refill",
+          "frame": 395,
+          "x": 196,
+          "y": 68,
+          "dx": -1,
+          "dy": 0,
+          "once": false
+        }
+      ],
+      "positiveChecks": 3,
+      "shortcutChecks": 5
+    }
+  ]
+}

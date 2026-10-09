@@ -24,3 +24,15 @@ docs/**/*.gif
 docs/**/*.mp4
 docs/**/*.webm
 scripts/climb/.cache/
+
+# Local playtest submissions and private deployment seed
+scripts/playtest-release/.cache/
+netlify/functions/playtest-seed.json
+
+# Cloudflare local state and dry-run bundles
+.wrangler/
+cloudflare-dist/
+.dev.vars
+
+# Private local release snapshots; not application source.
+scripts/playtest-release/before/

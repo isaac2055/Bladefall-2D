@@ -1,0 +1,1113 @@
+{
+  "room": {
+    "id": "bank-f43",
+    "name": "The Lift Becomes a Wall",
+    "palette": "cliffs",
+    "study": true,
+    "movement": "survive-2",
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "exit": "right",
+    "beams": [
+      {
+        "c": 11,
+        "r": 0,
+        "dir": "d"
+      },
+      {
+        "c": 12,
+        "r": 0,
+        "dir": "d"
+      },
+      {
+        "c": 1,
+        "r": 7,
+        "dir": "r"
+      }
+    ],
+    "movingHooks": [
+      {
+        "id": "Lift",
+        "c": 11,
+        "r": 12,
+        "w": 2,
+        "h": 3,
+        "to": [
+          0,
+          -7
+        ],
+        "period": 360
+      }
+    ],
+    "map": [
+      "########################################",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#...................<###################",
+      "#...................<###################",
+      "#...................<###################",
+      "#...................<###################",
+      "#...................<###################",
+      "#...................<###################",
+      "#...................<###################",
+      "#...................<###################",
+      "#...................<###################",
+      "#...................<###################",
+      "#...................<###################",
+      "#....P.........c....<###################",
+      "#########...........<###################",
+      "#########...........<###################",
+      "#########^^^^^^^^^^^<###################",
+      "########################################"
+    ],
+    "hint": "Take the low tally \u00b7 Ride up, hang right on a longer rope, then Updash and hold Jump beside the lift.",
+    "question": "When should you stop riding the lift and start pushing away from it?",
+    "showHintAtRest": true
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 9,
+    "run": 4,
+    "acceptance": "banked",
+    "difficulty": 3,
+    "role": "a carrier becomes the launch face",
+    "worlds": [
+      21,
+      24,
+      26
+    ],
+    "tags": [
+      "moving-hook",
+      "wallbounce-grace",
+      "rope-length",
+      "beam-shield",
+      "tally"
+    ],
+    "newMechanics": [
+      "moving-hook",
+      "wallbounce-grace"
+    ],
+    "composition": {
+      "movement": "Late wallbounce",
+      "entity": "Moving hook carrier",
+      "dependency": "The carrier transports the knight, shades the horizontal beam, and supplies the moving wall reached only after the upward dash ends."
+    },
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "moving-hook",
+      "stone-lit",
+      "moving-unhook",
+      "late-wallbounce"
+    ],
+    "humanReview": "Qualitative user approval; numeric ratings remain unmeasured.",
+    "entrance": "Low western boarding ledge.",
+    "exit": "Eastern gallery above the horizontal sunbeam.",
+    "solution": "Catch the vertical carrier from the west and swing right through the low tally. Reel in as it climbs. Near its upper station, pay out and gently pump right so the knight hangs just outside its right side, about five tiles below its lower corner. Updash along that side and hold Jump as the burst finishes. The last residual rise reaches the moving wall during the new grace window, producing the rightward wallbounce. The carrier also shades the horizontal beam during departure; the twin overhead beams make standing on its top unsafe.",
+    "nearestExisting": "F34 creates a fixed phase wall and trades it for a landing. F37 transfers between moving rings. Here the same carrier is transport, a moving beam shade, and the wall contacted after the dash has finished; rope length sets whether its lower corner arrives in time.",
+    "novelty": "The attachment must be lengthened before it can be abandoned: maximum reeling is not the best launch. The knight returns upward along the carrier instead of simply flinging away from the rope.",
+    "designNotes": "The intended tape genuinely emits late-wallbounce on post-dash contact, not only the legacy wallbounce. Buffered Jump spans the arrival, and several nearby payout/aim positions are saved. Conventional earlier wallbounces remain valid if a player arranges them. No named-tech exit condition.",
+    "positiveChecks": [
+      {
+        "name": "Payout 19; aim swing 7; Jump after 13",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            50,
+            "rg"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            19,
+            "rdg"
+          ],
+          [
+            7,
+            "rg"
+          ],
+          [
+            13,
+            "ux"
+          ],
+          [
+            16,
+            "j"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 305,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "stone-lit",
+            "gate-open",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "hook": 1,
+            "moving-hook": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Payout 19; aim swing 7; Jump after 17",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            50,
+            "rg"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            19,
+            "rdg"
+          ],
+          [
+            7,
+            "rg"
+          ],
+          [
+            17,
+            "ux"
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 305,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "stone-lit",
+            "gate-open",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "hook": 1,
+            "moving-hook": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Payout 20; aim swing 7; Jump after 13",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            50,
+            "rg"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            20,
+            "rdg"
+          ],
+          [
+            7,
+            "rg"
+          ],
+          [
+            13,
+            "ux"
+          ],
+          [
+            16,
+            "j"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 307,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "stone-lit",
+            "gate-open",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "hook": 1,
+            "moving-hook": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Payout 20; aim swing 7; Jump after 17",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            50,
+            "rg"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            20,
+            "rdg"
+          ],
+          [
+            7,
+            "rg"
+          ],
+          [
+            17,
+            "ux"
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 307,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "stone-lit",
+            "gate-open",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "hook": 1,
+            "moving-hook": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Payout 20; aim swing 8; Jump after 16",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            50,
+            "rg"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            20,
+            "rdg"
+          ],
+          [
+            8,
+            "rg"
+          ],
+          [
+            16,
+            "ux"
+          ],
+          [
+            13,
+            "j"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 308,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "stone-lit",
+            "gate-open",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "hook": 1,
+            "moving-hook": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Payout 20; aim swing 9; Jump after 15",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            50,
+            "rg"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            20,
+            "rdg"
+          ],
+          [
+            9,
+            "rg"
+          ],
+          [
+            15,
+            "ux"
+          ],
+          [
+            14,
+            "j"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 308,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "stone-lit",
+            "gate-open",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "hook": 1,
+            "moving-hook": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Payout 21; aim swing 7; Jump after 15",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            50,
+            "rg"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            21,
+            "rdg"
+          ],
+          [
+            7,
+            "rg"
+          ],
+          [
+            15,
+            "ux"
+          ],
+          [
+            14,
+            "j"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 308,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "stone-lit",
+            "gate-open",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "hook": 1,
+            "moving-hook": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Payout 21; aim swing 8; Jump after 14",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            50,
+            "rg"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            21,
+            "rdg"
+          ],
+          [
+            8,
+            "rg"
+          ],
+          [
+            14,
+            "ux"
+          ],
+          [
+            15,
+            "j"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 309,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "stone-lit",
+            "gate-open",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "hook": 1,
+            "moving-hook": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Payout 21; aim swing 9; Jump after 13",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            50,
+            "rg"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            21,
+            "rdg"
+          ],
+          [
+            9,
+            "rg"
+          ],
+          [
+            13,
+            "ux"
+          ],
+          [
+            16,
+            "j"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 310,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "stone-lit",
+            "gate-open",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "moving-hook-turn",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "hook": 1,
+            "moving-hook": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Release with Jump and swing directly toward exit",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            50,
+            "rg"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            20,
+            "rdg"
+          ],
+          [
+            8,
+            "rg"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "stone-lit",
+            "gate-open",
+            "moving-unhook",
+            "unhook",
+            "moving-hook-turn",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "moving-hook-turn": 1,
+            "death": 2,
+            "respawn": 2
+          }
+        }
+      },
+      {
+        "name": "Updash without the wallbounce",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            50,
+            "rg"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            20,
+            "rdg"
+          ],
+          [
+            8,
+            "rg"
+          ],
+          [
+            13,
+            "ux"
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "stone-lit",
+            "gate-open",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "moving-hook-turn",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "hook": 1,
+            "moving-hook": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "moving-hook-turn": 1,
+            "death": 2,
+            "respawn": 2
+          }
+        }
+      },
+      {
+        "name": "Stay fully reeled and updash into the lit carriage top",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            50,
+            "rg"
+          ],
+          [
+            100,
+            "ug"
+          ],
+          [
+            13,
+            "ux"
+          ],
+          [
+            16,
+            "j"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "stone-lit",
+            "gate-open",
+            "moving-unhook",
+            "unhook",
+            "dash",
+            "moving-hook-turn",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "hook": 1,
+            "moving-hook": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "dash": 1,
+            "moving-hook-turn": 1,
+            "death": 2,
+            "respawn": 2
+          }
+        }
+      }
+    ],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 308,
+      "events": [
+        "jump",
+        "hook",
+        "moving-hook",
+        "stone-lit",
+        "gate-open",
+        "moving-unhook",
+        "unhook",
+        "dash",
+        "wallbounce",
+        "late-wallbounce",
+        "moving-hook-turn",
+        "land",
+        "refill-dash",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 1,
+        "hook": 1,
+        "moving-hook": 1,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "moving-unhook": 1,
+        "unhook": 1,
+        "dash": 1,
+        "wallbounce": 1,
+        "late-wallbounce": 1,
+        "moving-hook-turn": 1,
+        "land": 1,
+        "refill-dash": 1,
+        "exit": 1
+      }
+    },
+    "tolerance": {
+      "note": "37 successful sampled combinations of nearby rope payout, positioning and late-Jump timing. This covers an actual moving-wall arrival."
+    },
+    "review": {
+      "decision": "banked",
+      "comment": "Nice; an easier Fractured level."
+    },
+    "feedbackHistory": [
+      {
+        "decision": "banked-fractured",
+        "comment": "Nice; an easier Fractured level."
+      }
+    ]
+  },
+  "tape": [
+    [
+      10,
+      "r"
+    ],
+    [
+      12,
+      "rjg"
+    ],
+    [
+      50,
+      "rg"
+    ],
+    [
+      50,
+      "ug"
+    ],
+    [
+      20,
+      "rdg"
+    ],
+    [
+      8,
+      "rg"
+    ],
+    [
+      13,
+      "ux"
+    ],
+    [
+      16,
+      "j"
+    ],
+    [
+      150,
+      "r"
+    ]
+  ]
+}

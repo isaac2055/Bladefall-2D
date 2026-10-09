@@ -1,0 +1,219 @@
+{
+  "room": {
+    "id": "bank-b11",
+    "name": "Door Becomes Stair",
+    "hint": "Strike the brass hub to turn the arm. A turn needs clear space.",
+    "question": "The far pocket is low and the way home is high. Which shape can serve both journeys?",
+    "map": [
+      "########################################",
+      ".....G..............####################",
+      ".....G..............####################",
+      ".....G..............####################",
+      ".....G..............####################",
+      "############........####################",
+      "#>.........>........####################",
+      "#>.........>........####################",
+      "#>.........>........####################",
+      "#>.........>...........................#",
+      "#>.........>........................c..#",
+      "#>.........>.....................#######",
+      "#>.........>.....................#######",
+      "#>...............................#######",
+      "#>..............##...............#######",
+      "#>........######.................#######",
+      "#................................#######",
+      "#.P..............................#######",
+      "########.........................#######",
+      "########.........................#######",
+      "########.........................#######",
+      "########^^^^^^^^^^^^^^^^^^^^^^^^^#######",
+      "########################################"
+    ],
+    "palette": "causeway",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "exit": "left",
+    "hingeArms": [
+      {
+        "id": "A",
+        "c": 18,
+        "r": 11,
+        "length": 10,
+        "dir": "right"
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 2,
+    "difficulty": 3,
+    "role": "solve",
+    "worlds": [
+      11,
+      16
+    ],
+    "tags": [
+      "hinge-arm",
+      "return-route",
+      "climbable-wall"
+    ],
+    "newMechanics": [
+      "hinge-arm"
+    ],
+    "entrance": "See P in map.",
+    "exit": "Left opening above the entrance.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "hinge-turn",
+      "stone-lit",
+      "gate-open"
+    ],
+    "solution": "Climb the two small perches, cross the horizontal arm under the low roof, and collect the tally in the far pocket. Return to the small perch below-left of the hub. Strike upward to turn the arm down, left, then up while standing clear of each new pose. Climb its vertical length and jump left to the upper gallery above the entrance.",
+    "nearestExisting": "p124 Out and Back uses a low outward road and high return; n2 Bell Stop positions a stone as a step. Here the low roof makes the horizontal bridge a necessary grounded crossing, then that same bridge is retired and rotated into the high return wall.",
+    "novelty": "One structure must be understood in two dimensions: first walk its length, then climb its length. The high exit is behind the start and the far bank only contains an objective, so a forward chain does not solve it.",
+    "route": {
+      "frames": 613,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "dash",
+        "land",
+        "refill-dash",
+        "stone-lit",
+        "gate-open",
+        "strike",
+        "hinge-turn",
+        "grab",
+        "walljump",
+        "exit"
+      ],
+      "movement": "Ordinary jump, dash, climb and device actions; no advanced momentum."
+    }
+  },
+  "tape": [
+    [
+      20,
+      "r"
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      5,
+      "r"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      15,
+      "r"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      16,
+      "j"
+    ],
+    [
+      55,
+      "r"
+    ],
+    [
+      3,
+      "rj"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      38,
+      "r"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      24,
+      "l"
+    ],
+    [
+      3,
+      "lj"
+    ],
+    [
+      5,
+      "lx"
+    ],
+    [
+      65,
+      "l"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      1,
+      "us"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      1,
+      "us"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      1,
+      "us"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      8,
+      "j"
+    ],
+    [
+      100,
+      "rgu"
+    ],
+    [
+      4,
+      "lj"
+    ],
+    [
+      5,
+      "lx"
+    ],
+    [
+      90,
+      "l"
+    ]
+  ]
+}

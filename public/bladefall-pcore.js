@@ -39,9 +39,11 @@ const K=Object.freeze({
 
 /* ---------------------------------------------------------------- devices (7.254)
    Later regions add their devices as modules that register hooks here, following the portals pattern:
-   (root.BladefallPrecisionDevices ||= []).push({name, reset, input, before, forces, airJump, after, gateHold}).
+   (root.BladefallPrecisionDevices ||= []).push({name, reset, ready, input, before, forces, airJump, after, gateHold}).
    Each hook is optional. Device entities carry dev:true and answer isSolid through their own `solid` flag
    (and `thru` for one-way tops); a device that presses plates sets `presses`. */
+// Run 2 is opt-in. Existing rooms keep their original movement and contact rules.
+const SURVIVE2=Object.freeze({pogoLowSpeed:-135,intentFrames:5,wallbounceGraceFrames:6,reverseGraceFrames:8});
 const devs=()=>root.BladefallPrecisionDevices||[];
 function devCall(name,...a){let out;for(const d of devs())if(d[name]){const v=d[name](...a);if(v!==undefined&&out===undefined)out=v;}return out;}
 function devAny(name,...a){let any=false;for(const d of devs())if(d[name]&&d[name](...a))any=true;return any;}
@@ -141,7 +143,8 @@ function makePlayer(room){
   dashTimer:0,dashCooldown:0,dashRefillCooldown:0,dashDir:{x:1,y:0},beforeDash:{x:0,y:0},dashAim:false,ducking:false,
   wallSlide:K.wallSlideFrames,wallBoostDir:0,wallBoostTimer:0,climbNoMove:0,retainTimer:0,retained:0,
   maxFall:K.maxFall,liftX:0,liftY:0,liftTimer:0,carrying:null,strikeTimer:0,strikeCooldown:0,strikeDir:{x:1,y:0},strikeHit:new Set(),
-  deadTimer:0,respawnTimer:0,dashFlash:0,parryTimer:0,parryCooldown:0,fling:false,portalCool:0};
+  deadTimer:0,respawnTimer:0,dashFlash:0,parryTimer:0,parryCooldown:0,fling:false,portalCool:0,
+  ...(room.def.movement==='survive-2'?{move2:{jumpHeld:false,jumpIntent:0,grabArmed:false,grabIntent:0,inputX:0,wallGrace:0,wallGraceFrame:-1,naturalDashFrame:-1,reverse:null}}:{})};
 }
 function loadRoom(g,index,respawn=false){
  if(g.room)devCall('unload',g);   // e.g. a flipped room is turned back upright before it is rebuilt
@@ -156,6 +159,8 @@ function loadRoom(g,index,respawn=false){
  root.BladefallPrecisionFoes?.reset(g);
  root.BladefallPrecisionPortals?.reset(g);
  devCall('reset',g);
+ // Some devices inspect other devices: the first light trace needs every blocking body in place.
+ devCall('ready',g);
 }
 function resetRoom(g){const d=g.deaths,rd=g.roomDeaths;loadRoom(g,g.roomIndex,true);g.deaths=d;g.roomDeaths=rd;}
 
@@ -223,6 +228,13 @@ function tryShift(g,a,dx,dy,ignore){if(solidAt(g,a.x+dx,a.y+dy,a.w,a.h,ignore))r
 function readInput(g,raw){
  const prev=g.prev,cur={l:!!raw.l,r:!!raw.r,u:!!raw.u,d:!!raw.d,jump:!!raw.jump,dash:!!raw.dash,grab:!!raw.grab,strike:!!raw.strike,parry:!!raw.parry,portal:!!raw.portal};
  const pressed=k=>cur[k]&&!prev[k];
+ const m=g.p?.move2;if(m){
+  m.jumpHeld=cur.jump;m.inputX=(cur.r?1:0)-(cur.l?1:0);
+  if(pressed('jump'))m.jumpIntent=SURVIVE2.intentFrames;
+  if(pressed('grab')){m.grabArmed=true;m.grabIntent=SURVIVE2.intentFrames;m.wallGrace=0;}
+  // A fresh held grab stays armed; releasing it leaves a short contact buffer.
+  if(m.grabArmed&&(cur.grab||prev.grab))m.grabIntent=SURVIVE2.intentFrames;
+ }
  if(pressed('jump'))g.buf.jump=K.bufferFrames;
  if(pressed('dash'))g.buf.dash=K.bufferFrames;
  if(pressed('grab'))g.buf.grab=3;
@@ -244,6 +256,12 @@ function step(g,raw={}){
  // so a jump pressed up to four frames before touching down still happens.
  if(g.freeze>0){readInput(g,raw);g.freeze--;return;}
  for(const k in g.buf)if(g.buf[k]>0)g.buf[k]--;
+ const motion=g.p.move2;if(motion){
+  if(g.p.state!=='normal'&&g.p.state!=='dash')motion.wallGrace=0;
+  if(motion.jumpIntent>0)motion.jumpIntent--;
+  if(motion.grabIntent>0)motion.grabIntent--;
+  if(!motion.grabIntent&&!g.prev.grab)motion.grabArmed=false;
+ }
  const inp=readInput(g,raw);
  g.roomFrame++;
  updateEntities(g,inp);
@@ -256,6 +274,10 @@ function step(g,raw={}){
  root.BladefallPrecisionFoes?.before(g,inp);
  root.BladefallPrecisionPortals?.before(g,inp);
  devCall('before',g,inp);
+ // Echo exchanges happen in the before hooks, so cancel their old contact window before Jump can use it.
+ if(p.move2?.wallGrace>0&&g.events.some(e=>e.frame===g.frame&&(e.type==='echo-swap'||(e.type==='portal-pass'&&e.kind==='knight'))))p.move2.wallGrace=0;
+ // A ground-dash reversal gets a brief late Jump window. Other contacts never inherit it.
+ if(p.move2?.reverse&&(p.state!=='normal'&&p.state!=='dash'||p.carrying||inp.grab||inp.parry||p.parryTimer>0||g.events.some(e=>e.frame===g.frame&&(e.type==='echo-swap'||e.type==='portal-pass'))))p.move2.reverse=null;
  updatePlayer(g,p,inp);
  if(p.state!=='dead')interact(g,p,inp);
  if(p.state!=='dead')root.BladefallPrecisionCombat?.after(g,inp);
@@ -263,6 +285,12 @@ function step(g,raw={}){
  if(p.state!=='dead')root.BladefallPrecisionPortals?.after(g,inp);
  if(p.state!=='dead')devCall('after',g,inp);
  if(p.state!=='dead')checkExit(g,p);
+ if(p.move2?.reverse){const r=p.move2.reverse;if(p.state!=='normal'&&p.state!=='dash'||p.carrying||p.state==='normal'&&r.left===0||p.onGround&&!p.wasGround&&p.state!=='dash'||p.y>r.y+8||g.events.some(e=>e.frame===g.frame&&(e.type==='echo-swap'||e.type==='portal-pass')))p.move2.reverse=null;else if(r.left>0&&r.frame!==g.roomFrame&&--r.left===0)p.move2.reverse=null;}
+ if(p.move2?.wallGrace>0){
+  // Contact grace is not carried through another movement state or a teleport.
+  if(p.state!=='normal'||p.carrying||g.events.some(e=>e.frame===g.frame&&(e.type==='echo-swap'||(e.type==='portal-pass'&&e.kind==='knight'))))p.move2.wallGrace=0;
+  else if(p.move2.wallGraceFrame!==g.roomFrame)p.move2.wallGrace--;
+ }
 }
 
 /* ---------------------------------------------------------------- parry (rooms with foes)
@@ -315,25 +343,33 @@ function liftBoost(p){
 }
 
 function jump(g,p,inp){
+ if(p.move2){p.move2.wallGrace=0;p.move2.reverse=null;}
  g.buf.jump=0;p.jumpGrace=0;p.varJump=K.varJumpFrames;p.autoJump=false;p.wallSlide=K.wallSlideFrames;p.wallBoostTimer=0;
  p.vx+=K.jumpHBoost*inp.mx;p.vy=K.jumpSpeed;const l=liftBoost(p);p.vx+=l.x;p.vy+=l.y;p.varJumpSpeed=p.vy;p.liftTimer=0;
  emit(g,'jump',{x:p.x+4,y:p.y+p.h,lift:l.x||l.y?1:0});
 }
 function superJump(g,p,inp){
+ if(p.move2)p.move2.reverse=null;
  g.buf.jump=0;p.jumpGrace=0;p.varJump=K.varJumpFrames;p.autoJump=false;p.wallSlide=K.wallSlideFrames;
- const dir=sign(p.dashDir.x)||p.facing;p.facing=dir;
+ const oldDir=sign(p.dashDir.x)||p.facing,dir=p.move2?.inputX||oldDir;p.facing=dir;
+ // A reversal replaces any velocity waiting to be restored from the outgoing wall contact.
+ if(p.move2&&dir!==oldDir){p.retainTimer=0;p.retained=0;}
+ if(p.move2)p.move2.wallGrace=0;
  p.vx=K.superJumpH*dir;p.vy=K.jumpSpeed;
  const hyper=p.ducking;if(hyper){p.vx*=K.hyperXMult;p.vy*=K.hyperYMult;p.ducking=false;}
  const l=liftBoost(p);p.vx+=l.x;p.vy+=l.y;p.varJumpSpeed=p.vy;p.liftTimer=0;
  p.state='normal';emit(g,hyper?'hyper':'super',{x:p.x+4,y:p.y+p.h});
+ if(p.move2&&dir!==oldDir)emit(g,hyper?'reverse-hyper':'reverse-super',{x:p.x+4,y:p.y+p.h,dir});
 }
 function wallJump(g,p,inp,dir){
+ if(p.move2){p.move2.wallGrace=0;p.move2.reverse=null;}
  g.buf.jump=0;p.ducking=false;p.jumpGrace=0;p.varJump=K.varJumpFrames;p.autoJump=false;p.wallSlide=K.wallSlideFrames;p.wallBoostTimer=0;
  if(inp.mx!==0){p.forceMoveX=dir;p.forceMoveTimer=K.wallJumpForceFrames;}
  p.vx=K.wallJumpH*dir;p.vy=K.jumpSpeed;const l=liftBoost(p);p.vx+=l.x;p.vy+=l.y;p.varJumpSpeed=p.vy;p.facing=dir;
  p.state='normal';emit(g,'walljump',{x:p.x+(dir>0?0:8),y:p.y+6,dir});
 }
 function superWallJump(g,p,inp,dir){
+ if(p.move2){p.move2.wallGrace=0;p.move2.reverse=null;}
  g.buf.jump=0;p.ducking=false;p.jumpGrace=0;p.varJump=K.superWallVarFrames;p.autoJump=false;p.wallSlide=K.wallSlideFrames;p.wallBoostTimer=0;
  p.vx=K.superWallJumpH*dir;p.vy=K.superWallJumpSpeed;const l=liftBoost(p);p.vx+=l.x;p.vy+=l.y;p.varJumpSpeed=p.vy;p.facing=dir;
  p.state='normal';emit(g,'wallbounce',{x:p.x+(dir>0?0:8),y:p.y+6,dir});
@@ -345,6 +381,7 @@ function climbJump(g,p,inp){
  p.state='normal';emit(g,'climbjump',{x:p.x+4,y:p.y+p.h});
 }
 function startDash(g,p,inp){
+ if(p.move2){p.move2.wallGrace=0;p.move2.reverse=null;}
  g.buf.dash=0;p.dashes--;p.state='dash';p.dashTimer=K.dashFrames;p.dashCooldown=K.dashCooldownFrames;p.dashRefillCooldown=K.dashRefillCooldownFrames;
  p.beforeDash={x:p.vx,y:p.vy};p.pressAim={x:inp?inp.mx:0,y:inp?inp.my:0};p.vx=0;p.vy=0;p.dashAim=true;p.ducking=false;p.wallBoostTimer=0;p.varJump=0;
  g.freeze=K.dashFreezeFrames;
@@ -369,13 +406,17 @@ function updatePlayer(g,p,inp){
  if(p.varJump>0)p.varJump--;
  const mx=p.forceMoveTimer>0?p.forceMoveX:inp.mx;
  const I={...inp,mx};
+ if(p.move2&&(p.state!=='normal'||p.carrying||inp.grab||inp.strike||inp.parry||p.strikeTimer>0||p.parryTimer>0))p.move2.wallGrace=0;
 
- // drop-through (g.dropThru, set by The Climb, 7.269): down + jump on a one-way ledge falls through it
+ // Down + jump drops through one-way ledges in The Climb or a room that opts in.
  if(p.dropT>0)p.dropT--;
- if(g.dropThru&&inp.my>0&&g.buf.jump>0&&p.state==='normal'&&thruBelow(g,p.x,p.y,p.w,p.h)&&!solidAt(g,p.x,p.y+1,p.w,p.h)){g.buf.jump=0;p.dropT=8;p.jumpGrace=0;p.y+=1;}
+ if((g.dropThru||g.room.def.dropThru)&&inp.my>0&&g.buf.jump>0&&p.state==='normal'&&thruBelow(g,p.x,p.y,p.w,p.h)&&!solidAt(g,p.x,p.y+1,p.w,p.h)){g.buf.jump=0;p.dropT=8;p.jumpGrace=0;p.y+=1;}
  p.wasGround=p.onGround;p.onGround=onGroundCheck(g,p);
+ // A buffered Jump on a new landing belongs to that landing, not to the departed dash.
+ if(p.move2?.reverse&&p.onGround&&!p.wasGround&&p.state!=='dash')p.move2.reverse=null;
  if((p.fling||p.coast)&&(p.onGround||p.state==='climb'||p.state==='dash'))p.fling=p.coast=false;
  if(p.onGround){
+  if(p.move2)p.move2.wallGrace=0;
   if(!p.wasGround&&p.lastFallSpeed>40)emit(g,'land',{x:p.x+4,y:p.y+p.h,speed:p.lastFallSpeed});
   p.jumpGrace=K.jumpGraceFrames;p.wallSlide=K.wallSlideFrames;
   if(p.state!=='climb'){refillStamina(p);if(p.dashRefillCooldown<=0)refillDash(g,p);}
@@ -386,13 +427,15 @@ function updatePlayer(g,p,inp){
  // Wall-speed retention: hit a wall at speed, clear it within four frames, keep the speed.
  if(p.retainTimer>0){p.retainTimer--;if(!solidAt(g,p.x+sign(p.retained),p.y,p.w,p.h)){p.vx=p.retained;p.retainTimer=0;}}
 
- // strike (normal and climb states)
- if(g.buf.strike>0&&p.strikeCooldown<=0&&p.state!=='dash'&&!p.carrying&&!(p.parryTimer>0)){
+ // A survive-2 ground dash can accept a slightly late cut; its downward aim still skims horizontally.
+ const dashCut=!!(p.move2?.reverse&&p.state==='dash'&&!p.dashAim&&p.dashDir.y===0);
+ if(g.buf.strike>0&&p.strikeCooldown<=0&&(p.state!=='dash'||dashCut)&&!p.carrying&&!(p.parryTimer>0)){
+  if(p.move2){p.move2.wallGrace=0;if(p.state!=='dash')p.move2.reverse=null;}
   g.buf.strike=0;p.strikeTimer=K.strikeFrames;p.strikeCooldown=K.strikeCooldownFrames;p.strikeHit.clear();
   const side=p.state==='climb'?-p.facing:p.facing;
   // aim8 (a room flag; The Climb, 7.268): the blade cuts in every direction a dash can go, diagonals too
-  if(g.room.def.aim8)p.strikeDir=inp.my<0?{x:inp.mx,y:-1}:(inp.my>0&&!p.onGround?{x:inp.mx,y:1}:{x:inp.mx||side,y:0});
-  else p.strikeDir=inp.my<0?{x:0,y:-1}:(inp.my>0&&!p.onGround?{x:0,y:1}:{x:side,y:0});
+  if(g.room.def.aim8)p.strikeDir=inp.my<0?{x:inp.mx,y:-1}:(inp.my>0&&!p.onGround&&!dashCut?{x:inp.mx,y:1}:{x:inp.mx||side,y:0});
+  else p.strikeDir=inp.my<0?{x:0,y:-1}:(inp.my>0&&!p.onGround&&!dashCut?{x:0,y:1}:{x:side,y:0});
   emit(g,'strike',{dir:p.strikeDir});
  }
 
@@ -401,25 +444,49 @@ function updatePlayer(g,p,inp){
  else if(p.state==='dash')dashUpdate(g,p,I);
  if(p.state==='dead')return;
 
- // Carried lantern follows before the move so it can test the space it will occupy.
+ // Device forces act before movement; carried cargo follows the resolved player position.
  devCall('forces',g,p,inp);
  if(p.state==='dead')return;
  const hitH=(b,s)=>onCollideH(g,p,b,s),hitV=(b,s)=>onCollideV(g,p,b,s);
  moveX(g,p,p.vx*DT+(p.pushX||0),hitH);p.pushX=0;
  if(p.state!=='dead')moveY(g,p,p.vy*DT,hitV,undefined,!(p.dropT>0));
+ if(p.move2&&(p.state==='dash'||p.move2.naturalDashFrame===g.roomFrame))tryDashCatch(g,p);
  if(p.carrying){p.carrying.x=p.x;p.carrying.y=p.y-8;}
  if(p.strikeTimer>0)p.strikeTimer--;
 }
 
+// A dash catch keeps its actual velocity and never refunds the spent dash. Carry gravity
+// takes over on the next normal tick. Holding Grab needs a fresh press since the last catch.
+function tryDashCatch(g,p){
+ const m=p.move2;if(!m||!m.grabArmed||m.grabIntent<=0||p.dashAim||p.carrying||p.state==='dead')return false;
+ const lan=g.ents.find(e=>e.type==='lantern'&&!e.held&&!e.returning&&overlap(p.x-4,p.y-4,p.w+8,p.h+8,e.x,e.y,e.w,e.h));
+ if(!lan)return false;
+ m.grabArmed=false;m.grabIntent=0;m.wallGrace=0;m.naturalDashFrame=-1;m.reverse=null;g.buf.grab=0;
+ lan.held=true;lan.vx=lan.vy=0;p.carrying=lan;
+ p.state='normal';p.dashTimer=0;p.dashAim=false;p.ducking=false;p.varJump=0;p.autoJump=false;p.jumpGrace=0;p.coast=true;p.fling=false;
+ emit(g,'pickup');emit(g,'cargo-dash-catch',{x:p.x+4,y:p.y+5,vx:p.vx,vy:p.vy});return true;
+}
+function tryLateReverse(g,p,inp){
+ const r=p.move2?.reverse;if(!r||g.buf.jump<=0||inp.mx!==-r.dir||p.y>r.y+8)return false;
+ p.ducking=r.hyper;superJump(g,p,inp);emit(g,'late-reverse',{x:p.x+4,y:p.y+p.h});return true;
+}
 function normalUpdate(g,p,inp){
+ if(p.move2?.reverse?.left>0&&tryLateReverse(g,p,inp))return;
+ if(p.move2?.wallGrace>0&&g.buf.jump>0){
+  let dir=0;
+  if(solidAt(g,p.x+K.superWallJumpCheck,p.y,p.w,p.h)&&!thornedFace(g,p,1))dir=-1;
+  else if(solidAt(g,p.x-K.superWallJumpCheck,p.y,p.w,p.h)&&!thornedFace(g,p,-1))dir=1;
+  if(dir){superWallJump(g,p,inp,dir);emit(g,'late-wallbounce',{x:p.x+4,y:p.y+6,dir});return;}
+ }
  if(inp.mx!==0&&p.forceMoveTimer<=0)p.facing=inp.mx;
  if(p.forceMoveTimer>0)p.facing=p.forceMoveX;
  // Grab: lanterns first, then walls.
  if(g.buf.grab>0&&!p.carrying){
   const lan=g.ents.find(e=>e.type==='lantern'&&!e.held&&!e.returning&&overlap(p.x-4,p.y-4,p.w+8,p.h+8,e.x,e.y,e.w,e.h));
-  if(lan){g.buf.grab=0;lan.held=true;lan.vx=lan.vy=0;p.carrying=lan;emit(g,'pickup');}
+  if(lan){g.buf.grab=0;lan.held=true;lan.vx=lan.vy=0;p.carrying=lan;if(p.move2){p.move2.grabArmed=false;p.move2.grabIntent=0;}emit(g,'pickup');}
  }else if(g.buf.grab>0&&p.carrying){
   g.buf.grab=0;const lan=p.carrying;p.carrying=null;lan.held=false;
+  if(p.move2){p.move2.grabArmed=false;p.move2.grabIntent=0;}
   if(inp.my>0){lan.vx=p.vx*.5;lan.vy=0;}else{lan.vx=K.throwX*p.facing+p.vx*.3;lan.vy=K.throwY;}
   // Throw from the head; if a ceiling is there, from the chest.
   lan.x=p.x;lan.y=p.y-8;if(solidAt(g,lan.x,lan.y,8,8)){lan.y=p.y;if(solidAt(g,lan.x,lan.y,8,8)){lan.x=p.x;lan.y=p.y+3;}}
@@ -468,6 +535,7 @@ function normalUpdate(g,p,inp){
 }
 
 function enterClimb(g,p){
+ if(p.move2){p.move2.wallGrace=0;p.move2.reverse=null;}
  p.state='climb';p.vx=0;p.vy*=.2;p.wallSlide=K.wallSlideFrames;p.climbNoMove=K.climbNoMoveFrames;p.wallBoostTimer=0;p.varJump=0;
  // Snap flush to the wall.
  for(let i=0;i<K.climbCheck;i++)if(!solidAt(g,p.x+p.facing,p.y,p.w,p.h))p.x+=p.facing;else break;
@@ -513,10 +581,13 @@ function dashUpdate(g,p,inp){
   if(p.dashDir.y>0&&p.dashDir.x!==0)p.ducking=true;
   emit(g,'dash',{x:p.x+4,y:p.y+6,dx:p.dashDir.x,dy:p.dashDir.y});
  }
+ if(p.move2&&tryDashCatch(g,p))return;
  // Landing during a down-diagonal dash turns it into a fast ground dash (the wavedash rule).
  if(p.onGround&&p.dashDir.x!==0&&p.dashDir.y>0){p.dashDir={x:sign(p.dashDir.x),y:0};p.vy=0;p.vx*=K.ultraMult;p.ducking=true;emit(g,'ultra');}
+ if(p.move2&&p.dashDir.y===0&&p.jumpGrace>0)p.move2.reverse={dir:sign(p.dashDir.x),hyper:p.ducking,y:p.y,left:0,frame:g.roomFrame};
  if(g.buf.jump>0){
   if(p.dashDir.y===0&&p.jumpGrace>0){superJump(g,p,inp);return;}
+  if(tryLateReverse(g,p,inp))return;
   if(p.dashDir.x===0&&p.dashDir.y<0){
    // A thorned face is not a wall to push off (7.254): the thorn strip is thin, so without this a
    // wallbounce could reach the rock behind it from five pixels away.
@@ -529,6 +600,8 @@ function dashUpdate(g,p,inp){
  }
  if(inp.grab&&p.dashTimer<K.dashFrames-2&&!p.onGround&&p.dashDir.y<=0&&climbCheck(g,p,p.facing)&&sign(p.vx)!==-p.facing){enterClimb(g,p);return;}
  if(--p.dashTimer<=0){
+  if(p.move2?.reverse){p.move2.reverse.left=SURVIVE2.reverseGraceFrames;p.move2.reverse.frame=g.roomFrame;}
+  if(p.move2){p.move2.naturalDashFrame=g.roomFrame;if(p.dashDir.x===0&&p.dashDir.y<0){p.move2.wallGrace=SURVIVE2.wallbounceGraceFrames;p.move2.wallGraceFrame=g.roomFrame;}}
   if(p.dashDir.y<=0){p.vx=p.dashDir.x*K.endDashSpeed*(Math.abs(p.vx)>K.dashSpeed?Math.abs(p.vx)/K.dashSpeed:1);p.vy=p.dashDir.y*K.endDashSpeed;}
   if(p.vy<0)p.vy*=K.endDashUpMult;
   p.state='normal';p.ducking=false;p.maxFall=K.maxFall;
@@ -710,7 +783,11 @@ function strikeBox(p){
 }
 /* Shared blade rebound: living targets and seed pods use the same movement rule. */
 function bladeRebound(g,p,d){
- if(d.y>0){p.vy=K.podSpeed;p.varJumpSpeed=p.vy;p.varJump=f(.12);p.autoJump=true;}
+ if(p.move2){p.move2.wallGrace=0;p.move2.reverse=null;}
+ if(d.y>0){
+  const loft=!p.move2||p.move2.jumpHeld||p.move2.jumpIntent>0;p.vy=loft?K.podSpeed:SURVIVE2.pogoLowSpeed;
+  if(p.move2){g.buf.jump=0;emit(g,loft?'pogo-loft':'pogo-low',{x:p.x+4,y:p.y+p.h,vy:p.vy});}
+  p.varJumpSpeed=p.vy;p.varJump=f(.12);p.autoJump=true;}
  else if(d.y<0){p.vy=K.podDown;}
  else{p.vx=-d.x*K.podSide;p.vy=Math.min(p.vy,-90);p.forceMoveX=-d.x;p.forceMoveTimer=f(.12);}
  if(p.state==='climb')p.state='normal';
@@ -768,5 +845,5 @@ function digest(g){const p=g.p;return [g.roomIndex,g.frame,p.x,p.y,p.vx.toFixed(
 root.BladefallPrecisionCore=Object.freeze({K,FPS,DT,TILE,COLS,ROWS,W,H,EMPTY,SOLID,THRU,SPIKE_UP,SPIKE_DOWN,SPIKE_LEFT,SPIKE_RIGHT,
  parseRoom,createGame,step,loadRoom,resetRoom,enterRoom,kill,solidAt,tileAt,strikeBox,digest,onGroundCheck,
  moveX,moveY,blockerAt,overlap,refillDash,bladeRebound,flipPhase,emit,PARRY,parrySuccess,
- moveSolid,tryShift,jump,spikeHit,riderOf,standingOn,groupsOf,devCall,devAny});
+ moveSolid,tryShift,jump,spikeHit,riderOf,standingOn,groupsOf,devCall,devAny,SURVIVE2});
 })(typeof window!=='undefined'?window:globalThis);

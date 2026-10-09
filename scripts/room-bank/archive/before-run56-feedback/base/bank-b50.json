@@ -1,0 +1,633 @@
+{
+  "room": {
+    "id": "bank-b50",
+    "name": "Close the Receiving Mouth",
+    "palette": "foundry",
+    "study": true,
+    "dashes": 1,
+    "lock": [
+      "parry"
+    ],
+    "map": [
+      "########################################",
+      "#............##########..!......H......H",
+      "#............##########..!......H......H",
+      "#............##########..!......H......H",
+      "#............##########..!......H......H",
+      "#............##########..!......H......H",
+      "#............##########..!......H......H",
+      "#............##########..!......H......H",
+      "#............##########..!......H......H",
+      "#............##########..!......H......H",
+      "#............##########..!......H......H",
+      "#............##########..!......H......H",
+      "#............##########..!......H......H",
+      "#............##########..!......H......H",
+      "#............##########..!......H......H",
+      "#............##########..!......H......H",
+      "#............##########..!......H......H",
+      "#............##########..!......H......H",
+      "#............##########..!.....%H......H",
+      "#...lP.MM....##########..!...._%H......H",
+      "#######%%###############}}}}}}}#########",
+      "########################################",
+      "########################################"
+    ],
+    "hint": "Close the portal line at the barrier, so its old mouth becomes the belt\u2019s stop.",
+    "question": "How do you stop the delivery belt sending its weight back through the entrance?",
+    "exit": "right",
+    "portalMode": "one",
+    "portals": [
+      {
+        "color": "orange",
+        "c": 31,
+        "r": 18,
+        "face": "l"
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 12,
+    "run": 6,
+    "collection": "run6",
+    "format": "compact",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "difficulty": 3,
+    "role": "Turn the delivery portal into the physical stop that parks its own cargo",
+    "worlds": [
+      12,
+      16,
+      20
+    ],
+    "tags": [
+      "portal",
+      "grill",
+      "conveyor",
+      "lantern",
+      "pressure-plate",
+      "state-reversal"
+    ],
+    "newMechanics": [],
+    "author": "Codex",
+    "humanReview": "Unmeasured; author estimate only.",
+    "requiredEvents": [
+      "portal-open",
+      "pickup",
+      "portal-pass",
+      "portal-close",
+      "throw",
+      "plate",
+      "held-open"
+    ],
+    "solution": "Place the blue mouth in the marked western floor, collect the lantern, and carry it into the link. After arriving on the eastern belt, walk left through the grill while still carrying the weight. Closing the blue link restores the orange opening as solid wall. Return right, stop steering and set the lantern down onto the belt. It now parks against the former mouth on the pressure plate instead of returning to the start. Jump over that wall and continue through the held-open door. The two separated door leaves need a sustained weight: the belt\u2019s brief passing contact cannot hold the whole exit passage open.",
+    "nearestExisting": "Open the Other End (F20, banked in Base) repositions a portal to change which side of a stone can be reached; B20 preserves a closed door as a ladder. This room closes its useful transport link to turn the receiving wall into a conveyor stop, with the same weight then maintaining the exit.",
+    "novelty": "The transport opening is initially the reason the delivery will not stay delivered. Destroying the link restores the piece of architecture that the belt needs as its stop.",
+    "approvedIngredients": [
+      "bank-f20",
+      "bank-b20"
+    ],
+    "positiveChecks": [
+      {
+        "name": "Take ten extra frames to retreat beyond the grill",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            1,
+            "dq"
+          ],
+          [
+            22,
+            "l"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            27,
+            "r"
+          ],
+          [
+            105,
+            "l"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            65,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 265,
+        "events": [
+          "portal-open",
+          "pickup",
+          "portal-pass",
+          "plate",
+          "held-open",
+          "land",
+          "held-close",
+          "portal-close",
+          "throw",
+          "jump",
+          "lantern-land",
+          "exit"
+        ],
+        "eventCounts": {
+          "portal-open": 1,
+          "pickup": 1,
+          "portal-pass": 1,
+          "plate": 2,
+          "held-open": 4,
+          "land": 3,
+          "held-close": 2,
+          "portal-close": 1,
+          "throw": 1,
+          "jump": 1,
+          "lantern-land": 1,
+          "exit": 1
+        }
+      },
+      {
+        "name": "Let the belt carry you six frames farther before releasing",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            1,
+            "dq"
+          ],
+          [
+            22,
+            "l"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            27,
+            "r"
+          ],
+          [
+            95,
+            "l"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            16,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            65,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 248,
+        "events": [
+          "portal-open",
+          "pickup",
+          "portal-pass",
+          "plate",
+          "held-open",
+          "land",
+          "held-close",
+          "portal-close",
+          "throw",
+          "jump",
+          "lantern-land",
+          "exit"
+        ],
+        "eventCounts": {
+          "portal-open": 1,
+          "pickup": 1,
+          "portal-pass": 1,
+          "plate": 2,
+          "held-open": 4,
+          "land": 2,
+          "held-close": 2,
+          "portal-close": 1,
+          "throw": 1,
+          "jump": 1,
+          "lantern-land": 1,
+          "exit": 1
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Keep the portal linked",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            1,
+            "dq"
+          ],
+          [
+            22,
+            "l"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            27,
+            "r"
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            65,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 0,
+        "result": "No completion.",
+        "frames": 217,
+        "events": [
+          "portal-open",
+          "pickup",
+          "portal-pass",
+          "plate",
+          "held-open",
+          "land",
+          "held-close",
+          "throw",
+          "lantern-land"
+        ],
+        "eventCounts": {
+          "portal-open": 1,
+          "pickup": 1,
+          "portal-pass": 2,
+          "plate": 2,
+          "held-open": 4,
+          "land": 2,
+          "held-close": 4,
+          "throw": 1,
+          "lantern-land": 1
+        }
+      },
+      {
+        "name": "Go without the lantern",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            1,
+            "dq"
+          ],
+          [
+            22,
+            "l"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            27,
+            "r"
+          ],
+          [
+            95,
+            "l"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            65,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 0,
+        "result": "No completion.",
+        "frames": 272,
+        "events": [
+          "portal-open",
+          "portal-pass",
+          "plate",
+          "held-open",
+          "land",
+          "held-close",
+          "portal-close",
+          "jump"
+        ],
+        "eventCounts": {
+          "portal-open": 1,
+          "portal-pass": 1,
+          "plate": 1,
+          "held-open": 2,
+          "land": 2,
+          "held-close": 2,
+          "portal-close": 1,
+          "jump": 1
+        }
+      },
+      {
+        "name": "Skip the portal opening",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            1,
+            "d"
+          ],
+          [
+            22,
+            "l"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            27,
+            "r"
+          ],
+          [
+            95,
+            "l"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            65,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 0,
+        "result": "No completion.",
+        "frames": 272,
+        "events": [
+          "pickup",
+          "throw",
+          "jump",
+          "lantern-land",
+          "land"
+        ],
+        "eventCounts": {
+          "pickup": 1,
+          "throw": 1,
+          "jump": 1,
+          "lantern-land": 1,
+          "land": 1
+        }
+      },
+      {
+        "name": "Dash through the brief plate contact while the portal stays linked",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            1,
+            "dq"
+          ],
+          [
+            22,
+            "l"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            27,
+            "r"
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            6,
+            "rx"
+          ],
+          [
+            90,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 0,
+        "frames": 215,
+        "events": [
+          "portal-open",
+          "pickup",
+          "portal-pass",
+          "plate",
+          "held-open",
+          "land",
+          "held-close",
+          "throw",
+          "jump",
+          "lantern-land",
+          "dash",
+          "refill-dash"
+        ],
+        "eventCounts": {
+          "portal-open": 1,
+          "pickup": 1,
+          "portal-pass": 2,
+          "plate": 2,
+          "held-open": 4,
+          "land": 2,
+          "held-close": 4,
+          "throw": 1,
+          "jump": 1,
+          "lantern-land": 2,
+          "dash": 1,
+          "refill-dash": 1
+        },
+        "result": "The second separated door recloses before the knight arrives; no completion."
+      }
+    ],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 250,
+      "events": [
+        "portal-open",
+        "pickup",
+        "portal-pass",
+        "plate",
+        "held-open",
+        "land",
+        "held-close",
+        "portal-close",
+        "throw",
+        "jump",
+        "lantern-land",
+        "exit"
+      ],
+      "eventCounts": {
+        "portal-open": 1,
+        "pickup": 1,
+        "portal-pass": 1,
+        "plate": 2,
+        "held-open": 4,
+        "land": 2,
+        "held-close": 2,
+        "portal-close": 1,
+        "throw": 1,
+        "jump": 1,
+        "lantern-land": 1,
+        "exit": 1
+      }
+    },
+    "endingForgiveness": "After the lantern parks, both leaves stay open and the exit is an ordinary broad walk. The two visibly separate doors prevent dashing through the fleeting plate contact while the portal remains linked. Returned cargo rests visibly on the western catch shelf rather than looping.",
+    "designNotes": "Two independently closing H groups are separated by 56px. A single thick H group would stay open around an overlapping knight, so independent leaves are necessary. The exact previously successful 155-frame linked-portal dash skip is saved as a failing regression. A visible one-way shelf above the western floor mouth catches a returned lantern, preventing its former automatic portal bounce from repeatedly pulsing the plate. The original low side-entry route is unchanged."
+  },
+  "tape": [
+    [
+      10,
+      "r"
+    ],
+    [
+      1,
+      "dq"
+    ],
+    [
+      22,
+      "l"
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      27,
+      "r"
+    ],
+    [
+      95,
+      "l"
+    ],
+    [
+      12,
+      "r"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      1,
+      "dg"
+    ],
+    [
+      28,
+      "rj"
+    ],
+    [
+      65,
+      "r"
+    ]
+  ]
+}

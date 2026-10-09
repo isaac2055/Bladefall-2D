@@ -1,0 +1,1452 @@
+{
+  "room": {
+    "id": "bank-f40",
+    "name": "Leave the Light Behind",
+    "palette": "sunspire",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "map": [
+      "########################################",
+      "#......#...#..........................G#",
+      "#......#.c.#..........................G#",
+      "#......#...#..........................G#",
+      "#......##.##..........................G#",
+      "#.....................................G#",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#..............................#########",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#........\\..........................P..#",
+      "#.................................######",
+      "#.................................######",
+      "#.................................######",
+      "#.................................######",
+      "#.................................######",
+      "#.................................######",
+      "#.................................######",
+      "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#"
+    ],
+    "dashes": 0,
+    "movingHooks": [
+      {
+        "id": "Shade",
+        "c": 28,
+        "r": 6,
+        "w": 4,
+        "to": [
+          -20,
+          0
+        ],
+        "period": 400
+      }
+    ],
+    "beams": [
+      {
+        "c": 20,
+        "r": 0,
+        "dir": "d"
+      },
+      {
+        "c": 1,
+        "r": 14,
+        "dir": "r"
+      }
+    ],
+    "hint": "A cut turns the mirror \u00b7 Your carriage also shades the receiver.",
+    "question": "When must your cover stop being cover?"
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 8,
+    "run": 3,
+    "acceptance": "banked",
+    "difficulty": 3,
+    "role": "early Fractured light-routing and moving shade",
+    "worlds": [
+      21,
+      23,
+      26
+    ],
+    "tags": [
+      "moving-hook",
+      "moving-shade",
+      "mirror",
+      "beam",
+      "return-crossing"
+    ],
+    "newMechanics": [
+      "moving-hook"
+    ],
+    "entrance": "Lower east boarding shelf.",
+    "exit": "Upper east return gallery.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "moving-hook",
+      "mirror",
+      "stone-lit",
+      "gate-open",
+      "moving-unhook"
+    ],
+    "solution": "Ride close under the carriage through the central beam. At the western end, pay out on the east side of the mirror and cut left to turn its horizontal light upward. The carriage itself initially shades the high sealed tally: leave with it so the light can reach the receiver. Reel clear of the new upward beam and stay beneath the moving cover for the eastern return.",
+    "nearestExisting": "F38 Borrow the Shadow is a body-touch objective and return ride. This version changes the western light direction with the weapon and makes the same travelling shade delay the target until the player departs.",
+    "novelty": "The travelling cover must protect the knight while allowing the newly aimed light to work behind them. Rope length, approach side and departure order now change what the same solid carriage protects.",
+    "humanReview": "User qualitative approval recorded; numeric ratings remain unmeasured.",
+    "positiveChecks": [
+      {
+        "name": "Mirror approach payout 32 frames",
+        "tape": [
+          [
+            10,
+            "l"
+          ],
+          [
+            12,
+            "ljg"
+          ],
+          [
+            130,
+            "ug"
+          ],
+          [
+            32,
+            "dg"
+          ],
+          [
+            1,
+            "lsg"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            43,
+            "ug"
+          ],
+          [
+            115,
+            "g"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 426,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "strike",
+            "mirror",
+            "moving-hook-turn",
+            "stone-lit",
+            "gate-open",
+            "moving-unhook",
+            "unhook",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "strike": 1,
+            "mirror": 1,
+            "moving-hook-turn": 2,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Mirror approach payout 33 frames",
+        "tape": [
+          [
+            10,
+            "l"
+          ],
+          [
+            12,
+            "ljg"
+          ],
+          [
+            130,
+            "ug"
+          ],
+          [
+            33,
+            "dg"
+          ],
+          [
+            1,
+            "lsg"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            43,
+            "ug"
+          ],
+          [
+            115,
+            "g"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 428,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "strike",
+            "mirror",
+            "moving-hook-turn",
+            "stone-lit",
+            "gate-open",
+            "moving-unhook",
+            "unhook",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "strike": 1,
+            "mirror": 1,
+            "moving-hook-turn": 2,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Mirror approach payout 34 frames",
+        "tape": [
+          [
+            10,
+            "l"
+          ],
+          [
+            12,
+            "ljg"
+          ],
+          [
+            130,
+            "ug"
+          ],
+          [
+            34,
+            "dg"
+          ],
+          [
+            1,
+            "lsg"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            43,
+            "ug"
+          ],
+          [
+            115,
+            "g"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 428,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "strike",
+            "mirror",
+            "moving-hook-turn",
+            "stone-lit",
+            "gate-open",
+            "moving-unhook",
+            "unhook",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "strike": 1,
+            "mirror": 1,
+            "moving-hook-turn": 2,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Mirror approach payout 36 frames",
+        "tape": [
+          [
+            10,
+            "l"
+          ],
+          [
+            12,
+            "ljg"
+          ],
+          [
+            130,
+            "ug"
+          ],
+          [
+            36,
+            "dg"
+          ],
+          [
+            1,
+            "lsg"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            43,
+            "ug"
+          ],
+          [
+            115,
+            "g"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 430,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "strike",
+            "mirror",
+            "moving-hook-turn",
+            "stone-lit",
+            "gate-open",
+            "moving-unhook",
+            "unhook",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "strike": 1,
+            "mirror": 1,
+            "moving-hook-turn": 2,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Mirror approach payout 37 frames",
+        "tape": [
+          [
+            10,
+            "l"
+          ],
+          [
+            12,
+            "ljg"
+          ],
+          [
+            130,
+            "ug"
+          ],
+          [
+            37,
+            "dg"
+          ],
+          [
+            1,
+            "lsg"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            43,
+            "ug"
+          ],
+          [
+            115,
+            "g"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 431,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "strike",
+            "mirror",
+            "moving-hook-turn",
+            "stone-lit",
+            "gate-open",
+            "moving-unhook",
+            "unhook",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "strike": 1,
+            "mirror": 1,
+            "moving-hook-turn": 2,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Mirror approach payout 38 frames",
+        "tape": [
+          [
+            10,
+            "l"
+          ],
+          [
+            12,
+            "ljg"
+          ],
+          [
+            130,
+            "ug"
+          ],
+          [
+            38,
+            "dg"
+          ],
+          [
+            1,
+            "lsg"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            43,
+            "ug"
+          ],
+          [
+            115,
+            "g"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 431,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "strike",
+            "mirror",
+            "moving-hook-turn",
+            "stone-lit",
+            "gate-open",
+            "moving-unhook",
+            "unhook",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "strike": 1,
+            "mirror": 1,
+            "moving-hook-turn": 2,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Return departure wait 112 frames",
+        "tape": [
+          [
+            10,
+            "l"
+          ],
+          [
+            12,
+            "ljg"
+          ],
+          [
+            130,
+            "ug"
+          ],
+          [
+            35,
+            "dg"
+          ],
+          [
+            1,
+            "lsg"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            43,
+            "ug"
+          ],
+          [
+            112,
+            "g"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 428,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "strike",
+            "mirror",
+            "moving-hook-turn",
+            "stone-lit",
+            "gate-open",
+            "moving-unhook",
+            "unhook",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "strike": 1,
+            "mirror": 1,
+            "moving-hook-turn": 2,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Return departure wait 113 frames",
+        "tape": [
+          [
+            10,
+            "l"
+          ],
+          [
+            12,
+            "ljg"
+          ],
+          [
+            130,
+            "ug"
+          ],
+          [
+            35,
+            "dg"
+          ],
+          [
+            1,
+            "lsg"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            43,
+            "ug"
+          ],
+          [
+            113,
+            "g"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 429,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "strike",
+            "mirror",
+            "moving-hook-turn",
+            "stone-lit",
+            "gate-open",
+            "moving-unhook",
+            "unhook",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "strike": 1,
+            "mirror": 1,
+            "moving-hook-turn": 2,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Return departure wait 114 frames",
+        "tape": [
+          [
+            10,
+            "l"
+          ],
+          [
+            12,
+            "ljg"
+          ],
+          [
+            130,
+            "ug"
+          ],
+          [
+            35,
+            "dg"
+          ],
+          [
+            1,
+            "lsg"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            43,
+            "ug"
+          ],
+          [
+            114,
+            "g"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 429,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "strike",
+            "mirror",
+            "moving-hook-turn",
+            "stone-lit",
+            "gate-open",
+            "moving-unhook",
+            "unhook",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "strike": 1,
+            "mirror": 1,
+            "moving-hook-turn": 2,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Return departure wait 116 frames",
+        "tape": [
+          [
+            10,
+            "l"
+          ],
+          [
+            12,
+            "ljg"
+          ],
+          [
+            130,
+            "ug"
+          ],
+          [
+            35,
+            "dg"
+          ],
+          [
+            1,
+            "lsg"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            43,
+            "ug"
+          ],
+          [
+            116,
+            "g"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 430,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "strike",
+            "mirror",
+            "moving-hook-turn",
+            "stone-lit",
+            "gate-open",
+            "moving-unhook",
+            "unhook",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "strike": 1,
+            "mirror": 1,
+            "moving-hook-turn": 2,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Return departure wait 117 frames",
+        "tape": [
+          [
+            10,
+            "l"
+          ],
+          [
+            12,
+            "ljg"
+          ],
+          [
+            130,
+            "ug"
+          ],
+          [
+            35,
+            "dg"
+          ],
+          [
+            1,
+            "lsg"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            43,
+            "ug"
+          ],
+          [
+            117,
+            "g"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 430,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "strike",
+            "mirror",
+            "moving-hook-turn",
+            "stone-lit",
+            "gate-open",
+            "moving-unhook",
+            "unhook",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "strike": 1,
+            "mirror": 1,
+            "moving-hook-turn": 2,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Return departure wait 118 frames",
+        "tape": [
+          [
+            10,
+            "l"
+          ],
+          [
+            12,
+            "ljg"
+          ],
+          [
+            130,
+            "ug"
+          ],
+          [
+            35,
+            "dg"
+          ],
+          [
+            1,
+            "lsg"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            43,
+            "ug"
+          ],
+          [
+            118,
+            "g"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 430,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "strike",
+            "mirror",
+            "moving-hook-turn",
+            "stone-lit",
+            "gate-open",
+            "moving-unhook",
+            "unhook",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "strike": 1,
+            "mirror": 1,
+            "moving-hook-turn": 2,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Touch the former body target without turning the mirror",
+        "tape": [
+          [
+            10,
+            "l"
+          ],
+          [
+            12,
+            "ljg"
+          ],
+          [
+            130,
+            "ug"
+          ],
+          [
+            35,
+            "dg"
+          ],
+          [
+            1,
+            "lg"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            43,
+            "ug"
+          ],
+          [
+            115,
+            "g"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0,
+          "frames": 512,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-hook-turn",
+            "moving-unhook",
+            "unhook",
+            "land"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-hook-turn": 2,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Descend beneath the mirror then aim light upward through yourself",
+        "tape": [
+          [
+            10,
+            "l"
+          ],
+          [
+            12,
+            "ljg"
+          ],
+          [
+            130,
+            "ug"
+          ],
+          [
+            45,
+            "dg"
+          ],
+          [
+            1,
+            "lsg"
+          ],
+          [
+            12,
+            "ug"
+          ],
+          [
+            43,
+            "ug"
+          ],
+          [
+            115,
+            "g"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 522,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "strike",
+            "mirror",
+            "moving-hook-turn",
+            "death",
+            "respawn",
+            "land"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "strike": 1,
+            "mirror": 1,
+            "moving-hook-turn": 2,
+            "death": 1,
+            "respawn": 1,
+            "land": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 203,
+            "x": 79,
+            "y": 121,
+            "cause": "light",
+            "vx": -20.851476269799793,
+            "vy": -90.08137341777939,
+            "i": 202
+          }
+        }
+      },
+      {
+        "name": "Turn the mirror but retain the long rope for return",
+        "tape": [
+          [
+            10,
+            "l"
+          ],
+          [
+            12,
+            "ljg"
+          ],
+          [
+            130,
+            "ug"
+          ],
+          [
+            35,
+            "dg"
+          ],
+          [
+            1,
+            "lsg"
+          ],
+          [
+            12,
+            "rg"
+          ],
+          [
+            43,
+            "g"
+          ],
+          [
+            115,
+            "g"
+          ],
+          [
+            12,
+            "rug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 512,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "strike",
+            "mirror",
+            "moving-hook-turn",
+            "stone-lit",
+            "gate-open",
+            "moving-unhook",
+            "unhook",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "strike": 1,
+            "mirror": 1,
+            "moving-hook-turn": 2,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "death": 1,
+            "respawn": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 449,
+            "x": 268,
+            "y": 180,
+            "cause": "spikes",
+            "vx": 10.833333333333334,
+            "vy": 113.33333333333334,
+            "i": 448
+          }
+        }
+      }
+    ],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 430,
+      "events": [
+        "jump",
+        "hook",
+        "moving-hook",
+        "strike",
+        "mirror",
+        "moving-hook-turn",
+        "stone-lit",
+        "gate-open",
+        "moving-unhook",
+        "unhook",
+        "land",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 2,
+        "hook": 1,
+        "moving-hook": 1,
+        "strike": 1,
+        "mirror": 1,
+        "moving-hook-turn": 2,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "moving-unhook": 1,
+        "unhook": 1,
+        "land": 1,
+        "exit": 1
+      },
+      "firstFailure": null
+    },
+    "tolerance": {
+      "note": "Saved complete normal-spawn positive timing variants cover the main spatial action and the later transfer/departure. They are examples of usable windows, not an exhaustive solvability proof."
+    },
+    "companionOf": "bank-f38",
+    "companionReason": "Harder Fractured companion; original F38 is banked unchanged as Base.",
+    "feedbackHistory": [
+      {
+        "date": "2026-10-08",
+        "decision": "banked",
+        "comment": "Great! Easier, good for early Fractured levels."
+      }
+    ],
+    "review": {
+      "date": "2026-10-08",
+      "decision": "banked",
+      "comment": "Great! Easier, good for early Fractured levels."
+    },
+    "placementNote": "Author placement estimate updated from qualitative user feedback; not a numeric user rating."
+  },
+  "tape": [
+    [
+      10,
+      "l"
+    ],
+    [
+      12,
+      "ljg"
+    ],
+    [
+      130,
+      "ug"
+    ],
+    [
+      35,
+      "dg"
+    ],
+    [
+      1,
+      "lsg"
+    ],
+    [
+      12,
+      "rug"
+    ],
+    [
+      43,
+      "ug"
+    ],
+    [
+      115,
+      "g"
+    ],
+    [
+      12,
+      "rug"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      100,
+      "r"
+    ]
+  ]
+}

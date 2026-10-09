@@ -45,7 +45,7 @@ function reset(g){
   const f={...d,id:i,alive:true,t:0,state:'idle',remX:0,remY:0,vx:0,vy:0,timer:0};
   if(d.kind==='moth'){f.w=f.h=FK.mothSize;f.x0=d.x*TILE;f.y0=d.y*TILE;f.x=f.x0;f.y=f.y0;f.period=d.period||120;f.path=d.path||[0,0];f.phase=d.phase||0;}
   else if(d.kind==='shell'){f.w=FK.shellW;f.h=FK.shellH;f.x=d.x*TILE;f.y=(d.y+1)*TILE-f.h;f.dir=d.dir||1;f.state='walk';}
-  else if(d.kind==='ram'){f.w=FK.ramW;f.h=FK.ramH;f.x=d.x*TILE;f.y=(d.y+1)*TILE-f.h;f.dir=d.dir||1;f.state='walk';f.lo=(d.patrol?d.patrol[0]:0)*TILE;f.hi=(d.patrol?d.patrol[1]+1:40)*TILE;}
+  else if(d.kind==='ram'){f.w=FK.ramW;f.h=FK.ramH;f.x=d.x*TILE;f.y=(d.y+1)*TILE-f.h;f.dir=d.dir||1;f.state='walk';f.lo=(d.patrol?d.patrol[0]:0)*TILE;f.hi=(d.patrol?d.patrol[1]+1:g.room.cols)*TILE;}
   else if(d.kind==='spit'){f.w=f.h=FK.spitSize;f.x=d.x*TILE;f.y=d.y*TILE;const n=Math.hypot(d.dir[0],d.dir[1])||1;f.dx=d.dir[0]/n;f.dy=d.dir[1]/n;f.every=d.every||90;f.offset=d.offset||0;f.speed=d.speed||120;}
   else if(d.kind==='husk'){f.x=d.x*TILE;f.y=d.y*TILE;f.w=(d.w||1)*TILE;f.h=(d.h||1)*TILE;}
   g.foes.push(f);
@@ -96,7 +96,7 @@ function fall(g,f){
  // Thorns below, or the bottom of the screen, end it.
  const c0=Math.floor(f.x/TILE),c1=Math.floor((f.x+f.w-1)/TILE),r=Math.floor((f.y+f.h)/TILE)-1;
  for(let c=c0;c<=c1;c++){const t=Core.tileAt(g,c,r);if(t>=Core.SPIKE_UP){defeat(g,f);return;}}
- if(f.y>Core.H+8)defeat(g,f);
+ if(f.y>g.room.h+8)defeat(g,f);
 }
 function stun(g,f,frames,why){f.state='stun';f.timer=frames;f.remX=0;setSolid(g,f,true);C().emit(g,'enemy-hit',{x:f.x+f.w/2,y:f.y+f.h/2,why});}
 function defeat(g,f){f.alive=false;if(f.proxy)setSolid(g,f,false);C().emit(g,'enemy-defeat',{x:f.x+f.w/2,y:f.y+f.h/2,kind:f.kind});}
@@ -124,7 +124,7 @@ function before(g,inp){
   if(!b.alive)continue;
   b.x+=b.vx*DT;b.y+=b.vy*DT;
   const bx=Math.round(b.x),by=Math.round(b.y);
-  if(bx<-8||by<-8||bx>Core.W+8||by>Core.H+8){b.alive=false;continue;}
+  if(bx<-8||by<-8||bx>g.room.w+8||by>g.room.h+8){b.alive=false;continue;}
   const hk=huskAt(g,bx,by,b.w,b.h);
   if(hk){b.alive=false;if(b.friendly)breakHusk(g,hk,bx+3,by+3);else Core.emit(g,'enemy-hit',{x:bx+3,y:by+3});continue;}
   if(Core.solidAt(g,bx,by,b.w,b.h)){b.alive=false;Core.emit(g,'enemy-hit',{x:bx+3,y:by+3});continue;}

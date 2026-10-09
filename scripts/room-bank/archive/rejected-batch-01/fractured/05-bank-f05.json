@@ -1,0 +1,178 @@
+{
+  "room": {
+    "id": "bank-f05",
+    "name": "Forwarding Address",
+    "palette": "fractured",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "exit": "left",
+    "lines": [
+      {
+        "a": [
+          6,
+          18
+        ],
+        "b": [
+          32,
+          12
+        ],
+        "oneWay": true,
+        "once": true,
+        "setDown": true
+      }
+    ],
+    "fault": {
+      "fuse": 22,
+      "spread": 5,
+      "rest": 180
+    },
+    "shade": {
+      "delay": 90,
+      "count": 1
+    },
+    "hint": "The tear delivers you to the far ledge once. Turn, super left, and leave before your old route catches up.",
+    "question": "The delivery goes right; why is the way out behind you?",
+    "map": [
+      "########################################",
+      "#......................................#",
+      "#......................................#",
+      ".......................................#",
+      ".......................................#",
+      ".......................................#",
+      ".......................................#",
+      ".......................................#",
+      "##########.........o...................#",
+      "##########.............................#",
+      "#vvvvvvvvv.............................#",
+      "#......................................#",
+      "#......................................#",
+      "#............................TTTTTTT...#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#...P..................................#",
+      "#######................................#",
+      "#######................................#",
+      "#######^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+      "########################################"
+    ],
+    "study": true
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 1,
+    "difficulty": 4,
+    "role": "combination",
+    "worlds": [
+      21,
+      32
+    ],
+    "tags": [
+      "zipline",
+      "one-use",
+      "super",
+      "shade",
+      "fault"
+    ],
+    "newMechanics": [],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "zip-in",
+      "super",
+      "fault-crack",
+      "refill"
+    ],
+    "solution": "Ride the one-use tear to the far fault runway. Turn left with a super; the high crystal gives the final dash into the west window. The pursuing shade rules out long deliberation on the landing.",
+    "entrance": "left floor at 19",
+    "exit": "left opening rows 3–7",
+    "proof": {
+      "frames": 156,
+      "deaths": 0,
+      "events": [
+        "dash",
+        "zip-in",
+        "fault-crack",
+        "refill-dash",
+        "zip-out",
+        "super",
+        "fault-fall",
+        "refill",
+        "walljump",
+        "shade-wake",
+        "land",
+        "exit"
+      ],
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  "tape": [
+    [
+      5,
+      "rx"
+    ],
+    [
+      32,
+      ""
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      5,
+      "lx"
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      6,
+      "l"
+    ],
+    [
+      5,
+      "lx"
+    ],
+    [
+      12,
+      "l"
+    ],
+    [
+      5,
+      "lx"
+    ],
+    [
+      12,
+      "l"
+    ],
+    [
+      5,
+      "lx"
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      20,
+      "lu"
+    ],
+    [
+      5,
+      "lx"
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      3,
+      "r"
+    ]
+  ]
+}

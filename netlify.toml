@@ -1,4 +1,13 @@
-# The game is already static; Netlify can publish the source folder directly.
+# Static game plus a private score and feedback function.
 [build]
-  command = ""
+  command = "node scripts/playtest-release/build-seed.mjs"
   publish = "public"
+
+[build.environment]
+  NODE_VERSION = "22"
+  PUPPETEER_SKIP_DOWNLOAD = "true"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+  included_files = ["netlify/functions/playtest-seed.json"]

@@ -1,0 +1,167 @@
+{
+  "room": {
+    "id": "bank-f16",
+    "name": "Return Freight",
+    "hint": "The carriage carries the lantern. Its low tunnel cannot carry you as well.",
+    "question": "How do you send the shade ahead, then meet it from the other side?",
+    "map": [
+      "########################################",
+      "#.......##################............<#",
+      "#.......##################............<#",
+      "#.......##################............<#",
+      "#.......##################............<#",
+      "#.......##################............<#",
+      "#.......##################............<#",
+      "#.......##################............<#",
+      "#.P..l................................<#",
+      "####ZZZZ^^^^^^^^^^^^^^^^^^............<#",
+      "#.......VVVVVVVVVVVVVVVVVV............<#",
+      "#.......VVVVVVVVVVVVVVVVVV............<#",
+      "##############################........<#",
+      "##############################........<#",
+      "##############################........<#",
+      "##############################........<#",
+      "##############################..........",
+      "##############################..........",
+      "##############################..........",
+      "##############################.......###",
+      "##############################.......###",
+      "##############################^^^^^^^###",
+      "########################################"
+    ],
+    "palette": "causeway",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "zips": [
+      [
+        31,
+        0
+      ]
+    ],
+    "beams": [
+      {
+        "c": 34,
+        "r": 0,
+        "dir": "d"
+      }
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 3,
+    "acceptance": "banked",
+    "difficulty": 4,
+    "role": "solve",
+    "worlds": [
+      23,
+      33,
+      40
+    ],
+    "tags": [
+      "void",
+      "cargo",
+      "zip",
+      "interception",
+      "lantern-shade"
+    ],
+    "newMechanics": [],
+    "entrance": "Left loading platform.",
+    "exit": "Low right landing beneath the thorned lip.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "zip-start",
+      "void-in",
+      "void-out",
+      "pickup"
+    ],
+    "requiredEventCounts": {
+      "void-in": 1,
+      "pickup": 1
+    },
+    "solution": "Step aboard the loaded carriage to dispatch it, then dismount before its low tunnel. Drop to the lower passage and dash through void stone. From the receiving shelf, jump to intercept the lantern as the carriage reaches the exposed end of its run or begins returning. Leave the carriage behind: use the recovered lantern to shade the sunbeam and brake the descent below the exit teeth.",
+    "nearestExisting": "F14 Empty Your Hands separates a current-carried lantern from a void route; bc3 Roof Underfoot uses a moving deck as shelter. Here the carrier is player-dispatched and reverses, so the decision is when to leave it and where to intercept moving cargo, rather than waiting at a static duct outlet.",
+    "novelty": "The zip is dispatched by its rider but crosses a low, spiked cargo tunnel. Its exposed return creates a moving rendezvous: the knight must leave the deck, take the void route, then catch the lantern before it returns into the roof.",
+    "humanReview": "User approved banking; numeric Fun /10, Difficulty /5 and Suitability /5 ratings remain pending.",
+    "route": {
+      "frames": 215,
+      "deaths": 0,
+      "events": [
+        "zip-start",
+        "land",
+        "dash",
+        "void-in",
+        "zip-stop",
+        "refill-dash",
+        "void-out",
+        "jump",
+        "pickup",
+        "zip-home",
+        "exit"
+      ],
+      "eventCounts": {
+        "zip-start": 1,
+        "land": 2,
+        "dash": 1,
+        "void-in": 1,
+        "zip-stop": 1,
+        "refill-dash": 1,
+        "void-out": 1,
+        "jump": 1,
+        "pickup": 1,
+        "zip-home": 1,
+        "exit": 1
+      }
+    },
+    "bypassCheck": "Walking through the cargo tunnel hits its spiked bed; carrying a lantern cannot dash through the lower void. A direct empty-handed finish meets the unbroken sunbeam.",
+    "userFeedback": {
+      "date": "2026-10-07",
+      "comment": "Excellent, best of the set; bank."
+    }
+  },
+  "tape": [
+    [
+      10,
+      "r"
+    ],
+    [
+      12,
+      "l"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      46,
+      "rx"
+    ],
+    [
+      6,
+      "lj"
+    ],
+    [
+      11,
+      "rj"
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      36,
+      "r"
+    ],
+    [
+      55,
+      ""
+    ],
+    [
+      26,
+      "r"
+    ]
+  ]
+}

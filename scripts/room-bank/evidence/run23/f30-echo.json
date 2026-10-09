@@ -1,0 +1,1081 @@
+{
+  "cause": "Echo exchange retained the old hook; hook forces converted teleport displacement into extreme velocity.",
+  "before": {
+    "exited": false,
+    "deaths": 0,
+    "maxAbsVx": 2190
+  },
+  "sameRoomAfterFix": {
+    "exited": true,
+    "deaths": 0
+  },
+  "revisedCanonical": {
+    "exited": true,
+    "deaths": 0,
+    "frames": 307
+  },
+  "samples": [
+    {
+      "mode": "rgq",
+      "reel": 2,
+      "wait": 14,
+      "exited": false,
+      "deaths": 2,
+      "frames": 0
+    },
+    {
+      "mode": "rgq",
+      "reel": 2,
+      "wait": 15,
+      "exited": false,
+      "deaths": 2,
+      "frames": 0
+    },
+    {
+      "mode": "rgq",
+      "reel": 2,
+      "wait": 16,
+      "exited": false,
+      "deaths": 2,
+      "frames": 0
+    },
+    {
+      "mode": "rgq",
+      "reel": 2,
+      "wait": 17,
+      "exited": false,
+      "deaths": 2,
+      "frames": 0
+    },
+    {
+      "mode": "rgq",
+      "reel": 2,
+      "wait": 18,
+      "exited": false,
+      "deaths": 2,
+      "frames": 0
+    },
+    {
+      "mode": "rgq",
+      "reel": 2,
+      "wait": 19,
+      "exited": false,
+      "deaths": 2,
+      "frames": 0
+    },
+    {
+      "mode": "rgq",
+      "reel": 2,
+      "wait": 20,
+      "exited": false,
+      "deaths": 2,
+      "frames": 0
+    },
+    {
+      "mode": "rgq",
+      "reel": 2,
+      "wait": 21,
+      "exited": true,
+      "deaths": 0,
+      "frames": 351
+    },
+    {
+      "mode": "rgq",
+      "reel": 2,
+      "wait": 22,
+      "exited": true,
+      "deaths": 0,
+      "frames": 318
+    },
+    {
+      "mode": "rgq",
+      "reel": 2,
+      "wait": 23,
+      "exited": true,
+      "deaths": 0,
+      "frames": 311
+    },
+    {
+      "mode": "rgq",
+      "reel": 2,
+      "wait": 24,
+      "exited": true,
+      "deaths": 0,
+      "frames": 303
+    },
+    {
+      "mode": "rgq",
+      "reel": 2,
+      "wait": 25,
+      "exited": true,
+      "deaths": 0,
+      "frames": 309
+    },
+    {
+      "mode": "rgq",
+      "reel": 2,
+      "wait": 26,
+      "exited": true,
+      "deaths": 0,
+      "frames": 315
+    },
+    {
+      "mode": "rgq",
+      "reel": 2,
+      "wait": 27,
+      "exited": true,
+      "deaths": 0,
+      "frames": 328
+    },
+    {
+      "mode": "rgq",
+      "reel": 2,
+      "wait": 28,
+      "exited": true,
+      "deaths": 0,
+      "frames": 331
+    },
+    {
+      "mode": "rgq",
+      "reel": 2,
+      "wait": 29,
+      "exited": true,
+      "deaths": 0,
+      "frames": 358
+    },
+    {
+      "mode": "rgq",
+      "reel": 2,
+      "wait": 30,
+      "exited": true,
+      "deaths": 0,
+      "frames": 392
+    },
+    {
+      "mode": "rgq",
+      "reel": 2,
+      "wait": 31,
+      "exited": true,
+      "deaths": 0,
+      "frames": 411
+    },
+    {
+      "mode": "rgq",
+      "reel": 2,
+      "wait": 32,
+      "exited": true,
+      "deaths": 0,
+      "frames": 412
+    },
+    {
+      "mode": "rgq",
+      "reel": 2,
+      "wait": 33,
+      "exited": true,
+      "deaths": 0,
+      "frames": 414
+    },
+    {
+      "mode": "rgq",
+      "reel": 2,
+      "wait": 34,
+      "exited": true,
+      "deaths": 0,
+      "frames": 417
+    },
+    {
+      "mode": "rgq",
+      "reel": 2,
+      "wait": 35,
+      "exited": false,
+      "deaths": 2,
+      "frames": 0
+    },
+    {
+      "mode": "rgq",
+      "reel": 4,
+      "wait": 14,
+      "exited": false,
+      "deaths": 2,
+      "frames": 0
+    },
+    {
+      "mode": "rgq",
+      "reel": 4,
+      "wait": 15,
+      "exited": false,
+      "deaths": 2,
+      "frames": 0
+    },
+    {
+      "mode": "rgq",
+      "reel": 4,
+      "wait": 16,
+      "exited": false,
+      "deaths": 2,
+      "frames": 0
+    },
+    {
+      "mode": "rgq",
+      "reel": 4,
+      "wait": 17,
+      "exited": false,
+      "deaths": 0,
+      "frames": 0
+    },
+    {
+      "mode": "rgq",
+      "reel": 4,
+      "wait": 18,
+      "exited": false,
+      "deaths": 0,
+      "frames": 0
+    },
+    {
+      "mode": "rgq",
+      "reel": 4,
+      "wait": 19,
+      "exited": true,
+      "deaths": 0,
+      "frames": 348
+    },
+    {
+      "mode": "rgq",
+      "reel": 4,
+      "wait": 20,
+      "exited": true,
+      "deaths": 0,
+      "frames": 302
+    },
+    {
+      "mode": "rgq",
+      "reel": 4,
+      "wait": 21,
+      "exited": true,
+      "deaths": 0,
+      "frames": 303
+    },
+    {
+      "mode": "rgq",
+      "reel": 4,
+      "wait": 22,
+      "exited": true,
+      "deaths": 0,
+      "frames": 299
+    },
+    {
+      "mode": "rgq",
+      "reel": 4,
+      "wait": 23,
+      "exited": true,
+      "deaths": 0,
+      "frames": 304
+    },
+    {
+      "mode": "rgq",
+      "reel": 4,
+      "wait": 24,
+      "exited": true,
+      "deaths": 0,
+      "frames": 307
+    },
+    {
+      "mode": "rgq",
+      "reel": 4,
+      "wait": 25,
+      "exited": true,
+      "deaths": 0,
+      "frames": 322
+    },
+    {
+      "mode": "rgq",
+      "reel": 4,
+      "wait": 26,
+      "exited": true,
+      "deaths": 0,
+      "frames": 334
+    },
+    {
+      "mode": "rgq",
+      "reel": 4,
+      "wait": 27,
+      "exited": true,
+      "deaths": 0,
+      "frames": 340
+    },
+    {
+      "mode": "rgq",
+      "reel": 4,
+      "wait": 28,
+      "exited": true,
+      "deaths": 0,
+      "frames": 365
+    },
+    {
+      "mode": "rgq",
+      "reel": 4,
+      "wait": 29,
+      "exited": true,
+      "deaths": 0,
+      "frames": 406
+    },
+    {
+      "mode": "rgq",
+      "reel": 4,
+      "wait": 30,
+      "exited": true,
+      "deaths": 0,
+      "frames": 399
+    },
+    {
+      "mode": "rgq",
+      "reel": 4,
+      "wait": 31,
+      "exited": true,
+      "deaths": 0,
+      "frames": 413
+    },
+    {
+      "mode": "rgq",
+      "reel": 4,
+      "wait": 32,
+      "exited": true,
+      "deaths": 0,
+      "frames": 415
+    },
+    {
+      "mode": "rgq",
+      "reel": 4,
+      "wait": 33,
+      "exited": false,
+      "deaths": 2,
+      "frames": 0
+    },
+    {
+      "mode": "rgq",
+      "reel": 4,
+      "wait": 34,
+      "exited": false,
+      "deaths": 2,
+      "frames": 0
+    },
+    {
+      "mode": "rgq",
+      "reel": 4,
+      "wait": 35,
+      "exited": false,
+      "deaths": 2,
+      "frames": 0
+    },
+    {
+      "mode": "rgq",
+      "reel": 6,
+      "wait": 14,
+      "exited": true,
+      "deaths": 0,
+      "frames": 352
+    },
+    {
+      "mode": "rgq",
+      "reel": 6,
+      "wait": 15,
+      "exited": true,
+      "deaths": 0,
+      "frames": 351
+    },
+    {
+      "mode": "rgq",
+      "reel": 6,
+      "wait": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 348
+    },
+    {
+      "mode": "rgq",
+      "reel": 6,
+      "wait": 17,
+      "exited": true,
+      "deaths": 0,
+      "frames": 346
+    },
+    {
+      "mode": "rgq",
+      "reel": 6,
+      "wait": 18,
+      "exited": true,
+      "deaths": 0,
+      "frames": 301
+    },
+    {
+      "mode": "rgq",
+      "reel": 6,
+      "wait": 19,
+      "exited": true,
+      "deaths": 0,
+      "frames": 298
+    },
+    {
+      "mode": "rgq",
+      "reel": 6,
+      "wait": 20,
+      "exited": true,
+      "deaths": 0,
+      "frames": 298
+    },
+    {
+      "mode": "rgq",
+      "reel": 6,
+      "wait": 21,
+      "exited": true,
+      "deaths": 0,
+      "frames": 301
+    },
+    {
+      "mode": "rgq",
+      "reel": 6,
+      "wait": 22,
+      "exited": true,
+      "deaths": 0,
+      "frames": 303
+    },
+    {
+      "mode": "rgq",
+      "reel": 6,
+      "wait": 23,
+      "exited": true,
+      "deaths": 0,
+      "frames": 329
+    },
+    {
+      "mode": "rgq",
+      "reel": 6,
+      "wait": 24,
+      "exited": true,
+      "deaths": 0,
+      "frames": 328
+    },
+    {
+      "mode": "rgq",
+      "reel": 6,
+      "wait": 25,
+      "exited": true,
+      "deaths": 0,
+      "frames": 348
+    },
+    {
+      "mode": "rgq",
+      "reel": 6,
+      "wait": 26,
+      "exited": true,
+      "deaths": 0,
+      "frames": 361
+    },
+    {
+      "mode": "rgq",
+      "reel": 6,
+      "wait": 27,
+      "exited": true,
+      "deaths": 0,
+      "frames": 400
+    },
+    {
+      "mode": "rgq",
+      "reel": 6,
+      "wait": 28,
+      "exited": true,
+      "deaths": 0,
+      "frames": 413
+    },
+    {
+      "mode": "rgq",
+      "reel": 6,
+      "wait": 29,
+      "exited": true,
+      "deaths": 0,
+      "frames": 413
+    },
+    {
+      "mode": "rgq",
+      "reel": 6,
+      "wait": 30,
+      "exited": true,
+      "deaths": 0,
+      "frames": 415
+    },
+    {
+      "mode": "rgq",
+      "reel": 6,
+      "wait": 31,
+      "exited": false,
+      "deaths": 2,
+      "frames": 0
+    },
+    {
+      "mode": "rgq",
+      "reel": 6,
+      "wait": 32,
+      "exited": false,
+      "deaths": 2,
+      "frames": 0
+    },
+    {
+      "mode": "rgq",
+      "reel": 6,
+      "wait": 33,
+      "exited": false,
+      "deaths": 2,
+      "frames": 0
+    },
+    {
+      "mode": "rgq",
+      "reel": 6,
+      "wait": 34,
+      "exited": false,
+      "deaths": 2,
+      "frames": 0
+    },
+    {
+      "mode": "rgq",
+      "reel": 6,
+      "wait": 35,
+      "exited": false,
+      "deaths": 2,
+      "frames": 0
+    },
+    {
+      "mode": "rjgq",
+      "reel": 2,
+      "wait": 14,
+      "exited": true,
+      "deaths": 0,
+      "frames": 357
+    },
+    {
+      "mode": "rjgq",
+      "reel": 2,
+      "wait": 15,
+      "exited": true,
+      "deaths": 0,
+      "frames": 338
+    },
+    {
+      "mode": "rjgq",
+      "reel": 2,
+      "wait": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 339
+    },
+    {
+      "mode": "rjgq",
+      "reel": 2,
+      "wait": 17,
+      "exited": true,
+      "deaths": 0,
+      "frames": 330
+    },
+    {
+      "mode": "rjgq",
+      "reel": 2,
+      "wait": 18,
+      "exited": true,
+      "deaths": 0,
+      "frames": 326
+    },
+    {
+      "mode": "rjgq",
+      "reel": 2,
+      "wait": 19,
+      "exited": true,
+      "deaths": 0,
+      "frames": 316
+    },
+    {
+      "mode": "rjgq",
+      "reel": 2,
+      "wait": 20,
+      "exited": true,
+      "deaths": 0,
+      "frames": 312
+    },
+    {
+      "mode": "rjgq",
+      "reel": 2,
+      "wait": 21,
+      "exited": true,
+      "deaths": 0,
+      "frames": 301
+    },
+    {
+      "mode": "rjgq",
+      "reel": 2,
+      "wait": 22,
+      "exited": true,
+      "deaths": 0,
+      "frames": 298
+    },
+    {
+      "mode": "rjgq",
+      "reel": 2,
+      "wait": 23,
+      "exited": true,
+      "deaths": 0,
+      "frames": 294
+    },
+    {
+      "mode": "rjgq",
+      "reel": 2,
+      "wait": 24,
+      "exited": true,
+      "deaths": 0,
+      "frames": 293
+    },
+    {
+      "mode": "rjgq",
+      "reel": 2,
+      "wait": 25,
+      "exited": true,
+      "deaths": 0,
+      "frames": 296
+    },
+    {
+      "mode": "rjgq",
+      "reel": 2,
+      "wait": 26,
+      "exited": true,
+      "deaths": 0,
+      "frames": 303
+    },
+    {
+      "mode": "rjgq",
+      "reel": 2,
+      "wait": 27,
+      "exited": true,
+      "deaths": 0,
+      "frames": 315
+    },
+    {
+      "mode": "rjgq",
+      "reel": 2,
+      "wait": 28,
+      "exited": true,
+      "deaths": 0,
+      "frames": 313
+    },
+    {
+      "mode": "rjgq",
+      "reel": 2,
+      "wait": 29,
+      "exited": true,
+      "deaths": 0,
+      "frames": 351
+    },
+    {
+      "mode": "rjgq",
+      "reel": 2,
+      "wait": 30,
+      "exited": true,
+      "deaths": 0,
+      "frames": 393
+    },
+    {
+      "mode": "rjgq",
+      "reel": 2,
+      "wait": 31,
+      "exited": true,
+      "deaths": 0,
+      "frames": 411
+    },
+    {
+      "mode": "rjgq",
+      "reel": 2,
+      "wait": 32,
+      "exited": true,
+      "deaths": 0,
+      "frames": 412
+    },
+    {
+      "mode": "rjgq",
+      "reel": 2,
+      "wait": 33,
+      "exited": true,
+      "deaths": 0,
+      "frames": 414
+    },
+    {
+      "mode": "rjgq",
+      "reel": 2,
+      "wait": 34,
+      "exited": true,
+      "deaths": 0,
+      "frames": 417
+    },
+    {
+      "mode": "rjgq",
+      "reel": 2,
+      "wait": 35,
+      "exited": true,
+      "deaths": 0,
+      "frames": 421
+    },
+    {
+      "mode": "rjgq",
+      "reel": 4,
+      "wait": 14,
+      "exited": true,
+      "deaths": 0,
+      "frames": 343
+    },
+    {
+      "mode": "rjgq",
+      "reel": 4,
+      "wait": 15,
+      "exited": true,
+      "deaths": 0,
+      "frames": 332
+    },
+    {
+      "mode": "rjgq",
+      "reel": 4,
+      "wait": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 319
+    },
+    {
+      "mode": "rjgq",
+      "reel": 4,
+      "wait": 17,
+      "exited": true,
+      "deaths": 0,
+      "frames": 304
+    },
+    {
+      "mode": "rjgq",
+      "reel": 4,
+      "wait": 18,
+      "exited": true,
+      "deaths": 0,
+      "frames": 305
+    },
+    {
+      "mode": "rjgq",
+      "reel": 4,
+      "wait": 19,
+      "exited": true,
+      "deaths": 0,
+      "frames": 297
+    },
+    {
+      "mode": "rjgq",
+      "reel": 4,
+      "wait": 20,
+      "exited": true,
+      "deaths": 0,
+      "frames": 290
+    },
+    {
+      "mode": "rjgq",
+      "reel": 4,
+      "wait": 21,
+      "exited": true,
+      "deaths": 0,
+      "frames": 291
+    },
+    {
+      "mode": "rjgq",
+      "reel": 4,
+      "wait": 22,
+      "exited": true,
+      "deaths": 0,
+      "frames": 292
+    },
+    {
+      "mode": "rjgq",
+      "reel": 4,
+      "wait": 23,
+      "exited": true,
+      "deaths": 0,
+      "frames": 294
+    },
+    {
+      "mode": "rjgq",
+      "reel": 4,
+      "wait": 24,
+      "exited": true,
+      "deaths": 0,
+      "frames": 299
+    },
+    {
+      "mode": "rjgq",
+      "reel": 4,
+      "wait": 25,
+      "exited": true,
+      "deaths": 0,
+      "frames": 308
+    },
+    {
+      "mode": "rjgq",
+      "reel": 4,
+      "wait": 26,
+      "exited": true,
+      "deaths": 0,
+      "frames": 315
+    },
+    {
+      "mode": "rjgq",
+      "reel": 4,
+      "wait": 27,
+      "exited": true,
+      "deaths": 0,
+      "frames": 320
+    },
+    {
+      "mode": "rjgq",
+      "reel": 4,
+      "wait": 28,
+      "exited": true,
+      "deaths": 0,
+      "frames": 361
+    },
+    {
+      "mode": "rjgq",
+      "reel": 4,
+      "wait": 29,
+      "exited": true,
+      "deaths": 0,
+      "frames": 406
+    },
+    {
+      "mode": "rjgq",
+      "reel": 4,
+      "wait": 30,
+      "exited": true,
+      "deaths": 0,
+      "frames": 398
+    },
+    {
+      "mode": "rjgq",
+      "reel": 4,
+      "wait": 31,
+      "exited": true,
+      "deaths": 0,
+      "frames": 413
+    },
+    {
+      "mode": "rjgq",
+      "reel": 4,
+      "wait": 32,
+      "exited": true,
+      "deaths": 0,
+      "frames": 415
+    },
+    {
+      "mode": "rjgq",
+      "reel": 4,
+      "wait": 33,
+      "exited": true,
+      "deaths": 0,
+      "frames": 420
+    },
+    {
+      "mode": "rjgq",
+      "reel": 4,
+      "wait": 34,
+      "exited": true,
+      "deaths": 0,
+      "frames": 419
+    },
+    {
+      "mode": "rjgq",
+      "reel": 4,
+      "wait": 35,
+      "exited": true,
+      "deaths": 0,
+      "frames": 424
+    },
+    {
+      "mode": "rjgq",
+      "reel": 6,
+      "wait": 14,
+      "exited": true,
+      "deaths": 0,
+      "frames": 302
+    },
+    {
+      "mode": "rjgq",
+      "reel": 6,
+      "wait": 15,
+      "exited": true,
+      "deaths": 0,
+      "frames": 301
+    },
+    {
+      "mode": "rjgq",
+      "reel": 6,
+      "wait": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 296
+    },
+    {
+      "mode": "rjgq",
+      "reel": 6,
+      "wait": 17,
+      "exited": true,
+      "deaths": 0,
+      "frames": 294
+    },
+    {
+      "mode": "rjgq",
+      "reel": 6,
+      "wait": 18,
+      "exited": true,
+      "deaths": 0,
+      "frames": 289
+    },
+    {
+      "mode": "rjgq",
+      "reel": 6,
+      "wait": 19,
+      "exited": true,
+      "deaths": 0,
+      "frames": 290
+    },
+    {
+      "mode": "rjgq",
+      "reel": 6,
+      "wait": 20,
+      "exited": true,
+      "deaths": 0,
+      "frames": 291
+    },
+    {
+      "mode": "rjgq",
+      "reel": 6,
+      "wait": 21,
+      "exited": true,
+      "deaths": 0,
+      "frames": 295
+    },
+    {
+      "mode": "rjgq",
+      "reel": 6,
+      "wait": 22,
+      "exited": true,
+      "deaths": 0,
+      "frames": 297
+    },
+    {
+      "mode": "rjgq",
+      "reel": 6,
+      "wait": 23,
+      "exited": true,
+      "deaths": 0,
+      "frames": 323
+    },
+    {
+      "mode": "rjgq",
+      "reel": 6,
+      "wait": 24,
+      "exited": true,
+      "deaths": 0,
+      "frames": 312
+    },
+    {
+      "mode": "rjgq",
+      "reel": 6,
+      "wait": 25,
+      "exited": true,
+      "deaths": 0,
+      "frames": 339
+    },
+    {
+      "mode": "rjgq",
+      "reel": 6,
+      "wait": 26,
+      "exited": true,
+      "deaths": 0,
+      "frames": 354
+    },
+    {
+      "mode": "rjgq",
+      "reel": 6,
+      "wait": 27,
+      "exited": true,
+      "deaths": 0,
+      "frames": 400
+    },
+    {
+      "mode": "rjgq",
+      "reel": 6,
+      "wait": 28,
+      "exited": true,
+      "deaths": 0,
+      "frames": 413
+    },
+    {
+      "mode": "rjgq",
+      "reel": 6,
+      "wait": 29,
+      "exited": true,
+      "deaths": 0,
+      "frames": 413
+    },
+    {
+      "mode": "rjgq",
+      "reel": 6,
+      "wait": 30,
+      "exited": true,
+      "deaths": 0,
+      "frames": 415
+    },
+    {
+      "mode": "rjgq",
+      "reel": 6,
+      "wait": 31,
+      "exited": false,
+      "deaths": 2,
+      "frames": 0
+    },
+    {
+      "mode": "rjgq",
+      "reel": 6,
+      "wait": 32,
+      "exited": true,
+      "deaths": 0,
+      "frames": 424
+    },
+    {
+      "mode": "rjgq",
+      "reel": 6,
+      "wait": 33,
+      "exited": true,
+      "deaths": 0,
+      "frames": 425
+    },
+    {
+      "mode": "rjgq",
+      "reel": 6,
+      "wait": 34,
+      "exited": false,
+      "deaths": 0,
+      "frames": 0
+    },
+    {
+      "mode": "rjgq",
+      "reel": 6,
+      "wait": 35,
+      "exited": false,
+      "deaths": 2,
+      "frames": 0
+    }
+  ],
+  "summary": {
+    "samples": 132,
+    "clean": 108,
+    "consecutiveDirectSwapTimings": 14,
+    "representativeTapes": 12
+  }
+}

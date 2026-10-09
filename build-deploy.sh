@@ -12,6 +12,9 @@ OUT="$ROOT/netlify-deploy"
 # Every file the running game actually needs (dev-only files like serve.mjs,
 # node_modules and package.json are deliberately left out).
 ASSETS=(
+  bladefall-playtest-worlds.js
+  bladefall-playtest-model.js
+  bladefall-playtest.js
   index.html
   authoring.html
   astra-respec.html
@@ -120,7 +123,17 @@ ASSETS=(
   bladefall-pcore-dev-frost.js
   bladefall-pcore-dev-gaol.js
   bladefall-pcore-dev-gravity.js
+  bladefall-pcore-dev-hinge.js
+  bladefall-pcore-dev-cargo-clasp.js
+  bladefall-pcore-dev-cargo-clasp-view.js
+  bladefall-pcore-dev-hinge-view.js
   bladefall-pcore-dev-hook.js
+  bladefall-pcore-dev-impulse.js
+  bladefall-pcore-dev-impulse-view.js
+  bladefall-pcore-dev-moving-hook.js
+  bladefall-pcore-dev-moving-hook-view.js
+  bladefall-pcore-dev-recoil.js
+  bladefall-pcore-dev-recoil-view.js
   bladefall-pcore-dev-rail.js
   bladefall-pcore-dev-relay.js
   bladefall-pcore-dev-throne.js
@@ -166,10 +179,21 @@ ASSETS=(
   bladefall-pcore-touch.js
   bladefall-pcore-pitches.js
   bladefall-pcore-pitches-view.js
+  bladefall-room-bank.js
+  bladefall-room-bank-view.js
+  bladefall-pcore-dev-spent-thorn.js
+  bladefall-pcore-dev-spent-thorn-view.js
+  bladefall-pcore-dev-sweeper.js
+  bladefall-pcore-dev-sweeper-view.js
+  bladefall-pcore-dev-step-relay.js
+  bladefall-pcore-dev-step-relay-view.js
+  bladefall-pcore-dev-vector-refill.js
+  bladefall-pcore-dev-vector-refill-view.js
   bladefall-rbr.js
   bladefall-rbr-view.js
   bladefall-climb.js
   bladefall-climb-worlds.js
+  bladefall-climb-session.js
   bladefall-climb-view.js
   bladefall-climb-atlas.js
   bladefall-climb-passages.js
@@ -415,6 +439,7 @@ ASSETS=(
   apple-touch-icon.png
 )
 
+node "$ROOT/scripts/playtest-release/build-seed.mjs"
 rm -rf "$OUT"
 mkdir -p "$OUT"
 for f in "${ASSETS[@]}"; do
@@ -438,4 +463,4 @@ done
 if [ "$missing" = 1 ]; then echo "Add the files above to ASSETS in build-deploy.sh"; exit 1; fi
 
 echo "Built $OUT with ${#ASSETS[@]} game files + netlify.toml + README.md"
-echo "Publish it: drag the netlify-deploy folder onto https://app.netlify.com/drop"
+echo "Static game copy ready. Online scores/feedback require a function-enabled deployment from the repository root; see docs/playtest/RELEASE-7.300.md. No deployment was performed."

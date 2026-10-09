@@ -1,0 +1,320 @@
+{
+  "room": {
+    "id": "bank-b37",
+    "name": "Make a Place to Leave",
+    "palette": "cliffs",
+    "study": true,
+    "dashes": 0,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "map": [
+      "########################################",
+      "#...................#>.................#",
+      "#...................#>.................#",
+      "#...................#>.................#",
+      "#...................#>.................#",
+      "#...................#>.................#",
+      "#...................#>.................#",
+      "#...................#>.................#",
+      "#...................#>..................",
+      "#...................#>..................",
+      "#...................#>..................",
+      "#...................#>..................",
+      "#...................#...........########",
+      "#...................#...........########",
+      "#...................#...........########",
+      "#...P...........................########",
+      "########........................########",
+      "########........................########",
+      "########........................########",
+      "########........................########",
+      "########........................########",
+      "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^########",
+      "########################################"
+    ],
+    "movingHooks": [
+      {
+        "id": "Passage",
+        "c": 8,
+        "r": 10,
+        "w": 2,
+        "to": [
+          24,
+          0
+        ],
+        "period": 400
+      }
+    ],
+    "hint": "Let the carriage move ahead · Catch its hook from below and swing beneath the fixed divider.",
+    "question": "When should you catch a moving anchor to turn a fall into a crossing?"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 8,
+    "run": 3,
+    "acceptance": "revised",
+    "difficulty": 3,
+    "role": "solve",
+    "worlds": [
+      13,
+      16,
+      20
+    ],
+    "tags": [
+      "moving-hook",
+      "slingshot",
+      "fixed-divider",
+      "climb"
+    ],
+    "newMechanics": [
+      "moving-hook"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "moving-hook",
+      "moving-unhook",
+      "grab",
+      "climbhop"
+    ],
+    "humanReview": "Revised at user request: keep the discovered slingshot to the end wall; fix the divider in its upright pose. Awaiting re-review.",
+    "entrance": "West shelf beneath the approaching carriage.",
+    "exit": "Raised east gallery across the gulf.",
+    "solution": "Wake the carriage, let it travel ahead, then run off the west shelf. Catch its hook as you fall, keep swinging right, and jump-release beneath the fixed divider toward the far wall. Hold Grab and Up on the wall to climb into the east gallery.",
+    "nearestExisting": "The revised B37 asked the player to rotate a hinge. The player discovered a more enjoyable late-hook route around it, which is now the intended solution.",
+    "novelty": "The player-chosen late catch converts the height of a fall and the carriage motion into a slingshot beneath an obstacle.",
+    "designNotes": "The former arm is now ordinary stone in exactly the same seven-tile vertical footprint. It cannot rotate or become a landing. No movement rules changed and no event gate is used.",
+    "route": {
+      "exited": true,
+      "frames": 175,
+      "deaths": 0,
+      "events": [
+        "hook",
+        "moving-hook",
+        "moving-unhook",
+        "unhook",
+        "jump",
+        "moving-carrier-stop",
+        "grab",
+        "climbhop",
+        "land",
+        "exit"
+      ],
+      "eventCounts": {
+        "hook": 1,
+        "moving-hook": 1,
+        "moving-unhook": 1,
+        "unhook": 1,
+        "jump": 2,
+        "moving-carrier-stop": 1,
+        "grab": 1,
+        "climbhop": 1,
+        "land": 2,
+        "exit": 1
+      }
+    },
+    "positiveChecks": [
+      {
+        "name": "Late catch after 16 running frames",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            32,
+            "rg"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            65,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 173,
+          "deaths": 0,
+          "events": [
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "jump",
+            "moving-hook-blocked",
+            "moving-carrier-stop",
+            "grab",
+            "climbhop",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "hook": 2,
+            "moving-hook": 2,
+            "moving-unhook": 2,
+            "unhook": 2,
+            "jump": 2,
+            "moving-hook-blocked": 1,
+            "moving-carrier-stop": 1,
+            "grab": 1,
+            "climbhop": 1,
+            "land": 2,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Late catch after 18 running frames",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            32,
+            "rg"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            65,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 176,
+          "deaths": 0,
+          "events": [
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "jump",
+            "moving-carrier-stop",
+            "grab",
+            "climbhop",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "jump": 2,
+            "moving-carrier-stop": 1,
+            "grab": 1,
+            "climbhop": 1,
+            "land": 2,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Direct jump across without the moving hook",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            22,
+            "rj"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ]
+      }
+    ],
+    "revision": {
+      "request": "Runs 2–3 user review",
+      "original": "scripts/room-bank/archive/runs-2-3-before-review/base/bank-b37.json",
+      "changes": "Replaced rope-length demonstration with a stopped carrier and hinge that becomes the dismount bridge.",
+      "date": "2026-10-08",
+      "archive": "scripts/room-bank/archive/runs-2-3-before-review/base/bank-b37.json",
+      "latestChanges": "Fixed the arm at its original upright length and promoted the user-discovered late-hook slingshot."
+    },
+    "userFeedback": {
+      "date": "2026-10-08",
+      "comment": "Preferred late-hook slingshot to end wall; remove rotation from the central arm while preserving its length."
+    }
+  },
+  "tape": [
+    [
+      1,
+      "r"
+    ],
+    [
+      30,
+      ""
+    ],
+    [
+      17,
+      "r"
+    ],
+    [
+      32,
+      "rg"
+    ],
+    [
+      1,
+      "rj"
+    ],
+    [
+      65,
+      "rug"
+    ],
+    [
+      1,
+      "rj"
+    ],
+    [
+      100,
+      "r"
+    ]
+  ]
+}

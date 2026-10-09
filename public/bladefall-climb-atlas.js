@@ -40,7 +40,6 @@ function prepareWorld(w){
  // The Climb's straight-up springs reach the pod later than the original
  // room tape. Retiming the demonstration preserves the existing physics.
  if(w.n===4)w.tapes['cl4-u4-crown']=[[20,'ru'],[5,'rx'],[20,'ru'],[5,'ux'],[55,'ru'],[10,'l'],[1,'ds'],[100,'ru']];
- if(w.n===24)w.tapes['cl24-fu24-crown']=[[20,'ru'],[5,'rx'],[20,'ru'],[5,'ux'],[55,'ru'],[10,'l'],[1,'ds'],[100,'ru']];   // (7.278) its Fractured twin, the same room
  const cols=def.cols||40,rows=def.rows||23;
  const grid=Array.from({length:rows},()=>Array(cols).fill('.'));
  // Side entries remain open at every height, so authored exit trajectories are preserved.

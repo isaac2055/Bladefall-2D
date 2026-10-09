@@ -1,0 +1,474 @@
+{
+  "room": {
+    "id": "bank-f35",
+    "name": "Borrow Only Enough",
+    "palette": "cliffs",
+    "study": true,
+    "exit": "right",
+    "map": [
+      "########################################",
+      "#...........################...........#",
+      "#...........################...........#",
+      "#...........################...........#",
+      "#...........################...........#",
+      "#...........################...........#",
+      "#...........################...........#",
+      "#...........################...........#",
+      "#...........################...........#",
+      "#...........vvvvvvvvvvvvvvvv...........#",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#....................<MMMMMMMMMMMMMMMMMM",
+      "#....................<.................#",
+      "#.....P..............<.................#",
+      "#....................<.................#",
+      "#....................<.................#",
+      "#....................<.................#",
+      "#....................<.................#",
+      "#....................<.................#",
+      "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+      "########################################"
+    ],
+    "recoilPlatforms": [
+      {
+        "id": "A",
+        "c": 4,
+        "r": 16,
+        "w": 7,
+        "depth": 3,
+        "loadFrames": 30,
+        "releaseSpeed": 120
+      }
+    ],
+    "hint": "Hold Down to load; release, then dash-jump from the rising plate \u00b7 The roof limits how much lift you can use.",
+    "question": "How much height can you borrow without giving up the long crossing?"
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 7,
+    "run": 3,
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "stored lift and low crossing",
+    "worlds": [
+      25,
+      34,
+      40
+    ],
+    "tags": [
+      "recoil-platform",
+      "hyper",
+      "lift",
+      "clearance",
+      "partial-charge"
+    ],
+    "newMechanics": [
+      "recoil-platform"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "entrance": "Manual recoil plate in the low western bay.",
+    "exit": "Raised eastern shelf beneath the teeth.",
+    "solution": "Store a partial load, release the plate and take a hyper while its upward lift is still available. The borrowed height reaches the raised eastern shelf, while the low dash-jump stays beneath the roof. More charge and later departure are not automatically better; a full late recoil drives the same held trajectory into the roof.",
+    "nearestExisting": "F32 Brake Below the Teeth uses reverse-hyper height and later braking; F35 instead authors the vertical lift before departure. The long crossing needs more rise than a normal hyper, but less than a full late recoil can provide.",
+    "novelty": "Compression depth and departure time set the useful hyper arc. The correct answer is a band of lift, not merely triggering the new entity and receiving a fixed spring impulse. A full-charge early departure or shorter jump hold is a legitimate alternate if it clears the geometry.",
+    "requiredEvents": [
+      "recoil-load",
+      "recoil-release",
+      "hyper",
+      "recoil-jump"
+    ],
+    "humanReview": "Designer estimate only; no numeric user ratings.",
+    "positiveChecks": [
+      {
+        "name": "Load 10, wait 9, dash 6",
+        "tape": [
+          [
+            10,
+            "d"
+          ],
+          [
+            9,
+            ""
+          ],
+          [
+            6,
+            "rdx"
+          ],
+          [
+            45,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "frames": 133,
+        "normalSpawn": true,
+        "deaths": 0
+      },
+      {
+        "name": "Load 11, wait 9, dash 6",
+        "tape": [
+          [
+            11,
+            "d"
+          ],
+          [
+            9,
+            ""
+          ],
+          [
+            6,
+            "rdx"
+          ],
+          [
+            45,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "frames": 134,
+        "normalSpawn": true,
+        "deaths": 0
+      },
+      {
+        "name": "Load 12, wait 9, dash 5",
+        "tape": [
+          [
+            12,
+            "d"
+          ],
+          [
+            9,
+            ""
+          ],
+          [
+            5,
+            "rdx"
+          ],
+          [
+            45,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "frames": 136,
+        "normalSpawn": true,
+        "deaths": 0
+      },
+      {
+        "name": "Load 12, wait 10, dash 6",
+        "tape": [
+          [
+            12,
+            "d"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            6,
+            "rdx"
+          ],
+          [
+            45,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "frames": 136,
+        "normalSpawn": true,
+        "deaths": 0
+      },
+      {
+        "name": "Load 12, wait 11, dash 6",
+        "tape": [
+          [
+            12,
+            "d"
+          ],
+          [
+            11,
+            ""
+          ],
+          [
+            6,
+            "rdx"
+          ],
+          [
+            45,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "frames": 137,
+        "normalSpawn": true,
+        "deaths": 0
+      },
+      {
+        "name": "Load 13, wait 10, dash 7",
+        "tape": [
+          [
+            13,
+            "d"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            7,
+            "rdx"
+          ],
+          [
+            45,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "frames": 135,
+        "normalSpawn": true,
+        "deaths": 0
+      },
+      {
+        "name": "Load 14, wait 10, dash 6",
+        "tape": [
+          [
+            14,
+            "d"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            6,
+            "rdx"
+          ],
+          [
+            45,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "frames": 137,
+        "normalSpawn": true,
+        "deaths": 0
+      },
+      {
+        "name": "Load 15, wait 11, dash 6",
+        "tape": [
+          [
+            15,
+            "d"
+          ],
+          [
+            11,
+            ""
+          ],
+          [
+            6,
+            "rdx"
+          ],
+          [
+            45,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "frames": 139,
+        "normalSpawn": true,
+        "deaths": 0
+      },
+      {
+        "name": "Load 16, wait 11, dash 6",
+        "tape": [
+          [
+            16,
+            "d"
+          ],
+          [
+            11,
+            ""
+          ],
+          [
+            6,
+            "rdx"
+          ],
+          [
+            45,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "frames": 140,
+        "normalSpawn": true,
+        "deaths": 0
+      },
+      {
+        "name": "Load 18, wait 12, dash 6",
+        "tape": [
+          [
+            18,
+            "d"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            6,
+            "rdx"
+          ],
+          [
+            45,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "frames": 143,
+        "normalSpawn": true,
+        "deaths": 0
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Unloaded hyper from the plate",
+        "tape": [
+          [
+            6,
+            "rdx"
+          ],
+          [
+            45,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "result": "No exit; 2 deaths in the actual normal-input replay."
+      },
+      {
+        "name": "Full late load with the same held hyper",
+        "tape": [
+          [
+            30,
+            "d"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            6,
+            "rdx"
+          ],
+          [
+            45,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "result": "No exit; 2 deaths in the actual normal-input replay."
+      },
+      {
+        "name": "Ordinary jump and diagonal up-dash from the plate edge",
+        "tape": [
+          [
+            23,
+            "r"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            120,
+            "r"
+          ]
+        ],
+        "result": "No exit; 2 deaths in the actual normal-input replay."
+      }
+    ],
+    "route": {
+      "frames": 136,
+      "deaths": 0,
+      "events": [
+        "recoil-load",
+        "recoil-release",
+        "dash",
+        "ultra",
+        "hyper",
+        "recoil-jump",
+        "land",
+        "refill-dash",
+        "exit"
+      ],
+      "movement": "Existing Precision Core movement and blade interactions."
+    },
+    "tolerance": "Ten complete zero-death variations sample loads from 10 to 18 frames, release waits from 9 to 12 frames, and dash-to-jump holds from 5 to 7 frames. These are measured full combinations, not a claim that every combination in the rectangular range works. Full-charge early jumps or shorter Jump holds remain legitimate alternative trajectories.",
+    "designChecks": "Three actual failed probes are saved: an unloaded hyper, the same held hyper after a full late recoil, and an ordinary jump/diagonal up-dash from the plate edge. The raised landing, low roof and visibly thorned receiving face make each miss physical."
+  },
+  "tape": [
+    [
+      12,
+      "d"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      6,
+      "rdx"
+    ],
+    [
+      45,
+      "rj"
+    ],
+    [
+      63,
+      "r"
+    ]
+  ]
+}

@@ -1,0 +1,524 @@
+{
+  "room": {
+    "id": "bank-b38",
+    "name": "Hands Below, Cargo Above",
+    "palette": "cliffs",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "map": [
+      "########################################",
+      "#.............################.........#",
+      "#.............################.........#",
+      "#.............################.........#",
+      "#.............################.........#",
+      "#.............################.........#",
+      "#.............################.........#",
+      "#.............################.........#",
+      "#.............################..........",
+      "#.......................................",
+      "#.....Pl................................",
+      "##########..............................",
+      "##########..............................",
+      "##########..............................",
+      "##########......................########",
+      "##########......................########",
+      "##########......................########",
+      "##########......................########",
+      "##########......................########",
+      "##########......................########",
+      "##########......................########",
+      "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^########",
+      "########################################"
+    ],
+    "movingHooks": [
+      {
+        "id": "Freight",
+        "c": 11,
+        "r": 10,
+        "w": 10,
+        "to": [
+          14,
+          0
+        ],
+        "period": 420
+      }
+    ],
+    "cargoClasps": [
+      {
+        "id": "Dock",
+        "c": 33,
+        "r": 9
+      }
+    ],
+    "beams": [
+      {
+        "c": 35,
+        "r": 0,
+        "dir": "d"
+      },
+      {
+        "c": 37,
+        "r": 0,
+        "dir": "d"
+      },
+      {
+        "c": 39,
+        "r": 0,
+        "dir": "d"
+      }
+    ],
+    "hint": "Load the carriage, ride below \u00b7 Take your lantern back at the dock and carry its shade through the sun shafts.",
+    "dashes": 0,
+    "question": "How can you bring shade across when both hands are needed for the crossing?"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 8,
+    "run": 3,
+    "acceptance": "banked",
+    "difficulty": 2,
+    "role": "cargo logistics",
+    "worlds": [
+      5,
+      8,
+      10
+    ],
+    "tags": [
+      "moving-hook",
+      "cargo",
+      "cargo-clasp",
+      "beam-shield",
+      "hands-free"
+    ],
+    "newMechanics": [
+      "moving-hook"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "throw",
+      "lantern-land",
+      "moving-hook",
+      "clasp-catch",
+      "clasp-take"
+    ],
+    "humanReview": "User conditionally approved for early Base after requiring lantern retrieval and a shaded carry across the final dock. Three overhead sun shafts now cover that walk; leaving the lantern in the clasp fails.",
+    "entrance": "West loading shelf with a lantern.",
+    "exit": "East dock beyond an overhead beam.",
+    "solution": "Pick up the lantern, take a few steps and stop, then throw it onto the approaching carriage. The low tunnel leaves room for cargo above the deck but not for a knight. Drop beneath and catch the mounted hook with free hands. Ride east; the dock clasp catches and holds the cargo separately from its transport. Jump-release onto the dock, let the returning deck clear the lantern, then jump and grab it from the clasp. Carry its shade through the final beam.",
+    "nearestExisting": "B34 catches thrown cargo during an upward dash, and F38 borrows the carrier itself as a moving beam shield. Here cargo and knight take opposite sides of one moving solid because the low tunnel and hand occupancy make a single carried trip impossible.",
+    "novelty": "The carriage transports the lantern on top and the knight underneath. The dock clasp separates freight arrival from passenger arrival, making return motion create the pickup opening. Lantern shade remains necessary beyond the carriage.",
+    "designNotes": "The dock clasp safely stores the lantern while the carriage returns. Three distinct vertical beams cover the final walk; the player retrieves and carries the lantern above the knight to shade the crossing. No new ability and no event gate.",
+    "route": {
+      "exited": true,
+      "frames": 353,
+      "deaths": 0,
+      "events": [
+        "pickup",
+        "throw",
+        "jump",
+        "lantern-land",
+        "hook",
+        "moving-hook",
+        "clasp-catch",
+        "moving-hook-turn",
+        "moving-unhook",
+        "unhook",
+        "land",
+        "clasp-take",
+        "exit"
+      ],
+      "eventCounts": {
+        "pickup": 2,
+        "throw": 1,
+        "jump": 3,
+        "lantern-land": 1,
+        "hook": 1,
+        "moving-hook": 1,
+        "clasp-catch": 1,
+        "moving-hook-turn": 1,
+        "moving-unhook": 1,
+        "unhook": 1,
+        "land": 1,
+        "clasp-take": 1,
+        "exit": 1
+      }
+    },
+    "positiveChecks": [
+      {
+        "name": "Wait 66 frames for returning carriage",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            145,
+            "ug"
+          ],
+          [
+            30,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            66,
+            ""
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 349,
+          "deaths": 0,
+          "events": [
+            "pickup",
+            "throw",
+            "jump",
+            "lantern-land",
+            "hook",
+            "moving-hook",
+            "clasp-catch",
+            "moving-hook-turn",
+            "moving-unhook",
+            "unhook",
+            "land",
+            "clasp-take",
+            "exit"
+          ],
+          "eventCounts": {
+            "pickup": 2,
+            "throw": 1,
+            "jump": 3,
+            "lantern-land": 1,
+            "hook": 1,
+            "moving-hook": 1,
+            "clasp-catch": 1,
+            "moving-hook-turn": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 1,
+            "clasp-take": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Wait 74 frames for returning carriage",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            145,
+            "ug"
+          ],
+          [
+            30,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            74,
+            ""
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 357,
+          "deaths": 0,
+          "events": [
+            "pickup",
+            "throw",
+            "jump",
+            "lantern-land",
+            "hook",
+            "moving-hook",
+            "clasp-catch",
+            "moving-hook-turn",
+            "moving-unhook",
+            "unhook",
+            "land",
+            "clasp-take",
+            "exit"
+          ],
+          "eventCounts": {
+            "pickup": 2,
+            "throw": 1,
+            "jump": 3,
+            "lantern-land": 1,
+            "hook": 1,
+            "moving-hook": 1,
+            "clasp-catch": 1,
+            "moving-hook-turn": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 1,
+            "clasp-take": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Leave the lantern in the clasp and walk across the final dock",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            145,
+            "ug"
+          ],
+          [
+            30,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Jump toward the exit while leaving lantern clasped",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            145,
+            "ug"
+          ],
+          [
+            30,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            30,
+            "rj"
+          ],
+          [
+            120,
+            "r"
+          ]
+        ]
+      }
+    ],
+    "revision": {
+      "request": "Runs 2\u20133 user review",
+      "original": "scripts/room-bank/archive/runs-2-3-before-review/base/bank-b38.json",
+      "changes": "Replaced vertical-ring variation with separate cargo and passenger paths using the same carrier, a destination clasp and mandatory carried beam shade.",
+      "date": "2026-10-08",
+      "archive": "scripts/room-bank/archive/runs-2-3-before-review/base/bank-b38.json",
+      "latestChanges": "Extended the final shaded walk with three overhead sun shafts; approved as early Base after retrieval requirement."
+    },
+    "userFeedback": {
+      "date": "2026-10-08",
+      "comment": "Okay/good early Base: require taking the lantern pack from the clasp and carrying it across beneath the laser; bank after this change."
+    },
+    "placementNote": "Author placement estimate updated from qualitative user feedback; not a numeric user rating."
+  },
+  "tape": [
+    [
+      1,
+      "g"
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      10,
+      "r"
+    ],
+    [
+      12,
+      "rjg"
+    ],
+    [
+      145,
+      "ug"
+    ],
+    [
+      30,
+      "rug"
+    ],
+    [
+      1,
+      "rj"
+    ],
+    [
+      14,
+      "r"
+    ],
+    [
+      70,
+      ""
+    ],
+    [
+      12,
+      "j"
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      100,
+      "r"
+    ]
+  ]
+}

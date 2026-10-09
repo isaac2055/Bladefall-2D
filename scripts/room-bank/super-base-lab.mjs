@@ -1,0 +1,29 @@
+import{readFileSync,writeFileSync}from'node:fs';
+import{Core,Rooms,runRoom}from'../pcore-tape.mjs';
+import{beam,ACT,compress,defaultKey}from'../pcore-search.mjs';
+const root=new URL('./base/',import.meta.url);
+function grid(w,h){const a=Array.from({length:h},()=>Array(w).fill('.'));const g={w,h,a,rect(c,r,ww,hh,ch='#'){for(let y=r;y<r+hh;y++)for(let x=c;x<c+ww;x++){if(a[y]?.[x]!==undefined)a[y][x]=ch;}return this},put(c,r,ch){return this.rect(c,r,1,1,ch)},map(){return a.map(r=>r.join(''))}};g.rect(0,0,w,1).rect(0,h-1,w,1).rect(0,0,1,h).rect(w-1,0,1,h);return g;}
+const path=n=>new URL(`bank-b${n}.json`,root),read=n=>JSON.parse(readFileSync(path(n))),save=(n,r)=>writeFileSync(path(n),JSON.stringify(r,null,2)+'\n');
+function record(n,name,g,extra,bank){return{room:{id:`bank-b${n}`,name,cols:g.w,rows:g.h,map:g.map(),study:true,palette:'palace',dashes:0,lock:['parry','portal'],...extra},bank:{side:'base',batch:10,run:4,collection:'superrooms',acceptance:'candidate',status:'draft',difficulty:4,role:'interconnected superroom',worlds:[18,22,27],tags:[],newMechanics:[],author:'Codex',humanReview:'Unmeasured; author estimate only.',...bank},tape:[]};}
+function draft44(){const g=grid(96,36);
+// Upper return, overlooking the outgoing cargo route. Two broken spans keep shade mobile.
+g.rect(0,14,78,1).rect(27,14,7,1,'.').rect(51,14,7,1,'.').rect(0,10,1,4,'.').rect(2,10,1,4,'G');
+// The lift's upper landing and the outbound lower gallery.
+g.rect(0,32,96,4).rect(1,32,94,1,'^');g.rect(1,29,9,4).rect(18,29,6,4);
+g.rect(23,22,13,1).rect(42,25,10,1).rect(48,28,27,1,'}');
+// Cargo-only hole through central masonry, with a gate through its underpass.
+g.rect(54,15,5,12).rect(54,29,5,3).rect(55,29,1,3,'H').rect(54,29,1,3,'.').rect(56,29,3,3,'.');
+g.rect(46,32,31,1,'#').rect(60,31,5,1).rect(64,29,5,1);
+g.rect(74,27,1,2).put(73,27,'_');
+// East lift and steps reach upper return.
+g.rect(86,30,9,3).rect(88,20,7,1).rect(83,17,5,1).rect(77,14,7,1);
+g.put(14,28,'P').put(15,28,'l').put(92,19,'c');
+return record(44,'The Light Takes the Long Way',g,{exit:'left',recoilPlatforms:[{id:'West',c:10,r:29,w:8,depth:2,loadFrames:30,releaseSpeed:120},{id:'East',c:78,r:28,w:8,depth:2,loadFrames:30,releaseSpeed:120}],beams:[{c:30,r:15,dir:'d'},{c:45,r:0,dir:'d'},{c:66,r:0,dir:'d'},{c:18,r:0,dir:'d'}],hint:'One lantern, two routes · Send it through the low vent; follow beneath and collect it from the other side.',question:'How does your travelling shade become the key to its own return journey?'},{tags:['recoil-platform','cargo','conveyor','held-plate','beam','return-route'],requiredEvents:['recoil-jump','pickup','throw','plate','held-open','stone-lit','gate-open'],requiredEventCounts:{'recoil-jump':2,pickup:2},approvedIngredients:[{id:'bank-b35',interaction:'The same lantern loads and unloads a recoil support before returning as portable shade.'},{id:'bank-b14',interaction:'Cargo takes the one-tile conveyor passage while the knight follows a different route.'},{id:'bank-b38',interaction:'Reclaim transported cargo and carry its shade through exposed sunlight.'}],solution:'Pick up the lantern from the loaded western recoil plate and jump with its return onto the upper outbound gallery. Carry shade and glide east to the conveyor. Put the lantern onto the belt: it passes the one-tile vent and presses the remote plate. Drop beneath the masonry and take its now-open underpass. Climb to the receiving shelf and reclaim the same lantern. Load the eastern recoil plate while carrying it, jump with its return to the tally balcony, then climb the steps and carry shade west across the upper return walk to the starting-side gate.',entrance:'Western lower recoil dock, beneath the visible return gallery.',exit:'Western upper gallery; tally opens its visible gate.',nearestExisting:'B35 supplies weight/recoil state; B14 supplies separate cargo and knight routes; B38 supplies reacquired shade. The remote weight is on the other side of the same wall whose lower gate it opens.',novelty:'A folded circuit uses the same lantern for lift loading, outgoing shade, remote door weight and returning shade; the return passes above the apparatus that separated knight and cargo.',superroom:{screenAreas:96*36/(40*23),stages:['Release the loaded western lift','Carry shade to the cargo-only vent','Follow below and reclaim the remote weight','Lift to the tally and return over the same machinery']}});}
+const[ncmd,ns,...args]=process.argv.slice(2),n=Number(ns);
+if(ncmd==='draft'){throw new Error('Initial draft command retired: B44 and B45 are saved route-proven records. Edit their current records; do not recreate the original draft.');}
+else {const rec=read(n);Rooms.all.push(rec.room);const id=rec.room.id;
+if(ncmd==='run'){const tape=args[0]?JSON.parse(args[0]):rec.tape;const r=runRoom([rec.room],0,tape,{trace:true,maxExtra:0});console.log(JSON.stringify({exited:r.exited,deaths:r.deaths,events:r.events,final:r.log.at(-1),ents:r.g.ents.filter(e=>['lantern','recoilPlatform','plate'].includes(e.type)).map(e=>({type:e.type,x:e.x,y:e.y,state:e.state,charge:e.charge,held:e.held,down:e.down})),log:r.log.filter((x,i)=>i%20===0)},null,2));}
+if(ncmd==='set'){rec.tape=JSON.parse(args[0]);save(n,rec);console.log('saved tape',n);}
+if(ncmd==='append'){rec.tape.push(...JSON.parse(args[0]));save(n,rec);console.log('saved tape',n);}
+if(ncmd==='seek'){const [cx,cy,action='normal']=args;const tx=Number(cx)*8,ty=Number(cy)*8;const acts=action==='carry'?[...ACT.move,...ACT.jumps]:[...ACT.move,...ACT.jumps,...ACT.grabs,...ACT.dashes];const r=beam(id,{start:rec.tape,actions:acts,beam:70,maxDepth:65,goal:g=>Math.abs(g.p.x-tx)<6&&Math.abs(g.p.y-ty)<10,score:g=>Math.hypot(g.p.x-tx,g.p.y-ty),reject:(g,e)=>e.some(e=>['hyper','super','wallbounce'].includes(e.type))});if(r){rec.tape=compress(r.tape);save(n,rec);console.log('saved waypoint',r.g.p.x,r.g.p.y,r.tape)}else console.log('NO ROUTE');}
+}

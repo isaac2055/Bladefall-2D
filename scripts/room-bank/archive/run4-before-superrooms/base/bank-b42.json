@@ -1,0 +1,572 @@
+{
+  "room": {
+    "id": "bank-b42",
+    "name": "A Weight With Teeth",
+    "palette": "foundry",
+    "movement": "survive-2",
+    "study": true,
+    "dashes": 0,
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "map": [
+      "########################################",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#........##########.....................",
+      "#........##########.....................",
+      "#........##########.....................",
+      "#........vvvvvvvvvv....<################",
+      "#......................<################",
+      "#...P..................<################",
+      "########...............<################",
+      "########...............<################",
+      "########...............<################",
+      "########...............<################",
+      "########...............<################",
+      "########...............<################",
+      "########...............<################",
+      "########^^^^^^^^^^^^^^^^################",
+      "########################################"
+    ],
+    "recoilPlatforms": [
+      {
+        "id": "Nest",
+        "c": 10,
+        "r": 14,
+        "w": 8,
+        "depth": 6,
+        "loadFrames": 30,
+        "releaseSpeed": 60
+      }
+    ],
+    "combat": {
+      "enemies": [
+        {
+          "kind": "guard",
+          "x": 110,
+          "y": 96,
+          "face": -1,
+          "delay": 30
+        }
+      ]
+    },
+    "hint": "A living guard loads the plate · Release Jump for low blade rebounds beneath the teeth.",
+    "question": "What changes about the floor when its last living weight disappears?"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 9,
+    "run": 4,
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "enemy weight becomes launch",
+    "worlds": [
+      20,
+      25,
+      30
+    ],
+    "tags": [
+      "controlled-pogo",
+      "recoil-platform",
+      "enemy-weight",
+      "low-ceiling"
+    ],
+    "newMechanics": [
+      "controlled-pogo",
+      "recoil-platform"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "entrance": "West ledge above the loaded spring.",
+    "exit": "High east shelf.",
+    "solution": "Wake the plate and let the guard carry it down. Walk off the west ledge and cut downward with Jump released. Remain above the guard for a second low rebound; the fatal hit releases the loaded plate. Steer right as you settle onto its rising eastern edge, then make an ordinary rightward jump with its lift to the high gallery.",
+    "nearestExisting": "B39 manually loads a spring. Here the living enemy holds the energy and the low rebound leaves time to catch the support it releases.",
+    "novelty": "The enemy is a load and a platforming target. Removing it starts the return of the support needed for the next jump; a high rebound misses the required space.",
+    "requiredEvents": [
+      "pogo-low",
+      "enemy-defeat",
+      "recoil-jump"
+    ],
+    "humanReview": "New Run 4 candidate; not rated or approved.",
+    "route": {
+      "exited": true,
+      "frames": 268,
+      "deaths": 0,
+      "events": [
+        "recoil-load",
+        "strike",
+        "pogo-low",
+        "enemy-pogo",
+        "enemy-hit",
+        "enemy-defeat",
+        "recoil-release",
+        "land",
+        "jump",
+        "recoil-jump",
+        "exit"
+      ],
+      "eventCounts": {
+        "recoil-load": 1,
+        "strike": 2,
+        "pogo-low": 2,
+        "enemy-pogo": 2,
+        "enemy-hit": 1,
+        "enemy-defeat": 1,
+        "recoil-release": 1,
+        "land": 2,
+        "jump": 1,
+        "recoil-jump": 1,
+        "exit": 1
+      }
+    },
+    "requiredEventCounts": {
+      "pogo-low": 2
+    },
+    "designNotes": "The living guard physically loads the recoil plate; no scripted death impulse. The low rebounds fit beneath the fixed thorn canopy. The returning spring is the new landing, then the next launch. A full loft hits the canopy and a late step off loses the lift. Ordinary attacks/parry are available only according to existing rules; no hidden route receipt checks the exit.",
+    "positiveChecks": [
+      {
+        "name": "Settle/run 41 frames after final low contact",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            34,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            31,
+            ""
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            41,
+            "r"
+          ],
+          [
+            45,
+            "rj"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 268,
+          "deaths": 0,
+          "events": [
+            "recoil-load",
+            "strike",
+            "pogo-low",
+            "enemy-pogo",
+            "enemy-hit",
+            "enemy-defeat",
+            "recoil-release",
+            "land",
+            "jump",
+            "recoil-jump",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "strike": 2,
+            "pogo-low": 2,
+            "enemy-pogo": 2,
+            "enemy-hit": 1,
+            "enemy-defeat": 1,
+            "recoil-release": 1,
+            "land": 2,
+            "jump": 1,
+            "recoil-jump": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Settle/run 42 frames after final low contact",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            34,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            31,
+            ""
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            42,
+            "r"
+          ],
+          [
+            45,
+            "rj"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 268,
+          "deaths": 0,
+          "events": [
+            "recoil-load",
+            "strike",
+            "pogo-low",
+            "enemy-pogo",
+            "enemy-hit",
+            "enemy-defeat",
+            "recoil-release",
+            "land",
+            "jump",
+            "recoil-jump",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "strike": 2,
+            "pogo-low": 2,
+            "enemy-pogo": 2,
+            "enemy-hit": 1,
+            "enemy-defeat": 1,
+            "recoil-release": 1,
+            "land": 2,
+            "jump": 1,
+            "recoil-jump": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Settle/run 43 frames after final low contact",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            34,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            31,
+            ""
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            43,
+            "r"
+          ],
+          [
+            45,
+            "rj"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 268,
+          "deaths": 0,
+          "events": [
+            "recoil-load",
+            "strike",
+            "pogo-low",
+            "enemy-pogo",
+            "enemy-hit",
+            "enemy-defeat",
+            "recoil-release",
+            "land",
+            "jump",
+            "recoil-jump",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "strike": 2,
+            "pogo-low": 2,
+            "enemy-pogo": 2,
+            "enemy-hit": 1,
+            "enemy-defeat": 1,
+            "recoil-release": 1,
+            "land": 2,
+            "jump": 1,
+            "recoil-jump": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Use lofted rebound in the covered nest",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            34,
+            "r"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            31,
+            ""
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            40,
+            "r"
+          ],
+          [
+            45,
+            "rj"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 3,
+          "events": [
+            "recoil-load",
+            "strike",
+            "pogo-loft",
+            "enemy-pogo",
+            "enemy-hit",
+            "death",
+            "respawn",
+            "jump",
+            "enemy-tell",
+            "land"
+          ],
+          "eventCounts": {
+            "recoil-load": 4,
+            "strike": 1,
+            "pogo-loft": 1,
+            "enemy-pogo": 1,
+            "enemy-hit": 1,
+            "death": 3,
+            "respawn": 3,
+            "jump": 1,
+            "enemy-tell": 1,
+            "land": 1
+          }
+        }
+      },
+      {
+        "name": "Walk off without jumping from returning spring",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            34,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            31,
+            ""
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            40,
+            "r"
+          ],
+          [
+            45,
+            "r"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 2,
+          "events": [
+            "recoil-load",
+            "strike",
+            "pogo-low",
+            "enemy-pogo",
+            "enemy-hit",
+            "enemy-defeat",
+            "recoil-release",
+            "land",
+            "death",
+            "respawn",
+            "enemy-tell"
+          ],
+          "eventCounts": {
+            "recoil-load": 3,
+            "strike": 2,
+            "pogo-low": 2,
+            "enemy-pogo": 2,
+            "enemy-hit": 1,
+            "enemy-defeat": 1,
+            "recoil-release": 1,
+            "land": 2,
+            "death": 2,
+            "respawn": 2,
+            "enemy-tell": 1
+          }
+        }
+      },
+      {
+        "name": "Jump directly from west shelf",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 2,
+          "events": [
+            "recoil-load",
+            "jump",
+            "death",
+            "respawn",
+            "enemy-tell",
+            "land"
+          ],
+          "eventCounts": {
+            "recoil-load": 3,
+            "jump": 1,
+            "death": 2,
+            "respawn": 2,
+            "enemy-tell": 1,
+            "land": 1
+          }
+        }
+      }
+    ]
+  },
+  "tape": [
+    [
+      1,
+      "r"
+    ],
+    [
+      40,
+      ""
+    ],
+    [
+      34,
+      "r"
+    ],
+    [
+      1,
+      "ds"
+    ],
+    [
+      31,
+      ""
+    ],
+    [
+      1,
+      "ds"
+    ],
+    [
+      40,
+      "r"
+    ],
+    [
+      45,
+      "rj"
+    ],
+    [
+      160,
+      "r"
+    ]
+  ]
+}

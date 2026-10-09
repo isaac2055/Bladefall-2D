@@ -5,7 +5,7 @@
 const opposite=e=>e==='left'?'right':'left';
 function landscapeJunction(w,section,def){
  const arrival=def.id.endsWith('-atlas-arrival');
- const oldMain=def.atlasMain,cols=56,mid=Math.floor(cols/2);
+ const oldMain=def.atlasMain,cols=def.atlasSockets.length>5?40:56,mid=Math.floor(cols/2);
  // (7.275) a departure with no road onward (the Deep Line's last platform) hangs below its floor, not above it
  const empty=!arrival&&!def.atlasSockets.some(p=>p.kind!=='room');
  const main={...oldMain,floor:oldMain.edge==='down'?25:oldMain.edge==='up'?20:arrival?10:empty?8:20};
@@ -13,7 +13,7 @@ function landscapeJunction(w,section,def){
  const orderedSockets=[...sockets].sort((a,b)=>Number(root.BladefallClimbAtlas.links.find(l=>l.id===b.link)?.kind==='crossing')-Number(root.BladefallClimbAtlas.links.find(l=>l.id===a.link)?.kind==='crossing'));
  // (7.275) an arrival takes a third mouth on a side (the Deep Line's); a departure entered from above (the Last Pour's)
  // opens its first road at the lower tier, nearer its hearth
- for(const p of orderedSockets){p.floor=p.kind==='room'?main.floor:(arrival?[18,26,34]:main.edge==='up'?[14,8]:[8,14])[used[p.edge]++];if(p.floor==null)throw new Error('Too many mouths: '+def.id);}
+ for(const p of orderedSockets){p.floor=p.kind==='room'?main.floor:(arrival?(sockets.length>5?[18,24,30]:[18,26,34]):main.edge==='up'?[14,8,22]:[8,14,22])[used[p.edge]++];if(p.floor==null)throw new Error('Too many mouths: '+def.id);}
  // Keep projected corridors physically clear of the original neighbouring room.
  const host=w.rooms.find(d=>d.id===oldMain.to),shared=sockets.filter(p=>p.kind!=='room'&&p.edge===main.edge);
  if(host&&shared.length){
@@ -22,7 +22,9 @@ function landscapeJunction(w,section,def){
  }
  for(const p of sockets)if(p.kind==='room')p.floor=main.floor;
  const rows=arrival?Math.max(32,...sockets.map(p=>p.floor+6)):Math.max(26,main.floor+6),bottom=rows-2;
- const hearth=arrival?Math.max(...sockets.filter(p=>p.kind!=='room').map(p=>p.floor)):Math.min(bottom,24);
+ const mouthFloors=sockets.filter(p=>p.kind!=='room').map(p=>p.floor).sort((a,b)=>a-b);
+ // A many-road arrival meets halfway up its banks, keeping each climb short.
+ const hearth=arrival?(mouthFloors.length>4?mouthFloors[Math.floor(mouthFloors.length/2)]:Math.max(...mouthFloors)):Math.min(bottom,24);
  const grid=Array.from({length:rows},()=>Array(cols).fill('.'));
  const openings=[...sockets];
  if(main.edge!=='down'&&main.edge!=='up'&&!openings.some(p=>p.kind==='room'))openings.unshift(main);

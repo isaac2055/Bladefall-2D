@@ -31,14 +31,15 @@ const tryDoors=()=>p.evaluate(()=>{
    if(!attempt)e.still=v.g.room.id===s.room&&Math.abs(v.g.p.y-(r*8-g.p.h))<2;   // no input: nothing happens
    k=0;
    for(;k<360;k++){V.advance(['u']);if(v.g.room.id!==s.room&&v.g.p.onGround&&!st.lift)break;}
-   for(let j=0;j<20;j++)V.advance(['']);
+   // A shade punishes waiting: test an immediate retreat from its entrance.
+   if(!CL.def(w,br.sections[0].room).shade)for(let j=0;j<20;j++)V.advance(['']);
    e.attempts=attempt+1;if(v.chapterStats.deaths===d0||sealed)break;}
   e.frames=k;e.landedIn=v.g.room.id;e.onLedge=v.g.p.onGround;e.inBranch=br.sections.some(x=>x.room===v.g.room.id);e.deaths=v.chapterStats.deaths-d0;
   if(sealed){e.ok=e.still&&v.g.room.id===s.room&&!e.deaths;out.push(e);continue;}
   // home again: down + jump on the ledge (a branch that starts on a cart has no ledge over its way in)
   const fd=CL.def(w,br.sections[0].room),shaft=(fd.seam||[]).length>0;
   if(fd.echo)e.note='its shade follows him up: no way back by the door (the room\'s design)';
-  else if(e.inBranch&&shaft){for(let j=0;j<60;j++)V.advance(['']);V.advance(['dj']);for(let j=0;j<200&&v.g.room.id!==s.room;j++)V.advance(['']);for(let j=0;j<30;j++)V.advance(['']);e.home=v.g.room.id===s.room;e.deaths=v.chapterStats.deaths-d0;}
+  else if(e.inBranch&&shaft){for(let j=0;j<(fd.shade?0:60);j++)V.advance(['']);V.advance(['dj']);for(let j=0;j<200&&v.g.room.id!==s.room;j++)V.advance(['']);for(let j=0;j<30;j++)V.advance(['']);e.home=v.g.room.id===s.room;e.deaths=v.chapterStats.deaths-d0;}
   e.ok=e.still&&e.inBranch&&e.onLedge&&!e.deaths&&(e.home!==false);out.push(e);
  }
  return out;});

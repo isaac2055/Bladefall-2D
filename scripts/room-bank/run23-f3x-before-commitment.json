@@ -1,0 +1,261 @@
+{
+  "kind": "Intermediate Run 2 layouts before the independent forward-hyper bypass repair",
+  "rooms": [
+    {
+      "id": "bank-f31",
+      "room": {
+        "id": "bank-f31",
+        "name": "Cut Behind You",
+        "palette": "cliffs",
+        "study": true,
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "map": [
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "#vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv#",
+          "#G.....................................#",
+          "#G............................AAAAAAAA.#",
+          ".G.....................................#",
+          ".G................................P...c#",
+          ".G...............................###...#",
+          "#BBBBBBBBBBBBBBBBBBBBB.................#",
+          "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#"
+        ],
+        "movement": "survive-2",
+        "exit": "left",
+        "hint": "Down-Right dash + Strike · Then Jump Left; the return must stay low and fast.",
+        "question": "Can the cut go toward the key while your launch goes toward the exit?"
+      },
+      "tape": [
+        [
+          8,
+          "r"
+        ],
+        [
+          1,
+          "rs"
+        ],
+        [
+          10,
+          "l"
+        ],
+        [
+          6,
+          "ldx"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          150,
+          "l"
+        ]
+      ],
+      "after": {
+        "exited": true,
+        "deaths": 0,
+        "frames": 147,
+        "events": [
+          "strike",
+          "stone-lit",
+          "gate-open",
+          "phase",
+          "dash",
+          "ultra",
+          "hyper",
+          "land",
+          "refill-dash",
+          "exit"
+        ],
+        "eventCounts": {
+          "strike": 1,
+          "stone-lit": 1,
+          "gate-open": 1,
+          "phase": 1,
+          "dash": 1,
+          "ultra": 1,
+          "hyper": 1,
+          "land": 1,
+          "refill-dash": 1,
+          "exit": 1
+        },
+        "firstFailure": null
+      }
+    },
+    {
+      "id": "bank-f32",
+      "room": {
+        "id": "bank-f32",
+        "name": "Take the Shade With You",
+        "palette": "sunspire",
+        "study": true,
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "map": [
+          "########################################",
+          "#G.............#########################",
+          "#G.............#########################",
+          "#G.............#########################",
+          "#G.............#########################",
+          "#G.............#########################",
+          "#G.............#########################",
+          "#G.............#########################",
+          ".G.............#########################",
+          ".G.............#########################",
+          ".G.............#########################",
+          "#HHHHHHHHHHHHHH#########################",
+          "#..............#########################",
+          "#..............#########################",
+          "#..............#########################",
+          "#..............vvvvvvvvvvvvvvvvvvvvvvvv#",
+          "#......................................#",
+          "#.............................AAAAAAAA.#",
+          "#...........................l..........#",
+          "#.................................P...c#",
+          "#......____......................###...#",
+          "#BBBBBBBBBBBBBB........................#",
+          "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#"
+        ],
+        "movement": "survive-2",
+        "exit": "left",
+        "hint": "Reverse low; grab the hanging lantern · Its shade crosses the beam; its weight opens the roof.",
+        "question": "When does the thing you must carry become the thing you must leave behind?",
+        "cargoClasps": [
+          {
+            "id": "A",
+            "c": 28,
+            "r": 18
+          }
+        ],
+        "beams": [
+          {
+            "c": 22,
+            "r": 15,
+            "dir": "d"
+          }
+        ]
+      },
+      "tape": [
+        [
+          8,
+          "r"
+        ],
+        [
+          1,
+          "rs"
+        ],
+        [
+          10,
+          "l"
+        ],
+        [
+          6,
+          "ldx"
+        ],
+        [
+          8,
+          "lj"
+        ],
+        [
+          2,
+          "ljg"
+        ],
+        [
+          57,
+          "l"
+        ],
+        [
+          12,
+          ""
+        ],
+        [
+          1,
+          "dg"
+        ],
+        [
+          30,
+          ""
+        ],
+        [
+          35,
+          "l"
+        ],
+        [
+          150,
+          "lug"
+        ],
+        [
+          30,
+          "l"
+        ]
+      ],
+      "after": {
+        "exited": true,
+        "deaths": 0,
+        "frames": 297,
+        "events": [
+          "clasp-catch",
+          "strike",
+          "stone-lit",
+          "gate-open",
+          "phase",
+          "dash",
+          "ultra",
+          "hyper",
+          "pickup",
+          "clasp-take",
+          "land",
+          "refill-dash",
+          "plate",
+          "held-open",
+          "throw",
+          "lantern-land",
+          "grab",
+          "climbhop",
+          "exit"
+        ],
+        "eventCounts": {
+          "clasp-catch": 1,
+          "strike": 1,
+          "stone-lit": 1,
+          "gate-open": 1,
+          "phase": 1,
+          "dash": 1,
+          "ultra": 1,
+          "hyper": 1,
+          "pickup": 1,
+          "clasp-take": 1,
+          "land": 1,
+          "refill-dash": 1,
+          "plate": 4,
+          "held-open": 1,
+          "throw": 1,
+          "lantern-land": 1,
+          "grab": 1,
+          "climbhop": 1,
+          "exit": 1
+        },
+        "firstFailure": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,687 @@
+{
+  "room": {
+    "id": "bank-b36",
+    "name": "Short Runway, Tall Exit",
+    "palette": "gaol",
+    "study": true,
+    "dashes": 0,
+    "lock": [
+      "parry"
+    ],
+    "map": [
+      "########################################",
+      "##################>....................#",
+      "##################>....................#",
+      "##################>....................#",
+      "##################>....................#",
+      "##################>....................#",
+      "##################>....................#",
+      "##################>....................#",
+      "##################>....................#",
+      "##################>.....................",
+      "##################>.....................",
+      "##################>.....................",
+      "##################>.....................",
+      "##################>.....................",
+      "##################>.....................",
+      "###............###>.......<#############",
+      "###............###>.......<#############",
+      "###............###>.......<#############",
+      "##%............###>.......<#############",
+      "##%........P...###>.......<#############",
+      "#######################%%#<#############",
+      "########################################",
+      "########################################"
+    ],
+    "portalMode": "fixed",
+    "portals": [
+      {
+        "color": "blue",
+        "c": 2,
+        "r": 18,
+        "face": "r"
+      },
+      {
+        "color": "orange",
+        "c": 23,
+        "r": 20,
+        "face": "u"
+      }
+    ],
+    "impulseSeeds": [
+      {
+        "id": "A",
+        "c": 9,
+        "r": 19
+      }
+    ],
+    "hint": "Move the seed toward the mouth \u00b7 Cross to its other side before the second cut.",
+    "question": "How can a low tunnel supply the height needed in the next chamber?"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 8,
+    "run": 3,
+    "acceptance": "banked",
+    "difficulty": 4,
+    "role": "speed routing",
+    "worlds": [
+      18,
+      20
+    ],
+    "tags": [
+      "impulse-seed",
+      "blade",
+      "portal",
+      "momentum",
+      "positioning"
+    ],
+    "newMechanics": [
+      "impulse-seed"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "impulse-prime",
+      "impulse-ready",
+      "impulse-burst",
+      "portal-pass"
+    ],
+    "humanReview": "User qualitative approval recorded; numeric ratings remain unmeasured.",
+    "entrance": "Low western workshop with seed beside the portal mouth.",
+    "exit": "Raised eastern balcony above the return portal well.",
+    "solution": "Cut the seed left so it charges closer to the western portal mouth. Walk past it, face back toward it, and use a fresh rightward cut: the radial burst sends you left into the portal. The short runway retains enough horizontal speed for the floor outlet to turn it into useful height. Steer right after emerging onto the raised balcony. Walking into the portal supplies too little height; preparing the seed farther away loses too much speed before reaching the entrance.",
+    "nearestExisting": "B32 turned a fixed pod rebound through a ceiling portal and selected a low second pogo under spikes. This room first relocates the source: a low workshop denies a useful vertical takeoff, while the remote well needs more height than its local floor or portal minimum can supply.",
+    "novelty": "Seed placement determines how much launch survives the approach; the portal turns that preserved horizontal speed into height in another chamber. The strike points away from the wanted destination because the linked route changes the useful direction.",
+    "designNotes": "Ordinary movement, zero dashes. The outlet shelf stands five tiles above the well floor, beyond a normal jump; thorn faces prevent climbing around this height requirement. The seed mouth was moved inward so holding Right after the second cut also works; releasing direction for a moment is convenient, not mandatory. Eight consecutive preparation positions and several steering timings succeed. No hidden exit event gate.",
+    "route": {
+      "frames": 132,
+      "deaths": 0,
+      "events": [
+        "strike",
+        "impulse-prime",
+        "impulse-ready",
+        "impulse-burst",
+        "portal-pass",
+        "land",
+        "impulse-reset",
+        "exit"
+      ],
+      "eventCounts": {
+        "strike": 2,
+        "impulse-prime": 1,
+        "impulse-ready": 1,
+        "impulse-burst": 1,
+        "portal-pass": 1,
+        "land": 1,
+        "impulse-reset": 1,
+        "exit": 1
+      }
+    },
+    "positiveChecks": [
+      {
+        "name": "Cross behind prepared seed for 28 frames",
+        "tape": [
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            28,
+            "l"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "normalSpawn": true,
+        "frames": 131,
+        "deaths": 0
+      },
+      {
+        "name": "Cross behind prepared seed for 29 frames",
+        "tape": [
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            29,
+            "l"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "normalSpawn": true,
+        "frames": 132,
+        "deaths": 0
+      },
+      {
+        "name": "Cross behind prepared seed for 30 frames",
+        "tape": [
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            30,
+            "l"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "normalSpawn": true,
+        "frames": 132,
+        "deaths": 0
+      },
+      {
+        "name": "Cross behind prepared seed for 32 frames",
+        "tape": [
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            32,
+            "l"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "normalSpawn": true,
+        "frames": 133,
+        "deaths": 0
+      },
+      {
+        "name": "Cross behind prepared seed for 33 frames",
+        "tape": [
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            33,
+            "l"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "normalSpawn": true,
+        "frames": 134,
+        "deaths": 0
+      },
+      {
+        "name": "Cross behind prepared seed for 34 frames",
+        "tape": [
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            34,
+            "l"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "normalSpawn": true,
+        "frames": 134,
+        "deaths": 0
+      },
+      {
+        "name": "Cross behind prepared seed for 35 frames",
+        "tape": [
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            35,
+            "l"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "normalSpawn": true,
+        "frames": 135,
+        "deaths": 0
+      },
+      {
+        "name": "Keep holding toward the exit immediately after the second cut",
+        "tape": [
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            31,
+            "l"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "normalSpawn": true,
+        "frames": 131,
+        "deaths": 0
+      },
+      {
+        "name": "Wait 4 frames before steering toward the exit",
+        "tape": [
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            31,
+            "l"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            4,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "normalSpawn": true,
+        "frames": 131,
+        "deaths": 0
+      },
+      {
+        "name": "Wait 12 frames before steering toward the exit",
+        "tape": [
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            31,
+            "l"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "normalSpawn": true,
+        "frames": 136,
+        "deaths": 0
+      },
+      {
+        "name": "Wait 14 frames before steering toward the exit",
+        "tape": [
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            31,
+            "l"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "normalSpawn": true,
+        "frames": 138,
+        "deaths": 0
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Walk into portal without stored impulse speed",
+        "tape": [
+          [
+            46,
+            "l"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "firstFailure": {
+            "type": "death",
+            "frame": 59,
+            "x": 210,
+            "y": 141,
+            "cause": "spikes",
+            "vx": 90,
+            "vy": 25,
+            "i": 58
+          }
+        }
+      },
+      {
+        "name": "Prime the seed away from the mouth then launch back across long runway",
+        "tape": [
+          [
+            24,
+            "l"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            13,
+            "l"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "firstFailure": {
+            "type": "death",
+            "frame": 72,
+            "x": 210,
+            "y": 126,
+            "cause": "spikes",
+            "vx": 90,
+            "vy": -44.36403178974544,
+            "i": 71
+          }
+        }
+      },
+      {
+        "name": "Skip the first repositioning cut",
+        "tape": [
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            31,
+            "l"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0,
+          "firstFailure": null
+        }
+      }
+    ],
+    "revision": {
+      "request": "Runs 2\u20133 user review",
+      "original": "scripts/room-bank/archive/runs-2-3-before-review/base/bank-b36.json",
+      "changes": "Replaced isolated seed launch with a repositioned seed whose horizontal burst is converted into remote height through a fixed portal.",
+      "date": "2026-10-08",
+      "archive": "scripts/room-bank/archive/runs-2-3-before-review/base/bank-b36.json"
+    },
+    "userFeedback": {
+      "date": "2026-10-08",
+      "comment": "Seed demonstration alone is insufficient; combine it meaningfully with another system."
+    },
+    "feedbackHistory": [
+      {
+        "date": "2026-10-08",
+        "decision": "banked",
+        "comment": "Fun! Good one, perfect for base. Bank it."
+      }
+    ],
+    "review": {
+      "date": "2026-10-08",
+      "decision": "banked",
+      "comment": "Fun! Good one, perfect for base. Bank it."
+    }
+  },
+  "tape": [
+    [
+      1,
+      "l"
+    ],
+    [
+      1,
+      "ls"
+    ],
+    [
+      31,
+      "l"
+    ],
+    [
+      1,
+      "r"
+    ],
+    [
+      1,
+      "rs"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      100,
+      "r"
+    ]
+  ]
+}

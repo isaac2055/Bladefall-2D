@@ -1,0 +1,237 @@
+{
+  "room": {
+    "id": "bank-f17",
+    "name": "Leave the Wall Standing",
+    "hint": "Clear the dark passage from below. The same stone can stay above you as a roof.",
+    "question": "Which side of the plug is safe to move it from, before you commit to the void?",
+    "map": [
+      "########################################",
+      "#......#####################.###########",
+      "#......#####################.###########",
+      "#......#####################.###########",
+      "#......####################....#########",
+      "#......####################....#########",
+      "#......####################....#########",
+      "#......VVVVVVVVVVVVVVVVVVVV.............",
+      "#......VVVVVVVVVVVVVVVVVVVVKK...........",
+      "#.P....VVVVVVVVVVVVVVVVVVVVKK...........",
+      "#####..###################>..vv<########",
+      "#......###################>....<########",
+      "#......###################>....<########",
+      "#......###################>....<########",
+      "#......###################>....<########",
+      "#......###################>....<########",
+      "#......###################>....<########",
+      "#......###################>....<########",
+      "#......###################>..YY<########",
+      "#..............................<########",
+      "#..............................<########",
+      "########################################",
+      "########################################"
+    ],
+    "palette": "causeway",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "beams": [
+      {
+        "c": 28,
+        "r": 0,
+        "dir": "d"
+      }
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 3,
+    "acceptance": "revised",
+    "difficulty": 4,
+    "role": "solve",
+    "worlds": [
+      25,
+      33,
+      40
+    ],
+    "tags": [
+      "void",
+      "sliding-stone",
+      "preparation",
+      "canopy"
+    ],
+    "newMechanics": [],
+    "entrance": "Upper left landing; the low passage reaches the underside of the obstruction.",
+    "exit": "Upper right beyond the void.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "stone-hit",
+      "foothold-spent",
+      "void-in",
+      "void-out"
+    ],
+    "requiredEventCounts": {
+      "stone-hit": 1,
+      "void-in": 1
+    },
+    "solution": "Drop into the lower service passage and jump onto the temporary foothold. Jump left from it, then dash straight up into the plug. The foothold disappears and the stone parks as a canopy above the exit. Return left, climb to the void entrance and dash through; use its exit jump grace to bridge the thorned receiving shaft.",
+    "nearestExisting": "bv4 Rock Behind puts a static obstruction behind void. pw2 Stone Through Stone relocates a sliding stone into useful terrain. Here the obstruction must be serviced from its underside before entering an unsteerable route, and its new position still has to shield the receiving space.",
+    "novelty": "Preparation consumes its own launch height. The moved plug still shelters the receiving shaft, but the spent foothold means the lower service passage cannot simply become the final ascent.",
+    "humanReview": "Author difficulty estimate only; ratings pending.",
+    "route": {
+      "frames": 602,
+      "deaths": 0,
+      "events": [
+        "land",
+        "jump",
+        "foothold-spent",
+        "dash",
+        "stone-hit",
+        "stone-stop",
+        "refill-dash",
+        "grab",
+        "void-in",
+        "void-out",
+        "exit"
+      ]
+    },
+    "bypassCheck": "The reported side-grab shortcut is recorded in bank.review and hits the visible downward thorn lip. The clean route still pushes from below, returns through void and jumps across the receiving shaft.",
+    "userFeedback": {
+      "date": "2026-10-07",
+      "comment": "Can skip void by jumping off the movable block and dashing up. Fix and reshow."
+    },
+    "revisionNotes": "Added a visible downward-thorn lip below the right side of the stone. The service shaft still admits an upward hit from directly below, but no longer reaches its grab-able right face. Void transit arrives above the lip and keeps its exit jump.",
+    "review": {
+      "feedback": "Player can jump/up-dash to the stone’s side and wall-jump out without void.",
+      "changes": [
+        "Added a visible downward-thorn lip below the right side of the stone. The service shaft still admits an upward hit from directly below, but no longer reaches its grab-able right face. Void transit arrives above the lip and keeps its exit jump."
+      ],
+      "bypassBefore": {
+        "description": "Reach spent foothold, jump/updash beside unmoved stone, grab its right face and wall-jump to exit without moving it or entering void.",
+        "tape": [
+          [
+            23,
+            "r"
+          ],
+          [
+            48,
+            ""
+          ],
+          [
+            114,
+            "r"
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            18,
+            "j"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            18,
+            "u"
+          ],
+          [
+            30,
+            "lgu"
+          ],
+          [
+            65,
+            "rj"
+          ]
+        ],
+        "result": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 357,
+          "voidEntries": 0,
+          "stoneHits": 0
+        }
+      },
+      "bypassAfter": {
+        "exited": false,
+        "deaths": 1,
+        "firstDeath": {
+          "type": "death",
+          "frame": 263,
+          "x": 244,
+          "y": 85,
+          "cause": "spikes",
+          "vx": 0,
+          "vy": -240,
+          "i": 262
+        }
+      },
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  "tape": [
+    [
+      23,
+      "r"
+    ],
+    [
+      48,
+      ""
+    ],
+    [
+      114,
+      "r"
+    ],
+    [
+      24,
+      "rj"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      6,
+      "j"
+    ],
+    [
+      5,
+      "ux"
+    ],
+    [
+      42,
+      ""
+    ],
+    [
+      117,
+      "l"
+    ],
+    [
+      12,
+      "rjg"
+    ],
+    [
+      104,
+      "rug"
+    ],
+    [
+      48,
+      "rx"
+    ],
+    [
+      34,
+      "rj"
+    ]
+  ]
+}

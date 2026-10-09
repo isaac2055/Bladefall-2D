@@ -1,0 +1,948 @@
+{
+  "room": {
+    "id": "bank-f32",
+    "name": "Brake Below the Teeth",
+    "palette": "cliffs",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "map": [
+      "########################################",
+      "#................#####################.#",
+      "#................#####################.#",
+      "#................#####################.#",
+      "#................#####################.#",
+      "#................#####################.#",
+      "#................#####################.#",
+      "#................#####################.#",
+      "#................#####################.#",
+      "#................#####################.#",
+      "#................#####################.#",
+      "#................#####################.#",
+      "#................#####################.#",
+      "#................###>vvvvvvvvvvvvvvvvv.#",
+      "#................###>..................#",
+      "#................###>..................#",
+      "#................###>............P.c...#",
+      "#................###>...........######.#",
+      "#................###>...^^^^^^^^.......#",
+      ".G.....................................#",
+      ".G.....................................#",
+      "########################...............#",
+      "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#"
+    ],
+    "movement": "survive-2",
+    "exit": "left",
+    "hint": "Down-Right dash, then Jump Left · Brake Right over the bed; fall below the wall.",
+    "question": "How long can you keep the speed before the safe way forward becomes down?"
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 6,
+    "run": 2,
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "solve",
+    "worlds": [
+      25,
+      34,
+      40
+    ],
+    "tags": [
+      "reverse-hyper",
+      "dash-jump",
+      "air-brake",
+      "low-clearance",
+      "return-slot"
+    ],
+    "newMechanics": [
+      "reverse-dash-jump"
+    ],
+    "entrance": "Small eastern launch ledge under a thorned roof.",
+    "exit": "Lower west corridor beneath the hanging wall.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "reverse-hyper",
+      "stone-lit"
+    ],
+    "humanReview": "Author estimate; human fun/difficulty/suitability pending.",
+    "solution": "Use the outward down-diagonal dash to take the tally and reverse its jump into a low, fast hyper. Begin countersteering while still above the long thorn bed; the remaining leftward momentum clears it. Drop into the receiving bay without reaching the hanging thorn face too high, then leave underneath to the western exit.",
+    "nearestExisting": "Precision low hyper tunnels teach staying low, while F31 returns across alternating phase shores. Here the landing is below a hanging wall: speed is required for the long low crossing, then must be shed in flight to enter the vertical receiving slot.",
+    "novelty": "The reverse hyper solves the entry height and direction; it is not the last decision. Continuing to hold the launch direction hits the wall, but braking too early fails to clear the bed. The successful route changes from a horizontal throw to a controlled drop.",
+    "designNotes": "No phase device or moving hazard. The launch window spans four timings and the braking window spans five timings at each launch. Later launches shift the visible braking point. A fast low trajectory and controlled drop are the objective; an equivalent advanced alternative is legitimate.",
+    "positiveChecks": [
+      {
+        "name": "Dash 7, brake after 6",
+        "outgoingDashFrames": 7,
+        "brakeAfterFrames": 6,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 179,
+        "tape": [
+          [
+            7,
+            "rdx"
+          ],
+          [
+            6,
+            "lj"
+          ],
+          [
+            6,
+            "rj"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. Later outgoing launches shift the usable braking interval; this checks paired launch/braking choices, not an independent Cartesian timing window."
+      },
+      {
+        "name": "Dash 7, brake after 7",
+        "outgoingDashFrames": 7,
+        "brakeAfterFrames": 7,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 176,
+        "tape": [
+          [
+            7,
+            "rdx"
+          ],
+          [
+            7,
+            "lj"
+          ],
+          [
+            5,
+            "rj"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. Later outgoing launches shift the usable braking interval; this checks paired launch/braking choices, not an independent Cartesian timing window."
+      },
+      {
+        "name": "Dash 7, brake after 8",
+        "outgoingDashFrames": 7,
+        "brakeAfterFrames": 8,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 173,
+        "tape": [
+          [
+            7,
+            "rdx"
+          ],
+          [
+            8,
+            "lj"
+          ],
+          [
+            4,
+            "rj"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. Later outgoing launches shift the usable braking interval; this checks paired launch/braking choices, not an independent Cartesian timing window."
+      },
+      {
+        "name": "Dash 7, brake after 9",
+        "outgoingDashFrames": 7,
+        "brakeAfterFrames": 9,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 170,
+        "tape": [
+          [
+            7,
+            "rdx"
+          ],
+          [
+            9,
+            "lj"
+          ],
+          [
+            3,
+            "rj"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. Later outgoing launches shift the usable braking interval; this checks paired launch/braking choices, not an independent Cartesian timing window."
+      },
+      {
+        "name": "Dash 7, brake after 10",
+        "outgoingDashFrames": 7,
+        "brakeAfterFrames": 10,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 167,
+        "tape": [
+          [
+            7,
+            "rdx"
+          ],
+          [
+            10,
+            "lj"
+          ],
+          [
+            2,
+            "rj"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. Later outgoing launches shift the usable braking interval; this checks paired launch/braking choices, not an independent Cartesian timing window."
+      },
+      {
+        "name": "Dash 8, brake after 7",
+        "outgoingDashFrames": 8,
+        "brakeAfterFrames": 7,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 180,
+        "tape": [
+          [
+            8,
+            "rdx"
+          ],
+          [
+            7,
+            "lj"
+          ],
+          [
+            5,
+            "rj"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. Later outgoing launches shift the usable braking interval; this checks paired launch/braking choices, not an independent Cartesian timing window."
+      },
+      {
+        "name": "Dash 8, brake after 8",
+        "outgoingDashFrames": 8,
+        "brakeAfterFrames": 8,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 176,
+        "tape": [
+          [
+            8,
+            "rdx"
+          ],
+          [
+            8,
+            "lj"
+          ],
+          [
+            4,
+            "rj"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. Later outgoing launches shift the usable braking interval; this checks paired launch/braking choices, not an independent Cartesian timing window."
+      },
+      {
+        "name": "Dash 8, brake after 9",
+        "outgoingDashFrames": 8,
+        "brakeAfterFrames": 9,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 174,
+        "tape": [
+          [
+            8,
+            "rdx"
+          ],
+          [
+            9,
+            "lj"
+          ],
+          [
+            3,
+            "rj"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. Later outgoing launches shift the usable braking interval; this checks paired launch/braking choices, not an independent Cartesian timing window."
+      },
+      {
+        "name": "Dash 8, brake after 10",
+        "outgoingDashFrames": 8,
+        "brakeAfterFrames": 10,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 171,
+        "tape": [
+          [
+            8,
+            "rdx"
+          ],
+          [
+            10,
+            "lj"
+          ],
+          [
+            2,
+            "rj"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. Later outgoing launches shift the usable braking interval; this checks paired launch/braking choices, not an independent Cartesian timing window."
+      },
+      {
+        "name": "Dash 8, brake after 11",
+        "outgoingDashFrames": 8,
+        "brakeAfterFrames": 11,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 168,
+        "tape": [
+          [
+            8,
+            "rdx"
+          ],
+          [
+            11,
+            "lj"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. Later outgoing launches shift the usable braking interval; this checks paired launch/braking choices, not an independent Cartesian timing window."
+      },
+      {
+        "name": "Dash 9, brake after 8",
+        "outgoingDashFrames": 9,
+        "brakeAfterFrames": 8,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 180,
+        "tape": [
+          [
+            9,
+            "rdx"
+          ],
+          [
+            8,
+            "lj"
+          ],
+          [
+            4,
+            "rj"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. Later outgoing launches shift the usable braking interval; this checks paired launch/braking choices, not an independent Cartesian timing window."
+      },
+      {
+        "name": "Dash 9, brake after 9",
+        "outgoingDashFrames": 9,
+        "brakeAfterFrames": 9,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 177,
+        "tape": [
+          [
+            9,
+            "rdx"
+          ],
+          [
+            9,
+            "lj"
+          ],
+          [
+            3,
+            "rj"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. Later outgoing launches shift the usable braking interval; this checks paired launch/braking choices, not an independent Cartesian timing window."
+      },
+      {
+        "name": "Dash 9, brake after 10",
+        "outgoingDashFrames": 9,
+        "brakeAfterFrames": 10,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 174,
+        "tape": [
+          [
+            9,
+            "rdx"
+          ],
+          [
+            10,
+            "lj"
+          ],
+          [
+            2,
+            "rj"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. Later outgoing launches shift the usable braking interval; this checks paired launch/braking choices, not an independent Cartesian timing window."
+      },
+      {
+        "name": "Dash 9, brake after 11",
+        "outgoingDashFrames": 9,
+        "brakeAfterFrames": 11,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 171,
+        "tape": [
+          [
+            9,
+            "rdx"
+          ],
+          [
+            11,
+            "lj"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. Later outgoing launches shift the usable braking interval; this checks paired launch/braking choices, not an independent Cartesian timing window."
+      },
+      {
+        "name": "Dash 9, brake after 12",
+        "outgoingDashFrames": 9,
+        "brakeAfterFrames": 12,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 169,
+        "tape": [
+          [
+            9,
+            "rdx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. Later outgoing launches shift the usable braking interval; this checks paired launch/braking choices, not an independent Cartesian timing window."
+      },
+      {
+        "name": "Dash 10, brake after 9",
+        "outgoingDashFrames": 10,
+        "brakeAfterFrames": 9,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 180,
+        "tape": [
+          [
+            10,
+            "rdx"
+          ],
+          [
+            9,
+            "lj"
+          ],
+          [
+            3,
+            "rj"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. Later outgoing launches shift the usable braking interval; this checks paired launch/braking choices, not an independent Cartesian timing window."
+      },
+      {
+        "name": "Dash 10, brake after 10",
+        "outgoingDashFrames": 10,
+        "brakeAfterFrames": 10,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 177,
+        "tape": [
+          [
+            10,
+            "rdx"
+          ],
+          [
+            10,
+            "lj"
+          ],
+          [
+            2,
+            "rj"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. Later outgoing launches shift the usable braking interval; this checks paired launch/braking choices, not an independent Cartesian timing window."
+      },
+      {
+        "name": "Dash 10, brake after 11",
+        "outgoingDashFrames": 10,
+        "brakeAfterFrames": 11,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 174,
+        "tape": [
+          [
+            10,
+            "rdx"
+          ],
+          [
+            11,
+            "lj"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. Later outgoing launches shift the usable braking interval; this checks paired launch/braking choices, not an independent Cartesian timing window."
+      },
+      {
+        "name": "Dash 10, brake after 12",
+        "outgoingDashFrames": 10,
+        "brakeAfterFrames": 12,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 172,
+        "tape": [
+          [
+            10,
+            "rdx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. Later outgoing launches shift the usable braking interval; this checks paired launch/braking choices, not an independent Cartesian timing window."
+      },
+      {
+        "name": "Dash 10, brake after 13",
+        "outgoingDashFrames": 10,
+        "brakeAfterFrames": 13,
+        "normalSpawn": true,
+        "exited": true,
+        "deaths": 0,
+        "frames": 172,
+        "tape": [
+          [
+            10,
+            "rdx"
+          ],
+          [
+            13,
+            "lj"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "scope": "A complete fixed input sequence. Later outgoing launches shift the usable braking interval; this checks paired launch/braking choices, not an independent Cartesian timing window."
+      }
+    ],
+    "route": {
+      "frames": 173,
+      "deaths": 0,
+      "events": [
+        "dash",
+        "ultra",
+        "stone-lit",
+        "gate-open",
+        "hyper",
+        "reverse-hyper",
+        "land",
+        "refill-dash",
+        "exit"
+      ],
+      "eventCounts": {
+        "dash": 1,
+        "ultra": 1,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "hyper": 1,
+        "reverse-hyper": 1,
+        "land": 1,
+        "refill-dash": 1,
+        "exit": 1
+      }
+    },
+    "shortcutChecks": [
+      {
+        "name": "Keep holding the launch direction instead of braking",
+        "tape": [
+          [
+            7,
+            "rdx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            160,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 3,
+          "firstFailure": {
+            "type": "death",
+            "frame": 32,
+            "x": 164,
+            "y": 132,
+            "cause": "spikes",
+            "vx": -221.0000000000002,
+            "vy": 142.5,
+            "i": 31
+          }
+        }
+      },
+      {
+        "name": "Brake immediately before clearing the long bed",
+        "tape": [
+          [
+            7,
+            "rdx"
+          ],
+          [
+            1,
+            "lj"
+          ],
+          [
+            11,
+            "rj"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 3,
+          "firstFailure": {
+            "type": "death",
+            "frame": 38,
+            "x": 194,
+            "y": 148,
+            "cause": "spikes",
+            "vx": -1.7763568394002505e-14,
+            "vy": 160,
+            "i": 37
+          }
+        }
+      },
+      {
+        "name": "Use a rising reverse super under the low roof",
+        "tape": [
+          [
+            7,
+            "rx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 3,
+          "firstFailure": {
+            "type": "death",
+            "frame": 18,
+            "x": 236,
+            "y": 112,
+            "cause": "spikes",
+            "vx": -216.66666666666657,
+            "vy": -105,
+            "i": 17
+          }
+        }
+      },
+      {
+        "name": "Collect the tally on foot then attempt a plain horizontal dash",
+        "tape": [
+          [
+            12,
+            "r"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            12,
+            "lx"
+          ],
+          [
+            12,
+            "l"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 3,
+          "firstFailure": {
+            "type": "death",
+            "frame": 56,
+            "x": 208,
+            "y": 147,
+            "cause": "spikes",
+            "vx": -112.33333333333329,
+            "vy": 160,
+            "i": 55
+          }
+        }
+      },
+      {
+        "name": "Collect the tally then use a short ordinary jump and air dash",
+        "tape": [
+          [
+            12,
+            "r"
+          ],
+          [
+            2,
+            "lj"
+          ],
+          [
+            12,
+            "lx"
+          ],
+          [
+            12,
+            "l"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 3,
+          "firstFailure": {
+            "type": "death",
+            "frame": 39,
+            "x": 223,
+            "y": 147,
+            "cause": "spikes",
+            "vx": -101.49999999999996,
+            "vy": 160,
+            "i": 38
+          }
+        }
+      }
+    ]
+  },
+  "tape": [
+    [
+      7,
+      "rdx"
+    ],
+    [
+      8,
+      "lj"
+    ],
+    [
+      4,
+      "rj"
+    ],
+    [
+      28,
+      "r"
+    ],
+    [
+      150,
+      "l"
+    ]
+  ]
+}

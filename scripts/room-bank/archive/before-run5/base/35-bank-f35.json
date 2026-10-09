@@ -1,0 +1,972 @@
+{
+  "room": {
+    "id": "bank-f35",
+    "name": "The Weight Leaves First",
+    "palette": "foundry",
+    "study": true,
+    "exit": "right",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "map": [
+      "########################################",
+      "#...........###############.H...........",
+      "#...........###############.H...........",
+      "#...........###############.H...........",
+      "#...........###############.H...........",
+      "#...........###############.H...........",
+      "#...........###############.H...........",
+      "#...........vvvvvvvvvvvvvvv.H...........",
+      "#...........................H...........",
+      "#...........................H...........",
+      "#..............#########################",
+      "#..............vvvvvvvvvvvv#############",
+      "#..........................v.<##########",
+      "#............................<##########",
+      "#............................<##########",
+      "#........Pl..................<##########",
+      "#............................<##########",
+      "#............................<##########",
+      "#...................#........<##########",
+      "#................___#........<##########",
+      "#................####........<##########",
+      "#^^^^^^^^^^^^^^^^####^^^^^^^^^##########",
+      "########################################"
+    ],
+    "recoilPlatforms": [
+      {
+        "id": "A",
+        "c": 4,
+        "r": 16,
+        "w": 8,
+        "depth": 3,
+        "loadFrames": 30,
+        "releaseSpeed": 120
+      }
+    ],
+    "hint": "Take the lantern · Briefly hold Down to load; throw Right and use only enough rise to clear the landing beneath the teeth.",
+    "question": "How little spring can carry you between the raised landing and its low ceiling?",
+    "dashes": 0
+  },
+  "bank": {
+    "side": "base",
+    "batch": 8,
+    "run": 3,
+    "acceptance": "revised",
+    "difficulty": 3,
+    "role": "controlled partial spring and separated cargo route",
+    "worlds": [
+      10,
+      14,
+      18
+    ],
+    "tags": [
+      "recoil-platform",
+      "lantern",
+      "held-plate",
+      "lift",
+      "spring-jump"
+    ],
+    "newMechanics": [
+      "recoil-platform"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "entrance": "Lantern-loaded recoil support in the west.",
+    "exit": "High east ledge beyond a weight-held gate.",
+    "solution": "Pick up the lantern and let the support settle. While carrying it, briefly hold Down to store a partial load. Release Down and throw Right: the lantern travels into the lower pressure pocket and opens the high landing gate. Step toward the lip and jump from the returning plate. Only enough rise to clear the raised bridge fits beneath the low ceiling teeth; a full held jump from full charge hits them, while an unloaded or very lightly loaded jump falls short. Continue along the upper bridge while the lantern remains below. An accurately shortened jump from a larger charge is also a valid height-control solution.",
+    "nearestExisting": "B39 teaches partial spring height; this room adds independent cargo routing and a landing gate held by the same departing weight.",
+    "novelty": "The same thrown weight releases the launch and opens the distant landing, while the knight must choose a modest spring arc between a raised bridge and low teeth.",
+    "requiredEvents": [
+      "recoil-load",
+      "pickup",
+      "throw",
+      "recoil-release",
+      "recoil-jump",
+      "held-open"
+    ],
+    "humanReview": "User rejected the prior trivial full spring jump. The low spike ceiling and higher bridge now require a controlled arc; awaits re-review for Base.",
+    "positiveChecks": [
+      {
+        "name": "Partial load 9 frames",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            9,
+            "d"
+          ],
+          [
+            1,
+            "rg"
+          ],
+          [
+            0,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 220,
+          "deaths": 0,
+          "events": [
+            "recoil-load",
+            "pickup",
+            "recoil-release",
+            "throw",
+            "jump",
+            "recoil-jump",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 2,
+            "pickup": 1,
+            "recoil-release": 2,
+            "throw": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "plate": 2,
+            "lantern-land": 1,
+            "held-open": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Partial load 14 frames",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            14,
+            "d"
+          ],
+          [
+            1,
+            "rg"
+          ],
+          [
+            0,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 219,
+          "deaths": 0,
+          "events": [
+            "recoil-load",
+            "pickup",
+            "recoil-release",
+            "throw",
+            "jump",
+            "recoil-jump",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 2,
+            "pickup": 1,
+            "recoil-release": 2,
+            "throw": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "plate": 3,
+            "lantern-land": 1,
+            "held-open": 1,
+            "land": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Partial load 18 frames",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            18,
+            "d"
+          ],
+          [
+            1,
+            "rg"
+          ],
+          [
+            0,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 223,
+          "deaths": 0,
+          "events": [
+            "recoil-load",
+            "pickup",
+            "recoil-release",
+            "throw",
+            "jump",
+            "recoil-jump",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 2,
+            "pickup": 1,
+            "recoil-release": 2,
+            "throw": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "plate": 3,
+            "lantern-land": 1,
+            "held-open": 1,
+            "land": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Earlier departure from 11-frame partial load",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            11,
+            "d"
+          ],
+          [
+            1,
+            "rg"
+          ],
+          [
+            0,
+            ""
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 216,
+          "deaths": 0,
+          "events": [
+            "recoil-load",
+            "pickup",
+            "recoil-release",
+            "throw",
+            "jump",
+            "recoil-jump",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 2,
+            "pickup": 1,
+            "recoil-release": 2,
+            "throw": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "plate": 2,
+            "lantern-land": 1,
+            "held-open": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Later departure from 11-frame partial load",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            11,
+            "d"
+          ],
+          [
+            1,
+            "rg"
+          ],
+          [
+            0,
+            ""
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 225,
+          "deaths": 0,
+          "events": [
+            "recoil-load",
+            "pickup",
+            "recoil-release",
+            "throw",
+            "jump",
+            "recoil-jump",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 2,
+            "pickup": 1,
+            "recoil-release": 2,
+            "throw": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "plate": 2,
+            "lantern-land": 1,
+            "held-open": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Throw, let the spring settle, then attempt ordinary jump from its edge",
+        "tape": [
+          [
+            1,
+            "d"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            40,
+            "rj"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 3,
+          "events": [
+            "recoil-load",
+            "pickup",
+            "recoil-release",
+            "throw",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "jump",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "recoil-load": 3,
+            "pickup": 1,
+            "recoil-release": 1,
+            "throw": 1,
+            "plate": 4,
+            "lantern-land": 1,
+            "held-open": 1,
+            "jump": 1,
+            "death": 3,
+            "respawn": 3
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 101,
+            "x": 117,
+            "y": 96,
+            "cause": "spikes",
+            "vx": 90,
+            "vy": -15,
+            "i": 100
+          }
+        }
+      },
+      {
+        "name": "Throw, walk down into lower pressure pocket and attempt upward dash from its edge",
+        "tape": [
+          [
+            1,
+            "d"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            75,
+            "r"
+          ],
+          [
+            30,
+            "rux"
+          ],
+          [
+            40,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 3,
+          "events": [
+            "recoil-load",
+            "pickup",
+            "recoil-release",
+            "throw",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "recoil-load": 4,
+            "pickup": 1,
+            "recoil-release": 1,
+            "throw": 1,
+            "plate": 4,
+            "lantern-land": 1,
+            "held-open": 1,
+            "death": 3,
+            "respawn": 3
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 75,
+            "x": 132,
+            "y": 171,
+            "cause": "spikes",
+            "vx": 10.833333333333334,
+            "vy": 130,
+            "i": 74
+          }
+        }
+      },
+      {
+        "name": "Old full spring route now hits the restored ceiling teeth",
+        "tape": [
+          [
+            1,
+            "d"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            4,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            40,
+            "rj"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 3,
+          "events": [
+            "recoil-load",
+            "pickup",
+            "recoil-release",
+            "throw",
+            "jump",
+            "recoil-jump",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "recoil-load": 3,
+            "pickup": 1,
+            "recoil-release": 1,
+            "throw": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "plate": 4,
+            "lantern-land": 1,
+            "held-open": 1,
+            "death": 3,
+            "respawn": 3
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 63,
+            "x": 114,
+            "y": 63,
+            "cause": "spikes",
+            "vx": 90,
+            "vy": -150,
+            "i": 62
+          }
+        }
+      },
+      {
+        "name": "Full load and full held jump hits ceiling spikes",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            1,
+            "rg"
+          ],
+          [
+            0,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 3,
+          "events": [
+            "recoil-load",
+            "pickup",
+            "recoil-release",
+            "throw",
+            "jump",
+            "recoil-jump",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "recoil-load": 4,
+            "pickup": 1,
+            "recoil-release": 2,
+            "throw": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "plate": 4,
+            "lantern-land": 1,
+            "held-open": 1,
+            "death": 3,
+            "respawn": 2
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 99,
+            "x": 118,
+            "y": 63,
+            "cause": "spikes",
+            "vx": 90,
+            "vy": -120,
+            "i": 98
+          }
+        }
+      },
+      {
+        "name": "Minimal load is too short to reach the raised bridge",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            2,
+            "d"
+          ],
+          [
+            1,
+            "rg"
+          ],
+          [
+            0,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 0,
+          "events": [
+            "recoil-load",
+            "pickup",
+            "recoil-release",
+            "throw",
+            "jump",
+            "recoil-jump",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "land"
+          ],
+          "eventCounts": {
+            "recoil-load": 2,
+            "pickup": 1,
+            "recoil-release": 2,
+            "throw": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "plate": 4,
+            "lantern-land": 1,
+            "held-open": 1,
+            "land": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Release spring completely, then ordinary jump from its lip",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            11,
+            "d"
+          ],
+          [
+            1,
+            "rg"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 3,
+          "events": [
+            "recoil-load",
+            "pickup",
+            "recoil-release",
+            "throw",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "jump",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "recoil-load": 4,
+            "pickup": 1,
+            "recoil-release": 2,
+            "throw": 1,
+            "plate": 2,
+            "lantern-land": 1,
+            "held-open": 1,
+            "jump": 1,
+            "death": 3,
+            "respawn": 2
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 120,
+            "x": 117,
+            "y": 96,
+            "cause": "spikes",
+            "vx": 90,
+            "vy": -15,
+            "i": 119
+          }
+        }
+      }
+    ],
+    "route": {
+      "exited": true,
+      "frames": 218,
+      "deaths": 0,
+      "events": [
+        "recoil-load",
+        "pickup",
+        "recoil-release",
+        "throw",
+        "jump",
+        "recoil-jump",
+        "plate",
+        "lantern-land",
+        "held-open",
+        "exit"
+      ],
+      "eventCounts": {
+        "recoil-load": 2,
+        "pickup": 1,
+        "recoil-release": 2,
+        "throw": 1,
+        "jump": 1,
+        "recoil-jump": 1,
+        "plate": 2,
+        "lantern-land": 1,
+        "held-open": 1,
+        "exit": 1
+      },
+      "firstFailure": null
+    },
+    "revision": {
+      "date": "2026-10-09",
+      "archive": "scripts/room-bank/archive/run4-before-superrooms/base/35-bank-f35.json",
+      "latestChanges": "Restored low ceiling spikes, raised bridge one tile, and rebuilt the intended route around choosing a partial load while carrying the gate weight."
+    },
+    "userFeedback": {
+      "date": "2026-10-09",
+      "comment": "Prior full spring jump was trivial; require a precise small spring arc: too high hits ceiling spikes, too little misses the landing."
+    },
+    "designNotes": "Restored the intended partial spring problem instead of opening the roof. The bridge is one tile higher than the preceding revision, and a long downward spike ceiling leaves a three-tile passage above it. The normal partial-load route has ten consecutive successful manual load durations (9–18 frames), and seven departure step timings (6–12 frames) succeed at the demonstrated 11-frame charge. No dash is available. Full charge with a held jump hits the teeth; near-zero charge and waiting for the spring to settle miss the landing. Variable jump height remains an honest alternate: a precisely shortened jump can tame a larger charge, which still requires choosing the arc rather than taking the automatic full launch. The lantern still separately opens the lower weight gate.",
+    "placementNote": "Author placement estimate updated from qualitative user feedback; not a numeric user rating.",
+    "reclassifiedFrom": "fractured",
+    "reclassificationReason": "User requested Base placement after a precision spring revision; acceptance is revised pending that review."
+  },
+  "tape": [
+    [
+      1,
+      "g"
+    ],
+    [
+      40,
+      ""
+    ],
+    [
+      11,
+      "d"
+    ],
+    [
+      1,
+      "rg"
+    ],
+    [
+      0,
+      ""
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      28,
+      "rj"
+    ],
+    [
+      160,
+      "r"
+    ]
+  ]
+}

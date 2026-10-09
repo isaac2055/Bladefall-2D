@@ -1,0 +1,335 @@
+{
+  "room": {
+    "id": "bank-b22",
+    "name": "Wait Below the Lip",
+    "palette": "path",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "map": [
+      "########################################",
+      "########................................",
+      "########................................",
+      "########................................",
+      "########................................",
+      "########>........#######################",
+      "########>.............<#################",
+      "########>.............<#################",
+      "########>.............<#################",
+      "##############........<#################",
+      "########>.............<#################",
+      "########>.............<#################",
+      "########>.............<#################",
+      "########>.............<#################",
+      "########>........#######################",
+      "########>.............<#################",
+      "########>.............<#################",
+      "########>.............<#################",
+      "########>.P...........<#################",
+      "##############........<#################",
+      "##############........<#################",
+      "##############........<#################",
+      "########################################"
+    ],
+    "sweepers": [
+      {
+        "id": "lower",
+        "path": [
+          [
+            11,
+            12.8
+          ],
+          [
+            19,
+            12.8
+          ]
+        ],
+        "period": 180,
+        "phase": 30
+      },
+      {
+        "id": "upper",
+        "path": [
+          [
+            11,
+            7.8
+          ],
+          [
+            19,
+            7.8
+          ]
+        ],
+        "period": 156,
+        "phase": 70
+      }
+    ],
+    "hint": "The outer ends of the ledges are safe. Watch the crossing and the landing before you commit.",
+    "question": "Does the patrol leave enough room to finish your landing?"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 4,
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "timing",
+    "worlds": [
+      11,
+      19,
+      24
+    ],
+    "tags": [
+      "timing",
+      "sweeper",
+      "climb",
+      "ledge"
+    ],
+    "newMechanics": [],
+    "entrance": "Safe west observation bay.",
+    "exit": "East landing.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "jump",
+      "dash"
+    ],
+    "humanReview": "Author difficulty estimate; fun/difficulty/suitability pending.",
+    "solution": "Use the low ledge to watch the lower patrol approach its far turn, then jump/dash over its returning line and land behind it at the far right end of the middle ledge. Wait for the upper patrol to leave the left landing, cross back with a left/up dash, and settle in the left pocket. From there, climb to the open finish gallery.",
+    "nearestExisting": "Earlier gauntlets time permanent lasers and gates while climbing. This uses mobile threats at the handoff between a dash, wall catch, and safe standing ground.",
+    "novelty": "The landing is safe only at its sheltered far end; committing when a patrol merely leaves the wall is not enough unless it also gives time to climb over the lip. Each transfer reverses direction.",
+    "timing": {
+      "principle": "Time the wall catch and the climb that follows as one commitment.",
+      "stages": [
+        {
+          "cue": "Lower patrol approaches its far right turn.",
+          "action": "Jump and dash over its return, then land behind it at the far right end.",
+          "rest": "Far right end of middle ledge."
+        },
+        {
+          "cue": "Upper patrol moves right away from the left lip.",
+          "action": "Cross back left with a rising dash and land behind its outward sweep.",
+          "rest": "Far left end of the upper ledge."
+        }
+      ]
+    },
+    "route": {
+      "frames": 369,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "dash",
+        "land",
+        "refill-dash",
+        "exit"
+      ],
+      "movement": "Ordinary jump, dash, grab and device actions; no advanced momentum exploit."
+    },
+    "shortcutChecks": [
+      {
+        "name": "Removing deliberate waits",
+        "tape": [
+          [
+            1,
+            "u"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            1,
+            "rux"
+          ],
+          [
+            16,
+            "rug"
+          ],
+          [
+            21,
+            "rgu"
+          ],
+          [
+            16,
+            "lj"
+          ],
+          [
+            1,
+            "lux"
+          ],
+          [
+            16,
+            "lug"
+          ],
+          [
+            22,
+            "lgu"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            1,
+            "rux"
+          ],
+          [
+            16,
+            "rug"
+          ],
+          [
+            130,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 3
+        }
+      },
+      {
+        "name": "Leave the right rest immediately",
+        "tape": [
+          [
+            1,
+            "u"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            1,
+            "rux"
+          ],
+          [
+            16,
+            "rug"
+          ],
+          [
+            21,
+            "rgu"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            16,
+            "lj"
+          ],
+          [
+            1,
+            "lux"
+          ],
+          [
+            16,
+            "lug"
+          ],
+          [
+            22,
+            "lgu"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            1,
+            "rux"
+          ],
+          [
+            16,
+            "rug"
+          ],
+          [
+            130,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 3
+        }
+      }
+    ]
+  },
+  "tape": [
+    [
+      1,
+      "u"
+    ],
+    [
+      50,
+      ""
+    ],
+    [
+      16,
+      "rj"
+    ],
+    [
+      1,
+      "rux"
+    ],
+    [
+      16,
+      "rug"
+    ],
+    [
+      21,
+      "rgu"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      36,
+      ""
+    ],
+    [
+      16,
+      "lj"
+    ],
+    [
+      1,
+      "lux"
+    ],
+    [
+      16,
+      "lug"
+    ],
+    [
+      22,
+      "lgu"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      16,
+      "rj"
+    ],
+    [
+      1,
+      "rux"
+    ],
+    [
+      16,
+      "rug"
+    ],
+    [
+      130,
+      "r"
+    ]
+  ]
+}

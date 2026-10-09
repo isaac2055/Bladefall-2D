@@ -96,7 +96,8 @@ html,body{margin:0;padding:0;height:100%;overflow:hidden;background:var(--bg);co
 /* The card is bounded to the viewport and scrolls internally, so nothing (e.g.
    the Settings toggles / Back button) is ever clipped off-screen; the delegated
    handler in the head drives its scrollTop from wheel/touch. */
-.card{width:100%;max-width:380px;max-height:calc(100vh - 36px);overflow-y:auto;overscroll-behavior:contain;touch-action:none;}
+.card{box-sizing:border-box;width:100%;max-width:380px;max-height:calc(100dvh - 48px);overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;}
+#ovcard{min-height:0;}#ovcard>.card{max-height:none;overflow:visible;}
 .title{font-size:clamp(34px,11vw,52px);font-weight:900;letter-spacing:.04em;margin:0;background:linear-gradient(180deg,#f7d79a,var(--amber));-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 4px 24px rgba(232,163,61,.25);}
 .subtitle{color:var(--muted);font-size:13px;letter-spacing:.22em;text-transform:uppercase;margin:6px 0 22px;}
 .bigbtn{display:block;width:100%;padding:15px;margin:9px 0;border:none;border-radius:14px;font-size:16px;font-weight:800;letter-spacing:.02em;cursor:pointer;color:#0b0c10;background:var(--amber);touch-action:none;}
@@ -153,7 +154,7 @@ body.a11y-reduced-motion *,body.a11y-reduced-motion *::before,body.a11y-reduced-
 .settingscard select,.settingscard .kbkey{min-height:44px;}
 .settingscard .volrow input[type=range]{min-height:32px;}
 .settingscard .settingsgrid label{min-height:44px;}
-#ovcard:has(>.settingscard){overflow:visible;}
+#ovcard:has(>.settingscard){overflow-y:auto;}
 .settingsgrid{display:grid;grid-template-columns:1fr;gap:7px;text-align:left;}
 .settingsgrid label{display:flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:8px 10px;color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
 .settingsgrid input[type=checkbox]{width:18px;height:18px;flex:0 0 auto;accent-color:var(--amber);}
@@ -300,6 +301,9 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
   document.addEventListener('touchcancel',endTouch);
 })();
 </script>
+<script src="bladefall-playtest-worlds.js?v=7.301.0"></script>
+<script src="bladefall-playtest-model.js?v=7.301.0"></script>
+<script src="bladefall-playtest.js?v=7.301.0"></script>
 <script src="bladefall-harness.js"></script>
 <script src="bladefall-core.js"></script>
 <script src="bladefall-simulation.js"></script>
@@ -333,7 +337,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-side-stories.js?v=7.232.0"></script>
 <script src="bladefall-opening-stories.js?v=7.234.0"></script>
 <script src="bladefall-side-story-world.js?v=7.234.0"></script>
-<script src="bladefall-merge-road.js?v=7.265.0"></script>
+<script src="bladefall-merge-road.js?v=7.283.0"></script>
 <script src="bladefall-zones.js?v=7.220.0"></script>
 <script src="bladefall-zone-state.js"></script>
 <script src="bladefall-recovery.js?v=7.234.0"></script>
@@ -358,7 +362,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-inventory.js"></script>
 <script src="bladefall-dialogue.js?v=7.231.0"></script>
 <script src="bladefall-text.js?v=7.233.0"></script>
-<script src="bladefall-act-two.js?v=7.248.0"></script>
+<script src="bladefall-act-two.js?v=7.301.0"></script>
 <script src="bladefall-act-two-art.js?v=7.201.0"></script>
 <script src="bladefall-landing-shores.js?v=7.231.0"></script>
 <script src="bladefall-landing-shores-art.js?v=7.201.0"></script>
@@ -368,8 +372,8 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-palace-path-art.js?v=7.201.0"></script>
 <script src="bladefall-sunspire.js?v=7.231.0"></script>
 <script src="bladefall-sunspire-art.js?v=7.231.0"></script>
-<script src="bladefall-rift-shards.js?v=7.231.0"></script>
-<script src="bladefall-fractured.js?v=7.232.0"></script>
+<script src="bladefall-rift-shards.js?v=7.301.0"></script>
+<script src="bladefall-fractured.js?v=7.301.0"></script>
 <script src="bladefall-fractured-outskirts.js?v=7.228.1"></script>
 <script src="bladefall-fractured-outskirts-art.js?v=7.211.1"></script>
 <script src="bladefall-fractured-woods.js?v=7.211.4"></script>
@@ -430,7 +434,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.274.0';
+const VERSION='7.301.0';
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -1277,7 +1281,7 @@ function seatKeepWeight(plate,restore){
 function restoreKeepMachinery(){
   if(!G||G.stageIndex!==5)return;
   const grip=hasCapability('wall-jump');
-  if(persistentCircuitOpen('keep-key-recovered')){G.keepWestSealOpen=true;G.ruinedKeepArchiveComplete=true;}
+  if(persistentCircuitOpen('keep-key-recovered')){G.keepWestSealOpen=true;G.ruinedKeepArchiveComplete=true;offerExploreWorldClear();}
   if(!G.levelSelectMode&&meta.world&&meta.world.keepWestSealOpen){G.keepWestSealOpen=true;G.ruinedKeepArchiveComplete=true;}
   for(const o of G.obstacles){
     if(o.keepDock&&persistentCircuitOpen(o.id)){o.pressed=true;seatKeepWeight(o,true);}
@@ -1955,6 +1959,7 @@ function recordWorldEntry(stageIndex){
 /* Being in the room and having felled its boss is proof enough to open that room's
    own exit. This is session-scoped on purpose: it never writes campaign progress. */
 function recordSessionClear(stageIndex){
+  if(G&&G.stageIndex===stageIndex)offerExploreWorldClear();
   try{
     if(!G)return false;
     if(!G.sessionClearedZones)G.sessionClearedZones=[];
@@ -1962,6 +1967,16 @@ function recordSessionClear(stageIndex){
     if(id&&!G.sessionClearedZones.includes(id)){G.sessionClearedZones.push(id);return true;}
   }catch(_e){}
   return false;
+}
+function offerExploreWorldClear(){
+  const trial=BladefallPlaytest.state().run;
+  if(!G||!trial||trial.done||trial.world!==String(G.stageIndex))return;
+  const source=G.stageIndex,world=BladefallPlaytest.model.world('explore',source);
+  if(!world)return;
+  const roster=BladefallPlaytest.model.catalog.filter(w=>w.mode==='explore'&&w.campaign===world.campaign),next=roster[roster.findIndex(w=>w.id===String(source))+1];
+  void BladefallPlaytest.complete({feedbackInfo:{mode:'explore',world:String(source),campaign:world.campaign,name:world.name,room:world.id},
+    next:next&&(next.campaign==='base'||BladefallPlaytest.unlocked('explore',next.id))?()=>beginRun(0,null,{hp:1,dmg:1},{startStage:+next.id,levelSelect:true}):null,
+    walk:()=>resumePlay(),menu:()=>openLevelSelect()});
 }
 function recordWorldClear(){
   if(!G||!G.worldProgressEligible)return;
@@ -3504,7 +3519,10 @@ const STORY={
     "The last Warden climbs into the dawn, and rests.",
     "The cycle is broken."]
 };
+function markExplorePlayed(){try{localStorage.setItem('bladefall.last-played.v1',JSON.stringify({game:'explore'}));}catch{}}
 function beginRun(ngPlus,carrySnap,scales,opts){
+  BladefallPlaytest.reset();
+  markExplorePlayed();
   const simSeed=BFSimulation.startRun(opts&&opts.runSeed);
   const p=carrySnap?freshFromSnapshot(carrySnap):freshPlayer();
   syncMovementCapabilities(p);syncEchoRuntimeMods(p);
@@ -6510,7 +6528,7 @@ function updateEmberdeep(){
 function claimFrostMemory(o){
   if(!G||G.stageIndex!==7||!o||!o.frostMemory||hasCapability('double-jump')||!persistentCircuitOpen('frost-thermal'))return false;
   const grant=grantPermanentCapability('double-jump','frost-second-step',{quiet:true});if(!grant.changed)return false;
-  o.read=true;markPersistentCircuitOpen('frost-complete','frost-second-step');
+  o.read=true;markPersistentCircuitOpen('frost-complete','frost-second-step');offerExploreWorldClear();
   if(!G.levelSelectMode){commitStageCompletion();recordWorldClear();recordStoryStageClear();recordHelpedTravelers();meta.bestStage=Math.max(meta.bestStage,8);meta.reach=meta.reach||{};meta.reach[0]=Math.max(meta.reach[0]||0,8);persist();}
   restoreBlood(G.p,Infinity);
   activateRuntimeCheckpoint('frostfell:second-step',{x:o.x,y:o.y},'checkpoint',null,true);
@@ -11177,6 +11195,7 @@ function loadStage(i){
   // not a permanent unlock you can walk back into.
   if(i!==10)colossusActCheckpoint=0;
   const s=STAGES[i];G.stageIndex=i;
+  BladefallPlaytest.start('explore',i,{eligible:!G.playtestResumed&&!G.bossRush&&!G.ngPlus&&!G.usedTestMode&&!coopActive()&&(G.levelSelectMode||!meta.world?.cleared?.includes(BFWorldModule.stageId(i))),reason:G.playtestResumed?'resumed mid-world':'assisted, repeated persistent world, or alternate rules'});
   recordWorldEntry(i);
   G._enemySeq=0;
   G.enemies=[];G.pickups=[];G.projectiles=[];G.obstacles=[];G.aoes=[];G.portal=null;G.boss=null;G.echoTrial=null;G.combatEcho=null;G.voidTrail=[];G.critFx=[];
@@ -11620,12 +11639,14 @@ const BFZoneStreamer=BFStreamingModule.createStreamer({zones:BFZonesModule,adapt
   commit:(plan,prepared)=>{
     if(!prepared||prepared.stageIndex==null)throw new Error('prepared-stage-missing');
     if(plan.sourceZoneId==='black-woods'&&plan.targetZoneId==='outskirts')advanceOpeningClock('black-woods-return');
+    const sourceStage=G.stageIndex,roster=BladefallPlaytest.model.catalog.filter(w=>w.mode==='explore'),sourceAt=roster.findIndex(w=>w.id===String(sourceStage)),sequential=roster[sourceAt+1]?.id===String(prepared.stageIndex);
     const carry=snapOf(G.p);carry.hasJetpack=false; // level gear never crosses a zone seam
     G._pendingZoneEndpoint=plan.targetEndpointId;
     // Co-op: both machines must build this region from the same seed and the same world
     // state, because the shared world is synced by object position in the lists.
     if(G.coopSession&&coopActive()&&NET.isHost())NET.stageSeed=BFSimulationModule.createSeed();
     loadStage(prepared.stageIndex);delete G._pendingZoneEndpoint;restorePlayer(carry);
+    if(!sequential)BladefallPlaytest.invalidate('entered through a side or return route');
     G.zoneTransition={connectorId:plan.connectorId,from:plan.sourceZoneId,to:plan.targetZoneId,
       token:null,compatibilityGeometry:prepared.geometryStatus!=='authored'};
     return{zoneId:plan.targetZoneId,stageIndex:prepared.stageIndex,levelLength:G.levelLength};
@@ -11692,6 +11713,7 @@ function restorePhysicalProgress(backup){
 function commitPhysicalDeparture(targetStage){
   if(G.physicalDepartureCommitted)return;
   G.physicalDepartureCommitted=true;
+  offerExploreWorldClear();
   if(!G.tookDamage)meta.flawlessStages=(meta.flawlessStages||0)+1;
   commitStageCompletion();recordWorldClear();recordStoryStageClear();recordHelpedTravelers();
   meta.bestStage=Math.max(meta.bestStage||0,targetStage);
@@ -14828,6 +14850,7 @@ function killEnemy(e,coopOpts){
     if(e.type==='tyrant'&&G.stageIndex===12){completeTyrantReward();latchVoidTyrant();installParadoxFloor(false);registerCircuits();}
     if(e.type==='king')kingRetreats(e);
     grantEchoReward({type:'boss:defeated',boss:e.type});
+    if(({2:'brute',4:'archer',6:'warden',8:'sorcerer',10:'colossus'})[G.stageIndex]===e.type||G.stageIndex===8&&e.whiteCourtFight)offerExploreWorldClear();
     // The ability toast and Echo toast used to replace each other in ~2 seconds.
     // The route-changing Brute reward is a player-dismissed result screen instead.
     if(e.type==='brute'&&G.ngPlus===0)showBruteDefeatBriefing();
@@ -17225,9 +17248,12 @@ function useEquippedTool(){
   return true;
 }
 function update(dt){
+  if(BladefallPlaytest.isOpen())return;
   if(G&&(mode==='play'||mode==='conversation')){window.BladefallCausewayStory?.update(dt);window.BladefallEarlyPlatforming?.tick(dt);}
   if(G?.sideStoryScene&&G.stageIndex<2&&(mode==='play'||mode==='conversation'))BladefallOpeningStories.update(dt,BladefallSideStories.row(BladefallSideStoryWorld.state(),G.sideStoryScene.id));
   if(mode!=='play'||!G){if(G&&['conversation','win','celeste-complete','cutscene','portal_wait','stage_transition','pause'].includes(mode)&&coopActive())netTick(dt);return;}
+  BladefallPlaytest.tick(dt);
+  if(G.usedTestMode||coopActive())BladefallPlaytest.invalidate('test mode or co-op');
   BladefallSideStoryWorld.update(dt);
   if(updateRailTransition(dt)||updateEmberDoorEntry(dt)||updateGateWalk(dt))return;
   updateBlight(dt);
@@ -20314,6 +20340,7 @@ function railSniperShoot(e){
    SECTION 10: STAGE FLOW
    ================================================================ */
 function nextStage(){
+  offerExploreWorldClear();
   // Co-op stage flow is a two-person decision. Any stray caller that did not
   // come through the synchronized stage-go handshake is redirected to readiness
   // instead of being allowed to load ahead on one client.
@@ -20397,7 +20424,9 @@ function nextStage(){
   }
 }
 function continueRun(){
+  BladefallPlaytest.reset();
   if(!meta.run)return;
+  markExplorePlayed();
   const simSeed=BFSimulation.startRun(meta.run.simSeed);
   const p=freshPlayer();
   G={...savedRunSession(meta.run),p,stageIndex:0,enemies:[],particles:[],texts:[],pickups:[],projectiles:[],obstacles:[],aoes:[],shadows:[],cam:0,shake:0,
@@ -20409,7 +20438,7 @@ function continueRun(){
      leaderboardSubmitted:false,worldProgressEligible:meta.run.worldProgressEligible!==false&&Number(meta.run.ngPlus||0)===0,simSeed};
   const recoveryPoint=runRecoveryPoint(meta.run);
   restorePlayer(meta.run.p);if(recoveryPoint)G._suppressEntranceCheckpoint=true;
-  loadStage(meta.run.stageIndex);delete G._suppressEntranceCheckpoint;restorePlayer(meta.run.p);
+  G.playtestResumed=true;loadStage(meta.run.stageIndex);delete G.playtestResumed;delete G._suppressEntranceCheckpoint;restorePlayer(meta.run.p);
   // Repair saves made after a seam accidentally carried level gear onward.
   if(!G.pickups.some(pk=>pk.jetpack)){G.p.hasJetpack=false;G.p.fuel=0;}
   restoreUpdraftsReturnGear();
@@ -24275,68 +24304,8 @@ function resumePlay(){mode='play';showOverlay(false);hudUpdate();}
 function escText(s){return String(s).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
 const BOARD_LABEL={base:'Base Game',ng1:'NG+1',ng2:'NG+2',rush:'Boss Rush',coop:'Co-op'};
 let leaderboardTab='base',leaderboardSort='time';
-function offerLeaderboardEntry(category,time,completion,onDone){
-  // Boss Rush is judged by the same standard as the campaign now: a god-mode
-  // clear is not a record, so it never even reaches the name prompt.
-  const eligibility=BFMilestonesModule.runEligibility({ngPlus:G&&G.ngPlus,bossRush:G&&G.bossRush,
-    levelSelect:!G||!G.leaderboardEligible,testMode:G&&G.usedTestMode,coop:coopActive(),submitted:G&&G.leaderboardSubmitted});
-  if(!G||!eligibility.ok){
-    if(G&&G.usedTestMode)toast('Test Mode was active — this run is not eligible for the leaderboard.');
-    onDone();return;
-  }
-  G.leaderboardSubmitted=true;mode='leaderboard';
-  const label=BOARD_LABEL[category]||category;
-  const previous=escText(leaderboards.lastName||'');
-  showOvHTML(`<div class="card"><p class="ovsub" style="color:#ffd700;letter-spacing:.18em;margin-bottom:4px;">RUN COMPLETE</p>
-    <h2 class="ovh">Add to ${label} Leaderboard?</h2>
-    <div class="statgrid"><div class="vsrow"><span>Time</span><b>${fmtRunTime(time)}</b></div>
-      <div class="vsrow"><span>Completion</span><b>${completion}%</b></div></div>
-    <p class="ovsub">Enter a name to keep this result forever, or skip it if this is not the run you want recorded.</p>
-    <input id="boardName" maxlength="18" value="${previous}" placeholder="Warden name"
-      style="box-sizing:border-box;width:100%;padding:12px 14px;margin:0 0 10px;background:#11141c;color:#f3f5f8;border:1px solid #596273;border-radius:7px;font:700 16px -apple-system;pointer-events:auto;">
-    <button class="bigbtn" id="boardSave">Save Result</button>
-    <button class="bigbtn ghost" id="boardSkip">Skip This Run</button></div>`);
-  const input=document.getElementById('boardName');
-  const save=()=>{
-    const name=(input.value||'').trim().replace(/\s+/g,' ').slice(0,18);
-    if(!name){input.focus();toast('Enter a name, or choose <b>Skip This Run</b>.');return;}
-    const result=BFMilestonesModule.addEntry(leaderboards,category,{name,time,completion,at:Date.now()});
-    if(!result.ok){toast('This result could not be recorded.');return;}
-    Object.assign(leaderboards,result.archive);
-    persistLeaderboards();onDone();
-  };
-  document.getElementById('boardSave').onclick=save;
-  document.getElementById('boardSkip').onclick=onDone;
-  input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();save();}});
-  setTimeout(()=>input.focus(),0);
-}
-function openLeaderboards(){
-  mode='title';
-  const rows=leaderboardTab==='coop'?(leaderboards.coop||[]).slice().sort(leaderboardSort==='time'
-    ?((a,b)=>a.time-b.time||b.completion-a.completion):((a,b)=>b.completion-a.completion||a.time-b.time))
-    :BFMilestonesModule.rank(leaderboards[leaderboardTab],leaderboardSort);
-  const tabs=Object.keys(BOARD_LABEL).map(k=>`<button class="bigbtn ${k===leaderboardTab?'':'ghost'}" data-board="${k}"
-    style="flex:1;padding:8px 4px;margin:0;font-size:12px;">${BOARD_LABEL[k]}</button>`).join('');
-  const list=rows.length?rows.map((r,i)=>`<div class="vsrow" style="gap:10px;">
-      <b style="width:28px;color:${i<3?'#ffd700':'#8b8f9a'};">${i+1}</b>
-      <span style="flex:1;text-align:left;overflow:hidden;text-overflow:ellipsis;">${escText(r.name)}</span>
-      <b style="min-width:64px;">${fmtRunTime(r.time)}</b>
-      <b style="min-width:48px;color:${r.completion>=100?'#5fd17a':'#c8ccd4'};">${r.completion}%</b>
-    </div>`).join(''):'<p class="ovsub" style="padding:24px 0;">No runs recorded yet.</p>';
-  showOvHTML(`<div class="card"><h2 class="ovh">🏆 Leaderboards</h2>
-    <p class="ovsub">Permanent records — factory reset never removes them</p>
-    <div style="display:flex;gap:5px;margin-bottom:10px;">${tabs}</div>
-    <div style="display:flex;gap:8px;margin-bottom:10px;">
-      <button class="bigbtn ${leaderboardSort==='time'?'':'ghost'}" id="sortTime" style="flex:1;padding:8px;margin:0;font-size:13px;">Fastest Time</button>
-      <button class="bigbtn ${leaderboardSort==='completion'?'':'ghost'}" id="sortComp" style="flex:1;padding:8px;margin:0;font-size:13px;">Completion, then Time</button>
-    </div>
-    <div class="statgrid" style="max-height:43vh;overflow-y:auto;">${list}</div>
-    <button class="bigbtn ghost" id="boardBack">Back</button></div>`);
-  document.querySelectorAll('[data-board]').forEach(b=>b.onclick=()=>{leaderboardTab=b.dataset.board;openLeaderboards();});
-  document.getElementById('sortTime').onclick=()=>{leaderboardSort='time';openLeaderboards();};
-  document.getElementById('sortComp').onclick=()=>{leaderboardSort='completion';openLeaderboards();};
-  document.getElementById('boardBack').onclick=titleScreen;
-}
+function offerLeaderboardEntry(category,time,completion,onDone){onDone();}
+function openLeaderboards(){BladefallPlaytest.boards('explore');}
 
 /* Shown the moment the base game, NG+1, or NG+2 is beaten — solo or in co-op,
    since every client runs this same winGame() path independently. */
@@ -24473,26 +24442,29 @@ function titleScreen(){
   coopQuitJourney();
   mode='title';showGameUI(false);document.getElementById('bosshpwrap').classList.remove('on');
   const hasRun=!!meta.run,journeyDepth=Math.max(meta.bestStage||0,meta.run&&meta.run.stageIndex||0);
+  let lastPlayed={},surviveCheckpoint=null;
+  try{lastPlayed=JSON.parse(localStorage.getItem('bladefall.last-played.v1'))||{};surviveCheckpoint=JSON.parse(localStorage.getItem('bladefall.climb.atlas.v1'))?.checkpoint;}catch{}
+  const hasSurvive=!!(surviveCheckpoint&&Number.isInteger(surviveCheckpoint.world)&&surviveCheckpoint.world>=1&&surviveCheckpoint.world<=40&&typeof surviveCheckpoint.room==='string');
+  const continueSurvive=hasSurvive&&(lastPlayed.game==='survive'||!hasRun),canContinue=hasRun||hasSurvive;
   const hasExtraSkin=meta.skinsOwned&&Object.keys(meta.skinsOwned).filter(id=>meta.skinsOwned[id]).length>1;
   const hasLeaderboardRecords=Object.keys(BOARD_LABEL).some(key=>Array.isArray(leaderboards[key])&&leaderboards[key].length>0);
   // Co-op is always offered: the friend being invited has a fresh save and no journey yet.
   const showLevelSelect=journeyDepth>0||meta.devUnlocked,showCoop=true;
   const showMap=!!meta.outskirtsFieldChart,showBoards=!!(meta.kingKills||meta.bossRushBest||hasLeaderboardRecords),showSkins=hasExtraSkin||journeyDepth>0;
   showOvHTML(`<div class="card"><h1 class="title">BLADEFALL</h1><p class="subtitle">Dreambound Action-Adventure</p>
-    ${hasRun?`<button class="bigbtn" id="contBtn">Continue — ${STAGES[meta.run.stageIndex].name}</button>`:''}
-    <button class="bigbtn ${hasRun?'ghost':''}" id="newBtn">${hasRun?'New Run':'Start'}</button>
-    ${showCoop?`<button class="bigbtn ghost" id="coopBtn">👥 Co-op${coopActive()?' — CONNECTED':''}</button>`:''}
-    <button class="bigbtn ghost" id="precisionBtn">Precision Courses</button>
-    <button class="bigbtn ghost" id="mergeBtn">Merge Pitches</button>
+    ${canContinue?`<button class="bigbtn" id="contBtn">Continue — ${continueSurvive?'Survive':'Explore'}</button>`:''}
+    <button class="bigbtn ${hasRun?'ghost':''}" id="newBtn">🧭 Explore</button>
+    <button class="bigbtn" id="bladescentBtn">⚔️ Survive</button>
+    ${showCoop?`<button class="bigbtn ghost" id="coopBtn" style="height:98px;box-sizing:border-box;">👥 Co-op${coopActive()?' — CONNECTED':''}</button>`:''}
+    ${BladefallPlaytest.isPublic()?'':'<button class="bigbtn ghost" id="extrasBtn">Extras</button>'}
     <div style="display:flex;gap:10px;margin-bottom:10px;">
-      ${showLevelSelect?'<button class="bigbtn ghost" id="lvlSelBtn" style="flex:1;">🗺 Level Select</button>':''}
-      <button class="bigbtn ghost" id="sndBtn" style="flex:1;">Sound: ${meta.soundOn?'On':'Off'}</button>
+      <button class="bigbtn ghost" id="lvlSelBtn" style="flex:1;">🗺 Level Select</button>
+      <button class="bigbtn ghost" id="sndBtn" style="flex:1;">Sound: ${meta.soundOn?'On 🔊':'Off 🔇'}</button>
       <button class="bigbtn ghost" id="settingsBtn" style="flex:1;">⚙ Controls</button>
     </div>
-    ${showBoards?'<button class="bigbtn ghost" id="boardsBtn">🏆 Leaderboards</button>':''}
-    <button class="bigbtn ghost" id="dialogueEditorBtn">✎ Dialogue Editor</button>
+    <button class="bigbtn ghost" id="boardsBtn">🏆 Leaderboards</button>
     <p class="hint">v${VERSION}</p></div>`);
-  if(hasRun)document.getElementById('contBtn').onclick=continueRun;
+  if(canContinue)document.getElementById('contBtn').onclick=()=>{if(continueSurvive)location.href='precision.html?pitch=climb&resume=1&mode='+(lastPlayed.mode==='review'?'review':'play');else continueRun();};
   document.getElementById('newBtn').onclick=()=>{
     if(campaignHasProgress())openNewGameConfirm();
     else startFreshCampaign();
@@ -24508,9 +24480,23 @@ function titleScreen(){
   document.getElementById('settingsBtn').onclick=()=>openSettings(titleScreen);
   const lvlSelBtn=document.getElementById('lvlSelBtn'),coopBtn=document.getElementById('coopBtn');
   if(lvlSelBtn)lvlSelBtn.onclick=openLevelSelect;
-  document.getElementById('precisionBtn').onclick=BladefallCeleste.menu;
-  document.getElementById('mergeBtn').onclick=()=>window.BladefallMergeRoad&&BladefallMergeRoad.menu();
-  if(coopBtn)coopBtn.onclick=openCoop;
+  document.getElementById('bladescentBtn').onclick=()=>{location.href='precision.html?pitch=climb&mode=play';};
+  document.getElementById('extrasBtn')?.addEventListener('click',openExtras);
+  if(coopBtn)coopBtn.onclick=openCoopChoice;
+}
+function openCoopChoice(){
+ showOvHTML(`<div class="card"><h1>Co-op</h1><p class="ovsub">Choose your game</p><button class="bigbtn" id="coopExplore">🧭 Explore</button><button class="bigbtn" id="coopSurvive">⚔️ Survive</button><button class="bigbtn ghost" id="coopChoiceBack">Back</button></div>`);
+ document.getElementById('coopExplore').onclick=openCoop;
+ document.getElementById('coopSurvive').onclick=()=>{location.href='precision.html?pitch=climb&mode=play&coopmenu=1';};
+ document.getElementById('coopChoiceBack').onclick=titleScreen;
+}
+function openExtras(){
+ showOvHTML(`<div class="card"><h1>Extras</h1><button class="bigbtn" id="roomBankBtn">Room Bank</button><button class="bigbtn ghost" id="precisionBtn">Precision Courses</button><button class="bigbtn ghost" id="mergeBtn">Merge Pitches</button><button class="bigbtn ghost" id="dialogueEditorBtn">Dialogue Editor</button><button class="bigbtn ghost" id="extrasBack">Back</button></div>`);
+ document.getElementById('roomBankBtn').onclick=()=>{location.href='precision.html?pitch=bank&mode=review';};
+ document.getElementById('precisionBtn').onclick=BladefallCeleste.menu;
+ document.getElementById('mergeBtn').onclick=()=>window.BladefallMergeRoad?.menu();
+ document.getElementById('dialogueEditorBtn').onclick=()=>window.open('./dialogue-editor.html','bladefall-dialogue-editor');
+ document.getElementById('extrasBack').onclick=titleScreen;
 }
 /* Jump straight into any stage with a fresh loadout. The Deep Line only shows
    itself to those who have already found it. */
@@ -24557,7 +24543,7 @@ function openLevelSelect(){
   showOvHTML(`<div class="card"><h2 class="ovh">Level Select</h2>
     <p class="ovsub">${t==='fx'?'The Fractured regions — Act Three’s echoes, harder and darker':'Fresh loadout — straight in'}</p>
     ${t==='fx'?'':`<p class="ovsub" style="font-size:11px;opacity:.75;margin-top:-6px;">
-      Starting from stage 01 counts for the leaderboard · later stages do not</p>`}
+      Complete any world continuously to save its time · whole-game totals combine your world bests</p>`}
     <div style="display:flex;gap:8px;margin-bottom:10px;">${tabs}</div>
     <div class="choices" id="lvlList" style="max-height:44vh;overflow-y:auto;">${rows}</div>
     <button class="bigbtn ghost" id="lvlBack">Back</button></div>`);
@@ -24607,7 +24593,7 @@ function openSettings(returnTo){
     `<div class="kbrow"><span class="kbname">${KB_LABELS[id]}</span><button class="kbkey" id="kb_${id}">${keyLabel(kbCode(id))}</button></div>`
   ).join('');
   showOvHTML(`<div class="card settingscard"><h2 class="ovh">Settings</h2>
-    <div class="settingsection">Audio</div>
+    <div class="settingsection">Playtesting</div><label class="kbrow"><span>Feedback mode · after each level</span><input id="ptFeedbackToggle" type="checkbox" ${BladefallPlaytest.feedbackEnabled()?'checked':''}></label><button class="bigbtn ghost" id="ptBoards">Speedrun leaderboards</button><div class="settingsection">Audio</div>
     <p class="ovsub" style="margin-bottom:6px;text-align:left;">Music Volume</p>
     <div class="volrow"><span>🔈</span><input type="range" id="volSlider" style="touch-action:none; pointer-events:auto; user-select:auto; -webkit-user-select:auto;" min="0" max="100" value="${vol}"><span id="volLabel" style="width:38px;text-align:right;color:var(--ink);font-weight:700;">${vol}%</span></div>
     <p class="ovsub" style="margin:8px 0 6px;text-align:left;">Effects Volume</p>
@@ -24642,7 +24628,7 @@ function openSettings(returnTo){
     </label>
     <label class="kbrow" style="margin-top:7px;"><span class="kbname">Zoom</span>
       <select id="viewZoomSelect" style="min-width:120px;padding:7px;border-radius:8px;background:var(--bg);border:1px solid var(--line);color:var(--ink);">
-        ${[[0.85,'85% · farther'],[0.9,'90%'],[0.95,'95%'],[1,'100%'],[1.05,'105%'],[1.1,'110%'],[1.15,'115% · closer']].map(([z,label])=>`<option value="${z}" ${Math.abs((+meta.viewZoom||1)-z)<.001?'selected':''}>${label}</option>`).join('')}
+        ${[[0.70,'70% · farther'],[0.75,'75%'],[0.80,'80%'],[0.85,'85%'],[0.9,'90%'],[0.95,'95%'],[1,'100%'],[1.05,'105%'],[1.1,'110%'],[1.15,'115% · closer']].map(([z,label])=>`<option value="${z}" ${Math.abs((+meta.viewZoom||1)-z)<.001?'selected':''}>${label}</option>`).join('')}
       </select>
     </label>
     <p class="ovsub" style="font-size:12px;margin:8px 0;">Zoom: Ctrl / ⌘ + or − · Ctrl / ⌘ 0 resets</p>
@@ -24709,6 +24695,8 @@ function openSettings(returnTo){
   qualitySelect.onchange=()=>{meta.graphicsQuality=qualitySelect.value;applyPresentationSettings();persist();};
   const rendererSelect=document.getElementById('rendererSelect');if(rendererSelect)rendererSelect.onchange=()=>{meta.rendererMode=rendererSelect.value;persist();};
   const viewScaleSelect=document.getElementById('viewScaleSelect');if(viewScaleSelect)viewScaleSelect.onchange=()=>{meta.viewScale=viewScaleSelect.value;persist();applyViewScale();};
+  document.getElementById('ptFeedbackToggle').onchange=e=>BladefallPlaytest.setFeedback(e.target.checked);
+  document.getElementById('ptBoards').onclick=()=>BladefallPlaytest.boards('explore');
   const viewZoomSelect=document.getElementById('viewZoomSelect');if(viewZoomSelect)viewZoomSelect.onchange=()=>{setGameZoom(+viewZoomSelect.value);};
   let activeListener=null;
   const stopListening=()=>{if(activeListener){window.removeEventListener('keydown',activeListener,true);activeListener=null;}};
@@ -24941,6 +24929,7 @@ function bossRushDeath(){
 }
 
 function die(){
+  BladefallPlaytest.death();
   if(meta.soundOn)SFX.hurt();
   // Boss Rush is all-or-nothing: a fall ends the attempt, hardcore or not.
   if(G.bossRush){bossRushDeath();return;}
@@ -25585,17 +25574,17 @@ glEnable=false;
 // as window × canvasPixelRatio and stretches it back over the window, so a ratio below 1 is a
 // crisp zoom and the DOM HUD keeps its size. 'window' restores the old one-unit-per-pixel view.
 // TAS runs and index.html?view=wide keep the old view so bots and camera tests see what they expect.
-const VIEW_HEIGHT=400;   // at 100% zoom (Settings → Zoom, 85–115%)
+const VIEW_HEIGHT=400;   // at 100% zoom (Settings → Zoom, 70–115%)
 function applyViewScale(){
   let wide=meta.viewScale==='window'||BF_TAS_ENABLED;
   try{if(new URLSearchParams(location.search).get('view')==='wide')wide=true;}catch(e){}
   // Zoom trims the close view by up to 15% either way: 115% shows 348 units of height, 85% shows 471.
-  const zoom=Math.min(1.15,Math.max(.85,+meta.viewZoom||1));
+  const zoom=Math.min(1.15,Math.max(.70,+meta.viewZoom||1));
   canvasPixelRatio=wide||!(innerHeight>0)?1:Math.min(2.5,VIEW_HEIGHT/zoom/innerHeight);
   const c=document.querySelector('#gameContainer canvas');if(c)c.style.imageRendering=wide?'':'pixelated';
 }
 function setGameZoom(value){
-  meta.viewZoom=Math.max(.85,Math.min(1.15,Math.round(value*100)/100));
+  meta.viewZoom=Math.max(.70,Math.min(1.15,Math.round(value*100)/100));
   meta.viewScale='close';
   persist();applyViewScale();
   const zoomSelect=document.getElementById('viewZoomSelect');
@@ -25800,6 +25789,8 @@ function integrationState(){
       renderer:BFRenderer&&BFRenderer.diagnostics(),release:BFReleaseMonitor.diagnostics()}
   };
 }
+if(new URLSearchParams(location.search).has('timeTrial'))setTimeout(()=>{const id=new URLSearchParams(location.search).get('timeTrial'),w=BladefallPlaytest.model.world('explore',id);if(w&&(w.campaign==='base'||BladefallPlaytest.unlocked('explore',id)))beginRun(0,null,{hp:1,dmg:1},{startStage:+id,levelSelect:true});},0);
+BladefallPlaytest.setup({startTrial:(which,id)=>{if(which==='survival')location.href='precision.html?pitch=climb&world='+encodeURIComponent(id);else beginRun(0,null,{hp:1,dmg:1},{startStage:+id,levelSelect:true});},canStartTrial:(which,id)=>BladefallPlaytest.model.world(which,id)?.campaign==='base'||BladefallPlaytest.unlocked(which,id),pause:()=>{const before=mode;mode='pause';return ()=>{mode=before;};},clearInput:()=>{for(const k of Object.keys(input))if(typeof input[k]==='boolean')input[k]=false;}});
 window.__BF={get G(){return G;},get mode(){return mode;},get meta(){return meta;},get renderer(){return BFRenderer;},VERSION,core:BFCore,runtime:BFRuntime,simulation:BFSimulation,platformer:BFPlatformer,traversal:()=>BFPlatformer.diagnostics(),environment:BFEnvironment,environmentState:()=>BFEnvironment.diagnostics(),reactions:BFReactionsModule,reactionState:()=>BFReactions.diagnostics(),interactions:BFInteractionsModule,interactionState:()=>BFInteractions.diagnostics(),openingActState:()=>G&&G.openingActRemaster||null,keepActState:()=>G&&G.keepActRemaster||null,elementalActState:()=>G&&G.elementalActRemaster||null,finaleActState:()=>G&&G.finaleActRemaster?Object.assign({},G.finaleActRemaster,{signals:G.stageIndex===15?{banked:G.deepLineSignals||0,total:2}:null}):null,peopleState:()=>G&&G.peopleAndPlace?Object.assign({},G.peopleAndPlace,{lore:(G.obstacles||[]).filter(o=>o.lore).map(o=>({id:o.loreId,title:o.title,read:!!o.read,x:Math.round(o.x),y:Math.round(o.y)}))}):null,progression:BFProgressionModule,zones:BFZonesModule,zoneState:BFZoneStateModule,zoneStateView:()=>({validation:BFZoneStateModule.validate(meta.zoneState,BFZonesModule.zones.map(zone=>zone.id)),migration:BFZoneStateMigration.receipt,current:G&&G.zonePersistenceZoneId||null,manifest:G&&G.zonePersistenceManifest||[],hydration:G&&G.zonePersistenceView||null,lastCapture:G&&G.lastZonePersistenceReceipt||null}),captureZoneState:captureCurrentZonePersistence,zoneTraversalState,streaming:BFZoneStreamer,streamState:()=>BFZoneStreamer.diagnostics(),streamAcross:(connectorId,fromZoneId,state)=>BFZoneStreamer.cross(connectorId,fromZoneId,zoneTraversalState(state)),warmZone:(connectorId,fromZoneId,state)=>BFZoneStreamer.warm(connectorId,fromZoneId,zoneTraversalState(state)),world:BFWorldModule,worldState:()=>({validation:BFWorldModule.validateGraph(),migration:BFWorldMigration.receipt,progress:BFWorldModule.createProgress(meta.world),outgoing:BFWorldModule.outgoing(meta.world,{capabilities:meta.capabilities&&meta.capabilities.acquired||[]}),fastTravel:BFWorldModule.fastTravelTargets(meta.world),ending:BFWorldModule.ending(meta.world)}),story:BFStoryModule,storyState:()=>({validation:BFStoryModule.validateStory(),migration:BFStoryMigration.receipt,progress:BFStoryModule.createProgress(meta.story),revelation:BFStoryModule.revelation(meta.story),ending:BFStoryModule.endingState(meta.story,meta.world),stage:G?BFStoryModule.stageBrief(BFWorldModule.stageId(G.stageIndex)):null}),cinematics:BFCinematicsModule,cinematicState:()=>({validation:BFCinematicsModule.validate(),active:activeDaturaCinematic}),shops:BFShopsModule,shopState:()=>({validation:BFShopsModule.validateCatalog(),migration:BFShopMigration.receipt,progress:BFShopsModule.createProgress(meta.shops),current:G&&G.regionalShop||null,inventory:G&&G.regionalShop?BFShopsModule.inventory(meta.shops,G.regionalShop.id):[]}),quests:BFQuestsModule,questState:()=>({validation:BFQuestsModule.validateCatalog(),migration:BFQuestMigration.receipt,progress:BFQuestsModule.createProgress(meta.quests),journal:BFQuestsModule.journal(meta.quests)}),milestones:BFMilestonesModule,milestoneState:()=>({validation:BFMilestonesModule.validate(),completion:BFMilestonesModule.createRun(G&&G.runCompletion),boss:G&&G.boss?G.boss.milestoneEligibility:null}),portals:BFPortalSystem,portalState:()=>BFPortalSystem.diagnostics(),fluids:BFFluidSystem,fluidState:()=>BFFluidSystem.diagnostics(),ai:BFAISystem,aiState:()=>BFAISystem.diagnostics(),authoring:BFAuthoring,authoringState:()=>BFAuthoring.diagnostics(),levelManifest:()=>BFAuthoring.current(),analyzeLevel:()=>BFAuthoring.analyze(),exportLevel:()=>BFAuthoring.export(),campaign:BFCampaignModule,campaignState:()=>({validation:BFCampaignValidation,blueprint:G&&G.campaignBlueprint||null,composition:G&&G.campaignComposition||null,migration:G&&G.campaignMigration||null}),charters:BFChartersModule,charterState:()=>G&&G.levelCharter?{validation:BFChartersModule.validateCharter(G.levelCharter),charter:G.levelCharter,geometry:G.geometryAudit,evidence:BFChartersModule.evidencePlan(G.levelCharter)}:null,multiplayer:BFMultiplayerModule,multiplayerState:()=>NET&&NET.protocol?NET.protocol.diagnostics():null,audio:BFAudio,audioState:()=>BFAudio.diagnostics(),camera:BFCamera,cameraState:()=>BFCamera.diagnostics(),remix:BFRemixModule,remixState:()=>BFRemix.diagnostics(),integrationState,release:BFReleaseModule,releaseState,saveMigration:()=>BFSaveMigration.receipt,balanceState:()=>BFBalanceValidation,presentationSettings:()=>({soundOn:meta.soundOn,musicVolume:meta.musicVolume,sfxVolume:meta.sfxVolume,dynamicAudio:meta.dynamicAudio,nightMode:meta.nightMode,soundCaptions:meta.soundCaptions,cameraAssist:meta.cameraAssist,reducedMotion:meta.reducedMotion,flashReduction:meta.flashReduction,screenShake:meta.screenShake,graphicsQuality:meta.graphicsQuality,highContrast:meta.highContrast,largeText:meta.largeText,colorAssist:meta.colorAssist,haptics:meta.haptics,combatCues:meta.combatCues}),portalPairs,portalPerceptionRoute,trace:()=>BFSimulation.exportTrace(),createReplay:BFSimulationModule.createReplay,reloadStage:i=>loadStage(i),
   /*   PAINT ONE FRAME ON DEMAND. A hidden tab has rAF suspended, so a harness that steps
      the simulation gets a correct G and a black canvas — which is how art bugs keep

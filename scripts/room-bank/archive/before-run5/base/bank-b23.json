@@ -1,0 +1,329 @@
+{
+  "room": {
+    "id": "bank-b23",
+    "name": "Miss One Ferry",
+    "palette": "path",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "map": [
+      "########################################",
+      "#.......########.......................#",
+      "#.......########.......................#",
+      "#.......########.......................#",
+      "#.......########.......................#",
+      "#.......########........................",
+      "#.......########........................",
+      "#.......########........................",
+      "#.......########..................######",
+      "#.......########.................<######",
+      "#.......########.................<######",
+      "#.......########.................<######",
+      "#.......########.................<######",
+      "#.......########.................<######",
+      "#.......vvvvvvvv.................<######",
+      "#...................####.........<######",
+      "#..P................####.........<######",
+      "#######............<####>........<######",
+      "#######............<####>........<######",
+      "#######............<####>........<######",
+      "#######............<####>........<######",
+      "#######^^^^^^^^^^^^^^^^^^^^^^^^^^^######",
+      "########################################"
+    ],
+    "decks": [
+      {
+        "c": 7,
+        "r": 18,
+        "w": 3,
+        "to": [
+          7,
+          0
+        ],
+        "period": 200,
+        "phase": 0
+      },
+      {
+        "c": 25,
+        "r": 18,
+        "w": 4,
+        "to": [
+          8,
+          -8
+        ],
+        "period": 240,
+        "phase": 40
+      }
+    ],
+    "sweepers": [
+      {
+        "id": "low",
+        "path": [
+          [
+            12,
+            15
+          ],
+          [
+            12,
+            20
+          ]
+        ],
+        "period": 160,
+        "phase": 0
+      },
+      {
+        "id": "high",
+        "path": [
+          [
+            24,
+            11
+          ],
+          [
+            34,
+            11
+          ]
+        ],
+        "period": 200,
+        "phase": 80
+      }
+    ],
+    "hint": "A missed ferry comes back. The stone pier is safe; the space between the boats is not.",
+    "question": "Which connection should you let leave without you?"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 4,
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "timing",
+    "worlds": [
+      11,
+      19,
+      24
+    ],
+    "tags": [
+      "timing",
+      "sweeper",
+      "moving-deck",
+      "transfer"
+    ],
+    "newMechanics": [],
+    "entrance": "Safe west observation bay.",
+    "exit": "East landing.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "jump"
+    ],
+    "humanReview": "Author difficulty estimate; fun/difficulty/suitability pending.",
+    "solution": "Board the low ferry only when its next pass beneath the first patrol will be clear. Stay low under the thorned ceiling, move to its front, and jump up to the central pier. Let the second ferry and its diagonal route come to you, board it after the upper patrol clears, then jump from its high end onto the exit landing.",
+    "nearestExisting": "Return Freight dispatches a zip, leaves it for a void shortcut and catches its returning cargo. This room uses two unsummoned cyclic ferries, a low roof preventing an aerial shortcut, and a central pier where the player must let an unsafe connection go.",
+    "novelty": "A successful first boarding can deliver the knight to an unsafe second connection. The intermediate pier is a deliberate place to miss one ferry and synchronize with the independent second patrol.",
+    "timing": {
+      "principle": "Choose a ferry departure by the hazard it will meet later; reset your timing at the transfer pier.",
+      "stages": [
+        {
+          "cue": "The low ferry approaches while the vertical patrol moves away from rider height.",
+          "action": "Board, follow its front under the roof, then jump to the pier.",
+          "rest": "Central stone pier."
+        },
+        {
+          "cue": "The rising ferry returns low as the upper patrol clears its climb.",
+          "action": "Drop aboard, ride the ascent, and jump to the high exit.",
+          "rest": "High exit landing."
+        }
+      ]
+    },
+    "route": {
+      "frames": 338,
+      "deaths": 0,
+      "events": [
+        "land",
+        "jump",
+        "exit"
+      ],
+      "movement": "Ordinary jump, dash, grab and device actions; no advanced momentum exploit."
+    },
+    "shortcutChecks": [
+      {
+        "name": "Rush forward instead of riding/waiting",
+        "tape": [
+          [
+            34,
+            "r"
+          ],
+          [
+            7,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            17,
+            "rgu"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            14,
+            "j"
+          ],
+          [
+            50,
+            "rgu"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1
+        }
+      },
+      {
+        "name": "Take the second connection immediately",
+        "tape": [
+          [
+            34,
+            "r"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            7,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            17,
+            "rgu"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            80,
+            ""
+          ],
+          [
+            14,
+            "j"
+          ],
+          [
+            50,
+            "rgu"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2
+        }
+      },
+      {
+        "name": "Immediate jump/up-dash from transfer pier toward exit",
+        "tape": [
+          [
+            34,
+            "r"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            7,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            17,
+            "rgu"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            1,
+            "rux"
+          ],
+          [
+            16,
+            "rug"
+          ],
+          [
+            70,
+            "rgu"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2
+        }
+      }
+    ]
+  },
+  "tape": [
+    [
+      34,
+      "r"
+    ],
+    [
+      50,
+      ""
+    ],
+    [
+      7,
+      "r"
+    ],
+    [
+      18,
+      "rj"
+    ],
+    [
+      17,
+      "rgu"
+    ],
+    [
+      60,
+      ""
+    ],
+    [
+      14,
+      "r"
+    ],
+    [
+      80,
+      ""
+    ],
+    [
+      14,
+      "j"
+    ],
+    [
+      50,
+      "rgu"
+    ]
+  ]
+}

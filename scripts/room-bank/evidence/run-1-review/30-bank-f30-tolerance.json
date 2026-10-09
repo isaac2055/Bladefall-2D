@@ -1,0 +1,1363 @@
+{
+  "roomId": "bank-f30",
+  "date": "2026-10-08",
+  "scope": "All variants start normally and replay the full approach/tally route. This quantifies input tolerance, not a human difficulty score.",
+  "geometry": [
+    "Extended the receiving shelf seven tiles west.",
+    "Lowered the receiving shelf and beam two tiles.",
+    "Replaced the long thorned landing face with one short underside lip.",
+    "Kept zero dash, low tally, rope control and velocity-preserving echo exchange."
+  ],
+  "canonicalTape": [
+    [
+      5,
+      "r"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      15,
+      "r"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      1,
+      "q"
+    ],
+    [
+      14,
+      "l"
+    ],
+    [
+      35,
+      ""
+    ],
+    [
+      16,
+      "r"
+    ],
+    [
+      18,
+      "rjg"
+    ],
+    [
+      15,
+      "rg"
+    ],
+    [
+      32,
+      "rdg"
+    ],
+    [
+      12,
+      "lug"
+    ],
+    [
+      8,
+      "lg"
+    ],
+    [
+      20,
+      "rg"
+    ],
+    [
+      24,
+      "rg"
+    ],
+    [
+      4,
+      "rug"
+    ],
+    [
+      1,
+      "rj"
+    ],
+    [
+      2,
+      "r"
+    ],
+    [
+      1,
+      "rq"
+    ],
+    [
+      180,
+      "r"
+    ]
+  ],
+  "canonical": {
+    "frames": 305,
+    "deaths": 0
+  },
+  "positiveMatrix": {
+    "releaseRunupFrames": [
+      20,
+      28
+    ],
+    "swapDelayFrames": [
+      0,
+      7
+    ],
+    "reelFrames": 4,
+    "rows": [
+      {
+        "releaseRunupFrames": 20,
+        "swapDelayFrames": 0,
+        "exited": true,
+        "deaths": 0,
+        "frames": 292
+      },
+      {
+        "releaseRunupFrames": 20,
+        "swapDelayFrames": 1,
+        "exited": true,
+        "deaths": 0,
+        "frames": 294
+      },
+      {
+        "releaseRunupFrames": 20,
+        "swapDelayFrames": 2,
+        "exited": true,
+        "deaths": 0,
+        "frames": 298
+      },
+      {
+        "releaseRunupFrames": 20,
+        "swapDelayFrames": 3,
+        "exited": true,
+        "deaths": 0,
+        "frames": 302
+      },
+      {
+        "releaseRunupFrames": 20,
+        "swapDelayFrames": 4,
+        "exited": true,
+        "deaths": 0,
+        "frames": 306
+      },
+      {
+        "releaseRunupFrames": 20,
+        "swapDelayFrames": 5,
+        "exited": true,
+        "deaths": 0,
+        "frames": 312
+      },
+      {
+        "releaseRunupFrames": 20,
+        "swapDelayFrames": 6,
+        "exited": true,
+        "deaths": 0,
+        "frames": 315
+      },
+      {
+        "releaseRunupFrames": 20,
+        "swapDelayFrames": 7,
+        "exited": true,
+        "deaths": 0,
+        "frames": 321
+      },
+      {
+        "releaseRunupFrames": 21,
+        "swapDelayFrames": 0,
+        "exited": true,
+        "deaths": 0,
+        "frames": 292
+      },
+      {
+        "releaseRunupFrames": 21,
+        "swapDelayFrames": 1,
+        "exited": true,
+        "deaths": 0,
+        "frames": 295
+      },
+      {
+        "releaseRunupFrames": 21,
+        "swapDelayFrames": 2,
+        "exited": true,
+        "deaths": 0,
+        "frames": 298
+      },
+      {
+        "releaseRunupFrames": 21,
+        "swapDelayFrames": 3,
+        "exited": true,
+        "deaths": 0,
+        "frames": 302
+      },
+      {
+        "releaseRunupFrames": 21,
+        "swapDelayFrames": 4,
+        "exited": true,
+        "deaths": 0,
+        "frames": 305
+      },
+      {
+        "releaseRunupFrames": 21,
+        "swapDelayFrames": 5,
+        "exited": true,
+        "deaths": 0,
+        "frames": 311
+      },
+      {
+        "releaseRunupFrames": 21,
+        "swapDelayFrames": 6,
+        "exited": true,
+        "deaths": 0,
+        "frames": 317
+      },
+      {
+        "releaseRunupFrames": 21,
+        "swapDelayFrames": 7,
+        "exited": true,
+        "deaths": 0,
+        "frames": 321
+      },
+      {
+        "releaseRunupFrames": 22,
+        "swapDelayFrames": 0,
+        "exited": true,
+        "deaths": 0,
+        "frames": 293
+      },
+      {
+        "releaseRunupFrames": 22,
+        "swapDelayFrames": 1,
+        "exited": true,
+        "deaths": 0,
+        "frames": 295
+      },
+      {
+        "releaseRunupFrames": 22,
+        "swapDelayFrames": 2,
+        "exited": true,
+        "deaths": 0,
+        "frames": 297
+      },
+      {
+        "releaseRunupFrames": 22,
+        "swapDelayFrames": 3,
+        "exited": true,
+        "deaths": 0,
+        "frames": 300
+      },
+      {
+        "releaseRunupFrames": 22,
+        "swapDelayFrames": 4,
+        "exited": true,
+        "deaths": 0,
+        "frames": 303
+      },
+      {
+        "releaseRunupFrames": 22,
+        "swapDelayFrames": 5,
+        "exited": true,
+        "deaths": 0,
+        "frames": 306
+      },
+      {
+        "releaseRunupFrames": 22,
+        "swapDelayFrames": 6,
+        "exited": true,
+        "deaths": 0,
+        "frames": 312
+      },
+      {
+        "releaseRunupFrames": 22,
+        "swapDelayFrames": 7,
+        "exited": true,
+        "deaths": 0,
+        "frames": 318
+      },
+      {
+        "releaseRunupFrames": 23,
+        "swapDelayFrames": 0,
+        "exited": true,
+        "deaths": 0,
+        "frames": 296
+      },
+      {
+        "releaseRunupFrames": 23,
+        "swapDelayFrames": 1,
+        "exited": true,
+        "deaths": 0,
+        "frames": 298
+      },
+      {
+        "releaseRunupFrames": 23,
+        "swapDelayFrames": 2,
+        "exited": true,
+        "deaths": 0,
+        "frames": 300
+      },
+      {
+        "releaseRunupFrames": 23,
+        "swapDelayFrames": 3,
+        "exited": true,
+        "deaths": 0,
+        "frames": 303
+      },
+      {
+        "releaseRunupFrames": 23,
+        "swapDelayFrames": 4,
+        "exited": true,
+        "deaths": 0,
+        "frames": 308
+      },
+      {
+        "releaseRunupFrames": 23,
+        "swapDelayFrames": 5,
+        "exited": true,
+        "deaths": 0,
+        "frames": 313
+      },
+      {
+        "releaseRunupFrames": 23,
+        "swapDelayFrames": 6,
+        "exited": true,
+        "deaths": 0,
+        "frames": 317
+      },
+      {
+        "releaseRunupFrames": 23,
+        "swapDelayFrames": 7,
+        "exited": true,
+        "deaths": 0,
+        "frames": 322
+      },
+      {
+        "releaseRunupFrames": 24,
+        "swapDelayFrames": 0,
+        "exited": true,
+        "deaths": 0,
+        "frames": 299
+      },
+      {
+        "releaseRunupFrames": 24,
+        "swapDelayFrames": 1,
+        "exited": true,
+        "deaths": 0,
+        "frames": 301
+      },
+      {
+        "releaseRunupFrames": 24,
+        "swapDelayFrames": 2,
+        "exited": true,
+        "deaths": 0,
+        "frames": 303
+      },
+      {
+        "releaseRunupFrames": 24,
+        "swapDelayFrames": 3,
+        "exited": true,
+        "deaths": 0,
+        "frames": 305
+      },
+      {
+        "releaseRunupFrames": 24,
+        "swapDelayFrames": 4,
+        "exited": true,
+        "deaths": 0,
+        "frames": 309
+      },
+      {
+        "releaseRunupFrames": 24,
+        "swapDelayFrames": 5,
+        "exited": true,
+        "deaths": 0,
+        "frames": 314
+      },
+      {
+        "releaseRunupFrames": 24,
+        "swapDelayFrames": 6,
+        "exited": true,
+        "deaths": 0,
+        "frames": 319
+      },
+      {
+        "releaseRunupFrames": 24,
+        "swapDelayFrames": 7,
+        "exited": true,
+        "deaths": 0,
+        "frames": 324
+      },
+      {
+        "releaseRunupFrames": 25,
+        "swapDelayFrames": 0,
+        "exited": true,
+        "deaths": 0,
+        "frames": 309
+      },
+      {
+        "releaseRunupFrames": 25,
+        "swapDelayFrames": 1,
+        "exited": true,
+        "deaths": 0,
+        "frames": 311
+      },
+      {
+        "releaseRunupFrames": 25,
+        "swapDelayFrames": 2,
+        "exited": true,
+        "deaths": 0,
+        "frames": 314
+      },
+      {
+        "releaseRunupFrames": 25,
+        "swapDelayFrames": 3,
+        "exited": true,
+        "deaths": 0,
+        "frames": 318
+      },
+      {
+        "releaseRunupFrames": 25,
+        "swapDelayFrames": 4,
+        "exited": true,
+        "deaths": 0,
+        "frames": 323
+      },
+      {
+        "releaseRunupFrames": 25,
+        "swapDelayFrames": 5,
+        "exited": true,
+        "deaths": 0,
+        "frames": 328
+      },
+      {
+        "releaseRunupFrames": 25,
+        "swapDelayFrames": 6,
+        "exited": true,
+        "deaths": 0,
+        "frames": 333
+      },
+      {
+        "releaseRunupFrames": 25,
+        "swapDelayFrames": 7,
+        "exited": true,
+        "deaths": 0,
+        "frames": 337
+      },
+      {
+        "releaseRunupFrames": 26,
+        "swapDelayFrames": 0,
+        "exited": true,
+        "deaths": 0,
+        "frames": 316
+      },
+      {
+        "releaseRunupFrames": 26,
+        "swapDelayFrames": 1,
+        "exited": true,
+        "deaths": 0,
+        "frames": 321
+      },
+      {
+        "releaseRunupFrames": 26,
+        "swapDelayFrames": 2,
+        "exited": true,
+        "deaths": 0,
+        "frames": 325
+      },
+      {
+        "releaseRunupFrames": 26,
+        "swapDelayFrames": 3,
+        "exited": true,
+        "deaths": 0,
+        "frames": 330
+      },
+      {
+        "releaseRunupFrames": 26,
+        "swapDelayFrames": 4,
+        "exited": true,
+        "deaths": 0,
+        "frames": 335
+      },
+      {
+        "releaseRunupFrames": 26,
+        "swapDelayFrames": 5,
+        "exited": true,
+        "deaths": 0,
+        "frames": 339
+      },
+      {
+        "releaseRunupFrames": 26,
+        "swapDelayFrames": 6,
+        "exited": true,
+        "deaths": 0,
+        "frames": 345
+      },
+      {
+        "releaseRunupFrames": 26,
+        "swapDelayFrames": 7,
+        "exited": true,
+        "deaths": 0,
+        "frames": 349
+      },
+      {
+        "releaseRunupFrames": 27,
+        "swapDelayFrames": 0,
+        "exited": true,
+        "deaths": 0,
+        "frames": 322
+      },
+      {
+        "releaseRunupFrames": 27,
+        "swapDelayFrames": 1,
+        "exited": true,
+        "deaths": 0,
+        "frames": 328
+      },
+      {
+        "releaseRunupFrames": 27,
+        "swapDelayFrames": 2,
+        "exited": true,
+        "deaths": 0,
+        "frames": 333
+      },
+      {
+        "releaseRunupFrames": 27,
+        "swapDelayFrames": 3,
+        "exited": true,
+        "deaths": 0,
+        "frames": 336
+      },
+      {
+        "releaseRunupFrames": 27,
+        "swapDelayFrames": 4,
+        "exited": true,
+        "deaths": 0,
+        "frames": 341
+      },
+      {
+        "releaseRunupFrames": 27,
+        "swapDelayFrames": 5,
+        "exited": true,
+        "deaths": 0,
+        "frames": 345
+      },
+      {
+        "releaseRunupFrames": 27,
+        "swapDelayFrames": 6,
+        "exited": true,
+        "deaths": 0,
+        "frames": 350
+      },
+      {
+        "releaseRunupFrames": 27,
+        "swapDelayFrames": 7,
+        "exited": true,
+        "deaths": 0,
+        "frames": 354
+      },
+      {
+        "releaseRunupFrames": 28,
+        "swapDelayFrames": 0,
+        "exited": true,
+        "deaths": 0,
+        "frames": 364
+      },
+      {
+        "releaseRunupFrames": 28,
+        "swapDelayFrames": 1,
+        "exited": true,
+        "deaths": 0,
+        "frames": 363
+      },
+      {
+        "releaseRunupFrames": 28,
+        "swapDelayFrames": 2,
+        "exited": true,
+        "deaths": 0,
+        "frames": 360
+      },
+      {
+        "releaseRunupFrames": 28,
+        "swapDelayFrames": 3,
+        "exited": true,
+        "deaths": 0,
+        "frames": 363
+      },
+      {
+        "releaseRunupFrames": 28,
+        "swapDelayFrames": 4,
+        "exited": true,
+        "deaths": 0,
+        "frames": 367
+      },
+      {
+        "releaseRunupFrames": 28,
+        "swapDelayFrames": 5,
+        "exited": true,
+        "deaths": 0,
+        "frames": 371
+      },
+      {
+        "releaseRunupFrames": 28,
+        "swapDelayFrames": 6,
+        "exited": true,
+        "deaths": 0,
+        "frames": 373
+      },
+      {
+        "releaseRunupFrames": 28,
+        "swapDelayFrames": 7,
+        "exited": true,
+        "deaths": 0,
+        "frames": 377
+      }
+    ]
+  },
+  "originalComparison": {
+    "sameInputMatrix": true,
+    "rows": [
+      {
+        "releaseRunupFrames": 20,
+        "swapDelayFrames": 0,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 20,
+        "swapDelayFrames": 1,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 20,
+        "swapDelayFrames": 2,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 20,
+        "swapDelayFrames": 3,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 20,
+        "swapDelayFrames": 4,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 20,
+        "swapDelayFrames": 5,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 20,
+        "swapDelayFrames": 6,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 20,
+        "swapDelayFrames": 7,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 21,
+        "swapDelayFrames": 0,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 21,
+        "swapDelayFrames": 1,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 21,
+        "swapDelayFrames": 2,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 21,
+        "swapDelayFrames": 3,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 21,
+        "swapDelayFrames": 4,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 21,
+        "swapDelayFrames": 5,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 21,
+        "swapDelayFrames": 6,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 21,
+        "swapDelayFrames": 7,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 22,
+        "swapDelayFrames": 0,
+        "exited": true,
+        "deaths": 0,
+        "frames": 297
+      },
+      {
+        "releaseRunupFrames": 22,
+        "swapDelayFrames": 1,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 22,
+        "swapDelayFrames": 2,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 22,
+        "swapDelayFrames": 3,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 22,
+        "swapDelayFrames": 4,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 22,
+        "swapDelayFrames": 5,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 22,
+        "swapDelayFrames": 6,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 22,
+        "swapDelayFrames": 7,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 23,
+        "swapDelayFrames": 0,
+        "exited": true,
+        "deaths": 0,
+        "frames": 300
+      },
+      {
+        "releaseRunupFrames": 23,
+        "swapDelayFrames": 1,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 23,
+        "swapDelayFrames": 2,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 23,
+        "swapDelayFrames": 3,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 23,
+        "swapDelayFrames": 4,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 23,
+        "swapDelayFrames": 5,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 23,
+        "swapDelayFrames": 6,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 23,
+        "swapDelayFrames": 7,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 24,
+        "swapDelayFrames": 0,
+        "exited": true,
+        "deaths": 0,
+        "frames": 302
+      },
+      {
+        "releaseRunupFrames": 24,
+        "swapDelayFrames": 1,
+        "exited": true,
+        "deaths": 0,
+        "frames": 304
+      },
+      {
+        "releaseRunupFrames": 24,
+        "swapDelayFrames": 2,
+        "exited": true,
+        "deaths": 0,
+        "frames": 309
+      },
+      {
+        "releaseRunupFrames": 24,
+        "swapDelayFrames": 3,
+        "exited": true,
+        "deaths": 0,
+        "frames": 314
+      },
+      {
+        "releaseRunupFrames": 24,
+        "swapDelayFrames": 4,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 24,
+        "swapDelayFrames": 5,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 24,
+        "swapDelayFrames": 6,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 24,
+        "swapDelayFrames": 7,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 25,
+        "swapDelayFrames": 0,
+        "exited": true,
+        "deaths": 0,
+        "frames": 312
+      },
+      {
+        "releaseRunupFrames": 25,
+        "swapDelayFrames": 1,
+        "exited": true,
+        "deaths": 0,
+        "frames": 316
+      },
+      {
+        "releaseRunupFrames": 25,
+        "swapDelayFrames": 2,
+        "exited": true,
+        "deaths": 0,
+        "frames": 322
+      },
+      {
+        "releaseRunupFrames": 25,
+        "swapDelayFrames": 3,
+        "exited": true,
+        "deaths": 0,
+        "frames": 328
+      },
+      {
+        "releaseRunupFrames": 25,
+        "swapDelayFrames": 4,
+        "exited": true,
+        "deaths": 0,
+        "frames": 332
+      },
+      {
+        "releaseRunupFrames": 25,
+        "swapDelayFrames": 5,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 25,
+        "swapDelayFrames": 6,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 25,
+        "swapDelayFrames": 7,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 26,
+        "swapDelayFrames": 0,
+        "exited": true,
+        "deaths": 0,
+        "frames": 324
+      },
+      {
+        "releaseRunupFrames": 26,
+        "swapDelayFrames": 1,
+        "exited": true,
+        "deaths": 0,
+        "frames": 329
+      },
+      {
+        "releaseRunupFrames": 26,
+        "swapDelayFrames": 2,
+        "exited": true,
+        "deaths": 0,
+        "frames": 333
+      },
+      {
+        "releaseRunupFrames": 26,
+        "swapDelayFrames": 3,
+        "exited": true,
+        "deaths": 0,
+        "frames": 339
+      },
+      {
+        "releaseRunupFrames": 26,
+        "swapDelayFrames": 4,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 26,
+        "swapDelayFrames": 5,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 26,
+        "swapDelayFrames": 6,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 26,
+        "swapDelayFrames": 7,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 27,
+        "swapDelayFrames": 0,
+        "exited": true,
+        "deaths": 0,
+        "frames": 331
+      },
+      {
+        "releaseRunupFrames": 27,
+        "swapDelayFrames": 1,
+        "exited": true,
+        "deaths": 0,
+        "frames": 336
+      },
+      {
+        "releaseRunupFrames": 27,
+        "swapDelayFrames": 2,
+        "exited": true,
+        "deaths": 0,
+        "frames": 341
+      },
+      {
+        "releaseRunupFrames": 27,
+        "swapDelayFrames": 3,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 27,
+        "swapDelayFrames": 4,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 27,
+        "swapDelayFrames": 5,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 27,
+        "swapDelayFrames": 6,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 27,
+        "swapDelayFrames": 7,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 28,
+        "swapDelayFrames": 0,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 28,
+        "swapDelayFrames": 1,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 28,
+        "swapDelayFrames": 2,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 28,
+        "swapDelayFrames": 3,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 28,
+        "swapDelayFrames": 4,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 28,
+        "swapDelayFrames": 5,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 28,
+        "swapDelayFrames": 6,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      },
+      {
+        "releaseRunupFrames": 28,
+        "swapDelayFrames": 7,
+        "exited": false,
+        "deaths": 2,
+        "frames": 0
+      }
+    ]
+  },
+  "reelVariations": [
+    {
+      "reelFrames": 1,
+      "exited": true,
+      "deaths": 0,
+      "frames": 308
+    },
+    {
+      "reelFrames": 2,
+      "exited": true,
+      "deaths": 0,
+      "frames": 302
+    },
+    {
+      "reelFrames": 3,
+      "exited": true,
+      "deaths": 0,
+      "frames": 303
+    },
+    {
+      "reelFrames": 4,
+      "exited": true,
+      "deaths": 0,
+      "frames": 305
+    },
+    {
+      "reelFrames": 5,
+      "exited": true,
+      "deaths": 0,
+      "frames": 314
+    },
+    {
+      "reelFrames": 6,
+      "exited": true,
+      "deaths": 0,
+      "frames": 323
+    },
+    {
+      "reelFrames": 7,
+      "exited": true,
+      "deaths": 0,
+      "frames": 340
+    }
+  ],
+  "shortcutChecks": [
+    {
+      "name": "Settle the rope, swap onto the perch, then attempt an ordinary jump",
+      "tape": [
+        [
+          5,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          15,
+          "r"
+        ],
+        [
+          15,
+          ""
+        ],
+        [
+          1,
+          "q"
+        ],
+        [
+          14,
+          "l"
+        ],
+        [
+          35,
+          ""
+        ],
+        [
+          16,
+          "r"
+        ],
+        [
+          18,
+          "rjg"
+        ],
+        [
+          15,
+          "rg"
+        ],
+        [
+          32,
+          "rdg"
+        ],
+        [
+          12,
+          "lug"
+        ],
+        [
+          8,
+          "lg"
+        ],
+        [
+          20,
+          "rg"
+        ],
+        [
+          90,
+          "ug"
+        ],
+        [
+          1,
+          ""
+        ],
+        [
+          1,
+          "q"
+        ],
+        [
+          30,
+          ""
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          100,
+          "r"
+        ]
+      ],
+      "after": {
+        "exited": false,
+        "deaths": 1,
+        "firstFailure": {
+          "type": "death",
+          "frame": 385,
+          "x": 150,
+          "y": 97,
+          "cause": "light",
+          "vx": 90,
+          "vy": 160,
+          "i": 384
+        }
+      }
+    },
+    {
+      "name": "Skip placing the upper echo",
+      "tape": [
+        [
+          5,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          15,
+          "r"
+        ],
+        [
+          15,
+          ""
+        ],
+        [
+          1,
+          ""
+        ],
+        [
+          14,
+          "l"
+        ],
+        [
+          35,
+          ""
+        ],
+        [
+          16,
+          "r"
+        ],
+        [
+          18,
+          "rjg"
+        ],
+        [
+          15,
+          "rg"
+        ],
+        [
+          32,
+          "rdg"
+        ],
+        [
+          12,
+          "lug"
+        ],
+        [
+          8,
+          "lg"
+        ],
+        [
+          20,
+          "rg"
+        ],
+        [
+          25,
+          "rg"
+        ],
+        [
+          4,
+          "rug"
+        ],
+        [
+          1,
+          "rj"
+        ],
+        [
+          1,
+          "rq"
+        ],
+        [
+          110,
+          "r"
+        ]
+      ],
+      "after": {
+        "exited": false,
+        "deaths": 1,
+        "firstFailure": {
+          "type": "death",
+          "frame": 304,
+          "x": 308,
+          "y": 179,
+          "cause": "spikes",
+          "vx": 10.833333333333334,
+          "vy": 60.83333333333333,
+          "i": 303
+        }
+      }
+    }
+  ]
+}

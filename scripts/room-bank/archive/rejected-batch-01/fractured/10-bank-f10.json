@@ -1,0 +1,136 @@
+{
+  "room": {
+    "id": "bank-f10",
+    "name": "Parcel at Speed",
+    "palette": "fractured",
+    "lock": [
+      "strike",
+      "portal",
+      "parry"
+    ],
+    "exit": "right",
+    "stepRelays": [
+      {
+        "id": "A",
+        "duration": 75,
+        "platforms": [
+          {
+            "c": 12,
+            "r": 17,
+            "w": 6,
+            "h": 1,
+            "to": [
+              12,
+              0
+            ]
+          }
+        ]
+      }
+    ],
+    "hint": "Land to send the parcel right. Jump with its speed, touch the tiny spring berth, then dash from the rebound to the upper window.",
+    "question": "Can one moving deck carry you far enough without carrying you all the way?",
+    "map": [
+      "########################################",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#....................................s.#",
+      "#...................................<###",
+      "#...................................<###",
+      "#...................................<###",
+      "#...................................<###",
+      "#...................................<###",
+      "#..P................................<###",
+      "######..............................<###",
+      "######..............................<###",
+      "######..............................<###",
+      "######^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^###",
+      "########################################"
+    ],
+    "study": true
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 1,
+    "difficulty": 4,
+    "role": "combination",
+    "worlds": [
+      24,
+      31
+    ],
+    "tags": [
+      "step-relay",
+      "horizontal-lift",
+      "spring",
+      "momentum"
+    ],
+    "newMechanics": [
+      "step-relay"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "step-relay",
+      "spring"
+    ],
+    "solution": "Land on the parcel shuttle and exploit its sideways speed to jump onto the narrow spring berth. The spring refunds the dash and height for the high exit; the thorned face forbids climbing there.",
+    "entrance": "left floor at 18",
+    "exit": "right high window",
+    "proof": {
+      "frames": 157,
+      "deaths": 0,
+      "events": [
+        "dash",
+        "super",
+        "step-relay",
+        "land",
+        "refill-dash",
+        "jump",
+        "spring",
+        "exit"
+      ],
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  "tape": [
+    [
+      5,
+      "rx"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      60,
+      ""
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      2,
+      "rux"
+    ],
+    [
+      40,
+      "ru"
+    ],
+    [
+      6,
+      "r"
+    ]
+  ]
+}

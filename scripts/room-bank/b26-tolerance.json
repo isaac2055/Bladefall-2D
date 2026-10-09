@@ -1,0 +1,1318 @@
+{
+  "roomId": "bank-b26",
+  "description": "B26 revised uppercut/pogo positive timing evidence. Every case starts from the unmodified room spawn and finishes the full stone/shade return puzzle. Failed outer samples are included honestly.",
+  "baselineTape": [
+    [
+      6,
+      "j"
+    ],
+    [
+      12,
+      "rx"
+    ],
+    [
+      50,
+      ""
+    ],
+    [
+      67,
+      "r"
+    ],
+    [
+      5,
+      "us"
+    ],
+    [
+      50,
+      ""
+    ],
+    [
+      40,
+      "j"
+    ],
+    [
+      5,
+      ""
+    ],
+    [
+      16,
+      "j"
+    ],
+    [
+      5,
+      "ds"
+    ],
+    [
+      16,
+      ""
+    ],
+    [
+      5,
+      "ux"
+    ],
+    [
+      35,
+      ""
+    ],
+    [
+      60,
+      "r"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      10,
+      "dx"
+    ],
+    [
+      38,
+      "r"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      1,
+      "dj"
+    ],
+    [
+      72,
+      "r"
+    ]
+  ],
+  "indices": {
+    "catchWait": 5,
+    "cut": 8,
+    "dash": 10,
+    "pauseInsertAt": 4
+  },
+  "probes": [
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 509
+    },
+    {
+      "pause": 15,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 524
+    },
+    {
+      "pause": 30,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 539
+    },
+    {
+      "pause": 45,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 554
+    },
+    {
+      "pause": 60,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 569
+    },
+    {
+      "pause": 75,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 584
+    },
+    {
+      "pause": 90,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 599
+    },
+    {
+      "pause": 105,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 614
+    },
+    {
+      "pause": 120,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 629
+    },
+    {
+      "pause": 135,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 644
+    },
+    {
+      "pause": 150,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 659
+    },
+    {
+      "pause": 165,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 674
+    },
+    {
+      "pause": 180,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 689
+    },
+    {
+      "pause": 0,
+      "catchWait": 0,
+      "cut": 16,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 459
+    },
+    {
+      "pause": 0,
+      "catchWait": 15,
+      "cut": 16,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 474
+    },
+    {
+      "pause": 0,
+      "catchWait": 30,
+      "cut": 16,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 489
+    },
+    {
+      "pause": 0,
+      "catchWait": 45,
+      "cut": 16,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 504
+    },
+    {
+      "pause": 0,
+      "catchWait": 60,
+      "cut": 16,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 519
+    },
+    {
+      "pause": 0,
+      "catchWait": 75,
+      "cut": 16,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 534
+    },
+    {
+      "pause": 0,
+      "catchWait": 90,
+      "cut": 16,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 549
+    },
+    {
+      "pause": 0,
+      "catchWait": 105,
+      "cut": 16,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 564
+    },
+    {
+      "pause": 0,
+      "catchWait": 120,
+      "cut": 16,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 579
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 8,
+      "dash": 16,
+      "exited": false,
+      "deaths": 1,
+      "frames": 0
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 9,
+      "dash": 16,
+      "exited": false,
+      "deaths": 1,
+      "frames": 0
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 10,
+      "dash": 16,
+      "exited": false,
+      "deaths": 1,
+      "frames": 0
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 11,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 504
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 12,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 505
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 13,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 506
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 14,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 507
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 15,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 508
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 509
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 17,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 510
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 18,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 511
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 19,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 512
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 20,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 513
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 21,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 514
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 22,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 515
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 23,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 516
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 24,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 517
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 25,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 518
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 26,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 519
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 27,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 520
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 28,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 521
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 29,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 522
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 30,
+      "dash": 16,
+      "exited": false,
+      "deaths": 1,
+      "frames": 0
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 31,
+      "dash": 16,
+      "exited": false,
+      "deaths": 1,
+      "frames": 0
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 32,
+      "dash": 16,
+      "exited": false,
+      "deaths": 1,
+      "frames": 0
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 33,
+      "dash": 16,
+      "exited": false,
+      "deaths": 1,
+      "frames": 0
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 34,
+      "dash": 16,
+      "exited": false,
+      "deaths": 1,
+      "frames": 0
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 35,
+      "dash": 16,
+      "exited": false,
+      "deaths": 1,
+      "frames": 0
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 5,
+      "exited": false,
+      "deaths": 1,
+      "frames": 0
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 6,
+      "exited": false,
+      "deaths": 1,
+      "frames": 0
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 7,
+      "exited": false,
+      "deaths": 1,
+      "frames": 0
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 8,
+      "exited": false,
+      "deaths": 1,
+      "frames": 0
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 9,
+      "exited": false,
+      "deaths": 1,
+      "frames": 0
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 10,
+      "exited": false,
+      "deaths": 1,
+      "frames": 0
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 11,
+      "exited": true,
+      "deaths": 0,
+      "frames": 504
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 12,
+      "exited": true,
+      "deaths": 0,
+      "frames": 505
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 13,
+      "exited": true,
+      "deaths": 0,
+      "frames": 506
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 14,
+      "exited": true,
+      "deaths": 0,
+      "frames": 507
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 15,
+      "exited": true,
+      "deaths": 0,
+      "frames": 508
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 16,
+      "exited": true,
+      "deaths": 0,
+      "frames": 509
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 17,
+      "exited": true,
+      "deaths": 0,
+      "frames": 510
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 18,
+      "exited": true,
+      "deaths": 0,
+      "frames": 511
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 19,
+      "exited": true,
+      "deaths": 0,
+      "frames": 512
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 20,
+      "exited": true,
+      "deaths": 0,
+      "frames": 513
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 21,
+      "exited": true,
+      "deaths": 0,
+      "frames": 514
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 22,
+      "exited": true,
+      "deaths": 0,
+      "frames": 515
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 23,
+      "exited": true,
+      "deaths": 0,
+      "frames": 516
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 24,
+      "exited": true,
+      "deaths": 0,
+      "frames": 517
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 25,
+      "exited": true,
+      "deaths": 0,
+      "frames": 518
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 26,
+      "exited": true,
+      "deaths": 0,
+      "frames": 519
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 27,
+      "exited": true,
+      "deaths": 0,
+      "frames": 520
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 28,
+      "exited": true,
+      "deaths": 0,
+      "frames": 521
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 29,
+      "exited": false,
+      "deaths": 1,
+      "frames": 0
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 16,
+      "dash": 30,
+      "exited": false,
+      "deaths": 1,
+      "frames": 0
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 14,
+      "dash": 15,
+      "exited": true,
+      "deaths": 0,
+      "frames": 506
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 14,
+      "dash": 18,
+      "exited": true,
+      "deaths": 0,
+      "frames": 509
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 14,
+      "dash": 21,
+      "exited": true,
+      "deaths": 0,
+      "frames": 512
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 14,
+      "dash": 24,
+      "exited": true,
+      "deaths": 0,
+      "frames": 515
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 17,
+      "dash": 15,
+      "exited": true,
+      "deaths": 0,
+      "frames": 509
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 17,
+      "dash": 18,
+      "exited": true,
+      "deaths": 0,
+      "frames": 512
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 17,
+      "dash": 21,
+      "exited": true,
+      "deaths": 0,
+      "frames": 515
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 17,
+      "dash": 24,
+      "exited": true,
+      "deaths": 0,
+      "frames": 518
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 20,
+      "dash": 15,
+      "exited": true,
+      "deaths": 0,
+      "frames": 512
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 20,
+      "dash": 18,
+      "exited": true,
+      "deaths": 0,
+      "frames": 515
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 20,
+      "dash": 21,
+      "exited": true,
+      "deaths": 0,
+      "frames": 518
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 20,
+      "dash": 24,
+      "exited": true,
+      "deaths": 0,
+      "frames": 521
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 23,
+      "dash": 15,
+      "exited": true,
+      "deaths": 0,
+      "frames": 515
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 23,
+      "dash": 18,
+      "exited": true,
+      "deaths": 0,
+      "frames": 518
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 23,
+      "dash": 21,
+      "exited": true,
+      "deaths": 0,
+      "frames": 521
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 23,
+      "dash": 24,
+      "exited": true,
+      "deaths": 0,
+      "frames": 524
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 26,
+      "dash": 15,
+      "exited": true,
+      "deaths": 0,
+      "frames": 518
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 26,
+      "dash": 18,
+      "exited": true,
+      "deaths": 0,
+      "frames": 521
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 26,
+      "dash": 21,
+      "exited": true,
+      "deaths": 0,
+      "frames": 524
+    },
+    {
+      "pause": 0,
+      "catchWait": 50,
+      "cut": 26,
+      "dash": 24,
+      "exited": true,
+      "deaths": 0,
+      "frames": 527
+    },
+    {
+      "pause": 60,
+      "catchWait": 50,
+      "cut": 14,
+      "dash": 15,
+      "exited": true,
+      "deaths": 0,
+      "frames": 566
+    },
+    {
+      "pause": 60,
+      "catchWait": 50,
+      "cut": 14,
+      "dash": 18,
+      "exited": true,
+      "deaths": 0,
+      "frames": 569
+    },
+    {
+      "pause": 60,
+      "catchWait": 50,
+      "cut": 14,
+      "dash": 21,
+      "exited": true,
+      "deaths": 0,
+      "frames": 572
+    },
+    {
+      "pause": 60,
+      "catchWait": 50,
+      "cut": 14,
+      "dash": 24,
+      "exited": true,
+      "deaths": 0,
+      "frames": 575
+    },
+    {
+      "pause": 60,
+      "catchWait": 50,
+      "cut": 17,
+      "dash": 15,
+      "exited": true,
+      "deaths": 0,
+      "frames": 569
+    },
+    {
+      "pause": 60,
+      "catchWait": 50,
+      "cut": 17,
+      "dash": 18,
+      "exited": true,
+      "deaths": 0,
+      "frames": 572
+    },
+    {
+      "pause": 60,
+      "catchWait": 50,
+      "cut": 17,
+      "dash": 21,
+      "exited": true,
+      "deaths": 0,
+      "frames": 575
+    },
+    {
+      "pause": 60,
+      "catchWait": 50,
+      "cut": 17,
+      "dash": 24,
+      "exited": true,
+      "deaths": 0,
+      "frames": 578
+    },
+    {
+      "pause": 60,
+      "catchWait": 50,
+      "cut": 20,
+      "dash": 15,
+      "exited": true,
+      "deaths": 0,
+      "frames": 572
+    },
+    {
+      "pause": 60,
+      "catchWait": 50,
+      "cut": 20,
+      "dash": 18,
+      "exited": true,
+      "deaths": 0,
+      "frames": 575
+    },
+    {
+      "pause": 60,
+      "catchWait": 50,
+      "cut": 20,
+      "dash": 21,
+      "exited": true,
+      "deaths": 0,
+      "frames": 578
+    },
+    {
+      "pause": 60,
+      "catchWait": 50,
+      "cut": 20,
+      "dash": 24,
+      "exited": true,
+      "deaths": 0,
+      "frames": 581
+    },
+    {
+      "pause": 60,
+      "catchWait": 50,
+      "cut": 23,
+      "dash": 15,
+      "exited": true,
+      "deaths": 0,
+      "frames": 575
+    },
+    {
+      "pause": 60,
+      "catchWait": 50,
+      "cut": 23,
+      "dash": 18,
+      "exited": true,
+      "deaths": 0,
+      "frames": 578
+    },
+    {
+      "pause": 60,
+      "catchWait": 50,
+      "cut": 23,
+      "dash": 21,
+      "exited": true,
+      "deaths": 0,
+      "frames": 581
+    },
+    {
+      "pause": 60,
+      "catchWait": 50,
+      "cut": 23,
+      "dash": 24,
+      "exited": true,
+      "deaths": 0,
+      "frames": 584
+    },
+    {
+      "pause": 60,
+      "catchWait": 50,
+      "cut": 26,
+      "dash": 15,
+      "exited": true,
+      "deaths": 0,
+      "frames": 578
+    },
+    {
+      "pause": 60,
+      "catchWait": 50,
+      "cut": 26,
+      "dash": 18,
+      "exited": true,
+      "deaths": 0,
+      "frames": 581
+    },
+    {
+      "pause": 60,
+      "catchWait": 50,
+      "cut": 26,
+      "dash": 21,
+      "exited": true,
+      "deaths": 0,
+      "frames": 584
+    },
+    {
+      "pause": 60,
+      "catchWait": 50,
+      "cut": 26,
+      "dash": 24,
+      "exited": true,
+      "deaths": 0,
+      "frames": 587
+    },
+    {
+      "pause": 120,
+      "catchWait": 50,
+      "cut": 14,
+      "dash": 15,
+      "exited": true,
+      "deaths": 0,
+      "frames": 626
+    },
+    {
+      "pause": 120,
+      "catchWait": 50,
+      "cut": 14,
+      "dash": 18,
+      "exited": true,
+      "deaths": 0,
+      "frames": 629
+    },
+    {
+      "pause": 120,
+      "catchWait": 50,
+      "cut": 14,
+      "dash": 21,
+      "exited": true,
+      "deaths": 0,
+      "frames": 632
+    },
+    {
+      "pause": 120,
+      "catchWait": 50,
+      "cut": 14,
+      "dash": 24,
+      "exited": true,
+      "deaths": 0,
+      "frames": 635
+    },
+    {
+      "pause": 120,
+      "catchWait": 50,
+      "cut": 17,
+      "dash": 15,
+      "exited": true,
+      "deaths": 0,
+      "frames": 629
+    },
+    {
+      "pause": 120,
+      "catchWait": 50,
+      "cut": 17,
+      "dash": 18,
+      "exited": true,
+      "deaths": 0,
+      "frames": 632
+    },
+    {
+      "pause": 120,
+      "catchWait": 50,
+      "cut": 17,
+      "dash": 21,
+      "exited": true,
+      "deaths": 0,
+      "frames": 635
+    },
+    {
+      "pause": 120,
+      "catchWait": 50,
+      "cut": 17,
+      "dash": 24,
+      "exited": true,
+      "deaths": 0,
+      "frames": 638
+    },
+    {
+      "pause": 120,
+      "catchWait": 50,
+      "cut": 20,
+      "dash": 15,
+      "exited": true,
+      "deaths": 0,
+      "frames": 632
+    },
+    {
+      "pause": 120,
+      "catchWait": 50,
+      "cut": 20,
+      "dash": 18,
+      "exited": true,
+      "deaths": 0,
+      "frames": 635
+    },
+    {
+      "pause": 120,
+      "catchWait": 50,
+      "cut": 20,
+      "dash": 21,
+      "exited": true,
+      "deaths": 0,
+      "frames": 638
+    },
+    {
+      "pause": 120,
+      "catchWait": 50,
+      "cut": 20,
+      "dash": 24,
+      "exited": true,
+      "deaths": 0,
+      "frames": 641
+    },
+    {
+      "pause": 120,
+      "catchWait": 50,
+      "cut": 23,
+      "dash": 15,
+      "exited": true,
+      "deaths": 0,
+      "frames": 635
+    },
+    {
+      "pause": 120,
+      "catchWait": 50,
+      "cut": 23,
+      "dash": 18,
+      "exited": true,
+      "deaths": 0,
+      "frames": 638
+    },
+    {
+      "pause": 120,
+      "catchWait": 50,
+      "cut": 23,
+      "dash": 21,
+      "exited": true,
+      "deaths": 0,
+      "frames": 641
+    },
+    {
+      "pause": 120,
+      "catchWait": 50,
+      "cut": 23,
+      "dash": 24,
+      "exited": true,
+      "deaths": 0,
+      "frames": 644
+    },
+    {
+      "pause": 120,
+      "catchWait": 50,
+      "cut": 26,
+      "dash": 15,
+      "exited": true,
+      "deaths": 0,
+      "frames": 638
+    },
+    {
+      "pause": 120,
+      "catchWait": 50,
+      "cut": 26,
+      "dash": 18,
+      "exited": true,
+      "deaths": 0,
+      "frames": 641
+    },
+    {
+      "pause": 120,
+      "catchWait": 50,
+      "cut": 26,
+      "dash": 21,
+      "exited": true,
+      "deaths": 0,
+      "frames": 644
+    },
+    {
+      "pause": 120,
+      "catchWait": 50,
+      "cut": 26,
+      "dash": 24,
+      "exited": true,
+      "deaths": 0,
+      "frames": 647
+    }
+  ]
+}

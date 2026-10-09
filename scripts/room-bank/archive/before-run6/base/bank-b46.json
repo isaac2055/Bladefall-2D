@@ -1,0 +1,319 @@
+{
+  "room": {
+    "id": "bank-b46",
+    "name": "Let the Train Go Low",
+    "palette": "foundry",
+    "study": true,
+    "dashes": 0,
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "map": [
+      "########################################",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#........................#...........cG.",
+      "#................f.......#....##########",
+      "#......................--#....##########",
+      "#.............................##########",
+      "#.....P.......................##########",
+      "#...CCCCC.....................##########",
+      "#---------)-k.................##########",
+      "#...........................############",
+      "#...........................############",
+      "#............--------------.############",
+      "#^^^^^^^^^^^^^^^^^^^........############",
+      "########################################"
+    ],
+    "hint": "Jump before the fork; an empty train stays low. The feather can finish your flight.",
+    "question": "Which branch should the train take when its rider can choose a different flight?",
+    "beams": [
+      {
+        "c": 27,
+        "r": 22,
+        "dir": "u"
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 11,
+    "run": 5,
+    "collection": "run5",
+    "format": "compact",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "difficulty": 3,
+    "role": "Choose a different track for the vehicle and its rider",
+    "worlds": [
+      12,
+      16,
+      20
+    ],
+    "tags": [
+      "cart",
+      "track-fork",
+      "feather",
+      "beam",
+      "separate-routes"
+    ],
+    "newMechanics": [],
+    "author": "Codex",
+    "humanReview": "Unmeasured; author estimate only.",
+    "requiredEvents": [
+      "boost",
+      "switch-low",
+      "feather-jump",
+      "stone-lit",
+      "gate-open"
+    ],
+    "solution": "Lean into the boost strip, then jump out before the brass fork. Without the rider leaning, the train takes the low track and parks across the upward beam. Take the feather and jump again to cross above the high stop, then land on the broad exit shelf and collect its tally. Keeping the knight in the train sends it onto the high branch instead; jumping before the boost loses the required transfer speed.",
+    "nearestExisting": "F18 uses one cart for speed and a later shadow; B15 separates a knight and a useful object. Here the branch itself asks you to leave the vehicle: its low destination supplies shade while the knight takes the feather route above.",
+    "novelty": "The normally helpful high-track switch is the wrong destination for the vehicle: the knight deliberately parts from the cart so it supplies shade below the feather flight.",
+    "approvedIngredients": [
+      "bank-f18",
+      "bank-b15"
+    ],
+    "positiveChecks": [
+      {
+        "name": "Leave cart one beat later",
+        "tape": [
+          [
+            18,
+            "r"
+          ],
+          [
+            14,
+            "rj"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0
+        }
+      },
+      {
+        "name": "Feather jump two frames sooner",
+        "tape": [
+          [
+            17,
+            "r"
+          ],
+          [
+            13,
+            "rj"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            27,
+            "rj"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0
+        }
+      },
+      {
+        "name": "Feather jump two frames later",
+        "tape": [
+          [
+            17,
+            "r"
+          ],
+          [
+            17,
+            "rj"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            23,
+            "rj"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Keep driving onto high line",
+        "tape": [
+          [
+            45,
+            "r"
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            70,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0
+        }
+      },
+      {
+        "name": "Abandon cart before boost",
+        "tape": [
+          [
+            12,
+            "r"
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0
+        }
+      },
+      {
+        "name": "Skip feather jump",
+        "tape": [
+          [
+            17,
+            "r"
+          ],
+          [
+            15,
+            "rj"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0
+        }
+      }
+    ],
+    "route": {
+      "frames": 93,
+      "deaths": 0,
+      "events": [
+        "boost",
+        "jump",
+        "switch-low",
+        "feather",
+        "feather-jump",
+        "cart-land",
+        "cart-bump",
+        "stone-lit",
+        "gate-open",
+        "land",
+        "exit"
+      ],
+      "eventCounts": {
+        "boost": 1,
+        "jump": 2,
+        "switch-low": 1,
+        "feather": 1,
+        "feather-jump": 1,
+        "cart-land": 1,
+        "cart-bump": 1,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "land": 1,
+        "exit": 1
+      },
+      "movement": "Ordinary movement and device momentum; no advanced dash tech."
+    },
+    "designNotes": "The five-tile train gives a broad physical beam shadow. The feather transfer has saved earlier/later inputs, and the tally is on the arrival shelf rather than floating in a narrow flight path. No event receipts govern the gate."
+  },
+  "tape": [
+    [
+      17,
+      "r"
+    ],
+    [
+      15,
+      "rj"
+    ],
+    [
+      1,
+      "r"
+    ],
+    [
+      25,
+      "rj"
+    ],
+    [
+      80,
+      "r"
+    ]
+  ]
+}

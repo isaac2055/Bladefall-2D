@@ -1,0 +1,262 @@
+{
+  "room": {
+    "id": "bank-f11",
+    "name": "Inside the Elbow",
+    "palette": "sunspire",
+    "study": true,
+    "exit": "right",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "hint": "Strike a brass hub to turn its arm clockwise. A blocked destination cannot turn.",
+    "hingeArms": [
+      {
+        "id": "A",
+        "c": 14,
+        "r": 13,
+        "length": 7,
+        "dir": "left"
+      },
+      {
+        "id": "B",
+        "c": 20,
+        "r": 6,
+        "length": 8,
+        "dir": "down"
+      }
+    ],
+    "beams": [
+      {
+        "c": 28,
+        "r": 11,
+        "dir": "l"
+      }
+    ],
+    "question": "The upper arm opens the sunlight, but the lower arm is your only way back to it. What must each be when you return?",
+    "map": [
+      "########################################",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#.............................##########",
+      "###..........................<##########",
+      "#c...........................<##########",
+      "###.P........................<##########",
+      "########.....................<##########",
+      "########.....................<##########",
+      "########.....................<##########",
+      "########....##...............<##########",
+      "###.####.....................<##########",
+      "########.....................<##########",
+      "########.....................<##########",
+      "########.....................<##########",
+      "########^^^^^^^^^^^^^^^^^^^^^^##########",
+      "########################################"
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 2,
+    "difficulty": 5,
+    "role": "puzzle",
+    "worlds": [
+      31,
+      39
+    ],
+    "tags": [
+      "hinge-arm",
+      "beam",
+      "return-route",
+      "wallbounce",
+      "persistent-state"
+    ],
+    "newMechanics": [
+      "hinge-arm"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "hinge-turn",
+      "stone-lit"
+    ],
+    "solution": "Turn A from left to up to make the approach wall. Reach B and turn it left: B now supplies the high bridge and clears the destination of A’s right pose. Return to A and turn it right, opening sunlight to the sealed western tally. Cycle A through down and left back to up so its wall shades the ascent again. Revisit B’s high bridge and jump/dash to the east gate. A is approach, shutter and restored return wall; B must be changed before A can open the light. On the final ascent B is a roof instead of the former vertical wall: kick out around its western lip, dash back onto it, and use it as the departure bridge. The return therefore cannot repeat the outbound jump.",
+    "nearestExisting": "Precision p182 lights a tally and restores a safe beam path. Here the beam blockers are the actual access wall and departure bridge: A cannot turn right while B hangs down, and B becomes a roof over the return climb. The player must change both the machine order and their approach side.",
+    "entrance": "west covered ledge, 4/12",
+    "exit": "east high window, rows5–8",
+    "designNotes": "The beam is not a reaction timer: the knight chooses when the room changes. No hint supplies the order.",
+    "proof": {
+      "frames": 643,
+      "deaths": 0,
+      "events": [
+        "strike",
+        "hinge-turn",
+        "land",
+        "jump",
+        "grab",
+        "climbjump",
+        "stone-lit",
+        "gate-open",
+        "walljump",
+        "dash",
+        "refill-dash",
+        "exit"
+      ],
+      "hingeSequence": [
+        "A:up",
+        "B:left",
+        "A:right",
+        "A:down",
+        "A:left",
+        "A:up"
+      ],
+      "verifiedAt": "2026-10-07"
+    },
+    "requiredEventCounts": {
+      "hinge-turn": 6
+    }
+  },
+  "tape": [
+    [
+      49,
+      "r"
+    ],
+    [
+      1,
+      "s"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      12,
+      "j"
+    ],
+    [
+      65,
+      "rgu"
+    ],
+    [
+      12,
+      "rgj"
+    ],
+    [
+      16,
+      "r"
+    ],
+    [
+      30,
+      "rgu"
+    ],
+    [
+      10,
+      "rgj"
+    ],
+    [
+      3,
+      "r"
+    ],
+    [
+      1,
+      "ds"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      38,
+      "l"
+    ],
+    [
+      65,
+      ""
+    ],
+    [
+      5,
+      "r"
+    ],
+    [
+      5,
+      ""
+    ],
+    [
+      1,
+      "us"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      1,
+      "us"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      1,
+      "us"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      1,
+      "us"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      12,
+      "j"
+    ],
+    [
+      65,
+      "rgu"
+    ],
+    [
+      10,
+      "lj"
+    ],
+    [
+      6,
+      "rux"
+    ],
+    [
+      24,
+      "r"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      22,
+      "r"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      6,
+      "rx"
+    ],
+    [
+      90,
+      "r"
+    ]
+  ]
+}

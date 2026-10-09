@@ -1,0 +1,220 @@
+{
+  "room": {
+    "id": "bank-f06",
+    "name": "Backstay",
+    "palette": "fractured",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "exit": "right",
+    "slick": [
+      [
+        8,
+        1,
+        8,
+        21
+      ],
+      [
+        25,
+        4,
+        26,
+        21
+      ]
+    ],
+    "fault": {
+      "fuse": 24,
+      "spread": 5,
+      "rest": 150
+    },
+    "hint": "Bounce to the fault cup, then bounce off the stay. The upper arrow crystal only refills while moving left: retreat through it, then dash back right.",
+    "question": "Can the second wall become a launch point before it becomes an obstacle?",
+    "map": [
+      "########################################",
+      "#########...............................",
+      "#########...............................",
+      "#########...............................",
+      "#########................##.............",
+      "#########.............o..##.............",
+      "#########................##....<########",
+      "#########................##....<########",
+      "#########................##....<########",
+      "#########................##....<########",
+      "#########................##....<########",
+      "#########................##....<########",
+      "#########.........TTTT...##....<########",
+      "#########................##....<########",
+      "#########................##....<########",
+      "#########................##....<########",
+      "#########................##....<########",
+      "#########................##....<########",
+      "#########.P..............##....<########",
+      "##############...........##....<########",
+      "##############...........##....<########",
+      "##############^^^^^^^^^^^##^^^^^########",
+      "########################################"
+    ],
+    "study": true,
+    "vectorRefills": [
+      {
+        "c": 19,
+        "r": 2,
+        "dir": "left"
+      }
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 1,
+    "difficulty": 5,
+    "role": "combination",
+    "worlds": [
+      24,
+      27
+    ],
+    "tags": [
+      "wallbounce",
+      "slick",
+      "fault",
+      "refill",
+      "vector-refill",
+      "directional-refill"
+    ],
+    "newMechanics": [
+      "vector-refill"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "wallbounce",
+      "fault-crack",
+      "refill",
+      "vector-refill"
+    ],
+    "solution": "Wallbounce right from the starting shaft to the fault cup. Jump and dash up for the lower crystal, approach the tall stay, then wallbounce left. The higher crystal rewards that retreat with a final dash back across the stay to the exit. The upper crystal is leftward-only. The second wallbounce must carry you back through its arrow before reversing again for the right exit; approaching it from the starting side cannot fund the final dash.",
+    "entrance": "shaft floor at 19",
+    "exit": "right opening rows 1–5",
+    "requiredEventCounts": {
+      "wallbounce": 2,
+      "refill": 2
+    },
+    "vectorDesign": "The upper crystal is leftward-only. The second wallbounce must carry you back through its arrow before reversing again for the right exit; approaching it from the starting side cannot fund the final dash.",
+    "proof": {
+      "frames": 181,
+      "deaths": 0,
+      "events": [
+        "dash",
+        "wallbounce",
+        "fault-crack",
+        "land",
+        "refill-dash",
+        "jump",
+        "fault-fall",
+        "refill",
+        "vector-refill",
+        "ultra",
+        "hyper",
+        "exit"
+      ],
+      "eventCounts": {
+        "dash": 5,
+        "wallbounce": 2,
+        "fault-crack": 1,
+        "land": 2,
+        "refill-dash": 4,
+        "jump": 1,
+        "fault-fall": 4,
+        "refill": 2,
+        "vector-refill": 1,
+        "ultra": 1,
+        "hyper": 1,
+        "exit": 1
+      },
+      "vectorEntry": {
+        "dir": "left",
+        "vx": -90,
+        "vy": 30
+      },
+      "withoutVectorPickup": "same intended tape fails with one death",
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  "tape": [
+    [
+      8,
+      "l"
+    ],
+    [
+      9,
+      "ux"
+    ],
+    [
+      22,
+      "rj"
+    ],
+    [
+      20,
+      "r"
+    ],
+    [
+      8,
+      "rj"
+    ],
+    [
+      5,
+      "ux"
+    ],
+    [
+      9,
+      "r"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      4,
+      "rj"
+    ],
+    [
+      6,
+      "r"
+    ],
+    [
+      5,
+      "ux"
+    ],
+    [
+      4,
+      "j"
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      12,
+      "j"
+    ],
+    [
+      12,
+      "j"
+    ],
+    [
+      5,
+      "rdx"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      12,
+      "rj"
+    ]
+  ]
+}

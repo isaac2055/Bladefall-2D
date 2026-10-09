@@ -1,0 +1,142 @@
+{
+  "room": {
+    "id": "bank-b14",
+    "name": "The Upside Delivery",
+    "hint": "Purple glass turns gravity. Moving strips carry loose objects as well as you.",
+    "question": "The plate is below the far end of the roof. Where should the lantern begin?",
+    "map": [
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "############}}}}}}}}}}}}}}}}}}##########",
+      "#.........................Q....#vvvHvvv#",
+      "#.........................Q....#...H...#",
+      "#.........................Q....#...H...#",
+      "#....................##........#...H...#",
+      "#....................##........#...H...#",
+      "#....................##............H...#",
+      "#....................##............H...#",
+      "#....................##............H...#",
+      "#....................##............H....",
+      "#......Q.............##............H....",
+      "#......Q.............##............H....",
+      "#.P.l..Q.............##............H....",
+      "################.....##......#_#########",
+      "################.....##......###########",
+      "################.....##......###########",
+      "################^^^^^##^^^^^^###########",
+      "########################################"
+    ],
+    "palette": "inversion",
+    "study": true,
+    "lock": [
+      "strike",
+      "parry",
+      "portal"
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 2,
+    "difficulty": 3,
+    "role": "solve",
+    "worlds": [
+      11,
+      12
+    ],
+    "tags": [
+      "gravity",
+      "conveyor",
+      "remote-cargo",
+      "return-route"
+    ],
+    "newMechanics": [],
+    "entrance": "Lower left bank.",
+    "exit": "Lower right held door.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "pickup",
+      "throw",
+      "gravity",
+      "plate",
+      "held-open"
+    ],
+    "solution": "Carry the lantern from the safe alcove to a spot directly below the ceiling conveyor, set it down, and return to the low prism. Dash through the prism: the loose lantern rises onto the conveyor while you land on the underside of the roof. Let the belt carry it to the hanging stop. Approach the second prism from the left and dash through it to restore gravity; the lantern falls onto the far plate while you descend onto the receiving bank. Leaving it beneath plain ceiling returns it to the wrong bank.",
+    "nearestExisting": "i12-lock reverses gravity once to deposit a lantern on a ceiling plate; p110 Passenger sends it horizontally along a floor belt. Here the two reversals deliberately bracket a separate horizontal delivery, and the target plate remains on the original floor.",
+    "novelty": "The useful route belongs to the object, not the knight: up, sideways over the divider along the former ceiling, then down. The divider prevents a direct throw; restoring gravity early delivers the lantern to the wrong side instead of onto the plate.",
+    "requiredEventCounts": {
+      "gravity": 2
+    },
+    "route": {
+      "frames": 512,
+      "deaths": 0,
+      "events": [
+        "pickup",
+        "throw",
+        "lantern-land",
+        "dash",
+        "gravity",
+        "land",
+        "refill-dash",
+        "plate",
+        "held-open",
+        "exit"
+      ],
+      "movement": "Ordinary jump, dash, climb and device actions; no advanced momentum."
+    },
+    "acceptance": "banked",
+    "userFeedback": {
+      "date": "2026-10-07",
+      "comment": "Good base replacement, though not great; bank as is."
+    }
+  },
+  "tape": [
+    [
+      10,
+      "r"
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      52,
+      "r"
+    ],
+    [
+      1,
+      "dg"
+    ],
+    [
+      43,
+      "l"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      70,
+      ""
+    ],
+    [
+      120,
+      "r"
+    ],
+    [
+      100,
+      "l"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      125,
+      "r"
+    ]
+  ]
+}

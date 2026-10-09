@@ -20,6 +20,7 @@ function before(g,inp){const b=g.breathing;
  if(b){if(g.awake)b.t++;for(const w of g.winds||[]){const z=w.breath;if(!z)continue;const t=(b.t+z.offset)%b.period;z.phase=t<b.inhale?0:1;z.warning=z.phase===0?t>=b.inhale-27:t>=b.period-27;w.dy=z.phase===0?z.lift:120;}}
  const p=g.p;if(!g.slick||!p||p.state==='dead'||p.state==='respawn')return;
  const upDash=p.state==='dash'&&p.dashDir&&p.dashDir.x===0&&p.dashDir.y<0;
+ const lateBounce=p.state==='normal'&&p.move2?.wallGrace>0;
  // A knight who pressed into the polished wall just before the up-dash would otherwise get his push back the frame
  // after the wallbounce (the core's four-frame wall-speed retention) and be turned round into the wall.
  if(upDash&&(slickSide(g,p,-1,5)||slickSide(g,p,1,5)))p.retainTimer=0;
@@ -27,7 +28,7 @@ function before(g,inp){const b=g.breathing;
  if(inp)inp.grab=false;                       // nothing to hold
  if(p.state==='climb')p.state='normal';
  // no wall jump off it: only the jump that ends a straight-up dash (the wallbounce) pushes off
- if(g.buf&&g.buf.jump>0&&!p.onGround&&!(p.jumpGrace>0)&&!upDash)g.buf.jump=0;
+ if(g.buf&&g.buf.jump>0&&!p.onGround&&!(p.jumpGrace>0)&&!upDash&&!lateBounce)g.buf.jump=0;
 }
 (root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-f-updrafts',reset,before});
 })(typeof window!=='undefined'?window:globalThis);

@@ -1,0 +1,453 @@
+{
+  "room": {
+    "id": "bank-b59",
+    "name": "One Grip at a Time",
+    "palette": "woods",
+    "study": true,
+    "exit": "right",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "hint": "Hold one marked face until the opening comes. The upward crystal restores dash and stamina.",
+    "question": "Time a wall departure through a patrol, refill in air, and reach a fresh grip.",
+    "map": [
+      "########################################",
+      "#...........#>..........................",
+      "#...........#>..........................",
+      "#...........#>..........................",
+      "#...........#>..........................",
+      "#...........#>..........................",
+      "#...........#>..........................",
+      "#...........#>...........###############",
+      "#...........#>.........................#",
+      "#...........#>.........................#",
+      "#...........#>.........................#",
+      "#...........#>.........................#",
+      "#...........#>.........................#",
+      "#...........#>.........................#",
+      "#...........#>.........................#",
+      "#...........#>.........................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#................P.....................#",
+      "#^^^^^^^^^^^^^######^^^^^^^^^^^^^^^^^^^#",
+      "########################################"
+    ],
+    "spentThorns": [
+      {
+        "id": "First grip",
+        "c": 12,
+        "r": 16,
+        "w": 1,
+        "h": 13,
+        "face": "right"
+      },
+      {
+        "id": "Next grip",
+        "c": 25,
+        "r": 7,
+        "w": 1,
+        "h": 19,
+        "face": "left"
+      }
+    ],
+    "rows": 32,
+    "vectorRefills": [
+      {
+        "c": 19,
+        "r": 15,
+        "dir": "up"
+      }
+    ],
+    "sweepers": [
+      {
+        "id": "Crossing",
+        "path": [
+          [
+            20,
+            10
+          ],
+          [
+            20,
+            22
+          ]
+        ],
+        "period": 210,
+        "phase": 0,
+        "radius": 4
+      }
+    ],
+    "showHintAtRest": true
+  },
+  "tape": [
+    [
+      25,
+      "lgu"
+    ],
+    [
+      86,
+      "ug"
+    ],
+    [
+      16,
+      "rj"
+    ],
+    [
+      12,
+      "rux"
+    ],
+    [
+      32,
+      "rg"
+    ],
+    [
+      85,
+      "ug"
+    ],
+    [
+      12,
+      "ux"
+    ],
+    [
+      50,
+      "ug"
+    ],
+    [
+      100,
+      "r"
+    ]
+  ],
+  "bank": {
+    "side": "base",
+    "batch": 14,
+    "run": 7,
+    "collection": "run7",
+    "format": "compact",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "difficulty": 3,
+    "role": "Teach a wall-to-wall patrol crossing that carries restored dash and stamina into its continuation.",
+    "worlds": [],
+    "tags": [
+      "spent-wall",
+      "stamina",
+      "directional-refill",
+      "patrol-opening",
+      "teaching"
+    ],
+    "newMechanics": [
+      "departure-armed persistent surface"
+    ],
+    "author": "Codex",
+    "humanReview": "Unreviewed Run 7 candidate. Author difficulty is provisional; intended-route and bounded input evidence are not human feel ratings.",
+    "learningFamily": "spent-faces",
+    "lessonRole": "develop",
+    "preparesFor": [
+      "bank-f60"
+    ],
+    "prerequisites": [
+      "bank-b58"
+    ],
+    "timing": {
+      "kind": "stamina-limited wall hold plus vertical patrol",
+      "patrolPeriod": 210,
+      "warningFrames": 18,
+      "cue": "Leave the first grip while the patrol is below the airborne crystal."
+    },
+    "solution": "Walk off the small starting ledge and hold Grab toward the first marked wall. Climb until the upward crystal is within the coming jump-dash arc. Read the vertical patrol: when it is below the crossing, walljump right and dash up-right through the crystal. Catch the next fresh marked wall. Climb, then spend the restored dash straight upward alongside it and resume the grab to crest the receiving gallery. Each departed grip remains solid but its marked side closes behind you.",
+    "nearestExisting": "B58 introduces a spent top and changed return. F51 studies an approach-gated crystal in a portal/tally circuit. This lesson instead joins a finite grip, a visible patrol opening, an upward resource transfer and a second climb that spends the returned dash.",
+    "novelty": "Teach a wall-to-wall patrol crossing that carries restored dash and stamina into its continuation.",
+    "endingForgiveness": "The second climb still needs the returned dash. First departures three frames earlier and later and a three-frame earlier second boost finish cleanly; direct spawn-to-second-wall and no-crystal alternatives do not finish.",
+    "positiveChecks": [
+      {
+        "name": "First departure three frames earlier",
+        "tape": [
+          [
+            25,
+            "lgu"
+          ],
+          [
+            83,
+            "ug"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            32,
+            "rg"
+          ],
+          [
+            85,
+            "ug"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 388
+      },
+      {
+        "name": "First departure three frames later",
+        "tape": [
+          [
+            25,
+            "lgu"
+          ],
+          [
+            89,
+            "ug"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            32,
+            "rg"
+          ],
+          [
+            85,
+            "ug"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 394
+      },
+      {
+        "name": "Boost second climb three frames earlier",
+        "tape": [
+          [
+            25,
+            "lgu"
+          ],
+          [
+            86,
+            "ug"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            32,
+            "rg"
+          ],
+          [
+            82,
+            "ug"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 388
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Jump-dash directly from spawn to the second grip",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            170,
+            "rgu"
+          ],
+          [
+            40,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 2,
+        "frames": null
+      },
+      {
+        "name": "Cross without the airborne refill then try the climb",
+        "tape": [
+          [
+            25,
+            "lgu"
+          ],
+          [
+            86,
+            "ug"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            55,
+            "rg"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            140,
+            "ug"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 3,
+        "frames": null
+      }
+    ],
+    "requiredEvents": [
+      "spent-thorn-touch",
+      "spent-thorn-leave",
+      "spent-thorn-arm",
+      "walljump",
+      "vector-refill",
+      "climbhop"
+    ],
+    "requiredEventCounts": {
+      "spent-thorn-touch": 2,
+      "vector-refill": 1
+    },
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 391,
+      "events": [
+        "grab",
+        "spent-thorn-touch",
+        "walljump",
+        "spent-thorn-leave",
+        "dash",
+        "spent-thorn-arm",
+        "refill-dash",
+        "refill",
+        "vector-refill",
+        "climbhop",
+        "refill-back",
+        "land",
+        "exit"
+      ]
+    },
+    "designNotes": "Departure-thorn bodies remain solid. Only the visibly marked face arms after departure; continuous first contact is safe. Room completion uses ordinary physical geometry and visible tallies, with no hidden movement-event gate. The patrol clock begins with input and resets per attempt.",
+    "timingCues": [
+      "Leave the first grip while the patrol is below the airborne crystal.",
+      "Folded hairs mark a safe first contact; an amber warning after departure precedes the permanently red face."
+    ],
+    "routeMovement": [
+      {
+        "type": "walljump",
+        "frame": 113,
+        "x": 104,
+        "y": 174,
+        "dir": 1
+      },
+      {
+        "type": "dash",
+        "frame": 132,
+        "x": 134,
+        "y": 149,
+        "dx": 0.7071067811865475,
+        "dy": -0.7071067811865475
+      },
+      {
+        "type": "vector-refill",
+        "frame": 137,
+        "x": 156,
+        "y": 124,
+        "dx": 0,
+        "dy": -1,
+        "once": false
+      },
+      {
+        "type": "dash",
+        "frame": 262,
+        "x": 196,
+        "y": 95,
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "type": "climbhop",
+        "frame": 291
+      }
+    ]
+  }
+}

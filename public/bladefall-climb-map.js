@@ -276,6 +276,7 @@ function mount(host,opts={}){
  host.innerHTML=`<div class="cm-wrap">
   <div class="cm-tools">
     <select class="cm-b" data-cm="pick" aria-label="Show a region">${regions.map(n=>`<option value="${n}"${n===startN?' selected':''}>${n} · ${esc(nameOf(n))}</option>`).join('')}</select>
+    ${opts.onStart?'<button class="cm-b" id="cmPlayWorld">Play world</button>':''}
     <button class="cm-b" data-cm="me">Find me</button>
     <button class="cm-b" data-cm="all">Fit all</button>
     <button class="cm-b" data-cm="base">Emerald</button>
@@ -351,6 +352,7 @@ function mount(host,opts={}){
   const sealed=ms.filter(m=>!m.open).length;
   chipbar.innerHTML=`<b>${n} · ${esc(w?.name||nameOf(n))}</b> <small>· ${esc(state)}${pr?` · ${pr.solved}/${pr.total} sections`:''}${ms.length?` · ${ms.length-sealed} road${ms.length-sealed===1?'':'s'} open${sealed?`, ${sealed} sealed`:''}`:''}</small>`;
   detail.innerHTML=`<h2>${n} · ${esc(w?.name||nameOf(n))}${chips}</h2><div>${where}</div>${groups.length?groups.map(g=>`<h3>${esc(g.name)} · ${esc(roleWords[g.role])}</h3><ul>${g.list.map(li).join('')}</ul>`).join(''):'<div><small>No roads leave this region yet.</small></div>'}`;
+  const play=host.querySelector('#cmPlayWorld');if(play){const locked=opts.canStart&&!opts.canStart(n);play.disabled=!!locked;play.textContent=locked?'Locked':'Play world';play.title=locked?'Find this world’s base keepsake':'Play '+(w?.name||nameOf(n));play.setAttribute('aria-label',play.title);play.onclick=()=>opts.onStart(n);if(locked)detail.insertAdjacentHTML('beforeend','<p>Find this world’s base keepsake to unlock its Fractured echo.</p>');}
  }
  function select(n,pan=false){
   if(!regions.includes(n))return;model.selected=n;if(pick)pick.value=String(n);render();card(n);

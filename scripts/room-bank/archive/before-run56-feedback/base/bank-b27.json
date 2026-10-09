@@ -1,0 +1,280 @@
+{
+  "room": {
+    "id": "bank-b27",
+    "name": "The Shelter Wakes",
+    "palette": "combat",
+    "study": true,
+    "exit": "right",
+    "hint": "A charge breaks masonry. A dazed ram is solid and can take a downward cut; it wakes again.",
+    "question": "What can replace the shield after the charge breaks it?",
+    "map": [
+      "########################################",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>......................................",
+      "#>......................................",
+      "#>......................................",
+      "#>...............MMMMMMMMMMMMMMMMMMMMMMM",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#.....................................<#",
+      "#.........P...........................<#",
+      "########################################",
+      "########################################",
+      "########################################"
+    ],
+    "beams": [
+      {
+        "c": 37,
+        "r": 19,
+        "dir": "l"
+      }
+    ],
+    "foes": [
+      {
+        "kind": "ram",
+        "x": 32,
+        "y": 19,
+        "dir": -1,
+        "patrol": [
+          7,
+          37
+        ]
+      },
+      {
+        "kind": "husk",
+        "x": 22,
+        "y": 10,
+        "w": 1,
+        "h": 10
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 5,
+    "run": 1,
+    "acceptance": "banked",
+    "difficulty": 2,
+    "role": "early-introduction",
+    "worlds": [
+      4,
+      7,
+      19
+    ],
+    "tags": [
+      "ram",
+      "breach",
+      "temporary-shield",
+      "pogo",
+      "launch-window"
+    ],
+    "newMechanics": [],
+    "status": "route-proven",
+    "author": "Codex",
+    "entrance": "Lower observation bank.",
+    "exit": "High eastern one-way gallery.",
+    "solution": "Stand close enough to draw a charge into the masonry. The ram breaks the old beam shield and its dazed solid body replaces it. Jump toward the new shelter, cut downward into the ram before it wakes, and use that rise plus an upward dash to reach the high gallery. The old masonry blocks the approach; after recovery the exposed beam burns it.",
+    "nearestExisting": "fb4 Stepping Ram makes an enemy a step for a separate moth; fb5 Hunting Ground uses a charge to breach. Here the masonry and dazed ram exchange a necessary beam-shield role, with a blade interception before the replacement wakes.",
+    "novelty": "A hostile charge destroys the permanent safety barrier but immediately becomes its temporary replacement. The same short window grants safe access and a rebound, so waiting and approaching cannot be solved separately.",
+    "requiredEvents": [
+      "breach",
+      "enemy-pogo"
+    ],
+    "route": {
+      "frames": 205,
+      "deaths": 0,
+      "events": [
+        "enemy-tell",
+        "breach",
+        "enemy-hit",
+        "jump",
+        "strike",
+        "enemy-pogo",
+        "dash",
+        "land",
+        "refill-dash",
+        "exit"
+      ],
+      "movement": "Ordinary jump/dash/climb and blade; no super, hyper, ultra or wallbounce."
+    },
+    "shortcutChecks": [
+      {
+        "name": "No downward interception",
+        "tape": [
+          [
+            49,
+            "r"
+          ],
+          [
+            13,
+            ""
+          ],
+          [
+            13,
+            "rj"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            6,
+            ""
+          ],
+          [
+            5,
+            "ux"
+          ],
+          [
+            18,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "expect": "no-exit",
+        "observed": "The ordinary jump and upward dash peak below the gallery; the returning fall crosses the beam. One death, no exit."
+      },
+      {
+        "name": "Wait for the shelter to wake",
+        "tape": [
+          [
+            49,
+            "r"
+          ],
+          [
+            113,
+            ""
+          ],
+          [
+            13,
+            "rj"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            6,
+            ""
+          ],
+          [
+            5,
+            "ux"
+          ],
+          [
+            18,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "expect": "no-exit",
+        "observed": "The ram becomes non-solid again on frame 152; the beam reaches the approach and kills the waiting knight."
+      },
+      {
+        "name": "Climb the original masonry",
+        "tape": [
+          [
+            10,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            24,
+            "rg"
+          ],
+          [
+            10,
+            "ug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            5,
+            "ux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "expect": "no-exit",
+        "observed": "The lure triggers before the climb can reach the top. The charge removes the wall; even the accidental wallbounce does not reach the gallery."
+      }
+    ],
+    "humanReview": "Suitable for early Base material; pretty but easy and gimmicky.",
+    "review": {
+      "decision": "banked",
+      "date": "2026-10-08",
+      "feedback": "Suitable for early Base material; pretty but easy and gimmicky.",
+      "numericRatings": "Not supplied"
+    },
+    "estimateNote": "Author estimate adjusted to early/easy placement after qualitative user feedback; not a numeric user rating."
+  },
+  "tape": [
+    [
+      49,
+      "r"
+    ],
+    [
+      13,
+      ""
+    ],
+    [
+      13,
+      "rj"
+    ],
+    [
+      5,
+      "rds"
+    ],
+    [
+      12,
+      "r"
+    ],
+    [
+      6,
+      ""
+    ],
+    [
+      5,
+      "ux"
+    ],
+    [
+      18,
+      ""
+    ],
+    [
+      84,
+      "r"
+    ]
+  ]
+}

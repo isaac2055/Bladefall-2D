@@ -1,0 +1,1569 @@
+{
+  "room": {
+    "id": "bank-f46",
+    "name": "The Line Must Stay Open",
+    "palette": "throne",
+    "study": true,
+    "movement": "survive-2",
+    "aim8": true,
+    "cols": 96,
+    "rows": 30,
+    "exit": "right",
+    "lock": [
+      "parry"
+    ],
+    "echo": true,
+    "beams": [
+      {
+        "c": 50,
+        "r": 1,
+        "dir": "d"
+      },
+      {
+        "c": 80,
+        "r": 0,
+        "dir": "d"
+      },
+      {
+        "c": 81,
+        "r": 0,
+        "dir": "d"
+      },
+      {
+        "c": 65,
+        "r": 10,
+        "dir": "r"
+      }
+    ],
+    "movingHooks": [
+      {
+        "id": "ThroughLine",
+        "c": 12,
+        "r": 18,
+        "w": 3,
+        "h": 3,
+        "to": [
+          68,
+          -10
+        ],
+        "period": 1000
+      }
+    ],
+    "recoilPlatforms": [
+      {
+        "id": "Signal",
+        "c": 46,
+        "r": 22,
+        "w": 4,
+        "depth": 3,
+        "releaseSpeed": 130
+      }
+    ],
+    "hint": "Echo holds the track. Spring opens the signal. The same train becomes your final wall.",
+    "question": "How do you keep one train useful while you leave it twice?",
+    "showHintAtRest": true,
+    "map": [
+      "################################################################################################",
+      "#..................................H........................G...................................",
+      "#..................................H........................G...................................",
+      "#..................................H........................G...................................",
+      "#..................................H........................G...................................",
+      "#..................................H........................G...................................",
+      "#..................................H........................G...................................",
+      "#..................................H........................G............................<######",
+      "#..................................H........................G............................<######",
+      "#..................................H.......#######..........G............................<######",
+      "#..................................H.......#.c....\\.........G............................<######",
+      "#..................................H.......#######..........G............................<######",
+      "#..................................H........................G............................<######",
+      "#..................................H........................G............................<######",
+      "#..................................H........................G...........o................<######",
+      "#..................................H........................G............................<######",
+      "#..................................H........................G............................<######",
+      "#..................................H........................G............................<######",
+      "#..................................H........................G............................<######",
+      "#..................................H........................G............................<######",
+      "#..................................H........................G............................<######",
+      "#..................................H........................G............................<######",
+      "#..................................H........................G............................<######",
+      "#..................................H........................G............................<######",
+      "#....P.............................H........................G............................<######",
+      "###########........................H........................G............................<######",
+      "###########..............______....H........................G............................<######",
+      "###########..............######....H........##########......G............................<######",
+      "#^^^^^^^^^^^^^^^^^^^^^^^^######^^^^^^^^^^^^^##########^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<######",
+      "################################################################################################"
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 10,
+    "run": 4,
+    "collection": "superrooms",
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "interconnected superroom",
+    "worlds": [],
+    "tags": [
+      "superroom",
+      "moving-hook",
+      "echo",
+      "plate",
+      "recoil-platform",
+      "mirror",
+      "sealed-receiver",
+      "wallbounce-grace",
+      "shared-carrier"
+    ],
+    "newMechanics": [],
+    "status": "route-proven",
+    "author": "Codex",
+    "humanReview": "Unreviewed; difficulty is an author estimate.",
+    "approvedIngredients": [
+      "bank-f19",
+      "bank-f43",
+      "bank-b40",
+      "bank-f40"
+    ],
+    "interconnection": "One travelling carrier crosses two independently controlled track barriers and ultimately serves as the launch wall. An echo left at the first station holds the first rail door open throughout; the middle recoil station redirects a beam into the shared rail/exit signal, releasing the waiting carrier. The final ascent must use that same moving body as both shade and wall.",
+    "requiredEvents": [
+      "moving-hook",
+      "echo-place",
+      "plate",
+      "held-open",
+      "recoil-load",
+      "recoil-jump",
+      "mirror",
+      "stone-lit",
+      "gate-open",
+      "wallbounce"
+    ],
+    "solution": "Catch the train from the western ledge and reel in. Near the first low pressure station, release and brake onto its broad plate. Save an echo there, then jump and catch the same train; the echo keeps its first track door open after you leave. At the central signal station, drop onto the recoil plate. Fully load it, release Down and jump as it rises. A little rightward drift brings the rising blade beneath the exposed mirror; cut Up. Its reflected beam enters the sealed receiver and frees the waiting train. Dash Right while holding Grab to chase and recatch it. Reel in through the refill. At the final upper station, pay out and pump gently right, then Updash beside its right edge and hold Jump for the wallbounce. The carrier supplies both the wall and the shade that lets the departure pass the horizontal beam.",
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 592,
+      "events": [
+        "jump",
+        "hook",
+        "moving-hook",
+        "moving-unhook",
+        "unhook",
+        "plate",
+        "held-open",
+        "land",
+        "echo-place",
+        "recoil-load",
+        "recoil-release",
+        "moving-carrier-stop",
+        "recoil-jump",
+        "strike",
+        "mirror",
+        "stone-lit",
+        "gate-open",
+        "dash",
+        "refill-dash",
+        "refill",
+        "wallbounce",
+        "late-wallbounce",
+        "moving-hook-turn",
+        "refill-back",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 3,
+        "hook": 3,
+        "moving-hook": 3,
+        "moving-unhook": 3,
+        "unhook": 3,
+        "plate": 2,
+        "held-open": 1,
+        "land": 3,
+        "echo-place": 1,
+        "recoil-load": 1,
+        "recoil-release": 1,
+        "moving-carrier-stop": 1,
+        "recoil-jump": 1,
+        "strike": 1,
+        "mirror": 1,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "dash": 2,
+        "refill-dash": 2,
+        "refill": 1,
+        "wallbounce": 1,
+        "late-wallbounce": 1,
+        "moving-hook-turn": 1,
+        "refill-back": 1,
+        "exit": 1
+      }
+    },
+    "requiredEventCounts": {
+      "moving-hook": 3,
+      "moving-unhook": 3
+    },
+    "entrance": "Low west boarding ledge, with a long diagonal railway visible ahead.",
+    "exit": "High east signal balcony, above the horizontal sunbeam.",
+    "nearestExisting": "F19 uses a persistent echo to hold machinery; B40 demonstrates selecting a lifted takeoff; F40 redirects light after departure; F43 makes a transport become a shaded wallbounce face. This superroom gives those operations one continuous causal object: the train first needs a lasting gate weight, then stops at a signal only reachable by leaving its rope, then becomes the launch wall.",
+    "novelty": "The signal does not merely open a finish door. It releases the same train the player must immediately chase and later push away from. The first echo remains behind throughout, so the earlier station stays causally relevant across three scrolling views. Three attachments to one carrier and two voluntary station dismounts form one journey.",
+    "designNotes": "96×30 tiles, 3.13 normal screen areas. All doors are physical: one pressure gate and one beam/tally gate. The receiver is inside a closed one-tile passage that the body and blade cannot reach from the lower station. The final preview demonstrates the forgiving post-dash wallbounce, while earlier conventional wallbounces remain allowed. The middle station offers a broad spring and separate opportunities to read its signal; the train waits at the signal barrier.",
+    "positiveChecks": [
+      {
+        "name": "Final payout 18, pump 10, upward burst 13",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            104,
+            "rug"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            82,
+            "rug"
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            7,
+            ""
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            3,
+            "r"
+          ],
+          [
+            1,
+            "rxg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            55,
+            "ug"
+          ],
+          [
+            18,
+            "rdg"
+          ],
+          [
+            10,
+            "rg"
+          ],
+          [
+            13,
+            "ux"
+          ],
+          [
+            30,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 591,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "plate",
+            "held-open",
+            "land",
+            "echo-place",
+            "recoil-load",
+            "recoil-release",
+            "moving-carrier-stop",
+            "recoil-jump",
+            "strike",
+            "mirror",
+            "stone-lit",
+            "gate-open",
+            "dash",
+            "refill-dash",
+            "refill",
+            "wallbounce",
+            "late-wallbounce",
+            "moving-hook-turn",
+            "refill-back",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 3,
+            "moving-hook": 3,
+            "moving-unhook": 3,
+            "unhook": 3,
+            "plate": 2,
+            "held-open": 1,
+            "land": 3,
+            "echo-place": 1,
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "moving-carrier-stop": 1,
+            "recoil-jump": 1,
+            "strike": 1,
+            "mirror": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "dash": 2,
+            "refill-dash": 2,
+            "refill": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "moving-hook-turn": 1,
+            "refill-back": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Final payout 19, pump 9, upward burst 13",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            104,
+            "rug"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            82,
+            "rug"
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            7,
+            ""
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            3,
+            "r"
+          ],
+          [
+            1,
+            "rxg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            55,
+            "ug"
+          ],
+          [
+            19,
+            "rdg"
+          ],
+          [
+            9,
+            "rg"
+          ],
+          [
+            13,
+            "ux"
+          ],
+          [
+            30,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 593,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "plate",
+            "held-open",
+            "land",
+            "echo-place",
+            "recoil-load",
+            "recoil-release",
+            "moving-carrier-stop",
+            "recoil-jump",
+            "strike",
+            "mirror",
+            "stone-lit",
+            "gate-open",
+            "dash",
+            "refill-dash",
+            "refill",
+            "wallbounce",
+            "late-wallbounce",
+            "moving-hook-turn",
+            "refill-back",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 3,
+            "moving-hook": 3,
+            "moving-unhook": 3,
+            "unhook": 3,
+            "plate": 2,
+            "held-open": 1,
+            "land": 3,
+            "echo-place": 1,
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "moving-carrier-stop": 1,
+            "recoil-jump": 1,
+            "strike": 1,
+            "mirror": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "dash": 2,
+            "refill-dash": 2,
+            "refill": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "moving-hook-turn": 1,
+            "refill-back": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Final payout 21, pump 7, upward burst 13",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            104,
+            "rug"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            82,
+            "rug"
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            7,
+            ""
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            3,
+            "r"
+          ],
+          [
+            1,
+            "rxg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            55,
+            "ug"
+          ],
+          [
+            21,
+            "rdg"
+          ],
+          [
+            7,
+            "rg"
+          ],
+          [
+            13,
+            "ux"
+          ],
+          [
+            30,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 593,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "plate",
+            "held-open",
+            "land",
+            "echo-place",
+            "recoil-load",
+            "recoil-release",
+            "moving-carrier-stop",
+            "recoil-jump",
+            "strike",
+            "mirror",
+            "stone-lit",
+            "gate-open",
+            "dash",
+            "refill-dash",
+            "refill",
+            "wallbounce",
+            "late-wallbounce",
+            "moving-hook-turn",
+            "refill-back",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 3,
+            "moving-hook": 3,
+            "moving-unhook": 3,
+            "unhook": 3,
+            "plate": 2,
+            "held-open": 1,
+            "land": 3,
+            "echo-place": 1,
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "moving-carrier-stop": 1,
+            "recoil-jump": 1,
+            "strike": 1,
+            "mirror": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "dash": 2,
+            "refill-dash": 2,
+            "refill": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "moving-hook-turn": 1,
+            "refill-back": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Final payout 20, pump 8, upward burst 12",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            104,
+            "rug"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            82,
+            "rug"
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            7,
+            ""
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            3,
+            "r"
+          ],
+          [
+            1,
+            "rxg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            55,
+            "ug"
+          ],
+          [
+            20,
+            "rdg"
+          ],
+          [
+            8,
+            "rg"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            30,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 592,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "plate",
+            "held-open",
+            "land",
+            "echo-place",
+            "recoil-load",
+            "recoil-release",
+            "moving-carrier-stop",
+            "recoil-jump",
+            "strike",
+            "mirror",
+            "stone-lit",
+            "gate-open",
+            "dash",
+            "refill-dash",
+            "refill",
+            "wallbounce",
+            "late-wallbounce",
+            "moving-hook-turn",
+            "refill-back",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 3,
+            "moving-hook": 3,
+            "moving-unhook": 3,
+            "unhook": 3,
+            "plate": 2,
+            "held-open": 1,
+            "land": 3,
+            "echo-place": 1,
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "moving-carrier-stop": 1,
+            "recoil-jump": 1,
+            "strike": 1,
+            "mirror": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "dash": 2,
+            "refill-dash": 2,
+            "refill": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "moving-hook-turn": 1,
+            "refill-back": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Final payout 20, pump 8, upward burst 14",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            104,
+            "rug"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            82,
+            "rug"
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            7,
+            ""
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            3,
+            "r"
+          ],
+          [
+            1,
+            "rxg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            55,
+            "ug"
+          ],
+          [
+            20,
+            "rdg"
+          ],
+          [
+            8,
+            "rg"
+          ],
+          [
+            14,
+            "ux"
+          ],
+          [
+            30,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 592,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "plate",
+            "held-open",
+            "land",
+            "echo-place",
+            "recoil-load",
+            "recoil-release",
+            "moving-carrier-stop",
+            "recoil-jump",
+            "strike",
+            "mirror",
+            "stone-lit",
+            "gate-open",
+            "dash",
+            "refill-dash",
+            "refill",
+            "wallbounce",
+            "late-wallbounce",
+            "moving-hook-turn",
+            "refill-back",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 3,
+            "moving-hook": 3,
+            "moving-unhook": 3,
+            "unhook": 3,
+            "plate": 2,
+            "held-open": 1,
+            "land": 3,
+            "echo-place": 1,
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "moving-carrier-stop": 1,
+            "recoil-jump": 1,
+            "strike": 1,
+            "mirror": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "dash": 2,
+            "refill-dash": 2,
+            "refill": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "moving-hook-turn": 1,
+            "refill-back": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Leave the first pressure strip without an echo",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            104,
+            "rug"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            82,
+            "rug"
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            7,
+            ""
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            3,
+            "r"
+          ],
+          [
+            1,
+            "rxg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            55,
+            "ug"
+          ],
+          [
+            20,
+            "rdg"
+          ],
+          [
+            8,
+            "rg"
+          ],
+          [
+            13,
+            "ux"
+          ],
+          [
+            30,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 3
+        }
+      },
+      {
+        "name": "Leave the mirror in its original direction",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            104,
+            "rug"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            82,
+            "rug"
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            7,
+            ""
+          ],
+          [
+            1,
+            "u"
+          ],
+          [
+            3,
+            "r"
+          ],
+          [
+            1,
+            "rxg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            55,
+            "ug"
+          ],
+          [
+            20,
+            "rdg"
+          ],
+          [
+            8,
+            "rg"
+          ],
+          [
+            13,
+            "ux"
+          ],
+          [
+            30,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 3
+        }
+      },
+      {
+        "name": "Attempt the same signal cut without loading the spring",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            104,
+            "rug"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            82,
+            "rug"
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            7,
+            ""
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            3,
+            "r"
+          ],
+          [
+            1,
+            "rxg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            55,
+            "ug"
+          ],
+          [
+            20,
+            "rdg"
+          ],
+          [
+            8,
+            "rg"
+          ],
+          [
+            13,
+            "ux"
+          ],
+          [
+            30,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2
+        }
+      },
+      {
+        "name": "Dash upward but omit the final wallbounce",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            104,
+            "rug"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            82,
+            "rug"
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            7,
+            ""
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            3,
+            "r"
+          ],
+          [
+            1,
+            "rxg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            55,
+            "ug"
+          ],
+          [
+            20,
+            "rdg"
+          ],
+          [
+            8,
+            "rg"
+          ],
+          [
+            13,
+            "ux"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2
+        }
+      }
+    ]
+  },
+  "tape": [
+    [
+      14,
+      "r"
+    ],
+    [
+      12,
+      "rjg"
+    ],
+    [
+      104,
+      "rug"
+    ],
+    [
+      5,
+      "l"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      1,
+      "q"
+    ],
+    [
+      12,
+      "rjg"
+    ],
+    [
+      82,
+      "rug"
+    ],
+    [
+      4,
+      "r"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      30,
+      "d"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      7,
+      ""
+    ],
+    [
+      1,
+      "us"
+    ],
+    [
+      3,
+      "r"
+    ],
+    [
+      1,
+      "rxg"
+    ],
+    [
+      20,
+      "rg"
+    ],
+    [
+      80,
+      "ug"
+    ],
+    [
+      55,
+      "ug"
+    ],
+    [
+      20,
+      "rdg"
+    ],
+    [
+      8,
+      "rg"
+    ],
+    [
+      13,
+      "ux"
+    ],
+    [
+      30,
+      "rj"
+    ],
+    [
+      100,
+      "r"
+    ]
+  ]
+}

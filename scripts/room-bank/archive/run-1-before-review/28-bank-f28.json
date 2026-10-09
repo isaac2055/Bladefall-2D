@@ -1,0 +1,327 @@
+{
+  "room": {
+    "id": "bank-f28",
+    "name": "Reply in Passing",
+    "palette": "switchback",
+    "study": true,
+    "exit": "right",
+    "lock": [
+      "portal"
+    ],
+    "zips": [
+      [
+        10,
+        0
+      ]
+    ],
+    "portalMode": "fixed",
+    "portals": [
+      {
+        "color": "blue",
+        "c": 25,
+        "r": 7,
+        "face": "d"
+      },
+      {
+        "color": "orange",
+        "c": 3,
+        "r": 3,
+        "face": "r"
+      }
+    ],
+    "foes": [
+      {
+        "kind": "spit",
+        "x": 33,
+        "y": 12,
+        "dir": [
+          -1,
+          0
+        ],
+        "every": 110,
+        "offset": 20,
+        "speed": 150
+      }
+    ],
+    "combat": {
+      "waitForMove": true,
+      "enemies": [],
+      "receivers": [
+        {
+          "id": "reply",
+          "x": 88,
+          "y": 27
+        }
+      ],
+      "doors": [
+        {
+          "x": 280,
+          "y": 8,
+          "w": 8,
+          "h": 96,
+          "coils": [
+            "reply"
+          ]
+        }
+      ]
+    },
+    "hint": "A moving-carriage jump keeps its speed. Aim a parry upward, then continue moving; the return direction is set when you press parry.",
+    "question": "Where must you be when the bolt passes, and where must its reply go?",
+    "map": [
+      "########################################",
+      "###############........................#",
+      "###############........................#",
+      "###%.........##........................#",
+      "###%.........##........................#",
+      "###############........................#",
+      "###############........................#",
+      "###############.........#%%##..........#",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#..............................<########",
+      "#..............................<########",
+      "#..............................<########",
+      "#..............................<########",
+      "#..............................<########",
+      "#..............................<########",
+      "#..............................<########",
+      "#..P.....ZZZ...................<########",
+      "#########^^^^^^^^^^^^^^^^^^^^^^<########",
+      "########################################"
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 5,
+    "run": 1,
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "aerial projectile routing",
+    "worlds": [
+      5,
+      13,
+      19
+    ],
+    "tags": [
+      "zip",
+      "parry",
+      "portal",
+      "momentum",
+      "airborne-intercept"
+    ],
+    "newMechanics": [],
+    "status": "route-proven",
+    "author": "Codex",
+    "entrance": "Lower western launch bay.",
+    "exit": "Eastern high gallery.",
+    "solution": "Ride into the carriage\u2019s acceleration and jump with its sideways lift. Spend a diagonal dash to meet the bolt beneath the high mouth, aim a parry upward, then move right while the reply flies. The successful contact restores the dash for the rising continuation onto the high gallery, and the remotely routed bolt opens its exit door.",
+    "nearestExisting": "combat-06 The Passing Shot places a Combat shot near moving transport; portal courses demonstrate remote receivers. This couples the launch trajectory, an airborne aimed return, and the dash earned by that contact, with no intermediate safe aiming floor.",
+    "novelty": "The incoming projectile is both a remote key and an in-flight movement resource. Correct aim must coincide with the continuing launch trajectory.",
+    "requiredEvents": [
+      "zip-start",
+      "jump",
+      "parry",
+      "portal-pass",
+      "receiver-lit",
+      "combat-gate"
+    ],
+    "humanReview": "Unrated Run 1 candidate.",
+    "route": {
+      "frames": 189,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "land",
+        "zip-start",
+        "enemy-shot",
+        "zip-stop",
+        "dash",
+        "parry-ready",
+        "refill-dash",
+        "parry",
+        "portal-pass",
+        "receiver-lit",
+        "combat-gate",
+        "exit"
+      ]
+    },
+    "designNotes": "This uses the ordinary parry\u2019s existing input snapshot: after pressing Up + Parry, right input can continue the trajectory without changing the return direction. No new input or movement rule. A high, thorn-faced landing replaces the first draft\u2019s safe low aiming gallery.",
+    "shortcutChecks": [
+      {
+        "name": "Jump from the stopped carriage to the former safe gallery",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            80,
+            ""
+          ],
+          [
+            10,
+            "rj"
+          ],
+          [
+            13,
+            "rux"
+          ],
+          [
+            50,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "cause": "spikes",
+          "parry": 0,
+          "receiverLit": 0
+        }
+      },
+      {
+        "name": "Skip the airborne parry and spend an unavailable second dash",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            44,
+            ""
+          ],
+          [
+            10,
+            "rj"
+          ],
+          [
+            13,
+            "rux"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            3,
+            "r"
+          ],
+          [
+            13,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "cause": "spikes",
+          "parry": 0,
+          "receiverLit": 0
+        }
+      },
+      {
+        "name": "Cut the actual bolt instead of earning a returned dash",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            44,
+            ""
+          ],
+          [
+            10,
+            "rj"
+          ],
+          [
+            13,
+            "rux"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            3,
+            "r"
+          ],
+          [
+            13,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "cause": "spikes",
+          "strike": 1,
+          "enemyHit": 1,
+          "parry": 0,
+          "receiverLit": 0
+        }
+      }
+    ]
+  },
+  "tape": [
+    [
+      26,
+      "r"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      44,
+      ""
+    ],
+    [
+      10,
+      "rj"
+    ],
+    [
+      13,
+      "rux"
+    ],
+    [
+      1,
+      "up"
+    ],
+    [
+      3,
+      "r"
+    ],
+    [
+      13,
+      "rux"
+    ],
+    [
+      100,
+      "r"
+    ]
+  ]
+}

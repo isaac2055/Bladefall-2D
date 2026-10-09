@@ -17,12 +17,12 @@
 (function(root){
 'use strict';
 const C=()=>root.BladefallPrecisionCore;
-const TILE=8,COLS=40,ROWS=23,DT=1/60;
+const TILE=8,DT=1/60;
 const WK=Object.freeze({sink:30,sinkDown:90,rise:-45,drag:1500,maxX:70,thaw:240,float:-40});
 const overlap=(ax,ay,aw,ah,bx,by,bw,bh)=>ax<bx+bw&&ax+aw>bx&&ay<by+bh&&ay+ah>by;
 
 function reset(g){
- const def=g.room.def,room=g.room,Core=C();
+ const def=g.room.def,room=g.room,Core=C(),COLS=room.cols,ROWS=room.rows;
  g.water=null;
  const cells=new Uint8Array(COLS*ROWS);let any=false;
  def.map.forEach((row,r)=>{for(let c=0;c<COLS;c++)if(row[c]==='w'){cells[r*COLS+c]=1;any=true;}});
@@ -56,7 +56,7 @@ function surfaceY(g){
  return Math.round(lowY+(highY-lowY)*f);
 }
 function inWater(g,x,y){
- const w=g.water;if(!w)return false;
+ const w=g.water,COLS=g.room.cols,ROWS=g.room.rows;if(!w)return false;
  const c=Math.floor(x/TILE),r=Math.floor(y/TILE);if(c<0||c>=COLS||r<0||r>=ROWS)return false;
  const i=r*COLS+c;
  if(w.cells[i]&&g.room.grid[i]!==C().SOLID)return true;
@@ -66,7 +66,7 @@ function inWater(g,x,y){
 function currentAt(g,x,y,w,h){let dx=0,dy=0;for(const z of g.water.currents)if(overlap(x,y,w,h,z.x,z.y,z.w,z.h)){dx+=z.dx;dy+=z.dy;}return [dx,dy];}
 
 function freeze(g,pool){
- const Core=C(),room=g.room,p=g.p;
+ const Core=C(),room=g.room,p=g.p,COLS=room.cols;
  pool.frozen=g.water.thaw;pool.pending.clear();
  for(const i of pool.cells){
   const c=i%COLS,r=(i/COLS)|0,x=c*TILE,y=r*TILE;
@@ -77,7 +77,7 @@ function freeze(g,pool){
  const k=pool.cells[0];Core.emit(g,'freeze',{x:(k%COLS)*TILE+4,y:((k/COLS)|0)*TILE+4,pool:pool.id});
 }
 function thaw(g,pool){
- const Core=C(),room=g.room;
+ const Core=C(),room=g.room,COLS=room.cols;
  for(const i of pool.cells){room.grid[i]=Core.EMPTY;room.ice[i]=0;}
  pool.pending.clear();pool.frozen=0;
  const k=pool.cells[0];Core.emit(g,'thaw',{x:(k%COLS)*TILE+4,y:((k/COLS)|0)*TILE+4,pool:pool.id});
@@ -85,7 +85,7 @@ function thaw(g,pool){
 
 function before(g,inp){
  const w=g.water;if(!w)return;
- const Core=C(),p=g.p,room=g.room;
+ const Core=C(),p=g.p,room=g.room,COLS=room.cols;
  if(w.tide&&g.awake){
   const before=surfaceY(g);w.tide.clock++;const now=surfaceY(g);
   for(const e of g.ents){if(e.type!=='float')continue;const want=Math.min(e.homeY,now-e.h);if(want!==e.y)Core.moveSolid(g,e,0,want-e.y-e.remY);}
@@ -123,7 +123,7 @@ function airJump(g,p,inp){
 }
 function after(g,inp){
  const w=g.water;if(!w)return;
- const Core=C(),p=g.p;
+ const Core=C(),p=g.p,COLS=g.room.cols,ROWS=g.room.rows;
  // The lantern floats and drifts with the current.
  for(const e of g.ents){
   if(e.type!=='lantern'||e.held||e.returning)continue;

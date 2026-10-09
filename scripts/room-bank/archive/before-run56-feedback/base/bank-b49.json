@@ -1,0 +1,1043 @@
+{
+  "room": {
+    "id": "bank-b49",
+    "name": "The Rooms Trade Their Floors",
+    "palette": "foundry",
+    "study": true,
+    "dashes": 0,
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "map": [
+      "####################################################################################",
+      "#..................................................................................#",
+      "#..................................................................................#",
+      "#..................................................................................#",
+      "#..................................................................................#",
+      "#..........###.....................................................................#",
+      "#...........c.............................................................\\........#",
+      "#..........###.....................................................................#",
+      "#..................................................................................#",
+      "#........................................................................./........#",
+      "#.................................c................................................#",
+      "#................................####............MMM..#########################....#",
+      "#..................................................................................#",
+      "#..................................................................................#",
+      "#..................................................................................#",
+      "#..................................................................................#",
+      "#..................................................................................#",
+      "#..................................................................................#",
+      "#..................................................................................#",
+      "#...................................############...................................#",
+      "#..................................................................................#",
+      "#..................................................................................#",
+      "#..................................................................................#",
+      "#..................................................................................#",
+      "#..................................................................................#",
+      "#..................................................................................#",
+      "#..................................................................................#",
+      "#..G...............................................................................#",
+      "...G...............................................................................#",
+      "...G...............................................................................#",
+      "...G...............................................................................#",
+      ".##G###########>...................................................................#",
+      "###############>...................................................................#",
+      "###############>...................................................................#",
+      "###############>...................................................................#",
+      "###############>...................................................................#",
+      "###############>P..................................................................#",
+      "##################........{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{##########",
+      "##################........##########################################################",
+      "####################################################################################"
+    ],
+    "hint": "One landing trades the lift positions. Prepare the light above; return to the same spring.",
+    "question": "Linked landing relays swap the jobs of a central bridge and a remote light shutter. A hinge turns the outward climb into a return gallery, and walking rather than landing preserves the prepared final route.",
+    "exit": "left",
+    "cols": 84,
+    "rows": 40,
+    "recoilPlatforms": [
+      {
+        "id": "Home",
+        "c": 18,
+        "r": 37,
+        "w": 8,
+        "depth": 1,
+        "loadFrames": 24,
+        "releaseSpeed": 90
+      }
+    ],
+    "stepRelays": [
+      {
+        "id": "A",
+        "duration": 70,
+        "platforms": [
+          {
+            "c": 28,
+            "r": 31,
+            "w": 8,
+            "h": 1,
+            "to": [
+              0,
+              -12
+            ]
+          },
+          {
+            "c": 68,
+            "r": 19,
+            "w": 10,
+            "h": 1,
+            "to": [
+              0,
+              12
+            ]
+          },
+          {
+            "c": 65,
+            "r": 3,
+            "w": 3,
+            "h": 3,
+            "to": [
+              0,
+              3
+            ]
+          }
+        ]
+      }
+    ],
+    "hingeArms": [
+      {
+        "id": "Bridge",
+        "c": 48,
+        "r": 11,
+        "length": 10,
+        "dir": "down"
+      }
+    ],
+    "beams": [
+      {
+        "c": 83,
+        "r": 9,
+        "dir": "l"
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 11,
+    "run": 5,
+    "collection": "run5",
+    "format": "superroom",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "difficulty": 4,
+    "role": "Trade two lift positions, then reuse the home spring in the other direction",
+    "worlds": [
+      12,
+      16,
+      20
+    ],
+    "tags": [
+      "recoil-platform",
+      "step-relay",
+      "hinge",
+      "beam",
+      "return-route"
+    ],
+    "newMechanics": [],
+    "author": "Codex",
+    "humanReview": "Unmeasured; author estimate only.",
+    "requiredEvents": [
+      "recoil-jump",
+      "step-relay",
+      "hinge-turn",
+      "mirror",
+      "stone-lit",
+      "gate-open"
+    ],
+    "solution": "Load the Home spring and use its return to jump right onto the low relay. Your landing raises that lift, lowers the far lift, and moves the labelled shutter into the upper light duct. Walk to the hanging hinge, climb it and cut its hub downward from above. Cross its new horizontal span to the western upper tally, then return over the same arm and jump to the eastern gallery. Turn the far mirror from its left side. The light is prepared but still blocked by the relay shutter. Drop around the eastern ledge onto the lowered far relay: this landing exchanges both lifts and clears the optical duct, lighting the sealed second receiver and opening the starting-side gate. Leave the far lift to the lower return conveyor. Load the same Home spring again and launch left, over the protected gallery edge, into the open home exit.",
+    "nearestExisting": "B35 supplies the reusable recoil lift, B11/B12 supply a climbing arm that becomes a bridge, and B31 supplies a changed optical return. Here two opposed lifts and their shared optical shutter trade positions together: the first landing grants ascent, the far landing completes a circuit and returns the near lift below.",
+    "novelty": "The recoil spring is a shared origin with two different destinations. Landing changes three remote pieces of geometry at once, so the ascent temporarily obstructs its own exit circuit. A permanent hinge conversion creates an upper return bridge, while the opposite relay landing completes the prepared light circuit and makes the homeward trip possible.",
+    "approvedIngredients": [
+      "bank-b35",
+      "bank-b11",
+      "bank-b12",
+      "bank-b31"
+    ],
+    "positiveChecks": [
+      {
+        "name": "Load the shared spring longer on both visits",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            45,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            32,
+            "rj"
+          ],
+          [
+            85,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ],
+          [
+            94,
+            "rgu"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            48,
+            "l"
+          ],
+          [
+            28,
+            "lj"
+          ],
+          [
+            18,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            50,
+            "r"
+          ],
+          [
+            36,
+            "rj"
+          ],
+          [
+            80,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            40,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            90,
+            ""
+          ],
+          [
+            200,
+            "l"
+          ],
+          [
+            45,
+            "d"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            34,
+            "lj"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0
+        }
+      },
+      {
+        "name": "Longer lift observation",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            32,
+            "rj"
+          ],
+          [
+            105,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ],
+          [
+            94,
+            "rgu"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            48,
+            "l"
+          ],
+          [
+            28,
+            "lj"
+          ],
+          [
+            18,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            50,
+            "r"
+          ],
+          [
+            36,
+            "rj"
+          ],
+          [
+            80,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            40,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            110,
+            ""
+          ],
+          [
+            200,
+            "l"
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            34,
+            "lj"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0
+        }
+      },
+      {
+        "name": "Second takeoff one frame earlier",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            32,
+            "rj"
+          ],
+          [
+            85,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ],
+          [
+            94,
+            "rgu"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            48,
+            "l"
+          ],
+          [
+            28,
+            "lj"
+          ],
+          [
+            18,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            50,
+            "r"
+          ],
+          [
+            36,
+            "rj"
+          ],
+          [
+            80,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            40,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            90,
+            ""
+          ],
+          [
+            200,
+            "l"
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            7,
+            "l"
+          ],
+          [
+            34,
+            "lj"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Reach first relay with unloaded jump",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            32,
+            "rj"
+          ],
+          [
+            85,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ],
+          [
+            94,
+            "rgu"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            48,
+            "l"
+          ],
+          [
+            28,
+            "lj"
+          ],
+          [
+            18,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            50,
+            "r"
+          ],
+          [
+            36,
+            "rj"
+          ],
+          [
+            80,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            40,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            90,
+            ""
+          ],
+          [
+            200,
+            "l"
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            34,
+            "lj"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 9
+        }
+      },
+      {
+        "name": "Leave hinge hanging",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            32,
+            "rj"
+          ],
+          [
+            85,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ],
+          [
+            94,
+            "rgu"
+          ],
+          [
+            1,
+            "d"
+          ],
+          [
+            48,
+            "l"
+          ],
+          [
+            28,
+            "lj"
+          ],
+          [
+            18,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            50,
+            "r"
+          ],
+          [
+            36,
+            "rj"
+          ],
+          [
+            80,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            40,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            90,
+            ""
+          ],
+          [
+            200,
+            "l"
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            34,
+            "lj"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 6
+        }
+      },
+      {
+        "name": "Leave far mirror unprepared",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            32,
+            "rj"
+          ],
+          [
+            85,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ],
+          [
+            94,
+            "rgu"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            48,
+            "l"
+          ],
+          [
+            28,
+            "lj"
+          ],
+          [
+            18,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            50,
+            "r"
+          ],
+          [
+            36,
+            "rj"
+          ],
+          [
+            80,
+            "r"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            40,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            90,
+            ""
+          ],
+          [
+            200,
+            "l"
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            34,
+            "lj"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 11
+        }
+      }
+    ],
+    "interconnection": "Both lifts and the optical shutter share one landing relay. Raising the near lift lowers the far dock and blocks the receiver; landing on that far dock reverses all three after the mirror is prepared. The hinge is first climbed and then crossed both ways as a bridge. The same Home spring launches toward the two different lower destinations before and after the circuit is solved.",
+    "superroom": {
+      "screenAreas": 3.652173913043478,
+      "stages": [
+        "Launch right from Home and exchange the lift positions",
+        "Turn the hanging climb into the upper return bridge",
+        "Prepare the far mirror, then land on the lowered far relay",
+        "Return below and launch left from the same Home spring"
+      ],
+      "routeExtent": {
+        "minX": -6,
+        "maxX": 642,
+        "minY": 50,
+        "maxY": 293
+      }
+    },
+    "requiredEventCounts": {
+      "recoil-jump": 2,
+      "step-relay": 2,
+      "stone-lit": 2
+    },
+    "designNotes": "The Home spring has a full one-tile physical stroke and a bounded ordinary lift of 80 px/s, without a jam or forced impulse. Its eastern target is the first relay and its western target is the final gallery. The hinge hub has a visible broad one-way catch shelf. All intermediate drops have wide safe floors, and the final spring transfer has a saved earlier takeoff and longer-charge variant.",
+    "route": {
+      "frames": 1235,
+      "deaths": 0,
+      "events": [
+        "recoil-load",
+        "recoil-release",
+        "jump",
+        "recoil-jump",
+        "step-relay",
+        "land",
+        "grab",
+        "climbhop",
+        "strike",
+        "hinge-turn",
+        "stone-lit",
+        "mirror",
+        "gate-open",
+        "exit"
+      ],
+      "eventCounts": {
+        "recoil-load": 2,
+        "recoil-release": 2,
+        "jump": 5,
+        "recoil-jump": 2,
+        "step-relay": 2,
+        "land": 8,
+        "grab": 1,
+        "climbhop": 1,
+        "strike": 2,
+        "hinge-turn": 1,
+        "stone-lit": 2,
+        "mirror": 1,
+        "gate-open": 1,
+        "exit": 1
+      },
+      "movement": "Ordinary recoil jump, climb, blade and landing; zero dash."
+    }
+  },
+  "tape": [
+    [
+      26,
+      "r"
+    ],
+    [
+      30,
+      "d"
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      32,
+      "rj"
+    ],
+    [
+      85,
+      ""
+    ],
+    [
+      100,
+      "r"
+    ],
+    [
+      94,
+      "rgu"
+    ],
+    [
+      1,
+      "ds"
+    ],
+    [
+      48,
+      "l"
+    ],
+    [
+      28,
+      "lj"
+    ],
+    [
+      18,
+      "l"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      28,
+      "rj"
+    ],
+    [
+      50,
+      "r"
+    ],
+    [
+      36,
+      "rj"
+    ],
+    [
+      80,
+      "r"
+    ],
+    [
+      1,
+      "rs"
+    ],
+    [
+      40,
+      "r"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      40,
+      "l"
+    ],
+    [
+      90,
+      ""
+    ],
+    [
+      200,
+      "l"
+    ],
+    [
+      30,
+      "d"
+    ],
+    [
+      8,
+      "l"
+    ],
+    [
+      34,
+      "lj"
+    ],
+    [
+      100,
+      "l"
+    ]
+  ]
+}

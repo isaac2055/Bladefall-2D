@@ -1,0 +1,516 @@
+{
+  "room": {
+    "id": "bank-b57",
+    "name": "Meet It After the Crossing",
+    "palette": "cliffs",
+    "study": true,
+    "movement": "survive-2",
+    "cols": 48,
+    "rows": 28,
+    "exit": "right",
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "map": [
+      "################################################",
+      "#....................###########................",
+      "#....................###########................",
+      "#....................###########................",
+      "#....................###########................",
+      "#....................###########................",
+      "#....................###########................",
+      "#....................###########................",
+      "#...............................................",
+      "#...............................................",
+      "#...............................................",
+      "#...............................................",
+      "#...............................................",
+      "#...P...........................................",
+      "###############.................................",
+      "###############.................................",
+      "###############..........................<######",
+      "###############..........................<######",
+      "###############..........................<######",
+      "###############.......l..................<######",
+      "###############..........................<######",
+      "###############..........................<######",
+      "###############..........................<######",
+      "###############..........................<######",
+      "###############..........................<######",
+      "###############.^^^^^^^^^^^^^^^^^^^^^^^^^<######",
+      "###############...........................######",
+      "################################################"
+    ],
+    "decks": [
+      {
+        "c": 21,
+        "r": 20,
+        "w": 2,
+        "h": 1,
+        "to": [
+          0,
+          -11
+        ],
+        "period": 360
+      }
+    ],
+    "sweepers": [
+      {
+        "id": "Across",
+        "path": [
+          [
+            26,
+            7
+          ],
+          [
+            26,
+            19
+          ]
+        ],
+        "period": 180,
+        "phase": 100,
+        "radius": 4
+      }
+    ],
+    "beams": [
+      {
+        "c": 43,
+        "r": 0,
+        "dir": "d"
+      },
+      {
+        "c": 46,
+        "r": 0,
+        "dir": "d"
+      }
+    ],
+    "hint": "Meet the rising cargo after the thorn clears. Dash into it, then press Grab.",
+    "question": "Can you take the lift\u2019s passenger without touching down and losing your dash speed?",
+    "showHintAtRest": true
+  },
+  "bank": {
+    "side": "base",
+    "batch": 14,
+    "run": 7,
+    "collection": "run7",
+    "format": "compact",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "difficulty": 4,
+    "author": "Codex",
+    "role": "moving cargo interception introduction",
+    "worlds": [],
+    "tags": [
+      "moving-cargo",
+      "cargo-dash-catch",
+      "sweeper",
+      "momentum",
+      "beam-shield"
+    ],
+    "newMechanics": [],
+    "requiredEvents": [
+      "dash",
+      "cargo-dash-catch"
+    ],
+    "learningFamily": "moving-anchor-and-cargo-timing",
+    "lessonRole": "introduce",
+    "preparesFor": [
+      "bank-f58"
+    ],
+    "prerequisites": [],
+    "humanReview": "Awaiting playtest; route evidence does not establish enjoyment or human difficulty.",
+    "entrance": "Western launch lip opposite the rising two-tile freight cradle.",
+    "exit": "Raised eastern sun gallery across the long gap.",
+    "solution": "Approach the western lip and watch the freight rise. Jump as the lantern nears the low ceiling and the vertical thorn travels down out of the crossing. Dash horizontally toward the passenger and press Grab during the moving part of the dash. Catch from the cradle\u2019s right edge so the knight remains airborne: touching down would shed the crossing speed. Keep right through the patrol lane and use the carried shade to enter the sun gallery.",
+    "nearestExisting": "F44 Take the Moving Passenger already joins a moving hook and an upward cargo catch. This shorter lesson removes the rope and changes the catch to horizontal velocity from a separate launch lip. The rising cradle, its roof clearance, and the crossing patrol establish the meeting time; F58 later combines the two catch directions.",
+    "novelty": "The cargo is both the moving rendezvous and the means of keeping the approach speed across a gap that an ordinary pickup jump cannot clear.",
+    "designNotes": "The cradle is narrow and its upper position has cargo clearance rather than standing clearance. The clean route has no ground contact or dash refill between the launch lip and exit. A saved ordinary pickup succeeds in taking the lantern but its later jump falls short of the thorned bank. Difficulty is provisional; nearby departure and Grab variations are saved.",
+    "timingCues": [
+      "Watch the lantern rise toward the underside of the freight roof.",
+      "Begin the jump while the vertical thorn is descending away from the height of the cargo.",
+      "Press Grab during the horizontal burst, and pass the cradle\u2019s right edge before its top reaches the knight\u2019s feet."
+    ],
+    "endingForgiveness": "The interception is the learned challenge. Once correctly caught, keeping right preserves the carrying glide through the exit. Earlier and later launch samples and a later Grab sample finish cleanly.",
+    "approvedIngredients": [
+      "F44 moving passenger catch"
+    ],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 175,
+      "events": [
+        "jump",
+        "dash",
+        "pickup",
+        "cargo-dash-catch",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 1,
+        "dash": 1,
+        "pickup": 1,
+        "cargo-dash-catch": 1,
+        "exit": 1
+      }
+    },
+    "routeMovement": [
+      {
+        "event": "dash",
+        "frame": 114
+      },
+      {
+        "event": "cargo-dash-catch",
+        "frame": 121,
+        "vx": 240,
+        "vy": 0
+      }
+    ],
+    "positiveChecks": [
+      {
+        "name": "Depart three frames earlier",
+        "tape": [
+          [
+            54,
+            "r"
+          ],
+          [
+            37,
+            ""
+          ],
+          [
+            15,
+            "rj"
+          ],
+          [
+            9,
+            "rx"
+          ],
+          [
+            8,
+            "rg"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 172,
+          "events": [
+            "jump",
+            "dash",
+            "pickup",
+            "cargo-dash-catch",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "dash": 1,
+            "pickup": 1,
+            "cargo-dash-catch": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Depart two frames later",
+        "tape": [
+          [
+            54,
+            "r"
+          ],
+          [
+            42,
+            ""
+          ],
+          [
+            15,
+            "rj"
+          ],
+          [
+            9,
+            "rx"
+          ],
+          [
+            8,
+            "rg"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 177,
+          "events": [
+            "jump",
+            "dash",
+            "pickup",
+            "cargo-dash-catch",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "dash": 1,
+            "pickup": 1,
+            "cargo-dash-catch": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Fresh Grab two frames later",
+        "tape": [
+          [
+            54,
+            "r"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            15,
+            "rj"
+          ],
+          [
+            11,
+            "rx"
+          ],
+          [
+            8,
+            "rg"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 175,
+          "events": [
+            "jump",
+            "dash",
+            "pickup",
+            "cargo-dash-catch",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "dash": 1,
+            "pickup": 1,
+            "cargo-dash-catch": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Pick up on the rising freight, wait higher, and use an ordinary carrying jump",
+        "tape": [
+          [
+            54,
+            "r"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            14,
+            "rx"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            170,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 0,
+          "events": [
+            "jump",
+            "dash",
+            "land",
+            "refill-dash",
+            "pickup",
+            "death",
+            "lantern-lost",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "dash": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "pickup": 1,
+            "death": 1,
+            "lantern-lost": 1,
+            "respawn": 1
+          }
+        }
+      },
+      {
+        "name": "nearest edge jump-dash without shade",
+        "tape": [
+          [
+            56,
+            "r"
+          ],
+          [
+            14,
+            "rj"
+          ],
+          [
+            14,
+            "rux"
+          ],
+          [
+            100,
+            "rg"
+          ],
+          [
+            14,
+            "rj"
+          ],
+          [
+            14,
+            "rx"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 0,
+          "events": [
+            "jump",
+            "dash",
+            "grab",
+            "walljump",
+            "land",
+            "refill-dash",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "dash": 1,
+            "grab": 1,
+            "walljump": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "death": 1,
+            "respawn": 1
+          }
+        }
+      },
+      {
+        "name": "walk onto low freight then carry from edge",
+        "tape": [
+          [
+            54,
+            "r"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            14,
+            "rx"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "jump",
+            "dash",
+            "land",
+            "refill-dash",
+            "pickup",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "dash": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "pickup": 1,
+            "death": 2,
+            "respawn": 2
+          }
+        }
+      }
+    ]
+  },
+  "tape": [
+    [
+      54,
+      "r"
+    ],
+    [
+      40,
+      ""
+    ],
+    [
+      15,
+      "rj"
+    ],
+    [
+      9,
+      "rx"
+    ],
+    [
+      8,
+      "rg"
+    ],
+    [
+      140,
+      "r"
+    ]
+  ]
+}

@@ -1,0 +1,479 @@
+{
+  "room": {
+    "id": "bank-f30",
+    "name": "Bring Back the Arc",
+    "palette": "cliffs",
+    "study": true,
+    "lock": [
+      "parry"
+    ],
+    "map": [
+      "########################################",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#..P..................................G.",
+      "######................................G.",
+      "#.....................................G.",
+      "#........#............................G.",
+      "#............................###########",
+      "#...........................<..........#",
+      "#...........................<..........#",
+      "#...........................<..........#",
+      "#.................O....................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "###########............................#",
+      "###########............c...............#",
+      "###########............................#",
+      "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#"
+    ],
+    "echo": true,
+    "dashes": 0,
+    "beams": [
+      {
+        "c": 11,
+        "r": 10,
+        "dir": "r"
+      }
+    ],
+    "hint": "No dash in this room. Leave an echo on the little upper perch. On the chain, up reels in and down pays out; jump releases before you swap.",
+    "question": "Can you bring back a useful arc, rather than only bringing yourself back?"
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 5,
+    "run": 1,
+    "acceptance": "candidate",
+    "difficulty": 5,
+    "role": "solve",
+    "worlds": [
+      25,
+      34,
+      40
+    ],
+    "tags": [
+      "echo",
+      "hook",
+      "momentum",
+      "launch-angle",
+      "beam"
+    ],
+    "newMechanics": [],
+    "entrance": "High west balcony and narrow echo perch.",
+    "exit": "High east landing across the beam partition.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "echo-place",
+      "hook",
+      "unhook",
+      "echo-swap",
+      "stone-lit"
+    ],
+    "humanReview": "Author estimate; human fun/difficulty/suitability pending.",
+    "solution": "Jump to the isolated upper perch and place the echo. Drop left of the beam onto the lower launch ledge, then jump and catch the ring. Let the chain extend on the far arc to reach the low tally; haul in and steer left to recover before the thorns. Pump the return toward the right, reel near the bottom to produce a rising departure, jump-release, then swap immediately. The echo relocates the moving knight above the beam. Hold the existing rightward launch to land across the upper gulf; landing on the little perch first loses the speed needed to cross.",
+    "nearestExisting": "p131 The Citadel and F19 The Weight Must Stay relocate a prepared machinery launch. Here the launch is made by changing a rope length and steering a pendulum after a low objective; the direction and vertical component at release determine whether the relocated arc clears the gulf.",
+    "novelty": "There is no dash fallback. The low tally asks for an extended outward arc; the exit asks for a shortened rising return. The same controllable pendulum must supply both trajectories, and the echo transports its velocity across an otherwise lethal beam partition. The upper route is deliberately beyond an ordinary jump from the echo perch.",
+    "designNotes": "Existing room-level zero-dash option focuses this room on rope-generated movement. No new movement rules or entity behavior. Release from the hook before the echo exchange; the tape does not exploit an attached rope across a teleport.",
+    "route": {
+      "frames": 316,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "land",
+        "echo-place",
+        "hook",
+        "stone-lit",
+        "gate-open",
+        "unhook",
+        "echo-swap",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 3,
+        "land": 3,
+        "echo-place": 1,
+        "hook": 1,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "unhook": 1,
+        "echo-swap": 1,
+        "exit": 1
+      }
+    },
+    "shortcutChecks": [
+      {
+        "name": "Settle the rope, swap onto the perch, then attempt an ordinary jump",
+        "tape": [
+          [
+            5,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            18,
+            "rjg"
+          ],
+          [
+            15,
+            "rg"
+          ],
+          [
+            32,
+            "rdg"
+          ],
+          [
+            12,
+            "lug"
+          ],
+          [
+            8,
+            "lg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            90,
+            "ug"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "firstFailure": {
+            "type": "death",
+            "frame": 379,
+            "x": 141,
+            "y": 81,
+            "cause": "light",
+            "vx": 90,
+            "vy": 160,
+            "i": 378
+          }
+        }
+      },
+      {
+        "name": "Release ten frames before the useful rising return",
+        "tape": [
+          [
+            5,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            18,
+            "rjg"
+          ],
+          [
+            15,
+            "rg"
+          ],
+          [
+            32,
+            "rdg"
+          ],
+          [
+            12,
+            "lug"
+          ],
+          [
+            8,
+            "lg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            15,
+            "rg"
+          ],
+          [
+            4,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            1,
+            "rq"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "firstFailure": {
+            "type": "death",
+            "frame": 254,
+            "x": 149,
+            "y": 81,
+            "cause": "light",
+            "vx": 250.9787280571667,
+            "vy": 160,
+            "i": 253
+          }
+        }
+      },
+      {
+        "name": "Skip placing the upper echo",
+        "tape": [
+          [
+            5,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            18,
+            "rjg"
+          ],
+          [
+            15,
+            "rg"
+          ],
+          [
+            32,
+            "rdg"
+          ],
+          [
+            12,
+            "lug"
+          ],
+          [
+            8,
+            "lg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            25,
+            "rg"
+          ],
+          [
+            4,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            1,
+            "rq"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "firstFailure": {
+            "type": "death",
+            "frame": 262,
+            "x": 227,
+            "y": 105,
+            "cause": "spikes",
+            "vx": 238.68385200548076,
+            "vy": -82.55199531966025,
+            "i": 261
+          }
+        }
+      }
+    ]
+  },
+  "tape": [
+    [
+      5,
+      "r"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      15,
+      "r"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      1,
+      "q"
+    ],
+    [
+      14,
+      "l"
+    ],
+    [
+      35,
+      ""
+    ],
+    [
+      16,
+      "r"
+    ],
+    [
+      18,
+      "rjg"
+    ],
+    [
+      15,
+      "rg"
+    ],
+    [
+      32,
+      "rdg"
+    ],
+    [
+      12,
+      "lug"
+    ],
+    [
+      8,
+      "lg"
+    ],
+    [
+      20,
+      "rg"
+    ],
+    [
+      25,
+      "rg"
+    ],
+    [
+      4,
+      "rug"
+    ],
+    [
+      1,
+      "rj"
+    ],
+    [
+      1,
+      "rq"
+    ],
+    [
+      110,
+      "r"
+    ]
+  ]
+}

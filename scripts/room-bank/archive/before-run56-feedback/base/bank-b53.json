@@ -1,0 +1,835 @@
+{
+  "room": {
+    "id": "bank-b53",
+    "name": "What the Tide Leaves Behind",
+    "palette": "court",
+    "study": true,
+    "cols": 88,
+    "rows": 40,
+    "dashes": 1,
+    "exit": "left",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "tide": {
+      "c0": 10,
+      "c1": 86,
+      "low": 20,
+      "high": 38,
+      "hold": 550,
+      "move": 120
+    },
+    "hingeArms": [
+      {
+        "id": "Sluice",
+        "c": 49,
+        "r": 14,
+        "length": 14,
+        "dir": "up"
+      }
+    ],
+    "map": [
+      "########################################################################################",
+      "################################.......................................................#",
+      "################################.......................................................#",
+      "################################.......................................................#",
+      "################################.......................................................#",
+      "################################.......................................................#",
+      "################################.......................................................#",
+      "################################.......................................................#",
+      "################################...................................................c...#",
+      "################################..............................................########.#",
+      "################################.......................................................#",
+      "################################.......................................................#",
+      "################################.......................................................#",
+      "..G....................................................................................#",
+      "..G......................................########......................................#",
+      "..G..............................................########################NN###########.#",
+      "################################>................#.....................................#",
+      "################################>#...............#.....................................#",
+      "################################>................#.....................................#",
+      "################################>................#.....................................#",
+      "################################>................#.....................................#",
+      "################################>................#.....................................#",
+      "#################################................#.....................................#",
+      "#################################................#.....................................#",
+      "#################################................#.....................................#",
+      "#################################................#.....................................#",
+      "#################################................#.....................................#",
+      "#################################................#..................##########.........#",
+      "#################################KKKK#...........#.....................................#",
+      "#################################KKKK#...........###########...........................#",
+      "#################################....#...........#.....................................#",
+      "#################################....#...........#.....................................#",
+      "#################################....#...........#####################################.#",
+      "#...........#####################....#...........#####################################.#",
+      "#...........#####################....#...........#####################################.#",
+      "#...........#####################....#FFF........#####################################.#",
+      "#...P................................#FFF........#####################################.#",
+      "#...........^^^^^^^^^^^^^^^^^^^^^....#FFF........#####################################.#",
+      "########################################################################################",
+      "########################################################################################"
+    ],
+    "hint": "The sea begins full. Move the sluice stone from below; keep what it leaves above the dry reef.",
+    "question": "Can the stone that blocks the flooded well become a stair above the dry reef?"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 12,
+    "run": 6,
+    "collection": "run6",
+    "format": "superroom",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "difficulty": 3,
+    "role": "Turn a flooded obstruction into a dry return stair.",
+    "worlds": [
+      12,
+      16,
+      20
+    ],
+    "tags": [
+      "tide",
+      "float",
+      "slide-stone",
+      "hinge",
+      "anvil",
+      "return-route"
+    ],
+    "newMechanics": [],
+    "author": "Codex",
+    "humanReview": "Unreviewed; author estimate only.",
+    "requiredEvents": [
+      "stone-hit",
+      "stone-stop",
+      "climbhop",
+      "hinge-turn",
+      "anvil",
+      "stone-lit",
+      "gate-open"
+    ],
+    "solution": "Begin at full tide and cross the submerged thorn reef. In the narrow sluice well, swim beneath the broad stone and dash upward into it. It parks against the visible overhead stop, opening the side passage into the basin. Approach the float from its side, climb onto it and jump to the gallery above normal swimming height. Strike the hinged partition at its hub; the former wall becomes a horizontal walk into the eastern yard. Hop and cut down onto the broad anvil to reach the tally balcony. Return across the turned arm. The sea has now exposed the lower reef, so drop onto the same stone that you raised out of the well, pause there and jump into the upper western gallery. The final walk is sheltered and level.",
+    "nearestExisting": "B13 manufactures a stopper for a horizontal block; B12 trades a beam shield for a bridge; the original Landing Shores rooms use tidal floats for launch timing. This room uses submerged thorns to permit access below a full-width sluice stone. Its upward displacement simultaneously opens the wet outward route and leaves a permanent dry stair for a return directly above that route. No lantern transport or optical circuit is involved.",
+    "novelty": "The water changes which face of the heavy object is reachable. The stone stays where the knight sent it after the enabling water has gone, so its second job survives the tide. The tall hinged partition becomes a reusable crossing, and the float can be left behind once it has delivered the knight above swimming height.",
+    "positiveChecks": [
+      {
+        "name": "Twenty-frame later departure",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            200,
+            "r"
+          ],
+          [
+            45,
+            "u"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            100,
+            "u"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            40,
+            "u"
+          ],
+          [
+            72,
+            "rgu"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            6,
+            ""
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            132,
+            "r"
+          ],
+          [
+            3,
+            "j"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            48,
+            "r"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            99,
+            "l"
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            125,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            8,
+            "j"
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            190,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0
+        }
+      },
+      {
+        "name": "Rest three seconds on the return stone",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            200,
+            "r"
+          ],
+          [
+            45,
+            "u"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            100,
+            "u"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            40,
+            "u"
+          ],
+          [
+            72,
+            "rgu"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            6,
+            ""
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            132,
+            "r"
+          ],
+          [
+            3,
+            "j"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            48,
+            "r"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            99,
+            "l"
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            125,
+            "l"
+          ],
+          [
+            195,
+            ""
+          ],
+          [
+            8,
+            "j"
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            190,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0
+        }
+      },
+      {
+        "name": "Final hop moves left two frames earlier",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            200,
+            "r"
+          ],
+          [
+            45,
+            "u"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            100,
+            "u"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            40,
+            "u"
+          ],
+          [
+            72,
+            "rgu"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            6,
+            ""
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            132,
+            "r"
+          ],
+          [
+            3,
+            "j"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            48,
+            "r"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            99,
+            "l"
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            125,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            6,
+            "j"
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            190,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Omit underwater upward dash",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            200,
+            "r"
+          ],
+          [
+            45,
+            "u"
+          ],
+          [
+            1,
+            "u"
+          ],
+          [
+            100,
+            "u"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            40,
+            "u"
+          ],
+          [
+            72,
+            "rgu"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            6,
+            ""
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            132,
+            "r"
+          ],
+          [
+            3,
+            "j"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            48,
+            "r"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            99,
+            "l"
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            125,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            8,
+            "j"
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            190,
+            "l"
+          ]
+        ],
+        "result": "The unmoved stone seals the well; the route cannot reach the gallery."
+      },
+      {
+        "name": "Jump-dash-climb against the unturned partition",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            200,
+            "r"
+          ],
+          [
+            45,
+            "u"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            100,
+            "u"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            40,
+            "u"
+          ],
+          [
+            72,
+            "rgu"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            6,
+            ""
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            1,
+            "rux"
+          ],
+          [
+            240,
+            "rgu"
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            180,
+            "r"
+          ]
+        ],
+        "result": "The knight remains west of the closed partition; no tally."
+      },
+      {
+        "name": "Try the lower reef while the tide is out",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            720,
+            ""
+          ],
+          [
+            200,
+            "r"
+          ],
+          [
+            120,
+            "u"
+          ]
+        ],
+        "result": "The exposed reef kills the attempted crossing."
+      }
+    ],
+    "interconnection": "Two western passages are vertically stacked around one well: a flooded thorn tunnel outward and a dry upper exit home. Moving the same visible stone connects these paths. The tide and float govern access to a persistent hinged opening, which the knight traverses in both directions.",
+    "superroom": {
+      "screenAreas": 3.8260869565217392,
+      "stages": [
+        "Flooded reef and underside of the sluice",
+        "Float, hinged gallery and anvil balcony",
+        "Return on the same raised stone above the dry reef"
+      ]
+    },
+    "entrance": "West low chamber; the first full tide already covers the thorn reef.",
+    "exit": "West upper gallery, directly over the outbound tunnel.",
+    "endingForgiveness": "The return stone offers a stable rest before a 16-pixel rise into a 32-tile sheltered gallery. A three-second rest on the stone and a two-frame earlier sideways input both finish without deaths. The far tally balcony is eight tiles wide; missing its anvil transfer drops to a broad safe yard. No final swing, moving catch or momentum chain is required.",
+    "designNotes": "The tide intentionally uses reversed endpoints: low=20 is the initial full-water hold, high=38 is the ebb hold. Existing periodic interpolation supports this without runtime changes. It removes an otherwise empty opening wait while preserving a full-water outward route and dry return. A missed float cycle can be waited out safely in the sluice basin. The canonical route uses ordinary Base dash, swimming, climbing, jumping and anvil pogo.",
+    "route": {
+      "exited": true,
+      "frames": 1252,
+      "deaths": 0,
+      "events": [
+        "land",
+        "splash",
+        "dash",
+        "stone-hit",
+        "stone-stop",
+        "grab",
+        "climbhop",
+        "refill-dash",
+        "jump",
+        "strike",
+        "hinge-turn",
+        "anvil",
+        "stone-lit",
+        "gate-open",
+        "exit"
+      ],
+      "movement": "Ordinary Base movement and anvil pogo; no advanced dash tech."
+    }
+  },
+  "tape": [
+    [
+      1,
+      "r"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      200,
+      "r"
+    ],
+    [
+      45,
+      "u"
+    ],
+    [
+      1,
+      "ux"
+    ],
+    [
+      100,
+      "u"
+    ],
+    [
+      15,
+      "r"
+    ],
+    [
+      40,
+      "u"
+    ],
+    [
+      72,
+      "rgu"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      8,
+      "l"
+    ],
+    [
+      6,
+      ""
+    ],
+    [
+      24,
+      "rj"
+    ],
+    [
+      35,
+      "r"
+    ],
+    [
+      1,
+      "rs"
+    ],
+    [
+      132,
+      "r"
+    ],
+    [
+      3,
+      "j"
+    ],
+    [
+      1,
+      "ds"
+    ],
+    [
+      48,
+      "r"
+    ],
+    [
+      30,
+      ""
+    ],
+    [
+      99,
+      "l"
+    ],
+    [
+      30,
+      "lj"
+    ],
+    [
+      125,
+      "l"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      8,
+      "j"
+    ],
+    [
+      30,
+      "lj"
+    ],
+    [
+      190,
+      "l"
+    ]
+  ]
+}

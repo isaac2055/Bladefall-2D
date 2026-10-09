@@ -1,0 +1,284 @@
+{
+  "room": {
+    "id": "bank-f12",
+    "name": "The Floor You Leave Behind",
+    "palette": "inversion",
+    "study": true,
+    "exit": "left",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "hint": "Gravity turns bodies, not the direction a brass hub turns. Strike the hub clockwise.",
+    "question": "What should the arm be before the room turns over, and what should it become after you stand on its other side?",
+    "map": [
+      "########################################",
+      "#vvvvvvvvvvvvvvvvvvvvvvvvvv<#vvvvvvvvvv#",
+      "#..........................<#..........#",
+      "#G.........................<#..........#",
+      ".G.........................<#..........#",
+      ".G.........................<#..........#",
+      ".G.........................<#..........#",
+      ".G.........................<#..........#",
+      ".G.......######............<#..........#",
+      "########>..................<#..........#",
+      "########>..................<#..........#",
+      "#.......>...................#..........#",
+      "#.......>...Q...............#..........#",
+      "#.......>...Q...............#..........#",
+      "#.......>...Q...............#..........#",
+      "#.......>.......###.........#..........#",
+      "#.......>...................#..........#",
+      "#.......>...#####......................#",
+      "#.......>.................QQQ..........#",
+      "#...P...>.................QQQ.....c....#",
+      "########....................############",
+      "########.^^^^^^^^^^^^^^^^^^^############",
+      "########################################"
+    ],
+    "hingeArms": [
+      {
+        "id": "A",
+        "c": 20,
+        "r": 12,
+        "length": 8,
+        "dir": "up"
+      }
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 2,
+    "difficulty": 5,
+    "role": "puzzle",
+    "worlds": [
+      12,
+      32
+    ],
+    "tags": [
+      "hinge-arm",
+      "gravity",
+      "revisit",
+      "ceiling-route",
+      "return-route"
+    ],
+    "newMechanics": [
+      "hinge-arm"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "hinge-turn",
+      "gravity",
+      "stone-lit"
+    ],
+    "requiredEventCounts": {
+      "gravity": 2,
+      "hinge-turn": 3
+    },
+    "solution": "From the lower approach, turn the upright arm right before entering the left prism. With gravity inverted, cross from the small ceiling island onto the underside of the horizontal arm. At its hub, move to the outside before turning it down: the former ceiling becomes a wall descending toward the far prism. Climb its other face downward, pass the second prism, and take the lower-right tally. Return up the same vertical arm under ordinary gravity, turn it left to restore a westward bridge, and return above the first prism to the opened western loft. On returning from the tally, jump through the low prism without dashing; dash only after clearing it to keep normal gravity. The little island used as a ceiling on the outward trip is now a landing to climb over on the final return.",
+    "nearestExisting": "Crossings C6 only combines inverted gravity with a ring. fi32 rooms alternate floor/roof through fixed prisms. Here the player prepares persistent geometry before inversion, operates its opposite face, then restores it as a physically different return route.",
+    "entrance": "lower-left pocket, 4/19",
+    "exit": "upper-left loft, rows4–8",
+    "designNotes": "Deliberate preparation plus two gravity orientations; no clocks, shade, glass or automatic relay.",
+    "proof": {
+      "frames": 672,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "dash",
+        "land",
+        "refill-dash",
+        "strike",
+        "hinge-turn",
+        "gravity",
+        "grab",
+        "stone-lit",
+        "gate-open",
+        "climbjump",
+        "exit"
+      ],
+      "gravityChanges": [
+        true,
+        false
+      ],
+      "hingeScreenSequence": [
+        "right",
+        "down (while inverted)",
+        "left"
+      ],
+      "verifiedAt": "2026-10-07"
+    },
+    "acceptance": "banked",
+    "userFeedback": {
+      "date": "2026-10-07",
+      "comment": "Interesting and good despite an alternate route; explicitly bank unchanged."
+    }
+  },
+  "tape": [
+    [
+      12,
+      "rj"
+    ],
+    [
+      8,
+      "rux"
+    ],
+    [
+      14,
+      "r"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      28,
+      "rj"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      9,
+      "j"
+    ],
+    [
+      1,
+      "s"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      9,
+      "l"
+    ],
+    [
+      6,
+      "lx"
+    ],
+    [
+      9,
+      "l"
+    ],
+    [
+      30,
+      ""
+    ],
+    [
+      24,
+      "r"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      8,
+      "rdx"
+    ],
+    [
+      14,
+      "r"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      1,
+      "l"
+    ],
+    [
+      1,
+      "s"
+    ],
+    [
+      12,
+      "lg"
+    ],
+    [
+      65,
+      "lgd"
+    ],
+    [
+      10,
+      "r"
+    ],
+    [
+      6,
+      "rx"
+    ],
+    [
+      40,
+      "r"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      30,
+      "l"
+    ],
+    [
+      18,
+      "lj"
+    ],
+    [
+      6,
+      "lux"
+    ],
+    [
+      25,
+      "lgu"
+    ],
+    [
+      1,
+      ""
+    ],
+    [
+      1,
+      "ls"
+    ],
+    [
+      12,
+      "lgu"
+    ],
+    [
+      12,
+      "lgj"
+    ],
+    [
+      12,
+      "l"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      12,
+      "j"
+    ],
+    [
+      6,
+      "ux"
+    ],
+    [
+      22,
+      "l"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      100,
+      "l"
+    ]
+  ]
+}

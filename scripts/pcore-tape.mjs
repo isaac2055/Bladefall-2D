@@ -18,7 +18,9 @@ require(resolve(here,'../public/bladefall-pcore-combat-tapes.js'));
 // (bladefall-pcore-part-NNN-*.js, in level order). The page lists the same files as script tags.
 require(resolve(here,'../public/bladefall-pcore-parts.js'));
 {const {readdirSync}=require('node:fs');const pub=resolve(here,'../public'),files=readdirSync(pub).sort();
- for(const f of files)if(/^bladefall-pcore-dev-.*\.js$/.test(f)&&!/-view\.js$/.test(f))require(resolve(pub,f));
+ for(const f of files)if(/^bladefall-pcore-dev-.*\.js$/.test(f)&&!/-view\.js$/.test(f)&&f!=='bladefall-pcore-dev-cargo-clasp.js')require(resolve(pub,f));
+ // Cargo clasps settle their lantern after other device forces have run.
+ if(files.includes('bladefall-pcore-dev-cargo-clasp.js'))require(resolve(pub,'bladefall-pcore-dev-cargo-clasp.js'));
  // A part file that fails to load (for instance mid-edit) is reported and skipped, so other parts still run.
  for(const f of files)if(/^bladefall-pcore-part-\d{3}.*\.js$/.test(f)){try{require(resolve(pub,f));}catch(e){console.warn('pcore-tape: skipped '+f+': '+e.message);}}}
 export const Core=globalThis.BladefallPrecisionCore;

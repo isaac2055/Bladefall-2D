@@ -27,7 +27,7 @@ function menu(){
  if(typeof showOvHTML!=='function')return;
  mode='merge-menu';
  showOvHTML(`<div class="card"><h1 class="ovh">Merge Pitches</h1><p class="ovsub">Three ways the new physics could carry more of the base game. Playable prototypes, not decisions.</p>
-  <button class="choice" id="mpClimb"><div class="cname">The Climb · worlds 1–9</div><div class="cdesc">Pitch B, carried through the first nine worlds: each world one continuous place, a fire at the start of every section, easy worlds first. The hardest rooms are kept for later.</div></button>
+  <button class="choice" id="mpClimb"><div class="cname">Survive · 40 worlds</div><div class="cdesc">Forty connected worlds with a fire at every section. Play the ascent or review each room; the Fractured worlds form the harder second act.</div></button>
   <button class="choice" id="mpRbr"><div class="cname">Room by Room · the whole game</div><div class="cdesc">Pitch A, carried through every region: the base game’s twenty, then the twenty Fractured. Quests branch off the road and come back. Regions appear as they are built.</div></button>
   <button class="choice" id="mpOutskirts"><div class="cname">A · The Outskirts, room by room</div><div class="cdesc">The Outskirts as six linked screens in the new physics. Rooms slide into each other; the region's people speak as you pass; Mara's bearings open the way.</div></button>
   <button class="choice" id="mpFrostfell"><div class="cname">B · Frostfell, one mountain</div><div class="cdesc">Frostfell as one scrolling climb with no screens. Ice, wind and feathers; hearths keep your place; Nim follows.</div></button>

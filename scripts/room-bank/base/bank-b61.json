@@ -1,0 +1,560 @@
+{
+  "room": {
+    "id": "bank-b61",
+    "name": "Load Before the Window",
+    "palette": "ember",
+    "study": true,
+    "movement": "survive-2",
+    "exit": "right",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "map": [
+      "########################################",
+      "##########.............................#",
+      "##########.............................#",
+      "##########.............................#",
+      "##########.............................#",
+      "##########.............................#",
+      "##########..............................",
+      "##########..............................",
+      "##########..............................",
+      "##########..............................",
+      "##########..............................",
+      "##########.......................#######",
+      "##########......................<#######",
+      "##########......................<#######",
+      "##########EEEEEEEEEEEEEE........<#######",
+      "##########............<#........<#######",
+      "##########............<#........<#######",
+      "##########............<#........<#######",
+      "##########....P.......<#........<#######",
+      "##########............<#........<#######",
+      "##########............<#........<#######",
+      "##########^^^^^^^^^^^^^#^^^^^^^^^#######",
+      "########################################"
+    ],
+    "hint": "Hold the plate until the ceiling cools. Rise through glass, then watch the patrol before leaving.",
+    "question": "Can a disappearing ceiling become the floor you need next?",
+    "recoilPlatforms": [
+      {
+        "id": "Kiln",
+        "c": 12,
+        "r": 19,
+        "w": 6,
+        "depth": 2,
+        "loadFrames": 30,
+        "releaseSpeed": 120
+      }
+    ],
+    "slabs": [
+      {
+        "stone": 60,
+        "molten": 45,
+        "glass": 70
+      }
+    ],
+    "sweepers": [
+      {
+        "id": "Return stroke",
+        "path": [
+          [
+            11.5,
+            12.75
+          ],
+          [
+            23,
+            12.75
+          ]
+        ],
+        "period": 180,
+        "phase": 50,
+        "radius": 4
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 14,
+    "run": 7,
+    "collection": "run7",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "difficulty": 3,
+    "role": "Store launch energy while a ceiling becomes passable",
+    "worlds": [],
+    "tags": [
+      "recoil-platform",
+      "heat-slab",
+      "timing",
+      "lift",
+      "patrol",
+      "arrival-phase"
+    ],
+    "newMechanics": [],
+    "author": "Codex",
+    "humanReview": "Unreviewed candidate. Difficulty is an author estimate; no human ratings assigned.",
+    "learningFamily": "reply-and-cycle",
+    "lessonRole": "develop",
+    "preparesFor": [
+      "bank-f62"
+    ],
+    "prerequisites": [],
+    "format": "compact",
+    "requiredEvents": [
+      "recoil-load",
+      "recoil-release",
+      "recoil-jump",
+      "slab-glass"
+    ],
+    "solution": "Compress the recoil plate and hold the charge while the slab pips count down. Release and jump as the ceiling becomes glass. Rise through it and land on that same face. Watch the patrol return along the narrow floor, then jump and dash up-right toward the high eastern shelf before the floor next turns molten.",
+    "nearestExisting": "The old Glass Door rooms teach passing cooling slabs; the earlier recoil rooms change physical weight. This combines held launch energy with a ceiling that becomes the takeoff floor for a second timed crossing.",
+    "novelty": "One thermal face has opposite jobs in the same jump: it must admit the upward launch, then receive the fall.",
+    "entrance": "Enclosed recoil well beneath a changing ceiling.",
+    "exit": "High east shelf.",
+    "positiveChecks": [
+      {
+        "name": "Launch two frames earlier",
+        "tape": [
+          [
+            93,
+            "d"
+          ],
+          [
+            7,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "rgu"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 241,
+        "events": [
+          "recoil-load",
+          "slab-molten",
+          "recoil-release",
+          "jump",
+          "recoil-jump",
+          "slab-glass",
+          "land",
+          "slab-stone",
+          "dash",
+          "refill-dash",
+          "exit"
+        ],
+        "eventCounts": {
+          "recoil-load": 1,
+          "slab-molten": 2,
+          "recoil-release": 1,
+          "jump": 2,
+          "recoil-jump": 1,
+          "slab-glass": 1,
+          "land": 2,
+          "slab-stone": 1,
+          "dash": 1,
+          "refill-dash": 1,
+          "exit": 1
+        }
+      },
+      {
+        "name": "Launch two frames later",
+        "tape": [
+          [
+            97,
+            "d"
+          ],
+          [
+            7,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "rgu"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 245,
+        "events": [
+          "recoil-load",
+          "slab-molten",
+          "recoil-release",
+          "slab-glass",
+          "jump",
+          "recoil-jump",
+          "land",
+          "slab-stone",
+          "dash",
+          "refill-dash",
+          "exit"
+        ],
+        "eventCounts": {
+          "recoil-load": 1,
+          "slab-molten": 2,
+          "recoil-release": 1,
+          "slab-glass": 1,
+          "jump": 2,
+          "recoil-jump": 1,
+          "land": 2,
+          "slab-stone": 1,
+          "dash": 1,
+          "refill-dash": 1,
+          "exit": 1
+        }
+      },
+      {
+        "name": "Leave glass two frames later",
+        "tape": [
+          [
+            95,
+            "d"
+          ],
+          [
+            7,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "rgu"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 245,
+        "events": [
+          "recoil-load",
+          "slab-molten",
+          "recoil-release",
+          "jump",
+          "recoil-jump",
+          "slab-glass",
+          "land",
+          "slab-stone",
+          "dash",
+          "refill-dash",
+          "exit"
+        ],
+        "eventCounts": {
+          "recoil-load": 1,
+          "slab-molten": 2,
+          "recoil-release": 1,
+          "jump": 2,
+          "recoil-jump": 1,
+          "slab-glass": 1,
+          "land": 2,
+          "slab-stone": 1,
+          "dash": 1,
+          "refill-dash": 1,
+          "exit": 1
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Unload with ordinary jump and dash",
+        "tape": [
+          [
+            95,
+            ""
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "rgu"
+          ]
+        ],
+        "exited": false,
+        "deaths": 3,
+        "frames": 0,
+        "events": [
+          "jump",
+          "dash",
+          "death",
+          "respawn"
+        ],
+        "eventCounts": {
+          "jump": 1,
+          "dash": 2,
+          "death": 3,
+          "respawn": 3
+        }
+      },
+      {
+        "name": "Release while still molten",
+        "tape": [
+          [
+            70,
+            "d"
+          ],
+          [
+            7,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "rgu"
+          ]
+        ],
+        "exited": false,
+        "deaths": 3,
+        "frames": 0,
+        "events": [
+          "recoil-load",
+          "slab-molten",
+          "recoil-release",
+          "jump",
+          "recoil-jump",
+          "death",
+          "respawn",
+          "dash"
+        ],
+        "eventCounts": {
+          "recoil-load": 1,
+          "slab-molten": 1,
+          "recoil-release": 1,
+          "jump": 2,
+          "recoil-jump": 1,
+          "death": 3,
+          "respawn": 3,
+          "dash": 1
+        }
+      },
+      {
+        "name": "Wait into the return stroke after landing on glass",
+        "tape": [
+          [
+            95,
+            "d"
+          ],
+          [
+            7,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            68,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "rgu"
+          ]
+        ],
+        "exited": false,
+        "deaths": 3,
+        "firstFailure": {
+          "type": "death",
+          "frame": 211,
+          "x": 186,
+          "y": 107,
+          "cause": "sweeper",
+          "vx": 0,
+          "vy": 0,
+          "i": 210
+        }
+      }
+    ],
+    "timingCues": [
+      "Glass begins after the orange molten interval; the plate can hold its charge indefinitely.",
+      "The patrol travels across the landing you are about to use. Read its return as well as the slab pips before departing."
+    ],
+    "routeProof": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 243,
+      "events": [
+        "recoil-load",
+        "slab-molten",
+        "recoil-release",
+        "jump",
+        "recoil-jump",
+        "slab-glass",
+        "land",
+        "slab-stone",
+        "dash",
+        "refill-dash",
+        "exit"
+      ],
+      "eventCounts": {
+        "recoil-load": 1,
+        "slab-molten": 2,
+        "recoil-release": 1,
+        "jump": 2,
+        "recoil-jump": 1,
+        "slab-glass": 1,
+        "land": 2,
+        "slab-stone": 1,
+        "dash": 1,
+        "refill-dash": 1,
+        "exit": 1
+      }
+    },
+    "routeMovement": [
+      {
+        "type": "recoil-jump",
+        "frame": 103,
+        "x": 117,
+        "y": 148,
+        "source": "recoil:Kiln",
+        "vx": 56.66666666666667,
+        "vy": -225
+      }
+    ]
+  },
+  "tape": [
+    [
+      95,
+      "d"
+    ],
+    [
+      7,
+      ""
+    ],
+    [
+      25,
+      "rj"
+    ],
+    [
+      20,
+      "r"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      12,
+      "rux"
+    ],
+    [
+      100,
+      "rgu"
+    ]
+  ]
+}

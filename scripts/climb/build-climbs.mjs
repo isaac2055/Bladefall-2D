@@ -57,6 +57,14 @@ function runTape(def,tape,{extra=40,any=false}={}){
 }
 function idleSafe(def,n=150){const g=Core.createGame([def],{room:0});for(let i=0;i<n;i++){Core.step(g,keysToInput(''));for(const e of g.events)if(e.type==='death')return false;g.events.length=0;}return true;}
 
+// Cache successful search tapes, never failures. Every hit is replayed against today's simulation before use.
+// Files are independent so simultaneous world builds cannot overwrite one another's proofs.
+const proofDir=resolve(root,'scripts/climb/.cache/seam-proofs');mkdirSync(proofDir,{recursive:true});
+function proofFile(g,kind){const {defs,rooms,room,spikeSafe,...state}=g;
+ return resolve(proofDir,createHash('sha1').update(JSON.stringify([kind,room.def,state])).digest('hex')+'.json');}
+function readProof(file){try{return JSON.parse(readFileSync(file,'utf8'));}catch{return null;}}
+function saveProof(file,tape){try{writeFileSync(file,JSON.stringify(tape));}catch{}}
+
 /* From the knight's state just after a seam, can he reach the fire (stand at the spawn)? A short beam search. */
 const MOVES=[...ACT.move,...ACT.jumps,...ACT.grabs,[[8,'r']],[[8,'l']],[[16,'u']],[[16,'gu']],[[16,'rgu']],[[16,'lgu']],[[1,'']],[[20,'']]];
 function reachFire(g0,spawn,{beam=600,depth=40}={}){
@@ -65,12 +73,21 @@ function reachFire(g0,spawn,{beam=600,depth=40}={}){
  let settled=spawn.y;try{const s0=Core.createGame([g0.room.def],{room:0});for(let i=0;i<30;i++){Core.step(s0,keysToInput(''));s0.events.length=0;}if(s0.p.onGround&&Math.abs(s0.p.x-spawn.x)<=10)settled=s0.p.y;}catch(e){}
  const ok=g=>g.p.onGround&&Math.abs(g.p.x-spawn.x)<=10&&(Math.abs(g.p.y-spawn.y)<=2||Math.abs(g.p.y-settled)<=2);
  if(ok(g0))return {tape:[]};
+ const file=proofFile(g0,['fire',spawn,settled]),cached=readProof(file);
+ if(cached){const g=restore(g0),r=run(g,cached);if(!r.dead&&!r.exited&&ok(g))return {tape:cached};}
+ const found=tape=>{saveProof(file,tape);return {tape};};
+ // Try ordinary movement before the beam search; each candidate is still simulated from the exact seam state.
+ for(const t of [[[90,'']],[[80,'l']],[[80,'r']],[[70,'lgu'],[30,'r']],[[70,'rgu'],[30,'l']],[[20,'lj'],[50,'l']],[[20,'rj'],[50,'r']]]){
+  const g=restore(g0),tape=[];
+  for(const k of frames(t)){Core.step(g,keysToInput(k));const bad=g.events.some(e=>e.type==='death'||e.type==='exit');g.events.length=0;
+   if(bad)break;if(tape.length&&tape.at(-1)[1]===k)tape.at(-1)[0]++;else tape.push([1,k]);if(ok(g))return found(tape);}
+ }
  let front=[{s:snapshot(g0),tape:[]}],seen=new Set([key(g0)]);
  for(let d=0;d<depth&&front.length;d++){
   const next=[];
   for(const n of front)for(const a of MOVES){
    const g=restore(n.s);const r=run(g,a);if(r.dead)continue;
-   const tape=[...n.tape,...a];if(ok(g))return {tape};
+   const tape=[...n.tape,...a];if(ok(g))return found(tape);
    if(r.exited)continue;const k=key(g);if(seen.has(k))continue;seen.add(k);
    next.push({s:snapshot(g),tape,sc:Math.hypot(g.p.x-spawn.x,(g.p.y-spawn.y)*1.3)});
   }
@@ -179,10 +196,40 @@ function fireFor(def){
 }
 
 /* ---------------------------------------------------------------- one chain (the road, or a quest's rooms) */
-/* A connector: a short climbable shaft that lifts a branch clear of the road. `from` is how the knight arrives
-   ('up' from below, 'left'/'right' walking in from the side); it always leaves by its top. */
+/* Connectors keep authored rooms intact while making their entrances fit: climbs, drops,
+   side-to-side rises, and short horizontal gaps. Every connector has a simulated route. */
 let connN=0,ALLOW_CONN=false;
 function connector(from,H,palette,lock){
+ if(from==='bridge-left'||from==='bridge-right'){
+  const right=from==='bridge-right',W=H,R=6,g=Array.from({length:R},(_,r)=>Array(W).fill(r===0||r>=4?'#':'.'));
+  g[3][right?2:W-3]='P';
+  const id='conn-'+(++connN),def={id,name:'',exit:right?'right':'left',palette,lock,connector:true,cols:W,rows:R,map:g.map(r=>r.join('')),hint:'',question:''};
+  const tape=[[W*8,right?'r':'l']],r=runTape(def,tape);if(!r.exit||r.deaths)return null;
+  EXTRA_TAPES[id]=tape;Rooms.all.push(def);return def;
+ }
+ if(from==='raise-left'||from==='raise-right'){
+  // Enter at the foot and leave sideways at the top. A U-turn's higher exit then clears this shaft.
+  const right=from==='raise-right',W=8,sh=right?3:1,g=Array.from({length:H},()=>Array(W).fill('#'));
+  for(let r=1;r<H-1;r++)for(let c=sh;c<sh+4;c++)g[r][c]='.';
+  for(let r=H-4;r<H-1;r++)for(let c=right?0:1;c<(right?W-1:W);c++)g[r][c]='.';
+  for(let r=1;r<=3;r++)for(let c=right?sh:0;c<(right?W:sh+4);c++)g[r][c]='.';
+  g[H-2][right?1:W-2]='P';
+  const id='conn-'+(++connN),def={id,name:'',exit:right?'right':'left',palette,lock,connector:true,cols:W,rows:H,map:g.map(r=>r.join('')),hint:'',question:''};
+  const g0=Core.createGame([def],{room:0});
+  const r=reachEdge(g0,{beam:100,depth:160,score:q=>q.p.y+Math.abs(q.p.x-(right?W*8:0))*.2});if(!r)return null;
+  EXTRA_TAPES[id]=r.tape;Rooms.all.push(def);return def;
+ }
+ if(from==='up-left'||from==='up-right'){
+  // A ceiling branch with a raised starting ledge is entered from the side after a climb,
+  // instead of cutting an impossible shaft through the hazards below that ledge.
+  const left=from==='up-left',W=9,sh=left?4:1,g=Array.from({length:H},()=>Array(W).fill('#'));
+  for(let r=1;r<H;r++)for(let c=sh;c<sh+4;c++)g[r][c]='.';
+  for(let r=1;r<=3;r++)for(let c=left?0:1;c<(left?W-1:W);c++)g[r][c]='.';
+  g[H-2].fill('#');g[H-1].fill('#');g[H-3][sh+1]='P';
+  const id='conn-'+(++connN),def={id,name:'',exit:left?'left':'right',palette,lock,connector:true,cols:W,rows:H,map:g.map(r=>r.join('')),hint:'',question:''};
+  const g0=Core.createGame([def],{room:0}),r=reachEdge(g0,{beam:600,depth:100,score:q=>q.p.y+Math.abs(q.p.x-(left?0:W*8))*.2});if(!r)return null;
+  EXTRA_TAPES[id]=r.tape;Rooms.all.push(def);return def;
+ }
  if(from==='down'){
   // a drop: a four-wide shaft fallen straight through, entered at its top, left by its bottom (7.274, for a branch
   // whose door is in a floor and whose rooms would otherwise sit on the road below)
@@ -236,7 +283,7 @@ function buildChain(defs,tag,w,start=null,placed=[],road=false){   // (road: the
    let pl=null,why='';
    // the ways in, in order: the first that sits clear of everything AND leaves the room's own routes working
    const keys=[d0.id,d0.id+'#side',d0.id+'#bearing'].filter(k=>tapeOf(k));let fallback=null;
-   for(let o=0;o<26;o++){const c=placeNext(prevOrig,prevSec,d0,prevSnap,o);if(!c)break;if(c.skip){if(TRACE)console.log('   ',d0.id,'option',o,'skipped');continue;}const rect={x:c.x,y:c.y,...dims(c.def)};
+   for(const o of w.roadLifts?.[d0.id]||w.roadGaps?.[d0.id]||w.roadRises?.[d0.id]||w.roadEntrances?.[d0.id]?[]:w.entryOptions?.[d0.id]||Array.from({length:26},(_,i)=>i)){const c=placeNext(prevOrig,prevSec,d0,prevSnap,o);if(!c)break;if(c.skip){if(TRACE)console.log('   ',d0.id,'option',o,'skipped');continue;}const rect={x:c.x,y:c.y,...dims(c.def)};
     const hit=[...secs,...placed].find(s=>overlaps(rect,s)&&!sharedWall(rect,c.def,s));if(hit){why=`would overlap ${hit.room} (${c.how})`;if(TRACE)console.log('   ',d0.id,'option',o,why,JSON.stringify([rect.x,rect.y,rect.C,rect.R]),'hit',JSON.stringify([hit.x,hit.y,hit.C,hit.R]),'from',JSON.stringify([prevSec.x,prevSec.y]));continue;}
     const g=Core.createGame([c.def],{room:0});CL.carry(Core,g,prevSnap,{x:prevSec.x*8,y:prevSec.y*8},{x:c.x*8,y:c.y*8});const drop=d0.connector&&d0.exit==='down';   // a drop shaft has no fire to stand at
     if(!drop&&!reachFire(g,g.room.spawn)){why=`cannot reach the fire (${c.how})`;if(TRACE)console.log('   ',d0.id,'option',o,why,'landed',g.p.x,g.p.y);continue;}
@@ -251,14 +298,23 @@ function buildChain(defs,tag,w,start=null,placed=[],road=false){   // (road: the
      try{const sub=buildChain([cd,...defs],tag,w,start,placed);return sub;}catch(e){why=e.message;}
     }
    }
+   // An upward exit can enter a high checkpoint from the side via an explicit climbing elbow.
+   if(!pl&&w.roadEntrances?.[d0.id]&&i>0&&prevOrig.exit==='up'){
+    const entry=w.roadEntrances[d0.id],cd=connector('up-'+entry.side,entry.height,d0.palette,d0.lock);
+    if(!cd)throw new Error(`${tag}: cannot make entrance for ${d0.id}`);
+    const sub=buildChain([cd,...defs.slice(i)],tag,{...w,roadEntrances:{...w.roadEntrances,[d0.id]:null}},{def:prevOrig,sec:prevSec,snap:prevSnap},[...placed,...secs],true);
+    report.push(`${d0.id}: enters through a ${entry.height}-tile climbing elbow`);
+    return {secs:[...secs.map(({C,R,...s})=>s),...sub.secs],rects:[...secs,...sub.rects],rooms:[...out,...sub.rooms],report:[...report,...sub.report],lastSnap:sub.lastSnap,lastDef:sub.lastDef,lastSec:sub.lastSec};
+   }
+   // roadLifts explicitly raises a U-turn room before its exit can point back into the preceding road.
    // (7.277) the road after a turn may turn again (the Fractured Causeway's East and Middle courts both face back)
    if(!pl&&(!start||road)&&i>0&&!d0.connector&&!prevOrig.connector&&['left','right'].includes(prevOrig.exit||'right')){
     // a room that cannot be walked into from the side (its fire is on a cart across a pit): turn the road down
     // through a short connector and enter it from above, over its fire (7.275)
-    for(let H=8;H<=64&&!pl;H+=4){
-     const cd=connector((prevOrig.exit||'right')==='right'?'turn-left':'turn-right',H,d0.palette,d0.lock);if(!cd)continue;
-     try{const sub=buildChain([cd,...defs.slice(i)],tag,w,{def:prevOrig,sec:prevSec,snap:prevSnap},[...placed,...secs],true);
-      report.push(`${d0.id}: turned down through a ${H}-tile drop (${why})`);
+    for(const H of w.roadRises?.[d0.id]?[w.roadRises[d0.id]]:w.roadLifts?.[d0.id]?[w.roadLifts[d0.id]]:w.roadGaps?.[d0.id]?[w.roadGaps[d0.id]]:Array.from({length:15},(_,i)=>8+i*4)){
+     const cd=connector(w.roadRises?.[d0.id]?(prevOrig.exit||'right'):w.roadGaps?.[d0.id]?'bridge-'+(prevOrig.exit||'right'):w.roadLifts?.[d0.id]?'raise-'+(prevOrig.exit||'right'):(prevOrig.exit||'right')==='right'?'turn-left':'turn-right',H,d0.palette,d0.lock);if(!cd)continue;
+     try{const sub=buildChain([cd,...defs.slice(i)],tag,{...w,roadRises:{...w.roadRises,[d0.id]:null},roadLifts:{...w.roadLifts,[d0.id]:null},roadGaps:{...w.roadGaps,[d0.id]:null}},{def:prevOrig,sec:prevSec,snap:prevSnap},[...placed,...secs],true);
+      report.push(`${d0.id}: offset through a ${H}-tile connector (${why})`);
       return {secs:[...secs.map(({C,R,...s})=>s),...sub.secs],rects:[...secs,...sub.rects],rooms:[...out,...sub.rooms],report:[...report,...sub.report],lastSnap:sub.lastSnap,lastDef:sub.lastDef,lastSec:sub.lastSec};}
      catch(e){if(TRACE)console.log('   turn',H,e.message);}
     }
@@ -282,6 +338,7 @@ function buildChain(defs,tag,w,start=null,placed=[],road=false){   // (road: the
   if(w.dropPeopleOf&&room.people)room.people=room.people.filter(p=>!w.dropPeopleOf.includes(p.quest));
   secs.push({room:id,x:sec.x,y:sec.y,fire,C:dims(def).C,R:dims(def).R});
   out.push(room);ROOM_DEFS.set(id,room);
+  if(verbose)console.log(`  ${tag}: placed ${d0.id} at ${sec.x},${sec.y}`);
   prevDef={...def,origin:d0.id};prevOrig={...d0};prevSec=sec;prevSnap=r.snap;
  }
  return {secs:secs.map(({C,R,...s})=>s),rects:secs,rooms:out,report,lastSnap:prevSnap,lastDef:prevOrig,lastSec:prevSec};
@@ -290,13 +347,22 @@ function buildChain(defs,tag,w,start=null,placed=[],road=false){   // (road: the
 /* ---------------------------------------------------------------- secrets */
 const MOVES_OUT=[...MOVES,...ACT.dashes];
 function reachEdge(g0,{beam=900,depth=60,score=null}={}){
+ const file=proofFile(g0,'edge'),cached=readProof(file);
+ if(cached){const g=restore(g0),r=run(g,cached);if(r.exited&&!r.dead)return {tape:cached,snap:CL.snap(g)};}
+ const found=(tape,g)=>{saveProof(file,tape);return {tape,snap:CL.snap(g)};};
+ // Authored movement followed by a plain wall climb often reaches a door without a large search.
+ const authored=tapeOf(g0.room.def.origin||g0.room.def.id)||[];
+ const simple=[[[120,'rgu']],[[120,'lgu']],[[30,'r'],[100,'rgu']],[[30,'l'],[100,'lgu']],[[60,'']],[[90,'r']],[[90,'l']]];
+ for(const tape of [...simple,...(authored.length?['rgu','lgu','u'].map(k=>[...authored,[120,k]]):[])]){
+  const g=restore(g0),r=run(g,tape);if(r.exited&&!r.dead)return found(tape,g);
+ }
  const key=g=>[g.p.x>>1,g.p.y>>1,Math.round(g.p.vx/30),Math.round(g.p.vy/30),g.p.state,g.p.dashes,g.p.onGround?1:0].join('|');
  let front=[{s:snapshot(g0),tape:[]}],seen=new Set();
  for(let d=0;d<depth&&front.length;d++){
   const next=[];
   for(const n of front)for(const a of MOVES_OUT){
    const g=restore(n.s);const r=run(g,a);if(r.dead)continue;const tape=[...n.tape,...a];
-   if(r.exited)return {tape,snap:CL.snap(g)};
+   if(r.exited)return found(tape,g);
    const k=key(g);if(seen.has(k))continue;seen.add(k);next.push({s:snapshot(g),tape,sc:score?score(g):g.p.y+Math.abs(g.p.x-g.secretX)*.5});
   }
   next.sort((a,b)=>a.sc-b.sc);front=next.slice(0,beam);
@@ -318,10 +384,15 @@ function ceilingDoor1(choices,hosts,spec,placed,hostOf,used,check){
   // spec.secret.wide (7.275): a world whose ceiling corners are all covered may cut its door anywhere along a ceiling
   const C0=dims(host).C,spots=[[36,37],[37,38],[1,2],[2,3]];
   if(spec.secret?.wide){const side=[];for(let k=3;k<C0/2-1;k++)side.push([C0-2-k,C0-1-k],[k,k+1]);spots.unshift(...side);}   // just in from the corners (a climb up a wall still reaches them), moving inward
+  // Prefer the checkpoint's corner; trying the far corner first searches the entire hard challenge unnecessarily.
+  const spawnCol=spawnOf(host).c,corner=cs=>cs[0]<=2||cs[1]>=C0-2;
+  spots.sort((a,b)=>Number(corner(b))-Number(corner(a))||Math.abs((a[0]+a[1])/2-spawnCol)-Math.abs((b[0]+b[1])/2-spawnCol));
   // (wide: a ceiling up to ten tiles thick is cut through, the whole height of the door)
   const thick=c=>{let r=0;while(r<gm0.length&&ROCK.has(gm0[r][c]))r++;return r;},gm0=g;
   for(const cols of spots){
    if(!cols.every(c=>ROCK.has(g[0][c])&&(spec.secret?.wide?thick(c)<=10&&thick(c)<dims(host).R-1:!ROCK.has(g[1][c]))))continue;
+   // A shaft must open into clear space, not retain spikes directly under its mouth.
+   if(cols.some(c=>['^','v','<','>'].includes(g[thick(c)]?.[c])))continue;
    if(check?.pre&&!check.pre(h,cols))continue;
    const gm=gridOf(host);for(const c of cols)for(let r=0;r<gm.length&&ROCK.has(gm[r][c]);r++)gm[r][c]='.';const hostMap=gm.map(r=>r.join(''));
    const own=runTape({...host,map:hostMap},tapeOf(host.id));if(!own.exit||own.deaths)continue;
@@ -331,7 +402,7 @@ function ceilingDoor1(choices,hosts,spec,placed,hostOf,used,check){
    for(const ch of choices){
     try{const chain=buildChain(ch.defs,`branch ${ch.origin}`,spec,{def:virt,sec:h.sec,snap:reach.snap},placed);
      if(check&&!check(chain,h,cols)){if(verbose)console.log('  branch',ch.origin,'at',id,cols,'rejected: no way back from it');continue;}
-     return {h,cols,chain,choice:ch,tape:reach.tape};}
+     return {h,cols,chain,choice:ch,tape:reach.tape,start:{def:virt,sec:h.sec,snap:reach.snap}};}
     catch(e){if(verbose)console.log('  branch',ch.origin,'at',id,cols,'rejected:',e.message);}
    }
   }
@@ -456,7 +527,8 @@ function passage(branchLast,lastSec,lastSnap,targets,occAll,spec,wide=false){
  const goals=[];const far=(gx,gy)=>Math.abs(gx-start.x)+(gy<start.y?3:1)*Math.abs(gy-start.y);
  for(const [k,T] of targets.entries()){const s=T.sec,room=T.room,g=gridOf(room),{C:hC,R:hR}=dims(room);
   // an edge already used (its exit, a side door, a seam) can still take a way back, clear of its openings by two
-  const extra=T.cost||0;
+  // Prefer a landing beside the checkpoint over a shorter route into the room's hazards.
+  const checkpoint=spawnOf(room),extra=T.cost||0;
   const used=e=>{const o=opening(room,e);for(const dr of room.doors||[])if(dr.edge===e)o.push(...dr.cols);for(const rt of room.returns||[])if((rt.edge||'up')===e)o.push(...rt.cols);return o;};
   const clear=(e,cs)=>used(e).every(u=>cs.every(c=>Math.abs(u-c)>2));
   const ceil=[[1,2],[2,3],[hC-4,hC-3],[hC-3,hC-2]];if(wide)for(let c=4;c<hC-5;c+=3)ceil.push([c,c+1]);   // the wide pass: anywhere along the ceiling
@@ -464,7 +536,7 @@ function passage(branchLast,lastSec,lastSnap,targets,occAll,spec,wide=false){
    // through up to four tiles of ceiling, to open space below
    const TL=spec?.secret?.wide?12:4;   // (a world of thick ceilings, World 19: through up to twelve)
    let t=1;while(t<=TL&&cols.every(c=>ROCK.has(g[t][c])))t++;if(t>TL||!cols.every(c=>[...Array(t).keys()].every(y=>ROCK.has(g[y][c]))))continue;if(!clear('up',cols))continue;
-   goals.push({k,depth:t,edge:'up',cols,x:s.x+cols[0],y:s.y-5,tail:[[0,1],[0,2],[0,3]],dist:far(s.x+cols[0],s.y-5)*1.25+6+extra});}
+   goals.push({k,depth:t,edge:'up',cols,x:s.x+cols[0],y:s.y-5,tail:[[0,1],[0,2],[0,3]],dist:far(s.x+cols[0],s.y-5)*1.25+6+extra+Math.abs(cols[0]+.5-checkpoint.c)*4});}
   for(const e of ['left','right']){const wc=e==='left'?0:hC-1,ic=e==='left'?1:hC-2;
    for(let r=2;r<hR-3;r++){
     if(![r-1,r,r+1,r+2].every(y=>ROCK.has(g[y][wc])))continue;
@@ -473,7 +545,7 @@ function passage(branchLast,lastSec,lastSnap,targets,occAll,spec,wide=false){
     if(t>4||!ROCK.has(g[r+2][wc+st*t]))continue;
     if((room.seam||[]).some(([c,y])=>c===wc&&Math.abs(y-r)<4)||!clear(e,[r,r+1]))continue;
     const gx=e==='left'?s.x-4:s.x+hC+2;
-    goals.push({k,depth:t,edge:e,cols:[r,r+1],x:gx,y:s.y+r,tail:e==='left'?[[1,0],[2,0],[3,0]]:[[-1,0],[-2,0],[-3,0]],dist:far(gx,s.y+r)+extra});}}}
+    goals.push({k,depth:t,edge:e,cols:[r,r+1],x:gx,y:s.y+r,tail:e==='left'?[[1,0],[2,0],[3,0]]:[[-1,0],[-2,0],[-3,0]],dist:far(gx,s.y+r)+extra+Math.abs(r+1-checkpoint.r)*4+(e==='left'?checkpoint.c:hC-1-checkpoint.c)*2});}}}
  goals.sort((a,b)=>a.dist-b.dist);
  for(const goal of goals.slice(0,wide?24:10)){
   const host=targets[goal.k].room,hsec=targets[goal.k].sec;
@@ -561,8 +633,8 @@ function passage(branchLast,lastSec,lastSnap,targets,occAll,spec,wide=false){
    defs.push(def);secs.push({room:id,x:rc.x0,y:rc.y0,C:Cc,R:Rr});
   }
   if(defs.length<rects.length){if(verbose)console.log('  passage goal',host.origin,'a segment has no corridor');continue;}
-  // every piece must be big enough to pass: two open tiles across its way out (the knight is two tiles tall)
-  if(defs.some(df=>opening(df,df.exit).length<2)){if(verbose)console.log('  passage goal',host.origin,'a piece is too thin');continue;}
+  // Both mouths need two open tiles: a one-tile side entrance traps a two-tile-tall knight.
+  if(defs.some(df=>opening(df,df.exit).length<2||opening(df,df.entry).length<2)){if(verbose)console.log('  passage goal',host.origin,'a piece is too thin');continue;}
   // prove it: carry from the branch's exit through every segment into the host, then to its fire
   let snap=lastSnap,from={x:lastSec.x*8,y:lastSec.y*8},ok=true;const through=[];
   for(const [i,def] of defs.entries()){
@@ -611,7 +683,7 @@ for(const spec of WORLDS){
  // change to quests, secrets or their ways back rebuilds in minutes, not the whole road again.
  // spec.reserve (7.275): ground the page will put there (the arrival junction and its mouths), relative to the first room, kept free
  const reserve=(spec.reserve||[]).map((r,i)=>({...r,room:`(reserved ${i})`}));
- const roadDefs=spec.order.map(byId),roadKey=createHash('sha1').update(JSON.stringify([roadDefs,roadDefs.map(d=>tapeOf(d.id)),reserve,
+ const roadDefs=spec.order.map(byId),roadKey=createHash('sha1').update(JSON.stringify([roadDefs,roadDefs.map(d=>tapeOf(d.id)),reserve,spec.roadLifts,spec.roadRises,spec.roadGaps,spec.entryOptions,spec.roadEntrances,
   buildChain.toString(),placeNext.toString(),carve.toString(),reachFire.toString(),CL.carry.toString(),Core.step.toString().length])).digest('hex').slice(0,16);
  const roadFile=resolve(root,`scripts/climb/.cache/road-${spec.n}-${roadKey}.json`);
  let main;
@@ -623,8 +695,18 @@ for(const spec of WORLDS){
  if(main)main=patchRoad(main);
  if(main)for(const r of main.rooms)ROOM_DEFS.set(r.id,r);
  if(!main)try{main=JSON.parse(readFileSync(roadFile,'utf8'));if(verbose)console.log(`  road ${spec.n}: from the cache`);}
- catch(e){main=buildChain(roadDefs,`world ${spec.n}`,spec,null,reserve);try{mkdirSync(dirname(roadFile),{recursive:true});writeFileSync(roadFile,JSON.stringify(main));}catch(e2){}}
- for(const r of main.rooms)ROOM_DEFS.set(r.id,r);
+ catch(e){main=buildChain(roadDefs,`world ${spec.n}`,spec,null,reserve);main.tapes=Object.fromEntries(main.rooms.filter(r=>r.connector).map(r=>[r.origin,tapeOf(r.origin)]));try{mkdirSync(dirname(roadFile),{recursive:true});writeFileSync(roadFile,JSON.stringify(main));}catch(e2){}}
+ Object.assign(EXTRA_TAPES,main.tapes||{});
+ for(const r of main.rooms){
+  ROOM_DEFS.set(r.id,r);
+  if(r.connector){connN=Math.max(connN,+(r.origin.match(/^conn-(\d+)$/)?.[1]||0));
+   if(!tapeOf(r.origin)){const def={...r,id:r.origin},g=Core.createGame([def],{room:0}),ex=def.exit;
+    const oc=opening(def,ex),mid=(oc[0]+oc.at(-1)+1)*4,tx=ex==='left'?0:ex==='right'?g.room.w:mid,ty=ex==='up'?0:ex==='down'?g.room.h:mid;
+    const proof=reachEdge(g,{beam:200,depth:160,score:q=>Math.hypot(q.p.x+4-tx,q.p.y+6-ty)});
+    if(!proof)throw new Error(`cached road ${spec.n}: missing connector route for ${r.origin}`);EXTRA_TAPES[r.origin]=proof.tape;
+   }
+  }
+ }
  const quests=[],placed=[...main.rects,...reserve],used=new Set();
  const hostOf=id=>{const k=spec.order.includes(id)?main.rooms.findIndex(r=>r.origin===id):-1;return k<0?null:{orig:byId(id),sec:main.secs[k],room:main.rooms[k]};};
  for(const qid of spec.quests){
@@ -638,13 +720,13 @@ for(const spec of WORLDS){
    // the side door's route on the host as it is played (seam open); where that route needed the seam's wall, a new
    // one is found, and the quest is hung where the knight actually comes out
    const h=hostOf(q.from),side=h.orig.side,played={...h.orig,map:h.room.map};
-   let st=runTape(played,Rooms.tapes[h.orig.id+'#side']);
+   let st=runTape(played,tapeOf(h.orig.id+'#side'));
    if(!st.exit||!st.exit.side||st.deaths){const t=reachTo({...played,exit:side,side:undefined},side,null);
     if(t){SIDE_TAPES[h.room.id]=t;st=runTape({...played,exit:side,side:undefined},t);if(st.exit)st.exit.side=true;}
-    else st=runTape(h.orig,Rooms.tapes[h.orig.id+'#side']);}
+    else st=runTape(h.orig,tapeOf(h.orig.id+'#side'));}
    if(!st.exit||!st.exit.side)throw new Error(`quest ${qid}: ${q.from}'s side tape does not leave by the side`);
    qstart={def:{...h.orig,exit:side},sec:h.sec,snap:st.snap};
-   try{try{chain=buildChain(qrooms,`quest ${qid}`,spec,{def:{...h.orig,exit:side},sec:h.sec,snap:st.snap},placed);}
+   try{if(spec.questCeilings?.[qid]?.force)throw new Error('planned ceiling entrance');try{chain=buildChain(qrooms,`quest ${qid}`,spec,{def:{...h.orig,exit:side},sec:h.sec,snap:st.snap},placed);}
     catch(e0){ALLOW_CONN=true;try{chain=buildChain(qrooms,`quest ${qid}`,spec,{def:{...h.orig,exit:side},sec:h.sec,snap:st.snap},placed);}
      catch(e1){
       // a later room of the errand is what will not fit: shift the whole errand with a short shaft at its door
@@ -661,10 +743,12 @@ for(const spec of WORLDS){
    catch(e){
     // Its side door has no room beyond it (the road is there): the quest opens from a ceiling instead.
     if(verbose)console.log(`  quest ${qid}: side door blocked (${e.message}); trying a ceiling`);
-    const n=spec.order.length,hosts=[...spec.order.slice(spec.order.indexOf(q.from)),...spec.order.slice(0,spec.order.indexOf(q.from))];
-    const f=ceilingDoor([{defs:qrooms,origin:qid}],hosts,spec,placed,hostOf,used);
+    const ceiling=spec.questCeilings?.[qid],hosts=ceiling?.hosts||[...spec.order.slice(spec.order.indexOf(q.from)),...spec.order.slice(0,spec.order.indexOf(q.from))];
+    const elbow=ceiling?.entry&&connector('up-'+ceiling.entry,ceiling.height||32,qrooms[0].palette,qrooms[0].lock);
+    if(ceiling?.entry&&!elbow)throw new Error(`quest ${qid}: cannot build its entrance elbow`);
+    const f=ceilingDoor([{defs:elbow?[elbow,...qrooms]:qrooms,origin:qid}],hosts,spec,placed,hostOf,used);
     if(!f)throw new Error(`quest ${qid}: no way to hang it off the road`);
-    chain=f.chain;qhost=f.h.room.id;addDoor(main,f.h,f.cols,qid,f.tape);used.add(f.h.room.id.replace(/^cl\d+-/,''));
+    chain=f.chain;qstart=f.start;qhost=f.h.room.id;addDoor(main,f.h,f.cols,qid,f.tape);used.add(f.h.room.id.replace(/^cl\d+-/,''));
     const k=main.rooms.findIndex(r=>r.id===`cl${spec.n}-${q.from}`);const {side:_s,sideQuest:_q,...rest}=main.rooms[k];main.rooms[k]=rest;
     lines.push(`  quest ${qid}: opens from a ceiling in ${f.h.orig.id}`);
    }
@@ -744,7 +828,7 @@ for(const spec of WORLDS){
   let ch=b._chain,ps=passage(ch.lastDef,ch.lastSec,ch.lastSnap,targetsFor(b._rooms,b.sections),occ(),spec);
   // A last room whose way out leads back into its own branch (a flue down the stairs it came up): lift it on a
   // short climbable shaft, so its way out opens into rock where a passage can start.
-  if(!ps&&b._start&&b._qrooms.length>1){
+  if(!ps&&b._start&&b._qrooms.length>0){
    const mine=new Set(b.sections.map(s=>s.room)),others=placed.filter(r=>!mine.has(r.room));
    for(let H=12;H<=36&&!ps;H+=4){
     const qr=b._qrooms,last=qr[qr.length-1],cd=connector('up',H,last.palette,last.lock);if(!cd)continue;
@@ -760,7 +844,12 @@ for(const spec of WORLDS){
   else{const j=T.own;b._rooms[j]={...b._rooms[j],map:ps.hostMap,returns:[...(b._rooms[j].returns||[]),ret]};home=b._rooms[j];}
   b.sections=[...b.sections,...ps.secs.map(({C,R,...s})=>({...s,fire:null,passage:true}))];b.returnTo=home.id;
   b._rooms=[...b._rooms,...ps.defs.map(d=>({...d,id:`cl${spec.n}-${d.id}`,origin:d.id}))];
-  ps.defs.forEach((d,i)=>{DOOR_TAPES[`cl${spec.n}-${d.id}#through`]=ps.through[i];});
+  ps.defs.forEach((d,i)=>{
+   // At this upward-to-left corner the page hands over below the ledge. Climb the right wall before crossing;
+   // the isolated proof can otherwise accept leftward input that falls back through the live entrance.
+   const corner=d.entry==='down'&&d.exit==='left'&&JSON.stringify(d.map)===JSON.stringify(['#####','....#','P...#','##..#','##..#']);
+   DOOR_TAPES[`cl${spec.n}-${d.id}#through`]=corner?[[60,'rgu'],[20,'lj'],[10,'l']]:ps.through[i];
+  });
   b.sections=b.sections.map(s=>s.passage&&!s.room.startsWith('cl')?{...s,room:`cl${spec.n}-${s.room}`}:s);
   placed.push(...ps.secs);
   lines.push(`  ${b.id}: way back (${ps.defs.length} pieces, ${ps.defs.filter(d=>d.map.some(r=>r.includes('s'))).length} springs) into ${home.origin}${T.own!==undefined?' (its own first room)':home.id===b._host?' (its door room)':' (the road just behind its door)'}`);
@@ -770,7 +859,13 @@ for(const spec of WORLDS){
  for(const [i,r] of rooms.entries()){
   if(!r.seam||!r.seam.length||r.atlasGate)continue;   // (a gate's shaft is its way back down: it never closes)
   const fails=(def,t)=>{const x=runTape(def,t);return !x.exit||x.deaths;};
-  const mainBad=!!tapeOf(r.origin)&&fails(r,tapeOf(r.origin));
+  // A carved entrance can share the exit wall: merely exiting is insufficient if the route leaves by
+  // the entrance early. Compare its crossing with the same route after restoring the entrance rock.
+  const mainTape=tapeOf(r.origin),closedGrid=gridOf(r);
+  for(const [x,y,ch] of r.seam)closedGrid[y][x]=ch;
+  const openMain=mainTape&&runTape(r,mainTape),closedMain=mainTape&&runTape({...r,map:closedGrid.map(row=>row.join(''))},mainTape);
+  const crossingMoved=openMain?.snap&&closedMain?.snap&&Math.hypot(openMain.snap.x-closedMain.snap.x,openMain.snap.y-closedMain.snap.y)>8;
+  const mainBad=!!mainTape&&(!openMain.exit||openMain.deaths||crossingMoved);
   let sideBad=!!tapeOf(r.origin+'#side')&&fails(r,SIDE_TAPES[r.id]||tapeOf(r.origin+'#side'));
   const dt=DOOR_TAPES[r.id+'#door'],door=(r.doors||[])[0];
   let doorBad=!!dt&&fails({...r,exit:'up',side:undefined},dt);
@@ -779,7 +874,7 @@ for(const spec of WORLDS){
   if(!mainBad&&doorBad&&door){const t=reachTo({...r,exit:'up',side:undefined},'up',door.cols);if(t){DOOR_TAPES[r.id+'#door']=t;doorBad=false;}}
   if(mainBad||sideBad||doorBad){rooms[i]={...r,closeWhilePlayed:true};if(verbose)lines.push(`  ${r.origin} closes while played (${[mainBad&&'its route',sideBad&&'its side way',doorBad&&'its door'].filter(Boolean).join(', ')} needs the wall)`);}
  }
- const tapes={};for(const k in DOOR_TAPES)if(k.startsWith(`cl${spec.n}-`))tapes[k]=DOOR_TAPES[k];for(const r of rooms){tapes[r.id]=tapeOf(r.origin)||(r.connector&&r.exit==='down'?dropTape(r):undefined);for(const k of ['side','bearing'])if(Rooms.tapes[r.origin+'#'+k])tapes[r.id+'#'+k]=Rooms.tapes[r.origin+'#'+k];if(SIDE_TAPES[r.id])tapes[r.id+'#side']=SIDE_TAPES[r.id];}
+ const tapes={};for(const k in DOOR_TAPES)if(k.startsWith(`cl${spec.n}-`))tapes[k]=DOOR_TAPES[k];for(const r of rooms){tapes[r.id]=tapeOf(r.origin)||(r.connector&&r.exit==='down'?dropTape(r):undefined);for(const k of ['side','bearing'])if(tapeOf(r.origin+'#'+k))tapes[r.id+'#'+k]=tapeOf(r.origin+'#'+k);if(SIDE_TAPES[r.id])tapes[r.id+'#side']=SIDE_TAPES[r.id];}
  const saved=[...reg.rooms,...reg.quests.flatMap(q=>q.rooms)].filter(r=>SAVED_FOR_LATER[r.id]).map(r=>({id:r.id,name:r.name,diff:RATE[r.id]?.diff??null,fun:RATE[r.id]?.fun??null,why:SAVED_FOR_LATER[r.id]}));
  const diffs=spec.order.map(id=>RATE[id]?.diff).filter(Boolean);
  worlds.push({n:spec.n,key:reg.key,name:reg.name,palette:reg.palette,kit:reg.kit,

@@ -1,0 +1,456 @@
+{
+  "room": {
+    "id": "bank-b51",
+    "name": "Make the Watch Look Away",
+    "palette": "frost",
+    "study": true,
+    "dashes": 0,
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "map": [
+      "########################################",
+      "#..................w..................G#",
+      "#..................w..................G#",
+      "#..................w..................G#",
+      "#..................w..................G#",
+      "#..................w..................G#",
+      "#..................w..................G#",
+      "#..................w..................G#",
+      "#..................w..................G#",
+      "#..................w..................G#",
+      "#..................w..................G#",
+      "#..................w..................G#",
+      "#...........SSSSSSSw..................G#",
+      "#...........SSSSSSSw..SSS.............G#",
+      "#...........SSSSSSSw..SSS.............G#",
+      "#...........SSSSSSSw..SSS.............G#",
+      "#...........SSSSSSSw..SSS.............G#",
+      "#.SSSSS.....SSSSSSSw..SSS.............G.",
+      "#.SSSSS.....SSSSSSSw..SSS.............G.",
+      "#.SPSnS.....SSSSSSSw..SSS.............G.",
+      "###################w..SSS...........c.G.",
+      "###################.####################",
+      "########################################"
+    ],
+    "hint": "Freeze the water to hide your approach. Let it thaw before releasing the prepared seed.",
+    "question": "What protects your approach but blocks the launch you are preparing?",
+    "exit": "right",
+    "thaw": 180,
+    "impulseSeeds": [
+      {
+        "id": "Shelter",
+        "c": 15,
+        "r": 18
+      }
+    ],
+    "lights": [
+      {
+        "c": 24,
+        "r": 18,
+        "dir": 180,
+        "sweep": 0,
+        "range": 185,
+        "width": 40
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 12,
+    "run": 6,
+    "collection": "run6",
+    "format": "compact",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "difficulty": 3,
+    "role": "Borrow an ice wall for concealment, then remove it before the prepared launch",
+    "worlds": [
+      12,
+      16,
+      20
+    ],
+    "tags": [
+      "freeze",
+      "watch-light",
+      "impulse-seed",
+      "shelter"
+    ],
+    "newMechanics": [],
+    "author": "Codex",
+    "humanReview": "Unmeasured; author estimate only.",
+    "requiredEvents": [
+      "freeze",
+      "condenser",
+      "impulse-prime",
+      "impulse-ready",
+      "thaw",
+      "impulse-burst",
+      "splash",
+      "stone-lit",
+      "gate-open"
+    ],
+    "solution": "Strike the condenser from the starting smoke to freeze the water column. Its ice blocks the watch light while you cross the exposed gap to the inner smoke. Pass the seed, face left and strike it back into that shelter. Stand a little to its right and let the ice thaw; jumping and cutting down onto the prepared seed now sends you over the watch cone and through the liquid column into the receiving smoke. The broad far floor leads to the tally and exit.",
+    "nearestExisting": "B36 uses an impulse seed to preserve speed into a portal, while F18 turns frozen track into a later cart descent. Here temporary ice creates the concealment needed to prepare the seed but is itself the obstacle to the outgoing launch; liquid water softens the landing and a second smoke pocket receives it.",
+    "novelty": "The safe approach and the useful departure require opposite states of the same wall. Preparation happens in a sheltered pocket with a visible thaw window, and the seed supplies a high route over the watch cone that an ordinary jump cannot reach.",
+    "approvedIngredients": [
+      "bank-b36",
+      "bank-f18"
+    ],
+    "positiveChecks": [
+      {
+        "name": "Release the seed two frames earlier in the jump",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            59,
+            "r"
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            96,
+            ""
+          ],
+          [
+            13,
+            "j"
+          ],
+          [
+            1,
+            "rds"
+          ],
+          [
+            175,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 328
+      },
+      {
+        "name": "Release the seed two frames later in the jump",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            59,
+            "r"
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            96,
+            ""
+          ],
+          [
+            17,
+            "j"
+          ],
+          [
+            1,
+            "rds"
+          ],
+          [
+            175,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 334
+      },
+      {
+        "name": "Wait twelve extra frames after preparing the seed",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            59,
+            "r"
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            108,
+            ""
+          ],
+          [
+            15,
+            "j"
+          ],
+          [
+            1,
+            "rds"
+          ],
+          [
+            175,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 344
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Cross without freezing the watch-light screen",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            59,
+            "r"
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            96,
+            ""
+          ],
+          [
+            15,
+            "j"
+          ],
+          [
+            1,
+            "rds"
+          ],
+          [
+            175,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 5,
+        "result": "No completion."
+      },
+      {
+        "name": "Release before the wall thaws",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            59,
+            "r"
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            15,
+            "j"
+          ],
+          [
+            1,
+            "rds"
+          ],
+          [
+            175,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 2,
+        "result": "No completion."
+      },
+      {
+        "name": "Ordinary jump from the smoke edge",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            70,
+            "r"
+          ],
+          [
+            130,
+            ""
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            175,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 3,
+        "result": "No completion."
+      }
+    ],
+    "route": {
+      "frames": 332,
+      "deaths": 0,
+      "events": [
+        "strike",
+        "freeze",
+        "condenser",
+        "impulse-prime",
+        "impulse-ready",
+        "jump",
+        "thaw",
+        "impulse-burst",
+        "splash",
+        "land",
+        "impulse-reset",
+        "stone-lit",
+        "gate-open",
+        "exit"
+      ],
+      "eventCounts": {
+        "strike": 3,
+        "freeze": 1,
+        "condenser": 1,
+        "impulse-prime": 1,
+        "impulse-ready": 1,
+        "jump": 1,
+        "thaw": 1,
+        "impulse-burst": 1,
+        "splash": 1,
+        "land": 1,
+        "impulse-reset": 1,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "exit": 1
+      }
+    }
+  },
+  "tape": [
+    [
+      10,
+      "r"
+    ],
+    [
+      1,
+      "rs"
+    ],
+    [
+      59,
+      "r"
+    ],
+    [
+      1,
+      "l"
+    ],
+    [
+      1,
+      "ls"
+    ],
+    [
+      16,
+      "l"
+    ],
+    [
+      96,
+      ""
+    ],
+    [
+      15,
+      "j"
+    ],
+    [
+      1,
+      "rds"
+    ],
+    [
+      175,
+      "r"
+    ]
+  ]
+}

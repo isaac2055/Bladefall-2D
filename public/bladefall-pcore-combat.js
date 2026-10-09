@@ -89,7 +89,7 @@ function before(g,inp){
     e.vx=e.face*22;e.vy=Math.max(-35,Math.min(35,(e.oy-e.y)*3));moveActor(g,e);
    }
   }
-  if(e.y>C.H+20){e.dead=true;event(g,'enemy-fell',e);}
+  if(e.y>g.room.h+20){e.dead=true;event(g,'enemy-fell',e);}
  }
 }
 function visible(g,a,b){
@@ -182,7 +182,7 @@ function after(g,inp){
     if(!s.gone&&root.BladefallPrecisionFoes?.projectileHit(g,s,{x:Math.sign(s.vx),y:0},{bells:false}))s.gone=true;
    }
    if(s.gone)break;
-   if(C.solidAt(g,s.x,s.y,s.w,s.h)||s.x<0||s.x>C.W||s.y<0||s.y>C.H){s.gone=true;break;}
+   if(C.solidAt(g,s.x,s.y,s.w,s.h)||s.x<0||s.x>g.room.w||s.y<0||s.y>g.room.h){s.gone=true;break;}
   }
  }
  co.shots=co.shots.filter(s=>!s.gone);

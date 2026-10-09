@@ -1,0 +1,135 @@
+{
+  "room": {
+    "id": "bank-b06",
+    "name": "Three Beats",
+    "hint": "Each dash trades amber and blue. Land before spending the next beat.",
+    "question": "The next footing exists only after committing a dash.",
+    "map": [
+      "########################################",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#............................BBBB..#####",
+      "#............................BBBB..#####",
+      "#..................................#####",
+      "#....................AAAA..........#####",
+      "#....................AAAA..........#####",
+      "#..................................#####",
+      "#...........BBBB...................#####",
+      "#...........BBBB...................#####",
+      "#.P................................#####",
+      "########...........................#####",
+      "########...........................#####",
+      "########^^^^^^^^^^^^^^^^^^^^^^^^^..#####",
+      "########################################"
+    ],
+    "palette": "causeway",
+    "study": true,
+    "lock": [
+      "strike",
+      "parry",
+      "portal"
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 1,
+    "difficulty": 3,
+    "role": "combination",
+    "worlds": [
+      6,
+      20
+    ],
+    "tags": [
+      "phase-platforms",
+      "dash-economy",
+      "precision-landings"
+    ],
+    "newMechanics": [],
+    "solution": "Dash to amber, settle and refill, dash to blue, then turn amber on for the last landing. Each landing provides a planning pause; jumping too early removes the platform you wanted.",
+    "entrance": "Left bank, spawn tile 2/18",
+    "exit": "Right edge, open rows 6–9",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "phase"
+    ],
+    "route": {
+      "frames": 167,
+      "deaths": 0,
+      "events": [
+        "phase",
+        "dash",
+        "refill-dash",
+        "jump",
+        "land",
+        "exit"
+      ],
+      "movement": "ordinary jump/dash/climb; no super, hyper, ultra or wallbounce",
+      "eventCounts": {
+        "phase": 3,
+        "dash": 3,
+        "refill-dash": 3,
+        "jump": 3,
+        "land": 2,
+        "exit": 1
+      }
+    }
+  },
+  "tape": [
+    [
+      5,
+      "rx"
+    ],
+    [
+      12,
+      "ru"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      5,
+      "rux"
+    ],
+    [
+      40,
+      "ru"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      12,
+      "rj"
+    ]
+  ]
+}

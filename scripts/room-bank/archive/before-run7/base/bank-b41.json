@@ -1,0 +1,1195 @@
+{
+  "room": {
+    "id": "bank-b41",
+    "name": "The Landing You Must Spend",
+    "study": true,
+    "movement": "survive-2",
+    "palette": "cliffs",
+    "dashes": 0,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "movingHooks": [
+      {
+        "id": "Runway",
+        "c": 8,
+        "r": 10,
+        "w": 3,
+        "to": [
+          13,
+          0
+        ],
+        "period": 240
+      },
+      {
+        "id": "Return",
+        "c": 31,
+        "r": 11,
+        "w": 2,
+        "to": [
+          0,
+          -6
+        ],
+        "period": 260,
+        "phase": 130
+      }
+    ],
+    "map": [
+      "########################################",
+      "#......................#######..........",
+      "#......................#######..........",
+      "#......................#######..........",
+      "#......................#######..........",
+      "#......................#######..........",
+      "#......................#######..........",
+      "#......................#######..........",
+      "#......................#######....x.....",
+      "#......................#######.....AAAAA",
+      "#......................#######.........#",
+      "#......................#######.........#",
+      "#......................vvvvvvv.........#",
+      "#...........................A..........#",
+      "#...........................A..........#",
+      "#...........................A..........#",
+      "#...P.......................A..........#",
+      "########....................A..........#",
+      "########................xb..ABBBBBB....#",
+      "########....................A..........#",
+      "########....................A..........#",
+      "########^^^^^^^^^^^^^^^^^^^^A^^^^^^^^^^#",
+      "########################################"
+    ],
+    "hint": "Cut low beside the bell to open the transfer. Spend that landing when the upper lift can take you.",
+    "question": "Which floor should exist when you leave the other one?"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 9,
+    "run": 4,
+    "acceptance": "revised",
+    "difficulty": 4,
+    "role": "low rebound that creates a transfer, then spend that transfer to make the exit",
+    "worlds": [
+      10,
+      18
+    ],
+    "tags": [
+      "moving-hook",
+      "controlled-pogo",
+      "phase-bell",
+      "changing-landing",
+      "transfer"
+    ],
+    "newMechanics": [
+      "moving-hook",
+      "controlled-pogo"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "moving-hook",
+      "moving-unhook",
+      "pogo-low",
+      "bell",
+      "phase"
+    ],
+    "entrance": "Low western shelf beneath an outgoing rail.",
+    "exit": "Long eastern landing beyond the rail stop, under its thorned overhang.",
+    "solution": "Catch the outward rail and release toward the paired pod and low bell. A downward cut without Jump makes a low rebound beneath the roof and rings the bell: the transfer shutter disappears and the blue middle landing appears. Land there, jump into the vertical carriage, and reel up. Its upper bell is reachable from the moving rope. Cut it as you prepare to leave: the blue landing below disappears and the gold exit bridge becomes solid. Jump-release onto that bridge. The floor that lets you catch the lift and the floor that lets you leave it cannot exist together.",
+    "nearestExisting": "The previous B41 only asked for a low rebound after an optional rail ride. F39 uses an echo-held stop for a train transfer. This version makes the selected rebound exchange the actual landing state, and the second moving anchor lets the knight give up that landing in midair to create the exit.",
+    "novelty": "Two phase changes have opposing jobs: the first removes a shutter and supplies the boarding station; the second consumes that station to create the upper exit. The moving lift is the place to survive between those mutually exclusive floor layouts.",
+    "composition": {
+      "movement": "Controlled low pogo and ordinary rope departure",
+      "entity": "Outward moving hook and vertical hook carrier",
+      "dependency": "The low rebound rings the first bell to create the vertical lift boarding station. From that lift the knight rings the upper bell, deleting the station and restoring the exit bridge."
+    },
+    "positiveChecks": [
+      {
+        "name": "Release rail a little later",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            35,
+            "ug"
+          ],
+          [
+            19,
+            "rg"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            85,
+            "ug"
+          ],
+          [
+            10,
+            "rg"
+          ],
+          [
+            1,
+            "rsg"
+          ],
+          [
+            5,
+            "rg"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 307,
+          "deaths": 0,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "strike",
+            "phase",
+            "bell",
+            "pogo-low",
+            "pod",
+            "moving-carrier-stop",
+            "moving-hook-turn",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 2,
+            "moving-hook": 2,
+            "moving-unhook": 2,
+            "unhook": 2,
+            "strike": 2,
+            "phase": 2,
+            "bell": 2,
+            "pogo-low": 1,
+            "pod": 1,
+            "moving-carrier-stop": 1,
+            "moving-hook-turn": 2,
+            "land": 2,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Begin low cut sooner",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            35,
+            "ug"
+          ],
+          [
+            18,
+            "rg"
+          ],
+          [
+            17,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            85,
+            "ug"
+          ],
+          [
+            10,
+            "rg"
+          ],
+          [
+            1,
+            "rsg"
+          ],
+          [
+            5,
+            "rg"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 305,
+          "deaths": 0,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "strike",
+            "phase",
+            "bell",
+            "pogo-low",
+            "pod",
+            "moving-carrier-stop",
+            "moving-hook-turn",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 2,
+            "moving-hook": 2,
+            "moving-unhook": 2,
+            "unhook": 2,
+            "strike": 2,
+            "phase": 2,
+            "bell": 2,
+            "pogo-low": 1,
+            "pod": 1,
+            "moving-carrier-stop": 1,
+            "moving-hook-turn": 2,
+            "land": 2,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Upper bell approach sooner",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            35,
+            "ug"
+          ],
+          [
+            18,
+            "rg"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            82,
+            "ug"
+          ],
+          [
+            10,
+            "rg"
+          ],
+          [
+            1,
+            "rsg"
+          ],
+          [
+            5,
+            "rg"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 303,
+          "deaths": 0,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "strike",
+            "phase",
+            "bell",
+            "pogo-low",
+            "pod",
+            "moving-carrier-stop",
+            "moving-hook-turn",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 2,
+            "moving-hook": 2,
+            "moving-unhook": 2,
+            "unhook": 2,
+            "strike": 2,
+            "phase": 2,
+            "bell": 2,
+            "pogo-low": 1,
+            "pod": 1,
+            "moving-carrier-stop": 1,
+            "moving-hook-turn": 2,
+            "land": 2,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Upper bell approach later",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            35,
+            "ug"
+          ],
+          [
+            18,
+            "rg"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            88,
+            "ug"
+          ],
+          [
+            10,
+            "rg"
+          ],
+          [
+            1,
+            "rsg"
+          ],
+          [
+            5,
+            "rg"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 307,
+          "deaths": 0,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "strike",
+            "phase",
+            "bell",
+            "pogo-low",
+            "pod",
+            "moving-carrier-stop",
+            "moving-hook-turn",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 2,
+            "moving-hook": 2,
+            "moving-unhook": 2,
+            "unhook": 2,
+            "strike": 2,
+            "phase": 2,
+            "bell": 2,
+            "pogo-low": 1,
+            "pod": 1,
+            "moving-carrier-stop": 1,
+            "moving-hook-turn": 2,
+            "land": 2,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Upper departure sooner",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            35,
+            "ug"
+          ],
+          [
+            18,
+            "rg"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            85,
+            "ug"
+          ],
+          [
+            10,
+            "rg"
+          ],
+          [
+            1,
+            "rsg"
+          ],
+          [
+            3,
+            "rg"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 305,
+          "deaths": 0,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "strike",
+            "phase",
+            "bell",
+            "pogo-low",
+            "pod",
+            "moving-carrier-stop",
+            "moving-hook-turn",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 2,
+            "moving-hook": 2,
+            "moving-unhook": 2,
+            "unhook": 2,
+            "strike": 2,
+            "phase": 2,
+            "bell": 2,
+            "pogo-low": 1,
+            "pod": 1,
+            "moving-carrier-stop": 1,
+            "moving-hook-turn": 2,
+            "land": 2,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Upper departure later",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            35,
+            "ug"
+          ],
+          [
+            18,
+            "rg"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            85,
+            "ug"
+          ],
+          [
+            10,
+            "rg"
+          ],
+          [
+            1,
+            "rsg"
+          ],
+          [
+            7,
+            "rg"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 308,
+          "deaths": 0,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "strike",
+            "phase",
+            "bell",
+            "pogo-low",
+            "pod",
+            "moving-carrier-stop",
+            "moving-hook-turn",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 2,
+            "moving-hook": 2,
+            "moving-unhook": 2,
+            "unhook": 2,
+            "strike": 2,
+            "phase": 2,
+            "bell": 2,
+            "pogo-low": 1,
+            "pod": 1,
+            "moving-carrier-stop": 1,
+            "moving-hook-turn": 2,
+            "land": 2,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Original ramp-to-pogo finish no longer reaches the exit",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            35,
+            "ug"
+          ],
+          [
+            18,
+            "rg"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 1,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "strike",
+            "phase",
+            "bell",
+            "pogo-low",
+            "pod",
+            "moving-carrier-stop",
+            "moving-hook-turn",
+            "land",
+            "death"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "strike": 1,
+            "phase": 1,
+            "bell": 1,
+            "pogo-low": 1,
+            "pod": 1,
+            "moving-carrier-stop": 1,
+            "moving-hook-turn": 1,
+            "land": 1,
+            "death": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 181,
+            "x": 308,
+            "y": 171,
+            "cause": "spikes",
+            "vx": 10.833333333333334,
+            "vy": 130,
+            "i": 180
+          }
+        }
+      },
+      {
+        "name": "Direct swing from rail, skipping first low cut",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            35,
+            "ug"
+          ],
+          [
+            60,
+            "rg"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            180,
+            "rug"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 0,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-carrier-stop",
+            "moving-unhook",
+            "unhook",
+            "moving-hook-turn",
+            "grab"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "hook": 1,
+            "moving-hook": 1,
+            "moving-carrier-stop": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "moving-hook-turn": 2,
+            "grab": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Follow route but omit lower bell and pogo",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            35,
+            "ug"
+          ],
+          [
+            18,
+            "rg"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            85,
+            "ug"
+          ],
+          [
+            10,
+            "rg"
+          ],
+          [
+            1,
+            "rsg"
+          ],
+          [
+            5,
+            "rg"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 3,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "moving-carrier-stop",
+            "death",
+            "respawn",
+            "strike"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 2,
+            "moving-hook": 2,
+            "moving-unhook": 2,
+            "unhook": 2,
+            "moving-carrier-stop": 2,
+            "death": 3,
+            "respawn": 3,
+            "strike": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 111,
+            "x": 210,
+            "y": 171,
+            "cause": "spikes",
+            "vx": 98.3805612670159,
+            "vy": 0,
+            "i": 110
+          }
+        }
+      },
+      {
+        "name": "Take lift but keep the boarding floor instead of ringing upper bell",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            35,
+            "ug"
+          ],
+          [
+            18,
+            "rg"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            85,
+            "ug"
+          ],
+          [
+            10,
+            "rg"
+          ],
+          [
+            1,
+            "rg"
+          ],
+          [
+            5,
+            "rg"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 1,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "strike",
+            "phase",
+            "bell",
+            "pogo-low",
+            "pod",
+            "moving-carrier-stop",
+            "moving-hook-turn",
+            "land",
+            "death"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "hook": 2,
+            "moving-hook": 2,
+            "moving-unhook": 2,
+            "unhook": 2,
+            "strike": 1,
+            "phase": 1,
+            "bell": 1,
+            "pogo-low": 1,
+            "pod": 1,
+            "moving-carrier-stop": 1,
+            "moving-hook-turn": 2,
+            "land": 1,
+            "death": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 351,
+            "x": 308,
+            "y": 171,
+            "cause": "spikes",
+            "vx": 0,
+            "vy": 125,
+            "i": 350
+          }
+        }
+      }
+    ],
+    "route": {
+      "exited": true,
+      "frames": 305,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "hook",
+        "moving-hook",
+        "moving-unhook",
+        "unhook",
+        "strike",
+        "phase",
+        "bell",
+        "pogo-low",
+        "pod",
+        "moving-carrier-stop",
+        "moving-hook-turn",
+        "land",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 3,
+        "hook": 2,
+        "moving-hook": 2,
+        "moving-unhook": 2,
+        "unhook": 2,
+        "strike": 2,
+        "phase": 2,
+        "bell": 2,
+        "pogo-low": 1,
+        "pod": 1,
+        "moving-carrier-stop": 1,
+        "moving-hook-turn": 2,
+        "land": 2,
+        "exit": 1
+      },
+      "firstFailure": null
+    },
+    "humanReview": "User rejected the direct-swing skip and the simple ramp-to-pogo sequence. Rebuilt as a two-phase lift-transfer puzzle; awaits review.",
+    "requiredEventCounts": {
+      "moving-hook": 2,
+      "moving-unhook": 2,
+      "bell": 2
+    },
+    "designNotes": "The original broad end shelf is replaced with two mutually exclusive phase supports and a vertical transfer. The first shutter blocks the direct swing route beneath the immovable roof. No receipts or event-conditioned exits are used: bells change the same visible A/B solids. A stopped first rail cannot carry the player to the exit. All movement is ordinary rope control and controlled low pogo; no dash.",
+    "revision": {
+      "date": "2026-10-09",
+      "archive": "scripts/room-bank/archive/run4-before-superrooms/base/bank-b41.json",
+      "latestChanges": "Rebuilt the single departure as a low bell/rebound into a phase landing, then a vertical carrier departure that consumes that landing to create the exit."
+    },
+    "userFeedback": {
+      "date": "2026-10-09",
+      "comment": "Direct ramp swing skips first pogo, and ramp into pogo is too simple. Make the puzzle harder and more complex."
+    }
+  },
+  "tape": [
+    [
+      14,
+      "r"
+    ],
+    [
+      12,
+      "rjg"
+    ],
+    [
+      35,
+      "ug"
+    ],
+    [
+      18,
+      "rg"
+    ],
+    [
+      18,
+      "r"
+    ],
+    [
+      5,
+      "rds"
+    ],
+    [
+      30,
+      "r"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      12,
+      "rjg"
+    ],
+    [
+      85,
+      "ug"
+    ],
+    [
+      10,
+      "rg"
+    ],
+    [
+      1,
+      "rsg"
+    ],
+    [
+      5,
+      "rg"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      100,
+      "r"
+    ]
+  ]
+}

@@ -1,0 +1,370 @@
+{
+  "checkedAt": "2026-10-07T09:01:18.237Z",
+  "kind": "One saved zero-death route per room; human fun/difficulty/suitability unmeasured",
+  "rooms": [
+    {
+      "id": "bank-b01",
+      "name": "Borrowed Breath",
+      "side": "base",
+      "estimatedDifficulty": 2,
+      "frames": 167,
+      "deaths": 0,
+      "events": {
+        "dash": 3,
+        "jump": 3,
+        "refill-dash": 3,
+        "refill": 2,
+        "land": 2,
+        "exit": 1
+      }
+    },
+    {
+      "id": "bank-b02",
+      "name": "Late Departure",
+      "side": "base",
+      "estimatedDifficulty": 2,
+      "frames": 120,
+      "deaths": 0,
+      "events": {
+        "dash": 2,
+        "refill-dash": 2,
+        "zip-start": 1,
+        "zip-stop": 1,
+        "grab": 1,
+        "climbhop": 1,
+        "land": 1,
+        "jump": 1,
+        "exit": 1
+      }
+    },
+    {
+      "id": "bank-b03",
+      "name": "Carry the Landing",
+      "side": "base",
+      "estimatedDifficulty": 2,
+      "frames": 286,
+      "deaths": 0,
+      "events": {
+        "pickup": 1,
+        "jump": 1,
+        "plate": 1,
+        "held-open": 1,
+        "land": 1,
+        "throw": 1,
+        "lantern-land": 1,
+        "exit": 1
+      }
+    },
+    {
+      "id": "bank-b04",
+      "name": "Dip Before the Door",
+      "side": "base",
+      "estimatedDifficulty": 3,
+      "frames": 204,
+      "deaths": 0,
+      "events": {
+        "spring": 1,
+        "dash": 3,
+        "land": 2,
+        "refill-dash": 3,
+        "crumble-shake": 1,
+        "crumble": 1,
+        "refill": 1,
+        "exit": 1
+      }
+    },
+    {
+      "id": "bank-b05",
+      "name": "The Useful Ceiling",
+      "side": "base",
+      "estimatedDifficulty": 3,
+      "frames": 205,
+      "deaths": 0,
+      "events": {
+        "dash": 3,
+        "gravity": 2,
+        "land": 2,
+        "refill-dash": 3,
+        "stone-lit": 2,
+        "jump": 1,
+        "gate-open": 1,
+        "refill": 1,
+        "exit": 1
+      }
+    },
+    {
+      "id": "bank-b06",
+      "name": "Three Beats",
+      "side": "base",
+      "estimatedDifficulty": 3,
+      "frames": 167,
+      "deaths": 0,
+      "events": {
+        "phase": 3,
+        "dash": 3,
+        "refill-dash": 3,
+        "jump": 3,
+        "land": 2,
+        "exit": 1
+      }
+    },
+    {
+      "id": "bank-b07",
+      "name": "Step and Stay",
+      "side": "base",
+      "estimatedDifficulty": 1,
+      "frames": 199,
+      "deaths": 0,
+      "events": {
+        "jump": 2,
+        "step-relay": 1,
+        "land": 2,
+        "exit": 1
+      }
+    },
+    {
+      "id": "bank-b08",
+      "name": "Counterweight Courtesy",
+      "side": "base",
+      "estimatedDifficulty": 2,
+      "frames": 181,
+      "deaths": 0,
+      "events": {
+        "jump": 3,
+        "step-relay": 2,
+        "land": 3,
+        "dash": 1,
+        "refill-dash": 1,
+        "exit": 1
+      }
+    },
+    {
+      "id": "bank-b09",
+      "name": "Passenger Transfer",
+      "side": "base",
+      "estimatedDifficulty": 3,
+      "frames": 207,
+      "deaths": 0,
+      "events": {
+        "jump": 3,
+        "step-relay": 2,
+        "land": 3,
+        "dash": 1,
+        "grab": 1,
+        "climbhop": 1,
+        "refill-dash": 1,
+        "exit": 1
+      }
+    },
+    {
+      "id": "bank-b10",
+      "name": "One Switch at a Time",
+      "side": "base",
+      "estimatedDifficulty": 4,
+      "frames": 159,
+      "deaths": 0,
+      "events": {
+        "jump": 3,
+        "step-relay": 1,
+        "land": 3,
+        "phase": 1,
+        "dash": 1,
+        "refill-dash": 1,
+        "exit": 1
+      }
+    },
+    {
+      "id": "bank-f01",
+      "name": "Borrowed Runway",
+      "side": "fractured",
+      "estimatedDifficulty": 5,
+      "frames": 152,
+      "deaths": 0,
+      "events": {
+        "dash": 5,
+        "ultra": 1,
+        "refill-dash": 4,
+        "hyper": 1,
+        "fault-crack": 1,
+        "land": 2,
+        "super": 2,
+        "refill": 1,
+        "vector-refill": 1,
+        "fault-fall": 6,
+        "exit": 1
+      }
+    },
+    {
+      "id": "bank-f02",
+      "name": "Refund Below",
+      "side": "fractured",
+      "estimatedDifficulty": 3,
+      "frames": 203,
+      "deaths": 0,
+      "events": {
+        "dash": 3,
+        "refill-dash": 3,
+        "refill": 2,
+        "vector-refill": 1,
+        "grab": 1,
+        "climbhop": 1,
+        "walljump": 2,
+        "land": 1,
+        "exit": 1
+      }
+    },
+    {
+      "id": "bank-f03",
+      "name": "No Second Footfall",
+      "side": "fractured",
+      "estimatedDifficulty": 4,
+      "frames": 122,
+      "deaths": 0,
+      "events": {
+        "dash": 4,
+        "super": 1,
+        "strike": 2,
+        "refill-dash": 3,
+        "pod": 2,
+        "land": 1,
+        "crumble-shake": 1,
+        "ultra": 1,
+        "hyper": 1,
+        "exit": 1
+      }
+    },
+    {
+      "id": "bank-f04",
+      "name": "Crosswind Receipt",
+      "side": "fractured",
+      "estimatedDifficulty": 4,
+      "frames": 148,
+      "deaths": 0,
+      "events": {
+        "jump": 1,
+        "dash": 3,
+        "refill-dash": 3,
+        "refill": 2,
+        "grab": 1,
+        "climbhop": 1,
+        "vector-refill": 1,
+        "land": 1,
+        "exit": 1
+      }
+    },
+    {
+      "id": "bank-f05",
+      "name": "Forwarding Address",
+      "side": "fractured",
+      "estimatedDifficulty": 4,
+      "frames": 156,
+      "deaths": 0,
+      "events": {
+        "dash": 5,
+        "zip-in": 1,
+        "fault-crack": 1,
+        "refill-dash": 4,
+        "zip-out": 1,
+        "super": 2,
+        "fault-fall": 7,
+        "refill": 1,
+        "walljump": 1,
+        "shade-wake": 1,
+        "land": 1,
+        "exit": 1
+      }
+    },
+    {
+      "id": "bank-f06",
+      "name": "Backstay",
+      "side": "fractured",
+      "estimatedDifficulty": 5,
+      "frames": 181,
+      "deaths": 0,
+      "events": {
+        "dash": 5,
+        "wallbounce": 2,
+        "fault-crack": 1,
+        "land": 2,
+        "refill-dash": 4,
+        "jump": 1,
+        "fault-fall": 4,
+        "refill": 2,
+        "vector-refill": 1,
+        "ultra": 1,
+        "hyper": 1,
+        "exit": 1
+      }
+    },
+    {
+      "id": "bank-f07",
+      "name": "The Unfinished Bridge",
+      "side": "fractured",
+      "estimatedDifficulty": 4,
+      "frames": 118,
+      "deaths": 0,
+      "events": {
+        "dash": 3,
+        "super": 2,
+        "step-relay": 1,
+        "land": 2,
+        "refill-dash": 2,
+        "ultra": 1,
+        "hyper": 1,
+        "exit": 1
+      }
+    },
+    {
+      "id": "bank-f08",
+      "name": "Debt in Motion",
+      "side": "fractured",
+      "estimatedDifficulty": 4,
+      "frames": 219,
+      "deaths": 0,
+      "events": {
+        "jump": 2,
+        "step-relay": 2,
+        "land": 2,
+        "dash": 1,
+        "super": 1,
+        "exit": 1
+      }
+    },
+    {
+      "id": "bank-f09",
+      "name": "Two Clocks, One Breath",
+      "side": "fractured",
+      "estimatedDifficulty": 5,
+      "frames": 169,
+      "deaths": 0,
+      "events": {
+        "jump": 2,
+        "step-relay": 2,
+        "land": 3,
+        "dash": 3,
+        "super": 1,
+        "refill-dash": 3,
+        "shade-wake": 1,
+        "exit": 1
+      }
+    },
+    {
+      "id": "bank-f10",
+      "name": "Parcel at Speed",
+      "side": "fractured",
+      "estimatedDifficulty": 4,
+      "frames": 157,
+      "deaths": 0,
+      "events": {
+        "dash": 2,
+        "super": 1,
+        "step-relay": 1,
+        "land": 1,
+        "refill-dash": 2,
+        "jump": 1,
+        "spring": 1,
+        "exit": 1
+      }
+    }
+  ]
+}

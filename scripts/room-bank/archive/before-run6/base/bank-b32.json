@@ -1,0 +1,574 @@
+{
+  "room": {
+    "id": "bank-b32",
+    "name": "Height Becomes Distance",
+    "palette": "cliffs",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "map": [
+      "########################################",
+      "#................#.....................#",
+      "#................#.....................#",
+      "#................#.....................#",
+      "#................#.....................#",
+      "#................#.....................#",
+      "#................#######################",
+      "#................#vvvvvvvvvvvvvvvvvvvvv#",
+      "#................#.....................#",
+      "########%%#######%.....................#",
+      "#................%......................",
+      "#................#......................",
+      "#................#......................",
+      "#...P............#......................",
+      "######...........#..........############",
+      "######...........#.....b....############",
+      "######...........#..........############",
+      "######...b.......#..........############",
+      "######...........#..........############",
+      "######...........#..........############",
+      "######...........#..........############",
+      "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+      "########################################"
+    ],
+    "movement": "survive-2",
+    "exit": "right",
+    "dashes": 0,
+    "portalMode": "fixed",
+    "portals": [
+      {
+        "color": "blue",
+        "c": 8,
+        "r": 9,
+        "face": "d"
+      },
+      {
+        "color": "orange",
+        "c": 17,
+        "r": 9,
+        "face": "r"
+      }
+    ],
+    "hint": "No dash \u00b7 Hold Jump for the first pogo; release it for the second.",
+    "question": "When is more height useful, and when does the same height become dangerous?"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 6,
+    "run": 2,
+    "acceptance": "banked",
+    "difficulty": 4,
+    "role": "solve",
+    "worlds": [
+      13,
+      19,
+      20
+    ],
+    "tags": [
+      "controlled-pogo",
+      "portal-momentum",
+      "height-conversion",
+      "low-clearance"
+    ],
+    "newMechanics": [
+      "controlled-pogo"
+    ],
+    "entrance": "West ledge overlooking the high-launch pod.",
+    "exit": "East receiving shelf under the thorn roof.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "pogo-loft",
+      "portal-pass",
+      "pogo-low"
+    ],
+    "humanReview": "User qualitative approval recorded; numeric ratings remain unmeasured.",
+    "solution": "Drop from the west ledge onto a lofted blade rebound. The ceiling portal converts that climb into an eastward launch. Release Jump before the second downward contact to preserve the launch under the low thorn roof, then continue to the receiving shelf.",
+    "nearestExisting": "B31 revisits one target after changing a beam. Here two rebound heights serve one continuous velocity transfer: the first earns a portal entry, and the second keeps its horizontal launch usable under a ceiling.",
+    "novelty": "The portal turns height into sideways travel. The low second rebound keeps that carried speed but prevents the same high trajectory from striking the roof. No dash can replace either choice.",
+    "positiveChecks": [
+      {
+        "name": "First cut after 21 approach frames; second after 8 onward frames",
+        "normalSpawn": true,
+        "tape": [
+          [
+            21,
+            "r"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            20,
+            "j"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "frames": 130,
+        "deaths": 0
+      },
+      {
+        "name": "First cut after 21 approach frames; second after 10 onward frames",
+        "normalSpawn": true,
+        "tape": [
+          [
+            21,
+            "r"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            20,
+            "j"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "frames": 130,
+        "deaths": 0
+      },
+      {
+        "name": "First cut after 21 approach frames; second after 12 onward frames",
+        "normalSpawn": true,
+        "tape": [
+          [
+            21,
+            "r"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            20,
+            "j"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "frames": 130,
+        "deaths": 0
+      },
+      {
+        "name": "First cut after 22 approach frames; second after 8 onward frames",
+        "normalSpawn": true,
+        "tape": [
+          [
+            22,
+            "r"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            20,
+            "j"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "frames": 141,
+        "deaths": 0
+      },
+      {
+        "name": "First cut after 22 approach frames; second after 10 onward frames",
+        "normalSpawn": true,
+        "tape": [
+          [
+            22,
+            "r"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            20,
+            "j"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "frames": 141,
+        "deaths": 0
+      },
+      {
+        "name": "First cut after 22 approach frames; second after 12 onward frames",
+        "normalSpawn": true,
+        "tape": [
+          [
+            22,
+            "r"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            20,
+            "j"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "frames": 141,
+        "deaths": 0
+      },
+      {
+        "name": "First cut after 23 approach frames; second after 8 onward frames",
+        "normalSpawn": true,
+        "tape": [
+          [
+            23,
+            "r"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            20,
+            "j"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "frames": 151,
+        "deaths": 0
+      },
+      {
+        "name": "First cut after 23 approach frames; second after 10 onward frames",
+        "normalSpawn": true,
+        "tape": [
+          [
+            23,
+            "r"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            20,
+            "j"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "frames": 151,
+        "deaths": 0
+      },
+      {
+        "name": "First cut after 23 approach frames; second after 12 onward frames",
+        "normalSpawn": true,
+        "tape": [
+          [
+            23,
+            "r"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            20,
+            "j"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "frames": 151,
+        "deaths": 0
+      }
+    ],
+    "designNotes": "No dash and no advanced ground technique. The second contact keeps portal-fling speed. Nine fixed normal-spawn variants vary the first cut and the second cut timing; they are complete controls, not a claim that all arbitrary approaches succeed.",
+    "route": {
+      "frames": 151,
+      "deaths": 0,
+      "events": [
+        "strike",
+        "pogo-loft",
+        "pod",
+        "portal-pass",
+        "pogo-low",
+        "land",
+        "exit"
+      ],
+      "eventCounts": {
+        "strike": 2,
+        "pogo-loft": 1,
+        "pod": 2,
+        "portal-pass": 1,
+        "pogo-low": 1,
+        "land": 1,
+        "exit": 1
+      }
+    },
+    "shortcutChecks": [
+      {
+        "name": "Use low height at the first target",
+        "tape": [
+          [
+            23,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "firstFailure": {
+            "type": "death",
+            "frame": 132,
+            "x": 132,
+            "y": 171,
+            "cause": "spikes",
+            "vx": 10.833333333333334,
+            "vy": 0,
+            "i": 131
+          }
+        }
+      },
+      {
+        "name": "Keep Jump held for a high second rebound",
+        "tape": [
+          [
+            23,
+            "r"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            20,
+            "j"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            5,
+            "rdjs"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "firstFailure": {
+            "type": "death",
+            "frame": 77,
+            "x": 208,
+            "y": 64,
+            "cause": "spikes",
+            "vx": 105,
+            "vy": -30,
+            "i": 76
+          }
+        }
+      },
+      {
+        "name": "Omit the second blade contact",
+        "tape": [
+          [
+            23,
+            "r"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            20,
+            "j"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "firstFailure": {
+            "type": "death",
+            "frame": 69,
+            "x": 199,
+            "y": 171,
+            "cause": "spikes",
+            "vx": 105,
+            "vy": 0,
+            "i": 68
+          }
+        }
+      }
+    ],
+    "feedbackHistory": [
+      {
+        "date": "2026-10-08",
+        "decision": "banked",
+        "comment": "Good but hard; great for a late-game Base level."
+      }
+    ],
+    "review": {
+      "date": "2026-10-08",
+      "decision": "banked",
+      "comment": "Good but hard; great for a late-game Base level."
+    }
+  },
+  "tape": [
+    [
+      23,
+      "r"
+    ],
+    [
+      1,
+      "djs"
+    ],
+    [
+      20,
+      "j"
+    ],
+    [
+      10,
+      "r"
+    ],
+    [
+      5,
+      "rds"
+    ],
+    [
+      110,
+      "r"
+    ]
+  ]
+}

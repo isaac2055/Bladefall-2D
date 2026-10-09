@@ -1,0 +1,146 @@
+{
+  "room": {
+    "id": "bank-b05",
+    "name": "The Useful Ceiling",
+    "hint": "Dash through purple glass to turn gravity. Light both stones to open the gate.",
+    "question": "One tally is on the ceiling; the other is on the way back down.",
+    "map": [
+      "################################G#######",
+      "#....####################.......G......#",
+      "#....####################.......G......#",
+      "#....####################.......G......#",
+      "#....####################.......G......#",
+      "#....####################.......G......#",
+      "#................c..........Q...G......#",
+      "#...........................Q...G......#",
+      "#...........................Q...G......#",
+      "#...............................G......#",
+      "#...............................G......#",
+      "#...............................G......#",
+      "#...............................G......#",
+      "#...........................c...G......#",
+      "#...........................o...G.......",
+      "#......Q........................G.......",
+      "#......Q........................G.......",
+      "#.P....Q........................G.......",
+      "#########^^^^^^^^^^^^^^^^^^^^^^^^^######",
+      "#########.........................######",
+      "#########.........................######",
+      "#########.........................######",
+      "########################################"
+    ],
+    "palette": "causeway",
+    "study": true,
+    "lock": [
+      "strike",
+      "parry",
+      "portal"
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 1,
+    "difficulty": 3,
+    "role": "combination",
+    "worlds": [
+      15,
+      30
+    ],
+    "tags": [
+      "gravity",
+      "tally-stones",
+      "inverted-route"
+    ],
+    "newMechanics": [],
+    "solution": "Flip at the start and land beneath the long ceiling. Collect its stone, leap toward the distant prism, flip upright through it, catch the second stone on the descent and dash to the final bank.",
+    "entrance": "Left bank, spawn tile 2/17",
+    "exit": "Right edge, open rows 14–17",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "gravity",
+      "stone-lit",
+      "gate-open"
+    ],
+    "route": {
+      "frames": 205,
+      "deaths": 0,
+      "events": [
+        "dash",
+        "gravity",
+        "land",
+        "refill-dash",
+        "stone-lit",
+        "jump",
+        "gate-open",
+        "refill",
+        "exit"
+      ],
+      "movement": "ordinary jump/dash/climb; no super, hyper, ultra or wallbounce",
+      "eventCounts": {
+        "dash": 3,
+        "gravity": 2,
+        "land": 2,
+        "refill-dash": 3,
+        "stone-lit": 2,
+        "jump": 1,
+        "gate-open": 1,
+        "refill": 1,
+        "exit": 1
+      }
+    },
+    "acceptance": "banked",
+    "order": 0,
+    "selectionNote": "Kept by the user from batch 01; fun, difficulty and suitability ratings pending."
+  },
+  "tape": [
+    [
+      20,
+      "ru"
+    ],
+    [
+      5,
+      "rux"
+    ],
+    [
+      40,
+      "ru"
+    ],
+    [
+      20,
+      "rgu"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      20,
+      "lu"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      40,
+      "ru"
+    ]
+  ]
+}

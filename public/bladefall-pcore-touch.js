@@ -282,7 +282,7 @@ function draw(ctx,dpr){
 function card(back){
  const t=settings(),opt=(v,l,cur)=>`<option value="${v}" ${v===cur?'selected':''}>${l}</option>`;
  const rows=Object.keys(CHOICES).map(a=>`<label class="pcOpt pcTouchRow"><span>${ACTION_NAMES[a]}</span><select data-map="${a}">${CHOICES[a].map(g=>opt(g,GESTURES[g],t.map[a])).join('')}</select></label>`).join('');
- api.showOverlay(`<div class="pcCard mid"><h1>Touch controls</h1>
+ api.showOverlay(`<div class="pcCard mid"><h1>Touch controls</h1><label class="pcOpt"><input id="tcFeedback" type="checkbox" ${root.BladefallPlaytest?.feedbackEnabled()?'checked':''}> Feedback mode</label>
  <p class="pcSub">Left thumb: drag anywhere on the left to move. Right thumb: the gestures below. Pause and retry are the two small buttons in the top corner, and Android's back gesture pauses too.</p>
  <label class="pcOpt pcTouchRow"><span>Layout</span><select id="tcPreset">${Object.keys(PRESETS).map(p=>opt(p,PRESET_NAMES[p],t.preset)).join('')}${t.preset==='custom'?opt('custom','Custom','custom'):''}</select></label>
  ${rows}
@@ -311,6 +311,7 @@ function card(back){
  bind('#tcHaptics','haptics');bind('#tcHints','hints');bind('#tcFull','fullscreen');
  o.querySelector('#tcReset').onclick=()=>{store({...DEFAULTS,map:{...DEFAULTS.map}});card(back);};
  if(api.controlsCard)o.querySelector('#tcKeys').onclick=()=>api.controlsCard(()=>card(back));
+ o.querySelector('#tcFeedback').onchange=e=>root.BladefallPlaytest?.setFeedback(e.target.checked);
  o.querySelector('#tcBack').onclick=back;
 }
 

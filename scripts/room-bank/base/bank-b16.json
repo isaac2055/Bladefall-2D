@@ -1,0 +1,346 @@
+{
+  "room": {
+    "id": "bank-b16",
+    "name": "Hands for the Chimney",
+    "hint": "Loose lanterns catch in rings. Grab retrieves; strike releases. Shutter pips show when the light is blocked.",
+    "question": "When the receiver opens the door, where is it safe to wait before dropping past the light?",
+    "map": [
+      "########################################",
+      "#..................##.#...........H....#",
+      "#..................##.#...........H....#",
+      "#..................##.#...........H....#",
+      "#..................##.#...........H....#",
+      "#............########.#...........H....#",
+      "#.P.l.............................H....#",
+      "#######...##}}}}}}}}}......#####..H....#",
+      "#..................##.........._..H...X#",
+      "#..................##.###}}}}}}####....#",
+      "#..................##.#................#",
+      "#..................##.#.................",
+      "#..................##.#.................",
+      "#..................##.#.................",
+      "#..................##.#............#####",
+      "#..................##.#................#",
+      "#..................##.#................#",
+      "#..................##.#................#",
+      "#.....................#................#",
+      "#.....................#................#",
+      "#######################................#",
+      "#######################................#",
+      "########################################"
+    ],
+    "palette": "path",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "cargoClasps": [
+      {
+        "id": "A",
+        "c": 21,
+        "r": 6
+      }
+    ],
+    "beams": [
+      {
+        "c": 21,
+        "r": 0,
+        "dir": "d"
+      },
+      {
+        "c": 39,
+        "r": 8,
+        "dir": "l"
+      }
+    ],
+    "shutters": [
+      {
+        "open": 100,
+        "shut": 80,
+        "offset": 0
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 3,
+    "acceptance": "revised",
+    "difficulty": 4,
+    "role": "solve",
+    "worlds": [
+      11,
+      19
+    ],
+    "tags": [
+      "cargo-clasp",
+      "belt",
+      "beam",
+      "cargo-routing",
+      "climb",
+      "shutter",
+      "timed-exit",
+      "shade-handoff"
+    ],
+    "newMechanics": [
+      "cargo-clasp"
+    ],
+    "entrance": "Upper-left loading ledge.",
+    "exit": "Lower-right drop after the upper receiver and shutter crossing.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "clasp-catch",
+      "clasp-take",
+      "plate",
+      "held-open",
+      "shutter-shut"
+    ],
+    "solution": "Use the first belt duct and clasp to keep the chimney shaded while climbing empty-handed. Retrieve the lantern from the upper alcove and drop it onto the second belt so it enters the cargo-only duct and stops on the receiver. Climb onto the duct roof empty-handed; the stopped lantern now supplies the shade formerly provided by the closed held gate. Wait on the roof for the shutter to close, then leave the roof, pass the open gate and drop to the lower exit before light returns.",
+    "nearestExisting": "F14 Empty Your Hands splits cargo and knight across a low duct; B12 Umbrella Exchange replaces an indispensable shade. Here the split route is vertical and carrying itself prevents the sustained action needed to reunite: the shade must wait above a long climb.",
+    "novelty": "The suspended cargo is a temporary remote safety fixture. Neither carrying nor a loose moving throw lasts through the climb, and the same object is recovered from a different face for a second job.",
+    "userFeedback": {
+      "date": "2026-10-07",
+      "comment": "Make this harder and more interesting, then show it again for review; not banked."
+    },
+    "revisionNotes": "Added an 8px-high second delivery duct and shutter-controlled cross-beam. The recovered lantern rolls under the low roof onto its receiver; opening the held gate exposes the cross-beam and the stopped lamp supplies the old gate’s shade. The knight climbs onto the duct roof, waits safely above the beam, then drops across its line during a dark interval to reach the lower exit.",
+    "route": {
+      "frames": 688,
+      "deaths": 0,
+      "events": [
+        "pickup",
+        "jump",
+        "land",
+        "throw",
+        "lantern-land",
+        "shutter-shut",
+        "clasp-catch",
+        "shutter-open",
+        "grab",
+        "climbhop",
+        "clasp-take",
+        "plate",
+        "held-open",
+        "exit"
+      ],
+      "movement": "Ordinary jump, dash, climb and device actions; no advanced momentum."
+    },
+    "shortcutChecks": [
+      {
+        "name": "Leave the safe roof immediately, without reading the shutter",
+        "tape": [
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            7,
+            "r"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            100,
+            ""
+          ],
+          [
+            36,
+            "l"
+          ],
+          [
+            42,
+            ""
+          ],
+          [
+            70,
+            "r"
+          ],
+          [
+            134,
+            "rgu"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            6,
+            ""
+          ],
+          [
+            1,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            19,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            45,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "cargoLost": false,
+          "stoneStops": [],
+          "failure": "light"
+        }
+      }
+    ],
+    "bypassReview": {
+      "scope": "Focused wrong-timing route and obvious shortcut review; not an exhaustive search.",
+      "result": "The receiver is inside an 8px cargo-only duct. The knight can wait on its roof, but reaching the lower exit requires crossing the beam below it; an immediate descent burns."
+    },
+    "archivedBeforeRevision": "scripts/room-bank/archive/batch-03-before-review/base/bank-b16.json"
+  },
+  "tape": [
+    [
+      8,
+      "r"
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      7,
+      "r"
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      10,
+      "r"
+    ],
+    [
+      30,
+      ""
+    ],
+    [
+      1,
+      "dg"
+    ],
+    [
+      100,
+      ""
+    ],
+    [
+      36,
+      "l"
+    ],
+    [
+      42,
+      ""
+    ],
+    [
+      70,
+      "r"
+    ],
+    [
+      134,
+      "rgu"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      8,
+      "l"
+    ],
+    [
+      6,
+      ""
+    ],
+    [
+      1,
+      "j"
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      19,
+      "r"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      1,
+      "dg"
+    ],
+    [
+      70,
+      ""
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      20,
+      "r"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      45,
+      "r"
+    ]
+  ]
+}

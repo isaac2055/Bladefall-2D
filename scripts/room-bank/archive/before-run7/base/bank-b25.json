@@ -1,0 +1,408 @@
+{
+  "room": {
+    "id": "bank-b25",
+    "name": "A Floor Until It Opens",
+    "palette": "foundry",
+    "study": true,
+    "exit": "left",
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "hint": "Heat slabs cycle stone, molten, then glass. Glass supports your feet, but Down + Jump drops through. Moving thorns follow the marked paths.",
+    "question": "Where can you wait while the bridge changes, and when is it finally safe to fall through?",
+    "map": [
+      "########################################",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#.................##...................#",
+      "#..P..............##..............c....#",
+      "##########EEEEEEEEEEEEEEEEEE############",
+      "##########..................############",
+      "##########..................############",
+      "##########..................############",
+      "##########..................############",
+      "##########..................############",
+      ".......G..........######....############",
+      ".......G....................############",
+      ".......G....................############",
+      "##########^^^^^^^^^^^^^^^^^^############",
+      "########################################"
+    ],
+    "slabs": [
+      {
+        "stone": 150,
+        "molten": 70,
+        "glass": 230
+      }
+    ],
+    "sweepers": [
+      {
+        "id": "A",
+        "path": [
+          [
+            13,
+            6
+          ],
+          [
+            13,
+            11
+          ]
+        ],
+        "period": 160,
+        "phase": 0,
+        "radius": 4
+      },
+      {
+        "id": "B",
+        "path": [
+          [
+            24,
+            6
+          ],
+          [
+            24,
+            11
+          ]
+        ],
+        "period": 200,
+        "phase": 70,
+        "radius": 4
+      },
+      {
+        "id": "C",
+        "path": [
+          [
+            11,
+            16
+          ],
+          [
+            21,
+            16
+          ]
+        ],
+        "period": 210,
+        "phase": 205,
+        "radius": 4
+      }
+    ],
+    "dropThru": true
+  },
+  "bank": {
+    "side": "base",
+    "batch": 4,
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "timing",
+    "worlds": [
+      8,
+      11
+    ],
+    "tags": [
+      "sweeper",
+      "heat-slab",
+      "return-route",
+      "timed-drop",
+      "safe-refuge"
+    ],
+    "newMechanics": [
+      "sweeper"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "entrance": "Upper-left foundry bank.",
+    "exit": "Lower-left return tunnel.",
+    "requiredEvents": [
+      "stone-lit",
+      "gate-open",
+      "slab-glass"
+    ],
+    "solution": "Read the first vertical patrol from the left bank and cross to the raised central refuge while the slab supports you. Read the second lane from that refuge, reach the far tally and wait on permanent stone for glass. Re-enter the glass beside the second patrol and drop onto the lower island. At its protected right end, read the horizontal patrol, jump above its return line, then dash left and descend into the low exit tunnel.",
+    "nearestExisting": "Existing Emberdeep courses teach the slab cycle, while B18 changes a floor to unblock cargo. Here the same full-width timed floor is first the outbound road and later the only descent opening; a second patrol layer changes the route after the objective.",
+    "novelty": "Three observation heights read the moving hazards differently. The permanent central refuge survives a molten cycle, the far bank lets you choose the drop phase, and the lower island starts a fresh timing decision instead of forcing the room’s initial schedule.",
+    "timing": {
+      "principle": "Cross, shelter, cross; then let the floor become a drop route and re-time below it.",
+      "stages": [
+        {
+          "cue": "First vertical thorn rising away from the slab; slab stone or glass.",
+          "action": "Cross the first lane to the raised central refuge.",
+          "rest": "Two-tile high stone refuge above the slab."
+        },
+        {
+          "cue": "Second vertical thorn has left the floor and the bridge will remain safe for the crossing.",
+          "action": "Reach the far tally bank.",
+          "rest": "Permanent right bank."
+        },
+        {
+          "cue": "Glass phase, with room to leave the bridge beside the second patrol.",
+          "action": "Return left, drop through the slab and steer onto the lower island.",
+          "rest": "Lower island below the horizontal patrol."
+        },
+        {
+          "cue": "Lower patrol has passed leftward off the island, leaving the departure clear.",
+          "action": "Jump above its return line, then dash left and descend into the exit tunnel.",
+          "rest": "Right end of the lower island before the jump; exit tunnel afterwards."
+        }
+      ],
+      "notes": "The saved route uses a later safe lower departure; an earlier safe jump is also valid. Hazards demand reading their position, not obeying a single mandatory waiting schedule."
+    },
+    "route": {
+      "frames": 648,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "slab-molten",
+        "land",
+        "slab-glass",
+        "stone-lit",
+        "gate-open",
+        "slab-stone",
+        "dash",
+        "refill-dash",
+        "exit"
+      ],
+      "movement": "Ordinary jump/dash; room opts into the existing Down + Jump one-way drop action."
+    },
+    "shortcutChecks": [
+      {
+        "name": "Rush the first patrol without observing its pass",
+        "tape": [
+          [
+            32,
+            "r"
+          ],
+          [
+            0,
+            ""
+          ],
+          [
+            40,
+            "r"
+          ],
+          [
+            14,
+            "rj"
+          ],
+          [
+            110,
+            ""
+          ],
+          [
+            90,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            44,
+            "l"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            80,
+            ""
+          ],
+          [
+            17,
+            "lj"
+          ],
+          [
+            1,
+            "lx"
+          ],
+          [
+            110,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "firstDeath": {
+            "type": "death",
+            "frame": 59,
+            "x": 113,
+            "y": 91,
+            "cause": "sweeper",
+            "vx": 90,
+            "vy": 0,
+            "i": 58
+          }
+        }
+      },
+      {
+        "name": "Leave the central refuge before the molten interval ends",
+        "tape": [
+          [
+            32,
+            "r"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            40,
+            "r"
+          ],
+          [
+            14,
+            "rj"
+          ],
+          [
+            0,
+            ""
+          ],
+          [
+            90,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            44,
+            "l"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            80,
+            ""
+          ],
+          [
+            17,
+            "lj"
+          ],
+          [
+            1,
+            "lx"
+          ],
+          [
+            110,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "firstDeath": {
+            "type": "death",
+            "frame": 176,
+            "x": 175,
+            "y": 92,
+            "cause": "molten",
+            "vx": 90,
+            "vy": 160,
+            "i": 175
+          }
+        }
+      }
+    ]
+  },
+  "tape": [
+    [
+      32,
+      "r"
+    ],
+    [
+      70,
+      ""
+    ],
+    [
+      40,
+      "r"
+    ],
+    [
+      14,
+      "rj"
+    ],
+    [
+      110,
+      ""
+    ],
+    [
+      90,
+      "r"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      44,
+      "l"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      1,
+      "dj"
+    ],
+    [
+      25,
+      "l"
+    ],
+    [
+      14,
+      ""
+    ],
+    [
+      80,
+      ""
+    ],
+    [
+      17,
+      "lj"
+    ],
+    [
+      1,
+      "lx"
+    ],
+    [
+      110,
+      "l"
+    ]
+  ]
+}

@@ -13,29 +13,31 @@
 (function(root){
 'use strict';
 const C=()=>root.BladefallPrecisionCore;
-const TILE=8,COLS=40,ROWS=23;
+const TILE=8;
 const D={r:[1,0],l:[-1,0],u:[0,-1],d:[0,1]};
 const overlap=(ax,ay,aw,ah,bx,by,bw,bh)=>ax<bx+bw&&ax+aw>bx&&ay<by+bh&&ay+ah>by;
 function reset(g){
- const def=g.room.def,Core=C();
+ const def=g.room.def,Core=C(),COLS=g.room.cols;
  g.beams=null;
  const mirrors=[];def.map.forEach((row,r)=>{for(let c=0;c<COLS;c++){const ch=row[c];if(ch==='/'||ch==='\\')g.ents.push({type:'mirror',dev:true,x:c*TILE,y:r*TILE,w:8,h:8,slant:ch,id:'mr'+g.ents.length,timer:0});}});
  const sh=Core.groupsOf(def,'X');
  sh.forEach((b,i)=>{const d=(def.shutters||[])[i]||{};const e={type:'shutter',dev:true,x:b.x,y:b.y,w:b.w,h:b.h,beat:{open:d.open??60,shut:d.shut??60,offset:d.offset||0},id:'sh'+i};e.open=shutterOpen(e,0);g.ents.push(e);});
  if(!def.beams)return;
  g.beams={emit:def.beams.map(b=>({c:b.c,r:b.r,dir:b.dir})),paths:[],clock:0,harmless:!!def.beamsHarmless};
- trace(g);
 }
+// A spent foothold, cart or other device may initialize after the beam module.
+// Trace only once all device reset hooks have supplied their actual solid bodies.
+function ready(g){if(g.beams)trace(g);}
 function shutterOpen(e,clock){const cyc=e.beat.open+e.beat.shut,k=((clock+e.beat.offset)%cyc+cyc)%cyc;return k<e.beat.open;}
 /* Follow every beam cell by cell. Returns the list of segments [x0,y0,x1,y1] in pixels. */
 function trace(g){
- const Core=C(),P=root.BladefallPrecisionPortals,paths=[],lit=new Set();
+ const Core=C(),P=root.BladefallPrecisionPortals,paths=[],lit=new Set(),COLS=g.room.cols,ROWS=g.room.rows;
  const mirrorAt=new Map();for(const e of g.ents)if(e.type==='mirror')mirrorAt.set((e.y/TILE)*COLS+e.x/TILE,e);
  const blocking=g.ents.filter(e=>(e.type==='shutter'&&!e.open)||(e.type==='lantern'&&!e.returning)||(e.type!=='shutter'&&e.type!=='mirror'&&Core.blockerAt&&isSolidEnt(e)));
  for(const em of g.beams.emit){
   let c=em.c,r=em.r,[dx,dy]=D[em.dir],sx=c*TILE+4,sy=r*TILE+4,steps=0;
   const seg=()=>{paths.push([sx,sy,c*TILE+4,r*TILE+4]);};
-  while(steps++<400){
+  while(steps++<Math.max(400,4*(COLS+ROWS))){
    const nc=c+dx,nr=r+dy;
    if(nc<0||nc>=COLS||nr<0||nr>=ROWS){c=nc;r=nr;seg();break;}
    const i=nr*COLS+nc;
@@ -87,6 +89,6 @@ function after(g){
  for(const [x0,y0,x1,y1]of g.beams.paths){const bx=Math.min(x0,x1)-1,by=Math.min(y0,y1)-1,bw=Math.abs(x1-x0)+2,bh=Math.abs(y1-y0)+2;
   if(overlap(hx,hy,hw,hh,bx,by,bw,bh)){Core.kill(g,p,'light');return;}}
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'beam',reset,before,after});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'beam',reset,ready,before,after});
 root.BladefallPrecisionBeam=Object.freeze({trace,shutterOpen});
 })(typeof window!=='undefined'?window:globalThis);

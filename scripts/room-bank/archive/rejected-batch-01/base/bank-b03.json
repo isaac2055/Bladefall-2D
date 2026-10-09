@@ -1,0 +1,122 @@
+{
+  "room": {
+    "id": "bank-b03",
+    "name": "Carry the Landing",
+    "hint": "Carry the lantern across; Down + Grab places it on the plate.",
+    "question": "The item that slows the fall must become the door weight.",
+    "map": [
+      "################################H#######",
+      "#...............................H......#",
+      "#...............................H......#",
+      "#...............................H......#",
+      "#...............................H......#",
+      "#...............................H......#",
+      "#...............................H......#",
+      "#...............................H......#",
+      "#.P..l..........................H......#",
+      "#########.......................H......#",
+      "#########.......................H......#",
+      "#########.......................H......#",
+      "#########.......................H......#",
+      "#########.......................H......#",
+      "#########.......................H......#",
+      "#########.......................H.......",
+      "#########.......................H.......",
+      "#########.......................H.......",
+      "#########................._.....H.......",
+      "#########.............##################",
+      "#########.............##################",
+      "#########^^^^^^^^^^^^^##################",
+      "########################################"
+    ],
+    "palette": "causeway",
+    "lock": [
+      "strike",
+      "parry",
+      "portal"
+    ],
+    "study": true
+  },
+  "bank": {
+    "side": "base",
+    "batch": 1,
+    "difficulty": 2,
+    "role": "combination",
+    "worlds": [
+      5,
+      12
+    ],
+    "tags": [
+      "lantern",
+      "glide",
+      "pressure-plate"
+    ],
+    "newMechanics": [],
+    "solution": "Pick up the lantern, glide from the high ledge to the low receiving bank, set the lantern onto the plate, then pass the held gate.",
+    "entrance": "Left bank, spawn tile 2/8",
+    "exit": "Right edge, open rows 15–18",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "pickup",
+      "throw",
+      "plate",
+      "held-open"
+    ],
+    "route": {
+      "frames": 286,
+      "deaths": 0,
+      "events": [
+        "pickup",
+        "jump",
+        "plate",
+        "held-open",
+        "land",
+        "throw",
+        "lantern-land",
+        "exit"
+      ],
+      "movement": "ordinary jump; carry/drop lantern; no momentum techniques",
+      "eventCounts": {
+        "pickup": 1,
+        "jump": 1,
+        "plate": 1,
+        "held-open": 1,
+        "land": 1,
+        "throw": 1,
+        "lantern-land": 1,
+        "exit": 1
+      }
+    }
+  },
+  "tape": [
+    [
+      13,
+      "r"
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      110,
+      "rj"
+    ],
+    [
+      60,
+      ""
+    ],
+    [
+      1,
+      "dg"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      80,
+      "r"
+    ]
+  ]
+}

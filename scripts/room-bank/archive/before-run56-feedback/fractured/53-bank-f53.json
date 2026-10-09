@@ -1,0 +1,1382 @@
+{
+  "room": {
+    "id": "bank-f53",
+    "name": "Let It Through First",
+    "palette": "court",
+    "study": true,
+    "movement": "survive-2",
+    "cols": 72,
+    "rows": 40,
+    "aim8": true,
+    "exit": "right",
+    "hint": "Send the lantern through while liquid. Freeze its route into your wall and beam shelter.",
+    "question": "Which part must change before the same route can carry you back?",
+    "map": [
+      "########################################################################",
+      "#.....................................................................<#",
+      "#.....................................................................<#",
+      "#.......................................................................",
+      "#.......................................................................",
+      "#.......................................................................",
+      "#.......................................................................",
+      "#.......................................................................",
+      "#................................................#wwwww.................",
+      "#................................................#wwwww.................",
+      "#................................................#wwwww###..............",
+      "#................................................#wwwww###..............",
+      "#................................................#wwwww.................",
+      "#.................................................wwwww.................",
+      "#.................................................wwwww.................",
+      "#.................................................wwwww......###########",
+      "#.........................................#####...wwwww......###########",
+      "#.................................................wwwww...............<#",
+      "#.................................................wwwww...............<#",
+      "#.................................................wwwww...............<#",
+      "#.................................................wwwww...............<#",
+      "#.................................................wwwww...............<#",
+      "#...........................................######wwwww...............<#",
+      "#.................................................wwwww...............<#",
+      "#.................................................wwwww...............<#",
+      "#.................................................wwwww...............<#",
+      "#.................................................wwwww...............<#",
+      "#.................................................wwwww...............<#",
+      "#.................................................wwwww...............<#",
+      "#..................#..............................wwwww...............<#",
+      "#..................#.....^^^^.........^^^^^^^^^^^^wwwww...............<#",
+      "#..............wwww##########.........############wwwww...............<#",
+      "#..............wwww###############################wwwww...............<#",
+      "#..............wwww###############################wwwww...............<#",
+      "#..............wwww###############################wwwww...............<#",
+      "#....P..l...n..wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww...............<#",
+      "#######################################################...............<#",
+      "###############.......................................................<#",
+      "###############........................................^^^^^^^^^^^^^^^^#",
+      "########################################################################"
+    ],
+    "thaw": 3600,
+    "currents": [
+      {
+        "c": 15,
+        "r": 31,
+        "w": 4,
+        "h": 5,
+        "dy": 160,
+        "dx": 0
+      },
+      {
+        "c": 15,
+        "r": 35,
+        "w": 39,
+        "h": 1,
+        "dx": 110,
+        "dy": 50
+      },
+      {
+        "c": 50,
+        "r": 8,
+        "w": 5,
+        "h": 28,
+        "dx": 0,
+        "dy": -90
+      }
+    ],
+    "cargoClasps": [
+      {
+        "id": "Upper berth",
+        "c": 52,
+        "r": 7
+      }
+    ],
+    "recoilPlatforms": [
+      {
+        "id": "Dry dock",
+        "c": 29,
+        "r": 29,
+        "w": 9,
+        "depth": 2,
+        "releaseSpeed": 130
+      }
+    ],
+    "beams": [
+      {
+        "c": 69,
+        "r": 24,
+        "dir": "l"
+      },
+      {
+        "c": 60,
+        "r": 0,
+        "dir": "d"
+      },
+      {
+        "c": 66,
+        "r": 0,
+        "dir": "d"
+      }
+    ],
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "showHintAtRest": true
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 12,
+    "run": 6,
+    "collection": "run6",
+    "format": "superroom",
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "Deliver through liquid, then freeze the cargo route into your ascent",
+    "worlds": [],
+    "tags": [
+      "cargo-routing",
+      "water-current",
+      "freeze",
+      "recoil-platform",
+      "wallbounce",
+      "lantern-shade",
+      "opposing-roles"
+    ],
+    "newMechanics": [],
+    "status": "route-proven",
+    "author": "Codex",
+    "humanReview": "Unreviewed; difficulty is an author estimate.",
+    "requiredEvents": [
+      "pickup",
+      "throw",
+      "clasp-catch",
+      "freeze",
+      "condenser",
+      "recoil-load",
+      "recoil-release",
+      "recoil-jump",
+      "wallbounce",
+      "clasp-take"
+    ],
+    "solution": "Throw the lantern into the western water intake and let the current carry it down, through the one-tile conduit, and up to the high clasp. Once delivery is visible, strike the condenser. That same connected pool now blocks the crossing beam and becomes the solid intake and upper return wall. Climb the intake, jump from the small stone sill onto the dock, hold Down to load it, then release and jump with its rise. Dash onto the broad shelf below the frozen outlet. Dash upward beside the ice and hold Jump to bounce onto the higher outboard rest; a short rising transfer and climb reaches the crown. Reclaim the lantern from its clasp and take the wide, shaded glide across the final beams.",
+    "nearestExisting": "F14 Empty Your Hands separates cargo and knight through a one-tile water duct, while F18 The Thawing Track changes ice support to relocate useful shade. This room keeps one connected pool and asks it to do opposing jobs: liquid delivers the lantern, then the frozen outlet becomes the knight’s beam shield and wallbounce face. The dock launch draws on B39’s stored lift, but its useful destination exists only after the earlier cargo route is deliberately closed.",
+    "novelty": "The knight manufactures a return structure from the route that transported the object. Freezing first prevents delivery; leaving it liquid removes the dry wall and exposes the approach to a beam. The later object reunion supplies the easy shaded finish, so the hard movement happens before the final reward.",
+    "positiveChecks": [
+      {
+        "name": "Release loaded dock one frame earlier",
+        "tape": [
+          [
+            12,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            280,
+            ""
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            32,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            15,
+            "ruxg"
+          ],
+          [
+            22,
+            "rg"
+          ],
+          [
+            35,
+            "d"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            15,
+            "rx"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            10,
+            "ux"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            10,
+            "rj"
+          ],
+          [
+            15,
+            "ruxg"
+          ],
+          [
+            70,
+            "ug"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            27,
+            "r"
+          ],
+          [
+            100,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 956,
+          "events": [
+            "pickup",
+            "throw",
+            "clasp-catch",
+            "strike",
+            "freeze",
+            "condenser",
+            "grab",
+            "climbhop",
+            "land",
+            "jump",
+            "dash",
+            "recoil-load",
+            "refill-dash",
+            "recoil-release",
+            "recoil-jump",
+            "wallbounce",
+            "clasp-take",
+            "exit"
+          ],
+          "eventCounts": {
+            "pickup": 2,
+            "throw": 1,
+            "clasp-catch": 1,
+            "strike": 1,
+            "freeze": 1,
+            "condenser": 1,
+            "grab": 2,
+            "climbhop": 2,
+            "land": 6,
+            "jump": 5,
+            "dash": 4,
+            "recoil-load": 1,
+            "refill-dash": 4,
+            "recoil-release": 1,
+            "recoil-jump": 1,
+            "wallbounce": 1,
+            "clasp-take": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Release loaded dock two frames later",
+        "tape": [
+          [
+            12,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            280,
+            ""
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            32,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            15,
+            "ruxg"
+          ],
+          [
+            22,
+            "rg"
+          ],
+          [
+            35,
+            "d"
+          ],
+          [
+            4,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            15,
+            "rx"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            10,
+            "ux"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            10,
+            "rj"
+          ],
+          [
+            15,
+            "ruxg"
+          ],
+          [
+            70,
+            "ug"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            27,
+            "r"
+          ],
+          [
+            100,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 959,
+          "events": [
+            "pickup",
+            "throw",
+            "clasp-catch",
+            "strike",
+            "freeze",
+            "condenser",
+            "grab",
+            "climbhop",
+            "land",
+            "jump",
+            "dash",
+            "recoil-load",
+            "refill-dash",
+            "recoil-release",
+            "recoil-jump",
+            "wallbounce",
+            "clasp-take",
+            "exit"
+          ],
+          "eventCounts": {
+            "pickup": 2,
+            "throw": 1,
+            "clasp-catch": 1,
+            "strike": 1,
+            "freeze": 1,
+            "condenser": 1,
+            "grab": 2,
+            "climbhop": 2,
+            "land": 6,
+            "jump": 5,
+            "dash": 4,
+            "recoil-load": 1,
+            "refill-dash": 4,
+            "recoil-release": 1,
+            "recoil-jump": 1,
+            "wallbounce": 1,
+            "clasp-take": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Bounce from frozen face two frames later",
+        "tape": [
+          [
+            12,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            280,
+            ""
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            32,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            15,
+            "ruxg"
+          ],
+          [
+            22,
+            "rg"
+          ],
+          [
+            35,
+            "d"
+          ],
+          [
+            2,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            15,
+            "rx"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            10,
+            "rj"
+          ],
+          [
+            15,
+            "ruxg"
+          ],
+          [
+            70,
+            "ug"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            27,
+            "r"
+          ],
+          [
+            100,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 959,
+          "events": [
+            "pickup",
+            "throw",
+            "clasp-catch",
+            "strike",
+            "freeze",
+            "condenser",
+            "grab",
+            "climbhop",
+            "land",
+            "jump",
+            "dash",
+            "recoil-load",
+            "refill-dash",
+            "recoil-release",
+            "recoil-jump",
+            "wallbounce",
+            "clasp-take",
+            "exit"
+          ],
+          "eventCounts": {
+            "pickup": 2,
+            "throw": 1,
+            "clasp-catch": 1,
+            "strike": 1,
+            "freeze": 1,
+            "condenser": 1,
+            "grab": 2,
+            "climbhop": 2,
+            "land": 6,
+            "jump": 5,
+            "dash": 4,
+            "recoil-load": 1,
+            "refill-dash": 4,
+            "recoil-release": 1,
+            "recoil-jump": 1,
+            "wallbounce": 1,
+            "clasp-take": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Keep water liquid",
+        "tape": [
+          [
+            12,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            280,
+            ""
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            32,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            15,
+            "ruxg"
+          ],
+          [
+            22,
+            "rg"
+          ],
+          [
+            35,
+            "d"
+          ],
+          [
+            2,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            15,
+            "rx"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            10,
+            "ux"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            10,
+            "rj"
+          ],
+          [
+            15,
+            "ruxg"
+          ],
+          [
+            70,
+            "ug"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            27,
+            "r"
+          ],
+          [
+            100,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 969,
+          "events": [
+            "pickup",
+            "throw",
+            "clasp-catch",
+            "splash",
+            "jump",
+            "grab",
+            "dash",
+            "land",
+            "refill-dash",
+            "wallbounce",
+            "climbhop",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "pickup": 1,
+            "throw": 1,
+            "clasp-catch": 1,
+            "splash": 2,
+            "jump": 4,
+            "grab": 3,
+            "dash": 4,
+            "land": 2,
+            "refill-dash": 4,
+            "wallbounce": 1,
+            "climbhop": 1,
+            "death": 1,
+            "respawn": 1
+          }
+        }
+      },
+      {
+        "name": "Freeze before cargo clears the conduit",
+        "tape": [
+          [
+            12,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            80,
+            ""
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            32,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            15,
+            "ruxg"
+          ],
+          [
+            22,
+            "rg"
+          ],
+          [
+            35,
+            "d"
+          ],
+          [
+            2,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            15,
+            "rx"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            10,
+            "ux"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            10,
+            "rj"
+          ],
+          [
+            15,
+            "ruxg"
+          ],
+          [
+            70,
+            "ug"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            27,
+            "r"
+          ],
+          [
+            100,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 769,
+          "events": [
+            "pickup",
+            "throw",
+            "strike",
+            "freeze",
+            "condenser",
+            "grab",
+            "climbhop",
+            "land",
+            "jump",
+            "dash",
+            "recoil-load",
+            "refill-dash",
+            "recoil-release",
+            "recoil-jump",
+            "wallbounce",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "pickup": 1,
+            "throw": 1,
+            "strike": 1,
+            "freeze": 1,
+            "condenser": 1,
+            "grab": 2,
+            "climbhop": 2,
+            "land": 6,
+            "jump": 5,
+            "dash": 4,
+            "recoil-load": 1,
+            "refill-dash": 4,
+            "recoil-release": 1,
+            "recoil-jump": 1,
+            "wallbounce": 1,
+            "death": 1,
+            "respawn": 1
+          }
+        }
+      },
+      {
+        "name": "Skip loading the recoil dock",
+        "tape": [
+          [
+            12,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            280,
+            ""
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            80,
+            "ug"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            32,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            15,
+            "ruxg"
+          ],
+          [
+            22,
+            "rg"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            2,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            15,
+            "rx"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            10,
+            "ux"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            10,
+            "rj"
+          ],
+          [
+            15,
+            "ruxg"
+          ],
+          [
+            70,
+            "ug"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            27,
+            "r"
+          ],
+          [
+            100,
+            "rj"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 969,
+          "events": [
+            "pickup",
+            "throw",
+            "clasp-catch",
+            "strike",
+            "freeze",
+            "condenser",
+            "grab",
+            "climbhop",
+            "land",
+            "jump",
+            "dash",
+            "refill-dash",
+            "death",
+            "respawn",
+            "splash"
+          ],
+          "eventCounts": {
+            "pickup": 1,
+            "throw": 1,
+            "clasp-catch": 1,
+            "strike": 1,
+            "freeze": 1,
+            "condenser": 1,
+            "grab": 1,
+            "climbhop": 1,
+            "land": 4,
+            "jump": 5,
+            "dash": 3,
+            "refill-dash": 2,
+            "death": 1,
+            "respawn": 1,
+            "splash": 1
+          }
+        }
+      }
+    ],
+    "approvedIngredients": [
+      "bank-f14",
+      "bank-f18",
+      "bank-b39"
+    ],
+    "causalInterconnection": [
+      "Liquid water carries the lantern through a one-tile conduit which excludes the knight.",
+      "Freezing closes that conduit only after delivery and turns the outlet into solid beam cover and a wallbounce face.",
+      "The recoil launch reaches the newly usable lower shelf; the ice ascent reunites knight and cargo at the high berth.",
+      "Recovered cargo shields the final beams and slows the descent onto the broad bank."
+    ],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 957,
+      "events": [
+        "pickup",
+        "throw",
+        "clasp-catch",
+        "strike",
+        "freeze",
+        "condenser",
+        "grab",
+        "climbhop",
+        "land",
+        "jump",
+        "dash",
+        "recoil-load",
+        "refill-dash",
+        "recoil-release",
+        "recoil-jump",
+        "wallbounce",
+        "clasp-take",
+        "exit"
+      ],
+      "eventCounts": {
+        "pickup": 2,
+        "throw": 1,
+        "clasp-catch": 1,
+        "strike": 1,
+        "freeze": 1,
+        "condenser": 1,
+        "grab": 2,
+        "climbhop": 2,
+        "land": 6,
+        "jump": 5,
+        "dash": 4,
+        "recoil-load": 1,
+        "refill-dash": 4,
+        "recoil-release": 1,
+        "recoil-jump": 1,
+        "wallbounce": 1,
+        "clasp-take": 1,
+        "exit": 1
+      }
+    },
+    "requiredEventCounts": {
+      "pickup": 2
+    },
+    "entrance": "Low western loading shelf beside the visible current intake.",
+    "exit": "Broad upper eastern opening after the lantern glide.",
+    "interconnection": "The down/across/up pool is both the complete cargo route and the later frozen climbing structure. The lantern delivered through it is the shade needed beyond that structure.",
+    "endingForgiveness": "Both late ascent transfers have grounded rests, and a missed wallbounce can fall back onto the lower shelf. The final lantern glide has a high, open receiving boundary and a broad bank, with no last precision catch. Ice lasts sixty seconds after the condenser; the recorded route uses about eleven seconds of that interval.",
+    "designNotes": "72×40 continuous room (2880 tiles, 3.13 normal room areas), with a low west loading area, long submerged conduit, central recoil vault, high frozen return and east shade crossing. The route visits both sides and substantial vertical distance of the same shared water structure. Current timing is visible at the clasp; no hidden progression flag or required-event gate controls the exit."
+  },
+  "tape": [
+    [
+      12,
+      "r"
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      15,
+      "r"
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      280,
+      ""
+    ],
+    [
+      1,
+      "rs"
+    ],
+    [
+      25,
+      "r"
+    ],
+    [
+      80,
+      "ug"
+    ],
+    [
+      30,
+      "r"
+    ],
+    [
+      25,
+      "rj"
+    ],
+    [
+      15,
+      "r"
+    ],
+    [
+      32,
+      ""
+    ],
+    [
+      25,
+      "rj"
+    ],
+    [
+      15,
+      "ruxg"
+    ],
+    [
+      22,
+      "rg"
+    ],
+    [
+      35,
+      "d"
+    ],
+    [
+      2,
+      ""
+    ],
+    [
+      26,
+      "rj"
+    ],
+    [
+      15,
+      "rx"
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      10,
+      "ux"
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      30,
+      ""
+    ],
+    [
+      10,
+      "rj"
+    ],
+    [
+      15,
+      "ruxg"
+    ],
+    [
+      70,
+      "ug"
+    ],
+    [
+      1,
+      ""
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      27,
+      "r"
+    ],
+    [
+      100,
+      "rj"
+    ]
+  ]
+}

@@ -1,0 +1,1361 @@
+{
+  "room": {
+    "id": "bank-b43",
+    "name": "Collect Above the Dock",
+    "palette": "palace",
+    "movement": "survive-2",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "map": [
+      "########################################",
+      "#.............################.........#",
+      "#.............################.........#",
+      "#.............################..........",
+      "#.............################..........",
+      "#.............################..........",
+      "#.............################..........",
+      "#.............################..........",
+      "#.............################.....<####",
+      "#..................................<####",
+      "#.....Pl...........................<####",
+      "##########.........................<####",
+      "##########.........................<####",
+      "##########.........................<####",
+      "##########.........................<####",
+      "##########.........................<####",
+      "##########.........................<####",
+      "##########......................###<####",
+      "##########......................###<####",
+      "##########......................###<####",
+      "##########......................###<####",
+      "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^###<####",
+      "########################################"
+    ],
+    "movingHooks": [
+      {
+        "id": "Freight",
+        "c": 11,
+        "r": 10,
+        "w": 10,
+        "to": [
+          14,
+          0
+        ],
+        "period": 420
+      }
+    ],
+    "cargoClasps": [
+      {
+        "id": "Dock",
+        "c": 33,
+        "r": 9
+      }
+    ],
+    "beams": [
+      {
+        "c": 37,
+        "r": 0,
+        "dir": "d"
+      },
+      {
+        "c": 39,
+        "r": 0,
+        "dir": "d"
+      }
+    ],
+    "hint": "Cargo travels above; you travel below · At the low dock, jump then dash Up and grab the high lantern.",
+    "question": "Can collecting your lantern also be the movement that reaches the upper exit?"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 9,
+    "run": 4,
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "separate cargo route and rising catch",
+    "worlds": [
+      20,
+      25,
+      30
+    ],
+    "tags": [
+      "moving-hook",
+      "cargo-clasp",
+      "cargo-dash-catch",
+      "beam-shield"
+    ],
+    "newMechanics": [
+      "moving-hook",
+      "cargo-dash-catch"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "entrance": "Low west loading dock.",
+    "exit": "Upper eastern gallery beyond sunlight.",
+    "solution": "Load the carriage with the lantern and catch its ring from below. The stone tunnel fits cargo above the deck but not a standing knight. At the far end, the clasp collects the lantern high above the low dismount dock. Release onto the dock and wait for the carriage to clear. Jump straight up, dash Up, and press/hold Grab while rising through the clasp. The dash-catch keeps enough rise to carry the shade onto the high eastern balcony; walk through its sunlight to leave.",
+    "nearestExisting": "Builds deliberately on B38’s separate cargo/knight routes and B34’s rising catch. In B38 the clasp is within ordinary jumping reach and the exit is at dock height. Here the lower dismount cannot reach the clasp normally, and the exit is a further elevated gallery: collection and ascent must become one continuous action.",
+    "novelty": "The required transport creates an elevated pickup, which changes from storage into a momentum-preserving transfer. Catching after the dash has finished loses the height needed for the shaded balcony.",
+    "requiredEvents": [
+      "moving-hook",
+      "clasp-catch",
+      "cargo-dash-catch",
+      "clasp-take"
+    ],
+    "humanReview": "New Run 4 candidate; not rated or approved.",
+    "route": {
+      "exited": true,
+      "frames": 364,
+      "deaths": 0,
+      "events": [
+        "pickup",
+        "throw",
+        "jump",
+        "lantern-land",
+        "hook",
+        "moving-hook",
+        "clasp-catch",
+        "moving-hook-turn",
+        "moving-unhook",
+        "unhook",
+        "land",
+        "dash",
+        "cargo-dash-catch",
+        "clasp-take",
+        "refill-dash",
+        "exit"
+      ],
+      "eventCounts": {
+        "pickup": 2,
+        "throw": 1,
+        "jump": 3,
+        "lantern-land": 1,
+        "hook": 1,
+        "moving-hook": 1,
+        "clasp-catch": 1,
+        "moving-hook-turn": 1,
+        "moving-unhook": 1,
+        "unhook": 1,
+        "land": 2,
+        "dash": 1,
+        "cargo-dash-catch": 1,
+        "clasp-take": 1,
+        "refill-dash": 1,
+        "exit": 1
+      }
+    },
+    "designNotes": "A horizontal carrier keeps the two routes readable: cargo fits in the eight-pixel slit, knight uses the ring below. The lower dock offers a safe, broad wait until the carrier clears the clasp. The low dock is not the exit; its wall cannot be climbed to replace the upward catch, and the overhead beams demand the retrieved lantern. No event gate.",
+    "positiveChecks": [
+      {
+        "name": "Upward dash after 9 jump frames",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            145,
+            "ug"
+          ],
+          [
+            30,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            9,
+            "j"
+          ],
+          [
+            6,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 361,
+          "deaths": 0,
+          "events": [
+            "pickup",
+            "throw",
+            "jump",
+            "lantern-land",
+            "hook",
+            "moving-hook",
+            "clasp-catch",
+            "moving-hook-turn",
+            "moving-unhook",
+            "unhook",
+            "land",
+            "dash",
+            "cargo-dash-catch",
+            "clasp-take",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "pickup": 2,
+            "throw": 1,
+            "jump": 3,
+            "lantern-land": 1,
+            "hook": 1,
+            "moving-hook": 1,
+            "clasp-catch": 1,
+            "moving-hook-turn": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 1,
+            "dash": 1,
+            "cargo-dash-catch": 1,
+            "clasp-take": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Upward dash after 10 jump frames",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            145,
+            "ug"
+          ],
+          [
+            30,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            10,
+            "j"
+          ],
+          [
+            6,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 362,
+          "deaths": 0,
+          "events": [
+            "pickup",
+            "throw",
+            "jump",
+            "lantern-land",
+            "hook",
+            "moving-hook",
+            "clasp-catch",
+            "moving-hook-turn",
+            "moving-unhook",
+            "unhook",
+            "land",
+            "dash",
+            "cargo-dash-catch",
+            "clasp-take",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "pickup": 2,
+            "throw": 1,
+            "jump": 3,
+            "lantern-land": 1,
+            "hook": 1,
+            "moving-hook": 1,
+            "clasp-catch": 1,
+            "moving-hook-turn": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 2,
+            "dash": 1,
+            "cargo-dash-catch": 1,
+            "clasp-take": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Upward dash after 11 jump frames",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            145,
+            "ug"
+          ],
+          [
+            30,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            11,
+            "j"
+          ],
+          [
+            6,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 363,
+          "deaths": 0,
+          "events": [
+            "pickup",
+            "throw",
+            "jump",
+            "lantern-land",
+            "hook",
+            "moving-hook",
+            "clasp-catch",
+            "moving-hook-turn",
+            "moving-unhook",
+            "unhook",
+            "land",
+            "dash",
+            "cargo-dash-catch",
+            "clasp-take",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "pickup": 2,
+            "throw": 1,
+            "jump": 3,
+            "lantern-land": 1,
+            "hook": 1,
+            "moving-hook": 1,
+            "clasp-catch": 1,
+            "moving-hook-turn": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 1,
+            "dash": 1,
+            "cargo-dash-catch": 1,
+            "clasp-take": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Upward dash after 13 jump frames",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            145,
+            "ug"
+          ],
+          [
+            30,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            13,
+            "j"
+          ],
+          [
+            6,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 365,
+          "deaths": 0,
+          "events": [
+            "pickup",
+            "throw",
+            "jump",
+            "lantern-land",
+            "hook",
+            "moving-hook",
+            "clasp-catch",
+            "moving-hook-turn",
+            "moving-unhook",
+            "unhook",
+            "land",
+            "dash",
+            "cargo-dash-catch",
+            "clasp-take",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "pickup": 2,
+            "throw": 1,
+            "jump": 3,
+            "lantern-land": 1,
+            "hook": 1,
+            "moving-hook": 1,
+            "clasp-catch": 1,
+            "moving-hook-turn": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 1,
+            "dash": 1,
+            "cargo-dash-catch": 1,
+            "clasp-take": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Upward dash after 14 jump frames",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            145,
+            "ug"
+          ],
+          [
+            30,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            14,
+            "j"
+          ],
+          [
+            6,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 366,
+          "deaths": 0,
+          "events": [
+            "pickup",
+            "throw",
+            "jump",
+            "lantern-land",
+            "hook",
+            "moving-hook",
+            "clasp-catch",
+            "moving-hook-turn",
+            "moving-unhook",
+            "unhook",
+            "land",
+            "dash",
+            "cargo-dash-catch",
+            "clasp-take",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "pickup": 2,
+            "throw": 1,
+            "jump": 3,
+            "lantern-land": 1,
+            "hook": 1,
+            "moving-hook": 1,
+            "clasp-catch": 1,
+            "moving-hook-turn": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 1,
+            "dash": 1,
+            "cargo-dash-catch": 1,
+            "clasp-take": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Upward dash after 15 jump frames",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            145,
+            "ug"
+          ],
+          [
+            30,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            15,
+            "j"
+          ],
+          [
+            6,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 367,
+          "deaths": 0,
+          "events": [
+            "pickup",
+            "throw",
+            "jump",
+            "lantern-land",
+            "hook",
+            "moving-hook",
+            "clasp-catch",
+            "moving-hook-turn",
+            "moving-unhook",
+            "unhook",
+            "land",
+            "dash",
+            "cargo-dash-catch",
+            "clasp-take",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "pickup": 2,
+            "throw": 1,
+            "jump": 3,
+            "lantern-land": 1,
+            "hook": 1,
+            "moving-hook": 1,
+            "clasp-catch": 1,
+            "moving-hook-turn": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 2,
+            "dash": 1,
+            "cargo-dash-catch": 1,
+            "clasp-take": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Wait 76 frames safely for carriage to clear",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            145,
+            "ug"
+          ],
+          [
+            30,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            76,
+            ""
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            6,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 370,
+          "deaths": 0,
+          "events": [
+            "pickup",
+            "throw",
+            "jump",
+            "lantern-land",
+            "hook",
+            "moving-hook",
+            "clasp-catch",
+            "moving-hook-turn",
+            "moving-unhook",
+            "unhook",
+            "land",
+            "dash",
+            "cargo-dash-catch",
+            "clasp-take",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "pickup": 2,
+            "throw": 1,
+            "jump": 3,
+            "lantern-land": 1,
+            "hook": 1,
+            "moving-hook": 1,
+            "clasp-catch": 1,
+            "moving-hook-turn": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 2,
+            "dash": 1,
+            "cargo-dash-catch": 1,
+            "clasp-take": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Wait 90 frames safely for carriage to clear",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            145,
+            "ug"
+          ],
+          [
+            30,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            90,
+            ""
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            6,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 384,
+          "deaths": 0,
+          "events": [
+            "pickup",
+            "throw",
+            "jump",
+            "lantern-land",
+            "hook",
+            "moving-hook",
+            "clasp-catch",
+            "moving-hook-turn",
+            "moving-unhook",
+            "unhook",
+            "land",
+            "dash",
+            "cargo-dash-catch",
+            "clasp-take",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "pickup": 2,
+            "throw": 1,
+            "jump": 3,
+            "lantern-land": 1,
+            "hook": 1,
+            "moving-hook": 1,
+            "clasp-catch": 1,
+            "moving-hook-turn": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 2,
+            "dash": 1,
+            "cargo-dash-catch": 1,
+            "clasp-take": 1,
+            "refill-dash": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Ordinary jump and grab from low dock",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            145,
+            "ug"
+          ],
+          [
+            30,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            30,
+            "jg"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 2,
+          "events": [
+            "pickup",
+            "throw",
+            "jump",
+            "lantern-land",
+            "hook",
+            "moving-hook",
+            "clasp-catch",
+            "moving-hook-turn",
+            "moving-unhook",
+            "unhook",
+            "land",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "pickup": 1,
+            "throw": 1,
+            "jump": 3,
+            "lantern-land": 1,
+            "hook": 1,
+            "moving-hook": 1,
+            "clasp-catch": 1,
+            "moving-hook-turn": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 2,
+            "death": 2,
+            "respawn": 1
+          }
+        }
+      },
+      {
+        "name": "Upward dash without retrieving shade",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            145,
+            "ug"
+          ],
+          [
+            30,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            14,
+            "ux"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 2,
+          "events": [
+            "pickup",
+            "throw",
+            "jump",
+            "lantern-land",
+            "hook",
+            "moving-hook",
+            "clasp-catch",
+            "moving-hook-turn",
+            "moving-unhook",
+            "unhook",
+            "land",
+            "dash",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "pickup": 1,
+            "throw": 1,
+            "jump": 3,
+            "lantern-land": 1,
+            "hook": 1,
+            "moving-hook": 1,
+            "clasp-catch": 1,
+            "moving-hook-turn": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 1,
+            "dash": 1,
+            "death": 2,
+            "respawn": 1
+          }
+        }
+      },
+      {
+        "name": "Wait until the dash ends before grabbing the lantern",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            145,
+            "ug"
+          ],
+          [
+            30,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            18,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 2,
+          "events": [
+            "pickup",
+            "throw",
+            "jump",
+            "lantern-land",
+            "hook",
+            "moving-hook",
+            "clasp-catch",
+            "moving-hook-turn",
+            "moving-unhook",
+            "unhook",
+            "land",
+            "dash",
+            "clasp-take",
+            "death",
+            "lantern-lost",
+            "respawn"
+          ],
+          "eventCounts": {
+            "pickup": 2,
+            "throw": 1,
+            "jump": 3,
+            "lantern-land": 1,
+            "hook": 1,
+            "moving-hook": 1,
+            "clasp-catch": 1,
+            "moving-hook-turn": 1,
+            "moving-unhook": 1,
+            "unhook": 1,
+            "land": 1,
+            "dash": 1,
+            "clasp-take": 1,
+            "death": 2,
+            "lantern-lost": 1,
+            "respawn": 1
+          }
+        }
+      }
+    ]
+  },
+  "tape": [
+    [
+      1,
+      "g"
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      10,
+      "r"
+    ],
+    [
+      12,
+      "rjg"
+    ],
+    [
+      145,
+      "ug"
+    ],
+    [
+      30,
+      "rug"
+    ],
+    [
+      1,
+      "rj"
+    ],
+    [
+      14,
+      "r"
+    ],
+    [
+      70,
+      ""
+    ],
+    [
+      12,
+      "j"
+    ],
+    [
+      6,
+      "ux"
+    ],
+    [
+      8,
+      "ug"
+    ],
+    [
+      100,
+      "r"
+    ]
+  ]
+}

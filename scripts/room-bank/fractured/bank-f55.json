@@ -1,0 +1,666 @@
+{
+  "room": {
+    "id": "bank-f55",
+    "name": "Beat the Returning Teeth",
+    "palette": "citadel",
+    "study": true,
+    "movement": "survive-2",
+    "aim8": true,
+    "exit": "right",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "cols": 40,
+    "rows": 23,
+    "map": [
+      "########################################",
+      "#........######################........#",
+      "#........######################........#",
+      "#........######################........#",
+      "#........######################........#",
+      "#........######################........#",
+      "#........######################........#",
+      "#........######################.........",
+      "#........######################.........",
+      "#........######################.........",
+      "#........######################.........",
+      "#........######################.........",
+      "#........######################....#####",
+      "#........vvvvvvvvvvvvvvvvvvvvvv...<#####",
+      "#.................................<#####",
+      "#.................................<#####",
+      "#..P..............................<#####",
+      "###########.......................<#####",
+      "###########.......................<#####",
+      "###########................b......<#####",
+      "###########.......................<#####",
+      "###########^^^^^^^^^^^^^^^^^^^^^^^^#####",
+      "########################################"
+    ],
+    "hint": "Wavedash beneath the first pass. Cut low, then spend the recovered dash through the return.",
+    "sweepers": [
+      {
+        "id": "Departure",
+        "path": [
+          [
+            14,
+            14
+          ],
+          [
+            14,
+            19
+          ]
+        ],
+        "period": 150,
+        "phase": 70,
+        "radius": 4
+      },
+      {
+        "id": "Return",
+        "path": [
+          [
+            31,
+            9
+          ],
+          [
+            31,
+            19
+          ]
+        ],
+        "period": 150,
+        "phase": 55,
+        "radius": 4
+      }
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 14,
+    "run": 7,
+    "collection": "run7",
+    "format": "compact",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "difficulty": 4,
+    "role": "Carry wavedash momentum into a low pogo and spend its restored dash inside the next patrol window",
+    "worlds": [],
+    "tags": [
+      "wavedash",
+      "hyper",
+      "pogo-low",
+      "sweeper",
+      "momentum"
+    ],
+    "newMechanics": [],
+    "author": "Codex",
+    "humanReview": "Unreviewed candidate. Author difficulty is provisional.",
+    "learningFamily": "timed-launch-and-pogo",
+    "lessonRole": "combine",
+    "prerequisites": [
+      "bank-b54",
+      "bank-f33"
+    ],
+    "preparesFor": [
+      "bank-f56"
+    ],
+    "timingCues": [
+      "Build the launch while the first thorn is near its lower turn, so the low hyper reaches its lane above the return.",
+      "Spend the dash recovered by the ground contact to extend the low arc toward the pod.",
+      "After the low cut, pass the end of the ceiling before dashing upward beneath the departing second thorn."
+    ],
+    "requiredEvents": [
+      "hyper",
+      "pogo-low",
+      "pod"
+    ],
+    "solution": "Hop and dash down-right onto the runway. Jump after landing has returned the dash: the extended wavedash stays beneath the low thorn ceiling and above the first patrol. Carry its speed, then use the recovered dash to reach the distant pod. A low cut restores the dash while keeping the rebound below the same roof. Clear its end and dash up-right through the second patrol lane onto the exit shelf.",
+    "nearestExisting": "F33 made the player-discovered wavedash a useful alternative after combat. F55 makes the low launch and retained resource central: a full ordinary jump hits the roof, and a short-hop dash from the closest edge falls short of the pod. F23\u2019s adjustable swing timing develops a different movement family.",
+    "novelty": "Carry wavedash momentum into a low pogo and spend its restored dash inside the next patrol window",
+    "positiveChecks": [
+      {
+        "name": "Start four frames later in the patrol cycle",
+        "tape": [
+          [
+            1,
+            "u"
+          ],
+          [
+            3,
+            ""
+          ],
+          [
+            6,
+            "j"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 133,
+        "events": [
+          "jump",
+          "dash",
+          "land",
+          "ultra",
+          "refill-dash",
+          "hyper",
+          "strike",
+          "pogo-low",
+          "pod",
+          "exit"
+        ],
+        "eventCounts": {
+          "jump": 1,
+          "dash": 3,
+          "land": 1,
+          "ultra": 1,
+          "refill-dash": 3,
+          "hyper": 1,
+          "strike": 1,
+          "pogo-low": 1,
+          "pod": 1,
+          "exit": 1
+        }
+      },
+      {
+        "name": "Cut the low pod one frame later",
+        "tape": [
+          [
+            6,
+            "j"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            7,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            19,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 131,
+        "events": [
+          "jump",
+          "dash",
+          "land",
+          "ultra",
+          "refill-dash",
+          "hyper",
+          "strike",
+          "pogo-low",
+          "pod",
+          "exit"
+        ],
+        "eventCounts": {
+          "jump": 1,
+          "dash": 3,
+          "land": 1,
+          "ultra": 1,
+          "refill-dash": 3,
+          "hyper": 1,
+          "strike": 1,
+          "pogo-low": 1,
+          "pod": 1,
+          "exit": 1
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Short-hop and dash from the closest edge without building momentum",
+        "tape": [
+          [
+            40,
+            "r"
+          ],
+          [
+            6,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 2,
+        "frames": 216,
+        "events": [
+          "jump",
+          "dash",
+          "death",
+          "respawn"
+        ],
+        "eventCounts": {
+          "jump": 1,
+          "dash": 1,
+          "death": 2,
+          "respawn": 2
+        },
+        "death": {
+          "type": "death",
+          "frame": 83,
+          "x": 176,
+          "y": 171,
+          "cause": "spikes",
+          "vx": 90,
+          "vy": 0,
+          "i": 82
+        }
+      },
+      {
+        "name": "Take a full jump then dash from the closest edge",
+        "tape": [
+          [
+            36,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 2,
+        "frames": 219,
+        "events": [
+          "jump",
+          "death",
+          "respawn",
+          "strike",
+          "dash"
+        ],
+        "eventCounts": {
+          "jump": 1,
+          "death": 2,
+          "respawn": 2,
+          "strike": 1,
+          "dash": 1
+        },
+        "death": {
+          "type": "death",
+          "frame": 47,
+          "x": 99,
+          "y": 112,
+          "cause": "spikes",
+          "vx": 90,
+          "vy": -105,
+          "i": 46
+        }
+      },
+      {
+        "name": "Loft into the low ceiling",
+        "tape": [
+          [
+            6,
+            "j"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            1,
+            "djs"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 2,
+        "frames": 195,
+        "events": [
+          "jump",
+          "dash",
+          "land",
+          "ultra",
+          "refill-dash",
+          "hyper",
+          "strike",
+          "pogo-loft",
+          "pod",
+          "death",
+          "respawn"
+        ],
+        "eventCounts": {
+          "jump": 1,
+          "dash": 2,
+          "land": 1,
+          "ultra": 1,
+          "refill-dash": 2,
+          "hyper": 1,
+          "strike": 1,
+          "pogo-loft": 1,
+          "pod": 1,
+          "death": 2,
+          "respawn": 1
+        },
+        "death": {
+          "type": "death",
+          "frame": 75,
+          "x": 235,
+          "y": 110,
+          "cause": "spikes",
+          "vx": 90,
+          "vy": -165,
+          "i": 74
+        }
+      },
+      {
+        "name": "Launch into the first patrol return",
+        "tape": [
+          [
+            1,
+            "u"
+          ],
+          [
+            28,
+            ""
+          ],
+          [
+            6,
+            "j"
+          ],
+          [
+            12,
+            "rdx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 2,
+        "frames": 224,
+        "events": [
+          "jump",
+          "dash",
+          "land",
+          "ultra",
+          "refill-dash",
+          "hyper",
+          "death",
+          "respawn"
+        ],
+        "eventCounts": {
+          "jump": 1,
+          "dash": 2,
+          "land": 1,
+          "ultra": 1,
+          "refill-dash": 1,
+          "hyper": 1,
+          "death": 2,
+          "respawn": 2
+        },
+        "death": {
+          "type": "death",
+          "frame": 59,
+          "x": 113,
+          "y": 121,
+          "cause": "sweeper",
+          "vx": 277.33333333333354,
+          "vy": -52.5,
+          "i": 58
+        }
+      }
+    ],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 129,
+      "events": [
+        "jump",
+        "dash",
+        "land",
+        "ultra",
+        "refill-dash",
+        "hyper",
+        "strike",
+        "pogo-low",
+        "pod",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 1,
+        "dash": 3,
+        "land": 1,
+        "ultra": 1,
+        "refill-dash": 3,
+        "hyper": 1,
+        "strike": 1,
+        "pogo-low": 1,
+        "pod": 1,
+        "exit": 1
+      }
+    },
+    "actualMovementEvents": [
+      "jump",
+      "dash",
+      "land",
+      "ultra",
+      "refill-dash",
+      "hyper",
+      "strike",
+      "pogo-low",
+      "pod",
+      "exit"
+    ],
+    "designNotes": "The roof has no reachable upper surface; it meets the top boundary. There is no intermediate floor refill between the launch and exit. Saved active ordinary full-jump and short-hop alternatives fail geometrically. The route uses three dashes from one initial charge by recovering once on the runway and once from the pod.",
+    "endingForgiveness": "The final dash remains part of the continuous phrase. The low blade contact accepts a later cut; a four-frame later cycle start also completes. An earlier launch changes the later contact height and requires adaptation, so this remains a Fractured candidate.",
+    "approvedIngredients": [
+      "bank-f33",
+      "bank-f49",
+      "bank-f23"
+    ],
+    "review": {
+      "authorEvidence": "One zero-death canonical route, two or three saved timing/contact variants, and active ordinary-route bypass attempts. Human fun/difficulty/suitability review remains pending."
+    }
+  },
+  "tape": [
+    [
+      6,
+      "j"
+    ],
+    [
+      12,
+      "rdx"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      14,
+      "r"
+    ],
+    [
+      12,
+      "rx"
+    ],
+    [
+      6,
+      "r"
+    ],
+    [
+      1,
+      "ds"
+    ],
+    [
+      20,
+      "r"
+    ],
+    [
+      12,
+      "rux"
+    ],
+    [
+      100,
+      "r"
+    ]
+  ]
+}

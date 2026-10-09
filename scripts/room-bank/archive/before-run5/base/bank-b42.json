@@ -1,0 +1,1403 @@
+{
+  "room": {
+    "id": "bank-b42",
+    "name": "Keep the Passage Low",
+    "palette": "foundry",
+    "movement": "survive-2",
+    "study": true,
+    "dashes": 0,
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "map": [
+      "########################################",
+      "#H........################.............#",
+      "#H........################.............#",
+      "#H........################.............#",
+      "#H........################.............#",
+      "#H........################.............#",
+      "#H........################.............#",
+      "#H........################.............#",
+      ".H........################.............#",
+      ".H........################.............#",
+      ".H........vvvvv###########.............#",
+      ".H.............###########.............#",
+      "#H######.......###########.............#",
+      "#H.....................................#",
+      "#H..P..................................#",
+      "#H######...............................#",
+      "#H............................l........#",
+      "#H#.........................############",
+      "#H#.........................############",
+      "#H#_____....................############",
+      "#H######....................############",
+      "#H######^^^^^^^^^^^^^^^^^^^^############",
+      "########################################"
+    ],
+    "recoilPlatforms": [
+      {
+        "id": "Passage",
+        "c": 10,
+        "r": 14,
+        "w": 18,
+        "depth": 6,
+        "loadFrames": 60,
+        "releaseSpeed": 85
+      }
+    ],
+    "combat": {
+      "enemies": [
+        {
+          "kind": "guard",
+          "x": 101,
+          "y": 96,
+          "face": -1,
+          "delay": 30
+        }
+      ]
+    },
+    "hint": "The living weight opens the low passage · Fetch the lantern before you release the spring.",
+    "question": "Which trip becomes impossible if the guard is defeated too soon?",
+    "exit": "left"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 9,
+    "run": 4,
+    "acceptance": "revised",
+    "difficulty": 4,
+    "role": "keep a living floor weight until the cargo return is complete",
+    "worlds": [
+      20,
+      25,
+      30
+    ],
+    "tags": [
+      "controlled-pogo",
+      "recoil-platform",
+      "enemy-weight",
+      "cargo-return",
+      "changing-passage",
+      "lift"
+    ],
+    "newMechanics": [
+      "controlled-pogo",
+      "recoil-platform"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "entrance": "Upper west shelf beside the guard-loaded long spring.",
+    "exit": "Upper west gallery above the starting shelf, opened by cargo delivered from the east.",
+    "solution": "Let the guard depress the long spring, then go past him alive and cross the lowered passage. A standing spring would leave only an eight-pixel crack beneath that roof. Jump up to retrieve the far lantern, bring it back through the passage, and throw it left into the low brass pocket. Its weight opens the high west exit, independently of the knight. Now jump over the guard and use two low downward cuts. The fatal cut releases the spring. Steer toward its western edge as it rises under you, catch the lift, then jump left around the canopy into the upper gallery. The same floor first enables the cargo journey and then closes that route while lifting you to the return exit.",
+    "nearestExisting": "The rejected B42 was only defeat enemy, catch spring, leave. This version gives the live weight a job that must remain useful during a whole cargo round trip: lowering a corridor to the distant lantern. The returning spring reverses that job and becomes the high return launch only after the cargo is independently stored.",
+    "novelty": "A living enemy is useful infrastructure before it is a rebound target. The spring changes the topology of the same passage: keep it down to fetch and return the remote weight, then release it to close the route behind you and reach the higher way home.",
+    "requiredEvents": [
+      "pickup",
+      "throw",
+      "held-open",
+      "pogo-low",
+      "enemy-defeat",
+      "recoil-jump"
+    ],
+    "humanReview": "User rejected the overhead bypass and the simple enemy-to-spring demonstration. Reinvented as an out-and-back cargo puzzle where killing the weight prematurely closes the essential passage. Awaiting review.",
+    "route": {
+      "exited": true,
+      "frames": 469,
+      "deaths": 0,
+      "events": [
+        "recoil-load",
+        "enemy-tell",
+        "land",
+        "jump",
+        "pickup",
+        "throw",
+        "plate",
+        "lantern-land",
+        "held-open",
+        "strike",
+        "pogo-low",
+        "enemy-pogo",
+        "enemy-hit",
+        "enemy-defeat",
+        "recoil-release",
+        "recoil-jump",
+        "exit"
+      ],
+      "eventCounts": {
+        "recoil-load": 1,
+        "enemy-tell": 2,
+        "land": 4,
+        "jump": 3,
+        "pickup": 1,
+        "throw": 1,
+        "plate": 5,
+        "lantern-land": 1,
+        "held-open": 1,
+        "strike": 2,
+        "pogo-low": 2,
+        "enemy-pogo": 2,
+        "enemy-hit": 1,
+        "enemy-defeat": 1,
+        "recoil-release": 1,
+        "recoil-jump": 1,
+        "exit": 1
+      },
+      "firstFailure": null
+    },
+    "requiredEventCounts": {
+      "pogo-low": 2
+    },
+    "designNotes": "The roof is continuous with the top boundary, so the old over-the-guard bypass is gone. More importantly, the room is now an out-and-back spatial dependency rather than a capped version of the old jump. The long spring is a corridor floor while depressed and seals that corridor at rest. The guard keeps it depressed while the knight retrieves distant cargo; manual depression after an early kill cannot remain loaded during that long walk. The west pressure pocket has a fixed end wall so the thrown lantern settles securely. No hidden event receipts control the exit. Low cuts are the forgiving demonstrated combat route; ordinary combat and emergent alternatives retain their existing rules.",
+    "positiveChecks": [
+      {
+        "name": "Wait longer before using the loaded passage",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            80,
+            ""
+          ],
+          [
+            132,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            92,
+            "l"
+          ],
+          [
+            1,
+            "lg"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            5,
+            "j"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            31,
+            ""
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            17,
+            "l"
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 479,
+          "deaths": 0,
+          "events": [
+            "recoil-load",
+            "enemy-tell",
+            "land",
+            "jump",
+            "pickup",
+            "throw",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "strike",
+            "pogo-low",
+            "enemy-pogo",
+            "enemy-hit",
+            "enemy-defeat",
+            "recoil-release",
+            "recoil-jump",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "enemy-tell": 2,
+            "land": 4,
+            "jump": 3,
+            "pickup": 1,
+            "throw": 1,
+            "plate": 5,
+            "lantern-land": 1,
+            "held-open": 1,
+            "strike": 2,
+            "pogo-low": 2,
+            "enemy-pogo": 2,
+            "enemy-hit": 1,
+            "enemy-defeat": 1,
+            "recoil-release": 1,
+            "recoil-jump": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Turn back with cargo a little sooner",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            132,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            91,
+            "l"
+          ],
+          [
+            1,
+            "lg"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            5,
+            "j"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            31,
+            ""
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            17,
+            "l"
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 468,
+          "deaths": 0,
+          "events": [
+            "recoil-load",
+            "enemy-tell",
+            "land",
+            "jump",
+            "pickup",
+            "throw",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "strike",
+            "pogo-low",
+            "enemy-pogo",
+            "enemy-hit",
+            "enemy-defeat",
+            "recoil-release",
+            "recoil-jump",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "enemy-tell": 2,
+            "land": 4,
+            "jump": 3,
+            "pickup": 1,
+            "throw": 1,
+            "plate": 5,
+            "lantern-land": 1,
+            "held-open": 1,
+            "strike": 2,
+            "pogo-low": 2,
+            "enemy-pogo": 2,
+            "enemy-hit": 1,
+            "enemy-defeat": 1,
+            "recoil-release": 1,
+            "recoil-jump": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Turn back with cargo a little later",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            132,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            93,
+            "l"
+          ],
+          [
+            1,
+            "lg"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            5,
+            "j"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            31,
+            ""
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            17,
+            "l"
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 470,
+          "deaths": 0,
+          "events": [
+            "recoil-load",
+            "enemy-tell",
+            "land",
+            "jump",
+            "pickup",
+            "throw",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "strike",
+            "pogo-low",
+            "enemy-pogo",
+            "enemy-hit",
+            "enemy-defeat",
+            "recoil-release",
+            "recoil-jump",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "enemy-tell": 2,
+            "land": 4,
+            "jump": 3,
+            "pickup": 1,
+            "throw": 1,
+            "plate": 5,
+            "lantern-land": 1,
+            "held-open": 1,
+            "strike": 2,
+            "pogo-low": 2,
+            "enemy-pogo": 2,
+            "enemy-hit": 1,
+            "enemy-defeat": 1,
+            "recoil-release": 1,
+            "recoil-jump": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Second low cut sooner",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            132,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            92,
+            "l"
+          ],
+          [
+            1,
+            "lg"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            5,
+            "j"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            17,
+            "l"
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 468,
+          "deaths": 0,
+          "events": [
+            "recoil-load",
+            "enemy-tell",
+            "land",
+            "jump",
+            "pickup",
+            "throw",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "strike",
+            "pogo-low",
+            "enemy-pogo",
+            "enemy-hit",
+            "enemy-defeat",
+            "recoil-release",
+            "recoil-jump",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "enemy-tell": 2,
+            "land": 4,
+            "jump": 3,
+            "pickup": 1,
+            "throw": 1,
+            "plate": 5,
+            "lantern-land": 1,
+            "held-open": 1,
+            "strike": 2,
+            "pogo-low": 2,
+            "enemy-pogo": 2,
+            "enemy-hit": 1,
+            "enemy-defeat": 1,
+            "recoil-release": 1,
+            "recoil-jump": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Second low cut later",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            132,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            92,
+            "l"
+          ],
+          [
+            1,
+            "lg"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            5,
+            "j"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            32,
+            ""
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            17,
+            "l"
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 470,
+          "deaths": 0,
+          "events": [
+            "recoil-load",
+            "enemy-tell",
+            "land",
+            "jump",
+            "pickup",
+            "throw",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "strike",
+            "pogo-low",
+            "enemy-pogo",
+            "enemy-hit",
+            "enemy-defeat",
+            "recoil-release",
+            "recoil-jump",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "enemy-tell": 2,
+            "land": 4,
+            "jump": 3,
+            "pickup": 1,
+            "throw": 1,
+            "plate": 5,
+            "lantern-land": 1,
+            "held-open": 1,
+            "strike": 2,
+            "pogo-low": 2,
+            "enemy-pogo": 2,
+            "enemy-hit": 1,
+            "enemy-defeat": 1,
+            "recoil-release": 1,
+            "recoil-jump": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Depart the rising spring sooner",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            132,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            92,
+            "l"
+          ],
+          [
+            1,
+            "lg"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            5,
+            "j"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            31,
+            ""
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 468,
+          "deaths": 0,
+          "events": [
+            "recoil-load",
+            "enemy-tell",
+            "land",
+            "jump",
+            "pickup",
+            "throw",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "strike",
+            "pogo-low",
+            "enemy-pogo",
+            "enemy-hit",
+            "enemy-defeat",
+            "recoil-release",
+            "recoil-jump",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "enemy-tell": 2,
+            "land": 4,
+            "jump": 3,
+            "pickup": 1,
+            "throw": 1,
+            "plate": 5,
+            "lantern-land": 1,
+            "held-open": 1,
+            "strike": 2,
+            "pogo-low": 2,
+            "enemy-pogo": 2,
+            "enemy-hit": 1,
+            "enemy-defeat": 1,
+            "recoil-release": 1,
+            "recoil-jump": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Depart the rising spring later",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            132,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            92,
+            "l"
+          ],
+          [
+            1,
+            "lg"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            5,
+            "j"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            31,
+            ""
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            18,
+            "l"
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 469,
+          "deaths": 0,
+          "events": [
+            "recoil-load",
+            "enemy-tell",
+            "land",
+            "jump",
+            "pickup",
+            "throw",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "strike",
+            "pogo-low",
+            "enemy-pogo",
+            "enemy-hit",
+            "enemy-defeat",
+            "recoil-release",
+            "recoil-jump",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "enemy-tell": 2,
+            "land": 4,
+            "jump": 3,
+            "pickup": 1,
+            "throw": 1,
+            "plate": 5,
+            "lantern-land": 1,
+            "held-open": 1,
+            "strike": 2,
+            "pogo-low": 2,
+            "enemy-pogo": 2,
+            "enemy-hit": 1,
+            "enemy-defeat": 1,
+            "recoil-release": 1,
+            "recoil-jump": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Old one-way defeat-and-launch route",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            34,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            31,
+            ""
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            40,
+            "r"
+          ],
+          [
+            45,
+            "rj"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 1,
+          "events": [
+            "recoil-load",
+            "strike",
+            "pogo-low",
+            "enemy-pogo",
+            "enemy-hit",
+            "enemy-defeat",
+            "recoil-release",
+            "land",
+            "death",
+            "respawn",
+            "enemy-tell"
+          ],
+          "eventCounts": {
+            "recoil-load": 2,
+            "strike": 2,
+            "pogo-low": 2,
+            "enemy-pogo": 2,
+            "enemy-hit": 1,
+            "enemy-defeat": 1,
+            "recoil-release": 1,
+            "land": 2,
+            "death": 1,
+            "respawn": 1,
+            "enemy-tell": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 144,
+            "x": 122,
+            "y": 110,
+            "cause": "crush",
+            "vx": 90,
+            "vy": 0,
+            "i": 143
+          }
+        }
+      },
+      {
+        "name": "Jump above the old guard route and climb right",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            40,
+            "rj"
+          ],
+          [
+            180,
+            "rug"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 1,
+          "events": [
+            "recoil-load",
+            "jump",
+            "death",
+            "respawn",
+            "enemy-tell",
+            "land",
+            "grab",
+            "climbhop"
+          ],
+          "eventCounts": {
+            "recoil-load": 2,
+            "jump": 1,
+            "death": 1,
+            "respawn": 1,
+            "enemy-tell": 1,
+            "land": 1,
+            "grab": 1,
+            "climbhop": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 110,
+            "x": 95,
+            "y": 88,
+            "cause": "spikes",
+            "vx": 90,
+            "vy": -15,
+            "i": 109
+          }
+        }
+      },
+      {
+        "name": "Complete the route without bringing the lantern back",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            132,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            92,
+            "l"
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            5,
+            "j"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            31,
+            ""
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            17,
+            "l"
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 0,
+          "events": [
+            "recoil-load",
+            "enemy-tell",
+            "land",
+            "jump",
+            "strike",
+            "pogo-low",
+            "enemy-pogo",
+            "enemy-hit",
+            "enemy-defeat",
+            "recoil-release",
+            "recoil-jump"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "enemy-tell": 2,
+            "land": 4,
+            "jump": 3,
+            "strike": 2,
+            "pogo-low": 2,
+            "enemy-pogo": 2,
+            "enemy-hit": 1,
+            "enemy-defeat": 1,
+            "recoil-release": 1,
+            "recoil-jump": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Defeat the guard first, then manually lower the floor and attempt the cargo passage",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            34,
+            "r"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            31,
+            ""
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            45,
+            ""
+          ],
+          [
+            60,
+            "d"
+          ],
+          [
+            140,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            180,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 2,
+          "events": [
+            "recoil-load",
+            "strike",
+            "pogo-low",
+            "enemy-pogo",
+            "enemy-hit",
+            "enemy-defeat",
+            "recoil-release",
+            "land",
+            "death",
+            "respawn",
+            "enemy-tell",
+            "jump"
+          ],
+          "eventCounts": {
+            "recoil-load": 4,
+            "strike": 2,
+            "pogo-low": 2,
+            "enemy-pogo": 2,
+            "enemy-hit": 1,
+            "enemy-defeat": 1,
+            "recoil-release": 2,
+            "land": 3,
+            "death": 2,
+            "respawn": 2,
+            "enemy-tell": 2,
+            "jump": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 276,
+            "x": 134,
+            "y": 110,
+            "cause": "crush",
+            "vx": 90,
+            "vy": 0,
+            "i": 275
+          }
+        }
+      }
+    ],
+    "composition": {
+      "movement": "Controlled low pogos and a normal lift-assisted return jump",
+      "entity": "Long recoil floor under a fixed low tunnel",
+      "dependency": "Enemy weight keeps the cargo passage tall enough to traverse. The lantern travels out of the spring system into a separate gate pocket; only then can the floor rise and become the exit lift."
+    },
+    "revision": {
+      "date": "2026-10-09",
+      "archive": "scripts/room-bank/archive/run4-before-superrooms/base/bank-b42.json",
+      "latestChanges": "Replaced the one-way kill-and-launch demo with a shared passage/elevator floor and remote cargo round trip. Keep the guard alive until the lantern is secured independently."
+    },
+    "userFeedback": {
+      "date": "2026-10-09",
+      "comment": "The guard can be skipped overhead and the intended enemy-to-spring interaction is too simplistic. Reinvent the level."
+    }
+  },
+  "tape": [
+    [
+      1,
+      "r"
+    ],
+    [
+      70,
+      ""
+    ],
+    [
+      132,
+      "r"
+    ],
+    [
+      28,
+      "rj"
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      92,
+      "l"
+    ],
+    [
+      1,
+      "lg"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      5,
+      "j"
+    ],
+    [
+      1,
+      "ds"
+    ],
+    [
+      31,
+      ""
+    ],
+    [
+      1,
+      "ds"
+    ],
+    [
+      14,
+      ""
+    ],
+    [
+      17,
+      "l"
+    ],
+    [
+      30,
+      "lj"
+    ],
+    [
+      100,
+      "l"
+    ]
+  ]
+}

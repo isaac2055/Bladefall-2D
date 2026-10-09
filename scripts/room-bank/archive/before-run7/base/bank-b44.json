@@ -1,0 +1,1261 @@
+{
+  "room": {
+    "id": "bank-b44",
+    "name": "The Light Takes the Long Way",
+    "cols": 96,
+    "rows": 36,
+    "map": [
+      "################################################################################################",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "..G............................................................................................#",
+      "..G............................................................................................#",
+      "..G............................................................................................#",
+      "..G............................................................................................#",
+      "###########################.......#################.......##########################...........#",
+      "#.....................................................#####....................................#",
+      "#.....................................................#####....................................#",
+      "#.....................................................#####........................#####.......#",
+      "#.....................................................#####....................................#",
+      "#.....................................................#####.................................c..#",
+      "#.....................................................#####.............................########",
+      "#.....................................................#####....................................#",
+      "#......................#############..................#####....................................#",
+      "#.....................................................#####....................................#",
+      "#.....................................................#####....................................#",
+      "#.........................................##########..#####....................................#",
+      "#.....................................................#####....................................#",
+      "#........................................................................_#....................#",
+      "#.............Pl................................}}}}}}}}}}}}}}}}}}}}}}}}}}#....................#",
+      "##########........######...............................H.......................................#",
+      "##########........######...............................H..............................##########",
+      "##########........######...............................H..............................##########",
+      "##########^^^^^^^^######^^^^^^^^^^^^^^^^^^^^####################################################",
+      "################################################################################################",
+      "################################################################################################",
+      "################################################################################################"
+    ],
+    "study": true,
+    "palette": "palace",
+    "dashes": 0,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "exit": "left",
+    "recoilPlatforms": [
+      {
+        "id": "West",
+        "c": 10,
+        "r": 29,
+        "w": 8,
+        "depth": 2,
+        "loadFrames": 30,
+        "releaseSpeed": 120
+      },
+      {
+        "id": "East",
+        "c": 78,
+        "r": 28,
+        "w": 8,
+        "depth": 2,
+        "loadFrames": 30,
+        "releaseSpeed": 120
+      }
+    ],
+    "beams": [
+      {
+        "c": 30,
+        "r": 15,
+        "dir": "d"
+      },
+      {
+        "c": 45,
+        "r": 0,
+        "dir": "d"
+      },
+      {
+        "c": 66,
+        "r": 0,
+        "dir": "d"
+      },
+      {
+        "c": 18,
+        "r": 0,
+        "dir": "d"
+      }
+    ],
+    "hint": "Send the lantern through the vent \u00b7 Follow beneath; reclaim it for the upper return.",
+    "question": "How does your travelling shade become the key to its own return journey?"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 10,
+    "run": 4,
+    "collection": "superrooms",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "difficulty": 4,
+    "role": "interconnected superroom",
+    "worlds": [
+      18,
+      22,
+      27
+    ],
+    "tags": [
+      "recoil-platform",
+      "cargo",
+      "conveyor",
+      "held-plate",
+      "beam",
+      "return-route"
+    ],
+    "newMechanics": [],
+    "author": "Codex",
+    "humanReview": "Unmeasured; author estimate only.",
+    "requiredEvents": [
+      "recoil-jump",
+      "pickup",
+      "throw",
+      "plate",
+      "held-open",
+      "stone-lit",
+      "gate-open"
+    ],
+    "requiredEventCounts": {
+      "recoil-jump": 2,
+      "pickup": 2
+    },
+    "approvedIngredients": [
+      "bank-b35",
+      "bank-b14",
+      "bank-b38"
+    ],
+    "solution": "Pick up the lantern from the loaded western recoil plate and jump with its return onto the upper outbound gallery. Carry shade and glide east to the conveyor. Put the lantern onto the belt: it passes the one-tile vent and presses the remote plate. Drop beneath the masonry and take its now-open underpass. Climb to the receiving shelf and reclaim the same lantern. Load the eastern recoil plate while carrying it, jump with its return to the tally balcony, then climb the steps and carry shade west across the upper return walk to the starting-side gate.",
+    "entrance": "Western lower recoil dock, beneath the visible return gallery.",
+    "exit": "Western upper gallery; tally opens its visible gate.",
+    "nearestExisting": "B35 supplies weight/recoil state; B14 supplies separate cargo and knight routes; B38 supplies reacquired shade. The remote weight is on the other side of the same wall whose lower gate it opens.",
+    "novelty": "A folded circuit uses the same lantern for lift loading, outgoing shade, remote door weight and returning shade; the return passes above the apparatus that separated knight and cargo.",
+    "superroom": {
+      "screenAreas": 3.756521739130435,
+      "stages": [
+        "Release the loaded western lift",
+        "Carry shade to the cargo-only vent",
+        "Follow below and reclaim the remote weight",
+        "Lift to the tally and return over the same machinery"
+      ],
+      "routeExtent": {
+        "minX": -7,
+        "maxX": 738,
+        "minY": 74,
+        "maxY": 245
+      }
+    },
+    "route": {
+      "frames": 1338,
+      "deaths": 0,
+      "events": [
+        "recoil-load",
+        "pickup",
+        "recoil-release",
+        "jump",
+        "recoil-jump",
+        "land",
+        "throw",
+        "grab",
+        "lantern-land",
+        "plate",
+        "held-open",
+        "climbhop",
+        "held-close",
+        "stone-lit",
+        "gate-open",
+        "exit"
+      ],
+      "eventCounts": {
+        "recoil-load": 2,
+        "pickup": 2,
+        "recoil-release": 2,
+        "jump": 8,
+        "recoil-jump": 2,
+        "land": 9,
+        "throw": 1,
+        "grab": 2,
+        "lantern-land": 1,
+        "plate": 1,
+        "held-open": 1,
+        "climbhop": 1,
+        "held-close": 1,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "exit": 1
+      },
+      "movement": "Ordinary jump, climb and cargo movement; no dash or advanced momentum required."
+    },
+    "positiveChecks": [
+      {
+        "name": "Initial load 32 frames",
+        "tape": [
+          [
+            32,
+            "d"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            205,
+            "r"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            100,
+            "l"
+          ],
+          [
+            45,
+            ""
+          ],
+          [
+            160,
+            "r"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            20,
+            "lgu"
+          ],
+          [
+            20,
+            "rgu"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            94,
+            "l"
+          ],
+          [
+            40,
+            "lj"
+          ],
+          [
+            75,
+            "l"
+          ],
+          [
+            42,
+            "lj"
+          ],
+          [
+            200,
+            "l"
+          ]
+        ]
+      },
+      {
+        "name": "Initial load 38 frames",
+        "tape": [
+          [
+            38,
+            "d"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            205,
+            "r"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            100,
+            "l"
+          ],
+          [
+            45,
+            ""
+          ],
+          [
+            160,
+            "r"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            20,
+            "lgu"
+          ],
+          [
+            20,
+            "rgu"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            94,
+            "l"
+          ],
+          [
+            40,
+            "lj"
+          ],
+          [
+            75,
+            "l"
+          ],
+          [
+            42,
+            "lj"
+          ],
+          [
+            200,
+            "l"
+          ]
+        ]
+      },
+      {
+        "name": "Initial load 43 frames",
+        "tape": [
+          [
+            43,
+            "d"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            205,
+            "r"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            100,
+            "l"
+          ],
+          [
+            45,
+            ""
+          ],
+          [
+            160,
+            "r"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            20,
+            "lgu"
+          ],
+          [
+            20,
+            "rgu"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            94,
+            "l"
+          ],
+          [
+            40,
+            "lj"
+          ],
+          [
+            75,
+            "l"
+          ],
+          [
+            42,
+            "lj"
+          ],
+          [
+            200,
+            "l"
+          ]
+        ]
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Leave the lantern at the first lift",
+        "tape": [
+          [
+            35,
+            "d"
+          ],
+          [
+            1,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            205,
+            "r"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            100,
+            "l"
+          ],
+          [
+            45,
+            ""
+          ],
+          [
+            160,
+            "r"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            20,
+            "lgu"
+          ],
+          [
+            20,
+            "rgu"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            94,
+            "l"
+          ],
+          [
+            40,
+            "lj"
+          ],
+          [
+            75,
+            "l"
+          ],
+          [
+            42,
+            "lj"
+          ],
+          [
+            200,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2
+        }
+      },
+      {
+        "name": "Keep the lantern instead of sending it through the vent",
+        "tape": [
+          [
+            35,
+            "d"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            205,
+            "r"
+          ],
+          [
+            1,
+            "d"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            100,
+            "l"
+          ],
+          [
+            45,
+            ""
+          ],
+          [
+            160,
+            "r"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            20,
+            "lgu"
+          ],
+          [
+            20,
+            "rgu"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            94,
+            "l"
+          ],
+          [
+            40,
+            "lj"
+          ],
+          [
+            75,
+            "l"
+          ],
+          [
+            42,
+            "lj"
+          ],
+          [
+            200,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1
+        }
+      },
+      {
+        "name": "Leave the delivered lantern on its pressure plate",
+        "tape": [
+          [
+            35,
+            "d"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            205,
+            "r"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            100,
+            "l"
+          ],
+          [
+            45,
+            ""
+          ],
+          [
+            160,
+            "r"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            20,
+            "lgu"
+          ],
+          [
+            20,
+            "rgu"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            94,
+            "l"
+          ],
+          [
+            40,
+            "lj"
+          ],
+          [
+            75,
+            "l"
+          ],
+          [
+            42,
+            "lj"
+          ],
+          [
+            200,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1
+        }
+      }
+    ],
+    "designNotes": "The pressure gate blocks the knight underneath the same conveyor that transports its weight. Reclaiming that weight closes the old route, sending the shared lantern up the eastern lift and back above the previous journey. Long trips have safe staging floors; the main execution is choosing when to leave each rising recoil support and maintaining shade during the return jumps. Static room geometry and beam/cargo collisions determine access; the exit has no invisible device-use receipt.",
+    "interconnection": "A folded circuit uses the same lantern for lift loading, outgoing shade, remote door weight and returning shade; the return passes above the apparatus that separated knight and cargo. The cargo duct and gate run above/below one another. The return route crosses back over both outgoing machinery stages."
+  },
+  "tape": [
+    [
+      35,
+      "d"
+    ],
+    [
+      1,
+      "dg"
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      35,
+      "rj"
+    ],
+    [
+      205,
+      "r"
+    ],
+    [
+      1,
+      "dg"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      100,
+      "l"
+    ],
+    [
+      45,
+      ""
+    ],
+    [
+      160,
+      "r"
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      20,
+      "lgu"
+    ],
+    [
+      20,
+      "rgu"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      16,
+      "rj"
+    ],
+    [
+      25,
+      "r"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      30,
+      "d"
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      35,
+      "rj"
+    ],
+    [
+      20,
+      "r"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      6,
+      "r"
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      94,
+      "l"
+    ],
+    [
+      40,
+      "lj"
+    ],
+    [
+      75,
+      "l"
+    ],
+    [
+      42,
+      "lj"
+    ],
+    [
+      200,
+      "l"
+    ]
+  ]
+}

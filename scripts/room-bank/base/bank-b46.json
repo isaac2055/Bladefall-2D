@@ -1,0 +1,425 @@
+{
+  "room": {
+    "id": "bank-b46",
+    "name": "Let the Train Go Low",
+    "palette": "foundry",
+    "study": true,
+    "dashes": 0,
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "map": [
+      "########################################",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.........................X...........G#",
+      "#.....................................G#",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#........................#/.........\\.G.",
+      "#................f.......#...#######.###",
+      "#......................--#...#######.###",
+      "#............................###c.../###",
+      "#.....P......................###########",
+      "#...CCCCC....................###########",
+      "#---------)-k.................##########",
+      "#...........................############",
+      "#...........................############",
+      "#............--------------.############",
+      "#^^^^^^^^^^^^^^^^^^^........############",
+      "########################################"
+    ],
+    "hint": "Send the train low. Cut the mirror during your feather flight, before its shutter opens.",
+    "question": "Which branch should the train take when its rider can choose a different flight?",
+    "beams": [
+      {
+        "c": 27,
+        "r": 22,
+        "dir": "u"
+      },
+      {
+        "c": 26,
+        "r": 0,
+        "dir": "d"
+      }
+    ],
+    "shutters": [
+      {
+        "open": 60,
+        "shut": 80,
+        "offset": 60
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 13,
+    "run": 5,
+    "collection": "run5",
+    "format": "compact",
+    "acceptance": "revised",
+    "status": "route-proven",
+    "difficulty": 3,
+    "role": "Leave the vehicle on the low branch and cut the light circuit during the separate feather flight",
+    "worlds": [
+      12,
+      16,
+      20
+    ],
+    "tags": [
+      "cart",
+      "track-fork",
+      "feather",
+      "beam",
+      "separate-routes",
+      "aerial-blade",
+      "shutter",
+      "optical-receiver"
+    ],
+    "newMechanics": [],
+    "author": "Codex",
+    "humanReview": "Owner: high-cart route could be ridden to the door, reversed, and exited via the nearby tally. Requested a redo; revision awaits review.",
+    "requiredEvents": [
+      "boost",
+      "switch-low",
+      "feather-jump",
+      "mirror",
+      "stone-lit",
+      "gate-open"
+    ],
+    "solution": "Lean into the boost, then jump before the fork so the empty train continues low and masks the upward beam. Take the feather and jump again. Cut downward as you pass the mirror above the high stop; the blade can be started several frames before reaching it. Land beyond the light shaft. When its shutter opens, the prepared mirror sends light across the high track and down the enclosed duct to the receiver, opening the sealed exit. Taking the train high blocks that circuit wherever it parks in the high pocket.",
+    "nearestExisting": "F18 uses one cart for speed and a later shadow; B15 separates a knight and a useful object. Here the branch itself asks you to leave the vehicle: its low destination supplies shade while the knight takes the feather route above.",
+    "novelty": "The low cart supplies shade while the knight prepares the circuit in a separate airborne action. A high cart blocks the exit receiver, and the receiver cannot be collected from the exit shelf. Waiting at spawn does not prepare the mirror.",
+    "approvedIngredients": [
+      "bank-f18",
+      "bank-b15"
+    ],
+    "positiveChecks": [
+      {
+        "name": "Start the mirror cut two frames earlier",
+        "tape": [
+          [
+            17,
+            "r"
+          ],
+          [
+            15,
+            "rj"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            6,
+            "rj"
+          ],
+          [
+            1,
+            "rjds"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 97
+        }
+      },
+      {
+        "name": "Start the mirror cut three frames later",
+        "tape": [
+          [
+            17,
+            "r"
+          ],
+          [
+            15,
+            "rj"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            11,
+            "rj"
+          ],
+          [
+            1,
+            "rjds"
+          ],
+          [
+            13,
+            "rj"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 97
+        }
+      },
+      {
+        "name": "Leave the cart one frame later",
+        "tape": [
+          [
+            18,
+            "r"
+          ],
+          [
+            15,
+            "rj"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            1,
+            "rjds"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 97
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Ride the high train, back up, jump out and touch the exit tally",
+        "tape": [
+          [
+            100,
+            "r"
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            30,
+            "rj"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0
+        },
+        "firstFailure": "Exit remains closed."
+      },
+      {
+        "name": "Skip the aerial mirror cut",
+        "tape": [
+          [
+            17,
+            "r"
+          ],
+          [
+            15,
+            "rj"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0
+        },
+        "firstFailure": "Exit remains closed."
+      },
+      {
+        "name": "Wait through a shutter cycle before riding the high route",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            140,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            30,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0
+        },
+        "firstFailure": "Exit remains closed."
+      }
+    ],
+    "route": {
+      "frames": 97,
+      "deaths": 0,
+      "events": [
+        "boost",
+        "jump",
+        "switch-low",
+        "feather",
+        "feather-jump",
+        "cart-land",
+        "strike",
+        "mirror",
+        "cart-bump",
+        "shutter-open",
+        "stone-lit",
+        "gate-open",
+        "land",
+        "exit"
+      ],
+      "eventCounts": {
+        "boost": 1,
+        "jump": 2,
+        "switch-low": 1,
+        "feather": 1,
+        "feather-jump": 1,
+        "cart-land": 1,
+        "strike": 1,
+        "mirror": 1,
+        "cart-bump": 1,
+        "shutter-open": 1,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "land": 1,
+        "exit": 1
+      },
+      "movement": "Ordinary movement and device momentum; no advanced dash tech."
+    },
+    "designNotes": "The remote receiver sits behind two solid rows and a three-tile side wall, out of body and blade reach. The mirror begins facing away from it; the shutter alone cannot pre-light the gate. The high cart is trapped across the only optical approach. All exit-door tiles meet the room ceiling. The five-tile low cart and broad exit landing are retained.",
+    "feedbackRevision": "Requested Run 5/6 owner-feedback revision complete; original successful bypasses and revised regressions saved.",
+    "review": {
+      "reportedBypasses": [
+        {
+          "name": "Ride the high train, back up, jump out and touch the exit tally",
+          "tape": [
+            [
+              100,
+              "r"
+            ],
+            [
+              25,
+              "l"
+            ],
+            [
+              30,
+              "rj"
+            ],
+            [
+              1,
+              "r"
+            ],
+            [
+              80,
+              "r"
+            ]
+          ],
+          "originalFrames": 179,
+          "originalDeaths": 0,
+          "archive": "scripts/room-bank/archive/before-run56-feedback/base/bank-b46.json"
+        }
+      ],
+      "revisionSummary": "The remote receiver sits behind two solid rows and a three-tile side wall, out of body and blade reach. The mirror begins facing away from it; the shutter alone cannot pre-light the gate. The high cart is trapped across the only optical approach. All exit-door tiles meet the room ceiling. The five-tile low cart and broad exit landing are retained."
+    }
+  },
+  "tape": [
+    [
+      17,
+      "r"
+    ],
+    [
+      15,
+      "rj"
+    ],
+    [
+      1,
+      "r"
+    ],
+    [
+      8,
+      "rj"
+    ],
+    [
+      1,
+      "rjds"
+    ],
+    [
+      16,
+      "rj"
+    ],
+    [
+      80,
+      "r"
+    ]
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "room": {
+    "id": "bank-b15",
+    "name": "No Place to Land",
+    "hint": "A feather is one airborne jump. It melts when you land; full hands cannot spend it.",
+    "question": "The low landing holds the lantern. What do you lose by landing there with it?",
+    "map": [
+      "########################################",
+      "#.........#############..............H.#",
+      "#.........#############..............H.#",
+      "#.........#############..............H.#",
+      "#.........#############..............H.#",
+      "#.........#############..............H.#",
+      "#.P.l................................H..",
+      "#######..............................H..",
+      "#######..............................H..",
+      "#######..............................H..",
+      "#######.........................########",
+      "#######.........................vvvvvvv#",
+      "#######.............f..................#",
+      "#######................................#",
+      "#######................................#",
+      "#######................................#",
+      "#######................................#",
+      "#######................................#",
+      "#######................................#",
+      "#######......................__________#",
+      "#######......................###########",
+      "#######^^^^^^^^^^^^^^^^^^^^^^###########",
+      "########################################"
+    ],
+    "palette": "frost",
+    "study": true,
+    "lock": [
+      "strike",
+      "parry",
+      "portal"
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 2,
+    "difficulty": 3,
+    "role": "solve",
+    "worlds": [
+      6,
+      8,
+      12
+    ],
+    "tags": [
+      "lantern",
+      "feather",
+      "separate-routes",
+      "resource-conflict"
+    ],
+    "newMechanics": [],
+    "entrance": "High left departure.",
+    "exit": "High right, with the lantern delivered to a separate lower plate.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "pickup",
+      "feather",
+      "throw",
+      "feather-jump",
+      "plate",
+      "held-open"
+    ],
+    "solution": "Carry the lantern from the high start, glide beneath the hanging roof and collect the feather in the same flight. Once the roof ends, throw the lantern forward onto the low receiving plate. With empty hands, spend the feather and dash upward to the high exit. Landing to set the lantern down melts the jump needed for that final rise.",
+    "nearestExisting": "p87 Kite uses the lantern to modify a flight; p89 Moth Wing preserves a feather across a non-ground bounce. q2 Separate Ways sends cargo along another path. This room makes the carried glide and saved air jump mutually exclusive until an airborne handoff resolves them.",
+    "novelty": "The apparent safe landing is the wrong answer: both useful resources are present, but carrying one prevents spending the other, while touching ground destroys the one needed for the exit.",
+    "route": {
+      "frames": 198,
+      "deaths": 0,
+      "events": [
+        "pickup",
+        "feather",
+        "throw",
+        "jump",
+        "feather-jump",
+        "dash",
+        "plate",
+        "lantern-land",
+        "held-open",
+        "land",
+        "refill-dash",
+        "exit"
+      ],
+      "movement": "Ordinary jump, dash, climb and device actions; no advanced momentum."
+    },
+    "acceptance": "banked",
+    "userFeedback": {
+      "date": "2026-10-07",
+      "comment": "Good base replacement, though not great; bank as is."
+    }
+  },
+  "tape": [
+    [
+      10,
+      "r"
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      103,
+      "r"
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      5,
+      "rux"
+    ],
+    [
+      85,
+      "rgu"
+    ]
+  ]
+}

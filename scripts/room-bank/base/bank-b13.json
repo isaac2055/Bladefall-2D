@@ -1,0 +1,397 @@
+{
+  "room": {
+    "id": "bank-b13",
+    "name": "The Missing Stop",
+    "palette": "foundry",
+    "study": true,
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "hint": "Dash into the broad stone to move it. An empty mould sets into permanent, light-blocking iron when struck.",
+    "question": "What will keep the vault shaded after its first shield has moved away?",
+    "map": [
+      "########################################",
+      "#########################............G..",
+      "#########################............G..",
+      "#########################............G..",
+      "#########################..#.......#####",
+      "#########################..#.......###<#",
+      "#########################..#.......###<#",
+      "########################>..#.......###<#",
+      "########################>.............<#",
+      "########################>.............<#",
+      "########################>.............<#",
+      "########################>.............<#",
+      "########################>.....<.......<#",
+      "########################>.....<#########",
+      "#.............##########>.............<#",
+      "#.............##########>.............<#",
+      "#.............##########>.............<#",
+      "#.............KK........U.............<#",
+      "#.P...........KK...................#.c<#",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################"
+    ],
+    "beams": [
+      {
+        "c": 18,
+        "r": 17,
+        "dir": "r"
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 2,
+    "difficulty": 3,
+    "role": "puzzle",
+    "worlds": [
+      11,
+      16
+    ],
+    "tags": [
+      "slide-stone",
+      "mould",
+      "beam",
+      "manufactured-stop",
+      "return-route"
+    ],
+    "newMechanics": [],
+    "solution": "Send the broad stone down the low delivery tunnel, then follow on foot beneath the light. Pass the still-empty casting frame before striking it from the vault side. The permanent cast now blocks the light that prevented jumping around the delivered stone, as well as establishing its return stop. Reach the far side, collect the tally, and dash into the stone from its right. It parks beneath the hanging climb. Jump and dash up the nearby wall, climb-jump onto its visible cap, then jump and dash the open gap to the raised exit.",
+    "nearestExisting": "n2 Bell Stop positions a slide stone against an existing stopper; p109 Cold Cast creates a landing. Here the necessary stopper must be absent during the outbound delivery and manufactured for the returning stone. Casting first traps the stone in the low tunnel before the vault.",
+    "novelty": "The cast is both a replacement beam shield and an accurately placed return stop. It must stay open for the stone AND the knight to pass before it is closed. The first stop no longer has a climbable lip at jumping height. This replaces a largely linear out-and-back with a visible change in which movements are safe.",
+    "entrance": "West low tunnel, tile 2/18.",
+    "exit": "East upper window, rows 1–3.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "stone-hit",
+      "stone-stop",
+      "cast",
+      "stone-lit",
+      "gate-open"
+    ],
+    "requiredEventCounts": {
+      "stone-hit": 2,
+      "stone-stop": 2
+    },
+    "acceptance": "banked",
+    "userFeedback": {
+      "date": "2026-10-07",
+      "comment": "Better; remove invisible upper platform, then bank."
+    },
+    "revisionNotes": "User found a jump/dash exit from the first stopping position. Raised the exit and removed its lower climbable lip; added a beam that must be blocked before the knight can jump around the cargo. The cast now has two necessary physical roles. Banked after the requested invisible platform removal. A low receiving-bay roof with a thorned outer edge also prevents using the delivered block as an immediate launch to the hanging climb. Removed the entire invisible one-way strip across the upper gap. The final crossing is now a jump and dash from the visible pillar to the visible exit ledge.",
+    "shortcutChecks": [
+      {
+        "name": "First-stop jump/strike/climb bypass reported by user",
+        "before": {
+          "exited": true,
+          "frames": 376,
+          "deaths": 0,
+          "casts": 0,
+          "stoneHits": 1
+        },
+        "tape": [
+          [
+            61,
+            "r"
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            157,
+            "r"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            18,
+            ""
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            16,
+            ""
+          ],
+          [
+            2,
+            "l"
+          ],
+          [
+            6,
+            ""
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            18,
+            "j"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            18,
+            "gu"
+          ],
+          [
+            70,
+            "rgu"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1
+        }
+      },
+      {
+        "name": "Intended movement without casting",
+        "tape": [
+          [
+            61,
+            "r"
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            127,
+            "r"
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            36,
+            "r"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            18,
+            ""
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            18,
+            ""
+          ],
+          [
+            7,
+            "j"
+          ],
+          [
+            1,
+            "lx"
+          ],
+          [
+            65,
+            "l"
+          ],
+          [
+            10,
+            "lj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            18,
+            "j"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            77,
+            "gu"
+          ],
+          [
+            85,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1
+        }
+      }
+    ],
+    "route": {
+      "frames": 596,
+      "deaths": 0,
+      "events": [
+        "dash",
+        "stone-hit",
+        "stone-stop",
+        "land",
+        "refill-dash",
+        "strike",
+        "cast",
+        "jump",
+        "stone-lit",
+        "gate-open",
+        "grab",
+        "climbjump",
+        "exit"
+      ]
+    },
+    "humanReview": "User approved banking; numeric Fun /10, Difficulty /5 and Suitability /5 ratings remain pending."
+  },
+  "tape": [
+    [
+      61,
+      "r"
+    ],
+    [
+      1,
+      "rx"
+    ],
+    [
+      127,
+      "r"
+    ],
+    [
+      1,
+      "ls"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      5,
+      "l"
+    ],
+    [
+      1,
+      "ls"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      36,
+      "r"
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      18,
+      ""
+    ],
+    [
+      10,
+      "r"
+    ],
+    [
+      18,
+      ""
+    ],
+    [
+      7,
+      "j"
+    ],
+    [
+      1,
+      "lx"
+    ],
+    [
+      65,
+      "l"
+    ],
+    [
+      10,
+      "lj"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      1,
+      "r"
+    ],
+    [
+      18,
+      "j"
+    ],
+    [
+      1,
+      "ux"
+    ],
+    [
+      64,
+      "gu"
+    ],
+    [
+      1,
+      "gj"
+    ],
+    [
+      9,
+      "rj"
+    ],
+    [
+      19,
+      ""
+    ],
+    [
+      6,
+      "rj"
+    ],
+    [
+      1,
+      "rx"
+    ],
+    [
+      70,
+      "r"
+    ]
+  ]
+}

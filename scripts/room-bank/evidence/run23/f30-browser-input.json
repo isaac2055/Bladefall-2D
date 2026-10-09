@@ -1,0 +1,69 @@
+{
+  "checkedAt": "2026-10-08T17:41:36.963Z",
+  "input": "Actual view keyboard events and standard mapped gamepad; no raw tape injection",
+  "results": [
+    {
+      "mode": "keyboard",
+      "events": [
+        "jump",
+        "land",
+        "echo-place",
+        "land",
+        "jump",
+        "hook",
+        "stone-lit",
+        "gate-open",
+        "unhook",
+        "echo-swap",
+        "land",
+        "exit"
+      ],
+      "exits": 1,
+      "deaths": 0,
+      "detach": 1,
+      "swaps": 1
+    },
+    {
+      "mode": "rebound-keyboard",
+      "events": [
+        "jump",
+        "land",
+        "echo-place",
+        "land",
+        "jump",
+        "hook",
+        "stone-lit",
+        "gate-open",
+        "unhook",
+        "echo-swap",
+        "land",
+        "exit"
+      ],
+      "exits": 1,
+      "deaths": 0,
+      "detach": 1,
+      "swaps": 1
+    },
+    {
+      "mode": "gamepad",
+      "events": [
+        "jump",
+        "land",
+        "echo-place",
+        "land",
+        "jump",
+        "hook",
+        "stone-lit",
+        "gate-open",
+        "unhook",
+        "echo-swap",
+        "land",
+        "exit"
+      ],
+      "exits": 1,
+      "deaths": 0,
+      "detach": 1,
+      "swaps": 1
+    }
+  ]
+}

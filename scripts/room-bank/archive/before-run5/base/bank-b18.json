@@ -1,0 +1,420 @@
+{
+  "room": {
+    "id": "bank-b18",
+    "name": "Floor You Need Gone",
+    "hint": "Pale masonry disappears when you leave it. Shutters stop light while closed; their pips show the cycle.",
+    "question": "When can you leave the pier after it stops being your shade?",
+    "map": [
+      "########################################",
+      "#.................................HG...#",
+      "#.................................HG...#",
+      "#.................................HG...#",
+      "#.................................HG...#",
+      "#.................................HG...#",
+      "#.................................HG...#",
+      "#.................................HG...#",
+      "#.................................HG...#",
+      "#.................................HG...#",
+      "#.................................HG...#",
+      "#...........###...YY..............HG...#",
+      "#.................YY...........X..HG...#",
+      "#.................YY.......c......HG...#",
+      "#.......###.......YY.....#####....HG...#",
+      "#.................YY..............HG...#",
+      "#.................YY..............HG...#",
+      "#...###...........YY..............HG...#",
+      "#.................YY..............HG....",
+      "#......###########YY###########...HG....",
+      "#.lP..............YY........._#...HG....",
+      "#####}}}}}}}}}}}}}}}}}}}}}}}}}##########",
+      "########################################"
+    ],
+    "palette": "path",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "beams": [
+      {
+        "c": 32,
+        "r": 12,
+        "dir": "l"
+      }
+    ],
+    "shutters": [
+      {
+        "open": 120,
+        "shut": 90,
+        "offset": 80
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 3,
+    "acceptance": "revised",
+    "difficulty": 4,
+    "role": "solve",
+    "worlds": [
+      11,
+      19
+    ],
+    "tags": [
+      "spent-foothold",
+      "belt",
+      "cargo-routing",
+      "return-route",
+      "shutter",
+      "beam",
+      "timed-commitment"
+    ],
+    "newMechanics": [],
+    "entrance": "Lower-left cargo loading floor.",
+    "exit": "Lower-right, beyond the two visible receivers.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "foothold-spent",
+      "stone-lit",
+      "plate",
+      "held-open",
+      "shutter-shut"
+    ],
+    "solution": "Leave the lantern below and reach the stable roof beside the pale pier. Watch the shutter, then climb in the pier’s shade and time the departure so the dark interval covers the fall onto the far tally shelf. The spent pier has now opened the cargo duct. Return below the beam to load the lantern onto the belt, and cross the lower roof to the exit while it reaches its receiver.",
+    "nearestExisting": "p127 Moth Road spends return footholds; F15 Borrow the Mouth removes a spent beam shield after replacing its shade. Here spending an upper foothold opens a separate lower material route that the knight cannot enter.",
+    "novelty": "A support used by the knight is an obstruction to cargo several storeys below. The required return is to load a newly opened route, not to replay the jump sequence.",
+    "userFeedback": {
+      "date": "2026-10-07",
+      "comment": "Make this harder and more interesting, then show it again for review; not banked."
+    },
+    "revisionNotes": "The tall pier now also blocks a timed horizontal beam. Its departure removes both the cargo obstruction and the knight’s shade; the lower far landing lies across that beam. The stable low roof is a safe observation/rest point before the climb. Plan the climb and departure for the shutter’s dark interval instead of adding speed or spike precision.",
+    "route": {
+      "frames": 1138,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "grab",
+        "climbhop",
+        "shutter-shut",
+        "land",
+        "shutter-open",
+        "foothold-spent",
+        "dash",
+        "stone-lit",
+        "gate-open",
+        "refill-dash",
+        "pickup",
+        "throw",
+        "lantern-land",
+        "plate",
+        "held-open",
+        "exit"
+      ],
+      "movement": "Ordinary jump, dash, climb and device actions; no advanced momentum."
+    },
+    "shortcutChecks": [
+      {
+        "name": "Depart the pier at the former timing",
+        "tape": [
+          [
+            16,
+            "j"
+          ],
+          [
+            30,
+            "rgu"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            35,
+            "rgu"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            100,
+            "rgu"
+          ],
+          [
+            10,
+            "rx"
+          ],
+          [
+            23,
+            "r"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            115,
+            "l"
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            62,
+            "l"
+          ],
+          [
+            27,
+            "lj"
+          ],
+          [
+            13,
+            "l"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            22,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            210,
+            ""
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            6,
+            ""
+          ],
+          [
+            16,
+            "j"
+          ],
+          [
+            30,
+            "rgu"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            50,
+            "r"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            115,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "cargoLost": false,
+          "stoneStops": [],
+          "failure": "light"
+        }
+      },
+      {
+        "name": "Spend the pier at its foot and try the low approach directly",
+        "tape": [
+          [
+            16,
+            "j"
+          ],
+          [
+            30,
+            "rgu"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            35,
+            "rgu"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            1,
+            "rgu"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            29,
+            "r"
+          ],
+          [
+            7,
+            ""
+          ],
+          [
+            20,
+            "j"
+          ],
+          [
+            80,
+            "rgu"
+          ],
+          [
+            120,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0,
+          "tallyLit": false
+        }
+      }
+    ],
+    "bypassReview": {
+      "scope": "Focused wrong-timing route and obvious shortcut review; not an exhaustive search.",
+      "result": "The premature departure burns after the pier removes its own shade. A brief low grab followed by the direct lower approach did not reach the tally; the safe return uses the lower roof below the beam."
+    },
+    "archivedBeforeRevision": "scripts/room-bank/archive/batch-03-before-review/base/bank-b18.json"
+  },
+  "tape": [
+    [
+      16,
+      "j"
+    ],
+    [
+      30,
+      "rgu"
+    ],
+    [
+      18,
+      "rj"
+    ],
+    [
+      35,
+      "rgu"
+    ],
+    [
+      18,
+      "rj"
+    ],
+    [
+      60,
+      ""
+    ],
+    [
+      100,
+      "rgu"
+    ],
+    [
+      10,
+      "rx"
+    ],
+    [
+      23,
+      "r"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      115,
+      "l"
+    ],
+    [
+      20,
+      "lj"
+    ],
+    [
+      62,
+      "l"
+    ],
+    [
+      27,
+      "lj"
+    ],
+    [
+      13,
+      "l"
+    ],
+    [
+      40,
+      ""
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      22,
+      "r"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      1,
+      "dg"
+    ],
+    [
+      210,
+      ""
+    ],
+    [
+      40,
+      "l"
+    ],
+    [
+      6,
+      ""
+    ],
+    [
+      16,
+      "j"
+    ],
+    [
+      30,
+      "rgu"
+    ],
+    [
+      68,
+      "r"
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      92,
+      "r"
+    ]
+  ]
+}

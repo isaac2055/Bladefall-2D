@@ -1,0 +1,1681 @@
+{
+  "room": {
+    "id": "bank-f31",
+    "name": "Cut Behind You",
+    "palette": "cliffs",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "map": [
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "########################################",
+      "###################################B####",
+      "#vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv#",
+      "#G.....................................#",
+      "#G............................AAAAA.AA.#",
+      ".G.....................................#",
+      ".G................................P...c#",
+      ".G...............................YY....#",
+      "#BBBBBBBBBBBBBBBBBBBBBB................#",
+      "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#"
+    ],
+    "movement": "survive-2",
+    "exit": "left",
+    "hint": "Dash Down-Right, then Strike \u00b7 When the tally lights, Jump Left. The reverse launch has a short late grace.",
+    "question": "Can the cut go toward the key while your launch goes toward the exit?",
+    "beams": [
+      {
+        "c": 35,
+        "r": 13,
+        "dir": "d"
+      }
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 8,
+    "run": 2,
+    "acceptance": "banked",
+    "difficulty": 4,
+    "role": "committed reverse launch",
+    "worlds": [
+      25,
+      31,
+      34
+    ],
+    "tags": [
+      "reverse-hyper",
+      "blade",
+      "phase-cap",
+      "low-ceiling",
+      "speed-gap",
+      "spent-foothold",
+      "phase-shield"
+    ],
+    "newMechanics": [
+      "reverse-dash-jump"
+    ],
+    "entrance": "Small eastern launch perch beneath the phase cap.",
+    "exit": "Lower western phase shore.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "reverse-hyper",
+      "stone-lit",
+      "phase",
+      "foothold-spent"
+    ],
+    "humanReview": "Qualitative user approval; numeric ratings remain unmeasured.",
+    "solution": "Dash down-right toward the outside tally, and cut during the dash. The dash raises the shade over the beam and makes the western shore solid. Once the tally lights, jump left: the late reversal grace lets this follow the cut as a readable sequence. The spent launch tongue still disappears behind you. Hold left across the slightly wider receiving shore to the open gate.",
+    "nearestExisting": "Replaces the two close, walkable shelves of the original F31. F32 also taught a low reverse hyper; this compact room makes the outward blade reach and the long inward speed crossing one continuous commitment.",
+    "novelty": "The dash buys access to a key in the wrong direction, and the launch floor is spent before the return. The same dash must therefore become the leftward launch; walking out and returning to prepare a forward hyper loses the floor and meets the beam.",
+    "hintTeaching": "Strike can now follow the ground dash instead of sharing its exact frame. Once the right tally lights, hold Left and press Jump; a short grace accepts the reversal even just after the dash ends.",
+    "designNotes": "Second human review found the idea good but the action nearly impossible. The survive-2 profile now remembers a grounded dash for an eight-frame post-dash reverse-jump grace; stale outgoing wall momentum cannot overwrite the reversal. A ground-skimming dash also accepts a later Strike, removing the exact simultaneous button chord. Forward hyper speed, dash refill rules and unprofiled rooms are unchanged. Receiving shore extends one tile.All fourteen consecutive reversal delays 7\u201320 complete, and five offset Strike presses complete. Departure beam, remote tally and spent perch still physically enforce the outward commitment.",
+    "positiveChecks": [
+      {
+        "name": "Reverse 7 frames after Dash: widened human input window",
+        "tape": [
+          [
+            7,
+            "rdxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 133,
+          "events": [
+            "strike",
+            "phase",
+            "dash",
+            "ultra",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 1,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "stone-lit": 1,
+            "foothold-spent": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Reverse 8 frames after Dash: widened human input window",
+        "tape": [
+          [
+            8,
+            "rdxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 137,
+          "events": [
+            "strike",
+            "phase",
+            "dash",
+            "ultra",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 1,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "stone-lit": 1,
+            "foothold-spent": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Reverse 9 frames after Dash: widened human input window",
+        "tape": [
+          [
+            9,
+            "rdxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 140,
+          "events": [
+            "strike",
+            "phase",
+            "dash",
+            "ultra",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 1,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "stone-lit": 1,
+            "foothold-spent": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Reverse 10 frames after Dash: widened human input window",
+        "tape": [
+          [
+            10,
+            "rdxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 143,
+          "events": [
+            "strike",
+            "phase",
+            "dash",
+            "ultra",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 1,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "stone-lit": 1,
+            "foothold-spent": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Reverse 11 frames after Dash: widened human input window",
+        "tape": [
+          [
+            11,
+            "rdxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 146,
+          "events": [
+            "strike",
+            "phase",
+            "dash",
+            "ultra",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 1,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "stone-lit": 1,
+            "foothold-spent": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Reverse 12 frames after Dash: widened human input window",
+        "tape": [
+          [
+            12,
+            "rdxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 150,
+          "events": [
+            "strike",
+            "phase",
+            "dash",
+            "ultra",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "late-reverse",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 1,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "stone-lit": 1,
+            "foothold-spent": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "late-reverse": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Reverse 13 frames after Dash: widened human input window",
+        "tape": [
+          [
+            13,
+            "rdxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 153,
+          "events": [
+            "strike",
+            "phase",
+            "dash",
+            "ultra",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "late-reverse",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 1,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "stone-lit": 1,
+            "foothold-spent": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "late-reverse": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Reverse 14 frames after Dash: widened human input window",
+        "tape": [
+          [
+            14,
+            "rdxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 155,
+          "events": [
+            "strike",
+            "phase",
+            "dash",
+            "ultra",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "late-reverse",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 1,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "stone-lit": 1,
+            "foothold-spent": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "late-reverse": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Reverse 15 frames after Dash: widened human input window",
+        "tape": [
+          [
+            15,
+            "rdxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 156,
+          "events": [
+            "strike",
+            "phase",
+            "dash",
+            "ultra",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "late-reverse",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 1,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "stone-lit": 1,
+            "foothold-spent": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "late-reverse": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Reverse 16 frames after Dash: widened human input window",
+        "tape": [
+          [
+            16,
+            "rdxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 157,
+          "events": [
+            "strike",
+            "phase",
+            "dash",
+            "ultra",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "late-reverse",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 1,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "stone-lit": 1,
+            "foothold-spent": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "late-reverse": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Reverse 17 frames after Dash: widened human input window",
+        "tape": [
+          [
+            17,
+            "rdxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 158,
+          "events": [
+            "strike",
+            "phase",
+            "dash",
+            "ultra",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "late-reverse",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 1,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "stone-lit": 1,
+            "foothold-spent": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "late-reverse": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Reverse 18 frames after Dash: widened human input window",
+        "tape": [
+          [
+            18,
+            "rdxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 160,
+          "events": [
+            "strike",
+            "phase",
+            "dash",
+            "ultra",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "late-reverse",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 1,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "stone-lit": 1,
+            "foothold-spent": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "late-reverse": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Reverse 19 frames after Dash: widened human input window",
+        "tape": [
+          [
+            19,
+            "rdxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 160,
+          "events": [
+            "strike",
+            "phase",
+            "dash",
+            "ultra",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "late-reverse",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 1,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "stone-lit": 1,
+            "foothold-spent": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "late-reverse": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Reverse 20 frames after Dash: widened human input window",
+        "tape": [
+          [
+            20,
+            "rdxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 162,
+          "events": [
+            "strike",
+            "phase",
+            "dash",
+            "ultra",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "late-reverse",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 1,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "stone-lit": 1,
+            "foothold-spent": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "late-reverse": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Strike 1 frames after Dash instead of simultaneous",
+        "tape": [
+          [
+            1,
+            "rdx"
+          ],
+          [
+            12,
+            "rds"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 153,
+          "events": [
+            "phase",
+            "dash",
+            "ultra",
+            "strike",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "late-reverse",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "strike": 1,
+            "stone-lit": 1,
+            "foothold-spent": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "late-reverse": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Strike 3 frames after Dash instead of simultaneous",
+        "tape": [
+          [
+            3,
+            "rdx"
+          ],
+          [
+            10,
+            "rds"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 153,
+          "events": [
+            "phase",
+            "dash",
+            "ultra",
+            "strike",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "late-reverse",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "strike": 1,
+            "stone-lit": 1,
+            "foothold-spent": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "late-reverse": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Strike 5 frames after Dash instead of simultaneous",
+        "tape": [
+          [
+            5,
+            "rdx"
+          ],
+          [
+            8,
+            "rds"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 153,
+          "events": [
+            "phase",
+            "dash",
+            "ultra",
+            "strike",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "late-reverse",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "strike": 1,
+            "stone-lit": 1,
+            "foothold-spent": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "late-reverse": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Strike 7 frames after Dash instead of simultaneous",
+        "tape": [
+          [
+            7,
+            "rdx"
+          ],
+          [
+            6,
+            "rds"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 153,
+          "events": [
+            "phase",
+            "dash",
+            "ultra",
+            "foothold-spent",
+            "strike",
+            "stone-lit",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "late-reverse",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "foothold-spent": 1,
+            "strike": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "late-reverse": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Strike 9 frames after Dash instead of simultaneous",
+        "tape": [
+          [
+            9,
+            "rdx"
+          ],
+          [
+            4,
+            "rds"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 153,
+          "events": [
+            "phase",
+            "dash",
+            "ultra",
+            "foothold-spent",
+            "strike",
+            "stone-lit",
+            "gate-open",
+            "hyper",
+            "reverse-hyper",
+            "late-reverse",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "foothold-spent": 1,
+            "strike": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "late-reverse": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      }
+    ],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 153,
+      "events": [
+        "phase",
+        "dash",
+        "ultra",
+        "strike",
+        "stone-lit",
+        "foothold-spent",
+        "gate-open",
+        "hyper",
+        "reverse-hyper",
+        "late-reverse",
+        "land",
+        "refill-dash",
+        "exit"
+      ],
+      "eventCounts": {
+        "phase": 1,
+        "dash": 1,
+        "ultra": 1,
+        "strike": 1,
+        "stone-lit": 1,
+        "foothold-spent": 1,
+        "gate-open": 1,
+        "hyper": 1,
+        "reverse-hyper": 1,
+        "late-reverse": 1,
+        "land": 1,
+        "refill-dash": 1,
+        "exit": 1
+      }
+    },
+    "shortcutChecks": [
+      {
+        "name": "Original successful sword-and-ordinary-dash bypass",
+        "tape": [
+          [
+            1,
+            "rs"
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            36,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            120,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 5,
+          "frames": 0,
+          "events": [
+            "strike",
+            "foothold-spent",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "strike": 2,
+            "foothold-spent": 5,
+            "death": 5,
+            "respawn": 4
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 29,
+            "x": 239,
+            "y": 179,
+            "cause": "spikes",
+            "vx": -90,
+            "vy": 160,
+            "i": 28
+          }
+        }
+      },
+      {
+        "name": "Cut while advancing on foot; ordinary jump and horizontal dash",
+        "tape": [
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            10,
+            "l"
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            12,
+            "lx"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 3,
+          "frames": 0,
+          "events": [
+            "death",
+            "foothold-spent",
+            "respawn"
+          ],
+          "eventCounts": {
+            "death": 3,
+            "foothold-spent": 4,
+            "respawn": 3
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 5,
+            "x": 280,
+            "y": 155,
+            "cause": "light",
+            "vx": 83.33333333333334,
+            "vy": 0,
+            "i": 4
+          }
+        }
+      },
+      {
+        "name": "Cut while advancing on foot; ordinary jump and diagonal dash",
+        "tape": [
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            10,
+            "l"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 3,
+          "frames": 0,
+          "events": [
+            "death",
+            "foothold-spent",
+            "respawn"
+          ],
+          "eventCounts": {
+            "death": 3,
+            "foothold-spent": 4,
+            "respawn": 3
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 5,
+            "x": 280,
+            "y": 155,
+            "cause": "light",
+            "vx": 83.33333333333334,
+            "vy": 0,
+            "i": 4
+          }
+        }
+      },
+      {
+        "name": "Outgoing cut without the reverse jump",
+        "tape": [
+          [
+            8,
+            "rdxs"
+          ],
+          [
+            170,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 3,
+          "frames": 0,
+          "events": [
+            "strike",
+            "phase",
+            "dash",
+            "ultra",
+            "stone-lit",
+            "foothold-spent",
+            "gate-open",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "strike": 1,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "stone-lit": 1,
+            "foothold-spent": 3,
+            "gate-open": 1,
+            "death": 3,
+            "respawn": 2
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 27,
+            "x": 308,
+            "y": 179,
+            "cause": "spikes",
+            "vx": 0,
+            "vy": 160,
+            "i": 26
+          }
+        }
+      },
+      {
+        "name": "Reverse too soon to reach the remote tally",
+        "tape": [
+          [
+            5,
+            "rdxs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0,
+          "frames": 0,
+          "events": [
+            "strike",
+            "phase",
+            "dash",
+            "ultra",
+            "hyper",
+            "reverse-hyper",
+            "foothold-spent",
+            "land",
+            "refill-dash"
+          ],
+          "eventCounts": {
+            "strike": 1,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "hyper": 1,
+            "reverse-hyper": 1,
+            "foothold-spent": 1,
+            "land": 1,
+            "refill-dash": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Independent walk-cut-return then ordinary forward hyper",
+        "tape": [
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            10,
+            "l"
+          ],
+          [
+            6,
+            "ldx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 3,
+          "frames": 0,
+          "events": [
+            "death",
+            "foothold-spent",
+            "respawn"
+          ],
+          "eventCounts": {
+            "death": 3,
+            "foothold-spent": 4,
+            "respawn": 3
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 5,
+            "x": 280,
+            "y": 155,
+            "cause": "light",
+            "vx": 83.33333333333334,
+            "vy": 0,
+            "i": 4
+          }
+        },
+        "before": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 147,
+          "events": [
+            "strike",
+            "stone-lit",
+            "gate-open",
+            "phase",
+            "dash",
+            "ultra",
+            "hyper",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "strike": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "phase": 1,
+            "dash": 1,
+            "ultra": 1,
+            "hyper": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        },
+        "beforeSource": "../run23-f3x-before-commitment.json"
+      },
+      {
+        "name": "Pre-toggle the beam shade downward before cutting and forward-hypering",
+        "tape": [
+          [
+            1,
+            "dx"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            6,
+            "ldx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 3,
+          "frames": 0,
+          "events": [
+            "phase",
+            "dash",
+            "refill-dash",
+            "foothold-spent",
+            "strike",
+            "stone-lit",
+            "gate-open",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "phase": 2,
+            "dash": 2,
+            "refill-dash": 1,
+            "foothold-spent": 3,
+            "strike": 1,
+            "stone-lit": 1,
+            "gate-open": 1,
+            "death": 3,
+            "respawn": 3
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 35,
+            "x": 283,
+            "y": 158,
+            "cause": "light",
+            "vx": -169.70562748477138,
+            "vy": 169.70562748477138,
+            "i": 34
+          }
+        }
+      },
+      {
+        "name": "Walk-cut then coyote-jump back to recover the launch tongue",
+        "tape": [
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            6,
+            "ldx"
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 0,
+          "events": [
+            "death",
+            "foothold-spent",
+            "respawn",
+            "phase",
+            "dash",
+            "super",
+            "land",
+            "refill-dash"
+          ],
+          "eventCounts": {
+            "death": 1,
+            "foothold-spent": 2,
+            "respawn": 1,
+            "phase": 1,
+            "dash": 1,
+            "super": 1,
+            "land": 1,
+            "refill-dash": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 5,
+            "x": 280,
+            "y": 155,
+            "cause": "light",
+            "vx": 83.33333333333334,
+            "vy": 0,
+            "i": 4
+          }
+        }
+      }
+    ],
+    "revision": {
+      "date": "2026-10-08",
+      "archive": "scripts/room-bank/archive/runs-2-3-before-review/fractured/31-bank-f31.json"
+    },
+    "userFeedback": {
+      "date": "2026-10-08",
+      "decision": "revise-forgiveness",
+      "comment": "Looks cool and likes the idea, but almost impossible; make the move easier."
+    },
+    "feedbackHistory": [
+      {
+        "date": "2026-10-08",
+        "decision": "revise-forgiveness",
+        "comment": "Looks cool and likes the idea, but almost impossible; make the move easier."
+      },
+      {
+        "decision": "banked-fractured",
+        "comment": "Approved: perfect after the fixes."
+      }
+    ],
+    "review": {
+      "decision": "banked",
+      "comment": "Approved: perfect after the fixes."
+    }
+  },
+  "tape": [
+    [
+      5,
+      "rdx"
+    ],
+    [
+      8,
+      "rds"
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      150,
+      "l"
+    ]
+  ]
+}

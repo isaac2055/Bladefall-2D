@@ -1,0 +1,745 @@
+{
+  "room": {
+    "id": "bank-f35",
+    "name": "The Weight Leaves First",
+    "palette": "foundry",
+    "study": true,
+    "exit": "right",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "map": [
+      "########################################",
+      "#...........###############.H...........",
+      "#...........###############.H...........",
+      "#...........................H...........",
+      "#...........................H...........",
+      "#...........................H...........",
+      "#...........................H...........",
+      "#...........................H...........",
+      "#...........................H...........",
+      "#...........................H...........",
+      "#...........................H...........",
+      "#..............#########################",
+      "#..............vvvvvvvvvvvvv.<##########",
+      "#............................<##########",
+      "#............................<##########",
+      "#........Pl..................<##########",
+      "#............................<##########",
+      "#............................<##########",
+      "#...................#........<##########",
+      "#................___#........<##########",
+      "#................####........<##########",
+      "#^^^^^^^^^^^^^^^^####^^^^^^^^^##########",
+      "########################################"
+    ],
+    "recoilPlatforms": [
+      {
+        "id": "A",
+        "c": 4,
+        "r": 16,
+        "w": 8,
+        "depth": 3,
+        "loadFrames": 30,
+        "releaseSpeed": 120
+      }
+    ],
+    "hint": "Send the weight into its lower pocket \u00b7 Jump from the rising plate to reach the upper bridge.",
+    "question": "How can one weight open your landing and launch you toward it?",
+    "dashes": 0
+  },
+  "bank": {
+    "side": "base",
+    "batch": 8,
+    "run": 3,
+    "acceptance": "banked",
+    "difficulty": 3,
+    "role": "weight and spring-jump handoff",
+    "worlds": [
+      10,
+      14,
+      18
+    ],
+    "tags": [
+      "recoil-platform",
+      "lantern",
+      "held-plate",
+      "lift",
+      "spring-jump"
+    ],
+    "newMechanics": [
+      "recoil-platform"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "entrance": "Lantern-loaded recoil support in the west.",
+    "exit": "High east ledge beyond a weight-held gate.",
+    "solution": "Let the lantern load the spring, then pick it up and throw it into the lower pressure pocket. Take a few steps forward and jump while the spring is returning. Its lift carries an ordinary jump to the high bridge, while the thrown weight holds the gate open. Continue along the bridge to the exit.",
+    "nearestExisting": "B39 teaches partial spring height; this room adds independent cargo routing and a landing gate held by the same departing weight.",
+    "novelty": "The lantern both stores the launch energy and becomes the independently travelling gate weight. The knight and cargo use physically separate upper and lower routes.",
+    "requiredEvents": [
+      "recoil-load",
+      "pickup",
+      "throw",
+      "recoil-release",
+      "recoil-jump",
+      "held-open"
+    ],
+    "humanReview": "User conditionally approved into Base after closing the lower-platform walk/dash bypass and requiring the spring jump. Both are implemented.",
+    "positiveChecks": [
+      {
+        "name": "Release wait 1 frames before steps and spring jump",
+        "tape": [
+          [
+            1,
+            "d"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            40,
+            "rj"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 199,
+          "deaths": 0,
+          "events": [
+            "recoil-load",
+            "pickup",
+            "recoil-release",
+            "throw",
+            "jump",
+            "recoil-jump",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "pickup": 1,
+            "recoil-release": 1,
+            "throw": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "plate": 4,
+            "lantern-land": 1,
+            "held-open": 1,
+            "land": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Release wait 2 frames before steps and spring jump",
+        "tape": [
+          [
+            1,
+            "d"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            2,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            40,
+            "rj"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 200,
+          "deaths": 0,
+          "events": [
+            "recoil-load",
+            "pickup",
+            "recoil-release",
+            "throw",
+            "jump",
+            "recoil-jump",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "pickup": 1,
+            "recoil-release": 1,
+            "throw": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "plate": 4,
+            "lantern-land": 1,
+            "held-open": 1,
+            "land": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Release wait 3 frames before steps and spring jump",
+        "tape": [
+          [
+            1,
+            "d"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            3,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            40,
+            "rj"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 201,
+          "deaths": 0,
+          "events": [
+            "recoil-load",
+            "pickup",
+            "recoil-release",
+            "throw",
+            "jump",
+            "recoil-jump",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "pickup": 1,
+            "recoil-release": 1,
+            "throw": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "plate": 4,
+            "lantern-land": 1,
+            "held-open": 1,
+            "land": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Release wait 5 frames before steps and spring jump",
+        "tape": [
+          [
+            1,
+            "d"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            40,
+            "rj"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 203,
+          "deaths": 0,
+          "events": [
+            "recoil-load",
+            "pickup",
+            "recoil-release",
+            "throw",
+            "jump",
+            "recoil-jump",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "pickup": 1,
+            "recoil-release": 1,
+            "throw": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "plate": 4,
+            "lantern-land": 1,
+            "held-open": 1,
+            "land": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Release wait 6 frames before steps and spring jump",
+        "tape": [
+          [
+            1,
+            "d"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            6,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            40,
+            "rj"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 204,
+          "deaths": 0,
+          "events": [
+            "recoil-load",
+            "pickup",
+            "recoil-release",
+            "throw",
+            "jump",
+            "recoil-jump",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "pickup": 1,
+            "recoil-release": 1,
+            "throw": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "plate": 4,
+            "lantern-land": 1,
+            "held-open": 1,
+            "land": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Release wait 7 frames before steps and spring jump",
+        "tape": [
+          [
+            1,
+            "d"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            7,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            40,
+            "rj"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "frames": 205,
+          "deaths": 0,
+          "events": [
+            "recoil-load",
+            "pickup",
+            "recoil-release",
+            "throw",
+            "jump",
+            "recoil-jump",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "pickup": 1,
+            "recoil-release": 1,
+            "throw": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "plate": 4,
+            "lantern-land": 1,
+            "held-open": 1,
+            "land": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Throw, let the spring settle, then attempt ordinary jump from its edge",
+        "tape": [
+          [
+            1,
+            "d"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            40,
+            "rj"
+          ],
+          [
+            160,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 0,
+          "events": [
+            "recoil-load",
+            "pickup",
+            "recoil-release",
+            "throw",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "jump",
+            "land"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "pickup": 1,
+            "recoil-release": 1,
+            "throw": 1,
+            "plate": 5,
+            "lantern-land": 1,
+            "held-open": 1,
+            "jump": 1,
+            "land": 1
+          }
+        }
+      },
+      {
+        "name": "Throw, walk down into lower pressure pocket and attempt upward dash from its edge",
+        "tape": [
+          [
+            1,
+            "d"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            75,
+            "r"
+          ],
+          [
+            30,
+            "rux"
+          ],
+          [
+            40,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "frames": 0,
+          "deaths": 3,
+          "events": [
+            "recoil-load",
+            "pickup",
+            "recoil-release",
+            "throw",
+            "plate",
+            "lantern-land",
+            "held-open",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "recoil-load": 4,
+            "pickup": 1,
+            "recoil-release": 1,
+            "throw": 1,
+            "plate": 4,
+            "lantern-land": 1,
+            "held-open": 1,
+            "death": 3,
+            "respawn": 3
+          }
+        }
+      }
+    ],
+    "route": {
+      "exited": true,
+      "frames": 202,
+      "deaths": 0,
+      "events": [
+        "recoil-load",
+        "pickup",
+        "recoil-release",
+        "throw",
+        "jump",
+        "recoil-jump",
+        "plate",
+        "lantern-land",
+        "held-open",
+        "land",
+        "exit"
+      ],
+      "eventCounts": {
+        "recoil-load": 1,
+        "pickup": 1,
+        "recoil-release": 1,
+        "throw": 1,
+        "jump": 1,
+        "recoil-jump": 1,
+        "plate": 4,
+        "lantern-land": 1,
+        "held-open": 1,
+        "land": 1,
+        "exit": 1
+      }
+    },
+    "revision": {
+      "date": "2026-10-08",
+      "archive": "scripts/room-bank/archive/runs-2-3-before-review/fractured/35-bank-f35.json",
+      "latestChanges": "Converted to ordinary spring-jump Base room; shortened and covered the lower basin to prevent its edge becoming an exit launch."
+    },
+    "userFeedback": {
+      "date": "2026-10-08",
+      "comment": "Prevent walking to the lower platform edge and dashing up; force jumping from the spring, then bank for Base."
+    },
+    "designNotes": "Approved Base adaptation: no dash, super, hyper or wallbounce is needed or available. The short lower weight pocket is covered by a high bridge with a thorned underside, so its edge cannot become a second launch toward the exit. The bridge lies above ordinary jump height from the resting recoil support; the spring jump is required by the geometry. The overhead ceiling has been opened to fit a normal lifted jump.",
+    "placementNote": "Author placement estimate updated from qualitative user feedback; not a numeric user rating.",
+    "reclassifiedFrom": "fractured",
+    "reclassificationReason": "User approved the revised ordinary spring-jump room for Base; stable ID retained."
+  },
+  "tape": [
+    [
+      1,
+      "d"
+    ],
+    [
+      30,
+      ""
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      1,
+      ""
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      4,
+      ""
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      40,
+      "rj"
+    ],
+    [
+      160,
+      "r"
+    ]
+  ]
+}

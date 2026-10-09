@@ -1,0 +1,185 @@
+{
+  "room": {
+    "id": "bank-f01",
+    "name": "Borrowed Runway",
+    "palette": "fractured",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "exit": "left",
+    "fault": {
+      "fuse": 22,
+      "spread": 5,
+      "rest": 180
+    },
+    "hint": "The arrow crystal accepts only leftward travel. Reach the fault cup with a low dash-jump, then super back through its arrow.",
+    "question": "How much runway do you need to borrow before giving it back?",
+    "map": [
+      "########################################",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      ".......................................#",
+      ".......................................#",
+      ".......................................#",
+      ".......................................#",
+      ".......................................#",
+      "###########............................#",
+      "###########............................#",
+      "#vvvvvvvvvv............................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#..........................TTTTTT......#",
+      "#......................................#",
+      "#..P...................................#",
+      "########...............................#",
+      "########...............................#",
+      "########...............................#",
+      "########^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+      "########################################"
+    ],
+    "study": true,
+    "vectorRefills": [
+      {
+        "c": 19,
+        "r": 10,
+        "dir": "left"
+      }
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 1,
+    "difficulty": 5,
+    "role": "combination",
+    "worlds": [
+      21,
+      23
+    ],
+    "tags": [
+      "hyper",
+      "super",
+      "fault",
+      "turnaround",
+      "refill",
+      "vector-refill",
+      "directional-refill"
+    ],
+    "newMechanics": [
+      "vector-refill"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "super",
+      "fault-crack",
+      "refill",
+      "vector-refill"
+    ],
+    "solution": "Use an extended low dash-jump to carry speed and recover the dash. Spend that dash on the fault runway, then turn into a super before the runway falls; catch the high crystal for the final leftward dash. The upper crystal is a return ticket: it only refills while traveling left, so the committed turnaround must happen before reaching it.",
+    "entrance": "left floor at 18",
+    "exit": "left opening rows 4–8",
+    "proof": {
+      "frames": 152,
+      "deaths": 0,
+      "events": [
+        "dash",
+        "ultra",
+        "refill-dash",
+        "hyper",
+        "fault-crack",
+        "land",
+        "super",
+        "refill",
+        "vector-refill",
+        "fault-fall",
+        "exit"
+      ],
+      "eventCounts": {
+        "dash": 5,
+        "ultra": 1,
+        "refill-dash": 4,
+        "hyper": 1,
+        "fault-crack": 1,
+        "land": 2,
+        "super": 2,
+        "refill": 1,
+        "vector-refill": 1,
+        "fault-fall": 6,
+        "exit": 1
+      },
+      "vectorEntry": {
+        "dir": "left",
+        "vx": -203.7,
+        "vy": -75
+      },
+      "withoutVectorPickup": "same intended tape fails with one death",
+      "verifiedAt": "2026-10-07"
+    },
+    "vectorDesign": "The upper crystal is a return ticket: it only refills while traveling left, so the committed turnaround must happen before reaching it."
+  },
+  "tape": [
+    [
+      5,
+      "rdx"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      5,
+      "rux"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      6,
+      "r"
+    ],
+    [
+      5,
+      "lx"
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      2,
+      "lux"
+    ],
+    [
+      20,
+      "lu"
+    ],
+    [
+      5,
+      "lx"
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      20,
+      "lu"
+    ]
+  ]
+}

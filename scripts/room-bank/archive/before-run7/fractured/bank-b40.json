@@ -1,0 +1,547 @@
+{
+  "room": {
+    "id": "bank-b40",
+    "name": "Unshade the Lock",
+    "study": true,
+    "palette": "cliffs",
+    "movement": "survive-2",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "map": [
+      "########################################",
+      "#....................................G..",
+      "#....................................G..",
+      "#....................................G..",
+      "#....................................G..",
+      "#................l...................G..",
+      "#....................................G..",
+      "#....................................G..",
+      "#............................<##########",
+      "#............................<##########",
+      "#............................<##########",
+      "#............................<##########",
+      "#............................<##########",
+      "#............................<##########",
+      "#............................<##########",
+      "#............................<##########",
+      "#......P.....................<##########",
+      "#............................<##########",
+      "#...............#.#..........<##########",
+      "#...............#c#..........<##########",
+      "#...............###..........<##########",
+      "^^^^^^^^^^^^^^^^###^^^^^^^^^^<##########",
+      "########################################"
+    ],
+    "recoilPlatforms": [
+      {
+        "id": "Launch",
+        "c": 3,
+        "r": 17,
+        "w": 9,
+        "depth": 3,
+        "loadFrames": 30,
+        "releaseSpeed": 120
+      }
+    ],
+    "beams": [
+      {
+        "c": 35,
+        "r": 0,
+        "dir": "d"
+      },
+      {
+        "c": 17,
+        "r": 0,
+        "dir": "d"
+      }
+    ],
+    "hint": "Hold Down to load the plate. Catch the suspended lantern during your dash; it shades whatever is below it.",
+    "question": "Can the same shade open a gate and cover the crossing?",
+    "cargoClasps": [
+      {
+        "id": "Supply",
+        "c": 17,
+        "r": 5
+      }
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 9,
+    "run": 4,
+    "acceptance": "banked",
+    "difficulty": 5,
+    "role": "new movement and entity combination",
+    "worlds": [
+      34,
+      37,
+      40
+    ],
+    "tags": [
+      "recoil-platform",
+      "cargo-dash-catch",
+      "beam",
+      "cargo-clasp"
+    ],
+    "newMechanics": [
+      "recoil-platform",
+      "cargo-dash-catch"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "recoil-jump",
+      "cargo-dash-catch",
+      "clasp-take",
+      "stone-lit"
+    ],
+    "entrance": "A broad western recoil plate below suspended cargo.",
+    "exit": "Eastern gallery through its newly lit gate and a second shaft of light.",
+    "solution": "Fully compress the plate, release Down and jump during the rise. Near the top of the arc dash up-right while holding Grab. Taking the suspended lantern exposes the sealed tally to its beam and opens the gate; the caught cargo preserves dash speed and supplies shade for the far crossing.",
+    "nearestExisting": "B33 catches cargo along a ground runway; B35 carries a recoil weight from the start. Here the recoil lift makes an otherwise inaccessible midair catch possible, and removing the shade opens the exit while taking that shade along.",
+    "novelty": "The cargo transfers two jobs in one catch: uncover the fixed receiver, then shield its moving carrier. The new recoil supplies height while the new dash catch supplies range. The high clasp is beyond an ordinary jump plus diagonal dash; the recoil is needed to meet it.",
+    "composition": {
+      "movement": "cargo-dash-catch",
+      "entity": "recoil-platform",
+      "dependency": "A suspended pickup has no landing surface; the launch must meet it with useful speed."
+    },
+    "positiveChecks": [
+      {
+        "name": "Diagonal catch after 24 rising frames",
+        "tape": [
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            12,
+            "ruxg"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 151,
+          "events": [
+            "clasp-catch",
+            "recoil-load",
+            "recoil-release",
+            "jump",
+            "recoil-jump",
+            "dash",
+            "pickup",
+            "cargo-dash-catch",
+            "stone-lit",
+            "clasp-take",
+            "gate-open",
+            "land",
+            "refill-dash",
+            "exit"
+          ]
+        }
+      },
+      {
+        "name": "Diagonal catch after 28 rising frames",
+        "tape": [
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            12,
+            "ruxg"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 158,
+          "events": [
+            "clasp-catch",
+            "recoil-load",
+            "recoil-release",
+            "jump",
+            "recoil-jump",
+            "dash",
+            "pickup",
+            "cargo-dash-catch",
+            "stone-lit",
+            "clasp-take",
+            "gate-open",
+            "land",
+            "refill-dash",
+            "exit"
+          ]
+        }
+      },
+      {
+        "name": "Diagonal catch after 32 rising frames",
+        "tape": [
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            32,
+            "rj"
+          ],
+          [
+            12,
+            "ruxg"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 167,
+          "events": [
+            "clasp-catch",
+            "recoil-load",
+            "recoil-release",
+            "jump",
+            "recoil-jump",
+            "dash",
+            "pickup",
+            "cargo-dash-catch",
+            "stone-lit",
+            "clasp-take",
+            "gate-open",
+            "land",
+            "refill-dash",
+            "exit"
+          ]
+        }
+      },
+      {
+        "name": "Diagonal catch after 36 rising frames",
+        "tape": [
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            36,
+            "rj"
+          ],
+          [
+            12,
+            "ruxg"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 167,
+          "events": [
+            "clasp-catch",
+            "recoil-load",
+            "recoil-release",
+            "jump",
+            "recoil-jump",
+            "dash",
+            "pickup",
+            "cargo-dash-catch",
+            "clasp-take",
+            "stone-lit",
+            "gate-open",
+            "land",
+            "refill-dash",
+            "exit"
+          ]
+        }
+      },
+      {
+        "name": "Diagonal catch after 38 rising frames",
+        "tape": [
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            38,
+            "rj"
+          ],
+          [
+            12,
+            "ruxg"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 169,
+          "events": [
+            "clasp-catch",
+            "recoil-load",
+            "recoil-release",
+            "jump",
+            "recoil-jump",
+            "dash",
+            "pickup",
+            "cargo-dash-catch",
+            "clasp-take",
+            "stone-lit",
+            "gate-open",
+            "land",
+            "refill-dash",
+            "exit"
+          ]
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Ordinary jump-diagonal dash bypass before height fix",
+        "tape": [
+          [
+            8,
+            "r"
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            12,
+            "ruxg"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "clasp-catch",
+            "jump",
+            "dash",
+            "death",
+            "respawn"
+          ]
+        }
+      },
+      {
+        "name": "Later ordinary jump diagonal dash",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            12,
+            "ruxg"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "clasp-catch",
+            "jump",
+            "dash",
+            "death",
+            "respawn"
+          ]
+        }
+      },
+      {
+        "name": "Leave the shade hanging",
+        "tape": [
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            30,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "clasp-catch",
+            "recoil-load",
+            "recoil-release",
+            "jump",
+            "recoil-jump",
+            "dash",
+            "death",
+            "respawn"
+          ]
+        }
+      },
+      {
+        "name": "Air pickup without dash momentum",
+        "tape": [
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            30,
+            "rj"
+          ],
+          [
+            140,
+            "rg"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 0,
+          "events": [
+            "clasp-catch",
+            "recoil-load",
+            "recoil-release",
+            "jump",
+            "recoil-jump",
+            "death",
+            "respawn",
+            "grab"
+          ]
+        }
+      }
+    ],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 162,
+      "events": [
+        "clasp-catch",
+        "recoil-load",
+        "recoil-release",
+        "jump",
+        "recoil-jump",
+        "dash",
+        "pickup",
+        "cargo-dash-catch",
+        "stone-lit",
+        "clasp-take",
+        "gate-open",
+        "land",
+        "refill-dash",
+        "exit"
+      ]
+    },
+    "humanReview": "Qualitative user approval; numeric ratings remain unmeasured.",
+    "review": {
+      "decision": "banked",
+      "comment": "Hard but fun; bank as late Fractured."
+    },
+    "feedbackHistory": [
+      {
+        "decision": "banked-fractured",
+        "comment": "Hard but fun; bank as late Fractured."
+      },
+      {
+        "decision": "banked-fractured",
+        "comment": "Hard but fun; bank as late Fractured."
+      }
+    ],
+    "reclassifiedFrom": "base",
+    "reclassificationReason": "Hard but fun; bank as late Fractured."
+  },
+  "tape": [
+    [
+      30,
+      "d"
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      30,
+      "rj"
+    ],
+    [
+      12,
+      "ruxg"
+    ],
+    [
+      140,
+      "r"
+    ]
+  ]
+}

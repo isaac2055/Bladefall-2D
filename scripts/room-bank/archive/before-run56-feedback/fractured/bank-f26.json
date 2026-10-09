@@ -1,0 +1,244 @@
+{
+  "room": {
+    "id": "bank-f26",
+    "name": "Keep the Borrowed Speed",
+    "palette": "combat",
+    "study": true,
+    "exit": "right",
+    "hint": "A downward cut rebounds without erasing sideways speed. Every dash swaps amber and blue.",
+    "question": "Which part of your speed must survive the last contact?",
+    "map": [
+      "########################################",
+      "#>.....................................#",
+      "#>.....................................#",
+      "#>.....................................#",
+      "#>......................................",
+      "#>......................................",
+      "#>......................................",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#############>........................<#",
+      "#############>.................BBBBBBB<#",
+      "#>............................<.......<#",
+      "#>............................<.......<#",
+      "#>............................<.......<#",
+      "#>.P..........................<.......<#",
+      "##########....................<.......<#",
+      "##########....................<.......<#",
+      "##########....................<.......<#",
+      "##########....................<.......<#",
+      "##########....................<.......<#",
+      "##########....................<.......<#",
+      "##########^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+      "########################################"
+    ],
+    "foes": [
+      {
+        "kind": "moth",
+        "x": 21,
+        "y": 16,
+        "path": [
+          2,
+          0
+        ],
+        "period": 120
+      }
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 5,
+    "run": 1,
+    "acceptance": "banked",
+    "difficulty": 5,
+    "role": "combat-traversal",
+    "worlds": [
+      4,
+      11,
+      16
+    ],
+    "tags": [
+      "hyper",
+      "finite-target",
+      "pogo",
+      "phase-landing",
+      "momentum"
+    ],
+    "newMechanics": [],
+    "status": "route-proven",
+    "author": "Codex",
+    "entrance": "Lower observation bank.",
+    "exit": "Raised eastern gallery.",
+    "solution": "Launch beneath the low lintel with a hyper. Intercept the finite moth from above; its rebound adds height while preserving the fast horizontal departure. Reach the blue receiving shelf without spending the newly refreshed dash, which would phase the shelf away. Land on the shelf, then use the recovered footing for the final jump through the higher exit slot.",
+    "nearestExisting": "combat-04 Keep the Landing pairs pogo with a toggle landing; combat-10 The Living Stair sequences enemies. This low approach makes a grounded speed technique feed the same blade contact that supplies the missing vertical arc, while the receiving surface punishes discarding that speed for another dash.",
+    "novelty": "The target is a height conversion for already-earned horizontal speed. The refreshed dash is a tempting but destructive resource because it removes the only receiving floor.",
+    "requiredEvents": [
+      "hyper",
+      "refill-dash",
+      "enemy-defeat",
+      "phase"
+    ],
+    "route": {
+      "frames": 130,
+      "deaths": 0,
+      "events": [
+        "phase",
+        "dash",
+        "ultra",
+        "hyper",
+        "strike",
+        "refill-dash",
+        "enemy-defeat",
+        "land",
+        "jump",
+        "exit"
+      ],
+      "movement": "Existing Precision Core movement and blade interactions."
+    },
+    "shortcutChecks": [
+      {
+        "name": "Use the renewed dash before landing",
+        "tape": [
+          [
+            20,
+            "r"
+          ],
+          [
+            5,
+            "rdx"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            7,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            27,
+            "r"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            90,
+            "r"
+          ]
+        ],
+        "expect": "no-exit",
+        "observed": "The blue floor phases away. A late diagonal dash cannot reach the raised exit slot; the knight falls into its visible lower face."
+      },
+      {
+        "name": "Keep the hyper but omit the rebound",
+        "tape": [
+          [
+            20,
+            "r"
+          ],
+          [
+            5,
+            "rdx"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            7,
+            "r"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            46,
+            "r"
+          ],
+          [
+            30,
+            "rj"
+          ]
+        ],
+        "expect": "no-exit",
+        "observed": "Speed alone carries the knight underneath the receiving shelf and into the pit."
+      },
+      {
+        "name": "Ordinary jump and dash at the target",
+        "tape": [
+          [
+            20,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "expect": "no-exit",
+        "observed": "The slower approach falls below the moth before making the intended downward contact."
+      }
+    ],
+    "humanReview": "Great and fun. Both intended route and dash-to-flip then wavedash-to-pogo alternative are accepted.",
+    "review": {
+      "decision": "banked",
+      "date": "2026-10-08",
+      "feedback": "Great and fun. Both intended route and dash-to-flip then wavedash-to-pogo alternative are accepted.",
+      "numericRatings": "Not supplied"
+    },
+    "acceptedAlternative": "Dash first to flip the phase, then wavedash into the pogo; preserve this solution."
+  },
+  "tape": [
+    [
+      20,
+      "r"
+    ],
+    [
+      5,
+      "rdx"
+    ],
+    [
+      18,
+      "rj"
+    ],
+    [
+      7,
+      "r"
+    ],
+    [
+      5,
+      "rds"
+    ],
+    [
+      46,
+      "r"
+    ],
+    [
+      29,
+      "rj"
+    ]
+  ]
+}

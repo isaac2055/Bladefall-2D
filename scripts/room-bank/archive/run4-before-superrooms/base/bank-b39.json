@@ -1,0 +1,697 @@
+{
+  "room": {
+    "id": "bank-b39",
+    "name": "Borrow Only Enough",
+    "palette": "cliffs",
+    "study": true,
+    "dashes": 0,
+    "exit": "right",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "map": [
+      "########################################",
+      "#...........#################...........",
+      "#...........#################...........",
+      "#...........#################...........",
+      "#...........#################...........",
+      "#...........#################...........",
+      "#...........#################...........",
+      "#...........#################...........",
+      "#...........vvvvvvvvvvvvvvvvv...........",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#...............<#######################",
+      "#...............<#######################",
+      "#...............<#######################",
+      "#...............<#######################",
+      "#.......P.......<#######################",
+      "#...............<#######################",
+      "#...............<#######################",
+      "#...............<#######################",
+      "#...............<#######################",
+      "#^^^^^^^^^^^^^^^^#######################",
+      "########################################"
+    ],
+    "recoilPlatforms": [
+      {
+        "id": "A",
+        "c": 4,
+        "r": 17,
+        "w": 8,
+        "depth": 3,
+        "loadFrames": 30,
+        "releaseSpeed": 120
+      }
+    ],
+    "hint": "No dash \u00b7 Hold Down to load; release and jump from the rising plate.",
+    "question": "What part of the rise clears both the landing and the teeth?"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 8,
+    "run": 3,
+    "acceptance": "banked",
+    "difficulty": 2,
+    "role": "ordinary partial-lift jump",
+    "worlds": [
+      7,
+      10,
+      13
+    ],
+    "tags": [
+      "recoil-platform",
+      "partial-lift",
+      "ceiling"
+    ],
+    "newMechanics": [
+      "recoil-platform"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "recoil-load",
+      "recoil-release",
+      "recoil-jump"
+    ],
+    "entrance": "Wide western recoil platform.",
+    "exit": "Raised eastern shelf under a low thorned overhang.",
+    "solution": "Choose a partial compression, release Down and step right as the plate rises. Use an ordinary held jump while its lift is available to reach the shelf without touching the teeth. There is no dash fallback.",
+    "nearestExisting": "F35 Borrow Only Enough supplied a partial hyper route but admitted an uncharged ordinary jump/dash. This Base version isolates the selected-lift lesson with ordinary jumping and no dash.",
+    "novelty": "A low receiving corridor sets both a minimum useful rise and a maximum safe arc; the player chooses the stored lift instead of accepting a fixed spring launch.",
+    "positiveChecks": [
+      {
+        "name": "Partial load 9 frames",
+        "tape": [
+          [
+            9,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 178,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "jump",
+            "recoil-jump",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "land": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Partial load 10 frames",
+        "tape": [
+          [
+            10,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 179,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "jump",
+            "recoil-jump",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "land": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Partial load 11 frames",
+        "tape": [
+          [
+            11,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 180,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "jump",
+            "recoil-jump",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "land": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Partial load 13 frames",
+        "tape": [
+          [
+            13,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 182,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "jump",
+            "recoil-jump",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "land": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Partial load 14 frames",
+        "tape": [
+          [
+            14,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 183,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "jump",
+            "recoil-jump",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "land": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Partial load 15 frames",
+        "tape": [
+          [
+            15,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 184,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "jump",
+            "recoil-jump",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "land": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Partial load 16 frames",
+        "tape": [
+          [
+            16,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 185,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "jump",
+            "recoil-jump",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "land": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Departure wait 7 frames",
+        "tape": [
+          [
+            12,
+            "d"
+          ],
+          [
+            7,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 181,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "jump",
+            "recoil-jump",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "land": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Departure wait 9 frames",
+        "tape": [
+          [
+            12,
+            "d"
+          ],
+          [
+            9,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 181,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "jump",
+            "recoil-jump",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "land": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Departure wait 10 frames",
+        "tape": [
+          [
+            12,
+            "d"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 181,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "jump",
+            "recoil-jump",
+            "land",
+            "exit"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "land": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Ordinary jump with no platform load",
+        "tape": [
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 206,
+          "events": [
+            "jump",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "death": 2,
+            "respawn": 2
+          },
+          "firstFailure": "spikes"
+        }
+      },
+      {
+        "name": "Full charge with the demonstrated departure arc",
+        "tape": [
+          [
+            30,
+            "d"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 3,
+          "frames": 236,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "jump",
+            "recoil-jump",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "death": 3,
+            "respawn": 2
+          },
+          "firstFailure": "spikes"
+        }
+      },
+      {
+        "name": "Leave too early in the return",
+        "tape": [
+          [
+            12,
+            "d"
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 214,
+          "events": [
+            "recoil-load",
+            "recoil-release",
+            "jump",
+            "recoil-jump",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "recoil-load": 1,
+            "recoil-release": 1,
+            "jump": 1,
+            "recoil-jump": 1,
+            "death": 2,
+            "respawn": 2
+          },
+          "firstFailure": "spikes"
+        }
+      }
+    ],
+    "humanReview": "User qualitative approval recorded; numeric ratings remain unmeasured.",
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 181,
+      "events": [
+        "recoil-load",
+        "recoil-release",
+        "jump",
+        "recoil-jump",
+        "land",
+        "exit"
+      ],
+      "eventCounts": {
+        "recoil-load": 1,
+        "recoil-release": 1,
+        "jump": 1,
+        "recoil-jump": 1,
+        "land": 1,
+        "exit": 1
+      },
+      "firstFailure": null
+    },
+    "tolerance": {
+      "note": "Eight consecutive load durations 9\u201316 frames and departure waits 7\u201310 succeed with the same ordinary jump."
+    },
+    "companionOf": "bank-f35",
+    "companionReason": "Fixed ordinary-movement teaching version of the selected-lift concept.",
+    "feedbackHistory": [
+      {
+        "date": "2026-10-08",
+        "decision": "banked",
+        "comment": "Nice! Easy, good for Base and a good demonstration. Bank it."
+      }
+    ],
+    "review": {
+      "date": "2026-10-08",
+      "decision": "banked",
+      "comment": "Nice! Easy, good for Base and a good demonstration. Bank it."
+    },
+    "placementNote": "Author placement estimate updated from qualitative user feedback; not a numeric user rating."
+  },
+  "tape": [
+    [
+      12,
+      "d"
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      28,
+      "rj"
+    ],
+    [
+      140,
+      "r"
+    ]
+  ]
+}

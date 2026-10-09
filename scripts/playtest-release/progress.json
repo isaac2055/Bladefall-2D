@@ -1,0 +1,47 @@
+{
+  "request": "Restore individual checkpoints, simplify Survival menu, prepare Cloudflare and publish current game to GitHub main",
+  "status": "implemented and verified locally; ready for GitHub publication",
+  "completed": [
+    "Restored individual Survival room checkpoints and feedback; removed compound finale reset logic",
+    "One World map pause entry; removed Connecting passages and duplicate Level select",
+    "Preserved Explore/Survival playtest scores, deaths, feedback, unlocks and map features",
+    "Cloudflare Worker static assets and SQLite Durable Object API; authenticated private feedback export",
+    "Standing user preference to commit and push each completed run/change set recorded"
+  ],
+  "pending": [],
+  "baseline": {
+    "public/index.html": "1cc45f3f5033ee48d0b3992d103861a11fa76ecbb512b56e92fb222071fbb0a4",
+    "public/precision.html": "be0c2e8e5af445d135d6e72f26bca0700ec2a30006d033cf2498e09d6ff5ff57",
+    "public/bladefall-climb-session.js": "5a28b61358cf21ad9ebb4412134b03ab6579608e33a229b80a32a281d669733f",
+    "public/bladefall-climb-view.js": "9bac037f441c397d31cee75ea91ed39e987a0b2b1f2e67814cc9b7d9c2c31cff",
+    "public/bladefall-climb-map.js": "470b2c0473d5155669ca37fbefccf31731ce32131322f20d9584ed8b37553f4b",
+    "public/bladefall-pcore-view.js": "16b2c90f11e243c4d26796906726243ea8a675553ba84a0b8e2e30a8e4924da8",
+    "public/serve.mjs": "590c2f042a27cf80b1b211141bdb511615140c8f4186fd960d2c2d1c6c2391d6",
+    "public/sw.js": "cbd58547d949f01124f680122221aee83ed8ef2e004e63cf54d3b8803a8d9947",
+    "build-deploy.sh": "2787368d6c98ac6a2dbececb6f88d88480685be6a872c8efd80e1a46fe7f22c4",
+    "netlify.toml": "eb7232d9184422b083f99955292dcfbfe79d5d65bcaca5df7532ef476bf85612",
+    "deploy-assets/netlify.toml": "d42b2be6ad3db98a9679b18d49f235434ef4d0b06028eb1a3674a79ec71bc6be",
+    "package.json": "7df5094b0f378228a2ac7ecb499bedf756a602b0c4702fc600a330c47168db61"
+  },
+  "version": "7.301.0",
+  "followup": [
+    "Connect GitHub main to Cloudflare Workers Builds and check the published site",
+    "Future Room Bank finale imports remain deferred"
+  ],
+  "verification": [
+    "Cloudflare dry-run bundle succeeds",
+    "Actual local Cloudflare Worker serves all offline assets, hides local server source, saves immutable scores and private feedback, enforces ownership and export authorization",
+    "SQLite scores and feedback survive Worker restart",
+    "Service aggregation, mode/campaign separation, immutable retry and concurrent local-write contracts",
+    "All 40 Survival and 40 Explore world starts",
+    "Death in a late Survival challenge returns to that same room and retains earlier solved-room state",
+    "Pause has one World map entry and no Connecting passages or duplicate Level select",
+    "Browser world completion, map selection, feedback privacy, offline queue retry, Explore scroll/zoom and Fractured return",
+    "Mobile/public-host visibility and backup merge/unlocks",
+    "Modified JavaScript syntax checks and git diff --check"
+  ],
+  "limitations": [
+    "No Cloudflare production deployment yet",
+    "Localhost records require backup export/import on a new public origin"
+  ]
+}

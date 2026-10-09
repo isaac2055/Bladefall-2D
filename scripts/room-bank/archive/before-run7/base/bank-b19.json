@@ -1,0 +1,180 @@
+{
+  "room": {
+    "id": "bank-b19",
+    "name": "The Long Way First",
+    "hint": "The echo trades places with you and whatever you carry. A carried lantern slows a fall.",
+    "question": "Where must you leave yourself before going back for the lantern?",
+    "map": [
+      "########################################",
+      "#H.....................................#",
+      "#H.....................................#",
+      "#H.....................................#",
+      "#H.....................................#",
+      "#H.............#####...................#",
+      "#H.............#####>..................#",
+      "#H.............#####>..................#",
+      "#H.............#####>..................#",
+      "#H.............#####>..................#",
+      "#H.............#####>..................#",
+      "#H.............#####>..................#",
+      "#H.............#####>..................#",
+      "#H.........###.#####>..........######..#",
+      "#H.............#####>.............._#..#",
+      "#H.............#####>.......}}}}}}}}#..#",
+      "#H......###....#####>..................#",
+      ".H.............#####>..................#",
+      ".H.............#####>..................#",
+      ".H..P.l........#####>..................#",
+      "####################>..................#",
+      "####################>^^^^^^^^^^^^^^^^^^#",
+      "########################################"
+    ],
+    "palette": "path",
+    "study": true,
+    "lock": [
+      "parry"
+    ],
+    "echo": true,
+    "exit": "left"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 3,
+    "acceptance": "banked",
+    "difficulty": 4,
+    "role": "solve",
+    "worlds": [
+      11,
+      19
+    ],
+    "tags": [
+      "echo",
+      "lantern",
+      "glide",
+      "cargo-routing",
+      "return-route"
+    ],
+    "newMechanics": [],
+    "entrance": "Lower-left, beside the cargo and the exit.",
+    "exit": "Return to the lower-left held door.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "echo-place",
+      "echo-swap",
+      "pickup",
+      "plate",
+      "held-open"
+    ],
+    "solution": "Climb the empty-handed route to the high central perch and place the echo there. Drop back to the starting lantern, pick it up, and swap to the saved perch, leaving the return echo safely on the starting floor. Glide the cargo to the far loading island and release it onto the belt; only the lantern fits the low receiver duct. Swap back empty-handed to the starting floor and leave through the held door.",
+    "nearestExisting": "p137 Onto the Plate puts the knight on a remote plate and leaves the echo there. Here the receiver is a cargo-only 8px duct, so the echo cannot substitute for the weight; the saved position transports the actual lantern across a route that carrying disables.",
+    "novelty": "The first traversal banks a position, the second moves cargo, and the last swap uses the pickup position as the return. A tempting echo at the receiver cannot help because the knight cannot enter it. The far island cannot supply the height needed for the return over the thorn-sided divider.",
+    "route": {
+      "frames": 576,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "grab",
+        "climbhop",
+        "land",
+        "echo-place",
+        "pickup",
+        "echo-swap",
+        "throw",
+        "lantern-land",
+        "plate",
+        "held-open",
+        "exit"
+      ],
+      "movement": "Ordinary jump, dash, climb and device actions; no advanced momentum."
+    },
+    "bypassReview": {
+      "scope": "One obvious ordinary-movement shortcut, plus geometry review; not an exhaustive solver search.",
+      "attempt": "Reached the high perch, crossed to the far island empty-handed with a jump/dash, and traversed the receiver roof.",
+      "result": "The knight could not press the receiver inside its 8px-high duct; the left exit remained closed."
+    },
+    "userFeedback": {
+      "date": "2026-10-07",
+      "comment": "Good; bank as is."
+    },
+    "humanReview": "User approved banking; numeric Fun /10, Difficulty /5 and Suitability /5 ratings remain pending."
+  },
+  "tape": [
+    [
+      16,
+      "r"
+    ],
+    [
+      16,
+      "j"
+    ],
+    [
+      30,
+      "rgu"
+    ],
+    [
+      16,
+      "j"
+    ],
+    [
+      26,
+      "rgu"
+    ],
+    [
+      16,
+      "j"
+    ],
+    [
+      80,
+      "rgu"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      1,
+      "q"
+    ],
+    [
+      64,
+      "l"
+    ],
+    [
+      65,
+      ""
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      1,
+      "q"
+    ],
+    [
+      55,
+      "r"
+    ],
+    [
+      70,
+      ""
+    ],
+    [
+      1,
+      "dg"
+    ],
+    [
+      70,
+      ""
+    ],
+    [
+      1,
+      "q"
+    ],
+    [
+      55,
+      "l"
+    ]
+  ]
+}

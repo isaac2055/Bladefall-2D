@@ -1,0 +1,211 @@
+{
+  "room": {
+    "id": "bank-b18",
+    "name": "Floor You Need Gone",
+    "hint": "Pale masonry disappears when you leave it. Belts carry a loose lantern through low gaps.",
+    "question": "Which part of your way across is also blocking the delivery underneath?",
+    "map": [
+      "########################################",
+      "#.................................HG...#",
+      "#.................................HG...#",
+      "#.................................HG...#",
+      "#.................................HG...#",
+      "#.................................HG...#",
+      "#.................................HG...#",
+      "#.................................HG...#",
+      "#.................................HG...#",
+      "#.................................HG...#",
+      "#..........................c......HG...#",
+      "#...........###...YY.....#####....HG...#",
+      "#.................YY..............HG...#",
+      "#.................YY..............HG...#",
+      "#.......###.......YY..............HG...#",
+      "#.................YY..............HG...#",
+      "#.................YY..............HG...#",
+      "#...###...........YY..............HG...#",
+      "#.................YY..............HG....",
+      "#......###########YY###########...HG....",
+      "#.lP..............YY........._#...HG....",
+      "#####}}}}}}}}}}}}}}}}}}}}}}}}}##########",
+      "########################################"
+    ],
+    "palette": "path",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 3,
+    "acceptance": "candidate",
+    "difficulty": 3,
+    "role": "solve",
+    "worlds": [
+      11,
+      19
+    ],
+    "tags": [
+      "spent-foothold",
+      "belt",
+      "cargo-routing",
+      "return-route"
+    ],
+    "newMechanics": [],
+    "entrance": "Lower-left cargo loading floor.",
+    "exit": "Lower-right, beyond the two visible receivers.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "foothold-spent",
+      "stone-lit",
+      "plate",
+      "held-open"
+    ],
+    "solution": "Leave the lantern below while climbing the outer stair. Climb the tall pale pier and dash from the climb-hop to the high tally; leaving its side removes the same pier from the cargo duct underneath. Return across the lower roof to the loading floor, put the lantern onto the rightward belt, then use the roof route to reach the exit while the lantern travels through the newly cleared tunnel onto its plate.",
+    "nearestExisting": "p127 Moth Road spends return footholds; F15 Borrow the Mouth removes a spent beam shield after replacing its shade. Here spending an upper foothold opens a separate lower material route that the knight cannot enter.",
+    "novelty": "A support used by the knight is an obstruction to cargo several storeys below. The required return is to load a newly opened route, not to replay the jump sequence.",
+    "route": {
+      "frames": 1087,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "grab",
+        "climbhop",
+        "land",
+        "foothold-spent",
+        "dash",
+        "refill-dash",
+        "stone-lit",
+        "gate-open",
+        "pickup",
+        "throw",
+        "lantern-land",
+        "plate",
+        "held-open",
+        "exit"
+      ],
+      "movement": "Ordinary jump, dash, climb and device actions; no advanced momentum."
+    },
+    "bypassReview": {
+      "scope": "One obvious ordinary-movement shortcut, plus geometry review; not an exhaustive solver search.",
+      "attempt": "Picked up and loaded the lantern immediately, before touching the tall pale pier.",
+      "result": "The cargo stopped at x136 against the pier, before the receiver. No plate or held-gate event fired."
+    }
+  },
+  "tape": [
+    [
+      16,
+      "j"
+    ],
+    [
+      30,
+      "rgu"
+    ],
+    [
+      18,
+      "rj"
+    ],
+    [
+      35,
+      "rgu"
+    ],
+    [
+      18,
+      "rj"
+    ],
+    [
+      100,
+      "rgu"
+    ],
+    [
+      10,
+      "rx"
+    ],
+    [
+      23,
+      "r"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      115,
+      "l"
+    ],
+    [
+      20,
+      "lj"
+    ],
+    [
+      62,
+      "l"
+    ],
+    [
+      27,
+      "lj"
+    ],
+    [
+      13,
+      "l"
+    ],
+    [
+      40,
+      ""
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      22,
+      "r"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      1,
+      "dg"
+    ],
+    [
+      210,
+      ""
+    ],
+    [
+      40,
+      "l"
+    ],
+    [
+      6,
+      ""
+    ],
+    [
+      16,
+      "j"
+    ],
+    [
+      30,
+      "rgu"
+    ],
+    [
+      18,
+      "rj"
+    ],
+    [
+      50,
+      "r"
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      115,
+      "r"
+    ]
+  ]
+}

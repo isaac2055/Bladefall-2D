@@ -1,0 +1,233 @@
+{
+  "room": {
+    "id": "bank-b20",
+    "name": "The Door You Need Closed",
+    "hint": "Lit tallies open their doors permanently. Dash into a stone to slide it; solid stone stops light.",
+    "question": "What must be moved before the ladder becomes an open passage?",
+    "map": [
+      "########################################",
+      "#>........................<#############",
+      "#>........................<#############",
+      "#>..................KK....<#############",
+      "#>................GGKK....<#############",
+      "#>................GGMMMMM.<#############",
+      "#>................GG......<#############",
+      "#>................GG......<#############",
+      "#>................GG......<#############",
+      "#>................GG......<#############",
+      "#>................GG......<#############",
+      "#>................GG......<#############",
+      "#>................GG......<#############",
+      "#>................GG......<#############",
+      "#>................GG......<#############",
+      "#>................GG......<#############",
+      "#>................GG......<#############",
+      "#>........c.......GG......<#############",
+      "#>................GG................G..#",
+      "#.................GG................G...",
+      "#..P..............GG................G...",
+      "########################################",
+      "########################################"
+    ],
+    "palette": "path",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "beams": [
+      {
+        "c": 25,
+        "r": 0,
+        "dir": "d"
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 3,
+    "acceptance": "candidate",
+    "difficulty": 3,
+    "role": "solve",
+    "worlds": [
+      3,
+      11
+    ],
+    "tags": [
+      "gate",
+      "sliding-stone",
+      "beam",
+      "climb",
+      "order-of-operations"
+    ],
+    "newMechanics": [],
+    "entrance": "Bottom-left below a tempting tally.",
+    "exit": "Bottom-right, beyond the beam and tally door.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "stone-hit",
+      "stone-stop",
+      "gate-open"
+    ],
+    "solution": "Leave the tally dark and climb its closed door. Dash the high stone right into the stop under the sun-window, giving the lower crossing a permanent ceiling shield. Return left and light the tally: both the ladder and exit door open. Cross the protected floor.",
+    "nearestExisting": "The Useful Ceiling makes normally adverse geometry useful from another side. B13 manufactures a stopper for a returning stone. Here the ordinary objective is postponed because its closed door is the only ladder to the face of a high stone; that stone must shade the lower route before the ladder is removed.",
+    "novelty": "Opening a door is initially harmful. Use its closed body to create a separate, persistent change at the far side, then accept the open route after losing that body. No carried cargo or special exit-use flags.",
+    "route": {
+      "frames": 516,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "dash",
+        "grab",
+        "climbhop",
+        "land",
+        "refill-dash",
+        "stone-hit",
+        "stone-stop",
+        "stone-lit",
+        "gate-open",
+        "exit"
+      ],
+      "movement": "Ordinary jumps, dashes and climbing; no advanced momentum."
+    },
+    "shortcutChecks": [
+      {
+        "name": "Light the tally first, then jump/dash/climb toward the high stone",
+        "tape": [
+          [
+            37,
+            "r"
+          ],
+          [
+            20,
+            "j"
+          ],
+          [
+            44,
+            "r"
+          ],
+          [
+            20,
+            "j"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            18,
+            "u"
+          ],
+          [
+            130,
+            "rgu"
+          ],
+          [
+            180,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "stoneMoved": false,
+          "gateOpened": true
+        }
+      },
+      {
+        "name": "Climb the closed gate but leave the stone untouched before collecting the tally",
+        "tape": [
+          [
+            85,
+            "r"
+          ],
+          [
+            20,
+            "ju"
+          ],
+          [
+            1,
+            "ux"
+          ],
+          [
+            18,
+            "u"
+          ],
+          [
+            110,
+            "rgu"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            46,
+            "l"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            180,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "stoneMoved": false,
+          "gateOpened": true
+        }
+      }
+    ]
+  },
+  "tape": [
+    [
+      85,
+      "r"
+    ],
+    [
+      20,
+      "ju"
+    ],
+    [
+      1,
+      "ux"
+    ],
+    [
+      18,
+      "u"
+    ],
+    [
+      110,
+      "rgu"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      1,
+      "rx"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      40,
+      "l"
+    ],
+    [
+      40,
+      ""
+    ],
+    [
+      180,
+      "r"
+    ]
+  ]
+}

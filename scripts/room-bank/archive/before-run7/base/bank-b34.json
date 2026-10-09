@@ -1,0 +1,1226 @@
+{
+  "room": {
+    "id": "bank-b34",
+    "name": "The Catch That Lifts",
+    "movement": "survive-2",
+    "palette": "path",
+    "study": true,
+    "exit": "right",
+    "map": [
+      "########################################",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.............##########################",
+      "#.............##########################",
+      "#.............##########################",
+      "#.............##########################",
+      "#.............##########################",
+      "#..........lP.##########################",
+      "########################################",
+      "########################################",
+      "########################################"
+    ],
+    "beams": [
+      {
+        "c": 25,
+        "r": 0,
+        "dir": "d"
+      }
+    ],
+    "hint": "Jump, throw, then dash up and hold Grab \u00b7 The catch keeps your upward speed.",
+    "question": "You cannot dash with full hands. How can the lantern climb higher than a carrying jump?",
+    "lock": [
+      "parry",
+      "portal"
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 6,
+    "run": 2,
+    "acceptance": "banked",
+    "difficulty": 3,
+    "role": "movement-puzzle",
+    "worlds": [
+      16,
+      19,
+      20
+    ],
+    "tags": [
+      "cargo-dash-catch",
+      "vertical-transfer",
+      "full-hands",
+      "carried-shade"
+    ],
+    "newMechanics": [
+      "cargo-dash-catch"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "entrance": "Safe lower well with a lantern and an upper rim.",
+    "exit": "Upper sunlit passage.",
+    "solution": "Pick up the lantern and jump beside the step. Throw it into the step face, dash upward with free hands, then hold Grab during the rise to retrieve it. The catch preserves the upward dash speed and lifts the lantern onto the rim. Carry it past the overhead beam. An ordinary carrying jump or an unaccompanied upward dash cannot deliver the shade.",
+    "nearestExisting": "No Place to Land trades a lantern for an extra feather jump. This uses the new dash catch to reconnect an object to an already-moving knight: the object is briefly released to permit the ascent, then its return does not cancel the upward velocity.",
+    "novelty": "The full-hands restriction becomes an ordering problem. Separate cargo and knight for one action, then recover both upward momentum and shade. A failed ascent falls into a safe well, so the transfer can be retried without a lethal precision penalty.",
+    "requiredEvents": [
+      "pickup",
+      "throw",
+      "cargo-dash-catch"
+    ],
+    "route": {
+      "frames": 179,
+      "deaths": 0,
+      "events": [
+        "pickup",
+        "jump",
+        "throw",
+        "dash",
+        "cargo-dash-catch",
+        "land",
+        "refill-dash",
+        "exit"
+      ]
+    },
+    "positiveChecks": [
+      {
+        "name": "Throw after 9-frame jump; Grab 3 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            9,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            3,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 9-frame jump; Grab 4 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            9,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            4,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 9-frame jump; Grab 5 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            9,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            5,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 9-frame jump; Grab 6 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            9,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            6,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 9-frame jump; Grab 7 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            9,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            7,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 9-frame jump; Grab 8 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            9,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            8,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 10-frame jump; Grab 3 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            3,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 10-frame jump; Grab 4 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            4,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 10-frame jump; Grab 5 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            5,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 10-frame jump; Grab 6 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            6,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 10-frame jump; Grab 7 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            7,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 10-frame jump; Grab 8 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            10,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            8,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 11-frame jump; Grab 3 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            11,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            3,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 11-frame jump; Grab 4 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            11,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            4,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 11-frame jump; Grab 5 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            11,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            5,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 11-frame jump; Grab 6 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            11,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            6,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 11-frame jump; Grab 7 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            11,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            7,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 11-frame jump; Grab 8 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            11,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            8,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 12-frame jump; Grab 3 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            3,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 12-frame jump; Grab 4 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            4,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 12-frame jump; Grab 5 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            5,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 12-frame jump; Grab 6 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            6,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 12-frame jump; Grab 7 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            7,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 12-frame jump; Grab 8 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            8,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 13-frame jump; Grab 3 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            13,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            3,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 13-frame jump; Grab 4 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            13,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            4,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 13-frame jump; Grab 5 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            13,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            5,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 13-frame jump; Grab 6 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            13,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            6,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 13-frame jump; Grab 7 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            13,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            7,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 13-frame jump; Grab 8 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            13,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            8,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 14-frame jump; Grab 3 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            14,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            3,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 14-frame jump; Grab 4 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            14,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            4,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 14-frame jump; Grab 5 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            14,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            5,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 14-frame jump; Grab 6 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            14,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            6,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 14-frame jump; Grab 7 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            14,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            7,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Throw after 14-frame jump; Grab 8 frames after dash input",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            14,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            8,
+            "ux"
+          ],
+          [
+            8,
+            "ug"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Carry with a full normal jump into the high wall",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      },
+      {
+        "name": "Updash without retrieving the thrown shade",
+        "tape": [
+          [
+            1,
+            "g"
+          ],
+          [
+            11,
+            "j"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            170,
+            "r"
+          ]
+        ]
+      }
+    ],
+    "humanReview": "User qualitative approval recorded; numeric ratings remain unmeasured.",
+    "toleranceNote": "36 full normal-spawn routes pass across 6 jump/throw timings and 6 Grab timings. The well catches failed launches; the beam requires shade.",
+    "feedbackHistory": [
+      {
+        "date": "2026-10-08",
+        "decision": "banked",
+        "comment": "Super cool, creative and fun; a better version of B33. The principle behind this unique interaction is valuable even if the exact setup has limited reuse."
+      }
+    ],
+    "review": {
+      "date": "2026-10-08",
+      "decision": "banked",
+      "comment": "Super cool, creative and fun; a better version of B33. The principle behind this unique interaction is valuable even if the exact setup has limited reuse."
+    }
+  },
+  "tape": [
+    [
+      1,
+      "g"
+    ],
+    [
+      11,
+      "j"
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      6,
+      "ux"
+    ],
+    [
+      8,
+      "ug"
+    ],
+    [
+      170,
+      "r"
+    ]
+  ]
+}

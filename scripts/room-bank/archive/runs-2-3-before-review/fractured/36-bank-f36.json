@@ -1,0 +1,1389 @@
+{
+  "room": {
+    "id": "bank-f36",
+    "name": "Meet It on the Way Back",
+    "palette": "gaol",
+    "study": true,
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "exit": "right",
+    "impulseSeeds": [
+      {
+        "id": "A",
+        "c": 10,
+        "r": 16
+      }
+    ],
+    "map": [
+      "########################################",
+      "#.............#################.........",
+      "#.............#################.........",
+      "#.............#################.........",
+      "#.............#################.........",
+      "#.............#################.........",
+      "#.............#################.........",
+      "#.............#################.........",
+      "#.............#################.........",
+      "#.............#################.........",
+      "#.......................................",
+      "#.......................................",
+      "#...P...................................",
+      "########................................",
+      "########................................",
+      "########................................",
+      "########................................",
+      "########........................<#######",
+      "########........................<#######",
+      "########........................<#######",
+      "##############..................<#######",
+      "##############^^^^^^^^^^^^^^^^^^^#######",
+      "########################################"
+    ],
+    "hint": "First cut moves · Strike gold to fly away from its centre; your position sets the angle.",
+    "question": "Can the seed wait on a route that you must reach another way?",
+    "aim8": true
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 7,
+    "run": 3,
+    "acceptance": "candidate",
+    "difficulty": 5,
+    "role": "prepared impulse",
+    "worlds": [
+      25,
+      31
+    ],
+    "tags": [
+      "impulse-seed",
+      "blade",
+      "positioning",
+      "walljump",
+      "momentum",
+      "return-route"
+    ],
+    "newMechanics": [
+      "impulse-seed"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "impulse-prime",
+      "impulse-ready",
+      "impulse-burst",
+      "walljump",
+      "dash"
+    ],
+    "humanReview": "Candidate: no user scores assigned.",
+    "entrance": "Upper west balcony with a lower preparation well.",
+    "exit": "Far east shelf across the roofed gulf.",
+    "solution": "Drop into the well and upward-cut the seed so it rises into the upper travel channel. Climb back up the west face, wall-jump over the relocated seed, then brake and fall on its east side. Face the seed and cut left for a flat rightward launch. Let that arc cross the first part of the gulf, then use the saved diagonal dash to lift the inherited speed onto the far shelf.",
+    "nearestExisting": "B36 Plant the Exit prepares a vertical launch just outside a roof; Return Freight and Reply in Passing move a body and intercept its useful state. Here the object takes a short vertical route while the knight returns around the wall, then uses a deliberately flatter outgoing angle.",
+    "novelty": "The return climb buys access to the opposite side of the relocated seed. The launch must carry sideways through a low ceiling, and the existing dash extends that inherited speed across a larger gulf rather than generating the whole crossing.",
+    "positiveChecks": [
+      {
+        "name": "Dash delay -4 frames from preview",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            12,
+            "lg"
+          ],
+          [
+            64,
+            "lug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            18,
+            ""
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            21,
+            "r"
+          ],
+          [
+            13,
+            "rux"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 268,
+          "events": [
+            "land",
+            "strike",
+            "impulse-prime",
+            "grab",
+            "impulse-ready",
+            "walljump",
+            "impulse-burst",
+            "dash",
+            "impulse-reset",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "land": 2,
+            "strike": 2,
+            "impulse-prime": 1,
+            "grab": 1,
+            "impulse-ready": 1,
+            "walljump": 1,
+            "impulse-burst": 1,
+            "dash": 1,
+            "impulse-reset": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Dash delay -3 frames from preview",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            12,
+            "lg"
+          ],
+          [
+            64,
+            "lug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            18,
+            ""
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            22,
+            "r"
+          ],
+          [
+            13,
+            "rux"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 266,
+          "events": [
+            "land",
+            "strike",
+            "impulse-prime",
+            "grab",
+            "impulse-ready",
+            "walljump",
+            "impulse-burst",
+            "dash",
+            "impulse-reset",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "land": 2,
+            "strike": 2,
+            "impulse-prime": 1,
+            "grab": 1,
+            "impulse-ready": 1,
+            "walljump": 1,
+            "impulse-burst": 1,
+            "dash": 1,
+            "impulse-reset": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Dash delay -2 frames from preview",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            12,
+            "lg"
+          ],
+          [
+            64,
+            "lug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            18,
+            ""
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            23,
+            "r"
+          ],
+          [
+            13,
+            "rux"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 263,
+          "events": [
+            "land",
+            "strike",
+            "impulse-prime",
+            "grab",
+            "impulse-ready",
+            "walljump",
+            "impulse-burst",
+            "dash",
+            "impulse-reset",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "land": 2,
+            "strike": 2,
+            "impulse-prime": 1,
+            "grab": 1,
+            "impulse-ready": 1,
+            "walljump": 1,
+            "impulse-burst": 1,
+            "dash": 1,
+            "impulse-reset": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Dash delay -1 frames from preview",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            12,
+            "lg"
+          ],
+          [
+            64,
+            "lug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            18,
+            ""
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            24,
+            "r"
+          ],
+          [
+            13,
+            "rux"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 261,
+          "events": [
+            "land",
+            "strike",
+            "impulse-prime",
+            "grab",
+            "impulse-ready",
+            "walljump",
+            "impulse-burst",
+            "dash",
+            "impulse-reset",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "land": 2,
+            "strike": 2,
+            "impulse-prime": 1,
+            "grab": 1,
+            "impulse-ready": 1,
+            "walljump": 1,
+            "impulse-burst": 1,
+            "dash": 1,
+            "impulse-reset": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Dash delay 1 frames from preview",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            12,
+            "lg"
+          ],
+          [
+            64,
+            "lug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            18,
+            ""
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            26,
+            "r"
+          ],
+          [
+            13,
+            "rux"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 257,
+          "events": [
+            "land",
+            "strike",
+            "impulse-prime",
+            "grab",
+            "impulse-ready",
+            "walljump",
+            "impulse-burst",
+            "dash",
+            "impulse-reset",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "land": 2,
+            "strike": 2,
+            "impulse-prime": 1,
+            "grab": 1,
+            "impulse-ready": 1,
+            "walljump": 1,
+            "impulse-burst": 1,
+            "dash": 1,
+            "impulse-reset": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Dash delay 2 frames from preview",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            12,
+            "lg"
+          ],
+          [
+            64,
+            "lug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            18,
+            ""
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            27,
+            "r"
+          ],
+          [
+            13,
+            "rux"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 255,
+          "events": [
+            "land",
+            "strike",
+            "impulse-prime",
+            "grab",
+            "impulse-ready",
+            "walljump",
+            "impulse-burst",
+            "dash",
+            "impulse-reset",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "land": 2,
+            "strike": 2,
+            "impulse-prime": 1,
+            "grab": 1,
+            "impulse-ready": 1,
+            "walljump": 1,
+            "impulse-burst": 1,
+            "dash": 1,
+            "impulse-reset": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Dash delay 3 frames from preview",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            12,
+            "lg"
+          ],
+          [
+            64,
+            "lug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            18,
+            ""
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            13,
+            "rux"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 252,
+          "events": [
+            "land",
+            "strike",
+            "impulse-prime",
+            "grab",
+            "impulse-ready",
+            "walljump",
+            "impulse-burst",
+            "dash",
+            "impulse-reset",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "land": 2,
+            "strike": 2,
+            "impulse-prime": 1,
+            "grab": 1,
+            "impulse-ready": 1,
+            "walljump": 1,
+            "impulse-burst": 1,
+            "dash": 1,
+            "impulse-reset": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Return wall climb -1 frames changes the intercept angle",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            12,
+            "lg"
+          ],
+          [
+            63,
+            "lug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            18,
+            ""
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            13,
+            "rux"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 258,
+          "events": [
+            "land",
+            "strike",
+            "impulse-prime",
+            "grab",
+            "impulse-ready",
+            "walljump",
+            "impulse-burst",
+            "dash",
+            "impulse-reset",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "land": 2,
+            "strike": 2,
+            "impulse-prime": 1,
+            "grab": 1,
+            "impulse-ready": 1,
+            "walljump": 1,
+            "impulse-burst": 1,
+            "dash": 1,
+            "impulse-reset": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Return wall climb 1 frames changes the intercept angle",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            12,
+            "lg"
+          ],
+          [
+            65,
+            "lug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            18,
+            ""
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            13,
+            "rux"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 265,
+          "events": [
+            "land",
+            "strike",
+            "impulse-prime",
+            "grab",
+            "impulse-ready",
+            "walljump",
+            "impulse-burst",
+            "dash",
+            "impulse-reset",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "land": 2,
+            "strike": 2,
+            "impulse-prime": 1,
+            "grab": 1,
+            "impulse-ready": 1,
+            "walljump": 1,
+            "impulse-burst": 1,
+            "dash": 1,
+            "impulse-reset": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Return wall climb 2 frames changes the intercept angle",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            12,
+            "lg"
+          ],
+          [
+            66,
+            "lug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            18,
+            ""
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            13,
+            "rux"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 271,
+          "events": [
+            "land",
+            "strike",
+            "impulse-prime",
+            "grab",
+            "impulse-ready",
+            "walljump",
+            "impulse-burst",
+            "dash",
+            "impulse-reset",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "land": 2,
+            "strike": 2,
+            "impulse-prime": 1,
+            "grab": 1,
+            "impulse-ready": 1,
+            "walljump": 1,
+            "impulse-burst": 1,
+            "dash": 1,
+            "impulse-reset": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Safe preparation pause 20 frames before climbing",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            12,
+            "lg"
+          ],
+          [
+            20,
+            "g"
+          ],
+          [
+            64,
+            "lug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            18,
+            ""
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            13,
+            "rux"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 289,
+          "events": [
+            "land",
+            "strike",
+            "impulse-prime",
+            "grab",
+            "impulse-ready",
+            "walljump",
+            "impulse-burst",
+            "dash",
+            "impulse-reset",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "land": 2,
+            "strike": 2,
+            "impulse-prime": 1,
+            "grab": 1,
+            "impulse-ready": 1,
+            "walljump": 1,
+            "impulse-burst": 1,
+            "dash": 1,
+            "impulse-reset": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Safe preparation pause 40 frames before climbing",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            12,
+            "lg"
+          ],
+          [
+            40,
+            "g"
+          ],
+          [
+            64,
+            "lug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            18,
+            ""
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            13,
+            "rux"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 309,
+          "events": [
+            "land",
+            "strike",
+            "impulse-prime",
+            "grab",
+            "impulse-ready",
+            "walljump",
+            "impulse-burst",
+            "dash",
+            "impulse-reset",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "land": 2,
+            "strike": 2,
+            "impulse-prime": 1,
+            "grab": 1,
+            "impulse-ready": 1,
+            "walljump": 1,
+            "impulse-burst": 1,
+            "dash": 1,
+            "impulse-reset": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Omit the upward preparation cut",
+        "tape": [
+          [
+            26,
+            "r"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            1,
+            "u"
+          ],
+          [
+            12,
+            "lg"
+          ],
+          [
+            64,
+            "lug"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            18,
+            ""
+          ],
+          [
+            1,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            13,
+            "rux"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 318,
+          "events": [
+            "land",
+            "grab",
+            "walljump",
+            "strike",
+            "dash",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "land": 2,
+            "grab": 1,
+            "walljump": 1,
+            "strike": 1,
+            "dash": 1,
+            "death": 1,
+            "respawn": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 235,
+            "x": 187,
+            "y": 171,
+            "cause": "spikes",
+            "vx": 90,
+            "vy": 0,
+            "i": 234
+          }
+        }
+      },
+      {
+        "name": "Ordinary jump and diagonal dash across the gulf",
+        "tape": [
+          [
+            15,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            13,
+            "rux"
+          ],
+          [
+            120,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 193,
+          "events": [
+            "jump",
+            "dash",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "dash": 1,
+            "death": 1,
+            "respawn": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 112,
+            "x": 155,
+            "y": 171,
+            "cause": "spikes",
+            "vx": 90,
+            "vy": 160,
+            "i": 111
+          }
+        }
+      },
+      {
+        "name": "Extended super and second dash instead of preparing the seed",
+        "tape": [
+          [
+            10,
+            "rx"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            13,
+            "rux"
+          ],
+          [
+            120,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 186,
+          "events": [
+            "dash",
+            "refill-dash",
+            "super",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "dash": 2,
+            "refill-dash": 1,
+            "super": 1,
+            "death": 1,
+            "respawn": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 114,
+            "x": 155,
+            "y": 171,
+            "cause": "spikes",
+            "vx": 90,
+            "vy": 0,
+            "i": 113
+          }
+        }
+      }
+    ],
+    "designNotes": "A tested first-draft extended-super shortcut could stand on the thin roof; the final overhead mass closes that physical route. The final receiving shelf admits eight consecutive dash timings. Return climb variations change the radial angle and still complete, and the charged state allows an extra 40-frame preparation pause. No Run 2 profile or hidden event gate.",
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 259,
+      "events": [
+        "land",
+        "strike",
+        "impulse-prime",
+        "grab",
+        "impulse-ready",
+        "walljump",
+        "impulse-burst",
+        "dash",
+        "impulse-reset",
+        "refill-dash",
+        "exit"
+      ],
+      "eventCounts": {
+        "land": 2,
+        "strike": 2,
+        "impulse-prime": 1,
+        "grab": 1,
+        "impulse-ready": 1,
+        "walljump": 1,
+        "impulse-burst": 1,
+        "dash": 1,
+        "impulse-reset": 1,
+        "refill-dash": 1,
+        "exit": 1
+      },
+      "firstFailure": null
+    }
+  },
+  "tape": [
+    [
+      26,
+      "r"
+    ],
+    [
+      35,
+      ""
+    ],
+    [
+      1,
+      "us"
+    ],
+    [
+      12,
+      "lg"
+    ],
+    [
+      64,
+      "lug"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      18,
+      ""
+    ],
+    [
+      1,
+      "l"
+    ],
+    [
+      1,
+      "ls"
+    ],
+    [
+      25,
+      "r"
+    ],
+    [
+      13,
+      "rux"
+    ],
+    [
+      80,
+      "r"
+    ]
+  ]
+}

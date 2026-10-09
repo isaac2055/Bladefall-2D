@@ -1,0 +1,172 @@
+{
+  "room": {
+    "id": "bank-f17",
+    "name": "Leave the Wall Standing",
+    "hint": "Clear the dark passage from below. The same stone can stay above you as a roof.",
+    "question": "Which side of the plug is safe to move it from, before you commit to the void?",
+    "map": [
+      "########################################",
+      "#......#####################.###########",
+      "#......#####################.###########",
+      "#......#####################.###########",
+      "#......####################....#########",
+      "#......####################....#########",
+      "#......####################....#########",
+      "#......VVVVVVVVVVVVVVVVVVVV.............",
+      "#......VVVVVVVVVVVVVVVVVVVVKK...........",
+      "#.P....VVVVVVVVVVVVVVVVVVVVKK...........",
+      "#####..###################>....<########",
+      "#......###################>....<########",
+      "#......###################>....<########",
+      "#......###################>....<########",
+      "#......###################>....<########",
+      "#......###################>....<########",
+      "#......###################>....<########",
+      "#......###################>....<########",
+      "#......###################>..YY<########",
+      "#..............................<########",
+      "#..............................<########",
+      "########################################",
+      "########################################"
+    ],
+    "palette": "causeway",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "beams": [
+      {
+        "c": 28,
+        "r": 0,
+        "dir": "d"
+      }
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 3,
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "solve",
+    "worlds": [
+      25,
+      33,
+      40
+    ],
+    "tags": [
+      "void",
+      "sliding-stone",
+      "preparation",
+      "canopy"
+    ],
+    "newMechanics": [],
+    "entrance": "Upper left landing; the low passage reaches the underside of the obstruction.",
+    "exit": "Upper right beyond the void.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "stone-hit",
+      "foothold-spent",
+      "void-in",
+      "void-out"
+    ],
+    "requiredEventCounts": {
+      "stone-hit": 1,
+      "void-in": 1
+    },
+    "solution": "Drop into the lower service passage and jump onto the temporary foothold. Jump left from it, then dash straight up into the plug. The foothold disappears and the stone parks as a canopy above the exit. Return left, climb to the void entrance and dash through; use its exit jump grace to bridge the thorned receiving shaft.",
+    "nearestExisting": "bv4 Rock Behind puts a static obstruction behind void. pw2 Stone Through Stone relocates a sliding stone into useful terrain. Here the obstruction must be serviced from its underside before entering an unsteerable route, and its new position still has to shield the receiving space.",
+    "novelty": "Preparation consumes its own launch height. The moved plug still shelters the receiving shaft, but the spent foothold means the lower service passage cannot simply become the final ascent.",
+    "humanReview": "Author difficulty estimate only; ratings pending.",
+    "route": {
+      "frames": 602,
+      "deaths": 0,
+      "events": [
+        "land",
+        "jump",
+        "foothold-spent",
+        "dash",
+        "stone-hit",
+        "stone-stop",
+        "refill-dash",
+        "grab",
+        "void-in",
+        "void-out",
+        "exit"
+      ],
+      "eventCounts": {
+        "land": 3,
+        "jump": 4,
+        "foothold-spent": 1,
+        "dash": 2,
+        "stone-hit": 1,
+        "stone-stop": 1,
+        "refill-dash": 2,
+        "grab": 1,
+        "void-in": 1,
+        "void-out": 1,
+        "exit": 1
+      }
+    },
+    "bypassCheck": "A second ordinary jump/up-dash from the lower service floor after spending the foothold cannot reach the exit window; moving toward its wall hits the thorns. Entering void before clearing the plug collides with the stone."
+  },
+  "tape": [
+    [
+      23,
+      "r"
+    ],
+    [
+      48,
+      ""
+    ],
+    [
+      114,
+      "r"
+    ],
+    [
+      24,
+      "rj"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      6,
+      "j"
+    ],
+    [
+      5,
+      "ux"
+    ],
+    [
+      42,
+      ""
+    ],
+    [
+      117,
+      "l"
+    ],
+    [
+      12,
+      "rjg"
+    ],
+    [
+      104,
+      "rug"
+    ],
+    [
+      48,
+      "rx"
+    ],
+    [
+      34,
+      "rj"
+    ]
+  ]
+}

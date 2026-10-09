@@ -1,0 +1,237 @@
+{
+  "room": {
+    "id": "bank-f20",
+    "name": "Open the Other End",
+    "hint": "A portal shot fits the slit. You do not. The movable mouth can lend you a different side of the stone.",
+    "question": "Standing on the delivered stone is not the same as reaching its rear face. Which end of the portal should move?",
+    "map": [
+      "########################################",
+      "#####################>....<#############",
+      "#####################>....<#############",
+      "#####################>....<#############",
+      "#####################>....<#############",
+      "#####################>....<#############",
+      "#####################>....<#############",
+      "#####################>....<#############",
+      "..........................<#############",
+      "..........................<#############",
+      "#####################>....<#############",
+      "#.................###>....<#############",
+      "#.................###>....<#############",
+      "#.................###>....<#############",
+      "#.................###>....<#%%##########",
+      "#.................###.....<#..##########",
+      "#.................###.....<#..##########",
+      "#.................###.....<#.....%######",
+      "#.........KK......%##.........##.%######",
+      "#.........KK......%##.#..........#######",
+      "#..P..............###.#.....#....#######",
+      "########################################",
+      "########################################"
+    ],
+    "palette": "sunspire",
+    "study": true,
+    "lock": [
+      "parry"
+    ],
+    "portalMode": "one",
+    "portals": [
+      {
+        "color": "blue",
+        "c": 18,
+        "r": 18,
+        "face": "l"
+      },
+      {
+        "color": "orange",
+        "c": 28,
+        "r": 14,
+        "face": "d"
+      }
+    ],
+    "exit": "left"
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 3,
+    "acceptance": "candidate",
+    "difficulty": 5,
+    "role": "solve",
+    "worlds": [
+      33,
+      40
+    ],
+    "tags": [
+      "portal-relocation",
+      "cargo",
+      "sliding-stone",
+      "rear-face",
+      "return-height"
+    ],
+    "newMechanics": [],
+    "entrance": "Lower left freight room.",
+    "exit": "Upper left return gallery, reached from the relocated stone.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "portal-pass",
+      "portal-open",
+      "stone-hit"
+    ],
+    "requiredEventCounts": {
+      "stone-hit": 2,
+      "portal-open": 1
+    },
+    "solution": "Deliver the stone through the ceiling outlet and follow it. From its top, shoot the movable mouth through the narrow slit into the sealed rear pocket. Jump into the ceiling mouth to appear behind the stone; drop below the slit and dash its rear face left. Return through the same mouth, then use the relocated stone as the launch step for the high left gallery.",
+    "nearestExisting": "pw2 Stone Through Stone delivers movable terrain; F15 Borrow the Mouth reverses a delivered stone after replacing a beam mask. Here there is no optical lock: the eight-pixel sightline admits a portal shot but not the knight, and relocating the mouth is what exposes the otherwise sealed rear face.",
+    "novelty": "The stone is first the floor beneath a ceiling portal and a firing position. Moving the portal changes which side of that floor is accessible. Striking from the new side turns the same body into the only sufficiently high launch point for the return gallery.",
+    "humanReview": "Author difficulty estimate only; ratings pending.",
+    "route": {
+      "frames": 549,
+      "deaths": 0,
+      "events": [
+        "dash",
+        "stone-hit",
+        "portal-pass",
+        "stone-stop",
+        "land",
+        "refill-dash",
+        "jump",
+        "portal-open",
+        "grab",
+        "climbhop",
+        "exit"
+      ],
+      "eventCounts": {
+        "dash": 3,
+        "stone-hit": 2,
+        "portal-pass": 6,
+        "stone-stop": 2,
+        "land": 9,
+        "refill-dash": 3,
+        "jump": 5,
+        "portal-open": 1,
+        "grab": 1,
+        "climbhop": 1,
+        "exit": 1
+      }
+    },
+    "bypassCheck": "A direct jump/up-dash left from the delivered stone cannot launch into the return gallery: the ceiling mouth and closed side wall return the knight to the freight chamber. The main shaft walls are thorned, and its floor and short stop lie below the needed launch height.",
+    "bypassTape": [
+      [
+        30,
+        "r"
+      ],
+      [
+        5,
+        "rx"
+      ],
+      [
+        70,
+        "r"
+      ],
+      [
+        12,
+        "rj"
+      ],
+      [
+        30,
+        ""
+      ],
+      [
+        18,
+        "lj"
+      ],
+      [
+        13,
+        "ux"
+      ],
+      [
+        80,
+        "l"
+      ]
+    ]
+  },
+  "tape": [
+    [
+      30,
+      "r"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      70,
+      "r"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      30,
+      ""
+    ],
+    [
+      1,
+      "rq"
+    ],
+    [
+      1,
+      ""
+    ],
+    [
+      22,
+      "j"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      5,
+      "lx"
+    ],
+    [
+      30,
+      ""
+    ],
+    [
+      15,
+      "rj"
+    ],
+    [
+      32,
+      "l"
+    ],
+    [
+      45,
+      "lj"
+    ],
+    [
+      10,
+      "l"
+    ],
+    [
+      45,
+      "lug"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      18,
+      "j"
+    ],
+    [
+      13,
+      "ux"
+    ],
+    [
+      145,
+      "l"
+    ]
+  ]
+}

@@ -1,0 +1,614 @@
+{
+  "room": {
+    "id": "bank-b41",
+    "name": "Below the Last Rail",
+    "study": true,
+    "movement": "survive-2",
+    "palette": "cliffs",
+    "dashes": 0,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "movingHooks": [
+      {
+        "id": "Runway",
+        "c": 8,
+        "r": 10,
+        "w": 3,
+        "to": [
+          13,
+          0
+        ],
+        "period": 240
+      }
+    ],
+    "map": [
+      "########################################",
+      "#......................#################",
+      "#......................#################",
+      "#......................#################",
+      "#......................#################",
+      "#......................#################",
+      "#......................#################",
+      "#......................#################",
+      "#......................#################",
+      "#......................#################",
+      "#......................#################",
+      "#......................#################",
+      "#......................vvvvvvvvvvvvvvvvv",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#...P...................................",
+      "########....................<###########",
+      "########.................b..<###########",
+      "########....................<###########",
+      "########....................<###########",
+      "########^^^^^^^^^^^^^^^^^^^^<###########",
+      "########################################"
+    ],
+    "hint": "Ride the moving ring toward its stop. Let go, then cut downward without Jump to rebound under the roof.",
+    "question": "How do you keep the carriage useful after its rail ends?"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 9,
+    "run": 4,
+    "acceptance": "candidate",
+    "difficulty": 3,
+    "role": "new movement and entity combination",
+    "worlds": [
+      10,
+      18
+    ],
+    "tags": [
+      "moving-hook",
+      "controlled-pogo",
+      "momentum",
+      "ceiling"
+    ],
+    "newMechanics": [
+      "moving-hook",
+      "controlled-pogo"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "moving-hook",
+      "moving-unhook",
+      "pogo-low"
+    ],
+    "entrance": "Low western shelf beneath an outgoing rail.",
+    "exit": "Long eastern landing beyond the rail stop, under its thorned overhang.",
+    "solution": "Jump and catch the travelling ring, reel in while it moves east, then pump right. Before the carriage stops at the low roof, release Grab and fall toward the pod. A downward cut without Jump gives the low rebound that carries the departure across to the receiving shelf. Jumping straight from the ring hits the roof; a lofted rebound also rises into it.",
+    "nearestExisting": "B32 rotates a stationary portal launch into a low pogo; here departure is selected from a moving anchor with a physical rail stop. The anchor cannot deliver the knight directly to the landing.",
+    "novelty": "The useful route outlasts its transport. Select a departure position from a moving rail, then preserve enough motion through a low rebound to fit the receiving corridor.",
+    "composition": {
+      "movement": "controlled-pogo",
+      "entity": "moving-hook",
+      "dependency": "The rail ends before the landing; the selected low rebound bridges the remaining gap without colliding with the roof."
+    },
+    "positiveChecks": [
+      {
+        "name": "Reel 35, pump 14, fall 16",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            35,
+            "ug"
+          ],
+          [
+            14,
+            "rg"
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 171,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "strike",
+            "pogo-low",
+            "pod",
+            "moving-carrier-stop",
+            "land",
+            "exit"
+          ]
+        }
+      },
+      {
+        "name": "Reel 35, pump 14, fall 18",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            35,
+            "ug"
+          ],
+          [
+            14,
+            "rg"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 171,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "strike",
+            "pogo-low",
+            "pod",
+            "moving-carrier-stop",
+            "land",
+            "exit"
+          ]
+        }
+      },
+      {
+        "name": "Reel 35, pump 18, fall 18",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            35,
+            "ug"
+          ],
+          [
+            18,
+            "rg"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 187,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "strike",
+            "pogo-low",
+            "pod",
+            "moving-carrier-stop",
+            "land",
+            "exit"
+          ]
+        }
+      },
+      {
+        "name": "Reel 35, pump 18, fall 20",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            35,
+            "ug"
+          ],
+          [
+            18,
+            "rg"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 187,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "strike",
+            "pogo-low",
+            "pod",
+            "moving-carrier-stop",
+            "land",
+            "exit"
+          ]
+        }
+      },
+      {
+        "name": "Reel 35, pump 22, fall 16",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            35,
+            "ug"
+          ],
+          [
+            22,
+            "rg"
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 191,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "strike",
+            "moving-carrier-stop",
+            "pogo-low",
+            "pod",
+            "land",
+            "exit"
+          ]
+        }
+      },
+      {
+        "name": "Reel 35, pump 22, fall 18",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            35,
+            "ug"
+          ],
+          [
+            22,
+            "rg"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 191,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "moving-carrier-stop",
+            "strike",
+            "pogo-low",
+            "pod",
+            "land",
+            "exit"
+          ]
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "No rebound after release",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            35,
+            "ug"
+          ],
+          [
+            18,
+            "rg"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "moving-carrier-stop",
+            "death",
+            "respawn"
+          ]
+        }
+      },
+      {
+        "name": "Jump directly off the moving ring",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            35,
+            "ug"
+          ],
+          [
+            18,
+            "rg"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "moving-carrier-stop",
+            "death",
+            "respawn"
+          ]
+        }
+      },
+      {
+        "name": "Lofted rebound under the cap",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rjg"
+          ],
+          [
+            35,
+            "ug"
+          ],
+          [
+            18,
+            "rg"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            5,
+            "rdjs"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "jump",
+            "hook",
+            "moving-hook",
+            "moving-unhook",
+            "unhook",
+            "strike",
+            "pogo-loft",
+            "pod",
+            "moving-carrier-stop",
+            "death",
+            "respawn"
+          ]
+        }
+      },
+      {
+        "name": "Jump from the starting shelf",
+        "tape": [
+          [
+            14,
+            "r"
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            140,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 2,
+          "frames": 0,
+          "events": [
+            "jump",
+            "death",
+            "respawn"
+          ]
+        }
+      }
+    ],
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 187,
+      "events": [
+        "jump",
+        "hook",
+        "moving-hook",
+        "moving-unhook",
+        "unhook",
+        "strike",
+        "pogo-low",
+        "pod",
+        "moving-carrier-stop",
+        "land",
+        "exit"
+      ]
+    },
+    "humanReview": "Unmeasured; author estimate only."
+  },
+  "tape": [
+    [
+      14,
+      "r"
+    ],
+    [
+      12,
+      "rjg"
+    ],
+    [
+      35,
+      "ug"
+    ],
+    [
+      18,
+      "rg"
+    ],
+    [
+      18,
+      "r"
+    ],
+    [
+      5,
+      "rds"
+    ],
+    [
+      100,
+      "r"
+    ]
+  ]
+}

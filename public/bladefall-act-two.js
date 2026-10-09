@@ -944,7 +944,7 @@ function beginRelease(e, H, A){
   H.release = { t:0, pier:false };
   A.released = true; A.releaseMusicT = 46;
   latch('cliffs-hydra');
-  try{ recordWorldClear(); }catch(_e){}
+  try{ offerExploreWorldClear();recordWorldClear(); }catch(_e){}
   try{ recordSessionClear(CLIFFS); }catch(_e){}
   const refs = refsById();
   if(refs.hook){ refs.hook.gone = hasCapability('chain-hook'); refs.hook.dropT = 0; }

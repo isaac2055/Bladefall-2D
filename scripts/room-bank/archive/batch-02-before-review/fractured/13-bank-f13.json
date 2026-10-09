@@ -1,0 +1,178 @@
+{
+  "room": {
+    "id": "bank-f13",
+    "name": "Break the Wrong Bridge",
+    "palette": "sunspire",
+    "study": true,
+    "exit": "left",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "hint": "A spent foothold falls when you leave it. Sunlight stops at solid stone.",
+    "question": "The near foothold is the easy way up. What will cross the room after both footholds are gone?",
+    "map": [
+      "########################################",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#.................../..................#",
+      "#..............####....................#",
+      "#..............####....................#",
+      "#..............vvvv....................#",
+      "#..................YYY.................#",
+      "#......................................#",
+      "#...G...............c...###............#",
+      "#...G..................................#",
+      "#...G..................................#",
+      "....G..................................#",
+      "....G..............YYY.....###.........#",
+      "....G..................................#",
+      "....G..................................#",
+      "....G..............................P...#",
+      "########....################...#########",
+      "########^^^^^^^^^^^^^^^^^^^^^^^#########",
+      "########################################"
+    ],
+    "beams": [
+      {
+        "c": 0,
+        "r": 6,
+        "dir": "r"
+      }
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 2,
+    "difficulty": 4,
+    "role": "puzzle",
+    "worlds": [
+      33,
+      39
+    ],
+    "tags": [
+      "spent-foothold",
+      "sunlight",
+      "mirror",
+      "irreversible-choice",
+      "return-route"
+    ],
+    "newMechanics": [],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "foothold-spent",
+      "mirror",
+      "stone-lit"
+    ],
+    "solution": "Use the longer eastern stair to reach the upper spent foothold, leaving the lower one untouched. Leap from the upper foothold and turn the mirror from its right side: the spent upper shutter is gone, so sunlight reaches the sealed tally. The lower foothold remains as a beam stop. Descend east of the beam and cross the low gallery in its shadow to the now-open western gate. Taking the tempting lower foothold on the way up removes the only shield over that return corridor.",
+    "nearestExisting": "Crossings C5 The Last of It requires never touching a single spent beam shield. Here one of two visually similar shields must be deliberately spent to activate the objective, while the other must survive for a return journey; an alternate ascent makes this a route-selection decision.",
+    "entrance": "lower-east shelf, 35/19",
+    "exit": "western low gallery, rows15–19",
+    "designNotes": "The mirror begins pointing upward, so no tally is lit during first-frame initialization. The puzzle is irreversible geometry, not timing or a hidden room flag.",
+    "proof": {
+      "frames": 357,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "dash",
+        "land",
+        "refill-dash",
+        "foothold-spent",
+        "strike",
+        "mirror",
+        "stone-lit",
+        "gate-open",
+        "exit"
+      ],
+      "preservedLowerShield": [
+        {
+          "x": 152,
+          "y": 128
+        }
+      ],
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  "tape": [
+    [
+      12,
+      "lj"
+    ],
+    [
+      10,
+      "lux"
+    ],
+    [
+      10,
+      "l"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      12,
+      "j"
+    ],
+    [
+      7,
+      "ux"
+    ],
+    [
+      20,
+      "l"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      19,
+      "lj"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      11,
+      "j"
+    ],
+    [
+      1,
+      "ls"
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      10,
+      "l"
+    ],
+    [
+      50,
+      ""
+    ],
+    [
+      47,
+      "l"
+    ],
+    [
+      25,
+      "lj"
+    ],
+    [
+      65,
+      "l"
+    ]
+  ]
+}

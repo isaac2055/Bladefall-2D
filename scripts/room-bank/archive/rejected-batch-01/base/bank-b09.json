@@ -1,0 +1,181 @@
+{
+  "room": {
+    "id": "bank-b09",
+    "name": "Passenger Transfer",
+    "hint": "A crosses below the roof. B is a separate lift; jump only after clearing the teeth.",
+    "question": "The safe horizontal ride must become a vertical transfer.",
+    "map": [
+      "########################################",
+      "#...............##########.............#",
+      "#...............##########..............",
+      "#...............##########..............",
+      "#...............##########..............",
+      "#...............##########..............",
+      "#...............##########.........#####",
+      "#...............##########.........#####",
+      "#...............##########.........#####",
+      "#...............##########.........#####",
+      "#...............##########.........#####",
+      "#...............##########.........#####",
+      "#...............##########.........#####",
+      "#...............vvvvvvvvvv.........#####",
+      "#..................................#####",
+      "#..................................#####",
+      "#..................................#####",
+      "#..................................#####",
+      "#..................................#####",
+      "#.P................................#####",
+      "########...........................#####",
+      "########...........................#####",
+      "########^^^^^^^^^^^^^^^^^^^^^^^^^^######"
+    ],
+    "palette": "causeway",
+    "study": true,
+    "lock": [
+      "strike",
+      "parry",
+      "portal"
+    ],
+    "stepRelays": [
+      {
+        "id": "A",
+        "duration": 60,
+        "platforms": [
+          {
+            "c": 9,
+            "r": 18,
+            "w": 5,
+            "h": 1,
+            "to": [
+              13,
+              0
+            ]
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "duration": 45,
+        "platforms": [
+          {
+            "c": 28,
+            "r": 13,
+            "w": 5,
+            "h": 1,
+            "to": [
+              0,
+              -5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 1,
+    "difficulty": 3,
+    "role": "combination",
+    "worlds": [
+      10,
+      15,
+      23
+    ],
+    "tags": [
+      "step-relay",
+      "independent-groups",
+      "low-ceiling",
+      "horizontal-shuttle"
+    ],
+    "newMechanics": [
+      "step-relay"
+    ],
+    "solution": "Land on A and let its horizontal journey pass under the hanging roof. From the far end, jump and dash onto B, then ride B upward and cross to the exit.",
+    "entrance": "Left bank, spawn tile 2/19",
+    "exit": "Right edge, open rows 2–5",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "step-relay"
+    ],
+    "requiredRelayLabels": [
+      "A",
+      "B"
+    ],
+    "route": {
+      "frames": 207,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "step-relay",
+        "land",
+        "dash",
+        "grab",
+        "climbhop",
+        "refill-dash",
+        "exit"
+      ],
+      "movement": "ordinary jump/dash/climb; no super, hyper, ultra or wallbounce",
+      "eventCounts": {
+        "jump": 3,
+        "step-relay": 2,
+        "land": 3,
+        "dash": 1,
+        "grab": 1,
+        "climbhop": 1,
+        "refill-dash": 1,
+        "exit": 1
+      }
+    }
+  },
+  "tape": [
+    [
+      20,
+      "ru"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      20,
+      "lu"
+    ],
+    [
+      2,
+      "rux"
+    ],
+    [
+      20,
+      "rgu"
+    ],
+    [
+      20,
+      "rgu"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      40,
+      "ru"
+    ]
+  ]
+}

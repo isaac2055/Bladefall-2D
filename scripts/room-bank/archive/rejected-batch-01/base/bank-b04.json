@@ -1,0 +1,151 @@
+{
+  "room": {
+    "id": "bank-b04",
+    "name": "Dip Before the Door",
+    "hint": "The spring reaches the brittle shelf. Go under the tooth to find your next dash.",
+    "question": "The exit is high, but the resource that reaches it is low.",
+    "map": [
+      "########################################",
+      "#.......................##.............#",
+      "#.......................##.............#",
+      "#.......................##.............#",
+      "#.......................##.............#",
+      "#.......................##.............#",
+      "#.......................##..............",
+      "#.......................##..............",
+      "#.......................##..............",
+      "#.......................##..............",
+      "#.......................vv.....#########",
+      "#..............................#########",
+      "#...............~~~~~..........#########",
+      "#..............................#########",
+      "#..............................#########",
+      "#........................o.....#########",
+      "#..............................#########",
+      "#..............................#########",
+      "#.P......s.....................#########",
+      "############...................#########",
+      "############...................#########",
+      "############^^^^^^^^^^^^^^^^^^^#########",
+      "########################################"
+    ],
+    "palette": "causeway",
+    "lock": [
+      "strike",
+      "parry",
+      "portal"
+    ],
+    "study": true
+  },
+  "bank": {
+    "side": "base",
+    "batch": 1,
+    "difficulty": 3,
+    "role": "combination",
+    "worlds": [
+      4,
+      9,
+      14
+    ],
+    "tags": [
+      "spring",
+      "crumble",
+      "refill",
+      "route-choice"
+    ],
+    "newMechanics": [],
+    "solution": "Ride the spring onto the crumbling middle shelf, drop around the hanging tooth to the low crystal, and spend the renewed dash upward toward the exit wall.",
+    "entrance": "Left bank, spawn tile 2/18",
+    "exit": "Right edge, open rows 6–9",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "spring",
+      "crumble-shake",
+      "refill"
+    ],
+    "route": {
+      "frames": 204,
+      "deaths": 0,
+      "events": [
+        "spring",
+        "dash",
+        "land",
+        "refill-dash",
+        "crumble-shake",
+        "crumble",
+        "refill",
+        "exit"
+      ],
+      "movement": "ordinary jump/dash/climb; no super, hyper, ultra or wallbounce",
+      "eventCounts": {
+        "spring": 1,
+        "dash": 3,
+        "land": 2,
+        "refill-dash": 3,
+        "crumble-shake": 1,
+        "crumble": 1,
+        "refill": 1,
+        "exit": 1
+      }
+    }
+  },
+  "tape": [
+    [
+      32,
+      "ru"
+    ],
+    [
+      6,
+      "l"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      5,
+      "rux"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      6,
+      "r"
+    ],
+    [
+      32,
+      "ru"
+    ],
+    [
+      3,
+      "r"
+    ],
+    [
+      5,
+      "rux"
+    ],
+    [
+      12,
+      "r"
+    ],
+    [
+      2,
+      "rux"
+    ],
+    [
+      40,
+      "ru"
+    ],
+    [
+      20,
+      "rgu"
+    ],
+    [
+      12,
+      "r"
+    ]
+  ]
+}

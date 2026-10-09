@@ -92,17 +92,20 @@ const SIDE={'10-13':{10:'right',13:'left'},   // and arrives on the Fissure Cour
  '13-16':{13:'right',16:'left'},   // (7.275) the Ledger Summit's and the Dawn Stair's left walls project over their worlds'
  '20-14':{20:'right',14:'left'},  // branches, so those roads leave by the right, and arrive on the far side's free wall
  '20-5':{5:'left'},
- // (7.278) the Fractured Line's arrival is the Deep Line's reflected (its road comes in on the left): three mouths on its
- // right wall, two on its left, and each corridor's far end turned to face apart. 7.280: still the 7.279 build of World 35
- // (the rebuilt one, entered from the left, needs these removed when it goes in)
- '31-35':{31:'left',35:'right'},'33-35':{33:'left',35:'right'},'30-35':{30:'left',35:'right'},'32-35':{32:'right',35:'left'},'34-35':{34:'right',35:'left'},
+ '32-34':{32:'left',34:'right'},
+ // The Cooling Gate's right mouth crosses Deep Stair; approach World 35 from its right.
+ '30-35':{30:'left',35:'right'},'31-35':{31:'left',35:'right'},
+ '33-35':{33:'right',35:'left'},'32-35':{32:'left',35:'right'},'34-35':{34:'right',35:'left'},
+ // The rebuilt Sorcerer's road occupies the right of its departure; all three roads leave on the left.
+ '29-30':{29:'left',30:'right'},'29-31':{29:'left',31:'right'},'29-32':{29:'left',32:'right'},
  '27-29':{27:'right',29:'left'}};   // (the Fractured Warden's last rooms lie west of its crossroads)   // (7.276) Sunspire's middle gate opens to the right, so this one arrives on the Sentry Landing's left
 const side=(l,n)=>SIDE[l.id]?.[n]||((n===l.a?1:-1)*dir(l)>0?'right':'left');
 const passageId=l=>`cl${l.a}-passage-${l.id}`;
 function grid(cols,rows){return Array.from({length:rows},()=>Array(cols).fill('.'));}
 function span(g,r,c,n,ch){for(let x=c;x<c+n;x++)if(g[r]&&x>=0&&x<g[r].length)g[r][x]=ch;}
 function hub(w,id,name,main,connections,spawnSide){
- const cols=main.edge==='down'||main.edge==='up'?40:({1:88,2:100,3:96,4:84,5:104,6:88,7:92,8:100,9:88}[w.n]||88),rows=23,mid=Math.floor(cols/2),g=grid(cols,rows);
+ const crowded=['left','right'].some(edge=>connections.filter(l=>side(l,w.n)===edge).length+Number(main.edge===edge)>3);
+ const cols=main.edge==='down'||main.edge==='up'?40:({1:88,2:100,3:96,4:84,5:104,6:88,7:92,8:100,9:88}[w.n]||88),rows=crowded?31:23,mid=Math.floor(cols/2),g=grid(cols,rows);
  const sockets=[],used={left:[],right:[]},roads=[],floor=Array(cols).fill(22);
  function opening(edge,y){
   if(edge==='down')return;
@@ -118,7 +121,7 @@ function hub(w,id,name,main,connections,spawnSide){
  if(main.edge!=='down'&&main.edge!=='up')opening(main.edge,main.floor);
  if(main.to)sockets.push({...main,kind:'room'});
  for(const l of connections){
-  const edge=side(l,w.n),y=[18,10,4].find(r=>used[edge].every(v=>Math.abs(v-r)>=5));
+  const edge=side(l,w.n),y=[18,10,4,26].find(r=>used[edge].every(v=>Math.abs(v-r)>=5));
   if(y==null)throw new Error(`No road for ${w.n} ${l.id}`);
   opening(edge,y);sockets.push({edge,floor:y,kind:'passage',link:l.id,to:passageId(l),world:l.a});
  }
@@ -139,7 +142,7 @@ function hub(w,id,name,main,connections,spawnSide){
   floor[c]=levels.length?Math.max(...levels):22;
   for(let r=floor[c];r<rows;r++)g[r][c]='#';
  }
- for(let r=0;r<22;r++){g[r][0]='#';g[r][cols-1]='#';}
+ for(let r=0;r<rows-1;r++){g[r][0]='#';g[r][cols-1]='#';}
  for(const road of roads){const c=road.edge==='left'?0:cols-1;for(let r=Math.max(0,road.floor-4);r<road.floor;r++)g[r][c]='.';g[road.floor][c]='M';}
  if(main.edge==='down')for(const c of main.cols){
   // Keep the upward entrance permeable through the bank above it.

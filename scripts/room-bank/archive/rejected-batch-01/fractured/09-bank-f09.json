@@ -1,0 +1,172 @@
+{
+  "room": {
+    "id": "bank-f09",
+    "name": "Two Clocks, One Breath",
+    "palette": "fractured",
+    "lock": [
+      "strike",
+      "portal",
+      "parry"
+    ],
+    "exit": "right",
+    "shade": {
+      "delay": 110,
+      "count": 1
+    },
+    "stepRelays": [
+      {
+        "id": "A",
+        "duration": 50,
+        "platforms": [
+          {
+            "c": 9,
+            "r": 17,
+            "w": 4,
+            "h": 1,
+            "to": [
+              0,
+              -7
+            ]
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "duration": 44,
+        "platforms": [
+          {
+            "c": 24,
+            "r": 10,
+            "w": 3,
+            "h": 1,
+            "to": [
+              0,
+              -5
+            ]
+          }
+        ]
+      }
+    ],
+    "hint": "A and B move separately. Wake A, jump with its upward speed to B, and leave before your shade arrives. The crystal can rescue an early dash.",
+    "question": "Which deck should move while you are already in the air?",
+    "map": [
+      "########################################",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.................................<#####",
+      "#.................................<#####",
+      "#.................................<#####",
+      "#.................o...............<#####",
+      "#.................................<#####",
+      "#.................................<#####",
+      "#.................................<#####",
+      "#.................................<#####",
+      "#.................................<#####",
+      "#.................................<#####",
+      "#.................................<#####",
+      "#.................................<#####",
+      "#.................................<#####",
+      "#..P..............................<#####",
+      "######............................<#####",
+      "######............................<#####",
+      "######............................<#####",
+      "######^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#####",
+      "########################################"
+    ],
+    "study": true
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 1,
+    "difficulty": 5,
+    "role": "combination",
+    "worlds": [
+      24,
+      31
+    ],
+    "tags": [
+      "step-relay",
+      "independent-groups",
+      "shade",
+      "refill",
+      "lift-momentum"
+    ],
+    "newMechanics": [
+      "step-relay"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "step-relay"
+    ],
+    "solution": "Land on A and launch with its rising momentum toward B. Landing B raises only B; the pursuing shade discourages waiting through either entire cycle. Leave B for the east window. A high crystal provides an alternate recovery route.",
+    "entrance": "left floor at 18",
+    "exit": "right high window",
+    "proof": {
+      "frames": 169,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "step-relay",
+        "land",
+        "dash",
+        "super",
+        "refill-dash",
+        "shade-wake",
+        "exit"
+      ],
+      "verifiedAt": "2026-10-07"
+    },
+    "requiredRelayLabels": [
+      "A",
+      "B"
+    ]
+  },
+  "tape": [
+    [
+      12,
+      "rj"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      26,
+      ""
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      40,
+      "ru"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      5,
+      "rux"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      12,
+      "r"
+    ]
+  ]
+}

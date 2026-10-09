@@ -1,0 +1,292 @@
+{
+  "room": {
+    "id": "bank-f27",
+    "name": "Catch the Passenger",
+    "palette": "combat",
+    "study": true,
+    "exit": "right",
+    "hint": "The shuttle carries the guard too. A downward cut gives height and returns the dash.",
+    "question": "When must your route separate from the passenger’s route?",
+    "map": [
+      "########################################",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>......................................",
+      "#>......................................",
+      "#>......................................",
+      "#>......................................",
+      "#>.......................<##############",
+      "#>.......................<##############",
+      "#>.......................<##############",
+      "#>.......................<##############",
+      "#>.......................<##############",
+      "#>.......................<##############",
+      "#>.......................<##############",
+      "#>.......................<##############",
+      "#>.......................<##############",
+      "#>....................................<#",
+      "#>....................................<#",
+      "#>.P....ZZZZZZ........................<#",
+      "########..............................<#",
+      "########..............................<#",
+      "########^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+    ],
+    "zips": [
+      [
+        20,
+        0
+      ]
+    ],
+    "combat": {
+      "waitForMove": true,
+      "enemies": [
+        {
+          "kind": "guard",
+          "x": 96,
+          "y": 136,
+          "face": 1,
+          "delay": 90
+        }
+      ],
+      "receivers": [],
+      "doors": []
+    }
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 5,
+    "run": 1,
+    "acceptance": "candidate",
+    "difficulty": 5,
+    "role": "combat-traversal",
+    "worlds": [
+      4,
+      11,
+      16
+    ],
+    "tags": [
+      "moving-target",
+      "zip",
+      "pogo",
+      "lift-momentum",
+      "interception"
+    ],
+    "newMechanics": [],
+    "status": "route-proven",
+    "author": "Codex",
+    "entrance": "Lower observation bank.",
+    "exit": "Raised eastern gallery.",
+    "solution": "Step onto the shuttle carrying the guard. Leave the moving floor before it carries the passenger beneath the low stone overhang; intercept the travelling guard from above for a rebound and refreshed dash. Carry that moving departure into the high shelf while the shuttle and surviving guard continue underneath it.",
+    "nearestExisting": "combat-10 The Living Stair uses enemies followed by a zip, and combat-06 The Passing Shot reflects from a moving rail. Here the rail carries the enemy itself into an inaccessible low tunnel; the knight must leave its support and intercept the passenger while both routes are still exposed.",
+    "novelty": "The target and the launch floor share a moving frame until the knight leaves. Waiting for the rail to stop loses the useful target geometry beneath the overhang; jumping off without the blade lacks the height for the only far landing.",
+    "requiredEvents": [
+      "zip-start",
+      "enemy-pogo",
+      "dash"
+    ],
+    "route": {
+      "frames": 184,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "land",
+        "zip-start",
+        "strike",
+        "enemy-pogo",
+        "enemy-hit",
+        "zip-stop",
+        "dash",
+        "refill-dash",
+        "exit"
+      ],
+      "movement": "Existing Precision Core movement and blade interactions."
+    },
+    "humanReview": "Designer estimate only; user fun/difficulty/suitability ratings remain unmeasured. The moving passenger and the lift-speed departure should be reviewed for readability and enough interception latitude.",
+    "shortcutChecks": [
+      {
+        "name": "Jump off the shuttle without the blade",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            5,
+            "ux"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            90,
+            "r"
+          ]
+        ],
+        "expect": "no-exit",
+        "observed": "The boosted horizontal departure reaches the stone face below the high landing. The blade supplies height that the ordinary jump/dash lacks."
+      },
+      {
+        "name": "Rebound before the shuttle gains speed",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            5,
+            "ux"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            90,
+            "r"
+          ]
+        ],
+        "expect": "no-exit",
+        "observed": "The early rebound is real, but the lower departure speed leaves the knight short of the far shelf; the shuttle and target continue ahead."
+      },
+      {
+        "name": "Wait for the shuttle to stop",
+        "tape": [
+          [
+            10,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            55,
+            ""
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            5,
+            "rds"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            5,
+            "ux"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            90,
+            "r"
+          ]
+        ],
+        "expect": "no-exit",
+        "observed": "The passenger and knight arrive beneath the stone overhang. The low ceiling no longer leaves a useful rebound arc into the upper route."
+      }
+    ]
+  },
+  "tape": [
+    [
+      10,
+      "r"
+    ],
+    [
+      18,
+      "rj"
+    ],
+    [
+      10,
+      "r"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      8,
+      "rj"
+    ],
+    [
+      5,
+      "rds"
+    ],
+    [
+      12,
+      "r"
+    ],
+    [
+      5,
+      "ux"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      86,
+      "r"
+    ]
+  ]
+}

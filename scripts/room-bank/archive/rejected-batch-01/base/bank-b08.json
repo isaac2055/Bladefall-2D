@@ -1,0 +1,160 @@
+{
+  "room": {
+    "id": "bank-b08",
+    "name": "Counterweight Courtesy",
+    "hint": "Landing on either A moves both. The far platform comes down to meet you.",
+    "question": "Make the remote landing accessible, then use that landing to raise yourself.",
+    "map": [
+      "########################################",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.................................######",
+      "#.................................######",
+      "#.................................######",
+      "#.................................######",
+      "#.................................######",
+      "#.................................######",
+      "#.................................######",
+      "#.................................######",
+      "#.................................######",
+      "#.................................######",
+      "#.................................######",
+      "#.P...............................######",
+      "########..........................######",
+      "########..........................######",
+      "########^^^^^^^^^^^^^^^^^^^^^^^^^#######"
+    ],
+    "palette": "causeway",
+    "study": true,
+    "lock": [
+      "strike",
+      "parry",
+      "portal"
+    ],
+    "stepRelays": [
+      {
+        "id": "A",
+        "duration": 48,
+        "platforms": [
+          {
+            "c": 10,
+            "r": 19,
+            "w": 5,
+            "h": 1,
+            "to": [
+              0,
+              -6
+            ]
+          },
+          {
+            "c": 24,
+            "r": 10,
+            "w": 5,
+            "h": 1,
+            "to": [
+              0,
+              6
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 1,
+    "difficulty": 2,
+    "role": "combination",
+    "worlds": [
+      4,
+      16
+    ],
+    "tags": [
+      "step-relay",
+      "counterweight",
+      "landing-order"
+    ],
+    "newMechanics": [
+      "step-relay"
+    ],
+    "solution": "Board the first relay to raise it and lower its partner. Cross onto the lowered partner; that fresh landing reverses the pair and carries you up beside the exit.",
+    "entrance": "Left bank, spawn tile 2/19",
+    "exit": "Right edge, open rows 4–7",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "step-relay"
+    ],
+    "requiredEventCounts": {
+      "step-relay": 2
+    },
+    "route": {
+      "frames": 181,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "step-relay",
+        "land",
+        "dash",
+        "refill-dash",
+        "exit"
+      ],
+      "movement": "ordinary jump/dash/climb; no super, hyper, ultra or wallbounce",
+      "eventCounts": {
+        "jump": 3,
+        "step-relay": 2,
+        "land": 3,
+        "dash": 1,
+        "refill-dash": 1,
+        "exit": 1
+      }
+    }
+  },
+  "tape": [
+    [
+      20,
+      "ru"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      40,
+      "ru"
+    ],
+    [
+      8,
+      "rj"
+    ],
+    [
+      40,
+      "ru"
+    ],
+    [
+      20,
+      "rgu"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      6,
+      "r"
+    ]
+  ]
+}

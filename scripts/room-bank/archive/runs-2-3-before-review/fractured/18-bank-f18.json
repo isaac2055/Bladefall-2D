@@ -1,0 +1,157 @@
+{
+  "room": {
+    "id": "bank-f18",
+    "name": "The Thawing Track",
+    "hint": "Ice holds the fast line up. The same cart will be useful after it falls.",
+    "question": "Can one cart lend you its speed above, then throw a different shadow below?",
+    "map": [
+      "########################################",
+      "#.........##########################...#",
+      "#.........##########################...#",
+      "#.........##########################...#",
+      "#.........##########################...#",
+      "#......................................#",
+      "#....................................c.#",
+      "#.........................^........<####",
+      "#.........................#>.......<...#",
+      "#..P.n....................#>.......<...#",
+      "#..CC.....................#>.......<...#",
+      "#######)##wwwwwwwwwwwwwwww#>.......<...#",
+      "##########.........................<...#",
+      "##########.........................<...#",
+      "##########.........................<...#",
+      "##########.........................<...#",
+      "##########.........................<...#",
+      "##########.........................<...#",
+      "##########.............................#",
+      "##########.............................G",
+      "##########.............................G",
+      "########################################",
+      "########################################"
+    ],
+    "palette": "court",
+    "study": true,
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "thaw": 120,
+    "beams": [
+      {
+        "c": 10,
+        "r": 20,
+        "dir": "r"
+      }
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 3,
+    "acceptance": "banked",
+    "difficulty": 5,
+    "role": "solve",
+    "worlds": [
+      25,
+      34,
+      39
+    ],
+    "tags": [
+      "ice",
+      "rail",
+      "boost",
+      "thaw",
+      "beam-shadow"
+    ],
+    "newMechanics": [],
+    "entrance": "Cart berth above the low vault.",
+    "exit": "Lower right beneath the high tally balcony.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "freeze",
+      "boost",
+      "thaw",
+      "cart-land",
+      "stone-lit"
+    ],
+    "solution": "Freeze the upper pool from the berth and lean the cart onto the boost strip. Jump from the fast line to the distant high tally balcony. The empty cart coasts into the stop over the frozen shaft. Once the track thaws, the cart falls into the lower vault and masks its beam, letting you descend behind its new shadow and reach the low exit.",
+    "nearestExisting": "bc1 Ice Throws Shade uses freezing to stop light directly; bc2 Shade on Wheels escorts a cart in a beam. Here ice carries the cart to a launch height, then its disappearance transports the same cart to a different beam-screening elevation.",
+    "novelty": "The player leaves the fast cart for a high precision jump while the abandoned vehicle must finish a second itinerary: coast to its stop, lose its ice track, and become shelter below.",
+    "humanReview": "User approved banking; numeric Fun /10, Difficulty /5 and Suitability /5 ratings remain pending.",
+    "route": {
+      "frames": 225,
+      "deaths": 0,
+      "events": [
+        "strike",
+        "freeze",
+        "condenser",
+        "boost",
+        "jump",
+        "cart-bump",
+        "stone-lit",
+        "gate-open",
+        "dash",
+        "thaw",
+        "cart-land",
+        "land",
+        "refill-dash",
+        "exit"
+      ],
+      "eventCounts": {
+        "strike": 1,
+        "freeze": 1,
+        "condenser": 1,
+        "boost": 1,
+        "jump": 1,
+        "cart-bump": 1,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "dash": 1,
+        "thaw": 1,
+        "cart-land": 1,
+        "land": 1,
+        "refill-dash": 1,
+        "exit": 1
+      }
+    },
+    "bypassCheck": "The upper vault has a low ceiling, and the cart stop has a thorned crown and far face. This removes a climbable stop as a substitute launch platform. Without freezing, the cart drops out before the high line; the clean tape uses the upper boost then the lower beam shadow.",
+    "userFeedback": {
+      "date": "2026-10-07",
+      "comment": "Approved; bank."
+    }
+  },
+  "tape": [
+    [
+      1,
+      "rs"
+    ],
+    [
+      44,
+      "r"
+    ],
+    [
+      42,
+      "rj"
+    ],
+    [
+      10,
+      "l"
+    ],
+    [
+      5,
+      "lx"
+    ],
+    [
+      12,
+      "l"
+    ],
+    [
+      56,
+      ""
+    ],
+    [
+      75,
+      "r"
+    ]
+  ]
+}

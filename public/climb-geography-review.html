@@ -98,7 +98,7 @@ $('foldPixels').onclick=()=>{
   report.push({from:source,to:g.room.id,changed,pct:changed/589.76});
  }
  const worst=[...report].sort((a,b)=>b.changed-a.changed);
- const passed=report.length===48&&worst[0].pct<.05;
+ const passed=report.length===win.BladefallClimbAtlas.links.length*4&&worst[0].pct<.05;
  $('status').textContent=JSON.stringify({passed,crossings:report.length,maxChangedPercent:.05,worst:worst.slice(0,10),reported:report.filter(r=>r.from==='cl1-atlas-crossroads'||r.to==='cl1-atlas-crossroads')});
  if(!passed)throw Error('Folded scenery continuity regression; see the audit report.');
 };

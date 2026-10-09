@@ -4,11 +4,11 @@
    high and low marks on the rock, and floats as lashed planks. */
 (function(root){
 'use strict';
-const TILE=8,COLS=40,ROWS=23;
+const TILE=8;
 const px=(b,x,y,w,h,c)=>{b.fillStyle=c;b.fillRect(Math.round(x),Math.round(y),w,h);};
 function drawBack(b,g){
  const w=g.water;if(!w)return;
- const W=root.BladefallPrecisionWater,t=g.frame,room=g.room;
+ const W=root.BladefallPrecisionWater,t=g.frame,room=g.room,COLS=room.cols,ROWS=room.rows;
  // pools
  for(const pool of w.pools){
   const frozen=pool.frozen>0;
@@ -31,6 +31,17 @@ function drawBack(b,g){
   for(let r=Math.floor(sy/TILE);r<ROWS;r++)for(let c=w.tide.c0;c<=w.tide.c1;c++){
    if(room.grid[r*COLS+c]===1)continue;const y0=Math.max(r*TILE,sy);b.globalAlpha=.42;px(b,c*TILE,y0,8,(r+1)*TILE-y0,'#23628f');b.globalAlpha=1;}
   for(let x=x0;x<x1;x+=2){const k=Math.round(Math.sin((t+x)/9));px(b,x,sy+k,2,1,'#a8dcff');}
+  // Optional local sight glass: shows the same tide when the basin is below the camera.
+  const gauge=room.def.tideGauge;
+  if(gauge){
+   const x=gauge.c*TILE,y=gauge.r*TILE,h=(gauge.h||3)*TILE;
+   const top=Math.min(w.tide.high,w.tide.low)*TILE,bottom=Math.max(w.tide.high,w.tide.low)*TILE;
+   const fill=Math.max(0,Math.min(1,(bottom-sy)/Math.max(1,bottom-top))),level=y+h-2-Math.round(fill*(h-4));
+   px(b,x,y,7,h,'#607584');px(b,x+1,y+1,5,h-2,'#192c3b');
+   px(b,x+2,level,3,y+h-1-level,'#4c9bbc');
+   for(let mark=2;mark<h-1;mark+=5)px(b,x+5,y+mark,2,1,'#cad9df');
+   px(b,x+1,level-1,5,2,'#c49b63');px(b,x+2,level-1,3,1,'#f0d29a');
+  }
   // high and low water marks on the left wall of the sea
   px(b,x0,w.tide.high*TILE,3,1,'#e8d8a0');px(b,x0,w.tide.low*TILE,3,1,'#8aa0b0');
  }

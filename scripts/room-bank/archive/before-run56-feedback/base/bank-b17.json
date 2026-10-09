@@ -1,0 +1,283 @@
+{
+  "room": {
+    "id": "bank-b17",
+    "name": "Ceiling Keeps the Key",
+    "hint": "Prisms reverse gravity. Heat cycles through solid, molten, then passable glass. A ring keeps its lantern.",
+    "question": "When is the loading throat safe for the lantern, and what keeps its delivery after gravity changes?",
+    "map": [
+      "########################################",
+      "########################################",
+      "########################################",
+      "#......Q......##########################",
+      "#.............##########################",
+      "#.............#_########################",
+      "#.............#.########################",
+      "#.............#.########################",
+      "#.............#.########################",
+      "#.............#.########################",
+      "#.............#.########################",
+      "#.............#.########################",
+      "#.............#.########################",
+      "#.............#.########################",
+      "#.............#.########################",
+      "#............##.########################",
+      "#.P.l.........E.########################",
+      "#########...}}}}########################",
+      "#...............########################",
+      "#...............########################",
+      "#......Q............H...................",
+      "#...................H...................",
+      "########################################"
+    ],
+    "palette": "path",
+    "study": true,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "cargoClasps": [
+      {
+        "id": "A",
+        "c": 15,
+        "r": 5
+      }
+    ],
+    "slabs": [
+      {
+        "stone": 100,
+        "molten": 70,
+        "glass": 70,
+        "offset": 0
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 3,
+    "acceptance": "revised",
+    "difficulty": 4,
+    "role": "solve",
+    "worlds": [
+      11,
+      19
+    ],
+    "tags": [
+      "cargo-clasp",
+      "gravity",
+      "held-gate",
+      "cargo-routing",
+      "heat-slab",
+      "launch-timing"
+    ],
+    "newMechanics": [
+      "cargo-clasp"
+    ],
+    "entrance": "Left gallery above the prism well.",
+    "exit": "Low corridor underneath the cargo shaft.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "clasp-catch",
+      "gravity",
+      "plate",
+      "held-open",
+      "slab-glass"
+    ],
+    "solution": "Wait with the lantern on the loading ledge until the heat throat turns to glass, then drop it onto the belt so it passes the throat before the next solid phase. Return to the lower prism and reverse gravity to send the cargo up its separate shaft into the clasp and ceiling receiver. Take the ceiling loop and upper prism to restore ordinary gravity; the clasp preserves the weight while the knight returns to the low exit.",
+    "nearestExisting": "B14 Upside Delivery uses gravity as a cargo conveyor but must bring the cargo down onto a floor plate; i12-lock uses a ceiling receiver while gravity stays reversed. This room asks for opposite persistent gravity states for the cargo and knight.",
+    "novelty": "The correct cargo position is deliberately unreachable from the knight route. Two gravity passes are useful because the ring stores the first pass’s cargo result while the second returns the knight to the lower route.",
+    "userFeedback": {
+      "date": "2026-10-07",
+      "comment": "Make this harder and more interesting, then show it again for review; not banked."
+    },
+    "revisionNotes": "Added a visible cycling heat barrier in the 8px cargo-loading throat. The player must release cargo from a safe ledge during the passable glass window. Stone traps it until the following molten state destroys it; molten destroys an early delivery. The remote ceiling clasp and two gravity passes still perform their original distinct jobs.",
+    "route": {
+      "frames": 803,
+      "deaths": 0,
+      "events": [
+        "pickup",
+        "jump",
+        "land",
+        "slab-molten",
+        "slab-glass",
+        "throw",
+        "grab",
+        "lantern-land",
+        "slab-stone",
+        "dash",
+        "gravity",
+        "refill-dash",
+        "plate",
+        "held-open",
+        "clasp-catch",
+        "exit"
+      ],
+      "movement": "Ordinary jump, dash, climb and device actions; no advanced momentum."
+    },
+    "shortcutChecks": [
+      {
+        "name": "Release cargo at the former timing, during the hot cycle",
+        "tape": [
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            65,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            45,
+            ""
+          ],
+          [
+            28,
+            "l"
+          ],
+          [
+            45,
+            ""
+          ],
+          [
+            9,
+            "l"
+          ],
+          [
+            1,
+            "lx"
+          ],
+          [
+            85,
+            ""
+          ],
+          [
+            50,
+            "r"
+          ],
+          [
+            65,
+            ""
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            1,
+            "lx"
+          ],
+          [
+            80,
+            ""
+          ],
+          [
+            220,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0,
+          "cargoLost": true,
+          "stoneStops": [],
+          "failure": "receiver never weighted"
+        }
+      }
+    ],
+    "bypassReview": {
+      "scope": "Focused wrong-timing route and obvious shortcut review; not an exhaustive search.",
+      "result": "The 8px heat throat admits only cargo. Bad release timing loses the lantern and leaves the remote receiver empty; waiting does not eventually complete that delivery."
+    },
+    "archivedBeforeRevision": "scripts/room-bank/archive/batch-03-before-review/base/bank-b17.json"
+  },
+  "tape": [
+    [
+      8,
+      "r"
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      18,
+      "r"
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      125,
+      ""
+    ],
+    [
+      1,
+      "dg"
+    ],
+    [
+      45,
+      ""
+    ],
+    [
+      28,
+      "l"
+    ],
+    [
+      45,
+      ""
+    ],
+    [
+      9,
+      "l"
+    ],
+    [
+      1,
+      "lx"
+    ],
+    [
+      85,
+      ""
+    ],
+    [
+      50,
+      "r"
+    ],
+    [
+      65,
+      ""
+    ],
+    [
+      14,
+      "l"
+    ],
+    [
+      1,
+      "lx"
+    ],
+    [
+      80,
+      ""
+    ],
+    [
+      207,
+      "r"
+    ]
+  ]
+}

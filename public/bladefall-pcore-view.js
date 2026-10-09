@@ -314,6 +314,9 @@ function burst(x,y,n,col,speed=60,life=24,grav=0,size=1){for(let i=0;i<n;i++){co
 function dust(x,y,n=4,dir=0){for(let i=0;i<n;i++)view.parts.push({x:x+(rnd()-.5)*6,y,vx:(rnd()-.5)*30+dir*25,vy:-rnd()*18,life:16+rnd()*8,max:24,col:'#b8b0a0',grav:10,size:1});}
 function shake(mag,t=8){if(!save.options.shake)return;view.shake.mag=Math.max(view.shake.mag,mag);view.shake.t=Math.max(view.shake.t,t);}
 function handleEvent(e){
+ // A spatial transfer in a scrolling room must not leave its next action off-screen.
+ // Ordinary travel retains the eased camera; one-screen rooms still stay at zero.
+ if((e.type==='respawn'||e.type==='echo-swap'||e.type==='portal-pass'&&e.kind==='knight')&&view.g&&(view.g.room.w>W||view.g.room.h>H))view.camRoom=null;
  TOUCH()?.event(e);
  const s=SFX[e.type];if(s&&save.options.sound)s(e);
  for(const d of root.BladefallPrecisionDeviceViews||[]){if(save.options.sound)d.sfx?.[e.type]?.(e,{tone,noise});d.event?.(e,{view,burst,dust,shake,palette});}
@@ -491,7 +494,7 @@ function drawEntities(b,g,pal){
   if(e.type==='plate'){for(const h of g.ents.filter(q=>q.type==='held')){b.strokeStyle=e.down?'#e8c46a88':'#6a5a3a88';b.setLineDash([1,3]);b.beginPath();b.moveTo(e.x+4.5,e.y+2.5);b.lineTo(e.x+4.5,Math.min(e.y+4,H-1)+.5);b.lineTo(h.x+h.w/2+.5,Math.min(e.y+4,H-1)+.5);b.lineTo(h.x+h.w/2+.5,h.y+h.h+.5);b.stroke();b.setLineDash([]);}}
  }
  // Machinery and blocks first, so small things (a stone sealed inside a pillar) stay visible.
- const BACK={toggle:0,gate:0,held:0,crumble:0,zip:0,slide:0,plate:1};
+ const BACK={toggle:0,gate:0,held:0,crumble:0,zip:0,slide:0,thru:0,plate:1};
  const order=g.ents.slice().sort((a,b)=>(BACK[a.type]??2)-(BACK[b.type]??2));
  for(const e of order){
   if(e.gone)continue;
@@ -548,6 +551,12 @@ function drawEntities(b,g,pal){
     for(let k=0;k<4;k++){const ang=a+k*Math.PI/2;px(b,Math.round(cx+Math.cos(ang)*3)-1,Math.round(cy+Math.sin(ang)*3)-1,2,2,'#b8a67a');}
     px(b,cx-1,cy-1,2,2,on?'#ff7a4a':e.state==='back'?'#e0b050':'#7bd88a');
     px(b,e.x,e.y,e.w,1,'#b8a67a');
+    break;}
+   case 'thru':{
+    // Atlas junctions have their own decorated platforms; ordinary rooms still need a visible top.
+    if(g.room.def.atlasJunction)break;
+    px(b,e.x,e.y,e.w,1,pal.edge);px(b,e.x,e.y+1,e.w,2,pal.rock);
+    for(let x=3;x<e.w;x+=8)px(b,e.x+x,e.y+3,2,2,pal.rockD);
     break;}
    case 'crumble':{
     if(e.broken){b.strokeStyle='#ffffff18';b.strokeRect(e.x+.5,e.y+.5,e.w-1,e.h-1);break;}
@@ -685,6 +694,7 @@ function render(){
 }
 /* Room hints were written for the default keys; show whatever the player has bound instead. */
 function localizeHint(t){
+ t=t.replaceAll('{echo}',actionLabel('portal')).replaceAll('{companion}',actionLabel('portal'));
  const L=actionLabel,arrows=binds.keys.l[0]==='ArrowLeft'&&binds.keys.r[0]==='ArrowRight';
  // Touch: the same sentences in gestures ("Tap jumps", "Swipe dashes", "hold on a wall…").
  if(touchUI()){const cap=s=>s[0].toUpperCase()+s.slice(1);
@@ -713,7 +723,7 @@ function drawHud(ctx,ox,oy,scale,g){
  ctx.fillStyle='#00000088';const rw=ctx.measureText(right).width;ctx.fillRect(ox+W*scale-rw-pad-6,oy+pad-3,rw+10,fs+6);
  ctx.fillStyle='#cfc6b4';ctx.fillText(right,ox+W*scale-rw-pad,oy+pad);
  if(view.replay){ctx.fillStyle='#ffcf7a';ctx.fillText('▶ INTENDED ROUTE — any input to take over',ox+pad,oy+H*scale-fs-pad);}
- else if(g.awake===false){ctx.fillStyle='#d8cfb9';const lk=g.room.def.lock||[];ctx.fillText(`Look first · act when ready · ${lk.includes('parry')?'':actionLabel('parry')+' parry · '}${lk.includes('strike')?'':actionLabel('strike')+' blade · '}${lastDevice==='pad'?actionLabel('pause'):'Esc'} room question`,ox+pad,oy+H*scale-fs-pad);}
+ else if(g.awake===false&&g.room.def.movement!=='survive-2'&&g.room.def.bank?.run!==3&&!g.room.def.showHintAtRest){ctx.fillStyle='#d8cfb9';const lk=g.room.def.lock||[];ctx.fillText(`Look first · act when ready · ${lk.includes('parry')?'':actionLabel('parry')+' parry · '}${lk.includes('strike')?'':actionLabel('strike')+' blade · '}${lastDevice==='pad'?actionLabel('pause'):'Esc'} room question`,ox+pad,oy+H*scale-fs-pad);}
  else if(g.room.hint&&view.roomTimer<600){ctx.globalAlpha=Math.min(1,(600-view.roomTimer)/60);ctx.fillStyle='#d8cfb9';
   // A hint wider than the room (big touch text, long gesture names) breaks at its middle dot onto two lines.
   const text=localizeHint(g.room.hint),room=W*scale-pad*2;let lines=[text];
@@ -761,12 +771,12 @@ function controlsCard(back){
  const chip=(kind,a,v,i)=>`<button class="pcChip" data-fid="rm-${kind}-${a}-${i}" data-rm="${kind}|${a}|${i}" title="Remove">${kind==='keys'?keyName(v):padName(v,gp)}<span aria-hidden="true"> ✕</span></button>`;
  const add=(kind,a)=>{const on=capture&&capture.kind===kind&&capture.action===a;
   return `<button class="pcAdd${on?' on':''}" data-fid="add-${kind}-${a}" data-add="${kind}|${a}">${on?(kind==='keys'?'Press a key… (Esc cancels)':'Press a button…'):'+ '+(kind==='keys'?'key':'button')}</button>`;};
- const rows=ACTIONS.map(([a,label])=>`<tr><td>${label}</td>
+ const rows=ACTIONS.map(([a,label])=>`<tr><td>${a==='portal'&&view.g?.echoOn?'Echo · place / swap':a==='portal'&&view.g?.relay?'Oren · hold / follow':label}</td>
   <td><div class="pcChips">${binds.keys[a].map((v,i)=>chip('keys',a,v,i)).join('')}${binds.keys[a].length?'':'<span class="pcNone">unbound</span>'}${add('keys',a)}</div></td>
   <td><div class="pcChips">${binds.pad[a].map((v,i)=>chip('pad',a,v,i)).join('')}${add('pad',a)}</div></td></tr>`).join('');
  const status=gp?`Controller: ${gp.id.replace(/\s*\(.*$/,'').slice(0,48)||'connected'}${gp.mapping==='standard'?'':' · non-standard layout, buttons may be mislabelled'}`
   :'No controller detected. Connect one and press any button on it (browsers hide controllers until a button is pressed).';
- showOverlay(`<div class="pcCard mid"><h1>Controls</h1>
+ showOverlay(`<div class="pcCard mid"><h1>Controls</h1><label class="pcSub"><input id="pcFeedbackToggle" type="checkbox" ${root.BladefallPlaytest?.feedbackEnabled()?'checked':''}> Feedback mode · after each Survival room</label>
  <p class="pcSub">${status}</p>
  <table class="pcTable pcBinds"><tr><th>Action</th><th>Keyboard</th><th>Controller</th></tr>${rows}</table>
  <p class="pcSub pcNote">${view.bindNote||'Select a key or button to remove it. “+” adds one; a key already in use moves here.'}</p>
@@ -774,6 +784,7 @@ function controlsCard(back){
  <p class="pcSub">Your plume shows your dash: <b style="color:#ffb347">ember</b> = ready, <b style="color:#56708c">slate</b> = spent. It flashes white when it returns.</p>
  <div class="pcRow"><button class="pcBtn ghost" id="pcResetK" data-fid="resetK">Reset keyboard</button><button class="pcBtn ghost" id="pcResetP" data-fid="resetP">Reset controller</button></div>
  <button class="pcBtn" id="pcBack" data-back data-fid="back">Back</button></div>`);
+ document.getElementById('pcFeedbackToggle').onchange=e=>root.BladefallPlaytest?.setFeedback(e.target.checked);
  const o=overlay();
  o.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{const [kind,a,i]=b.dataset.rm.split('|');const v=binds[kind][a].splice(+i,1)[0];saveBinds();
   view.bindNote=`Removed ${kind==='keys'?keyName(v):padName(v,gp)} from “${ACTIONS.find(x=>x[0]===a)[1]}”.`;redraw();});
@@ -804,7 +815,6 @@ function togglePause(){
  if(view.paused){view.paused=false;hideOverlay();return;}
  view.paused=true;const g=view.g,ch=R.chapters[view.chapter],base=chapterStart(view.chapter);
  const hasTape=!!R.tapes[g.room.id];
- const passages=ch.rooms.map((r,i)=>r.atlasTransit?`<button class="pcBtn ghost" data-room="${i}">${r.name}</button>`:'').join('');
  let roomLabel=0;const rooms=ch.rooms.map((r,i)=>r.passage||r.connector||ch.climb&&i>=ch.mainCount?'':`<button class="pcMini ${base+i===g.roomIndex?'on':''}" title="${r.name}" data-room="${i}">${++roomLabel}${save.cleared[r.id]?'✓':''}</button>`).join('');   // the Climb's passages and shafts are not levels
  const optional=ch.climb?ch.rooms.map((r,i)=>i>=ch.mainCount&&!r.passage&&!r.connector?`<button class="pcBtn ghost" data-room="${i}">${r.name}</button>`:'').join(''):'';
  const selectable=(ch.climb?ch.rooms.slice(0,ch.mainCount):ch.rooms).filter(r=>!r.passage&&!r.connector),selected=selectable.findIndex(r=>r.id===g.room.id);
@@ -813,15 +823,14 @@ function togglePause(){
  ${g.room.def.question?`<p class="pcSub">${g.room.def.question}</p>`:''}
  <button class="pcBtn" id="pcResume" data-back>Resume</button><button class="pcBtn ghost" id="pcRetry">Retry room</button>
  ${hasTape?'<button class="pcBtn ghost" id="pcWatch">Watch the intended route (review)</button>':''}
- <p class="pcSub">Room select</p><div class="pcMiniRow">${rooms}</div>${optional?`<p class="pcSub">Optional routes</p>${optional}`:''}${passages?`<p class="pcSub">Connecting passages</p>${passages}`:''}
- ${ch.climb?'<button class="pcBtn ghost" id="pcLevels">Level select</button><a class="pcBtn ghost" href="index.html">Return to title menu</a>':''}
+ <p class="pcSub">Room select</p><div class="pcMiniRow">${rooms}</div>${optional?`<p class="pcSub">Optional routes</p>${optional}`:''}
+ ${ch.climb?'<a class="pcBtn ghost" href="index.html">Return to title menu</a>':''}
  <button class="pcBtn ghost" id="pcCtl">Controls</button><button class="pcBtn ghost" id="pcAssist">Assist &amp; options</button>${view.trial?'<button class="pcBtn ghost" id="pcLeave">Leave the gate (you keep the levels you finished)</button>':'<button class="pcBtn ghost" id="pcChapters">Chapters</button>'}</div>`);
  document.getElementById('pcResume').onclick=togglePause;
  document.getElementById('pcCtl').onclick=()=>{const back=()=>{view.paused=false;togglePause();};touchUI()?TOUCH().card(back):controlsCard(back);};
  document.getElementById('pcRetry').onclick=()=>{togglePause();retryRoom();};
  if(hasTape)document.getElementById('pcWatch').onclick=()=>{togglePause();watchRoute();};
- if(ch.climb)document.getElementById('pcLevels').onclick=()=>root.BladefallPitchView.climb.levels();
- overlay().querySelectorAll('[data-room]').forEach(b=>b.onclick=()=>{view.paused=false;hideOverlay();C.enterRoom(g,base+(+b.dataset.room));view.replay=null;view.trail=[];resetScarf();view.roomTimer=0;});
+ overlay().querySelectorAll('[data-room]').forEach(b=>b.onclick=()=>{root.BladefallClimbSession?.invalidate('room select');view.paused=false;hideOverlay();C.enterRoom(g,base+(+b.dataset.room));view.replay=null;view.trail=[];resetScarf();view.roomTimer=0;});
  document.getElementById('pcAssist').onclick=()=>assistCard(()=>{view.paused=false;togglePause();});
  if(view.trial)document.getElementById('pcLeave').onclick=()=>{hideOverlay();view.paused=false;view.mode='card';music(false);tellHost({type:'trial-left',level:view.chapter+1});};
  else {document.getElementById('pcChapters').onclick=mainMenu;if(ch.climb)document.getElementById('pcChapters').textContent='World map';}
@@ -929,7 +938,7 @@ function pump(n=1){for(let i=0;i<n;i++)loop(1/60);return {room:view.g?.room.id,x
 /* Review/verification aid: advance the running room by exact input frames, then draw once. */
 function advance(frames){for(const k of frames)tick(keysToInput(k));render();return {room:view.g.room.id,x:view.g.p.x,y:view.g.p.y,state:view.g.p.state,dashes:view.g.p.dashes,phase:view.g.phase};}
 /* Room by Room (7.259): enter any room of the running game (a quest branch and its return), keeping pickups. */
-function goRoom(i){if(!view.g)return;save.shards=[...view.g.shards];save.cleared[view.g.room.id]=true;writeSave(save);view.replay=null;C.enterRoom(view.g,i);view.trail=[];resetScarf();view.roomTimer=0;}
+function goRoom(i){if(!view.g)return;root.BladefallClimbSession?.invalidate('room select');save.shards=[...view.g.shards];save.cleared[view.g.room.id]=true;writeSave(save);view.replay=null;C.enterRoom(view.g,i);view.trail=[];resetScarf();view.roomTimer=0;}
 function persist(){if(view.g){save.shards=[...view.g.shards];writeSave(save);}}
 /* Another room's game drawn where the caller has translated to (the Climb's neighbouring sections). */
 function drawOther(b,g2,pal,localCamera){
@@ -938,6 +947,6 @@ function drawOther(b,g2,pal,localCamera){
  drawEntities(b,g2,pal);root.BladefallPrecisionCombatView?.draw(b,g2);root.BladefallPrecisionFoesView?.draw(b,g2);root.BladefallPrecisionPortalsView?.draw(b,g2,view);
  for(const d of DV){d.draw?.(b,g2,view,pal);d.drawFront?.(b,g2,view,pal);}
 }
-root.BladefallPrecisionView={boot,view,startChapter,retryRoom,mainMenu,advance,pump,goRoom,persist,drawOther,drawStatic,palettes:PAL,drawKnight:drawKnightSprite};
+root.BladefallPrecisionView={clearInput:()=>{keys.clear();latchHeld();},boot,view,startChapter,retryRoom,mainMenu,advance,pump,goRoom,persist,drawOther,drawStatic,palettes:PAL,drawKnight:drawKnightSprite};
 if(typeof document!=='undefined'){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();}
 })(typeof window!=='undefined'?window:globalThis);

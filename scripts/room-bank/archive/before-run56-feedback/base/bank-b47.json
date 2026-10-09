@@ -1,0 +1,456 @@
+{
+  "room": {
+    "id": "bank-b47",
+    "name": "Two Landings, One Light",
+    "palette": "foundry",
+    "study": true,
+    "dashes": 0,
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "map": [
+      "########################################",
+      "#......................................#",
+      "#......................................#",
+      "#............................###.###...#",
+      "#...............................c......#",
+      "#............................###.###...#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#.............................../......#",
+      "#.................######################",
+      "#..................................#####",
+      "#..................................#####",
+      "#..................................#####",
+      "#..................................#####",
+      "#.G................................#####",
+      "..G................................#####",
+      "..G..P.............................#####",
+      "###########........................#####",
+      "###########........................#####",
+      "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#####",
+      "########################################"
+    ],
+    "hint": "Landing moves both marked bodies. Turn the light, then bring the lift home.",
+    "question": "Why does the correct mirror still fail to reach its receiver, and what else moves with the lift?",
+    "exit": "left",
+    "stepRelays": [
+      {
+        "id": "A",
+        "duration": 48,
+        "platforms": [
+          {
+            "c": 10,
+            "r": 19,
+            "w": 8,
+            "h": 1,
+            "to": [
+              0,
+              -8
+            ]
+          },
+          {
+            "c": 31,
+            "r": 1,
+            "w": 3,
+            "h": 2,
+            "to": [
+              0,
+              6
+            ]
+          }
+        ]
+      }
+    ],
+    "beams": [
+      {
+        "c": 39,
+        "r": 10,
+        "dir": "l"
+      }
+    ]
+  },
+  "bank": {
+    "side": "base",
+    "batch": 11,
+    "run": 5,
+    "collection": "run5",
+    "format": "compact",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "difficulty": 3,
+    "role": "Use a lift’s return to complete its remote light circuit",
+    "worlds": [
+      12,
+      16,
+      20
+    ],
+    "tags": [
+      "step-relay",
+      "mirror",
+      "beam",
+      "return-route",
+      "remote-shutter"
+    ],
+    "newMechanics": [],
+    "author": "Codex",
+    "humanReview": "Unmeasured; author estimate only.",
+    "requiredEvents": [
+      "step-relay",
+      "mirror",
+      "stone-lit",
+      "gate-open"
+    ],
+    "solution": "Walk onto the low relay and jump in place. Landing raises your platform while lowering its distant twin across the upper light duct. Walk along the raised gallery and cut the mirror from its left side. The mirror now faces the receiver, but the linked body still interrupts the beam. Return to the lift and land again: the lift descends while its twin rises out of the receiver path. The light opens the low starting-side exit.",
+    "nearestExisting": "B12 and B31 change a route by redirecting light and revisiting the same structure. This room instead couples the transport floor directly to the remote obstruction: its first landing raises access but interrupts the receiver, and its second landing restores the light.",
+    "novelty": "Landing is a spatial control input: the same lift that takes you to a mirror temporarily obstructs the circuit it will later power. The lift return also removes the optical obstruction.",
+    "approvedIngredients": [
+      "bank-b12",
+      "bank-b31"
+    ],
+    "positiveChecks": [
+      {
+        "name": "Short first lift wait",
+        "tape": [
+          [
+            38,
+            "r"
+          ],
+          [
+            30,
+            "j"
+          ],
+          [
+            48,
+            ""
+          ],
+          [
+            98,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            113,
+            "l"
+          ],
+          [
+            30,
+            "j"
+          ],
+          [
+            55,
+            ""
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0
+        }
+      },
+      {
+        "name": "Long observation pauses",
+        "tape": [
+          [
+            38,
+            "r"
+          ],
+          [
+            30,
+            "j"
+          ],
+          [
+            90,
+            ""
+          ],
+          [
+            98,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            113,
+            "l"
+          ],
+          [
+            30,
+            "j"
+          ],
+          [
+            55,
+            ""
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0
+        }
+      },
+      {
+        "name": "Return landing farther inward",
+        "tape": [
+          [
+            38,
+            "r"
+          ],
+          [
+            30,
+            "j"
+          ],
+          [
+            55,
+            ""
+          ],
+          [
+            98,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            103,
+            "l"
+          ],
+          [
+            30,
+            "j"
+          ],
+          [
+            55,
+            ""
+          ],
+          [
+            115,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Never land to raise lift",
+        "tape": [
+          [
+            140,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1
+        }
+      },
+      {
+        "name": "Leave mirror facing down",
+        "tape": [
+          [
+            38,
+            "r"
+          ],
+          [
+            30,
+            "j"
+          ],
+          [
+            55,
+            ""
+          ],
+          [
+            98,
+            "r"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            113,
+            "l"
+          ],
+          [
+            30,
+            "j"
+          ],
+          [
+            55,
+            ""
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0
+        }
+      },
+      {
+        "name": "Prepare mirror but leave shutter down",
+        "tape": [
+          [
+            38,
+            "r"
+          ],
+          [
+            30,
+            "j"
+          ],
+          [
+            55,
+            ""
+          ],
+          [
+            98,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            113,
+            "l"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            55,
+            ""
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0
+        }
+      }
+    ],
+    "route": {
+      "frames": 487,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "step-relay",
+        "land",
+        "strike",
+        "mirror",
+        "stone-lit",
+        "gate-open",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 2,
+        "step-relay": 2,
+        "land": 2,
+        "strike": 1,
+        "mirror": 1,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "exit": 1
+      },
+      "movement": "Ordinary movement and device momentum; no advanced dash tech."
+    },
+    "requiredEventCounts": {
+      "step-relay": 2
+    },
+    "designNotes": "Both relay bodies have the same visible label. The western exit stays physically closed until the prepared mirror and returning shutter line up; no hidden action counter is consulted. Walk-on and genuine landing remain distinct, and the return may be triggered from any comfortable position on the wide lift."
+  },
+  "tape": [
+    [
+      38,
+      "r"
+    ],
+    [
+      30,
+      "j"
+    ],
+    [
+      55,
+      ""
+    ],
+    [
+      98,
+      "r"
+    ],
+    [
+      1,
+      "rs"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      113,
+      "l"
+    ],
+    [
+      30,
+      "j"
+    ],
+    [
+      55,
+      ""
+    ],
+    [
+      100,
+      "l"
+    ]
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "room": {
+    "id": "bank-f15",
+    "name": "Borrow the Mouth",
+    "hint": "The broad stone can take the same portal as you. A pale floor disappears when you leave it.",
+    "question": "The borrowed floor is also a sunshade. How do you remove both obstructions without standing in the revealed light?",
+    "map": [
+      "########################################",
+      "#................####......#..#...G....#",
+      "#................####......#cc#...G....#",
+      "#................####......#vv#...G....#",
+      "#................####......#vv#...G....#",
+      "#................####......#vv#...G....#",
+      "#................####......#vv#...G....#",
+      "#................####......#..#...G....#",
+      "#................####.............G....#",
+      "#................####.............G....#",
+      "#................####.............G....#",
+      "#................####......#..#...G.....",
+      "#................####......#..#...G.....",
+      "#................####......#..#...G.....",
+      "#................####......#YY#...G.....",
+      "#................####......#..#....#####",
+      "#................####......#..#....#####",
+      "#................###%.........#....#####",
+      "#.........KK.....%##%.........#....#####",
+      "#.........KK.....%###..............#####",
+      "#..P.............####..............#####",
+      "########################################",
+      "########################################"
+    ],
+    "palette": "sunspire",
+    "study": true,
+    "lock": [
+      "parry"
+    ],
+    "portalMode": "fixed",
+    "portals": [
+      {
+        "color": "blue",
+        "c": 17,
+        "r": 18,
+        "face": "l"
+      },
+      {
+        "color": "orange",
+        "c": 20,
+        "r": 17,
+        "face": "r"
+      }
+    ],
+    "beams": [
+      {
+        "c": 28,
+        "r": 20,
+        "dir": "u"
+      },
+      {
+        "c": 29,
+        "r": 20,
+        "dir": "u"
+      }
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 2,
+    "difficulty": 4,
+    "role": "solve",
+    "worlds": [
+      33,
+      40
+    ],
+    "tags": [
+      "cargo-routing",
+      "portal",
+      "slide-stone",
+      "spent-foothold",
+      "beam",
+      "return-route"
+    ],
+    "newMechanics": [],
+    "entrance": "Lower left freight room; P at 3/20.",
+    "exit": "High east gallery at rows 11–14.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "stone-hit",
+      "portal-pass",
+      "foothold-spent",
+      "stone-lit",
+      "gate-open"
+    ],
+    "solution": "Send the broad stone through the low portal before following it. It stops beneath the receiver well and becomes a shield against both upward beams. Enter the well through its upper window, land on the pale floor, and leave that floor to spend it while the cargo protects you. Dash down onto the stone to lower it below the east wall. Climb back out, descend outside that wall, and drive the newly exposed stone left: the beams now reach the sealed receivers while you remain on their safe side. Return up the outside wall to the open high gallery.",
+    "nearestExisting": "pw2 Stone Through Stone transports a sliding step; p182 Light It, Then Turn It Back changes a light path; p123 Good Once removes a used foothold. Here the transported stone must first replace a spent floor’s shielding, then be lowered to reveal a side that was inaccessible behind a wall, and finally removed from that side.",
+    "novelty": "The two blockers must be removed in opposite ways and in a specific order. Removing the pale floor reveals the cargo floor; lowering cargo changes which face can be pushed; the final return changes it from indispensable protection into the obstruction to remove. The portal carries one object and its solver through the same mouth rather than supplying a repeated fling course.",
+    "humanReview": "Fun, difficulty and suitability await human ratings.",
+    "route": {
+      "frames": 587,
+      "deaths": 0,
+      "events": [
+        "dash",
+        "stone-hit",
+        "portal-pass",
+        "stone-stop",
+        "land",
+        "refill-dash",
+        "jump",
+        "grab",
+        "climbhop",
+        "foothold-spent",
+        "stone-lit",
+        "gate-open",
+        "walljump",
+        "exit"
+      ],
+      "eventCounts": {
+        "dash": 5,
+        "stone-hit": 3,
+        "portal-pass": 2,
+        "stone-stop": 3,
+        "land": 4,
+        "refill-dash": 4,
+        "jump": 2,
+        "grab": 3,
+        "climbhop": 2,
+        "foothold-spent": 1,
+        "stone-lit": 2,
+        "gate-open": 1,
+        "walljump": 1,
+        "exit": 1
+      }
+    },
+    "requiredEventCounts": {
+      "stone-hit": 3,
+      "portal-pass": 2,
+      "foothold-spent": 1,
+      "stone-lit": 2
+    },
+    "acceptance": "banked",
+    "userFeedback": {
+      "date": "2026-10-07",
+      "comment": "Great; bank as is."
+    }
+  },
+  "tape": [
+    [
+      30,
+      "r"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      70,
+      "r"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      17,
+      "r"
+    ],
+    [
+      4,
+      ""
+    ],
+    [
+      5,
+      "ux"
+    ],
+    [
+      78,
+      "rug"
+    ],
+    [
+      24,
+      ""
+    ],
+    [
+      4,
+      "j"
+    ],
+    [
+      5,
+      "dx"
+    ],
+    [
+      55,
+      ""
+    ],
+    [
+      110,
+      "rug"
+    ],
+    [
+      35,
+      ""
+    ],
+    [
+      5,
+      "lx"
+    ],
+    [
+      9,
+      ""
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      5,
+      "ux"
+    ],
+    [
+      45,
+      "lug"
+    ],
+    [
+      65,
+      "rj"
+    ]
+  ]
+}

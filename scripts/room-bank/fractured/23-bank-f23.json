@@ -1,0 +1,349 @@
+{
+  "room": {
+    "id": "bank-f23",
+    "name": "Shorten the Arc",
+    "palette": "cliffs",
+    "study": true,
+    "exit": "right",
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "map": [
+      "########################################",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#..P..................................G.",
+      "#########...................O.........G.",
+      "#########>........................<#####",
+      "#########>......O.................<#####",
+      "#########>........................<#####",
+      "#########>........................<#####",
+      "#########>........................<#####",
+      "#########>........................<#####",
+      "#########>........................<#####",
+      "#########>......c.................<#####",
+      "#########>........................<#####",
+      "#########>........................<#####",
+      "#########>........................<#####",
+      "#########>........................<#####",
+      "#########^^^^^^^^^^^^^^^^^^^^^^^^^^#####",
+      "########################################"
+    ],
+    "hint": "Hold grab to hang. Up shortens the chain; down pays it out. The moving thorns keep their routes.",
+    "question": "Where can you remain on the chain while the dangerous part of its arc is occupied?",
+    "sweepers": [
+      {
+        "id": "A",
+        "path": [
+          [
+            10,
+            16
+          ],
+          [
+            22,
+            16
+          ]
+        ],
+        "period": 240,
+        "phase": 60,
+        "radius": 5,
+        "loop": false
+      },
+      {
+        "id": "B",
+        "path": [
+          [
+            24,
+            5
+          ],
+          [
+            24,
+            18
+          ]
+        ],
+        "period": 220,
+        "phase": 20,
+        "radius": 5,
+        "loop": false
+      }
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 4,
+    "acceptance": "candidate",
+    "difficulty": 5,
+    "role": "timing-puzzle",
+    "worlds": [
+      34,
+      36,
+      40
+    ],
+    "tags": [
+      "timing",
+      "sweeper",
+      "hook",
+      "chain-length",
+      "linked-movement"
+    ],
+    "newMechanics": [
+      "sweeper"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "humanReview": "Author difficulty estimate only; fun/difficulty/suitability ratings pending.",
+    "entrance": "High western takeoff.",
+    "exit": "High eastern gate beyond the second ring.",
+    "solution": "Catch the first ring and shorten the chain to wait above the horizontal sweep. After the thorns pass the tally and continue away, pay out the chain, collect it, then haul back to the short safe hang. Watch the vertical patrol between rings; release and dash toward the second ring while its crossing is clear. Reel in again, then launch to the high exit.",
+    "nearestExisting": "p157 Long Chain introduces paying out the rope for a low tally. Here that low arc is periodically occupied, the short hang is the waiting pocket, and the return to that pocket sets up a second independent timed release across a vertical patrol.",
+    "novelty": "The pause is a chosen rope length rather than a platform. Extending, recovering, and releasing are different commitments with visible timing cues.",
+    "timing": {
+      "principle": "Change the shape of the safe space by shortening the chain before choosing another action.",
+      "stages": [
+        {
+          "cue": "The horizontal patrol has passed the tally and continues toward an end.",
+          "action": "Pay out, collect the low tally, and haul in before the return pass.",
+          "rest": "Short chain directly below the first ring."
+        },
+        {
+          "cue": "The vertical patrol is below the release line and moving away.",
+          "action": "Release and dash across to the second ring.",
+          "rest": "Short hang at the second ring."
+        }
+      ]
+    },
+    "requiredEvents": [
+      "hook",
+      "unhook",
+      "stone-lit",
+      "gate-open"
+    ],
+    "requiredEventCounts": {
+      "hook": 2,
+      "unhook": 2
+    },
+    "route": {
+      "frames": 354,
+      "deaths": 0,
+      "events": [
+        "hook",
+        "stone-lit",
+        "gate-open",
+        "unhook",
+        "jump",
+        "dash",
+        "land",
+        "refill-dash",
+        "exit"
+      ]
+    },
+    "bypassCheck": {
+      "payOutImmediately": {
+        "exited": false,
+        "firstFailure": {
+          "frame": 123,
+          "cause": "sweeper"
+        }
+      },
+      "releaseIntoReturningVerticalPatrol": {
+        "exited": false,
+        "firstFailure": {
+          "frame": 381,
+          "cause": "sweeper"
+        },
+        "extraHangFrames": 110
+      },
+      "scope": "Two targeted phase mistakes on the saved route; no broad search."
+    },
+    "verifiedAt": "2026-10-07",
+    "shortcutChecks": [
+      {
+        "name": "Pay out before the low sweep passes",
+        "tape": [
+          [
+            36,
+            "r"
+          ],
+          [
+            40,
+            "ug"
+          ],
+          [
+            40,
+            "dg"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            10,
+            "rg"
+          ],
+          [
+            1,
+            "rjg"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            6,
+            "rux"
+          ],
+          [
+            23,
+            "r"
+          ],
+          [
+            40,
+            "ug"
+          ],
+          [
+            1,
+            "rjg"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "firstFailure": {
+            "frame": 123,
+            "cause": "sweeper"
+          }
+        }
+      },
+      {
+        "name": "Release into the returning vertical patrol",
+        "tape": [
+          [
+            36,
+            "r"
+          ],
+          [
+            40,
+            "ug"
+          ],
+          [
+            60,
+            "ug"
+          ],
+          [
+            40,
+            "dg"
+          ],
+          [
+            50,
+            "ug"
+          ],
+          [
+            110,
+            "ug"
+          ],
+          [
+            10,
+            "rg"
+          ],
+          [
+            1,
+            "rjg"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            6,
+            "rux"
+          ],
+          [
+            23,
+            "r"
+          ],
+          [
+            40,
+            "ug"
+          ],
+          [
+            1,
+            "rjg"
+          ],
+          [
+            80,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "firstFailure": {
+            "frame": 381,
+            "cause": "sweeper"
+          }
+        }
+      }
+    ]
+  },
+  "tape": [
+    [
+      36,
+      "r"
+    ],
+    [
+      40,
+      "ug"
+    ],
+    [
+      60,
+      "ug"
+    ],
+    [
+      40,
+      "dg"
+    ],
+    [
+      50,
+      "ug"
+    ],
+    [
+      10,
+      "rg"
+    ],
+    [
+      1,
+      "rjg"
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      6,
+      "rux"
+    ],
+    [
+      23,
+      "r"
+    ],
+    [
+      40,
+      "ug"
+    ],
+    [
+      1,
+      "rjg"
+    ],
+    [
+      80,
+      "r"
+    ]
+  ]
+}

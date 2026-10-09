@@ -1,0 +1,149 @@
+{
+  "room": {
+    "id": "bank-f08",
+    "name": "Debt in Motion",
+    "palette": "fractured",
+    "lock": [
+      "strike",
+      "portal",
+      "parry"
+    ],
+    "exit": "right",
+    "stepRelays": [
+      {
+        "id": "A",
+        "duration": 60,
+        "platforms": [
+          {
+            "c": 9,
+            "r": 17,
+            "w": 4,
+            "h": 1,
+            "to": [
+              14,
+              0
+            ]
+          },
+          {
+            "c": 28,
+            "r": 6,
+            "w": 4,
+            "h": 1,
+            "to": [
+              0,
+              10
+            ]
+          }
+        ]
+      }
+    ],
+    "hint": "Both decks answer each landing. Your first landing delivers you right and brings the far deck down; your next sends it up.",
+    "question": "How do you call a lift that reverses when you board it?",
+    "map": [
+      "########################################",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.......................................",
+      "#.................................<#####",
+      "#.................................<#####",
+      "#.................................<#####",
+      "#.................................<#####",
+      "#.................................<#####",
+      "#.................................<#####",
+      "#.................................<#####",
+      "#.................................<#####",
+      "#.................................<#####",
+      "#.................................<#####",
+      "#.................................<#####",
+      "#.................................<#####",
+      "#..P..............................<#####",
+      "######............................<#####",
+      "######............................<#####",
+      "######............................<#####",
+      "######^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#####",
+      "########################################"
+    ],
+    "study": true
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 1,
+    "difficulty": 4,
+    "role": "combination",
+    "worlds": [
+      24,
+      31
+    ],
+    "tags": [
+      "step-relay",
+      "counterweight",
+      "transfer"
+    ],
+    "newMechanics": [
+      "step-relay"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "step-relay"
+    ],
+    "solution": "Land on the low shuttle, ride right while the receiver comes down, then jump onto the receiver. This second landing sends it back up; jump from the rising receiver into the exit.",
+    "entrance": "left floor at 18",
+    "exit": "right high window",
+    "proof": {
+      "frames": 219,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "step-relay",
+        "land",
+        "dash",
+        "super",
+        "exit"
+      ],
+      "verifiedAt": "2026-10-07"
+    },
+    "requiredEventCounts": {
+      "step-relay": 2
+    }
+  },
+  "tape": [
+    [
+      12,
+      "rj"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      64,
+      ""
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      20,
+      "ru"
+    ],
+    [
+      64,
+      ""
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      12,
+      "r"
+    ]
+  ]
+}

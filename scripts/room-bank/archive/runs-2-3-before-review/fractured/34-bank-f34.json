@@ -1,0 +1,982 @@
+{
+  "room": {
+    "id": "bank-f34",
+    "name": "Give Back the Wall",
+    "palette": "switchback",
+    "movement": "survive-2",
+    "study": true,
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "exit": "right",
+    "slick": [
+      [
+        10,
+        3,
+        11,
+        13
+      ]
+    ],
+    "map": [
+      "########################################",
+      "#########...............................",
+      "#########...............................",
+      "#########.BB............................",
+      "#########.BB............................",
+      "#########.BB............................",
+      "#########.BB............................",
+      "#########.BB............................",
+      "#########.BB....x.......................",
+      "#########.BB............................",
+      "#########.BB.......AAAAAAAAAAAA#########",
+      "#########.BB...................#########",
+      "#########.BB...................#########",
+      "#########.BB...................#########",
+      "#########......................#########",
+      "#########......................#########",
+      "#########......................#########",
+      "#########......................#########",
+      "#########......................#########",
+      "#########...P..................#########",
+      "##################.............#########",
+      "##################^^^^^^^^^^^^^#########",
+      "########################################"
+    ],
+    "hint": "Updash creates the wall · Hold Jump to bounce; strike the bell to restore the landing.",
+    "question": "When has the launch wall finished its job, and which shape do you need next?"
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 6,
+    "run": 2,
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "airborne phase handoff",
+    "worlds": [
+      3,
+      19,
+      27
+    ],
+    "tags": [
+      "wallbounce",
+      "phase",
+      "bell",
+      "airborne-strike"
+    ],
+    "newMechanics": [
+      "wallbounce-grace"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "late-wallbounce",
+      "bell"
+    ],
+    "entrance": "Lower west pocket beside the ghost of the launch wall.",
+    "exit": "Upper east gallery after the phase landing.",
+    "solution": "Updash beside the ghost wall: the dash makes it solid but removes the upper landing. Let the short residual rise reach its bottom edge, then wallbounce right. Strike the overhead bell after leaving the wall, restoring the upper landing beneath your arc.",
+    "nearestExisting": "Switchback rooms trade phase footholds and earlier slick-wall rooms teach ordinary wallbounce. The receiving floor here disappears on the exact dash that creates the launch face; an airborne bell changes the same machinery back only after the launch is secured.",
+    "novelty": "One phase layout cannot provide both launch wall and receiving floor. The wall is used then deliberately given back; the new late-contact window supports the grounded upward setup while the aerial blade input finishes the transfer.",
+    "positiveChecks": [
+      {
+        "name": "Jump on post-dash frame 1",
+        "tape": [
+          [
+            13,
+            "ux"
+          ],
+          [
+            4,
+            "j"
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            5,
+            "ujs"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 159,
+          "events": [
+            "phase",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "strike",
+            "bell",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "phase": 2,
+            "dash": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "strike": 1,
+            "bell": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Jump on post-dash frame 2",
+        "tape": [
+          [
+            14,
+            "ux"
+          ],
+          [
+            4,
+            "j"
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            5,
+            "ujs"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 160,
+          "events": [
+            "phase",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "strike",
+            "bell",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "phase": 2,
+            "dash": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "strike": 1,
+            "bell": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Jump on post-dash frame 3",
+        "tape": [
+          [
+            15,
+            "ux"
+          ],
+          [
+            4,
+            "j"
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            5,
+            "ujs"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 160,
+          "events": [
+            "phase",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "strike",
+            "bell",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "phase": 2,
+            "dash": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "strike": 1,
+            "bell": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Jump on post-dash frame 4",
+        "tape": [
+          [
+            16,
+            "ux"
+          ],
+          [
+            4,
+            "j"
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            5,
+            "ujs"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 161,
+          "events": [
+            "phase",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "strike",
+            "bell",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "phase": 2,
+            "dash": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "strike": 1,
+            "bell": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Jump on post-dash frame 5",
+        "tape": [
+          [
+            17,
+            "ux"
+          ],
+          [
+            4,
+            "j"
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            5,
+            "ujs"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 162,
+          "events": [
+            "phase",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "strike",
+            "bell",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "phase": 2,
+            "dash": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "strike": 1,
+            "bell": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Jump on post-dash frame 6",
+        "tape": [
+          [
+            18,
+            "ux"
+          ],
+          [
+            4,
+            "j"
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            5,
+            "ujs"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 163,
+          "events": [
+            "phase",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "strike",
+            "bell",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "phase": 2,
+            "dash": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "strike": 1,
+            "bell": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Airborne strike timing -3 frames from preview",
+        "tape": [
+          [
+            15,
+            "ux"
+          ],
+          [
+            4,
+            "j"
+          ],
+          [
+            4,
+            "rj"
+          ],
+          [
+            5,
+            "ujs"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 161,
+          "events": [
+            "phase",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "strike",
+            "bell",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "phase": 2,
+            "dash": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "strike": 1,
+            "bell": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Airborne strike timing -2 frames from preview",
+        "tape": [
+          [
+            15,
+            "ux"
+          ],
+          [
+            4,
+            "j"
+          ],
+          [
+            5,
+            "rj"
+          ],
+          [
+            5,
+            "ujs"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 161,
+          "events": [
+            "phase",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "strike",
+            "bell",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "phase": 2,
+            "dash": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "strike": 1,
+            "bell": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Airborne strike timing -1 frames from preview",
+        "tape": [
+          [
+            15,
+            "ux"
+          ],
+          [
+            4,
+            "j"
+          ],
+          [
+            6,
+            "rj"
+          ],
+          [
+            5,
+            "ujs"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 161,
+          "events": [
+            "phase",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "strike",
+            "bell",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "phase": 2,
+            "dash": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "strike": 1,
+            "bell": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Airborne strike timing 1 frames from preview",
+        "tape": [
+          [
+            15,
+            "ux"
+          ],
+          [
+            4,
+            "j"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            5,
+            "ujs"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 160,
+          "events": [
+            "phase",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "strike",
+            "bell",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "phase": 2,
+            "dash": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "strike": 1,
+            "bell": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Airborne strike timing 2 frames from preview",
+        "tape": [
+          [
+            15,
+            "ux"
+          ],
+          [
+            4,
+            "j"
+          ],
+          [
+            9,
+            "rj"
+          ],
+          [
+            5,
+            "ujs"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 160,
+          "events": [
+            "phase",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "strike",
+            "bell",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "phase": 2,
+            "dash": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "strike": 1,
+            "bell": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Airborne strike timing 3 frames from preview",
+        "tape": [
+          [
+            15,
+            "ux"
+          ],
+          [
+            4,
+            "j"
+          ],
+          [
+            10,
+            "rj"
+          ],
+          [
+            5,
+            "ujs"
+          ],
+          [
+            8,
+            "rj"
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 160,
+          "events": [
+            "phase",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "strike",
+            "bell",
+            "land",
+            "refill-dash",
+            "exit"
+          ],
+          "eventCounts": {
+            "phase": 2,
+            "dash": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "strike": 1,
+            "bell": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "exit": 1
+          },
+          "firstFailure": null
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Omit the bell and keep the launch wall",
+        "tape": [
+          [
+            15,
+            "ux"
+          ],
+          [
+            4,
+            "j"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            65,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 96,
+          "events": [
+            "phase",
+            "dash",
+            "wallbounce",
+            "late-wallbounce",
+            "death"
+          ],
+          "eventCounts": {
+            "phase": 1,
+            "dash": 1,
+            "wallbounce": 1,
+            "late-wallbounce": 1,
+            "death": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 87,
+            "x": 216,
+            "y": 171,
+            "cause": "spikes",
+            "vx": 90,
+            "vy": 0,
+            "i": 86
+          }
+        }
+      },
+      {
+        "name": "Ordinary jump and diagonal dash at the receiving floor",
+        "tape": [
+          [
+            12,
+            "rj"
+          ],
+          [
+            13,
+            "rux"
+          ],
+          [
+            5,
+            "us"
+          ],
+          [
+            65,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 95,
+          "events": [
+            "jump",
+            "phase",
+            "dash",
+            "strike",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "phase": 1,
+            "dash": 1,
+            "strike": 1,
+            "death": 1,
+            "respawn": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 60,
+            "x": 193,
+            "y": 171,
+            "cause": "spikes",
+            "vx": 90,
+            "vy": 0,
+            "i": 59
+          }
+        }
+      },
+      {
+        "name": "Jump and updash without a wallbounce",
+        "tape": [
+          [
+            12,
+            "j"
+          ],
+          [
+            15,
+            "ux"
+          ],
+          [
+            5,
+            "us"
+          ],
+          [
+            65,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 97,
+          "events": [
+            "jump",
+            "phase",
+            "dash",
+            "strike",
+            "land",
+            "refill-dash",
+            "death"
+          ],
+          "eventCounts": {
+            "jump": 1,
+            "phase": 1,
+            "dash": 1,
+            "strike": 1,
+            "land": 1,
+            "refill-dash": 1,
+            "death": 1
+          },
+          "firstFailure": {
+            "type": "death",
+            "frame": 79,
+            "x": 165,
+            "y": 171,
+            "cause": "spikes",
+            "vx": 90,
+            "vy": 160,
+            "i": 78
+          }
+        }
+      }
+    ],
+    "humanReview": "Candidate: no fun, difficulty or suitability scores assigned.",
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 160,
+      "events": [
+        "phase",
+        "dash",
+        "wallbounce",
+        "late-wallbounce",
+        "strike",
+        "bell",
+        "land",
+        "refill-dash",
+        "exit"
+      ],
+      "eventCounts": {
+        "phase": 2,
+        "dash": 1,
+        "wallbounce": 1,
+        "late-wallbounce": 1,
+        "strike": 1,
+        "bell": 1,
+        "land": 1,
+        "refill-dash": 1,
+        "exit": 1
+      },
+      "firstFailure": null
+    },
+    "designNotes": "The lower pocket remains a safe place to line up the grounded updash. Every one of the six post-dash Jump press timings completes. The bell strike independently tolerates seven consecutive timings while Jump remains held. Two phase flips occur: one from the dash and one from the bell; the wallbounce itself never flips phase."
+  },
+  "tape": [
+    [
+      15,
+      "ux"
+    ],
+    [
+      4,
+      "j"
+    ],
+    [
+      7,
+      "rj"
+    ],
+    [
+      5,
+      "ujs"
+    ],
+    [
+      8,
+      "rj"
+    ],
+    [
+      150,
+      "r"
+    ]
+  ]
+}

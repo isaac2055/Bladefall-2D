@@ -1,0 +1,1527 @@
+{
+  "room": {
+    "id": "bank-f30",
+    "name": "Bring Back the Arc",
+    "palette": "cliffs",
+    "study": true,
+    "lock": [
+      "parry"
+    ],
+    "map": [
+      "########################################",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#.....................................G#",
+      "#..P..................................G#",
+      "######................................G#",
+      "#.....................................G.",
+      "#........#............................G.",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#.....................................G.",
+      "#..................#####################",
+      "#.................O....................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "#......................................#",
+      "###########............................#",
+      "###########............c...............#",
+      "###########............................#",
+      "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#"
+    ],
+    "echo": true,
+    "dashes": 0,
+    "beams": [
+      {
+        "c": 11,
+        "r": 13,
+        "dir": "r"
+      }
+    ],
+    "hint": "{echo} saves / swaps \u00b7 Keep holding Grab: press {echo} on the rising rightward swing. The rope releases for you.",
+    "question": "Can you bring back a useful arc, rather than only bringing yourself back?",
+    "showHintAtRest": true
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 8,
+    "run": 1,
+    "acceptance": "banked",
+    "difficulty": 4,
+    "role": "solve",
+    "worlds": [
+      25,
+      34,
+      40
+    ],
+    "tags": [
+      "echo",
+      "hook",
+      "momentum",
+      "launch-angle",
+      "beam"
+    ],
+    "newMechanics": [],
+    "entrance": "High west balcony and narrow echo perch.",
+    "exit": "Wide eastern shelf, three tiles farther west and one tile lower than the first revision.",
+    "status": "route-proven",
+    "author": "Codex",
+    "requiredEvents": [
+      "echo-place",
+      "hook",
+      "unhook",
+      "echo-swap",
+      "stone-lit"
+    ],
+    "humanReview": "User qualitative approval recorded; numeric ratings remain unmeasured.",
+    "solution": "Place the echo on the upper isolated perch. Catch the lower ring, pay out for the low tally, then reel in through the leftward return. Pump right. During the next rising rightward arc, press Echo while continuing to hold Grab: the swap now releases the old tether automatically and preserves the swing velocity. Jump + Echo remains an optional higher departure. The receiving shelf is three tiles wider and one tile lower than the previous revision.",
+    "nearestExisting": "p131 The Citadel and F19 The Weight Must Stay relocate a prepared machinery launch. Here the launch is made by changing a rope length and steering a pendulum after a low objective; the direction and vertical component at release determine whether the relocated arc clears the gulf.",
+    "novelty": "There is no dash fallback. The low tally asks for an extended outward arc; the exit asks for a shortened rising return. The same controllable pendulum must supply both trajectories, and the echo transports its velocity across an otherwise lethal beam partition. The upper route is deliberately beyond an ordinary jump from the echo perch.",
+    "designNotes": "Fixed a real engine bug: echo-swapping while still hooked previously retained the old spatial tether, causing a huge pull toward the old ring. Successful swaps now call normal hook release before teleportation; blocked swaps leave the tether intact. The canonical route deliberately keeps Grab held through the swap. Human-keyboard coverage verifies the same path.",
+    "route": {
+      "frames": 307,
+      "deaths": 0,
+      "events": [
+        "jump",
+        "land",
+        "echo-place",
+        "hook",
+        "stone-lit",
+        "gate-open",
+        "unhook",
+        "echo-swap",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 2,
+        "land": 3,
+        "echo-place": 1,
+        "hook": 1,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "unhook": 1,
+        "echo-swap": 1,
+        "exit": 1
+      }
+    },
+    "shortcutChecks": [
+      {
+        "name": "Settle the rope, swap onto the perch, then attempt an ordinary jump",
+        "tape": [
+          [
+            5,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            18,
+            "rjg"
+          ],
+          [
+            15,
+            "rg"
+          ],
+          [
+            32,
+            "rdg"
+          ],
+          [
+            12,
+            "lug"
+          ],
+          [
+            8,
+            "lg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            90,
+            "ug"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0,
+          "firstFailure": null
+        }
+      },
+      {
+        "name": "Skip placing the upper echo",
+        "tape": [
+          [
+            5,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            18,
+            "rjg"
+          ],
+          [
+            15,
+            "rg"
+          ],
+          [
+            32,
+            "rdg"
+          ],
+          [
+            12,
+            "lug"
+          ],
+          [
+            8,
+            "lg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            25,
+            "rg"
+          ],
+          [
+            4,
+            "rug"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            1,
+            "rq"
+          ],
+          [
+            110,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "firstFailure": {
+            "type": "death",
+            "frame": 284,
+            "x": 308,
+            "y": 179,
+            "cause": "spikes",
+            "vx": 10.833333333333334,
+            "vy": 130,
+            "i": 283
+          }
+        }
+      },
+      {
+        "name": "Ordinary held jump and climb after returning to the echo perch",
+        "tape": [
+          [
+            5,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            18,
+            "rjg"
+          ],
+          [
+            15,
+            "rg"
+          ],
+          [
+            32,
+            "rdg"
+          ],
+          [
+            12,
+            "lug"
+          ],
+          [
+            8,
+            "lg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            90,
+            "ug"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            100,
+            "rug"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "firstFailure": {
+            "type": "death",
+            "frame": 399,
+            "x": 143,
+            "y": 106,
+            "cause": "light",
+            "vx": -166.22923853473694,
+            "vy": 223.3687148377402,
+            "i": 398
+          }
+        }
+      }
+    ],
+    "userFeedback": {
+      "date": "2026-10-08",
+      "comment": "Echo transfer still failed in manual play despite intended replay; diagnose and make much easier."
+    },
+    "revision": {
+      "date": "2026-10-08",
+      "reason": "Fix stale rope constraint during echo exchange and simplify the manual finish.",
+      "changes": [
+        "Successful echo swap releases the old tether using normal hook release, retaining departure velocity.",
+        "The canonical route now swaps while Grab stays held; no release-then-swap sequence required.",
+        "Receiving shelf widened three tiles and lowered one; beam lowered with it.",
+        "Hint shows the currently bound Echo control before first input."
+      ],
+      "archive": "scripts/room-bank/archive/runs-2-3-before-review/fractured/30-bank-f30.json",
+      "evidence": "scripts/room-bank/evidence/run23/f30-echo.json"
+    },
+    "positiveChecks": [
+      {
+        "name": "Held Grab + Echo, reel 2, departure 21",
+        "normalSpawn": true,
+        "tape": [
+          [
+            5,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            18,
+            "rjg"
+          ],
+          [
+            15,
+            "rg"
+          ],
+          [
+            32,
+            "rdg"
+          ],
+          [
+            12,
+            "lug"
+          ],
+          [
+            8,
+            "lg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            21,
+            "rg"
+          ],
+          [
+            2,
+            "rug"
+          ],
+          [
+            1,
+            "rgq"
+          ],
+          [
+            180,
+            "rg"
+          ]
+        ],
+        "frames": 351,
+        "deaths": 0
+      },
+      {
+        "name": "Held Grab + Echo, reel 2, departure 34",
+        "normalSpawn": true,
+        "tape": [
+          [
+            5,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            18,
+            "rjg"
+          ],
+          [
+            15,
+            "rg"
+          ],
+          [
+            32,
+            "rdg"
+          ],
+          [
+            12,
+            "lug"
+          ],
+          [
+            8,
+            "lg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            34,
+            "rg"
+          ],
+          [
+            2,
+            "rug"
+          ],
+          [
+            1,
+            "rgq"
+          ],
+          [
+            180,
+            "rg"
+          ]
+        ],
+        "frames": 417,
+        "deaths": 0
+      },
+      {
+        "name": "Held Grab + Echo, reel 4, departure 19",
+        "normalSpawn": true,
+        "tape": [
+          [
+            5,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            18,
+            "rjg"
+          ],
+          [
+            15,
+            "rg"
+          ],
+          [
+            32,
+            "rdg"
+          ],
+          [
+            12,
+            "lug"
+          ],
+          [
+            8,
+            "lg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            19,
+            "rg"
+          ],
+          [
+            4,
+            "rug"
+          ],
+          [
+            1,
+            "rgq"
+          ],
+          [
+            180,
+            "rg"
+          ]
+        ],
+        "frames": 348,
+        "deaths": 0
+      },
+      {
+        "name": "Held Grab + Echo, reel 4, departure 32",
+        "normalSpawn": true,
+        "tape": [
+          [
+            5,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            18,
+            "rjg"
+          ],
+          [
+            15,
+            "rg"
+          ],
+          [
+            32,
+            "rdg"
+          ],
+          [
+            12,
+            "lug"
+          ],
+          [
+            8,
+            "lg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            32,
+            "rg"
+          ],
+          [
+            4,
+            "rug"
+          ],
+          [
+            1,
+            "rgq"
+          ],
+          [
+            180,
+            "rg"
+          ]
+        ],
+        "frames": 415,
+        "deaths": 0
+      },
+      {
+        "name": "Held Grab + Echo, reel 6, departure 14",
+        "normalSpawn": true,
+        "tape": [
+          [
+            5,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            18,
+            "rjg"
+          ],
+          [
+            15,
+            "rg"
+          ],
+          [
+            32,
+            "rdg"
+          ],
+          [
+            12,
+            "lug"
+          ],
+          [
+            8,
+            "lg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            14,
+            "rg"
+          ],
+          [
+            6,
+            "rug"
+          ],
+          [
+            1,
+            "rgq"
+          ],
+          [
+            180,
+            "rg"
+          ]
+        ],
+        "frames": 352,
+        "deaths": 0
+      },
+      {
+        "name": "Held Grab + Echo, reel 6, departure 30",
+        "normalSpawn": true,
+        "tape": [
+          [
+            5,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            18,
+            "rjg"
+          ],
+          [
+            15,
+            "rg"
+          ],
+          [
+            32,
+            "rdg"
+          ],
+          [
+            12,
+            "lug"
+          ],
+          [
+            8,
+            "lg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            30,
+            "rg"
+          ],
+          [
+            6,
+            "rug"
+          ],
+          [
+            1,
+            "rgq"
+          ],
+          [
+            180,
+            "rg"
+          ]
+        ],
+        "frames": 415,
+        "deaths": 0
+      },
+      {
+        "name": "Held Grab + Jump + Echo, reel 2, departure 14",
+        "normalSpawn": true,
+        "tape": [
+          [
+            5,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            18,
+            "rjg"
+          ],
+          [
+            15,
+            "rg"
+          ],
+          [
+            32,
+            "rdg"
+          ],
+          [
+            12,
+            "lug"
+          ],
+          [
+            8,
+            "lg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            14,
+            "rg"
+          ],
+          [
+            2,
+            "rug"
+          ],
+          [
+            1,
+            "rjgq"
+          ],
+          [
+            180,
+            "rg"
+          ]
+        ],
+        "frames": 357,
+        "deaths": 0
+      },
+      {
+        "name": "Held Grab + Jump + Echo, reel 2, departure 35",
+        "normalSpawn": true,
+        "tape": [
+          [
+            5,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            18,
+            "rjg"
+          ],
+          [
+            15,
+            "rg"
+          ],
+          [
+            32,
+            "rdg"
+          ],
+          [
+            12,
+            "lug"
+          ],
+          [
+            8,
+            "lg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            35,
+            "rg"
+          ],
+          [
+            2,
+            "rug"
+          ],
+          [
+            1,
+            "rjgq"
+          ],
+          [
+            180,
+            "rg"
+          ]
+        ],
+        "frames": 421,
+        "deaths": 0
+      },
+      {
+        "name": "Held Grab + Jump + Echo, reel 4, departure 14",
+        "normalSpawn": true,
+        "tape": [
+          [
+            5,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            18,
+            "rjg"
+          ],
+          [
+            15,
+            "rg"
+          ],
+          [
+            32,
+            "rdg"
+          ],
+          [
+            12,
+            "lug"
+          ],
+          [
+            8,
+            "lg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            14,
+            "rg"
+          ],
+          [
+            4,
+            "rug"
+          ],
+          [
+            1,
+            "rjgq"
+          ],
+          [
+            180,
+            "rg"
+          ]
+        ],
+        "frames": 343,
+        "deaths": 0
+      },
+      {
+        "name": "Held Grab + Jump + Echo, reel 4, departure 35",
+        "normalSpawn": true,
+        "tape": [
+          [
+            5,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            18,
+            "rjg"
+          ],
+          [
+            15,
+            "rg"
+          ],
+          [
+            32,
+            "rdg"
+          ],
+          [
+            12,
+            "lug"
+          ],
+          [
+            8,
+            "lg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            35,
+            "rg"
+          ],
+          [
+            4,
+            "rug"
+          ],
+          [
+            1,
+            "rjgq"
+          ],
+          [
+            180,
+            "rg"
+          ]
+        ],
+        "frames": 424,
+        "deaths": 0
+      },
+      {
+        "name": "Held Grab + Jump + Echo, reel 6, departure 14",
+        "normalSpawn": true,
+        "tape": [
+          [
+            5,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            18,
+            "rjg"
+          ],
+          [
+            15,
+            "rg"
+          ],
+          [
+            32,
+            "rdg"
+          ],
+          [
+            12,
+            "lug"
+          ],
+          [
+            8,
+            "lg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            14,
+            "rg"
+          ],
+          [
+            6,
+            "rug"
+          ],
+          [
+            1,
+            "rjgq"
+          ],
+          [
+            180,
+            "rg"
+          ]
+        ],
+        "frames": 302,
+        "deaths": 0
+      },
+      {
+        "name": "Held Grab + Jump + Echo, reel 6, departure 33",
+        "normalSpawn": true,
+        "tape": [
+          [
+            5,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "q"
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            18,
+            "rjg"
+          ],
+          [
+            15,
+            "rg"
+          ],
+          [
+            32,
+            "rdg"
+          ],
+          [
+            12,
+            "lug"
+          ],
+          [
+            8,
+            "lg"
+          ],
+          [
+            20,
+            "rg"
+          ],
+          [
+            33,
+            "rg"
+          ],
+          [
+            6,
+            "rug"
+          ],
+          [
+            1,
+            "rjgq"
+          ],
+          [
+            180,
+            "rg"
+          ]
+        ],
+        "frames": 425,
+        "deaths": 0
+      }
+    ],
+    "toleranceSummary": [
+      {
+        "name": "Release and swap timing window",
+        "releaseRunupFrames": [
+          20,
+          28
+        ],
+        "reelFrames": 4,
+        "swapDelayFrames": [
+          0,
+          7
+        ],
+        "normalSpawn": true,
+        "attempts": 72,
+        "zeroDeathCompletions": 72
+      },
+      {
+        "name": "Reel duration variation at the central launch",
+        "releaseRunupFrames": 24,
+        "swapDelayFrames": 3,
+        "results": [
+          {
+            "reelFrames": 1,
+            "exited": true,
+            "deaths": 0,
+            "frames": 308
+          },
+          {
+            "reelFrames": 2,
+            "exited": true,
+            "deaths": 0,
+            "frames": 302
+          },
+          {
+            "reelFrames": 3,
+            "exited": true,
+            "deaths": 0,
+            "frames": 303
+          },
+          {
+            "reelFrames": 4,
+            "exited": true,
+            "deaths": 0,
+            "frames": 305
+          },
+          {
+            "reelFrames": 5,
+            "exited": true,
+            "deaths": 0,
+            "frames": 314
+          },
+          {
+            "reelFrames": 6,
+            "exited": true,
+            "deaths": 0,
+            "frames": 323
+          },
+          {
+            "reelFrames": 7,
+            "exited": true,
+            "deaths": 0,
+            "frames": 340
+          }
+        ]
+      }
+    ],
+    "feedbackHistory": [
+      {
+        "date": "2026-10-08",
+        "decision": "banked",
+        "comment": "Fixed! Love it, bank it."
+      }
+    ],
+    "review": {
+      "date": "2026-10-08",
+      "decision": "banked",
+      "comment": "Fixed! Love it, bank it."
+    }
+  },
+  "tape": [
+    [
+      5,
+      "r"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      15,
+      "r"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      1,
+      "q"
+    ],
+    [
+      14,
+      "l"
+    ],
+    [
+      35,
+      ""
+    ],
+    [
+      16,
+      "r"
+    ],
+    [
+      18,
+      "rjg"
+    ],
+    [
+      15,
+      "rg"
+    ],
+    [
+      32,
+      "rdg"
+    ],
+    [
+      12,
+      "lug"
+    ],
+    [
+      8,
+      "lg"
+    ],
+    [
+      20,
+      "rg"
+    ],
+    [
+      24,
+      "rg"
+    ],
+    [
+      4,
+      "rug"
+    ],
+    [
+      1,
+      "rgq"
+    ],
+    [
+      180,
+      "rg"
+    ]
+  ]
+}

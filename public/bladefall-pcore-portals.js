@@ -20,7 +20,7 @@
 (function(root){
 'use strict';
 const C=()=>root.BladefallPrecisionCore;
-const TILE=8,COLS=40,ROWS=23;
+const TILE=8;
 const PK=Object.freeze({minOut:170,cool:4,rayMax:420});
 const N={u:[0,-1],d:[0,1],l:[-1,0],r:[1,0]};
 const overlap=(ax,ay,aw,ah,bx,by,bw,bh)=>ax<bx+bw&&ax+aw>bx&&ay<by+bh&&ay+ah>by;
@@ -32,7 +32,7 @@ function frontOf(pt){const [nx,ny]=N[pt.face];return tilesOf(pt).map(([c,r])=>[c
 function make(color,c,r,face,fixed=false){return {color,c,r,face,fixed};}
 
 function slotOK(g,pt){
- const room=g.room;
+ const room=g.room,COLS=room.cols,ROWS=room.rows;
  for(const [c,r] of tilesOf(pt)){if(c<0||c>=COLS||r<0||r>=ROWS)return false;const i=r*COLS+c;if(!room.portalable[i]||room.grid[i]!==C().SOLID)return false;}
  for(const [c,r] of frontOf(pt)){if(c<0||c>=COLS||r<0||r>=ROWS)return false;if(room.grid[r*COLS+c]===C().SOLID)return false;}
  // Not on top of the other end.
@@ -41,7 +41,7 @@ function slotOK(g,pt){
 }
 function refreshHoles(g){
  const b=g.portals.blue,o=g.portals.orange;g.portalHoles=new Set();
- if(b&&o)for(const pt of [b,o])for(const [c,r] of tilesOf(pt))g.portalHoles.add(r*COLS+c);
+ if(b&&o)for(const pt of [b,o])for(const [c,r] of tilesOf(pt))g.portalHoles.add(r*g.room.cols+c);
 }
 
 function reset(g){
@@ -57,12 +57,12 @@ function reset(g){
 /* The shot: a ray from the knight's middle, one pixel at a time. It lands on the first solid it meets —
    on portal stone it opens (snapped to the nearer two-tile slot), on anything else it fails. */
 function fire(g,dx,dy){
- const Core=C(),p=g.p;
+ const Core=C(),p=g.p,COLS=g.room.cols,ROWS=g.room.rows;
  const n=Math.hypot(dx,dy)||1,sx=dx/n,sy=dy/n;
  let x=p.x+4,y=p.y+5,pc=Math.floor(x/TILE),pr=Math.floor(y/TILE);
  for(let i=0;i<PK.rayMax;i++){
   x+=sx;y+=sy;const c=Math.floor(x/TILE),r=Math.floor(y/TILE);
-  if(x<0||y<0||x>=Core.W||y>=Core.H)return {ok:false,x,y};
+  if(x<0||y<0||x>=g.room.w||y>=g.room.h)return {ok:false,x,y};
   if(g.room.grill[r*COLS+c])return {ok:false,x,y,grill:true};
   const ent=g.ents.find(e=>(e.type==='toggle'||e.type==='gate'||e.type==='held'||e.type==='slide'||e.type==='zip'||e.type==='foeSolid'||e.type==='crumble'||e.type==='combatGate'||e.type==='brittle'||e.dev&&!e.shotThrough)&&isSolid(e)&&x>=e.x&&x<e.x+e.w&&y>=e.y&&y<e.y+e.h);
   if(ent)return {ok:false,x,y};
@@ -134,7 +134,7 @@ function carry(g,body,vxKey,vyKey,kind){
 
 function before(g,inp){
  if(!g.portals)return;
- const Core=C(),p=g.p;
+ const Core=C(),p=g.p,COLS=g.room.cols,ROWS=g.room.rows;
  if(p.portalCool>0)p.portalCool--;
  // Fire: the direction held at the press, or the way you face.
  if(g.buf.portal>0&&g.room.def.portalMode!=='fixed'&&p.state!=='dead'&&p.state!=='respawn'&&!p.carrying){
@@ -151,7 +151,7 @@ function before(g,inp){
 }
 function after(g,inp){
  if(!g.portals)return;
- const Core=C(),p=g.p;
+ const Core=C(),p=g.p,COLS=g.room.cols,ROWS=g.room.rows;
  // A barrier line closes the ends you placed.
  const c0=Math.floor(p.x/TILE),c1=Math.floor((p.x+p.w-1)/TILE),r0=Math.floor(p.y/TILE),r1=Math.floor((p.y+p.h-1)/TILE);
  let crossed=false;for(let r=r0;r<=r1;r++)for(let c=c0;c<=c1;c++)if(r>=0&&r<ROWS&&c>=0&&c<COLS&&g.room.grill[r*COLS+c])crossed=true;
