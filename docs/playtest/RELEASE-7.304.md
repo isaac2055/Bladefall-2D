@@ -18,7 +18,7 @@ Each Survival time records hearts collected during that run. The heart ranking p
 
 Survive co-op is a race with visible partner ghosts. Devices, portals, enemies, collectibles, deaths and completion remain local to each player. Following a partner into an unfinished room places the visitor at their own authored checkpoint, invalidates the timed trial, and does not grant the partner's solutions.
 
-**Public score service remains unconnected at release preparation.** The existing Pages site did not have a working API, and Wrangler is not authenticated on this machine. The prepared Pages adapter returns an explicit 503 until the separately deployed API Worker is bound. Local scores and feedback remain saved and queued. Do not present public syncing as verified until the activation guide's production checks pass. This does not block the static game or APK release.
+**Public leaderboard syncing is live.** The API Worker and persistent SQLite storage are deployed, and production Pages is connected through `PLAYTEST_API`. The public endpoint returns the current season's JSON, the live browser board loads it, Android GET/preflight access passes, and foreign-origin preflight is rejected. Private feedback export remains disabled until its optional organizer secret is configured. Offline scores and feedback remain queued for automatic retry. Cloudflare's production configuration contains the binding; preview configuration is unbound. See [deployment evidence and maintenance](PAGES-API-7.304.md).
 
 ## Input and Android
 
@@ -44,6 +44,7 @@ The finale rows display as 41 and 42, while legacy internal stage identities rem
 - Sixteen co-op checks use actual PeerJS/WebRTC between two isolated browser profiles, including ordinary imports, a superroom and Fractured material.
 - Fifty-six focused unit tests cover input and Explore progression/finale compatibility. Browser finale checks exercise actual defeat, retry, choice persistence and all four concluding phases with accelerated HP/Palace-clear fixtures; they are not a full unassisted campaign playthrough.
 - Score checks cover fresh and repeat heart collection, slower collectible bests surviving API storage, archive preservation, invalid records and complete-world aggregation. Browser release checks cover menus, optional tiles, heart routes and both current-run completion guards.
-- Android build, signature, asset parity, source syntax, Pages asset validation and diff whitespace checks pass.
+- Android build, signature, asset parity, source syntax, Pages asset validation and diff whitespace checks pass. The public APK download returns 200, and nine deployed game files match local release hashes. Live mobile browser checks load both modes.
+- Production API checks pass: JSON 200/current season, APK GET 200 and preflight 204 with the expected origin, foreign preflight 403, and unauthenticated feedback export 404. A live browser invalid POST reaches validation with 400 without writing a test score. Actual score/heart persistence is covered by the local compiled Worker/SQLite integration proof; no synthetic leaderboard entries were published.
 
 Physical Android hardware and a physical controller have not been tested. Difficulty and comfort still need human playtesting. Current evidence is in ignored local directories `scripts/climb/.cache/integration-7.304/`, `mobile-7.304/`, `coop-7.304/`, `explore-finale-7.304/`, and `scripts/playtest-release/.cache/checks/`.
