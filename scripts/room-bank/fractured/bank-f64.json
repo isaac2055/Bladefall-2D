@@ -17,12 +17,12 @@
       "#..............................................................................................#",
       "#..............................................................................................#",
       "#..............................................................................................#",
+      "#................................................................########......................G",
       "#..............................................................................................G",
       "#..............................................................................................G",
       "#..............................................................................................G",
       "#..............................................................................................G",
-      "#..............................................................................................G",
-      "#.....................................................................................##########",
+      "#................................................................................=====##########",
       "#....................................................................................<##########",
       "#....................................................................................<##########",
       "#....................................................................................<##########",
@@ -72,9 +72,13 @@
         {
           "c": 90,
           "r": 11
+        },
+        {
+          "c": 67,
+          "r": 6
         }
       ],
-      "hits": 3,
+      "hits": 4,
       "every": 180,
       "tell": 46,
       "first": 190,
@@ -110,10 +114,19 @@
             81,
             10
           ]
+        },
+        {
+          "c": 86,
+          "r": 12,
+          "w": 9,
+          "to": [
+            81,
+            4
+          ]
         }
       ]
     },
-    "hint": "Return his arrow from the carrier. His empty perch calls it uphill. Leave the second shot for your return.",
+    "hint": "Return his arrows from the carrier. Every vacated perch sends it higher; when he doubles back, jump into the last firing line.",
     "question": "Why does the place he just left become useful before the place he lands?"
   },
   "bank": {
@@ -122,8 +135,8 @@
     "run": 8,
     "collection": "superrooms",
     "format": "superroom",
-    "acceptance": "banked",
-    "difficulty": 3,
+    "acceptance": "revised",
+    "difficulty": 4,
     "role": "interconnected boss superroom",
     "worlds": [
       25
@@ -140,13 +153,13 @@
     "newMechanics": [],
     "status": "route-proven",
     "author": "Codex",
-    "humanReview": "Approved to bank and integrate after one modest boss element; re-review requested for the revision.",
+    "humanReview": "User approved the first three phases and requested a harder fourth native continuation; revision awaits review.",
     "approvedIngredients": [
       "bank-f33",
       "bank-f27"
     ],
-    "interconnection": "One carrier crosses the whole arena. Each vacated Marksman perch contains a physical pressure landing that reroutes that same carrier to the next firing tier. The boss leaps ahead after a returned arrow; the player follows through his previous position. His first draw after each leap is now a slow, visibly marked arrow rain over the vacated perch, making that perch a departure point rather than a camping spot.",
-    "solution": "Board the outgoing carrier and parry the first marked arrow without directional aim. Jump onto the abandoned first perch; its switch redirects the carrier up to the middle tier. Catch the carrier again, return a second arrow, and land on the vacated middle perch. Its switch turns the carrier into the final approach; wavedash from its deck toward the final paired shot and return it from the broad eastern shelf. After each leap he rains arrows onto the perch you just took: leave on the same rerouted carrier while the broad warning band is still clear.",
+    "interconnection": "One carrier crosses the whole arena. Each vacated Marksman perch contains a physical pressure landing that reroutes that same carrier to the next firing tier. The boss leaps ahead after a returned arrow; the player follows through his previous position. His first draw after each leap is now a slow, visibly marked arrow rain over the vacated perch, making that perch a departure point rather than a camping spot. A fourth leap reverses the chase: the eastern pressure landing sends the very same carrier to the roof, and the middle buttress becomes the return boarding point. The highest firing line crosses above the descending deck, rewarding an airborne parry rather than waiting through one more shot.",
+    "solution": "Board the outgoing carrier and parry the first marked arrow without directional aim. Jump onto the abandoned first perch; its switch redirects the carrier up to the middle tier. Catch the carrier again, return a second arrow, and land on the vacated middle perch. Its switch turns the carrier into the final approach; wavedash from its deck toward the third paired shot and return it from the broad eastern shelf. He now leaps back to a new upper-western perch. The vacated eastern pressure landing reroutes the same carrier to its highest tier. Retreat onto the middle buttress, jump and diagonally dash back onto the climbing carrier, then move along its deck to avoid the post-leap rain. As the carrier descends from its top turn, jump into the fourth locked firing line and parry in the air. Dash east to the extended one-way recovery ledge and walk through the original exit after his actual defeat. After each leap he rains arrows onto the perch you just took: leave on the same rerouted carrier while the broad warning band is still clear.",
     "novelty": "The player and boss exchange perches, with each pressure landing physically changing the same transport rather than adding independent room counters.",
     "nearestExisting": "F33 preferred parry-retreat-wavedash and F27 carrier movement; native Marksman supplies the projectile and actual defeat.",
     "requiredEvents": [
@@ -161,7 +174,7 @@
       "name": "canonical",
       "exited": true,
       "deaths": 0,
-      "frames": 1239,
+      "frames": 1588,
       "events": [
         "jump",
         "land",
@@ -183,19 +196,19 @@
         "exit"
       ],
       "eventCounts": {
-        "jump": 6,
-        "land": 7,
-        "mk-tell": 6,
-        "enemy-shot": 7,
-        "parry-ready": 3,
-        "parry": 3,
-        "marksman-hit": 3,
-        "marksman-leap": 2,
-        "dash": 3,
-        "refill-dash": 3,
-        "carrier-reroute": 2,
-        "enemy-hit": 14,
-        "mk-rain": 2,
+        "jump": 9,
+        "land": 11,
+        "mk-tell": 8,
+        "enemy-shot": 9,
+        "parry-ready": 4,
+        "parry": 4,
+        "marksman-hit": 4,
+        "marksman-leap": 3,
+        "dash": 6,
+        "refill-dash": 6,
+        "carrier-reroute": 3,
+        "enemy-hit": 20,
+        "mk-rain": 3,
         "ultra": 1,
         "hyper": 1,
         "marksman-gone": 1,
@@ -205,7 +218,7 @@
     },
     "positiveChecks": [
       {
-        "name": "Final parry two frames earlier",
+        "name": "Fourth aerial parry two frames later",
         "tape": [
           [
             18,
@@ -308,81 +321,7 @@
             "rj"
           ],
           [
-            185,
-            ""
-          ],
-          [
-            1,
-            "p"
-          ],
-          [
-            85,
-            ""
-          ],
-          [
-            30,
-            "r"
-          ]
-        ],
-        "after": {
-          "exited": true,
-          "deaths": 0,
-          "frames": 1237,
-          "events": [
-            "jump",
-            "land",
-            "mk-tell",
-            "enemy-shot",
-            "parry-ready",
-            "parry",
-            "marksman-hit",
-            "marksman-leap",
-            "dash",
-            "refill-dash",
-            "carrier-reroute",
-            "enemy-hit",
-            "mk-rain",
-            "ultra",
-            "hyper",
-            "marksman-gone",
-            "gate-open",
-            "exit"
-          ],
-          "eventCounts": {
-            "jump": 6,
-            "land": 7,
-            "mk-tell": 6,
-            "enemy-shot": 7,
-            "parry-ready": 3,
-            "parry": 3,
-            "marksman-hit": 3,
-            "marksman-leap": 2,
-            "dash": 3,
-            "refill-dash": 3,
-            "carrier-reroute": 2,
-            "enemy-hit": 14,
-            "mk-rain": 2,
-            "ultra": 1,
-            "hyper": 1,
-            "marksman-gone": 1,
-            "gate-open": 1,
-            "exit": 1
-          }
-        }
-      },
-      {
-        "name": "Final parry two frames later",
-        "tape": [
-          [
-            18,
-            "r"
-          ],
-          [
-            18,
-            "rj"
-          ],
-          [
-            223,
+            187,
             ""
           ],
           [
@@ -394,106 +333,70 @@
             ""
           ],
           [
-            18,
-            "rj"
+            20,
+            "lj"
           ],
           [
-            5,
-            "rx"
+            12,
+            "lx"
+          ],
+          [
+            30,
+            "l"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            20,
+            ""
           ],
           [
             25,
-            "r"
+            "l"
           ],
           [
-            12,
+            70,
             ""
           ],
           [
-            35,
+            62,
             ""
           ],
           [
-            30,
+            21,
             "j"
-          ],
-          [
-            225,
-            ""
           ],
           [
             1,
             "p"
-          ],
-          [
-            14,
-            ""
-          ],
-          [
-            20,
-            "rj"
-          ],
-          [
-            5,
-            "rx"
-          ],
-          [
-            15,
-            "r"
-          ],
-          [
-            20,
-            ""
-          ],
-          [
-            85,
-            ""
-          ],
-          [
-            30,
-            "j"
-          ],
-          [
-            110,
-            ""
           ],
           [
             7,
-            "rj"
-          ],
-          [
-            5,
-            "rdx"
-          ],
-          [
-            5,
-            "r"
+            ""
           ],
           [
             12,
-            "rj"
+            "rx"
           ],
           [
-            189,
-            ""
-          ],
-          [
-            1,
-            "p"
-          ],
-          [
-            85,
-            ""
-          ],
-          [
-            30,
+            100,
             "r"
           ]
         ],
         "after": {
           "exited": true,
           "deaths": 0,
-          "frames": 1241,
+          "frames": 1588,
           "events": [
             "jump",
             "land",
@@ -515,185 +418,19 @@
             "exit"
           ],
           "eventCounts": {
-            "jump": 6,
-            "land": 7,
-            "mk-tell": 6,
-            "enemy-shot": 7,
-            "parry-ready": 3,
-            "parry": 3,
-            "marksman-hit": 3,
-            "marksman-leap": 2,
-            "dash": 3,
-            "refill-dash": 3,
-            "carrier-reroute": 2,
-            "enemy-hit": 14,
-            "mk-rain": 2,
-            "ultra": 1,
-            "hyper": 1,
-            "marksman-gone": 1,
-            "gate-open": 1,
-            "exit": 1
-          }
-        }
-      },
-      {
-        "name": "Leave the upper carrier ten frames later and recover on the broad final shelf",
-        "tape": [
-          [
-            18,
-            "r"
-          ],
-          [
-            18,
-            "rj"
-          ],
-          [
-            223,
-            ""
-          ],
-          [
-            1,
-            "p"
-          ],
-          [
-            15,
-            ""
-          ],
-          [
-            18,
-            "rj"
-          ],
-          [
-            5,
-            "rx"
-          ],
-          [
-            25,
-            "r"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            35,
-            ""
-          ],
-          [
-            30,
-            "j"
-          ],
-          [
-            225,
-            ""
-          ],
-          [
-            1,
-            "p"
-          ],
-          [
-            14,
-            ""
-          ],
-          [
-            20,
-            "rj"
-          ],
-          [
-            5,
-            "rx"
-          ],
-          [
-            15,
-            "r"
-          ],
-          [
-            20,
-            ""
-          ],
-          [
-            85,
-            ""
-          ],
-          [
-            30,
-            "j"
-          ],
-          [
-            120,
-            ""
-          ],
-          [
-            7,
-            "rj"
-          ],
-          [
-            5,
-            "rdx"
-          ],
-          [
-            5,
-            "r"
-          ],
-          [
-            12,
-            "rj"
-          ],
-          [
-            177,
-            ""
-          ],
-          [
-            1,
-            "p"
-          ],
-          [
-            85,
-            ""
-          ],
-          [
-            30,
-            "r"
-          ]
-        ],
-        "after": {
-          "exited": true,
-          "deaths": 0,
-          "frames": 1239,
-          "events": [
-            "jump",
-            "land",
-            "mk-tell",
-            "enemy-shot",
-            "parry-ready",
-            "parry",
-            "marksman-hit",
-            "marksman-leap",
-            "dash",
-            "refill-dash",
-            "carrier-reroute",
-            "enemy-hit",
-            "mk-rain",
-            "ultra",
-            "hyper",
-            "marksman-gone",
-            "gate-open",
-            "exit"
-          ],
-          "eventCounts": {
-            "jump": 6,
-            "land": 7,
-            "mk-tell": 6,
-            "enemy-shot": 7,
-            "parry-ready": 3,
-            "parry": 3,
-            "marksman-hit": 3,
-            "marksman-leap": 2,
-            "dash": 3,
-            "refill-dash": 3,
-            "carrier-reroute": 2,
-            "enemy-hit": 14,
-            "mk-rain": 2,
+            "jump": 9,
+            "land": 11,
+            "mk-tell": 8,
+            "enemy-shot": 9,
+            "parry-ready": 4,
+            "parry": 4,
+            "marksman-hit": 4,
+            "marksman-leap": 3,
+            "dash": 6,
+            "refill-dash": 6,
+            "carrier-reroute": 3,
+            "enemy-hit": 20,
+            "mk-rain": 3,
             "ultra": 1,
             "hyper": 1,
             "marksman-gone": 1,
@@ -705,7 +442,7 @@
     ],
     "shortcutChecks": [
       {
-        "name": "Stay at the first cleared perch instead of following the rerouted carrier",
+        "name": "Skip only the fourth parry; the native boss still holds the exit",
         "tape": [
           [
             18,
@@ -740,13 +477,149 @@
             "r"
           ],
           [
-            700,
+            12,
             ""
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            30,
+            "j"
+          ],
+          [
+            225,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            85,
+            ""
+          ],
+          [
+            30,
+            "j"
+          ],
+          [
+            110,
+            ""
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            5,
+            "rdx"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            187,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            12,
+            "lx"
+          ],
+          [
+            30,
+            "l"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            62,
+            ""
+          ],
+          [
+            19,
+            "j"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            9,
+            ""
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            100,
+            "r"
           ]
         ],
         "after": {
           "exited": false,
-          "deaths": 1,
+          "deaths": 2,
           "frames": 0,
           "events": [
             "jump",
@@ -762,23 +635,347 @@
             "carrier-reroute",
             "enemy-hit",
             "mk-rain",
+            "ultra",
+            "hyper",
             "death",
             "respawn"
           ],
-          "deathCauses": [
-            "spikes"
+          "eventCounts": {
+            "jump": 9,
+            "land": 10,
+            "mk-tell": 8,
+            "enemy-shot": 8,
+            "parry-ready": 3,
+            "parry": 3,
+            "marksman-hit": 3,
+            "marksman-leap": 3,
+            "dash": 5,
+            "refill-dash": 5,
+            "carrier-reroute": 3,
+            "enemy-hit": 19,
+            "mk-rain": 3,
+            "ultra": 1,
+            "hyper": 1,
+            "death": 2,
+            "respawn": 1
+          }
+        }
+      },
+      {
+        "name": "Replay the former three-phase completion; fourth phase prevents exit",
+        "tape": [
+          [
+            18,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            223,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            30,
+            "j"
+          ],
+          [
+            225,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            85,
+            ""
+          ],
+          [
+            30,
+            "j"
+          ],
+          [
+            110,
+            ""
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            5,
+            "rdx"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            187,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            85,
+            ""
+          ],
+          [
+            30,
+            "r"
           ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0,
+          "frames": 0,
+          "events": [
+            "jump",
+            "land",
+            "mk-tell",
+            "enemy-shot",
+            "parry-ready",
+            "parry",
+            "marksman-hit",
+            "marksman-leap",
+            "dash",
+            "refill-dash",
+            "carrier-reroute",
+            "enemy-hit",
+            "mk-rain",
+            "ultra",
+            "hyper"
+          ],
+          "eventCounts": {
+            "jump": 6,
+            "land": 7,
+            "mk-tell": 7,
+            "enemy-shot": 7,
+            "parry-ready": 3,
+            "parry": 3,
+            "marksman-hit": 3,
+            "marksman-leap": 3,
+            "dash": 3,
+            "refill-dash": 3,
+            "carrier-reroute": 3,
+            "enemy-hit": 14,
+            "mk-rain": 2,
+            "ultra": 1,
+            "hyper": 1
+          }
         }
       }
     ],
-    "endingForgiveness": "The final shelf is ten tiles wide and allows a full stop before returning the last arrow. Successful zero-death tapes vary the parry by four frames and leave the carrier ten frames later. A mistimed outgoing jump can land on the same wide shelf; no final launch is necessary after the boss yields.",
+    "endingForgiveness": "After the fourth aerial parry, an extra five-tile one-way ledge joins the original ten-tile eastern shelf. The saved route lands there before the exit opens; no fifth attack or precision landing follows. The final parry also succeeds two frames later.",
     "requiredEventCounts": {
-      "marksman-hit": 3,
-      "carrier-reroute": 2,
-      "mk-rain": 2
+      "marksman-hit": 4,
+      "carrier-reroute": 3,
+      "mk-rain": 3
     },
     "needsReview": true,
-    "revisionNote": "Native post-leap arrow rain added: eight-tile warning band, five spaced arrows, 30-frame delayed descent. Existing stable route and broad final shelf preserved; needsReview remains true."
+    "revisionNote": "Fourth native Marksman perch and real fourth hit added. Third carrier reroute, third post-leap arrow rain, reversed boarding jump and aerial return shot form a harder continuation. Original entry/right exit and all first-three boss timings preserved; five one-way recovery tiles extend the final landing. No runtime changes.",
+    "routeEvents": [
+      {
+        "type": "parry",
+        "frame": 265,
+        "x": 297.99417982466457,
+        "y": 195.01673334758806,
+        "i": 264
+      },
+      {
+        "type": "marksman-hit",
+        "frame": 287,
+        "x": 372,
+        "y": 190,
+        "hits": 1,
+        "need": 4,
+        "i": 286
+      },
+      {
+        "type": "marksman-leap",
+        "frame": 287,
+        "x": 372,
+        "y": 200,
+        "i": 286
+      },
+      {
+        "type": "carrier-reroute",
+        "frame": 319,
+        "x": 344,
+        "y": 200,
+        "stage": 1,
+        "i": 318
+      },
+      {
+        "type": "mk-rain",
+        "frame": 415,
+        "x": 556,
+        "y": 120,
+        "bx": 352,
+        "bw": 64,
+        "i": 414
+      },
+      {
+        "type": "parry",
+        "frame": 626,
+        "x": 478.3950158851329,
+        "y": 138.38016967497708,
+        "i": 625
+      },
+      {
+        "type": "marksman-hit",
+        "frame": 649,
+        "x": 556,
+        "y": 126,
+        "hits": 2,
+        "need": 4,
+        "i": 648
+      },
+      {
+        "type": "marksman-leap",
+        "frame": 649,
+        "x": 556,
+        "y": 136,
+        "i": 648
+      },
+      {
+        "type": "carrier-reroute",
+        "frame": 678,
+        "x": 528,
+        "y": 136,
+        "stage": 2,
+        "i": 677
+      },
+      {
+        "type": "mk-rain",
+        "frame": 777,
+        "x": 724,
+        "y": 80,
+        "bx": 506,
+        "bw": 64,
+        "i": 776
+      },
+      {
+        "type": "parry",
+        "frame": 1145,
+        "x": 744.2105647142787,
+        "y": 86.26316029464242,
+        "i": 1144
+      },
+      {
+        "type": "marksman-hit",
+        "frame": 1152,
+        "x": 724,
+        "y": 86,
+        "hits": 3,
+        "need": 4,
+        "i": 1151
+      },
+      {
+        "type": "marksman-leap",
+        "frame": 1152,
+        "x": 724,
+        "y": 96,
+        "i": 1151
+      },
+      {
+        "type": "carrier-reroute",
+        "frame": 1152,
+        "x": 688,
+        "y": 96,
+        "stage": 3,
+        "i": 1151
+      },
+      {
+        "type": "mk-rain",
+        "frame": 1283,
+        "x": 540,
+        "y": 40,
+        "bx": 603,
+        "bw": 64,
+        "i": 1282
+      },
+      {
+        "type": "parry",
+        "frame": 1479,
+        "x": 584.1428602828526,
+        "y": 36.258839547949854,
+        "i": 1478
+      },
+      {
+        "type": "marksman-hit",
+        "frame": 1496,
+        "x": 540,
+        "y": 46,
+        "hits": 4,
+        "need": 4,
+        "i": 1495
+      },
+      {
+        "type": "marksman-gone",
+        "frame": 1545,
+        "x": 540,
+        "y": 221,
+        "how": "fall",
+        "i": 1544
+      }
+    ]
   },
   "tape": [
     [
@@ -890,11 +1087,67 @@
       "p"
     ],
     [
-      85,
+      15,
       ""
     ],
     [
+      20,
+      "lj"
+    ],
+    [
+      12,
+      "lx"
+    ],
+    [
       30,
+      "l"
+    ],
+    [
+      30,
+      ""
+    ],
+    [
+      20,
+      "lj"
+    ],
+    [
+      12,
+      "lux"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      25,
+      "l"
+    ],
+    [
+      70,
+      ""
+    ],
+    [
+      62,
+      ""
+    ],
+    [
+      19,
+      "j"
+    ],
+    [
+      1,
+      "p"
+    ],
+    [
+      9,
+      ""
+    ],
+    [
+      12,
+      "rx"
+    ],
+    [
+      100,
       "r"
     ]
   ]

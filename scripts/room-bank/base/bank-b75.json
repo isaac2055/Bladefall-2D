@@ -101,7 +101,7 @@
     "replaces": "cl16-t16-storm",
     "approvedIngredients": [
       "bank-b37",
-      "bank-f53"
+      "bank-b30"
     ],
     "solution": "Climb to the first collar, catch its overhead ring and cut down after a fresh hooked ascent. Follow the chain up the stepped cliffs to the distant high collar and repeat. The chain returns to the first shore: descend the same cliff route, earn a new hook and cut the original collar again. The actual Hydra release opens the dry western exit.",
     "interconnection": "The first landing becomes the last fight site. The chain visibly joins both shores and each hit changes which shared ring matters.",
@@ -403,7 +403,8 @@
         "deaths": 1,
         "frames": null
       }
-    ]
+    ],
+    "ingredientNotes": "B37 supplies grapple departures and B30 combines a suspended grapple with a deliberate blade interaction. The native Storm Chain supplies the migrating collar boss."
   },
   "tape": [
     [

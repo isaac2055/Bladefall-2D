@@ -1,0 +1,1381 @@
+{
+  "version": "7.307.1",
+  "worlds": [
+    23,
+    25,
+    28
+  ],
+  "passed": 27,
+  "results": [
+    {
+      "world": 23,
+      "from": "cl23-fc23-silas",
+      "to": "cl23-bank-b46",
+      "actual": "cl23-bank-b46",
+      "pass": true,
+      "entryDelta": 0,
+      "expectedDelta": 0,
+      "cameraHeld": true,
+      "cameraDrawDelta": 4.450226008711226,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 47,
+        "y": 117,
+        "ground": true
+      },
+      "afterApproach": "cl23-bank-b46",
+      "sourceExitFrame": 100,
+      "approachFrames": 44,
+      "settlingFrames": [
+        "r"
+      ],
+      "hit": {
+        "before": {
+          "x": 7064,
+          "y": 18065,
+          "vx": 140.83333333333323,
+          "vy": 30,
+          "cam": {
+            "x": 6895.186251667317,
+            "y": 17968.68236477555
+          }
+        },
+        "after": {
+          "x": 7064,
+          "y": 18065,
+          "vx": 140.83333333333323,
+          "vy": 30,
+          "cam": {
+            "x": 6895.186251667317,
+            "y": 17968.68236477555
+          }
+        },
+        "to": "cl23-bank-b46",
+        "frame": 100
+      }
+    },
+    {
+      "world": 23,
+      "from": "cl23-bank-b46",
+      "to": "cl23-bank-f23",
+      "actual": "cl23-bank-f23",
+      "pass": true,
+      "entryDelta": 1,
+      "expectedDelta": 1,
+      "cameraHeld": true,
+      "cameraDrawDelta": 3.3249413298199677,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 15,
+        "y": 53,
+        "ground": true
+      },
+      "afterApproach": "cl23-bank-f23",
+      "sourceExitFrame": 97,
+      "approachFrames": 75,
+      "settlingFrames": [],
+      "hit": {
+        "before": {
+          "x": 7383,
+          "y": 18037,
+          "vx": 90,
+          "vy": 0,
+          "cam": {
+            "x": 7222.312765626336,
+            "y": 17943.225410309416
+          }
+        },
+        "after": {
+          "x": 7384,
+          "y": 18037,
+          "vx": 90,
+          "vy": 0,
+          "cam": {
+            "x": 7222.312765626336,
+            "y": 17943.225410309416
+          }
+        },
+        "to": "cl23-bank-f23",
+        "frame": 97
+      }
+    },
+    {
+      "world": 23,
+      "from": "cl23-bank-f23",
+      "to": "cl23-fc23-counterpoise",
+      "actual": "cl23-fc23-counterpoise",
+      "pass": true,
+      "entryDelta": 1,
+      "expectedDelta": 1,
+      "cameraHeld": true,
+      "cameraDrawDelta": 3.5123349431099005,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 9,
+        "y": 117,
+        "ground": true
+      },
+      "afterApproach": "cl23-fc23-counterpoise",
+      "sourceExitFrame": 354,
+      "approachFrames": 4,
+      "settlingFrames": [
+        "r",
+        "r"
+      ],
+      "hit": {
+        "before": {
+          "x": 7703,
+          "y": 18045,
+          "vx": 90,
+          "vy": 0,
+          "cam": {
+            "x": 7541.054305090736,
+            "y": 17948.147716287822
+          }
+        },
+        "after": {
+          "x": 7704,
+          "y": 18045,
+          "vx": 90,
+          "vy": 0,
+          "cam": {
+            "x": 7541.054305090736,
+            "y": 17948.147716287822
+          }
+        },
+        "to": "cl23-fc23-counterpoise",
+        "frame": 354
+      }
+    },
+    {
+      "world": 23,
+      "from": "cl23-conn-2",
+      "to": "cl23-fc23-gantry",
+      "actual": "cl23-fc23-gantry",
+      "pass": true,
+      "entryDelta": 2,
+      "expectedDelta": 2,
+      "cameraHeld": true,
+      "cameraDrawDelta": 4.148072616293575,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 302,
+        "y": 133,
+        "ground": true
+      },
+      "afterApproach": "cl23-fc23-gantry",
+      "sourceExitFrame": 246,
+      "approachFrames": 4,
+      "settlingFrames": [
+        "l",
+        "l",
+        "l"
+      ],
+      "hit": {
+        "before": {
+          "x": 7698,
+          "y": 17661,
+          "vx": -90,
+          "vy": 0,
+          "cam": {
+            "x": 7580.925453851834,
+            "y": 17564.8
+          }
+        },
+        "after": {
+          "x": 7696,
+          "y": 17661,
+          "vx": -90,
+          "vy": 0,
+          "cam": {
+            "x": 7580.925453851834,
+            "y": 17564.8
+          }
+        },
+        "to": "cl23-fc23-gantry",
+        "frame": 246
+      }
+    },
+    {
+      "world": 23,
+      "from": "cl23-conn-5",
+      "to": "cl23-bank-f69",
+      "actual": "cl23-bank-f69",
+      "pass": true,
+      "entryDelta": 0,
+      "expectedDelta": 0,
+      "cameraHeld": true,
+      "cameraDrawDelta": 3.2770932931535843,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 256,
+        "y": 261,
+        "ground": true
+      },
+      "afterApproach": "cl23-bank-f69",
+      "sourceExitFrame": 223,
+      "approachFrames": 44,
+      "settlingFrames": [],
+      "hit": {
+        "before": {
+          "x": 8042,
+          "y": 16837,
+          "vx": 0,
+          "vy": -15,
+          "cam": {
+            "x": 7903.272549270901,
+            "y": 16765.85276060945
+          }
+        },
+        "after": {
+          "x": 8042,
+          "y": 16837,
+          "vx": 0,
+          "vy": -15,
+          "cam": {
+            "x": 7903.272549270901,
+            "y": 16765.85276060945
+          }
+        },
+        "to": "cl23-bank-f69",
+        "frame": 223
+      }
+    },
+    {
+      "world": 23,
+      "from": "cl23-bank-f69",
+      "to": "cl23-walk-6-9",
+      "actual": "cl23-walk-6-9",
+      "pass": true,
+      "entryDelta": 2,
+      "expectedDelta": 2,
+      "cameraHeld": true,
+      "cameraDrawDelta": 4.5813171190568225,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 3,
+        "y": 109,
+        "ground": true
+      },
+      "afterApproach": "cl23-walk-6-9",
+      "sourceExitFrame": 1417,
+      "approachFrames": 1,
+      "settlingFrames": [
+        "r"
+      ],
+      "hit": {
+        "before": {
+          "x": 8430,
+          "y": 16637,
+          "vx": 90,
+          "vy": 0,
+          "cam": {
+            "x": 8264.727715764675,
+            "y": 16554.812893092007
+          }
+        },
+        "after": {
+          "x": 8432,
+          "y": 16637,
+          "vx": 90,
+          "vy": 0,
+          "cam": {
+            "x": 8264.727715764675,
+            "y": 16554.812893092007
+          }
+        },
+        "to": "cl23-walk-6-9",
+        "frame": 1417
+      }
+    },
+    {
+      "world": 23,
+      "from": "cl23-walk-6-9",
+      "to": "cl23-fc23-middle",
+      "actual": "cl23-fc23-middle",
+      "pass": true,
+      "entryDelta": 0,
+      "expectedDelta": 0,
+      "cameraHeld": true,
+      "cameraDrawDelta": 2.3155795069294096,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 186,
+        "y": 133,
+        "ground": true
+      },
+      "afterApproach": "cl23-fc23-middle",
+      "sourceExitFrame": 173,
+      "approachFrames": 89,
+      "settlingFrames": [],
+      "hit": {
+        "before": {
+          "x": 8459,
+          "y": 16525,
+          "vx": 0,
+          "vy": -105,
+          "cam": {
+            "x": 8317.17627783921,
+            "y": 16446.58327514753
+          }
+        },
+        "after": {
+          "x": 8459,
+          "y": 16525,
+          "vx": 0,
+          "vy": -105,
+          "cam": {
+            "x": 8317.17627783921,
+            "y": 16446.58327514753
+          }
+        },
+        "to": "cl23-fc23-middle",
+        "frame": 173
+      }
+    },
+    {
+      "world": 25,
+      "from": "cl25-fm25-seam",
+      "to": "cl25-walk-1-3",
+      "actual": "cl25-walk-1-3",
+      "pass": true,
+      "entryDelta": 2,
+      "expectedDelta": 2,
+      "cameraHeld": true,
+      "cameraDrawDelta": 4.568695235041862,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 50,
+        "y": 45,
+        "ground": true
+      },
+      "afterApproach": "cl25-walk-1-3",
+      "sourceExitFrame": 176,
+      "approachFrames": 17,
+      "settlingFrames": [
+        "l"
+      ],
+      "hit": {
+        "before": {
+          "x": 7666,
+          "y": 20368,
+          "vx": -90,
+          "vy": -105,
+          "cam": {
+            "x": 7546.737886428138,
+            "y": 20291.332558916947
+          }
+        },
+        "after": {
+          "x": 7664,
+          "y": 20368,
+          "vx": -90,
+          "vy": -105,
+          "cam": {
+            "x": 7546.737886428138,
+            "y": 20291.332558916947
+          }
+        },
+        "to": "cl25-walk-1-3",
+        "frame": 176
+      }
+    },
+    {
+      "world": 25,
+      "from": "cl25-walk-1-3",
+      "to": "cl25-bank-f27",
+      "actual": "cl25-bank-f27",
+      "pass": true,
+      "entryDelta": 8.54400374531753,
+      "expectedDelta": 8.54400374531753,
+      "cameraHeld": true,
+      "cameraDrawDelta": 2.7769770859506706,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 32,
+        "y": 149,
+        "ground": true
+      },
+      "afterApproach": "cl25-bank-f27",
+      "sourceExitFrame": 64,
+      "approachFrames": 92,
+      "settlingFrames": [],
+      "hit": {
+        "before": {
+          "x": 7637,
+          "y": 20325,
+          "vx": 0,
+          "vy": -75,
+          "cam": {
+            "x": 7496.82372216079,
+            "y": 20241.99276893805
+          }
+        },
+        "after": {
+          "x": 7640,
+          "y": 20317,
+          "vx": 0,
+          "vy": -75,
+          "cam": {
+            "x": 7496.82372216079,
+            "y": 20241.99276893805
+          }
+        },
+        "to": "cl25-bank-f27",
+        "frame": 64
+      }
+    },
+    {
+      "world": 25,
+      "from": "cl25-bank-f27",
+      "to": "cl25-walk-2-6",
+      "actual": "cl25-walk-2-6",
+      "pass": true,
+      "entryDelta": 2,
+      "expectedDelta": 2,
+      "cameraHeld": true,
+      "cameraDrawDelta": 3.7878733601360084,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 3,
+        "y": 45,
+        "ground": true
+      },
+      "afterApproach": "cl25-walk-2-6",
+      "sourceExitFrame": 184,
+      "approachFrames": 1,
+      "settlingFrames": [
+        "r"
+      ],
+      "hit": {
+        "before": {
+          "x": 7950,
+          "y": 20197,
+          "vx": 90,
+          "vy": 0,
+          "cam": {
+            "x": 7788.19601959958,
+            "y": 20108.627404546147
+          }
+        },
+        "after": {
+          "x": 7952,
+          "y": 20197,
+          "vx": 90,
+          "vy": 0,
+          "cam": {
+            "x": 7788.19601959958,
+            "y": 20108.627404546147
+          }
+        },
+        "to": "cl25-walk-2-6",
+        "frame": 184
+      }
+    },
+    {
+      "world": 25,
+      "from": "cl25-walk-2-6",
+      "to": "cl25-fm25-bowline",
+      "actual": "cl25-fm25-bowline",
+      "pass": true,
+      "entryDelta": 0,
+      "expectedDelta": 0,
+      "cameraHeld": true,
+      "cameraDrawDelta": 1.72011648993355,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 286,
+        "y": 133,
+        "ground": true
+      },
+      "afterApproach": "cl25-fm25-bowline",
+      "sourceExitFrame": 64,
+      "approachFrames": 91,
+      "settlingFrames": [],
+      "hit": {
+        "before": {
+          "x": 7979,
+          "y": 20149,
+          "vx": 0,
+          "vy": -75,
+          "cam": {
+            "x": 7837.17627783921,
+            "y": 20065.99276893805
+          }
+        },
+        "after": {
+          "x": 7979,
+          "y": 20149,
+          "vx": 0,
+          "vy": -75,
+          "cam": {
+            "x": 7837.17627783921,
+            "y": 20065.99276893805
+          }
+        },
+        "to": "cl25-fm25-bowline",
+        "frame": 64
+      }
+    },
+    {
+      "world": 25,
+      "from": "cl25-fm25-release",
+      "to": "cl25-walk-3-21",
+      "actual": "cl25-walk-3-21",
+      "pass": true,
+      "entryDelta": 1,
+      "expectedDelta": 1,
+      "cameraHeld": true,
+      "cameraDrawDelta": 4.32149255519175,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 50,
+        "y": 21,
+        "ground": true
+      },
+      "afterApproach": "cl25-walk-3-21",
+      "sourceExitFrame": 264,
+      "approachFrames": 17,
+      "settlingFrames": [
+        "l"
+      ],
+      "hit": {
+        "before": {
+          "x": 6705,
+          "y": 19808,
+          "vx": -90,
+          "vy": -105,
+          "cam": {
+            "x": 6585.925486369635,
+            "y": 19729.37570778041
+          }
+        },
+        "after": {
+          "x": 6704,
+          "y": 19808,
+          "vx": -90,
+          "vy": -105,
+          "cam": {
+            "x": 6585.925486369635,
+            "y": 19729.37570778041
+          }
+        },
+        "to": "cl25-walk-3-21",
+        "frame": 264
+      }
+    },
+    {
+      "world": 25,
+      "from": "cl25-walk-3-21",
+      "to": "cl25-bank-f33",
+      "actual": "cl25-bank-f33",
+      "pass": true,
+      "entryDelta": 4,
+      "expectedDelta": 4,
+      "cameraHeld": true,
+      "cameraDrawDelta": 4.124720260434877,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 48,
+        "y": 149,
+        "ground": true
+      },
+      "afterApproach": "cl25-bank-f33",
+      "sourceExitFrame": 89,
+      "approachFrames": 57,
+      "settlingFrames": [
+        ""
+      ],
+      "hit": {
+        "before": {
+          "x": 6676,
+          "y": 20016,
+          "vx": 0,
+          "vy": 160,
+          "cam": {
+            "x": 6535.867075958727,
+            "y": 19888.30655391482
+          }
+        },
+        "after": {
+          "x": 6680,
+          "y": 20016,
+          "vx": 0,
+          "vy": 160,
+          "cam": {
+            "x": 6535.867075958727,
+            "y": 19888.30655391482
+          }
+        },
+        "to": "cl25-bank-f33",
+        "frame": 89
+      }
+    },
+    {
+      "world": 25,
+      "from": "cl25-bank-f33",
+      "to": "cl25-walk-4-31",
+      "actual": "cl25-walk-4-31",
+      "pass": true,
+      "entryDelta": 1,
+      "expectedDelta": 1,
+      "cameraHeld": true,
+      "cameraDrawDelta": 3.333411888177176,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 3,
+        "y": 21,
+        "ground": true
+      },
+      "afterApproach": "cl25-walk-4-31",
+      "sourceExitFrame": 255,
+      "approachFrames": 1,
+      "settlingFrames": [
+        "r"
+      ],
+      "hit": {
+        "before": {
+          "x": 6951,
+          "y": 20149,
+          "vx": 90,
+          "vy": 0,
+          "cam": {
+            "x": 6790.193156952115,
+            "y": 20054.104567424358
+          }
+        },
+        "after": {
+          "x": 6952,
+          "y": 20149,
+          "vx": 90,
+          "vy": 0,
+          "cam": {
+            "x": 6790.193156952115,
+            "y": 20054.104567424358
+          }
+        },
+        "to": "cl25-walk-4-31",
+        "frame": 255
+      }
+    },
+    {
+      "world": 25,
+      "from": "cl25-walk-4-31",
+      "to": "cl25-fm25-approach",
+      "actual": "cl25-fm25-approach",
+      "pass": true,
+      "entryDelta": 4,
+      "expectedDelta": 4,
+      "cameraHeld": true,
+      "cameraDrawDelta": 3.1736101667794037,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 288,
+        "y": 133,
+        "ground": true
+      },
+      "afterApproach": "cl25-fm25-approach",
+      "sourceExitFrame": 53,
+      "approachFrames": 51,
+      "settlingFrames": [
+        ""
+      ],
+      "hit": {
+        "before": {
+          "x": 6980,
+          "y": 20256,
+          "vx": 0,
+          "vy": 160,
+          "cam": {
+            "x": 6838.132924041273,
+            "y": 20136.133958460963
+          }
+        },
+        "after": {
+          "x": 6984,
+          "y": 20256,
+          "vx": 0,
+          "vy": 160,
+          "cam": {
+            "x": 6838.132924041273,
+            "y": 20136.133958460963
+          }
+        },
+        "to": "cl25-fm25-approach",
+        "frame": 53
+      }
+    },
+    {
+      "world": 25,
+      "from": "cl25-fm25-tiers",
+      "to": "cl25-walk-5-46",
+      "actual": "cl25-walk-5-46",
+      "pass": true,
+      "entryDelta": 2,
+      "expectedDelta": 2,
+      "cameraHeld": true,
+      "cameraDrawDelta": 1.685595663762797,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 53,
+        "y": 21,
+        "ground": true
+      },
+      "afterApproach": "cl25-walk-5-46",
+      "sourceExitFrame": 688,
+      "approachFrames": 1,
+      "settlingFrames": [
+        "l"
+      ],
+      "hit": {
+        "before": {
+          "x": 6050,
+          "y": 20333,
+          "vx": -90,
+          "vy": 0,
+          "cam": {
+            "x": 5970.534972898518,
+            "y": 20236.8
+          }
+        },
+        "after": {
+          "x": 6048,
+          "y": 20333,
+          "vx": -90,
+          "vy": 0,
+          "cam": {
+            "x": 5970.534972898518,
+            "y": 20236.8
+          }
+        },
+        "to": "cl25-walk-5-46",
+        "frame": 688
+      }
+    },
+    {
+      "world": 25,
+      "from": "cl25-walk-5-46",
+      "to": "cl25-bank-f64",
+      "actual": "cl25-bank-f64",
+      "pass": true,
+      "entryDelta": 4,
+      "expectedDelta": 4,
+      "cameraHeld": true,
+      "cameraDrawDelta": 4.094147991072532,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 74,
+        "y": 197,
+        "ground": true
+      },
+      "afterApproach": "cl25-bank-f64",
+      "sourceExitFrame": 89,
+      "approachFrames": 75,
+      "settlingFrames": [
+        "l",
+        "l",
+        "l",
+        "l",
+        "l",
+        "l",
+        "l",
+        "l",
+        "l"
+      ],
+      "hit": {
+        "before": {
+          "x": 6020,
+          "y": 20536,
+          "vx": 0,
+          "vy": 160,
+          "cam": {
+            "x": 5960,
+            "y": 20408.30655391482
+          }
+        },
+        "after": {
+          "x": 6024,
+          "y": 20536,
+          "vx": 0,
+          "vy": 160,
+          "cam": {
+            "x": 5960,
+            "y": 20408.30655391482
+          }
+        },
+        "to": "cl25-bank-f64",
+        "frame": 89
+      }
+    },
+    {
+      "world": 28,
+      "from": "cl28-ff28-rehearsal",
+      "to": "cl28-walk-1-15",
+      "actual": "cl28-walk-1-15",
+      "pass": true,
+      "entryDelta": 1,
+      "expectedDelta": 1,
+      "cameraHeld": true,
+      "cameraDrawDelta": 4.323719897250729,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 53,
+        "y": 21,
+        "ground": true
+      },
+      "afterApproach": "cl28-walk-1-15",
+      "sourceExitFrame": 140,
+      "approachFrames": 1,
+      "settlingFrames": [
+        "l"
+      ],
+      "hit": {
+        "before": {
+          "x": -7903,
+          "y": 22781,
+          "vx": -107.87229415143793,
+          "vy": 82.5,
+          "cam": {
+            "x": -8018.527857254581,
+            "y": 22691.482710211916
+          }
+        },
+        "after": {
+          "x": -7904,
+          "y": 22781,
+          "vx": -107.87229415143793,
+          "vy": 82.5,
+          "cam": {
+            "x": -8018.527857254581,
+            "y": 22691.482710211916
+          }
+        },
+        "to": "cl28-walk-1-15",
+        "frame": 140
+      }
+    },
+    {
+      "world": 28,
+      "from": "cl28-walk-1-15",
+      "to": "cl28-bank-f18",
+      "actual": "cl28-bank-f18",
+      "pass": true,
+      "entryDelta": 4,
+      "expectedDelta": 4,
+      "cameraHeld": true,
+      "cameraDrawDelta": 4.124720260434877,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 26,
+        "y": 69,
+        "ground": true
+      },
+      "afterApproach": "cl28-bank-f18",
+      "sourceExitFrame": 89,
+      "approachFrames": 27,
+      "settlingFrames": [
+        ""
+      ],
+      "hit": {
+        "before": {
+          "x": -7932,
+          "y": 22984,
+          "vx": 0,
+          "vy": 160,
+          "cam": {
+            "x": -8072.132924041273,
+            "y": 22856.30655391482
+          }
+        },
+        "after": {
+          "x": -7928,
+          "y": 22984,
+          "vx": 0,
+          "vy": 160,
+          "cam": {
+            "x": -8072.132924041273,
+            "y": 22856.30655391482
+          }
+        },
+        "to": "cl28-bank-f18",
+        "frame": 89
+      }
+    },
+    {
+      "world": 28,
+      "from": "cl28-bank-f18",
+      "to": "cl28-walk-2-27",
+      "actual": "cl28-walk-2-27",
+      "pass": true,
+      "entryDelta": 2,
+      "expectedDelta": 2,
+      "cameraHeld": true,
+      "cameraDrawDelta": 3.7659796643931895,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 3,
+        "y": 21,
+        "ground": true
+      },
+      "afterApproach": "cl28-walk-2-27",
+      "sourceExitFrame": 225,
+      "approachFrames": 1,
+      "settlingFrames": [
+        "r"
+      ],
+      "hit": {
+        "before": {
+          "x": -7634,
+          "y": 23141,
+          "vx": 90,
+          "vy": 0,
+          "cam": {
+            "x": -7795.80398040042,
+            "y": 23037.624879166033
+          }
+        },
+        "after": {
+          "x": -7632,
+          "y": 23141,
+          "vx": 90,
+          "vy": 0,
+          "cam": {
+            "x": -7795.80398040042,
+            "y": 23037.624879166033
+          }
+        },
+        "to": "cl28-walk-2-27",
+        "frame": 225
+      }
+    },
+    {
+      "world": 28,
+      "from": "cl28-walk-2-27",
+      "to": "cl28-ff28-stair",
+      "actual": "cl28-ff28-stair",
+      "pass": true,
+      "entryDelta": 2,
+      "expectedDelta": 2,
+      "cameraHeld": true,
+      "cameraDrawDelta": 2.591435143279208,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 297,
+        "y": 133,
+        "ground": true
+      },
+      "afterApproach": "cl28-ff28-stair",
+      "sourceExitFrame": 177,
+      "approachFrames": 10,
+      "settlingFrames": [],
+      "hit": {
+        "before": {
+          "x": -7638,
+          "y": 23325,
+          "vx": -90,
+          "vy": 0,
+          "cam": {
+            "x": -7770.335083021742,
+            "y": 23213.79747461988
+          }
+        },
+        "after": {
+          "x": -7640,
+          "y": 23325,
+          "vx": -90,
+          "vy": 0,
+          "cam": {
+            "x": -7770.335083021742,
+            "y": 23213.79747461988
+          }
+        },
+        "to": "cl28-ff28-stair",
+        "frame": 177
+      }
+    },
+    {
+      "world": 28,
+      "from": "cl28-ff28-landings",
+      "to": "cl28-walk-3-30",
+      "actual": "cl28-walk-3-30",
+      "pass": true,
+      "entryDelta": 2,
+      "expectedDelta": 2,
+      "cameraHeld": true,
+      "cameraDrawDelta": 4.593418410554453,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 50,
+        "y": 45,
+        "ground": true
+      },
+      "afterApproach": "cl28-walk-3-30",
+      "sourceExitFrame": 213,
+      "approachFrames": 16,
+      "settlingFrames": [
+        "l"
+      ],
+      "hit": {
+        "before": {
+          "x": -8598,
+          "y": 22985,
+          "vx": -90,
+          "vy": -105,
+          "cam": {
+            "x": -8717.119378159608,
+            "y": 22908.41194501913
+          }
+        },
+        "after": {
+          "x": -8600,
+          "y": 22985,
+          "vx": -90,
+          "vy": -105,
+          "cam": {
+            "x": -8717.119378159608,
+            "y": 22908.41194501913
+          }
+        },
+        "to": "cl28-walk-3-30",
+        "frame": 213
+      }
+    },
+    {
+      "world": 28,
+      "from": "cl28-walk-3-30",
+      "to": "cl28-bank-b51",
+      "actual": "cl28-bank-b51",
+      "pass": true,
+      "entryDelta": 8.54400374531753,
+      "expectedDelta": 8.54400374531753,
+      "cameraHeld": true,
+      "cameraDrawDelta": 2.7769770859507847,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 32,
+        "y": 149,
+        "ground": true
+      },
+      "afterApproach": "cl28-bank-b51",
+      "sourceExitFrame": 64,
+      "approachFrames": 92,
+      "settlingFrames": [],
+      "hit": {
+        "before": {
+          "x": -8627,
+          "y": 22941,
+          "vx": 0,
+          "vy": -75,
+          "cam": {
+            "x": -8767.17627783921,
+            "y": 22857.99276893805
+          }
+        },
+        "after": {
+          "x": -8624,
+          "y": 22933,
+          "vx": 0,
+          "vy": -75,
+          "cam": {
+            "x": -8767.17627783921,
+            "y": 22857.99276893805
+          }
+        },
+        "to": "cl28-bank-b51",
+        "frame": 64
+      }
+    },
+    {
+      "world": 28,
+      "from": "cl28-bank-b51",
+      "to": "cl28-walk-4-44",
+      "actual": "cl28-walk-4-44",
+      "pass": true,
+      "entryDelta": 2,
+      "expectedDelta": 2,
+      "cameraHeld": true,
+      "cameraDrawDelta": 3.5664584547594647,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 3,
+        "y": 205,
+        "ground": true
+      },
+      "afterApproach": "cl28-walk-4-44",
+      "sourceExitFrame": 332,
+      "approachFrames": 1,
+      "settlingFrames": [
+        "r"
+      ],
+      "hit": {
+        "before": {
+          "x": -8314,
+          "y": 22917,
+          "vx": 90,
+          "vy": 0,
+          "cam": {
+            "x": -8475.284063986255,
+            "y": 22820.147716287822
+          }
+        },
+        "after": {
+          "x": -8312,
+          "y": 22917,
+          "vx": 90,
+          "vy": 0,
+          "cam": {
+            "x": -8475.284063986255,
+            "y": 22820.147716287822
+          }
+        },
+        "to": "cl28-walk-4-44",
+        "frame": 332
+      }
+    },
+    {
+      "world": 28,
+      "from": "cl28-walk-4-44",
+      "to": "cl28-ff28-crown",
+      "actual": "cl28-ff28-crown",
+      "pass": true,
+      "entryDelta": 0,
+      "expectedDelta": 0,
+      "cameraHeld": true,
+      "cameraDrawDelta": 3.3319959361847165,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 278,
+        "y": 133,
+        "ground": true
+      },
+      "afterApproach": "cl28-ff28-crown",
+      "sourceExitFrame": 325,
+      "approachFrames": 89,
+      "settlingFrames": [],
+      "hit": {
+        "before": {
+          "x": -8285,
+          "y": 22709,
+          "vx": 0,
+          "vy": -105,
+          "cam": {
+            "x": -8426.82372216079,
+            "y": 22638.410679693676
+          }
+        },
+        "after": {
+          "x": -8285,
+          "y": 22709,
+          "vx": 0,
+          "vy": -105,
+          "cam": {
+            "x": -8426.82372216079,
+            "y": 22638.410679693676
+          }
+        },
+        "to": "cl28-ff28-crown",
+        "frame": 325
+      }
+    },
+    {
+      "world": 28,
+      "from": "cl28-ff28-crown",
+      "to": "cl28-walk-5-45",
+      "actual": "cl28-walk-5-45",
+      "pass": true,
+      "entryDelta": 0,
+      "expectedDelta": 0,
+      "cameraHeld": true,
+      "cameraDrawDelta": 3.898454387153159,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 56,
+        "y": 45,
+        "ground": true
+      },
+      "afterApproach": "cl28-walk-5-45",
+      "sourceExitFrame": 121,
+      "approachFrames": 41,
+      "settlingFrames": [
+        "l"
+      ],
+      "hit": {
+        "before": {
+          "x": -8536,
+          "y": 22524,
+          "vx": 0,
+          "vy": -240,
+          "cam": {
+            "x": -8665.544375075076,
+            "y": 22454.266931743252
+          }
+        },
+        "after": {
+          "x": -8536,
+          "y": 22524,
+          "vx": 0,
+          "vy": -240,
+          "cam": {
+            "x": -8665.544375075076,
+            "y": 22454.266931743252
+          }
+        },
+        "to": "cl28-walk-5-45",
+        "frame": 121
+      }
+    },
+    {
+      "world": 28,
+      "from": "cl28-walk-5-45",
+      "to": "cl28-bank-f71",
+      "actual": "cl28-bank-f71",
+      "pass": true,
+      "entryDelta": 1,
+      "expectedDelta": 1,
+      "cameraHeld": true,
+      "cameraDrawDelta": 1.5536730338743787,
+      "velocityHeld": true,
+      "atFire": true,
+      "deaths": 0,
+      "restoredEntrance": true,
+      "pristinePuzzle": null,
+      "position": {
+        "x": 22,
+        "y": 277,
+        "ground": true
+      },
+      "afterApproach": "cl28-bank-f71",
+      "sourceExitFrame": 227,
+      "approachFrames": 88,
+      "settlingFrames": [],
+      "hit": {
+        "before": {
+          "x": -8505,
+          "y": 22490,
+          "vx": 90,
+          "vy": 0,
+          "cam": {
+            "x": -8654.708270776193,
+            "y": 22393.546439938407
+          }
+        },
+        "after": {
+          "x": -8504,
+          "y": 22490,
+          "vx": 90,
+          "vy": 0,
+          "cam": {
+            "x": -8654.708270776193,
+            "y": 22393.546439938407
+          }
+        },
+        "to": "cl28-bank-f71",
+        "frame": 227
+      }
+    }
+  ]
+}

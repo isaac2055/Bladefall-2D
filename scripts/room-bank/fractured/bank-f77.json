@@ -682,7 +682,12 @@
           ]
         ]
       }
-    ]
+    ],
+    "approvedIngredients": [
+      "bank-b46",
+      "bank-f26"
+    ],
+    "ingredientNotes": "B46 supplies a turned mirror sending a timed beam into a sealed receiver; F26 supplies preserving the remaining dash so its phase landing stays real. F77 stretches those decisions across a single rerouted light shaft and return gallery."
   },
   "tape": [
     [

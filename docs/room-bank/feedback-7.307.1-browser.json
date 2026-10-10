@@ -1,0 +1,136 @@
+{
+  "checkedAt": "2026-10-10T06:51:31.645Z",
+  "method": "Actual Chrome with production view, canonical saved input tapes, native completion events, room/camera bounds and three rendered checkpoints. Selected route evidence, not exhaustive shortcut proof.",
+  "results": [
+    {
+      "id": "bank-f64",
+      "exited": true,
+      "deaths": 0,
+      "frames": 1588,
+      "eventCounts": {
+        "jump": 9,
+        "land": 11,
+        "mk-tell": 8,
+        "enemy-shot": 9,
+        "parry-ready": 4,
+        "parry": 4,
+        "marksman-hit": 4,
+        "marksman-leap": 3,
+        "dash": 6,
+        "refill-dash": 6,
+        "carrier-reroute": 3,
+        "enemy-hit": 20,
+        "mk-rain": 3,
+        "ultra": 1,
+        "hyper": 1,
+        "marksman-gone": 1,
+        "gate-open": 1,
+        "exit": 1
+      },
+      "missing": [],
+      "missingCounts": [],
+      "bounds": {
+        "w": 768,
+        "h": 256
+      },
+      "boss": {
+        "warden": null
+      },
+      "runtimeDevices": [],
+      "viewDevices": [],
+      "cameraTravel": {
+        "x": 448,
+        "y": 72
+      }
+    },
+    {
+      "id": "bank-f69",
+      "exited": true,
+      "deaths": 0,
+      "frames": 1417,
+      "eventCounts": {
+        "jump": 10,
+        "dash": 10,
+        "enemy-tell": 3,
+        "land": 13,
+        "refill-dash": 10,
+        "zip-start": 5,
+        "zip-stop": 5,
+        "brute-rear": 3,
+        "brute-stamp": 3,
+        "stone-hit": 3,
+        "brute-crack": 2,
+        "stone-stop": 3,
+        "zip-home": 5,
+        "enemy-defeat": 1,
+        "combat-gate": 1,
+        "strike": 1,
+        "anvil": 1,
+        "exit": 1
+      },
+      "missing": [],
+      "missingCounts": [],
+      "bounds": {
+        "w": 640,
+        "h": 288
+      },
+      "boss": {
+        "combatEnemies": [
+          {
+            "kind": "hound",
+            "dead": true,
+            "cracks": 2
+          }
+        ],
+        "warden": null
+      },
+      "runtimeDevices": [],
+      "viewDevices": [],
+      "cameraTravel": {
+        "x": 314,
+        "y": 104
+      }
+    },
+    {
+      "id": "bank-f71",
+      "exited": true,
+      "deaths": 0,
+      "frames": 1049,
+      "eventCounts": {
+        "ice": 6,
+        "pickup": 1,
+        "fault-crack": 4,
+        "wind": 2,
+        "fault-fall": 32,
+        "jump": 11,
+        "land": 8,
+        "plate": 3,
+        "held-open": 1,
+        "throw": 1,
+        "lantern-land": 1,
+        "dash": 4,
+        "refill-dash": 4,
+        "feather": 3,
+        "feather-jump": 3,
+        "feather-back": 2,
+        "exit": 1
+      },
+      "missing": [],
+      "missingCounts": [],
+      "bounds": {
+        "w": 768,
+        "h": 320
+      },
+      "boss": {
+        "warden": null
+      },
+      "runtimeDevices": [],
+      "viewDevices": [],
+      "cameraTravel": {
+        "x": 448,
+        "y": 136
+      }
+    }
+  ],
+  "errors": []
+}

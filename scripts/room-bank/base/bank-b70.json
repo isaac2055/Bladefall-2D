@@ -88,7 +88,7 @@
     "run": 9,
     "collection": "superrooms",
     "format": "superroom",
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "status": "route-proven",
     "author": "Codex",
     "tags": [
@@ -100,7 +100,7 @@
       "shutter"
     ],
     "newMechanics": [],
-    "humanReview": "Awaiting review; numeric ratings unmeasured.",
+    "humanReview": "Approved by the user after the 7.306 review; numeric fun and suitability ratings remain unmeasured.",
     "worlds": [
       7
     ],
@@ -712,7 +712,8 @@
         "deaths": 1,
         "frames": null
       }
-    ]
+    ],
+    "needsReview": false
   },
   "tape": [
     [

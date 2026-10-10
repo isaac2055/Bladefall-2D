@@ -73237,7 +73237,7 @@ const records=[
    "run": 8,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "status": "route-proven",
    "author": "Codex",
    "tags": [
@@ -73251,7 +73251,7 @@ const records=[
    "newMechanics": [
     "bearing-lift-stop"
    ],
-   "humanReview": "B62 reinvented after Isaac found the cargo version boring; revision awaiting review. Numerical ratings unmeasured.",
+   "humanReview": "Approved by the user after the 7.306 review; numeric fun and suitability ratings remain unmeasured.",
    "worlds": [
     1
    ],
@@ -73934,6 +73934,7 @@ const records=[
      "frames": null
     }
    ],
+   "needsReview": false,
    "revision": "29bab9027d43",
    "source": "scripts/room-bank/base/bank-b62.json"
   },
@@ -80903,12 +80904,12 @@ const records=[
     "#..............................................................................................#",
     "#..............................................................................................#",
     "#..............................................................................................#",
+    "#................................................................########......................G",
     "#..............................................................................................G",
     "#..............................................................................................G",
     "#..............................................................................................G",
     "#..............................................................................................G",
-    "#..............................................................................................G",
-    "#.....................................................................................##########",
+    "#................................................................................=====##########",
     "#....................................................................................<##########",
     "#....................................................................................<##########",
     "#....................................................................................<##########",
@@ -80958,9 +80959,13 @@ const records=[
      {
       "c": 90,
       "r": 11
+     },
+     {
+      "c": 67,
+      "r": 6
      }
     ],
-    "hits": 3,
+    "hits": 4,
     "every": 180,
     "tell": 46,
     "first": 190,
@@ -80996,10 +81001,19 @@ const records=[
        81,
        10
       ]
+     },
+     {
+      "c": 86,
+      "r": 12,
+      "w": 9,
+      "to": [
+       81,
+       4
+      ]
      }
     ]
    },
-   "hint": "Return his arrow from the carrier. His empty perch calls it uphill. Leave the second shot for your return.",
+   "hint": "Return his arrows from the carrier. Every vacated perch sends it higher; when he doubles back, jump into the last firing line.",
    "question": "Why does the place he just left become useful before the place he lands?"
   },
   "bank": {
@@ -81008,8 +81022,8 @@ const records=[
    "run": 8,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "banked",
-   "difficulty": 3,
+   "acceptance": "revised",
+   "difficulty": 4,
    "role": "interconnected boss superroom",
    "worlds": [
     25
@@ -81026,13 +81040,13 @@ const records=[
    "newMechanics": [],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "Approved to bank and integrate after one modest boss element; re-review requested for the revision.",
+   "humanReview": "User approved the first three phases and requested a harder fourth native continuation; revision awaits review.",
    "approvedIngredients": [
     "bank-f33",
     "bank-f27"
    ],
-   "interconnection": "One carrier crosses the whole arena. Each vacated Marksman perch contains a physical pressure landing that reroutes that same carrier to the next firing tier. The boss leaps ahead after a returned arrow; the player follows through his previous position. His first draw after each leap is now a slow, visibly marked arrow rain over the vacated perch, making that perch a departure point rather than a camping spot.",
-   "solution": "Board the outgoing carrier and parry the first marked arrow without directional aim. Jump onto the abandoned first perch; its switch redirects the carrier up to the middle tier. Catch the carrier again, return a second arrow, and land on the vacated middle perch. Its switch turns the carrier into the final approach; wavedash from its deck toward the final paired shot and return it from the broad eastern shelf. After each leap he rains arrows onto the perch you just took: leave on the same rerouted carrier while the broad warning band is still clear.",
+   "interconnection": "One carrier crosses the whole arena. Each vacated Marksman perch contains a physical pressure landing that reroutes that same carrier to the next firing tier. The boss leaps ahead after a returned arrow; the player follows through his previous position. His first draw after each leap is now a slow, visibly marked arrow rain over the vacated perch, making that perch a departure point rather than a camping spot. A fourth leap reverses the chase: the eastern pressure landing sends the very same carrier to the roof, and the middle buttress becomes the return boarding point. The highest firing line crosses above the descending deck, rewarding an airborne parry rather than waiting through one more shot.",
+   "solution": "Board the outgoing carrier and parry the first marked arrow without directional aim. Jump onto the abandoned first perch; its switch redirects the carrier up to the middle tier. Catch the carrier again, return a second arrow, and land on the vacated middle perch. Its switch turns the carrier into the final approach; wavedash from its deck toward the third paired shot and return it from the broad eastern shelf. He now leaps back to a new upper-western perch. The vacated eastern pressure landing reroutes the same carrier to its highest tier. Retreat onto the middle buttress, jump and diagonally dash back onto the climbing carrier, then move along its deck to avoid the post-leap rain. As the carrier descends from its top turn, jump into the fourth locked firing line and parry in the air. Dash east to the extended one-way recovery ledge and walk through the original exit after his actual defeat. After each leap he rains arrows onto the perch you just took: leave on the same rerouted carrier while the broad warning band is still clear.",
    "novelty": "The player and boss exchange perches, with each pressure landing physically changing the same transport rather than adding independent room counters.",
    "nearestExisting": "F33 preferred parry-retreat-wavedash and F27 carrier movement; native Marksman supplies the projectile and actual defeat.",
    "requiredEvents": [
@@ -81047,7 +81061,7 @@ const records=[
     "name": "canonical",
     "exited": true,
     "deaths": 0,
-    "frames": 1239,
+    "frames": 1588,
     "events": [
      "jump",
      "land",
@@ -81069,19 +81083,19 @@ const records=[
      "exit"
     ],
     "eventCounts": {
-     "jump": 6,
-     "land": 7,
-     "mk-tell": 6,
-     "enemy-shot": 7,
-     "parry-ready": 3,
-     "parry": 3,
-     "marksman-hit": 3,
-     "marksman-leap": 2,
-     "dash": 3,
-     "refill-dash": 3,
-     "carrier-reroute": 2,
-     "enemy-hit": 14,
-     "mk-rain": 2,
+     "jump": 9,
+     "land": 11,
+     "mk-tell": 8,
+     "enemy-shot": 9,
+     "parry-ready": 4,
+     "parry": 4,
+     "marksman-hit": 4,
+     "marksman-leap": 3,
+     "dash": 6,
+     "refill-dash": 6,
+     "carrier-reroute": 3,
+     "enemy-hit": 20,
+     "mk-rain": 3,
      "ultra": 1,
      "hyper": 1,
      "marksman-gone": 1,
@@ -81091,7 +81105,7 @@ const records=[
    },
    "positiveChecks": [
     {
-     "name": "Final parry two frames earlier",
+     "name": "Fourth aerial parry two frames later",
      "tape": [
       [
        18,
@@ -81194,81 +81208,7 @@ const records=[
        "rj"
       ],
       [
-       185,
-       ""
-      ],
-      [
-       1,
-       "p"
-      ],
-      [
-       85,
-       ""
-      ],
-      [
-       30,
-       "r"
-      ]
-     ],
-     "after": {
-      "exited": true,
-      "deaths": 0,
-      "frames": 1237,
-      "events": [
-       "jump",
-       "land",
-       "mk-tell",
-       "enemy-shot",
-       "parry-ready",
-       "parry",
-       "marksman-hit",
-       "marksman-leap",
-       "dash",
-       "refill-dash",
-       "carrier-reroute",
-       "enemy-hit",
-       "mk-rain",
-       "ultra",
-       "hyper",
-       "marksman-gone",
-       "gate-open",
-       "exit"
-      ],
-      "eventCounts": {
-       "jump": 6,
-       "land": 7,
-       "mk-tell": 6,
-       "enemy-shot": 7,
-       "parry-ready": 3,
-       "parry": 3,
-       "marksman-hit": 3,
-       "marksman-leap": 2,
-       "dash": 3,
-       "refill-dash": 3,
-       "carrier-reroute": 2,
-       "enemy-hit": 14,
-       "mk-rain": 2,
-       "ultra": 1,
-       "hyper": 1,
-       "marksman-gone": 1,
-       "gate-open": 1,
-       "exit": 1
-      }
-     }
-    },
-    {
-     "name": "Final parry two frames later",
-     "tape": [
-      [
-       18,
-       "r"
-      ],
-      [
-       18,
-       "rj"
-      ],
-      [
-       223,
+       187,
        ""
       ],
       [
@@ -81280,106 +81220,70 @@ const records=[
        ""
       ],
       [
-       18,
-       "rj"
+       20,
+       "lj"
       ],
       [
-       5,
-       "rx"
+       12,
+       "lx"
+      ],
+      [
+       30,
+       "l"
+      ],
+      [
+       30,
+       ""
+      ],
+      [
+       20,
+       "lj"
+      ],
+      [
+       12,
+       "lux"
+      ],
+      [
+       20,
+       ""
       ],
       [
        25,
-       "r"
+       "l"
       ],
       [
-       12,
+       70,
        ""
       ],
       [
-       35,
+       62,
        ""
       ],
       [
-       30,
+       21,
        "j"
-      ],
-      [
-       225,
-       ""
       ],
       [
        1,
        "p"
-      ],
-      [
-       14,
-       ""
-      ],
-      [
-       20,
-       "rj"
-      ],
-      [
-       5,
-       "rx"
-      ],
-      [
-       15,
-       "r"
-      ],
-      [
-       20,
-       ""
-      ],
-      [
-       85,
-       ""
-      ],
-      [
-       30,
-       "j"
-      ],
-      [
-       110,
-       ""
       ],
       [
        7,
-       "rj"
-      ],
-      [
-       5,
-       "rdx"
-      ],
-      [
-       5,
-       "r"
+       ""
       ],
       [
        12,
-       "rj"
+       "rx"
       ],
       [
-       189,
-       ""
-      ],
-      [
-       1,
-       "p"
-      ],
-      [
-       85,
-       ""
-      ],
-      [
-       30,
+       100,
        "r"
       ]
      ],
      "after": {
       "exited": true,
       "deaths": 0,
-      "frames": 1241,
+      "frames": 1588,
       "events": [
        "jump",
        "land",
@@ -81401,185 +81305,19 @@ const records=[
        "exit"
       ],
       "eventCounts": {
-       "jump": 6,
-       "land": 7,
-       "mk-tell": 6,
-       "enemy-shot": 7,
-       "parry-ready": 3,
-       "parry": 3,
-       "marksman-hit": 3,
-       "marksman-leap": 2,
-       "dash": 3,
-       "refill-dash": 3,
-       "carrier-reroute": 2,
-       "enemy-hit": 14,
-       "mk-rain": 2,
-       "ultra": 1,
-       "hyper": 1,
-       "marksman-gone": 1,
-       "gate-open": 1,
-       "exit": 1
-      }
-     }
-    },
-    {
-     "name": "Leave the upper carrier ten frames later and recover on the broad final shelf",
-     "tape": [
-      [
-       18,
-       "r"
-      ],
-      [
-       18,
-       "rj"
-      ],
-      [
-       223,
-       ""
-      ],
-      [
-       1,
-       "p"
-      ],
-      [
-       15,
-       ""
-      ],
-      [
-       18,
-       "rj"
-      ],
-      [
-       5,
-       "rx"
-      ],
-      [
-       25,
-       "r"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       35,
-       ""
-      ],
-      [
-       30,
-       "j"
-      ],
-      [
-       225,
-       ""
-      ],
-      [
-       1,
-       "p"
-      ],
-      [
-       14,
-       ""
-      ],
-      [
-       20,
-       "rj"
-      ],
-      [
-       5,
-       "rx"
-      ],
-      [
-       15,
-       "r"
-      ],
-      [
-       20,
-       ""
-      ],
-      [
-       85,
-       ""
-      ],
-      [
-       30,
-       "j"
-      ],
-      [
-       120,
-       ""
-      ],
-      [
-       7,
-       "rj"
-      ],
-      [
-       5,
-       "rdx"
-      ],
-      [
-       5,
-       "r"
-      ],
-      [
-       12,
-       "rj"
-      ],
-      [
-       177,
-       ""
-      ],
-      [
-       1,
-       "p"
-      ],
-      [
-       85,
-       ""
-      ],
-      [
-       30,
-       "r"
-      ]
-     ],
-     "after": {
-      "exited": true,
-      "deaths": 0,
-      "frames": 1239,
-      "events": [
-       "jump",
-       "land",
-       "mk-tell",
-       "enemy-shot",
-       "parry-ready",
-       "parry",
-       "marksman-hit",
-       "marksman-leap",
-       "dash",
-       "refill-dash",
-       "carrier-reroute",
-       "enemy-hit",
-       "mk-rain",
-       "ultra",
-       "hyper",
-       "marksman-gone",
-       "gate-open",
-       "exit"
-      ],
-      "eventCounts": {
-       "jump": 6,
-       "land": 7,
-       "mk-tell": 6,
-       "enemy-shot": 7,
-       "parry-ready": 3,
-       "parry": 3,
-       "marksman-hit": 3,
-       "marksman-leap": 2,
-       "dash": 3,
-       "refill-dash": 3,
-       "carrier-reroute": 2,
-       "enemy-hit": 14,
-       "mk-rain": 2,
+       "jump": 9,
+       "land": 11,
+       "mk-tell": 8,
+       "enemy-shot": 9,
+       "parry-ready": 4,
+       "parry": 4,
+       "marksman-hit": 4,
+       "marksman-leap": 3,
+       "dash": 6,
+       "refill-dash": 6,
+       "carrier-reroute": 3,
+       "enemy-hit": 20,
+       "mk-rain": 3,
        "ultra": 1,
        "hyper": 1,
        "marksman-gone": 1,
@@ -81591,7 +81329,7 @@ const records=[
    ],
    "shortcutChecks": [
     {
-     "name": "Stay at the first cleared perch instead of following the rerouted carrier",
+     "name": "Skip only the fourth parry; the native boss still holds the exit",
      "tape": [
       [
        18,
@@ -81626,13 +81364,149 @@ const records=[
        "r"
       ],
       [
-       700,
+       12,
        ""
+      ],
+      [
+       35,
+       ""
+      ],
+      [
+       30,
+       "j"
+      ],
+      [
+       225,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       14,
+       ""
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       5,
+       "rx"
+      ],
+      [
+       15,
+       "r"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       85,
+       ""
+      ],
+      [
+       30,
+       "j"
+      ],
+      [
+       110,
+       ""
+      ],
+      [
+       7,
+       "rj"
+      ],
+      [
+       5,
+       "rdx"
+      ],
+      [
+       5,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       187,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       20,
+       "lj"
+      ],
+      [
+       12,
+       "lx"
+      ],
+      [
+       30,
+       "l"
+      ],
+      [
+       30,
+       ""
+      ],
+      [
+       20,
+       "lj"
+      ],
+      [
+       12,
+       "lux"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       25,
+       "l"
+      ],
+      [
+       70,
+       ""
+      ],
+      [
+       62,
+       ""
+      ],
+      [
+       19,
+       "j"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       9,
+       ""
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       100,
+       "r"
       ]
      ],
      "after": {
       "exited": false,
-      "deaths": 1,
+      "deaths": 2,
       "frames": 0,
       "events": [
        "jump",
@@ -81648,24 +81522,348 @@ const records=[
        "carrier-reroute",
        "enemy-hit",
        "mk-rain",
+       "ultra",
+       "hyper",
        "death",
        "respawn"
       ],
-      "deathCauses": [
-       "spikes"
+      "eventCounts": {
+       "jump": 9,
+       "land": 10,
+       "mk-tell": 8,
+       "enemy-shot": 8,
+       "parry-ready": 3,
+       "parry": 3,
+       "marksman-hit": 3,
+       "marksman-leap": 3,
+       "dash": 5,
+       "refill-dash": 5,
+       "carrier-reroute": 3,
+       "enemy-hit": 19,
+       "mk-rain": 3,
+       "ultra": 1,
+       "hyper": 1,
+       "death": 2,
+       "respawn": 1
+      }
+     }
+    },
+    {
+     "name": "Replay the former three-phase completion; fourth phase prevents exit",
+     "tape": [
+      [
+       18,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       223,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       5,
+       "rx"
+      ],
+      [
+       25,
+       "r"
+      ],
+      [
+       12,
+       ""
+      ],
+      [
+       35,
+       ""
+      ],
+      [
+       30,
+       "j"
+      ],
+      [
+       225,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       14,
+       ""
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       5,
+       "rx"
+      ],
+      [
+       15,
+       "r"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       85,
+       ""
+      ],
+      [
+       30,
+       "j"
+      ],
+      [
+       110,
+       ""
+      ],
+      [
+       7,
+       "rj"
+      ],
+      [
+       5,
+       "rdx"
+      ],
+      [
+       5,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       187,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       85,
+       ""
+      ],
+      [
+       30,
+       "r"
       ]
+     ],
+     "after": {
+      "exited": false,
+      "deaths": 0,
+      "frames": 0,
+      "events": [
+       "jump",
+       "land",
+       "mk-tell",
+       "enemy-shot",
+       "parry-ready",
+       "parry",
+       "marksman-hit",
+       "marksman-leap",
+       "dash",
+       "refill-dash",
+       "carrier-reroute",
+       "enemy-hit",
+       "mk-rain",
+       "ultra",
+       "hyper"
+      ],
+      "eventCounts": {
+       "jump": 6,
+       "land": 7,
+       "mk-tell": 7,
+       "enemy-shot": 7,
+       "parry-ready": 3,
+       "parry": 3,
+       "marksman-hit": 3,
+       "marksman-leap": 3,
+       "dash": 3,
+       "refill-dash": 3,
+       "carrier-reroute": 3,
+       "enemy-hit": 14,
+       "mk-rain": 2,
+       "ultra": 1,
+       "hyper": 1
+      }
      }
     }
    ],
-   "endingForgiveness": "The final shelf is ten tiles wide and allows a full stop before returning the last arrow. Successful zero-death tapes vary the parry by four frames and leave the carrier ten frames later. A mistimed outgoing jump can land on the same wide shelf; no final launch is necessary after the boss yields.",
+   "endingForgiveness": "After the fourth aerial parry, an extra five-tile one-way ledge joins the original ten-tile eastern shelf. The saved route lands there before the exit opens; no fifth attack or precision landing follows. The final parry also succeeds two frames later.",
    "requiredEventCounts": {
-    "marksman-hit": 3,
-    "carrier-reroute": 2,
-    "mk-rain": 2
+    "marksman-hit": 4,
+    "carrier-reroute": 3,
+    "mk-rain": 3
    },
    "needsReview": true,
-   "revisionNote": "Native post-leap arrow rain added: eight-tile warning band, five spaced arrows, 30-frame delayed descent. Existing stable route and broad final shelf preserved; needsReview remains true.",
-   "revision": "e37c02bebe0e",
+   "revisionNote": "Fourth native Marksman perch and real fourth hit added. Third carrier reroute, third post-leap arrow rain, reversed boarding jump and aerial return shot form a harder continuation. Original entry/right exit and all first-three boss timings preserved; five one-way recovery tiles extend the final landing. No runtime changes.",
+   "routeEvents": [
+    {
+     "type": "parry",
+     "frame": 265,
+     "x": 297.99417982466457,
+     "y": 195.01673334758806,
+     "i": 264
+    },
+    {
+     "type": "marksman-hit",
+     "frame": 287,
+     "x": 372,
+     "y": 190,
+     "hits": 1,
+     "need": 4,
+     "i": 286
+    },
+    {
+     "type": "marksman-leap",
+     "frame": 287,
+     "x": 372,
+     "y": 200,
+     "i": 286
+    },
+    {
+     "type": "carrier-reroute",
+     "frame": 319,
+     "x": 344,
+     "y": 200,
+     "stage": 1,
+     "i": 318
+    },
+    {
+     "type": "mk-rain",
+     "frame": 415,
+     "x": 556,
+     "y": 120,
+     "bx": 352,
+     "bw": 64,
+     "i": 414
+    },
+    {
+     "type": "parry",
+     "frame": 626,
+     "x": 478.3950158851329,
+     "y": 138.38016967497708,
+     "i": 625
+    },
+    {
+     "type": "marksman-hit",
+     "frame": 649,
+     "x": 556,
+     "y": 126,
+     "hits": 2,
+     "need": 4,
+     "i": 648
+    },
+    {
+     "type": "marksman-leap",
+     "frame": 649,
+     "x": 556,
+     "y": 136,
+     "i": 648
+    },
+    {
+     "type": "carrier-reroute",
+     "frame": 678,
+     "x": 528,
+     "y": 136,
+     "stage": 2,
+     "i": 677
+    },
+    {
+     "type": "mk-rain",
+     "frame": 777,
+     "x": 724,
+     "y": 80,
+     "bx": 506,
+     "bw": 64,
+     "i": 776
+    },
+    {
+     "type": "parry",
+     "frame": 1145,
+     "x": 744.2105647142787,
+     "y": 86.26316029464242,
+     "i": 1144
+    },
+    {
+     "type": "marksman-hit",
+     "frame": 1152,
+     "x": 724,
+     "y": 86,
+     "hits": 3,
+     "need": 4,
+     "i": 1151
+    },
+    {
+     "type": "marksman-leap",
+     "frame": 1152,
+     "x": 724,
+     "y": 96,
+     "i": 1151
+    },
+    {
+     "type": "carrier-reroute",
+     "frame": 1152,
+     "x": 688,
+     "y": 96,
+     "stage": 3,
+     "i": 1151
+    },
+    {
+     "type": "mk-rain",
+     "frame": 1283,
+     "x": 540,
+     "y": 40,
+     "bx": 603,
+     "bw": 64,
+     "i": 1282
+    },
+    {
+     "type": "parry",
+     "frame": 1479,
+     "x": 584.1428602828526,
+     "y": 36.258839547949854,
+     "i": 1478
+    },
+    {
+     "type": "marksman-hit",
+     "frame": 1496,
+     "x": 540,
+     "y": 46,
+     "hits": 4,
+     "need": 4,
+     "i": 1495
+    },
+    {
+     "type": "marksman-gone",
+     "frame": 1545,
+     "x": 540,
+     "y": 221,
+     "how": "fall",
+     "i": 1544
+    }
+   ],
+   "revision": "e29736702d4e",
    "source": "scripts/room-bank/fractured/bank-f64.json"
   },
   "tape": [
@@ -81778,11 +81976,67 @@ const records=[
     "p"
    ],
    [
-    85,
+    15,
     ""
    ],
    [
+    20,
+    "lj"
+   ],
+   [
+    12,
+    "lx"
+   ],
+   [
     30,
+    "l"
+   ],
+   [
+    30,
+    ""
+   ],
+   [
+    20,
+    "lj"
+   ],
+   [
+    12,
+    "lux"
+   ],
+   [
+    20,
+    ""
+   ],
+   [
+    25,
+    "l"
+   ],
+   [
+    70,
+    ""
+   ],
+   [
+    62,
+    ""
+   ],
+   [
+    19,
+    "j"
+   ],
+   [
+    1,
+    "p"
+   ],
+   [
+    9,
+    ""
+   ],
+   [
+    12,
+    "rx"
+   ],
+   [
+    100,
     "r"
    ]
   ]
@@ -85897,7 +86151,7 @@ const records=[
    "run": 9,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "status": "route-proven",
    "author": "Codex",
    "tags": [
@@ -85909,7 +86163,7 @@ const records=[
     "return"
    ],
    "newMechanics": [],
-   "humanReview": "Awaiting review; numeric ratings unmeasured.",
+   "humanReview": "Approved by the user after the 7.306 review; numeric fun and suitability ratings remain unmeasured.",
    "worlds": [
     2
    ],
@@ -86673,6 +86927,7 @@ const records=[
      "frames": null
     }
    ],
+   "needsReview": false,
    "revision": "5a2aa9521229",
    "source": "scripts/room-bank/base/bank-b67.json"
   },
@@ -86998,7 +87253,7 @@ const records=[
    "run": 9,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "status": "route-proven",
    "author": "Codex",
    "tags": [
@@ -87011,7 +87266,7 @@ const records=[
     "return"
    ],
    "newMechanics": [],
-   "humanReview": "Awaiting review; numeric ratings unmeasured.",
+   "humanReview": "Approved by the user after the 7.306 review; numeric fun and suitability ratings remain unmeasured.",
    "worlds": [
     3
    ],
@@ -87586,6 +87841,7 @@ const records=[
     }
    ],
    "replaces": "cl3-c3-counterweight",
+   "needsReview": false,
    "revision": "2fab7a9ae8df",
    "source": "scripts/room-bank/base/bank-b68.json"
   },
@@ -87860,7 +88116,7 @@ const records=[
    "run": 9,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "status": "route-proven",
    "author": "Codex",
    "tags": [
@@ -87873,7 +88129,7 @@ const records=[
     "sightline"
    ],
    "newMechanics": [],
-   "humanReview": "Awaiting review; numeric ratings unmeasured.",
+   "humanReview": "Approved by the user after the 7.306 review; numeric fun and suitability ratings remain unmeasured.",
    "worlds": [
     5
    ],
@@ -88618,6 +88874,7 @@ const records=[
      "frames": null
     }
    ],
+   "needsReview": false,
    "revision": "ea84c14fe450",
    "source": "scripts/room-bank/base/bank-b69.json"
   },
@@ -88906,7 +89163,7 @@ const records=[
    "run": 9,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "status": "route-proven",
    "author": "Codex",
    "tags": [
@@ -88918,7 +89175,7 @@ const records=[
     "shutter"
    ],
    "newMechanics": [],
-   "humanReview": "Awaiting review; numeric ratings unmeasured.",
+   "humanReview": "Approved by the user after the 7.306 review; numeric fun and suitability ratings remain unmeasured.",
    "worlds": [
     7
    ],
@@ -89531,6 +89788,7 @@ const records=[
      "frames": null
     }
    ],
+   "needsReview": false,
    "revision": "a0f00a00be17",
    "source": "scripts/room-bank/base/bank-b70.json"
   },
@@ -89794,7 +90052,7 @@ const records=[
    "run": 9,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "status": "route-proven",
    "author": "Codex",
    "tags": [
@@ -89807,7 +90065,7 @@ const records=[
     "return"
    ],
    "newMechanics": [],
-   "humanReview": "Awaiting review; numeric ratings unmeasured.",
+   "humanReview": "Approved by the user after the 7.306 review; numeric fun and suitability ratings remain unmeasured.",
    "worlds": [
     9
    ],
@@ -90518,6 +90776,7 @@ const records=[
      "frames": null
     }
    ],
+   "needsReview": false,
    "revision": "2a6c71cebf2c",
    "source": "scripts/room-bank/base/bank-b71.json"
   },
@@ -90797,8 +91056,8 @@ const records=[
    "run": 9,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
-   "needsReview": true,
+   "acceptance": "banked",
+   "needsReview": false,
    "difficulty": 3,
    "role": "interconnected native Oath Root boss superroom",
    "worlds": [
@@ -90815,7 +91074,7 @@ const records=[
    "newMechanics": [],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "New integrated candidate; awaiting fun/difficulty/suitability review.",
+   "humanReview": "Approved by the user after the 7.306 review; numeric fun and suitability ratings remain unmeasured.",
    "approvedIngredients": [
     "bank-f17",
     "bank-f26"
@@ -91834,7 +92093,7 @@ const records=[
      {
       "kind": "hound",
       "brute": true,
-      "crush": 2,
+      "crush": 3,
       "stamp": "always",
       "x": 320,
       "y": 256,
@@ -91853,8 +92112,8 @@ const records=[
      }
     ]
    },
-   "hint": "Drop the first weight, then follow his next charge above the floor. The far carrier is also your way back.",
-   "question": "Where does a counterweight have to land so that it hurts him and still helps you?",
+   "hint": "Two falling weights only crack him. Return behind the first weight: it can finish its journey sideways.",
+   "question": "How can the weight you dropped first become both your final weapon and your return launch?",
    "map": [
     "################################################################################",
     "#..............................................................................#",
@@ -91869,10 +92128,10 @@ const records=[
     "#...............................................................................",
     "#...............................................................................",
     "#.......................................#######...........................######",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
     "#.............................................................########.........#",
-    "#..............................................................................#",
-    "#..............................................................................#",
-    "#..............................................................................#",
     "#.........................KKKK.......................KKK.......................#",
     "#.........................KKKK.......................KKK.......................#",
     "#..............................................................................#",
@@ -91888,10 +92147,17 @@ const records=[
     "#..............................................................................#",
     "#.....................ZZZZ.....................................................#",
     "#..............................................................................#",
-    "#........................#.....................................................#",
+    "#..............................................................................#",
     "#........................#.......P.............................................#",
     "################################################################################",
     "################################################################################"
+   ],
+   "anvilSleds": [
+    {
+     "c": 26,
+     "r": 17,
+     "offset": 3
+    }
    ]
   },
   "bank": {
@@ -91900,7 +92166,7 @@ const records=[
    "run": 9,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
+   "acceptance": "revised",
    "needsReview": true,
    "difficulty": 4,
    "role": "interconnected native Brute boss superroom",
@@ -91912,34 +92178,57 @@ const records=[
     "brute",
     "counterweight",
     "lift",
-    "return"
+    "return",
+    "anvil",
+    "shared-state",
+    "horizontal-crush"
    ],
    "newMechanics": [],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "New integrated candidate; awaiting fun/difficulty/suitability review.",
+   "humanReview": "Expanded after feedback that the original was too short/simple. Awaiting renewed fun/difficulty/suitability review.",
    "approvedIngredients": [
     "bank-f27",
     "bank-f33"
    ],
-   "interconnection": "Two counterweights share one live Brute court. Dropping the west weight opens its vertical shaft and rebounds the knight toward the middle lift. Stepping off that lift baits the enraged eastward charge; an upward dodge catches the east lift while the boss stops under its weight. After dropping that weight, the knight returns to the same lift and crosses the same ward that stopped the charge, now opened by the real defeat.",
-   "solution": "Jump away from the first charge onto the western lift. Land on its counterweight and dash down, crushing the stopped Brute once. Drift onto the middle lift during the rebound, then walk off toward the open eastern court to draw his enraged charge. Dash upward while it commits beneath you, land on the east lift, and step onto its weight. Dash down to crush him against his ward. Descend back onto the east lift, ride it again, then jump through the opened ward to the broad exit galleries.",
-   "novelty": "A descent to damage the boss becomes a return to the carrier that supplied the attack. The middle carrier is used to expose a moving bait, and the boss’s final stopping wall is the barrier to the same high route the player must revisit.",
+   "interconnection": "The two original vertical crushes now leave the enraged native Brute alive between the fallen counterweights. The knight must cross the same upper court back to the west, descend behind the first weight, and drive it horizontally into the second weight to complete a third genuine crush. The first weight carries an anvil: after serving as both falling and sideways weapon, its new location supplies a pogo launch toward the opened ward and the exit gallery.",
+   "solution": "Complete the original west drop and east drop. Return left across the high court while the Brute charges underneath. Drop behind the first fallen stone, hop onto the low stopping lip, and dash right into the stone: it pins the Brute against the east stone. Follow it across the court, hop onto its anvil and jump/down-cut to rebound through the opened ward. Up-right dash to the broad lower gallery, then jump/dash to the unchanged exit. The old carriers remain a forgiving alternative return if the rebound is missed.",
+   "novelty": "The same physical counterweight is used in three ways: vertical crush, horizontal crushing ram against the other weight, and transported anvil for the escape. A previously safe two-hit victory becomes a live return across the arena with the Brute still active; its old attack layout becomes the finishing trap.",
    "nearestExisting": "World23 native Brute crushes and lifts; F27 carrier commitment and F33 departure following a combat exchange.",
    "requiredEvents": [
     "zip-start",
     "stone-hit",
     "brute-crack",
     "enemy-defeat",
-    "combat-gate"
+    "combat-gate",
+    "anvil"
    ],
    "route": {
-    "name": "canonical",
     "exited": true,
     "deaths": 0,
-    "frames": 763,
+    "frames": 1416,
     "bruteDefeated": true,
-    "cracks": 1,
+    "cracks": 2,
+    "eventCounts": {
+     "jump": 10,
+     "dash": 10,
+     "enemy-tell": 3,
+     "land": 13,
+     "refill-dash": 10,
+     "zip-start": 5,
+     "zip-stop": 5,
+     "brute-rear": 3,
+     "brute-stamp": 3,
+     "stone-hit": 3,
+     "brute-crack": 2,
+     "stone-stop": 3,
+     "zip-home": 5,
+     "enemy-defeat": 1,
+     "combat-gate": 1,
+     "strike": 1,
+     "anvil": 1,
+     "exit": 1
+    },
     "events": [
      "jump",
      "dash",
@@ -91956,30 +92245,14 @@ const records=[
      "zip-home",
      "enemy-defeat",
      "combat-gate",
+     "strike",
+     "anvil",
      "exit"
-    ],
-    "eventCounts": {
-     "jump": 5,
-     "dash": 6,
-     "enemy-tell": 2,
-     "land": 7,
-     "refill-dash": 6,
-     "zip-start": 4,
-     "zip-stop": 4,
-     "brute-rear": 2,
-     "brute-stamp": 2,
-     "stone-hit": 2,
-     "brute-crack": 1,
-     "stone-stop": 2,
-     "zip-home": 4,
-     "enemy-defeat": 1,
-     "combat-gate": 1,
-     "exit": 1
-    }
+    ]
    },
    "positiveChecks": [
     {
-     "name": "Final jump hold -3 frames",
+     "name": "Pause sixty additional frames on the final gallery",
      "tape": [
       [
        20,
@@ -92063,6 +92336,50 @@ const records=[
       ],
       [
        30,
+       "lj"
+      ],
+      [
+       5,
+       "lx"
+      ],
+      [
+       110,
+       "l"
+      ],
+      [
+       70,
+       ""
+      ],
+      [
+       25,
+       "r"
+      ],
+      [
+       1,
+       "j"
+      ],
+      [
+       2,
+       "r"
+      ],
+      [
+       5,
+       "rx"
+      ],
+      [
+       35,
+       ""
+      ],
+      [
+       5,
+       "rx"
+      ],
+      [
+       120,
+       ""
+      ],
+      [
+       25,
        "rj"
       ],
       [
@@ -92070,7 +92387,7 @@ const records=[
        "rx"
       ],
       [
-       25,
+       100,
        "r"
       ],
       [
@@ -92078,378 +92395,110 @@ const records=[
        ""
       ],
       [
-       17,
+       20,
        "rj"
+      ],
+      [
+       35,
+       ""
+      ],
+      [
+       11,
+       "rj"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       1,
+       "j"
+      ],
+      [
+       1,
+       "ds"
+      ],
+      [
+       30,
+       "r"
       ],
       [
        5,
        "rux"
-      ],
-      [
-       55,
-       "r"
-      ]
-     ],
-     "after": {
-      "exited": true,
-      "deaths": 0,
-      "frames": 763,
-      "bruteDefeated": true,
-      "cracks": 1,
-      "events": [
-       "jump",
-       "dash",
-       "enemy-tell",
-       "land",
-       "refill-dash",
-       "zip-start",
-       "zip-stop",
-       "brute-rear",
-       "brute-stamp",
-       "stone-hit",
-       "brute-crack",
-       "stone-stop",
-       "zip-home",
-       "enemy-defeat",
-       "combat-gate",
-       "exit"
-      ],
-      "eventCounts": {
-       "jump": 5,
-       "dash": 6,
-       "enemy-tell": 2,
-       "land": 7,
-       "refill-dash": 6,
-       "zip-start": 4,
-       "zip-stop": 4,
-       "brute-rear": 2,
-       "brute-stamp": 2,
-       "stone-hit": 2,
-       "brute-crack": 1,
-       "stone-stop": 2,
-       "zip-home": 4,
-       "enemy-defeat": 1,
-       "combat-gate": 1,
-       "exit": 1
-      }
-     }
-    },
-    {
-     "name": "Final jump hold 3 frames",
-     "tape": [
-      [
-       20,
-       "lj"
-      ],
-      [
-       5,
-       "lux"
-      ],
-      [
-       10,
-       "l"
-      ],
-      [
-       90,
-       ""
-      ],
-      [
-       12,
-       "rj"
-      ],
-      [
-       35,
-       ""
-      ],
-      [
-       5,
-       "dx"
-      ],
-      [
-       45,
-       ""
-      ],
-      [
-       50,
-       "r"
-      ],
-      [
-       48,
-       "r"
-      ],
-      [
-       5,
-       "ux"
-      ],
-      [
-       25,
-       "r"
-      ],
-      [
-       55,
-       ""
-      ],
-      [
-       20,
-       "rj"
-      ],
-      [
-       35,
-       ""
-      ],
-      [
-       5,
-       "dx"
-      ],
-      [
-       65,
-       ""
-      ],
-      [
-       30,
-       ""
-      ],
-      [
-       10,
-       "l"
       ],
       [
        40,
-       ""
-      ],
-      [
-       30,
-       "rj"
-      ],
-      [
-       5,
-       "rx"
-      ],
-      [
-       25,
        "r"
       ],
       [
-       20,
+       75,
        ""
       ],
       [
-       23,
+       20,
        "rj"
       ],
       [
        5,
        "rux"
-      ],
-      [
-       55,
-       "r"
-      ]
-     ],
-     "after": {
-      "exited": true,
-      "deaths": 0,
-      "frames": 763,
-      "bruteDefeated": true,
-      "cracks": 1,
-      "events": [
-       "jump",
-       "dash",
-       "enemy-tell",
-       "land",
-       "refill-dash",
-       "zip-start",
-       "zip-stop",
-       "brute-rear",
-       "brute-stamp",
-       "stone-hit",
-       "brute-crack",
-       "stone-stop",
-       "zip-home",
-       "enemy-defeat",
-       "combat-gate",
-       "exit"
-      ],
-      "eventCounts": {
-       "jump": 5,
-       "dash": 6,
-       "enemy-tell": 2,
-       "land": 7,
-       "refill-dash": 6,
-       "zip-start": 4,
-       "zip-stop": 4,
-       "brute-rear": 2,
-       "brute-stamp": 2,
-       "stone-hit": 2,
-       "brute-crack": 1,
-       "stone-stop": 2,
-       "zip-home": 4,
-       "enemy-defeat": 1,
-       "combat-gate": 1,
-       "exit": 1
-      }
-     }
-    },
-    {
-     "name": "Ride the return lift through one extra full cycle after victory",
-     "tape": [
-      [
-       20,
-       "lj"
-      ],
-      [
-       5,
-       "lux"
-      ],
-      [
-       10,
-       "l"
-      ],
-      [
-       90,
-       ""
-      ],
-      [
-       12,
-       "rj"
-      ],
-      [
-       35,
-       ""
-      ],
-      [
-       5,
-       "dx"
-      ],
-      [
-       45,
-       ""
-      ],
-      [
-       50,
-       "r"
-      ],
-      [
-       48,
-       "r"
-      ],
-      [
-       5,
-       "ux"
-      ],
-      [
-       25,
-       "r"
-      ],
-      [
-       55,
-       ""
-      ],
-      [
-       20,
-       "rj"
-      ],
-      [
-       35,
-       ""
-      ],
-      [
-       5,
-       "dx"
       ],
       [
        65,
-       ""
-      ],
-      [
-       30,
-       ""
-      ],
-      [
-       10,
-       "l"
-      ],
-      [
-       245,
-       ""
-      ],
-      [
-       30,
-       "rj"
-      ],
-      [
-       5,
-       "rx"
-      ],
-      [
-       25,
-       "r"
-      ],
-      [
-       20,
-       ""
-      ],
-      [
-       20,
-       "rj"
-      ],
-      [
-       5,
-       "rux"
-      ],
-      [
-       55,
        "r"
       ]
      ],
      "after": {
       "exited": true,
       "deaths": 0,
-      "frames": 968,
+      "frames": 1476,
       "bruteDefeated": true,
-      "cracks": 1,
-      "events": [
-       "jump",
-       "dash",
-       "enemy-tell",
-       "land",
-       "refill-dash",
-       "zip-start",
-       "zip-stop",
-       "brute-rear",
-       "brute-stamp",
-       "stone-hit",
-       "brute-crack",
-       "stone-stop",
-       "zip-home",
-       "enemy-defeat",
-       "combat-gate",
-       "exit"
-      ],
+      "cracks": 2,
       "eventCounts": {
-       "jump": 5,
-       "dash": 6,
-       "enemy-tell": 2,
-       "land": 7,
-       "refill-dash": 6,
+       "jump": 10,
+       "dash": 10,
+       "enemy-tell": 3,
+       "land": 13,
+       "refill-dash": 10,
        "zip-start": 5,
        "zip-stop": 5,
-       "brute-rear": 2,
-       "brute-stamp": 2,
-       "stone-hit": 2,
-       "brute-crack": 1,
-       "stone-stop": 2,
+       "brute-rear": 3,
+       "brute-stamp": 3,
+       "stone-hit": 3,
+       "brute-crack": 2,
+       "stone-stop": 3,
        "zip-home": 5,
        "enemy-defeat": 1,
        "combat-gate": 1,
+       "strike": 1,
+       "anvil": 1,
        "exit": 1
-      }
+      },
+      "events": [
+       "jump",
+       "dash",
+       "enemy-tell",
+       "land",
+       "refill-dash",
+       "zip-start",
+       "zip-stop",
+       "brute-rear",
+       "brute-stamp",
+       "stone-hit",
+       "brute-crack",
+       "stone-stop",
+       "zip-home",
+       "enemy-defeat",
+       "combat-gate",
+       "strike",
+       "anvil",
+       "exit"
+      ]
      }
     }
    ],
    "shortcutChecks": [
     {
-     "name": "Keep the second counterweight raised and attempt the upper exit",
+     "name": "Original two-crush completion now leaves the real Brute alive and the ward closed",
      "tape": [
       [
        20,
@@ -92513,7 +92562,7 @@ const records=[
       ],
       [
        5,
-       ""
+       "dx"
       ],
       [
        65,
@@ -92563,9 +92612,25 @@ const records=[
      "after": {
       "exited": false,
       "deaths": 0,
-      "frames": 0,
+      "frames": -1,
       "bruteDefeated": false,
-      "cracks": 1,
+      "cracks": 2,
+      "eventCounts": {
+       "jump": 4,
+       "dash": 5,
+       "enemy-tell": 3,
+       "land": 5,
+       "refill-dash": 4,
+       "zip-start": 4,
+       "zip-stop": 4,
+       "brute-rear": 2,
+       "brute-stamp": 2,
+       "stone-hit": 2,
+       "brute-crack": 2,
+       "stone-stop": 2,
+       "zip-home": 4,
+       "walljump": 1
+      },
       "events": [
        "jump",
        "dash",
@@ -92581,33 +92646,23 @@ const records=[
        "stone-stop",
        "zip-home",
        "walljump"
-      ],
-      "eventCounts": {
-       "jump": 4,
-       "dash": 4,
-       "enemy-tell": 3,
-       "land": 6,
-       "refill-dash": 4,
-       "zip-start": 4,
-       "zip-stop": 4,
-       "brute-rear": 3,
-       "brute-stamp": 3,
-       "stone-hit": 1,
-       "brute-crack": 1,
-       "stone-stop": 1,
-       "zip-home": 3,
-       "walljump": 1
-      }
+      ]
      }
     }
    ],
    "requiredEventCounts": {
-    "stone-hit": 2,
-    "brute-crack": 1,
-    "enemy-defeat": 1
+    "stone-hit": 3,
+    "brute-crack": 2,
+    "enemy-defeat": 1,
+    "anvil": 1
    },
-   "endingForgiveness": "All dangerous combat ends before the final route. Broad solid galleries accept earlier and later final jumps. The return lift can be ridden through another full cycle after victory; the lower court is solid recovery ground, not a last-jump death pit.",
-   "revision": "40a8e5d156ed",
+   "endingForgiveness": "Once the third native crush finishes, the whole court is safe recovery floor. The carried anvil can be retried, the original lifts remain available, and the final gallery accepts an extra sixty-frame pause before the last jump.",
+   "evidenceNotes": [
+    "Entrance P33,33 and right exit rows8–11 are unchanged.",
+    "No new runtime: anvilSleds uses the already loaded superrooms-colossus module.",
+    "The anvil return is the demonstrated new route, not an invisible mandatory receipt; carrier recovery remains valid."
+   ],
+   "revision": "11032cbc4334",
    "source": "scripts/room-bank/fractured/bank-f69.json"
   },
   "tape": [
@@ -92693,6 +92748,50 @@ const records=[
    ],
    [
     30,
+    "lj"
+   ],
+   [
+    5,
+    "lx"
+   ],
+   [
+    110,
+    "l"
+   ],
+   [
+    70,
+    ""
+   ],
+   [
+    25,
+    "r"
+   ],
+   [
+    1,
+    "j"
+   ],
+   [
+    2,
+    "r"
+   ],
+   [
+    5,
+    "rx"
+   ],
+   [
+    35,
+    ""
+   ],
+   [
+    5,
+    "rx"
+   ],
+   [
+    120,
+    ""
+   ],
+   [
+    25,
     "rj"
    ],
    [
@@ -92700,7 +92799,7 @@ const records=[
     "rx"
    ],
    [
-    25,
+    100,
     "r"
    ],
    [
@@ -92712,11 +92811,51 @@ const records=[
     "rj"
    ],
    [
+    35,
+    ""
+   ],
+   [
+    11,
+    "rj"
+   ],
+   [
+    25,
+    ""
+   ],
+   [
+    1,
+    "j"
+   ],
+   [
+    1,
+    "ds"
+   ],
+   [
+    30,
+    "r"
+   ],
+   [
     5,
     "rux"
    ],
    [
-    55,
+    40,
+    "r"
+   ],
+   [
+    15,
+    ""
+   ],
+   [
+    20,
+    "rj"
+   ],
+   [
+    5,
+    "rux"
+   ],
+   [
+    65,
     "r"
    ]
   ]
@@ -92826,8 +92965,8 @@ const records=[
    "run": 9,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
-   "needsReview": true,
+   "acceptance": "banked",
+   "needsReview": false,
    "difficulty": 4,
    "role": "interconnected native Warden boss superroom",
    "worlds": [
@@ -92844,7 +92983,7 @@ const records=[
    "newMechanics": [],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "New integrated candidate; awaiting fun/difficulty/suitability review.",
+   "humanReview": "Approved by the user after the 7.306 review; numeric fun and suitability ratings remain unmeasured.",
    "approvedIngredients": [
     "bank-f45",
     "bank-f49"
@@ -93861,7 +94000,7 @@ const records=[
    "study": true,
    "movement": "survive-2",
    "aim8": true,
-   "cols": 72,
+   "cols": 96,
    "rows": 40,
    "exit": "left",
    "lock": [
@@ -93877,13 +94016,13 @@ const records=[
     {
      "c": 18,
      "r": 32,
-     "w": 32,
+     "w": 56,
      "h": 5,
      "dx": 28,
      "dy": 0
     },
     {
-     "c": 64,
+     "c": 88,
      "r": 10,
      "w": 5,
      "h": 24,
@@ -93891,49 +94030,49 @@ const records=[
      "dy": -240
     }
    ],
-   "hint": "Leave the lantern on the far plate. Ride the opened wind cap, then spend each feather on the high return.",
+   "hint": "Carry the lantern across four broken spans, leave it on the far plate, then use the wind and three feather transfers to return above your fractured road.",
    "question": "Which weight must remain below while you cross back above it?",
    "map": [
-    "########################################################################",
-    "#......................................................................#",
-    "#......................................................................#",
-    "#......................................................................#",
-    "#......................................................................#",
-    "#......................................................................#",
-    ".......................................................................#",
-    ".......................................................................#",
-    ".......................................................................#",
-    ".......................................................................#",
-    "IIIIIIIIIIIIIIIII....f.................................................#",
-    "#......................................................................#",
-    "#......................................................................#",
-    "#......................................................................#",
-    "#......................................................................#",
-    "#..........................IIIIIIIIIII.................................#",
-    "#......................................................................#",
-    "#......................................................................#",
-    "#............................................f.........................#",
-    "#......................................................................#",
-    "#......................................................................#",
-    "#......................................................................#",
-    "#......................................................................#",
-    "#...............................................IIIIII.................#",
-    "#......................................................................#",
-    "#......................................................................#",
-    "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^.......#",
-    "################################################################HHHHHHH#",
-    "#......................................................................#",
-    "#......................................................................#",
-    "#......................................................................#",
-    "#......................................................................#",
-    "#......................................................................#",
-    "#......................................................................#",
-    "#......................................................................#",
-    "#...P..l.............................................................__#",
-    "#IIIIIIIIIIIIIIIIITTTTTTTTT....TTTTTTTTTT.....TTTTIIIIIIIIIIIIIIIIIIIII#",
-    "#IIIIIIIIIIIIIIIII................................IIIIIIIIIIIIIIIIIIIII#",
-    "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
-    "########################################################################"
+    "################################################################################################",
+    "#..............................................................................................#",
+    "#..............................................................................................#",
+    "#..............................................................................................#",
+    "#..............................................................................................#",
+    "#..............................................................................................#",
+    "...............................................................................................#",
+    "...............................................................................................#",
+    "...............................................................................................#",
+    "...............................................................................................#",
+    "IIIIIIIIIIIIIIIIIIII....f......................................................................#",
+    "#..............................................................................................#",
+    "#..............................................................................................#",
+    "#.............................................f................................................#",
+    "#..............................................................................................#",
+    "#.................................IIIII........................................................#",
+    "#..............................................................................................#",
+    "#................................................................f.............................#",
+    "#..............................................................................................#",
+    "#....................................................IIIIIII...................................#",
+    "#..............................................................................................#",
+    "#..............................................................................................#",
+    "#..............................................................................................#",
+    "#.......................................................................IIIIII.................#",
+    "#..............................................................................................#",
+    "#..............................................................................................#",
+    "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^.......#",
+    "########################################################################################HHHHHHH#",
+    "#...........................................................###................................#",
+    "#...........................................................###................................#",
+    "#...........................................................###................................#",
+    "#...........................................................vvv................................#",
+    "#..............................................................................................#",
+    "#..............................................................................................#",
+    "#..............................................................................................#",
+    "#...P..l.....................................................................................__#",
+    "#IIIIIIIIIIIIIIIIITTTTTTTTT....TTTTTTTTTT.....TTTTTTTT......TTTTT......TTTIIIIIIIIIIIIIIIIIIIII#",
+    "#IIIIIIIIIIIIIIIII........................................................IIIIIIIIIIIIIIIIIIIII#",
+    "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+    "################################################################################################"
    ]
   },
   "bank": {
@@ -93942,7 +94081,7 @@ const records=[
    "run": 9,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
+   "acceptance": "revised",
    "needsReview": true,
    "difficulty": 3,
    "role": "interconnected Frostfell traversal superroom",
@@ -93961,14 +94100,14 @@ const records=[
    "newMechanics": [],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "New integrated candidate; awaiting fun/difficulty/suitability review.",
+   "humanReview": "Revision requested: previous room was too small and all jumps were easy. Expanded the shared basin and rebuilt the return for another review.",
    "approvedIngredients": [
     "bank-f48",
     "bank-f66"
    ],
-   "interconnection": "A wind-sealed roof divides one long glacial basin. Carry a lantern across the fault causeway, then leave it on the pressure bed to open the sole upward passage. Returning above the now-broken outward floor demands empty-handed feather transfers across the same basin.",
-   "solution": "Carry the lantern across the fault ice with the following draft. Park it on the far pressure bed, jump into the updraft, and leave the open wind cap onto the upper ice shelf. Preserve and spend the two airborne feathers across the ascending return, then settle on the broad final ledge.",
-   "novelty": "The cargo that gives access to the wind ascent must be deliberately left behind: carrying it prevents the feather jumps needed on the shared upper return.",
+   "interconnection": "The basin is one third wider. Its outward cargo route now has four broken spans; the same permanently held wind passage gives access to a three-stage empty-handed return above that collapsed road. The lantern must remain below while every feather transfer is completed.",
+   "solution": "Carry the lantern over the original two missing spans, then land on the new short fault rest under the hanging ice tongue and jump the fourth break. Leave the lantern on the far pressure bed to hold the wind cap open. Rise through the wind and return across three feather transfers: brake onto the new narrow middle shelf, reset on the small upper shelf, then spend the last feather to reach the broad home ledge.",
+   "novelty": "The enlarged shared basin joins cargo momentum, short fault landings, a low hanging ice tongue, sustained pressure and three rising feather transfers. The return reuses the space traversed with cargo, but changes both its height and the movement needed.",
    "nearestExisting": "F48 native airborne transfers and F66 leave-cargo return logic, rebuilt around Frostfell ice, fault progression and a vertical wind cap.",
    "requiredEvents": [
     "pickup",
@@ -93980,31 +94119,31 @@ const records=[
     "feather-jump"
    ],
    "requiredEventCounts": {
-    "feather-jump": 2,
-    "fault-crack": 2
+    "feather-jump": 3,
+    "fault-crack": 4
    },
    "route": {
     "name": "canonical",
     "exited": true,
     "deaths": 0,
-    "frames": 801,
+    "frames": 1049,
     "eventCounts": {
-     "ice": 5,
+     "ice": 6,
      "pickup": 1,
-     "fault-crack": 2,
+     "fault-crack": 4,
      "wind": 2,
-     "fault-fall": 19,
-     "jump": 7,
-     "land": 5,
+     "fault-fall": 32,
+     "jump": 11,
+     "land": 8,
      "plate": 3,
      "held-open": 1,
      "throw": 1,
      "lantern-land": 1,
-     "dash": 3,
-     "refill-dash": 3,
-     "feather": 2,
-     "feather-jump": 2,
-     "feather-back": 1,
+     "dash": 4,
+     "refill-dash": 4,
+     "feather": 3,
+     "feather-jump": 3,
+     "feather-back": 2,
      "exit": 1
     },
     "doorOpen": true,
@@ -94029,9 +94168,10 @@ const records=[
      "exit"
     ]
    },
-   "positiveChecks": [
+   "positiveChecks": [],
+   "shortcutChecks": [
     {
-     "name": "Final feather jump 3 frames earlier",
+     "name": "Keep the lantern instead of leaving it on the far bed",
      "tape": [
       [
        35,
@@ -94062,462 +94202,39 @@ const records=[
        "rj"
       ],
       [
-       130,
+       32,
        "r"
       ],
       [
-       15,
-       "l"
+       6,
+       "r"
       ],
       [
-       1,
-       "dg"
+       14,
+       "rj"
       ],
       [
        25,
-       ""
-      ],
-      [
-       14,
-       "lj"
-      ],
-      [
-       50,
-       ""
-      ],
-      [
-       30,
-       ""
-      ],
-      [
-       5,
-       "lx"
-      ],
-      [
-       48,
-       "l"
-      ],
-      [
-       16,
        "r"
-      ],
-      [
-       29,
-       "l"
-      ],
-      [
-       16,
-       "lj"
-      ],
-      [
-       5,
-       "lux"
-      ],
-      [
-       14,
-       "l"
-      ],
-      [
-       22,
-       "lj"
       ],
       [
        15,
        "l"
       ],
       [
-       18,
-       "r"
-      ],
-      [
-       19,
-       "l"
-      ],
-      [
-       16,
-       "lj"
-      ],
-      [
-       5,
-       "lx"
-      ],
-      [
-       9,
-       "l"
-      ],
-      [
-       22,
-       "lj"
-      ],
-      [
-       95,
-       "l"
-      ]
-     ],
-     "after": {
-      "exited": true,
-      "deaths": 0,
-      "frames": 800,
-      "eventCounts": {
-       "ice": 5,
-       "pickup": 1,
-       "fault-crack": 2,
-       "wind": 2,
-       "fault-fall": 19,
-       "jump": 7,
-       "land": 5,
-       "plate": 3,
-       "held-open": 1,
-       "throw": 1,
-       "lantern-land": 1,
-       "dash": 3,
-       "refill-dash": 3,
-       "feather": 2,
-       "feather-jump": 2,
-       "feather-back": 1,
-       "exit": 1
-      },
-      "doorOpen": true,
-      "carrying": false
-     }
-    },
-    {
-     "name": "Final feather jump 3 frames later",
-     "tape": [
-      [
-       35,
-       "r"
-      ],
-      [
-       1,
-       "g"
-      ],
-      [
-       82,
+       2,
        "r"
       ],
       [
        14,
        "rj"
-      ],
-      [
-       39,
-       "r"
-      ],
-      [
-       8,
-       "r"
-      ],
-      [
-       14,
-       "rj"
-      ],
-      [
-       130,
-       "r"
-      ],
-      [
-       15,
-       "l"
-      ],
-      [
-       1,
-       "dg"
-      ],
-      [
-       25,
-       ""
-      ],
-      [
-       14,
-       "lj"
-      ],
-      [
-       50,
-       ""
-      ],
-      [
-       30,
-       ""
-      ],
-      [
-       5,
-       "lx"
-      ],
-      [
-       48,
-       "l"
-      ],
-      [
-       16,
-       "r"
-      ],
-      [
-       29,
-       "l"
-      ],
-      [
-       16,
-       "lj"
-      ],
-      [
-       5,
-       "lux"
-      ],
-      [
-       14,
-       "l"
-      ],
-      [
-       22,
-       "lj"
-      ],
-      [
-       15,
-       "l"
-      ],
-      [
-       18,
-       "r"
-      ],
-      [
-       19,
-       "l"
-      ],
-      [
-       16,
-       "lj"
-      ],
-      [
-       5,
-       "lx"
-      ],
-      [
-       15,
-       "l"
-      ],
-      [
-       22,
-       "lj"
-      ],
-      [
-       95,
-       "l"
-      ]
-     ],
-     "after": {
-      "exited": true,
-      "deaths": 0,
-      "frames": 807,
-      "eventCounts": {
-       "ice": 5,
-       "pickup": 1,
-       "fault-crack": 2,
-       "wind": 2,
-       "fault-fall": 19,
-       "jump": 7,
-       "land": 5,
-       "plate": 3,
-       "held-open": 1,
-       "throw": 1,
-       "lantern-land": 1,
-       "dash": 3,
-       "refill-dash": 3,
-       "feather": 2,
-       "feather-jump": 2,
-       "feather-back": 1,
-       "exit": 1
-      },
-      "doorOpen": true,
-      "carrying": false
-     }
-    },
-    {
-     "name": "Wait an extra 90 frames after parking cargo; the wind route remains open",
-     "tape": [
-      [
-       35,
-       "r"
-      ],
-      [
-       1,
-       "g"
-      ],
-      [
-       82,
-       "r"
-      ],
-      [
-       14,
-       "rj"
-      ],
-      [
-       39,
-       "r"
-      ],
-      [
-       8,
-       "r"
-      ],
-      [
-       14,
-       "rj"
-      ],
-      [
-       130,
-       "r"
-      ],
-      [
-       15,
-       "l"
-      ],
-      [
-       1,
-       "dg"
       ],
       [
        115,
-       ""
-      ],
-      [
-       14,
-       "lj"
-      ],
-      [
-       50,
-       ""
-      ],
-      [
-       30,
-       ""
-      ],
-      [
-       5,
-       "lx"
-      ],
-      [
-       48,
-       "l"
-      ],
-      [
-       16,
        "r"
-      ],
-      [
-       29,
-       "l"
-      ],
-      [
-       16,
-       "lj"
-      ],
-      [
-       5,
-       "lux"
-      ],
-      [
-       14,
-       "l"
-      ],
-      [
-       22,
-       "lj"
-      ],
-      [
-       15,
-       "l"
       ],
       [
        18,
-       "r"
-      ],
-      [
-       19,
-       "l"
-      ],
-      [
-       16,
-       "lj"
-      ],
-      [
-       5,
-       "lx"
-      ],
-      [
-       12,
-       "l"
-      ],
-      [
-       22,
-       "lj"
-      ],
-      [
-       95,
-       "l"
-      ]
-     ],
-     "after": {
-      "exited": true,
-      "deaths": 0,
-      "frames": 891,
-      "eventCounts": {
-       "ice": 5,
-       "pickup": 1,
-       "fault-crack": 2,
-       "wind": 2,
-       "fault-fall": 19,
-       "jump": 7,
-       "land": 5,
-       "plate": 3,
-       "held-open": 1,
-       "throw": 1,
-       "lantern-land": 1,
-       "dash": 3,
-       "refill-dash": 3,
-       "feather": 2,
-       "feather-jump": 2,
-       "feather-back": 1,
-       "exit": 1
-      },
-      "doorOpen": true,
-      "carrying": false
-     }
-    }
-   ],
-   "shortcutChecks": [
-    {
-     "name": "Keep the lantern instead of parking it, then try the same wind return",
-     "tape": [
-      [
-       35,
-       "r"
-      ],
-      [
-       1,
-       "g"
-      ],
-      [
-       82,
-       "r"
-      ],
-      [
-       14,
-       "rj"
-      ],
-      [
-       39,
-       "r"
-      ],
-      [
-       8,
-       "r"
-      ],
-      [
-       14,
-       "rj"
-      ],
-      [
-       130,
        "r"
       ],
       [
@@ -94537,11 +94254,7 @@ const records=[
        "lj"
       ],
       [
-       50,
-       ""
-      ],
-      [
-       30,
+       80,
        ""
       ],
       [
@@ -94569,7 +94282,11 @@ const records=[
        "lux"
       ],
       [
-       14,
+       18,
+       "l"
+      ],
+      [
+       4,
        "l"
       ],
       [
@@ -94577,16 +94294,12 @@ const records=[
        "lj"
       ],
       [
-       15,
+       24,
        "l"
       ],
       [
-       18,
+       12,
        "r"
-      ],
-      [
-       19,
-       "l"
       ],
       [
        16,
@@ -94594,10 +94307,14 @@ const records=[
       ],
       [
        5,
-       "lx"
+       "lux"
       ],
       [
-       12,
+       18,
+       "l"
+      ],
+      [
+       4,
        "l"
       ],
       [
@@ -94605,37 +94322,71 @@ const records=[
        "lj"
       ],
       [
-       95,
+       19,
+       "l"
+      ],
+      [
+       14,
+       "r"
+      ],
+      [
+       16,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       25,
+       "l"
+      ],
+      [
+       3,
+       "l"
+      ],
+      [
+       22,
+       "lj"
+      ],
+      [
+       100,
+       "l"
+      ],
+      [
+       20,
        "l"
       ]
      ],
      "after": {
       "exited": false,
       "deaths": 1,
-      "frames": 815,
       "eventCounts": {
-       "ice": 5,
+       "ice": 6,
        "pickup": 1,
-       "fault-crack": 3,
+       "fault-crack": 4,
        "wind": 3,
-       "fault-fall": 22,
-       "jump": 5,
-       "land": 5,
+       "fault-fall": 32,
+       "jump": 8,
+       "land": 6,
        "plate": 3,
        "held-open": 1,
        "held-close": 1,
        "death": 1,
        "lantern-lost": 1,
-       "respawn": 1
+       "respawn": 1,
+       "dash": 1,
+       "walljump": 1,
+       "refill-dash": 1
       },
       "doorOpen": false,
       "carrying": false
      }
     }
    ],
-   "endingForgiveness": "The final feather may be spent 3 frames early or 3 frames late, with successful full-room replays. Its destination is a 17-tile ice ledge followed by an ordinary walk out; the middle shelf is 11 tiles wide. The pressure bed remains a safe reset position while planning the return.",
-   "designNotes": "The lantern glides over two separate missing spans before landing on fault strips. It must remain on the far pressure bed to keep the full-width wind cap physically open, and carrying it suppresses feather jumps. All wind, fault, feather, ice, lantern and pressure behavior is native; no event counter controls completion. No visible hazard path or new runtime is used.",
-   "revision": "52aed035e7e8",
+   "endingForgiveness": "The demanding landings are before the final transfer. Its destination is a twenty-tile stable home ledge; the original left exit and checkpoint approach remain in their original locations.",
+   "designNotes": "Revised from72×40 to96×40; four cargo breaks instead of two; three feather jumps instead of two. Return shelves are seven and five tiles wide, with the same wide final recovery and unchanged left exit height. Native wind, fault, feather, ice, lantern and held-gate behavior only. No new runtime modules.",
+   "revision": "24325e3b5584",
    "source": "scripts/room-bank/fractured/bank-f71.json"
   },
   "tape": [
@@ -94668,7 +94419,39 @@ const records=[
     "rj"
    ],
    [
-    130,
+    32,
+    "r"
+   ],
+   [
+    6,
+    "r"
+   ],
+   [
+    14,
+    "rj"
+   ],
+   [
+    25,
+    "r"
+   ],
+   [
+    15,
+    "l"
+   ],
+   [
+    2,
+    "r"
+   ],
+   [
+    14,
+    "rj"
+   ],
+   [
+    115,
+    "r"
+   ],
+   [
+    18,
     "r"
    ],
    [
@@ -94688,11 +94471,7 @@ const records=[
     "lj"
    ],
    [
-    50,
-    ""
-   ],
-   [
-    30,
+    80,
     ""
    ],
    [
@@ -94720,7 +94499,11 @@ const records=[
     "lux"
    ],
    [
-    14,
+    18,
+    "l"
+   ],
+   [
+    4,
     "l"
    ],
    [
@@ -94728,16 +94511,12 @@ const records=[
     "lj"
    ],
    [
-    15,
+    24,
     "l"
    ],
    [
-    18,
+    12,
     "r"
-   ],
-   [
-    19,
-    "l"
    ],
    [
     16,
@@ -94745,10 +94524,14 @@ const records=[
    ],
    [
     5,
-    "lx"
+    "lux"
    ],
    [
-    12,
+    18,
+    "l"
+   ],
+   [
+    4,
     "l"
    ],
    [
@@ -94756,7 +94539,39 @@ const records=[
     "lj"
    ],
    [
-    95,
+    19,
+    "l"
+   ],
+   [
+    14,
+    "r"
+   ],
+   [
+    16,
+    "lj"
+   ],
+   [
+    5,
+    "lux"
+   ],
+   [
+    25,
+    "l"
+   ],
+   [
+    3,
+    "l"
+   ],
+   [
+    22,
+    "lj"
+   ],
+   [
+    100,
+    "l"
+   ],
+   [
+    20,
     "l"
    ]
   ]
@@ -94844,9 +94659,9 @@ const records=[
    "run": 9,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
-   "needsReview": true,
-   "difficulty": 4,
+   "acceptance": "banked",
+   "needsReview": false,
+   "difficulty": 5,
    "role": "interconnected Emberdeep traversal superroom",
    "worlds": [
     30
@@ -94862,7 +94677,7 @@ const records=[
    "newMechanics": [],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "New integrated candidate; awaiting fun/difficulty/suitability review.",
+   "humanReview": "Approved by the user after the 7.306 review; numeric fun and suitability ratings remain unmeasured. User rated difficulty 5/5.",
    "approvedIngredients": [
     "bank-f48",
     "bank-f56"
@@ -96863,7 +96678,7 @@ const records=[
    "replaces": "cl16-t16-storm",
    "approvedIngredients": [
     "bank-b37",
-    "bank-f53"
+    "bank-b30"
    ],
    "solution": "Climb to the first collar, catch its overhead ring and cut down after a fresh hooked ascent. Follow the chain up the stepped cliffs to the distant high collar and repeat. The chain returns to the first shore: descend the same cliff route, earn a new hook and cut the original collar again. The actual Hydra release opens the dry western exit.",
    "interconnection": "The first landing becomes the last fight site. The chain visibly joins both shores and each hit changes which shared ring matters.",
@@ -97166,6 +96981,7 @@ const records=[
      "frames": null
     }
    ],
+   "ingredientNotes": "B37 supplies grapple departures and B30 combines a suspended grapple with a deliberate blade interaction. The native Storm Chain supplies the migrating collar boss.",
    "revision": "4aa4d8696609",
    "source": "scripts/room-bank/base/bank-b75.json"
   },
@@ -100487,6 +100303,11 @@ const records=[
      ]
     }
    ],
+   "approvedIngredients": [
+    "bank-b46",
+    "bank-f26"
+   ],
+   "ingredientNotes": "B46 supplies a turned mirror sending a timed beam into a sealed receiver; F26 supplies preserving the remaining dash so its phase landing stays real. F77 stretches those decisions across a single rerouted light shaft and return gallery.",
    "revision": "ee3a6f5804f3",
    "source": "scripts/room-bank/fractured/bank-f77.json"
   },

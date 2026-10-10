@@ -104,7 +104,7 @@
         "size": 5
       }
     ],
-    "hint": "The bearing raises the lift\u2019s upper stop. Ride outward, light it, then return underneath the old route.",
+    "hint": "The bearing raises the lift’s upper stop. Ride outward, light it, then return underneath the old route.",
     "question": "The bearing opens the gate home. Where will the same lift take you on the return?",
     "bearingLifts": [
       {
@@ -123,7 +123,7 @@
     "run": 8,
     "collection": "superrooms",
     "format": "superroom",
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "status": "route-proven",
     "author": "Codex",
     "tags": [
@@ -137,7 +137,7 @@
     "newMechanics": [
       "bearing-lift-stop"
     ],
-    "humanReview": "B62 reinvented after Isaac found the cargo version boring; revision awaiting review. Numerical ratings unmeasured.",
+    "humanReview": "Approved by the user after the 7.306 review; numeric fun and suitability ratings remain unmeasured.",
     "worlds": [
       1
     ],
@@ -147,8 +147,8 @@
       "bank-b44"
     ],
     "role": "An early-world movement circuit: fast launch outward, careful fall through the same court, and a second ride back to the home gallery.",
-    "solution": "Jump the short starting steps and board the lift. Its first stop gives a stable crossing through the central wall. Jump onto the crumbling high span, then use two ordinary diagonal dashes to reach the far bearing. Return below the high route: observe the patrol, use the floating crystal over the collapsing span, descend into the newly opened lower passage and climb the small recovery steps beside the original lift. The bearing has raised that lift\u2019s destination. Ride it again and leave left for the stable exit gallery above the starting road.",
-    "interconnection": "The same lift and central wall serve the outward crossing and the final return. The far bearing opens the underpass and powers the lift\u2019s higher stop. The crumbling span and crystal are encountered again from the opposite direction.",
+    "solution": "Jump the short starting steps and board the lift. Its first stop gives a stable crossing through the central wall. Jump onto the crumbling high span, then use two ordinary diagonal dashes to reach the far bearing. Return below the high route: observe the patrol, use the floating crystal over the collapsing span, descend into the newly opened lower passage and climb the small recovery steps beside the original lift. The bearing has raised that lift’s destination. Ride it again and leave left for the stable exit gallery above the starting road.",
+    "interconnection": "The same lift and central wall serve the outward crossing and the final return. The far bearing opens the underpass and powers the lift’s higher stop. The crumbling span and crystal are encountered again from the opposite direction.",
     "novelty": "Replaces the slow carried-weight staircase with an early movement loop and two different departures from the same timed lift.",
     "nearestExisting": "B22 uses a compact recovery challenge. The previous B62 used cargo on a staircase; this version has no cargo and asks the player to reuse a moving route.",
     "requiredEvents": [
@@ -819,7 +819,8 @@
         "deaths": 1,
         "frames": null
       }
-    ]
+    ],
+    "needsReview": false
   },
   "tape": [
     [

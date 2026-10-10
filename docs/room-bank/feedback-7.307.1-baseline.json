@@ -1,0 +1,162 @@
+{
+  "sourceCommit": "2665aaa4413495b8c3f89342e6032350348293b2",
+  "changedWorlds": [
+    23,
+    25,
+    28
+  ],
+  "unchangedWorlds": [
+    {
+      "world": 1,
+      "sha256ExcludingReleaseVersion": "bb877974c5b7fdb749632d447be1769ec2fc6dd413596d6c2cfa04b1df204ba7"
+    },
+    {
+      "world": 2,
+      "sha256ExcludingReleaseVersion": "db14427d24923cfbde289e828c72fcadde15395aaa8e2c60d55fc3c14542890d"
+    },
+    {
+      "world": 3,
+      "sha256ExcludingReleaseVersion": "948de97c20aff559d818ff2c6d604cd78ed0c68ead7db7dec5020af32b22df1e"
+    },
+    {
+      "world": 4,
+      "sha256ExcludingReleaseVersion": "dfe80e95c2d68291d1a59c955d529064c8c686a75ee9590dd9d052eab850e5d3"
+    },
+    {
+      "world": 5,
+      "sha256ExcludingReleaseVersion": "f8d9af19838c486bde7c87301c1da0bd2002c16d323a6fd4b28f5efae0dc591b"
+    },
+    {
+      "world": 6,
+      "sha256ExcludingReleaseVersion": "b0d23fc9340baeb27878d4c4881006d4c720d266adc4082aa03b584b7fa9efe6"
+    },
+    {
+      "world": 7,
+      "sha256ExcludingReleaseVersion": "2564bc4c7227573f5945558c5465834e286f55ba215f626a28f566b896ee44b4"
+    },
+    {
+      "world": 8,
+      "sha256ExcludingReleaseVersion": "5d5f4bc90c5a62c8383be7f38cf51b42b509a157a0d1cdbf70782ccea0f30377"
+    },
+    {
+      "world": 9,
+      "sha256ExcludingReleaseVersion": "7d26e695363c984862b4dd7eb346c85fc5cf975a0b5544946e5380280c5c4d86"
+    },
+    {
+      "world": 10,
+      "sha256ExcludingReleaseVersion": "b2061e212f1068ebc0b1b2327ddf045eb82518e0b9584fe46bc638923138bc9e"
+    },
+    {
+      "world": 11,
+      "sha256ExcludingReleaseVersion": "b917e7dd3a4252636adbe8c26da01285dfb4a0c0961b11f50fbdd5b5d6559557"
+    },
+    {
+      "world": 12,
+      "sha256ExcludingReleaseVersion": "962acfb424bb0b9546bd5ff36d9fc98ed0717b791c43aaa394636355a20c758e"
+    },
+    {
+      "world": 13,
+      "sha256ExcludingReleaseVersion": "70709d808109de42e56e8a7466cf63fb73c3b93d2384205aae649f500489f305"
+    },
+    {
+      "world": 14,
+      "sha256ExcludingReleaseVersion": "3dd38db4e3bc2a902931c45895340caea94e6a3f1aac9794f6caca543bdb2811"
+    },
+    {
+      "world": 15,
+      "sha256ExcludingReleaseVersion": "1f3b888b9f92c1f592b193cc1cdf57d51329ac4a411ac4abb645a75ab4ec5b99"
+    },
+    {
+      "world": 16,
+      "sha256ExcludingReleaseVersion": "c1276b805cab3493da40874810131c70213fe8cddd61b9b24e4dc4b6af2d9f2e"
+    },
+    {
+      "world": 17,
+      "sha256ExcludingReleaseVersion": "0af0b2141b47195db9b935b1b4008680badd74663f14015e2d5c30f7d27af63c"
+    },
+    {
+      "world": 18,
+      "sha256ExcludingReleaseVersion": "c638d138f9aca71dcb373f4232408157b5b0bd79b4808cc270f079667b957311"
+    },
+    {
+      "world": 19,
+      "sha256ExcludingReleaseVersion": "89b15965489491032067a585ba0e9f28ebfac6bc151116488b32c422a2d594d3"
+    },
+    {
+      "world": 20,
+      "sha256ExcludingReleaseVersion": "975d8ffe6d4f64cca4fec137ac21f1753cc82a3418f7abc1e7e74367231572db"
+    },
+    {
+      "world": 21,
+      "sha256ExcludingReleaseVersion": "1436978be414768b9d7d5eb270146a1b2a5de85d056a5768b6c459f62a66d96d"
+    },
+    {
+      "world": 22,
+      "sha256ExcludingReleaseVersion": "14b619ac089215b5bf1360658a7056519f3ab0e719fc25397588a8625702f459"
+    },
+    {
+      "world": 24,
+      "sha256ExcludingReleaseVersion": "7cddd4fbbedc9f3e149fcbac8309ab0047d4d06eb18e2397258aaa609ad6a40a"
+    },
+    {
+      "world": 26,
+      "sha256ExcludingReleaseVersion": "f31ff46a67ead8bc46f460bd3fc4e9661fba2785067c59e6b3b92eedfa657b41"
+    },
+    {
+      "world": 27,
+      "sha256ExcludingReleaseVersion": "86001ed7f3c0a89291a074205382384abfecaa7932e8c43e3724eee23355435e"
+    },
+    {
+      "world": 29,
+      "sha256ExcludingReleaseVersion": "e8b62766b0678baefa68ce715c3b283c843dae1aebad23a151747798e07e4661"
+    },
+    {
+      "world": 30,
+      "sha256ExcludingReleaseVersion": "68548888f92110955a9800be3b535bde26bacad12f24e3dcac4dd44522fecbf3"
+    },
+    {
+      "world": 31,
+      "sha256ExcludingReleaseVersion": "67c120fb3c7e1a05835c7ce673842e01c9e3bb69fe4184764898634583803e1d"
+    },
+    {
+      "world": 32,
+      "sha256ExcludingReleaseVersion": "da81bae2fdd1624df7647d09845ef8ec2f1c3590ecd0600f91e1d2d186462641"
+    },
+    {
+      "world": 33,
+      "sha256ExcludingReleaseVersion": "c728996c01071813983dd9af1694b2f43db2369f1ada2a967111069550c43834"
+    },
+    {
+      "world": 34,
+      "sha256ExcludingReleaseVersion": "c7b1868f2bf0dabc52a51a77e7263935d51e39706efc700131dfc7918cd04309"
+    },
+    {
+      "world": 35,
+      "sha256ExcludingReleaseVersion": "7f2bc288afdb095edd7ef5c14bce0da1ac1e7808c5df1ea00c43de1c0f951893"
+    },
+    {
+      "world": 36,
+      "sha256ExcludingReleaseVersion": "3d5a18a2b3fe47c2771f2bb854837666277b80a03162825b9aa98d60f2452c4d"
+    },
+    {
+      "world": 37,
+      "sha256ExcludingReleaseVersion": "28ad81171e4d29eeeae92d8bd2f04d00399b919b03f1d2719ccb11fb68efc536"
+    },
+    {
+      "world": 38,
+      "sha256ExcludingReleaseVersion": "aede5c9a48abb9a46f202d5e9a48a68f3f6e0f57cbd62fb0afe2b8191a97be2f"
+    },
+    {
+      "world": 39,
+      "sha256ExcludingReleaseVersion": "a9c6d58134701f92b354b9b280dc9150d1e951098b4561b1d5a41558e808c62b"
+    },
+    {
+      "world": 40,
+      "sha256ExcludingReleaseVersion": "2d5cdb6139afc64d0ae27982016a1f4e7a771a48da3071588ce1b0c7406ec0b9"
+    }
+  ],
+  "verifiedBy": [
+    "campaign-integration-7.307-audit.json",
+    "campaign-integration-7.307-browser.json"
+  ]
+}

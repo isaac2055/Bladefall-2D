@@ -101,7 +101,7 @@
     "run": 9,
     "collection": "superrooms",
     "format": "superroom",
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "status": "route-proven",
     "author": "Codex",
     "tags": [
@@ -114,7 +114,7 @@
       "return"
     ],
     "newMechanics": [],
-    "humanReview": "Awaiting review; numeric ratings unmeasured.",
+    "humanReview": "Approved by the user after the 7.306 review; numeric fun and suitability ratings remain unmeasured.",
     "worlds": [
       3
     ],
@@ -688,7 +688,8 @@
         "frames": null
       }
     ],
-    "replaces": "cl3-c3-counterweight"
+    "replaces": "cl3-c3-counterweight",
+    "needsReview": false
   },
   "tape": [
     [

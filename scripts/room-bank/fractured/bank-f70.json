@@ -103,8 +103,8 @@
     "run": 9,
     "collection": "superrooms",
     "format": "superroom",
-    "acceptance": "candidate",
-    "needsReview": true,
+    "acceptance": "banked",
+    "needsReview": false,
     "difficulty": 4,
     "role": "interconnected native Warden boss superroom",
     "worlds": [
@@ -121,7 +121,7 @@
     "newMechanics": [],
     "status": "route-proven",
     "author": "Codex",
-    "humanReview": "New integrated candidate; awaiting fun/difficulty/suitability review.",
+    "humanReview": "Approved by the user after the 7.306 review; numeric fun and suitability ratings remain unmeasured.",
     "approvedIngredients": [
       "bank-f45",
       "bank-f49"

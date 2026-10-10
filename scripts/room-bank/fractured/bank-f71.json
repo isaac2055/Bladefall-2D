@@ -7,7 +7,7 @@
     "study": true,
     "movement": "survive-2",
     "aim8": true,
-    "cols": 72,
+    "cols": 96,
     "rows": 40,
     "exit": "left",
     "lock": [
@@ -23,13 +23,13 @@
       {
         "c": 18,
         "r": 32,
-        "w": 32,
+        "w": 56,
         "h": 5,
         "dx": 28,
         "dy": 0
       },
       {
-        "c": 64,
+        "c": 88,
         "r": 10,
         "w": 5,
         "h": 24,
@@ -37,49 +37,49 @@
         "dy": -240
       }
     ],
-    "hint": "Leave the lantern on the far plate. Ride the opened wind cap, then spend each feather on the high return.",
+    "hint": "Carry the lantern across four broken spans, leave it on the far plate, then use the wind and three feather transfers to return above your fractured road.",
     "question": "Which weight must remain below while you cross back above it?",
     "map": [
-      "########################################################################",
-      "#......................................................................#",
-      "#......................................................................#",
-      "#......................................................................#",
-      "#......................................................................#",
-      "#......................................................................#",
-      ".......................................................................#",
-      ".......................................................................#",
-      ".......................................................................#",
-      ".......................................................................#",
-      "IIIIIIIIIIIIIIIII....f.................................................#",
-      "#......................................................................#",
-      "#......................................................................#",
-      "#......................................................................#",
-      "#......................................................................#",
-      "#..........................IIIIIIIIIII.................................#",
-      "#......................................................................#",
-      "#......................................................................#",
-      "#............................................f.........................#",
-      "#......................................................................#",
-      "#......................................................................#",
-      "#......................................................................#",
-      "#......................................................................#",
-      "#...............................................IIIIII.................#",
-      "#......................................................................#",
-      "#......................................................................#",
-      "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^.......#",
-      "################################################################HHHHHHH#",
-      "#......................................................................#",
-      "#......................................................................#",
-      "#......................................................................#",
-      "#......................................................................#",
-      "#......................................................................#",
-      "#......................................................................#",
-      "#......................................................................#",
-      "#...P..l.............................................................__#",
-      "#IIIIIIIIIIIIIIIIITTTTTTTTT....TTTTTTTTTT.....TTTTIIIIIIIIIIIIIIIIIIIII#",
-      "#IIIIIIIIIIIIIIIII................................IIIIIIIIIIIIIIIIIIIII#",
-      "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
-      "########################################################################"
+      "################################################################################################",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "...............................................................................................#",
+      "...............................................................................................#",
+      "...............................................................................................#",
+      "...............................................................................................#",
+      "IIIIIIIIIIIIIIIIIIII....f......................................................................#",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "#.............................................f................................................#",
+      "#..............................................................................................#",
+      "#.................................IIIII........................................................#",
+      "#..............................................................................................#",
+      "#................................................................f.............................#",
+      "#..............................................................................................#",
+      "#....................................................IIIIIII...................................#",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "#.......................................................................IIIIII.................#",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^.......#",
+      "########################################################################################HHHHHHH#",
+      "#...........................................................###................................#",
+      "#...........................................................###................................#",
+      "#...........................................................###................................#",
+      "#...........................................................vvv................................#",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "#...P..l.....................................................................................__#",
+      "#IIIIIIIIIIIIIIIIITTTTTTTTT....TTTTTTTTTT.....TTTTTTTT......TTTTT......TTTIIIIIIIIIIIIIIIIIIIII#",
+      "#IIIIIIIIIIIIIIIII........................................................IIIIIIIIIIIIIIIIIIIII#",
+      "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+      "################################################################################################"
     ]
   },
   "bank": {
@@ -88,7 +88,7 @@
     "run": 9,
     "collection": "superrooms",
     "format": "superroom",
-    "acceptance": "candidate",
+    "acceptance": "revised",
     "needsReview": true,
     "difficulty": 3,
     "role": "interconnected Frostfell traversal superroom",
@@ -107,14 +107,14 @@
     "newMechanics": [],
     "status": "route-proven",
     "author": "Codex",
-    "humanReview": "New integrated candidate; awaiting fun/difficulty/suitability review.",
+    "humanReview": "Revision requested: previous room was too small and all jumps were easy. Expanded the shared basin and rebuilt the return for another review.",
     "approvedIngredients": [
       "bank-f48",
       "bank-f66"
     ],
-    "interconnection": "A wind-sealed roof divides one long glacial basin. Carry a lantern across the fault causeway, then leave it on the pressure bed to open the sole upward passage. Returning above the now-broken outward floor demands empty-handed feather transfers across the same basin.",
-    "solution": "Carry the lantern across the fault ice with the following draft. Park it on the far pressure bed, jump into the updraft, and leave the open wind cap onto the upper ice shelf. Preserve and spend the two airborne feathers across the ascending return, then settle on the broad final ledge.",
-    "novelty": "The cargo that gives access to the wind ascent must be deliberately left behind: carrying it prevents the feather jumps needed on the shared upper return.",
+    "interconnection": "The basin is one third wider. Its outward cargo route now has four broken spans; the same permanently held wind passage gives access to a three-stage empty-handed return above that collapsed road. The lantern must remain below while every feather transfer is completed.",
+    "solution": "Carry the lantern over the original two missing spans, then land on the new short fault rest under the hanging ice tongue and jump the fourth break. Leave the lantern on the far pressure bed to hold the wind cap open. Rise through the wind and return across three feather transfers: brake onto the new narrow middle shelf, reset on the small upper shelf, then spend the last feather to reach the broad home ledge.",
+    "novelty": "The enlarged shared basin joins cargo momentum, short fault landings, a low hanging ice tongue, sustained pressure and three rising feather transfers. The return reuses the space traversed with cargo, but changes both its height and the movement needed.",
     "nearestExisting": "F48 native airborne transfers and F66 leave-cargo return logic, rebuilt around Frostfell ice, fault progression and a vertical wind cap.",
     "requiredEvents": [
       "pickup",
@@ -126,31 +126,31 @@
       "feather-jump"
     ],
     "requiredEventCounts": {
-      "feather-jump": 2,
-      "fault-crack": 2
+      "feather-jump": 3,
+      "fault-crack": 4
     },
     "route": {
       "name": "canonical",
       "exited": true,
       "deaths": 0,
-      "frames": 801,
+      "frames": 1049,
       "eventCounts": {
-        "ice": 5,
+        "ice": 6,
         "pickup": 1,
-        "fault-crack": 2,
+        "fault-crack": 4,
         "wind": 2,
-        "fault-fall": 19,
-        "jump": 7,
-        "land": 5,
+        "fault-fall": 32,
+        "jump": 11,
+        "land": 8,
         "plate": 3,
         "held-open": 1,
         "throw": 1,
         "lantern-land": 1,
-        "dash": 3,
-        "refill-dash": 3,
-        "feather": 2,
-        "feather-jump": 2,
-        "feather-back": 1,
+        "dash": 4,
+        "refill-dash": 4,
+        "feather": 3,
+        "feather-jump": 3,
+        "feather-back": 2,
         "exit": 1
       },
       "doorOpen": true,
@@ -175,9 +175,10 @@
         "exit"
       ]
     },
-    "positiveChecks": [
+    "positiveChecks": [],
+    "shortcutChecks": [
       {
-        "name": "Final feather jump 3 frames earlier",
+        "name": "Keep the lantern instead of leaving it on the far bed",
         "tape": [
           [
             35,
@@ -208,462 +209,39 @@
             "rj"
           ],
           [
-            130,
+            32,
             "r"
           ],
           [
-            15,
-            "l"
+            6,
+            "r"
           ],
           [
-            1,
-            "dg"
+            14,
+            "rj"
           ],
           [
             25,
-            ""
-          ],
-          [
-            14,
-            "lj"
-          ],
-          [
-            50,
-            ""
-          ],
-          [
-            30,
-            ""
-          ],
-          [
-            5,
-            "lx"
-          ],
-          [
-            48,
-            "l"
-          ],
-          [
-            16,
             "r"
-          ],
-          [
-            29,
-            "l"
-          ],
-          [
-            16,
-            "lj"
-          ],
-          [
-            5,
-            "lux"
-          ],
-          [
-            14,
-            "l"
-          ],
-          [
-            22,
-            "lj"
           ],
           [
             15,
             "l"
           ],
           [
-            18,
-            "r"
-          ],
-          [
-            19,
-            "l"
-          ],
-          [
-            16,
-            "lj"
-          ],
-          [
-            5,
-            "lx"
-          ],
-          [
-            9,
-            "l"
-          ],
-          [
-            22,
-            "lj"
-          ],
-          [
-            95,
-            "l"
-          ]
-        ],
-        "after": {
-          "exited": true,
-          "deaths": 0,
-          "frames": 800,
-          "eventCounts": {
-            "ice": 5,
-            "pickup": 1,
-            "fault-crack": 2,
-            "wind": 2,
-            "fault-fall": 19,
-            "jump": 7,
-            "land": 5,
-            "plate": 3,
-            "held-open": 1,
-            "throw": 1,
-            "lantern-land": 1,
-            "dash": 3,
-            "refill-dash": 3,
-            "feather": 2,
-            "feather-jump": 2,
-            "feather-back": 1,
-            "exit": 1
-          },
-          "doorOpen": true,
-          "carrying": false
-        }
-      },
-      {
-        "name": "Final feather jump 3 frames later",
-        "tape": [
-          [
-            35,
-            "r"
-          ],
-          [
-            1,
-            "g"
-          ],
-          [
-            82,
+            2,
             "r"
           ],
           [
             14,
             "rj"
-          ],
-          [
-            39,
-            "r"
-          ],
-          [
-            8,
-            "r"
-          ],
-          [
-            14,
-            "rj"
-          ],
-          [
-            130,
-            "r"
-          ],
-          [
-            15,
-            "l"
-          ],
-          [
-            1,
-            "dg"
-          ],
-          [
-            25,
-            ""
-          ],
-          [
-            14,
-            "lj"
-          ],
-          [
-            50,
-            ""
-          ],
-          [
-            30,
-            ""
-          ],
-          [
-            5,
-            "lx"
-          ],
-          [
-            48,
-            "l"
-          ],
-          [
-            16,
-            "r"
-          ],
-          [
-            29,
-            "l"
-          ],
-          [
-            16,
-            "lj"
-          ],
-          [
-            5,
-            "lux"
-          ],
-          [
-            14,
-            "l"
-          ],
-          [
-            22,
-            "lj"
-          ],
-          [
-            15,
-            "l"
-          ],
-          [
-            18,
-            "r"
-          ],
-          [
-            19,
-            "l"
-          ],
-          [
-            16,
-            "lj"
-          ],
-          [
-            5,
-            "lx"
-          ],
-          [
-            15,
-            "l"
-          ],
-          [
-            22,
-            "lj"
-          ],
-          [
-            95,
-            "l"
-          ]
-        ],
-        "after": {
-          "exited": true,
-          "deaths": 0,
-          "frames": 807,
-          "eventCounts": {
-            "ice": 5,
-            "pickup": 1,
-            "fault-crack": 2,
-            "wind": 2,
-            "fault-fall": 19,
-            "jump": 7,
-            "land": 5,
-            "plate": 3,
-            "held-open": 1,
-            "throw": 1,
-            "lantern-land": 1,
-            "dash": 3,
-            "refill-dash": 3,
-            "feather": 2,
-            "feather-jump": 2,
-            "feather-back": 1,
-            "exit": 1
-          },
-          "doorOpen": true,
-          "carrying": false
-        }
-      },
-      {
-        "name": "Wait an extra 90 frames after parking cargo; the wind route remains open",
-        "tape": [
-          [
-            35,
-            "r"
-          ],
-          [
-            1,
-            "g"
-          ],
-          [
-            82,
-            "r"
-          ],
-          [
-            14,
-            "rj"
-          ],
-          [
-            39,
-            "r"
-          ],
-          [
-            8,
-            "r"
-          ],
-          [
-            14,
-            "rj"
-          ],
-          [
-            130,
-            "r"
-          ],
-          [
-            15,
-            "l"
-          ],
-          [
-            1,
-            "dg"
           ],
           [
             115,
-            ""
-          ],
-          [
-            14,
-            "lj"
-          ],
-          [
-            50,
-            ""
-          ],
-          [
-            30,
-            ""
-          ],
-          [
-            5,
-            "lx"
-          ],
-          [
-            48,
-            "l"
-          ],
-          [
-            16,
             "r"
-          ],
-          [
-            29,
-            "l"
-          ],
-          [
-            16,
-            "lj"
-          ],
-          [
-            5,
-            "lux"
-          ],
-          [
-            14,
-            "l"
-          ],
-          [
-            22,
-            "lj"
-          ],
-          [
-            15,
-            "l"
           ],
           [
             18,
-            "r"
-          ],
-          [
-            19,
-            "l"
-          ],
-          [
-            16,
-            "lj"
-          ],
-          [
-            5,
-            "lx"
-          ],
-          [
-            12,
-            "l"
-          ],
-          [
-            22,
-            "lj"
-          ],
-          [
-            95,
-            "l"
-          ]
-        ],
-        "after": {
-          "exited": true,
-          "deaths": 0,
-          "frames": 891,
-          "eventCounts": {
-            "ice": 5,
-            "pickup": 1,
-            "fault-crack": 2,
-            "wind": 2,
-            "fault-fall": 19,
-            "jump": 7,
-            "land": 5,
-            "plate": 3,
-            "held-open": 1,
-            "throw": 1,
-            "lantern-land": 1,
-            "dash": 3,
-            "refill-dash": 3,
-            "feather": 2,
-            "feather-jump": 2,
-            "feather-back": 1,
-            "exit": 1
-          },
-          "doorOpen": true,
-          "carrying": false
-        }
-      }
-    ],
-    "shortcutChecks": [
-      {
-        "name": "Keep the lantern instead of parking it, then try the same wind return",
-        "tape": [
-          [
-            35,
-            "r"
-          ],
-          [
-            1,
-            "g"
-          ],
-          [
-            82,
-            "r"
-          ],
-          [
-            14,
-            "rj"
-          ],
-          [
-            39,
-            "r"
-          ],
-          [
-            8,
-            "r"
-          ],
-          [
-            14,
-            "rj"
-          ],
-          [
-            130,
             "r"
           ],
           [
@@ -683,11 +261,7 @@
             "lj"
           ],
           [
-            50,
-            ""
-          ],
-          [
-            30,
+            80,
             ""
           ],
           [
@@ -715,7 +289,11 @@
             "lux"
           ],
           [
-            14,
+            18,
+            "l"
+          ],
+          [
+            4,
             "l"
           ],
           [
@@ -723,16 +301,12 @@
             "lj"
           ],
           [
-            15,
+            24,
             "l"
           ],
           [
-            18,
+            12,
             "r"
-          ],
-          [
-            19,
-            "l"
           ],
           [
             16,
@@ -740,10 +314,14 @@
           ],
           [
             5,
-            "lx"
+            "lux"
           ],
           [
-            12,
+            18,
+            "l"
+          ],
+          [
+            4,
             "l"
           ],
           [
@@ -751,36 +329,70 @@
             "lj"
           ],
           [
-            95,
+            19,
+            "l"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            16,
+            "lj"
+          ],
+          [
+            5,
+            "lux"
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            3,
+            "l"
+          ],
+          [
+            22,
+            "lj"
+          ],
+          [
+            100,
+            "l"
+          ],
+          [
+            20,
             "l"
           ]
         ],
         "after": {
           "exited": false,
           "deaths": 1,
-          "frames": 815,
           "eventCounts": {
-            "ice": 5,
+            "ice": 6,
             "pickup": 1,
-            "fault-crack": 3,
+            "fault-crack": 4,
             "wind": 3,
-            "fault-fall": 22,
-            "jump": 5,
-            "land": 5,
+            "fault-fall": 32,
+            "jump": 8,
+            "land": 6,
             "plate": 3,
             "held-open": 1,
             "held-close": 1,
             "death": 1,
             "lantern-lost": 1,
-            "respawn": 1
+            "respawn": 1,
+            "dash": 1,
+            "walljump": 1,
+            "refill-dash": 1
           },
           "doorOpen": false,
           "carrying": false
         }
       }
     ],
-    "endingForgiveness": "The final feather may be spent 3 frames early or 3 frames late, with successful full-room replays. Its destination is a 17-tile ice ledge followed by an ordinary walk out; the middle shelf is 11 tiles wide. The pressure bed remains a safe reset position while planning the return.",
-    "designNotes": "The lantern glides over two separate missing spans before landing on fault strips. It must remain on the far pressure bed to keep the full-width wind cap physically open, and carrying it suppresses feather jumps. All wind, fault, feather, ice, lantern and pressure behavior is native; no event counter controls completion. No visible hazard path or new runtime is used."
+    "endingForgiveness": "The demanding landings are before the final transfer. Its destination is a twenty-tile stable home ledge; the original left exit and checkpoint approach remain in their original locations.",
+    "designNotes": "Revised from72×40 to96×40; four cargo breaks instead of two; three feather jumps instead of two. Return shelves are seven and five tiles wide, with the same wide final recovery and unchanged left exit height. Native wind, fault, feather, ice, lantern and held-gate behavior only. No new runtime modules."
   },
   "tape": [
     [
@@ -812,7 +424,39 @@
       "rj"
     ],
     [
-      130,
+      32,
+      "r"
+    ],
+    [
+      6,
+      "r"
+    ],
+    [
+      14,
+      "rj"
+    ],
+    [
+      25,
+      "r"
+    ],
+    [
+      15,
+      "l"
+    ],
+    [
+      2,
+      "r"
+    ],
+    [
+      14,
+      "rj"
+    ],
+    [
+      115,
+      "r"
+    ],
+    [
+      18,
       "r"
     ],
     [
@@ -832,11 +476,7 @@
       "lj"
     ],
     [
-      50,
-      ""
-    ],
-    [
-      30,
+      80,
       ""
     ],
     [
@@ -864,7 +504,11 @@
       "lux"
     ],
     [
-      14,
+      18,
+      "l"
+    ],
+    [
+      4,
       "l"
     ],
     [
@@ -872,16 +516,12 @@
       "lj"
     ],
     [
-      15,
+      24,
       "l"
     ],
     [
-      18,
+      12,
       "r"
-    ],
-    [
-      19,
-      "l"
     ],
     [
       16,
@@ -889,10 +529,14 @@
     ],
     [
       5,
-      "lx"
+      "lux"
     ],
     [
-      12,
+      18,
+      "l"
+    ],
+    [
+      4,
       "l"
     ],
     [
@@ -900,7 +544,39 @@
       "lj"
     ],
     [
-      95,
+      19,
+      "l"
+    ],
+    [
+      14,
+      "r"
+    ],
+    [
+      16,
+      "lj"
+    ],
+    [
+      5,
+      "lux"
+    ],
+    [
+      25,
+      "l"
+    ],
+    [
+      3,
+      "l"
+    ],
+    [
+      22,
+      "lj"
+    ],
+    [
+      100,
+      "l"
+    ],
+    [
+      20,
       "l"
     ]
   ]

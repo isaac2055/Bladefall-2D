@@ -81,9 +81,9 @@
     "run": 9,
     "collection": "superrooms",
     "format": "superroom",
-    "acceptance": "candidate",
-    "needsReview": true,
-    "difficulty": 4,
+    "acceptance": "banked",
+    "needsReview": false,
+    "difficulty": 5,
     "role": "interconnected Emberdeep traversal superroom",
     "worlds": [
       30
@@ -99,7 +99,7 @@
     "newMechanics": [],
     "status": "route-proven",
     "author": "Codex",
-    "humanReview": "New integrated candidate; awaiting fun/difficulty/suitability review.",
+    "humanReview": "Approved by the user after the 7.306 review; numeric fun and suitability ratings remain unmeasured. User rated difficulty 5/5.",
     "approvedIngredients": [
       "bank-f48",
       "bank-f56"

@@ -34,7 +34,7 @@
         {
           "kind": "hound",
           "brute": true,
-          "crush": 2,
+          "crush": 3,
           "stamp": "always",
           "x": 320,
           "y": 256,
@@ -53,8 +53,8 @@
         }
       ]
     },
-    "hint": "Drop the first weight, then follow his next charge above the floor. The far carrier is also your way back.",
-    "question": "Where does a counterweight have to land so that it hurts him and still helps you?",
+    "hint": "Two falling weights only crack him. Return behind the first weight: it can finish its journey sideways.",
+    "question": "How can the weight you dropped first become both your final weapon and your return launch?",
     "map": [
       "################################################################################",
       "#..............................................................................#",
@@ -69,10 +69,10 @@
       "#...............................................................................",
       "#...............................................................................",
       "#.......................................#######...........................######",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
       "#.............................................................########.........#",
-      "#..............................................................................#",
-      "#..............................................................................#",
-      "#..............................................................................#",
       "#.........................KKKK.......................KKK.......................#",
       "#.........................KKKK.......................KKK.......................#",
       "#..............................................................................#",
@@ -88,10 +88,17 @@
       "#..............................................................................#",
       "#.....................ZZZZ.....................................................#",
       "#..............................................................................#",
-      "#........................#.....................................................#",
+      "#..............................................................................#",
       "#........................#.......P.............................................#",
       "################################################################################",
       "################################################################################"
+    ],
+    "anvilSleds": [
+      {
+        "c": 26,
+        "r": 17,
+        "offset": 3
+      }
     ]
   },
   "bank": {
@@ -100,7 +107,7 @@
     "run": 9,
     "collection": "superrooms",
     "format": "superroom",
-    "acceptance": "candidate",
+    "acceptance": "revised",
     "needsReview": true,
     "difficulty": 4,
     "role": "interconnected native Brute boss superroom",
@@ -112,34 +119,57 @@
       "brute",
       "counterweight",
       "lift",
-      "return"
+      "return",
+      "anvil",
+      "shared-state",
+      "horizontal-crush"
     ],
     "newMechanics": [],
     "status": "route-proven",
     "author": "Codex",
-    "humanReview": "New integrated candidate; awaiting fun/difficulty/suitability review.",
+    "humanReview": "Expanded after feedback that the original was too short/simple. Awaiting renewed fun/difficulty/suitability review.",
     "approvedIngredients": [
       "bank-f27",
       "bank-f33"
     ],
-    "interconnection": "Two counterweights share one live Brute court. Dropping the west weight opens its vertical shaft and rebounds the knight toward the middle lift. Stepping off that lift baits the enraged eastward charge; an upward dodge catches the east lift while the boss stops under its weight. After dropping that weight, the knight returns to the same lift and crosses the same ward that stopped the charge, now opened by the real defeat.",
-    "solution": "Jump away from the first charge onto the western lift. Land on its counterweight and dash down, crushing the stopped Brute once. Drift onto the middle lift during the rebound, then walk off toward the open eastern court to draw his enraged charge. Dash upward while it commits beneath you, land on the east lift, and step onto its weight. Dash down to crush him against his ward. Descend back onto the east lift, ride it again, then jump through the opened ward to the broad exit galleries.",
-    "novelty": "A descent to damage the boss becomes a return to the carrier that supplied the attack. The middle carrier is used to expose a moving bait, and the boss’s final stopping wall is the barrier to the same high route the player must revisit.",
+    "interconnection": "The two original vertical crushes now leave the enraged native Brute alive between the fallen counterweights. The knight must cross the same upper court back to the west, descend behind the first weight, and drive it horizontally into the second weight to complete a third genuine crush. The first weight carries an anvil: after serving as both falling and sideways weapon, its new location supplies a pogo launch toward the opened ward and the exit gallery.",
+    "solution": "Complete the original west drop and east drop. Return left across the high court while the Brute charges underneath. Drop behind the first fallen stone, hop onto the low stopping lip, and dash right into the stone: it pins the Brute against the east stone. Follow it across the court, hop onto its anvil and jump/down-cut to rebound through the opened ward. Up-right dash to the broad lower gallery, then jump/dash to the unchanged exit. The old carriers remain a forgiving alternative return if the rebound is missed.",
+    "novelty": "The same physical counterweight is used in three ways: vertical crush, horizontal crushing ram against the other weight, and transported anvil for the escape. A previously safe two-hit victory becomes a live return across the arena with the Brute still active; its old attack layout becomes the finishing trap.",
     "nearestExisting": "World23 native Brute crushes and lifts; F27 carrier commitment and F33 departure following a combat exchange.",
     "requiredEvents": [
       "zip-start",
       "stone-hit",
       "brute-crack",
       "enemy-defeat",
-      "combat-gate"
+      "combat-gate",
+      "anvil"
     ],
     "route": {
-      "name": "canonical",
       "exited": true,
       "deaths": 0,
-      "frames": 763,
+      "frames": 1416,
       "bruteDefeated": true,
-      "cracks": 1,
+      "cracks": 2,
+      "eventCounts": {
+        "jump": 10,
+        "dash": 10,
+        "enemy-tell": 3,
+        "land": 13,
+        "refill-dash": 10,
+        "zip-start": 5,
+        "zip-stop": 5,
+        "brute-rear": 3,
+        "brute-stamp": 3,
+        "stone-hit": 3,
+        "brute-crack": 2,
+        "stone-stop": 3,
+        "zip-home": 5,
+        "enemy-defeat": 1,
+        "combat-gate": 1,
+        "strike": 1,
+        "anvil": 1,
+        "exit": 1
+      },
       "events": [
         "jump",
         "dash",
@@ -156,30 +186,14 @@
         "zip-home",
         "enemy-defeat",
         "combat-gate",
+        "strike",
+        "anvil",
         "exit"
-      ],
-      "eventCounts": {
-        "jump": 5,
-        "dash": 6,
-        "enemy-tell": 2,
-        "land": 7,
-        "refill-dash": 6,
-        "zip-start": 4,
-        "zip-stop": 4,
-        "brute-rear": 2,
-        "brute-stamp": 2,
-        "stone-hit": 2,
-        "brute-crack": 1,
-        "stone-stop": 2,
-        "zip-home": 4,
-        "enemy-defeat": 1,
-        "combat-gate": 1,
-        "exit": 1
-      }
+      ]
     },
     "positiveChecks": [
       {
-        "name": "Final jump hold -3 frames",
+        "name": "Pause sixty additional frames on the final gallery",
         "tape": [
           [
             20,
@@ -263,6 +277,50 @@
           ],
           [
             30,
+            "lj"
+          ],
+          [
+            5,
+            "lx"
+          ],
+          [
+            110,
+            "l"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            1,
+            "j"
+          ],
+          [
+            2,
+            "r"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            120,
+            ""
+          ],
+          [
+            25,
             "rj"
           ],
           [
@@ -270,7 +328,7 @@
             "rx"
           ],
           [
-            25,
+            100,
             "r"
           ],
           [
@@ -278,378 +336,110 @@
             ""
           ],
           [
-            17,
+            20,
             "rj"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            11,
+            "rj"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            1,
+            "j"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            30,
+            "r"
           ],
           [
             5,
             "rux"
-          ],
-          [
-            55,
-            "r"
-          ]
-        ],
-        "after": {
-          "exited": true,
-          "deaths": 0,
-          "frames": 763,
-          "bruteDefeated": true,
-          "cracks": 1,
-          "events": [
-            "jump",
-            "dash",
-            "enemy-tell",
-            "land",
-            "refill-dash",
-            "zip-start",
-            "zip-stop",
-            "brute-rear",
-            "brute-stamp",
-            "stone-hit",
-            "brute-crack",
-            "stone-stop",
-            "zip-home",
-            "enemy-defeat",
-            "combat-gate",
-            "exit"
-          ],
-          "eventCounts": {
-            "jump": 5,
-            "dash": 6,
-            "enemy-tell": 2,
-            "land": 7,
-            "refill-dash": 6,
-            "zip-start": 4,
-            "zip-stop": 4,
-            "brute-rear": 2,
-            "brute-stamp": 2,
-            "stone-hit": 2,
-            "brute-crack": 1,
-            "stone-stop": 2,
-            "zip-home": 4,
-            "enemy-defeat": 1,
-            "combat-gate": 1,
-            "exit": 1
-          }
-        }
-      },
-      {
-        "name": "Final jump hold 3 frames",
-        "tape": [
-          [
-            20,
-            "lj"
-          ],
-          [
-            5,
-            "lux"
-          ],
-          [
-            10,
-            "l"
-          ],
-          [
-            90,
-            ""
-          ],
-          [
-            12,
-            "rj"
-          ],
-          [
-            35,
-            ""
-          ],
-          [
-            5,
-            "dx"
-          ],
-          [
-            45,
-            ""
-          ],
-          [
-            50,
-            "r"
-          ],
-          [
-            48,
-            "r"
-          ],
-          [
-            5,
-            "ux"
-          ],
-          [
-            25,
-            "r"
-          ],
-          [
-            55,
-            ""
-          ],
-          [
-            20,
-            "rj"
-          ],
-          [
-            35,
-            ""
-          ],
-          [
-            5,
-            "dx"
-          ],
-          [
-            65,
-            ""
-          ],
-          [
-            30,
-            ""
-          ],
-          [
-            10,
-            "l"
           ],
           [
             40,
-            ""
-          ],
-          [
-            30,
-            "rj"
-          ],
-          [
-            5,
-            "rx"
-          ],
-          [
-            25,
             "r"
           ],
           [
-            20,
+            75,
             ""
           ],
           [
-            23,
+            20,
             "rj"
           ],
           [
             5,
             "rux"
-          ],
-          [
-            55,
-            "r"
-          ]
-        ],
-        "after": {
-          "exited": true,
-          "deaths": 0,
-          "frames": 763,
-          "bruteDefeated": true,
-          "cracks": 1,
-          "events": [
-            "jump",
-            "dash",
-            "enemy-tell",
-            "land",
-            "refill-dash",
-            "zip-start",
-            "zip-stop",
-            "brute-rear",
-            "brute-stamp",
-            "stone-hit",
-            "brute-crack",
-            "stone-stop",
-            "zip-home",
-            "enemy-defeat",
-            "combat-gate",
-            "exit"
-          ],
-          "eventCounts": {
-            "jump": 5,
-            "dash": 6,
-            "enemy-tell": 2,
-            "land": 7,
-            "refill-dash": 6,
-            "zip-start": 4,
-            "zip-stop": 4,
-            "brute-rear": 2,
-            "brute-stamp": 2,
-            "stone-hit": 2,
-            "brute-crack": 1,
-            "stone-stop": 2,
-            "zip-home": 4,
-            "enemy-defeat": 1,
-            "combat-gate": 1,
-            "exit": 1
-          }
-        }
-      },
-      {
-        "name": "Ride the return lift through one extra full cycle after victory",
-        "tape": [
-          [
-            20,
-            "lj"
-          ],
-          [
-            5,
-            "lux"
-          ],
-          [
-            10,
-            "l"
-          ],
-          [
-            90,
-            ""
-          ],
-          [
-            12,
-            "rj"
-          ],
-          [
-            35,
-            ""
-          ],
-          [
-            5,
-            "dx"
-          ],
-          [
-            45,
-            ""
-          ],
-          [
-            50,
-            "r"
-          ],
-          [
-            48,
-            "r"
-          ],
-          [
-            5,
-            "ux"
-          ],
-          [
-            25,
-            "r"
-          ],
-          [
-            55,
-            ""
-          ],
-          [
-            20,
-            "rj"
-          ],
-          [
-            35,
-            ""
-          ],
-          [
-            5,
-            "dx"
           ],
           [
             65,
-            ""
-          ],
-          [
-            30,
-            ""
-          ],
-          [
-            10,
-            "l"
-          ],
-          [
-            245,
-            ""
-          ],
-          [
-            30,
-            "rj"
-          ],
-          [
-            5,
-            "rx"
-          ],
-          [
-            25,
-            "r"
-          ],
-          [
-            20,
-            ""
-          ],
-          [
-            20,
-            "rj"
-          ],
-          [
-            5,
-            "rux"
-          ],
-          [
-            55,
             "r"
           ]
         ],
         "after": {
           "exited": true,
           "deaths": 0,
-          "frames": 968,
+          "frames": 1476,
           "bruteDefeated": true,
-          "cracks": 1,
-          "events": [
-            "jump",
-            "dash",
-            "enemy-tell",
-            "land",
-            "refill-dash",
-            "zip-start",
-            "zip-stop",
-            "brute-rear",
-            "brute-stamp",
-            "stone-hit",
-            "brute-crack",
-            "stone-stop",
-            "zip-home",
-            "enemy-defeat",
-            "combat-gate",
-            "exit"
-          ],
+          "cracks": 2,
           "eventCounts": {
-            "jump": 5,
-            "dash": 6,
-            "enemy-tell": 2,
-            "land": 7,
-            "refill-dash": 6,
+            "jump": 10,
+            "dash": 10,
+            "enemy-tell": 3,
+            "land": 13,
+            "refill-dash": 10,
             "zip-start": 5,
             "zip-stop": 5,
-            "brute-rear": 2,
-            "brute-stamp": 2,
-            "stone-hit": 2,
-            "brute-crack": 1,
-            "stone-stop": 2,
+            "brute-rear": 3,
+            "brute-stamp": 3,
+            "stone-hit": 3,
+            "brute-crack": 2,
+            "stone-stop": 3,
             "zip-home": 5,
             "enemy-defeat": 1,
             "combat-gate": 1,
+            "strike": 1,
+            "anvil": 1,
             "exit": 1
-          }
+          },
+          "events": [
+            "jump",
+            "dash",
+            "enemy-tell",
+            "land",
+            "refill-dash",
+            "zip-start",
+            "zip-stop",
+            "brute-rear",
+            "brute-stamp",
+            "stone-hit",
+            "brute-crack",
+            "stone-stop",
+            "zip-home",
+            "enemy-defeat",
+            "combat-gate",
+            "strike",
+            "anvil",
+            "exit"
+          ]
         }
       }
     ],
     "shortcutChecks": [
       {
-        "name": "Keep the second counterweight raised and attempt the upper exit",
+        "name": "Original two-crush completion now leaves the real Brute alive and the ward closed",
         "tape": [
           [
             20,
@@ -713,7 +503,7 @@
           ],
           [
             5,
-            ""
+            "dx"
           ],
           [
             65,
@@ -763,9 +553,25 @@
         "after": {
           "exited": false,
           "deaths": 0,
-          "frames": 0,
+          "frames": -1,
           "bruteDefeated": false,
-          "cracks": 1,
+          "cracks": 2,
+          "eventCounts": {
+            "jump": 4,
+            "dash": 5,
+            "enemy-tell": 3,
+            "land": 5,
+            "refill-dash": 4,
+            "zip-start": 4,
+            "zip-stop": 4,
+            "brute-rear": 2,
+            "brute-stamp": 2,
+            "stone-hit": 2,
+            "brute-crack": 2,
+            "stone-stop": 2,
+            "zip-home": 4,
+            "walljump": 1
+          },
           "events": [
             "jump",
             "dash",
@@ -781,32 +587,22 @@
             "stone-stop",
             "zip-home",
             "walljump"
-          ],
-          "eventCounts": {
-            "jump": 4,
-            "dash": 4,
-            "enemy-tell": 3,
-            "land": 6,
-            "refill-dash": 4,
-            "zip-start": 4,
-            "zip-stop": 4,
-            "brute-rear": 3,
-            "brute-stamp": 3,
-            "stone-hit": 1,
-            "brute-crack": 1,
-            "stone-stop": 1,
-            "zip-home": 3,
-            "walljump": 1
-          }
+          ]
         }
       }
     ],
     "requiredEventCounts": {
-      "stone-hit": 2,
-      "brute-crack": 1,
-      "enemy-defeat": 1
+      "stone-hit": 3,
+      "brute-crack": 2,
+      "enemy-defeat": 1,
+      "anvil": 1
     },
-    "endingForgiveness": "All dangerous combat ends before the final route. Broad solid galleries accept earlier and later final jumps. The return lift can be ridden through another full cycle after victory; the lower court is solid recovery ground, not a last-jump death pit."
+    "endingForgiveness": "Once the third native crush finishes, the whole court is safe recovery floor. The carried anvil can be retried, the original lifts remain available, and the final gallery accepts an extra sixty-frame pause before the last jump.",
+    "evidenceNotes": [
+      "Entrance P33,33 and right exit rows8–11 are unchanged.",
+      "No new runtime: anvilSleds uses the already loaded superrooms-colossus module.",
+      "The anvil return is the demonstrated new route, not an invisible mandatory receipt; carrier recovery remains valid."
+    ]
   },
   "tape": [
     [
@@ -891,6 +687,50 @@
     ],
     [
       30,
+      "lj"
+    ],
+    [
+      5,
+      "lx"
+    ],
+    [
+      110,
+      "l"
+    ],
+    [
+      70,
+      ""
+    ],
+    [
+      25,
+      "r"
+    ],
+    [
+      1,
+      "j"
+    ],
+    [
+      2,
+      "r"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      35,
+      ""
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      120,
+      ""
+    ],
+    [
+      25,
       "rj"
     ],
     [
@@ -898,7 +738,7 @@
       "rx"
     ],
     [
-      25,
+      100,
       "r"
     ],
     [
@@ -910,11 +750,51 @@
       "rj"
     ],
     [
+      35,
+      ""
+    ],
+    [
+      11,
+      "rj"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      1,
+      "j"
+    ],
+    [
+      1,
+      "ds"
+    ],
+    [
+      30,
+      "r"
+    ],
+    [
       5,
       "rux"
     ],
     [
-      55,
+      40,
+      "r"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      5,
+      "rux"
+    ],
+    [
+      65,
       "r"
     ]
   ]
