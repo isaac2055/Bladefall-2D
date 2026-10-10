@@ -18,7 +18,9 @@ const R=()=>root.BladefallPrecisionRooms;
 const C=()=>root.BladefallPrecisionCore;
 const V=()=>root.BladefallPrecisionView;
 const H=BASE.helpers;
-const TILE=8,SW=320,SH=184;
+const TILE=8;
+let SW=320,SH=184;
+function viewport(view){SW=view?.viewportW||320;SH=view?.viewportH||184;}
 const SAVE='bladefall.climb.v1',RBR_SAVE='bladefall.rbr.v1';
 const load=k=>{try{return JSON.parse(localStorage.getItem(k))||{};}catch(e){return {};}};
 const store=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}};
@@ -60,7 +62,7 @@ function uprightBeforeLeaving(g){if(g&&g.flipped&&root.BladefallPrecisionGravity
 function chainIndex(pl,roomId){return pl.chain.findIndex(s=>s.room===roomId);}
 function roomIdx(roomId){const ch=R().chapters[st.chapter];return firstIndex(st.chapter)+ch.rooms.findIndex(r=>r.id===roomId);}
 function bounds(chain){
- const current=st.view.g,place=sectionOf(current);
+ viewport(st.view);const current=st.view.g,place=sectionOf(current);
  if(current.room.def.atlasTransit)return {x0:place.x,y0:place.y,x1:place.x+current.room.w,y1:place.y+current.room.h};
  chain=CL().all(st.world).filter(s=>!defOf(s.room).atlasTransit);
  let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
@@ -72,7 +74,7 @@ function bounds(chain){
 PV.start=function(q,api){
  if(q.get('pitch')!=='climb')return BASE.start(q,api);
  if(!q.has('legacygeography'))root.BladefallClimbGeographyBuild?.install();
- const view=api.view;
+ const view=api.view;viewport(view);
  for(const w of CL().worlds){Object.assign(H.FOLK,w.folk||{});}
  st={api,view,world:null,chapter:-1,quest:null,cam:null,closed:new Set(),toast:null,slide:null,spoke:new Set(),gone:new Set(),walk:{},trail:[],dispCache:new Map()};
  view.pitch=st;
@@ -270,7 +272,7 @@ PV.camera=function(g,view){
  if(!st||!isClimb(chapterNow(view)))return BASE.camera?BASE.camera(g,view):false;
  const pl=sectionOf(g);if(!pl)return false;
  if(CL().geography){
-  const p=g.p,target=root.BladefallClimbGeography.cameraTarget(CL().geography,{x:pl.x+p.x+4,y:pl.y+uprightY(g)+5},SW,SH),tx=target.x,ty=target.y;
+  viewport(st.view);const p=g.p,target=root.BladefallClimbGeography.cameraTarget(CL().geography,{x:pl.x+p.x+4,y:pl.y+uprightY(g)+5},SW,SH),tx=target.x,ty=target.y;
   if(!st.cam)st.cam={x:tx,y:ty};else{st.cam.x+=(tx-st.cam.x)*.16;st.cam.y+=(ty-st.cam.y)*.13;}
   view.cam.x=st.cam.x-pl.x;view.cam.y=st.cam.y-pl.y;view.camRoom=g.room.id;return true;
  }
@@ -305,18 +307,31 @@ function displayGame(roomId,open){
  st.dispCache.set(key,g2);return g2;
 }
 const CLOSE_WHILE_PLAYED=new Set(['k6-stacks','s9-wheel']);
+// Moving supports retain their authored origin even after cargo lowers them.
+function fireSupport(g){const p=g.p,sp=g.room.spawn;return g.ents.find(e=>!e.gone&&(e.solid||e.type==='zip'||e.type==='slide'||e.type==='thru'||e.thru)&&Math.abs(e.oy-(sp.y+p.h))<=1&&sp.x<e.ox+e.w&&sp.x+p.w>e.ox);}
+
 function openSeam(room,def){
- if(!def.seam)return;const cols=room.cols;
- for(const [c,r] of def.seam){const ch=(def.map[r]||'')[c];room.grid[r*cols+c]=ch==='='?C().THRU:0;}
+ if(!def.seam)return;const cols=room.cols,opened=C().parseRoom(def);
+ for(const [c,r] of def.seam){const i=r*cols+c;room.grid[i]=opened.grid[i];room.portalable[i]=opened.portalable[i];}
  room.rev=(room.rev||0)+1;
 }
-function closeSeam(g,def){
+function closeSeam(g,def,requireClear=false){
  if(!def.seam||!def.seam.length)return false;
- const room=g.room,cols=room.cols;
- for(const [c,r,ch] of def.seam){const i=r*cols+c;room.grid[i]=C().SOLID;if(ch==='%')room.portalable[i]=1;}
+ const room=g.room,cols=room.cols,map=def.map.map(row=>row.split(''));
+ for(const [c,r,ch] of def.seam)map[r][c]=ch;
+ const closed=C().parseRoom({...def,map:map.map(row=>row.join(''))});
+ // A nearby fire does not imply that the whole body has cleared the doorway.
+ // Leave the visible approach open until restoring its solids or spikes is safe.
+ if(requireClear){const p=g.p;if(def.seam.some(([c,r])=>closed.grid[r*cols+c]&&p.x<(c+1)*TILE&&p.x+p.w>c*TILE&&p.y<(r+1)*TILE&&p.y+p.h>r*TILE))return false;
+  const opened=room.grid,restored=opened.slice();for(const [c,r]of def.seam)restored[r*cols+c]=closed.grid[r*cols+c];let supported=false;try{room.grid=restored;supported=C().onGroundCheck(g,p);}finally{room.grid=opened;}
+  const support=fireSupport(g);if(!supported&&support&&p.x<support.x+support.w&&p.x+p.w>support.x&&support.y>=p.y+p.h&&support.y-(p.y+p.h)<=48)supported=true;
+  if(!supported)return false;
+ }
+ for(const [c,r] of def.seam){const i=r*cols+c;room.grid[i]=closed.grid[i];room.portalable[i]=closed.portalable[i];}
  room.rev=(room.rev||0)+1;return true;
 }
 PV.drawWorld=function(b,g,view,pal){
+ viewport(view);
  if(!st||!isClimb(chapterNow(view)))return BASE.drawWorld?BASE.drawWorld(b,g,view,pal):undefined;
  if(!g.flipped)return drawWorldUpright(b,g,view,pal);
  // (7.280) the view has turned the canvas over for a flipped room; the world around it is drawn the right way up
@@ -425,7 +440,7 @@ function drawFoldedViews(b,g,pl,visible,cam){
 }
 
 function drawGeography(b,g,view,pl,cam=st.cam||{x:pl.x,y:pl.y}){
- const geo=CL().geography,visible=geo.visible({x:cam.x-16,y:cam.y-16},SW+32,SH+32);
+ viewport(st.view);const geo=CL().geography,visible=geo.visible({x:cam.x-16,y:cam.y-16},SW+32,SH+32);
  const rects=[];
  for(const r of visible){
   if(r.def.atlasTerrain){for(let y=Math.max(0,Math.floor(cam.y/8-r.y)-2);y<Math.min(r.h,Math.ceil((cam.y+SH)/8-r.y)+2);y++)for(const [a,z] of r.def.atlasTerrain.spans[y])rects.push({x:(r.x+a)*8,y:(r.y+y)*8,w:(z-a)*8,h:8});}
@@ -460,7 +475,7 @@ function drawGeography(b,g,view,pl,cam=st.cam||{x:pl.x,y:pl.y}){
 const sceneLayers=new Map();
 function sceneLayer(key){
  let layer=sceneLayers.get(key);
- if(!layer){layer=document.createElement('canvas');layer.width=SW;layer.height=SH;sceneLayers.set(key,layer);}
+ if(!layer){layer=document.createElement('canvas');sceneLayers.set(key,layer);}if(layer.width!==SW||layer.height!==SH){layer.width=SW;layer.height=SH;}
  const brush=layer.getContext('2d');brush.setTransform(1,0,0,1,0,0);brush.clearRect(0,0,SW,SH);return {layer,brush};
 }
 function paintRegion(key,game,place,cam){
@@ -561,11 +576,11 @@ PV.holding=function(){
  if(root.BladefallClimbCoop)try{if(root.BladefallClimbCoop.tick(g))return true;}catch(e){}
  // The seam closes once the knight stands at the fire (or is well clear of it).
  if(d.seam&&d.seam.length&&!st.closed.has(g.room.id)){
-  const sp=g.room.spawn,near=Math.abs(p.x-sp.x)<=12&&Math.abs(p.y-sp.y)<=6&&p.onGround;
+  const sp=g.room.spawn,support=fireSupport(g),near=Math.abs(p.x-sp.x)<=12&&(Math.abs(p.y-sp.y)<=12||support&&C().standingOn(g,p,support))&&p.onGround;
   const clear=!d.seam.some(([c,r])=>Math.abs(c*TILE+4-(p.x+4))<20&&Math.abs(r*TILE+4-(p.y+5))<24);
   // Isaac (7.265.2): seams stay open so you can walk back, except where the room's own route needs that wall:
   // those close at the fire while you play the section and reopen once you have cleared it.
-  if((d.closeWhilePlayed||CLOSE_WHILE_PLAYED.has(d.origin))&&p.state==='normal'&&(near||clear&&(p.x-sp.x)**2+(p.y-sp.y)**2<48*48)){closeSeam(g,d);st.closed.add(g.room.id);}
+  if((d.closeWhilePlayed||CLOSE_WHILE_PLAYED.has(d.origin))&&p.state==='normal'&&p.onGround&&(d.closeWhilePlayed?near:near||clear&&(p.x-sp.x)**2+(p.y-sp.y)**2<48*48)&&closeSeam(g,d,true))st.closed.add(g.room.id);
  }
  // Walking back: pressing out through the edge you came in by carries you into the previous section.
  {const pl=sectionOf(g),k=pl?chainIndex(pl,g.room.id):-1;
@@ -595,7 +610,9 @@ PV.holding=function(){
    // out of a side the moment you arrive) let a knight who missed a door's shaft fall out of the floor and die
    const late=d.passage||g.frame-(st.enteredAt||0)>45;
    // a passage piece knows the edge it is entered by; a road section is told by where the previous one sits
-   const L=d.entry?d.entry==='left':dx<0,Rt=d.entry?d.entry==='right':dx>0,Dn=d.entry?d.entry==='down':dy>0,Up=d.entry?d.entry==='up':dy<0;
+   const proved=(st.world.continuousSeams||[]).some(s=>s.from===prev.room&&s.to===g.room.id);
+   const entry=proved?({left:'right',right:'left',up:'down',down:'up'}[defOf(prev.room)?.exit||'right']):d.entry;
+   const L=entry?entry==='left':dx<0,Rt=entry?entry==='right':dx>0,Dn=entry?entry==='down':dy>0,Up=entry?entry==='up':dy<0;
    // Isaac (7.270): back through the way in however you move into it (walking, jumping, dashing), as long as his
    // whole body is in the opening (so a climb on the wall beside it is not a way back). A room whose entrance was
    // already open (no tunnel cut, so no seam) counts its open edge as the way in.
@@ -608,7 +625,7 @@ PV.holding=function(){
    // (7.280) a branch's pieces hand a slow knight (climbing, or at the top of a rise) back down only once most of him is
    // below the seam: the way up hands him on as his head crosses, so a pause on the wall there is not a way back. A fall
    // (faster than a climb) still goes home at once, well before the floor could kill him.
-   const piece=!!(d.passage||d.connector||pl.branch),dnAt=piece?py>=rm.h-2||py>=rm.h-p.h-1&&pvy>45&&p.state!=='climb':py>=rm.h-p.h-1;
+   const piece=!!(d.passage||d.connector||pl.branch||defOf(prev.room)?.campaignWalk),dnAt=piece?py>=rm.h-2||py>=rm.h-p.h-1&&pvy>45&&p.state!=='climb':py>=rm.h-p.h-1;
    const out=late&&(L&&p.x<=0&&pushL&&p.state!=='climb'&&sideOK(0)&&inWay)||late&&(Rt&&p.x>=rm.w-p.w&&pushR&&p.state!=='climb'&&sideOK(rm.cols-1)&&inWay)
     ||(Dn&&dnAt&&pvy>=0&&(atSeam||noSeam&&vertOK(rm.rows-1)))||late&&(Up&&py<=0&&pvy<0&&(atSeam||noSeam&&vertOK(0)));
    // (7.276) dropped home out of a short shaft (a gate's), his feet are on the room below's top edge: set him just
@@ -899,16 +916,30 @@ function drawLiftHint(b,g){
 
 /* ---------------------------------------------------------------- skips (Isaac, 7.270) */
 /* Three per world: N moves you on to the next section's fire. Not in a quest or a secret (those are optional). */
-function skipSection(){
- const view=st.view,g=view.g,pl=sectionOf(g);if(!pl||view.mode!=='play'||view.paused)return;
- if(pl.branch){announce('Skips are for the road',140);return;}
- const k=chainIndex(pl,g.room.id),next=pl.chain[k+1];
- if(!next){announce('This is the last section',140);return;}
- if(!(st.skips>0)){announce('No skips left in this world',150);return;}
+function skipInfo(){
+ const view=st?.view,g=view?.g,pl=g&&st.world&&sectionOf(g),d=g?.room?.def;
+ const remaining=st?.skips??0;
+ let reason='';
+ if(!pl||view.mode!=='play')reason='Start a world first';
+ else if(pl.branch)reason='Optional routes cannot be skipped';
+ else if(d.campaignImport?.superroom||d.bank?.format==='superroom'||d.superroom||
+   ['boss','sentinel','marksman','colossus','warden','sorcerer','tyrant','crown','chainHydra','dayKing','rootCrown'].some(k=>d[k])||d.combat?.enemies?.some(e=>e.brute))reason='Finales and bosses cannot be skipped';
+ else if(d.connector||d.passage||d.atlasJunction||d.atlasTransit)reason='Skips apply to normal challenges';
+ else if(d.bank?.format==='extended'||(d.cols||40)*(d.rows||23)>40*23)reason='Large challenges cannot be skipped';
+ else if(!pl.chain[chainIndex(pl,g.room.id)+1])reason='This is the last section';
+ else if(remaining<=0)reason='No skips left in this world';
+ return {allowed:!reason,remaining,reason};
+}
+function skipSection({fromPause=false}={}){
+ const info=skipInfo();if(!info.allowed){announce(info.reason,150);return false;}
+ const view=st.view,g=view.g,pl=sectionOf(g);
+ if(view.paused&&!fromPause)return false;
+ const next=pl.chain[chainIndex(pl,g.room.id)+1];
  const proceed=()=>{root.BladefallClimbSession?.invalidate('skip');
- st.skips--;st.trail=[];C().enterRoom(g,roomIdx(next.room));st.enteredAt=g.frame;view.roomTimer=0;
+ st.skips--;st.trialSolved?.add(g.room.id);st.atlas?.solve(g.room.id);store('bladefall.climb.atlas.v1',st.atlas.snapshot());st.trail=[];C().enterRoom(g,roomIdx(next.room));st.enteredAt=g.frame;view.roomTimer=0;
  announce(`Skipped · ${st.skips} left in ${st.world.name}`,170);};
  if(!root.BladefallClimbSession?.request(g.room.def,proceed,'skipped'))proceed();
+ return true;
 }
 if(typeof addEventListener==='function')addEventListener('keydown',e=>{
  if(!st||!st.world||e.repeat||!isClimb(chapterNow(st.view)))return;
@@ -1222,7 +1253,7 @@ PV.hud=function(ctx,ox,oy,scale,g,view){
  if(st.nearPort&&!st.nearPort.open){const info=root.BladefallClimbMap?.describeSocket?.(g.room.def,st.nearPort.socket,st.atlas);ctx.fillStyle='#c8c4b5';ctx.fillText(info?`Sealed · the road to ${info.toName} opens when you ${info.reasonLong}`:'The crossing is barred · explore the adjoining climbs',ox+10,oy+H0(scale,view)-fs*3.8);}
  if(root.BladefallClimbCoop)try{root.BladefallClimbCoop.hud(ctx,ox,oy,scale,fs,g,view);}catch(e){}
  // skips left in this world (N)
- {const txt=`N · skip ${st.skips??3} · Pause for map`,tw=ctx.measureText(txt).width+fs*1.2,x0=ox+W0*scale-8;ctx.globalAlpha=.7;ctx.fillStyle='rgba(14,16,24,.6)';ctx.fillRect(x0-tw,oy+H0(scale,view)-fs*2.2,tw,fs*1.6);ctx.fillStyle='#cfd6e2';ctx.fillText(txt,x0-tw+fs*.6,oy+H0(scale,view)-fs*1.9);ctx.globalAlpha=1;}
+ {const info=skipInfo(),txt=info.allowed?`Skip ${info.remaining} · Pause for map`:`${info.reason} · Pause for map`,tw=ctx.measureText(txt).width+fs*1.2,x0=ox+W0*scale-8;ctx.globalAlpha=.7;ctx.fillStyle='rgba(14,16,24,.6)';ctx.fillRect(x0-tw,oy+H0(scale,view)-fs*2.2,tw,fs*1.6);ctx.fillStyle='#cfd6e2';ctx.fillText(txt,x0-tw+fs*.6,oy+H0(scale,view)-fs*1.9);ctx.globalAlpha=1;}
  for(const q of st.world.quests){
   let txt=null;const plq=sectionOf(g);if(plq&&plq.quest===q&&!st.quest)st.quest={id:q.id};
   if(q.bearings&&bearingsHeld(g,q).length){const held=bearingsHeld(g,q);txt=`${q.giver}: `+q.bearings.map(b=>(held.includes(b)?'◆':'◇')+' '+b).join('  ');}
@@ -1285,7 +1316,7 @@ function returnPassage(){
  const from=sectionOf(g),to=st.world.sections.find(s=>s.room===link.from);if(!from||!to)return false;
  st.view.paused=false;st.api.hideOverlay();carryInto(from,to);announce('Back through the passage · previous checkpoint',140);return true;
 }
-PV.climb={returnPassage,useRiftPortal,riftPortal,portViews:visibleSockets,palette:palFor,state:()=>st,startWorld:n=>startWorld(n),menu:()=>worldMenu(),levels:()=>worldMenu(true),teleport:teleportTo,sectionOf:g=>sectionOf(g),defOf:id=>defOf(id),announce:(t,n)=>announce(t,n)};
+PV.climb={skipInfo,skipSection,returnPassage,useRiftPortal,riftPortal,portViews:visibleSockets,palette:palFor,state:()=>st,startWorld:n=>startWorld(n),menu:()=>worldMenu(),levels:()=>worldMenu(true),teleport:teleportTo,sectionOf:g=>sectionOf(g),defOf:id=>defOf(id),announce:(t,n)=>announce(t,n)};
 root.BladefallPitchView=PV;
 /* (7.280) A gravity prism's flip keeps the picture still. The scarf, the dash's afterimages and the sparks live in the
    room's own coordinates, which the flip mirrors, so they are turned over with it (first in the list, so the flip's own

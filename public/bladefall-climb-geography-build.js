@@ -5,10 +5,12 @@
 const opposite=e=>e==='left'?'right':'left';
 function landscapeJunction(w,section,def){
  const arrival=def.id.endsWith('-atlas-arrival');
- const oldMain=def.atlasMain,cols=def.atlasSockets.length>5?40:56,mid=Math.floor(cols/2);
+ const oldMain=def.atlasMain,cols=Math.max(oldMain.edge==='up'||oldMain.edge==='down'||def.atlasSockets.length>5?40:56,...(oldMain.cols||[]).map(c=>c+2)),mid=Math.floor(cols/2);
  // (7.275) a departure with no road onward (the Deep Line's last platform) hangs below its floor, not above it
  const empty=!arrival&&!def.atlasSockets.some(p=>p.kind!=='room');
- const main={...oldMain,floor:oldMain.edge==='down'?25:oldMain.edge==='up'?20:arrival?10:empty?8:20};
+ // Keep five rows above an arrival mouth. A low departure mouth must not
+ // extend its roof above the source floor into that world's upper branches.
+ const main={...oldMain,floor:oldMain.edge==='down'?25:oldMain.edge==='up'?20:arrival?6:empty?8:Math.max(5,Math.min(20,oldMain.toFloor||20))};
  const sockets=def.atlasSockets.map(p=>({...p})),used={left:0,right:0},roads=[];
  const orderedSockets=[...sockets].sort((a,b)=>Number(root.BladefallClimbAtlas.links.find(l=>l.id===b.link)?.kind==='crossing')-Number(root.BladefallClimbAtlas.links.find(l=>l.id===a.link)?.kind==='crossing'));
  // (7.275) an arrival takes a third mouth on a side (the Deep Line's); a departure entered from above (the Last Pour's)

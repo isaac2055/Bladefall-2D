@@ -1,0 +1,767 @@
+{
+  "room": {
+    "id": "bank-f72",
+    "name": "Glass Below, Stone Above",
+    "palette": "fractured",
+    "rbr": 30,
+    "study": true,
+    "movement": "survive-2",
+    "aim8": true,
+    "cols": 80,
+    "rows": 36,
+    "exit": "left",
+    "lock": [
+      "portal",
+      "parry"
+    ],
+    "fault": {
+      "fuse": 16,
+      "spread": 8,
+      "rest": 300
+    },
+    "mirror": {},
+    "slabs": [
+      {
+        "stone": 150,
+        "molten": 60,
+        "glass": 130,
+        "offset": 0
+      },
+      {
+        "stone": 150,
+        "molten": 60,
+        "glass": 130,
+        "offset": 120
+      }
+    ],
+    "hint": "Cross the pour as glass. Return through the high mirror; the same pour is now your stepping stone.",
+    "question": "When does the door you passed through become the platform you need?",
+    "map": [
+      "################################################################################",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "...............................................................................#",
+      "...............................................................................#",
+      "............................................|..................................#",
+      "............................................|..................................#",
+      "####################........................|..................................#",
+      "#>..........................................|.................................<#",
+      "#>..........................................|.................................<#",
+      "#>.........................................>|<................................<#",
+      "#>.....................>EEEE<..............>|<................................<#",
+      "#>.....................>EEEE<..............>|<................................<#",
+      "#>.....................>EEEE<..............>|<...###########..................<#",
+      "#>.....................>EEEE<..............>|<................................<#",
+      "#>.....................>EEEE<.......EEEEEE.>|<................................<#",
+      "#>.....................>EEEE<..............>|<................................<#",
+      "#>.....................>EEEE<..............>|<................................<#",
+      "#>.....................>EEEE<..............>|<................................<#",
+      "#>.....................>EEEE<..............>|<................................<#",
+      "#>.....................>EEEE<..............>|<................................<#",
+      "#>.....................>EEEE<..............>|<................................<#",
+      "#>.....................>EEEE<...............|.................................<#",
+      "#>.....................>EEEE<...............|.................................<#",
+      "#>.....................>EEEE<...............|.................................<#",
+      "#>......................EEEE................|.................................<#",
+      "#...P...................EEEE................|.........................N........#",
+      "###############################TTTTTTTTT...........#############################",
+      "###############################....................#############################",
+      "###############################....................#############################",
+      "###############################....................#############################",
+      "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+      "################################################################################"
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 18,
+    "run": 9,
+    "collection": "superrooms",
+    "format": "superroom",
+    "acceptance": "candidate",
+    "needsReview": true,
+    "difficulty": 4,
+    "role": "interconnected Emberdeep traversal superroom",
+    "worlds": [
+      30
+    ],
+    "tags": [
+      "superroom",
+      "heat-slab",
+      "mirror",
+      "fault",
+      "anvil",
+      "return"
+    ],
+    "newMechanics": [],
+    "status": "route-proven",
+    "author": "Codex",
+    "humanReview": "New integrated candidate; awaiting fun/difficulty/suitability review.",
+    "approvedIngredients": [
+      "bank-f48",
+      "bank-f56"
+    ],
+    "interconnection": "The tall thermal body that blocks the low outward crossing is later the last raised stepping stone. Both directions cross the same tall mirror pane, through low and high openings respectively. The far native anvil is the way into that high return; the outward fault takeoff falls below you.",
+    "solution": "Wait for the tall pour to cool to glass, cross its low opening and commit over the fault edge through the mirror’s low window. Reach the far anvil with reversed controls, pogo onto the high rest, and cross the same pane through its high window to restore control. Time the short heat bridge and the tall pour’s cap, then jump to the wide home ledge.",
+    "novelty": "A full-height thermal door changes into the destination platform of the return, while one mirror barrier is crossed at two different heights with a real anvil loft between them.",
+    "nearestExisting": "F48 airborne return composition and F56 timed surfaces, composed around Emberdeep’s actual slab cycle, fault floor and control-reversing glass.",
+    "requiredEvents": [
+      "slab-glass",
+      "mirror",
+      "anvil",
+      "fault-crack"
+    ],
+    "requiredEventCounts": {
+      "mirror": 2,
+      "anvil": 1,
+      "fault-crack": 1
+    },
+    "route": {
+      "name": "canonical",
+      "exited": true,
+      "deaths": 0,
+      "frames": 841,
+      "eventCounts": {
+        "slab-molten": 5,
+        "slab-glass": 5,
+        "slab-stone": 4,
+        "slab": 3,
+        "fault-crack": 1,
+        "fault-fall": 9,
+        "jump": 5,
+        "dash": 5,
+        "mirror": 2,
+        "land": 5,
+        "refill-dash": 5,
+        "strike": 1,
+        "anvil": 1,
+        "fault-back": 9,
+        "exit": 1
+      },
+      "controlsRestored": true,
+      "events": [
+        "slab-molten",
+        "slab-glass",
+        "slab-stone",
+        "slab",
+        "fault-crack",
+        "fault-fall",
+        "jump",
+        "dash",
+        "mirror",
+        "land",
+        "refill-dash",
+        "strike",
+        "anvil",
+        "fault-back",
+        "exit"
+      ]
+    },
+    "positiveChecks": [
+      {
+        "name": "Final dash 4 frames earlier",
+        "tape": [
+          [
+            95,
+            "r"
+          ],
+          [
+            120,
+            ""
+          ],
+          [
+            33,
+            "r"
+          ],
+          [
+            59,
+            "r"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            27,
+            "l"
+          ],
+          [
+            84,
+            "l"
+          ],
+          [
+            10,
+            "lj"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            31,
+            "r"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            38,
+            "r"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            9,
+            "r"
+          ],
+          [
+            34,
+            "l"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            14,
+            "lj"
+          ],
+          [
+            5,
+            "lux"
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            10,
+            "lj"
+          ],
+          [
+            5,
+            "lux"
+          ],
+          [
+            100,
+            "l"
+          ],
+          [
+            45,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 841,
+          "eventCounts": {
+            "slab-molten": 5,
+            "slab-glass": 5,
+            "slab-stone": 4,
+            "slab": 3,
+            "fault-crack": 1,
+            "fault-fall": 9,
+            "jump": 5,
+            "dash": 5,
+            "mirror": 2,
+            "land": 5,
+            "refill-dash": 5,
+            "strike": 1,
+            "anvil": 1,
+            "fault-back": 9,
+            "exit": 1
+          },
+          "controlsRestored": true
+        }
+      },
+      {
+        "name": "Final dash 4 frames later",
+        "tape": [
+          [
+            95,
+            "r"
+          ],
+          [
+            120,
+            ""
+          ],
+          [
+            33,
+            "r"
+          ],
+          [
+            59,
+            "r"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            27,
+            "l"
+          ],
+          [
+            84,
+            "l"
+          ],
+          [
+            10,
+            "lj"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            31,
+            "r"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            38,
+            "r"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            9,
+            "r"
+          ],
+          [
+            34,
+            "l"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            14,
+            "lj"
+          ],
+          [
+            5,
+            "lux"
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            5,
+            "lux"
+          ],
+          [
+            100,
+            "l"
+          ],
+          [
+            45,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 841,
+          "eventCounts": {
+            "slab-molten": 5,
+            "slab-glass": 5,
+            "slab-stone": 4,
+            "slab": 3,
+            "fault-crack": 1,
+            "fault-fall": 9,
+            "jump": 5,
+            "dash": 5,
+            "mirror": 2,
+            "land": 5,
+            "refill-dash": 5,
+            "strike": 1,
+            "anvil": 1,
+            "fault-back": 9,
+            "exit": 1
+          },
+          "controlsRestored": true
+        }
+      },
+      {
+        "name": "Wait a whole additional heat cycle on the upper recovery shelf before returning",
+        "tape": [
+          [
+            95,
+            "r"
+          ],
+          [
+            120,
+            ""
+          ],
+          [
+            33,
+            "r"
+          ],
+          [
+            59,
+            "r"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            27,
+            "l"
+          ],
+          [
+            84,
+            "l"
+          ],
+          [
+            10,
+            "lj"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            31,
+            "r"
+          ],
+          [
+            352,
+            ""
+          ],
+          [
+            38,
+            "r"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            9,
+            "r"
+          ],
+          [
+            34,
+            "l"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            14,
+            "lj"
+          ],
+          [
+            5,
+            "lux"
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            14,
+            "lj"
+          ],
+          [
+            5,
+            "lux"
+          ],
+          [
+            100,
+            "l"
+          ],
+          [
+            45,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 1181,
+          "eventCounts": {
+            "slab-molten": 7,
+            "slab-glass": 7,
+            "slab-stone": 6,
+            "slab": 3,
+            "fault-crack": 1,
+            "fault-fall": 9,
+            "jump": 5,
+            "dash": 5,
+            "mirror": 2,
+            "land": 5,
+            "refill-dash": 5,
+            "strike": 1,
+            "anvil": 1,
+            "fault-back": 9,
+            "exit": 1
+          },
+          "controlsRestored": true
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Climb the first thermal column from below to skip the mirror and anvil loop",
+        "tape": [
+          [
+            95,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            90,
+            "rgu"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 197,
+          "eventCounts": {
+            "slab-molten": 2,
+            "slab-glass": 1,
+            "jump": 1,
+            "slab": 1,
+            "death": 1,
+            "respawn": 1
+          },
+          "controlsRestored": true
+        }
+      }
+    ],
+    "endingForgiveness": "The final dash succeeds 4 frames earlier and 4 frames later in full zero-death replays. The destination is a 20-tile permanent ledge, followed by an ordinary walk home. The upper anvil shelf is 11 tiles wide and supports waiting an entire additional heat cycle before the return.",
+    "designNotes": "One tall slab is passed near its foot while glass, then landed upon at its cap on the return. Its fringed sides prevent simply climbing from the starting court. The same 22-tile mirror pane is crossed twice, through different 5-tile openings. Native anvil, pane reversal, fault, slab schedules and directional spikes supply all behavior; no new runtime or receipt-based gate is used."
+  },
+  "tape": [
+    [
+      95,
+      "r"
+    ],
+    [
+      120,
+      ""
+    ],
+    [
+      33,
+      "r"
+    ],
+    [
+      59,
+      "r"
+    ],
+    [
+      16,
+      "rj"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      27,
+      "l"
+    ],
+    [
+      84,
+      "l"
+    ],
+    [
+      10,
+      "lj"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      1,
+      "ds"
+    ],
+    [
+      14,
+      "r"
+    ],
+    [
+      15,
+      "r"
+    ],
+    [
+      5,
+      "rux"
+    ],
+    [
+      31,
+      "r"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      38,
+      "r"
+    ],
+    [
+      16,
+      "rj"
+    ],
+    [
+      5,
+      "rux"
+    ],
+    [
+      9,
+      "r"
+    ],
+    [
+      34,
+      "l"
+    ],
+    [
+      8,
+      "l"
+    ],
+    [
+      14,
+      "lj"
+    ],
+    [
+      5,
+      "lux"
+    ],
+    [
+      25,
+      "l"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      14,
+      "lj"
+    ],
+    [
+      5,
+      "lux"
+    ],
+    [
+      100,
+      "l"
+    ],
+    [
+      45,
+      "l"
+    ]
+  ]
+}

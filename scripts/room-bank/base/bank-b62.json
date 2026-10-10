@@ -2,160 +2,118 @@
   "room": {
     "id": "bank-b62",
     "study": true,
-    "palette": "court",
     "dashes": 1,
-    "cols": 72,
+    "cols": 76,
     "rows": 40,
-    "exit": "right",
-    "name": "The Gate Remembers Your Weight",
+    "palette": "outskirts",
+    "exit": "left",
+    "name": "Leave the Lift for Later",
     "lock": [
       "strike",
       "parry",
       "portal"
     ],
+    "dropThru": true,
     "map": [
-      "########################################################################",
-      "#............................##........................................#",
-      "#............................HH.........................................",
-      "#............................HH.........................................",
-      "#............................HH.........................................",
-      "#...............______.......HH.........................................",
-      "#.............=========#################################################",
-      "#......................................................................#",
-      "#......................................................................#",
-      "#.......==============.................................................#",
-      "#......................................................................#",
-      "#......................................................................#",
-      "#...............===========............................................#",
-      "#......................................................................#",
-      "#......................................................................#",
-      "#........==============................................................#",
-      "#......................................................................#",
-      "#......................................................................#",
-      "#...==============.....................................................#",
-      "#......................................................................#",
-      "#......................................................................#",
-      "#............=============.............................................#",
-      "#....................................................=============.....#",
-      "#......................................................................#",
-      "#############################HHHHHHHHHHHHHHHHHHHHHHH...................#",
-      "#...........................>HHH...........................============#",
-      "#...........................>HHH.......................................#",
-      "#...........................>HHH.......................................#",
-      "#...........................>HHH.......................============....#",
-      "#...........................>HHH.......................................#",
-      "#............................HHH.......................................#",
-      "#............................HHH...........................============#",
-      "#............................HHH.......................................#",
-      "#.....................======.HHH.......................................#",
-      "#............................HHH......................============.....#",
-      "#...........========.........HHH.......................................#",
-      "#.....P....l.....................................______................#",
-      "########################}}}}}}}}}}}}}}}}}}}}}}}}}#######################",
-      "########################################################################",
-      "########################################################################"
+      "############################################################################",
+      "#......G...................##..............................................#",
+      ".......G...................##..............................................#",
+      ".......G...................##..............................................#",
+      ".......G...................##..............................................#",
+      ".......G...................##..............................................#",
+      "###################.......##################################################",
+      "#..........................##..............................................#",
+      "#..........................##..............................................#",
+      "#..======..................##............................o.......c.........#",
+      "#..........................##...............................##########.....#",
+      "#..........................##..............................................#",
+      "#...........==========.....##................o.....=====...................#",
+      "#..........................##..............................................#",
+      "#..........................##...............................=======........#",
+      "#..........................##..........~~~~~...............................#",
+      "#..........................................................................#",
+      "#................................................=======...................#",
+      "#........................==============....................................#",
+      "#..........................................................................#",
+      "#....................................=======...............................#",
+      "#..........................................................................#",
+      "#..........................##..............................................#",
+      "#..........................##======........................................#",
+      "#..........................##..............................................#",
+      "#..........................##..............................................#",
+      "#..........................##..............................................#",
+      "#....................ZZZZZ.##..............................................#",
+      "#..........................##..............................................#",
+      "#..........................GG..............................................#",
+      "#............=====..======.GG..............................................#",
+      "#..........................GG..............................................#",
+      "#..........................GG..............................................#",
+      "#...=====..............====GG..............................................#",
+      "#..........................GG..............................................#",
+      "#...P.....^^^^^^^^^........GG..^^^^^^^^^^^^^^^^^^^^^^......................#",
+      "############################################################################",
+      "############################################################################",
+      "############################################################################",
+      "############################################################################"
     ],
-    "hint": "Send the weight through. Bring the bridge back. Give the weight its final job upstairs.",
-    "question": "Which job must the same weight do next?",
-    "weightCircuits": [
-      {
-        "id": "Courtyard",
-        "plates": [
-          [
-            49,
-            36
-          ],
-          [
-            50,
-            36
-          ],
-          [
-            51,
-            36
-          ],
-          [
-            52,
-            36
-          ],
-          [
-            53,
-            36
-          ],
-          [
-            54,
-            36
-          ]
-        ],
-        "doors": [
-          [
-            29,
-            25
-          ],
-          [
-            29,
-            24
-          ]
-        ]
-      },
-      {
-        "id": "Gallery",
-        "plates": [
-          [
-            16,
-            5
-          ],
-          [
-            17,
-            5
-          ],
-          [
-            18,
-            5
-          ],
-          [
-            19,
-            5
-          ],
-          [
-            20,
-            5
-          ],
-          [
-            21,
-            5
-          ]
-        ],
-        "doors": [
-          [
-            29,
-            2
-          ]
-        ]
-      }
+    "zips": [
+      [
+        0,
+        -9
+      ]
     ],
     "sweepers": [
       {
-        "id": "Court patrol",
+        "c": 43,
+        "r": 12,
         "path": [
           [
-            37,
-            33
+            43,
+            12
           ],
           [
-            45,
-            33
+            48,
+            12
           ],
           [
-            45,
-            30
+            48,
+            17
           ],
           [
-            37,
-            30
+            43,
+            17
           ]
         ],
-        "period": 300,
-        "radius": 4
+        "period": 210,
+        "size": 5
+      },
+      {
+        "c": 36,
+        "r": 23,
+        "path": [
+          [
+            36,
+            23
+          ],
+          [
+            43,
+            23
+          ]
+        ],
+        "period": 160,
+        "size": 5
+      }
+    ],
+    "hint": "The bearing raises the lift\u2019s upper stop. Ride outward, light it, then return underneath the old route.",
+    "question": "The bearing opens the gate home. Where will the same lift take you on the return?",
+    "bearingLifts": [
+      {
+        "c": 21,
+        "r": 27,
+        "after": [
+          0,
+          -22
+        ]
       }
     ]
   },
@@ -168,8 +126,18 @@
     "acceptance": "candidate",
     "status": "route-proven",
     "author": "Codex",
-    "newMechanics": [],
-    "humanReview": "Awaiting player review; numeric ratings unmeasured.",
+    "tags": [
+      "superroom",
+      "lift",
+      "timing",
+      "crumble",
+      "crystal",
+      "return"
+    ],
+    "newMechanics": [
+      "bearing-lift-stop"
+    ],
+    "humanReview": "B62 reinvented after Isaac found the cargo version boring; revision awaiting review. Numerical ratings unmeasured.",
     "worlds": [
       1
     ],
@@ -178,149 +146,146 @@
       "bank-b22",
       "bank-b44"
     ],
-    "role": "The same weight opens the lower passage, restores the return bridge, and waits at the high exit circuit.",
-    "interconnection": "The lower door and middle bridge are one named pressure circuit. The lantern travels through the cargo-only duct; reclaiming it restores the bridge that carries both knight and lantern home. The shared cargo then climbs the western stairs and holds a separate upper-gallery door.",
-    "novelty": "Three distinct jobs for one physical weight, with an outward courtyard below its own return bridge and a final delivery high above the starting court.",
-    "nearestExisting": "B22 supplies the basic return and B44 the cargo-only vent; this room reuses the retrieved cargo after it restores the route, rather than discarding it at the first solved circuit.",
-    "solution": "Carry the lantern to the conveyor and set it down. Follow through the gate when it reaches the far pressure bed. Retrieve the lantern, climb the eastern steps, and cross the restored middle bridge. Carry it up the western staircase, leave it on the wide upper pressure bed, then pass the high gate and leave through the right-hand gallery.",
+    "role": "An early-world movement circuit: fast launch outward, careful fall through the same court, and a second ride back to the home gallery.",
+    "solution": "Jump the short starting steps and board the lift. Its first stop gives a stable crossing through the central wall. Jump onto the crumbling high span, then use two ordinary diagonal dashes to reach the far bearing. Return below the high route: observe the patrol, use the floating crystal over the collapsing span, descend into the newly opened lower passage and climb the small recovery steps beside the original lift. The bearing has raised that lift\u2019s destination. Ride it again and leave left for the stable exit gallery above the starting road.",
+    "interconnection": "The same lift and central wall serve the outward crossing and the final return. The far bearing opens the underpass and powers the lift\u2019s higher stop. The crumbling span and crystal are encountered again from the opposite direction.",
+    "novelty": "Replaces the slow carried-weight staircase with an early movement loop and two different departures from the same timed lift.",
+    "nearestExisting": "B22 uses a compact recovery challenge. The previous B62 used cargo on a staircase; this version has no cargo and asks the player to reuse a moving route.",
+    "requiredEvents": [
+      "zip-start",
+      "zip-stop",
+      "bearing-lift-raised",
+      "stone-lit",
+      "gate-open",
+      "exit"
+    ],
+    "requiredEventCounts": {
+      "zip-start": 2
+    },
     "superroom": {
-      "screenAreas": 3.130434782608696,
+      "screenAreas": 3.3043478260869565,
       "stages": [
-        "Send cargo through the lower duct",
-        "Reclaim cargo to restore and cross the middle bridge",
-        "Carry the same weight up the western court",
-        "Park the weight on the high exit circuit"
+        "The outward lift and broken high road",
+        "A lower return beneath the same crossing",
+        "The same lift serves the home gallery"
       ]
     },
-    "endingForgiveness": "The six-tile pressure bed accepts both tested delivery positions and an additional 90-frame wait. A deliberate miss of the upper stair lands on the prior stair and recovers with the lantern. The final gallery has a stable floor and no timed closing once the weight is parked.",
+    "endingForgiveness": "Wide permanent shelves precede the final lift ride; the top has a thirty-frame hold and a left-side recovery ledge. The exit is a stable broad gallery.",
     "route": {
       "exited": true,
       "deaths": 0,
-      "frames": 1292
+      "frames": 1058
     },
-    "tags": [
-      "superroom",
-      "cargo",
-      "pressure",
-      "return-route",
-      "early-base"
+    "routeEvents": [
+      {
+        "type": "zip-start",
+        "frame": 151,
+        "x": 188,
+        "y": 216,
+        "i": 150
+      },
+      {
+        "type": "zip-stop",
+        "frame": 185,
+        "x": 188,
+        "y": 148,
+        "i": 184
+      },
+      {
+        "type": "crumble",
+        "frame": 309,
+        "x": 332,
+        "y": 120,
+        "w": 40,
+        "i": 308
+      },
+      {
+        "type": "stone-lit",
+        "frame": 427,
+        "x": 524,
+        "y": 76,
+        "left": 0,
+        "i": 426
+      },
+      {
+        "type": "gate-open",
+        "frame": 428,
+        "x": 60,
+        "y": 28,
+        "i": 427
+      },
+      {
+        "type": "gate-open",
+        "frame": 428,
+        "x": 224,
+        "y": 260,
+        "i": 427
+      },
+      {
+        "type": "bearing-lift-raised",
+        "frame": 428,
+        "x": 188,
+        "y": 40,
+        "i": 427
+      },
+      {
+        "type": "refill",
+        "frame": 583,
+        "x": 364,
+        "y": 100,
+        "i": 582
+      },
+      {
+        "type": "crumble",
+        "frame": 620,
+        "x": 332,
+        "y": 120,
+        "w": 40,
+        "i": 619
+      },
+      {
+        "type": "zip-start",
+        "frame": 886,
+        "x": 188,
+        "y": 216,
+        "i": 885
+      },
+      {
+        "type": "zip-stop",
+        "frame": 920,
+        "x": 188,
+        "y": 44,
+        "i": 919
+      },
+      {
+        "type": "exit",
+        "frame": 1058,
+        "room": 0,
+        "i": 1057
+      }
     ],
-    "requiredEvents": [
-      "pickup",
-      "throw",
-      "plate",
-      "weight-open",
-      "weight-close"
-    ],
-    "priorDraft": {
-      "file": "scripts/room-bank/archive/b62-first-draft-7.305.json",
-      "exited": true,
-      "deaths": 0,
-      "frames": 1253
-    },
     "positiveChecks": [
       {
-        "id": "late-delivery",
-        "label": "Wait 90 additional frames before setting down the final weight",
+        "name": "Leave the raised lift 10 frames earlier",
         "tape": [
           [
-            21,
+            20,
             "r"
           ],
           [
             1,
-            "g"
-          ],
-          [
-            83,
-            "r"
-          ],
-          [
-            1,
-            "dg"
-          ],
-          [
-            80,
-            "r"
-          ],
-          [
-            100,
             ""
-          ],
-          [
-            65,
-            "r"
-          ],
-          [
-            1,
-            "g"
           ],
           [
             32,
-            "rj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
-            "rj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
-            "lj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
-            "rj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
-            "lj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            196,
-            "l"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
             "j"
           ],
           [
-            12,
+            10,
             ""
           ],
           [
-            30,
-            "lj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
+            26,
             "rj"
           ],
           [
@@ -328,562 +293,369 @@
             ""
           ],
           [
-            30,
-            "rj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
-            "lj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
-            "j"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            90,
-            ""
+            20,
+            "r"
           ],
           [
             1,
-            "dg"
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            42,
+            ""
+          ],
+          [
+            66,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            32,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
           ],
           [
             40,
+            "r"
+          ],
+          [
+            10,
             ""
           ],
           [
-            28,
-            "r"
-          ],
-          [
-            12,
-            "rx"
-          ],
-          [
-            28,
-            "r"
-          ],
-          [
-            12,
-            "rx"
-          ],
-          [
-            28,
-            "r"
-          ],
-          [
-            12,
-            "rx"
-          ],
-          [
-            28,
-            "r"
-          ],
-          [
-            12,
-            "rx"
-          ],
-          [
-            140,
-            "r"
-          ]
-        ],
-        "exited": true,
-        "deaths": 0,
-        "frames": 1382,
-        "final": {
-          "x": 574,
-          "y": 37
-        },
-        "events": [
-          "pickup",
-          "throw",
-          "lantern-land",
-          "weight-open",
-          "plate",
-          "jump",
-          "weight-close",
-          "land",
-          "dash",
-          "refill-dash",
-          "exit"
-        ],
-        "name": "Wait 90 additional frames before setting down the final weight"
-      },
-      {
-        "id": "other-end-of-plate",
-        "label": "Set the final weight 14 pixels farther along the pressure bed",
-        "tape": [
-          [
-            21,
-            "r"
-          ],
-          [
-            1,
-            "g"
-          ],
-          [
-            83,
-            "r"
-          ],
-          [
-            1,
-            "dg"
-          ],
-          [
-            80,
-            "r"
-          ],
-          [
-            100,
-            ""
-          ],
-          [
-            65,
-            "r"
-          ],
-          [
-            1,
-            "g"
-          ],
-          [
-            32,
-            "rj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
-            "rj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
-            "lj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
-            "rj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
-            "lj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            196,
+            75,
             "l"
           ],
           [
-            12,
+            20,
             ""
           ],
           [
-            30,
-            "j"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
+            20,
             "lj"
           ],
           [
             12,
-            ""
-          ],
-          [
-            30,
-            "rj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
-            "rj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
-            "lj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
-            "j"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            8,
-            "r"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            1,
-            "dg"
-          ],
-          [
-            40,
-            ""
-          ],
-          [
-            28,
-            "r"
-          ],
-          [
-            12,
-            "rx"
-          ],
-          [
-            28,
-            "r"
-          ],
-          [
-            12,
-            "rx"
-          ],
-          [
-            28,
-            "r"
-          ],
-          [
-            12,
-            "rx"
-          ],
-          [
-            28,
-            "r"
-          ],
-          [
-            12,
-            "rx"
-          ],
-          [
-            140,
-            "r"
-          ]
-        ],
-        "exited": true,
-        "deaths": 0,
-        "frames": 1304,
-        "final": {
-          "x": 574,
-          "y": 37
-        },
-        "events": [
-          "pickup",
-          "throw",
-          "lantern-land",
-          "weight-open",
-          "plate",
-          "jump",
-          "weight-close",
-          "land",
-          "dash",
-          "refill-dash",
-          "exit"
-        ],
-        "name": "Set the final weight 14 pixels farther along the pressure bed"
-      },
-      {
-        "id": "missed-upper-stair",
-        "label": "Walk off the penultimate stair, land below and recover with the same weight",
-        "tape": [
-          [
-            21,
-            "r"
-          ],
-          [
-            1,
-            "g"
-          ],
-          [
-            83,
-            "r"
-          ],
-          [
-            1,
-            "dg"
-          ],
-          [
-            80,
-            "r"
-          ],
-          [
-            100,
-            ""
-          ],
-          [
-            65,
-            "r"
-          ],
-          [
-            1,
-            "g"
-          ],
-          [
-            32,
-            "rj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
-            "rj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
-            "lj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
-            "rj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
-            "lj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            196,
-            "l"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
-            "j"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
-            "lj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
-            "rj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
-            "rj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
-            "lj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
-            "r"
+            "lx"
           ],
           [
             24,
+            "l"
+          ],
+          [
+            20,
             ""
           ],
           [
-            30,
+            20,
             "lj"
           ],
           [
-            12,
-            ""
-          ],
-          [
             30,
-            "j"
+            "l"
           ],
           [
-            12,
+            15,
             ""
           ],
           [
             1,
-            "dg"
+            "dj"
           ],
           [
-            40,
+            45,
+            "l"
+          ],
+          [
+            20,
             ""
           ],
           [
-            28,
-            "r"
+            26,
+            "lj"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            32,
+            "j"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            18,
+            "l"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            20,
+            "j"
           ],
           [
             12,
-            "rx"
-          ],
-          [
-            28,
             "r"
           ],
           [
-            12,
-            "rx"
+            38,
+            ""
           ],
           [
-            28,
-            "r"
+            25,
+            "lj"
           ],
           [
-            12,
-            "rx"
-          ],
-          [
-            28,
-            "r"
-          ],
-          [
-            12,
-            "rx"
-          ],
-          [
-            140,
-            "r"
+            100,
+            "l"
           ]
         ],
         "exited": true,
         "deaths": 0,
-        "frames": 1388,
-        "final": {
-          "x": 574,
-          "y": 37
-        },
-        "events": [
-          "pickup",
-          "throw",
-          "lantern-land",
-          "weight-open",
-          "plate",
-          "jump",
-          "weight-close",
-          "land",
-          "dash",
-          "refill-dash",
-          "exit"
+        "frames": 1048
+      },
+      {
+        "name": "Leave the raised lift 10 frames later",
+        "tape": [
+          [
+            20,
+            "r"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            32,
+            "j"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            42,
+            ""
+          ],
+          [
+            66,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            32,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            40,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            75,
+            "l"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            12,
+            "lx"
+          ],
+          [
+            24,
+            "l"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            30,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            45,
+            "l"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            26,
+            "lj"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            32,
+            "j"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            18,
+            "l"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            20,
+            "j"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            58,
+            ""
+          ],
+          [
+            25,
+            "lj"
+          ],
+          [
+            100,
+            "l"
+          ]
         ],
-        "name": "Walk off the penultimate stair, land below and recover with the same weight"
+        "exited": true,
+        "deaths": 0,
+        "frames": 1068
       }
     ],
     "shortcutChecks": [
       {
-        "id": "body-as-final-weight",
-        "label": "Try to carry the weight away and use only the knight to open the final plate",
+        "name": "Turn back before reaching the far bearing, then try the same home exit",
         "tape": [
           [
-            21,
+            20,
             "r"
           ],
           [
             1,
-            "g"
-          ],
-          [
-            83,
-            "r"
-          ],
-          [
-            1,
-            "dg"
-          ],
-          [
-            80,
-            "r"
-          ],
-          [
-            100,
             ""
-          ],
-          [
-            65,
-            "r"
-          ],
-          [
-            1,
-            "g"
           ],
           [
             32,
+            "j"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            26,
             "rj"
           ],
           [
@@ -891,154 +663,183 @@
             ""
           ],
           [
-            30,
+            20,
+            "r"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            42,
+            ""
+          ],
+          [
+            66,
+            "r"
+          ],
+          [
+            28,
+            "rj"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            20,
             "rj"
           ],
           [
             12,
+            "rux"
+          ],
+          [
+            32,
+            "r"
+          ],
+          [
+            15,
             ""
           ],
           [
-            30,
-            "lj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
+            20,
             "rj"
           ],
           [
             12,
+            "rux"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            10,
             ""
           ],
           [
-            30,
-            "lj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            196,
+            75,
             "l"
           ],
           [
-            12,
+            20,
             ""
           ],
           [
-            30,
-            "j"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
+            20,
             "lj"
           ],
           [
             12,
+            "lx"
+          ],
+          [
+            24,
+            "l"
+          ],
+          [
+            20,
             ""
           ],
           [
-            30,
-            "rj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
-            "rj"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            30,
+            20,
             "lj"
           ],
           [
-            12,
+            30,
+            "l"
+          ],
+          [
+            15,
             ""
           ],
           [
-            30,
+            1,
+            "dj"
+          ],
+          [
+            45,
+            "l"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            26,
+            "lj"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            32,
+            "j"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            18,
+            "l"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            20,
             "j"
           ],
           [
             12,
-            ""
-          ],
-          [
-            250,
             "r"
+          ],
+          [
+            48,
+            ""
+          ],
+          [
+            25,
+            "lj"
+          ],
+          [
+            100,
+            "l"
           ]
         ],
         "exited": false,
-        "deaths": 0,
-        "frames": 1274,
-        "final": {
-          "x": 224,
-          "y": 37
-        },
-        "events": [
-          "pickup",
-          "throw",
-          "lantern-land",
-          "weight-open",
-          "plate",
-          "jump",
-          "weight-close",
-          "land"
-        ],
-        "name": "Try to carry the weight away and use only the knight to open the final plate"
+        "deaths": 1,
+        "frames": null
       }
     ]
   },
   "tape": [
     [
-      21,
+      20,
       "r"
     ],
     [
       1,
-      "g"
-    ],
-    [
-      83,
-      "r"
-    ],
-    [
-      1,
-      "dg"
-    ],
-    [
-      80,
-      "r"
-    ],
-    [
-      100,
       ""
-    ],
-    [
-      65,
-      "r"
-    ],
-    [
-      1,
-      "g"
     ],
     [
       32,
+      "j"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      26,
       "rj"
     ],
     [
@@ -1046,136 +847,156 @@
       ""
     ],
     [
-      30,
+      20,
+      "r"
+    ],
+    [
+      1,
+      ""
+    ],
+    [
+      26,
+      "rj"
+    ],
+    [
+      42,
+      ""
+    ],
+    [
+      66,
+      "r"
+    ],
+    [
+      28,
+      "rj"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      20,
       "rj"
     ],
     [
       12,
+      "rux"
+    ],
+    [
+      32,
+      "r"
+    ],
+    [
+      15,
       ""
     ],
     [
-      30,
-      "lj"
-    ],
-    [
-      12,
-      ""
-    ],
-    [
-      30,
+      20,
       "rj"
     ],
     [
       12,
+      "rux"
+    ],
+    [
+      40,
+      "r"
+    ],
+    [
+      10,
       ""
     ],
     [
-      30,
-      "lj"
-    ],
-    [
-      12,
-      ""
-    ],
-    [
-      196,
+      75,
       "l"
     ],
     [
-      12,
+      20,
       ""
     ],
     [
-      30,
-      "j"
-    ],
-    [
-      12,
-      ""
-    ],
-    [
-      30,
+      20,
       "lj"
     ],
     [
       12,
+      "lx"
+    ],
+    [
+      24,
+      "l"
+    ],
+    [
+      20,
       ""
     ],
     [
-      30,
-      "rj"
-    ],
-    [
-      12,
-      ""
-    ],
-    [
-      30,
-      "rj"
-    ],
-    [
-      12,
-      ""
-    ],
-    [
-      30,
+      20,
       "lj"
     ],
     [
-      12,
-      ""
-    ],
-    [
       30,
-      "j"
+      "l"
     ],
     [
-      12,
+      15,
       ""
     ],
     [
       1,
-      "dg"
+      "dj"
     ],
     [
-      40,
+      45,
+      "l"
+    ],
+    [
+      20,
       ""
     ],
     [
-      28,
-      "r"
+      26,
+      "lj"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      32,
+      "j"
+    ],
+    [
+      5,
+      ""
+    ],
+    [
+      18,
+      "l"
+    ],
+    [
+      5,
+      ""
+    ],
+    [
+      20,
+      "j"
     ],
     [
       12,
-      "rx"
-    ],
-    [
-      28,
       "r"
     ],
     [
-      12,
-      "rx"
+      48,
+      ""
     ],
     [
-      28,
-      "r"
+      25,
+      "lj"
     ],
     [
-      12,
-      "rx"
-    ],
-    [
-      28,
-      "r"
-    ],
-    [
-      12,
-      "rx"
-    ],
-    [
-      140,
-      "r"
+      100,
+      "l"
     ]
   ]
 }

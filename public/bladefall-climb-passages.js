@@ -105,7 +105,9 @@ function grid(cols,rows){return Array.from({length:rows},()=>Array(cols).fill('.
 function span(g,r,c,n,ch){for(let x=c;x<c+n;x++)if(g[r]&&x>=0&&x<g[r].length)g[r][x]=ch;}
 function hub(w,id,name,main,connections,spawnSide){
  const crowded=['left','right'].some(edge=>connections.filter(l=>side(l,w.n)===edge).length+Number(main.edge===edge)>3);
- const cols=main.edge==='down'||main.edge==='up'?40:({1:88,2:100,3:96,4:84,5:104,6:88,7:92,8:100,9:88}[w.n]||88),rows=crowded?31:23,mid=Math.floor(cols/2),g=grid(cols,rows);
+ // A finale can leave far below row22 or through columns beyond the old 40-tile canvas.
+ const vertical=main.edge==='down'||main.edge==='up';
+ const cols=vertical?Math.max(40,...(main.cols||[]).map(c=>c+2)):({1:88,2:100,3:96,4:84,5:104,6:88,7:92,8:100,9:88}[w.n]||88),rows=Math.max(crowded?31:23,(main.floor||0)+2),mid=Math.floor(cols/2),g=grid(cols,rows);
  const sockets=[],used={left:[],right:[]},roads=[],floor=Array(cols).fill(22);
  function opening(edge,y){
   if(edge==='down')return;
@@ -266,7 +268,7 @@ function prepare(w){
  const terminal=w.sections.at(-1),old=w.rooms.find(r=>r.id===terminal.room),source=w.rooms.find(r=>r.id===w.atlasEnd);
  const main={edge:old.entry,floor:old.map.findIndex(row=>row.includes('P'))+1};
  if(main.edge!=='down'&&main.edge!=='up'){
-  const edge=source.exit==='left'?0:39,open=source.map.map((row,r)=>['.','G'].includes(row[edge])?r:-1).filter(r=>r>=0);let last=open.at(-1);
+  const edge=source.exit==='left'?0:(source.cols||40)-1,open=source.map.map((row,r)=>['.','G'].includes(row[edge])?r:-1).filter(r=>r>=0);let last=open.at(-1);
   // (7.278) a room entered and left by the same wall (the Fractured Woods' last door): the opening by its fire is the
   // way in, so the road leaves by the next opening above it
   const fr=source.map.findIndex(row=>row.includes('P'));

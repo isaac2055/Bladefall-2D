@@ -1,0 +1,32 @@
+{
+  "version": "7.306",
+  "result": "PASS",
+  "checks": 16,
+  "transport": "PeerJS signaling and actual WebRTC data channel",
+  "fallbackUsed": false,
+  "environment": "Two isolated headless Chrome browser profiles on this machine, final public campaign served locally.",
+  "physicalDevices": false,
+  "rooms": [
+    "cl2-bank-b67",
+    "cl7-bank-b70",
+    "cl27-bank-f70"
+  ],
+  "verified": [
+    "Partner ghost rendering in each imported room.",
+    "Host completes each room through ordinary room simulation.",
+    "Guest player, native boss, switches, entities, portals, hearts, deaths and solved rooms remain independent.",
+    "Following moves the guest to their own checkpoint without granting a completion.",
+    "Private phase, portal, device, death and heart mutations remain private.",
+    "Following cannot clear a world with unfinished required rooms."
+  ],
+  "browserErrors": [],
+  "networkErrors": [],
+  "campaignSha256": "29e38bdc54f6aba3be544e3fe99ee67eef58ddb69f561388bb7b5eb4c052d9bb",
+  "command": "node scripts/verify-survive-coop-7.306.mjs http://127.0.0.1:8386",
+  "receipt": "scripts/climb/.cache/coop-7.306/receipt.json",
+  "limitations": [
+    "No physical-controller or phone hardware test.",
+    "Network test used two profiles on one machine; separate-machine latency behavior was not measured."
+  ],
+  "testedAt": "2026-10-10T03:36:55.879Z"
+}

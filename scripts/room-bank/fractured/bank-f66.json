@@ -196,7 +196,7 @@
     "run": 8,
     "collection": "superrooms",
     "format": "superroom",
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "difficulty": 4,
     "role": "interconnected timing and cargo superroom",
     "worlds": [
@@ -215,7 +215,7 @@
     "newMechanics": [],
     "status": "route-proven",
     "author": "Codex",
-    "humanReview": "Awaiting human fun/difficulty/suitability ratings.",
+    "humanReview": "Approved by the user to bank and integrate; numeric ratings remain unmeasured.",
     "approvedIngredients": [
       "bank-f55",
       "bank-f56",
@@ -1123,7 +1123,8 @@
         }
       }
     ],
-    "endingForgiveness": "The carrier stops against the physical tide gate and waits for the knight; a nine-second late arrival still completes. Broad dry land separates the patrols. The final patrol jump succeeds six frames apart, and the ending is a long shaded walk on solid ground rather than a precision launch."
+    "endingForgiveness": "The carrier stops against the physical tide gate and waits for the knight; a nine-second late arrival still completes. Broad dry land separates the patrols. The final patrol jump succeeds six frames apart, and the ending is a long shaded walk on solid ground rather than a precision launch.",
+    "needsReview": false
   },
   "tape": [
     [

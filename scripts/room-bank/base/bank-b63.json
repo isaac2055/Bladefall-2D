@@ -117,13 +117,13 @@
     "run": 8,
     "collection": "superrooms",
     "format": "superroom",
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "status": "route-proven",
     "author": "Codex",
     "newMechanics": [
       "hinge-routed-wind"
     ],
-    "humanReview": "Awaiting player review; numeric ratings unmeasured.",
+    "humanReview": "Approved for Base by Isaac; numerical ratings unmeasured.",
     "worlds": [
       4
     ],
@@ -136,8 +136,8 @@
     "role": "A shared wind shaft changes jobs after an empty-handed lower loop.",
     "solution": "Carry the lantern beneath the shaft beam and ride the west draft to the high pressure shelf. Set the lantern on the plate, descend empty-handed, and cross the low gate. Use the pod and receiving shelf to reach the hanging vane. Climb to its pivot and turn it into the bridge to the lantern shelf. Retrieve the same lantern, cross the new bridge and ride the diverted east draft to the high exit gallery.",
     "interconnection": "The high lantern opens the lower route; the hinge reached there both returns a bridge to that lantern and moves its draft to the opposite side of the same court.",
-    "novelty": "Cargo’s reduced fall speed makes the first and last draft useful, but only an empty-handed return can prepare the bridge between them.",
-    "nearestExisting": "B38 carries shade on freight and B49 turns a hanging partition into a bridge. Here the partition also redirects an existing wind field, trading the cargo’s outgoing lift for its return lift.",
+    "novelty": "Cargo\u2019s reduced fall speed makes the first and last draft useful, but only an empty-handed return can prepare the bridge between them.",
+    "nearestExisting": "B38 carries shade on freight and B49 turns a hanging partition into a bridge. Here the partition also redirects an existing wind field, trading the cargo\u2019s outgoing lift for its return lift.",
     "superroom": {
       "screenAreas": 3.4434782608695653,
       "stages": [

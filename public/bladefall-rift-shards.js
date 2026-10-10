@@ -244,8 +244,8 @@ function levelSelectRows(){
   const last = root.BladefallExploreFinale?.visible()?`<button class="choice lvlbtn" data-fx="45" style="border-color:#8a5cd8;"><div class="cname"><span style="color:#c9a8ff;min-width:26px;display:inline-block;">${FINAL_ECHO.tag}</span>${FINAL_ECHO.name}<span class="ckey">FINAL ECHO</span></div></button><button class="choice lvlbtn" data-fx="43" style="border-color:#8a5cd8;"><div class="cname"><span style="color:#c9a8ff;min-width:26px;display:inline-block;">42</span>Vesper<span class="ckey">FINAL BATTLE</span></div></button>`:'';
   return FRACTURED.map(([name, source], i) => {
     const at = builtStage(source), tag = String(i + 21);
-    if(at == null) return `<button class="choice lvlbtn" disabled style="opacity:.35;"><div class="cname"><span style="color:var(--muted);min-width:26px;display:inline-block;">${tag}</span>${name}<span class="ckey">NOT YET BUILT</span></div></button>`;
-    if(!root.BladefallPlaytest?.unlocked('explore',at)&&!held(SHARDS.find(s=>s.stage===source)?.id)&&!meta.riftShards?.[SHARDS.find(s=>s.stage===source)?.id])return `<button class="choice lvlbtn" disabled><div class="cname">${tag} · ${name}<span class="ckey">Find its Rift Shard</span></div></button>`;
+    if(at == null) return `<button class="choice lvlbtn" disabled style="opacity:.35;"><div class="cname"><span style="color:var(--muted);min-width:26px;display:inline-block;">${tag}</span>Undiscovered<span class="ckey">NOT YET BUILT</span></div></button>`;
+    if(!root.BladefallPlaytest?.unlocked('explore',at)&&!held(SHARDS.find(s=>s.stage===source)?.id)&&!meta.riftShards?.[SHARDS.find(s=>s.stage===source)?.id])return `<button class="choice lvlbtn" disabled><div class="cname">${tag} · Undiscovered<span class="ckey">Find its Rift Shard</span></div></button>`;
     return `<button class="choice lvlbtn" data-fx="${at}"><div class="cname"><span style="color:#c9a8ff;min-width:26px;display:inline-block;">${tag}</span>${name}<span class="ckey" style="text-transform:uppercase;">echo</span></div></button>`;
   }).join('') + last;
 }

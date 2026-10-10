@@ -87,7 +87,7 @@
     "run": 8,
     "collection": "superrooms",
     "format": "superroom",
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "difficulty": 3,
     "role": "interconnected boss superroom",
     "worlds": [
@@ -105,7 +105,7 @@
     "newMechanics": [],
     "status": "route-proven",
     "author": "Codex",
-    "humanReview": "Awaiting human fun/difficulty/suitability ratings.",
+    "humanReview": "Approved by the user to bank and integrate; numeric ratings remain unmeasured.",
     "approvedIngredients": [
       "bank-f45",
       "bank-f49"
@@ -939,7 +939,8 @@
       "sentinel-bell": 2
     },
     "endingForgiveness": "The second commitment lasts 700 frames, with a verified three-second extra rest before mounting. The last super succeeds four frames apart and lands on a ten-tile-wide solid shelf; the high bell can also be touched on foot once landed. A missed higher launch has the overhang and low balcony below it rather than an immediate final-jump reset.",
-    "designNotes": "96\u00d732, 3.34 standard room areas. Saved tape uses five supers, two native hammer rides and two native bell contacts; no hyper, ultra, wallbounce, portals or parry. The high return is interconnected with the lower bell court, not three independent boss checkpoints. The persistent rest and recalled hammer are the only opt-in boss-state adaptation; native Sentinel still owns the ride, bell and final gate hold."
+    "designNotes": "96×32, 3.34 standard room areas. Saved tape uses five supers, two native hammer rides and two native bell contacts; no hyper, ultra, wallbounce, portals or parry. The high return is interconnected with the lower bell court, not three independent boss checkpoints. The persistent rest and recalled hammer are the only opt-in boss-state adaptation; native Sentinel still owns the ride, bell and final gate hold.",
+    "needsReview": false
   },
   "tape": [
     [

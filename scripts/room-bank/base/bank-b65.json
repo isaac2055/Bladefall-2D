@@ -82,7 +82,7 @@
         "speed": 110
       }
     },
-    "hint": "Cold iron stops the pour—and the anvil sled. The place the sled leaves behind is another mould.",
+    "hint": "Cold iron stops the pour\u2014and the anvil sled. The place the sled leaves behind is another mould.",
     "question": "Can the iron that blocks your way become the stop that lets you reach the next casting bay?"
   },
   "bank": {
@@ -91,7 +91,7 @@
     "run": 8,
     "collection": "superrooms",
     "format": "superroom",
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "status": "route-proven",
     "author": "Codex",
     "difficulty": 4,
@@ -118,7 +118,7 @@
     "nearestExisting": "B49 makes shared terrain change jobs and B50 makes a physical stop necessary for delivery. Here the native boss produces the stops and walls while the anvil rides a native dash-moved stone. A different casting order is allowed; the real mould under the sled still has to be exposed.",
     "solution": "Cast the western mould and let its pillar form. Reach the far side of the anvil sled and dash it left into that new stop. Cast the now-vacated low mould, then return to the parked anvil and pogo into the gallery. The low pour has become a second iron wall: climb it and cross its crown. Cast the last cup from the stable gallery, retreat from the pour, then climb the new final pillar over the hot dividing wall. Drop through the eastern ledges and ride the sheltered lower belt back under the original court.",
     "endingForgiveness": "The final cup is struck from a stable 18-tile gallery. Casting 25 frames earlier and 60 frames later both succeed; after the pour the route is permanent iron, wide shelves and a sheltered return belt. Failed early mounting or pogo attempts can land on the lower work floor.",
-    "humanReview": "Awaiting human ratings.",
+    "humanReview": "Approved for Base by Isaac; numerical ratings unmeasured.",
     "requiredEvents": [
       "cast",
       "colossus-refuse",

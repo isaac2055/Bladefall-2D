@@ -73116,160 +73116,118 @@ const records=[
   "room": {
    "id": "bank-b62",
    "study": true,
-   "palette": "court",
    "dashes": 1,
-   "cols": 72,
+   "cols": 76,
    "rows": 40,
-   "exit": "right",
-   "name": "The Gate Remembers Your Weight",
+   "palette": "outskirts",
+   "exit": "left",
+   "name": "Leave the Lift for Later",
    "lock": [
     "strike",
     "parry",
     "portal"
    ],
+   "dropThru": true,
    "map": [
-    "########################################################################",
-    "#............................##........................................#",
-    "#............................HH.........................................",
-    "#............................HH.........................................",
-    "#............................HH.........................................",
-    "#...............______.......HH.........................................",
-    "#.............=========#################################################",
-    "#......................................................................#",
-    "#......................................................................#",
-    "#.......==============.................................................#",
-    "#......................................................................#",
-    "#......................................................................#",
-    "#...............===========............................................#",
-    "#......................................................................#",
-    "#......................................................................#",
-    "#........==============................................................#",
-    "#......................................................................#",
-    "#......................................................................#",
-    "#...==============.....................................................#",
-    "#......................................................................#",
-    "#......................................................................#",
-    "#............=============.............................................#",
-    "#....................................................=============.....#",
-    "#......................................................................#",
-    "#############################HHHHHHHHHHHHHHHHHHHHHHH...................#",
-    "#...........................>HHH...........................============#",
-    "#...........................>HHH.......................................#",
-    "#...........................>HHH.......................................#",
-    "#...........................>HHH.......................============....#",
-    "#...........................>HHH.......................................#",
-    "#............................HHH.......................................#",
-    "#............................HHH...........................============#",
-    "#............................HHH.......................................#",
-    "#.....................======.HHH.......................................#",
-    "#............................HHH......................============.....#",
-    "#...........========.........HHH.......................................#",
-    "#.....P....l.....................................______................#",
-    "########################}}}}}}}}}}}}}}}}}}}}}}}}}#######################",
-    "########################################################################",
-    "########################################################################"
+    "############################################################################",
+    "#......G...................##..............................................#",
+    ".......G...................##..............................................#",
+    ".......G...................##..............................................#",
+    ".......G...................##..............................................#",
+    ".......G...................##..............................................#",
+    "###################.......##################################################",
+    "#..........................##..............................................#",
+    "#..........................##..............................................#",
+    "#..======..................##............................o.......c.........#",
+    "#..........................##...............................##########.....#",
+    "#..........................##..............................................#",
+    "#...........==========.....##................o.....=====...................#",
+    "#..........................##..............................................#",
+    "#..........................##...............................=======........#",
+    "#..........................##..........~~~~~...............................#",
+    "#..........................................................................#",
+    "#................................................=======...................#",
+    "#........................==============....................................#",
+    "#..........................................................................#",
+    "#....................................=======...............................#",
+    "#..........................................................................#",
+    "#..........................##..............................................#",
+    "#..........................##======........................................#",
+    "#..........................##..............................................#",
+    "#..........................##..............................................#",
+    "#..........................##..............................................#",
+    "#....................ZZZZZ.##..............................................#",
+    "#..........................##..............................................#",
+    "#..........................GG..............................................#",
+    "#............=====..======.GG..............................................#",
+    "#..........................GG..............................................#",
+    "#..........................GG..............................................#",
+    "#...=====..............====GG..............................................#",
+    "#..........................GG..............................................#",
+    "#...P.....^^^^^^^^^........GG..^^^^^^^^^^^^^^^^^^^^^^......................#",
+    "############################################################################",
+    "############################################################################",
+    "############################################################################",
+    "############################################################################"
    ],
-   "hint": "Send the weight through. Bring the bridge back. Give the weight its final job upstairs.",
-   "question": "Which job must the same weight do next?",
-   "weightCircuits": [
-    {
-     "id": "Courtyard",
-     "plates": [
-      [
-       49,
-       36
-      ],
-      [
-       50,
-       36
-      ],
-      [
-       51,
-       36
-      ],
-      [
-       52,
-       36
-      ],
-      [
-       53,
-       36
-      ],
-      [
-       54,
-       36
-      ]
-     ],
-     "doors": [
-      [
-       29,
-       25
-      ],
-      [
-       29,
-       24
-      ]
-     ]
-    },
-    {
-     "id": "Gallery",
-     "plates": [
-      [
-       16,
-       5
-      ],
-      [
-       17,
-       5
-      ],
-      [
-       18,
-       5
-      ],
-      [
-       19,
-       5
-      ],
-      [
-       20,
-       5
-      ],
-      [
-       21,
-       5
-      ]
-     ],
-     "doors": [
-      [
-       29,
-       2
-      ]
-     ]
-    }
+   "zips": [
+    [
+     0,
+     -9
+    ]
    ],
    "sweepers": [
     {
-     "id": "Court patrol",
+     "c": 43,
+     "r": 12,
      "path": [
       [
-       37,
-       33
+       43,
+       12
       ],
       [
-       45,
-       33
+       48,
+       12
       ],
       [
-       45,
-       30
+       48,
+       17
       ],
       [
-       37,
-       30
+       43,
+       17
       ]
      ],
-     "period": 300,
-     "radius": 4
+     "period": 210,
+     "size": 5
+    },
+    {
+     "c": 36,
+     "r": 23,
+     "path": [
+      [
+       36,
+       23
+      ],
+      [
+       43,
+       23
+      ]
+     ],
+     "period": 160,
+     "size": 5
+    }
+   ],
+   "hint": "The bearing raises the lift’s upper stop. Ride outward, light it, then return underneath the old route.",
+   "question": "The bearing opens the gate home. Where will the same lift take you on the return?",
+   "bearingLifts": [
+    {
+     "c": 21,
+     "r": 27,
+     "after": [
+      0,
+      -22
+     ]
     }
    ]
   },
@@ -73282,8 +73240,18 @@ const records=[
    "acceptance": "candidate",
    "status": "route-proven",
    "author": "Codex",
-   "newMechanics": [],
-   "humanReview": "Awaiting player review; numeric ratings unmeasured.",
+   "tags": [
+    "superroom",
+    "lift",
+    "timing",
+    "crumble",
+    "crystal",
+    "return"
+   ],
+   "newMechanics": [
+    "bearing-lift-stop"
+   ],
+   "humanReview": "B62 reinvented after Isaac found the cargo version boring; revision awaiting review. Numerical ratings unmeasured.",
    "worlds": [
     1
    ],
@@ -73292,149 +73260,146 @@ const records=[
     "bank-b22",
     "bank-b44"
    ],
-   "role": "The same weight opens the lower passage, restores the return bridge, and waits at the high exit circuit.",
-   "interconnection": "The lower door and middle bridge are one named pressure circuit. The lantern travels through the cargo-only duct; reclaiming it restores the bridge that carries both knight and lantern home. The shared cargo then climbs the western stairs and holds a separate upper-gallery door.",
-   "novelty": "Three distinct jobs for one physical weight, with an outward courtyard below its own return bridge and a final delivery high above the starting court.",
-   "nearestExisting": "B22 supplies the basic return and B44 the cargo-only vent; this room reuses the retrieved cargo after it restores the route, rather than discarding it at the first solved circuit.",
-   "solution": "Carry the lantern to the conveyor and set it down. Follow through the gate when it reaches the far pressure bed. Retrieve the lantern, climb the eastern steps, and cross the restored middle bridge. Carry it up the western staircase, leave it on the wide upper pressure bed, then pass the high gate and leave through the right-hand gallery.",
+   "role": "An early-world movement circuit: fast launch outward, careful fall through the same court, and a second ride back to the home gallery.",
+   "solution": "Jump the short starting steps and board the lift. Its first stop gives a stable crossing through the central wall. Jump onto the crumbling high span, then use two ordinary diagonal dashes to reach the far bearing. Return below the high route: observe the patrol, use the floating crystal over the collapsing span, descend into the newly opened lower passage and climb the small recovery steps beside the original lift. The bearing has raised that lift’s destination. Ride it again and leave left for the stable exit gallery above the starting road.",
+   "interconnection": "The same lift and central wall serve the outward crossing and the final return. The far bearing opens the underpass and powers the lift’s higher stop. The crumbling span and crystal are encountered again from the opposite direction.",
+   "novelty": "Replaces the slow carried-weight staircase with an early movement loop and two different departures from the same timed lift.",
+   "nearestExisting": "B22 uses a compact recovery challenge. The previous B62 used cargo on a staircase; this version has no cargo and asks the player to reuse a moving route.",
+   "requiredEvents": [
+    "zip-start",
+    "zip-stop",
+    "bearing-lift-raised",
+    "stone-lit",
+    "gate-open",
+    "exit"
+   ],
+   "requiredEventCounts": {
+    "zip-start": 2
+   },
    "superroom": {
-    "screenAreas": 3.130434782608696,
+    "screenAreas": 3.3043478260869565,
     "stages": [
-     "Send cargo through the lower duct",
-     "Reclaim cargo to restore and cross the middle bridge",
-     "Carry the same weight up the western court",
-     "Park the weight on the high exit circuit"
+     "The outward lift and broken high road",
+     "A lower return beneath the same crossing",
+     "The same lift serves the home gallery"
     ]
    },
-   "endingForgiveness": "The six-tile pressure bed accepts both tested delivery positions and an additional 90-frame wait. A deliberate miss of the upper stair lands on the prior stair and recovers with the lantern. The final gallery has a stable floor and no timed closing once the weight is parked.",
+   "endingForgiveness": "Wide permanent shelves precede the final lift ride; the top has a thirty-frame hold and a left-side recovery ledge. The exit is a stable broad gallery.",
    "route": {
     "exited": true,
     "deaths": 0,
-    "frames": 1292
+    "frames": 1058
    },
-   "tags": [
-    "superroom",
-    "cargo",
-    "pressure",
-    "return-route",
-    "early-base"
+   "routeEvents": [
+    {
+     "type": "zip-start",
+     "frame": 151,
+     "x": 188,
+     "y": 216,
+     "i": 150
+    },
+    {
+     "type": "zip-stop",
+     "frame": 185,
+     "x": 188,
+     "y": 148,
+     "i": 184
+    },
+    {
+     "type": "crumble",
+     "frame": 309,
+     "x": 332,
+     "y": 120,
+     "w": 40,
+     "i": 308
+    },
+    {
+     "type": "stone-lit",
+     "frame": 427,
+     "x": 524,
+     "y": 76,
+     "left": 0,
+     "i": 426
+    },
+    {
+     "type": "gate-open",
+     "frame": 428,
+     "x": 60,
+     "y": 28,
+     "i": 427
+    },
+    {
+     "type": "gate-open",
+     "frame": 428,
+     "x": 224,
+     "y": 260,
+     "i": 427
+    },
+    {
+     "type": "bearing-lift-raised",
+     "frame": 428,
+     "x": 188,
+     "y": 40,
+     "i": 427
+    },
+    {
+     "type": "refill",
+     "frame": 583,
+     "x": 364,
+     "y": 100,
+     "i": 582
+    },
+    {
+     "type": "crumble",
+     "frame": 620,
+     "x": 332,
+     "y": 120,
+     "w": 40,
+     "i": 619
+    },
+    {
+     "type": "zip-start",
+     "frame": 886,
+     "x": 188,
+     "y": 216,
+     "i": 885
+    },
+    {
+     "type": "zip-stop",
+     "frame": 920,
+     "x": 188,
+     "y": 44,
+     "i": 919
+    },
+    {
+     "type": "exit",
+     "frame": 1058,
+     "room": 0,
+     "i": 1057
+    }
    ],
-   "requiredEvents": [
-    "pickup",
-    "throw",
-    "plate",
-    "weight-open",
-    "weight-close"
-   ],
-   "priorDraft": {
-    "file": "scripts/room-bank/archive/b62-first-draft-7.305.json",
-    "exited": true,
-    "deaths": 0,
-    "frames": 1253
-   },
    "positiveChecks": [
     {
-     "id": "late-delivery",
-     "label": "Wait 90 additional frames before setting down the final weight",
+     "name": "Leave the raised lift 10 frames earlier",
      "tape": [
       [
-       21,
+       20,
        "r"
       ],
       [
        1,
-       "g"
-      ],
-      [
-       83,
-       "r"
-      ],
-      [
-       1,
-       "dg"
-      ],
-      [
-       80,
-       "r"
-      ],
-      [
-       100,
        ""
-      ],
-      [
-       65,
-       "r"
-      ],
-      [
-       1,
-       "g"
       ],
       [
        32,
-       "rj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
-       "rj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
-       "lj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
-       "rj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
-       "lj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       196,
-       "l"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
        "j"
       ],
       [
-       12,
+       10,
        ""
       ],
       [
-       30,
-       "lj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
+       26,
        "rj"
       ],
       [
@@ -73442,562 +73407,369 @@ const records=[
        ""
       ],
       [
-       30,
-       "rj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
-       "lj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
-       "j"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       90,
-       ""
+       20,
+       "r"
       ],
       [
        1,
-       "dg"
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       42,
+       ""
+      ],
+      [
+       66,
+       "r"
+      ],
+      [
+       28,
+       "rj"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       32,
+       "r"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       12,
+       "rux"
       ],
       [
        40,
+       "r"
+      ],
+      [
+       10,
        ""
       ],
       [
-       28,
-       "r"
-      ],
-      [
-       12,
-       "rx"
-      ],
-      [
-       28,
-       "r"
-      ],
-      [
-       12,
-       "rx"
-      ],
-      [
-       28,
-       "r"
-      ],
-      [
-       12,
-       "rx"
-      ],
-      [
-       28,
-       "r"
-      ],
-      [
-       12,
-       "rx"
-      ],
-      [
-       140,
-       "r"
-      ]
-     ],
-     "exited": true,
-     "deaths": 0,
-     "frames": 1382,
-     "final": {
-      "x": 574,
-      "y": 37
-     },
-     "events": [
-      "pickup",
-      "throw",
-      "lantern-land",
-      "weight-open",
-      "plate",
-      "jump",
-      "weight-close",
-      "land",
-      "dash",
-      "refill-dash",
-      "exit"
-     ],
-     "name": "Wait 90 additional frames before setting down the final weight"
-    },
-    {
-     "id": "other-end-of-plate",
-     "label": "Set the final weight 14 pixels farther along the pressure bed",
-     "tape": [
-      [
-       21,
-       "r"
-      ],
-      [
-       1,
-       "g"
-      ],
-      [
-       83,
-       "r"
-      ],
-      [
-       1,
-       "dg"
-      ],
-      [
-       80,
-       "r"
-      ],
-      [
-       100,
-       ""
-      ],
-      [
-       65,
-       "r"
-      ],
-      [
-       1,
-       "g"
-      ],
-      [
-       32,
-       "rj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
-       "rj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
-       "lj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
-       "rj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
-       "lj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       196,
+       75,
        "l"
       ],
       [
-       12,
+       20,
        ""
       ],
       [
-       30,
-       "j"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
+       20,
        "lj"
       ],
       [
        12,
-       ""
-      ],
-      [
-       30,
-       "rj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
-       "rj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
-       "lj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
-       "j"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       8,
-       "r"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       1,
-       "dg"
-      ],
-      [
-       40,
-       ""
-      ],
-      [
-       28,
-       "r"
-      ],
-      [
-       12,
-       "rx"
-      ],
-      [
-       28,
-       "r"
-      ],
-      [
-       12,
-       "rx"
-      ],
-      [
-       28,
-       "r"
-      ],
-      [
-       12,
-       "rx"
-      ],
-      [
-       28,
-       "r"
-      ],
-      [
-       12,
-       "rx"
-      ],
-      [
-       140,
-       "r"
-      ]
-     ],
-     "exited": true,
-     "deaths": 0,
-     "frames": 1304,
-     "final": {
-      "x": 574,
-      "y": 37
-     },
-     "events": [
-      "pickup",
-      "throw",
-      "lantern-land",
-      "weight-open",
-      "plate",
-      "jump",
-      "weight-close",
-      "land",
-      "dash",
-      "refill-dash",
-      "exit"
-     ],
-     "name": "Set the final weight 14 pixels farther along the pressure bed"
-    },
-    {
-     "id": "missed-upper-stair",
-     "label": "Walk off the penultimate stair, land below and recover with the same weight",
-     "tape": [
-      [
-       21,
-       "r"
-      ],
-      [
-       1,
-       "g"
-      ],
-      [
-       83,
-       "r"
-      ],
-      [
-       1,
-       "dg"
-      ],
-      [
-       80,
-       "r"
-      ],
-      [
-       100,
-       ""
-      ],
-      [
-       65,
-       "r"
-      ],
-      [
-       1,
-       "g"
-      ],
-      [
-       32,
-       "rj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
-       "rj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
-       "lj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
-       "rj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
-       "lj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       196,
-       "l"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
-       "j"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
-       "lj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
-       "rj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
-       "rj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
-       "lj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
-       "r"
+       "lx"
       ],
       [
        24,
+       "l"
+      ],
+      [
+       20,
        ""
       ],
       [
-       30,
+       20,
        "lj"
       ],
       [
-       12,
-       ""
-      ],
-      [
        30,
-       "j"
+       "l"
       ],
       [
-       12,
+       15,
        ""
       ],
       [
        1,
-       "dg"
+       "dj"
       ],
       [
-       40,
+       45,
+       "l"
+      ],
+      [
+       20,
        ""
       ],
       [
-       28,
-       "r"
+       26,
+       "lj"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       32,
+       "j"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       18,
+       "l"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       20,
+       "j"
       ],
       [
        12,
-       "rx"
-      ],
-      [
-       28,
        "r"
       ],
       [
-       12,
-       "rx"
+       38,
+       ""
       ],
       [
-       28,
-       "r"
+       25,
+       "lj"
       ],
       [
-       12,
-       "rx"
-      ],
-      [
-       28,
-       "r"
-      ],
-      [
-       12,
-       "rx"
-      ],
-      [
-       140,
-       "r"
+       100,
+       "l"
       ]
      ],
      "exited": true,
      "deaths": 0,
-     "frames": 1388,
-     "final": {
-      "x": 574,
-      "y": 37
-     },
-     "events": [
-      "pickup",
-      "throw",
-      "lantern-land",
-      "weight-open",
-      "plate",
-      "jump",
-      "weight-close",
-      "land",
-      "dash",
-      "refill-dash",
-      "exit"
+     "frames": 1048
+    },
+    {
+     "name": "Leave the raised lift 10 frames later",
+     "tape": [
+      [
+       20,
+       "r"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       32,
+       "j"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       12,
+       ""
+      ],
+      [
+       20,
+       "r"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       42,
+       ""
+      ],
+      [
+       66,
+       "r"
+      ],
+      [
+       28,
+       "rj"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       32,
+       "r"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       40,
+       "r"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       75,
+       "l"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       20,
+       "lj"
+      ],
+      [
+       12,
+       "lx"
+      ],
+      [
+       24,
+       "l"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       20,
+       "lj"
+      ],
+      [
+       30,
+       "l"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       1,
+       "dj"
+      ],
+      [
+       45,
+       "l"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       26,
+       "lj"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       32,
+       "j"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       18,
+       "l"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       20,
+       "j"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       58,
+       ""
+      ],
+      [
+       25,
+       "lj"
+      ],
+      [
+       100,
+       "l"
+      ]
      ],
-     "name": "Walk off the penultimate stair, land below and recover with the same weight"
+     "exited": true,
+     "deaths": 0,
+     "frames": 1068
     }
    ],
    "shortcutChecks": [
     {
-     "id": "body-as-final-weight",
-     "label": "Try to carry the weight away and use only the knight to open the final plate",
+     "name": "Turn back before reaching the far bearing, then try the same home exit",
      "tape": [
       [
-       21,
+       20,
        "r"
       ],
       [
        1,
-       "g"
-      ],
-      [
-       83,
-       "r"
-      ],
-      [
-       1,
-       "dg"
-      ],
-      [
-       80,
-       "r"
-      ],
-      [
-       100,
        ""
-      ],
-      [
-       65,
-       "r"
-      ],
-      [
-       1,
-       "g"
       ],
       [
        32,
+       "j"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       26,
        "rj"
       ],
       [
@@ -74005,156 +73777,185 @@ const records=[
        ""
       ],
       [
-       30,
+       20,
+       "r"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       42,
+       ""
+      ],
+      [
+       66,
+       "r"
+      ],
+      [
+       28,
+       "rj"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       20,
        "rj"
       ],
       [
        12,
+       "rux"
+      ],
+      [
+       32,
+       "r"
+      ],
+      [
+       15,
        ""
       ],
       [
-       30,
-       "lj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
+       20,
        "rj"
       ],
       [
        12,
+       "rux"
+      ],
+      [
+       18,
+       "r"
+      ],
+      [
+       10,
        ""
       ],
       [
-       30,
-       "lj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       196,
+       75,
        "l"
       ],
       [
-       12,
+       20,
        ""
       ],
       [
-       30,
-       "j"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
+       20,
        "lj"
       ],
       [
        12,
+       "lx"
+      ],
+      [
+       24,
+       "l"
+      ],
+      [
+       20,
        ""
       ],
       [
-       30,
-       "rj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
-       "rj"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       30,
+       20,
        "lj"
       ],
       [
-       12,
+       30,
+       "l"
+      ],
+      [
+       15,
        ""
       ],
       [
-       30,
+       1,
+       "dj"
+      ],
+      [
+       45,
+       "l"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       26,
+       "lj"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       32,
+       "j"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       18,
+       "l"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       20,
        "j"
       ],
       [
        12,
-       ""
-      ],
-      [
-       250,
        "r"
+      ],
+      [
+       48,
+       ""
+      ],
+      [
+       25,
+       "lj"
+      ],
+      [
+       100,
+       "l"
       ]
      ],
      "exited": false,
-     "deaths": 0,
-     "frames": 1274,
-     "final": {
-      "x": 224,
-      "y": 37
-     },
-     "events": [
-      "pickup",
-      "throw",
-      "lantern-land",
-      "weight-open",
-      "plate",
-      "jump",
-      "weight-close",
-      "land"
-     ],
-     "name": "Try to carry the weight away and use only the knight to open the final plate"
+     "deaths": 1,
+     "frames": null
     }
    ],
-   "revision": "ebd2a695bfdc",
+   "revision": "29bab9027d43",
    "source": "scripts/room-bank/base/bank-b62.json"
   },
   "tape": [
    [
-    21,
+    20,
     "r"
    ],
    [
     1,
-    "g"
-   ],
-   [
-    83,
-    "r"
-   ],
-   [
-    1,
-    "dg"
-   ],
-   [
-    80,
-    "r"
-   ],
-   [
-    100,
     ""
-   ],
-   [
-    65,
-    "r"
-   ],
-   [
-    1,
-    "g"
    ],
    [
     32,
+    "j"
+   ],
+   [
+    10,
+    ""
+   ],
+   [
+    26,
     "rj"
    ],
    [
@@ -74162,136 +73963,156 @@ const records=[
     ""
    ],
    [
-    30,
+    20,
+    "r"
+   ],
+   [
+    1,
+    ""
+   ],
+   [
+    26,
+    "rj"
+   ],
+   [
+    42,
+    ""
+   ],
+   [
+    66,
+    "r"
+   ],
+   [
+    28,
+    "rj"
+   ],
+   [
+    10,
+    ""
+   ],
+   [
+    20,
     "rj"
    ],
    [
     12,
+    "rux"
+   ],
+   [
+    32,
+    "r"
+   ],
+   [
+    15,
     ""
    ],
    [
-    30,
-    "lj"
-   ],
-   [
-    12,
-    ""
-   ],
-   [
-    30,
+    20,
     "rj"
    ],
    [
     12,
+    "rux"
+   ],
+   [
+    40,
+    "r"
+   ],
+   [
+    10,
     ""
    ],
    [
-    30,
-    "lj"
-   ],
-   [
-    12,
-    ""
-   ],
-   [
-    196,
+    75,
     "l"
    ],
    [
-    12,
+    20,
     ""
    ],
    [
-    30,
-    "j"
-   ],
-   [
-    12,
-    ""
-   ],
-   [
-    30,
+    20,
     "lj"
    ],
    [
     12,
+    "lx"
+   ],
+   [
+    24,
+    "l"
+   ],
+   [
+    20,
     ""
    ],
    [
-    30,
-    "rj"
-   ],
-   [
-    12,
-    ""
-   ],
-   [
-    30,
-    "rj"
-   ],
-   [
-    12,
-    ""
-   ],
-   [
-    30,
+    20,
     "lj"
    ],
    [
-    12,
-    ""
-   ],
-   [
     30,
-    "j"
+    "l"
    ],
    [
-    12,
+    15,
     ""
    ],
    [
     1,
-    "dg"
+    "dj"
    ],
    [
-    40,
+    45,
+    "l"
+   ],
+   [
+    20,
     ""
    ],
    [
-    28,
-    "r"
+    26,
+    "lj"
+   ],
+   [
+    15,
+    ""
+   ],
+   [
+    32,
+    "j"
+   ],
+   [
+    5,
+    ""
+   ],
+   [
+    18,
+    "l"
+   ],
+   [
+    5,
+    ""
+   ],
+   [
+    20,
+    "j"
    ],
    [
     12,
-    "rx"
-   ],
-   [
-    28,
     "r"
    ],
    [
-    12,
-    "rx"
+    48,
+    ""
    ],
    [
-    28,
-    "r"
+    25,
+    "lj"
    ],
    [
-    12,
-    "rx"
-   ],
-   [
-    28,
-    "r"
-   ],
-   [
-    12,
-    "rx"
-   ],
-   [
-    140,
-    "r"
+    100,
+    "l"
    ]
   ]
  },
@@ -74414,13 +74235,13 @@ const records=[
    "run": 8,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "status": "route-proven",
    "author": "Codex",
    "newMechanics": [
     "hinge-routed-wind"
    ],
-   "humanReview": "Awaiting player review; numeric ratings unmeasured.",
+   "humanReview": "Approved for Base by Isaac; numerical ratings unmeasured.",
    "worlds": [
     4
    ],
@@ -75366,13 +75187,13 @@ const records=[
    "run": 8,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "status": "route-proven",
    "author": "Codex",
    "newMechanics": [
     "named-pressure-circuits"
    ],
-   "humanReview": "Awaiting player review; numeric ratings unmeasured.",
+   "humanReview": "Approved for Base by Isaac; numerical ratings unmeasured. Portal stone renderer corrected for full superroom dimensions; authored % surfaces and movement unchanged.",
    "worlds": [
     6
    ],
@@ -77388,7 +77209,7 @@ const records=[
    "run": 8,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "status": "route-proven",
    "author": "Codex",
    "difficulty": 4,
@@ -77415,7 +77236,7 @@ const records=[
    "nearestExisting": "B49 makes shared terrain change jobs and B50 makes a physical stop necessary for delivery. Here the native boss produces the stops and walls while the anvil rides a native dash-moved stone. A different casting order is allowed; the real mould under the sled still has to be exposed.",
    "solution": "Cast the western mould and let its pillar form. Reach the far side of the anvil sled and dash it left into that new stop. Cast the now-vacated low mould, then return to the parked anvil and pogo into the gallery. The low pour has become a second iron wall: climb it and cross its crown. Cast the last cup from the stable gallery, retreat from the pour, then climb the new final pillar over the hot dividing wall. Drop through the eastern ledges and ride the sheltered lower belt back under the original court.",
    "endingForgiveness": "The final cup is struck from a stable 18-tile gallery. Casting 25 frames earlier and 60 frames later both succeed; after the pour the route is permanent iron, wide shelves and a sheltered return belt. Failed early mounting or pogo attempts can land on the lower work floor.",
-   "humanReview": "Awaiting human ratings.",
+   "humanReview": "Approved for Base by Isaac; numerical ratings unmeasured.",
    "requiredEvents": [
     "cast",
     "colossus-refuse",
@@ -78218,13 +78039,13 @@ const records=[
    "run": 8,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "status": "route-proven",
    "author": "Codex",
    "newMechanics": [
     "king-cast-architecture"
    ],
-   "humanReview": "Awaiting player review; numeric ratings unmeasured.",
+   "humanReview": "Approved for Base by Isaac; numerical ratings unmeasured. Portal stone renderer corrected for full superroom dimensions; authored % surfaces and movement unchanged.",
    "worlds": [
     20
    ],
@@ -80027,7 +79848,7 @@ const records=[
    "run": 8,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "difficulty": 3,
    "role": "interconnected boss superroom",
    "worlds": [
@@ -80045,7 +79866,7 @@ const records=[
    "newMechanics": [],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "Awaiting human fun/difficulty/suitability ratings.",
+   "humanReview": "Approved by the user to bank and integrate; numeric ratings remain unmeasured.",
    "approvedIngredients": [
     "bank-f45",
     "bank-f49"
@@ -80880,6 +80701,7 @@ const records=[
    },
    "endingForgiveness": "The second commitment lasts 700 frames, with a verified three-second extra rest before mounting. The last super succeeds four frames apart and lands on a ten-tile-wide solid shelf; the high bell can also be touched on foot once landed. A missed higher launch has the overhang and low balcony below it rather than an immediate final-jump reset.",
    "designNotes": "96×32, 3.34 standard room areas. Saved tape uses five supers, two native hammer rides and two native bell contacts; no hyper, ultra, wallbounce, portals or parry. The high return is interconnected with the lower bell court, not three independent boss checkpoints. The persistent rest and recalled hammer are the only opt-in boss-state adaptation; native Sentinel still owns the ride, bell and final gate hold.",
+   "needsReview": false,
    "revision": "2eedaad01cf0",
    "source": "scripts/room-bank/fractured/bank-f63.json"
   },
@@ -81145,7 +80967,14 @@ const records=[
     "speed": 135,
     "volley": 2,
     "gap": 22,
-    "leave": "fall"
+    "leave": "fall",
+    "rain": {
+     "on": "leap",
+     "w": 8,
+     "n": 5,
+     "speed": 135,
+     "delay": 30
+    }
    },
    "superFractured": {
     "kind": "marksman",
@@ -81179,7 +81008,7 @@ const records=[
    "run": 8,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "difficulty": 3,
    "role": "interconnected boss superroom",
    "worlds": [
@@ -81197,13 +81026,13 @@ const records=[
    "newMechanics": [],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "Awaiting human fun/difficulty/suitability ratings.",
+   "humanReview": "Approved to bank and integrate after one modest boss element; re-review requested for the revision.",
    "approvedIngredients": [
     "bank-f33",
     "bank-f27"
    ],
-   "interconnection": "One carrier crosses the whole arena. Each vacated Marksman perch contains a physical pressure landing that reroutes that same carrier to the next firing tier. The boss leaps ahead after a returned arrow; the player follows through his previous position.",
-   "solution": "Board the outgoing carrier and parry the first marked arrow without directional aim. Jump onto the abandoned first perch; its switch redirects the carrier up to the middle tier. Catch the carrier again, return a second arrow, and land on the vacated middle perch. Its switch turns the carrier into the final approach; wavedash from its deck toward the final paired shot and return it from the broad eastern shelf.",
+   "interconnection": "One carrier crosses the whole arena. Each vacated Marksman perch contains a physical pressure landing that reroutes that same carrier to the next firing tier. The boss leaps ahead after a returned arrow; the player follows through his previous position. His first draw after each leap is now a slow, visibly marked arrow rain over the vacated perch, making that perch a departure point rather than a camping spot.",
+   "solution": "Board the outgoing carrier and parry the first marked arrow without directional aim. Jump onto the abandoned first perch; its switch redirects the carrier up to the middle tier. Catch the carrier again, return a second arrow, and land on the vacated middle perch. Its switch turns the carrier into the final approach; wavedash from its deck toward the final paired shot and return it from the broad eastern shelf. After each leap he rains arrows onto the perch you just took: leave on the same rerouted carrier while the broad warning band is still clear.",
    "novelty": "The player and boss exchange perches, with each pressure landing physically changing the same transport rather than adding independent room counters.",
    "nearestExisting": "F33 preferred parry-retreat-wavedash and F27 carrier movement; native Marksman supplies the projectile and actual defeat.",
    "requiredEvents": [
@@ -81211,7 +81040,8 @@ const records=[
     "marksman-leap",
     "carrier-reroute",
     "parry",
-    "marksman-gone"
+    "marksman-gone",
+    "mk-rain"
    ],
    "route": {
     "name": "canonical",
@@ -81231,6 +81061,7 @@ const records=[
      "refill-dash",
      "carrier-reroute",
      "enemy-hit",
+     "mk-rain",
      "ultra",
      "hyper",
      "marksman-gone",
@@ -81241,7 +81072,7 @@ const records=[
      "jump": 6,
      "land": 7,
      "mk-tell": 6,
-     "enemy-shot": 11,
+     "enemy-shot": 7,
      "parry-ready": 3,
      "parry": 3,
      "marksman-hit": 3,
@@ -81249,7 +81080,8 @@ const records=[
      "dash": 3,
      "refill-dash": 3,
      "carrier-reroute": 2,
-     "enemy-hit": 8,
+     "enemy-hit": 14,
+     "mk-rain": 2,
      "ultra": 1,
      "hyper": 1,
      "marksman-gone": 1,
@@ -81395,6 +81227,7 @@ const records=[
        "refill-dash",
        "carrier-reroute",
        "enemy-hit",
+       "mk-rain",
        "ultra",
        "hyper",
        "marksman-gone",
@@ -81405,7 +81238,7 @@ const records=[
        "jump": 6,
        "land": 7,
        "mk-tell": 6,
-       "enemy-shot": 11,
+       "enemy-shot": 7,
        "parry-ready": 3,
        "parry": 3,
        "marksman-hit": 3,
@@ -81413,7 +81246,8 @@ const records=[
        "dash": 3,
        "refill-dash": 3,
        "carrier-reroute": 2,
-       "enemy-hit": 8,
+       "enemy-hit": 14,
+       "mk-rain": 2,
        "ultra": 1,
        "hyper": 1,
        "marksman-gone": 1,
@@ -81559,6 +81393,7 @@ const records=[
        "refill-dash",
        "carrier-reroute",
        "enemy-hit",
+       "mk-rain",
        "ultra",
        "hyper",
        "marksman-gone",
@@ -81569,7 +81404,7 @@ const records=[
        "jump": 6,
        "land": 7,
        "mk-tell": 6,
-       "enemy-shot": 11,
+       "enemy-shot": 7,
        "parry-ready": 3,
        "parry": 3,
        "marksman-hit": 3,
@@ -81577,7 +81412,8 @@ const records=[
        "dash": 3,
        "refill-dash": 3,
        "carrier-reroute": 2,
-       "enemy-hit": 8,
+       "enemy-hit": 14,
+       "mk-rain": 2,
        "ultra": 1,
        "hyper": 1,
        "marksman-gone": 1,
@@ -81723,6 +81559,7 @@ const records=[
        "refill-dash",
        "carrier-reroute",
        "enemy-hit",
+       "mk-rain",
        "ultra",
        "hyper",
        "marksman-gone",
@@ -81733,7 +81570,7 @@ const records=[
        "jump": 6,
        "land": 7,
        "mk-tell": 6,
-       "enemy-shot": 11,
+       "enemy-shot": 7,
        "parry-ready": 3,
        "parry": 3,
        "marksman-hit": 3,
@@ -81741,7 +81578,8 @@ const records=[
        "dash": 3,
        "refill-dash": 3,
        "carrier-reroute": 2,
-       "enemy-hit": 8,
+       "enemy-hit": 14,
+       "mk-rain": 2,
        "ultra": 1,
        "hyper": 1,
        "marksman-gone": 1,
@@ -81809,34 +81647,25 @@ const records=[
        "refill-dash",
        "carrier-reroute",
        "enemy-hit",
+       "mk-rain",
        "death",
        "respawn"
       ],
-      "eventCounts": {
-       "jump": 2,
-       "land": 2,
-       "mk-tell": 2,
-       "enemy-shot": 3,
-       "parry-ready": 1,
-       "parry": 1,
-       "marksman-hit": 1,
-       "marksman-leap": 1,
-       "dash": 1,
-       "refill-dash": 1,
-       "carrier-reroute": 1,
-       "enemy-hit": 2,
-       "death": 1,
-       "respawn": 1
-      }
+      "deathCauses": [
+       "spikes"
+      ]
      }
     }
    ],
    "endingForgiveness": "The final shelf is ten tiles wide and allows a full stop before returning the last arrow. Successful zero-death tapes vary the parry by four frames and leave the carrier ten frames later. A mistimed outgoing jump can land on the same wide shelf; no final launch is necessary after the boss yields.",
    "requiredEventCounts": {
     "marksman-hit": 3,
-    "carrier-reroute": 2
+    "carrier-reroute": 2,
+    "mk-rain": 2
    },
-   "revision": "5e247c032d7c",
+   "needsReview": true,
+   "revisionNote": "Native post-leap arrow rain added: eight-tile warning band, five spaced arrows, 30-frame delayed descent. Existing stable route and broad final shelf preserved; needsReview remains true.",
+   "revision": "e37c02bebe0e",
    "source": "scripts/room-bank/fractured/bank-f64.json"
   },
   "tape": [
@@ -82047,7 +81876,7 @@ const records=[
    "run": 8,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "difficulty": 4,
    "role": "interconnected boss superroom",
    "worlds": [
@@ -82067,7 +81896,7 @@ const records=[
    "newMechanics": [],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "Awaiting human fun/difficulty/suitability ratings.",
+   "humanReview": "Approved by the user to bank and integrate; numeric ratings remain unmeasured.",
    "approvedIngredients": [
     "bank-f18",
     "bank-f49"
@@ -82976,6 +82805,7 @@ const records=[
     "freeze": 2,
     "mirror": 2
    },
+   "needsReview": false,
    "revision": "7a2d1e6aadf3",
    "source": "scripts/room-bank/fractured/bank-f65.json"
   },
@@ -83324,7 +83154,7 @@ const records=[
    "run": 8,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "difficulty": 4,
    "role": "interconnected timing and cargo superroom",
    "worlds": [
@@ -83343,7 +83173,7 @@ const records=[
    "newMechanics": [],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "Awaiting human fun/difficulty/suitability ratings.",
+   "humanReview": "Approved by the user to bank and integrate; numeric ratings remain unmeasured.",
    "approvedIngredients": [
     "bank-f55",
     "bank-f56",
@@ -84252,6 +84082,7 @@ const records=[
     }
    ],
    "endingForgiveness": "The carrier stops against the physical tide gate and waits for the knight; a nine-second late arrival still completes. Broad dry land separates the patrols. The final patrol jump succeeds six frames apart, and the ending is a long shaded walk on solid ground rather than a precision launch.",
+   "needsReview": false,
    "revision": "724f185d7aa5",
    "source": "scripts/room-bank/fractured/bank-f66.json"
   },
@@ -84553,7 +84384,7 @@ const records=[
    "run": 8,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
+   "acceptance": "banked",
    "difficulty": 5,
    "role": "interconnected boss superroom",
    "worlds": [
@@ -84571,7 +84402,7 @@ const records=[
    "newMechanics": [],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "Awaiting human fun/difficulty/suitability ratings.",
+   "humanReview": "Approved by the user to bank and integrate; numeric ratings remain unmeasured.",
    "approvedIngredients": [
     "bank-f45",
     "bank-f46",
@@ -85846,6 +85677,7 @@ const records=[
    "exit": "Eastern gate, opened by the actual native King yielding after two blooms.",
    "designNotes": "64×44 = 2,816 tiles (3.06 normal rooms). The upper optical floor is the roof of the lower boss court, preventing a straight drop to the King. One carrier and one lantern cast real shade; native Echo/plates/mirror/fixed portals/King rules govern every state change. No new movement or boss module, teleport scripts, use counters, or fabricated victory. The upper plate is ten tiles wide; the lower recovery floor survives a missed pod and allows another attempt. Final route uses a pod loft into an updash, then two airborne cuts across the native glove/floor-wave tells. The defeated King becomes the last stable stepping surface before a small jump/dash past the portal.",
    "endingForgiveness": "The upper echo plate is ten tiles wide. The lower shade landing permits a full extra rest cycle, and a missed pod can land safely below for another attempt. The saved variants cover both recoveries, two later final departures, and a broader echo placement. After two native blooms, the yielded King is a stable rest before the small exit jump.",
+   "needsReview": false,
    "revision": "ba91d5331119",
    "source": "scripts/room-bank/fractured/bank-f67.json"
   },
@@ -85999,14 +85831,9712 @@ const records=[
     "r"
    ]
   ]
+ },
+ {
+  "room": {
+   "id": "bank-b67",
+   "study": true,
+   "dashes": 1,
+   "cols": 80,
+   "rows": 38,
+   "palette": "mothlight",
+   "exit": "left",
+   "name": "Ask the Tree Twice",
+   "aim8": true,
+   "lock": [
+    "parry",
+    "portal"
+   ],
+   "dropThru": true,
+   "map": [
+    "################################################################################",
+    "........G......................................................................#",
+    "........G......................................................................#",
+    "........G......................................................................#",
+    "........G......................................................................#",
+    "#=======================.......................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#....=========................AAA..............................................#",
+    "#.............................AAA..............................................#",
+    "#.............................AAA..............................................#",
+    "#............==============...AAA................................c.............#",
+    "#.............................AAA...........................===========........#",
+    "#.............................AAA.AAAAA........................................#",
+    "#.............................AAA..............................................#",
+    "#.............................AAA..............................========........#",
+    "#.............................AAA..............................................#",
+    "#.............................AAA..............................................#",
+    "#.............................AAA............................========..........#",
+    "#.............................AAA.AAAAA........................................#",
+    "#.............................AAA..............................................#",
+    "#.............................AAA....................AAAAAAA...................#",
+    "#.............................AAA..............................................#",
+    "#.............................AAA..............................................#",
+    "#.............................AAA.......x...AAAA...............................#",
+    "#.............................AAA.AAAAA..b.....bx..............................#",
+    "#.............................AAA..............................................#",
+    "#.............................AAA...........BBBBBB.............................#",
+    "#.............................AAA..............................................#",
+    "#.............======...AAAAAA.AAABBBBBBBBBBBBBBBB..............................#",
+    "#.............................AAA..............................................#",
+    "#.............................AAA=======.......................................#",
+    "#....======...................AAA..............................................#",
+    "#.............................AAA..............................................#",
+    "#...P.....^^^^^^^^^^^^^^^^^^^^AAA^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^..........#",
+    "################################################################################",
+    "################################################################################",
+    "################################################################################"
+   ],
+   "hint": "Dash through the trunk. One downward cut can ring the bell and borrow the seed’s height. On the way home, keep the trunk real.",
+   "question": "Which branch needs to disappear beneath you so the tree can become your way back?"
+  },
+  "bank": {
+   "side": "base",
+   "batch": 18,
+   "run": 9,
+   "collection": "superrooms",
+   "format": "superroom",
+   "acceptance": "candidate",
+   "status": "route-proven",
+   "author": "Codex",
+   "tags": [
+    "superroom",
+    "phase",
+    "bell",
+    "pod",
+    "pogo",
+    "return"
+   ],
+   "newMechanics": [],
+   "humanReview": "Awaiting review; numeric ratings unmeasured.",
+   "worlds": [
+    2
+   ],
+   "difficulty": 3,
+   "approvedIngredients": [
+    "bank-b44",
+    "bank-b49"
+   ],
+   "role": "The Black Woods’ phase, bells and seed rebounds become one changing tree route.",
+   "solution": "Climb the short western approach. A dash erases the trunk and grows the east branches. Reach the paired pod and bell, then cut downward through both: the launch gives you height while the bell restores the high branch and the trunk. Move right onto the newly real branch, reach the far bearing, and descend back to the high central branch. Climb the restored trunk and leave toward the western home gallery without dashing its support away. Recover a mistaken phase at the lower bell/pod shelf.",
+   "interconnection": "The original trunk is the first obstacle, then the return wall. The same bell exchange removes the low floor while building the high landing and the route home.",
+   "novelty": "The useful floor and useful wall only coexist after the player commits to the seed rebound; returning demands preserving that state rather than spending a dash reflexively.",
+   "nearestExisting": "The native Rootbound Passage combines pod and bell in one crossing. This makes the consequence persist through a large outward-and-return tree, and makes the former obstacle the final climb.",
+   "requiredEvents": [
+    "dash",
+    "bell",
+    "pod",
+    "stone-lit",
+    "gate-open",
+    "exit"
+   ],
+   "superroom": {
+    "screenAreas": 3.3043478260869565,
+    "stages": [
+     "Erase the trunk and cross its lower branches",
+     "One cut exchanges the low branch for a high landing",
+     "Climb the same trunk home"
+    ]
+   },
+   "endingForgiveness": "The return climb has two broad phase-branch stamina rests. After the wall top, every home landing is permanent wood; the final jump works with an eight-frame shorter hold and after a ninety-frame rest.",
+   "route": {
+    "exited": true,
+    "deaths": 0,
+    "frames": 1339
+   },
+   "routeEvents": [
+    {
+     "type": "dash",
+     "frame": 165,
+     "x": 230,
+     "y": 227,
+     "dx": 1,
+     "dy": 0,
+     "i": 164
+    },
+    {
+     "type": "pod",
+     "frame": 291,
+     "x": 380,
+     "y": 204,
+     "dx": 0,
+     "dy": 1,
+     "i": 290
+    },
+    {
+     "type": "bell",
+     "frame": 291,
+     "x": 388,
+     "y": 204,
+     "i": 290
+    },
+    {
+     "type": "stone-lit",
+     "frame": 492,
+     "x": 524,
+     "y": 92,
+     "left": 0,
+     "i": 491
+    },
+    {
+     "type": "gate-open",
+     "frame": 493,
+     "x": 68,
+     "y": 24,
+     "i": 492
+    },
+    {
+     "type": "exit",
+     "frame": 1339,
+     "room": 0,
+     "i": 1338
+    }
+   ],
+   "positiveChecks": [
+    {
+     "name": "Rest for ninety frames before the final jump",
+     "tape": [
+      [
+       26,
+       "rj"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       28,
+       "rj"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       25,
+       "r"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       25,
+       "rj"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       20,
+       "r"
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       35,
+       "r"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       10,
+       "r"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       12,
+       "j"
+      ],
+      [
+       1,
+       "dsj"
+      ],
+      [
+       35,
+       "rj"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       22,
+       "r"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       32,
+       "j"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       32,
+       "j"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       13,
+       "r"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       58,
+       "l"
+      ],
+      [
+       28,
+       ""
+      ],
+      [
+       20,
+       "lj"
+      ],
+      [
+       25,
+       "l"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       40,
+       "lj"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       20,
+       "lg"
+      ],
+      [
+       80,
+       "lgu"
+      ],
+      [
+       6,
+       "r"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       80,
+       "lgu"
+      ],
+      [
+       10,
+       "r"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       85,
+       "lgu"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       24,
+       "l"
+      ],
+      [
+       30,
+       ""
+      ],
+      [
+       59,
+       "l"
+      ],
+      [
+       8,
+       ""
+      ],
+      [
+       32,
+       "j"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       90,
+       ""
+      ],
+      [
+       32,
+       "j"
+      ],
+      [
+       90,
+       "l"
+      ]
+     ],
+     "exited": true,
+     "deaths": 0,
+     "frames": 1429
+    },
+    {
+     "name": "Release the final jump eight frames earlier",
+     "tape": [
+      [
+       26,
+       "rj"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       28,
+       "rj"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       25,
+       "r"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       25,
+       "rj"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       20,
+       "r"
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       35,
+       "r"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       10,
+       "r"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       12,
+       "j"
+      ],
+      [
+       1,
+       "dsj"
+      ],
+      [
+       35,
+       "rj"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       22,
+       "r"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       32,
+       "j"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       32,
+       "j"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       13,
+       "r"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       58,
+       "l"
+      ],
+      [
+       28,
+       ""
+      ],
+      [
+       20,
+       "lj"
+      ],
+      [
+       25,
+       "l"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       40,
+       "lj"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       20,
+       "lg"
+      ],
+      [
+       80,
+       "lgu"
+      ],
+      [
+       6,
+       "r"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       80,
+       "lgu"
+      ],
+      [
+       10,
+       "r"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       85,
+       "lgu"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       24,
+       "l"
+      ],
+      [
+       30,
+       ""
+      ],
+      [
+       59,
+       "l"
+      ],
+      [
+       8,
+       ""
+      ],
+      [
+       32,
+       "j"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       24,
+       "j"
+      ],
+      [
+       90,
+       "l"
+      ]
+     ],
+     "exited": true,
+     "deaths": 0,
+     "frames": 1332
+    }
+   ],
+   "shortcutChecks": [
+    {
+     "name": "Omit the pod-and-bell exchange and continue directly toward the high bearing",
+     "tape": [
+      [
+       26,
+       "rj"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       28,
+       "rj"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       25,
+       "r"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       25,
+       "rj"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       20,
+       "r"
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       35,
+       "r"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       10,
+       "r"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       12,
+       "j"
+      ],
+      [
+       1,
+       "j"
+      ],
+      [
+       35,
+       "rj"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       22,
+       "r"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       32,
+       "j"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       32,
+       "j"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       13,
+       "r"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       58,
+       "l"
+      ],
+      [
+       28,
+       ""
+      ],
+      [
+       20,
+       "lj"
+      ],
+      [
+       25,
+       "l"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       40,
+       "lj"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       20,
+       "lg"
+      ],
+      [
+       80,
+       "lgu"
+      ],
+      [
+       6,
+       "r"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       80,
+       "lgu"
+      ],
+      [
+       10,
+       "r"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       85,
+       "lgu"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       24,
+       "l"
+      ],
+      [
+       30,
+       ""
+      ],
+      [
+       59,
+       "l"
+      ],
+      [
+       8,
+       ""
+      ],
+      [
+       32,
+       "j"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       32,
+       "j"
+      ],
+      [
+       90,
+       "l"
+      ]
+     ],
+     "exited": false,
+     "deaths": 1,
+     "frames": null
+    }
+   ],
+   "revision": "5a2aa9521229",
+   "source": "scripts/room-bank/base/bank-b67.json"
+  },
+  "tape": [
+   [
+    26,
+    "rj"
+   ],
+   [
+    10,
+    ""
+   ],
+   [
+    28,
+    "rj"
+   ],
+   [
+    10,
+    ""
+   ],
+   [
+    25,
+    "r"
+   ],
+   [
+    1,
+    ""
+   ],
+   [
+    25,
+    "rj"
+   ],
+   [
+    15,
+    ""
+   ],
+   [
+    20,
+    "r"
+   ],
+   [
+    12,
+    "rx"
+   ],
+   [
+    35,
+    "r"
+   ],
+   [
+    15,
+    ""
+   ],
+   [
+    26,
+    "rj"
+   ],
+   [
+    10,
+    ""
+   ],
+   [
+    10,
+    "r"
+   ],
+   [
+    10,
+    ""
+   ],
+   [
+    12,
+    "j"
+   ],
+   [
+    1,
+    "dsj"
+   ],
+   [
+    35,
+    "rj"
+   ],
+   [
+    20,
+    ""
+   ],
+   [
+    22,
+    "r"
+   ],
+   [
+    1,
+    ""
+   ],
+   [
+    26,
+    "rj"
+   ],
+   [
+    15,
+    ""
+   ],
+   [
+    32,
+    "j"
+   ],
+   [
+    5,
+    ""
+   ],
+   [
+    32,
+    "j"
+   ],
+   [
+    5,
+    ""
+   ],
+   [
+    13,
+    "r"
+   ],
+   [
+    10,
+    ""
+   ],
+   [
+    58,
+    "l"
+   ],
+   [
+    28,
+    ""
+   ],
+   [
+    20,
+    "lj"
+   ],
+   [
+    25,
+    "l"
+   ],
+   [
+    20,
+    ""
+   ],
+   [
+    40,
+    "lj"
+   ],
+   [
+    20,
+    ""
+   ],
+   [
+    20,
+    "lg"
+   ],
+   [
+    80,
+    "lgu"
+   ],
+   [
+    6,
+    "r"
+   ],
+   [
+    25,
+    ""
+   ],
+   [
+    80,
+    "lgu"
+   ],
+   [
+    10,
+    "r"
+   ],
+   [
+    25,
+    ""
+   ],
+   [
+    85,
+    "lgu"
+   ],
+   [
+    20,
+    ""
+   ],
+   [
+    24,
+    "l"
+   ],
+   [
+    30,
+    ""
+   ],
+   [
+    59,
+    "l"
+   ],
+   [
+    8,
+    ""
+   ],
+   [
+    32,
+    "j"
+   ],
+   [
+    5,
+    ""
+   ],
+   [
+    32,
+    "j"
+   ],
+   [
+    90,
+    "l"
+   ]
+  ]
+ },
+ {
+  "room": {
+   "id": "bank-b68",
+   "study": true,
+   "dashes": 1,
+   "cols": 80,
+   "rows": 38,
+   "palette": "causeway",
+   "exit": "right",
+   "name": "Let Him Clear the Causeway",
+   "rbr": 3,
+   "lock": [
+    "parry",
+    "portal"
+   ],
+   "dropThru": true,
+   "map": [
+    "################################################################################",
+    "#............................................................................###",
+    "#............................................................................###",
+    "#............................................................................###",
+    "#............................................................................###",
+    "#............................................................................###",
+    "#............................................................................###",
+    "#............................................................................###",
+    "#............................................................................###",
+    "#............................................................................###",
+    "#.................................=========..................................###",
+    "#............................................................................###",
+    "#............................................................................###",
+    "#...............................................========.....................###",
+    "#............................................................................###",
+    "#............................................................................###",
+    "#..........................................................========..........###",
+    "#............................................................................###",
+    "#....................................###.....................................###",
+    "#....................................###...........................=====.....###",
+    "#....................................###.....................................###",
+    "#.........................ZZZZZZ....<###>....................................###",
+    "#...................................<###>....................................###",
+    "#...................................<###>....................................###",
+    "#.................=======...........<###>..................======............###",
+    "#.KKKKKK............................<###>........................KKKKKK......###",
+    "#.KKKKKK............................<###>........................KKKKKK......###",
+    "#.........======....................<###>..........=======...................###",
+    "#...................................<###>....................................###",
+    "#....................................###.....................................###",
+    "#...............................................................................",
+    "#...............................................................................",
+    "#...............................................................................",
+    "#.........P.....................................................................",
+    "################################################################################",
+    "################################################################################",
+    "################################################################################",
+    "################################################################################"
+   ],
+   "zips": [
+    [
+     0,
+     -12
+    ]
+   ],
+   "combat": {
+    "waitForMove": true,
+    "enemies": [
+     {
+      "kind": "hound",
+      "brute": true,
+      "crush": 2,
+      "stamp": true,
+      "x": 200,
+      "y": 256,
+      "face": -1,
+      "ward": "brute"
+     }
+    ],
+    "receivers": [],
+    "doors": [
+     {
+      "x": 296,
+      "y": 240,
+      "w": 24,
+      "h": 32,
+      "brittle": true
+     },
+     {
+      "x": 576,
+      "y": 8,
+      "w": 8,
+      "h": 264,
+      "ward": "brute"
+     }
+    ]
+   },
+   "hint": "Let the Brute commit beneath a weight. Cross the upper causeway while he clears the brace below. The second weight ends the chase.",
+   "question": "Can the same opponent open the road you need to bait his next charge?"
+  },
+  "bank": {
+   "side": "base",
+   "batch": 18,
+   "run": 9,
+   "collection": "superrooms",
+   "format": "superroom",
+   "acceptance": "candidate",
+   "status": "route-proven",
+   "author": "Codex",
+   "tags": [
+    "superroom",
+    "boss",
+    "brute",
+    "counterweight",
+    "brittle",
+    "lift",
+    "return"
+   ],
+   "newMechanics": [],
+   "humanReview": "Awaiting review; numeric ratings unmeasured.",
+   "worlds": [
+    3
+   ],
+   "difficulty": 3,
+   "approvedIngredients": [
+    "bank-b37",
+    "bank-b65"
+   ],
+   "role": "The native armoured Brute and two real crushes inhabit one vertical causeway court.",
+   "solution": "Rise onto the western hanging stone while the Brute commits to the low wall. Drop the stone on him to crack his armour. Use its fallen body as the first stair and ascend the causeway lift. Cross over the central brace while the enraged Brute follows on the low road and breaks the brittle passage. Descend onto the eastern weight, lure him into the closed warded exit beside it, then drop that stone for the real second crush. The same low road he cleared becomes the stable departure. The protected lower ledge halfway across the east side brings the knight back into the Brute’s sight; wait there for the committed charge, then step up to the eastern weight while it runs under you.",
+   "interconnection": "Both drops act on the same roaming Brute; the upper route crosses the brace he must break below, and the returned lower road is the exit after his actual defeat.",
+   "novelty": "The chase below and the traversal above solve each other: crossing the upper causeway turns the knight into the lure that sends the Brute through the central brace.",
+   "nearestExisting": "Native Counterweight teaches two falling stones in one screen; B65 makes boss progress useful architecture. This scales that relationship into a shared causeway with an opponent-cleared lower return.",
+   "requiredEvents": [
+    "stone-hit",
+    "brute-crack",
+    "breach",
+    "enemy-defeat",
+    "exit"
+   ],
+   "requiredEventCounts": {
+    "stone-hit": 2,
+    "brute-crack": 1
+   },
+   "superroom": {
+    "screenAreas": 3.3043478260869565,
+    "stages": [
+     "Crack the armour under the western weight",
+     "Cross above the brace he breaks below",
+     "Return to the low road after the eastern crush"
+    ]
+   },
+   "endingForgiveness": "Both weights have broad tops and the Brute waits dazed at their stops; the final cleared road is a stable walk.",
+   "route": {
+    "exited": true,
+    "deaths": 0,
+    "frames": 915
+   },
+   "routeEvents": [
+    {
+     "type": "stone-hit",
+     "frame": 172,
+     "x": 40,
+     "y": 208,
+     "dx": 0,
+     "dy": 1,
+     "i": 171
+    },
+    {
+     "type": "brute-crack",
+     "frame": 191,
+     "x": 76,
+     "y": 264,
+     "cracks": 1,
+     "need": 2,
+     "dev": true,
+     "i": 190
+    },
+    {
+     "type": "breach",
+     "frame": 340,
+     "x": 308,
+     "y": 256,
+     "i": 339
+    },
+    {
+     "type": "brute-stamp",
+     "frame": 349,
+     "x": 284,
+     "y": 272,
+     "dev": true,
+     "i": 348
+    },
+    {
+     "type": "brute-stamp",
+     "frame": 700,
+     "x": 564,
+     "y": 272,
+     "dev": true,
+     "i": 699
+    },
+    {
+     "type": "stone-hit",
+     "frame": 776,
+     "x": 544,
+     "y": 208,
+     "dx": 0,
+     "dy": 1,
+     "i": 775
+    },
+    {
+     "type": "enemy-defeat",
+     "frame": 795,
+     "x": 564,
+     "y": 264,
+     "kind": "hound",
+     "cause": "crush",
+     "i": 794
+    },
+    {
+     "type": "combat-gate",
+     "frame": 795,
+     "x": 580,
+     "y": 140,
+     "i": 794
+    },
+    {
+     "type": "exit",
+     "frame": 915,
+     "room": 0,
+     "i": 914
+    }
+   ],
+   "positiveChecks": [
+    {
+     "name": "Drop the last weight 15 frames earlier",
+     "tape": [
+      [
+       12,
+       "j"
+      ],
+      [
+       5,
+       "ux"
+      ],
+      [
+       60,
+       "lgu"
+      ],
+      [
+       90,
+       ""
+      ],
+      [
+       2,
+       "dx"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       35,
+       "r"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       20,
+       "r"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       18,
+       "r"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       44,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       20,
+       "r"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       24,
+       "r"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       35,
+       "rj"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       30,
+       "r"
+      ],
+      [
+       1,
+       "dj"
+      ],
+      [
+       65,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       2,
+       "dx"
+      ],
+      [
+       70,
+       ""
+      ],
+      [
+       55,
+       "r"
+      ],
+      [
+       25,
+       "r"
+      ]
+     ],
+     "exited": true,
+     "deaths": 0,
+     "frames": 900
+    },
+    {
+     "name": "Drop the last weight 60 frames later",
+     "tape": [
+      [
+       12,
+       "j"
+      ],
+      [
+       5,
+       "ux"
+      ],
+      [
+       60,
+       "lgu"
+      ],
+      [
+       90,
+       ""
+      ],
+      [
+       2,
+       "dx"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       35,
+       "r"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       20,
+       "r"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       18,
+       "r"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       44,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       20,
+       "r"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       24,
+       "r"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       35,
+       "rj"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       30,
+       "r"
+      ],
+      [
+       1,
+       "dj"
+      ],
+      [
+       65,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       95,
+       ""
+      ],
+      [
+       2,
+       "dx"
+      ],
+      [
+       70,
+       ""
+      ],
+      [
+       55,
+       "r"
+      ],
+      [
+       25,
+       "r"
+      ]
+     ],
+     "exited": true,
+     "deaths": 0,
+     "frames": 975
+    }
+   ],
+   "shortcutChecks": [
+    {
+     "name": "Keep the second weight hanging and try the departure after only one crack",
+     "tape": [
+      [
+       12,
+       "j"
+      ],
+      [
+       5,
+       "ux"
+      ],
+      [
+       60,
+       "lgu"
+      ],
+      [
+       90,
+       ""
+      ],
+      [
+       2,
+       "dx"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       35,
+       "r"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       20,
+       "r"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       18,
+       "r"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       44,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       20,
+       "r"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       24,
+       "r"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       35,
+       "rj"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       30,
+       "r"
+      ],
+      [
+       1,
+       "dj"
+      ],
+      [
+       65,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       35,
+       ""
+      ],
+      [
+       2,
+       ""
+      ],
+      [
+       70,
+       ""
+      ],
+      [
+       55,
+       "r"
+      ],
+      [
+       25,
+       "r"
+      ]
+     ],
+     "exited": false,
+     "deaths": 0,
+     "frames": null
+    }
+   ],
+   "replaces": "cl3-c3-counterweight",
+   "revision": "2fab7a9ae8df",
+   "source": "scripts/room-bank/base/bank-b68.json"
+  },
+  "tape": [
+   [
+    12,
+    "j"
+   ],
+   [
+    5,
+    "ux"
+   ],
+   [
+    60,
+    "lgu"
+   ],
+   [
+    90,
+    ""
+   ],
+   [
+    2,
+    "dx"
+   ],
+   [
+    20,
+    ""
+   ],
+   [
+    35,
+    "r"
+   ],
+   [
+    20,
+    ""
+   ],
+   [
+    20,
+    "r"
+   ],
+   [
+    1,
+    ""
+   ],
+   [
+    26,
+    "rj"
+   ],
+   [
+    15,
+    ""
+   ],
+   [
+    18,
+    "r"
+   ],
+   [
+    1,
+    ""
+   ],
+   [
+    26,
+    "rj"
+   ],
+   [
+    44,
+    ""
+   ],
+   [
+    26,
+    "rj"
+   ],
+   [
+    20,
+    "r"
+   ],
+   [
+    15,
+    ""
+   ],
+   [
+    24,
+    "r"
+   ],
+   [
+    1,
+    ""
+   ],
+   [
+    35,
+    "rj"
+   ],
+   [
+    20,
+    ""
+   ],
+   [
+    30,
+    "r"
+   ],
+   [
+    1,
+    "dj"
+   ],
+   [
+    65,
+    ""
+   ],
+   [
+    26,
+    "rj"
+   ],
+   [
+    20,
+    ""
+   ],
+   [
+    26,
+    "rj"
+   ],
+   [
+    20,
+    ""
+   ],
+   [
+    12,
+    "r"
+   ],
+   [
+    35,
+    ""
+   ],
+   [
+    2,
+    "dx"
+   ],
+   [
+    70,
+    ""
+   ],
+   [
+    55,
+    "r"
+   ],
+   [
+    25,
+    "r"
+   ]
+  ]
+ },
+ {
+  "room": {
+   "id": "bank-b69",
+   "study": true,
+   "dashes": 1,
+   "cols": 80,
+   "rows": 40,
+   "palette": "marksman",
+   "exit": "right",
+   "name": "Borrow His Firing Line",
+   "rbr": 5,
+   "lock": [
+    "portal"
+   ],
+   "dropThru": true,
+   "map": [
+    "##########################################################################G#####",
+    "#.........................................................................G....#",
+    "#.........................................................#...............G....#",
+    "#.........................................................#...............G....#",
+    "#.........................................................#...............G....#",
+    "#.........................................................#...............G....#",
+    "#.........................................................#....=========..G....#",
+    "#.........................................................#.##............G....#",
+    "#.........................................................#.##.=========..G....#",
+    "#.........................................................#.##............G....#",
+    "#.........................................................#.##............G....#",
+    "#.........................................................#.##............G....#",
+    "#.........................................................#.##............G....#",
+    "#...........................................................##............G....#",
+    "#...........................................................##............G....#",
+    "#...........................................................##............G....#",
+    "#.....######....................................========....##............G....#",
+    "#...........................................................##............G....#",
+    "#...........................................................##............G....#",
+    "#......................................................=====##............G....#",
+    "#...........................................................##............G....#",
+    "#...............................=====.......................##............G....#",
+    "#....#######################................................##............G....#",
+    "#...........................................................##............G....#",
+    "#............................=====..........................##............G....#",
+    "#...........................................................##............G....#",
+    "#........................=====..............................##............G....#",
+    "#...........................................................##............G....#",
+    "#...........................................................##............G....#",
+    "#..............========.....................................##............G....#",
+    "#.........========...............#########..................##............G....#",
+    "#...........................................................##............G.....",
+    "#...........................................................##............G.....",
+    "#...========................................................##............G.....",
+    "#.........................................................................G.....",
+    "#...P.....................................................................G.....",
+    "################################################################################",
+    "################################################################################",
+    "################################################################################",
+    "################################################################################"
+   ],
+   "marksman": {
+    "perches": [
+     {
+      "c": 34,
+      "r": 29
+     },
+     {
+      "c": 8,
+      "r": 15
+     },
+     {
+      "c": 68,
+      "r": 5
+     }
+    ],
+    "hits": 3,
+    "ward": "lens",
+    "first": 140,
+    "every": 180,
+    "tell": 48,
+    "speed": 115,
+    "leave": "fall"
+   },
+   "combat": {
+    "waitForMove": true,
+    "enemies": [],
+    "receivers": [
+     {
+      "id": "lens",
+      "x": 48,
+      "y": 220
+     }
+    ],
+    "doors": [
+     {
+      "x": 224,
+      "y": 8,
+      "w": 8,
+      "h": 208,
+      "coils": [
+       "lens"
+      ]
+     }
+    ]
+   },
+   "decks": [
+    {
+     "c": 35,
+     "r": 18,
+     "w": 4,
+     "h": 13,
+     "to": [
+      10,
+      0
+     ],
+     "period": 320
+    }
+   ],
+   "hint": "The first return belongs behind you. His next perch overlooks the same hall from the other side; use the moving mantlet to find a clear reply.",
+   "question": "When does his cover become your platform, and where can his own arrow open the route?"
+  },
+  "bank": {
+   "side": "base",
+   "batch": 18,
+   "run": 9,
+   "collection": "superrooms",
+   "format": "superroom",
+   "acceptance": "candidate",
+   "status": "route-proven",
+   "author": "Codex",
+   "tags": [
+    "superroom",
+    "boss",
+    "marksman",
+    "parry",
+    "coil",
+    "mantlet",
+    "sightline"
+   ],
+   "newMechanics": [],
+   "humanReview": "Awaiting review; numeric ratings unmeasured.",
+   "worlds": [
+    5
+   ],
+   "difficulty": 3,
+   "approvedIngredients": [
+    "bank-b16",
+    "bank-f33"
+   ],
+   "role": "A three-perch native Marksman duel whose first redirected shot powers the route through the same firing hall.",
+   "solution": "Climb to the low western parry shelf. Send one arrow left into the lens coil behind you, opening the central shutter and removing the Marksman’s ward. Return the next arrow to wound him. Cross above the now-open shutter, use the moving mantlet as cover and a platform, and meet his second perch from the middle gallery. His third perch lies beyond a sightline baffle; descend to the east side, climb the tower and answer from the high eastern balcony. His actual fall opens the full-height exit seal and the safe lower road.",
+   "interconnection": "The lens powers both the boss vulnerability and the central crossing. One moving mantlet blocks both firing directions while also carrying the route upward; the boss’s two relocations reverse which side of that shared cover is useful.",
+   "novelty": "The first successful return deliberately travels away from the boss. The shared hall then asks the player to change height and side as its former attacker becomes the source of their next safe crossing.",
+   "nearestExisting": "Native Deadeye Court has a ward coil; the Last Perch has a linear airborne route. This makes the ward open a traversable shutter and uses one central moving cover in two opposing firing lanes.",
+   "requiredEvents": [
+    "receiver-lit",
+    "combat-gate",
+    "parry",
+    "marksman-hit",
+    "marksman-gone",
+    "gate-open",
+    "exit"
+   ],
+   "requiredEventCounts": {
+    "marksman-hit": 3
+   },
+   "superroom": {
+    "screenAreas": 3.4782608695652173,
+    "stages": [
+     "Turn a shot away from him to open the hall",
+     "Cross through the cover into his reversed firing lane",
+     "Leave the same cover below for the last high reply"
+    ]
+   },
+   "endingForgiveness": "The last balcony is broad and stationary, with an unlimited chance to wait for another ordinary arrow. Victory opens a safe floor-level departure.",
+   "replaces": "cl5-m5-perch",
+   "route": {
+    "exited": true,
+    "deaths": 0,
+    "frames": 2000
+   },
+   "routeEvents": [
+    {
+     "type": "parry",
+     "frame": 253,
+     "x": 123,
+     "y": 226,
+     "i": 252
+    },
+    {
+     "type": "receiver-lit",
+     "frame": 277,
+     "x": 53,
+     "y": 225,
+     "id": "lens",
+     "i": 276
+    },
+    {
+     "type": "combat-gate",
+     "frame": 277,
+     "x": 228,
+     "y": 112,
+     "i": 276
+    },
+    {
+     "type": "parry",
+     "frame": 436,
+     "x": 142.5308838640666,
+     "y": 223.47714002196162,
+     "i": 435
+    },
+    {
+     "type": "marksman-hit",
+     "frame": 480,
+     "x": 276,
+     "y": 230,
+     "hits": 1,
+     "need": 3,
+     "i": 479
+    },
+    {
+     "type": "parry",
+     "frame": 1132,
+     "x": 393.2442382129139,
+     "y": 118.93597760841091,
+     "i": 1131
+    },
+    {
+     "type": "marksman-hit",
+     "frame": 1239,
+     "x": 68,
+     "y": 118,
+     "hits": 2,
+     "need": 3,
+     "i": 1238
+    },
+    {
+     "type": "parry",
+     "frame": 1315,
+     "x": 393.2442382129139,
+     "y": 118.93597760841091,
+     "i": 1314
+    },
+    {
+     "type": "parry",
+     "frame": 1731,
+     "x": 535.2109961025241,
+     "y": 38.06575032478967,
+     "i": 1730
+    },
+    {
+     "type": "marksman-hit",
+     "frame": 1736,
+     "x": 548,
+     "y": 38,
+     "hits": 3,
+     "need": 3,
+     "i": 1735
+    },
+    {
+     "type": "marksman-gone",
+     "frame": 1785,
+     "x": 548,
+     "y": 213,
+     "how": "fall",
+     "i": 1784
+    },
+    {
+     "type": "gate-open",
+     "frame": 1786,
+     "x": 596,
+     "y": 144,
+     "i": 1785
+    },
+    {
+     "type": "exit",
+     "frame": 2000,
+     "room": 0,
+     "i": 1999
+    }
+   ],
+   "positiveChecks": [
+    {
+     "name": "Final grounded counter 3 frames earlier",
+     "tape": [
+      [
+       24,
+       "rj"
+      ],
+      [
+       12,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       14,
+       ""
+      ],
+      [
+       10,
+       "r"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       32,
+       "j"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       116,
+       ""
+      ],
+      [
+       1,
+       "lp"
+      ],
+      [
+       27,
+       ""
+      ],
+      [
+       155,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       47,
+       ""
+      ],
+      [
+       30,
+       "r"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       14,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       14,
+       ""
+      ],
+      [
+       22,
+       "rj"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       26,
+       "rjg"
+      ],
+      [
+       110,
+       ""
+      ],
+      [
+       24,
+       "rj"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       130,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       18,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       160,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       110,
+       ""
+      ],
+      [
+       70,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       12,
+       ""
+      ],
+      [
+       44,
+       "r"
+      ],
+      [
+       10,
+       "rg"
+      ],
+      [
+       135,
+       "gu"
+      ],
+      [
+       22,
+       "r"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       32,
+       "j"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       140,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       6,
+       ""
+      ],
+      [
+       100,
+       ""
+      ],
+      [
+       250,
+       "r"
+      ]
+     ],
+     "exited": true,
+     "deaths": 0,
+     "frames": 1997
+    },
+    {
+     "name": "Final grounded counter 3 frames later",
+     "tape": [
+      [
+       24,
+       "rj"
+      ],
+      [
+       12,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       14,
+       ""
+      ],
+      [
+       10,
+       "r"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       32,
+       "j"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       116,
+       ""
+      ],
+      [
+       1,
+       "lp"
+      ],
+      [
+       27,
+       ""
+      ],
+      [
+       155,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       47,
+       ""
+      ],
+      [
+       30,
+       "r"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       14,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       14,
+       ""
+      ],
+      [
+       22,
+       "rj"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       26,
+       "rjg"
+      ],
+      [
+       110,
+       ""
+      ],
+      [
+       24,
+       "rj"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       130,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       18,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       160,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       110,
+       ""
+      ],
+      [
+       70,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       12,
+       ""
+      ],
+      [
+       44,
+       "r"
+      ],
+      [
+       10,
+       "rg"
+      ],
+      [
+       135,
+       "gu"
+      ],
+      [
+       22,
+       "r"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       32,
+       "j"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       146,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       6,
+       ""
+      ],
+      [
+       100,
+       ""
+      ],
+      [
+       250,
+       "r"
+      ]
+     ],
+     "exited": true,
+     "deaths": 0,
+     "frames": 2003
+    }
+   ],
+   "shortcutChecks": [
+    {
+     "name": "Return the first arrow directly instead of powering the lens behind you",
+     "tape": [
+      [
+       24,
+       "rj"
+      ],
+      [
+       12,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       14,
+       ""
+      ],
+      [
+       10,
+       "r"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       32,
+       "j"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       116,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       27,
+       ""
+      ],
+      [
+       155,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       47,
+       ""
+      ],
+      [
+       30,
+       "r"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       14,
+       ""
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       14,
+       ""
+      ],
+      [
+       22,
+       "rj"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       26,
+       "rjg"
+      ],
+      [
+       110,
+       ""
+      ],
+      [
+       24,
+       "rj"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       130,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       18,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       160,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       110,
+       ""
+      ],
+      [
+       70,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       12,
+       ""
+      ],
+      [
+       44,
+       "r"
+      ],
+      [
+       10,
+       "rg"
+      ],
+      [
+       135,
+       "gu"
+      ],
+      [
+       22,
+       "r"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       32,
+       "j"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       143,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       6,
+       ""
+      ],
+      [
+       100,
+       ""
+      ],
+      [
+       250,
+       "r"
+      ]
+     ],
+     "exited": false,
+     "deaths": 0,
+     "frames": null
+    }
+   ],
+   "revision": "ea84c14fe450",
+   "source": "scripts/room-bank/base/bank-b69.json"
+  },
+  "tape": [
+   [
+    24,
+    "rj"
+   ],
+   [
+    12,
+    ""
+   ],
+   [
+    26,
+    "rj"
+   ],
+   [
+    14,
+    ""
+   ],
+   [
+    10,
+    "r"
+   ],
+   [
+    5,
+    ""
+   ],
+   [
+    32,
+    "j"
+   ],
+   [
+    10,
+    ""
+   ],
+   [
+    116,
+    ""
+   ],
+   [
+    1,
+    "lp"
+   ],
+   [
+    27,
+    ""
+   ],
+   [
+    155,
+    ""
+   ],
+   [
+    1,
+    "p"
+   ],
+   [
+    47,
+    ""
+   ],
+   [
+    30,
+    "r"
+   ],
+   [
+    1,
+    ""
+   ],
+   [
+    26,
+    "rj"
+   ],
+   [
+    14,
+    ""
+   ],
+   [
+    26,
+    "rj"
+   ],
+   [
+    14,
+    ""
+   ],
+   [
+    22,
+    "rj"
+   ],
+   [
+    20,
+    ""
+   ],
+   [
+    26,
+    "rjg"
+   ],
+   [
+    110,
+    ""
+   ],
+   [
+    24,
+    "rj"
+   ],
+   [
+    25,
+    ""
+   ],
+   [
+    130,
+    ""
+   ],
+   [
+    1,
+    "p"
+   ],
+   [
+    18,
+    ""
+   ],
+   [
+    1,
+    "p"
+   ],
+   [
+    160,
+    ""
+   ],
+   [
+    1,
+    "p"
+   ],
+   [
+    110,
+    ""
+   ],
+   [
+    70,
+    ""
+   ],
+   [
+    1,
+    "p"
+   ],
+   [
+    12,
+    ""
+   ],
+   [
+    44,
+    "r"
+   ],
+   [
+    10,
+    "rg"
+   ],
+   [
+    135,
+    "gu"
+   ],
+   [
+    22,
+    "r"
+   ],
+   [
+    1,
+    ""
+   ],
+   [
+    32,
+    "j"
+   ],
+   [
+    20,
+    ""
+   ],
+   [
+    143,
+    ""
+   ],
+   [
+    1,
+    "p"
+   ],
+   [
+    6,
+    ""
+   ],
+   [
+    100,
+    ""
+   ],
+   [
+    250,
+    "r"
+   ]
+  ]
+ },
+ {
+  "room": {
+   "id": "bank-b70",
+   "study": true,
+   "dashes": 1,
+   "cols": 80,
+   "rows": 38,
+   "palette": "gaol",
+   "exit": "left",
+   "name": "The Sentence Gets Longer",
+   "rbr": 7,
+   "lock": [
+    "portal"
+   ],
+   "dropThru": true,
+   "map": [
+    "###G############################################################################",
+    "#..G...........................................................................#",
+    "#..G...........................................................................#",
+    "#..G...........................................................................#",
+    "#..G...........................................................................#",
+    "#..G...........................................................................#",
+    "#..G...........................................................................#",
+    "#..G...........................................................................#",
+    "#..G...........................................................................#",
+    "#..G...........................................................................#",
+    "#..G...........................................................................#",
+    "#..G...........................................................................#",
+    "#..G...........................................................................#",
+    "#..G..........................HH.=========.....................................#",
+    "#..G..........................HH...............................................#",
+    "#..G..........................HH...............................................#",
+    "#..G..........................HH...............................................#",
+    "#..G..........................HH................==========.....................#",
+    "#..G..........................HH...............................................#",
+    "#..G..................=======.HH...............................................#",
+    "#..G..........................HH...............................................#",
+    "#..G..........................HH...............................................#",
+    "#..G..........................HH...............................................#",
+    "#..G..........................HH.....................==========................#",
+    "#..G..........................HH...............................................#",
+    "#..G..........................HH...............................................#",
+    "#..G................R.........HH...............................................#",
+    "#..G..........................HH...............................................#",
+    "...G............P.............HH...............................................#",
+    "...G....##=========...........HH...............................................#",
+    "...G....##....................HH...............................................#",
+    "...G....##====================HH.================================..............#",
+    "...G....##....................HH................................R..............#",
+    "...G....##....................HH...............................................#",
+    "################################################################################",
+    "################################################################################",
+    "################################################################################",
+    "################################################################################"
+   ],
+   "warden": {
+    "x": 34,
+    "y": 33,
+    "dir": 1,
+    "hp": 3,
+    "first": 380,
+    "turn": 50,
+    "leave": "kneel",
+    "shove": true,
+    "chain": {
+     "every": 120,
+     "tell": 35
+    },
+    "call": {
+     "at": 1,
+     "x": 44,
+     "dir": -1
+    }
+   },
+   "wardenBreaks": [
+    {
+     "c": 30,
+     "r": 13,
+     "wounds": 1
+    }
+   ],
+   "hint": "The same pod gives his rush back. His first wound breaks the center shutter, making the return journey longer.",
+   "question": "When the stop behind him disappears, which gallery lets you follow his return without standing in it?"
+  },
+  "bank": {
+   "side": "base",
+   "batch": 18,
+   "run": 9,
+   "collection": "superrooms",
+   "format": "superroom",
+   "acceptance": "candidate",
+   "status": "route-proven",
+   "author": "Codex",
+   "tags": [
+    "superroom",
+    "boss",
+    "warden",
+    "pressure-pod",
+    "return",
+    "shutter"
+   ],
+   "newMechanics": [],
+   "humanReview": "Awaiting review; numeric ratings unmeasured.",
+   "worlds": [
+    7
+   ],
+   "difficulty": 4,
+   "approvedIngredients": [
+    "bank-b44",
+    "bank-f45"
+   ],
+   "replaces": "cl7-g7-sentence",
+   "role": "The Warden and his own pod share one court whose return distance changes after the first wound.",
+   "solution": "Use the western pressure pod to climb over the central shutter, then descend the eastern galleries. Stand beyond the low eastern pod to invite his rush. As he commits, take the gallery above his head and follow the returned charge back to the center stop. Cut his lowered guard: the central shutter breaks. The same pod now throws him all the way into the western court. Follow above, letting his own rush flatten the summoned jailer. Meet the last rush with a normal parry and take the broad western exit after he kneels.",
+   "interconnection": "The shutter is first the obstacle you must cross and then the stop that defines the first crash. Its removal combines both sides into one long return lane, reusing the same pressure pod and overhead pursuit route.",
+   "novelty": "A boss wound changes how far his next returned attack travels. The route that got you into the arena becomes the safe pursuit path over that attack.",
+   "nearestExisting": "The native Sentence has three wounds in a small flat arena. This turns the two-way rush into a changing spatial problem and reuses the approach wall as the first crash stop.",
+   "requiredEvents": [
+    "recoil",
+    "warden-return",
+    "warden-crash",
+    "warden-hit",
+    "warden-shutter",
+    "warden-gone",
+    "gate-open",
+    "exit"
+   ],
+   "requiredEventCounts": {
+    "warden-hit": 3
+   },
+   "superroom": {
+    "screenAreas": 3.3043478260869565,
+    "stages": [
+     "Borrow the entrance pod to cross the shutter",
+     "Follow the first returned rush above its track",
+     "The shutter falls and the same return reaches the western court"
+    ]
+   },
+   "endingForgiveness": "The last crash lasts the native 170 frames. Its western court has solid ground and a nearby ordinary wall; no precision jump follows the final wound.",
+   "route": {
+    "exited": true,
+    "deaths": 0,
+    "frames": 1316
+   },
+   "routeEvents": [
+    {
+     "type": "recoil",
+     "frame": 24,
+     "x": 164,
+     "y": 212,
+     "dx": 0,
+     "dy": -1,
+     "i": 23
+    },
+    {
+     "type": "recoil",
+     "frame": 528,
+     "x": 516,
+     "y": 260,
+     "dx": -1,
+     "dy": 0,
+     "warden": true,
+     "i": 527
+    },
+    {
+     "type": "warden-return",
+     "frame": 528,
+     "x": 506,
+     "y": 261,
+     "how": "pod",
+     "i": 527
+    },
+    {
+     "type": "warden-crash",
+     "frame": 586,
+     "x": 256,
+     "y": 261,
+     "i": 585
+    },
+    {
+     "type": "warden-hit",
+     "frame": 630,
+     "x": 263,
+     "y": 261,
+     "wounds": 1,
+     "hp": 3,
+     "i": 629
+    },
+    {
+     "type": "warden-shutter",
+     "frame": 630,
+     "x": 248,
+     "y": 188,
+     "i": 629
+    },
+    {
+     "type": "jailer-fell",
+     "frame": 738,
+     "x": 356,
+     "y": 264,
+     "how": "warden",
+     "i": 737
+    },
+    {
+     "type": "recoil",
+     "frame": 790,
+     "x": 516,
+     "y": 260,
+     "dx": -1,
+     "dy": 0,
+     "warden": true,
+     "i": 789
+    },
+    {
+     "type": "warden-return",
+     "frame": 790,
+     "x": 506,
+     "y": 261,
+     "how": "pod",
+     "i": 789
+    },
+    {
+     "type": "warden-crash",
+     "frame": 887,
+     "x": 80,
+     "y": 261,
+     "i": 886
+    },
+    {
+     "type": "warden-hit",
+     "frame": 951,
+     "x": 87,
+     "y": 261,
+     "wounds": 2,
+     "hp": 3,
+     "i": 950
+    },
+    {
+     "type": "warden-return",
+     "frame": 1068,
+     "x": 197,
+     "y": 261,
+     "how": "parry",
+     "i": 1067
+    },
+    {
+     "type": "warden-crash",
+     "frame": 1096,
+     "x": 80,
+     "y": 261,
+     "i": 1095
+    },
+    {
+     "type": "warden-hit",
+     "frame": 1154,
+     "x": 87,
+     "y": 261,
+     "wounds": 3,
+     "hp": 3,
+     "i": 1153
+    },
+    {
+     "type": "warden-gone",
+     "frame": 1154,
+     "x": 87,
+     "y": 261,
+     "how": "kneel",
+     "i": 1153
+    },
+    {
+     "type": "gate-open",
+     "frame": 1161,
+     "x": 28,
+     "y": 136,
+     "i": 1160
+    },
+    {
+     "type": "exit",
+     "frame": 1316,
+     "room": 0,
+     "i": 1315
+    }
+   ],
+   "positiveChecks": [
+    {
+     "name": "Begin the final punish 15 frames earlier",
+     "tape": [
+      [
+       18,
+       "rj"
+      ],
+      [
+       5,
+       "dx"
+      ],
+      [
+       12,
+       ""
+      ],
+      [
+       9,
+       "ux"
+      ],
+      [
+       22,
+       "r"
+      ],
+      [
+       35,
+       ""
+      ],
+      [
+       34,
+       "rj"
+      ],
+      [
+       70,
+       "rgu"
+      ],
+      [
+       50,
+       "r"
+      ],
+      [
+       40,
+       "r"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       30,
+       ""
+      ],
+      [
+       100,
+       "r"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       36,
+       "lj"
+      ],
+      [
+       10,
+       "lx"
+      ],
+      [
+       123,
+       "l"
+      ],
+      [
+       18,
+       "dj"
+      ],
+      [
+       1,
+       "ls"
+      ],
+      [
+       35,
+       ""
+      ],
+      [
+       32,
+       ""
+      ],
+      [
+       36,
+       "lj"
+      ],
+      [
+       34,
+       "l"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       30,
+       "lj"
+      ],
+      [
+       84,
+       "l"
+      ],
+      [
+       50,
+       ""
+      ],
+      [
+       18,
+       "dj"
+      ],
+      [
+       1,
+       "ls"
+      ],
+      [
+       35,
+       ""
+      ],
+      [
+       76,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       70,
+       "l"
+      ],
+      [
+       1,
+       "ls"
+      ],
+      [
+       35,
+       ""
+      ],
+      [
+       50,
+       "ljg"
+      ],
+      [
+       40,
+       "lgu"
+      ],
+      [
+       100,
+       "l"
+      ]
+     ],
+     "exited": true,
+     "deaths": 0,
+     "frames": 1301
+    },
+    {
+     "name": "Begin the final punish 55 frames later",
+     "tape": [
+      [
+       18,
+       "rj"
+      ],
+      [
+       5,
+       "dx"
+      ],
+      [
+       12,
+       ""
+      ],
+      [
+       9,
+       "ux"
+      ],
+      [
+       22,
+       "r"
+      ],
+      [
+       35,
+       ""
+      ],
+      [
+       34,
+       "rj"
+      ],
+      [
+       70,
+       "rgu"
+      ],
+      [
+       50,
+       "r"
+      ],
+      [
+       40,
+       "r"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       30,
+       ""
+      ],
+      [
+       100,
+       "r"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       36,
+       "lj"
+      ],
+      [
+       10,
+       "lx"
+      ],
+      [
+       123,
+       "l"
+      ],
+      [
+       18,
+       "dj"
+      ],
+      [
+       1,
+       "ls"
+      ],
+      [
+       35,
+       ""
+      ],
+      [
+       32,
+       ""
+      ],
+      [
+       36,
+       "lj"
+      ],
+      [
+       34,
+       "l"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       30,
+       "lj"
+      ],
+      [
+       84,
+       "l"
+      ],
+      [
+       50,
+       ""
+      ],
+      [
+       18,
+       "dj"
+      ],
+      [
+       1,
+       "ls"
+      ],
+      [
+       35,
+       ""
+      ],
+      [
+       76,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       75,
+       ""
+      ],
+      [
+       70,
+       "l"
+      ],
+      [
+       1,
+       "ls"
+      ],
+      [
+       35,
+       ""
+      ],
+      [
+       50,
+       "ljg"
+      ],
+      [
+       40,
+       "lgu"
+      ],
+      [
+       100,
+       "l"
+      ]
+     ],
+     "exited": true,
+     "deaths": 0,
+     "frames": 1371
+    }
+   ],
+   "shortcutChecks": [
+    {
+     "name": "Use the broken central shutter to run straight for the western exit after one wound",
+     "tape": [
+      [
+       18,
+       "rj"
+      ],
+      [
+       5,
+       "dx"
+      ],
+      [
+       12,
+       ""
+      ],
+      [
+       9,
+       "ux"
+      ],
+      [
+       22,
+       "r"
+      ],
+      [
+       35,
+       ""
+      ],
+      [
+       34,
+       "rj"
+      ],
+      [
+       70,
+       "rgu"
+      ],
+      [
+       50,
+       "r"
+      ],
+      [
+       40,
+       "r"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       30,
+       ""
+      ],
+      [
+       100,
+       "r"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       36,
+       "lj"
+      ],
+      [
+       10,
+       "lx"
+      ],
+      [
+       123,
+       "l"
+      ],
+      [
+       18,
+       "dj"
+      ],
+      [
+       1,
+       "ls"
+      ],
+      [
+       35,
+       ""
+      ],
+      [
+       120,
+       "ljg"
+      ],
+      [
+       100,
+       "lgu"
+      ],
+      [
+       150,
+       "l"
+      ]
+     ],
+     "exited": false,
+     "deaths": 1,
+     "frames": null
+    }
+   ],
+   "revision": "a0f00a00be17",
+   "source": "scripts/room-bank/base/bank-b70.json"
+  },
+  "tape": [
+   [
+    18,
+    "rj"
+   ],
+   [
+    5,
+    "dx"
+   ],
+   [
+    12,
+    ""
+   ],
+   [
+    9,
+    "ux"
+   ],
+   [
+    22,
+    "r"
+   ],
+   [
+    35,
+    ""
+   ],
+   [
+    34,
+    "rj"
+   ],
+   [
+    70,
+    "rgu"
+   ],
+   [
+    50,
+    "r"
+   ],
+   [
+    40,
+    "r"
+   ],
+   [
+    12,
+    "r"
+   ],
+   [
+    30,
+    ""
+   ],
+   [
+    100,
+    "r"
+   ],
+   [
+    5,
+    ""
+   ],
+   [
+    36,
+    "lj"
+   ],
+   [
+    10,
+    "lx"
+   ],
+   [
+    123,
+    "l"
+   ],
+   [
+    18,
+    "dj"
+   ],
+   [
+    1,
+    "ls"
+   ],
+   [
+    35,
+    ""
+   ],
+   [
+    32,
+    ""
+   ],
+   [
+    36,
+    "lj"
+   ],
+   [
+    34,
+    "l"
+   ],
+   [
+    1,
+    ""
+   ],
+   [
+    30,
+    "lj"
+   ],
+   [
+    84,
+    "l"
+   ],
+   [
+    50,
+    ""
+   ],
+   [
+    18,
+    "dj"
+   ],
+   [
+    1,
+    "ls"
+   ],
+   [
+    35,
+    ""
+   ],
+   [
+    76,
+    ""
+   ],
+   [
+    1,
+    "p"
+   ],
+   [
+    20,
+    ""
+   ],
+   [
+    70,
+    "l"
+   ],
+   [
+    1,
+    "ls"
+   ],
+   [
+    35,
+    ""
+   ],
+   [
+    50,
+    "ljg"
+   ],
+   [
+    40,
+    "lgu"
+   ],
+   [
+    100,
+    "l"
+   ]
+  ]
+ },
+ {
+  "room": {
+   "id": "bank-b71",
+   "study": true,
+   "dashes": 1,
+   "cols": 76,
+   "rows": 40,
+   "palette": "court",
+   "exit": "right",
+   "name": "Leave the Ice Above You",
+   "rbr": 9,
+   "lock": [
+    "portal"
+   ],
+   "dropThru": true,
+   "thaw": 480,
+   "map": [
+    "######################################################################G#####",
+    "#.....................................................................G....#",
+    "#.....................................................................G....#",
+    "#.....................................................................G....#",
+    "#.....................................................................G....#",
+    "#.....................................................................G....#",
+    "#.....................................................................G....#",
+    "#.....................................................................G....#",
+    "#.......wwwwwwwwwwww..................................................G....#",
+    "#.................ww..................................................G....#",
+    "#.................ww...........................................wwwwwwwG....#",
+    "#.................ww...........................................#######G....#",
+    "#.................ww..................................................G....#",
+    "#.................ww=====.............................................G....#",
+    "#.................ww..................................................G....#",
+    "#.................ww..................................................G....#",
+    "#.................ww............wwwwwwwwwwwwwwwwwwwwwww...............G....#",
+    "#.................ww............ww....................................G....#",
+    "#.................wwwwwwwwwwwww.ww....................................G....#",
+    "#...............................ww....................................G....#",
+    "#.........................=====.ww....................................G....#",
+    "#...............................ww....................................G....#",
+    "#...............................ww....................................G....#",
+    "#........................======.ww....................................G....#",
+    "#...................wwwwwwwwwwwwww....................................G....#",
+    "#...................ww................................................G....#",
+    "#...................ww................................................G....#",
+    "#...................ww................................................G....#",
+    "#..............=====ww................................................G....#",
+    "#...................ww................................................G.....",
+    "#...................ww.............=====..............................G.....",
+    "#...................ww...=====................======..................G.....",
+    "#...................ww................................................G.....",
+    "#...........P.......ww.^^^^^^^^^^^^^^^^^^^^^^^^^^^....................G.....",
+    "############################################################################",
+    "############################################################################",
+    "############################################################################",
+    "############################################################################",
+    "############################################################################",
+    "############################################################################"
+   ],
+   "sorcerer": {
+    "posts": [
+     {
+      "c": 52,
+      "r": 15
+     },
+     {
+      "c": 10,
+      "r": 7
+     },
+     {
+      "c": 65,
+      "r": 9,
+      "fall": {
+       "c": 59,
+       "r": 33
+      }
+     }
+    ],
+    "hits": 3,
+    "every": 170,
+    "tell": 50,
+    "first": 170,
+    "speed": 105,
+    "down": 220,
+    "leave": "up",
+    "icicles": {
+     "every": 2,
+     "n": 3,
+     "gap": 4,
+     "speed": 180,
+     "stake": 100
+    }
+   },
+   "hint": "Frozen water is a stair and a ward broken. When the old stair melts, its lower route opens. His last cup is above the dry bank.",
+   "question": "Can you leave the first ice above you and make his last frost bring him down to your level?"
+  },
+  "bank": {
+   "side": "base",
+   "batch": 18,
+   "run": 9,
+   "collection": "superrooms",
+   "format": "superroom",
+   "acceptance": "candidate",
+   "status": "route-proven",
+   "author": "Codex",
+   "tags": [
+    "superroom",
+    "boss",
+    "sorcerer",
+    "water",
+    "freeze",
+    "thaw",
+    "return"
+   ],
+   "newMechanics": [],
+   "humanReview": "Awaiting review; numeric ratings unmeasured.",
+   "worlds": [
+    9
+   ],
+   "difficulty": 4,
+   "approvedIngredients": [
+    "bank-b45",
+    "bank-f52"
+   ],
+   "replaces": "cl9-s9-ward",
+   "role": "Three native Sorcerer openings weave through two connected ice routes and the lower path they initially obstruct.",
+   "solution": "Freeze the near face of the first connected pool and climb the ice in two stages to his first post. When he blinks west, cross back toward the separate return pool; freeze it, climb its overflow and reach him above the entrance. By then the original stair has thawed. Drop back to the starting bank and cross beneath the former ice bridge using the dry stepping ledges. Wait under the high eastern cup: his own descending frost freezes it, bringing him down to the broad dry bank for the last cut. His native departure opens the full-height eastern seal.",
+   "interconnection": "The first pool is a climb and a bridge during the outward route, then an obstruction whose thaw admits the lower return. The second post sends the knight back above the beginning, so the final approach reads the same aqueduct from underneath.",
+   "novelty": "The third opening is won by leaving the original high route: the player stops trying to climb toward the caster and uses his own frost to bring him below the ice instead.",
+   "nearestExisting": "The native White Court teaches a frozen overflow and the Last Ward teaches an aimed self-freeze. This combines them with a return above the entry and a lower route through the footprint of the first temporary stair.",
+   "requiredEvents": [
+    "freeze",
+    "sorc-hit",
+    "sorc-blink",
+    "thaw",
+    "sorc-frost",
+    "sorc-down",
+    "sorc-gone",
+    "gate-open",
+    "exit"
+   ],
+   "requiredEventCounts": {
+    "sorc-hit": 3
+   },
+   "superroom": {
+    "screenAreas": 3.3043478260869565,
+    "stages": [
+     "Build a temporary two-storey ice stair to the first post",
+     "Climb a separate return overflow above the beginning",
+     "Cross below the thawed stair and bring the final cup down"
+    ]
+   },
+   "endingForgiveness": "The last native drop stays vulnerable for 220 frames on broad dry ground. The pool can be frozen again if an opening is missed; the final exit is a safe walk.",
+   "route": {
+    "exited": true,
+    "deaths": 0,
+    "frames": 1631
+   },
+   "routeEvents": [
+    {
+     "type": "freeze",
+     "frame": 37,
+     "x": 260,
+     "y": 132,
+     "pool": 2,
+     "i": 36
+    },
+    {
+     "type": "sorc-hit",
+     "frame": 364,
+     "x": 420,
+     "y": 119,
+     "hits": 1,
+     "need": 3,
+     "i": 363
+    },
+    {
+     "type": "sorc-blink",
+     "frame": 364,
+     "x": 420,
+     "y": 119,
+     "i": 363
+    },
+    {
+     "type": "freeze",
+     "frame": 524,
+     "x": 68,
+     "y": 68,
+     "pool": 0,
+     "i": 523
+    },
+    {
+     "type": "sorc-frost",
+     "frame": 524,
+     "x": 124.13192161112276,
+     "y": 62.036644891978504,
+     "pool": 0,
+     "friendly": false,
+     "i": 523
+    },
+    {
+     "type": "thaw",
+     "frame": 525,
+     "x": 260,
+     "y": 132,
+     "pool": 2,
+     "i": 524
+    },
+    {
+     "type": "sorc-hit",
+     "frame": 774,
+     "x": 84,
+     "y": 55,
+     "hits": 2,
+     "need": 3,
+     "i": 773
+    },
+    {
+     "type": "sorc-blink",
+     "frame": 774,
+     "x": 84,
+     "y": 55,
+     "i": 773
+    },
+    {
+     "type": "sorc-icicles",
+     "frame": 916,
+     "x": 524,
+     "y": 62,
+     "i": 915
+    },
+    {
+     "type": "thaw",
+     "frame": 1009,
+     "x": 68,
+     "y": 68,
+     "pool": 0,
+     "i": 1008
+    },
+    {
+     "type": "freeze",
+     "frame": 1156,
+     "x": 260,
+     "y": 132,
+     "pool": 2,
+     "i": 1155
+    },
+    {
+     "type": "sorc-frost",
+     "frame": 1156,
+     "x": 417.42376596650104,
+     "y": 126.32766248963664,
+     "pool": 2,
+     "friendly": false,
+     "i": 1155
+    },
+    {
+     "type": "sorc-icicles",
+     "frame": 1262,
+     "x": 524,
+     "y": 62,
+     "i": 1261
+    },
+    {
+     "type": "freeze",
+     "frame": 1435,
+     "x": 508,
+     "y": 84,
+     "pool": 1,
+     "i": 1434
+    },
+    {
+     "type": "sorc-frost",
+     "frame": 1435,
+     "x": 517.506762584624,
+     "y": 78.97024462765391,
+     "pool": 1,
+     "friendly": false,
+     "i": 1434
+    },
+    {
+     "type": "sorc-down",
+     "frame": 1460,
+     "x": 476,
+     "y": 272,
+     "i": 1459
+    },
+    {
+     "type": "sorc-hit",
+     "frame": 1478,
+     "x": 476,
+     "y": 263,
+     "hits": 3,
+     "need": 3,
+     "i": 1477
+    },
+    {
+     "type": "sorc-gone",
+     "frame": 1534,
+     "x": 476,
+     "y": 263,
+     "how": "up",
+     "i": 1533
+    },
+    {
+     "type": "gate-open",
+     "frame": 1535,
+     "x": 564,
+     "y": 136,
+     "i": 1534
+    },
+    {
+     "type": "exit",
+     "frame": 1631,
+     "room": 0,
+     "i": 1630
+    }
+   ],
+   "positiveChecks": [
+    {
+     "name": "Take the final ground opening 10 frames earlier",
+     "tape": [
+      [
+       36,
+       "r"
+      ],
+      [
+       1,
+       "rs"
+      ],
+      [
+       28,
+       "rjg"
+      ],
+      [
+       90,
+       "rgu"
+      ],
+      [
+       30,
+       "r"
+      ],
+      [
+       28,
+       "rjg"
+      ],
+      [
+       100,
+       "rgu"
+      ],
+      [
+       50,
+       "r"
+      ],
+      [
+       1,
+       "rs"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       96,
+       "l"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       30,
+       "lj"
+      ],
+      [
+       40,
+       ""
+      ],
+      [
+       36,
+       "l"
+      ],
+      [
+       22,
+       "ljg"
+      ],
+      [
+       132,
+       "lgu"
+      ],
+      [
+       32,
+       "l"
+      ],
+      [
+       1,
+       "ls"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       40,
+       "l"
+      ],
+      [
+       70,
+       ""
+      ],
+      [
+       85,
+       "r"
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       54,
+       "r"
+      ],
+      [
+       100,
+       ""
+      ],
+      [
+       11,
+       "r"
+      ],
+      [
+       150,
+       ""
+      ],
+      [
+       3,
+       "l"
+      ],
+      [
+       1,
+       "ls"
+      ],
+      [
+       60,
+       ""
+      ],
+      [
+       150,
+       "r"
+      ]
+     ],
+     "exited": true,
+     "deaths": 0,
+     "frames": 1621
+    },
+    {
+     "name": "Take the final ground opening 120 frames later",
+     "tape": [
+      [
+       36,
+       "r"
+      ],
+      [
+       1,
+       "rs"
+      ],
+      [
+       28,
+       "rjg"
+      ],
+      [
+       90,
+       "rgu"
+      ],
+      [
+       30,
+       "r"
+      ],
+      [
+       28,
+       "rjg"
+      ],
+      [
+       100,
+       "rgu"
+      ],
+      [
+       50,
+       "r"
+      ],
+      [
+       1,
+       "rs"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       96,
+       "l"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       30,
+       "lj"
+      ],
+      [
+       40,
+       ""
+      ],
+      [
+       36,
+       "l"
+      ],
+      [
+       22,
+       "ljg"
+      ],
+      [
+       132,
+       "lgu"
+      ],
+      [
+       32,
+       "l"
+      ],
+      [
+       1,
+       "ls"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       40,
+       "l"
+      ],
+      [
+       70,
+       ""
+      ],
+      [
+       85,
+       "r"
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       54,
+       "r"
+      ],
+      [
+       100,
+       ""
+      ],
+      [
+       11,
+       "r"
+      ],
+      [
+       280,
+       ""
+      ],
+      [
+       3,
+       "l"
+      ],
+      [
+       1,
+       "ls"
+      ],
+      [
+       60,
+       ""
+      ],
+      [
+       150,
+       "r"
+      ]
+     ],
+     "exited": true,
+     "deaths": 0,
+     "frames": 1751
+    }
+   ],
+   "shortcutChecks": [
+    {
+     "name": "Skip the final wound and try jumping or dashing over the eastern seal",
+     "tape": [
+      [
+       36,
+       "r"
+      ],
+      [
+       1,
+       "rs"
+      ],
+      [
+       28,
+       "rjg"
+      ],
+      [
+       90,
+       "rgu"
+      ],
+      [
+       30,
+       "r"
+      ],
+      [
+       28,
+       "rjg"
+      ],
+      [
+       100,
+       "rgu"
+      ],
+      [
+       50,
+       "r"
+      ],
+      [
+       1,
+       "rs"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       96,
+       "l"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       30,
+       "lj"
+      ],
+      [
+       40,
+       ""
+      ],
+      [
+       36,
+       "l"
+      ],
+      [
+       22,
+       "ljg"
+      ],
+      [
+       132,
+       "lgu"
+      ],
+      [
+       32,
+       "l"
+      ],
+      [
+       1,
+       "ls"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       40,
+       "l"
+      ],
+      [
+       70,
+       ""
+      ],
+      [
+       85,
+       "r"
+      ],
+      [
+       26,
+       "rj"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       12,
+       "rx"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       54,
+       "r"
+      ],
+      [
+       100,
+       ""
+      ],
+      [
+       11,
+       "r"
+      ],
+      [
+       160,
+       ""
+      ],
+      [
+       3,
+       "l"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       60,
+       ""
+      ],
+      [
+       150,
+       "r"
+      ],
+      [
+       40,
+       "rj"
+      ],
+      [
+       12,
+       "rux"
+      ],
+      [
+       80,
+       "rgu"
+      ]
+     ],
+     "exited": false,
+     "deaths": 0,
+     "frames": null
+    }
+   ],
+   "revision": "2a6c71cebf2c",
+   "source": "scripts/room-bank/base/bank-b71.json"
+  },
+  "tape": [
+   [
+    36,
+    "r"
+   ],
+   [
+    1,
+    "rs"
+   ],
+   [
+    28,
+    "rjg"
+   ],
+   [
+    90,
+    "rgu"
+   ],
+   [
+    30,
+    "r"
+   ],
+   [
+    28,
+    "rjg"
+   ],
+   [
+    100,
+    "rgu"
+   ],
+   [
+    50,
+    "r"
+   ],
+   [
+    1,
+    "rs"
+   ],
+   [
+    20,
+    ""
+   ],
+   [
+    96,
+    "l"
+   ],
+   [
+    1,
+    ""
+   ],
+   [
+    30,
+    "lj"
+   ],
+   [
+    40,
+    ""
+   ],
+   [
+    36,
+    "l"
+   ],
+   [
+    22,
+    "ljg"
+   ],
+   [
+    132,
+    "lgu"
+   ],
+   [
+    32,
+    "l"
+   ],
+   [
+    1,
+    "ls"
+   ],
+   [
+    20,
+    ""
+   ],
+   [
+    40,
+    "l"
+   ],
+   [
+    70,
+    ""
+   ],
+   [
+    85,
+    "r"
+   ],
+   [
+    26,
+    "rj"
+   ],
+   [
+    20,
+    ""
+   ],
+   [
+    20,
+    "rj"
+   ],
+   [
+    12,
+    "rx"
+   ],
+   [
+    25,
+    ""
+   ],
+   [
+    20,
+    "rj"
+   ],
+   [
+    12,
+    "rx"
+   ],
+   [
+    25,
+    ""
+   ],
+   [
+    54,
+    "r"
+   ],
+   [
+    100,
+    ""
+   ],
+   [
+    11,
+    "r"
+   ],
+   [
+    160,
+    ""
+   ],
+   [
+    3,
+    "l"
+   ],
+   [
+    1,
+    "ls"
+   ],
+   [
+    60,
+    ""
+   ],
+   [
+    150,
+    "r"
+   ]
+  ]
+ },
+ {
+  "room": {
+   "id": "bank-f68",
+   "name": "The Branch That Becomes the Way Back",
+   "palette": "fractured",
+   "rbr": 22,
+   "study": true,
+   "movement": "survive-2",
+   "aim8": true,
+   "cols": 72,
+   "rows": 40,
+   "exit": "left",
+   "lock": [
+    "parry",
+    "portal"
+   ],
+   "rootCrown": {
+    "c": 8,
+    "r": 10
+   },
+   "hingeArms": [
+    {
+     "id": "Crown branch",
+     "c": 59,
+     "r": 33,
+     "length": 12,
+     "dir": "up"
+    }
+   ],
+   "resinWind": {
+    "period": 240,
+    "branches": [
+     {
+      "c": 26,
+      "r": 34,
+      "w": 12,
+      "phase": 0
+     },
+     {
+      "c": 33,
+      "r": 17,
+      "w": 8,
+      "phase": 1
+     }
+    ]
+   },
+   "lashes": [
+    {
+     "c0": 29,
+     "r0": 31,
+     "c1": 36,
+     "r1": 33,
+     "period": 240,
+     "on": 60,
+     "phase": 0
+    },
+    {
+     "c0": 33,
+     "r0": 14,
+     "c1": 40,
+     "r1": 16,
+     "period": 240,
+     "on": 65,
+     "phase": 0
+    }
+   ],
+   "hint": "The upright branch bars the far anvil. Turn it into a floor, then return above the roof you crossed beneath.",
+   "question": "Which branch must stop being a wall before it can become your return route?",
+   "map": [
+    "########################################################################",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "G......................................................................#",
+    "G......................................................................#",
+    "G......................................................................#",
+    "G......................................................................#",
+    "#############..........................................................#",
+    "#......................................................................#",
+    "#................########..............................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#................................................#########.............#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#...........###############################################............#",
+    "#......................................................................#",
+    "#................................................................N.....#",
+    "#...P..................................................................#",
+    "#############........................................###################",
+    "#############........................................###################",
+    "#############........................................###################",
+    "#############........................................###################",
+    "#############^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^###################",
+    "########################################################################"
+   ]
+  },
+  "bank": {
+   "side": "fractured",
+   "batch": 18,
+   "run": 9,
+   "collection": "superrooms",
+   "format": "superroom",
+   "acceptance": "candidate",
+   "needsReview": true,
+   "difficulty": 3,
+   "role": "interconnected native Oath Root boss superroom",
+   "worlds": [
+    22
+   ],
+   "tags": [
+    "superroom",
+    "root-crown",
+    "hyper",
+    "resin",
+    "hinge",
+    "return"
+   ],
+   "newMechanics": [],
+   "status": "route-proven",
+   "author": "Codex",
+   "humanReview": "New integrated candidate; awaiting fun/difficulty/suitability review.",
+   "approvedIngredients": [
+    "bank-f17",
+    "bank-f26"
+   ],
+   "interconnection": "The same overhang is the outward low ceiling and the roof below the return. One upright crown branch bars the far anvil; turning it opens the anvil and makes its launch floor. The Root lashes both heights until the high crown is cut above the original fire.",
+   "solution": "Hyper beneath the canopy, using the timed resin pause. Turn the upright crown branch from its near side, reach the far anvil, and pogo to the upper ledge. Return across the resin beat and upper islands; cut the native Oath Root crown above the starting court.",
+   "novelty": "The obstruction at the end of the low run becomes the departure floor for the route above it; the actual boss occupies both routes through one lash clock.",
+   "nearestExisting": "F17/F26 low movement and world-native resin/lashes, rebuilt as one return court.",
+   "requiredEvents": [
+    "hyper",
+    "hinge-turn",
+    "anvil",
+    "root-cut"
+   ],
+   "route": {
+    "name": "canonical",
+    "exited": true,
+    "deaths": 0,
+    "frames": 585,
+    "crownCut": true,
+    "events": [
+     "dash",
+     "ultra",
+     "refill-dash",
+     "hyper",
+     "land",
+     "strike",
+     "hinge-turn",
+     "jump",
+     "anvil",
+     "super",
+     "root-cut",
+     "gate-open",
+     "exit"
+    ],
+    "eventCounts": {
+     "dash": 7,
+     "ultra": 2,
+     "refill-dash": 7,
+     "hyper": 2,
+     "land": 7,
+     "strike": 3,
+     "hinge-turn": 1,
+     "jump": 4,
+     "anvil": 1,
+     "super": 1,
+     "root-cut": 1,
+     "gate-open": 1,
+     "exit": 1
+    }
+   },
+   "positiveChecks": [
+    {
+     "name": "Final takeoff setup -3 frames",
+     "tape": [
+      [
+       30,
+       "r"
+      ],
+      [
+       5,
+       "rdx"
+      ],
+      [
+       6,
+       "r"
+      ],
+      [
+       25,
+       "rj"
+      ],
+      [
+       20,
+       "r"
+      ],
+      [
+       5,
+       "rdx"
+      ],
+      [
+       6,
+       "r"
+      ],
+      [
+       25,
+       "rj"
+      ],
+      [
+       25,
+       "r"
+      ],
+      [
+       1,
+       "rs"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       42,
+       "rj"
+      ],
+      [
+       6,
+       ""
+      ],
+      [
+       12,
+       "j"
+      ],
+      [
+       1,
+       "dsj"
+      ],
+      [
+       30,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       20,
+       "l"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       10,
+       "l"
+      ],
+      [
+       5,
+       "lx"
+      ],
+      [
+       5,
+       "l"
+      ],
+      [
+       16,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       25,
+       "l"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       20,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       20,
+       "l"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       21,
+       "l"
+      ],
+      [
+       15,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       20,
+       "l"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       6,
+       "l"
+      ],
+      [
+       1,
+       "ls"
+      ],
+      [
+       70,
+       "l"
+      ]
+     ],
+     "after": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 585,
+      "crownCut": true,
+      "events": [
+       "dash",
+       "ultra",
+       "refill-dash",
+       "hyper",
+       "land",
+       "strike",
+       "hinge-turn",
+       "jump",
+       "anvil",
+       "super",
+       "root-cut",
+       "gate-open",
+       "exit"
+      ],
+      "eventCounts": {
+       "dash": 7,
+       "ultra": 2,
+       "refill-dash": 7,
+       "hyper": 2,
+       "land": 7,
+       "strike": 3,
+       "hinge-turn": 1,
+       "jump": 4,
+       "anvil": 1,
+       "super": 1,
+       "root-cut": 1,
+       "gate-open": 1,
+       "exit": 1
+      }
+     }
+    },
+    {
+     "name": "Final takeoff setup 3 frames",
+     "tape": [
+      [
+       30,
+       "r"
+      ],
+      [
+       5,
+       "rdx"
+      ],
+      [
+       6,
+       "r"
+      ],
+      [
+       25,
+       "rj"
+      ],
+      [
+       20,
+       "r"
+      ],
+      [
+       5,
+       "rdx"
+      ],
+      [
+       6,
+       "r"
+      ],
+      [
+       25,
+       "rj"
+      ],
+      [
+       25,
+       "r"
+      ],
+      [
+       1,
+       "rs"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       42,
+       "rj"
+      ],
+      [
+       6,
+       ""
+      ],
+      [
+       12,
+       "j"
+      ],
+      [
+       1,
+       "dsj"
+      ],
+      [
+       30,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       20,
+       "l"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       10,
+       "l"
+      ],
+      [
+       5,
+       "lx"
+      ],
+      [
+       5,
+       "l"
+      ],
+      [
+       16,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       25,
+       "l"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       20,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       20,
+       "l"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       27,
+       "l"
+      ],
+      [
+       15,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       20,
+       "l"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       6,
+       "l"
+      ],
+      [
+       1,
+       "ls"
+      ],
+      [
+       70,
+       "l"
+      ]
+     ],
+     "after": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 585,
+      "crownCut": true,
+      "events": [
+       "dash",
+       "ultra",
+       "refill-dash",
+       "hyper",
+       "land",
+       "strike",
+       "hinge-turn",
+       "jump",
+       "anvil",
+       "super",
+       "root-cut",
+       "gate-open",
+       "exit"
+      ],
+      "eventCounts": {
+       "dash": 7,
+       "ultra": 2,
+       "refill-dash": 7,
+       "hyper": 2,
+       "land": 7,
+       "strike": 3,
+       "hinge-turn": 1,
+       "jump": 4,
+       "anvil": 1,
+       "super": 1,
+       "root-cut": 1,
+       "gate-open": 1,
+       "exit": 1
+      }
+     }
+    },
+    {
+     "name": "Wait through a full resin-and-lash cycle on the upper ledge",
+     "tape": [
+      [
+       30,
+       "r"
+      ],
+      [
+       5,
+       "rdx"
+      ],
+      [
+       6,
+       "r"
+      ],
+      [
+       25,
+       "rj"
+      ],
+      [
+       20,
+       "r"
+      ],
+      [
+       5,
+       "rdx"
+      ],
+      [
+       6,
+       "r"
+      ],
+      [
+       25,
+       "rj"
+      ],
+      [
+       25,
+       "r"
+      ],
+      [
+       1,
+       "rs"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       42,
+       "rj"
+      ],
+      [
+       6,
+       ""
+      ],
+      [
+       12,
+       "j"
+      ],
+      [
+       1,
+       "dsj"
+      ],
+      [
+       30,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       20,
+       "l"
+      ],
+      [
+       480,
+       ""
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       10,
+       "l"
+      ],
+      [
+       5,
+       "lx"
+      ],
+      [
+       5,
+       "l"
+      ],
+      [
+       16,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       25,
+       "l"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       20,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       20,
+       "l"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       24,
+       "l"
+      ],
+      [
+       15,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       20,
+       "l"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       6,
+       "l"
+      ],
+      [
+       1,
+       "ls"
+      ],
+      [
+       70,
+       "l"
+      ]
+     ],
+     "after": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 1065,
+      "crownCut": true,
+      "events": [
+       "dash",
+       "ultra",
+       "refill-dash",
+       "hyper",
+       "land",
+       "strike",
+       "hinge-turn",
+       "jump",
+       "anvil",
+       "super",
+       "root-cut",
+       "gate-open",
+       "exit"
+      ],
+      "eventCounts": {
+       "dash": 7,
+       "ultra": 2,
+       "refill-dash": 7,
+       "hyper": 2,
+       "land": 7,
+       "strike": 3,
+       "hinge-turn": 1,
+       "jump": 4,
+       "anvil": 1,
+       "super": 1,
+       "root-cut": 1,
+       "gate-open": 1,
+       "exit": 1
+      }
+     }
+    }
+   ],
+   "shortcutChecks": [
+    {
+     "name": "Leave the crown branch upright and try the same far ascent",
+     "tape": [
+      [
+       30,
+       "r"
+      ],
+      [
+       5,
+       "rdx"
+      ],
+      [
+       6,
+       "r"
+      ],
+      [
+       25,
+       "rj"
+      ],
+      [
+       20,
+       "r"
+      ],
+      [
+       5,
+       "rdx"
+      ],
+      [
+       6,
+       "r"
+      ],
+      [
+       25,
+       "rj"
+      ],
+      [
+       25,
+       "r"
+      ],
+      [
+       1,
+       "r"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       42,
+       "rj"
+      ],
+      [
+       6,
+       ""
+      ],
+      [
+       12,
+       "j"
+      ],
+      [
+       1,
+       "dsj"
+      ],
+      [
+       30,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       20,
+       "l"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       10,
+       "l"
+      ],
+      [
+       5,
+       "lx"
+      ],
+      [
+       5,
+       "l"
+      ],
+      [
+       16,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       25,
+       "l"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       20,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       20,
+       "l"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       24,
+       "l"
+      ],
+      [
+       15,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       20,
+       "l"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       1,
+       "ls"
+      ],
+      [
+       70,
+       "l"
+      ]
+     ],
+     "after": {
+      "exited": false,
+      "deaths": 1,
+      "frames": 0,
+      "crownCut": false,
+      "events": [
+       "dash",
+       "ultra",
+       "refill-dash",
+       "hyper",
+       "land",
+       "jump",
+       "strike",
+       "hinge-turn",
+       "death",
+       "respawn",
+       "walljump"
+      ],
+      "eventCounts": {
+       "dash": 5,
+       "ultra": 2,
+       "refill-dash": 4,
+       "hyper": 2,
+       "land": 6,
+       "jump": 3,
+       "strike": 2,
+       "hinge-turn": 1,
+       "death": 1,
+       "respawn": 1,
+       "walljump": 1
+      }
+     }
+    }
+   ],
+   "endingForgiveness": "The final dry ledge is wide enough to set up the approach; takeoff setups six frames apart both land cleanly. Missing the final ledge falls to the original sheltered court rather than a lethal last-jump trap. The crown stops all native lashes once cut.",
+   "revision": "890baab625a7",
+   "source": "scripts/room-bank/fractured/bank-f68.json"
+  },
+  "tape": [
+   [
+    30,
+    "r"
+   ],
+   [
+    5,
+    "rdx"
+   ],
+   [
+    6,
+    "r"
+   ],
+   [
+    25,
+    "rj"
+   ],
+   [
+    20,
+    "r"
+   ],
+   [
+    5,
+    "rdx"
+   ],
+   [
+    6,
+    "r"
+   ],
+   [
+    25,
+    "rj"
+   ],
+   [
+    25,
+    "r"
+   ],
+   [
+    1,
+    "rs"
+   ],
+   [
+    10,
+    ""
+   ],
+   [
+    42,
+    "rj"
+   ],
+   [
+    6,
+    ""
+   ],
+   [
+    12,
+    "j"
+   ],
+   [
+    1,
+    "dsj"
+   ],
+   [
+    30,
+    "lj"
+   ],
+   [
+    5,
+    "lux"
+   ],
+   [
+    20,
+    "l"
+   ],
+   [
+    20,
+    ""
+   ],
+   [
+    10,
+    "l"
+   ],
+   [
+    5,
+    "lx"
+   ],
+   [
+    5,
+    "l"
+   ],
+   [
+    16,
+    "lj"
+   ],
+   [
+    5,
+    "lux"
+   ],
+   [
+    25,
+    "l"
+   ],
+   [
+    10,
+    ""
+   ],
+   [
+    20,
+    "lj"
+   ],
+   [
+    5,
+    "lux"
+   ],
+   [
+    20,
+    "l"
+   ],
+   [
+    15,
+    ""
+   ],
+   [
+    24,
+    "l"
+   ],
+   [
+    15,
+    "lj"
+   ],
+   [
+    5,
+    "lux"
+   ],
+   [
+    20,
+    "l"
+   ],
+   [
+    20,
+    ""
+   ],
+   [
+    6,
+    "l"
+   ],
+   [
+    1,
+    "ls"
+   ],
+   [
+    70,
+    "l"
+   ]
+  ]
+ },
+ {
+  "room": {
+   "id": "bank-f69",
+   "name": "His Charge Opens Your Return",
+   "palette": "fractured",
+   "rbr": 23,
+   "study": true,
+   "movement": "survive-2",
+   "aim8": true,
+   "cols": 80,
+   "rows": 36,
+   "exit": "right",
+   "zips": [
+    [
+     0,
+     -13
+    ],
+    [
+     0,
+     -13
+    ],
+    [
+     0,
+     -15
+    ]
+   ],
+   "lock": [
+    "parry",
+    "portal"
+   ],
+   "combat": {
+    "waitForMove": true,
+    "enemies": [
+     {
+      "kind": "hound",
+      "brute": true,
+      "crush": 2,
+      "stamp": "always",
+      "x": 320,
+      "y": 256,
+      "face": -1,
+      "ward": "brute"
+     }
+    ],
+    "receivers": [],
+    "doors": [
+     {
+      "x": 448,
+      "y": 8,
+      "w": 8,
+      "h": 264,
+      "ward": "brute"
+     }
+    ]
+   },
+   "hint": "Drop the first weight, then follow his next charge above the floor. The far carrier is also your way back.",
+   "question": "Where does a counterweight have to land so that it hurts him and still helps you?",
+   "map": [
+    "################################################################################",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#...............................................................................",
+    "#...............................................................................",
+    "#...............................................................................",
+    "#...............................................................................",
+    "#.......................................#######...........................######",
+    "#.............................................................########.........#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#.........................KKKK.......................KKK.......................#",
+    "#.........................KKKK.......................KKK.......................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#................................ZZZZZ..........ZZZZZ..........................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#.....................ZZZZ.....................................................#",
+    "#..............................................................................#",
+    "#........................#.....................................................#",
+    "#........................#.......P.............................................#",
+    "################################################################################",
+    "################################################################################"
+   ]
+  },
+  "bank": {
+   "side": "fractured",
+   "batch": 18,
+   "run": 9,
+   "collection": "superrooms",
+   "format": "superroom",
+   "acceptance": "candidate",
+   "needsReview": true,
+   "difficulty": 4,
+   "role": "interconnected native Brute boss superroom",
+   "worlds": [
+    23
+   ],
+   "tags": [
+    "superroom",
+    "brute",
+    "counterweight",
+    "lift",
+    "return"
+   ],
+   "newMechanics": [],
+   "status": "route-proven",
+   "author": "Codex",
+   "humanReview": "New integrated candidate; awaiting fun/difficulty/suitability review.",
+   "approvedIngredients": [
+    "bank-f27",
+    "bank-f33"
+   ],
+   "interconnection": "Two counterweights share one live Brute court. Dropping the west weight opens its vertical shaft and rebounds the knight toward the middle lift. Stepping off that lift baits the enraged eastward charge; an upward dodge catches the east lift while the boss stops under its weight. After dropping that weight, the knight returns to the same lift and crosses the same ward that stopped the charge, now opened by the real defeat.",
+   "solution": "Jump away from the first charge onto the western lift. Land on its counterweight and dash down, crushing the stopped Brute once. Drift onto the middle lift during the rebound, then walk off toward the open eastern court to draw his enraged charge. Dash upward while it commits beneath you, land on the east lift, and step onto its weight. Dash down to crush him against his ward. Descend back onto the east lift, ride it again, then jump through the opened ward to the broad exit galleries.",
+   "novelty": "A descent to damage the boss becomes a return to the carrier that supplied the attack. The middle carrier is used to expose a moving bait, and the boss’s final stopping wall is the barrier to the same high route the player must revisit.",
+   "nearestExisting": "World23 native Brute crushes and lifts; F27 carrier commitment and F33 departure following a combat exchange.",
+   "requiredEvents": [
+    "zip-start",
+    "stone-hit",
+    "brute-crack",
+    "enemy-defeat",
+    "combat-gate"
+   ],
+   "route": {
+    "name": "canonical",
+    "exited": true,
+    "deaths": 0,
+    "frames": 763,
+    "bruteDefeated": true,
+    "cracks": 1,
+    "events": [
+     "jump",
+     "dash",
+     "enemy-tell",
+     "land",
+     "refill-dash",
+     "zip-start",
+     "zip-stop",
+     "brute-rear",
+     "brute-stamp",
+     "stone-hit",
+     "brute-crack",
+     "stone-stop",
+     "zip-home",
+     "enemy-defeat",
+     "combat-gate",
+     "exit"
+    ],
+    "eventCounts": {
+     "jump": 5,
+     "dash": 6,
+     "enemy-tell": 2,
+     "land": 7,
+     "refill-dash": 6,
+     "zip-start": 4,
+     "zip-stop": 4,
+     "brute-rear": 2,
+     "brute-stamp": 2,
+     "stone-hit": 2,
+     "brute-crack": 1,
+     "stone-stop": 2,
+     "zip-home": 4,
+     "enemy-defeat": 1,
+     "combat-gate": 1,
+     "exit": 1
+    }
+   },
+   "positiveChecks": [
+    {
+     "name": "Final jump hold -3 frames",
+     "tape": [
+      [
+       20,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       10,
+       "l"
+      ],
+      [
+       90,
+       ""
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       35,
+       ""
+      ],
+      [
+       5,
+       "dx"
+      ],
+      [
+       45,
+       ""
+      ],
+      [
+       50,
+       "r"
+      ],
+      [
+       48,
+       "r"
+      ],
+      [
+       5,
+       "ux"
+      ],
+      [
+       25,
+       "r"
+      ],
+      [
+       55,
+       ""
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       35,
+       ""
+      ],
+      [
+       5,
+       "dx"
+      ],
+      [
+       65,
+       ""
+      ],
+      [
+       30,
+       ""
+      ],
+      [
+       10,
+       "l"
+      ],
+      [
+       40,
+       ""
+      ],
+      [
+       30,
+       "rj"
+      ],
+      [
+       5,
+       "rx"
+      ],
+      [
+       25,
+       "r"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       17,
+       "rj"
+      ],
+      [
+       5,
+       "rux"
+      ],
+      [
+       55,
+       "r"
+      ]
+     ],
+     "after": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 763,
+      "bruteDefeated": true,
+      "cracks": 1,
+      "events": [
+       "jump",
+       "dash",
+       "enemy-tell",
+       "land",
+       "refill-dash",
+       "zip-start",
+       "zip-stop",
+       "brute-rear",
+       "brute-stamp",
+       "stone-hit",
+       "brute-crack",
+       "stone-stop",
+       "zip-home",
+       "enemy-defeat",
+       "combat-gate",
+       "exit"
+      ],
+      "eventCounts": {
+       "jump": 5,
+       "dash": 6,
+       "enemy-tell": 2,
+       "land": 7,
+       "refill-dash": 6,
+       "zip-start": 4,
+       "zip-stop": 4,
+       "brute-rear": 2,
+       "brute-stamp": 2,
+       "stone-hit": 2,
+       "brute-crack": 1,
+       "stone-stop": 2,
+       "zip-home": 4,
+       "enemy-defeat": 1,
+       "combat-gate": 1,
+       "exit": 1
+      }
+     }
+    },
+    {
+     "name": "Final jump hold 3 frames",
+     "tape": [
+      [
+       20,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       10,
+       "l"
+      ],
+      [
+       90,
+       ""
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       35,
+       ""
+      ],
+      [
+       5,
+       "dx"
+      ],
+      [
+       45,
+       ""
+      ],
+      [
+       50,
+       "r"
+      ],
+      [
+       48,
+       "r"
+      ],
+      [
+       5,
+       "ux"
+      ],
+      [
+       25,
+       "r"
+      ],
+      [
+       55,
+       ""
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       35,
+       ""
+      ],
+      [
+       5,
+       "dx"
+      ],
+      [
+       65,
+       ""
+      ],
+      [
+       30,
+       ""
+      ],
+      [
+       10,
+       "l"
+      ],
+      [
+       40,
+       ""
+      ],
+      [
+       30,
+       "rj"
+      ],
+      [
+       5,
+       "rx"
+      ],
+      [
+       25,
+       "r"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       23,
+       "rj"
+      ],
+      [
+       5,
+       "rux"
+      ],
+      [
+       55,
+       "r"
+      ]
+     ],
+     "after": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 763,
+      "bruteDefeated": true,
+      "cracks": 1,
+      "events": [
+       "jump",
+       "dash",
+       "enemy-tell",
+       "land",
+       "refill-dash",
+       "zip-start",
+       "zip-stop",
+       "brute-rear",
+       "brute-stamp",
+       "stone-hit",
+       "brute-crack",
+       "stone-stop",
+       "zip-home",
+       "enemy-defeat",
+       "combat-gate",
+       "exit"
+      ],
+      "eventCounts": {
+       "jump": 5,
+       "dash": 6,
+       "enemy-tell": 2,
+       "land": 7,
+       "refill-dash": 6,
+       "zip-start": 4,
+       "zip-stop": 4,
+       "brute-rear": 2,
+       "brute-stamp": 2,
+       "stone-hit": 2,
+       "brute-crack": 1,
+       "stone-stop": 2,
+       "zip-home": 4,
+       "enemy-defeat": 1,
+       "combat-gate": 1,
+       "exit": 1
+      }
+     }
+    },
+    {
+     "name": "Ride the return lift through one extra full cycle after victory",
+     "tape": [
+      [
+       20,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       10,
+       "l"
+      ],
+      [
+       90,
+       ""
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       35,
+       ""
+      ],
+      [
+       5,
+       "dx"
+      ],
+      [
+       45,
+       ""
+      ],
+      [
+       50,
+       "r"
+      ],
+      [
+       48,
+       "r"
+      ],
+      [
+       5,
+       "ux"
+      ],
+      [
+       25,
+       "r"
+      ],
+      [
+       55,
+       ""
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       35,
+       ""
+      ],
+      [
+       5,
+       "dx"
+      ],
+      [
+       65,
+       ""
+      ],
+      [
+       30,
+       ""
+      ],
+      [
+       10,
+       "l"
+      ],
+      [
+       245,
+       ""
+      ],
+      [
+       30,
+       "rj"
+      ],
+      [
+       5,
+       "rx"
+      ],
+      [
+       25,
+       "r"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       5,
+       "rux"
+      ],
+      [
+       55,
+       "r"
+      ]
+     ],
+     "after": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 968,
+      "bruteDefeated": true,
+      "cracks": 1,
+      "events": [
+       "jump",
+       "dash",
+       "enemy-tell",
+       "land",
+       "refill-dash",
+       "zip-start",
+       "zip-stop",
+       "brute-rear",
+       "brute-stamp",
+       "stone-hit",
+       "brute-crack",
+       "stone-stop",
+       "zip-home",
+       "enemy-defeat",
+       "combat-gate",
+       "exit"
+      ],
+      "eventCounts": {
+       "jump": 5,
+       "dash": 6,
+       "enemy-tell": 2,
+       "land": 7,
+       "refill-dash": 6,
+       "zip-start": 5,
+       "zip-stop": 5,
+       "brute-rear": 2,
+       "brute-stamp": 2,
+       "stone-hit": 2,
+       "brute-crack": 1,
+       "stone-stop": 2,
+       "zip-home": 5,
+       "enemy-defeat": 1,
+       "combat-gate": 1,
+       "exit": 1
+      }
+     }
+    }
+   ],
+   "shortcutChecks": [
+    {
+     "name": "Keep the second counterweight raised and attempt the upper exit",
+     "tape": [
+      [
+       20,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       10,
+       "l"
+      ],
+      [
+       90,
+       ""
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       35,
+       ""
+      ],
+      [
+       5,
+       "dx"
+      ],
+      [
+       45,
+       ""
+      ],
+      [
+       50,
+       "r"
+      ],
+      [
+       48,
+       "r"
+      ],
+      [
+       5,
+       "ux"
+      ],
+      [
+       25,
+       "r"
+      ],
+      [
+       55,
+       ""
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       35,
+       ""
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       65,
+       ""
+      ],
+      [
+       30,
+       ""
+      ],
+      [
+       10,
+       "l"
+      ],
+      [
+       40,
+       ""
+      ],
+      [
+       30,
+       "rj"
+      ],
+      [
+       5,
+       "rx"
+      ],
+      [
+       25,
+       "r"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       5,
+       "rux"
+      ],
+      [
+       55,
+       "r"
+      ]
+     ],
+     "after": {
+      "exited": false,
+      "deaths": 0,
+      "frames": 0,
+      "bruteDefeated": false,
+      "cracks": 1,
+      "events": [
+       "jump",
+       "dash",
+       "enemy-tell",
+       "land",
+       "refill-dash",
+       "zip-start",
+       "zip-stop",
+       "brute-rear",
+       "brute-stamp",
+       "stone-hit",
+       "brute-crack",
+       "stone-stop",
+       "zip-home",
+       "walljump"
+      ],
+      "eventCounts": {
+       "jump": 4,
+       "dash": 4,
+       "enemy-tell": 3,
+       "land": 6,
+       "refill-dash": 4,
+       "zip-start": 4,
+       "zip-stop": 4,
+       "brute-rear": 3,
+       "brute-stamp": 3,
+       "stone-hit": 1,
+       "brute-crack": 1,
+       "stone-stop": 1,
+       "zip-home": 3,
+       "walljump": 1
+      }
+     }
+    }
+   ],
+   "requiredEventCounts": {
+    "stone-hit": 2,
+    "brute-crack": 1,
+    "enemy-defeat": 1
+   },
+   "endingForgiveness": "All dangerous combat ends before the final route. Broad solid galleries accept earlier and later final jumps. The return lift can be ridden through another full cycle after victory; the lower court is solid recovery ground, not a last-jump death pit.",
+   "revision": "40a8e5d156ed",
+   "source": "scripts/room-bank/fractured/bank-f69.json"
+  },
+  "tape": [
+   [
+    20,
+    "lj"
+   ],
+   [
+    5,
+    "lux"
+   ],
+   [
+    10,
+    "l"
+   ],
+   [
+    90,
+    ""
+   ],
+   [
+    12,
+    "rj"
+   ],
+   [
+    35,
+    ""
+   ],
+   [
+    5,
+    "dx"
+   ],
+   [
+    45,
+    ""
+   ],
+   [
+    50,
+    "r"
+   ],
+   [
+    48,
+    "r"
+   ],
+   [
+    5,
+    "ux"
+   ],
+   [
+    25,
+    "r"
+   ],
+   [
+    55,
+    ""
+   ],
+   [
+    20,
+    "rj"
+   ],
+   [
+    35,
+    ""
+   ],
+   [
+    5,
+    "dx"
+   ],
+   [
+    65,
+    ""
+   ],
+   [
+    30,
+    ""
+   ],
+   [
+    10,
+    "l"
+   ],
+   [
+    40,
+    ""
+   ],
+   [
+    30,
+    "rj"
+   ],
+   [
+    5,
+    "rx"
+   ],
+   [
+    25,
+    "r"
+   ],
+   [
+    20,
+    ""
+   ],
+   [
+    20,
+    "rj"
+   ],
+   [
+    5,
+    "rux"
+   ],
+   [
+    55,
+    "r"
+   ]
+  ]
+ },
+ {
+  "room": {
+   "id": "bank-f70",
+   "name": "The Sentence Becomes a Wall",
+   "palette": "fractured",
+   "rbr": 27,
+   "study": true,
+   "movement": "survive-2",
+   "aim8": true,
+   "cols": 64,
+   "rows": 48,
+   "exit": "left",
+   "lock": [
+    "portal"
+   ],
+   "shade": {
+    "delay": 180
+   },
+   "warden": {
+    "x": 47,
+    "y": 15,
+    "dir": -1,
+    "hp": 3,
+    "first": 20,
+    "leave": "kneel",
+    "reach": 72,
+    "shove": true,
+    "chain": {
+     "every": 110,
+     "tell": 30,
+     "speed": 110
+    }
+   },
+   "hingeArms": [
+    {
+     "id": "Sentence floor",
+     "c": 25,
+     "r": 16,
+     "length": 24,
+     "dir": "right"
+    }
+   ],
+   "hint": "His first wound cracks the floor. Cut its hub early; the fallen floor catches his rush and carries you home.",
+   "question": "When the floor becomes a wall, who needs it first?",
+   "map": [
+    "################################################################",
+    "#..............................................................#",
+    "#..............................................................#",
+    "#..............................................................#",
+    "#..............................................................#",
+    "#..............................................................#",
+    "#..............................................................#",
+    "#..............................................................#",
+    "#..............................................................#",
+    "#..............................................................#",
+    "#..............................................................#",
+    "#..............................................................#",
+    "G................................................##............#",
+    "G................................................##............#",
+    "G................................................##............#",
+    "G.............................P..................##............#",
+    "#########################........................##............#",
+    "#................................................##............#",
+    "#................................................##............#",
+    "#................................................##............#",
+    "#................................................##............#",
+    "#................................................##............#",
+    "#................................................##............#",
+    "#.........................=====..................##............#",
+    "#................................................##............#",
+    "#................................................##............#",
+    "#................................................##............#",
+    "#................................................##............#",
+    "#................................................##............#",
+    "#................................................##............#",
+    "#................................................##............#",
+    "#.........................=====..................##............#",
+    "#................................................##............#",
+    "#................................................##............#",
+    "#................................................##............#",
+    "#................................................##............#",
+    "#................................................##............#",
+    "#..............................................................#",
+    "#..............................................................#",
+    "#..............................................................#",
+    "#.........................######################################",
+    "#.........................######################################",
+    "#.........................######################################",
+    "#.........................######################################",
+    "#.........................######################################",
+    "#.........................######################################",
+    "#^^^^^^^^^^^^^^^^^^^^^^^^^######################################",
+    "################################################################"
+   ],
+   "wardenFloor": {
+    "hinge": "Sentence floor",
+    "fuse": 80
+   }
+  },
+  "bank": {
+   "side": "fractured",
+   "batch": 18,
+   "run": 9,
+   "collection": "superrooms",
+   "format": "superroom",
+   "acceptance": "candidate",
+   "needsReview": true,
+   "difficulty": 4,
+   "role": "interconnected native Warden boss superroom",
+   "worlds": [
+    27
+   ],
+   "tags": [
+    "superroom",
+    "warden",
+    "hinge",
+    "shade",
+    "parry",
+    "return"
+   ],
+   "newMechanics": [],
+   "status": "route-proven",
+   "author": "Codex",
+   "humanReview": "New integrated candidate; awaiting fun/difficulty/suitability review.",
+   "approvedIngredients": [
+    "bank-f45",
+    "bank-f49"
+   ],
+   "interconnection": "One long hinged floor supports the upper fight. After the first wound it becomes the left crash wall of the same lower well, dropping the Warden by actual gravity. After the remaining wounds the knight climbs that very wall back to the original exit; intermediate footholds give places to recover while the delayed shade keeps the route moving. The first real wound cracks a visible support pin. Its countdown drops the same hinge even if the knight refuses to release it, so the later wounds cannot be camped on the old upper floor.",
+   "solution": "Return the upper rush in the open and wound the crashed Warden. Use his shield shove to retreat above your recorded path to the hinge hub. Turn the floor downward, then follow into the lower well from above. Return two more native rushes and cut each exposed guard. Climb the now-vertical sentence floor via its broad rests and leave above the starting court.",
+   "novelty": "The same boss floor is later his crashing boundary and finally the player’s return wall; the Warden changes tier by falling through the floor the player physically rotates.",
+   "nearestExisting": "F45/F49 changed-route returns applied to the native Warden and the Gaol’s following shade.",
+   "requiredEvents": [
+    "warden-return",
+    "warden-hit",
+    "hinge-turn",
+    "shade-wake",
+    "warden-gone",
+    "warden-support-crack"
+   ],
+   "route": {
+    "name": "canonical",
+    "exited": true,
+    "deaths": 0,
+    "frames": 1315,
+    "wardenWounds": 3,
+    "wardenKneeling": true,
+    "floorReleased": true,
+    "events": [
+     "warden-tell",
+     "warden-rush",
+     "parry-ready",
+     "parry",
+     "warden-return",
+     "warden-crash",
+     "shade-wake",
+     "strike",
+     "warden-hit",
+     "warden-support-crack",
+     "warden-shove",
+     "land",
+     "jump",
+     "hinge-turn",
+     "dash",
+     "warden-slam",
+     "refill-dash",
+     "warden-turn",
+     "warden-gone",
+     "gate-open",
+     "grab",
+     "climbhop",
+     "exit"
+    ],
+    "eventCounts": {
+     "warden-tell": 4,
+     "warden-rush": 4,
+     "parry-ready": 3,
+     "parry": 3,
+     "warden-return": 3,
+     "warden-crash": 3,
+     "shade-wake": 1,
+     "strike": 4,
+     "warden-hit": 3,
+     "warden-support-crack": 1,
+     "warden-shove": 2,
+     "land": 8,
+     "jump": 4,
+     "hinge-turn": 1,
+     "dash": 2,
+     "warden-slam": 1,
+     "refill-dash": 2,
+     "warden-turn": 1,
+     "warden-gone": 1,
+     "gate-open": 1,
+     "grab": 3,
+     "climbhop": 1,
+     "exit": 1
+    }
+   },
+   "positiveChecks": [
+    {
+     "name": "Last wall ascent -6 frames",
+     "tape": [
+      [
+       1,
+       "r"
+      ],
+      [
+       80,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       30,
+       ""
+      ],
+      [
+       84,
+       "r"
+      ],
+      [
+       1,
+       "rs"
+      ],
+      [
+       12,
+       "l"
+      ],
+      [
+       20,
+       "l"
+      ],
+      [
+       22,
+       "lj"
+      ],
+      [
+       15,
+       "r"
+      ],
+      [
+       1,
+       "rs"
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       5,
+       "rx"
+      ],
+      [
+       48,
+       "r"
+      ],
+      [
+       135,
+       ""
+      ],
+      [
+       13,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       62,
+       "l"
+      ],
+      [
+       1,
+       "ls"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       5,
+       "rux"
+      ],
+      [
+       48,
+       "r"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       43,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       104,
+       "l"
+      ],
+      [
+       1,
+       "ls"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       60,
+       "l"
+      ],
+      [
+       110,
+       "lgu"
+      ],
+      [
+       8,
+       "r"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       12,
+       "lj"
+      ],
+      [
+       72,
+       "lgu"
+      ],
+      [
+       8,
+       "r"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       12,
+       "lj"
+      ],
+      [
+       66,
+       "lgu"
+      ],
+      [
+       145,
+       "l"
+      ]
+     ],
+     "after": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 1315,
+      "wardenWounds": 3,
+      "wardenKneeling": true,
+      "floorReleased": true,
+      "events": [
+       "warden-tell",
+       "warden-rush",
+       "parry-ready",
+       "parry",
+       "warden-return",
+       "warden-crash",
+       "shade-wake",
+       "strike",
+       "warden-hit",
+       "warden-support-crack",
+       "warden-shove",
+       "land",
+       "jump",
+       "hinge-turn",
+       "dash",
+       "warden-slam",
+       "refill-dash",
+       "warden-turn",
+       "warden-gone",
+       "gate-open",
+       "grab",
+       "climbhop",
+       "exit"
+      ],
+      "eventCounts": {
+       "warden-tell": 4,
+       "warden-rush": 4,
+       "parry-ready": 3,
+       "parry": 3,
+       "warden-return": 3,
+       "warden-crash": 3,
+       "shade-wake": 1,
+       "strike": 4,
+       "warden-hit": 3,
+       "warden-support-crack": 1,
+       "warden-shove": 2,
+       "land": 8,
+       "jump": 4,
+       "hinge-turn": 1,
+       "dash": 2,
+       "warden-slam": 1,
+       "refill-dash": 2,
+       "warden-turn": 1,
+       "warden-gone": 1,
+       "gate-open": 1,
+       "grab": 3,
+       "climbhop": 1,
+       "exit": 1
+      }
+     }
+    },
+    {
+     "name": "Last wall ascent 6 frames",
+     "tape": [
+      [
+       1,
+       "r"
+      ],
+      [
+       80,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       30,
+       ""
+      ],
+      [
+       84,
+       "r"
+      ],
+      [
+       1,
+       "rs"
+      ],
+      [
+       12,
+       "l"
+      ],
+      [
+       20,
+       "l"
+      ],
+      [
+       22,
+       "lj"
+      ],
+      [
+       15,
+       "r"
+      ],
+      [
+       1,
+       "rs"
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       5,
+       "rx"
+      ],
+      [
+       48,
+       "r"
+      ],
+      [
+       135,
+       ""
+      ],
+      [
+       13,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       62,
+       "l"
+      ],
+      [
+       1,
+       "ls"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       5,
+       "rux"
+      ],
+      [
+       48,
+       "r"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       43,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       104,
+       "l"
+      ],
+      [
+       1,
+       "ls"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       60,
+       "l"
+      ],
+      [
+       110,
+       "lgu"
+      ],
+      [
+       8,
+       "r"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       12,
+       "lj"
+      ],
+      [
+       72,
+       "lgu"
+      ],
+      [
+       8,
+       "r"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       12,
+       "lj"
+      ],
+      [
+       78,
+       "lgu"
+      ],
+      [
+       145,
+       "l"
+      ]
+     ],
+     "after": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 1315,
+      "wardenWounds": 3,
+      "wardenKneeling": true,
+      "floorReleased": true,
+      "events": [
+       "warden-tell",
+       "warden-rush",
+       "parry-ready",
+       "parry",
+       "warden-return",
+       "warden-crash",
+       "shade-wake",
+       "strike",
+       "warden-hit",
+       "warden-support-crack",
+       "warden-shove",
+       "land",
+       "jump",
+       "hinge-turn",
+       "dash",
+       "warden-slam",
+       "refill-dash",
+       "warden-turn",
+       "warden-gone",
+       "gate-open",
+       "grab",
+       "climbhop",
+       "exit"
+      ],
+      "eventCounts": {
+       "warden-tell": 4,
+       "warden-rush": 4,
+       "parry-ready": 3,
+       "parry": 3,
+       "warden-return": 3,
+       "warden-crash": 3,
+       "shade-wake": 1,
+       "strike": 4,
+       "warden-hit": 3,
+       "warden-support-crack": 1,
+       "warden-shove": 2,
+       "land": 8,
+       "jump": 4,
+       "hinge-turn": 1,
+       "dash": 2,
+       "warden-slam": 1,
+       "refill-dash": 2,
+       "warden-turn": 1,
+       "warden-gone": 1,
+       "gate-open": 1,
+       "grab": 3,
+       "climbhop": 1,
+       "exit": 1
+      }
+     }
+    },
+    {
+     "name": "Pause one second on the first wide return rest",
+     "tape": [
+      [
+       1,
+       "r"
+      ],
+      [
+       80,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       30,
+       ""
+      ],
+      [
+       84,
+       "r"
+      ],
+      [
+       1,
+       "rs"
+      ],
+      [
+       12,
+       "l"
+      ],
+      [
+       20,
+       "l"
+      ],
+      [
+       22,
+       "lj"
+      ],
+      [
+       15,
+       "r"
+      ],
+      [
+       1,
+       "rs"
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       5,
+       "rx"
+      ],
+      [
+       48,
+       "r"
+      ],
+      [
+       135,
+       ""
+      ],
+      [
+       13,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       62,
+       "l"
+      ],
+      [
+       1,
+       "ls"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       5,
+       "rux"
+      ],
+      [
+       48,
+       "r"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       43,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       5,
+       ""
+      ],
+      [
+       104,
+       "l"
+      ],
+      [
+       1,
+       "ls"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       60,
+       "l"
+      ],
+      [
+       110,
+       "lgu"
+      ],
+      [
+       8,
+       "r"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       60,
+       ""
+      ],
+      [
+       12,
+       "lj"
+      ],
+      [
+       72,
+       "lgu"
+      ],
+      [
+       8,
+       "r"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       12,
+       "lj"
+      ],
+      [
+       72,
+       "lgu"
+      ],
+      [
+       145,
+       "l"
+      ]
+     ],
+     "after": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 1375,
+      "wardenWounds": 3,
+      "wardenKneeling": true,
+      "floorReleased": true,
+      "events": [
+       "warden-tell",
+       "warden-rush",
+       "parry-ready",
+       "parry",
+       "warden-return",
+       "warden-crash",
+       "shade-wake",
+       "strike",
+       "warden-hit",
+       "warden-support-crack",
+       "warden-shove",
+       "land",
+       "jump",
+       "hinge-turn",
+       "dash",
+       "warden-slam",
+       "refill-dash",
+       "warden-turn",
+       "warden-gone",
+       "gate-open",
+       "grab",
+       "climbhop",
+       "exit"
+      ],
+      "eventCounts": {
+       "warden-tell": 4,
+       "warden-rush": 4,
+       "parry-ready": 3,
+       "parry": 3,
+       "warden-return": 3,
+       "warden-crash": 3,
+       "shade-wake": 1,
+       "strike": 4,
+       "warden-hit": 3,
+       "warden-support-crack": 1,
+       "warden-shove": 2,
+       "land": 8,
+       "jump": 4,
+       "hinge-turn": 1,
+       "dash": 2,
+       "warden-slam": 1,
+       "refill-dash": 2,
+       "warden-turn": 1,
+       "warden-gone": 1,
+       "gate-open": 1,
+       "grab": 3,
+       "climbhop": 1,
+       "exit": 1
+      }
+     }
+    }
+   ],
+   "shortcutChecks": [
+    {
+     "name": "Wait on the upper floor instead of cutting its hub: the cracked support releases before a second upper fight",
+     "tape": [
+      [
+       1,
+       "r"
+      ],
+      [
+       80,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       30,
+       ""
+      ],
+      [
+       84,
+       "r"
+      ],
+      [
+       1,
+       "rs"
+      ],
+      [
+       12,
+       "l"
+      ],
+      [
+       20,
+       "l"
+      ],
+      [
+       85,
+       ""
+      ]
+     ],
+     "after": {
+      "exited": false,
+      "deaths": 0,
+      "wounds": 1,
+      "floorReleased": true,
+      "forcedRelease": true,
+      "playerY": 179,
+      "bossY": 192
+     }
+    }
+   ],
+   "requiredEventCounts": {
+    "warden-hit": 3,
+    "warden-return": 3,
+    "hinge-turn": 1
+   },
+   "endingForgiveness": "All native combat is finished before the return climb. Two five-tile-wide one-way rests refill stamina, and the final wall ascent completes with a twelve-frame variation. A full extra second on the first rest remains safe; the last movement is an ordinary walk across the original floor.",
+   "designNotes": "64×48 = 3.34 standard room areas. Native Warden gravity performs the tier change and all three parries/wounds are real. The room-only support pin visibly loosens after the first native wound and releases a physical hinged floor; it never changes player coordinates or fabricates victory. The native shade has a readable three-second delay; the shield shoves help the knight cross above their recorded ground path.",
+   "revision": "31c31f50e5a8",
+   "source": "scripts/room-bank/fractured/bank-f70.json"
+  },
+  "tape": [
+   [
+    1,
+    "r"
+   ],
+   [
+    80,
+    ""
+   ],
+   [
+    1,
+    "p"
+   ],
+   [
+    30,
+    ""
+   ],
+   [
+    84,
+    "r"
+   ],
+   [
+    1,
+    "rs"
+   ],
+   [
+    12,
+    "l"
+   ],
+   [
+    20,
+    "l"
+   ],
+   [
+    22,
+    "lj"
+   ],
+   [
+    15,
+    "r"
+   ],
+   [
+    1,
+    "rs"
+   ],
+   [
+    20,
+    "rj"
+   ],
+   [
+    5,
+    "rx"
+   ],
+   [
+    48,
+    "r"
+   ],
+   [
+    135,
+    ""
+   ],
+   [
+    13,
+    ""
+   ],
+   [
+    1,
+    "p"
+   ],
+   [
+    5,
+    ""
+   ],
+   [
+    62,
+    "l"
+   ],
+   [
+    1,
+    "ls"
+   ],
+   [
+    12,
+    "r"
+   ],
+   [
+    12,
+    "r"
+   ],
+   [
+    5,
+    "rux"
+   ],
+   [
+    48,
+    "r"
+   ],
+   [
+    10,
+    ""
+   ],
+   [
+    43,
+    ""
+   ],
+   [
+    1,
+    "p"
+   ],
+   [
+    5,
+    ""
+   ],
+   [
+    104,
+    "l"
+   ],
+   [
+    1,
+    "ls"
+   ],
+   [
+    10,
+    ""
+   ],
+   [
+    60,
+    "l"
+   ],
+   [
+    110,
+    "lgu"
+   ],
+   [
+    8,
+    "r"
+   ],
+   [
+    15,
+    ""
+   ],
+   [
+    12,
+    "lj"
+   ],
+   [
+    72,
+    "lgu"
+   ],
+   [
+    8,
+    "r"
+   ],
+   [
+    15,
+    ""
+   ],
+   [
+    12,
+    "lj"
+   ],
+   [
+    72,
+    "lgu"
+   ],
+   [
+    145,
+    "l"
+   ]
+  ]
+ },
+ {
+  "room": {
+   "id": "bank-f71",
+   "name": "Leave Your Weight Below",
+   "palette": "fractured",
+   "rbr": 28,
+   "study": true,
+   "movement": "survive-2",
+   "aim8": true,
+   "cols": 72,
+   "rows": 40,
+   "exit": "left",
+   "lock": [
+    "portal",
+    "parry"
+   ],
+   "fault": {
+    "fuse": 18,
+    "spread": 8,
+    "rest": 1800
+   },
+   "winds": [
+    {
+     "c": 18,
+     "r": 32,
+     "w": 32,
+     "h": 5,
+     "dx": 28,
+     "dy": 0
+    },
+    {
+     "c": 64,
+     "r": 10,
+     "w": 5,
+     "h": 24,
+     "dx": 0,
+     "dy": -240
+    }
+   ],
+   "hint": "Leave the lantern on the far plate. Ride the opened wind cap, then spend each feather on the high return.",
+   "question": "Which weight must remain below while you cross back above it?",
+   "map": [
+    "########################################################################",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    ".......................................................................#",
+    ".......................................................................#",
+    ".......................................................................#",
+    ".......................................................................#",
+    "IIIIIIIIIIIIIIIII....f.................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#..........................IIIIIIIIIII.................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#............................................f.........................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#...............................................IIIIII.................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^.......#",
+    "################################################################HHHHHHH#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#......................................................................#",
+    "#...P..l.............................................................__#",
+    "#IIIIIIIIIIIIIIIIITTTTTTTTT....TTTTTTTTTT.....TTTTIIIIIIIIIIIIIIIIIIIII#",
+    "#IIIIIIIIIIIIIIIII................................IIIIIIIIIIIIIIIIIIIII#",
+    "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+    "########################################################################"
+   ]
+  },
+  "bank": {
+   "side": "fractured",
+   "batch": 18,
+   "run": 9,
+   "collection": "superrooms",
+   "format": "superroom",
+   "acceptance": "candidate",
+   "needsReview": true,
+   "difficulty": 3,
+   "role": "interconnected Frostfell traversal superroom",
+   "worlds": [
+    28
+   ],
+   "tags": [
+    "superroom",
+    "ice",
+    "wind",
+    "fault",
+    "lantern",
+    "feather",
+    "return"
+   ],
+   "newMechanics": [],
+   "status": "route-proven",
+   "author": "Codex",
+   "humanReview": "New integrated candidate; awaiting fun/difficulty/suitability review.",
+   "approvedIngredients": [
+    "bank-f48",
+    "bank-f66"
+   ],
+   "interconnection": "A wind-sealed roof divides one long glacial basin. Carry a lantern across the fault causeway, then leave it on the pressure bed to open the sole upward passage. Returning above the now-broken outward floor demands empty-handed feather transfers across the same basin.",
+   "solution": "Carry the lantern across the fault ice with the following draft. Park it on the far pressure bed, jump into the updraft, and leave the open wind cap onto the upper ice shelf. Preserve and spend the two airborne feathers across the ascending return, then settle on the broad final ledge.",
+   "novelty": "The cargo that gives access to the wind ascent must be deliberately left behind: carrying it prevents the feather jumps needed on the shared upper return.",
+   "nearestExisting": "F48 native airborne transfers and F66 leave-cargo return logic, rebuilt around Frostfell ice, fault progression and a vertical wind cap.",
+   "requiredEvents": [
+    "pickup",
+    "throw",
+    "plate",
+    "held-open",
+    "fault-crack",
+    "feather",
+    "feather-jump"
+   ],
+   "requiredEventCounts": {
+    "feather-jump": 2,
+    "fault-crack": 2
+   },
+   "route": {
+    "name": "canonical",
+    "exited": true,
+    "deaths": 0,
+    "frames": 801,
+    "eventCounts": {
+     "ice": 5,
+     "pickup": 1,
+     "fault-crack": 2,
+     "wind": 2,
+     "fault-fall": 19,
+     "jump": 7,
+     "land": 5,
+     "plate": 3,
+     "held-open": 1,
+     "throw": 1,
+     "lantern-land": 1,
+     "dash": 3,
+     "refill-dash": 3,
+     "feather": 2,
+     "feather-jump": 2,
+     "feather-back": 1,
+     "exit": 1
+    },
+    "doorOpen": true,
+    "carrying": false,
+    "events": [
+     "ice",
+     "pickup",
+     "fault-crack",
+     "wind",
+     "fault-fall",
+     "jump",
+     "land",
+     "plate",
+     "held-open",
+     "throw",
+     "lantern-land",
+     "dash",
+     "refill-dash",
+     "feather",
+     "feather-jump",
+     "feather-back",
+     "exit"
+    ]
+   },
+   "positiveChecks": [
+    {
+     "name": "Final feather jump 3 frames earlier",
+     "tape": [
+      [
+       35,
+       "r"
+      ],
+      [
+       1,
+       "g"
+      ],
+      [
+       82,
+       "r"
+      ],
+      [
+       14,
+       "rj"
+      ],
+      [
+       39,
+       "r"
+      ],
+      [
+       8,
+       "r"
+      ],
+      [
+       14,
+       "rj"
+      ],
+      [
+       130,
+       "r"
+      ],
+      [
+       15,
+       "l"
+      ],
+      [
+       1,
+       "dg"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       14,
+       "lj"
+      ],
+      [
+       50,
+       ""
+      ],
+      [
+       30,
+       ""
+      ],
+      [
+       5,
+       "lx"
+      ],
+      [
+       48,
+       "l"
+      ],
+      [
+       16,
+       "r"
+      ],
+      [
+       29,
+       "l"
+      ],
+      [
+       16,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       14,
+       "l"
+      ],
+      [
+       22,
+       "lj"
+      ],
+      [
+       15,
+       "l"
+      ],
+      [
+       18,
+       "r"
+      ],
+      [
+       19,
+       "l"
+      ],
+      [
+       16,
+       "lj"
+      ],
+      [
+       5,
+       "lx"
+      ],
+      [
+       9,
+       "l"
+      ],
+      [
+       22,
+       "lj"
+      ],
+      [
+       95,
+       "l"
+      ]
+     ],
+     "after": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 800,
+      "eventCounts": {
+       "ice": 5,
+       "pickup": 1,
+       "fault-crack": 2,
+       "wind": 2,
+       "fault-fall": 19,
+       "jump": 7,
+       "land": 5,
+       "plate": 3,
+       "held-open": 1,
+       "throw": 1,
+       "lantern-land": 1,
+       "dash": 3,
+       "refill-dash": 3,
+       "feather": 2,
+       "feather-jump": 2,
+       "feather-back": 1,
+       "exit": 1
+      },
+      "doorOpen": true,
+      "carrying": false
+     }
+    },
+    {
+     "name": "Final feather jump 3 frames later",
+     "tape": [
+      [
+       35,
+       "r"
+      ],
+      [
+       1,
+       "g"
+      ],
+      [
+       82,
+       "r"
+      ],
+      [
+       14,
+       "rj"
+      ],
+      [
+       39,
+       "r"
+      ],
+      [
+       8,
+       "r"
+      ],
+      [
+       14,
+       "rj"
+      ],
+      [
+       130,
+       "r"
+      ],
+      [
+       15,
+       "l"
+      ],
+      [
+       1,
+       "dg"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       14,
+       "lj"
+      ],
+      [
+       50,
+       ""
+      ],
+      [
+       30,
+       ""
+      ],
+      [
+       5,
+       "lx"
+      ],
+      [
+       48,
+       "l"
+      ],
+      [
+       16,
+       "r"
+      ],
+      [
+       29,
+       "l"
+      ],
+      [
+       16,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       14,
+       "l"
+      ],
+      [
+       22,
+       "lj"
+      ],
+      [
+       15,
+       "l"
+      ],
+      [
+       18,
+       "r"
+      ],
+      [
+       19,
+       "l"
+      ],
+      [
+       16,
+       "lj"
+      ],
+      [
+       5,
+       "lx"
+      ],
+      [
+       15,
+       "l"
+      ],
+      [
+       22,
+       "lj"
+      ],
+      [
+       95,
+       "l"
+      ]
+     ],
+     "after": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 807,
+      "eventCounts": {
+       "ice": 5,
+       "pickup": 1,
+       "fault-crack": 2,
+       "wind": 2,
+       "fault-fall": 19,
+       "jump": 7,
+       "land": 5,
+       "plate": 3,
+       "held-open": 1,
+       "throw": 1,
+       "lantern-land": 1,
+       "dash": 3,
+       "refill-dash": 3,
+       "feather": 2,
+       "feather-jump": 2,
+       "feather-back": 1,
+       "exit": 1
+      },
+      "doorOpen": true,
+      "carrying": false
+     }
+    },
+    {
+     "name": "Wait an extra 90 frames after parking cargo; the wind route remains open",
+     "tape": [
+      [
+       35,
+       "r"
+      ],
+      [
+       1,
+       "g"
+      ],
+      [
+       82,
+       "r"
+      ],
+      [
+       14,
+       "rj"
+      ],
+      [
+       39,
+       "r"
+      ],
+      [
+       8,
+       "r"
+      ],
+      [
+       14,
+       "rj"
+      ],
+      [
+       130,
+       "r"
+      ],
+      [
+       15,
+       "l"
+      ],
+      [
+       1,
+       "dg"
+      ],
+      [
+       115,
+       ""
+      ],
+      [
+       14,
+       "lj"
+      ],
+      [
+       50,
+       ""
+      ],
+      [
+       30,
+       ""
+      ],
+      [
+       5,
+       "lx"
+      ],
+      [
+       48,
+       "l"
+      ],
+      [
+       16,
+       "r"
+      ],
+      [
+       29,
+       "l"
+      ],
+      [
+       16,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       14,
+       "l"
+      ],
+      [
+       22,
+       "lj"
+      ],
+      [
+       15,
+       "l"
+      ],
+      [
+       18,
+       "r"
+      ],
+      [
+       19,
+       "l"
+      ],
+      [
+       16,
+       "lj"
+      ],
+      [
+       5,
+       "lx"
+      ],
+      [
+       12,
+       "l"
+      ],
+      [
+       22,
+       "lj"
+      ],
+      [
+       95,
+       "l"
+      ]
+     ],
+     "after": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 891,
+      "eventCounts": {
+       "ice": 5,
+       "pickup": 1,
+       "fault-crack": 2,
+       "wind": 2,
+       "fault-fall": 19,
+       "jump": 7,
+       "land": 5,
+       "plate": 3,
+       "held-open": 1,
+       "throw": 1,
+       "lantern-land": 1,
+       "dash": 3,
+       "refill-dash": 3,
+       "feather": 2,
+       "feather-jump": 2,
+       "feather-back": 1,
+       "exit": 1
+      },
+      "doorOpen": true,
+      "carrying": false
+     }
+    }
+   ],
+   "shortcutChecks": [
+    {
+     "name": "Keep the lantern instead of parking it, then try the same wind return",
+     "tape": [
+      [
+       35,
+       "r"
+      ],
+      [
+       1,
+       "g"
+      ],
+      [
+       82,
+       "r"
+      ],
+      [
+       14,
+       "rj"
+      ],
+      [
+       39,
+       "r"
+      ],
+      [
+       8,
+       "r"
+      ],
+      [
+       14,
+       "rj"
+      ],
+      [
+       130,
+       "r"
+      ],
+      [
+       15,
+       "l"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       14,
+       "lj"
+      ],
+      [
+       50,
+       ""
+      ],
+      [
+       30,
+       ""
+      ],
+      [
+       5,
+       "lx"
+      ],
+      [
+       48,
+       "l"
+      ],
+      [
+       16,
+       "r"
+      ],
+      [
+       29,
+       "l"
+      ],
+      [
+       16,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       14,
+       "l"
+      ],
+      [
+       22,
+       "lj"
+      ],
+      [
+       15,
+       "l"
+      ],
+      [
+       18,
+       "r"
+      ],
+      [
+       19,
+       "l"
+      ],
+      [
+       16,
+       "lj"
+      ],
+      [
+       5,
+       "lx"
+      ],
+      [
+       12,
+       "l"
+      ],
+      [
+       22,
+       "lj"
+      ],
+      [
+       95,
+       "l"
+      ]
+     ],
+     "after": {
+      "exited": false,
+      "deaths": 1,
+      "frames": 815,
+      "eventCounts": {
+       "ice": 5,
+       "pickup": 1,
+       "fault-crack": 3,
+       "wind": 3,
+       "fault-fall": 22,
+       "jump": 5,
+       "land": 5,
+       "plate": 3,
+       "held-open": 1,
+       "held-close": 1,
+       "death": 1,
+       "lantern-lost": 1,
+       "respawn": 1
+      },
+      "doorOpen": false,
+      "carrying": false
+     }
+    }
+   ],
+   "endingForgiveness": "The final feather may be spent 3 frames early or 3 frames late, with successful full-room replays. Its destination is a 17-tile ice ledge followed by an ordinary walk out; the middle shelf is 11 tiles wide. The pressure bed remains a safe reset position while planning the return.",
+   "designNotes": "The lantern glides over two separate missing spans before landing on fault strips. It must remain on the far pressure bed to keep the full-width wind cap physically open, and carrying it suppresses feather jumps. All wind, fault, feather, ice, lantern and pressure behavior is native; no event counter controls completion. No visible hazard path or new runtime is used.",
+   "revision": "52aed035e7e8",
+   "source": "scripts/room-bank/fractured/bank-f71.json"
+  },
+  "tape": [
+   [
+    35,
+    "r"
+   ],
+   [
+    1,
+    "g"
+   ],
+   [
+    82,
+    "r"
+   ],
+   [
+    14,
+    "rj"
+   ],
+   [
+    39,
+    "r"
+   ],
+   [
+    8,
+    "r"
+   ],
+   [
+    14,
+    "rj"
+   ],
+   [
+    130,
+    "r"
+   ],
+   [
+    15,
+    "l"
+   ],
+   [
+    1,
+    "dg"
+   ],
+   [
+    25,
+    ""
+   ],
+   [
+    14,
+    "lj"
+   ],
+   [
+    50,
+    ""
+   ],
+   [
+    30,
+    ""
+   ],
+   [
+    5,
+    "lx"
+   ],
+   [
+    48,
+    "l"
+   ],
+   [
+    16,
+    "r"
+   ],
+   [
+    29,
+    "l"
+   ],
+   [
+    16,
+    "lj"
+   ],
+   [
+    5,
+    "lux"
+   ],
+   [
+    14,
+    "l"
+   ],
+   [
+    22,
+    "lj"
+   ],
+   [
+    15,
+    "l"
+   ],
+   [
+    18,
+    "r"
+   ],
+   [
+    19,
+    "l"
+   ],
+   [
+    16,
+    "lj"
+   ],
+   [
+    5,
+    "lx"
+   ],
+   [
+    12,
+    "l"
+   ],
+   [
+    22,
+    "lj"
+   ],
+   [
+    95,
+    "l"
+   ]
+  ]
+ },
+ {
+  "room": {
+   "id": "bank-f72",
+   "name": "Glass Below, Stone Above",
+   "palette": "fractured",
+   "rbr": 30,
+   "study": true,
+   "movement": "survive-2",
+   "aim8": true,
+   "cols": 80,
+   "rows": 36,
+   "exit": "left",
+   "lock": [
+    "portal",
+    "parry"
+   ],
+   "fault": {
+    "fuse": 16,
+    "spread": 8,
+    "rest": 300
+   },
+   "mirror": {},
+   "slabs": [
+    {
+     "stone": 150,
+     "molten": 60,
+     "glass": 130,
+     "offset": 0
+    },
+    {
+     "stone": 150,
+     "molten": 60,
+     "glass": 130,
+     "offset": 120
+    }
+   ],
+   "hint": "Cross the pour as glass. Return through the high mirror; the same pour is now your stepping stone.",
+   "question": "When does the door you passed through become the platform you need?",
+   "map": [
+    "################################################################################",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "...............................................................................#",
+    "...............................................................................#",
+    "............................................|..................................#",
+    "............................................|..................................#",
+    "####################........................|..................................#",
+    "#>..........................................|.................................<#",
+    "#>..........................................|.................................<#",
+    "#>.........................................>|<................................<#",
+    "#>.....................>EEEE<..............>|<................................<#",
+    "#>.....................>EEEE<..............>|<................................<#",
+    "#>.....................>EEEE<..............>|<...###########..................<#",
+    "#>.....................>EEEE<..............>|<................................<#",
+    "#>.....................>EEEE<.......EEEEEE.>|<................................<#",
+    "#>.....................>EEEE<..............>|<................................<#",
+    "#>.....................>EEEE<..............>|<................................<#",
+    "#>.....................>EEEE<..............>|<................................<#",
+    "#>.....................>EEEE<..............>|<................................<#",
+    "#>.....................>EEEE<..............>|<................................<#",
+    "#>.....................>EEEE<..............>|<................................<#",
+    "#>.....................>EEEE<...............|.................................<#",
+    "#>.....................>EEEE<...............|.................................<#",
+    "#>.....................>EEEE<...............|.................................<#",
+    "#>......................EEEE................|.................................<#",
+    "#...P...................EEEE................|.........................N........#",
+    "###############################TTTTTTTTT...........#############################",
+    "###############################....................#############################",
+    "###############################....................#############################",
+    "###############################....................#############################",
+    "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+    "################################################################################"
+   ]
+  },
+  "bank": {
+   "side": "fractured",
+   "batch": 18,
+   "run": 9,
+   "collection": "superrooms",
+   "format": "superroom",
+   "acceptance": "candidate",
+   "needsReview": true,
+   "difficulty": 4,
+   "role": "interconnected Emberdeep traversal superroom",
+   "worlds": [
+    30
+   ],
+   "tags": [
+    "superroom",
+    "heat-slab",
+    "mirror",
+    "fault",
+    "anvil",
+    "return"
+   ],
+   "newMechanics": [],
+   "status": "route-proven",
+   "author": "Codex",
+   "humanReview": "New integrated candidate; awaiting fun/difficulty/suitability review.",
+   "approvedIngredients": [
+    "bank-f48",
+    "bank-f56"
+   ],
+   "interconnection": "The tall thermal body that blocks the low outward crossing is later the last raised stepping stone. Both directions cross the same tall mirror pane, through low and high openings respectively. The far native anvil is the way into that high return; the outward fault takeoff falls below you.",
+   "solution": "Wait for the tall pour to cool to glass, cross its low opening and commit over the fault edge through the mirror’s low window. Reach the far anvil with reversed controls, pogo onto the high rest, and cross the same pane through its high window to restore control. Time the short heat bridge and the tall pour’s cap, then jump to the wide home ledge.",
+   "novelty": "A full-height thermal door changes into the destination platform of the return, while one mirror barrier is crossed at two different heights with a real anvil loft between them.",
+   "nearestExisting": "F48 airborne return composition and F56 timed surfaces, composed around Emberdeep’s actual slab cycle, fault floor and control-reversing glass.",
+   "requiredEvents": [
+    "slab-glass",
+    "mirror",
+    "anvil",
+    "fault-crack"
+   ],
+   "requiredEventCounts": {
+    "mirror": 2,
+    "anvil": 1,
+    "fault-crack": 1
+   },
+   "route": {
+    "name": "canonical",
+    "exited": true,
+    "deaths": 0,
+    "frames": 841,
+    "eventCounts": {
+     "slab-molten": 5,
+     "slab-glass": 5,
+     "slab-stone": 4,
+     "slab": 3,
+     "fault-crack": 1,
+     "fault-fall": 9,
+     "jump": 5,
+     "dash": 5,
+     "mirror": 2,
+     "land": 5,
+     "refill-dash": 5,
+     "strike": 1,
+     "anvil": 1,
+     "fault-back": 9,
+     "exit": 1
+    },
+    "controlsRestored": true,
+    "events": [
+     "slab-molten",
+     "slab-glass",
+     "slab-stone",
+     "slab",
+     "fault-crack",
+     "fault-fall",
+     "jump",
+     "dash",
+     "mirror",
+     "land",
+     "refill-dash",
+     "strike",
+     "anvil",
+     "fault-back",
+     "exit"
+    ]
+   },
+   "positiveChecks": [
+    {
+     "name": "Final dash 4 frames earlier",
+     "tape": [
+      [
+       95,
+       "r"
+      ],
+      [
+       120,
+       ""
+      ],
+      [
+       33,
+       "r"
+      ],
+      [
+       59,
+       "r"
+      ],
+      [
+       16,
+       "rj"
+      ],
+      [
+       5,
+       "rx"
+      ],
+      [
+       27,
+       "l"
+      ],
+      [
+       84,
+       "l"
+      ],
+      [
+       10,
+       "lj"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       1,
+       "ds"
+      ],
+      [
+       14,
+       "r"
+      ],
+      [
+       15,
+       "r"
+      ],
+      [
+       5,
+       "rux"
+      ],
+      [
+       31,
+       "r"
+      ],
+      [
+       12,
+       ""
+      ],
+      [
+       38,
+       "r"
+      ],
+      [
+       16,
+       "rj"
+      ],
+      [
+       5,
+       "rux"
+      ],
+      [
+       9,
+       "r"
+      ],
+      [
+       34,
+       "l"
+      ],
+      [
+       8,
+       "l"
+      ],
+      [
+       14,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       25,
+       "l"
+      ],
+      [
+       8,
+       ""
+      ],
+      [
+       10,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       100,
+       "l"
+      ],
+      [
+       45,
+       "l"
+      ]
+     ],
+     "after": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 841,
+      "eventCounts": {
+       "slab-molten": 5,
+       "slab-glass": 5,
+       "slab-stone": 4,
+       "slab": 3,
+       "fault-crack": 1,
+       "fault-fall": 9,
+       "jump": 5,
+       "dash": 5,
+       "mirror": 2,
+       "land": 5,
+       "refill-dash": 5,
+       "strike": 1,
+       "anvil": 1,
+       "fault-back": 9,
+       "exit": 1
+      },
+      "controlsRestored": true
+     }
+    },
+    {
+     "name": "Final dash 4 frames later",
+     "tape": [
+      [
+       95,
+       "r"
+      ],
+      [
+       120,
+       ""
+      ],
+      [
+       33,
+       "r"
+      ],
+      [
+       59,
+       "r"
+      ],
+      [
+       16,
+       "rj"
+      ],
+      [
+       5,
+       "rx"
+      ],
+      [
+       27,
+       "l"
+      ],
+      [
+       84,
+       "l"
+      ],
+      [
+       10,
+       "lj"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       1,
+       "ds"
+      ],
+      [
+       14,
+       "r"
+      ],
+      [
+       15,
+       "r"
+      ],
+      [
+       5,
+       "rux"
+      ],
+      [
+       31,
+       "r"
+      ],
+      [
+       12,
+       ""
+      ],
+      [
+       38,
+       "r"
+      ],
+      [
+       16,
+       "rj"
+      ],
+      [
+       5,
+       "rux"
+      ],
+      [
+       9,
+       "r"
+      ],
+      [
+       34,
+       "l"
+      ],
+      [
+       8,
+       "l"
+      ],
+      [
+       14,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       25,
+       "l"
+      ],
+      [
+       8,
+       ""
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       100,
+       "l"
+      ],
+      [
+       45,
+       "l"
+      ]
+     ],
+     "after": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 841,
+      "eventCounts": {
+       "slab-molten": 5,
+       "slab-glass": 5,
+       "slab-stone": 4,
+       "slab": 3,
+       "fault-crack": 1,
+       "fault-fall": 9,
+       "jump": 5,
+       "dash": 5,
+       "mirror": 2,
+       "land": 5,
+       "refill-dash": 5,
+       "strike": 1,
+       "anvil": 1,
+       "fault-back": 9,
+       "exit": 1
+      },
+      "controlsRestored": true
+     }
+    },
+    {
+     "name": "Wait a whole additional heat cycle on the upper recovery shelf before returning",
+     "tape": [
+      [
+       95,
+       "r"
+      ],
+      [
+       120,
+       ""
+      ],
+      [
+       33,
+       "r"
+      ],
+      [
+       59,
+       "r"
+      ],
+      [
+       16,
+       "rj"
+      ],
+      [
+       5,
+       "rx"
+      ],
+      [
+       27,
+       "l"
+      ],
+      [
+       84,
+       "l"
+      ],
+      [
+       10,
+       "lj"
+      ],
+      [
+       10,
+       ""
+      ],
+      [
+       1,
+       "ds"
+      ],
+      [
+       14,
+       "r"
+      ],
+      [
+       15,
+       "r"
+      ],
+      [
+       5,
+       "rux"
+      ],
+      [
+       31,
+       "r"
+      ],
+      [
+       352,
+       ""
+      ],
+      [
+       38,
+       "r"
+      ],
+      [
+       16,
+       "rj"
+      ],
+      [
+       5,
+       "rux"
+      ],
+      [
+       9,
+       "r"
+      ],
+      [
+       34,
+       "l"
+      ],
+      [
+       8,
+       "l"
+      ],
+      [
+       14,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       25,
+       "l"
+      ],
+      [
+       8,
+       ""
+      ],
+      [
+       14,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       100,
+       "l"
+      ],
+      [
+       45,
+       "l"
+      ]
+     ],
+     "after": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 1181,
+      "eventCounts": {
+       "slab-molten": 7,
+       "slab-glass": 7,
+       "slab-stone": 6,
+       "slab": 3,
+       "fault-crack": 1,
+       "fault-fall": 9,
+       "jump": 5,
+       "dash": 5,
+       "mirror": 2,
+       "land": 5,
+       "refill-dash": 5,
+       "strike": 1,
+       "anvil": 1,
+       "fault-back": 9,
+       "exit": 1
+      },
+      "controlsRestored": true
+     }
+    }
+   ],
+   "shortcutChecks": [
+    {
+     "name": "Climb the first thermal column from below to skip the mirror and anvil loop",
+     "tape": [
+      [
+       95,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       90,
+       "rgu"
+      ]
+     ],
+     "after": {
+      "exited": false,
+      "deaths": 1,
+      "frames": 197,
+      "eventCounts": {
+       "slab-molten": 2,
+       "slab-glass": 1,
+       "jump": 1,
+       "slab": 1,
+       "death": 1,
+       "respawn": 1
+      },
+      "controlsRestored": true
+     }
+    }
+   ],
+   "endingForgiveness": "The final dash succeeds 4 frames earlier and 4 frames later in full zero-death replays. The destination is a 20-tile permanent ledge, followed by an ordinary walk home. The upper anvil shelf is 11 tiles wide and supports waiting an entire additional heat cycle before the return.",
+   "designNotes": "One tall slab is passed near its foot while glass, then landed upon at its cap on the return. Its fringed sides prevent simply climbing from the starting court. The same 22-tile mirror pane is crossed twice, through different 5-tile openings. Native anvil, pane reversal, fault, slab schedules and directional spikes supply all behavior; no new runtime or receipt-based gate is used.",
+   "revision": "8116adc150ef",
+   "source": "scripts/room-bank/fractured/bank-f72.json"
+  },
+  "tape": [
+   [
+    95,
+    "r"
+   ],
+   [
+    120,
+    ""
+   ],
+   [
+    33,
+    "r"
+   ],
+   [
+    59,
+    "r"
+   ],
+   [
+    16,
+    "rj"
+   ],
+   [
+    5,
+    "rx"
+   ],
+   [
+    27,
+    "l"
+   ],
+   [
+    84,
+    "l"
+   ],
+   [
+    10,
+    "lj"
+   ],
+   [
+    10,
+    ""
+   ],
+   [
+    1,
+    "ds"
+   ],
+   [
+    14,
+    "r"
+   ],
+   [
+    15,
+    "r"
+   ],
+   [
+    5,
+    "rux"
+   ],
+   [
+    31,
+    "r"
+   ],
+   [
+    12,
+    ""
+   ],
+   [
+    38,
+    "r"
+   ],
+   [
+    16,
+    "rj"
+   ],
+   [
+    5,
+    "rux"
+   ],
+   [
+    9,
+    "r"
+   ],
+   [
+    34,
+    "l"
+   ],
+   [
+    8,
+    "l"
+   ],
+   [
+    14,
+    "lj"
+   ],
+   [
+    5,
+    "lux"
+   ],
+   [
+    25,
+    "l"
+   ],
+   [
+    8,
+    ""
+   ],
+   [
+    14,
+    "lj"
+   ],
+   [
+    5,
+    "lux"
+   ],
+   [
+    100,
+    "l"
+   ],
+   [
+    45,
+    "l"
+   ]
+  ]
  }
 ];
-const B={version:'7.305.0',activeRun:8,defaultGroup:"superrooms",groups:["superrooms","banked"],records};
+const B={version:'7.306.0',activeRun:9,defaultGroup:"superrooms",groups:["superrooms","banked"],records};
 root.BladefallRoomBank=B;
 if(!root.BLADEFALL_ROOM_BANK&&!(root.location&&new URLSearchParams(root.location.search).get('pitch')==='bank'))return;
 const R=root.BladefallPrecisionRooms;
 for(const side of ['base','fractured'])for(const group of B.groups){
- const set=records.filter(x=>x.bank.side===side&&(x.bank.acceptance==='banked'?'banked':B.defaultGroup==='pending'?'pending':x.bank.collection==='superrooms'?'superrooms':x.bank.run>=2?'run'+x.bank.run:x.bank.run===1?'run1':'review')===group);
+ const set=records.filter(x=>x.bank.side===side&&(group==='banked'?x.bank.acceptance==='banked':(x.bank.needsReview?'superrooms':x.bank.acceptance==='banked'?'banked':B.defaultGroup==='pending'?'pending':x.bank.collection==='superrooms'?'superrooms':x.bank.run>=2?'run'+x.bank.run:x.bank.run===1?'run1':'review')===group));
  if(set.length)R.addPart({part:'spares',title:'Room Bank',chapters:[{id:'bank-'+side+'-'+group,name:(side==='base'?'Base':'Fractured')+(group==='pending'?' Final Review':group==='superrooms'?' Superrooms':group==='run1'?' Run 1 Revisions':group.startsWith('run')?' Run '+group.slice(3):group==='banked'?' Banked':' Review'),bonus:true,pitch:'bank',bank:side,bankGroup:group,palette:side==='base'?'causeway':'throne',rooms:set.map(x=>({...x.room,bank:x.bank}))}],tapes:Object.fromEntries(set.map(x=>[x.room.id,x.tape]))});
 }
 })(globalThis);

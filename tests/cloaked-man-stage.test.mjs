@@ -183,7 +183,7 @@ test('II · the swarm leaves one gap per curtain, and each gap is within a run o
   assert.ok(widest >= 2 * K.AIR.swarm.gap - 20, 'a gap a knight fits through');
 });
 
-test('III · the jaw opens all the way to the floor, and the snap costs two measures in the mouth', () => {
+test('III · the jaw opens all the way to the floor, and the snap costs six measures in the mouth after Merge', () => {
   const T = load({ circuits:{ 'cm-p1':true, 'cm-p2':true } }); const { A, p, step, K, CM, hurts } = T;
   step(2); p.x = K.ARENA.x1 + 150; step(1);
   const S = A().spider; S.x = p.x + 300; S.face = -1; S.st = 'rear'; S.t = 0; A().cool = 99;
@@ -191,7 +191,7 @@ test('III · the jaw opens all the way to the floor, and the snap costs two meas
   assert.ok(CM.jawChin(S) <= 6, 'the chin at the floor');
   p.x = CM.skullAt(S).x; p.invuln = 0; hurts.length = 0;
   step(Math.round((K.BONES.jaw.inhale + K.BONES.jaw.snap) * 60) + 2);
-  assert.ok(hurts.some(h => h.measures === 2));
+  assert.ok(hurts.some(h => h.measures === 6));
 });
 
 test('IV · the eyes are struck only while open; a hand only while it rests', () => {
@@ -222,4 +222,25 @@ test('the art registers for stage 43 and draws every tell the fight uses', () =>
   assert.match(art, /ART\.register\(STAGE, Object\.freeze\(\{ draw \}\)\);/);
   for(const cue of ["m.st === 'dash-tell'", "m.st === 'vanish'", "m.st === 'dive-tell'", 'A.stabs', 'A.beams', "Gi.st === 'maw'", 'A.waves', 'BREAK FREE'])
     assert.ok(art.includes(cue), cue);
+});
+
+// The three story choices retain their own ward and hit strength, with this release's global 3x/quarter tuning.
+test('all three Vesper outcomes receive quarter damage; direct entry retains its severe resistance', () => {
+  for(const [choice,ward,expected] of [['merge',1,20],['kill',.25,5],['forget',.25,5],['direct',.01,.2]]){
+    const T=load(),{A,p,step,K}=T;
+    T.ctx.window.BladefallExploreFinale.vesperWard=()=>ward;
+    T.ctx.window.BladefallExploreFinale.vesperMerged=()=>choice==='merge';
+    step(2);p.x=K.ARENA.x1+150;step(1);const hp=A().hp;
+    A().man.hp=A().man.hpWas-80;step(1);
+    assert.ok(Math.abs(hp-A().hp-expected)<1e-8,choice);
+  }
+});
+test('ordinary Vesper contact deals triple its previous Blood cost for all three outcomes', () => {
+  for(const [choice,expected] of [['merge',3],['kill',9],['forget',9]]){
+    const T=load(),{A,p,step,K,hurts}=T;
+    T.ctx.window.BladefallExploreFinale.vesperMerged=()=>choice==='merge';
+    step(2);p.x=K.ARENA.x1+150;step(1);
+    const m=A().man;m.st='slash';m.t=.05;m.x=p.x-35;m.face=1;m.hit=false;A().cool=99;p.invuln=0;
+    step(1);assert.equal(hurts[0]?.measures,expected,choice);
+  }
 });

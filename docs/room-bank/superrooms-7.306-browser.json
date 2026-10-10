@@ -1,0 +1,594 @@
+{
+  "checkedAt": "2026-10-10T02:53:43.617Z",
+  "method": "Actual Chrome with production view, canonical saved input tapes, native completion events, room/camera bounds and three rendered checkpoints. Selected route evidence, not exhaustive shortcut proof.",
+  "results": [
+    {
+      "id": "bank-b62",
+      "exited": true,
+      "deaths": 0,
+      "frames": 1058,
+      "eventCounts": {
+        "jump": 11,
+        "zip-start": 2,
+        "zip-stop": 2,
+        "crumble-shake": 2,
+        "crumble": 2,
+        "dash": 3,
+        "zip-home": 1,
+        "land": 9,
+        "refill-dash": 3,
+        "stone-lit": 1,
+        "gate-open": 2,
+        "bearing-lift-raised": 1,
+        "crumble-back": 2,
+        "refill": 1,
+        "refill-back": 1,
+        "exit": 1
+      },
+      "missing": [],
+      "missingCounts": [],
+      "bounds": {
+        "w": 608,
+        "h": 320
+      },
+      "boss": {
+        "warden": null
+      },
+      "runtimeDevices": [
+        "run9-base",
+        "superrooms-fractured9"
+      ],
+      "viewDevices": [
+        "run9-base",
+        "superrooms-fractured9"
+      ],
+      "cameraTravel": {
+        "x": 288,
+        "y": 136
+      }
+    },
+    {
+      "id": "bank-f64",
+      "exited": true,
+      "deaths": 0,
+      "frames": 1239,
+      "eventCounts": {
+        "jump": 6,
+        "land": 7,
+        "mk-tell": 6,
+        "enemy-shot": 7,
+        "parry-ready": 3,
+        "parry": 3,
+        "marksman-hit": 3,
+        "marksman-leap": 2,
+        "dash": 3,
+        "refill-dash": 3,
+        "carrier-reroute": 2,
+        "enemy-hit": 14,
+        "mk-rain": 2,
+        "ultra": 1,
+        "hyper": 1,
+        "marksman-gone": 1,
+        "gate-open": 1,
+        "exit": 1
+      },
+      "missing": [],
+      "missingCounts": [],
+      "bounds": {
+        "w": 768,
+        "h": 256
+      },
+      "boss": {
+        "warden": null
+      },
+      "runtimeDevices": [
+        "run9-base",
+        "superrooms-fractured9"
+      ],
+      "viewDevices": [
+        "run9-base",
+        "superrooms-fractured9"
+      ],
+      "cameraTravel": {
+        "x": 448,
+        "y": 72
+      }
+    },
+    {
+      "id": "bank-b67",
+      "exited": true,
+      "deaths": 0,
+      "frames": 1339,
+      "eventCounts": {
+        "jump": 12,
+        "land": 10,
+        "phase": 2,
+        "dash": 1,
+        "refill-dash": 1,
+        "strike": 1,
+        "pod": 1,
+        "bell": 1,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "grab": 3,
+        "climbhop": 1,
+        "exit": 1
+      },
+      "missing": [],
+      "missingCounts": [],
+      "bounds": {
+        "w": 640,
+        "h": 304
+      },
+      "boss": {
+        "warden": null
+      },
+      "runtimeDevices": [
+        "run9-base",
+        "superrooms-fractured9"
+      ],
+      "viewDevices": [
+        "run9-base",
+        "superrooms-fractured9"
+      ],
+      "cameraTravel": {
+        "x": 320,
+        "y": 120
+      }
+    },
+    {
+      "id": "bank-b68",
+      "exited": true,
+      "deaths": 0,
+      "frames": 915,
+      "eventCounts": {
+        "jump": 7,
+        "dash": 3,
+        "enemy-tell": 3,
+        "grab": 1,
+        "climbhop": 1,
+        "land": 9,
+        "refill-dash": 3,
+        "stone-hit": 2,
+        "brute-crack": 1,
+        "stone-stop": 2,
+        "breach": 1,
+        "brute-rear": 2,
+        "brute-stamp": 2,
+        "zip-start": 1,
+        "zip-stop": 1,
+        "zip-home": 1,
+        "enemy-defeat": 1,
+        "combat-gate": 1,
+        "exit": 1
+      },
+      "missing": [],
+      "missingCounts": [],
+      "bounds": {
+        "w": 640,
+        "h": 304
+      },
+      "boss": {
+        "combatEnemies": [
+          {
+            "kind": "hound",
+            "dead": true,
+            "cracks": 1
+          }
+        ],
+        "warden": null
+      },
+      "runtimeDevices": [
+        "run9-base",
+        "superrooms-fractured9"
+      ],
+      "viewDevices": [
+        "run9-base",
+        "superrooms-fractured9"
+      ],
+      "cameraTravel": {
+        "x": 320,
+        "y": 120
+      }
+    },
+    {
+      "id": "bank-b69",
+      "exited": true,
+      "deaths": 0,
+      "frames": 2000,
+      "eventCounts": {
+        "jump": 9,
+        "land": 8,
+        "mk-tell": 9,
+        "enemy-shot": 9,
+        "parry-ready": 7,
+        "parry": 5,
+        "receiver-lit": 1,
+        "combat-gate": 1,
+        "marksman-hit": 3,
+        "marksman-leap": 2,
+        "enemy-hit": 5,
+        "grab": 2,
+        "climbjump": 1,
+        "climbhop": 1,
+        "marksman-gone": 1,
+        "gate-open": 1,
+        "exit": 1
+      },
+      "missing": [],
+      "missingCounts": [],
+      "bounds": {
+        "w": 640,
+        "h": 320
+      },
+      "boss": {
+        "combatEnemies": [],
+        "warden": null
+      },
+      "runtimeDevices": [
+        "run9-base",
+        "superrooms-fractured9"
+      ],
+      "viewDevices": [
+        "run9-base",
+        "superrooms-fractured9"
+      ],
+      "cameraTravel": {
+        "x": 320,
+        "y": 136
+      }
+    },
+    {
+      "id": "bank-b70",
+      "exited": true,
+      "deaths": 0,
+      "frames": 1316,
+      "eventCounts": {
+        "jump": 6,
+        "dash": 3,
+        "refill-dash": 3,
+        "recoil": 3,
+        "land": 12,
+        "recoil-back": 3,
+        "grab": 2,
+        "climbhop": 2,
+        "warden-tell": 3,
+        "warden-rush": 3,
+        "warden-return": 3,
+        "warden-crash": 3,
+        "strike": 3,
+        "warden-hit": 3,
+        "warden-shutter": 1,
+        "warden-shove": 2,
+        "warden-call": 1,
+        "jailer-land": 1,
+        "enemy-tell": 1,
+        "jailer-fell": 1,
+        "parry-ready": 1,
+        "parry": 1,
+        "warden-gone": 1,
+        "gate-open": 1,
+        "exit": 1
+      },
+      "missing": [],
+      "missingCounts": [],
+      "bounds": {
+        "w": 640,
+        "h": 304
+      },
+      "boss": {
+        "warden": {
+          "wounds": 3,
+          "kneel": true,
+          "gone": false
+        }
+      },
+      "runtimeDevices": [
+        "run9-base",
+        "superrooms-fractured9"
+      ],
+      "viewDevices": [
+        "run9-base",
+        "superrooms-fractured9"
+      ],
+      "cameraTravel": {
+        "x": 320,
+        "y": 120
+      }
+    },
+    {
+      "id": "bank-b71",
+      "exited": true,
+      "deaths": 0,
+      "frames": 1631,
+      "eventCounts": {
+        "strike": 4,
+        "freeze": 4,
+        "sorc-break": 3,
+        "jump": 7,
+        "grab": 3,
+        "ice": 9,
+        "climbhop": 3,
+        "land": 11,
+        "sorc-hit": 3,
+        "sorc-blink": 2,
+        "sorc-tell": 5,
+        "enemy-shot": 3,
+        "sorc-frost": 3,
+        "thaw": 2,
+        "sorc-icicles": 2,
+        "icicle-stake": 6,
+        "splash": 1,
+        "icicle-melt": 6,
+        "dash": 2,
+        "refill-dash": 2,
+        "sorc-down": 1,
+        "sorc-gone": 1,
+        "gate-open": 1,
+        "exit": 1
+      },
+      "missing": [],
+      "missingCounts": [],
+      "bounds": {
+        "w": 608,
+        "h": 320
+      },
+      "boss": {
+        "warden": null
+      },
+      "runtimeDevices": [
+        "run9-base",
+        "superrooms-fractured9"
+      ],
+      "viewDevices": [
+        "run9-base",
+        "superrooms-fractured9"
+      ],
+      "cameraTravel": {
+        "x": 288,
+        "y": 136
+      }
+    },
+    {
+      "id": "bank-f68",
+      "exited": true,
+      "deaths": 0,
+      "frames": 585,
+      "eventCounts": {
+        "dash": 7,
+        "ultra": 2,
+        "refill-dash": 7,
+        "hyper": 2,
+        "land": 7,
+        "strike": 3,
+        "hinge-turn": 1,
+        "jump": 4,
+        "anvil": 1,
+        "super": 1,
+        "root-cut": 1,
+        "gate-open": 1,
+        "exit": 1
+      },
+      "missing": [],
+      "missingCounts": [],
+      "bounds": {
+        "w": 576,
+        "h": 320
+      },
+      "boss": {
+        "warden": null
+      },
+      "runtimeDevices": [
+        "run9-base",
+        "superrooms-fractured9"
+      ],
+      "viewDevices": [
+        "run9-base",
+        "superrooms-fractured9"
+      ],
+      "cameraTravel": {
+        "x": 256,
+        "y": 136
+      }
+    },
+    {
+      "id": "bank-f69",
+      "exited": true,
+      "deaths": 0,
+      "frames": 763,
+      "eventCounts": {
+        "jump": 5,
+        "dash": 6,
+        "enemy-tell": 2,
+        "land": 7,
+        "refill-dash": 6,
+        "zip-start": 4,
+        "zip-stop": 4,
+        "brute-rear": 2,
+        "brute-stamp": 2,
+        "stone-hit": 2,
+        "brute-crack": 1,
+        "stone-stop": 2,
+        "zip-home": 4,
+        "enemy-defeat": 1,
+        "combat-gate": 1,
+        "exit": 1
+      },
+      "missing": [],
+      "missingCounts": [],
+      "bounds": {
+        "w": 640,
+        "h": 288
+      },
+      "boss": {
+        "combatEnemies": [
+          {
+            "kind": "hound",
+            "dead": true,
+            "cracks": 1
+          }
+        ],
+        "warden": null
+      },
+      "runtimeDevices": [
+        "run9-base",
+        "superrooms-fractured9"
+      ],
+      "viewDevices": [
+        "run9-base",
+        "superrooms-fractured9"
+      ],
+      "cameraTravel": {
+        "x": 276,
+        "y": 104
+      }
+    },
+    {
+      "id": "bank-f70",
+      "exited": true,
+      "deaths": 0,
+      "frames": 1315,
+      "eventCounts": {
+        "warden-tell": 4,
+        "warden-rush": 4,
+        "parry-ready": 3,
+        "parry": 3,
+        "warden-return": 3,
+        "warden-crash": 3,
+        "shade-wake": 1,
+        "strike": 4,
+        "warden-hit": 3,
+        "warden-support-crack": 1,
+        "warden-shove": 2,
+        "land": 8,
+        "jump": 4,
+        "hinge-turn": 1,
+        "dash": 2,
+        "warden-slam": 1,
+        "refill-dash": 2,
+        "warden-turn": 1,
+        "warden-gone": 1,
+        "gate-open": 1,
+        "grab": 3,
+        "climbhop": 1,
+        "exit": 1
+      },
+      "missing": [],
+      "missingCounts": [],
+      "bounds": {
+        "w": 512,
+        "h": 384
+      },
+      "boss": {
+        "warden": {
+          "wounds": 3,
+          "kneel": true,
+          "gone": false
+        }
+      },
+      "runtimeDevices": [
+        "run9-base",
+        "superrooms-fractured9"
+      ],
+      "viewDevices": [
+        "run9-base",
+        "superrooms-fractured9"
+      ],
+      "cameraTravel": {
+        "x": 192,
+        "y": 200
+      }
+    },
+    {
+      "id": "bank-f71",
+      "exited": true,
+      "deaths": 0,
+      "frames": 801,
+      "eventCounts": {
+        "ice": 5,
+        "pickup": 1,
+        "fault-crack": 2,
+        "wind": 2,
+        "fault-fall": 19,
+        "jump": 7,
+        "land": 5,
+        "plate": 3,
+        "held-open": 1,
+        "throw": 1,
+        "lantern-land": 1,
+        "dash": 3,
+        "refill-dash": 3,
+        "feather": 2,
+        "feather-jump": 2,
+        "feather-back": 1,
+        "exit": 1
+      },
+      "missing": [],
+      "missingCounts": [],
+      "bounds": {
+        "w": 576,
+        "h": 320
+      },
+      "boss": {
+        "warden": null
+      },
+      "runtimeDevices": [
+        "run9-base",
+        "superrooms-fractured9"
+      ],
+      "viewDevices": [
+        "run9-base",
+        "superrooms-fractured9"
+      ],
+      "cameraTravel": {
+        "x": 256,
+        "y": 136
+      }
+    },
+    {
+      "id": "bank-f72",
+      "exited": true,
+      "deaths": 0,
+      "frames": 841,
+      "eventCounts": {
+        "slab-molten": 5,
+        "slab-glass": 5,
+        "slab-stone": 4,
+        "slab": 3,
+        "fault-crack": 1,
+        "fault-fall": 9,
+        "jump": 5,
+        "dash": 5,
+        "mirror": 2,
+        "land": 5,
+        "refill-dash": 5,
+        "strike": 1,
+        "anvil": 1,
+        "fault-back": 9,
+        "exit": 1
+      },
+      "missing": [],
+      "missingCounts": [],
+      "bounds": {
+        "w": 640,
+        "h": 288
+      },
+      "boss": {
+        "warden": null
+      },
+      "runtimeDevices": [
+        "run9-base",
+        "superrooms-fractured9"
+      ],
+      "viewDevices": [
+        "run9-base",
+        "superrooms-fractured9"
+      ],
+      "cameraTravel": {
+        "x": 320,
+        "y": 104
+      }
+    }
+  ],
+  "errors": []
+}

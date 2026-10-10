@@ -17,6 +17,10 @@ ASSETS=(
   bladefall-pcore-dev-superrooms-base.js
   bladefall-pcore-dev-superrooms-fractured.js
   bladefall-pcore-dev-superrooms-fractured-view.js
+  bladefall-pcore-dev-run9-base.js
+  bladefall-pcore-dev-run9-base-view.js
+  bladefall-pcore-dev-superrooms-fractured9.js
+  bladefall-pcore-dev-superrooms-fractured9-view.js
   bladefall-playtest-worlds.js
   bladefall-playtest-model.js
   bladefall-playtest.js
@@ -325,6 +329,7 @@ ASSETS=(
   bladefall-cinematics.js
   bladefall-storage.js
   bladefall-input.js
+  bladefall-touch-layout.js
   bladefall-content.js
   bladefall-presentation.js
   bladefall-multiplayer.js

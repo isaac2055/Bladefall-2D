@@ -5,16 +5,17 @@ const PV=root.BladefallPitchView,R=()=>root.BladefallPrecisionRooms,B=()=>root.B
 const old={start:PV.start,menu:PV.menu,holding:PV.holding,exit:PV.exit,chapterDone:PV.chapterDone,palette:PV.palette};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const tagName=t=>({'recoil-platform':'Recoil plates','impulse-seed':'Impulse seeds','moving-hook':'Moving anchors','cargo-clasp':'Cargo clasps','hinge-arm':'Hinged stone arms','step-relay':'Landing relays','vector-refill':'Directional crystals',sweeper:'Moving thorns',zip:'Moving carriage',zipline:'Tears'}[t]||t.replaceAll('-',' '));
-const groupOf=x=>x.bank.acceptance==='banked'?'banked':B().defaultGroup==='pending'?'pending':x.bank.collection==='superrooms'?'superrooms':x.bank.run>=2?'run'+x.bank.run:x.bank.run===1?'run1':'review';
+const groupOf=x=>x.bank.needsReview?'superrooms':x.bank.acceptance==='banked'?'banked':B().defaultGroup==='pending'?'pending':x.bank.collection==='superrooms'?'superrooms':x.bank.run>=2?'run'+x.bank.run:x.bank.run===1?'run1':'review';
+const inGroup=(x,g)=>g==='banked'?x.bank.acceptance==='banked':groupOf(x)===g;
 const groups=()=>B().groups||['run7','run6','run5','superrooms','run4','run3','run2','run1','review','banked'];
 const groupButton=g=>g==='pending'?'bankPending':g==='superrooms'?'bankSuperrooms':g==='banked'?'bankApproved':g==='review'?'bankReview':'bankRun'+g.slice(3);
 const groupLabel=g=>g==='pending'?'Final review':g==='superrooms'?'Superrooms for review':g==='banked'?'Banked':g==='review'?'Earlier review':g==='run1'?'Run 1 revisions':'Run '+g.slice(3);
 const formatLabel=x=>x.bank.format==='extended'?`Extended room · ${x.room.cols||40} × ${x.room.rows||23} tiles`:x.bank.format==='superroom'?'Superroom':'Compact room';
 let st=null,side='base',group=B().defaultGroup||('run'+(B().activeRun||7)),difficulty='all';
-function entries(){return B().records.filter(x=>x.bank.side===side&&groupOf(x)===group);}
+function entries(){return B().records.filter(x=>x.bank.side===side&&inGroup(x,group));}
 function start(id){
  const record=B().records.find(x=>x.room.id===id);if(!record)return;
- side=record.bank.side;group=groupOf(record);
+ side=record.bank.side;if(!inGroup(record,group))group=groupOf(record);
  const ci=R().chapters.findIndex(c=>c.bank===side&&c.bankGroup===group),ch=R().chapters[ci];if(!ch)return;
  const ri=Math.max(0,ch.rooms.findIndex(r=>r.id===id));
  syncModeLink(ch.rooms[ri].id);
@@ -26,8 +27,8 @@ function syncModeLink(id){const link=document.querySelector('#bsBar a');if(link)
 function menu(){
  syncModeLink();st.view.mode='menu';st.view.paused=false;st.view.replay=null;st.api.music(false);
  const all=B().records,rows=entries().filter(x=>difficulty==='all'||x.bank.difficulty===+difficulty);
- const count=(which,kind)=>all.filter(x=>(!which||x.bank.side===which)&&groupOf(x)===kind).length;
- st.api.showOverlay(`<div class="pcCard wide"><h1>Room Bank</h1><p class="pcSub">${group==='pending'?'The remaining revisions are gathered here for one final review pass. Your approved rooms and placement notes are in Banked.':group==='run7'?'Run 7: learn timed movement, develop it, then combine it in demanding patrol and return routes.':group==='run6'?'Run 6 revisions: deliberate portal relinking, an active hook ride, a rebuilt tide loop and corrected movement puzzles.':group==='run5'?'Run 5 review: revised cart, recoil and return-launch rooms, plus the retained ram puzzle. Approved rooms are in Banked.':group==='superrooms'?'Ten new finales: five Base, five Fractured. Six use the world’s boss; each is a continuous puzzle with a shared outward and return route.':group==='run4'?'Run 4: new movement techniques meet recoil plates, impulse seeds and moving anchors.':group==='run3'?'Run 3 revision: the fixed divider makes the slingshot the intended route. Approved rooms are in Banked.':group==='run2'?'Run 2 revisions: more forgiving reverse launches. The approved parry-and-wavedash route is Banked.':group==='run1'?'Run 1 approvals are in Banked.':group==='banked'?'Your approved rooms, including the finales already placed in the Survive campaign.':'Earlier revisions and candidates awaiting your review.'} Difficulty is an author estimate.</p>
+ const count=(which,kind)=>all.filter(x=>(!which||x.bank.side===which)&&inGroup(x,kind)).length;
+ st.api.showOverlay(`<div class="pcCard wide"><h1>Room Bank</h1><p class="pcSub">${group==='pending'?'The remaining revisions are gathered here for one final review pass. Your approved rooms and placement notes are in Banked.':group==='run7'?'Run 7: learn timed movement, develop it, then combine it in demanding patrol and return routes.':group==='run6'?'Run 6 revisions: deliberate portal relinking, an active hook ride, a rebuilt tide loop and corrected movement puzzles.':group==='run5'?'Run 5 review: revised cart, recoil and return-launch rooms, plus the retained ram puzzle. Approved rooms are in Banked.':group==='superrooms'?'The newest ten finales and the requested revisions are playable here and in their assigned campaign worlds.':group==='run4'?'Run 4: new movement techniques meet recoil plates, impulse seeds and moving anchors.':group==='run3'?'Run 3 revision: the fixed divider makes the slingshot the intended route. Approved rooms are in Banked.':group==='run2'?'Run 2 revisions: more forgiving reverse launches. The approved parry-and-wavedash route is Banked.':group==='run1'?'Run 1 approvals are in Banked.':group==='banked'?'Your approved rooms, including the finales already placed in the Survive campaign.':'Earlier revisions and candidates awaiting your review.'} Difficulty is an author estimate.</p>
  <div class="pcRow">${groups().map(g=>`<button class="pcBtn ${group===g?'':'ghost'}" id="${groupButton(g)}">${groupLabel(g)} · ${count(null,g)}</button>`).join('')}</div>
  <div class="pcRow"><button class="pcBtn ${side==='base'?'':'ghost'}" id="bankBase">Base · ${count('base',group)}</button><button class="pcBtn ${side==='fractured'?'':'ghost'}" id="bankFractured">Fractured · ${count('fractured',group)}</button></div>
  <label class="pcOpt">Estimated difficulty <select id="bankDifficulty"><option value="all">All</option>${[1,2,3,4,5].map(n=>`<option value="${n}" ${String(n)===difficulty?'selected':''}>${n} / 5</option>`).join('')}</select></label>

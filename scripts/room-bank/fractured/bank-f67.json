@@ -133,7 +133,7 @@
     "run": 8,
     "collection": "superrooms",
     "format": "superroom",
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "difficulty": 5,
     "role": "interconnected boss superroom",
     "worlds": [
@@ -151,7 +151,7 @@
     "newMechanics": [],
     "status": "route-proven",
     "author": "Codex",
-    "humanReview": "Awaiting human fun/difficulty/suitability ratings.",
+    "humanReview": "Approved by the user to bank and integrate; numeric ratings remain unmeasured.",
     "approvedIngredients": [
       "bank-f45",
       "bank-f46",
@@ -159,7 +159,7 @@
     ],
     "interconnection": "The same carrier shades the ascent and supplies its wallbounce. The high mirror sends sunlight through the fixed pair into the King below. Swapping at that mirror leaves an echo holding the lower shutter while bringing the player back to the only lantern. The lantern then shades the return crossing to the newly exposed King; the echo and optical state remain relevant through both native blooms.",
     "solution": "Save an echo at the lower west station, leaving the lantern. Catch the moving shade and reel up underneath its two sunlight crossings. Near its upper turn, pay out and swing right; updash beside its right face and hold Jump for the wallbounce. Brake onto the sheltered upper lip. Cut down-right to turn the mirror; its beam now enters the fixed upper mouth and emerges behind the King. Step onto the broad brass gallery and swap, leaving the echo there to hold the lower shutter. Back west, deliberately pick up the lantern and carry its shade through the two lower sunlight bands. Set it down beyond the second band. Jump over the pod and cut downward with Jump held; climb in its loft, updash, then drift onto the broad boss shelf. Jump in and strike from the unlit side; retreat, then jump the responding glove/wave and strike after his brief recovery. The real second bloom lowers his guard and opens the gate. Rest on the yielded King, then jump and dash over the still-open portal into the exit.",
-    "novelty": "Three successive roles for one high address: a moving-wall destination, an optical control and the persistent echo weight for a lower return. The boss receives the same light configured on that return\u2019s opposite end, while the lantern deliberately stayed outside the ascent.",
+    "novelty": "Three successive roles for one high address: a moving-wall destination, an optical control and the persistent echo weight for a lower return. The boss receives the same light configured on that return’s opposite end, while the lantern deliberately stayed outside the ascent.",
     "nearestExisting": "F45 supplies an upper address/echo return with cargo, F46 supplies a shared moving shade as a wallbounce face, and F57 supplies moving-anchor departure timing. Here their return releases a native multi-bloom King rather than just an exit.",
     "requiredEvents": [
       "echo-place",
@@ -1424,8 +1424,9 @@
     ],
     "entrance": "Lower western lantern station; the high mirror and lower King share the same court.",
     "exit": "Eastern gate, opened by the actual native King yielding after two blooms.",
-    "designNotes": "64\u00d744 = 2,816 tiles (3.06 normal rooms). The upper optical floor is the roof of the lower boss court, preventing a straight drop to the King. One carrier and one lantern cast real shade; native Echo/plates/mirror/fixed portals/King rules govern every state change. No new movement or boss module, teleport scripts, use counters, or fabricated victory. The upper plate is ten tiles wide; the lower recovery floor survives a missed pod and allows another attempt. Final route uses a pod loft into an updash, then two airborne cuts across the native glove/floor-wave tells. The defeated King becomes the last stable stepping surface before a small jump/dash past the portal.",
-    "endingForgiveness": "The upper echo plate is ten tiles wide. The lower shade landing permits a full extra rest cycle, and a missed pod can land safely below for another attempt. The saved variants cover both recoveries, two later final departures, and a broader echo placement. After two native blooms, the yielded King is a stable rest before the small exit jump."
+    "designNotes": "64×44 = 2,816 tiles (3.06 normal rooms). The upper optical floor is the roof of the lower boss court, preventing a straight drop to the King. One carrier and one lantern cast real shade; native Echo/plates/mirror/fixed portals/King rules govern every state change. No new movement or boss module, teleport scripts, use counters, or fabricated victory. The upper plate is ten tiles wide; the lower recovery floor survives a missed pod and allows another attempt. Final route uses a pod loft into an updash, then two airborne cuts across the native glove/floor-wave tells. The defeated King becomes the last stable stepping surface before a small jump/dash past the portal.",
+    "endingForgiveness": "The upper echo plate is ten tiles wide. The lower shade landing permits a full extra rest cycle, and a missed pod can land safely below for another attempt. The saved variants cover both recoveries, two later final departures, and a broader echo placement. After two native blooms, the yielded King is a stable rest before the small exit jump.",
+    "needsReview": false
   },
   "tape": [
     [

@@ -81,7 +81,14 @@
       "speed": 135,
       "volley": 2,
       "gap": 22,
-      "leave": "fall"
+      "leave": "fall",
+      "rain": {
+        "on": "leap",
+        "w": 8,
+        "n": 5,
+        "speed": 135,
+        "delay": 30
+      }
     },
     "superFractured": {
       "kind": "marksman",
@@ -115,7 +122,7 @@
     "run": 8,
     "collection": "superrooms",
     "format": "superroom",
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "difficulty": 3,
     "role": "interconnected boss superroom",
     "worlds": [
@@ -133,13 +140,13 @@
     "newMechanics": [],
     "status": "route-proven",
     "author": "Codex",
-    "humanReview": "Awaiting human fun/difficulty/suitability ratings.",
+    "humanReview": "Approved to bank and integrate after one modest boss element; re-review requested for the revision.",
     "approvedIngredients": [
       "bank-f33",
       "bank-f27"
     ],
-    "interconnection": "One carrier crosses the whole arena. Each vacated Marksman perch contains a physical pressure landing that reroutes that same carrier to the next firing tier. The boss leaps ahead after a returned arrow; the player follows through his previous position.",
-    "solution": "Board the outgoing carrier and parry the first marked arrow without directional aim. Jump onto the abandoned first perch; its switch redirects the carrier up to the middle tier. Catch the carrier again, return a second arrow, and land on the vacated middle perch. Its switch turns the carrier into the final approach; wavedash from its deck toward the final paired shot and return it from the broad eastern shelf.",
+    "interconnection": "One carrier crosses the whole arena. Each vacated Marksman perch contains a physical pressure landing that reroutes that same carrier to the next firing tier. The boss leaps ahead after a returned arrow; the player follows through his previous position. His first draw after each leap is now a slow, visibly marked arrow rain over the vacated perch, making that perch a departure point rather than a camping spot.",
+    "solution": "Board the outgoing carrier and parry the first marked arrow without directional aim. Jump onto the abandoned first perch; its switch redirects the carrier up to the middle tier. Catch the carrier again, return a second arrow, and land on the vacated middle perch. Its switch turns the carrier into the final approach; wavedash from its deck toward the final paired shot and return it from the broad eastern shelf. After each leap he rains arrows onto the perch you just took: leave on the same rerouted carrier while the broad warning band is still clear.",
     "novelty": "The player and boss exchange perches, with each pressure landing physically changing the same transport rather than adding independent room counters.",
     "nearestExisting": "F33 preferred parry-retreat-wavedash and F27 carrier movement; native Marksman supplies the projectile and actual defeat.",
     "requiredEvents": [
@@ -147,7 +154,8 @@
       "marksman-leap",
       "carrier-reroute",
       "parry",
-      "marksman-gone"
+      "marksman-gone",
+      "mk-rain"
     ],
     "route": {
       "name": "canonical",
@@ -167,6 +175,7 @@
         "refill-dash",
         "carrier-reroute",
         "enemy-hit",
+        "mk-rain",
         "ultra",
         "hyper",
         "marksman-gone",
@@ -177,7 +186,7 @@
         "jump": 6,
         "land": 7,
         "mk-tell": 6,
-        "enemy-shot": 11,
+        "enemy-shot": 7,
         "parry-ready": 3,
         "parry": 3,
         "marksman-hit": 3,
@@ -185,7 +194,8 @@
         "dash": 3,
         "refill-dash": 3,
         "carrier-reroute": 2,
-        "enemy-hit": 8,
+        "enemy-hit": 14,
+        "mk-rain": 2,
         "ultra": 1,
         "hyper": 1,
         "marksman-gone": 1,
@@ -331,6 +341,7 @@
             "refill-dash",
             "carrier-reroute",
             "enemy-hit",
+            "mk-rain",
             "ultra",
             "hyper",
             "marksman-gone",
@@ -341,7 +352,7 @@
             "jump": 6,
             "land": 7,
             "mk-tell": 6,
-            "enemy-shot": 11,
+            "enemy-shot": 7,
             "parry-ready": 3,
             "parry": 3,
             "marksman-hit": 3,
@@ -349,7 +360,8 @@
             "dash": 3,
             "refill-dash": 3,
             "carrier-reroute": 2,
-            "enemy-hit": 8,
+            "enemy-hit": 14,
+            "mk-rain": 2,
             "ultra": 1,
             "hyper": 1,
             "marksman-gone": 1,
@@ -495,6 +507,7 @@
             "refill-dash",
             "carrier-reroute",
             "enemy-hit",
+            "mk-rain",
             "ultra",
             "hyper",
             "marksman-gone",
@@ -505,7 +518,7 @@
             "jump": 6,
             "land": 7,
             "mk-tell": 6,
-            "enemy-shot": 11,
+            "enemy-shot": 7,
             "parry-ready": 3,
             "parry": 3,
             "marksman-hit": 3,
@@ -513,7 +526,8 @@
             "dash": 3,
             "refill-dash": 3,
             "carrier-reroute": 2,
-            "enemy-hit": 8,
+            "enemy-hit": 14,
+            "mk-rain": 2,
             "ultra": 1,
             "hyper": 1,
             "marksman-gone": 1,
@@ -659,6 +673,7 @@
             "refill-dash",
             "carrier-reroute",
             "enemy-hit",
+            "mk-rain",
             "ultra",
             "hyper",
             "marksman-gone",
@@ -669,7 +684,7 @@
             "jump": 6,
             "land": 7,
             "mk-tell": 6,
-            "enemy-shot": 11,
+            "enemy-shot": 7,
             "parry-ready": 3,
             "parry": 3,
             "marksman-hit": 3,
@@ -677,7 +692,8 @@
             "dash": 3,
             "refill-dash": 3,
             "carrier-reroute": 2,
-            "enemy-hit": 8,
+            "enemy-hit": 14,
+            "mk-rain": 2,
             "ultra": 1,
             "hyper": 1,
             "marksman-gone": 1,
@@ -745,33 +761,24 @@
             "refill-dash",
             "carrier-reroute",
             "enemy-hit",
+            "mk-rain",
             "death",
             "respawn"
           ],
-          "eventCounts": {
-            "jump": 2,
-            "land": 2,
-            "mk-tell": 2,
-            "enemy-shot": 3,
-            "parry-ready": 1,
-            "parry": 1,
-            "marksman-hit": 1,
-            "marksman-leap": 1,
-            "dash": 1,
-            "refill-dash": 1,
-            "carrier-reroute": 1,
-            "enemy-hit": 2,
-            "death": 1,
-            "respawn": 1
-          }
+          "deathCauses": [
+            "spikes"
+          ]
         }
       }
     ],
     "endingForgiveness": "The final shelf is ten tiles wide and allows a full stop before returning the last arrow. Successful zero-death tapes vary the parry by four frames and leave the carrier ten frames later. A mistimed outgoing jump can land on the same wide shelf; no final launch is necessary after the boss yields.",
     "requiredEventCounts": {
       "marksman-hit": 3,
-      "carrier-reroute": 2
-    }
+      "carrier-reroute": 2,
+      "mk-rain": 2
+    },
+    "needsReview": true,
+    "revisionNote": "Native post-leap arrow rain added: eight-tile warning band, five spaced arrows, 30-frame delayed descent. Existing stable route and broad final shelf preserved; needsReview remains true."
   },
   "tape": [
     [

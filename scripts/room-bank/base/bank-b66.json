@@ -130,7 +130,7 @@
       "################################################################################"
     ],
     "hint": "Return the low sun. His first bloom raises your next wall; the second leaves a road underneath.",
-    "question": "Can the King’s own defences make the route to each next reflection?"
+    "question": "Can the King\u2019s own defences make the route to each next reflection?"
   },
   "bank": {
     "side": "base",
@@ -138,13 +138,13 @@
     "run": 8,
     "collection": "superrooms",
     "format": "superroom",
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "status": "route-proven",
     "author": "Codex",
     "newMechanics": [
       "king-cast-architecture"
     ],
-    "humanReview": "Awaiting player review; numeric ratings unmeasured.",
+    "humanReview": "Approved for Base by Isaac; numerical ratings unmeasured. Portal stone renderer corrected for full superroom dimensions; authored % surfaces and movement unchanged.",
     "worlds": [
       20
     ],

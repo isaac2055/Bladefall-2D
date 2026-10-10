@@ -8,7 +8,7 @@ const TILE=8,COLS=40,ROWS=23;
 const COL={blue:'#6fb6ff',blueD:'#2c5d9c',orange:'#ffae52',orangeD:'#a35a17',stone:'#d9dde2',stoneL:'#f4f6f8',stoneD:'#aab2bc',grill:'#9fe7ff'};
 const px=(b,x,y,w,h,c)=>{b.fillStyle=c;b.fillRect(Math.round(x),Math.round(y),w,h);};
 function drawStone(b,g){
- const room=g.room;
+ const room=g.room,COLS=room.cols,ROWS=room.rows;
  for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){
   if(!room.portalable[r*COLS+c])continue;const x=c*TILE,y=r*TILE;
   px(b,x,y,8,8,COL.stone);px(b,x,y,8,1,COL.stoneL);px(b,x,y,1,8,COL.stoneL);px(b,x+7,y,1,8,COL.stoneD);px(b,x,y+7,8,1,COL.stoneD);
@@ -16,7 +16,7 @@ function drawStone(b,g){
  }
 }
 function drawGrill(b,g,t){
- const room=g.room;
+ const room=g.room,COLS=room.cols,ROWS=room.rows;
  for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){
   if(!room.grill[r*COLS+c])continue;const x=c*TILE,y=r*TILE;
   b.globalAlpha=.35+.25*Math.sin((t+r*7+c*3)/6);px(b,x+3,y,2,8,COL.grill);b.globalAlpha=1;

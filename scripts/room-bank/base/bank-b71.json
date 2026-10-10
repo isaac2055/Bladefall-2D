@@ -1,0 +1,985 @@
+{
+  "room": {
+    "id": "bank-b71",
+    "study": true,
+    "dashes": 1,
+    "cols": 76,
+    "rows": 40,
+    "palette": "court",
+    "exit": "right",
+    "name": "Leave the Ice Above You",
+    "rbr": 9,
+    "lock": [
+      "portal"
+    ],
+    "dropThru": true,
+    "thaw": 480,
+    "map": [
+      "######################################################################G#####",
+      "#.....................................................................G....#",
+      "#.....................................................................G....#",
+      "#.....................................................................G....#",
+      "#.....................................................................G....#",
+      "#.....................................................................G....#",
+      "#.....................................................................G....#",
+      "#.....................................................................G....#",
+      "#.......wwwwwwwwwwww..................................................G....#",
+      "#.................ww..................................................G....#",
+      "#.................ww...........................................wwwwwwwG....#",
+      "#.................ww...........................................#######G....#",
+      "#.................ww..................................................G....#",
+      "#.................ww=====.............................................G....#",
+      "#.................ww..................................................G....#",
+      "#.................ww..................................................G....#",
+      "#.................ww............wwwwwwwwwwwwwwwwwwwwwww...............G....#",
+      "#.................ww............ww....................................G....#",
+      "#.................wwwwwwwwwwwww.ww....................................G....#",
+      "#...............................ww....................................G....#",
+      "#.........................=====.ww....................................G....#",
+      "#...............................ww....................................G....#",
+      "#...............................ww....................................G....#",
+      "#........................======.ww....................................G....#",
+      "#...................wwwwwwwwwwwwww....................................G....#",
+      "#...................ww................................................G....#",
+      "#...................ww................................................G....#",
+      "#...................ww................................................G....#",
+      "#..............=====ww................................................G....#",
+      "#...................ww................................................G.....",
+      "#...................ww.............=====..............................G.....",
+      "#...................ww...=====................======..................G.....",
+      "#...................ww................................................G.....",
+      "#...........P.......ww.^^^^^^^^^^^^^^^^^^^^^^^^^^^....................G.....",
+      "############################################################################",
+      "############################################################################",
+      "############################################################################",
+      "############################################################################",
+      "############################################################################",
+      "############################################################################"
+    ],
+    "sorcerer": {
+      "posts": [
+        {
+          "c": 52,
+          "r": 15
+        },
+        {
+          "c": 10,
+          "r": 7
+        },
+        {
+          "c": 65,
+          "r": 9,
+          "fall": {
+            "c": 59,
+            "r": 33
+          }
+        }
+      ],
+      "hits": 3,
+      "every": 170,
+      "tell": 50,
+      "first": 170,
+      "speed": 105,
+      "down": 220,
+      "leave": "up",
+      "icicles": {
+        "every": 2,
+        "n": 3,
+        "gap": 4,
+        "speed": 180,
+        "stake": 100
+      }
+    },
+    "hint": "Frozen water is a stair and a ward broken. When the old stair melts, its lower route opens. His last cup is above the dry bank.",
+    "question": "Can you leave the first ice above you and make his last frost bring him down to your level?"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 18,
+    "run": 9,
+    "collection": "superrooms",
+    "format": "superroom",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "author": "Codex",
+    "tags": [
+      "superroom",
+      "boss",
+      "sorcerer",
+      "water",
+      "freeze",
+      "thaw",
+      "return"
+    ],
+    "newMechanics": [],
+    "humanReview": "Awaiting review; numeric ratings unmeasured.",
+    "worlds": [
+      9
+    ],
+    "difficulty": 4,
+    "approvedIngredients": [
+      "bank-b45",
+      "bank-f52"
+    ],
+    "replaces": "cl9-s9-ward",
+    "role": "Three native Sorcerer openings weave through two connected ice routes and the lower path they initially obstruct.",
+    "solution": "Freeze the near face of the first connected pool and climb the ice in two stages to his first post. When he blinks west, cross back toward the separate return pool; freeze it, climb its overflow and reach him above the entrance. By then the original stair has thawed. Drop back to the starting bank and cross beneath the former ice bridge using the dry stepping ledges. Wait under the high eastern cup: his own descending frost freezes it, bringing him down to the broad dry bank for the last cut. His native departure opens the full-height eastern seal.",
+    "interconnection": "The first pool is a climb and a bridge during the outward route, then an obstruction whose thaw admits the lower return. The second post sends the knight back above the beginning, so the final approach reads the same aqueduct from underneath.",
+    "novelty": "The third opening is won by leaving the original high route: the player stops trying to climb toward the caster and uses his own frost to bring him below the ice instead.",
+    "nearestExisting": "The native White Court teaches a frozen overflow and the Last Ward teaches an aimed self-freeze. This combines them with a return above the entry and a lower route through the footprint of the first temporary stair.",
+    "requiredEvents": [
+      "freeze",
+      "sorc-hit",
+      "sorc-blink",
+      "thaw",
+      "sorc-frost",
+      "sorc-down",
+      "sorc-gone",
+      "gate-open",
+      "exit"
+    ],
+    "requiredEventCounts": {
+      "sorc-hit": 3
+    },
+    "superroom": {
+      "screenAreas": 3.3043478260869565,
+      "stages": [
+        "Build a temporary two-storey ice stair to the first post",
+        "Climb a separate return overflow above the beginning",
+        "Cross below the thawed stair and bring the final cup down"
+      ]
+    },
+    "endingForgiveness": "The last native drop stays vulnerable for 220 frames on broad dry ground. The pool can be frozen again if an opening is missed; the final exit is a safe walk.",
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 1631
+    },
+    "routeEvents": [
+      {
+        "type": "freeze",
+        "frame": 37,
+        "x": 260,
+        "y": 132,
+        "pool": 2,
+        "i": 36
+      },
+      {
+        "type": "sorc-hit",
+        "frame": 364,
+        "x": 420,
+        "y": 119,
+        "hits": 1,
+        "need": 3,
+        "i": 363
+      },
+      {
+        "type": "sorc-blink",
+        "frame": 364,
+        "x": 420,
+        "y": 119,
+        "i": 363
+      },
+      {
+        "type": "freeze",
+        "frame": 524,
+        "x": 68,
+        "y": 68,
+        "pool": 0,
+        "i": 523
+      },
+      {
+        "type": "sorc-frost",
+        "frame": 524,
+        "x": 124.13192161112276,
+        "y": 62.036644891978504,
+        "pool": 0,
+        "friendly": false,
+        "i": 523
+      },
+      {
+        "type": "thaw",
+        "frame": 525,
+        "x": 260,
+        "y": 132,
+        "pool": 2,
+        "i": 524
+      },
+      {
+        "type": "sorc-hit",
+        "frame": 774,
+        "x": 84,
+        "y": 55,
+        "hits": 2,
+        "need": 3,
+        "i": 773
+      },
+      {
+        "type": "sorc-blink",
+        "frame": 774,
+        "x": 84,
+        "y": 55,
+        "i": 773
+      },
+      {
+        "type": "sorc-icicles",
+        "frame": 916,
+        "x": 524,
+        "y": 62,
+        "i": 915
+      },
+      {
+        "type": "thaw",
+        "frame": 1009,
+        "x": 68,
+        "y": 68,
+        "pool": 0,
+        "i": 1008
+      },
+      {
+        "type": "freeze",
+        "frame": 1156,
+        "x": 260,
+        "y": 132,
+        "pool": 2,
+        "i": 1155
+      },
+      {
+        "type": "sorc-frost",
+        "frame": 1156,
+        "x": 417.42376596650104,
+        "y": 126.32766248963664,
+        "pool": 2,
+        "friendly": false,
+        "i": 1155
+      },
+      {
+        "type": "sorc-icicles",
+        "frame": 1262,
+        "x": 524,
+        "y": 62,
+        "i": 1261
+      },
+      {
+        "type": "freeze",
+        "frame": 1435,
+        "x": 508,
+        "y": 84,
+        "pool": 1,
+        "i": 1434
+      },
+      {
+        "type": "sorc-frost",
+        "frame": 1435,
+        "x": 517.506762584624,
+        "y": 78.97024462765391,
+        "pool": 1,
+        "friendly": false,
+        "i": 1434
+      },
+      {
+        "type": "sorc-down",
+        "frame": 1460,
+        "x": 476,
+        "y": 272,
+        "i": 1459
+      },
+      {
+        "type": "sorc-hit",
+        "frame": 1478,
+        "x": 476,
+        "y": 263,
+        "hits": 3,
+        "need": 3,
+        "i": 1477
+      },
+      {
+        "type": "sorc-gone",
+        "frame": 1534,
+        "x": 476,
+        "y": 263,
+        "how": "up",
+        "i": 1533
+      },
+      {
+        "type": "gate-open",
+        "frame": 1535,
+        "x": 564,
+        "y": 136,
+        "i": 1534
+      },
+      {
+        "type": "exit",
+        "frame": 1631,
+        "room": 0,
+        "i": 1630
+      }
+    ],
+    "positiveChecks": [
+      {
+        "name": "Take the final ground opening 10 frames earlier",
+        "tape": [
+          [
+            36,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            28,
+            "rjg"
+          ],
+          [
+            90,
+            "rgu"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            28,
+            "rjg"
+          ],
+          [
+            100,
+            "rgu"
+          ],
+          [
+            50,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            96,
+            "l"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            36,
+            "l"
+          ],
+          [
+            22,
+            "ljg"
+          ],
+          [
+            132,
+            "lgu"
+          ],
+          [
+            32,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            85,
+            "r"
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            54,
+            "r"
+          ],
+          [
+            100,
+            ""
+          ],
+          [
+            11,
+            "r"
+          ],
+          [
+            150,
+            ""
+          ],
+          [
+            3,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            60,
+            ""
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 1621
+      },
+      {
+        "name": "Take the final ground opening 120 frames later",
+        "tape": [
+          [
+            36,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            28,
+            "rjg"
+          ],
+          [
+            90,
+            "rgu"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            28,
+            "rjg"
+          ],
+          [
+            100,
+            "rgu"
+          ],
+          [
+            50,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            96,
+            "l"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            36,
+            "l"
+          ],
+          [
+            22,
+            "ljg"
+          ],
+          [
+            132,
+            "lgu"
+          ],
+          [
+            32,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            85,
+            "r"
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            54,
+            "r"
+          ],
+          [
+            100,
+            ""
+          ],
+          [
+            11,
+            "r"
+          ],
+          [
+            280,
+            ""
+          ],
+          [
+            3,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            60,
+            ""
+          ],
+          [
+            150,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 1751
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Skip the final wound and try jumping or dashing over the eastern seal",
+        "tape": [
+          [
+            36,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            28,
+            "rjg"
+          ],
+          [
+            90,
+            "rgu"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            28,
+            "rjg"
+          ],
+          [
+            100,
+            "rgu"
+          ],
+          [
+            50,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            96,
+            "l"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            36,
+            "l"
+          ],
+          [
+            22,
+            "ljg"
+          ],
+          [
+            132,
+            "lgu"
+          ],
+          [
+            32,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            85,
+            "r"
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            54,
+            "r"
+          ],
+          [
+            100,
+            ""
+          ],
+          [
+            11,
+            "r"
+          ],
+          [
+            160,
+            ""
+          ],
+          [
+            3,
+            "l"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            60,
+            ""
+          ],
+          [
+            150,
+            "r"
+          ],
+          [
+            40,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            80,
+            "rgu"
+          ]
+        ],
+        "exited": false,
+        "deaths": 0,
+        "frames": null
+      }
+    ]
+  },
+  "tape": [
+    [
+      36,
+      "r"
+    ],
+    [
+      1,
+      "rs"
+    ],
+    [
+      28,
+      "rjg"
+    ],
+    [
+      90,
+      "rgu"
+    ],
+    [
+      30,
+      "r"
+    ],
+    [
+      28,
+      "rjg"
+    ],
+    [
+      100,
+      "rgu"
+    ],
+    [
+      50,
+      "r"
+    ],
+    [
+      1,
+      "rs"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      96,
+      "l"
+    ],
+    [
+      1,
+      ""
+    ],
+    [
+      30,
+      "lj"
+    ],
+    [
+      40,
+      ""
+    ],
+    [
+      36,
+      "l"
+    ],
+    [
+      22,
+      "ljg"
+    ],
+    [
+      132,
+      "lgu"
+    ],
+    [
+      32,
+      "l"
+    ],
+    [
+      1,
+      "ls"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      40,
+      "l"
+    ],
+    [
+      70,
+      ""
+    ],
+    [
+      85,
+      "r"
+    ],
+    [
+      26,
+      "rj"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      12,
+      "rx"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      12,
+      "rx"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      54,
+      "r"
+    ],
+    [
+      100,
+      ""
+    ],
+    [
+      11,
+      "r"
+    ],
+    [
+      160,
+      ""
+    ],
+    [
+      3,
+      "l"
+    ],
+    [
+      1,
+      "ls"
+    ],
+    [
+      60,
+      ""
+    ],
+    [
+      150,
+      "r"
+    ]
+  ]
+}

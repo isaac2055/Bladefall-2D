@@ -129,6 +129,7 @@ html,body{margin:0;padding:0;height:100%;overflow:hidden;background:var(--bg);co
 /* The global *{user-select:none} that keeps gameplay from selecting text also
    makes real form controls inert in WebKit — Safari refuses to focus a text
    field or open a <select> it thinks is unselectable. Exempt them. */
+select,input,textarea{touch-action:manipulation;}
 input,select,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:default;}
 .keycap{min-width:32px;padding:9px 0;border-radius:8px;background:var(--panel);border:1.5px solid var(--line);color:var(--ink);font-weight:800;font-size:15px;cursor:pointer;touch-action:none;}
 .keycap:active{background:var(--amber);color:#0b0c10;}
@@ -242,11 +243,11 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
   //      not onclick) and their <label>s — else those can't be toggled on touch. */
   const CLICKABLE=/^(BUTTON|A|INPUT|LABEL|SELECT|TEXTAREA)$/;
   const actionable=el=>el&&el.nodeType===1&&(typeof el.onclick==='function'||CLICKABLE.test(el.tagName)||el.getAttribute('role')==='button');
-  let downX=0,downY=0,downT=0,lastNativeClick=0;
+  let downX=0,downY=0,downT=0,lastNativeClick=0,lastNativeTarget=null;
   // Only a REAL browser click should suppress synthesis (so we don't double-fire).
   // Our own synthesized clicks are untrusted — ignoring them lets two quick taps
   // on different controls (e.g. toggling both Hardcore and Test Mode) both land.
-  document.addEventListener('click',(e)=>{if(e.isTrusted)lastNativeClick=Date.now();},true);
+  document.addEventListener('click',(e)=>{if(e.isTrusted){lastNativeClick=Date.now();lastNativeTarget=e.target;}},true);
   document.addEventListener('pointerdown',e=>{downX=e.clientX;downY=e.clientY;downT=Date.now();},true);
   document.addEventListener('pointerup',e=>{
     if(e.pointerType==='mouse')return;                        // mouse clicks fine on its own
@@ -255,10 +256,10 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
     let el=e.target;
     while(el&&el!==document&&!actionable(el))el=el.parentElement;
     if(!el||el===document)return;
-    if(el.tagName==='INPUT'&&el.type==='range')return;        // sliders are dragged, not clicked
-    const target=el;
+    if(/^(SELECT|TEXTAREA)$/.test(el.tagName)||el.tagName==='INPUT'&&el.type==='range')return;        // sliders are dragged, not clicked
+    const target=el,pressStarted=downT;
     setTimeout(()=>{
-      if(Date.now()-lastNativeClick<400)return;               // a real click already handled it
+      if(lastNativeClick>=pressStarted&&(lastNativeTarget===target||target.contains(lastNativeTarget)))return;               // a real click already handled it
       target.click();
     },100);
   },true);
@@ -268,6 +269,8 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
   const menuOverlay=document.getElementById('overlay');
   for(const type of ['mousedown','mouseup','mousemove','keydown','keyup'])
     menuOverlay.addEventListener(type,e=>e.stopPropagation());
+
+  for(const type of ['pointerdown','pointerup','touchstart','touchend'])menuOverlay.addEventListener(type,e=>{if(e.target.closest?.('select,input,textarea'))e.stopPropagation();});
 
   // ---- Manual scroll for overlay menus. The root sets touch-action:none /
   //      overscroll-behavior:none so gameplay never scrolls the page — but that
@@ -289,7 +292,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
   },{passive:false});
   let ty=null,scroller=null,moved=0;
   document.addEventListener('touchstart',e=>{
-    scroller=findScroller(e.target); ty=scroller?e.touches[0].clientY:null; moved=0;
+    scroller=e.target.closest?.('select,input,textarea')?null:findScroller(e.target); ty=scroller?e.touches[0].clientY:null; moved=0;
   },{passive:true});
   document.addEventListener('touchmove',e=>{
     if(ty===null||!scroller)return;
@@ -303,7 +306,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 </script>
 <script src="bladefall-playtest-worlds.js?v=7.304.0"></script>
 <script src="bladefall-playtest-model.js?v=7.304.0"></script>
-<script src="bladefall-playtest.js?v=7.304.0"></script>
+<script src="bladefall-playtest.js?v=7.306.0"></script>
 <script src="bladefall-harness.js"></script>
 <script src="bladefall-core.js"></script>
 <script src="bladefall-simulation.js"></script>
@@ -350,6 +353,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-foundation-audit.js"></script>
 <script src="bladefall-cinematics.js"></script>
 <script src="bladefall-storage.js"></script>
+<script src="bladefall-touch-layout.js?v=7.306.0"></script>
 <script src="bladefall-input.js?v=7.304.0"></script>
 <script src="bladefall-content.js"></script>
 <script src="bladefall-presentation.js"></script>
@@ -372,7 +376,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-palace-path-art.js?v=7.201.0"></script>
 <script src="bladefall-sunspire.js?v=7.231.0"></script>
 <script src="bladefall-sunspire-art.js?v=7.231.0"></script>
-<script src="bladefall-rift-shards.js?v=7.305.0"></script>
+<script src="bladefall-rift-shards.js?v=7.306.0"></script>
 <script src="bladefall-fractured.js?v=7.303.0"></script>
 <script src="bladefall-fractured-outskirts.js?v=7.228.1"></script>
 <script src="bladefall-fractured-outskirts-art.js?v=7.211.1"></script>
@@ -421,7 +425,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-precision-art.js?v=7.248.0"></script>
 <script src="bladefall-celeste.js?v=7.250.0"></script>
 <script src="bladefall-celeste-art.js?v=11"></script>
-<script src="bladefall-cloaked-man.js?v=7.305.0"></script>
+<script src="bladefall-cloaked-man.js?v=7.306.0"></script>
 <script src="bladefall-cloaked-man-art.js?v=7.304.0"></script>
 <script src="bladefall-explore-finale.js?v=7.305.0"></script>
 <script src="bladefall-causeway-story.js?v=7.234.0"></script>
@@ -435,7 +439,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.305.0';
+const VERSION='7.306.0';
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -1970,15 +1974,14 @@ function recordSessionClear(stageIndex){
   }catch(_e){}
   return false;
 }
-function offerExploreWorldClear(){
+function offerExploreWorldClear(exited=false){
+  if(!exited)return; // Acquisitions and boss clears unlock exits; only departure ends a timed world.
   const trial=BladefallPlaytest.state().run;
   if(!G||!trial||trial.done||trial.world!==String(G.stageIndex))return;
   const source=G.stageIndex,world=BladefallPlaytest.model.world('explore',source);
   if(!world)return;
-  const roster=BladefallPlaytest.model.catalog.filter(w=>w.mode==='explore'&&w.campaign===world.campaign),next=roster[roster.findIndex(w=>w.id===String(source))+1];
   void BladefallPlaytest.complete({feedbackInfo:{mode:'explore',world:String(source),campaign:world.campaign,name:world.name,room:world.id},
-    next:next&&(next.campaign==='base'||BladefallPlaytest.unlocked('explore',next.id))?()=>beginRun(0,null,{hp:1,dmg:1},{startStage:+next.id,levelSelect:true}):null,
-    walk:()=>resumePlay(),menu:()=>openLevelSelect()});
+    menuLabel:'Continue playing',menu:()=>resumePlay()});
 }
 function recordWorldClear(){
   if(G)window.BladefallExploreFinale?.noteClear(G.stageIndex);
@@ -2524,7 +2527,7 @@ function bindBtn(id,key){
     else if(key==='tool'){if(v&&!input.tool)input.toolEdge=true;input.tool=v;}
     else if(key==='command'){if(v&&!input.command)input.commandEdge=true;input.command=v;}
     else input[key]=v;};
-  el.addEventListener('pointerdown',e=>{if(heldId!==null)return;e.preventDefault();heldId=e.pointerId;set(true);el.setPointerCapture&&el.setPointerCapture(e.pointerId);});
+  el.addEventListener('pointerdown',e=>{if(heldId!==null)return;if(e.pointerType==='touch')window.BladefallTouchLayout?.fullscreen();e.preventDefault();heldId=e.pointerId;set(true);el.setPointerCapture&&el.setPointerCapture(e.pointerId);});
   const rel=e=>{if(e.pointerId!==heldId)return;e.preventDefault&&e.preventDefault();heldId=null;set(false);};
   el.addEventListener('pointerup',rel);el.addEventListener('pointercancel',rel);el.addEventListener('lostpointercapture',rel);
   el.addEventListener('contextmenu',e=>e.preventDefault());
@@ -2551,17 +2554,26 @@ window.addEventListener('keydown',e=>{
 /* Virtual joystick */
 (function(){
   const zone=document.getElementById('joyzone'),joy=document.getElementById('joy'),knob=document.getElementById('joyknob');
-  let pid=null,ox=0,oy=0;const R=46;
+  let pid=null,ox=0,oy=0;const radius=()=>46*(window.BladefallTouchLayout?.resolve('explore','stick',{x:104,y:innerHeight-104,r:52}).r||52)/52;
   const setKnob=(x,y)=>{knob.style.transform=`translate(${x}px,${y}px)`};
   zone.addEventListener('pointerdown',e=>{
     if(pid!==null || e.pointerType==='mouse')return;
-    pid=e.pointerId;ox=e.clientX;oy=e.clientY;
-    joy.style.display='block';const zr=zone.getBoundingClientRect();joy.style.left=(ox-zr.left-52)+'px';joy.style.top=(oy-zr.top-52)+'px';setKnob(0,0);zone.setPointerCapture&&zone.setPointerCapture(e.pointerId);});
-  zone.addEventListener('pointermove',e=>{if(e.pointerId!==pid)return;e.preventDefault();let dx=e.clientX-ox,dy=e.clientY-oy;const d=Math.sqrt(dx*dx+dy*dy);if(d>R){dx=dx/d*R;dy=dy/d*R;}setKnob(dx,dy);input.jx=dx/R;input.jz=dy/R;});
-  const rel=e=>{if(e.pointerId!==pid)return;pid=null;joy.style.display='none';input.jx=0;input.jz=0;setKnob(0,0);};
+    e.preventDefault();window.BladefallTouchLayout?.fullscreen();pid=e.pointerId;ox=e.clientX;oy=e.clientY;
+    joy.style.display='block';const zr=zone.getBoundingClientRect();const size=radius()/46;joy.style.width=joy.style.height=(104*size)+'px';knob.style.width=knob.style.height=(46*size)+'px';knob.style.left=knob.style.top=(29*size)+'px';joy.style.left=(ox-zr.left-52*size)+'px';joy.style.top=(oy-zr.top-52*size)+'px';setKnob(0,0);zone.setPointerCapture&&zone.setPointerCapture(e.pointerId);});
+  zone.addEventListener('pointermove',e=>{if(e.pointerId!==pid)return;e.preventDefault();let dx=e.clientX-ox,dy=e.clientY-oy;const R=radius(),d=Math.sqrt(dx*dx+dy*dy);if(d>R){dx=dx/d*R;dy=dy/d*R;}setKnob(dx,dy);input.jx=dx/R;input.jz=dy/R;});
+  const rel=e=>{if(e.pointerId!==pid)return;pid=null;joy.style.display='none';input.jx=0;input.jz=0;input.touchUpT=0;input.touchUpUsed=false;setKnob(0,0);};
   zone.addEventListener('pointerup',rel);zone.addEventListener('pointercancel',rel);zone.addEventListener('lostpointercapture',rel);
   zone.addEventListener('contextmenu',e=>e.preventDefault());
 })();
+
+const EXPLORE_TOUCH_IDS=['bJump','bAttack','bDodge','bPortal','bFlip','bCommand','bTool','pausebtn'];
+const exploreTouchOriginal=new Map();
+function exploreTouchItems(){const w=innerWidth,h=innerHeight;return [{id:'stick',label:'Move / aim',x:104,y:h-104,r:52},...EXPLORE_TOUCH_IDS.map(id=>{const el=document.getElementById(id),st=getComputedStyle(el),r=(parseFloat(st.width)||56)/2;return {id,label:{bJump:'Jump',bAttack:'Attack',bDodge:'Dash',bPortal:'Portal',bFlip:'Flip',bCommand:'Companion',bTool:'Tool',pausebtn:'Pause'}[id],x:Number.isFinite(parseFloat(st.left))?parseFloat(st.left)+r:w-(parseFloat(st.right)||0)-r,y:Number.isFinite(parseFloat(st.top))?parseFloat(st.top)+r:h-(parseFloat(st.bottom)||0)-r,r};})];}
+function applyExploreTouchLayout(){const api=window.BladefallTouchLayout;if(!api)return;for(const id of [...EXPLORE_TOUCH_IDS,'joyzone']){const el=document.getElementById(id);if(!exploreTouchOriginal.has(id))exploreTouchOriginal.set(id,Object.fromEntries(['left','top','right','bottom','width','height'].map(k=>[k,el.style[k]])));else Object.assign(el.style,exploreTouchOriginal.get(id));}
+ const prefs=api.config('explore');for(const item of exploreTouchItems()){if(!prefs[item.id])continue;const b=api.resolve('explore',item.id,item),el=document.getElementById(item.id==='stick'?'joyzone':item.id);Object.assign(el.style,{left:(b.x-b.r)+'px',top:(b.y-b.r)+'px',right:'auto',bottom:'auto',width:(b.r*2)+'px',height:(b.r*2)+'px'});}applySafeAreaOffsets();}
+addEventListener('resize',applyExploreTouchLayout);applyExploreTouchLayout();
+function clearExploreTouchInput(){for(const k of Object.keys(input))if(typeof input[k]==='boolean')input[k]=false;input.jx=input.jz=input.touchUpT=0;input.touchUpUsed=false;document.getElementById('joy').style.display='none';if(G?.p)G.p.jumpBuf=G.p.dashBuf=G.p.atkBuf=0;}
+function editExploreTouchLayout(){clearExploreTouchInput();window.BladefallTouchLayout?.open({mode:'explore',items:exploreTouchItems,onChange:applyExploreTouchLayout});}
 
 /* Pause button */
 document.getElementById('pausebtn').addEventListener('pointerdown',e=>{e.preventDefault();if(mode==='play')openPause();});
@@ -9788,7 +9800,7 @@ const CUSTOM_LEVELS={0:LEVELS[0],1:LEVELS[1],2:LEVELS[2],3:UPDRAFTS_LEVEL,4:HOLL
   39:(typeof BladefallActTwo!=='undefined'?BladefallActTwo.level(39):null),
   40:(typeof BladefallActTwo!=='undefined'?BladefallActTwo.level(40):null),
   41:BladefallActTwo.level(41),42:BladefallActTwo.level(42),
-  // Battle 42, the last fight: the Cloaked Man (bladefall-cloaked-man.js?v=7.305.0).
+  // Battle 42, the last fight: the Cloaked Man (bladefall-cloaked-man.js?v=7.306.0).
   43:BladefallActTwo.level(43),44:BladefallActTwo.level(44),45:BladefallActTwo.level(45)};
 
 /* ================================================================
@@ -11687,6 +11699,7 @@ const BFZoneStreamer=BFStreamingModule.createStreamer({zones:BFZonesModule,adapt
     // Co-op: both machines must build this region from the same seed and the same world
     // state, because the shared world is synced by object position in the lists.
     if(G.coopSession&&coopActive()&&NET.isHost())NET.stageSeed=BFSimulationModule.createSeed();
+    if(sequential||G.physicalDepartureCommitted)offerExploreWorldClear(true);
     loadStage(prepared.stageIndex);delete G._pendingZoneEndpoint;restorePlayer(carry);
     if(!sequential)BladefallPlaytest.invalidate('entered through a side or return route');
     G.zoneTransition={connectorId:plan.connectorId,from:plan.sourceZoneId,to:plan.targetZoneId,
@@ -11755,7 +11768,6 @@ function restorePhysicalProgress(backup){
 function commitPhysicalDeparture(targetStage){
   if(G.physicalDepartureCommitted)return;
   G.physicalDepartureCommitted=true;
-  offerExploreWorldClear();
   if(!G.tookDamage)meta.flawlessStages=(meta.flawlessStages||0)+1;
   commitStageCompletion();recordWorldClear();recordStoryStageClear();recordHelpedTravelers();
   meta.bestStage=Math.max(meta.bestStage||0,targetStage);
@@ -17351,7 +17363,12 @@ function update(dt){
   if(!fieldLoadoutActive()&&!BF_TAS_ENABLED&&BFKeyboard.isPressed('KeyI')&&playerBuildDiscovery().bag)openBag(()=>{mode='play';showOverlay(false);});
   if(keyPressedFor('pickup'))collectNearbyItem();
   if(keyPressedFor('checkpoint')){if(window.BladefallEarlyPlatforming?.retry()){}else if(window.BladefallCeleste&&BladefallCeleste.active())BladefallCeleste.retry();else placeEarnedCheckpoint();}
-  if(!(hasGift('pure-nail')&&(keyDownFor('dash')||input.dodge))&&(BF_TAS_ENABLED?!!(tasInjected&&tasInjected.pressed.interact):(BFKeyboard.isPressed('ArrowUp')||BFPad.isPressed('aimup'))))beginOutskirtsInteraction();
+  const touchUp=input.jz<-.5&&!input.dodge&&!keyDownFor('dash');
+  input.touchUpT=touchUp?(input.touchUpT||0)+dt:0;
+  const touchInteract=touchUp&&!input.touchUpUsed&&input.touchUpT>=.25;
+  if(!touchUp)input.touchUpUsed=false;
+  if(touchInteract)input.touchUpUsed=true;
+  if(!(keyDownFor('dash')||input.dodge)&&(BF_TAS_ENABLED?!!(tasInjected&&tasInjected.pressed.interact):(touchInteract||BFKeyboard.isPressed('ArrowUp')||BFPad.isPressed('aimup'))))beginOutskirtsInteraction();
   if(keyPressedFor('tool')||input.toolEdge)useEquippedTool();input.toolEdge=false;
   if(keyPressedFor('swap'))swapWeapon();
   // THE ECHO: one key, two jobs. Leave a second body, or trade places with the one
@@ -17445,8 +17462,9 @@ function update(dt){
     p.dodgeCdT=meta.testMode?0:effDodgeCd(p);
     p.dodgeTimer=movement.tuning.dashDurationSeconds;
     p.dashX=mx||p.face;
-    p.dashUp=!!(hasGift('pure-nail')&&(input.jz<-.5||(BF_TAS_ENABLED?tasInjected?.held?.up:(BFKeyboard.isDown('ArrowUp')||BFPad.isDown('aimup')))));
-    if(p.dashUp){p.onGround=false;p.floorPlat=null;p.vy=-680;p.vx=0;}
+    p.dashUp=!!(input.jz<-.5||(BF_TAS_ENABLED?tasInjected?.held?.up:(BFKeyboard.isDown('ArrowUp')||BFPad.isDown('aimup'))));
+    p.dashDiagonal=p.dashUp&&Math.abs(mx)>.25;
+    if(p.dashUp){p.dashX=p.dashDiagonal?Math.sign(mx):0;p.onGround=false;p.floorPlat=null;p.vy=-680*(p.dashDiagonal?Math.SQRT1_2:1);p.vx=p.dashX*spd*movement.tuning.dashSpeedMultiplier*Math.SQRT1_2;}
     window.BladefallCeleste?.labStart(p);
     recordMovementUse('dash');
     resolveEchoEvent('player:dash',{x:p.x,y:p.y,direction:p.dashX});
@@ -17529,8 +17547,8 @@ function update(dt){
     p.dodgeTimer-=dt;
     if(window.BladefallCeleste?.lab()){BladefallCeleste.labVelocity(p);}
     else {
-    const targetVx = p.dashUp?0:(mx !== 0 ? mx : p.dashX) * spd * movement.tuning.dashSpeedMultiplier;
-    if(p.dashUp)p.vy=-680;
+    const targetVx = (p.dashUp?p.dashX*(p.dashDiagonal?Math.SQRT1_2:1):(mx !== 0 ? mx : p.dashX)) * spd * movement.tuning.dashSpeedMultiplier;
+    if(p.dashUp)p.vy=-680*(p.dashDiagonal?Math.SQRT1_2:1);
     p.vx=BFPlatformer.blendVelocity(p.vx,targetVx,BFPlatformer.profiles.precision.dash,dt);
     }
     // Add shadow clones during dash
@@ -20382,11 +20400,11 @@ function railSniperShoot(e){
    SECTION 10: STAGE FLOW
    ================================================================ */
 function nextStage(){
-  offerExploreWorldClear();
   // Co-op stage flow is a two-person decision. Any stray caller that did not
   // come through the synchronized stage-go handshake is redirected to readiness
   // instead of being allowed to load ahead on one client.
   if(coopActive()&&!NET.stageAdvancing){coopOpenStageGate();return;}
+  offerExploreWorldClear(true);
   if(!G.tookDamage){meta.flawlessStages=(meta.flawlessStages||0)+1;}
   commitStageCompletion();
   recordWorldClear();
@@ -24504,7 +24522,7 @@ function titleScreen(){
       <button class="bigbtn ghost" id="settingsBtn" style="flex:1;">⚙ Controls</button>
     </div>
     <button class="bigbtn ghost" id="boardsBtn">🏆 Leaderboards</button>
-    <a class="bigbtn ghost" id="apkBtn" href="https://github.com/isaac2055/Bladefall-2D/releases/download/v7.305.0/Bladefall-7.305.0.apk" style="display:block;text-align:center;box-sizing:border-box;text-decoration:none" download>Download APK</a>
+    <a class="bigbtn ghost" id="apkBtn" href="https://github.com/isaac2055/Bladefall-2D/releases/download/v7.306.0/Bladefall-7.306.0.apk" style="display:block;text-align:center;box-sizing:border-box;text-decoration:none" download>Download APK</a>
     <p class="hint">v${VERSION}</p></div>`);
   if(canContinue)document.getElementById('contBtn').onclick=()=>{if(continueSurvive)location.href='precision.html?pitch=climb&resume=1&mode='+(lastPlayed.mode==='review'?'review':'play');else continueRun();};
   document.getElementById('newBtn').onclick=openExploreMenu;
@@ -24692,7 +24710,7 @@ function openSettings(returnTo){
       <label><input type="checkbox" data-setting="haptics" ${meta.haptics?'checked':''}>Haptics<small>supported devices</small></label>
       <label><input type="checkbox" data-setting="autoAttack" ${meta.autoAttack?'checked':''}>Auto attack<small>accessibility assist</small></label>
     </div>
-    <div class="settingsection">Controls</div><p class="ovsub" style="text-align:left;font-size:12px">Controller: stick / D-pad move and aim · A jump · B dash · X attack · Y take item · RB portal · LT tool · RT counter · Menu pause.<br>Hold LB: A gravity flip · B companion · X chainhook · Y echo · RB swap weapon · RT checkpoint. Menus: D-pad, A select, B back.</p>
+    <div class="settingsection">Touch Controls</div><button class="bigbtn ghost" id="editExploreTouch">Move / resize touch controls</button><p class="ovsub">Hold the stick up briefly to interact. Aim up-left or up-right while dashing for a diagonal dash.</p><div class="settingsection">Controls</div><p class="ovsub" style="text-align:left;font-size:12px">Controller: stick / D-pad move and aim · A jump · B dash · X attack · Y take item · RB portal · LT tool · RT counter · Menu pause.<br>Hold LB: A gravity flip · B companion · X chainhook · Y echo · RB swap weapon · RT checkpoint. Menus: D-pad, A select, B back.</p>
     <p class="ovsub" style="margin:0 0 6px;text-align:left;">Click a key, then press its replacement</p>
     <div class="kblist">${rows}</div>
     <label class="volrow" style="margin-top:12px;cursor:pointer;justify-content:flex-start;gap:10px;">
@@ -24708,6 +24726,7 @@ function openSettings(returnTo){
     <button class="bigbtn ghost" id="kbResetBtn">Reset Controls to Default</button>
     <button class="bigbtn" id="settingsBack">Back</button>
   </div>`);
+  document.getElementById('editExploreTouch').onclick=editExploreTouchLayout;
   const tmChk=document.getElementById('testModeChk');
   if(tmChk)tmChk.onchange=e=>{meta.testMode=e.target.checked;if(!meta.testMode)revokeTestModeLoaner();persist();hudUpdate();};
   document.querySelectorAll('[data-setting]').forEach(el=>el.onchange=e=>{
@@ -25635,6 +25654,8 @@ function applyViewScale(){
   // Zoom trims the close view by up to 15% either way: 115% shows 348 units of height, 85% shows 471.
   const zoom=Math.min(1.15,Math.max(.70,+meta.viewZoom||1));
   canvasPixelRatio=wide||!(innerHeight>0)?1:Math.min(2.5,VIEW_HEIGHT/zoom/innerHeight);
+  canvasMaxSize=vec2(Math.max(1920,Math.ceil(innerWidth*canvasPixelRatio)),Math.max(1080,Math.ceil(innerHeight*canvasPixelRatio)));
+  canvasMinAspect=canvasMaxAspect=0;
   const c=document.querySelector('#gameContainer canvas');if(c)c.style.imageRendering=wide?'':'pixelated';
 }
 function setGameZoom(value){
@@ -25916,7 +25937,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.306.0').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */
@@ -25937,7 +25958,7 @@ function applySafeAreaOffsets(){
   const sat=parseFloat(cs.getPropertyValue('--sat'))||0;
   const sar=parseFloat(cs.getPropertyValue('--sar'))||0;
   const sab=parseFloat(cs.getPropertyValue('--sab'))||0;
-  const set=(id,prop,base)=>{const el=document.getElementById(id);if(el)el.style[prop]=base+(prop==='paddingTop'||prop==='top'?sat:prop==='right'?sar:sab)+'px';};
+  const set=(id,prop,base)=>{if(window.BladefallTouchLayout?.config('explore')[id])return;const el=document.getElementById(id);if(el)el.style[prop]=base+(prop==='paddingTop'||prop==='top'?sat:prop==='right'?sar:sab)+'px';};
   set('hud','paddingTop',8);
   set('bosshpwrap','top',64);
   set('bAttack','right',16);set('bAttack','bottom',16);

@@ -1,0 +1,1116 @@
+{
+  "room": {
+    "id": "bank-f68",
+    "name": "The Branch That Becomes the Way Back",
+    "palette": "fractured",
+    "rbr": 22,
+    "study": true,
+    "movement": "survive-2",
+    "aim8": true,
+    "cols": 72,
+    "rows": 40,
+    "exit": "left",
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "rootCrown": {
+      "c": 8,
+      "r": 10
+    },
+    "hingeArms": [
+      {
+        "id": "Crown branch",
+        "c": 59,
+        "r": 33,
+        "length": 12,
+        "dir": "up"
+      }
+    ],
+    "resinWind": {
+      "period": 240,
+      "branches": [
+        {
+          "c": 26,
+          "r": 34,
+          "w": 12,
+          "phase": 0
+        },
+        {
+          "c": 33,
+          "r": 17,
+          "w": 8,
+          "phase": 1
+        }
+      ]
+    },
+    "lashes": [
+      {
+        "c0": 29,
+        "r0": 31,
+        "c1": 36,
+        "r1": 33,
+        "period": 240,
+        "on": 60,
+        "phase": 0
+      },
+      {
+        "c0": 33,
+        "r0": 14,
+        "c1": 40,
+        "r1": 16,
+        "period": 240,
+        "on": 65,
+        "phase": 0
+      }
+    ],
+    "hint": "The upright branch bars the far anvil. Turn it into a floor, then return above the roof you crossed beneath.",
+    "question": "Which branch must stop being a wall before it can become your return route?",
+    "map": [
+      "########################################################################",
+      "#......................................................................#",
+      "#......................................................................#",
+      "#......................................................................#",
+      "#......................................................................#",
+      "#......................................................................#",
+      "#......................................................................#",
+      "#......................................................................#",
+      "G......................................................................#",
+      "G......................................................................#",
+      "G......................................................................#",
+      "G......................................................................#",
+      "#############..........................................................#",
+      "#......................................................................#",
+      "#................########..............................................#",
+      "#......................................................................#",
+      "#......................................................................#",
+      "#......................................................................#",
+      "#......................................................................#",
+      "#......................................................................#",
+      "#................................................#########.............#",
+      "#......................................................................#",
+      "#......................................................................#",
+      "#......................................................................#",
+      "#......................................................................#",
+      "#......................................................................#",
+      "#......................................................................#",
+      "#......................................................................#",
+      "#......................................................................#",
+      "#......................................................................#",
+      "#...........###############################################............#",
+      "#......................................................................#",
+      "#................................................................N.....#",
+      "#...P..................................................................#",
+      "#############........................................###################",
+      "#############........................................###################",
+      "#############........................................###################",
+      "#############........................................###################",
+      "#############^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^###################",
+      "########################################################################"
+    ]
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 18,
+    "run": 9,
+    "collection": "superrooms",
+    "format": "superroom",
+    "acceptance": "candidate",
+    "needsReview": true,
+    "difficulty": 3,
+    "role": "interconnected native Oath Root boss superroom",
+    "worlds": [
+      22
+    ],
+    "tags": [
+      "superroom",
+      "root-crown",
+      "hyper",
+      "resin",
+      "hinge",
+      "return"
+    ],
+    "newMechanics": [],
+    "status": "route-proven",
+    "author": "Codex",
+    "humanReview": "New integrated candidate; awaiting fun/difficulty/suitability review.",
+    "approvedIngredients": [
+      "bank-f17",
+      "bank-f26"
+    ],
+    "interconnection": "The same overhang is the outward low ceiling and the roof below the return. One upright crown branch bars the far anvil; turning it opens the anvil and makes its launch floor. The Root lashes both heights until the high crown is cut above the original fire.",
+    "solution": "Hyper beneath the canopy, using the timed resin pause. Turn the upright crown branch from its near side, reach the far anvil, and pogo to the upper ledge. Return across the resin beat and upper islands; cut the native Oath Root crown above the starting court.",
+    "novelty": "The obstruction at the end of the low run becomes the departure floor for the route above it; the actual boss occupies both routes through one lash clock.",
+    "nearestExisting": "F17/F26 low movement and world-native resin/lashes, rebuilt as one return court.",
+    "requiredEvents": [
+      "hyper",
+      "hinge-turn",
+      "anvil",
+      "root-cut"
+    ],
+    "route": {
+      "name": "canonical",
+      "exited": true,
+      "deaths": 0,
+      "frames": 585,
+      "crownCut": true,
+      "events": [
+        "dash",
+        "ultra",
+        "refill-dash",
+        "hyper",
+        "land",
+        "strike",
+        "hinge-turn",
+        "jump",
+        "anvil",
+        "super",
+        "root-cut",
+        "gate-open",
+        "exit"
+      ],
+      "eventCounts": {
+        "dash": 7,
+        "ultra": 2,
+        "refill-dash": 7,
+        "hyper": 2,
+        "land": 7,
+        "strike": 3,
+        "hinge-turn": 1,
+        "jump": 4,
+        "anvil": 1,
+        "super": 1,
+        "root-cut": 1,
+        "gate-open": 1,
+        "exit": 1
+      }
+    },
+    "positiveChecks": [
+      {
+        "name": "Final takeoff setup -3 frames",
+        "tape": [
+          [
+            30,
+            "r"
+          ],
+          [
+            5,
+            "rdx"
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            5,
+            "rdx"
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            42,
+            "rj"
+          ],
+          [
+            6,
+            ""
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            1,
+            "dsj"
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            5,
+            "lux"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            10,
+            "l"
+          ],
+          [
+            5,
+            "lx"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            16,
+            "lj"
+          ],
+          [
+            5,
+            "lux"
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            5,
+            "lux"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            21,
+            "l"
+          ],
+          [
+            15,
+            "lj"
+          ],
+          [
+            5,
+            "lux"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            6,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            70,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 585,
+          "crownCut": true,
+          "events": [
+            "dash",
+            "ultra",
+            "refill-dash",
+            "hyper",
+            "land",
+            "strike",
+            "hinge-turn",
+            "jump",
+            "anvil",
+            "super",
+            "root-cut",
+            "gate-open",
+            "exit"
+          ],
+          "eventCounts": {
+            "dash": 7,
+            "ultra": 2,
+            "refill-dash": 7,
+            "hyper": 2,
+            "land": 7,
+            "strike": 3,
+            "hinge-turn": 1,
+            "jump": 4,
+            "anvil": 1,
+            "super": 1,
+            "root-cut": 1,
+            "gate-open": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Final takeoff setup 3 frames",
+        "tape": [
+          [
+            30,
+            "r"
+          ],
+          [
+            5,
+            "rdx"
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            5,
+            "rdx"
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            42,
+            "rj"
+          ],
+          [
+            6,
+            ""
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            1,
+            "dsj"
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            5,
+            "lux"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            10,
+            "l"
+          ],
+          [
+            5,
+            "lx"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            16,
+            "lj"
+          ],
+          [
+            5,
+            "lux"
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            5,
+            "lux"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            27,
+            "l"
+          ],
+          [
+            15,
+            "lj"
+          ],
+          [
+            5,
+            "lux"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            6,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            70,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 585,
+          "crownCut": true,
+          "events": [
+            "dash",
+            "ultra",
+            "refill-dash",
+            "hyper",
+            "land",
+            "strike",
+            "hinge-turn",
+            "jump",
+            "anvil",
+            "super",
+            "root-cut",
+            "gate-open",
+            "exit"
+          ],
+          "eventCounts": {
+            "dash": 7,
+            "ultra": 2,
+            "refill-dash": 7,
+            "hyper": 2,
+            "land": 7,
+            "strike": 3,
+            "hinge-turn": 1,
+            "jump": 4,
+            "anvil": 1,
+            "super": 1,
+            "root-cut": 1,
+            "gate-open": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Wait through a full resin-and-lash cycle on the upper ledge",
+        "tape": [
+          [
+            30,
+            "r"
+          ],
+          [
+            5,
+            "rdx"
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            5,
+            "rdx"
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            42,
+            "rj"
+          ],
+          [
+            6,
+            ""
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            1,
+            "dsj"
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            5,
+            "lux"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            480,
+            ""
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            10,
+            "l"
+          ],
+          [
+            5,
+            "lx"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            16,
+            "lj"
+          ],
+          [
+            5,
+            "lux"
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            5,
+            "lux"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            24,
+            "l"
+          ],
+          [
+            15,
+            "lj"
+          ],
+          [
+            5,
+            "lux"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            6,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            70,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 1065,
+          "crownCut": true,
+          "events": [
+            "dash",
+            "ultra",
+            "refill-dash",
+            "hyper",
+            "land",
+            "strike",
+            "hinge-turn",
+            "jump",
+            "anvil",
+            "super",
+            "root-cut",
+            "gate-open",
+            "exit"
+          ],
+          "eventCounts": {
+            "dash": 7,
+            "ultra": 2,
+            "refill-dash": 7,
+            "hyper": 2,
+            "land": 7,
+            "strike": 3,
+            "hinge-turn": 1,
+            "jump": 4,
+            "anvil": 1,
+            "super": 1,
+            "root-cut": 1,
+            "gate-open": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Leave the crown branch upright and try the same far ascent",
+        "tape": [
+          [
+            30,
+            "r"
+          ],
+          [
+            5,
+            "rdx"
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            5,
+            "rdx"
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            42,
+            "rj"
+          ],
+          [
+            6,
+            ""
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            1,
+            "dsj"
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            5,
+            "lux"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            10,
+            "l"
+          ],
+          [
+            5,
+            "lx"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            16,
+            "lj"
+          ],
+          [
+            5,
+            "lux"
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            5,
+            "lux"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            24,
+            "l"
+          ],
+          [
+            15,
+            "lj"
+          ],
+          [
+            5,
+            "lux"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            70,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 0,
+          "crownCut": false,
+          "events": [
+            "dash",
+            "ultra",
+            "refill-dash",
+            "hyper",
+            "land",
+            "jump",
+            "strike",
+            "hinge-turn",
+            "death",
+            "respawn",
+            "walljump"
+          ],
+          "eventCounts": {
+            "dash": 5,
+            "ultra": 2,
+            "refill-dash": 4,
+            "hyper": 2,
+            "land": 6,
+            "jump": 3,
+            "strike": 2,
+            "hinge-turn": 1,
+            "death": 1,
+            "respawn": 1,
+            "walljump": 1
+          }
+        }
+      }
+    ],
+    "endingForgiveness": "The final dry ledge is wide enough to set up the approach; takeoff setups six frames apart both land cleanly. Missing the final ledge falls to the original sheltered court rather than a lethal last-jump trap. The crown stops all native lashes once cut."
+  },
+  "tape": [
+    [
+      30,
+      "r"
+    ],
+    [
+      5,
+      "rdx"
+    ],
+    [
+      6,
+      "r"
+    ],
+    [
+      25,
+      "rj"
+    ],
+    [
+      20,
+      "r"
+    ],
+    [
+      5,
+      "rdx"
+    ],
+    [
+      6,
+      "r"
+    ],
+    [
+      25,
+      "rj"
+    ],
+    [
+      25,
+      "r"
+    ],
+    [
+      1,
+      "rs"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      42,
+      "rj"
+    ],
+    [
+      6,
+      ""
+    ],
+    [
+      12,
+      "j"
+    ],
+    [
+      1,
+      "dsj"
+    ],
+    [
+      30,
+      "lj"
+    ],
+    [
+      5,
+      "lux"
+    ],
+    [
+      20,
+      "l"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      10,
+      "l"
+    ],
+    [
+      5,
+      "lx"
+    ],
+    [
+      5,
+      "l"
+    ],
+    [
+      16,
+      "lj"
+    ],
+    [
+      5,
+      "lux"
+    ],
+    [
+      25,
+      "l"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      20,
+      "lj"
+    ],
+    [
+      5,
+      "lux"
+    ],
+    [
+      20,
+      "l"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      24,
+      "l"
+    ],
+    [
+      15,
+      "lj"
+    ],
+    [
+      5,
+      "lux"
+    ],
+    [
+      20,
+      "l"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      6,
+      "l"
+    ],
+    [
+      1,
+      "ls"
+    ],
+    [
+      70,
+      "l"
+    ]
+  ]
+}

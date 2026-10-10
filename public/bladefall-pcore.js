@@ -174,6 +174,8 @@ function boundsBlock(g,x,y,w,h){
  // Folded corridors end at their mouth planes, not their decorative apron.
  const ports=g.room.def.atlasFold?g.room.def.atlasSockets:null;
  const left=ports?Math.min(...ports.map(s=>s.plane)):0,right=ports?Math.max(...ports.map(s=>s.plane)):g.room.w;
+ const span=g.room.def.exitSpan,inExitSpan=!span||((ex==='left'||ex==='right'?y+h/2:x+w/2)>=span[0]*8&&(ex==='left'||ex==='right'?y+h/2:x+w/2)<span[1]*8);
+ if(!inExitSpan&&((ex==='left'&&x<left&&!seam('left'))||(ex==='right'&&x+w>right&&!seam('right'))))return true;
  if(x<left&&ex!=='left'&&sd!=='left'&&!seam('left'))return true;
  if(x+w>right&&ex!=='right'&&sd!=='right'&&!seam('right'))return true;
  if(y<0&&ex!=='up'&&sd!=='up')return true;
@@ -831,6 +833,8 @@ function checkExit(g,p){
  const ex=g.room.exit;let out=false;
  const RW=g.room.w,RH=g.room.h;
  if(ex==='right')out=p.x>=RW-2;else if(ex==='left')out=p.x<=-p.w+2;else if(ex==='up')out=p.y<=-3;else if(ex==='down')out=p.y>=RH-2;
+ // A connecting bend may enter and leave different openings on the same edge.
+ const span=g.room.def.exitSpan;if(out&&span){const v=(ex==='left'||ex==='right')?p.y+p.h/2:p.x+p.w/2;out=v>=span[0]*8&&v<span[1]*8;}
  let side=false;const sd=g.sideSealed?null:g.room.def.side;
  if(!out&&sd){if(sd==='right')out=p.x>=RW-2;else if(sd==='left')out=p.x<=-p.w+2;else if(sd==='up')out=p.y<=-3;else if(sd==='down')out=p.y>=RH-2;side=out;}
  if(out&&!g.exited){g.exited=true;emit(g,'exit',side?{room:g.roomIndex,side:true}:{room:g.roomIndex});}

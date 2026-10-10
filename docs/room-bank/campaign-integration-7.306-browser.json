@@ -1,0 +1,44 @@
+{
+  "version": "7.306.0",
+  "sourceReceipt": "scripts/climb/.cache/integration-7.306/physical-seams.json",
+  "registrySha256": "29e38bdc54f6aba3be544e3fe99ee67eef58ddb69f561388bb7b5eb4c052d9bb",
+  "command": "node scripts/climb/verify-import-seams-browser.mjs --seams-only",
+  "scope": "Actual browser exit → physical carry → checkpoint approach for every changed campaign join; local assets under the production origin.",
+  "worlds": 40,
+  "planned": 306,
+  "passed": 306,
+  "failed": 0,
+  "maxDisplacementPx": 8.94427190999916,
+  "allowedDisplacementPx": 12,
+  "deaths": 0,
+  "browserErrors": [],
+  "allCameraPositionsPreserved": true,
+  "allVelocitiesPreserved": true,
+  "allCheckpointsReached": true,
+  "restoredEntrances": 302,
+  "entrancesWithoutRestoration": 4,
+  "failedEntranceRestorations": 0,
+  "maxNaturalSettlingFrames": 14,
+  "settlingMethod": "Normal directional input only; final state must be grounded within 10px of the fire, including its original moving support. No player coordinate adjustment.",
+  "pristinePhaseEntries": [
+    {
+      "world": 33,
+      "room": "cl33-bank-f31",
+      "phase": 0,
+      "litTallies": 0,
+      "openGates": 0,
+      "passed": true
+    },
+    {
+      "world": 40,
+      "room": "cl40-bank-f32",
+      "phase": 0,
+      "litTallies": 0,
+      "openGates": 0,
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "Browser emulation does not verify physical handset/controller feel or OS fullscreen behavior."
+  ]
+}

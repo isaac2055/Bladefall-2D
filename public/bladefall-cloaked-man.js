@@ -150,7 +150,7 @@ function taken(e){
 function wound(A, dealt, e){
   if(dealt <= 0 || A.trans || !A.fight) return;
   if(G.vesperEncounter&&!meta.testMode){A.hitT=.12;return;} // the first confrontation cannot lose its first phase
-  if(!G.vesperEncounter)dealt*=root.BladefallExploreFinale?.vesperWard?.()??.01;
+  if(!G.vesperEncounter)dealt*=(root.BladefallExploreFinale?.vesperWard?.()??.01)*.25;
   const floor = floorOf(A.phase);
   A.hp = Math.max(floor, A.hp - dealt); A.hitT = .12; if(e) e.hitT = .14;
   A.poise.push(A.t); A.poise = A.poise.filter(t => A.t - t < 2.2);
@@ -165,7 +165,7 @@ function strike(A, p, dir, opts){
   opts = opts || {};
   if(!open(p)) return false;
   if(opts.parry && typeof tryPlayerCounter === 'function' && tryPlayerCounter('melee', dir || 1, opts.parry)){ stagger(A, opts.parry, 1.1); return false; }
-  try{ hurtPlayer(20, dir || 0, true, G.vesperEncounter?3:!root.BladefallExploreFinale?.vesperMerged?.()?Math.max(3,opts.measures||1):opts.measures > 1 ? opts.measures : undefined); }catch(_e){}
+  try{ hurtPlayer(20, dir || 0, true, G.vesperEncounter?3:3*(!root.BladefallExploreFinale?.vesperMerged?.()?Math.max(3,opts.measures||1):Math.max(1,opts.measures||1))); }catch(_e){}
   return true;
 }
 function stagger(A, e, secs){

@@ -1,7 +1,7 @@
 /* Precision Core — touch controls (7.258). Phones and tablets play the new physics with two thumbs:
 
    Left thumb: a floating stick. It appears wherever the thumb lands and follows it if it drifts too far.
-   Right thumb: immediate action buttons by default. Optional gestures (each re-mappable in Touch controls):
+   Right thumb: swipe to dash, with immediate buttons for the other actions. Optional gestures (each re-mappable in Touch controls):
      tap ............ jump (a tap gives a full jump; "follows finger" makes a quick tap a short hop)
      swipe .......... dash in the swipe's direction (8-way). Swipe during a jump to jump-dash in one stroke.
      hold ........... grab: cling and climb while held; near a lantern, a hold picks it up and a second hold
@@ -38,13 +38,16 @@ const ACTION_NAMES={jump:'Jump',dash:'Dash',grab:'Grab · climb · carry / throw
 const PRESETS={
  gestures:{jump:'tap',dash:'swipe',grab:'hold',strike:'swipe2',parry:'double',portal:'tap2'},
  mixed:{jump:'tap',dash:'swipe',grab:'hold',strike:'button',parry:'button',portal:'button'},
+ swipe:{jump:'button',dash:'swipe',grab:'button',strike:'button',parry:'button',portal:'button'},
  buttons:{jump:'button',dash:'button',grab:'button',strike:'button',parry:'button',portal:'button'},
 };
-const PRESET_NAMES={gestures:'Gestures',mixed:'Gestures + buttons for blade, parry, portal',buttons:'Buttons only'};
-const DEFAULTS={preset:'buttons',map:{...PRESETS.buttons},hand:'right',stick:'floating',swipe:'medium',tapJump:'full',
+const PRESET_NAMES={swipe:'Swipe dash + action buttons',gestures:'Gestures',mixed:'Gestures + buttons for blade, parry, portal',buttons:'Buttons only'};
+const DEFAULTS={preset:'swipe',map:{...PRESETS.swipe},hand:'right',stick:'floating',swipe:'medium',tapJump:'full',
  haptics:true,opacity:.55,size:1,hints:true,fullscreen:true};
 function settings(){
  const s=api.save;s.touch=s.touch||{};
+ // Migrate the former untouched button default, while preserving deliberately customized bindings.
+ if(!s.touch.dashPreferenceVersion){if(s.touch.preset==='buttons'&&!s.touch.map){s.touch.preset='swipe';}s.touch.dashPreferenceVersion=1;}
  const t=Object.assign({},DEFAULTS,s.touch);t.map=Object.assign({},PRESETS[t.preset]||DEFAULTS.map,s.touch.map||{});
  return t;
 }
@@ -94,14 +97,15 @@ function layout(){
  const X=x=>right?w-x:x;
  const spots={jump:[66,66,40],dash:[156,58,33],grab:[236,52,28],strike:[62,156,29],parry:[136,140,27],portal:[204,128,25]};
  const buttons=[];
- for(const a of Object.keys(spots))if(m[a]==='button'){const [x,y,r]=spots[a];buttons.push({a,x:X(x*s),y:h-y*s,r:r*s});}
+ for(const a of Object.keys(spots))if(m[a]==='button'){const [x,y,r]=spots[a];buttons.push(root.BladefallTouchLayout?.resolve('survival',a,{a,x:X(x*s),y:h-y*s,r:r*s},w,h)||{a,x:X(x*s),y:h-y*s,r:r*s});}
  const ui=24*s,pause={x:X(30*s),y:30*s,r:ui*.8,ui:'pause'},retry={x:X(78*s),y:30*s,r:ui*.8,ui:'retry'};
- return {w,h,s,buttons,pause,retry,stickR:52*s,dead:6*s,right};
+ const resolve=(id,b)=>root.BladefallTouchLayout?.resolve('survival',id,b,w,h)||b,stickBase=resolve('stick',{x:right?104*s:w-104*s,y:h-104*s,r:52*s});
+ return {w,h,s,buttons,pause:resolve('pause',pause),retry:resolve('retry',retry),stickBase,stickR:stickBase.r,dead:6*s,right};
 }
 const GLYPH={jump:'⤒',dash:'➤',grab:'✊',strike:'⚔',parry:'⛨',portal:'◎'};
 
 /* ---------------------------------------------------------------- pointer handling */
-function inLeftZone(x,L){return L.right?x<L.w*.42:x>L.w*.58;}
+function inLeftZone(x,L,y){return root.BladefallTouchLayout?.config('survival').stick?Math.hypot(x-L.stickBase.x,y-L.stickBase.y)<=L.stickR*1.6:L.right?x<L.w*.42:x>L.w*.58;}
 function onDown(e){
  if(e.pointerType==='mouse')return;
  setActive(true);
@@ -113,10 +117,10 @@ function onDown(e){
  if(hit(L.pause)){ptrs.set(e.pointerId,{role:'ui'});api.pause();return;}
  if(hit(L.retry)){ptrs.set(e.pointerId,{role:'ui'});api.retry();mark('tap',x,y);return;}
  for(const b of L.buttons)if(hit(b)){const p={role:'button',a:b.a,x,y};ptrs.set(e.pointerId,p);pressButton(b.a,p);return;}
- if(inLeftZone(x,L)){
+ if(inLeftZone(x,L,y)){
   if(stick){ptrs.set(e.pointerId,{role:'ignore'});return;}
-  const fixed=settings().stick==='fixed';
-  const ox=fixed?(L.right?L.stickR*2:L.w-L.stickR*2):x,oy=fixed?L.h-L.stickR*2:y;
+  const fixed=settings().stick==='fixed'||!!root.BladefallTouchLayout?.config('survival').stick;
+  const ox=fixed?L.stickBase.x:x,oy=fixed?L.stickBase.y:y;
   stick={id:e.pointerId,ox,oy,x,y};ptrs.set(e.pointerId,{role:'stick'});return;
  }
  // Right side: one finger is a gesture; a second finger turns both into a two-finger gesture.
@@ -144,7 +148,7 @@ function onMove(e){
  const x=e.clientX,y=e.clientY;
  if(p.role==='stick'&&stick&&stick.id===e.pointerId){
   stick.x=x;stick.y=y;const L=layout(),dx=x-stick.ox,dy=y-stick.oy,d=Math.hypot(dx,dy);
-  if(d>L.stickR&&settings().stick==='floating'){stick.ox=x-dx/d*L.stickR;stick.oy=y-dy/d*L.stickR;}
+  if(d>L.stickR&&settings().stick==='floating'&&!root.BladefallTouchLayout?.config('survival').stick){stick.ox=x-dx/d*L.stickR;stick.oy=y-dy/d*L.stickR;}
   return;
  }
  if(p.role==='right'){p.x=x;p.y=y;
@@ -192,7 +196,8 @@ function step(p){
   if(!p.defer&&age>=WIN&&!travelling){
    if(G.tap==='jump'){startHold('jump',p);p.state='jumping';mark('press',p.x0,p.y0);}
    else if(G.hold&&age>=HOLD){startHold(G.hold==='grab'?'grab':G.hold,p);p.state='holding';mark('hold',p.x,p.y);}
-   else if(!G.tap&&!G.hold)p.state='idle';
+   // A swipe-only action area remains pending even after the thumb rests.
+   else if(!G.tap&&!G.hold&&!G.swipe)p.state='idle';
    return;
   }
   if(p.defer&&age>=HOLD&&G.hold){startHold('grab',p);p.state='holding';mark('hold',p.x,p.y);buzz(6);}
@@ -287,7 +292,7 @@ function card(back){
  <p class="pcSub">Left thumb: drag anywhere on the left to move. Right thumb: the gestures below. Pause and retry are the two small buttons in the top corner, and Android's back gesture pauses too.</p>
  <label class="pcOpt pcTouchRow"><span>Layout</span><select id="tcPreset">${Object.keys(PRESETS).map(p=>opt(p,PRESET_NAMES[p],t.preset)).join('')}${t.preset==='custom'?opt('custom','Custom','custom'):''}</select></label>
  ${rows}
- <h2 class="pcPart">Feel</h2>
+ <button class="pcBtn ghost" id="tcLayout">Move / resize touch controls</button><h2 class="pcPart">Feel</h2>
  <label class="pcOpt pcTouchRow"><span>Tap jump height</span><select id="tcJump">${opt('full','Full jump on every tap',t.tapJump)}${opt('finger','Follows the finger (quick tap = short hop)',t.tapJump)}</select></label>
  <label class="pcOpt pcTouchRow"><span>Swipe distance</span><select id="tcSwipe">${opt('small','Short',t.swipe)}${opt('medium','Medium',t.swipe)}${opt('large','Long',t.swipe)}</select></label>
  <label class="pcOpt pcTouchRow"><span>Stick</span><select id="tcStick">${opt('floating','Floating: appears where you press',t.stick)}${opt('fixed','Fixed in the corner',t.stick)}</select></label>
@@ -301,6 +306,7 @@ function card(back){
  <div class="pcRow"><button class="pcBtn ghost" id="tcReset">Reset touch controls</button>${api.controlsCard?'<button class="pcBtn ghost" id="tcKeys">Keyboard &amp; controller</button>':''}</div>
  <button class="pcBtn" id="tcBack" data-back>Back</button></div>`);
  const o=api.overlay(),note=o.querySelector('#tcNote');
+ o.querySelector('#tcLayout').onclick=()=>{releaseAll();root.BladefallTouchLayout?.open({mode:'survival',items:()=>{const L=layout();return [{id:'stick',label:'Move / aim',...L.stickBase},...L.buttons.map(b=>({id:b.a,label:ACTION_NAMES[b.a],...b})),{id:'pause',label:'Pause',...L.pause},{id:'retry',label:'Retry',...L.retry}];}});};
  o.querySelectorAll('[data-map]').forEach(sel=>sel.onchange=()=>{
   const a=sel.dataset.map,v=sel.value,n=settings();n.map[a]=v;
   // Double-tap and two-finger tap can each carry one action: the other one swaps over.
@@ -339,15 +345,16 @@ function guardBack(){
 }
 /* Some Android builds drop the click on a tap inside a scrolling menu; synthesize it when no real click came. */
 function clickShim(){
- let dx=0,dy=0,dt=0,lastNative=0;
- document.addEventListener('click',e=>{if(e.isTrusted)lastNative=performance.now();},true);
+ let dx=0,dy=0,dt=0,lastNative=0,lastNativeTarget=null;
+ document.addEventListener('click',e=>{if(e.isTrusted){lastNative=performance.now();lastNativeTarget=e.target;}},true);
  document.addEventListener('pointerdown',e=>{dx=e.clientX;dy=e.clientY;dt=performance.now();},true);
  document.addEventListener('pointerup',e=>{
   if(e.pointerType==='mouse'||e.target===api.canvas)return;
   if(Math.hypot(e.clientX-dx,e.clientY-dy)>12||performance.now()-dt>700)return;
+  if(e.target.closest?.('select,input,textarea'))return;
   let el=e.target;while(el&&el!==document&&!/^(BUTTON|A|LABEL)$/.test(el.tagName))el=el.parentElement;
-  if(!el||el===document)return;const target=el;
-  setTimeout(()=>{if(performance.now()-lastNative<400)return;target.click();},120);
+  if(!el||el===document)return;const target=el,pressStarted=dt;
+  setTimeout(()=>{if(lastNative>=pressStarted&&(lastNativeTarget===target||target.contains(lastNativeTarget)))return;target.click();},120);
  },true);
 }
 function init(a){
@@ -368,5 +375,5 @@ function init(a){
 function event(e){if(!active)return;if(e.type==='death')buzz(30);else if(e.type==='dash')buzz(8);}
 
 root.BladefallPrecisionTouch={init,read,draw,card,label,event,releaseAll,setActive,active:()=>active,settings,
- _debug:()=>({clock,ptrs:[...ptrs.entries()],stick,multi,pulses:pulses.slice(),holdTail:{...holdTail},gapUntil:{...gapUntil}})};
+ layout, _debug:()=>({clock,ptrs:[...ptrs.entries()],stick,multi,pulses:pulses.slice(),holdTail:{...holdTail},gapUntil:{...gapUntil}})};
 })(typeof window!=='undefined'?window:globalThis);

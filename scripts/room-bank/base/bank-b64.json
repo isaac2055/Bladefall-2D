@@ -160,13 +160,13 @@
     "run": 8,
     "collection": "superrooms",
     "format": "superroom",
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "status": "route-proven",
     "author": "Codex",
     "newMechanics": [
       "named-pressure-circuits"
     ],
-    "humanReview": "Awaiting player review; numeric ratings unmeasured.",
+    "humanReview": "Approved for Base by Isaac; numerical ratings unmeasured. Portal stone renderer corrected for full superroom dimensions; authored % surfaces and movement unchanged.",
     "worlds": [
       6
     ],

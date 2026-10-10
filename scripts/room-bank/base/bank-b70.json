@@ -1,0 +1,875 @@
+{
+  "room": {
+    "id": "bank-b70",
+    "study": true,
+    "dashes": 1,
+    "cols": 80,
+    "rows": 38,
+    "palette": "gaol",
+    "exit": "left",
+    "name": "The Sentence Gets Longer",
+    "rbr": 7,
+    "lock": [
+      "portal"
+    ],
+    "dropThru": true,
+    "map": [
+      "###G############################################################################",
+      "#..G...........................................................................#",
+      "#..G...........................................................................#",
+      "#..G...........................................................................#",
+      "#..G...........................................................................#",
+      "#..G...........................................................................#",
+      "#..G...........................................................................#",
+      "#..G...........................................................................#",
+      "#..G...........................................................................#",
+      "#..G...........................................................................#",
+      "#..G...........................................................................#",
+      "#..G...........................................................................#",
+      "#..G...........................................................................#",
+      "#..G..........................HH.=========.....................................#",
+      "#..G..........................HH...............................................#",
+      "#..G..........................HH...............................................#",
+      "#..G..........................HH...............................................#",
+      "#..G..........................HH................==========.....................#",
+      "#..G..........................HH...............................................#",
+      "#..G..................=======.HH...............................................#",
+      "#..G..........................HH...............................................#",
+      "#..G..........................HH...............................................#",
+      "#..G..........................HH...............................................#",
+      "#..G..........................HH.....................==========................#",
+      "#..G..........................HH...............................................#",
+      "#..G..........................HH...............................................#",
+      "#..G................R.........HH...............................................#",
+      "#..G..........................HH...............................................#",
+      "...G............P.............HH...............................................#",
+      "...G....##=========...........HH...............................................#",
+      "...G....##....................HH...............................................#",
+      "...G....##====================HH.================================..............#",
+      "...G....##....................HH................................R..............#",
+      "...G....##....................HH...............................................#",
+      "################################################################################",
+      "################################################################################",
+      "################################################################################",
+      "################################################################################"
+    ],
+    "warden": {
+      "x": 34,
+      "y": 33,
+      "dir": 1,
+      "hp": 3,
+      "first": 380,
+      "turn": 50,
+      "leave": "kneel",
+      "shove": true,
+      "chain": {
+        "every": 120,
+        "tell": 35
+      },
+      "call": {
+        "at": 1,
+        "x": 44,
+        "dir": -1
+      }
+    },
+    "wardenBreaks": [
+      {
+        "c": 30,
+        "r": 13,
+        "wounds": 1
+      }
+    ],
+    "hint": "The same pod gives his rush back. His first wound breaks the center shutter, making the return journey longer.",
+    "question": "When the stop behind him disappears, which gallery lets you follow his return without standing in it?"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 18,
+    "run": 9,
+    "collection": "superrooms",
+    "format": "superroom",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "author": "Codex",
+    "tags": [
+      "superroom",
+      "boss",
+      "warden",
+      "pressure-pod",
+      "return",
+      "shutter"
+    ],
+    "newMechanics": [],
+    "humanReview": "Awaiting review; numeric ratings unmeasured.",
+    "worlds": [
+      7
+    ],
+    "difficulty": 4,
+    "approvedIngredients": [
+      "bank-b44",
+      "bank-f45"
+    ],
+    "replaces": "cl7-g7-sentence",
+    "role": "The Warden and his own pod share one court whose return distance changes after the first wound.",
+    "solution": "Use the western pressure pod to climb over the central shutter, then descend the eastern galleries. Stand beyond the low eastern pod to invite his rush. As he commits, take the gallery above his head and follow the returned charge back to the center stop. Cut his lowered guard: the central shutter breaks. The same pod now throws him all the way into the western court. Follow above, letting his own rush flatten the summoned jailer. Meet the last rush with a normal parry and take the broad western exit after he kneels.",
+    "interconnection": "The shutter is first the obstacle you must cross and then the stop that defines the first crash. Its removal combines both sides into one long return lane, reusing the same pressure pod and overhead pursuit route.",
+    "novelty": "A boss wound changes how far his next returned attack travels. The route that got you into the arena becomes the safe pursuit path over that attack.",
+    "nearestExisting": "The native Sentence has three wounds in a small flat arena. This turns the two-way rush into a changing spatial problem and reuses the approach wall as the first crash stop.",
+    "requiredEvents": [
+      "recoil",
+      "warden-return",
+      "warden-crash",
+      "warden-hit",
+      "warden-shutter",
+      "warden-gone",
+      "gate-open",
+      "exit"
+    ],
+    "requiredEventCounts": {
+      "warden-hit": 3
+    },
+    "superroom": {
+      "screenAreas": 3.3043478260869565,
+      "stages": [
+        "Borrow the entrance pod to cross the shutter",
+        "Follow the first returned rush above its track",
+        "The shutter falls and the same return reaches the western court"
+      ]
+    },
+    "endingForgiveness": "The last crash lasts the native 170 frames. Its western court has solid ground and a nearby ordinary wall; no precision jump follows the final wound.",
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 1316
+    },
+    "routeEvents": [
+      {
+        "type": "recoil",
+        "frame": 24,
+        "x": 164,
+        "y": 212,
+        "dx": 0,
+        "dy": -1,
+        "i": 23
+      },
+      {
+        "type": "recoil",
+        "frame": 528,
+        "x": 516,
+        "y": 260,
+        "dx": -1,
+        "dy": 0,
+        "warden": true,
+        "i": 527
+      },
+      {
+        "type": "warden-return",
+        "frame": 528,
+        "x": 506,
+        "y": 261,
+        "how": "pod",
+        "i": 527
+      },
+      {
+        "type": "warden-crash",
+        "frame": 586,
+        "x": 256,
+        "y": 261,
+        "i": 585
+      },
+      {
+        "type": "warden-hit",
+        "frame": 630,
+        "x": 263,
+        "y": 261,
+        "wounds": 1,
+        "hp": 3,
+        "i": 629
+      },
+      {
+        "type": "warden-shutter",
+        "frame": 630,
+        "x": 248,
+        "y": 188,
+        "i": 629
+      },
+      {
+        "type": "jailer-fell",
+        "frame": 738,
+        "x": 356,
+        "y": 264,
+        "how": "warden",
+        "i": 737
+      },
+      {
+        "type": "recoil",
+        "frame": 790,
+        "x": 516,
+        "y": 260,
+        "dx": -1,
+        "dy": 0,
+        "warden": true,
+        "i": 789
+      },
+      {
+        "type": "warden-return",
+        "frame": 790,
+        "x": 506,
+        "y": 261,
+        "how": "pod",
+        "i": 789
+      },
+      {
+        "type": "warden-crash",
+        "frame": 887,
+        "x": 80,
+        "y": 261,
+        "i": 886
+      },
+      {
+        "type": "warden-hit",
+        "frame": 951,
+        "x": 87,
+        "y": 261,
+        "wounds": 2,
+        "hp": 3,
+        "i": 950
+      },
+      {
+        "type": "warden-return",
+        "frame": 1068,
+        "x": 197,
+        "y": 261,
+        "how": "parry",
+        "i": 1067
+      },
+      {
+        "type": "warden-crash",
+        "frame": 1096,
+        "x": 80,
+        "y": 261,
+        "i": 1095
+      },
+      {
+        "type": "warden-hit",
+        "frame": 1154,
+        "x": 87,
+        "y": 261,
+        "wounds": 3,
+        "hp": 3,
+        "i": 1153
+      },
+      {
+        "type": "warden-gone",
+        "frame": 1154,
+        "x": 87,
+        "y": 261,
+        "how": "kneel",
+        "i": 1153
+      },
+      {
+        "type": "gate-open",
+        "frame": 1161,
+        "x": 28,
+        "y": 136,
+        "i": 1160
+      },
+      {
+        "type": "exit",
+        "frame": 1316,
+        "room": 0,
+        "i": 1315
+      }
+    ],
+    "positiveChecks": [
+      {
+        "name": "Begin the final punish 15 frames earlier",
+        "tape": [
+          [
+            18,
+            "rj"
+          ],
+          [
+            5,
+            "dx"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            9,
+            "ux"
+          ],
+          [
+            22,
+            "r"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            34,
+            "rj"
+          ],
+          [
+            70,
+            "rgu"
+          ],
+          [
+            50,
+            "r"
+          ],
+          [
+            40,
+            "r"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            36,
+            "lj"
+          ],
+          [
+            10,
+            "lx"
+          ],
+          [
+            123,
+            "l"
+          ],
+          [
+            18,
+            "dj"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            32,
+            ""
+          ],
+          [
+            36,
+            "lj"
+          ],
+          [
+            34,
+            "l"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            84,
+            "l"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            18,
+            "dj"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            76,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            70,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            50,
+            "ljg"
+          ],
+          [
+            40,
+            "lgu"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 1301
+      },
+      {
+        "name": "Begin the final punish 55 frames later",
+        "tape": [
+          [
+            18,
+            "rj"
+          ],
+          [
+            5,
+            "dx"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            9,
+            "ux"
+          ],
+          [
+            22,
+            "r"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            34,
+            "rj"
+          ],
+          [
+            70,
+            "rgu"
+          ],
+          [
+            50,
+            "r"
+          ],
+          [
+            40,
+            "r"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            36,
+            "lj"
+          ],
+          [
+            10,
+            "lx"
+          ],
+          [
+            123,
+            "l"
+          ],
+          [
+            18,
+            "dj"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            32,
+            ""
+          ],
+          [
+            36,
+            "lj"
+          ],
+          [
+            34,
+            "l"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            84,
+            "l"
+          ],
+          [
+            50,
+            ""
+          ],
+          [
+            18,
+            "dj"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            76,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            75,
+            ""
+          ],
+          [
+            70,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            50,
+            "ljg"
+          ],
+          [
+            40,
+            "lgu"
+          ],
+          [
+            100,
+            "l"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 1371
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Use the broken central shutter to run straight for the western exit after one wound",
+        "tape": [
+          [
+            18,
+            "rj"
+          ],
+          [
+            5,
+            "dx"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            9,
+            "ux"
+          ],
+          [
+            22,
+            "r"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            34,
+            "rj"
+          ],
+          [
+            70,
+            "rgu"
+          ],
+          [
+            50,
+            "r"
+          ],
+          [
+            40,
+            "r"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            100,
+            "r"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            36,
+            "lj"
+          ],
+          [
+            10,
+            "lx"
+          ],
+          [
+            123,
+            "l"
+          ],
+          [
+            18,
+            "dj"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            120,
+            "ljg"
+          ],
+          [
+            100,
+            "lgu"
+          ],
+          [
+            150,
+            "l"
+          ]
+        ],
+        "exited": false,
+        "deaths": 1,
+        "frames": null
+      }
+    ]
+  },
+  "tape": [
+    [
+      18,
+      "rj"
+    ],
+    [
+      5,
+      "dx"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      9,
+      "ux"
+    ],
+    [
+      22,
+      "r"
+    ],
+    [
+      35,
+      ""
+    ],
+    [
+      34,
+      "rj"
+    ],
+    [
+      70,
+      "rgu"
+    ],
+    [
+      50,
+      "r"
+    ],
+    [
+      40,
+      "r"
+    ],
+    [
+      12,
+      "r"
+    ],
+    [
+      30,
+      ""
+    ],
+    [
+      100,
+      "r"
+    ],
+    [
+      5,
+      ""
+    ],
+    [
+      36,
+      "lj"
+    ],
+    [
+      10,
+      "lx"
+    ],
+    [
+      123,
+      "l"
+    ],
+    [
+      18,
+      "dj"
+    ],
+    [
+      1,
+      "ls"
+    ],
+    [
+      35,
+      ""
+    ],
+    [
+      32,
+      ""
+    ],
+    [
+      36,
+      "lj"
+    ],
+    [
+      34,
+      "l"
+    ],
+    [
+      1,
+      ""
+    ],
+    [
+      30,
+      "lj"
+    ],
+    [
+      84,
+      "l"
+    ],
+    [
+      50,
+      ""
+    ],
+    [
+      18,
+      "dj"
+    ],
+    [
+      1,
+      "ls"
+    ],
+    [
+      35,
+      ""
+    ],
+    [
+      76,
+      ""
+    ],
+    [
+      1,
+      "p"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      70,
+      "l"
+    ],
+    [
+      1,
+      "ls"
+    ],
+    [
+      35,
+      ""
+    ],
+    [
+      50,
+      "ljg"
+    ],
+    [
+      40,
+      "lgu"
+    ],
+    [
+      100,
+      "l"
+    ]
+  ]
+}

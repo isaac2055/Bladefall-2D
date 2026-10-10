@@ -42,7 +42,7 @@ test('the page carries one-line hooks only, and each is there', () => {
   assert.match(source, /if\(typeof BladefallRiftShards!=='undefined'&&responses\[i\]\[2\]\)BladefallRiftShards\.chose\(responses\[i\]\);/);
   assert.doesNotMatch(source, /window\.BladefallRiftShards/, 'hooks safe where there is no window (tests lift functions into sandboxes)');
   assert.match(source, /BladefallRiftShards\.questDone\(last\.questId\)/, 'quests');
-  assert.match(source, /BladefallRiftShards\.titleButton\(\)/, 'the title');
+  assert.match(source, /BladefallRiftShards\.levelSelectRows\(\)/, 'the Explore submenu exposes unlocked echoes');
   assert.match(renderer, /if\(r && r\.draw && curG\) r\.draw\(EXT_API\)/, 'drawn in every region');
   assert.match(read('bladefall-landing-shores.js'), /BladefallRiftShards\.look\('cloth'\)/, 'the violet silk');
   assert.match(read('bladefall-sunspire.js'), /BladefallRiftShards\.showLedger\(titleScreen, true\)/, 'the end of Act Two shows the ledger');
@@ -109,3 +109,16 @@ function fnBody(name){
   for(let i = brace; i < rs.length; i++){ if(rs[i] === '{') depth++; else if(rs[i] === '}' && --depth === 0) return rs.slice(start, i + 1); }
   return '';
 }
+
+test('undiscovered Fractured region names remain hidden until the corresponding shard is found', () => {
+  const prior=world.meta.riftShards;world.meta.riftShards={};
+  sandbox.window.BladefallFractured={echoFor:i=>i+21};
+  sandbox.window.BladefallExploreFinale={visible:()=>false};
+  sandbox.window.BladefallPlaytest={unlocked:()=>false};
+  let rows=R.levelSelectRows();
+  assert.equal((rows.match(/Undiscovered/g)||[]).length,20);
+  for(const [name] of R.FRACTURED)assert.ok(!rows.includes(name),name);
+  world.meta.riftShards={outskirts:true};rows=R.levelSelectRows();
+  assert.match(rows,/Fractured Outskirts/);assert.ok(!rows.includes('Fractured Woods'));
+  world.meta.riftShards=prior;
+});

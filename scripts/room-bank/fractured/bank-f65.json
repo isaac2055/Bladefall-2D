@@ -87,7 +87,7 @@
     "run": 8,
     "collection": "superrooms",
     "format": "superroom",
-    "acceptance": "candidate",
+    "acceptance": "banked",
     "difficulty": 4,
     "role": "interconnected boss superroom",
     "worlds": [
@@ -107,7 +107,7 @@
     "newMechanics": [],
     "status": "route-proven",
     "author": "Codex",
-    "humanReview": "Awaiting human fun/difficulty/suitability ratings.",
+    "humanReview": "Approved by the user to bank and integrate; numeric ratings remain unmeasured.",
     "approvedIngredients": [
       "bank-f18",
       "bank-f49"
@@ -1015,7 +1015,8 @@
       "sorc-hit": 2,
       "freeze": 2,
       "mirror": 2
-    }
+    },
+    "needsReview": false
   },
   "tape": [
     [

@@ -13,7 +13,8 @@ await page.setViewport({width:844,height:390,isMobile:true,hasTouch:true});
 await page.evaluateOnNewDocument(()=>{window.__pad={id:'Synthetic standard controller',index:0,mapping:'standard',connected:false,axes:[0,0],buttons:Array.from({length:17},()=>({pressed:false,value:0}))};Object.defineProperty(navigator,'getGamepads',{value:()=>[__pad]});});
 await page.goto(base+'/precision.html?pitch=climb&world=1',{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>!!window.BladefallPrecisionView?.view.g);
 const defaults=await page.evaluate(()=>({touch:BladefallPrecisionTouch.active(),settings:BladefallPrecisionTouch.settings(),canvas:{width:pcCanvas.width,height:pcCanvas.height}}));
-ok(defaults.touch&&defaults.settings.preset==='buttons'&&Object.values(defaults.settings.map).every(v=>v==='button'),'Mobile website loads Survive with direct action buttons',defaults);
+ok(defaults.touch&&defaults.settings.map.dash==='swipe'&&defaults.settings.map.jump==='button','Mobile website loads Survive with swipe dash and action buttons',defaults);
+await page.evaluate(()=>{const s=JSON.parse(localStorage.getItem('bladefall.pcore.v1')||'{}');s.touch={preset:'buttons',dashPreferenceVersion:1};localStorage.setItem('bladefall.pcore.v1',JSON.stringify(s));});
 await page.goto(base+'/precision.html?chapter=0',{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>!!window.BladefallPrecisionView?.view.g);
 // Use real input polling and physics, but suppress background RAF so the comparisons
 // depend on exact ticks rather than headless browser scheduling.

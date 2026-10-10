@@ -1,0 +1,839 @@
+{
+  "room": {
+    "id": "bank-b68",
+    "study": true,
+    "dashes": 1,
+    "cols": 80,
+    "rows": 38,
+    "palette": "causeway",
+    "exit": "right",
+    "name": "Let Him Clear the Causeway",
+    "rbr": 3,
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "dropThru": true,
+    "map": [
+      "################################################################################",
+      "#............................................................................###",
+      "#............................................................................###",
+      "#............................................................................###",
+      "#............................................................................###",
+      "#............................................................................###",
+      "#............................................................................###",
+      "#............................................................................###",
+      "#............................................................................###",
+      "#............................................................................###",
+      "#.................................=========..................................###",
+      "#............................................................................###",
+      "#............................................................................###",
+      "#...............................................========.....................###",
+      "#............................................................................###",
+      "#............................................................................###",
+      "#..........................................................========..........###",
+      "#............................................................................###",
+      "#....................................###.....................................###",
+      "#....................................###...........................=====.....###",
+      "#....................................###.....................................###",
+      "#.........................ZZZZZZ....<###>....................................###",
+      "#...................................<###>....................................###",
+      "#...................................<###>....................................###",
+      "#.................=======...........<###>..................======............###",
+      "#.KKKKKK............................<###>........................KKKKKK......###",
+      "#.KKKKKK............................<###>........................KKKKKK......###",
+      "#.........======....................<###>..........=======...................###",
+      "#...................................<###>....................................###",
+      "#....................................###.....................................###",
+      "#...............................................................................",
+      "#...............................................................................",
+      "#...............................................................................",
+      "#.........P.....................................................................",
+      "################################################################################",
+      "################################################################################",
+      "################################################################################",
+      "################################################################################"
+    ],
+    "zips": [
+      [
+        0,
+        -12
+      ]
+    ],
+    "combat": {
+      "waitForMove": true,
+      "enemies": [
+        {
+          "kind": "hound",
+          "brute": true,
+          "crush": 2,
+          "stamp": true,
+          "x": 200,
+          "y": 256,
+          "face": -1,
+          "ward": "brute"
+        }
+      ],
+      "receivers": [],
+      "doors": [
+        {
+          "x": 296,
+          "y": 240,
+          "w": 24,
+          "h": 32,
+          "brittle": true
+        },
+        {
+          "x": 576,
+          "y": 8,
+          "w": 8,
+          "h": 264,
+          "ward": "brute"
+        }
+      ]
+    },
+    "hint": "Let the Brute commit beneath a weight. Cross the upper causeway while he clears the brace below. The second weight ends the chase.",
+    "question": "Can the same opponent open the road you need to bait his next charge?"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 18,
+    "run": 9,
+    "collection": "superrooms",
+    "format": "superroom",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "author": "Codex",
+    "tags": [
+      "superroom",
+      "boss",
+      "brute",
+      "counterweight",
+      "brittle",
+      "lift",
+      "return"
+    ],
+    "newMechanics": [],
+    "humanReview": "Awaiting review; numeric ratings unmeasured.",
+    "worlds": [
+      3
+    ],
+    "difficulty": 3,
+    "approvedIngredients": [
+      "bank-b37",
+      "bank-b65"
+    ],
+    "role": "The native armoured Brute and two real crushes inhabit one vertical causeway court.",
+    "solution": "Rise onto the western hanging stone while the Brute commits to the low wall. Drop the stone on him to crack his armour. Use its fallen body as the first stair and ascend the causeway lift. Cross over the central brace while the enraged Brute follows on the low road and breaks the brittle passage. Descend onto the eastern weight, lure him into the closed warded exit beside it, then drop that stone for the real second crush. The same low road he cleared becomes the stable departure. The protected lower ledge halfway across the east side brings the knight back into the Brute’s sight; wait there for the committed charge, then step up to the eastern weight while it runs under you.",
+    "interconnection": "Both drops act on the same roaming Brute; the upper route crosses the brace he must break below, and the returned lower road is the exit after his actual defeat.",
+    "novelty": "The chase below and the traversal above solve each other: crossing the upper causeway turns the knight into the lure that sends the Brute through the central brace.",
+    "nearestExisting": "Native Counterweight teaches two falling stones in one screen; B65 makes boss progress useful architecture. This scales that relationship into a shared causeway with an opponent-cleared lower return.",
+    "requiredEvents": [
+      "stone-hit",
+      "brute-crack",
+      "breach",
+      "enemy-defeat",
+      "exit"
+    ],
+    "requiredEventCounts": {
+      "stone-hit": 2,
+      "brute-crack": 1
+    },
+    "superroom": {
+      "screenAreas": 3.3043478260869565,
+      "stages": [
+        "Crack the armour under the western weight",
+        "Cross above the brace he breaks below",
+        "Return to the low road after the eastern crush"
+      ]
+    },
+    "endingForgiveness": "Both weights have broad tops and the Brute waits dazed at their stops; the final cleared road is a stable walk.",
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 915
+    },
+    "routeEvents": [
+      {
+        "type": "stone-hit",
+        "frame": 172,
+        "x": 40,
+        "y": 208,
+        "dx": 0,
+        "dy": 1,
+        "i": 171
+      },
+      {
+        "type": "brute-crack",
+        "frame": 191,
+        "x": 76,
+        "y": 264,
+        "cracks": 1,
+        "need": 2,
+        "dev": true,
+        "i": 190
+      },
+      {
+        "type": "breach",
+        "frame": 340,
+        "x": 308,
+        "y": 256,
+        "i": 339
+      },
+      {
+        "type": "brute-stamp",
+        "frame": 349,
+        "x": 284,
+        "y": 272,
+        "dev": true,
+        "i": 348
+      },
+      {
+        "type": "brute-stamp",
+        "frame": 700,
+        "x": 564,
+        "y": 272,
+        "dev": true,
+        "i": 699
+      },
+      {
+        "type": "stone-hit",
+        "frame": 776,
+        "x": 544,
+        "y": 208,
+        "dx": 0,
+        "dy": 1,
+        "i": 775
+      },
+      {
+        "type": "enemy-defeat",
+        "frame": 795,
+        "x": 564,
+        "y": 264,
+        "kind": "hound",
+        "cause": "crush",
+        "i": 794
+      },
+      {
+        "type": "combat-gate",
+        "frame": 795,
+        "x": 580,
+        "y": 140,
+        "i": 794
+      },
+      {
+        "type": "exit",
+        "frame": 915,
+        "room": 0,
+        "i": 914
+      }
+    ],
+    "positiveChecks": [
+      {
+        "name": "Drop the last weight 15 frames earlier",
+        "tape": [
+          [
+            12,
+            "j"
+          ],
+          [
+            5,
+            "ux"
+          ],
+          [
+            60,
+            "lgu"
+          ],
+          [
+            90,
+            ""
+          ],
+          [
+            2,
+            "dx"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            44,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            24,
+            "r"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            65,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            2,
+            "dx"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            55,
+            "r"
+          ],
+          [
+            25,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 900
+      },
+      {
+        "name": "Drop the last weight 60 frames later",
+        "tape": [
+          [
+            12,
+            "j"
+          ],
+          [
+            5,
+            "ux"
+          ],
+          [
+            60,
+            "lgu"
+          ],
+          [
+            90,
+            ""
+          ],
+          [
+            2,
+            "dx"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            44,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            24,
+            "r"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            65,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            95,
+            ""
+          ],
+          [
+            2,
+            "dx"
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            55,
+            "r"
+          ],
+          [
+            25,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 975
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Keep the second weight hanging and try the departure after only one crack",
+        "tape": [
+          [
+            12,
+            "j"
+          ],
+          [
+            5,
+            "ux"
+          ],
+          [
+            60,
+            "lgu"
+          ],
+          [
+            90,
+            ""
+          ],
+          [
+            2,
+            "dx"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            44,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            24,
+            "r"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            35,
+            "rj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            65,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            2,
+            ""
+          ],
+          [
+            70,
+            ""
+          ],
+          [
+            55,
+            "r"
+          ],
+          [
+            25,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 0,
+        "frames": null
+      }
+    ],
+    "replaces": "cl3-c3-counterweight"
+  },
+  "tape": [
+    [
+      12,
+      "j"
+    ],
+    [
+      5,
+      "ux"
+    ],
+    [
+      60,
+      "lgu"
+    ],
+    [
+      90,
+      ""
+    ],
+    [
+      2,
+      "dx"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      35,
+      "r"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      20,
+      "r"
+    ],
+    [
+      1,
+      ""
+    ],
+    [
+      26,
+      "rj"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      18,
+      "r"
+    ],
+    [
+      1,
+      ""
+    ],
+    [
+      26,
+      "rj"
+    ],
+    [
+      44,
+      ""
+    ],
+    [
+      26,
+      "rj"
+    ],
+    [
+      20,
+      "r"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      24,
+      "r"
+    ],
+    [
+      1,
+      ""
+    ],
+    [
+      35,
+      "rj"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      30,
+      "r"
+    ],
+    [
+      1,
+      "dj"
+    ],
+    [
+      65,
+      ""
+    ],
+    [
+      26,
+      "rj"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      26,
+      "rj"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      12,
+      "r"
+    ],
+    [
+      35,
+      ""
+    ],
+    [
+      2,
+      "dx"
+    ],
+    [
+      70,
+      ""
+    ],
+    [
+      55,
+      "r"
+    ],
+    [
+      25,
+      "r"
+    ]
+  ]
+}

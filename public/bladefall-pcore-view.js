@@ -4,7 +4,8 @@
 (function(root){
 'use strict';
 const C=root.BladefallPrecisionCore,R=root.BladefallPrecisionRooms;
-const {TILE,COLS,ROWS,W,H,SOLID,THRU,SPIKE_UP,SPIKE_DOWN,SPIKE_LEFT,SPIKE_RIGHT}=C;
+const {TILE,COLS,ROWS,H,SOLID,THRU,SPIKE_UP,SPIKE_DOWN,SPIKE_LEFT,SPIKE_RIGHT}=C;
+let W=C.W; // Render width may widen on landscape phones; simulation coordinates stay unchanged.
 const SAVE='bladefall.pcore.v1';
 // 7.256: the owner's difficulty survey (bladefall-pcore-survey.js), off unless switched on; never in gate trials.
 const SV=()=>view.trial?null:view.pitch?(R.chapters[view.chapter]?.rbr?root.BladefallPrecisionSurvey?.rbr:null):root.BladefallPrecisionSurvey;
@@ -225,7 +226,7 @@ const PAL={
 };
 
 /* ---------------------------------------------------------------- state */
-const view={canvas:null,ctx:null,buf:null,b:null,scale:3,g:null,chapter:0,mode:'menu',wipe:0,wipeTo:null,shake:{x:0,y:0,t:0,mag:0},
+const view={viewportW:C.W,viewportH:C.H,canvas:null,ctx:null,buf:null,b:null,scale:3,g:null,chapter:0,mode:'menu',wipe:0,wipeTo:null,shake:{x:0,y:0,t:0,mag:0},
  parts:[],trail:[],scarf:[],flash:0,paused:false,replay:null,roomTimer:0,chapterStats:null,frameAcc:0,last:0,speed:1,cardT:0,
  anim:{run:0,squash:1,stretch:1,lastState:'normal'},deathAt:null,lastPad:{},cam:{x:0,y:0},camRoom:null,trial:null};
 let seedRand=1;
@@ -660,8 +661,11 @@ function render(){
  ctx.imageSmoothingEnabled=false;
  const PV=root.BladefallPitchView,pocket=PV&&PV.pocket&&PV.pocket();
  if(pocket)ctx.clearRect(0,0,sw,sh);else{ctx.fillStyle='#07080b';ctx.fillRect(0,0,sw,sh);}
+ const full=(touchUI()||window.matchMedia('(pointer:coarse)').matches)&&window.innerWidth>=window.innerHeight&&!pocket;
+ W=full?Math.ceil(sw/(sh/H)):C.W;view.viewportW=W;view.viewportH=H;
+ if(view.buf.width!==W){view.buf.width=W;view.b.imageSmoothingEnabled=false;}
  const fit=Math.min(sw/W,(sh-8*dpr)/H);
- const scale=pocket?pocket.scale*dpr:dpr>1?(fit>=3?Math.floor(fit):fit):Math.max(1,Math.floor(fit));view.scale=scale;
+ const scale=pocket?pocket.scale*dpr:full?sh/H:dpr>1?(fit>=3?Math.floor(fit):fit):Math.max(1,Math.floor(fit));view.scale=scale;
  const ox=pocket?pocket.ox*dpr:Math.floor((sw-W*scale)/2),oy=pocket?pocket.oy*dpr:Math.floor((sh-H*scale)/2);
  if(!view.g){return;}
  const g=view.g,pal=palette();
@@ -818,19 +822,22 @@ function togglePause(){
  const hasTape=!!R.tapes[g.room.id],backPassage=ch.climb&&root.BladefallClimbBankPassages?.previousLink(root.BladefallPitchView?.climb?.state()?.world,g.room.id);
  let roomLabel=0;const rooms=ch.rooms.map((r,i)=>r.passage||r.connector||ch.climb&&i>=ch.mainCount?'':`<button class="pcMini ${base+i===g.roomIndex?'on':''}" title="${r.name}" data-room="${i}">${++roomLabel}${save.cleared[r.id]?'✓':''}</button>`).join('');   // the Climb's passages and shafts are not levels
  let optionalLabel=0;const optional=ch.climb?ch.rooms.map((r,i)=>i>=ch.mainCount&&!r.passage&&!r.connector?`<button class="pcMini ${base+i===g.roomIndex?'on':''}" title="${r.name}" aria-label="Optional ${optionalLabel+1}: ${r.name}" data-room="${i}">O${++optionalLabel}${save.cleared[r.id]?'✓':''}</button>`:'').join(''):'';
+ const skipInfo=ch.climb?root.BladefallPitchView?.climb?.skipInfo?.():null;
  const selectable=(ch.climb?ch.rooms.slice(0,ch.mainCount):ch.rooms).filter(r=>!r.passage&&!r.connector),selected=selectable.findIndex(r=>r.id===g.room.id);
  const optionalRooms=ch.climb?ch.rooms.slice(ch.mainCount).filter(r=>!r.passage&&!r.connector):[],optionalSelected=optionalRooms.findIndex(r=>r.id===g.room.id);
  const roomStatus=selected>=0?`room ${selected+1} of ${selectable.length}`:optionalSelected>=0?`optional O${optionalSelected+1}`:'connecting passage';
  showOverlay(`<div class="pcCard"><h1>Paused</h1>${view.trial?`<p class="pcSub">${view.trial.title||'The gate'} · level ${view.chapter+1} of ${view.trial.from}–${view.trial.to}</p>`:''}<p class="pcSub">${ch.name} · ${roomStatus}${g.room.name?' · '+g.room.name:''}</p>
  ${g.room.def.question?`<p class="pcSub">${g.room.def.question}</p>`:''}
- ${ch.climb&&!view.trial?'<button class="pcBtn ghost" id="pcChapters">World map</button>':''}
  <button class="pcBtn" id="pcResume" data-back>Resume</button><button class="pcBtn ghost" id="pcRetry">Retry room</button>
  ${hasTape?'<button class="pcBtn ghost" id="pcWatch">Watch the intended route (review)</button>':''}
  ${backPassage?'<button class="pcBtn ghost" id="pcReturnPassage">Return through passage</button>':''}
  <p class="pcSub">Room select${optional?' · O = optional route':''}</p><div class="pcMiniRow">${rooms}${optional}</div>
+ ${skipInfo?`<button class="pcBtn ghost" id="pcSkipSection" ${skipInfo.allowed?'':'disabled'}>Skip section · ${skipInfo.remaining} left</button>${!skipInfo.allowed?`<p class="pcSub">${skipInfo.reason||'This section cannot be skipped.'}</p>`:''}`:''}
+ ${ch.climb&&!view.trial?'<button class="pcBtn ghost" id="pcChapters">World map</button>':''}
  <button class="pcBtn ghost" id="pcCtl">Controls</button><button class="pcBtn ghost" id="pcAssist">Assist &amp; options</button>${view.trial?'<button class="pcBtn ghost" id="pcLeave">Leave the gate (you keep the levels you finished)</button>':!ch.climb?'<button class="pcBtn ghost" id="pcChapters">Chapters</button>':''}
  ${ch.climb?'<a class="pcBtn ghost" href="index.html">Return to title menu</a>':''}</div>`);
  document.getElementById('pcResume').onclick=togglePause;
+ document.getElementById('pcSkipSection')?.addEventListener('click',()=>{if(!root.BladefallPitchView.climb.skipInfo().allowed)return;view.paused=false;hideOverlay();root.BladefallPitchView.climb.skipSection({fromPause:true});});
  document.getElementById('pcReturnPassage')?.addEventListener('click',()=>root.BladefallPitchView.climb.returnPassage());
  document.getElementById('pcCtl').onclick=()=>{const back=()=>{view.paused=false;togglePause();};touchUI()?TOUCH().card(back):controlsCard(back);};
  document.getElementById('pcRetry').onclick=()=>{togglePause();retryRoom();};

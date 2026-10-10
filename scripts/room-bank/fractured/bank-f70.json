@@ -1,0 +1,1129 @@
+{
+  "room": {
+    "id": "bank-f70",
+    "name": "The Sentence Becomes a Wall",
+    "palette": "fractured",
+    "rbr": 27,
+    "study": true,
+    "movement": "survive-2",
+    "aim8": true,
+    "cols": 64,
+    "rows": 48,
+    "exit": "left",
+    "lock": [
+      "portal"
+    ],
+    "shade": {
+      "delay": 180
+    },
+    "warden": {
+      "x": 47,
+      "y": 15,
+      "dir": -1,
+      "hp": 3,
+      "first": 20,
+      "leave": "kneel",
+      "reach": 72,
+      "shove": true,
+      "chain": {
+        "every": 110,
+        "tell": 30,
+        "speed": 110
+      }
+    },
+    "hingeArms": [
+      {
+        "id": "Sentence floor",
+        "c": 25,
+        "r": 16,
+        "length": 24,
+        "dir": "right"
+      }
+    ],
+    "hint": "His first wound cracks the floor. Cut its hub early; the fallen floor catches his rush and carries you home.",
+    "question": "When the floor becomes a wall, who needs it first?",
+    "map": [
+      "################################################################",
+      "#..............................................................#",
+      "#..............................................................#",
+      "#..............................................................#",
+      "#..............................................................#",
+      "#..............................................................#",
+      "#..............................................................#",
+      "#..............................................................#",
+      "#..............................................................#",
+      "#..............................................................#",
+      "#..............................................................#",
+      "#..............................................................#",
+      "G................................................##............#",
+      "G................................................##............#",
+      "G................................................##............#",
+      "G.............................P..................##............#",
+      "#########################........................##............#",
+      "#................................................##............#",
+      "#................................................##............#",
+      "#................................................##............#",
+      "#................................................##............#",
+      "#................................................##............#",
+      "#................................................##............#",
+      "#.........................=====..................##............#",
+      "#................................................##............#",
+      "#................................................##............#",
+      "#................................................##............#",
+      "#................................................##............#",
+      "#................................................##............#",
+      "#................................................##............#",
+      "#................................................##............#",
+      "#.........................=====..................##............#",
+      "#................................................##............#",
+      "#................................................##............#",
+      "#................................................##............#",
+      "#................................................##............#",
+      "#................................................##............#",
+      "#..............................................................#",
+      "#..............................................................#",
+      "#..............................................................#",
+      "#.........................######################################",
+      "#.........................######################################",
+      "#.........................######################################",
+      "#.........................######################################",
+      "#.........................######################################",
+      "#.........................######################################",
+      "#^^^^^^^^^^^^^^^^^^^^^^^^^######################################",
+      "################################################################"
+    ],
+    "wardenFloor": {
+      "hinge": "Sentence floor",
+      "fuse": 80
+    }
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 18,
+    "run": 9,
+    "collection": "superrooms",
+    "format": "superroom",
+    "acceptance": "candidate",
+    "needsReview": true,
+    "difficulty": 4,
+    "role": "interconnected native Warden boss superroom",
+    "worlds": [
+      27
+    ],
+    "tags": [
+      "superroom",
+      "warden",
+      "hinge",
+      "shade",
+      "parry",
+      "return"
+    ],
+    "newMechanics": [],
+    "status": "route-proven",
+    "author": "Codex",
+    "humanReview": "New integrated candidate; awaiting fun/difficulty/suitability review.",
+    "approvedIngredients": [
+      "bank-f45",
+      "bank-f49"
+    ],
+    "interconnection": "One long hinged floor supports the upper fight. After the first wound it becomes the left crash wall of the same lower well, dropping the Warden by actual gravity. After the remaining wounds the knight climbs that very wall back to the original exit; intermediate footholds give places to recover while the delayed shade keeps the route moving. The first real wound cracks a visible support pin. Its countdown drops the same hinge even if the knight refuses to release it, so the later wounds cannot be camped on the old upper floor.",
+    "solution": "Return the upper rush in the open and wound the crashed Warden. Use his shield shove to retreat above your recorded path to the hinge hub. Turn the floor downward, then follow into the lower well from above. Return two more native rushes and cut each exposed guard. Climb the now-vertical sentence floor via its broad rests and leave above the starting court.",
+    "novelty": "The same boss floor is later his crashing boundary and finally the player’s return wall; the Warden changes tier by falling through the floor the player physically rotates.",
+    "nearestExisting": "F45/F49 changed-route returns applied to the native Warden and the Gaol’s following shade.",
+    "requiredEvents": [
+      "warden-return",
+      "warden-hit",
+      "hinge-turn",
+      "shade-wake",
+      "warden-gone",
+      "warden-support-crack"
+    ],
+    "route": {
+      "name": "canonical",
+      "exited": true,
+      "deaths": 0,
+      "frames": 1315,
+      "wardenWounds": 3,
+      "wardenKneeling": true,
+      "floorReleased": true,
+      "events": [
+        "warden-tell",
+        "warden-rush",
+        "parry-ready",
+        "parry",
+        "warden-return",
+        "warden-crash",
+        "shade-wake",
+        "strike",
+        "warden-hit",
+        "warden-support-crack",
+        "warden-shove",
+        "land",
+        "jump",
+        "hinge-turn",
+        "dash",
+        "warden-slam",
+        "refill-dash",
+        "warden-turn",
+        "warden-gone",
+        "gate-open",
+        "grab",
+        "climbhop",
+        "exit"
+      ],
+      "eventCounts": {
+        "warden-tell": 4,
+        "warden-rush": 4,
+        "parry-ready": 3,
+        "parry": 3,
+        "warden-return": 3,
+        "warden-crash": 3,
+        "shade-wake": 1,
+        "strike": 4,
+        "warden-hit": 3,
+        "warden-support-crack": 1,
+        "warden-shove": 2,
+        "land": 8,
+        "jump": 4,
+        "hinge-turn": 1,
+        "dash": 2,
+        "warden-slam": 1,
+        "refill-dash": 2,
+        "warden-turn": 1,
+        "warden-gone": 1,
+        "gate-open": 1,
+        "grab": 3,
+        "climbhop": 1,
+        "exit": 1
+      }
+    },
+    "positiveChecks": [
+      {
+        "name": "Last wall ascent -6 frames",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            80,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            84,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            12,
+            "l"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            22,
+            "lj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            48,
+            "r"
+          ],
+          [
+            135,
+            ""
+          ],
+          [
+            13,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            62,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            48,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            43,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            104,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            60,
+            "l"
+          ],
+          [
+            110,
+            "lgu"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            72,
+            "lgu"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            66,
+            "lgu"
+          ],
+          [
+            145,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 1315,
+          "wardenWounds": 3,
+          "wardenKneeling": true,
+          "floorReleased": true,
+          "events": [
+            "warden-tell",
+            "warden-rush",
+            "parry-ready",
+            "parry",
+            "warden-return",
+            "warden-crash",
+            "shade-wake",
+            "strike",
+            "warden-hit",
+            "warden-support-crack",
+            "warden-shove",
+            "land",
+            "jump",
+            "hinge-turn",
+            "dash",
+            "warden-slam",
+            "refill-dash",
+            "warden-turn",
+            "warden-gone",
+            "gate-open",
+            "grab",
+            "climbhop",
+            "exit"
+          ],
+          "eventCounts": {
+            "warden-tell": 4,
+            "warden-rush": 4,
+            "parry-ready": 3,
+            "parry": 3,
+            "warden-return": 3,
+            "warden-crash": 3,
+            "shade-wake": 1,
+            "strike": 4,
+            "warden-hit": 3,
+            "warden-support-crack": 1,
+            "warden-shove": 2,
+            "land": 8,
+            "jump": 4,
+            "hinge-turn": 1,
+            "dash": 2,
+            "warden-slam": 1,
+            "refill-dash": 2,
+            "warden-turn": 1,
+            "warden-gone": 1,
+            "gate-open": 1,
+            "grab": 3,
+            "climbhop": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Last wall ascent 6 frames",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            80,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            84,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            12,
+            "l"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            22,
+            "lj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            48,
+            "r"
+          ],
+          [
+            135,
+            ""
+          ],
+          [
+            13,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            62,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            48,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            43,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            104,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            60,
+            "l"
+          ],
+          [
+            110,
+            "lgu"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            72,
+            "lgu"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            78,
+            "lgu"
+          ],
+          [
+            145,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 1315,
+          "wardenWounds": 3,
+          "wardenKneeling": true,
+          "floorReleased": true,
+          "events": [
+            "warden-tell",
+            "warden-rush",
+            "parry-ready",
+            "parry",
+            "warden-return",
+            "warden-crash",
+            "shade-wake",
+            "strike",
+            "warden-hit",
+            "warden-support-crack",
+            "warden-shove",
+            "land",
+            "jump",
+            "hinge-turn",
+            "dash",
+            "warden-slam",
+            "refill-dash",
+            "warden-turn",
+            "warden-gone",
+            "gate-open",
+            "grab",
+            "climbhop",
+            "exit"
+          ],
+          "eventCounts": {
+            "warden-tell": 4,
+            "warden-rush": 4,
+            "parry-ready": 3,
+            "parry": 3,
+            "warden-return": 3,
+            "warden-crash": 3,
+            "shade-wake": 1,
+            "strike": 4,
+            "warden-hit": 3,
+            "warden-support-crack": 1,
+            "warden-shove": 2,
+            "land": 8,
+            "jump": 4,
+            "hinge-turn": 1,
+            "dash": 2,
+            "warden-slam": 1,
+            "refill-dash": 2,
+            "warden-turn": 1,
+            "warden-gone": 1,
+            "gate-open": 1,
+            "grab": 3,
+            "climbhop": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Pause one second on the first wide return rest",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            80,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            84,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            12,
+            "l"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            22,
+            "lj"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            48,
+            "r"
+          ],
+          [
+            135,
+            ""
+          ],
+          [
+            13,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            62,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            48,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            43,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            104,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            60,
+            "l"
+          ],
+          [
+            110,
+            "lgu"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            60,
+            ""
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            72,
+            "lgu"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            12,
+            "lj"
+          ],
+          [
+            72,
+            "lgu"
+          ],
+          [
+            145,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 1375,
+          "wardenWounds": 3,
+          "wardenKneeling": true,
+          "floorReleased": true,
+          "events": [
+            "warden-tell",
+            "warden-rush",
+            "parry-ready",
+            "parry",
+            "warden-return",
+            "warden-crash",
+            "shade-wake",
+            "strike",
+            "warden-hit",
+            "warden-support-crack",
+            "warden-shove",
+            "land",
+            "jump",
+            "hinge-turn",
+            "dash",
+            "warden-slam",
+            "refill-dash",
+            "warden-turn",
+            "warden-gone",
+            "gate-open",
+            "grab",
+            "climbhop",
+            "exit"
+          ],
+          "eventCounts": {
+            "warden-tell": 4,
+            "warden-rush": 4,
+            "parry-ready": 3,
+            "parry": 3,
+            "warden-return": 3,
+            "warden-crash": 3,
+            "shade-wake": 1,
+            "strike": 4,
+            "warden-hit": 3,
+            "warden-support-crack": 1,
+            "warden-shove": 2,
+            "land": 8,
+            "jump": 4,
+            "hinge-turn": 1,
+            "dash": 2,
+            "warden-slam": 1,
+            "refill-dash": 2,
+            "warden-turn": 1,
+            "warden-gone": 1,
+            "gate-open": 1,
+            "grab": 3,
+            "climbhop": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Wait on the upper floor instead of cutting its hub: the cracked support releases before a second upper fight",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            80,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            84,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            12,
+            "l"
+          ],
+          [
+            20,
+            "l"
+          ],
+          [
+            85,
+            ""
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0,
+          "wounds": 1,
+          "floorReleased": true,
+          "forcedRelease": true,
+          "playerY": 179,
+          "bossY": 192
+        }
+      }
+    ],
+    "requiredEventCounts": {
+      "warden-hit": 3,
+      "warden-return": 3,
+      "hinge-turn": 1
+    },
+    "endingForgiveness": "All native combat is finished before the return climb. Two five-tile-wide one-way rests refill stamina, and the final wall ascent completes with a twelve-frame variation. A full extra second on the first rest remains safe; the last movement is an ordinary walk across the original floor.",
+    "designNotes": "64×48 = 3.34 standard room areas. Native Warden gravity performs the tier change and all three parries/wounds are real. The room-only support pin visibly loosens after the first native wound and releases a physical hinged floor; it never changes player coordinates or fabricates victory. The native shade has a readable three-second delay; the shield shoves help the knight cross above their recorded ground path."
+  },
+  "tape": [
+    [
+      1,
+      "r"
+    ],
+    [
+      80,
+      ""
+    ],
+    [
+      1,
+      "p"
+    ],
+    [
+      30,
+      ""
+    ],
+    [
+      84,
+      "r"
+    ],
+    [
+      1,
+      "rs"
+    ],
+    [
+      12,
+      "l"
+    ],
+    [
+      20,
+      "l"
+    ],
+    [
+      22,
+      "lj"
+    ],
+    [
+      15,
+      "r"
+    ],
+    [
+      1,
+      "rs"
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      48,
+      "r"
+    ],
+    [
+      135,
+      ""
+    ],
+    [
+      13,
+      ""
+    ],
+    [
+      1,
+      "p"
+    ],
+    [
+      5,
+      ""
+    ],
+    [
+      62,
+      "l"
+    ],
+    [
+      1,
+      "ls"
+    ],
+    [
+      12,
+      "r"
+    ],
+    [
+      12,
+      "r"
+    ],
+    [
+      5,
+      "rux"
+    ],
+    [
+      48,
+      "r"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      43,
+      ""
+    ],
+    [
+      1,
+      "p"
+    ],
+    [
+      5,
+      ""
+    ],
+    [
+      104,
+      "l"
+    ],
+    [
+      1,
+      "ls"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      60,
+      "l"
+    ],
+    [
+      110,
+      "lgu"
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      72,
+      "lgu"
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      12,
+      "lj"
+    ],
+    [
+      72,
+      "lgu"
+    ],
+    [
+      145,
+      "l"
+    ]
+  ]
+}
