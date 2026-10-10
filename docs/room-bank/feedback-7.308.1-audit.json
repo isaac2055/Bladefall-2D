@@ -1,0 +1,8451 @@
+{
+  "version": "7.308.1",
+  "scope": "all",
+  "worlds": 40,
+  "imports": 127,
+  "ordinary": 87,
+  "superrooms": 40,
+  "retirements": 59,
+  "mainChallenges": 558,
+  "closedEntranceRoutes": 234,
+  "physicalSeams": 327,
+  "checkpointTeleports": 0,
+  "nativeDefinitionsPreserved": 979,
+  "existingRuntimeRetimings": [
+    "cl4-u4-crown"
+  ],
+  "dialogueRecordsPreserved": 112,
+  "translatedBranches": 87,
+  "sharedSolidWalls": 24,
+  "atlasSharedSolidWalls": 0,
+  "atlasTranslationsPreserveAllSeams": true,
+  "inheritedAtlasSharedMouth": [
+    [
+      "cl38-atlas-arrival",
+      "cl38-pass-46"
+    ],
+    [
+      "cl38-atlas-arrival",
+      "cl38-pass-47"
+    ]
+  ],
+  "ownCompletionGuard": true,
+  "retiredCheckpointMigration": true,
+  "geographySections": 1355,
+  "terminalArrivals": [
+    {
+      "world": 1,
+      "from": "cl1-bank-b62",
+      "to": "cl1-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 2,
+      "from": "cl2-bank-b67",
+      "to": "cl2-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 3,
+      "from": "cl3-bank-b68",
+      "to": "cl3-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 4,
+      "from": "cl4-bank-b63",
+      "to": "cl4-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 5,
+      "from": "cl5-bank-b69",
+      "to": "cl5-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 6,
+      "from": "cl6-bank-b64",
+      "to": "cl6-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 7,
+      "from": "cl7-bank-b70",
+      "to": "cl7-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 8,
+      "from": "cl8-bank-b53",
+      "to": "cl8-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 9,
+      "from": "cl9-bank-b71",
+      "to": "cl9-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 10,
+      "from": "cl10-bank-b72",
+      "to": "cl10-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 11,
+      "from": "cl11-bank-b65",
+      "to": "cl11-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 12,
+      "from": "cl12-bank-b49",
+      "to": "cl12-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 13,
+      "from": "cl13-bank-b73",
+      "to": "cl13-atlas-crossroads",
+      "entryDelta": 1,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 14,
+      "from": "cl14-k14-rail",
+      "to": "cl14-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 15,
+      "from": "cl15-bank-b48",
+      "to": "cl15-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 16,
+      "from": "cl16-t16-tide",
+      "to": "cl16-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 17,
+      "from": "cl17-bank-b76",
+      "to": "cl17-atlas-crossroads",
+      "entryDelta": 2,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 18,
+      "from": "cl18-bank-b44",
+      "to": "cl18-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 19,
+      "from": "cl19-bank-b45",
+      "to": "cl19-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 20,
+      "from": "cl20-s20-sea",
+      "to": "cl20-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 21,
+      "from": "cl21-bank-f63",
+      "to": "cl21-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 22,
+      "from": "cl22-fw22-oath3",
+      "to": "cl22-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 23,
+      "from": "cl23-fc23-middle",
+      "to": "cl23-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 24,
+      "from": "cl24-bank-f50",
+      "to": "cl24-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 25,
+      "from": "cl25-bank-f64",
+      "to": "cl25-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 26,
+      "from": "cl26-bank-b52",
+      "to": "cl26-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 27,
+      "from": "cl27-bank-f70",
+      "to": "cl27-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 28,
+      "from": "cl28-bank-f71",
+      "to": "cl28-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 29,
+      "from": "cl29-bank-f65",
+      "to": "cl29-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 30,
+      "from": "cl30-bank-f72",
+      "to": "cl30-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 31,
+      "from": "cl31-bank-f73",
+      "to": "cl31-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 32,
+      "from": "cl32-bank-f49",
+      "to": "cl32-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 33,
+      "from": "cl33-bank-f74",
+      "to": "cl33-atlas-crossroads",
+      "entryDelta": 1,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 34,
+      "from": "cl34-bank-f75",
+      "to": "cl34-atlas-crossroads",
+      "entryDelta": 2,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 35,
+      "from": "cl35-bank-f45",
+      "to": "cl35-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 36,
+      "from": "cl36-bank-f76",
+      "to": "cl36-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 37,
+      "from": "cl37-bank-f66",
+      "to": "cl37-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 38,
+      "from": "cl38-bank-f46",
+      "to": "cl38-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 39,
+      "from": "cl39-bank-f77",
+      "to": "cl39-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    },
+    {
+      "world": 40,
+      "from": "cl40-fs40-sea",
+      "to": "cl40-atlas-crossroads",
+      "entryDelta": 0,
+      "collisionFree": true,
+      "settlingFrames": 60,
+      "deaths": 0
+    }
+  ],
+  "routes": [
+    {
+      "world": 1,
+      "id": "cl1-bank-b21",
+      "source": "bank-b21",
+      "kind": "bank",
+      "frames": 602,
+      "deaths": 0
+    },
+    {
+      "world": 1,
+      "id": "cl1-bank-b22",
+      "source": "bank-b22",
+      "kind": "bank",
+      "frames": 369,
+      "deaths": 0
+    },
+    {
+      "world": 1,
+      "id": "cl1-bank-b62",
+      "source": "bank-b62",
+      "kind": "bank",
+      "frames": 1058,
+      "deaths": 0
+    },
+    {
+      "world": 2,
+      "id": "cl2-bank-b23",
+      "source": "bank-b23",
+      "kind": "bank",
+      "frames": 338,
+      "deaths": 0
+    },
+    {
+      "world": 2,
+      "id": "cl2-bank-f22",
+      "source": "bank-f22",
+      "kind": "bank",
+      "frames": 843,
+      "deaths": 0
+    },
+    {
+      "world": 2,
+      "id": "cl2-bank-b67",
+      "source": "bank-b67",
+      "kind": "bank",
+      "frames": 1339,
+      "deaths": 0
+    },
+    {
+      "world": 2,
+      "id": "cl2-walk-2-10",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 53,
+      "deaths": 0
+    },
+    {
+      "world": 3,
+      "id": "cl3-bank-b39",
+      "source": "bank-b39",
+      "kind": "bank",
+      "frames": 181,
+      "deaths": 0
+    },
+    {
+      "world": 3,
+      "id": "cl3-bank-b11",
+      "source": "bank-b11",
+      "kind": "bank",
+      "frames": 614,
+      "deaths": 0
+    },
+    {
+      "world": 3,
+      "id": "cl3-bank-b68",
+      "source": "bank-b68",
+      "kind": "bank",
+      "frames": 915,
+      "deaths": 0
+    },
+    {
+      "world": 3,
+      "id": "cl3-walk-3-3",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 64,
+      "deaths": 0
+    },
+    {
+      "world": 3,
+      "id": "cl3-walk-4-16",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 493,
+      "deaths": 0
+    },
+    {
+      "world": 4,
+      "id": "cl4-bank-b15",
+      "source": "bank-b15",
+      "kind": "bank",
+      "frames": 198,
+      "deaths": 0
+    },
+    {
+      "world": 4,
+      "id": "cl4-bank-b38",
+      "source": "bank-b38",
+      "kind": "bank",
+      "frames": 353,
+      "deaths": 0
+    },
+    {
+      "world": 4,
+      "id": "cl4-bank-b63",
+      "source": "bank-b63",
+      "kind": "bank",
+      "frames": 1867,
+      "deaths": 0
+    },
+    {
+      "world": 5,
+      "id": "cl5-bank-b27",
+      "source": "bank-b27",
+      "kind": "bank",
+      "frames": 205,
+      "deaths": 0
+    },
+    {
+      "world": 5,
+      "id": "cl5-bank-b31",
+      "source": "bank-b31",
+      "kind": "bank",
+      "frames": 303,
+      "deaths": 0
+    },
+    {
+      "world": 5,
+      "id": "cl5-bank-b69",
+      "source": "bank-b69",
+      "kind": "bank",
+      "frames": 2000,
+      "deaths": 0
+    },
+    {
+      "world": 5,
+      "id": "cl5-walk-3-11",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 76,
+      "deaths": 0
+    },
+    {
+      "world": 5,
+      "id": "cl5-walk-4-14",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 64,
+      "deaths": 0
+    },
+    {
+      "world": 6,
+      "id": "cl6-bank-b50",
+      "source": "bank-b50",
+      "kind": "bank",
+      "frames": 196,
+      "deaths": 0
+    },
+    {
+      "world": 6,
+      "id": "cl6-bank-f20",
+      "source": "bank-f20",
+      "kind": "bank",
+      "frames": 549,
+      "deaths": 0
+    },
+    {
+      "world": 6,
+      "id": "cl6-bank-b64",
+      "source": "bank-b64",
+      "kind": "bank",
+      "frames": 2180,
+      "deaths": 0
+    },
+    {
+      "world": 6,
+      "id": "cl6-walk-4-9",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 173,
+      "deaths": 0
+    },
+    {
+      "world": 7,
+      "id": "cl7-bank-b20",
+      "source": "bank-b20",
+      "kind": "bank",
+      "frames": 591,
+      "deaths": 0
+    },
+    {
+      "world": 7,
+      "id": "cl7-bank-f47",
+      "source": "bank-f47",
+      "kind": "bank",
+      "frames": 257,
+      "deaths": 0
+    },
+    {
+      "world": 7,
+      "id": "cl7-bank-b70",
+      "source": "bank-b70",
+      "kind": "bank",
+      "frames": 1316,
+      "deaths": 0
+    },
+    {
+      "world": 7,
+      "id": "cl7-walk-1-4",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 29,
+      "deaths": 0
+    },
+    {
+      "world": 7,
+      "id": "cl7-walk-2-8",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 29,
+      "deaths": 0
+    },
+    {
+      "world": 7,
+      "id": "cl7-walk-3-28",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 137,
+      "deaths": 0
+    },
+    {
+      "world": 7,
+      "id": "cl7-walk-4-35",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 117,
+      "deaths": 0
+    },
+    {
+      "world": 8,
+      "id": "cl8-bank-f21",
+      "source": "bank-f21",
+      "kind": "bank",
+      "frames": 461,
+      "deaths": 0
+    },
+    {
+      "world": 8,
+      "id": "cl8-bank-b16",
+      "source": "bank-b16",
+      "kind": "bank",
+      "frames": 688,
+      "deaths": 0
+    },
+    {
+      "world": 8,
+      "id": "cl8-bank-b33",
+      "source": "bank-b33",
+      "kind": "bank",
+      "frames": 156,
+      "deaths": 0
+    },
+    {
+      "world": 8,
+      "id": "cl8-bank-b53",
+      "source": "bank-b53",
+      "kind": "bank",
+      "frames": 1777,
+      "deaths": 0
+    },
+    {
+      "world": 9,
+      "id": "cl9-bank-b26",
+      "source": "bank-b26",
+      "kind": "bank",
+      "frames": 509,
+      "deaths": 0
+    },
+    {
+      "world": 9,
+      "id": "cl9-bank-b34",
+      "source": "bank-b34",
+      "kind": "bank",
+      "frames": 179,
+      "deaths": 0
+    },
+    {
+      "world": 9,
+      "id": "cl9-bank-b71",
+      "source": "bank-b71",
+      "kind": "bank",
+      "frames": 1631,
+      "deaths": 0
+    },
+    {
+      "world": 10,
+      "id": "cl10-bank-b25",
+      "source": "bank-b25",
+      "kind": "bank",
+      "frames": 648,
+      "deaths": 0
+    },
+    {
+      "world": 10,
+      "id": "cl10-bank-b18",
+      "source": "bank-b18",
+      "kind": "bank",
+      "frames": 1138,
+      "deaths": 0
+    },
+    {
+      "world": 10,
+      "id": "cl10-bank-b72",
+      "source": "bank-b72",
+      "kind": "bank",
+      "frames": 1162,
+      "deaths": 0
+    },
+    {
+      "world": 10,
+      "id": "cl10-walk-2-22",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 377,
+      "deaths": 0
+    },
+    {
+      "world": 10,
+      "id": "cl10-walk-5-32",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 149,
+      "deaths": 0
+    },
+    {
+      "world": 10,
+      "id": "cl10-walk-5-34",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 473,
+      "deaths": 0
+    },
+    {
+      "world": 10,
+      "id": "cl10-walk-5-36",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 92,
+      "deaths": 0
+    },
+    {
+      "world": 11,
+      "id": "cl11-bank-b13",
+      "source": "bank-b13",
+      "kind": "bank",
+      "frames": 596,
+      "deaths": 0
+    },
+    {
+      "world": 11,
+      "id": "cl11-bank-b35",
+      "source": "bank-b35",
+      "kind": "bank",
+      "frames": 349,
+      "deaths": 0
+    },
+    {
+      "world": 11,
+      "id": "cl11-bank-b30",
+      "source": "bank-b30",
+      "kind": "bank",
+      "frames": 179,
+      "deaths": 0
+    },
+    {
+      "world": 11,
+      "id": "cl11-bank-b65",
+      "source": "bank-b65",
+      "kind": "bank",
+      "frames": 2025,
+      "deaths": 0
+    },
+    {
+      "world": 11,
+      "id": "cl11-walk-7-25",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 209,
+      "deaths": 0
+    },
+    {
+      "world": 12,
+      "id": "cl12-bank-b05",
+      "source": "bank-b05",
+      "kind": "bank",
+      "frames": 205,
+      "deaths": 0
+    },
+    {
+      "world": 12,
+      "id": "cl12-bank-b14",
+      "source": "bank-b14",
+      "kind": "bank",
+      "frames": 512,
+      "deaths": 0
+    },
+    {
+      "world": 12,
+      "id": "cl12-bank-b17",
+      "source": "bank-b17",
+      "kind": "bank",
+      "frames": 803,
+      "deaths": 0
+    },
+    {
+      "world": 12,
+      "id": "cl12-bank-b49",
+      "source": "bank-b49",
+      "kind": "bank",
+      "frames": 1146,
+      "deaths": 0
+    },
+    {
+      "world": 12,
+      "id": "cl12-walk-7-9",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 173,
+      "deaths": 0
+    },
+    {
+      "world": 13,
+      "id": "cl13-bank-b58",
+      "source": "bank-b58",
+      "kind": "bank",
+      "frames": 591,
+      "deaths": 0
+    },
+    {
+      "world": 13,
+      "id": "cl13-bank-b59",
+      "source": "bank-b59",
+      "kind": "bank",
+      "frames": 524,
+      "deaths": 0
+    },
+    {
+      "world": 13,
+      "id": "cl13-bank-b73",
+      "source": "bank-b73",
+      "kind": "bank",
+      "frames": 833,
+      "deaths": 0
+    },
+    {
+      "world": 13,
+      "id": "cl13-walk-1-15",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 89,
+      "deaths": 0
+    },
+    {
+      "world": 13,
+      "id": "cl13-walk-3-19",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 29,
+      "deaths": 0
+    },
+    {
+      "world": 13,
+      "id": "cl13-walk-4-23",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 29,
+      "deaths": 0
+    },
+    {
+      "world": 13,
+      "id": "cl13-walk-5-27",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 29,
+      "deaths": 0
+    },
+    {
+      "world": 14,
+      "id": "cl14-bank-f39",
+      "source": "bank-f39",
+      "kind": "bank",
+      "frames": 376,
+      "deaths": 0
+    },
+    {
+      "world": 14,
+      "id": "cl14-bank-b19",
+      "source": "bank-b19",
+      "kind": "bank",
+      "frames": 576,
+      "deaths": 0
+    },
+    {
+      "world": 14,
+      "id": "cl14-bank-f41",
+      "source": "bank-f41",
+      "kind": "bank",
+      "frames": 180,
+      "deaths": 0
+    },
+    {
+      "world": 14,
+      "id": "cl14-bank-b74",
+      "source": "bank-b74",
+      "kind": "bank",
+      "frames": 1001,
+      "deaths": 0
+    },
+    {
+      "world": 14,
+      "id": "cl14-walk-1-4",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 29,
+      "deaths": 0
+    },
+    {
+      "world": 14,
+      "id": "cl14-walk-2-11",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 117,
+      "deaths": 0
+    },
+    {
+      "world": 14,
+      "id": "cl14-walk-3-24",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 493,
+      "deaths": 0
+    },
+    {
+      "world": 14,
+      "id": "cl14-walk-4-33",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 173,
+      "deaths": 0
+    },
+    {
+      "world": 14,
+      "id": "cl14-walk-8-37",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 249,
+      "deaths": 0
+    },
+    {
+      "world": 15,
+      "id": "cl15-bank-b37",
+      "source": "bank-b37",
+      "kind": "bank",
+      "frames": 175,
+      "deaths": 0
+    },
+    {
+      "world": 15,
+      "id": "cl15-bank-f37",
+      "source": "bank-f37",
+      "kind": "bank",
+      "frames": 257,
+      "deaths": 0
+    },
+    {
+      "world": 15,
+      "id": "cl15-bank-f44",
+      "source": "bank-f44",
+      "kind": "bank",
+      "frames": 260,
+      "deaths": 0
+    },
+    {
+      "world": 15,
+      "id": "cl15-bank-b48",
+      "source": "bank-b48",
+      "kind": "bank",
+      "frames": 854,
+      "deaths": 0
+    },
+    {
+      "world": 15,
+      "id": "cl15-walk-6-10",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 53,
+      "deaths": 0
+    },
+    {
+      "world": 15,
+      "id": "cl15-walk-7-20",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 53,
+      "deaths": 0
+    },
+    {
+      "world": 15,
+      "id": "cl15-walk-8-35",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 89,
+      "deaths": 0
+    },
+    {
+      "world": 16,
+      "id": "cl16-bank-b41",
+      "source": "bank-b41",
+      "kind": "bank",
+      "frames": 305,
+      "deaths": 0
+    },
+    {
+      "world": 16,
+      "id": "cl16-bank-b43",
+      "source": "bank-b43",
+      "kind": "bank",
+      "frames": 364,
+      "deaths": 0
+    },
+    {
+      "world": 16,
+      "id": "cl16-bank-b75",
+      "source": "bank-b75",
+      "kind": "bank",
+      "frames": 814,
+      "deaths": 0
+    },
+    {
+      "world": 16,
+      "id": "cl16-walk-6-4",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 249,
+      "deaths": 0
+    },
+    {
+      "world": 17,
+      "id": "cl17-bank-f35",
+      "source": "bank-f35",
+      "kind": "bank",
+      "frames": 218,
+      "deaths": 0
+    },
+    {
+      "world": 17,
+      "id": "cl17-bank-b32",
+      "source": "bank-b32",
+      "kind": "bank",
+      "frames": 151,
+      "deaths": 0
+    },
+    {
+      "world": 17,
+      "id": "cl17-bank-b36",
+      "source": "bank-b36",
+      "kind": "bank",
+      "frames": 132,
+      "deaths": 0
+    },
+    {
+      "world": 17,
+      "id": "cl17-bank-b76",
+      "source": "bank-b76",
+      "kind": "bank",
+      "frames": 404,
+      "deaths": 0
+    },
+    {
+      "world": 17,
+      "id": "cl17-walk-5-15",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 89,
+      "deaths": 0
+    },
+    {
+      "world": 18,
+      "id": "cl18-bank-f38",
+      "source": "bank-f38",
+      "kind": "bank",
+      "frames": 429,
+      "deaths": 0
+    },
+    {
+      "world": 18,
+      "id": "cl18-bank-b42",
+      "source": "bank-b42",
+      "kind": "bank",
+      "frames": 469,
+      "deaths": 0
+    },
+    {
+      "world": 18,
+      "id": "cl18-bank-b44",
+      "source": "bank-b44",
+      "kind": "bank",
+      "frames": 1338,
+      "deaths": 0
+    },
+    {
+      "world": 18,
+      "id": "cl18-walk-1-4",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 29,
+      "deaths": 0
+    },
+    {
+      "world": 18,
+      "id": "cl18-walk-3-8",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 29,
+      "deaths": 0
+    },
+    {
+      "world": 18,
+      "id": "cl18-walk-4-30",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 377,
+      "deaths": 0
+    },
+    {
+      "world": 18,
+      "id": "cl18-walk-5-43",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 493,
+      "deaths": 0
+    },
+    {
+      "world": 19,
+      "id": "cl19-bank-b12",
+      "source": "bank-b12",
+      "kind": "bank",
+      "frames": 571,
+      "deaths": 0
+    },
+    {
+      "world": 19,
+      "id": "cl19-bank-b29",
+      "source": "bank-b29",
+      "kind": "bank",
+      "frames": 325,
+      "deaths": 0
+    },
+    {
+      "world": 19,
+      "id": "cl19-bank-b24",
+      "source": "bank-b24",
+      "kind": "bank",
+      "frames": 313,
+      "deaths": 0
+    },
+    {
+      "world": 19,
+      "id": "cl19-bank-b45",
+      "source": "bank-b45",
+      "kind": "bank",
+      "frames": 1202,
+      "deaths": 0
+    },
+    {
+      "world": 19,
+      "id": "cl19-walk-3-4",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 29,
+      "deaths": 0
+    },
+    {
+      "world": 20,
+      "id": "cl20-bank-b61",
+      "source": "bank-b61",
+      "kind": "bank",
+      "frames": 243,
+      "deaths": 0
+    },
+    {
+      "world": 20,
+      "id": "cl20-bank-f48",
+      "source": "bank-f48",
+      "kind": "bank",
+      "frames": 928,
+      "deaths": 0
+    },
+    {
+      "world": 20,
+      "id": "cl20-bank-b66",
+      "source": "bank-b66",
+      "kind": "bank",
+      "frames": 1904,
+      "deaths": 0
+    },
+    {
+      "world": 20,
+      "id": "cl20-walk-3-10",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 53,
+      "deaths": 0
+    },
+    {
+      "world": 20,
+      "id": "cl20-walk-6-11",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 77,
+      "deaths": 0
+    },
+    {
+      "world": 21,
+      "id": "cl21-bank-b56",
+      "source": "bank-b56",
+      "kind": "bank",
+      "frames": 242,
+      "deaths": 0
+    },
+    {
+      "world": 21,
+      "id": "cl21-bank-f40",
+      "source": "bank-f40",
+      "kind": "bank",
+      "frames": 430,
+      "deaths": 0
+    },
+    {
+      "world": 21,
+      "id": "cl21-bank-f63",
+      "source": "bank-f63",
+      "kind": "bank",
+      "frames": 667,
+      "deaths": 0
+    },
+    {
+      "world": 21,
+      "id": "cl21-fo21-torn",
+      "source": null,
+      "kind": "quiet passage",
+      "frames": 255,
+      "deaths": 0
+    },
+    {
+      "world": 21,
+      "id": "cl21-walk-3-15",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 89,
+      "deaths": 0
+    },
+    {
+      "world": 21,
+      "id": "cl21-walk-4-23",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 341,
+      "deaths": 0
+    },
+    {
+      "world": 21,
+      "id": "cl21-walk-5-42",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 520,
+      "deaths": 0
+    },
+    {
+      "world": 22,
+      "id": "cl22-fw22-oath3",
+      "source": null,
+      "kind": "quiet passage",
+      "frames": 243,
+      "deaths": 0
+    },
+    {
+      "world": 22,
+      "id": "cl22-bank-f17",
+      "source": "bank-f17",
+      "kind": "bank",
+      "frames": 602,
+      "deaths": 0
+    },
+    {
+      "world": 22,
+      "id": "cl22-bank-f26",
+      "source": "bank-f26",
+      "kind": "bank",
+      "frames": 130,
+      "deaths": 0
+    },
+    {
+      "world": 22,
+      "id": "cl22-bank-f68",
+      "source": "bank-f68",
+      "kind": "bank",
+      "frames": 585,
+      "deaths": 0
+    },
+    {
+      "world": 22,
+      "id": "cl22-walk-1-18",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 683,
+      "deaths": 0
+    },
+    {
+      "world": 22,
+      "id": "cl22-walk-2-21",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 64,
+      "deaths": 0
+    },
+    {
+      "world": 22,
+      "id": "cl22-walk-3-34",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 493,
+      "deaths": 0
+    },
+    {
+      "world": 22,
+      "id": "cl22-walk-4-43",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 173,
+      "deaths": 0
+    },
+    {
+      "world": 22,
+      "id": "cl22-walk-6-52",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 173,
+      "deaths": 0
+    },
+    {
+      "world": 23,
+      "id": "cl23-fc23-middle",
+      "source": null,
+      "kind": "quiet passage",
+      "frames": 97,
+      "deaths": 0
+    },
+    {
+      "world": 23,
+      "id": "cl23-bank-b46",
+      "source": "bank-b46",
+      "kind": "bank",
+      "frames": 97,
+      "deaths": 0
+    },
+    {
+      "world": 23,
+      "id": "cl23-bank-f23",
+      "source": "bank-f23",
+      "kind": "bank",
+      "frames": 354,
+      "deaths": 0
+    },
+    {
+      "world": 23,
+      "id": "cl23-bank-f69",
+      "source": "bank-f69",
+      "kind": "bank",
+      "frames": 1417,
+      "deaths": 0
+    },
+    {
+      "world": 23,
+      "id": "cl23-walk-6-9",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 173,
+      "deaths": 0
+    },
+    {
+      "world": 24,
+      "id": "cl24-bank-f59",
+      "source": "bank-f59",
+      "kind": "bank",
+      "frames": 343,
+      "deaths": 0
+    },
+    {
+      "world": 24,
+      "id": "cl24-bank-f60",
+      "source": "bank-f60",
+      "kind": "bank",
+      "frames": 676,
+      "deaths": 0
+    },
+    {
+      "world": 24,
+      "id": "cl24-bank-f50",
+      "source": "bank-f50",
+      "kind": "bank",
+      "frames": 977,
+      "deaths": 0
+    },
+    {
+      "world": 24,
+      "id": "cl24-walk-2-3",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 64,
+      "deaths": 0
+    },
+    {
+      "world": 24,
+      "id": "cl24-walk-3-6",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 64,
+      "deaths": 0
+    },
+    {
+      "world": 24,
+      "id": "cl24-walk-4-9",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 64,
+      "deaths": 0
+    },
+    {
+      "world": 24,
+      "id": "cl24-walk-5-11",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 227,
+      "deaths": 0
+    },
+    {
+      "world": 24,
+      "id": "cl24-walk-6-21",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 949,
+      "deaths": 0
+    },
+    {
+      "world": 24,
+      "id": "cl24-walk-6-23",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 473,
+      "deaths": 0
+    },
+    {
+      "world": 24,
+      "id": "cl24-walk-6-24",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 56,
+      "deaths": 0
+    },
+    {
+      "world": 25,
+      "id": "cl25-bank-f27",
+      "source": "bank-f27",
+      "kind": "bank",
+      "frames": 184,
+      "deaths": 0
+    },
+    {
+      "world": 25,
+      "id": "cl25-bank-f33",
+      "source": "bank-f33",
+      "kind": "bank",
+      "frames": 255,
+      "deaths": 0
+    },
+    {
+      "world": 25,
+      "id": "cl25-bank-f64",
+      "source": "bank-f64",
+      "kind": "bank",
+      "frames": 1588,
+      "deaths": 0
+    },
+    {
+      "world": 25,
+      "id": "cl25-walk-1-3",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 64,
+      "deaths": 0
+    },
+    {
+      "world": 25,
+      "id": "cl25-walk-2-6",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 64,
+      "deaths": 0
+    },
+    {
+      "world": 25,
+      "id": "cl25-walk-3-21",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 89,
+      "deaths": 0
+    },
+    {
+      "world": 25,
+      "id": "cl25-walk-4-31",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 53,
+      "deaths": 0
+    },
+    {
+      "world": 25,
+      "id": "cl25-walk-5-46",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 89,
+      "deaths": 0
+    },
+    {
+      "world": 26,
+      "id": "cl26-bank-b57",
+      "source": "bank-b57",
+      "kind": "bank",
+      "frames": 175,
+      "deaths": 0
+    },
+    {
+      "world": 26,
+      "id": "cl26-bank-f34",
+      "source": "bank-f34",
+      "kind": "bank",
+      "frames": 160,
+      "deaths": 0
+    },
+    {
+      "world": 26,
+      "id": "cl26-bank-b52",
+      "source": "bank-b52",
+      "kind": "bank",
+      "frames": 966,
+      "deaths": 0
+    },
+    {
+      "world": 26,
+      "id": "cl26-walk-1-10",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 53,
+      "deaths": 0
+    },
+    {
+      "world": 26,
+      "id": "cl26-walk-2-17",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 117,
+      "deaths": 0
+    },
+    {
+      "world": 26,
+      "id": "cl26-walk-3-44",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 537,
+      "deaths": 0
+    },
+    {
+      "world": 26,
+      "id": "cl26-walk-4-64",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 137,
+      "deaths": 0
+    },
+    {
+      "world": 27,
+      "id": "cl27-bank-f51",
+      "source": "bank-f51",
+      "kind": "bank",
+      "frames": 185,
+      "deaths": 0
+    },
+    {
+      "world": 27,
+      "id": "cl27-bank-f11",
+      "source": "bank-f11",
+      "kind": "bank",
+      "frames": 687,
+      "deaths": 0
+    },
+    {
+      "world": 27,
+      "id": "cl27-bank-f70",
+      "source": "bank-f70",
+      "kind": "bank",
+      "frames": 1315,
+      "deaths": 0
+    },
+    {
+      "world": 27,
+      "id": "cl27-walk-1-15",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 89,
+      "deaths": 0
+    },
+    {
+      "world": 27,
+      "id": "cl27-walk-2-17",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 227,
+      "deaths": 0
+    },
+    {
+      "world": 28,
+      "id": "cl28-bank-b51",
+      "source": "bank-b51",
+      "kind": "bank",
+      "frames": 332,
+      "deaths": 0
+    },
+    {
+      "world": 28,
+      "id": "cl28-bank-f18",
+      "source": "bank-f18",
+      "kind": "bank",
+      "frames": 225,
+      "deaths": 0
+    },
+    {
+      "world": 28,
+      "id": "cl28-bank-f71",
+      "source": "bank-f71",
+      "kind": "bank",
+      "frames": 1049,
+      "deaths": 0
+    },
+    {
+      "world": 28,
+      "id": "cl28-walk-1-15",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 89,
+      "deaths": 0
+    },
+    {
+      "world": 28,
+      "id": "cl28-walk-2-27",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 177,
+      "deaths": 0
+    },
+    {
+      "world": 28,
+      "id": "cl28-walk-3-30",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 64,
+      "deaths": 0
+    },
+    {
+      "world": 28,
+      "id": "cl28-walk-4-44",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 325,
+      "deaths": 0
+    },
+    {
+      "world": 28,
+      "id": "cl28-walk-5-45",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 227,
+      "deaths": 0
+    },
+    {
+      "world": 29,
+      "id": "cl29-bank-f14",
+      "source": "bank-f14",
+      "kind": "bank",
+      "frames": 277,
+      "deaths": 0
+    },
+    {
+      "world": 29,
+      "id": "cl29-bank-f15",
+      "source": "bank-f15",
+      "kind": "bank",
+      "frames": 587,
+      "deaths": 0
+    },
+    {
+      "world": 29,
+      "id": "cl29-bank-f65",
+      "source": "bank-f65",
+      "kind": "bank",
+      "frames": 1188,
+      "deaths": 0
+    },
+    {
+      "world": 29,
+      "id": "cl29-walk-1-13",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 493,
+      "deaths": 0
+    },
+    {
+      "world": 29,
+      "id": "cl29-walk-2-26",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 493,
+      "deaths": 0
+    },
+    {
+      "world": 29,
+      "id": "cl29-walk-3-29",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 64,
+      "deaths": 0
+    },
+    {
+      "world": 29,
+      "id": "cl29-walk-4-42",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 493,
+      "deaths": 0
+    },
+    {
+      "world": 29,
+      "id": "cl29-walk-6-52",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 149,
+      "deaths": 0
+    },
+    {
+      "world": 29,
+      "id": "cl29-walk-6-54",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 473,
+      "deaths": 0
+    },
+    {
+      "world": 29,
+      "id": "cl29-walk-6-56",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 92,
+      "deaths": 0
+    },
+    {
+      "world": 30,
+      "id": "cl30-bank-f36",
+      "source": "bank-f36",
+      "kind": "bank",
+      "frames": 259,
+      "deaths": 0
+    },
+    {
+      "world": 30,
+      "id": "cl30-bank-f43",
+      "source": "bank-f43",
+      "kind": "bank",
+      "frames": 308,
+      "deaths": 0
+    },
+    {
+      "world": 30,
+      "id": "cl30-bank-f72",
+      "source": "bank-f72",
+      "kind": "bank",
+      "frames": 841,
+      "deaths": 0
+    },
+    {
+      "world": 30,
+      "id": "cl30-walk-1-13",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 493,
+      "deaths": 0
+    },
+    {
+      "world": 30,
+      "id": "cl30-walk-2-26",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 493,
+      "deaths": 0
+    },
+    {
+      "world": 30,
+      "id": "cl30-walk-3-48",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 377,
+      "deaths": 0
+    },
+    {
+      "world": 30,
+      "id": "cl30-walk-4-68",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 137,
+      "deaths": 0
+    },
+    {
+      "world": 30,
+      "id": "cl30-walk-5-83",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 89,
+      "deaths": 0
+    },
+    {
+      "world": 31,
+      "id": "cl31-bank-f42",
+      "source": "bank-f42",
+      "kind": "bank",
+      "frames": 154,
+      "deaths": 0
+    },
+    {
+      "world": 31,
+      "id": "cl31-bank-f24",
+      "source": "bank-f24",
+      "kind": "bank",
+      "frames": 89,
+      "deaths": 0
+    },
+    {
+      "world": 31,
+      "id": "cl31-bank-f73",
+      "source": "bank-f73",
+      "kind": "bank",
+      "frames": 1743,
+      "deaths": 0
+    },
+    {
+      "world": 31,
+      "id": "cl31-walk-1-3",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 64,
+      "deaths": 0
+    },
+    {
+      "world": 31,
+      "id": "cl31-walk-2-6",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 64,
+      "deaths": 0
+    },
+    {
+      "world": 31,
+      "id": "cl31-walk-3-19",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 493,
+      "deaths": 0
+    },
+    {
+      "world": 31,
+      "id": "cl31-walk-4-37",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 683,
+      "deaths": 0
+    },
+    {
+      "world": 31,
+      "id": "cl31-walk-5-45",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 341,
+      "deaths": 0
+    },
+    {
+      "world": 32,
+      "id": "cl32-bank-f52",
+      "source": "bank-f52",
+      "kind": "bank",
+      "frames": 238,
+      "deaths": 0
+    },
+    {
+      "world": 32,
+      "id": "cl32-bank-f12",
+      "source": "bank-f12",
+      "kind": "bank",
+      "frames": 672,
+      "deaths": 0
+    },
+    {
+      "world": 32,
+      "id": "cl32-bank-f49",
+      "source": "bank-f49",
+      "kind": "bank",
+      "frames": 890,
+      "deaths": 0
+    },
+    {
+      "world": 32,
+      "id": "cl32-walk-1-10",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 53,
+      "deaths": 0
+    },
+    {
+      "world": 32,
+      "id": "cl32-walk-2-20",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 53,
+      "deaths": 0
+    },
+    {
+      "world": 32,
+      "id": "cl32-walk-3-30",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 53,
+      "deaths": 0
+    },
+    {
+      "world": 32,
+      "id": "cl32-walk-5-50",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 137,
+      "deaths": 0
+    },
+    {
+      "world": 33,
+      "id": "cl33-bank-f13",
+      "source": "bank-f13",
+      "kind": "bank",
+      "frames": 370,
+      "deaths": 0
+    },
+    {
+      "world": 33,
+      "id": "cl33-bank-f31",
+      "source": "bank-f31",
+      "kind": "bank",
+      "frames": 153,
+      "deaths": 0
+    },
+    {
+      "world": 33,
+      "id": "cl33-bank-f74",
+      "source": "bank-f74",
+      "kind": "bank",
+      "frames": 722,
+      "deaths": 0
+    },
+    {
+      "world": 33,
+      "id": "cl33-walk-1-15",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 89,
+      "deaths": 0
+    },
+    {
+      "world": 33,
+      "id": "cl33-walk-2-40",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 209,
+      "deaths": 0
+    },
+    {
+      "world": 33,
+      "id": "cl33-walk-3-55",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 89,
+      "deaths": 0
+    },
+    {
+      "world": 33,
+      "id": "cl33-walk-4-67",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 177,
+      "deaths": 0
+    },
+    {
+      "world": 33,
+      "id": "cl33-walk-5-71",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 29,
+      "deaths": 0
+    },
+    {
+      "world": 34,
+      "id": "cl34-bank-f30",
+      "source": "bank-f30",
+      "kind": "bank",
+      "frames": 307,
+      "deaths": 0
+    },
+    {
+      "world": 34,
+      "id": "cl34-bank-f19",
+      "source": "bank-f19",
+      "kind": "bank",
+      "frames": 316,
+      "deaths": 0
+    },
+    {
+      "world": 34,
+      "id": "cl34-bank-f75",
+      "source": "bank-f75",
+      "kind": "bank",
+      "frames": 944,
+      "deaths": 0
+    },
+    {
+      "world": 35,
+      "id": "cl35-bank-f16",
+      "source": "bank-f16",
+      "kind": "bank",
+      "frames": 215,
+      "deaths": 0
+    },
+    {
+      "world": 35,
+      "id": "cl35-bank-f25",
+      "source": "bank-f25",
+      "kind": "bank",
+      "frames": 416,
+      "deaths": 0
+    },
+    {
+      "world": 35,
+      "id": "cl35-bank-f45",
+      "source": "bank-f45",
+      "kind": "bank",
+      "frames": 600,
+      "deaths": 0
+    },
+    {
+      "world": 35,
+      "id": "cl35-walk-1-2",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 227,
+      "deaths": 0
+    },
+    {
+      "world": 35,
+      "id": "cl35-walk-2-15",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 493,
+      "deaths": 0
+    },
+    {
+      "world": 36,
+      "id": "cl36-bank-b54",
+      "source": "bank-b54",
+      "kind": "bank",
+      "frames": 177,
+      "deaths": 0
+    },
+    {
+      "world": 36,
+      "id": "cl36-bank-b55",
+      "source": "bank-b55",
+      "kind": "bank",
+      "frames": 229,
+      "deaths": 0
+    },
+    {
+      "world": 36,
+      "id": "cl36-bank-f76",
+      "source": "bank-f76",
+      "kind": "bank",
+      "frames": 1196,
+      "deaths": 0
+    },
+    {
+      "world": 36,
+      "id": "cl36-walk-5-3",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 64,
+      "deaths": 0
+    },
+    {
+      "world": 37,
+      "id": "cl37-bank-f55",
+      "source": "bank-f55",
+      "kind": "bank",
+      "frames": 129,
+      "deaths": 0
+    },
+    {
+      "world": 37,
+      "id": "cl37-bank-f56",
+      "source": "bank-f56",
+      "kind": "bank",
+      "frames": 394,
+      "deaths": 0
+    },
+    {
+      "world": 37,
+      "id": "cl37-bank-f66",
+      "source": "bank-f66",
+      "kind": "bank",
+      "frames": 1563,
+      "deaths": 0
+    },
+    {
+      "world": 37,
+      "id": "cl37-walk-1-20",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 137,
+      "deaths": 0
+    },
+    {
+      "world": 37,
+      "id": "cl37-walk-2-42",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 377,
+      "deaths": 0
+    },
+    {
+      "world": 37,
+      "id": "cl37-walk-3-52",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 53,
+      "deaths": 0
+    },
+    {
+      "world": 37,
+      "id": "cl37-walk-5-77",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 209,
+      "deaths": 0
+    },
+    {
+      "world": 38,
+      "id": "cl38-bank-b40",
+      "source": "bank-b40",
+      "kind": "bank",
+      "frames": 162,
+      "deaths": 0
+    },
+    {
+      "world": 38,
+      "id": "cl38-bank-f58",
+      "source": "bank-f58",
+      "kind": "bank",
+      "frames": 382,
+      "deaths": 0
+    },
+    {
+      "world": 38,
+      "id": "cl38-bank-f46",
+      "source": "bank-f46",
+      "kind": "bank",
+      "frames": 592,
+      "deaths": 0
+    },
+    {
+      "world": 39,
+      "id": "cl39-bank-f28",
+      "source": "bank-f28",
+      "kind": "bank",
+      "frames": 189,
+      "deaths": 0
+    },
+    {
+      "world": 39,
+      "id": "cl39-bank-f61",
+      "source": "bank-f61",
+      "kind": "bank",
+      "frames": 143,
+      "deaths": 0
+    },
+    {
+      "world": 39,
+      "id": "cl39-bank-f77",
+      "source": "bank-f77",
+      "kind": "bank",
+      "frames": 1195,
+      "deaths": 0
+    },
+    {
+      "world": 40,
+      "id": "cl40-bank-f32",
+      "source": "bank-f32",
+      "kind": "bank",
+      "frames": 301,
+      "deaths": 0
+    },
+    {
+      "world": 40,
+      "id": "cl40-bank-f57",
+      "source": "bank-f57",
+      "kind": "bank",
+      "frames": 295,
+      "deaths": 0
+    },
+    {
+      "world": 40,
+      "id": "cl40-bank-f67",
+      "source": "bank-f67",
+      "kind": "bank",
+      "frames": 1015,
+      "deaths": 0
+    },
+    {
+      "world": 40,
+      "id": "cl40-walk-1-15",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 89,
+      "deaths": 0
+    },
+    {
+      "world": 40,
+      "id": "cl40-walk-2-32",
+      "source": null,
+      "kind": "connecting road",
+      "frames": 257,
+      "deaths": 0
+    }
+  ],
+  "seams": [
+    {
+      "world": 1,
+      "from": "cl1-o1-flowers",
+      "to": "cl1-bank-b21",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          4,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 300,
+      "frames": 4,
+      "atFire": true
+    },
+    {
+      "world": 1,
+      "from": "cl1-bank-b21",
+      "to": "cl1-o1-camp",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 602,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 1,
+      "from": "cl1-o1-cracked",
+      "to": "cl1-bank-b22",
+      "how": "right tunnel (24 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          47,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 172,
+      "frames": 47,
+      "atFire": true
+    },
+    {
+      "world": 1,
+      "from": "cl1-bank-b22",
+      "to": "cl1-o1-mile",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          4,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 369,
+      "frames": 4,
+      "atFire": true
+    },
+    {
+      "world": 1,
+      "from": "cl1-o1-gate",
+      "to": "cl1-bank-b62",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          15,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 199,
+      "frames": 15,
+      "atFire": true
+    },
+    {
+      "world": 2,
+      "from": "cl2-w2-kitchen",
+      "to": "cl2-bank-f22",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 198,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 2,
+      "from": "cl2-bank-f22",
+      "to": "cl2-walk-2-10",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 843,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 2,
+      "from": "cl2-walk-2-10",
+      "to": "cl2-w2-edge",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          51,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 53,
+      "frames": 51,
+      "atFire": true
+    },
+    {
+      "world": 2,
+      "from": "cl2-w2-mirror",
+      "to": "cl2-bank-b23",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 175,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 2,
+      "from": "cl2-bank-b23",
+      "to": "cl2-w2-rootbound",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 338,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 2,
+      "from": "cl2-w2-rootbound",
+      "to": "cl2-bank-b67",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          15,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 179,
+      "frames": 15,
+      "atFire": true
+    },
+    {
+      "world": 3,
+      "from": "cl3-c3-camp",
+      "to": "cl3-bank-b39",
+      "how": "right tunnel (3 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          59,
+          "rgu"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 195,
+      "frames": 59,
+      "atFire": true
+    },
+    {
+      "world": 3,
+      "from": "cl3-bank-b39",
+      "to": "cl3-c3-hoist",
+      "how": "right tunnel (3 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 181,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 3,
+      "from": "cl3-c3-well",
+      "to": "cl3-walk-3-3",
+      "how": "right tunnel (2 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 293,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 3,
+      "from": "cl3-walk-3-3",
+      "to": "cl3-bank-b11",
+      "how": "up shaft at 3–4 (10 rock)",
+      "kind": "walk",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          70,
+          "lgu"
+        ],
+        [
+          16,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 64,
+      "frames": 86,
+      "atFire": true
+    },
+    {
+      "world": 3,
+      "from": "cl3-bank-b11",
+      "to": "cl3-walk-4-16",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 614,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 3,
+      "from": "cl3-walk-4-16",
+      "to": "cl3-c3-road",
+      "how": "right tunnel (0 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          15,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 493,
+      "frames": 15,
+      "atFire": true
+    },
+    {
+      "world": 3,
+      "from": "cl3-c3-brace",
+      "to": "cl3-bank-b68",
+      "how": "right tunnel (3 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          47,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 238,
+      "frames": 47,
+      "atFire": true
+    },
+    {
+      "world": 4,
+      "from": "cl4-u4-needle",
+      "to": "cl4-bank-b38",
+      "how": "right tunnel (5 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          25,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 102,
+      "frames": 25,
+      "atFire": true
+    },
+    {
+      "world": 4,
+      "from": "cl4-bank-b38",
+      "to": "cl4-u4-eye",
+      "how": "right tunnel (8 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 353,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 4,
+      "from": "cl4-u4-span",
+      "to": "cl4-bank-b15",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          4,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 200,
+      "frames": 4,
+      "atFire": true
+    },
+    {
+      "world": 4,
+      "from": "cl4-bank-b15",
+      "to": "cl4-u4-crown",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 198,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 4,
+      "from": "cl4-u4-crown",
+      "to": "cl4-bank-b63",
+      "how": "up shaft at 3–4 (6 rock)",
+      "kind": "direct",
+      "entryDelta": 8.94427190999916,
+      "toFire": [
+        [
+          20,
+          "rj"
+        ],
+        [
+          6,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 151,
+      "frames": 26,
+      "atFire": true
+    },
+    {
+      "world": 5,
+      "from": "cl5-m5-road",
+      "to": "cl5-bank-b27",
+      "how": "right tunnel (3 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          47,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 277,
+      "frames": 47,
+      "atFire": true
+    },
+    {
+      "world": 5,
+      "from": "cl5-bank-b27",
+      "to": "cl5-m5-post",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 205,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 5,
+      "from": "cl5-m5-works",
+      "to": "cl5-walk-3-11",
+      "how": "right tunnel (2 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          4,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 231,
+      "frames": 4,
+      "atFire": true
+    },
+    {
+      "world": 5,
+      "from": "cl5-walk-3-11",
+      "to": "cl5-bank-b31",
+      "how": "right tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          15,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 76,
+      "frames": 15,
+      "atFire": true
+    },
+    {
+      "world": 5,
+      "from": "cl5-bank-b31",
+      "to": "cl5-walk-4-14",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 303,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 5,
+      "from": "cl5-walk-4-14",
+      "to": "cl5-m5-release",
+      "how": "up shaft at 3–4 (10 rock)",
+      "kind": "walk",
+      "entryDelta": 8.54400374531753,
+      "toFire": [
+        [
+          70,
+          "lgu"
+        ],
+        [
+          5,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 64,
+      "frames": 75,
+      "atFire": true
+    },
+    {
+      "world": 5,
+      "from": "cl5-m5-tiers",
+      "to": "cl5-bank-b69",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          15,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 1038,
+      "frames": 15,
+      "atFire": true
+    },
+    {
+      "world": 6,
+      "from": "cl6-k6-cradle",
+      "to": "cl6-bank-b50",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          20,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 258,
+      "frames": 20,
+      "atFire": true
+    },
+    {
+      "world": 6,
+      "from": "cl6-bank-b50",
+      "to": "cl6-k6-quarter",
+      "how": "right tunnel (7 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          4,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 196,
+      "frames": 4,
+      "atFire": true
+    },
+    {
+      "world": 6,
+      "from": "cl6-k6-belfry",
+      "to": "cl6-bank-f20",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 230,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 6,
+      "from": "cl6-bank-f20",
+      "to": "cl6-walk-4-9",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 549,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 6,
+      "from": "cl6-walk-4-9",
+      "to": "cl6-k6-loft",
+      "how": "up shaft at 3–4 (10 rock)",
+      "kind": "walk",
+      "entryDelta": 8.54400374531753,
+      "toFire": [
+        [
+          70,
+          "lgu"
+        ],
+        [
+          7,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 173,
+      "frames": 77,
+      "atFire": true
+    },
+    {
+      "world": 6,
+      "from": "cl6-k6-arch",
+      "to": "cl6-bank-b64",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          46,
+          "rgu"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 741,
+      "frames": 46,
+      "atFire": true
+    },
+    {
+      "world": 7,
+      "from": "cl7-g7-gallery",
+      "to": "cl7-walk-1-4",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 197,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 7,
+      "from": "cl7-walk-1-4",
+      "to": "cl7-bank-b20",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          60,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 29,
+      "frames": 60,
+      "atFire": true
+    },
+    {
+      "world": 7,
+      "from": "cl7-bank-b20",
+      "to": "cl7-walk-2-8",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 591,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 7,
+      "from": "cl7-walk-2-8",
+      "to": "cl7-bank-f47",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          54,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 29,
+      "frames": 54,
+      "atFire": true
+    },
+    {
+      "world": 7,
+      "from": "cl7-bank-f47",
+      "to": "cl7-walk-3-28",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 257,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 7,
+      "from": "cl7-walk-3-28",
+      "to": "cl7-g7-door",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          51,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 137,
+      "frames": 51,
+      "atFire": true
+    },
+    {
+      "world": 7,
+      "from": "cl7-g7-engine",
+      "to": "cl7-walk-4-35",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 239,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 7,
+      "from": "cl7-walk-4-35",
+      "to": "cl7-g7-cells",
+      "how": "left tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          10,
+          "l"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 117,
+      "frames": 10,
+      "atFire": true
+    },
+    {
+      "world": 7,
+      "from": "cl7-g7-well",
+      "to": "cl7-bank-b70",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          84,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 408,
+      "frames": 84,
+      "atFire": true
+    },
+    {
+      "world": 8,
+      "from": "cl8-f8-hearth",
+      "to": "cl8-bank-f21",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 165,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 8,
+      "from": "cl8-bank-f21",
+      "to": "cl8-f8-works",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 461,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 8,
+      "from": "cl8-f8-court",
+      "to": "cl8-bank-b16",
+      "how": "right tunnel (5 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          4,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 194,
+      "frames": 4,
+      "atFire": true
+    },
+    {
+      "world": 8,
+      "from": "cl8-bank-b16",
+      "to": "cl8-f8-rehearsal",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 688,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 8,
+      "from": "cl8-f8-galleries",
+      "to": "cl8-bank-b33",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 226,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 8,
+      "from": "cl8-bank-b33",
+      "to": "cl8-f8-landings",
+      "how": "right tunnel (7 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 156,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 8,
+      "from": "cl8-f8-crown",
+      "to": "cl8-bank-b53",
+      "how": "up shaft at 10–11 (4 rock)",
+      "kind": "direct",
+      "entryDelta": 8.94427190999916,
+      "toFire": [
+        [
+          47,
+          "lgu"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 114,
+      "frames": 47,
+      "atFire": true
+    },
+    {
+      "world": 9,
+      "from": "cl9-s9-refuge",
+      "to": "cl9-bank-b26",
+      "how": "right tunnel (22 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          25,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 314,
+      "frames": 25,
+      "atFire": true
+    },
+    {
+      "world": 9,
+      "from": "cl9-bank-b26",
+      "to": "cl9-s9-court",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 509,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 9,
+      "from": "cl9-s9-gallery",
+      "to": "cl9-bank-b34",
+      "how": "right tunnel (3 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          57,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 360,
+      "frames": 57,
+      "atFire": true
+    },
+    {
+      "world": 9,
+      "from": "cl9-bank-b34",
+      "to": "cl9-s9-overlook",
+      "how": "right tunnel (7 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          4,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 179,
+      "frames": 4,
+      "atFire": true
+    },
+    {
+      "world": 9,
+      "from": "cl9-s9-gglass",
+      "to": "cl9-bank-b71",
+      "how": "right tunnel (3 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          57,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 334,
+      "frames": 57,
+      "atFire": true
+    },
+    {
+      "world": 10,
+      "from": "cl10-e10-draw",
+      "to": "cl10-bank-b25",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          10,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 274,
+      "frames": 75,
+      "atFire": true
+    },
+    {
+      "world": 10,
+      "from": "cl10-bank-b25",
+      "to": "cl10-walk-2-22",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 648,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 10,
+      "from": "cl10-walk-2-22",
+      "to": "cl10-e10-schedule",
+      "how": "right tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          4,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 377,
+      "frames": 69,
+      "atFire": true
+    },
+    {
+      "world": 10,
+      "from": "cl10-e10-ledger",
+      "to": "cl10-bank-b18",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          10,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 316,
+      "frames": 75,
+      "atFire": true
+    },
+    {
+      "world": 10,
+      "from": "cl10-bank-b18",
+      "to": "cl10-e10-moulds",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          10,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 1138,
+      "frames": 75,
+      "atFire": true
+    },
+    {
+      "world": 10,
+      "from": "cl10-e10-stair",
+      "to": "cl10-walk-5-32",
+      "how": "down through the ceiling (0 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          8,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 284,
+      "frames": 8,
+      "atFire": true
+    },
+    {
+      "world": 10,
+      "from": "cl10-walk-5-32",
+      "to": "cl10-walk-5-34",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 149,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 10,
+      "from": "cl10-walk-5-34",
+      "to": "cl10-walk-5-36",
+      "how": "down through the ceiling (0 rock)",
+      "kind": "walk",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          6,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 473,
+      "frames": 6,
+      "atFire": true
+    },
+    {
+      "world": 10,
+      "from": "cl10-walk-5-36",
+      "to": "cl10-bank-b72",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          21,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 92,
+      "frames": 21,
+      "atFire": true
+    },
+    {
+      "world": 11,
+      "from": "cl11-f11-hall",
+      "to": "cl11-bank-b35",
+      "how": "right tunnel (3 rock) with a retracting entry ledge",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          79,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 336,
+      "frames": 79,
+      "atFire": true
+    },
+    {
+      "world": 11,
+      "from": "cl11-bank-b35",
+      "to": "cl11-f11-crane",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          35,
+          "rgu"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 349,
+      "frames": 35,
+      "atFire": true
+    },
+    {
+      "world": 11,
+      "from": "cl11-f11-crane",
+      "to": "cl11-bank-b13",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          4,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 153,
+      "frames": 4,
+      "atFire": true
+    },
+    {
+      "world": 11,
+      "from": "cl11-bank-b13",
+      "to": "cl11-f11-heap",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 596,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 11,
+      "from": "cl11-f11-feeder",
+      "to": "cl11-bank-b30",
+      "how": "right tunnel (5 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 242,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 11,
+      "from": "cl11-bank-b30",
+      "to": "cl11-f11-look",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 179,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 11,
+      "from": "cl11-f11-bed",
+      "to": "cl11-walk-7-25",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 396,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 11,
+      "from": "cl11-walk-7-25",
+      "to": "cl11-bank-b65",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          84,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 209,
+      "frames": 84,
+      "atFire": true
+    },
+    {
+      "world": 12,
+      "from": "cl12-i12-fall",
+      "to": "cl12-bank-b05",
+      "how": "right tunnel (5 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          4,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 167,
+      "frames": 4,
+      "atFire": true
+    },
+    {
+      "world": 12,
+      "from": "cl12-bank-b05",
+      "to": "cl12-i12-reversal",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 205,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 12,
+      "from": "cl12-i12-landing",
+      "to": "cl12-bank-b14",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          7,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 137,
+      "frames": 7,
+      "atFire": true
+    },
+    {
+      "world": 12,
+      "from": "cl12-bank-b14",
+      "to": "cl12-i12-court",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 512,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 12,
+      "from": "cl12-i12-divide",
+      "to": "cl12-bank-b17",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          16,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 146,
+      "frames": 16,
+      "atFire": true
+    },
+    {
+      "world": 12,
+      "from": "cl12-bank-b17",
+      "to": "cl12-i12-glass",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 803,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 12,
+      "from": "cl12-i12-fissure",
+      "to": "cl12-walk-7-9",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          16,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 146,
+      "frames": 16,
+      "atFire": true
+    },
+    {
+      "world": 12,
+      "from": "cl12-walk-7-9",
+      "to": "cl12-bank-b49",
+      "how": "up shaft at 15–16 (6 rock)",
+      "kind": "walk",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          70,
+          "rgu"
+        ],
+        [
+          26,
+          "l"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 173,
+      "frames": 96,
+      "atFire": true
+    },
+    {
+      "world": 13,
+      "from": "cl13-v13-tears",
+      "to": "cl13-walk-1-15",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 86,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 13,
+      "from": "cl13-walk-1-15",
+      "to": "cl13-bank-b59",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          21,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 89,
+      "frames": 21,
+      "atFire": true
+    },
+    {
+      "world": 13,
+      "from": "cl13-bank-b59",
+      "to": "cl13-v13-broken",
+      "how": "right tunnel (7 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          10,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 524,
+      "frames": 75,
+      "atFire": true
+    },
+    {
+      "world": 13,
+      "from": "cl13-v13-high",
+      "to": "cl13-walk-3-19",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 182,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 13,
+      "from": "cl13-walk-3-19",
+      "to": "cl13-bank-b58",
+      "how": "down through the ceiling (26 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          60,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 29,
+      "frames": 60,
+      "atFire": true
+    },
+    {
+      "world": 13,
+      "from": "cl13-bank-b58",
+      "to": "cl13-walk-4-23",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 591,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 13,
+      "from": "cl13-walk-4-23",
+      "to": "cl13-v13-low",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          51,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 29,
+      "frames": 51,
+      "atFire": true
+    },
+    {
+      "world": 13,
+      "from": "cl13-v13-middle",
+      "to": "cl13-walk-5-27",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 944,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 13,
+      "from": "cl13-walk-5-27",
+      "to": "cl13-bank-b73",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          90,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 29,
+      "frames": 90,
+      "atFire": true
+    },
+    {
+      "world": 14,
+      "from": "cl14-k14-echo",
+      "to": "cl14-walk-1-4",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 180,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 14,
+      "from": "cl14-walk-1-4",
+      "to": "cl14-bank-b19",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          57,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 29,
+      "frames": 57,
+      "atFire": true
+    },
+    {
+      "world": 14,
+      "from": "cl14-bank-b19",
+      "to": "cl14-walk-2-11",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 576,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 14,
+      "from": "cl14-walk-2-11",
+      "to": "cl14-k14-return",
+      "how": "right tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          10,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 117,
+      "frames": 75,
+      "atFire": true
+    },
+    {
+      "world": 14,
+      "from": "cl14-k14-climb",
+      "to": "cl14-walk-3-24",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 184,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 14,
+      "from": "cl14-walk-3-24",
+      "to": "cl14-bank-f41",
+      "how": "left tunnel (24 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          12,
+          "lx"
+        ],
+        [
+          21,
+          "l"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 493,
+      "frames": 33,
+      "atFire": true
+    },
+    {
+      "world": 14,
+      "from": "cl14-bank-f41",
+      "to": "cl14-walk-4-33",
+      "how": "left tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 180,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 14,
+      "from": "cl14-walk-4-33",
+      "to": "cl14-k14-bellkeeper",
+      "how": "up shaft at 1–2 (10 rock)",
+      "kind": "walk",
+      "entryDelta": 8.54400374531753,
+      "toFire": [
+        [
+          70,
+          "lgu"
+        ],
+        [
+          13,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 173,
+      "frames": 83,
+      "atFire": true
+    },
+    {
+      "world": 14,
+      "from": "cl14-k14-bellkeeper",
+      "to": "cl14-bank-f39",
+      "how": "right tunnel (5 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          15,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 148,
+      "frames": 80,
+      "atFire": true
+    },
+    {
+      "world": 14,
+      "from": "cl14-bank-f39",
+      "to": "cl14-k14-throne",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          10,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 376,
+      "frames": 75,
+      "atFire": true
+    },
+    {
+      "world": 14,
+      "from": "cl14-k14-throne",
+      "to": "cl14-bank-b74",
+      "how": "right tunnel (3 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          79,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 258,
+      "frames": 79,
+      "atFire": true
+    },
+    {
+      "world": 14,
+      "from": "cl14-bank-b74",
+      "to": "cl14-walk-8-37",
+      "how": "down through the ceiling (0 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          7,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 1001,
+      "frames": 7,
+      "atFire": true
+    },
+    {
+      "world": 14,
+      "from": "cl14-walk-8-37",
+      "to": "cl14-k14-rail",
+      "how": "right tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          10,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 249,
+      "frames": 75,
+      "atFire": true
+    },
+    {
+      "world": 15,
+      "from": "cl15-d15-backup",
+      "to": "cl15-bank-b37",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          16,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 105,
+      "frames": 16,
+      "atFire": true
+    },
+    {
+      "world": 15,
+      "from": "cl15-bank-b37",
+      "to": "cl15-d15-high",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 175,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 15,
+      "from": "cl15-d15-fork",
+      "to": "cl15-bank-f37",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          17,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 150,
+      "frames": 17,
+      "atFire": true
+    },
+    {
+      "world": 15,
+      "from": "cl15-bank-f37",
+      "to": "cl15-conn-11",
+      "how": "right tunnel (1 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 257,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 15,
+      "from": "cl15-conn-11",
+      "to": "cl15-d15-tally",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "direct",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          54,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 154,
+      "frames": 54,
+      "atFire": true
+    },
+    {
+      "world": 15,
+      "from": "cl15-d15-bell",
+      "to": "cl15-walk-6-10",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 144,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 15,
+      "from": "cl15-walk-6-10",
+      "to": "cl15-bank-f44",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          45,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 53,
+      "frames": 45,
+      "atFire": true
+    },
+    {
+      "world": 15,
+      "from": "cl15-bank-f44",
+      "to": "cl15-walk-7-20",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 260,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 15,
+      "from": "cl15-walk-7-20",
+      "to": "cl15-d15-speed",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          42,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 53,
+      "frames": 42,
+      "atFire": true
+    },
+    {
+      "world": 15,
+      "from": "cl15-d15-boat",
+      "to": "cl15-walk-8-35",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 161,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 15,
+      "from": "cl15-walk-8-35",
+      "to": "cl15-bank-b48",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          78,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 89,
+      "frames": 78,
+      "atFire": true
+    },
+    {
+      "world": 16,
+      "from": "cl16-t16-deck-ring",
+      "to": "cl16-bank-b41",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          15,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 162,
+      "frames": 80,
+      "atFire": true
+    },
+    {
+      "world": 16,
+      "from": "cl16-bank-b41",
+      "to": "cl16-t16-seam",
+      "how": "right tunnel (7 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          10,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 305,
+      "frames": 75,
+      "atFire": true
+    },
+    {
+      "world": 16,
+      "from": "cl16-t16-long",
+      "to": "cl16-bank-b43",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          26,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 303,
+      "frames": 91,
+      "atFire": true
+    },
+    {
+      "world": 16,
+      "from": "cl16-bank-b43",
+      "to": "cl16-t16-return",
+      "how": "right tunnel (5 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          10,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 364,
+      "frames": 75,
+      "atFire": true
+    },
+    {
+      "world": 16,
+      "from": "cl16-t16-tide-head",
+      "to": "cl16-bank-b75",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          27,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 267,
+      "frames": 92,
+      "atFire": true
+    },
+    {
+      "world": 16,
+      "from": "cl16-bank-b75",
+      "to": "cl16-walk-6-4",
+      "how": "down through the ceiling (0 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          7,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 814,
+      "frames": 7,
+      "atFire": true
+    },
+    {
+      "world": 16,
+      "from": "cl16-walk-6-4",
+      "to": "cl16-t16-tide",
+      "how": "right tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          10,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 249,
+      "frames": 75,
+      "atFire": true
+    },
+    {
+      "world": 17,
+      "from": "cl17-s17-spring",
+      "to": "cl17-bank-f35",
+      "how": "right tunnel (3 rock) with a retracting entry ledge",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          41,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 168,
+      "frames": 41,
+      "atFire": true
+    },
+    {
+      "world": 17,
+      "from": "cl17-bank-f35",
+      "to": "cl17-s17-line",
+      "how": "right tunnel (7 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          10,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 218,
+      "frames": 75,
+      "atFire": true
+    },
+    {
+      "world": 17,
+      "from": "cl17-s17-tern",
+      "to": "cl17-bank-b32",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          15,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 295,
+      "frames": 80,
+      "atFire": true
+    },
+    {
+      "world": 17,
+      "from": "cl17-bank-b32",
+      "to": "cl17-s17-porch",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          10,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 151,
+      "frames": 75,
+      "atFire": true
+    },
+    {
+      "world": 17,
+      "from": "cl17-s17-mooring",
+      "to": "cl17-walk-5-15",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 226,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 17,
+      "from": "cl17-walk-5-15",
+      "to": "cl17-bank-b36",
+      "how": "down through the ceiling (30 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          57,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 89,
+      "frames": 57,
+      "atFire": true
+    },
+    {
+      "world": 17,
+      "from": "cl17-bank-b36",
+      "to": "cl17-s17-belled",
+      "how": "right tunnel (18 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          26,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 132,
+      "frames": 91,
+      "atFire": true
+    },
+    {
+      "world": 17,
+      "from": "cl17-s17-landfall",
+      "to": "cl17-bank-b76",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          12,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 193,
+      "frames": 77,
+      "atFire": true
+    },
+    {
+      "world": 18,
+      "from": "cl18-c18-glance",
+      "to": "cl18-walk-1-4",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 159,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 18,
+      "from": "cl18-walk-1-4",
+      "to": "cl18-bank-f38",
+      "how": "down through the ceiling (4 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          42,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 29,
+      "frames": 42,
+      "atFire": true
+    },
+    {
+      "world": 18,
+      "from": "cl18-bank-f38",
+      "to": "cl18-c18-lantern",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 429,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 18,
+      "from": "cl18-c18-fling",
+      "to": "cl18-walk-3-8",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 261,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 18,
+      "from": "cl18-walk-3-8",
+      "to": "cl18-bank-b42",
+      "how": "down through the ceiling (4 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          42,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 29,
+      "frames": 42,
+      "atFire": true
+    },
+    {
+      "world": 18,
+      "from": "cl18-bank-b42",
+      "to": "cl18-walk-4-30",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 469,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 18,
+      "from": "cl18-walk-4-30",
+      "to": "cl18-c18-release",
+      "how": "right tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 377,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 18,
+      "from": "cl18-c18-watch",
+      "to": "cl18-walk-5-43",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 149,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 18,
+      "from": "cl18-walk-5-43",
+      "to": "cl18-bank-b44",
+      "how": "right tunnel (3 rock) with a retracting entry ledge",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          68,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 493,
+      "frames": 68,
+      "atFire": true
+    },
+    {
+      "world": 19,
+      "from": "cl19-p19-beat",
+      "to": "cl19-bank-b24",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 234,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 19,
+      "from": "cl19-bank-b24",
+      "to": "cl19-p19-throw",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 313,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 19,
+      "from": "cl19-p19-throw",
+      "to": "cl19-walk-3-4",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 271,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 19,
+      "from": "cl19-walk-3-4",
+      "to": "cl19-bank-b12",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          57,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 29,
+      "frames": 57,
+      "atFire": true
+    },
+    {
+      "world": 19,
+      "from": "cl19-bank-b12",
+      "to": "cl19-p19-shade",
+      "how": "right tunnel (6 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 571,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 19,
+      "from": "cl19-p19-shade",
+      "to": "cl19-bank-b29",
+      "how": "right tunnel (12 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          36,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 189,
+      "frames": 36,
+      "atFire": true
+    },
+    {
+      "world": 19,
+      "from": "cl19-bank-b29",
+      "to": "cl19-p19-gate",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 325,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 19,
+      "from": "cl19-p19-gate",
+      "to": "cl19-bank-b45",
+      "how": "right tunnel at row 38 (3 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          70,
+          "rgu"
+        ],
+        [
+          20,
+          "l"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 174,
+      "frames": 90,
+      "atFire": true
+    },
+    {
+      "world": 20,
+      "from": "cl20-s20-glass",
+      "to": "cl20-bank-b61",
+      "how": "right tunnel (30 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          70,
+          "rgu"
+        ],
+        [
+          13,
+          "l"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 378,
+      "frames": 83,
+      "atFire": true
+    },
+    {
+      "world": 20,
+      "from": "cl20-bank-b61",
+      "to": "cl20-s20-garden",
+      "how": "right tunnel (5 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 243,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 20,
+      "from": "cl20-s20-engine",
+      "to": "cl20-walk-3-10",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 183,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 20,
+      "from": "cl20-walk-3-10",
+      "to": "cl20-bank-f48",
+      "how": "down through the ceiling (4 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          21,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 53,
+      "frames": 21,
+      "atFire": true
+    },
+    {
+      "world": 20,
+      "from": "cl20-bank-f48",
+      "to": "cl20-s20-deliveries",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          15,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 928,
+      "frames": 15,
+      "atFire": true
+    },
+    {
+      "world": 20,
+      "from": "cl20-s20-morning",
+      "to": "cl20-bank-b66",
+      "how": "right tunnel (5 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          20,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 485,
+      "frames": 20,
+      "atFire": true
+    },
+    {
+      "world": 20,
+      "from": "cl20-bank-b66",
+      "to": "cl20-walk-6-11",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 1904,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 20,
+      "from": "cl20-walk-6-11",
+      "to": "cl20-s20-sea",
+      "how": "right tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 77,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 21,
+      "from": "cl21-fo21-ridge",
+      "to": "cl21-bank-b56",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          17,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 170,
+      "frames": 17,
+      "atFire": true
+    },
+    {
+      "world": 21,
+      "from": "cl21-bank-b56",
+      "to": "cl21-fo21-map",
+      "how": "right tunnel (2 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 242,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 21,
+      "from": "cl21-fo21-lookout",
+      "to": "cl21-walk-3-15",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          16,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 227,
+      "frames": 16,
+      "atFire": true
+    },
+    {
+      "world": 21,
+      "from": "cl21-walk-3-15",
+      "to": "cl21-bank-f40",
+      "how": "down through the ceiling (4 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          42,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 89,
+      "frames": 42,
+      "atFire": true
+    },
+    {
+      "world": 21,
+      "from": "cl21-bank-f40",
+      "to": "cl21-walk-4-23",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 430,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 21,
+      "from": "cl21-walk-4-23",
+      "to": "cl21-fo21-cracked",
+      "how": "right tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          4,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 341,
+      "frames": 4,
+      "atFire": true
+    },
+    {
+      "world": 21,
+      "from": "cl21-fo21-shoulder",
+      "to": "cl21-walk-5-42",
+      "how": "left tunnel (2 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 188,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 21,
+      "from": "cl21-walk-5-42",
+      "to": "cl21-bank-f63",
+      "how": "up shaft at 14–15 (12 rock)",
+      "kind": "walk",
+      "entryDelta": 8.54400374531753,
+      "toFire": [
+        [
+          70,
+          "lgu"
+        ],
+        [
+          21,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 520,
+      "frames": 91,
+      "atFire": true
+    },
+    {
+      "world": 22,
+      "from": "cl22-fw22-edge",
+      "to": "cl22-walk-1-18",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 106,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 22,
+      "from": "cl22-walk-1-18",
+      "to": "cl22-bank-f26",
+      "how": "right tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 683,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 22,
+      "from": "cl22-bank-f26",
+      "to": "cl22-walk-2-21",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 130,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 22,
+      "from": "cl22-walk-2-21",
+      "to": "cl22-fw22-wind",
+      "how": "up shaft at 38–39 (10 rock)",
+      "kind": "walk",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          70,
+          "lgu"
+        ],
+        [
+          21,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 64,
+      "frames": 91,
+      "atFire": true
+    },
+    {
+      "world": 22,
+      "from": "cl22-fw22-wind",
+      "to": "cl22-walk-3-34",
+      "how": "left tunnel (2 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          6,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 181,
+      "frames": 6,
+      "atFire": true
+    },
+    {
+      "world": 22,
+      "from": "cl22-walk-3-34",
+      "to": "cl22-bank-f17",
+      "how": "right tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          4,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 493,
+      "frames": 4,
+      "atFire": true
+    },
+    {
+      "world": 22,
+      "from": "cl22-bank-f17",
+      "to": "cl22-walk-4-43",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 602,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 22,
+      "from": "cl22-walk-4-43",
+      "to": "cl22-fw22-oath1",
+      "how": "up shaft at 34–35 (10 rock)",
+      "kind": "walk",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          70,
+          "rgu"
+        ],
+        [
+          19,
+          "l"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 173,
+      "frames": 89,
+      "atFire": true
+    },
+    {
+      "world": 22,
+      "from": "cl22-fw22-oath2",
+      "to": "cl22-bank-f68",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          8,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 199,
+      "frames": 8,
+      "atFire": true
+    },
+    {
+      "world": 22,
+      "from": "cl22-bank-f68",
+      "to": "cl22-walk-6-52",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 585,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 22,
+      "from": "cl22-walk-6-52",
+      "to": "cl22-fw22-oath3",
+      "how": "up shaft at 3–4 (10 rock)",
+      "kind": "walk",
+      "entryDelta": 8.54400374531753,
+      "toFire": [
+        [
+          70,
+          "lgu"
+        ],
+        [
+          7,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 173,
+      "frames": 77,
+      "atFire": true
+    },
+    {
+      "world": 23,
+      "from": "cl23-fc23-silas",
+      "to": "cl23-bank-b46",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          44,
+          "rgu"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 100,
+      "frames": 44,
+      "atFire": true
+    },
+    {
+      "world": 23,
+      "from": "cl23-bank-b46",
+      "to": "cl23-bank-f23",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          10,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 97,
+      "frames": 75,
+      "atFire": true
+    },
+    {
+      "world": 23,
+      "from": "cl23-bank-f23",
+      "to": "cl23-fc23-counterpoise",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          4,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 354,
+      "frames": 4,
+      "atFire": true
+    },
+    {
+      "world": 23,
+      "from": "cl23-conn-2",
+      "to": "cl23-fc23-gantry",
+      "how": "left tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          4,
+          "l"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 246,
+      "frames": 4,
+      "atFire": true
+    },
+    {
+      "world": 23,
+      "from": "cl23-conn-5",
+      "to": "cl23-bank-f69",
+      "how": "up shaft at 31–32 (4 rock)",
+      "kind": "direct",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          16,
+          "lgu"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          16,
+          "u"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 223,
+      "frames": 44,
+      "atFire": true
+    },
+    {
+      "world": 23,
+      "from": "cl23-bank-f69",
+      "to": "cl23-walk-6-9",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 1417,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 23,
+      "from": "cl23-walk-6-9",
+      "to": "cl23-fc23-middle",
+      "how": "up shaft at 20–21 (10 rock)",
+      "kind": "walk",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          70,
+          "rgu"
+        ],
+        [
+          19,
+          "l"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 173,
+      "frames": 89,
+      "atFire": true
+    },
+    {
+      "world": 24,
+      "from": "cl24-fu24-kites",
+      "to": "cl24-bank-f59",
+      "how": "left tunnel (3 rock) with a retracting entry ledge",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          79,
+          "l"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 168,
+      "frames": 79,
+      "atFire": true
+    },
+    {
+      "world": 24,
+      "from": "cl24-bank-f59",
+      "to": "cl24-walk-2-3",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 343,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 24,
+      "from": "cl24-walk-2-3",
+      "to": "cl24-fu24-choir",
+      "how": "up shaft at 33–34 (8 rock)",
+      "kind": "walk",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          67,
+          "rgu"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 64,
+      "frames": 67,
+      "atFire": true
+    },
+    {
+      "world": 24,
+      "from": "cl24-conn-1",
+      "to": "cl24-walk-3-6",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          8,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 487,
+      "frames": 8,
+      "atFire": true
+    },
+    {
+      "world": 24,
+      "from": "cl24-walk-3-6",
+      "to": "cl24-conn-2",
+      "how": "up shaft at 0–1 (4 rock)",
+      "kind": "walk",
+      "entryDelta": 3,
+      "toFire": [
+        [
+          70,
+          "lgu"
+        ],
+        [
+          12,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 64,
+      "frames": 82,
+      "atFire": true
+    },
+    {
+      "world": 24,
+      "from": "cl24-conn-2",
+      "to": "cl24-walk-4-9",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          4,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 111,
+      "frames": 4,
+      "atFire": true
+    },
+    {
+      "world": 24,
+      "from": "cl24-walk-4-9",
+      "to": "cl24-bank-f60",
+      "how": "up shaft at 15–16 (4 rock)",
+      "kind": "walk",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          70,
+          "lgu"
+        ],
+        [
+          20,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 64,
+      "frames": 90,
+      "atFire": true
+    },
+    {
+      "world": 24,
+      "from": "cl24-bank-f60",
+      "to": "cl24-walk-5-11",
+      "how": "right tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 676,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 24,
+      "from": "cl24-walk-5-11",
+      "to": "cl24-fu24-span",
+      "how": "right tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 227,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 24,
+      "from": "cl24-fu24-crown",
+      "to": "cl24-walk-6-21",
+      "how": "up shaft at 4–5 (2 rock)",
+      "kind": "walk",
+      "entryDelta": 6.0827625302982185,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          11,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 172,
+      "frames": 76,
+      "atFire": true
+    },
+    {
+      "world": 24,
+      "from": "cl24-walk-6-21",
+      "to": "cl24-walk-6-23",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 949,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 24,
+      "from": "cl24-walk-6-23",
+      "to": "cl24-walk-6-24",
+      "how": "down through the ceiling (0 rock)",
+      "kind": "walk",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          6,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 473,
+      "frames": 6,
+      "atFire": true
+    },
+    {
+      "world": 24,
+      "from": "cl24-walk-6-24",
+      "to": "cl24-bank-f50",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          27,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 56,
+      "frames": 27,
+      "atFire": true
+    },
+    {
+      "world": 25,
+      "from": "cl25-fm25-seam",
+      "to": "cl25-walk-1-3",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          17,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 176,
+      "frames": 17,
+      "atFire": true
+    },
+    {
+      "world": 25,
+      "from": "cl25-walk-1-3",
+      "to": "cl25-bank-f27",
+      "how": "up shaft at 1–2 (6 rock)",
+      "kind": "walk",
+      "entryDelta": 8.54400374531753,
+      "toFire": [
+        [
+          70,
+          "rgu"
+        ],
+        [
+          22,
+          "l"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 64,
+      "frames": 92,
+      "atFire": true
+    },
+    {
+      "world": 25,
+      "from": "cl25-bank-f27",
+      "to": "cl25-walk-2-6",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 184,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 25,
+      "from": "cl25-walk-2-6",
+      "to": "cl25-fm25-bowline",
+      "how": "up shaft at 38–39 (10 rock)",
+      "kind": "walk",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          70,
+          "lgu"
+        ],
+        [
+          21,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 64,
+      "frames": 91,
+      "atFire": true
+    },
+    {
+      "world": 25,
+      "from": "cl25-fm25-release",
+      "to": "cl25-walk-3-21",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          17,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 264,
+      "frames": 17,
+      "atFire": true
+    },
+    {
+      "world": 25,
+      "from": "cl25-walk-3-21",
+      "to": "cl25-bank-f33",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          57,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 89,
+      "frames": 57,
+      "atFire": true
+    },
+    {
+      "world": 25,
+      "from": "cl25-bank-f33",
+      "to": "cl25-walk-4-31",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 255,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 25,
+      "from": "cl25-walk-4-31",
+      "to": "cl25-fm25-approach",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          51,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 53,
+      "frames": 51,
+      "atFire": true
+    },
+    {
+      "world": 25,
+      "from": "cl25-fm25-tiers",
+      "to": "cl25-walk-5-46",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 688,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 25,
+      "from": "cl25-walk-5-46",
+      "to": "cl25-bank-f64",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          10,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 89,
+      "frames": 75,
+      "atFire": true
+    },
+    {
+      "world": 26,
+      "from": "cl26-fk26-cradle",
+      "to": "cl26-walk-1-10",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 242,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 26,
+      "from": "cl26-walk-1-10",
+      "to": "cl26-bank-b57",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          39,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 53,
+      "frames": 39,
+      "atFire": true
+    },
+    {
+      "world": 26,
+      "from": "cl26-bank-b57",
+      "to": "cl26-walk-2-17",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          2,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 175,
+      "frames": 2,
+      "atFire": true
+    },
+    {
+      "world": 26,
+      "from": "cl26-walk-2-17",
+      "to": "cl26-bank-f34",
+      "how": "right tunnel (27 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          57,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 117,
+      "frames": 57,
+      "atFire": true
+    },
+    {
+      "world": 26,
+      "from": "cl26-bank-f34",
+      "to": "cl26-walk-3-44",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 160,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 26,
+      "from": "cl26-walk-3-44",
+      "to": "cl26-fk26-cells",
+      "how": "left tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          10,
+          "l"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 537,
+      "frames": 10,
+      "atFire": true
+    },
+    {
+      "world": 26,
+      "from": "cl26-fk26-arch",
+      "to": "cl26-walk-4-64",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 259,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 26,
+      "from": "cl26-walk-4-64",
+      "to": "cl26-bank-b52",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          66,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 137,
+      "frames": 66,
+      "atFire": true
+    },
+    {
+      "world": 27,
+      "from": "cl27-fg27-engine",
+      "to": "cl27-walk-1-15",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 173,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 27,
+      "from": "cl27-walk-1-15",
+      "to": "cl27-bank-f51",
+      "how": "down through the ceiling (4 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          57,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 89,
+      "frames": 57,
+      "atFire": true
+    },
+    {
+      "world": 27,
+      "from": "cl27-bank-f51",
+      "to": "cl27-walk-2-17",
+      "how": "right tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 185,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 27,
+      "from": "cl27-walk-2-17",
+      "to": "cl27-fg27-cells",
+      "how": "right tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 227,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 27,
+      "from": "cl27-fg27-pair",
+      "to": "cl27-bank-f11",
+      "how": "right tunnel (19 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          25,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 239,
+      "frames": 25,
+      "atFire": true
+    },
+    {
+      "world": 27,
+      "from": "cl27-bank-f11",
+      "to": "cl27-fg27-vigil",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 687,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 27,
+      "from": "cl27-fg27-well",
+      "to": "cl27-bank-f70",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          45,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 427,
+      "frames": 45,
+      "atFire": true
+    },
+    {
+      "world": 28,
+      "from": "cl28-ff28-rehearsal",
+      "to": "cl28-walk-1-15",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 140,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 28,
+      "from": "cl28-walk-1-15",
+      "to": "cl28-bank-f18",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          27,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 89,
+      "frames": 27,
+      "atFire": true
+    },
+    {
+      "world": 28,
+      "from": "cl28-bank-f18",
+      "to": "cl28-walk-2-27",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 225,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 28,
+      "from": "cl28-walk-2-27",
+      "to": "cl28-ff28-stair",
+      "how": "left tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          10,
+          "l"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 177,
+      "frames": 10,
+      "atFire": true
+    },
+    {
+      "world": 28,
+      "from": "cl28-ff28-landings",
+      "to": "cl28-walk-3-30",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          16,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 213,
+      "frames": 16,
+      "atFire": true
+    },
+    {
+      "world": 28,
+      "from": "cl28-walk-3-30",
+      "to": "cl28-bank-b51",
+      "how": "up shaft at 1–2 (6 rock)",
+      "kind": "walk",
+      "entryDelta": 8.54400374531753,
+      "toFire": [
+        [
+          70,
+          "rgu"
+        ],
+        [
+          22,
+          "l"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 64,
+      "frames": 92,
+      "atFire": true
+    },
+    {
+      "world": 28,
+      "from": "cl28-bank-b51",
+      "to": "cl28-walk-4-44",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 332,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 28,
+      "from": "cl28-walk-4-44",
+      "to": "cl28-ff28-crown",
+      "how": "up shaft at 37–38 (10 rock)",
+      "kind": "walk",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          70,
+          "lgu"
+        ],
+        [
+          19,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 325,
+      "frames": 89,
+      "atFire": true
+    },
+    {
+      "world": 28,
+      "from": "cl28-ff28-crown",
+      "to": "cl28-walk-5-45",
+      "how": "up shaft at 4–5 (2 rock)",
+      "kind": "walk",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          6,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 121,
+      "frames": 71,
+      "atFire": true
+    },
+    {
+      "world": 28,
+      "from": "cl28-walk-5-45",
+      "to": "cl28-bank-f71",
+      "how": "right tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          23,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 227,
+      "frames": 88,
+      "atFire": true
+    },
+    {
+      "world": 29,
+      "from": "cl29-fs29-pane",
+      "to": "cl29-walk-1-13",
+      "how": "left tunnel (2 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 247,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 29,
+      "from": "cl29-walk-1-13",
+      "to": "cl29-bank-f14",
+      "how": "right tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          4,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 493,
+      "frames": 69,
+      "atFire": true
+    },
+    {
+      "world": 29,
+      "from": "cl29-bank-f14",
+      "to": "cl29-walk-2-26",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 277,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 29,
+      "from": "cl29-walk-2-26",
+      "to": "cl29-fs29-stair",
+      "how": "left tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          10,
+          "l"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 493,
+      "frames": 10,
+      "atFire": true
+    },
+    {
+      "world": 29,
+      "from": "cl29-fs29-cache",
+      "to": "cl29-walk-3-29",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 242,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 29,
+      "from": "cl29-walk-3-29",
+      "to": "cl29-bank-f15",
+      "how": "up shaft at 1–2 (4 rock)",
+      "kind": "walk",
+      "entryDelta": 8.54400374531753,
+      "toFire": [
+        [
+          70,
+          "lgu"
+        ],
+        [
+          22,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 64,
+      "frames": 92,
+      "atFire": true
+    },
+    {
+      "world": 29,
+      "from": "cl29-bank-f15",
+      "to": "cl29-walk-4-42",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 587,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 29,
+      "from": "cl29-walk-4-42",
+      "to": "cl29-fs29-overlook",
+      "how": "left tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          10,
+          "l"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 493,
+      "frames": 10,
+      "atFire": true
+    },
+    {
+      "world": 29,
+      "from": "cl29-fs29-overlook",
+      "to": "cl29-fs29-ante",
+      "how": "left tunnel (3 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          36,
+          "l"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 187,
+      "frames": 36,
+      "atFire": true
+    },
+    {
+      "world": 29,
+      "from": "cl29-conn-4",
+      "to": "cl29-walk-6-52",
+      "how": "down through the ceiling (0 rock)",
+      "kind": "walk",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          6,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 70,
+      "frames": 6,
+      "atFire": true
+    },
+    {
+      "world": 29,
+      "from": "cl29-walk-6-52",
+      "to": "cl29-walk-6-54",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 149,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 29,
+      "from": "cl29-walk-6-54",
+      "to": "cl29-walk-6-56",
+      "how": "down through the ceiling (0 rock)",
+      "kind": "walk",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          6,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 473,
+      "frames": 6,
+      "atFire": true
+    },
+    {
+      "world": 29,
+      "from": "cl29-walk-6-56",
+      "to": "cl29-bank-f65",
+      "how": "down through the ceiling (4 rock)",
+      "kind": "walk",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          84,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 92,
+      "frames": 84,
+      "atFire": true
+    },
+    {
+      "world": 30,
+      "from": "cl30-fe30-door",
+      "to": "cl30-walk-1-13",
+      "how": "left tunnel (2 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 200,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 30,
+      "from": "cl30-walk-1-13",
+      "to": "cl30-bank-f36",
+      "how": "right tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          15,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 493,
+      "frames": 15,
+      "atFire": true
+    },
+    {
+      "world": 30,
+      "from": "cl30-bank-f36",
+      "to": "cl30-walk-2-26",
+      "how": "right tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 259,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 30,
+      "from": "cl30-walk-2-26",
+      "to": "cl30-fe30-draw",
+      "how": "left tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          15,
+          "l"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 493,
+      "frames": 15,
+      "atFire": true
+    },
+    {
+      "world": 30,
+      "from": "cl30-fe30-shift",
+      "to": "cl30-walk-3-48",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 174,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 30,
+      "from": "cl30-walk-3-48",
+      "to": "cl30-bank-f43",
+      "how": "right tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          20,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 377,
+      "frames": 20,
+      "atFire": true
+    },
+    {
+      "world": 30,
+      "from": "cl30-bank-f43",
+      "to": "cl30-walk-4-68",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 308,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 30,
+      "from": "cl30-walk-4-68",
+      "to": "cl30-fe30-moulds",
+      "how": "down through the ceiling (4 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          51,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 137,
+      "frames": 51,
+      "atFire": true
+    },
+    {
+      "world": 30,
+      "from": "cl30-fe30-foot",
+      "to": "cl30-walk-5-83",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 165,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 30,
+      "from": "cl30-walk-5-83",
+      "to": "cl30-bank-f72",
+      "how": "down through the ceiling (4 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          87,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 89,
+      "frames": 87,
+      "atFire": true
+    },
+    {
+      "world": 31,
+      "from": "cl31-ff31-mouth",
+      "to": "cl31-walk-1-3",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          3,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 138,
+      "frames": 3,
+      "atFire": true
+    },
+    {
+      "world": 31,
+      "from": "cl31-walk-1-3",
+      "to": "cl31-bank-f24",
+      "how": "up shaft at 1–2 (10 rock)",
+      "kind": "walk",
+      "entryDelta": 8.54400374531753,
+      "toFire": [
+        [
+          70,
+          "lgu"
+        ],
+        [
+          12,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 64,
+      "frames": 82,
+      "atFire": true
+    },
+    {
+      "world": 31,
+      "from": "cl31-bank-f24",
+      "to": "cl31-walk-2-6",
+      "how": "right tunnel (3 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 89,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 31,
+      "from": "cl31-walk-2-6",
+      "to": "cl31-ff31-heap",
+      "how": "up shaft at 37–38 (10 rock)",
+      "kind": "walk",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          70,
+          "lgu"
+        ],
+        [
+          21,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 64,
+      "frames": 91,
+      "atFire": true
+    },
+    {
+      "world": 31,
+      "from": "cl31-ff31-heap",
+      "to": "cl31-walk-3-19",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 221,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 31,
+      "from": "cl31-walk-3-19",
+      "to": "cl31-bank-f42",
+      "how": "right tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          20,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 493,
+      "frames": 85,
+      "atFire": true
+    },
+    {
+      "world": 31,
+      "from": "cl31-bank-f42",
+      "to": "cl31-walk-4-37",
+      "how": "right tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 154,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 31,
+      "from": "cl31-walk-4-37",
+      "to": "cl31-ff31-look",
+      "how": "left tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          10,
+          "l"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 683,
+      "frames": 10,
+      "atFire": true
+    },
+    {
+      "world": 31,
+      "from": "cl31-ff31-bed",
+      "to": "cl31-walk-5-45",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          5,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 543,
+      "frames": 5,
+      "atFire": true
+    },
+    {
+      "world": 31,
+      "from": "cl31-walk-5-45",
+      "to": "cl31-bank-f73",
+      "how": "right tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          15,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 341,
+      "frames": 15,
+      "atFire": true
+    },
+    {
+      "world": 32,
+      "from": "cl32-fi32-court",
+      "to": "cl32-walk-1-10",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          7,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 155,
+      "frames": 7,
+      "atFire": true
+    },
+    {
+      "world": 32,
+      "from": "cl32-walk-1-10",
+      "to": "cl32-bank-f52",
+      "how": "down through the ceiling (24 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          57,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 53,
+      "frames": 57,
+      "atFire": true
+    },
+    {
+      "world": 32,
+      "from": "cl32-bank-f52",
+      "to": "cl32-walk-2-20",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          7,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 238,
+      "frames": 7,
+      "atFire": true
+    },
+    {
+      "world": 32,
+      "from": "cl32-walk-2-20",
+      "to": "cl32-bank-f12",
+      "how": "down through the ceiling (6 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          57,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 53,
+      "frames": 57,
+      "atFire": true
+    },
+    {
+      "world": 32,
+      "from": "cl32-bank-f12",
+      "to": "cl32-walk-3-30",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 672,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 32,
+      "from": "cl32-walk-3-30",
+      "to": "cl32-fi32-divide",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          42,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 53,
+      "frames": 42,
+      "atFire": true
+    },
+    {
+      "world": 32,
+      "from": "cl32-fi32-glass",
+      "to": "cl32-fi32-fissure",
+      "how": "left tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          10,
+          "l"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 429,
+      "frames": 10,
+      "atFire": true
+    },
+    {
+      "world": 32,
+      "from": "cl32-fi32-threshold",
+      "to": "cl32-walk-5-50",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          7,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 418,
+      "frames": 7,
+      "atFire": true
+    },
+    {
+      "world": 32,
+      "from": "cl32-walk-5-50",
+      "to": "cl32-bank-f49",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          33,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 137,
+      "frames": 33,
+      "atFire": true
+    },
+    {
+      "world": 33,
+      "from": "cl33-fv33-ledgers",
+      "to": "cl33-walk-1-15",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 169,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 33,
+      "from": "cl33-walk-1-15",
+      "to": "cl33-bank-f13",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          57,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 89,
+      "frames": 57,
+      "atFire": true
+    },
+    {
+      "world": 33,
+      "from": "cl33-bank-f13",
+      "to": "cl33-walk-2-40",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 370,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 33,
+      "from": "cl33-walk-2-40",
+      "to": "cl33-fv33-faults",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          51,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 209,
+      "frames": 51,
+      "atFire": true
+    },
+    {
+      "world": 33,
+      "from": "cl33-fv33-broken",
+      "to": "cl33-walk-3-55",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 127,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 33,
+      "from": "cl33-walk-3-55",
+      "to": "cl33-bank-f31",
+      "how": "down beside the phase roof, onto a retracting approach ledge with a retracting entry ledge",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          28,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": {
+        "phase": 0,
+        "lit": 0,
+        "openGates": 0
+      },
+      "sourceExitFrame": 89,
+      "frames": 93,
+      "atFire": true
+    },
+    {
+      "world": 33,
+      "from": "cl33-bank-f31",
+      "to": "cl33-walk-4-67",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 153,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 33,
+      "from": "cl33-walk-4-67",
+      "to": "cl33-fv33-high",
+      "how": "right tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 177,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 33,
+      "from": "cl33-fv33-middle",
+      "to": "cl33-walk-5-71",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 1227,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 33,
+      "from": "cl33-walk-5-71",
+      "to": "cl33-bank-f74",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          90,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 29,
+      "frames": 90,
+      "atFire": true
+    },
+    {
+      "world": 34,
+      "from": "cl34-fk34-seam",
+      "to": "cl34-bank-f30",
+      "how": "right tunnel (5 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          10,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 118,
+      "frames": 75,
+      "atFire": true
+    },
+    {
+      "world": 34,
+      "from": "cl34-bank-f30",
+      "to": "cl34-fk34-gallery",
+      "how": "right tunnel (5 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 307,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 34,
+      "from": "cl34-fk34-hand",
+      "to": "cl34-bank-f19",
+      "how": "right tunnel (7 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          10,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 358,
+      "frames": 75,
+      "atFire": true
+    },
+    {
+      "world": 34,
+      "from": "cl34-bank-f19",
+      "to": "cl34-fk34-wake",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          4,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 316,
+      "frames": 69,
+      "atFire": true
+    },
+    {
+      "world": 34,
+      "from": "cl34-fk34-wake",
+      "to": "cl34-fk34-bellkeeper",
+      "how": "right tunnel (3 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          41,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 163,
+      "frames": 41,
+      "atFire": true
+    },
+    {
+      "world": 34,
+      "from": "cl34-fk34-throne",
+      "to": "cl34-bank-f75",
+      "how": "right tunnel (3 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          57,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 254,
+      "frames": 57,
+      "atFire": true
+    },
+    {
+      "world": 35,
+      "from": "cl35-fd35-blink",
+      "to": "cl35-walk-1-2",
+      "how": "right tunnel (2 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 180,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 35,
+      "from": "cl35-walk-1-2",
+      "to": "cl35-bank-f25",
+      "how": "right tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          10,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 227,
+      "frames": 75,
+      "atFire": true
+    },
+    {
+      "world": 35,
+      "from": "cl35-bank-f25",
+      "to": "cl35-walk-2-15",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 416,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 35,
+      "from": "cl35-walk-2-15",
+      "to": "cl35-fd35-boat",
+      "how": "right tunnel (5 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          4,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 493,
+      "frames": 4,
+      "atFire": true
+    },
+    {
+      "world": 35,
+      "from": "cl35-fd35-roof",
+      "to": "cl35-bank-f16",
+      "how": "right tunnel (5 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          4,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 153,
+      "frames": 4,
+      "atFire": true
+    },
+    {
+      "world": 35,
+      "from": "cl35-bank-f16",
+      "to": "cl35-fd35-glass",
+      "how": "right tunnel (5 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          4,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 215,
+      "frames": 4,
+      "atFire": true
+    },
+    {
+      "world": 35,
+      "from": "cl35-fd35-glass",
+      "to": "cl35-bank-f45",
+      "how": "right tunnel (5 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          20,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 216,
+      "frames": 20,
+      "atFire": true
+    },
+    {
+      "world": 36,
+      "from": "cl36-ft36-moth",
+      "to": "cl36-bank-b55",
+      "how": "right tunnel (5 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          15,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 135,
+      "frames": 80,
+      "atFire": true
+    },
+    {
+      "world": 36,
+      "from": "cl36-bank-b55",
+      "to": "cl36-ft36-long",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          10,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 229,
+      "frames": 75,
+      "atFire": true
+    },
+    {
+      "world": 36,
+      "from": "cl36-ft36-long",
+      "to": "cl36-bank-b54",
+      "how": "right tunnel (5 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          15,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 259,
+      "frames": 80,
+      "atFire": true
+    },
+    {
+      "world": 36,
+      "from": "cl36-bank-b54",
+      "to": "cl36-ft36-bite",
+      "how": "right tunnel (5 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          10,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 177,
+      "frames": 75,
+      "atFire": true
+    },
+    {
+      "world": 36,
+      "from": "cl36-ft36-tide-head",
+      "to": "cl36-walk-5-3",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          15,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 267,
+      "frames": 15,
+      "atFire": true
+    },
+    {
+      "world": 36,
+      "from": "cl36-walk-5-3",
+      "to": "cl36-bank-f76",
+      "how": "up shaft at 3–4 (6 rock)",
+      "kind": "walk",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          70,
+          "lgu"
+        ],
+        [
+          16,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 64,
+      "frames": 86,
+      "atFire": true
+    },
+    {
+      "world": 37,
+      "from": "cl37-fs37-spring",
+      "to": "cl37-walk-1-20",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 159,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 37,
+      "from": "cl37-walk-1-20",
+      "to": "cl37-bank-f55",
+      "how": "down through the ceiling (2 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          48,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 137,
+      "frames": 48,
+      "atFire": true
+    },
+    {
+      "world": 37,
+      "from": "cl37-bank-f55",
+      "to": "cl37-walk-2-42",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 129,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 37,
+      "from": "cl37-walk-2-42",
+      "to": "cl37-fs37-porch",
+      "how": "left tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          10,
+          "l"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 377,
+      "frames": 10,
+      "atFire": true
+    },
+    {
+      "world": 37,
+      "from": "cl37-fs37-super",
+      "to": "cl37-walk-3-52",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 109,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 37,
+      "from": "cl37-walk-3-52",
+      "to": "cl37-bank-f56",
+      "how": "down through the ceiling (24 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          87,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 53,
+      "frames": 87,
+      "atFire": true
+    },
+    {
+      "world": 37,
+      "from": "cl37-bank-f56",
+      "to": "cl37-fs37-belled",
+      "how": "left tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          4,
+          "l"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 394,
+      "frames": 4,
+      "atFire": true
+    },
+    {
+      "world": 37,
+      "from": "cl37-fs37-road",
+      "to": "cl37-walk-5-77",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          1,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 211,
+      "frames": 1,
+      "atFire": true
+    },
+    {
+      "world": 37,
+      "from": "cl37-walk-5-77",
+      "to": "cl37-bank-f66",
+      "how": "down through the ceiling (6 rock)",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          84,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 209,
+      "frames": 84,
+      "atFire": true
+    },
+    {
+      "world": 38,
+      "from": "cl38-fc38-low",
+      "to": "cl38-bank-f58",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          9,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 122,
+      "frames": 9,
+      "atFire": true
+    },
+    {
+      "world": 38,
+      "from": "cl38-bank-f58",
+      "to": "cl38-fc38-glass",
+      "how": "right tunnel (5 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          3,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 382,
+      "frames": 3,
+      "atFire": true
+    },
+    {
+      "world": 38,
+      "from": "cl38-fc38-release",
+      "to": "cl38-bank-b40",
+      "how": "right tunnel (3 rock)",
+      "kind": "direct",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          12,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 373,
+      "frames": 12,
+      "atFire": true
+    },
+    {
+      "world": 38,
+      "from": "cl38-bank-b40",
+      "to": "cl38-fc38-watch",
+      "how": "right tunnel (7 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          4,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 162,
+      "frames": 4,
+      "atFire": true
+    },
+    {
+      "world": 38,
+      "from": "cl38-fc38-road",
+      "to": "cl38-bank-f46",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          20,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 335,
+      "frames": 20,
+      "atFire": true
+    },
+    {
+      "world": 39,
+      "from": "cl39-fp39-line",
+      "to": "cl39-bank-f28",
+      "how": "right tunnel over the ceiling, dropping at 3–4 (16 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          12,
+          "rj"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          16,
+          "u"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 153,
+      "frames": 48,
+      "atFire": true
+    },
+    {
+      "world": 39,
+      "from": "cl39-bank-f28",
+      "to": "cl39-fp39-shade",
+      "how": "right tunnel (5 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          4,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 189,
+      "frames": 4,
+      "atFire": true
+    },
+    {
+      "world": 39,
+      "from": "cl39-fp39-shade",
+      "to": "cl39-bank-f61",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          15,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 322,
+      "frames": 80,
+      "atFire": true
+    },
+    {
+      "world": 39,
+      "from": "cl39-bank-f61",
+      "to": "cl39-fp39-road",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          4,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 143,
+      "frames": 4,
+      "atFire": true
+    },
+    {
+      "world": 39,
+      "from": "cl39-fp39-gate",
+      "to": "cl39-bank-f77",
+      "how": "right tunnel (3 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          67,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 358,
+      "frames": 67,
+      "atFire": true
+    },
+    {
+      "world": 40,
+      "from": "cl40-fs40-court",
+      "to": "cl40-walk-1-15",
+      "how": "right tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          2,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 354,
+      "frames": 2,
+      "atFire": true
+    },
+    {
+      "world": 40,
+      "from": "cl40-walk-1-15",
+      "to": "cl40-bank-f32",
+      "how": "down beside the phase roof, onto a retracting approach ledge with a retracting entry ledge",
+      "kind": "walk",
+      "entryDelta": 4,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          28,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": {
+        "phase": 0,
+        "lit": 0,
+        "openGates": 0
+      },
+      "sourceExitFrame": 89,
+      "frames": 93,
+      "atFire": true
+    },
+    {
+      "world": 40,
+      "from": "cl40-bank-f32",
+      "to": "cl40-walk-2-32",
+      "how": "left tunnel (1 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          5,
+          ""
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 301,
+      "frames": 5,
+      "atFire": true
+    },
+    {
+      "world": 40,
+      "from": "cl40-walk-2-32",
+      "to": "cl40-fs40-ends",
+      "how": "right tunnel (4 rock)",
+      "kind": "walk",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          10,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 257,
+      "frames": 75,
+      "atFire": true
+    },
+    {
+      "world": 40,
+      "from": "cl40-fs40-engine",
+      "to": "cl40-bank-f57",
+      "how": "right tunnel (4 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          14,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 364,
+      "frames": 79,
+      "atFire": true
+    },
+    {
+      "world": 40,
+      "from": "cl40-bank-f57",
+      "to": "cl40-fs40-deliveries",
+      "how": "right tunnel (7 rock)",
+      "kind": "direct",
+      "entryDelta": 2,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          4,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 295,
+      "frames": 69,
+      "atFire": true
+    },
+    {
+      "world": 40,
+      "from": "cl40-fs40-morning",
+      "to": "cl40-bank-f67",
+      "how": "right tunnel (5 rock)",
+      "kind": "direct",
+      "entryDelta": 0,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          19,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 315,
+      "frames": 84,
+      "atFire": true
+    },
+    {
+      "world": 40,
+      "from": "cl40-bank-f67",
+      "to": "cl40-fs40-sea",
+      "how": "right tunnel (5 rock)",
+      "kind": "direct",
+      "entryDelta": 1,
+      "toFire": [
+        [
+          65,
+          ""
+        ],
+        [
+          9,
+          "r"
+        ]
+      ],
+      "pristinePuzzle": null,
+      "sourceExitFrame": 1015,
+      "frames": 74,
+      "atFire": true
+    }
+  ]
+}

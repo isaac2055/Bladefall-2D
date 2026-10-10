@@ -68,3 +68,7 @@ B72, B75, F71, F73 and F76 were revised earlier in this batch, before the five r
 - The ten changed worlds were re-imported. All 88 physical joins pass in Chrome, and the structural audit passes (`feedback-7.308-audit.json`).
 - The other 30 worlds are byte-identical to 7.307.1.
 - These checks prove that each room can be completed. They don't prove every alternative route is blocked.
+
+## 7.308.1 — doors no longer close behind you
+
+An entrance seals only where that room's own route needs the wall: 31 rooms keep their seal and 302 rooms now stay open. In 46 doorways the thorns faced into the room inside the opening, so you could walk in but not back (B22's spiked west wall was one). Those thorns now open with the doorway and return only if it seals.

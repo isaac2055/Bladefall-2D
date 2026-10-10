@@ -1,3 +1,25 @@
+## 7.308.1: Entrances only seal where the room needs them; doorway thorns cleared (2026-10-10)
+
+Isaac reported doors closing behind him (World 1, 3→4, 8→9 and 13→14) and a glitch entering 8→9. Two causes:
+- **Too many seals.** The 7.307 import sealed every bank room, and every room after a new connection, at its fire: 333 rooms.
+- **A deadly doorway.** B22's entrance tunnel cut through its spiked west wall. Walking in was safe; walking back killed.
+
+New `scripts/climb/relax-seals.mjs` (run by import-bank.mjs, or alone on the saved registry) handles both:
+- **Seals:** a room keeps its seal only if one of these holds:
+  - its own route exits differently with the entrance open (same frame and same exit state required, so every join proof stays exact);
+  - the original 7.265 build sealed it;
+  - it has a retracting entry ledge.
+  Result: 31 rooms keep their seal and 302 rooms now stay open.
+- **Doorway thorns:** thorns inside a side doorway's opening that face into the room are now part of that doorway. They are open while it is open and restored if it seals (46 rooms).
+
+**Checks:**
+- Full structural audit of all 40 worlds: 327 joins (feedback-7.308.1-audit.json).
+- All 40 worlds' joins pass in Chrome.
+- Walking back along the floor from every open side doorway: no doorway deaths.
+- World 1's 3→4, 8→9 and 13→14 played in the page: no seal, walk-back works, 0 deaths.
+
+Version 7.308.1, cache `bladefall-v475-open-doorways`.
+
 ## 7.308.0: Superroom feedback answered; King, Tyrant and tide finales reinvented (2026-10-10)
 
 Every B72–F77 note is answered and integrated. F64 and F69 are banked, and F77 is banked at 3/5.
