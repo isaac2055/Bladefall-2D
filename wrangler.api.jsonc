@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "bladefall-2d",
+  "main": "cloudflare/playtest-api.js",
+  "compatibility_date": "2026-10-09",
+  "workers_dev": false,
+  "preview_urls": false,
+  "durable_objects": {"bindings": [{"name": "PLAYTEST", "class_name": "PlaytestStore"}]},
+  "migrations": [{"tag": "v1", "new_sqlite_classes": ["PlaytestStore"]}]
+}

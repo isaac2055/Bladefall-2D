@@ -35,6 +35,7 @@ function load(opts){
     BladefallActTwo:{ register(i, impl){ impls[i] = impl; },
       kit:{ zoneCircuits:() => circuits, circuitSet:(c, id) => !!c[id], latch:(z, id) => { circuits[id] = true; }, burst(){}, say(){} } },
     BladefallFractured:{ setKit(){}, checkpoints(){} },
+    BladefallExploreFinale:{choice:()=> 'merge',ending(){ctx.__card=true;}},
   };
   const keys = { pressed:false };
   const ctx = vm.createContext({ Math, Object, JSON, Array, window, G, meta:{ soundOn:false }, SFX:{}, mode:'play',
@@ -63,13 +64,13 @@ function load(opts){
 }
 
 test('stage 43 is registered everywhere a stage must be, and Level Select shows it as 42', () => {
-  assert.match(source, /43:BladefallActTwo\.level\(43\)\};/);
+  assert.match(source, /43:BladefallActTwo\.level\(43\)/);
   assert.match(source, /<script src="bladefall-cloaked-man\.js\?v=[^"]+"><\/script>\n<script src="bladefall-cloaked-man-art\.js\?v=[^"]+"><\/script>/);
   assert.match(read('bladefall-respec-renderer.js'), /const SUPPORTED_STAGES = new Set\(\[[^\]]*\b43\b[^\]]*\]\)/);
   assert.match(read('sw.js'), /'\.\/bladefall-cloaked-man\.js\?v=[^']+',\n  '\.\/bladefall-cloaked-man-art\.js\?v=[^']+',/);
-  assert.match(read('bladefall-campaign.js'), /name: 'The Cloaked Man'[^}]*finalBattle: true, selectTag: '42'/);
-  assert.match(read('bladefall-progression.js'), /\['cloaked-man', 43, 'The Cloaked Man'/);
-  assert.match(read('bladefall-world.js'), /\['cloaked-man', 43, 'The Cloaked Man'/);
+  assert.match(read('bladefall-campaign.js'), /name: 'Vesper'[^}]*finalBattle: true, selectTag: '42'/);
+  assert.match(read('bladefall-progression.js'), /\['cloaked-man', 43, 'Vesper'/);
+  assert.match(read('bladefall-world.js'), /\['cloaked-man', 43, 'Vesper'/);
   for(const f of ['iron-oath-of-the-night-attack.mp3', 'through-the-void-breach.mp3', 'fractured-the-black-procession.mp3', 'the-breaking-of-the-keeps.mp3', 'fractured-the-last-spark-of-darrow.mp3'])
     assert.ok(existsSync(pub('audio/music/' + f)), f);
   const L = fnFrom(source, 'openLevelSelect');
@@ -104,7 +105,7 @@ test('the fight begins on entering the arena: the bars shut, the bar reads THE C
   p.x = K.ARENA.x1 + 120; step(1);
   assert.equal(A().fight, true);
   assert.equal(G.boss, A().bar);
-  assert.equal(G.boss.label, 'THE CLOAKED MAN');
+  assert.equal(G.boss.label, 'VESPER');
   assert.equal(G.boss.maxHp, K.POOLS.reduce((a, b) => a + b, 0));
   assert.equal(p.blood, 10);
   assert.equal(G.obstacles.find(o => o.actBars === 'west').gone, false);
@@ -156,7 +157,7 @@ test('each phase hands to the next, keeps what was won through a retry, and give
     const e = phase <= 1 ? a.man : phase === 2 ? a.spider.head : a.eyes[0]; e.hp = e.hpWas - 5; };
   p.blood = 5; push(0); step(1);
   assert.ok(A().trans && A().trans.from === 0); assert.equal(p.blood, 6, 'one measure back'); assert.equal(circuits['cm-p1'], true);
-  step(60 * 3); assert.equal(A().phase, 1); assert.equal(T.G.boss.label, 'THE CLOAKED MAN · UNBOUND');
+  step(60 * 3); assert.equal(A().phase, 1); assert.equal(T.G.boss.label, 'VESPER · UNBOUND');
   push(1); step(60 * 4); assert.equal(A().phase, 2); assert.ok(A().spider); assert.equal(A().man, null, 'the cloak is empty');
   push(2); step(60 * 5); assert.equal(A().phase, 3); assert.ok(A().giant); assert.equal(A().eyes.length, 2);
   // A retry comes back into IV.

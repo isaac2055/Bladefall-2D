@@ -1,7 +1,7 @@
 /* Survive playtest ratings and local, per-world time trials. */
 (function(root){
 'use strict';
-const KEY='bladescent.reviews.v1',TIMES='bladescent.times.v1',BUILD='7.283.0';
+const KEY='bladescent.reviews.v1',TIMES='bladescent.times.v1',BUILD='7.304.0';
 const read=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key))||fallback;}catch{return fallback;}};
 const write=(key,value)=>localStorage.setItem(key,JSON.stringify(value));
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -30,7 +30,7 @@ function start(){if(!st?.world)return;const d=st.view.g?.room.def;
  run={world:st.world.n,frames:0,done:false,eligible:d?.id===st.world.atlasStart,reason:d?.id===st.world.atlasStart?'':'room select',session:root.crypto?.randomUUID?.()||String(Date.now())};roomStats={};rated=new Set();lastDeaths=st.view.chapterStats.deaths;if(campaign())root.BladefallPlaytest?.start('survival',st.world.n,{eligible:run.eligible,reason:run.reason,force:true});refresh();}
 function invalidate(reason){if(campaign())root.BladefallPlaytest?.invalidate(reason);if(run){run.eligible=false;run.reason=reason;if(['assist','game speed','route demonstration','co-op'].includes(reason))run.assisted=true;}}
 function tick(){if(!st?.view.g)return;if(!run||run.world!==st.world.n)start();
- if(st.walkTrial&&st.view.g.room.id===st.world.atlasStart){st.walkTrial=false;start();}const v=st.view,g=v.g;if(v.replay)invalidate('route demonstration');if(g.assist?.infiniteStamina)invalidate('assist');
+ if(st.walkTrial&&st.view.g.room.id===st.world.atlasStart){st.walkTrial=false;st.resumeProgress=false;start();}const v=st.view,g=v.g;if(v.replay)invalidate('route demonstration');if(g.assist?.infiniteStamina)invalidate('assist');
  if(++ticks%60===1){const saved=read('bladefall.pcore.v1',{});if(saved.assist?.speed&&saved.assist.speed!==1)invalidate('game speed');}
  if(root.BladefallClimbCoop?.status&&root.BladefallClimbCoop.status!=='off')invalidate('co-op');
  if(mode==='play'&&!run.done)run.frames++;

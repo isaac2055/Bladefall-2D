@@ -51,8 +51,8 @@ const BIG = 1e6;
 /* Each phase's share of the bar. An Oathblade swing lands for about 21, so these are ~22 / 18 / 26 / 24 blows —
    more for a counter riposte, a slam or a crit. */
 const POOLS = [460, 380, 540, 500];
-const NAMES = ['THE CLOAKED MAN', 'THE CLOAKED MAN · UNBOUND', 'THE CLOAKED MAN · THE BONES', 'THE CLOAKED MAN · ALL OF HIM'];
-const TITLES = [['I', 'THE CLOAKED MAN'], ['II', 'UNBOUND'], ['III', 'WHAT WAS UNDER THE CLOAK'], ['IV', 'ALL OF HIM']];
+const NAMES = ['VESPER', 'VESPER · UNBOUND', 'VESPER · THE BONES', 'VESPER · ALL OF HIM'];
+const TITLES = [['I', 'VESPER'], ['II', 'UNBOUND'], ['III', 'WHAT WAS UNDER THE CLOAK'], ['IV', 'ALL OF HIM']];
 
 /* Phase I. */
 const MAN = { w:30, h:66, walk:130, keep:300, poise:3, poiseWindow:1.6,
@@ -114,7 +114,7 @@ function floorOf(phase){ return sumFrom(phase + 1); }
 function done(c, id){ return kit.circuitSet(c, id); }
 function init(){
   const c = kit.zoneCircuits(ZONE);
-  const phase = done(c, 'cm-p3') ? 3 : done(c, 'cm-p2') ? 2 : done(c, 'cm-p1') ? 1 : 0;
+  const phase = G.vesperEncounter ? 0 : done(c, 'cm-p3') ? 3 : done(c, 'cm-p2') ? 2 : done(c, 'cm-p1') ? 1 : 0;
   G.actTwo = { stage:STAGE, t:0, spawned:false, echoSource:13, flash:0, checkpoints:{},
     phase, hp:sumFrom(phase), fight:false, over:false, won:false, trans:null, endT:0,
     bar:{ label:NAMES[phase], hp:sumFrom(phase), maxHp:sumFrom(0), x:ARENA.mid, y:0, w:40, h:60, active:true, dead:false, boss:true },
@@ -149,6 +149,8 @@ function taken(e){
 }
 function wound(A, dealt, e){
   if(dealt <= 0 || A.trans || !A.fight) return;
+  if(G.vesperEncounter&&!meta.testMode){A.hitT=.12;return;} // the first confrontation cannot lose its first phase
+  if(!G.vesperEncounter&&root.BladefallExploreFinale?.choice()!=='merge')dealt*=.25;
   const floor = floorOf(A.phase);
   A.hp = Math.max(floor, A.hp - dealt); A.hitT = .12; if(e) e.hitT = .14;
   A.poise.push(A.t); A.poise = A.poise.filter(t => A.t - t < 2.2);
@@ -163,7 +165,7 @@ function strike(A, p, dir, opts){
   opts = opts || {};
   if(!open(p)) return false;
   if(opts.parry && typeof tryPlayerCounter === 'function' && tryPlayerCounter('melee', dir || 1, opts.parry)){ stagger(A, opts.parry, 1.1); return false; }
-  try{ hurtPlayer(20, dir || 0, true, opts.measures > 1 ? opts.measures : undefined); }catch(_e){}
+  try{ hurtPlayer(20, dir || 0, true, G.vesperEncounter?3:root.BladefallExploreFinale?.choice()!=='merge'?Math.max(2,opts.measures||1):opts.measures > 1 ? opts.measures : undefined); }catch(_e){}
   return true;
 }
 function stagger(A, e, secs){
@@ -179,7 +181,7 @@ function towards(e, p){ return Math.sign(p.x - e.x) || e.face || -1; }
 
 /* ── The fight's shape ───────────────────────────────────────────────────── */
 function begin(A, p){
-  A.fight = true; setBars('west', false);
+  A.fight = true; A.encounterT=0; setBars('west', false);
   try{ restoreBlood(p, Infinity); }catch(_e){}
   G.boss = A.bar; A.bar.dead = false; A.bar.active = true;
   standPhase(A, true);
@@ -223,6 +225,7 @@ function giantBodies(A){
 }
 function clearHazards(A){ A.swarm = []; A.waves = []; A.shards = []; A.shock = []; A.stabs = []; A.spikes = []; A.beams = []; if(A.bat){ drop(A.bat); A.bat = null; } release(A, false); }
 function endPhase(A){
+  if(G.vesperEncounter){root.BladefallExploreFinale.encounterDefeat();return;}
   clearHazards(A);
   try{ restoreBlood(G.p, 1); }catch(_e){}
   if(A.phase < 3){
@@ -633,16 +636,7 @@ function updateSpikes(A, p, dt){
 /* ── The end ─────────────────────────────────────────────────────────────── */
 function finale(){
   if(typeof coopFinishTogether==='function'&&!coopFinishTogether('cloaked-man',finale))return;
-  mode = 'win'; showGameUI(false);
-  try{ meta.cloakedManDefeated = true; persist(); }catch(_e){}
-  showOvHTML(`<div class="card">
-    <p class="ovsub" style="letter-spacing:.34em;margin:0 0 6px;">BATTLE ${LABEL} · THE LAST FIGHT</p>
-    <h1 class="title" style="margin:0 0 4px;">THE CLOAKED MAN</h1>
-    <p class="subtitle" style="margin:0 0 18px;">is still</p>
-    <p class="hint" style="margin:0 0 14px;">The skull goes down behind the rim of the world with the light still coming out of its crack. What comes back up is only the cloak, and it settles on the stone like any other cloth.</p>
-    <p class="hint" style="margin:0 0 20px;opacity:.75;">Boss designed by Isaac’s little brother.</p>
-    <button class="bigbtn" id="cmDone">Continue</button></div>`);
-  const b = document.getElementById('cmDone'); if(b) b.onclick = () => titleScreen();
+  root.BladefallExploreFinale.ending();
 }
 
 /* ── Frame ─────────────────────────────────────────────────────────────────── */
@@ -666,6 +660,10 @@ function update(dt, p){
   const entrant=[p,...(G.coopSession&&NET.isHost()&&NET.ghost?.stage===STAGE?[NET.ghost]:[])].find(body=>!body.dead&&body.x>ARENA.x1+90&&body.x<ARENA.x2);
   if(!A.fight&&!A.won&&entrant)begin(A,entrant);
   if(A.fight && !A.won && !p.dead && p.x < ARENA.x1 - 30) p.x = ARENA.x1 + 20;       // the bars are shut
+  if(G.vesperEncounter&&A.fight&&!p.dead){
+    A.encounterT+=dt;
+    if(A.encounterT>14&&!meta.testMode){A.encounterT=0;p.invuln=0;p.dodgeTimer=0;hurtPlayer(999,0,true,99);if(G.coopSession)root.BladefallExploreFinale.encounterDefeat();return;}
+  }
   if(A.trans) updateTransition(A, p, dt);
   if(A.fight && !A.trans){
     updateGrab(A, p, dt);

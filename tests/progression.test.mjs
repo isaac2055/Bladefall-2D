@@ -8,7 +8,7 @@ const Progression = globalThis.BladefallProgression;
 
 test('N01 constitution is internally valid and single-player authoritative', () => {
   assert.deepEqual(Progression.validate(), {
-    ok: true, errors: [], zones: 43, connectors: 41, abilities: 13, vaultKeys: 7, foundationRuns: 16,
+    ok: true, errors: [], zones: 44, connectors: 41, abilities: 13, vaultKeys: 7, foundationRuns: 16,
   });
   assert.equal(Progression.MODE, 'single-player');
   assert.deepEqual(Progression.foundationRuns.slice(0, 11).map((run) => [run.id, run.status]), [

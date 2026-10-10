@@ -1,7 +1,7 @@
 # Bladefall for Android
 
 `./android/build-apk.sh` (or `npm run build:apk`) builds `android/dist/Bladefall-<version>.apk`. It is a full-screen, landscape app with the whole game inside it:
-- the same files the website ships (`./build-deploy.sh` runs first);
+- the current Cloudflare `public/` assets, validated before packaging;
 - it plays offline (co-op still needs the network);
 - saves stay on the phone and survive updates.
 
@@ -29,11 +29,14 @@ brew install openjdk@17 && brew install --cask android-commandlinetools
 sdkmanager --sdk_root=/opt/homebrew/share/android-commandlinetools "platforms;android-34" "build-tools;34.0.0"
 ```
 
-The script finds both itself. Override with `JAVA_HOME` or `ANDROID_SDK_ROOT` if needed.
+The script finds the Homebrew JDK before older system Java installations. Override with `JAVA_HOME` or `ANDROID_SDK_ROOT` if needed.
 
 The app is one Java class, `src/com/bladefall/game/MainActivity.java`, holding a WebView:
 - **Serving the game.** It serves `assets/www` from `https://appassets.bladefall/`, an address that exists only inside the app. Saves (localStorage), audio and scripts therefore behave exactly as on the website.
 - **Screen.** It hides the system bars, keeps the screen on and draws under the camera cut-out.
+- **Downloads:** external web links open in the phone browser. Co-op uses the existing online WebRTC connection; each Survive player runs their own room state.
+- **Touch:** Survive starts with immediate action buttons and a low-deadzone stick. Existing custom or gesture layouts are retained; choose a different layout under Touch controls.
+- **Controller:** Survive supports standard controllers with rebindings; Explore supports the standard mapping documented in Settings, including LB utility combinations.
 - **Back gesture:**
   - In the Precision Core it pauses, or steps back a menu.
   - At the title, it presses Escape; a second back within two seconds closes the app.

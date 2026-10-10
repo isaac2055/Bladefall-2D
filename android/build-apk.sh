@@ -24,7 +24,12 @@ done
 BT="$SDK/build-tools/$BT_VER"
 ANDROID_JAR="$SDK/platforms/android-$PLATFORM_VER/android.jar"
 [ -f "$ANDROID_JAR" ] || { echo "platforms;android-$PLATFORM_VER not installed"; exit 1; }
-if [ -z "${JAVA_HOME:-}" ]; then JAVA_HOME="$(/usr/libexec/java_home -v 17+ 2>/dev/null || true)"; fi
+if [ -z "${JAVA_HOME:-}" ]; then
+  for c in /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home /usr/local/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home; do
+    if [ -x "$c/bin/javac" ]; then JAVA_HOME="$c"; break; fi
+  done
+  if [ -z "${JAVA_HOME:-}" ]; then JAVA_HOME="$(/usr/libexec/java_home -v 17+ 2>/dev/null || true)"; fi
+fi
 [ -n "${JAVA_HOME:-}" ] && [ -x "$JAVA_HOME/bin/javac" ] || { echo "A JDK 17+ is needed (JAVA_HOME)"; exit 1; }
 export JAVA_HOME PATH="$JAVA_HOME/bin:$PATH"
 
@@ -36,8 +41,9 @@ echo "Building Bladefall $VERSION (code $CODE) with build-tools $BT_VER, android
 rm -rf "$BUILD"; mkdir -p "$BUILD"/{assets/www,res,classes,dex,gen} "$DIST"
 
 # --- the game files: exactly what the website ships ---------------------------------------------------------
-"$ROOT/build-deploy.sh" >/dev/null
-rsync -a --exclude 'netlify.toml' --exclude 'README.md' --exclude '*.bak' "$ROOT/netlify-deploy/" "$BUILD/assets/www/"
+# Match the Cloudflare public output, including newly added campaign modules.
+(cd "$ROOT" && node scripts/playtest-release/check-cloudflare-assets.mjs) >/dev/null
+rsync -a --exclude 'serve.mjs' --exclude '*.bak' --exclude '_headers' --exclude '_redirects' "$ROOT/public/" "$BUILD/assets/www/"
 
 # --- launcher icon ------------------------------------------------------------------------------------------
 for d in mdpi:48 hdpi:72 xhdpi:96 xxhdpi:144 xxxhdpi:192; do

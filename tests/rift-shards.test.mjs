@@ -91,12 +91,15 @@ test('LEVEL SELECT: one Fractured tab in place of the NG+ tiers, all twenty echo
     'Fractured Keep', 'Fractured Warden', 'Fractured Frostfell', 'Fractured Sorcerer', 'Fractured Emberdeep', 'Fractured Colossus',
     'The Fractured Inversion', 'The Fractured Tyrant', 'The Fractured King', 'The Fractured Line', 'Fractured Cliffs', 'Fractured Shores',
     'The Fractured Colony', 'The Fractured Path', 'Fractured Palace']);
+  sandbox.window.BladefallExploreFinale={visible:()=>true};
   const rows = R.levelSelectRows();
-  // Twenty echoes numbered 21–40, then the final echo's placeholder (41). Fractured Celeste is on the title screen.
+  // Twenty echoes numbered 21–40, then the playable Final Echo (41) when the finale unlock allows it.
   assert.equal((rows.match(/class="choice lvlbtn"/g) || []).length, 21);
   assert.deepEqual([...rows.matchAll(/min-width:26px;display:inline-block;">(\d+)</g)].map(m => +m[1]), Array.from({ length:21 }, (_, i) => 21 + i));
   assert.doesNotMatch(rows, /Fractured Celeste/);
-  assert.match(rows, /The Final Echo.*disabled|disabled.*The Final Echo/s);
+  assert.match(rows, /data-fx="45"[^]*The Final Echo/);
+  sandbox.window.BladefallExploreFinale={visible:()=>false};
+  assert.doesNotMatch(R.levelSelectRows(),/The Final Echo/);
   assert.match(source, /beginRun\(0,null,\{hp:1,dmg:1\},\{startStage:\+b\.dataset\.fx,levelSelect:true\}\)/, 'a built echo starts from the tab');
 });
 

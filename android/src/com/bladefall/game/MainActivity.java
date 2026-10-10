@@ -1,6 +1,8 @@
 package com.bladefall.game;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.content.res.AssetManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -94,13 +96,20 @@ public class MainActivity extends Activity {
                 if (!HOST.equals(req.getUrl().getHost())) return null;
                 String path = req.getUrl().getPath();
                 if (path == null || path.equals("/") || path.isEmpty()) path = "/index.html";
+                // Pages accepts extensionless links; keep those exact same links working offline.
+                if (!path.substring(path.lastIndexOf('/')+1).contains(".")) path += ".html";
                 return asset(path.substring(1));
             }
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest req) {
-                // Pages of the game stay in the app; anything else (a link out) is not followed.
-                return !HOST.equals(req.getUrl().getHost());
+                if (HOST.equals(req.getUrl().getHost())) return false;
+                // Downloads/help open in the browser; WebRTC and game requests still run in WebView.
+                Uri url=req.getUrl();
+                if ("https".equals(url.getScheme()) || "http".equals(url.getScheme())) {
+                    try { startActivity(new Intent(Intent.ACTION_VIEW, url)); } catch (Exception ignored) {}
+                }
+                return true;
             }
         });
         setContentView(web);
@@ -175,6 +184,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
+        web.evaluateJavascript("window.dispatchEvent(new Event('blur'));", null);
         web.onPause();
     }
 

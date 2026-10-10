@@ -1,0 +1,795 @@
+{
+  "version": "7.304.0",
+  "worlds": 40,
+  "cuts": 39,
+  "ordinary": 87,
+  "superrooms": 10,
+  "mainChallenges": 548,
+  "unchangedBankDefinitions": 97,
+  "integratedRoutes": 97,
+  "checkpointLinks": 165,
+  "dialogueRecordsPreserved": 5,
+  "questAndSecretChainsPreserved": true,
+  "nativeGeometryAndTapesPreserved": true,
+  "ownCompletionGuard": true,
+  "cutCheckpointMigration": true,
+  "geographySections": 1258,
+  "routes": [
+    {
+      "world": 1,
+      "id": "cl1-bank-b21",
+      "source": "bank-b21",
+      "exited": true,
+      "deaths": 0,
+      "frames": 602
+    },
+    {
+      "world": 1,
+      "id": "cl1-bank-b22",
+      "source": "bank-b22",
+      "exited": true,
+      "deaths": 0,
+      "frames": 369
+    },
+    {
+      "world": 2,
+      "id": "cl2-bank-b23",
+      "source": "bank-b23",
+      "exited": true,
+      "deaths": 0,
+      "frames": 338
+    },
+    {
+      "world": 2,
+      "id": "cl2-bank-f22",
+      "source": "bank-f22",
+      "exited": true,
+      "deaths": 0,
+      "frames": 843
+    },
+    {
+      "world": 3,
+      "id": "cl3-bank-b39",
+      "source": "bank-b39",
+      "exited": true,
+      "deaths": 0,
+      "frames": 181
+    },
+    {
+      "world": 3,
+      "id": "cl3-bank-b11",
+      "source": "bank-b11",
+      "exited": true,
+      "deaths": 0,
+      "frames": 614
+    },
+    {
+      "world": 4,
+      "id": "cl4-bank-b15",
+      "source": "bank-b15",
+      "exited": true,
+      "deaths": 0,
+      "frames": 198
+    },
+    {
+      "world": 4,
+      "id": "cl4-bank-b38",
+      "source": "bank-b38",
+      "exited": true,
+      "deaths": 0,
+      "frames": 353
+    },
+    {
+      "world": 5,
+      "id": "cl5-bank-b27",
+      "source": "bank-b27",
+      "exited": true,
+      "deaths": 0,
+      "frames": 205
+    },
+    {
+      "world": 5,
+      "id": "cl5-bank-b31",
+      "source": "bank-b31",
+      "exited": true,
+      "deaths": 0,
+      "frames": 303
+    },
+    {
+      "world": 6,
+      "id": "cl6-bank-b50",
+      "source": "bank-b50",
+      "exited": true,
+      "deaths": 0,
+      "frames": 196
+    },
+    {
+      "world": 6,
+      "id": "cl6-bank-f20",
+      "source": "bank-f20",
+      "exited": true,
+      "deaths": 0,
+      "frames": 549
+    },
+    {
+      "world": 7,
+      "id": "cl7-bank-b20",
+      "source": "bank-b20",
+      "exited": true,
+      "deaths": 0,
+      "frames": 591
+    },
+    {
+      "world": 7,
+      "id": "cl7-bank-f47",
+      "source": "bank-f47",
+      "exited": true,
+      "deaths": 0,
+      "frames": 257
+    },
+    {
+      "world": 8,
+      "id": "cl8-bank-f21",
+      "source": "bank-f21",
+      "exited": true,
+      "deaths": 0,
+      "frames": 461
+    },
+    {
+      "world": 8,
+      "id": "cl8-bank-b16",
+      "source": "bank-b16",
+      "exited": true,
+      "deaths": 0,
+      "frames": 688
+    },
+    {
+      "world": 8,
+      "id": "cl8-bank-b33",
+      "source": "bank-b33",
+      "exited": true,
+      "deaths": 0,
+      "frames": 156
+    },
+    {
+      "world": 8,
+      "id": "cl8-bank-b53",
+      "source": "bank-b53",
+      "exited": true,
+      "deaths": 0,
+      "frames": 1777
+    },
+    {
+      "world": 9,
+      "id": "cl9-bank-b26",
+      "source": "bank-b26",
+      "exited": true,
+      "deaths": 0,
+      "frames": 509
+    },
+    {
+      "world": 9,
+      "id": "cl9-bank-b34",
+      "source": "bank-b34",
+      "exited": true,
+      "deaths": 0,
+      "frames": 179
+    },
+    {
+      "world": 10,
+      "id": "cl10-bank-b25",
+      "source": "bank-b25",
+      "exited": true,
+      "deaths": 0,
+      "frames": 648
+    },
+    {
+      "world": 10,
+      "id": "cl10-bank-b18",
+      "source": "bank-b18",
+      "exited": true,
+      "deaths": 0,
+      "frames": 1138
+    },
+    {
+      "world": 11,
+      "id": "cl11-bank-b13",
+      "source": "bank-b13",
+      "exited": true,
+      "deaths": 0,
+      "frames": 596
+    },
+    {
+      "world": 11,
+      "id": "cl11-bank-b35",
+      "source": "bank-b35",
+      "exited": true,
+      "deaths": 0,
+      "frames": 349
+    },
+    {
+      "world": 11,
+      "id": "cl11-bank-b30",
+      "source": "bank-b30",
+      "exited": true,
+      "deaths": 0,
+      "frames": 179
+    },
+    {
+      "world": 12,
+      "id": "cl12-bank-b05",
+      "source": "bank-b05",
+      "exited": true,
+      "deaths": 0,
+      "frames": 205
+    },
+    {
+      "world": 12,
+      "id": "cl12-bank-b14",
+      "source": "bank-b14",
+      "exited": true,
+      "deaths": 0,
+      "frames": 512
+    },
+    {
+      "world": 12,
+      "id": "cl12-bank-b17",
+      "source": "bank-b17",
+      "exited": true,
+      "deaths": 0,
+      "frames": 803
+    },
+    {
+      "world": 12,
+      "id": "cl12-bank-b49",
+      "source": "bank-b49",
+      "exited": true,
+      "deaths": 0,
+      "frames": 1146
+    },
+    {
+      "world": 13,
+      "id": "cl13-bank-b58",
+      "source": "bank-b58",
+      "exited": true,
+      "deaths": 0,
+      "frames": 591
+    },
+    {
+      "world": 13,
+      "id": "cl13-bank-b59",
+      "source": "bank-b59",
+      "exited": true,
+      "deaths": 0,
+      "frames": 524
+    },
+    {
+      "world": 14,
+      "id": "cl14-bank-f39",
+      "source": "bank-f39",
+      "exited": true,
+      "deaths": 0,
+      "frames": 376
+    },
+    {
+      "world": 14,
+      "id": "cl14-bank-b19",
+      "source": "bank-b19",
+      "exited": true,
+      "deaths": 0,
+      "frames": 576
+    },
+    {
+      "world": 14,
+      "id": "cl14-bank-f41",
+      "source": "bank-f41",
+      "exited": true,
+      "deaths": 0,
+      "frames": 180
+    },
+    {
+      "world": 15,
+      "id": "cl15-bank-b37",
+      "source": "bank-b37",
+      "exited": true,
+      "deaths": 0,
+      "frames": 175
+    },
+    {
+      "world": 15,
+      "id": "cl15-bank-f37",
+      "source": "bank-f37",
+      "exited": true,
+      "deaths": 0,
+      "frames": 257
+    },
+    {
+      "world": 15,
+      "id": "cl15-bank-f44",
+      "source": "bank-f44",
+      "exited": true,
+      "deaths": 0,
+      "frames": 260
+    },
+    {
+      "world": 15,
+      "id": "cl15-bank-b48",
+      "source": "bank-b48",
+      "exited": true,
+      "deaths": 0,
+      "frames": 854
+    },
+    {
+      "world": 16,
+      "id": "cl16-bank-b41",
+      "source": "bank-b41",
+      "exited": true,
+      "deaths": 0,
+      "frames": 305
+    },
+    {
+      "world": 16,
+      "id": "cl16-bank-b43",
+      "source": "bank-b43",
+      "exited": true,
+      "deaths": 0,
+      "frames": 364
+    },
+    {
+      "world": 17,
+      "id": "cl17-bank-f35",
+      "source": "bank-f35",
+      "exited": true,
+      "deaths": 0,
+      "frames": 218
+    },
+    {
+      "world": 17,
+      "id": "cl17-bank-b32",
+      "source": "bank-b32",
+      "exited": true,
+      "deaths": 0,
+      "frames": 151
+    },
+    {
+      "world": 17,
+      "id": "cl17-bank-b36",
+      "source": "bank-b36",
+      "exited": true,
+      "deaths": 0,
+      "frames": 132
+    },
+    {
+      "world": 18,
+      "id": "cl18-bank-f38",
+      "source": "bank-f38",
+      "exited": true,
+      "deaths": 0,
+      "frames": 429
+    },
+    {
+      "world": 18,
+      "id": "cl18-bank-b42",
+      "source": "bank-b42",
+      "exited": true,
+      "deaths": 0,
+      "frames": 469
+    },
+    {
+      "world": 18,
+      "id": "cl18-bank-b44",
+      "source": "bank-b44",
+      "exited": true,
+      "deaths": 0,
+      "frames": 1338
+    },
+    {
+      "world": 19,
+      "id": "cl19-bank-b12",
+      "source": "bank-b12",
+      "exited": true,
+      "deaths": 0,
+      "frames": 571
+    },
+    {
+      "world": 19,
+      "id": "cl19-bank-b29",
+      "source": "bank-b29",
+      "exited": true,
+      "deaths": 0,
+      "frames": 325
+    },
+    {
+      "world": 19,
+      "id": "cl19-bank-b24",
+      "source": "bank-b24",
+      "exited": true,
+      "deaths": 0,
+      "frames": 313
+    },
+    {
+      "world": 19,
+      "id": "cl19-bank-b45",
+      "source": "bank-b45",
+      "exited": true,
+      "deaths": 0,
+      "frames": 1202
+    },
+    {
+      "world": 20,
+      "id": "cl20-bank-b61",
+      "source": "bank-b61",
+      "exited": true,
+      "deaths": 0,
+      "frames": 243
+    },
+    {
+      "world": 20,
+      "id": "cl20-bank-f48",
+      "source": "bank-f48",
+      "exited": true,
+      "deaths": 0,
+      "frames": 928
+    },
+    {
+      "world": 21,
+      "id": "cl21-bank-b56",
+      "source": "bank-b56",
+      "exited": true,
+      "deaths": 0,
+      "frames": 242
+    },
+    {
+      "world": 21,
+      "id": "cl21-bank-f40",
+      "source": "bank-f40",
+      "exited": true,
+      "deaths": 0,
+      "frames": 430
+    },
+    {
+      "world": 22,
+      "id": "cl22-bank-f17",
+      "source": "bank-f17",
+      "exited": true,
+      "deaths": 0,
+      "frames": 602
+    },
+    {
+      "world": 22,
+      "id": "cl22-bank-f26",
+      "source": "bank-f26",
+      "exited": true,
+      "deaths": 0,
+      "frames": 130
+    },
+    {
+      "world": 23,
+      "id": "cl23-bank-b46",
+      "source": "bank-b46",
+      "exited": true,
+      "deaths": 0,
+      "frames": 97
+    },
+    {
+      "world": 23,
+      "id": "cl23-bank-f23",
+      "source": "bank-f23",
+      "exited": true,
+      "deaths": 0,
+      "frames": 354
+    },
+    {
+      "world": 24,
+      "id": "cl24-bank-f59",
+      "source": "bank-f59",
+      "exited": true,
+      "deaths": 0,
+      "frames": 343
+    },
+    {
+      "world": 24,
+      "id": "cl24-bank-f60",
+      "source": "bank-f60",
+      "exited": true,
+      "deaths": 0,
+      "frames": 676
+    },
+    {
+      "world": 24,
+      "id": "cl24-bank-f50",
+      "source": "bank-f50",
+      "exited": true,
+      "deaths": 0,
+      "frames": 977
+    },
+    {
+      "world": 25,
+      "id": "cl25-bank-f27",
+      "source": "bank-f27",
+      "exited": true,
+      "deaths": 0,
+      "frames": 184
+    },
+    {
+      "world": 25,
+      "id": "cl25-bank-f33",
+      "source": "bank-f33",
+      "exited": true,
+      "deaths": 0,
+      "frames": 255
+    },
+    {
+      "world": 26,
+      "id": "cl26-bank-b57",
+      "source": "bank-b57",
+      "exited": true,
+      "deaths": 0,
+      "frames": 175
+    },
+    {
+      "world": 26,
+      "id": "cl26-bank-f34",
+      "source": "bank-f34",
+      "exited": true,
+      "deaths": 0,
+      "frames": 160
+    },
+    {
+      "world": 26,
+      "id": "cl26-bank-b52",
+      "source": "bank-b52",
+      "exited": true,
+      "deaths": 0,
+      "frames": 966
+    },
+    {
+      "world": 27,
+      "id": "cl27-bank-f51",
+      "source": "bank-f51",
+      "exited": true,
+      "deaths": 0,
+      "frames": 185
+    },
+    {
+      "world": 27,
+      "id": "cl27-bank-f11",
+      "source": "bank-f11",
+      "exited": true,
+      "deaths": 0,
+      "frames": 687
+    },
+    {
+      "world": 28,
+      "id": "cl28-bank-b51",
+      "source": "bank-b51",
+      "exited": true,
+      "deaths": 0,
+      "frames": 332
+    },
+    {
+      "world": 28,
+      "id": "cl28-bank-f18",
+      "source": "bank-f18",
+      "exited": true,
+      "deaths": 0,
+      "frames": 225
+    },
+    {
+      "world": 29,
+      "id": "cl29-bank-f14",
+      "source": "bank-f14",
+      "exited": true,
+      "deaths": 0,
+      "frames": 277
+    },
+    {
+      "world": 29,
+      "id": "cl29-bank-f15",
+      "source": "bank-f15",
+      "exited": true,
+      "deaths": 0,
+      "frames": 587
+    },
+    {
+      "world": 30,
+      "id": "cl30-bank-f36",
+      "source": "bank-f36",
+      "exited": true,
+      "deaths": 0,
+      "frames": 259
+    },
+    {
+      "world": 30,
+      "id": "cl30-bank-f43",
+      "source": "bank-f43",
+      "exited": true,
+      "deaths": 0,
+      "frames": 308
+    },
+    {
+      "world": 31,
+      "id": "cl31-bank-f42",
+      "source": "bank-f42",
+      "exited": true,
+      "deaths": 0,
+      "frames": 154
+    },
+    {
+      "world": 31,
+      "id": "cl31-bank-f24",
+      "source": "bank-f24",
+      "exited": true,
+      "deaths": 0,
+      "frames": 89
+    },
+    {
+      "world": 32,
+      "id": "cl32-bank-f52",
+      "source": "bank-f52",
+      "exited": true,
+      "deaths": 0,
+      "frames": 238
+    },
+    {
+      "world": 32,
+      "id": "cl32-bank-f12",
+      "source": "bank-f12",
+      "exited": true,
+      "deaths": 0,
+      "frames": 672
+    },
+    {
+      "world": 32,
+      "id": "cl32-bank-f49",
+      "source": "bank-f49",
+      "exited": true,
+      "deaths": 0,
+      "frames": 890
+    },
+    {
+      "world": 33,
+      "id": "cl33-bank-f13",
+      "source": "bank-f13",
+      "exited": true,
+      "deaths": 0,
+      "frames": 370
+    },
+    {
+      "world": 33,
+      "id": "cl33-bank-f31",
+      "source": "bank-f31",
+      "exited": true,
+      "deaths": 0,
+      "frames": 153
+    },
+    {
+      "world": 34,
+      "id": "cl34-bank-f30",
+      "source": "bank-f30",
+      "exited": true,
+      "deaths": 0,
+      "frames": 307
+    },
+    {
+      "world": 34,
+      "id": "cl34-bank-f19",
+      "source": "bank-f19",
+      "exited": true,
+      "deaths": 0,
+      "frames": 316
+    },
+    {
+      "world": 35,
+      "id": "cl35-bank-f16",
+      "source": "bank-f16",
+      "exited": true,
+      "deaths": 0,
+      "frames": 215
+    },
+    {
+      "world": 35,
+      "id": "cl35-bank-f25",
+      "source": "bank-f25",
+      "exited": true,
+      "deaths": 0,
+      "frames": 416
+    },
+    {
+      "world": 35,
+      "id": "cl35-bank-f45",
+      "source": "bank-f45",
+      "exited": true,
+      "deaths": 0,
+      "frames": 600
+    },
+    {
+      "world": 36,
+      "id": "cl36-bank-b54",
+      "source": "bank-b54",
+      "exited": true,
+      "deaths": 0,
+      "frames": 177
+    },
+    {
+      "world": 36,
+      "id": "cl36-bank-b55",
+      "source": "bank-b55",
+      "exited": true,
+      "deaths": 0,
+      "frames": 229
+    },
+    {
+      "world": 37,
+      "id": "cl37-bank-f55",
+      "source": "bank-f55",
+      "exited": true,
+      "deaths": 0,
+      "frames": 129
+    },
+    {
+      "world": 37,
+      "id": "cl37-bank-f56",
+      "source": "bank-f56",
+      "exited": true,
+      "deaths": 0,
+      "frames": 394
+    },
+    {
+      "world": 38,
+      "id": "cl38-bank-b40",
+      "source": "bank-b40",
+      "exited": true,
+      "deaths": 0,
+      "frames": 162
+    },
+    {
+      "world": 38,
+      "id": "cl38-bank-f58",
+      "source": "bank-f58",
+      "exited": true,
+      "deaths": 0,
+      "frames": 382
+    },
+    {
+      "world": 38,
+      "id": "cl38-bank-f46",
+      "source": "bank-f46",
+      "exited": true,
+      "deaths": 0,
+      "frames": 592
+    },
+    {
+      "world": 39,
+      "id": "cl39-bank-f28",
+      "source": "bank-f28",
+      "exited": true,
+      "deaths": 0,
+      "frames": 189
+    },
+    {
+      "world": 39,
+      "id": "cl39-bank-f61",
+      "source": "bank-f61",
+      "exited": true,
+      "deaths": 0,
+      "frames": 143
+    },
+    {
+      "world": 40,
+      "id": "cl40-bank-f32",
+      "source": "bank-f32",
+      "exited": true,
+      "deaths": 0,
+      "frames": 301
+    },
+    {
+      "world": 40,
+      "id": "cl40-bank-f57",
+      "source": "bank-f57",
+      "exited": true,
+      "deaths": 0,
+      "frames": 295
+    }
+  ]
+}

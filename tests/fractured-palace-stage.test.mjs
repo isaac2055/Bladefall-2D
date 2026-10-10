@@ -86,7 +86,7 @@ test('THE END OF THE ECHOES: the flag, the mouths cleared off the road out, the 
   const s = fnFrom(fpa, 'struck');
   assert.match(s, /meta\.actThreeDone = true; persist\(\);/);
   assert.match(s, /clearPlacedPortals\(true, 'king-yields'\)/, 'or the road out runs through your own mouths (the chained bot looped there)');
-  assert.match(fnFrom(fpa, 'finale'), /END OF ACT THREE/);
+  assert.match(fnFrom(fpa, 'finale'), /BladefallExploreFinale\.afterPalace\(\)/);
   assert.match(fnFrom(fpa, 'update'), /if\(!A\.over && A\.yielded && p\.x > LEN - 150 && !p\.dead\)\{ A\.over = true; finale\(\); \}/);
 });
 

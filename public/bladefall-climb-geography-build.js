@@ -76,7 +76,7 @@ function frameWorld(w){
  // Each removed checkpoint resumes at the next original challenge, not a hub.
  const main=w.sections.filter(s=>!defs.get(s.room).connector),together=new Set();
  for(const q of [...w.quests,...w.secrets]){const a=main.findIndex(s=>s.room===(q.from||q.host)),b=main.findIndex(s=>s.room===q.returnTo);if(a>=0&&b>=0)for(let i=Math.min(a,b);i<Math.max(a,b);i++)together.add(i);}
- w.retiredPassages={};let count=0,turn=0;
+ w.retiredPassages={...(w.retiredRooms||{})};let count=0,turn=0;
  for(let i=0;i<main.length-1;i++){count++;if(count>=3&&!together.has(i)&&['left','right'].includes(defs.get(main[i].room).exit)){w.retiredPassages[`cl${w.n}-turn-${w.n}-${++turn}`]=main[i+1].room;count=0;}}
 
 }

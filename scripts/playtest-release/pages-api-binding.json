@@ -1,0 +1,4 @@
+{
+  "services": [{"binding": "PLAYTEST_API", "service": "bladefall-2d"}],
+  "env": {"preview": {"services": []}}
+}

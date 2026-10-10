@@ -68,21 +68,22 @@ function create(worlds,stored){
  for(const id of Object.keys(clean.solved||{}))if(roomWorld.has(id)&&clean.solved[id])state.solved[id]=true;
  for(const l of links)if(clean.open?.[l.id])state.open[l.id]=true;
  let cp=clean.checkpoint;
- const replacement=cp&&byId.get(cp.world)?.retiredPassages?.[cp.room];
+ const replacement=cp&&(byId.get(cp.world)?.retiredRooms?.[cp.room]||byId.get(cp.world)?.retiredPassages?.[cp.room]);
  if(replacement)cp={world:cp.world,room:replacement,via:null,entry:null};
  if(cp&&roomWorld.get(cp.room)===cp.world){state.checkpoint={world:cp.world,room:cp.room,via:cp.via==='back'?'back':cp.via==='door'?'door':null,entry:cp.entry==='left'||cp.entry==='right'?cp.entry:null};state.visited[cp.world]=true;}
  const last=n=>byId.get(n)?.atlasEnd||byId.get(n)?.sections.at(-1)?.room;
+ const complete=n=>{const w=byId.get(n);return !!w&&!!state.solved[last(n)]&&(w.requiredMainRooms||[]).every(id=>!!state.solved[id]);};
  function refresh(){
   const opened=[];
   for(const l of links){
-   const ready=l.kind==='road'?state.solved[last(l.a)]:state.solved[last(l.a)]&&state.solved[last(l.b)];
+   const ready=l.kind==='road'?complete(l.a):complete(l.a)&&complete(l.b);
    if(ready&&!state.open[l.id]){state.open[l.id]=true;opened.push(l.id);}
   }
   return opened;
  }
  refresh();
  return {
-  state,positions,links,reserved,
+  state,positions,links,reserved,complete,
   visit(world,room,via=null,entry=null){if(roomWorld.get(room)!==world)return false;state.visited[world]=true;state.checkpoint={world,room,via:via==='back'?'back':via==='door'?'door':null,entry:entry==='left'||entry==='right'?entry:null};return true;},
   solve(room){if(!roomWorld.has(room))return [];state.solved[room]=true;return refresh();},
   routes(world){return links.filter(l=>l.a===world||l.b===world).map(l=>({...l,to:l.a===world?l.b:l.a,open:!!state.open[l.id]}));},

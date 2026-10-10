@@ -1,0 +1,15 @@
+# Resume at 7.304
+
+The user's approved campaign integration, menus, mobile/controller fixes, independent co-op, signed APK and Explore finale are implemented. Start with [release scope and evidence](../docs/playtest/RELEASE-7.304.md), [campaign assignments](../docs/room-bank/CAMPAIGN-INTEGRATION-7.304.md), and [next ten superroom proposals](../docs/room-bank/SUPERROOMS-NEXT-10-7.304.md). The next ten are planned, not authored. Do not recreate the earlier Celeste reports or bank-review runs.
+
+All 87 approved ordinary bank rooms plus 10 existing superrooms are imported across forty worlds; 39 native rooms are retired. The authored bank catalog remains the 7.303 approved set. `scripts/climb/import-bank.mjs` reapplies imports from the tracked native source; `build-climbs.mjs` invokes it. Preserve source, quest/secret geometry, saved routes, NPC text and per-room checkpoints.
+
+Changed joins use `bladefall-climb-bank-passages.js`. Imported rooms must keep their authored spring/drop-through rules. Do not bind passage return to held Down: that interrupted approved down-input routes. The pause-menu Return through passage action is intentional. Fresh timed runs require all current-run rooms; explicit Continue may use the player's own persisted progress. Co-op follow enters unsolved rooms at the visitor's own checkpoint and never imports devices or clears.
+
+Explore's secret ending is implemented in `bladefall-explore-finale.js`; detailed behavior and compatibility notes are in `docs/playtest/EXPLORE-FINALE-7.304.md`. Public finale selection requires all forty solo Explore clears, including genuine earlier archived records. Survive's comparable story ending is explicitly deferred.
+
+The APK is `android/dist/Bladefall-7.304.0.apk`, signed with the existing certificate, with SHA-256 `6c8c5c69502d5367f77979a2ec469bbc1460adf44df72702dc9a52de6ef04661`. It is a GitHub release asset, never a Pages public file. If changing packaged game code, rebuild and compare assets before replacing a release. Physical phone/controller testing is still outstanding; browser touch, synthetic gamepad and real two-profile WebRTC tests passed.
+
+Public API activation is the remaining external dependency. Pages previously had no working `/api/playtest`. The score/heart API and Pages adapter are prepared, but Wrangler was signed out at release preparation. A pending user question requests Cloudflare login. Deploy the API-only Worker with `wrangler.api.jsonc` before activating the Pages service binding; do not bind Pages to a missing Worker or duplicate the full game assets into the API Worker. Local scores remain saved and queued. Check current deployment/auth status before claiming remote synchronization works.
+
+Standing repository authorization allows verified commits/pushes to GitHub main for automatic Cloudflare Pages deployment. Never Netlify deploy, force-push, or commit private feedback/tokens/caches. Check GitHub release and current commit state before retrying any release action.

@@ -242,7 +242,7 @@ function builtStage(source){
    after it is the Base tab's 42. */
 const FINAL_ECHO = { tag:'41', name:'The Final Echo' };
 function levelSelectRows(){
-  const last = `<button class="choice lvlbtn" disabled style="opacity:.5;border-color:#8a5cd8;"><div class="cname"><span style="color:#c9a8ff;min-width:26px;display:inline-block;">${FINAL_ECHO.tag}</span>${FINAL_ECHO.name}<span class="ckey">PLACEHOLDER · NOT YET BUILT</span></div></button>`;
+  const last = root.BladefallExploreFinale?.visible()?`<button class="choice lvlbtn" data-fx="45" style="border-color:#8a5cd8;"><div class="cname"><span style="color:#c9a8ff;min-width:26px;display:inline-block;">${FINAL_ECHO.tag}</span>${FINAL_ECHO.name}<span class="ckey">FINAL ECHO</span></div></button>`:'';
   return FRACTURED.map(([name, source], i) => {
     const at = builtStage(source), tag = String(i + 21);
     if(at == null) return `<button class="choice lvlbtn" disabled style="opacity:.35;"><div class="cname"><span style="color:var(--muted);min-width:26px;display:inline-block;">${tag}</span>${name}<span class="ckey">NOT YET BUILT</span></div></button>`;

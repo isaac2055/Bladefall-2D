@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Bladefall for Android (7.258): one full-screen WebView playing the game files bundled in assets/www.
+<!-- Bladefall for Android: one full-screen WebView playing the game files bundled in assets/www.
      Built without Gradle by android/build-apk.sh. -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bladefall.game">
@@ -7,6 +7,8 @@
     <!-- Co-op uses the network; everything else plays offline from the bundled files. -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
 
     <application
         android:label="Bladefall"

@@ -4,14 +4,24 @@ const M=globalThis.BladefallPlaytestModel;
 const id=s=>typeof s==='string'&&/^[a-zA-Z0-9-]{8,128}$/.test(s);
 const hash=async s=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s))),v=>v.toString(16).padStart(2,'0')).join('');
 const response=(value,status=200)=>Response.json(value,{status,headers:{'Cache-Control':'no-store'}});
+const APP_ORIGIN='https://appassets.bladefall';
 export async function handle(request,store){
+ const app=request.headers.get('origin')===APP_ORIGIN;
+ const cors={'Access-Control-Allow-Origin':APP_ORIGIN,'Access-Control-Allow-Methods':'GET, POST, OPTIONS','Access-Control-Allow-Headers':'Content-Type','Vary':'Origin'};
+ if(request.method==='OPTIONS')return new Response(null,{status:app?204:403,headers:app?cors:{}});
+ const result=await handleRequest(request,store);
+ if(!app)return result;
+ const headers=new Headers(result.headers);for(const [k,v] of Object.entries(cors))headers.set(k,v);
+ return new Response(result.body,{status:result.status,headers});
+}
+async function handleRequest(request,store){
  if(request.method==='GET'){
   const listing=await store.list({prefix:'times/'+M.SEASON+'/'}),records=[];
   for(let i=0;i<listing.blobs.length;i+=20){const rows=await Promise.all(listing.blobs.slice(i,i+20).map(b=>store.get(b.key,{type:'json'})));records.push(...rows.filter(M.valid));}
-  return response({season:M.SEASON,records:M.best(records)});
+  return response({season:M.SEASON,records:M.publicBest(records)});
  }
  if(request.method!=='POST')return response({error:'method'},405);
- const origin=request.headers.get('origin');if(origin&&origin!==new URL(request.url).origin)return response({error:'origin'},403);
+ const origin=request.headers.get('origin');if(origin&&origin!==new URL(request.url).origin&&origin!==APP_ORIGIN)return response({error:'origin'},403);
  if(+(request.headers.get('content-length')||0)>16384)return response({error:'size'},413);
  const body=await request.text();if(body.length>16384)return response({error:'size'},413);
  let payload;try{payload=JSON.parse(body);}catch{return response({error:'json'},400);}
@@ -21,7 +31,7 @@ export async function handle(request,store){
  let record;
  if(kind==='time'){
   if(!M.valid(r)||r.eligible!==true)return response({error:'invalid-time'},400);
-  record={id:r.id,season:M.SEASON,player,name:r.name.trim(),mode:r.mode,campaign:r.campaign,world:String(r.world),ms:r.ms,deaths:r.deaths,at:new Date().toISOString()};
+  record={id:r.id,season:M.SEASON,player,name:r.name.trim(),mode:r.mode,campaign:r.campaign,world:String(r.world),ms:r.ms,deaths:r.deaths,...(r.mode==='survival'?{hearts:r.hearts||0}:{}),at:new Date().toISOString()};
  }else if(kind==='feedback'){
   if(!M.world(r.mode,r.world)||M.world(r.mode,r.world).campaign!==r.campaign||!Number.isInteger(r.fun)||r.fun<1||r.fun>10||!Number.isInteger(r.difficulty)||r.difficulty<1||r.difficulty>5||typeof r.comment!=='string'||r.comment.length>4000||String(r.room||'').length>160)return response({error:'invalid-feedback'},400);
   record={id:r.id,season:M.SEASON,player,mode:r.mode,campaign:r.campaign,world:String(r.world),room:String(r.room||''),name:String(r.name||M.world(r.mode,r.world).name).slice(0,160),fun:r.fun,difficulty:r.difficulty,comment:r.comment,ms:Number.isFinite(r.ms)?Math.max(0,Math.round(r.ms)):0,deaths:Number.isInteger(r.deaths)?Math.max(0,r.deaths):0,build:String(r.build||'').slice(0,40),at:new Date().toISOString()};

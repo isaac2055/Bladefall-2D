@@ -72,6 +72,11 @@ function mapSvg(geo,visited={},active=null,open={},player=null){
  const b=geo.bounds,scaleX=1.65,margin=100,colors={1:'#b8b287',2:'#749881',3:'#b98b73',4:'#c0ae83',5:'#b29370',6:'#9b91bd',7:'#78999e',8:'#a4cbd8',9:'#c5e4ec',10:'#c97a52',11:'#b98a5a',12:'#9f92d8',13:'#8a73b8',14:'#6f93b8',15:'#b0905a',16:'#8aa0b8',17:'#c8bc8a',18:'#b08a68',19:'#d8c89a',20:'#e6c070'};
  let out=`<svg viewBox="${(b.x-margin)*scaleX} ${b.y-margin} ${(b.w+margin*2)*scaleX} ${b.h+margin*2}" role="img" aria-label="Physical map of the Emerald Ascent" style="width:100%;max-height:64vh">`;
  for(const route of geo.routes||[]){const unlocked=route.link.startsWith('turn-')?!!visited[route.a.world]:!!open[route.link];out+=`<path d="${route.points.map((p,i)=>(i?'L':'M')+(p.x*scaleX)+' '+p.y).join(' ')}" fill="none" stroke="${unlocked?'#c6b986':'#536171'}" stroke-width="5" ${unlocked?'':'stroke-dasharray="10 8"'}/>`;}
+ // Explicit folded checkpoint links keep bank galleries legible in the room layout.
+ for(const w of root.BladefallClimb?.worlds||[])for(const link of w.checkpointLinks||[]){
+  const a=geo.rooms.get(link.from),z=geo.rooms.get(link.to);if(!a||!z)continue;
+  out+=`<path d="M${(a.x+a.w/2)*scaleX} ${a.y+a.h/2} L${(z.x+z.w/2)*scaleX} ${z.y+z.h/2}" fill="none" stroke="#6db8d6" stroke-width="2" stroke-dasharray="4 5" opacity=".65"><title>Checkpoint passage</title></path>`;
+ }
  for(const r of geo.rooms.values())if(!r.def.atlasTerrain)out+=`<rect x="${r.x*scaleX}" y="${r.y}" width="${r.w*scaleX}" height="${r.h}" fill="${visited[r.world]?colors[r.world]:'#35414c'}" opacity=".75"/>`;
  for(const region of geo.regions.values()){
   const a=root.BladefallClimbGeographyBuild.anchors[region.world],x=a[0]*scaleX,y=region.bounds.y-22,name=region.world+' · '+region.name;

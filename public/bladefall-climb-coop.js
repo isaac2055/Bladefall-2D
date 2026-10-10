@@ -82,7 +82,7 @@ CO.menuHtml=function(){
   :s==='starting'?`<p class="pcSub">Starting…</p>`
   :s==='waiting'&&CO.role==='host'?`<p class="pcSub">Your code: <b style="letter-spacing:.2em;color:#ffd98a">${code}</b> · waiting for your friend to join</p>`
   :s==='waiting'?`<p class="pcSub">Joining ${code}…</p>`
-  :s==='on'?`<p class="pcSub">Playing together${code&&code!=='LOCAL'?' · '+code:''}. Pick a world: your partner comes too. Hold <b>T</b> to go to your partner.</p>`
+  :s==='on'?`<p class="pcSub">Playing together${code&&code!=='LOCAL'?' · '+code:''}. Race at your own pace. Hold <b>T</b> to join your partner’s room at your own checkpoint.</p>`
   :s==='lost'?`<p class="pcSub">Your partner left.</p>`
   :`<p class="pcSub">${CO.err||'Something went wrong.'}</p>`;
  return `<div class="pcCard" id="coPanel" style="margin-top:.6em"><h2 style="margin:.2em 0">Co-op</h2>
@@ -173,6 +173,7 @@ CO.hud=function(ctx,ox,oy,scale,fs,g,view){
  else if(r&&s)txt+=' · partner in another world';
  ctx.save();const tw=ctx.measureText(txt).width+fs*1.2,ty=oy+H0*scale-fs*4.2;ctx.fillStyle='rgba(14,16,24,.65)';ctx.fillRect(ox+6,ty,tw,fs*1.6);ctx.fillStyle=SCARF;ctx.fillText(txt,ox+6+fs*.6,ty+fs*.3);ctx.restore();   // just above the room's hint line (the top left carries the landmark title)
 };
+addEventListener('blur',()=>{CO.tDown=false;CO.holdT=0;});
 CO.state=()=>CO;CO.host=host;CO.join=join;CO.leave=leave;
 root.BladefallClimbCoop=CO;
 })(typeof window!=='undefined'?window:globalThis);

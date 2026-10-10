@@ -74,12 +74,13 @@
     ['fractured-palace', 40, 'Fractured Palace', 20, 9, 'boss', 12000, 25, 8],
     ['celeste-standard', 41, 'Celeste Standard', 22, 1, 'route', 44000, 20, 2],
     ['fractured-celeste', 42, 'Fractured Celeste', 22, 2, 'route', 24200, 18, 1],
-    ['cloaked-man', 43, 'The Cloaked Man', 22, 3, 'boss', 5000, 12, 6],
+    ['cloaked-man', 43, 'Vesper', 22, 3, 'boss', 5000, 12, 6],
+    ['final-echo', 45, 'The Final Echo', 22, 4, 'boss', 2200, 8, 4],
   ];
 
   const zones = zoneRecords.map(([id, stageIndex, name, column, row, role, targetLength, firstVisitMinutes, practicedMinutes]) => ({
     id, stageIndex, name, position: { column, row }, role,
-    standalone: stageIndex === 41 || stageIndex === 42 || stageIndex === 43,
+    standalone: stageIndex === 41 || stageIndex === 42 || stageIndex === 43 || stageIndex === 45,
     budget: { targetLength, firstVisitMinutes, practicedMinutes },
   }));
 
@@ -252,7 +253,7 @@
     // FIFTEEN since the Gilded Vault was cut; the campaign keeps its stage slot inert
     // so that no stageIndex after it shifts, but it is not a zone any more.
     // SIXTEEN with Act Two's first region; the Chainhook makes the ladder thirteen.
-    if (zones.length !== 43 || !unique(zones.map((zone) => zone.id)) || !unique(zones.map((zone) => zone.stageIndex))) errors.push('zones must uniquely cover 40 campaign regions, two standalone courses and the final battle');
+    if (zones.length !== 44 || !unique(zones.map((zone) => zone.id)) || !unique(zones.map((zone) => zone.stageIndex))) errors.push('zones must uniquely cover 40 campaign regions, two standalone courses and both finale battles');
     if (abilities.length !== 13 || !unique(abilities.map((ability) => ability.id)) || !unique(abilities.map((ability) => ability.order))) errors.push('abilities must have a unique 13-step progression');
     if (keys.length !== 7 || !unique(keys.map((key) => key.id))) errors.push('the Vault requires seven unique keys');
     if (foundationRuns.length !== 16 || foundationRuns.some((run) => run.status !== 'complete')) errors.push('foundation ledger must have N01 through N16 complete');

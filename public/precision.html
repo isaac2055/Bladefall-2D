@@ -73,9 +73,9 @@
 <canvas id="pcCanvas"></canvas>
 <div id="pcRotate"><div><div style="font-size:42px">⟳</div>Turn your phone sideways to play.<br><small style="color:#aab0bd">Menus work either way.</small></div></div>
 <div id="pcOverlay"></div>
-<script src="bladefall-playtest-worlds.js?v=7.303.0"></script>
-<script src="bladefall-playtest-model.js?v=7.303.0"></script>
-<script src="bladefall-playtest.js?v=7.303.0"></script>
+<script src="bladefall-playtest-worlds.js?v=7.304.0"></script>
+<script src="bladefall-playtest-model.js?v=7.304.0"></script>
+<script src="bladefall-playtest.js?v=7.304.0"></script>
 <script src="bladefall-pcore.js?v=7.303.0"></script>
 <script src="bladefall-pcore-foes.js?v=7.303.0"></script>
 <script src="bladefall-pcore-foes-view.js?v=7.270.art2"></script>
@@ -204,25 +204,27 @@ if(/[?&]pitch=rbr/.test(location.search)){const q=new URLSearchParams(location.s
  for(const f of more('rbrdev'))document.write('<script src="bladefall-pcore-dev-rbr-'+f+'.js?v=7.264.0"><\/script><script src="bladefall-pcore-dev-rbr-'+f+'-view.js?v=7.259.0" onerror="0"><\/script>');
  for(const f of [...BladefallRoomByRoom.FILES,...more('rbrfile').filter(f=>!BladefallRoomByRoom.FILES.includes(f))])document.write('<script src="bladefall-rbr-'+f+'.js?v=7.264.0"><\/script>');}</script>
 <script src="bladefall-pcore-survey.js?v=7.264.0"></script>
-<script src="bladefall-pcore-touch.js?v=7.303.0"></script>
+<script src="bladefall-pcore-touch.js?v=7.304.0"></script>
 <script src="bladefall-pcore-pitches.js?v=7.257.0"></script>
 <script src="bladefall-pcore-pitches-view.js?v=7.259.0"></script>
 <script src="bladefall-rbr-view.js?v=7.264.0"></script>
 <script src="bladefall-climb.js?v=7.273.40"></script>
-<script src="bladefall-climb-atlas.js?v=7.281.0"></script>
+<script src="bladefall-climb-bank-passages.js?v=7.304.0"></script>
+<script src="bladefall-climb-atlas.js?v=7.304.0"></script>
 <script src="bladefall-climb-passages.js?v=7.281.0"></script>
 <script src="bladefall-climb-passage-tapes.js?v=7.273.40"></script>
-<script>if(/[?&]pitch=climb/.test(location.search))document.write('<script src="bladefall-climb-worlds.js?v=7.281.0"><\/script>');</script>
-<script src="bladefall-climb-geography.js?v=7.275.1"></script>
-<script src="bladefall-climb-geography-build.js?v=7.281.0"></script>
+<script>if(/[?&]pitch=climb/.test(location.search))document.write('<script src="bladefall-climb-worlds.js?v=7.304.0"><\/script>');</script>
+<script src="bladefall-climb-geography.js?v=7.304.0"></script>
+<script src="bladefall-climb-geography-build.js?v=7.304.0"></script>
 <script src="bladefall-climb-art.js?v=7.278.0"></script>
 <script src="bladefall-climb-passage-art.js?v=7.280.0"></script>
-<script src="bladefall-climb-map.js?v=7.303.0"></script>
-<script src="bladefall-climb-session.js?v=7.303.0"></script>
-<script src="bladefall-climb-view.js?v=7.303.0"></script>
-<script src="bladefall-climb-coop.js?v=7.273.41"></script>
+<script src="bladefall-climb-map.js?v=7.304.0"></script>
+<script src="bladefall-climb-session.js?v=7.304.0"></script>
+<script src="bladefall-climb-view.js?v=7.304.0"></script>
+<script src="bladefall-climb-coop.js?v=7.304.0"></script>
 <script src="bladefall-room-bank-view.js?v=7.303.0"></script>
-<script src="bladefall-pcore-view.js?v=7.303.0"></script>
+<script src="bladefall-input.js?v=7.304.0"></script>
+<script src="bladefall-pcore-view.js?v=7.304.0"></script>
 <script>/* Offline play once installed (the main game registers the same worker). Not inside a frame. */
 if('serviceWorker' in navigator&&window.parent===window&&location.protocol!=='file:')addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));</script>
 </body>

@@ -52,8 +52,9 @@
     ['fractured-palace', 40, 'Fractured Palace', 40, 40, 'boss', false],
     ['celeste-standard', 41, 'Celeste Standard', 42, 1, 'route', false],
     ['fractured-celeste', 42, 'Fractured Celeste', 42, 2, 'route', false],
-    ['cloaked-man', 43, 'The Cloaked Man', 43, 3, 'boss', false],
+    ['cloaked-man', 43, 'Vesper', 43, 3, 'boss', false],
     ['precision-workshop', 44, 'Precision Workshop', 44, 1, 'route', false],
+    ['final-echo', 45, 'The Final Echo', 45, 3, 'boss', false],
   ];
 
   const nodes = nodeRecords.map(([id, stageIndex, name, column, depth, kind, anchor]) => {
@@ -339,7 +340,7 @@
     // FIFTEEN. The Gilded Vault was cut on 2026-09-20; its campaign stage slot is kept
     // inert so no stageIndex after it moves, but it is not a place in the world.
     // SIXTEEN since Act Two's first region (Thunder Cliffs, stage 16).
-    if (nodes.length !== 44) errors.push('world catalog must cover 40 campaign regions, two standalone courses, the workshop and the final battle');
+    if (nodes.length !== 45) errors.push('world catalog must cover 40 campaign regions, two standalone courses, the workshop and both finale battles');
     if (nodeById.size !== nodes.length || nodeByStage.size !== nodes.length) errors.push('world nodes must have unique ids and stage indices');
     const routeIds = new Set();
     for (const route of routes) {

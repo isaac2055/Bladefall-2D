@@ -605,6 +605,7 @@ function enemy(api, e){
 function overlay(api){
   const A = st(api); if(!A) return;
   const { ctx, bw, bh } = api;
+  if(api.G.vesperEncounter){ctx.save();ctx.textAlign='center';ctx.font='8px monospace';ctx.fillStyle='#e5c6ff';ctx.fillText(A.encounterT>11?'“YOU CANNOT CUT AWAY WHAT IS MISSING.”':'VESPER’S WARD DOES NOT BREAK',bw/2,bh-20);ctx.restore();}
   if(A.flash > .02){ ctx.fillStyle = `rgba(230,215,255,${.22 * Math.min(1, A.flash)})`; ctx.fillRect(0, 0, bw, bh); }
   if(A.banner){ const k = A.banner.t, a = Math.min(1, k / .4) * Math.min(1, (3.2 - k) / .6);
     if(a > 0){ ctx.save(); ctx.globalAlpha = a; ctx.textAlign = 'center'; const by = Math.round(bh * .42);                                  // under the stage's own title card, which can still be up after a retry

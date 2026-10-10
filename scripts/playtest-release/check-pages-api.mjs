@@ -1,0 +1,50 @@
+// Actual compiled Pages Functions -> service binding -> SQLite Durable Object.
+// All data is temporary and local. This never contacts or writes production.
+import assert from 'node:assert/strict';
+import {execFileSync} from 'node:child_process';
+import {mkdtemp,rm,mkdir} from 'node:fs/promises';
+import {join,resolve} from 'node:path';
+import {Miniflare,Log,LogLevel,convertV4MiniflareOptions} from 'miniflare';
+import '../../public/bladefall-playtest-worlds.js';
+import '../../public/bladefall-playtest-model.js';
+const M=globalThis.BladefallPlaytestModel,root=process.cwd();
+await mkdir('cloudflare-dist',{recursive:true});
+const temp=await mkdtemp(resolve('cloudflare-dist/pages-api-check-'));
+let mf;
+try{
+ const wrangler=resolve('node_modules/wrangler/bin/wrangler.js'),build=(...args)=>execFileSync(process.execPath,[wrangler,...args],{cwd:root,stdio:'pipe',env:{...process.env,WRANGLER_SEND_METRICS:'false'}});
+ build('deploy','--config','wrangler.api.jsonc','--dry-run','--outdir',join(temp,'api'));
+ build('pages','functions','build','functions','--outdir',join(temp,'pages'),'--output-routes-path',join(temp,'routes.json'),'--compatibility-date','2026-10-09');
+ const common={modules:true,compatibilityDate:'2026-10-09'},secret='local-export-test-only';
+ const options=convertV4MiniflareOptions({log:new Log(LogLevel.ERROR),resourcePersistencePath:join(temp,'storage'),telemetry:{enabled:false},workers:[
+  {...common,name:'pages',scriptPath:join(temp,'pages/index.js'),serviceBindings:{PLAYTEST_API:'bladefall-2d',ASSETS:'assets'}},
+  {...common,name:'bladefall-2d',scriptPath:join(temp,'api/playtest-api.js'),durableObjects:{PLAYTEST:{className:'PlaytestStore',useSQLite:true}},bindings:{FEEDBACK_EXPORT_TOKEN:secret}},
+  {...common,name:'preview',scriptPath:join(temp,'pages/index.js'),serviceBindings:{ASSETS:'assets'}},
+  {...common,name:'assets',script:'export default {fetch(){return new Response("static asset")}}'}
+ ]});
+ mf=new Miniflare(options);await mf.ready;
+ const site='https://bladefall2d.pages.dev',apk='https://appassets.bladefall',url=site+'/api/playtest',token='local-profile-test-'.repeat(4);
+ const record=(id,over={})=>({id,player:'local-player-0001',season:M.SEASON,mode:'survival',campaign:'base',world:'1',name:'Local API check',ms:1500,deaths:2,hearts:1,eligible:true,...over});
+ const post=(r,{origin=site,kind='time',profileToken=token}={})=>mf.dispatchFetch(url,{method:'POST',headers:{Origin:origin,'Content-Type':'application/json'},body:JSON.stringify({kind,player:r.player,token:profileToken,record:r})});
+ let response=await post(record('local-heart-0001'));assert.equal(response.status,200);assert.equal(response.headers.get('cache-control'),'no-store');
+ assert.equal((await post(record('local-heart-0001'))).status,200,'retry is idempotent');
+ assert.equal((await post(record('local-time-0001',{hearts:0,ms:1000}),{origin:apk})).status,200);
+ response=await mf.dispatchFetch(url,{headers:{Origin:apk}});assert.equal(response.headers.get('access-control-allow-origin'),apk);
+ const board=await response.json();assert.equal(board.records.length,2,'time and heart records both retained');assert.deepEqual(board.records.map(r=>r.hearts).sort(),[0,1]);
+ response=await mf.dispatchFetch(url,{method:'OPTIONS',headers:{Origin:apk,'Access-Control-Request-Method':'POST','Access-Control-Request-Headers':'Content-Type'}});
+ assert.equal(response.status,204);assert.equal(response.headers.get('access-control-allow-origin'),apk);assert.match(response.headers.get('access-control-allow-methods'),/POST/);
+ assert.equal((await mf.dispatchFetch(url,{method:'OPTIONS',headers:{Origin:site}})).status,403,'same-origin requests need no CORS preflight; only APK preflights are accepted');
+ assert.equal((await post(record('local-cross-0001'),{origin:'https://untrusted.example'})).status,403);
+ assert.equal((await post(record('local-token-0001'),{profileToken:'different-local-token-'.repeat(4)})).status,403);
+ assert.equal((await post(record('local-invalid-0001',{hearts:999}))).status,400);
+ assert.equal((await post(record('local-feedback-0001',{room:'local-room',fun:8,difficulty:3,comment:'private local proof'}),{kind:'feedback',origin:apk})).status,200);
+ response=await mf.dispatchFetch(site+'/api/feedback-export');assert.equal(response.status,403);
+ response=await mf.dispatchFetch(site+'/api/feedback-export',{headers:{Authorization:'Bearer '+secret}});const feedback=await response.json();assert.equal(feedback.feedback.length,1);assert.equal(feedback.feedback[0].comment,'private local proof');
+ const publicText=await(await mf.dispatchFetch(url)).text();assert(!publicText.includes('private local proof'));assert(!publicText.includes('token'));assert(!publicText.includes('feedback'));
+ const preview=await mf.getWorker('preview');response=await preview.fetch(url);assert.equal(response.status,503);assert.deepEqual(await response.json(),{error:'api-not-connected'});
+ const api=await mf.getWorker('bladefall-2d');assert.equal((await api.fetch(site+'/index.html')).status,404,'API Worker has no duplicated asset fallback');
+ assert.equal(await(await mf.dispatchFetch(site+'/')).text(),'static asset');
+ await mf.dispose();mf=new Miniflare(options);await mf.ready;
+ const persisted=await(await mf.dispatchFetch(url)).json();assert.equal(persisted.records.length,2,'SQLite records survive a runtime restart');
+ console.log('PASS: compiled Pages Functions -> private service binding -> SQLite Durable Object; same-origin and APK scores/hearts; APK CORS; token ownership; retry deduplication; private feedback export; unbound preview 503; static routing; durable restart. No production requests.');
+}finally{if(mf)await mf.dispose();await rm(temp,{recursive:true,force:true});}

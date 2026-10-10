@@ -1,7 +1,7 @@
 /* Precision Core — touch controls (7.258). Phones and tablets play the new physics with two thumbs:
 
    Left thumb: a floating stick. It appears wherever the thumb lands and follows it if it drifts too far.
-   Right thumb (default gestures, each re-mappable in Touch controls):
+   Right thumb: immediate action buttons by default. Optional gestures (each re-mappable in Touch controls):
      tap ............ jump (a tap gives a full jump; "follows finger" makes a quick tap a short hop)
      swipe .......... dash in the swipe's direction (8-way). Swipe during a jump to jump-dash in one stroke.
      hold ........... grab: cling and climb while held; near a lantern, a hold picks it up and a second hold
@@ -41,11 +41,11 @@ const PRESETS={
  buttons:{jump:'button',dash:'button',grab:'button',strike:'button',parry:'button',portal:'button'},
 };
 const PRESET_NAMES={gestures:'Gestures',mixed:'Gestures + buttons for blade, parry, portal',buttons:'Buttons only'};
-const DEFAULTS={preset:'gestures',map:{...PRESETS.gestures},hand:'right',stick:'floating',swipe:'medium',tapJump:'full',
+const DEFAULTS={preset:'buttons',map:{...PRESETS.buttons},hand:'right',stick:'floating',swipe:'medium',tapJump:'full',
  haptics:true,opacity:.55,size:1,hints:true,fullscreen:true};
 function settings(){
  const s=api.save;s.touch=s.touch||{};
- const t=Object.assign({},DEFAULTS,s.touch);t.map=Object.assign({},DEFAULTS.map,s.touch.map||{});
+ const t=Object.assign({},DEFAULTS,s.touch);t.map=Object.assign({},PRESETS[t.preset]||DEFAULTS.map,s.touch.map||{});
  return t;
 }
 function store(t){api.save.touch=t;api.writeSave(api.save);}
@@ -62,7 +62,7 @@ function startHold(a,ptr){
  // A new press while the action still reads as held (a tail from the last tap) needs a released frame first.
  if(isHeld(a)){gapUntil[a]=clock+1.5/60;holdTail[a]=0;}
  ptr[a+'Held']=true;ptr[a+'From']=Math.max(clock,gapUntil[a]);
- holdTail[a]=Math.max(holdTail[a],ptr[a+'From']+(a==='jump'?(settings().tapJump==='full'?MIN_JUMP:SHORT_JUMP):PRESS));
+ holdTail[a]=Math.max(holdTail[a],ptr[a+'From']+(a==='jump'?(ptr.role==='button'?SHORT_JUMP:settings().tapJump==='full'?MIN_JUMP:SHORT_JUMP):PRESS));
 }
 function endHold(a,ptr){if(!ptr[a+'Held'])return;ptr[a+'Held']=false;}
 function isHeld(a){if(clock<gapUntil[a])return false;if(clock<holdTail[a])return true;for(const p of ptrs.values())if(p[a+'Held']&&clock>=(p[a+'From']||0))return true;return false;}
@@ -96,7 +96,7 @@ function layout(){
  const buttons=[];
  for(const a of Object.keys(spots))if(m[a]==='button'){const [x,y,r]=spots[a];buttons.push({a,x:X(x*s),y:h-y*s,r:r*s});}
  const ui=24*s,pause={x:X(30*s),y:30*s,r:ui*.8,ui:'pause'},retry={x:X(78*s),y:30*s,r:ui*.8,ui:'retry'};
- return {w,h,s,buttons,pause,retry,stickR:52*s,dead:9*s,right};
+ return {w,h,s,buttons,pause,retry,stickR:52*s,dead:6*s,right};
 }
 const GLYPH={jump:'⤒',dash:'➤',grab:'✊',strike:'⚔',parry:'⛨',portal:'◎'};
 
@@ -157,6 +157,7 @@ function onMove(e){
   step(p);
  }
 }
+function onCancel(e){const p=ptrs.get(e.pointerId);if(!p)return;ptrs.delete(e.pointerId);if(stick?.id===e.pointerId)stick=null;if(multi?.ids.includes(e.pointerId))multi=null;endHold('jump',p);endHold('grab',p);}
 function onUp(e){
  if(e.pointerType==='mouse')return;
  const p=ptrs.get(e.pointerId);if(!p)return;
@@ -320,6 +321,7 @@ function label(a){const m=settings().map[a];if(!m)return null;if(m==='button')re
 
 /* ---------------------------------------------------------------- page plumbing */
 function setActive(on){
+ if(!on)releaseAll();
  if(on===active)return;active=on;if(on)everTouched=true;
  document.documentElement.classList.toggle('pcTouch',on);
  if(on&&!guarded){guarded=true;guardBack();}
@@ -352,10 +354,12 @@ function init(a){
  api=a;const cv=a.canvas;
  cv.addEventListener('pointerdown',onDown,{passive:false});
  cv.addEventListener('pointermove',onMove,{passive:false});
- cv.addEventListener('pointerup',onUp);cv.addEventListener('pointercancel',onUp);cv.addEventListener('lostpointercapture',onUp);
+ cv.addEventListener('pointerup',onUp);cv.addEventListener('pointercancel',onCancel);cv.addEventListener('lostpointercapture',onCancel);
  cv.addEventListener('contextmenu',e=>e.preventDefault());
  // A keyboard, controller or mouse in use hands the screen back to them.
  addEventListener('keydown',()=>setActive(false));
+ addEventListener('blur',releaseAll);
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)releaseAll();});
  addEventListener('pointerdown',e=>{if(e.pointerType==='touch'&&!active)setActive(true);},true);
  clickShim();
  try{if(matchMedia('(pointer: coarse)').matches&&!matchMedia('(pointer: fine)').matches)setActive(true);}catch(e){}
@@ -363,6 +367,6 @@ function init(a){
 /* Haptics for events the view sees. */
 function event(e){if(!active)return;if(e.type==='death')buzz(30);else if(e.type==='dash')buzz(8);}
 
-root.BladefallPrecisionTouch={init,read,draw,card,label,event,releaseAll,active:()=>active,settings,
+root.BladefallPrecisionTouch={init,read,draw,card,label,event,releaseAll,setActive,active:()=>active,settings,
  _debug:()=>({clock,ptrs:[...ptrs.entries()],stick,multi,pulses:pulses.slice(),holdTail:{...holdTail},gapUntil:{...gapUntil}})};
 })(typeof window!=='undefined'?window:globalThis);

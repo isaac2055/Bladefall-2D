@@ -59,8 +59,9 @@
     { name: 'Celeste Standard', len: 44000, theme: 'ruins', sky: '#101c2b', ground: '#263444', grunts: 0, flyers: 0, type: 'normal', act: 0, precisionCourse: true },
     { name: 'Fractured Celeste', len: 24200, theme: 'fractured', sky: '#0c1020', ground: '#221e28', grunts: 0, flyers: 0, type: 'normal', act: 3, precisionCourse: true },
     // Battle 42: the last fight in the game, a four-phase boss (bladefall-cloaked-man.js). Level Select only for now.
-    { name: 'The Cloaked Man', len: 5000, theme: 'fractured', sky: '#07060f', ground: '#22202a', grunts: 0, flyers: 0, type: 'normal', act: 0, finalBattle: true, selectTag: '42' },
+    { name: 'Vesper', len: 5000, theme: 'fractured', sky: '#07060f', ground: '#22202a', grunts: 0, flyers: 0, type: 'normal', act: 0, finalBattle: true, selectTag: '42' },
     { name: 'Precision Workshop', len: 129380, theme: 'ruins', sky: '#101c2b', ground: '#263444', grunts: 0, flyers: 0, type: 'normal', act: 0, precisionCourse: true },
+    { name: 'The Final Echo', len: 2200, theme: 'fractured', sky: '#08091c', ground: '#24233d', grunts: 0, flyers: 0, type: 'normal', act: 3, finalBattle: true, selectTag: '41' },
   ];
 
   const details = [
@@ -584,8 +585,9 @@
     },
     { id: 'celeste-standard', source: 'custom', systems: ['tear-relays', 'chain-hook', 'counterweights', 'blade-rebounds', 'pogo-strikes', 'upward-slashes', 'gale-flight', 'gravity-weaves', 'portal-momentum'], signature: 'Celeste Standard', acts: ['tear', 'ring', 'weight', 'anvil', 'pogo', 'uppercut', 'gale', 'gravity', 'portal', 'tear-ring', 'weight-anvil', 'gale-tear', 'gravity-ring', 'relay', 'portal-gale', 'pogo-tear', 'uppercut-ring', 'inversion-relay'], composition: { recipe: 'none', at: 0.5 }, cadence: { adds: 0, foes: [], accents: [] }, customExtension: 0 },
     { id: 'fractured-celeste', source: 'custom', systems: ['tear-relays', 'chain-hook', 'counterweights', 'blade-rebounds', 'pogo-strikes', 'upward-slashes', 'gale-flight', 'gravity-weaves', 'portal-momentum'], signature: 'Fractured Celeste', acts: ['tear-ring', 'weight-anvil', 'gale-tear', 'gravity-ring', 'relay', 'portal-gale', 'pogo-tear', 'uppercut-ring', 'inversion-relay'], composition: { recipe: 'none', at: 0.5 }, cadence: { adds: 0, foes: [], accents: [] }, customExtension: 0 },
-    { id: 'cloaked-man', source: 'custom', systems: ['four-phase-boss', 'bat-grab', 'phantom-slash', 'bat-swarm', 'giant-arena'], signature: 'The Cloaked Man', acts: ['approach', 'the-cloaked-man', 'unbound', 'the-bones', 'all-of-him'], composition: { recipe: 'none', at: 0.5 }, cadence: { adds: 0, foes: [], accents: [] }, customExtension: 0 },
+    { id: 'cloaked-man', source: 'custom', systems: ['four-phase-boss', 'bat-grab', 'phantom-slash', 'bat-swarm', 'giant-arena'], signature: 'Vesper', acts: ['approach', 'the-cloaked-man', 'unbound', 'the-bones', 'all-of-him'], composition: { recipe: 'none', at: 0.5 }, cadence: { adds: 0, foes: [], accents: [] }, customExtension: 0 },
     { id: 'precision-workshop', source: 'custom', systems: ['dash-rails','vein-vault','crumble','gravity-prism','ricochet','aether-rebound','return-collapse','growing-root','dash-fold','delayed-pursuer','aimed-recoil','carried-lantern','spore-sentry'], signature: 'Precision Workshop', acts: ['linked-rails', 'violet-vault', 'borrowed-seconds', 'polarity', 'stormglass', 'recoil', 'last-departure', 'needle-thread', 'faultline', 'inside-out', 'storm-chase', 'mercy', 'rootworks', 'wake-behind', 'recoil-well', 'lantern-thief', 'switchback-engine', 'switchback-fractured', 'storm-fractured', 'rootworks-fractured', 'wake-fractured', 'recoil-fractured', 'lantern-fractured', 'return-stroke', 'return-stroke-fractured'], composition: { recipe: 'none', at: 0.5 }, cadence: { adds: 0, foes: [], accents: [] }, customExtension: 0 },
+    { id: 'final-echo', source: 'custom', systems: ['echo-duel','persistent-choice','telegraphed-dash','jump-shockwave'], signature: 'The Final Echo', acts: ['the-part-you-left','stay-with-me','kill-merge-forget'], composition: { recipe: 'none', at: 0.5 }, cadence: { adds: 0, foes: [], accents: [] }, customExtension: 0 },
   ];
 
   function clone(value) {
@@ -822,7 +824,7 @@
     const warnings = [];
     const ids = new Set();
     // Stable campaign identities 0–40, the two standalone precision courses (41, 42), then the final battle (43) and selectable workshop (44).
-    if (blueprints.length !== 45) errors.push({ code: 'campaign.count', message: 'Campaign must define exactly 45 stages (including two precision courses, the workshop and the final battle).' });
+    if (blueprints.length !== 46) errors.push({ code: 'campaign.count', message: 'Campaign must define exactly 46 stages (including two precision courses, the workshop and two finale battles).' });
     for (let index = 0; index < blueprints.length; index++) {
       const item = blueprints[index];
       if (item.index !== index) errors.push({ code: 'campaign.index', stage: item.id });

@@ -45,6 +45,7 @@ function loadBinds(){
  return out;
 }
 const binds=loadBinds();
+for(const codes of Object.values(binds.keys))for(let n=0;n<codes.length;n++)codes[n]=root.BladefallInput.normalizeCode(codes[n]);
 function saveBinds(){save.binds=binds;writeSave(save);}
 function keyAction(code){for(const [a] of ACTIONS)if(binds.keys[a].includes(code))return a;return null;}
 const keys=new Set();
@@ -101,7 +102,7 @@ function currentInput(dt=0){
  return {input:i,pad};
 }
 function latchHeld(){const {input}=currentInput();for(const a of LATCHED)if(input[a])latch.add(a);}
-function setDevice(d){if(d===lastDevice)return;lastDevice=d;if(typeof document!=='undefined'&&document.body)document.body.classList.toggle('pcNav',d==='key'||d==='pad');}
+function setDevice(d){if(d==='pad')TOUCH()?.setActive(false);if(d===lastDevice)return;lastDevice=d;if(typeof document!=='undefined'&&document.body)document.body.classList.toggle('pcNav',d==='key'||d==='pad');}
 
 /* ---------------------------------------------------------------- menu navigation (keyboard + controller) */
 const nav={held:{},since:{},last:{}};
@@ -814,19 +815,23 @@ function togglePause(){
  if(view.mode!=='play')return;
  if(view.paused){view.paused=false;hideOverlay();return;}
  view.paused=true;const g=view.g,ch=R.chapters[view.chapter],base=chapterStart(view.chapter);
- const hasTape=!!R.tapes[g.room.id];
+ const hasTape=!!R.tapes[g.room.id],backPassage=ch.climb&&root.BladefallClimbBankPassages?.previousLink(root.BladefallPitchView?.climb?.state()?.world,g.room.id);
  let roomLabel=0;const rooms=ch.rooms.map((r,i)=>r.passage||r.connector||ch.climb&&i>=ch.mainCount?'':`<button class="pcMini ${base+i===g.roomIndex?'on':''}" title="${r.name}" data-room="${i}">${++roomLabel}${save.cleared[r.id]?'✓':''}</button>`).join('');   // the Climb's passages and shafts are not levels
- const optional=ch.climb?ch.rooms.map((r,i)=>i>=ch.mainCount&&!r.passage&&!r.connector?`<button class="pcBtn ghost" data-room="${i}">${r.name}</button>`:'').join(''):'';
+ let optionalLabel=0;const optional=ch.climb?ch.rooms.map((r,i)=>i>=ch.mainCount&&!r.passage&&!r.connector?`<button class="pcMini ${base+i===g.roomIndex?'on':''}" title="${r.name}" aria-label="Optional ${optionalLabel+1}: ${r.name}" data-room="${i}">O${++optionalLabel}${save.cleared[r.id]?'✓':''}</button>`:'').join(''):'';
  const selectable=(ch.climb?ch.rooms.slice(0,ch.mainCount):ch.rooms).filter(r=>!r.passage&&!r.connector),selected=selectable.findIndex(r=>r.id===g.room.id);
- const roomStatus=selected>=0?`room ${selected+1} of ${selectable.length}`:'connecting passage';
+ const optionalRooms=ch.climb?ch.rooms.slice(ch.mainCount).filter(r=>!r.passage&&!r.connector):[],optionalSelected=optionalRooms.findIndex(r=>r.id===g.room.id);
+ const roomStatus=selected>=0?`room ${selected+1} of ${selectable.length}`:optionalSelected>=0?`optional O${optionalSelected+1}`:'connecting passage';
  showOverlay(`<div class="pcCard"><h1>Paused</h1>${view.trial?`<p class="pcSub">${view.trial.title||'The gate'} · level ${view.chapter+1} of ${view.trial.from}–${view.trial.to}</p>`:''}<p class="pcSub">${ch.name} · ${roomStatus}${g.room.name?' · '+g.room.name:''}</p>
  ${g.room.def.question?`<p class="pcSub">${g.room.def.question}</p>`:''}
+ ${ch.climb&&!view.trial?'<button class="pcBtn ghost" id="pcChapters">World map</button>':''}
  <button class="pcBtn" id="pcResume" data-back>Resume</button><button class="pcBtn ghost" id="pcRetry">Retry room</button>
  ${hasTape?'<button class="pcBtn ghost" id="pcWatch">Watch the intended route (review)</button>':''}
- <p class="pcSub">Room select</p><div class="pcMiniRow">${rooms}</div>${optional?`<p class="pcSub">Optional routes</p>${optional}`:''}
- ${ch.climb?'<a class="pcBtn ghost" href="index.html">Return to title menu</a>':''}
- <button class="pcBtn ghost" id="pcCtl">Controls</button><button class="pcBtn ghost" id="pcAssist">Assist &amp; options</button>${view.trial?'<button class="pcBtn ghost" id="pcLeave">Leave the gate (you keep the levels you finished)</button>':'<button class="pcBtn ghost" id="pcChapters">Chapters</button>'}</div>`);
+ ${backPassage?'<button class="pcBtn ghost" id="pcReturnPassage">Return through passage</button>':''}
+ <p class="pcSub">Room select${optional?' · O = optional route':''}</p><div class="pcMiniRow">${rooms}${optional}</div>
+ <button class="pcBtn ghost" id="pcCtl">Controls</button><button class="pcBtn ghost" id="pcAssist">Assist &amp; options</button>${view.trial?'<button class="pcBtn ghost" id="pcLeave">Leave the gate (you keep the levels you finished)</button>':!ch.climb?'<button class="pcBtn ghost" id="pcChapters">Chapters</button>':''}
+ ${ch.climb?'<a class="pcBtn ghost" href="index.html">Return to title menu</a>':''}</div>`);
  document.getElementById('pcResume').onclick=togglePause;
+ document.getElementById('pcReturnPassage')?.addEventListener('click',()=>root.BladefallPitchView.climb.returnPassage());
  document.getElementById('pcCtl').onclick=()=>{const back=()=>{view.paused=false;togglePause();};touchUI()?TOUCH().card(back):controlsCard(back);};
  document.getElementById('pcRetry').onclick=()=>{togglePause();retryRoom();};
  if(hasTape)document.getElementById('pcWatch').onclick=()=>{togglePause();watchRoute();};
@@ -899,30 +904,31 @@ function boot(){
   back:()=>{if(overlayOpen()){if(menuBack())return true;if(view.mode==='play'){togglePause();return true;}return false;}if(view.mode==='play'){togglePause();return true;}return false;},
   onDevice:d=>{if(d)setDevice(d);}});
  window.addEventListener('keydown',e=>{
+  const code=root.BladefallInput.eventCode(e);
   setDevice('key');ac();
   if(capture){e.preventDefault();if(e.repeat)return;
-   if(e.code==='Escape'){view.bindNote='Cancelled.';endCapture();}
+   if(code==='Escape'){view.bindNote='Cancelled.';endCapture();}
    else if(capture.kind!=='keys'){}
-   else if(RESERVED_KEYS.has(e.code)){view.bindNote=`${keyName(e.code)} is reserved.`;endCapture();}
-   else{assign('keys',capture.action,e.code);endCapture();}
+   else if(RESERVED_KEYS.has(code)){view.bindNote=`${keyName(code)} is reserved.`;endCapture();}
+   else{assign('keys',capture.action,code);endCapture();}
    return;}
   const open=overlayOpen();
-  if(open){const dir={ArrowLeft:'l',ArrowRight:'r',ArrowUp:'u',ArrowDown:'d'}[e.code];
+  if(open){const dir={ArrowLeft:'l',ArrowRight:'r',ArrowUp:'u',ArrowDown:'d'}[code];
    if(dir){e.preventDefault();moveFocus(dir);return;}
-   if(e.code==='Space'){e.preventDefault();if(!e.repeat)menuConfirm();return;}}
-  if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.code))e.preventDefault();
+   if(code==='Space'){e.preventDefault();if(!e.repeat)menuConfirm();return;}}
+  if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(code))e.preventDefault();
   if(e.repeat)return;
-  const act=keyAction(e.code);
+  const act=keyAction(code);
   if(view.replay&&view.mode==='play'&&!view.paused&&PLAY_ACTIONS.includes(act)){view.replay=null;}
-  keys.add(e.code);
-  if(e.code==='Escape'||act==='pause'){pauseOrBack();return;}
+  keys.add(code);
+  if(code==='Escape'||act==='pause'){pauseOrBack();return;}
   if(act==='retry'&&view.mode==='play'&&!view.paused&&!open){retryRoom();return;}
-  if(e.code==='KeyM'&&!act){save.options.music=!save.options.music;writeSave(save);music(view.mode==='play');}
+  if(code==='KeyM'&&!act){save.options.music=!save.options.music;writeSave(save);music(view.mode==='play');}
  });
  window.addEventListener('pointerdown',()=>setDevice('mouse'));
  const padChange=()=>{pickPad();if(view.onPadChange)view.onPadChange();};
  window.addEventListener('gamepadconnected',padChange);window.addEventListener('gamepaddisconnected',padChange);
- window.addEventListener('keyup',e=>keys.delete(e.code));
+ window.addEventListener('keyup',e=>keys.delete(root.BladefallInput.eventCode(e)));
  window.addEventListener('blur',()=>keys.clear());
  const q=new URLSearchParams(location.search);view.inspect=+(q.get('inspect')||0);
  if(q.has('pitch')&&root.BladefallPitchView){root.BladefallPitchView.start(q,{startChapter,showOverlay,hideOverlay,music,view});}

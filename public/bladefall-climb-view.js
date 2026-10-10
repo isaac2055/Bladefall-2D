@@ -93,9 +93,10 @@ PV.start=function(q,api){
 function startWorld(n,room=null){
  const w=CL().world(n);if(!w||!w.chapter)return false;
  if(n>20&&!st.review&&!root.BladefallPlaytest?.unlocked('survival',n)){announce('Find a keepsake in the matching base world to open this Fractured region.',220);return false;}
+ const resumeProgress=room!=null;
  if(room==null)room=Math.max(0,w.chapter.rooms.findIndex(r=>r.id===w.atlasStart));
  const c=R().chapters.indexOf(w.chapter);if(c<0)return false;
- Object.assign(st,{trialProgress:true,trialSolved:new Set(),walkTrial:false,riftCooldown:60,completionOffered:false,skips:3,dropHint:null,burst:null,sealedSaid:false,branchVia:null,returningCeiling:null,enteredAt:null,portCache:null,nearPort:null,lit:{},world:w,chapter:c,quest:null,cam:null,closed:new Set(),toast:null,slide:null,spoke:new Set(),gone:new Set(),walk:{},trail:[],dispCache:new Map(),frozen:new Map()});
+ Object.assign(st,{resumeProgress,trialProgress:true,trialSolved:new Set(),walkTrial:false,riftCooldown:60,completionOffered:false,skips:3,dropHint:null,burst:null,sealedSaid:false,branchVia:null,returningCeiling:null,enteredAt:null,portCache:null,nearPort:null,lit:{},world:w,chapter:c,quest:null,cam:null,closed:new Set(),toast:null,slide:null,spoke:new Set(),gone:new Set(),walk:{},trail:[],dispCache:new Map(),frozen:new Map()});
  st.api.startChapter(c,room);
  root.BladefallClimbSession?.start();
  keepProgress(st.view.g);
@@ -124,7 +125,7 @@ function enterPassage(s){
  const old=sectionOf(g),oldX=g.p.x,oldY=g.p.y,snap=CL().snap(g),oldWidth=g.room.w,previous=st.world.n;
  const oldCam=st.cam?{...st.cam}:null;
  if(CL().geography){const frozen=freeze(g);if(frozen)st.frozen.set(g.room.id,frozen);}
- if(previous!==target.world.n){st.trialSolved=new Set();st.lit={};st.completionOffered=false;st.walkTrial=true;}
+ if(previous!==target.world.n){st.resumeProgress=true;st.trialSolved=new Set();st.lit={};st.completionOffered=false;st.walkTrial=true;}
  st.world=target.world;st.chapter=R().chapters.indexOf(target.world.chapter);view.chapter=st.chapter;
  C().enterRoom(g,roomIdx(target.room));keepProgress(g);
  const newX=target.edge==='left'?oldX-oldWidth:oldX+g.room.w,newY=oldY+(target.floor-s.floor)*8;
@@ -254,7 +255,7 @@ function atlasMap(){
  let current=active?{world:st.world.n,room:view.g.room.id}:cp?{world:cp.world,room:cp.room}:null;
  if(tr){const g=view.g,s=g.room.def.atlasSockets||[],A=s.find(p=>p.world===tr.a),B=s.find(p=>p.world===tr.b),pa=A?.plane??(A?.edge==='left'?0:g.room.w),pb=B?.plane??(B?.edge==='left'?0:g.room.w);current={world:st.world.n,room:g.room.id,link:tr.link,t:Math.max(0,Math.min(1,(g.p.x+g.p.w/2-pa)/((pb-pa)||1)))};}
  const mapControls=physicalMap?`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin:10px 0">${CL().worlds.map(w=>`<button class="pcBtn ghost" style="padding:7px;font-size:11px" data-map-region="${w.n}">${w.n} · ${w.name}</button>`).join('')}</div><button class="pcBtn ghost" id="clMapAll">Whole map</button>`:'';
- st.api.showOverlay(`<div class="pcCard" style="max-width:900px"><h1>The Emerald Ascent</h1><p class="pcSub">${active?st.world.name:cp?'Continue from '+CL().world(cp.world).name:'Begin in the Outskirts. Open roads weave the climb together.'}</p>${schematic?'<div id="clEmerald"></div>':physicalMap||`<svg viewBox="0 0 320 405" style="width:100%;max-height:55vh" role="img" aria-label="Nine regions in the inner braided ascent. Solid roads are open; dotted roads are sealed.">${paths}${nodes}<text x="160" y="14" text-anchor="middle" fill="#929aaa" font-size="9">The upper crown · future journey</text></svg>`}${schematic?'':mapControls}<p class="pcSub">${schematic?'Select a region on the map to play it or inspect its roads.':physicalMap?'Gold dot: you · Solid roads: open · Dotted roads: sealed. Select a region to zoom.':'Solid: open roads · Dotted: sealed passages'}<br>Follow the short passages between regions.</p>${root.BladefallClimbMap&&CL().geography?`<button class="pcBtn ghost" id="clLayout">${schematic?'Show the room layout instead':'Show the Emerald Ascent map'}</button>`:''}<button class="pcBtn" id="clContinue" data-back data-focus-first>${active?'Return to the climb':cp?'Continue the journey':'Begin in the Outskirts'}</button><button class="pcBtn ghost" id="clScores">Leaderboards</button><a class="pcBtn ghost" href="index.html">Return to title menu</a>${root.BladefallClimbCoop?root.BladefallClimbCoop.menuHtml():''}</div>`);
+ st.api.showOverlay(`<div class="pcCard" style="max-width:900px"><h1>The Emerald Ascent</h1><p class="pcSub">${active?st.world.name:cp?'Continue from '+CL().world(cp.world).name:'Begin in the Outskirts. Open roads weave the climb together.'}</p>${schematic?'<div id="clEmerald"></div>':physicalMap||`<svg viewBox="0 0 320 405" style="width:100%;max-height:55vh" role="img" aria-label="Nine regions in the inner braided ascent. Solid roads are open; dotted roads are sealed.">${paths}${nodes}<text x="160" y="14" text-anchor="middle" fill="#929aaa" font-size="9">The upper crown · future journey</text></svg>`}${schematic?'':mapControls}<p class="pcSub">${schematic?'Select a region on the map to play it or inspect its roads.':physicalMap?'Gold dot: you · Solid roads: open · Dotted roads: sealed. Select a region to zoom.':'Solid: open roads · Dotted: sealed passages'}<br>Follow the short passages between regions.</p>${root.BladefallClimbMap&&CL().geography?`<button class="pcBtn ghost" id="clLayout">${schematic?'Show the room layout instead':'Show the Emerald Ascent map'}</button>`:''}<button class="pcBtn" id="clContinue" data-back data-focus-first>${active?'Return to the climb':cp?'Continue the journey':'Begin in the Outskirts'}</button><button class="pcBtn ghost" id="clScores">Leaderboards</button>${root.BladefallClimbCoop?root.BladefallClimbCoop.menuHtml():''}<a class="pcBtn ghost" href="index.html">Return to title menu</a></div>`);
  if(schematic)root.BladefallClimbMap.mount(document.getElementById('clEmerald'),{atlas:st.atlas,current,onStart:n=>startWorld(n),canStart:n=>n<=20||!!root.BladefallPlaytest?.unlocked('survival',n)});
  {const t=document.getElementById('clLayout');if(t)t.onclick=()=>{st.roomLayout=!st.roomLayout;atlasMap();};}
  if(!schematic&&physicalMap){const svg=document.querySelector('svg[aria-label="Physical map of the Emerald Ascent"]'),full=svg.getAttribute('viewBox');document.getElementById('clMapAll').onclick=()=>svg.setAttribute('viewBox',full);document.querySelectorAll('[data-map-region]').forEach(button=>button.onclick=()=>{const r=CL().geography.regions.get(+button.dataset.mapRegion).bounds;svg.setAttribute('viewBox',[(r.x-65)*1.65,r.y-65,(r.w+130)*1.65,r.h+130].join(' '));});}
@@ -551,8 +552,8 @@ PV.holding=function(){
  updatePassageLift(g);
  syncWalkSeams(g);
  if(passageWalk(g))return false;
- g.dropThru=true;   // down + jump falls through a one-way ledge: every way in is a way back
- g.springUp=true;   // a spring sends you straight up
+ g.dropThru=d.campaignImport?!!d.dropThru:true;   // Imported puzzles retain their reviewed drop-through rules.
+ g.springUp=!d.campaignImport;   // Native road springs stay upright; bank springs retain authored momentum.
  if(p.dropT>0&&!save.dropUsed){save.dropUsed=true;store(SAVE,save);}
  teachDrop(g,p);
  touchReward(g,p);
@@ -589,7 +590,7 @@ PV.holding=function(){
    const inUp=e==='up'&&py<=1&&pvy<=0&&p.x+p.w>cs[0]*TILE&&p.x<(cs[cs.length-1]+1)*TILE;
    const inSide=(e==='left'&&p.x<=0||e==='right'&&p.x>=g.room.w-p.w)&&py+p.h>cs[0]*TILE&&py<(cs[cs.length-1]+1)*TILE&&st.view.lastInput&&st.view.lastInput[e==='left'?'l':'r'];
    if(inUp||inSide){if(inUp)p.vy=Math.min(p.vy,-150);st.branchVia='back';if(branchKind(br)==='quest')st.quest={id:br.id};carryInto(pl,lastPass);settleInside(g);return false;}}
-  if(prev&&!(d.atlasSockets||[]).some(s=>!s.preview&&s.edge===d.entry)&&!st.closed.has(g.room.id)&&g.frame-(st.enteredAt||0)>8&&p.state!=='dead'&&p.state!=='respawn'){const dx=prev.x*TILE-pl.x,dy=prev.y*TILE-pl.y,LI=st.view.lastInput||{};
+  if(prev&&!root.BladefallClimbBankPassages?.checkpointLink(st.world,prev.room,g.room.id)&&!(d.atlasSockets||[]).some(s=>!s.preview&&s.edge===d.entry)&&!st.closed.has(g.room.id)&&g.frame-(st.enteredAt||0)>8&&p.state!=='dead'&&p.state!=='respawn'){const dx=prev.x*TILE-pl.x,dy=prev.y*TILE-pl.y,LI=st.view.lastInput||{};
    // (7.277) falling back down the way you came up goes home at once: the 45-frame grace (against bouncing back
    // out of a side the moment you arrive) let a knight who missed a door's shaft fall out of the floor and die
    const late=d.passage||g.frame-(st.enteredAt||0)>45;
@@ -707,9 +708,10 @@ PV.exit=function(view,nextRoom){
   const opened=st.atlas.solve(g.room.id);
   store('bladefall.climb.atlas.v1',st.atlas.snapshot());
   if(opened.length)announce('Road opened · '+st.atlas.routes(st.world.n).filter(l=>opened.includes(l.id)).map(l=>CL().world(l.to).name).join(' / '),240);
-  if(g.room.id===st.world.atlasEnd){save.cleared[st.world.n]=true;store(SAVE,save);if(st.world.n===9)announce('The inner ascent is open · the upper crown lies ahead',360);}
+  if(g.room.id===st.world.atlasEnd&&worldClearReady()){save.cleared[st.world.n]=true;store(SAVE,save);if(st.world.n===9)announce('The inner ascent is open · the upper crown lies ahead',360);}
  }
- if(g.room.id===st.world.atlasEnd&&!st.completionOffered&&root.BladefallPlaytest){
+ if(g.room.id===st.world.atlasEnd&&!worldClearReady()){root.BladefallClimbSession?.invalidate('unfinished rooms');announce('Finish your remaining rooms to complete this world. Your partner’s progress stays separate.',240);}
+ if(g.room.id===st.world.atlasEnd&&worldClearReady()&&!st.completionOffered&&root.BladefallPlaytest){
   st.completionOffered=true;
   const w=st.world,next=CL().world(w.n+1),canNext=next&&(next.n<=20||root.BladefallPlaytest.unlocked('survival',next.n));
   const walk=()=>{view.mode='play';view.paused=false;st.api.hideOverlay();if(k<pl.chain.length-1)carryInto(pl,pl.chain[k+1]);else{g.exited=false;g.p.x=Math.min(g.room.w-g.p.w-2,Math.max(2,g.p.x));}};
@@ -757,7 +759,7 @@ function rewardSpots(){
 const rewardTaken=sp=>sp.kind==='quest'?questDone(sp.br):!!(save.secrets||{})[sp.br.id];
 function touchReward(g,p){
  for(const sp of rewardSpots()){
-  if(sp.room!==g.room.id||rewardTaken(sp))continue;
+  if(sp.room!==g.room.id||(rewardTaken(sp)&&(sp.kind!=='secret'||root.BladefallPlaytest?.hasHeart(sp.br.id))))continue;
   if(Math.abs(p.x+p.w/2-sp.x)>9||Math.abs(uprightY(g)+p.h/2-sp.y)>11)continue;   // (rewards sit the right way up, 7.280)
   if(st.branchVia==='back'){if(!st.sealedSaid){st.sealedSaid=true;announce('Sealed · it is earned from the door',160);}continue;}
   claimBranch(g,{kind:sp.kind,obj:sp.br});
@@ -927,7 +929,7 @@ function settleInside(g){
 function claimBranch(g,br){
  if(br.kind==='quest'){const q=br.obj,took=q.sections.some(s=>hasShardIn(g,s.room))||!q.sections.some(s=>{const d=defOf(s.room);return d.map.join('').includes('*');});
   if(took)grant(q);else announce('Something was left behind in there…',150);}
- else{const x=br.obj;if(!save.secrets)save.secrets={};
+ else{const x=br.obj;root.BladefallPlaytest?.collectHeart(x.id);if(!save.secrets)save.secrets={};
   if(!save.secrets[x.id]){save.secrets[x.id]=true;store(SAVE,save);announce(`♥ ${heartOf(st.world).name} · ${x.name}`,260);}}
 }
 function endOfBranch(g){
@@ -944,6 +946,7 @@ function freeze(g){
 }
 function carryInto(pl,next){
  const view=st.view,g=view.g;
+ const checkpoint=root.BladefallClimbBankPassages?.checkpointLink(st.world,g.room.id,next.room);
  // (7.280) leaving a flipped room he crosses where he is seen (turned upright), unless what lies beyond was laid out
  // for his mirrored height (a way back the builder placed from a flipped exit): then as before
  const mirrored=g.flipped&&root.BladefallPrecisionGravity?CL().snap(g):null;uprightBeforeLeaving(g);
@@ -955,7 +958,8 @@ function carryInto(pl,next){
  if(g.room.def.atlasTerrain){const port=g.room.def.atlasSockets.find(s=>s.to===pl.sec.room);st.passageEntry=port?.edge;}
  syncWalkSeams(g);
  if(mirrored){const q=g.p,x=Math.max(0,Math.min(g.room.w-q.w,Math.round(snap.x+from.x-to.x))),y=Math.max(0,Math.min(g.room.h-q.h,Math.round(snap.y+from.y-to.y)));if(C().solidAt(g,x,y,q.w,q.h))snap=mirrored;}
- CL().carry(C(),g,snap,from,to,!!(defOf(pl.sec.room)?.atlasJunction||g.room.def.atlasJunction||defOf(pl.sec.room)?.atlasTerrain||g.room.def.atlasTerrain));st.enteredAt=g.frame;
+ if(checkpoint){root.BladefallClimbBankPassages.arrive(g);st.cam=null;view.camRoom=null;}
+ else CL().carry(C(),g,snap,from,to,!!(defOf(pl.sec.room)?.atlasJunction||g.room.def.atlasJunction||defOf(pl.sec.room)?.atlasTerrain||g.room.def.atlasTerrain));st.enteredAt=g.frame;
  // Falling back through an upward exit is an entrance until the head has
  // cleared the ceiling; it must not immediately fire the exit again.
  if(g.room.exit==='up'&&g.p.y<0&&g.p.vy>=0){g.exited=true;st.returningCeiling=g.room.id;}   // a moment to find your feet before the way back counts
@@ -969,6 +973,7 @@ function carryInto(pl,next){
  const dx=from.x-to.x,dy=from.y-to.y;
  for(const q of view.scarf||[]){q.x+=dx;q.y+=dy;}for(const q of view.trail||[]){q.x+=dx;q.y+=dy;}for(const q of view.parts||[]){q.x+=dx;q.y+=dy;}
  for(const q of st.trail){q.x+=dx;q.y+=dy;}
+ if(checkpoint){view.trail=[];view.parts=[];st.trail=[];for(const q of view.scarf||[]){q.x=g.p.x+4;q.y=g.p.y+3;}}
  view.roomTimer=0;
  V().persist&&V().persist();
  if(view.mode==='play')st.api.music(true);   // a boss section may change the track
@@ -991,7 +996,13 @@ PV.slideFrame=function(buf,W,Hh){
 };
 
 /* ---------------------------------------------------------------- the end of a world */
+function worldClearReady(){
+ const required=st.world.requiredMainRooms||[];
+ return required.every(id=>st.trialSolved?.has(id)||st.resumeProgress&&st.atlas?.state.solved[id]);
+}
 function worldDone(view){
+ if(!worldClearReady()){root.BladefallClimbSession?.invalidate('unfinished rooms');atlasMap();return;}
+
  const w=st.world,api=st.api,s=view.chapterStats,secs=Math.round(s.frames/60);
  for(const q of w.quests)if(q.bearings&&bearingsHeld(view.g,q).length===q.bearings.length)grant(q);
  V().persist&&V().persist();
@@ -1088,6 +1099,7 @@ PV.draw=function(b,g,view){
  {const pl=sectionOf(g);if(pl&&st.walk)drawWalkers(b,g,pl);}
  drawDoorBeams(b,g.room.def,g.flipped&&g.room.upright||g.room,g.frame);drawLiftHint(b,g);   // (7.280) ceiling doors shine
  {const portal=riftPortal();if(portal&&portal.room===g.room.id){b.strokeStyle='#c8a5ff';b.lineWidth=2;b.strokeRect(portal.x-4,portal.y-8,16,24);b.fillStyle='#d9c3ff';b.font='6px monospace';b.fillText('↑ '+(portal.returning?'Return':'Fractured'),portal.x-12,portal.y-12);}}
+ root.BladefallClimbBankPassages?.draw(b,g,st.world,g.frame);
  drawReward(b,g.room.id,g.frame);drawEchoSeals(b,g,g.frame);drawDropHint(b);
  {const pl=sectionOf(g);if(pl&&root.BladefallClimbCoop)try{root.BladefallClimbCoop.draw(b,g,pl);}catch(e){}}
  if(g.room.def.bearing)for(const e of g.ents)if(e.type==='shard'&&!e.gone){b.fillStyle='#e9c47a';b.fillRect(e.x+3,e.y-6,2,6);}
@@ -1255,7 +1267,11 @@ function teleportTo(roomId,wx,wy){
  const fz=freeze(g);if(fz&&st.frozen)st.frozen.set(g.room.id,fz);
  const previous=st.world.n;st.world=target;st.chapter=R().chapters.indexOf(target.chapter);view.chapter=st.chapter;
  C().enterRoom(g,roomIdx(roomId));keepProgress(g);syncWalkSeams(g);
- CL().carry(C(),g,{x:wx,y:wy,vx:0,vy:0,facing:g.p.facing,dashes:g.p.maxDashes||1,stamina:110},{x:0,y:0},{x:sec.x*TILE,y:sec.y*TILE});
+ // Watching a partner never grants their solved devices or skips the destination's challenge.
+ const earned=st.trialSolved?.has(roomId)||st.resumeProgress&&st.atlas?.state.solved[roomId];
+ if(earned)CL().carry(C(),g,{x:wx,y:wy,vx:0,vy:0,facing:g.p.facing,dashes:g.p.maxDashes||1,stamina:110},{x:0,y:0},{x:sec.x*TILE,y:sec.y*TILE});
+ else announce('Joined at your own checkpoint · clear this room yourself',180);
+ root.BladefallClimbSession?.invalidate('co-op teleport');
  st.enteredAt=g.frame;st.trail=[];view.roomTimer=0;
  if(previous!==target.n)st.api.music(true);
  if(g.room.def.atlasTransit){const port=g.room.def.atlasSockets.reduce((a,b)=>Math.abs((a.plane??0)-g.p.x)<Math.abs((b.plane??0)-g.p.x)?a:b);st.passageEntry=port.edge;}
@@ -1263,7 +1279,13 @@ function teleportTo(roomId,wx,wy){
  const npl=sectionOf(g);if(npl&&npl.branch){st.branchVia='back';if(npl.quest)st.quest={id:npl.quest.id};}else{st.branchVia=null;st.quest=null;}
  return true;
 }
-PV.climb={useRiftPortal,riftPortal,portViews:visibleSockets,palette:palFor,state:()=>st,startWorld:n=>startWorld(n),menu:()=>worldMenu(),levels:()=>worldMenu(true),teleport:teleportTo,sectionOf:g=>sectionOf(g),defOf:id=>defOf(id),announce:(t,n)=>announce(t,n)};
+function returnPassage(){
+ const g=st?.view.g,link=g&&root.BladefallClimbBankPassages?.previousLink(st.world,g.room.id);
+ if(!link||st.view.replay)return false;
+ const from=sectionOf(g),to=st.world.sections.find(s=>s.room===link.from);if(!from||!to)return false;
+ st.view.paused=false;st.api.hideOverlay();carryInto(from,to);announce('Back through the passage · previous checkpoint',140);return true;
+}
+PV.climb={returnPassage,useRiftPortal,riftPortal,portViews:visibleSockets,palette:palFor,state:()=>st,startWorld:n=>startWorld(n),menu:()=>worldMenu(),levels:()=>worldMenu(true),teleport:teleportTo,sectionOf:g=>sectionOf(g),defOf:id=>defOf(id),announce:(t,n)=>announce(t,n)};
 root.BladefallPitchView=PV;
 /* (7.280) A gravity prism's flip keeps the picture still. The scarf, the dash's afterimages and the sparks live in the
    room's own coordinates, which the flip mirrors, so they are turned over with it (first in the list, so the flip's own

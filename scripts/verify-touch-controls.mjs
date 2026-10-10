@@ -10,6 +10,7 @@ const browser=await launchChrome({headless:true,args:['--no-sandbox','--disable-
 const page=await browser.newPage();
 await page.setUserAgent('Mozilla/5.0 (Linux; Android 14; SM-S918B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Mobile Safari/537.36');
 await page.setViewport(VP);
+await page.evaluateOnNewDocument(()=>{localStorage.setItem('bladefall.pcore.v1',JSON.stringify({touch:{preset:'gestures'}}));});
 const errors=[];page.on('pageerror',e=>errors.push(e.message));
 let fail=0;const ok=(c,m)=>{console.log((c?'ok   ':'FAIL ')+m);if(!c)fail++;};
 await page.goto(BASE+'/precision.html',{waitUntil:'domcontentloaded'});

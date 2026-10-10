@@ -17,7 +17,7 @@ const Z = 0.5;
    exists here — which is the literal meaning of "the Abyss King level is not
    respec'd": the Throne's props, both boss figures and the echo were all being
    skipped because the file was never asked to draw the stage at all. */
-const SUPPORTED_STAGES = new Set([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]);
+const SUPPORTED_STAGES = new Set([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45]);
 
 // ── Base palette (figures, effects) ───────────────────────────────────────
 const P = {

@@ -246,14 +246,7 @@ function resetKing(A){
 /* The end of the echoes. */
 function finale(){
   if(typeof coopFinishTogether==='function'&&!coopFinishTogether('act-three-end',finale))return;
-  mode = 'win'; showGameUI(false);
-  showOvHTML(`<div class="card">
-    <p class="ovsub" style="letter-spacing:.34em;margin:0 0 6px;">END OF ACT THREE</p>
-    <h1 class="title" style="margin:0 0 4px;">THE ECHOES</h1>
-    <p class="subtitle" style="margin:0 0 18px;">All twenty walked</p>
-    <p class="hint" style="margin:0 0 20px;">Behind you every road you took has been taken again, harder, by the one who was always a beat late in the mirror. It is not late any more. Whatever walks out of the palace now walks alone.</p>
-    <button class="bigbtn" id="echoesDone">Continue</button></div>`);
-  const b = document.getElementById('echoesDone'); if(b) b.onclick = () => titleScreen();
+  return root.BladefallExploreFinale.afterPalace();
 }
 
 /* ── Frame ─────────────────────────────────────────────────────────────────── */

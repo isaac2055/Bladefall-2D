@@ -244,240 +244,280 @@ globalThis.BladefallPlaytestWorlds=[
     "mode": "survival",
     "id": "1",
     "campaign": "base",
-    "name": "The Outskirts"
+    "name": "The Outskirts",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "2",
     "campaign": "base",
-    "name": "Black Woods"
+    "name": "Black Woods",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "3",
     "campaign": "base",
-    "name": "Broken Causeway"
+    "name": "Broken Causeway",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "4",
     "campaign": "base",
-    "name": "The Updrafts"
+    "name": "The Updrafts",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "5",
     "campaign": "base",
-    "name": "Hollow Marksman"
+    "name": "Hollow Marksman",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "6",
     "campaign": "base",
-    "name": "Ruined Keep"
+    "name": "Ruined Keep",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "7",
     "campaign": "base",
-    "name": "The Warden"
+    "name": "The Warden",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "8",
     "campaign": "base",
-    "name": "Frostfell"
+    "name": "Frostfell",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "9",
     "campaign": "base",
-    "name": "Frost Sorcerer"
+    "name": "Frost Sorcerer",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "10",
     "campaign": "base",
-    "name": "Emberdeep"
+    "name": "Emberdeep",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "11",
     "campaign": "base",
-    "name": "Ember Colossus"
+    "name": "Ember Colossus",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "12",
     "campaign": "base",
-    "name": "The Inversion"
+    "name": "The Inversion",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "13",
     "campaign": "base",
-    "name": "The Void Tyrant"
+    "name": "The Void Tyrant",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "14",
     "campaign": "base",
-    "name": "The Abyss King"
+    "name": "The Abyss King",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "15",
     "campaign": "base",
-    "name": "The Deep Line"
+    "name": "The Deep Line",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "16",
     "campaign": "base",
-    "name": "Thunder Cliffs"
+    "name": "Thunder Cliffs",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "17",
     "campaign": "base",
-    "name": "The Landing Shores"
+    "name": "The Landing Shores",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "18",
     "campaign": "base",
-    "name": "The Colony"
+    "name": "The Colony",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "19",
     "campaign": "base",
-    "name": "The Path to the Palace"
+    "name": "The Path to the Palace",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "20",
     "campaign": "base",
-    "name": "Sunspire Palace"
+    "name": "Sunspire Palace",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "21",
     "campaign": "fractured",
-    "name": "The Fractured Outskirts"
+    "name": "The Fractured Outskirts",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "22",
     "campaign": "fractured",
-    "name": "The Fractured Woods"
+    "name": "The Fractured Woods",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "23",
     "campaign": "fractured",
-    "name": "The Fractured Causeway"
+    "name": "The Fractured Causeway",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "24",
     "campaign": "fractured",
-    "name": "The Fractured Updrafts"
+    "name": "The Fractured Updrafts",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "25",
     "campaign": "fractured",
-    "name": "The Fractured Marksman"
+    "name": "The Fractured Marksman",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "26",
     "campaign": "fractured",
-    "name": "The Fractured Keep"
+    "name": "The Fractured Keep",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "27",
     "campaign": "fractured",
-    "name": "The Fractured Warden"
+    "name": "The Fractured Warden",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "28",
     "campaign": "fractured",
-    "name": "The Fractured Frostfell"
+    "name": "The Fractured Frostfell",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "29",
     "campaign": "fractured",
-    "name": "The Fractured Sorcerer"
+    "name": "The Fractured Sorcerer",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "30",
     "campaign": "fractured",
-    "name": "The Fractured Emberdeep"
+    "name": "The Fractured Emberdeep",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "31",
     "campaign": "fractured",
-    "name": "The Fractured Colossus"
+    "name": "The Fractured Colossus",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "32",
     "campaign": "fractured",
-    "name": "The Fractured Inversion"
+    "name": "The Fractured Inversion",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "33",
     "campaign": "fractured",
-    "name": "The Fractured Tyrant"
+    "name": "The Fractured Tyrant",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "34",
     "campaign": "fractured",
-    "name": "The Fractured King"
+    "name": "The Fractured King",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "35",
     "campaign": "fractured",
-    "name": "The Fractured Line"
+    "name": "The Fractured Line",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "36",
     "campaign": "fractured",
-    "name": "The Fractured Cliffs"
+    "name": "The Fractured Cliffs",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "37",
     "campaign": "fractured",
-    "name": "The Fractured Shores"
+    "name": "The Fractured Shores",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "38",
     "campaign": "fractured",
-    "name": "The Fractured Colony"
+    "name": "The Fractured Colony",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "39",
     "campaign": "fractured",
-    "name": "The Fractured Path"
+    "name": "The Fractured Path",
+    "hearts": 1
   },
   {
     "mode": "survival",
     "id": "40",
     "campaign": "fractured",
-    "name": "The Fractured Palace"
+    "name": "The Fractured Palace",
+    "hearts": 1
   }
 ];

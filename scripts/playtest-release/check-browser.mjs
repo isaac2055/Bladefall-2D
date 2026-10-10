@@ -12,7 +12,7 @@ await mkdir(env.PLAYTEST_ARTIFACT_DIR,{recursive:true});
 const server=spawn(process.execPath,['public/serve.mjs'],{cwd:root,env,stdio:['ignore','pipe','inherit']});
 try{
  await new Promise((resolve,reject)=>{server.stdout.on('data',d=>{if(String(d).includes('serving on'))resolve();});server.once('error',reject);server.once('exit',code=>reject(Error('Server exited '+code)));});
- const requested=process.argv.slice(2),all=['browser-check','explore-check','world-check','public-mobile-check','final-check'];
+ const requested=process.argv.slice(2),all=['browser-check','explore-check','world-check','public-mobile-check','final-check','release-integration'];
  for(const name of requested.length?requested:all){
   if(!all.includes(name))throw Error('Unknown fixture '+name);
   await new Promise((resolve,reject)=>{const child=spawn(process.execPath,['scripts/playtest-release/fixture-'+name+'.mjs'],{cwd:root,env,stdio:'inherit'});child.once('error',reject);child.once('exit',code=>code===0?resolve():reject(Error(name+' exited '+code)));});

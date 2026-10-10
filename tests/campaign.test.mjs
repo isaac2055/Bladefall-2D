@@ -8,7 +8,7 @@ const Campaign = globalThis.BladefallCampaign;
 
 test('campaign blueprint catalog preserves campaign identities and appends two precision courses and the final battle', () => {
   const stages = Campaign.stageCatalog();
-  assert.equal(stages.length, 45);
+  assert.equal(stages.length, 46);
   assert.deepEqual(stages.map((stage) => stage.name), [
     'The Outskirts', 'Black Woods', 'Broken Causeway', 'The Updrafts',
     'Hollow Marksman', 'Ruined Keep', 'The Warden', 'Frostfell',
@@ -16,7 +16,7 @@ test('campaign blueprint catalog preserves campaign identities and appends two p
     'The Void Tyrant', 'The Abyss King', '(cut)', 'The Deep Line',
     'Thunder Cliffs', 'The Landing Shores', 'The Colony', 'The Path to the Palace', 'Sunspire Palace',   // Act Two, stages 16-20
     'The Fractured Outskirts', 'The Fractured Woods', 'The Fractured Updrafts', 'The Fractured Marksman', 'The Fractured Causeway', 'The Fractured Keep', 'The Fractured Warden', 'The Fractured Frostfell', 'The Fractured Sorcerer', 'The Fractured Emberdeep', 'The Fractured Colossus', 'The Fractured Inversion', 'The Fractured Tyrant', 'The Fractured King', 'The Fractured Line', 'Fractured Cliffs', 'Fractured Shores', 'The Fractured Colony', 'The Fractured Path', 'Fractured Palace', 'Celeste Standard', 'Fractured Celeste',   // Act Three's echoes, stages 21+
-    'The Cloaked Man', 'Precision Workshop',   // stage 43: Battle 42, the last fight
+    'Vesper', 'Precision Workshop', 'The Final Echo',   // stage 43: Battle 42, the last fight
   ]);
   assert.equal(stages[43].finalBattle, true);
   assert.equal(stages[43].selectTag, '42');
@@ -29,8 +29,8 @@ test('campaign blueprint catalog preserves campaign identities and appends two p
 
 test('blueprints validate and retain unique ids, systems, acts, and recipes', () => {
   const report = Campaign.validateBlueprints();
-  assert.deepEqual(report, { ok: true, errors: [], warnings: [], stages: 45 });
-  assert.equal(new Set(Campaign.blueprints.map((item) => item.id)).size, 45);
+  assert.deepEqual(report, { ok: true, errors: [], warnings: [], stages: 46 });
+  assert.equal(new Set(Campaign.blueprints.map((item) => item.id)).size, 46);
   assert.ok(Campaign.blueprints.every((item) => item.systems.length >= 4));
   assert.ok(Campaign.blueprints.every((item) => item.acts.length >= 3));
 });

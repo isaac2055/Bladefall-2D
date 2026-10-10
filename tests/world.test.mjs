@@ -8,9 +8,9 @@ const World = globalThis.BladefallWorld;
 
 test('world graph covers every stage and preserves the mandatory late gate', () => {
   assert.deepEqual(World.validateGraph(), {
-    ok: true, errors: [], nodes: 44, routes: 41, endingRoutes: 2,
+    ok: true, errors: [], nodes: 45, routes: 41, endingRoutes: 2,
   });
-  assert.equal(new Set(World.nodes.map((node) => node.stageIndex)).size, 44);
+  assert.equal(new Set(World.nodes.map((node) => node.stageIndex)).size, 45);
   assert.equal(World.stageId(16), 'thunder-cliffs');
   assert.equal(World.stageId(17), 'landing-shores');
   assert.equal(World.stageId(18), 'colony');

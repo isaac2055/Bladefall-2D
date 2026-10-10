@@ -18,6 +18,14 @@ assert.deepEqual(worker.durable_objects.bindings,[{name:'PLAYTEST',class_name:'P
 assert.deepEqual(worker.migrations,[{tag:'v1',new_sqlite_classes:['PlaytestStore']}]);
 for(const name of ['deploy','dev:cloudflare','verify:cloudflare'])assert.match(pkg.scripts[name],/--config wrangler\.worker\.jsonc(?:\s|$)/,name+' must explicitly select the Worker configuration');
 assert.match(pkg.scripts['verify:cloudflare'],/--dry-run(?:\s|$)/);
+const api=JSON.parse(await readFile('wrangler.api.jsonc','utf8'));
+assert.equal(api.name,worker.name);assert.equal(api.main,'cloudflare/playtest-api.js');assert(!api.assets,'API Worker must not duplicate game assets');assert.equal(api.workers_dev,false);assert.equal(api.preview_urls,false);
+assert.deepEqual(api.durable_objects,worker.durable_objects);assert.deepEqual(api.migrations,worker.migrations);
+assert.match(pkg.scripts['deploy:api'],/--config wrangler\.api\.jsonc(?:\s|$)/);
+const proposed=JSON.parse(await readFile('scripts/playtest-release/pages-api-binding.json','utf8'));
+assert.deepEqual(proposed.services,[{binding:'PLAYTEST_API',service:api.name}]);assert.deepEqual(proposed.env.preview.services,[]);
+if(pages.services){assert.deepEqual(pages.services,proposed.services);assert.deepEqual(pages.env.preview.services,[]);}
+assert.deepEqual(JSON.parse(await readFile('public/_routes.json','utf8')),{version:1,include:['/api/playtest','/api/feedback-export'],exclude:[]});
 assert((await stat(resolve(base,'index.html'))).isFile(),'Pages output needs an index.html');
 async function scan(dir){for(const f of await readdir(dir,{withFileTypes:true})){const p=resolve(dir,f.name);if(f.isDirectory())await scan(p);else {if((await stat(p)).size>25*1024*1024)throw Error('Cloudflare asset exceeds 25 MiB: '+p);count++;}}}
-await scan(base);if(count>20000)throw Error('Too many static assets');console.log('Cloudflare configuration checked: Pages publishes public/; Worker assets, API routes and PLAYTEST binding preserved. Static assets: '+count+' files.');
+await scan(base);if(count>20000)throw Error('Too many static assets');console.log('Cloudflare configuration checked: Pages publishes public/; API-only service configuration and legacy Worker preserved. Pages API binding '+(pages.services?'staged':'not activated')+'. Static assets: '+count+' files.');

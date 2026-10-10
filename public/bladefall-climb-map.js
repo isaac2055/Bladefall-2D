@@ -18,7 +18,7 @@ const defIn=(n,id)=>worldOf(n)?.rooms.find(d=>d.id===id)||null;
 const atlasNow=()=>root.BladefallPitchView?.climb?.state?.()?.atlas||null;
 
 /* ---------------------------------------------------------------- what a mouth leads to */
-function finished(n,atlas){const w=worldOf(n);return !!(atlas&&w&&atlas.state.solved[w.atlasEnd||w.sections.at(-1)?.room]);}
+function finished(n,atlas){const w=worldOf(n);return !!(atlas&&w&&(atlas.complete?atlas.complete(n):atlas.state.solved[w.atlasEnd||w.sections.at(-1)?.room]));}
 // Where a region's own start is reached from (its incoming roads), so a sealed road can say how to get round to it.
 function approaches(n){return AT().links.filter(l=>l.kind==='road'&&l.b===n).map(l=>nameOf(l.a));}
 function reason(link,atlas,long=false){

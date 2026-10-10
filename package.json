@@ -49,7 +49,11 @@
     "build": "node scripts/playtest-release/check-cloudflare-assets.mjs",
     "deploy": "wrangler deploy --config wrangler.worker.jsonc",
     "dev:cloudflare": "wrangler dev --config wrangler.worker.jsonc",
-    "verify:cloudflare": "wrangler deploy --config wrangler.worker.jsonc --dry-run --outdir cloudflare-dist"
+    "verify:cloudflare": "wrangler deploy --config wrangler.worker.jsonc --dry-run --outdir cloudflare-dist",
+    "deploy:api": "wrangler deploy --config wrangler.api.jsonc",
+    "dev:api": "wrangler dev --config wrangler.api.jsonc",
+    "verify:api": "node scripts/playtest-release/check-pages-api.mjs",
+    "activate:api": "node scripts/playtest-release/activate-pages-api.mjs --activate"
   },
   "dependencies": {
     "@netlify/blobs": "^11.1.4",

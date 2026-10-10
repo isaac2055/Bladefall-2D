@@ -1,8 +1,8 @@
 # Bladefall: start here
 
-Read **NEXT-MODEL-BRIEF.md only** initially (current as of 7.166.0, 2026-09-21). Then search the
+Read **CODEX-RESUME-7.304.md** initially (current release, 2026-10-09). Then search the
 relevant code — the code wins over every document. Do not read this entire folder, test receipts,
-or conversation histories.
+or conversation histories. NEXT-MODEL-BRIEF.md describes the older 7.166 architecture.
 
 ## On-demand references
 - Current state and the latest pass: 01-CURRENT-STATE.md
