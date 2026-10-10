@@ -72,3 +72,7 @@ B72, B75, F71, F73 and F76 were revised earlier in this batch, before the five r
 ## 7.308.1 — doors no longer close behind you
 
 An entrance seals only where that room's own route needs the wall: 31 rooms keep their seal and 302 rooms now stay open. In 46 doorways the thorns faced into the room inside the opening, so you could walk in but not back (B22's spiked west wall was one). Those thorns now open with the doorway and return only if it seals.
+
+## 7.308.2 — floor entrances work both ways
+
+Where an imported room is entered from below through a one-way ledge, stand on that ledge and press Down + Jump to drop back the way you came. Every other ledge in the room keeps its reviewed rule, and entry bridges stay walkways.

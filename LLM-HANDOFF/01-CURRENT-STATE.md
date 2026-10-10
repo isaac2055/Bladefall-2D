@@ -1,3 +1,15 @@
+## 7.308.2: Floor entrances into imported rooms are two-way again (2026-10-10)
+
+Imported rooms keep their reviewed drop-through rules (g.dropThru off). That made the one-way ledge capping a floor entrance shaft a one-way door. In bladefall-climb-view.js, `onDoorwayLedge` now allows Down + Jump when you stand only on seam ledges that were cut out of the wall (closed char rock). Every other ledge in the room keeps its rule. Retracting entry bridges (closed char '.') stay walkways.
+
+**Checks:**
+- Chrome drop test: all 12 imported floor doorways drop you back into the previous section alive. (B51 needs you partly in its smoke; that is the room's own watch rule.)
+- 127 bank routes pass.
+- The full 40-world audit passes, with all joins in Chrome.
+- Walk-back has no doorway deaths, and the co-op/T/N/replay feature checks pass.
+
+Version 7.308.2, cache `bladefall-v476-doorway-ledges`.
+
 ## 7.308.1: Entrances only seal where the room needs them; doorway thorns cleared (2026-10-10)
 
 Isaac reported doors closing behind him (World 1, 3→4, 8→9 and 13→14) and a glitch entering 8→9. Two causes:

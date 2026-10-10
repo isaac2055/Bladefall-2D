@@ -1,7 +1,7 @@
 /* Survive playtest ratings and local, per-world time trials. */
 (function(root){
 'use strict';
-const KEY='bladescent.reviews.v1',TIMES='bladescent.times.v1',BUILD='7.308.1';
+const KEY='bladescent.reviews.v1',TIMES='bladescent.times.v1',BUILD='7.308.2';
 const read=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key))||fallback;}catch{return fallback;}};
 const write=(key,value)=>localStorage.setItem(key,JSON.stringify(value));
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

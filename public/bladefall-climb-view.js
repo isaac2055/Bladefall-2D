@@ -307,6 +307,16 @@ function displayGame(roomId,open){
  st.dispCache.set(key,g2);return g2;
 }
 const CLOSE_WHILE_PLAYED=new Set(['k6-stacks','s9-wheel']);
+// (7.308.2) An imported room keeps its own drop-through rules, but the one-way ledge capping its entrance shaft belongs
+// to the doorway: standing on it, Down + Jump drops you back out the way you came in. (Only ledges cut out of the wall:
+// a retracting entry bridge is a walkway, and it stays a walkway.)
+const DOOR_LEDGES=new WeakMap();
+function onDoorwayLedge(g,d){const p=g.p,Core=C();if(!d.seam?.length||p.state!=='normal'||g.flipped)return false;
+ const bottom=p.y+p.h;if(bottom%TILE)return false;
+ // ledges cut from the wall (closed char rock), not an entry bridge
+ let set=DOOR_LEDGES.get(d);if(!set)DOOR_LEDGES.set(d,set=new Set(d.seam.filter(([,,ch])=>ch==='#'||ch==='%').map(([c,r])=>c+','+r)));const r=bottom/TILE;let any=false;
+ for(let c=Math.floor(p.x/TILE);c<=Math.floor((p.x+p.w-1)/TILE);c++)if(Core.tileAt(g,c,r)===Core.THRU){if(!set.has(c+','+r))return false;any=true;}
+ return any;}
 // Moving supports retain their authored origin even after cargo lowers them.
 function fireSupport(g){const p=g.p,sp=g.room.spawn;return g.ents.find(e=>!e.gone&&(e.solid||e.type==='zip'||e.type==='slide'||e.type==='thru'||e.thru)&&Math.abs(e.oy-(sp.y+p.h))<=1&&sp.x<e.ox+e.w&&sp.x+p.w>e.ox);}
 
@@ -567,7 +577,7 @@ PV.holding=function(){
  updatePassageLift(g);
  syncWalkSeams(g);
  if(passageWalk(g))return false;
- g.dropThru=d.campaignImport?!!d.dropThru:true;   // Imported puzzles retain their reviewed drop-through rules.
+ g.dropThru=d.campaignImport?!!d.dropThru||onDoorwayLedge(g,d):true;   // Imported puzzles retain their reviewed drop-through rules; their doorway ledge does not.
  g.springUp=!d.campaignImport;   // Native road springs stay upright; bank springs retain authored momentum.
  if(p.dropT>0&&!save.dropUsed){save.dropUsed=true;store(SAVE,save);}
  teachDrop(g,p);
