@@ -1,0 +1,1858 @@
+{
+  "room": {
+    "id": "bank-b66",
+    "study": true,
+    "palette": "sunspire",
+    "dashes": 1,
+    "cols": 80,
+    "rows": 38,
+    "exit": "right",
+    "name": "Give the Sun Back",
+    "aim8": true,
+    "dropThru": true,
+    "lock": [
+      "parry"
+    ],
+    "portalMode": "one",
+    "portals": [
+      {
+        "color": "orange",
+        "c": 58,
+        "r": 17,
+        "face": "l"
+      }
+    ],
+    "beams": [
+      {
+        "c": 12,
+        "r": 0,
+        "dir": "d"
+      },
+      {
+        "c": 20,
+        "r": 0,
+        "dir": "d"
+      }
+    ],
+    "dayKing": {
+      "c": 52,
+      "r": 19,
+      "hour": 2,
+      "need": 3,
+      "beat": [
+        220,
+        210,
+        200
+      ],
+      "wave": 1,
+      "dark": 60,
+      "suns": [
+        {
+          "c": 20,
+          "r": 0,
+          "dir": "d"
+        },
+        {
+          "c": 32,
+          "r": 0,
+          "dir": "d"
+        },
+        {
+          "c": 13,
+          "r": 30,
+          "dir": "r"
+        }
+      ]
+    },
+    "sunStructures": [
+      {
+        "id": "Sun lift",
+        "poses": [
+          {
+            "c": 28,
+            "r": 27,
+            "w": 6,
+            "h": 2
+          },
+          {
+            "c": 32,
+            "r": 9,
+            "w": 2,
+            "h": 25
+          },
+          {
+            "c": 32,
+            "r": 9,
+            "w": 2,
+            "h": 16
+          }
+        ]
+      }
+    ],
+    "map": [
+      "################################################################################",
+      "#.....................................................................#........#",
+      "#.....................................................................#........#",
+      "#.....................................................................#........#",
+      "#.....................................................................#........#",
+      "#.....................................................................#........#",
+      "#.....................................................................#........#",
+      "#............................................%........................#........#",
+      "#..............................#/............%........................#........#",
+      "#............................................%........................#........#",
+      "#.................................===========.........................#........#",
+      "#.....................................................................#........#",
+      "#.....................................................................#........#",
+      "#.....................................................................#........#",
+      "#.....................................................................#........#",
+      "#.....................................................................#........#",
+      "#...........................====......................................#........#",
+      "#.........................................................%##.........#........#",
+      "#.................................====....................%##.........#........#",
+      "#.....................................................................#........#",
+      "#...........................................###################.......#........#",
+      "#.....................................................................#........#",
+      "#...........................====........=========================.....#........#",
+      "#.....................................................................#........#",
+      "#.....................................................................#........#",
+      "#...................................=========================.........#........#",
+      "#.....................................................................#........#",
+      "#.....................................................................#........#",
+      "#...........................==========================................G........#",
+      "#....#####%...........................................................G.........",
+      "#.........%.........\\.................................................G.........",
+      "#.........%..............=========================....................G.........",
+      "#.............====....................................................G.........",
+      "#....P..l.............................................................G.........",
+      "####################%%##########################################################",
+      "################################################################################",
+      "################################################################################",
+      "################################################################################"
+    ],
+    "hint": "Return the low sun. His first bloom raises your next wall; the second leaves a road underneath.",
+    "question": "Can the King’s own defences make the route to each next reflection?"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 17,
+    "run": 8,
+    "collection": "superrooms",
+    "format": "superroom",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "author": "Codex",
+    "newMechanics": [
+      "king-cast-architecture"
+    ],
+    "humanReview": "Awaiting player review; numeric ratings unmeasured.",
+    "worlds": [
+      20
+    ],
+    "difficulty": 4,
+    "approvedIngredients": [
+      "bank-b44",
+      "bank-b49",
+      "bank-b50"
+    ],
+    "tags": [
+      "superroom",
+      "boss",
+      "king",
+      "portals",
+      "mirror",
+      "shade",
+      "changing-architecture"
+    ],
+    "role": "Three native King blooms transform the same optical court and require low, high and returning reflections.",
+    "solution": "Carry shade through the western shaft and park it beyond the light. Open the low receiving face and turn the starting mirror so the first sun travels through the portal behind the King. Climb the eastern approaches and strike his unlit side. His first bloom lifts the central casting platform into a wall. Climb that wall to the high mirror, readdress the portal to the upper face and return the second sun. Strike the King again; the same wall now clears a lower underpass. Return beneath it to the starting mirror, open the floor mouth, and cut the mirror from its other side to send the last sun downward into that mouth. Retreat beneath that beam to the original low portal wall, climb its western recovery shelf, and jump-dash back above the light. Re-enter the court through the changed lower route and take the last opening. His actual defeat extinguishes the light and opens the stable lower departure beneath his former attack lane.",
+    "interconnection": "One starting mirror works in two orientations; one platform becomes first the route upward and then the roof of the lower return. All three optical decisions expose the same native King from behind, whose blooms physically change the court. The original low receiving wall becomes the safe western relaunch after the final mirror cut.",
+    "novelty": "Boss progress manufactures the useful wall for the next optical address, then removes its lower obstruction for the return to the original mirror.",
+    "nearestExisting": "B44 brings shade through a return; B49 changes floor roles; B50 treats a portal as movable architecture. Native Sunspire uses changing windows in compact arenas. This turns its three native blooms into one vertical optical return around a shared casting wall.",
+    "requiredEvents": [
+      "pickup",
+      "throw",
+      "portal-open",
+      "mirror",
+      "dayking-bloom",
+      "sun-architecture",
+      "dayking-yield",
+      "gate-open",
+      "exit"
+    ],
+    "requiredEventCounts": {
+      "portal-open": 3,
+      "mirror": 3,
+      "dayking-bloom": 3,
+      "sun-architecture": 2,
+      "dayking-yield": 1
+    },
+    "superroom": {
+      "screenAreas": 3.3043478260869565,
+      "stages": [
+        "Portable shade and the low reflected sun",
+        "The King raises the wall to the high address",
+        "Return beneath that wall and use the original mirror from its opposite side"
+      ]
+    },
+    "endingForgiveness": "The last optical decision is made while standing on the safe floor below-left of the original mirror. The western shelf provides a stationary relaunch above that reflected beam. The lower one-way step before the King is sheltered from his floor wave, so the player can wait and retry the approach. The saved final attacks succeed at the canonical timing and thirty/eighty frames later; actual yield turns off the beams and opens a full-height sealed lower departure, with no timed finishing jump.",
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 1904
+    },
+    "routeEvents": [
+      {
+        "type": "pickup",
+        "frame": 17
+      },
+      {
+        "type": "throw",
+        "frame": 56,
+        "dir": 1
+      },
+      {
+        "type": "portal-open",
+        "frame": 99,
+        "x": 84,
+        "y": 248,
+        "color": "blue",
+        "face": "r"
+      },
+      {
+        "type": "mirror",
+        "frame": 134,
+        "x": 164,
+        "y": 244
+      },
+      {
+        "type": "dayking-bloom",
+        "frame": 424,
+        "x": 423,
+        "y": 144
+      },
+      {
+        "type": "sun-architecture",
+        "frame": 424,
+        "id": "Sun lift",
+        "stage": 1,
+        "x": 264,
+        "y": 72
+      },
+      {
+        "type": "portal-open",
+        "frame": 769,
+        "x": 364,
+        "y": 72,
+        "color": "blue",
+        "face": "l"
+      },
+      {
+        "type": "mirror",
+        "frame": 770,
+        "x": 260,
+        "y": 68
+      },
+      {
+        "type": "dayking-bloom",
+        "frame": 896,
+        "x": 423,
+        "y": 144
+      },
+      {
+        "type": "sun-architecture",
+        "frame": 896,
+        "id": "Sun lift",
+        "stage": 2,
+        "x": 264,
+        "y": 72
+      },
+      {
+        "type": "portal-open",
+        "frame": 1105,
+        "x": 168,
+        "y": 276,
+        "color": "blue",
+        "face": "u"
+      },
+      {
+        "type": "mirror",
+        "frame": 1106,
+        "x": 164,
+        "y": 244
+      },
+      {
+        "type": "dayking-bloom",
+        "frame": 1559,
+        "x": 423,
+        "y": 144
+      },
+      {
+        "type": "dayking-yield",
+        "frame": 1559,
+        "x": 423,
+        "y": 136
+      },
+      {
+        "type": "gate-open",
+        "frame": 1560,
+        "x": 564,
+        "y": 248
+      },
+      {
+        "type": "exit",
+        "frame": 1904,
+        "room": 0
+      }
+    ],
+    "positiveChecks": [
+      {
+        "name": "Pause thirty more frames in the lower approach shelter before the last jump",
+        "tape": [
+          [
+            16,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            38,
+            "r"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            30,
+            "j"
+          ],
+          [
+            1,
+            "lq"
+          ],
+          [
+            34,
+            "r"
+          ],
+          [
+            1,
+            "uls"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            32,
+            "j"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            32,
+            "j"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            92,
+            "lg"
+          ],
+          [
+            100,
+            "lgu"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            93,
+            "lgu"
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "rq"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            43,
+            "r"
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            22,
+            "r"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            16,
+            ""
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            85,
+            "l"
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            69,
+            "l"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            1,
+            "drq"
+          ],
+          [
+            1,
+            "urs"
+          ],
+          [
+            39,
+            "l"
+          ],
+          [
+            15,
+            "ljg"
+          ],
+          [
+            42,
+            "lgu"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            6,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            32,
+            "j"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            45,
+            "l"
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            220,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 1934,
+        "blooms": 3,
+        "finalPosition": [
+          639,
+          261
+        ]
+      },
+      {
+        "name": "Pause eighty more frames; the final airborne strike crosses the next glove/wave timing",
+        "tape": [
+          [
+            16,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            38,
+            "r"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            30,
+            "j"
+          ],
+          [
+            1,
+            "lq"
+          ],
+          [
+            34,
+            "r"
+          ],
+          [
+            1,
+            "uls"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            32,
+            "j"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            32,
+            "j"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            92,
+            "lg"
+          ],
+          [
+            100,
+            "lgu"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            93,
+            "lgu"
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "rq"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            43,
+            "r"
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            22,
+            "r"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            16,
+            ""
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            85,
+            "l"
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            69,
+            "l"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            1,
+            "drq"
+          ],
+          [
+            1,
+            "urs"
+          ],
+          [
+            39,
+            "l"
+          ],
+          [
+            15,
+            "ljg"
+          ],
+          [
+            42,
+            "lgu"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            6,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            32,
+            "j"
+          ],
+          [
+            85,
+            ""
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            45,
+            "l"
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            220,
+            "r"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 1984,
+        "blooms": 3,
+        "finalPosition": [
+          639,
+          261
+        ]
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Keep the original low portal address for all three phases",
+        "tape": [
+          [
+            16,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            38,
+            "r"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            30,
+            "j"
+          ],
+          [
+            1,
+            "lq"
+          ],
+          [
+            34,
+            "r"
+          ],
+          [
+            1,
+            "uls"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            32,
+            "j"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            32,
+            "j"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            92,
+            "lg"
+          ],
+          [
+            100,
+            "lgu"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            93,
+            "lgu"
+          ],
+          [
+            4,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            43,
+            "r"
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            22,
+            "r"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            16,
+            ""
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            85,
+            "l"
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            69,
+            "l"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            1,
+            "urs"
+          ],
+          [
+            39,
+            "l"
+          ],
+          [
+            15,
+            "ljg"
+          ],
+          [
+            42,
+            "lgu"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            6,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            32,
+            "j"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            45,
+            "l"
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            1,
+            "dj"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            220,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 0,
+        "frames": null,
+        "blooms": 1,
+        "finalPosition": [
+          552,
+          261
+        ]
+      },
+      {
+        "name": "Use the King as a stepping stone and jump-dash over the victory seal",
+        "tape": [
+          [
+            16,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            38,
+            "r"
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            30,
+            "j"
+          ],
+          [
+            1,
+            "lq"
+          ],
+          [
+            34,
+            "r"
+          ],
+          [
+            1,
+            "uls"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            32,
+            "j"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            32,
+            "j"
+          ],
+          [
+            5,
+            ""
+          ],
+          [
+            24,
+            "rj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            7,
+            "r"
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            180,
+            "r"
+          ]
+        ],
+        "exited": false,
+        "deaths": 0,
+        "frames": null,
+        "blooms": 0,
+        "finalPosition": [
+          552,
+          261
+        ]
+      }
+    ]
+  },
+  "tape": [
+    [
+      16,
+      "r"
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      38,
+      "r"
+    ],
+    [
+      1,
+      "dg"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      30,
+      "j"
+    ],
+    [
+      1,
+      "lq"
+    ],
+    [
+      34,
+      "r"
+    ],
+    [
+      1,
+      "uls"
+    ],
+    [
+      20,
+      "r"
+    ],
+    [
+      1,
+      ""
+    ],
+    [
+      24,
+      "rj"
+    ],
+    [
+      14,
+      ""
+    ],
+    [
+      25,
+      "rj"
+    ],
+    [
+      14,
+      ""
+    ],
+    [
+      25,
+      "rj"
+    ],
+    [
+      14,
+      ""
+    ],
+    [
+      32,
+      "j"
+    ],
+    [
+      5,
+      ""
+    ],
+    [
+      32,
+      "j"
+    ],
+    [
+      5,
+      ""
+    ],
+    [
+      24,
+      "rj"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      26,
+      "rj"
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      1,
+      "rs"
+    ],
+    [
+      5,
+      ""
+    ],
+    [
+      92,
+      "lg"
+    ],
+    [
+      100,
+      "lgu"
+    ],
+    [
+      30,
+      ""
+    ],
+    [
+      93,
+      "lgu"
+    ],
+    [
+      4,
+      "r"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      1,
+      "rq"
+    ],
+    [
+      1,
+      "ls"
+    ],
+    [
+      43,
+      "r"
+    ],
+    [
+      1,
+      "dj"
+    ],
+    [
+      22,
+      "r"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      18,
+      "rj"
+    ],
+    [
+      16,
+      ""
+    ],
+    [
+      1,
+      "rs"
+    ],
+    [
+      5,
+      ""
+    ],
+    [
+      85,
+      "l"
+    ],
+    [
+      1,
+      "dj"
+    ],
+    [
+      16,
+      "l"
+    ],
+    [
+      1,
+      ""
+    ],
+    [
+      1,
+      "dj"
+    ],
+    [
+      69,
+      "l"
+    ],
+    [
+      30,
+      ""
+    ],
+    [
+      1,
+      "drq"
+    ],
+    [
+      1,
+      "urs"
+    ],
+    [
+      39,
+      "l"
+    ],
+    [
+      15,
+      "ljg"
+    ],
+    [
+      42,
+      "lgu"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      12,
+      "r"
+    ],
+    [
+      6,
+      ""
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      12,
+      "rx"
+    ],
+    [
+      35,
+      "r"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      24,
+      "rj"
+    ],
+    [
+      14,
+      ""
+    ],
+    [
+      25,
+      "rj"
+    ],
+    [
+      14,
+      ""
+    ],
+    [
+      25,
+      "rj"
+    ],
+    [
+      14,
+      ""
+    ],
+    [
+      32,
+      "j"
+    ],
+    [
+      5,
+      ""
+    ],
+    [
+      24,
+      "rj"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      26,
+      "rj"
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      1,
+      "rs"
+    ],
+    [
+      5,
+      ""
+    ],
+    [
+      45,
+      "l"
+    ],
+    [
+      1,
+      "dj"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      1,
+      "dj"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      1,
+      "dj"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      1,
+      "dj"
+    ],
+    [
+      30,
+      ""
+    ],
+    [
+      220,
+      "r"
+    ]
+  ]
+}

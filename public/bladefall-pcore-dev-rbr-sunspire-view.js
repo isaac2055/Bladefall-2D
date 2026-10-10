@@ -12,7 +12,7 @@ function draw(b,g){const k=g.dayKing,s=g.gardenShade,L=g.hydraLight;
   // The hour turning: the next window glows and its line is drawn before it lights.
   if(k.sunNext){const n=k.sunNext,D={r:[1,0],l:[-1,0],u:[0,-1],d:[0,1]}[n.dir],C=Core(),blink=(g.frame>>2)&1;
    rect(b,n.c*8,n.r*8,8,8,blink?'#fff6d5':'#d9b85a');
-   let c=n.c+D[0],r=n.r+D[1];for(let i=0;i<60&&C&&c>=0&&c<40&&r>=0&&r<23&&C.tileAt(g,c,r)!==C.SOLID;i++,c+=D[0],r+=D[1])if(i%2===0)rect(b,c*8+3,r*8+3,2,2,'rgba(255,246,213,.55)');}
+   let c=n.c+D[0],r=n.r+D[1];for(let i=0;i<Math.max(60,g.room.cols,g.room.rows)&&C&&c>=0&&c<g.room.cols&&r>=0&&r<g.room.rows&&C.tileAt(g,c,r)!==C.SOLID;i++,c+=D[0],r+=D[1])if(i%2===0)rect(b,c*8+3,r*8+3,2,2,'rgba(255,246,213,.55)');}
  }
  if(s){rect(b,s.c*8-7,s.r*8-2,22,4,s.done?'#685945':'#c9b477');if(s.done){rect(b,s.c*8-5,139,1,5,'#738454');rect(b,s.c*8-7,136,5,4,'#e3dcef');}}
  if(g.room.def.hydraRide){const e=g.ents.find(e=>e.type==='deck');if(e){const x=e.x,y=e.y;rect(b,x,y+1,e.w,12,'#477477');

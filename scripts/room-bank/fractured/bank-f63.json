@@ -1,0 +1,1122 @@
+{
+  "room": {
+    "id": "bank-f63",
+    "name": "Ring It from the Other Side",
+    "palette": "outskirts",
+    "study": true,
+    "movement": "survive-2",
+    "aim8": true,
+    "cols": 96,
+    "rows": 32,
+    "exit": "right",
+    "map": [
+      "################################################################################################",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "#..............................................................................................G",
+      "#..............................................................................................G",
+      "#..............................................................................................G",
+      "#..............................................................................................G",
+      "#.......................................############..............########.....................G",
+      "#..............................................<####..................................##########",
+      "#..............................................<####.................................<##########",
+      "#..............................................<####.................................<##########",
+      "#........................#########.............<####.................................<##########",
+      "#..............................................<####.................................<##########",
+      "#..............................................<####.................................<##########",
+      "#..............................................<####.................................<##########",
+      "#.................................##################.................................<##########",
+      "#..............................................<####.................................<##########",
+      "#..............................................<####.................................<##########",
+      "#..............................................<####.................................<##########",
+      "#..............................................<####.................................<##########",
+      "#..............................................<####.................................<##########",
+      "#..............................................<####.................................<##########",
+      "#..............................................<####.................................<##########",
+      "#............P.................................<####.................................<##########",
+      "####################...........................<####.................................<##########",
+      "####################...........................<####.................................<##########",
+      "####################...........................<####.................................<##########",
+      "####################...........................<####.................................<##########",
+      "####################^^^^^^^^^^^^^^^^^^^^^^^^^^^^####^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^##########",
+      "################################################################################################"
+    ],
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "sentinel": {
+      "mode": "hammer",
+      "c": 39,
+      "r": 15,
+      "hold": 260,
+      "range": [
+        168,
+        168
+      ],
+      "floor": 26,
+      "period": 400
+    },
+    "superFractured": {
+      "kind": "sentinel",
+      "second": {
+        "c": 90,
+        "r": 8,
+        "range": [
+          168,
+          168
+        ],
+        "floor": 18,
+        "hold": 700,
+        "period": 800
+      },
+      "shelf": {
+        "c": 18,
+        "r": 21,
+        "w": 8
+      }
+    },
+    "hint": "The low bell recalls the hammer higher. Return below the crossing; its new head reaches the top.",
+    "question": "Which part of the arena stays behind when the Sentinel answers the first bell?"
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 17,
+    "run": 8,
+    "collection": "superrooms",
+    "format": "superroom",
+    "acceptance": "candidate",
+    "difficulty": 3,
+    "role": "interconnected boss superroom",
+    "worlds": [
+      21
+    ],
+    "tags": [
+      "superroom",
+      "boss",
+      "shared-state",
+      "sentinel",
+      "super",
+      "underpass",
+      "return"
+    ],
+    "newMechanics": [],
+    "status": "route-proven",
+    "author": "Codex",
+    "humanReview": "Awaiting human fun/difficulty/suitability ratings.",
+    "approvedIngredients": [
+      "bank-f45",
+      "bank-f49"
+    ],
+    "interconnection": "The low bell recalls the Sentinel at a higher notch over its western footprint and leaves a permanent rest below. The same long overhang first forces a return underneath, then supplies an upper fallback for the higher hammer launch. The central column separates the low bell balcony from the high bell approach, so the player revisits the western court before crossing behind it.",
+    "solution": "Mount the first committed hammer and extended-super to the low bell balcony. Turn left and super back underneath the overhang, landing on the abandoned hammer rest. Jump vertically beside the higher hammer, grab its right face, and climb onto its committed head. Back up slightly on that head for an extended super; an upward diagonal dash reaches the broad top of the central column. Super across the eastern high island and into the high bell from behind the column. The actual second bell opens the wide final shelf and gate.",
+    "novelty": "A lower launch height teaches an underpass from one side, then the bell changes the same western hammer into the route above that obstacle. Its discarded rest has a necessary practical role in the reverse approach; the final bell still requires the second native ride rather than a scripted use counter.",
+    "nearestExisting": "Native W21 hammer rounds supply the real commitments and bells. F45/F49 supplied the return through earlier architecture; here that return is underneath the route that the second hammer subsequently launches above. Only supers and the already available jump/dash/grab are used.",
+    "requiredEvents": [
+      "sentinel-ride",
+      "sentinel-bell",
+      "sentinel-relocate",
+      "super"
+    ],
+    "route": {
+      "name": "canonical",
+      "exited": true,
+      "deaths": 0,
+      "frames": 667,
+      "sentinelDone": true,
+      "events": [
+        "jump",
+        "dash",
+        "land",
+        "refill-dash",
+        "sentinel-ride",
+        "super",
+        "sentinel-bell",
+        "sentinel-relocate",
+        "grab",
+        "climbhop",
+        "gate-open",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 2,
+        "dash": 10,
+        "land": 7,
+        "refill-dash": 10,
+        "sentinel-ride": 2,
+        "super": 5,
+        "sentinel-bell": 2,
+        "sentinel-relocate": 1,
+        "grab": 1,
+        "climbhop": 1,
+        "gate-open": 1,
+        "exit": 1
+      },
+      "deathCauses": []
+    },
+    "positiveChecks": [
+      {
+        "name": "Final super takeoff two frames earlier",
+        "tape": [
+          [
+            20,
+            "r"
+          ],
+          [
+            42,
+            ""
+          ],
+          [
+            15,
+            "rj"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            16,
+            ""
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            5,
+            "lx"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            16,
+            "lj"
+          ],
+          [
+            15,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            65,
+            "lgu"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            4,
+            "l"
+          ],
+          [
+            6,
+            ""
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            3,
+            "r"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            70,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 677,
+          "sentinelDone": true,
+          "events": [
+            "jump",
+            "dash",
+            "land",
+            "refill-dash",
+            "sentinel-ride",
+            "super",
+            "sentinel-bell",
+            "sentinel-relocate",
+            "grab",
+            "climbhop",
+            "gate-open",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "dash": 9,
+            "land": 7,
+            "refill-dash": 9,
+            "sentinel-ride": 2,
+            "super": 5,
+            "sentinel-bell": 2,
+            "sentinel-relocate": 1,
+            "grab": 1,
+            "climbhop": 1,
+            "gate-open": 1,
+            "exit": 1
+          },
+          "deathCauses": []
+        }
+      },
+      {
+        "name": "Final super takeoff two frames later",
+        "tape": [
+          [
+            20,
+            "r"
+          ],
+          [
+            42,
+            ""
+          ],
+          [
+            15,
+            "rj"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            16,
+            ""
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            5,
+            "lx"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            16,
+            "lj"
+          ],
+          [
+            15,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            65,
+            "lgu"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            4,
+            "l"
+          ],
+          [
+            6,
+            ""
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            7,
+            "r"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            70,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 664,
+          "sentinelDone": true,
+          "events": [
+            "jump",
+            "dash",
+            "land",
+            "refill-dash",
+            "sentinel-ride",
+            "super",
+            "sentinel-bell",
+            "sentinel-relocate",
+            "grab",
+            "climbhop",
+            "gate-open",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "dash": 10,
+            "land": 7,
+            "refill-dash": 10,
+            "sentinel-ride": 2,
+            "super": 5,
+            "sentinel-bell": 2,
+            "sentinel-relocate": 1,
+            "grab": 1,
+            "climbhop": 1,
+            "gate-open": 1,
+            "exit": 1
+          },
+          "deathCauses": []
+        }
+      },
+      {
+        "name": "Rest three extra seconds below the newly committed hammer before climbing",
+        "tape": [
+          [
+            20,
+            "r"
+          ],
+          [
+            42,
+            ""
+          ],
+          [
+            15,
+            "rj"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            16,
+            ""
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            5,
+            "lx"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            16,
+            "lj"
+          ],
+          [
+            15,
+            "l"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            180,
+            ""
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            65,
+            "lgu"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            4,
+            "l"
+          ],
+          [
+            6,
+            ""
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            26,
+            "rj"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            70,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 847,
+          "sentinelDone": true,
+          "events": [
+            "jump",
+            "dash",
+            "land",
+            "refill-dash",
+            "sentinel-ride",
+            "super",
+            "sentinel-bell",
+            "sentinel-relocate",
+            "grab",
+            "climbhop",
+            "gate-open",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "dash": 10,
+            "land": 7,
+            "refill-dash": 10,
+            "sentinel-ride": 2,
+            "super": 5,
+            "sentinel-bell": 2,
+            "sentinel-relocate": 1,
+            "grab": 1,
+            "climbhop": 1,
+            "gate-open": 1,
+            "exit": 1
+          },
+          "deathCauses": []
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Jump straight back toward the high hammer without using the rest under the overhang",
+        "tape": [
+          [
+            20,
+            "r"
+          ],
+          [
+            42,
+            ""
+          ],
+          [
+            15,
+            "rj"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            16,
+            ""
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            16,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            5,
+            "lux"
+          ],
+          [
+            30,
+            "l"
+          ],
+          [
+            30,
+            "rj"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            120,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 0,
+          "sentinelDone": false,
+          "events": [
+            "jump",
+            "dash",
+            "land",
+            "refill-dash",
+            "sentinel-ride",
+            "super",
+            "sentinel-bell",
+            "sentinel-relocate",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 3,
+            "dash": 5,
+            "land": 4,
+            "refill-dash": 4,
+            "sentinel-ride": 1,
+            "super": 1,
+            "sentinel-bell": 1,
+            "sentinel-relocate": 1,
+            "death": 1,
+            "respawn": 1
+          },
+          "deathCauses": [
+            "spikes"
+          ]
+        }
+      }
+    ],
+    "requiredEventCounts": {
+      "sentinel-ride": 2,
+      "sentinel-bell": 2
+    },
+    "endingForgiveness": "The second commitment lasts 700 frames, with a verified three-second extra rest before mounting. The last super succeeds four frames apart and lands on a ten-tile-wide solid shelf; the high bell can also be touched on foot once landed. A missed higher launch has the overhang and low balcony below it rather than an immediate final-jump reset.",
+    "designNotes": "96\u00d732, 3.34 standard room areas. Saved tape uses five supers, two native hammer rides and two native bell contacts; no hyper, ultra, wallbounce, portals or parry. The high return is interconnected with the lower bell court, not three independent boss checkpoints. The persistent rest and recalled hammer are the only opt-in boss-state adaptation; native Sentinel still owns the ride, bell and final gate hold."
+  },
+  "tape": [
+    [
+      20,
+      "r"
+    ],
+    [
+      42,
+      ""
+    ],
+    [
+      15,
+      "rj"
+    ],
+    [
+      5,
+      "rux"
+    ],
+    [
+      12,
+      "r"
+    ],
+    [
+      5,
+      "l"
+    ],
+    [
+      16,
+      ""
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      5,
+      "r"
+    ],
+    [
+      16,
+      "rj"
+    ],
+    [
+      14,
+      "r"
+    ],
+    [
+      5,
+      "rux"
+    ],
+    [
+      30,
+      "r"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      25,
+      "l"
+    ],
+    [
+      5,
+      "lx"
+    ],
+    [
+      5,
+      "l"
+    ],
+    [
+      16,
+      "lj"
+    ],
+    [
+      15,
+      "l"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      12,
+      "j"
+    ],
+    [
+      65,
+      "lgu"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      4,
+      "l"
+    ],
+    [
+      6,
+      ""
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      5,
+      "r"
+    ],
+    [
+      26,
+      "rj"
+    ],
+    [
+      5,
+      "rux"
+    ],
+    [
+      30,
+      "r"
+    ],
+    [
+      25,
+      "r"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      5,
+      "r"
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      20,
+      "r"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      15,
+      "r"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      5,
+      "r"
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      70,
+      "r"
+    ]
+  ]
+}

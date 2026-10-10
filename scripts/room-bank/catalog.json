@@ -1,7 +1,7 @@
 {
-  "version": "7.303.0",
-  "activeBatch": 16,
-  "activeRun": 7,
+  "version": "7.305.0",
+  "activeBatch": 17,
+  "activeRun": 8,
   "retained": [
     "bank-b05",
     "bank-b11",
@@ -72,6 +72,7 @@
     "bank-f28",
     "bank-f30",
     "bank-f31",
+    "bank-f32",
     "bank-f33",
     "bank-f34",
     "bank-f35",
@@ -96,10 +97,11 @@
     "bank-f56",
     "bank-f57",
     "bank-f58",
+    "bank-f59",
     "bank-f60",
     "bank-f61"
   ],
-  "newRoomsPerSide": 0,
+  "newRoomsPerSide": 5,
   "mechanicRequirements": [],
   "timingStagesPerNewRoom": 0,
   "banked": [
@@ -206,14 +208,14 @@
   "newTechRequirements": [],
   "newEntityRequirements": [],
   "requireNewMovementEntityPair": false,
-  "superrooms": false,
+  "superrooms": true,
   "baseMovementExceptions": [
     "bank-f41"
   ],
-  "reviewCycle": true,
+  "reviewCycle": false,
   "newRoomsBySide": {
-    "base": 0,
-    "fractured": 2
+    "base": 5,
+    "fractured": 5
   },
   "order": [
     "bank-b05",
@@ -312,22 +314,19 @@
     "bank-f58",
     "bank-f59",
     "bank-f60",
-    "bank-f61"
+    "bank-f61",
+    "bank-b62",
+    "bank-b63",
+    "bank-b64",
+    "bank-b65",
+    "bank-b66",
+    "bank-f63",
+    "bank-f64",
+    "bank-f65",
+    "bank-f66",
+    "bank-f67"
   ],
-  "reviewRecords": [
-    {
-      "id": "bank-f59",
-      "side": "fractured",
-      "run": 7,
-      "acceptance": "banked"
-    },
-    {
-      "id": "bank-f32",
-      "side": "fractured",
-      "run": 2,
-      "acceptance": "banked"
-    }
-  ],
-  "defaultGroup": "banked",
+  "reviewRecords": [],
+  "defaultGroup": "superrooms",
   "roomFormats": null
 }

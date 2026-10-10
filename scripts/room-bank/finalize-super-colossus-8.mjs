@@ -1,0 +1,15 @@
+import assert from'node:assert/strict';
+import {readFileSync,writeFileSync} from'node:fs';
+import {runRoom} from'../rbr-lib.mjs';
+const f=new URL('./base/bank-b65.json',import.meta.url),x=JSON.parse(readFileSync(f));
+const canonical=runRoom([x.room],0,x.tape,{trace:true});assert.equal(canonical.exited,true);assert.equal(canonical.deaths,0);
+const variations=[['Read the final tell and cast 25 frames earlier',5],['Arrive at the final cup 60 frames later',90]].map(([name,wait])=>{const tape=structuredClone(x.tape);tape[28][0]=wait;const a=runRoom([x.room],0,tape);assert(a.exited&&!a.deaths,name);return{name,tape};});
+const rush=[[285,'r'],[20,'rj'],[5,'rux'],[60,'rgu'],[10,'rj'],[5,'rx'],[180,'r'],[1,'dj'],[60,'d'],[1,'dj'],[100,'d'],[450,'l']];
+assert(!runRoom([x.room],0,rush).exited,'early wall/exit rush must fail');
+x.bank.status='route-proven';x.bank.route={frames:canonical.exitFrame+1,deaths:0,exited:true};x.bank.positiveChecks=variations;x.bank.shortcutChecks=[{name:'Rush the eastern wall and return trench before preparing the casting bays',tape:rush}];
+x.bank.solution='Cast the western mould and let its pillar form. Reach the far side of the anvil sled and dash it left into that new stop. Cast the now-vacated low mould, then return to the parked anvil and pogo into the gallery. The low pour has become a second iron wall: climb it and cross its crown. Cast the last cup from the stable gallery, retreat from the pour, then climb the new final pillar over the hot dividing wall. Drop through the eastern ledges and ride the sheltered lower belt back under the original court.';
+x.bank.interconnection='A pillar cast by the Colossus parks the anvil. Moving it exposes a second mould whose pour becomes a new wall across the gallery. The final pour becomes the high escape bridge; the return belt runs beneath all three casting decisions.';
+x.bank.nearestExisting='B49 makes shared terrain change jobs and B50 makes a physical stop necessary for delivery. Here the native boss produces the stops and walls while the anvil rides a native dash-moved stone. A different casting order is allowed; the real mould under the sled still has to be exposed.';
+x.bank.endingForgiveness='The final cup is struck from a stable 18-tile gallery. Casting 25 frames earlier and 60 frames later both succeed; after the pour the route is permanent iron, wide shelves and a sheltered return belt. Failed early mounting or pogo attempts can land on the lower work floor.';
+x.bank.superroom={screenAreas:x.room.cols*x.room.rows/(40*23),stages:['Cast the anvil stop','Vacate the covered mould and use its iron wall','Cast the escape bridge; return under the same work floor']};
+writeFileSync(f,JSON.stringify(x,null,2)+'\n');console.log('B65 saved: '+x.bank.route.frames+' frames, zero deaths; two ending variants and direct bypass probe pass.');

@@ -25,9 +25,13 @@ function visible(){
  return local||allWorldsCompleted();
 }
 function choice(){return G?.coopSession?G.finalEchoChoice||null:state().choice;}
-function power(){return !G||G.battle||G.bossRush||G.vesperEncounter||[41,42,44].includes(G.stageIndex)?1:(CHOICES[choice()]?.power||1);}
+function vesperMerged(){return !!(G?.vesperFromEcho&&G.vesperMergeReady&&choice()==='merge');}
+function vesperWard(){return vesperMerged()?1:(G?.vesperFromEcho ? .25 : .01);}
+function power(){return !G||G.battle||G.bossRush||G.vesperEncounter||[41,42,44].includes(G.stageIndex)||G.stageIndex===VESPER_STAGE&&!G.vesperFromEcho?1:(CHOICES[choice()]?.power||1);}
 function resetInput(){if(typeof input==='object')for(const k of Object.keys(input))if(typeof input[k]==='boolean')input[k]=false;}
 function travel(stage,encounter){
+ const fromEcho=stage===VESPER_STAGE&&!encounter&&G.stageIndex===ECHO_STAGE&&G.actTwo?.won&&!!G.echoVictoryChoice;
+ G.vesperFromEcho=!!fromEcho;G.vesperMergeReady=!!fromEcho&&G.echoVictoryChoice==='merge';
  G.vesperEncounter=!!encounter;G.finaleTransfer=true;G.zonePersistenceManifest=null;
  loadStage(stage);delete G.finaleTransfer;
  G.p.dead=false;G.p.vx=G.p.vy=0;G.p.x=stage===VESPER_STAGE?2920:420;G.p.y=0;
@@ -55,6 +59,7 @@ function encounterDefeat(){
 }
 function choose(value){
  if(!CHOICES[value]||!G||G.stageIndex!==ECHO_STAGE||!G.actTwo?.won)return false;
+ G.echoVictoryChoice=value;
  if(G.coopSession)G.finalEchoChoice=value;else{state().choice=value;state().echoDefeated=true;persist();}
  card(CHOICES[value].title,CHOICES[value].line+'<br><br>Vesper waits beyond the mirror.',[
   {label:'Return to Vesper',act:()=>travel(VESPER_STAGE,false)}]);return true;
@@ -78,18 +83,27 @@ function init(){
  F.setKit(root.BladefallCloakedMan.constants.KIT);restoreBlood(G.p,Infinity);
  A.bar={label:'THE FINAL ECHO · THE PART YOU LEFT',hp:A.hp,maxHp:A.maxHp,active:true,dead:false,boss:true,x:1200,y:0,w:28,h:44};
 }
-function spawn(){
- const A=G.actTwo,e=spawnEnemy('grunt',1550);
- Object.assign(e,{actFoe:'finalEcho',kind:'fly',x:1550,y:0,w:28,h:44,vx:0,vy:0,active:true,noDrop:true,boss:false,xp:0,maxHp:1e6,hp:1e6,hpWas:1e6,face:-1,st:'rest',t:0,order:0,portalGate:null,color:'#c9a8ff'});A.foe=e;A.spawned=true;
+function spawn(x=1550,clone=false){
+ const A=G.actTwo,e=spawnEnemy('grunt',x);
+ Object.assign(e,{actFoe:'finalEcho',echoClone:clone,kind:'fly',x,y:0,w:28,h:44,vx:0,vy:0,active:true,noDrop:true,boss:false,xp:0,maxHp:1e6,hp:1e6,hpWas:1e6,face:-1,st:'rest',t:0,order:0,portalGate:null,color:'#c9a8ff'});if(!clone)A.foe=e;A.spawned=true;return e;
+}
+function restoreFlagEcho(){
+ const A=G?.actTwo;if(!A||A.stage!==ECHO_STAGE||A.won)return false;
+ // A planted flag holds the fight; returning leaves another part of the Echo behind.
+ const source=A.foe||G.enemies.find(e=>e.actFoe==='finalEcho');
+ if(!source)return false;
+ A.foe=source;A.spawned=true;G.boss=A.bar;
+ const clone=spawn(Math.max(560,Math.min(1900,source.x+(source.x>1200?-180:180))),true);
+ clone.order=(source.order||0)+1;clone.t=-.55;clone.st='rest';A.flagReturns=(A.flagReturns||0)+1;return true;
 }
 function overlap(p,x0,x1,y0,y1){return p.x+p.w/2>Math.min(x0,x1)&&p.x-p.w/2<Math.max(x0,x1)&&p.y+p.h>y0&&p.y<y1;}
-function hit(p,e){if(!p.dead&&p.invuln<=0&&p.dodgeTimer<=0){if(typeof tryPlayerCounter==='function'&&tryPlayerCounter('melee',e.face,e)){e.st='rest';e.t=-.6;return;}hurtPlayer(20,e.face,true,1);}}
+function hit(p,e){if(!p.dead&&p.invuln<=0&&p.dodgeTimer<=0){if(typeof tryPlayerCounter==='function'&&tryPlayerCounter('melee',e.face,e)){e.st='rest';e.t=-.6;return;}hurtPlayer(20,e.face,true,3);}}
 function updateFoe(e,p,dt){
  const A=G.actTwo;if(!A||A.stage!==ECHO_STAGE||e.actFoe!=='finalEcho')return;
- const loss=Math.max(0,e.hpWas-e.hp)+(e.dead?1e6:0);e.hp=e.hpWas=1e6;e.dead=false;e.vx=e.vy=0;
+ const loss=(Math.max(0,e.hpWas-e.hp)+(e.dead?1e6:0))*.25;e.hp=e.hpWas=1e6;e.dead=false;e.vx=e.vy=0;
  if(loss&&A.fight&&!A.won){A.hp=Math.max(0,A.hp-loss);A.hitT=.2;
   if(A.hp<=0){if(A.phase===0){A.phase=1;A.hp=A.maxHp=K.pools[1];A.bar.label='THE FINAL ECHO · STAY WITH ME';e.st='rest';e.t=-1;restoreBlood(p,2);}
-   else{A.won=true;A.fight=false;e.active=false;e.portalGate='echo-yielded';A.bar.dead=true;A.bar.active=false;G.boss=null;choices();return;}}}
+   else{A.won=true;A.fight=false;for(const foe of G.enemies)if(foe.actFoe==='finalEcho'){foe.active=false;foe.portalGate='echo-yielded';}A.bar.dead=true;A.bar.active=false;G.boss=null;choices();return;}}}
  e.t+=dt;e.face=Math.sign(p.x-e.x)||e.face;
  if(!A.fight||A.won||p.dead)return;
  if(e.counterStunT>0){e.counterStunT=0;e.st='rest';e.t=-.45;}
@@ -118,13 +132,15 @@ function draw(phase,api,e){
  }
  if(phase==='world'){
   for(const w of A.waves)B(WX(w.x)-22*Z,WY(30),44*Z,30*Z,'#b5a3ed');
-  const foe=A.foe;if(foe?.st==='dash-tell'){B(WX(foe.x),WY(4),(foe.dir*360)*Z,3*Z,'#f2b583');}
-  if(foe?.st==='leap-tell')B(WX(foe.targetX)-35*Z,WY(5),70*Z,5*Z,'#f2b583');return true;
+  for(const foe of api.G.enemies.filter(e=>e.actFoe==='finalEcho')){
+   if(foe.st==='dash-tell')B(WX(foe.x),WY(4),(foe.dir*360)*Z,3*Z,'#f2b583');
+   if(foe.st==='leap-tell')B(WX(foe.targetX)-35*Z,WY(5),70*Z,5*Z,'#f2b583');
+  }return true;
  }
  if(phase==='overlay'){ctx.save();ctx.font='8px monospace';ctx.fillStyle='#d8cdf5';ctx.textAlign='center';ctx.fillText(A.won?'You can choose what comes next.':'READ THE CUT · JUMP THE WAVE · STRIKE THE RECOVERY',api.bw/2,api.bh-16);ctx.restore();return true;}
  return false;
 }
 A2.register(ECHO_STAGE,Object.freeze({level,update,updateFoe,interact:()=>false,swing(){},voidFloor:()=>-120,cameraFloor:()=>0,seamSpec:()=>null,musicCue:()=>({id:'final-echo',src:'./audio/music/fractured-the-last-spark-of-darrow.mp3',title:'The Last Spark of Darrow',artist:'Aerth score'})}));
 root.BladefallActTwoArt.register(ECHO_STAGE,Object.freeze({draw}));
-root.BladefallExploreFinale=Object.freeze({ECHO_STAGE,VESPER_STAGE,MAIN,CHOICES,K,state,noteClear,allWorldsCompleted,visible,choice,power,travel,afterPalace,encounterDefeat,choose,ending});
+root.BladefallExploreFinale=Object.freeze({ECHO_STAGE,VESPER_STAGE,MAIN,CHOICES,K,state,noteClear,allWorldsCompleted,visible,choice,power,vesperMerged,vesperWard,restoreFlagEcho,travel,afterPalace,encounterDefeat,choose,ending});
 })(typeof window!=='undefined'?window:globalThis);

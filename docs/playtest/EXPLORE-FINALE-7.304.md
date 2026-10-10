@@ -1,5 +1,7 @@
 # Explore finale · 7.304
 
+Subsequent menu, difficulty and flag-resurrection changes are recorded in [7.305](EXPLORE-FINALE-7.305.md).
+
 The Fractured Palace's existing King in the Dark fight and road remain intact. Walking beyond the defeated king now reveals Vesper. This first confrontation reuses his arena without changing the saved stage identities. His first-phase ward cannot be depleted by ordinary damage; his attacks remove three Blood measures, and a final overwhelming blow ends the confrontation after fourteen seconds. The defeat advances the story, including in Hardcore, rather than restarting the entire game. Test Mode can break the ward.
 
 The fall leads to **41 · The Final Echo**, a new playable two-phase duel. The Echo uses the knight renderer and the existing blade, dash, jump and counter systems. Read the windup, evade the cut or jump the landing wave, then strike its recovery. Two phases total 480 HP, compared with Vesper's original four phases totaling 1,880; recovery windows are deliberately longer. An ordinary death retries the Echo checkpoint.

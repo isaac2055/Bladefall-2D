@@ -35,7 +35,7 @@ function load(opts){
     BladefallActTwo:{ register(i, impl){ impls[i] = impl; },
       kit:{ zoneCircuits:() => circuits, circuitSet:(c, id) => !!c[id], latch:(z, id) => { circuits[id] = true; }, burst(){}, say(){} } },
     BladefallFractured:{ setKit(){}, checkpoints(){} },
-    BladefallExploreFinale:{choice:()=> 'merge',ending(){ctx.__card=true;}},
+    BladefallExploreFinale:{choice:()=> 'merge',vesperMerged:()=>true,vesperWard:()=>1,ending(){ctx.__card=true;}},
   };
   const keys = { pressed:false };
   const ctx = vm.createContext({ Math, Object, JSON, Array, window, G, meta:{ soundOn:false }, SFX:{}, mode:'play',
@@ -76,7 +76,8 @@ test('stage 43 is registered everywhere a stage must be, and Level Select shows 
   const L = fnFrom(source, 'openLevelSelect');
   assert.match(L, /if\(st\.precisionCourse\)return '';/, 'Celeste Standard is on the title screen, not in Base');
   assert.match(L, /const tag=st\.selectTag\|\|String\(i<BONUS_STAGE\?i\+1:i\)\.padStart\(2,'0'\);/, 'the Deep Line is 15, the Sunspire 20');
-  assert.match(L, /!st\.finalBattle&&!dev/, 'the last fight is open to Level Select');
+  assert.match(L, /st\.act===3\|\|st\.finalBattle/, 'finales are excluded from Base');
+  assert.match(read('bladefall-rift-shards.js'), /data-fx="43"[^]*42<\/span>Vesper/, 'Vesper is Fractured 42');
 });
 
 test('Level Select numbering: Base 01–14 then 15–20 from the Deep Line; the fight is 42', () => {

@@ -1,0 +1,1166 @@
+{
+  "room": {
+    "id": "bank-f65",
+    "name": "Thaw the Way Behind Him",
+    "palette": "court",
+    "study": true,
+    "movement": "survive-2",
+    "aim8": true,
+    "cols": 96,
+    "rows": 32,
+    "exit": "left",
+    "map": [
+      "################################################################################################",
+      "#....................................................................|.........................#",
+      "#....................................................................|.........................#",
+      "#....................................................................|.........................#",
+      "#....................................................................|.........................#",
+      "#....................................................................|.........................#",
+      "#....................................................................|.........................#",
+      "#....................................................................|.........................#",
+      "#....................................................................|.........................#",
+      "#....................................................................|.........................#",
+      "#....................................................................|.........................#",
+      "G....................................................................|.........................#",
+      "G....................................................................|.........................#",
+      "G....................................................................|.........................#",
+      "G....................................................................|.........................#",
+      "G....................................................................|.........................#",
+      "##################..........###############..........######=======...|.........................#",
+      "#.................................................................w............................#",
+      "#.................................................................w.....wwwwwwwwwwwwwww#########",
+      "#.................................................................w............................#",
+      "#.................................................................w............................#",
+      "#.................................................................w............................#",
+      "#.................................................................w............................#",
+      "#.................................................................w............................#",
+      "#.................................................................w............................#",
+      "#.................................................................w............................#",
+      "#.................................................................w............................#",
+      "#...................wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww............................#",
+      "#.......P....................................................N.................................#",
+      "####################.....................................##########............................#",
+      "####################^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^##########^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+      "################################################################################################"
+    ],
+    "lock": [
+      "portal"
+    ],
+    "mirror": {},
+    "rbr": 29,
+    "thaw": 1800,
+    "sorcerer": {
+      "posts": [
+        {
+          "c": 42,
+          "r": 26
+        },
+        {
+          "c": 72,
+          "r": 17
+        }
+      ],
+      "hits": 2,
+      "every": 190,
+      "tell": 50,
+      "first": 30,
+      "speed": 120,
+      "leave": "kneel"
+    },
+    "superFractured": {
+      "kind": "frost",
+      "sluice": {
+        "c": 60,
+        "r": 26,
+        "pool": [
+          20,
+          27
+        ]
+      }
+    },
+    "hint": "His first frost builds your road. At the far anvil, drain that road so the next cast can return above it.",
+    "question": "What must disappear below you before his upper ward can become your way home?"
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 17,
+    "run": 8,
+    "collection": "superrooms",
+    "format": "superroom",
+    "acceptance": "candidate",
+    "difficulty": 4,
+    "role": "interconnected boss superroom",
+    "worlds": [
+      29
+    ],
+    "tags": [
+      "superroom",
+      "boss",
+      "shared-state",
+      "sorcerer",
+      "ice",
+      "sluice",
+      "mirror",
+      "pogo",
+      "return"
+    ],
+    "newMechanics": [],
+    "status": "route-proven",
+    "author": "Codex",
+    "humanReview": "Awaiting human fun/difficulty/suitability ratings.",
+    "approvedIngredients": [
+      "bank-f18",
+      "bank-f49"
+    ],
+    "interconnection": "The Sorcerer first freezes a connected lower bridge and its tall spillway. That bridge carries the knight to his first ward. A far sluice thaws and drains the same bridge: the spillway no longer stops the next cast. A redirected cast then freezes his upper ward into the return landing, reached with the original anvil. The final route returns above the drained crossing through mirrored glass.",
+    "solution": "Wait for his first cast to freeze the lower bridge, cross it, and wound him on the ice. Continue to the far sluice and cut its visible brass wheel. The lower bridge drains, including the tall spillway that blocked his next cast. From the anvil alcove, parry Up-Right into the upper pool. Pogo the anvil, dash through the mirror boundary, and cut his exposed upper ward. Use the frozen upper landing to cross the mirror back and return along the high islands to the gate above your original fire.",
+    "novelty": "The same frozen water first supports travel and then obstructs the next returning projectile; removing it opens the boss interaction but erases the old foot route. The upper ward is also the permanent return landing after the actual boss defeat.",
+    "nearestExisting": "F18 water/weight state and F49 removal of the outward route become one native Sorcerer fight with mirrored return.",
+    "requiredEvents": [
+      "sorc-frost",
+      "freeze",
+      "sorc-hit",
+      "sluice-drain",
+      "parry",
+      "anvil",
+      "mirror",
+      "sorc-gone"
+    ],
+    "route": {
+      "name": "canonical",
+      "exited": true,
+      "deaths": 0,
+      "frames": 1188,
+      "events": [
+        "sorc-tell",
+        "enemy-shot",
+        "freeze",
+        "sorc-frost",
+        "sorc-break",
+        "jump",
+        "ice",
+        "land",
+        "strike",
+        "sorc-hit",
+        "sorc-blink",
+        "thaw",
+        "sluice-drain",
+        "enemy-hit",
+        "parry-ready",
+        "parry",
+        "anvil",
+        "dash",
+        "mirror",
+        "pogo-loft",
+        "refill-dash",
+        "sorc-gone",
+        "gate-open",
+        "super",
+        "exit"
+      ],
+      "eventCounts": {
+        "sorc-tell": 3,
+        "enemy-shot": 3,
+        "freeze": 2,
+        "sorc-frost": 2,
+        "sorc-break": 2,
+        "jump": 2,
+        "ice": 2,
+        "land": 8,
+        "strike": 4,
+        "sorc-hit": 2,
+        "sorc-blink": 1,
+        "thaw": 1,
+        "sluice-drain": 1,
+        "enemy-hit": 1,
+        "parry-ready": 1,
+        "parry": 1,
+        "anvil": 1,
+        "dash": 4,
+        "mirror": 2,
+        "pogo-loft": 1,
+        "refill-dash": 4,
+        "sorc-gone": 1,
+        "gate-open": 1,
+        "super": 2,
+        "exit": 1
+      }
+    },
+    "positiveChecks": [
+      {
+        "name": "Last return super one frame earlier",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            145,
+            ""
+          ],
+          [
+            44,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            99,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            215,
+            ""
+          ],
+          [
+            1,
+            "rup"
+          ],
+          [
+            80,
+            ""
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            10,
+            "lj"
+          ],
+          [
+            1,
+            "dsj"
+          ],
+          [
+            46,
+            "rj"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            4,
+            "ru"
+          ],
+          [
+            23,
+            "l"
+          ],
+          [
+            1,
+            "dsj"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            4,
+            "ru"
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            35,
+            "l"
+          ],
+          [
+            5,
+            "lx"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            45,
+            "l"
+          ],
+          [
+            5,
+            "lx"
+          ],
+          [
+            4,
+            "l"
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            120,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 1189,
+          "events": [
+            "sorc-tell",
+            "enemy-shot",
+            "freeze",
+            "sorc-frost",
+            "sorc-break",
+            "jump",
+            "ice",
+            "land",
+            "strike",
+            "sorc-hit",
+            "sorc-blink",
+            "thaw",
+            "sluice-drain",
+            "enemy-hit",
+            "parry-ready",
+            "parry",
+            "anvil",
+            "dash",
+            "mirror",
+            "pogo-loft",
+            "refill-dash",
+            "sorc-gone",
+            "gate-open",
+            "super",
+            "exit"
+          ],
+          "eventCounts": {
+            "sorc-tell": 3,
+            "enemy-shot": 3,
+            "freeze": 2,
+            "sorc-frost": 2,
+            "sorc-break": 2,
+            "jump": 2,
+            "ice": 2,
+            "land": 8,
+            "strike": 4,
+            "sorc-hit": 2,
+            "sorc-blink": 1,
+            "thaw": 1,
+            "sluice-drain": 1,
+            "enemy-hit": 1,
+            "parry-ready": 1,
+            "parry": 1,
+            "anvil": 1,
+            "dash": 4,
+            "mirror": 2,
+            "pogo-loft": 1,
+            "refill-dash": 4,
+            "sorc-gone": 1,
+            "gate-open": 1,
+            "super": 2,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Last return super one frame later",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            145,
+            ""
+          ],
+          [
+            44,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            99,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            215,
+            ""
+          ],
+          [
+            1,
+            "rup"
+          ],
+          [
+            80,
+            ""
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            10,
+            "lj"
+          ],
+          [
+            1,
+            "dsj"
+          ],
+          [
+            46,
+            "rj"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            4,
+            "ru"
+          ],
+          [
+            23,
+            "l"
+          ],
+          [
+            1,
+            "dsj"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            4,
+            "ru"
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            35,
+            "l"
+          ],
+          [
+            5,
+            "lx"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            45,
+            "l"
+          ],
+          [
+            5,
+            "lx"
+          ],
+          [
+            6,
+            "l"
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            120,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 1186,
+          "events": [
+            "sorc-tell",
+            "enemy-shot",
+            "freeze",
+            "sorc-frost",
+            "sorc-break",
+            "jump",
+            "ice",
+            "land",
+            "strike",
+            "sorc-hit",
+            "sorc-blink",
+            "thaw",
+            "sluice-drain",
+            "enemy-hit",
+            "parry-ready",
+            "parry",
+            "anvil",
+            "dash",
+            "mirror",
+            "pogo-loft",
+            "refill-dash",
+            "sorc-gone",
+            "gate-open",
+            "super",
+            "exit"
+          ],
+          "eventCounts": {
+            "sorc-tell": 3,
+            "enemy-shot": 3,
+            "freeze": 2,
+            "sorc-frost": 2,
+            "sorc-break": 2,
+            "jump": 2,
+            "ice": 2,
+            "land": 8,
+            "strike": 4,
+            "sorc-hit": 2,
+            "sorc-blink": 1,
+            "thaw": 1,
+            "sluice-drain": 1,
+            "enemy-hit": 1,
+            "parry-ready": 1,
+            "parry": 1,
+            "anvil": 1,
+            "dash": 4,
+            "mirror": 2,
+            "pogo-loft": 1,
+            "refill-dash": 4,
+            "sorc-gone": 1,
+            "gate-open": 1,
+            "super": 2,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Rest three seconds on the broad upper return island before departing",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            145,
+            ""
+          ],
+          [
+            44,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            99,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            215,
+            ""
+          ],
+          [
+            1,
+            "rup"
+          ],
+          [
+            80,
+            ""
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            10,
+            "lj"
+          ],
+          [
+            1,
+            "dsj"
+          ],
+          [
+            46,
+            "rj"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            4,
+            "ru"
+          ],
+          [
+            23,
+            "l"
+          ],
+          [
+            1,
+            "dsj"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            4,
+            "ru"
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            35,
+            "l"
+          ],
+          [
+            180,
+            ""
+          ],
+          [
+            5,
+            "lx"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            45,
+            "l"
+          ],
+          [
+            5,
+            "lx"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            120,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 1366,
+          "events": [
+            "sorc-tell",
+            "enemy-shot",
+            "freeze",
+            "sorc-frost",
+            "sorc-break",
+            "jump",
+            "ice",
+            "land",
+            "strike",
+            "sorc-hit",
+            "sorc-blink",
+            "thaw",
+            "sluice-drain",
+            "enemy-hit",
+            "parry-ready",
+            "parry",
+            "anvil",
+            "dash",
+            "mirror",
+            "pogo-loft",
+            "refill-dash",
+            "sorc-gone",
+            "gate-open",
+            "super",
+            "exit"
+          ],
+          "eventCounts": {
+            "sorc-tell": 3,
+            "enemy-shot": 3,
+            "freeze": 2,
+            "sorc-frost": 2,
+            "sorc-break": 2,
+            "jump": 2,
+            "ice": 2,
+            "land": 8,
+            "strike": 4,
+            "sorc-hit": 2,
+            "sorc-blink": 1,
+            "thaw": 1,
+            "sluice-drain": 1,
+            "enemy-hit": 1,
+            "parry-ready": 1,
+            "parry": 1,
+            "anvil": 1,
+            "dash": 4,
+            "mirror": 2,
+            "pogo-loft": 1,
+            "refill-dash": 4,
+            "sorc-gone": 1,
+            "gate-open": 1,
+            "super": 2,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Keep the frozen spillway intact and try the same upper ward attack",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            145,
+            ""
+          ],
+          [
+            44,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            100,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            99,
+            "r"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            10,
+            "r"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            215,
+            ""
+          ],
+          [
+            1,
+            "rup"
+          ],
+          [
+            80,
+            ""
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            10,
+            "lj"
+          ],
+          [
+            1,
+            "dsj"
+          ],
+          [
+            46,
+            "rj"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            4,
+            "ru"
+          ],
+          [
+            23,
+            "l"
+          ],
+          [
+            1,
+            "dsj"
+          ],
+          [
+            18,
+            "r"
+          ],
+          [
+            5,
+            "rux"
+          ],
+          [
+            4,
+            "ru"
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            35,
+            "l"
+          ],
+          [
+            5,
+            "lx"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            45,
+            "l"
+          ],
+          [
+            5,
+            "lx"
+          ],
+          [
+            5,
+            "l"
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            120,
+            "l"
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 0,
+          "frames": 0,
+          "events": [
+            "sorc-tell",
+            "enemy-shot",
+            "freeze",
+            "sorc-frost",
+            "sorc-break",
+            "jump",
+            "ice",
+            "land",
+            "strike",
+            "sorc-hit",
+            "sorc-blink",
+            "enemy-hit",
+            "parry-ready",
+            "dash",
+            "walljump",
+            "refill-dash",
+            "super"
+          ],
+          "eventCounts": {
+            "sorc-tell": 6,
+            "enemy-shot": 5,
+            "freeze": 1,
+            "sorc-frost": 1,
+            "sorc-break": 1,
+            "jump": 2,
+            "ice": 8,
+            "land": 8,
+            "strike": 3,
+            "sorc-hit": 1,
+            "sorc-blink": 1,
+            "enemy-hit": 4,
+            "parry-ready": 1,
+            "dash": 4,
+            "walljump": 1,
+            "refill-dash": 4,
+            "super": 2
+          }
+        }
+      }
+    ],
+    "endingForgiveness": "The boss yields before the return crossing. Broad ice and one-way shelves allow full stops; a successful tape rests three seconds on the upper island. The final super succeeds with earlier and later takeoff, then lands on a seventeen-tile approach to the exit.",
+    "requiredEventCounts": {
+      "sorc-hit": 2,
+      "freeze": 2,
+      "mirror": 2
+    }
+  },
+  "tape": [
+    [
+      1,
+      "r"
+    ],
+    [
+      145,
+      ""
+    ],
+    [
+      44,
+      "r"
+    ],
+    [
+      18,
+      "rj"
+    ],
+    [
+      100,
+      "r"
+    ],
+    [
+      1,
+      "rs"
+    ],
+    [
+      15,
+      "r"
+    ],
+    [
+      99,
+      "r"
+    ],
+    [
+      1,
+      "rs"
+    ],
+    [
+      10,
+      "r"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      20,
+      "r"
+    ],
+    [
+      215,
+      ""
+    ],
+    [
+      1,
+      "rup"
+    ],
+    [
+      80,
+      ""
+    ],
+    [
+      16,
+      "l"
+    ],
+    [
+      10,
+      "lj"
+    ],
+    [
+      1,
+      "dsj"
+    ],
+    [
+      46,
+      "rj"
+    ],
+    [
+      5,
+      "rux"
+    ],
+    [
+      4,
+      "ru"
+    ],
+    [
+      23,
+      "l"
+    ],
+    [
+      1,
+      "dsj"
+    ],
+    [
+      18,
+      "r"
+    ],
+    [
+      5,
+      "rux"
+    ],
+    [
+      4,
+      "ru"
+    ],
+    [
+      40,
+      "l"
+    ],
+    [
+      35,
+      "l"
+    ],
+    [
+      5,
+      "lx"
+    ],
+    [
+      5,
+      "l"
+    ],
+    [
+      20,
+      "lj"
+    ],
+    [
+      45,
+      "l"
+    ],
+    [
+      5,
+      "lx"
+    ],
+    [
+      5,
+      "l"
+    ],
+    [
+      20,
+      "lj"
+    ],
+    [
+      120,
+      "l"
+    ]
+  ]
+}

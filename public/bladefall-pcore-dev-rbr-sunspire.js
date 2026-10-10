@@ -80,7 +80,7 @@ function after(g){const Core=C(),p=g.p,k=g.dayKing,s=g.gardenShade,L=g.hydraLigh
  if(k.waves&&k.wave!=null&&k.hits>=k.wave&&gloveStart(k)){k.waves.push({x:side>0?k.x+k.w+34-HR.waveW:k.x-34,y:k.y+k.h-HR.waveH,dir:side});Core.emit(g,'dayking-wave',{x:k.x+7,y:k.y+k.h});}
  if(k.waves&&k.waves.length){
   for(const w of k.waves){w.x+=w.dir*HR.waveV;const lead=w.dir>0?w.x+HR.waveW:w.x;
-   if(Core.solidAt(g,w.dir>0?w.x+HR.waveW-1:w.x,w.y,1,HR.waveH-1)||!Core.solidAt(g,lead-w.dir,w.y+HR.waveH,1,1)||lead<0||lead>Core.W)w.gone=true;
+   if(Core.solidAt(g,w.dir>0?w.x+HR.waveW-1:w.x,w.y,1,HR.waveH-1)||!Core.solidAt(g,lead-w.dir,w.y+HR.waveH,1,1)||lead<0||lead>(g.room.w||Core.W))w.gone=true;
    else if(p.state!=='dead'&&Core.overlap(p.x,p.y,p.w,p.h,w.x,w.y,HR.waveW,HR.waveH))Core.kill(g,p,'sun-wave');}
   k.waves=k.waves.filter(w=>!w.gone);
  }

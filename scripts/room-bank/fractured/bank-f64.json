@@ -1,0 +1,894 @@
+{
+  "room": {
+    "id": "bank-f64",
+    "name": "His Next Perch Is Your Landing",
+    "palette": "citadel",
+    "study": true,
+    "movement": "survive-2",
+    "aim8": true,
+    "cols": 96,
+    "rows": 32,
+    "exit": "right",
+    "map": [
+      "################################################################################################",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "#..............................................................................................#",
+      "#..............................................................................................G",
+      "#..............................................................................................G",
+      "#..............................................................................................G",
+      "#..............................................................................................G",
+      "#..............................................................................................G",
+      "#.....................................................................................##########",
+      "#....................................................................................<##########",
+      "#....................................................................................<##########",
+      "#....................................................................................<##########",
+      "#....................................................................................<##########",
+      "#.................................................................#######...####.....<##########",
+      "#..........................................................................<####.....<##########",
+      "#..........................................................................<####.....<##########",
+      "#..........................................................................<####.....<##########",
+      "#..........................................................................<####.....<##########",
+      "#..........................................................................<####.....<##########",
+      "#..........................................................................<####.....<##########",
+      "#..........................................................................<####.....<##########",
+      "#.......P.................................########.........................<####.....<##########",
+      "#############....................................<.........................<####.....<##########",
+      "#############....................................<.........................<####.....<##########",
+      "#############....................................<.........................<####.....<##########",
+      "#############....................................<.........................<####.....<##########",
+      "#############^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^.^^^^^^^^^^^^^^^^^^^^^^^^^####^^^^^^##########",
+      "################################################################################################"
+    ],
+    "lock": [
+      "portal"
+    ],
+    "decks": [
+      {
+        "c": 14,
+        "r": 26,
+        "w": 9,
+        "h": 1,
+        "to": [
+          22,
+          0
+        ],
+        "period": 540
+      }
+    ],
+    "marksman": {
+      "perches": [
+        {
+          "c": 46,
+          "r": 24
+        },
+        {
+          "c": 69,
+          "r": 16
+        },
+        {
+          "c": 90,
+          "r": 11
+        }
+      ],
+      "hits": 3,
+      "every": 180,
+      "tell": 46,
+      "first": 190,
+      "speed": 135,
+      "volley": 2,
+      "gap": 22,
+      "leave": "fall"
+    },
+    "superFractured": {
+      "kind": "marksman",
+      "stations": [
+        {
+          "c": 43,
+          "r": 25,
+          "w": 6,
+          "to": [
+            55,
+            18
+          ]
+        },
+        {
+          "c": 66,
+          "r": 17,
+          "w": 7,
+          "to": [
+            81,
+            10
+          ]
+        }
+      ]
+    },
+    "hint": "Return his arrow from the carrier. His empty perch calls it uphill. Leave the second shot for your return.",
+    "question": "Why does the place he just left become useful before the place he lands?"
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 17,
+    "run": 8,
+    "collection": "superrooms",
+    "format": "superroom",
+    "acceptance": "candidate",
+    "difficulty": 3,
+    "role": "interconnected boss superroom",
+    "worlds": [
+      25
+    ],
+    "tags": [
+      "superroom",
+      "boss",
+      "shared-state",
+      "marksman",
+      "moving-platform",
+      "parry",
+      "perch-return"
+    ],
+    "newMechanics": [],
+    "status": "route-proven",
+    "author": "Codex",
+    "humanReview": "Awaiting human fun/difficulty/suitability ratings.",
+    "approvedIngredients": [
+      "bank-f33",
+      "bank-f27"
+    ],
+    "interconnection": "One carrier crosses the whole arena. Each vacated Marksman perch contains a physical pressure landing that reroutes that same carrier to the next firing tier. The boss leaps ahead after a returned arrow; the player follows through his previous position.",
+    "solution": "Board the outgoing carrier and parry the first marked arrow without directional aim. Jump onto the abandoned first perch; its switch redirects the carrier up to the middle tier. Catch the carrier again, return a second arrow, and land on the vacated middle perch. Its switch turns the carrier into the final approach; wavedash from its deck toward the final paired shot and return it from the broad eastern shelf.",
+    "novelty": "The player and boss exchange perches, with each pressure landing physically changing the same transport rather than adding independent room counters.",
+    "nearestExisting": "F33 preferred parry-retreat-wavedash and F27 carrier movement; native Marksman supplies the projectile and actual defeat.",
+    "requiredEvents": [
+      "marksman-hit",
+      "marksman-leap",
+      "carrier-reroute",
+      "parry",
+      "marksman-gone"
+    ],
+    "route": {
+      "name": "canonical",
+      "exited": true,
+      "deaths": 0,
+      "frames": 1239,
+      "events": [
+        "jump",
+        "land",
+        "mk-tell",
+        "enemy-shot",
+        "parry-ready",
+        "parry",
+        "marksman-hit",
+        "marksman-leap",
+        "dash",
+        "refill-dash",
+        "carrier-reroute",
+        "enemy-hit",
+        "ultra",
+        "hyper",
+        "marksman-gone",
+        "gate-open",
+        "exit"
+      ],
+      "eventCounts": {
+        "jump": 6,
+        "land": 7,
+        "mk-tell": 6,
+        "enemy-shot": 11,
+        "parry-ready": 3,
+        "parry": 3,
+        "marksman-hit": 3,
+        "marksman-leap": 2,
+        "dash": 3,
+        "refill-dash": 3,
+        "carrier-reroute": 2,
+        "enemy-hit": 8,
+        "ultra": 1,
+        "hyper": 1,
+        "marksman-gone": 1,
+        "gate-open": 1,
+        "exit": 1
+      }
+    },
+    "positiveChecks": [
+      {
+        "name": "Final parry two frames earlier",
+        "tape": [
+          [
+            18,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            223,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            30,
+            "j"
+          ],
+          [
+            225,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            85,
+            ""
+          ],
+          [
+            30,
+            "j"
+          ],
+          [
+            110,
+            ""
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            5,
+            "rdx"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            185,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            85,
+            ""
+          ],
+          [
+            30,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 1237,
+          "events": [
+            "jump",
+            "land",
+            "mk-tell",
+            "enemy-shot",
+            "parry-ready",
+            "parry",
+            "marksman-hit",
+            "marksman-leap",
+            "dash",
+            "refill-dash",
+            "carrier-reroute",
+            "enemy-hit",
+            "ultra",
+            "hyper",
+            "marksman-gone",
+            "gate-open",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 6,
+            "land": 7,
+            "mk-tell": 6,
+            "enemy-shot": 11,
+            "parry-ready": 3,
+            "parry": 3,
+            "marksman-hit": 3,
+            "marksman-leap": 2,
+            "dash": 3,
+            "refill-dash": 3,
+            "carrier-reroute": 2,
+            "enemy-hit": 8,
+            "ultra": 1,
+            "hyper": 1,
+            "marksman-gone": 1,
+            "gate-open": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Final parry two frames later",
+        "tape": [
+          [
+            18,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            223,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            30,
+            "j"
+          ],
+          [
+            225,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            85,
+            ""
+          ],
+          [
+            30,
+            "j"
+          ],
+          [
+            110,
+            ""
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            5,
+            "rdx"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            189,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            85,
+            ""
+          ],
+          [
+            30,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 1241,
+          "events": [
+            "jump",
+            "land",
+            "mk-tell",
+            "enemy-shot",
+            "parry-ready",
+            "parry",
+            "marksman-hit",
+            "marksman-leap",
+            "dash",
+            "refill-dash",
+            "carrier-reroute",
+            "enemy-hit",
+            "ultra",
+            "hyper",
+            "marksman-gone",
+            "gate-open",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 6,
+            "land": 7,
+            "mk-tell": 6,
+            "enemy-shot": 11,
+            "parry-ready": 3,
+            "parry": 3,
+            "marksman-hit": 3,
+            "marksman-leap": 2,
+            "dash": 3,
+            "refill-dash": 3,
+            "carrier-reroute": 2,
+            "enemy-hit": 8,
+            "ultra": 1,
+            "hyper": 1,
+            "marksman-gone": 1,
+            "gate-open": 1,
+            "exit": 1
+          }
+        }
+      },
+      {
+        "name": "Leave the upper carrier ten frames later and recover on the broad final shelf",
+        "tape": [
+          [
+            18,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            223,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            30,
+            "j"
+          ],
+          [
+            225,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            14,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            15,
+            "r"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            85,
+            ""
+          ],
+          [
+            30,
+            "j"
+          ],
+          [
+            120,
+            ""
+          ],
+          [
+            7,
+            "rj"
+          ],
+          [
+            5,
+            "rdx"
+          ],
+          [
+            5,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            177,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            85,
+            ""
+          ],
+          [
+            30,
+            "r"
+          ]
+        ],
+        "after": {
+          "exited": true,
+          "deaths": 0,
+          "frames": 1239,
+          "events": [
+            "jump",
+            "land",
+            "mk-tell",
+            "enemy-shot",
+            "parry-ready",
+            "parry",
+            "marksman-hit",
+            "marksman-leap",
+            "dash",
+            "refill-dash",
+            "carrier-reroute",
+            "enemy-hit",
+            "ultra",
+            "hyper",
+            "marksman-gone",
+            "gate-open",
+            "exit"
+          ],
+          "eventCounts": {
+            "jump": 6,
+            "land": 7,
+            "mk-tell": 6,
+            "enemy-shot": 11,
+            "parry-ready": 3,
+            "parry": 3,
+            "marksman-hit": 3,
+            "marksman-leap": 2,
+            "dash": 3,
+            "refill-dash": 3,
+            "carrier-reroute": 2,
+            "enemy-hit": 8,
+            "ultra": 1,
+            "hyper": 1,
+            "marksman-gone": 1,
+            "gate-open": 1,
+            "exit": 1
+          }
+        }
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Stay at the first cleared perch instead of following the rerouted carrier",
+        "tape": [
+          [
+            18,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            223,
+            ""
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            25,
+            "r"
+          ],
+          [
+            700,
+            ""
+          ]
+        ],
+        "after": {
+          "exited": false,
+          "deaths": 1,
+          "frames": 0,
+          "events": [
+            "jump",
+            "land",
+            "mk-tell",
+            "enemy-shot",
+            "parry-ready",
+            "parry",
+            "marksman-hit",
+            "marksman-leap",
+            "dash",
+            "refill-dash",
+            "carrier-reroute",
+            "enemy-hit",
+            "death",
+            "respawn"
+          ],
+          "eventCounts": {
+            "jump": 2,
+            "land": 2,
+            "mk-tell": 2,
+            "enemy-shot": 3,
+            "parry-ready": 1,
+            "parry": 1,
+            "marksman-hit": 1,
+            "marksman-leap": 1,
+            "dash": 1,
+            "refill-dash": 1,
+            "carrier-reroute": 1,
+            "enemy-hit": 2,
+            "death": 1,
+            "respawn": 1
+          }
+        }
+      }
+    ],
+    "endingForgiveness": "The final shelf is ten tiles wide and allows a full stop before returning the last arrow. Successful zero-death tapes vary the parry by four frames and leave the carrier ten frames later. A mistimed outgoing jump can land on the same wide shelf; no final launch is necessary after the boss yields.",
+    "requiredEventCounts": {
+      "marksman-hit": 3,
+      "carrier-reroute": 2
+    }
+  },
+  "tape": [
+    [
+      18,
+      "r"
+    ],
+    [
+      18,
+      "rj"
+    ],
+    [
+      223,
+      ""
+    ],
+    [
+      1,
+      "p"
+    ],
+    [
+      15,
+      ""
+    ],
+    [
+      18,
+      "rj"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      25,
+      "r"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      35,
+      ""
+    ],
+    [
+      30,
+      "j"
+    ],
+    [
+      225,
+      ""
+    ],
+    [
+      1,
+      "p"
+    ],
+    [
+      14,
+      ""
+    ],
+    [
+      20,
+      "rj"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      15,
+      "r"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      85,
+      ""
+    ],
+    [
+      30,
+      "j"
+    ],
+    [
+      110,
+      ""
+    ],
+    [
+      7,
+      "rj"
+    ],
+    [
+      5,
+      "rdx"
+    ],
+    [
+      5,
+      "r"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      187,
+      ""
+    ],
+    [
+      1,
+      "p"
+    ],
+    [
+      85,
+      ""
+    ],
+    [
+      30,
+      "r"
+    ]
+  ]
+}

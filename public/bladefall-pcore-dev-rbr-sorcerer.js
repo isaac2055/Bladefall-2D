@@ -40,7 +40,7 @@
 'use strict';
 const C=()=>root.BladefallPrecisionCore;
 const W=()=>root.BladefallPrecisionWater;
-const TILE=8,COLS=40,ROWS=23;
+const TILE=8;
 const SK=Object.freeze({w:10,h:18,every:110,tell:40,first:40,speed:115,orb:6,blink:36,leave:50,glance:150,after:50,drop:24,down:150,
  iceW:6,iceH:10,iceSpeed:200,iceAccel:900,stake:150,stakeH:16});
 const overlap=(ax,ay,aw,ah,bx,by,bw,bh)=>ax<bx+bw&&ax+aw>bx&&ay<by+bh&&ay+ah>by;
@@ -57,7 +57,7 @@ function input(g){
  }
 }
 
-function poolAt(g,c,r){const w=g.water;if(!w||c<0||c>=COLS||r<0||r>=ROWS)return null;const i=r*COLS+c;return w.cells[i]?w.pools[w.body[i]]:null;}
+function poolAt(g,c,r){const w=g.water,COLS=g.room.cols,ROWS=g.room.rows;if(!w||c<0||c>=COLS||r<0||r>=ROWS)return null;const i=r*COLS+c;return w.cells[i]?w.pools[w.body[i]]:null;}
 function reset(g){
  const d=g.room.def.sorcerer;g.sorc=null;g.icicles=null;
  if(!d)return;

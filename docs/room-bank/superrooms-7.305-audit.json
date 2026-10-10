@@ -1,0 +1,104 @@
+{
+  "version": "7.305.0",
+  "checkedAt": "2026-10-10T01:38:53.345Z",
+  "previousBankCount": 97,
+  "preservedFiles": 184,
+  "sharedRuntimeFix": [
+    "public/bladefall-pcore-dev-rbr-sorcerer.js",
+    "public/bladefall-pcore-dev-rbr-sunspire.js",
+    "public/bladefall-pcore-dev-rbr-sunspire-view.js"
+  ],
+  "reviewRooms": [
+    {
+      "id": "bank-b62",
+      "name": "The Gate Remembers Your Weight",
+      "side": "base",
+      "world": 1,
+      "nativeBoss": null,
+      "shortcutChecks": 1,
+      "endingVariants": 3
+    },
+    {
+      "id": "bank-b63",
+      "name": "Leave the Wind a Way Home",
+      "side": "base",
+      "world": 4,
+      "nativeBoss": null,
+      "shortcutChecks": 3,
+      "endingVariants": 2
+    },
+    {
+      "id": "bank-b64",
+      "name": "The Cargo Takes the Shortcut",
+      "side": "base",
+      "world": 6,
+      "nativeBoss": null,
+      "shortcutChecks": 2,
+      "endingVariants": 2
+    },
+    {
+      "id": "bank-b65",
+      "name": "Cast Your Escape",
+      "side": "base",
+      "world": 11,
+      "nativeBoss": "colossus",
+      "shortcutChecks": 1,
+      "endingVariants": 2
+    },
+    {
+      "id": "bank-b66",
+      "name": "Give the Sun Back",
+      "side": "base",
+      "world": 20,
+      "nativeBoss": "dayKing",
+      "shortcutChecks": 2,
+      "endingVariants": 2
+    },
+    {
+      "id": "bank-f63",
+      "name": "Ring It from the Other Side",
+      "side": "fractured",
+      "world": 21,
+      "nativeBoss": "sentinel",
+      "shortcutChecks": 1,
+      "endingVariants": 3
+    },
+    {
+      "id": "bank-f64",
+      "name": "His Next Perch Is Your Landing",
+      "side": "fractured",
+      "world": 25,
+      "nativeBoss": "marksman",
+      "shortcutChecks": 1,
+      "endingVariants": 3
+    },
+    {
+      "id": "bank-f65",
+      "name": "Thaw the Way Behind Him",
+      "side": "fractured",
+      "world": 29,
+      "nativeBoss": "sorcerer",
+      "shortcutChecks": 1,
+      "endingVariants": 3
+    },
+    {
+      "id": "bank-f66",
+      "name": "The Tide Keeps the Appointment",
+      "side": "fractured",
+      "world": 37,
+      "nativeBoss": null,
+      "shortcutChecks": 1,
+      "endingVariants": 3
+    },
+    {
+      "id": "bank-f67",
+      "name": "The Shadow Makes the Last Bridge",
+      "side": "fractured",
+      "world": 40,
+      "nativeBoss": "dayKing",
+      "shortcutChecks": 2,
+      "endingVariants": 5
+    }
+  ],
+  "campaignChanged": false
+}

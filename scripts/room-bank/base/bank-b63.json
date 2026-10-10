@@ -1,0 +1,907 @@
+{
+  "room": {
+    "id": "bank-b63",
+    "study": true,
+    "palette": "cliffs",
+    "dashes": 1,
+    "cols": 72,
+    "rows": 44,
+    "exit": "left",
+    "name": "Leave the Wind a Way Home",
+    "lock": [
+      "parry",
+      "portal"
+    ],
+    "map": [
+      "########################################################################",
+      "####################............................................########",
+      "####################............................................########",
+      "####################............................................########",
+      "####################..........................##########################",
+      "................................................................########",
+      "................................................................########",
+      "......................................................##################",
+      "##############################################..................########",
+      "####################............................................########",
+      "####################............................................########",
+      "####################............................................########",
+      "####################............................................########",
+      "####################............................................########",
+      "####################............................................########",
+      "####################............................................########",
+      "###########################............................................#",
+      "####################....................................################",
+      "####################....................................#..............#",
+      "####################..........._........................#..............#",
+      "####################.......#######^^^^^^^^^^^^^^........#..............#",
+      "####################..............####..................#..............#",
+      "####################..............####..................#..............#",
+      "####################..............####..................#..............#",
+      "####################..............####..................#..............#",
+      "####################..............####..................#..............#",
+      "####################..............####..................#..............#",
+      "####################..............####..................#..............#",
+      "####################..............####..................#..............#",
+      "####################..............####..................#..............#",
+      "####################..............####..................#..............#",
+      "####################..............####..................#..............#",
+      "####################..............####..................#..............#",
+      "####################..............####................==#==............#",
+      "####################..............####.................................#",
+      "####################..............####.............b...................#",
+      "####################..............####...........=======...............#",
+      "#.................................HHHH.................................#",
+      "#.................................HHHH.....................#############",
+      "#.................................HHHH.................................#",
+      "#....P...l........................HHHH.................................#",
+      "########################################################################",
+      "########################################################################",
+      "########################################################################"
+    ],
+    "hingeArms": [
+      {
+        "id": "Vane",
+        "c": 48,
+        "r": 20,
+        "length": 15,
+        "dir": "down"
+      }
+    ],
+    "winds": [
+      {
+        "c": 20,
+        "r": 17,
+        "w": 7,
+        "h": 24,
+        "dy": -115
+      }
+    ],
+    "windVanes": [
+      {
+        "hinge": "Vane",
+        "states": {
+          "down": [
+            {
+              "c": 20,
+              "r": 17,
+              "w": 7,
+              "h": 24,
+              "dy": -115
+            }
+          ],
+          "left": [
+            {
+              "c": 49,
+              "r": 5,
+              "w": 7,
+              "h": 36,
+              "dy": -115
+            }
+          ]
+        }
+      }
+    ],
+    "beams": [
+      {
+        "c": 16,
+        "r": 37,
+        "dir": "d"
+      }
+    ],
+    "hint": "Leave shade on the high weight. Take the low way empty-handed; turn the vane to bring the lantern home.",
+    "question": "Which route must you prepare while the only object that can ride the wind is out of reach?"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 17,
+    "run": 8,
+    "collection": "superrooms",
+    "format": "superroom",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "author": "Codex",
+    "newMechanics": [
+      "hinge-routed-wind"
+    ],
+    "humanReview": "Awaiting player review; numeric ratings unmeasured.",
+    "worlds": [
+      4
+    ],
+    "difficulty": 3,
+    "approvedIngredients": [
+      "bank-b38",
+      "bank-b44",
+      "bank-b49"
+    ],
+    "role": "A shared wind shaft changes jobs after an empty-handed lower loop.",
+    "solution": "Carry the lantern beneath the shaft beam and ride the west draft to the high pressure shelf. Set the lantern on the plate, descend empty-handed, and cross the low gate. Use the pod and receiving shelf to reach the hanging vane. Climb to its pivot and turn it into the bridge to the lantern shelf. Retrieve the same lantern, cross the new bridge and ride the diverted east draft to the high exit gallery.",
+    "interconnection": "The high lantern opens the lower route; the hinge reached there both returns a bridge to that lantern and moves its draft to the opposite side of the same court.",
+    "novelty": "Cargo’s reduced fall speed makes the first and last draft useful, but only an empty-handed return can prepare the bridge between them.",
+    "nearestExisting": "B38 carries shade on freight and B49 turns a hanging partition into a bridge. Here the partition also redirects an existing wind field, trading the cargo’s outgoing lift for its return lift.",
+    "superroom": {
+      "screenAreas": 3.4434782608695653,
+      "stages": [
+        "Lantern lift and remote pressure shelf",
+        "Empty-handed descent and vane climb",
+        "Retrieve the same lantern and ride the changed shaft"
+      ]
+    },
+    "endingForgiveness": "The original canonical and both positive tapes still complete without deaths. The longer arm covers the divider thorns when it becomes the return bridge. The upper shaft opens into a wide sheltered gallery; a missed landing falls into the same draft and can be retried without losing the lantern.",
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 1867
+    },
+    "tags": [
+      "lantern",
+      "wind",
+      "hinge",
+      "pressure-plate",
+      "return-route"
+    ],
+    "requiredEvents": [
+      "pickup",
+      "throw",
+      "plate",
+      "pod",
+      "hinge-turn",
+      "wind-vane",
+      "exit"
+    ],
+    "routeEvents": [
+      {
+        "type": "wind-vane",
+        "frame": 1,
+        "x": 388,
+        "y": 164,
+        "dir": "down"
+      },
+      {
+        "type": "pickup",
+        "frame": 19
+      },
+      {
+        "type": "plate",
+        "frame": 358,
+        "x": 252,
+        "y": 158
+      },
+      {
+        "type": "throw",
+        "frame": 368,
+        "dir": 1
+      },
+      {
+        "type": "pod",
+        "frame": 1054,
+        "x": 412,
+        "y": 284,
+        "dx": 0,
+        "dy": 1
+      },
+      {
+        "type": "hinge-turn",
+        "frame": 1166,
+        "x": 388,
+        "y": 164,
+        "label": "Vane",
+        "from": "down",
+        "dir": "left"
+      },
+      {
+        "type": "wind-vane",
+        "frame": 1167,
+        "x": 388,
+        "y": 164,
+        "dir": "left"
+      },
+      {
+        "type": "pickup",
+        "frame": 1274
+      },
+      {
+        "type": "exit",
+        "frame": 1867,
+        "room": 0
+      }
+    ],
+    "positiveChecks": [
+      {
+        "name": "Return draft forty frames earlier",
+        "tape": [
+          [
+            18,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            85,
+            "r"
+          ],
+          [
+            220,
+            ""
+          ],
+          [
+            33,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            42,
+            "l"
+          ],
+          [
+            380,
+            "d"
+          ],
+          [
+            160,
+            "r"
+          ],
+          [
+            16,
+            "j"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            6,
+            "j"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            18,
+            "l"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            81,
+            "lgu"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            12,
+            "l"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            70,
+            "l"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            105,
+            "r"
+          ],
+          [
+            170,
+            ""
+          ],
+          [
+            300,
+            "l"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 1827
+      },
+      {
+        "name": "Miss the home landing, rest on the east shelter, then cross back",
+        "tape": [
+          [
+            18,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            85,
+            "r"
+          ],
+          [
+            220,
+            ""
+          ],
+          [
+            33,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            42,
+            "l"
+          ],
+          [
+            380,
+            "d"
+          ],
+          [
+            160,
+            "r"
+          ],
+          [
+            16,
+            "j"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            6,
+            "j"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            18,
+            "l"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            81,
+            "lgu"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            12,
+            "l"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            70,
+            "l"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            105,
+            "r"
+          ],
+          [
+            210,
+            ""
+          ],
+          [
+            40,
+            "r"
+          ],
+          [
+            60,
+            ""
+          ],
+          [
+            360,
+            "l"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 2004
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Keep the lantern throughout instead of parking it on the high weight",
+        "tape": [
+          [
+            18,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            85,
+            "r"
+          ],
+          [
+            220,
+            ""
+          ],
+          [
+            33,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            42,
+            "l"
+          ],
+          [
+            380,
+            "d"
+          ],
+          [
+            160,
+            "r"
+          ],
+          [
+            16,
+            "j"
+          ],
+          [
+            12,
+            "ux"
+          ],
+          [
+            35,
+            ""
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            6,
+            "j"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            18,
+            "l"
+          ],
+          [
+            12,
+            "lux"
+          ],
+          [
+            81,
+            "lgu"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            12,
+            "l"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            70,
+            "l"
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            105,
+            "r"
+          ],
+          [
+            210,
+            ""
+          ],
+          [
+            300,
+            "l"
+          ]
+        ],
+        "exited": false,
+        "deaths": 2,
+        "frames": null
+      },
+      {
+        "name": "Jump from the first plate onto the divider, then dash directly to the vane",
+        "tape": [
+          [
+            18,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            85,
+            "r"
+          ],
+          [
+            220,
+            ""
+          ],
+          [
+            33,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            30,
+            "rj"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            20,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            70,
+            "lgu"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            80,
+            "l"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            105,
+            "r"
+          ],
+          [
+            210,
+            ""
+          ],
+          [
+            300,
+            "l"
+          ]
+        ],
+        "exited": false,
+        "deaths": 2,
+        "frames": null
+      },
+      {
+        "name": "Jump and dash directly from the first shelf across the uncapped thorn bed",
+        "tape": [
+          [
+            18,
+            "r"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            85,
+            "r"
+          ],
+          [
+            220,
+            ""
+          ],
+          [
+            33,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            12,
+            "rx"
+          ],
+          [
+            80,
+            "rgu"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            80,
+            "l"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            105,
+            "r"
+          ],
+          [
+            210,
+            ""
+          ],
+          [
+            300,
+            "l"
+          ]
+        ],
+        "exited": false,
+        "deaths": 2,
+        "frames": null
+      }
+    ],
+    "priorDraft": {
+      "file": "scripts/room-bank/archive/b63-before-shortcut-fix-7.305.json",
+      "note": "Complete original proven geometry and tapes before the lower-loop shortcut repair."
+    }
+  },
+  "tape": [
+    [
+      18,
+      "r"
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      85,
+      "r"
+    ],
+    [
+      220,
+      ""
+    ],
+    [
+      33,
+      "r"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      1,
+      "dg"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      42,
+      "l"
+    ],
+    [
+      380,
+      "d"
+    ],
+    [
+      160,
+      "r"
+    ],
+    [
+      16,
+      "j"
+    ],
+    [
+      12,
+      "ux"
+    ],
+    [
+      35,
+      ""
+    ],
+    [
+      1,
+      "ds"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      6,
+      "j"
+    ],
+    [
+      1,
+      "ds"
+    ],
+    [
+      18,
+      "l"
+    ],
+    [
+      12,
+      "lux"
+    ],
+    [
+      81,
+      "lgu"
+    ],
+    [
+      1,
+      "ds"
+    ],
+    [
+      12,
+      "l"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      70,
+      "l"
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      105,
+      "r"
+    ],
+    [
+      210,
+      ""
+    ],
+    [
+      300,
+      "l"
+    ]
+  ]
+}
