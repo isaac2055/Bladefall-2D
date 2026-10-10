@@ -1,0 +1,518 @@
+{
+  "room": {
+    "id": "bank-f76",
+    "name": "The Chain Comes Back Higher",
+    "cols": 90,
+    "rows": 36,
+    "map": [
+      "##########################################################################################",
+      "#.G......................................................................................#",
+      "#.G......................................................................................#",
+      "#.G......................................................................................#",
+      "#.G......................................................................................#",
+      "#.G......................O...............................................................#",
+      "..G......................................................................................#",
+      "..G......................................................................................#",
+      "..G......................................................................................#",
+      "..G......................................................................................#",
+      "##G###############.......................................................................#",
+      "#.G..............####.........####.......................................................#",
+      "#.G..................########.####.......................................................#",
+      "#.G...........................####.......................................................#",
+      "#.G...........................####.......................................................#",
+      "#.G...........................####.......................................................#",
+      "#.G....................O......####..........................................O............#",
+      "#.G...........................####.......................................................#",
+      "#.G...........................####.......................................................#",
+      "#.G...........................####..............................................#####....#",
+      "#.G.............................................................................#####....#",
+      "#.G.............................................................................#####....#",
+      "#.G.............................................................................#####....#",
+      "#.G.....................##########.......................................############....#",
+      "#.G.....................##########...^^^^^^^^^^^^^^^^^^^^^^^^^^^^........############....#",
+      "#.G..................#############...VVVVVVVVVVVVVVVVVVVVVVVVVVVV........############....#",
+      "#.G..................#############...VVVVVVVVVVVVVVVVVVVVVVVVVVVV........############....#",
+      "#.G..................#############...VVVVVVVVVVVVVVVVVVVVVVVVVVVV........############....#",
+      "#.G..................################............................#######################.#",
+      "#.G..............####################............................#######################.#",
+      "#.G..............####################............................#######################.#",
+      "#.G..............####################............................#######################.#",
+      "#.G..P...........####################............................#######################.#",
+      "##G##################################............................#######################.#",
+      "#####################################^^^^^^^^^^^^^^^^^^^^^^^^^^^^#######################^#",
+      "##########################################################################################"
+    ],
+    "palette": "cliffs",
+    "rbr": 36,
+    "study": true,
+    "movement": "survive-2",
+    "aim8": true,
+    "exit": "left",
+    "lock": [
+      "portal"
+    ],
+    "chainHydra": {
+      "phase": 2,
+      "c": 28,
+      "r": 19,
+      "need": 3,
+      "locks": [
+        [
+          28,
+          19
+        ],
+        [
+          79,
+          19
+        ],
+        [
+          27,
+          8
+        ]
+      ],
+      "spit": {
+        "every": 130,
+        "first": 110,
+        "speed": 115
+      }
+    },
+    "sweepers": [
+      {
+        "id": "Far-side orbit",
+        "path": [
+          [
+            67,
+            19
+          ],
+          [
+            70,
+            17
+          ],
+          [
+            72,
+            19
+          ],
+          [
+            70,
+            21
+          ]
+        ],
+        "loop": true,
+        "period": 260,
+        "phase": 25,
+        "radius": 3
+      }
+    ],
+    "hint": "Fresh chain, downward cut. The collar pulls you through the low void and back to the mast; the third cut is above the first.",
+    "question": "How do you return to the same mast with a fresh hook, after the collar has climbed above the route you used?"
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 19,
+    "run": 10,
+    "collection": "superrooms",
+    "format": "superroom",
+    "acceptance": "candidate",
+    "needsReview": true,
+    "status": "route-proven",
+    "difficulty": 4,
+    "worlds": [
+      36
+    ],
+    "role": "interconnected native Hydra superroom",
+    "tags": [
+      "superroom",
+      "hydra",
+      "hook",
+      "void",
+      "return-route",
+      "timing"
+    ],
+    "newMechanics": [],
+    "approvedIngredients": [
+      "bank-f11",
+      "bank-f55"
+    ],
+    "author": "Codex",
+    "humanReview": "New candidate; awaiting human fun/difficulty/suitability review.",
+    "interconnection": "Three live collar positions pull the route east, then back above the original mast. The long void stone carries the low dash in both directions; the original first-cut mast becomes the last ascent rather than a discarded obstacle.",
+    "novelty": "The final collar returns to the initial structure at a different height, turning a familiar support into a new problem. Each cut still requires a fresh native hooked ascent; neither a dash nor a ground slash can substitute.",
+    "solution": "Climb to the near mast and catch the west ring during the gold-chain window. Release above the first collar and cut downward. Descend to the low launch shelf and dash through the long void stone. Climb the far court while reading its orbit, catch the east ring and cut the second collar. Return through the same void, climb the first mast to its crown, and use its high ring for the third downward cut. The collar releases the safe western home gallery. The final ascent leaves the low overhang before grabbing the mast; read the jaw flash and parry its spit on the climb. The last cut lands on a broad recovery ledge; two ordinary small leftward jumps bring you home.",
+    "requiredEvents": [
+      "hook",
+      "hydra-lock",
+      "hydra-drag",
+      "hydra-free",
+      "void-in",
+      "void-out",
+      "gate-open",
+      "parry"
+    ],
+    "requiredEventCounts": {
+      "hydra-lock": 3,
+      "void-in": 2
+    },
+    "ending": "The last cut lands above a broad permanent return shelf; the open gate leaves only a safe walk home.",
+    "superroom": {
+      "screenAreas": 3.5217391304347827,
+      "stages": [
+        "First collar on the near mast",
+        "Cross the low void to its far court",
+        "Return through the void and climb the original mast",
+        "Fresh high hook frees the home gallery"
+      ]
+    },
+    "positiveChecks": [
+      {
+        "name": "Wait sixty frames on the final gallery",
+        "tape": [
+          [
+            60,
+            "r"
+          ],
+          [
+            1,
+            "j"
+          ],
+          [
+            110,
+            "rgu"
+          ],
+          [
+            55,
+            "rgu"
+          ],
+          [
+            1,
+            "j"
+          ],
+          [
+            30,
+            "rgu"
+          ],
+          [
+            1,
+            "rj"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            12,
+            "rds"
+          ],
+          [
+            32,
+            "r"
+          ],
+          [
+            28,
+            ""
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            55,
+            "r"
+          ],
+          [
+            50,
+            "rgu"
+          ],
+          [
+            70,
+            "rgu"
+          ],
+          [
+            28,
+            "rgu"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            12,
+            "ds"
+          ],
+          [
+            62,
+            "l"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            1,
+            "lx"
+          ],
+          [
+            50,
+            "l"
+          ],
+          [
+            75,
+            "lgu"
+          ],
+          [
+            30,
+            "lgu"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            65,
+            "rgu"
+          ],
+          [
+            1,
+            "p"
+          ],
+          [
+            54,
+            "rgu"
+          ],
+          [
+            38,
+            "rgu"
+          ],
+          [
+            1,
+            "lj"
+          ],
+          [
+            28,
+            "lgu"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            30,
+            "lj"
+          ],
+          [
+            120,
+            "l"
+          ],
+          [
+            60,
+            ""
+          ],
+          [
+            35,
+            "lj"
+          ],
+          [
+            80,
+            "l"
+          ]
+        ],
+        "result": {
+          "frames": 1376,
+          "deaths": 0
+        }
+      }
+    ],
+    "shortcutChecks": [],
+    "proof": {
+      "frames": 1316,
+      "deaths": 0,
+      "events": {
+        "hook": 5,
+        "hydra-lock": 3,
+        "hydra-drag": 2,
+        "hydra-free": 1,
+        "void-in": 2,
+        "void-out": 2,
+        "gate-open": 1,
+        "parry": 1
+      }
+    },
+    "evidenceNotes": [
+      {
+        "name": "Remove all hook/grab inputs",
+        "cleared": false,
+        "hydraCuts": 0,
+        "checkKind": "shortcutChecks"
+      }
+    ]
+  },
+  "tape": [
+    [
+      60,
+      "r"
+    ],
+    [
+      1,
+      "j"
+    ],
+    [
+      110,
+      "rgu"
+    ],
+    [
+      55,
+      "rgu"
+    ],
+    [
+      1,
+      "j"
+    ],
+    [
+      30,
+      "rgu"
+    ],
+    [
+      1,
+      "rj"
+    ],
+    [
+      14,
+      "r"
+    ],
+    [
+      12,
+      "rds"
+    ],
+    [
+      32,
+      "r"
+    ],
+    [
+      28,
+      ""
+    ],
+    [
+      1,
+      "rx"
+    ],
+    [
+      55,
+      "r"
+    ],
+    [
+      50,
+      "rgu"
+    ],
+    [
+      70,
+      "rgu"
+    ],
+    [
+      28,
+      "rgu"
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      12,
+      "ds"
+    ],
+    [
+      62,
+      "l"
+    ],
+    [
+      25,
+      ""
+    ],
+    [
+      1,
+      "lx"
+    ],
+    [
+      50,
+      "l"
+    ],
+    [
+      75,
+      "lgu"
+    ],
+    [
+      30,
+      "lgu"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      12,
+      "j"
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      65,
+      "rgu"
+    ],
+    [
+      1,
+      "p"
+    ],
+    [
+      54,
+      "rgu"
+    ],
+    [
+      38,
+      "rgu"
+    ],
+    [
+      1,
+      "lj"
+    ],
+    [
+      28,
+      "lgu"
+    ],
+    [
+      1,
+      "ds"
+    ],
+    [
+      30,
+      ""
+    ],
+    [
+      30,
+      "lj"
+    ],
+    [
+      120,
+      "l"
+    ],
+    [
+      35,
+      "lj"
+    ],
+    [
+      80,
+      "l"
+    ]
+  ]
+}

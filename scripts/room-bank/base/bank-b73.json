@@ -1,0 +1,296 @@
+{
+  "room": {
+    "id": "bank-b73",
+    "name": "The Same Door Brings You Home",
+    "cols": 80,
+    "rows": 36,
+    "map": [
+      "################################################################################",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#...................................%..........................................#",
+      "#...................................%..........................................#",
+      "#...................................%..........................................#",
+      "#...................................%..........................................#",
+      "#...................................%..........................................#",
+      "#...................................%..........................................#",
+      "#...................................%#########.................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#.................................................%............................#",
+      "#.................................................%............................#",
+      "#.................................................%............................#",
+      "#.................................................%............................#",
+      "#.................................................%............................#",
+      "#.................................................%............................#",
+      "#.................................................%............................#",
+      "#.................................................%............................#",
+      "#.%.................................................################...........#",
+      "#.%............................................................................#",
+      "#.%............................................................................#",
+      "#.%............................................................................#",
+      "#.%.P..........................................................................#",
+      "##%#GGGG########...............................................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#..............................................................................#",
+      "#^^^....^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+      "####....########################################################################"
+    ],
+    "palette": "rift",
+    "movement": "survive-2",
+    "aim8": true,
+    "study": true,
+    "rbr": 13,
+    "exit": "down",
+    "portalMode": "one",
+    "portals": [
+      {
+        "color": "orange",
+        "c": 2,
+        "r": 27,
+        "face": "r"
+      },
+      {
+        "color": "blue",
+        "c": 36,
+        "r": 10,
+        "face": "r"
+      }
+    ],
+    "tyrant": {
+      "c": 73,
+      "r": 3,
+      "height": 25,
+      "shotRow": 27,
+      "weakRow": 10,
+      "hits": 2,
+      "final": true,
+      "lanes": [
+        27,
+        27
+      ],
+      "bands": [
+        10,
+        19
+      ],
+      "every": 180,
+      "first": 50
+    },
+    "hint": "Use his first return door to cross the void. His second band needs the lower white wall—and that door brings you home.",
+    "question": "Can the same route carry his attack outward and carry you home?"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 19,
+    "run": 10,
+    "collection": "superrooms",
+    "format": "superroom",
+    "acceptance": "candidate",
+    "needsReview": true,
+    "difficulty": 3,
+    "worlds": [
+      13
+    ],
+    "tags": [
+      "superroom",
+      "tyrant",
+      "portal",
+      "return"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "newMechanics": [],
+    "approvedIngredients": [
+      "bank-b64",
+      "bank-f68"
+    ],
+    "interconnection": "The first return portal also transports the player onto the high balcony. Moving that portal to meet the second band removes that high access and makes the route home from the lower court. The native boss unlocks a drop through the original starting court.",
+    "solution": "Enter the low fixed portal and let its high partner return the first bolt. Cross from the balcony over the lower receiving wall. Aim your blue portal onto that wall to meet the second lit band, wait on the broad far shelf, then jump into the same blue door to come home above the opened gate.",
+    "novelty": "The projectile routing puzzle and the player’s way out are the same two portals; moving one door changes both routes at once.",
+    "nearestExisting": "B64 readable pale portal surfaces and F68 return-route restriction, applied to the actual Tyrant ward.",
+    "requiredEvents": [
+      "portal-pass",
+      "tyrant-hit",
+      "tyrant-walk",
+      "tyrant-withdraw"
+    ],
+    "requiredEventCounts": {
+      "tyrant-hit": 2
+    },
+    "endingForgiveness": "Wide far waiting platform, then a short home drop after the native boss withdraws.",
+    "positiveChecks": [
+      {
+        "name": "Extra60-frame pause before portal return",
+        "tape": [
+          [
+            10,
+            "l"
+          ],
+          [
+            560,
+            ""
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            5,
+            "rx"
+          ],
+          [
+            35,
+            "r"
+          ],
+          [
+            30,
+            ""
+          ],
+          [
+            24,
+            "l"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            1,
+            "luq"
+          ],
+          [
+            560,
+            ""
+          ],
+          [
+            60,
+            ""
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            12,
+            "r"
+          ],
+          [
+            16,
+            ""
+          ]
+        ]
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Keep the first door instead of relocating its exit",
+        "tape": [
+          [
+            10,
+            "l"
+          ],
+          [
+            1600,
+            ""
+          ]
+        ]
+      }
+    ],
+    "evidenceNotes": [
+      {
+        "name": "Native two ward returns and portal homecoming",
+        "frames": 1344,
+        "deaths": 0,
+        "hits": 2
+      },
+      {
+        "name": "Extra60-frame pause before final portal return",
+        "frames": 1404,
+        "deaths": 0
+      },
+      {
+        "name": "Stay at first door instead of relocating its exit",
+        "result": "Only first band breaks; home gate remains locked",
+        "hits": 1,
+        "exited": false,
+        "deaths": 0
+      }
+    ]
+  },
+  "tape": [
+    [
+      10,
+      "l"
+    ],
+    [
+      560,
+      ""
+    ],
+    [
+      35,
+      "r"
+    ],
+    [
+      18,
+      "rj"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      35,
+      "r"
+    ],
+    [
+      30,
+      ""
+    ],
+    [
+      24,
+      "l"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      1,
+      "luq"
+    ],
+    [
+      560,
+      ""
+    ],
+    [
+      18,
+      "lj"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      12,
+      "r"
+    ],
+    [
+      16,
+      ""
+    ]
+  ]
+}

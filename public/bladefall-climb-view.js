@@ -915,20 +915,21 @@ function drawLiftHint(b,g){
 }
 
 /* ---------------------------------------------------------------- skips (Isaac, 7.270) */
-/* Three per world: N moves you on to the next section's fire. Not in a quest or a secret (those are optional). */
+/* Three per world: normal challenges cost one; the ending superroom costs two in Base, three in Fractured. */
 function skipInfo(){
  const view=st?.view,g=view?.g,pl=g&&st.world&&sectionOf(g),d=g?.room?.def;
- const remaining=st?.skips??0;
+ const remaining=st?.skips??0,finale=!!d&&st.world?.bankIntegration?.superroom===d.id;
+ const cost=finale?(st.world.n>20?3:2):1;
  let reason='';
  if(!pl||view.mode!=='play')reason='Start a world first';
  else if(pl.branch)reason='Optional routes cannot be skipped';
- else if(d.campaignImport?.superroom||d.bank?.format==='superroom'||d.superroom||
-   ['boss','sentinel','marksman','colossus','warden','sorcerer','tyrant','crown','chainHydra','dayKing','rootCrown'].some(k=>d[k])||d.combat?.enemies?.some(e=>e.brute))reason='Finales and bosses cannot be skipped';
+ else if(!finale&&(d.campaignImport?.superroom||d.bank?.format==='superroom'||d.superroom||
+   ['boss','sentinel','marksman','colossus','warden','sorcerer','tyrant','crown','chainHydra','dayKing','rootCrown'].some(k=>d[k])||d.combat?.enemies?.some(e=>e.brute)))reason='This boss cannot be skipped';
  else if(d.connector||d.passage||d.atlasJunction||d.atlasTransit)reason='Skips apply to normal challenges';
- else if(d.bank?.format==='extended'||(d.cols||40)*(d.rows||23)>40*23)reason='Large challenges cannot be skipped';
+ else if(!finale&&(d.bank?.format==='extended'||(d.cols||40)*(d.rows||23)>40*23))reason='Large challenges cannot be skipped';
  else if(!pl.chain[chainIndex(pl,g.room.id)+1])reason='This is the last section';
- else if(remaining<=0)reason='No skips left in this world';
- return {allowed:!reason,remaining,reason};
+ else if(remaining<cost)reason=finale?`This finale needs ${cost} skips · ${remaining} left`:'No skips left in this world';
+ return {allowed:!reason,remaining,cost,finale,reason};
 }
 function skipSection({fromPause=false}={}){
  const info=skipInfo();if(!info.allowed){announce(info.reason,150);return false;}
@@ -936,8 +937,8 @@ function skipSection({fromPause=false}={}){
  if(view.paused&&!fromPause)return false;
  const next=pl.chain[chainIndex(pl,g.room.id)+1];
  const proceed=()=>{root.BladefallClimbSession?.invalidate('skip');
- st.skips--;st.trialSolved?.add(g.room.id);st.atlas?.solve(g.room.id);store('bladefall.climb.atlas.v1',st.atlas.snapshot());st.trail=[];C().enterRoom(g,roomIdx(next.room));st.enteredAt=g.frame;view.roomTimer=0;
- announce(`Skipped · ${st.skips} left in ${st.world.name}`,170);};
+ st.skips-=info.cost;st.trialSolved?.add(g.room.id);st.atlas?.solve(g.room.id);store('bladefall.climb.atlas.v1',st.atlas.snapshot());st.trail=[];C().enterRoom(g,roomIdx(next.room));st.enteredAt=g.frame;view.roomTimer=0;
+ announce(`Skipped · used ${info.cost} · ${st.skips} left in ${st.world.name}`,170);};
  if(!root.BladefallClimbSession?.request(g.room.def,proceed,'skipped'))proceed();
  return true;
 }
@@ -1253,7 +1254,7 @@ PV.hud=function(ctx,ox,oy,scale,g,view){
  if(st.nearPort&&!st.nearPort.open){const info=root.BladefallClimbMap?.describeSocket?.(g.room.def,st.nearPort.socket,st.atlas);ctx.fillStyle='#c8c4b5';ctx.fillText(info?`Sealed · the road to ${info.toName} opens when you ${info.reasonLong}`:'The crossing is barred · explore the adjoining climbs',ox+10,oy+H0(scale,view)-fs*3.8);}
  if(root.BladefallClimbCoop)try{root.BladefallClimbCoop.hud(ctx,ox,oy,scale,fs,g,view);}catch(e){}
  // skips left in this world (N)
- {const info=skipInfo(),txt=info.allowed?`Skip ${info.remaining} · Pause for map`:`${info.reason} · Pause for map`,tw=ctx.measureText(txt).width+fs*1.2,x0=ox+W0*scale-8;ctx.globalAlpha=.7;ctx.fillStyle='rgba(14,16,24,.6)';ctx.fillRect(x0-tw,oy+H0(scale,view)-fs*2.2,tw,fs*1.6);ctx.fillStyle='#cfd6e2';ctx.fillText(txt,x0-tw+fs*.6,oy+H0(scale,view)-fs*1.9);ctx.globalAlpha=1;}
+ {const info=skipInfo(),txt=info.allowed?`Skip costs ${info.cost} · ${info.remaining} left · Pause for map`:`${info.reason} · Pause for map`,tw=ctx.measureText(txt).width+fs*1.2,x0=ox+W0*scale-8;ctx.globalAlpha=.7;ctx.fillStyle='rgba(14,16,24,.6)';ctx.fillRect(x0-tw,oy+H0(scale,view)-fs*2.2,tw,fs*1.6);ctx.fillStyle='#cfd6e2';ctx.fillText(txt,x0-tw+fs*.6,oy+H0(scale,view)-fs*1.9);ctx.globalAlpha=1;}
  for(const q of st.world.quests){
   let txt=null;const plq=sectionOf(g);if(plq&&plq.quest===q&&!st.quest)st.quest={id:q.id};
   if(q.bearings&&bearingsHeld(g,q).length){const held=bearingsHeld(g,q);txt=`${q.giver}: `+q.bearings.map(b=>(held.includes(b)?'◆':'◇')+' '+b).join('  ');}

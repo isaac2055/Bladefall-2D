@@ -1,0 +1,444 @@
+{
+  "room": {
+    "id": "bank-b76",
+    "study": true,
+    "dashes": 1,
+    "cols": 80,
+    "rows": 38,
+    "palette": "shores",
+    "exit": "down",
+    "name": "Take the Lantern at High Water",
+    "rbr": 17,
+    "map": [
+      "##HG############################################################################",
+      "#.HG...........................................................................#",
+      "#.HG...........................................................................#",
+      "#.HG...........................................................................#",
+      "#.HG...........................................................................#",
+      "#.HG...........................................................................#",
+      "#.HG...........................................................................#",
+      "#.HG...........................................................................#",
+      "#.HG...........................................................................#",
+      "#.HG...........................................................................#",
+      "#.HG...........................................................................#",
+      "#.HG...........................................................................#",
+      "#.HG...............................O...........................................#",
+      "#.HG..........................................................l..c.............#",
+      "#.HG.......................................#####################################",
+      "#.HG......................................<#####################################",
+      "#.HG......................................<#####################################",
+      "#.HG......................................<#####################################",
+      "#.HG......................................<#####################################",
+      "#.HG......................................<#####################################",
+      "#.HG......................................<#####################################",
+      "#.HG......................................<#####################################",
+      "#.HG......................................<#####################################",
+      "#.HG......................................<#####################################",
+      "#.HG..........................############<#####################################",
+      "#.HG......................................<#####################################",
+      "#.HG......................................<#####################################",
+      "#.HG......................................<#####################################",
+      "#.HG......................................<#####################################",
+      "#.HG......................................<#####################################",
+      "#.HG......................................<#####################################",
+      "#.HG......................................<#####################################",
+      "#.HG...._.................................<#####################################",
+      "#..###########.^^^^^..P.....^^............<#####################################",
+      "#..###########......FFFFFFFF..............<#####################################",
+      "#..###########............................<#####################################",
+      "#..###########............................<#####################################",
+      "#..#############################################################################"
+    ],
+    "tide": {
+      "c0": 14,
+      "c1": 42,
+      "low": 35,
+      "high": 17,
+      "hold": 90,
+      "move": 80
+    },
+    "weightCircuits": [
+      {
+        "id": "A",
+        "plates": [
+          [
+            8,
+            32
+          ]
+        ],
+        "doors": [
+          [
+            2,
+            0
+          ]
+        ]
+      }
+    ],
+    "hint": "The sea lends the float its height. Leave the ring for the outward climb; bring the lantern home above the drowned reef.",
+    "question": "What can the tide carry for you that the grapple cannot?",
+    "campaignEntry": "down"
+  },
+  "bank": {
+    "side": "base",
+    "batch": 19,
+    "run": 10,
+    "collection": "superrooms",
+    "format": "superroom",
+    "acceptance": "candidate",
+    "status": "route-proven",
+    "author": "Codex",
+    "tags": [
+      "superroom",
+      "tide",
+      "hook",
+      "cargo",
+      "return-route"
+    ],
+    "newMechanics": [],
+    "humanReview": "Awaiting human review; ratings not measured.",
+    "worlds": [
+      17
+    ],
+    "difficulty": 4,
+    "approvedIngredients": [
+      "bank-b37",
+      "bank-b64"
+    ],
+    "solution": "Ride the native float up with the tide, jump toward the offshore ring and release onto the high pier. Light the far tally and take its lantern. Return from the same pier carrying the lantern; its glide gives time to cross the basin while high water drowns the reef. Leave the lantern on the western plate, then step through the opened home gate into its short downward escape.",
+    "interconnection": "The shared basin is a rising launch platform outbound and a flooded return path with cargo inbound. The same ring becomes unusable while carrying the lantern, so the homebound solution must exploit water and glide instead.",
+    "novelty": "The object retrieved at the top deliberately removes the tool used to reach it; the tide supplies a different route through the same space.",
+    "nearestExisting": "Landfall uses a float and ring in one flight; this adds a cargo return over the same drowned reef and a permanent home gate.",
+    "requiredEvents": [
+      "hook",
+      "stone-lit",
+      "pickup",
+      "throw",
+      "weight-open",
+      "exit"
+    ],
+    "endingForgiveness": "The last plate rests on the immovable fourteen-tile dry shore. The opened gate leads directly into a walled, hazard-free exit chute; hold left and let the final drop finish.",
+    "superroom": {
+      "screenAreas": 3.3043478260869565,
+      "stages": [
+        "Take the rising float to the ring",
+        "Claim the high pier\u2019s lantern",
+        "Return using the sea instead of the hook"
+      ]
+    },
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 900
+    },
+    "routeEvents": [
+      {
+        "type": "hook",
+        "frame": 192,
+        "x": 284,
+        "y": 100,
+        "fx": 232,
+        "fy": 82,
+        "i": 191
+      },
+      {
+        "type": "stone-lit",
+        "frame": 399,
+        "x": 524,
+        "y": 108,
+        "left": 0,
+        "i": 398
+      },
+      {
+        "type": "pickup",
+        "frame": 448,
+        "i": 447
+      },
+      {
+        "type": "weight-open",
+        "frame": 799,
+        "x": 20,
+        "y": 132,
+        "id": "A",
+        "i": 798
+      },
+      {
+        "type": "throw",
+        "frame": 814,
+        "dir": 1,
+        "i": 813
+      },
+      {
+        "type": "exit",
+        "frame": 900,
+        "room": 0,
+        "i": 899
+      }
+    ],
+    "positiveChecks": [
+      {
+        "name": "Pause40framesbeforefinaldeparture",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            155,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            45,
+            "rgu"
+          ],
+          [
+            25,
+            "rgu"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            125,
+            "r"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            10,
+            "l"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            165,
+            "l"
+          ],
+          [
+            160,
+            "l"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            110,
+            "l"
+          ]
+        ],
+        "exited": true,
+        "deaths": 0,
+        "frames": 940
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Attemptcanonicalroutewithoutg",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            155,
+            ""
+          ],
+          [
+            25,
+            "rj"
+          ],
+          [
+            45,
+            "ru"
+          ],
+          [
+            25,
+            "ru"
+          ],
+          [
+            12,
+            "rux"
+          ],
+          [
+            125,
+            "r"
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            1,
+            "rs"
+          ],
+          [
+            14,
+            "l"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            10,
+            "l"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            1,
+            ""
+          ],
+          [
+            165,
+            "l"
+          ],
+          [
+            160,
+            "l"
+          ],
+          [
+            30,
+            "r"
+          ],
+          [
+            10,
+            ""
+          ],
+          [
+            1,
+            "d"
+          ],
+          [
+            110,
+            "l"
+          ]
+        ],
+        "exited": false,
+        "deaths": 11,
+        "frames": null
+      }
+    ]
+  },
+  "tape": [
+    [
+      1,
+      "r"
+    ],
+    [
+      155,
+      ""
+    ],
+    [
+      25,
+      "rj"
+    ],
+    [
+      45,
+      "rgu"
+    ],
+    [
+      25,
+      "rgu"
+    ],
+    [
+      12,
+      "rux"
+    ],
+    [
+      125,
+      "r"
+    ],
+    [
+      14,
+      "r"
+    ],
+    [
+      1,
+      "rs"
+    ],
+    [
+      14,
+      "l"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      10,
+      "l"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      1,
+      "g"
+    ],
+    [
+      165,
+      "l"
+    ],
+    [
+      160,
+      "l"
+    ],
+    [
+      30,
+      "r"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      1,
+      "dg"
+    ],
+    [
+      110,
+      "l"
+    ]
+  ]
+}

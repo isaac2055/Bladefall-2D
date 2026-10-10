@@ -62,7 +62,7 @@ function reachFire(g0,spawn,{beam=100,depth=24}={}){
  if(cached){const g=restore(g0),r=run(g,cached);if(!r.dead&&!r.exited&&ok(g))return {tape:cached};}
  const found=tape=>{saveProof(file,tape);return {tape};};
  // Try ordinary movement before the beam search; each candidate is still simulated from the exact seam state.
- for(const t of [[[65,''],[32,'r'],[10,'']],[[90,'']],[[80,'l']],[[80,'r']],[[70,'lgu'],[30,'r']],[[70,'rgu'],[30,'l']],[[20,'lj'],[50,'l']],[[20,'rj'],[50,'r']],[[12,'lx'],[30,'l']],[[12,'rx'],[30,'r']]]){
+ for(const t of [[[65,''],[32,'r'],[10,'']],[[90,'']],[[180,'']],[[80,'l']],[[80,'r']],[[70,'lgu'],[30,'r']],[[70,'rgu'],[30,'l']],[[20,'lj'],[50,'l']],[[20,'rj'],[50,'r']],[[12,'lx'],[30,'l']],[[12,'rx'],[30,'r']]]){
   const g=restore(g0),tape=[];
   for(const k of frames(t)){Core.step(g,keysToInput(k));const bad=g.events.some(e=>e.type==='death'||e.type==='exit');g.events.length=0;
    if(bad)break;if(tape.length&&tape.at(-1)[1]===k)tape.at(-1)[0]++;else tape.push([1,k]);if(ok(g))return found(tape);}

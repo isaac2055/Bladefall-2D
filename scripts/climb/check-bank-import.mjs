@@ -1,9 +1,10 @@
-// Audit the saved 7.306 continuous registry; never rerun the geometry search here.
+// Audit the saved 7.307 continuous registry; never rerun the geometry search here.
 import assert from 'node:assert/strict';
 import {readFileSync,writeFileSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import vm from 'node:vm';
 import {createRequire} from 'node:module';
+import {createHash} from 'node:crypto';
 import {Core,keysToInput,expand} from '../pcore-tape.mjs';
 import {records} from '../room-bank/register.mjs';
 import {CUTS} from './import-bank.mjs';
@@ -48,10 +49,13 @@ function branchesPreserved(w,old){let n=0;const all=new Map(sections(w).map(s=>[
 }
 export function audit(){
  inheritedAtlasSharedMouth.length=0;
+ const selected=new Set((process.argv.find(a=>a.startsWith('--worlds='))?.slice(9)||'').split(',').filter(Boolean).map(Number)),testWorld=n=>!selected.size||selected.has(n);
  const source=JSON.parse(readFileSync('scripts/climb/source-worlds-7.303.json','utf8')),worlds=loadWorlds(),quiet=JSON.parse(readFileSync('scripts/climb/retired-passages-7.306.json','utf8'));
- assert.equal(worlds.length,40);assert(worlds.every(w=>w.bankIntegration?.version==='7.306.0'&&w.bankIntegration?.geography==='continuous'),'Rebuild the complete 7.306 campaign before running this audit.');
+ assert.equal(worlds.length,40);assert(worlds.every(w=>w.bankIntegration?.version==='7.307.0'&&w.bankIntegration?.geography==='continuous'),'Rebuild the complete 7.307 campaign before running this audit.');
+ const previous=JSON.parse(readFileSync('docs/room-bank/campaign-integration-7.307-baseline.json','utf8'));
+ for(const saved of previous.unchangedWorlds){const w=copy(worlds.find(w=>w.n===saved.world));delete w.bankIntegration.version;for(const d of w.rooms)if(d.campaignImport)delete d.campaignImport.version;assert.equal(createHash('sha256').update(JSON.stringify(w)).digest('hex'),saved.sha256ExcludingReleaseVersion,`W${w.n}: unexpected change to a previously verified world`);}
  const originals=new Map(records.map(r=>[r.room.id,r])),imports=worlds.flatMap(w=>w.rooms.filter(d=>d.campaignImport));
- assert.equal(imports.length,117,'expected 87 ordinary rooms + 30 finales');assert.equal(new Set(imports.map(d=>d.bankOrigin)).size,117);assert.deepEqual(imports.map(d=>d.bankOrigin).sort(),records.map(r=>r.room.id).sort());
+ assert.equal(imports.length,127,'expected 87 ordinary rooms + 40 finales');assert.equal(new Set(imports.map(d=>d.bankOrigin)).size,127);assert.deepEqual(imports.map(d=>d.bankOrigin).sort(),records.map(r=>r.room.id).sort());
  let dialogues=0,branches=0,sharedWalls=0,native=0;const routes=[],seams=[],retired=[],routeSnapshots=new Map();
  for(const w of worlds){
   const old=source.find(x=>x.n===w.n),byId=new Map(w.rooms.map(d=>[d.id,d])),oldById=new Map(old.rooms.map(d=>[d.id,d])),places=new Map(w.sections.map(s=>[s.room,s]));
@@ -75,9 +79,11 @@ export function audit(){
     for(const p of record.room.people||[])assert(d.people?.some(x=>JSON.stringify(x)===JSON.stringify(p)),`${d.id}: missing authored NPC`);
     const used=new Set(record.tape.map(x=>x[1]).join(''));for(const [key,ability]of Object.entries({x:'dash',s:'strike',p:'parry',q:'portal'}))if(used.has(key))assert(w.kit.includes(ability),`${d.id}: kit lacks ${ability}`);
    }
+   if(!testWorld(w.n))continue;
    const r=exitRoute({...d,closeWhilePlayed:true},w.tapes[d.id]);assert(r.exit&&!r.exit.side&&!r.deaths,`${d.id}: closed-entrance route ${JSON.stringify({exit:r.exit,deaths:r.deaths})}`);routeSnapshots.set(d.id,r);routes.push({world:w.n,id:d.id,source:d.bankOrigin||null,kind:d.campaignImport?'bank':d.retiredChallenge?'quiet passage':'connecting road',frames:r.exit.i+1,deaths:r.deaths});
   }
   for(const proof of w.continuousSeams){const from=places.get(proof.from),to=places.get(proof.to),fd=byId.get(proof.from),td=byId.get(proof.to);assert(from&&to&&w.sections.indexOf(to)===w.sections.indexOf(from)+1,`stale seam ${proof.from} → ${proof.to}`);
+   if(!testWorld(w.n))continue;
    const r=exitRoute(fd,w.tapes[fd.id]);routeSnapshots.set(fd.id,r);assert(r.exit&&!r.exit.side&&!r.deaths,`${fd.id}: source exit route`);const g=liveFlags(Core.createGame([td],{room:0}));CL.carry(Core,g,r.snap,{x:from.x*8,y:from.y*8},{x:to.x*8,y:to.y*8});const delta=Math.hypot(g.p.x+to.x*8-r.snap.x-from.x*8,g.p.y+to.y*8-r.snap.y-from.y*8);assert(delta<=12.001,`${fd.id} → ${td.id}: teleport ${delta}px`);assert(Math.abs(delta-proof.entryDelta)<.001,`${fd.id} → ${td.id}: stale entry state`);
    let deaths=0,exits=0;for(const key of expand(proof.toFire)){Core.step(g,keysToInput(key));for(const e of g.events){if(e.type==='death')deaths++;if(e.type==='exit')exits++;}g.events.length=0;}assert(!deaths&&!exits&&atFire(g),`${fd.id} → ${td.id}: saved approach no longer reaches fire ${JSON.stringify({deaths,exits,x:g.p.x,y:g.p.y,spawn:g.room.spawn,ground:g.p.onGround})}`);
    let pristinePuzzle=null;if(['bank-f31','bank-f32'].includes(td.bankOrigin)){pristinePuzzle={phase:g.phase,lit:g.ents.filter(e=>e.type==='stone'&&e.lit).length,openGates:g.ents.filter(e=>e.type==='gate'&&e.open).length};assert.deepEqual(pristinePuzzle,{phase:0,lit:0,openGates:0},`${td.id}: approach pre-solves the phase/tally puzzle`);}
@@ -93,6 +99,7 @@ export function audit(){
   // Atlas positioning may translate a whole region, never re-space its road or branches.
   for(const before of sections(raw)){const current=after.get(before.room);assert(current,`${before.room}: atlas lost a physical section`);const delta=[current.x-before.x,current.y-before.y];if(!shift)shift=delta;else assert.deepEqual(delta,shift,`${before.room}: atlas changed a proved seam offset`);const zone=runtime.geography.cameraZones.get(`${w.n}-world`),d=w.rooms.find(d=>d.id===current.room);assert(d.cameraZone===zone.id&&current.x>=zone.x&&current.y>=zone.y&&current.x+(d.cols||40)<=zone.x+zone.w&&current.y+(d.rows||23)<=zone.y+zone.h,`${current.room}: outside continuous camera region`);}
   atlasSharedWalls+=noOverlap(w,raw);
+  if(!testWorld(w.n))continue;
   // Use the last challenge's actual exit state, then mirror the live view's
   // continuous atlas carry (including its small vertical landing adjustment).
   const sourceDef=w.rooms.find(d=>d.id===w.atlasEnd),from=after.get(w.atlasEnd),to=w.sections.at(-1),targetDef=w.rooms.find(d=>d.id===to.room);
@@ -115,7 +122,7 @@ export function audit(){
  for(const w of runtime.worlds){const A=globalThis.BladefallClimbAtlas.create(runtime.worlds,{}),B=globalThis.BladefallClimbAtlas.create(runtime.worlds,{});assert(!A.complete(w.n));A.solve(w.atlasEnd);assert(!A.complete(w.n),'last room alone cannot clear world');for(const id of w.requiredMainRooms)B.solve(id);B.solve(w.atlasEnd);assert(B.complete(w.n));assert(!A.complete(w.n),'another player cannot finish your world');for(const id of w.requiredMainRooms.slice(1))A.solve(id);assert(!A.complete(w.n),'one missed personal challenge blocks completion');A.solve(w.requiredMainRooms[0]);assert(A.complete(w.n));
   for(const [id,to]of Object.entries(w.retiredRooms)){const migrated=globalThis.BladefallClimbAtlas.create(runtime.worlds,{version:1,checkpoint:{world:w.n,room:id},solved:{}});assert.equal(migrated.state.checkpoint.room,to,`${id}: old save migration`);}
  }
- const report={version:'7.306.0',worlds:worlds.length,imports:imports.length,ordinary:87,superrooms:Object.keys(FINALES).length,retirements:retired.length,mainChallenges:worlds.reduce((n,w)=>n+w.requiredMainRooms.length,0),closedEntranceRoutes:routes.length,physicalSeams:seams.length,checkpointTeleports:0,nativeDefinitionsPreserved:native,existingRuntimeRetimings:Object.keys(nativeTapeOverrides),dialogueRecordsPreserved:dialogues,translatedBranches:branches,sharedSolidWalls:sharedWalls,atlasSharedSolidWalls:atlasSharedWalls,atlasTranslationsPreserveAllSeams:true,inheritedAtlasSharedMouth,ownCompletionGuard:true,retiredCheckpointMigration:true,geographySections:runtime.geography.rooms.size,terminalArrivals,routes,seams};
- if(process.argv.includes('--write'))writeFileSync('docs/room-bank/campaign-integration-7.306-audit.json',JSON.stringify(report,null,2)+'\n');console.log('PASS',JSON.stringify({...report,routes:undefined,seams:undefined,terminalArrivals:terminalArrivals.length}));return report;
+ const report={version:'7.307.0',scope:selected.size?{replayedWorlds:[...selected],unchangedWorldProofs:'campaign-integration-7.306-audit.json',structuralWorlds:40,unchangedWorldHashes:previous.unchangedWorlds.length}:'all',worlds:worlds.length,imports:imports.length,ordinary:87,superrooms:Object.keys(FINALES).length,retirements:retired.length,mainChallenges:worlds.reduce((n,w)=>n+w.requiredMainRooms.length,0),closedEntranceRoutes:routes.length,physicalSeams:seams.length,checkpointTeleports:0,nativeDefinitionsPreserved:native,existingRuntimeRetimings:Object.keys(nativeTapeOverrides),dialogueRecordsPreserved:dialogues,translatedBranches:branches,sharedSolidWalls:sharedWalls,atlasSharedSolidWalls:atlasSharedWalls,atlasTranslationsPreserveAllSeams:true,inheritedAtlasSharedMouth,ownCompletionGuard:true,retiredCheckpointMigration:true,geographySections:runtime.geography.rooms.size,terminalArrivals,routes,seams};
+ if(process.argv.includes('--write'))writeFileSync('docs/room-bank/campaign-integration-7.307-audit.json',JSON.stringify(report,null,2)+'\n');console.log('PASS',JSON.stringify({...report,routes:undefined,seams:undefined,terminalArrivals:terminalArrivals.length}));return report;
 }
 if(process.argv[1]===fileURLToPath(import.meta.url))audit();

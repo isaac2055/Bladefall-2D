@@ -1,0 +1,138 @@
+{
+  "sourceCommit": "10ae4a9",
+  "changedWorlds": [
+    10,
+    13,
+    14,
+    16,
+    17,
+    31,
+    33,
+    34,
+    36,
+    39
+  ],
+  "unchangedWorlds": [
+    {
+      "world": 1,
+      "sha256ExcludingReleaseVersion": "bb877974c5b7fdb749632d447be1769ec2fc6dd413596d6c2cfa04b1df204ba7"
+    },
+    {
+      "world": 2,
+      "sha256ExcludingReleaseVersion": "db14427d24923cfbde289e828c72fcadde15395aaa8e2c60d55fc3c14542890d"
+    },
+    {
+      "world": 3,
+      "sha256ExcludingReleaseVersion": "948de97c20aff559d818ff2c6d604cd78ed0c68ead7db7dec5020af32b22df1e"
+    },
+    {
+      "world": 4,
+      "sha256ExcludingReleaseVersion": "dfe80e95c2d68291d1a59c955d529064c8c686a75ee9590dd9d052eab850e5d3"
+    },
+    {
+      "world": 5,
+      "sha256ExcludingReleaseVersion": "f8d9af19838c486bde7c87301c1da0bd2002c16d323a6fd4b28f5efae0dc591b"
+    },
+    {
+      "world": 6,
+      "sha256ExcludingReleaseVersion": "b0d23fc9340baeb27878d4c4881006d4c720d266adc4082aa03b584b7fa9efe6"
+    },
+    {
+      "world": 7,
+      "sha256ExcludingReleaseVersion": "2564bc4c7227573f5945558c5465834e286f55ba215f626a28f566b896ee44b4"
+    },
+    {
+      "world": 8,
+      "sha256ExcludingReleaseVersion": "5d5f4bc90c5a62c8383be7f38cf51b42b509a157a0d1cdbf70782ccea0f30377"
+    },
+    {
+      "world": 9,
+      "sha256ExcludingReleaseVersion": "7d26e695363c984862b4dd7eb346c85fc5cf975a0b5544946e5380280c5c4d86"
+    },
+    {
+      "world": 11,
+      "sha256ExcludingReleaseVersion": "b917e7dd3a4252636adbe8c26da01285dfb4a0c0961b11f50fbdd5b5d6559557"
+    },
+    {
+      "world": 12,
+      "sha256ExcludingReleaseVersion": "962acfb424bb0b9546bd5ff36d9fc98ed0717b791c43aaa394636355a20c758e"
+    },
+    {
+      "world": 15,
+      "sha256ExcludingReleaseVersion": "1f3b888b9f92c1f592b193cc1cdf57d51329ac4a411ac4abb645a75ab4ec5b99"
+    },
+    {
+      "world": 18,
+      "sha256ExcludingReleaseVersion": "c638d138f9aca71dcb373f4232408157b5b0bd79b4808cc270f079667b957311"
+    },
+    {
+      "world": 19,
+      "sha256ExcludingReleaseVersion": "89b15965489491032067a585ba0e9f28ebfac6bc151116488b32c422a2d594d3"
+    },
+    {
+      "world": 20,
+      "sha256ExcludingReleaseVersion": "975d8ffe6d4f64cca4fec137ac21f1753cc82a3418f7abc1e7e74367231572db"
+    },
+    {
+      "world": 21,
+      "sha256ExcludingReleaseVersion": "1436978be414768b9d7d5eb270146a1b2a5de85d056a5768b6c459f62a66d96d"
+    },
+    {
+      "world": 22,
+      "sha256ExcludingReleaseVersion": "14b619ac089215b5bf1360658a7056519f3ab0e719fc25397588a8625702f459"
+    },
+    {
+      "world": 23,
+      "sha256ExcludingReleaseVersion": "09be59eca5fa347da795ece2cba62e07750ce293638857a4f1e97e04368aaf18"
+    },
+    {
+      "world": 24,
+      "sha256ExcludingReleaseVersion": "7cddd4fbbedc9f3e149fcbac8309ab0047d4d06eb18e2397258aaa609ad6a40a"
+    },
+    {
+      "world": 25,
+      "sha256ExcludingReleaseVersion": "8277bd1ddc3ff5718c2172456553c4c9293adf706d08dcfb9d4e5053ccefdd8c"
+    },
+    {
+      "world": 26,
+      "sha256ExcludingReleaseVersion": "f31ff46a67ead8bc46f460bd3fc4e9661fba2785067c59e6b3b92eedfa657b41"
+    },
+    {
+      "world": 27,
+      "sha256ExcludingReleaseVersion": "86001ed7f3c0a89291a074205382384abfecaa7932e8c43e3724eee23355435e"
+    },
+    {
+      "world": 28,
+      "sha256ExcludingReleaseVersion": "6185eec6b17a7b4bf3b513d83a5ecf393c2c0d1ed73ecd33142bf4f9b9ebfd1b"
+    },
+    {
+      "world": 29,
+      "sha256ExcludingReleaseVersion": "e8b62766b0678baefa68ce715c3b283c843dae1aebad23a151747798e07e4661"
+    },
+    {
+      "world": 30,
+      "sha256ExcludingReleaseVersion": "68548888f92110955a9800be3b535bde26bacad12f24e3dcac4dd44522fecbf3"
+    },
+    {
+      "world": 32,
+      "sha256ExcludingReleaseVersion": "da81bae2fdd1624df7647d09845ef8ec2f1c3590ecd0600f91e1d2d186462641"
+    },
+    {
+      "world": 35,
+      "sha256ExcludingReleaseVersion": "7f2bc288afdb095edd7ef5c14bce0da1ac1e7808c5df1ea00c43de1c0f951893"
+    },
+    {
+      "world": 37,
+      "sha256ExcludingReleaseVersion": "28ad81171e4d29eeeae92d8bd2f04d00399b919b03f1d2719ccb11fb68efc536"
+    },
+    {
+      "world": 38,
+      "sha256ExcludingReleaseVersion": "aede5c9a48abb9a46f202d5e9a48a68f3f6e0f57cbd62fb0afe2b8191a97be2f"
+    },
+    {
+      "world": 40,
+      "sha256ExcludingReleaseVersion": "2d5cdb6139afc64d0ae27982016a1f4e7a771a48da3071588ce1b0c7406ec0b9"
+    }
+  ],
+  "priorAudit": "campaign-integration-7.306-audit.json"
+}

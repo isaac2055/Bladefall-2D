@@ -94,7 +94,7 @@ export function continuousBank(source,w,{ordinary,superroom,cuts}){
  function tryPlace(chunk,prev,kind='direct'){
   if(++layoutAttempts>260)throw Error(`W${w.n}: layout budget reached at ${prev.sec.room} → ${chunk.main[0].room}`);
   const firstSec=chunk.main[0],first=restoreEntrance(defs.get(firstSec.room)),last=defs.get(prev.sec.room),snap=prev.snap;
-  const dir=last.exit||'right',sp=spawnOf(first),want=sp.c<(first.cols||40)/2?'right':'left';if(!first.connector&&['left','right'].includes(dir)&&dir!==want)return null;
+  const dir=last.exit||'right';if(first.campaignEntry&&dir!==first.campaignEntry)return null;const sp=spawnOf(first),want=sp.c<(first.cols||40)/2?'right':'left';if(!first.connector&&['left','right'].includes(dir)&&dir!==want)return null;
   if(['bank-f31','bank-f32'].includes(first.bankOrigin)&&dir!=='down')return null;
   for(let opt=0;opt<=27;opt++){
    const c=placeNext(last,prev.sec,first,snap,opt);if(!c)break;if(c.skip)continue;
@@ -131,7 +131,7 @@ export function continuousBank(source,w,{ordinary,superroom,cuts}){
   let pl=tryPlace(chunk,previous);if(pl){commit(chunk,pl);continue;}
   const last=defs.get(previous.sec.room),dir=last.exit||'right';let found=null;
   const nextDef=defs.get(chunk.main[0].room),want=spawnOf(nextDef).c<(nextDef.cols||40)/2?'right':'left';
-  const kinds=dir==='up'?[`up-${want}`]:dir==='down'?['drop-right']:[`fall-${want}`,`bend-${want}`,'rise-up','fall-down',`raise-${dir}`,`bridge-${dir}`];
+  const kinds=nextDef.campaignEntry==='down'&&['left','right'].includes(dir)?['fall-down']:dir==='up'?[`up-${want}`]:dir==='down'?['drop-right']:[`fall-${want}`,`bend-${want}`,'rise-up','fall-down',`raise-${dir}`,`bridge-${dir}`];
   for(const H of [8,16,28,44,68,100,144,208,300]){for(const kind of kinds){
    const cd=kind==='rise-up'||kind==='fall-down'?connectorVertical(dir,H,w.palette,kind==='fall-down'):kind.startsWith('fall-')?bend(dir,want,H,w.palette,true):kind.startsWith('bend-')?bend(dir,want,H,w.palette):kind==='drop-right'?edgeDrop(H,w.palette):kind.startsWith('up-')?bend('up',want,H,w.palette):connector(kind==='rise-up'?dir:kind,H,w.palette,last.lock);if(!cd)continue;
    const id=`cl${w.n}-walk-${index}-${++serial}`,tape=EXTRA_TAPES[cd.id],d={...cd,id,origin:id,name:'The Connecting Road',campaignWalk:true,entry:dir==='right'?'left':dir==='left'?'right':dir==='up'?'down':'up'};

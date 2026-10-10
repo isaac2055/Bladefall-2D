@@ -16,9 +16,10 @@
 'use strict';
 const C=()=>root.BladefallPrecisionCore,P=()=>root.BladefallPrecisionPortals;
 const hit=(a,b)=>C().overlap(a.x,a.y,a.w,a.h,b.x,b.y,b.w,b.h);
+// Optional c/r/height use tiles; shot and weak rows remain absolute room rows.
 function reset(g){
  const d=g.room.def.tyrant;g.tyrant=null;if(!d)return;
- g.tyrant={d,x:264,y:24,w:16,h:112,t:0,hits:0,need:d.hits||1,shots:[],retreat:0,gone:false,lane:d.shotRow,band:d.weakRow};g.parryable=true;
+ g.tyrant={d,x:(d.c??33)*8,y:(d.r??3)*8,w:16,h:(d.height??14)*8,t:0,hits:0,need:d.hits||1,shots:[],retreat:0,gone:false,lane:d.shotRow,band:d.weakRow};g.parryable=true;
  walk(g.tyrant);
  for(const e of g.ents)if(e.type==='gate')e.devKeyed=true;
 }
@@ -51,7 +52,7 @@ function after(g){
      // The ward flares as it walks: every bolt still in the air is spent (his and yours), so each return
      // after a walk is made on the new lane.
      for(const q of z.shots)if(q!==b)q.gone=true;Core.emit(g,'tyrant-walk',{x:z.x+8,y:z.lane*8,lane:z.lane,band:z.band});}}break;}
-   if(Core.solidAt(g,Math.round(b.x),Math.round(b.y),b.w,b.h)||b.x<-8||b.x>328||b.y<-8||b.y>192){b.gone=true;break;}
+   if(Core.solidAt(g,Math.round(b.x),Math.round(b.y),b.w,b.h)||b.x<-8||b.x>g.room.w+8||b.y<-8||b.y>g.room.h+8){b.gone=true;break;}
    if(p.state==='dead'||p.state==='respawn')continue;
    if(p.parryTimer>0&&hit(b,{x:p.x-5,y:p.y-5,w:p.w+10,h:p.h+10})){
     b.vx=Math.abs(b.vx)*(b.x>=p.x?1:-1);b.vy=-b.vy;Core.parrySuccess(g,p);Core.emit(g,'parry',{x:b.x,y:b.y});

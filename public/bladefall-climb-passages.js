@@ -107,7 +107,7 @@ function hub(w,id,name,main,connections,spawnSide){
  const crowded=['left','right'].some(edge=>connections.filter(l=>side(l,w.n)===edge).length+Number(main.edge===edge)>3);
  // A finale can leave far below row22 or through columns beyond the old 40-tile canvas.
  const vertical=main.edge==='down'||main.edge==='up';
- const cols=vertical?Math.max(40,...(main.cols||[]).map(c=>c+2)):({1:88,2:100,3:96,4:84,5:104,6:88,7:92,8:100,9:88}[w.n]||88),rows=Math.max(crowded?31:23,(main.floor||0)+2),mid=Math.floor(cols/2),g=grid(cols,rows);
+ const cols=vertical?Math.max(40,...(main.cols||[]).map(c=>c+2)):({1:88,2:100,3:96,4:84,5:104,6:88,7:92,8:100,9:88}[w.n]||88);let rows=Math.max(crowded?31:23,(main.floor||0)+2);const mid=Math.floor(cols/2),g=grid(cols,rows);
  const sockets=[],used={left:[],right:[]},roads=[],floor=Array(cols).fill(22);
  function opening(edge,y){
   if(edge==='down')return;
@@ -127,6 +127,9 @@ function hub(w,id,name,main,connections,spawnSide){
   if(y==null)throw new Error(`No road for ${w.n} ${l.id}`);
   opening(edge,y);sockets.push({edge,floor:y,kind:'passage',link:l.id,to:passageId(l),world:l.a});
  }
+ // A high finale mouth can reserve the usual branch heights, selecting row26
+ // even without four same-side roads. Grow only hubs whose selected road needs it.
+ const needed=Math.max(rows,...roads.map(road=>road.floor+2));while(g.length<needed)g.push(Array(cols).fill('#'));rows=needed;
  const decks=[];
  for(const road of roads){
   const points=road.points;

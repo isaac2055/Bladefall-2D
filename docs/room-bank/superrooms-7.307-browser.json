@@ -1,0 +1,401 @@
+{
+  "checkedAt": "2026-10-10T06:38:40.270Z",
+  "method": "Actual Chrome with production view, canonical saved input tapes, native completion events, room/camera bounds and three rendered checkpoints. Selected route evidence, not exhaustive shortcut proof.",
+  "results": [
+    {
+      "id": "bank-b72",
+      "exited": true,
+      "deaths": 0,
+      "frames": 920,
+      "eventCounts": {
+        "slab-glass": 7,
+        "slab-stone": 9,
+        "slab": 5,
+        "land": 9,
+        "slab-molten": 7,
+        "strike": 1,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "pickup": 1,
+        "weight-open": 1,
+        "plate": 1,
+        "throw": 1,
+        "lantern-land": 1,
+        "jump": 1,
+        "dash": 1,
+        "refill-dash": 1,
+        "zip-start": 1,
+        "zip-stop": 1,
+        "exit": 1
+      },
+      "missing": [],
+      "missingCounts": [],
+      "bounds": {
+        "w": 640,
+        "h": 304
+      },
+      "boss": {
+        "warden": null
+      },
+      "runtimeDevices": [],
+      "viewDevices": [],
+      "cameraTravel": {
+        "x": 320,
+        "y": 120
+      }
+    },
+    {
+      "id": "bank-b73",
+      "exited": true,
+      "deaths": 0,
+      "frames": 1344,
+      "eventCounts": {
+        "portal-pass": 4,
+        "enemy-shot": 6,
+        "tyrant-hit": 2,
+        "tyrant-walk": 1,
+        "jump": 2,
+        "dash": 1,
+        "land": 1,
+        "refill-dash": 1,
+        "portal-open": 1,
+        "tyrant-withdraw": 1,
+        "gate-open": 1,
+        "exit": 1
+      },
+      "missing": [],
+      "missingCounts": [],
+      "bounds": {
+        "w": 640,
+        "h": 288
+      },
+      "boss": {
+        "warden": null
+      },
+      "runtimeDevices": [],
+      "viewDevices": [],
+      "cameraTravel": {
+        "x": 312,
+        "y": 104
+      }
+    },
+    {
+      "id": "bank-b74",
+      "exited": true,
+      "deaths": 0,
+      "frames": 2342,
+      "eventCounts": {
+        "echo-place": 1,
+        "grab": 14,
+        "climbhop": 11,
+        "land": 18,
+        "walljump": 1,
+        "crown-seal": 3,
+        "crown-turn": 2,
+        "echo-swap": 2,
+        "enemy-shot": 2,
+        "enemy-hit": 2,
+        "jump": 1,
+        "gate-open": 1,
+        "exit": 1
+      },
+      "missing": [],
+      "missingCounts": [],
+      "bounds": {
+        "w": 640,
+        "h": 304
+      },
+      "boss": {
+        "warden": null
+      },
+      "runtimeDevices": [],
+      "viewDevices": [],
+      "cameraTravel": {
+        "x": 320,
+        "y": 120
+      }
+    },
+    {
+      "id": "bank-b75",
+      "exited": true,
+      "deaths": 0,
+      "frames": 1325,
+      "eventCounts": {
+        "grab": 6,
+        "climbhop": 6,
+        "land": 15,
+        "hook": 3,
+        "unhook": 3,
+        "strike": 3,
+        "hydra-lock": 3,
+        "hydra-drag": 2,
+        "enemy-shot": 3,
+        "enemy-hit": 3,
+        "jump": 1,
+        "hydra-free": 1,
+        "gate-open": 1,
+        "exit": 1
+      },
+      "missing": [],
+      "missingCounts": [],
+      "bounds": {
+        "w": 640,
+        "h": 304
+      },
+      "boss": {
+        "warden": null
+      },
+      "runtimeDevices": [],
+      "viewDevices": [],
+      "cameraTravel": {
+        "x": 320,
+        "y": 120
+      }
+    },
+    {
+      "id": "bank-b76",
+      "exited": true,
+      "deaths": 0,
+      "frames": 900,
+      "eventCounts": {
+        "jump": 1,
+        "hook": 1,
+        "unhook": 1,
+        "dash": 1,
+        "land": 2,
+        "refill-dash": 1,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "strike": 1,
+        "pickup": 1,
+        "splash": 1,
+        "weight-open": 1,
+        "plate": 1,
+        "throw": 1,
+        "lantern-land": 1,
+        "exit": 1
+      },
+      "missing": [],
+      "missingCounts": [],
+      "bounds": {
+        "w": 640,
+        "h": 304
+      },
+      "boss": {
+        "warden": null
+      },
+      "runtimeDevices": [],
+      "viewDevices": [],
+      "cameraTravel": {
+        "x": 320,
+        "y": 120
+      }
+    },
+    {
+      "id": "bank-f73",
+      "exited": true,
+      "deaths": 0,
+      "frames": 2783,
+      "eventCounts": {
+        "fault-crack": 1,
+        "fault-fall": 78,
+        "jump": 6,
+        "strike": 10,
+        "cast": 5,
+        "colossus-gather": 7,
+        "land": 13,
+        "colossus-pour": 7,
+        "colossus-refuse": 3,
+        "dash": 8,
+        "grab": 8,
+        "refill-dash": 8,
+        "refill": 3,
+        "climbhop": 5,
+        "refill-back": 3,
+        "fault-back": 78,
+        "anvil": 3,
+        "guard-block": 2,
+        "walljump": 3,
+        "gate-open": 1,
+        "colossus-down": 1,
+        "exit": 1
+      },
+      "missing": [],
+      "missingCounts": [],
+      "bounds": {
+        "w": 640,
+        "h": 288
+      },
+      "boss": {
+        "warden": null
+      },
+      "runtimeDevices": [],
+      "viewDevices": [],
+      "cameraTravel": {
+        "x": 320,
+        "y": 104
+      }
+    },
+    {
+      "id": "bank-f74",
+      "exited": true,
+      "deaths": 0,
+      "frames": 2133,
+      "eventCounts": {
+        "portal-open": 3,
+        "enemy-shot": 12,
+        "portal-pass": 6,
+        "tyrant-hit": 3,
+        "tyrant-walk": 2,
+        "jump": 6,
+        "land": 6,
+        "zip-start": 2,
+        "zip-stop": 2,
+        "dash": 5,
+        "refill-dash": 5,
+        "zip-home": 2,
+        "tyrant-withdraw": 1,
+        "gate-open": 1,
+        "exit": 1
+      },
+      "missing": [],
+      "missingCounts": [],
+      "bounds": {
+        "w": 576,
+        "h": 320
+      },
+      "boss": {
+        "warden": null
+      },
+      "runtimeDevices": [],
+      "viewDevices": [],
+      "cameraTravel": {
+        "x": 256,
+        "y": 136
+      }
+    },
+    {
+      "id": "bank-f75",
+      "exited": true,
+      "deaths": 0,
+      "frames": 877,
+      "eventCounts": {
+        "echo-place": 1,
+        "grab": 3,
+        "climbhop": 3,
+        "strike": 2,
+        "anvil": 2,
+        "dash": 8,
+        "land": 9,
+        "refill-dash": 8,
+        "jump": 6,
+        "enemy-shot": 3,
+        "fault-crack": 2,
+        "fault-fall": 12,
+        "crown-seal": 3,
+        "crown-turn": 2,
+        "echo-swap": 2,
+        "enemy-hit": 3,
+        "fault-back": 12,
+        "gate-open": 1,
+        "exit": 1
+      },
+      "missing": [],
+      "missingCounts": [],
+      "bounds": {
+        "w": 640,
+        "h": 288
+      },
+      "boss": {
+        "warden": null
+      },
+      "runtimeDevices": [],
+      "viewDevices": [],
+      "cameraTravel": {
+        "x": 320,
+        "y": 104
+      }
+    },
+    {
+      "id": "bank-f76",
+      "exited": true,
+      "deaths": 0,
+      "frames": 1316,
+      "eventCounts": {
+        "jump": 7,
+        "grab": 6,
+        "climbhop": 5,
+        "enemy-shot": 7,
+        "land": 9,
+        "enemy-hit": 7,
+        "hook": 5,
+        "unhook": 5,
+        "strike": 3,
+        "hydra-lock": 3,
+        "hydra-drag": 2,
+        "dash": 2,
+        "void-in": 2,
+        "refill-dash": 2,
+        "void-out": 2,
+        "parry-ready": 1,
+        "parry": 1,
+        "hydra-free": 1,
+        "gate-open": 1,
+        "exit": 1
+      },
+      "missing": [],
+      "missingCounts": [],
+      "bounds": {
+        "w": 720,
+        "h": 288
+      },
+      "boss": {
+        "warden": null
+      },
+      "runtimeDevices": [],
+      "viewDevices": [],
+      "cameraTravel": {
+        "x": 400,
+        "y": 104
+      }
+    },
+    {
+      "id": "bank-f77",
+      "exited": true,
+      "deaths": 0,
+      "frames": 1195,
+      "eventCounts": {
+        "shutter-shut": 7,
+        "jump": 14,
+        "phase": 14,
+        "dash": 14,
+        "land": 15,
+        "refill-dash": 14,
+        "ultra": 1,
+        "hyper": 1,
+        "shutter-open": 6,
+        "strike": 2,
+        "mirror": 2,
+        "stone-lit": 1,
+        "gate-open": 1,
+        "exit": 1
+      },
+      "missing": [],
+      "missingCounts": [],
+      "bounds": {
+        "w": 640,
+        "h": 320
+      },
+      "boss": {
+        "warden": null
+      },
+      "runtimeDevices": [],
+      "viewDevices": [],
+      "cameraTravel": {
+        "x": 320,
+        "y": 136
+      }
+    }
+  ],
+  "errors": []
+}

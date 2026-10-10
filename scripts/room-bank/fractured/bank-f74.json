@@ -1,0 +1,298 @@
+{
+  "room": {
+    "id": "bank-f74",
+    "name": "Carry His Answer Upward",
+    "cols": 72,
+    "rows": 40,
+    "map": [
+      "########################################################################",
+      "#..................................................................G...#",
+      "#..................................................................G...#",
+      "#...................................%..............................G...#",
+      "#...................................%..............................G...#",
+      "#...................................%..............................G...#",
+      "#...................................%..............................G...#",
+      "#...................................%..............................G...#",
+      "#...................................%..............................G....",
+      "#...................................%..............................G....",
+      "#...................................%..............................G....",
+      "#...................................%....................#######...G....",
+      "#...................................%........#######..............######",
+      "#......................................................................#",
+      "#..............%.......................................................#",
+      "#..............%.......................................................#",
+      "#..............%.......................................................#",
+      "#..............%.......................................................#",
+      "#..............%.......................................................#",
+      "#..............%.......................................................#",
+      "#..............%.......................................................#",
+      "#..............%.......................................................#",
+      "#..............%.......................................................#",
+      "#..............%.......................................................#",
+      "#.....................######..........ZZZZZ............................#",
+      "#......................................................................#",
+      "#%.....................................................................#",
+      "#%.....................................................................#",
+      "#%..........................#####......................................#",
+      "#%.....................................................................#",
+      "#%.....................................................................#",
+      "#%.....................................................................#",
+      "#%.....................................................................#",
+      "#%.....................................................................#",
+      "#%.....................................................................#",
+      "#%..P..................................................................#",
+      "#%############...ZZZZZ.................................................#",
+      "##############.........................................................#",
+      "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+      "########################################################################"
+    ],
+    "palette": "fractured",
+    "movement": "survive-2",
+    "aim8": true,
+    "study": true,
+    "rbr": 33,
+    "exit": "right",
+    "portalMode": "one",
+    "portals": [
+      {
+        "color": "orange",
+        "c": 1,
+        "r": 34,
+        "face": "r"
+      }
+    ],
+    "zips": [
+      [
+        0,
+        -12
+      ],
+      [
+        0,
+        -12
+      ]
+    ],
+    "tyrant": {
+      "c": 65,
+      "r": 3,
+      "height": 31,
+      "shotRow": 34,
+      "weakRow": 32,
+      "hits": 3,
+      "final": true,
+      "lanes": [
+        34,
+        34,
+        34
+      ],
+      "bands": [
+        32,
+        18,
+        8
+      ],
+      "every": 130,
+      "first": 60
+    },
+    "hint": "His low shot always enters the same door. Carry your answer upward: each rising band needs a higher portal wall.",
+    "question": "Can the same low bolt reach three different heights while you climb its return route?"
+  },
+  "bank": {
+    "side": "fractured",
+    "batch": 19,
+    "run": 10,
+    "collection": "superrooms",
+    "format": "superroom",
+    "acceptance": "candidate",
+    "needsReview": true,
+    "difficulty": 4,
+    "worlds": [
+      33
+    ],
+    "tags": [
+      "superroom",
+      "tyrant",
+      "portal",
+      "lift",
+      "shared-projectile"
+    ],
+    "status": "route-proven",
+    "author": "Codex",
+    "newMechanics": [],
+    "role": "native Tyrant boss superroom",
+    "approvedIngredients": [
+      "bank-f68",
+      "bank-f70"
+    ],
+    "interconnection": "The same low firing lane feeds one fixed receiver throughout the fight. Ascending carriers carry the knight to three separate pale return walls; each reflected band is visibly higher on the same towering Tyrant.",
+    "solution": "Send the first low shot through the fixed door and a low return portal. Ride the lower carrier to reach the middle return wall. Cross the offset rest onto the upper carrier and aim at the high return wall. After three native returns, cross the broad crown ledges.",
+    "novelty": "One unchanged incoming projectile is reused through three rising exits; the boss is a single full-height target shared by every route height.",
+    "nearestExisting": "Native Tyrant ward alignment with F68 route-restriction and F70 one-boss multilevel arena.",
+    "requiredEvents": [
+      "tyrant-hit",
+      "tyrant-walk",
+      "tyrant-withdraw",
+      "zip-start",
+      "portal-pass"
+    ],
+    "requiredEventCounts": {
+      "tyrant-hit": 3
+    },
+    "endingForgiveness": "Three broad crown ledges and no live boss projectiles after the last return.",
+    "shortcutChecks": [
+      {
+        "name": "Stay below with the first return door",
+        "tape": [
+          [
+            1,
+            "luq"
+          ],
+          [
+            1200,
+            ""
+          ]
+        ]
+      }
+    ],
+    "positiveChecks": [],
+    "evidenceNotes": [
+      {
+        "name": "All three native portal returns",
+        "frames": 2133,
+        "deaths": 0,
+        "hits": 3
+      },
+      {
+        "name": "Late final crossing",
+        "result": "The canonical route waits 400+ frames after native withdrawal on the last broad shelf before finishing."
+      },
+      {
+        "name": "Stay below and keep the first return door",
+        "result": "Only first band breaks; no exit",
+        "hits": 1,
+        "exited": false,
+        "deaths": 0
+      }
+    ]
+  },
+  "tape": [
+    [
+      1,
+      "luq"
+    ],
+    [
+      170,
+      ""
+    ],
+    [
+      430,
+      ""
+    ],
+    [
+      40,
+      "r"
+    ],
+    [
+      18,
+      "rj"
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      55,
+      ""
+    ],
+    [
+      12,
+      "j"
+    ],
+    [
+      1,
+      "luq"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      17,
+      "r"
+    ],
+    [
+      560,
+      ""
+    ],
+    [
+      10,
+      "r"
+    ],
+    [
+      18,
+      "rj"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      22,
+      "r"
+    ],
+    [
+      40,
+      ""
+    ],
+    [
+      1,
+      "luq"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      16,
+      "r"
+    ],
+    [
+      560,
+      ""
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      18,
+      "rj"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      13,
+      "r"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      18,
+      "rj"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      40,
+      "r"
+    ]
+  ]
+}

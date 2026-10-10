@@ -832,7 +832,7 @@ function togglePause(){
  ${hasTape?'<button class="pcBtn ghost" id="pcWatch">Watch the intended route (review)</button>':''}
  ${backPassage?'<button class="pcBtn ghost" id="pcReturnPassage">Return through passage</button>':''}
  <p class="pcSub">Room select${optional?' · O = optional route':''}</p><div class="pcMiniRow">${rooms}${optional}</div>
- ${skipInfo?`<button class="pcBtn ghost" id="pcSkipSection" ${skipInfo.allowed?'':'disabled'}>Skip section · ${skipInfo.remaining} left</button>${!skipInfo.allowed?`<p class="pcSub">${skipInfo.reason||'This section cannot be skipped.'}</p>`:''}`:''}
+ ${skipInfo?`<button class="pcBtn ghost" id="pcSkipSection" ${skipInfo.allowed?'':'disabled'}>Skip ${skipInfo.finale?'finale':'section'} · costs ${skipInfo.cost} · ${skipInfo.remaining} left</button>${!skipInfo.allowed?`<p class="pcSub">${skipInfo.reason||'This section cannot be skipped.'}</p>`:''}`:''}
  ${ch.climb&&!view.trial?'<button class="pcBtn ghost" id="pcChapters">World map</button>':''}
  <button class="pcBtn ghost" id="pcCtl">Controls</button><button class="pcBtn ghost" id="pcAssist">Assist &amp; options</button>${view.trial?'<button class="pcBtn ghost" id="pcLeave">Leave the gate (you keep the levels you finished)</button>':!ch.climb?'<button class="pcBtn ghost" id="pcChapters">Chapters</button>':''}
  ${ch.climb?'<a class="pcBtn ghost" href="index.html">Return to title menu</a>':''}</div>`);
