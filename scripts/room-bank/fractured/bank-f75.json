@@ -1,9 +1,9 @@
 {
   "room": {
     "id": "bank-f75",
-    "name": "Leave Yourself Where He Looks Next",
+    "name": "He Looks Where You Left Yourself",
     "cols": 80,
-    "rows": 36,
+    "rows": 40,
     "map": [
       "################################################################################",
       "#..............................................................................#",
@@ -16,31 +16,35 @@
       "#..............................................................................#",
       "#..............................................................................#",
       "#..............................................................................#",
+      "#..................O...........................................................#",
       "#..............................................................................#",
       "#..............................................................................#",
-      "#.............................######...........................................#",
+      "#.........#######..............................................................#",
+      "#..............................................................................#",
+      "#...............................VVVVVVVVVVVVVVVVVVV......VVV...................#",
+      "#...............................VVVVVVVVVVVVVVVVVVV....O.VVV...................#",
+      "#........................................................VVV...................#",
+      "#........................................................VVV...................#",
+      "#..............................................................................#",
+      "#.............................................................#########........#",
+      "#.................#############................................................#",
+      "#...................................................TTTT.......................#",
       "#..............................................................................#",
       "#..............................................................................#",
-      "#...................#######....................................................#",
-      "#.........................................######...............................#",
+      "#.............................................TTTT.............................#",
+      "#.........................................................######################",
+      "#..............................................................................#",
+      "#.......................................TTTT...................................#",
       "#..............................................................................#",
       "#..............................................................................#",
-      "#..............................................................................#",
-      "#..............................................................................#",
-      "#..............................................................................#",
-      "#..............................................................................#",
-      "#..............................................................................#",
-      "#............................#########.........................................#",
-      "#.........................................................#################....#",
-      "#.............................................TTTTTT......#################....#",
-      "#.........................................................#################....#",
-      "#.........................................................#################....#",
-      "#.........................................................#################....#",
-      "#.....P.......N...........................................#################....#",
-      "##GGGG############........................................#################....#",
-      "##....############........................................#################....#",
-      "#^....^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
-      "##....##########################################################################"
+      "#...........................#########..........................................#",
+      "#...........P...............#########..........................................#",
+      "##GGGGG##################...#########..........................................#",
+      "##.....##################...#########..........................................#",
+      "##.....##################...#########..........................................#",
+      "##.....##################...#########..........................................#",
+      "##.....##################^^^#########^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+      "##.....#########################################################################"
     ],
     "palette": "fractured",
     "movement": "survive-2",
@@ -50,54 +54,38 @@
     "exit": "down",
     "echo": true,
     "fault": {
-      "fuse": 25,
-      "spread": 12,
-      "rest": 220
+      "fuse": 30,
+      "spread": 10,
+      "rest": 150
     },
-    "crown": {
-      "marks": [
+    "court": {
+      "aim": "echo",
+      "thrones": [
         {
-          "c": 6,
+          "c": 32,
           "r": 31
         },
         {
-          "c": 61,
-          "r": 25
+          "c": 66,
+          "r": 20
+        },
+        {
+          "c": 13,
+          "r": 13,
+          "volley": 2,
+          "gap": 12
         }
       ],
-      "echoOnly": true,
-      "hold": 12,
-      "king": true,
-      "phases": [
-        [
-          [
-            61,
-            25
-          ],
-          [
-            32,
-            12
-          ]
-        ],
-        [
-          [
-            32,
-            12
-          ],
-          [
-            6,
-            31
-          ]
-        ]
-      ],
-      "bolts": {
-        "every": 220,
-        "first": 200,
-        "speed": 80
-      }
+      "first": 50,
+      "every": 90,
+      "speed": 70,
+      "guard": 44,
+      "slamTell": 36,
+      "stun": 60,
+      "back": 360
     },
-    "hint": "Each seal chooses a different pair. Leave your echo at the old answer, then exchange places to approach the next one.",
-    "question": "Which of your two positions will the crown demand next?"
+    "hint": "He throws at your echo, not at you. Leave it inside his ring, trade in once his bolt is flying, and parry it home.",
+    "question": "Who does the King watch once you have left yourself behind?"
   },
   "bank": {
     "side": "fractured",
@@ -105,143 +93,98 @@
     "run": 10,
     "collection": "superrooms",
     "format": "superroom",
-    "acceptance": "candidate",
+    "acceptance": "revised",
     "needsReview": true,
-    "difficulty": 3,
+    "difficulty": 4,
     "worlds": [
       34
     ],
     "tags": [
       "superroom",
-      "crown",
+      "native-king",
       "echo",
-      "anvil",
+      "court",
       "fault",
-      "return"
+      "void",
+      "return-route"
     ],
     "status": "route-proven",
-    "author": "Codex",
+    "author": "Claude",
     "newMechanics": [],
-    "role": "native Abyss King boss superroom",
-    "approvedIngredients": [
-      "bank-f45",
-      "bank-f70"
-    ],
-    "interconnection": "Three royal seals pair the starting court, the far balcony and the high central lookout in a cycle. An echo swap changes both the held mark and the player’s departure, sending the knight through the same bowl at different heights rather than into another chamber.",
-    "solution": "Leave an echo on the home mark and cross the basin from its anvil to the far balcony. After the first seal, exchange to home while the echo keeps the balcony. Use the same anvil for a higher launch onto the central lookout. Exchange there to leave the high mark occupied, then cross back from the far side to home for the third seal.",
-    "novelty": "Every exchange solves the positional problem for the next phase but puts the player at the wrong departure; the same anvil must support a long outward launch and a higher central return.",
-    "nearestExisting": "F45 echo departure geometry and F70 one shared multilevel court, using the native King’s actual phased paired seals.",
+    "interconnection": "The echo is both the target that draws his bolt and the doorway inside his uncrossable ring, so one trade answers both. Fault stone and the dash voids decide where you can wait while he aims at the echo.",
+    "solution": "He throws at your echo, not at you. Walk onto his dais, leave the echo inside his guard and dash back before he slams. When his bolt leaves his hand, trade into the echo and parry it home: he kneels and you are already inside his ring, so cut. Climb the fault stair as it cracks and void-dash past his ledge, leaving the echo in mid-flight; drop to the ledge below and trade in as his bolt flies. Ride the long void back west, swing up beside his last throne, leave the echo and dash clear; trade in on his throw, parry, step in and cut. Walk home after he falls.",
+    "novelty": "The Fractured King targets your reflection; catching the bolt meant for it is the attack.",
+    "nearestExisting": "Mirror of B74’s court: there you plant beside him and parry from afar, here you parry beside him because he looks at the echo.",
     "requiredEvents": [
       "echo-place",
       "echo-swap",
-      "anvil",
-      "crown-seal",
-      "crown-turn"
+      "court-kneel",
+      "court-wound",
+      "court-fall",
+      "void-in",
+      "fault-crack"
     ],
     "requiredEventCounts": {
-      "crown-seal": 3,
-      "echo-swap": 2
+      "court-wound": 3,
+      "echo-swap": 3
     },
-    "endingForgiveness": "The final seal stands on the large starting platform; a wide gate opens in its floor for a safe homeward drop.",
-    "positiveChecks": [
+    "endingForgiveness": "A wide gate in the home floor; nothing fires after he falls.",
+    "positiveChecks": [],
+    "shortcutChecks": [
       {
-        "name": "Extra60-frame pause before homeward drop",
+        "name": "No echo",
         "tape": [
           [
-            1,
-            "q"
+            3,
+            "l"
           ],
           [
             38,
-            "r"
-          ],
-          [
-            18,
-            "rgu"
-          ],
-          [
-            4,
             ""
           ],
           [
-            1,
-            "ds"
-          ],
-          [
-            26,
+            59,
             "r"
           ],
           [
-            5,
-            "rx"
-          ],
-          [
-            34,
-            "r"
-          ],
-          [
-            20,
-            ""
-          ],
-          [
-            35,
-            "r"
-          ],
-          [
-            18,
+            10,
             "rj"
-          ],
-          [
-            5,
-            "rx"
-          ],
-          [
-            20,
-            "r"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            18,
-            "rj"
-          ],
-          [
-            5,
-            "rx"
           ],
           [
             21,
             "r"
           ],
           [
-            30,
+            1,
             ""
           ],
           [
-            9,
-            "r"
+            4,
+            "lj"
+          ],
+          [
+            1,
+            "lx"
           ],
           [
             20,
+            "l"
+          ],
+          [
+            55,
             ""
           ],
           [
             1,
-            "q"
-          ],
-          [
-            5,
             ""
           ],
           [
-            38,
-            "r"
+            1,
+            ""
           ],
           [
-            18,
-            "rgu"
+            1,
+            "p"
           ],
           [
             4,
@@ -249,157 +192,70 @@
           ],
           [
             1,
-            "ds"
+            "rs"
           ],
           [
-            26,
-            "r"
-          ],
-          [
-            5,
-            "ux"
-          ],
-          [
-            25,
-            "r"
-          ],
-          [
-            20,
+            27,
             ""
-          ],
-          [
-            18,
-            "rj"
-          ],
-          [
-            5,
-            "rx"
-          ],
-          [
-            12,
-            "r"
-          ],
-          [
-            20,
-            ""
-          ],
-          [
-            1,
-            "q"
-          ],
-          [
-            18,
-            "lj"
-          ],
-          [
-            5,
-            "lx"
-          ],
-          [
-            18,
-            "l"
           ],
           [
             10,
-            ""
-          ],
-          [
-            12,
-            "l"
-          ],
-          [
-            18,
-            "lj"
-          ],
-          [
-            5,
-            "lx"
-          ],
-          [
-            24,
-            "l"
-          ],
-          [
-            15,
-            ""
-          ],
-          [
-            24,
-            "l"
-          ],
-          [
-            18,
-            "lj"
-          ],
-          [
-            5,
-            "lx"
-          ],
-          [
-            35,
-            "l"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            7,
-            "l"
-          ],
-          [
-            28,
-            "lgu"
-          ],
-          [
-            32,
-            "l"
-          ],
-          [
-            20,
-            ""
+            "rj"
           ],
           [
             60,
-            ""
-          ],
-          [
-            32,
-            "l"
-          ]
-        ]
-      }
-    ],
-    "shortcutChecks": [
-      {
-        "name": "Follow traversal without an echo",
-        "tape": [
-          [
-            1,
-            ""
-          ],
-          [
-            38,
             "r"
           ],
           [
-            18,
-            "rgu"
+            12,
+            "rj"
           ],
           [
-            4,
-            ""
-          ],
-          [
-            1,
-            "ds"
-          ],
-          [
-            26,
+            12,
             "r"
           ],
           [
-            5,
+            12,
+            "rj"
+          ],
+          [
+            16,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            8,
+            "r"
+          ],
+          [
+            12,
+            "rj"
+          ],
+          [
+            3,
+            "r"
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            20,
+            "r"
+          ],
+          [
+            1,
+            "r"
+          ],
+          [
+            2,
+            "r"
+          ],
+          [
+            1,
             "rx"
           ],
           [
@@ -407,51 +263,7 @@
             "r"
           ],
           [
-            20,
-            ""
-          ],
-          [
-            35,
-            "r"
-          ],
-          [
-            18,
-            "rj"
-          ],
-          [
-            5,
-            "rx"
-          ],
-          [
-            20,
-            "r"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            18,
-            "rj"
-          ],
-          [
-            5,
-            "rx"
-          ],
-          [
-            21,
-            "r"
-          ],
-          [
-            30,
-            ""
-          ],
-          [
-            9,
-            "r"
-          ],
-          [
-            20,
+            46,
             ""
           ],
           [
@@ -459,16 +271,12 @@
             ""
           ],
           [
-            5,
+            1,
             ""
           ],
           [
-            38,
-            "r"
-          ],
-          [
-            18,
-            "rgu"
+            1,
+            "p"
           ],
           [
             4,
@@ -476,38 +284,66 @@
           ],
           [
             1,
-            "ds"
+            "rs"
+          ],
+          [
+            45,
+            ""
+          ],
+          [
+            4,
+            "l"
+          ],
+          [
+            12,
+            "lj"
           ],
           [
             26,
-            "r"
+            "ulg"
           ],
           [
-            5,
-            "ux"
+            1,
+            "lx"
           ],
           [
-            25,
-            "r"
+            45,
+            "l"
           ],
           [
             20,
             ""
           ],
           [
-            18,
+            10,
             "rj"
           ],
           [
-            5,
-            "rx"
-          ],
-          [
-            12,
-            "r"
+            4,
+            "lg"
           ],
           [
             20,
+            "ulg"
+          ],
+          [
+            9,
+            "lj"
+          ],
+          [
+            1,
+            "lj"
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            34,
+            "r"
+          ],
+          [
+            42,
             ""
           ],
           [
@@ -515,79 +351,27 @@
             ""
           ],
           [
-            18,
-            "lj"
+            1,
+            "p"
           ],
           [
-            5,
-            "lx"
-          ],
-          [
-            18,
-            "l"
-          ],
-          [
-            10,
+            2,
             ""
           ],
           [
-            12,
+            4,
             "l"
           ],
           [
-            18,
-            "lj"
-          ],
-          [
-            5,
-            "lx"
-          ],
-          [
-            24,
-            "l"
-          ],
-          [
-            15,
-            ""
-          ],
-          [
-            24,
-            "l"
-          ],
-          [
-            18,
-            "lj"
-          ],
-          [
-            5,
-            "lx"
-          ],
-          [
-            35,
-            "l"
-          ],
-          [
-            12,
-            ""
-          ],
-          [
-            7,
-            "l"
-          ],
-          [
-            28,
-            "lgu"
-          ],
-          [
-            32,
-            "l"
+            1,
+            "ls"
           ],
           [
             20,
             ""
           ],
           [
-            32,
+            200,
             "l"
           ]
         ]
@@ -595,37 +379,69 @@
     ],
     "evidenceNotes": [
       {
-        "name": "Native three seals and two echo exchanges",
-        "frames": 885,
-        "deaths": 0,
-        "seals": 3
-      },
-      {
-        "name": "Extra60-frame final pause",
-        "frames": 945,
+        "name": "Canonical 7.308 route",
+        "frames": 944,
         "deaths": 0
-      },
-      {
-        "name": "Follow traversal without ever making an echo",
-        "result": "Native paired seal never clears; no exit",
-        "seals": 0,
-        "exited": false,
-        "deaths": 1
       }
+    ],
+    "humanReview": "Reinvented 7.308 from feedback; awaiting human review.",
+    "approvedIngredients": [
+      "bank-f45",
+      "bank-f70"
     ]
   },
   "tape": [
+    [
+      3,
+      "l"
+    ],
+    [
+      38,
+      ""
+    ],
+    [
+      59,
+      "r"
+    ],
+    [
+      10,
+      "rj"
+    ],
+    [
+      21,
+      "r"
+    ],
     [
       1,
       "q"
     ],
     [
-      38,
-      "r"
+      4,
+      "lj"
     ],
     [
-      18,
-      "rgu"
+      1,
+      "lx"
+    ],
+    [
+      20,
+      "l"
+    ],
+    [
+      55,
+      ""
+    ],
+    [
+      1,
+      "q"
+    ],
+    [
+      1,
+      ""
+    ],
+    [
+      1,
+      "p"
     ],
     [
       4,
@@ -633,14 +449,70 @@
     ],
     [
       1,
-      "ds"
+      "rs"
     ],
     [
-      26,
+      27,
+      ""
+    ],
+    [
+      10,
+      "rj"
+    ],
+    [
+      60,
       "r"
     ],
     [
-      5,
+      12,
+      "rj"
+    ],
+    [
+      12,
+      "r"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      16,
+      "r"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      8,
+      "r"
+    ],
+    [
+      12,
+      "rj"
+    ],
+    [
+      3,
+      "r"
+    ],
+    [
+      1,
+      "rx"
+    ],
+    [
+      20,
+      "r"
+    ],
+    [
+      1,
+      "rq"
+    ],
+    [
+      2,
+      "r"
+    ],
+    [
+      1,
       "rx"
     ],
     [
@@ -648,51 +520,7 @@
       "r"
     ],
     [
-      20,
-      ""
-    ],
-    [
-      35,
-      "r"
-    ],
-    [
-      18,
-      "rj"
-    ],
-    [
-      5,
-      "rx"
-    ],
-    [
-      20,
-      "r"
-    ],
-    [
-      12,
-      ""
-    ],
-    [
-      18,
-      "rj"
-    ],
-    [
-      5,
-      "rx"
-    ],
-    [
-      21,
-      "r"
-    ],
-    [
-      30,
-      ""
-    ],
-    [
-      9,
-      "r"
-    ],
-    [
-      20,
+      46,
       ""
     ],
     [
@@ -700,16 +528,12 @@
       "q"
     ],
     [
-      5,
+      1,
       ""
     ],
     [
-      38,
-      "r"
-    ],
-    [
-      18,
-      "rgu"
+      1,
+      "p"
     ],
     [
       4,
@@ -717,38 +541,66 @@
     ],
     [
       1,
-      "ds"
+      "rs"
+    ],
+    [
+      45,
+      ""
+    ],
+    [
+      4,
+      "l"
+    ],
+    [
+      12,
+      "lj"
     ],
     [
       26,
-      "r"
+      "ulg"
     ],
     [
-      5,
-      "ux"
+      1,
+      "lx"
     ],
     [
-      25,
-      "r"
+      45,
+      "l"
     ],
     [
       20,
       ""
     ],
     [
-      18,
+      10,
       "rj"
     ],
     [
-      5,
-      "rx"
-    ],
-    [
-      12,
-      "r"
+      4,
+      "lg"
     ],
     [
       20,
+      "ulg"
+    ],
+    [
+      9,
+      "lj"
+    ],
+    [
+      1,
+      "ljq"
+    ],
+    [
+      1,
+      "rx"
+    ],
+    [
+      34,
+      "r"
+    ],
+    [
+      42,
       ""
     ],
     [
@@ -756,79 +608,27 @@
       "q"
     ],
     [
-      18,
-      "lj"
+      1,
+      "p"
     ],
     [
-      5,
-      "lx"
-    ],
-    [
-      18,
-      "l"
-    ],
-    [
-      10,
+      2,
       ""
     ],
     [
-      12,
+      4,
       "l"
     ],
     [
-      18,
-      "lj"
-    ],
-    [
-      5,
-      "lx"
-    ],
-    [
-      24,
-      "l"
-    ],
-    [
-      15,
-      ""
-    ],
-    [
-      24,
-      "l"
-    ],
-    [
-      18,
-      "lj"
-    ],
-    [
-      5,
-      "lx"
-    ],
-    [
-      35,
-      "l"
-    ],
-    [
-      12,
-      ""
-    ],
-    [
-      7,
-      "l"
-    ],
-    [
-      28,
-      "lgu"
-    ],
-    [
-      32,
-      "l"
+      1,
+      "ls"
     ],
     [
       20,
       ""
     ],
     [
-      32,
+      200,
       "l"
     ]
   ]

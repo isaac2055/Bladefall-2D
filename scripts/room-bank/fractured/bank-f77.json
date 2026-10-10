@@ -79,9 +79,9 @@
     "run": 10,
     "collection": "superrooms",
     "format": "superroom",
-    "acceptance": "candidate",
-    "needsReview": true,
-    "difficulty": 4,
+    "acceptance": "banked",
+    "needsReview": false,
+    "difficulty": 3,
     "role": "interconnected Path finale",
     "worlds": [
       39
@@ -97,7 +97,7 @@
     "newMechanics": [],
     "status": "route-proven",
     "author": "Codex",
-    "humanReview": "Awaiting fun/difficulty/suitability review.",
+    "humanReview": "Approved by the user after the 7.307.1 review. User-rated difficulty 3/5; mid-Fractured placement.",
     "requiredEvents": [
       "mirror",
       "stone-lit",
@@ -687,7 +687,8 @@
       "bank-b46",
       "bank-f26"
     ],
-    "ingredientNotes": "B46 supplies a turned mirror sending a timed beam into a sealed receiver; F26 supplies preserving the remaining dash so its phase landing stays real. F77 stretches those decisions across a single rerouted light shaft and return gallery."
+    "ingredientNotes": "B46 supplies a turned mirror sending a timed beam into a sealed receiver; F26 supplies preserving the remaining dash so its phase landing stays real. F77 stretches those decisions across a single rerouted light shaft and return gallery.",
+    "placement": "Mid-Fractured"
   },
   "tape": [
     [

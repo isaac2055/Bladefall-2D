@@ -306,7 +306,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 </script>
 <script src="bladefall-playtest-worlds.js?v=7.304.0"></script>
 <script src="bladefall-playtest-model.js?v=7.304.0"></script>
-<script src="bladefall-playtest.js?v=7.307.1"></script>
+<script src="bladefall-playtest.js?v=7.308.0"></script>
 <script src="bladefall-harness.js"></script>
 <script src="bladefall-core.js"></script>
 <script src="bladefall-simulation.js"></script>
@@ -353,7 +353,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-foundation-audit.js"></script>
 <script src="bladefall-cinematics.js"></script>
 <script src="bladefall-storage.js"></script>
-<script src="bladefall-touch-layout.js?v=7.307.1"></script>
+<script src="bladefall-touch-layout.js?v=7.308.0"></script>
 <script src="bladefall-input.js?v=7.304.0"></script>
 <script src="bladefall-content.js"></script>
 <script src="bladefall-presentation.js"></script>
@@ -376,7 +376,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-palace-path-art.js?v=7.201.0"></script>
 <script src="bladefall-sunspire.js?v=7.231.0"></script>
 <script src="bladefall-sunspire-art.js?v=7.231.0"></script>
-<script src="bladefall-rift-shards.js?v=7.307.1"></script>
+<script src="bladefall-rift-shards.js?v=7.308.0"></script>
 <script src="bladefall-fractured.js?v=7.303.0"></script>
 <script src="bladefall-fractured-outskirts.js?v=7.228.1"></script>
 <script src="bladefall-fractured-outskirts-art.js?v=7.211.1"></script>
@@ -425,7 +425,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-precision-art.js?v=7.248.0"></script>
 <script src="bladefall-celeste.js?v=7.250.0"></script>
 <script src="bladefall-celeste-art.js?v=11"></script>
-<script src="bladefall-cloaked-man.js?v=7.307.1"></script>
+<script src="bladefall-cloaked-man.js?v=7.308.0"></script>
 <script src="bladefall-cloaked-man-art.js?v=7.304.0"></script>
 <script src="bladefall-explore-finale.js?v=7.305.0"></script>
 <script src="bladefall-causeway-story.js?v=7.234.0"></script>
@@ -439,7 +439,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.307.1';
+const VERSION='7.308.0';
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -9800,7 +9800,7 @@ const CUSTOM_LEVELS={0:LEVELS[0],1:LEVELS[1],2:LEVELS[2],3:UPDRAFTS_LEVEL,4:HOLL
   39:(typeof BladefallActTwo!=='undefined'?BladefallActTwo.level(39):null),
   40:(typeof BladefallActTwo!=='undefined'?BladefallActTwo.level(40):null),
   41:BladefallActTwo.level(41),42:BladefallActTwo.level(42),
-  // Battle 42, the last fight: the Cloaked Man (bladefall-cloaked-man.js?v=7.307.1).
+  // Battle 42, the last fight: the Cloaked Man (bladefall-cloaked-man.js?v=7.308.0).
   43:BladefallActTwo.level(43),44:BladefallActTwo.level(44),45:BladefallActTwo.level(45)};
 
 /* ================================================================
@@ -24522,7 +24522,7 @@ function titleScreen(){
       <button class="bigbtn ghost" id="settingsBtn" style="flex:1;">⚙ Controls</button>
     </div>
     <button class="bigbtn ghost" id="boardsBtn">🏆 Leaderboards</button>
-    <a class="bigbtn ghost" id="apkBtn" href="https://github.com/isaac2055/Bladefall-2D/releases/download/v7.307.1/Bladefall-7.307.1.apk" style="display:block;text-align:center;box-sizing:border-box;text-decoration:none" download>Download APK</a>
+    <a class="bigbtn ghost" id="apkBtn" href="https://github.com/isaac2055/Bladefall-2D/releases/download/v7.308.0/Bladefall-7.308.0.apk" style="display:block;text-align:center;box-sizing:border-box;text-decoration:none" download>Download APK</a>
     <p class="hint">v${VERSION}</p></div>`);
   if(canContinue)document.getElementById('contBtn').onclick=()=>{if(continueSurvive)location.href='precision.html?pitch=climb&resume=1&mode='+(lastPlayed.mode==='review'?'review':'play');else continueRun();};
   document.getElementById('newBtn').onclick=openExploreMenu;
@@ -25937,7 +25937,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.307.1').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.308.0').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */

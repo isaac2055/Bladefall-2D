@@ -1,3 +1,18 @@
+## 7.308.0: Superroom feedback answered; King, Tyrant and tide finales reinvented (2026-10-10)
+
+Every B72–F77 note is answered and integrated. F64 and F69 are banked, and F77 is banked at 3/5.
+- **Reinvented by Claude:** B74 King (court), F75 Fractured King (aims at your echo), B73 Tyrant (hunt and home), F74 Fractured Tyrant (fault shadows) and B76 tide.
+- **Revised earlier by Codex in this batch:** B72, B75 and F76 (Hydra), F71 and F73.
+
+Guide: docs/room-bank/FEEDBACK-7.308.md. New opt-in runtime: King `court`, Tyrant `hunt`/`home`/`perches`, tide `holdLow`/`holdHigh`.
+
+**Checks:**
+- All 127 bank routes pass. The ten changed finales pass in Chrome, and the Hydra jaw contract passes.
+- Worlds 10/13/14/16/17/28/31/33/34/36 were re-imported, with 88 Chrome joins and the structural audit passing (feedback-7.308-audit.json).
+- The other 30 worlds are hash-identical (feedback-7.308-baseline.json).
+
+Version 7.308.0, cache `bladefall-v474-feedback-7308`; stale `?v=` tags on the changed device scripts were bumped. Human ratings are pending. Authoring tools for these rooms are in the ignored scripts/climb/.cache/feedback-7.308/claude-wip/. Earlier entries are historical.
+
 ## 7.303.0: Bank complete; 40-world allocation analyzed (2026-10-09)
 
 All final approvals are handled. B60 is cut/archived. User’s “B32” lantern description identifies F32; its receiving phase platform extends 32px to the second beam and is banked. B32 stays unchanged. F59 has an ordinary reusable runway and a 24px higher overhead beam with a shorter west tip. A genuine wavedash route and preparatory jump/relanding pass; original reverse-hyper also still works. F59 is banked. Total **97 approved (54 Base /43 Fractured)**, nothing pending. Menu defaults to Banked.

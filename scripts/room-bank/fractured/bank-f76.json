@@ -1,7 +1,7 @@
 {
   "room": {
     "id": "bank-f76",
-    "name": "The Chain Comes Back Higher",
+    "name": "Cross the Bones You Made",
     "cols": 90,
     "rows": 36,
     "map": [
@@ -52,7 +52,6 @@
       "portal"
     ],
     "chainHydra": {
-      "phase": 2,
       "c": 28,
       "r": 19,
       "need": 3,
@@ -67,13 +66,39 @@
         ],
         [
           27,
-          8
+          6
         ]
       ],
-      "spit": {
-        "every": 130,
-        "first": 110,
-        "speed": 115
+      "hunt": {
+        "notice": 112,
+        "tell": 38,
+        "bite": 18,
+        "open": 70,
+        "reach": 40,
+        "stages": [
+          {},
+          {
+            "bite": 26,
+            "open": 64
+          },
+          {
+            "reach": 56,
+            "tell": 32,
+            "open": 70
+          }
+        ],
+        "spines": [
+          {
+            "c": 34,
+            "r": 19,
+            "w": 5
+          },
+          {
+            "c": 39,
+            "r": 23,
+            "w": 26
+          }
+        ]
       }
     },
     "sweepers": [
@@ -103,7 +128,7 @@
         "radius": 3
       }
     ],
-    "hint": "Fresh chain, downward cut. The collar pulls you through the low void and back to the mast; the third cut is above the first.",
+    "hint": "Bait the amber bite, then cut the open jaw. Dash beneath the far head; its fallen neck makes the higher return. The first neck is your step to the last head.",
     "question": "How do you return to the same mast with a fresh hook, after the collar has climbed above the route you used?"
   },
   "bank": {
@@ -112,7 +137,7 @@
     "run": 10,
     "collection": "superrooms",
     "format": "superroom",
-    "acceptance": "candidate",
+    "acceptance": "revised",
     "needsReview": true,
     "status": "route-proven",
     "difficulty": 4,
@@ -134,23 +159,24 @@
       "bank-f55"
     ],
     "author": "Codex",
-    "humanReview": "New candidate; awaiting human fun/difficulty/suitability review.",
+    "humanReview": "Reinvented after the 7.307.1 review: visible bite/jaw combat and physical bone return route. Awaiting human review.",
     "interconnection": "Three live collar positions pull the route east, then back above the original mast. The long void stone carries the low dash in both directions; the original first-cut mast becomes the last ascent rather than a discarded obstacle.",
     "novelty": "The final collar returns to the initial structure at a different height, turning a familiar support into a new problem. Each cut still requires a fresh native hooked ascent; neither a dash nor a ground slash can substitute.",
-    "solution": "Climb to the near mast and catch the west ring during the gold-chain window. Release above the first collar and cut downward. Descend to the low launch shelf and dash through the long void stone. Climb the far court while reading its orbit, catch the east ring and cut the second collar. Return through the same void, climb the first mast to its crown, and use its high ring for the third downward cut. The collar releases the safe western home gallery. The final ascent leaves the low overhang before grabbing the mast; read the jaw flash and parry its spit on the climb. The last cut lands on a broad recovery ledge; two ordinary small leftward jumps bring you home.",
+    "solution": "Climb to the near ring, let the first head bite, then release and cut down into the open jaw. Descend through the near mast and dash through the low void to the far shore. Catch its ring beneath the long bite; release onto the dry shore, return under the extended jaw and cut upward. Its neck now bridges the top of the void. Wait for the thorn to pass before jumping and dashing onto that bone. Cross left and make a vertical launch onto the first head’s resting ledge. Climb the original mast, read the last long bite, then jump toward its exposed jaw and cut up. Walk and hop across the broad home gallery.",
     "requiredEvents": [
-      "hook",
+      "hydra-tell",
+      "hydra-bite",
+      "hydra-open",
       "hydra-lock",
-      "hydra-drag",
+      "hydra-spine",
       "hydra-free",
       "void-in",
-      "void-out",
-      "gate-open",
-      "parry"
+      "void-out"
     ],
     "requiredEventCounts": {
       "hydra-lock": 3,
-      "void-in": 2
+      "hydra-spine": 2,
+      "void-in": 1
     },
     "ending": "The last cut lands above a broad permanent return shelf; the open gate leaves only a safe walk home.",
     "superroom": {
@@ -164,7 +190,7 @@
     },
     "positiveChecks": [
       {
-        "name": "Wait sixty frames on the final gallery",
+        "name": "Eight-frame later thorn crossing",
         "tape": [
           [
             60,
@@ -175,72 +201,44 @@
             "j"
           ],
           [
-            110,
+            65,
             "rgu"
           ],
           [
-            55,
-            "rgu"
-          ],
-          [
-            1,
-            "j"
-          ],
-          [
-            30,
-            "rgu"
-          ],
-          [
-            1,
+            18,
             "rj"
+          ],
+          [
+            45,
+            "rgu"
+          ],
+          [
+            11,
+            "gu"
+          ],
+          [
+            1,
+            "ds"
+          ],
+          [
+            15,
+            ""
           ],
           [
             14,
             "r"
           ],
           [
-            12,
-            "rds"
+            18,
+            "rj"
           ],
           [
-            32,
+            46,
             "r"
           ],
           [
-            28,
-            ""
-          ],
-          [
-            1,
-            "rx"
-          ],
-          [
-            55,
+            6,
             "r"
-          ],
-          [
-            50,
-            "rgu"
-          ],
-          [
-            70,
-            "rgu"
-          ],
-          [
-            28,
-            "rgu"
-          ],
-          [
-            8,
-            "r"
-          ],
-          [
-            12,
-            "ds"
-          ],
-          [
-            62,
-            "l"
           ],
           [
             25,
@@ -248,92 +246,463 @@
           ],
           [
             1,
-            "lx"
+            "rx"
           ],
           [
-            50,
+            67,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            35,
+            "rgu"
+          ],
+          [
+            40,
             "l"
           ],
           [
-            75,
-            "lgu"
-          ],
-          [
-            30,
-            "lgu"
-          ],
-          [
-            10,
-            ""
-          ],
-          [
-            12,
-            "j"
+            1,
+            "us"
           ],
           [
             8,
+            ""
+          ],
+          [
+            48,
+            ""
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            5,
+            "lx"
+          ],
+          [
+            30,
+            "l"
+          ],
+          [
+            90,
+            "l"
+          ],
+          [
+            17,
+            "l"
+          ],
+          [
+            18,
+            "j"
+          ],
+          [
+            5,
+            "ux"
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            100,
+            "lgu"
+          ],
+          [
+            56,
+            ""
+          ],
+          [
+            10,
+            "rj"
+          ],
+          [
+            1,
+            "jus"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            25,
+            "lj"
+          ],
+          [
+            90,
+            "l"
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            110,
+            "l"
+          ]
+        ]
+      },
+      {
+        "name": "Pause before the safe home walk",
+        "tape": [
+          [
+            60,
             "r"
+          ],
+          [
+            1,
+            "j"
           ],
           [
             65,
             "rgu"
           ],
           [
-            1,
-            "p"
+            18,
+            "rj"
           ],
           [
-            54,
+            45,
             "rgu"
           ],
           [
-            38,
-            "rgu"
-          ],
-          [
-            1,
-            "lj"
-          ],
-          [
-            28,
-            "lgu"
+            11,
+            "gu"
           ],
           [
             1,
             "ds"
           ],
           [
-            30,
+            15,
             ""
           ],
           [
-            30,
-            "lj"
+            14,
+            "r"
           ],
           [
-            120,
-            "l"
+            18,
+            "rj"
           ],
           [
-            60,
+            46,
+            "r"
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            25,
             ""
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            67,
+            "r"
+          ],
+          [
+            18,
+            "rj"
           ],
           [
             35,
+            "rgu"
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            1,
+            "us"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            18,
             "lj"
           ],
           [
-            80,
+            5,
+            "lx"
+          ],
+          [
+            30,
+            "l"
+          ],
+          [
+            90,
+            "l"
+          ],
+          [
+            17,
+            "l"
+          ],
+          [
+            18,
+            "j"
+          ],
+          [
+            5,
+            "ux"
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            100,
+            "lgu"
+          ],
+          [
+            56,
+            ""
+          ],
+          [
+            10,
+            "rj"
+          ],
+          [
+            1,
+            "jus"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            25,
+            "lj"
+          ],
+          [
+            90,
+            "l"
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            110,
             "l"
           ]
-        ],
-        "result": {
-          "frames": 1376,
-          "deaths": 0
-        }
+        ]
       }
     ],
-    "shortcutChecks": [],
+    "shortcutChecks": [
+      {
+        "name": "Unbroken heads keep the home gate locked",
+        "tape": [
+          [
+            60,
+            "r"
+          ],
+          [
+            1,
+            "j"
+          ],
+          [
+            65,
+            "rgu"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            45,
+            "rgu"
+          ],
+          [
+            11,
+            "gu"
+          ],
+          [
+            1,
+            "d"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            14,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            46,
+            "r"
+          ],
+          [
+            6,
+            "r"
+          ],
+          [
+            25,
+            ""
+          ],
+          [
+            1,
+            "rx"
+          ],
+          [
+            67,
+            "r"
+          ],
+          [
+            18,
+            "rj"
+          ],
+          [
+            35,
+            "rgu"
+          ],
+          [
+            40,
+            "l"
+          ],
+          [
+            1,
+            "u"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            40,
+            ""
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            18,
+            "lj"
+          ],
+          [
+            5,
+            "lx"
+          ],
+          [
+            30,
+            "l"
+          ],
+          [
+            90,
+            "l"
+          ],
+          [
+            17,
+            "l"
+          ],
+          [
+            18,
+            "j"
+          ],
+          [
+            5,
+            "ux"
+          ],
+          [
+            25,
+            "l"
+          ],
+          [
+            8,
+            "l"
+          ],
+          [
+            12,
+            ""
+          ],
+          [
+            100,
+            "lgu"
+          ],
+          [
+            56,
+            ""
+          ],
+          [
+            10,
+            "rj"
+          ],
+          [
+            1,
+            "ju"
+          ],
+          [
+            20,
+            ""
+          ],
+          [
+            25,
+            "lj"
+          ],
+          [
+            90,
+            "l"
+          ],
+          [
+            20,
+            "lj"
+          ],
+          [
+            110,
+            "l"
+          ]
+        ]
+      }
+    ],
     "proof": {
       "frames": 1316,
       "deaths": 0,
@@ -355,7 +724,13 @@
         "hydraCuts": 0,
         "checkKind": "shortcutChecks"
       }
-    ]
+    ],
+    "revision7308": "Readable physical three-head encounter replaces remote collar/grapple-memory rules. The second head builds a bridge over the outward void route; the first builds the foothold needed to approach the final high head.",
+    "route": {
+      "exited": true,
+      "deaths": 0,
+      "frames": 1196
+    }
   },
   "tape": [
     [
@@ -367,72 +742,44 @@
       "j"
     ],
     [
-      110,
+      65,
       "rgu"
     ],
     [
-      55,
-      "rgu"
-    ],
-    [
-      1,
-      "j"
-    ],
-    [
-      30,
-      "rgu"
-    ],
-    [
-      1,
+      18,
       "rj"
+    ],
+    [
+      45,
+      "rgu"
+    ],
+    [
+      11,
+      "gu"
+    ],
+    [
+      1,
+      "ds"
+    ],
+    [
+      15,
+      ""
     ],
     [
       14,
       "r"
     ],
     [
-      12,
-      "rds"
+      18,
+      "rj"
     ],
     [
-      32,
+      46,
       "r"
     ],
     [
-      28,
-      ""
-    ],
-    [
-      1,
-      "rx"
-    ],
-    [
-      55,
+      6,
       "r"
-    ],
-    [
-      50,
-      "rgu"
-    ],
-    [
-      70,
-      "rgu"
-    ],
-    [
-      28,
-      "rgu"
-    ],
-    [
-      8,
-      "r"
-    ],
-    [
-      12,
-      "ds"
-    ],
-    [
-      62,
-      "l"
     ],
     [
       25,
@@ -440,78 +787,114 @@
     ],
     [
       1,
-      "lx"
+      "rx"
     ],
     [
-      50,
-      "l"
-    ],
-    [
-      75,
-      "lgu"
-    ],
-    [
-      30,
-      "lgu"
-    ],
-    [
-      10,
-      ""
-    ],
-    [
-      12,
-      "j"
-    ],
-    [
-      8,
+      67,
       "r"
     ],
     [
-      65,
-      "rgu"
-    ],
-    [
-      1,
-      "p"
-    ],
-    [
-      54,
-      "rgu"
-    ],
-    [
-      38,
-      "rgu"
-    ],
-    [
-      1,
-      "lj"
-    ],
-    [
-      28,
-      "lgu"
-    ],
-    [
-      1,
-      "ds"
-    ],
-    [
-      30,
-      ""
-    ],
-    [
-      30,
-      "lj"
-    ],
-    [
-      120,
-      "l"
+      18,
+      "rj"
     ],
     [
       35,
+      "rgu"
+    ],
+    [
+      40,
+      "l"
+    ],
+    [
+      1,
+      "us"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      40,
+      ""
+    ],
+    [
+      8,
+      "l"
+    ],
+    [
+      18,
       "lj"
     ],
     [
-      80,
+      5,
+      "lx"
+    ],
+    [
+      30,
+      "l"
+    ],
+    [
+      90,
+      "l"
+    ],
+    [
+      17,
+      "l"
+    ],
+    [
+      18,
+      "j"
+    ],
+    [
+      5,
+      "ux"
+    ],
+    [
+      25,
+      "l"
+    ],
+    [
+      8,
+      "l"
+    ],
+    [
+      12,
+      ""
+    ],
+    [
+      100,
+      "lgu"
+    ],
+    [
+      56,
+      ""
+    ],
+    [
+      10,
+      "rj"
+    ],
+    [
+      1,
+      "jus"
+    ],
+    [
+      20,
+      ""
+    ],
+    [
+      25,
+      "lj"
+    ],
+    [
+      90,
+      "l"
+    ],
+    [
+      20,
+      "lj"
+    ],
+    [
+      110,
       "l"
     ]
   ]

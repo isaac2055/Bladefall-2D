@@ -18,20 +18,20 @@
       "############...................................................................#",
       "#..............................................................................#",
       "#..............................................................................#",
-      "#..................o...........................................................#",
-      "#........................................o......................UU.............#",
-      "#.................................................######.......................#",
-      "#...........................######.............................................#",
-      "#..................o.................................................######....#",
       "#..............................................................................#",
-      "G................o.o...........................................................#",
+      "#...............................................................UU.............#",
+      "#.................................................######.......................#",
+      "#...........................#########..........................................#",
+      "#.............====.====..............===..===........................######....#",
+      "#..............................................................................#",
       "G..............................................................................#",
-      "G..................o....................UU.....................................#",
       "G..............................................................................#",
-      "#===========...................................................................#",
+      "G.......................................UU.....................................#",
+      "G....................................===..===..................................#",
+      "#===========..====.====........................................................#",
       "#..............................................................................#",
       "#..........................................................N...................#",
-      "#o.....................................................############............#",
+      "#......................................................############............#",
       "#..............................................................................#",
       "#.................UU...........................................................#",
       "#..............................................................................#",
@@ -72,9 +72,10 @@
       "speed": 100,
       "body": "right",
       "leave": "up",
-      "crack": true
+      "crack": true,
+      "coldPriority": true
     },
-    "hint": "Cold moulds become tall iron. Cross beneath them first; the same castings carry the return above the failing floor.",
+    "hint": "Strike a mould cold; the furnace answers it with iron. Stand beside the pour, then climb what you made.",
     "question": "Which obstruction must you ask him to build before you can come home?"
   },
   "bank": {
@@ -83,7 +84,7 @@
     "run": 10,
     "collection": "superrooms",
     "format": "superroom",
-    "acceptance": "candidate",
+    "acceptance": "revised",
     "needsReview": true,
     "difficulty": 4,
     "worlds": [
@@ -106,7 +107,7 @@
       "bank-f72"
     ],
     "interconnection": "Three refusals turn hanging moulds into full-height iron walls. Their caps are the return route over the same fault floor; successive anvils and rests lead between their different mould heights.",
-    "solution": "Chill the low mould, ascend the new iron and cross its upper side. Use the first anvil to chill the middle mould from above, then climb to the far anvil and cold-strike the high mould. Avoid the telegraphed pours until all three are refused. Return above the anvils through the iron and refill rests, then drop onto the generous home gallery.",
+    "solution": "Chill the low mould, stand clear, and climb its iron using scaffold rests. Use the first anvil to down-cut the middle mould. Wait beside its pour and climb the second casting to the far anvil. Launch, cold-strike the high mould, and dash back clear of its pour. Return over the new iron and scaffold landings to the home gallery.",
     "novelty": "Boss damage builds a sequence of obstructions whose upper edges become the final route.",
     "nearestExisting": "F65 shared boss work and F72 thermal door-to-platform reversal.",
     "requiredEvents": [
@@ -115,7 +116,7 @@
       "colossus-refuse",
       "colossus-down"
     ],
-    "endingForgiveness": "Broad return gallery with a wall-side refill; the final crossing has no attack timer.",
+    "endingForgiveness": "Permanent scaffold rests restore stamina; the return gallery has no remaining attack timer.",
     "requiredEventCounts": {
       "colossus-refuse": 3,
       "cast": 3,
@@ -139,20 +140,10 @@
     ],
     "evidenceNotes": [
       {
-        "name": "Native three refusals and return",
-        "frames": 2783,
+        "name": "Three refusals and scaffold return",
+        "frames": 1743,
         "deaths": 0,
         "refusals": 3
-      },
-      {
-        "name": "Final landing",
-        "result": "Wide permanent return gallery; no remaining boss attacks once all three refusals are complete."
-      },
-      {
-        "name": "Head to home gate before refusing pours",
-        "result": "No exit; native gate remains locked",
-        "exited": false,
-        "refusals": 0
       }
     ]
   },
@@ -190,7 +181,11 @@
       "rgu"
     ],
     [
-      64,
+      20,
+      ""
+    ],
+    [
+      80,
       "rgu"
     ],
     [
@@ -230,215 +225,127 @@
       "ds"
     ],
     [
-      18,
+      23,
       "l"
-    ],
-    [
-      180,
-      ""
-    ],
-    [
-      73,
-      "r"
-    ],
-    [
-      12,
-      "rj"
-    ],
-    [
-      5,
-      "ux"
     ],
     [
       30,
+      ""
+    ],
+    [
+      135,
+      ""
+    ],
+    [
+      115,
       "rgu"
     ],
     [
-      8,
-      "r"
-    ],
-    [
-      2,
-      "j"
-    ],
-    [
-      1,
-      "ds"
-    ],
-    [
-      24,
-      "r"
-    ],
-    [
-      1,
-      "ds"
-    ],
-    [
-      20,
-      "l"
-    ],
-    [
-      250,
-      ""
-    ],
-    [
-      22,
-      "r"
-    ],
-    [
-      12,
+      28,
       "rgu"
-    ],
-    [
-      2,
-      "l"
-    ],
-    [
-      2,
-      "j"
-    ],
-    [
-      1,
-      "ds"
-    ],
-    [
-      25,
-      "r"
-    ],
-    [
-      1,
-      "ds"
-    ],
-    [
-      20,
-      "l"
-    ],
-    [
-      300,
-      ""
-    ],
-    [
-      100,
-      ""
-    ],
-    [
-      25,
-      "r"
-    ],
-    [
-      18,
-      "rgu"
-    ],
-    [
-      5,
-      ""
-    ],
-    [
-      1,
-      "ds"
-    ],
-    [
-      24,
-      "r"
-    ],
-    [
-      1,
-      "ds"
-    ],
-    [
-      20,
-      "l"
-    ],
-    [
-      180,
-      ""
-    ],
-    [
-      100,
-      ""
-    ],
-    [
-      9,
-      "l"
-    ],
-    [
-      18,
-      "lgu"
-    ],
-    [
-      5,
-      ""
-    ],
-    [
-      1,
-      "ds"
     ],
     [
       35,
+      "r"
+    ],
+    [
+      5,
+      "rx"
+    ],
+    [
+      25,
+      "r"
+    ],
+    [
+      35,
+      ""
+    ],
+    [
+      10,
+      "rj"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      1,
+      "ds"
+    ],
+    [
+      24,
+      "r"
+    ],
+    [
+      1,
+      "ds"
+    ],
+    [
+      5,
+      "lx"
+    ],
+    [
+      15,
       "l"
+    ],
+    [
+      45,
+      ""
+    ],
+    [
+      20,
+      "l"
+    ],
+    [
+      12,
+      "lj"
     ],
     [
       5,
       "lux"
     ],
     [
+      55,
+      "lgu"
+    ],
+    [
+      45,
+      "lgu"
+    ],
+    [
       35,
-      "lgu"
-    ],
-    [
-      115,
-      "lgu"
-    ],
-    [
-      12,
-      "lj"
-    ],
-    [
-      5,
-      "lx"
-    ],
-    [
-      38,
       "l"
     ],
     [
+      25,
+      ""
+    ],
+    [
       12,
       "lj"
     ],
     [
       5,
-      "lx"
+      "lux"
     ],
     [
-      120,
+      80,
       "lgu"
     ],
     [
-      12,
-      "lj"
-    ],
-    [
-      5,
-      "lx"
-    ],
-    [
-      60,
+      35,
       "l"
     ],
     [
-      130,
+      25,
+      ""
+    ],
+    [
+      80,
       "lgu"
     ],
     [
-      12,
-      "lj"
-    ],
-    [
-      5,
-      "lx"
-    ],
-    [
-      24,
+      100,
       "l"
     ]
   ]

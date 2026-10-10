@@ -81022,7 +81022,7 @@ const records=[
    "run": 8,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "revised",
+   "acceptance": "banked",
    "difficulty": 4,
    "role": "interconnected boss superroom",
    "worlds": [
@@ -81040,7 +81040,7 @@ const records=[
    "newMechanics": [],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "User approved the first three phases and requested a harder fourth native continuation; revision awaits review.",
+   "humanReview": "Approved by the user after the 7.307.1 review.",
    "approvedIngredients": [
     "bank-f33",
     "bank-f27"
@@ -81715,7 +81715,7 @@ const records=[
     "carrier-reroute": 3,
     "mk-rain": 3
    },
-   "needsReview": true,
+   "needsReview": false,
    "revisionNote": "Fourth native Marksman perch and real fourth hit added. Third carrier reroute, third post-leap arrow rain, reversed boarding jump and aerial return shot form a harder continuation. Original entry/right exit and all first-three boss timings preserved; five one-way recovery tiles extend the final landing. No runtime changes.",
    "routeEvents": [
     {
@@ -92166,8 +92166,8 @@ const records=[
    "run": 9,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "revised",
-   "needsReview": true,
+   "acceptance": "banked",
+   "needsReview": false,
    "difficulty": 4,
    "role": "interconnected native Brute boss superroom",
    "worlds": [
@@ -92186,7 +92186,7 @@ const records=[
    "newMechanics": [],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "Expanded after feedback that the original was too short/simple. Awaiting renewed fun/difficulty/suitability review.",
+   "humanReview": "Approved by the user after the 7.307.1 review.",
    "approvedIngredients": [
     "bank-f27",
     "bank-f33"
@@ -94030,7 +94030,7 @@ const records=[
      "dy": -240
     }
    ],
-   "hint": "Carry the lantern across four broken spans, leave it on the far plate, then use the wind and three feather transfers to return above your fractured road.",
+   "hint": "Keep cargo jumps low beneath the teeth and brake onto the small fault footholds. Leave the lantern on the far plate; release each feather jump below its ceiling.",
    "question": "Which weight must remain below while you cross back above it?",
    "map": [
     "################################################################################################",
@@ -94038,21 +94038,21 @@ const records=[
     "#..............................................................................................#",
     "#..............................................................................................#",
     "#..............................................................................................#",
-    "#..............................................................................................#",
+    "#.................vvvvv........................................................................#",
     "...............................................................................................#",
-    "...............................................................................................#",
+    ".......................................vvvvvv..................................................#",
     "...............................................................................................#",
     "...............................................................................................#",
     "IIIIIIIIIIIIIIIIIIII....f......................................................................#",
-    "#..............................................................................................#",
+    "#..........................................................vvvvvv..............................#",
     "#..............................................................................................#",
     "#.............................................f................................................#",
     "#..............................................................................................#",
-    "#.................................IIIII........................................................#",
+    "#.................................IIII.........................................................#",
     "#..............................................................................................#",
     "#................................................................f.............................#",
     "#..............................................................................................#",
-    "#....................................................IIIIIII...................................#",
+    "#.....................................................IIII.....................................#",
     "#..............................................................................................#",
     "#..............................................................................................#",
     "#..............................................................................................#",
@@ -94063,13 +94063,13 @@ const records=[
     "########################################################################################HHHHHHH#",
     "#...........................................................###................................#",
     "#...........................................................###................................#",
-    "#...........................................................###................................#",
+    "#..........................vvvvvvv.........vvvvv........vvvv###....vvvvv.......................#",
     "#...........................................................vvv................................#",
     "#..............................................................................................#",
     "#..............................................................................................#",
     "#..............................................................................................#",
     "#...P..l.....................................................................................__#",
-    "#IIIIIIIIIIIIIIIIITTTTTTTTT....TTTTTTTTTT.....TTTTTTTT......TTTTT......TTTIIIIIIIIIIIIIIIIIIIII#",
+    "#IIIIIIIIIIIIIIIITTTTTTTTT...........TTT............TTT.......TTT..........IIIIIIIIIIIIIIIIIIII#",
     "#IIIIIIIIIIIIIIIII........................................................IIIIIIIIIIIIIIIIIIIII#",
     "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
     "################################################################################################"
@@ -94100,13 +94100,13 @@ const records=[
    "newMechanics": [],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "Revision requested: previous room was too small and all jumps were easy. Expanded the shared basin and rebuilt the return for another review.",
+   "humanReview": "Revised after the second platforming review; substantially narrower cargo footholds and tighter feather transfers. Awaiting human review.",
    "approvedIngredients": [
     "bank-f48",
     "bank-f66"
    ],
    "interconnection": "The basin is one third wider. Its outward cargo route now has four broken spans; the same permanently held wind passage gives access to a three-stage empty-handed return above that collapsed road. The lantern must remain below while every feather transfer is completed.",
-   "solution": "Carry the lantern over the original two missing spans, then land on the new short fault rest under the hanging ice tongue and jump the fourth break. Leave the lantern on the far pressure bed to hold the wind cap open. Rise through the wind and return across three feather transfers: brake onto the new narrow middle shelf, reset on the small upper shelf, then spend the last feather to reach the broad home ledge.",
+   "solution": "Carry the lantern to the last tile before each gap. Make short, low jumps under the hanging teeth, landing on three-tile fault footholds and taking off before they collapse. On the third crossing brake earlier beneath the longer hanging obstruction. Leave the lantern on the far plate to open the updraft. On the return, catch each feather with a diagonal dash; press Jump again and release before the overhead teeth. Brake onto the four-tile ice lips, then launch the next transfer. The broad final gallery remains a safe recovery.",
    "novelty": "The enlarged shared basin joins cargo momentum, short fault landings, a low hanging ice tongue, sustained pressure and three rising feather transfers. The return reuses the space traversed with cargo, but changes both its height and the movement needed.",
    "nearestExisting": "F48 native airborne transfers and F66 leave-cargo return logic, rebuilt around Frostfell ice, fault progression and a vertical wind cap.",
    "requiredEvents": [
@@ -94123,53 +94123,589 @@ const records=[
     "fault-crack": 4
    },
    "route": {
-    "name": "canonical",
     "exited": true,
     "deaths": 0,
-    "frames": 1049,
-    "eventCounts": {
-     "ice": 6,
-     "pickup": 1,
-     "fault-crack": 4,
-     "wind": 2,
-     "fault-fall": 32,
-     "jump": 11,
-     "land": 8,
-     "plate": 3,
-     "held-open": 1,
-     "throw": 1,
-     "lantern-land": 1,
-     "dash": 4,
-     "refill-dash": 4,
-     "feather": 3,
-     "feather-jump": 3,
-     "feather-back": 2,
-     "exit": 1
-    },
-    "doorOpen": true,
-    "carrying": false,
-    "events": [
-     "ice",
-     "pickup",
-     "fault-crack",
-     "wind",
-     "fault-fall",
-     "jump",
-     "land",
-     "plate",
-     "held-open",
-     "throw",
-     "lantern-land",
-     "dash",
-     "refill-dash",
-     "feather",
-     "feather-jump",
-     "feather-back",
-     "exit"
-    ]
+    "frames": 1049
    },
-   "positiveChecks": [],
+   "positiveChecks": [
+    {
+     "name": "First low jump held 12 frames",
+     "tape": [
+      [
+       35,
+       "r"
+      ],
+      [
+       1,
+       "g"
+      ],
+      [
+       82,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       41,
+       "r"
+      ],
+      [
+       8,
+       "r"
+      ],
+      [
+       14,
+       "rj"
+      ],
+      [
+       32,
+       "r"
+      ],
+      [
+       6,
+       "r"
+      ],
+      [
+       14,
+       "rj"
+      ],
+      [
+       25,
+       "r"
+      ],
+      [
+       15,
+       "l"
+      ],
+      [
+       2,
+       "r"
+      ],
+      [
+       14,
+       "rj"
+      ],
+      [
+       115,
+       "r"
+      ],
+      [
+       18,
+       "r"
+      ],
+      [
+       15,
+       "l"
+      ],
+      [
+       1,
+       "dg"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       14,
+       "lj"
+      ],
+      [
+       80,
+       ""
+      ],
+      [
+       5,
+       "lx"
+      ],
+      [
+       48,
+       "l"
+      ],
+      [
+       16,
+       "r"
+      ],
+      [
+       29,
+       "l"
+      ],
+      [
+       16,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       18,
+       "l"
+      ],
+      [
+       4,
+       "l"
+      ],
+      [
+       22,
+       "lj"
+      ],
+      [
+       24,
+       "l"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       16,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       18,
+       "l"
+      ],
+      [
+       4,
+       "l"
+      ],
+      [
+       22,
+       "lj"
+      ],
+      [
+       19,
+       "l"
+      ],
+      [
+       14,
+       "r"
+      ],
+      [
+       16,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       25,
+       "l"
+      ],
+      [
+       3,
+       "l"
+      ],
+      [
+       22,
+       "lj"
+      ],
+      [
+       100,
+       "l"
+      ],
+      [
+       20,
+       "l"
+      ]
+     ],
+     "exited": true,
+     "deaths": 0,
+     "frames": 1049
+    },
+    {
+     "name": "First low jump held 16 frames",
+     "tape": [
+      [
+       35,
+       "r"
+      ],
+      [
+       1,
+       "g"
+      ],
+      [
+       82,
+       "r"
+      ],
+      [
+       16,
+       "rj"
+      ],
+      [
+       37,
+       "r"
+      ],
+      [
+       8,
+       "r"
+      ],
+      [
+       14,
+       "rj"
+      ],
+      [
+       32,
+       "r"
+      ],
+      [
+       6,
+       "r"
+      ],
+      [
+       14,
+       "rj"
+      ],
+      [
+       25,
+       "r"
+      ],
+      [
+       15,
+       "l"
+      ],
+      [
+       2,
+       "r"
+      ],
+      [
+       14,
+       "rj"
+      ],
+      [
+       115,
+       "r"
+      ],
+      [
+       18,
+       "r"
+      ],
+      [
+       15,
+       "l"
+      ],
+      [
+       1,
+       "dg"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       14,
+       "lj"
+      ],
+      [
+       80,
+       ""
+      ],
+      [
+       5,
+       "lx"
+      ],
+      [
+       48,
+       "l"
+      ],
+      [
+       16,
+       "r"
+      ],
+      [
+       29,
+       "l"
+      ],
+      [
+       16,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       18,
+       "l"
+      ],
+      [
+       4,
+       "l"
+      ],
+      [
+       22,
+       "lj"
+      ],
+      [
+       24,
+       "l"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       16,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       18,
+       "l"
+      ],
+      [
+       4,
+       "l"
+      ],
+      [
+       22,
+       "lj"
+      ],
+      [
+       19,
+       "l"
+      ],
+      [
+       14,
+       "r"
+      ],
+      [
+       16,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       25,
+       "l"
+      ],
+      [
+       3,
+       "l"
+      ],
+      [
+       22,
+       "lj"
+      ],
+      [
+       100,
+       "l"
+      ],
+      [
+       20,
+       "l"
+      ]
+     ],
+     "exited": true,
+     "deaths": 0,
+     "frames": 1049
+    }
+   ],
    "shortcutChecks": [
+    {
+     "name": "Overheld feather jump 36",
+     "tape": [
+      [
+       35,
+       "r"
+      ],
+      [
+       1,
+       "g"
+      ],
+      [
+       82,
+       "r"
+      ],
+      [
+       14,
+       "rj"
+      ],
+      [
+       39,
+       "r"
+      ],
+      [
+       8,
+       "r"
+      ],
+      [
+       14,
+       "rj"
+      ],
+      [
+       32,
+       "r"
+      ],
+      [
+       6,
+       "r"
+      ],
+      [
+       14,
+       "rj"
+      ],
+      [
+       25,
+       "r"
+      ],
+      [
+       15,
+       "l"
+      ],
+      [
+       2,
+       "r"
+      ],
+      [
+       14,
+       "rj"
+      ],
+      [
+       115,
+       "r"
+      ],
+      [
+       18,
+       "r"
+      ],
+      [
+       15,
+       "l"
+      ],
+      [
+       1,
+       "dg"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       14,
+       "lj"
+      ],
+      [
+       80,
+       ""
+      ],
+      [
+       5,
+       "lx"
+      ],
+      [
+       48,
+       "l"
+      ],
+      [
+       16,
+       "r"
+      ],
+      [
+       29,
+       "l"
+      ],
+      [
+       16,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       18,
+       "l"
+      ],
+      [
+       4,
+       "l"
+      ],
+      [
+       22,
+       "lj"
+      ],
+      [
+       24,
+       "l"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       16,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       18,
+       "l"
+      ],
+      [
+       4,
+       "l"
+      ],
+      [
+       34,
+       "lj"
+      ],
+      [
+       7,
+       "l"
+      ],
+      [
+       14,
+       "r"
+      ],
+      [
+       16,
+       "lj"
+      ],
+      [
+       5,
+       "lux"
+      ],
+      [
+       25,
+       "l"
+      ],
+      [
+       3,
+       "l"
+      ],
+      [
+       22,
+       "lj"
+      ],
+      [
+       100,
+       "l"
+      ],
+      [
+       20,
+       "l"
+      ]
+     ],
+     "exited": false,
+     "deaths": 1,
+     "frames": 0
+    },
     {
      "name": "Keep the lantern instead of leaving it on the far bed",
      "tape": [
@@ -94386,7 +94922,8 @@ const records=[
    ],
    "endingForgiveness": "The demanding landings are before the final transfer. Its destination is a twenty-tile stable home ledge; the original left exit and checkpoint approach remain in their original locations.",
    "designNotes": "Revised from72×40 to96×40; four cargo breaks instead of two; three feather jumps instead of two. Return shelves are seven and five tiles wide, with the same wide final recovery and unchanged left exit height. Native wind, fault, feather, ice, lantern and held-gate behavior only. No new runtime modules.",
-   "revision": "24325e3b5584",
+   "revision7308": "Three-tile fault footholds replace the broad cargo runway. The feather return has four-tile ice lips and overhead teeth; the middle second jump cannot be held as long as before.",
+   "revision": "a1de4fe44c00",
    "source": "scripts/room-bank/fractured/bank-f71.json"
   },
   "tape": [
@@ -95363,28 +95900,28 @@ const records=[
     "..H............................................................................#",
     "..H............................................................................#",
     "..H............................................................................#",
-    "..H.======.....................................................................#",
+    "..H............................................................................#",
     "..H.......P....................................................................#",
     "#####....#####.................................................................#",
     "#..............................................................................#",
     "#..............................................................................#",
-    "#.............GEEEEEEEEE.......................................................#",
+    "#.............GEEEEEE###.......................................................#",
     "#.............G................................................................#",
     "#.............G................................................................#",
     "#.............G................................................................#",
-    "#.............G...........EEEEEEEEEE...........................................#",
+    "#.............G...........EEEEEEE###...........................................#",
     "#.............G................................................................#",
     "#.............G................................................................#",
     "#.............G................................................................#",
-    "#.............G.......................EEEEEEEEEE...............................#",
+    "#.............G.......................EEEEEEE###...............................#",
     "#.............G................................................................#",
     "#.............G................................................................#",
     "#.............G................................................................#",
-    "#.............G...................................EEEEEEEEEE...................#",
+    "#.............G...................................EEEEEEE###...................#",
     "#.............G................................................................#",
     "#.............G................................................................#",
     "#.............G................................................................#",
-    "#.............G...............................................EEEEEEEEEE.......#",
+    "#.............G...............................................EEEEEEE###.......#",
     "#.............G................................................................#",
     "#.............G..........................................................c.l...#",
     "#.............G...##..................##..................##............########",
@@ -95399,39 +95936,39 @@ const records=[
    "zips": [
     [
      0,
-     -28
+     -26
     ]
    ],
    "slabs": [
     {
-     "stone": 340,
+     "stone": 70,
      "molten": 80,
-     "glass": 100,
-     "offset": 0
+     "glass": 70,
+     "offset": 100
     },
     {
-     "stone": 340,
+     "stone": 70,
      "molten": 80,
-     "glass": 100,
-     "offset": -35
+     "glass": 70,
+     "offset": 147
     },
     {
-     "stone": 340,
+     "stone": 70,
      "molten": 80,
-     "glass": 100,
-     "offset": -70
+     "glass": 70,
+     "offset": 194
     },
     {
-     "stone": 340,
+     "stone": 70,
      "molten": 80,
-     "glass": 100,
-     "offset": -105
+     "glass": 70,
+     "offset": 241
     },
     {
-     "stone": 340,
+     "stone": 70,
      "molten": 80,
-     "glass": 100,
-     "offset": -140
+     "glass": 70,
+     "offset": 288
     }
    ],
    "beams": [
@@ -95468,7 +96005,7 @@ const records=[
      ]
     }
    ],
-   "hint": "Follow the cooling stair to its freight. The same route returns below it: carry the lantern through the beams, then leave it to hold the home gate.",
+   "hint": "Wait on the dark stone ledges until the next slab cools. The fourth and fifth drops have their own rhythm. Carry the lantern below, then leave its weight for the lift home.",
    "question": "What does the return journey need from the far end of the cooling stair?"
   },
   "bank": {
@@ -95477,7 +96014,7 @@ const records=[
    "run": 10,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
+   "acceptance": "revised",
    "status": "route-proven",
    "author": "Codex",
    "tags": [
@@ -95487,7 +96024,7 @@ const records=[
     "return-route"
    ],
    "newMechanics": [],
-   "humanReview": "Awaiting human review; ratings not measured.",
+   "humanReview": "Revised after the 7.307.1 review: active descent timings, permanent waiting ledges and cleared lift headroom; awaiting review.",
    "worlds": [
     10
    ],
@@ -95496,7 +96033,7 @@ const records=[
     "bank-b38",
     "bank-b64"
    ],
-   "solution": "Descend across five linked heat beds, watching their cooling cycle. Light the far tally and collect its lantern. Return below the same beds with the lantern shielding three downward beams. Leave it on the western pressure plate, then ride the same service lift back above the starting shelf and leave through the held gate.",
+   "solution": "Read the cooling slabs from the permanent end ledges. Cross after each molten phase fades; the fourth and fifth crossings require a fresh timing decision rather than continuing to walk. Light the far tally and collect the lantern. Carry shade through the lower beams, leave the lantern on the west plate, and ride the cleared lift shaft home.",
    "interconnection": "The outward heat stair is the ceiling of the homebound freight road. Its far tally releases that road; its lantern then becomes the shield and finally the gate weight.",
    "novelty": "A single payload changes job twice while the route loops beneath the same timed casting architecture.",
    "nearestExisting": "B38 carries shade; B64 routes cargo. This ties those jobs to an Emberdeep cooling descent and returns to the original height.",
@@ -95519,7 +96056,7 @@ const records=[
    "route": {
     "exited": true,
     "deaths": 0,
-    "frames": 920
+    "frames": 1162
    },
    "routeEvents": [
     {
@@ -95560,7 +96097,134 @@ const records=[
    ],
    "positiveChecks": [
     {
-     "name": "Pause40framesbeforefinaldeparture",
+     "name": "Five extra frames on first safe ledge",
+     "tape": [
+      [
+       1,
+       "r"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       64,
+       "r"
+      ],
+      [
+       8,
+       ""
+      ],
+      [
+       64,
+       "r"
+      ],
+      [
+       8,
+       ""
+      ],
+      [
+       64,
+       "r"
+      ],
+      [
+       8,
+       ""
+      ],
+      [
+       95,
+       ""
+      ],
+      [
+       64,
+       "r"
+      ],
+      [
+       8,
+       ""
+      ],
+      [
+       100,
+       ""
+      ],
+      [
+       64,
+       "r"
+      ],
+      [
+       8,
+       ""
+      ],
+      [
+       28,
+       "r"
+      ],
+      [
+       2,
+       "l"
+      ],
+      [
+       1,
+       "ls"
+      ],
+      [
+       1,
+       "g"
+      ],
+      [
+       90,
+       "l"
+      ],
+      [
+       45,
+       ""
+      ],
+      [
+       258,
+       "l"
+      ],
+      [
+       8,
+       ""
+      ],
+      [
+       1,
+       "dg"
+      ],
+      [
+       7,
+       "l"
+      ],
+      [
+       8,
+       ""
+      ],
+      [
+       20,
+       "j"
+      ],
+      [
+       8,
+       "ux"
+      ],
+      [
+       16,
+       "l"
+      ],
+      [
+       60,
+       ""
+      ],
+      [
+       80,
+       "l"
+      ]
+     ]
+    }
+   ],
+   "shortcutChecks": [
+    {
+     "name": "Original uninterrupted descent",
      "tape": [
       [
        350,
@@ -95623,103 +96287,76 @@ const records=[
        ""
       ],
       [
-       24,
-       "l"
-      ],
-      [
-       40,
-       ""
-      ],
-      [
-       56,
-       "l"
-      ]
-     ],
-     "exited": true,
-     "deaths": 0,
-     "frames": 959
-    }
-   ],
-   "shortcutChecks": [
-    {
-     "name": "Attemptcanonicalroutewithoutg",
-     "tape": [
-      [
-       350,
-       "r"
-      ],
-      [
-       2,
-       "l"
-      ],
-      [
-       1,
-       "ls"
-      ],
-      [
-       1,
-       ""
-      ],
-      [
-       90,
-       "l"
-      ],
-      [
-       45,
-       ""
-      ],
-      [
-       258,
-       "l"
-      ],
-      [
-       8,
-       ""
-      ],
-      [
-       1,
-       "d"
-      ],
-      [
-       7,
-       "l"
-      ],
-      [
-       8,
-       ""
-      ],
-      [
-       20,
-       "j"
-      ],
-      [
-       8,
-       "ux"
-      ],
-      [
-       16,
-       "l"
-      ],
-      [
-       60,
-       ""
-      ],
-      [
        80,
        "l"
       ]
-     ],
-     "exited": false,
-     "deaths": 1,
-     "frames": null
+     ]
     }
    ],
-   "revision": "0706c4061bdd",
+   "needsReview": true,
+   "revision7308": "Three necessary timing pauses replace the inactive 340-frame stone windows. Each slab ends in a permanent ledge. Lift rises two fewer tiles and its overhead grate is removed.",
+   "revision": "37541ef3da3b",
    "source": "scripts/room-bank/base/bank-b72.json"
   },
   "tape": [
    [
-    350,
+    1,
+    "r"
+   ],
+   [
+    10,
+    ""
+   ],
+   [
+    64,
+    "r"
+   ],
+   [
+    8,
+    ""
+   ],
+   [
+    64,
+    "r"
+   ],
+   [
+    8,
+    ""
+   ],
+   [
+    64,
+    "r"
+   ],
+   [
+    8,
+    ""
+   ],
+   [
+    95,
+    ""
+   ],
+   [
+    64,
+    "r"
+   ],
+   [
+    8,
+    ""
+   ],
+   [
+    100,
+    ""
+   ],
+   [
+    64,
+    "r"
+   ],
+   [
+    8,
+    ""
+   ],
+   [
+    28,
     "r"
    ],
    [
@@ -95787,46 +96424,46 @@ const records=[
  {
   "room": {
    "id": "bank-b73",
-   "name": "The Same Door Brings You Home",
+   "name": "His Own Answer Comes Home",
    "cols": 80,
    "rows": 36,
    "map": [
-    "################################################################################",
+    "#######################################%%#######################################",
     "#..............................................................................#",
     "#..............................................................................#",
     "#..............................................................................#",
     "#..............................................................................#",
     "#..............................................................................#",
-    "#...................................%..........................................#",
-    "#...................................%..........................................#",
-    "#...................................%..........................................#",
-    "#...................................%..........................................#",
-    "#...................................%..........................................#",
-    "#...................................%..........................................#",
-    "#...................................%#########.................................#",
-    "#..............................................................................#",
-    "#..............................................................................#",
-    "#..............................................................................#",
-    "#.................................................%............................#",
-    "#.................................................%............................#",
-    "#.................................................%............................#",
-    "#.................................................%............................#",
-    "#.................................................%............................#",
-    "#.................................................%............................#",
-    "#.................................................%............................#",
-    "#.................................................%............................#",
-    "#.%.................................................################...........#",
-    "#.%............................................................................#",
-    "#.%............................................................................#",
-    "#.%............................................................................#",
-    "#.%.P..........................................................................#",
-    "##%#GGGG########...............................................................#",
+    "#..........................................%...................................#",
+    "#..........................................%...................................#",
+    "#..........................................%...................................#",
+    "#...................................############...............................#",
     "#..............................................................................#",
     "#..............................................................................#",
     "#..............................................................................#",
     "#..............................................................................#",
-    "#^^^....^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
-    "####....########################################################################"
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#.........................%%...................................................#",
+    "#.........................%%...................................................#",
+    "#.........................%%...................................................#",
+    "#.........................%%...................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#.....................%%%%%%%%%%%%.............................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#.................................####........%%...............................#",
+    "#.............................................%%...............................#",
+    "#.............................................%%...............................#",
+    "#.....................................####....%%...............................#",
+    "#..............................................................................#",
+    "#...............................................P..............................#",
+    "##GGGGG#########################################################################",
+    "##.....#########################################################################",
+    "##.....#########################################################################",
+    "##.....#########################################################################",
+    "##.....#########################################################################"
    ],
    "palette": "rift",
    "movement": "survive-2",
@@ -95838,38 +96475,39 @@ const records=[
    "portals": [
     {
      "color": "orange",
-     "c": 2,
-     "r": 27,
-     "face": "r"
-    },
-    {
-     "color": "blue",
-     "c": 36,
-     "r": 10,
-     "face": "r"
+     "c": 39,
+     "r": 0,
+     "face": "d"
     }
    ],
    "tyrant": {
-    "c": 73,
-    "r": 3,
-    "height": 25,
-    "shotRow": 27,
-    "weakRow": 10,
-    "hits": 2,
+    "height": 12,
+    "hits": 3,
     "final": true,
-    "lanes": [
-     27,
-     27
-    ],
-    "bands": [
-     10,
-     19
-    ],
-    "every": 180,
-    "first": 50
+    "home": true,
+    "hunt": {
+     "every": 60,
+     "first": 40,
+     "speed": 220,
+     "tell": 22
+    },
+    "perches": [
+     {
+      "c": 62,
+      "r": 14
+     },
+     {
+      "c": 8,
+      "r": 4
+     },
+     {
+      "c": 60,
+      "r": 2
+     }
+    ]
    },
-   "hint": "Use his first return door to cross the void. His second band needs the lower white wall—and that door brings you home.",
-   "question": "Can the same route carry his attack outward and carry you home?"
+   "hint": "Put your door on the side of a pale stone that faces him, then get behind it. His bolt goes in, and the white door sends it home.",
+   "question": "Where must your door be for his bolt to find it before it finds you?"
   },
   "bank": {
    "side": "base",
@@ -95877,7 +96515,7 @@ const records=[
    "run": 10,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
+   "acceptance": "revised",
    "needsReview": true,
    "difficulty": 3,
    "worlds": [
@@ -95887,51 +96525,455 @@ const records=[
     "superroom",
     "tyrant",
     "portal",
-    "return"
+    "hunt",
+    "return-route"
    ],
    "status": "route-proven",
-   "author": "Codex",
+   "author": "Claude",
    "newMechanics": [],
-   "approvedIngredients": [
-    "bank-b64",
-    "bank-f68"
-   ],
-   "interconnection": "The first return portal also transports the player onto the high balcony. Moving that portal to meet the second band removes that high access and makes the route home from the lower court. The native boss unlocks a drop through the original starting court.",
-   "solution": "Enter the low fixed portal and let its high partner return the first bolt. Cross from the balcony over the lower receiving wall. Aim your blue portal onto that wall to meet the second lit band, wait on the broad far shelf, then jump into the same blue door to come home above the opened gate.",
-   "novelty": "The projectile routing puzzle and the player’s way out are the same two portals; moving one door changes both routes at once.",
-   "nearestExisting": "B64 readable pale portal surfaces and F68 return-route restriction, applied to the actual Tyrant ward.",
+   "interconnection": "The same two doors carry his bolt home and carry you behind the last stone.",
+   "solution": "The Tyrant hunts you with aimed bolts. Put your door on the side of a pale stone that faces him, then get behind it: his bolt goes in and the white door in the ceiling sends it home. First perch: shoot up at the hanging stone from its far side and duck under it. Second: climb to the high ledge, shoot the second hanging stone and wait beneath it. Third: drop through a door in the ledge, fall out of the ceiling onto the high stone, door the fin from its far side and walk into it to land behind it. Walk home after he withdraws.",
+   "novelty": "A ward broken only by the boss’s own aimed attack, routed by where you stand and where your door is.",
+   "nearestExisting": "Native Tyrant and portal stone; replaces the fixed-lane alignment fight.",
    "requiredEvents": [
+    "portal-open",
     "portal-pass",
     "tyrant-hit",
-    "tyrant-walk",
+    "tyrant-fold",
     "tyrant-withdraw"
    ],
    "requiredEventCounts": {
-    "tyrant-hit": 2
+    "tyrant-hit": 3
    },
-   "endingForgiveness": "Wide far waiting platform, then a short home drop after the native boss withdraws.",
-   "positiveChecks": [
+   "endingForgiveness": "He withdraws completely; the home gate is a plain walk.",
+   "positiveChecks": [],
+   "shortcutChecks": [
     {
-     "name": "Extra60-frame pause before portal return",
+     "name": "Never opens a door",
      "tape": [
+      [
+       28,
+       "l"
+      ],
+      [
+       40,
+       ""
+      ],
+      [
+       38,
+       "r"
+      ],
+      [
+       3,
+       ""
+      ],
+      [
+       1,
+       "ul"
+      ],
+      [
+       30,
+       "l"
+      ],
+      [
+       81,
+       ""
+      ],
+      [
+       8,
+       "l"
+      ],
+      [
+       12,
+       "lj"
+      ],
       [
        10,
        "l"
       ],
       [
-       560,
+       12,
+       "lj"
+      ],
+      [
+       10,
+       "l"
+      ],
+      [
+       12,
+       "lj"
+      ],
+      [
+       48,
+       "l"
+      ],
+      [
+       2,
        ""
       ],
       [
-       35,
+       1,
+       "ur"
+      ],
+      [
+       22,
        "r"
       ],
       [
-       18,
+       67,
+       ""
+      ],
+      [
+       1,
+       "d"
+      ],
+      [
+       60,
+       ""
+      ],
+      [
+       30,
+       "r"
+      ],
+      [
+       12,
        "rj"
       ],
       [
-       5,
+       14,
+       "r"
+      ],
+      [
+       16,
+       ""
+      ],
+      [
+       1,
+       "l"
+      ],
+      [
+       20,
+       "l"
+      ],
+      [
+       60,
+       ""
+      ],
+      [
+       300,
+       "l"
+      ]
+     ]
+    }
+   ],
+   "evidenceNotes": [
+    {
+     "name": "Canonical 7.308 route",
+     "frames": 833,
+     "deaths": 0
+    }
+   ],
+   "humanReview": "Reinvented 7.308 from feedback; awaiting human review.",
+   "approvedIngredients": [
+    "bank-b64",
+    "bank-f68"
+   ],
+   "revision": "68de8850fa26",
+   "source": "scripts/room-bank/base/bank-b73.json"
+  },
+  "tape": [
+   [
+    28,
+    "l"
+   ],
+   [
+    40,
+    ""
+   ],
+   [
+    38,
+    "r"
+   ],
+   [
+    3,
+    ""
+   ],
+   [
+    1,
+    "ulq"
+   ],
+   [
+    30,
+    "l"
+   ],
+   [
+    81,
+    ""
+   ],
+   [
+    8,
+    "l"
+   ],
+   [
+    12,
+    "lj"
+   ],
+   [
+    10,
+    "l"
+   ],
+   [
+    12,
+    "lj"
+   ],
+   [
+    10,
+    "l"
+   ],
+   [
+    12,
+    "lj"
+   ],
+   [
+    48,
+    "l"
+   ],
+   [
+    2,
+    ""
+   ],
+   [
+    1,
+    "urq"
+   ],
+   [
+    22,
+    "r"
+   ],
+   [
+    67,
+    ""
+   ],
+   [
+    1,
+    "dq"
+   ],
+   [
+    60,
+    ""
+   ],
+   [
+    30,
+    "r"
+   ],
+   [
+    12,
+    "rj"
+   ],
+   [
+    14,
+    "r"
+   ],
+   [
+    16,
+    ""
+   ],
+   [
+    1,
+    "lq"
+   ],
+   [
+    20,
+    "l"
+   ],
+   [
+    60,
+    ""
+   ],
+   [
+    300,
+    "l"
+   ]
+  ]
+ },
+ {
+  "room": {
+   "id": "bank-b74",
+   "name": "The King Holds Court",
+   "cols": 80,
+   "rows": 40,
+   "map": [
+    "################################################################################",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#...................O..........................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#........#######...............................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#.......................................O......................................#",
+    "#..........................#######.............................................#",
+    "#..............................................................................#",
+    "#...........................................................####################",
+    "#..........................................##########..........................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................#######.........................................#",
+    "#..............................#######.........................................#",
+    "#..............................#######....####.................................#",
+    "#..............................#######.........................................#",
+    "#..............................#######.........................................#",
+    "#.....................####N....#######.............#############################",
+    "#...............P..............#######.............#############################",
+    "##GGGGG#############...........#######.............#############################",
+    "##.....#############...........#######.............#############################",
+    "##.....#############...........#######.............#############################",
+    "##.....#############^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^............................#",
+    "##.....#########################################################################"
+   ],
+   "palette": "throne",
+   "movement": "survive-2",
+   "aim8": true,
+   "study": true,
+   "rbr": 14,
+   "exit": "down",
+   "echo": true,
+   "court": {
+    "thrones": [
+     {
+      "c": 34,
+      "r": 27
+     },
+     {
+      "c": 64,
+      "r": 17,
+      "speed": 150,
+      "every": 80
+     },
+     {
+      "c": 12,
+      "r": 11,
+      "every": 75,
+      "speed": 180,
+      "parry": false,
+      "winded": 60
+     }
+    ],
+    "first": 50,
+    "every": 90,
+    "speed": 120,
+    "guard": 44,
+    "stun": 70,
+    "back": 360
+   },
+   "hint": "Parry his bolt back and he kneels. Leave your echo beside his throne first, then trade places and strike while he is down.",
+   "question": "Where must you already be when the King falls to his knees?"
+  },
+  "bank": {
+   "side": "base",
+   "batch": 19,
+   "run": 10,
+   "collection": "superrooms",
+   "format": "superroom",
+   "acceptance": "revised",
+   "status": "route-proven",
+   "author": "Claude",
+   "tags": [
+    "superroom",
+    "native-king",
+    "echo",
+    "court",
+    "return-route"
+   ],
+   "newMechanics": [],
+   "humanReview": "Reinvented 7.308 from feedback; awaiting human review.",
+   "worlds": [
+    14
+   ],
+   "difficulty": 4,
+   "replaces": "cl14-k14-last",
+   "solution": "The King throws from his first throne at once. Pogo the pit anvil and leave your echo floating over his head; dash clear of his guard before he slams. From the stepping stone, parry his bolt with no direction held: it flies straight back and he kneels. Trade with your echo and cut down onto his crown. On his high ledge, land beside him, leave the echo, dash back to the perch, parry, trade and cut. On the last pedestal his ward turns parries: swing in from the ring, leave the echo inside his ring, trade out as he slams, then trade back while he is winded and cut. Walk home through the opened floor gate.",
+   "interconnection": "His guard ring cannot be crossed, even while he kneels, so every opening must already hold your echo. Each throne moves the ring and the line his bolts take, so the echo is planted three different ways: in mid-air over him, standing beside him, and on a pedestal you must leave as he slams.",
+   "novelty": "A boss whose vulnerability is reachable only by trading into a place you prepared before he fell.",
+   "nearestExisting": "Replaces the static paired-mark King; uses the native echo, anvil and rings.",
+   "requiredEvents": [
+    "echo-place",
+    "echo-swap",
+    "court-kneel",
+    "court-wound",
+    "court-winded",
+    "court-fall",
+    "anvil",
+    "hook"
+   ],
+   "requiredEventCounts": {
+    "court-wound": 3,
+    "echo-swap": 4
+   },
+   "endingForgiveness": "The final cut is taken on his pedestal; the home floor gate is a plain walk after he falls.",
+   "positiveChecks": [
+    {
+     "name": "First parry two frames earlier",
+     "tape": [
+      [
+       12,
+       "l"
+      ],
+      [
+       40,
+       ""
+      ],
+      [
+       16,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       14,
+       "r"
+      ],
+      [
+       4,
+       ""
+      ],
+      [
+       8,
+       "rj"
+      ],
+      [
+       13,
+       "r"
+      ],
+      [
+       1,
+       "ds"
+      ],
+      [
+       48,
+       "r"
+      ],
+      [
+       1,
+       "rq"
+      ],
+      [
+       1,
        "rx"
       ],
       [
@@ -95939,720 +96981,851 @@ const records=[
        "r"
       ],
       [
-       30,
-       ""
-      ],
-      [
-       24,
-       "l"
-      ],
-      [
-       10,
+       61,
        ""
       ],
       [
        1,
-       "luq"
+       "p"
       ],
       [
-       560,
+       33,
        ""
       ],
       [
-       60,
+       1,
+       "q"
+      ],
+      [
+       2,
        ""
       ],
       [
-       18,
-       "lj"
+       1,
+       "ds"
+      ],
+      [
+       47,
+       ""
       ],
       [
        10,
+       "r"
+      ],
+      [
+       10,
+       "rj"
+      ],
+      [
+       1,
+       "ux"
+      ],
+      [
+       36,
+       "urg"
+      ],
+      [
+       8,
+       "rj"
+      ],
+      [
+       61,
+       "r"
+      ],
+      [
+       14,
        ""
       ],
       [
        12,
+       "rj"
+      ],
+      [
+       1,
+       "rx"
+      ],
+      [
+       22,
        "r"
       ],
       [
-       16,
+       1,
+       "q"
+      ],
+      [
+       4,
+       "lj"
+      ],
+      [
+       1,
+       "ulx"
+      ],
+      [
+       5,
+       "ul"
+      ],
+      [
+       33,
+       "l"
+      ],
+      [
+       50,
        ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       19,
+       ""
+      ],
+      [
+       1,
+       "q"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       1,
+       "rs"
+      ],
+      [
+       4,
+       "l"
+      ],
+      [
+       1,
+       "ulx"
+      ],
+      [
+       5,
+       "ul"
+      ],
+      [
+       70,
+       "l"
+      ],
+      [
+       8,
+       "lj"
+      ],
+      [
+       14,
+       "lg"
+      ],
+      [
+       1,
+       "ulx"
+      ],
+      [
+       6,
+       "ul"
+      ],
+      [
+       22,
+       "l"
+      ],
+      [
+       1,
+       "q"
+      ],
+      [
+       34,
+       "l"
+      ],
+      [
+       12,
+       "lj"
+      ],
+      [
+       10,
+       "lg"
+      ],
+      [
+       1,
+       "lgs"
+      ],
+      [
+       27,
+       "lg"
+      ],
+      [
+       8,
+       "l"
+      ],
+      [
+       1,
+       "q"
+      ],
+      [
+       6,
+       ""
+      ],
+      [
+       1,
+       "q"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       1,
+       "ls"
+      ],
+      [
+       30,
+       ""
+      ],
+      [
+       150,
+       "l"
       ]
      ]
     }
    ],
    "shortcutChecks": [
     {
-     "name": "Keep the first door instead of relocating its exit",
+     "name": "No echo: parry and walk in",
      "tape": [
       [
-       10,
+       12,
        "l"
       ],
       [
-       1600,
+       40,
        ""
+      ],
+      [
+       16,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       14,
+       "r"
+      ],
+      [
+       4,
+       ""
+      ],
+      [
+       8,
+       "rj"
+      ],
+      [
+       13,
+       "r"
+      ],
+      [
+       1,
+       "ds"
+      ],
+      [
+       48,
+       "r"
+      ],
+      [
+       1,
+       "r"
+      ],
+      [
+       1,
+       "rx"
+      ],
+      [
+       37,
+       "r"
+      ],
+      [
+       59,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       33,
+       ""
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       2,
+       ""
+      ],
+      [
+       1,
+       "ds"
+      ],
+      [
+       47,
+       ""
+      ],
+      [
+       10,
+       "r"
+      ],
+      [
+       10,
+       "rj"
+      ],
+      [
+       1,
+       "ux"
+      ],
+      [
+       36,
+       "urg"
+      ],
+      [
+       8,
+       "rj"
+      ],
+      [
+       61,
+       "r"
+      ],
+      [
+       14,
+       ""
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       1,
+       "rx"
+      ],
+      [
+       22,
+       "r"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       4,
+       "lj"
+      ],
+      [
+       1,
+       "ulx"
+      ],
+      [
+       5,
+       "ul"
+      ],
+      [
+       33,
+       "l"
+      ],
+      [
+       50,
+       ""
+      ],
+      [
+       1,
+       "p"
+      ],
+      [
+       19,
+       ""
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       1,
+       "rs"
+      ],
+      [
+       4,
+       "l"
+      ],
+      [
+       1,
+       "ulx"
+      ],
+      [
+       5,
+       "ul"
+      ],
+      [
+       70,
+       "l"
+      ],
+      [
+       8,
+       "lj"
+      ],
+      [
+       14,
+       "lg"
+      ],
+      [
+       1,
+       "ulx"
+      ],
+      [
+       6,
+       "ul"
+      ],
+      [
+       22,
+       "l"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       34,
+       "l"
+      ],
+      [
+       12,
+       "lj"
+      ],
+      [
+       10,
+       "lg"
+      ],
+      [
+       1,
+       "lgs"
+      ],
+      [
+       27,
+       "lg"
+      ],
+      [
+       8,
+       "l"
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       6,
+       ""
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       1,
+       ""
+      ],
+      [
+       1,
+       "ls"
+      ],
+      [
+       30,
+       ""
+      ],
+      [
+       150,
+       "l"
       ]
      ]
     }
    ],
+   "needsReview": true,
    "evidenceNotes": [
     {
-     "name": "Native two ward returns and portal homecoming",
-     "frames": 1344,
-     "deaths": 0,
-     "hits": 2
-    },
-    {
-     "name": "Extra60-frame pause before final portal return",
-     "frames": 1404,
-     "deaths": 0
-    },
-    {
-     "name": "Stay at first door instead of relocating its exit",
-     "result": "Only first band breaks; home gate remains locked",
-     "hits": 1,
-     "exited": false,
+     "name": "Canonical 7.308 route",
+     "frames": 1001,
      "deaths": 0
     }
    ],
-   "revision": "35cd11c4eef8",
-   "source": "scripts/room-bank/base/bank-b73.json"
+   "approvedIngredients": [
+    "bank-f45",
+    "bank-b53"
+   ],
+   "revision": "56a500605289",
+   "source": "scripts/room-bank/base/bank-b74.json"
   },
   "tape": [
    [
-    10,
+    12,
     "l"
    ],
    [
-    560,
+    40,
     ""
    ],
    [
-    35,
+    16,
     "r"
    ],
    [
-    18,
+    12,
     "rj"
    ],
    [
-    5,
+    14,
+    "r"
+   ],
+   [
+    4,
+    ""
+   ],
+   [
+    8,
+    "rj"
+   ],
+   [
+    13,
+    "r"
+   ],
+   [
+    1,
+    "ds"
+   ],
+   [
+    48,
+    "r"
+   ],
+   [
+    1,
+    "rq"
+   ],
+   [
+    1,
     "rx"
    ],
    [
-    35,
+    37,
     "r"
+   ],
+   [
+    59,
+    ""
+   ],
+   [
+    1,
+    "p"
+   ],
+   [
+    33,
+    ""
+   ],
+   [
+    1,
+    "q"
+   ],
+   [
+    2,
+    ""
+   ],
+   [
+    1,
+    "ds"
+   ],
+   [
+    47,
+    ""
+   ],
+   [
+    10,
+    "r"
+   ],
+   [
+    10,
+    "rj"
+   ],
+   [
+    1,
+    "ux"
+   ],
+   [
+    36,
+    "urg"
+   ],
+   [
+    8,
+    "rj"
+   ],
+   [
+    61,
+    "r"
+   ],
+   [
+    14,
+    ""
+   ],
+   [
+    12,
+    "rj"
+   ],
+   [
+    1,
+    "rx"
+   ],
+   [
+    22,
+    "r"
+   ],
+   [
+    1,
+    "q"
+   ],
+   [
+    4,
+    "lj"
+   ],
+   [
+    1,
+    "ulx"
+   ],
+   [
+    5,
+    "ul"
+   ],
+   [
+    33,
+    "l"
+   ],
+   [
+    50,
+    ""
+   ],
+   [
+    1,
+    "p"
+   ],
+   [
+    19,
+    ""
+   ],
+   [
+    1,
+    "q"
+   ],
+   [
+    1,
+    ""
+   ],
+   [
+    1,
+    "rs"
+   ],
+   [
+    4,
+    "l"
+   ],
+   [
+    1,
+    "ulx"
+   ],
+   [
+    5,
+    "ul"
+   ],
+   [
+    70,
+    "l"
+   ],
+   [
+    8,
+    "lj"
+   ],
+   [
+    14,
+    "lg"
+   ],
+   [
+    1,
+    "ulx"
+   ],
+   [
+    6,
+    "ul"
+   ],
+   [
+    22,
+    "l"
+   ],
+   [
+    1,
+    "q"
+   ],
+   [
+    34,
+    "l"
+   ],
+   [
+    12,
+    "lj"
+   ],
+   [
+    10,
+    "lg"
+   ],
+   [
+    1,
+    "lgs"
+   ],
+   [
+    27,
+    "lg"
+   ],
+   [
+    8,
+    "l"
+   ],
+   [
+    1,
+    "q"
+   ],
+   [
+    6,
+    ""
+   ],
+   [
+    1,
+    "q"
+   ],
+   [
+    1,
+    ""
+   ],
+   [
+    1,
+    "ls"
    ],
    [
     30,
     ""
    ],
    [
-    24,
+    150,
     "l"
-   ],
-   [
-    10,
-    ""
-   ],
-   [
-    1,
-    "luq"
-   ],
-   [
-    560,
-    ""
-   ],
-   [
-    18,
-    "lj"
-   ],
-   [
-    10,
-    ""
-   ],
-   [
-    12,
-    "r"
-   ],
-   [
-    16,
-    ""
-   ]
-  ]
- },
- {
-  "room": {
-   "id": "bank-b74",
-   "study": true,
-   "dashes": 1,
-   "cols": 80,
-   "rows": 38,
-   "palette": "throne",
-   "exit": "right",
-   "name": "The Seat You Leave Behind",
-   "rbr": 14,
-   "echo": true,
-   "map": [
-    "############################################################################G###",
-    "#...........................................................................G..#",
-    "#...........................................................................G..#",
-    "#...........................................................................G..#",
-    "#...........................................................................G..#",
-    "#...........................................................................G..#",
-    "#...........................................................................G..#",
-    "#...........................................................................G..#",
-    "#..............====================##.......................................G..#",
-    "#..................................##.......................................G..#",
-    "#..................................##.......................................G..#",
-    "#..................................##.......................................G..#",
-    "#..................................##.......................................G..#",
-    "#..................................##.......................................G..#",
-    "#..................................##.......................................G..#",
-    "#..................................##.......................................G..#",
-    "#..................................##..............................#########G..#",
-    "#..................................##..............................#########G..#",
-    "#..............................######..............................#########G..#",
-    "#..............................######..............................#########G..#",
-    "#..............................######..............................#########G..#",
-    "#..............................######.......................################G..#",
-    "#..............................######.......................################G..#",
-    "#..............................######.......................################G..#",
-    "#......................#######.######.......................################G..#",
-    "#......................#######.######.......................################G..#",
-    "#......................#######.######.......................################G..#",
-    "#......................#######.######........=====.########.################G..#",
-    "#......................#######.######..............########.################G..#",
-    "#......................#######=######..............########.################G..#",
-    "#..............###############.######..............########.################G..#",
-    "#..............###############.######..............########.################G..#",
-    "#..............###############.######....##################.################G...",
-    "#..............###############.######....##################.################G...",
-    "#..............###############.######....##################.################G...",
-    "#....P.........###############.######....##################.################G...",
-    "################################################################################",
-    "################################################################################"
-   ],
-   "crown": {
-    "marks": [
-     {
-      "c": 8,
-      "r": 35
-     },
-     {
-      "c": 21,
-      "r": 7
-     }
-    ],
-    "echoOnly": true,
-    "hold": 30,
-    "king": true,
-    "phases": [
-     [
-      [
-       21,
-       7
-      ],
-      [
-       68,
-       15
-      ]
-     ],
-     [
-      [
-       68,
-       15
-      ],
-      [
-       46,
-       26
-      ]
-     ]
-    ],
-    "bolts": {
-     "first": 1200,
-     "every": 300,
-     "speed": 85
-    }
-   },
-   "hint": "The next seal keeps one of its old seats. Trade places with your echo: the place you leave is the next body the King needs.",
-   "question": "Which seat should be occupied by the echo when the crown turns?"
-  },
-  "bank": {
-   "side": "base",
-   "batch": 19,
-   "run": 10,
-   "collection": "superrooms",
-   "format": "superroom",
-   "acceptance": "candidate",
-   "status": "route-proven",
-   "author": "Codex",
-   "tags": [
-    "superroom",
-    "native-king",
-    "echo",
-    "return-route"
-   ],
-   "newMechanics": [],
-   "humanReview": "Awaiting human review; ratings not measured.",
-   "worlds": [
-    14
-   ],
-   "difficulty": 4,
-   "replaces": "cl14-k14-last",
-   "approvedIngredients": [
-    "bank-f45",
-    "bank-b53"
-   ],
-   "solution": "Leave an echo on the low western seat, then climb the shared stair and wall-jump left onto the high western gallery for the first seal. Swap: the echo stays high while you start below again, cross the same stair and continue over the spine to the eastern throne. Swap once more: the echo stays on that throne while you cross from the high gallery and drop onto the inner balcony. The native King’s third seal opens the safe floor-level exit.",
-   "interconnection": "Each seal retains the seat reached in the preceding stage. Two echo trades reuse the same central stair, first as an ascent to the western gallery and then as the way across to the eastern throne; the last drop lands on a platform passed over earlier.",
-   "novelty": "A three-seat spatial permutation: progress depends on who remains behind rather than reaching a chain of independent switches.",
-   "nearestExisting": "B53 and F45 use echo to hold a route; this native King cycles three overlapping seal pairs around one court.",
-   "requiredEvents": [
-    "echo-place",
-    "echo-swap",
-    "crown-seal",
-    "crown-turn",
-    "gate-open",
-    "exit"
-   ],
-   "requiredEventCounts": {
-    "crown-seal": 3
-   },
-   "endingForgiveness": "The final mark has a five-tile-wide fixed dry balcony; victory opens a safe descent and floor-level exit.",
-   "superroom": {
-    "screenAreas": 3.3043478260869565,
-    "stages": [
-     "Leave the first body below",
-     "Use the old throne as the second anchor",
-     "Trade back and meet the echo across the court"
-    ]
-   },
-   "route": {
-    "exited": true,
-    "deaths": 0,
-    "frames": 2342
-   },
-   "routeEvents": [
-    {
-     "type": "echo-place",
-     "frame": 17,
-     "x": 65,
-     "y": 282,
-     "i": 16
-    },
-    {
-     "type": "crown-seal",
-     "frame": 558,
-     "x": 168,
-     "y": 56,
-     "phase": 0,
-     "last": false,
-     "i": 557
-    },
-    {
-     "type": "crown-turn",
-     "frame": 558,
-     "x": 544,
-     "y": 120,
-     "phase": 1,
-     "i": 557
-    },
-    {
-     "type": "echo-swap",
-     "frame": 580,
-     "x": 65,
-     "y": 282,
-     "fx": 163,
-     "fy": 58,
-     "i": 579
-    },
-    {
-     "type": "crown-seal",
-     "frame": 1495,
-     "x": 544,
-     "y": 120,
-     "phase": 1,
-     "last": false,
-     "i": 1494
-    },
-    {
-     "type": "crown-turn",
-     "frame": 1495,
-     "x": 368,
-     "y": 208,
-     "phase": 2,
-     "i": 1494
-    },
-    {
-     "type": "echo-swap",
-     "frame": 1511,
-     "x": 163,
-     "y": 58,
-     "fx": 547,
-     "fy": 122,
-     "i": 1510
-    },
-    {
-     "type": "crown-seal",
-     "frame": 1692,
-     "x": 368,
-     "y": 208,
-     "phase": 2,
-     "last": true,
-     "i": 1691
-    },
-    {
-     "type": "gate-open",
-     "frame": 1693,
-     "x": 612,
-     "y": 144,
-     "i": 1692
-    },
-    {
-     "type": "exit",
-     "frame": 2342,
-     "room": 0,
-     "i": 2341
-    }
-   ],
-   "positiveChecks": [
-    {
-     "name": "Pause40framesbeforefinaldeparture",
-     "tape": [
-      [
-       16,
-       "r"
-      ],
-      [
-       1,
-       "q"
-      ],
-      [
-       450,
-       "rgu"
-      ],
-      [
-       12,
-       "lj"
-      ],
-      [
-       60,
-       "l"
-      ],
-      [
-       40,
-       ""
-      ],
-      [
-       1,
-       "q"
-      ],
-      [
-       850,
-       "rgu"
-      ],
-      [
-       40,
-       "l"
-      ],
-      [
-       40,
-       ""
-      ],
-      [
-       1,
-       "q"
-      ],
-      [
-       12,
-       "rj"
-      ],
-      [
-       125,
-       "r"
-      ],
-      [
-       45,
-       ""
-      ],
-      [
-       40,
-       ""
-      ],
-      [
-       220,
-       "rgu"
-      ],
-      [
-       180,
-       "r"
-      ],
-      [
-       120,
-       "rgu"
-      ],
-      [
-       40,
-       ""
-      ],
-      [
-       180,
-       "r"
-      ]
-     ],
-     "exited": true,
-     "deaths": 0,
-     "frames": 2325
-    }
-   ],
-   "shortcutChecks": [
-    {
-     "name": "Attemptcanonicalroutewithoutq",
-     "tape": [
-      [
-       16,
-       "r"
-      ],
-      [
-       1,
-       ""
-      ],
-      [
-       450,
-       "rgu"
-      ],
-      [
-       12,
-       "lj"
-      ],
-      [
-       60,
-       "l"
-      ],
-      [
-       40,
-       ""
-      ],
-      [
-       1,
-       ""
-      ],
-      [
-       850,
-       "rgu"
-      ],
-      [
-       40,
-       "l"
-      ],
-      [
-       40,
-       ""
-      ],
-      [
-       1,
-       ""
-      ],
-      [
-       12,
-       "rj"
-      ],
-      [
-       125,
-       "r"
-      ],
-      [
-       45,
-       ""
-      ],
-      [
-       40,
-       ""
-      ],
-      [
-       220,
-       "rgu"
-      ],
-      [
-       180,
-       "r"
-      ],
-      [
-       120,
-       "rgu"
-      ],
-      [
-       180,
-       "r"
-      ]
-     ],
-     "exited": false,
-     "deaths": 0,
-     "frames": null
-    }
-   ],
-   "revision": "d0cd699ca092",
-   "source": "scripts/room-bank/base/bank-b74.json"
-  },
-  "tape": [
-   [
-    16,
-    "r"
-   ],
-   [
-    1,
-    "q"
-   ],
-   [
-    450,
-    "rgu"
-   ],
-   [
-    12,
-    "lj"
-   ],
-   [
-    60,
-    "l"
-   ],
-   [
-    40,
-    ""
-   ],
-   [
-    1,
-    "q"
-   ],
-   [
-    850,
-    "rgu"
-   ],
-   [
-    40,
-    "l"
-   ],
-   [
-    40,
-    ""
-   ],
-   [
-    1,
-    "q"
-   ],
-   [
-    12,
-    "rj"
-   ],
-   [
-    125,
-    "r"
-   ],
-   [
-    45,
-    ""
-   ],
-   [
-    40,
-    ""
-   ],
-   [
-    220,
-    "rgu"
-   ],
-   [
-    180,
-    "r"
-   ],
-   [
-    120,
-    "rgu"
-   ],
-   [
-    180,
-    "r"
    ]
   ]
  },
  {
   "room": {
    "id": "bank-b75",
+   "name": "Leave Their Bones Behind",
    "study": true,
    "dashes": 1,
    "cols": 80,
    "rows": 38,
    "palette": "cliffs",
-   "exit": "left",
-   "name": "The Chain Comes Home",
    "rbr": 16,
+   "exit": "down",
    "map": [
-    "##G#############################################################################",
-    "#.G............................................................................#",
-    "#.G............................................................................#",
-    "#.G............................................................................#",
-    "#.G...........................................................O................#",
-    "#.G............................................................................#",
-    "#.G............................................................................#",
-    "#.G............................................................................#",
-    "#.G............................................................................#",
-    "#.G............................................................................#",
-    "#.G.....................................................#############..........#",
-    "#.G.....................................................#############..........#",
-    "#.G.....................................................#############..........#",
-    "#.G.....................................................#############..........#",
-    "#.G.............................................######..#############..........#",
-    "#.G.............................................######..#############..........#",
-    "#.G.............................................######..#############..........#",
-    "#.G.............................................######..#############..........#",
-    "#.G.....................................######..######..#############..........#",
-    "#.G.....................................######..######..#############..........#",
-    "#.G.......................O.............######..######..#############..........#",
-    "#.G.....................................######..######..#############..........#",
-    "#.G.............................######..######..######..#############..........#",
-    "#.G.............................######..######..######..#############..........#",
-    "#.G.............................######..######..######..#############..........#",
-    "#.G.............................######..######..######..#############..........#",
-    "#.G.....................#######.######..######..######..#############..........#",
-    "..G.................###########.######..######..######..#############..........#",
-    "..G.................###########.######..######..######..#############..........#",
-    "..G.................###########.######..######..######..#############..........#",
-    "..G.................###########.######..######..######..#############..........#",
-    "..G.........######..###########.######..######..######..#############..........#",
-    "..G.........######..###########.######..######..######..#############..........#",
-    "..G.........######..###########.######..######..######..#############..........#",
-    "..G..P......######..###########.######..######..######..#############..........#",
     "################################################################################",
-    "################################################################################",
-    "################################################################################"
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#................................................................O.............#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#.......................................O......................................#",
+    "#..............................................................................#",
+    "#...........................................................#############......#",
+    "#...........................................................#############......#",
+    "#...........................................................#############......#",
+    "#...........................................................#############......#",
+    "#.................O.........................................#############......#",
+    "#...........................................................#############......#",
+    "#...................................###########.............#############......#",
+    "#...................................###########.............#############......#",
+    "#...................................###########.............#############......#",
+    "#...................................###########.............#############......#",
+    "#...................................###########.............#############......#",
+    "#...................................###########.............#############......#",
+    "#.............#########.............###########.............#############......#",
+    "#.....P.......#########.............###########.............#############......#",
+    "####GGGGG##############.............###########.............#############......#",
+    "####.....##############.............###########.............#############......#",
+    "####.....##############.............###########.............#############......#",
+    "####.....##############^^^^^^^^^^^^^###########^^^^^^^^^^^^^#############^^^^^^#",
+    "####.....#######################################################################"
    ],
    "chainHydra": {
-    "phase": 2,
-    "c": 26,
-    "r": 25,
+    "c": 23,
+    "r": 29,
     "need": 3,
     "locks": [
      [
-      26,
-      25
+      23,
+      29
      ],
      [
-      64,
-      9
+      52,
+      20
      ],
      [
-      26,
-      25
+      73,
+      17
      ]
     ],
-    "spit": {
-     "first": 600,
-     "every": 240,
-     "speed": 85
+    "hunt": {
+     "notice": 104,
+     "tell": 48,
+     "bite": 16,
+     "open": 90,
+     "reach": 32,
+     "spines": [
+      {
+       "c": 23,
+       "r": 27,
+       "w": 11
+      },
+      {
+       "c": 47,
+       "r": 21,
+       "w": 11
+      }
+     ],
+     "stages": [
+      {},
+      {
+       "open": 100
+      },
+      {
+       "reach": 56,
+       "tell": 36,
+       "open": 84
+      }
+     ]
     }
    },
-   "hint": "Each collar needs a fresh hooked ascent. The chain moves to the high shore, then comes back to the first landing.",
-   "question": "Where will you leave the ring so the next falling cut reaches its collar?"
+   "hint": "The amber line shows the bite. Jump above it, then cut the exposed jaw. Each broken neck becomes your next bridge.",
+   "question": "How can the creature itself become the route to its remaining heads?"
   },
   "bank": {
    "side": "base",
@@ -96660,7 +97833,7 @@ const records=[
    "run": 10,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
+   "acceptance": "revised",
    "status": "route-proven",
    "author": "Codex",
    "tags": [
@@ -96670,7 +97843,7 @@ const records=[
     "return-route"
    ],
    "newMechanics": [],
-   "humanReview": "Awaiting human review; ratings not measured.",
+   "humanReview": "Reinvented after the 7.307.1 review; visible three-head fight, physical bone bridges, distinct grapple approach and final long bite. Awaiting review.",
    "worlds": [
     16
    ],
@@ -96680,20 +97853,22 @@ const records=[
     "bank-b37",
     "bank-b30"
    ],
-   "solution": "Climb to the first collar, catch its overhead ring and cut down after a fresh hooked ascent. Follow the chain up the stepped cliffs to the distant high collar and repeat. The chain returns to the first shore: descend the same cliff route, earn a new hook and cut the original collar again. The actual Hydra release opens the dry western exit.",
-   "interconnection": "The first landing becomes the last fight site. The chain visibly joins both shores and each hit changes which shared ring matters.",
+   "solution": "Jump over the amber first bite, then cut down into its exposed jaw. Climb the bone bridge it leaves. Catch the central ring above the next terrace, swing clear of the suspended head’s bite and jump-release toward its open jaw, cutting sideways. Land on its fallen neck. On the last terrace, read the longer amber warning and jump the faster lunge before cutting down. Return over both bones to the opened home shaft.",
+   "interconnection": "The two defeated heads make the two missing traversal bridges; victory changes the same terrain used for both the pursuit and homecoming.",
    "novelty": "A migrating native collar makes the return leg as important as the outward ascent, with broad resting shores before every committed falling cut.",
    "nearestExisting": "The Storm Chain migrates collars in one screen; this makes the same mechanic span a connected ascent and homeward descent, retaining the original ring for the last cut.",
    "requiredEvents": [
-    "hook",
+    "hydra-tell",
+    "hydra-bite",
+    "hydra-open",
     "hydra-lock",
-    "hydra-drag",
+    "hydra-spine",
     "hydra-free",
-    "gate-open",
-    "exit"
+    "hook"
    ],
    "requiredEventCounts": {
-    "hydra-lock": 3
+    "hydra-lock": 3,
+    "hydra-spine": 2
    },
    "endingForgiveness": "The third collar is above a broad permanent shore; after release the dry lower court remains safe.",
    "superroom": {
@@ -96707,7 +97882,7 @@ const records=[
    "route": {
     "exited": true,
     "deaths": 0,
-    "frames": 1325
+    "frames": 814
    },
    "routeEvents": [
     {
@@ -96799,271 +97974,375 @@ const records=[
    ],
    "positiveChecks": [
     {
-     "name": "Pause40framesbeforefinaldeparture",
+     "name": "Pause safely after the final head falls",
      "tape": [
-      [
-       300,
-       "rgu"
-      ],
-      [
-       8,
-       ""
-      ],
-      [
-       1,
-       "ds"
-      ],
-      [
-       35,
-       ""
-      ],
-      [
-       69,
-       "rgu"
-      ],
       [
        35,
        "r"
       ],
       [
-       300,
-       "rgu"
+       18,
+       "rj"
       ],
       [
-       60,
-       "gu"
+       15,
+       "r"
       ],
       [
-       8,
-       ""
+       18,
+       "j"
+      ],
+      [
+       10,
+       "r"
       ],
       [
        1,
        "ds"
       ],
       [
-       35,
+       12,
        ""
       ],
       [
-       195,
-       "l"
+       18,
+       "rj"
+      ],
+      [
+       6,
+       "rux"
+      ],
+      [
+       32,
+       "r"
+      ],
+      [
+       30,
+       "r"
+      ],
+      [
+       18,
+       "rj"
       ],
       [
        20,
-       ""
+       "r"
+      ],
+      [
+       15,
+       "jgu"
+      ],
+      [
+       35,
+       "gu"
       ],
       [
        14,
-       "l"
+       "rg"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       8,
+       "r"
       ],
       [
        1,
-       "jg"
+       "rs"
+      ],
+      [
+       15,
+       "r"
       ],
       [
        45,
-       "gu"
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       20,
+       "r"
       ],
       [
        8,
        ""
       ],
       [
+       18,
+       "j"
+      ],
+      [
+       10,
+       "r"
+      ],
+      [
        1,
        "ds"
       ],
       [
-       40,
+       15,
        ""
       ],
       [
-       40,
+       24,
        ""
       ],
       [
-       200,
+       440,
        "l"
       ]
-     ],
-     "exited": true,
-     "deaths": 0,
-     "frames": 1365
+     ]
     }
    ],
    "shortcutChecks": [
     {
-     "name": "Attemptcanonicalroutewithoutg",
+     "name": "All heads alive keep the home floor sealed",
      "tape": [
-      [
-       300,
-       "ru"
-      ],
-      [
-       8,
-       ""
-      ],
-      [
-       1,
-       "ds"
-      ],
-      [
-       35,
-       ""
-      ],
-      [
-       69,
-       "ru"
-      ],
       [
        35,
        "r"
       ],
       [
-       300,
-       "ru"
+       18,
+       "rj"
       ],
       [
-       60,
-       "u"
+       15,
+       "r"
       ],
       [
-       8,
-       ""
-      ],
-      [
-       1,
-       "ds"
-      ],
-      [
-       35,
-       ""
-      ],
-      [
-       195,
-       "l"
-      ],
-      [
-       20,
-       ""
-      ],
-      [
-       14,
-       "l"
-      ],
-      [
-       1,
+       18,
        "j"
       ],
       [
+       10,
+       "r"
+      ],
+      [
+       1,
+       "d"
+      ],
+      [
+       12,
+       ""
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       6,
+       "rux"
+      ],
+      [
+       32,
+       "r"
+      ],
+      [
+       30,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       20,
+       "r"
+      ],
+      [
+       15,
+       "jgu"
+      ],
+      [
+       35,
+       "gu"
+      ],
+      [
+       14,
+       "rg"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       8,
+       "r"
+      ],
+      [
+       1,
+       "r"
+      ],
+      [
+       15,
+       "r"
+      ],
+      [
        45,
-       "u"
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       20,
+       "r"
       ],
       [
        8,
        ""
       ],
       [
-       1,
-       "ds"
+       18,
+       "j"
       ],
       [
-       40,
+       10,
+       "r"
+      ],
+      [
+       1,
+       "d"
+      ],
+      [
+       15,
        ""
       ],
       [
-       200,
+       400,
        "l"
       ]
-     ],
-     "exited": false,
-     "deaths": 1,
-     "frames": null
+     ]
     }
    ],
    "ingredientNotes": "B37 supplies grapple departures and B30 combines a suspended grapple with a deliberate blade interaction. The native Storm Chain supplies the migrating collar boss.",
-   "revision": "4aa4d8696609",
+   "needsReview": true,
+   "revision7308": "Entirely new arena and visible three-head bite/open-jaw fight. Ordinary weapon hits replace the invisible grapple serial rule. Native mode is opt-in; old encounters stay unchanged.",
+   "revision": "aac00d3aa189",
    "source": "scripts/room-bank/base/bank-b75.json"
   },
   "tape": [
-   [
-    300,
-    "rgu"
-   ],
-   [
-    8,
-    ""
-   ],
-   [
-    1,
-    "ds"
-   ],
-   [
-    35,
-    ""
-   ],
-   [
-    69,
-    "rgu"
-   ],
    [
     35,
     "r"
    ],
    [
-    300,
-    "rgu"
+    18,
+    "rj"
    ],
    [
-    60,
-    "gu"
+    15,
+    "r"
    ],
    [
-    8,
-    ""
+    18,
+    "j"
+   ],
+   [
+    10,
+    "r"
    ],
    [
     1,
     "ds"
    ],
    [
-    35,
+    12,
     ""
    ],
    [
-    195,
-    "l"
+    18,
+    "rj"
+   ],
+   [
+    6,
+    "rux"
+   ],
+   [
+    32,
+    "r"
+   ],
+   [
+    30,
+    "r"
+   ],
+   [
+    18,
+    "rj"
    ],
    [
     20,
-    ""
+    "r"
+   ],
+   [
+    15,
+    "jgu"
+   ],
+   [
+    35,
+    "gu"
    ],
    [
     14,
-    "l"
+    "rg"
+   ],
+   [
+    18,
+    "rj"
+   ],
+   [
+    8,
+    "r"
    ],
    [
     1,
-    "jg"
+    "rs"
+   ],
+   [
+    15,
+    "r"
    ],
    [
     45,
-    "gu"
+    "r"
+   ],
+   [
+    18,
+    "rj"
+   ],
+   [
+    20,
+    "r"
    ],
    [
     8,
     ""
    ],
    [
+    18,
+    "j"
+   ],
+   [
+    10,
+    "r"
+   ],
+   [
     1,
     "ds"
    ],
    [
-    40,
+    15,
     ""
    ],
    [
-    200,
+    400,
     "l"
    ]
   ]
@@ -97071,82 +98350,75 @@ const records=[
  {
   "room": {
    "id": "bank-b76",
-   "study": true,
-   "dashes": 1,
+   "name": "The Tide Lends Its Lift",
    "cols": 80,
-   "rows": 38,
-   "palette": "shores",
-   "exit": "down",
-   "name": "Take the Lantern at High Water",
-   "rbr": 17,
+   "rows": 36,
    "map": [
-    "##HG############################################################################",
-    "#.HG...........................................................................#",
-    "#.HG...........................................................................#",
-    "#.HG...........................................................................#",
-    "#.HG...........................................................................#",
-    "#.HG...........................................................................#",
-    "#.HG...........................................................................#",
-    "#.HG...........................................................................#",
-    "#.HG...........................................................................#",
-    "#.HG...........................................................................#",
-    "#.HG...........................................................................#",
-    "#.HG...........................................................................#",
-    "#.HG...............................O...........................................#",
-    "#.HG..........................................................l..c.............#",
-    "#.HG.......................................#####################################",
-    "#.HG......................................<#####################################",
-    "#.HG......................................<#####################################",
-    "#.HG......................................<#####################################",
-    "#.HG......................................<#####################################",
-    "#.HG......................................<#####################################",
-    "#.HG......................................<#####################################",
-    "#.HG......................................<#####################################",
-    "#.HG......................................<#####################################",
-    "#.HG......................................<#####################################",
-    "#.HG..........................############<#####################################",
-    "#.HG......................................<#####################################",
-    "#.HG......................................<#####################################",
-    "#.HG......................................<#####################################",
-    "#.HG......................................<#####################################",
-    "#.HG......................................<#####################################",
-    "#.HG......................................<#####################################",
-    "#.HG......................................<#####################################",
-    "#.HG...._.................................<#####################################",
-    "#..###########.^^^^^..P.....^^............<#####################################",
-    "#..###########......FFFFFFFF..............<#####################################",
-    "#..###########............................<#####################################",
-    "#..###########............................<#####################################",
-    "#..#############################################################################"
+    "################################################################################",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#.........................................................c....................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#....................##................##.............##.......................#",
+    "#....................##................##.............##.......................#",
+    "#....................##................##.............##.......................#",
+    "#....................##................##.............##.......................#",
+    "#...............................................................################",
+    "#...............................................................################",
+    "#...............................................................################",
+    "#..................................................FFFF.........################",
+    "#...............................................................################",
+    "#...............................................................################",
+    "#...............................................................################",
+    "#...............................................................################",
+    "#...............................................................################",
+    "#.........................................FFFF..................################",
+    "#.................O.............................................################",
+    "#...............................................................################",
+    "#...............................................................################",
+    "#...............................................................################",
+    "#...P...........................................................################",
+    "##GGGGG#.........................FFFF...........................################",
+    "##.....#.....................##.................................################",
+    "##.....#...##................##.................................################",
+    "##.....#...##................##.................................################",
+    "##.....#...##................##.................................################",
+    "##.....#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^################",
+    "##.....#########################################################################",
+    "##.....#########################################################################",
+    "##.....#########################################################################"
    ],
+   "palette": "shores",
+   "movement": "survive-2",
+   "aim8": true,
+   "study": true,
+   "rbr": 17,
+   "exit": "down",
    "tide": {
-    "c0": 14,
-    "c1": 42,
-    "low": 35,
-    "high": 17,
-    "hold": 90,
+    "c0": 8,
+    "c1": 63,
+    "low": 33,
+    "high": 9,
+    "hold": 60,
+    "holdLow": 150,
+    "holdHigh": 60,
     "move": 80
    },
-   "weightCircuits": [
+   "currents": [
     {
-     "id": "A",
-     "plates": [
-      [
-       8,
-       32
-      ]
-     ],
-     "doors": [
-      [
-       2,
-       0
-      ]
-     ]
+     "c": 8,
+     "r": 9,
+     "w": 56,
+     "h": 14,
+     "dx": -320,
+     "dy": 0
     }
    ],
-   "hint": "The sea lends the float its height. Leave the ring for the outward climb; bring the lantern home above the drowned reef.",
-   "question": "What can the tide carry for you that the grapple cannot?",
-   "campaignEntry": "down"
+   "hint": "Cross the bare reef while the tide is out. Each float lifts only when the water reaches it: jump while it rises. Touch the tally at high water, then ride the undertow home before the ebb.",
+   "question": "What does the rising water give you that standing water does not?"
   },
   "bank": {
    "side": "base",
@@ -97154,39 +98426,35 @@ const records=[
    "run": 10,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
+   "acceptance": "revised",
    "status": "route-proven",
-   "author": "Codex",
+   "author": "Claude",
    "tags": [
     "superroom",
     "tide",
-    "hook",
-    "cargo",
+    "float",
+    "current",
     "return-route"
    ],
    "newMechanics": [],
-   "humanReview": "Awaiting human review; ratings not measured.",
+   "humanReview": "Reinvented 7.308 from feedback; awaiting human review.",
    "worlds": [
     17
    ],
    "difficulty": 4,
-   "approvedIngredients": [
-    "bank-b37",
-    "bank-b64"
-   ],
-   "solution": "Ride the native float up with the tide, jump toward the offshore ring and release onto the high pier. Light the far tally and take its lantern. Return from the same pier carrying the lantern; its glide gives time to cross the basin while high water drowns the reef. Leave the lantern on the western plate, then step through the opened home gate into its short downward escape.",
-   "interconnection": "The shared basin is a rising launch platform outbound and a flooded return path with cargo inbound. The same ring becomes unusable while carrying the lantern, so the homebound solution must exploit water and glide instead.",
-   "novelty": "The object retrieved at the top deliberately removes the tool used to reach it; the tide supplies a different route through the same space.",
-   "nearestExisting": "Landfall uses a float and ring in one flight; this adds a cargo return over the same drowned reef and a permanent home gate.",
+   "solution": "One tide, no waiting. While the tide is out, cross the bare reef by its posts and the ring and stand on the first float. As the water lifts it, jump; as the water lifts it, jump and dash for the second, which the sea reaches next, then the third. From the top of the high water, jump for the tally. Fall into the deep water and let the undertow carry you west: dive under both rocks, stroke up at the shore and climb out before the ebb bares the reef. The tally has opened your floor gate.",
+   "interconnection": "The same tide lifts the floats outbound, floods the reef for the undertow home and then bares the thorns that end the attempt.",
+   "novelty": "Every phase of a single tide has a job; arriving late at any one means the next tide.",
+   "nearestExisting": "Landfall’s float launch, extended into a chain and a timed current return.",
    "requiredEvents": [
     "hook",
     "stone-lit",
-    "pickup",
-    "throw",
-    "weight-open",
+    "gate-open",
+    "splash",
+    "stroke",
     "exit"
    ],
-   "endingForgiveness": "The last plate rests on the immovable fourteen-tile dry shore. The opened gate leads directly into a walled, hazard-free exit chute; hold left and let the final drop finish.",
+   "endingForgiveness": "The home shore is dry stone and the gate is already open.",
    "superroom": {
     "screenAreas": 3.3043478260869565,
     "stages": [
@@ -97244,273 +98512,306 @@ const records=[
      "i": 899
     }
    ],
-   "positiveChecks": [
-    {
-     "name": "Pause40framesbeforefinaldeparture",
-     "tape": [
-      [
-       1,
-       "r"
-      ],
-      [
-       155,
-       ""
-      ],
-      [
-       25,
-       "rj"
-      ],
-      [
-       45,
-       "rgu"
-      ],
-      [
-       25,
-       "rgu"
-      ],
-      [
-       12,
-       "rux"
-      ],
-      [
-       125,
-       "r"
-      ],
-      [
-       14,
-       "r"
-      ],
-      [
-       1,
-       "rs"
-      ],
-      [
-       14,
-       "l"
-      ],
-      [
-       10,
-       ""
-      ],
-      [
-       10,
-       "l"
-      ],
-      [
-       10,
-       ""
-      ],
-      [
-       1,
-       "g"
-      ],
-      [
-       165,
-       "l"
-      ],
-      [
-       160,
-       "l"
-      ],
-      [
-       30,
-       "r"
-      ],
-      [
-       10,
-       ""
-      ],
-      [
-       1,
-       "dg"
-      ],
-      [
-       40,
-       ""
-      ],
-      [
-       110,
-       "l"
-      ]
-     ],
-     "exited": true,
-     "deaths": 0,
-     "frames": 940
-    }
-   ],
+   "positiveChecks": [],
    "shortcutChecks": [
     {
-     "name": "Attemptcanonicalroutewithoutg",
+     "name": "Ignores the tally",
      "tape": [
       [
-       1,
+       16,
        "r"
       ],
       [
-       155,
-       ""
-      ],
-      [
-       25,
+       10,
        "rj"
       ],
       [
-       45,
-       "ru"
-      ],
-      [
-       25,
-       "ru"
+       14,
+       "r"
       ],
       [
        12,
-       "rux"
+       ""
       ],
       [
-       125,
+       8,
+       "rjg"
+      ],
+      [
+       20,
+       "rg"
+      ],
+      [
+       3,
+       "rj"
+      ],
+      [
+       8,
        "r"
       ],
       [
+       6,
+       ""
+      ],
+      [
+       6,
+       "rj"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       28,
+       ""
+      ],
+      [
        14,
+       "rj"
+      ],
+      [
+       6,
        "r"
       ],
       [
        1,
-       "rs"
+       "urx"
       ],
       [
-       14,
-       "l"
+       4,
+       "ur"
       ],
       [
-       10,
-       ""
+       25,
+       "r"
       ],
       [
-       10,
-       "l"
+       8,
+       "rj"
       ],
       [
-       10,
-       ""
+       8,
+       "r"
       ],
       [
        1,
+       "urx"
+      ],
+      [
+       4,
+       "ur"
+      ],
+      [
+       8,
+       "r"
+      ],
+      [
+       17,
        ""
       ],
       [
-       165,
-       "l"
-      ],
-      [
-       160,
-       "l"
+       12,
+       "r"
       ],
       [
        30,
-       "r"
-      ],
-      [
-       10,
-       ""
-      ],
-      [
-       1,
        "d"
       ],
       [
-       110,
+       50,
+       "ld"
+      ],
+      [
+       10,
        "l"
+      ],
+      [
+       3,
+       "lj"
+      ],
+      [
+       3,
+       "l"
+      ],
+      [
+       3,
+       "lj"
+      ],
+      [
+       40,
+       "l"
+      ],
+      [
+       40,
+       "r"
+      ],
+      [
+       60,
+       ""
       ]
-     ],
-     "exited": false,
-     "deaths": 11,
-     "frames": null
+     ]
     }
    ],
-   "revision": "9a34b3a2a99c",
+   "needsReview": true,
+   "requiredEventCounts": {},
+   "evidenceNotes": [
+    {
+     "name": "Canonical 7.308 route",
+     "frames": 404,
+     "deaths": 0
+    }
+   ],
+   "approvedIngredients": [
+    "bank-b37",
+    "bank-f66"
+   ],
+   "revision": "246fab9e2a2b",
    "source": "scripts/room-bank/base/bank-b76.json"
   },
   "tape": [
    [
-    1,
+    16,
     "r"
    ],
    [
-    155,
-    ""
-   ],
-   [
-    25,
+    10,
     "rj"
    ],
    [
-    45,
-    "rgu"
-   ],
-   [
-    25,
-    "rgu"
+    14,
+    "r"
    ],
    [
     12,
-    "rux"
+    ""
    ],
    [
-    125,
+    8,
+    "rjg"
+   ],
+   [
+    20,
+    "rg"
+   ],
+   [
+    3,
+    "rj"
+   ],
+   [
+    8,
     "r"
    ],
    [
+    6,
+    ""
+   ],
+   [
+    6,
+    "rj"
+   ],
+   [
+    12,
+    "r"
+   ],
+   [
+    28,
+    ""
+   ],
+   [
     14,
+    "rj"
+   ],
+   [
+    6,
     "r"
    ],
    [
     1,
-    "rs"
+    "urx"
    ],
    [
-    14,
-    "l"
+    4,
+    "ur"
    ],
    [
-    10,
-    ""
+    25,
+    "r"
    ],
    [
-    10,
-    "l"
+    8,
+    "rj"
    ],
    [
-    10,
-    ""
+    8,
+    "r"
    ],
    [
     1,
-    "g"
+    "urx"
    ],
    [
-    165,
-    "l"
+    4,
+    "ur"
    ],
    [
-    160,
-    "l"
+    8,
+    "r"
+   ],
+   [
+    8,
+    "rj"
+   ],
+   [
+    4,
+    "r"
+   ],
+   [
+    1,
+    "urx"
+   ],
+   [
+    4,
+    "ur"
+   ],
+   [
+    12,
+    "r"
    ],
    [
     30,
-    "r"
+    "d"
+   ],
+   [
+    50,
+    "ld"
    ],
    [
     10,
-    ""
-   ],
-   [
-    1,
-    "dg"
-   ],
-   [
-    110,
     "l"
+   ],
+   [
+    3,
+    "lj"
+   ],
+   [
+    3,
+    "l"
+   ],
+   [
+    3,
+    "lj"
+   ],
+   [
+    40,
+    "l"
+   ],
+   [
+    40,
+    "r"
+   ],
+   [
+    60,
+    ""
    ]
   ]
  },
@@ -97534,20 +98835,20 @@ const records=[
     "############...................................................................#",
     "#..............................................................................#",
     "#..............................................................................#",
-    "#..................o...........................................................#",
-    "#........................................o......................UU.............#",
-    "#.................................................######.......................#",
-    "#...........................######.............................................#",
-    "#..................o.................................................######....#",
     "#..............................................................................#",
-    "G................o.o...........................................................#",
+    "#...............................................................UU.............#",
+    "#.................................................######.......................#",
+    "#...........................#########..........................................#",
+    "#.............====.====..............===..===........................######....#",
+    "#..............................................................................#",
     "G..............................................................................#",
-    "G..................o....................UU.....................................#",
     "G..............................................................................#",
-    "#===========...................................................................#",
+    "G.......................................UU.....................................#",
+    "G....................................===..===..................................#",
+    "#===========..====.====........................................................#",
     "#..............................................................................#",
     "#..........................................................N...................#",
-    "#o.....................................................############............#",
+    "#......................................................############............#",
     "#..............................................................................#",
     "#.................UU...........................................................#",
     "#..............................................................................#",
@@ -97588,9 +98889,10 @@ const records=[
     "speed": 100,
     "body": "right",
     "leave": "up",
-    "crack": true
+    "crack": true,
+    "coldPriority": true
    },
-   "hint": "Cold moulds become tall iron. Cross beneath them first; the same castings carry the return above the failing floor.",
+   "hint": "Strike a mould cold; the furnace answers it with iron. Stand beside the pour, then climb what you made.",
    "question": "Which obstruction must you ask him to build before you can come home?"
   },
   "bank": {
@@ -97599,7 +98901,7 @@ const records=[
    "run": 10,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
+   "acceptance": "revised",
    "needsReview": true,
    "difficulty": 4,
    "worlds": [
@@ -97622,7 +98924,7 @@ const records=[
     "bank-f72"
    ],
    "interconnection": "Three refusals turn hanging moulds into full-height iron walls. Their caps are the return route over the same fault floor; successive anvils and rests lead between their different mould heights.",
-   "solution": "Chill the low mould, ascend the new iron and cross its upper side. Use the first anvil to chill the middle mould from above, then climb to the far anvil and cold-strike the high mould. Avoid the telegraphed pours until all three are refused. Return above the anvils through the iron and refill rests, then drop onto the generous home gallery.",
+   "solution": "Chill the low mould, stand clear, and climb its iron using scaffold rests. Use the first anvil to down-cut the middle mould. Wait beside its pour and climb the second casting to the far anvil. Launch, cold-strike the high mould, and dash back clear of its pour. Return over the new iron and scaffold landings to the home gallery.",
    "novelty": "Boss damage builds a sequence of obstructions whose upper edges become the final route.",
    "nearestExisting": "F65 shared boss work and F72 thermal door-to-platform reversal.",
    "requiredEvents": [
@@ -97631,7 +98933,7 @@ const records=[
     "colossus-refuse",
     "colossus-down"
    ],
-   "endingForgiveness": "Broad return gallery with a wall-side refill; the final crossing has no attack timer.",
+   "endingForgiveness": "Permanent scaffold rests restore stamina; the return gallery has no remaining attack timer.",
    "requiredEventCounts": {
     "colossus-refuse": 3,
     "cast": 3,
@@ -97655,23 +98957,13 @@ const records=[
    ],
    "evidenceNotes": [
     {
-     "name": "Native three refusals and return",
-     "frames": 2783,
+     "name": "Three refusals and scaffold return",
+     "frames": 1743,
      "deaths": 0,
      "refusals": 3
-    },
-    {
-     "name": "Final landing",
-     "result": "Wide permanent return gallery; no remaining boss attacks once all three refusals are complete."
-    },
-    {
-     "name": "Head to home gate before refusing pours",
-     "result": "No exit; native gate remains locked",
-     "exited": false,
-     "refusals": 0
     }
    ],
-   "revision": "214de4b030f9",
+   "revision": "9561c06260e0",
    "source": "scripts/room-bank/fractured/bank-f73.json"
   },
   "tape": [
@@ -97708,7 +99000,11 @@ const records=[
     "rgu"
    ],
    [
-    64,
+    20,
+    ""
+   ],
+   [
+    80,
     "rgu"
    ],
    [
@@ -97748,215 +99044,127 @@ const records=[
     "ds"
    ],
    [
-    18,
+    23,
     "l"
-   ],
-   [
-    180,
-    ""
-   ],
-   [
-    73,
-    "r"
-   ],
-   [
-    12,
-    "rj"
-   ],
-   [
-    5,
-    "ux"
    ],
    [
     30,
+    ""
+   ],
+   [
+    135,
+    ""
+   ],
+   [
+    115,
     "rgu"
    ],
    [
-    8,
-    "r"
-   ],
-   [
-    2,
-    "j"
-   ],
-   [
-    1,
-    "ds"
-   ],
-   [
-    24,
-    "r"
-   ],
-   [
-    1,
-    "ds"
-   ],
-   [
-    20,
-    "l"
-   ],
-   [
-    250,
-    ""
-   ],
-   [
-    22,
-    "r"
-   ],
-   [
-    12,
+    28,
     "rgu"
-   ],
-   [
-    2,
-    "l"
-   ],
-   [
-    2,
-    "j"
-   ],
-   [
-    1,
-    "ds"
-   ],
-   [
-    25,
-    "r"
-   ],
-   [
-    1,
-    "ds"
-   ],
-   [
-    20,
-    "l"
-   ],
-   [
-    300,
-    ""
-   ],
-   [
-    100,
-    ""
-   ],
-   [
-    25,
-    "r"
-   ],
-   [
-    18,
-    "rgu"
-   ],
-   [
-    5,
-    ""
-   ],
-   [
-    1,
-    "ds"
-   ],
-   [
-    24,
-    "r"
-   ],
-   [
-    1,
-    "ds"
-   ],
-   [
-    20,
-    "l"
-   ],
-   [
-    180,
-    ""
-   ],
-   [
-    100,
-    ""
-   ],
-   [
-    9,
-    "l"
-   ],
-   [
-    18,
-    "lgu"
-   ],
-   [
-    5,
-    ""
-   ],
-   [
-    1,
-    "ds"
    ],
    [
     35,
+    "r"
+   ],
+   [
+    5,
+    "rx"
+   ],
+   [
+    25,
+    "r"
+   ],
+   [
+    35,
+    ""
+   ],
+   [
+    10,
+    "rj"
+   ],
+   [
+    10,
+    ""
+   ],
+   [
+    1,
+    "ds"
+   ],
+   [
+    24,
+    "r"
+   ],
+   [
+    1,
+    "ds"
+   ],
+   [
+    5,
+    "lx"
+   ],
+   [
+    15,
     "l"
+   ],
+   [
+    45,
+    ""
+   ],
+   [
+    20,
+    "l"
+   ],
+   [
+    12,
+    "lj"
    ],
    [
     5,
     "lux"
    ],
    [
+    55,
+    "lgu"
+   ],
+   [
+    45,
+    "lgu"
+   ],
+   [
     35,
-    "lgu"
-   ],
-   [
-    115,
-    "lgu"
-   ],
-   [
-    12,
-    "lj"
-   ],
-   [
-    5,
-    "lx"
-   ],
-   [
-    38,
     "l"
    ],
    [
+    25,
+    ""
+   ],
+   [
     12,
     "lj"
    ],
    [
     5,
-    "lx"
+    "lux"
    ],
    [
-    120,
+    80,
     "lgu"
    ],
    [
-    12,
-    "lj"
-   ],
-   [
-    5,
-    "lx"
-   ],
-   [
-    60,
+    35,
     "l"
    ],
    [
-    130,
+    25,
+    ""
+   ],
+   [
+    80,
     "lgu"
    ],
    [
-    12,
-    "lj"
-   ],
-   [
-    5,
-    "lx"
-   ],
-   [
-    24,
+    100,
     "l"
    ]
   ]
@@ -97964,99 +99172,95 @@ const records=[
  {
   "room": {
    "id": "bank-f74",
-   "name": "Carry His Answer Upward",
-   "cols": 72,
-   "rows": 40,
+   "name": "Be There When He Throws",
+   "cols": 80,
+   "rows": 36,
    "map": [
-    "########################################################################",
-    "#..................................................................G...#",
-    "#..................................................................G...#",
-    "#...................................%..............................G...#",
-    "#...................................%..............................G...#",
-    "#...................................%..............................G...#",
-    "#...................................%..............................G...#",
-    "#...................................%..............................G...#",
-    "#...................................%..............................G....",
-    "#...................................%..............................G....",
-    "#...................................%..............................G....",
-    "#...................................%....................#######...G....",
-    "#...................................%........#######..............######",
-    "#......................................................................#",
-    "#..............%.......................................................#",
-    "#..............%.......................................................#",
-    "#..............%.......................................................#",
-    "#..............%.......................................................#",
-    "#..............%.......................................................#",
-    "#..............%.......................................................#",
-    "#..............%.......................................................#",
-    "#..............%.......................................................#",
-    "#..............%.......................................................#",
-    "#..............%.......................................................#",
-    "#.....................######..........ZZZZZ............................#",
-    "#......................................................................#",
-    "#%.....................................................................#",
-    "#%.....................................................................#",
-    "#%..........................#####......................................#",
-    "#%.....................................................................#",
-    "#%.....................................................................#",
-    "#%.....................................................................#",
-    "#%.....................................................................#",
-    "#%.....................................................................#",
-    "#%.....................................................................#",
-    "#%..P..................................................................#",
-    "#%############...ZZZZZ.................................................#",
-    "##############.........................................................#",
-    "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
-    "########################################################################"
+    "#######################################%%#######################################",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#...................................%..........................................#",
+    "#...................................%..........................................#",
+    "#...................................%..........................................#",
+    "#...............................#####TTTTTTT...................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#...................................................%%.........................#",
+    "#...................................................%%.........................#",
+    "#...................................................%%.........................#",
+    "#...................................................%%.........................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#.............................................%%%TTTT%%%%%.....................#",
+    "#..............................................................................#",
+    "#..............................................................................#",
+    "#...............................%%........###..................................#",
+    "#...............................%%.............................................#",
+    "#...............................%%.............................................#",
+    "#...............................%%....###......................................#",
+    "#..............................................................................#",
+    "#...................P..........................................................#",
+    "################################TTTTTTTTTT###############################GGGGG##",
+    "################################..........###############################.....##",
+    "################################..........###############################.....##",
+    "################################^^^^^^^^^^###############################.....##",
+    "#########################################################################.....##"
    ],
    "palette": "fractured",
    "movement": "survive-2",
    "aim8": true,
    "study": true,
    "rbr": 33,
-   "exit": "right",
+   "exit": "down",
+   "fault": {
+    "fuse": 30,
+    "spread": 10,
+    "rest": 60
+   },
    "portalMode": "one",
    "portals": [
     {
      "color": "orange",
-     "c": 1,
-     "r": 34,
-     "face": "r"
+     "c": 39,
+     "r": 0,
+     "face": "d"
     }
    ],
-   "zips": [
-    [
-     0,
-     -12
-    ],
-    [
-     0,
-     -12
-    ]
-   ],
    "tyrant": {
-    "c": 65,
-    "r": 3,
-    "height": 31,
-    "shotRow": 34,
-    "weakRow": 32,
+    "height": 12,
     "hits": 3,
     "final": true,
-    "lanes": [
-     34,
-     34,
-     34
-    ],
-    "bands": [
-     32,
-     18,
-     8
-    ],
-    "every": 130,
-    "first": 60
+    "home": true,
+    "hunt": {
+     "every": 60,
+     "first": 40,
+     "speed": 240,
+     "tell": 22
+    },
+    "perches": [
+     {
+      "c": 16,
+      "r": 14
+     },
+     {
+      "c": 70,
+      "r": 4
+     },
+     {
+      "c": 18,
+      "r": 2
+     }
+    ]
    },
-   "hint": "His low shot always enters the same door. Carry your answer upward: each rising band needs a higher portal wall.",
-   "question": "Can the same low bolt reach three different heights while you climb its return route?"
+   "hint": "Same door, same rule, but every shadow is cracked stone. Be behind your door the moment he throws; you cannot wait there.",
+   "question": "When must you be behind your door?"
   },
   "bank": {
    "side": "fractured",
@@ -98064,7 +99268,7 @@ const records=[
    "run": 10,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
+   "acceptance": "revised",
    "needsReview": true,
    "difficulty": 4,
    "worlds": [
@@ -98074,43 +99278,151 @@ const records=[
     "superroom",
     "tyrant",
     "portal",
-    "lift",
-    "shared-projectile"
+    "hunt",
+    "fault",
+    "return-route"
    ],
    "status": "route-proven",
-   "author": "Codex",
+   "author": "Claude",
    "newMechanics": [],
-   "role": "native Tyrant boss superroom",
-   "approvedIngredients": [
-    "bank-f68",
-    "bank-f70"
-   ],
-   "interconnection": "The same low firing lane feeds one fixed receiver throughout the fight. Ascending carriers carry the knight to three separate pale return walls; each reflected band is visibly higher on the same towering Tyrant.",
-   "solution": "Send the first low shot through the fixed door and a low return portal. Ride the lower carrier to reach the middle return wall. Cross the offset rest onto the upper carrier and aim at the high return wall. After three native returns, cross the broad crown ledges.",
-   "novelty": "One unchanged incoming projectile is reused through three rising exits; the boss is a single full-height target shared by every route height.",
-   "nearestExisting": "Native Tyrant ward alignment with F68 route-restriction and F70 one-boss multilevel arena.",
+   "interconnection": "He aims where you stand at the instant of the throw; the cracked stone means that instant is the only time you can be there.",
+   "solution": "B73 reflected, and every shadow is fault stone. Door the west face of the hanging stone, then run east through its cracking shadow as he throws. Climb the steps, door the second stone from the east and dart west across the cracked ledge on his throw. Drop through a door in the ledge, dash out of the ceiling behind the fin, door its west face, then walk into it so you land in its cracked shadow just as he throws. Walk east to the opened gate.",
+   "novelty": "The base fight’s waiting spot becomes a moment you must hit.",
+   "nearestExisting": "Reflection of B73 with fault-stone shadows.",
    "requiredEvents": [
+    "portal-open",
+    "portal-pass",
     "tyrant-hit",
-    "tyrant-walk",
     "tyrant-withdraw",
-    "zip-start",
-    "portal-pass"
+    "fault-crack"
    ],
    "requiredEventCounts": {
     "tyrant-hit": 3
    },
-   "endingForgiveness": "Three broad crown ledges and no live boss projectiles after the last return.",
+   "endingForgiveness": "The gate is on solid floor east of the fight.",
    "shortcutChecks": [
     {
-     "name": "Stay below with the first return door",
+     "name": "Never opens a door",
      "tape": [
       [
-       1,
-       "luq"
+       48,
+       "r"
       ],
       [
-       1200,
+       2,
        ""
+      ],
+      [
+       1,
+       "ur"
+      ],
+      [
+       22,
+       ""
+      ],
+      [
+       80,
+       "r"
+      ],
+      [
+       4,
+       "l"
+      ],
+      [
+       12,
+       "lj"
+      ],
+      [
+       8,
+       "l"
+      ],
+      [
+       2,
+       ""
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       10,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       50,
+       "r"
+      ],
+      [
+       2,
+       ""
+      ],
+      [
+       1,
+       "ul"
+      ],
+      [
+       24,
+       "l"
+      ],
+      [
+       1,
+       "rx"
+      ],
+      [
+       10,
+       "r"
+      ],
+      [
+       62,
+       ""
+      ],
+      [
+       1,
+       "d"
+      ],
+      [
+       3,
+       ""
+      ],
+      [
+       1,
+       "lx"
+      ],
+      [
+       8,
+       "l"
+      ],
+      [
+       39,
+       ""
+      ],
+      [
+       1,
+       "r"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       6,
+       "l"
+      ],
+      [
+       60,
+       ""
+      ],
+      [
+       300,
+       "r"
       ]
      ]
     }
@@ -98118,145 +99430,138 @@ const records=[
    "positiveChecks": [],
    "evidenceNotes": [
     {
-     "name": "All three native portal returns",
-     "frames": 2133,
-     "deaths": 0,
-     "hits": 3
-    },
-    {
-     "name": "Late final crossing",
-     "result": "The canonical route waits 400+ frames after native withdrawal on the last broad shelf before finishing."
-    },
-    {
-     "name": "Stay below and keep the first return door",
-     "result": "Only first band breaks; no exit",
-     "hits": 1,
-     "exited": false,
+     "name": "Canonical 7.308 route",
+     "frames": 722,
      "deaths": 0
     }
    ],
-   "revision": "95cdddcc29af",
+   "humanReview": "Reinvented 7.308 from feedback; awaiting human review.",
+   "approvedIngredients": [
+    "bank-f68",
+    "bank-f70"
+   ],
+   "revision": "f1b2c98a75d0",
    "source": "scripts/room-bank/fractured/bank-f74.json"
   },
   "tape": [
    [
-    1,
-    "luq"
-   ],
-   [
-    170,
-    ""
-   ],
-   [
-    430,
-    ""
-   ],
-   [
-    40,
+    48,
     "r"
    ],
    [
-    18,
-    "rj"
+    2,
+    ""
+   ],
+   [
+    1,
+    "urq"
+   ],
+   [
+    22,
+    ""
+   ],
+   [
+    80,
+    "r"
+   ],
+   [
+    4,
+    "l"
+   ],
+   [
+    12,
+    "lj"
    ],
    [
     8,
-    "r"
+    "l"
    ],
    [
-    55,
+    2,
     ""
    ],
    [
     12,
-    "j"
-   ],
-   [
-    1,
-    "luq"
-   ],
-   [
-    5,
-    "rx"
-   ],
-   [
-    17,
-    "r"
-   ],
-   [
-    560,
-    ""
+    "rj"
    ],
    [
     10,
     "r"
    ],
    [
-    18,
-    "rj"
-   ],
-   [
-    5,
-    "rx"
-   ],
-   [
-    22,
-    "r"
-   ],
-   [
-    40,
-    ""
-   ],
-   [
-    1,
-    "luq"
-   ],
-   [
     12,
     "rj"
    ],
    [
-    5,
-    "rx"
-   ],
-   [
-    16,
+    50,
     "r"
    ],
    [
-    560,
+    2,
     ""
    ],
    [
-    8,
-    "r"
+    1,
+    "ulq"
    ],
    [
-    18,
-    "rj"
+    24,
+    "l"
    ],
    [
-    5,
+    1,
     "rx"
    ],
    [
-    13,
+    10,
     "r"
+   ],
+   [
+    62,
+    ""
+   ],
+   [
+    1,
+    "dq"
+   ],
+   [
+    3,
+    ""
+   ],
+   [
+    1,
+    "lx"
+   ],
+   [
+    8,
+    "l"
+   ],
+   [
+    39,
+    ""
+   ],
+   [
+    1,
+    "rq"
    ],
    [
     20,
     ""
    ],
    [
-    18,
-    "rj"
+    12,
+    "r"
    ],
    [
-    5,
-    "rx"
+    6,
+    "l"
    ],
    [
-    40,
+    60,
+    ""
+   ],
+   [
+    300,
     "r"
    ]
   ]
@@ -98264,9 +99569,9 @@ const records=[
  {
   "room": {
    "id": "bank-f75",
-   "name": "Leave Yourself Where He Looks Next",
+   "name": "He Looks Where You Left Yourself",
    "cols": 80,
-   "rows": 36,
+   "rows": 40,
    "map": [
     "################################################################################",
     "#..............................................................................#",
@@ -98279,31 +99584,35 @@ const records=[
     "#..............................................................................#",
     "#..............................................................................#",
     "#..............................................................................#",
+    "#..................O...........................................................#",
     "#..............................................................................#",
     "#..............................................................................#",
-    "#.............................######...........................................#",
+    "#.........#######..............................................................#",
+    "#..............................................................................#",
+    "#...............................VVVVVVVVVVVVVVVVVVV......VVV...................#",
+    "#...............................VVVVVVVVVVVVVVVVVVV....O.VVV...................#",
+    "#........................................................VVV...................#",
+    "#........................................................VVV...................#",
+    "#..............................................................................#",
+    "#.............................................................#########........#",
+    "#.................#############................................................#",
+    "#...................................................TTTT.......................#",
     "#..............................................................................#",
     "#..............................................................................#",
-    "#...................#######....................................................#",
-    "#.........................................######...............................#",
+    "#.............................................TTTT.............................#",
+    "#.........................................................######################",
+    "#..............................................................................#",
+    "#.......................................TTTT...................................#",
     "#..............................................................................#",
     "#..............................................................................#",
-    "#..............................................................................#",
-    "#..............................................................................#",
-    "#..............................................................................#",
-    "#..............................................................................#",
-    "#..............................................................................#",
-    "#............................#########.........................................#",
-    "#.........................................................#################....#",
-    "#.............................................TTTTTT......#################....#",
-    "#.........................................................#################....#",
-    "#.........................................................#################....#",
-    "#.........................................................#################....#",
-    "#.....P.......N...........................................#################....#",
-    "##GGGG############........................................#################....#",
-    "##....############........................................#################....#",
-    "#^....^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
-    "##....##########################################################################"
+    "#...........................#########..........................................#",
+    "#...........P...............#########..........................................#",
+    "##GGGGG##################...#########..........................................#",
+    "##.....##################...#########..........................................#",
+    "##.....##################...#########..........................................#",
+    "##.....##################...#########..........................................#",
+    "##.....##################^^^#########^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+    "##.....#########################################################################"
    ],
    "palette": "fractured",
    "movement": "survive-2",
@@ -98313,54 +99622,38 @@ const records=[
    "exit": "down",
    "echo": true,
    "fault": {
-    "fuse": 25,
-    "spread": 12,
-    "rest": 220
+    "fuse": 30,
+    "spread": 10,
+    "rest": 150
    },
-   "crown": {
-    "marks": [
+   "court": {
+    "aim": "echo",
+    "thrones": [
      {
-      "c": 6,
+      "c": 32,
       "r": 31
      },
      {
-      "c": 61,
-      "r": 25
+      "c": 66,
+      "r": 20
+     },
+     {
+      "c": 13,
+      "r": 13,
+      "volley": 2,
+      "gap": 12
      }
     ],
-    "echoOnly": true,
-    "hold": 12,
-    "king": true,
-    "phases": [
-     [
-      [
-       61,
-       25
-      ],
-      [
-       32,
-       12
-      ]
-     ],
-     [
-      [
-       32,
-       12
-      ],
-      [
-       6,
-       31
-      ]
-     ]
-    ],
-    "bolts": {
-     "every": 220,
-     "first": 200,
-     "speed": 80
-    }
+    "first": 50,
+    "every": 90,
+    "speed": 70,
+    "guard": 44,
+    "slamTell": 36,
+    "stun": 60,
+    "back": 360
    },
-   "hint": "Each seal chooses a different pair. Leave your echo at the old answer, then exchange places to approach the next one.",
-   "question": "Which of your two positions will the crown demand next?"
+   "hint": "He throws at your echo, not at you. Leave it inside his ring, trade in once his bolt is flying, and parry it home.",
+   "question": "Who does the King watch once you have left yourself behind?"
   },
   "bank": {
    "side": "fractured",
@@ -98368,143 +99661,98 @@ const records=[
    "run": 10,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
+   "acceptance": "revised",
    "needsReview": true,
-   "difficulty": 3,
+   "difficulty": 4,
    "worlds": [
     34
    ],
    "tags": [
     "superroom",
-    "crown",
+    "native-king",
     "echo",
-    "anvil",
+    "court",
     "fault",
-    "return"
+    "void",
+    "return-route"
    ],
    "status": "route-proven",
-   "author": "Codex",
+   "author": "Claude",
    "newMechanics": [],
-   "role": "native Abyss King boss superroom",
-   "approvedIngredients": [
-    "bank-f45",
-    "bank-f70"
-   ],
-   "interconnection": "Three royal seals pair the starting court, the far balcony and the high central lookout in a cycle. An echo swap changes both the held mark and the player’s departure, sending the knight through the same bowl at different heights rather than into another chamber.",
-   "solution": "Leave an echo on the home mark and cross the basin from its anvil to the far balcony. After the first seal, exchange to home while the echo keeps the balcony. Use the same anvil for a higher launch onto the central lookout. Exchange there to leave the high mark occupied, then cross back from the far side to home for the third seal.",
-   "novelty": "Every exchange solves the positional problem for the next phase but puts the player at the wrong departure; the same anvil must support a long outward launch and a higher central return.",
-   "nearestExisting": "F45 echo departure geometry and F70 one shared multilevel court, using the native King’s actual phased paired seals.",
+   "interconnection": "The echo is both the target that draws his bolt and the doorway inside his uncrossable ring, so one trade answers both. Fault stone and the dash voids decide where you can wait while he aims at the echo.",
+   "solution": "He throws at your echo, not at you. Walk onto his dais, leave the echo inside his guard and dash back before he slams. When his bolt leaves his hand, trade into the echo and parry it home: he kneels and you are already inside his ring, so cut. Climb the fault stair as it cracks and void-dash past his ledge, leaving the echo in mid-flight; drop to the ledge below and trade in as his bolt flies. Ride the long void back west, swing up beside his last throne, leave the echo and dash clear; trade in on his throw, parry, step in and cut. Walk home after he falls.",
+   "novelty": "The Fractured King targets your reflection; catching the bolt meant for it is the attack.",
+   "nearestExisting": "Mirror of B74’s court: there you plant beside him and parry from afar, here you parry beside him because he looks at the echo.",
    "requiredEvents": [
     "echo-place",
     "echo-swap",
-    "anvil",
-    "crown-seal",
-    "crown-turn"
+    "court-kneel",
+    "court-wound",
+    "court-fall",
+    "void-in",
+    "fault-crack"
    ],
    "requiredEventCounts": {
-    "crown-seal": 3,
-    "echo-swap": 2
+    "court-wound": 3,
+    "echo-swap": 3
    },
-   "endingForgiveness": "The final seal stands on the large starting platform; a wide gate opens in its floor for a safe homeward drop.",
-   "positiveChecks": [
+   "endingForgiveness": "A wide gate in the home floor; nothing fires after he falls.",
+   "positiveChecks": [],
+   "shortcutChecks": [
     {
-     "name": "Extra60-frame pause before homeward drop",
+     "name": "No echo",
      "tape": [
       [
-       1,
-       "q"
+       3,
+       "l"
       ],
       [
        38,
-       "r"
-      ],
-      [
-       18,
-       "rgu"
-      ],
-      [
-       4,
        ""
       ],
       [
-       1,
-       "ds"
-      ],
-      [
-       26,
+       59,
        "r"
       ],
       [
-       5,
-       "rx"
-      ],
-      [
-       34,
-       "r"
-      ],
-      [
-       20,
-       ""
-      ],
-      [
-       35,
-       "r"
-      ],
-      [
-       18,
+       10,
        "rj"
-      ],
-      [
-       5,
-       "rx"
-      ],
-      [
-       20,
-       "r"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       18,
-       "rj"
-      ],
-      [
-       5,
-       "rx"
       ],
       [
        21,
        "r"
       ],
       [
-       30,
+       1,
        ""
       ],
       [
-       9,
-       "r"
+       4,
+       "lj"
+      ],
+      [
+       1,
+       "lx"
       ],
       [
        20,
+       "l"
+      ],
+      [
+       55,
        ""
       ],
       [
        1,
-       "q"
-      ],
-      [
-       5,
        ""
       ],
       [
-       38,
-       "r"
+       1,
+       ""
       ],
       [
-       18,
-       "rgu"
+       1,
+       "p"
       ],
       [
        4,
@@ -98512,157 +99760,70 @@ const records=[
       ],
       [
        1,
-       "ds"
+       "rs"
       ],
       [
-       26,
-       "r"
-      ],
-      [
-       5,
-       "ux"
-      ],
-      [
-       25,
-       "r"
-      ],
-      [
-       20,
+       27,
        ""
-      ],
-      [
-       18,
-       "rj"
-      ],
-      [
-       5,
-       "rx"
-      ],
-      [
-       12,
-       "r"
-      ],
-      [
-       20,
-       ""
-      ],
-      [
-       1,
-       "q"
-      ],
-      [
-       18,
-       "lj"
-      ],
-      [
-       5,
-       "lx"
-      ],
-      [
-       18,
-       "l"
       ],
       [
        10,
-       ""
-      ],
-      [
-       12,
-       "l"
-      ],
-      [
-       18,
-       "lj"
-      ],
-      [
-       5,
-       "lx"
-      ],
-      [
-       24,
-       "l"
-      ],
-      [
-       15,
-       ""
-      ],
-      [
-       24,
-       "l"
-      ],
-      [
-       18,
-       "lj"
-      ],
-      [
-       5,
-       "lx"
-      ],
-      [
-       35,
-       "l"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       7,
-       "l"
-      ],
-      [
-       28,
-       "lgu"
-      ],
-      [
-       32,
-       "l"
-      ],
-      [
-       20,
-       ""
+       "rj"
       ],
       [
        60,
-       ""
-      ],
-      [
-       32,
-       "l"
-      ]
-     ]
-    }
-   ],
-   "shortcutChecks": [
-    {
-     "name": "Follow traversal without an echo",
-     "tape": [
-      [
-       1,
-       ""
-      ],
-      [
-       38,
        "r"
       ],
       [
-       18,
-       "rgu"
+       12,
+       "rj"
       ],
       [
-       4,
-       ""
-      ],
-      [
-       1,
-       "ds"
-      ],
-      [
-       26,
+       12,
        "r"
       ],
       [
-       5,
+       12,
+       "rj"
+      ],
+      [
+       16,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       8,
+       "r"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       3,
+       "r"
+      ],
+      [
+       1,
+       "rx"
+      ],
+      [
+       20,
+       "r"
+      ],
+      [
+       1,
+       "r"
+      ],
+      [
+       2,
+       "r"
+      ],
+      [
+       1,
        "rx"
       ],
       [
@@ -98670,51 +99831,7 @@ const records=[
        "r"
       ],
       [
-       20,
-       ""
-      ],
-      [
-       35,
-       "r"
-      ],
-      [
-       18,
-       "rj"
-      ],
-      [
-       5,
-       "rx"
-      ],
-      [
-       20,
-       "r"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       18,
-       "rj"
-      ],
-      [
-       5,
-       "rx"
-      ],
-      [
-       21,
-       "r"
-      ],
-      [
-       30,
-       ""
-      ],
-      [
-       9,
-       "r"
-      ],
-      [
-       20,
+       46,
        ""
       ],
       [
@@ -98722,16 +99839,12 @@ const records=[
        ""
       ],
       [
-       5,
+       1,
        ""
       ],
       [
-       38,
-       "r"
-      ],
-      [
-       18,
-       "rgu"
+       1,
+       "p"
       ],
       [
        4,
@@ -98739,38 +99852,66 @@ const records=[
       ],
       [
        1,
-       "ds"
+       "rs"
+      ],
+      [
+       45,
+       ""
+      ],
+      [
+       4,
+       "l"
+      ],
+      [
+       12,
+       "lj"
       ],
       [
        26,
-       "r"
+       "ulg"
       ],
       [
-       5,
-       "ux"
+       1,
+       "lx"
       ],
       [
-       25,
-       "r"
+       45,
+       "l"
       ],
       [
        20,
        ""
       ],
       [
-       18,
+       10,
        "rj"
       ],
       [
-       5,
-       "rx"
-      ],
-      [
-       12,
-       "r"
+       4,
+       "lg"
       ],
       [
        20,
+       "ulg"
+      ],
+      [
+       9,
+       "lj"
+      ],
+      [
+       1,
+       "lj"
+      ],
+      [
+       1,
+       "rx"
+      ],
+      [
+       34,
+       "r"
+      ],
+      [
+       42,
        ""
       ],
       [
@@ -98778,79 +99919,27 @@ const records=[
        ""
       ],
       [
-       18,
-       "lj"
+       1,
+       "p"
       ],
       [
-       5,
-       "lx"
-      ],
-      [
-       18,
-       "l"
-      ],
-      [
-       10,
+       2,
        ""
       ],
       [
-       12,
+       4,
        "l"
       ],
       [
-       18,
-       "lj"
-      ],
-      [
-       5,
-       "lx"
-      ],
-      [
-       24,
-       "l"
-      ],
-      [
-       15,
-       ""
-      ],
-      [
-       24,
-       "l"
-      ],
-      [
-       18,
-       "lj"
-      ],
-      [
-       5,
-       "lx"
-      ],
-      [
-       35,
-       "l"
-      ],
-      [
-       12,
-       ""
-      ],
-      [
-       7,
-       "l"
-      ],
-      [
-       28,
-       "lgu"
-      ],
-      [
-       32,
-       "l"
+       1,
+       "ls"
       ],
       [
        20,
        ""
       ],
       [
-       32,
+       200,
        "l"
       ]
      ]
@@ -98858,39 +99947,71 @@ const records=[
    ],
    "evidenceNotes": [
     {
-     "name": "Native three seals and two echo exchanges",
-     "frames": 885,
-     "deaths": 0,
-     "seals": 3
-    },
-    {
-     "name": "Extra60-frame final pause",
-     "frames": 945,
+     "name": "Canonical 7.308 route",
+     "frames": 944,
      "deaths": 0
-    },
-    {
-     "name": "Follow traversal without ever making an echo",
-     "result": "Native paired seal never clears; no exit",
-     "seals": 0,
-     "exited": false,
-     "deaths": 1
     }
    ],
-   "revision": "866a0f3b7778",
+   "humanReview": "Reinvented 7.308 from feedback; awaiting human review.",
+   "approvedIngredients": [
+    "bank-f45",
+    "bank-f70"
+   ],
+   "revision": "b021a1a8ea1d",
    "source": "scripts/room-bank/fractured/bank-f75.json"
   },
   "tape": [
+   [
+    3,
+    "l"
+   ],
+   [
+    38,
+    ""
+   ],
+   [
+    59,
+    "r"
+   ],
+   [
+    10,
+    "rj"
+   ],
+   [
+    21,
+    "r"
+   ],
    [
     1,
     "q"
    ],
    [
-    38,
-    "r"
+    4,
+    "lj"
    ],
    [
-    18,
-    "rgu"
+    1,
+    "lx"
+   ],
+   [
+    20,
+    "l"
+   ],
+   [
+    55,
+    ""
+   ],
+   [
+    1,
+    "q"
+   ],
+   [
+    1,
+    ""
+   ],
+   [
+    1,
+    "p"
    ],
    [
     4,
@@ -98898,14 +100019,70 @@ const records=[
    ],
    [
     1,
-    "ds"
+    "rs"
    ],
    [
-    26,
+    27,
+    ""
+   ],
+   [
+    10,
+    "rj"
+   ],
+   [
+    60,
     "r"
    ],
    [
-    5,
+    12,
+    "rj"
+   ],
+   [
+    12,
+    "r"
+   ],
+   [
+    12,
+    "rj"
+   ],
+   [
+    16,
+    "r"
+   ],
+   [
+    12,
+    "rj"
+   ],
+   [
+    8,
+    "r"
+   ],
+   [
+    12,
+    "rj"
+   ],
+   [
+    3,
+    "r"
+   ],
+   [
+    1,
+    "rx"
+   ],
+   [
+    20,
+    "r"
+   ],
+   [
+    1,
+    "rq"
+   ],
+   [
+    2,
+    "r"
+   ],
+   [
+    1,
     "rx"
    ],
    [
@@ -98913,51 +100090,7 @@ const records=[
     "r"
    ],
    [
-    20,
-    ""
-   ],
-   [
-    35,
-    "r"
-   ],
-   [
-    18,
-    "rj"
-   ],
-   [
-    5,
-    "rx"
-   ],
-   [
-    20,
-    "r"
-   ],
-   [
-    12,
-    ""
-   ],
-   [
-    18,
-    "rj"
-   ],
-   [
-    5,
-    "rx"
-   ],
-   [
-    21,
-    "r"
-   ],
-   [
-    30,
-    ""
-   ],
-   [
-    9,
-    "r"
-   ],
-   [
-    20,
+    46,
     ""
    ],
    [
@@ -98965,16 +100098,12 @@ const records=[
     "q"
    ],
    [
-    5,
+    1,
     ""
    ],
    [
-    38,
-    "r"
-   ],
-   [
-    18,
-    "rgu"
+    1,
+    "p"
    ],
    [
     4,
@@ -98982,38 +100111,66 @@ const records=[
    ],
    [
     1,
-    "ds"
+    "rs"
+   ],
+   [
+    45,
+    ""
+   ],
+   [
+    4,
+    "l"
+   ],
+   [
+    12,
+    "lj"
    ],
    [
     26,
-    "r"
+    "ulg"
    ],
    [
-    5,
-    "ux"
+    1,
+    "lx"
    ],
    [
-    25,
-    "r"
+    45,
+    "l"
    ],
    [
     20,
     ""
    ],
    [
-    18,
+    10,
     "rj"
    ],
    [
-    5,
-    "rx"
-   ],
-   [
-    12,
-    "r"
+    4,
+    "lg"
    ],
    [
     20,
+    "ulg"
+   ],
+   [
+    9,
+    "lj"
+   ],
+   [
+    1,
+    "ljq"
+   ],
+   [
+    1,
+    "rx"
+   ],
+   [
+    34,
+    "r"
+   ],
+   [
+    42,
     ""
    ],
    [
@@ -99021,79 +100178,27 @@ const records=[
     "q"
    ],
    [
-    18,
-    "lj"
+    1,
+    "p"
    ],
    [
-    5,
-    "lx"
-   ],
-   [
-    18,
-    "l"
-   ],
-   [
-    10,
+    2,
     ""
    ],
    [
-    12,
+    4,
     "l"
    ],
    [
-    18,
-    "lj"
-   ],
-   [
-    5,
-    "lx"
-   ],
-   [
-    24,
-    "l"
-   ],
-   [
-    15,
-    ""
-   ],
-   [
-    24,
-    "l"
-   ],
-   [
-    18,
-    "lj"
-   ],
-   [
-    5,
-    "lx"
-   ],
-   [
-    35,
-    "l"
-   ],
-   [
-    12,
-    ""
-   ],
-   [
-    7,
-    "l"
-   ],
-   [
-    28,
-    "lgu"
-   ],
-   [
-    32,
-    "l"
+    1,
+    "ls"
    ],
    [
     20,
     ""
    ],
    [
-    32,
+    200,
     "l"
    ]
   ]
@@ -99101,7 +100206,7 @@ const records=[
  {
   "room": {
    "id": "bank-f76",
-   "name": "The Chain Comes Back Higher",
+   "name": "Cross the Bones You Made",
    "cols": 90,
    "rows": 36,
    "map": [
@@ -99152,7 +100257,6 @@ const records=[
     "portal"
    ],
    "chainHydra": {
-    "phase": 2,
     "c": 28,
     "r": 19,
     "need": 3,
@@ -99167,13 +100271,39 @@ const records=[
      ],
      [
       27,
-      8
+      6
      ]
     ],
-    "spit": {
-     "every": 130,
-     "first": 110,
-     "speed": 115
+    "hunt": {
+     "notice": 112,
+     "tell": 38,
+     "bite": 18,
+     "open": 70,
+     "reach": 40,
+     "stages": [
+      {},
+      {
+       "bite": 26,
+       "open": 64
+      },
+      {
+       "reach": 56,
+       "tell": 32,
+       "open": 70
+      }
+     ],
+     "spines": [
+      {
+       "c": 34,
+       "r": 19,
+       "w": 5
+      },
+      {
+       "c": 39,
+       "r": 23,
+       "w": 26
+      }
+     ]
     }
    },
    "sweepers": [
@@ -99203,7 +100333,7 @@ const records=[
      "radius": 3
     }
    ],
-   "hint": "Fresh chain, downward cut. The collar pulls you through the low void and back to the mast; the third cut is above the first.",
+   "hint": "Bait the amber bite, then cut the open jaw. Dash beneath the far head; its fallen neck makes the higher return. The first neck is your step to the last head.",
    "question": "How do you return to the same mast with a fresh hook, after the collar has climbed above the route you used?"
   },
   "bank": {
@@ -99212,7 +100342,7 @@ const records=[
    "run": 10,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
+   "acceptance": "revised",
    "needsReview": true,
    "status": "route-proven",
    "difficulty": 4,
@@ -99234,23 +100364,24 @@ const records=[
     "bank-f55"
    ],
    "author": "Codex",
-   "humanReview": "New candidate; awaiting human fun/difficulty/suitability review.",
+   "humanReview": "Reinvented after the 7.307.1 review: visible bite/jaw combat and physical bone return route. Awaiting human review.",
    "interconnection": "Three live collar positions pull the route east, then back above the original mast. The long void stone carries the low dash in both directions; the original first-cut mast becomes the last ascent rather than a discarded obstacle.",
    "novelty": "The final collar returns to the initial structure at a different height, turning a familiar support into a new problem. Each cut still requires a fresh native hooked ascent; neither a dash nor a ground slash can substitute.",
-   "solution": "Climb to the near mast and catch the west ring during the gold-chain window. Release above the first collar and cut downward. Descend to the low launch shelf and dash through the long void stone. Climb the far court while reading its orbit, catch the east ring and cut the second collar. Return through the same void, climb the first mast to its crown, and use its high ring for the third downward cut. The collar releases the safe western home gallery. The final ascent leaves the low overhang before grabbing the mast; read the jaw flash and parry its spit on the climb. The last cut lands on a broad recovery ledge; two ordinary small leftward jumps bring you home.",
+   "solution": "Climb to the near ring, let the first head bite, then release and cut down into the open jaw. Descend through the near mast and dash through the low void to the far shore. Catch its ring beneath the long bite; release onto the dry shore, return under the extended jaw and cut upward. Its neck now bridges the top of the void. Wait for the thorn to pass before jumping and dashing onto that bone. Cross left and make a vertical launch onto the first head’s resting ledge. Climb the original mast, read the last long bite, then jump toward its exposed jaw and cut up. Walk and hop across the broad home gallery.",
    "requiredEvents": [
-    "hook",
+    "hydra-tell",
+    "hydra-bite",
+    "hydra-open",
     "hydra-lock",
-    "hydra-drag",
+    "hydra-spine",
     "hydra-free",
     "void-in",
-    "void-out",
-    "gate-open",
-    "parry"
+    "void-out"
    ],
    "requiredEventCounts": {
     "hydra-lock": 3,
-    "void-in": 2
+    "hydra-spine": 2,
+    "void-in": 1
    },
    "ending": "The last cut lands above a broad permanent return shelf; the open gate leaves only a safe walk home.",
    "superroom": {
@@ -99264,7 +100395,7 @@ const records=[
    },
    "positiveChecks": [
     {
-     "name": "Wait sixty frames on the final gallery",
+     "name": "Eight-frame later thorn crossing",
      "tape": [
       [
        60,
@@ -99275,72 +100406,44 @@ const records=[
        "j"
       ],
       [
-       110,
+       65,
        "rgu"
       ],
       [
-       55,
-       "rgu"
-      ],
-      [
-       1,
-       "j"
-      ],
-      [
-       30,
-       "rgu"
-      ],
-      [
-       1,
+       18,
        "rj"
+      ],
+      [
+       45,
+       "rgu"
+      ],
+      [
+       11,
+       "gu"
+      ],
+      [
+       1,
+       "ds"
+      ],
+      [
+       15,
+       ""
       ],
       [
        14,
        "r"
       ],
       [
-       12,
-       "rds"
+       18,
+       "rj"
       ],
       [
-       32,
+       46,
        "r"
       ],
       [
-       28,
-       ""
-      ],
-      [
-       1,
-       "rx"
-      ],
-      [
-       55,
+       6,
        "r"
-      ],
-      [
-       50,
-       "rgu"
-      ],
-      [
-       70,
-       "rgu"
-      ],
-      [
-       28,
-       "rgu"
-      ],
-      [
-       8,
-       "r"
-      ],
-      [
-       12,
-       "ds"
-      ],
-      [
-       62,
-       "l"
       ],
       [
        25,
@@ -99348,92 +100451,463 @@ const records=[
       ],
       [
        1,
-       "lx"
+       "rx"
       ],
       [
-       50,
+       67,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       35,
+       "rgu"
+      ],
+      [
+       40,
        "l"
       ],
       [
-       75,
-       "lgu"
-      ],
-      [
-       30,
-       "lgu"
-      ],
-      [
-       10,
-       ""
-      ],
-      [
-       12,
-       "j"
+       1,
+       "us"
       ],
       [
        8,
+       ""
+      ],
+      [
+       48,
+       ""
+      ],
+      [
+       8,
+       "l"
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       5,
+       "lx"
+      ],
+      [
+       30,
+       "l"
+      ],
+      [
+       90,
+       "l"
+      ],
+      [
+       17,
+       "l"
+      ],
+      [
+       18,
+       "j"
+      ],
+      [
+       5,
+       "ux"
+      ],
+      [
+       25,
+       "l"
+      ],
+      [
+       8,
+       "l"
+      ],
+      [
+       12,
+       ""
+      ],
+      [
+       100,
+       "lgu"
+      ],
+      [
+       56,
+       ""
+      ],
+      [
+       10,
+       "rj"
+      ],
+      [
+       1,
+       "jus"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       25,
+       "lj"
+      ],
+      [
+       90,
+       "l"
+      ],
+      [
+       20,
+       "lj"
+      ],
+      [
+       110,
+       "l"
+      ]
+     ]
+    },
+    {
+     "name": "Pause before the safe home walk",
+     "tape": [
+      [
+       60,
        "r"
+      ],
+      [
+       1,
+       "j"
       ],
       [
        65,
        "rgu"
       ],
       [
-       1,
-       "p"
+       18,
+       "rj"
       ],
       [
-       54,
+       45,
        "rgu"
       ],
       [
-       38,
-       "rgu"
-      ],
-      [
-       1,
-       "lj"
-      ],
-      [
-       28,
-       "lgu"
+       11,
+       "gu"
       ],
       [
        1,
        "ds"
       ],
       [
-       30,
+       15,
        ""
       ],
       [
-       30,
-       "lj"
+       14,
+       "r"
       ],
       [
-       120,
-       "l"
+       18,
+       "rj"
       ],
       [
-       60,
+       46,
+       "r"
+      ],
+      [
+       6,
+       "r"
+      ],
+      [
+       25,
        ""
+      ],
+      [
+       1,
+       "rx"
+      ],
+      [
+       67,
+       "r"
+      ],
+      [
+       18,
+       "rj"
       ],
       [
        35,
+       "rgu"
+      ],
+      [
+       40,
+       "l"
+      ],
+      [
+       1,
+       "us"
+      ],
+      [
+       8,
+       ""
+      ],
+      [
+       40,
+       ""
+      ],
+      [
+       8,
+       "l"
+      ],
+      [
+       18,
        "lj"
       ],
       [
-       80,
+       5,
+       "lx"
+      ],
+      [
+       30,
+       "l"
+      ],
+      [
+       90,
+       "l"
+      ],
+      [
+       17,
+       "l"
+      ],
+      [
+       18,
+       "j"
+      ],
+      [
+       5,
+       "ux"
+      ],
+      [
+       25,
+       "l"
+      ],
+      [
+       8,
+       "l"
+      ],
+      [
+       12,
+       ""
+      ],
+      [
+       100,
+       "lgu"
+      ],
+      [
+       56,
+       ""
+      ],
+      [
+       10,
+       "rj"
+      ],
+      [
+       1,
+       "jus"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       25,
+       "lj"
+      ],
+      [
+       90,
+       "l"
+      ],
+      [
+       20,
+       "lj"
+      ],
+      [
+       40,
+       ""
+      ],
+      [
+       110,
        "l"
       ]
-     ],
-     "result": {
-      "frames": 1376,
-      "deaths": 0
-     }
+     ]
     }
    ],
-   "shortcutChecks": [],
+   "shortcutChecks": [
+    {
+     "name": "Unbroken heads keep the home gate locked",
+     "tape": [
+      [
+       60,
+       "r"
+      ],
+      [
+       1,
+       "j"
+      ],
+      [
+       65,
+       "rgu"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       45,
+       "rgu"
+      ],
+      [
+       11,
+       "gu"
+      ],
+      [
+       1,
+       "d"
+      ],
+      [
+       15,
+       ""
+      ],
+      [
+       14,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       46,
+       "r"
+      ],
+      [
+       6,
+       "r"
+      ],
+      [
+       25,
+       ""
+      ],
+      [
+       1,
+       "rx"
+      ],
+      [
+       67,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       35,
+       "rgu"
+      ],
+      [
+       40,
+       "l"
+      ],
+      [
+       1,
+       "u"
+      ],
+      [
+       8,
+       ""
+      ],
+      [
+       40,
+       ""
+      ],
+      [
+       8,
+       "l"
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       5,
+       "lx"
+      ],
+      [
+       30,
+       "l"
+      ],
+      [
+       90,
+       "l"
+      ],
+      [
+       17,
+       "l"
+      ],
+      [
+       18,
+       "j"
+      ],
+      [
+       5,
+       "ux"
+      ],
+      [
+       25,
+       "l"
+      ],
+      [
+       8,
+       "l"
+      ],
+      [
+       12,
+       ""
+      ],
+      [
+       100,
+       "lgu"
+      ],
+      [
+       56,
+       ""
+      ],
+      [
+       10,
+       "rj"
+      ],
+      [
+       1,
+       "ju"
+      ],
+      [
+       20,
+       ""
+      ],
+      [
+       25,
+       "lj"
+      ],
+      [
+       90,
+       "l"
+      ],
+      [
+       20,
+       "lj"
+      ],
+      [
+       110,
+       "l"
+      ]
+     ]
+    }
+   ],
    "proof": {
     "frames": 1316,
     "deaths": 0,
@@ -99456,7 +100930,13 @@ const records=[
      "checkKind": "shortcutChecks"
     }
    ],
-   "revision": "4505c17f5109",
+   "revision7308": "Readable physical three-head encounter replaces remote collar/grapple-memory rules. The second head builds a bridge over the outward void route; the first builds the foothold needed to approach the final high head.",
+   "route": {
+    "exited": true,
+    "deaths": 0,
+    "frames": 1196
+   },
+   "revision": "f4a109978db5",
    "source": "scripts/room-bank/fractured/bank-f76.json"
   },
   "tape": [
@@ -99469,72 +100949,44 @@ const records=[
     "j"
    ],
    [
-    110,
+    65,
     "rgu"
    ],
    [
-    55,
-    "rgu"
-   ],
-   [
-    1,
-    "j"
-   ],
-   [
-    30,
-    "rgu"
-   ],
-   [
-    1,
+    18,
     "rj"
+   ],
+   [
+    45,
+    "rgu"
+   ],
+   [
+    11,
+    "gu"
+   ],
+   [
+    1,
+    "ds"
+   ],
+   [
+    15,
+    ""
    ],
    [
     14,
     "r"
    ],
    [
-    12,
-    "rds"
+    18,
+    "rj"
    ],
    [
-    32,
+    46,
     "r"
    ],
    [
-    28,
-    ""
-   ],
-   [
-    1,
-    "rx"
-   ],
-   [
-    55,
+    6,
     "r"
-   ],
-   [
-    50,
-    "rgu"
-   ],
-   [
-    70,
-    "rgu"
-   ],
-   [
-    28,
-    "rgu"
-   ],
-   [
-    8,
-    "r"
-   ],
-   [
-    12,
-    "ds"
-   ],
-   [
-    62,
-    "l"
    ],
    [
     25,
@@ -99542,78 +100994,114 @@ const records=[
    ],
    [
     1,
-    "lx"
+    "rx"
    ],
    [
-    50,
-    "l"
-   ],
-   [
-    75,
-    "lgu"
-   ],
-   [
-    30,
-    "lgu"
-   ],
-   [
-    10,
-    ""
-   ],
-   [
-    12,
-    "j"
-   ],
-   [
-    8,
+    67,
     "r"
    ],
    [
-    65,
-    "rgu"
-   ],
-   [
-    1,
-    "p"
-   ],
-   [
-    54,
-    "rgu"
-   ],
-   [
-    38,
-    "rgu"
-   ],
-   [
-    1,
-    "lj"
-   ],
-   [
-    28,
-    "lgu"
-   ],
-   [
-    1,
-    "ds"
-   ],
-   [
-    30,
-    ""
-   ],
-   [
-    30,
-    "lj"
-   ],
-   [
-    120,
-    "l"
+    18,
+    "rj"
    ],
    [
     35,
+    "rgu"
+   ],
+   [
+    40,
+    "l"
+   ],
+   [
+    1,
+    "us"
+   ],
+   [
+    8,
+    ""
+   ],
+   [
+    40,
+    ""
+   ],
+   [
+    8,
+    "l"
+   ],
+   [
+    18,
     "lj"
    ],
    [
-    80,
+    5,
+    "lx"
+   ],
+   [
+    30,
+    "l"
+   ],
+   [
+    90,
+    "l"
+   ],
+   [
+    17,
+    "l"
+   ],
+   [
+    18,
+    "j"
+   ],
+   [
+    5,
+    "ux"
+   ],
+   [
+    25,
+    "l"
+   ],
+   [
+    8,
+    "l"
+   ],
+   [
+    12,
+    ""
+   ],
+   [
+    100,
+    "lgu"
+   ],
+   [
+    56,
+    ""
+   ],
+   [
+    10,
+    "rj"
+   ],
+   [
+    1,
+    "jus"
+   ],
+   [
+    20,
+    ""
+   ],
+   [
+    25,
+    "lj"
+   ],
+   [
+    90,
+    "l"
+   ],
+   [
+    20,
+    "lj"
+   ],
+   [
+    110,
     "l"
    ]
   ]
@@ -99699,9 +101187,9 @@ const records=[
    "run": 10,
    "collection": "superrooms",
    "format": "superroom",
-   "acceptance": "candidate",
-   "needsReview": true,
-   "difficulty": 4,
+   "acceptance": "banked",
+   "needsReview": false,
+   "difficulty": 3,
    "role": "interconnected Path finale",
    "worlds": [
     39
@@ -99717,7 +101205,7 @@ const records=[
    "newMechanics": [],
    "status": "route-proven",
    "author": "Codex",
-   "humanReview": "Awaiting fun/difficulty/suitability review.",
+   "humanReview": "Approved by the user after the 7.307.1 review. User-rated difficulty 3/5; mid-Fractured placement.",
    "requiredEvents": [
     "mirror",
     "stone-lit",
@@ -100308,6 +101796,7 @@ const records=[
     "bank-f26"
    ],
    "ingredientNotes": "B46 supplies a turned mirror sending a timed beam into a sealed receiver; F26 supplies preserving the remaining dash so its phase landing stays real. F77 stretches those decisions across a single rerouted light shaft and return gallery.",
+   "placement": "Mid-Fractured",
    "revision": "ee3a6f5804f3",
    "source": "scripts/room-bank/fractured/bank-f77.json"
   },

@@ -1236,6 +1236,10 @@
           "entryDelta": 2,
           "toFire": [
             [
+              65,
+              ""
+            ],
+            [
               4,
               "r"
             ]
@@ -1266,7 +1270,11 @@
           "entryDelta": 1,
           "toFire": [
             [
-              9,
+              65,
+              ""
+            ],
+            [
+              10,
               "r"
             ]
           ]
@@ -1730,7 +1738,11 @@
           "entryDelta": 2,
           "toFire": [
             [
-              9,
+              65,
+              ""
+            ],
+            [
+              10,
               "r"
             ]
           ]
@@ -1789,18 +1801,27 @@
         },
         {
           "from": "cl13-v13-middle",
-          "to": "cl13-bank-b73",
-          "how": "right tunnel (10 rock)",
-          "kind": "direct",
+          "to": "cl13-walk-5-27",
+          "how": "right tunnel (1 rock)",
+          "kind": "walk",
           "entryDelta": 2,
           "toFire": [
             [
-              65,
+              1,
               ""
-            ],
+            ]
+          ]
+        },
+        {
+          "from": "cl13-walk-5-27",
+          "to": "cl13-bank-b73",
+          "how": "down through the ceiling (2 rock)",
+          "kind": "walk",
+          "entryDelta": 4,
+          "toFire": [
             [
-              11,
-              "r"
+              90,
+              ""
             ]
           ]
         }
@@ -1999,7 +2020,11 @@
           "entryDelta": 2,
           "toFire": [
             [
-              9,
+              65,
+              ""
+            ],
+            [
+              10,
               "r"
             ]
           ]
@@ -2007,26 +2032,35 @@
         {
           "from": "cl14-k14-throne",
           "to": "cl14-bank-b74",
-          "how": "right tunnel (4 rock)",
+          "how": "right tunnel (3 rock)",
           "kind": "direct",
           "entryDelta": 2,
           "toFire": [
             [
-              65,
-              ""
-            ],
-            [
-              19,
+              79,
               "r"
             ]
           ]
         },
         {
           "from": "cl14-bank-b74",
+          "to": "cl14-walk-8-37",
+          "how": "down through the ceiling (0 rock)",
+          "kind": "walk",
+          "entryDelta": 2,
+          "toFire": [
+            [
+              7,
+              ""
+            ]
+          ]
+        },
+        {
+          "from": "cl14-walk-8-37",
           "to": "cl14-k14-rail",
           "how": "right tunnel (4 rock)",
-          "kind": "direct",
-          "entryDelta": 1,
+          "kind": "walk",
+          "entryDelta": 2,
           "toFire": [
             [
               65,
@@ -2302,7 +2336,11 @@
           "entryDelta": 2,
           "toFire": [
             [
-              9,
+              65,
+              ""
+            ],
+            [
+              10,
               "r"
             ]
           ]
@@ -2343,60 +2381,47 @@
         },
         {
           "from": "cl16-t16-tide-head",
-          "to": "cl16-walk-5-3",
-          "how": "right tunnel (1 rock)",
-          "kind": "walk",
+          "to": "cl16-bank-b75",
+          "how": "right tunnel (4 rock)",
+          "kind": "direct",
           "entryDelta": 2,
           "toFire": [
             [
-              15,
+              65,
               ""
-            ]
-          ]
-        },
-        {
-          "from": "cl16-walk-5-3",
-          "to": "cl16-bank-b75",
-          "how": "up shaft at 3–4 (6 rock)",
-          "kind": "walk",
-          "entryDelta": 0,
-          "toFire": [
-            [
-              70,
-              "lgu"
             ],
             [
-              16,
+              27,
               "r"
             ]
           ]
         },
         {
           "from": "cl16-bank-b75",
-          "to": "cl16-walk-6-22",
-          "how": "left tunnel (4 rock)",
+          "to": "cl16-walk-6-4",
+          "how": "down through the ceiling (0 rock)",
           "kind": "walk",
           "entryDelta": 2,
           "toFire": [
             [
-              1,
+              7,
               ""
             ]
           ]
         },
         {
-          "from": "cl16-walk-6-22",
+          "from": "cl16-walk-6-4",
           "to": "cl16-t16-tide",
-          "how": "up shaft at 1–2 (10 rock)",
+          "how": "right tunnel (4 rock)",
           "kind": "walk",
-          "entryDelta": 8.54400374531753,
+          "entryDelta": 2,
           "toFire": [
             [
-              70,
-              "lgu"
+              65,
+              ""
             ],
             [
-              12,
+              10,
               "r"
             ]
           ]
@@ -2473,7 +2498,11 @@
           "entryDelta": 2,
           "toFire": [
             [
-              9,
+              65,
+              ""
+            ],
+            [
+              10,
               "r"
             ]
           ]
@@ -2503,7 +2532,11 @@
           "entryDelta": 2,
           "toFire": [
             [
-              9,
+              65,
+              ""
+            ],
+            [
+              10,
               "r"
             ]
           ]
@@ -2542,34 +2575,29 @@
           "entryDelta": 2,
           "toFire": [
             [
-              25,
+              65,
+              ""
+            ],
+            [
+              26,
               "r"
             ]
           ]
         },
         {
           "from": "cl17-s17-landfall",
-          "to": "cl17-walk-7-18",
-          "how": "right tunnel (1 rock)",
-          "kind": "walk",
+          "to": "cl17-bank-b76",
+          "how": "right tunnel (4 rock)",
+          "kind": "direct",
           "entryDelta": 1,
           "toFire": [
             [
-              1,
+              65,
               ""
-            ]
-          ]
-        },
-        {
-          "from": "cl17-walk-7-18",
-          "to": "cl17-bank-b76",
-          "how": "down through the ceiling (2 rock)",
-          "kind": "walk",
-          "entryDelta": 4,
-          "toFire": [
+            ],
             [
-              99,
-              ""
+              12,
+              "r"
             ]
           ]
         }
@@ -4450,7 +4478,11 @@
           "entryDelta": 0,
           "toFire": [
             [
-              41,
+              65,
+              ""
+            ],
+            [
+              6,
               "r"
             ]
           ]
@@ -5390,18 +5422,27 @@
         },
         {
           "from": "cl33-fv33-middle",
-          "to": "cl33-bank-f74",
-          "how": "right tunnel (10 rock)",
-          "kind": "direct",
+          "to": "cl33-walk-5-71",
+          "how": "right tunnel (1 rock)",
+          "kind": "walk",
           "entryDelta": 1,
           "toFire": [
             [
-              65,
+              1,
               ""
-            ],
+            ]
+          ]
+        },
+        {
+          "from": "cl33-walk-5-71",
+          "to": "cl33-bank-f74",
+          "how": "down through the ceiling (2 rock)",
+          "kind": "walk",
+          "entryDelta": 4,
+          "toFire": [
             [
-              15,
-              "r"
+              90,
+              ""
             ]
           ]
         }
@@ -5535,16 +5576,12 @@
         {
           "from": "cl34-fk34-throne",
           "to": "cl34-bank-f75",
-          "how": "right tunnel (5 rock)",
+          "how": "right tunnel (3 rock)",
           "kind": "direct",
           "entryDelta": 2,
           "toFire": [
             [
-              65,
-              ""
-            ],
-            [
-              26,
+              57,
               "r"
             ]
           ]
@@ -5763,7 +5800,11 @@
           "entryDelta": 2,
           "toFire": [
             [
-              9,
+              65,
+              ""
+            ],
+            [
+              10,
               "r"
             ]
           ]
@@ -5793,7 +5834,11 @@
           "entryDelta": 2,
           "toFire": [
             [
-              9,
+              65,
+              ""
+            ],
+            [
+              10,
               "r"
             ]
           ]

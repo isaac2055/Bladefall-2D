@@ -16,6 +16,8 @@
      through the floor) and the room's tally gates (G) open.
    - Between pours it rests `rest` frames (default 40) while the column drains; `first` delays its first move.
    Opt-in (7.277; without it the machine behaves exactly as above):
+   - `coldPriority:true`: while moving, prioritize an unrefused bay with a chilled mould; this makes
+     the furnace answer the player's work instead of touring empty bays. Existing fights keep their schedule.
    - `crack:true` (7.280, the Fractured Colossus): a pour that lands on fault stone (bladefall-pcore-dev-fault.js,
      a room with `fault`) cracks the strip from where it landed, as a touch would; the floor there falls tile by tile.
    - `hunt:{every,lock,speed}`: every `every`-th move (default 3) it hunts instead of going to its next bay: the ladle
@@ -68,6 +70,11 @@ function before(g){
  const Core=C(),p=g.p;
  c.t++;
  if(c.state==='move'){
+  // Opt-in: answer a newly chilled mould instead of touring empty bays.
+  if(c.d.coldPriority&&!c.hunt){
+   const ready=c.bays.findIndex((b,j)=>!c.refused.has(j)&&g.ents.some(e=>e.type==='mould'&&e.solid&&e.x===b*TILE));
+   if(ready>=0)c.i=ready;
+  }
   if(c.cool>0){c.cool--;return;}
   if(c.hunt)c.col=huntCol(g,c);else c.col=c.bays[c.i];
   const tx=bayX(c.col)+4,dx=tx-c.x,s=(c.d.speed||CK.speed)*Core.DT;

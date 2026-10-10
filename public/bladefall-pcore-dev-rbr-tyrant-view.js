@@ -3,6 +3,7 @@
 'use strict';
 const rect=(b,x,y,w,h,c)=>{b.fillStyle=c;b.fillRect(Math.round(x),Math.round(y),w,h);};
 function draw(b,g){const z=g.tyrant;if(!z||z.gone)return;
+ if(z.d.hunt){drawHunt(b,g,z);return;}
  const width=z.retreat?Math.max(1,16-z.retreat/3):16,x=z.x+(16-width)/2;
  rect(b,x,z.y,width,z.h,'#28213c');rect(b,x,z.y,1,z.h,'#8e78bd');rect(b,x+width-1,z.y,1,z.h,'#8e78bd');
  if(!z.retreat){
@@ -28,6 +29,37 @@ function draw(b,g){const z=g.tyrant;if(!z||z.gone)return;
   for(let i=0;i<z.need;i++)rect(b,z.x+i*5,z.y-14,3,2,i<z.need-z.hits?'#b6d9fa':'#393147');}
  for(const q of z.shots){if(q.rake&&!q.through){rect(b,q.x-1,q.y-1,q.w+2,q.h+2,'#5d2f6f');rect(b,q.x,q.y,q.w,q.h,'#ffd0f4');}else rect(b,q.x,q.y,q.w,q.h,q.through?'#b8f6ff':'#efb1ff');}
 }
-const event=(e,{burst})=>{if(e.type==='tyrant-hit')burst(e.x,e.y,18,'#b6d9fa',55,24);if(e.type==='tyrant-walk')burst(e.x-8,e.y+2,10,'#d99afa',40,18);};
+// (7.308) The hunting Tyrant: a tall void figure whose whole body is the ward. His mask burns and a line runs to
+// the knight before each bolt; a bolt out of a door streaks home. Between perches he folds to a seam and unfolds.
+function drawHunt(b,g,z){const T=root.BladefallPrecisionTyrant,fr=g.frame||0,HF=z.d.hunt.fold??T.HUNT.fold;
+ let k=1;if(z.fold){const u=z.fold/HF;k=u<.5?1-u*2:(u-.5)*2;}if(z.retreat)k=Math.max(0,1-z.retreat/40);
+ const cx=z.x+8,width=Math.max(1,Math.round(16*k)),x=cx-width/2,y=z.y,h=z.h;
+ // the seam he stands in
+ b.globalAlpha=.25;rect(b,cx-1,y-6,2,h+12,'#c9b2ff');b.globalAlpha=1;
+ if(k<=0.05){rect(b,cx-1,y,2,h,'#e8dcff');}
+ else{
+  b.fillStyle='#2a2140';b.beginPath();b.moveTo(cx-12*k,y+18);b.lineTo(cx+12*k,y+18);b.lineTo(cx+9*k,y+h);b.lineTo(cx,y+h-14);b.lineTo(cx-9*k,y+h);b.closePath();b.fill();
+  rect(b,x,y+14,width,h-28,'#3a2d55');rect(b,x,y+14,1,h-28,'#9a84cc');rect(b,x+width-1,y+14,1,h-28,'#9a84cc');
+  for(let i=0;i<4;i++){const yy=y+24+i*((h-40)/4);rect(b,cx-5*k,yy,10*k,2,'#6c5a92');}
+  // arms
+  rect(b,cx-14*k,y+20,3*k,h*.4,'#6f5c8b');rect(b,cx+11*k,y+20,3*k,h*.4,'#6f5c8b');
+  // mask
+  const due=T.huntDue(z),tell=z.d.hunt.tell??T.HUNT.tell,burn=!z.fold&&!z.retreat&&due<=tell,on=due<8||(due>>2)%2===0;
+  rect(b,cx-5*k,y+2,10*k,13,'#aaa0bd');rect(b,cx-6*k,y+6,12*k,4,'#171521');
+  rect(b,cx-4*k,y+7,3*k,2,burn?(on?'#ffffff':'#ffb0f0'):'#dfc9ff');rect(b,cx+1*k,y+7,3*k,2,burn?(on?'#ffffff':'#ffb0f0'):'#dfc9ff');
+  if(burn){b.globalAlpha=.35;rect(b,cx-8,y,16,16,'#f6d9ff');b.globalAlpha=1;}
+  // crown
+  rect(b,cx-9*k,y-4,18*k,3,'#c5a767');for(let i=0;i<3;i++)rect(b,cx-8*k+i*6*k,y-8,3*k,4,'#e6d294');
+  // the ward: his whole body, pale while his own bolt can wound him
+  b.globalAlpha=.18+.08*Math.sin(fr/7);b.strokeStyle='#b6d9fa';b.lineWidth=1;b.strokeRect(x-3.5,y-9.5,width+7,h+12);b.globalAlpha=1;
+  for(let i=0;i<z.need;i++)rect(b,cx-7+i*5,y-16,3,2,i<z.need-z.hits?'#b6d9fa':'#393147');
+  if(z.aimAt&&!z.fold){const m={x:cx,y:y+10};b.save();b.globalAlpha=.55;b.strokeStyle='#ffb0f0';b.setLineDash([2,4]);b.beginPath();b.moveTo(m.x,m.y);b.lineTo(z.aimAt.x,z.aimAt.y);b.stroke();b.restore();}
+ }
+ // the next perch, faint, while he folds
+ if(z.fold&&z.d.perches){const q=z.d.perches[Math.min(z.hits,z.d.perches.length-1)];b.globalAlpha=.3;rect(b,q.c*8+7,q.r*8,2,z.h,'#e8dcff');b.globalAlpha=1;}
+ for(const q of z.shots){if(q.home){b.globalAlpha=.4;rect(b,q.x-q.vx/60*2,q.y-q.vy/60*2,q.w,q.h,'#b8f6ff');b.globalAlpha=1;rect(b,q.x-1,q.y-1,q.w+2,q.h+2,'#e9fdff');}
+  else{rect(b,q.x-1,q.y-1,q.w+2,q.h+2,'#5d2f6f');rect(b,q.x,q.y,q.w,q.h,q.through?'#b8f6ff':'#ffd0f4');}}
+}
+const event=(e,{burst})=>{if(e.type==='tyrant-fold'||e.type==='tyrant-unfold')burst(e.x,e.y,16,'#d9c8ff',50,30);if(e.type==='portal-pass'&&e.kind==='tyrant-bolt')burst(e.x,e.y,8,'#b8f6ff',30,14);if(e.type==='tyrant-hit')burst(e.x,e.y,18,'#b6d9fa',55,24);if(e.type==='tyrant-walk')burst(e.x-8,e.y+2,10,'#d99afa',40,18);};
 (root.BladefallPrecisionDeviceViews=root.BladefallPrecisionDeviceViews||[]).push({name:'rbr-tyrant',draw,event});
 })(typeof window!=='undefined'?window:globalThis);

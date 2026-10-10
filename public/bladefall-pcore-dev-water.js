@@ -11,7 +11,8 @@
    leave. A condenser freezes every pool in the room; a strike freezes the pool it touches.
    The tide (room def `tide:{c0,c1,low,high,hold,move}`, rows and frames): the sea between columns c0..c1
    rises from row `low` to row `high` and falls back, holding `hold` frames at each end and taking `move`
-   frames to turn. Its clock starts with the room's first input. Floats (glyph F) rest where they are
+   frames to turn (7.308: holdLow/holdHigh, if given, hold the low and high water for different times). Its clock
+   starts with the room's first input. Floats (glyph F) rest where they are
    drawn and ride the surface up when the sea is above them. Thorns under the surface are drowned:
    harmless until the sea leaves them. */
 (function(root){
@@ -51,8 +52,10 @@ function reset(g){
 /* The tide's surface in pixels (lower y = higher sea). */
 function surfaceY(g){
  const t=g.water.tide;if(!t)return Infinity;
- const lowY=t.low*TILE,highY=t.high*TILE,cyc=2*(t.hold+t.move),k=t.clock%cyc;
- let f;if(k<t.hold)f=0;else if(k<t.hold+t.move)f=(k-t.hold)/t.move;else if(k<2*t.hold+t.move)f=1;else f=1-(k-2*t.hold-t.move)/t.move;
+ // (7.308, opt-in) holdLow/holdHigh hold the two ends for different times; without them both use `hold`.
+ const lo=t.holdLow??t.hold,hi=t.holdHigh??t.hold;
+ const lowY=t.low*TILE,highY=t.high*TILE,cyc=lo+hi+2*t.move,k=t.clock%cyc;
+ let f;if(k<lo)f=0;else if(k<lo+t.move)f=(k-lo)/t.move;else if(k<lo+t.move+hi)f=1;else f=1-(k-lo-t.move-hi)/t.move;
  return Math.round(lowY+(highY-lowY)*f);
 }
 function inWater(g,x,y){

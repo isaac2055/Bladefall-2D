@@ -16,28 +16,28 @@
       "..H............................................................................#",
       "..H............................................................................#",
       "..H............................................................................#",
-      "..H.======.....................................................................#",
+      "..H............................................................................#",
       "..H.......P....................................................................#",
       "#####....#####.................................................................#",
       "#..............................................................................#",
       "#..............................................................................#",
-      "#.............GEEEEEEEEE.......................................................#",
+      "#.............GEEEEEE###.......................................................#",
       "#.............G................................................................#",
       "#.............G................................................................#",
       "#.............G................................................................#",
-      "#.............G...........EEEEEEEEEE...........................................#",
+      "#.............G...........EEEEEEE###...........................................#",
       "#.............G................................................................#",
       "#.............G................................................................#",
       "#.............G................................................................#",
-      "#.............G.......................EEEEEEEEEE...............................#",
+      "#.............G.......................EEEEEEE###...............................#",
       "#.............G................................................................#",
       "#.............G................................................................#",
       "#.............G................................................................#",
-      "#.............G...................................EEEEEEEEEE...................#",
+      "#.............G...................................EEEEEEE###...................#",
       "#.............G................................................................#",
       "#.............G................................................................#",
       "#.............G................................................................#",
-      "#.............G...............................................EEEEEEEEEE.......#",
+      "#.............G...............................................EEEEEEE###.......#",
       "#.............G................................................................#",
       "#.............G..........................................................c.l...#",
       "#.............G...##..................##..................##............########",
@@ -52,39 +52,39 @@
     "zips": [
       [
         0,
-        -28
+        -26
       ]
     ],
     "slabs": [
       {
-        "stone": 340,
+        "stone": 70,
         "molten": 80,
-        "glass": 100,
-        "offset": 0
+        "glass": 70,
+        "offset": 100
       },
       {
-        "stone": 340,
+        "stone": 70,
         "molten": 80,
-        "glass": 100,
-        "offset": -35
+        "glass": 70,
+        "offset": 147
       },
       {
-        "stone": 340,
+        "stone": 70,
         "molten": 80,
-        "glass": 100,
-        "offset": -70
+        "glass": 70,
+        "offset": 194
       },
       {
-        "stone": 340,
+        "stone": 70,
         "molten": 80,
-        "glass": 100,
-        "offset": -105
+        "glass": 70,
+        "offset": 241
       },
       {
-        "stone": 340,
+        "stone": 70,
         "molten": 80,
-        "glass": 100,
-        "offset": -140
+        "glass": 70,
+        "offset": 288
       }
     ],
     "beams": [
@@ -121,7 +121,7 @@
         ]
       }
     ],
-    "hint": "Follow the cooling stair to its freight. The same route returns below it: carry the lantern through the beams, then leave it to hold the home gate.",
+    "hint": "Wait on the dark stone ledges until the next slab cools. The fourth and fifth drops have their own rhythm. Carry the lantern below, then leave its weight for the lift home.",
     "question": "What does the return journey need from the far end of the cooling stair?"
   },
   "bank": {
@@ -130,7 +130,7 @@
     "run": 10,
     "collection": "superrooms",
     "format": "superroom",
-    "acceptance": "candidate",
+    "acceptance": "revised",
     "status": "route-proven",
     "author": "Codex",
     "tags": [
@@ -140,7 +140,7 @@
       "return-route"
     ],
     "newMechanics": [],
-    "humanReview": "Awaiting human review; ratings not measured.",
+    "humanReview": "Revised after the 7.307.1 review: active descent timings, permanent waiting ledges and cleared lift headroom; awaiting review.",
     "worlds": [
       10
     ],
@@ -149,7 +149,7 @@
       "bank-b38",
       "bank-b64"
     ],
-    "solution": "Descend across five linked heat beds, watching their cooling cycle. Light the far tally and collect its lantern. Return below the same beds with the lantern shielding three downward beams. Leave it on the western pressure plate, then ride the same service lift back above the starting shelf and leave through the held gate.",
+    "solution": "Read the cooling slabs from the permanent end ledges. Cross after each molten phase fades; the fourth and fifth crossings require a fresh timing decision rather than continuing to walk. Light the far tally and collect the lantern. Carry shade through the lower beams, leave the lantern on the west plate, and ride the cleared lift shaft home.",
     "interconnection": "The outward heat stair is the ceiling of the homebound freight road. Its far tally releases that road; its lantern then becomes the shield and finally the gate weight.",
     "novelty": "A single payload changes job twice while the route loops beneath the same timed casting architecture.",
     "nearestExisting": "B38 carries shade; B64 routes cargo. This ties those jobs to an Emberdeep cooling descent and returns to the original height.",
@@ -172,7 +172,7 @@
     "route": {
       "exited": true,
       "deaths": 0,
-      "frames": 920
+      "frames": 1162
     },
     "routeEvents": [
       {
@@ -213,7 +213,134 @@
     ],
     "positiveChecks": [
       {
-        "name": "Pause40framesbeforefinaldeparture",
+        "name": "Five extra frames on first safe ledge",
+        "tape": [
+          [
+            1,
+            "r"
+          ],
+          [
+            15,
+            ""
+          ],
+          [
+            64,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            64,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            64,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            95,
+            ""
+          ],
+          [
+            64,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            100,
+            ""
+          ],
+          [
+            64,
+            "r"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            28,
+            "r"
+          ],
+          [
+            2,
+            "l"
+          ],
+          [
+            1,
+            "ls"
+          ],
+          [
+            1,
+            "g"
+          ],
+          [
+            90,
+            "l"
+          ],
+          [
+            45,
+            ""
+          ],
+          [
+            258,
+            "l"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            1,
+            "dg"
+          ],
+          [
+            7,
+            "l"
+          ],
+          [
+            8,
+            ""
+          ],
+          [
+            20,
+            "j"
+          ],
+          [
+            8,
+            "ux"
+          ],
+          [
+            16,
+            "l"
+          ],
+          [
+            60,
+            ""
+          ],
+          [
+            80,
+            "l"
+          ]
+        ]
+      }
+    ],
+    "shortcutChecks": [
+      {
+        "name": "Original uninterrupted descent",
         "tape": [
           [
             350,
@@ -276,101 +403,74 @@
             ""
           ],
           [
-            24,
-            "l"
-          ],
-          [
-            40,
-            ""
-          ],
-          [
-            56,
-            "l"
-          ]
-        ],
-        "exited": true,
-        "deaths": 0,
-        "frames": 959
-      }
-    ],
-    "shortcutChecks": [
-      {
-        "name": "Attemptcanonicalroutewithoutg",
-        "tape": [
-          [
-            350,
-            "r"
-          ],
-          [
-            2,
-            "l"
-          ],
-          [
-            1,
-            "ls"
-          ],
-          [
-            1,
-            ""
-          ],
-          [
-            90,
-            "l"
-          ],
-          [
-            45,
-            ""
-          ],
-          [
-            258,
-            "l"
-          ],
-          [
-            8,
-            ""
-          ],
-          [
-            1,
-            "d"
-          ],
-          [
-            7,
-            "l"
-          ],
-          [
-            8,
-            ""
-          ],
-          [
-            20,
-            "j"
-          ],
-          [
-            8,
-            "ux"
-          ],
-          [
-            16,
-            "l"
-          ],
-          [
-            60,
-            ""
-          ],
-          [
             80,
             "l"
           ]
-        ],
-        "exited": false,
-        "deaths": 1,
-        "frames": null
+        ]
       }
-    ]
+    ],
+    "needsReview": true,
+    "revision7308": "Three necessary timing pauses replace the inactive 340-frame stone windows. Each slab ends in a permanent ledge. Lift rises two fewer tiles and its overhead grate is removed."
   },
   "tape": [
     [
-      350,
+      1,
+      "r"
+    ],
+    [
+      10,
+      ""
+    ],
+    [
+      64,
+      "r"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      64,
+      "r"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      64,
+      "r"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      95,
+      ""
+    ],
+    [
+      64,
+      "r"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      100,
+      ""
+    ],
+    [
+      64,
+      "r"
+    ],
+    [
+      8,
+      ""
+    ],
+    [
+      28,
       "r"
     ],
     [

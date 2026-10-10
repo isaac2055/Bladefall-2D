@@ -135,7 +135,7 @@
     "run": 8,
     "collection": "superrooms",
     "format": "superroom",
-    "acceptance": "revised",
+    "acceptance": "banked",
     "difficulty": 4,
     "role": "interconnected boss superroom",
     "worlds": [
@@ -153,7 +153,7 @@
     "newMechanics": [],
     "status": "route-proven",
     "author": "Codex",
-    "humanReview": "User approved the first three phases and requested a harder fourth native continuation; revision awaits review.",
+    "humanReview": "Approved by the user after the 7.307.1 review.",
     "approvedIngredients": [
       "bank-f33",
       "bank-f27"
@@ -828,7 +828,7 @@
       "carrier-reroute": 3,
       "mk-rain": 3
     },
-    "needsReview": true,
+    "needsReview": false,
     "revisionNote": "Fourth native Marksman perch and real fourth hit added. Third carrier reroute, third post-leap arrow rain, reversed boarding jump and aerial return shot form a harder continuation. Original entry/right exit and all first-three boss timings preserved; five one-way recovery tiles extend the final landing. No runtime changes.",
     "routeEvents": [
       {

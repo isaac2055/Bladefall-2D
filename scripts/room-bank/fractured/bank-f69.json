@@ -107,8 +107,8 @@
     "run": 9,
     "collection": "superrooms",
     "format": "superroom",
-    "acceptance": "revised",
-    "needsReview": true,
+    "acceptance": "banked",
+    "needsReview": false,
     "difficulty": 4,
     "role": "interconnected native Brute boss superroom",
     "worlds": [
@@ -127,7 +127,7 @@
     "newMechanics": [],
     "status": "route-proven",
     "author": "Codex",
-    "humanReview": "Expanded after feedback that the original was too short/simple. Awaiting renewed fun/difficulty/suitability review.",
+    "humanReview": "Approved by the user after the 7.307.1 review.",
     "approvedIngredients": [
       "bank-f27",
       "bank-f33"
@@ -599,7 +599,7 @@
     },
     "endingForgiveness": "Once the third native crush finishes, the whole court is safe recovery floor. The carried anvil can be retried, the original lifts remain available, and the final gallery accepts an extra sixty-frame pause before the last jump.",
     "evidenceNotes": [
-      "Entrance P33,33 and right exit rows8–11 are unchanged.",
+      "Entrance P33,33 and right exit rows8\u201311 are unchanged.",
       "No new runtime: anvilSleds uses the already loaded superrooms-colossus module.",
       "The anvil return is the demonstrated new route, not an invisible mandatory receipt; carrier recovery remains valid."
     ]
