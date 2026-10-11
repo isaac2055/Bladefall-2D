@@ -8,6 +8,8 @@ const require=createRequire(import.meta.url);
 const store={};
 globalThis.localStorage={getItem:k=>store[k]??null,setItem:(k,v)=>{store[k]=String(v);},removeItem:k=>{delete store[k];}};
 globalThis.BLADEFALL_CLIMB=true;
+// Vesper's ward reads the save only inside Survive's World 42; stand there for these probes
+globalThis.BladefallPitchView={climb:{state:()=>({world:{n:42}})}};
 for(const f of ['climb','climb-bank-passages','climb-atlas','climb-passages','climb-passage-tapes','climb-worlds','climb-finale-tapes','climb-finale','climb-geography','climb-geography-build'])
  require(`../../public/bladefall-${f}.js`);
 const CL=globalThis.BladefallClimb,FIN=globalThis.BladefallClimbFinale;
