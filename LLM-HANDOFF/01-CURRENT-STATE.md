@@ -1,3 +1,51 @@
+## 7.309.0: Survive's finale, Worlds 41 and 42, and the crowned map (2026-10-11)
+
+Isaac asked to finish the game: face your Echo at the bottom of the Fractured emerald (Explore's level 41, in Survive's form), then Vesper at the top of the Emerald Ascent. Merged with your Echo, Vesper is beatable; otherwise only someone who can go a very long time without being hit will finish him. The map changes to match.
+
+**Map (bladefall-climb-map.js):**
+- The Fractured half is mirrored left to right (display only; the atlas and every physical road keep their coordinates). The Fractured Palace band now hugs the left edge, mirroring Sunspire's band on the right. 39 stands top left, opposite 38.
+- Every region is a crystal, after Isaac's "41 · Your Echo" sketch:
+  - Fractured regions are shattered: the rim breaks into slivers and loose chips fly off.
+  - Base regions are the same crystal whole: a cut double rim with two glints.
+- 20 and 40 carry boss highlights (gold and violet).
+- 41 and 42 appear only once all forty worlds are complete. They are crown gems with chevron wings, hanging from 35 and 15, with their names beside them. Vesper's label lists both fights (unmerged / merged); the one that applies is lit.
+- Beating your Echo wraps the Fractured emerald in a violet double outline. Beating Vesper wraps the Ascent in gold.
+
+**Worlds (bladefall-climb-finale.js):** registered off the atlas, with geography anchors 41 [0,4500] and 42 [0,−1700]. They start from the map's Play button. Saved state: `bladefall.climb.finale.v1` {echo, choice, vesper}. A `?finale` link forces them open for testing.
+- **41 · Your Echo:**
+  1. Where You Left Yourself: it runs at you once and lands once, then runs ahead.
+  2. The Part You Left: three wounds.
+  3. Stay With Me: three wounds. Each run comes twice; an afterimage follows.
+  When it yields, the Kill/Merge/Forget card appears (Explore's text). The choice is saved, and beating it again lets you choose again.
+- **42 · Vesper, True King:**
+  1. The Throne Road: walls of bats, each with one gap at the floor, low-ledge or high-ledge height.
+  2. The arena, with four forms:
+     - the Cloaked Man: a phantom slash from his ghost, then chains along the floor;
+     - Unbound: a bat wall, then a dive;
+     - the Bones: teeth across the floor, or a lunge;
+     - All of Him: a hand slams the third you stand in, then rests there, open.
+  Cuts per form: merged 3, killed 10, unmerged 15, forgot 18. A death resets the whole fight. The ending card's line depends on your choice.
+
+**Engine (opt-in, bladefall-pcore-dev-finale.js + -view.js):** `echoDuel`, `vesper` and `curtain` room fields. Every attack is drawn before it lands, openings are drawn bright, and Vesper's ward is drawn pale. Climb view changes:
+- gating for worlds above 40;
+- no rift portal in 41/42;
+- `g.solvedBefore`, so an Echo that has already run ahead stays gone;
+- Explore's finale music, with one theme per Vesper form.
+
+**Checks:**
+- `node scripts/climb/finale-check.mjs`:
+  - all five finale routes finish with zero deaths (recorded by a scripted player);
+  - walking past your Echo is stopped and blind cutting never wounds it;
+  - the merged route cannot beat Vesper at 15, 10 or 18 cuts a form.
+- The scripted player also beat unmerged Vesper (15 a form): 16,316 frames, about 4.5 minutes without a hit. Merged takes 2,795 frames (about 47 s).
+- In Chrome, World 41 → choice → Merge → World 42 → "Vesper is still", played through the real Climb view with zero deaths. The map was checked before and after both wraps.
+- 127 bank routes pass.
+- All 327 joins pass in Chrome, with no script errors.
+- The co-op/T/N/replay feature checks pass.
+- walkback.mjs still flags 7 shade/bolt deaths in native Fractured rooms (25, 35, 36, 37, 39). The result is identical with the finale device removed, so it is not from this release.
+
+Version 7.309.0, cache `bladefall-v477-finale-crowns`. Human play of the finale is still to come.
+
 ## 7.308.2: Floor entrances into imported rooms are two-way again (2026-10-10)
 
 Imported rooms keep their reviewed drop-through rules (g.dropThru off). That made the one-way ledge capping a floor entrance shaft a one-way door. In bladefall-climb-view.js, `onDoorwayLedge` now allows Down + Jump when you stand only on seam ledges that were cut out of the wall (closed char rock). Every other ledge in the room keeps its rule. Retracting entry bridges (closed char '.') stay walkways.

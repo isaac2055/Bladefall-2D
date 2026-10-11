@@ -77,8 +77,10 @@ function mapSvg(geo,visited={},active=null,open={},player=null){
   const a=geo.rooms.get(link.from),z=geo.rooms.get(link.to);if(!a||!z)continue;
   out+=`<path d="M${(a.x+a.w/2)*scaleX} ${a.y+a.h/2} L${(z.x+z.w/2)*scaleX} ${z.y+z.h/2}" fill="none" stroke="#6db8d6" stroke-width="2" stroke-dasharray="4 5" opacity=".65"><title>Checkpoint passage</title></path>`;
  }
- for(const r of geo.rooms.values())if(!r.def.atlasTerrain)out+=`<rect x="${r.x*scaleX}" y="${r.y}" width="${r.w*scaleX}" height="${r.h}" fill="${visited[r.world]?colors[r.world]:'#35414c'}" opacity=".75"/>`;
- for(const region of geo.regions.values()){
+ // (7.309) the finale's two worlds stay off the map until all forty are complete
+ const hidden=n=>n>40&&!root.BladefallClimbFinale?.open();
+ for(const r of geo.rooms.values())if(!r.def.atlasTerrain&&!hidden(r.world))out+=`<rect x="${r.x*scaleX}" y="${r.y}" width="${r.w*scaleX}" height="${r.h}" fill="${visited[r.world]?colors[r.world]:'#35414c'}" opacity=".75"/>`;
+ for(const region of geo.regions.values()){if(hidden(region.world))continue;
   const a=root.BladefallClimbGeographyBuild.anchors[region.world],x=a[0]*scaleX,y=region.bounds.y-22,name=region.world+' · '+region.name;
   out+=`<text x="${x}" y="${y}" fill="${active===region.world?'#fff1b3':'#d9e3e8'}" stroke="#101823" paint-order="stroke" stroke-width="6" text-anchor="middle" font-size="30">${escape(name)}</text>`;
  }

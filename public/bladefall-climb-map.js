@@ -1,6 +1,8 @@
 /* The Emerald Ascent as a map you read (7.280): the approved nested diamonds (LLM-HANDOFF/emerald-ascent-map.html),
    one node per region, for BOTH emeralds. Sunspire Palace, and the Fractured Palace below it, are flank territories.
    It draws the atlas (open roads, visited regions, solved rooms) and never changes it.
+   (7.309) The Fractured half is drawn mirrored; every region is a crystal; the finale's crowns (41 below, 42 above)
+   appear once all forty worlds are complete, and beaten, wrap their emeralds (opts.finale, BladefallClimbFinale).
 
    - mount(host,{atlas,current}) draws the map into host: zoom (wheel, pinch, + / −), pan (drag), fit all, frame
      either emerald, find me; tap a region for its roads, which are open, and what opens a sealed one.
@@ -83,19 +85,27 @@ const OUTER=[15,13,16,17,18,19,[1.9,7.1],[2.65,4.8],[2.1,2.5],14];
 const PALACE={
  20:{outer:[[1.45,.6],[2.1,2.5],[2.65,4.8],[1.9,7.1],[0,8.65]],inner:[[1.45,.6],[1.62,2.58],[2.18,4.8],[1.48,6.92],[.35,8.02],[0,8.65]],
   via:{14:[[1.97,2.45]],19:[[1.69,7.01]]},caption:'Sunspire Palace · the whole right flank'},
- 40:{outer:[[1.45,16.7],[2.1,14.8],[2.65,12.5],[2.5,10.3],[1.9,8.9]],inner:[[1.45,16.7],[1.62,14.72],[2.18,12.5],[2.08,10.55],[1.72,9.4],[1.9,8.9]],
-  via:{34:[[1.97,14.85]],39:[[2.36,10.2]]},caption:'The Fractured Palace · its right flank'}};
+ // (7.309) drawn on the left, the exact mirror of Sunspire's band, following the Fractured emerald's own edge
+ 40:{outer:[[-1.45,16.7],[-2.1,14.8],[-2.65,12.5],[-1.9,10.2]],inner:[[-1.45,16.7],[-1.62,14.72],[-2.18,12.5],[-1.6,10.62],[-1.9,10.2]],
+  via:{34:[[-1.97,14.85]],39:[[-2.33,11.35]]},caption:'The Fractured Palace · the whole left flank',left:true}};
 // (38–39 crosses the gap between the emeralds above the Fractured Outskirts, under the Path to the Palace)
-const VIA={'38-39':[[-.95,9.27],[.95,9.27]]};
+const VIA={'38-39':[[.95,9.27],[-.95,9.27]]};
 const COLORS={1:'#b8b287',2:'#749881',3:'#b98b73',4:'#c0ae83',5:'#b29370',6:'#9b91bd',7:'#78999e',8:'#a4cbd8',9:'#c5e4ec',10:'#c97a52',
  11:'#b98a5a',12:'#9f92d8',13:'#8a73b8',14:'#6f93b8',15:'#b0905a',16:'#8aa0b8',17:'#c8bc8a',18:'#b08a68',19:'#d8c89a',20:'#e6c070'};
 function mix(a,b,t){const p=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)),x=p(a),y=p(b);return '#'+x.map((v,i)=>Math.round(v+(y[i]-v)*t).toString(16).padStart(2,'0')).join('');}
 const colorOf=n=>n>20?mix(COLORS[n-20]||'#8a8f9a','#9a7be0',.45):COLORS[n]||'#8a8f9a';
-function pos(n){const p=AT().positions[n];return p?[p[0]*SX,p[1]*SY]:null;}
+// (7.309) The Fractured emerald is drawn mirrored left to right (display only: the atlas and every physical road keep
+// their coordinates), so the Fractured Palace answers Sunspire from the left flank, and the Fractured Path (39) stands
+// on the emerald's corner opposite 38. The finale's two crowns sit beyond the tips once the whole game is done.
+const DISPLAY={39:[1.9,10.2]};
+const FINALE_AT={41:[0,FLIP+1.5],42:[0,-1.5]};
+function apos(n){if(FINALE_AT[n])return FINALE_AT[n];const p=DISPLAY[n]||AT().positions[n];if(!p)return null;return n>20?[-p[0],p[1]]:p;}
+function pos(n){const p=apos(n);return p?[p[0]*SX,p[1]*SY]:null;}
 const at=([x,y])=>[x*SX,y*SY];
 const flipPt=([x,y])=>[x,FLIP-y];
+const mirrorPt=([x,y])=>[-x,y];
 // a facet corner: a region number (the Fractured twin is n+20; the twin of 19 is the shared tip) or a literal point
-function corner(v,fr){if(Array.isArray(v))return at(fr?flipPt(v):v);if(!fr)return pos(v);return v===19?at(TIP):pos(v+20);}
+function corner(v,fr){if(Array.isArray(v))return at(fr?mirrorPt(flipPt(v)):v);if(!fr)return pos(v);return v===19?at(TIP):pos(v+20);}
 const baseOf=n=>n>20?n-20:n;
 function groupOf(l){
  if(l.kind==='crossing')return 'crossing';
@@ -136,6 +146,97 @@ function wrap(name,max=15){
  return lines;
 }
 const gem=`${-NW/2},0 ${-NW/2+17},${-NH/2} ${NW/2-17},${-NH/2} ${NW/2},0 ${NW/2-17},${NH/2} ${-NW/2+17},${NH/2}`;
+// (7.309) Crystal regions, after Isaac's "41 · Your Echo" sketch. A Fractured region's gem is shattered: its rim breaks
+// into glowing slivers with gaps between them, a few chips fly loose and a crack runs across its face. A base region is
+// the same crystal whole: an unbroken cut rim, an inner table with facet lines and a glint on two corners. Both show at
+// every zoom. The breaks come from the region number, so a region always shatters the same way.
+const GEM_PTS=[[-NW/2,0],[-NW/2+17,-NH/2],[NW/2-17,-NH/2],[NW/2,0],[NW/2-17,NH/2],[-NW/2+17,NH/2]];
+const f1=v=>v.toFixed(1);
+function edgeN(i){const a=GEM_PTS[i],b=GEM_PTS[(i+1)%6],ex=b[0]-a[0],ey=b[1]-a[1],L=Math.hypot(ex,ey);return [ey/L,-ex/L];}
+// the gem's outline pushed out by d (every edge moved out by d, corners where the moved edges meet)
+function grown(d){return GEM_PTS.map((v,i)=>{const p=edgeN((i+5)%6),q=edgeN(i),k=d/(1+p[0]*q[0]+p[1]*q[1]);return [v[0]+(p[0]+q[0])*k,v[1]+(p[1]+q[1])*k];});}
+// a point t (0–1) of the way round an outline, with the outward normal of its edge
+function round(poly,t){const u=((t%1)+1)%1*6,i=Math.floor(u),f=u-i,a=poly[i],b=poly[(i+1)%6],ex=b[0]-a[0],ey=b[1]-a[1],L=Math.hypot(ex,ey)||1;
+ return {x:a[0]+ex*f,y:a[1]+ey*f,nx:ey/L,ny:-ex/L,tx:ex/L,ty:ey/L};}
+const pts2=list=>list.map(p=>f1(p[0])+','+f1(p[1])).join(' ');
+function seeded(n){let x=n*9301+49297;return ()=>{x=(x*9301+49297)%233280;return x/233280;};}
+function crystal(n,dim=false){
+ const r=seeded(n),out=[];
+ if(n>20||n===41){
+  const glow=dim?'#6b6286':'#a98cf0',edge=dim?'#9d93b8':'#e4dcff';
+  out.push(`<polygon points="${pts2(grown(6))}" fill="none" stroke="${glow}" stroke-opacity="${dim?.07:.16}" stroke-width="10"/>`);
+  // the shattered rim: slivers round an outline 5 out, each tilted off the rim and tapering to a point
+  const rim=grown(5),pieces=10;
+  for(let i=0;i<pieces;i++){
+   const t0=(i+.06+r()*.14)/pieces,t1=(i+.8+r()*.14)/pieces,l0=r()*5,l1=r()*5,thick=2.4+r()*2.6,steps=6,o=[],inn=[],tip=r()<.5;
+   for(let s=0;s<=steps;s++){const u=s/steps,p=round(rim,t0+(t1-t0)*u),lift=l0+(l1-l0)*u,w=s===0||s===steps?0:thick*(tip?1-u*.75:.25+u*.75),jag=(s%2?1:-.7)*r()*1.6;
+    o.push([p.x+p.nx*(lift+w+jag),p.y+p.ny*(lift+w+jag)]);inn.push([p.x+p.nx*lift,p.y+p.ny*lift]);}
+   out.push(`<polygon points="${pts2([...o,...inn.reverse()])}" fill="${edge}" fill-opacity="${f1(.55+r()*.35)}" stroke="#ffffff" stroke-opacity="${dim?.15:.5}" stroke-width=".7"/>`);
+  }
+  // loose chips
+  for(let i=0;i<5;i++){const p=round(rim,r()),d=9+r()*11,sz=2.5+r()*3,a=r()*6.28,x=p.x+p.nx*d,y=p.y+p.ny*d;
+   out.push(`<polygon points="${pts2([[x+Math.cos(a)*sz,y+Math.sin(a)*sz],[x+Math.cos(a+2.3)*sz*.7,y+Math.sin(a+2.3)*sz*.7],[x+Math.cos(a+4)*sz*.5,y+Math.sin(a+4)*sz*.5]])}" fill="${edge}" fill-opacity="${dim?.35:.8}"/>`);}
+  const y0=-NH/2+7+r()*8;out.push(`<polyline points="${pts2([[-NW/2+22,y0],[-18+r()*10,y0+12],[6+r()*10,y0+6],[NW/2-28,y0+19]])}" fill="none" stroke="#efe8ff" stroke-opacity="${dim?.1:.24}" stroke-width="1.2"/>`);
+ }else{
+  const gold=n===42,glow=dim?'#4f6a5c':gold?'#e6c070':'#57d48a',edge=dim?'#6f8a7c':gold?'#ffe39a':'#bfe8cc';
+  out.push(`<polygon points="${pts2(grown(4))}" fill="none" stroke="${glow}" stroke-opacity="${dim?.08:.16}" stroke-width="12"/>`);
+  out.push(`<polygon points="${pts2(grown(5))}" fill="none" stroke="${edge}" stroke-opacity="${dim?.25:.55}" stroke-width="1.6"/>`);
+  out.push(`<polygon points="${pts2(grown(7.5))}" fill="none" stroke="${edge}" stroke-opacity="${dim?.1:.22}" stroke-width=".9"/>`);
+  for(const [i,sz] of [[1,7],[4,5]]){const [x,y]=grown(5)[i];out.push(`<path d="M${f1(x)},${f1(y-sz)}L${f1(x+sz*.28)},${f1(y-sz*.28)}L${f1(x+sz)},${f1(y)}L${f1(x+sz*.28)},${f1(y+sz*.28)}L${f1(x)},${f1(y+sz)}L${f1(x-sz*.28)},${f1(y+sz*.28)}L${f1(x-sz)},${f1(y)}L${f1(x-sz*.28)},${f1(y-sz*.28)}Z" fill="#fff6d6" fill-opacity="${dim?.25:.85}"/>`);}
+ }
+ return out.join('');
+}
+// the gem's own face: a cut table and facet lines inside the outline
+function facetsOf(n,dim){
+ const k=.64,inner=GEM_PTS.map(([x,y])=>[x*k,y*k*.82]),c=n>20||n===41?'#efe8ff':'#ffffff',op=dim?.05:.12;
+ return `<polygon points="${pts2(inner)}" fill="none" stroke="${c}" stroke-opacity="${op}" stroke-width="1"/>`+inner.map((p,i)=>`<line x1="${f1(p[0])}" y1="${f1(p[1])}" x2="${GEM_PTS[i][0]}" y2="${GEM_PTS[i][1]}" stroke="${c}" stroke-opacity="${op}" stroke-width="1"/>`).join('');
+}
+// (7.309) The finale's crowns: Vesper (42) above the Ascent, your Echo (41) below the Fractured emerald, each a large
+// gem with chevron wings and its name beside it. They appear once all forty worlds are complete. Beaten, each wraps its
+// emerald in a double outline: violet round the Fractured emerald for the Echo, gold round the Ascent for Vesper.
+const CW=176,CH=66;
+const CROWN={42:{name:'VESPER',sub:'TRUE KING',lines:['UNMERGED: EXTREME ENDURANCE FIGHT','MERGED: THE FINAL SHOWDOWN'],col:'#ffd36b',lit:'#fff1b8',deep:'#2b2412',text:'#ffe9a8'},
+ 41:{name:'YOUR ECHO',sub:'MERGE WITH YOUR ECHO',lines:[],col:'#b98cff',lit:'#efe4ff',deep:'#1d1530',text:'#e4d6ff'}};
+const crownPts=`${-CW/2},0 ${-CW/2+20},${-CH/2} ${CW/2-20},${-CH/2} ${CW/2},0 ${CW/2-20},${CH/2} ${-CW/2+20},${CH/2}`;
+function chevrons(c){const out=[];for(const s of [-1,1])for(const [k,w,o] of [[0,3,1],[1,2,.55]]){const x=s*(CW/2+12+k*13);
+ out.push(`<polyline points="${x},${-CH/2+6} ${x+s*12},0 ${x},${CH/2-6}" fill="none" stroke="${c.col}" stroke-opacity="${o}" stroke-width="${w}" stroke-linejoin="round"/>`);}return out.join('');}
+function crownNode(n,model){
+ const c=CROWN[n],p=pos(n),info=model.info[n]||{},beaten=!!info.progress?.cleared,sel=model.selected===n,here=model.here?.world===n&&!model.here.link,fin=model.finale||{};
+ const g=[`<g class="cm-node" data-n="${n}" transform="translate(${p[0]},${p[1]})">`];
+ if(here)g.push(`<circle class="cm-pulse" r="${CW*.6}" fill="none" stroke="#ffe08a" stroke-width="4"/>`);
+ g.push(`<polygon points="${crownPts}" fill="none" stroke="${c.col}" stroke-opacity=".18" stroke-width="22"/>`);
+ g.push(`<g transform="scale(${(CW/NW).toFixed(3)},${(CH/NH).toFixed(3)})">${crystal(n,false)}</g>`);
+ g.push(chevrons(c));
+ g.push(`<polygon points="${crownPts}" fill="${c.deep}" stroke="${sel?'#a9d4ff':c.col}" stroke-width="${sel?4:3.4}"/>`);
+ g.push(`<polygon points="${crownPts}" transform="scale(.86)" fill="none" stroke="${c.lit}" stroke-opacity=".55" stroke-width="1.6"/>`);
+ g.push(`<text y="13" text-anchor="middle" font-size="36" font-weight="700" fill="${c.text}">${n}</text>`);
+ if(beaten)g.push(`<text y="${CH/2-8}" text-anchor="middle" font-size="12" font-weight="700" fill="${c.col}">✓ ${n===41?esc((fin.choice||'').toUpperCase()):'STILL'}</text>`);
+ if(here){g.push(`<g transform="translate(0,${-CH/2-16})"><path d="M0,9L-8,-3L0,-11L8,-3Z" fill="#ffd36b" stroke="#fff3c4" stroke-width="1.5"/></g>`);
+  g.push(`<text y="${-CH/2-30}" text-anchor="middle" font-size="20" font-weight="700" fill="#ffe9a8" stroke="#0b1016" stroke-width="5" paint-order="stroke">YOU</text>`);}
+ // the name beside it; Vesper's two fights after a rule
+ const x0=CW/2+44;
+ g.push(`<text x="${x0}" y="-3" font-size="30" font-weight="700" letter-spacing="2" fill="${c.col}">${c.name}</text>`);
+ g.push(`<text x="${x0}" y="20" font-size="16" letter-spacing="2" fill="${c.text}" fill-opacity=".85">${c.sub}</text>`);
+ if(c.lines.length){const x1=x0+168;g.push(`<line x1="${x1}" y1="-20" x2="${x1}" y2="22" stroke="${c.col}" stroke-opacity=".7" stroke-width="2"/>`);
+  c.lines.forEach((t,i)=>{const lit=i===1?fin.merged:!fin.merged;g.push(`<text x="${x1+14}" y="${-2+i*21}" font-size="14" letter-spacing="1" fill="#aab6d8" fill-opacity="${lit?1:.55}">${esc(t)}</text>`);});}
+ g.push('</g>');return g.join('');
+}
+// a wrap: the outline through the outermost regions, pushed out past their gems, drawn as a glowing double line
+function wrapPath(list,c,col,inner){
+ const pts=list.map(([x,y,kx,ky])=>{const dx=x-c[0],dy=y-c[1],L=Math.hypot(dx,dy)||1;return [x+dx/L*kx,y+dy/L*ky];});
+ const d=pts.map((q,i)=>(i?'L':'M')+q[0].toFixed(1)+','+q[1].toFixed(1)).join('')+'Z';
+ return `<path d="${d}" fill="none" stroke="${col}" stroke-opacity=".22" stroke-width="16" stroke-linejoin="round"/><path d="${d}" fill="none" stroke="${col}" stroke-width="3.2" stroke-linejoin="round"/>`+
+  (inner?`<path d="${d}" transform="translate(${c[0]},${c[1]}) scale(.965) translate(${-c[0]},${-c[1]})" fill="none" stroke="${inner}" stroke-opacity=".9" stroke-width="2" stroke-linejoin="round"/>`:'');
+}
+function wraps(model){
+ const fin=model.finale||{},out=[];if(!fin.open)return '';
+ // a crown or the shared tip is passed at its sides; every other region is passed a margin outside its gem
+ const side=(n,s)=>{const p=pos(n);return [p[0]+s*(n>40?CW/2+30:NW/2+10),p[1],0,0];};
+ const past=n=>{const p=pos(n);return [p[0],p[1],NW/2+20,NH/2+20];};
+ if(fin.vesper)out.push(wrapPath([side(42,-1),past(13),past(16),past(17),past(18),side(19,-1),side(19,1),[2.65*SX+NW/2+18,4.8*SY,0,0],past(14),side(42,1)],[0,4.3*SY],'#ffd36b','#6fe0a0'));
+ if(fin.echo)out.push(wrapPath([side(19,1),past(38),past(37),past(36),past(33),side(41,1),side(41,-1),past(34),[-(2.65*SX+NW/2+18),12.5*SY,0,0],past(39),side(19,-1)],[0,13*SY],'#b98cff','#e4d6ff'));
+ return out.join('');
+}
 const lockGlyph='<rect x="-5" y="-1" width="10" height="8" rx="1.5"/><path d="M-3,-1v-3a3,3 0 0 1 6,0v3" fill="none"/>';
 
 const CSS=`
@@ -197,10 +298,15 @@ function buildSvg(model){
   const pts=[...t.outer,...t.inner.slice(1,-1).reverse()].map(at),sel=+n===selected;
   const color=+n>20?'#9a7be0':'#49c27a';
   P.push(`<polygon points="${pts.map(p=>p.join(',')).join(' ')}" fill="${color}" fill-opacity="${sel?.2:.11}" stroke="${color}" stroke-opacity=".6" stroke-width="1.6"/>`);
-  const c=pos(+n);P.push(`<text class="cm-near" x="${c[0]+18}" y="${c[1]+NH/2+22}" text-anchor="middle" font-size="12" fill="#9fb6a8" fill-opacity=".85">${esc(t.caption)}</text>`);
+  const c=pos(+n);P.push(`<text class="cm-near" x="${c[0]+(t.left?-18:18)}" y="${c[1]+NH/2+22}" text-anchor="middle" font-size="12" fill="#9fb6a8" fill-opacity=".85">${esc(t.caption)}</text>`);
  }
- P.push(`<text x="0" y="${-0.62*SY}" text-anchor="middle" font-size="22" letter-spacing="6" fill="#7fbf95" fill-opacity=".45">THE EMERALD ASCENT</text>`);
- if(regions.some(n=>n>20))P.push(`<text x="0" y="${(FLIP+.62)*SY+8}" text-anchor="middle" font-size="22" letter-spacing="6" fill="#ab95e6" fill-opacity=".5">THE FRACTURED EMERALD</text>`);
+ const fin=model.finale||{};
+ P.push(`<text x="0" y="${fin.open?-1.5*SY-CH/2-66:-0.62*SY}" text-anchor="middle" font-size="22" letter-spacing="6" fill="#7fbf95" fill-opacity=".45">THE EMERALD ASCENT</text>`);
+ if(regions.some(n=>n>20))P.push(`<text x="0" y="${fin.open?(FLIP+1.5)*SY+CH/2+48:(FLIP+.62)*SY+8}" text-anchor="middle" font-size="22" letter-spacing="6" fill="#ab95e6" fill-opacity=".5">THE FRACTURED EMERALD</text>`);
+ P.push(wraps(model));
+ // the crowns hang from the tips: 15 up to Vesper, 35 down to your Echo
+ if(fin.open)for(const [a,b,col] of [[15,42,'#ffd36b'],[35,41,'#b98cff']]){const p=pos(a),q=pos(b);
+  P.push(`<path d="M${p[0]},${p[1]+(b===41?NH/2:-NH/2)}L${q[0]},${q[1]+(b===41?-CH/2:CH/2)}" stroke="${col}" stroke-width="3" stroke-opacity=".85"/>`);}
  // links: open roads solid, open crossings dashed, sealed ones grey with a lock
  const style={inner:['#efe4c2','#4b5262'],outer:['#6fd39a','#3d5a4b'],descent:['#f0cf7a','#5e5644'],crossing:['#b99cff','#4c4466']};
  const labels=[];
@@ -222,14 +328,19 @@ function buildSvg(model){
  P.push(...labels);
  // regions
  for(const n of regions){
+  if(n>40){P.push(crownNode(n,model));continue;}
   const c=pos(n),info=model.info[n],w=worldOf(n);if(!c)continue;
   const visited=!!atlas.state.visited[n],current=here?.world===n&&!here.link,next=info.next,cleared=info.progress?.cleared,sel=n===selected;
   const base=colorOf(n),fill=visited?mix(base,'#10151c',.58):'#1a2029',stroke=current?'#fff1b3':sel?'#a9d4ff':cleared?'#e7c873':next?'#6fe0a0':visited?mix(base,'#ffffff',.15):'#3f4757';
   const text=visited||next||current?'#efe6cf':'#8f97a5',name=wrap(w?.name||nameOf(n));
   const g=[`<g class="cm-node" data-n="${n}" transform="translate(${c[0].toFixed(1)},${c[1].toFixed(1)})">`];
   if(current)g.push(`<circle class="cm-pulse" r="${NW*.55}" fill="none" stroke="#ffe08a" stroke-width="4"/>`);
+  const dim=!visited&&!next&&!current;
+  g.push(crystal(n,dim));
+  if(n===20||n===40)g.push(`<polygon points="${gem}" transform="scale(1.08,1.14)" fill="none" stroke="${n===20?'#ffd36b':'#b98cff'}" stroke-opacity="${dim?.25:.55}" stroke-width="5"/>`);
   if(next&&!current)g.push(`<polygon points="${gem}" fill="none" stroke="#6fe0a0" stroke-opacity=".35" stroke-width="9"/>`);
   g.push(`<polygon points="${gem}" fill="${fill}" stroke="${stroke}" stroke-width="${current?3.4:sel?3:cleared||next?2.4:1.6}"${!visited&&!next&&!current?' stroke-dasharray="5 4"':''}/>`);
+  g.push(facetsOf(n,dim));
   // far: the number alone, large; near: number, name, progress
   g.push(`<text class="cm-numF" y="10" text-anchor="middle" font-size="28" font-weight="700" fill="${text}">${n}</text>`);
   g.push(`<text class="cm-numN" y="${name.length>1?-13:-8}" text-anchor="middle" font-size="12.5" font-weight="700" fill="${cleared?'#e7c873':text}" fill-opacity=".9">${n}${cleared?' ✓':''}</text>`);
@@ -257,21 +368,25 @@ function mount(host,opts={}){
  injectCss();
  const atlas=opts.atlas||atlasNow();if(!host||!atlas)return null;
  const cardEl=host.closest?.('.pcCard');if(cardEl){cardEl.classList.add('cm-card');const short=()=>cardEl.classList.toggle('cm-short',innerHeight<=520);short();}
- const regions=Object.keys(AT().positions).map(Number).filter(n=>worldOf(n)).sort((a,b)=>a-b);
+ const fin=opts.finale||{open:false};
+ const regions=[...Object.keys(AT().positions).map(Number),...(fin.open?[41,42]:[])].filter(n=>worldOf(n)).sort((a,b)=>a-b);
  const here=opts.current||null;
  const info={};
  for(const n of regions){
   const visited=!!atlas.state.visited[n];
   info[n]={progress:progress(n,atlas,here?.world===n?here.room:null),next:!visited&&AT().links.some(l=>(l.a===n||l.b===n)&&atlas.state.open[l.id])};
+  if(n>40){const done=n===41?!!fin.echo:!!fin.vesper;info[n].progress={...info[n].progress,cleared:done,solved:done?info[n].progress.total:0};info[n].next=!done;}
  }
  const startN=here?.world&&regions.includes(here.world)?here.world:regions[0];
- const model={atlas,here,selected:startN,regions,info};
+ const model={atlas,here,selected:startN,regions,info,finale:fin};
  const fractured=regions.some(n=>n>20);
- const bounds={x:-(2.65*SX+NW/2+34),y:-(0.62*SY+40),w:2*(2.65*SX+NW/2+34),h:(fractured?(FLIP+.62)*SY+50:8.65*SY+NH+40)+(0.62*SY+40)};
+ const top=fin.open?1.5*SY+CH/2+96:0.62*SY+40,bottom=fractured?(fin.open?(FLIP+1.5)*SY+CH/2+66:(FLIP+.62)*SY+50):8.65*SY+NH+40;
+ const half=fin.open?Math.max(2.65*SX+NW/2+34,CW/2+44+168+14+300):2.65*SX+NW/2+34;   // (Vesper's two fights are written beside his crown)
+ const bounds={x:-half,y:-top,w:2*half,h:bottom+top};
  const frames={
   all:bounds,
-  base:{x:bounds.x+20,y:-NH/2-50,w:bounds.w-40,h:8.65*SY+NH+70},
-  fractured:{x:bounds.x+20,y:8.45*SY,w:bounds.w-40,h:(FLIP-8.45)*SY+NH/2+40}
+  base:{x:bounds.x+20,y:fin.open?-top+10:-NH/2-50,w:bounds.w-40,h:fin.open?8.65*SY+NH/2+top+10:8.65*SY+NH+70},
+  fractured:{x:bounds.x+20,y:8.45*SY,w:bounds.w-40,h:(fin.open?bottom:FLIP*SY+NH/2+40)-8.45*SY}
  };
  host.innerHTML=`<div class="cm-wrap">
   <div class="cm-tools">
@@ -328,7 +443,17 @@ function mount(host,opts={}){
   return pos(here?.world||startN)||[0,0];
  }
  function render(){svg.innerHTML=buildSvg(model);apply();}
+ function crownCard(n){
+  const w=worldOf(n),done=info[n].progress?.cleared,need=root.BladefallClimbFinale?.NEED||{merge:3,kill:10,none:15,forget:18};
+  const state=done?(n===41?'defeated · you chose '+(fin.choice||'?'):'Vesper is still'):'open to you';
+  const text=n===41?'Below the Fractured emerald, the part of you that you left behind is waiting. It runs ahead, then fights you twice: <b>The Part You Left</b>, then <b>Stay With Me</b>. When it yields you choose: Kill, Merge or Forget. Defeat it again to choose another path.'
+   :`The true king of this world waits above the Emerald Ascent, in four forms: the Cloaked Man, Unbound, the Bones, All of Him.<br><b>Merged with your Echo:</b> his ward breaks; ${need.merge} cuts end each form. The final showdown.<br><b>Unmerged:</b> his ward holds; ${need.none} cuts a form (${need.kill} if you killed your Echo, ${need.forget} if you forgot it). An extreme endurance fight.`;
+  chipbar.innerHTML=`<b>${n} · ${esc(w?.name||'')}</b> <small>· ${esc(state)}${n===42?(fin.merged?' · merged':' · unmerged'):''}</small>`;
+  detail.innerHTML=`<h2>${n} · ${esc(w?.name||'')}${done?'<span class="cm-chip done">'+(n===41?'defeated':'still')+'</span>':'<span class="cm-chip next">open to you</span>'}</h2><div>${text}</div>`;
+  const play=host.querySelector('#cmPlayWorld');if(play){const locked=opts.canStart&&!opts.canStart(n);play.disabled=!!locked;play.textContent=locked?'Locked':'Play world';play.title='Play '+(w?.name||'');play.setAttribute('aria-label',play.title);play.onclick=()=>opts.onStart(n);}
+ }
  function card(n){
+  if(n>40)return crownCard(n);
   const w=worldOf(n),inf=info[n],pr=inf.progress,visited=!!atlas.state.visited[n],current=here?.world===n;
   const chips=[current?`<span class="cm-chip here">${here.link?'you are on its road':'you are here'}</span>`:'',pr?.cleared?'<span class="cm-chip done">cleared</span>':'',
    inf.next?'<span class="cm-chip next">open to you</span>':'',!visited&&!inf.next&&!current?'<span class="cm-chip">not yet visited</span>':''].join('');

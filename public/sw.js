@@ -1,7 +1,7 @@
 /* Bladefall service worker — offline play + fast reloads once installed.
    Bump CACHE_NAME on a deploy where you want returning players to pick up
    the change immediately instead of waiting on the network-first refresh. */
-const CACHE_NAME = 'bladefall-v476-doorway-ledges';
+const CACHE_NAME = 'bladefall-v477-finale-crowns';
 const CORE_ASSETS = [
   './bladefall-touch-layout.js?v=7.308.2',
   './bladefall-pcore-dev-superrooms-colossus.js?v=7.305.0',
@@ -143,16 +143,18 @@ const CORE_ASSETS = [
   './bladefall-rbr-view.js?v=7.264.0',
   './bladefall-climb.js?v=7.273.40',
   './bladefall-climb-worlds.js?v=7.308.2',
+  './bladefall-climb-finale-tapes.js?v=7.309.0',
+  './bladefall-climb-finale.js?v=7.309.0',
   './bladefall-climb-art.js?v=7.278.0',
   './bladefall-climb-atlas.js?v=7.304.0',
   './bladefall-climb-passages.js?v=7.308.2',
   './bladefall-climb-passage-tapes.js?v=7.273.40',
   './bladefall-climb-passage-art.js?v=7.280.0',
-  './bladefall-climb-map.js?v=7.304.0',
-  './bladefall-climb-session.js?v=7.308.2',
-  './bladefall-climb-view.js?v=7.308.2',
-  './bladefall-climb-geography.js?v=7.304.0',
-  './bladefall-climb-geography-build.js?v=7.308.2',
+  './bladefall-climb-map.js?v=7.309.0',
+  './bladefall-climb-session.js?v=7.309.0',
+  './bladefall-climb-view.js?v=7.309.0',
+  './bladefall-climb-geography.js?v=7.309.0',
+  './bladefall-climb-geography-build.js?v=7.309.0',
   './bladefall-climb-coop.js?v=7.304.0',
   // rbr-regions:start (Room by Room region files, one per built region)
   './bladefall-rbr-01-outskirts.js?v=7.280.0',
@@ -261,6 +263,7 @@ const CORE_ASSETS = [
   './bladefall-pcore-dev-void.js?v=7.257.0',
   './bladefall-pcore-dev-watch.js?v=7.257.0',
   './bladefall-pcore-dev-water.js?v=7.308.2',
+  './bladefall-pcore-dev-finale.js?v=7.309.0',
   './bladefall-pcore-dev-beam-view.js?v=7.257.0',
   './bladefall-pcore-dev-citadel-view.js?v=7.257.0',
   './bladefall-pcore-dev-ember-view.js?v=7.257.0',
@@ -275,6 +278,7 @@ const CORE_ASSETS = [
   './bladefall-pcore-dev-void-view.js?v=7.257.0',
   './bladefall-pcore-dev-watch-view.js?v=7.257.0',
   './bladefall-pcore-dev-water-view.js?v=7.303.0',
+  './bladefall-pcore-dev-finale-view.js?v=7.309.0',
   './bladefall-pcore-parts.js?v=7.257.0',
   './bladefall-pcore-part-075-gaol.js?v=7.257.0',
   './bladefall-pcore-part-083-frostfell.js?v=7.257.0',
