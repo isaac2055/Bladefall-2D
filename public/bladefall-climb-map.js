@@ -414,7 +414,9 @@ function mount(host,opts={}){
  const cardEl=host.closest?.('.pcCard');if(cardEl){cardEl.classList.add('cm-card');const short=()=>cardEl.classList.toggle('cm-short',innerHeight<=520);short();}
  const fin={...(opts.finale||{open:false})};
  // (7.310) the finished map: the crowns and the whole gem, shown from Settings whatever has been beaten
- if(opts.preview){fin.preview=true;fin.open=true;}
+ // (7.313) the checkbox shows the two crowns on the usual map; the five-press unlock-all shows the whole gem
+ if(opts.preview)fin.open=true;
+ if(opts.brilliant){fin.preview=true;fin.open=true;}
  const regions=[...Object.keys(AT().positions).map(Number),...(fin.open?[41,42]:[])].filter(n=>worldOf(n)).sort((a,b)=>a-b);
  const here=opts.current||null;
  const info={};
