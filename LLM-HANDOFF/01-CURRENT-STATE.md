@@ -1,3 +1,23 @@
+## 7.312.0: Finale rooms in the Room Bank, and a hidden unlock-all (2026-10-11)
+
+- **Room Bank.** The five finale rooms are in the review group ("Superrooms for review"): B77 The Throne Road, B78 Vesper, F78–F80 your Echo's three rooms.
+  - Saved records are in `scripts/room-bank/{base,fractured}/` (batch 20, `acceptance:'review'`, `needsReview`). They are added to `retained`/`order`.
+  - B77/B78 are base movement exceptions, because Vesper's route uses dash-jumps.
+  - The bank copies of the two boss rooms get a right-wall gate that opens when the boss is beaten. Their routes walk out.
+  - The bank's Vesper is always the merged fight: only Survive's World 42 reads the finale save.
+- **Hidden unlock-all.** Pressing Settings → Assist & options → "Show the finished map" five times unlocks every Survive world (21–40 via BladefallPlaytest) and opens 41/42 (`bladefall.climb.unlock-all.v1`). A line in the card confirms it.
+- **Fixes:**
+  - Vesper's form announcement crashed the bank page; climb-only calls are now guarded.
+  - browser-check.mjs groups `needsReview` rooms the way the view does.
+
+**Checks:**
+- All 132 bank routes pass.
+- The bank browser check passes for the five rooms (scrolling routes, reviews, CSV, clock).
+- In Chrome, the five presses unlocked world 30 and opened 41/42; startWorld(42) succeeded.
+- finale-check passes.
+
+Version 7.312.0, cache `bladefall-v480-bank-finale-unlock`.
+
 ## 7.311.0: Skip and go-to-partner on touch, and an iPhone pass (2026-10-11)
 
 Isaac: on mobile in Survive you can't teleport to your friend or skip. Make sure it works on iPhone.

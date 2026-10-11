@@ -79,8 +79,12 @@ if(CL.wanted){CL.addWorld(W41);CL.addWorld(W42);}
 const PV=()=>root.BladefallPitchView?.climb;
 function forced(){const q=root.location?.search||'';return /[?&](finale|review)\b/.test(q);}
 // Both appear once every world 1–40 is complete (or on a review link, or with ?finale for testing).
+// (7.312) the hidden switch: five presses of Settings → Show the finished map open every Survive world, 41 and 42 too
+const ALL='bladefall.climb.unlock-all.v1';
+function unlockedAll(){try{return localStorage.getItem(ALL)==='1';}catch(e){return false;}}
+function unlockAll(){try{localStorage.setItem(ALL,'1');}catch(e){}for(let n=21;n<=40;n++)root.BladefallPlaytest?.unlock?.('survival',n);}
 function open(){
- if(forced())return true;const atlas=PV()?.state()?.atlas;if(!atlas)return false;
+ if(forced()||unlockedAll())return true;const atlas=PV()?.state()?.atlas;if(!atlas)return false;
  for(let n=1;n<=40;n++)if(!atlas.complete(n))return false;return true;
 }
 function merged(){const s=state();return !!(s.echo&&s.choice==='merge');}
@@ -133,6 +137,6 @@ function track(n,g){
  if(n!==42)return null;const z=g?.vesper;
  return 'audio/music/'+(z&&z.mode!=='idle'?FORM_TRACKS[z.form]:'fractured-the-last-spark-of-darrow')+'.mp3';
 }
-root.BladefallClimbFinale=Object.freeze({state,open,merged,vesperNeed,mapState,preview,setPreview,echoYielded,vesperStill,choose,say,track,NEED,worlds:[W41,W42],
+root.BladefallClimbFinale=Object.freeze({state,open,merged,vesperNeed,mapState,preview,setPreview,unlockAll,unlockedAll,echoYielded,vesperStill,choose,say,track,NEED,worlds:[W41,W42],
  reset(){write({});}});
 })(typeof window!=='undefined'?window:globalThis);

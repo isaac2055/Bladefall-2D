@@ -145,7 +145,8 @@ const FORMS=Object.freeze(['THE CLOAKED MAN','UNBOUND','THE BONES','ALL OF HIM']
 const PATTERN=Object.freeze([['phantom','phantom','chains'],['curtain'],['teeth','lunge'],['slam','curtain','slam','teeth']]);
 function vesperNeed(d){
  const V=root.BladefallPrecisionView?.view,F=root.BladefallClimbFinale;
- if(F&&F.vesperNeed&&!(V&&V.replay))return F.vesperNeed();
+ // only Survive's World 42 reads the save; the Room Bank's copy is the merged fight
+ if(F&&F.vesperNeed&&!(V&&V.replay)&&root.BladefallPitchView?.climb?.state?.()?.world?.n===42)return F.vesperNeed();
  return d.need??3;
 }
 function vReset(g){

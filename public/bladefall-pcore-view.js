@@ -819,6 +819,9 @@ function assistCard(back){
  <button class="pcBtn" id="pcBack" data-back>Done</button></div>`);
  const upd=()=>{a.infiniteStamina=document.getElementById('asStam').checked;a.speed=+document.getElementById('asSpeed').value;o.shake=document.getElementById('opShake').checked;o.sound=document.getElementById('opSound').checked;o.music=document.getElementById('opMusic').checked;if(finaleMap)root.BladefallClimbFinale.setPreview(document.getElementById('opFinaleMap').checked);writeSave(save);if(view.g)view.g.assist.infiniteStamina=a.infiniteStamina;};
  overlay().querySelectorAll('input,select').forEach(el=>el.onchange=upd);
+ // (7.312) five presses of Show the finished map unlock every Survive world, including 41 and 42
+ if(finaleMap){let presses=0;document.getElementById('opFinaleMap').addEventListener('click',e=>{if(++presses===5){root.BladefallClimbFinale.unlockAll?.();
+  e.target.closest('label').insertAdjacentHTML('afterend','<p class="pcSub" style="color:#ffd98a">Every Survive world is unlocked, Vesper and your Echo too.</p>');}});}
  document.getElementById('pcBack').onclick=()=>{upd();if(view.mode==='play')music(true);else music(false);back();};
 }
 function togglePause(){

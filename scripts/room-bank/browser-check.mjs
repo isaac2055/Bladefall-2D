@@ -7,7 +7,7 @@ import {catalog,bankGroups} from './catalog.mjs';
 const groups=bankGroups(),activeGroup=catalog.defaultGroup||('run'+catalog.activeRun);
 const buttonFor=group=>group==='pending'?'bankPending':group==='superrooms'?'bankSuperrooms':group==='banked'?'bankApproved':group==='review'?'bankReview':'bankRun'+group.slice(3);
 const expected=['base','fractured'].flatMap(side=>readdirSync(resolve('scripts/room-bank',side)).filter(f=>f.endsWith('.json')).map(f=>JSON.parse(readFileSync(resolve('scripts/room-bank',side,f),'utf8')))).filter(x=>x.bank.status==='route-proven');
-const groupOf=x=>x.bank.acceptance==='banked'?'banked':catalog.defaultGroup==='pending'?'pending':x.bank.collection==='superrooms'?'superrooms':x.bank.run>=2?'run'+x.bank.run:x.bank.run===1?'run1':'review';
+const groupOf=x=>x.bank.needsReview?'superrooms':x.bank.acceptance==='banked'?'banked':catalog.defaultGroup==='pending'?'pending':x.bank.collection==='superrooms'?'superrooms':x.bank.run>=2?'run'+x.bank.run:x.bank.run===1?'run1':'review';
 const idsFor=(side,group)=>expected.filter(x=>x.bank.side===side&&groupOf(x)===group).map(x=>x.room.id).sort();
 const out=resolve('scripts/climb/.cache/room-bank');mkdirSync(out,{recursive:true});
 const b=await launchChrome({headless:true,args:['--no-sandbox']});

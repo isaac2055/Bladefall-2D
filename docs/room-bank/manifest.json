@@ -80375,6 +80375,162 @@
       "revision": "ee3a6f5804f3",
       "source": "scripts/room-bank/fractured/bank-f77.json",
       "tapeFrames": 1195
+    },
+    {
+      "id": "bank-b77",
+      "name": "The Throne Road",
+      "side": "base",
+      "batch": 20,
+      "run": 11,
+      "collection": "finale",
+      "format": "standard",
+      "acceptance": "review",
+      "needsReview": true,
+      "difficulty": 3,
+      "role": "Survive World 42 finale (7.309)",
+      "worlds": [
+        42
+      ],
+      "tags": [
+        "curtain"
+      ],
+      "newMechanics": [
+        "curtain"
+      ],
+      "status": "route-proven",
+      "author": "Claude",
+      "humanReview": "Awaiting review.",
+      "solution": "Bat walls with one gap; stand at its height as each passes.",
+      "requiredEvents": [],
+      "revision": "8476458510ef",
+      "source": "scripts/room-bank/base/bank-b77.json",
+      "tapeFrames": 370
+    },
+    {
+      "id": "bank-b78",
+      "name": "Vesper, True King",
+      "side": "base",
+      "batch": 20,
+      "run": 11,
+      "collection": "finale",
+      "format": "extended",
+      "acceptance": "review",
+      "needsReview": true,
+      "difficulty": 5,
+      "role": "Survive World 42 finale (7.309)",
+      "worlds": [
+        42
+      ],
+      "tags": [
+        "vesper",
+        "boss"
+      ],
+      "newMechanics": [
+        "vesper",
+        "boss"
+      ],
+      "status": "route-proven",
+      "author": "Claude",
+      "humanReview": "Awaiting review.",
+      "solution": "Four forms of Vesper; cut each opening (3 cuts a form, merged).",
+      "requiredEvents": [],
+      "revision": "53894e104437",
+      "source": "scripts/room-bank/base/bank-b78.json",
+      "tapeFrames": 3316
+    },
+    {
+      "id": "bank-f78",
+      "name": "Where You Left Yourself",
+      "side": "fractured",
+      "batch": 20,
+      "run": 11,
+      "collection": "finale",
+      "format": "standard",
+      "acceptance": "review",
+      "needsReview": true,
+      "difficulty": 2,
+      "role": "Survive World 41 finale (7.309)",
+      "worlds": [
+        41
+      ],
+      "tags": [
+        "echoDuel"
+      ],
+      "newMechanics": [
+        "echoDuel"
+      ],
+      "status": "route-proven",
+      "author": "Claude",
+      "humanReview": "Awaiting review.",
+      "solution": "Your Echo dashes once (jump it) and leaps once (jump the waves), then runs ahead.",
+      "requiredEvents": [],
+      "revision": "0ed1193847d3",
+      "source": "scripts/room-bank/fractured/bank-f78.json",
+      "tapeFrames": 526
+    },
+    {
+      "id": "bank-f79",
+      "name": "The Part You Left",
+      "side": "fractured",
+      "batch": 20,
+      "run": 11,
+      "collection": "finale",
+      "format": "extended",
+      "acceptance": "review",
+      "needsReview": true,
+      "difficulty": 3,
+      "role": "Survive World 41 finale (7.309)",
+      "worlds": [
+        41
+      ],
+      "tags": [
+        "echoDuel",
+        "boss"
+      ],
+      "newMechanics": [
+        "echoDuel",
+        "boss"
+      ],
+      "status": "route-proven",
+      "author": "Claude",
+      "humanReview": "Awaiting review.",
+      "solution": "Cut your Echo during its bright recoveries; parry its dash to stagger it. Three wounds.",
+      "requiredEvents": [],
+      "revision": "55c831dc958c",
+      "source": "scripts/room-bank/fractured/bank-f79.json",
+      "tapeFrames": 660
+    },
+    {
+      "id": "bank-f80",
+      "name": "Stay With Me",
+      "side": "fractured",
+      "batch": 20,
+      "run": 11,
+      "collection": "finale",
+      "format": "extended",
+      "acceptance": "review",
+      "needsReview": true,
+      "difficulty": 4,
+      "role": "Survive World 41 finale (7.309)",
+      "worlds": [
+        41
+      ],
+      "tags": [
+        "echoDuel",
+        "boss"
+      ],
+      "newMechanics": [
+        "echoDuel",
+        "boss"
+      ],
+      "status": "route-proven",
+      "author": "Claude",
+      "humanReview": "Awaiting review.",
+      "solution": "As before, but every dash is followed by an afterimage; three wounds, then it yields.",
+      "requiredEvents": [],
+      "revision": "214e3a36e59b",
+      "source": "scripts/room-bank/fractured/bank-f80.json",
+      "tapeFrames": 1071
     }
   ]
 }

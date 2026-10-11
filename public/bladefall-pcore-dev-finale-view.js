@@ -137,12 +137,13 @@ function drawVesper(b,g){
 
 function draw(b,g){drawCurtains(b,g);drawDuel(b,g);drawVesper(b,g);}
 const event=(e,{burst,shake})=>{
+ const inClimb=!!root.BladefallPitchView?.climb?.state?.();   // the Room Bank plays these rooms without Survive's state
  if(e.type==='echo-wound'||e.type==='vesper-wound')burst(e.x,e.y,20,'#f2e2ff',70,32);
  if(e.type==='echo-parried')burst(e.x,e.y,16,'#b5ffea',70,22);
  if(e.type==='echo-wave'||e.type==='vesper-chains')burst(e.x,e.y,10,'#b5a3ed',40,18);
  if(e.type==='vesper-slam'||e.type==='vesper-land'){shake?.(4);burst(e.x,e.y,18,'#e9dfc9',60,28);}
- if(e.type==='vesper-form'||e.type==='vesper-wake')root.BladefallPitchView?.climb?.state?.()?.api?.music?.(true);
- if(e.type==='vesper-form'){shake?.(3,14);burst(e.x,e.y,30,'#c9a8ff',80,40);root.BladefallPitchView?.climb?.announce?.(e.name,170);}
+if((e.type==='vesper-form'||e.type==='vesper-wake')&&inClimb)root.BladefallPitchView?.climb?.state?.()?.api?.music?.(true);
+ if(e.type==='vesper-form'){shake?.(3,14);burst(e.x,e.y,30,'#c9a8ff',80,40);if(inClimb)root.BladefallPitchView.climb.announce(e.name,170);}
  if(e.type==='echo-yield'){burst(e.x,e.y,26,'#86e6d8',60,40);root.BladefallClimbFinale?.echoYielded?.();}
  if(e.type==='vesper-still'){burst(e.x,e.y,40,'#f0d9a8',90,60);root.BladefallClimbFinale?.vesperStill?.();}
  if(e.type==='echo-leave')root.BladefallClimbFinale?.say?.('echo-leave');

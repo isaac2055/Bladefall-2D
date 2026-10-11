@@ -1,7 +1,7 @@
 /* Bladefall service worker — offline play + fast reloads once installed.
    Bump CACHE_NAME on a deploy where you want returning players to pick up
    the change immediately instead of waiting on the network-first refresh. */
-const CACHE_NAME = 'bladefall-v479-touch-skip-partner';
+const CACHE_NAME = 'bladefall-v480-bank-finale-unlock';
 const CORE_ASSETS = [
   './bladefall-touch-layout.js?v=7.308.2',
   './bladefall-pcore-dev-superrooms-colossus.js?v=7.305.0',
@@ -133,7 +133,7 @@ const CORE_ASSETS = [
   './bladefall-pcore-dev-moving-hook-view.js?v=7.303.0',
   './bladefall-pcore-dev-recoil.js?v=7.303.0',
   './bladefall-pcore-dev-recoil-view.js?v=7.303.0',
-  './bladefall-room-bank.js?v=7.308.2',
+  './bladefall-room-bank.js?v=7.312.0',
   './bladefall-room-bank-view.js?v=7.308.2',
   './bladefall-pcore-dev-step-relay.js?v=7.286.0',
   './bladefall-pcore-dev-step-relay-view.js?v=7.286.0',
@@ -144,7 +144,7 @@ const CORE_ASSETS = [
   './bladefall-climb.js?v=7.273.40',
   './bladefall-climb-worlds.js?v=7.308.2',
   './bladefall-climb-finale-tapes.js?v=7.309.0',
-  './bladefall-climb-finale.js?v=7.310.0',
+  './bladefall-climb-finale.js?v=7.312.0',
   './bladefall-climb-art.js?v=7.278.0',
   './bladefall-climb-atlas.js?v=7.304.0',
   './bladefall-climb-passages.js?v=7.308.2',
@@ -239,7 +239,7 @@ const CORE_ASSETS = [
   './bladefall-rbr-39-f-path.js?v=7.280.0',
   './bladefall-rbr-40-f-sunspire.js?v=7.280.0',
   // rbr-regions:end
-  './bladefall-pcore-view.js?v=7.311.0',
+  './bladefall-pcore-view.js?v=7.312.0',
   './bladefall-pcore-combat.js?v=7.303.0',
   './bladefall-pcore-combat-rooms.js?v=7.250.0',
   './bladefall-pcore-combat-tapes.js?v=7.250.0',
@@ -263,7 +263,7 @@ const CORE_ASSETS = [
   './bladefall-pcore-dev-void.js?v=7.257.0',
   './bladefall-pcore-dev-watch.js?v=7.257.0',
   './bladefall-pcore-dev-water.js?v=7.308.2',
-  './bladefall-pcore-dev-finale.js?v=7.309.0',
+  './bladefall-pcore-dev-finale.js?v=7.312.0',
   './bladefall-pcore-dev-beam-view.js?v=7.257.0',
   './bladefall-pcore-dev-citadel-view.js?v=7.257.0',
   './bladefall-pcore-dev-ember-view.js?v=7.257.0',
@@ -278,7 +278,7 @@ const CORE_ASSETS = [
   './bladefall-pcore-dev-void-view.js?v=7.257.0',
   './bladefall-pcore-dev-watch-view.js?v=7.257.0',
   './bladefall-pcore-dev-water-view.js?v=7.303.0',
-  './bladefall-pcore-dev-finale-view.js?v=7.309.0',
+  './bladefall-pcore-dev-finale-view.js?v=7.312.0',
   './bladefall-pcore-parts.js?v=7.257.0',
   './bladefall-pcore-part-075-gaol.js?v=7.257.0',
   './bladefall-pcore-part-083-frostfell.js?v=7.257.0',

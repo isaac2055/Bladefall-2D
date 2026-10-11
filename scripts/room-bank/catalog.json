@@ -119,7 +119,12 @@
     "bank-f69",
     "bank-f70",
     "bank-f71",
-    "bank-f72"
+    "bank-f72",
+    "bank-b77",
+    "bank-b78",
+    "bank-f78",
+    "bank-f79",
+    "bank-f80"
   ],
   "newRoomsPerSide": 5,
   "mechanicRequirements": [],
@@ -261,7 +266,9 @@
   "requireNewMovementEntityPair": false,
   "superrooms": true,
   "baseMovementExceptions": [
-    "bank-f41"
+    "bank-f41",
+    "bank-b77",
+    "bank-b78"
   ],
   "reviewCycle": false,
   "newRoomsBySide": {
@@ -395,7 +402,12 @@
     "bank-f74",
     "bank-f75",
     "bank-f76",
-    "bank-f77"
+    "bank-f77",
+    "bank-b77",
+    "bank-b78",
+    "bank-f78",
+    "bank-f79",
+    "bank-f80"
   ],
   "reviewRecords": [],
   "defaultGroup": "superrooms",
