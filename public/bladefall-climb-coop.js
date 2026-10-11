@@ -169,7 +169,7 @@ CO.hud=function(ctx,ox,oy,scale,fs,g,view){
   const off=sx<0||sy<0||sx>W0||sy>H0;
   if(off){const cx=W0/2,cy=H0/2,dx=sx-cx,dy=sy-cy,k=Math.min((W0/2-10)/Math.abs(dx||1e-6),(H0/2-10)/Math.abs(dy||1e-6)),ax=cx+dx*k,ay=cy+dy*k,a=Math.atan2(dy,dx);
    ctx.save();ctx.translate(ox+ax*scale,oy+ay*scale);ctx.rotate(a);ctx.fillStyle=SCARF;ctx.beginPath();ctx.moveTo(fs*.9,0);ctx.lineTo(-fs*.5,-fs*.5);ctx.lineTo(-fs*.5,fs*.5);ctx.fill();ctx.restore();}
-  txt+=` · partner: ${r.name||'?'}${off?' · hold T to go':''}`;}
+  txt+=` · partner: ${r.name||'?'}${off?(root.BladefallPrecisionTouch?.active()?' · hold P2 to go':' · hold T to go'):''}`;}
  else if(r&&s)txt+=' · partner in another world';
  ctx.save();const tw=ctx.measureText(txt).width+fs*1.2,ty=oy+H0*scale-fs*4.2;ctx.fillStyle='rgba(14,16,24,.65)';ctx.fillRect(ox+6,ty,tw,fs*1.6);ctx.fillStyle=SCARF;ctx.fillText(txt,ox+6+fs*.6,ty+fs*.3);ctx.restore();   // just above the room's hint line (the top left carries the landmark title)
 };

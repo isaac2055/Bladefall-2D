@@ -165,6 +165,11 @@ function pollCapture(){
 
 /* ---------------------------------------------------------------- audio */
 let actx=null,musicEl=null;
+// (7.311) iPhone Safari only starts sound inside a touch: the first touches wake the audio with a silent sound.
+if(typeof document!=='undefined'){const WAKE=['touchend','pointerup','keydown'],wake=()=>{
+ try{const a=ac();if(!a)return;if(a.state!=='running')a.resume();const b=a.createBufferSource();b.buffer=a.createBuffer(1,1,22050);b.connect(a.destination);b.start(0);
+  if(a.state==='running')for(const t of WAKE)document.removeEventListener(t,wake,true);}catch(e){}};
+ for(const t of WAKE)document.addEventListener(t,wake,true);}
 function ac(){if(!save.options.sound)return null;if(!actx){try{actx=new (window.AudioContext||window.webkitAudioContext)();}catch(e){return null;}}if(actx.state==='suspended')actx.resume();return actx;}
 function tone(freq,dur,type='square',vol=.05,slide=0,delay=0){
  const a=ac();if(!a)return;const t=a.currentTime+delay,o=a.createOscillator(),gn=a.createGain();

@@ -1,3 +1,34 @@
+## 7.311.0: Skip and go-to-partner on touch, and an iPhone pass (2026-10-11)
+
+Isaac: on mobile in Survive you can't teleport to your friend or skip. Make sure it works on iPhone.
+
+**Survive touch controls (bladefall-pcore-touch.js):** two new buttons sit in the top row beside pause and retry.
+- **Skip** (as N): it is dim when the section cannot be skipped and shows the skips left under it. A tap calls `skipSection`, so it obeys the same rules and messages.
+- **P2**, shown only while co-op is linked: hold it, as T, and a ring fills over 36 frames, then you arrive beside your partner. Releasing early cancels.
+- Both can be moved and resized in the touch-layout editor (ids `skip`, `friend`).
+- The co-op hint reads "hold P2 to go" on touch.
+
+**iPhone:**
+- Every touch control is now inset by the safe-area insets (notch, rounded corners, home bar). They come through CSS variables `--sat/--sar/--sab/--sal`.
+- The canvas uses `100dvh`, so Safari's toolbars no longer crop the bottom.
+- Menu buttons use `touch-action: manipulation`, so a double tap cannot zoom.
+- `text-size-adjust` is set, so landscape fonts are not inflated.
+- The first touch or key unlocks Web Audio with a silent buffer. iOS only starts sound inside a gesture.
+- Fullscreen, orientation lock and vibration were already guarded; iPhone has none of them, and they fail silently.
+
+**Run clock:** it sat over the top-right buttons on phones.
+- In Survive it now sits under the touch button row (`--pcTopRow`, set by the touch drawer).
+- In Explore, on touch screens, it sits left of the pause button.
+
+**Checks:** headless Chrome with an iPhone profile (844×390, touch, iOS Safari user agent):
+- Skip moved World 1 from the Verge Road to the next section (3 skips → 2).
+- With local co-op, holding P2 for 70 frames carried the guest to the host's room.
+- No page errors.
+- The desktop co-op T/N/replay feature checks and finale-check pass, and the Explore flag button check still passes.
+- Not tested on a real iPhone or in WebKit: this Mac has no simulator or Safari automation.
+
+Version 7.311.0, cache `bladefall-v479-touch-skip-partner`.
+
 ## 7.310.0: The finished map, the Fractured band to 19, and a touch flag in Explore (2026-10-11)
 
 Isaac's notes on the 7.309 map, plus one Explore request.

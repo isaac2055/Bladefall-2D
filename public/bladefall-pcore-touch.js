@@ -10,7 +10,9 @@
      two-finger swipe strike, aimed by the swipe
      two-finger tap . portal, aimed by the stick
    Every action can instead sit on an on-screen button. Pause and retry are the two small buttons top right;
-   Android's back gesture also pauses.
+   Android's back gesture also pauses. (7.311) In Survive two more sit beside them: skip this section (N on a
+   keyboard) and, while co-op is linked, hold to go to your partner (T). Every control keeps clear of the iPhone's
+   notch and home bar (the safe-area insets).
 
    The view asks read(dt) for an input object once per loop and calls draw() after its HUD. Gesture timing
    runs on game time (the dt the view passes), so a 120 Hz screen and the test harness behave the same.
@@ -91,16 +93,30 @@ function wantsDefer(){
 }
 
 /* ---------------------------------------------------------------- layout (CSS pixels) */
-function layout(){
- const w=innerWidth,h=innerHeight,t=settings(),s=t.size*Math.max(.8,Math.min(1.3,Math.min(w,h)/400)),m=t.map;
+// The safe-area insets (the iPhone's notch, rounded corners and home bar), read from CSS custom properties.
+let insetCache=null,insetKey='';
+function insets(){const key=innerWidth+'x'+innerHeight;if(insetCache&&insetKey===key)return insetCache;insetKey=key;
+ try{const cs=getComputedStyle(document.documentElement),v=k=>parseFloat(cs.getPropertyValue(k))||0;insetCache={t:v('--sat'),r:v('--sar'),b:v('--sab'),l:v('--sal')};}catch(e){insetCache={t:0,r:0,b:0,l:0};}
+ return insetCache;}
+// Survive's own buttons (beside pause and retry): skip, and, while co-op is linked, go to your partner.
+const climb=()=>root.BladefallPitchView?.climb;
+const coop=()=>root.BladefallClimbCoop?.state?.();
+function extraIds(forEditor=false){
+ if(forEditor)return climb()?['skip','friend']:[];
+ const st=climb()?.state?.();if(!st||!st.world||!api||api.view.mode!=='play')return [];
+ return coop()?.status==='on'?['skip','friend']:['skip'];
+}
+function layout(forEditor=false){
+ const w=innerWidth,h=innerHeight,t=settings(),s=t.size*Math.max(.8,Math.min(1.3,Math.min(w,h)/400)),m=t.map,I=insets();
  const right=t.hand==='right';
- const X=x=>right?w-x:x;
+ const X=x=>right?w-I.r-x:I.l+x;
  const spots={jump:[66,66,40],dash:[156,58,33],grab:[236,52,28],strike:[62,156,29],parry:[136,140,27],portal:[204,128,25]};
  const buttons=[];
- for(const a of Object.keys(spots))if(m[a]==='button'){const [x,y,r]=spots[a];buttons.push(root.BladefallTouchLayout?.resolve('survival',a,{a,x:X(x*s),y:h-y*s,r:r*s},w,h)||{a,x:X(x*s),y:h-y*s,r:r*s});}
- const ui=24*s,pause={x:X(30*s),y:30*s,r:ui*.8,ui:'pause'},retry={x:X(78*s),y:30*s,r:ui*.8,ui:'retry'};
- const resolve=(id,b)=>root.BladefallTouchLayout?.resolve('survival',id,b,w,h)||b,stickBase=resolve('stick',{x:right?104*s:w-104*s,y:h-104*s,r:52*s});
- return {w,h,s,buttons,pause:resolve('pause',pause),retry:resolve('retry',retry),stickBase,stickR:stickBase.r,dead:6*s,right};
+ for(const a of Object.keys(spots))if(m[a]==='button'){const [x,y,r]=spots[a];buttons.push(root.BladefallTouchLayout?.resolve('survival',a,{a,x:X(x*s),y:h-I.b-y*s,r:r*s},w,h)||{a,x:X(x*s),y:h-I.b-y*s,r:r*s});}
+ const ui=24*s,top=I.t+30*s,pause={x:X(30*s),y:top,r:ui*.8,ui:'pause'},retry={x:X(78*s),y:top,r:ui*.8,ui:'retry'};
+ const resolve=(id,b)=>root.BladefallTouchLayout?.resolve('survival',id,b,w,h)||b,stickBase=resolve('stick',{x:right?I.l+104*s:w-I.r-104*s,y:h-I.b-104*s,r:52*s});
+ const extras=extraIds(forEditor).map((id,i)=>resolve(id,{x:X((126+i*48)*s),y:top,r:ui*.8,ui:id}));
+ return {w,h,s,buttons,pause:resolve('pause',pause),retry:resolve('retry',retry),extras,stickBase,stickR:stickBase.r,dead:6*s,right};
 }
 const GLYPH={jump:'⤒',dash:'➤',grab:'✊',strike:'⚔',parry:'⛨',portal:'◎'};
 
@@ -116,6 +132,11 @@ function onDown(e){
  const x=e.clientX,y=e.clientY,L=layout(),hit=b=>Math.hypot(x-b.x,y-b.y)<=b.r*1.25;
  if(hit(L.pause)){ptrs.set(e.pointerId,{role:'ui'});api.pause();return;}
  if(hit(L.retry)){ptrs.set(e.pointerId,{role:'ui'});api.retry();mark('tap',x,y);return;}
+ for(const b of L.extras)if(hit(b)){
+  if(b.ui==='skip'){ptrs.set(e.pointerId,{role:'ui'});climb()?.skipSection?.();mark('tap',x,y);buzz(8);}
+  else{ptrs.set(e.pointerId,{role:'friend'});const co=coop();if(co)co.tDown=true;mark('hold',x,y);}
+  return;
+ }
  for(const b of L.buttons)if(hit(b)){const p={role:'button',a:b.a,x,y};ptrs.set(e.pointerId,p);pressButton(b.a,p);return;}
  if(inLeftZone(x,L,y)){
   if(stick){ptrs.set(e.pointerId,{role:'ignore'});return;}
@@ -161,13 +182,14 @@ function onMove(e){
   step(p);
  }
 }
-function onCancel(e){const p=ptrs.get(e.pointerId);if(!p)return;ptrs.delete(e.pointerId);if(stick?.id===e.pointerId)stick=null;if(multi?.ids.includes(e.pointerId))multi=null;endHold('jump',p);endHold('grab',p);}
+function onCancel(e){const p=ptrs.get(e.pointerId);if(!p)return;ptrs.delete(e.pointerId);if(p.role==='friend'){const co=coop();if(co)co.tDown=false;return;}if(stick?.id===e.pointerId)stick=null;if(multi?.ids.includes(e.pointerId))multi=null;endHold('jump',p);endHold('grab',p);}
 function onUp(e){
  if(e.pointerType==='mouse')return;
  const p=ptrs.get(e.pointerId);if(!p)return;
  ptrs.delete(e.pointerId);
  if(p.role==='stick'){if(stick&&stick.id===e.pointerId)stick=null;return;}
  if(p.role==='button'){releaseButton(p.a,p);return;}
+ if(p.role==='friend'){const co=coop();if(co)co.tDown=false;return;}
  if(p.role!=='right')return;
  if(p.multi){
   if(multi&&multi.ids.includes(e.pointerId)){
@@ -220,7 +242,7 @@ function pressButton(a,p){
  buzz(6);
 }
 function releaseButton(a,p){if(a==='jump'||a==='grab')endHold(a,p);}
-function releaseAll(){ptrs.clear();stick=null;multi=null;dirOver=null;for(const a in holdTail)holdTail[a]=0;pulses.length=0;}
+function releaseAll(){if([...ptrs.values()].some(p=>p.role==='friend')){const co=coop();if(co)co.tDown=false;}ptrs.clear();stick=null;multi=null;dirOver=null;for(const a in holdTail)holdTail[a]=0;pulses.length=0;}
 
 /* ---------------------------------------------------------------- per loop */
 function read(dt){
@@ -246,6 +268,9 @@ function draw(ctx,dpr){
  if(!api||!active||api.overlayOpen())return;
  const view=api.view;if(!view.g||view.mode!=='play')return;
  const L=layout(),t=settings(),k=dpr,a=t.opacity;
+ // the run clock (a page element) sits under the top row of buttons, not over them
+ {const below=Math.round(Math.max(L.pause.y+L.pause.r,L.retry.y+L.retry.r,...L.extras.map(b=>b.y+b.r*(b.ui==='skip'?1.9:1)))+8)+'px';
+  if(document.documentElement.style.getPropertyValue('--pcTopRow')!==below)document.documentElement.style.setProperty('--pcTopRow',below);}
  ctx.save();ctx.lineWidth=2*k;
  const circle=(x,y,r,fill,stroke)=>{ctx.beginPath();ctx.arc(x*k,y*k,r*k,0,Math.PI*2);if(fill){ctx.fillStyle=fill;ctx.fill();}if(stroke){ctx.strokeStyle=stroke;ctx.stroke();}};
  // Stick.
@@ -265,6 +290,19 @@ function draw(ctx,dpr){
   if(b.ui==='pause'){ctx.fillRect((b.x-b.r*.32)*k,(b.y-b.r*.38)*k,b.r*.22*k,b.r*.76*k);ctx.fillRect((b.x+b.r*.1)*k,(b.y-b.r*.38)*k,b.r*.22*k,b.r*.76*k);}
   else{ctx.beginPath();ctx.arc(b.x*k,b.y*k,b.r*.42*k,-Math.PI*.35,Math.PI*1.35);ctx.strokeStyle='#e9dcc0';ctx.stroke();ctx.beginPath();const ax=b.x+b.r*.42*Math.cos(-Math.PI*.35),ay=b.y+b.r*.42*Math.sin(-Math.PI*.35);
    ctx.moveTo((ax+b.r*.22)*k,ay*k);ctx.lineTo((ax-b.r*.06)*k,(ay-b.r*.26)*k);ctx.lineTo((ax-b.r*.1)*k,(ay+b.r*.12)*k);ctx.closePath();ctx.fill();}}
+ // Survive: skip (dim when this section cannot be skipped; the skips left under it) and go to your partner
+ // (a ring fills while it is held, as holding T does)
+ for(const b of L.extras){
+  if(b.ui==='skip'){const info=climb()?.skipInfo?.()||{allowed:false,remaining:0};ctx.globalAlpha=Math.min(1,a*1.3)*(info.allowed?1:.45);
+   circle(b.x,b.y,b.r,'rgba(14,16,24,.55)','rgba(233,220,192,.45)');ctx.fillStyle='#e9dcc0';const u=b.r*.34;
+   for(const o of [-u*.95,0]){ctx.beginPath();ctx.moveTo((b.x+o-u*.45)*k,(b.y-u)*k);ctx.lineTo((b.x+o+u*.55)*k,b.y*k);ctx.lineTo((b.x+o-u*.45)*k,(b.y+u)*k);ctx.closePath();ctx.fill();}
+   ctx.fillRect((b.x+u*.7)*k,(b.y-u)*k,u*.32*k,u*2*k);
+   ctx.font=`700 ${Math.round(b.r*.5*k)}px system-ui,sans-serif`;ctx.fillText(String(info.remaining),b.x*k,(b.y+b.r*1.45)*k);}
+  else{const co=coop(),held=[...ptrs.values()].some(p=>p.role==='friend'),q=Math.max(0,Math.min(1,(co?.holdT||0)/36));ctx.globalAlpha=Math.min(1,a*1.3);
+   circle(b.x,b.y,b.r,held?'rgba(134,230,216,.35)':'rgba(14,16,24,.55)','rgba(134,230,216,.7)');
+   if(q>0){ctx.beginPath();ctx.arc(b.x*k,b.y*k,(b.r+3)*k,-Math.PI/2,-Math.PI/2+q*Math.PI*2);ctx.strokeStyle='#86e6d8';ctx.lineWidth=3*k;ctx.stroke();ctx.lineWidth=2*k;}
+   ctx.fillStyle='#bff5ec';ctx.font=`800 ${Math.round(b.r*.62*k)}px system-ui,sans-serif`;ctx.fillText('P2',b.x*k,b.y*k+1*k);}
+ }
  // Feedback marks: where a tap landed, which way a swipe went.
  for(const f of fx){const age=clock-f.t;if(age>.35)continue;const q=1-age/.35;ctx.globalAlpha=q*.8;
   if(f.kind==='swipe'||f.kind==='swipe2'){const d=Math.hypot(f.dx,f.dy)||1,ux=f.dx/d,uy=f.dy/d,len=46;ctx.strokeStyle=f.kind==='swipe'?'#ffd98a':'#bfe4ff';ctx.lineWidth=(f.kind==='swipe'?4:3)*k;
@@ -289,7 +327,7 @@ function card(back){
  const t=settings(),opt=(v,l,cur)=>`<option value="${v}" ${v===cur?'selected':''}>${l}</option>`;
  const rows=Object.keys(CHOICES).map(a=>`<label class="pcOpt pcTouchRow"><span>${ACTION_NAMES[a]}</span><select data-map="${a}">${CHOICES[a].map(g=>opt(g,GESTURES[g],t.map[a])).join('')}</select></label>`).join('');
  api.showOverlay(`<div class="pcCard mid"><h1>Touch controls</h1><label class="pcOpt"><input id="tcFeedback" type="checkbox" ${root.BladefallPlaytest?.feedbackEnabled()?'checked':''}> Feedback mode</label>
- <p class="pcSub">Left thumb: drag anywhere on the left to move. Right thumb: the gestures below. Pause and retry are the two small buttons in the top corner, and Android's back gesture pauses too.</p>
+ <p class="pcSub">Left thumb: drag anywhere on the left to move. Right thumb: the gestures below. Pause and retry are the two small buttons in the top corner, and Android's back gesture pauses too.${climb()?' In Survive, beside them: skip this section, and (in co-op) hold P2 to go to your partner.':''}</p>
  <label class="pcOpt pcTouchRow"><span>Layout</span><select id="tcPreset">${Object.keys(PRESETS).map(p=>opt(p,PRESET_NAMES[p],t.preset)).join('')}${t.preset==='custom'?opt('custom','Custom','custom'):''}</select></label>
  ${rows}
  <button class="pcBtn ghost" id="tcLayout">Move / resize touch controls</button><h2 class="pcPart">Feel</h2>
@@ -306,7 +344,7 @@ function card(back){
  <div class="pcRow"><button class="pcBtn ghost" id="tcReset">Reset touch controls</button>${api.controlsCard?'<button class="pcBtn ghost" id="tcKeys">Keyboard &amp; controller</button>':''}</div>
  <button class="pcBtn" id="tcBack" data-back>Back</button></div>`);
  const o=api.overlay(),note=o.querySelector('#tcNote');
- o.querySelector('#tcLayout').onclick=()=>{releaseAll();root.BladefallTouchLayout?.open({mode:'survival',items:()=>{const L=layout();return [{id:'stick',label:'Move / aim',...L.stickBase},...L.buttons.map(b=>({id:b.a,label:ACTION_NAMES[b.a],...b})),{id:'pause',label:'Pause',...L.pause},{id:'retry',label:'Retry',...L.retry}];}});};
+ o.querySelector('#tcLayout').onclick=()=>{releaseAll();root.BladefallTouchLayout?.open({mode:'survival',items:()=>{const L=layout();return [{id:'stick',label:'Move / aim',...L.stickBase},...L.buttons.map(b=>({id:b.a,label:ACTION_NAMES[b.a],...b})),{id:'pause',label:'Pause',...L.pause},{id:'retry',label:'Retry',...L.retry},...layout(true).extras.map(b=>({id:b.ui,label:b.ui==='skip'?'Skip':'To partner',...b}))];}});};
  o.querySelectorAll('[data-map]').forEach(sel=>sel.onchange=()=>{
   const a=sel.dataset.map,v=sel.value,n=settings();n.map[a]=v;
   // Double-tap and two-finger tap can each carry one action: the other one swaps over.
