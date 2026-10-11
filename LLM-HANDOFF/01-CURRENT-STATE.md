@@ -1,3 +1,29 @@
+## 7.310.0: The finished map, the Fractured band to 19, and a touch flag in Explore (2026-10-11)
+
+Isaac's notes on the 7.309 map, plus one Explore request.
+
+**Map:**
+- **Band to 19.** The Fractured Palace band now runs 34 → 40 → 39 → 19, the exact mirror of Sunspire's 14 → 20 → 19.
+- **Emerald faces, always.** The space between regions is now cut gem: two gradients per emerald, fine facet edges, a glow at each emerald's heart and small glints where the outer cuts meet.
+- **Show the finished map.** A new toggle in Settings → Assist & options, also reachable from a new Settings button on the world map. It draws ChatGPT's "100% complete" look:
+  - the whole gem at full brilliance, with a blue band where the emeralds meet and star glints;
+  - one outline round both emeralds that runs gold → teal → violet;
+  - both crowns shown, labelled "100% COMPLETE · VESPER DEFEATED" and "ECHO MERGED".
+  It is only a view: nothing unlocks, and Play on 41/42 stays locked until all forty worlds are done. Stored in `bladefall.climb.map-preview.v1`.
+- Without the toggle, the real finish keeps 7.309's two wraps. Once both crowns are actually beaten, 42's label also reads "100% COMPLETE".
+
+**Explore:** a ⚑ touch button (`#bFlag`) sits upper right, under the pause button and the run clock. It plants your checkpoint flag, the same as R (and retries where R retries, shown as ↺). It shows the 1/0 charge, dims when spent, and is hidden in boss rush and hardcore. It can be moved and resized in the touch-layout editor. The whole `#controls` layer is hidden on a mouse, so desktop never shows it.
+
+**Checks:**
+- Headless Chrome:
+  - the default map, the finished map, and the toggle round trip (Settings → checkbox → back to the map);
+  - on a phone viewport, the flag button is visible at the top right, and a tap plants the flag (charge 1 → 0, button dims);
+  - on desktop it is hidden.
+  - No page errors.
+- finale-check, the co-op feature checks and the map-flow states pass.
+
+Version 7.310.0, cache `bladefall-v478-finished-map-flag`.
+
 ## 7.309.0: Survive's finale, Worlds 41 and 42, and the crowned map (2026-10-11)
 
 Isaac asked to finish the game: face your Echo at the bottom of the Fractured emerald (Explore's level 41, in Survive's form), then Vesper at the top of the Emerald Ascent. Merged with your Echo, Vesper is beatable; otherwise only someone who can go a very long time without being hit will finish him. The map changes to match.

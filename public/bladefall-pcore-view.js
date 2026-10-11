@@ -803,15 +803,16 @@ function controlsCard(back){
  if(fid){const m=fid.match(/^rm-(\w+)-(\w+)-/);const el=o.querySelector(`[data-fid="${fid}"]`)||(m&&o.querySelector(`[data-fid="add-${m[1]}-${m[2]}"]`));if(el)el.focus();}
 }
 function assistCard(back){
- const a=save.assist,o=save.options;
+ const a=save.assist,o=save.options,finaleMap=!!(root.BladefallClimbFinale&&root.BladefallPitchView?.climb?.state?.());   // (7.310) Survive only
  showOverlay(`<div class="pcCard"><h1>Assist &amp; options</h1><p class="pcSub">The rooms are built to be hard and fair. If a rule gets in the way of your fun, change it. Nothing is locked behind these settings.</p>
  <label class="pcOpt"><input type="checkbox" id="asStam" ${a.infiniteStamina?'checked':''}> Infinite climbing stamina</label>
  <label class="pcOpt">Game speed <select id="asSpeed">${[1,.9,.8,.7,.6,.5].map(s=>`<option value="${s}" ${((a.speed||1)===s)?'selected':''}>${Math.round(s*100)}%</option>`).join('')}</select></label>
  <label class="pcOpt"><input type="checkbox" id="opShake" ${o.shake?'checked':''}> Screen shake</label>
  <label class="pcOpt"><input type="checkbox" id="opSound" ${o.sound?'checked':''}> Sound effects</label>
  <label class="pcOpt"><input type="checkbox" id="opMusic" ${o.music?'checked':''}> Music (Crystalline Trials)</label>
+ ${finaleMap?`<label class="pcOpt"><input type="checkbox" id="opFinaleMap" ${root.BladefallClimbFinale.preview()?'checked':''}> Show the finished map (Vesper and your Echo, the whole gem)</label>`:''}
  <button class="pcBtn" id="pcBack" data-back>Done</button></div>`);
- const upd=()=>{a.infiniteStamina=document.getElementById('asStam').checked;a.speed=+document.getElementById('asSpeed').value;o.shake=document.getElementById('opShake').checked;o.sound=document.getElementById('opSound').checked;o.music=document.getElementById('opMusic').checked;writeSave(save);if(view.g)view.g.assist.infiniteStamina=a.infiniteStamina;};
+ const upd=()=>{a.infiniteStamina=document.getElementById('asStam').checked;a.speed=+document.getElementById('asSpeed').value;o.shake=document.getElementById('opShake').checked;o.sound=document.getElementById('opSound').checked;o.music=document.getElementById('opMusic').checked;if(finaleMap)root.BladefallClimbFinale.setPreview(document.getElementById('opFinaleMap').checked);writeSave(save);if(view.g)view.g.assist.infiniteStamina=a.infiniteStamina;};
  overlay().querySelectorAll('input,select').forEach(el=>el.onchange=upd);
  document.getElementById('pcBack').onclick=()=>{upd();if(view.mode==='play')music(true);else music(false);back();};
 }
@@ -960,6 +961,6 @@ function drawOther(b,g2,pal,localCamera){
  drawEntities(b,g2,pal);root.BladefallPrecisionCombatView?.draw(b,g2);root.BladefallPrecisionFoesView?.draw(b,g2);root.BladefallPrecisionPortalsView?.draw(b,g2,view);
  for(const d of DV){d.draw?.(b,g2,view,pal);d.drawFront?.(b,g2,view,pal);}
 }
-root.BladefallPrecisionView={clearInput:()=>{keys.clear();latchHeld();},boot,view,startChapter,retryRoom,mainMenu,advance,pump,goRoom,persist,drawOther,drawStatic,palettes:PAL,drawKnight:drawKnightSprite};
+root.BladefallPrecisionView={clearInput:()=>{keys.clear();latchHeld();},options:back=>assistCard(back),boot,view,startChapter,retryRoom,mainMenu,advance,pump,goRoom,persist,drawOther,drawStatic,palettes:PAL,drawKnight:drawKnightSprite};
 if(typeof document!=='undefined'){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();}
 })(typeof window!=='undefined'?window:globalThis);

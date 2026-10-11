@@ -78,6 +78,10 @@ html,body{margin:0;padding:0;height:100%;overflow:hidden;background:var(--bg);co
 #bCommand.pressed{background:rgba(159,232,220,.55);}
 #bTool{width:58px;height:58px;right:290px;bottom:130px;font-size:11px;background:rgba(143,216,255,.2);border-color:rgba(143,216,255,.6);display:none;}
 #bTool.on{display:flex;}#bTool.pressed{background:rgba(143,216,255,.55);}
+/* (7.310) Plant your checkpoint flag: upper right, under the pause button and the run clock. Touch only. */
+#bFlag{width:50px;height:50px;top:48px;right:12px;font-size:21px;background:rgba(228,196,106,.22);border-color:rgba(255,224,138,.6);}
+#bFlag.pressed{background:rgba(228,196,106,.6);}#bFlag.spent{opacity:.42;}#bFlag.off{display:none;}
+#bFlag small{position:absolute;right:3px;bottom:2px;font-size:9px;font-weight:900;}
 #fuelTag{font-size:11px;font-weight:800;color:#e8a33d;}
 #flipTag{font-size:11px;font-weight:800;color:#c47bff;}
 #portalTag{font-size:11px;font-weight:800;color:#8fdcff;}
@@ -203,6 +207,7 @@ body.a11y-reduced-motion *,body.a11y-reduced-motion *::before,body.a11y-reduced-
   <button class="btn" id="bPortal">⊙</button>
   <button class="btn" id="bCommand">HOLD</button>
   <button class="btn" id="bTool">TOOL</button>
+  <button class="btn" id="bFlag" aria-label="Plant checkpoint flag">⚑<small>1</small></button>
 </div>
 <div id="toast" role="status" aria-live="polite"></div>
 <div id="soundCaption" role="status" aria-live="polite" aria-atomic="true"></div>
@@ -439,7 +444,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.309.0';
+const VERSION='7.310.0';
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -2421,7 +2426,7 @@ function cloneGear(g){const o=freshGear();if(g)for(const s of SLOTIDS){if(g[s])o
 /* ================================================================
    SECTION 4: INPUT (Keyboard + Touch)
    ================================================================ */
-const input={left:false,right:false,down:false,jump:false,attack:false,dodge:false,jumpEdge:false,dodgeEdge:false,portal:false,portalEdge:false,tool:false,toolEdge:false,command:false,commandEdge:false,jx:0,jz:0,pause:false};
+const input={left:false,right:false,down:false,jump:false,attack:false,dodge:false,jumpEdge:false,dodgeEdge:false,portal:false,portalEdge:false,tool:false,toolEdge:false,command:false,commandEdge:false,checkpoint:false,checkpointEdge:false,jx:0,jz:0,pause:false};
 
 /* Rebindable keyboard controls. meta.keybinds holds any user overrides (persisted);
    KB_DEFAULTS fills in whatever hasn't been rebound, including on first run. */
@@ -2526,13 +2531,14 @@ function bindBtn(id,key){
     else if(key==='portal'){if(v&&!input.portal)input.portalEdge=true;input.portal=v;}
     else if(key==='tool'){if(v&&!input.tool)input.toolEdge=true;input.tool=v;}
     else if(key==='command'){if(v&&!input.command)input.commandEdge=true;input.command=v;}
+    else if(key==='checkpoint'){if(v&&!input.checkpoint)input.checkpointEdge=true;input.checkpoint=v;}
     else input[key]=v;};
   el.addEventListener('pointerdown',e=>{if(heldId!==null)return;if(e.pointerType==='touch')window.BladefallTouchLayout?.fullscreen();e.preventDefault();heldId=e.pointerId;set(true);el.setPointerCapture&&el.setPointerCapture(e.pointerId);});
   const rel=e=>{if(e.pointerId!==heldId)return;e.preventDefault&&e.preventDefault();heldId=null;set(false);};
   el.addEventListener('pointerup',rel);el.addEventListener('pointercancel',rel);el.addEventListener('lostpointercapture',rel);
   el.addEventListener('contextmenu',e=>e.preventDefault());
 }
-bindBtn('bJump','jump');bindBtn('bAttack','attack');bindBtn('bDodge','dodge');bindBtn('bFlip','flip');bindBtn('bPortal','portal');bindBtn('bCommand','command');bindBtn('bTool','tool');
+bindBtn('bJump','jump');bindBtn('bAttack','attack');bindBtn('bDodge','dodge');bindBtn('bFlip','flip');bindBtn('bPortal','portal');bindBtn('bCommand','command');bindBtn('bTool','tool');bindBtn('bFlag','checkpoint');
 
 /* Mouse-free upgrade selection: 1/2/3 (or Numpad 1/2/3) pick the matching choice. */
 window.addEventListener('keydown', e=>{
@@ -2566,9 +2572,9 @@ window.addEventListener('keydown',e=>{
   zone.addEventListener('contextmenu',e=>e.preventDefault());
 })();
 
-const EXPLORE_TOUCH_IDS=['bJump','bAttack','bDodge','bPortal','bFlip','bCommand','bTool','pausebtn'];
+const EXPLORE_TOUCH_IDS=['bJump','bAttack','bDodge','bPortal','bFlip','bCommand','bTool','bFlag','pausebtn'];
 const exploreTouchOriginal=new Map();
-function exploreTouchItems(){const w=innerWidth,h=innerHeight;return [{id:'stick',label:'Move / aim',x:104,y:h-104,r:52},...EXPLORE_TOUCH_IDS.map(id=>{const el=document.getElementById(id),st=getComputedStyle(el),r=(parseFloat(st.width)||56)/2;return {id,label:{bJump:'Jump',bAttack:'Attack',bDodge:'Dash',bPortal:'Portal',bFlip:'Flip',bCommand:'Companion',bTool:'Tool',pausebtn:'Pause'}[id],x:Number.isFinite(parseFloat(st.left))?parseFloat(st.left)+r:w-(parseFloat(st.right)||0)-r,y:Number.isFinite(parseFloat(st.top))?parseFloat(st.top)+r:h-(parseFloat(st.bottom)||0)-r,r};})];}
+function exploreTouchItems(){const w=innerWidth,h=innerHeight;return [{id:'stick',label:'Move / aim',x:104,y:h-104,r:52},...EXPLORE_TOUCH_IDS.map(id=>{const el=document.getElementById(id),st=getComputedStyle(el),r=(parseFloat(st.width)||56)/2;return {id,label:{bJump:'Jump',bAttack:'Attack',bDodge:'Dash',bPortal:'Portal',bFlip:'Flip',bCommand:'Companion',bTool:'Tool',bFlag:'Flag',pausebtn:'Pause'}[id],x:Number.isFinite(parseFloat(st.left))?parseFloat(st.left)+r:w-(parseFloat(st.right)||0)-r,y:Number.isFinite(parseFloat(st.top))?parseFloat(st.top)+r:h-(parseFloat(st.bottom)||0)-r,r};})];}
 function applyExploreTouchLayout(){const api=window.BladefallTouchLayout;if(!api)return;for(const id of [...EXPLORE_TOUCH_IDS,'joyzone']){const el=document.getElementById(id);if(!exploreTouchOriginal.has(id))exploreTouchOriginal.set(id,Object.fromEntries(['left','top','right','bottom','width','height'].map(k=>[k,el.style[k]])));else Object.assign(el.style,exploreTouchOriginal.get(id));}
  const prefs=api.config('explore');for(const item of exploreTouchItems()){if(!prefs[item.id])continue;const b=api.resolve('explore',item.id,item),el=document.getElementById(item.id==='stick'?'joyzone':item.id);Object.assign(el.style,{left:(b.x-b.r)+'px',top:(b.y-b.r)+'px',right:'auto',bottom:'auto',width:(b.r*2)+'px',height:(b.r*2)+'px'});}applySafeAreaOffsets();}
 addEventListener('resize',applyExploreTouchLayout);applyExploreTouchLayout();
@@ -17362,7 +17368,8 @@ function update(dt){
   if(keyPressedFor('pause'))openPause();
   if(!fieldLoadoutActive()&&!BF_TAS_ENABLED&&BFKeyboard.isPressed('KeyI')&&playerBuildDiscovery().bag)openBag(()=>{mode='play';showOverlay(false);});
   if(keyPressedFor('pickup'))collectNearbyItem();
-  if(keyPressedFor('checkpoint')){if(window.BladefallEarlyPlatforming?.retry()){}else if(window.BladefallCeleste&&BladefallCeleste.active())BladefallCeleste.retry();else placeEarnedCheckpoint();}
+  if(keyPressedFor('checkpoint')||input.checkpointEdge){if(window.BladefallEarlyPlatforming?.retry()){}else if(window.BladefallCeleste&&BladefallCeleste.active())BladefallCeleste.retry();else placeEarnedCheckpoint();}
+  input.checkpointEdge=false;
   const touchUp=input.jz<-.5&&!input.dodge&&!keyDownFor('dash');
   input.touchUpT=touchUp?(input.touchUpT||0)+dt:0;
   const touchInteract=touchUp&&!input.touchUpUsed&&input.touchUpT>=.25;
@@ -24122,6 +24129,12 @@ function hudUpdate(){
   syncBloodMirror(p);
   const flagTag=document.getElementById('checkpointTag');
   if(flagTag){flagTag.textContent=window.BladefallEarlyPlatforming?.retryAvailable()?keyLabel(kbCode('checkpoint'))+' · RETRY CROSSING':window.BladefallCeleste&&BladefallCeleste.active()?keyLabel(kbCode('checkpoint'))+' · RETRY ROOM':keyLabel(kbCode('checkpoint'))+' · FLAG '+(G.checkpointCharge===1?'1':'0')+'/1';flagTag.style.display=G.bossRush||meta.hardcore?'none':'';}
+  // (7.310) the touch flag mirrors the tag: spent until an enemy earns another; a retry glyph where R retries
+  const flagBtn=document.getElementById('bFlag');
+  if(flagBtn){const retry=window.BladefallEarlyPlatforming?.retryAvailable()||window.BladefallCeleste&&BladefallCeleste.active(),charge=G.checkpointCharge===1;
+   flagBtn.classList.toggle('off',!!(G.bossRush||meta.hardcore));flagBtn.classList.toggle('spent',!retry&&!charge);
+   const label=retry?'↺':'⚑<small>'+(charge?'1':'0')+'</small>';if(flagBtn.dataset.label!==label){flagBtn.dataset.label=label;flagBtn.innerHTML=label;}
+   flagBtn.setAttribute('aria-label',retry?'Retry':'Plant checkpoint flag ('+(charge?'1':'0')+' of 1)');}
   const bloodMeasures=document.getElementById('bloodMeasures');
   if(bloodMeasures){
     const count=Math.max(5,Math.ceil(p.maxBlood)),signature=count+':'+Math.round(p.maxBlood*10);
@@ -24522,7 +24535,7 @@ function titleScreen(){
       <button class="bigbtn ghost" id="settingsBtn" style="flex:1;">⚙ Controls</button>
     </div>
     <button class="bigbtn ghost" id="boardsBtn">🏆 Leaderboards</button>
-    <a class="bigbtn ghost" id="apkBtn" href="https://github.com/isaac2055/Bladefall-2D/releases/download/v7.309.0/Bladefall-7.309.0.apk" style="display:block;text-align:center;box-sizing:border-box;text-decoration:none" download>Download APK</a>
+    <a class="bigbtn ghost" id="apkBtn" href="https://github.com/isaac2055/Bladefall-2D/releases/download/v7.310.0/Bladefall-7.310.0.apk" style="display:block;text-align:center;box-sizing:border-box;text-decoration:none" download>Download APK</a>
     <p class="hint">v${VERSION}</p></div>`);
   if(canContinue)document.getElementById('contBtn').onclick=()=>{if(continueSurvive)location.href='precision.html?pitch=climb&resume=1&mode='+(lastPlayed.mode==='review'?'review':'play');else continueRun();};
   document.getElementById('newBtn').onclick=openExploreMenu;
@@ -25937,7 +25950,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.309.0').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.310.0').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */
@@ -25945,7 +25958,7 @@ const rotateDismissBtn=document.getElementById('rotateDismiss');
 if(rotateDismissBtn){
   rotateDismissBtn.addEventListener('click',()=>{document.body.classList.add('portraitDismissed');});
 }
-for(const [id,label] of Object.entries({pausebtn:'Pause game',bDodge:'Dash',bJump:'Jump',bAttack:'Attack',bFlip:'Flip gravity',bPortal:'Place or enter portal',bCommand:'Command companion',bTool:'Use equipped tool'})){
+for(const [id,label] of Object.entries({pausebtn:'Pause game',bDodge:'Dash',bJump:'Jump',bAttack:'Attack',bFlip:'Flip gravity',bPortal:'Place or enter portal',bCommand:'Command companion',bTool:'Use equipped tool',bFlag:'Plant checkpoint flag'})){
   const control=document.getElementById(id);if(control)control.setAttribute('aria-label',label);
 }
 
@@ -25968,6 +25981,7 @@ function applySafeAreaOffsets(){
   set('bPortal','right',214);set('bPortal','bottom',60);
   set('bTool','right',290);set('bTool','bottom',130);
   set('pausebtn','top',8);
+  set('bFlag','top',48);set('bFlag','right',12);
   set('cutSkip','bottom',20);
 }
 applySafeAreaOffsets();

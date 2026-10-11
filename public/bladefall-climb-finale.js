@@ -86,6 +86,10 @@ function open(){
 function merged(){const s=state();return !!(s.echo&&s.choice==='merge');}
 function vesperNeed(){const s=state();return NEED[s.echo&&s.choice?s.choice:'none'];}
 function mapState(){const s=state();return {open:open(),echo:!!s.echo,vesper:!!s.vesper,choice:s.choice,merged:merged()};}
+// (7.310) Settings → Show the finished map: the crowns and the whole gem at full brilliance, whatever is beaten
+const PREVIEW='bladefall.climb.map-preview.v1';
+function preview(){try{return localStorage.getItem(PREVIEW)==='1';}catch(e){return false;}}
+function setPreview(on){try{if(on)localStorage.setItem(PREVIEW,'1');else localStorage.removeItem(PREVIEW);}catch(e){}}
 
 /* ---------------------------------------------------------------- the choice and the ending */
 const CHOICES=Object.freeze({
@@ -129,6 +133,6 @@ function track(n,g){
  if(n!==42)return null;const z=g?.vesper;
  return 'audio/music/'+(z&&z.mode!=='idle'?FORM_TRACKS[z.form]:'fractured-the-last-spark-of-darrow')+'.mp3';
 }
-root.BladefallClimbFinale=Object.freeze({state,open,merged,vesperNeed,mapState,echoYielded,vesperStill,choose,say,track,NEED,worlds:[W41,W42],
+root.BladefallClimbFinale=Object.freeze({state,open,merged,vesperNeed,mapState,preview,setPreview,echoYielded,vesperStill,choose,say,track,NEED,worlds:[W41,W42],
  reset(){write({});}});
 })(typeof window!=='undefined'?window:globalThis);
