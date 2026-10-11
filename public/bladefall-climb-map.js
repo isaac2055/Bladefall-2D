@@ -375,11 +375,15 @@ function buildSvg(model){
   if(n>40){P.push(crownNode(n,model));continue;}
   const c=pos(n),info=model.info[n],w=worldOf(n);if(!c)continue;
   const visited=!!atlas.state.visited[n],current=here?.world===n&&!here.link,next=info.next,cleared=info.progress?.cleared,sel=n===selected;
-  const base=colorOf(n),fill=visited?mix(base,'#10151c',.58):'#1a2029',stroke=current?'#fff1b3':sel?'#a9d4ff':cleared?'#e7c873':next?'#6fe0a0':visited?mix(base,'#ffffff',.15):'#3f4757';
+  // (7.315) hearts: a world beaten with every heart found glows rose, so the ones still hiding hearts stand out
+  const hh=model.hearts?.[n],whole=!!(cleared&&hh&&hh.got>=hh.total);
+  const base=colorOf(n),fill=visited?mix(base,'#10151c',.58):'#1a2029',stroke=current?'#fff1b3':sel?'#a9d4ff':whole?'#ff8fd0':cleared?'#e7c873':next?'#6fe0a0':visited?mix(base,'#ffffff',.15):'#3f4757';
   const text=visited||next||current?'#efe6cf':'#8f97a5',name=wrap(w?.name||nameOf(n));
   const g=[`<g class="cm-node" data-n="${n}" transform="translate(${c[0].toFixed(1)},${c[1].toFixed(1)})">`];
   if(current)g.push(`<circle class="cm-pulse" r="${NW*.55}" fill="none" stroke="#ffe08a" stroke-width="4"/>`);
   const dim=!visited&&!next&&!current;
+  if(whole)g.push(`<polygon points="${gem}" transform="scale(1.1,1.2)" fill="none" stroke="#ff8fd0" stroke-opacity=".45" stroke-width="9"/>`);
+  if(hh&&hh.total&&(visited||current||whole))g.push(`<text class="cm-near" x="${NW/2-16}" y="${-NH/2+14}" text-anchor="end" font-size="11" font-weight="700" fill="${hh.got>=hh.total?'#ff9fd8':'#c99aae'}">♥${hh.got}/${hh.total}</text>`);
   g.push(crystal(n,dim));
   if(n===20||n===40)g.push(`<polygon points="${gem}" transform="scale(1.08,1.14)" fill="none" stroke="${n===20?'#ffd36b':'#b98cff'}" stroke-opacity="${dim?.25:.55}" stroke-width="5"/>`);
   if(next&&!current)g.push(`<polygon points="${gem}" fill="none" stroke="#6fe0a0" stroke-opacity=".35" stroke-width="9"/>`);
@@ -426,7 +430,7 @@ function mount(host,opts={}){
   if(n>40){const done=fin.preview||(n===41?!!fin.echo:!!fin.vesper);info[n].progress={...info[n].progress,cleared:done,solved:done?info[n].progress.total:0};info[n].next=!done;}
  }
  const startN=here?.world&&regions.includes(here.world)?here.world:regions[0];
- const model={atlas,here,selected:startN,regions,info,finale:fin};
+ const model={atlas,here,selected:startN,regions,info,finale:fin,hearts:opts.hearts||null};
  const fractured=regions.some(n=>n>20);
  const top=fin.open?1.5*SY+CH/2+96:0.62*SY+40,bottom=fractured?(fin.open?(FLIP+1.5)*SY+CH/2+66:(FLIP+.62)*SY+50):8.65*SY+NH+40;
  const half=fin.open?Math.max(2.65*SX+NW/2+34,CW/2+44+168+14+300):2.65*SX+NW/2+34;   // (Vesper's two fights are written beside his crown)
@@ -444,6 +448,7 @@ function mount(host,opts={}){
     <button class="cm-b" data-cm="all">Fit all</button>
     <button class="cm-b" data-cm="base">Emerald</button>
     ${fractured?'<button class="cm-b" data-cm="fractured">Fractured</button>':''}
+    ${opts.hearts?`<span class="cm-b" style="cursor:default;border-color:#7a4a66;color:#ffc2e6" title="Hearts found across every world">♥ ${Object.values(opts.hearts).reduce((a,h)=>a+h.got,0)} / ${Object.values(opts.hearts).reduce((a,h)=>a+h.total,0)} hearts</span>`:''}
   </div>
   <div class="cm-view" role="application" aria-label="The Emerald Ascent map. Drag to move, pinch or scroll to zoom, tap a region for its roads.">
    <svg class="cm-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two nested emeralds of regions, joined by roads"></svg>
@@ -451,6 +456,7 @@ function mount(host,opts={}){
    <div class="cm-zoom"><button class="cm-b" data-cm="in" aria-label="Zoom in">+</button><button class="cm-b" data-cm="out" aria-label="Zoom out">−</button></div>
   </div>
   <div class="cm-legend">
+   <span><svg width="22" height="12"><polygon points="1,6 5,1 17,1 21,6 17,11 5,11" fill="#2a2228" stroke="#ff8fd0" stroke-width="2"/></svg>cleared, every heart found ♥</span>
    <span><svg width="26" height="8"><path d="M1,4H25" stroke="#6fd39a" stroke-width="3"/></svg>open road</span>
    <span><svg width="26" height="8"><path d="M1,4H25" stroke="#b99cff" stroke-width="2.5" stroke-dasharray="6 4"/></svg>open crossing</span>
    <span><svg width="34" height="12"><path d="M1,6H33" stroke="#4b5262" stroke-width="2" stroke-dasharray="4 5"/><g transform="translate(17,5)" fill="#8d8571" stroke="#8d8571" stroke-width="1.2">${lockGlyph}</g></svg>sealed (finish a region)</span>
@@ -523,8 +529,9 @@ function mount(host,opts={}){
   const onRoad=current&&here.link&&AT().links.find(x=>x.id===here.link);
   const state=onRoad?`on ${PS()?.designs?.[onRoad.id]?.[0]||'the road'} to ${nameOf(onRoad.a===n?onRoad.b:onRoad.a)}`:current?'you are here':pr?.cleared?'cleared':inf.next?'open to you':visited?'visited':'not yet visited';
   const sealed=ms.filter(m=>!m.open).length;
-  chipbar.innerHTML=`<b>${n} · ${esc(w?.name||nameOf(n))}</b> <small>· ${esc(state)}${pr?` · ${pr.solved}/${pr.total} sections`:''}${ms.length?` · ${ms.length-sealed} road${ms.length-sealed===1?'':'s'} open${sealed?`, ${sealed} sealed`:''}`:''}</small>`;
-  detail.innerHTML=`<h2>${n} · ${esc(w?.name||nameOf(n))}${chips}</h2><div>${where}</div>${groups.length?groups.map(g=>`<h3>${esc(g.name)} · ${esc(roleWords[g.role])}</h3><ul>${g.list.map(li).join('')}</ul>`).join(''):'<div><small>No roads leave this region yet.</small></div>'}`;
+  const hh=model.hearts?.[n],heartTxt=hh&&hh.total?`♥ ${hh.got}/${hh.total} heart${hh.total===1?'':'s'}`:'';
+  chipbar.innerHTML=`<b>${n} · ${esc(w?.name||nameOf(n))}</b> <small>· ${esc(state)}${pr?` · ${pr.solved}/${pr.total} sections`:''}${heartTxt?' · '+heartTxt:''}${ms.length?` · ${ms.length-sealed} road${ms.length-sealed===1?'':'s'} open${sealed?`, ${sealed} sealed`:''}`:''}</small>`;
+  detail.innerHTML=`<h2>${n} · ${esc(w?.name||nameOf(n))}${chips}${hh&&hh.total?`<span class="cm-chip" style="border-color:#ff8fd0;color:#ffc2e6">${heartTxt}</span>`:''}</h2><div>${where}${hh&&hh.total?`<br>${hh.got>=hh.total?'Every heart in this world is found.':`${hh.total-hh.got} heart${hh.total-hh.got===1?'':'s'} still hidden here: a secret way off the road.`}`:''}</div>${groups.length?groups.map(g=>`<h3>${esc(g.name)} · ${esc(roleWords[g.role])}</h3><ul>${g.list.map(li).join('')}</ul>`).join(''):'<div><small>No roads leave this region yet.</small></div>'}`;
   const play=host.querySelector('#cmPlayWorld');if(play){const locked=opts.canStart&&!opts.canStart(n);play.disabled=!!locked;play.textContent=locked?'Locked':'Play world';play.title=locked?'Find this world’s base keepsake':'Play '+(w?.name||nameOf(n));play.setAttribute('aria-label',play.title);play.onclick=()=>opts.onStart(n);if(locked)detail.insertAdjacentHTML('beforeend','<p>Find this world’s base keepsake to unlock its Fractured echo.</p>');}
  }
  function select(n,pan=false){

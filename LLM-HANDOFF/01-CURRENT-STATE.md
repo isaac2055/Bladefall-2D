@@ -1,3 +1,15 @@
+## 7.315.0: Hearts on the Survive map (2026-10-11)
+
+There is one heart per world: a secret, saved in `bladefall.climb.v1` `secrets`.
+- **World card:** selecting a world shows "♥ found/total" in the card and the chip bar, plus how many are still hidden.
+- **Toolbar:** shows the grand total across worlds 1–40.
+- **Nodes:** each node shows ♥n/n up close. A world that is cleared with every heart found glows rose (new legend entry).
+- **100% view:** counts every heart as found.
+
+Checks: in Chrome, with a save of two cleared worlds the total is 0/40; in the 100% view it is 40/40 and every node glows rose. No errors.
+
+Version 7.315.0, cache `bladefall-v483-map-hearts`.
+
 ## 7.314.0: Review mode toggle, test mode, a reversible 100% view, no route takeover (2026-10-11)
 
 - **Review mode.** It already existed as "Feedback mode", hidden in Controls (Survive) and Settings → Playtesting (Explore). It is now named "Review mode · rate each room/level when you finish it", and it is off by default.
