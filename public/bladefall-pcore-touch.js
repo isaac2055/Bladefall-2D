@@ -297,7 +297,7 @@ function draw(ctx,dpr){
    circle(b.x,b.y,b.r,'rgba(14,16,24,.55)','rgba(233,220,192,.45)');ctx.fillStyle='#e9dcc0';const u=b.r*.34;
    for(const o of [-u*.95,0]){ctx.beginPath();ctx.moveTo((b.x+o-u*.45)*k,(b.y-u)*k);ctx.lineTo((b.x+o+u*.55)*k,b.y*k);ctx.lineTo((b.x+o-u*.45)*k,(b.y+u)*k);ctx.closePath();ctx.fill();}
    ctx.fillRect((b.x+u*.7)*k,(b.y-u)*k,u*.32*k,u*2*k);
-   ctx.font=`700 ${Math.round(b.r*.5*k)}px system-ui,sans-serif`;ctx.fillText(String(info.remaining),b.x*k,(b.y+b.r*1.45)*k);}
+   ctx.font=`700 ${Math.round(b.r*.5*k)}px system-ui,sans-serif`;ctx.fillText(info.remaining===Infinity?"∞":String(info.remaining),b.x*k,(b.y+b.r*1.45)*k);}
   else{const co=coop(),held=[...ptrs.values()].some(p=>p.role==='friend'),q=Math.max(0,Math.min(1,(co?.holdT||0)/36));ctx.globalAlpha=Math.min(1,a*1.3);
    circle(b.x,b.y,b.r,held?'rgba(134,230,216,.35)':'rgba(14,16,24,.55)','rgba(134,230,216,.7)');
    if(q>0){ctx.beginPath();ctx.arc(b.x*k,b.y*k,(b.r+3)*k,-Math.PI/2,-Math.PI/2+q*Math.PI*2);ctx.strokeStyle='#86e6d8';ctx.lineWidth=3*k;ctx.stroke();ctx.lineWidth=2*k;}
@@ -326,7 +326,7 @@ function draw(ctx,dpr){
 function card(back){
  const t=settings(),opt=(v,l,cur)=>`<option value="${v}" ${v===cur?'selected':''}>${l}</option>`;
  const rows=Object.keys(CHOICES).map(a=>`<label class="pcOpt pcTouchRow"><span>${ACTION_NAMES[a]}</span><select data-map="${a}">${CHOICES[a].map(g=>opt(g,GESTURES[g],t.map[a])).join('')}</select></label>`).join('');
- api.showOverlay(`<div class="pcCard mid"><h1>Touch controls</h1><label class="pcOpt"><input id="tcFeedback" type="checkbox" ${root.BladefallPlaytest?.feedbackEnabled()?'checked':''}> Feedback mode</label>
+ api.showOverlay(`<div class="pcCard mid"><h1>Touch controls</h1><label class="pcOpt"><input id="tcFeedback" type="checkbox" ${root.BladefallPlaytest?.feedbackEnabled()?'checked':''}> Review mode · rate each room</label>
  <p class="pcSub">Left thumb: drag anywhere on the left to move. Right thumb: the gestures below. Pause and retry are the two small buttons in the top corner, and Android's back gesture pauses too.${climb()?' In Survive, beside them: skip this section, and (in co-op) hold P2 to go to your partner.':''}</p>
  <label class="pcOpt pcTouchRow"><span>Layout</span><select id="tcPreset">${Object.keys(PRESETS).map(p=>opt(p,PRESET_NAMES[p],t.preset)).join('')}${t.preset==='custom'?opt('custom','Custom','custom'):''}</select></label>
  ${rows}

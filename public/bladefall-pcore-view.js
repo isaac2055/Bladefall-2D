@@ -17,6 +17,7 @@ function loadSave(){try{return JSON.parse(localStorage.getItem(SAVE))||{};}catch
 function writeSave(s){try{localStorage.setItem(SAVE,JSON.stringify(s));}catch(e){}}
 const save=Object.assign({shards:[],cleared:{},best:{},assist:{},options:{shake:true,sound:true,music:true}},loadSave());
 save.options=Object.assign({shake:true,sound:true,music:true},save.options);
+save.assist.infiniteStamina=!!save.assist.testMode;   // (7.314) infinite stamina is test mode's alone
 
 /* ---------------------------------------------------------------- input */
 /* Every action can sit on several keys and several controller buttons. The player's choices
@@ -271,6 +272,7 @@ function nextRoom(){
  save.shards=[...g.shards];writeSave(save);
  C.enterRoom(g,next);view.trail=[];resetScarf();view.roomTimer=0;
 }
+const takeoverOK=()=>!!save.assist.testMode||!root.BladefallPitchView?.climb?.state?.();   // (7.314) a watched Survive route is not a skip
 function retryRoom(){if(!view.g)return;SV()?.retry(view.g.room.id);view.replay=null;C.resetRoom(view.g);view.g.p.state='normal';view.g.p.respawnTimer=0;view.trail=[];resetScarf();}
 
 /* ---------------------------------------------------------------- loop */
@@ -289,7 +291,7 @@ function loop(dt){
   if(pauseEdge)pauseOrBack();
   if(wasOpen&&overlayOpen()&&!pauseEdge)menuNav(pad);else if(pad.nav)Object.assign(nav.held,pad.nav);
   if(pad.retry&&!lp.retry&&view.mode==='play'&&!view.paused&&!overlayOpen())retryRoom();
-  if(view.replay&&pad.any&&!lp.any&&view.mode==='play'&&!view.paused)view.replay=null;
+  if(view.replay&&pad.any&&!lp.any&&view.mode==='play'&&!view.paused&&takeoverOK())view.replay=null;
  }else if(pad.nav)Object.assign(nav.held,pad.nav);
  if(view.mode==='play'&&!view.paused){
   view.frameAcc+=dt*(save.assist.speed||1);
@@ -306,7 +308,7 @@ function tick(input){
  let inp=input;
  if(view.replay){
   const r=view.replay;inp=keysToInput(r.frames[r.i]||'');r.i++;
-  if(r.i>r.frames.length+90){view.replay=null;}
+  if(r.i>r.frames.length+90){if(takeoverOK())view.replay=null;else{retryRoom();root.BladefallPitchView?.climb?.announce?.('Your turn',150);return;}}
  }
  if(!view.replay)SV()?.frame(g.room.id);
  C.step(g,inp);view.chapterStats.frames++;if(g.awake!==false)view.roomTimer++;
@@ -732,7 +734,7 @@ function drawHud(ctx,ox,oy,scale,g){
  const right=`✕ ${view.chapterStats.deaths}`+(shardsTotal?`   ◆ ${g.shards.size}/${shardsTotal}`:'');
  ctx.fillStyle='#00000088';const rw=ctx.measureText(right).width;ctx.fillRect(ox+W*scale-rw-pad-6,oy+pad-3,rw+10,fs+6);
  ctx.fillStyle='#cfc6b4';ctx.fillText(right,ox+W*scale-rw-pad,oy+pad);
- if(view.replay){ctx.fillStyle='#ffcf7a';ctx.fillText('▶ INTENDED ROUTE — any input to take over',ox+pad,oy+H*scale-fs-pad);}
+ if(view.replay){ctx.fillStyle='#ffcf7a';ctx.fillText(takeoverOK()?'▶ INTENDED ROUTE — any input to take over':'▶ INTENDED ROUTE — then it is your turn, from the fire',ox+pad,oy+H*scale-fs-pad);}
  else if(g.awake===false&&g.room.def.movement!=='survive-2'&&g.room.def.bank?.run!==3&&!g.room.def.showHintAtRest){ctx.fillStyle='#d8cfb9';const lk=g.room.def.lock||[];ctx.fillText(`Look first · act when ready · ${lk.includes('parry')?'':actionLabel('parry')+' parry · '}${lk.includes('strike')?'':actionLabel('strike')+' blade · '}${lastDevice==='pad'?actionLabel('pause'):'Esc'} room question`,ox+pad,oy+H*scale-fs-pad);}
  else if(g.room.hint&&view.roomTimer<600){ctx.globalAlpha=Math.min(1,(600-view.roomTimer)/60);ctx.fillStyle='#d8cfb9';
   // A hint wider than the room (big touch text, long gesture names) breaks at its middle dot onto two lines.
@@ -786,7 +788,7 @@ function controlsCard(back){
   <td><div class="pcChips">${binds.pad[a].map((v,i)=>chip('pad',a,v,i)).join('')}${add('pad',a)}</div></td></tr>`).join('');
  const status=gp?`Controller: ${gp.id.replace(/\s*\(.*$/,'').slice(0,48)||'connected'}${gp.mapping==='standard'?'':' · non-standard layout, buttons may be mislabelled'}`
   :'No controller detected. Connect one and press any button on it (browsers hide controllers until a button is pressed).';
- showOverlay(`<div class="pcCard mid"><h1>Controls</h1><label class="pcSub"><input id="pcFeedbackToggle" type="checkbox" ${root.BladefallPlaytest?.feedbackEnabled()?'checked':''}> Feedback mode · after each Survival room</label>
+ showOverlay(`<div class="pcCard mid"><h1>Controls</h1><label class="pcSub"><input id="pcFeedbackToggle" type="checkbox" ${root.BladefallPlaytest?.feedbackEnabled()?'checked':''}> Review mode · rate each Survival room</label>
  <p class="pcSub">${status}</p>
  <table class="pcTable pcBinds"><tr><th>Action</th><th>Keyboard</th><th>Controller</th></tr>${rows}</table>
  <p class="pcSub pcNote">${view.bindNote||'Select a key or button to remove it. “+” adds one; a key already in use moves here.'}</p>
@@ -807,22 +809,36 @@ function controlsCard(back){
  view.onPadChange=()=>{if(overlay().querySelector('.pcBinds'))redraw();else view.onPadChange=null;};
  if(fid){const m=fid.match(/^rm-(\w+)-(\w+)-/);const el=o.querySelector(`[data-fid="${fid}"]`)||(m&&o.querySelector(`[data-fid="add-${m[1]}-${m[2]}"]`));if(el)el.focus();}
 }
-function assistCard(back){
- const a=save.assist,o=save.options,finaleMap=!!(root.BladefallClimbFinale&&root.BladefallPitchView?.climb?.state?.());   // (7.310) Survive only
+function assistCard(back,{fromMenu=false}={}){
+ const a=save.assist,o=save.options,climb=!!root.BladefallPitchView?.climb?.state?.(),F=root.BladefallClimbFinale;
+ // (7.314) the full-map switch only from the Survive menu (title → Survive), never mid-world
+ const finaleMap=!!(F&&climb&&fromMenu);
+ const reviewRow=root.BladefallPlaytest?`<label class="pcOpt"><input type="checkbox" id="opReview" ${root.BladefallPlaytest.feedbackEnabled()?'checked':''}> Review mode · rate each room when you finish it</label>
+ <label class="pcOpt"><input type="checkbox" id="opClock" ${root.BladefallPlaytest.clockShown?.()!==false?'checked':''}> Show the run timer</label>`:'';
  showOverlay(`<div class="pcCard"><h1>Assist &amp; options</h1><p class="pcSub">The rooms are built to be hard and fair. If a rule gets in the way of your fun, change it. Nothing is locked behind these settings.</p>
- <label class="pcOpt"><input type="checkbox" id="asStam" ${a.infiniteStamina?'checked':''}> Infinite climbing stamina</label>
+ ${a.testMode?'<p class="pcSub" style="color:#8fd8ff">Test mode is on: infinite skips and climbing stamina, and you can take over a watched route.</p>':''}
  <label class="pcOpt">Game speed <select id="asSpeed">${[1,.9,.8,.7,.6,.5].map(s=>`<option value="${s}" ${((a.speed||1)===s)?'selected':''}>${Math.round(s*100)}%</option>`).join('')}</select></label>
  <label class="pcOpt"><input type="checkbox" id="opShake" ${o.shake?'checked':''}> Screen shake</label>
  <label class="pcOpt"><input type="checkbox" id="opSound" ${o.sound?'checked':''}> Sound effects</label>
- <label class="pcOpt"><input type="checkbox" id="opMusic" ${o.music?'checked':''}> Music (Crystalline Trials)</label>
- ${finaleMap?`<label class="pcOpt"><input type="checkbox" id="opFinaleMap" ${root.BladefallClimbFinale.preview()?'checked':''}> Show the full map (Vesper and your Echo)</label>`:''}
+ <label class="pcOpt"><input type="checkbox" id="opMusic" ${o.music?'checked':''}> Music</label>
+ ${reviewRow}
+ ${finaleMap?`<label class="pcOpt"><input type="checkbox" id="opFinaleMap" ${F.preview()?'checked':''}> Show the full map (Vesper and your Echo)</label>`:''}
+ <p class="pcSub" id="asNote" style="color:#ffd98a"></p>
  <button class="pcBtn" id="pcBack" data-back>Done</button></div>`);
- const upd=()=>{a.infiniteStamina=document.getElementById('asStam').checked;a.speed=+document.getElementById('asSpeed').value;o.shake=document.getElementById('opShake').checked;o.sound=document.getElementById('opSound').checked;o.music=document.getElementById('opMusic').checked;if(finaleMap)root.BladefallClimbFinale.setPreview(document.getElementById('opFinaleMap').checked);writeSave(save);if(view.g)view.g.assist.infiniteStamina=a.infiniteStamina;};
+ const $=id=>document.getElementById(id),note=t=>{$('asNote').textContent=t;};
+ const upd=()=>{a.speed=+$('asSpeed').value;o.shake=$('opShake').checked;o.sound=$('opSound').checked;o.music=$('opMusic').checked;
+  if($('opReview'))root.BladefallPlaytest.setFeedback($('opReview').checked);if($('opClock'))root.BladefallPlaytest.setClock?.($('opClock').checked);
+  if(finaleMap)F.setPreview($('opFinaleMap').checked);a.infiniteStamina=!!a.testMode;writeSave(save);if(view.g)view.g.assist.infiniteStamina=a.infiniteStamina;};
  overlay().querySelectorAll('input,select').forEach(el=>el.onchange=upd);
- // (7.312) five presses of Show the finished map unlock every Survive world, including 41 and 42
- if(finaleMap){let presses=0;document.getElementById('opFinaleMap').addEventListener('click',e=>{if(++presses===5){root.BladefallClimbFinale.unlockAll?.();
-  e.target.closest('label').insertAdjacentHTML('afterend','<p class="pcSub" style="color:#ffd98a">Every Survive world is unlocked, Vesper and your Echo too, and the map shows the whole gem.</p>');}});}
- document.getElementById('pcBack').onclick=()=>{upd();if(view.mode==='play')music(true);else music(false);back();};
+ // (7.314) every five presses of Screen shake turn test mode on or off: infinite skips and climbing stamina in
+ // Survive, and a watched route can be taken over
+ {let presses=0;$('opShake').addEventListener('click',()=>{if(++presses%5)return;a.testMode=!a.testMode;a.infiniteStamina=a.testMode;writeSave(save);if(view.g)view.g.assist.infiniteStamina=a.infiniteStamina;
+  note(a.testMode?'Test mode on: infinite skips and climbing stamina.':'Test mode off.');});}
+ // (7.312/7.314) every five presses of Show the full map turn the 100% view on or off: every world playable,
+ // 41 and 42 too, and the map shown complete. Off, the map is as it was.
+ if(finaleMap){let presses=0;$('opFinaleMap').addEventListener('click',()=>{if(++presses%5)return;const on=!F.unlockedAll();F.setUnlockedAll(on);
+  note(on?'Every Survive world is unlocked, Vesper and your Echo too, and the map shows the game 100% complete.':'Back to your own progress: the map shows what you have really done.');});}
+ $('pcBack').onclick=()=>{upd();if(view.mode==='play')music(true);else music(false);back();};
 }
 function togglePause(){
  if(view.mode!=='play')return;
@@ -841,7 +857,7 @@ function togglePause(){
  ${hasTape?'<button class="pcBtn ghost" id="pcWatch">Watch the intended route (review)</button>':''}
  ${backPassage?'<button class="pcBtn ghost" id="pcReturnPassage">Return through passage</button>':''}
  <p class="pcSub">Room select${optional?' · O = optional route':''}</p><div class="pcMiniRow">${rooms}${optional}</div>
- ${skipInfo?`<button class="pcBtn ghost" id="pcSkipSection" ${skipInfo.allowed?'':'disabled'}>Skip ${skipInfo.finale?'finale':'section'} · costs ${skipInfo.cost} · ${skipInfo.remaining} left</button>${!skipInfo.allowed?`<p class="pcSub">${skipInfo.reason||'This section cannot be skipped.'}</p>`:''}`:''}
+ ${skipInfo?`<button class="pcBtn ghost" id="pcSkipSection" ${skipInfo.allowed?'':'disabled'}>Skip ${skipInfo.finale?'finale':'section'} · costs ${skipInfo.cost} · ${skipInfo.remaining===Infinity?"∞":skipInfo.remaining} left</button>${!skipInfo.allowed?`<p class="pcSub">${skipInfo.reason||'This section cannot be skipped.'}</p>`:''}`:''}
  ${ch.climb&&!view.trial?'<button class="pcBtn ghost" id="pcChapters">World map</button>':''}
  <button class="pcBtn ghost" id="pcCtl">Controls</button><button class="pcBtn ghost" id="pcAssist">Assist &amp; options</button>${view.trial?'<button class="pcBtn ghost" id="pcLeave">Leave the gate (you keep the levels you finished)</button>':!ch.climb?'<button class="pcBtn ghost" id="pcChapters">Chapters</button>':''}
  ${ch.climb?'<a class="pcBtn ghost" href="index.html">Return to title menu</a>':''}</div>`);
@@ -935,7 +951,7 @@ function boot(){
   if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(code))e.preventDefault();
   if(e.repeat)return;
   const act=keyAction(code);
-  if(view.replay&&view.mode==='play'&&!view.paused&&PLAY_ACTIONS.includes(act)){view.replay=null;}
+  if(view.replay&&view.mode==='play'&&!view.paused&&PLAY_ACTIONS.includes(act)&&takeoverOK()){view.replay=null;}
   keys.add(code);
   if(code==='Escape'||act==='pause'){pauseOrBack();return;}
   if(act==='retry'&&view.mode==='play'&&!view.paused&&!open){retryRoom();return;}
@@ -969,6 +985,6 @@ function drawOther(b,g2,pal,localCamera){
  drawEntities(b,g2,pal);root.BladefallPrecisionCombatView?.draw(b,g2);root.BladefallPrecisionFoesView?.draw(b,g2);root.BladefallPrecisionPortalsView?.draw(b,g2,view);
  for(const d of DV){d.draw?.(b,g2,view,pal);d.drawFront?.(b,g2,view,pal);}
 }
-root.BladefallPrecisionView={clearInput:()=>{keys.clear();latchHeld();},options:back=>assistCard(back),boot,view,startChapter,retryRoom,mainMenu,advance,pump,goRoom,persist,drawOther,drawStatic,palettes:PAL,drawKnight:drawKnightSprite};
+root.BladefallPrecisionView={clearInput:()=>{keys.clear();latchHeld();},options:(back,o)=>assistCard(back,o),testMode:()=>!!save.assist.testMode,boot,view,startChapter,retryRoom,mainMenu,advance,pump,goRoom,persist,drawOther,drawStatic,palettes:PAL,drawKnight:drawKnightSprite};
 if(typeof document!=='undefined'){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();}
 })(typeof window!=='undefined'?window:globalThis);

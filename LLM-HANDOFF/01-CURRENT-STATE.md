@@ -1,3 +1,35 @@
+## 7.314.0: Review mode toggle, test mode, a reversible 100% view, no route takeover (2026-10-11)
+
+- **Review mode.** It already existed as "Feedback mode", hidden in Controls (Survive) and Settings → Playtesting (Explore). It is now named "Review mode · rate each room/level when you finish it", and it is off by default.
+  - It is in Survive's Assist & options, reachable from the world map's Settings and from pause.
+  - A new "Show the run timer" toggle hides the run clock (BladefallPlaytest `settings.clock`). Times are still recorded.
+  - Explore's Settings → Playtesting has both toggles.
+- **Survive Assist & options:**
+  - "Show the full map" appears only from the Survive menu (Settings on the world map with no world running), never mid-world.
+  - Music no longer says "(Crystalline Trials)".
+  - Infinite climbing stamina is removed as an option.
+- **Test mode.** Every five presses of Screen shake turn it on or off (`save.assist.testMode`). It gives:
+  - infinite skips (bosses and large rooms too; shown as ∞);
+  - infinite climbing stamina;
+  - the ability to take over a watched route.
+- **Watched routes.** Outside test mode, input no longer takes over the intended-route replay in Survive. When a watch ends without leaving the room, you restart from the fire. This closes the free-skip exploit.
+- **100% view.** Every five presses of "Show the full map" turn it on or off (`bladefall.climb.unlock-all.v1`).
+  - On: every world is playable, 41 and 42 included, and the map shows the game complete (every region visited and cleared, every road open), drawn over a copy of the atlas.
+  - Off: it reverts to your real progress. The view no longer writes permanent unlocks; unlocks granted by 7.312 cannot be undone.
+  - Hearts are not drawn on the map.
+
+**Checks** (Chrome):
+- the menu card has the full map, review and timer toggles, no stamina option, and music labelled "Music";
+- the 100% view goes on and off (world 30 playable, then locked);
+- test mode gives stamina and ∞ skips;
+- the in-game card has no full map;
+- takeover works only in test mode; the end of a watch returns you to the fire;
+- the Explore timer setting works;
+- the 100% map renders.
+- finale-check and the co-op feature checks pass.
+
+Version 7.314.0, cache `bladefall-v482-review-test-mode`.
+
 ## 7.312.0: Finale rooms in the Room Bank, and a hidden unlock-all (2026-10-11)
 
 - **Room Bank.** The five finale rooms are in the review group ("Superrooms for review"): B77 The Throne Road, B78 Vesper, F78–F80 your Echo's three rooms.
