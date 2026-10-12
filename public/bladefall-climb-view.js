@@ -78,8 +78,8 @@ PV.start=function(q,api){
  for(const w of CL().worlds){Object.assign(H.FOLK,w.folk||{});}
  st={api,view,world:null,chapter:-1,quest:null,cam:null,closed:new Set(),toast:null,slide:null,spoke:new Set(),gone:new Set(),walk:{},trail:[],dispCache:new Map()};
  view.pitch=st;
- for(const w of CL().worlds.filter(w=>w.n<=20))if(w.quests.some(q=>q.keepsake&&keepsakes()[q.keepsake.id]))root.BladefallPlaytest?.unlock('survival',w.n+20);
  st.atlas=root.BladefallClimbAtlas.create(CL().worlds,load('bladefall.climb.atlas.v1'));
+ for(let n=21;n<=40;n++)if(purpleHeld(n-20)&&worldBeaten(n-20))root.BladefallPlaytest?.unlock('survival',n);   // (7.316) leaderboards follow the same rule
  if(!load('bladefall.climb.atlas.v1').version){
   for(const w of CL().worlds)if(save.cleared[w.n]){st.atlas.state.visited[w.n]=true;for(const sec of w.sections)st.atlas.solve(sec.room);}
   store('bladefall.climb.atlas.v1',st.atlas.snapshot());
@@ -95,7 +95,7 @@ PV.start=function(q,api){
 function startWorld(n,room=null){
  const w=CL().world(n);if(!w||!w.chapter)return false;
  if(n>40&&!st.review&&!root.BladefallClimbFinale?.open()){announce('Complete all forty worlds first.',220);return false;}
- if(n>20&&n<=40&&!st.review&&!root.BladefallClimbFinale?.canPlay(n)&&!root.BladefallPlaytest?.unlocked('survival',n)){announce('Find a keepsake in the matching base world to open this Fractured region.',220);return false;}
+ if(n>20&&n<=40&&!st.review&&!fracturedOpen(n)){announce(fracturedLockedWhy(n),240);return false;}
  const resumeProgress=room!=null;
  if(room==null)room=Math.max(0,w.chapter.rooms.findIndex(r=>r.id===w.atlasStart));
  const c=R().chapters.indexOf(w.chapter);if(c<0)return false;
@@ -123,7 +123,7 @@ function socketTarget(g,s){
 }
 function enterPassage(s){
  const view=st.view,g=view.g,target=socketTarget(g,s);if(!target)return false;
- if(target.world.n>20&&!st.review&&!root.BladefallClimbFinale?.canPlay(target.world.n)&&!root.BladefallPlaytest?.unlocked('survival',target.world.n)){announce('Find this world’s base keepsake to open its echo.',160);return false;}
+ if(target.world.n>20&&!st.review&&!fracturedOpen(target.world.n)){announce(fracturedLockedWhy(target.world.n),200);return false;}
  uprightBeforeLeaving(g);
  const old=sectionOf(g),oldX=g.p.x,oldY=g.p.y,snap=CL().snap(g),oldWidth=g.room.w,previous=st.world.n;
  const oldCam=st.cam?{...st.cam}:null;
@@ -245,7 +245,8 @@ function worldMenu(select=false){
 }
 // (7.314) the 100% view: every region visited and cleared, every road open, drawn over a copy (the save is untouched)
 // (7.315) hearts found per world (the 100% view: all of them)
-function heartCounts(all){const out={};for(const w of CL().worlds){if(w.n>40)continue;const hs=w.secrets||[];out[w.n]={total:hs.length,got:all?hs.length:hs.filter(x=>(save.secrets||{})[x.id]).length};}return out;}
+function heartCounts(all){const out={};for(const w of CL().worlds){if(w.n>40)continue;const hs=heartRoutes(w),pq=hs.find(br=>isPurple(w,br));
+ out[w.n]={total:hs.length,got:all?hs.length:hs.filter(br=>heartTaken(w,br)).length,purple:pq?{got:all||heartTaken(w,pq),opens:w.n+20}:null};}return out;}
 function completeAtlas(){
  const A=st.atlas,s=A.state,state={...s,visited:{},open:{},solved:{...s.solved}};
  for(let n=1;n<=40;n++)state.visited[n]=true;for(const l of A.links)state.open[l.id]=true;
@@ -268,7 +269,7 @@ function atlasMap(){
  if(tr){const g=view.g,s=g.room.def.atlasSockets||[],A=s.find(p=>p.world===tr.a),B=s.find(p=>p.world===tr.b),pa=A?.plane??(A?.edge==='left'?0:g.room.w),pb=B?.plane??(B?.edge==='left'?0:g.room.w);current={world:st.world.n,room:g.room.id,link:tr.link,t:Math.max(0,Math.min(1,(g.p.x+g.p.w/2-pa)/((pb-pa)||1)))};}
  const mapControls=physicalMap?`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin:10px 0">${CL().worlds.filter(w=>w.n<=40||root.BladefallClimbFinale?.open()).map(w=>`<button class="pcBtn ghost" style="padding:7px;font-size:11px" data-map-region="${w.n}">${w.n} · ${w.name}</button>`).join('')}</div><button class="pcBtn ghost" id="clMapAll">Whole map</button>`:'';
  st.api.showOverlay(`<div class="pcCard" style="max-width:900px"><h1>The Emerald Ascent</h1><p class="pcSub">${active?st.world.name:cp?'Continue from '+CL().world(cp.world).name:'Begin in the Outskirts. Open roads weave the climb together.'}</p>${schematic?'<div id="clEmerald"></div>':physicalMap||`<svg viewBox="0 0 320 405" style="width:100%;max-height:55vh" role="img" aria-label="Nine regions in the inner braided ascent. Solid roads are open; dotted roads are sealed.">${paths}${nodes}<text x="160" y="14" text-anchor="middle" fill="#929aaa" font-size="9">The upper crown · future journey</text></svg>`}${schematic?'':mapControls}<p class="pcSub">${schematic?'Select a region on the map to play it or inspect its roads.':physicalMap?'Gold dot: you · Solid roads: open · Dotted roads: sealed. Select a region to zoom.':'Solid: open roads · Dotted: sealed passages'}<br>Follow the short passages between regions.</p>${root.BladefallClimbMap&&CL().geography?`<button class="pcBtn ghost" id="clLayout">${schematic?'Show the room layout instead':'Show the Emerald Ascent map'}</button>`:''}<button class="pcBtn" id="clContinue" data-back data-focus-first>${active?'Return to the climb':cp?'Continue the journey':'Begin in the Outskirts'}</button><button class="pcBtn ghost" id="clScores">Leaderboards</button><button class="pcBtn ghost" id="clSettings">Settings</button>${root.BladefallClimbCoop?root.BladefallClimbCoop.menuHtml():''}<a class="pcBtn ghost" href="index.html">Return to title menu</a></div>`);
- if(schematic)root.BladefallClimbMap.mount(document.getElementById('clEmerald'),{hearts:heartCounts(!!root.BladefallClimbFinale?.unlockedAll?.()),atlas:root.BladefallClimbFinale?.unlockedAll?.()?completeAtlas():st.atlas,current,finale:root.BladefallClimbFinale?.mapState(),preview:root.BladefallClimbFinale?.preview(),brilliant:!!root.BladefallClimbFinale?.unlockedAll?.(),onStart:n=>startWorld(n),canStart:n=>root.BladefallClimbFinale?root.BladefallClimbFinale.canPlay(n):n<=20||!!root.BladefallPlaytest?.unlocked('survival',n)});
+ if(schematic)root.BladefallClimbMap.mount(document.getElementById('clEmerald'),{hearts:heartCounts(!!root.BladefallClimbFinale?.unlockedAll?.()),atlas:root.BladefallClimbFinale?.unlockedAll?.()?completeAtlas():st.atlas,current,finale:root.BladefallClimbFinale?.mapState(),preview:root.BladefallClimbFinale?.preview(),brilliant:!!root.BladefallClimbFinale?.unlockedAll?.(),onStart:n=>startWorld(n),canStart:n=>n>40?!!root.BladefallClimbFinale?.canPlay(n):fracturedOpen(n),lockedWhy:n=>n>20&&n<=40?fracturedLockedWhy(n):''});
  {const t=document.getElementById('clLayout');if(t)t.onclick=()=>{st.roomLayout=!st.roomLayout;atlasMap();};}
  if(!schematic&&physicalMap){const svg=document.querySelector('svg[aria-label="Physical map of the Emerald Ascent"]'),full=svg.getAttribute('viewBox');document.getElementById('clMapAll').onclick=()=>svg.setAttribute('viewBox',full);document.querySelectorAll('[data-map-region]').forEach(button=>button.onclick=()=>{const r=CL().geography.regions.get(+button.dataset.mapRegion).bounds;svg.setAttribute('viewBox',[(r.x-65)*1.65,r.y-65,(r.w+130)*1.65,r.h+130].join(' '));});}
  document.getElementById('clScores').onclick=()=>root.BladefallPlaytest?.boards('survival');
@@ -592,6 +593,7 @@ PV.holding=function(){
  g.springUp=!d.campaignImport;   // Native road springs stay upright; bank springs retain authored momentum.
  if(p.dropT>0&&!save.dropUsed){save.dropUsed=true;store(SAVE,save);}
  teachDrop(g,p);
+ updateProof(g);
  touchReward(g,p);
  if(d.side){const q=questFrom(d.id);g.sideSealed=sealedQuest(q);if(g.sideSealed&&(d.side==='left'?p.x<=2:d.side==='right'?p.x>=g.room.w-p.w-2:false))sayEchoSealed(q);}
  if(root.BladefallClimbCoop)try{if(root.BladefallClimbCoop.tick(g))return true;}catch(e){}
@@ -664,12 +666,32 @@ PV.holding=function(){
 };
 
 /* Progress stays: a stake you lit stays lit (through deaths, and when you leave and come back), so its gate stays open. */
+/* (7.316) Which stakes do not stay lit through a death (or a walk out and back). A room imported from the Room Bank
+   was designed to reset whole, so none of its stakes stay. In a native room a stake stays lit unless the fire is
+   clearly nearer the way out than the stake is (8+ tiles of open ground): there, light it, die, and the respawn
+   would carry you most of the way home. Measured once per room by a flood of the open tiles from its way out. */
+function freshStakes(g){
+ const d=g.room.def,key='fresh:'+d.id;if(st.dispCache.has(key))return st.dispCache.get(key);
+ const stones=g.ents.filter(e=>e.type==='stone'),out=new Set();
+ if(stones.length&&!d.atlasTransit?.winch){
+  if(d.campaignImport||/^cl\d+-bank-/.test(d.id))for(const e of stones)out.add(e.id);
+  else{const rm=g.room,Cc=rm.cols,Rr=rm.rows,ex=rm.exit,bad=v=>v===1||v>=3&&v<=6;
+   if(ex&&ex!=='none'){const dist=new Int32Array(Cc*Rr).fill(-1),q=[];const src=(c,r)=>{const i=r*Cc+c;if(!bad(rm.grid[i])&&dist[i]<0){dist[i]=0;q.push(i);}};
+    for(let i=0;i<(ex==='up'||ex==='down'?Cc:Rr);i++){if(ex==='up')src(i,0);else if(ex==='down')src(i,Rr-1);else if(ex==='left')src(0,i);else src(Cc-1,i);}
+    for(let h=0;h<q.length;h++){const k=q[h],c=k%Cc,r=(k-c)/Cc;for(const [dc,dr] of [[1,0],[-1,0],[0,1],[0,-1]]){const nc=c+dc,nr=r+dr;if(nc<0||nr<0||nc>=Cc||nr>=Rr)continue;const j=nr*Cc+nc;if(dist[j]<0&&!bad(rm.grid[j])){dist[j]=dist[k]+1;q.push(j);}}}
+    const at=(x,y)=>dist[Math.floor(y/TILE)*Cc+Math.floor(x/TILE)],S=at(rm.spawn.x+4,rm.spawn.y+6);
+    for(const e of stones){const K=at(e.x+4,e.y+4);if(S>=0&&K>=0&&K-S>=8)out.add(e.id);}}}
+ }
+ st.dispCache.set(key,out);return out;
+}
 function keepProgress(g){
  if(!st.lit)st.lit={};const set=st.lit[g.room.id]||(st.lit[g.room.id]=new Set(st.trialProgress?[]:save.stakes?.[g.room.id]||[]));
  const before=set.size;
  if(g.room.def.atlasTransit?.winch&&(save.stakes?.[g.room.id]||[]).length)for(const e of g.ents)if(e.type==='stone')set.add(e.id);
  let relit=false;
- for(const e of g.ents)if(e.type==='stone'){if(e.lit)set.add(e.id);else if(set.has(e.id)){e.lit=true;relit=true;}}
+ const fresh=freshStakes(g);   // (7.316) stakes that reset on death: lighting one then dying would skip the room
+ for(const id of fresh)set.delete(id);
+ for(const e of g.ents)if(e.type==='stone'){if(fresh.has(e.id))continue;if(e.lit)set.add(e.id);else if(set.has(e.id)){e.lit=true;relit=true;}}
  if(relit||set.size){const stones=g.ents.filter(e=>e.type==='stone');if(stones.length&&stones.every(e=>e.lit))for(const e of g.ents)if(e.type==='gate'&&!e.open){e.open=true;e.t=99;}}
  g.solvedBefore=!!(st.trialProgress?st.trialSolved?.has(g.room.id):st.atlas?.state.solved[g.room.id]);
  if(g.solvedBefore)for(const e of g.ents){
@@ -685,6 +707,40 @@ function questOf(id){return st.world.quests.find(q=>q.id===id);}
 function questFrom(roomId){return st.world.quests.find(q=>q.from===roomId&&q.sections.length);}
 function bearingsHeld(g,q){return (q.bearings||[]).filter(b=>{const s=st.world.sections.find(s=>{const d=defOf(s.room);return d.bearing===b;});return s&&hasShardIn(g,s.room);});}
 const questDone=q=>!!(q&&q.keepsake&&keepsakes()[q.keepsake.id]);
+/* (7.316) Hearts. Every optional route (a quest or a secret, the rooms you are lifted into) holds one heart. In a base
+   world the secret's heart (the route the white light lifts you into) is purple: holding it, with that world beaten,
+   opens the matching Fractured world (the two can happen at separate times). A heart is earned only by finishing every room of its route properly: each room left
+   by its own way out, having passed through the middle of its intended route (its waypoints). Rooms proven once stay
+   proven (save.proper). A quest's heart is its keepsake of 7.270; a secret's is save.secrets, as before. */
+const heartRoutes=w=>[...w.quests.filter(q=>q.sections.length&&!/^socket/.test(q.id)),...(w.secrets||[])];
+const isPurple=(w,br)=>!!(w&&w.n<=20&&(w.secrets||[]).includes(br));
+const heartTaken=(w,br)=>w.quests.includes(br)?questDone(br):!!(save.secrets||{})[br.id];
+const PURPLE='#b77cff';
+function worldBeaten(n){return !!(save.cleared[n]||st?.atlas?.complete?.(n));}
+function purpleRoute(n){const w=CL().world(n);return w?(w.secrets||[]).find(x=>x.sections.length)||null:null;}
+function purpleHeld(n){const x=purpleRoute(n);return !!(x&&(save.secrets||{})[x.id]);}
+function fracturedOpen(n){
+ if(n<=20)return true;if(n>40)return !!root.BladefallClimbFinale?.open();
+ return !!root.BladefallClimbFinale?.unlockedAll?.()||purpleHeld(n-20)&&worldBeaten(n-20);
+}
+function fracturedLockedWhy(n){const b=CL().world(n-20)?.name||'its base world';
+ return purpleHeld(n-20)?`Finish ${b} to open its Fractured world.`:`Find the purple heart in ${b} (an optional route), and finish ${b}, to open this world.`;}
+// the middle of a room's intended route: two points it passes, at about a third and two thirds of the way
+function waypoints(def){
+ const key='way:'+def.id;if(st.dispCache.has(key))return st.dispCache.get(key);
+ const path=def.passage||def.connector?null:routePath(def),out=path&&path.length>=30?[.35,.65].map(f=>path[Math.floor(path.length*f)]):[];
+ st.dispCache.set(key,out);return out;
+}
+function updateProof(g){
+ const pl=sectionOf(g);if(!pl||!pl.branch)return;const id=g.room.id;
+ if(!st.way||st.way.room!==id||st.way.deaths!==g.deaths)st.way={room:id,deaths:g.deaths,hit:new Set()};
+ const p=g.p;if(p.state==='dead'||st.view.replay)return;const x=p.x+4,y=uprightY(g)+11;
+ waypoints(g.room.def).forEach((q,i)=>{if(Math.abs(q.x-x)<=28&&Math.abs(q.y-y)<=28)st.way.hit.add(i);});
+}
+const roomProper=g=>!!(st.way&&st.way.room===g.room.id&&st.way.deaths===g.deaths&&st.way.hit.size>=waypoints(g.room.def).length);
+const routeRooms=br=>br.sections.filter(s=>!s.passage&&!defOf(s.room)?.connector&&!defOf(s.room)?.passage).map(s=>s.room);
+function routeProven(g,br){return routeRooms(br).every(r=>(save.proper||{})[r]||r===g.room.id&&roomProper(g));}
+function markProper(g){if(!roomProper(g))return;save.proper=save.proper||{};if(!save.proper[g.room.id]){save.proper[g.room.id]=1;store(SAVE,save);}}
 /* (7.277) A Fractured world's errand is an echo: only someone holding the base quest's keepsake can enter it (Room by
    Room's rule, q.needs). Its door, its side way and its way back's opening stay sealed until then. */
 const sealedQuest=q=>!!(q&&q.needs&&!keepsakes()[q.needs]);
@@ -698,15 +754,15 @@ function drawEchoSeals(b,g,t){
  for(const ret of d.returns||[]){const q=st.world.quests.find(x=>x.id===ret.from);if(!sealedQuest(q))continue;const e=ret.edge||'up';
   ret.cols.forEach((v,i)=>e==='up'?mark(v,0,i):mark(e==='left'?0:rm.cols-1,v,i));}
 }
-function grant(q){if(q&&q.keepsake&&grantKeepsake(q.keepsake.id)){announce(`Keepsake · ${q.keepsake.name} · Fractured portal opened`,240);openFracturedPortal();}}
+function grant(q){if(!q||!q.keepsake||!grantKeepsake(q.keepsake.id))return;root.BladefallPlaytest?.collectHeart(q.id);announce(`♥ Heart · ${q.title||'an errand'}`,240);}
 function openFracturedPortal(){
  if(!st||st.world.n>20)return;const g=st.view.g,to=st.world.n+20;
- root.BladefallPlaytest?.unlock('survival',to);save.riftPortals=save.riftPortals||{};
+ if(fracturedOpen(to))root.BladefallPlaytest?.unlock('survival',to);save.riftPortals=save.riftPortals||{};
  save.riftPortals[st.world.n]={world:st.world.n,room:g.room.id,x:g.p.x,y:g.p.y,to};store(SAVE,save);st.riftCooldown=45;
 }
 function riftPortal(){
  if(st.world.n>40)return null;   // (7.309) the finale's worlds have no base twin
- if(st.world.n<=20)return save.riftPortals?.[st.world.n]||null;
+ if(st.world.n<=20)return fracturedOpen(st.world.n+20)?save.riftPortals?.[st.world.n]||null:null;   // (7.316) the portal opens once the world is beaten too
  const w=st.world,g=st.view.g;if(g.room.id!==w.atlasStart)return null;
  return {world:w.n,room:g.room.id,x:g.room.spawn.x+20,y:g.room.spawn.y,to:w.n-20,returning:true};
 }
@@ -735,6 +791,7 @@ PV.exit=function(view,nextRoom){
  }
  if(root.BladefallClimbSession?.complete(d,()=>PV.exit(view,nextRoom)))return true;
  if(pl.branch){
+  if(!d.passage&&!d.connector)markProper(g);
   const cur=pl.chain[k],next=pl.chain[k+1];
   // stepping from the branch's last room into its way back: the reward is yours
   if(!cur.passage&&(!next||next.passage)&&st.branchVia!=='back')claimBranch(g,pl.branch);
@@ -748,7 +805,8 @@ PV.exit=function(view,nextRoom){
   const opened=st.atlas.solve(g.room.id);
   store('bladefall.climb.atlas.v1',st.atlas.snapshot());
   if(opened.length)announce('Road opened · '+st.atlas.routes(st.world.n).filter(l=>opened.includes(l.id)).map(l=>CL().world(l.to).name).join(' / '),240);
-  if(g.room.id===st.world.atlasEnd&&worldClearReady()){save.cleared[st.world.n]=true;store(SAVE,save);if(st.world.n===9)announce('The inner ascent is open · the upper crown lies ahead',360);}
+  if(g.room.id===st.world.atlasEnd&&worldClearReady()){const was=!!save.cleared[st.world.n];save.cleared[st.world.n]=true;store(SAVE,save);
+   if(!was&&st.world.n<=20&&purpleHeld(st.world.n)){root.BladefallPlaytest?.unlock('survival',st.world.n+20);announce(`${CL().world(st.world.n+20)?.name||'Its Fractured world'} is open · play it from the map`,300);}if(st.world.n===9)announce('The inner ascent is open · the upper crown lies ahead',360);}
  }
  if(g.room.id===st.world.atlasEnd&&!worldClearReady()){root.BladefallClimbSession?.invalidate('unfinished rooms');announce('Finish your remaining rooms to complete this world. Your partner’s progress stays separate.',240);}
  if(g.room.id===st.world.atlasEnd&&worldClearReady()&&!st.completionOffered&&root.BladefallPlaytest){
@@ -797,13 +855,14 @@ function rewardSpots(){
  st.dispCache.set(key,out);return out;
 }
 const rewardTaken=sp=>sp.kind==='quest'?questDone(sp.br):!!(save.secrets||{})[sp.br.id];
+const heartCol=(w,br)=>isPurple(w,br)?PURPLE:w.quests.includes(br)?'#ff9fc8':heartOf(w).col;
 function touchReward(g,p){
  for(const sp of rewardSpots()){
   if(sp.room!==g.room.id||(rewardTaken(sp)&&(sp.kind!=='secret'||root.BladefallPlaytest?.hasHeart(sp.br.id))))continue;
   if(Math.abs(p.x+p.w/2-sp.x)>9||Math.abs(uprightY(g)+p.h/2-sp.y)>11)continue;   // (rewards sit the right way up, 7.280)
   if(st.branchVia==='back'){if(!st.sealedSaid){st.sealedSaid=true;announce('Sealed · it is earned from the door',160);}continue;}
   claimBranch(g,{kind:sp.kind,obj:sp.br});
-  st.burst={x:sp.x,y:sp.y,t:30,col:sp.kind==='secret'?heartOf(st.world).col:'#e9c47a',room:g.room.id};
+  if(rewardTaken(sp))st.burst={x:sp.x,y:sp.y,t:30,col:heartCol(st.world,sp.br),room:g.room.id};
  }
 }
 function drawReward(b,roomId,t){
@@ -811,11 +870,9 @@ function drawReward(b,roomId,t){
   if(sp.room!==roomId)continue;const taken=rewardTaken(sp),bob=Math.round(Math.sin(t/14)*1.5),x=sp.x,y=sp.y+bob;
   b.save();b.globalAlpha=taken?.25:1;
   if(!taken){const gl=b.createRadialGradient(x,y,1,x,y,12);gl.addColorStop(0,'rgba(255,240,200,.45)');gl.addColorStop(1,'rgba(255,240,200,0)');b.fillStyle=gl;b.fillRect(x-12,y-12,24,24);}
-  if(sp.kind==='secret'){b.fillStyle=heartOf(st.world).col;
+  {b.fillStyle=heartCol(st.world,sp.br);   // (7.316) every route's reward is a heart; the base quest's is purple
    for(const [dx,dy,w] of [[-4,-3,3],[1,-3,3],[-5,-2,10],[-5,-1,10],[-4,0,8],[-3,1,6],[-2,2,4],[-1,3,2]])b.fillRect(x+dx,y+dy,w,1);   // a pixel heart
    b.fillStyle='#ffffff';b.fillRect(x-3,y-2,1,1);}
-  else{b.fillStyle='#e9c47a';for(const [dx,dy,w] of [[-1,-4,2],[-2,-3,4],[-3,-2,6],[-4,-1,8],[-4,0,8],[-3,1,6],[-2,2,4],[-1,3,2]])b.fillRect(x+dx,y+dy,w,1);   // a keepsake gem
-   b.fillStyle='#fff6d8';b.fillRect(x-2,y-2,1,2);}
   if(st.branchVia==='back'&&!taken&&st.view.g.room.id===roomId){b.strokeStyle='rgba(200,220,255,.7)';b.beginPath();b.arc(x,y,8,0,6.283);b.stroke();}
   b.restore();
  }
@@ -911,7 +968,7 @@ const rgba=(hex,a)=>{const n=parseInt(hex.slice(1),16);return `rgba(${n>>16&255}
 function drawDoorBeams(b,def,rm,t,world=st.world){
  for(const dr of def.doors||[]){
   const br=[...world.quests,...(world.secrets||[])].find(br=>br.id===dr.to);if(!br?.sections.length||sealedQuest(br))continue;
-  const quest=world.quests.includes(br),gate=quest&&/^socket/.test(br.id),col=gate?'#cfe6ff':quest?'#e9c47a':heartOf(world).col;
+  const quest=world.quests.includes(br),gate=quest&&/^socket/.test(br.id),col=gate?'#cfe6ff':isPurple(world,br)?PURPLE:quest?'#ffb3cf':heartOf(world).col;
   const taken=!gate&&(quest?questDone(br):!!(save.secrets||{})[br.id]),a=(taken?.45:1)*(.85+.15*Math.sin(t/20));
   let r=0;while(r<rm.rows&&dr.cols.every(c=>rm.grid[r*rm.cols+c]!==C().SOLID))r++;   // down through the opening to the floor
   const x0=dr.cols[0]*TILE,w=dr.cols.length*TILE,y1=Math.max(24,r*TILE);
@@ -983,10 +1040,14 @@ function settleInside(g){
  if(ex==='down'&&p.y>=RH-2-p.h)p.y=RH-p.h-3;else if(ex==='right'&&p.x>=RW-p.w-1)p.x=RW-p.w-3;else if(ex==='left'&&p.x<=1)p.x=2;
 }
 function claimBranch(g,br){
+ if(!routeProven(g,br.obj)){if(st.provenSaid!==br.obj.id){st.provenSaid=br.obj.id;announce('The heart stays · finish every room of this route by its own way',220);}return;}
  if(br.kind==='quest'){const q=br.obj,took=q.sections.some(s=>hasShardIn(g,s.room))||!q.sections.some(s=>{const d=defOf(s.room);return d.map.join('').includes('*');});
   if(took)grant(q);else announce('Something was left behind in there…',150);}
  else{const x=br.obj;root.BladefallPlaytest?.collectHeart(x.id);if(!save.secrets)save.secrets={};
-  if(!save.secrets[x.id]){save.secrets[x.id]=true;store(SAVE,save);announce(`♥ ${heartOf(st.world).name} · ${x.name}`,260);}}
+  if(!save.secrets[x.id]){save.secrets[x.id]=true;store(SAVE,save);
+   if(isPurple(st.world,x)){const f=CL().world(st.world.n+20)?.name||'the Fractured world';openFracturedPortal();
+    announce(worldBeaten(st.world.n)?`Purple heart · ${f} is open`:`Purple heart · finish ${st.world.name} to open ${f}`,300);}
+   else announce(`♥ ${heartOf(st.world).name} · ${x.name}`,260);}}
 }
 function endOfBranch(g){
  const p=g.p,room=g.room;room.exit='none';g.exited=false;
@@ -1064,8 +1125,8 @@ function worldDone(view){
  V().persist&&V().persist();
  save.cleared[w.n]=true;if(!save.best[w.n]||s.deaths<save.best[w.n].deaths)save.best[w.n]={deaths:s.deaths,frames:s.frames};store(SAVE,save);
  view.mode='card';view.replay=null;view.wipe=0;view.wipeTo=null;api.music(false);
- const rows=w.quests.filter(q=>q.keepsake&&(q.sections.length||q.bearings)).map(q=>`<tr><td>${q.title}</td><td>${questDone(q)?`◆ ${q.keepsake.name}`:'◇ not done (optional)'}</td></tr>`).join('')
-  +(w.secrets||[]).map(x=>`<tr><td>Secret · ${x.name}</td><td>${(save.secrets||{})[x.id]?`♥ ${heartOf(w).name}`:'♡ not found'}</td></tr>`).join('');
+ const rows=w.quests.filter(q=>q.keepsake&&(q.sections.length||q.bearings)).map(q=>`<tr><td>${q.title}</td><td>${questDone(q)?'♥ heart':'♡ not found (optional)'}</td></tr>`).join('')
+  +(w.secrets||[]).map(x=>`<tr><td>Secret · ${x.name}</td><td>${(save.secrets||{})[x.id]?(isPurple(w,x)?'♥ purple heart':`♥ ${heartOf(w).name}`):isPurple(w,x)?'♡ purple heart not found (it opens the Fractured world)':'♡ not found'}</td></tr>`).join('');
  const next=CL().world(w.n+1);
  api.showOverlay(`<div class="pcCard"><h1>${w.name}</h1><p class="pcSub">${w.outro||'The climb is done.'}</p>
  <table class="pcTable"><tr><td>Deaths</td><td>${s.deaths}</td></tr><tr><td>Time</td><td>${Math.floor(secs/60)}:${String(secs%60).padStart(2,'0')}</td></tr>${rows}</table>
@@ -1278,7 +1339,8 @@ PV.hud=function(ctx,ox,oy,scale,g,view){
  if(st.nearPort&&!st.nearPort.open){const info=root.BladefallClimbMap?.describeSocket?.(g.room.def,st.nearPort.socket,st.atlas);ctx.fillStyle='#c8c4b5';ctx.fillText(info?`Sealed · the road to ${info.toName} opens when you ${info.reasonLong}`:'The crossing is barred · explore the adjoining climbs',ox+10,oy+H0(scale,view)-fs*3.8);}
  if(root.BladefallClimbCoop)try{root.BladefallClimbCoop.hud(ctx,ox,oy,scale,fs,g,view);}catch(e){}
  // skips left in this world (N)
- {const info=skipInfo(),txt=info.allowed?(info.remaining===Infinity?`Skip · test mode · Pause for map`:`Skip costs ${info.cost} · ${info.remaining} left · Pause for map`):`${info.reason} · Pause for map`,tw=ctx.measureText(txt).width+fs*1.2,x0=ox+W0*scale-8;ctx.globalAlpha=.7;ctx.fillStyle='rgba(14,16,24,.6)';ctx.fillRect(x0-tw,oy+H0(scale,view)-fs*2.2,tw,fs*1.6);ctx.fillStyle='#cfd6e2';ctx.fillText(txt,x0-tw+fs*.6,oy+H0(scale,view)-fs*1.9);ctx.globalAlpha=1;}
+ if(!d.atlasJunction&&!d.atlasTransit){const info=skipInfo(),txt=info.allowed?(info.remaining===Infinity?`Skip · test mode · Pause for map`:`Skip costs ${info.cost} · ${info.remaining} left · Pause for map`):`${info.reason} · Pause for map`,tw=ctx.measureText(txt).width+fs*1.2,x0=ox+Math.round(scale*3);   // (7.316) top left, under the room's name: the hint line along the bottom stays clear
+  ctx.globalAlpha=.75;ctx.fillStyle='rgba(14,16,24,.6)';ctx.fillRect(x0-fs*.3,y0-fs*.3,tw,fs*1.6);ctx.fillStyle='#cfd6e2';ctx.fillText(txt,x0+fs*.3,y0);ctx.globalAlpha=1;y0+=fs*1.8;}
  for(const q of st.world.quests){
   let txt=null;const plq=sectionOf(g);if(plq&&plq.quest===q&&!st.quest)st.quest={id:q.id};
   if(q.bearings&&bearingsHeld(g,q).length){const held=bearingsHeld(g,q);txt=`${q.giver}: `+q.bearings.map(b=>(held.includes(b)?'◆':'◇')+' '+b).join('  ');}
@@ -1342,7 +1404,7 @@ function returnPassage(){
  const from=sectionOf(g),to=st.world.sections.find(s=>s.room===link.from);if(!from||!to)return false;
  st.view.paused=false;st.api.hideOverlay();carryInto(from,to);announce('Back through the passage · previous checkpoint',140);return true;
 }
-PV.climb={skipInfo,skipSection,returnPassage,useRiftPortal,riftPortal,portViews:visibleSockets,palette:palFor,state:()=>st,startWorld:n=>startWorld(n),menu:()=>worldMenu(),levels:()=>worldMenu(true),teleport:teleportTo,sectionOf:g=>sectionOf(g),defOf:id=>defOf(id),announce:(t,n)=>announce(t,n)};
+PV.climb={fracturedOpen:n=>fracturedOpen(n),skipInfo,skipSection,returnPassage,useRiftPortal,riftPortal,portViews:visibleSockets,palette:palFor,state:()=>st,startWorld:n=>startWorld(n),menu:()=>worldMenu(),levels:()=>worldMenu(true),teleport:teleportTo,sectionOf:g=>sectionOf(g),defOf:id=>defOf(id),announce:(t,n)=>announce(t,n)};
 root.BladefallPitchView=PV;
 /* (7.280) A gravity prism's flip keeps the picture still. The scarf, the dash's afterimages and the sparks live in the
    room's own coordinates, which the flip mirrors, so they are turned over with it (first in the list, so the flip's own

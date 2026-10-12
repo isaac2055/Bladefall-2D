@@ -1,3 +1,34 @@
+## 7.316.0: A heart in every optional route, purple hearts open the Fractured worlds, no death-warp stakes (2026-10-12)
+
+Isaac's notes and decisions:
+- **Hearts:** every optional route (each world's quest and secret, the rooms you are lifted into) holds one heart. That makes 81 hearts across worlds 1–40: 2 per world, 3 in world 21, socket gate rooms excluded. The earlier "rarities" idea is dropped.
+- **Earned properly:**
+  - every room of the route must be left by its own way out, having passed its two waypoints (35% and 65% of its intended route, within 28 px), since the last death;
+  - a room proven once stays proven (`save.proper`);
+  - touching the heart without that says "The heart stays · finish every room of this route by its own way";
+  - coming in the back way is still sealed.
+- **Purple hearts:**
+  - In base worlds 1–20, the secret's heart (the route the white light lifts you into) is purple. Its lift light and heart are drawn purple.
+  - Fractured world n+20 opens only once you hold that purple heart and have beaten world n; the two can happen at separate times (`fracturedOpen`).
+  - The rift portal and the leaderboard unlock follow the same rule.
+  - The old keepsake unlock is gone. Quest hearts are the keepsakes, so the Fractured errands' seals still need them.
+  - The map card shows the purple heart and what it opens, and nodes mark it (♥/♡ in purple).
+- **Death resets:** stakes no longer persist where that lets you death-warp.
+  - Imported Room Bank rooms reset all their stakes on death, as they were designed.
+  - Native rooms keep a stake lit unless the fire is 8+ open tiles nearer the exit than the stake (cl9-s9-wheel, cl21-fo21-gate).
+- **Skip line:** "Skip costs 1 · n left" now sits top left under the room name, clear of the bottom hint. It is hidden in junctions and passages.
+- **Leaderboard roster:** survival heart counts updated (2 or 3 per world); check-hearts.mjs updated to match.
+
+**Checks** (Chrome):
+- World 21 is closed on a fresh save, and still closed with the purple heart while world 1 is unbeaten.
+- Being set straight onto world 1's purple heart earns nothing; playing its room in full earns it.
+- A bank room's lit stake is unlit after a death.
+- The skip line sits top left in the Echo room; the purple beam renders.
+- The map reads 0/81 (some) and 81/81 (100% view).
+- finale-check, the co-op feature checks and check-hearts pass.
+
+Version 7.316.0, cache `bladefall-v484-purple-hearts`.
+
 ## 7.315.0: Hearts on the Survive map (2026-10-11)
 
 There is one heart per world: a secret, saved in `bladefall.climb.v1` `secrets`.

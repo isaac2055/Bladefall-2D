@@ -85,7 +85,7 @@ const ALL='bladefall.climb.unlock-all.v1';
 function unlockedAll(){try{return localStorage.getItem(ALL)==='1';}catch(e){return false;}}
 function setUnlockedAll(on){try{if(on)localStorage.setItem(ALL,'1');else localStorage.removeItem(ALL);}catch(e){}}
 function unlockAll(){setUnlockedAll(true);}
-function canPlay(n){return n<=20||(n>40?open():unlockedAll()||!!root.BladefallPlaytest?.unlocked('survival',n));}
+function canPlay(n){return n<=20||(n>40?open():unlockedAll()||!!PV()?.fracturedOpen?.(n));}   // (7.316) the purple heart plus the beaten base world
 function open(){
  if(forced()||unlockedAll())return true;const atlas=PV()?.state()?.atlas;if(!atlas)return false;
  for(let n=1;n<=40;n++)if(!atlas.complete(n))return false;return true;

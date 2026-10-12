@@ -7,7 +7,8 @@ const fast=sample('heart-fast-001',1000,0),full=sample('heart-full-001',2000,1),
 assert.equal(M.best([full,fast])[0].id,fast.id);
 assert.equal(M.best([fast,full,betterFull],{sort:'hearts'})[0].id,betterFull.id);
 assert.deepEqual(new Set(M.publicBest([fast,full,betterFull]).map(r=>r.id)),new Set([fast.id,betterFull.id]));
-for(const hearts of [-1,1.5,2,Infinity,'1'])assert.equal(M.valid({...full,hearts}),false);
+// (7.316) World 1 holds two hearts: a purple one (Rowan's route) and the secret's
+for(const hearts of [-1,1.5,3,Infinity,'1'])assert.equal(M.valid({...full,hearts}),false);
 const all=M.catalog.filter(w=>w.mode==='survival'&&w.campaign==='base').map(w=>sample('heart-world-'+w.id,2000,1,{world:w.id}));
 assert.equal(M.aggregate(all,'survival','base','hearts')[0].hearts,20);
 assert.equal(M.aggregate(all.slice(1),'survival','base','hearts').length,0);
@@ -23,8 +24,8 @@ for(const f of ['bladefall-playtest-worlds.js','bladefall-playtest-model.js','bl
 const P=ctx.BladefallPlaytest;
 assert.equal(P.state().data.archives[0].records[0].id,'previous-time');
 assert.equal(P.state().data.archives[0].feedback[0].id,'private-old-feedback');
-P.start('survival',1);assert.equal(P.collectHeart('secret-1'),true);assert.equal(P.collectHeart('secret-1'),false);assert.equal(P.collectHeart('secret-other'),false);
-assert.equal(P.state().run.hearts,1);P.death();assert.equal(P.state().run.hearts,1);
+P.start('survival',1);assert.equal(P.collectHeart('secret-1'),true);assert.equal(P.collectHeart('secret-1'),false);assert.equal(P.collectHeart('rowan'),true);assert.equal(P.collectHeart('secret-other'),false);
+assert.equal(P.state().run.hearts,2);P.death();assert.equal(P.state().run.hearts,2);
 P.start('survival',1,{force:true});assert.equal(P.state().run.hearts,0);assert.equal(P.collectHeart('secret-1'),true,'a fresh time trial can re-earn a previously owned heart');
 await P.complete({offer:false});assert.equal(P.collectHeart('secret-other'),false);
 P.start('explore',0);assert.equal(P.collectHeart('secret-1'),false);
