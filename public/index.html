@@ -360,7 +360,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-foundation-audit.js"></script>
 <script src="bladefall-cinematics.js"></script>
 <script src="bladefall-storage.js"></script>
-<script src="bladefall-touch-layout.js?v=7.308.2"></script>
+<script src="bladefall-touch-layout.js?v=7.318.0"></script>
 <script src="bladefall-input.js?v=7.304.0"></script>
 <script src="bladefall-content.js"></script>
 <script src="bladefall-presentation.js"></script>
@@ -446,7 +446,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.317.0';
+const VERSION='7.318.0';
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -2578,7 +2578,10 @@ const EXPLORE_TOUCH_IDS=['bJump','bAttack','bDodge','bPortal','bFlip','bCommand'
 const exploreTouchOriginal=new Map();
 function exploreTouchItems(){const w=innerWidth,h=innerHeight;return [{id:'stick',label:'Move / aim',x:104,y:h-104,r:52},...EXPLORE_TOUCH_IDS.map(id=>{const el=document.getElementById(id),st=getComputedStyle(el),r=(parseFloat(st.width)||56)/2;return {id,label:{bJump:'Jump',bAttack:'Attack',bDodge:'Dash',bPortal:'Portal',bFlip:'Flip',bCommand:'Companion',bTool:'Tool',bFlag:'Flag',pausebtn:'Pause'}[id],x:Number.isFinite(parseFloat(st.left))?parseFloat(st.left)+r:w-(parseFloat(st.right)||0)-r,y:Number.isFinite(parseFloat(st.top))?parseFloat(st.top)+r:h-(parseFloat(st.bottom)||0)-r,r};})];}
 function applyExploreTouchLayout(){const api=window.BladefallTouchLayout;if(!api)return;for(const id of [...EXPLORE_TOUCH_IDS,'joyzone']){const el=document.getElementById(id);if(!exploreTouchOriginal.has(id))exploreTouchOriginal.set(id,Object.fromEntries(['left','top','right','bottom','width','height'].map(k=>[k,el.style[k]])));else Object.assign(el.style,exploreTouchOriginal.get(id));}
- const prefs=api.config('explore');for(const item of exploreTouchItems()){if(!prefs[item.id])continue;const b=api.resolve('explore',item.id,item),el=document.getElementById(item.id==='stick'?'joyzone':item.id);Object.assign(el.style,{left:(b.x-b.r)+'px',top:(b.y-b.r)+'px',right:'auto',bottom:'auto',width:(b.r*2)+'px',height:(b.r*2)+'px'});}applySafeAreaOffsets();}
+ const prefs=api.config('explore');for(const item of exploreTouchItems()){if(!prefs[item.id])continue;const b=api.resolve('explore',item.id,item),el=document.getElementById(item.id==='stick'?'joyzone':item.id);Object.assign(el.style,{left:(b.x-b.r)+'px',top:(b.y-b.r)+'px',right:'auto',bottom:'auto',width:(b.r*2)+'px',height:(b.r*2)+'px'});}
+ // (7.318) a control hidden in the editor: gone (the pause button only turns invisible; it still pauses where it sits)
+ for(const id of [...EXPLORE_TOUCH_IDS,'joyzone']){const el=document.getElementById(id),off=!!api.hidden?.('explore',id==='joyzone'?'stick':id);if(id==='pausebtn'||id==='joyzone')el.style.opacity=off?'0':'';else el.style.visibility=off?'hidden':'';}
+ applySafeAreaOffsets();}
 addEventListener('resize',applyExploreTouchLayout);applyExploreTouchLayout();
 function clearExploreTouchInput(){for(const k of Object.keys(input))if(typeof input[k]==='boolean')input[k]=false;input.jx=input.jz=input.touchUpT=0;input.touchUpUsed=false;document.getElementById('joy').style.display='none';if(G?.p)G.p.jumpBuf=G.p.dashBuf=G.p.atkBuf=0;}
 function editExploreTouchLayout(){clearExploreTouchInput();window.BladefallTouchLayout?.open({mode:'explore',items:exploreTouchItems,onChange:applyExploreTouchLayout});}
@@ -24537,7 +24540,7 @@ function titleScreen(){
       <button class="bigbtn ghost" id="settingsBtn" style="flex:1;">⚙ Controls</button>
     </div>
     <button class="bigbtn ghost" id="boardsBtn">🏆 Leaderboards</button>
-    <a class="bigbtn ghost" id="apkBtn" href="https://github.com/isaac2055/Bladefall-2D/releases/download/v7.317.0/Bladefall-7.317.0.apk" style="display:block;text-align:center;box-sizing:border-box;text-decoration:none" download>Download APK</a>
+    <a class="bigbtn ghost" id="apkBtn" href="https://github.com/isaac2055/Bladefall-2D/releases/download/v7.318.0/Bladefall-7.318.0.apk" style="display:block;text-align:center;box-sizing:border-box;text-decoration:none" download>Download APK</a>
     <p class="hint">v${VERSION}</p></div>`);
   if(canContinue)document.getElementById('contBtn').onclick=()=>{if(continueSurvive)location.href='precision.html?pitch=climb&resume=1&mode='+(lastPlayed.mode==='review'?'review':'play');else continueRun();};
   document.getElementById('newBtn').onclick=openExploreMenu;
@@ -25953,7 +25956,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.317.0').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.318.0').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */

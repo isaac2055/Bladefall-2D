@@ -1,9 +1,9 @@
 /* Bladefall service worker — offline play + fast reloads once installed.
    Bump CACHE_NAME on a deploy where you want returning players to pick up
    the change immediately instead of waiting on the network-first refresh. */
-const CACHE_NAME = 'bladefall-v485-smooth-touch';
+const CACHE_NAME = 'bladefall-v486-clear-pure-coop';
 const CORE_ASSETS = [
-  './bladefall-touch-layout.js?v=7.308.2',
+  './bladefall-touch-layout.js?v=7.318.0',
   './bladefall-pcore-dev-superrooms-colossus.js?v=7.305.0',
   './bladefall-pcore-dev-superrooms-base-view.js?v=7.305.0',
   './bladefall-pcore-dev-superrooms-base.js?v=7.305.0',
@@ -121,7 +121,7 @@ const CORE_ASSETS = [
   './bladefall-pcore-tapes.js?v=7.253.0',
   './bladefall-pcore-survey.js?v=7.264.0',
   './bladefall-pcore-pitches.js?v=7.257.0',
-  './bladefall-pcore-touch.js?v=7.317.0',
+  './bladefall-pcore-touch.js?v=7.318.0',
   './bladefall-pcore-pitches-view.js?v=7.259.0',
   './bladefall-pcore-dev-spent-thorn.js?v=7.303.0',
   './bladefall-pcore-dev-spent-thorn-view.js?v=7.303.0',
@@ -151,11 +151,11 @@ const CORE_ASSETS = [
   './bladefall-climb-passage-tapes.js?v=7.273.40',
   './bladefall-climb-passage-art.js?v=7.280.0',
   './bladefall-climb-map.js?v=7.316.0',
-  './bladefall-climb-session.js?v=7.316.0',
-  './bladefall-climb-view.js?v=7.316.0',
+  './bladefall-climb-session.js?v=7.318.0',
+  './bladefall-climb-view.js?v=7.318.0',
   './bladefall-climb-geography.js?v=7.309.0',
   './bladefall-climb-geography-build.js?v=7.309.0',
-  './bladefall-climb-coop.js?v=7.311.0',
+  './bladefall-climb-coop.js?v=7.318.0',
   // rbr-regions:start (Room by Room region files, one per built region)
   './bladefall-rbr-01-outskirts.js?v=7.280.0',
   './bladefall-rbr-03-causeway.js?v=7.280.0',
@@ -239,7 +239,7 @@ const CORE_ASSETS = [
   './bladefall-rbr-39-f-path.js?v=7.280.0',
   './bladefall-rbr-40-f-sunspire.js?v=7.280.0',
   // rbr-regions:end
-  './bladefall-pcore-view.js?v=7.317.0',
+  './bladefall-pcore-view.js?v=7.318.0',
   './bladefall-pcore-combat.js?v=7.303.0',
   './bladefall-pcore-combat-rooms.js?v=7.250.0',
   './bladefall-pcore-combat-tapes.js?v=7.250.0',

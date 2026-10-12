@@ -15,6 +15,7 @@
  :root{--sat:env(safe-area-inset-top,0px);--sar:env(safe-area-inset-right,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px)}
  button,a,select,label,input{touch-action:manipulation}
  html.pcTouch #bfTrialClock{top:var(--pcTopRow,72px)!important}
+ html.pcClear #bfTrialClock{display:none!important}
  html.pcPocket,body.pcPocket{background:transparent!important}
  #pcCanvas{display:block;width:100vw;height:100vh;height:100dvh;image-rendering:pixelated;image-rendering:crisp-edges;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
  /* Touch (7.258): bigger targets, menus that swipe, and a nudge to turn the phone sideways. */
@@ -220,8 +221,8 @@ if(/[?&]pitch=rbr/.test(location.search)){const q=new URLSearchParams(location.s
  for(const f of more('rbrdev'))document.write('<script src="bladefall-pcore-dev-rbr-'+f+'.js?v=7.264.0"><\/script><script src="bladefall-pcore-dev-rbr-'+f+'-view.js?v=7.259.0" onerror="0"><\/script>');
  for(const f of [...BladefallRoomByRoom.FILES,...more('rbrfile').filter(f=>!BladefallRoomByRoom.FILES.includes(f))])document.write('<script src="bladefall-rbr-'+f+'.js?v=7.264.0"><\/script>');}</script>
 <script src="bladefall-pcore-survey.js?v=7.264.0"></script>
-<script src="bladefall-touch-layout.js?v=7.308.2"></script>
-<script src="bladefall-pcore-touch.js?v=7.317.0"></script>
+<script src="bladefall-touch-layout.js?v=7.318.0"></script>
+<script src="bladefall-pcore-touch.js?v=7.318.0"></script>
 <script src="bladefall-pcore-pitches.js?v=7.257.0"></script>
 <script src="bladefall-pcore-pitches-view.js?v=7.259.0"></script>
 <script src="bladefall-rbr-view.js?v=7.264.0"></script>
@@ -238,13 +239,13 @@ if(/[?&]pitch=rbr/.test(location.search)){const q=new URLSearchParams(location.s
 <script src="bladefall-climb-art.js?v=7.278.0"></script>
 <script src="bladefall-climb-passage-art.js?v=7.280.0"></script>
 <script src="bladefall-climb-map.js?v=7.316.0"></script>
-<script src="bladefall-climb-session.js?v=7.316.0"></script>
-<script src="bladefall-climb-view.js?v=7.316.0"></script>
-<script src="bladefall-climb-coop.js?v=7.311.0"></script>
+<script src="bladefall-climb-session.js?v=7.318.0"></script>
+<script src="bladefall-climb-view.js?v=7.318.0"></script>
+<script src="bladefall-climb-coop.js?v=7.318.0"></script>
 <script src="bladefall-room-bank-view.js?v=7.308.2"></script>
 <script src="bladefall-input.js?v=7.304.0"></script>
-<script src="bladefall-pcore-view.js?v=7.317.0"></script>
+<script src="bladefall-pcore-view.js?v=7.318.0"></script>
 <script>/* Offline play once installed (the main game registers the same worker). Not inside a frame. */
-if('serviceWorker' in navigator&&window.parent===window&&location.protocol!=='file:')addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=7.317.0').catch(()=>{}));</script>
+if('serviceWorker' in navigator&&window.parent===window&&location.protocol!=='file:')addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=7.318.0').catch(()=>{}));</script>
 </body>
 </html>

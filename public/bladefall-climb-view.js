@@ -71,9 +71,24 @@ function bounds(chain){
 }
 
 /* ---------------------------------------------------------------- start and the world list */
+/* (7.318) Where a room's entrance and its way out share a wall (Black Woods' Return Window, Ask the Tree Twice …),
+   walking back out of the entrance counted as leaving by the exit, past every gate. The exit is now its own opening
+   only (exitSpan): the open cells of that wall that are not the entrance's seam (the longest run of them). */
+function fixSharedExits(){
+ for(const w of CL().worlds)for(const d of w.rooms){
+  if(!d.seam?.length||d.exitSpan||!d.exit||d.exit==='none')continue;
+  const ex=d.exit,C0=d.cols||40,R0=d.rows||23,side=ex==='left'||ex==='right',onEdge=([c,r])=>ex==='left'?c===0:ex==='right'?c===C0-1:ex==='up'?r===0:r===R0-1;
+  if(!d.seam.some(onEdge))continue;
+  const seam=new Set(d.seam.filter(onEdge).map(([c,r])=>side?r:c)),runs=[];let run=null;
+  for(let i=0;i<(side?R0:C0);i++){const ch=ex==='left'?d.map[i][0]:ex==='right'?d.map[i][C0-1]:ex==='up'?d.map[0][i]:d.map[R0-1][i];
+   if(ch!=='#'&&ch!=='%'&&!seam.has(i)){if(run)run[1]=i;else runs.push(run=[i,i]);}else run=null;}
+  if(!runs.length)continue;const best=runs.reduce((a,b)=>b[1]-b[0]>a[1]-a[0]?b:a);d.exitSpan=[best[0],best[1]+1];
+ }
+}
 PV.start=function(q,api){
  if(q.get('pitch')!=='climb')return BASE.start(q,api);
  if(!q.has('legacygeography'))root.BladefallClimbGeographyBuild?.install();
+ fixSharedExits();
  const view=api.view;viewport(view);
  for(const w of CL().worlds){Object.assign(H.FOLK,w.folk||{});}
  st={api,view,world:null,chapter:-1,quest:null,cam:null,closed:new Set(),toast:null,slide:null,spoke:new Set(),gone:new Set(),walk:{},trail:[],dispCache:new Map()};
@@ -806,9 +821,11 @@ PV.exit=function(view,nextRoom){
   store('bladefall.climb.atlas.v1',st.atlas.snapshot());
   if(opened.length)announce('Road opened · '+st.atlas.routes(st.world.n).filter(l=>opened.includes(l.id)).map(l=>CL().world(l.to).name).join(' / '),240);
   if(g.room.id===st.world.atlasEnd&&worldClearReady()){const was=!!save.cleared[st.world.n];save.cleared[st.world.n]=true;store(SAVE,save);
+   try{root.BladefallClimbCoop?.worldDone?.({world:st.world.n,name:st.world.name,deaths:view.chapterStats.deaths,frames:view.chapterStats.frames});}catch(e){}
    if(!was&&st.world.n<=20&&purpleHeld(st.world.n)){root.BladefallPlaytest?.unlock('survival',st.world.n+20);announce(`${CL().world(st.world.n+20)?.name||'Its Fractured world'} is open · play it from the map`,300);}if(st.world.n===9)announce('The inner ascent is open · the upper crown lies ahead',360);}
  }
  if(g.room.id===st.world.atlasEnd&&!worldClearReady()){root.BladefallClimbSession?.invalidate('unfinished rooms');announce('Finish your remaining rooms to complete this world. Your partner’s progress stays separate.',240);}
+ if(g.room.id===st.world.atlasEnd&&worldClearReady()&&!st.completionOffered&&V().pureMode?.()){st.completionOffered=true;announce(`${st.world.name} · complete`,200);}   // (7.318) pure play: no screens
  if(g.room.id===st.world.atlasEnd&&worldClearReady()&&!st.completionOffered&&root.BladefallPlaytest){
   st.completionOffered=true;
   const w=st.world,next=CL().world(w.n+1),canNext=next&&(next.n<=20||root.BladefallPlaytest.unlocked('survival',next.n));
@@ -1019,7 +1036,7 @@ function skipSection({fromPause=false}={}){
  const next=pl.chain[chainIndex(pl,g.room.id)+1];
  const proceed=()=>{root.BladefallClimbSession?.invalidate('skip');
  if(!V().testMode?.())st.skips-=info.cost;st.trialSolved?.add(g.room.id);st.atlas?.solve(g.room.id);store('bladefall.climb.atlas.v1',st.atlas.snapshot());st.trail=[];C().enterRoom(g,roomIdx(next.room));st.enteredAt=g.frame;view.roomTimer=0;
- announce(V().testMode?.()?'Skipped · test mode':`Skipped · used ${info.cost} · ${st.skips} left in ${st.world.name}`,170);};
+ announce(V().testMode?.()?'Skipped · test mode':`Skipped · ${st.skips} skip${st.skips===1?'':'s'} left in ${st.world.name}`,170);};
  if(!root.BladefallClimbSession?.request(g.room.def,proceed,'skipped'))proceed();
  return true;
 }
@@ -1114,10 +1131,12 @@ PV.slideFrame=function(buf,W,Hh){
 
 /* ---------------------------------------------------------------- the end of a world */
 function worldClearReady(){
+ if(root.BladefallClimbCoop?.state?.()?.status==='on')return true;   // (7.318) co-op: teleports to your partner count
  const required=st.world.requiredMainRooms||[];
  return required.every(id=>st.trialSolved?.has(id)||st.resumeProgress&&st.atlas?.state.solved[id]);
 }
 function worldDone(view){
+ if(V().pureMode?.()){save.cleared[st.world.n]=true;store(SAVE,save);announce(`${st.world.name} · complete`,200);atlasMap();return;}   // (7.318) pure play
  if(!worldClearReady()){root.BladefallClimbSession?.invalidate('unfinished rooms');atlasMap();return;}
 
  const w=st.world,api=st.api,s=view.chapterStats,secs=Math.round(s.frames/60);
@@ -1339,8 +1358,7 @@ PV.hud=function(ctx,ox,oy,scale,g,view){
  if(st.nearPort&&!st.nearPort.open){const info=root.BladefallClimbMap?.describeSocket?.(g.room.def,st.nearPort.socket,st.atlas);ctx.fillStyle='#c8c4b5';ctx.fillText(info?`Sealed · the road to ${info.toName} opens when you ${info.reasonLong}`:'The crossing is barred · explore the adjoining climbs',ox+10,oy+H0(scale,view)-fs*3.8);}
  if(root.BladefallClimbCoop)try{root.BladefallClimbCoop.hud(ctx,ox,oy,scale,fs,g,view);}catch(e){}
  // skips left in this world (N)
- if(!d.atlasJunction&&!d.atlasTransit){const info=skipInfo(),txt=info.allowed?(info.remaining===Infinity?`Skip · test mode · Pause for map`:`Skip costs ${info.cost} · ${info.remaining} left · Pause for map`):`${info.reason} · Pause for map`,tw=ctx.measureText(txt).width+fs*1.2,x0=ox+Math.round(scale*3);   // (7.316) top left, under the room's name: the hint line along the bottom stays clear
-  ctx.globalAlpha=.75;ctx.fillStyle='rgba(14,16,24,.6)';ctx.fillRect(x0-fs*.3,y0-fs*.3,tw,fs*1.6);ctx.fillStyle='#cfd6e2';ctx.fillText(txt,x0+fs*.3,y0);ctx.globalAlpha=1;y0+=fs*1.8;}
+ // (7.318) no standing skip line: using a skip (or trying to) says what it cost, or why not
  for(const q of st.world.quests){
   let txt=null;const plq=sectionOf(g);if(plq&&plq.quest===q&&!st.quest)st.quest={id:q.id};
   if(q.bearings&&bearingsHeld(g,q).length){const held=bearingsHeld(g,q);txt=`${q.giver}: `+q.bearings.map(b=>(held.includes(b)?'◆':'◇')+' '+b).join('  ');}
@@ -1387,7 +1405,8 @@ function teleportTo(roomId,wx,wy){
  const previous=st.world.n;st.world=target;st.chapter=R().chapters.indexOf(target.chapter);view.chapter=st.chapter;
  C().enterRoom(g,roomIdx(roomId));keepProgress(g);syncWalkSeams(g);
  // Watching a partner never grants their solved devices or skips the destination's challenge.
- const earned=st.trialSolved?.has(roomId)||st.resumeProgress&&st.atlas?.state.solved[roomId];
+ // (7.318) in co-op you always arrive beside your partner (a teleport is a skip you chose); earned rooms keep working the same alone
+ const earned=root.BladefallClimbCoop?.state?.()?.status==='on'||st.trialSolved?.has(roomId)||st.resumeProgress&&st.atlas?.state.solved[roomId];
  if(earned)CL().carry(C(),g,{x:wx,y:wy,vx:0,vy:0,facing:g.p.facing,dashes:g.p.maxDashes||1,stamina:110},{x:0,y:0},{x:sec.x*TILE,y:sec.y*TILE});
  else announce('Joined at your own checkpoint · clear this room yourself',180);
  root.BladefallClimbSession?.invalidate('co-op teleport');

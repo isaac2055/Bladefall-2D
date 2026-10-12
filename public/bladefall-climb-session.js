@@ -1,7 +1,7 @@
 /* Survive playtest ratings and local, per-world time trials. */
 (function(root){
 'use strict';
-const KEY='bladescent.reviews.v1',TIMES='bladescent.times.v1',BUILD='7.316.0';
+const KEY='bladescent.reviews.v1',TIMES='bladescent.times.v1',BUILD='7.318.0';
 const read=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key))||fallback;}catch{return fallback;}};
 const write=(key,value)=>localStorage.setItem(key,JSON.stringify(value));
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -20,7 +20,7 @@ function init(state,params){st=state;config=state.sessionConfig||{};mode=params.
  // Typing a review must never move the knight, skip a room, or activate menu shortcuts.
  root.addEventListener('keydown',e=>{if(dialog.open)e.stopImmediatePropagation();},true);
  root.addEventListener('keyup',e=>{if(dialog.open)e.stopImmediatePropagation();},true);
- if(campaign()){bar.innerHTML='<strong>Survival</strong><span id="bsClock" hidden></span><button id="bsTimes">Leaderboards</button>';if(mode==='review')root.BladefallPlaytest?.setFeedback(true);mode='play';}
+ if(campaign()){bar.innerHTML='<strong>Survival</strong><span id="bsClock" hidden></span><button id="bsTimes">Leaderboards</button>';bar.style.display='none';/* (7.318) no bar over Survive: leaderboards live on the map */if(mode==='review')root.BladefallPlaytest?.setFeedback(true);mode='play';}
  bar.querySelector('#bsExport')?.addEventListener('click',exportReviews);
  bar.querySelector('#bsRate')?.addEventListener('click',()=>rate(st.view.g?.room.def,()=>{},'incomplete'));
  bar.querySelector('#bsTimes')?.addEventListener('click',()=>campaign()?root.BladefallPlaytest?.boards('survival'):times());

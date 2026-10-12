@@ -32,6 +32,8 @@ function onMessage(m){
   refreshMenu();return;
  }
  if(m.t==='s'){CO.remote={...m,at:Date.now()};if(CO.status!=='on'){CO.status='on';refreshMenu();}}
+ if(m.t==='hit')bonked(m);
+ if(m.t==='done'){CO.theirs=CO.theirs||{};CO.theirs[m.world]=m;compare(m.world);}
 }
 function loadPeer(){
  if(root.Peer)return Promise.resolve();
@@ -82,7 +84,7 @@ CO.menuHtml=function(){
   :s==='starting'?`<p class="pcSub">Starting…</p>`
   :s==='waiting'&&CO.role==='host'?`<p class="pcSub">Your code: <b style="letter-spacing:.2em;color:#ffd98a">${code}</b> · waiting for your friend to join</p>`
   :s==='waiting'?`<p class="pcSub">Joining ${code}…</p>`
-  :s==='on'?`<p class="pcSub">Playing together${code&&code!=='LOCAL'?' · '+code:''}. Race at your own pace. Hold <b>T</b> to join your partner’s room at your own checkpoint.</p>`
+  :s==='on'?`<p class="pcSub">Playing together${code&&code!=='LOCAL'?' · '+code:''}. Race at your own pace. Hold <b>T</b> (or <b>P2</b> on a phone) to appear beside your partner: a teleport counts as a skip. Your blade can bonk them.</p>`
   :s==='lost'?`<p class="pcSub">Your partner left.</p>`
   :`<p class="pcSub">${CO.err||'Something went wrong.'}</p>`;
  return `<div class="pcCard" id="coPanel" style="margin-top:.6em"><h2 style="margin:.2em 0">Co-op</h2>
@@ -97,6 +99,27 @@ CO.bindMenu=function(){
  if($('coLeave'))$('coLeave').onclick=leave;
 };
 function refreshMenu(){const el=document.getElementById('coPanel');if(!el)return;el.outerHTML=CO.menuHtml();CO.bindMenu();}
+/* (7.318) A cut that lands on your partner's knight knocks them back with a flash (nobody dies), and when you have
+   both finished a world, its card compares your deaths and times. The card waits for the second of you to finish. */
+let lastCut=-1;
+function cutPartner(g){
+ const r=CO.remote,p=g.p;if(!r||!CO.shown||r.st==='dead'||!(p.strikeTimer>0)||lastCut===g.frame-1&&p.strikeTimer<5)return;if(p.strikeHit.has('coop-partner'))return;
+ const C=root.BladefallPrecisionCore,box=C.strikeBox(p);if(!C.overlap(...box,CO.shown.x,CO.shown.y,8,11))return;
+ p.strikeHit.add('coop-partner');lastCut=g.frame;send({t:'hit',dx:p.strikeDir.x||p.facing,dy:p.strikeDir.y||0});announce('Bonk!',50);
+}
+function bonked(m){const g=V()?.view?.g;if(!g||!local()||g.p.state==='dead')return;const p=g.p;
+ p.vx=(m.dx||0)*190;p.vy=Math.min(p.vy,m.dy>0?60:-120);p.forceMoveX=Math.sign(m.dx||0);p.forceMoveTimer=8;if(p.state==='climb')p.state='normal';g.freeze=Math.max(g.freeze,3);CO.bonk=12;announce('Your partner got you!',70);}
+const mine={};
+CO.worldDone=function(d){if(CO.status!=='on')return;mine[d.world]=d;send({t:'done',...d});compare(d.world);};
+function compare(n){const a=mine[n],b=CO.theirs?.[n];if(!a||!b||a.shown)return;a.shown=true;
+ const t=f=>{const s=Math.round(f/60);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');};
+ const line=`${a.name||'World '+n} · you ${a.deaths} deaths, ${t(a.frames)} · partner ${b.deaths} deaths, ${t(b.frames)}`;
+ const s=st();if(!s||V()?.pureMode?.()){announce(line,420);return;}
+ const view=s.view,was=view.paused;view.paused=true;
+ s.api.showOverlay(`<div class="pcCard"><h1>${a.name||'World '+n} · together</h1><table class="pcTable"><tr><td></td><td>Deaths</td><td>Time</td></tr><tr><td>You</td><td>${a.deaths}</td><td>${t(a.frames)}</td></tr><tr><td>Partner</td><td>${b.deaths}</td><td>${t(b.frames)}</td></tr></table>
+  <p class="pcSub">${a.deaths<b.deaths?'Fewer deaths than your partner.':a.deaths>b.deaths?'Your partner fell less often.':'Even on deaths.'} ${a.frames<b.frames?'You were quicker.':a.frames>b.frames?'Your partner was quicker.':''}</p><button class="pcBtn" id="coCmpOk" data-focus-first>Continue</button></div>`);
+ document.getElementById('coCmpOk').onclick=()=>{s.api.hideOverlay();view.paused=was;};
+}
 CO.worldStarted=function(n){if(CO.status!=='off')send({t:'world',world:n});};
 
 /* ---------------------------------------------------------------- hold T: to your partner */
@@ -105,6 +128,7 @@ addEventListener('keyup',e=>{if(e.key==='t'||e.key==='T'){CO.tDown=false;}});
 const CHARGE=36,FOLD=14;   // frames to hold, frames to fold into light
 CO.tick=function(g){
  const s=local(),r=CO.remote;
+ try{if(CO.status==='on')cutPartner(g);}catch(e){}
  // the fold: the knight is light for a moment, then stands beside his partner
  if(CO.tele){const T=CO.tele;T.t++;
   if(T.t===FOLD){const ok=P().climb.teleport(T.room,T.x,T.y);if(!ok){CO.tele=null;return false;}g=V().view.g;}
@@ -143,6 +167,7 @@ function partnerLocal(g,pl,r){
 const BODY='#3d6b5a',SCARF='#7ad1c2';
 CO.draw=function(b,g,pl){
  const s=local(),r=CO.remote,t=g.frame;
+ if(CO.bonk>0){CO.bonk--;const p=g.p;b.save();b.globalAlpha=CO.bonk/12;b.fillStyle='#ffffff';b.fillRect(p.x-1,p.y-1,p.w+2,p.h+2);b.restore();}   // (7.318) bonked
  // my charge: a ring that closes as T is held
  if(CO.holdT>0){const p=g.p,k=CO.holdT/CHARGE;b.save();b.strokeStyle=`rgba(122,209,194,${.4+.6*k})`;b.lineWidth=1;b.beginPath();b.arc(p.x+p.w/2,p.y+p.h/2,12-6*k,-Math.PI/2,-Math.PI/2+k*6.283);b.stroke();b.restore();}
  if(CO.tele){const p=g.p,T=CO.tele,k=T.t<FOLD?T.t/FOLD:1-(T.t-FOLD)/FOLD;b.save();b.globalAlpha=Math.max(0,k);

@@ -1,3 +1,26 @@
+## 7.318.0: Shared-wall exits, clear screen, pure play, co-op teleports count, bonks and a finish card (2026-10-12)
+
+- **Exits on the entrance wall** (Black Woods 6 and 11, and 47 more rooms). Where a room's entrance and exit share a wall, walking back out of the entrance counted as leaving by the exit, past every gate: a free skip. `fixSharedExits()` (climb view, at start) gives each such room an `exitSpan` covering only its own opening (the longest run of open, non-seam cells on that wall). Walking back now returns you to the previous section.
+- **Mobile climbing:** the stick-climb keeps hold until the core's climb hop at a wall's top, and doesn't re-grab during it, so you land on the ledge.
+- **Mobile buttons:**
+  - The jump button is off by default (migration v3); turn it on in Touch controls.
+  - The layout editor has **Hide / show** per control. A hidden action button is gone; hidden pause, retry and skip stay active, unseen. Explore's controls honour it too.
+  - **Clear screen** (Touch controls) draws no controls, HUD, labels or run clock; pause, retry and skip still work where they sit.
+- **Skip line removed:** a skip says what it cost (or why not) only when used. The centred "Survival | Leaderboards" bar is hidden (leaderboards stay on the map).
+- **Pure play mode** (Assist & options, Survive): no world-complete leaderboard dialog and no world card, just a short "World · complete" note. The Echo's choice and the Vesper ending still show.
+- **Co-op:**
+  - A world counts as finished at its end, whatever was teleported past.
+  - Teleporting (T / P2) always sets you beside your partner.
+  - Partners still cannot change each other's rooms (nothing is shared).
+  - A blade cut on your partner bonks them back with a flash (`t:'hit'`); nobody dies.
+  - When both of you have finished a world, a card compares deaths and times; it waits for the second finisher. In pure play mode it is a short note instead.
+
+**Checks:**
+- Chrome: F22 has exitSpan [17,20], and walking out of its entrance returns you to w2-kitchen unsolved; a stick-climb lands on b21's ledge; the bonk knocks the partner back (vx 190); the finish card appears only after both finish; jump button off.
+- All 327 joins pass in Chrome; the co-op feature checks and finale-check pass.
+
+Version 7.318.0, cache `bladefall-v486-clear-pure-coop`.
+
 ## 7.317.0: Smooth touch controls, a four-phase Echo, "Vesper" (2026-10-12)
 
 - **Vesper's first form** is labelled "VESPER" (was "THE CLOAKED MAN").

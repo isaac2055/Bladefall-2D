@@ -697,8 +697,10 @@ function render(){
  // Merge pitches: a slide between screens (Celeste's camera), drawn from the old room's last frame.
  const src=PV&&PV.slideFrame?PV.slideFrame(view.buf,W,H)||view.buf:view.buf;
  ctx.drawImage(src,ox,oy,W*scale,H*scale);
- if(!pocket)drawHud(ctx,ox,oy,scale,g);
- PV?.hud?.(ctx,ox,oy,scale,g,view);
+ const clear=!!TOUCH()?.clear?.();   // (7.318) a clear touch screen: no labels, counters or hints over the play
+ if(!pocket&&!clear)drawHud(ctx,ox,oy,scale,g);
+ if(!clear)PV?.hud?.(ctx,ox,oy,scale,g,view);
+ document.documentElement.classList.toggle('pcClear',clear);
  TOUCH()?.draw(ctx,dpr);
  // Review aid: ?inspect magnifies the area around the knight.
  if(view.inspect){const z=view.inspect,p=g.p,cw=Math.floor(sw/z/2),chh=Math.floor(sh/z/2);ctx.fillStyle='#000';ctx.fillRect(0,0,sw,sh);
@@ -821,12 +823,13 @@ function assistCard(back,{fromMenu=false}={}){
  <label class="pcOpt"><input type="checkbox" id="opShake" ${o.shake?'checked':''}> Screen shake</label>
  <label class="pcOpt"><input type="checkbox" id="opSound" ${o.sound?'checked':''}> Sound effects</label>
  <label class="pcOpt"><input type="checkbox" id="opMusic" ${o.music?'checked':''}> Music</label>
+ ${climb?`<label class="pcOpt"><input type="checkbox" id="opPure" ${o.pure?'checked':''}> Pure play mode · no screens when you finish a world (no leaderboards, no skip-ahead): just keep playing</label>`:''}
  ${reviewRow}
  ${finaleMap?`<label class="pcOpt"><input type="checkbox" id="opFinaleMap" ${F.preview()?'checked':''}> Show the full map (Vesper and your Echo)</label>`:''}
  <p class="pcSub" id="asNote" style="color:#ffd98a"></p>
  <button class="pcBtn" id="pcBack" data-back>Done</button></div>`);
  const $=id=>document.getElementById(id),note=t=>{$('asNote').textContent=t;};
- const upd=()=>{a.speed=+$('asSpeed').value;o.shake=$('opShake').checked;o.sound=$('opSound').checked;o.music=$('opMusic').checked;
+ const upd=()=>{a.speed=+$('asSpeed').value;o.shake=$('opShake').checked;o.sound=$('opSound').checked;o.music=$('opMusic').checked;if($('opPure'))o.pure=$('opPure').checked;
   if($('opReview'))root.BladefallPlaytest.setFeedback($('opReview').checked);if($('opClock'))root.BladefallPlaytest.setClock?.($('opClock').checked);
   if(finaleMap)F.setPreview($('opFinaleMap').checked);a.infiniteStamina=!!a.testMode;writeSave(save);if(view.g)view.g.assist.infiniteStamina=a.infiniteStamina;};
  overlay().querySelectorAll('input,select').forEach(el=>el.onchange=upd);
@@ -985,6 +988,6 @@ function drawOther(b,g2,pal,localCamera){
  drawEntities(b,g2,pal);root.BladefallPrecisionCombatView?.draw(b,g2);root.BladefallPrecisionFoesView?.draw(b,g2);root.BladefallPrecisionPortalsView?.draw(b,g2,view);
  for(const d of DV){d.draw?.(b,g2,view,pal);d.drawFront?.(b,g2,view,pal);}
 }
-root.BladefallPrecisionView={clearInput:()=>{keys.clear();latchHeld();},options:(back,o)=>assistCard(back,o),testMode:()=>!!save.assist.testMode,boot,view,startChapter,retryRoom,mainMenu,advance,pump,goRoom,persist,drawOther,drawStatic,palettes:PAL,drawKnight:drawKnightSprite};
+root.BladefallPrecisionView={clearInput:()=>{keys.clear();latchHeld();},options:(back,o)=>assistCard(back,o),testMode:()=>!!save.assist.testMode,pureMode:()=>!!save.options.pure,boot,view,startChapter,retryRoom,mainMenu,advance,pump,goRoom,persist,drawOther,drawStatic,palettes:PAL,drawKnight:drawKnightSprite};
 if(typeof document!=='undefined'){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();}
 })(typeof window!=='undefined'?window:globalThis);

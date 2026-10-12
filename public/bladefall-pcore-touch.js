@@ -50,7 +50,7 @@ const PRESETS={
  buttons:{jump:'button',dash:'button',grab:'button',strike:'button',parry:'button',portal:'button'},
 };
 const PRESET_NAMES={smooth:'Smooth: tap to jump, swipe to dash, climb with the stick',swipe:'Swipe dash + action buttons',gestures:'Gestures',mixed:'Gestures + buttons for blade, parry, portal',buttons:'Buttons only'};
-const DEFAULTS={preset:'smooth',map:{...PRESETS.smooth},jumpButton:true,hand:'right',stick:'floating',swipe:'medium',tapJump:'full',
+const DEFAULTS={preset:'smooth',map:{...PRESETS.smooth},jumpButton:false,clear:false,hand:'right',stick:'floating',swipe:'medium',tapJump:'full',
  haptics:true,opacity:.55,size:1,hints:true,fullscreen:true};
 function settings(){
  const s=api.save;s.touch=s.touch||{};
@@ -58,6 +58,8 @@ function settings(){
  if(!s.touch.dashPreferenceVersion){if(s.touch.preset==='buttons'&&!s.touch.map){s.touch.preset='swipe';}s.touch.dashPreferenceVersion=1;}
  // (7.317) everyone moves to Smooth once; any layout can still be chosen again in Touch controls
  if(s.touch.dashPreferenceVersion<2){s.touch.preset='smooth';delete s.touch.map;s.touch.dashPreferenceVersion=2;}
+ // (7.318) the jump button is off unless you turn it on (tap anywhere jumps)
+ if(s.touch.dashPreferenceVersion<3){s.touch.jumpButton=false;s.touch.dashPreferenceVersion=3;}
  const t=Object.assign({},DEFAULTS,s.touch);t.map=Object.assign({},PRESETS[t.preset]||DEFAULTS.map,s.touch.map||{});
  return t;
 }
@@ -108,8 +110,11 @@ function wantsDefer(){
 function autoClimb(){
  const g=game();if(!g||!g.p||g.p.carrying)return false;const L=layout(),dx=stick.x-stick.ox,dy=stick.y-stick.oy;if(Math.hypot(dx,dy)<=L.dead)return false;
  const side=Math.sign(dx),ang=Math.atan2(Math.abs(dy),Math.abs(dx))*180/Math.PI,p=g.p,Core=C();
+ // (7.318) at the top of a wall the climb hop carries him up and over: let it finish, so he stands on the ledge
+ if(p.state!=='climb'&&p.forceMoveTimer>0)return false;
  let wall=false;try{wall=!!side&&Core.solidAt(g,p.x+side*2,p.y,p.w,p.h-3);}catch(e){}
- if(p.state==='climb')return !(side&&!wall&&ang<70)&&(wall||ang>=70);
+ // clinging: hold on unless pushed away from the wall (or let go), so the climb hop at the top can carry him over
+ if(p.state==='climb')return !(side===-p.facing&&ang<70);
  return wall&&ang>=20&&ang<=80;
 }
 // (7.317) Which buttons a room needs: the keys its intended route presses (the carry button only where something
@@ -147,11 +152,13 @@ function layout(forEditor=false){
  const buttons=[];
  const contextual=t.preset==='smooth'||m.grab==='auto',need=contextual&&!forEditor?needs():null;
  const shown=a=>forEditor?(m[a]==='button'||a==='jump'&&t.jumpButton||a==='grab'&&m.grab==='auto'):a==='jump'?(m.jump==='button'||t.jumpButton):a==='dash'?m.dash==='button':a==='grab'&&m.grab==='auto'?need?.has('grab'):m[a]==='button'&&(!need||need.has(a));
- for(const a of Object.keys(spots))if(shown(a)){const [x,y,r]=spots[a];buttons.push(root.BladefallTouchLayout?.resolve('survival',a,{a,x:X(x*s),y:h-I.b-y*s,r:r*s},w,h)||{a,x:X(x*s),y:h-I.b-y*s,r:r*s});}
+ const TL=root.BladefallTouchLayout,gone=id=>!forEditor&&!!TL?.hidden?.('survival',id);
+ for(const a of Object.keys(spots))if(shown(a)&&!gone(a)){const [x,y,r]=spots[a];buttons.push(root.BladefallTouchLayout?.resolve('survival',a,{a,x:X(x*s),y:h-I.b-y*s,r:r*s},w,h)||{a,x:X(x*s),y:h-I.b-y*s,r:r*s});}
  const ui=24*s,top=I.t+30*s,pause={x:X(30*s),y:top,r:ui*.8,ui:'pause'},retry={x:X(78*s),y:top,r:ui*.8,ui:'retry'};
  const resolve=(id,b)=>root.BladefallTouchLayout?.resolve('survival',id,b,w,h)||b,stickBase=resolve('stick',{x:right?I.l+104*s:w-I.r-104*s,y:h-I.b-104*s,r:52*s});
  const extras=extraIds(forEditor).map((id,i)=>resolve(id,{x:X((126+i*48)*s),y:top,r:ui*.8,ui:id}));
- return {w,h,s,buttons,pause:resolve('pause',pause),retry:resolve('retry',retry),extras,stickBase,stickR:stickBase.r,dead:6*s,right};
+ const veil=b=>({...b,invisible:t.clear||gone(b.ui)});   // pause, retry and skip keep working, unseen
+ return {w,h,s,buttons,pause:veil(resolve('pause',pause)),retry:veil(resolve('retry',retry)),extras:extras.map(veil),stickBase,stickR:stickBase.r,dead:6*s,right};
 }
 const GLYPH={jump:'⤒',dash:'➤',grab:'✋',strike:'⚔',parry:'⛨',portal:'◎'};
 
@@ -305,6 +312,7 @@ function draw(ctx,dpr){
  if(!api||!active||api.overlayOpen())return;
  const view=api.view;if(!view.g||view.mode!=='play')return;
  const L=layout(),t=settings(),k=dpr,a=t.opacity;
+ if(t.clear)return;   // (7.318) a clear screen draws nothing; every control still answers where it sits
  // the run clock (a page element) sits under the top row of buttons, not over them
  {const below=Math.round(Math.max(L.pause.y+L.pause.r,L.retry.y+L.retry.r,...L.extras.map(b=>b.y+b.r*(b.ui==='skip'?1.9:1)))+8)+'px';
   if(document.documentElement.style.getPropertyValue('--pcTopRow')!==below)document.documentElement.style.setProperty('--pcTopRow',below);}
@@ -323,13 +331,13 @@ function draw(ctx,dpr){
   ctx.globalAlpha=Math.min(1,a*1.5);ctx.fillStyle='#f0e2c2';ctx.font=`${Math.round(b.r*.95*k)}px system-ui,sans-serif`;ctx.fillText(GLYPH[b.a],b.x*k,b.y*k+1*k);}
  // Pause and retry.
  ctx.globalAlpha=Math.min(1,a*1.3);
- for(const b of [L.pause,L.retry]){circle(b.x,b.y,b.r,'rgba(14,16,24,.55)','rgba(233,220,192,.45)');ctx.fillStyle='#e9dcc0';
+ for(const b of [L.pause,L.retry]){if(b.invisible)continue;circle(b.x,b.y,b.r,'rgba(14,16,24,.55)','rgba(233,220,192,.45)');ctx.fillStyle='#e9dcc0';
   if(b.ui==='pause'){ctx.fillRect((b.x-b.r*.32)*k,(b.y-b.r*.38)*k,b.r*.22*k,b.r*.76*k);ctx.fillRect((b.x+b.r*.1)*k,(b.y-b.r*.38)*k,b.r*.22*k,b.r*.76*k);}
   else{ctx.beginPath();ctx.arc(b.x*k,b.y*k,b.r*.42*k,-Math.PI*.35,Math.PI*1.35);ctx.strokeStyle='#e9dcc0';ctx.stroke();ctx.beginPath();const ax=b.x+b.r*.42*Math.cos(-Math.PI*.35),ay=b.y+b.r*.42*Math.sin(-Math.PI*.35);
    ctx.moveTo((ax+b.r*.22)*k,ay*k);ctx.lineTo((ax-b.r*.06)*k,(ay-b.r*.26)*k);ctx.lineTo((ax-b.r*.1)*k,(ay+b.r*.12)*k);ctx.closePath();ctx.fill();}}
  // Survive: skip (dim when this section cannot be skipped; the skips left under it) and go to your partner
  // (a ring fills while it is held, as holding T does)
- for(const b of L.extras){
+ for(const b of L.extras){if(b.invisible)continue;
   if(b.ui==='skip'){const info=climb()?.skipInfo?.()||{allowed:false,remaining:0};ctx.globalAlpha=Math.min(1,a*1.3)*(info.allowed?1:.45);
    circle(b.x,b.y,b.r,'rgba(14,16,24,.55)','rgba(233,220,192,.45)');ctx.fillStyle='#e9dcc0';const u=b.r*.34;
    for(const o of [-u*.95,0]){ctx.beginPath();ctx.moveTo((b.x+o-u*.45)*k,(b.y-u)*k);ctx.lineTo((b.x+o+u*.55)*k,b.y*k);ctx.lineTo((b.x+o-u*.45)*k,(b.y+u)*k);ctx.closePath();ctx.fill();}
@@ -374,7 +382,9 @@ function card(back){
  <label class="pcOpt pcTouchRow"><span>Hands</span><select id="tcHand">${opt('right','Stick left, gestures right',t.hand)}${opt('left','Stick right, gestures left',t.hand)}</select></label>
  <label class="pcOpt pcTouchRow"><span>Control size</span><select id="tcSize">${[.85,1,1.15,1.3].map(v=>opt(String(v),Math.round(v*100)+'%',String(t.size))).join('')}</select></label>
  <label class="pcOpt pcTouchRow"><span>Control opacity</span><select id="tcOpacity">${[.3,.55,.8].map(v=>opt(String(v),{.3:'Faint',.55:'Medium',.8:'Strong'}[v],String(t.opacity))).join('')}</select></label>
- <label class="pcOpt"><input type="checkbox" id="tcJumpBtn" ${t.jumpButton?'checked':''}> Show a jump button too (move and resize it with the button above)</label>
+ <label class="pcOpt"><input type="checkbox" id="tcJumpBtn" ${t.jumpButton?'checked':''}> Show a jump button (tap anywhere jumps anyway)</label>
+ <label class="pcOpt"><input type="checkbox" id="tcClear" ${t.clear?'checked':''}> Clear screen · hide every control and label (pause, retry and skip still work where they sit)</label>
+ <p class="pcSub">Any control can be moved, resized or hidden completely in “Move / resize touch controls”.</p>
  <label class="pcOpt"><input type="checkbox" id="tcHaptics" ${t.haptics?'checked':''}> Vibrate on dash, grab and death</label>
  <label class="pcOpt"><input type="checkbox" id="tcHints" ${t.hints?'checked':''}> Show the gestures for a moment in each new room</label>
  <label class="pcOpt"><input type="checkbox" id="tcFull" ${t.fullscreen?'checked':''}> Go full screen when play starts (in the browser)</label>
@@ -391,7 +401,7 @@ function card(back){
  o.querySelector('#tcPreset').onchange=e=>{const n=settings();if(PRESETS[e.target.value]){n.preset=e.target.value;n.map={...PRESETS[n.preset]};store(n);}card(back);};
  const bind=(id,key,fn=v=>v)=>{o.querySelector(id).onchange=e=>{const n=settings();n[key]=e.target.type==='checkbox'?e.target.checked:fn(e.target.value);store(n);};};
  bind('#tcJump','tapJump');bind('#tcSwipe','swipe');bind('#tcStick','stick');bind('#tcHand','hand');bind('#tcSize','size',Number);bind('#tcOpacity','opacity',Number);
- bind('#tcHaptics','haptics');bind('#tcJumpBtn','jumpButton');bind('#tcHints','hints');bind('#tcFull','fullscreen');
+ bind('#tcHaptics','haptics');bind('#tcJumpBtn','jumpButton');bind('#tcClear','clear');bind('#tcHints','hints');bind('#tcFull','fullscreen');
  o.querySelector('#tcReset').onclick=()=>{store({...DEFAULTS,map:{...DEFAULTS.map}});card(back);};
  if(api.controlsCard)o.querySelector('#tcKeys').onclick=()=>api.controlsCard(()=>card(back));
  o.querySelector('#tcFeedback').onchange=e=>root.BladefallPlaytest?.setFeedback(e.target.checked);
@@ -450,6 +460,6 @@ function init(a){
 /* Haptics for events the view sees. */
 function event(e){if(!active)return;if(e.type==='death')buzz(30);else if(e.type==='dash')buzz(8);}
 
-root.BladefallPrecisionTouch={init,read,draw,card,label,event,releaseAll,setActive,active:()=>active,settings,
+root.BladefallPrecisionTouch={clear:()=>!!(active&&api&&settings().clear),init,read,draw,card,label,event,releaseAll,setActive,active:()=>active,settings,
  layout, _debug:()=>({clock,ptrs:[...ptrs.entries()],stick,multi,pulses:pulses.slice(),holdTail:{...holdTail},gapUntil:{...gapUntil}})};
 })(typeof window!=='undefined'?window:globalThis);
