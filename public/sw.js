@@ -1,7 +1,7 @@
 /* Bladefall service worker — offline play + fast reloads once installed.
    Bump CACHE_NAME on a deploy where you want returning players to pick up
    the change immediately instead of waiting on the network-first refresh. */
-const CACHE_NAME = 'bladefall-v487-rewards-skins';
+const CACHE_NAME = 'bladefall-v488-menu';
 const CORE_ASSETS = [
   './bladefall-touch-layout.js?v=7.318.0',
   './bladefall-pcore-dev-superrooms-colossus.js?v=7.305.0',
@@ -17,7 +17,7 @@ const CORE_ASSETS = [
   './bladefall-climb-bank-passages.js?v=7.304.0',
   './bladefall-playtest-worlds.js?v=7.316.0',
   './bladefall-playtest-model.js?v=7.304.0',
-  './bladefall-playtest.js?v=7.314.0',
+  './bladefall-playtest.js?v=7.320.0',
   './',
   './index.html',
   './authoring.html',

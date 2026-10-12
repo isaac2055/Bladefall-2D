@@ -1,3 +1,16 @@
+## 7.320.0: Title menu tidy, co-op inside Explore, speedrun timer off by default (2026-10-12)
+
+- **Title menu:** Explore, Survive, then a big Leaderboards button (where Co-op was), Sound/Controls and the APK link.
+  - Explore's co-op moved into the Explore menu; Survive's co-op stays in Survive.
+  - The "gentler road / hard climb" labels are gone.
+  - Extras shows only in the offline app (`offlineApp()`: the appassets host or file:).
+- **Speedrun timer:** off by default in both modes (`BladefallPlaytest.clockShown()` true only when turned on).
+- **Skin candidates:** six for Isaac to choose from (not in the game yet), rendered at `scripts/climb/.cache/touch/skin-pool.png` by `skin-pool.mjs`.
+  - Glamorous: Gilded Sovereign, Starlit Regalia, Prism Paladin.
+  - Creative: The Haunt, Echo Self, Ember Wretch.
+
+Version 7.320.0, cache `bladefall-v488-menu`.
+
 ## 7.319.0: Perfect clears, plants and C-side unlocks, four skins, a Fractured map that grows, the dash's tale, gentler Explore (2026-10-12)
 
 New `public/bladefall-climb-rewards.js`.
