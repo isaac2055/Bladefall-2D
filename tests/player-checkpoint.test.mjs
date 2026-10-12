@@ -8,16 +8,17 @@ function setup(){
  const floor={type:'plat',x:100,w:400,y:0};
  const G={stageIndex:9,time:1,checkpointCharge:0,p:{x:100,y:0,w:26,onGround:true},obstacles:[floor,{type:'check',x:20}],coopSession:false};
  const meta={run:{},hardcore:false};const saves=[];
- const ctx=vm.createContext({G,meta,mode:'play',getFloor:()=>({y:0,o:floor}),toast(){},hudUpdate(){},persist(){},
+ const ctx=vm.createContext({G,meta,FLAG_MAX:3,mode:'play',getFloor:()=>({y:0,o:floor}),toast(){},hudUpdate(){},persist(){},
   captureBossCheckpoint:()=>null,activateRuntimeCheckpoint(id,position){G.p.ckX=position.x;G.p.ckY=position.y;saves.push({id,position,charge:G.checkpointCharge});return{checkpoint:{id,position}};}});
  for(const name of ['Check','removeAuthoredCheckpointFlags','restorePlayerCheckpointFlag','earnCheckpointCharge','placeEarnedCheckpoint'])vm.runInContext(fn(name),ctx);
  return {G,meta,floor,saves,run:code=>vm.runInContext(code,ctx)};
 }
-test('kills earn at most one charge; each successful placement spends it',()=>{
+test('kills bank flags up to three; each successful placement spends one (7.319)',()=>{
  const t=setup();assert.equal(t.run('placeEarnedCheckpoint()'),false);
- t.run('earnCheckpointCharge();earnCheckpointCharge();earnCheckpointCharge();');assert.equal(t.G.checkpointCharge,1);
- assert.equal(t.run('placeEarnedCheckpoint()'),true);assert.equal(t.G.checkpointCharge,0);assert.equal(t.saves[0].charge,0);
- assert.equal(t.run('placeEarnedCheckpoint()'),false);assert.equal(t.saves.length,1);
+ t.run('earnCheckpointCharge();earnCheckpointCharge();earnCheckpointCharge();earnCheckpointCharge();');assert.equal(t.G.checkpointCharge,3);
+ assert.equal(t.run('placeEarnedCheckpoint()'),true);assert.equal(t.G.checkpointCharge,2);assert.equal(t.saves[0].charge,2);
+ t.G.time++;assert.equal(t.run('placeEarnedCheckpoint()'),true);t.G.time++;assert.equal(t.run('placeEarnedCheckpoint()'),true);
+ assert.equal(t.G.checkpointCharge,0);assert.equal(t.run('placeEarnedCheckpoint()'),false);assert.equal(t.saves.length,3);
  t.G.p.x=200;t.G.time++;t.run('earnCheckpointCharge();placeEarnedCheckpoint();');
  assert.equal(t.G.obstacles.filter(o=>o.type==='check').length,1);assert.equal(t.G.p.ckX,200);
 });

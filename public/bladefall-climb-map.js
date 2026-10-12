@@ -329,16 +329,17 @@ function buildSvg(model){
  for(const fr of [false,true]){
   if(regions.some(n=>fr?n>20:n<=20)){
    const outer=OUTER.map(v=>corner(v,fr)),edge=fr?'#efe4ff':'#e4ffef',c=at(fr?[0,13]:[0,4.3]);
-   P.push(facet(outer,fr?'url(#cmV2)':'url(#cmG2)',bright?.1:.11,edge));
-   if(!bright)P.push(`<circle cx="${c[0]}" cy="${c[1]}" r="${2.6*SX}" fill="url(#${fr?'cmGlowV':'cmGlowG'})" opacity=".45"/>`);
-   FACETS.forEach(([ids,op],i)=>P.push(facet(ids.map(v=>corner(v,fr)),`url(#${fr?(i%2?'cmV1':'cmV2'):(i%2?'cmG1':'cmG2')})`,op*(bright?3.2:2.2),edge)));
+   const has=v=>Array.isArray(v)||v===19||regions.includes(fr?v+20:v),whole=OUTER.every(has);
+   if(whole)P.push(facet(outer,fr?'url(#cmV2)':'url(#cmG2)',bright?.1:.11,edge));
+   if(!bright&&whole)P.push(`<circle cx="${c[0]}" cy="${c[1]}" r="${2.6*SX}" fill="url(#${fr?'cmGlowV':'cmGlowG'})" opacity=".45"/>`);
+   FACETS.forEach(([ids,op],i)=>ids.every(has)&&P.push(facet(ids.map(v=>corner(v,fr)),`url(#${fr?(i%2?'cmV1':'cmV2'):(i%2?'cmG1':'cmG2')})`,op*(bright?3.2:2.2),edge)));
    // glints where the outer cuts meet
-   for(let i=0;i<outer.length;i+=2){const a=outer[i],b=outer[(i+1)%outer.length];if(!a||!b)continue;P.push(star((a[0]+b[0])/2,(a[1]+b[1])/2,bright?9:5,bright?.9:.4));}
+   if(whole)for(let i=0;i<outer.length;i+=2){const a=outer[i],b=outer[(i+1)%outer.length];if(!a||!b)continue;P.push(star((a[0]+b[0])/2,(a[1]+b[1])/2,bright?9:5,bright?.9:.4));}
   }
  }
  // the palace territories: one region each, the whole right flank
  for(const [n,t] of Object.entries(PALACE)){
-  if(!pos(+n))continue;
+  if(!pos(+n)||!regions.includes(+n))continue;
   const pts=[...t.outer,...t.inner.slice(1,-1).reverse()].map(at),sel=+n===selected;
   const color=+n>20?'#9a7be0':'#49c27a';
   P.push(`<polygon points="${pts.map(p=>p.join(',')).join(' ')}" fill="${color}" fill-opacity="${sel?.2:.11}" stroke="${color}" stroke-opacity=".6" stroke-width="1.6"/>`);
@@ -355,6 +356,7 @@ function buildSvg(model){
  const style={inner:['#efe4c2','#4b5262'],outer:['#6fd39a','#3d5a4b'],descent:['#f0cf7a','#5e5644'],crossing:['#b99cff','#4c4466']};
  const labels=[];
  for(const l of AT().links){
+  if(!regions.includes(l.a)||!regions.includes(l.b))continue;
   const pts=routeOf(l);if(!pts)continue;
   const open=!!atlas.state.open[l.id],g=groupOf(l),[on,off]=style[g],sel=l.a===selected||l.b===selected,mine=here?.link===l.id;
   const d=pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+','+p[1].toFixed(1)).join('');
@@ -421,7 +423,8 @@ function mount(host,opts={}){
  // (7.313) the checkbox shows the two crowns on the usual map; the five-press unlock-all shows the whole gem
  if(opts.preview)fin.open=true;
  if(opts.brilliant){fin.preview=true;fin.open=true;}
- const regions=[...Object.keys(AT().positions).map(Number),...(fin.open?[41,42]:[])].filter(n=>worldOf(n)).sort((a,b)=>a-b);
+ // (7.319) only the regions you have reached for: the Fractured emerald grows with its purple hearts (opts.shown)
+ const regions=[...Object.keys(AT().positions).map(Number),...(fin.open?[41,42]:[])].filter(n=>worldOf(n)&&(!opts.shown||opts.shown(n))).sort((a,b)=>a-b);
  const here=opts.current||null;
  const info={};
  for(const n of regions){
@@ -531,7 +534,7 @@ function mount(host,opts={}){
   const sealed=ms.filter(m=>!m.open).length;
   const hh=model.hearts?.[n],heartTxt=hh&&hh.total?`♥ ${hh.got}/${hh.total} heart${hh.total===1?'':'s'}`:'';
   chipbar.innerHTML=`<b>${n} · ${esc(w?.name||nameOf(n))}</b> <small>· ${esc(state)}${pr?` · ${pr.solved}/${pr.total} sections`:''}${heartTxt?' · '+heartTxt:''}${ms.length?` · ${ms.length-sealed} road${ms.length-sealed===1?'':'s'} open${sealed?`, ${sealed} sealed`:''}`:''}</small>`;
-  detail.innerHTML=`<h2>${n} · ${esc(w?.name||nameOf(n))}${chips}${hh&&hh.total?`<span class="cm-chip" style="border-color:#ff8fd0;color:#ffc2e6">${heartTxt}</span>`:''}</h2><div>${where}${hh&&hh.total?`<br>${hh.got>=hh.total?'Every heart in this world is found.':`${hh.total-hh.got} heart${hh.total-hh.got===1?'':'s'} still to earn here: one in each optional route, finished properly.`}`:''}${hh?.purple?`<br><span style="color:#c9a2ff">${hh.purple.got?'♥ Purple heart found':'♡ Purple heart not found'} · with this world beaten it opens ${esc(nameOf(hh.purple.opens))}.</span>`:''}</div>${groups.length?groups.map(g=>`<h3>${esc(g.name)} · ${esc(roleWords[g.role])}</h3><ul>${g.list.map(li).join('')}</ul>`).join(''):'<div><small>No roads leave this region yet.</small></div>'}`;
+  detail.innerHTML=`<h2>${n} · ${esc(w?.name||nameOf(n))}${chips}${hh&&hh.total?`<span class="cm-chip" style="border-color:#ff8fd0;color:#ffc2e6">${heartTxt}</span>`:''}</h2><div>${where}${hh&&hh.total?`<br>${hh.got>=hh.total?'Every heart in this world is found.':`${hh.total-hh.got} heart${hh.total-hh.got===1?'':'s'} still to earn here: one in each optional route, finished properly.`}`:''}${opts.extra?opts.extra(n):''}${hh?.purple?`<br><span style="color:#c9a2ff">${hh.purple.got?'♥ Purple heart found':'♡ Purple heart not found'} · with this world beaten it opens ${esc(nameOf(hh.purple.opens))}.</span>`:''}</div>${groups.length?groups.map(g=>`<h3>${esc(g.name)} · ${esc(roleWords[g.role])}</h3><ul>${g.list.map(li).join('')}</ul>`).join(''):'<div><small>No roads leave this region yet.</small></div>'}`;
   const play=host.querySelector('#cmPlayWorld');if(play){const locked=opts.canStart&&!opts.canStart(n);play.disabled=!!locked;play.textContent=locked?'Locked':'Play world';const why=locked?(opts.lockedWhy?.(n)||'Locked'):'';play.title=locked?why:'Play '+(w?.name||nameOf(n));play.setAttribute('aria-label',play.title);play.onclick=()=>opts.onStart(n);if(locked)detail.insertAdjacentHTML('beforeend',`<p class="cm-sealed">${esc(why)}</p>`);}
  }
  function select(n,pan=false){

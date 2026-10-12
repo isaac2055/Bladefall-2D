@@ -605,7 +605,9 @@ function drawBars(b,e,light,dark){
  px(b,e.x,e.y,e.w,1,light);px(b,e.x,e.y+e.h-1,e.w,1,light);
  for(let y=e.y+6;y<e.y+e.h-1;y+=10)px(b,e.x,y,e.w,1,light);
 }
-function scarfColor(p){if(p.dashFlash>0&&p.dashFlash%4<2)return '#ffffff';return p.dashes>0?'#ffb347':'#56708c';}
+// (7.319) a Survive skin, once earned and worn (bladefall-climb-rewards.js), dresses the knight
+const SKIN=()=>root.BladefallPitchView?.climb?.state?.()?root.BladefallClimbRewards?.skin?.():null;
+function scarfColor(p){if(p.dashFlash>0&&p.dashFlash%4<2)return '#ffffff';const s=SKIN();if(s)return root.BladefallClimbRewards.scarf(s.pal,p.dashes>0,view.g?.frame||0);return p.dashes>0?'#ffb347':'#56708c';}
 function drawKnight(b,g){
  const p=g.p;if(p.state==='dead')return;
  if(p.state==='respawn'){const k=p.respawnTimer/10;b.globalAlpha=1-k;}
@@ -618,7 +620,9 @@ function drawKnight(b,g){
  let pose=p.state==='climb'?'climb':p.state==='dash'?'dash':!p.onGround?(p.vy<0?'rise':'fall'):Math.abs(p.vx)>10?'run':'idle';
  const tired=p.stamina<20&&(p.state==='climb'||p.stamina<20&&g.frame%10<5);
  const body=tired&&g.frame%6<3?'#c05050':'#2d4a78';
- drawKnightSprite(b,p.x,p.y,p.facing,pose,body,scarf,view.anim.squash,view.anim.stretch,view.anim.run);
+ const skin=SKIN();
+ if(skin)root.BladefallClimbRewards.sprite(b,p.x,p.y,p.facing,pose,tired&&g.frame%6<3?{...skin.pal,body:'#c05050'}:skin.pal,p.dashes>0,g.frame,view.anim.squash,view.anim.stretch,view.anim.run);
+ else drawKnightSprite(b,p.x,p.y,p.facing,pose,body,scarf,view.anim.squash,view.anim.stretch,view.anim.run);
  // Blade strike arc
  if(p.strikeTimer>0){
   const d=p.strikeDir,k=p.strikeTimer/5;b.strokeStyle=`rgba(255,244,214,${.4+.6*k})`;b.lineWidth=2;b.beginPath();
@@ -825,7 +829,7 @@ function assistCard(back,{fromMenu=false}={}){
  <label class="pcOpt"><input type="checkbox" id="opMusic" ${o.music?'checked':''}> Music</label>
  ${climb?`<label class="pcOpt"><input type="checkbox" id="opPure" ${o.pure?'checked':''}> Pure play mode · no screens when you finish a world (no leaderboards, no skip-ahead): just keep playing</label>`:''}
  ${reviewRow}
- ${finaleMap?`<label class="pcOpt"><input type="checkbox" id="opFinaleMap" ${F.preview()?'checked':''}> Show the full map (Vesper and your Echo)</label>`:''}
+ ${finaleMap?`<label class="pcOpt"><input type="checkbox" id="opFinaleMap" ${F.preview()?'checked':''}> Show the full map (Vesper, your Echo and the whole Fractured emerald)</label>`:''}
  <p class="pcSub" id="asNote" style="color:#ffd98a"></p>
  <button class="pcBtn" id="pcBack" data-back>Done</button></div>`);
  const $=id=>document.getElementById(id),note=t=>{$('asNote').textContent=t;};

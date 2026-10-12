@@ -1,3 +1,35 @@
+## 7.319.0: Perfect clears, plants and C-side unlocks, four skins, a Fractured map that grows, the dash's tale, gentler Explore (2026-10-12)
+
+New `public/bladefall-climb-rewards.js`.
+- **Perfect clears.** A perfect clear is a world finished from its start with no deaths on its road. Optional routes don't count, and skips are allowed for now.
+  - A perfect base world gives its plant's bottom half; a perfect Fractured world gives the top half.
+  - With both halves, that world's C-side opens. The C-sides are not built: **docs/plans/c-sides.md** is the handoff for Codex.
+  - The 20 plants are listed there (Outskirts Trumpet: Trumpet Bulb / White Trumpet; Keep Mushroom: Mycelium / Fruiting Body; …).
+- **Skins**, worn from the world map's new Garden & skins card:
+  - the Ascendant: worlds 1–20;
+  - the Fractured: worlds 21–40;
+  - Heartbound: every heart plus Vesper;
+  - the Gardener: all 20 C-sides.
+  Locked skins are silhouettes; five presses give a glimpse, and a skin can be worn only once earned. Scarf, plume and trim carry the dash colour, so each looks different with and without a dash. The knight draws through `BladefallClimbRewards.sprite` while one is worn.
+- **The map grows.** At first only the Emerald Ascent shows. Each Fractured region appears once its purple heart is found (or its world is beaten). Its facets, roads and the palace band follow.
+  - "Show the full map" (Settings) now reveals the whole Fractured emerald as well as Vesper and your Echo.
+  - Each world card shows its plant half and C-side state.
+- **The dash's tale.** Entering a room without a dash from one with a dash: a ring, the dash light lifts off the knight in motes and settles as a small flame at the room's exit. Out of the room it streams back into him with a flash (`dashTale`/`drawTale`).
+- **Explore is the gentler road.**
+  - You start with 3 checkpoint flags, and each kill banks one back, up to 3 (`FLAG_MAX`). The HUD reads "FLAGS n/3"; the touch flag shows the count.
+  - Explore now sits above Survive in the title and co-op menus, labelled "the gentler road" / "the hard climb".
+
+**Checks:**
+- Chrome:
+  - the skin sheet renders (`scripts/climb/.cache/touch/skins-sheet.png`);
+  - a fresh map shows 20 regions and no Fractured ones;
+  - a perfect run of World 1 by its routes earned the Trumpet Bulb (road deaths 0);
+  - the dash tale plays leaving c3-camp into b39;
+  - Explore starts with 3/3 flags; the menu lists Explore first.
+- `tests/player-checkpoint.test.mjs` updated (5/5); finale-check and the co-op feature checks pass.
+
+Version 7.319.0, cache `bladefall-v487-rewards-skins`.
+
 ## 7.318.0: Shared-wall exits, clear screen, pure play, co-op teleports count, bonks and a finish card (2026-10-12)
 
 - **Exits on the entrance wall** (Black Woods 6 and 11, and 47 more rooms). Where a room's entrance and exit share a wall, walking back out of the entrance counted as leaving by the exit, past every gate: a free skip. `fixSharedExits()` (climb view, at start) gives each such room an `exitSpan` covering only its own opening (the longest run of open, non-seam cells on that wall). Walking back now returns you to the previous section.

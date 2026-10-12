@@ -1,7 +1,7 @@
 /* Bladefall service worker — offline play + fast reloads once installed.
    Bump CACHE_NAME on a deploy where you want returning players to pick up
    the change immediately instead of waiting on the network-first refresh. */
-const CACHE_NAME = 'bladefall-v486-clear-pure-coop';
+const CACHE_NAME = 'bladefall-v487-rewards-skins';
 const CORE_ASSETS = [
   './bladefall-touch-layout.js?v=7.318.0',
   './bladefall-pcore-dev-superrooms-colossus.js?v=7.305.0',
@@ -145,14 +145,15 @@ const CORE_ASSETS = [
   './bladefall-climb-worlds.js?v=7.308.2',
   './bladefall-climb-finale-tapes.js?v=7.317.0',
   './bladefall-climb-finale.js?v=7.317.0',
+  './bladefall-climb-rewards.js?v=7.319.0',
   './bladefall-climb-art.js?v=7.278.0',
   './bladefall-climb-atlas.js?v=7.304.0',
   './bladefall-climb-passages.js?v=7.308.2',
   './bladefall-climb-passage-tapes.js?v=7.273.40',
   './bladefall-climb-passage-art.js?v=7.280.0',
-  './bladefall-climb-map.js?v=7.316.0',
+  './bladefall-climb-map.js?v=7.319.0',
   './bladefall-climb-session.js?v=7.318.0',
-  './bladefall-climb-view.js?v=7.318.0',
+  './bladefall-climb-view.js?v=7.319.0',
   './bladefall-climb-geography.js?v=7.309.0',
   './bladefall-climb-geography-build.js?v=7.309.0',
   './bladefall-climb-coop.js?v=7.318.0',
@@ -239,7 +240,7 @@ const CORE_ASSETS = [
   './bladefall-rbr-39-f-path.js?v=7.280.0',
   './bladefall-rbr-40-f-sunspire.js?v=7.280.0',
   // rbr-regions:end
-  './bladefall-pcore-view.js?v=7.318.0',
+  './bladefall-pcore-view.js?v=7.319.0',
   './bladefall-pcore-combat.js?v=7.303.0',
   './bladefall-pcore-combat-rooms.js?v=7.250.0',
   './bladefall-pcore-combat-tapes.js?v=7.250.0',
