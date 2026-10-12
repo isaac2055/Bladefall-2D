@@ -81,7 +81,7 @@
 <script src="bladefall-playtest-worlds.js?v=7.316.0"></script>
 <script src="bladefall-playtest-model.js?v=7.304.0"></script>
 <script src="bladefall-playtest.js?v=7.314.0"></script>
-<script src="bladefall-pcore.js?v=7.308.2"></script>
+<script src="bladefall-pcore.js?v=7.317.0"></script>
 <script src="bladefall-pcore-foes.js?v=7.303.0"></script>
 <script src="bladefall-pcore-foes-view.js?v=7.270.art2"></script>
 <script src="bladefall-pcore-portals.js?v=7.303.0"></script>
@@ -142,7 +142,7 @@
 <script src="bladefall-pcore-dev-void.js?v=7.257.0"></script>
 <script src="bladefall-pcore-dev-watch.js?v=7.257.0"></script>
 <script src="bladefall-pcore-dev-water.js?v=7.308.2"></script>
-<script src="bladefall-pcore-dev-finale.js?v=7.312.0"></script>
+<script src="bladefall-pcore-dev-finale.js?v=7.317.0"></script>
 <script src="bladefall-pcore-dev-zipline.js?v=7.280.0"></script>
 <script src="bladefall-pcore-dev-cargo-clasp.js?v=7.288.0"></script>
 <script src="bladefall-pcore-dev-beam-view.js?v=7.257.0"></script>
@@ -171,7 +171,7 @@
 <script src="bladefall-pcore-dev-void-view.js?v=7.257.0"></script>
 <script src="bladefall-pcore-dev-watch-view.js?v=7.257.0"></script>
 <script src="bladefall-pcore-dev-water-view.js?v=7.303.0"></script>
-<script src="bladefall-pcore-dev-finale-view.js?v=7.312.0"></script>
+<script src="bladefall-pcore-dev-finale-view.js?v=7.317.0"></script>
 <script src="bladefall-pcore-dev-rbr-causeway-view.js?v=7.280.0"></script>
 <script src="bladefall-pcore-dev-rbr-marksman-view.js?v=7.280.0"></script>
 <script src="bladefall-pcore-dev-rbr-keep-view.js?v=7.259.0"></script>
@@ -212,7 +212,7 @@
 <script src="bladefall-pcore-part-902-bonus-void.js?v=7.257.0"></script>
 <script src="bladefall-pcore-part-903-bonus-crossings.js?v=7.257.0"></script>
 <!-- pcore-late:end -->
-<script src="bladefall-room-bank.js?v=7.312.0"></script>
+<script src="bladefall-room-bank.js?v=7.317.0"></script>
 <script src="bladefall-rbr.js?v=7.280.0"></script>
 <script>/* Room by Room (7.259): its regions load only on its own page. */
 if(/[?&]pitch=rbr/.test(location.search)){const q=new URLSearchParams(location.search),more=k=>(q.get(k)||'').split(',').filter(f=>/^[\w-]+$/.test(f));
@@ -221,7 +221,7 @@ if(/[?&]pitch=rbr/.test(location.search)){const q=new URLSearchParams(location.s
  for(const f of [...BladefallRoomByRoom.FILES,...more('rbrfile').filter(f=>!BladefallRoomByRoom.FILES.includes(f))])document.write('<script src="bladefall-rbr-'+f+'.js?v=7.264.0"><\/script>');}</script>
 <script src="bladefall-pcore-survey.js?v=7.264.0"></script>
 <script src="bladefall-touch-layout.js?v=7.308.2"></script>
-<script src="bladefall-pcore-touch.js?v=7.314.0"></script>
+<script src="bladefall-pcore-touch.js?v=7.317.0"></script>
 <script src="bladefall-pcore-pitches.js?v=7.257.0"></script>
 <script src="bladefall-pcore-pitches-view.js?v=7.259.0"></script>
 <script src="bladefall-rbr-view.js?v=7.264.0"></script>
@@ -231,8 +231,8 @@ if(/[?&]pitch=rbr/.test(location.search)){const q=new URLSearchParams(location.s
 <script src="bladefall-climb-passages.js?v=7.308.2"></script>
 <script src="bladefall-climb-passage-tapes.js?v=7.273.40"></script>
 <script>if(/[?&]pitch=climb/.test(location.search))document.write('<script src="bladefall-climb-worlds.js?v=7.308.2"><\/script>');</script>
-<script src="bladefall-climb-finale-tapes.js?v=7.309.0"></script>
-<script src="bladefall-climb-finale.js?v=7.316.0"></script>
+<script src="bladefall-climb-finale-tapes.js?v=7.317.0"></script>
+<script src="bladefall-climb-finale.js?v=7.317.0"></script>
 <script src="bladefall-climb-geography.js?v=7.309.0"></script>
 <script src="bladefall-climb-geography-build.js?v=7.309.0"></script>
 <script src="bladefall-climb-art.js?v=7.278.0"></script>
@@ -243,8 +243,8 @@ if(/[?&]pitch=rbr/.test(location.search)){const q=new URLSearchParams(location.s
 <script src="bladefall-climb-coop.js?v=7.311.0"></script>
 <script src="bladefall-room-bank-view.js?v=7.308.2"></script>
 <script src="bladefall-input.js?v=7.304.0"></script>
-<script src="bladefall-pcore-view.js?v=7.314.0"></script>
+<script src="bladefall-pcore-view.js?v=7.317.0"></script>
 <script>/* Offline play once installed (the main game registers the same worker). Not inside a frame. */
-if('serviceWorker' in navigator&&window.parent===window&&location.protocol!=='file:')addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=7.316.0').catch(()=>{}));</script>
+if('serviceWorker' in navigator&&window.parent===window&&location.protocol!=='file:')addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=7.317.0').catch(()=>{}));</script>
 </body>
 </html>

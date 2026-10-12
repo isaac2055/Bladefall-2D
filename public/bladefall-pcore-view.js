@@ -99,7 +99,7 @@ function currentInput(dt=0){
  for(const k of keys){const a=keyAction(k);if(a&&a in i)i[a]=true;}
  const pad=readPad();for(const k in i)if(pad[k])i[k]=true;
  // Touch (7.258): the thumbs' gestures, read on game time so their windows hold at any refresh rate.
- const touch=TOUCH()?.read(dt);if(touch){for(const k in i)if(touch[k])i[k]=true;if(touch.any)pad.any=true;}
+ const touch=TOUCH()?.read(dt);if(touch){for(const k in i)if(touch[k]===true)i[k]=true;if(touch.aim)i.aim=touch.aim;if(touch.any)pad.any=true;}
  for(const a of [...latch]){if(i[a])i[a]=false;else latch.delete(a);}
  return {input:i,pad};
 }

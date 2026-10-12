@@ -245,7 +245,9 @@ function readInput(g,raw){
  if(pressed('portal'))g.buf.portal=3;
  g.prev=cur;
  const mx=(cur.r?1:0)-(cur.l?1:0),my=(cur.d?1:0)-(cur.u?1:0);
- return {...cur,mx,my};
+ // (7.317) an aimed dash (touch swipes): a unit vector in one of 32 directions; keys and tapes never carry it
+ const aim=raw.aim&&(raw.aim.x||raw.aim.y)?{x:raw.aim.x,y:raw.aim.y}:null;
+ return {...cur,mx,my,aim};
 }
 
 /* ---------------------------------------------------------------- the step */
@@ -385,7 +387,7 @@ function climbJump(g,p,inp){
 function startDash(g,p,inp){
  if(p.move2){p.move2.wallGrace=0;p.move2.reverse=null;}
  g.buf.dash=0;p.dashes--;p.state='dash';p.dashTimer=K.dashFrames;p.dashCooldown=K.dashCooldownFrames;p.dashRefillCooldown=K.dashRefillCooldownFrames;
- p.beforeDash={x:p.vx,y:p.vy};p.pressAim={x:inp?inp.mx:0,y:inp?inp.my:0};p.vx=0;p.vy=0;p.dashAim=true;p.ducking=false;p.wallBoostTimer=0;p.varJump=0;
+ p.beforeDash={x:p.vx,y:p.vy};p.pressAim=inp&&inp.aim?{...inp.aim}:{x:inp?inp.mx:0,y:inp?inp.my:0};p.vx=0;p.vy=0;p.dashAim=true;p.ducking=false;p.wallBoostTimer=0;p.varJump=0;
  g.freeze=K.dashFreezeFrames;
  // A dash also flips every two-phase machine in the room: the Switchback rule.
  flipPhase(g,'dash');
@@ -575,7 +577,7 @@ function dashUpdate(g,p,inp){
  if(p.dashAim){
   // Direction is read when the freeze ends, so a slightly late aim still counts.
   p.dashAim=false;
-  let dx=inp.mx,dy=inp.my;if(!dx&&!dy){dx=p.pressAim.x;dy=p.pressAim.y;}if(!dx&&!dy)dx=p.facing;
+  let dx=inp.aim?inp.aim.x:inp.mx,dy=inp.aim?inp.aim.y:inp.my;if(!dx&&!dy){dx=p.pressAim.x;dy=p.pressAim.y;}if(!dx&&!dy)dx=p.facing;
   const len=Math.hypot(dx,dy);p.dashDir={x:dx/len,y:dy/len};if(dx)p.facing=sign(dx);
   let vx=p.dashDir.x*K.dashSpeed,vy=p.dashDir.y*K.dashSpeed;
   if(sign(p.beforeDash.x)===sign(vx)&&Math.abs(p.beforeDash.x)>Math.abs(vx))vx=p.beforeDash.x;

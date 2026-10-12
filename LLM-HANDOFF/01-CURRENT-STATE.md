@@ -1,3 +1,27 @@
+## 7.317.0: Smooth touch controls, a four-phase Echo, "Vesper" (2026-10-12)
+
+- **Vesper's first form** is labelled "VESPER" (was "THE CLOAKED MAN").
+- **Your Echo's final room** ("Stay With Me", cl41-stay) has four phases and fourteen wounds; one death restarts it. Phases come from `echoDuel.phases`: per-phase need/tell/recover/wave/ghost, plus `double` (a run turns and comes straight back) and `leapEvery`. Between phases the Echo breaks away and is untouchable for 70 frames. The phase name is announced and shown with pips.
+  - New route: 2,361 frames (was 551), recorded by the fight bot.
+  - The Room Bank's F80 is updated to match (difficulty 5).
+- **Survive touch, the new "Smooth" default** (everyone is migrated once, `dashPreferenceVersion` 2):
+  - Tap anywhere to jump; a quick tap on the stick side jumps too.
+  - Swipe to dash in 32 directions: touch only, sent to the core as `raw.aim`. Keyboard, pad and tapes are unchanged.
+  - No grab button: the stick on a diagonal (20–80°) into an adjacent wall holds grab, so you cling and climb; once clinging, anything but pushing away keeps you on.
+  - A jump button stays on screen (can be hidden, moved and resized).
+  - The blade, parry, portal and carry ("interact", grab) buttons appear only in rooms whose intended route presses them; carry only where a lantern or cargo exists.
+  - The earlier layouts stay selectable in Touch controls.
+
+**Checks** (Chrome, iPhone profile):
+- the default is Smooth; a tap on either side jumps (24 px);
+- a 30° swipe dashes at (0.83, −0.56);
+- pushing the stick up-right climbs a wall in o1-road;
+- a plain room shows only the jump button; w2-clearing shows jump and blade;
+- the editor lists jump, carry, blade, parry and portal.
+- All 132 bank routes pass (core change), plus finale-check and the co-op feature checks.
+
+Version 7.317.0, cache `bladefall-v485-smooth-touch`.
+
 ## 7.316.0: A heart in every optional route, purple hearts open the Fractured worlds, no death-warp stakes (2026-10-12)
 
 Isaac's notes and decisions:

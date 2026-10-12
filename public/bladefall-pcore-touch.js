@@ -9,6 +9,11 @@
      double-tap ..... parry
      two-finger swipe strike, aimed by the swipe
      two-finger tap . portal, aimed by the stick
+   (7.317) The default is now "Smooth": tap anywhere to jump (a quick tap on the stick side jumps too), swipe to dash
+   in any of 32 directions, and no grab button: push the stick on a diagonal into a wall and you cling and climb (up-
+   right climbs a wall on your right, down-right climbs down it; flip for the left). A jump button you can move and
+   resize stays on screen. The blade, parry, portal and carry (interact) buttons appear only in rooms whose intended
+   route uses them. Keyboards and controllers keep the 8-way dash; the 32-way aim exists only on touch.
    Every action can instead sit on an on-screen button. Pause and retry are the two small buttons top right;
    Android's back gesture also pauses. (7.311) In Survive two more sit beside them: skip this section (N on a
    keyboard) and, while co-op is linked, hold to go to your partner (T). Every control keeps clear of the iPhone's
@@ -34,22 +39,25 @@ const fx=[];            // feedback marks {kind,x,y,dx,dy,t}
 let hintUntil=0,lastSeenRoom=null,guarded=false,wasPlaying=false;
 
 /* ---------------------------------------------------------------- settings ("mobile keybinds") */
-const GESTURES={tap:'Tap',swipe:'Swipe',hold:'Hold',double:'Double-tap',tap2:'Two-finger tap',swipe2:'Two-finger swipe',button:'On-screen button'};
-const CHOICES={jump:['tap','button'],dash:['swipe','button'],grab:['hold','button'],strike:['swipe2','button'],parry:['double','tap2','button'],portal:['tap2','double','button']};
-const ACTION_NAMES={jump:'Jump',dash:'Dash',grab:'Grab · climb · carry / throw',strike:'Blade strike',parry:'Parry',portal:'Portal'};
+const GESTURES={tap:'Tap',swipe:'Swipe',hold:'Hold',double:'Double-tap',tap2:'Two-finger tap',swipe2:'Two-finger swipe',button:'On-screen button',auto:'Stick on a diagonal into a wall (no button)'};
+const CHOICES={jump:['tap','button'],dash:['swipe','button'],grab:['auto','hold','button'],strike:['swipe2','button'],parry:['double','tap2','button'],portal:['tap2','double','button']};
+const ACTION_NAMES={jump:'Jump',dash:'Dash',grab:'Grab · climb · carry (interact)',strike:'Blade strike',parry:'Parry',portal:'Portal'};
 const PRESETS={
+ smooth:{jump:'tap',dash:'swipe',grab:'auto',strike:'button',parry:'button',portal:'button'},
  gestures:{jump:'tap',dash:'swipe',grab:'hold',strike:'swipe2',parry:'double',portal:'tap2'},
  mixed:{jump:'tap',dash:'swipe',grab:'hold',strike:'button',parry:'button',portal:'button'},
  swipe:{jump:'button',dash:'swipe',grab:'button',strike:'button',parry:'button',portal:'button'},
  buttons:{jump:'button',dash:'button',grab:'button',strike:'button',parry:'button',portal:'button'},
 };
-const PRESET_NAMES={swipe:'Swipe dash + action buttons',gestures:'Gestures',mixed:'Gestures + buttons for blade, parry, portal',buttons:'Buttons only'};
-const DEFAULTS={preset:'swipe',map:{...PRESETS.swipe},hand:'right',stick:'floating',swipe:'medium',tapJump:'full',
+const PRESET_NAMES={smooth:'Smooth: tap to jump, swipe to dash, climb with the stick',swipe:'Swipe dash + action buttons',gestures:'Gestures',mixed:'Gestures + buttons for blade, parry, portal',buttons:'Buttons only'};
+const DEFAULTS={preset:'smooth',map:{...PRESETS.smooth},jumpButton:true,hand:'right',stick:'floating',swipe:'medium',tapJump:'full',
  haptics:true,opacity:.55,size:1,hints:true,fullscreen:true};
 function settings(){
  const s=api.save;s.touch=s.touch||{};
  // Migrate the former untouched button default, while preserving deliberately customized bindings.
  if(!s.touch.dashPreferenceVersion){if(s.touch.preset==='buttons'&&!s.touch.map){s.touch.preset='swipe';}s.touch.dashPreferenceVersion=1;}
+ // (7.317) everyone moves to Smooth once; any layout can still be chosen again in Touch controls
+ if(s.touch.dashPreferenceVersion<2){s.touch.preset='smooth';delete s.touch.map;s.touch.dashPreferenceVersion=2;}
  const t=Object.assign({},DEFAULTS,s.touch);t.map=Object.assign({},PRESETS[t.preset]||DEFAULTS.map,s.touch.map||{});
  return t;
 }
@@ -78,7 +86,10 @@ function dir8(dx,dy){
  if(ang>27){if(dy<0)o.u=true;else o.d=true;}
  return o;
 }
-function override(o,dur=.12){dirOver={...o,until:clock+dur};}
+function override(o,dur=.12,aim=null){dirOver={...o,aim,until:clock+dur};}
+// (7.317) a swipe's own direction, snapped to 32 (11.25° apart); exact axes stay exact (the core treats a straight
+// up-dash and a ground diagonal specially)
+function aim32(dx,dy){const a=Math.round(Math.atan2(dy,dx)/(Math.PI/16))*(Math.PI/16),r=v=>Math.abs(v)<1e-6?0:+v.toFixed(6);return {x:r(Math.cos(a)),y:r(Math.sin(a))};}
 function buzz(ms){try{if(settings().haptics&&navigator.vibrate)navigator.vibrate(ms);}catch(e){}}
 function mark(kind,x,y,dx=0,dy=0){fx.push({kind,x,y,dx,dy,t:clock});if(fx.length>24)fx.shift();}
 function game(){return api&&api.view&&api.view.g;}
@@ -90,6 +101,28 @@ function wantsDefer(){
  if(p.carrying||p.state==='climb')return true;
  if(g.ents&&g.ents.some(e=>e.type==='lantern'&&!e.held&&!e.returning&&Core.overlap(p.x-4,p.y-4,p.w+8,p.h+8,e.x,e.y,e.w,e.h)))return true;
  try{return Core.solidAt(g,p.x-2,p.y,p.w,p.h-3)||Core.solidAt(g,p.x+2,p.y,p.w,p.h-3);}catch(e){return false;}
+}
+
+/* (7.317) Climbing without a button: the stick pushed on a diagonal (20°–80° from level) toward a wall beside the
+   knight holds grab; once clinging, any push that is not away from the wall keeps him on it. */
+function autoClimb(){
+ const g=game();if(!g||!g.p||g.p.carrying)return false;const L=layout(),dx=stick.x-stick.ox,dy=stick.y-stick.oy;if(Math.hypot(dx,dy)<=L.dead)return false;
+ const side=Math.sign(dx),ang=Math.atan2(Math.abs(dy),Math.abs(dx))*180/Math.PI,p=g.p,Core=C();
+ let wall=false;try{wall=!!side&&Core.solidAt(g,p.x+side*2,p.y,p.w,p.h-3);}catch(e){}
+ if(p.state==='climb')return !(side&&!wall&&ang<70)&&(wall||ang>=70);
+ return wall&&ang>=20&&ang<=80;
+}
+// (7.317) Which buttons a room needs: the keys its intended route presses (the carry button only where something
+// can be carried). A room without a route shows the blade and parry when it has foes.
+const needCache=new Map();
+function needs(){
+ const g=game();if(!g||!g.room)return new Set();const id=g.room.id;if(needCache.has(id))return needCache.get(id);
+ const out=new Set(),tape=root.BladefallPrecisionRooms?.tapes?.[id];
+ if(tape)for(const [,k] of tape)for(const ch of k||'')out.add(ch);
+ else if(g.foes||g.combat||g.parryable){out.add('s');out.add('p');}
+ const carry=g.ents?.some(e=>e.type==='lantern')||!!g.room.def.cargoClasps;
+ const n=new Set();if(out.has('s'))n.add('strike');if(out.has('p'))n.add('parry');if(out.has('q'))n.add('portal');if(out.has('g')&&carry)n.add('grab');
+ needCache.set(id,n);return n;
 }
 
 /* ---------------------------------------------------------------- layout (CSS pixels) */
@@ -112,13 +145,15 @@ function layout(forEditor=false){
  const X=x=>right?w-I.r-x:I.l+x;
  const spots={jump:[66,66,40],dash:[156,58,33],grab:[236,52,28],strike:[62,156,29],parry:[136,140,27],portal:[204,128,25]};
  const buttons=[];
- for(const a of Object.keys(spots))if(m[a]==='button'){const [x,y,r]=spots[a];buttons.push(root.BladefallTouchLayout?.resolve('survival',a,{a,x:X(x*s),y:h-I.b-y*s,r:r*s},w,h)||{a,x:X(x*s),y:h-I.b-y*s,r:r*s});}
+ const contextual=t.preset==='smooth'||m.grab==='auto',need=contextual&&!forEditor?needs():null;
+ const shown=a=>forEditor?(m[a]==='button'||a==='jump'&&t.jumpButton||a==='grab'&&m.grab==='auto'):a==='jump'?(m.jump==='button'||t.jumpButton):a==='dash'?m.dash==='button':a==='grab'&&m.grab==='auto'?need?.has('grab'):m[a]==='button'&&(!need||need.has(a));
+ for(const a of Object.keys(spots))if(shown(a)){const [x,y,r]=spots[a];buttons.push(root.BladefallTouchLayout?.resolve('survival',a,{a,x:X(x*s),y:h-I.b-y*s,r:r*s},w,h)||{a,x:X(x*s),y:h-I.b-y*s,r:r*s});}
  const ui=24*s,top=I.t+30*s,pause={x:X(30*s),y:top,r:ui*.8,ui:'pause'},retry={x:X(78*s),y:top,r:ui*.8,ui:'retry'};
  const resolve=(id,b)=>root.BladefallTouchLayout?.resolve('survival',id,b,w,h)||b,stickBase=resolve('stick',{x:right?I.l+104*s:w-I.r-104*s,y:h-I.b-104*s,r:52*s});
  const extras=extraIds(forEditor).map((id,i)=>resolve(id,{x:X((126+i*48)*s),y:top,r:ui*.8,ui:id}));
  return {w,h,s,buttons,pause:resolve('pause',pause),retry:resolve('retry',retry),extras,stickBase,stickR:stickBase.r,dead:6*s,right};
 }
-const GLYPH={jump:'⤒',dash:'➤',grab:'✊',strike:'⚔',parry:'⛨',portal:'◎'};
+const GLYPH={jump:'⤒',dash:'➤',grab:'✋',strike:'⚔',parry:'⛨',portal:'◎'};
 
 /* ---------------------------------------------------------------- pointer handling */
 function inLeftZone(x,L,y){return root.BladefallTouchLayout?.config('survival').stick?Math.hypot(x-L.stickBase.x,y-L.stickBase.y)<=L.stickR*1.6:L.right?x<L.w*.42:x>L.w*.58;}
@@ -142,7 +177,7 @@ function onDown(e){
   if(stick){ptrs.set(e.pointerId,{role:'ignore'});return;}
   const fixed=settings().stick==='fixed'||!!root.BladefallTouchLayout?.config('survival').stick;
   const ox=fixed?L.stickBase.x:x,oy=fixed?L.stickBase.y:y;
-  stick={id:e.pointerId,ox,oy,x,y};ptrs.set(e.pointerId,{role:'stick'});return;
+  stick={id:e.pointerId,ox,oy,x,y};ptrs.set(e.pointerId,{role:'stick',t0:clock});return;
  }
  // Right side: one finger is a gesture; a second finger turns both into a two-finger gesture.
  const others=[...ptrs.entries()].filter(([id,p])=>p.role==='right'&&!p.multi);
@@ -187,7 +222,8 @@ function onUp(e){
  if(e.pointerType==='mouse')return;
  const p=ptrs.get(e.pointerId);if(!p)return;
  ptrs.delete(e.pointerId);
- if(p.role==='stick'){if(stick&&stick.id===e.pointerId)stick=null;return;}
+ if(p.role==='stick'){const quick=stick&&stick.id===e.pointerId&&clock-(p.t0||clock)<.2&&Math.hypot(stick.x-stick.ox,stick.y-stick.oy)<12;if(stick&&stick.id===e.pointerId)stick=null;
+  if(quick&&settings().map.jump==='tap'){startHold('jump',p);endHold('jump',p);mark('tap',e.clientX,e.clientY);}return;}
  if(p.role==='button'){releaseButton(p.a,p);return;}
  if(p.role==='friend'){const co=coop();if(co)co.tDown=false;return;}
  if(p.role!=='right')return;
@@ -234,7 +270,7 @@ function step(p){
  if(p.state==='jumping'&&G.hold==='grab'&&!p.grabHeld&&age>=HOLD&&!far){startHold('grab',p);}
 }
 function swipe(p,dx,dy,G){
- p.dashed=true;const o=dir8(dx,dy);override(o,.12);pulse(G.swipe);mark('swipe',p.x,p.y,dx,dy);
+ p.dashed=true;const o=dir8(dx,dy);override(o,.12,G.swipe==='dash'?aim32(dx,dy):null);pulse(G.swipe);mark('swipe',p.x,p.y,dx,dy);
 }
 function pressButton(a,p){
  mark('button',p.x,p.y);
@@ -254,8 +290,9 @@ function read(dt){
  for(const p of ptrs.values())if(p.role==='right'&&!p.multi)step(p);
  // The stick.
  if(stick){const L=layout(),dx=stick.x-stick.ox,dy=stick.y-stick.oy;if(Math.hypot(dx,dy)>L.dead)Object.assign(out,dir8(dx,dy));}
- if(dirOver){if(clock<dirOver.until){out.l=dirOver.l;out.r=dirOver.r;out.u=dirOver.u;out.d=dirOver.d;}else dirOver=null;}
+ if(dirOver){if(clock<dirOver.until){out.l=dirOver.l;out.r=dirOver.r;out.u=dirOver.u;out.d=dirOver.d;if(dirOver.aim)out.aim=dirOver.aim;}else dirOver=null;}
  out.jump=isHeld('jump');out.grab=isHeld('grab');
+ if(settings().map.grab==='auto'&&stick&&autoClimb())out.grab=true;
  for(let i=pulses.length-1;i>=0;i--){const q=pulses[i];if(clock>=q.until){pulses.splice(i,1);continue;}if(clock>=q.from&&clock>=gapUntil[q.a])out[q.a]=true;}
  out.any=['jump','dash','grab','strike','parry','portal','l','r','u','d'].some(k=>out[k]);
  // The rule names show for a few seconds whenever a new room begins.
@@ -337,6 +374,7 @@ function card(back){
  <label class="pcOpt pcTouchRow"><span>Hands</span><select id="tcHand">${opt('right','Stick left, gestures right',t.hand)}${opt('left','Stick right, gestures left',t.hand)}</select></label>
  <label class="pcOpt pcTouchRow"><span>Control size</span><select id="tcSize">${[.85,1,1.15,1.3].map(v=>opt(String(v),Math.round(v*100)+'%',String(t.size))).join('')}</select></label>
  <label class="pcOpt pcTouchRow"><span>Control opacity</span><select id="tcOpacity">${[.3,.55,.8].map(v=>opt(String(v),{.3:'Faint',.55:'Medium',.8:'Strong'}[v],String(t.opacity))).join('')}</select></label>
+ <label class="pcOpt"><input type="checkbox" id="tcJumpBtn" ${t.jumpButton?'checked':''}> Show a jump button too (move and resize it with the button above)</label>
  <label class="pcOpt"><input type="checkbox" id="tcHaptics" ${t.haptics?'checked':''}> Vibrate on dash, grab and death</label>
  <label class="pcOpt"><input type="checkbox" id="tcHints" ${t.hints?'checked':''}> Show the gestures for a moment in each new room</label>
  <label class="pcOpt"><input type="checkbox" id="tcFull" ${t.fullscreen?'checked':''}> Go full screen when play starts (in the browser)</label>
@@ -353,7 +391,7 @@ function card(back){
  o.querySelector('#tcPreset').onchange=e=>{const n=settings();if(PRESETS[e.target.value]){n.preset=e.target.value;n.map={...PRESETS[n.preset]};store(n);}card(back);};
  const bind=(id,key,fn=v=>v)=>{o.querySelector(id).onchange=e=>{const n=settings();n[key]=e.target.type==='checkbox'?e.target.checked:fn(e.target.value);store(n);};};
  bind('#tcJump','tapJump');bind('#tcSwipe','swipe');bind('#tcStick','stick');bind('#tcHand','hand');bind('#tcSize','size',Number);bind('#tcOpacity','opacity',Number);
- bind('#tcHaptics','haptics');bind('#tcHints','hints');bind('#tcFull','fullscreen');
+ bind('#tcHaptics','haptics');bind('#tcJumpBtn','jumpButton');bind('#tcHints','hints');bind('#tcFull','fullscreen');
  o.querySelector('#tcReset').onclick=()=>{store({...DEFAULTS,map:{...DEFAULTS.map}});card(back);};
  if(api.controlsCard)o.querySelector('#tcKeys').onclick=()=>api.controlsCard(()=>card(back));
  o.querySelector('#tcFeedback').onchange=e=>root.BladefallPlaytest?.setFeedback(e.target.checked);

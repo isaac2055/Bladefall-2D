@@ -43,8 +43,12 @@ const R41=[
   question:'When can your blade reach your Echo?'},
  {...base,id:'cl41-stay',origin:'cl41-stay',name:'Stay With Me',palette:'echo-shore',exit:'none',cols:48,rows:23,
   map:room(48,23,{floor:21,ledges:[[7,11,18],[21,26,18],[36,40,18]],open:[[0,17,20]],P:[2,20]}),seam:seamAt(0,17,20),
-  echoDuel:{floor:21,c:36,arena:[1,46],wake:5,need:3,tell:28,recover:48,wave:3.2,ghost:26,kneel:true},
-  hint:'Now every run comes twice: its afterimage follows the same line a moment later.',
+  echoDuel:{floor:21,c:36,arena:[1,46],wake:5,kneel:true,phases:[   // (7.317) four phases, fourteen wounds; one death and it starts over
+   {name:'STAY WITH ME',need:3,tell:28,recover:48,wave:3.2,ghost:26},
+   {name:"DON'T LEAVE AGAIN",need:3,tell:26,recover:44,wave:3.4,ghost:24,double:true},
+   {name:'I AM STILL YOU',need:4,tell:24,recover:40,wave:3.6,ghost:22,double:true,leapEvery:2},
+   {name:'ALL OF ME',need:4,tell:22,recover:36,wave:3.8,ghost:20,double:true,leapEvery:2}]},
+  hint:'Every run comes twice: its afterimage follows the same line. Four phases; fall once and it begins again.',
   question:'Where is the second run going?'}];
 const R42=[
  {...base,id:'cl42-road',origin:'cl42-road',name:'The Throne Road',palette:'true-throne',cols:40,rows:23,

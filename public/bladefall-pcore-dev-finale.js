@@ -13,6 +13,10 @@
      wake   (column) it waits until you pass this column.
      script ['dash','leap',…] it plays these once, cannot be wounded, then runs out by the exit (`leave`, a column).
      need   wounds; then it runs out by the exit, or (kneel:true) lowers its sword and yields ('echo-yield').
+     phases [{name,need,tell,recover,wave,ghost,double,leapEvery},…] (7.317) the fight goes on through each in turn:
+            a phase's fields override the room's. Its last wound sends the Echo back to recover its breath (`shift`,
+            untouchable), the hazards clear and the next phase begins. double: every run that reaches its end
+            turns and runs back at once. leapEvery: a leap every Nth attack (default 3). A death restarts phase one.
 
    vesper:{floor,c,arena:[c0,c1],top,ledges:[[c0,c1,row],…],need,gaps}
      Four forms. Each form opens after its attacks; a cut there is one wound, and `need` wounds end the form
@@ -65,18 +69,18 @@ function curtainBefore(g){
 
 /* ---------------------------------------------------------------- Your Echo */
 const EK=Object.freeze({w:8,h:11,tell:36,recover:60,dash:6,past:40,wave:2.5,waveH:7,waveW:6,leapTell:40,leap:40,leapH:44,poise:40,hop:20,hopDist:80,stagger:90,run:2.5});
-const ev=(z,k)=>z.d[k]??EK[k];
+const ev=(z,k)=>(z.ph&&z.ph[k]!==undefined?z.ph[k]:z.d[k])??EK[k];
 function duelReset(g){
  const d=g.room.def.echoDuel;g.duel=null;if(!d)return;
  const z={d,x:d.c*8,y:d.floor*8-EK.h,w:EK.w,h:EK.h,mode:'idle',t:0,order:0,dir:-1,face:-1,to:0,from:0,base:d.floor*8-EK.h,
-  wounds:0,need:d.script?0:(d.need??3),waves:[],ghosts:[],script:d.script?[...d.script]:null,hurt:0};
+  wounds:0,need:d.script?0:(d.phases?.[0]?.need??d.need??3),waves:[],ghosts:[],script:d.script?[...d.script]:null,hurt:0,phase:0,ph:d.phases?.[0]||null};
  g.duel=z;g.parryable=true;for(const e of g.ents)if(e.type==='gate')e.devKeyed=true;
 }
 const ax0=z=>z.d.arena[0]*8,ax1=z=>(z.d.arena[1]+1)*8-EK.w;
 function nextEcho(g,z){
  const p=g.p,px=p.x;let act;
  if(z.script){act=z.script.shift();if(!act){z.mode='leave';z.t=0;C().emit(g,'echo-leave',{x:z.x+4,y:z.y});return;}}
- else act=z.order++%3===2?'leap':'dash';
+ else{const every=ev(z,'leapEvery')||3;act=z.order++%every===every-1?'leap':'dash';}
  z.t=0;
  if(act==='dash'){z.mode='dash-tell';z.dir=Math.sign(px-z.x)||z.face;z.face=z.dir;z.to=clamp(px+z.dir*ev(z,'past'),ax0(z),ax1(z));
   if(Math.abs(z.to-z.x)<24)z.to=clamp(z.x+z.dir*64,ax0(z),ax1(z));C().emit(g,'echo-tell',{x:z.x+4,y:z.y,dash:true});}
@@ -108,24 +112,31 @@ function duelBefore(g){
    if(alive(p)&&box(knight(p),{x:Math.min(z.x,nx),y:z.y,w:Math.abs(nx-z.x)+EK.w,h:EK.h})){
     if(p.parryTimer>0){Core.parrySuccess(g,p);z.x=clamp(nx-z.dir*12,ax0(z),ax1(z));z.mode='stagger';z.t=0;Core.emit(g,'echo-parried',{x:z.x+4,y:z.y+5});break;}
     Core.kill(g,p,'echo-dash');}
-   z.x=nx;if(z.x===z.to){z.mode='recover';z.t=0;}break;}
+   z.x=nx;if(z.x===z.to){
+    // (7.317) a doubled run turns at once and comes back
+    if(ev(z,'double')&&!z.back){z.back=true;z.dir=-z.dir;z.face=z.dir;z.to=clamp(p.x+z.dir*ev(z,'past'),ax0(z),ax1(z));if(Math.abs(z.to-z.x)<24)z.to=clamp(z.x+z.dir*64,ax0(z),ax1(z));z.mode='dash-tell';z.t=Math.max(0,ev(z,'tell')-12);Core.emit(g,'echo-tell',{x:z.x+4,y:z.y,dash:true});break;}
+    z.back=false;z.mode='recover';z.t=0;}break;}
   case 'leap-tell':if(z.t>=ev(z,'leapTell')){z.mode='leap';z.t=0;z.from=z.x;Core.emit(g,'echo-leap',{x:z.x+4,y:z.y});}break;
   case 'leap':{const n=ev(z,'leap'),u=Math.min(1,z.t/n);z.x=z.from+(z.to-z.from)*u;z.y=z.base-Math.sin(u*Math.PI)*ev(z,'leapH');
    if(u>=1){z.x=z.to;z.y=z.base;if(alive(p)&&box(knight(p),z))Core.kill(g,p,'echo-land');
     z.waves.push({x:z.x+EK.w/2,dir:-1},{x:z.x+EK.w/2,dir:1});Core.emit(g,'echo-wave',{x:z.x+4,y:z.base+EK.h});z.mode='recover';z.t=0;}break;}
   case 'recover':if(z.t>=ev(z,'recover'))nextEcho(g,z);break;
   case 'stagger':if(z.t>=ev(z,'stagger'))nextEcho(g,z);break;
+  case 'shift':z.y=z.base;if(z.t>=70){z.mode='poise';z.t=0;Core.emit(g,'echo-phase',{x:z.x+4,y:z.y,phase:z.phase,name:z.ph?.name||''});}break;
   case 'hop':{const n=EK.hop,u=Math.min(1,z.t/n);z.x=z.from+(z.to-z.from)*u;z.y=z.base-Math.sin(u*Math.PI)*20;if(u>=1){z.y=z.base;z.mode='poise';z.t=Math.floor(ev(z,'poise')*.4);}break;}
   case 'leave':{const L=(z.d.leave??(g.room.cols+2))*8;z.face=Math.sign(L-z.x)||1;z.x+=z.face*EK.run;if(z.face>0?z.x>=L:z.x<=L){z.mode='gone';Core.emit(g,'echo-gone',{x:z.x,y:z.y});}break;}
  }
 }
 function duelAfter(g){
- const z=g.duel;if(!z||!['poise','dash-tell','leap-tell','recover','stagger','dash','leap'].includes(z.mode))return;
+ const z=g.duel;if(!z||z.mode==='shift'||!['poise','dash-tell','leap-tell','recover','stagger','dash','leap'].includes(z.mode))return;
  const Core=C(),p=g.p;if(!cut(g,p,z,'echo-duel'))return;
  const open=(z.mode==='recover'||z.mode==='stagger')&&z.need>0;
  Core.bladeRebound(g,p,p.strikeDir);
  if(!open){Core.emit(g,'guard-block',{x:z.x+4,y:z.y+5,echo:true});return;}
  g.freeze=Math.max(g.freeze,4);z.wounds++;z.hurt=14;Core.emit(g,'echo-wound',{x:z.x+4,y:z.y+5,wounds:z.wounds,need:z.need});
+ // (7.317) the next phase: it breaks away, the field clears, and it comes again harder
+ if(z.wounds>=z.need&&z.d.phases&&z.phase+1<z.d.phases.length){z.phase++;z.ph=z.d.phases[z.phase];z.wounds=0;z.need=z.ph.need??3;z.waves=[];z.ghosts=[];z.back=false;z.order=0;
+  z.mode='shift';z.t=0;z.from=z.x;z.x=clamp(z.x+(Math.sign(z.x-p.x)||1)*EK.hopDist,ax0(z),ax1(z));Core.emit(g,'echo-shift',{x:z.x+4,y:z.y,phase:z.phase});return;}
  if(z.wounds>=z.need){z.ghosts=[];
   if(z.d.kneel){z.mode='kneel';z.t=0;z.waves=[];Core.emit(g,'echo-yield',{x:z.x+4,y:z.y+5});}
   else{z.mode='leave';z.t=0;Core.emit(g,'echo-leave',{x:z.x+4,y:z.y});}return;}
@@ -141,7 +152,7 @@ const VK=Object.freeze({w:12,h:28,poise:46,shift:80,vanish:12,
  teeth:{step:5,seg:24,tell:30,up:24,recover:70,h:14},
  lunge:{tell:36,speed:5,recover:64},skull:{w:24,h:14},
  slam:{tell:44,rest:72,h:44,hand:{w:24,h:12}}});
-const FORMS=Object.freeze(['THE CLOAKED MAN','UNBOUND','THE BONES','ALL OF HIM']);
+const FORMS=Object.freeze(['VESPER','UNBOUND','THE BONES','ALL OF HIM']);
 const PATTERN=Object.freeze([['phantom','phantom','chains'],['curtain'],['teeth','lunge'],['slam','curtain','slam','teeth']]);
 function vesperNeed(d){
  const V=root.BladefallPrecisionView?.view,F=root.BladefallClimbFinale;

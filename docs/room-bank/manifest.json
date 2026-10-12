@@ -80510,7 +80510,7 @@
       "format": "extended",
       "acceptance": "review",
       "needsReview": true,
-      "difficulty": 4,
+      "difficulty": 5,
       "role": "Survive World 41 finale (7.309)",
       "worlds": [
         41
@@ -80526,11 +80526,11 @@
       "status": "route-proven",
       "author": "Claude",
       "humanReview": "Awaiting review.",
-      "solution": "As before, but every dash is followed by an afterimage; three wounds, then it yields.",
+      "solution": "Four phases, fourteen wounds: cut your Echo in its bright recoveries, parry its runs, jump the afterimages and ripples. Later phases run twice and leap more often.",
       "requiredEvents": [],
-      "revision": "214e3a36e59b",
+      "revision": "18f32c9841e1",
       "source": "scripts/room-bank/fractured/bank-f80.json",
-      "tapeFrames": 1071
+      "tapeFrames": 2881
     }
   ]
 }

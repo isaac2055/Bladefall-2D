@@ -42,7 +42,9 @@ function drawDuel(b,g){
  echoSprite(b,z.x,z.y,z.face,pose,fr,1,z.hurt>0&&(z.hurt>>1)%2===0);
  if(z.mode==='stagger'&&(fr>>2)%2)rect(b,z.x+3,z.y-5,2,2,'#ffe9a8');
  if(z.need>0&&z.mode!=='leave'&&z.mode!=='kneel'){pips(b,z.x+4,z.y-7,z.need,z.wounds,'#e2d3f2');
-  label(b,z.d.kneel?'STAY WITH ME':'THE PART YOU LEFT',z.x+4,z.y-11,'#d8cdf5');}
+  label(b,z.ph?.name||(z.d.kneel?'STAY WITH ME':'THE PART YOU LEFT'),z.x+4,z.y-11,'#d8cdf5');
+  if(z.d.phases)for(let i=0;i<z.d.phases.length;i++)rect(b,z.x+4-z.d.phases.length*3+i*6,z.y-20,4,2,i<z.phase?'#86e6d8':i===z.phase?'#e2d3f2':'#4d4055');}
+ if(z.mode==='shift'){b.globalAlpha=.4+.3*Math.sin((g.frame||0)/3);rect(b,z.x-4,z.y-4,16,19,'#86e6d8');b.globalAlpha=1;}
 }
 
 /* ---------------------------------------------------------------- bats */
@@ -144,6 +146,8 @@ const event=(e,{burst,shake})=>{
  if(e.type==='vesper-slam'||e.type==='vesper-land'){shake?.(4);burst(e.x,e.y,18,'#e9dfc9',60,28);}
 if((e.type==='vesper-form'||e.type==='vesper-wake')&&inClimb)root.BladefallPitchView?.climb?.state?.()?.api?.music?.(true);
  if(e.type==='vesper-form'){shake?.(3,14);burst(e.x,e.y,30,'#c9a8ff',80,40);if(inClimb)root.BladefallPitchView.climb.announce(e.name,170);}
+ if(e.type==='echo-phase'&&root.BladefallPitchView?.climb?.state?.())root.BladefallPitchView.climb.announce(e.name,170);
+ if(e.type==='echo-shift')burst(e.x,e.y,24,'#86e6d8',70,30);
  if(e.type==='echo-yield'){burst(e.x,e.y,26,'#86e6d8',60,40);root.BladefallClimbFinale?.echoYielded?.();}
  if(e.type==='vesper-still'){burst(e.x,e.y,40,'#f0d9a8',90,60);root.BladefallClimbFinale?.vesperStill?.();}
  if(e.type==='echo-leave')root.BladefallClimbFinale?.say?.('echo-leave');
