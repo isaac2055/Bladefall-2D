@@ -1,7 +1,7 @@
 {
-  "version": "7.326.0",
-  "activeBatch": 23,
-  "activeRun": 13,
+  "version": "7.327.0",
+  "activeBatch": 24,
+  "activeRun": 14,
   "retained": [
     "bank-b21",
     "bank-b76",
@@ -146,7 +146,8 @@
     "bank-f89",
     "bank-f90",
     "bank-f91",
-    "bank-f92"
+    "bank-f92",
+    "bank-f94"
   ],
   "newRoomsPerSide": 5,
   "mechanicRequirements": [],
@@ -295,7 +296,7 @@
   "reviewCycle": false,
   "newRoomsBySide": {
     "base": 0,
-    "fractured": 1
+    "fractured": 2
   },
   "order": [
     "bank-b05",

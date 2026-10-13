@@ -1,3 +1,13 @@
+## 7.327.0 — two Sol 6.1 Outskirts C-side superrooms
+
+New local/offline Room Bank candidates G and H are shown first: The Bell’s Teeth (bank-f95, 320 × 64 tiles) and Turn of the Trumpet (bank-f96, 168 × 108). Each is one room with one spawn/fire and no intermediate checkpoints, optional routes or hearts. G is a rising traverse with three narrow takeoff perches, thorned needle ascents and an airborne undercut; H folds through stacked runs, two narrow perches, wallbounce turns and a rising aerial finish.
+
+The full recordings clear with zero deaths in 1,582 frames (26.37 seconds) and 2,172 frames (36.2 seconds). G records 11 crumbling contacts, 3 supers, 7 hypers and 3 wallbounces; H records 16 crumbling contacts, 9 supers, 8 hypers and 4 wallbounces. Full-room one-frame hold variations pass in 144/320 and 152/434 tested cases; four passing variations per room are saved. The full 147-room bank and existing finale checks pass. The offline mirror is rebuilt.
+
+`node scripts/room-bank/sol-outskirts-superrooms-check.mjs --search` searches the long transfer planes from fresh stationary landings with full dash/stamina, rejecting advanced momentum. Read `docs/room-bank/sol-outskirts-superrooms-proof.json` for bounded search results and limits. One easier ascent transfer found during authoring was raised by 24 pixels; its former shortcut is saved as a failing regression in H’s verification data. These checks do not establish human difficulty or eliminate every possible alternate route.
+
+All 145 earlier Room Bank source records and the checked native physics/campaign files are hash-preserved. The new candidates are not campaign-imported. Live browser verification remains unavailable because local browser access was previously declined in this chat; human difficulty, flow and readability need playtesting. Individually saved source JSONs and tapes are authoritative.
+
 ## 7.326.0 — The White Mile, one Outskirts C-side superroom
 
 Isaac rejected the earlier C-side difficulty and explicitly requested one very large, dense room with one continuous challenge. The new local Room Bank candidate F, bank-f94, is The White Mile: 172 × 84 tiles, one spawn/fire, three stacked runs, 16 crumbling contacts, low flower ceilings, wallbounce turns, a needle ascent, and an airborne undercut. There are no intermediate checkpoint rooms. Existing candidates and the separately registered Trumpet Hollow campaign candidate are preserved; this new candidate is shown first in the Room Bank C-side menu.
