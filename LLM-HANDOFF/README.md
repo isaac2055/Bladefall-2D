@@ -1,6 +1,6 @@
 # Bladefall: start here
 
-Read **CODEX-RESUME-7.304.md** initially (current release, 2026-10-09). Then search the
+For the current Core and feedback changes (7.329, 2026-10-13), read **CORES-AND-CLOUD-REVIEWS-7.329.md**. Read **CODEX-RESUME-7.304.md** for the campaign/API architecture. Then search the
 relevant code — the code wins over every document. Do not read this entire folder, test receipts,
 or conversation histories. NEXT-MODEL-BRIEF.md describes the older 7.166 architecture.
 

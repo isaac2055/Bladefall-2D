@@ -18,8 +18,10 @@ ASSETS=(
   bladefall-climb-bank-passages.js
   bladefall-climb-finale-tapes.js
   bladefall-climb-finale.js
-  bladefall-climb-cside-tapes.js
-  bladefall-climb-csides.js
+  bladefall-pcore-dev-core-checkpoints.js
+  bladefall-pcore-dev-core-checkpoints-view.js
+  bladefall-climb-core-tapes.js
+  bladefall-climb-cores.js
   bladefall-climb-rewards.js
   bladefall-pcore-dev-superrooms-colossus.js
   bladefall-pcore-dev-superrooms-base-view.js

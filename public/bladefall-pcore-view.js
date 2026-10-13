@@ -243,7 +243,7 @@ function hash(x,y){let h=(x*374761393+y*668265263)^0x5bd1e995;h=(h^(h>>>13))*127
 function chapterOf(roomIndex){let n=0;for(let c=0;c<R.chapters.length;c++){if(roomIndex<n+R.chapters[c].rooms.length)return c;n+=R.chapters[c].rooms.length;}return R.chapters.length-1;}
 function chapterStart(c){let n=0;for(let i=0;i<c;i++)n+=R.chapters[i].rooms.length;return n;}
 function palette(){const ch=R.chapters[view.chapter];return root.BladefallPitchView?.palette?.(ch)||PAL[ch.palette]||PAL.footing;}
-function startChapter(c,roomOffset=0){
+function startChapter(c,roomOffset=0){delete view.coreReplayCheckpoint;
  view.chapter=c;const start=chapterStart(c)+roomOffset;
  view.g=C.createGame(R.all,{room:start,shards:save.shards,assist:save.assist});
  view.chapterStats={deaths:0,frames:0,start:performance.now()};
@@ -273,7 +273,7 @@ function nextRoom(){
  C.enterRoom(g,next);view.trail=[];resetScarf();view.roomTimer=0;
 }
 const takeoverOK=()=>!!save.assist.testMode||!root.BladefallPitchView?.climb?.state?.();   // (7.314) a watched Survive route is not a skip
-function retryRoom(){if(!view.g)return;SV()?.retry(view.g.room.id);view.replay=null;C.resetRoom(view.g);view.g.p.state='normal';view.g.p.respawnTimer=0;view.trail=[];resetScarf();}
+function retryRoom(){if(!view.g)return;if(view.coreReplayCheckpoint!==undefined){view.g.coreRun=view.coreReplayCheckpoint;delete view.coreReplayCheckpoint;view.g.coreDemo=false;}SV()?.retry(view.g.room.id);view.replay=null;C.resetRoom(view.g);view.g.p.state='normal';view.g.p.respawnTimer=0;view.trail=[];resetScarf();}
 
 /* ---------------------------------------------------------------- loop */
 function frame(now){
@@ -857,13 +857,14 @@ function togglePause(){
  const skipInfo=ch.climb?root.BladefallPitchView?.climb?.skipInfo?.():null;
  const selectable=(ch.climb?ch.rooms.slice(0,ch.mainCount):ch.rooms).filter(r=>!r.passage&&!r.connector),selected=selectable.findIndex(r=>r.id===g.room.id);
  const optionalRooms=ch.climb?ch.rooms.slice(ch.mainCount).filter(r=>!r.passage&&!r.connector):[],optionalSelected=optionalRooms.findIndex(r=>r.id===g.room.id);
- const roomStatus=selected>=0?`room ${selected+1} of ${selectable.length}`:optionalSelected>=0?`optional O${optionalSelected+1}`:'connecting passage';
+ const roomStatus=g.room.def.coreCheckpoints?`Core · Part ${(g.coreRun?.index??-1)+2}/3`:selected>=0?`room ${selected+1} of ${selectable.length}`:optionalSelected>=0?`optional O${optionalSelected+1}`:'connecting passage';
  showOverlay(`<div class="pcCard"><h1>Paused</h1>${view.trial?`<p class="pcSub">${view.trial.title||'The gate'} · level ${view.chapter+1} of ${view.trial.from}–${view.trial.to}</p>`:''}<p class="pcSub">${ch.name} · ${roomStatus}${g.room.name?' · '+g.room.name:''}</p>
  ${g.room.def.question?`<p class="pcSub">${g.room.def.question}</p>`:''}
- <button class="pcBtn" id="pcResume" data-back>Resume</button><button class="pcBtn ghost" id="pcRetry">Retry room</button>
+ <button class="pcBtn" id="pcResume" data-back>Resume</button><button class="pcBtn ghost" id="pcRetry">${g.room.def.coreCheckpoints?'Retry from save point':'Retry room'}</button>${g.room.def.coreCheckpoints?'<button class="pcBtn ghost" id="pcCoreRestart">Restart Core</button>':''}
+ ${ch.climb&&(ch.climb<=40||g.room.def.core)?'<button class="pcBtn ghost" id="pcRoomFeedback">Leave room feedback</button>':''}
  ${hasTape?'<button class="pcBtn ghost" id="pcWatch">Watch the intended route (review)</button>':''}
  ${backPassage?'<button class="pcBtn ghost" id="pcReturnPassage">Return through passage</button>':''}
- <p class="pcSub">Room select${optional?' · O = optional route':''}</p><div class="pcMiniRow">${rooms}${optional}</div>
+ ${g.room.def.coreCheckpoints?'<p class="pcSub">Save lanterns keep the next part. Retry returns to your latest lantern.</p>':`<p class="pcSub">Room select${optional?' · O = optional route':''}</p><div class="pcMiniRow">${rooms}${optional}</div>`}
  ${skipInfo?`<button class="pcBtn ghost" id="pcSkipSection" ${skipInfo.allowed?'':'disabled'}>Skip ${skipInfo.finale?'finale':'section'} · costs ${skipInfo.cost} · ${skipInfo.remaining===Infinity?"∞":skipInfo.remaining} left</button>${!skipInfo.allowed?`<p class="pcSub">${skipInfo.reason||'This section cannot be skipped.'}</p>`:''}`:''}
  ${ch.climb&&!view.trial?'<button class="pcBtn ghost" id="pcChapters">World map</button>':''}
  <button class="pcBtn ghost" id="pcCtl">Controls</button><button class="pcBtn ghost" id="pcAssist">Assist &amp; options</button>${view.trial?'<button class="pcBtn ghost" id="pcLeave">Leave the gate (you keep the levels you finished)</button>':!ch.climb?'<button class="pcBtn ghost" id="pcChapters">Chapters</button>':''}
@@ -873,6 +874,8 @@ function togglePause(){
  document.getElementById('pcReturnPassage')?.addEventListener('click',()=>root.BladefallPitchView.climb.returnPassage());
  document.getElementById('pcCtl').onclick=()=>{const back=()=>{view.paused=false;togglePause();};touchUI()?TOUCH().card(back):controlsCard(back);};
  document.getElementById('pcRetry').onclick=()=>{togglePause();retryRoom();};
+ document.getElementById('pcCoreRestart')?.addEventListener('click',()=>{root.BladefallCoreProgress?.clear(g.room.def);g.coreRun=null;delete view.coreReplayCheckpoint;g.coreDemo=false;togglePause();retryRoom();root.BladefallClimbSession?.invalidate('restarted Core');});
+ document.getElementById('pcRoomFeedback')?.addEventListener('click',()=>root.BladefallClimbSession?.reviewCurrent());
  if(hasTape)document.getElementById('pcWatch').onclick=()=>{togglePause();watchRoute();};
  overlay().querySelectorAll('[data-room]').forEach(b=>b.onclick=()=>{root.BladefallClimbSession?.invalidate('room select');view.paused=false;hideOverlay();C.enterRoom(g,base+(+b.dataset.room));view.replay=null;view.trail=[];resetScarf();view.roomTimer=0;});
  document.getElementById('pcAssist').onclick=()=>assistCard(()=>{view.paused=false;togglePause();});
@@ -882,6 +885,7 @@ function togglePause(){
 function watchRoute(){
  const g=view.g,tape=R.tapes[g.room.id];if(!tape)return;
  SV()?.watched(g.room.id);
+ if(g.room.def.coreCheckpoints){view.coreReplayCheckpoint=g.coreRun?{...g.coreRun}:null;g.coreRun=null;g.coreDemo=true;}
  C.enterRoom(g,g.roomIndex);view.trail=[];resetScarf();
  const frames=[];for(const [n,k]of tape)for(let i=0;i<n;i++)frames.push(k);
  view.replay={frames,i:0};

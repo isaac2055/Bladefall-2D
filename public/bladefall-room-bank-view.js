@@ -5,36 +5,33 @@ const PV=root.BladefallPitchView,R=()=>root.BladefallPrecisionRooms,B=()=>root.B
 const old={start:PV.start,menu:PV.menu,holding:PV.holding,exit:PV.exit,chapterDone:PV.chapterDone,palette:PV.palette,draw:PV.draw};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const tagName=t=>({'recoil-platform':'Recoil plates','impulse-seed':'Impulse seeds','moving-hook':'Moving anchors','cargo-clasp':'Cargo clasps','hinge-arm':'Hinged stone arms','step-relay':'Landing relays','vector-refill':'Directional crystals',sweeper:'Moving thorns',zip:'Moving carriage',zipline:'Tears'}[t]||t.replaceAll('-',' '));
-const groupOf=x=>x.bank.collection==='csides'?'csides':x.bank.needsReview?'superrooms':x.bank.acceptance==='banked'?'banked':B().defaultGroup==='pending'?'pending':x.bank.collection==='superrooms'?'superrooms':x.bank.run>=2?'run'+x.bank.run:x.bank.run===1?'run1':'review';
+const groupOf=x=>x.bank.collection==='cores'?'cores':x.bank.needsReview?'superrooms':x.bank.acceptance==='banked'?'banked':B().defaultGroup==='pending'?'pending':x.bank.collection==='superrooms'?'superrooms':x.bank.run>=2?'run'+x.bank.run:x.bank.run===1?'run1':'review';
 const inGroup=(x,g)=>g==='banked'?x.bank.acceptance==='banked':groupOf(x)===g;
 const groups=()=>B().groups||['run7','run6','run5','superrooms','run4','run3','run2','run1','review','banked'];
-const groupButton=g=>g==='csides'?'bankCSides':g==='pending'?'bankPending':g==='superrooms'?'bankSuperrooms':g==='banked'?'bankApproved':g==='review'?'bankReview':'bankRun'+g.slice(3);
-const groupLabel=g=>g==='csides'?'C-side candidates':g==='pending'?'Final review':g==='superrooms'?'Superrooms for review':g==='banked'?'Banked':g==='review'?'Earlier review':g==='run1'?'Run 1 revisions':'Run '+g.slice(3);
-const formatLabel=x=>x.bank.format==='cside-section'?'C-side section':x.bank.format==='extended'?`Extended room · ${x.room.cols||40} × ${x.room.rows||23} tiles`:x.bank.format==='superroom'?'Superroom':'Compact room';
+const groupButton=g=>g==='cores'?'bankCores':g==='pending'?'bankPending':g==='superrooms'?'bankSuperrooms':g==='banked'?'bankApproved':g==='review'?'bankReview':'bankRun'+g.slice(3);
+const groupLabel=g=>g==='cores'?'Cores':g==='pending'?'Final review':g==='superrooms'?'Superrooms for review':g==='banked'?'Banked':g==='review'?'Earlier review':g==='run1'?'Run 1 revisions':'Run '+g.slice(3);
+const formatLabel=x=>x.bank.format==='cside-section'?'Core part':x.bank.format==='extended'?`Extended room · ${x.room.cols||40} × ${x.room.rows||23} tiles`:x.bank.format==='superroom'?'Superroom':'Compact room';
 let st=null,side='base',group=B().defaultGroup||('run'+(B().activeRun||7)),difficulty='all';
 function entries(){return B().records.filter(x=>x.bank.side===side&&inGroup(x,group));}
 function start(id){
  const record=B().records.find(x=>x.room.id===id);if(!record)return;
  side=record.bank.side;if(!inGroup(record,group))group=groupOf(record);
- const ci=R().chapters.findIndex(c=>c.bank===side&&c.bankGroup===group&&(group!=='csides'||c.bankVariant===record.bank.csideVariant)),ch=R().chapters[ci];if(!ch)return;
+ const ci=R().chapters.findIndex(c=>c.bank===side&&c.bankGroup===group&&(group!=='cores'||c.bankVariant===record.bank.coreIndex)),ch=R().chapters[ci];if(!ch)return;
  const ri=Math.max(0,ch.rooms.findIndex(r=>r.id===id));
  syncModeLink(ch.rooms[ri].id);
- st.world={n:'bank-'+side+'-'+group+(group==='csides'?'-'+record.bank.csideVariant:''),name:ch.name,atlasStart:ch.rooms[0].id,atlasEnd:ch.rooms.at(-1).id};
+ st.world={n:'bank-'+side+'-'+group+(group==='cores'?'-'+record.bank.coreIndex:''),name:ch.name,atlasStart:ch.rooms[0].id,atlasEnd:ch.rooms.at(-1).id};
  st.api.startChapter(ci,ri);st.view.wipe=0;st.view.wipeTo=null;S().start();
  root.BladefallPrecisionView.clearInput();
 }
 function syncModeLink(id){const link=document.querySelector('#bsBar a');if(link)link.href='precision.html?pitch=bank&side='+side+'&group='+group+'&mode='+(S().state().mode==='review'?'play':'review')+(id?'&room='+encodeURIComponent(id):'');}
 function menu(){
  syncModeLink();st.view.mode='menu';st.view.paused=false;st.view.replay=null;st.api.music(false);
- const all=B().records,rows=entries().filter(x=>group==='csides'||difficulty==='all'||x.bank.difficulty===+difficulty);
+ const all=B().records,rows=entries().filter(x=>group==='cores'||difficulty==='all'||x.bank.difficulty===+difficulty);
  const count=(which,kind)=>all.filter(x=>(!which||x.bank.side===which)&&inGroup(x,kind)).length;
- const candidates=group==='csides'?[...new Set(rows.map(x=>x.bank.csideVariant))].sort((a,b)=>Math.max(...rows.filter(x=>x.bank.csideVariant===b).map(x=>x.bank.batch))-Math.max(...rows.filter(x=>x.bank.csideVariant===a).map(x=>x.bank.batch))||a.localeCompare(b)).map(variant=>{
-  const set=rows.filter(x=>x.bank.csideVariant===variant).sort((a,b)=>a.bank.csideSection-b.bank.csideSection),first=set[0];
-  return `<button class="pcChoice" data-bank-room="${first.room.id}"><span class="pcNum">${esc(variant.toUpperCase())}${first.bank.author==='Astra'?' · Astra':first.bank.author==='Sol 6.1'?' · Sol 6.1':''}</span><span class="pcName">Outskirts C-side · ${esc(first.bank.csideTitle||(variant==='a'?'The Broken Road':'Homeward Bell'))}</span><span class="pcDesc">${first.bank.csideDescription?esc(first.bank.csideDescription):variant==='a'?'Forward momentum, broken islands, then a hammer launch into the high bell.':'Change direction on broken ground, then launch home from the Sentinel’s raised shoulders.'}</span><span class="pcMeta">${first.bank.format==='superroom'?'One continuous superroom · one starting fire':set.length+' sections · a fire at each'} · estimated 5/5 · review pending</span></button>`;
- }).join(''):null;
- st.api.showOverlay(`<div class="pcCard wide"><h1>Room Bank</h1><p class="pcSub">${group==='csides'?'Two new Sol 6.1 takes: The Bell’s Teeth and Turn of the Trumpet. Each is one large, continuous Outskirts C-side superroom.':group==='pending'?'The remaining revisions are gathered here for one final review pass. Your approved rooms and placement notes are in Banked.':group==='run7'?'Run 7: learn timed movement, develop it, then combine it in demanding patrol and return routes.':group==='run6'?'Run 6 revisions: deliberate portal relinking, an active hook ride, a rebuilt tide loop and corrected movement puzzles.':group==='run5'?'Run 5 review: revised cart, recoil and return-launch rooms, plus the retained ram puzzle. Approved rooms are in Banked.':group==='superrooms'?'The newest ten finales and the requested revisions are playable here and in their assigned campaign worlds.':group==='run4'?'Run 4: new movement techniques meet recoil plates, impulse seeds and moving anchors.':group==='run3'?'Run 3 revision: the fixed divider makes the slingshot the intended route. Approved rooms are in Banked.':group==='run2'?'Run 2 revisions: more forgiving reverse launches. The approved parry-and-wavedash route is Banked.':group==='run1'?'Run 1 approvals are in Banked.':group==='banked'?'Your approved rooms, including the finales already placed in the Survive campaign.':'Earlier revisions and candidates awaiting your review.'} Difficulty is an author estimate.</p>
- <div class="pcRow">${groups().map(g=>`<button class="pcBtn ${group===g?'':'ghost'}" id="${groupButton(g)}">${groupLabel(g)} · ${g==='csides'?new Set(all.filter(x=>x.bank.collection==='csides').map(x=>x.bank.csideVariant)).size+' versions':count(null,g)}</button>`).join('')}</div>
- ${group==='csides'?'<p class="pcSub">The new superrooms each have one checkpoint at the start. Earlier versions remain available for comparison. Choose a version; room selection and intended routes are available from pause. These are local review candidates awaiting your feedback.</p>':`<div class="pcRow"><button class="pcBtn ${side==='base'?'':'ghost'}" id="bankBase">Base · ${count('base',group)}</button><button class="pcBtn ${side==='fractured'?'':'ghost'}" id="bankFractured">Fractured · ${count('fractured',group)}</button></div>`}
+ const candidates=group==='cores'?rows.map(x=>`<button class="pcChoice" data-bank-room="${x.room.id}"><span class="pcNum">Core ${x.bank.coreIndex}${x.bank.draft?' · draft':''}</span><span class="pcName">${esc(x.room.name)}</span><span class="pcDesc">${esc(x.bank.coreDescription)}</span><span class="pcMeta">One continuous superroom · 3 parts · 2 save points · +${x.room.crumbleExtraFrames/60}s crumble grace · estimated 5/5</span></button>`).join(''):null;
+ st.api.showOverlay(`<div class="pcCard wide"><h1>Room Bank</h1><p class="pcSub">${group==='cores'?'Turn of the Trumpet is the Outskirts Core. The Oath Root is a Black Woods Core draft. Both are continuous superrooms with two save points.':group==='pending'?'The remaining revisions are gathered here for one final review pass. Your approved rooms and placement notes are in Banked.':group==='run7'?'Run 7: learn timed movement, develop it, then combine it in demanding patrol and return routes.':group==='run6'?'Run 6 revisions: deliberate portal relinking, an active hook ride, a rebuilt tide loop and corrected movement puzzles.':group==='run5'?'Run 5 review: revised cart, recoil and return-launch rooms, plus the retained ram puzzle. Approved rooms are in Banked.':group==='superrooms'?'The newest ten finales and the requested revisions are playable here and in their assigned campaign worlds.':group==='run4'?'Run 4: new movement techniques meet recoil plates, impulse seeds and moving anchors.':group==='run3'?'Run 3 revision: the fixed divider makes the slingshot the intended route. Approved rooms are in Banked.':group==='run2'?'Run 2 revisions: more forgiving reverse launches. The approved parry-and-wavedash route is Banked.':group==='run1'?'Run 1 approvals are in Banked.':group==='banked'?'Your approved rooms, including the finales already placed in the Survive campaign.':'Earlier revisions and candidates awaiting your review.'} Difficulty is an author estimate.</p>
+ <div class="pcRow">${groups().map(g=>`<button class="pcBtn ${group===g?'':'ghost'}" id="${groupButton(g)}">${groupLabel(g)} · ${g==='cores'?new Set(all.filter(x=>x.bank.collection==='cores').map(x=>x.bank.coreIndex)).size+' levels':count(null,g)}</button>`).join('')}</div>
+ ${group==='cores'?'<p class="pcSub">Each lantern saves the next part for this run. The Garden also remembers Core progress between visits. Reviews save privately to the cloud; export is an optional backup.</p>':`<div class="pcRow"><button class="pcBtn ${side==='base'?'':'ghost'}" id="bankBase">Base · ${count('base',group)}</button><button class="pcBtn ${side==='fractured'?'':'ghost'}" id="bankFractured">Fractured · ${count('fractured',group)}</button></div>`}
  <label class="pcOpt">Estimated difficulty <select id="bankDifficulty"><option value="all">All</option>${[1,2,3,4,5].map(n=>`<option value="${n}" ${String(n)===difficulty?'selected':''}>${n} / 5</option>`).join('')}</select></label>
  <div class="pcGrid">${candidates??rows.map(x=>`<button class="pcChoice" data-bank-room="${x.room.id}"><span class="pcNum">${esc(x.room.id.replace('bank-','').toUpperCase())}</span><span class="pcName">${esc(x.room.name)}</span><span class="pcDesc">${esc((x.bank.tags||[]).map(tagName).join(' · '))}</span><span class="pcMeta">${x.bank.acceptance==='banked'?(x.bank.reclassifiedFrom?'Banked · moved to '+(x.bank.side==='base'?'Base':'Fractured'):'Banked'):x.bank.acceptance==='revised'?'Revised · review again':x.bank.collection==='superrooms'?'Superroom · review pending':x.bank.run>=2?'Run '+x.bank.run+' candidate':x.bank.run===1?'Run 1 candidate':'New candidate'}${x.bank.placementBand?' · '+esc(x.bank.placementBand):''} · Estimated ${x.bank.difficulty}/5${x.bank.format?' · '+formatLabel(x):''}${x.bank.newMechanics.length?(x.bank.run>=5?' · full synthesis':x.bank.collection==='superrooms'?' · shared systems':x.bank.run===4?' · movement + entity':x.bank.run===3?' · new entity':x.bank.run===2?' · new movement':' · new mechanic'):''}</span></button>`).join('')}</div>
  ${rows.length?'':'<p class="pcSub">No rooms match this selection.</p>'}
@@ -45,14 +42,14 @@ function menu(){
  document.getElementById('bankFractured')?.addEventListener('click',()=>{side='fractured';menu();});
  document.getElementById('bankDifficulty').onchange=e=>{difficulty=e.target.value;menu();};
  document.getElementById('bankSet').onclick=()=>start(entries()[0]?.room.id);
- if(group==='csides'){document.getElementById('bankSet').style.display='none';document.getElementById('bankDifficulty').closest('label').style.display='none';}
+ if(group==='cores'){document.getElementById('bankSet').style.display='none';document.getElementById('bankDifficulty').closest('label').style.display='none';}
  document.querySelectorAll('[data-bank-room]').forEach(b=>b.onclick=()=>start(b.dataset.bankRoom));
  st.view.g=null;S().refresh();
 }
 PV.start=function(q,api){
  if(q.get('pitch')!=='bank')return old.start.call(this,q,api);
- document.title='Bladefall · Room Bank';side=q.get('side')==='fractured'?'fractured':'base';group=groups().includes(q.get('group'))?q.get('group'):(B().defaultGroup||('run'+(B().activeRun||7)));if(group==='csides')side='fractured';
- st={api,view:api.view,world:null,sessionConfig:{title:'Room Bank',baseUrl:'precision.html?pitch=bank',build:B().version,unit:'Set',suitability:'1 = poor fit · 5 = excellent fit for the suggested worlds and role',describe:d=>{const b=d.bank;return b?.collection==='csides'?`Outskirts C-side · ${b.csideVariant.toUpperCase()} · ${b.format==='superroom'?'one continuous superroom':'section '+b.csideSection+'/3'} · ${b.role}`:b?`${b.side==='base'?'Base':'Fractured'}${b.run?' · Run '+b.run:''} · ${b.acceptance==='banked'?'banked':b.acceptance==='revised'?'revised':'new candidate'} · ${b.placementBand|| (b.worlds.length?'suggested worlds '+b.worlds.join(', '):'placement to review')} · ${b.role}`:'';}}};
+ document.title='Bladefall · Room Bank';side=q.get('side')==='fractured'?'fractured':'base';group=groups().includes(q.get('group'))?q.get('group'):(B().defaultGroup||('run'+(B().activeRun||7)));if(group==='cores')side='fractured';
+ st={api,view:api.view,world:null,sessionConfig:{title:'Room Bank',baseUrl:'precision.html?pitch=bank',build:B().version,unit:'Set',suitability:'1 = poor fit · 5 = excellent fit for the suggested worlds and role',describe:d=>{const b=d.bank;return b?.collection==='cores'?`Core ${b.coreIndex} · 3 parts · 2 save points · ${b.role}`:b?`${b.side==='base'?'Base':'Fractured'}${b.run?' · Run '+b.run:''} · ${b.acceptance==='banked'?'banked':b.acceptance==='revised'?'revised':'new candidate'} · ${b.placementBand|| (b.worlds.length?'suggested worlds '+b.worlds.join(', '):'placement to review')} · ${b.role}`:'';}}};
  S().init(st,q);menu();
  const requested=q.get('room');if(B().records.some(x=>x.room.id===requested))start(requested);
  return true;
@@ -61,6 +58,7 @@ PV.menu=function(){if(!st)return old.menu.call(this);menu();return true;};
 PV.holding=function(){if(!st)return old.holding.call(this);if(st.lastRoom!==st.view.g?.room.id){st.lastRoom=st.view.g?.room.id;syncModeLink(st.lastRoom);}S().tick();return false;};
 PV.exit=function(view,nextRoom){
  if(!st)return old.exit.call(this,view,nextRoom);
+ if(view.replay&&view.g.room.def.core){root.BladefallPrecisionView.retryRoom();return true;}
  const resume=()=>{view.wipe=16;view.wipeTo=nextRoom;};
  if(S().complete(view.g.room.def,resume))return true;
  return false;
@@ -74,7 +72,7 @@ PV.chapterDone=function(ci,api){
 PV.palette=function(ch){if(!st)return old.palette.call(this,ch);return root.BladefallPrecisionView?.palettes[st.view.g?.room.def.palette]||root.BladefallPrecisionView?.palettes[side==='base'?'causeway':'throne'];};
 PV.draw=function(b,g,view){
  old.draw?.call(this,b,g,view);
- if(!st||g.room.def.bank?.collection!=='csides')return;
+ if(!st||g.room.def.bank?.collection!=='cores')return;
  const x=g.room.spawn.x-10,y=g.room.spawn.y+11,t=g.frame;
  b.fillStyle='#625144';b.fillRect(x-3,y-2,8,2);
  b.fillStyle='#db7c3c';b.fillRect(x-1,y-7,4,5);

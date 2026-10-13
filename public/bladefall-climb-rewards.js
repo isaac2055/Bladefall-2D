@@ -1,15 +1,15 @@
-/* Survive's rewards (7.319): perfect clears, the twenty plants, C-sides and the four knight skins.
+/* Survive's rewards (7.319): perfect clears, the twenty plants, Cores and the four knight skins.
 
    Perfect clear: a world finished from its start without dying on its road (optional routes do not count, and for
    now skips are allowed, so a perfect clear is always possible). A perfect base world gives the bottom half of its
-   world's plant; a perfect Fractured world gives the top half. With both halves, that world's C-side unlocks. The
-   C-sides themselves are not built yet (docs/plans/c-sides.md is the handoff); csideBeaten(k) records one beaten.
+   world's plant; a perfect Fractured world gives the top half. With both halves, that world's Core unlocks. The
+   Cores are continuous three-part worlds; csideBeaten(k) keeps the existing reward-save format.
 
    Skins (Settings-free: the world map's Garden & skins card). Each is earned once and kept:
      ascendant   every base world (1–20) beaten
      fractured   every Fractured world (21–40) beaten
      heartbound  every heart and Vesper beaten (100%)
-     gardener    every C-side beaten (the rarest)
+     gardener    every Core beaten (the rarest)
    A locked skin shows as a silhouette; pressing it five times previews it in the card only. It can be worn only once
    earned. Each skin looks different with and without a dash: its scarf, plume and trim carry the dash colour.
 
@@ -56,7 +56,7 @@ const SKINS=Object.freeze([
   pal:{helm:'#b9b7d4',helmD:'#7d7a9c',visor:'#30204d',body:'#645087',trimOn:'#86e6d8',trimOff:'#4a4a6a',belt:'#312940',hilt:'#eee5ff',legs:'#312940',scarfOn:'#86e6d8',scarfOff:'#5a5a78'}},
  {id:'gilded',name:'Gilded Sovereign',how:'Every heart, your Echo and Vesper',fx:'glint',
   pal:{helm:'#ffd75a',helmD:'#b8861c',visor:'#c0182a',body:'#e8b23a',trimOn:'#fff3b0',trimOff:'#9a7a2a',belt:'#7a1a24',hilt:'#fff8d8',legs:'#8a5a12',scarfOn:'#fff1a0',scarfOff:'#a08a4a'}},
- {id:'prism',name:'Prism Paladin',how:'Everything: every world and heart, your Echo, Vesper and every C-side',fx:'prism',
+ {id:'prism',name:'Prism Paladin',how:'Everything: every world and heart, your Echo, Vesper and every Core',fx:'prism',
   pal:{helm:'#ffffff',helmD:'#c8d8e8',visor:'#3a4a6a',body:'#e8f0f8',trimOn:'prism',trimOff:'#a8b8c8',belt:'#8ad8ff',hilt:'#ffffff',legs:'#9aaabb',scarfOn:'prism',scarfOff:'#8a9aaa'}},
  {id:'ember',name:'Ember Wretch',how:'',buy:.5,fx:'ember',
   pal:{helm:'#3a2a24',helmD:'#1a120e',visor:'#ffb030',body:'#2a1a14',trimOn:'#ff7a20',trimOff:'#6a3a1a',belt:'#ff5a10',hilt:'#ffd080',legs:'#140c08',scarfOn:'#ff9a30',scarfOff:'#5a3a2a'}},
@@ -98,7 +98,7 @@ function buy(id){if(!canBuy(id))return false;const r=state();r.bought=r.bought||
 function plantOf(n){return PLANTS[n>20?n-20:n]||null;}
 function halves(k){const r=state();return {root:!!r.perfect[k],top:!!r.perfect[k+20]};}
 function csideOpen(k){const h=halves(k);return h.root&&h.top;}
-// a world finished perfectly: its half of the plant, and maybe its C-side
+// a world finished perfectly: its half of the plant, and maybe its Core
 function perfect(n){
  if(n<1||n>40)return null;const r=state(),k=n>20?n-20:n,p=PLANTS[k];if(r.perfect[n])return {already:true,plant:p};
  r.perfect[n]=true;write(r);const h=halves(k);
@@ -153,8 +153,8 @@ function sprite(b,x,y,f,pose,pal,dash,t=0,squash=1,stretch=1,run=0,silhouette=nu
 function card(api,back){
  const r=state(),open=k=>csideOpen(k);
  const rows=PLANTS.slice(1).map((p,i)=>{const k=i+1,h=halves(k),w1=CL()?.world(k)?.name||('World '+k),w2=CL()?.world(k+20)?.name||('World '+(k+20));
-  const cw=(root.BladefallClimbCsides?.worlds||[]).find(w=>w.cside===k),canPlay=cw&&(open(k)||root.BladefallClimbFinale?.unlockedAll?.());
-  return `<tr><td style="color:${p.col}">✿ ${p.name}</td><td title="perfect ${w1}">${h.root?'● '+p.root:'○ '+p.root}</td><td title="perfect ${w2}">${h.top?'● '+p.top:'○ '+p.top}</td><td>${canPlay?`<button class="pcBtn ghost" data-cside="${cw.n}" style="padding:2px 8px">${r.csides[k]?'C-side ✓ · again':'Play C-side'}</button>`:r.csides[k]?'C-side ✓':open(k)?'<span style="color:#ffd98a">C-side open · coming soon</span>':''}</td></tr>`;}).join('');
+  const cw=(root.BladefallClimbCores?.worlds||[]).find(w=>w.cside===k),canPlay=cw&&open(k),progress=cw&&root.BladefallCoreProgress?.saved(cw.rooms[0]);
+  return `<tr><td style="color:${p.col}">✿ ${p.name}</td><td title="perfect ${w1}">${h.root?'● '+p.root:'○ '+p.root}</td><td title="perfect ${w2}">${h.top?'● '+p.top:'○ '+p.top}</td><td>${canPlay?`<button class="pcBtn ghost" data-cside="${cw.n}" style="padding:2px 8px">${progress?'Continue Core · Part '+(progress.index+2)+'/3':cw.draft?'Try Core draft':r.csides[k]?'Core ✓ · again':'Play Core'}</button>${progress?` <button class="pcBtn ghost" data-core-restart="${cw.n}" style="padding:2px 8px">Restart</button>`:''}`:r.csides[k]?'Core ✓':open(k)?'<span style="color:#ffd98a">Core open · coming soon</span>':''}</td></tr>`;}).join('');
  // (7.326) Only the skins you have, and the next one on each track: the story (base, Fractured, Echo, all hearts,
  // everything) and the hearts (21, 41, 61). Starlit Regalia and the Haunt are surprises, shown once earned.
  const STORY=['ascendant','fractured','echo','gilded','prism'],HEARTS=['gardener','ember','heartbound'];
@@ -163,7 +163,7 @@ function card(api,back){
  const howOf=s=>s.buy?`${price(s)} hearts`:s.how;
  const sk=visible.map(s=>`<button class="pcChoice" data-skin="${s.id}" style="text-align:left;display:flex;align-items:center;gap:10px"><canvas width="96" height="40" data-skin-art="${s.id}" style="image-rendering:pixelated;width:144px;height:60px;flex:none"></canvas><span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span class="pcName">${earned(s.id)?s.name:'???'}${r.skin===s.id&&earned(s.id)?' · worn':''}</span><span class="pcDesc">${howOf(s)}${earned(s.id)?'':canBuy(s.id)?' · <b style="color:#ffd98a">open it now</b>':''}</span></span></button>`).join('');
  api.showOverlay(`<div class="pcCard wide"><h1>Garden &amp; skins</h1>
-  <p class="pcSub">Finish a world without dying on its road (optional routes don’t count) for half of its plant: the bottom from the base world, the top from its Fractured echo. Both halves open that world’s C-side.</p>
+  <p class="pcSub">Finish a world without dying on its road (optional routes don’t count) for half of its plant: the bottom from the base world, the top from its Fractured echo. Both halves open that world’s Core.</p>
   <table class="pcTable" style="font-size:.85em"><tr><td></td><td>Bottom (base)</td><td>Top (Fractured)</td><td></td></tr>${rows}</table>
   <h2 class="pcPart">Skins</h2><p class="pcSub">With a dash · without. ♥ ${hearts().got} collected (never spent). Press a locked one five times for a glimpse.</p>
   <div class="pcGrid"><button class="pcChoice" data-skin="" style="text-align:left;display:flex;align-items:center;gap:10px"><canvas width="96" height="40" data-skin-art="" style="image-rendering:pixelated;width:144px;height:60px;flex:none"></canvas><span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span class="pcName">The knight${!r.skin?' · worn':''}</span><span class="pcDesc">The original</span></span></button>${sk}</div>
@@ -180,9 +180,10 @@ function card(api,back){
   if(canBuy(id)){buy(id);wear(id);card(api,back);return;}   // (7.321) opened by the hearts you have collected (they are not spent)
   peek[id]=(peek[id]||0)+1;if(peek[id]===5){const s=SKINS.find(x=>x.id===id);el.querySelector('.pcName').textContent=s.name;el.querySelector('.pcDesc').textContent=howOf(s)+' · a glimpse';}paint();});
  document.querySelectorAll('[data-cside]').forEach(el=>el.onclick=()=>{clearInterval(timer);root.BladefallPitchView?.climb?.startWorld(+el.dataset.cside);});
+ document.querySelectorAll('[data-core-restart]').forEach(el=>el.onclick=()=>{clearInterval(timer);root.BladefallPitchView?.climb?.startWorld(+el.dataset.coreRestart,null,true);});
  document.getElementById('rwBack').onclick=()=>{clearInterval(timer);back();};
 }
 
-root.BladefallClimbRewards=Object.freeze({PLANTS,SKINS,state,earned,canBuy,buy,price,perfect,halves,csideOpen,csideBeaten,skin,wear,newlyEarned,sprite,scarf,plantOf,card,
+root.BladefallClimbRewards=Object.freeze({PLANTS,SKINS,state,earned,canBuy,buy,price,perfect,halves,coreOpen:csideOpen,coreBeaten:csideBeaten,csideOpen,csideBeaten,skin,wear,newlyEarned,sprite,scarf,plantOf,card,
  reset(){write({});}});
 })(typeof window!=='undefined'?window:globalThis);

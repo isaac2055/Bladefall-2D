@@ -1,8 +1,8 @@
-// node scripts/climb/tools/cside-beam.mjs <roomId> [beam] [depth]: beam search for a zero-death route through a C-side room
+// node scripts/climb/tools/cside-beam.mjs <roomId> [beam] [depth]: beam search for a zero-death route through a Core room
 // (macros of runs, jumps, 8-way dashes and climbs; scored by flood distance to the next unlit stake, then the exit). Writes beam-<id>.json beside this file.
 import fs from 'node:fs';import {createRequire} from 'node:module';const require=createRequire(import.meta.url);
 const P='/Users/computer/Projects/Bladefall-2D Antigravity/';const T=await import(P+'scripts/pcore-tape.mjs');const Core=T.Core;
-globalThis.BLADEFALL_CLIMB=true;require(P+'public/bladefall-climb.js');require(P+'public/bladefall-climb-csides.js');
+globalThis.BLADEFALL_CLIMB=true;require(P+'public/bladefall-climb.js');require(P+'public/bladefall-climb-core-tapes.js');require(P+'public/bladefall-climb-cores.js');
 const [id,BEAM='400',DEPTH='90']=process.argv.slice(2);const def=globalThis.BladefallClimbCsides.rooms.find(d=>d.id===id);
 const g0=Core.createGame([def],{room:0}),rm=g0.room,C=rm.cols,R=rm.rows;
 const bad=v=>v===1||v>=3&&v<=6;

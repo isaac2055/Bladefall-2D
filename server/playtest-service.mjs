@@ -5,9 +5,10 @@ const id=s=>typeof s==='string'&&/^[a-zA-Z0-9-]{8,128}$/.test(s);
 const hash=async s=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s))),v=>v.toString(16).padStart(2,'0')).join('');
 const response=(value,status=200)=>Response.json(value,{status,headers:{'Cache-Control':'no-store'}});
 const APP_ORIGIN='https://appassets.bladefall';
+const localOrigin=s=>/^http:\/\/(localhost|127\.0\.0\.1|\[::1\])(:\d{1,5})?$/.test(s||'');
 export async function handle(request,store){
- const app=request.headers.get('origin')===APP_ORIGIN;
- const cors={'Access-Control-Allow-Origin':APP_ORIGIN,'Access-Control-Allow-Methods':'GET, POST, OPTIONS','Access-Control-Allow-Headers':'Content-Type','Vary':'Origin'};
+ const origin=request.headers.get('origin'),app=origin===APP_ORIGIN||localOrigin(origin);
+ const cors={'Access-Control-Allow-Origin':origin||APP_ORIGIN,'Access-Control-Allow-Methods':'GET, POST, OPTIONS','Access-Control-Allow-Headers':'Content-Type','Vary':'Origin'};
  if(request.method==='OPTIONS')return new Response(null,{status:app?204:403,headers:app?cors:{}});
  const result=await handleRequest(request,store);
  if(!app)return result;
@@ -21,7 +22,7 @@ async function handleRequest(request,store){
   return response({season:M.SEASON,records:M.publicBest(records)});
  }
  if(request.method!=='POST')return response({error:'method'},405);
- const origin=request.headers.get('origin');if(origin&&origin!==new URL(request.url).origin&&origin!==APP_ORIGIN)return response({error:'origin'},403);
+ const origin=request.headers.get('origin');if(origin&&origin!==new URL(request.url).origin&&origin!==APP_ORIGIN&&!localOrigin(origin))return response({error:'origin'},403);
  if(+(request.headers.get('content-length')||0)>16384)return response({error:'size'},413);
  const body=await request.text();if(body.length>16384)return response({error:'size'},413);
  let payload;try{payload=JSON.parse(body);}catch{return response({error:'json'},400);}
@@ -33,8 +34,9 @@ async function handleRequest(request,store){
   if(!M.valid(r)||r.eligible!==true)return response({error:'invalid-time'},400);
   record={id:r.id,season:M.SEASON,player,name:r.name.trim(),mode:r.mode,campaign:r.campaign,world:String(r.world),ms:r.ms,deaths:r.deaths,...(r.mode==='survival'?{hearts:r.hearts||0}:{}),at:new Date().toISOString()};
  }else if(kind==='feedback'){
-  if(!M.world(r.mode,r.world)||M.world(r.mode,r.world).campaign!==r.campaign||!Number.isInteger(r.fun)||r.fun<1||r.fun>10||!Number.isInteger(r.difficulty)||r.difficulty<1||r.difficulty>5||typeof r.comment!=='string'||r.comment.length>4000||String(r.room||'').length>160)return response({error:'invalid-feedback'},400);
-  record={id:r.id,season:M.SEASON,player,mode:r.mode,campaign:r.campaign,world:String(r.world),room:String(r.room||''),name:String(r.name||M.world(r.mode,r.world).name).slice(0,160),fun:r.fun,difficulty:r.difficulty,comment:r.comment,ms:Number.isFinite(r.ms)?Math.max(0,Math.round(r.ms)):0,deaths:Number.isInteger(r.deaths)?Math.max(0,r.deaths):0,build:String(r.build||'').slice(0,40),at:new Date().toISOString()};
+  if(!M.validFeedback(r))return response({error:'invalid-feedback'},400);
+  record={id:r.id,season:M.SEASON,player,mode:r.mode,campaign:r.campaign,world:String(r.world),room:String(r.room||''),name:String(r.name||M.world(r.mode,r.world)?.name||r.room).slice(0,160),fun:r.fun,difficulty:r.difficulty,comment:r.comment,ms:Number.isFinite(r.ms)?Math.max(0,Math.round(r.ms)):0,deaths:Number.isInteger(r.deaths)?Math.max(0,r.deaths):0,build:String(r.build||'').slice(0,40),at:new Date().toISOString()};
+  for(const key of ['suitability','tester','session','origin','outcome','practiceReason','revision','bankSide','bankBatch','recordedAt','frames','assisted','part','x','y'])if(r[key]!=null)record[key]=r[key];
  }else return response({error:'kind'},400);
  const ownerKey='owners/'+player,tokenHash=await hash(token);await store.setJSON(ownerKey,{tokenHash},{onlyIfNew:true});
  if((await store.get(ownerKey,{type:'json'}))?.tokenHash!==tokenHash)return response({error:'profile-token'},403);

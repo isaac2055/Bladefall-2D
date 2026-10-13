@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 export const catalog=JSON.parse(readFileSync(new URL('./catalog.json',import.meta.url),'utf8'));
 export function bankGroups(activeRun=catalog.activeRun){
- if(catalog.defaultGroup==='csides')return ['csides','superrooms','banked'];
+ if(catalog.defaultGroup==='cores')return ['cores','superrooms','banked'];
  if(catalog.defaultGroup==='banked')return ['banked'];
  if(catalog.defaultGroup==='superrooms')return ['superrooms','banked'];
  if(catalog.defaultGroup==='pending')return ['pending','banked'];

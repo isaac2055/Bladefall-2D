@@ -8,6 +8,18 @@ function valid(r){
  const w=r&&world(r.mode,r.world);
  return !!r&&r.season===SEASON&&MODES.includes(r.mode)&&CAMPAIGNS.includes(r.campaign)&&w?.campaign===r.campaign&&Number.isSafeInteger(r.ms)&&r.ms>0&&r.ms<=604800000&&Number.isSafeInteger(r.deaths)&&r.deaths>=0&&r.deaths<1000000&&(r.hearts==null||Number.isSafeInteger(r.hearts)&&r.hearts>=0&&r.hearts<=(w.hearts||0))&&typeof r.id==='string'&&/^[a-zA-Z0-9-]{8,80}$/.test(r.id)&&typeof r.player==='string'&&/^[a-zA-Z0-9-]{8,128}$/.test(r.player)&&typeof r.name==='string'&&r.name.trim().length>0&&r.name.length<=40;
 }
+// Review feedback shares private storage with campaign feedback; it never enters scoreboards.
+function validFeedback(r){
+ if(!r||r.season!==SEASON)return false;
+ const course=world(r.mode,r.world),review=r.mode==='review'&&['room-bank','cores'].includes(r.campaign)&&(/^(?:\d{1,4}|bank-(?:base|fractured)-[a-z0-9-]+)$/.test(String(r.world)))&&typeof r.room==='string'&&/^(bank-[bf]\d{2,}|core-[a-z0-9-]+)$/.test(r.room);
+ if(!(review||course?.campaign===r.campaign&&!!course))return false;
+ if(!Number.isInteger(r.fun)||r.fun<1||r.fun>10||!Number.isInteger(r.difficulty)||r.difficulty<1||r.difficulty>5||typeof r.comment!=='string'||r.comment.length>4000||typeof (r.room||'')!=='string'||(r.room||'').length>160)return false;
+ if(r.suitability!=null&&(!Number.isInteger(r.suitability)||r.suitability<1||r.suitability>5))return false;
+ for(const [key,max] of [['tester',80],['session',128],['origin',160],['outcome',32],['practiceReason',160],['revision',40],['bankSide',20],['recordedAt',40]])if(r[key]!=null&&(typeof r[key]!=='string'||r[key].length>max))return false;
+ if(r.part!=null&&(!Number.isInteger(r.part)||r.part<1||r.part>3))return false;
+ for(const key of ['x','y'])if(r[key]!=null&&(!Number.isSafeInteger(r[key])||Math.abs(r[key])>1000000))return false;
+ return (r.frames==null||Number.isSafeInteger(r.frames)&&r.frames>=0)&&(r.bankBatch==null||Number.isSafeInteger(r.bankBatch)&&r.bankBatch>=0)&&(r.assisted==null||typeof r.assisted==='boolean');
+}
 const compare=(a,b)=>a.ms-b.ms||String(a.at||'').localeCompare(String(b.at||''))||a.id.localeCompare(b.id);
 const compareHearts=(a,b)=>hearts(b)-hearts(a)||compare(a,b);
 function best(records,{mode,campaign,world:wid,sort='time'}={}){
@@ -33,5 +45,5 @@ function aggregate(records,mode,campaign,sort='time'){
 // The API must keep a slower heart run even when the player also has a faster any-percent run.
 const publicBest=records=>[...new Map([...best(records),...best(records,{sort:'hearts'})].map(r=>[r.id,r])).values()];
 const format=ms=>{const n=Math.floor(ms/10);return `${Math.floor(n/6000)}:${String(Math.floor(n/100)%60).padStart(2,'0')}.${String(n%100).padStart(2,'0')}`;};
-root.BladefallPlaytestModel=Object.freeze({SEASON,MODES,CAMPAIGNS,catalog,world,valid,best,aggregate,publicBest,format,compare,compareHearts});
+root.BladefallPlaytestModel=Object.freeze({SEASON,MODES,CAMPAIGNS,catalog,world,valid,validFeedback,best,aggregate,publicBest,format,compare,compareHearts});
 })(globalThis);

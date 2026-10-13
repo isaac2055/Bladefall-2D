@@ -530,8 +530,8 @@ function mount(host,opts={}){
   if(hh&&hh.total){const purple=hh.purple,reg=hh.total-(purple?1:0),regGot=hh.got-(purple?.got?1:0);
    if(purple)icons.push(`<span data-tip="${tipOf(`Purple heart ${purple.got?'found':'not found'} · with ${w?.name||'this world'} beaten it opens ${nameOf(purple.opens)}`)}" class="cm-i" style="color:#c98cff">${purple.got?'♥':'♡'}</span>`);
    for(let i=0;i<reg;i++)icons.push(`<span data-tip="${tipOf(`Heart ${i<regGot?'found':'not found'} · one in each optional route, finished properly`)}" class="cm-i" style="color:#ff8fd0">${i<regGot?'♥':'♡'}</span>`);}
-  if(plant)icons.push(`<span data-tip="${tipOf(`${plant.half} (${plant.name}) · ${plant.have?'earned':'a perfect clear earns it: no deaths on the road'}${plant.cside?' · its C-side is open':''}`)}" class="cm-i" style="color:${plant.col};opacity:${plant.have?1:.45}">✿</span>`);
-  if(plant?.cside)icons.push(`<span data-tip="C-side open" class="cm-i" style="color:#ffd98a">C</span>`);
+  if(plant)icons.push(`<span data-tip="${tipOf(`${plant.half} (${plant.name}) · ${plant.have?'earned':'a perfect clear earns it: no deaths on the road'}${plant.cside?' · its Core is open':''}`)}" class="cm-i" style="color:${plant.col};opacity:${plant.have?1:.45}">✿</span>`);
+  if(plant?.cside)icons.push(`<span data-tip="Core open" class="cm-i" style="color:#ffd98a">C</span>`);
   const where=onRoad?`on ${PS()?.designs?.[onRoad.id]?.[0]||'the road'}`:at?.kind==='section'?`section ${at.i}${at.name?' · '+at.name:''}`:at?.name||'';
   const road=m=>`<button class="cm-road ${m.open?'open':'shut'}" data-tip="${tipOf(`${m.passage||'Passage'} to ${m.toName} · ${m.open?'open':'opens when you '+m.reason}`)}">${m.edge==='left'?'←':'→'} ${esc(m.toName)}${m.open?'':' 🔒'}</button>`;
   const state=onRoad?'on its road':current?'you are here':pr?.cleared?'cleared':inf.next?'open to you':visited?'visited':'not yet visited';

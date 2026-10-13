@@ -711,7 +711,7 @@ function updateEntities(g,inp){
    case 'crumble':
     if(e.broken){if(e.timer>0)e.timer--;else if(!overlap(p.x,p.y,p.w,p.h,e.x,e.y,e.w,e.h)){e.broken=false;e.shaking=0;emit(g,'crumble-back',{x:e.x+e.w/2,y:e.y});}}
     else if(e.shaking>0){if(--e.shaking===0){e.broken=true;e.timer=K.crumbleRespawnFrames;emit(g,'crumble',{x:e.x+e.w/2,y:e.y,w:e.w});}}
-    else if(riderOf(g,e)){e.shaking=K.crumbleShakeFrames;emit(g,'crumble-shake',{x:e.x+e.w/2,y:e.y});}
+    else if(riderOf(g,e)){e.shaking=K.crumbleShakeFrames+(g.room.def.core?Math.max(0,Math.round(g.room.def.crumbleExtraFrames||0)):0);emit(g,'crumble-shake',{x:e.x+e.w/2,y:e.y});}
     break;
    case 'slide':if(e.moving){
     e.speed=Math.min(K.stoneMax,e.speed+K.stoneAccel*DT);

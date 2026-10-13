@@ -1,0 +1,37 @@
+{
+  "version": "7.329.0",
+  "method": "Native simulation, saved-pose part routes, persistence and DOM entry/completion hooks; no live browser verification",
+  "ordinarySourcesUnchanged": 132,
+  "cores": [
+    {
+      "world": 101,
+      "name": "Turn of the Trumpet",
+      "draft": false,
+      "wholeFrames": 2008,
+      "partFrames": [
+        554,
+        584,
+        875
+      ],
+      "deaths": 0,
+      "checkpointDeathReset": true,
+      "durableRestore": true,
+      "ordinaryProbesStopped": 2
+    },
+    {
+      "world": 102,
+      "name": "The Oath Root · Core draft",
+      "draft": true,
+      "wholeFrames": 1694,
+      "partFrames": [
+        379,
+        754,
+        555
+      ],
+      "deaths": 0,
+      "checkpointDeathReset": true,
+      "durableRestore": true,
+      "ordinaryProbesStopped": 2
+    }
+  ]
+}
