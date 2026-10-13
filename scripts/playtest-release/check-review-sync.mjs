@@ -31,7 +31,7 @@ Object.defineProperty(w.navigator,'onLine',{value:false,configurable:true});w.se
 w.eval(readFileSync(new URL('../../public/bladefall-playtest.js',import.meta.url),'utf8'));
 w.eval(readFileSync(new URL('../../public/bladefall-climb-session.js',import.meta.url),'utf8'));
 const def={id:'bank-f96',name:'Turn of the Trumpet',bank:{revision:'form-revision',side:'fractured',batch:25}},state={world:{n:'bank-fractured-cores-1',name:'Outskirts Core',atlasStart:def.id},view:{g:{room:{id:def.id,def}},chapterStats:{deaths:4},paused:false},sessionConfig:{title:'Room Bank',build:'test'}};
-w.BladefallClimbSession.init(state,new w.URLSearchParams('mode=review'));w.BladefallClimbSession.start();
+w.BladefallClimbSession.init(state,new w.URLSearchParams('mode=review'));w.BladefallClimbSession.start();w.BladefallClimbSession.invalidate('manual test checkpoint');assert(w.BladefallClimbSession.state().run.assisted);
 w.document.getElementById('bsRate').click();let form=w.document.getElementById('bsRating');for(const [key,value]of Object.entries({tester:'Form tester',fun:'8',difficulty:'5',suitability:'4',comment:'Draft retained without export'}))form.elements.namedItem(key).value=value;
 form.elements.comment.dispatchEvent(new w.Event('input',{bubbles:true}));assert(JSON.parse(w.localStorage.getItem('bladescent.review-drafts.v1'))['bank-f96@form-revision']);
 w.document.getElementById('bsCancel').click();w.document.getElementById('bsRate').click();form=w.document.getElementById('bsRating');assert.equal(form.elements.comment.value,'Draft retained without export');assert.equal(form.elements.fun.value,'8');

@@ -309,6 +309,7 @@ PV.menu=function(){if(!st)return BASE.menu();worldMenu();return true;};
 PV.camera=function(g,view){
  if(!st||!isClimb(chapterNow(view)))return BASE.camera?BASE.camera(g,view):false;
  const pl=sectionOf(g);if(!pl)return false;
+ if(root.BladefallPrecisionTestTools?.camera(g,view)){st.cam={x:pl.x+view.cam.x,y:pl.y+view.cam.y};return true;}
  if(CL().geography){
   viewport(st.view);const p=g.p,target=root.BladefallClimbGeography.cameraTarget(CL().geography,{x:pl.x+p.x+4,y:pl.y+uprightY(g)+5},SW,SH),tx=target.x,ty=target.y;
   if(!st.cam)st.cam={x:tx,y:ty};else{st.cam.x+=(tx-st.cam.x)*.16;st.cam.y+=(ty-st.cam.y)*.13;}
@@ -559,7 +560,8 @@ function drawConnectedGeography(b,g,view,pl){
  // Integer camera coordinates must be identical for preview and live rendering.
  const local={x:Math.round(view.cam.x),y:Math.round(view.cam.y)},cam={x:pl.x+local.x,y:pl.y+local.y};
  const {layer:result,brush:out}=sceneLayer('result');
- if(g.room.def.atlasFold){
+ if(root.BladefallPrecisionTestTools?.inspecting()){out.drawImage(paintRegion('inspection',g,pl,cam),0,0);}
+ else if(g.room.def.atlasFold){
   out.drawImage(paintCorridor('corridor',g,local),0,0);
   for(const port of g.room.def.atlasSockets){
    const screenPlane=port.plane-local.x;
@@ -1478,7 +1480,9 @@ function returnPassage(){
  const from=sectionOf(g),to=st.world.sections.find(s=>s.room===link.from);if(!from||!to)return false;
  st.view.paused=false;st.api.hideOverlay();carryInto(from,to);announce('Back through the passage · previous checkpoint',140);return true;
 }
-PV.climb={fracturedOpen:n=>fracturedOpen(n),heartTotals:()=>heartTotals(),skipInfo,skipSection,returnPassage,useRiftPortal,riftPortal,portViews:visibleSockets,palette:palFor,state:()=>st,startWorld:(n,room=null,fromStart=false)=>startWorld(n,room,fromStart),menu:()=>worldMenu(),levels:()=>worldMenu(true),teleport:teleportTo,sectionOf:g=>sectionOf(g),defOf:id=>defOf(id),announce:(t,n)=>announce(t,n)};
+function captureTestCheckpoint(){if(!st)return null;return structuredClone({quest:st.quest,branchVia:st.branchVia,returningCeiling:st.returningCeiling,enteredAt:st.enteredAt,passageEntry:st.passageEntry,closed:st.closed,lit:st.lit});}
+function restoreTestCheckpoint(context){if(!st||!context)return;Object.assign(st,structuredClone(context));st.deathMark=st.view.g.deaths;st.cam=null;st.slide=null;st.trail=[];st.dispCache.clear();}
+PV.climb={captureTestCheckpoint,restoreTestCheckpoint,resetCamera:()=>{if(st){st.cam=null;st.view.camRoom=null;}},testCameraBounds:()=>{if(!st?.view.g)return null;const pl=sectionOf(st.view.g),geo=CL().geography;if(geo){const b=geo.bounds;return {x:b.x*8-pl.x,y:b.y*8-pl.y,w:b.w*8,h:b.h*8};}const b=bounds(pl.chain);return {x:b.x0-pl.x,y:b.y0-pl.y,w:b.x1-b.x0,h:b.y1-b.y0};},fracturedOpen:n=>fracturedOpen(n),heartTotals:()=>heartTotals(),skipInfo,skipSection,returnPassage,useRiftPortal,riftPortal,portViews:visibleSockets,palette:palFor,state:()=>st,startWorld:(n,room=null,fromStart=false)=>startWorld(n,room,fromStart),menu:()=>worldMenu(),levels:()=>worldMenu(true),teleport:teleportTo,sectionOf:g=>sectionOf(g),defOf:id=>defOf(id),announce:(t,n)=>announce(t,n)};
 root.BladefallPitchView=PV;
 /* (7.280) A gravity prism's flip keeps the picture still. The scarf, the dash's afterimages and the sparks live in the
    room's own coordinates, which the flip mirrors, so they are turned over with it (first in the list, so the flip's own

@@ -10,6 +10,7 @@ const SAVE='bladefall.pcore.v1';
 // 7.256: the owner's difficulty survey (bladefall-pcore-survey.js), off unless switched on; never in gate trials.
 const SV=()=>view.trial?null:view.pitch?(R.chapters[view.chapter]?.rbr?root.BladefallPrecisionSurvey?.rbr:null):root.BladefallPrecisionSurvey;
 const TOUCH=()=>root.BladefallPrecisionTouch||null;
+const TEST=()=>root.BladefallPrecisionTestTools;
 const touchUI=()=>!!TOUCH()?.active();
 
 /* ---------------------------------------------------------------- save */
@@ -49,7 +50,7 @@ function loadBinds(){
 const binds=loadBinds();
 for(const codes of Object.values(binds.keys))for(let n=0;n<codes.length;n++)codes[n]=root.BladefallInput.normalizeCode(codes[n]);
 function saveBinds(){save.binds=binds;writeSave(save);}
-function keyAction(code){for(const [a] of ACTIONS)if(binds.keys[a].includes(code))return a;return null;}
+function keyAction(code){if(save.assist.testMode&&code==='KeyI')return null;for(const [a] of ACTIONS)if(binds.keys[a].includes(code))return a;return null;}
 const keys=new Set();
 const latch=new Set();     // actions held when a menu closed: ignored until released, so the A that picks a chapter is not also a jump
 let lastDevice='mouse',activePad=-1,capture=null;
@@ -245,7 +246,7 @@ function chapterStart(c){let n=0;for(let i=0;i<c;i++)n+=R.chapters[i].rooms.leng
 function palette(){const ch=R.chapters[view.chapter];return root.BladefallPitchView?.palette?.(ch)||PAL[ch.palette]||PAL.footing;}
 function startChapter(c,roomOffset=0){delete view.coreReplayCheckpoint;
  view.chapter=c;const start=chapterStart(c)+roomOffset;
- view.g=C.createGame(R.all,{room:start,shards:save.shards,assist:save.assist});
+ view.g=C.createGame(R.all,{room:start,shards:save.shards,assist:save.assist});TEST()?.sync();
  view.chapterStats={deaths:0,frames:0,start:performance.now()};
  SV()?.start(c,{seenBefore:!!save.cleared['chapter:'+R.chapters[c].id],assist:save.assist});
  view.mode='play';view.paused=false;view.replay=null;view.parts=[];view.trail=[];resetScarf();view.roomTimer=0;hideOverlay();
@@ -273,7 +274,7 @@ function nextRoom(){
  C.enterRoom(g,next);view.trail=[];resetScarf();view.roomTimer=0;
 }
 const takeoverOK=()=>!!save.assist.testMode||!root.BladefallPitchView?.climb?.state?.();   // (7.314) a watched Survive route is not a skip
-function retryRoom(){if(!view.g)return;if(view.coreReplayCheckpoint!==undefined){view.g.coreRun=view.coreReplayCheckpoint;delete view.coreReplayCheckpoint;view.g.coreDemo=false;}SV()?.retry(view.g.room.id);view.replay=null;C.resetRoom(view.g);view.g.p.state='normal';view.g.p.respawnTimer=0;view.trail=[];resetScarf();}
+function retryRoom(){if(!view.g)return;if(view.coreReplayCheckpoint!==undefined){view.g.coreRun=view.coreReplayCheckpoint;delete view.coreReplayCheckpoint;view.g.coreDemo=false;}SV()?.retry(view.g.room.id);view.replay=null;if(!TEST()?.restore()){C.resetRoom(view.g);view.g.p.state='normal';view.g.p.respawnTimer=0;}view.trail=[];resetScarf();}
 
 /* ---------------------------------------------------------------- loop */
 function frame(now){
@@ -293,7 +294,7 @@ function loop(dt){
   if(pad.retry&&!lp.retry&&view.mode==='play'&&!view.paused&&!overlayOpen())retryRoom();
   if(view.replay&&pad.any&&!lp.any&&view.mode==='play'&&!view.paused&&takeoverOK())view.replay=null;
  }else if(pad.nav)Object.assign(nav.held,pad.nav);
- if(view.mode==='play'&&!view.paused){
+ if(view.mode==='play'&&!view.paused&&!TEST()?.inspecting()){
   view.frameAcc+=dt*(save.assist.speed||1);
   let steps=0;
   while(view.frameAcc>=1/60&&steps<5){view.frameAcc-=1/60;steps++;tick(input);}
@@ -301,7 +302,7 @@ function loop(dt){
  render();
 }
 function tick(input){
- if(view.mode!=='play'||view.paused)return;
+ if(view.mode!=='play'||view.paused||TEST()?.inspecting())return;
  const g=view.g;
  if(view.wipe>0){view.wipe--;if(view.wipe===8&&view.wipeTo){view.wipeTo();view.wipeTo=null;}return;}
  view.lastInput=input;if(root.BladefallPitchView?.holding?.())return;
@@ -658,6 +659,7 @@ function drawParticles(b){for(const q of view.parts){b.globalAlpha=Math.min(1,q.
    room's edges. A one-screen room keeps the camera at 0, exactly as before. */
 function updateCamera(g){
  if(root.BladefallPitchView?.camera?.(g,view))return;   // the Climb: one camera over the whole world
+ if(TEST()?.camera(g,view))return;
  const rw=g.room.w||W,rh=g.room.h||H,p=g.p;
  if(rw<=W&&rh<=H){view.cam.x=view.cam.y=0;view.camRoom=g.room.id;return;}
  const tx=Math.max(0,Math.min(rw-W,p.x+4-W/2)),ty=Math.max(0,Math.min(rh-H,p.y+5-H*.55));
@@ -692,7 +694,7 @@ function render(){
  if(!sharedTerrain)drawStatic(b,g,pal);for(const d of DV)d.drawBack?.(b,g,view,pal);
  drawEntities(b,g,pal);PV?.draw(b,g,view);root.BladefallPrecisionCombatView?.draw(b,g);root.BladefallPrecisionFoesView?.draw(b,g);root.BladefallPrecisionPortalsView?.draw(b,g,view);
  for(const d of DV)d.draw?.(b,g,view,pal);
- drawKnight(b,g);
+ TEST()?.draw(b,g);drawKnight(b,g);
  for(const d of DV)d.drawFront?.(b,g,view,pal);
  drawParticles(b);
  b.restore();
@@ -822,7 +824,7 @@ function assistCard(back,{fromMenu=false}={}){
  const reviewRow=root.BladefallPlaytest?`<label class="pcOpt"><input type="checkbox" id="opReview" ${root.BladefallPlaytest.feedbackEnabled()?'checked':''}> Review mode · rate each room when you finish it</label>
  <label class="pcOpt"><input type="checkbox" id="opClock" ${root.BladefallPlaytest.clockShown?.()!==false?'checked':''}> Show the run timer</label>`:'';
  showOverlay(`<div class="pcCard"><h1>Assist &amp; options</h1><p class="pcSub">The rooms are built to be hard and fair. If a rule gets in the way of your fun, change it. Nothing is locked behind these settings.</p>
- ${a.testMode?'<p class="pcSub" style="color:#8fd8ff">Test mode is on: infinite skips and climbing stamina, and you can take over a watched route.</p>':''}
+ ${a.testMode?'<p class="pcSub" style="color:#8fd8ff">Test mode is on: infinite skips and climbing stamina, you can take over a watched route, I places a retry flag, and mouse dragging inspects the map.</p>':''}
  <label class="pcOpt">Game speed <select id="asSpeed">${[1,.9,.8,.7,.6,.5].map(s=>`<option value="${s}" ${((a.speed||1)===s)?'selected':''}>${Math.round(s*100)}%</option>`).join('')}</select></label>
  <label class="pcOpt"><input type="checkbox" id="opShake" ${o.shake?'checked':''}> Screen shake</label>
  <label class="pcOpt"><input type="checkbox" id="opSound" ${o.sound?'checked':''}> Sound effects</label>
@@ -840,7 +842,7 @@ function assistCard(back,{fromMenu=false}={}){
  // (7.314) every five presses of Screen shake turn test mode on or off: infinite skips and climbing stamina in
  // Survive, and a watched route can be taken over
  {let presses=0;$('opShake').addEventListener('click',()=>{if(++presses%5)return;a.testMode=!a.testMode;a.infiniteStamina=a.testMode;writeSave(save);if(view.g)view.g.assist.infiniteStamina=a.infiniteStamina;
-  note(a.testMode?'Test mode on: infinite skips and climbing stamina.':'Test mode off.');});}
+  TEST()?.sync();note(a.testMode?'Test mode on · I places a retry flag · R returns to it · mouse drag inspects the map.':'Test mode off.');});}
  // (7.312/7.314) every five presses of Show the full map turn the 100% view on or off: every world playable,
  // 41 and 42 too, and the map shown complete. Off, the map is as it was.
  if(finaleMap){let presses=0;$('opFinaleMap').addEventListener('click',()=>{if(++presses%5)return;const on=!F.unlockedAll();F.setUnlockedAll(on);
@@ -874,7 +876,7 @@ function togglePause(){
  document.getElementById('pcReturnPassage')?.addEventListener('click',()=>root.BladefallPitchView.climb.returnPassage());
  document.getElementById('pcCtl').onclick=()=>{const back=()=>{view.paused=false;togglePause();};touchUI()?TOUCH().card(back):controlsCard(back);};
  document.getElementById('pcRetry').onclick=()=>{togglePause();retryRoom();};
- document.getElementById('pcCoreRestart')?.addEventListener('click',()=>{root.BladefallCoreProgress?.clear(g.room.def);g.coreRun=null;delete view.coreReplayCheckpoint;g.coreDemo=false;togglePause();retryRoom();root.BladefallClimbSession?.invalidate('restarted Core');});
+ document.getElementById('pcCoreRestart')?.addEventListener('click',()=>{TEST()?.clearFlag();TEST()?.follow();root.BladefallCoreProgress?.clear(g.room.def);g.coreRun=null;delete view.coreReplayCheckpoint;g.coreDemo=false;togglePause();retryRoom();root.BladefallClimbSession?.invalidate('restarted Core');});
  document.getElementById('pcRoomFeedback')?.addEventListener('click',()=>root.BladefallClimbSession?.reviewCurrent());
  if(hasTape)document.getElementById('pcWatch').onclick=()=>{togglePause();watchRoute();};
  overlay().querySelectorAll('[data-room]').forEach(b=>b.onclick=()=>{root.BladefallClimbSession?.invalidate('room select');view.paused=false;hideOverlay();C.enterRoom(g,base+(+b.dataset.room));view.replay=null;view.trail=[];resetScarf();view.roomTimer=0;});
@@ -883,7 +885,7 @@ function togglePause(){
  else {document.getElementById('pcChapters').onclick=mainMenu;if(ch.climb)document.getElementById('pcChapters').textContent='World map';}
 }
 function watchRoute(){
- const g=view.g,tape=R.tapes[g.room.id];if(!tape)return;
+ const g=view.g,tape=R.tapes[g.room.id];if(!tape)return;TEST()?.follow();
  SV()?.watched(g.room.id);
  if(g.room.def.coreCheckpoints){view.coreReplayCheckpoint=g.coreRun?{...g.coreRun}:null;g.coreRun=null;g.coreDemo=true;}
  C.enterRoom(g,g.roomIndex);view.trail=[];resetScarf();
@@ -940,6 +942,7 @@ function music(on){
 /* ---------------------------------------------------------------- boot */
 function boot(){
  view.canvas=document.getElementById('pcCanvas');view.ctx=view.canvas.getContext('2d');
+ TEST()?.init({view,enabled:()=>!!save.assist.testMode,overlayOpen,clearInput:()=>{keys.clear();latchHeld();}});
  view.buf=document.createElement('canvas');view.buf.width=W;view.buf.height=H;view.b=view.buf.getContext('2d');view.b.imageSmoothingEnabled=false;
  TOUCH()?.init({canvas:view.canvas,view,save,writeSave,overlayOpen,showOverlay,overlay,controlsCard,
   pause:()=>{if(view.mode==='play')togglePause();},retry:()=>{if(view.mode==='play'&&!view.paused)retryRoom();},
@@ -961,6 +964,8 @@ function boot(){
    if(code==='Space'){e.preventDefault();if(!e.repeat)menuConfirm();return;}}
   if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(code))e.preventDefault();
   if(e.repeat)return;
+  const typing=e.target?.closest?.('input,textarea,select,[contenteditable]');
+  if(code==='KeyI'&&save.assist.testMode&&!open&&!view.paused&&!typing&&!e.isComposing&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();if(!view.replay)TEST()?.place();return;}
   const act=keyAction(code);
   if(view.replay&&view.mode==='play'&&!view.paused&&PLAY_ACTIONS.includes(act)&&takeoverOK()){view.replay=null;}
   keys.add(code);

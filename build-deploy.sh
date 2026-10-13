@@ -307,6 +307,7 @@ ASSETS=(
   bladefall-rbr-39-f-path.js
   bladefall-rbr-40-f-sunspire.js
   # rbr-regions:end
+  bladefall-pcore-test-tools.js
   bladefall-pcore-view.js
   bladefall-precision-puzzles.js
   bladefall-precision-fractured.js

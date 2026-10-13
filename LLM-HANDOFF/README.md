@@ -1,6 +1,6 @@
 # Bladefall: start here
 
-For the current Core and feedback changes (7.329, 2026-10-13), read **CORES-AND-CLOUD-REVIEWS-7.329.md**. Read **CODEX-RESUME-7.304.md** for the campaign/API architecture. Then search the
+For test flags and mouse camera inspection (7.330, 2026-10-13), read **TEST-FLAGS-CAMERA-7.330.md**. For the Core and feedback changes (7.329, 2026-10-13), read **CORES-AND-CLOUD-REVIEWS-7.329.md**. Read **CODEX-RESUME-7.304.md** for the campaign/API architecture. Then search the
 relevant code — the code wins over every document. Do not read this entire folder, test receipts,
 or conversation histories. NEXT-MODEL-BRIEF.md describes the older 7.166 architecture.
 
