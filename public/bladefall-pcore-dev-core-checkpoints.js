@@ -6,7 +6,7 @@ function reset(g){const points=g.room.def.coreCheckpoints;if(!points?.length){g.
 }
 function after(g){const points=g.room.def.coreCheckpoints,p=g.p;if(!points||p.state==='dead'||p.state==='respawn'||!p.onGround)return;
  for(const [i,q]of points.entries())if(i>g.coreRun.index&&Math.abs(p.y+p.h-(q.r+1)*8)<1&&p.x+p.w>q.c*8-(q.width||40)/2&&p.x<q.c*8+(q.width||40)/2){
-  g.coreRun.index=i;if(g.resinWind)g.resinWind.t=0;if(g.rootLash)g.rootLash.t=0;
+  g.coreRun.index=i;if(q.resetClocks!==false){if(g.resinWind)g.resinWind.t=0;if(g.rootLash)g.rootLash.t=0;}
   C().emit(g,'core-checkpoint',{room:g.room.id,index:i,x:q.c*8+4,y:(q.r+1)*8,part:i+2,name:q.name||'Save point'});
  }
 }

@@ -1,5 +1,5 @@
 {
-  "version": "7.331.0",
+  "version": "7.332.0",
   "activeBatch": 25,
   "activeRun": 15,
   "status": "User-approved bank plus a separate queue of revisions and new candidates",
@@ -80559,7 +80559,7 @@
         "single-checkpoint"
       ],
       "newMechanics": [],
-      "role": "Outskirts Core, approved route revised to the requested learning buffer",
+      "role": "Outskirts Core with four sections and three save points",
       "solution": "Wave dash across the opening chain. At the east lantern save Part 2, turn left through the high route, then save at the west lantern before the final climb.",
       "requiredEvents": [
         "super",
@@ -80573,7 +80573,7 @@
         "hyper": 8,
         "wallbounce": 4,
         "crumble-shake": 14,
-        "core-checkpoint": 2
+        "core-checkpoint": 3
       },
       "humanReview": "Approved by the player after requested checkpoint, visibility, and platform changes.",
       "shortcutChecks": [
@@ -80955,8 +80955,8 @@
       "positiveChecks": [],
       "coreIndex": 1,
       "draft": false,
-      "coreDescription": "Lowered east turn; three demanding parts, two persistent saves, +1 second before crumbling.",
-      "revision": "c20323f0fe34",
+      "coreDescription": "Carry momentum through the trumpet’s turns. Four sections with three save points.",
+      "revision": "618dee34b881",
       "source": "scripts/room-bank/fractured/96-bank-f96.json",
       "tapeFrames": 2014
     },
@@ -80986,7 +80986,7 @@
       "newMechanics": [
         "core-save-points"
       ],
-      "role": "Black Woods Core with three parts and two save points",
+      "role": "Black Woods Core with five sections and four save points",
       "solution": "Start on the crumbling branch and chain lofted and directional pod cuts. Save in the clearing. Climb around the root divider, read the alternating resin branches, and save at the west turn. Return through pod cuts, cut the crown to open the final gate, then climb out.",
       "requiredEvents": [
         "pod",
@@ -80998,7 +80998,7 @@
         "pod": 10,
         "pogo-loft": 6,
         "root-cut": 1,
-        "core-checkpoint": 2
+        "core-checkpoint": 4
       },
       "humanReview": "Approved by the player after requested checkpoint, visibility, and platform changes.",
       "shortcutChecks": [
@@ -81380,11 +81380,62 @@
       "positiveChecks": [],
       "coreIndex": 2,
       "draft": false,
-      "coreDescription": "Chain seed jumps, read the resin branches, and cut the crown. Three parts, two save points.",
+      "coreDescription": "Chain seed jumps, read the resin branches, and cut the crown. Five sections with four save points.",
       "placementBand": "Black Woods Core draft",
-      "revision": "d7110ac0993c",
+      "revision": "fed3fb711ebf",
       "source": "scripts/room-bank/fractured/97-bank-f97.json",
       "tapeFrames": 1602
+    },
+    {
+      "id": "bank-f98",
+      "name": "The Last Counterweight",
+      "side": "fractured",
+      "batch": 25,
+      "run": 15,
+      "collection": "cores",
+      "coreIndex": 3,
+      "format": "superroom",
+      "localOnly": false,
+      "acceptance": "candidate",
+      "needsReview": true,
+      "status": "route-proven",
+      "author": "Sol 6.1",
+      "difficulty": 5,
+      "worlds": [
+        3,
+        23
+      ],
+      "tags": [
+        "lift-momentum",
+        "ultra",
+        "hyper",
+        "zipline",
+        "crumble",
+        "brake-roof"
+      ],
+      "newMechanics": [],
+      "role": "Causeway Core: one continuous three-leg counterweight crossing",
+      "solution": "Ride each hoist into a committed launch, land low under the brake housings, chain fast crumble departures, and intercept the tears to return above the same ribs.",
+      "requiredEvents": [
+        "zip-start",
+        "zip-in",
+        "hyper",
+        "ultra",
+        "core-checkpoint"
+      ],
+      "requiredEventCounts": {
+        "zip-start": 3,
+        "zip-in": 2,
+        "hyper": 8,
+        "ultra": 8,
+        "core-checkpoint": 2
+      },
+      "coreDescription": "Launch from the counterweights and carry the speed through the broken gantries. One room, three demanding legs.",
+      "draft": false,
+      "humanReview": "Awaiting player review.",
+      "revision": "377b604961f9",
+      "source": "scripts/room-bank/fractured/98-bank-f98.json",
+      "tapeFrames": 1258
     }
   ]
 }

@@ -1,11 +1,11 @@
 /* Bladefall service worker — offline play + fast reloads once installed.
    Bump CACHE_NAME on a deploy where you want returning players to pick up
    the change immediately instead of waiting on the network-first refresh. */
-const CACHE_NAME = 'bladefall-v499-checkpoints-route-recordings';
+const CACHE_NAME = 'bladefall-v500-causeway-garden-saves';
 const CORE_ASSETS = [
-  './bladefall-route-recording.js?v=7.331.0','./bladefall-pcore-test-tools.js?v=7.331.0',
-  './bladefall-pcore-dev-core-checkpoints.js?v=7.329.0',
-  './bladefall-pcore-dev-core-checkpoints-view.js?v=7.329.0',
+  './bladefall-route-recording.js?v=7.332.0','./bladefall-pcore-test-tools.js?v=7.332.0',
+  './bladefall-pcore-dev-core-checkpoints.js?v=7.332.0',
+  './bladefall-pcore-dev-core-checkpoints-view.js?v=7.332.0',
 
   './bladefall-touch-layout.js?v=7.318.0',
   './bladefall-pcore-dev-superrooms-colossus.js?v=7.305.0',
@@ -20,8 +20,8 @@ const CORE_ASSETS = [
   './bladefall-explore-finale.js?v=7.305.0',
   './bladefall-climb-bank-passages.js?v=7.304.0',
   './bladefall-playtest-worlds.js?v=7.316.0',
-  './bladefall-playtest-model.js?v=7.331.0',
-  './bladefall-playtest.js?v=7.331.0',
+  './bladefall-playtest-model.js?v=7.332.0',
+  './bladefall-playtest.js?v=7.332.0',
   './',
   './index.html',
   './authoring.html',
@@ -137,7 +137,7 @@ const CORE_ASSETS = [
   './bladefall-pcore-dev-moving-hook-view.js?v=7.303.0',
   './bladefall-pcore-dev-recoil.js?v=7.303.0',
   './bladefall-pcore-dev-recoil-view.js?v=7.303.0',
-  './bladefall-room-bank.js?v=7.331.0',
+  './bladefall-room-bank.js?v=7.332.0',
   './bladefall-room-bank-view.js?v=7.329.0',
   './bladefall-pcore-dev-step-relay.js?v=7.286.0',
   './bladefall-pcore-dev-step-relay-view.js?v=7.286.0',
@@ -149,19 +149,19 @@ const CORE_ASSETS = [
   './bladefall-climb-worlds.js?v=7.308.2',
   './bladefall-climb-finale-tapes.js?v=7.317.0',
   './bladefall-climb-finale.js?v=7.317.0',
-  './bladefall-climb-core-tapes.js?v=7.331.0',
-  './bladefall-climb-cores.js?v=7.331.0',
-  './bladefall-climb-rewards.js?v=7.329.0',
+  './bladefall-climb-core-tapes.js?v=7.332.0',
+  './bladefall-climb-cores.js?v=7.332.0',
+  './bladefall-climb-rewards.js?v=7.332.0',
   './bladefall-climb-art.js?v=7.278.0',
   './bladefall-climb-atlas.js?v=7.304.0',
   './bladefall-climb-passages.js?v=7.308.2',
   './bladefall-climb-passage-tapes.js?v=7.273.40',
   './bladefall-climb-passage-art.js?v=7.280.0',
   './bladefall-climb-map.js?v=7.329.0',
-  './bladefall-climb-session.js?v=7.331.0',
-  './bladefall-climb-view.js?v=7.331.0',
+  './bladefall-climb-session.js?v=7.332.0',
+  './bladefall-climb-view.js?v=7.332.0',
   './bladefall-climb-geography.js?v=7.329.0',
-  './bladefall-climb-geography-build.js?v=7.329.0',
+  './bladefall-climb-geography-build.js?v=7.332.0',
   './bladefall-climb-coop.js?v=7.318.0',
   // rbr-regions:start (Room by Room region files, one per built region)
   './bladefall-rbr-01-outskirts.js?v=7.280.0',
@@ -246,7 +246,7 @@ const CORE_ASSETS = [
   './bladefall-rbr-39-f-path.js?v=7.280.0',
   './bladefall-rbr-40-f-sunspire.js?v=7.280.0',
   // rbr-regions:end
-  './bladefall-pcore-view.js?v=7.331.0',
+  './bladefall-pcore-view.js?v=7.332.0',
   './bladefall-pcore-combat.js?v=7.303.0',
   './bladefall-pcore-combat-rooms.js?v=7.250.0',
   './bladefall-pcore-combat-tapes.js?v=7.250.0',

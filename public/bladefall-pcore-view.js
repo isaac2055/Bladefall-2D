@@ -862,7 +862,7 @@ function togglePause(){
  const skipInfo=ch.climb?root.BladefallPitchView?.climb?.skipInfo?.():null;
  const selectable=(ch.climb?ch.rooms.slice(0,ch.mainCount):ch.rooms).filter(r=>!r.passage&&!r.connector),selected=selectable.findIndex(r=>r.id===g.room.id);
  const optionalRooms=ch.climb?ch.rooms.slice(ch.mainCount).filter(r=>!r.passage&&!r.connector):[],optionalSelected=optionalRooms.findIndex(r=>r.id===g.room.id);
- const roomStatus=g.room.def.coreCheckpoints?`Core · Part ${(g.coreRun?.index??-1)+2}/3`:selected>=0?`room ${selected+1} of ${selectable.length}`:optionalSelected>=0?`optional O${optionalSelected+1}`:'connecting passage';
+ const roomStatus=g.room.def.coreCheckpoints?`Core · Part ${(g.coreRun?.index??-1)+2}/${g.room.def.coreCheckpoints.length+1}`:selected>=0?`room ${selected+1} of ${selectable.length}`:optionalSelected>=0?`optional O${optionalSelected+1}`:'connecting passage';
  showOverlay(`<div class="pcCard"><h1>Paused</h1>${view.trial?`<p class="pcSub">${view.trial.title||'The gate'} · level ${view.chapter+1} of ${view.trial.from}–${view.trial.to}</p>`:''}<p class="pcSub">${ch.name} · ${roomStatus}${g.room.name?' · '+g.room.name:''}</p>
  ${g.room.def.question?`<p class="pcSub">${g.room.def.question}</p>`:''}
  <button class="pcBtn" id="pcResume" data-back>Resume</button><button class="pcBtn ghost" id="pcRetry">${g.room.def.coreCheckpoints?'Retry from save point':'Retry room'}</button>${g.room.def.coreCheckpoints?'<button class="pcBtn ghost" id="pcCoreRestart">Restart Core</button>':''}

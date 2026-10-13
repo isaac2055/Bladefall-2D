@@ -1,3 +1,7 @@
+# Latest: 7.332 Causeway, Garden and save points
+
+Read [CAUSEWAY-GARDEN-7.332.md](CAUSEWAY-GARDEN-7.332.md) first.
+
 # Latest: 7.331 checkpoint and recording update
 
 Read [CHECKPOINTS-RECORDINGS-7.331.md](CHECKPOINTS-RECORDINGS-7.331.md) first for banked Cores, revised Oath Root, test checkpoint behavior, and private player route retrieval.

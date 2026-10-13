@@ -129,7 +129,7 @@
     "hint": "Carry wave-dash speed between collapsing islands. Save at the east turn, then the west turn. Each lantern keeps the next part.",
     "core": 1,
     "coreProgressKey": "core-outskirts",
-    "coreProgressRevision": 1,
+    "coreProgressRevision": 2,
     "crumbleExtraFrames": 60,
     "coreCheckpoints": [
       {
@@ -143,8 +143,22 @@
         "r": 50,
         "facing": 1,
         "name": "The West Turn"
+      },
+      {
+        "c": 116,
+        "r": 11,
+        "width": 24,
+        "facing": 1,
+        "name": "The High Verge",
+        "resetClocks": false
       }
-    ]
+    ],
+    "coreProgressMigrations": {
+      "1": [
+        0,
+        1
+      ]
+    }
   },
   "bank": {
     "side": "fractured",
@@ -171,7 +185,7 @@
       "single-checkpoint"
     ],
     "newMechanics": [],
-    "role": "Outskirts Core, approved route revised to the requested learning buffer",
+    "role": "Outskirts Core with four sections and three save points",
     "solution": "Wave dash across the opening chain. At the east lantern save Part 2, turn left through the high route, then save at the west lantern before the final climb.",
     "requiredEvents": [
       "super",
@@ -185,7 +199,7 @@
       "hyper": 8,
       "wallbounce": 4,
       "crumble-shake": 14,
-      "core-checkpoint": 2
+      "core-checkpoint": 3
     },
     "humanReview": "Approved by the player after requested checkpoint, visibility, and platform changes.",
     "shortcutChecks": [
@@ -567,7 +581,7 @@
     "positiveChecks": [],
     "coreIndex": 1,
     "draft": false,
-    "coreDescription": "Lowered east turn; three demanding parts, two persistent saves, +1 second before crumbling."
+    "coreDescription": "Carry momentum through the trumpet’s turns. Four sections with three save points."
   },
   "tape": [
     [
@@ -2447,6 +2461,12 @@
         [
           8,
           "l"
+        ]
+      ],
+      [
+        [
+          6,
+          "r"
         ],
         [
           5,
@@ -2557,7 +2577,7 @@
           "rj"
         ],
         [
-          10,
+          11,
           "r"
         ]
       ]

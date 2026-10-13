@@ -1,5 +1,5 @@
 {
-  "version": "7.331.0",
+  "version": "7.332.0",
   "method": "Native simulation, saved-pose part routes, persistence and DOM entry/completion hooks; no live browser verification",
   "ordinarySourcesUnchanged": 132,
   "cores": [
@@ -11,7 +11,8 @@
       "partFrames": [
         554,
         584,
-        875
+        624,
+        258
       ],
       "deaths": 0,
       "checkpointDeathReset": true,
@@ -25,8 +26,25 @@
       "wholeFrames": 1602,
       "partFrames": [
         275,
-        754,
-        555
+        276,
+        657,
+        363,
+        204
+      ],
+      "deaths": 0,
+      "checkpointDeathReset": true,
+      "durableRestore": true,
+      "ordinaryProbesStopped": 2
+    },
+    {
+      "world": 103,
+      "name": "The Last Counterweight",
+      "draft": false,
+      "wholeFrames": 1258,
+      "partFrames": [
+        398,
+        388,
+        485
       ],
       "deaths": 0,
       "checkpointDeathReset": true,

@@ -1,0 +1,59 @@
+{
+  "room": "bank-f98",
+  "frames": 1258,
+  "deaths": 0,
+  "counts": {
+    "dash": 27,
+    "refill-dash": 27,
+    "zip-start": 3,
+    "ultra": 12,
+    "hyper": 11,
+    "zip-stop": 3,
+    "land": 14,
+    "crumble-shake": 10,
+    "jump": 2,
+    "reverse-hyper": 1,
+    "crumble": 10,
+    "zip-home": 3,
+    "grab": 2,
+    "crumble-back": 8,
+    "climbhop": 2,
+    "super": 2,
+    "zip-in": 2,
+    "zip-out": 2,
+    "core-checkpoint": 2,
+    "walljump": 3,
+    "refill": 1,
+    "exit": 1
+  },
+  "ordinaryOpeningAttempts": 608,
+  "ordinaryUnaidedLandings": 0,
+  "simpleWholeRouteProbes": 3,
+  "timingVariants": [
+    {
+      "firstInputDelta": -2,
+      "firstShelfLanded": true,
+      "exited": false,
+      "deaths": 11
+    },
+    {
+      "firstInputDelta": -1,
+      "firstShelfLanded": true,
+      "exited": false,
+      "deaths": 11
+    },
+    {
+      "firstInputDelta": 1,
+      "firstShelfLanded": true,
+      "exited": false,
+      "deaths": 12
+    },
+    {
+      "firstInputDelta": 2,
+      "firstShelfLanded": true,
+      "exited": false,
+      "deaths": 12
+    }
+  ],
+  "limits": "Finite native probes, not exhaustive shortcut or human difficulty proof. No live browser playtesting."
+}

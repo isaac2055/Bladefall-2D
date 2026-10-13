@@ -16,7 +16,7 @@ function validFeedback(r){
  if(!Number.isInteger(r.fun)||r.fun<1||r.fun>10||!Number.isInteger(r.difficulty)||r.difficulty<1||r.difficulty>5||typeof r.comment!=='string'||r.comment.length>4000||typeof (r.room||'')!=='string'||(r.room||'').length>160)return false;
  if(r.suitability!=null&&(!Number.isInteger(r.suitability)||r.suitability<1||r.suitability>5))return false;
  for(const [key,max] of [['tester',80],['session',128],['origin',160],['outcome',32],['practiceReason',160],['revision',40],['bankSide',20],['recordedAt',40]])if(r[key]!=null&&(typeof r[key]!=='string'||r[key].length>max))return false;
- if(r.part!=null&&(!Number.isInteger(r.part)||r.part<1||r.part>3))return false;
+ if(r.part!=null&&(!Number.isInteger(r.part)||r.part<1||r.part>32))return false;
  for(const key of ['x','y'])if(r[key]!=null&&(!Number.isSafeInteger(r[key])||Math.abs(r[key])>1000000))return false;
  return (r.frames==null||Number.isSafeInteger(r.frames)&&r.frames>=0)&&(r.bankBatch==null||Number.isSafeInteger(r.bankBatch)&&r.bankBatch>=0)&&(r.assisted==null||typeof r.assisted==='boolean');
 }

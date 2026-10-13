@@ -89,7 +89,7 @@
     "exit": "right",
     "core": 2,
     "coreProgressKey": "core-black-woods",
-    "coreProgressRevision": 2,
+    "coreProgressRevision": 3,
     "coreCheckpoints": [
       {
         "c": 86,
@@ -99,14 +99,30 @@
         "name": "The Pod Clearing"
       },
       {
+        "c": 108,
+        "r": 26,
+        "width": 40,
+        "facing": -1,
+        "name": "The Resin Outlook",
+        "resetClocks": false
+      },
+      {
         "c": 30,
         "r": 29,
         "width": 64,
         "facing": 1,
         "name": "The Resin Turn"
+      },
+      {
+        "c": 88,
+        "r": 11,
+        "width": 40,
+        "facing": 1,
+        "name": "The Crown Approach",
+        "resetClocks": false
       }
     ],
-    "crumbleExtraFrames": 45,
+    "crumbleExtraFrames": 60,
     "movement": "survive-2",
     "aim8": true,
     "dashes": 1,
@@ -158,7 +174,17 @@
         "y1": 246,
         "lookX": -96
       }
-    ]
+    ],
+    "coreProgressMigrations": {
+      "1": [
+        0,
+        2
+      ],
+      "2": [
+        0,
+        2
+      ]
+    }
   },
   "bank": {
     "side": "fractured",
@@ -184,7 +210,7 @@
     "newMechanics": [
       "core-save-points"
     ],
-    "role": "Black Woods Core with three parts and two save points",
+    "role": "Black Woods Core with five sections and four save points",
     "solution": "Start on the crumbling branch and chain lofted and directional pod cuts. Save in the clearing. Climb around the root divider, read the alternating resin branches, and save at the west turn. Return through pod cuts, cut the crown to open the final gate, then climb out.",
     "requiredEvents": [
       "pod",
@@ -196,7 +222,7 @@
       "pod": 10,
       "pogo-loft": 6,
       "root-cut": 1,
-      "core-checkpoint": 2
+      "core-checkpoint": 4
     },
     "humanReview": "Approved by the player after requested checkpoint, visibility, and platform changes.",
     "shortcutChecks": [
@@ -578,7 +604,7 @@
     "positiveChecks": [],
     "coreIndex": 2,
     "draft": false,
-    "coreDescription": "Chain seed jumps, read the resin branches, and cut the crown. Three parts, two save points.",
+    "coreDescription": "Chain seed jumps, read the resin branches, and cut the crown. Five sections with four save points.",
     "placementBand": "Black Woods Core draft"
   },
   "tape": [
@@ -1434,7 +1460,21 @@
           "l"
         ],
         [
-          24,
+          21,
+          "lj"
+        ]
+      ],
+      [
+        [
+          11,
+          "r"
+        ],
+        [
+          168,
+          ""
+        ],
+        [
+          3,
           "lj"
         ],
         [
@@ -1685,6 +1725,12 @@
         ],
         [
           8,
+          "r"
+        ]
+      ],
+      [
+        [
+          12,
           "r"
         ],
         [

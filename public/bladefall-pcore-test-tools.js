@@ -48,6 +48,7 @@ function move(e){hoverAt(e);if(!drag||e.pointerId!==drag.id)return;if(!canUse())
  pan.y=Math.max(minY,Math.min(maxY,drag.y-(e.clientY-drag.clientY)*drag.ratio));
  hoverAt(e);e.preventDefault();refresh();
 }
+async function copyCoordinates(e){if(!canUse()||!pan||api.view.replay)return;hoverAt({...e,pointerType:'mouse',clientX:e.clientX,clientY:e.clientY});if(!hover)return;const text=`${api.view.g.room.id} · x ${hover.x}, y ${hover.y} · tile ${Math.floor(hover.x/8)}, ${Math.floor(hover.y/8)}`;try{await root.navigator.clipboard.writeText(text);tell('Copied: '+text);}catch{const field=document.createElement('textarea');field.value=text;field.style.cssText='position:fixed;left:-9999px';document.body.appendChild(field);field.select();const ok=document.execCommand?.('copy');field.remove();tell(ok?'Copied: '+text:'Copy coordinates: '+text);}}
 function down(e){if(e.pointerType!=='mouse'||e.button!==0||!canUse()||api.view.paused||api.view.replay)return;
  const view=api.view,g=view.g,rect=view.canvas.getBoundingClientRect();
  drag={game:g,id:e.pointerId,clientX:e.clientX,clientY:e.clientY,x:pan?.x??view.cam.x,y:pan?.y??view.cam.y,ratio:(view.canvas.width/Math.max(1,rect.width))/Math.max(1,view.scale)};
@@ -66,7 +67,7 @@ function init(options){api=options;if(bar)return;
  bar=document.createElement('div');bar.id='pcTestTools';bar.hidden=true;bar.innerHTML='<span data-note role="status"></span><button type="button" data-follow>Follow knight · resume</button><button type="button" data-clear>Clear test flag</button>';document.body.appendChild(bar);
  bar.querySelector('[data-follow]').onclick=follow;bar.querySelector('[data-clear]').onclick=clearFlag;
  coords=document.createElement('div');coords.id='pcTestCoords';coords.hidden=true;coords.style.cssText='position:fixed;right:8px;bottom:8px;z-index:25;background:#111b27e8;color:#c8e6f0;padding:6px 8px;font:12px monospace;pointer-events:none';document.body.appendChild(coords);
- const canvas=api.view.canvas;canvas.addEventListener('pointerleave',()=>{hover=null;coords.hidden=true;});canvas.addEventListener('pointerdown',down);canvas.addEventListener('pointermove',move);canvas.addEventListener('pointerup',up);canvas.addEventListener('pointercancel',up);canvas.addEventListener('lostpointercapture',()=>{drag=null;refresh();});root.addEventListener('blur',stopDrag);
+ const canvas=api.view.canvas;canvas.addEventListener('pointerleave',()=>{hover=null;coords.hidden=true;});canvas.addEventListener('dblclick',copyCoordinates);canvas.addEventListener('pointerdown',down);canvas.addEventListener('pointermove',move);canvas.addEventListener('pointerup',up);canvas.addEventListener('pointercancel',up);canvas.addEventListener('lostpointercapture',()=>{drag=null;refresh();});root.addEventListener('blur',stopDrag);
  refresh();
 }
 function draw(b,g){sync();if(!enabled()||!flag||flag.room!==g.room.id)return;const p=flag.state.p,x=Math.round(p.x+4),y=Math.round(flag.state.flipped===g.flipped?p.y+p.h:g.room.h-p.y);
