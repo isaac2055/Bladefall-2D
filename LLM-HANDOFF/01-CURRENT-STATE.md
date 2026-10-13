@@ -1,3 +1,18 @@
+## 7.324.0: The Survive map card is a glance, not a page (2026-10-13)
+
+Isaac: the region card under the map was a wall of text. Now (`bladefall-climb-map.js` card):
+- the name, then 📍 or ✓;
+- icons for the purple heart, the other hearts, the plant half and the C-side;
+- a bar of the world's sections, cleared ones lit and yours outlined;
+- one chip per road (← name, 🔒 if sealed);
+- one tip line.
+
+Tapping (or hovering) any icon, chip or the bar puts its full sentence in the tip line, e.g. "The Buried Spillway to Black Woods · opens when you finish Broken Causeway". A locked world's reason goes there too.
+
+The legend folds behind a "?" key button, and the map's footer text is gone. World 3's card went from about 330 words to 25.
+
+Version 7.324.0 (after Codex's 7.323.0), cache `bladefall-v492-compact-card`.
+
 ## 7.323.0 — Astra Outskirts C-side candidates (2026-10-13)
 
 Two independently authored three-section sets are in local/offline Extras → Room Bank → C-side candidates: C, Whiteflower Spire (F87–F89), and D, Under the Watch (F90–F92). C develops wallbounces into a hammer ascent; D develops low hyper launches into a shoulder launch. Each section has its own checkpoint/fire. Native mechanics only, real void, no hearts, no campaign import. Study mode holds the Sentinel until the first input, so observing the room does not shift the recorded start. Existing skip/review controls are retained pending the eventual campaign decision.

@@ -299,7 +299,7 @@ html.pcTouch .cm-wrap button.cm-b,html.pcTouch .cm-wrap select.cm-b{min-height:4
 html.pcTouch .cm-zoom .cm-b{width:44px;min-height:44px}
 .cm-legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:11.5px;color:#aab0bd;margin:6px 0 2px}
 .cm-legend span{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
-.cm-detail{margin:8px 0 6px;font-size:13px;line-height:1.5;color:#d8d0bb;min-height:3.5em}
+.cm-detail{margin:8px 0 6px;font-size:13px;line-height:1.4;color:#d8d0bb;min-height:3em}
 .cm-detail h2{margin:0 0 2px;font-size:15px;color:#f0d9a8;font-weight:600;letter-spacing:.03em}
 .cm-detail .cm-chip{display:inline-block;font-size:11px;padding:1px 6px;margin-left:6px;border:1px solid #4a5364;color:#cfd6e2;vertical-align:2px}
 .cm-detail .cm-chip.here{border-color:#e7c873;color:#ffe9a8}.cm-detail .cm-chip.done{border-color:#c9a86a;color:#e7c873}.cm-detail .cm-chip.next{border-color:#5fbf86;color:#8ff0b3}
@@ -308,6 +308,13 @@ html.pcTouch .cm-zoom .cm-b{width:44px;min-height:44px}
 .cm-detail small{color:#9aa3b2;font-size:12px}
 .cm-detail h3{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#c9a86a;margin:10px 0 2px;font-weight:600}
 .cm-open{color:#86e3aa}.cm-sealed{color:#e8a487}
+.cm-c-h{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:15px;color:#f0d9a8}.cm-c-h .cm-chip{margin-left:0}
+.cm-c-icons{margin-left:auto;display:flex;gap:6px;font-size:19px}.cm-i{cursor:pointer;line-height:1}
+.cm-c-bar{display:flex;gap:2px;margin:6px 0 4px;cursor:pointer}.cm-c-bar i{flex:1;height:6px;background:#2b323e;border-radius:1px}.cm-c-bar i.on{background:#7fd3a0}.cm-c-bar i.me{outline:2px solid #ffe08a;outline-offset:1px}
+.cm-c-roads{display:flex;flex-wrap:wrap;gap:4px;margin:4px 0}.cm-road{font:inherit;font-size:12px;padding:3px 7px;border:1px solid #3a4252;background:#161c26;color:#cfd6e2;cursor:pointer;border-radius:3px}
+.cm-road.open{border-color:#3e7a5a;color:#9fe8bf}.cm-road.shut{color:#9aa0aa}
+.cm-tip{font-size:12px;color:#9aa3b2;min-height:1.3em;margin-top:2px}
+.cm-legend.cm-hide{display:none}
 .cm-svg text{font-family:ui-monospace,Menlo,Consolas,monospace;pointer-events:none}
 .cm-svg .cm-name,.cm-svg .cm-numN,.cm-svg .cm-near{display:none}
 .cm-svg.lod-near .cm-name,.cm-svg.lod-near .cm-numN,.cm-svg.lod-near .cm-near{display:inline}
@@ -448,6 +455,7 @@ function mount(host,opts={}){
     <select class="cm-b" data-cm="pick" aria-label="Show a region">${regions.map(n=>`<option value="${n}"${n===startN?' selected':''}>${n} · ${esc(nameOf(n))}</option>`).join('')}</select>
     ${opts.onStart?'<button class="cm-b" id="cmPlayWorld">Play world</button>':''}
     <button class="cm-b" data-cm="me">Find me</button>
+    <button class="cm-b" id="cmKey" aria-label="Map key">?</button>
     <button class="cm-b" data-cm="all">Fit all</button>
     <button class="cm-b" data-cm="base">Emerald</button>
     ${fractured?'<button class="cm-b" data-cm="fractured">Fractured</button>':''}
@@ -458,7 +466,7 @@ function mount(host,opts={}){
    <div class="cm-chipbar" aria-hidden="true"></div>
    <div class="cm-zoom"><button class="cm-b" data-cm="in" aria-label="Zoom in">+</button><button class="cm-b" data-cm="out" aria-label="Zoom out">−</button></div>
   </div>
-  <div class="cm-legend">
+  <div class="cm-legend cm-hide">
    <span><svg width="22" height="12"><polygon points="1,6 5,1 17,1 21,6 17,11 5,11" fill="#2a2228" stroke="#ff8fd0" stroke-width="2"/></svg>cleared, every heart found ♥</span>
    <span><svg width="26" height="8"><path d="M1,4H25" stroke="#6fd39a" stroke-width="3"/></svg>open road</span>
    <span><svg width="26" height="8"><path d="M1,4H25" stroke="#b99cff" stroke-width="2.5" stroke-dasharray="6 4"/></svg>open crossing</span>
@@ -512,30 +520,28 @@ function mount(host,opts={}){
  function card(n){
   if(n>40)return crownCard(n);
   const w=worldOf(n),inf=info[n],pr=inf.progress,visited=!!atlas.state.visited[n],current=here?.world===n;
-  const chips=[current?`<span class="cm-chip here">${here.link?'you are on its road':'you are here'}</span>`:'',pr?.cleared?'<span class="cm-chip done">cleared</span>':'',
-   inf.next?'<span class="cm-chip next">open to you</span>':'',!visited&&!inf.next&&!current?'<span class="cm-chip">not yet visited</span>':''].join('');
-  let where='';
-  if(current&&here.link){const l=AT().links.find(x=>x.id===here.link);where=l?`You are on ${esc(PS()?.designs?.[l.id]?.[0]||'the road')}, the road between ${esc(nameOf(l.a))} and ${esc(nameOf(l.b))}.`:'';}
-  else if(pr){
-   const a=current&&!here.link?pr.at:null;
-   where=a?.kind==='section'?`You are in section ${a.i} of ${pr.total}${a.name?' ('+esc(a.name)+')':''} · ${pr.solved} cleared.`
-    :a?.kind==='arrival'?`You are at ${esc(a.name)}, where you arrive, before section 1 of ${pr.total} · ${pr.solved} cleared.`
-    :a?.kind==='end'?`You are at ${esc(a.name)}, past the last of its ${pr.total} sections · ${pr.solved} cleared.`
-    :a?.kind==='postern'?`You are at ${esc(a.name)}, a postern over its road · ${pr.solved} of ${pr.total} sections cleared.`
-    :a?.kind==='branch'?`You are on ${esc(a.name)}, a side way · ${pr.solved} of ${pr.total} sections cleared.`
-    :`${pr.solved} of ${pr.total} sections cleared.`;
-  }
-  const ms=mouths(n,atlas);
-  const groups=[];
-  for(const m of ms){let g=groups.find(x=>x.id===m.junctionId);if(!g)groups.push(g={id:m.junctionId,name:m.junction,role:m.role,list:[]});g.list.push(m);}
-  const li=m=>`<li><b>${m.edge==='left'?'←':'→'} ${esc(m.toName)}</b> · ${m.open?'<span class="cm-open">open</span>':'<span class="cm-sealed">sealed</span>'}<br><small>${esc([m.tier,m.edge].filter(Boolean).join(' '))} mouth · ${esc(m.passage)} · arrives at the ${esc(m.where)}${m.open?'':'<br>Opens when you '+esc(m.reasonLong)}</small></li>`;
-  const onRoad=current&&here.link&&AT().links.find(x=>x.id===here.link);
-  const state=onRoad?`on ${PS()?.designs?.[onRoad.id]?.[0]||'the road'} to ${nameOf(onRoad.a===n?onRoad.b:onRoad.a)}`:current?'you are here':pr?.cleared?'cleared':inf.next?'open to you':visited?'visited':'not yet visited';
-  const sealed=ms.filter(m=>!m.open).length;
-  const hh=model.hearts?.[n],heartTxt=hh&&hh.total?`♥ ${hh.got}/${hh.total} heart${hh.total===1?'':'s'}`:'';
-  chipbar.innerHTML=`<b>${n} · ${esc(w?.name||nameOf(n))}</b> <small>· ${esc(state)}${pr?` · ${pr.solved}/${pr.total} sections`:''}${heartTxt?' · '+heartTxt:''}${ms.length?` · ${ms.length-sealed} road${ms.length-sealed===1?'':'s'} open${sealed?`, ${sealed} sealed`:''}`:''}</small>`;
-  detail.innerHTML=`<h2>${n} · ${esc(w?.name||nameOf(n))}${chips}${hh&&hh.total?`<span class="cm-chip" style="border-color:#ff8fd0;color:#ffc2e6">${heartTxt}</span>`:''}</h2><div>${where}${hh&&hh.total?`<br>${hh.got>=hh.total?'Every heart in this world is found.':`${hh.total-hh.got} heart${hh.total-hh.got===1?'':'s'} still to earn here: one in each optional route, finished properly.`}`:''}${opts.extra?opts.extra(n):''}${hh?.purple?`<br><span style="color:#c9a2ff">${hh.purple.got?'♥ Purple heart found':'♡ Purple heart not found'} · with this world beaten it opens ${esc(nameOf(hh.purple.opens))}.</span>`:''}</div>${groups.length?groups.map(g=>`<h3>${esc(g.name)} · ${esc(roleWords[g.role])}</h3><ul>${g.list.map(li).join('')}</ul>`).join(''):'<div><small>No roads leave this region yet.</small></div>'}`;
-  const play=host.querySelector('#cmPlayWorld');if(play){const locked=opts.canStart&&!opts.canStart(n);play.disabled=!!locked;play.textContent=locked?'Locked':'Play world';const why=locked?(opts.lockedWhy?.(n)||'Locked'):'';play.title=locked?why:'Play '+(w?.name||nameOf(n));play.setAttribute('aria-label',play.title);play.onclick=()=>opts.onStart(n);if(locked)detail.insertAdjacentHTML('beforeend',`<p class="cm-sealed">${esc(why)}</p>`);}
+  // (7.322) Isaac: a load of text no one can read. Now: the name, a bar of its sections, a row of icons, a chip per road.
+  // Each icon and chip says more when tapped (one line under the card), or on hover.
+  const ms=mouths(n,atlas),hh=model.hearts?.[n],plant=opts.plant?.(n);
+  const at=current&&!here.link?pr?.at:null,onRoad=current&&here.link&&AT().links.find(x=>x.id===here.link);
+  const segs=pr&&pr.total?Array.from({length:pr.total},(_,i)=>`<i class="${i<pr.solved?'on':''}${at?.kind==='section'&&at.i===i+1?' me':''}"></i>`).join(''):'';
+  const tipOf=t=>esc(t).replace(/"/g,'&quot;');
+  const icons=[];
+  if(hh&&hh.total){const purple=hh.purple,reg=hh.total-(purple?1:0),regGot=hh.got-(purple?.got?1:0);
+   if(purple)icons.push(`<span data-tip="${tipOf(`Purple heart ${purple.got?'found':'not found'} · with ${w?.name||'this world'} beaten it opens ${nameOf(purple.opens)}`)}" class="cm-i" style="color:#c98cff">${purple.got?'♥':'♡'}</span>`);
+   for(let i=0;i<reg;i++)icons.push(`<span data-tip="${tipOf(`Heart ${i<regGot?'found':'not found'} · one in each optional route, finished properly`)}" class="cm-i" style="color:#ff8fd0">${i<regGot?'♥':'♡'}</span>`);}
+  if(plant)icons.push(`<span data-tip="${tipOf(`${plant.half} (${plant.name}) · ${plant.have?'earned':'a perfect clear earns it: no deaths on the road'}${plant.cside?' · its C-side is open':''}`)}" class="cm-i" style="color:${plant.col};opacity:${plant.have?1:.45}">✿</span>`);
+  if(plant?.cside)icons.push(`<span data-tip="C-side open" class="cm-i" style="color:#ffd98a">C</span>`);
+  const where=onRoad?`on ${PS()?.designs?.[onRoad.id]?.[0]||'the road'}`:at?.kind==='section'?`section ${at.i}${at.name?' · '+at.name:''}`:at?.name||'';
+  const road=m=>`<button class="cm-road ${m.open?'open':'shut'}" data-tip="${tipOf(`${m.passage||'Passage'} to ${m.toName} · ${m.open?'open':'opens when you '+m.reason}`)}">${m.edge==='left'?'←':'→'} ${esc(m.toName)}${m.open?'':' 🔒'}</button>`;
+  const state=onRoad?'on its road':current?'you are here':pr?.cleared?'cleared':inf.next?'open to you':visited?'visited':'not yet visited';
+  chipbar.innerHTML=`<b>${n} · ${esc(w?.name||nameOf(n))}</b> <small>${current?'📍 ':''}${pr?`${pr.solved}/${pr.total}`:''}${hh&&hh.total?` · ♥${hh.got}/${hh.total}`:''}</small>`;
+  detail.innerHTML=`<div class="cm-c-h"><b>${n} · ${esc(w?.name||nameOf(n))}</b>${current?'<span class="cm-chip here">📍 you</span>':pr?.cleared?'<span class="cm-chip done">✓</span>':''}<span class="cm-c-icons">${icons.join('')}</span></div>
+   ${segs?`<div class="cm-c-bar" data-tip="${tipOf(`${pr.solved} of ${pr.total} sections cleared${where?' · you are '+(where.startsWith('on ')?'':'in ')+where:''}`)}">${segs}</div>`:''}
+   ${ms.length?`<div class="cm-c-roads">${ms.map(road).join('')}</div>`:''}
+   <div class="cm-tip">${esc(where?(current?'📍 ':'')+where:state)}</div>`;
+  detail.querySelectorAll('[data-tip]').forEach(el=>{el.title=el.dataset.tip;el.onclick=()=>{detail.querySelector('.cm-tip').textContent=el.dataset.tip;};});
+  const play=host.querySelector('#cmPlayWorld');if(play){const locked=opts.canStart&&!opts.canStart(n);play.disabled=!!locked;play.textContent=locked?'Locked':'Play world';const why=locked?(opts.lockedWhy?.(n)||'Locked'):'';play.title=locked?why:'Play '+(w?.name||nameOf(n));play.setAttribute('aria-label',play.title);play.onclick=()=>opts.onStart(n);if(locked)detail.querySelector('.cm-tip').textContent='🔒 '+why;}
  }
  function select(n,pan=false){
   if(!regions.includes(n))return;model.selected=n;if(pick)pick.value=String(n);render();card(n);
@@ -572,6 +578,7 @@ function mount(host,opts={}){
   k*=f;clamp();cx=wp[0]-(p[0]-W/2)/k;cy=wp[1]-(p[1]-H/2)/k;apply();
  },{passive:false});
  view.addEventListener('scroll',()=>{view.scrollTop=0;view.scrollLeft=0;});
+ {const k=host.querySelector('#cmKey');if(k)k.onclick=()=>host.querySelector('.cm-legend').classList.toggle('cm-hide');}
  host.querySelectorAll('[data-cm]').forEach(b=>{
   const act=b.getAttribute('data-cm');
   if(act==='pick'){b.addEventListener('change',()=>select(+b.value,true));return;}
