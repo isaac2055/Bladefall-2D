@@ -446,7 +446,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.321.0';
+const VERSION='7.322.0';
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -24573,8 +24573,8 @@ function openExploreMenu(){
  document.getElementById('exploreCoop').onclick=openCoop;   // (7.320) Explore's co-op lives in Explore; Survive's in Survive
  document.getElementById('exploreBack').onclick=titleScreen;
 }
-/* (7.320) Extras belong to the offline app (the APK), not the website. */
-function offlineApp(){return location.hostname==='appassets.bladefall'||location.protocol==='file:';}
+/* Extras belong to the offline app and local development builds. */
+function offlineApp(){return location.protocol==='file:'||['appassets.bladefall','localhost','127.0.0.1','[::1]'].includes(location.hostname)||location.hostname.endsWith('.localhost');}
 function openCoopChoice(){
  showOvHTML(`<div class="card"><h1>Co-op</h1><p class="ovsub">Choose your game</p><button class="bigbtn" id="coopExplore">🧭 Explore</button><button class="bigbtn" id="coopSurvive">⚔️ Survive</button><button class="bigbtn ghost" id="coopChoiceBack">Back</button></div>`);
  document.getElementById('coopExplore').onclick=openCoop;

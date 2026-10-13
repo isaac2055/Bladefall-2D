@@ -12,6 +12,13 @@ OUT="$ROOT/netlify-deploy"
 # Every file the running game actually needs (dev-only files like serve.mjs,
 # node_modules and package.json are deliberately left out).
 ASSETS=(
+  bladefall-explore-finale.js
+  bladefall-pcore-dev-finale.js
+  bladefall-pcore-dev-finale-view.js
+  bladefall-climb-bank-passages.js
+  bladefall-climb-finale-tapes.js
+  bladefall-climb-finale.js
+  bladefall-climb-rewards.js
   bladefall-pcore-dev-superrooms-colossus.js
   bladefall-pcore-dev-superrooms-base-view.js
   bladefall-pcore-dev-superrooms-base.js

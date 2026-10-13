@@ -24,6 +24,7 @@ docs/**/*.gif
 docs/**/*.mp4
 docs/**/*.webm
 scripts/climb/.cache/
+scripts/room-bank/.cache/
 
 # Local playtest submissions and private deployment seed
 scripts/playtest-release/.cache/

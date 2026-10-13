@@ -1,3 +1,16 @@
+## 7.322.0: First Outskirts C-side review candidates (2026-10-12)
+
+Isaac asked to start with only the Outskirts C-side and an alternate version, bank them locally, and import after playtesting. Two three-section candidates are ready in **Extras → Room Bank → C-side candidates**:
+- A, The Broken Road: F81–F83, forward/broken-ground supers, a reversing middle road, and a three-super hammer finale.
+- B, Homeward Bell: F84–F86, a reverse-super departure and a two-super rush-shoulder finale with a high bell transfer.
+- Estimated difficulty 5/5, human approval pending; clean routes total about 15 / 13 seconds, with individual fire checkpoints and no hearts or branches.
+- Local-only registration (localhost, loopback, file and appassets). Public hosts omit the candidates; Extras now appears on localhost as well as the offline app.
+- No campaign import, no C-side reward recording, no change to plant unlocks or the other nineteen C-sides. Skip policy remains undecided for eventual campaign import.
+- Six core routes, twelve timing variations, eighteen recorded shortcut attempts; bounded independent bypass searches; all 138 bank routes and finale-check pass. Browser played both complete sets at zero deaths before a final eight-pixel F84 refill adjustment, which passed core/tolerance checks. Further browser access was declined.
+- All 132 earlier bank source records and campaign integration files are preserved. Seven already-loaded runtime modules were added to the offline build asset list. The offline copy builds, changed-source mirror parity and Cloudflare asset checks pass. Broad release-check remains red on existing reference-discovery/cache and size-budget failures.
+
+Playtest guide: `docs/room-bank/OUTSKIRTS-C-SIDE-REVIEW.md`. Focused checker: `scripts/room-bank/cside-outskirts-check.mjs` (optional `--search`). Version 7.322.0, cache `bladefall-v490-cside-review`.
+
 ## 7.321.0: Ten skins, by Isaac's choice (2026-10-12)
 
 Defined in `bladefall-climb-rewards.js`:
