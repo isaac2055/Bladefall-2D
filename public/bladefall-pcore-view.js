@@ -621,7 +621,7 @@ function drawKnight(b,g){
  const tired=p.stamina<20&&(p.state==='climb'||p.stamina<20&&g.frame%10<5);
  const body=tired&&g.frame%6<3?'#c05050':'#2d4a78';
  const skin=SKIN();
- if(skin)root.BladefallClimbRewards.sprite(b,p.x,p.y,p.facing,pose,tired&&g.frame%6<3?{...skin.pal,body:'#c05050'}:skin.pal,p.dashes>0,g.frame,view.anim.squash,view.anim.stretch,view.anim.run);
+ if(skin)root.BladefallClimbRewards.sprite(b,p.x,p.y,p.facing,pose,tired&&g.frame%6<3?{...skin.pal,body:'#c05050'}:skin.pal,p.dashes>0,g.frame,view.anim.squash,view.anim.stretch,view.anim.run,null,skin.fx);
  else drawKnightSprite(b,p.x,p.y,p.facing,pose,body,scarf,view.anim.squash,view.anim.stretch,view.anim.run);
  // Blade strike arc
  if(p.strikeTimer>0){

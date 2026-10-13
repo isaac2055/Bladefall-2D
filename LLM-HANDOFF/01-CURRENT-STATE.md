@@ -1,3 +1,31 @@
+## 7.321.0: Ten skins, by Isaac's choice (2026-10-12)
+
+Defined in `bladefall-climb-rewards.js`:
+- the Ascendant: worlds 1–20;
+- the Fractured: worlds 21–40;
+- Echo Self: your Echo and Vesper;
+- Gilded Sovereign: every heart, your Echo and Vesper;
+- Prism Paladin: everything (all 40 worlds, every heart, Echo, Vesper, all C-sides);
+- Ember Wretch: Ember Colossus (world 11), or opened with half of every heart;
+- Starlit Regalia: the Abyss King (world 14);
+- the Haunt: the Fractured King (world 34);
+- Heartbound: opened with three quarters of every heart;
+- the Gardener: opened with a quarter of every heart.
+
+Heart thresholds of 81 are 21, 41 and 61. Hearts are not spent; `bought` is saved.
+
+The first set (Ascendant, Fractured, Heartbound, Gardener) uses the base knight's plume. The second set has its own effects (`fx`):
+- echo: an afterimage;
+- glint;
+- prism trail;
+- ember smoulder;
+- stars;
+- ghost: see-through.
+
+The five-press 100% view opens every skin, and closes them again when toggled off. A worn skin reverts if it is no longer earned.
+
+Version 7.321.0, cache `bladefall-v489-skins`.
+
 ## 7.320.0: Title menu tidy, co-op inside Explore, speedrun timer off by default (2026-10-12)
 
 - **Title menu:** Explore, Survive, then a big Leaderboards button (where Co-op was), Sound/Controls and the APK link.

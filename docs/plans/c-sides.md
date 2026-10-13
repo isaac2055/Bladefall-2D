@@ -41,16 +41,19 @@ All of this is in `public/bladefall-climb-rewards.js`; the hooks are in `public/
 | 19 | The Path to the Palace | Pilgrim's Lavender | Woody Crown | Lavender Spike |
 | 20 | Sunspire Palace | Sunspire Lily | Golden Bulb | Sunspire Lily |
 
-**Recording a beaten C-side.** `BladefallClimbRewards.csideBeaten(k)` records C-side k as beaten. All 20 beaten earns the rarest skin, **The Gardener**.
+**Recording a beaten C-side.** `BladefallClimbRewards.csideBeaten(k)` records C-side k as beaten. All 20 beaten, together with everything else (every world and heart, your Echo and Vesper), earns the rarest skin, **Prism Paladin** (7.321).
 
-**The four skins** (`SKINS`):
-
-| Skin | Earned by |
-|---|---|
-| The Ascendant | beating worlds 1–20 |
-| The Fractured | beating worlds 21–40 |
-| Heartbound | every heart, plus Vesper beaten |
-| The Gardener | all 20 C-sides beaten |
+**Skins** (`SKINS`, 7.321). There are ten:
+- the Ascendant: worlds 1–20;
+- the Fractured: worlds 21–40;
+- Echo Self: your Echo and Vesper;
+- Gilded Sovereign: every heart, your Echo and Vesper;
+- Prism Paladin: everything plus every C-side;
+- Ember Wretch: Ember Colossus, or half of every heart;
+- Starlit Regalia: the Abyss King;
+- the Haunt: the Fractured King;
+- Heartbound: three quarters of every heart;
+- the Gardener: a quarter of every heart.
 
 They are worn from the world map's Garden & skins card.
 
