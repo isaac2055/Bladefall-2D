@@ -12,6 +12,10 @@ OUT="$ROOT/netlify-deploy"
 # Every file the running game actually needs (dev-only files like serve.mjs,
 # node_modules and package.json are deliberately left out).
 ASSETS=(
+  coop-practice.html
+  bladefall-coop-practice-core.js
+  bladefall-coop-practice-session.js
+  bladefall-coop-practice-view.js
   bladefall-explore-finale.js
   bladefall-pcore-dev-finale.js
   bladefall-pcore-dev-finale-view.js

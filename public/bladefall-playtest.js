@@ -18,7 +18,7 @@ async function sync(){if(syncing){syncAgain=true;return;}if(navigator.onLine===f
 function queue(kind,record){const before=JSON.stringify(data);try{data[kind==='time'?'records':kind==='recording'?'recordings':'feedback'].push(kind==='recording'?{id:record.id,name:record.name,room:record.room,frames:record.frames,recordedAt:record.recordedAt}:record);data.outbox.push({kind,record});persist();}catch(e){data=JSON.parse(before);throw e;}void sync();}
 function feedbackState(id){const exists=data.feedback.some(r=>r.id===id);return !exists?'unsaved':data.outbox.some(x=>x.record.id===id)?'pending':'synced';}
 function saveFeedback(info){
- const record={...info,id:info.id||uuid(),season:M.SEASON,player:data.player,world:String(info.world),room:info.room||'',name:info.name||info.room,ms:Math.round(info.ms||0),deaths:info.deaths||0,build:info.build||'7.332.0',at:info.recordedAt||new Date().toISOString()};
+ const record={...info,id:info.id||uuid(),season:M.SEASON,player:data.player,world:String(info.world),room:info.room||'',name:info.name||info.room,ms:Math.round(info.ms||0),deaths:info.deaths||0,build:info.build||'7.333.0',at:info.recordedAt||new Date().toISOString()};
  if(!M.validFeedback(record))throw Error('Invalid feedback');
  if(feedbackState(record.id)==='unsaved')queue('feedback',record);else void sync();
  return record.id;

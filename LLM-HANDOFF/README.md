@@ -1,3 +1,7 @@
+# Latest: 7.333 five Cores and shared co-op practice
+
+Read [FIVE-CORES-COOP-7.333.md](FIVE-CORES-COOP-7.333.md) first.
+
 # Latest: 7.332 Causeway, Garden and save points
 
 Read [CAUSEWAY-GARDEN-7.332.md](CAUSEWAY-GARDEN-7.332.md) first.

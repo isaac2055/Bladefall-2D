@@ -1,5 +1,5 @@
 {
-  "version": "7.332.0",
+  "version": "7.333.0",
   "method": "Native simulation, saved-pose part routes, persistence and DOM entry/completion hooks; no live browser verification",
   "ordinarySourcesUnchanged": 132,
   "cores": [
@@ -40,11 +40,41 @@
       "world": 103,
       "name": "The Last Counterweight",
       "draft": false,
-      "wholeFrames": 1258,
+      "wholeFrames": 1238,
       "partFrames": [
-        398,
-        388,
-        485
+        308,
+        487,
+        448
+      ],
+      "deaths": 0,
+      "checkpointDeathReset": true,
+      "durableRestore": true,
+      "ordinaryProbesStopped": 2
+    },
+    {
+      "world": 104,
+      "name": "The Borrowed Sky",
+      "draft": false,
+      "wholeFrames": 1837,
+      "partFrames": [
+        690,
+        655,
+        508
+      ],
+      "deaths": 0,
+      "checkpointDeathReset": true,
+      "durableRestore": true,
+      "ordinaryProbesStopped": 2
+    },
+    {
+      "world": 105,
+      "name": "The Unbroken Answer",
+      "draft": false,
+      "wholeFrames": 1657,
+      "partFrames": [
+        547,
+        575,
+        558
       ],
       "deaths": 0,
       "checkpointDeathReset": true,

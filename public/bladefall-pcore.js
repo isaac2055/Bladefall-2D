@@ -350,6 +350,7 @@ function jump(g,p,inp){
  if(p.move2){p.move2.wallGrace=0;p.move2.reverse=null;}
  g.buf.jump=0;p.jumpGrace=0;p.varJump=K.varJumpFrames;p.autoJump=false;p.wallSlide=K.wallSlideFrames;p.wallBoostTimer=0;
  p.vx+=K.jumpHBoost*inp.mx;p.vy=K.jumpSpeed;const l=liftBoost(p);p.vx+=l.x;p.vy+=l.y;p.varJumpSpeed=p.vy;p.liftTimer=0;
+ if(g.room.def.counterweightFlow&&Math.abs(l.x)>0)p.counterweightMomentum=sign(p.vx);
  emit(g,'jump',{x:p.x+4,y:p.y+p.h,lift:l.x||l.y?1:0});
 }
 function superJump(g,p,inp){
@@ -359,9 +360,18 @@ function superJump(g,p,inp){
  // A reversal replaces any velocity waiting to be restored from the outgoing wall contact.
  if(p.move2&&dir!==oldDir){p.retainTimer=0;p.retained=0;}
  if(p.move2)p.move2.wallGrace=0;
+ const incoming=p.vx;
  p.vx=K.superJumpH*dir;p.vy=K.jumpSpeed;
  const hyper=p.ducking;if(hyper){p.vx*=K.hyperXMult;p.vy*=K.hyperYMult;p.ducking=false;}
  const l=liftBoost(p);p.vx+=l.x;p.vy+=l.y;p.varJumpSpeed=p.vy;p.liftTimer=0;
+ // Counterweight rooms reward a continuous landing, not a stationary hyper.
+ // This opt-in leaves ordinary rooms and their recorded routes unchanged.
+ if(g.room.def.counterweightFlow&&hyper&&p.counterweightMomentum===dir&&incoming*dir>K.superJumpH*K.hyperXMult){
+  p.vx=dir*Math.max(Math.abs(p.vx),Math.abs(incoming));
+  p.dashRefillCooldown=0;refillDash(g,p);
+  emit(g,'counterweight-relay',{x:p.x+4,y:p.y+p.h,vx:p.vx});
+ }
+ if(g.room.def.counterweightFlow&&Math.abs(l.x)>0)p.counterweightMomentum=sign(p.vx);
  p.state='normal';emit(g,hyper?'hyper':'super',{x:p.x+4,y:p.y+p.h});
  if(p.move2&&dir!==oldDir)emit(g,hyper?'reverse-hyper':'reverse-super',{x:p.x+4,y:p.y+p.h,dir});
 }
@@ -398,6 +408,7 @@ function flipPhase(g,cause){
 }
 
 function updatePlayer(g,p,inp){
+ if(p.counterweightMomentum&&(p.state==='climb'||p.carrying||inp.mx===-p.counterweightMomentum||p.state==='normal'&&p.vx*p.counterweightMomentum<=K.superJumpH*K.hyperXMult))p.counterweightMomentum=0;
  // timers
  if(p.dashCooldown>0)p.dashCooldown--;
  if(p.dashRefillCooldown>0)p.dashRefillCooldown--;

@@ -1,6 +1,6 @@
 # Dedicated two-player puzzle course — design draft
 
-Concept only. No co-op gameplay or networking changes are authorized by this draft.
+Implemented as all eight separate rooms in The Two Banks (7.333). See [the implementation and verification record](../../LLM-HANDOFF/FIVE-CORES-COOP-7.333.md). The older four-space sketch below is retained as design background.
 
 The existing shared-world experience can remain casual. A dedicated course would instead give two knights different, mutually dependent jobs. Each solution needs actions by both players, with roles swapping regularly. Difficulty should come from understanding, communication and coordinated movement, rather than a player spending most of the room holding a button.
 

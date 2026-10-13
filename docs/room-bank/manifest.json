@@ -1,7 +1,7 @@
 {
-  "version": "7.332.0",
-  "activeBatch": 25,
-  "activeRun": 15,
+  "version": "7.333.0",
+  "activeBatch": 26,
+  "activeRun": 16,
   "status": "User-approved bank plus a separate queue of revisions and new candidates",
   "rooms": [
     {
@@ -80536,8 +80536,8 @@
       "id": "bank-f96",
       "name": "Turn of the Trumpet",
       "side": "fractured",
-      "batch": 25,
-      "run": 15,
+      "batch": 26,
+      "run": 16,
       "collection": "cores",
       "format": "superroom",
       "localOnly": false,
@@ -80964,8 +80964,8 @@
       "id": "bank-f97",
       "name": "The Oath Root",
       "side": "fractured",
-      "batch": 25,
-      "run": 15,
+      "batch": 26,
+      "run": 16,
       "collection": "cores",
       "format": "superroom",
       "localOnly": false,
@@ -81390,8 +81390,8 @@
       "id": "bank-f98",
       "name": "The Last Counterweight",
       "side": "fractured",
-      "batch": 25,
-      "run": 15,
+      "batch": 26,
+      "run": 16,
       "collection": "cores",
       "coreIndex": 3,
       "format": "superroom",
@@ -81409,33 +81409,126 @@
         "lift-momentum",
         "ultra",
         "hyper",
-        "zipline",
+        "wall-grab",
         "crumble",
         "brake-roof"
       ],
       "newMechanics": [],
       "role": "Causeway Core: one continuous three-leg counterweight crossing",
-      "solution": "Ride each hoist into a committed launch, land low under the brake housings, chain fast crumble departures, and intercept the tears to return above the same ribs.",
+      "solution": "Ride each hoist into a committed launch, land low under the brake housings, chain fast crumble departures, and use the rising hoists to return above the same ribs.",
       "requiredEvents": [
         "zip-start",
-        "zip-in",
-        "hyper",
-        "ultra",
+        "counterweight-relay",
+        "grab",
         "core-checkpoint"
       ],
       "requiredEventCounts": {
-        "zip-start": 3,
-        "zip-in": 2,
-        "hyper": 8,
-        "ultra": 8,
-        "core-checkpoint": 2
+        "core-checkpoint": 2,
+        "counterweight-relay": 1,
+        "grab": 1,
+        "zip-start": 7
       },
       "coreDescription": "Launch from the counterweights and carry the speed through the broken gantries. One room, three demanding legs.",
       "draft": false,
-      "humanReview": "Awaiting player review.",
-      "revision": "377b604961f9",
+      "humanReview": "Revised for counterweight flow. Native whole and independent checkpoint routes pass; awaiting player review.",
+      "revision": "08845d683955",
       "source": "scripts/room-bank/fractured/98-bank-f98.json",
-      "tapeFrames": 1258
+      "tapeFrames": 1238
+    },
+    {
+      "id": "bank-f99",
+      "name": "The Borrowed Sky",
+      "side": "fractured",
+      "batch": 26,
+      "run": 16,
+      "collection": "cores",
+      "coreIndex": 4,
+      "format": "superroom",
+      "localOnly": false,
+      "acceptance": "candidate",
+      "needsReview": true,
+      "status": "route-proven",
+      "author": "Sol 6.1",
+      "difficulty": 5,
+      "worlds": [
+        4,
+        24
+      ],
+      "tags": [
+        "wind",
+        "phase",
+        "pod",
+        "crumble",
+        "wall-grab"
+      ],
+      "newMechanics": [],
+      "role": "Updraft Core: a single connected bellows tower",
+      "solution": "Keep rising through the bellows and cut across their mouths, rebound from seeds, and alternate the light platforms on each dash.",
+      "requiredEvents": [
+        "wind",
+        "phase",
+        "pod",
+        "core-checkpoint"
+      ],
+      "requiredEventCounts": {
+        "wind": 4,
+        "phase": 3,
+        "pod": 1,
+        "core-checkpoint": 2
+      },
+      "coreDescription": "Thread the bellows, seed rebounds and shifting light landings in one continuous tower.",
+      "draft": false,
+      "humanReview": "Native whole and all three fresh checkpoint routes verified. Awaiting player review; not banked.",
+      "revision": "f6b31a1108ff",
+      "source": "scripts/room-bank/fractured/99-bank-f99.json",
+      "tapeFrames": 1840
+    },
+    {
+      "id": "bank-f100",
+      "name": "The Unbroken Answer",
+      "side": "fractured",
+      "batch": 26,
+      "run": 16,
+      "collection": "cores",
+      "coreIndex": 5,
+      "format": "superroom",
+      "localOnly": false,
+      "acceptance": "candidate",
+      "needsReview": true,
+      "status": "route-proven",
+      "author": "Sol 6.1",
+      "difficulty": 5,
+      "worlds": [
+        5,
+        25
+      ],
+      "tags": [
+        "parry",
+        "air-refill",
+        "crumble",
+        "counterweight",
+        "wall-grab",
+        "pod"
+      ],
+      "newMechanics": [],
+      "role": "Marksman Core: a continuous three-tier return through the watch",
+      "solution": "Cross each firing lane with an airborne parry refill, recover on the cracked ledge, then use hoists, wall catches and seed rebounds to change height.",
+      "requiredEvents": [
+        "parry",
+        "core-checkpoint",
+        "zip-start"
+      ],
+      "requiredEventCounts": {
+        "parry": 6,
+        "core-checkpoint": 2,
+        "zip-start": 2
+      },
+      "coreDescription": "Turn the watch’s arrows into your next dash, across three continuous tiers of broken stone.",
+      "draft": false,
+      "humanReview": "Native whole and all three fresh checkpoint routes verified. Awaiting player review; not banked.",
+      "revision": "caf44759ab2d",
+      "source": "scripts/room-bank/fractured/100-bank-f100.json",
+      "tapeFrames": 1662
     }
   ]
 }

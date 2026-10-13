@@ -1,28 +1,27 @@
 {
   "room": "bank-f98",
-  "frames": 1258,
+  "frames": 1238,
   "deaths": 0,
   "counts": {
     "dash": 27,
     "refill-dash": 27,
-    "zip-start": 3,
-    "ultra": 12,
+    "zip-start": 7,
+    "ultra": 11,
     "hyper": 11,
-    "zip-stop": 3,
+    "zip-stop": 7,
     "land": 14,
-    "crumble-shake": 10,
-    "jump": 2,
-    "reverse-hyper": 1,
-    "crumble": 10,
-    "zip-home": 3,
-    "grab": 2,
-    "crumble-back": 8,
-    "climbhop": 2,
-    "super": 2,
-    "zip-in": 2,
-    "zip-out": 2,
+    "crumble-shake": 8,
+    "counterweight-relay": 1,
+    "crumble": 8,
+    "super": 3,
+    "zip-home": 7,
+    "jump": 3,
+    "crumble-back": 6,
     "core-checkpoint": 2,
     "walljump": 3,
+    "grab": 2,
+    "climbjump": 1,
+    "climbhop": 1,
     "refill": 1,
     "exit": 1
   },
@@ -34,13 +33,13 @@
       "firstInputDelta": -2,
       "firstShelfLanded": true,
       "exited": false,
-      "deaths": 11
+      "deaths": 12
     },
     {
       "firstInputDelta": -1,
       "firstShelfLanded": true,
       "exited": false,
-      "deaths": 11
+      "deaths": 13
     },
     {
       "firstInputDelta": 1,
@@ -52,7 +51,7 @@
       "firstInputDelta": 2,
       "firstShelfLanded": true,
       "exited": false,
-      "deaths": 12
+      "deaths": 13
     }
   ],
   "limits": "Finite native probes, not exhaustive shortcut or human difficulty proof. No live browser playtesting."

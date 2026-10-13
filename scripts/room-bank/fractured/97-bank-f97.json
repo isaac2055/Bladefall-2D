@@ -188,8 +188,8 @@
   },
   "bank": {
     "side": "fractured",
-    "batch": 25,
-    "run": 15,
+    "batch": 26,
+    "run": 16,
     "collection": "cores",
     "format": "superroom",
     "localOnly": false,

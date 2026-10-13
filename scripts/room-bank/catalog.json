@@ -1,7 +1,7 @@
 {
-  "version": "7.332.0",
-  "activeBatch": 25,
-  "activeRun": 15,
+  "version": "7.333.0",
+  "activeBatch": 26,
+  "activeRun": 16,
   "retained": [
     "bank-f51",
     "bank-f71",
@@ -285,7 +285,7 @@
   "reviewCycle": false,
   "newRoomsBySide": {
     "base": 0,
-    "fractured": 3
+    "fractured": 5
   },
   "order": [
     "bank-b05",
@@ -422,7 +422,9 @@
     "bank-f80",
     "bank-f96",
     "bank-f97",
-    "bank-f98"
+    "bank-f98",
+    "bank-f99",
+    "bank-f100"
   ],
   "reviewRecords": [],
   "defaultGroup": "cores",

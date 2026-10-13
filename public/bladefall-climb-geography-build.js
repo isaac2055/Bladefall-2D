@@ -67,7 +67,7 @@ const anchors={1:[0,1050],2:[-900,700],3:[900,700],4:[-900,350],5:[900,350],6:[0
  // (7.309) the finale, beyond the two tips: Your Echo below the Fractured emerald, Vesper above the Ascent
  41:[0,4500],42:[0,-1700],
  // (7.325) the Cores, in a row below the Echo
- 101:[0,4720],102:[400,4720],103:[800,4720]};
+ 101:[0,4720],102:[400,4720],103:[800,4720],104:[1200,4720],105:[1600,4720]};
 // Translate an entire authored world as one unit. Never repack its rooms or
 // insert travel sections into the original challenge sequence.
 function frameWorld(w){

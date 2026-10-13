@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {readFileSync,writeFileSync} from 'node:fs';
 import {Core,runRoom,keysToInput} from '../pcore-tape.mjs';
 const x=JSON.parse(readFileSync(new URL('../room-bank/fractured/98-bank-f98.json',import.meta.url))),d=x.room,full=runRoom([d],0,x.tape);
-assert(full.exited&&full.deaths===0);const counts={};for(const e of full.events)counts[e.type]=(counts[e.type]||0)+1;for(const [k,n]of Object.entries(x.bank.requiredEventCounts))assert(counts[k]>=n,k);
+assert.equal(d.lines.length,0,'Causeway has no late-world ziplines');assert.equal(d.zips.length,7,'seven native counterweights');assert(d.counterweightFlow);assert(full.exited&&full.deaths===0);const counts={};for(const e of full.events)counts[e.type]=(counts[e.type]||0)+1;for(const [k,n]of Object.entries(x.bank.requiredEventCounts))assert(counts[k]>=n,k);
 // Search ordinary run/jump/single-airdash openings while rejecting lift or advanced-movement assistance.
 let attempts=0,ordinaryFirstLandings=0;
 for(let jumpAt=0;jumpAt<=30;jumpAt+=2)for(let dashAt=jumpAt+1;dashAt<=jumpAt+55;dashAt+=3)for(const aim of ['r','ru']){
