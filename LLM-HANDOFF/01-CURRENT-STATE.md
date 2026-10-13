@@ -1,3 +1,11 @@
+## 7.326.0 — The White Mile, one Outskirts C-side superroom
+
+Isaac rejected the earlier C-side difficulty and explicitly requested one very large, dense room with one continuous challenge. The new local Room Bank candidate F, bank-f94, is The White Mile: 172 × 84 tiles, one spawn/fire, three stacked runs, 16 crumbling contacts, low flower ceilings, wallbounce turns, a needle ascent, and an airborne undercut. There are no intermediate checkpoint rooms. Existing candidates and the separately registered Trumpet Hollow campaign candidate are preserved; this new candidate is shown first in the Room Bank C-side menu.
+
+The recorded complete route lasts 1,789 frames (29.82 seconds), with zero deaths, 12 hypers, 3 supers, 3 wallbounces and 14 refill contacts. The full 145-room bank and existing finale checks pass. Of 364 one-frame input-hold perturbations, 130 still clear the entire room; four are saved as positive cases. `node scripts/room-bank/white-mile-check.mjs --search` runs twelve bounded ordinary-movement searches from intermediate recorded states. Read `docs/room-bank/white-mile-proof.json` for their results and limits. These are stronger bypass checks, not an exhaustive proof of all player routes or a human difficulty rating.
+
+All 144 prior source records are hash-preserved. Native movement physics are unchanged. New sources are local/offline-only and are not campaign-imported. Browser permission was declined earlier in this chat; no new live-browser verification was attempted. Human feel, readability and difficulty review remain pending. The authoritative source is `scripts/room-bank/fractured/94-bank-f94.json`; temporary authoring files are not needed.
+
 ## 7.325.0: C-side 1, Trumpet Hollow, playable (2026-10-13)
 
 Isaac asked Claude for one attempt at the Outskirts C-side. Candidate E sits beside Codex's A–D (Room Bank, local).
