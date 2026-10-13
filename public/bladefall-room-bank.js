@@ -105001,8 +105001,8 @@ const saved=[
    "collection": "cores",
    "format": "superroom",
    "localOnly": false,
-   "acceptance": "revised",
-   "needsReview": true,
+   "acceptance": "banked",
+   "needsReview": false,
    "status": "route-proven",
    "author": "Sol 6.1",
    "difficulty": 5,
@@ -105035,7 +105035,7 @@ const saved=[
     "crumble-shake": 14,
     "core-checkpoint": 2
    },
-   "humanReview": "Human difficulty, flow and enjoyment await review.",
+   "humanReview": "Approved by the player after requested checkpoint, visibility, and platform changes.",
    "shortcutChecks": [
     {
      "name": "Running alone",
@@ -106237,7 +106237,7 @@ const saved=[
  {
   "room": {
    "id": "bank-f97",
-   "name": "The Oath Root · Core draft",
+   "name": "The Oath Root",
    "cols": 132,
    "rows": 80,
    "map": [
@@ -106268,7 +106268,7 @@ const saved=[
     "#>.........................................................................................................................<......<#",
     "#>.........................................................................................................................<......<#",
     "#>.........................................................................................................................<......<#",
-    "#>.........................................................................................................................<......<#",
+    "#>....................................................~~~~~................................................................<......<#",
     "#>.........................................................................................................................<......<#",
     "#>......................................................................................................................b..<......<#",
     "#>..........................########.......................................................................................<......<#",
@@ -106312,9 +106312,9 @@ const saved=[
     "#>.........................................................................................................................<......<#",
     "#>.........................................................................................................................<......<#",
     "#..........................................................................................................................<......<#",
-    "#..........................................................................................................................<......<#",
+    "#................................P.........................................................................................<......<#",
     "#..............................~~~~~.......................................................................................<......<#",
-    "#..P...........................<...>.......................................................................................<......<#",
+    "#..............................<...>.......................................................................................<......<#",
     "###########....................<...>.......................................................................................<......<#",
     "###########....................<...>.......................................................................................<......<#",
     "###########................................................................................................................<......<#",
@@ -106325,7 +106325,7 @@ const saved=[
    "exit": "right",
    "core": 2,
    "coreProgressKey": "core-black-woods",
-   "coreProgressRevision": 1,
+   "coreProgressRevision": 2,
    "coreCheckpoints": [
     {
      "c": 86,
@@ -106367,12 +106367,6 @@ const saved=[
       "r": 29,
       "w": 5,
       "phase": 0
-     },
-     {
-      "c": 54,
-      "r": 27,
-      "w": 5,
-      "phase": 1
      }
     ]
    },
@@ -106391,7 +106385,16 @@ const saved=[
      "phase": 90
     }
    ],
-   "hint": "Cut down on pods to climb. Release jump for a low rebound under thorns. Read the resin branches, save at the clearing and turn, then cut the Oath Root’s crown."
+   "hint": "Cut down on pods to climb. Release jump for a low rebound under thorns. Read the resin branches, save at the clearing and turn, then cut the Oath Root’s crown.",
+   "cameraZones": [
+    {
+     "x0": 400,
+     "x1": 930,
+     "y0": 184,
+     "y1": 246,
+     "lookX": -96
+    }
+   ]
   },
   "bank": {
    "side": "fractured",
@@ -106400,8 +106403,8 @@ const saved=[
    "collection": "cores",
    "format": "superroom",
    "localOnly": false,
-   "acceptance": "candidate",
-   "needsReview": true,
+   "acceptance": "banked",
+   "needsReview": false,
    "status": "route-proven",
    "author": "Sol 6.1",
    "difficulty": 5,
@@ -106412,14 +106415,13 @@ const saved=[
    "tags": [
     "controlled-pogo",
     "resin-branches",
-    "root-crown",
-    "wave-dash"
+    "root-crown"
    ],
    "newMechanics": [
     "core-save-points"
    ],
-   "role": "Black Woods Core draft with three parts, two save points, native pod/resin/root mechanics",
-   "solution": "Cross the opening gulf with launch speed; chain lofted and directional pod cuts. Save in the clearing. Climb around the root divider, read the alternating resin branches, and save at the west turn. Return through pod cuts, cut the crown to open the final gate, then climb out.",
+   "role": "Black Woods Core with three parts and two save points",
+   "solution": "Start on the crumbling branch and chain lofted and directional pod cuts. Save in the clearing. Climb around the root divider, read the alternating resin branches, and save at the west turn. Return through pod cuts, cut the crown to open the final gate, then climb out.",
    "requiredEvents": [
     "pod",
     "pogo-loft",
@@ -106432,7 +106434,7 @@ const saved=[
     "root-cut": 1,
     "core-checkpoint": 2
    },
-   "humanReview": "Human difficulty, flow and enjoyment await review.",
+   "humanReview": "Approved by the player after requested checkpoint, visibility, and platform changes.",
    "shortcutChecks": [
     {
      "name": "Running alone",
@@ -106811,53 +106813,13 @@ const saved=[
    ],
    "positiveChecks": [],
    "coreIndex": 2,
-   "draft": true,
-   "coreDescription": "A pod ascent, an alternating resin traverse, then the Oath Root crown. +0.75 second crumble grace.",
+   "draft": false,
+   "coreDescription": "Chain seed jumps, read the resin branches, and cut the crown. Three parts, two save points.",
    "placementBand": "Black Woods Core draft",
-   "revision": "a8c39c89fbd1",
+   "revision": "d7110ac0993c",
    "source": "scripts/room-bank/fractured/97-bank-f97.json"
   },
   "tape": [
-   [
-    8,
-    "rx"
-   ],
-   [
-    8,
-    "r"
-   ],
-   [
-    5,
-    "rx"
-   ],
-   [
-    5,
-    "r"
-   ],
-   [
-    24,
-    "rj"
-   ],
-   [
-    8,
-    "rx"
-   ],
-   [
-    16,
-    "rj"
-   ],
-   [
-    5,
-    "rx"
-   ],
-   [
-    2,
-    "r"
-   ],
-   [
-    24,
-    "rj"
-   ],
    [
     8,
     "r"
@@ -106991,8 +106953,12 @@ const saved=[
     "r"
    ],
    [
-    18,
+    16,
     "rj"
+   ],
+   [
+    8,
+    "r"
    ],
    [
     5,
@@ -107043,38 +107009,42 @@ const saved=[
     "ru"
    ],
    [
-    12,
+    1,
+    "rdsj"
+   ],
+   [
+    16,
+    "rdj"
+   ],
+   [
+    1,
+    "us"
+   ],
+   [
+    10,
+    "u"
+   ],
+   [
+    10,
+    "ux"
+   ],
+   [
+    16,
     "rj"
    ],
    [
     1,
-    "rs"
+    "dsj"
    ],
    [
-    10,
-    "r"
-   ],
-   [
-    8,
-    "rux"
-   ],
-   [
-    8,
-    "ru"
+    16,
+    "dj"
    ],
    [
     12,
     "rgu"
    ],
    [
-    1,
-    "dsj"
-   ],
-   [
-    16,
-    "dj"
-   ],
-   [
     8,
     "rux"
    ],
@@ -107091,12 +107061,48 @@ const saved=[
     "dj"
    ],
    [
-    8,
-    "lux"
+    1,
+    "ldsj"
    ],
    [
-    8,
-    "lu"
+    16,
+    "ldj"
+   ],
+   [
+    5,
+    "lx"
+   ],
+   [
+    2,
+    "l"
+   ],
+   [
+    24,
+    "lj"
+   ],
+   [
+    180,
+    ""
+   ],
+   [
+    5,
+    "ldx"
+   ],
+   [
+    5,
+    "l"
+   ],
+   [
+    18,
+    "lj"
+   ],
+   [
+    1,
+    "ldsj"
+   ],
+   [
+    16,
+    "ldj"
    ],
    [
     5,
@@ -107109,6 +107115,86 @@ const saved=[
    [
     18,
     "lj"
+   ],
+   [
+    84,
+    ""
+   ],
+   [
+    12,
+    "rj"
+   ],
+   [
+    5,
+    "ldx"
+   ],
+   [
+    5,
+    "l"
+   ],
+   [
+    18,
+    "lj"
+   ],
+   [
+    1,
+    "ldsj"
+   ],
+   [
+    16,
+    "ldj"
+   ],
+   [
+    8,
+    "lux"
+   ],
+   [
+    8,
+    "lu"
+   ],
+   [
+    16,
+    "r"
+   ],
+   [
+    5,
+    "ldx"
+   ],
+   [
+    5,
+    "l"
+   ],
+   [
+    18,
+    "lj"
+   ],
+   [
+    5,
+    "ldx"
+   ],
+   [
+    5,
+    "l"
+   ],
+   [
+    11,
+    "lj"
+   ],
+   [
+    10,
+    "l"
+   ],
+   [
+    5,
+    "rdx"
+   ],
+   [
+    5,
+    "r"
+   ],
+   [
+    18,
+    "rj"
    ],
    [
     10,
@@ -107119,130 +107205,6 @@ const saved=[
     "lj"
    ],
    [
-    60,
-    ""
-   ],
-   [
-    60,
-    ""
-   ],
-   [
-    60,
-    ""
-   ],
-   [
-    5,
-    "ldx"
-   ],
-   [
-    5,
-    "l"
-   ],
-   [
-    18,
-    "lj"
-   ],
-   [
-    5,
-    "lx"
-   ],
-   [
-    5,
-    "l"
-   ],
-   [
-    24,
-    "lj"
-   ],
-   [
-    3,
-    "r"
-   ],
-   [
-    24,
-    ""
-   ],
-   [
-    60,
-    ""
-   ],
-   [
-    5,
-    "ldx"
-   ],
-   [
-    5,
-    "l"
-   ],
-   [
-    18,
-    "lj"
-   ],
-   [
-    12,
-    "lgu"
-   ],
-   [
-    8,
-    "lux"
-   ],
-   [
-    8,
-    "lu"
-   ],
-   [
-    16,
-    "l"
-   ],
-   [
-    5,
-    "ldx"
-   ],
-   [
-    5,
-    "l"
-   ],
-   [
-    18,
-    "lj"
-   ],
-   [
-    5,
-    "lx"
-   ],
-   [
-    5,
-    "l"
-   ],
-   [
-    24,
-    "lj"
-   ],
-   [
-    16,
-    "l"
-   ],
-   [
-    5,
-    "rx"
-   ],
-   [
-    5,
-    "r"
-   ],
-   [
-    24,
-    "rj"
-   ],
-   [
-    8,
-    "lux"
-   ],
-   [
-    8,
-    "lu"
-   ],
-   [
     1,
     "dsj"
    ],
@@ -107251,8 +107213,12 @@ const saved=[
     "dj"
    ],
    [
-    12,
-    "rj"
+    8,
+    "rux"
+   ],
+   [
+    8,
+    "ru"
    ],
    [
     8,
@@ -107395,11 +107361,7 @@ const saved=[
     "rs"
    ],
    [
-    10,
-    "r"
-   ],
-   [
-    3,
+    13,
     "r"
    ],
    [
@@ -107447,7 +107409,7 @@ const saved=[
     "r"
    ],
    [
-    18,
+    13,
     "rj"
    ]
   ]
@@ -107455,7 +107417,7 @@ const saved=[
 ];
 const local=!root.location||root.BLADEFALL_ROOM_BANK||root.location.protocol==='file:'||['appassets.bladefall','localhost','127.0.0.1','[::1]'].includes(root.location.hostname)||root.location.hostname.endsWith('.localhost');
 const records=saved.filter(x=>!x.bank.localOnly||local);
-const B={version:'7.329.0',activeRun:15,defaultGroup:local?"cores":"superrooms",groups:["cores","superrooms","banked"].filter(g=>local||g!=='cores'),records};
+const B={version:'7.331.0',activeRun:15,defaultGroup:local?"cores":"superrooms",groups:["cores","superrooms","banked"].filter(g=>local||g!=='cores'),records};
 root.BladefallRoomBank=B;
 if(!root.BLADEFALL_ROOM_BANK&&!(root.location&&new URLSearchParams(root.location.search).get('pitch')==='bank'))return;
 const R=root.BladefallPrecisionRooms;

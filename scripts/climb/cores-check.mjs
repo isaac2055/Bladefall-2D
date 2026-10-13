@@ -25,7 +25,7 @@ for(const [i,w] of cores.worlds.entries()){
  for(const e of g.ents)if(e.type==='crumble')e.gone=true;if(g.resinWind)g.resinWind.t=999;if(g.rootLash?.crown)g.rootLash.crown.cut=true;
  Core.kill(g,g.p,'test');let respawn=false;for(let n=0;n<200;n++){Core.step(g,keysToInput(''));if(g.events.some(e=>e.type==='respawn')){respawn=true;break;}g.events.length=0;}
  assert(respawn);assert.equal(g.p.x,pose.x);assert.equal(g.p.y,pose.y);assert.equal(g.coreRun.index,1);assert(g.ents.filter(e=>e.type==='crumble').every(e=>!e.gone));if(g.rootLash?.crown)assert(!g.rootLash.crown.cut);
- const altered={...d,coreProgressRevision:2};assert.equal(progress.saved(altered),null);progress.clear(d);assert.equal(progress.saved(d),null);
+ const altered={...d,coreProgressRevision:(d.coreProgressRevision||1)+1};assert.equal(progress.saved(altered),null);progress.clear(d);assert.equal(progress.saved(d),null);
  const probes=[[[900,'r']],Array.from({length:30},()=>[[8,'rj'],[8,'rx'],[20,'r']]).flat()];for(const tape of probes)assert.equal(runRoom([d],0,tape).exited,false);
  rows.push({world:w.n,name:d.name,draft:w.draft,wholeFrames:full.exitFrame+1,partFrames:parts,deaths:full.deaths,checkpointDeathReset:true,durableRestore:true,ordinaryProbesStopped:probes.length});
 }
@@ -50,7 +50,7 @@ reward.card(api,()=>{});assert(overlay.includes('Continue Core · Part 2/3'));as
 PV.climb.startWorld(101,null,true);assert.equal(api.view.g.coreRun.index,-1);assert.equal(progress.saved(api.view.g.room.def),null);
 api.view.g.coreDemo=true;PV.exit(api.view,()=>{});assert(!reward.state().csides[1]);api.view.g.coreDemo=false;
 PV.exit(api.view,()=>{});assert(reward.state().csides[1]);assert(overlay.includes('The trumpet sounds.'));
-reward.perfect(2);reward.perfect(22);assert(PV.climb.startWorld(102));PV.exit(api.view,()=>{});assert(!reward.state().csides[2],'draft gives no completion reward');
+reward.perfect(2);reward.perfect(22);assert(PV.climb.startWorld(102));PV.exit(api.view,()=>{});assert(reward.state().csides[2],'approved Woods Core earns completion reward');
 for(const [file,sha] of Object.entries(JSON.parse(readFileSync(new URL('../../docs/room-bank/cores-ordinary-baseline.json',import.meta.url)))))assert.equal(createHash('sha256').update(readFileSync(file)).digest('hex'),sha,file+' unchanged');
-writeFileSync(new URL('../../docs/room-bank/cores-proof.json',import.meta.url),JSON.stringify({version:'7.329.0',method:'Native simulation, saved-pose part routes, persistence and DOM entry/completion hooks; no live browser verification',ordinarySourcesUnchanged:132,cores:rows},null,2)+'\n');
-console.log('PASS: both Core whole routes, six restart parts, death/terrain resets, durable saves, ordinary crumble timing, Garden gating/resume/restart, demo protection, draft rewards, hidden geography, and 132 unchanged ordinary sources.');
+writeFileSync(new URL('../../docs/room-bank/cores-proof.json',import.meta.url),JSON.stringify({version:'7.331.0',method:'Native simulation, saved-pose part routes, persistence and DOM entry/completion hooks; no live browser verification',ordinarySourcesUnchanged:132,cores:rows},null,2)+'\n');
+console.log('PASS: both Core whole routes, six restart parts, death/terrain resets, durable saves, ordinary crumble timing, Garden gating/resume/restart, demo protection, approved Core rewards, hidden geography, and 132 unchanged ordinary sources.');

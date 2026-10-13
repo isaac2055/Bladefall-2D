@@ -1,5 +1,5 @@
 {
-  "version": "7.329.0",
+  "version": "7.331.0",
   "method": "Native simulation, saved-pose part routes, persistence and DOM entry/completion hooks; no live browser verification",
   "ordinarySourcesUnchanged": 132,
   "cores": [
@@ -20,11 +20,11 @@
     },
     {
       "world": 102,
-      "name": "The Oath Root · Core draft",
-      "draft": true,
-      "wholeFrames": 1694,
+      "name": "The Oath Root",
+      "draft": false,
+      "wholeFrames": 1602,
       "partFrames": [
-        379,
+        275,
         754,
         555
       ],

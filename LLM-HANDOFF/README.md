@@ -1,3 +1,7 @@
+# Latest: 7.331 checkpoint and recording update
+
+Read [CHECKPOINTS-RECORDINGS-7.331.md](CHECKPOINTS-RECORDINGS-7.331.md) first for banked Cores, revised Oath Root, test checkpoint behavior, and private player route retrieval.
+
 # Bladefall: start here
 
 For test flags and mouse camera inspection (7.330, 2026-10-13), read **TEST-FLAGS-CAMERA-7.330.md**. For the Core and feedback changes (7.329, 2026-10-13), read **CORES-AND-CLOUD-REVIEWS-7.329.md**. Read **CODEX-RESUME-7.304.md** for the campaign/API architecture. Then search the

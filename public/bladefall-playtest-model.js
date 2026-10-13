@@ -20,6 +20,14 @@ function validFeedback(r){
  for(const key of ['x','y'])if(r[key]!=null&&(!Number.isSafeInteger(r[key])||Math.abs(r[key])>1000000))return false;
  return (r.frames==null||Number.isSafeInteger(r.frames)&&r.frames>=0)&&(r.bankBatch==null||Number.isSafeInteger(r.bankBatch)&&r.bankBatch>=0)&&(r.assisted==null||typeof r.assisted==='boolean');
 }
+function validRecording(r){
+ if(!r||r.season!==SEASON||r.format!=='bladefall-route-v1'||typeof r.room!=='string'||!/^[a-zA-Z0-9_-]{1,160}$/.test(r.room)||typeof r.scene!=='string'||r.scene.length>900000||!Number.isSafeInteger(r.frames)||r.frames<1||r.frames>18000)return false;
+ for(const [key,max] of [['name',160],['world',160],['build',80],['revision',80],['recordedAt',40],['outcome',80]])if(typeof r[key]!=='string'||r[key].length>max)return false;
+ if(typeof r.assisted!=='boolean'||!Array.isArray(r.tape)||r.tape.length>18000||!r.tape.every(x=>Array.isArray(x)&&x.length===2&&Number.isInteger(x[0])&&x[0]>0&&x[0]<=18000&&typeof x[1]==='string'&&/^[lrudjxgspq]{0,10}$/.test(x[1]))||r.tape.reduce((n,x)=>n+x[0],0)!==r.frames)return false;
+ if(!Array.isArray(r.poses)||r.poses.length>6000||!r.poses.every(x=>Array.isArray(x)&&x.length===5&&x.slice(0,4).every(v=>Number.isFinite(v)&&Math.abs(v)<1e7)&&typeof x[4]==='string'&&x[4].length<32))return false;
+ if(!Array.isArray(r.markers)||r.markers.length>100||!r.markers.every(x=>Number.isInteger(x.frame)&&x.frame>=0&&x.frame<=r.frames&&typeof x.kind==='string'&&x.kind.length<40&&typeof x.scene==='string'&&x.scene.length<900000))return false;
+ try{if(JSON.stringify(r).length>1200000)return false;JSON.parse(r.scene);for(const m of r.markers)JSON.parse(m.scene);}catch{return false;}return true;
+}
 const compare=(a,b)=>a.ms-b.ms||String(a.at||'').localeCompare(String(b.at||''))||a.id.localeCompare(b.id);
 const compareHearts=(a,b)=>hearts(b)-hearts(a)||compare(a,b);
 function best(records,{mode,campaign,world:wid,sort='time'}={}){
@@ -45,5 +53,5 @@ function aggregate(records,mode,campaign,sort='time'){
 // The API must keep a slower heart run even when the player also has a faster any-percent run.
 const publicBest=records=>[...new Map([...best(records),...best(records,{sort:'hearts'})].map(r=>[r.id,r])).values()];
 const format=ms=>{const n=Math.floor(ms/10);return `${Math.floor(n/6000)}:${String(Math.floor(n/100)%60).padStart(2,'0')}.${String(n%100).padStart(2,'0')}`;};
-root.BladefallPlaytestModel=Object.freeze({SEASON,MODES,CAMPAIGNS,catalog,world,valid,validFeedback,best,aggregate,publicBest,format,compare,compareHearts});
+root.BladefallPlaytestModel=Object.freeze({SEASON,MODES,CAMPAIGNS,catalog,world,valid,validFeedback,validRecording,best,aggregate,publicBest,format,compare,compareHearts});
 })(globalThis);

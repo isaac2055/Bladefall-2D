@@ -1,5 +1,5 @@
 {
-  "version": "7.329.0",
+  "version": "7.331.0",
   "activeBatch": 25,
   "activeRun": 15,
   "status": "User-approved bank plus a separate queue of revisions and new candidates",
@@ -80541,8 +80541,8 @@
       "collection": "cores",
       "format": "superroom",
       "localOnly": false,
-      "acceptance": "revised",
-      "needsReview": true,
+      "acceptance": "banked",
+      "needsReview": false,
       "status": "route-proven",
       "author": "Sol 6.1",
       "difficulty": 5,
@@ -80575,7 +80575,7 @@
         "crumble-shake": 14,
         "core-checkpoint": 2
       },
-      "humanReview": "Human difficulty, flow and enjoyment await review.",
+      "humanReview": "Approved by the player after requested checkpoint, visibility, and platform changes.",
       "shortcutChecks": [
         {
           "name": "Running alone",
@@ -80962,15 +80962,15 @@
     },
     {
       "id": "bank-f97",
-      "name": "The Oath Root · Core draft",
+      "name": "The Oath Root",
       "side": "fractured",
       "batch": 25,
       "run": 15,
       "collection": "cores",
       "format": "superroom",
       "localOnly": false,
-      "acceptance": "candidate",
-      "needsReview": true,
+      "acceptance": "banked",
+      "needsReview": false,
       "status": "route-proven",
       "author": "Sol 6.1",
       "difficulty": 5,
@@ -80981,14 +80981,13 @@
       "tags": [
         "controlled-pogo",
         "resin-branches",
-        "root-crown",
-        "wave-dash"
+        "root-crown"
       ],
       "newMechanics": [
         "core-save-points"
       ],
-      "role": "Black Woods Core draft with three parts, two save points, native pod/resin/root mechanics",
-      "solution": "Cross the opening gulf with launch speed; chain lofted and directional pod cuts. Save in the clearing. Climb around the root divider, read the alternating resin branches, and save at the west turn. Return through pod cuts, cut the crown to open the final gate, then climb out.",
+      "role": "Black Woods Core with three parts and two save points",
+      "solution": "Start on the crumbling branch and chain lofted and directional pod cuts. Save in the clearing. Climb around the root divider, read the alternating resin branches, and save at the west turn. Return through pod cuts, cut the crown to open the final gate, then climb out.",
       "requiredEvents": [
         "pod",
         "pogo-loft",
@@ -81001,7 +81000,7 @@
         "root-cut": 1,
         "core-checkpoint": 2
       },
-      "humanReview": "Human difficulty, flow and enjoyment await review.",
+      "humanReview": "Approved by the player after requested checkpoint, visibility, and platform changes.",
       "shortcutChecks": [
         {
           "name": "Running alone",
@@ -81380,12 +81379,12 @@
       ],
       "positiveChecks": [],
       "coreIndex": 2,
-      "draft": true,
-      "coreDescription": "A pod ascent, an alternating resin traverse, then the Oath Root crown. +0.75 second crumble grace.",
+      "draft": false,
+      "coreDescription": "Chain seed jumps, read the resin branches, and cut the crown. Three parts, two save points.",
       "placementBand": "Black Woods Core draft",
-      "revision": "a8c39c89fbd1",
+      "revision": "d7110ac0993c",
       "source": "scripts/room-bank/fractured/97-bank-f97.json",
-      "tapeFrames": 1699
+      "tapeFrames": 1602
     }
   ]
 }

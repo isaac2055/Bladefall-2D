@@ -43,14 +43,17 @@ try{
  assert.equal((await post(review,{kind:'feedback',origin:'http://localhost:8371'})).status,200);
  const core=record('local-core-feedback-0001',{mode:'review',campaign:'cores',world:'101',room:'core-outskirts',fun:9,difficulty:5,comment:'private core proof',part:2,x:1290,y:589});
  assert.equal((await post(core,{kind:'feedback',origin:site})).status,200);
+ const route=record('local-route-0001',{format:'bladefall-route-v1',room:'bank-f97',name:'Private route proof',world:'102',build:'test',revision:'2',recordedAt:new Date().toISOString(),assisted:true,frames:3,tape:[[3,'r']],poses:[[3,264,565,1,'normal']],markers:[],scene:JSON.stringify({root:{$:0},nodes:[{object:{note:'private route scene'}}]}),outcome:'saved'});
+ assert.equal((await post(route,{kind:'recording',origin:'http://localhost:8371'})).status,200);assert.equal((await post(route,{kind:'recording'})).status,200);assert.equal((await post({...route,frames:4},{kind:'recording'})).status,400);
  response=await mf.dispatchFetch(url,{method:'OPTIONS',headers:{Origin:'http://localhost:8371'}});assert.equal(response.status,204);assert.equal(response.headers.get('access-control-allow-origin'),'http://localhost:8371');
  response=await mf.dispatchFetch(site+'/api/feedback-export');assert.equal(response.status,403);
- response=await mf.dispatchFetch(site+'/api/feedback-export',{headers:{Authorization:'Bearer '+secret}});const feedback=await response.json();assert.equal(feedback.feedback.length,3);assert(feedback.feedback.some(r=>r.comment==='private local proof'));assert(feedback.feedback.some(r=>r.id===review.id&&r.suitability===4&&r.revision==='test-revision'));assert(feedback.feedback.some(r=>r.id===core.id&&r.part===2&&r.x===1290));
- const publicText=await(await mf.dispatchFetch(url)).text();assert(!publicText.includes('private local proof'));assert(!publicText.includes('token'));assert(!publicText.includes('feedback'));
+ response=await mf.dispatchFetch(site+'/api/feedback-export',{headers:{Authorization:'Bearer '+secret}});const feedback=await response.json();assert.equal(feedback.recordings.length,1);assert.equal(feedback.recordings[0].scene,route.scene);assert.equal(feedback.feedback.length,3);assert(feedback.feedback.some(r=>r.comment==='private local proof'));assert(feedback.feedback.some(r=>r.id===review.id&&r.suitability===4&&r.revision==='test-revision'));assert(feedback.feedback.some(r=>r.id===core.id&&r.part===2&&r.x===1290));
+ const publicText=await(await mf.dispatchFetch(url)).text();assert(!publicText.includes('private local proof'));assert(!publicText.includes('token'));assert(!publicText.includes('feedback'));assert(!publicText.includes('private route scene'));
  const preview=await mf.getWorker('preview');response=await preview.fetch(url);assert.equal(response.status,503);assert.deepEqual(await response.json(),{error:'api-not-connected'});
  const api=await mf.getWorker('bladefall-2d');assert.equal((await api.fetch(site+'/index.html')).status,404,'API Worker has no duplicated asset fallback');
  assert.equal(await(await mf.dispatchFetch(site+'/')).text(),'static asset');
  await mf.dispose();mf=new Miniflare(options);await mf.ready;
  const persisted=await(await mf.dispatchFetch(url)).json();assert.equal(persisted.records.length,2,'SQLite records survive a runtime restart');
+ const privateAfter=await(await mf.dispatchFetch(site+'/api/feedback-export',{headers:{Authorization:'Bearer '+secret}})).json();assert.equal(privateAfter.recordings.length,1);
  console.log('PASS: compiled Pages Functions -> private service binding -> SQLite Durable Object; same-origin and APK scores/hearts; APK CORS; token ownership; retry deduplication; private feedback export; unbound preview 503; static routing; durable restart. No production requests.');
 }finally{if(mf)await mf.dispose();await rm(temp,{recursive:true,force:true});}

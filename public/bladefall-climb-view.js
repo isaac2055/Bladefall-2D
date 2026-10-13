@@ -130,7 +130,7 @@ function startWorld(n,room=null,fromStart=false){
 function announce(text,t=150){st.toast={text,t,max:t};}
 function rememberLocation(){
  const g=st.view.g;
- if(st.atlas&&g&&!st.view.replay&&!st.review){st.atlas.visit(st.world.n,g.room.id,st.branchVia,g.room.def.atlasTransit?(g.room.def.atlasTerrain?st.passageEntry||g.room.def.atlasSockets[0].edge:g.room.spawn.x>g.room.w/2?'right':'left'):null);store('bladefall.climb.atlas.v1',st.atlas.snapshot());store('bladefall.last-played.v1',{game:'survive',mode:root.BladefallClimbSession?.state().mode||'play'});}
+ if(st.atlas&&g&&!st.view.replay&&!st.review){if(st.atlas.state.checkpoint?.room!==g.room.id)root.BladefallPrecisionTestTools?.clearFlag();st.atlas.visit(st.world.n,g.room.id,st.branchVia,g.room.def.atlasTransit?(g.room.def.atlasTerrain?st.passageEntry||g.room.def.atlasSockets[0].edge:g.room.spawn.x>g.room.w/2?'right':'left'):null);store('bladefall.climb.atlas.v1',st.atlas.snapshot());store('bladefall.last-played.v1',{game:'survive',mode:root.BladefallClimbSession?.state().mode||'play'});}
 }
 function socketTarget(g,s){
  let world,room,edge,floor;
@@ -309,9 +309,10 @@ PV.menu=function(){if(!st)return BASE.menu();worldMenu();return true;};
 PV.camera=function(g,view){
  if(!st||!isClimb(chapterNow(view)))return BASE.camera?BASE.camera(g,view):false;
  const pl=sectionOf(g);if(!pl)return false;
+ const lookX=g.room.def.cameraZones?.find(z=>g.p.x>=z.x0&&g.p.x<=z.x1&&g.p.y>=z.y0&&g.p.y<=z.y1)?.lookX||0;
  if(root.BladefallPrecisionTestTools?.camera(g,view)){st.cam={x:pl.x+view.cam.x,y:pl.y+view.cam.y};return true;}
  if(CL().geography){
-  viewport(st.view);const p=g.p,target=root.BladefallClimbGeography.cameraTarget(CL().geography,{x:pl.x+p.x+4,y:pl.y+uprightY(g)+5},SW,SH),tx=target.x,ty=target.y;
+  viewport(st.view);const p=g.p,target=root.BladefallClimbGeography.cameraTarget(CL().geography,{x:pl.x+p.x+4,y:pl.y+uprightY(g)+5},SW,SH),tx=target.x+lookX,ty=target.y;
   if(!st.cam)st.cam={x:tx,y:ty};else{st.cam.x+=(tx-st.cam.x)*.16;st.cam.y+=(ty-st.cam.y)*.13;}
   view.cam.x=st.cam.x-pl.x;view.cam.y=st.cam.y-pl.y;view.camRoom=g.room.id;return true;
  }
@@ -320,7 +321,7 @@ PV.camera=function(g,view){
   if(s.edge==='left')b.x0=Math.min(b.x0,pl.x-SW/2);else b.x1=Math.max(b.x1,pl.x+g.room.w+SW/2);
   const target=socketTarget(g,s);if(target){const d=defOf(target.room),y=pl.y+(s.floor-target.floor)*8;b.y0=Math.min(b.y0,y);b.y1=Math.max(b.y1,y+(d.rows||23)*8);}
  }
- const tx=Math.max(b.x0,Math.min(b.x1-SW,pl.x+p.x+4-SW/2)),rawY=pl.y+uprightY(g)+5-SH*.55;
+ const tx=Math.max(b.x0,Math.min(b.x1-SW,pl.x+p.x+4-SW/2+lookX)),rawY=pl.y+uprightY(g)+5-SH*.55;
  const clamp01=n=>Math.max(0,Math.min(1,n));
  const seamWeight=Math.max(0,...(g.walkSeams||g.room.def.atlasSockets||[]).map(s=>{
   if(s.kind==='passage'&&!st.atlas.state.open[s.link])return 0;
@@ -1110,7 +1111,7 @@ function carryInto(pl,next){
  if(g.room.def.atlasTerrain){const port=g.room.def.atlasSockets.find(s=>s.to===pl.sec.room);st.passageEntry=port?.edge;}
  syncWalkSeams(g);
  if(mirrored){const q=g.p,x=Math.max(0,Math.min(g.room.w-q.w,Math.round(snap.x+from.x-to.x))),y=Math.max(0,Math.min(g.room.h-q.h,Math.round(snap.y+from.y-to.y)));if(C().solidAt(g,x,y,q.w,q.h))snap=mirrored;}
- if(checkpoint){root.BladefallClimbBankPassages.arrive(g);st.cam=null;view.camRoom=null;}
+ if(checkpoint){root.BladefallPrecisionTestTools?.clearFlag();root.BladefallClimbBankPassages.arrive(g);st.cam=null;view.camRoom=null;}
  else CL().carry(C(),g,snap,from,to,!!(defOf(pl.sec.room)?.atlasJunction||g.room.def.atlasJunction||defOf(pl.sec.room)?.atlasTerrain||g.room.def.atlasTerrain));st.enteredAt=g.frame;
  // Falling back through an upward exit is an entrance until the head has
  // cleared the ceiling; it must not immediately fire the exit again.

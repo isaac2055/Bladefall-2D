@@ -153,8 +153,8 @@
     "collection": "cores",
     "format": "superroom",
     "localOnly": false,
-    "acceptance": "revised",
-    "needsReview": true,
+    "acceptance": "banked",
+    "needsReview": false,
     "status": "route-proven",
     "author": "Sol 6.1",
     "difficulty": 5,
@@ -187,7 +187,7 @@
       "crumble-shake": 14,
       "core-checkpoint": 2
     },
-    "humanReview": "Human difficulty, flow and enjoyment await review.",
+    "humanReview": "Approved by the player after requested checkpoint, visibility, and platform changes.",
     "shortcutChecks": [
       {
         "name": "Running alone",

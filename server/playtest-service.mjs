@@ -23,16 +23,19 @@ async function handleRequest(request,store){
  }
  if(request.method!=='POST')return response({error:'method'},405);
  const origin=request.headers.get('origin');if(origin&&origin!==new URL(request.url).origin&&origin!==APP_ORIGIN&&!localOrigin(origin))return response({error:'origin'},403);
- if(+(request.headers.get('content-length')||0)>16384)return response({error:'size'},413);
- const body=await request.text();if(body.length>16384)return response({error:'size'},413);
+ if(+(request.headers.get('content-length')||0)>1250000)return response({error:'size'},413);
+ const body=await request.text();if(body.length>1250000)return response({error:'size'},413);
  let payload;try{payload=JSON.parse(body);}catch{return response({error:'json'},400);}
  if(!payload||typeof payload!=='object'||Array.isArray(payload))return response({error:'json'},400);
- const {kind,player,token,record:r}=payload;
+ const {kind,player,token,record:r}=payload;if(kind!=='recording'&&body.length>16384)return response({error:'size'},413);
  if(!id(player)||typeof token!=='string'||token.length<48||token.length>160||!r||r.player!==player||!id(r.id)||r.season!==M.SEASON)return response({error:'profile'},400);
  let record;
  if(kind==='time'){
   if(!M.valid(r)||r.eligible!==true)return response({error:'invalid-time'},400);
   record={id:r.id,season:M.SEASON,player,name:r.name.trim(),mode:r.mode,campaign:r.campaign,world:String(r.world),ms:r.ms,deaths:r.deaths,...(r.mode==='survival'?{hearts:r.hearts||0}:{}),at:new Date().toISOString()};
+ }else if(kind==='recording'){
+  if(!M.validRecording(r))return response({error:'invalid-recording'},400);
+  record=Object.fromEntries(['id','season','player','format','room','name','world','build','revision','recordedAt','assisted','frames','tape','poses','markers','scene','outcome'].map(k=>[k,r[k]]));record.at=new Date().toISOString();
  }else if(kind==='feedback'){
   if(!M.validFeedback(r))return response({error:'invalid-feedback'},400);
   record={id:r.id,season:M.SEASON,player,mode:r.mode,campaign:r.campaign,world:String(r.world),room:String(r.room||''),name:String(r.name||M.world(r.mode,r.world)?.name||r.room).slice(0,160),fun:r.fun,difficulty:r.difficulty,comment:r.comment,ms:Number.isFinite(r.ms)?Math.max(0,Math.round(r.ms)):0,deaths:Number.isInteger(r.deaths)?Math.max(0,r.deaths):0,build:String(r.build||'').slice(0,40),at:new Date().toISOString()};
@@ -40,7 +43,7 @@ async function handleRequest(request,store){
  }else return response({error:'kind'},400);
  const ownerKey='owners/'+player,tokenHash=await hash(token);await store.setJSON(ownerKey,{tokenHash},{onlyIfNew:true});
  if((await store.get(ownerKey,{type:'json'}))?.tokenHash!==tokenHash)return response({error:'profile-token'},403);
- const key=(kind==='time'?'times/':'feedback/')+M.SEASON+'/'+player+'/'+r.id;
+ const key=(kind==='time'?'times/':kind==='recording'?'recordings/':'feedback/')+M.SEASON+'/'+player+'/'+r.id;
  await store.setJSON(key,record,{onlyIfNew:true});return response({saved:true,id:r.id});
 }
 export async function importSeed(store,entries){const safe=entries.filter(([key])=>/^(owners|times|feedback)\//.test(key));for(let i=0;i<safe.length;i+=16)await Promise.all(safe.slice(i,i+16).map(([key,value])=>store.setJSON(key,value,{onlyIfNew:true})));}

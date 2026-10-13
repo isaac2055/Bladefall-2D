@@ -1,5 +1,5 @@
 {
-  "version": "7.329.0",
+  "version": "7.331.0",
   "activeBatch": 25,
   "activeRun": 15,
   "retained": [
@@ -256,7 +256,9 @@
     "bank-f25",
     "bank-f64",
     "bank-f58",
-    "bank-f45"
+    "bank-f45",
+    "bank-f96",
+    "bank-f97"
   ],
   "revised": [
     "bank-b72",
@@ -268,8 +270,7 @@
     "bank-f73",
     "bank-f74",
     "bank-f75",
-    "bank-f76",
-    "bank-f96"
+    "bank-f76"
   ],
   "existingSystemsOnly": false,
   "newTechRequirements": [],

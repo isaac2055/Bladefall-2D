@@ -1,11 +1,11 @@
 /* Temporary authoring aids, enabled only by the existing five-press test-mode switch. */
 (function(root){'use strict';
-let api=null,flag=null,pan=null,drag=null,bar=null,note='',lastRefresh='';
+let api=null,flag=null,pan=null,drag=null,bar=null,note='',lastRefresh='',hover=null,coords=null;
 const excluded=new Set(['defs','rooms','spikeSafe','events']);
 const enabled=()=>!!api?.enabled();
 function resetCamera(){if(!api)return;api.view.camRoom=null;root.BladefallPitchView?.climb?.resetCamera?.();}
 function stopDrag(){if(!drag)return;const id=drag.id;drag=null;try{api.view.canvas.releasePointerCapture(id);}catch{}}
-function follow(){stopDrag();pan=null;resetCamera();api?.clearInput();refresh();}
+function follow(){stopDrag();pan=null;if(coords)coords.hidden=true;resetCamera();api?.clearInput();refresh();}
 function sync(){if(!api)return;const g=api.view.g;
  if(!enabled()||!g||api.view.mode!=='play'){stopDrag();if(flag||pan){flag=null;note='';follow();}refresh();return;}
  if(flag&&(flag.game!==g||flag.chapter!==api.view.chapter)){flag=null;note='';}
@@ -18,11 +18,13 @@ function tell(text){note=text;refresh();}
 function invalidate(reason){root.BladefallClimbSession?.invalidate(reason);const st=root.BladefallPitchView?.climb?.state?.();if(st)st.perfectRun=false;}
 function place(){if(!canUse())return false;const g=api.view.g;
  if(['dead','respawn'].includes(g.p.state)||g.exited){tell('Place a flag while the knight is alive.');return false;}
+ if(pan&&hover&&(hover.x<0||hover.x>g.room.w||hover.y<0||hover.y>g.room.h)){tell('Choose a flag position inside the current room.');return false;}
  try{
   const state=Object.fromEntries(Object.entries(g).filter(([key,value])=>!excluded.has(key)&&typeof value!=='function'));
   // One graph clone keeps carried items and device references connected to their entities.
   flag={game:g,room:g.room.id,chapter:api.view.chapter,roomTimer:api.view.roomTimer,state:root.structuredClone(state),spikeSafe:g.spikeSafe,context:root.BladefallPitchView?.climb?.captureTestCheckpoint?.()};
-  invalidate('manual test checkpoint');tell('Flag placed · R / Retry restores this scene.');return true;
+  if(pan&&hover){const p=flag.state.p,clean=root.BladefallPrecisionCore.createGame([g.room.def],{assist:g.assist}).p;if(p.carrying)p.carrying.held=false;Object.assign(p,clean);flag.state.freeze=0;p.x=hover.x-p.w/2;p.y=(flag.state.flipped?g.room.h-hover.y:hover.y)-p.h;p.vx=0;p.vy=0;p.state='normal';p.onGround=false;p.dashTimer=0;p.dashes=p.maxDashes;}
+  invalidate('manual test checkpoint');tell('Flag placed · R and deaths return here.');return true;
  }catch{tell('Could not capture this scene; the previous flag is unchanged.');return false;}
 }
 function restore(){sync();const g=api?.view.g;if(!enabled()||!flag||flag.game!==g||flag.chapter!==api.view.chapter)return false;
@@ -37,13 +39,14 @@ function clearFlag(){flag=null;tell('Flag cleared · Retry uses the normal check
 function camera(g,view){sync();if(!pan||pan.game!==g)return false;view.cam.x=pan.x;view.cam.y=pan.y;view.camRoom=g.room.id;return true;}
 function inspecting(){sync();return !!pan;}
 function limits(){const g=api.view.g,world=root.BladefallPitchView?.climb?.testCameraBounds?.();return world||{x:0,y:0,w:g.room.w,h:g.room.h};}
-function move(e){if(!drag||e.pointerId!==drag.id)return;if(!canUse()){stopDrag();refresh();return;}const view=api.view;
+function hoverAt(e){if(e.pointerType!=='mouse'||!enabled())return;const v=api.view,r=v.canvas.getBoundingClientRect(),ratio=(v.canvas.width/Math.max(1,r.width))/Math.max(1,v.scale);hover={x:Math.round((e.clientX-r.left)*ratio-(v.renderOffset?.x||0)/v.scale+(pan?.x??v.cam.x)),y:Math.round((e.clientY-r.top)*ratio-(v.renderOffset?.y||0)/v.scale+(pan?.y??v.cam.y))};if(coords){coords.hidden=!pan;coords.textContent=`${v.g?.room.id} · x ${hover.x}, y ${hover.y} · tile ${Math.floor(hover.x/8)}, ${Math.floor(hover.y/8)}`;}}
+function move(e){hoverAt(e);if(!drag||e.pointerId!==drag.id)return;if(!canUse()){stopDrag();refresh();return;}const view=api.view;
  if(!pan){if(Math.hypot(e.clientX-drag.clientX,e.clientY-drag.clientY)<3)return;pan={game:view.g,room:view.g.room.id,x:view.cam.x,y:view.cam.y};drag.x=pan.x;drag.y=pan.y;api.clearInput();invalidate('test camera inspection');note='Camera inspection · scene held still';}
  const b=limits(),w=view.viewportW,h=view.viewportH,mx=w/4,my=h/4;
  const minX=b.x-mx,maxX=Math.max(minX,b.x+b.w-w+mx),minY=b.y-my,maxY=Math.max(minY,b.y+b.h-h+my);
  pan.x=Math.max(minX,Math.min(maxX,drag.x-(e.clientX-drag.clientX)*drag.ratio));
  pan.y=Math.max(minY,Math.min(maxY,drag.y-(e.clientY-drag.clientY)*drag.ratio));
- e.preventDefault();refresh();
+ hoverAt(e);e.preventDefault();refresh();
 }
 function down(e){if(e.pointerType!=='mouse'||e.button!==0||!canUse()||api.view.paused||api.view.replay)return;
  const view=api.view,g=view.g,rect=view.canvas.getBoundingClientRect();
@@ -62,7 +65,8 @@ function init(options){api=options;if(bar)return;
  const style=document.createElement('style');style.textContent='#pcTestTools{position:fixed;z-index:24;left:8px;bottom:8px;max-width:calc(100vw - 24px);display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:6px 8px;background:#111b27e8;color:#c8e6f0;border:1px solid #608598;border-radius:5px;font:12px system-ui}#pcTestTools[hidden],#pcTestTools [hidden]{display:none}#pcTestTools button{font:inherit;background:#203349;color:#e2eff4;border:1px solid #7595a3;border-radius:3px;padding:4px 8px;cursor:pointer}';document.head.appendChild(style);
  bar=document.createElement('div');bar.id='pcTestTools';bar.hidden=true;bar.innerHTML='<span data-note role="status"></span><button type="button" data-follow>Follow knight · resume</button><button type="button" data-clear>Clear test flag</button>';document.body.appendChild(bar);
  bar.querySelector('[data-follow]').onclick=follow;bar.querySelector('[data-clear]').onclick=clearFlag;
- const canvas=api.view.canvas;canvas.addEventListener('pointerdown',down);canvas.addEventListener('pointermove',move);canvas.addEventListener('pointerup',up);canvas.addEventListener('pointercancel',up);canvas.addEventListener('lostpointercapture',()=>{drag=null;refresh();});root.addEventListener('blur',stopDrag);
+ coords=document.createElement('div');coords.id='pcTestCoords';coords.hidden=true;coords.style.cssText='position:fixed;right:8px;bottom:8px;z-index:25;background:#111b27e8;color:#c8e6f0;padding:6px 8px;font:12px monospace;pointer-events:none';document.body.appendChild(coords);
+ const canvas=api.view.canvas;canvas.addEventListener('pointerleave',()=>{hover=null;coords.hidden=true;});canvas.addEventListener('pointerdown',down);canvas.addEventListener('pointermove',move);canvas.addEventListener('pointerup',up);canvas.addEventListener('pointercancel',up);canvas.addEventListener('lostpointercapture',()=>{drag=null;refresh();});root.addEventListener('blur',stopDrag);
  refresh();
 }
 function draw(b,g){sync();if(!enabled()||!flag||flag.room!==g.room.id)return;const p=flag.state.p,x=Math.round(p.x+4),y=Math.round(flag.state.flipped===g.flipped?p.y+p.h:g.room.h-p.y);

@@ -36,7 +36,7 @@ const KEY_DEFAULTS={l:['ArrowLeft'],r:['ArrowRight'],u:['ArrowUp'],d:['ArrowDown
  strike:['KeyW','KeyV','KeyI'],parry:['KeyF','KeyO'],portal:['KeyP'],retry:['KeyR'],pause:[]};
 // Standard gamepad mapping: 0 A · 1 B · 2 X · 3 Y · 4 LB · 5 RB · 6 LT · 7 RT · 8 Back · 9 Start · 10 LS · 11 RS · 12-15 d-pad
 const PAD_DEFAULTS={l:[14],r:[15],u:[12],d:[13],jump:[0],dash:[2,1],grab:[4,6],strike:[3],parry:[7],portal:[5],retry:[8],pause:[9]};
-const RESERVED_KEYS=new Set(['Escape','MetaLeft','MetaRight','Tab']);
+const RESERVED_KEYS=new Set(['Escape','MetaLeft','MetaRight','Tab','KeyY']);
 const copyBinds=d=>Object.fromEntries(Object.entries(d).map(([k,v])=>[k,v.slice()]));
 function loadBinds(){
  const b=save.binds||{},out={keys:copyBinds(KEY_DEFAULTS),pad:copyBinds(PAD_DEFAULTS)};
@@ -244,7 +244,7 @@ function hash(x,y){let h=(x*374761393+y*668265263)^0x5bd1e995;h=(h^(h>>>13))*127
 function chapterOf(roomIndex){let n=0;for(let c=0;c<R.chapters.length;c++){if(roomIndex<n+R.chapters[c].rooms.length)return c;n+=R.chapters[c].rooms.length;}return R.chapters.length-1;}
 function chapterStart(c){let n=0;for(let i=0;i<c;i++)n+=R.chapters[i].rooms.length;return n;}
 function palette(){const ch=R.chapters[view.chapter];return root.BladefallPitchView?.palette?.(ch)||PAL[ch.palette]||PAL.footing;}
-function startChapter(c,roomOffset=0){delete view.coreReplayCheckpoint;
+function startChapter(c,roomOffset=0){root.BladefallRouteRecording?.stop('changed world');delete view.coreReplayCheckpoint;
  view.chapter=c;const start=chapterStart(c)+roomOffset;
  view.g=C.createGame(R.all,{room:start,shards:save.shards,assist:save.assist});TEST()?.sync();
  view.chapterStats={deaths:0,frames:0,start:performance.now()};
@@ -271,10 +271,11 @@ function nextRoom(){
   chapterCard();return;
  }
  save.shards=[...g.shards];writeSave(save);
- C.enterRoom(g,next);view.trail=[];resetScarf();view.roomTimer=0;
+ TEST()?.clearFlag();C.enterRoom(g,next);view.trail=[];resetScarf();view.roomTimer=0;
 }
-const takeoverOK=()=>!!save.assist.testMode||!root.BladefallPitchView?.climb?.state?.();   // (7.314) a watched Survive route is not a skip
-function retryRoom(){if(!view.g)return;if(view.coreReplayCheckpoint!==undefined){view.g.coreRun=view.coreReplayCheckpoint;delete view.coreReplayCheckpoint;view.g.coreDemo=false;}SV()?.retry(view.g.room.id);view.replay=null;if(!TEST()?.restore()){C.resetRoom(view.g);view.g.p.state='normal';view.g.p.respawnTimer=0;}view.trail=[];resetScarf();}
+const takeoverOK=()=>!!save.assist.testMode;   // (7.314) a watched Survive route is not a skip
+function takeOver(){if(!takeoverOK())return;view.replay=null;delete view.coreReplayCheckpoint;root.BladefallClimbSession?.invalidate('watched route takeover');}
+function retryRoom(){if(!view.g)return;if(view.coreReplayCheckpoint!==undefined){view.g.coreRun=view.coreReplayCheckpoint;delete view.coreReplayCheckpoint;view.g.coreDemo=false;}SV()?.retry(view.g.room.id);view.replay=null;if(!TEST()?.restore()){C.resetRoom(view.g);view.g.p.state='normal';view.g.p.respawnTimer=0;}root.BladefallRouteRecording?.mark('retry');view.trail=[];resetScarf();}
 
 /* ---------------------------------------------------------------- loop */
 function frame(now){
@@ -292,7 +293,7 @@ function loop(dt){
   if(pauseEdge)pauseOrBack();
   if(wasOpen&&overlayOpen()&&!pauseEdge)menuNav(pad);else if(pad.nav)Object.assign(nav.held,pad.nav);
   if(pad.retry&&!lp.retry&&view.mode==='play'&&!view.paused&&!overlayOpen())retryRoom();
-  if(view.replay&&pad.any&&!lp.any&&view.mode==='play'&&!view.paused&&takeoverOK())view.replay=null;
+  if(view.replay&&pad.any&&!lp.any&&view.mode==='play'&&!view.paused&&takeoverOK())takeOver();
  }else if(pad.nav)Object.assign(nav.held,pad.nav);
  if(view.mode==='play'&&!view.paused&&!TEST()?.inspecting()){
   view.frameAcc+=dt*(save.assist.speed||1);
@@ -309,10 +310,10 @@ function tick(input){
  let inp=input;
  if(view.replay){
   const r=view.replay;inp=keysToInput(r.frames[r.i]||'');r.i++;
-  if(r.i>r.frames.length+90){if(takeoverOK())view.replay=null;else{retryRoom();root.BladefallPitchView?.climb?.announce?.('Your turn',150);return;}}
+  if(r.i>r.frames.length+90){if(takeoverOK())takeOver();else{retryRoom();root.BladefallPitchView?.climb?.announce?.('Your turn',150);return;}}
  }
  if(!view.replay)SV()?.frame(g.room.id);
- C.step(g,inp);view.chapterStats.frames++;if(g.awake!==false)view.roomTimer++;
+ const recorded=!view.replay&&root.BladefallRouteRecording?.before(g,inp);C.step(g,inp);if(recorded)root.BladefallRouteRecording.after(g);view.chapterStats.frames++;if(g.awake!==false)view.roomTimer++;
  for(const e of g.events)handleEvent(e);
  g.events.length=0;
  updateVisuals();
@@ -324,6 +325,7 @@ function burst(x,y,n,col,speed=60,life=24,grav=0,size=1){for(let i=0;i<n;i++){co
 function dust(x,y,n=4,dir=0){for(let i=0;i<n;i++)view.parts.push({x:x+(rnd()-.5)*6,y,vx:(rnd()-.5)*30+dir*25,vy:-rnd()*18,life:16+rnd()*8,max:24,col:'#b8b0a0',grav:10,size:1});}
 function shake(mag,t=8){if(!save.options.shake)return;view.shake.mag=Math.max(view.shake.mag,mag);view.shake.t=Math.max(view.shake.t,t);}
 function handleEvent(e){
+ if(e.type==='core-checkpoint'&&!view.replay)TEST()?.clearFlag();
  // A spatial transfer in a scrolling room must not leave its next action off-screen.
  // Ordinary travel retains the eased camera; one-screen rooms still stay at zero.
  if((e.type==='respawn'||e.type==='echo-swap'||e.type==='portal-pass'&&e.kind==='knight')&&view.g&&(view.g.room.w>W||view.g.room.h>H))view.camRoom=null;
@@ -345,7 +347,7 @@ function handleEvent(e){
   case 'dash':shake(1.5,6);view.flash=2;burst(e.x,e.y,6,'#ffffff',40,12);break;
   case 'refill':burst(e.x,e.y,10,'#8ff0b0',50,22);break;
   case 'death':burst(e.x,e.y,18,'#ffb347',90,30,40,2);burst(e.x,e.y,10,'#cfd8e6',60,30,60,1);shake(3,12);view.deathAt={x:e.x,y:e.y,t:0};view.chapterStats.deaths++;if(view.g&&!view.replay)SV()?.death(view.g.room.id);break;
-  case 'respawn':view.trail=[];resetScarf();break;
+  case 'respawn':if(!view.replay){TEST()?.restore();root.BladefallRouteRecording?.mark('respawn');}view.trail=[];resetScarf();break;
   case 'stone-hit':shake(2.5,8);dust(e.x-(e.dx||0)*8,e.y,6);break;
   case 'stone-stop':shake(3,10);burst(e.x,e.y,10,'#a89a88',50,24,80);break;
   case 'phase':view.flash=1;break;
@@ -662,7 +664,7 @@ function updateCamera(g){
  if(TEST()?.camera(g,view))return;
  const rw=g.room.w||W,rh=g.room.h||H,p=g.p;
  if(rw<=W&&rh<=H){view.cam.x=view.cam.y=0;view.camRoom=g.room.id;return;}
- const tx=Math.max(0,Math.min(rw-W,p.x+4-W/2)),ty=Math.max(0,Math.min(rh-H,p.y+5-H*.55));
+ const tx=Math.max(0,Math.min(rw-W,p.x+4-W/2+(g.room.def.cameraZones?.find(z=>p.x>=z.x0&&p.x<=z.x1&&p.y>=z.y0&&p.y<=z.y1)?.lookX||0))),ty=Math.max(0,Math.min(rh-H,p.y+5-H*.55));
  if(view.camRoom!==g.room.id){view.cam.x=tx;view.cam.y=ty;view.camRoom=g.room.id;return;}
  view.cam.x+=(tx-view.cam.x)*.18;view.cam.y+=(ty-view.cam.y)*.14;
 }
@@ -679,7 +681,7 @@ function render(){
  if(view.buf.width!==W){view.buf.width=W;view.b.imageSmoothingEnabled=false;}
  const fit=Math.min(sw/W,(sh-8*dpr)/H);
  const scale=pocket?pocket.scale*dpr:full?sh/H:dpr>1?(fit>=3?Math.floor(fit):fit):Math.max(1,Math.floor(fit));view.scale=scale;
- const ox=pocket?pocket.ox*dpr:Math.floor((sw-W*scale)/2),oy=pocket?pocket.oy*dpr:Math.floor((sh-H*scale)/2);
+ const ox=pocket?pocket.ox*dpr:Math.floor((sw-W*scale)/2),oy=pocket?pocket.oy*dpr:Math.floor((sh-H*scale)/2);view.renderOffset={x:ox,y:oy};
  if(!view.g){return;}
  const g=view.g,pal=palette();
  updateCamera(g);
@@ -824,12 +826,13 @@ function assistCard(back,{fromMenu=false}={}){
  const reviewRow=root.BladefallPlaytest?`<label class="pcOpt"><input type="checkbox" id="opReview" ${root.BladefallPlaytest.feedbackEnabled()?'checked':''}> Review mode · rate each room when you finish it</label>
  <label class="pcOpt"><input type="checkbox" id="opClock" ${root.BladefallPlaytest.clockShown?.()!==false?'checked':''}> Show the run timer</label>`:'';
  showOverlay(`<div class="pcCard"><h1>Assist &amp; options</h1><p class="pcSub">The rooms are built to be hard and fair. If a rule gets in the way of your fun, change it. Nothing is locked behind these settings.</p>
- ${a.testMode?'<p class="pcSub" style="color:#8fd8ff">Test mode is on: infinite skips and climbing stamina, you can take over a watched route, I places a retry flag, and mouse dragging inspects the map.</p>':''}
+ ${a.testMode?'<p class="pcSub" style="color:#8fd8ff">Test mode is on: infinite skips and climbing stamina, you can take over a watched route, I places a flag for Retry and deaths. Mouse dragging holds the map still; hover and press I to place a flag there.</p>':''}
  <label class="pcOpt">Game speed <select id="asSpeed">${[1,.9,.8,.7,.6,.5].map(s=>`<option value="${s}" ${((a.speed||1)===s)?'selected':''}>${Math.round(s*100)}%</option>`).join('')}</select></label>
  <label class="pcOpt"><input type="checkbox" id="opShake" ${o.shake?'checked':''}> Screen shake</label>
  <label class="pcOpt"><input type="checkbox" id="opSound" ${o.sound?'checked':''}> Sound effects</label>
  <label class="pcOpt"><input type="checkbox" id="opMusic" ${o.music?'checked':''}> Music</label>
  ${climb?`<label class="pcOpt"><input type="checkbox" id="opPure" ${o.pure?'checked':''}> Pure play mode · no screens when you finish a world (no leaderboards, no skip-ahead): just keep playing</label>`:''}
+ <p class="pcSub">Y starts or stops a private route recording. Recordings save automatically to the cloud, with offline retries.</p>
  ${reviewRow}
  ${finaleMap?`<label class="pcOpt"><input type="checkbox" id="opFinaleMap" ${F.preview()?'checked':''}> Show the full map (Vesper, your Echo and the whole Fractured emerald)</label>`:''}
  <p class="pcSub" id="asNote" style="color:#ffd98a"></p>
@@ -885,7 +888,7 @@ function togglePause(){
  else {document.getElementById('pcChapters').onclick=mainMenu;if(ch.climb)document.getElementById('pcChapters').textContent='World map';}
 }
 function watchRoute(){
- const g=view.g,tape=R.tapes[g.room.id];if(!tape)return;TEST()?.follow();
+ const g=view.g,tape=R.tapes[g.room.id];if(!tape)return;root.BladefallRouteRecording?.stop('watching intended route');TEST()?.clearFlag();TEST()?.follow();
  SV()?.watched(g.room.id);
  if(g.room.def.coreCheckpoints){view.coreReplayCheckpoint=g.coreRun?{...g.coreRun}:null;g.coreRun=null;g.coreDemo=true;}
  C.enterRoom(g,g.roomIndex);view.trail=[];resetScarf();
@@ -942,6 +945,7 @@ function music(on){
 /* ---------------------------------------------------------------- boot */
 function boot(){
  view.canvas=document.getElementById('pcCanvas');view.ctx=view.canvas.getContext('2d');
+ root.BladefallRouteRecording?.init({view,overlayOpen});
  TEST()?.init({view,enabled:()=>!!save.assist.testMode,overlayOpen,clearInput:()=>{keys.clear();latchHeld();}});
  view.buf=document.createElement('canvas');view.buf.width=W;view.buf.height=H;view.b=view.buf.getContext('2d');view.b.imageSmoothingEnabled=false;
  TOUCH()?.init({canvas:view.canvas,view,save,writeSave,overlayOpen,showOverlay,overlay,controlsCard,
@@ -965,9 +969,10 @@ function boot(){
   if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(code))e.preventDefault();
   if(e.repeat)return;
   const typing=e.target?.closest?.('input,textarea,select,[contenteditable]');
+  if(code==='KeyY'&&!e.isComposing&&!open&&!typing&&!view.paused&&!e.repeat&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();root.BladefallRouteRecording?.toggle();return;}
   if(code==='KeyI'&&save.assist.testMode&&!open&&!view.paused&&!typing&&!e.isComposing&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();if(!view.replay)TEST()?.place();return;}
   const act=keyAction(code);
-  if(view.replay&&view.mode==='play'&&!view.paused&&PLAY_ACTIONS.includes(act)&&takeoverOK()){view.replay=null;}
+  if(view.replay&&view.mode==='play'&&!view.paused&&PLAY_ACTIONS.includes(act)&&takeoverOK()){takeOver();}
   keys.add(code);
   if(code==='Escape'||act==='pause'){pauseOrBack();return;}
   if(act==='retry'&&view.mode==='play'&&!view.paused&&!open){retryRoom();return;}

@@ -10,12 +10,15 @@ const draws=[];const brush=new Proxy({measureText:s=>({width:String(s).length*5}
 w.HTMLCanvasElement.prototype.getContext=()=>brush;
 w.HTMLCanvasElement.prototype.getBoundingClientRect=()=>({x:0,y:0,left:0,top:0,width:w.innerWidth,height:w.innerHeight});w.HTMLCanvasElement.prototype.setPointerCapture=function(id){this.capture=id;};w.HTMLCanvasElement.prototype.releasePointerCapture=function(){delete this.capture;};
 w.BladefallPrecisionCore=Core;w.BladefallPrecisionRooms=Rooms;w.localStorage.setItem('bladefall.pcore.v1',JSON.stringify({options:{sound:false,music:false,shake:true}}));
-for(const f of ['bladefall-input.js','bladefall-pcore-test-tools.js','bladefall-pcore-view.js'])w.eval(readFileSync(new URL(f,pub),'utf8'));
+for(const f of ['bladefall-input.js','bladefall-route-recording.js','bladefall-pcore-test-tools.js','bladefall-pcore-view.js'])w.eval(readFileSync(new URL(f,pub),'utf8'));
 const V=w.BladefallPrecisionView,T=w.BladefallPrecisionTestTools;V.pump(1);const view=V.view,canvas=view.canvas;
 const key=(type,code,extra={})=>w.dispatchEvent(new w.KeyboardEvent(type,{code,key:code.slice(3),bubbles:true,...extra}));
 function pointer(type,x,y,over={}){const e=new w.Event(type,{bubbles:true,cancelable:true});Object.assign(e,{pointerId:1,pointerType:'mouse',button:0,clientX:x,clientY:y,...over});canvas.dispatchEvent(e);return e;}
+const uiErrors=[];dom.virtualConsole.on('jsdomError',e=>uiErrors.push(e));
+const recordings=[];w.BladefallPlaytest={saveRecording:r=>{recordings.push(r);return r.id;},recordingState:()=> 'synced',state:()=>({run:null}),unlock(){},isPublic:()=>false,feedbackEnabled:()=>false,clockShown:()=>false,setFeedback(){},setClock(){}};
 // Outside test mode I still strikes; no checkpoint or panning.
 key('keydown','KeyI');V.pump(1);assert(view.lastInput.strike);key('keyup','KeyI');assert.equal(T.state().flag,null);pointer('pointerdown',300,200);pointer('pointermove',200,100);assert.equal(T.state().pan,null);
+key('keydown','KeyY');key('keyup','KeyY');assert(w.BladefallRouteRecording.state());V.pump(10);key('keydown','KeyY');key('keyup','KeyY');assert(!w.BladefallRouteRecording.state());assert.equal(recordings.length,1);assert.equal(recordings[0].frames,10);
 // The same five clicks which enable stamina/skips enable both new aids.
 V.options(()=>{});const shake=w.document.getElementById('opShake');for(let i=0;i<4;i++)shake.click();assert.equal(V.testMode(),false);shake.click();assert.equal(V.testMode(),true);assert(view.g.assist.infiniteStamina);assert(w.document.getElementById('asNote').textContent.includes('I places'));
 w.document.getElementById('pcBack').click();w.document.getElementById('pcOverlay').classList.remove('show');view.paused=false;
@@ -63,5 +66,19 @@ world.quest={id:'checkpoint-fixture'};world.branchVia='door';world.enteredAt=77;
 // Route demonstrations release inspection; an explicit Core restart clears the test flag.
 pointer('pointerdown',500,300);pointer('pointermove',300,200);pointer('pointerup',300,200);assert(T.inspecting());key('keydown','Escape');key('keyup','Escape');w.document.getElementById('pcWatch').click();assert(!T.inspecting());assert(view.replay);V.retryRoom();assert(!view.replay);
 view.g.p.x=100;assert(T.place());key('keydown','Escape');key('keyup','Escape');w.document.getElementById('pcCoreRestart').click();assert.equal(T.state().flag,null);assert.equal(view.g.coreRun.index,-1);assert.equal(view.g.p.x,view.g.room.spawn.x);
+// Death uses exactly the same full-scene test snapshot as R.
+view.g.p.x=350;view.g.p.y=600;view.g.p.vx=0;view.g.p.vy=0;view.g.p.state='normal';assert(T.place());const deathPose={x:view.g.p.x,y:view.g.p.y};Core.kill(view.g,view.g.p,'flag-fixture');let returned=false;for(let i=0;i<100;i++){V.pump(1);if(view.g.p.state==='normal'&&view.g.p.x===deathPose.x&&view.g.p.y===deathPose.y){returned=true;break;}}assert(returned,'automatic death restores test flag');
+// A newly earned real anchor wins over an earlier test flag.
+const cp=view.g.room.def.coreCheckpoints[0];view.g.p.x=cp.c*8;view.g.p.y=(cp.r+1)*8-view.g.p.h;view.g.p.vy=0;view.g.p.onGround=true;V.pump(1);assert.equal(view.g.coreRun.index,0);assert.equal(T.state().flag,null);
+// Pointer I uses world coordinates under the held camera, with a visible coordinate readout.
+view.cam={x:200,y:300};pointer('pointerdown',500,300);pointer('pointermove',420,260);pointer('pointerup',420,260);pointer('pointermove',450,280);assert(!w.document.getElementById('pcTestCoords').hidden);assert(w.document.getElementById('pcTestCoords').textContent.includes('tile'));
+key('keydown','KeyI');key('keyup','KeyI');const pointed=T.state().flag;assert(pointed);assert.notEqual(pointed.x,view.g.p.x);V.retryRoom();assert.equal(view.g.p.x,pointed.x);assert.equal(view.g.p.y,pointed.y);assert(!T.inspecting());
+// Taking over the real demo retains its later checkpoint for both retry paths.
+key('keydown','Escape');key('keyup','Escape');w.document.getElementById('pcWatch').click();for(let n=0;n<1800&&view.g.coreRun.index<1;n++)V.pump(1);assert.equal(view.g.coreRun.index,1);assert(view.replay);key('keydown','ArrowRight');key('keyup','ArrowRight');assert(!view.replay);assert.equal(view.coreReplayCheckpoint,undefined);V.retryRoom();assert.equal(view.g.coreRun.index,1);const anchorX=view.g.p.x;Core.kill(view.g,view.g.p,'takeover-death');for(let i=0;i<100&&view.g.p.state!=='respawn';i++)V.pump(1);assert.equal(view.g.p.x,anchorX);assert.equal(view.g.coreRun.index,1);
+// Outside test mode the demonstration is view-only, including a Room Bank/standalone context.
+V.options(()=>{});for(let i=0;i<5;i++)w.document.getElementById('opShake').click();w.document.getElementById('pcBack').click();w.document.getElementById('pcOverlay').classList.remove('show');view.paused=false;key('keydown','Escape');key('keyup','Escape');w.document.getElementById('pcWatch').click();assert(view.replay);key('keydown','ArrowRight');key('keyup','ArrowRight');assert(view.replay);const savedPitch=w.BladefallPitchView;w.BladefallPitchView=null;key('keydown','Space');key('keyup','Space');assert(view.replay);w.BladefallPitchView=savedPitch;V.retryRoom();assert.equal(view.g.coreRun.index,1);
+// At each resin launch edge the next branch is visible in the native Bank camera.
+const oldPitch=w.BladefallPitchView;w.BladefallPitchView=null;view.g=Core.createGame([woods.room]);for(const [x,next]of [[848,640],[640,432]]){view.g.p.x=x;view.g.p.y=205;view.camRoom=null;V.advance([]);assert(next+40>view.cam.x&&next<view.cam.x+view.viewportW,'next resin branch visible from launch');assert(x>=view.cam.x&&x+8<=view.cam.x+view.viewportW,'knight remains visible');}w.BladefallPitchView=oldPitch;
+assert.deepEqual(uiErrors,[],'no swallowed DOM handler errors');
 console.log('PASS: actual five-click switch, I/normal blade binding, flag drawing, R/repeated state restore, preserved deaths, typing/menu/replay guards, mouse pan scaling, held screenshots, follow/resume, touch isolation, and mode-off cleanup, 134 native scene snapshots, deterministic device clocks, cross-room return, real Climb terrain/camera framing, and branch context.');
 dom.window.close();

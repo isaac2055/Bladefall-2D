@@ -20,7 +20,8 @@ export class PlaytestStore extends DurableObject {
       if(!this.env.FEEDBACK_EXPORT_TOKEN)return new Response('Export not configured',{status:404});
       if(request.headers.get('Authorization')!=='Bearer '+this.env.FEEDBACK_EXPORT_TOKEN)return new Response('Forbidden',{status:403});
       const rows=[];for(const {key} of (await this.store.list({prefix:'feedback/'})).blobs)rows.push(await this.store.get(key));
-      return Response.json({feedback:rows},{headers:{'Cache-Control':'no-store'}});
+      const recordings=[];for(const {key} of (await this.store.list({prefix:'recordings/'})).blobs)recordings.push(await this.store.get(key));
+      return Response.json({feedback:rows,recordings},{headers:{'Cache-Control':'no-store'}});
     }
     return handle(request,this.store);
   }
