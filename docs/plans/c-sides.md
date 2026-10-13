@@ -1,5 +1,15 @@
 # C-sides: handoff for building the twenty bonus worlds (7.319)
 
+> **7.325:** C-side 1, *Trumpet Hollow* (the Outskirts), is built and playable as candidate E (Claude's one try), beside Codex's Room Bank candidates A–D.
+> - Code: `public/bladefall-climb-csides.js` (world n=101, `cside:1`), with routes in `bladefall-climb-cside-tapes.js`.
+> - Wiring:
+>   - played from the Garden & skins card's "Play C-side";
+>   - gated in `startWorld` by `csideOpen(k)` (or review or the 100% view);
+>   - `worldDone` records `csideBeaten(k)`;
+>   - geography anchor 101 at [0, 4720].
+> - Routes come from `scripts/climb/tools/cside-beam.mjs`, a beam search, which also works for the others.
+> - Follow its pattern for C-sides 2–20 (n = 100 + k), or replace it with whichever candidate Isaac picks.
+
 Isaac (2026-10-12) asked for one C-side per world pair, unlocked by perfect clears. The unlock mechanics, rewards and UI are built and shipped in 7.319.0. **The C-side worlds themselves are not built yet. This document is the brief for building them.**
 
 ## What already exists

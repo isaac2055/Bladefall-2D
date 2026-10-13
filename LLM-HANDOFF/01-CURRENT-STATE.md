@@ -1,3 +1,21 @@
+## 7.325.0: C-side 1, Trumpet Hollow, playable (2026-10-13)
+
+Isaac asked Claude for one attempt at the Outskirts C-side. Candidate E sits beside Codex's A–D (Room Bank, local).
+- **What it is:** a real Survive world, n=101 "C-Side · Trumpet Hollow", in `public/bladefall-climb-csides.js`. Three sections built from the Outskirts' own devices over real void:
+  1. The Falling Survey: two high stakes over a crumbling road; the gate opens on both.
+  2. Crystal Ladder: no ground, crystal to crystal round a thorned spine.
+  3. The Last Stake: three stakes, high, low over the thorns and far, with a recovery crystal out of the low one (added after the search showed the low stake was a dead end).
+- **Routes:** found by `scripts/climb/tools/cside-beam.mjs` (beam search). They take 219, 199 and 242 frames, with zero deaths.
+- **Wiring:**
+  - Garden & skins shows "Play C-side" when C-side 1 is open (perfect clears of worlds 1 and 21, or the 100% view, or review);
+  - `startWorld` gating;
+  - `worldDone` records `csideBeaten(1)`;
+  - geography anchor 101.
+- **Check:** Chrome from the Garden button through all three sections, zero deaths, finishing records csides[1]; no errors.
+- **Not done:** human playtesting and difficulty tuning. The routes are machine-found and quick (~12 s total), so humans will take longer.
+
+Version 7.325.0, cache `bladefall-v493-cside-1`.
+
 ## 7.324.0: The Survive map card is a glance, not a page (2026-10-13)
 
 Isaac: the region card under the map was a wall of text. Now (`bladefall-climb-map.js` card):

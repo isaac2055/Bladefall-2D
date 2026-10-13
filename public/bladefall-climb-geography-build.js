@@ -65,7 +65,9 @@ const anchors={1:[0,1050],2:[-900,700],3:[900,700],4:[-900,350],5:[900,350],6:[0
  21:[0,1810],22:[-900,2160],23:[900,2160],24:[-900,2510],
  25:[900,2510],26:[0,2860],27:[900,2860],28:[-900,2860],29:[0,3210],30:[-900,3560],31:[0,3560],32:[900,3560],33:[-1090,3880],34:[1090,3880],35:[0,4110],36:[-1650,3300],37:[-2050,2602],38:[-1450,1902],39:[1500,1650],40:[1850,2602],
  // (7.309) the finale, beyond the two tips: Your Echo below the Fractured emerald, Vesper above the Ascent
- 41:[0,4500],42:[0,-1700]};
+ 41:[0,4500],42:[0,-1700],
+ // (7.325) the C-sides, in a row below the Echo
+ 101:[0,4720]};
 // Translate an entire authored world as one unit. Never repack its rooms or
 // insert travel sections into the original challenge sequence.
 function frameWorld(w){

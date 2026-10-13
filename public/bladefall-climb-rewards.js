@@ -154,7 +154,8 @@ function sprite(b,x,y,f,pose,pal,dash,t=0,squash=1,stretch=1,run=0,silhouette=nu
 function card(api,back){
  const r=state(),open=k=>csideOpen(k);
  const rows=PLANTS.slice(1).map((p,i)=>{const k=i+1,h=halves(k),w1=CL()?.world(k)?.name||('World '+k),w2=CL()?.world(k+20)?.name||('World '+(k+20));
-  return `<tr><td style="color:${p.col}">✿ ${p.name}</td><td title="perfect ${w1}">${h.root?'● '+p.root:'○ '+p.root}</td><td title="perfect ${w2}">${h.top?'● '+p.top:'○ '+p.top}</td><td>${r.csides[k]?'C-side ✓':open(k)?'<span style="color:#ffd98a">C-side open · coming soon</span>':''}</td></tr>`;}).join('');
+  const cw=(root.BladefallClimbCsides?.worlds||[]).find(w=>w.cside===k),canPlay=cw&&(open(k)||root.BladefallClimbFinale?.unlockedAll?.());
+  return `<tr><td style="color:${p.col}">✿ ${p.name}</td><td title="perfect ${w1}">${h.root?'● '+p.root:'○ '+p.root}</td><td title="perfect ${w2}">${h.top?'● '+p.top:'○ '+p.top}</td><td>${canPlay?`<button class="pcBtn ghost" data-cside="${cw.n}" style="padding:2px 8px">${r.csides[k]?'C-side ✓ · again':'Play C-side'}</button>`:r.csides[k]?'C-side ✓':open(k)?'<span style="color:#ffd98a">C-side open · coming soon</span>':''}</td></tr>`;}).join('');
  const sk=SKINS.map(s=>`<button class="pcChoice" data-skin="${s.id}" style="text-align:left"><canvas width="96" height="40" data-skin-art="${s.id}" style="image-rendering:pixelated;width:144px;height:60px;float:left;margin-right:8px"></canvas><span class="pcName">${earned(s.id)?s.name:'???'}${r.skin===s.id&&earned(s.id)?' · worn':''}</span><span class="pcDesc">${s.how}${earned(s.id)?'':s.buy?` · ${canBuy(s.id)?'<b style="color:#ffd98a">open it now</b>':`opens at ♥ ${price(s)}`}`:' · locked'}</span></button>`).join('');
  api.showOverlay(`<div class="pcCard wide"><h1>Garden &amp; skins</h1>
   <p class="pcSub">Finish a world without dying on its road (optional routes don’t count) for half of its plant: the bottom from the base world, the top from its Fractured echo. Both halves open that world’s C-side.</p>
@@ -171,6 +172,7 @@ function card(api,back){
   if(earned(id)){wear(id);card(api,back);return;}
   if(canBuy(id)){buy(id);wear(id);card(api,back);return;}   // (7.321) opened by the hearts you have collected (they are not spent)
   peek[id]=(peek[id]||0)+1;if(peek[id]===5)el.querySelector('.pcDesc').textContent=SKINS.find(x=>x.id===id).how+' · a glimpse (earn it to wear it)';paint();});
+ document.querySelectorAll('[data-cside]').forEach(el=>el.onclick=()=>{clearInterval(timer);root.BladefallPitchView?.climb?.startWorld(+el.dataset.cside);});
  document.getElementById('rwBack').onclick=()=>{clearInterval(timer);back();};
 }
 

@@ -109,7 +109,8 @@ PV.start=function(q,api){
 };
 function startWorld(n,room=null){
  const w=CL().world(n);if(!w||!w.chapter)return false;
- if(n>40&&!st.review&&!root.BladefallClimbFinale?.open()){announce('Complete all forty worlds first.',220);return false;}
+ if(w.cside){if(!st.review&&!root.BladefallClimbRewards?.csideOpen(w.cside)&&!root.BladefallClimbFinale?.unlockedAll?.()){announce('Finish both halves of this world perfectly to open its C-side.',220);return false;}}   // (7.325)
+ else if(n>40&&!st.review&&!root.BladefallClimbFinale?.open()){announce('Complete all forty worlds first.',220);return false;}
  if(n>20&&n<=40&&!st.review&&!fracturedOpen(n)){announce(fracturedLockedWhy(n),240);return false;}
  const resumeProgress=room!=null;
  if(room==null)room=Math.max(0,w.chapter.rooms.findIndex(r=>r.id===w.atlasStart));
@@ -1155,6 +1156,7 @@ function worldClearReady(){
  return required.every(id=>st.trialSolved?.has(id)||st.resumeProgress&&st.atlas?.state.solved[id]);
 }
 function worldDone(view){
+ if(st.world.cside){root.BladefallClimbRewards?.csideBeaten(st.world.cside);setTimeout(()=>announce(`C-side beaten · ${st.world.name}`,300),300);}   // (7.325)
  if(V().pureMode?.()){save.cleared[st.world.n]=true;store(SAVE,save);announce(`${st.world.name} · complete`,200);atlasMap();return;}   // (7.318) pure play
  if(!worldClearReady()){root.BladefallClimbSession?.invalidate('unfinished rooms');atlasMap();return;}
 
