@@ -1,7 +1,7 @@
 {
-  "version": "7.322.0",
-  "activeBatch": 21,
-  "activeRun": 11,
+  "version": "7.323.0",
+  "activeBatch": 22,
+  "activeRun": 12,
   "retained": [
     "bank-b21",
     "bank-b76",
@@ -134,7 +134,13 @@
     "bank-f25",
     "bank-f64",
     "bank-f58",
-    "bank-f45"
+    "bank-f45",
+    "bank-f81",
+    "bank-f82",
+    "bank-f83",
+    "bank-f84",
+    "bank-f85",
+    "bank-f86"
   ],
   "newRoomsPerSide": 5,
   "mechanicRequirements": [],

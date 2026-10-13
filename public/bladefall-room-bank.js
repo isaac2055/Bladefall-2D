@@ -108578,11 +108578,2048 @@ const saved=[
     "lj"
    ]
   ]
+ },
+ {
+  "room": {
+   "id": "bank-f87",
+   "name": "C1 · The Whiteflower Needle",
+   "cols": 40,
+   "rows": 30,
+   "palette": "outskirts",
+   "movement": "survive-2",
+   "aim8": true,
+   "dashes": 1,
+   "lock": [
+    "strike",
+    "parry",
+    "portal"
+   ],
+   "exit": "right",
+   "hint": "Dash upward beside the needle, jump away, then bend through the crystal into the high bank.",
+   "map": [
+    "#.......................................",
+    "#.......................................",
+    "#.......................................",
+    "#.......................................",
+    "#.......................................",
+    "#.......................................",
+    "#.......................................",
+    "#.......................................",
+    "#.......................................",
+    "#.......................................",
+    "#.......................................",
+    "#.......................................",
+    "#.......^^..............................",
+    "#.......##...............o..............",
+    "#.......##.....................#########",
+    "#.......##....................<#########",
+    "#.......##....................<........#",
+    "#.......##....................<........#",
+    "#.......##........o...........<........#",
+    "#.......##....................<........#",
+    "#.......##....................<........#",
+    "#.......##....................<........#",
+    "#.......##....................<........#",
+    "#.......##....................<........#",
+    "#.......##....................<........#",
+    "#.......##P...................<........#",
+    "#.......##########............<........#",
+    "#.......##########............<........#",
+    "#......................................#",
+    "#......................................#"
+   ],
+   "study": true
+  },
+  "bank": {
+   "side": "fractured",
+   "batch": 22,
+   "run": 12,
+   "difficulty": 5,
+   "role": "technique chain",
+   "worlds": [
+    1,
+    21
+   ],
+   "tags": [
+    "outskirts",
+    "cside",
+    "astra"
+   ],
+   "newMechanics": [],
+   "status": "route-proven",
+   "author": "Astra",
+   "collection": "csides",
+   "format": "cside-section",
+   "cside": 1,
+   "csideVariant": "c",
+   "csideTitle": "Whiteflower Spire",
+   "csideDescription": "Wallbounces climb a white-flower spire; the hammer opens the final ascent.",
+   "csideSection": 1,
+   "localOnly": true,
+   "acceptance": "candidate",
+   "needsReview": true,
+   "solution": "Dash upward beside the needle, jump away, then bend through the crystal into the high bank.",
+   "requiredEvents": [
+    "wallbounce",
+    "refill"
+   ],
+   "requiredEventCounts": {},
+   "shortcutChecks": [
+    {
+     "name": "Run right without jumping",
+     "tape": [
+      [
+       360,
+       "r"
+      ]
+     ]
+    },
+    {
+     "name": "Run left without jumping",
+     "tape": [
+      [
+       360,
+       "l"
+      ]
+     ]
+    },
+    {
+     "name": "Ordinary jump and dash right",
+     "tape": [
+      [
+       18,
+       "rj"
+      ],
+      [
+       8,
+       "rux"
+      ],
+      [
+       300,
+       "r"
+      ]
+     ]
+    }
+   ],
+   "positiveChecks": [
+    {
+     "name": "Segment 1 +2 frames",
+     "tape": [
+      [
+       12,
+       "ux"
+      ],
+      [
+       16,
+       "rj"
+      ],
+      [
+       20,
+       "ru"
+      ],
+      [
+       8,
+       "rux"
+      ],
+      [
+       8,
+       "ru"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       4,
+       "rux"
+      ],
+      [
+       4,
+       "ru"
+      ],
+      [
+       5,
+       "rdx"
+      ],
+      [
+       23,
+       "r"
+      ],
+      [
+       5,
+       "rdx"
+      ],
+      [
+       18,
+       "rj"
+      ]
+     ]
+    },
+    {
+     "name": "Segment 2 +2 frames",
+     "tape": [
+      [
+       10,
+       "ux"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       20,
+       "ru"
+      ],
+      [
+       8,
+       "rux"
+      ],
+      [
+       8,
+       "ru"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       4,
+       "rux"
+      ],
+      [
+       4,
+       "ru"
+      ],
+      [
+       5,
+       "rdx"
+      ],
+      [
+       23,
+       "r"
+      ],
+      [
+       5,
+       "rdx"
+      ],
+      [
+       18,
+       "rj"
+      ]
+     ]
+    }
+   ],
+   "revision": "511105045347",
+   "source": "scripts/room-bank/fractured/87-bank-f87.json"
+  },
+  "tape": [
+   [
+    10,
+    "ux"
+   ],
+   [
+    16,
+    "rj"
+   ],
+   [
+    20,
+    "ru"
+   ],
+   [
+    8,
+    "rux"
+   ],
+   [
+    8,
+    "ru"
+   ],
+   [
+    12,
+    "rj"
+   ],
+   [
+    4,
+    "rux"
+   ],
+   [
+    4,
+    "ru"
+   ],
+   [
+    5,
+    "rdx"
+   ],
+   [
+    23,
+    "r"
+   ],
+   [
+    5,
+    "rdx"
+   ],
+   [
+    18,
+    "rj"
+   ]
+  ]
+ },
+ {
+  "room": {
+   "id": "bank-f88",
+   "name": "C2 · Between the Thorns",
+   "cols": 40,
+   "rows": 36,
+   "palette": "outskirts",
+   "movement": "survive-2",
+   "aim8": true,
+   "dashes": 1,
+   "lock": [
+    "strike",
+    "parry",
+    "portal"
+   ],
+   "exit": "left",
+   "hint": "Bounce away from each thorn-crowned wall. The cracked shelf is only a breath before the return ascent.",
+   "map": [
+    "#.......................................",
+    "#.......................................",
+    "#.......................................",
+    "........................................",
+    "........................................",
+    "........................................",
+    "........................................",
+    "........................................",
+    "###########.....................^^......",
+    "###########>....................##......",
+    "#..........>..........o.........##......",
+    "#..........>....................##......",
+    "#..........>......o.............##......",
+    "#..........>.............o......##......",
+    "#..........>....................##......",
+    "#..........>....................##......",
+    "#..........>....................##......",
+    "#..........>....................##......",
+    "#..........>....................##......",
+    "#.......^^.>.................~~~##......",
+    "#.......##.>.............o......##......",
+    "#.......##.>....................##......",
+    "#.......##.>....................##......",
+    "#.......##.>............................",
+    "#.......##.>......o.....................",
+    "#.......##.>............................",
+    "#.......##.>............................",
+    "#.......##.>............................",
+    "#.......##.>............................",
+    "#.......##.>............................",
+    "#.......##.>............................",
+    "#.......##P>............................",
+    "#.......#########.......................",
+    "#.......#########.......................",
+    "#.......................................",
+    "#......................................."
+   ],
+   "study": true
+  },
+  "bank": {
+   "side": "fractured",
+   "batch": 22,
+   "run": 12,
+   "difficulty": 5,
+   "role": "technique chain",
+   "worlds": [
+    1,
+    21
+   ],
+   "tags": [
+    "outskirts",
+    "cside",
+    "astra"
+   ],
+   "newMechanics": [],
+   "status": "route-proven",
+   "author": "Astra",
+   "collection": "csides",
+   "format": "cside-section",
+   "cside": 1,
+   "csideVariant": "c",
+   "csideTitle": "Whiteflower Spire",
+   "csideDescription": "Wallbounces climb a white-flower spire; the hammer opens the final ascent.",
+   "csideSection": 2,
+   "localOnly": true,
+   "acceptance": "candidate",
+   "needsReview": true,
+   "solution": "Bounce away from each thorn-crowned wall. The cracked shelf is only a breath before the return ascent.",
+   "requiredEvents": [
+    "wallbounce",
+    "refill",
+    "crumble-shake"
+   ],
+   "requiredEventCounts": {
+    "wallbounce": 2
+   },
+   "shortcutChecks": [
+    {
+     "name": "Run right without jumping",
+     "tape": [
+      [
+       360,
+       "r"
+      ]
+     ]
+    },
+    {
+     "name": "Run left without jumping",
+     "tape": [
+      [
+       360,
+       "l"
+      ]
+     ]
+    },
+    {
+     "name": "Ordinary jump and dash right",
+     "tape": [
+      [
+       18,
+       "rj"
+      ],
+      [
+       8,
+       "rux"
+      ],
+      [
+       300,
+       "r"
+      ]
+     ]
+    }
+   ],
+   "positiveChecks": [
+    {
+     "name": "Segment 2 -2 frames",
+     "tape": [
+      [
+       10,
+       "ux"
+      ],
+      [
+       14,
+       "rj"
+      ],
+      [
+       5,
+       "rdx"
+      ],
+      [
+       5,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       8,
+       "rux"
+      ],
+      [
+       8,
+       "ru"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       8,
+       "rux"
+      ],
+      [
+       8,
+       "ru"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       5,
+       "ux"
+      ],
+      [
+       5,
+       "ldx"
+      ],
+      [
+       5,
+       "l"
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       5,
+       "ldx"
+      ],
+      [
+       23,
+       "l"
+      ],
+      [
+       8,
+       "lx"
+      ],
+      [
+       8,
+       "l"
+      ],
+      [
+       8,
+       "lux"
+      ],
+      [
+       8,
+       "lu"
+      ],
+      [
+       5,
+       "ldx"
+      ],
+      [
+       5,
+       "l"
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       5,
+       "ldx"
+      ],
+      [
+       23,
+       "l"
+      ],
+      [
+       8,
+       "lx"
+      ],
+      [
+       8,
+       "l"
+      ]
+     ]
+    },
+    {
+     "name": "Segment 5 -2 frames",
+     "tape": [
+      [
+       10,
+       "ux"
+      ],
+      [
+       16,
+       "rj"
+      ],
+      [
+       5,
+       "rdx"
+      ],
+      [
+       5,
+       "r"
+      ],
+      [
+       16,
+       "rj"
+      ],
+      [
+       8,
+       "rux"
+      ],
+      [
+       8,
+       "ru"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       8,
+       "rux"
+      ],
+      [
+       8,
+       "ru"
+      ],
+      [
+       12,
+       "r"
+      ],
+      [
+       5,
+       "ux"
+      ],
+      [
+       5,
+       "ldx"
+      ],
+      [
+       5,
+       "l"
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       5,
+       "ldx"
+      ],
+      [
+       23,
+       "l"
+      ],
+      [
+       8,
+       "lx"
+      ],
+      [
+       8,
+       "l"
+      ],
+      [
+       8,
+       "lux"
+      ],
+      [
+       8,
+       "lu"
+      ],
+      [
+       5,
+       "ldx"
+      ],
+      [
+       5,
+       "l"
+      ],
+      [
+       18,
+       "lj"
+      ],
+      [
+       5,
+       "ldx"
+      ],
+      [
+       23,
+       "l"
+      ],
+      [
+       8,
+       "lx"
+      ],
+      [
+       8,
+       "l"
+      ]
+     ]
+    }
+   ],
+   "revision": "d3eb73057c92",
+   "source": "scripts/room-bank/fractured/88-bank-f88.json"
+  },
+  "tape": [
+   [
+    10,
+    "ux"
+   ],
+   [
+    16,
+    "rj"
+   ],
+   [
+    5,
+    "rdx"
+   ],
+   [
+    5,
+    "r"
+   ],
+   [
+    18,
+    "rj"
+   ],
+   [
+    8,
+    "rux"
+   ],
+   [
+    8,
+    "ru"
+   ],
+   [
+    12,
+    "rj"
+   ],
+   [
+    8,
+    "rux"
+   ],
+   [
+    8,
+    "ru"
+   ],
+   [
+    12,
+    "r"
+   ],
+   [
+    5,
+    "ux"
+   ],
+   [
+    5,
+    "ldx"
+   ],
+   [
+    5,
+    "l"
+   ],
+   [
+    18,
+    "lj"
+   ],
+   [
+    5,
+    "ldx"
+   ],
+   [
+    23,
+    "l"
+   ],
+   [
+    8,
+    "lx"
+   ],
+   [
+    8,
+    "l"
+   ],
+   [
+    8,
+    "lux"
+   ],
+   [
+    8,
+    "lu"
+   ],
+   [
+    5,
+    "ldx"
+   ],
+   [
+    5,
+    "l"
+   ],
+   [
+    18,
+    "lj"
+   ],
+   [
+    5,
+    "ldx"
+   ],
+   [
+    23,
+    "l"
+   ],
+   [
+    8,
+    "lx"
+   ],
+   [
+    8,
+    "l"
+   ]
+  ]
+ },
+ {
+  "room": {
+   "id": "bank-f89",
+   "name": "C3 · A Bell Above the Flowers",
+   "cols": 40,
+   "rows": 32,
+   "palette": "outskirts",
+   "movement": "survive-2",
+   "aim8": true,
+   "dashes": 1,
+   "lock": [
+    "strike",
+    "parry",
+    "portal"
+   ],
+   "exit": "left",
+   "hint": "Let the hammer settle, stand on its crown, then bounce off the needle into the bell.",
+   "sentinel": {
+    "mode": "hammer",
+    "range": [
+     84,
+     84
+    ],
+    "floor": 25,
+    "c": 4,
+    "r": 7,
+    "hold": 280,
+    "period": 370
+   },
+   "map": [
+    "G.......................................",
+    "G.......................................",
+    "G.......................................",
+    "G.......................................",
+    "G.......................................",
+    "G.......................................",
+    "G.......................................",
+    "G.......................................",
+    "########................................",
+    "########o...............................",
+    "#.......................................",
+    "#.......................................",
+    "#........o..............................",
+    "#.......................................",
+    "#.......................................",
+    "#.......................................",
+    "#...............^^......................",
+    "#...............##......................",
+    "#...........o...##......................",
+    "#...............##......................",
+    "#...............##......................",
+    "#...............##......................",
+    "#...............##......................",
+    "#...............##......................",
+    "#....P..........##......................",
+    "#########.......##......................",
+    "#########.......##......................",
+    "#...............##......................",
+    "#...............##......................",
+    "#.......................................",
+    "#.......................................",
+    "#......................................."
+   ],
+   "study": true
+  },
+  "bank": {
+   "side": "fractured",
+   "batch": 22,
+   "run": 12,
+   "difficulty": 5,
+   "role": "finale",
+   "worlds": [
+    1,
+    21
+   ],
+   "tags": [
+    "outskirts",
+    "cside",
+    "astra"
+   ],
+   "newMechanics": [],
+   "status": "route-proven",
+   "author": "Astra",
+   "collection": "csides",
+   "format": "cside-section",
+   "cside": 1,
+   "csideVariant": "c",
+   "csideTitle": "Whiteflower Spire",
+   "csideDescription": "Wallbounces climb a white-flower spire; the hammer opens the final ascent.",
+   "csideSection": 3,
+   "localOnly": true,
+   "acceptance": "candidate",
+   "needsReview": true,
+   "solution": "Let the hammer settle, stand on its crown, then bounce off the needle into the bell.",
+   "requiredEvents": [
+    "sentinel-ride",
+    "wallbounce",
+    "sentinel-bell"
+   ],
+   "requiredEventCounts": {},
+   "shortcutChecks": [
+    {
+     "name": "Run right without jumping",
+     "tape": [
+      [
+       360,
+       "r"
+      ]
+     ]
+    },
+    {
+     "name": "Run left without jumping",
+     "tape": [
+      [
+       360,
+       "l"
+      ]
+     ]
+    },
+    {
+     "name": "Ordinary jump and dash right",
+     "tape": [
+      [
+       18,
+       "rj"
+      ],
+      [
+       8,
+       "rux"
+      ],
+      [
+       300,
+       "r"
+      ]
+     ]
+    }
+   ],
+   "positiveChecks": [
+    {
+     "name": "Segment 1 +2 frames",
+     "tape": [
+      [
+       14,
+       "j"
+      ],
+      [
+       8,
+       "rux"
+      ],
+      [
+       8,
+       "ru"
+      ],
+      [
+       4,
+       "rj"
+      ],
+      [
+       7,
+       "r"
+      ],
+      [
+       8,
+       ""
+      ],
+      [
+       2,
+       "rx"
+      ],
+      [
+       5,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       20,
+       "lu"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       10,
+       "ux"
+      ],
+      [
+       16,
+       "l"
+      ],
+      [
+       5,
+       "ux"
+      ],
+      [
+       16,
+       "lj"
+      ],
+      [
+       5,
+       "lx"
+      ],
+      [
+       23,
+       "l"
+      ],
+      [
+       20,
+       "lu"
+      ]
+     ]
+    },
+    {
+     "name": "Segment 2 +2 frames",
+     "tape": [
+      [
+       12,
+       "j"
+      ],
+      [
+       10,
+       "rux"
+      ],
+      [
+       8,
+       "ru"
+      ],
+      [
+       4,
+       "rj"
+      ],
+      [
+       7,
+       "r"
+      ],
+      [
+       8,
+       ""
+      ],
+      [
+       2,
+       "rx"
+      ],
+      [
+       5,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       20,
+       "lu"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       10,
+       "ux"
+      ],
+      [
+       16,
+       "l"
+      ],
+      [
+       5,
+       "ux"
+      ],
+      [
+       16,
+       "lj"
+      ],
+      [
+       5,
+       "lx"
+      ],
+      [
+       23,
+       "l"
+      ],
+      [
+       20,
+       "lu"
+      ]
+     ]
+    }
+   ],
+   "revision": "616d5cafa8e6",
+   "source": "scripts/room-bank/fractured/89-bank-f89.json"
+  },
+  "tape": [
+   [
+    12,
+    "j"
+   ],
+   [
+    8,
+    "rux"
+   ],
+   [
+    8,
+    "ru"
+   ],
+   [
+    4,
+    "rj"
+   ],
+   [
+    7,
+    "r"
+   ],
+   [
+    8,
+    ""
+   ],
+   [
+    2,
+    "rx"
+   ],
+   [
+    5,
+    "r"
+   ],
+   [
+    18,
+    "rj"
+   ],
+   [
+    20,
+    "lu"
+   ],
+   [
+    12,
+    "rj"
+   ],
+   [
+    10,
+    "ux"
+   ],
+   [
+    16,
+    "l"
+   ],
+   [
+    5,
+    "ux"
+   ],
+   [
+    16,
+    "lj"
+   ],
+   [
+    5,
+    "lx"
+   ],
+   [
+    23,
+    "l"
+   ],
+   [
+    20,
+    "lu"
+   ]
+  ]
+ },
+ {
+  "room": {
+   "id": "bank-f90",
+   "name": "D1 · Under the White Canopy",
+   "cols": 48,
+   "rows": 24,
+   "palette": "outskirts",
+   "movement": "survive-2",
+   "aim8": true,
+   "dashes": 1,
+   "lock": [
+    "strike",
+    "parry",
+    "portal"
+   ],
+   "exit": "right",
+   "hint": "A down-diagonal dash-jump stays under the flowers. Touch the cracked strip, then launch again.",
+   "map": [
+    "#...............................................",
+    "#...............................................",
+    "#...............................................",
+    "#...............................................",
+    "#...............................................",
+    "#...............................................",
+    "#...............................................",
+    "#...............................................",
+    "#...............................................",
+    "#...............................................",
+    "#.........#########################.............",
+    "#.........#########################.............",
+    "#.........#########################.............",
+    "#.........vvvvvvvvvvvvvvvvvvvvvvvvv.............",
+    "#...............................................",
+    "#...............................................",
+    "#....................................o..........",
+    "#..P............................................",
+    "############................~~~~...........#####",
+    "############...............................#####",
+    "#..............................................#",
+    "#..............................................#",
+    "#..............................................#",
+    "#..............................................#"
+   ],
+   "study": true
+  },
+  "bank": {
+   "side": "fractured",
+   "batch": 22,
+   "run": 12,
+   "difficulty": 5,
+   "role": "technique chain",
+   "worlds": [
+    1,
+    21
+   ],
+   "tags": [
+    "outskirts",
+    "cside",
+    "astra"
+   ],
+   "newMechanics": [],
+   "status": "route-proven",
+   "author": "Astra",
+   "collection": "csides",
+   "format": "cside-section",
+   "cside": 1,
+   "csideVariant": "d",
+   "csideTitle": "Under the Watch",
+   "csideDescription": "Low launches skim beneath hanging flowers, ending on the Sentinel’s shoulders.",
+   "csideSection": 1,
+   "localOnly": true,
+   "acceptance": "candidate",
+   "needsReview": true,
+   "solution": "A down-diagonal dash-jump stays under the flowers. Touch the cracked strip, then launch again.",
+   "requiredEvents": [
+    "hyper",
+    "crumble-shake",
+    "refill"
+   ],
+   "requiredEventCounts": {},
+   "shortcutChecks": [
+    {
+     "name": "Run right without jumping",
+     "tape": [
+      [
+       360,
+       "r"
+      ]
+     ]
+    },
+    {
+     "name": "Run left without jumping",
+     "tape": [
+      [
+       360,
+       "l"
+      ]
+     ]
+    },
+    {
+     "name": "Ordinary jump and dash right",
+     "tape": [
+      [
+       18,
+       "rj"
+      ],
+      [
+       8,
+       "rux"
+      ],
+      [
+       300,
+       "r"
+      ]
+     ]
+    }
+   ],
+   "positiveChecks": [
+    {
+     "name": "Segment 7 +2 frames",
+     "tape": [
+      [
+       5,
+       "rdx"
+      ],
+      [
+       5,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       5,
+       "rx"
+      ],
+      [
+       5,
+       "r"
+      ],
+      [
+       20,
+       "rj"
+      ],
+      [
+       5,
+       "rdx"
+      ],
+      [
+       5,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "r"
+      ]
+     ]
+    },
+    {
+     "name": "Segment 8 +2 frames",
+     "tape": [
+      [
+       5,
+       "rdx"
+      ],
+      [
+       5,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "rj"
+      ],
+      [
+       5,
+       "rx"
+      ],
+      [
+       5,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       7,
+       "rdx"
+      ],
+      [
+       5,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "r"
+      ]
+     ]
+    }
+   ],
+   "revision": "53751bbceb10",
+   "source": "scripts/room-bank/fractured/90-bank-f90.json"
+  },
+  "tape": [
+   [
+    5,
+    "rdx"
+   ],
+   [
+    5,
+    "r"
+   ],
+   [
+    18,
+    "rj"
+   ],
+   [
+    12,
+    "rj"
+   ],
+   [
+    5,
+    "rx"
+   ],
+   [
+    5,
+    "r"
+   ],
+   [
+    18,
+    "rj"
+   ],
+   [
+    5,
+    "rdx"
+   ],
+   [
+    5,
+    "r"
+   ],
+   [
+    18,
+    "rj"
+   ],
+   [
+    12,
+    "r"
+   ]
+  ]
+ },
+ {
+  "room": {
+   "id": "bank-f91",
+   "name": "D2 · A Thread Through Stone",
+   "cols": 58,
+   "rows": 24,
+   "palette": "outskirts",
+   "movement": "survive-2",
+   "aim8": true,
+   "dashes": 1,
+   "lock": [
+    "strike",
+    "parry",
+    "portal"
+   ],
+   "exit": "right",
+   "hint": "Keep the launches low. Two narrow cracked landings break a single run into three commitments.",
+   "map": [
+    "#.........................................................",
+    "#.........................................................",
+    "#.........................................................",
+    "#.........................................................",
+    "#.........................................................",
+    "#.........................................................",
+    "#.........................................................",
+    "#.........................................................",
+    "#.........................................................",
+    "#........########################################.........",
+    "#........########################################.........",
+    "#........########################################.........",
+    "#........########################################.........",
+    "#........vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv.........",
+    "#.........................................................",
+    "#.........................................................",
+    "#...................................o.....................",
+    "#..P..................................................####",
+    "###########...............~~~...............~~~.......####",
+    "###########...........................................####",
+    "#........................................................#",
+    "#........................................................#",
+    "#........................................................#",
+    "#........................................................#"
+   ],
+   "study": true
+  },
+  "bank": {
+   "side": "fractured",
+   "batch": 22,
+   "run": 12,
+   "difficulty": 5,
+   "role": "technique chain",
+   "worlds": [
+    1,
+    21
+   ],
+   "tags": [
+    "outskirts",
+    "cside",
+    "astra"
+   ],
+   "newMechanics": [],
+   "status": "route-proven",
+   "author": "Astra",
+   "collection": "csides",
+   "format": "cside-section",
+   "cside": 1,
+   "csideVariant": "d",
+   "csideTitle": "Under the Watch",
+   "csideDescription": "Low launches skim beneath hanging flowers, ending on the Sentinel’s shoulders.",
+   "csideSection": 2,
+   "localOnly": true,
+   "acceptance": "candidate",
+   "needsReview": true,
+   "solution": "Keep the launches low. Two narrow cracked landings break a single run into three commitments.",
+   "requiredEvents": [
+    "hyper",
+    "crumble-shake",
+    "refill"
+   ],
+   "requiredEventCounts": {},
+   "shortcutChecks": [
+    {
+     "name": "Run right without jumping",
+     "tape": [
+      [
+       360,
+       "r"
+      ]
+     ]
+    },
+    {
+     "name": "Run left without jumping",
+     "tape": [
+      [
+       360,
+       "l"
+      ]
+     ]
+    },
+    {
+     "name": "Ordinary jump and dash right",
+     "tape": [
+      [
+       18,
+       "rj"
+      ],
+      [
+       8,
+       "rux"
+      ],
+      [
+       300,
+       "r"
+      ]
+     ]
+    }
+   ],
+   "positiveChecks": [
+    {
+     "name": "Segment 1 +2 frames",
+     "tape": [
+      [
+       7,
+       "rdx"
+      ],
+      [
+       5,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       8,
+       ""
+      ],
+      [
+       2,
+       "rx"
+      ],
+      [
+       23,
+       "r"
+      ],
+      [
+       5,
+       "rdx"
+      ],
+      [
+       2,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "ru"
+      ],
+      [
+       5,
+       "rdx"
+      ],
+      [
+       5,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ]
+     ]
+    },
+    {
+     "name": "Segment 2 +2 frames",
+     "tape": [
+      [
+       5,
+       "rdx"
+      ],
+      [
+       7,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       8,
+       ""
+      ],
+      [
+       2,
+       "rx"
+      ],
+      [
+       23,
+       "r"
+      ],
+      [
+       5,
+       "rdx"
+      ],
+      [
+       2,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       12,
+       "ru"
+      ],
+      [
+       5,
+       "rdx"
+      ],
+      [
+       5,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ]
+     ]
+    }
+   ],
+   "revision": "545f130e087b",
+   "source": "scripts/room-bank/fractured/91-bank-f91.json"
+  },
+  "tape": [
+   [
+    5,
+    "rdx"
+   ],
+   [
+    5,
+    "r"
+   ],
+   [
+    18,
+    "rj"
+   ],
+   [
+    8,
+    ""
+   ],
+   [
+    2,
+    "rx"
+   ],
+   [
+    23,
+    "r"
+   ],
+   [
+    5,
+    "rdx"
+   ],
+   [
+    2,
+    "r"
+   ],
+   [
+    18,
+    "rj"
+   ],
+   [
+    12,
+    "ru"
+   ],
+   [
+    5,
+    "rdx"
+   ],
+   [
+    5,
+    "r"
+   ],
+   [
+    18,
+    "rj"
+   ]
+  ]
+ },
+ {
+  "room": {
+   "id": "bank-f92",
+   "name": "D3 · Beneath the Sentinel",
+   "cols": 58,
+   "rows": 25,
+   "palette": "outskirts",
+   "movement": "survive-2",
+   "aim8": true,
+   "dashes": 1,
+   "lock": [
+    "strike",
+    "parry",
+    "portal"
+   ],
+   "exit": "right",
+   "hint": "Jump onto the stopped shoulders, then skim below the white flowers. Reach the bell before the Sentinel withdraws.",
+   "sentinel": {
+    "mode": "rush",
+    "from": 184,
+    "to": 144,
+    "y": 156,
+    "floor": 24,
+    "c": 54,
+    "r": 16,
+    "hold": 260,
+    "period": 350
+   },
+   "map": [
+    "#........................................................G",
+    "#........................................................G",
+    "#........................................................G",
+    "#........................................................G",
+    "#........................................................G",
+    "#........................................................G",
+    "#........................................................G",
+    "#........................................................G",
+    "#........................................................G",
+    "#........########################################........G",
+    "#........########################################........G",
+    "#........########################################........G",
+    "#........vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv........G",
+    "#........................................................G",
+    "#........................................................G",
+    "#........................................................G",
+    "#.........................................o..............G",
+    "#..P...............................................#######",
+    "###########....................~~~.................#######",
+    "###########........................................#######",
+    "#........................................................#",
+    "#........................................................#",
+    "#........................................................#",
+    "#........................................................#",
+    "#........................................................#"
+   ],
+   "study": true
+  },
+  "bank": {
+   "side": "fractured",
+   "batch": 22,
+   "run": 12,
+   "difficulty": 5,
+   "role": "finale",
+   "worlds": [
+    1,
+    21
+   ],
+   "tags": [
+    "outskirts",
+    "cside",
+    "astra"
+   ],
+   "newMechanics": [],
+   "status": "route-proven",
+   "author": "Astra",
+   "collection": "csides",
+   "format": "cside-section",
+   "cside": 1,
+   "csideVariant": "d",
+   "csideTitle": "Under the Watch",
+   "csideDescription": "Low launches skim beneath hanging flowers, ending on the Sentinel’s shoulders.",
+   "csideSection": 3,
+   "localOnly": true,
+   "acceptance": "candidate",
+   "needsReview": true,
+   "solution": "Jump onto the stopped shoulders, then skim below the white flowers. Reach the bell before the Sentinel withdraws.",
+   "requiredEvents": [
+    "sentinel-ride",
+    "hyper",
+    "sentinel-bell"
+   ],
+   "requiredEventCounts": {},
+   "shortcutChecks": [
+    {
+     "name": "Run right without jumping",
+     "tape": [
+      [
+       360,
+       "r"
+      ]
+     ]
+    },
+    {
+     "name": "Run left without jumping",
+     "tape": [
+      [
+       360,
+       "l"
+      ]
+     ]
+    },
+    {
+     "name": "Ordinary jump and dash right",
+     "tape": [
+      [
+       18,
+       "rj"
+      ],
+      [
+       8,
+       "rux"
+      ],
+      [
+       300,
+       "r"
+      ]
+     ]
+    }
+   ],
+   "positiveChecks": [
+    {
+     "name": "Segment 1 +2 frames",
+     "tape": [
+      [
+       7,
+       "rx"
+      ],
+      [
+       5,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       20,
+       "lu"
+      ],
+      [
+       2,
+       "rx"
+      ],
+      [
+       5,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       20,
+       "lu"
+      ],
+      [
+       5,
+       "rdx"
+      ],
+      [
+       5,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       2,
+       "rx"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       2,
+       "rdx"
+      ],
+      [
+       2,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ]
+     ]
+    },
+    {
+     "name": "Segment 2 +2 frames",
+     "tape": [
+      [
+       5,
+       "rx"
+      ],
+      [
+       7,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       20,
+       "lu"
+      ],
+      [
+       2,
+       "rx"
+      ],
+      [
+       5,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       20,
+       "lu"
+      ],
+      [
+       5,
+       "rdx"
+      ],
+      [
+       5,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       2,
+       "rx"
+      ],
+      [
+       18,
+       "rj"
+      ],
+      [
+       2,
+       "rdx"
+      ],
+      [
+       2,
+       "r"
+      ],
+      [
+       18,
+       "rj"
+      ]
+     ]
+    }
+   ],
+   "revision": "3062a174be76",
+   "source": "scripts/room-bank/fractured/92-bank-f92.json"
+  },
+  "tape": [
+   [
+    5,
+    "rx"
+   ],
+   [
+    5,
+    "r"
+   ],
+   [
+    18,
+    "rj"
+   ],
+   [
+    20,
+    "lu"
+   ],
+   [
+    2,
+    "rx"
+   ],
+   [
+    5,
+    "r"
+   ],
+   [
+    18,
+    "rj"
+   ],
+   [
+    20,
+    "lu"
+   ],
+   [
+    5,
+    "rdx"
+   ],
+   [
+    5,
+    "r"
+   ],
+   [
+    18,
+    "rj"
+   ],
+   [
+    2,
+    "rx"
+   ],
+   [
+    18,
+    "rj"
+   ],
+   [
+    2,
+    "rdx"
+   ],
+   [
+    2,
+    "r"
+   ],
+   [
+    18,
+    "rj"
+   ]
+  ]
  }
 ];
 const local=!root.location||root.BLADEFALL_ROOM_BANK||root.location.protocol==='file:'||['appassets.bladefall','localhost','127.0.0.1','[::1]'].includes(root.location.hostname)||root.location.hostname.endsWith('.localhost');
 const records=saved.filter(x=>!x.bank.localOnly||local);
-const B={version:'7.322.0',activeRun:11,defaultGroup:local?"csides":"superrooms",groups:["csides","superrooms","banked"].filter(g=>local||g!=='csides'),records};
+const B={version:'7.323.0',activeRun:12,defaultGroup:local?"csides":"superrooms",groups:["csides","superrooms","banked"].filter(g=>local||g!=='csides'),records};
 root.BladefallRoomBank=B;
 if(!root.BLADEFALL_ROOM_BANK&&!(root.location&&new URLSearchParams(root.location.search).get('pitch')==='bank'))return;
 const R=root.BladefallPrecisionRooms;

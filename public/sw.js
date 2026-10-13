@@ -1,7 +1,7 @@
 /* Bladefall service worker — offline play + fast reloads once installed.
    Bump CACHE_NAME on a deploy where you want returning players to pick up
    the change immediately instead of waiting on the network-first refresh. */
-const CACHE_NAME = 'bladefall-v490-cside-review';
+const CACHE_NAME = 'bladefall-v491-astra-csides';
 const CORE_ASSETS = [
   './bladefall-touch-layout.js?v=7.318.0',
   './bladefall-pcore-dev-superrooms-colossus.js?v=7.305.0',
@@ -133,8 +133,8 @@ const CORE_ASSETS = [
   './bladefall-pcore-dev-moving-hook-view.js?v=7.303.0',
   './bladefall-pcore-dev-recoil.js?v=7.303.0',
   './bladefall-pcore-dev-recoil-view.js?v=7.303.0',
-  './bladefall-room-bank.js?v=7.322.0',
-  './bladefall-room-bank-view.js?v=7.322.0',
+  './bladefall-room-bank.js?v=7.323.0',
+  './bladefall-room-bank-view.js?v=7.323.0',
   './bladefall-pcore-dev-step-relay.js?v=7.286.0',
   './bladefall-pcore-dev-step-relay-view.js?v=7.286.0',
   './bladefall-pcore-dev-vector-refill.js?v=7.286.0',

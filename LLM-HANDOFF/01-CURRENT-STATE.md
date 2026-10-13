@@ -1,3 +1,9 @@
+## 7.323.0 — Astra Outskirts C-side candidates (2026-10-13)
+
+Two independently authored three-section sets are in local/offline Extras → Room Bank → C-side candidates: C, Whiteflower Spire (F87–F89), and D, Under the Watch (F90–F92). C develops wallbounces into a hammer ascent; D develops low hyper launches into a shoulder launch. Each section has its own checkpoint/fire. Native mechanics only, real void, no hearts, no campaign import. Study mode holds the Sentinel until the first input, so observing the room does not shift the recorded start. Existing skip/review controls are retained pending the eventual campaign decision.
+
+All six have zero-death tapes, two saved timing variations each, basic bypass probes and settled-start checks. The full 144-room bank and existing finale checks pass. `node scripts/room-bank/astra-outskirts-check.mjs` also verifies the 138 prior source records are unchanged and the new records are excluded on public hosts. All difficulty ratings are author estimates. Browser access was explicitly declined by the browser permission system, so these new rooms have not had visual/live-browser verification. Human feel and difficulty review remain pending. Source records, not temporary authoring files, are authoritative.
+
 ## 7.322.0: First Outskirts C-side review candidates (2026-10-12)
 
 Isaac asked to start with only the Outskirts C-side and an alternate version, bank them locally, and import after playtesting. Two three-section candidates are ready in **Extras → Room Bank → C-side candidates**:
