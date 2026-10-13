@@ -1,3 +1,11 @@
+## 7.328.0: skins show only what is next; Trumpet Hollow joins the C-side bank group (2026-10-13)
+
+Isaac asked that the skins card spoil nothing ahead.
+- Garden & skins now shows the knight (drawn), earned skins, and only the next skin in each line as a silhouette with its condition: story (Ascendant → Fractured → Echo Self → Gilded → Prism) and hearts (Gardener 21 → Ember Wretch 41 → Heartbound 61). Starlit and the Haunt appear only once earned.
+- Ember Wretch is a heart reward only (no longer for beating Ember Colossus). Heart skins read "N hearts".
+- Previews are held still poses: the silhouette's foot no longer shakes. Card text sits beside the art instead of over it.
+- Claude's Trumpet Hollow rooms are now C-side candidate E in the Room Bank (`scripts/room-bank/fractured/bank-f120..f122.json`), listed with A–D, F–H. Check: 150 routes pass.
+
 ## 7.327.0 — two Sol 6.1 Outskirts C-side superrooms
 
 New local/offline Room Bank candidates G and H are shown first: The Bell’s Teeth (bank-f95, 320 × 64 tiles) and Turn of the Trumpet (bank-f96, 168 × 108). Each is one room with one spawn/fire and no intermediate checkpoints, optional routes or hearts. G is a rising traverse with three narrow takeoff perches, thorned needle ascents and an airborne undercut; H folds through stacked runs, two narrow perches, wallbounce turns and a rising aerial finish.

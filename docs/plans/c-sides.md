@@ -59,13 +59,13 @@ All of this is in `public/bladefall-climb-rewards.js`; the hooks are in `public/
 - Echo Self: your Echo and Vesper;
 - Gilded Sovereign: every heart, your Echo and Vesper;
 - Prism Paladin: everything plus every C-side;
-- Ember Wretch: Ember Colossus, or half of every heart;
+- Ember Wretch: 41 hearts (7.328: a heart reward only);
 - Starlit Regalia: the Abyss King;
 - the Haunt: the Fractured King;
-- Heartbound: three quarters of every heart;
-- the Gardener: a quarter of every heart.
+- Heartbound: 61 hearts;
+- the Gardener: 21 hearts.
 
-They are worn from the world map's Garden & skins card.
+They are worn from the world map's Garden & skins card. Since 7.328 the card shows only the next skin in each line (story: Ascendant → Fractured → Echo Self → Gilded → Prism; hearts: Gardener → Ember → Heartbound) as a silhouette with its condition, so nothing ahead is spoiled; Starlit and the Haunt appear only once earned.
 
 **State.** Saved in localStorage `bladefall.climb.rewards.v1` as `{perfect, csides, skin, seen}`.
 

@@ -1,7 +1,7 @@
 /* Bladefall service worker — offline play + fast reloads once installed.
    Bump CACHE_NAME on a deploy where you want returning players to pick up
    the change immediately instead of waiting on the network-first refresh. */
-const CACHE_NAME = 'bladefall-v495-sol-cside-superrooms';
+const CACHE_NAME = 'bladefall-v496-skins-next';
 const CORE_ASSETS = [
   './bladefall-touch-layout.js?v=7.318.0',
   './bladefall-pcore-dev-superrooms-colossus.js?v=7.305.0',
@@ -133,7 +133,7 @@ const CORE_ASSETS = [
   './bladefall-pcore-dev-moving-hook-view.js?v=7.303.0',
   './bladefall-pcore-dev-recoil.js?v=7.303.0',
   './bladefall-pcore-dev-recoil-view.js?v=7.303.0',
-  './bladefall-room-bank.js?v=7.327.0',
+  './bladefall-room-bank.js?v=7.328.0',
   './bladefall-room-bank-view.js?v=7.327.0',
   './bladefall-pcore-dev-step-relay.js?v=7.286.0',
   './bladefall-pcore-dev-step-relay-view.js?v=7.286.0',
@@ -147,7 +147,7 @@ const CORE_ASSETS = [
   './bladefall-climb-finale.js?v=7.317.0',
   './bladefall-climb-cside-tapes.js?v=7.325.0',
   './bladefall-climb-csides.js?v=7.325.0',
-  './bladefall-climb-rewards.js?v=7.325.0',
+  './bladefall-climb-rewards.js?v=7.328.0',
   './bladefall-climb-art.js?v=7.278.0',
   './bladefall-climb-atlas.js?v=7.304.0',
   './bladefall-climb-passages.js?v=7.308.2',

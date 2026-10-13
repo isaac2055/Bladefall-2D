@@ -147,7 +147,10 @@
     "bank-f90",
     "bank-f91",
     "bank-f92",
-    "bank-f94"
+    "bank-f94",
+    "bank-f120",
+    "bank-f121",
+    "bank-f122"
   ],
   "newRoomsPerSide": 5,
   "mechanicRequirements": [],
@@ -436,7 +439,10 @@
     "bank-f83",
     "bank-f84",
     "bank-f85",
-    "bank-f86"
+    "bank-f86",
+    "bank-f120",
+    "bank-f121",
+    "bank-f122"
   ],
   "reviewRecords": [],
   "defaultGroup": "csides",

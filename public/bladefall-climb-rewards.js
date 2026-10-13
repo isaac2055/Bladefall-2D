@@ -58,15 +58,15 @@ const SKINS=Object.freeze([
   pal:{helm:'#ffd75a',helmD:'#b8861c',visor:'#c0182a',body:'#e8b23a',trimOn:'#fff3b0',trimOff:'#9a7a2a',belt:'#7a1a24',hilt:'#fff8d8',legs:'#8a5a12',scarfOn:'#fff1a0',scarfOff:'#a08a4a'}},
  {id:'prism',name:'Prism Paladin',how:'Everything: every world and heart, your Echo, Vesper and every C-side',fx:'prism',
   pal:{helm:'#ffffff',helmD:'#c8d8e8',visor:'#3a4a6a',body:'#e8f0f8',trimOn:'prism',trimOff:'#a8b8c8',belt:'#8ad8ff',hilt:'#ffffff',legs:'#9aaabb',scarfOn:'prism',scarfOff:'#8a9aaa'}},
- {id:'ember',name:'Ember Wretch',how:'Beat Ember Colossus, or collect half of every heart',buy:.5,fx:'ember',
+ {id:'ember',name:'Ember Wretch',how:'',buy:.5,fx:'ember',
   pal:{helm:'#3a2a24',helmD:'#1a120e',visor:'#ffb030',body:'#2a1a14',trimOn:'#ff7a20',trimOff:'#6a3a1a',belt:'#ff5a10',hilt:'#ffd080',legs:'#140c08',scarfOn:'#ff9a30',scarfOff:'#5a3a2a'}},
  {id:'starlit',name:'Starlit Regalia',how:'Beat the Abyss King',fx:'stars',
   pal:{helm:'#e8ecff',helmD:'#8a94c8',visor:'#0a0c22',body:'#141a44',trimOn:'#bcd0ff',trimOff:'#3a4270',belt:'#c8d0ff',hilt:'#ffffff',legs:'#0a0e2a',scarfOn:'#9fd0ff',scarfOff:'#3a4a6a'}},
  {id:'haunt',name:'The Haunt',how:'Beat the Fractured King',fx:'ghost',
   pal:{helm:'#9adfb8',helmD:'#4a8a6a',visor:'#d8ffe0',body:'#5aa080',trimOn:'#c8ffd8',trimOff:'#4a6a5a',belt:'#2a4a3a',hilt:'#d8ffe0',legs:'#3a6a50',scarfOn:'#8affb8',scarfOff:'#3a5a4a'}},
- {id:'heartbound',name:'Heartbound',how:'Collect three quarters of every heart',buy:.75,
+ {id:'heartbound',name:'Heartbound',how:'',buy:.75,
   pal:{helm:'#fff4f8',helmD:'#d9a2b8',visor:'#3a1424',body:'#7a2a4a',trimOn:'#ff9fd0',trimOff:'#8a5a6a',belt:'#ffd36b',hilt:'#fff4f8',legs:'#3a1424',scarfOn:'#ff6fb5',scarfOff:'#7a5a68'}},
- {id:'gardener',name:'The Gardener',how:'Collect a quarter of every heart',buy:.25,
+ {id:'gardener',name:'The Gardener',how:'',buy:.25,
   pal:{helm:'#5a3e24',helmD:'#2e1e10',visor:'#e9dfc9',body:'#1a3a24',trimOn:'#e9dfc9',trimOff:'#4a3a2a',belt:'#2e1e10',hilt:'#c8e8a0',legs:'#120c06',scarfOn:'prism',scarfOff:'#5a4a32'}}]);
 
 /* ---------------------------------------------------------------- the reckoning */
@@ -89,7 +89,6 @@ function earned(id){
  if(id==='echo')return !!(fin().echo&&fin().vesper);
  if(id==='gilded')return heartsAll()&&!!(fin().echo&&fin().vesper);
  if(id==='prism')return heartsAll()&&!!(fin().echo&&fin().vesper)&&allBeaten(1,40)&&csidesAll();
- if(id==='ember')return beaten(11);
  if(id==='starlit')return beaten(14);
  if(id==='haunt')return beaten(34);
  return false;
@@ -156,22 +155,30 @@ function card(api,back){
  const rows=PLANTS.slice(1).map((p,i)=>{const k=i+1,h=halves(k),w1=CL()?.world(k)?.name||('World '+k),w2=CL()?.world(k+20)?.name||('World '+(k+20));
   const cw=(root.BladefallClimbCsides?.worlds||[]).find(w=>w.cside===k),canPlay=cw&&(open(k)||root.BladefallClimbFinale?.unlockedAll?.());
   return `<tr><td style="color:${p.col}">✿ ${p.name}</td><td title="perfect ${w1}">${h.root?'● '+p.root:'○ '+p.root}</td><td title="perfect ${w2}">${h.top?'● '+p.top:'○ '+p.top}</td><td>${canPlay?`<button class="pcBtn ghost" data-cside="${cw.n}" style="padding:2px 8px">${r.csides[k]?'C-side ✓ · again':'Play C-side'}</button>`:r.csides[k]?'C-side ✓':open(k)?'<span style="color:#ffd98a">C-side open · coming soon</span>':''}</td></tr>`;}).join('');
- const sk=SKINS.map(s=>`<button class="pcChoice" data-skin="${s.id}" style="text-align:left"><canvas width="96" height="40" data-skin-art="${s.id}" style="image-rendering:pixelated;width:144px;height:60px;float:left;margin-right:8px"></canvas><span class="pcName">${earned(s.id)?s.name:'???'}${r.skin===s.id&&earned(s.id)?' · worn':''}</span><span class="pcDesc">${s.how}${earned(s.id)?'':s.buy?` · ${canBuy(s.id)?'<b style="color:#ffd98a">open it now</b>':`opens at ♥ ${price(s)}`}`:' · locked'}</span></button>`).join('');
+ // (7.326) Only the skins you have, and the next one on each track: the story (base, Fractured, Echo, all hearts,
+ // everything) and the hearts (21, 41, 61). Starlit Regalia and the Haunt are surprises, shown once earned.
+ const STORY=['ascendant','fractured','echo','gilded','prism'],HEARTS=['gardener','ember','heartbound'];
+ const nextOf=list=>list.find(id=>!earned(id));
+ const visible=SKINS.filter(s=>earned(s.id)||s.id===nextOf(STORY)||s.id===nextOf(HEARTS));
+ const howOf=s=>s.buy?`${price(s)} hearts`:s.how;
+ const sk=visible.map(s=>`<button class="pcChoice" data-skin="${s.id}" style="text-align:left;display:flex;align-items:center;gap:10px"><canvas width="96" height="40" data-skin-art="${s.id}" style="image-rendering:pixelated;width:144px;height:60px;flex:none"></canvas><span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span class="pcName">${earned(s.id)?s.name:'???'}${r.skin===s.id&&earned(s.id)?' · worn':''}</span><span class="pcDesc">${howOf(s)}${earned(s.id)?'':canBuy(s.id)?' · <b style="color:#ffd98a">open it now</b>':''}</span></span></button>`).join('');
  api.showOverlay(`<div class="pcCard wide"><h1>Garden &amp; skins</h1>
   <p class="pcSub">Finish a world without dying on its road (optional routes don’t count) for half of its plant: the bottom from the base world, the top from its Fractured echo. Both halves open that world’s C-side.</p>
   <table class="pcTable" style="font-size:.85em"><tr><td></td><td>Bottom (base)</td><td>Top (Fractured)</td><td></td></tr>${rows}</table>
-  <h2 class="pcPart">Skins</h2><p class="pcSub">Each looks different with a dash and without. Some open with the hearts you have collected (♥ ${hearts().got} of ${hearts().total}; nothing is spent). Press a locked one five times for a glimpse.</p>
-  <div class="pcGrid">${sk}<button class="pcChoice" data-skin=""><span class="pcName">The knight${!r.skin?' · worn':''}</span><span class="pcDesc">The original</span></button></div>
+  <h2 class="pcPart">Skins</h2><p class="pcSub">With a dash · without. ♥ ${hearts().got} collected (never spent). Press a locked one five times for a glimpse.</p>
+  <div class="pcGrid"><button class="pcChoice" data-skin="" style="text-align:left;display:flex;align-items:center;gap:10px"><canvas width="96" height="40" data-skin-art="" style="image-rendering:pixelated;width:144px;height:60px;flex:none"></canvas><span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span class="pcName">The knight${!r.skin?' · worn':''}</span><span class="pcDesc">The original</span></span></button>${sk}</div>
   <button class="pcBtn" id="rwBack" data-back>Done</button></div>`);
- const peek={},paint=()=>{for(const cv of document.querySelectorAll('[data-skin-art]')){const id=cv.dataset.skinArt,s=SKINS.find(x=>x.id===id),b=cv.getContext('2d');b.clearRect(0,0,96,40);
-  const show=earned(id)||peek[id]>=5,sil=show?null:'#2a2f3a',t=performance.now()/16;
-  b.save();b.scale(3,3);sprite(b,4,1,1,'idle',s.pal,true,t,1,1,0,sil,s.fx);sprite(b,20,1,-1,'run',s.pal,false,t,1,1,(t/6)%4,sil,s.fx);b.restore();}};
+ const KNIGHT={helm:'#b9c2cf',helmD:'#7c8796',visor:'#1a1f28',body:'#2d4a78',trimOn:'#4a6aa0',trimOff:'#4a6aa0',belt:'#6b4e2a',hilt:'#c9ced8',legs:'#1c2130',scarfOn:'#ffb347',scarfOff:'#56708c'};
+ const peek={},paint=()=>{for(const cv of document.querySelectorAll('[data-skin-art]')){const id=cv.dataset.skinArt,s=id?SKINS.find(x=>x.id===id):{id:'',pal:KNIGHT},b=cv.getContext('2d');b.clearRect(0,0,96,40);
+  const show=!id||earned(id)||peek[id]>=5,sil=show?null:'#2a2f3a',t=performance.now()/16;
+  // two still poses (with a dash, without one): the stride is held, so nothing jitters
+  b.save();b.scale(3,3);sprite(b,4,1,1,'idle',s.pal,true,t,1,1,0,sil,s.fx);sprite(b,20,1,-1,'idle',s.pal,false,t,1,1,0,sil,s.fx);b.restore();}};
  paint();const timer=setInterval(()=>{if(!document.querySelector('[data-skin-art]')){clearInterval(timer);return;}paint();},100);
  document.querySelectorAll('[data-skin]').forEach(el=>el.onclick=()=>{const id=el.dataset.skin;
   if(!id){wear(null);card(api,back);return;}
   if(earned(id)){wear(id);card(api,back);return;}
   if(canBuy(id)){buy(id);wear(id);card(api,back);return;}   // (7.321) opened by the hearts you have collected (they are not spent)
-  peek[id]=(peek[id]||0)+1;if(peek[id]===5)el.querySelector('.pcDesc').textContent=SKINS.find(x=>x.id===id).how+' · a glimpse (earn it to wear it)';paint();});
+  peek[id]=(peek[id]||0)+1;if(peek[id]===5){const s=SKINS.find(x=>x.id===id);el.querySelector('.pcName').textContent=s.name;el.querySelector('.pcDesc').textContent=howOf(s)+' · a glimpse';}paint();});
  document.querySelectorAll('[data-cside]').forEach(el=>el.onclick=()=>{clearInterval(timer);root.BladefallPitchView?.climb?.startWorld(+el.dataset.cside);});
  document.getElementById('rwBack').onclick=()=>{clearInterval(timer);back();};
 }

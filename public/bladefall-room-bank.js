@@ -108581,6 +108581,464 @@ const saved=[
  },
  {
   "room": {
+   "movement": "survive-2",
+   "aim8": true,
+   "dashes": 1,
+   "study": true,
+   "dropThru": true,
+   "palette": "outskirts",
+   "id": "bank-f120",
+   "origin": "bank-f120",
+   "name": "The Falling Survey",
+   "cols": 48,
+   "rows": 23,
+   "map": [
+    "################################################",
+    "#..............................................#",
+    "#..............................................#",
+    "#..............................................#",
+    "#..............................................#",
+    "#..............................................#",
+    "#..............................................#",
+    "#..............................................#",
+    "#................................c.............#",
+    "#..................c...........................#",
+    "#..............................................#",
+    "#..............................................#",
+    "#..............................................#",
+    "#..................................o...........#",
+    "#............o.............o...................#",
+    "#..............................................#",
+    "#..............................................#",
+    "#..............................................G",
+    "#........~~~....~~~....~~~....~~~....~~~.......G",
+    "#..............................................G",
+    "#.P............................................G",
+    "######....................................######",
+    "######^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^######"
+   ],
+   "exit": "right",
+   "hint": "Light both stakes; the road crumbles behind you and the crystals are the only way up.",
+   "question": "Which stake do you light first?"
+  },
+  "bank": {
+   "side": "fractured",
+   "batch": 21,
+   "run": 11,
+   "collection": "csides",
+   "format": "cside-section",
+   "cside": 1,
+   "csideVariant": "e",
+   "csideSection": 1,
+   "localOnly": true,
+   "acceptance": "candidate",
+   "needsReview": true,
+   "status": "route-proven",
+   "author": "Claude",
+   "difficulty": 5,
+   "worlds": [
+    1,
+    21
+   ],
+   "tags": [
+    "outskirts",
+    "c-side",
+    "crumbling-ground",
+    "refill",
+    "stakes"
+   ],
+   "newMechanics": [],
+   "humanReview": "Candidate E (Trumpet Hollow, also playable as Survive world 101); awaiting Isaac’s playtest.",
+   "role": "Light two stakes over a road that crumbles behind you",
+   "solution": "Crumble, crystal and stake: both high stakes open the gate.",
+   "novelty": "Every Outskirts device at once over real void.",
+   "nearestExisting": "o1 stakes and crumbling road.",
+   "requiredEvents": [
+    "exit"
+   ],
+   "requiredEventCounts": {},
+   "revision": "456e705a58d1",
+   "source": "scripts/room-bank/fractured/bank-f120.json"
+  },
+  "tape": [
+   [
+    22,
+    "rj"
+   ],
+   [
+    1,
+    "rx"
+   ],
+   [
+    14,
+    "r"
+   ],
+   [
+    1,
+    "urx"
+   ],
+   [
+    22,
+    "ur"
+   ],
+   [
+    1,
+    "urx"
+   ],
+   [
+    22,
+    "ur"
+   ],
+   [
+    30,
+    "rj"
+   ],
+   [
+    1,
+    "ux"
+   ],
+   [
+    14,
+    "u"
+   ],
+   [
+    1,
+    "urx"
+   ],
+   [
+    14,
+    "ur"
+   ],
+   [
+    30,
+    "rj"
+   ],
+   [
+    1,
+    "drx"
+   ],
+   [
+    22,
+    "dr"
+   ],
+   [
+    1,
+    "rx"
+   ],
+   [
+    22,
+    "r"
+   ]
+  ]
+ },
+ {
+  "room": {
+   "movement": "survive-2",
+   "aim8": true,
+   "dashes": 1,
+   "study": true,
+   "dropThru": true,
+   "palette": "outskirts",
+   "id": "bank-f121",
+   "origin": "bank-f121",
+   "name": "Crystal Ladder",
+   "cols": 40,
+   "rows": 30,
+   "map": [
+    "########################################",
+    "#......................................#",
+    "#.......................................",
+    "#.......................................",
+    "#.......................................",
+    "#.......................................",
+    "#.........................o...##########",
+    "#......................................#",
+    "#......................................#",
+    "#.................o....................#",
+    "#......................................#",
+    "#......................................#",
+    "#.....................#>...............#",
+    "#.....................#>...............#",
+    "#..........o..........#>...............#",
+    "#.....................#>...............#",
+    "#.....................#>...............#",
+    "#.....................#>...............#",
+    "#.....................#>...............#",
+    "#................o....#>...............#",
+    "#.....................#>...............#",
+    "#.....................#>...............#",
+    "#.....................#>...............#",
+    "#.....................#>...............#",
+    "#..........o..........#>...............#",
+    "......................#>...............#",
+    "......................#>...............#",
+    ".......................................#",
+    "..P....................................#",
+    "#######^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#"
+   ],
+   "exit": "right",
+   "hint": "No ground between: dash from crystal to crystal, round the thorned spine.",
+   "question": "Which way does the next dash go?"
+  },
+  "bank": {
+   "side": "fractured",
+   "batch": 21,
+   "run": 11,
+   "collection": "csides",
+   "format": "cside-section",
+   "cside": 1,
+   "csideVariant": "e",
+   "csideSection": 2,
+   "localOnly": true,
+   "acceptance": "candidate",
+   "needsReview": true,
+   "status": "route-proven",
+   "author": "Claude",
+   "difficulty": 5,
+   "worlds": [
+    1,
+    21
+   ],
+   "tags": [
+    "outskirts",
+    "c-side",
+    "crumbling-ground",
+    "refill",
+    "stakes"
+   ],
+   "newMechanics": [],
+   "humanReview": "Candidate E (Trumpet Hollow, also playable as Survive world 101); awaiting Isaac’s playtest.",
+   "role": "No ground: crystal to crystal round a thorned spine",
+   "solution": "Dash from crystal to crystal, round the spine, onto the high ledge.",
+   "novelty": "Every Outskirts device at once over real void.",
+   "nearestExisting": "o1 stakes and crumbling road.",
+   "requiredEvents": [
+    "exit"
+   ],
+   "requiredEventCounts": {},
+   "revision": "2af8339e4fba",
+   "source": "scripts/room-bank/fractured/bank-f121.json"
+  },
+  "tape": [
+   [
+    1,
+    "drx"
+   ],
+   [
+    8,
+    "dr"
+   ],
+   [
+    30,
+    "rj"
+   ],
+   [
+    1,
+    "ux"
+   ],
+   [
+    14,
+    "u"
+   ],
+   [
+    22,
+    "rj"
+   ],
+   [
+    1,
+    "urx"
+   ],
+   [
+    14,
+    "ur"
+   ],
+   [
+    22,
+    "j"
+   ],
+   [
+    6,
+    "r"
+   ],
+   [
+    22,
+    "rj"
+   ],
+   [
+    1,
+    "urx"
+   ],
+   [
+    22,
+    "ur"
+   ],
+   [
+    1,
+    "rx"
+   ],
+   [
+    34,
+    "r"
+   ]
+  ]
+ },
+ {
+  "room": {
+   "movement": "survive-2",
+   "aim8": true,
+   "dashes": 1,
+   "study": true,
+   "dropThru": true,
+   "palette": "outskirts",
+   "id": "bank-f122",
+   "origin": "bank-f122",
+   "name": "The Last Stake",
+   "cols": 56,
+   "rows": 30,
+   "map": [
+    "########################################################",
+    "#......................................................#",
+    "#......................................................#",
+    "#......................................................#",
+    "#......................................................#",
+    "#......................................................#",
+    "#...................c..................................#",
+    "#......................................................#",
+    "#.............................................c........#",
+    "#......................................................#",
+    ".......................................................G",
+    ".......................................................G",
+    "................o...........................o..........G",
+    "..P...........................o........................G",
+    "######............................................######",
+    "#......................................................#",
+    "#......................................................#",
+    "#.........~~~~........................~~~~.............#",
+    "#......................................................#",
+    "#......................................................#",
+    "#.......................~~~~...........................#",
+    "#......................................................#",
+    "#...................................o..................#",
+    "#......................................................#",
+    "#...............................c......................#",
+    "#......................................................#",
+    "#......................................................#",
+    "#......................................................#",
+    "#......................................................#",
+    "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#"
+   ],
+   "exit": "right",
+   "hint": "Three stakes, high, low and far: every one opens the gate home.",
+   "question": "Where does the low stake leave you?"
+  },
+  "bank": {
+   "side": "fractured",
+   "batch": 21,
+   "run": 11,
+   "collection": "csides",
+   "format": "cside-section",
+   "cside": 1,
+   "csideVariant": "e",
+   "csideSection": 3,
+   "localOnly": true,
+   "acceptance": "candidate",
+   "needsReview": true,
+   "status": "route-proven",
+   "author": "Claude",
+   "difficulty": 5,
+   "worlds": [
+    1,
+    21
+   ],
+   "tags": [
+    "outskirts",
+    "c-side",
+    "crumbling-ground",
+    "refill",
+    "stakes"
+   ],
+   "newMechanics": [],
+   "humanReview": "Candidate E (Trumpet Hollow, also playable as Survive world 101); awaiting Isaac’s playtest.",
+   "role": "Three stakes, high, low and far",
+   "solution": "Light the high stake, drop to the low one over the thorns, climb out by its crystal, light the far one, through the gate.",
+   "novelty": "Every Outskirts device at once over real void.",
+   "nearestExisting": "o1 stakes and crumbling road.",
+   "requiredEvents": [
+    "exit"
+   ],
+   "requiredEventCounts": {},
+   "revision": "555a307b7159",
+   "source": "scripts/room-bank/fractured/bank-f122.json"
+  },
+  "tape": [
+   [
+    1,
+    "rx"
+   ],
+   [
+    8,
+    "r"
+   ],
+   [
+    30,
+    "rj"
+   ],
+   [
+    1,
+    "urx"
+   ],
+   [
+    22,
+    "ur"
+   ],
+   [
+    50,
+    "drg"
+   ],
+   [
+    1,
+    "urx"
+   ],
+   [
+    22,
+    "ur"
+   ],
+   [
+    1,
+    "ux"
+   ],
+   [
+    14,
+    "u"
+   ],
+   [
+    12,
+    "r"
+   ],
+   [
+    22,
+    "rj"
+   ],
+   [
+    1,
+    "urx"
+   ],
+   [
+    22,
+    "ur"
+   ],
+   [
+    1,
+    "rx"
+   ],
+   [
+    34,
+    "r"
+   ]
+  ]
+ },
+ {
+  "room": {
    "id": "bank-f87",
    "name": "C1 · The Whiteflower Needle",
    "cols": 40,
