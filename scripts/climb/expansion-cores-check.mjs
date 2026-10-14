@@ -25,10 +25,10 @@ for(const id of ids){
  if(id===111){
   assert.deepEqual(authored.verification.stages,x.verification.stages,'Cliffs stage/source parity');
   // each save turns the cliff back; every blue ledge stood on was reached by a dash that turned it
-  const g=Core.createGame([x.room]);let blueLandings=0;
-  for(const k of expand(x.tape)){Core.step(g,keysToInput(k));for(const e of g.events){if(e.type==='core-checkpoint')assert.equal(g.phase,0,'a save turns the cliff back');if(e.type==='land'){const c=Math.floor((g.p.x+4)/8),r=Math.floor((g.p.y+g.p.h)/8);if(x.room.map[r]?.[c]==='B')blueLandings++;}}g.events.length=0;}
-  assert.ok(blueLandings>=8,'route stands on at least eight blue ledges');
-  for(const[label,room]of [['without rings',{...x.room,map:x.room.map.map(row=>row.replaceAll('O','.'))}],['without blue ledges',{...x.room,map:x.room.map.map(row=>row.replaceAll('B','.'))}]]){const r=runRoom([room],0,x.tape);assert.ok(!r.exited&&r.deaths>0,label);probes.push({name:label,exited:r.exited,deaths:r.deaths});}
+  const g=Core.createGame([x.room]),blue=new Set();
+  for(const k of expand(x.tape)){Core.step(g,keysToInput(k));for(const e of g.events)if(e.type==='core-checkpoint')assert.equal(g.phase,0,'a save turns the cliff back');const c=Math.floor((g.p.x+4)/8),r=Math.floor((g.p.y+g.p.h)/8);if(g.p.onGround&&x.room.map[r]?.[c]==='B'){let c0=c;while(x.room.map[r][c0-1]==='B')c0--;blue.add(r+','+c0);}g.events.length=0;}
+  const blueLandings=blue.size;assert.ok(blueLandings>=8,'route stands on at least eight distinct blue ledges');
+  for(const[label,room]of [['without rings',{...x.room,map:x.room.map.map(row=>row.replaceAll('O','.'))}],['without blue ledges',{...x.room,map:x.room.map.map(row=>row.replaceAll('B','.'))}],['without gold',{...x.room,map:x.room.map.map(row=>row.replaceAll('A','.'))}],['without seeds',{...x.room,map:x.room.map.map(row=>row.replaceAll('b','.'))}],['without decks',{...x.room,decks:[]}]]){const r=runRoom([room],0,x.tape);assert.ok(!r.exited&&r.deaths>0,label);probes.push({name:label,exited:r.exited,deaths:r.deaths});}
   worldInteractions={blueLandings,hooks:counts.hook,turns:counts.phase};
  }
  if(id===113){
@@ -36,7 +36,7 @@ for(const id of ids){
   const g=Core.createGame([x.room]),Wt=globalThis.BladefallPrecisionWatch;let shelteredFrames=0;
   for(const k of expand(x.tape)){Core.step(g,keysToInput(k));const p=g.p,pts=[[p.x+4,p.y+1],[p.x+4,p.y+5],[p.x+4,p.y+10]];if(Wt.hidden(g,p)&&g.lights.some(l=>pts.some(([px,py])=>Wt.inCone(g,l,px,py))))shelteredFrames++;g.events.length=0;}
   assert.ok(shelteredFrames>=6,'the route shelters in smoke while a lamp looks at it');
-  for(const[label,room]of [['without smoke',{...x.room,map:x.room.map.map(row=>row.replaceAll('S','.'))}]]){const r=runRoom([room],0,x.tape);assert.ok(!r.exited&&r.deaths>0,label);probes.push({name:label,exited:r.exited,deaths:r.deaths});}
+  for(const[label,room]of [['without smoke',{...x.room,map:x.room.map.map(row=>row.replaceAll('S','.'))}],['without carriers',{...x.room,map:x.room.map.map(row=>row.replaceAll('Z','.'))}],['without seeds',{...x.room,map:x.room.map.map(row=>row.replaceAll('b','.'))}]]){const r=runRoom([room],0,x.tape);assert.ok(!r.exited&&r.deaths>0,label);probes.push({name:label,exited:r.exited,deaths:r.deaths});}
   worldInteractions={shelteredFrames,lamps:x.room.lights.length,glimpses:counts.glimpse||0};
  }
  if(id===114){
@@ -59,7 +59,7 @@ for(const id of ids){
   const g=Core.createGame([x.room]);let swimFrames=0,rideFrames=0;
   for(const k of expand(x.tape)){Core.step(g,keysToInput(k));if(g.p.swimming)swimFrames++;if(g.p.onGround&&g.ents.some(e=>e.type==='float'&&e.y<e.homeY&&Math.abs(g.p.y+g.p.h-e.y)<1&&g.p.x+g.p.w>e.x&&g.p.x<e.x+e.w))rideFrames++;g.events.length=0;}
   assert.ok(swimFrames>=60,'the route swims the drowned thorn fields');assert.ok(rideFrames>=60,'the route rides floats on a rising sea');
-  for(const[label,room]of [['without the tides',{...x.room,tides:[]}]]){const r=runRoom([room],0,x.tape);assert.ok(!r.exited&&r.deaths>0,label);probes.push({name:label,exited:r.exited,deaths:r.deaths});}
+  for(const[label,room]of [['without the tides',{...x.room,tides:[]}],['without currents',{...x.room,currents:[]}],['without floats',{...x.room,map:x.room.map.map(row=>row.replaceAll('F','.'))}],['without seeds',{...x.room,map:x.room.map.map(row=>row.replaceAll('b','.'))}]]){const r=runRoom([room],0,x.tape);assert.ok(!r.exited&&r.deaths>0,label);probes.push({name:label,exited:r.exited,deaths:r.deaths});}
   worldInteractions={swimFrames,rideFrames,tides:x.room.tides.length};
  }
  let deeplineInteractions;

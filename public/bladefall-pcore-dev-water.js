@@ -61,14 +61,15 @@ function surfaceY(g,t=g.water.tide){
  return Math.round(lowY+(highY-lowY)*f);
 }
 /* The sea over column c, if any (the first tide whose columns hold it). */
-function tideAt(g,c){const w=g.water;if(!w)return null;for(const t of w.tides||(w.tide?[w.tide]:[]))if(c>=t.c0&&c<=t.c1)return t;return null;}
-function tideSafe(g,c,r){const t=tideAt(g,c);return !!t&&r*TILE>=surfaceY(g,t);}
+// (7.337, opt-in) a tide with r0/r1 rows covers only those rows, so seas can stack in the same columns
+function tideAt(g,c,r){const w=g.water;if(!w)return null;for(const t of w.tides||(w.tide?[w.tide]:[]))if(c>=t.c0&&c<=t.c1&&(r==null||t.r0==null||r>=t.r0&&r<=t.r1))return t;return null;}
+function tideSafe(g,c,r){const t=tideAt(g,c,r);return !!t&&r*TILE>=surfaceY(g,t);}
 function inWater(g,x,y){
  const w=g.water,COLS=g.room.cols,ROWS=g.room.rows;if(!w)return false;
  const c=Math.floor(x/TILE),r=Math.floor(y/TILE);if(c<0||c>=COLS||r<0||r>=ROWS)return false;
  const i=r*COLS+c;
  if(w.cells[i]&&g.room.grid[i]!==C().SOLID)return true;
- const t=tideAt(g,c);if(t&&y>=surfaceY(g,t)&&g.room.grid[i]!==C().SOLID)return true;
+ const t=tideAt(g,c,r);if(t&&y>=surfaceY(g,t)&&g.room.grid[i]!==C().SOLID)return true;
  return false;
 }
 function currentAt(g,x,y,w,h){let dx=0,dy=0;for(const z of g.water.currents)if(overlap(x,y,w,h,z.x,z.y,z.w,z.h)){dx+=z.dx;dy+=z.dy;}return [dx,dy];}
@@ -98,7 +99,7 @@ function before(g,inp){
  if(w.tide&&g.awake){
   const tides=w.tides||[w.tide];
   for(const t of tides){const before=surfaceY(g,t);t.clock++;if(before!==surfaceY(g,t))g.tideMoved=true;}
-  for(const e of g.ents){if(e.type!=='float')continue;const t=tideAt(g,Math.floor((e.x+e.w/2)/TILE));const want=t?Math.min(e.homeY,surfaceY(g,t)-e.h):e.homeY;if(want!==e.y)Core.moveSolid(g,e,0,want-e.y-e.remY);}
+  for(const e of g.ents){if(e.type!=='float')continue;const t=tideAt(g,Math.floor((e.x+e.w/2)/TILE),Math.floor((e.homeY+e.h-1)/TILE));const want=t?Math.min(e.homeY,surfaceY(g,t)-e.h):e.homeY;if(want!==e.y)Core.moveSolid(g,e,0,want-e.y-e.remY);}
  }
  // Frozen pools: count down; cells waiting on the knight or the lantern freeze once they are clear.
  for(const pool of w.pools){

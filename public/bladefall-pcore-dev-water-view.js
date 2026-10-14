@@ -28,7 +28,7 @@ function drawBack(b,g){
  // tide (7.336: every sea in the room)
  for(const tide of w.tides||(w.tide?[w.tide]:[])){
   const sy=W.surfaceY(g,tide),x0=tide.c0*TILE,x1=(tide.c1+1)*TILE;
-  for(let r=Math.floor(sy/TILE);r<ROWS;r++)for(let c=tide.c0;c<=tide.c1;c++){
+  for(let r=Math.max(Math.floor(sy/TILE),tide.r0??0);r<=Math.min(ROWS-1,tide.r1??ROWS-1);r++)for(let c=tide.c0;c<=tide.c1;c++){
    if(room.grid[r*COLS+c]===1)continue;const y0=Math.max(r*TILE,sy);b.globalAlpha=.42;px(b,c*TILE,y0,8,(r+1)*TILE-y0,'#23628f');b.globalAlpha=1;}
   for(let x=x0;x<x1;x+=2){const k=Math.round(Math.sin((t+x)/9));px(b,x,sy+k,2,1,'#a8dcff');}
   // Optional local sight glass: shows the same tide when the basin is below the camera.
