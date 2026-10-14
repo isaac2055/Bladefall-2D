@@ -44,6 +44,12 @@ const WK=Object.freeze({w:14,h:22,tell:30,speed:200,back:270,daze:40,crash:170,r
  chainEvery:70,chainTell:26,chainSpeed:120,bolt:6,shoveR:72,shoveX:240,shoveY:-150,drop:5});
 const overlap=(ax,ay,aw,ah,bx,by,bw,bh)=>ax<bx+bw&&ax+aw>bx&&ay<by+bh&&ay+ah>by;
 const cx=o=>o.x+o.w/2;
+const live=p=>p.state!=='dead'&&p.state!=='respawn';
+function target(g,w){
+ if(!g.players)return g.p;
+ const players=g.players.filter(live).sort((a,b)=>Math.abs(cx(a)-cx(w))-Math.abs(cx(b)-cx(w)));
+ return players.find(p=>inLine(g,w,p))||players.find(p=>w.d.chain&&above(w,p))||players[0]||g.p;
+}
 
 function reset(g){
  const d=g.room.def.warden;g.warden=null;
@@ -121,7 +127,7 @@ const behind=(w,p)=>Math.sign(cx(p)-cx(w))===-w.dir&&p.y+p.h>w.y-8&&p.y<w.y+w.h+
 function syncBody(g,w){
  const b=w.body;b.x=w.x;b.y=w.y;
  const want=standing(w)&&w.state!=='kneel';
- if(want&&!b.solid){const p=g.p;if(!overlap(p.x,p.y,p.w,p.h,w.x,w.y,w.w,w.h))b.solid=true;}
+ if(want&&!b.solid){if(!(g.players||[g.p]).some(p=>live(p)&&overlap(p.x,p.y,p.w,p.h,w.x,w.y,w.w,w.h)))b.solid=true;}
  else if(!want)b.solid=false;
 }
 function turnBack(g,w,how){
@@ -130,7 +136,7 @@ function turnBack(g,w,how){
 
 function before(g){
  const w=g.warden;if(!w||w.gone||!g.awake)return;
- const Core=C(),p=g.p,alive=p.state!=='dead'&&p.state!=='respawn';
+ const Core=C(),p=target(g,w),alive=live(p);
  w.t++;
  // He keeps to his floor.
  if(w.state!=='leave'){w.vy=Math.min(240,w.vy+Core.K.gravity*Core.DT);Core.moveY(g,w,w.vy*Core.DT,()=>{w.vy=0;},w.body);}
@@ -162,10 +168,15 @@ function before(g){
  }else if(w.state==='crash'){
   if(w.t>=WK.crash){w.state='idle';w.cool=WK.cool;}
  }else if(w.state==='rise'){
-  if(w.t===1&&w.d.shove&&alive&&Math.abs(cx(p)-cx(w))<WK.shoveR&&p.y+p.h>w.y-8&&p.y<w.y+w.h){
-   // His shield thrown out as he rises: the knight is knocked away, unharmed.
-   const dir=cx(p)<cx(w)?-1:1;p.vx=dir*WK.shoveX;p.vy=WK.shoveY;p.varJump=0;p.dashTimer=0;if(p.state==='climb'||p.state==='dash')p.state='normal';
-   p.coast=true;g.freeze=Math.max(g.freeze,4);Core.emit(g,'warden-shove',{x:cx(w)+dir*8,y:w.y+w.h/2,dir,dev:true});
+  if(w.t===1&&w.d.shove){
+   const actor=g.coopActor;
+   try{for(const [i,knight]of (g.players||[g.p]).entries()){
+    if(!live(knight)||Math.abs(cx(knight)-cx(w))>=WK.shoveR||knight.y+knight.h<=w.y-8||knight.y>=w.y+w.h)continue;
+    if(g.players)g.coopActor=i;
+    const dir=cx(knight)<cx(w)?-1:1;knight.vx=dir*WK.shoveX;knight.vy=WK.shoveY;knight.varJump=0;knight.dashTimer=0;
+    if(knight.state==='climb'||knight.state==='dash')knight.state='normal';
+    knight.coast=true;g.freeze=Math.max(g.freeze,4);Core.emit(g,'warden-shove',{x:cx(w)+dir*8,y:w.y+w.h/2,dir,dev:true});
+   }}finally{g.coopActor=actor;}
   }
   if(w.t===2&&w.d.call&&!w.called&&w.wounds>=(w.d.call.at||1))callJailer(g,w);
   if(w.t>=WK.rise){w.state='idle';w.cool=WK.cool;}
@@ -179,17 +190,17 @@ function before(g){
  syncBody(g,w);
 }
 
-function after(g){
+function settle(g,phase='all'){
  const w=g.warden;if(!w||w.gone||!g.awake)return;
  const Core=C(),p=g.p;
- if(w.d.chain&&g.bolts){
+ if((phase==='all'||phase==='world')&&w.d.chain&&g.bolts){
   // A shackle turned back into him rings off his shield.
   for(const b of g.bolts)if(b.alive&&b.friendly&&b.from==='warden'&&overlap(b.x,b.y,b.w,b.h,w.x,w.y,w.w,w.h)){b.alive=false;Core.emit(g,'guard-block',{x:b.x+3,y:b.y+3,warden:true});}
   g.bolts=g.bolts.filter(b=>b.alive);
  }
- if(p.state==='dead'||p.state==='respawn')return;
+ if(phase==='world'||!live(p))return;
  // The blade.
- if(p.strikeTimer>0&&!p.strikeHit.has('warden')&&w.state!=='leave'&&w.state!=='kneel'){
+ if(phase!=='hurt'&&p.strikeTimer>0&&!p.strikeHit.has('warden')&&w.state!=='leave'&&w.state!=='kneel'){
   const sb=Core.strikeBox(p),d=p.strikeDir;
   if(overlap(...sb,w.x-1,w.y-1,w.w+2,w.h+2)){
    p.strikeHit.add('warden');
@@ -211,17 +222,26 @@ function after(g){
  if(w.state==='rush'){
   const front=w.dir>0?[w.x+w.w-4,w.y,6,w.h]:[w.x-2,w.y,6,w.h];
   const ward=[p.x-5,p.y-5,p.w+10,p.h+10];
-  if(p.parryTimer>0&&Math.sign(cx(p)-cx(w))===w.dir&&overlap(...ward,...front)&&(!w.d.reach||Math.abs(w.x-(w.rushX0??w.x))>=w.d.reach)){
-   Core.parrySuccess(g,p);Core.emit(g,'parry',{x:cx(w)+w.dir*8,y:w.y+w.h/2,warden:true});turnBack(g,w,'parry');w.body.solid=false;return;
+  if(phase!=='hurt'&&p.parryTimer>0&&Math.sign(cx(p)-cx(w))===w.dir&&overlap(...ward,...front)&&(!w.d.reach||Math.abs(w.x-(w.rushX0??w.x))>=w.d.reach)){
+   Core.parrySuccess(g,p);Core.emit(g,'parry',{x:cx(w)+w.dir*8,y:w.y+w.h/2,warden:true});turnBack(g,w,'parry');w.body.solid=false;return true;
   }
-  if(overlap(p.x,p.y,p.w,9,w.x,w.y,w.w,w.h)){Core.kill(g,p,'warden');return;}
+  if(phase!=='defend'&&overlap(p.x,p.y,p.w,9,w.x,w.y,w.w,w.h)){Core.kill(g,p,'warden');return;}
  }else if(w.state==='back'){
-  if(overlap(p.x,p.y,p.w,9,w.x,w.y,w.w,w.h)){Core.kill(g,p,'warden');return;}
+  if(phase!=='defend'&&overlap(p.x,p.y,p.w,9,w.x,w.y,w.w,w.h)){Core.kill(g,p,'warden');return;}
  }
+}
+function after(g){if(!g.players)settle(g);}
+function afterPlayers(g){
+ const p=g.p,actor=g.coopActor,parried=new Set();
+ try{settle(g,'world');for(const phase of ['defend','hurt'])for(const [i,knight]of g.players.entries()){
+  if(phase==='hurt'&&parried.has(knight))continue;
+  g.p=knight;g.coopActor=i;if(settle(g,phase))parried.add(knight);
+ }}
+ finally{g.p=p;g.coopActor=actor;}
 }
 function gone(g,w,kneel){w.gone=!kneel;if(kneel)w.kneel=true;w.body.solid=false;C().emit(g,'warden-gone',{x:cx(w),y:w.y+w.h/2,how:kneel?'kneel':w.d.leave||'left'});if(!kneel)w.state='gone';}
 function gateHold(g){const w=g.warden;return !!(w&&!w.gone&&!w.kneel&&w.state!=='leave');}
 
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-gaol',reset,before,after,gateHold});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-gaol',reset,before,after,afterPlayers,gateHold});
 root.BladefallRbrGaol=Object.freeze({WK});
 })(typeof window!=='undefined'?window:globalThis);

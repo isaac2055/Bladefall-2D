@@ -1,5 +1,5 @@
 {
-  "version": "7.334.0",
+  "version": "7.335.0",
   "method": "Native simulation, saved-pose part routes, persistence and DOM entry/completion hooks; no live browser verification",
   "ordinarySourcesUnchanged": 132,
   "cores": [
@@ -178,6 +178,96 @@
         262,
         436,
         485
+      ],
+      "deaths": 0,
+      "checkpointDeathReset": true,
+      "durableRestore": true,
+      "ordinaryProbesStopped": 2
+    },
+    {
+      "world": 111,
+      "name": "The Iron Answer",
+      "draft": true,
+      "wholeFrames": 1809,
+      "partFrames": [
+        199,
+        486,
+        302,
+        298,
+        235,
+        338
+      ],
+      "deaths": 0,
+      "checkpointDeathReset": true,
+      "durableRestore": true,
+      "ordinaryProbesStopped": 2
+    },
+    {
+      "world": 112,
+      "name": "The Weight Above",
+      "draft": true,
+      "wholeFrames": 1640,
+      "partFrames": [
+        214,
+        265,
+        232,
+        324,
+        279,
+        368
+      ],
+      "deaths": 0,
+      "checkpointDeathReset": true,
+      "durableRestore": true,
+      "ordinaryProbesStopped": 2
+    },
+    {
+      "world": 113,
+      "name": "What the Wall Leaves",
+      "draft": true,
+      "wholeFrames": 1962,
+      "partFrames": [
+        324,
+        386,
+        340,
+        366,
+        246,
+        303
+      ],
+      "deaths": 0,
+      "checkpointDeathReset": true,
+      "durableRestore": true,
+      "ordinaryProbesStopped": 2
+    },
+    {
+      "world": 114,
+      "name": "The Place You Left",
+      "draft": true,
+      "wholeFrames": 1404,
+      "partFrames": [
+        195,
+        298,
+        238,
+        192,
+        159,
+        341
+      ],
+      "deaths": 0,
+      "checkpointDeathReset": true,
+      "durableRestore": true,
+      "ordinaryProbesStopped": 2
+    },
+    {
+      "world": 115,
+      "name": "No Track Beyond",
+      "draft": true,
+      "wholeFrames": 1449,
+      "partFrames": [
+        155,
+        205,
+        265,
+        264,
+        364,
+        246
       ],
       "deaths": 0,
       "checkpointDeathReset": true,

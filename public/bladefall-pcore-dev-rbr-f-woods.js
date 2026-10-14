@@ -24,8 +24,9 @@ function before(g){const w=g.resinWind;if(w){if(g.awake)w.t++;w.phase=Math.floor
 function after(g){const o=g.oathRoot,p=g.p;
  if(o&&!o.released&&p.state!=='dead'&&p.state!=='respawn'&&p.onGround&&p.y+p.h===o.r*8&&p.x+p.w>o.c*8&&p.x<(o.c+2)*8){o.released=true;C().emit(g,'oath-roots',{x:o.c*8+8,y:o.r*8});}
  const L=g.rootLash,Core=C();if(!L||p.state==='dead'||p.state==='respawn')return;
- for(const l of L.lashes)if(l.live&&Core.overlap(p.x,p.y,p.w,9,l.c0*8,l.r0*8,(l.c1-l.c0+1)*8,(l.r1-l.r0+1)*8)){Core.kill(g,p,'root-lash');return;}
+ if(!g.players)for(const l of L.lashes)if(l.live&&Core.overlap(p.x,p.y,p.w,9,l.c0*8,l.r0*8,(l.c1-l.c0+1)*8,(l.r1-l.r0+1)*8)){Core.kill(g,p,'root-lash');return;}
  const c=L.crown;if(c&&!c.cut&&p.strikeTimer>0){const sb=Core.strikeBox(p);if(Core.overlap(sb[0],sb[1],sb[2],sb[3],c.c*8-2,c.r*8-2,20,20)){c.cut=true;g.freeze=Math.max(g.freeze,6);Core.emit(g,'root-cut',{x:c.c*8+8,y:c.r*8+8});for(const l of L.lashes)lashState(L,l);}}
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-f-woods',reset,input,before,after,gateHold:g=>!!(g.oathRoot&&!g.oathRoot.taken)||!!(g.rootLash&&g.rootLash.crown&&!g.rootLash.crown.cut)});
+function afterPlayers(g){const L=g.rootLash;if(!L)return;const actor=g.coopActor;try{for(const [i,p]of g.players.entries()){if(p.state==='dead'||p.state==='respawn')continue;g.coopActor=i;for(const l of L.lashes)if(l.live&&C().overlap(p.x,p.y,p.w,9,l.c0*8,l.r0*8,(l.c1-l.c0+1)*8,(l.r1-l.r0+1)*8)){C().kill(g,p,'root-lash');break;}}}finally{g.coopActor=actor;}}
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-f-woods',reset,input,before,after,afterPlayer:after,afterPlayers,gateHold:g=>!!(g.oathRoot&&!g.oathRoot.taken)||!!(g.rootLash&&g.rootLash.crown&&!g.rootLash.crown.cut)});
 })(typeof window!=='undefined'?window:globalThis);

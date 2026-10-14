@@ -1,0 +1,65 @@
+{
+  "room": "bank-f107",
+  "status": "Native route verified; integrated as a playable Core draft awaiting player review",
+  "whole": {
+    "frames": 1640,
+    "deaths": 0,
+    "eventCounts": {
+      "crumble-shake": 10,
+      "dash": 33,
+      "ultra": 9,
+      "refill-dash": 32,
+      "hyper": 9,
+      "gravity": 12,
+      "crumble": 9,
+      "land": 14,
+      "super": 6,
+      "crumble-back": 8,
+      "grab": 1,
+      "climbhop": 1,
+      "core-checkpoint": 5,
+      "strike": 5,
+      "pogo-loft": 4,
+      "pod": 4,
+      "jump": 1,
+      "exit": 1
+    },
+    "minimumStamina": 99.6
+  },
+  "freshParts": [
+    214,
+    265,
+    232,
+    324,
+    279,
+    368
+  ],
+  "probes": [
+    {
+      "name": "hold right",
+      "exited": false,
+      "deaths": 20
+    },
+    {
+      "name": "jump/dash right",
+      "exited": false,
+      "deaths": 23
+    },
+    {
+      "name": "without prisms",
+      "exited": false,
+      "deaths": 18
+    },
+    {
+      "name": "without seeds",
+      "exited": false,
+      "deaths": 10
+    }
+  ],
+  "inversionInteractions": {
+    "distinctPrisms": 12,
+    "crackedCeilingLandings": 6,
+    "invertedSeedCuts": 2
+  },
+  "limits": "These authored-route and basic bypass probes are not exhaustive path search. No live browser or human completion claimed."
+}

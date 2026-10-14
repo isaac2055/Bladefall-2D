@@ -45,6 +45,7 @@ function reset(g){
  for(const e of g.ents)if(e.type==='gate')e.devKeyed=true;
 }
 const centre=o=>({x:o.x+o.w/2,y:o.y+o.h/2});
+function target(g,m){return g.players?.filter(p=>p.state!=='dead'&&p.state!=='respawn').sort((a,b)=>Math.hypot(a.x+4-m.x-m.w/2,a.y+5-m.y-m.h/2)-Math.hypot(b.x+4-m.x-m.w/2,b.y+5-m.y-m.h/2))[0]||g.p;}
 function warded(g,m){
  const id=m.d.ward;if(!id)return false;
  const r=g.combat&&g.combat.receivers.find(x=>x.id===id);
@@ -52,14 +53,14 @@ function warded(g,m){
 }
 function before(g){
  const m=g.mk;if(!m||m.gone||!g.awake)return;
- const Core=C(),p=g.p;
+ const Core=C(),p=target(g,m);
  // Returned arrows that reach him (the foes module has already moved every bolt this frame).
  if(m.state==='watch'||m.state==='draw'){
   for(const b of g.bolts){
    if(!b.alive||!b.friendly||!overlap(b.x,b.y,b.w,b.h,m.x,m.y,m.w,m.h))continue;
    b.alive=false;
    if(warded(g,m)){Core.emit(g,'guard-block',{x:b.x+3,y:b.y+3});continue;}
-   m.hits++;Core.emit(g,'marksman-hit',{x:m.x+m.w/2,y:m.y+6,hits:m.hits,need:m.need});
+   m.hits++;Core.emit(g,'marksman-hit',{x:m.x+m.w/2,y:m.y+6,hits:m.hits,need:m.need,...(g.players&&Number.isInteger(b.parriedBy)?{player:b.parriedBy}:{})});
    if(m.hits>=m.need){m.state='leave';m.t=0;m.from={x:m.x,y:m.y};}
    else{m.i=(m.i+1)%m.perches.length;m.state='leap';m.t=0;m.from={x:m.x,y:m.y};m.to=at(m.perches[m.i]);Core.emit(g,'marksman-leap',{x:m.x+m.w/2,y:m.y+m.h});}
    m.aim=null;m.volley=[];if(!m.raining)m.band=null;break;
@@ -100,19 +101,18 @@ function before(g){
   if(u>=1){m.state='watch';m.t=0;m.next=MK.after;m.rainNext=true;}
  }else if(m.state==='leave'){
   const how=m.d.leave||'right';
-  if(how==='fall'){m.y=Math.round(m.from.y+(m.t>12?(m.t-12)*(m.t-12)*.12:-m.t*.4));if(m.t>=MK.leave||m.y>Core.H+20)gone(g,m);}
+  if(how==='fall'){m.y=Math.round(m.from.y+(m.t>12?(m.t-12)*(m.t-12)*.12:-m.t*.4));if(m.t>=MK.leave||m.y>g.room.h+20)gone(g,m);}
   else if(how==='up'){m.y=Math.round(m.from.y-m.t*m.t*.08);m.x=m.from.x+Math.round(m.t*.4)*(m.face||1);if(m.t>=MK.leave)gone(g,m);}
-  else{m.face=1;m.x=Math.round(m.from.x+m.t*2.2);m.y=Math.round(m.from.y-Math.sin(Math.min(1,m.t/24)*Math.PI)*14);if(m.t>=MK.leave||m.x>Core.W+12)gone(g,m);}
+  else{m.face=1;m.x=Math.round(m.from.x+m.t*2.2);m.y=Math.round(m.from.y-Math.sin(Math.min(1,m.t/24)*Math.PI)*14);if(m.t>=MK.leave||m.x>g.room.w+12)gone(g,m);}
  }
 }
 /* The foes' parry sends an unaimed bolt back on the signs of its speed (a 45° line for a slanted one). His arrows
    fly at any slant, so an unaimed return of one goes back exactly along its own line, as the hint says. */
 function after(g){
  const m=g.mk;if(!m||!g.bolts)return;
- const a=g.p.parryAim;
  for(const b of g.bolts){
   if(!b.marked||!b.friendly||b.turned)continue;
-  b.turned=true;
+  b.turned=true;const a=g.players?b.returnAim:g.p.parryAim;
   if(!(a&&(a.x||a.y))){const k=Math.hypot(b.vx,b.vy)/(Math.hypot(b.ovx,b.ovy)||1);b.vx=-b.ovx*k;b.vy=-b.ovy*k;}
  }
 }
@@ -125,13 +125,13 @@ function loose(g,m,a){
 }
 /* A falling arrow of a rain, from the first open air at the top of its column. */
 function rainArrow(g,m,x){
- const Core=C(),s=MK.bolt,sp=m.d.rain.speed||150;let y=0;while(y<Core.H-8&&Core.solidAt(g,x-s/2,y,s,s))y+=2;
+ const Core=C(),s=MK.bolt,sp=m.d.rain.speed||150;let y=0;while(y<g.room.h-8&&Core.solidAt(g,x-s/2,y,s,s))y+=2;
  g.bolts.push({x:x-s/2,y,w:s,h:s,vx:0,vy:sp,ovx:0,ovy:sp,friendly:false,from:'mk-rain',alive:true});
 }
 /* The floor line under a point (for the rain band): the first solid below it. */
-function groundUnder(g,x,y){const Core=C();let yy=Math.max(0,Math.round(y));while(yy<Core.H&&!Core.solidAt(g,Math.round(x)-1,yy,2,1))yy++;return yy;}
+function groundUnder(g,x,y){const Core=C();let yy=Math.max(0,Math.round(y));while(yy<g.room.h&&!Core.solidAt(g,Math.round(x)-1,yy,2,1))yy++;return yy;}
 function gone(g,m){m.gone=true;m.state='gone';C().emit(g,'marksman-gone',{x:m.x+m.w/2,y:m.y+m.h/2,how:m.d.leave||'right'});}
 function gateHold(g){return !!(g.mk&&!g.mk.gone);}
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-marksman',reset,before,after,gateHold});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-marksman',reset,before,after,afterPlayer:after,gateHold});
 root.BladefallRbrMarksman=Object.freeze({MK,warded});
 })(typeof window!=='undefined'?window:globalThis);

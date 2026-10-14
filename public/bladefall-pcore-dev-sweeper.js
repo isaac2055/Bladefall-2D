@@ -25,24 +25,25 @@ function reset(g){
 }
 function before(g,inp){
  if(!g.sweepers.length)return;
- g.sweeperPlayerBefore={x:g.p.x,y:g.p.y,events:g.events.length};
- if(g.awake||inp?.portal)g.sweeperAwake=true;
+ beforePlayer(g);
+ if(g.awake||(g.players?g.coopInputActive:inp?.portal))g.sweeperAwake=true;
  if(g.sweeperAwake)g.sweeperClock++;
  for(const e of g.sweepers){e.prevX=e.x;e.prevY=e.y;Object.assign(e,at(e,g.sweeperClock));}
 }
+function beforePlayer(g){if(g.sweepers.length)(g.players?g.p:g).sweeperPlayerBefore={x:g.p.x,y:g.p.y,events:g.events.length};}
 function touches(x,y,p,r){const qx=Math.max(p.x,Math.min(x,p.x+p.w)),qy=Math.max(p.y,Math.min(y,p.y+p.h));return (qx-x)**2+(qy-y)**2<r*r;}
 function after(g){
- const p=g.p,from=g.sweeperPlayerBefore;if(!from||p.state==='dead'||p.state==='respawn')return;
+ const p=g.p,from=(g.players?p:g).sweeperPlayerBefore;if(!from||p.state==='dead'||p.state==='respawn')return;
  // Portal/echo travel is discontinuous: test the arrival, not the unoccupied middle. Ordinary
  // fast movement still receives relative swept collision, even at dash or carriage-launch speeds.
- const teleported=g.events.slice(from.events).some(e=>e.type==='echo-swap'||(e.type==='portal-pass'&&e.kind==='knight'));
+ const teleported=g.events.slice(from.events).some(e=>(!g.players||e.player===g.coopActor)&&(e.type==='echo-swap'||(e.type==='portal-pass'&&e.kind==='knight')));
  for(const e of g.sweepers){
   const dx=teleported?0:p.x-from.x,dy=teleported?0:p.y-from.y,px=teleported?p.x:from.x,py=teleported?p.y:from.y;
   const n=Math.max(1,Math.ceil(Math.hypot(dx-(e.x-e.prevX),dy-(e.y-e.prevY))/2));
   for(let i=0;i<=n;i++){const t=i/n;if(touches(e.prevX+(e.x-e.prevX)*t,e.prevY+(e.y-e.prevY)*t,{x:px+dx*t,y:py+dy*t,w:p.w,h:p.h},e.radius)){C().kill(g,p,'sweeper');return;}}
  }
 }
-function mirror(g){for(const e of g.sweepers||[]){e.path=e.path.map(([x,y])=>[x,g.room.h-y]);e.y=g.room.h-e.y;e.prevY=g.room.h-e.prevY;}g.sweeperPlayerBefore=null;}
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'sweeper',reset,before,after,mirror});
+function mirror(g){for(const e of g.sweepers||[]){e.path=e.path.map(([x,y])=>[x,g.room.h-y]);e.y=g.room.h-e.y;e.prevY=g.room.h-e.prevY;}g.sweeperPlayerBefore=null;for(const p of g.players||[])p.sweeperPlayerBefore=null;}
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'sweeper',reset,before,beforePlayer,after,afterPlayer:after,mirror});
 root.BladefallPrecisionSweeper=Object.freeze({at,touches});
 })(typeof window!=='undefined'?window:globalThis);

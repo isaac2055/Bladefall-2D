@@ -26,7 +26,7 @@ function reset(g){
 function load(g,e,inp){
  if(e.axis!==1)return ''; // A mirrored plate retains its physical axis; its underside is not a weight sensor.
  const p=g.p;
- if(p.state==='normal'&&p.vy>=0&&on(p,e)&&inp.my>0&&!inp.dash&&!inp.jump)return 'knight';
+ if((g.players||[p]).some(p=>{const raw=g.coopInputs?.[g.players?.indexOf(p)]||{},lock=g.room.def.lock||[];const down=g.players?raw.d&&!lock.includes('d'):inp.my>0,jump=g.players?raw.jump&&!lock.includes('jump'):inp.jump,dash=g.players?raw.dash&&!lock.includes('dash'):inp.dash;return p.state==='normal'&&p.vy>=0&&on(p,e)&&down&&!dash&&!jump;}))return 'knight';
  if(g.ents.some(q=>q.type==='lantern'&&!q.held&&!q.returning&&on(q,e)))return 'lantern';
  if((g.combat?.enemies||[]).some(q=>!q.dead&&q.kind!=='wing'&&on(q,e)))return 'combat';
  return '';
@@ -34,8 +34,8 @@ function load(g,e,inp){
 function move(g,e,target){
  const Core=C(),wanted=e.oy+e.axis*target,dy=wanted-(e.y+e.remY),next=e.y+Math.round(e.remY+dy);
  if(Core.blockerAt(g,e.x,next,e.w,e.h,e)){if(!e.jammed)Core.emit(g,'recoil-jam',{x:e.x+e.w/2,y:e.y,label:e.label});e.jammed=true;return false;}
- const oldGround=g.p.onGround;if(on(g.p,e)&&g.p.vy>=0)g.p.onGround=true;
- Core.moveSolid(g,e,0,dy);g.p.onGround=oldGround;e.charge=target;e.jammed=false;return true;
+ const riders=(g.players||[g.p]).map(p=>({p,onGround:p.onGround}));for(const {p}of riders)if(on(p,e)&&p.vy>=0)p.onGround=true;
+ Core.moveSolid(g,e,0,dy);for(const {p,onGround}of riders)p.onGround=onGround;e.charge=target;e.jammed=false;return true;
 }
 function before(g,inp){
  const Core=C(),p=g.p;
@@ -56,17 +56,17 @@ function before(g,inp){
    }else e.state='idle';
   }
   if(e.state==='release'){
-   if(on(p,e)){p.recoilSource=e.id;p.recoilSourceUntil=g.frame+Core.K.liftGraceFrames+1;}
+   for(const p of g.players||[g.p])if(on(p,e)){p.recoilSource=e.id;p.recoilSourceUntil=g.frame+Core.K.liftGraceFrames+1;}
    if(move(g,e,e.releaseSteps===1?0:Math.max(0,e.charge-e.releaseStep))){e.releaseSteps--;if(e.charge===0){e.state='idle';e.releaseV=0;}}
   }
  }
 }
 function after(g){
  const p=g.p;if(!p.recoilSource||g.frame>p.recoilSourceUntil)return;
- const jump=g.events.find(e=>e.frame===g.frame&&((e.type==='jump'&&e.lift)||(['hyper','super','wallbounce'].includes(e.type)&&p.liftY<0)));
+ const jump=g.events.find(e=>e.frame===g.frame&&(!g.players||e.player===g.coopActor)&&((e.type==='jump'&&e.lift)||(['hyper','super','wallbounce'].includes(e.type)&&p.liftY<0)));
  if(jump){C().emit(g,'recoil-jump',{x:p.x+4,y:p.y+p.h,source:p.recoilSource,vx:p.vx,vy:p.vy});p.recoilSource=null;}
 }
-function mirror(g){for(const e of platforms(g))e.axis=-e.axis;g.p.recoilSource=null;}
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'recoil',reset,before,after,mirror});
+function mirror(g){for(const e of platforms(g))e.axis=-e.axis;for(const p of g.players||[g.p])p.recoilSource=null;}
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'recoil',reset,before,after,afterPlayer:after,mirror});
 root.BladefallPrecisionRecoil=Object.freeze({RK,platforms,load});
 })(typeof window!=='undefined'?window:globalThis);

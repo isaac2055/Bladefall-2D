@@ -31,6 +31,6 @@ function after(g){
  }
 }
 function mirror(g){for(const e of g.ents)if(e.type==='vectorRefill')e.dy=-e.dy;}
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'vector-refill',reset,before,after,mirror});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'vector-refill',reset,before,after,afterPlayer:after,mirror});
 root.BladefallPrecisionVectorRefill=Object.freeze({VK,accepts});
 })(typeof window!=='undefined'?window:globalThis);

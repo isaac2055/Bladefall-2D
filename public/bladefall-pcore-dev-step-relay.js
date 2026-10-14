@@ -31,10 +31,10 @@ function before(g){
   // Core normally refreshes onGround after moving solids. On the first frame after a landing its old
   // value may still be false: recognize exact foot contact while carrying, then restore that old flag
   // so the normal landing/refill logic still sees the transition. Side grabs keep Core's own behavior.
-  const oldGround=p.onGround;
-  if(feetOn(p,e)&&p.vy>=0)p.onGround=true;
+  const riders=(g.players||[p]).map(p=>({p,onGround:p.onGround}));
+  for(const {p}of riders)if(feetOn(p,e)&&p.vy>=0)p.onGround=true;
   Core.moveSolid(g,e,nx-(e.x+e.remX),ny-(e.y+e.remY));
-  p.onGround=oldGround;
+  for(const {p,onGround}of riders)p.onGround=onGround;
  }
 }
 function after(g){
@@ -46,16 +46,17 @@ function after(g){
  p.stepRelayAirborne=false;
  if(!landed)return;
  const hit=es.find(e=>feetOn(p,e));if(!hit)return;
+ if(g.players&&hit.triggerFrame===g.frame)return;
  const target=1-hit.target;
- for(const e of es)if(e.group===hit.group){e.target=target;e.pulse=SK.pulse;e.triggers++;}
+ for(const e of es)if(e.group===hit.group){e.target=target;e.pulse=SK.pulse;e.triggers++;if(g.players)e.triggerFrame=g.frame;}
  C().emit(g,'step-relay',{x:p.x+p.w/2,y:p.y+p.h,group:hit.group,label:hit.label,target});
 }
 function mirror(g){
  // Gravity's generic body mirror already reflects y, oy and remY; only this private displacement needs work.
  for(const e of relays(g))e.relayDY=-e.relayDY;
  // Inverting while standing is not a landing. Wait for a real airborne phase under the new gravity.
- if(relays(g).length)g.p.stepRelayAirborne=false;
+ if(relays(g).length)for(const p of g.players||[g.p])p.stepRelayAirborne=false;
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'step-relay',reset,before,after,mirror});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'step-relay',reset,before,after,afterPlayer:after,mirror});
 root.BladefallPrecisionStepRelay=Object.freeze({SK,relays});
 })(typeof window!=='undefined'?window:globalThis);

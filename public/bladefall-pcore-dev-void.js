@@ -18,22 +18,23 @@ function reset(g){
  g.voidTravel=null;g.voidGrace=0;
  for(const b of C().groupsOf(g.room.def,'V'))g.ents.push({type:'void',dev:true,solid:true,x:b.x,y:b.y,w:b.w,h:b.h,id:'void'+g.ents.length});
 }
+const state=(g,p=g.p)=>g.players?p:g;
 const voids=g=>g.ents.filter(e=>e.type==='void');
 const inVoid=(g,p)=>voids(g).some(e=>overlap(p.x,p.y,p.w,p.h,e.x,e.y,e.w,e.h));
 /* A dash meets a void stone: in you go. */
 function dashHit(g,p,b){
  if(b.type!=='void'||p.state!=='dash')return false;
  const d=p.dashDir;
- g.voidTravel={vx:d.x*VK.speed,vy:d.y*VK.speed,rx:0,ry:0,entered:false,dashTimer:p.dashTimer};
+ state(g,p).voidTravel={vx:d.x*VK.speed,vy:d.y*VK.speed,rx:0,ry:0,entered:false,dashTimer:p.dashTimer};
  p.state='void';p.dashTimer=0;p.vx=0;p.vy=0;p.remX=p.remY=0;p.ducking=false;p.varJump=0;
  C().emit(g,'void-in',{x:p.x+4,y:p.y+6,dx:d.x,dy:d.y});
  return true;
 }
 function before(g){
- const p=g.p,V=g.voidTravel;
- if(g.voidGrace>0)g.voidGrace--;
+ const p=g.p,S=state(g,p),V=S.voidTravel;
+ if(S.voidGrace>0)S.voidGrace--;
  if(!V)return;
- if(p.state!=='void'){g.voidTravel=null;return;}
+ if(p.state!=='void'){S.voidTravel=null;return;}
  const Core=C(),vs=voids(g);
  // Strikes, grabs and portal shots are swallowed by the dark; a dash or jump pressed inside is buffered
  // as usual and lands on the frame you come out.
@@ -56,17 +57,17 @@ function before(g){
  }
  for(const e of vs)e.solid=true;
  p.vx=0;p.vy=0;
- if(dead){g.voidTravel=null;p.state='normal';Core.kill(g,p,'void');return;}
+ if(dead){S.voidTravel=null;p.state='normal';Core.kill(g,p,'void');return;}
  if(!V.entered){
   // A dash that only grazed a corner never went in: it carries on as a dash.
-  g.voidTravel=null;p.state='dash';p.dashTimer=Math.max(1,V.dashTimer-1);p.vx=V.vx;p.vy=V.vy;return;
+  S.voidTravel=null;p.state='dash';p.dashTimer=Math.max(1,V.dashTimer-1);p.vx=V.vx;p.vy=V.vy;return;
  }
  if(out){
   // Out the far side: the dash comes back, the speed stays.
-  g.voidTravel=null;p.state='normal';p.vx=V.vx;p.vy=V.vy;p.remX=p.remY=0;p.maxFall=Math.max(Core.K.maxFall,V.vy);
+  S.voidTravel=null;p.state='normal';p.vx=V.vx;p.vy=V.vy;p.remX=p.remY=0;p.maxFall=Math.max(Core.K.maxFall,V.vy);
   p.dashCooldown=0;p.dashRefillCooldown=0;Core.refillDash(g,p);
   // Ground grace only off a level or falling exit: an upward exit is already a bigger jump than a jump.
-  if(V.vy>=0){p.jumpGrace=Math.max(p.jumpGrace,VK.grace);g.voidGrace=VK.grace;}
+  if(V.vy>=0){p.jumpGrace=Math.max(p.jumpGrace,VK.grace);S.voidGrace=VK.grace;}
   if(V.vx)p.facing=Math.sign(V.vx);
   if(Math.abs(V.vx)>Core.K.maxRun)p.coast=true;
   Core.emit(g,'void-out',{x:p.x+4,y:p.y+6,dx:Math.sign(V.vx),dy:Math.sign(V.vy)});
@@ -76,10 +77,10 @@ function before(g){
    the rest of the frame (thorns pointing the way he travels are safe, as everywhere), with the
    remainders set so the core's move nets to nothing. */
 function forces(g,p){
- const V=g.voidTravel;if(p.state!=='void'||!V)return;
+ const V=state(g,p).voidTravel;if(p.state!=='void'||!V)return;
  const DT=C().DT;p.vx=V.vx;p.vy=V.vy;p.remX=-(V.vx*DT);p.remY=-(V.vy*DT);p.pushX=0;
 }
-function mirror(g){const V=g.voidTravel;if(V){V.vy=-V.vy;V.ry=-V.ry;}}
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'void',reset,before,forces,dashHit,mirror});
+function mirror(g){for(const s of g.players||[g]){const V=s.voidTravel;if(V){V.vy=-V.vy;V.ry=-V.ry;}}}
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'void',reset,before,beforePlayer:before,forces,dashHit,mirror});
 root.BladefallPrecisionVoid=Object.freeze({VK});
 })(typeof window!=='undefined'?window:globalThis);

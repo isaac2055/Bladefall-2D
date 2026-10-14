@@ -55,7 +55,7 @@ function openNow(g,e){
 function lineEnts(g){return g.ents.filter(e=>e.type==='zipline');}
 
 /* The ride: placed directly along the tear each frame (before the core moves anything). */
-function before(g){
+function before(g,inp,actorOnly=false){
  const p=g.p,Core=C();
  if(p.zipCoast>0&&--p.zipCoast===0)p.coast=false;
  // A ride carried into another room (The Climb hands the knight's whole state across a seam) ends there as a
@@ -68,11 +68,11 @@ function before(g){
  }
  if(p.ride&&p.state!=='ride')p.ride=null;
  let any=false;
- for(const e of g.ents){if(e.type!=='zipline')continue;any=true;if(e.pulse>0)e.pulse--;e.state=e.spent?'spent':openNow(g,e)?'':'shut';}
+ for(const e of g.ents){if(e.type!=='zipline')continue;any=true;if(!actorOnly&&e.pulse>0)e.pulse--;e.state=e.spent?'spent':openNow(g,e)?'':'shut';}
  if(!any)return;
  const R=p.ride;
  if(!R)return;
- g.spikeSafe=SAFE;   // every frame of the ride (a restored search state rebinds the tide's rule)
+ if(!g.players)g.spikeSafe=SAFE;   // every frame of the ride (a restored search state rebinds the tide's rule)
  g.buf.strike=0;g.buf.grab=0;if(g.buf.portal!==undefined)g.buf.portal=0;
  R.t++;
  if(R.t<R.n){
@@ -126,15 +126,15 @@ function after(g){
  p.ride={li:e.li,room:g.room.id,fx,fy,tx,ty,dx:(tx-fx)/len,dy:(ty-fy)/len,t:0,n:Math.max(2,Math.ceil(len/(ZK.speed*C().DT)))};
  p.state='ride';p.dashTimer=0;p.ducking=false;p.vx=0;p.vy=0;p.remX=p.remY=0;p.varJump=0;p.autoJump=false;p.coast=p.fling=false;p.zipCoast=0;
  p.x=Math.round(fx-4);p.y=Math.round(fy-5.5);
- g.spikeSafe=SAFE;
+ if(!g.players)g.spikeSafe=SAFE;
  e.pulse=ZK.pulse;
  C().emit(g,'zip-in',{x:fx,y:fy,tx,ty,li:e.li});
 }
 function mirror(g){
  const H=g.room.h||184;
  for(const e of g.ents)if(e.type==='zipline'){e.ay=H-e.ay;e.by=H-e.by;}
- const R=g.p.ride;if(R){R.fy=H-R.fy;R.ty=H-R.ty;R.dy=-R.dy;}
+ for(const p of g.players||[g.p]){const R=p.ride;if(R){R.fy=H-R.fy;R.ty=H-R.ty;R.dy=-R.dy;}}
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'zipline',reset,before,forces,after,mirror});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'zipline',reset,before,beforePlayer:(g,inp)=>before(g,inp,true),forces,after,afterPlayer:after,mirror});
 root.BladefallPrecisionZipline=Object.freeze({ZK,openNow});
 })(typeof window!=='undefined'?window:globalThis);

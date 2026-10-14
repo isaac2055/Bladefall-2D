@@ -1,0 +1,77 @@
+{
+  "room": "bank-f106",
+  "status": "Native route verified; integrated as a playable Core draft awaiting player review",
+  "whole": {
+    "frames": 1809,
+    "deaths": 0,
+    "eventCounts": {
+      "crumble-shake": 2,
+      "dash": 28,
+      "ultra": 8,
+      "refill-dash": 27,
+      "hyper": 7,
+      "strike": 19,
+      "anvil": 9,
+      "crumble": 1,
+      "cast": 15,
+      "walljump": 9,
+      "land": 13,
+      "crumble-back": 1,
+      "core-checkpoint": 5,
+      "belt": 1,
+      "jump": 9,
+      "grab": 8,
+      "climbjump": 4,
+      "climbhop": 1,
+      "pod": 3,
+      "zip-start": 1,
+      "zip-stop": 1,
+      "zip-home": 1,
+      "super": 1,
+      "exit": 1
+    },
+    "minimumStamina": 29.9
+  },
+  "freshParts": [
+    199,
+    486,
+    302,
+    298,
+    235,
+    338
+  ],
+  "probes": [
+    {
+      "name": "remove grab",
+      "exited": false,
+      "deaths": 7
+    },
+    {
+      "name": "hold right",
+      "exited": false,
+      "deaths": 22
+    },
+    {
+      "name": "jump/dash right",
+      "exited": false,
+      "deaths": 28
+    },
+    {
+      "name": "without anvils",
+      "exited": false,
+      "deaths": 19
+    },
+    {
+      "name": "without casting frames",
+      "exited": false,
+      "deaths": 17
+    }
+  ],
+  "foundryInteractions": {
+    "distinctAnvils": 9,
+    "castingGroups": 5,
+    "ordinaryOpeningProbes": 300,
+    "reachedFirstSave": 0
+  },
+  "limits": "These authored-route and basic bypass probes are not exhaustive path search. No live browser or human completion claimed."
+}

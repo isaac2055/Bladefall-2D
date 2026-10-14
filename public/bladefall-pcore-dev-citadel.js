@@ -16,24 +16,28 @@ const alive=p=>p.state!=='dead'&&p.state!=='respawn';
 const onTop=(p,e)=>p.vy>=0&&p.y+p.h===e.y&&p.x<e.x+e.w&&p.x+p.w>e.x;
 function before(g){
  const p=g.p;if(!alive(p))return;
- g.fhPrev={x:p.x,y:p.y,w:p.w,h:p.h};
+ const previous={x:p.x,y:p.y,w:p.w,h:p.h};if(g.players)p.fhPrev=previous;else g.fhPrev=previous;
  for(const e of g.ents)if(e.type==='foothold'&&!e.gone&&onTop(p,e))e.used=true;
 }
 function after(g){
  const Core=C(),p=g.p;
  // A wall jump this frame off a foothold's side: it was used, and has already been left.
  let kick=null;
- for(const ev of g.events)if(ev.frame===g.frame){if(ev.type==='walljump'||ev.type==='wallbounce')kick=ev.dir;else if(ev.type==='climbjump')kick=-p.facing;}
+ for(const ev of g.events)if(ev.frame===g.frame&&(!g.players||ev.player===g.coopActor)){if(ev.type==='walljump'||ev.type==='wallbounce')kick=ev.dir;else if(ev.type==='climbjump')kick=-p.facing;}
  for(const e of g.ents){
   if(e.type!=='foothold'||e.gone)continue;
-  const on=Core.riderOf(g,e)||(alive(p)&&p.onGround&&p.y+p.h===e.y&&p.x<e.x+e.w&&p.x+p.w>e.x);
-  if(!on&&kick&&g.fhPrev){const q=g.fhPrev,reach=6;
+  const on=Core.riderOf(g,e,p)||(alive(p)&&p.onGround&&p.y+p.h===e.y&&p.x<e.x+e.w&&p.x+p.w>e.x);
+  const previous=g.players?p.fhPrev:g.fhPrev;
+  if(!on&&kick&&previous){const q=previous,reach=6;
    // The wall was on the side opposite the kick's direction.
    const x=kick>0?q.x-reach:q.x+q.w,w=reach;
    if(Core.overlap(x,q.y,w,q.h,e.x,e.y,e.w,e.h))e.used=true;}
   if(on)e.used=true;
-  else if(e.used){e.gone=true;e.solid=false;Core.emit(g,'foothold-spent',{x:e.x+e.w/2,y:e.y+e.h/2,w:e.w});}
+  else if(e.used&&!g.players){e.gone=true;e.solid=false;Core.emit(g,'foothold-spent',{x:e.x+e.w/2,y:e.y+e.h/2,w:e.w});}
  }
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'citadel',reset,before,after});
+function afterPlayers(g){
+ for(const e of g.ents)if(e.type==='foothold'&&!e.gone){if(C().riderOf(g,e)||g.players.some(p=>alive(p)&&onTop(p,e)))e.used=true;else if(e.used){e.gone=true;e.solid=false;C().emit(g,'foothold-spent',{x:e.x+e.w/2,y:e.y+e.h/2,w:e.w});}}
+}
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'citadel',reset,before,beforePlayer:before,after,afterPlayer:after,afterPlayers});
 })(typeof window!=='undefined'?window:globalThis);

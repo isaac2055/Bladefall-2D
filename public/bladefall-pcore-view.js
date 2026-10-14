@@ -275,7 +275,7 @@ function nextRoom(){
 }
 const takeoverOK=()=>!!save.assist.testMode;   // (7.314) a watched Ascend route is not a skip
 function takeOver(){if(!takeoverOK())return;view.replay=null;delete view.coreReplayCheckpoint;root.BladefallClimbSession?.invalidate('watched route takeover');}
-function retryRoom(){if(!view.g)return;if(view.coreReplayCheckpoint!==undefined){view.g.coreRun=view.coreReplayCheckpoint;delete view.coreReplayCheckpoint;view.g.coreDemo=false;}SV()?.retry(view.g.room.id);view.replay=null;if(!TEST()?.restore()){C.resetRoom(view.g);view.g.p.state='normal';view.g.p.respawnTimer=0;}root.BladefallRouteRecording?.mark('retry');view.trail=[];resetScarf();}
+function retryRoom(){if(root.BladefallWorkshopNativePlay?.retry?.())return;if(!view.g)return;if(view.coreReplayCheckpoint!==undefined){view.g.coreRun=view.coreReplayCheckpoint;delete view.coreReplayCheckpoint;view.g.coreDemo=false;}SV()?.retry(view.g.room.id);view.replay=null;if(!TEST()?.restore()){C.resetRoom(view.g);view.g.p.state='normal';view.g.p.respawnTimer=0;}root.BladefallRouteRecording?.mark('retry');view.trail=[];resetScarf();}
 
 /* ---------------------------------------------------------------- loop */
 function frame(now){
@@ -285,6 +285,7 @@ function frame(now){
 }
 function pauseOrBack(){if(overlayOpen()){if(!menuBack()&&view.mode==='play')togglePause();}else togglePause();}
 function loop(dt){
+ if(root.BladefallWorkshopBridge?.state().active){view.frameAcc=0;render();return;}
  const {input,pad}=currentInput(dt);
  const capturing=!!capture;pollCapture();
  const lp=view.lastPad;view.lastPad=pad;
@@ -304,6 +305,7 @@ function loop(dt){
 }
 function tick(input){
  if(view.mode!=='play'||view.paused||TEST()?.inspecting())return;
+ if(root.BladefallWorkshopNativePlay?.tick?.(input)){updateVisuals();return;}
  const g=view.g;
  if(view.wipe>0){view.wipe--;if(view.wipe===8&&view.wipeTo){view.wipeTo();view.wipeTo=null;}return;}
  view.lastInput=input;if(root.BladefallPitchView?.holding?.())return;
@@ -318,6 +320,7 @@ function tick(input){
  g.events.length=0;
  updateVisuals();
 }
+function workshopFrame(g){view.g=g;for(const e of g.events)if(e.type!=='exit')handleEvent(e);g.events.length=0;}
 function keysToInput(k){return {l:k.includes('l'),r:k.includes('r'),u:k.includes('u'),d:k.includes('d'),jump:k.includes('j'),dash:k.includes('x'),grab:k.includes('g'),strike:k.includes('s'),parry:k.includes('p'),portal:k.includes('q')};}
 
 /* ---------------------------------------------------------------- events → feedback */
@@ -363,7 +366,7 @@ function handleEvent(e){
   case 'exit':beginExit();break;
  }
 }
-function beginExit(){if(root.BladefallPitchView?.exit?.(view,nextRoom))return;view.wipe=16;view.wipeTo=nextRoom;}
+function beginExit(){if(root.BladefallWorkshopBridge?.complete())return;if(root.BladefallPitchView?.exit?.(view,nextRoom))return;view.wipe=16;view.wipeTo=nextRoom;}
 function sign(v){return v>0?1:v<0?-1:0;}
 function updateVisuals(){
  const g=view.g,p=g.p;
@@ -399,9 +402,10 @@ function drawBackground(b,pal){
  b.globalAlpha=1;
 }
 function solidTile(g,c,r){const RC=g.room.cols||COLS,RR=g.room.rows||ROWS;if(c<0||c>=RC)return true;if(r<0)return g.room.exit!=='up'&&g.room.def.side!=='up';if(r>=RR)return false;return g.room.grid[r*RC+c]===SOLID;}
-function drawTiles(b,g,pal){
+function drawTiles(b,g,pal,area){
  const COLS=g.room.cols||C.COLS,ROWS=g.room.rows||C.ROWS;
- for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){
+ const c0=area?Math.max(0,Math.floor(area.pan.x/TILE)):0,r0=area?Math.max(0,Math.floor(area.pan.y/TILE)):0,c1=area?Math.min(COLS,Math.ceil((area.pan.x+area.width)/TILE)):COLS,r1=area?Math.min(ROWS,Math.ceil((area.pan.y+area.height)/TILE)):ROWS;
+ for(let r=r0;r<r1;r++)for(let c=c0;c<c1;c++){
   const t=g.room.grid[r*COLS+c],x=c*TILE,y=r*TILE;
   if(t===SOLID){
    const open={u:!solidTile(g,c,r-1),d:!solidTile(g,c,r+1),l:!solidTile(g,c-1,r),rt:!solidTile(g,c+1,r)};
@@ -612,7 +616,7 @@ function drawBars(b,e,light,dark){
 const SKIN=()=>root.BladefallPitchView?.climb?.state?.()?root.BladefallClimbRewards?.skin?.():null;
 function scarfColor(p){if(p.dashFlash>0&&p.dashFlash%4<2)return '#ffffff';const s=SKIN();if(s)return root.BladefallClimbRewards.scarf(s.pal,p.dashes>0,view.g?.frame||0);return p.dashes>0?'#ffb347':'#56708c';}
 function drawKnight(b,g){
- const p=g.p;if(p.state==='dead')return;
+ const p=g.p;if(p.state==='dead'||p.waitingForPartner)return;
  if(p.state==='respawn'){const k=p.respawnTimer/10;b.globalAlpha=1-k;}
  // Afterimages
  for(const t of view.trail){b.globalAlpha=t.life/14*.5;drawKnightSprite(b,t.x,t.y,t.f,'dash',t.col,t.col,1,1,0);}
@@ -662,9 +666,9 @@ function drawParticles(b){for(const q of view.parts){b.globalAlpha=Math.min(1,q.
 function updateCamera(g){
  if(root.BladefallPitchView?.camera?.(g,view))return;   // the Climb: one camera over the whole world
  if(TEST()?.camera(g,view))return;
- const rw=g.room.w||W,rh=g.room.h||H,p=g.p;
+ const rw=g.room.w||W,rh=g.room.h||H,p=g.p,py=g.flipped?rh-p.y-p.h:p.y;
  if(rw<=W&&rh<=H){view.cam.x=view.cam.y=0;view.camRoom=g.room.id;return;}
- const tx=Math.max(0,Math.min(rw-W,p.x+4-W/2+(g.room.def.cameraZones?.find(z=>p.x>=z.x0&&p.x<=z.x1&&p.y>=z.y0&&p.y<=z.y1)?.lookX||0))),ty=Math.max(0,Math.min(rh-H,p.y+5-H*.55));
+ const tx=Math.max(0,Math.min(rw-W,p.x+4-W/2+(g.room.def.cameraZones?.find(z=>p.x>=z.x0&&p.x<=z.x1&&py>=z.y0&&py<=z.y1)?.lookX||0))),ty=Math.max(0,Math.min(rh-H,py+5-H*.55));
  if(view.camRoom!==g.room.id){view.cam.x=tx;view.cam.y=ty;view.camRoom=g.room.id;return;}
  view.cam.x+=(tx-view.cam.x)*.18;view.cam.y+=(ty-view.cam.y)*.14;
 }
@@ -691,12 +695,12 @@ function render(){
  // Device views (7.254) draw behind the entities, among them, and in front of the knight. A room whose
  // gravity is flipped is simulated mirrored; drawing it under a vertical flip puts it back upright.
  const DV=root.BladefallPrecisionDeviceViews||[];
- if(g.flipped){b.translate(0,H);b.scale(1,-1);}
+ if(g.flipped){b.translate(0,g.room.h||H);b.scale(1,-1);}
  const sharedTerrain=PV?.drawWorld?.(b,g,view,pal);
  if(!sharedTerrain)drawStatic(b,g,pal);for(const d of DV)d.drawBack?.(b,g,view,pal);
  drawEntities(b,g,pal);PV?.draw(b,g,view);root.BladefallPrecisionCombatView?.draw(b,g);root.BladefallPrecisionFoesView?.draw(b,g);root.BladefallPrecisionPortalsView?.draw(b,g,view);
  for(const d of DV)d.draw?.(b,g,view,pal);
- TEST()?.draw(b,g);drawKnight(b,g);
+ TEST()?.draw(b,g);for(const p of g.players||[])if(p!==g.p&&p.state!=='dead'&&!p.waitingForPartner){const pose=p.state==='climb'?'climb':p.state==='dash'?'dash':!p.onGround?(p.vy<0?'rise':'fall'):Math.abs(p.vx)>10?'run':'idle';b.globalAlpha=p.state==='respawn'?1-p.respawnTimer/10:1;drawKnightSprite(b,p.x,p.y,p.facing,pose,'#427b64','#7fe7ff',1,1,g.frame);b.globalAlpha=1;}drawKnight(b,g);
  for(const d of DV)d.drawFront?.(b,g,view,pal);
  drawParticles(b);
  b.restore();
@@ -707,6 +711,7 @@ function render(){
  ctx.drawImage(src,ox,oy,W*scale,H*scale);
  const clear=!!TOUCH()?.clear?.();   // (7.318) a clear touch screen: no labels, counters or hints over the play
  if(!pocket&&!clear)drawHud(ctx,ox,oy,scale,g);
+ if(g.p.waitingForPartner&&!g.exited){ctx.save();ctx.font=`${Math.max(12,Math.round(4*scale))}px monospace`;ctx.textAlign='center';ctx.fillStyle='#b8f0db';ctx.fillText('Room finished · waiting for your partner',ox+W*scale/2,oy+H*scale-16*scale);ctx.restore();}
  if(!clear)PV?.hud?.(ctx,ox,oy,scale,g,view);
  document.documentElement.classList.toggle('pcClear',clear);
  TOUCH()?.draw(ctx,dpr);
@@ -867,6 +872,7 @@ function togglePause(){
  ${g.room.def.question?`<p class="pcSub">${g.room.def.question}</p>`:''}
  <button class="pcBtn" id="pcResume" data-back>Resume</button><button class="pcBtn ghost" id="pcRetry">${g.room.def.coreCheckpoints?'Retry from save point':'Retry room'}</button>${g.room.def.coreCheckpoints?'<button class="pcBtn ghost" id="pcCoreRestart">Restart Core</button>':''}
  ${ch.climb&&(ch.climb<=40||g.room.def.core)?'<button class="pcBtn ghost" id="pcRoomFeedback">Leave room feedback</button>':''}
+ ${!root.BLADEFALL_WORKSHOP_PLAY?'<button class="pcBtn ghost" id="pcEditLevel">Edit this level</button>':''}
  ${hasTape?'<button class="pcBtn ghost" id="pcWatch">Watch the intended route (review)</button>':''}
  ${backPassage?'<button class="pcBtn ghost" id="pcReturnPassage">Return through passage</button>':''}
  ${g.room.def.coreCheckpoints?'<p class="pcSub">Save lanterns keep the next part. Retry returns to your latest lantern.</p>':`<p class="pcSub">Room select${optional?' · O = optional route':''}</p><div class="pcMiniRow">${rooms}${optional}</div>`}
@@ -875,6 +881,7 @@ function togglePause(){
  <button class="pcBtn ghost" id="pcCtl">Controls</button><button class="pcBtn ghost" id="pcAssist">Assist &amp; options</button>${view.trial?'<button class="pcBtn ghost" id="pcLeave">Leave the gate (you keep the levels you finished)</button>':!ch.climb?'<button class="pcBtn ghost" id="pcChapters">Chapters</button>':''}
  ${ch.climb?'<a class="pcBtn ghost" href="index.html">Return to title menu</a>':''}</div>`);
  document.getElementById('pcResume').onclick=togglePause;
+ document.getElementById('pcEditLevel')?.addEventListener('click',()=>root.BladefallWorkshopBridge?.editAscend());
  document.getElementById('pcSkipSection')?.addEventListener('click',()=>{if(!root.BladefallPitchView.climb.skipInfo().allowed)return;view.paused=false;hideOverlay();root.BladefallPitchView.climb.skipSection({fromPause:true});});
  document.getElementById('pcReturnPassage')?.addEventListener('click',()=>root.BladefallPitchView.climb.returnPassage());
  document.getElementById('pcCtl').onclick=()=>{const back=()=>{view.paused=false;togglePause();};touchUI()?TOUCH().card(back):controlsCard(back);};
@@ -1006,6 +1013,21 @@ function drawOther(b,g2,pal,localCamera){
  drawEntities(b,g2,pal);root.BladefallPrecisionCombatView?.draw(b,g2);root.BladefallPrecisionFoesView?.draw(b,g2);root.BladefallPrecisionPortalsView?.draw(b,g2,view);
  for(const d of DV){d.draw?.(b,g2,view,pal);d.drawFront?.(b,g2,view,pal);}
 }
-root.BladefallPrecisionView={clearInput:()=>{keys.clear();latchHeld();},options:(back,o)=>assistCard(back,o),testMode:()=>!!save.assist.testMode,pureMode:()=>!!save.options.pure,boot,view,startChapter,retryRoom,mainMenu,advance,pump,goRoom,persist,drawOther,drawStatic,palettes:PAL,drawKnight:drawKnightSprite};
+/* An isolated draft rendered with native art, without swapping the active game or camera. */
+function drawWorkshop(b,g,area){
+ const pal=root.BladefallPitchView?.climb?.palette?.(g.room.def.palette)||PAL[g.room.def.palette]||PAL.footing;
+ const editorView={...view,g,cam:{...area.pan},pitch:null,viewportW:area.width,viewportH:area.height,parts:[],trail:[]};
+ const devices=root.BladefallPrecisionDeviceViews||[];
+ b.save();try{b.imageSmoothingEnabled=false;
+ if(g.flipped){b.translate(0,g.room.h||H);b.scale(1,-1);}
+ drawTiles(b,g,pal,g.flipped?{...area,pan:{x:area.pan.x,y:(g.room.h||H)-area.pan.y-area.height}}:area);
+ for(const d of devices)d.drawBack?.(b,g,editorView,pal);
+ drawEntities(b,g,pal);root.BladefallPrecisionCombatView?.draw(b,g);root.BladefallPrecisionFoesView?.draw(b,g);root.BladefallPrecisionPortalsView?.draw(b,g,editorView);
+ for(const d of devices)d.draw?.(b,g,editorView,pal);
+ drawKnightSprite(b,g.p.x,g.p.y,1,'idle','#b7c5d3','#ffb347',1,1,0);
+ for(const d of devices)d.drawFront?.(b,g,editorView,pal);
+ }finally{b.restore();}
+}
+root.BladefallPrecisionView={workshopFrame,clearInput:()=>{keys.clear();latchHeld();},options:(back,o)=>assistCard(back,o),testMode:()=>!!save.assist.testMode,pureMode:()=>!!save.options.pure,boot,view,startChapter,retryRoom,mainMenu,advance,pump,goRoom,persist,drawOther,drawStatic,drawWorkshop,palettes:PAL,drawKnight:drawKnightSprite};
 if(typeof document!=='undefined'){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();}
 })(typeof window!=='undefined'?window:globalThis);

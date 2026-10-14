@@ -1,0 +1,19 @@
+import assert from 'node:assert/strict';
+import {Core} from '../pcore-tape.mjs';
+import '../../public/bladefall-workshop-ascend-coop-core.js';
+const S=globalThis.BladefallWorkshopAscendCoopCore;
+function room(items=[],settings={}){const map=Array.from({length:23},()=>Array(40).fill('.'));map[21][2]='P';map[22].fill('#');for(const[c,r,text]of items)for(let i=0;i<text.length;i++)map[r][c+i]=text[i];return {id:'shared-water',cols:40,rows:23,map:map.map(r=>r.join('')),exit:'right',movement:'survive-2',lock:['portal'],...settings};}
+const poolRows=[18,19,20,21].map(r=>[8,r,'w'.repeat(16)]);
+const swimming=S.create(room(poolRows,{currents:[{c:8,r:18,w:16,h:4,dx:60,dy:0}]}));
+for(const[i,p]of swimming.g.players.entries())Object.assign(p,{x:80+i*32,y:149,onGround:false});
+S.step(swimming);assert(swimming.g.players.every(p=>p.swimming));assert.equal(swimming.g.players[0].x,81);assert.equal(swimming.g.players[1].x,113);S.step(swimming,[{}, {jump:true}]);assert(swimming.g.events.some(e=>e.type==='stroke'&&e.player===1),'partner can swim upward');assert(swimming.g.players[1].vy<0);
+const freezing=S.create(room(poolRows,{thaw:40})),g=freezing.g;
+for(const[i,p]of g.players.entries())Object.assign(p,{x:80+i*32,y:149,onGround:false});
+S.step(freezing,[{}, {u:true,strike:true}]);const pool=g.water.pools[0];assert.equal(pool.frozen,40);assert(pool.pending.size>0);assert(g.events.some(e=>e.type==='freeze'&&e.player===1));for(const p of g.players)assert(!Core.solidAt(g,p.x,p.y,p.w,p.h),'neither knight is encased by the partner’s freeze');
+for(const p of g.players)Object.assign(p,{x:16,y:165,vx:0,vy:0});for(let i=0;i<3;i++)S.step(freezing);assert.equal(pool.frozen,39,'one thaw tick after two shared freeze frames');assert.equal(pool.pending.size,0,'ice fills in after both players leave');assert.equal(Core.tileAt(g,10,19),Core.SOLID);
+const condenser=S.create(room([[12,19,'n'],[20,19,'wwww']],{thaw:40}));Object.assign(condenser.g.players[0],{x:160,y:152});Object.assign(condenser.g.players[1],{x:80,y:157});S.step(condenser,[{}, {r:true,strike:true}]);assert(condenser.g.events.some(e=>e.type==='condenser'&&e.player===1));assert.equal(condenser.g.water.pools[0].frozen,40);assert(condenser.g.water.pools[0].pending.size>0);
+const tide=S.create(room([[10,19,'FFFF']],{tide:{c0:0,c1:39,low:20,high:16,hold:0,move:16}})),float=tide.g.ents.find(e=>e.type==='float');
+Object.assign(tide.g.players[0],{x:82,y:141});Object.assign(tide.g.players[1],{x:98,y:141});S.step(tide);assert.equal(tide.g.water.tide.clock,1);assert.equal(float.y,150);assert(tide.g.players.every(p=>p.y+p.h===float.y),'rising float carries both knights once');
+const deck=S.create(room([],{decks:[{c:10,r:17,w:4,h:1,to:[8,0],period:32}]})),moving=deck.g.ents.find(e=>e.type==='deck');Object.assign(deck.g.players[0],{x:82,y:125});Object.assign(deck.g.players[1],{x:98,y:125});S.step(deck,[{}, {r:true}]);assert(deck.g.decksAwake);assert.equal(moving.clock,1);assert.equal(moving.x,81);assert.equal(deck.g.players[0].x,83);assert(deck.g.players.every(p=>p.y+p.h===moving.y));
+const rings=S.create(room([[12,10,'O']]));Object.assign(rings.g.players[0],{x:80,y:100,onGround:false});Object.assign(rings.g.players[1],{x:112,y:100,onGround:false});S.step(rings,[{grab:true},{grab:true}]);assert(rings.g.players.every(p=>p.state==='hook'));assert.notEqual(rings.g.players[0].hook,rings.g.players[1].hook);assert.equal(rings.g.players[0].hook.ring,rings.g.players[1].hook.ring);S.step(rings,[{}, {grab:true}]);assert.notEqual(rings.g.players[0].state,'hook');assert.equal(rings.g.players[1].state,'hook','one knight releasing does not detach the other');
+console.log('PASS: both native knights swim in currents, partner stroke/freezing/condenser, shared ice occupancy and thaw clock, tide clock/two float riders, partner-woken decks and independent simultaneous hook swings.');

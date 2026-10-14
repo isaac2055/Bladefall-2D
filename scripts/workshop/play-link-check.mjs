@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import '../../public/bladefall-workshop-model.js';
+import '../../public/bladefall-workshop-play-link.js';
+const messages=[],hub=globalThis.BladefallWorkshopPlayLink.create({deliver:(actor,m)=>messages.push({actor,...m})});
+hub.register({id:'test'});
+const send=(actor,action,extra={})=>hub.receive(actor,{test:'test',action,...extra});
+send('alice','join');assert.deepEqual(messages.at(-1).players,['alice',null]);
+send('bob','join');assert.deepEqual(messages.at(-1).players,['alice','bob']);const generation=messages.at(-1).generation;
+send('eve','join');assert.equal(messages.at(-1).event,'full');
+assert.throws(()=>send('eve','packet',{generation,packet:{t:'input'}}),/Join this test/);
+let count=messages.length;send('alice','packet',{generation:generation-1,packet:{t:'input'}});assert.equal(messages.length,count);
+send('alice','packet',{generation,packet:{t:'snapshot',x:17}});assert.equal(messages.at(-1).actor,'bob');assert.equal(messages.at(-1).packet.x,17);
+send('bob','restart');assert(messages.at(-1).generation>generation);count=messages.length;send('alice','packet',{generation,packet:{t:'input'}});assert.equal(messages.length,count,'previous run input is discarded');
+hub.disconnect('alice');assert.deepEqual(messages.at(-1).players,[null,'bob']);assert.equal(messages.at(-1).actor,'bob');
+send('eve','join');assert.deepEqual(messages.at(-1).players,['eve','bob']);send('bob','leave');assert.deepEqual(messages.at(-1).players,['eve',null]);
+assert.throws(()=>hub.receive('eve',{test:'missing',action:'join'}),/no longer available/);
+console.log('PASS: pinned co-op seats, occupied-seat fallback, seated input authorization, stale-generation rejection, shared restart and disconnect/rejoin.');

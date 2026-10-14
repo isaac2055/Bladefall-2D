@@ -68,12 +68,13 @@ function inWater(g,x,y){
 }
 function currentAt(g,x,y,w,h){let dx=0,dy=0;for(const z of g.water.currents)if(overlap(x,y,w,h,z.x,z.y,z.w,z.h)){dx+=z.dx;dy+=z.dy;}return [dx,dy];}
 
+const playerOccupies=(g,x,y)=>(g.players||[g.p]).some(p=>p.state!=='dead'&&overlap(p.x,p.y,p.w,p.h,x,y,8,8));
 function freeze(g,pool){
  const Core=C(),room=g.room,p=g.p,COLS=room.cols;
  pool.frozen=g.water.thaw;pool.pending.clear();
  for(const i of pool.cells){
   const c=i%COLS,r=(i/COLS)|0,x=c*TILE,y=r*TILE;
-  const busy=(p.state!=='dead'&&overlap(p.x,p.y,p.w,p.h,x,y,8,8))||g.ents.some(e=>e.type==='lantern'&&!e.held&&overlap(e.x,e.y,e.w,e.h,x,y,8,8));
+  const busy=playerOccupies(g,x,y)||g.ents.some(e=>e.type==='lantern'&&!e.held&&overlap(e.x,e.y,e.w,e.h,x,y,8,8));
   if(busy){pool.pending.add(i);continue;}
   room.grid[i]=Core.SOLID;room.ice[i]=1;
  }
@@ -98,7 +99,7 @@ function before(g,inp){
  for(const pool of w.pools){
   if(!pool.frozen)continue;
   for(const i of [...pool.pending]){const x=(i%COLS)*TILE,y=((i/COLS)|0)*TILE;
-   const busy=(p.state!=='dead'&&overlap(p.x,p.y,p.w,p.h,x,y,8,8))||g.ents.some(e=>e.type==='lantern'&&!e.held&&overlap(e.x,e.y,e.w,e.h,x,y,8,8));
+   const busy=playerOccupies(g,x,y)||g.ents.some(e=>e.type==='lantern'&&!e.held&&overlap(e.x,e.y,e.w,e.h,x,y,8,8));
    if(!busy){pool.pending.delete(i);room.grid[i]=Core.SOLID;room.ice[i]=1;}}
   if(--pool.frozen<=0)thaw(g,pool);
  }
@@ -134,6 +135,11 @@ function after(g,inp){
    const [dx,dy]=currentAt(g,e.x,e.y,e.w,e.h);if(dy)Core.moveY(g,e,dy*DT);if(dx)Core.moveX(g,e,dx*DT);}   // down first: a current that presses the lantern under a lip then carries it through
   else if(inWater(g,e.x+4,e.y+9)&&e.vy>0){e.vy=0;}   // resting on the surface
  }
+ afterPlayer(g,inp);
+}
+function afterPlayer(g,inp){
+ const w=g.water;if(!w)return;
+ const Core=C(),p=g.p,COLS=g.room.cols,ROWS=g.room.rows;
  // The blade freezes: a strike into water freezes that pool; a strike on a condenser freezes them all.
  if(p.strikeTimer>0&&!p.strikeHit.has('water')){
   const [sx,sy,sw,sh]=Core.strikeBox(p);
@@ -144,6 +150,6 @@ function after(g,inp){
   if(hit.size){p.strikeHit.add('water');for(const id of hit)freeze(g,w.pools[id]);g.freeze=2;}
  }
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'water',reset,before,forces,airJump,after});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'water',reset,before,forces,airJump,after,afterPlayer});
 root.BladefallPrecisionWater=Object.freeze({WK,inWater,surfaceY,freeze,thaw});
 })(typeof window!=='undefined'?window:globalThis);

@@ -35,13 +35,17 @@ function release(g,p,why){
 function before(g,inp){
  const Core=C(),p=g.p;
  // Decks move on their own clock, which starts with the room's first input.
- if(!g.decksAwake&&g.awake&&(inp.mx||inp.my||inp.jump||inp.dash||inp.grab||inp.strike||inp.parry||inp.portal))g.decksAwake=true;
+ if(!g.decksAwake&&g.awake&&(g.players?g.coopInputActive:inp.mx||inp.my||inp.jump||inp.dash||inp.grab||inp.strike||inp.parry||inp.portal))g.decksAwake=true;
  for(const e of g.ents){
   if(e.type!=='deck')continue;
   if(g.decksAwake)e.clock++;
   const u=((e.clock+e.phase)%e.period)/e.period,k=u<.5?u*2:2-u*2,ease=k*k*(3-2*k);
   const nx=e.ox+e.dx*ease,ny=e.oy+e.dy*ease;Core.moveSolid(g,e,nx-(e.x+e.remX),ny-(e.y+e.remY));
  }
+ beforePlayer(g,inp);
+}
+function beforePlayer(g,inp){
+ const Core=C(),p=g.p;
  if(p.state==='dead'||p.state==='respawn'){p.hook=null;return;}
  if(p.state==='hook'){
   if(g.buf.dash>0&&p.dashes>0){release(g,p,'dash');return;}
@@ -74,6 +78,6 @@ function forces(g,p,inp){
  if(nd>h.len){const k=h.len/nd;const cx=nx*k-dx,cy=ny*k-dy;p.vx=cx/DT;p.vy=cy/DT;}
  if(p.vx)p.facing=Math.sign(p.vx);
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'hook',reset,before,forces});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'hook',reset,before,beforePlayer,forces});
 root.BladefallPrecisionHook=Object.freeze({HK,ringFor,release});
 })(typeof window!=='undefined'?window:globalThis);

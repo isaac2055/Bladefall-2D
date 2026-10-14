@@ -1,0 +1,31 @@
+import assert from 'node:assert/strict';
+import {Core} from '../pcore-tape.mjs';
+import '../../public/bladefall-workshop-ascend-coop-core.js';
+const S=globalThis.BladefallWorkshopAscendCoopCore,F=globalThis.BladefallPrecisionFoes,dev=name=>globalThis.BladefallPrecisionDevices.find(d=>d.name===name);
+function create(extra={}){const map=Array.from({length:23},()=>Array(40).fill('.'));map[21][2]='P';map[22].fill('#');return S.create({id:'shared-ranged-boss',cols:40,rows:23,map:map.map(r=>r.join('')),exit:'right',movement:'survive-2',...extra});}
+const aim=create({marksman:{perches:[{c:20,r:8}],first:0,tell:3,volley:2,gap:4}});Object.assign(aim.g.players[1],{x:180,y:100});S.step(aim);assert(aim.g.mk.aim.x>0);const locked={...aim.g.mk.aim};aim.g.players[1].x=30;S.step(aim);assert.deepEqual(aim.g.mk.aim,locked);assert.equal(aim.g.mk.t,1);S.step(aim);S.step(aim);assert.equal(aim.g.bolts.length,1);assert.equal(aim.g.mk.volley[0].t,4);S.step(aim);assert.equal(aim.g.mk.volley[0].t,3);
+const rain=create({marksman:{perches:[{c:20,r:8}],first:0,rain:{every:1,w:5,n:3}}});Object.assign(rain.g.players[1],{x:180,y:100});S.step(rain);assert.equal(rain.g.mk.band.x,164);assert.equal(rain.g.mk.band.y,176);
+for(const kind of ['marksman','sorcerer'])for(const aimed of [false,true]){
+ const s=create({[kind]:kind==='marksman'?{perches:[{c:30,r:5}]}:{posts:[{c:30,r:5}]}}),g=s.g;
+ g.awake=true;g.p=g.players[1];g.coopActor=1;Object.assign(g.p,{x:80,y:80,parryTimer:5,parryAim:aimed?{x:0,y:-1}:{x:0,y:0}});
+ g.players[0].parryAim=aimed?{x:0,y:0}:{x:1,y:0};
+ const b={x:82,y:82,w:6,h:6,vx:90,vy:40,ovx:90,ovy:40,alive:true,friendly:false,marked:true,from:kind==='marksman'?'mk':'sorc'};g.bolts.push(b);
+ F.afterPlayer(g,{});assert.equal(b.parriedBy,1);assert(b.friendly);
+ // Move the player's aim after the parry to prove the bolt owns its captured aim.
+ g.p.parryAim={x:1,y:1};g.p=g.players[0];g.coopActor=null;
+ if(kind==='marksman')dev('rbr-marksman').after(g);else dev('rbr-sorcerer').afterPlayers(g);
+ assert(b.turned);if(aimed){assert.equal(b.vx,0);assert(b.vy<0);}else{assert(b.vx<0&&b.vy<0);assert(Math.abs(b.vx/b.vy-90/40)<1e-10);}
+}
+const hit=create({marksman:{perches:[{c:20,r:8},{c:28,r:6}],hits:2}});hit.g.awake=true;hit.g.bolts.push({x:hit.g.mk.x,y:hit.g.mk.y,w:6,h:6,alive:true,friendly:true,parriedBy:1});dev('rbr-marksman').before(hit.g);assert.equal(hit.g.mk.hits,1);assert.equal(hit.g.mk.state,'leap');assert.equal(hit.g.mk.t,1);assert(hit.g.events.some(e=>e.type==='marksman-hit'&&e.player===1));
+const ice=create({sorcerer:{posts:[{c:20,r:8}],first:0,icicles:{every:1,n:1}}});Object.assign(ice.g.players[1],{x:180,y:100});S.step(ice);assert.equal(ice.g.icicles.length,1);assert.equal(ice.g.icicles[0].x,185);S.step(ice);assert.equal(ice.g.icicles[0].t,1);assert.equal(ice.g.sorc.t,1);
+const safe=create({sorcerer:{posts:[{c:20,r:8}]}});safe.g.awake=true;const stake={x:80,y:150,w:6,h:16,state:'stake',t:0,life:10,ent:{type:'iceStake',dev:true,solid:false,x:80,y:150,w:6,h:16}};safe.g.icicles.push(stake);safe.g.ents.push(stake.ent);Object.assign(safe.g.players[1],{x:80,y:150});dev('rbr-sorcerer').before(safe.g);assert(!stake.ent.solid);assert.equal(stake.life,9);safe.g.players[1].x=120;dev('rbr-sorcerer').before(safe.g);assert(stake.ent.solid);
+const cut=create({sorcerer:{posts:[{c:20,r:8}],leave:'kneel'}});cut.g.awake=true;cut.g.sorc.state='broken';Object.assign(cut.g.players[1],{x:145,y:56,strikeTimer:5,strikeDir:{x:1,y:0},strikeHit:new Set()});dev('rbr-sorcerer').afterPlayers(cut.g);assert.equal(cut.g.sorc.hits,1);assert(cut.g.sorc.kneel);assert(cut.g.events.some(e=>e.type==='sorc-hit'&&e.player===1));
+const defend=create({sorcerer:{posts:[{c:30,r:5}]}});defend.g.awake=true;Object.assign(defend.g.players[0],{x:80,y:100});Object.assign(defend.g.players[1],{x:65,y:100,strikeTimer:5,strikeDir:{x:1,y:0},strikeHit:new Set()});defend.g.icicles.push({x:82,y:100,w:6,h:10,state:'fall'});dev('rbr-sorcerer').afterPlayers(defend.g);assert.equal(defend.g.icicles.length,0);assert.notEqual(defend.g.players[0].state,'dead','partner can shatter icicle before host damage');
+const hurt=create({sorcerer:{posts:[{c:30,r:5}]}});hurt.g.awake=true;Object.assign(hurt.g.players[1],{x:80,y:100});hurt.g.icicles.push({x:82,y:100,w:6,h:10,state:'fall'});dev('rbr-sorcerer').afterPlayers(hurt.g);assert.equal(hurt.g.players[1].state,'dead');assert(hurt.g.events.some(e=>e.type==='death'&&e.player===1&&e.cause==='icicle'));
+const tallMap=Array.from({length:50},()=>'.'.repeat(40));tallMap[48]='..P'+'.'.repeat(37);tallMap[49]='#'.repeat(40);
+const tall=S.create({id:'tall-rain',cols:40,rows:50,map:tallMap,marksman:{perches:[{c:20,r:30}],first:0,rain:{every:1}}});S.step(tall);assert.equal(tall.g.mk.band.y,392,'rain marker uses authored room height');
+const tyrant=create({tyrant:{c:30,r:3,hunt:{first:0}}});Object.assign(tyrant.g.players[1],{x:210,y:100});S.step(tyrant);assert.equal(tyrant.g.tyrant.kt,1);assert.equal(tyrant.g.tyrant.aimAt.x,214);assert.equal(tyrant.g.tyrant.shots.length,1);
+function boltTest(defense){const s=create({tyrant:{shotRow:5,weakRow:12,first:999}}),g=s.g;g.awake=true;Object.assign(g.players[0],{x:80,y:100});Object.assign(g.players[1],{x:defense==='strike'?65:90,y:100,parryTimer:defense==='parry'?5:0,strikeTimer:defense==='strike'?5:0,strikeDir:{x:1,y:0},strikeHit:new Set()});g.tyrant.shots.push({x:82,y:100,w:4,h:4,vx:1,vy:0,through:false,cool:0});dev('rbr-tyrant').afterPlayers(g);return g;}
+for(const defense of ['strike','parry']){const g=boltTest(defense);assert.notEqual(g.players[0].state,'dead','guest '+defense+' precedes host collision');assert(g.events.some(e=>e.type===(defense==='parry'?'parry':'enemy-hit')&&e.player===1));assert.equal(g.tyrant.t,1);}
+const tyrantHurt=create({tyrant:{shotRow:5,weakRow:12,first:999}});tyrantHurt.g.awake=true;Object.assign(tyrantHurt.g.players[1],{x:80,y:100});tyrantHurt.g.tyrant.shots.push({x:82,y:100,w:4,h:4,vx:1,vy:0,through:false,cool:0});dev('rbr-tyrant').afterPlayers(tyrantHurt.g);assert(tyrantHurt.g.events.some(e=>e.type==='death'&&e.player===1&&e.cause==='tyrant-bolt'));
+console.log('PASS: shared ranged boss target/locked aim, one volley/ice clock, captured guest parry aim, returned arrow damage, safe stakes, guest Sorcerer cuts, partner icicle defense, and Tyrant shared targeting/defenses/damage.');

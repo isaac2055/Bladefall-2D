@@ -44,8 +44,8 @@ function before(g,inp){
  // The core wakes the room on the first input and arms the shared parry (C.parryStep).
  if(!g.awake)return;
  g.combat.awake=true;
- const p=g.p;
  for(const e of g.combat.enemies){
+  const p=g.players?g.players.filter(p=>p.state!=='dead'&&p.state!=='respawn').sort((a,b)=>Math.hypot(a.x-e.x,a.y-e.y)-Math.hypot(b.x-e.x,b.y-e.y))[0]:g.p;
   if(e.dead)continue;
   if(e.flash>0)e.flash--;if(e.exposed>0)e.exposed--;
   if(e.stun>0){e.stun--;moveActor(g,e);continue;}
@@ -75,6 +75,7 @@ function before(g,inp){
   }else if(e.state==='recover'){
    if(--e.t<=0){e.state='idle';e.cooldown=24;}
   }else{
+   if(!p)continue;
    if(e.cooldown>0)e.cooldown--;
    const a=center(e),b=center(p),dx=b.x-a.x,dy=b.y-a.y;
    const range=e.kind==='guard'?30:e.kind==='hound'?180:240;
@@ -140,9 +141,8 @@ function projectileHit(g,box,dir){
  for(const e of co.enemies)if(!e.dead&&hit(e,box)){damage(g,e,dir,true);return true;}
  return false;
 }
-function after(g,inp){
- if(!g.combat?.awake)return;
- const p=g.p,co=g.combat;
+function blade(g,p){
+ const co=g.combat;
  // Blade contact is resolved before attacks, and before a lethal target disappears.
  if(p.strikeTimer>0){
   const sb=C.strikeBox(p);
@@ -153,13 +153,20 @@ function after(g,inp){
    damage(g,e,p.strikeDir);
   }
  }
- const hurtbox={x:p.x,y:p.y,w:p.w,h:9},guard={x:p.x-5,y:p.y-5,w:p.w+10,h:p.h+10};
+}
+const hurtbox=p=>({x:p.x,y:p.y,w:p.w,h:9});
+const guard=p=>({x:p.x-5,y:p.y-5,w:p.w+10,h:p.h+10});
+function attacks(g,p,defendOnly=false){
+ const co=g.combat;
  for(const e of co.enemies){
   if(e.dead||e.state!=='attack')continue;
   const box=e.kind==='guard'?{x:e.face>0?e.x+e.w:e.x-19,y:e.y+4,w:19,h:7}:e;
-  if(p.parryTimer>0&&hit(guard,box)){parry(g,e);continue;}
-  if(hit(hurtbox,box)){hurt(g,e.kind);return;}
+  if(p.parryTimer>0&&hit(guard(p),box)){parry(g,e);continue;}
+  if(!defendOnly&&hit(hurtbox(p),box)){hurt(g,e.kind);return true;}
  }
+}
+function shots(g,players){
+ const co=g.combat;
  for(const s of co.shots){
   if(s.gone)continue;
   if(--s.life<=0){s.gone=true;continue;}
@@ -168,12 +175,15 @@ function after(g,inp){
   const steps=Math.max(Math.abs(dx),Math.abs(dy),1),ox=s.x,oy=s.y;
   for(let i=1;i<=steps;i++){
    s.x=ox+Math.round(dx*i/steps);s.y=oy+Math.round(dy*i/steps);
-   if(!s.reflected&&p.parryTimer>0&&hit(guard,s)){
+   const p=players.find(p=>p.state!=='dead'&&p.parryTimer>0&&hit(guard(p),s));
+   if(!s.reflected&&p){
+    select(g,p);
     const aim=p.parryAim||{},n=Math.hypot(aim.x||0,aim.y||0);
     if(n){s.vx=aim.x/n*K.shotSpeed*1.5;s.vy=aim.y/n*K.shotSpeed*1.5;}else{s.vx*=-1.5;s.vy*=-1.5;}
     s.reflected=true;s.remX=s.remY=0;parry(g);event(g,'shot-return',s);break;
    }
-   if(!s.reflected&&hit(hurtbox,s)){s.gone=true;hurt(g,'bolt');return;}
+   const victim=players.find(p=>p.state!=='dead'&&hit(hurtbox(p),s));
+   if(!s.reflected&&victim){select(g,victim);s.gone=true;hurt(g,'bolt');if(!g.players)return;break;}
    if(s.reflected){
     for(const r of co.receivers)if(!r.lit&&hit(r,s)){r.lit=true;s.gone=true;event(g,'receiver-lit',r,{id:r.id});break;}
     if(!s.gone)for(const e of co.enemies)if(!e.dead&&hit(e,s)){damage(g,e,{x:Math.sign(s.vx),y:0},true);s.gone=true;break;}
@@ -192,5 +202,19 @@ function after(g,inp){
   if(ready&&!d.open){d.open=true;event(g,'combat-gate',d);}
  }
 }
-root.BladefallPrecisionCombat=Object.freeze({K,reset,before,after,visible,occupies,solidRiders,solidMoved,projectileHit});
+function select(g,p){g.p=p;if(g.players)g.coopActor=g.players.indexOf(p);}
+function after(g,inp){
+ if(!g.combat?.awake||g.players)return;
+ blade(g,g.p);if(attacks(g,g.p))return;shots(g,[g.p]);
+}
+function afterPlayers(g){
+ if(!g.combat?.awake)return;
+ const saved=g.p,actor=g.coopActor,players=(g.players||[]).filter(p=>p.state!=='dead'&&p.state!=='respawn');
+ try{
+  for(const p of players){select(g,p);blade(g,p);attacks(g,p,true);}
+  for(const p of players){select(g,p);attacks(g,p);}
+  shots(g,players);
+ }finally{g.p=saved;g.coopActor=actor;}
+}
+root.BladefallPrecisionCombat=Object.freeze({K,reset,before,after,afterPlayers,visible,occupies,solidRiders,solidMoved,projectileHit});
 })(typeof window!=='undefined'?window:globalThis);

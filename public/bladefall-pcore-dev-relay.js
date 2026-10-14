@@ -32,8 +32,13 @@ function reset(g){
  g.ents.push(e);
  g.relay={e,delay:def.companion.delay||RK.delay,path:[{x:p.x,y:p.y}],i:0,held:false,settling:false};
 }
+function sharedReady(g){
+ if(!g.relay)return;
+ const template=g.relay;g.ents=g.ents.filter(e=>e!==template.e);
+ for(const [i,p]of g.players.entries()){const e={...template.e,id:'oren:'+i,x:p.x,y:p.y};g.ents.push(e);p.relay={...template,e,path:[{x:p.x,y:p.y}],i:0,held:false,settling:false};}
+}
 function before(g,inp){
- const R=g.relay;if(!R)return;
+ const R=g.players?g.p.relay:g.relay;if(!R)return;
  const Core=C(),p=g.p,e=R.e;
  if(g.buf.portal>0&&p.state!=='dead'&&p.state!=='respawn'){
   g.buf.portal=0;R.held=!R.held;R.settling=R.held;e.presses=false;e.thru=false;
@@ -49,7 +54,7 @@ function before(g,inp){
   if(grounded(g,e)){R.settling=false;e.presses=true;Core.emit(g,'oren-hold',{x:e.x+4,y:e.y+5});}
  }
  // Held, his shoulders are a one-way step; he may not take hold inside the knight.
- if(R.held&&!R.settling&&!e.thru&&!overlap(p.x,p.y,p.w,p.h,e.x,e.y,e.w,e.h))e.thru=true;
+ if(R.held&&!R.settling&&!e.thru&&!(g.players||[p]).some(p=>p.state!=='dead'&&p.state!=='respawn'&&overlap(p.x,p.y,p.w,p.h,e.x,e.y,e.w,e.h)))e.thru=true;
  if(!R.held){
   // Walk the path: never closer than `delay` points behind the knight; faster when he has fallen back.
   const target=Math.max(0,R.path.length-1-R.delay);
@@ -61,7 +66,7 @@ function before(g,inp){
  // A hostile bolt breaks on him while he holds.
  if(R.held&&!R.settling&&g.bolts)for(const b of g.bolts)if(b.alive&&!b.friendly&&overlap(b.x,b.y,b.w,b.h,e.x,e.y,e.w,e.h)){b.alive=false;Core.emit(g,'guard-block',{x:b.x+3,y:b.y+3});}
 }
-function mirror(g){const R=g.relay;if(!R)return;for(const s of R.path)s.y=184-s.y-11;}   // his own body is mirrored with the other entities
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'relay',reset,before,mirror});
+function mirror(g){for(const state of g.players||[g]){const R=state.relay;if(R)for(const s of R.path)s.y=g.room.h-s.y-11;}}   // his own body is mirrored with the other entities
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'relay',reset,sharedReady,before,beforePlayer:before,mirror});
 root.BladefallPrecisionRelay=Object.freeze({RK});
 })(typeof window!=='undefined'?window:globalThis);

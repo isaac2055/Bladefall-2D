@@ -35,6 +35,9 @@ const box=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
 const alive=p=>p.state!=='dead'&&p.state!=='respawn';
 const knight=p=>({x:p.x,y:p.y,w:p.w,h:p.h});
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+function target(g,z){return g.players?.filter(alive).sort((a,b)=>Math.hypot(a.x-z.x,a.y-z.y)-Math.hypot(b.x-z.x,b.y-z.y))[0]||g.p;}
+function eachPlayer(g,fn){const p=g.p,a=g.coopActor;try{for(const [i,k]of (g.players||[p]).entries()){if(!alive(k))continue;g.p=k;if(g.players)g.coopActor=i;fn(k);}}finally{g.p=p;g.coopActor=a;}}
+function hurt(g,area,cause){eachPlayer(g,p=>{if(box(knight(p),area))C().kill(g,p,cause);});}
 function cut(g,p,body,key){
  if(!alive(p)||!(p.strikeTimer>0)||p.strikeHit.has(key))return false;
  const sb=C().strikeBox(p);if(!C().overlap(...sb,body.x-2,body.y-2,body.w+4,body.h+4))return false;
@@ -52,8 +55,7 @@ function stepCurtain(g,cu,x0,x1){
  if(cu.t++<cu.tell)return;
  cu.x+=cu.dir*cu.speed;
  if(cu.dir>0?cu.x>x1:cu.x+BAT.w<x0){cu.done=true;return;}
- const p=g.p;if(!alive(p))return;
- if(p.x+p.w>cu.x&&p.x<cu.x+BAT.w&&(p.y<cu.top||p.y+p.h>cu.bot)&&p.y+p.h>8)C().kill(g,p,'bats');
+ eachPlayer(g,p=>{if(p.x+p.w>cu.x&&p.x<cu.x+BAT.w&&(p.y<cu.top||p.y+p.h>cu.bot)&&p.y+p.h>8)C().kill(g,p,'bats');});
 }
 function curtainReset(g){
  const d=g.room.def.curtain;g.curtain=null;if(!d)return;
@@ -78,7 +80,7 @@ function duelReset(g){
 }
 const ax0=z=>z.d.arena[0]*8,ax1=z=>(z.d.arena[1]+1)*8-EK.w;
 function nextEcho(g,z){
- const p=g.p,px=p.x;let act;
+ const p=target(g,z),px=p.x;let act;
  if(z.script){act=z.script.shift();if(!act){z.mode='leave';z.t=0;C().emit(g,'echo-leave',{x:z.x+4,y:z.y});return;}}
  else{const every=ev(z,'leapEvery')||3;act=z.order++%every===every-1?'leap':'dash';}
  z.t=0;
@@ -87,17 +89,17 @@ function nextEcho(g,z){
  else{z.mode='leap-tell';z.to=clamp(px,ax0(z),ax1(z));z.face=Math.sign(z.to-z.x)||z.face;C().emit(g,'echo-tell',{x:z.to+4,y:z.base+EK.h,leap:true});}
 }
 function duelBefore(g){
- const z=g.duel;if(!z)return;const Core=C(),p=g.p;
+ const z=g.duel;if(!z)return;const Core=C(),p=target(g,z);
  if(z.hurt>0)z.hurt--;
  if(g.solvedBefore&&!z.d.kneel&&z.mode!=='gone'){z.mode='gone';z.waves=[];z.ghosts=[];}
  // waves and afterimages run whatever the Echo is doing
  const floorY=z.d.floor*8;
  for(const w of z.waves){w.x+=w.dir*ev(z,'wave');if(w.x<ax0(z)-4||w.x>ax1(z)+EK.w+4)w.done=true;
-  else if(alive(p)&&box(knight(p),{x:w.x-EK.waveW/2,y:floorY-EK.waveH,w:EK.waveW,h:EK.waveH}))Core.kill(g,p,'echo-wave');}
+  else hurt(g,{x:w.x-EK.waveW/2,y:floorY-EK.waveH,w:EK.waveW,h:EK.waveH},'echo-wave');}
  z.waves=z.waves.filter(w=>!w.done);
  for(const q of z.ghosts){if(q.delay>0){q.delay--;continue;}
   const nx=q.dir>0?Math.min(q.to,q.x+ev(z,'dash')):Math.max(q.to,q.x-ev(z,'dash'));
-  if(alive(p)&&box(knight(p),{x:Math.min(q.x,nx),y:z.base,w:Math.abs(nx-q.x)+EK.w,h:EK.h}))Core.kill(g,p,'echo-ghost');
+  hurt(g,{x:Math.min(q.x,nx),y:z.base,w:Math.abs(nx-q.x)+EK.w,h:EK.h},'echo-ghost');
   q.x=nx;if(q.x===q.to)q.done=true;}
  z.ghosts=z.ghosts.filter(q=>!q.done);
  if(z.mode==='gone'||z.mode==='kneel')return;
@@ -105,20 +107,21 @@ function duelBefore(g){
  z.t++;
  if(z.mode!=='leave'&&z.mode!=='hop'&&z.mode!=='dash'&&z.mode!=='leap')z.face=Math.sign(p.x-z.x)||z.face;
  switch(z.mode){
-  case 'idle':if(z.d.wake==null||p.x>=z.d.wake*8){z.mode='poise';z.t=0;}break;
+  case 'idle':if(z.d.wake==null||(g.players||[p]).some(k=>alive(k)&&k.x>=z.d.wake*8)){z.mode='poise';z.t=0;}break;
   case 'poise':if(z.t>=ev(z,'poise'))nextEcho(g,z);break;
   case 'dash-tell':z.face=z.dir;if(z.t>=ev(z,'tell')){z.mode='dash';z.t=0;z.from=z.x;if(z.d.ghost)z.ghosts.push({x:z.x,to:z.to,dir:z.dir,delay:z.d.ghost});Core.emit(g,'echo-dash',{x:z.x+4,y:z.y+5});}break;
   case 'dash':{const nx=z.dir>0?Math.min(z.to,z.x+ev(z,'dash')):Math.max(z.to,z.x-ev(z,'dash'));
-   if(alive(p)&&box(knight(p),{x:Math.min(z.x,nx),y:z.y,w:Math.abs(nx-z.x)+EK.w,h:EK.h})){
-    if(p.parryTimer>0){Core.parrySuccess(g,p);z.x=clamp(nx-z.dir*12,ax0(z),ax1(z));z.mode='stagger';z.t=0;Core.emit(g,'echo-parried',{x:z.x+4,y:z.y+5});break;}
-    Core.kill(g,p,'echo-dash');}
+   const area={x:Math.min(z.x,nx),y:z.y,w:Math.abs(nx-z.x)+EK.w,h:EK.h};
+   const parrier=(g.players||[p]).find(k=>alive(k)&&k.parryTimer>0&&box(knight(k),area));
+   if(parrier){eachPlayer(g,k=>{if(k!==parrier)return;Core.parrySuccess(g,k);z.x=clamp(nx-z.dir*12,ax0(z),ax1(z));z.mode='stagger';z.t=0;Core.emit(g,'echo-parried',{x:z.x+4,y:z.y+5});});break;}
+   hurt(g,area,'echo-dash');
    z.x=nx;if(z.x===z.to){
     // (7.317) a doubled run turns at once and comes back
     if(ev(z,'double')&&!z.back){z.back=true;z.dir=-z.dir;z.face=z.dir;z.to=clamp(p.x+z.dir*ev(z,'past'),ax0(z),ax1(z));if(Math.abs(z.to-z.x)<24)z.to=clamp(z.x+z.dir*64,ax0(z),ax1(z));z.mode='dash-tell';z.t=Math.max(0,ev(z,'tell')-12);Core.emit(g,'echo-tell',{x:z.x+4,y:z.y,dash:true});break;}
     z.back=false;z.mode='recover';z.t=0;}break;}
   case 'leap-tell':if(z.t>=ev(z,'leapTell')){z.mode='leap';z.t=0;z.from=z.x;Core.emit(g,'echo-leap',{x:z.x+4,y:z.y});}break;
   case 'leap':{const n=ev(z,'leap'),u=Math.min(1,z.t/n);z.x=z.from+(z.to-z.from)*u;z.y=z.base-Math.sin(u*Math.PI)*ev(z,'leapH');
-   if(u>=1){z.x=z.to;z.y=z.base;if(alive(p)&&box(knight(p),z))Core.kill(g,p,'echo-land');
+   if(u>=1){z.x=z.to;z.y=z.base;hurt(g,z,'echo-land');
     z.waves.push({x:z.x+EK.w/2,dir:-1},{x:z.x+EK.w/2,dir:1});Core.emit(g,'echo-wave',{x:z.x+4,y:z.base+EK.h});z.mode='recover';z.t=0;}break;}
   case 'recover':if(z.t>=ev(z,'recover'))nextEcho(g,z);break;
   case 'stagger':if(z.t>=ev(z,'stagger'))nextEcho(g,z);break;
@@ -170,7 +173,7 @@ const vx0=z=>z.d.arena[0]*8,vx1=z=>(z.d.arena[1]+1)*8;
 function supportY(z,x,y){let best=z.fy;for(const [c0,c1,r] of z.d.ledges||[])if(x+4>=c0*8&&x+4<(c1+1)*8&&r*8>=y-2&&r*8<best)best=r*8;return best;}
 function spanAt(z,x,s){if(s===z.fy)return [vx0(z),vx1(z)];for(const [c0,c1,r] of z.d.ledges||[])if(r*8===s&&x>=c0*8-8&&x<(c1+1)*8+8)return [c0*8,(c1+1)*8];return [vx0(z),vx1(z)];}
 function vNext(g,z){
- const pat=PATTERN[z.form],act=pat[z.order++%pat.length],p=g.p,Core=C();z.t=0;
+ const pat=PATTERN[z.form],act=pat[z.order++%pat.length],p=target(g,z),Core=C();z.t=0;
  if(act==='phantom'){z.mode='vanish';z.second=z.order%3===2;}
  else if(act==='chains'){z.mode='chains-tell';}
  else if(act==='curtain'){
@@ -195,18 +198,18 @@ function vForm(g,z,f){
  z.mode='shift';Core.emit(g,'vesper-form',{x:c,y:z.y,form:f,name:FORMS[f]});
 }
 function vBefore(g){
- const z=g.vesper;if(!z)return;const Core=C(),p=g.p,live=alive(p),me=knight(p);
+ const z=g.vesper;if(!z)return;const Core=C(),p=target(g,z);
  if(z.hurt>0)z.hurt--;
  // hazards: waves, bats, teeth, the lunge
  for(const w of z.waves){w.x+=w.dir*VK.chains.wave;if(w.x<w.x0-4||w.x>w.x1+4)w.done=true;
-  else if(live&&box(me,{x:w.x-3,y:w.y-7,w:6,h:7}))Core.kill(g,p,'vesper-chains');}
+  else hurt(g,{x:w.x-3,y:w.y-7,w:6,h:7},'vesper-chains');}
  z.waves=z.waves.filter(w=>!w.done);
  for(const cu of z.curtains)stepCurtain(g,cu,vx0(z),vx1(z));z.curtains=z.curtains.filter(c=>!c.done);
  if(z.teeth){const T=z.teeth,k=VK.teeth;T.t++;for(const s of T.segs){const u=T.t-s.at;s.crack=u>=0&&u<k.tell;s.up=u>=k.tell&&u<k.tell+k.up;
-   if(s.up&&live&&box(me,{x:s.x,y:z.fy-k.h,w:k.seg,h:k.h}))Core.kill(g,p,'vesper-teeth');}
+   if(s.up)hurt(g,{x:s.x,y:z.fy-k.h,w:k.seg,h:k.h},'vesper-teeth');}
   if(T.t>T.end)z.teeth=null;}
  if(z.mode==='still'||z.mode==='gone')return;
- if(z.mode==='idle'){if(g.awake&&(z.d.wake==null||p.x>=z.d.wake*8)){z.mode='poise';z.t=0;Core.emit(g,'vesper-wake',{x:z.x+6,y:z.y});}return;}
+ if(z.mode==='idle'){if(g.awake&&(z.d.wake==null||(g.players||[p]).some(k=>alive(k)&&k.x>=z.d.wake*8))){z.mode='poise';z.t=0;Core.emit(g,'vesper-wake',{x:z.x+6,y:z.y});}return;}
  z.t++;
  const toward=Math.sign(p.x+4-(z.x+z.w/2))||z.face;
  switch(z.mode){
@@ -216,25 +219,25 @@ function vBefore(g){
   case 'vanish':if(z.t>=VK.vanish){const s=supportY(z,p.x,p.y+p.h),[l,r]=spanAt(z,p.x,s),room=r-p.x>p.x-l?1:-1,side=room*VK.phantom.side;
     const gx=clamp(p.x+4+side-VK.w/2,l,r-VK.w);z.ghost={x:gx,y:s-VK.h,face:-room};z.mode='ghost';z.t=0;Core.emit(g,'vesper-ghost',{x:gx+6,y:s-VK.h});}break;
   case 'ghost':if(z.t>=(z.second?VK.phantom.tell2:VK.phantom.tell)){z.x=z.ghost.x;z.y=z.ghost.y;z.face=z.ghost.face;z.ghost=null;z.mode='slash';z.t=0;Core.emit(g,'vesper-slash',{x:z.x+6,y:z.y+14});}break;
-  case 'slash':{const R=VK.phantom.reach,cx=z.x+z.w/2,zone={x:z.face>0?cx:cx-R,y:z.y+z.h-30,w:R,h:30};if(live&&box(me,zone))Core.kill(g,p,'vesper-slash');
+  case 'slash':{const R=VK.phantom.reach,cx=z.x+z.w/2,zone={x:z.face>0?cx:cx-R,y:z.y+z.h-30,w:R,h:30};hurt(g,zone,'vesper-slash');
    if(z.t>=VK.phantom.slash){z.mode='open';z.t=0;z.openFor=VK.phantom.recover;}break;}
   case 'chains-tell':z.face=toward;if(z.t>=VK.chains.tell){const s=z.y+z.h,[l,r]=spanAt(z,z.x,s);z.waves.push({x:z.x+z.w/2,dir:-1,y:s,x0:l,x1:r},{x:z.x+z.w/2,dir:1,y:s,x0:l,x1:r});
     Core.emit(g,'vesper-chains',{x:z.x+6,y:s});z.mode='open';z.t=0;z.openFor=VK.chains.recover;}break;
   // II · Unbound
   case 'aloft':if(!z.curtains.length){z.mode='dive-tell';z.t=0;z.diveX=clamp(p.x+4-VK.w/2,vx0(z),vx1(z)-VK.w);Core.emit(g,'vesper-dive-tell',{x:z.diveX+6,y:z.fy});}break;
   case 'dive-tell':z.x+=(z.diveX-z.x)*.25;if(z.t>=VK.dive.tell){z.x=z.diveX;z.mode='dive';z.t=0;}break;
-  case 'dive':{const ny=Math.min(z.fy-z.h,z.y+VK.dive.speed);if(live&&box(me,{x:z.x,y:z.y,w:z.w,h:ny-z.y+z.h}))Core.kill(g,p,'vesper-dive');z.y=ny;
+  case 'dive':{const ny=Math.min(z.fy-z.h,z.y+VK.dive.speed);hurt(g,{x:z.x,y:z.y,w:z.w,h:ny-z.y+z.h},'vesper-dive');z.y=ny;
    if(z.y>=z.fy-z.h){z.mode='open';z.t=0;z.openFor=VK.dive.recover;z.dizzy=true;Core.emit(g,'vesper-land',{x:z.x+6,y:z.fy});}break;}
   case 'rise':{const ty=z.d.top*8,tx=(vx0(z)+vx1(z))/2-VK.w/2;z.y+=(ty-z.y)*.12;z.x+=(tx-z.x)*.12;if(z.t>=VK.rise){z.y=ty;z.x=tx;vNext(g,z);}break;}
   // III · the Bones
   case 'teeth':if(!z.teeth){z.mode='open';z.t=0;z.openFor=VK.teeth.recover;}break;
   case 'lunge-tell':if(z.t>=VK.lunge.tell){z.mode='lunge';z.t=0;Core.emit(g,'vesper-lunge',{x:z.x+12,y:z.fy});}break;
-  case 'lunge':{const L=z.lunge,nx=clamp(z.x+L.dir*VK.lunge.speed,vx0(z),vx1(z)-z.w);if(live&&box(me,{x:Math.min(z.x,nx),y:z.y,w:Math.abs(nx-z.x)+z.w,h:z.h}))Core.kill(g,p,'vesper-lunge');
+  case 'lunge':{const L=z.lunge,nx=clamp(z.x+L.dir*VK.lunge.speed,vx0(z),vx1(z)-z.w);hurt(g,{x:Math.min(z.x,nx),y:z.y,w:Math.abs(nx-z.x)+z.w,h:z.h},'vesper-lunge');
    const stop=nx===z.x;z.x=nx;if(stop){z.lunge=null;z.mode='open';z.t=0;z.openFor=VK.lunge.recover;}break;}
   // IV · all of him
   case 'slam':{const h=z.hand,s=VK.slam;h.t++;
    if(h.mode==='lift'&&h.t>=s.tell){h.mode='down';h.t=0;Core.emit(g,'vesper-slam',{x:(h.x0+h.x1)/2,y:z.fy});
-    if(live&&p.x+p.w>h.x0&&p.x<h.x1&&p.y+p.h>z.fy-s.h)Core.kill(g,p,'vesper-slam');}
+    eachPlayer(g,p=>{if(p.x+p.w>h.x0&&p.x<h.x1&&p.y+p.h>z.fy-s.h)Core.kill(g,p,'vesper-slam');});}
    else if(h.mode==='down'&&h.t>=4){h.mode='rest';h.t=0;z.mode='open';z.t=0;z.openFor=s.rest;}
    break;}
   case 'summon':if(!z.curtains.length&&!z.teeth){z.mode='poise';z.t=Math.floor(VK.poise*.4);}break;
@@ -272,6 +275,6 @@ function reset(g){g.solvedBefore=false;duelReset(g);vReset(g);curtainReset(g);}
 function before(g){duelBefore(g);vBefore(g);curtainBefore(g);}
 function after(g){duelAfter(g);vAfter(g);}
 function gateHold(g){return !!(g.duel&&!['gone','leave','kneel'].includes(g.duel.mode)||g.vesper&&g.vesper.mode!=='still');}
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'finale',reset,before,after,gateHold});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'finale',reset,before,after,afterPlayer:after,gateHold});
 root.BladefallPrecisionFinale=Object.freeze({EK,VK,BAT,FORMS,PATTERN,supportY});
 })(typeof window!=='undefined'?window:globalThis);

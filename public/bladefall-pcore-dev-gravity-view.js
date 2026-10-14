@@ -22,7 +22,7 @@ function draw(b,g){
 function drawFront(b,g){
  if(!g.flipped)return;
  // Under the view's flip, sim y = 183 is the top of the screen.
- b.globalAlpha=.55;px(b,0,183,320,1,'#b98cff');b.globalAlpha=1;
+ b.globalAlpha=.55;px(b,0,g.room.h-1,g.room.w,1,'#b98cff');b.globalAlpha=1;
 }
 function event(e,{burst,shake}){if(e.type==='gravity'){burst(e.x,e.y,24,'#c9a0ff',80,26);shake(2,8);}}
 const sfx={gravity:(e,{tone})=>{tone(e.flipped?300:600,.3,'sine',.05,e.flipped?300:-300);tone(900,.2,'triangle',.02,0,.05);}};

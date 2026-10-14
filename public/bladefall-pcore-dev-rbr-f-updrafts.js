@@ -18,6 +18,9 @@ function slickSide(g,p,dir,dist){const s=g.slick,Core=root.BladefallPrecisionCor
  return slick&&!grip;}
 function before(g,inp){const b=g.breathing;
  if(b){if(g.awake)b.t++;for(const w of g.winds||[]){const z=w.breath;if(!z)continue;const t=(b.t+z.offset)%b.period;z.phase=t<b.inhale?0:1;z.warning=z.phase===0?t>=b.inhale-27:t>=b.period-27;w.dy=z.phase===0?z.lift:120;}}
+ beforePlayer(g,inp);
+}
+function beforePlayer(g,inp){
  const p=g.p;if(!g.slick||!p||p.state==='dead'||p.state==='respawn')return;
  const upDash=p.state==='dash'&&p.dashDir&&p.dashDir.x===0&&p.dashDir.y<0;
  const lateBounce=p.state==='normal'&&p.move2?.wallGrace>0;
@@ -30,5 +33,6 @@ function before(g,inp){const b=g.breathing;
  // no wall jump off it: only the jump that ends a straight-up dash (the wallbounce) pushes off
  if(g.buf&&g.buf.jump>0&&!p.onGround&&!(p.jumpGrace>0)&&!upDash&&!lateBounce)g.buf.jump=0;
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-f-updrafts',reset,before});
+function mirror(g){const s=g.slick;if(!s)return;const old=s.m.slice();for(let r=0;r<s.rows;r++)for(let c=0;c<s.cols;c++)s.m[(s.rows-1-r)*s.cols+c]=old[r*s.cols+c];}
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-f-updrafts',reset,before,beforePlayer,mirror});
 })(typeof window!=='undefined'?window:globalThis);

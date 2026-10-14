@@ -123,7 +123,7 @@ function icicleStep(g){
    }
   }else if(c.state==='stake'){
    // Solid once the knight is clear of it (it never closes around her).
-   const p=g.p;if(!c.ent.solid&&!overlap(p.x,p.y,p.w,p.h,c.x,c.y,c.w,c.h))c.ent.solid=true;
+   if(!c.ent.solid&&!(g.players||[g.p]).some(p=>p.state!=='dead'&&p.state!=='respawn'&&overlap(p.x,p.y,p.w,p.h,c.x,c.y,c.w,c.h)))c.ent.solid=true;
    if(--c.life<=0){c.state='gone';Core.emit(g,'icicle-melt',{x:c.x+3,y:c.y+c.h/2});}
   }
   if(c.state==='gone'&&c.ent){c.ent.gone=true;c.ent.solid=false;}
@@ -142,7 +142,7 @@ function before(g){
  if(g.sorc&&g.awake)frost(g);
 }
 function beforeSorc(g,s){
- const Core=C(),p=g.p;
+ const Core=C(),p=g.players?.filter(p=>p.state!=='dead'&&p.state!=='respawn').sort((a,b)=>Math.hypot(a.x+4-s.x-s.w/2,a.y+5-s.y-s.h/2)-Math.hypot(b.x+4-s.x-s.w/2,b.y+5-s.y-s.h/2))[0]||g.p;
  s.t++;
  if(s.kneel)return;
  const was=s.warded;if(s.state!=='drop'&&s.state!=='down'&&s.state!=='blink')s.warded=warded(g,s);
@@ -185,21 +185,21 @@ function beforeSorc(g,s){
  }
 }
 /* A turned orb flies back exactly along its own line when nothing is held (as the Marksman's arrows do). */
-function after(g){
+function settle(g,phase='all'){
  const s=g.sorc;if(!s||!g.bolts)return;
- const Core=C(),p=g.p,a=p.parryAim;
+ const Core=C(),p=g.p;
  for(const b of g.bolts){
   if(!b.marked||!b.friendly||b.turned||b.from!=='sorc')continue;
-  b.turned=true;
+  b.turned=true;const a=g.players?b.returnAim:p.parryAim;
   if(!(a&&(a.x||a.y))){const k=Math.hypot(b.vx,b.vy)/(Math.hypot(b.ovx,b.ovy)||1);b.vx=-b.ovx*k;b.vy=-b.ovy*k;}
  }
  if(g.icicles&&g.icicles.length&&p.state!=='dead'&&p.state!=='respawn'){
   // The blade shatters an icicle or a stake; a falling icicle kills.
-  if(p.strikeTimer>0){const sb=Core.strikeBox(p);for(const c of g.icicles)if(c.state!=='form'&&overlap(...sb,c.x,c.y,c.w,c.h)){c.state='gone';if(c.ent){c.ent.gone=true;c.ent.solid=false;}Core.emit(g,'icicle-break',{x:c.x+3,y:c.y+c.h/2,cut:true});}
+  if(phase!=='hurt'&&p.strikeTimer>0){const sb=Core.strikeBox(p);for(const c of g.icicles)if(c.state!=='form'&&overlap(...sb,c.x,c.y,c.w,c.h)){c.state='gone';if(c.ent){c.ent.gone=true;c.ent.solid=false;}Core.emit(g,'icicle-break',{x:c.x+3,y:c.y+c.h/2,cut:true});}
    g.icicles=g.icicles.filter(c=>c.state!=='gone');g.ents=g.ents.filter(e=>!(e.type==='iceStake'&&e.gone));}
-  for(const c of g.icicles)if(c.state==='fall'&&overlap(p.x,p.y,p.w,p.h,c.x+1,c.y,c.w-2,c.h)){Core.kill(g,p,'icicle');return;}
+  if(phase!=='defend')for(const c of g.icicles)if(c.state==='fall'&&overlap(p.x,p.y,p.w,p.h,c.x+1,c.y,c.w-2,c.h)){Core.kill(g,p,'icicle');return;}
  }
- if(s.gone||s.kneel||!g.awake||p.state==='dead'||p.state==='respawn')return;
+ if(phase==='hurt'||s.gone||s.kneel||!g.awake||p.state==='dead'||p.state==='respawn')return;
  // A turned orb that reaches him breaks on the ward (or, warded or not, is spent on him).
  for(const b of g.bolts){
   if(!b.alive||!b.friendly||!overlap(b.x,b.y,b.w,b.h,s.x,s.y,s.w,s.h))continue;
@@ -229,12 +229,18 @@ function after(g){
   }
  }
 }
+function after(g){if(!g.players)settle(g);}
+function afterPlayers(g){
+ const p=g.p,actor=g.coopActor;
+ try{for(const phase of ['defend','hurt'])for(const [i,knight]of g.players.entries()){g.p=knight;g.coopActor=i;settle(g,phase);}}
+ finally{g.p=p;g.coopActor=actor;}
+}
 function gone(g,s,kneel){
  if(!kneel){s.gone=true;s.state='gone';}
  C().emit(g,'sorc-gone',{x:s.x+s.w/2,y:s.y+s.h/2,how:kneel?'kneel':s.d.leave||'right'});
 }
 function gateHold(g){const s=g.sorc;return !!(s&&!s.gone&&!s.kneel);}
 
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-sorcerer',input,reset,before,after,gateHold});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-sorcerer',input,reset,before,after,afterPlayers,gateHold});
 root.BladefallRbrSorcerer=Object.freeze({SK,warded,open});
 })(typeof window!=='undefined'?window:globalThis);

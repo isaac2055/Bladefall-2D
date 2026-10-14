@@ -23,7 +23,7 @@ function draw(b,g){
  }
 }
 function drawFront(b,g){
- const p=g.p,V=g.voidTravel;
+ const p=g.p,V=g.players?p.voidTravel:g.voidTravel;
  if(!V||p.state!=='void')return;
  const s=Math.hypot(V.vx,V.vy)||1,dx=V.vx/s,dy=V.vy/s;
  for(let k=1;k<7;k++){b.globalAlpha=.5-k*.06;px(b,p.x+3-dx*k*3,p.y+4-dy*k*3,2,2,'#d8c8ff');}

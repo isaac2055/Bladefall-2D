@@ -46,24 +46,24 @@ const faults=g=>g.ents.filter(e=>e.type==='fault');
 /* The clocks: cracked tiles count down and fall; fallen tiles rest and come back. */
 function before(g){
  if(!g.fault)return;
- const p=g.p,Core=C(),alive=p.state!=='dead'&&p.state!=='respawn';
+ const Core=C();
  for(const e of g.ents){
   if(e.type!=='fault')continue;
   if(e.solid&&e.fuse>=0){
    if(--e.fuse<0){e.solid=false;e.down=g.fault.cfg.rest;e.state='down';Core.emit(g,'fault-fall',{x:e.x+4,y:e.y+4});}
   }else if(!e.solid){
    if(e.down>0)e.down--;
-   else if(!(alive&&overlap(p.x,p.y,p.w,p.h,e.x,e.y,e.w,e.h))){e.solid=true;e.fuse=-1;e.state='';Core.emit(g,'fault-back',{x:e.x+4,y:e.y+4});}
+   else if(!(g.players||[g.p]).some(p=>p.state!=='dead'&&p.state!=='respawn'&&overlap(p.x,p.y,p.w,p.h,e.x,e.y,e.w,e.h))){e.solid=true;e.fuse=-1;e.state='';Core.emit(g,'fault-back',{x:e.x+4,y:e.y+4});}
   }
  }
 }
 /* A touch cracks the strip from the touched tile outward. */
-function after(g){
+function after(g,inp,actorOnly=false){
  if(!g.fault)return;
  const p=g.p;if(p.state==='dead'||p.state==='respawn')return;
  const fs=faults(g);let hit=null;
  for(const e of fs)if(e.solid&&e.fuse<0&&overlap(p.x-1,p.y-1,p.w+2,p.h+2,e.x,e.y,e.w,e.h)){hit=e;break;}
- if(g.fault.cfg.carts)for(const c of g.ents){if(c.type!=='cart'||c.gone)continue;
+ if(!actorOnly&&g.fault.cfg.carts)for(const c of g.ents){if(c.type!=='cart'||c.gone)continue;
   for(const e of fs)if(e.solid&&e.fuse<0&&overlap(c.x,c.y+c.h,c.w,1,e.x,e.y,e.w,e.h)){crack(g,fs,e);break;}}
  if(hit)crack(g,fs,hit);
 }
@@ -74,6 +74,6 @@ function crack(g,fs,hit){
  for(const [e,d] of dist){if(!e.solid)continue;const f=fuse+spread*d;if(e.fuse<0||f<e.fuse){e.fuse=f;e.state='crack';}}
  C().emit(g,'fault-crack',{x:hit.x+4,y:hit.y+4,line:hit.line});
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'fault',reset,before,after});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'fault',reset,before,after,afterPlayer:(g,inp)=>after(g,inp,true)});
 root.BladefallPrecisionFault=Object.freeze({FK});
 })(typeof window!=='undefined'?window:globalThis);

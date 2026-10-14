@@ -1,0 +1,31 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {JSDOM} from 'jsdom';
+const dom=new JSDOM('<body></body>',{url:'http://localhost/',runScripts:'outside-only'}),w=dom.window;
+w.HTMLCanvasElement.prototype.getContext=()=>new Proxy({},{get:(t,k)=>t[k]||(()=>{}),set:(t,k,v)=>(t[k]=v,true)});
+w.HTMLCanvasElement.prototype.getBoundingClientRect=()=>({left:0,top:0,width:800,height:500});
+for(const f of ['model','ascend','explore','selection','properties','ui'])w.eval(readFileSync('public/bladefall-workshop-'+f+'.js','utf8'));
+const M=w.BladefallWorkshopModel,A=w.BladefallWorkshopAscend,E=w.BladefallWorkshopExplore,S=w.BladefallWorkshopSelection;
+const room={id:'groups',cols:30,rows:20,map:['P'+'.'.repeat(29),...Array(18).fill('.'.repeat(30)),'#'.repeat(30)],exit:'right'};
+const def=A.fromRoom(room);def.bodies.a={glyph:'=',c:4,r:10,w:4,h:1};def.bodies.b={glyph:'=',c:10,r:10,w:4,h:1};def.room.coreCheckpoints=[{c:5,r:8},{c:11,r:8},{c:17,r:8}];
+const document=M.create({id:'groups',name:'Groups',mode:'ascend',definition:def}),model=M.session(document,{validateDefinition:d=>A.compile(d.definition)});
+const move=S.edit(document,A,['a','b'],'move',{dx:48,dy:-16});assert(model.submit('builder',move.edits).ok);assert.equal(model.snapshot().definition.bodies.a.c,10);assert.equal(model.snapshot().definition.bodies.b.c,16);assert(model.undo('builder').ok);assert(M.equal(model.snapshot().definition,def),'whole selection undoes together');
+const before=model.snapshot();assert.throws(()=>S.edit(before,A,['a','b'],'move',{dx:1000}),/outside/);assert(M.equal(model.snapshot(),before));
+const cpIds=A.objects(def).filter(o=>o.label==='coreCheckpoints').map(o=>o.id);assert.equal(cpIds.length,3);assert(model.submit('builder',S.edit(model.snapshot(),A,cpIds.slice(0,2),'delete').edits).ok);assert.equal(model.snapshot().definition.room.coreCheckpoints.length,1);assert.equal(model.snapshot().definition.room.coreCheckpoints[0].c,17);assert(model.undo('builder').ok);
+const cpCopy=S.edit(model.snapshot(),A,cpIds.slice(0,2),'duplicate',{dx:8});assert.equal(cpCopy.copies.length,2);assert(model.submit('builder',cpCopy.edits).ok);assert.equal(model.snapshot().definition.room.coreCheckpoints.length,5);assert(model.undo('builder').ok);
+// Copy two graph-linked Explore objects; both the cloned links and originals retain correct identities.
+const one={type:'crate',x:100,y:0,w:30,h:30},two={type:'crate',x:200,y:0,w:30,h:30};one.peer=two;two.peer=one;
+const ed=E.fromState({stageIndex:0,levelLength:2000,p:{x:30,y:0},obstacles:[one,two],enemies:[],pickups:[],npcs:[]}),em=M.session(M.create({id:'explore',name:'Links',mode:'explore',definition:ed}),{validateDefinition:d=>E.compile(d.definition)}),ids=E.objects(ed).filter(o=>o.collection==='obstacles').map(o=>o.id);
+assert(em.submit('a',S.edit(em.snapshot(),E,ids,'duplicate',{dx:300}).edits).ok);const os=E.compile(em.snapshot().definition).obstacles;assert.equal(os.length,4);assert.equal(os[2].peer,os[3]);assert.equal(os[3].peer,os[2]);assert.equal(os[0].peer,os[1]);assert.equal(os[2].x,400);assert(em.undo('a').ok);assert(M.equal(em.snapshot().definition,ed));
+// A teammate changing one selected body rejects the whole stale move, while unrelated edits merge.
+const shared=M.session(document,{validateDefinition:d=>A.compile(d.definition)}),pending=shared.prepare('section',S.edit(shared.snapshot(),A,['a','b'],'move',{dx:8}).edits);
+assert(shared.submit('friend',[A.move(shared.snapshot().definition,'b',{x:96,y:80})]).ok);assert(!shared.apply(pending).ok);assert.equal(shared.snapshot().definition.bodies.a.c,4);assert.equal(shared.snapshot().definition.bodies.b.c,12);
+const fresh=shared.prepare('section',S.edit(shared.snapshot(),A,['a','b'],'move',{dx:8}).edits);assert(shared.submit('friend',[{path:['name'],value:'Renamed together'}]).ok);assert(shared.apply(fresh).ok);assert.equal(shared.snapshot().name,'Renamed together');assert.equal(shared.snapshot().definition.bodies.a.c,5);
+// Native editor gestures: additive selection, group drag, one undo, box selection, duplicate and delete.
+const ui=w.BladefallWorkshopUI.open({document,adapter:A,onSave:async()=>{}}),el=ui.element,canvas=el.querySelector('canvas'),q=s=>el.querySelector(s);
+const scale=460/160,point=(type,x,y,shiftKey=false)=>canvas.dispatchEvent(new w.MouseEvent(type,{bubbles:true,clientX:20+x*scale,clientY:20+y*scale,shiftKey,button:0}));
+ui.fit();point('pointerdown',40,84);point('pointerup',40,84);point('pointerdown',88,84,true);point('pointerup',88,84,true);assert.equal(ui.selection().length,2);assert(q('[data-selection]').textContent.includes('2 objects'));assert(q('[data-property=w]').disabled);
+point('pointerdown',40,84);point('pointermove',56,68);point('pointerup',56,68);assert.equal(ui.snapshot().definition.bodies.a.c,6);assert.equal(ui.snapshot().definition.bodies.b.c,12);q('[data-action=undo]').click();assert.equal(ui.snapshot().definition.bodies.a.c,4);
+point('pointerdown',30,76);point('pointermove',114,90);point('pointerup',114,90);assert.equal(ui.selection().length,2);q('[data-action=duplicate]').click();assert.equal(Object.keys(ui.snapshot().definition.bodies).length,Object.keys(def.bodies).length+2);assert.equal(ui.selection().length,2);q('[data-action=delete]').click();assert.equal(Object.keys(ui.snapshot().definition.bodies).length,Object.keys(def.bodies).length);q('[data-action=undo]').click();assert.equal(Object.keys(ui.snapshot().definition.bodies).length,Object.keys(def.bodies).length+2);
+ui.select('a');ui.select('b',true);const c=ui.snapshot().definition.bodies.a.c;w.document.dispatchEvent(new w.KeyboardEvent('keydown',{code:'ArrowUp',bubbles:true}));assert.equal(ui.snapshot().definition.bodies.a.r,9);assert.equal(ui.snapshot().definition.bodies.b.r,9);assert.equal(ui.snapshot().definition.bodies.a.c,c);q('[data-action=undo]').click();w.document.dispatchEvent(new w.KeyboardEvent('keydown',{code:'Escape',bubbles:true}));assert.equal(ui.selection().length,0);
+await ui.save();ui.close();dom.window.close();console.log('PASS: atomic section move/delete/copy/undo, array device identities, linked Explore copies, invalid move rollback, Shift-click and box selection, group pointer movement, duplicate/delete controls.');

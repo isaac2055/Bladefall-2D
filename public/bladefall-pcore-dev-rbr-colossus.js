@@ -62,12 +62,15 @@ function nextBay(c){
 /* Opt-in hunt: the column under the knight (its arm reaches the whole rail, wall to wall). */
 function huntCol(g,c){
  const lo=1,hi=g.room.cols-2;
- return Math.max(lo,Math.min(hi,Math.floor((g.p.x+g.p.w/2)/TILE)));
+ const live=(g.players||[g.p]).filter(p=>p.state!=='dead'&&p.state!=='respawn');
+ if(g.players&&!live.includes(g.players[c.targetSeat]))c.targetSeat=g.players.indexOf(live.sort((a,b)=>Math.abs(a.x+a.w/2-c.x)-Math.abs(b.x+b.w/2-c.x))[0]);
+ const p=g.players?.[c.targetSeat]||g.p;
+ return Math.max(lo,Math.min(hi,Math.floor((p.x+p.w/2)/TILE)));
 }
-function startMove(c){c.moves++;const h=c.d.hunt;c.hunt=!!h&&c.moves%(h.every||3)===0;if(!c.hunt)c.col=c.bays[c.i];}
+function startMove(c){c.targetSeat=null;c.moves++;const h=c.d.hunt;c.hunt=!!h&&c.moves%(h.every||3)===0;if(!c.hunt)c.col=c.bays[c.i];}
 function before(g){
  const c=g.colossus;if(!c||c.gone||!g.awake)return;
- const Core=C(),p=g.p;
+ const Core=C();
  c.t++;
  if(c.state==='move'){
   // Opt-in: answer a newly chilled mould instead of touring empty bays.
@@ -117,17 +120,25 @@ function before(g){
   if(c.t>=CK.leave){c.gone=true;}
  }
  // The pour kills what it meets (the drained top of the column is empty).
- if((c.state==='pour'||c.state==='rest')&&p.state!=='dead'&&p.state!=='respawn'){
+ if(c.state==='pour'||c.state==='rest'){
   const x=bayX(c.col),top=c.y0+c.drain,bot=c.y0+c.len;
-  if(bot>top&&overlap(p.x,p.y,p.w,p.h,x+1,top,6,bot-top))Core.kill(g,p,'pour');
+  if(bot>top)hitPlayers(g,x+1,top,6,bot-top);
  }
 }
+function hitPlayers(g,x,y,w,h){
+ const actor=g.coopActor;
+ try{for(const [i,p]of (g.players||[g.p]).entries()){
+  if(p.state==='dead'||p.state==='respawn')continue;
+  if(g.players)g.coopActor=i;
+  if(overlap(p.x,p.y,p.w,p.h,x,y,w,h))C().kill(g,p,'pour');
+ }}finally{g.coopActor=actor;}
+}
 function refuse(g,c,x,stop){
- const Core=C(),p=g.p;
+ const Core=C();
  // A hunt's pour counts for the bay it landed on (if that bay has not refused it already).
  let bay=c.i;if(c.hunt){bay=c.bays.findIndex((b,j)=>b===c.col&&!c.refused.has(j));if(bay<0){c.state='rest';c.t=0;return;}}
  const pillar={type:'cpillar',dev:true,solid:true,x,y:c.y0,w:TILE,h:stop-c.y0,id:'cp'+c.n,glow:60};
- if(pillar.h>0){g.ents.push(pillar);if(overlap(p.x,p.y,p.w,p.h,pillar.x,pillar.y,pillar.w,pillar.h))Core.kill(g,p,'pour');}
+ if(pillar.h>0){g.ents.push(pillar);hitPlayers(g,pillar.x,pillar.y,pillar.w,pillar.h);}
  c.refused.add(bay);c.n++;c.state='jam';c.t=0;c.len=0;c.drain=0;c.jamX=x;
  g.freeze=Math.max(g.freeze,4);
  Core.emit(g,'colossus-refuse',{x:x+4,y:stop,n:c.n,need:c.need});
@@ -143,18 +154,24 @@ function crackFault(g,hit){
 function gateHold(g){const c=g.colossus;return !!(c&&c.n<c.need);}
 
 /* The 'belt' event (Room by Room rooms only). */
-function after(g){
+function afterPlayer(g){
  if(!g.room.def.rbr||!g.room.belt)return;
  const F=root.BladefallPrecisionFoundry;if(!F)return;
  const Core=C(),p=g.p;
  const on=p.state!=='dead'&&p.onGround&&!!F.beltUnder(g,p.x,p.y,p.w,p.h);
  if(on&&!p.rbrOnBelt)Core.emit(g,'belt',{x:p.x+4,y:p.y+p.h,who:'knight'});
  p.rbrOnBelt=on;
+}
+function after(g){
+ afterPlayer(g);
+ if(!g.room.def.rbr||!g.room.belt)return;
+ const F=root.BladefallPrecisionFoundry;if(!F)return;
+ const Core=C();
  for(const e of g.ents){if(e.type!=='lantern')continue;
   const l=!e.held&&!e.returning&&!!F.beltUnder(g,e.x,e.y,e.w,e.h);
   if(l&&!e.rbrOnBelt)Core.emit(g,'belt',{x:e.x+4,y:e.y+e.h,who:'lantern'});
   e.rbrOnBelt=l;}
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-colossus',reset,before,after,gateHold});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-colossus',reset,before,after,afterPlayer,gateHold});
 root.BladefallRbrColossus=Object.freeze({CK});
 })(typeof window!=='undefined'?window:globalThis);

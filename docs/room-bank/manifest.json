@@ -1,7 +1,7 @@
 {
   "version": "7.334.0",
-  "activeBatch": 27,
-  "activeRun": 17,
+  "activeBatch": 28,
+  "activeRun": 18,
   "status": "User-approved bank plus a separate queue of revisions and new candidates",
   "rooms": [
     {
@@ -81781,6 +81781,255 @@
       "revision": "b430e395bab9",
       "source": "scripts/room-bank/fractured/105-bank-f105.json",
       "tapeFrames": 2304
+    },
+    {
+      "id": "bank-f106",
+      "name": "The Iron Answer",
+      "side": "fractured",
+      "batch": 28,
+      "run": 18,
+      "collection": "cores",
+      "coreIndex": 11,
+      "format": "superroom",
+      "localOnly": false,
+      "acceptance": "candidate",
+      "needsReview": true,
+      "status": "route-proven",
+      "author": "Sol 6.1",
+      "difficulty": 5,
+      "worlds": [
+        11,
+        31
+      ],
+      "tags": [
+        "anvil",
+        "mould",
+        "belt",
+        "crumble",
+        "pod",
+        "carrier"
+      ],
+      "newMechanics": [],
+      "role": "Foundry Core: a continuous climb through casting works",
+      "solution": "Chain downward iron rebounds with airborne casts, controlled seed turns and a returning carrier.",
+      "requiredEvents": [
+        "anvil",
+        "cast",
+        "core-checkpoint"
+      ],
+      "requiredEventCounts": {
+        "anvil": 9,
+        "cast": 5,
+        "core-checkpoint": 5,
+        "zip-start": 1,
+        "crumble-shake": 1
+      },
+      "coreDescription": "Strike the iron, make the footing, and turn before the next stroke.",
+      "draft": true,
+      "humanReview": "Native whole route and every fresh checkpoint route verified. Awaiting player review.",
+      "revision": "dbd8be61fbe6",
+      "source": "scripts/room-bank/fractured/106-bank-f106.json",
+      "tapeFrames": 1812
+    },
+    {
+      "id": "bank-f107",
+      "name": "The Weight Above",
+      "side": "fractured",
+      "batch": 28,
+      "run": 18,
+      "collection": "cores",
+      "coreIndex": 12,
+      "format": "superroom",
+      "localOnly": false,
+      "acceptance": "candidate",
+      "needsReview": true,
+      "status": "route-proven",
+      "author": "Sol 6.1",
+      "difficulty": 5,
+      "worlds": [
+        12,
+        32
+      ],
+      "tags": [
+        "gravity",
+        "crumble",
+        "pod",
+        "ceiling"
+      ],
+      "newMechanics": [],
+      "role": "Inversion Core: a continuous reversal climb around the rooflines",
+      "solution": "Dash through paired prisms, catch the cracked undersides, jump away and return upright. Use seeds with gravity facing both ways.",
+      "requiredEvents": [
+        "gravity",
+        "pod",
+        "core-checkpoint"
+      ],
+      "requiredEventCounts": {
+        "gravity": 12,
+        "pod": 4,
+        "core-checkpoint": 5,
+        "crumble-shake": 10,
+        "pogo-loft": 4
+      },
+      "coreDescription": "Borrow the ceiling for a heartbeat, then turn its weight back toward the floor.",
+      "draft": true,
+      "humanReview": "Native whole route and every fresh checkpoint route verified. Awaiting player review.",
+      "revision": "8e428cc147cd",
+      "source": "scripts/room-bank/fractured/107-bank-f107.json",
+      "tapeFrames": 1640
+    },
+    {
+      "id": "bank-f108",
+      "name": "What the Wall Leaves",
+      "side": "fractured",
+      "batch": 28,
+      "run": 18,
+      "collection": "cores",
+      "coreIndex": 13,
+      "format": "superroom",
+      "localOnly": false,
+      "acceptance": "candidate",
+      "needsReview": true,
+      "status": "route-proven",
+      "author": "Sol 6.1",
+      "difficulty": 5,
+      "worlds": [
+        13,
+        33
+      ],
+      "tags": [
+        "spent-foothold",
+        "wall-grab",
+        "refill",
+        "portal",
+        "carrier",
+        "crumble"
+      ],
+      "newMechanics": [],
+      "role": "Citadel Core: climb through the space left by spent walls",
+      "solution": "Spend thorn-capped grips to expose the refill beyond them, reverse the ascent, then turn the hanging portal and leave along single-use floors.",
+      "requiredEvents": [
+        "foothold-spent",
+        "grab",
+        "core-checkpoint"
+      ],
+      "requiredEventCounts": {
+        "foothold-spent": 13,
+        "grab": 11,
+        "refill": 11,
+        "portal-pass": 1,
+        "zip-start": 1,
+        "core-checkpoint": 5,
+        "crumble-shake": 2
+      },
+      "coreDescription": "The wall holds once. Its absence is your next passage.",
+      "draft": true,
+      "humanReview": "Native whole route and every fresh checkpoint route verified. Awaiting player review.",
+      "revision": "dab3792b3f26",
+      "source": "scripts/room-bank/fractured/108-bank-f108.json",
+      "tapeFrames": 1968
+    },
+    {
+      "id": "bank-f109",
+      "name": "The Place You Left",
+      "side": "fractured",
+      "batch": 28,
+      "run": 18,
+      "collection": "cores",
+      "coreIndex": 14,
+      "format": "superroom",
+      "localOnly": false,
+      "acceptance": "candidate",
+      "needsReview": true,
+      "status": "route-proven",
+      "author": "Sol 6.1",
+      "difficulty": 5,
+      "worlds": [
+        14,
+        34
+      ],
+      "tags": [
+        "echo",
+        "wake",
+        "spring",
+        "anvil",
+        "pod",
+        "carrier"
+      ],
+      "newMechanics": [],
+      "role": "Throne Core: carry launches back to six airborne echoes",
+      "solution": "Place high echoes, return for a spring, refill, iron strike, second seed cut or carrier launch, and trade before the wake reaches the old path.",
+      "requiredEvents": [
+        "echo-place",
+        "echo-swap",
+        "core-checkpoint"
+      ],
+      "requiredEventCounts": {
+        "echo-place": 6,
+        "echo-swap": 6,
+        "spring": 3,
+        "anvil": 2,
+        "pogo-loft": 3,
+        "zip-start": 1,
+        "core-checkpoint": 5
+      },
+      "coreDescription": "Keep the place, borrow the motion, and leave before your wake returns.",
+      "draft": true,
+      "humanReview": "Native whole route and every fresh checkpoint route verified. Awaiting player review.",
+      "revision": "c8fbd4da010b",
+      "source": "scripts/room-bank/fractured/109-bank-f109.json",
+      "tapeFrames": 1406
+    },
+    {
+      "id": "bank-f110",
+      "name": "No Track Beyond",
+      "side": "fractured",
+      "batch": 28,
+      "run": 18,
+      "collection": "cores",
+      "coreIndex": 15,
+      "format": "superroom",
+      "localOnly": false,
+      "acceptance": "candidate",
+      "needsReview": true,
+      "status": "route-proven",
+      "author": "Sol 6.1",
+      "difficulty": 5,
+      "worlds": [
+        15,
+        35
+      ],
+      "tags": [
+        "cart",
+        "boost",
+        "switch",
+        "pod",
+        "carrier",
+        "anvil",
+        "crumble"
+      ],
+      "newMechanics": [],
+      "role": "Deep Line Core: leave the high line with its speed",
+      "solution": "Ride boosted switches into long airborne departures, reverse the return line, ride the shaft carrier and strike the anvil, then link the last seed catches.",
+      "requiredEvents": [
+        "switch-high",
+        "boost",
+        "core-checkpoint"
+      ],
+      "requiredEventCounts": {
+        "switch-high": 5,
+        "boost": 5,
+        "pogo-loft": 4,
+        "anvil": 1,
+        "zip-start": 1,
+        "core-checkpoint": 5
+      },
+      "coreDescription": "The rails end before the route does. Take their speed with you.",
+      "draft": true,
+      "humanReview": "Native whole route and every fresh checkpoint route verified. Awaiting player review.",
+      "revision": "40cc96b492e9",
+      "source": "scripts/room-bank/fractured/110-bank-f110.json",
+      "tapeFrames": 1452
     }
   ]
 }

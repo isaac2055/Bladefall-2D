@@ -116,6 +116,6 @@ function after(g){
  const p=g.p;if(!g.bruteWaves||!g.bruteWaves.length||p.state==='dead'||p.state==='respawn')return;
  for(const w of g.bruteWaves)if(overlap(p.x,p.y,p.w,p.h,w.x-1,w.y-BK.waveH,6,BK.waveH)){C().kill(g,p,'quake');return;}
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-causeway',reset,forces,before,after});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-causeway',reset,forces,before,after,afterPlayer:after});
 root.BladefallRbrCauseway=Object.freeze({BK});
 })(typeof window!=='undefined'?window:globalThis);

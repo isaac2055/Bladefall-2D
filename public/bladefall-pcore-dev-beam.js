@@ -78,17 +78,25 @@ function before(g){
   else if(e.type==='mirror'&&e.timer>0)e.timer--;
  }
 }
-function after(g){
- const Core=C(),p=g.p;
+function turnMirror(g,p){
+ const Core=C();
  // The blade turns a mirror.
  if(p.strikeTimer>0){const sb=Core.strikeBox(p);for(const e of g.ents){if(e.type!=='mirror'||e.timer>0||p.strikeHit.has(e.id)||!overlap(...sb,e.x-2,e.y-2,e.w+4,e.h+4))continue;p.strikeHit.add(e.id);e.slant=e.slant==='/'?'\\':'/';e.timer=12;Core.emit(g,'mirror',{x:e.x+4,y:e.y+4});}}
- if(!g.beams)return;
- trace(g);
+}
+function burn(g,p){
+ const Core=C();
  if(g.beams.harmless||p.state==='dead'||p.state==='respawn')return;
  const hx=p.x,hy=p.y,hw=p.w,hh=9;
  for(const [x0,y0,x1,y1]of g.beams.paths){const bx=Math.min(x0,x1)-1,by=Math.min(y0,y1)-1,bw=Math.abs(x1-x0)+2,bh=Math.abs(y1-y0)+2;
   if(overlap(hx,hy,hw,hh,bx,by,bw,bh)){Core.kill(g,p,'light');return;}}
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'beam',reset,ready,before,after});
+function after(g){
+ turnMirror(g,g.p);if(!g.beams||g.players)return;trace(g);burn(g,g.p);
+}
+function afterPlayers(g){
+ if(!g.beams)return;trace(g);
+ for(const [i,p]of g.players.entries()){g.coopActor=i;burn(g,p);}g.coopActor=null;
+}
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'beam',reset,ready,before,after,afterPlayer:g=>turnMirror(g,g.p),afterPlayers});
 root.BladefallPrecisionBeam=Object.freeze({trace,shutterOpen});
 })(typeof window!=='undefined'?window:globalThis);

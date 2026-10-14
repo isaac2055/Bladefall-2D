@@ -24,10 +24,10 @@ function after(g){
  if(p.state!=='dead'){
   on=F.onIce(g,p);
   // Hands on an ice face: within the core's wall-jump reach (3 px), plus the frame's move away from it (and up), on either side.
-  if(!on&&(p.state==='climb'||g.events.some(e=>PUSH.has(e.type))))on=iceIn(g,p.x-6,p.y,6,p.h+4)||iceIn(g,p.x+p.w,p.y,6,p.h+4);
+  if(!on&&(p.state==='climb'||g.events.some(e=>(!g.players||e.player===g.coopActor)&&PUSH.has(e.type))))on=iceIn(g,p.x-6,p.y,6,p.h+4)||iceIn(g,p.x+p.w,p.y,6,p.h+4);
  }
  if(on&&!p.rbrOnIce)root.BladefallPrecisionCore.emit(g,'ice',{x:p.x+4,y:p.y+p.h});
  p.rbrOnIce=on;
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-frostfell',after});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-frostfell',after,afterPlayer:after});
 })(typeof window!=='undefined'?window:globalThis);

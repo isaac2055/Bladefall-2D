@@ -45,18 +45,22 @@ function before(g){
    e.pending=state==='stone';
   }
   if(state==='stone'){
-   if(e.pending){const inside=p.state!=='dead'&&overlap(p.x,p.y,p.w,p.h,e.x,e.y,e.w,e.h);if(!inside)e.pending=false;}
+   if(e.pending){const inside=(g.players||[p]).some(p=>p.state!=='dead'&&overlap(p.x,p.y,p.w,p.h,e.x,e.y,e.w,e.h));if(!inside)e.pending=false;}
    e.solid=!e.pending;e.thru=false;
   }else{e.solid=false;e.thru=state==='glass';}
  }
 }
-function after(g){
+function afterPlayer(g){
  if(!g.slabs)return;
  const p=g.p;if(p.state==='dead'||p.state==='respawn')return;
  for(const e of g.slabs)if(e.state==='molten'&&overlap(p.x,p.y,p.w,p.h,e.x,e.y,e.w,e.h)){C().kill(g,p,'molten');return;}
+}
+function after(g){
+ if(!g.slabs)return;
+ afterPlayer(g);if(g.p.state==='dead'||g.p.state==='respawn')return;
  // A lantern that touches molten stone is lost, and floats home.
  for(const l of g.ents)if(l.type==='lantern'&&!l.held&&!l.returning&&g.slabs.some(e=>e.state==='molten'&&overlap(l.x,l.y,l.w,l.h,e.x,e.y,e.w,e.h))){l.returning=true;l.timer=40;C().emit(g,'lantern-lost',{x:l.x+4,y:l.y});}
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'ember',reset,before,after});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'ember',reset,before,after,afterPlayer});
 root.BladefallPrecisionEmber=Object.freeze({EK,stateAt});
 })(typeof window!=='undefined'?window:globalThis);

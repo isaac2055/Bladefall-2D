@@ -54,6 +54,6 @@ function after(g){
   e.state='windup';e.timer=IK.windup;e.pulse=6;emit(g,e,'impulse-prime',{dx:d.x/len,dy:d.y/len});
  }else if(e.state==='charged')burst(g,p,e);
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'impulse',reset,before,after});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'impulse',reset,before,after,afterPlayer:after});
 root.BladefallPrecisionImpulse=Object.freeze({IK,seeds,clearContact});
 })(typeof window!=='undefined'?window:globalThis);

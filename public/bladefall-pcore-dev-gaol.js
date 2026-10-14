@@ -40,12 +40,13 @@ const inBand=(j,p)=>Math.abs(cy(p)-cy(j))<JK.band;
 function thrustBox(j){return j.dir>0?[j.x+j.w,j.y+4,JK.reach+2,8]:[j.x-JK.reach-2,j.y+4,JK.reach+2,8];}
 function fell(g,j,how){j.alive=false;j.body.solid=false;j.body.gone=true;C().emit(g,'jailer-fell',{x:cx(j),y:cy(j),how});}
 
-function before(g,inp){
+function before(g,inp,actorOnly=false){
  const Core=C(),p=g.p;
  // Pressure pods answer a dash in progress (after its aim is read).
  for(const e of g.ents){
   if(e.type!=='recoil')continue;
-  if(e.timer>0){if(--e.timer===0)Core.emit(g,'recoil-back',{x:e.x+4,y:e.y+4});continue;}
+  if(e.timer>0){if(!actorOnly&&--e.timer===0){if(g.players)e.backFrame=g.frame;Core.emit(g,'recoil-back',{x:e.x+4,y:e.y+4});}continue;}
+  if(g.players&&e.backFrame===g.frame)continue;
   if(p.state==='dash'&&!p.dashAim&&overlap(p.x,p.y,p.w,p.h,e.x,e.y,e.w,e.h)){
    const d=p.dashDir;p.state='normal';p.dashTimer=0;p.ducking=false;
    p.vx=-d.x*RK.speed;p.vy=-d.y*RK.speed;p.coast=p.vx!==0;p.varJump=0;p.autoJump=false;p.maxFall=Core.K.maxFall;
@@ -55,10 +56,11 @@ function before(g,inp){
    Core.emit(g,'recoil',{x:e.x+4,y:e.y+4,dx:-d.x,dy:-d.y});
   }
  }
- if(!g.jailers||!g.awake)return;
- const alive=p.state!=='dead'&&p.state!=='respawn';
+ if(actorOnly||!g.jailers||!g.awake)return;
+ const live=(g.players||[p]).filter(p=>p.state!=='dead'&&p.state!=='respawn');
  for(const j of g.jailers){
   if(!j.alive)continue;
+  const p=g.players?live.slice().sort((a,b)=>Math.hypot(cx(a)-cx(j),cy(a)-cy(j))-Math.hypot(cx(b)-cx(j),cy(b)-cy(j)))[0]||g.p:g.p,alive=p.state!=='dead'&&p.state!=='respawn';
   // Committed facing: stand behind it long enough and it turns.
   if(j.state==='idle'||j.state==='recover'){
    if(alive&&j.turn>0&&behind(j,p)&&inBand(j,p)&&Math.abs(cx(p)-cx(j))<JK.sight){if(++j.turnT>=j.turn){j.dir=-j.dir;j.turnT=0;Core.emit(g,'jailer-turn',{x:cx(j),y:j.y});}}
@@ -107,11 +109,20 @@ function after(g,inp){
    }
   }
   // The thrust hurts; the body does not.
-  if(j.state==='thrust'&&overlap(p.x,p.y,p.w,9,...thrustBox(j))){Core.kill(g,p,'jailer');return;}
+  if(!g.players&&j.state==='thrust'&&overlap(p.x,p.y,p.w,9,...thrustBox(j))){Core.kill(g,p,'jailer');return;}
  }
+}
+function afterPlayers(g){
+ if(!g.jailers||!g.awake)return;
+ const actor=g.coopActor;
+ try{for(const [i,p]of g.players.entries()){
+  if(p.state==='dead'||p.state==='respawn')continue;
+  g.coopActor=i;
+  for(const j of g.jailers)if(j.alive&&j.state==='thrust'&&overlap(p.x,p.y,p.w,9,...thrustBox(j))){C().kill(g,p,'jailer');break;}
+ }}finally{g.coopActor=actor;}
 }
 function gateHold(g){return !!(g.jailers&&g.jailers.some(j=>j.alive&&j.keys));}
 
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'gaol',reset,before,after,gateHold});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'gaol',reset,before,beforePlayer:(g,inp)=>before(g,inp,true),after,afterPlayer:after,afterPlayers,gateHold});
 root.BladefallPrecisionGaol=Object.freeze({JK,RK,thrustBox});
 })(typeof window!=='undefined'?window:globalThis);

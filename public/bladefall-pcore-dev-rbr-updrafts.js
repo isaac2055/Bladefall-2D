@@ -16,5 +16,5 @@ function after(g){
  if(inside&&!p.rbrInWind)C.emit(g,'wind',{x:p.x+4,y:p.y+p.h});
  p.rbrInWind=inside;
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-updrafts',after});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-updrafts',after,afterPlayer:after});
 })(typeof window!=='undefined'?window:globalThis);

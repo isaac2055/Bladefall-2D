@@ -26,23 +26,27 @@ function reset(g){
 }
 function before(g,inp){
  if(!g.room.def.mirror)return;
- const p=g.p,alive=p.state!=='dead'&&p.state!=='respawn',dashing=alive&&p.state==='dash';
+ const p=g.p,S=g.players?p:g,seat=g.players?.indexOf(p),alive=p.state!=='dead'&&p.state!=='respawn',dashing=alive&&p.state==='dash';
  for(const e of g.ents){
   if(e.type!=='pane')continue;
   const inside=alive&&overlap(p.x,p.y,p.w,p.h,e.x,e.y,e.w,e.h);
   // Open to a dashing knight (and to a knight still inside it); a wall to everything else.
   e.solid=!dashing&&!inside;
-  if(!inside){e.armed=true;continue;}
+  if(g.players&&!e.armedPlayers)e.armedPlayers=[];
+  if(!inside){if(g.players)e.armedPlayers[seat]=true;else e.armed=true;continue;}
   // Only a dash opens the glass, so a knight inside it came through on one (even if the dash ran out in it).
-  if(e.armed){
-   e.armed=false;g.mirrorLR=!g.mirrorLR;
-   C().emit(g,'mirror',{x:e.x+e.w/2,y:e.y+e.h/2,on:g.mirrorLR});
+  if(g.players?e.armedPlayers[seat]!==false:e.armed){
+   if(g.players)e.armedPlayers[seat]=false;else e.armed=false;S.mirrorLR=!S.mirrorLR;
+   C().emit(g,'mirror',{x:e.x+e.w/2,y:e.y+e.h/2,on:S.mirrorLR});
   }
  }
- for(const e of g.ents)if(e.type==='pane')e.state=g.mirrorLR?'m':'';
- if(g.mirrorLR&&inp){const l=inp.l;inp.l=inp.r;inp.r=l;inp.mx=-inp.mx;
+ for(const e of g.ents)if(e.type==='pane')e.state=g.players?g.players.map(p=>p.mirrorLR?'m':'-').join(''):g.mirrorLR?'m':'';
+ if(S.mirrorLR&&inp){const l=inp.l;inp.l=inp.r;inp.r=l;inp.mx=-inp.mx;
   // The parry reads its aim before device hooks run: turn a ward armed this frame the same way.
   if(p.parryAim&&p.parryTimer===C().PARRY.window)p.parryAim={...p.parryAim,x:-p.parryAim.x};}
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'mirror',reset,before});
+// Shared collision opening belongs only to the actor currently stepping.
+// Close the panes before the next world update so a partner or loose body cannot borrow it.
+function after(g){if(g.players)for(const e of g.ents)if(e.type==='pane')e.solid=true;}
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'mirror',reset,before,beforePlayer:before,after,afterPlayer:after,afterPlayers:after});
 })(typeof window!=='undefined'?window:globalThis);

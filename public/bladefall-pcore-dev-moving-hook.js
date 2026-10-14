@@ -23,7 +23,7 @@ function reset(g){
  });
 }
 function release(g,p,why){const h=p.hook;if(!h?.ring.movingHook)return;C().emit(g,'moving-unhook',{id:h.ring.carrierId,x:p.x+4,y:p.y+4,why,vx:p.vx,vy:p.vy});p.liftTimer=0;}
-function detach(g,why){const p=g.p;if(!p.hook?.ring.movingHook)return;release(g,p,why);p.lastRing=p.hook.ring;p.hook=null;p.state='normal';p.coast=true;p.fling=false;C().emit(g,'moving-hook-blocked',{x:p.x+4,y:p.y+4,why});C().emit(g,'unhook',{x:p.x+4,y:p.y+4,why});}
+function detach(g,why,p=g.p){if(!p.hook?.ring.movingHook)return;const actor=g.coopActor;if(g.players)g.coopActor=g.players.indexOf(p);release(g,p,why);p.lastRing=p.hook.ring;p.hook=null;p.state='normal';p.coast=true;p.fling=false;C().emit(g,'moving-hook-blocked',{x:p.x+4,y:p.y+4,why});C().emit(g,'unhook',{x:p.x+4,y:p.y+4,why});g.coopActor=actor;}
 function moveAxis(g,e,delta,axis){
  const key=axis?'remY':'remX',total=e[key]+delta,n=Math.round(total),s=Math.sign(n);e[key]=0;
  for(let i=0;i<Math.abs(n);i++){
@@ -35,20 +35,20 @@ function moveAxis(g,e,delta,axis){
 function before(g){
  const Core=C(),p=g.p;
  for(const e of carriers(g)){
-  const r=g.ents.find(x=>x.id===e.id+':ring'),oldX=e.x+e.remX,oldY=e.y+e.remY,wasBlocked=e.blocked,rider=Core.riderOf(g,e);e.blocked=false;
+  const r=g.ents.find(x=>x.id===e.id+':ring'),oldX=e.x+e.remX,oldY=e.y+e.remY,wasBlocked=e.blocked,riders=(g.players||[p]).filter(p=>Core.riderOf(g,e,p));e.blocked=false;
   if(g.awake)e.clock++;
   const q=point(e);moveAxis(g,e,q.x-(e.x+e.remX),0);moveAxis(g,e,q.y-(e.y+e.remY),1);
   // Pause the rail clock at a blocker; opening a door must not cause a catch-up teleport.
   if(e.blocked&&g.awake)e.clock--;
   e.stepX=e.x+e.remX-oldX;e.stepY=e.y+e.remY-oldY;e.vx=e.stepX/DT;e.vy=e.stepY/DT;mount(e,r);
-  if(rider){p.liftX=e.vx;p.liftY=e.vy;p.liftTimer=Core.K.liftGraceFrames;}
+  for(const p of riders){p.liftX=e.vx;p.liftY=e.vy;p.liftTimer=Core.K.liftGraceFrames;}
   if(e.blocked&&!wasBlocked)Core.emit(g,'moving-carrier-stop',{id:e.id,x:r.x+4,y:r.y+4});
   if(g.awake&&(e.clock+e.phase)%(e.period/2)===0)Core.emit(g,'moving-hook-turn',{id:e.id,x:r.x+4,y:r.y+4});
-  const h=p.hook;if(h?.ring===r){
-   if(Math.hypot(e.stepX,e.stepY)>8){detach(g,'anchor-discontinuity');continue;}
+  for(const p of g.players||[g.p]){const h=p.hook;if(h?.ring===r){
+   if(Math.hypot(e.stepX,e.stepY)>8){detach(g,'anchor-discontinuity',p);continue;}
    if(h.carrierVX!==undefined){p.vx+=e.vx-h.carrierVX;p.vy+=e.vy-h.carrierVY;}
    h.carrierVX=e.vx;h.carrierVY=e.vy;p.liftTimer=0;
-  }
+  }}
  }
 }
 function forces(g,p,inp){
@@ -74,6 +74,6 @@ function after(g){
 }
 // Move carriers before hook catches/releases; moving rope forces replace only the opt-in branch.
 const list=root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[],index=list.findIndex(x=>x.name==='hook');
-list.splice(index<0?list.length:index,0,{name:'moving-hook',reset,before,forces,after});
+list.splice(index<0?list.length:index,0,{name:'moving-hook',reset,before,forces,after,afterPlayer:after});
 root.BladefallPrecisionMovingHook=Object.freeze({carriers,release,point});
 })(typeof window!=='undefined'?window:globalThis);

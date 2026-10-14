@@ -2,7 +2,7 @@
 (function(root){'use strict';
 let api=null,flag=null,pan=null,drag=null,bar=null,note='',lastRefresh='',hover=null,coords=null;
 const excluded=new Set(['defs','rooms','spikeSafe','events']);
-const enabled=()=>!!api?.enabled();
+const enabled=()=>!!api?.enabled()&&!api?.view.g?.players;
 function resetCamera(){if(!api)return;api.view.camRoom=null;root.BladefallPitchView?.climb?.resetCamera?.();}
 function stopDrag(){if(!drag)return;const id=drag.id;drag=null;try{api.view.canvas.releasePointerCapture(id);}catch{}}
 function follow(){stopDrag();pan=null;if(coords)coords.hidden=true;resetCamera();api?.clearInput();refresh();}

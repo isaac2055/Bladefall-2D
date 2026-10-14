@@ -33,12 +33,17 @@ function forces(g,p){
  const d=p.onGround?beltUnder(g,p.x,p.y,p.w,p.h):0;
  if(d){p.pushX=(p.pushX||0)+d*NK.belt*DT;p.liftX=d*NK.belt;p.liftY=0;p.liftTimer=Math.max(p.liftTimer,2);}
 }
+const occupied=(g,e)=>(g.players||[g.p]).some(p=>(!g.players||p.state!=='dead'&&p.state!=='respawn')&&overlap(p.x,p.y,p.w,p.h,e.x,e.y,e.w,e.h));
 function after(g){
- const Core=C(),p=g.p;
+ const Core=C();
  if(g.room.belt)for(const e of g.ents){if(e.type!=='lantern'||e.held||e.returning)continue;const d=beltUnder(g,e.x,e.y,e.w,e.h);if(d)Core.moveX(g,e,d*NK.belt*DT);}
  for(const e of g.ents){
-  if(e.type==='mould'&&e.pending&&!overlap(p.x,p.y,p.w,p.h,e.x,e.y,e.w,e.h)){e.pending=false;e.solid=true;}
+  if(e.type==='mould'&&e.pending&&!occupied(g,e)){e.pending=false;e.solid=true;}
  }
+ afterPlayer(g);
+}
+function afterPlayer(g){
+ const Core=C(),p=g.p;
  if(!(p.strikeTimer>0))return;
  const sb=Core.strikeBox(p),d=p.strikeDir;
  for(const e of g.ents){
@@ -50,11 +55,11 @@ function after(g){
    else Core.emit(g,'guard-block',{x:e.x+4,y:e.y+4});
   }else if(!e.cast){
    p.strikeHit.add(key);e.cast=true;
-   if(overlap(p.x,p.y,p.w,p.h,e.x,e.y,e.w,e.h))e.pending=true;else e.solid=true;
+   if(occupied(g,e))e.pending=true;else e.solid=true;
    Core.emit(g,'cast',{x:e.x+4,y:e.y+4});
   }
  }
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'foundry',reset,forces,after});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'foundry',reset,forces,after,afterPlayer});
 root.BladefallPrecisionFoundry=Object.freeze({NK,beltUnder});
 })(typeof window!=='undefined'?window:globalThis);

@@ -26,13 +26,14 @@ function setEnds(g,i){
  for(const d of set)g.portals[d.color]={color:d.color,c:d.c,r:d.r,face:d.face,fixed:true};
  P.refresh(g);
 }
-function before(g,inp){
- const Core=C(),p=g.p;
+function sharedReady(g){for(const p of g.players){p.echo=null;p.wake=g.wake?{...g.wake,path:[],shade:null,started:false}:null;}}
+function before(g,inp,actorOnly=false){
+ const Core=C(),p=g.p,S=g.players?p:g;
  if(g.echoOn&&g.buf.portal>0&&p.state!=='dead'&&p.state!=='respawn'){
   g.buf.portal=0;
-  if(!g.echo){g.echo={type:'echo',dev:true,presses:true,x:p.x,y:p.y,w:p.w,h:p.h,id:'echo',facing:p.facing};g.ents.push(g.echo);Core.emit(g,'echo-place',{x:p.x+4,y:p.y+5});}
+  if(!S.echo){S.echo={type:'echo',dev:true,presses:true,x:p.x,y:p.y,w:p.w,h:p.h,id:g.players?'echo:'+g.players.indexOf(p):'echo',facing:p.facing};g.ents.push(S.echo);Core.emit(g,'echo-place',{x:p.x+4,y:p.y+5});}
   else{
-   const e=g.echo;
+   const e=S.echo;
    if(Core.solidAt(g,e.x,e.y,p.w,p.h)){Core.emit(g,'echo-fizzle',{x:e.x+4,y:e.y+5});}
    else{
     // A spatial exchange ends the old tether. Keeping it would pull the knight back toward
@@ -45,20 +46,29 @@ function before(g,inp){
     Core.emit(g,'echo-swap',{x:p.x+4,y:p.y+5,fx:ox+4,fy:oy+5});}
   }
  }
- if(g.reaim&&g.awake){if(++g.reaim.t>=g.reaim.every){g.reaim.t=0;g.reaim.i++;setEnds(g,g.reaim.i);Core.emit(g,'reaim',{});}}
- if(g.wake&&g.awake){
-  const w=g.wake,alive=p.state!=='dead'&&p.state!=='respawn';
+ if(!actorOnly&&g.reaim&&g.awake){if(++g.reaim.t>=g.reaim.every){g.reaim.t=0;g.reaim.i++;setEnds(g,g.reaim.i);Core.emit(g,'reaim',{});}}
+ if(S.wake&&g.awake){
+  const w=S.wake,alive=p.state!=='dead'&&p.state!=='respawn';
   if(!w.started&&alive&&(inp.mx||inp.my||inp.jump||inp.dash))w.started=true;
   if(w.started){w.path.push({x:p.x,y:p.y});if(w.path.length>w.delay){const s=w.path.shift();if(!w.shade)Core.emit(g,'wake-rise',{x:s.x+4,y:s.y+5});w.shade={x:s.x,y:s.y,w:8,h:11};}}
  }
 }
 function after(g){
+ if(g.players)return;
  const p=g.p,w=g.wake;
  if(w&&w.shade&&p.state!=='dead'&&p.state!=='respawn'&&overlap(p.x+1,p.y+1,p.w-2,8,w.shade.x+1,w.shade.y+1,6,9)){C().kill(g,p,'wake');}
 }
 function mirror(g){
- const H=184;if(g.echo)g.echo.y=H-g.echo.y-g.echo.h;
- if(g.wake){for(const s of g.wake.path)s.y=H-s.y-11;if(g.wake.shade)g.wake.shade.y=H-g.wake.shade.y-11;}
+ const H=g.room.h;
+ // Echoes are entities and were already mirrored by the gravity module.
+ for(const state of g.players||[g])if(state.wake){for(const s of state.wake.path)s.y=H-s.y-11;if(state.wake.shade)state.wake.shade.y=H-state.wake.shade.y-11;}
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'throne',reset,before,after,mirror});
+function afterPlayers(g){
+ const actor=g.coopActor;
+ try{for(const [i,p]of g.players.entries()){
+  if(p.state==='dead'||p.state==='respawn')continue;
+  if(g.players.some(q=>q.wake?.shade&&overlap(p.x+1,p.y+1,p.w-2,8,q.wake.shade.x+1,q.wake.shade.y+1,6,9))){g.coopActor=i;C().kill(g,p,'wake');}
+ }}finally{g.coopActor=actor;}
+}
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'throne',reset,sharedReady,before,beforePlayer:(g,inp)=>before(g,inp,true),after,afterPlayers,mirror});
 })(typeof window!=='undefined'?window:globalThis);

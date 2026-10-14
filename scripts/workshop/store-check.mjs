@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';import {IDBFactory} from 'fake-indexeddb';
+import '../../public/bladefall-workshop-model.js';import '../../public/bladefall-workshop-store.js';
+const M=globalThis.BladefallWorkshopModel,indexedDB=new IDBFactory();
+const storage={getItem(){throw Error('IndexedDB test must not use the fallback.');},setItem(){throw Error('IndexedDB test must not use the fallback.');}};
+const a=globalThis.BladefallWorkshopStore.create({indexedDB,storage}),b=globalThis.BladefallWorkshopStore.create({indexedDB,storage});
+const doc=M.create({id:'durable',mode:'ascend',name:'Draft',definition:{map:['P']}});await a.save(doc);assert.deepEqual(await b.load(doc.id),doc);
+const first={...doc,revision:1,name:'First writer'},second={...doc,revision:1,name:'Second writer'};
+const race=await Promise.allSettled([a.save(first),b.save(second)]);assert.equal(race.filter(r=>r.status==='fulfilled').length,1);assert.equal(race.filter(r=>r.status==='rejected').length,1);const kept=await b.load(doc.id);assert.equal(kept.revision,1);assert(['First writer','Second writer'].includes(kept.name));
+await assert.rejects(a.save(doc),/newer or different/);assert.deepEqual(await b.load(doc.id),kept);await a.save(kept);assert.equal((await b.list()).length,1);
+const fresh=globalThis.BladefallWorkshopStore.create({indexedDB,storage});assert.deepEqual(await fresh.load(doc.id),kept);await fresh.remove(doc.id);assert.equal(await a.load(doc.id),null);assert.deepEqual(await b.list(),[]);
+console.log('PASS: IndexedDB transactions through fake-indexeddb, independent connections, concurrent same-revision writers, stale rejection, idempotent save, fresh reopen and delete.');
+const journal={document:{id:'large-draft',payload:'large recovered scene '.repeat(300000)},pending:{id:'pending-edit',changes:[{path:['definition','x'],value:12}]}};
+await a.saveJournal('session:builder',journal);assert.deepEqual(await fresh.loadJournal('session:builder'),journal);assert.deepEqual(await a.list(),[],'recovery journals do not appear as level documents');
+console.log('PASS: large co-build recovery journal persists through independent IndexedDB connections.');
+const upgradeDB=new IDBFactory();await new Promise((resolve,reject)=>{const request=upgradeDB.open('bladefall-workshop',1);request.onupgradeneeded=()=>request.result.createObjectStore('documents',{keyPath:'id'});request.onerror=()=>reject(request.error);request.onsuccess=()=>{const old=request.result,tx=old.transaction('documents','readwrite');tx.objectStore('documents').put({id:doc.id,document:doc,updatedAt:new Date().toISOString()});tx.oncomplete=()=>{old.close();resolve();};};});
+const upgraded=globalThis.BladefallWorkshopStore.create({indexedDB:upgradeDB,storage});assert.deepEqual(await upgraded.load(doc.id),doc);await upgraded.saveJournal('new-journal',{pending:null,document:doc});assert.deepEqual((await upgraded.loadJournal('new-journal')).document,doc);
+console.log('PASS: existing v1 draft library upgrades without losing saved levels.');

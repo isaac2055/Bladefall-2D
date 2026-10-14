@@ -18,5 +18,5 @@ function after(g){
  if(touch&&!p.rbrOnSlab)C.emit(g,'slab',{x:p.x+4,y:p.y+p.h});
  p.rbrOnSlab=touch;
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-emberdeep',after});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-emberdeep',after,afterPlayer:after});
 })(typeof window!=='undefined'?window:globalThis);

@@ -26,6 +26,8 @@
            A head shakes for its last 20 frames up. Stand under a raised head as each shaft crosses her back. */
 (function(root){'use strict';const C=()=>root.BladefallPrecisionCore;
 const HR=Object.freeze({headW:16,headH:8,lift:26,tell:20,waveV:2.5,waveW:6,waveH:8,dark:36});
+const alive=p=>p.state!=='dead'&&p.state!=='respawn';
+function eachPlayer(g,fn){const p=g.p,a=g.coopActor;try{for(const [i,k]of (g.players||[p]).entries()){g.p=k;if(g.players)g.coopActor=i;fn(k);}}finally{g.p=p;g.coopActor=a;}}
 function reset(g){const d=g.room.def;g.dayKing=d.dayKing?{...d.dayKing,x:d.dayKing.c*8,y:(d.dayKing.r+1)*8-24,w:14,h:24,type:'dayKing',dev:true,solid:true,id:'dayking',hits:0,t:0,hurt:0,yielded:false,litSide:0,ripeT:0,ripeSide:0}:null;
  if(g.dayKing){g.ents.push(g.dayKing);for(const e of g.ents)if(e.type==='gate')e.devKeyed=true;
   const k=g.dayKing;if(k.beat||k.wave!=null||k.suns){k.gt=0;k.waves=[];k.sunT=0;k.sunNext=null;}}
@@ -44,10 +46,10 @@ function headBox(g,q,dk){const up=q.upNow;return {x:dk.x+q.at*8,y:up?dk.y-HR.lif
 function headUp(q,clock){const P=q.up+q.down;return ((clock+(q.phase||0))%P+P)%P<q.up;}
 function headTell(q,clock){const P=q.up+q.down,u=((clock+(q.phase||0))%P+P)%P;return u<q.up&&u>=q.up-HR.tell;}
 function before(g){const k=g.dayKing;if(k&&!k.yielded&&g.awake){k.t++;if(k.hurt>0)k.hurt--;if(k.beat)k.gt++;}}
-function after(g){const Core=C(),p=g.p,k=g.dayKing,s=g.gardenShade,L=g.hydraLight;
+function worldAfter(g){const Core=C(),p=g.p,k=g.dayKing,s=g.gardenShade,L=g.hydraLight;
  if(s&&!s.done){const stones=g.ents.filter(e=>e.type==='stone');if(stones.length&&stones.every(e=>e.lit)){s.done=true;if(g.beams){g.beams.emit=[];g.beams.paths=[];}Core.emit(g,'garden-shade',{x:s.c*8,y:s.r*8});}}
  if(L)hydraLight(g,L);
- if(!k||k.yielded||p.state==='dead'||p.state==='respawn')return;
+ if(!k||k.yielded||!(g.players||[p]).some(alive))return;
  // The hour turning: the next window glows, then lights.
  if(k.sunNext&&--k.sunT<=0){if(g.beams)g.beams.emit=[{c:k.sunNext.c,r:k.sunNext.r,dir:k.sunNext.dir}];Core.emit(g,'dayking-sun',{x:k.sunNext.c*8+4,y:k.sunNext.r*8+4});k.sunNext=null;}
  k.litSide=0;
@@ -60,14 +62,16 @@ function after(g){const Core=C(),p=g.p,k=g.dayKing,s=g.gardenShade,L=g.hydraLigh
  // 7.280 Fractured (opt-in `ripen`, frames): the gold opens only once the light has lain on the same side that long.
  if(k.ripen){const raw=k.litSide;if(raw&&raw===k.ripeSide)k.ripeT++;else{k.ripeSide=raw;k.ripeT=raw?1:0;}
   if(k.ripeT<k.ripen)k.litSide=0;else if(k.ripeT===k.ripen)Core.emit(g,'dayking-ripe',{x:k.x+7,y:k.y+8});}
+}
+function actorAfter(g,phase='all'){const Core=C(),p=g.p,k=g.dayKing;if(!k||k.yielded||!alive(p))return;
  const side=p.x+p.w/2>=k.x+k.w/2?1:-1,open=k.litSide===-side,need=k.need||2;
- if(p.strikeTimer>0&&!p.strikeHit.has(k.id)&&Core.overlap(...Core.strikeBox(p),k.x,k.y,k.w,k.h)){
+ if(phase!=='hurt'&&p.strikeTimer>0&&!p.strikeHit.has(k.id)&&Core.overlap(...Core.strikeBox(p),k.x,k.y,k.w,k.h)){
   p.strikeHit.add(k.id);if(open&&!k.hurt){k.hits++;k.hurt=40;Core.emit(g,'dayking-bloom',{x:k.x+7,y:k.y+8});if(k.hits>=need){k.yielded=true;g.beams.emit=[];g.beams.paths=[];if(k.waves)k.waves.length=0;Core.emit(g,'dayking-yield',{x:k.x+7,y:k.y});}
    else{if(k.beat)k.gt=0;
     if(k.suns&&k.suns[k.hits]&&g.beams){k.sunNext=k.suns[k.hits];k.sunT=k.dark??HR.dark;g.beams.emit=[];g.beams.paths=[];Core.emit(g,'dayking-turn',{x:k.sunNext.c*8+4,y:k.sunNext.r*8+4});}}}
   else Core.emit(g,'guard-block',{x:k.x+7,y:k.y+8});
  }
- if(k.yielded)return;
+ if(k.yielded||phase==='strike')return;
  // 7.280 Fractured (opt-in `shrug`): a knight holding his side or standing on him is shoved off, unharmed.
  if(k.shrug){const onSide=p.state==='climb'&&p.y<k.y+k.h&&p.y+p.h>k.y&&(Math.abs(p.x+p.w-k.x)<1||Math.abs(p.x-(k.x+k.w))<1);
   const onTop=p.onGround&&Math.abs(p.y+p.h-k.y)<1&&p.x<k.x+k.w&&p.x+p.w>k.x;
@@ -77,25 +81,32 @@ function after(g){const Core=C(),p=g.p,k=g.dayKing,s=g.gardenShade,L=g.hydraLigh
  if(k.guard&&k.beat&&p.onGround&&glovePhase(k)===''&&(side>0?p.x-(k.x+k.w):k.x-(p.x+p.w))<=k.guard){
   const P=k.beat[Math.min(k.hits,k.beat.length-1)],at=Math.max(24,P-60);k.gt=Math.floor(k.gt/P)*P+at-24;Core.emit(g,'dayking-guard',{x:k.x+7,y:k.y+8});}
  if(glovePhase(k)==='sweep'){const x=side>0?k.x+k.w:k.x-34;if(Core.overlap(p.x,p.y,p.w,p.h,x,k.y+12,34,12))Core.kill(g,p,'glove');}
- if(k.waves&&k.wave!=null&&k.hits>=k.wave&&gloveStart(k)){k.waves.push({x:side>0?k.x+k.w+34-HR.waveW:k.x-34,y:k.y+k.h-HR.waveH,dir:side});Core.emit(g,'dayking-wave',{x:k.x+7,y:k.y+k.h});}
+}
+function wavesAfter(g){const Core=C(),k=g.dayKing;if(!k||k.yielded||!(g.players||[g.p]).some(alive))return;
+ if(k.waves&&k.wave!=null&&k.hits>=k.wave&&gloveStart(k)){
+  const sides=new Set((g.players||[g.p]).filter(alive).map(p=>p.x+p.w/2>=k.x+k.w/2?1:-1));
+  for(const side of sides){k.waves.push({x:side>0?k.x+k.w+34-HR.waveW:k.x-34,y:k.y+k.h-HR.waveH,dir:side});Core.emit(g,'dayking-wave',{x:k.x+7,y:k.y+k.h});}
+ }
  if(k.waves&&k.waves.length){
   for(const w of k.waves){w.x+=w.dir*HR.waveV;const lead=w.dir>0?w.x+HR.waveW:w.x;
    if(Core.solidAt(g,w.dir>0?w.x+HR.waveW-1:w.x,w.y,1,HR.waveH-1)||!Core.solidAt(g,lead-w.dir,w.y+HR.waveH,1,1)||lead<0||lead>(g.room.w||Core.W))w.gone=true;
-   else if(p.state!=='dead'&&Core.overlap(p.x,p.y,p.w,p.h,w.x,w.y,HR.waveW,HR.waveH))Core.kill(g,p,'sun-wave');}
+   else eachPlayer(g,p=>{if(alive(p)&&Core.overlap(p.x,p.y,p.w,p.h,w.x,w.y,HR.waveW,HR.waveH))Core.kill(g,p,'sun-wave');});}
   k.waves=k.waves.filter(w=>!w.gone);
  }
 }
 /* The King's last light over the sea: shafts burn down to a raised head, the deck, or the water. */
-function hydraLight(g,L){const Core=C(),p=g.p,dk=deckOf(g);L.bands=[];if(!dk)return;
+function hydraLight(g,L){const Core=C(),dk=deckOf(g);L.bands=[];if(!dk)return;
  for(const q of L.heads){q.upNow=headUp(q,dk.clock);q.tell=headTell(q,dk.clock);const b=headBox(g,q,dk);q.x=b.x;q.y=b.y;q.pw=b.w;}
  for(const c of L.shafts){const x=c*8+4;let y1=g.room.h||Core.H;
   for(const q of L.heads)if(q.upNow&&x-1>=q.x&&x+1<=q.x+q.pw)y1=Math.min(y1,q.y);
   if(x+1>dk.x&&x-1<dk.x+dk.w)y1=Math.min(y1,dk.y);
   for(let r=1;r<Math.floor(y1/8);r++)if(Core.tileAt(g,c,r)===Core.SOLID){y1=r*8;break;}
   L.bands.push([x,8,y1]);
-  if(p.state!=='dead'&&p.state!=='respawn'&&Core.overlap(p.x,p.y,p.w,9,x-1,8,2,y1-8))Core.kill(g,p,'light');
+  eachPlayer(g,p=>{if(alive(p)&&Core.overlap(p.x,p.y,p.w,9,x-1,8,2,y1-8))Core.kill(g,p,'light');});
  }
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-sunspire',reset,before,after,gateHold:g=>!!(g.dayKing&&!g.dayKing.yielded)});
+function after(g){if(!g.players){worldAfter(g);actorAfter(g);wavesAfter(g);}}
+function afterPlayers(g){worldAfter(g);eachPlayer(g,()=>actorAfter(g,'strike'));eachPlayer(g,()=>actorAfter(g,'hurt'));wavesAfter(g);}
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-sunspire',reset,before,after,afterPlayers,gateHold:g=>!!(g.dayKing&&!g.dayKing.yielded)});
 root.BladefallSunspire=Object.freeze({HR,glovePhase});
 })(typeof window!=='undefined'?window:globalThis);

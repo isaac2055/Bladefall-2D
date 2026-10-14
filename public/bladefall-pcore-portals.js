@@ -132,7 +132,7 @@ function carry(g,body,vxKey,vyKey,kind){
  return true;
 }
 
-function before(g,inp){
+function beforePlayer(g,inp){
  if(!g.portals)return;
  const Core=C(),p=g.p,COLS=g.room.cols,ROWS=g.room.rows;
  if(p.portalCool>0)p.portalCool--;
@@ -140,6 +140,8 @@ function before(g,inp){
  if(g.buf.portal>0&&g.room.def.portalMode!=='fixed'&&p.state!=='dead'&&p.state!=='respawn'&&!p.carrying){
   g.buf.portal=0;let dx=inp.mx,dy=inp.my;if(!dx&&!dy)dx=p.facing;place(g,dx,dy);
  }
+}
+function carryWorld(g){
  if(!linked(g))return;
  // Things that are not the knight: the lantern, sliding stones, foe bolts.
  for(const e of g.ents){
@@ -149,6 +151,7 @@ function before(g,inp){
  }
  if(g.bolts)for(const b of g.bolts)if(b.alive)carry(g,b,'vx','vy','bolt');
 }
+function before(g,inp){beforePlayer(g,inp);if(!g.players)carryWorld(g);}
 function after(g,inp){
  if(!g.portals)return;
  const Core=C(),p=g.p,COLS=g.room.cols,ROWS=g.room.rows;
@@ -158,7 +161,7 @@ function after(g,inp){
  if(crossed){let any=false;for(const k of ['blue','orange'])if(g.portals[k]&&!g.portals[k].fixed){g.portals[k]=null;any=true;}
   if(any){refreshHoles(g);Core.emit(g,'portal-close',{x:p.x+4,y:p.y+5});}}
  // Combat shots move during the Combat step, just before this.
- if(g.combat&&linked(g))for(const s of g.combat.shots)if(!s.gone)carry(g,s,'vx','vy','shot');
+ if(!g.players&&g.combat&&linked(g))for(const s of g.combat.shots)if(!s.gone)carry(g,s,'vx','vy','shot');
  if(!linked(g)||p.portalCool>0)return;
  const pt=entered(g,p.x,p.y,p.w,p.h);
  if(!pt){trackPeak(p);return;}
@@ -176,6 +179,10 @@ function after(g,inp){
  p.airPeakY=p.y;
  Core.emit(g,'portal-pass',{x:p.x+4,y:p.y+5,kind:'knight',from:pt.color});
 }
+function afterPlayers(g){
+ if(!linked(g))return;carryWorld(g);
+ if(g.combat)for(const s of g.combat.shots)if(!s.gone)carry(g,s,'vx','vy','shot');
+}
 function trackPeak(p){if(p.onGround||p.state==='climb'||p.airPeakY==null)p.airPeakY=p.y;else if(p.y<p.airPeakY)p.airPeakY=p.y;}
 /* For the view: where a shot fired now would open (without firing it). */
 function preview(g,dx,dy){
@@ -186,5 +193,5 @@ function preview(g,dx,dy){
  for(const [c,r] of hit.tries){const cand=make(color,c,r,hit.face);if(slotOK(g,cand))return {ok:true,x:hit.x,y:hit.y,color,pt:cand,box:boxOf(cand)};}
  return {ok:false,x:hit.x,y:hit.y,color};
 }
-root.BladefallPrecisionPortals=Object.freeze({PK,reset,before,after,preview,boxOf,tilesOf,N,refresh:refreshHoles,turn,linked,other,exitPos,entered});
+root.BladefallPrecisionPortals=Object.freeze({PK,reset,before,beforePlayer,after,afterPlayer:after,afterPlayers,preview,boxOf,tilesOf,N,refresh:refreshHoles,turn,linked,other,exitPos,entered});
 })(typeof window!=='undefined'?window:globalThis);

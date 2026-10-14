@@ -25,7 +25,7 @@ function obstruction(g,e,b){
  if(b.x<0||b.y<0||b.x+b.w>g.room.w||b.y+b.h>g.room.h)return 'edge';
  const hit=Core.blockerAt(g,b.x,b.y,b.w,b.h,e);
  if(hit)return typeof hit==='object'?(hit.type==='hingeArm'?'arm':'solid'):'rock';
- if(p.state!=='dead'&&p.state!=='respawn'&&Core.overlap(b.x,b.y,b.w,b.h,p.x,p.y,p.w,p.h))return 'knight';
+ if((g.players||[p]).some(p=>p.state!=='dead'&&p.state!=='respawn'&&Core.overlap(b.x,b.y,b.w,b.h,p.x,p.y,p.w,p.h)))return 'knight';
  if(g.ents.some(q=>q.type==='lantern'&&!q.returning&&Core.overlap(b.x,b.y,b.w,b.h,q.x,q.y,q.w,q.h)))return 'lantern';
  return null;
 }
@@ -59,7 +59,7 @@ function after(g){
  p.strikeHit.add('hinge:stroke');p.strikeHit.add(e.id);
  if(why){e.jam=HK.jam;e.jamReason=why;Core.emit(g,'hinge-jam',{x:e.pivotX+4,y:e.pivotY+4,label:e.label,dir,reason:why});return;}
  const from=e.dir;Object.assign(e,b);e.dir=dir;e.state=dir;e.turns++;e.pulse=HK.pulse;e.jam=0;e.jamReason=null;
- if(p.onGround&&!Core.onGroundCheck(g,p))p.onGround=false;
+ for(const rider of g.players||[p])if(rider.onGround&&!Core.onGroundCheck(g,rider))rider.onGround=false;
  Core.emit(g,'hinge-turn',{x:e.pivotX+4,y:e.pivotY+4,label:e.label,from,dir});
 }
 function mirror(g){
@@ -70,7 +70,7 @@ function mirror(g){
   e.state=e.dir;Object.assign(e,pose(e));
  }
 }
-const dev={name:'hinge',reset,before,after,mirror};
+const dev={name:'hinge',reset,before,after,afterPlayer:after,mirror};
 const devices=root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[];
 const beam=devices.findIndex(d=>d.name==='beam');
 if(beam<0)devices.push(dev);else devices.splice(beam,0,dev);

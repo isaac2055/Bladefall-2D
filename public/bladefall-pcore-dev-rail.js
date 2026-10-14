@@ -34,32 +34,34 @@ function reset(g){
 }
 function supported(g,e){return C().solidAt(g,e.x,e.y+1,e.w,e.h,e);}
 function boostUnder(g,e){const COLS=g.room.cols,ROWS=g.room.rows,r=(e.y+e.h)/TILE;if(r!==Math.floor(r)||r>=ROWS)return 0;let d=0;for(let c=Math.floor(e.x/TILE);c<=Math.floor((e.x+e.w-1)/TILE);c++)d=g.room.boost[r*COLS+c]||d;return d;}
-function seatedIn(g,e){const p=g.p;return p.state!=='dead'&&p.y+p.h===e.y&&p.x+4>=e.x&&p.x+4<e.x+e.w&&p.vy>=0;}
+function seatedIn(g,e,p=g.p){return p.state!=='dead'&&p.y+p.h===e.y&&p.x+4>=e.x&&p.x+4<e.x+e.w&&p.vy>=0;}
 function before(g,inp){
  const Core=C(),p=g.p,H=g.room.h;
+ if(g.players)beforePlayer(g);
  for(const e of g.ents){
   if(e.type!=='cart')continue;
   if(e.lost>0){if(--e.lost===0){e.x=e.ox;e.y=e.oy;e.vx=e.vy=0;e.remX=e.remY=0;e.gone=false;e.solid=true;Core.emit(g,'cart-home',{x:e.x+e.w/2,y:e.y});}continue;}
-  const seated=seatedIn(g,e)&&p.onGround;
+  const riders=(g.players||[p]).filter(p=>seatedIn(g,e,p)&&p.onGround),seated=riders.length>0;
+  const lean=g.players?Math.sign(riders.reduce((sum,rider)=>{const raw=g.coopInputs?.[g.players.indexOf(rider)]||{},locked=g.room.def.lock||[];return sum+(raw.r&&!locked.includes('r')?1:0)-(raw.l&&!locked.includes('l')?1:0);},0)):inp.mx;
   // A cart is not ground: feet on a cart do not bring the dash back (the core refills only while this is 0),
   // no dash starts from it, and a dash that lands on it ends, seated.
-  if(p.state!=='dead'&&p.state!=='respawn'&&p.y+p.h===e.y&&p.x<e.x+e.w&&p.x+p.w>e.x){
+  if(!g.players&&p.state!=='dead'&&p.state!=='respawn'&&p.y+p.h===e.y&&p.x<e.x+e.w&&p.x+p.w>e.x){
    p.dashRefillCooldown=Math.max(p.dashRefillCooldown,2);g.buf.dash=0;
    if(p.state==='dash'&&!p.dashAim){p.state='normal';p.dashTimer=0;p.ducking=false;p.vx=0;p.vy=0;}
   }
   const onRail=supported(g,e);
-  if(seated&&onRail){if(inp.mx){const t=CK.leanMax*inp.mx;if(Math.abs(e.vx)<CK.leanMax||Math.sign(e.vx)!==inp.mx)e.vx=approach(e.vx,t,CK.lean*DT);}}
+  if(seated&&onRail){if(lean){const t=CK.leanMax*lean;if(Math.abs(e.vx)<CK.leanMax||Math.sign(e.vx)!==lean)e.vx=approach(e.vx,t,CK.lean*DT);}}
   if(onRail){
    // Collapsing track under the wheels starts to shake.
    for(const s of g.ents)if(s.type==='crumble'&&!s.broken&&!s.shaking&&overlap(e.x,e.y+e.h,e.w,1,s.x,s.y,s.w,s.h)){s.shaking=Core.K.crumbleShakeFrames;Core.emit(g,'crumble-shake',{x:s.x+s.w/2,y:s.y});}
    const b=boostUnder(g,e);if(b){if(e.vx*b<CK.boost){e.vx=b*CK.boost;Core.emit(g,'boost',{x:e.x+e.w/2,y:e.y+e.h});}}
-   else if(!(seated&&inp.mx))e.vx=approach(e.vx,0,CK.coast*DT);
+   else if(!(seated&&lean))e.vx=approach(e.vx,0,CK.coast*DT);
    e.vy=0;
   }else e.vy=Math.min(CK.maxFall,e.vy+CK.gravity*DT);
   // Switch: lean the way you roll as the cart passes a brass switch, and it hops to the high line.
   for(const s of g.ents){if(s.type!=='switch')continue;
    if(onRail&&e.vx&&overlap(e.x,e.y,e.w,e.h+1,s.x,s.y,s.w,s.h)&&!e.hopped){
-    if(seated&&inp.mx===Math.sign(e.vx)){e.vy=CK.hop;e.hopped=s.id;Core.emit(g,'switch-high',{x:s.x+4,y:s.y});}else if(e.passed!==s.id){e.passed=s.id;Core.emit(g,'switch-low',{x:s.x+4,y:s.y});}}}
+    if(seated&&lean===Math.sign(e.vx)){e.vy=CK.hop;e.hopped=s.id;Core.emit(g,'switch-high',{x:s.x+4,y:s.y});}else if(e.passed!==s.id){e.passed=s.id;Core.emit(g,'switch-low',{x:s.x+4,y:s.y});}}}
   if(onRail&&e.vy>=0&&e.hopped&&!g.ents.some(s=>s.type==='switch'&&overlap(e.x,e.y,e.w,e.h+1,s.x,s.y,s.w,s.h)))e.hopped=null;
   // Move: sideways, stopping at the first solid (it shoves the knight, as any moving solid does); then fall or rise.
   e.remX+=e.vx*DT;let nx=Math.round(e.remX);e.remX-=nx;
@@ -67,8 +69,14 @@ function before(g,inp){
   e.remY+=e.vy*DT;let ny=Math.round(e.remY);e.remY-=ny;
   while(ny){const s=Math.sign(ny);if(Core.blockerAt(g,e.x,e.y+s,e.w,e.h,e)){if(s>0&&e.vy>120)Core.emit(g,'cart-land',{x:e.x+e.w/2,y:e.y+e.h});e.vy=0;e.remY=0;break;}Core.moveSolid(g,e,0,s);ny-=s;}
   // A seated knight carries the cart's speed: jump out and keep it.
-  if(seatedIn(g,e)&&p.onGround){p.liftX=e.vx;p.liftY=Math.min(0,e.vy);p.liftTimer=Core.K.liftGraceFrames;}
+  for(const rider of g.players||[p])if(seatedIn(g,e,rider)&&rider.onGround){rider.liftX=e.vx;rider.liftY=Math.min(0,e.vy);rider.liftTimer=Core.K.liftGraceFrames;}
   if(e.y>H+8){e.lost=CK.home;e.gone=true;e.solid=false;Core.emit(g,'cart-lost',{x:e.x+e.w/2,y:H});}
+ }
+}
+function beforePlayer(g){
+ const p=g.p;for(const e of g.ents){if(e.type!=='cart'||e.gone||p.state==='dead'||p.state==='respawn'||p.y+p.h!==e.y||p.x>=e.x+e.w||p.x+p.w<=e.x)continue;
+ p.dashRefillCooldown=Math.max(p.dashRefillCooldown,2);g.buf.dash=0;
+ if(p.state==='dash'&&!p.dashAim){p.state='normal';p.dashTimer=0;p.ducking=false;p.vx=0;p.vy=0;}
  }
 }
 const approach=(v,t,d)=>v>t?Math.max(v-d,t):Math.min(v+d,t);
@@ -84,6 +92,6 @@ function dashHit(g,p,b,sx,sy){
  b.vx=sx*CK.push;p.state='normal';p.dashTimer=0;p.ducking=false;p.vx=-sx*120;p.vy=-120;p.varJumpSpeed=p.vy;p.varJump=9;p.autoJump=true;
  g.freeze=2;C().emit(g,'stone-hit',{x:b.x+b.w/2,y:b.y+b.h/2,dx:sx,dy:0});return true;
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rail',reset,before,forces,dashHit});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rail',reset,before,beforePlayer,forces,dashHit});
 root.BladefallPrecisionRail=Object.freeze({CK});
 })(typeof window!=='undefined'?window:globalThis);

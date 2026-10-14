@@ -38,6 +38,8 @@
 (function(root){
 'use strict';const C=()=>root.BladefallPrecisionCore;
 const overlap=(a,b)=>C().overlap(a.x,a.y,a.w,a.h,b.x,b.y,b.w,b.h);
+function target(g,x,y){return g.players?.filter(alive).sort((a,b)=>Math.hypot(a.x+4-x,a.y+5.5-y)-Math.hypot(b.x+4-x,b.y+5.5-y))[0]||g.p;}
+function eachPlayer(g,fn){const p=g.p,a=g.coopActor;try{for(const [i,k]of (g.players||[p]).entries()){g.p=k;if(g.players)g.coopActor=i;fn(k);}}finally{g.p=p;g.coopActor=a;}}
 function reset(g){
  const d=g.room.def;
  g.crown=d.crown?{...d.crown,t:0,lit:[],done:false,phase:0,kt:0,verdict:null,answered:false}:null;
@@ -57,7 +59,7 @@ function before(g){
   if(--v.t===0){g.bolts.push({x:v.x-2,y:v.y,w:4,h:8,vx:0,vy:s.duel.speed||150,friendly:false,alive:true,from:'king-verdict',seal:s.phase});C().emit(g,'crown-verdict',{x:v.x,y:v.y});}
   if(v.t< -60)s.verdict=null;
  }
- if(s&&s.bolts&&!s.done&&g.awake){const p=g.p;
+ if(s&&s.bolts&&!s.done&&g.awake){const p=target(g,(s.c??34)*8+10,(s.r??12)*8-10);
   if(kingDue(s)===0&&p.state!=='dead'&&p.state!=='respawn'){const sp=s.bolts.speed||KB.speed,ox=(s.c??34)*8+10,oy=(s.r??12)*8-10,dx=p.x+4-ox,dy=p.y+5.5-oy,n=Math.hypot(dx,dy)||1;
    g.bolts.push({x:ox-2+dx/n*8,y:oy-2+dy/n*8,w:4,h:4,vx:dx/n*sp,vy:dy/n*sp,friendly:false,alive:true,from:'king'});C().emit(g,'enemy-shot',{x:ox,y:oy,king:true});}
   s.kt++;
@@ -68,21 +70,22 @@ function before(g){
 function handBefore(g){const h=g.hand;if(!h||h.gone||!g.awake)return;
  h.t=(h.t+1)%180;
  if(h.t===60){h.i=(h.i+1)%h.places.length;const q=h.places[h.i];h.x=q.c*8;h.y=(q.r+1)*8-h.h;C().emit(g,'hand-seam',{x:h.x,y:h.y});}
- if(h.t===110){const p=g.p,dx=p.x+4-(h.x+7),dy=p.y+5-(h.y+10),n=Math.hypot(dx,dy)||1;
+ if(h.t===110){const p=target(g,h.x+7,h.y+10),dx=p.x+4-(h.x+7),dy=p.y+5-(h.y+10),n=Math.hypot(dx,dy)||1;
   g.bolts.push({x:h.x+7+dx/n*12,y:h.y+10+dy/n*12,w:4,h:4,vx:dx/n*110,vy:dy/n*110,friendly:false,alive:true,from:'hand'});C().emit(g,'enemy-shot',{x:h.x+7,y:h.y+10});}
 }
 // The Hand's openings: the first `open` frames after each arrival (30 unless the room shortens them).
 function handOpen(h){const o=h.open||30;return h.t<o||h.t>=60&&h.t<60+o;}
 function wound(g,h){const window=Math.floor(g.roomFrame/180)*2+(h.t>=60?1:0);if(h.lastWound===window)return;h.lastWound=window;h.hits++;C().emit(g,'hand-hit',{x:h.x+7,y:h.y+10});if(h.hits>=(h.need||3)){h.gone=true;C().emit(g,'hand-spent',{x:h.x+7,y:h.y});}}
-function after(g){
- const Core=C(),p=g.p;
- if(g.crown&&!g.crown.done){const s=g.crown;
-  const bodies=[p,...g.ents.filter(e=>e.type==='echo'||!s.echoOnly&&e.type==='lantern'&&!e.held||s.shade&&e.type==='shade'&&e.state==='on')];
-  const living=p.state!=='dead'&&p.state!=='respawn';
+function settle(g,phase='all'){
+ const Core=C(),p=g.p,world=phase!=='actor',actor=phase!=='world';
+ if(world&&g.crown&&!g.crown.done){const s=g.crown;
+  const players=(g.players||[p]).filter(alive),bodies=[...players,...g.ents.filter(e=>e.type==='echo'||!s.echoOnly&&e.type==='lantern'&&!e.held||s.shade&&e.type==='shade'&&e.state==='on')];
+  const living=players.length>0;
   const matches=s.marks.map(m=>bodies.filter(b=>living&&overlap(b,{x:m.c*8-2,y:m.r*8,w:12,h:8})));
   s.lit=matches.map(x=>x.length>0);
   const both=matches.length===2&&matches[0].some(a=>matches[1].some(b=>a!==b));
   if(s.duel){
+   const p=players.find(p=>s.marks.some(m=>overlap(p,{x:m.c*8-2,y:m.r*8,w:12,h:8})))||players[0]||g.p;
    const answer=(g.bolts||[]).find(b=>b.alive&&b.friendly&&b.from==='king-verdict'&&b.seal===s.phase);
    if(answer){answer.alive=false;if(both){s.answered=true;Core.emit(g,'crown-answer',{x:p.x+4,y:p.y+5});}}
    if(both&&!s.verdict&&!s.answered){s.verdict={x:(s.marks.find(m=>overlap(p,{x:m.c*8-2,y:m.r*8,w:12,h:8}))?.c??Math.floor(p.x/8))*8+4,y:p.y-40,t:s.duel.tell||42};Core.emit(g,'crown-challenge',{x:p.x+4,y:p.y-40});}
@@ -94,8 +97,8 @@ function after(g){
    else {s.done=true;if(s.duel)for(const b of g.bolts||[])if(b.from==='king'||b.from==='king-verdict')b.alive=false;}
   }
  }
- const a=g.alarm;if(a&&!a.done){if(a.flash>0)a.flash--;
-  if(p.strikeTimer>0)for(const [i,bell] of a.bells.entries()){
+ const a=g.alarm;if(a&&!a.done){if(world&&a.flash>0)a.flash--;
+  if(actor&&alive(p)&&p.strikeTimer>0)for(const [i,bell] of a.bells.entries()){
    const key='alarm:'+i;if(p.strikeHit.has(key))continue;
    if(!Core.overlap(...Core.strikeBox(p),bell.c*8,bell.r*8,8,10))continue;
    p.strikeHit.add(key);a.at=bell.note===a.pattern[a.at]?a.at+1:0;a.flash=24;
@@ -104,14 +107,19 @@ function after(g){
   }
  }
  const h=g.hand;if(h&&!h.gone){
-  for(const b of g.bolts||[])if(b.alive&&b.friendly&&overlap(b,h)){b.alive=false;wound(g,h);break;}
-  if(!h.gone&&p.strikeTimer>0&&!p.strikeHit.has('right-hand')&&Core.overlap(...Core.strikeBox(p),h.x,h.y,h.w,h.h)){
+  if(world)for(const b of g.bolts||[])if(b.alive&&b.friendly&&overlap(b,h)){b.alive=false;wound(g,h);break;}
+  if(actor&&alive(p)&&!h.gone&&p.strikeTimer>0&&!p.strikeHit.has('right-hand')&&Core.overlap(...Core.strikeBox(p),h.x,h.y,h.w,h.h)){
    p.strikeHit.add('right-hand');
    if(handOpen(h))wound(g,h);else Core.emit(g,'guard-block',{x:h.x,y:h.y});
   }
  }
- if(h&&h.gone)h.fade=Math.min(60,h.fade+1);
- courtAfter(g);
+ if(world&&h&&h.gone)h.fade=Math.min(60,h.fade+1);
+ if(!g.players)courtAfter(g);
+}
+function after(g){if(!g.players)settle(g);}
+function afterPlayers(g){
+ settle(g,'world');eachPlayer(g,()=>courtAfter(g,'guard'));courtAfter(g,'world');
+ eachPlayer(g,()=>{settle(g,'actor');courtAfter(g,'strike');});
 }
 
 // ---------------------------------------------------------------- (7.308) the court
@@ -124,24 +132,24 @@ function courtReset(g,d){
 }
 const centre=z=>({x:z.x+z.w/2,y:z.y+z.h/2});
 const alive=p=>p.state!=='dead'&&p.state!=='respawn';
-function inGuard(g,z){const p=g.p,c=centre(z);return alive(p)&&Math.hypot(p.x+4-c.x,p.y+5.5-c.y)<cv('guard',z);}
+function inGuard(g,z,p=g.p){const c=centre(z);return alive(p)&&Math.hypot(p.x+4-c.x,p.y+5.5-c.y)<cv('guard',z);}
 // Whom he throws at: the knight, or (aim:'echo') the echo while it stands.
-function mark(g,z){const e=z.d.aim==='echo'&&g.echo;return e?{x:e.x+4,y:e.y+5.5,echo:true}:{x:g.p.x+4,y:g.p.y+5.5,echo:false};}
+function mark(g,z){const c=centre(z),p=target(g,c.x,c.y),echoes=g.players?g.players.filter(alive).map(p=>p.echo).filter(Boolean):[g.echo].filter(Boolean),e=z.d.aim==='echo'&&echoes.sort((a,b)=>Math.hypot(a.x-c.x,a.y-c.y)-Math.hypot(b.x-c.x,b.y-c.y))[0];return e?{x:e.x+4,y:e.y+5.5,echo:true}:{x:p.x+4,y:p.y+5.5,echo:false};}
 // Frames until his next throw (0 = this frame); the tell is drawn while it is under `tell`.
 function courtDue(z){if(z.mode!=='seat')return Infinity;const first=z.first??cv('first',z),every=cv('every',z),n=cv('volley',z),gap=cv('gap',z);
  if(z.kt<first)return first-z.kt;const k=(z.kt-first)%every;for(let i=0;i<n;i++)if(k===i*gap)return 0;return every-k;}
 function shoot(g,z){const Core=C(),c=centre(z),ox=c.x,oy=z.y+6,m=mark(g,z),sp=cv('speed',z),dx=m.x-ox,dy=m.y-oy,n=Math.hypot(dx,dy)||1;
  g.bolts.push({x:ox-2+dx/n*8,y:oy-2+dy/n*8,w:5,h:5,vx:dx/n*sp,vy:dy/n*sp,friendly:false,alive:true,from:'court'});Core.emit(g,'enemy-shot',{x:ox,y:oy,king:true,echo:m.echo});}
-function courtBefore(g){const z=g.court;if(!z||z.mode==='gone'||!g.awake)return;const Core=C(),p=g.p;
+function courtBefore(g){const z=g.court;if(!z||z.mode==='gone'||!g.awake)return;const Core=C(),p=target(g,z.x+z.w/2,z.y+z.h/2);
  z.aimAt=null;
  if(z.mode==='seat'){
-  if(inGuard(g,z)){rise(g,z);return;}
+  if((g.players||[p]).some(k=>inGuard(g,z,k))){rise(g,z);return;}
   const due=courtDue(z);if(due<=cv('tell',z)&&alive(p))z.aimAt=mark(g,z);
   if(due===0&&alive(p))shoot(g,z);
   z.kt++;return;
  }
- if(z.mode==='rise'){if(--z.timer>0)return;const c=centre(z),r=cv('guard',z),hit=inGuard(g,z);
-  Core.emit(g,'court-slam',{x:c.x,y:c.y,r});if(hit)Core.kill(g,p,'king-slam');
+ if(z.mode==='rise'){if(--z.timer>0)return;const c=centre(z),r=cv('guard',z),hit=(g.players||[p]).some(k=>inGuard(g,z,k));
+  Core.emit(g,'court-slam',{x:c.x,y:c.y,r});if(hit)eachPlayer(g,k=>{if(inGuard(g,z,k))Core.kill(g,k,'king-slam');});
   // A slam that finds no one winds him (opt-in per throne): the same opening as kneeling.
   if(!hit&&cv('winded',z)>0){z.mode='kneel';z.timer=cv('winded',z);z.winded=true;Core.emit(g,'court-winded',{x:c.x,y:c.y});return;}
   z.mode='rest';z.timer=cv('slamRest',z);return;}
@@ -153,20 +161,22 @@ function courtBefore(g){const z=g.court;if(!z||z.mode==='gone'||!g.awake)return;
  if(z.mode==='fall'){z.y+=Math.min(4,1+z.timer/8);if(++z.timer>=CK.fall){z.mode='gone';Core.emit(g,'court-gone',{x:centre(z).x,y:z.y});}}
 }
 function rise(g,z){z.mode='rise';z.timer=cv('slamTell',z);z.winded=false;C().emit(g,'court-guard',{x:centre(z).x,y:centre(z).y});}
-function shatterEcho(g){const e=g.echo;if(!e)return;const i=g.ents.indexOf(e);if(i>=0)g.ents.splice(i,1);g.echo=null;C().emit(g,'echo-break',{x:e.x+4,y:e.y+5});}
-function courtAfter(g){const z=g.court;if(!z||z.mode==='gone'||z.mode==='fall'||!g.awake)return;const Core=C(),p=g.p;
+function shatterEcho(g){const owner=g.players?g.p:g,e=owner.echo;if(!e)return;const i=g.ents.indexOf(e);if(i>=0)g.ents.splice(i,1);owner.echo=null;C().emit(g,'echo-break',{x:e.x+4,y:e.y+5});}
+function courtAfter(g,phase='all'){const z=g.court;if(!z||z.mode==='gone'||z.mode==='fall'||!g.awake)return;const Core=C(),p=g.p;
  // His ring cannot be crossed: step over it, even while he kneels, and he springs up to slam. A trade does not cross.
- const inside=inGuard(g,z),traded=g.events.some(e=>e.type==='echo-swap'&&e.frame===g.frame);
- if(inside&&!z.inside&&!traded&&(z.mode==='kneel'||z.mode==='rest'))rise(g,z);
- z.inside=inside;
+ if(phase==='all'||phase==='guard'){
+ const owner=g.players?p:z,key=g.players?'courtInside':'inside',inside=inGuard(g,z),traded=g.events.some(e=>e.type==='echo-swap'&&e.frame===g.frame&&(!g.players||e.player===g.coopActor));
+ if(inside&&!owner[key]&&!traded&&(z.mode==='kneel'||z.mode==='rest'))rise(g,z);
+ owner[key]=inside;if(phase==='guard')return;
+ }
  const body={x:z.x,y:z.y,w:z.w,h:z.h},c=centre(z);
  // His own bolt, parried with no direction held, flies straight back at his face (an aimed parry goes where aimed).
- for(const b of g.bolts||[])if(b.alive&&b.friendly&&b.from==='court'&&!b.returned){b.returned=true;const a=p.parryAim;
+ if(phase!=='strike')for(const b of g.bolts||[])if(b.alive&&b.friendly&&b.from==='court'&&!b.returned){b.returned=true;const a=g.players?b.returnAim:p.parryAim;
   if(!a||!a.x&&!a.y){const sp=Math.max(Math.hypot(b.vx,b.vy),cv('back',z)),dx=c.x-(b.x+b.w/2),dy=z.y+8-(b.y+b.h/2),n=Math.hypot(dx,dy)||1;b.vx=dx/n*sp;b.vy=dy/n*sp;}}
- for(const b of g.bolts||[])if(b.alive&&b.friendly&&z.mode!=='leap'&&overlap(b,body)){b.alive=false;
+ if(phase!=='strike')for(const b of g.bolts||[])if(b.alive&&b.friendly&&z.mode!=='leap'&&overlap(b,body)){b.alive=false;
   if(!cv('parry',z)){Core.emit(g,'guard-block',{x:b.x,y:b.y,ward:true});continue;}
   if(z.mode!=='kneel'){z.mode='kneel';z.timer=cv('stun',z);Core.emit(g,'court-kneel',{x:centre(z).x,y:centre(z).y});}}
- if(!alive(p)||!(p.strikeTimer>0)||z.mode==='leap'||p.strikeHit.has('court-king')||!Core.overlap(...Core.strikeBox(p),body.x,body.y,body.w,body.h))return;
+ if(phase==='world'||!alive(p)||!(p.strikeTimer>0)||z.mode==='leap'||p.strikeHit.has('court-king')||!Core.overlap(...Core.strikeBox(p),body.x,body.y,body.w,body.h))return;
  p.strikeHit.add('court-king');
  if(z.mode!=='kneel'){Core.emit(g,'guard-block',{x:centre(z).x,y:centre(z).y});return;}
  Core.bladeRebound(g,p,p.strikeDir);g.freeze=Math.max(g.freeze,4);z.wounds++;
@@ -176,6 +186,6 @@ function courtAfter(g){const z=g.court;if(!z||z.mode==='gone'||z.mode==='fall'||
  z.leapFrom={x:z.x,y:z.y};z.mode='leap';z.timer=0;z.first=undefined;z.i++;Core.emit(g,'court-leap',{x:centre(z).x,y:z.y,to:z.i});
 }
 function gateHold(g){return !!(g.crown&&!g.crown.done||g.alarm&&!g.alarm.done||g.hand&&!g.hand.gone||g.court&&g.court.mode!=='gone');}
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-king',reset,before,after,gateHold});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-king',reset,before,after,afterPlayers,gateHold});
 root.BladefallPrecisionKing=Object.freeze({KB,kingDue,handOpen,CK,courtDue,inGuard});
 })(typeof window!=='undefined'?window:globalThis);

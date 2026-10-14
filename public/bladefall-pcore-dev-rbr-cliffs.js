@@ -12,16 +12,18 @@ function reset(g){g.chainHydra=g.room.def.chainHydra?{...g.room.def.chainHydra,t
  if(h&&h.spit){h.st=0;g.foes=g.foes||[];g.bolts=g.bolts||[];g.parryable=true;}}
 const HS=Object.freeze({every:110,first:80,speed:110,tell:24,x:236,y:150});   // the head's jaw
 function spitDue(h){const s=h.spit;if(!s)return Infinity;const every=s.every||HS.every,first=s.first??HS.first;return h.st<first?first-h.st:(every-(h.st-first)%every)%every;}
-function before(g){const h=g.chainHydra;if(h?.hunt){jawBefore(g,h);return;}if(h&&!h.done&&g.awake){h.t++;if(h.grace>0)h.grace--;
- if(h.spit){const p=g.p;if(spitDue(h)===0&&p.state!=='dead'&&p.state!=='respawn'){const sp=h.spit.speed||HS.speed,dx=p.x+4-HS.x,dy=p.y+5.5-HS.y,n=Math.hypot(dx,dy)||1;
+function target(g,x,y){return g.players?.filter(p=>p.state!=='dead'&&p.state!=='respawn').sort((a,b)=>Math.hypot(a.x+4-x,a.y+5.5-y)-Math.hypot(b.x+4-x,b.y+5.5-y))[0]||g.p;}
+function before(g){if(g.players){for(const p of g.players)if(p.hydraClimb?.grace>0)p.hydraClimb.grace--;for(const e of g.ents)if(e.type==='hydra-spine'&&e.pending&&!g.players.some(p=>p.state!=='dead'&&p.state!=='respawn'&&C().overlap(p.x,p.y,p.w,p.h,e.x,e.y,e.w,e.h))){e.pending=false;e.solid=true;}}const h=g.chainHydra;if(h?.hunt){jawBefore(g,h);return;}if(h&&!h.done&&g.awake){h.t++;if(h.grace>0)h.grace--;
+ if(h.spit){const p=target(g,HS.x,HS.y);if(spitDue(h)===0&&p.state!=='dead'&&p.state!=='respawn'){const sp=h.spit.speed||HS.speed,dx=p.x+4-HS.x,dy=p.y+5.5-HS.y,n=Math.hypot(dx,dy)||1;
    g.bolts.push({x:HS.x-2+dx/n*8,y:HS.y-2+dy/n*8,w:4,h:4,vx:dx/n*sp,vy:dy/n*sp,friendly:false,alive:true,from:'hydra'});C().emit(g,'enemy-shot',{x:HS.x,y:HS.y,hydra:true});}
   h.st++;}}}
 function after(g){const h=g.chainHydra,p=g.p,Core=C();if(!h||h.done||p.state==='dead'||p.state==='respawn')return;if(h.hunt){jawAfter(g,h);return;}
- if(g.events.some(e=>e.type==='hook'))h.serial++;
+ const progress=g.players?(p.hydraClimb||(p.hydraClimb={serial:0,spent:0,grace:0})):h;
+ if(g.events.some(e=>e.type==='hook'&&(!g.players||e.frame===g.frame&&e.player===g.coopActor)))progress.serial++;
  const phase=h.t%240,open=phase>=50&&phase<205;
- if(p.state==='hook'&&open&&h.serial>h.spent)h.grace=108;
+ if(p.state==='hook'&&open&&progress.serial>progress.spent)progress.grace=108;
  if(p.strikeTimer>0&&p.strikeDir.y>0&&!p.strikeHit.has('hydra-lock')&&Core.overlap(...Core.strikeBox(p),h.c*8,h.r*8,8,9)){
-  p.strikeHit.add('hydra-lock');if(h.grace>0&&h.serial>h.spent){h.spent=h.serial;h.grace=0;h.hits++;Core.emit(g,'hydra-lock',{x:h.c*8+4,y:h.r*8});if(h.hits===(h.need||2)){h.done=true;Core.emit(g,'hydra-free',{x:h.c*8+4,y:h.r*8});}
+  p.strikeHit.add('hydra-lock');if(progress.grace>0&&progress.serial>progress.spent){progress.spent=progress.serial;progress.grace=0;h.hits++;Core.emit(g,'hydra-lock',{x:h.c*8+4,y:h.r*8});if(h.hits===(h.need||2)){h.done=true;Core.emit(g,'hydra-free',{x:h.c*8+4,y:h.r*8});}
    else if(h.locks&&h.locks[h.hits]){const [c,r]=h.locks[h.hits];if(c!==h.c||r!==h.r){const from={x:h.c*8+4,y:h.r*8};h.c=c;h.r=r;Core.emit(g,'hydra-drag',{x:c*8+4,y:r*8,fx:from.x,fy:from.y});}}}
  }
  // A low committed lunge. The collar above it is the safe way onto the chain.
@@ -30,7 +32,7 @@ function after(g){const h=g.chainHydra,p=g.p,Core=C();if(!h||h.done||p.state==='
 // Authored jaw encounters: visible wind-up, committed bite, exposed jaw.
 // No grapple-history prerequisite: the weapon hits the head the player can see.
 function jawBefore(g,h){
- if(h.done||!g.awake)return;const Core=C(),p=g.p,d={...h.hunt,...h.hunt.stages?.[h.hits]},ax=h.c*8+4,ay=h.r*8+4;
+ if(h.done||!g.awake)return;const Core=C(),p=target(g,h.c*8+4,h.r*8+4),d={...h.hunt,...h.hunt.stages?.[h.hits]},ax=h.c*8+4,ay=h.r*8+4;
  h.t++;h.clock++;h.jawY=ay;
  if(h.mode==='watch'){
   h.jawX=ax;
@@ -59,11 +61,11 @@ function jawAfter(g,h){
  p.strikeHit.add('hydra-jaw');
  if(h.mode!=='open'){Core.emit(g,'guard-block',{x:h.jawX,y:h.jawY});return;}
  h.hits++;Core.emit(g,'hydra-lock',{x:h.jawX,y:h.jawY,hits:h.hits,jaw:true});
- const bone=h.hunt.spines?.[h.hits-1];if(bone){g.ents.push({type:'hydra-spine',dev:true,solid:true,id:'hydra-spine-'+h.hits,x:bone.c*8,y:bone.r*8,w:bone.w*8,h:8});Core.emit(g,'hydra-spine',{x:bone.c*8,y:bone.r*8,w:bone.w*8});}
+ const bone=h.hunt.spines?.[h.hits-1];if(bone){g.ents.push({type:'hydra-spine',dev:true,solid:true,id:'hydra-spine-'+h.hits,x:bone.c*8,y:bone.r*8,w:bone.w*8,h:8});const e=g.ents[g.ents.length-1];if(g.players?.some(p=>p.state!=='dead'&&p.state!=='respawn'&&Core.overlap(p.x,p.y,p.w,p.h,e.x,e.y,e.w,e.h))){e.pending=true;e.solid=false;}Core.emit(g,'hydra-spine',{x:bone.c*8,y:bone.r*8,w:bone.w*8});}
  if(h.hits>=(h.need||h.locks?.length||2)){h.done=true;Core.emit(g,'hydra-free',{x:h.jawX,y:h.jawY});return;}
  const next=h.locks?.[h.hits];if(next){const fx=h.jawX,fy=h.jawY;h.c=next[0];h.r=next[1];h.jawX=h.c*8+4;h.jawY=h.r*8+4;Core.emit(g,'hydra-drag',{fx,fy,x:h.jawX,y:h.jawY,jaw:true});}
  h.mode='watch';h.clock=0;
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-cliffs',reset,before,after,gateHold:g=>!!(g.chainHydra&&!g.chainHydra.done)});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-cliffs',reset,before,after,afterPlayer:after,gateHold:g=>!!(g.chainHydra&&!g.chainHydra.done)});
 root.BladefallPrecisionHydra=Object.freeze({HS,spitDue});
 })(typeof window!=='undefined'?window:globalThis);

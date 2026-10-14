@@ -7,6 +7,7 @@ import {join,resolve} from 'node:path';
 import {Miniflare,Log,LogLevel,convertV4MiniflareOptions} from 'miniflare';
 import '../../public/bladefall-playtest-worlds.js';
 import '../../public/bladefall-playtest-model.js';
+import {workshopHash} from '../../server/workshop-service.mjs';
 const M=globalThis.BladefallPlaytestModel,root=process.cwd();
 await mkdir('cloudflare-dist',{recursive:true});
 const temp=await mkdtemp(resolve('cloudflare-dist/pages-api-check-'));
@@ -48,12 +49,25 @@ try{
  response=await mf.dispatchFetch(url,{method:'OPTIONS',headers:{Origin:'http://localhost:8371'}});assert.equal(response.status,204);assert.equal(response.headers.get('access-control-allow-origin'),'http://localhost:8371');
  response=await mf.dispatchFetch(site+'/api/feedback-export');assert.equal(response.status,403);
  response=await mf.dispatchFetch(site+'/api/feedback-export',{headers:{Authorization:'Bearer '+secret}});const feedback=await response.json();assert.equal(feedback.recordings.length,1);assert.equal(feedback.recordings[0].scene,route.scene);assert.equal(feedback.feedback.length,3);assert(feedback.feedback.some(r=>r.comment==='private local proof'));assert(feedback.feedback.some(r=>r.id===review.id&&r.suitability===4&&r.revision==='test-revision'));assert(feedback.feedback.some(r=>r.id===core.id&&r.part===5&&r.x===1290));
- const publicText=await(await mf.dispatchFetch(url)).text();assert(!publicText.includes('private local proof'));assert(!publicText.includes('token'));assert(!publicText.includes('feedback'));assert(!publicText.includes('private route scene'));
+ // Workshop requests use the same owner identity, but separate private chunks and atomic heads.
+ const WM=globalThis.BladefallWorkshopModel,WA=globalThis.BladefallWorkshopAscend;
+ const draft=WM.create({id:'local-workshop-draft',mode:'ascend',name:'Private level fixture',definition:WA.fromRoom({id:'private-level',cols:8,rows:4,map:['........','........','P.......','########'],notes:'private workshop geometry '.repeat(30000)})});
+ const workshop=p=>mf.dispatchFetch(site+'/api/workshop',{method:'POST',headers:{Origin:site,'Content-Type':'application/json'},body:JSON.stringify({player:'local-player-0001',token,...p})});
+ async function chunks(doc){const text=JSON.stringify(doc),upload=await workshopHash(text),parts=Math.ceil(text.length/240000);for(let index=0;index<parts;index++){const result=await workshop({op:'chunk',upload,index,text:text.slice(index*240000,(index+1)*240000)});assert.equal(result.status,200);}return {upload,parts};}
+ const firstUpload=await chunks(draft);response=await workshop({op:'commit',...firstUpload,base:null});assert.equal(response.status,200);const firstMeta=(await response.json()).metadata;
+ assert.equal((await workshop({op:'commit',...firstUpload,base:null})).status,200,'lost acknowledgement retries do not create another version');
+ response=await workshop({op:'get',id:draft.id});assert.deepEqual((await response.json()).document,draft);
+ const share=(await(await workshop({op:'share',id:draft.id,digest:firstMeta.digest})).json()).share;assert.deepEqual((await(await mf.dispatchFetch(site+'/api/workshop?share='+share)).json()).document,draft);
+ const left=await chunks({...draft,revision:1,name:'Left writer'}),right=await chunks({...draft,revision:1,name:'Right writer'});
+ const competing=await Promise.all([workshop({op:'commit',...left,base:firstMeta.digest}),workshop({op:'commit',...right,base:firstMeta.digest})]);assert.deepEqual(competing.map(r=>r.status).sort(),[200,409],'SQLite compare-and-set rejects the racing writer');
+ const privateDrafts=await(await mf.dispatchFetch(site+'/api/feedback-export',{headers:{Authorization:'Bearer '+secret}})).json();assert.equal(privateDrafts.workshops.length,1);assert.equal(privateDrafts.workshops[0].document.revision,1);
+ assert.deepEqual((await(await mf.dispatchFetch(site+'/api/workshop?share='+share)).json()).document,draft,'share remains pinned after updates');
+ const publicText=await(await mf.dispatchFetch(url)).text();assert(!publicText.includes('private local proof'));assert(!publicText.includes('token'));assert(!publicText.includes('feedback'));assert(!publicText.includes('private route scene'));assert(!publicText.includes('private workshop geometry'));
  const preview=await mf.getWorker('preview');response=await preview.fetch(url);assert.equal(response.status,503);assert.deepEqual(await response.json(),{error:'api-not-connected'});
  const api=await mf.getWorker('bladefall-2d');assert.equal((await api.fetch(site+'/index.html')).status,404,'API Worker has no duplicated asset fallback');
  assert.equal(await(await mf.dispatchFetch(site+'/')).text(),'static asset');
  await mf.dispose();mf=new Miniflare(options);await mf.ready;
  const persisted=await(await mf.dispatchFetch(url)).json();assert.equal(persisted.records.length,2,'SQLite records survive a runtime restart');
- const privateAfter=await(await mf.dispatchFetch(site+'/api/feedback-export',{headers:{Authorization:'Bearer '+secret}})).json();assert.equal(privateAfter.recordings.length,1);
+ const privateAfter=await(await mf.dispatchFetch(site+'/api/feedback-export',{headers:{Authorization:'Bearer '+secret}})).json();assert.equal(privateAfter.recordings.length,1);assert.equal(privateAfter.workshops.length,1);assert.equal(privateAfter.workshops[0].document.revision,1);assert.equal((await workshop({op:'revoke',share})).status,200);assert.equal((await mf.dispatchFetch(site+'/api/workshop?share='+share)).status,404);
  console.log('PASS: compiled Pages Functions -> private service binding -> SQLite Durable Object; same-origin and APK scores/hearts; APK CORS; token ownership; retry deduplication; private feedback export; unbound preview 503; static routing; durable restart. No production requests.');
 }finally{if(mf)await mf.dispose();await rm(temp,{recursive:true,force:true});}

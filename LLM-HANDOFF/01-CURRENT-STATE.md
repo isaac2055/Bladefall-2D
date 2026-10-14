@@ -1,3 +1,18 @@
+## 7.335.0: level builder released; Cores 11–15 (2026-10-14, Claude continuing Codex)
+
+Codex built the level builder and Cores 11–14 and stopped mid-Core 15 at 08:58 with nothing committed (full record: `LLM-HANDOFF/WORKSHOP-AND-CORES-11-15-IN-PROGRESS.md`). Claude resumed from its saved route rather than restarting.
+
+- **Core 15, No Track Beyond** (`scripts/climb/author-deepline-core.mjs` → `fractured/110-bank-f110.json`, 192×160, five saves, 20 extra crumble frames). Codex's route reached stage 6 of 32; three geometry fixes, each made in the author script:
+  - the upper east rail now starts at col 155 (was 150): the seed at (153,133) sat one tile under a rail that is solid from below, so its bounce was capped;
+  - the East Signal shelf moved 4 tiles right (cols 177–184, save c180): the leftbound cart sat directly under it with zero headroom, so it could not be boarded;
+  - refill crystals on the third and fifth approach tracks at rider height ((32,84), (131,58)), Codex's own section-2 design: boarding spends the dash, carts do not refill it, and the high-line seeds are unreachable without one (closest 10 px without; 537 timings hit with).
+  - Stage 7 and the stage 21–22 switch are ridden through (hold right), not jumped, so the dash survives.
+- **Proof:** whole 1449 frames, 0 deaths; fresh sections 155/205/265/264/364/246; 5 switch-high, 6 boosts, 4 seed lofts, anvil, carrier, 5 saves; no-carts/no-seeds/no-switches counterfactuals and the hold-right/jump-dash/remove-grab probes fail. `node scripts/climb/expansion-cores-check.mjs 106 107 108 109 110` all PASS (110 block added; `docs/room-bank/deepline-expansion-proof.json`).
+- **Integration:** `build-cores` makes 15 Cores (worlds 101–115, names Colossus Foundry / The Inversion / Tyrant Citadel / Abyss Throne / The Deep Line with outros); geography anchors 111–115 at y 5520; 106–110 `localOnly:false`, catalog batch 28/run 18 with f101–f105 retained. All five are drafts: no completion reward until Isaac approves.
+- **Release:** every changed or new public script is at `?v=7.335.0`; 22 workshop scripts are added to the service worker (cache `bladefall-v503-cores-15-workshop`, 468 entries verified installed in headless Chrome) and to `build-deploy.sh`.
+- **Checks:** cores-check (fifteen), room-bank check 147, `--check-batch`, workshop suite 60/60, test-tools, Pages API (Miniflare) and the Cloudflare dry run all pass. In headless Chrome, Core 15 loads and the editor opens on it from pause with no page errors; Explore loads 7.335.0 cleanly.
+- **Not done:** the API Worker with `/api/workshop` is not deployed (`npm run deploy:api` needs Isaac's go-ahead), so cloud drafts and share links fail to fetch; everything else in the builder works locally. Live WebRTC co-build between two real devices is untested.
+
 ## 7.328.0: skins show only what is next; Trumpet Hollow joins the C-side bank group (2026-10-13)
 
 Isaac asked that the skins card spoil nothing ahead.

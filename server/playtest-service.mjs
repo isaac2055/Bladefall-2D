@@ -1,3 +1,4 @@
+import {handleWorkshop} from './workshop-service.mjs';
 import '../public/bladefall-playtest-worlds.js';
 import '../public/bladefall-playtest-model.js';
 const M=globalThis.BladefallPlaytestModel;
@@ -10,7 +11,7 @@ export async function handle(request,store){
  const origin=request.headers.get('origin'),app=origin===APP_ORIGIN||localOrigin(origin);
  const cors={'Access-Control-Allow-Origin':origin||APP_ORIGIN,'Access-Control-Allow-Methods':'GET, POST, OPTIONS','Access-Control-Allow-Headers':'Content-Type','Vary':'Origin'};
  if(request.method==='OPTIONS')return new Response(null,{status:app?204:403,headers:app?cors:{}});
- const result=await handleRequest(request,store);
+ const result=new URL(request.url).pathname==='/api/workshop'?await handleWorkshop(request,store):await handleRequest(request,store);
  if(!app)return result;
  const headers=new Headers(result.headers);for(const [k,v] of Object.entries(cors))headers.set(k,v);
  return new Response(result.body,{status:result.status,headers});

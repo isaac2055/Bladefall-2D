@@ -1,0 +1,161 @@
+{
+  "room": "bank-f109",
+  "status": "Native route verified; integrated as a playable Core draft awaiting player review",
+  "whole": {
+    "frames": 1404,
+    "deaths": 0,
+    "eventCounts": {
+      "dash": 26,
+      "refill-dash": 26,
+      "spring": 3,
+      "echo-place": 6,
+      "strike": 9,
+      "echo-swap": 6,
+      "crumble-shake": 3,
+      "ultra": 3,
+      "hyper": 3,
+      "wake-rise": 1,
+      "crumble": 3,
+      "land": 10,
+      "core-checkpoint": 5,
+      "grab": 4,
+      "crumble-back": 2,
+      "jump": 5,
+      "climbjump": 2,
+      "foothold-spent": 2,
+      "wallboost": 1,
+      "refill": 1,
+      "super": 3,
+      "anvil": 2,
+      "refill-back": 1,
+      "climbhop": 1,
+      "pogo-loft": 3,
+      "pod": 3,
+      "zip-start": 1,
+      "zip-stop": 1,
+      "reverse-super": 1,
+      "zip-home": 1,
+      "exit": 1
+    },
+    "minimumStamina": 8.9
+  },
+  "freshParts": [
+    195,
+    298,
+    238,
+    192,
+    159,
+    341
+  ],
+  "probes": [
+    {
+      "name": "remove grab",
+      "exited": false,
+      "deaths": 5
+    },
+    {
+      "name": "hold right",
+      "exited": false,
+      "deaths": 13
+    },
+    {
+      "name": "jump/dash right",
+      "exited": false,
+      "deaths": 20
+    },
+    {
+      "name": "without echoes",
+      "exited": false,
+      "deaths": 7
+    },
+    {
+      "name": "without anvils",
+      "exited": false,
+      "deaths": 2
+    },
+    {
+      "name": "without seeds",
+      "exited": false,
+      "deaths": 1
+    }
+  ],
+  "throneInteractions": {
+    "upwardEchoTransfers": [
+      {
+        "frame": 94,
+        "from": [
+          115,
+          1088
+        ],
+        "to": [
+          120,
+          1031
+        ],
+        "vy": -185
+      },
+      {
+        "frame": 418,
+        "from": [
+          511,
+          920
+        ],
+        "to": [
+          460,
+          801
+        ],
+        "vy": -240
+      },
+      {
+        "frame": 604,
+        "from": [
+          616,
+          793
+        ],
+        "to": [
+          660,
+          722
+        ],
+        "vy": -330
+      },
+      {
+        "frame": 852,
+        "from": [
+          691,
+          600
+        ],
+        "to": [
+          691,
+          514
+        ],
+        "vy": -210
+      },
+      {
+        "frame": 1018,
+        "from": [
+          457,
+          429
+        ],
+        "to": [
+          602,
+          409
+        ],
+        "vy": -235
+      },
+      {
+        "frame": 1144,
+        "from": [
+          719,
+          375
+        ],
+        "to": [
+          708,
+          305
+        ],
+        "vy": -185
+      }
+    ],
+    "wakeFrames": 1251,
+    "echoClearingSaves": 5
+  },
+  "limits": "These authored-route and basic bypass probes are not exhaustive path search. No live browser or human completion claimed."
+}

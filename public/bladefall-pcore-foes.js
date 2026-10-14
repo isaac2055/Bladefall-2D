@@ -33,7 +33,7 @@ function setSolid(g,f,on){
  const e=f.proxy;e.x=f.x;e.y=f.y;e.w=f.w;e.h=f.h;
  if(!on){e.solid=false;f.pending=false;return;}
  // Like machinery: it waits to turn solid while the knight is inside it.
- const p=g.p;if(p.state!=='dead'&&overlap(p.x,p.y,p.w,p.h,f.x,f.y,f.w,f.h)){f.pending=true;e.solid=false;return;}
+ if((g.players||[g.p]).some(p=>p.state!=='dead'&&overlap(p.x,p.y,p.w,p.h,f.x,f.y,f.w,f.h))){f.pending=true;e.solid=false;return;}
  f.pending=false;e.solid=true;
 }
 
@@ -63,10 +63,10 @@ function walk(g,f,speed){
   f.x+=s;n-=s;}
 }
 function sees(g,f){
- const p=g.p;if(p.state==='dead'||p.state==='respawn')return false;
+ return (g.players||[g.p]).some(p=>{if(p.state==='dead'||p.state==='respawn')return false;
  if(!(p.y<f.y+f.h&&p.y+p.h>f.y))return false;
  const d=f.dir>0?p.x-(f.x+f.w):f.x-(p.x+p.w);
- return d>=0&&d<=FK.ramSight;
+ return d>=0&&d<=FK.ramSight;});
 }
 function breakHusk(g,h,x,y){h.alive=false;setSolid(g,h,false);C().emit(g,'breach',{x:x??h.x+h.w/2,y:y??h.y+h.h/2});}
 function huskAt(g,x,y,w,h){return g.foes.find(f=>f.kind==='husk'&&f.alive&&overlap(x,y,w,h,f.x,f.y,f.w,f.h));}
@@ -170,7 +170,7 @@ function after(g,inp){
  if(!g.foes||!g.awake)return;
  const p=g.p,Core=C();
  if(p.state==='dead'||p.state==='respawn')return;
- const hb=hurt(p),wb=ward(p);
+ const wb=ward(p);
  // 1. Parries come first: a ward that meets an attack turns it.
  if(p.parryTimer>0){
   for(const b of g.bolts){
@@ -179,6 +179,7 @@ function after(g,inp){
    // The direction held at the press aims the return; with none it goes straight back along its own line.
    const a=p.parryAim||{x:0,y:0};let ax=a.x,ay=a.y;const aimed=!!(ax||ay);if(!aimed){ax=-Math.sign(b.vx);ay=-Math.sign(b.vy);}
    const n=Math.hypot(ax,ay)||1;b.vx=ax/n*sp;b.vy=ay/n*sp;b.friendly=true;
+   if(g.players){b.parriedBy=g.coopActor;b.returnAim={x:a.x,y:a.y};}
    if(aimed){b.x=p.x+4-b.w/2+ax/n*8;b.y=p.y+5-b.h/2+ay/n*8;}
    answered(g,p,b.x+3,b.y+3);
   }
@@ -211,6 +212,11 @@ function after(g,inp){
   }
   g.bolts=g.bolts.filter(b=>b.alive);
  }
+ if(!g.players)hurtPlayer(g,p);
+}
+function hurtPlayer(g,p){
+ if(!g.foes||!g.awake||p.state==='dead'||p.state==='respawn')return;
+ const Core=C(),hb=hurt(p);
  // 3. Attacks hurt: hostile bolts and a charging ram. Bodies hurt only if thorned.
  for(const b of g.bolts)if(!b.friendly&&overlap(...hb,b.x,b.y,b.w,b.h)){Core.kill(g,p,'bolt');return;}
  for(const f of g.foes){
@@ -219,8 +225,14 @@ function after(g,inp){
   if((attacking||thorned(f))&&overlap(...hb,f.x,f.y,f.w,f.h)){Core.kill(g,p,f.kind);return;}
  }
 }
+// Resolve damage only after both knights have had a chance to defend.
+function afterPlayers(g){
+ const actor=g.coopActor;
+ try{for(const [i,p]of (g.players||[]).entries()){g.coopActor=i;hurtPlayer(g,p);}}
+ finally{g.coopActor=actor;}
+}
 /* The same answer as a Combat parry: ward spent, dash back, a three-tick freeze. No launch. */
 function answered(g,p,x,y){C().parrySuccess(g,p);C().emit(g,'parry',{x,y});}
 
-root.BladefallPrecisionFoes=Object.freeze({FK,reset,before,after,projectileHit,breakProxy,thorned});
+root.BladefallPrecisionFoes=Object.freeze({FK,reset,before,after,afterPlayer:after,afterPlayers,projectileHit,breakProxy,thorned});
 })(typeof window!=='undefined'?window:globalThis);

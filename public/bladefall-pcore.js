@@ -134,7 +134,7 @@ function createGame(defs,opts={}){
  loadRoom(g,opts.room||0);
  return g;
 }
-function emit(g,type,data={}){g.events.push({type,frame:g.frame,...data});}
+function emit(g,type,data={}){g.events.push({type,frame:g.frame,...(g.players&&Number.isInteger(g.coopActor)?{player:g.coopActor}:{}),...data});}
 
 function makePlayer(room){
  return {x:room.spawn.x+0,y:room.spawn.y,w:8,h:11,remX:0,remY:0,vx:0,vy:0,facing:1,state:'normal',
@@ -152,7 +152,7 @@ function loadRoom(g,index,respawn=false){
  g.spikeSafe=null;g.flipped=false;
  g.ents=g.room.entities.map((e,i)=>({...e,id:i,ox:e.x,oy:e.y,remX:0,remY:0,vx:0,vy:0,timer:0,t:0,state:'idle'}));
  for(const e of g.ents){if(e.type==='shard'&&g.shards.has(g.room.id+':'+e.id))e.gone=true;}
- g.p=makePlayer(g.room);if(respawn){g.p.respawnTimer=K.respawnFrames;g.p.state='respawn';}
+ g.p=makePlayer(g.room);if(g.players)g.players=[g.p];if(respawn){g.p.respawnTimer=K.respawnFrames;g.p.state='respawn';}
  // Rooms with foes can wait, still, until the first input: study the room, then act.
  g.awake=!(g.room.def.study||g.room.def.combat?.waitForMove);
  root.BladefallPrecisionCombat?.reset(g);
@@ -170,7 +170,7 @@ function boundsBlock(g,x,y,w,h){
  const ex=g.room.exit,sd=g.sideSealed?null:g.room.def.side;   // side: a second, optional way out (Room by Room's quest branches; sealed until earned)
  // Climb walking seams admit the whole body through an authored opening.
  // Other modes and closed paths retain the normal room boundary.
- const seam=edge=>(g.walkSeams||[]).some(s=>s.edge===edge&&y>=s.floor*8-Math.max(32,(s.height||0)*8)&&y+h<=s.floor*8+1);   // (a taller seam, 7.275: a terminal room's whole open exit)
+ const seam=edge=>root.BladefallWorkshopRoom?.open(g,edge,x,y,w,h)||(g.walkSeams||[]).some(s=>s.edge===edge&&y>=s.floor*8-Math.max(32,(s.height||0)*8)&&y+h<=s.floor*8+1);   // (a taller seam, 7.275: a terminal room's whole open exit)
  // Folded corridors end at their mouth planes, not their decorative apron.
  const ports=g.room.def.atlasFold?g.room.def.atlasSockets:null;
  const left=ports?Math.min(...ports.map(s=>s.plane)):0,right=ports?Math.max(...ports.map(s=>s.plane)):g.room.w;
@@ -178,7 +178,7 @@ function boundsBlock(g,x,y,w,h){
  if(!inExitSpan&&((ex==='left'&&x<left&&!seam('left'))||(ex==='right'&&x+w>right&&!seam('right'))))return true;
  if(x<left&&ex!=='left'&&sd!=='left'&&!seam('left'))return true;
  if(x+w>right&&ex!=='right'&&sd!=='right'&&!seam('right'))return true;
- if(y<0&&ex!=='up'&&sd!=='up')return true;
+ if(y<0&&ex!=='up'&&sd!=='up'&&!seam('up'))return true;
  return false;
 }
 function isSolidEnt(e){
@@ -251,14 +251,15 @@ function readInput(g,raw){
 }
 
 /* ---------------------------------------------------------------- the step */
-function step(g,raw={}){
- g.frame++;
+function step(g,raw={},pass=null){
+ const secondary=!!pass?.secondary;
+ if(!secondary)g.frame++;
  raw=devCall('input',g,raw)||raw;
  // lock: verbs a room does not grant yet (Room by Room: the blade before the Oathblade, and so on).
  if(g.room.def.lock){raw={...raw};for(const k of g.room.def.lock)raw[k]=false;}
  // Presses made during a freeze are remembered; buffers count down before new presses land,
  // so a jump pressed up to four frames before touching down still happens.
- if(g.freeze>0){readInput(g,raw);g.freeze--;return;}
+ if(secondary?pass.frozen:g.freeze>0){readInput(g,raw);if(!secondary)g.freeze--;return;}
  for(const k in g.buf)if(g.buf[k]>0)g.buf[k]--;
  const motion=g.p.move2;if(motion){
   if(g.p.state!=='normal'&&g.p.state!=='dash')motion.wallGrace=0;
@@ -267,32 +268,33 @@ function step(g,raw={}){
   if(!motion.grabIntent&&!g.prev.grab)motion.grabArmed=false;
  }
  const inp=readInput(g,raw);
- g.roomFrame++;
- updateEntities(g,inp);
+ if(!secondary){g.roomFrame++;updateEntities(g,inp);}
  const p=g.p;
  if(p.state==='dead'){if(--p.deadTimer<=0){g.roomDeaths++;resetRoom(g);emit(g,'respawn');}return;}
  if(p.state==='respawn'){if(--p.respawnTimer<=0)p.state='normal';return;}
  if(!g.awake&&(inp.mx||inp.my||inp.jump||inp.dash||inp.grab||inp.strike||inp.parry))g.awake=true;
  if(g.awake&&(g.combat||g.foes||g.parryable))parryStep(g,p,inp);
- root.BladefallPrecisionCombat?.before(g,inp);
- root.BladefallPrecisionFoes?.before(g,inp);
- root.BladefallPrecisionPortals?.before(g,inp);
- devCall('before',g,inp);
+ const before=secondary?'beforePlayer':'before';
+ root.BladefallPrecisionCombat?.[before]?.(g,inp);
+ root.BladefallPrecisionFoes?.[before]?.(g,inp);
+ root.BladefallPrecisionPortals?.[before]?.(g,inp);
+ devCall(before,g,inp);
  // Echo exchanges happen in the before hooks, so cancel their old contact window before Jump can use it.
- if(p.move2?.wallGrace>0&&g.events.some(e=>e.frame===g.frame&&(e.type==='echo-swap'||(e.type==='portal-pass'&&e.kind==='knight'))))p.move2.wallGrace=0;
+ if(p.move2?.wallGrace>0&&g.events.some(e=>e.frame===g.frame&&(!g.players||e.player===undefined||e.player===g.coopActor)&&(e.type==='echo-swap'||(e.type==='portal-pass'&&e.kind==='knight'))))p.move2.wallGrace=0;
  // A ground-dash reversal gets a brief late Jump window. Other contacts never inherit it.
- if(p.move2?.reverse&&(p.state!=='normal'&&p.state!=='dash'||p.carrying||inp.grab||inp.parry||p.parryTimer>0||g.events.some(e=>e.frame===g.frame&&(e.type==='echo-swap'||e.type==='portal-pass'))))p.move2.reverse=null;
+ if(p.move2?.reverse&&(p.state!=='normal'&&p.state!=='dash'||p.carrying||inp.grab||inp.parry||p.parryTimer>0||g.events.some(e=>e.frame===g.frame&&(!g.players||e.player===undefined||e.player===g.coopActor)&&(e.type==='echo-swap'||e.type==='portal-pass'))))p.move2.reverse=null;
  updatePlayer(g,p,inp);
- if(p.state!=='dead')interact(g,p,inp);
- if(p.state!=='dead')root.BladefallPrecisionCombat?.after(g,inp);
- if(p.state!=='dead')root.BladefallPrecisionFoes?.after(g,inp);
- if(p.state!=='dead')root.BladefallPrecisionPortals?.after(g,inp);
- if(p.state!=='dead')devCall('after',g,inp);
+ if(p.state!=='dead')interact(g,p,inp,!secondary);
+ const after=secondary?'afterPlayer':'after';
+ if(p.state!=='dead')root.BladefallPrecisionCombat?.[after]?.(g,inp);
+ if(p.state!=='dead')root.BladefallPrecisionFoes?.[after]?.(g,inp);
+ if(p.state!=='dead')root.BladefallPrecisionPortals?.[after]?.(g,inp);
+ if(p.state!=='dead')devCall(after,g,inp);
  if(p.state!=='dead')checkExit(g,p);
- if(p.move2?.reverse){const r=p.move2.reverse;if(p.state!=='normal'&&p.state!=='dash'||p.carrying||p.state==='normal'&&r.left===0||p.onGround&&!p.wasGround&&p.state!=='dash'||p.y>r.y+8||g.events.some(e=>e.frame===g.frame&&(e.type==='echo-swap'||e.type==='portal-pass')))p.move2.reverse=null;else if(r.left>0&&r.frame!==g.roomFrame&&--r.left===0)p.move2.reverse=null;}
+ if(p.move2?.reverse){const r=p.move2.reverse;if(p.state!=='normal'&&p.state!=='dash'||p.carrying||p.state==='normal'&&r.left===0||p.onGround&&!p.wasGround&&p.state!=='dash'||p.y>r.y+8||g.events.some(e=>e.frame===g.frame&&(!g.players||e.player===undefined||e.player===g.coopActor)&&(e.type==='echo-swap'||e.type==='portal-pass')))p.move2.reverse=null;else if(r.left>0&&r.frame!==g.roomFrame&&--r.left===0)p.move2.reverse=null;}
  if(p.move2?.wallGrace>0){
   // Contact grace is not carried through another movement state or a teleport.
-  if(p.state!=='normal'||p.carrying||g.events.some(e=>e.frame===g.frame&&(e.type==='echo-swap'||(e.type==='portal-pass'&&e.kind==='knight'))))p.move2.wallGrace=0;
+  if(p.state!=='normal'||p.carrying||g.events.some(e=>e.frame===g.frame&&(!g.players||e.player===undefined||e.player===g.coopActor)&&(e.type==='echo-swap'||(e.type==='portal-pass'&&e.kind==='knight'))))p.move2.wallGrace=0;
   else if(p.move2.wallGraceFrame!==g.roomFrame)p.move2.wallGrace--;
  }
 }
@@ -314,7 +316,7 @@ function parryStep(g,p,inp){
 function parrySuccess(g,p){p.parryTimer=0;p.parryCooldown=0;refillDash(g,p);g.freeze=Math.max(g.freeze,PARRY.freeze);}
 
 function kill(g,p,cause){
- if(p.state==='dead')return;
+ if(p.state==='dead'||p.waitingForPartner)return;
  p.state='dead';p.deadTimer=K.deathFrames;g.deaths++;if(p.carrying){p.carrying.held=false;p.carrying=null;}
  g.freeze=4;emit(g,'death',{x:p.x+4,y:p.y+6,cause,vx:p.vx,vy:p.vy});
 }
@@ -665,41 +667,43 @@ function pushStone(g,p,stone,sx,sy){
 }
 
 /* ---------------------------------------------------------------- solids that move */
-function riderOf(g,e){const p=g.p;if(p.state==='dead'||p.state==='respawn')return false;return standingOn(g,p,e)||climbingOn(g,p,e);}
+function players(g){return g.players||[g.p];}
+function livePlayer(p){return p.state!=='dead'&&p.state!=='respawn';}
+function riderOf(g,e,actor){return (actor?[actor]:players(g)).some(p=>livePlayer(p)&&(standingOn(g,p,e)||climbingOn(g,p,e)));}
 /* Moves a solid entity by whole pixels; carries a rider and pushes the knight. */
 function moveSolid(g,e,dx,dy){
  e.remX+=dx;e.remY+=dy;const mx=Math.round(e.remX),my=Math.round(e.remY);e.remX-=mx;e.remY-=my;
- const p=g.p,riding=riderOf(g,e),lan=g.ents.find(q=>q.type==='lantern'&&!q.held&&q.y+q.h===e.y&&q.x<e.x+e.w&&q.x+q.w>e.x);
+ const riders=players(g).map(p=>({p,alive:livePlayer(p),riding:livePlayer(p)&&(standingOn(g,p,e)||climbingOn(g,p,e))})),lan=g.ents.find(q=>q.type==='lantern'&&!q.held&&q.y+q.h===e.y&&q.x<e.x+e.w&&q.x+q.w>e.x);
  const combatRiders=root.BladefallPrecisionCombat?.solidRiders(g,e);
- const alive=p.state!=='dead'&&p.state!=='respawn';
  const push=(ax,ay)=>{
   e.x+=ax;e.y+=ay;
-  if(alive&&overlap(p.x,p.y,p.w,p.h,e.x,e.y,e.w,e.h)){
+  for(const {p,alive,riding}of riders){if(alive&&overlap(p.x,p.y,p.w,p.h,e.x,e.y,e.w,e.h)){
    // Push the knight clear; if another solid is in the way, it is crushed.
    const nx=ax?(ax>0?e.x+e.w:e.x-p.w):p.x,ny=ay?(ay>0?e.y+e.h:e.y-p.h):p.y;
    const ddx=nx-p.x,ddy=ny-p.y;
-   for(let i=0;i<Math.abs(ddx);i++)if(!tryShift(g,p,sign(ddx),0,e)){kill(g,p,'crush');return;}
-   for(let i=0;i<Math.abs(ddy);i++)if(!tryShift(g,p,0,sign(ddy),e)){kill(g,p,'crush');return;}
-  }else if(alive&&riding){tryShift(g,p,ax,0,e);tryShift(g,p,0,ay,e);}
+   for(let i=0;i<Math.abs(ddx);i++)if(!tryShift(g,p,sign(ddx),0,e)){kill(g,p,'crush');if(!g.players)return;break;}
+   if(p.state!=='dead')for(let i=0;i<Math.abs(ddy);i++)if(!tryShift(g,p,0,sign(ddy),e)){kill(g,p,'crush');if(!g.players)return;break;}
+  }else if(alive&&riding){tryShift(g,p,ax,0,e);tryShift(g,p,0,ay,e);}}
   if(lan&&!lan.held){tryShift(g,lan,ax,0,e);tryShift(g,lan,0,ay,e);}
   root.BladefallPrecisionCombat?.solidMoved(g,e,ax,ay,combatRiders);
  };
  for(let i=0;i<Math.abs(mx);i++)push(sign(mx),0);
  for(let i=0;i<Math.abs(my);i++)push(0,sign(my));
- if(alive&&(riding||overlap(p.x-1,p.y-1,p.w+2,p.h+2,e.x,e.y,e.w,e.h))&&(mx||my)){p.liftX=dx*FPS;p.liftY=dy*FPS;p.liftTimer=K.liftGraceFrames;}
+ for(const {p,alive,riding}of riders)if(alive&&(riding||overlap(p.x-1,p.y-1,p.w+2,p.h+2,e.x,e.y,e.w,e.h))&&(mx||my)){p.liftX=dx*FPS;p.liftY=dy*FPS;p.liftTimer=K.liftGraceFrames;}
 }
 
 /* ---------------------------------------------------------------- entities */
 function updateEntities(g,inp){
- const p=g.p;
+ const p=g.p,occupants=g.players?g.players.filter(livePlayer):[p];
+ const occupiedByPlayer=e=>occupants.some(p=>overlap(p.x,p.y,p.w,p.h,e.x,e.y,e.w,e.h));
  const stonesLeft=g.ents.filter(e=>e.type==='stone'&&!e.lit).length;
  const pressed=new Set();
  // Machinery bodies with the knight or a lantern inside wait to become solid.
  const occupied=new Set();
- for(const e of g.ents)if(e.type==='toggle'&&(overlap(p.x,p.y,p.w,p.h,e.x,e.y,e.w,e.h)||g.ents.some(l=>l.type==='lantern'&&overlap(l.x,l.y,l.w,l.h,e.x,e.y,e.w,e.h))||root.BladefallPrecisionCombat?.occupies(g,e)))occupied.add(e.body);
+ for(const e of g.ents)if(e.type==='toggle'&&(occupiedByPlayer(e)||g.ents.some(l=>l.type==='lantern'&&overlap(l.x,l.y,l.w,l.h,e.x,e.y,e.w,e.h))||root.BladefallPrecisionCombat?.occupies(g,e)))occupied.add(e.body);
  for(const e of g.ents){
   if(e.type==='plate'){
-   const who=(p.state!=='dead'&&overlap(p.x,p.y,p.w,p.h,e.x,e.y-1,e.w,e.h+1))||g.ents.some(l=>(l.type==='lantern'&&!l.held||l.presses&&!l.gone)&&overlap(l.x,l.y,l.w,l.h,e.x,e.y-1,e.w,e.h+1));
+   const who=occupants.some(p=>livePlayer(p)&&overlap(p.x,p.y,p.w,p.h,e.x,e.y-1,e.w,e.h+1))||g.ents.some(l=>(l.type==='lantern'&&!l.held||l.presses&&!l.gone)&&overlap(l.x,l.y,l.w,l.h,e.x,e.y-1,e.w,e.h+1));
    if(who&&!e.down)emit(g,'plate',{x:e.x+4,y:e.y});e.down=who;if(who)pressed.add(true);
   }
  }
@@ -714,13 +718,13 @@ function updateEntities(g,inp){
    case 'held':{
     const open=e.latchedOpen||pressed.size>0;
     if(open){if(e.solid)emit(g,'held-open',{x:e.x+e.w/2,y:e.y+e.h/2});e.solid=false;}
-    else if(!e.solid){if(!overlap(p.x,p.y,p.w,p.h,e.x,e.y,e.w,e.h)&&!root.BladefallPrecisionCombat?.occupies(g,e)){e.solid=true;emit(g,'held-close',{x:e.x+e.w/2,y:e.y+e.h/2});}}
+    else if(!e.solid){if(!occupiedByPlayer(e)&&!root.BladefallPrecisionCombat?.occupies(g,e)){e.solid=true;emit(g,'held-close',{x:e.x+e.w/2,y:e.y+e.h/2});}}
     break;}
    case 'refill':if(e.timer>0&&--e.timer===0)emit(g,'refill-back',{x:e.x+4,y:e.y+4});break;
    case 'pod':if(e.timer>0)e.timer--;break;
    case 'bell':if(e.timer>0)e.timer--;break;
    case 'crumble':
-    if(e.broken){if(e.timer>0)e.timer--;else if(!overlap(p.x,p.y,p.w,p.h,e.x,e.y,e.w,e.h)){e.broken=false;e.shaking=0;emit(g,'crumble-back',{x:e.x+e.w/2,y:e.y});}}
+    if(e.broken){if(e.timer>0)e.timer--;else if(!occupiedByPlayer(e)){e.broken=false;e.shaking=0;emit(g,'crumble-back',{x:e.x+e.w/2,y:e.y});}}
     else if(e.shaking>0){if(--e.shaking===0){e.broken=true;e.timer=K.crumbleRespawnFrames;emit(g,'crumble',{x:e.x+e.w/2,y:e.y,w:e.w});}}
     else if(riderOf(g,e)){e.shaking=K.crumbleShakeFrames+(g.room.def.core?Math.max(0,Math.round(g.room.def.crumbleExtraFrames||0)):0);emit(g,'crumble-shake',{x:e.x+e.w/2,y:e.y});}
     break;
@@ -774,6 +778,7 @@ function updateLantern(g,e){
 
 /* ---------------------------------------------------------------- touches, hazards, blade */
 function spikeHit(g,p){
+ if(g.players&&p.state==='ride'&&p.ride)return false;
  const hx=p.x,hy=p.y,hw=p.w,hh=9; // hurtbox: the feet are not vulnerable
  const c0=Math.floor(hx/TILE),c1=Math.floor((hx+hw-1)/TILE),r0=Math.floor(hy/TILE),r1=Math.floor((hy+hh-1)/TILE);
  for(let r=r0;r<=r1;r++)for(let c=c0;c<=c1;c++){
@@ -808,7 +813,7 @@ function bladeRebound(g,p,d){
  if(p.state==='climb')p.state='normal';
  p.jumpGrace=0;refillDash(g,p);refillStamina(p);
 }
-function interact(g,p,inp){
+function interact(g,p,inp,tickTimers=true){
  if(spikeHit(g,p)){kill(g,p,'spikes');return;}
  if(p.y>g.room.h+2&&g.room.exit!=='down'&&g.room.def.side!=='down'){kill(g,p,'fall');return;}
  const box=[p.x,p.y,p.w,p.h];
@@ -823,7 +828,7 @@ function interact(g,p,inp){
     if(g.springUp){p.vx=0;p.forceMoveTimer=0;p.remX=0;const cx=Math.round(e.x+e.w/2-p.w/2);if(!solidAt(g,cx,p.y,p.w,p.h))p.x=cx;}
     p.state='normal';p.dashTimer=0;p.ducking=false;p.vy=K.springSpeed;p.varJumpSpeed=p.vy;p.varJump=K.varJumpFrames;p.autoJump=true;p.jumpGrace=0;p.remY=0;
     refillDash(g,p);refillStamina(p);e.timer=8;emit(g,'spring',{x:e.x+4,y:e.y});}
-    if(e.timer>0)e.timer--;break;
+    if(tickTimers&&e.timer>0)e.timer--;break;
    case 'shard':if(touch){e.gone=true;g.shards.add(g.room.id+':'+e.id);emit(g,'shard',{x:e.x+4,y:e.y+4,id:g.room.id+':'+e.id});}break;
   }
  }
@@ -850,6 +855,7 @@ function checkExit(g,p){
  const span=g.room.def.exitSpan;if(out&&span){const v=(ex==='left'||ex==='right')?p.y+p.h/2:p.x+p.w/2;out=v>=span[0]*8&&v<span[1]*8;}
  let side=false;const sd=g.sideSealed?null:g.room.def.side;
  if(!out&&sd){if(sd==='right')out=p.x>=RW-2;else if(sd==='left')out=p.x<=-p.w+2;else if(sd==='up')out=p.y<=-3;else if(sd==='down')out=p.y>=RH-2;side=out;}
+ if(root.BladefallWorkshopRoom?.exited(g,p))out=true;
  if(out&&!g.exited){g.exited=true;emit(g,'exit',side?{room:g.roomIndex,side:true}:{room:g.roomIndex});}
 }
 

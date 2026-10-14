@@ -34,7 +34,7 @@ function hidden(g,p){return g.smoke.some(s=>overlap(p.x,p.y,p.w,p.h,s.x,s.y,s.w,
 function before(g,inp){
  if(!g.lights.length)return;
  // The clock waits for the first input (a still room can be studied), as the header says.
- if(!g.watchAwake&&g.awake&&inp&&(inp.mx||inp.my||inp.jump||inp.dash||inp.grab||inp.strike||inp.parry||inp.portal))g.watchAwake=true;
+ if(!g.watchAwake&&g.awake&&(g.players?g.coopInputActive:inp&&(inp.mx||inp.my||inp.jump||inp.dash||inp.grab||inp.strike||inp.parry||inp.portal)))g.watchAwake=true;
  if(g.watchAwake)g.watchClock++;
  for(const l of g.lights)aim(l,g.watchClock);
 }
@@ -47,7 +47,7 @@ function after(g){
  if(seen){if(p.seenT===0)C().emit(g,'glimpse',{x:p.x+4,y:p.y});if(++p.seenT>=LK.seen){p.seenT=0;C().emit(g,'seen',{x:p.x+4,y:p.y+5});C().kill(g,p,'seen');}}
  else p.seenT=0;
 }
-function mirror(g){for(const l of g.lights){l.y=184-l.y;l.dir=-l.dir;}for(const s of g.smoke)s.y=184-s.y-s.h;}
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'watch',reset,before,after,mirror});
+function mirror(g){for(const l of g.lights){l.y=g.room.h-l.y;l.dir=-l.dir;}for(const s of g.smoke)s.y=g.room.h-s.y-s.h;}
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'watch',reset,before,after,afterPlayer:after,mirror});
 root.BladefallPrecisionWatch=Object.freeze({LK,inCone,hidden,blocks});
 })(typeof window!=='undefined'?window:globalThis);

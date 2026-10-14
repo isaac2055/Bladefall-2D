@@ -38,9 +38,9 @@ function after(g){
   if(l&&p.strikeTimer>0&&!p.strikeHit.has(e.id)&&Core.overlap(...Core.strikeBox(p),e.x-2,e.y-2,12,12)){
    p.strikeHit.add(e.id);detach(g,e,'strike');continue;
   }
-  settle(g,e,true);
+  if(!g.players)settle(g,e,true);
  }
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'cargo-clasp',reset,ready,before,after});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'cargo-clasp',reset,ready,before,after,afterPlayer:after,afterPlayers:ready});
 root.BladefallPrecisionCargoClasp=Object.freeze({CK,clasps,cargo});
 })(typeof window!=='undefined'?window:globalThis);

@@ -1,0 +1,78 @@
+{
+  "room": "bank-f108",
+  "status": "Native route verified; integrated as a playable Core draft awaiting player review",
+  "whole": {
+    "frames": 1962,
+    "deaths": 0,
+    "eventCounts": {
+      "crumble-shake": 2,
+      "dash": 29,
+      "refill-dash": 28,
+      "super": 7,
+      "grab": 14,
+      "crumble": 2,
+      "jump": 12,
+      "climbjump": 12,
+      "foothold-spent": 13,
+      "refill": 11,
+      "crumble-back": 1,
+      "refill-back": 11,
+      "land": 9,
+      "core-checkpoint": 5,
+      "zip-start": 1,
+      "zip-stop": 1,
+      "ultra": 3,
+      "zip-home": 1,
+      "hyper": 2,
+      "portal-fizzle": 1,
+      "walljump": 3,
+      "portal-open": 2,
+      "strike": 3,
+      "portal-pass": 1,
+      "pogo-loft": 1,
+      "pod": 1,
+      "exit": 1
+    },
+    "minimumStamina": 10.3
+  },
+  "freshParts": [
+    324,
+    386,
+    340,
+    366,
+    246,
+    303
+  ],
+  "probes": [
+    {
+      "name": "remove grab",
+      "exited": false,
+      "deaths": 18
+    },
+    {
+      "name": "hold right",
+      "exited": false,
+      "deaths": 20
+    },
+    {
+      "name": "jump/dash right",
+      "exited": false,
+      "deaths": 23
+    },
+    {
+      "name": "permanent footholds",
+      "exited": false,
+      "deaths": 14
+    },
+    {
+      "name": "without refills",
+      "exited": false,
+      "deaths": 17
+    }
+  ],
+  "citadelInteractions": {
+    "spentFootholds": 13,
+    "vanishedWallsTraversed": 11
+  },
+  "limits": "These authored-route and basic bypass probes are not exhaustive path search. No live browser or human completion claimed."
+}

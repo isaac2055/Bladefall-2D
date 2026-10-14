@@ -9,7 +9,7 @@ function draw(b,g){
  const t=g.frame;
  for(const e of g.ents){
   if(e.type!=='pane')continue;
-  const col=g.mirrorLR?'#f4f8ff':'#7fe7ff',glow=e.armed?1:.45;
+  const col=(g.players?g.p.mirrorLR:g.mirrorLR)?'#f4f8ff':'#7fe7ff',glow=(g.players?e.armedPlayers?.[g.players.indexOf(g.p)]!==false:e.armed)?1:.45;
   b.globalAlpha=.16*glow;px(b,e.x-1,e.y,e.w+2,e.h,col);
   b.globalAlpha=.55*glow;px(b,e.x+Math.floor(e.w/2)-1,e.y,2,e.h,col);
   b.globalAlpha=.9*glow;px(b,e.x+Math.floor(e.w/2)-1,e.y,2,1,'#ffffff');px(b,e.x+Math.floor(e.w/2)-1,e.y+e.h-1,2,1,'#ffffff');
@@ -19,7 +19,7 @@ function draw(b,g){
  }
 }
 function drawFront(b,g,view){
- if(!g.mirrorLR)return;
+ if(!(g.players?g.p.mirrorLR:g.mirrorLR))return;
  const p=g.p;if(p.state==='dead')return;
  const cx=p.x+4,y=p.y-5;
  b.globalAlpha=.85;px(b,cx-3,y,7,1,'#7fe7ff');px(b,cx-3,y-1,1,3,'#7fe7ff');px(b,cx+3,y-1,1,3,'#7fe7ff');

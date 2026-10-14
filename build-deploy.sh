@@ -12,6 +12,28 @@ OUT="$ROOT/netlify-deploy"
 # Every file the running game actually needs (dev-only files like serve.mjs,
 # node_modules and package.json are deliberately left out).
 ASSETS=(
+  bladefall-pcore-dev-workshop-room.js
+  bladefall-workshop-ascend-coop-core.js
+  bladefall-workshop-ascend-play.js
+  bladefall-workshop-ascend.js
+  bladefall-workshop-bridge.js
+  bladefall-workshop-cloud.js
+  bladefall-workshop-cobuild.js
+  bladefall-workshop-collaboration.js
+  bladefall-workshop-explore-runtime.js
+  bladefall-workshop-explore.js
+  bladefall-workshop-library.js
+  bladefall-workshop-model.js
+  bladefall-workshop-native-play.js
+  bladefall-workshop-network.js
+  bladefall-workshop-play-link.js
+  bladefall-workshop-properties.js
+  bladefall-workshop-render.js
+  bladefall-workshop-sandbox.js
+  bladefall-workshop-selection.js
+  bladefall-workshop-sources.js
+  bladefall-workshop-store.js
+  bladefall-workshop-ui.js
   coop-practice.html
   bladefall-coop-practice-core.js
   bladefall-coop-practice-session.js

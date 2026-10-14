@@ -38,28 +38,39 @@ function reset(g){
   g.ents.push(e);
  });
 }
-function before(g){if(g.room.def.spentThorns)g.spentThornBefore={x:g.p.x,y:g.p.y,w:g.p.w,h:g.p.h,events:g.events.length};}
-function after(g){
+function before(g){if(g.room.def.spentThorns)(g.players?g.p:g).spentThornBefore={x:g.p.x,y:g.p.y,w:g.p.w,h:g.p.h,events:g.events.length};}
+function after(g){if(!g.players)settle(g,[g.p]);}
+function settle(g,players){
  const es=all(g);if(!es.length)return;
- const p=g.p,old=g.spentThornBefore;if(p.state==='dead'||p.state==='respawn')return;
- const teleported=old&&g.events.slice(old.events).some(e=>e.type==='echo-swap'||e.type==='portal-pass'&&e.kind==='knight');
+ const actors=players.filter(p=>p.state!=='dead'&&p.state!=='respawn').map(p=>{
+  const old=(g.players?p:g).spentThornBefore;
+  const teleported=old&&g.events.slice(old.events).some(e=>(!g.players||e.player===g.players.indexOf(p))&&(e.type==='echo-swap'||e.type==='portal-pass'&&e.kind==='knight'));
+  return {p,old,teleported};
+ });
+ if(!actors.length)return;
  for(const body of es)for(const e of faces(body)){
   const state=e.patch||e;
-  const now=contact(p,e),was=old&&!teleported&&contact(old,e);
+  const now=actors.some(({p})=>p.state!=='dead'&&contact(p,e)),was=actors.some(({old,teleported})=>old&&!teleported&&contact(old,e));
   if(state.state==='dormant'&&(now||was)){state.state='contact';emit(g,e,'spent-thorn-touch');}
   if(state.state==='contact'&&!now){state.state='arming';state.remaining=e.arm;emit(g,e,'spent-thorn-leave');continue;}
   const justArmed=state.state==='arming'&&--state.remaining===0;
   if(justArmed){state.state='armed';emit(g,e,'spent-thorn-arm');}
   if(state.state!=='armed')continue;
-  const from=old&&!teleported&&!justArmed?old:p,dx=p.x-from.x,dy=p.y-from.y,n=Math.max(1,Math.ceil(Math.hypot(dx,dy)/2)),box=strip(e);
-  for(let j=0;j<=n;j++)if(C().overlap(from.x+dx*j/n,from.y+dy*j/n,p.w,p.h,...box)){C().kill(g,p,'spent-thorn');return;}
+  for(const {p,old,teleported}of actors){
+   if(p.state==='dead')continue;
+   const from=old&&!teleported&&!justArmed?old:p,dx=p.x-from.x,dy=p.y-from.y,n=Math.max(1,Math.ceil(Math.hypot(dx,dy)/2)),box=strip(e);
+   for(let j=0;j<=n;j++)if(C().overlap(from.x+dx*j/n,from.y+dy*j/n,p.w,p.h,...box)){
+    const actor=g.coopActor;if(g.players)g.coopActor=g.players.indexOf(p);C().kill(g,p,'spent-thorn');g.coopActor=actor;
+    if(!g.players)return;break;
+   }
+  }
  }
 }
 function mirror(g){
  // Gravity already mirrors each entity body. Reflect its private face and discard the old sweep.
  for(const e of all(g)){if(e.face==='up')e.face='down';else if(e.face==='down')e.face='up';else if(e.segments)for(const s of e.segments)s.start=e.h-s.start-s.length;}
- g.spentThornBefore=null;
+ g.spentThornBefore=null;for(const p of g.players||[])p.spentThornBefore=null;
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'spent-thorn',reset,before,after,mirror});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'spent-thorn',reset,before,beforePlayer:before,after,afterPlayers:g=>settle(g,g.players),mirror});
 root.BladefallPrecisionSpentThorn=Object.freeze({SK,all,contact,strip,faces});
 })(typeof window!=='undefined'?window:globalThis);

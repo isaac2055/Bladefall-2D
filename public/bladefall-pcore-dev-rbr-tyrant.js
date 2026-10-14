@@ -44,9 +44,9 @@ const hv=(z,k)=>z.d.perches?.[Math.min(z.hits,z.d.perches.length-1)]?.[k]??z.d.h
 function huntDue(z){if(!z.d.hunt||z.fold)return Infinity;const first=z.first??hv(z,'first'),every=hv(z,'every'),n=hv(z,'volley'),gap=hv(z,'gap');
  if(z.kt<first)return first-z.kt;const k=(z.kt-first)%every;for(let i=0;i<n;i++)if(k===i*gap)return 0;for(let i=1;i<n;i++)if(k<i*gap)return i*gap-k;return every-k;}
 const mask=z=>({x:z.x+8,y:z.y+10});
-function after(g){
+function advance(g){
  const z=g.tyrant;if(!z||!g.awake||z.gone)return;
- const Core=C(),p=g.p;
+ const Core=C(),m=mask(z),p=g.players?.filter(p=>p.state!=='dead'&&p.state!=='respawn').sort((a,b)=>Math.hypot(a.x+4-m.x,a.y+5.5-m.y)-Math.hypot(b.x+4-m.x,b.y+5.5-m.y))[0]||g.p;
  if(z.retreat){if(++z.retreat>48){z.gone=true;Core.emit(g,'tyrant-withdraw',{x:z.x+8,y:z.y,final:!!z.d.final});}return;}
  if(z.fold){// folded into the void between perches: nothing fires, nothing lands on him
   if(++z.fold===Math.floor(hv(z,'fold')/2)){const q=z.d.perches[Math.min(z.hits,z.d.perches.length-1)];z.x=q.c*8;z.y=q.r*8;Core.emit(g,'tyrant-unfold',{x:z.x+8,y:z.y+z.h/2});}
@@ -66,7 +66,7 @@ function after(g){
  }
  stepShots(g,z);
 }
-function stepShots(g,z){const Core=C(),p=g.p;
+function stepShots(g,z){const Core=C();
  // A walking fight lights a wider band (20 px): put the exit portal level with it and the return lands.
  const walking=!!(z.d.lanes||z.d.bands),weak=z.d.home?{x:z.x-2,y:z.y,w:z.w+4,h:z.h}:walking?{x:z.x-2,y:z.band*8-8,w:z.w+4,h:20}:{x:z.x-2,y:z.band*8-4,w:z.w+4,h:12};
  for(const b of z.shots){
@@ -87,15 +87,27 @@ function stepShots(g,z){const Core=C(),p=g.p;
      // after a walk is made on the new lane.
      for(const q of z.shots)if(q!==b)q.gone=true;Core.emit(g,'tyrant-walk',{x:z.x+8,y:z.lane*8,lane:z.lane,band:z.band});}}break;}
    if(!b.home&&Core.solidAt(g,Math.round(b.x),Math.round(b.y),b.w,b.h)||b.x<-8||b.x>g.room.w+8||b.y<-8||b.y>g.room.h+8){b.gone=true;if(!b.home)Core.emit(g,'enemy-hit',{x:b.x,y:b.y});break;}
-   if(p.state==='dead'||p.state==='respawn'||b.home)continue;
-   if(p.parryTimer>0&&hit(b,{x:p.x-5,y:p.y-5,w:p.w+10,h:p.h+10})){
-    b.vx=Math.abs(b.vx)*(b.x>=p.x?1:-1);b.vy=-b.vy;Core.parrySuccess(g,p);Core.emit(g,'parry',{x:b.x,y:b.y});
-   }else if(p.strikeTimer>0&&Core.overlap(...Core.strikeBox(p),b.x,b.y,b.w,b.h)){b.gone=true;Core.emit(g,'enemy-hit',{x:b.x,y:b.y});}
-   else if(hit(b,p)){Core.kill(g,p,'tyrant-bolt');b.gone=true;}
+   if(!b.home)answerShot(g,b);
   }
  }
  z.shots=z.shots.filter(b=>!b.gone);
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-tyrant',reset,after,gateHold:g=>!!g.tyrant&&!g.tyrant.gone});
+function answerShot(g,b){
+ const Core=C(),actor=g.coopActor,players=(g.players||[g.p]).filter(p=>p.state!=='dead'&&p.state!=='respawn');
+ const bind=p=>{if(g.players)g.coopActor=g.players.indexOf(p);};
+ try{
+  // Both knights get a chance to defend before either receives contact damage.
+  for(const p of players){bind(p);
+   if(p.parryTimer>0&&hit(b,{x:p.x-5,y:p.y-5,w:p.w+10,h:p.h+10})){
+    b.vx=Math.abs(b.vx)*(b.x>=p.x?1:-1);b.vy=-b.vy;Core.parrySuccess(g,p);Core.emit(g,'parry',{x:b.x,y:b.y});return;
+   }
+   if(p.strikeTimer>0&&Core.overlap(...Core.strikeBox(p),b.x,b.y,b.w,b.h)){b.gone=true;Core.emit(g,'enemy-hit',{x:b.x,y:b.y});return;}
+  }
+  for(const p of players)if(hit(b,p)){bind(p);Core.kill(g,p,'tyrant-bolt');b.gone=true;return;}
+ }finally{g.coopActor=actor;}
+}
+function after(g){if(!g.players)advance(g);}
+function afterPlayers(g){advance(g);}
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'rbr-tyrant',reset,after,afterPlayers,gateHold:g=>!!g.tyrant&&!g.tyrant.gone});
 root.BladefallPrecisionTyrant=Object.freeze({RAKE,rakeDue,HUNT,huntDue});
 })(typeof window!=='undefined'?window:globalThis);

@@ -36,13 +36,14 @@ function onIce(g,p){
 }
 function windAt(g,x,y,w,h){let dx=0,dy=0;for(const z of g.winds||[])if(overlap(x,y,w,h,z.x,z.y,z.w,z.h)){dx+=z.dx;dy+=z.dy;}return [dx,dy];}
 
-function before(g,inp){
+function before(g,inp,actorOnly=false){
  const p=g.p,Core=C();
  // Traction is read by the core's run code this frame.
  p.traction=onIce(g,p)?FK.ice:1;
  for(const e of g.ents){
   if(e.type!=='feather')continue;
-  if(e.timer>0){if(--e.timer===0)Core.emit(g,'feather-back',{x:e.x+4,y:e.y+4});continue;}
+  if(e.timer>0){if(!actorOnly&&--e.timer===0){if(g.players)e.backFrame=g.frame;Core.emit(g,'feather-back',{x:e.x+4,y:e.y+4});}continue;}
+  if(g.players&&e.backFrame===g.frame)continue;
   if(p.state!=='dead'&&!(p.airJumps>0)&&overlap(p.x,p.y,p.w,p.h,e.x,e.y,e.w,e.h)&&!p.onGround){
    p.airJumps=1;e.timer=FK.featherBack;Core.emit(g,'feather',{x:e.x+4,y:e.y+4});
   }
@@ -69,6 +70,6 @@ function after(g){
   if(dx)Core.moveX(g,e,dx*DT);if(dy)Core.moveY(g,e,dy*DT);
  }
 }
-(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'frost',reset,before,forces,airJump,after});
+(root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'frost',reset,before,beforePlayer:(g,inp)=>before(g,inp,true),forces,airJump,after});
 root.BladefallPrecisionFrost=Object.freeze({FK,onIce,windAt});
 })(typeof window!=='undefined'?window:globalThis);
