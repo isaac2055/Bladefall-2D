@@ -1,0 +1,65 @@
+{
+  "room": "bank-f114",
+  "status": "Native route verified; integrated as a playable Core draft awaiting player review",
+  "whole": {
+    "frames": 1996,
+    "deaths": 0,
+    "eventCounts": {
+      "shutter-shut": 444,
+      "shutter-open": 438,
+      "dash": 46,
+      "grab": 15,
+      "climbhop": 11,
+      "land": 24,
+      "refill-dash": 45,
+      "jump": 12,
+      "strike": 8,
+      "mirror": 6,
+      "super": 14,
+      "core-checkpoint": 5,
+      "reverse-super": 5,
+      "late-reverse": 5,
+      "ultra": 4,
+      "hyper": 3,
+      "walljump": 1,
+      "exit": 1
+    },
+    "minimumStamina": 93.1
+  },
+  "freshParts": [
+    280,
+    373,
+    292,
+    374,
+    463,
+    362
+  ],
+  "probes": [
+    {
+      "name": "remove grab",
+      "exited": false,
+      "deaths": 27
+    },
+    {
+      "name": "hold right",
+      "exited": false,
+      "deaths": 21
+    },
+    {
+      "name": "jump/dash right",
+      "exited": false,
+      "deaths": 39
+    },
+    {
+      "name": "without louvres (the sun never stops)",
+      "exited": false,
+      "deaths": 32
+    }
+  ],
+  "worldInteractions": {
+    "mirrors": 6,
+    "beams": 24,
+    "louvres": 18
+  },
+  "limits": "These authored-route and basic bypass probes are not exhaustive path search. No live browser or human completion claimed."
+}

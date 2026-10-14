@@ -14,7 +14,7 @@ export function snapshot(g){const o={};for(const k in g)if(!SKIP.has(k))o[k]=g[k
  // or one candidate's freeze/thaw silently changes the other candidates' physics.
  if(g.water)c.room={...g.room,grid:g.room.grid.slice(),ice:g.room.ice?.slice()};
  // Tide hazard callbacks close over the game: bind a fresh callback to this snapshot.
- if(c.water?.tide){const t=c.water.tide;c.spikeSafe=(cc,r)=>cc>=t.c0&&cc<=t.c1&&r*8>=globalThis.BladefallPrecisionWater.surfaceY(c);}else c.spikeSafe=g.spikeSafe||null;
+ if(c.water?.tide){const W=globalThis.BladefallPrecisionWater;c.spikeSafe=(cc,r)=>W.tideSafe(c,cc,r);}else c.spikeSafe=g.spikeSafe||null;
  return c;}
 export function restore(s){return snapshot(s);}
 export function gameAt(id,tape=[]){

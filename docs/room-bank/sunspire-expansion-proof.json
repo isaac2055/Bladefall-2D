@@ -1,0 +1,63 @@
+{
+  "room": "bank-f115",
+  "status": "Native route verified; integrated as a playable Core draft awaiting player review",
+  "whole": {
+    "frames": 1155,
+    "deaths": 0,
+    "eventCounts": {
+      "dash": 24,
+      "ultra": 3,
+      "refill-dash": 24,
+      "hyper": 3,
+      "portal-open": 12,
+      "land": 18,
+      "grab": 1,
+      "climbhop": 1,
+      "strike": 6,
+      "portal-pass": 6,
+      "core-checkpoint": 5,
+      "jump": 7,
+      "walljump": 2,
+      "exit": 1
+    },
+    "minimumStamina": 96.9
+  },
+  "freshParts": [
+    194,
+    250,
+    299,
+    194,
+    214,
+    208
+  ],
+  "probes": [
+    {
+      "name": "hold right",
+      "exited": false,
+      "deaths": 14
+    },
+    {
+      "name": "jump/dash right",
+      "exited": false,
+      "deaths": 23
+    },
+    {
+      "name": "without portal stone",
+      "exited": false,
+      "deaths": 5
+    }
+  ],
+  "worldInteractions": {
+    "crossings": 6,
+    "exitSpeeds": [
+      -170,
+      -170,
+      -170,
+      -347,
+      -170,
+      -170
+    ],
+    "lightWalls": 6
+  },
+  "limits": "These authored-route and basic bypass probes are not exhaustive path search. No live browser or human completion claimed."
+}

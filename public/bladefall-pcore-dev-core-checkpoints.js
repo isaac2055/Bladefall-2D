@@ -8,6 +8,8 @@ function after(g){const points=g.room.def.coreCheckpoints,p=g.p;if(!points||g.fl
  for(const [i,q]of points.entries())if(i>g.coreRun.index&&Math.abs(p.y+p.h-(q.r+1)*8)<1&&p.x+p.w>q.c*8-(q.width||40)/2&&p.x<q.c*8+(q.width||40)/2){
   g.coreRun.index=i;g.workshopHearth=null;
   if(q.clearEcho){const owners=g.players||[g],echoes=new Set(owners.map(owner=>owner.echo).filter(Boolean));g.ents=g.ents.filter(e=>!echoes.has(e));for(const owner of owners)owner.echo=null;}
+  // (7.336) a save on a Switchback Core turns the cliff back to its first phase, as a restart there would
+  if(q.resetPhase&&g.phase)C().flipPhase(g,'save');
   if(q.resetClocks!==false){if(g.resinWind)g.resinWind.t=0;if(g.rootLash)g.rootLash.t=0;}
   C().emit(g,'core-checkpoint',{room:g.room.id,index:i,x:q.c*8+4,y:(q.r+1)*8,part:i+2,name:q.name||'Save point'});
  }

@@ -1,5 +1,5 @@
 {
-  "version": "7.335.0",
+  "version": "7.336.0",
   "method": "Native simulation, saved-pose part routes, persistence and DOM entry/completion hooks; no live browser verification",
   "ordinarySourcesUnchanged": 132,
   "cores": [
@@ -268,6 +268,96 @@
         264,
         364,
         246
+      ],
+      "deaths": 0,
+      "checkpointDeathReset": true,
+      "durableRestore": true,
+      "ordinaryProbesStopped": 2
+    },
+    {
+      "world": 116,
+      "name": "Every Dash Turns the Cliff",
+      "draft": true,
+      "wholeFrames": 1498,
+      "partFrames": [
+        208,
+        259,
+        338,
+        242,
+        194,
+        266
+      ],
+      "deaths": 0,
+      "checkpointDeathReset": true,
+      "durableRestore": true,
+      "ordinaryProbesStopped": 2
+    },
+    {
+      "world": 117,
+      "name": "The Tide Keeps Time",
+      "draft": true,
+      "wholeFrames": 2523,
+      "partFrames": [
+        215,
+        786,
+        540,
+        443,
+        317,
+        517
+      ],
+      "deaths": 0,
+      "checkpointDeathReset": true,
+      "durableRestore": true,
+      "ordinaryProbesStopped": 2
+    },
+    {
+      "world": 118,
+      "name": "Between the Lamps",
+      "draft": true,
+      "wholeFrames": 1947,
+      "partFrames": [
+        264,
+        638,
+        282,
+        276,
+        336,
+        295
+      ],
+      "deaths": 0,
+      "checkpointDeathReset": true,
+      "durableRestore": true,
+      "ordinaryProbesStopped": 2
+    },
+    {
+      "world": 119,
+      "name": "The Hours of the Sun",
+      "draft": true,
+      "wholeFrames": 1996,
+      "partFrames": [
+        280,
+        373,
+        292,
+        374,
+        463,
+        362
+      ],
+      "deaths": 0,
+      "checkpointDeathReset": true,
+      "durableRestore": true,
+      "ordinaryProbesStopped": 2
+    },
+    {
+      "world": 120,
+      "name": "The Last Light",
+      "draft": true,
+      "wholeFrames": 1155,
+      "partFrames": [
+        194,
+        250,
+        299,
+        194,
+        214,
+        208
       ],
       "deaths": 0,
       "checkpointDeathReset": true,

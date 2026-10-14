@@ -1,0 +1,67 @@
+{
+  "room": "bank-f111",
+  "status": "Native route verified; integrated as a playable Core draft awaiting player review",
+  "whole": {
+    "frames": 1498,
+    "deaths": 0,
+    "eventCounts": {
+      "jump": 31,
+      "hook": 34,
+      "unhook": 34,
+      "phase": 23,
+      "dash": 20,
+      "land": 18,
+      "ultra": 2,
+      "refill-dash": 19,
+      "core-checkpoint": 5,
+      "walljump": 1,
+      "super": 1,
+      "grab": 1,
+      "climbhop": 1,
+      "strike": 2,
+      "exit": 1
+    },
+    "minimumStamina": 106
+  },
+  "freshParts": [
+    208,
+    259,
+    338,
+    242,
+    194,
+    266
+  ],
+  "probes": [
+    {
+      "name": "remove grab",
+      "exited": false,
+      "deaths": 9
+    },
+    {
+      "name": "hold right",
+      "exited": false,
+      "deaths": 14
+    },
+    {
+      "name": "jump/dash right",
+      "exited": false,
+      "deaths": 20
+    },
+    {
+      "name": "without rings",
+      "exited": false,
+      "deaths": 9
+    },
+    {
+      "name": "without blue ledges",
+      "exited": false,
+      "deaths": 8
+    }
+  ],
+  "worldInteractions": {
+    "blueLandings": 8,
+    "hooks": 34,
+    "turns": 23
+  },
+  "limits": "These authored-route and basic bypass probes are not exhaustive path search. No live browser or human completion claimed."
+}

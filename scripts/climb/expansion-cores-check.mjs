@@ -4,7 +4,7 @@ import {readFileSync,writeFileSync} from 'node:fs';
 import vm from 'node:vm';
 import {Core,expand,keysToInput,runRoom} from '../pcore-tape.mjs';
 import {coreCrumbleGrace} from './core-difficulty.mjs';
-const worlds={101:'keep',102:'gaol',103:'frost',104:'court',105:'ember',106:'foundry',107:'inversion',108:'citadel',109:'throne',110:'deepline'};
+const worlds={101:'keep',102:'gaol',103:'frost',104:'court',105:'ember',106:'foundry',107:'inversion',108:'citadel',109:'throne',110:'deepline',111:'cliffs',112:'shores',113:'colony',114:'path',115:'sunspire'};
 const ids=process.argv.slice(2).map(Number);assert.ok(ids.length,'Pass each source id to verify.');
 for(const id of ids){
  const x=JSON.parse(readFileSync(`scripts/room-bank/fractured/${id}-bank-f${id}.json`)),name=worlds[id];assert.ok(name);
@@ -17,10 +17,51 @@ for(const id of ids){
   const g=Core.createGame([x.room]);if(part){g.coreRun.index=part-1;Core.resetRoom(g);g.p.state='normal';g.p.respawnTimer=0;}
   let done=false,frames=0;for(const k of expand(x.verification.partTapes[part])){Core.step(g,keysToInput(k));frames++;assert.equal(g.deaths,0,`${id} part ${part+1}`);if(part===x.room.coreCheckpoints.length?g.exited:g.coreRun.index>=part){done=true;break;}g.events.length=0;}assert.ok(done);parts.push(frames);
  }
- const probes=[];for(const[name,tape]of [...(id===107?[]:[['remove grab',x.tape.map(([n,k])=>[n,k.replaceAll('g','')])]]),['hold right',[[1800,'r']]],['jump/dash right',Array.from({length:70},()=>[[8,'rj'],[8,'rx'],[20,'r']]).flat()]]){const r=runRoom([x.room],0,tape);assert.ok(!r.exited,`${id}: ${name} bypassed the room`);probes.push({name,exited:r.exited,deaths:r.deaths});}
+ const probes=[];for(const[name,tape]of [...(id===107||id===112||id===113||id===115?[]:[['remove grab',x.tape.map(([n,k])=>[n,k.replaceAll('g','')])]]),['hold right',[[1800,'r']]],['jump/dash right',Array.from({length:70},()=>[[8,'rj'],[8,'rx'],[20,'r']]).flat()]]){const r=runRoom([x.room],0,tape);assert.ok(!r.exited,`${id}: ${name} bypassed the room`);probes.push({name,exited:r.exited,deaths:r.deaths});}
  if(id===102){const r=runRoom([{...x.room,map:x.room.map.map(row=>row.replaceAll('R','.'))}],0,x.tape);assert.ok(!r.exited&&r.deaths>0);probes.push({name:'authored route without pressure pods',exited:r.exited,deaths:r.deaths});}
  if(id===103){const r=runRoom([{...x.room,map:x.room.map.map(row=>row.replaceAll('f','.'))}],0,x.tape);assert.ok(!r.exited&&r.deaths>0);probes.push({name:'authored route without frost feathers',exited:r.exited,deaths:r.deaths});assert.ok(whole.events.some(e=>e.type==='parry'&&whole.log[e.i]?.st==='climb'),'Frost route must include the hanging parry');}
  if(id===104){const r=runRoom([{...x.room,map:x.room.map.map(row=>row.replaceAll('w','.'))}],0,x.tape);assert.ok(!r.exited&&r.deaths>0);probes.push({name:'authored route without water columns',exited:r.exited,deaths:r.deaths});assert.ok(whole.events.some(e=>e.type==='condenser'&&(whole.log[e.i]?.st==='climb'||whole.log[e.i-1]?.st==='climb')),'Court route must activate a condenser from a hanging position');}
+ let worldInteractions;
+ if(id===111){
+  assert.deepEqual(authored.verification.stages,x.verification.stages,'Cliffs stage/source parity');
+  // each save turns the cliff back; every blue ledge stood on was reached by a dash that turned it
+  const g=Core.createGame([x.room]);let blueLandings=0;
+  for(const k of expand(x.tape)){Core.step(g,keysToInput(k));for(const e of g.events){if(e.type==='core-checkpoint')assert.equal(g.phase,0,'a save turns the cliff back');if(e.type==='land'){const c=Math.floor((g.p.x+4)/8),r=Math.floor((g.p.y+g.p.h)/8);if(x.room.map[r]?.[c]==='B')blueLandings++;}}g.events.length=0;}
+  assert.ok(blueLandings>=8,'route stands on at least eight blue ledges');
+  for(const[label,room]of [['without rings',{...x.room,map:x.room.map.map(row=>row.replaceAll('O','.'))}],['without blue ledges',{...x.room,map:x.room.map.map(row=>row.replaceAll('B','.'))}]]){const r=runRoom([room],0,x.tape);assert.ok(!r.exited&&r.deaths>0,label);probes.push({name:label,exited:r.exited,deaths:r.deaths});}
+  worldInteractions={blueLandings,hooks:counts.hook,turns:counts.phase};
+ }
+ if(id===113){
+  assert.deepEqual(authored.verification.stages,x.verification.stages,'Colony stage/source parity');
+  const g=Core.createGame([x.room]),Wt=globalThis.BladefallPrecisionWatch;let shelteredFrames=0;
+  for(const k of expand(x.tape)){Core.step(g,keysToInput(k));const p=g.p,pts=[[p.x+4,p.y+1],[p.x+4,p.y+5],[p.x+4,p.y+10]];if(Wt.hidden(g,p)&&g.lights.some(l=>pts.some(([px,py])=>Wt.inCone(g,l,px,py))))shelteredFrames++;g.events.length=0;}
+  assert.ok(shelteredFrames>=6,'the route shelters in smoke while a lamp looks at it');
+  for(const[label,room]of [['without smoke',{...x.room,map:x.room.map.map(row=>row.replaceAll('S','.'))}]]){const r=runRoom([room],0,x.tape);assert.ok(!r.exited&&r.deaths>0,label);probes.push({name:label,exited:r.exited,deaths:r.deaths});}
+  worldInteractions={shelteredFrames,lamps:x.room.lights.length,glimpses:counts.glimpse||0};
+ }
+ if(id===114){
+  assert.deepEqual(authored.verification.stages,x.verification.stages,'Path stage/source parity');
+  assert.ok((counts.mirror||0)>=6,'every section turns its mirror');
+  for(const[label,room]of [['without louvres (the sun never stops)',{...x.room,map:x.room.map.map(row=>row.replaceAll('X','.'))}],['mirrors left untouched',{...x.room,map:x.room.map}]].slice(0,1)){const r=runRoom([room],0,x.tape);assert.ok(!r.exited&&r.deaths>0,label);probes.push({name:label,exited:r.exited,deaths:r.deaths});}
+  worldInteractions={mirrors:counts.mirror,beams:x.room.beams.length,louvres:x.room.shutters.length};
+ }
+ if(id===115){
+  assert.deepEqual(authored.verification.stages,x.verification.stages,'Sunspire stage/source parity');
+  // every crossing is a portal pass that rises: the knight leaves the far pit upward, onto a higher floor
+  const g=Core.createGame([x.room]),rises=[];
+  for(const k of expand(x.tape)){Core.step(g,keysToInput(k));for(const e of g.events)if(e.type==='portal-pass'&&e.kind==='knight')rises.push(Math.round(g.p.vy));g.events.length=0;}
+  assert.ok(rises.filter(v=>v<=-150).length>=6,'six crossings leave a floor door fast and upward');
+  for(const[label,room]of [['without portal stone',{...x.room,map:x.room.map.map(row=>row.replaceAll('%','#'))}]]){const r=runRoom([room],0,x.tape);assert.ok(!r.exited,label);probes.push({name:label,exited:r.exited,deaths:r.deaths});}
+  worldInteractions={crossings:rises.length,exitSpeeds:rises,lightWalls:x.room.beams.length};
+ }
+ if(id===112){
+  assert.deepEqual(authored.verification.stages,x.verification.stages,'Shores stage/source parity');
+  const g=Core.createGame([x.room]);let swimFrames=0,rideFrames=0;
+  for(const k of expand(x.tape)){Core.step(g,keysToInput(k));if(g.p.swimming)swimFrames++;if(g.p.onGround&&g.ents.some(e=>e.type==='float'&&e.y<e.homeY&&Math.abs(g.p.y+g.p.h-e.y)<1&&g.p.x+g.p.w>e.x&&g.p.x<e.x+e.w))rideFrames++;g.events.length=0;}
+  assert.ok(swimFrames>=60,'the route swims the drowned thorn fields');assert.ok(rideFrames>=60,'the route rides floats on a rising sea');
+  for(const[label,room]of [['without the tides',{...x.room,tides:[]}]]){const r=runRoom([room],0,x.tape);assert.ok(!r.exited&&r.deaths>0,label);probes.push({name:label,exited:r.exited,deaths:r.deaths});}
+  worldInteractions={swimFrames,rideFrames,tides:x.room.tides.length};
+ }
  let deeplineInteractions;
  if(id===110){
   assert.deepEqual(authored.verification.stages,x.verification.stages,'Deep Line stage/source parity');
@@ -90,5 +131,5 @@ for(const id of ids){
   for(const [label,room]of [['no heated columns',{...x.room,map:x.room.map.map(row=>row.replaceAll('E','.'))}],['permanently stone slabs',{...x.room,slabs:x.room.slabs.map(()=>({stone:100000,molten:1,glass:1,offset:0}))}]]){const r=runRoom([room],0,x.tape);assert.ok(!r.exited&&r.deaths>0,label);probes.push({name:label,exited:r.exited,deaths:r.deaths});}
   heatInteractions={stoneColumnsGripped:gripped.size,glassGatesEnteredFromBelow:glassEntries.size};
  }
- const proof={room:x.room.id,status:x.bank.localOnly?'Native route verified; local draft awaiting integration and player review':'Native route verified; integrated as a playable Core draft awaiting player review',whole:{frames:whole.exitFrame+1,deaths:0,eventCounts:counts,minimumStamina:Math.min(...whole.log.map(t=>t.st2))},freshParts:parts,probes,...(heatInteractions?{heatInteractions}:{}),...(foundryInteractions?{foundryInteractions}:{}),...(inversionInteractions?{inversionInteractions}:{}),...(citadelInteractions?{citadelInteractions}:{}),...(throneInteractions?{throneInteractions}:{}),...(deeplineInteractions?{deeplineInteractions}:{}),limits:'These authored-route and basic bypass probes are not exhaustive path search. No live browser or human completion claimed.'};writeFileSync(`docs/room-bank/${name}-expansion-proof.json`,JSON.stringify(proof,null,2)+'\n');console.log(`PASS ${name}: whole ${proof.whole.frames}f; fresh ${parts.join('/')}; author parity; ${probes.length} sensitivity/bypass probes.`);
+ const proof={room:x.room.id,status:x.bank.localOnly?'Native route verified; local draft awaiting integration and player review':'Native route verified; integrated as a playable Core draft awaiting player review',whole:{frames:whole.exitFrame+1,deaths:0,eventCounts:counts,minimumStamina:Math.min(...whole.log.map(t=>t.st2))},freshParts:parts,probes,...(heatInteractions?{heatInteractions}:{}),...(foundryInteractions?{foundryInteractions}:{}),...(inversionInteractions?{inversionInteractions}:{}),...(citadelInteractions?{citadelInteractions}:{}),...(throneInteractions?{throneInteractions}:{}),...(deeplineInteractions?{deeplineInteractions}:{}),...(worldInteractions?{worldInteractions}:{}),limits:'These authored-route and basic bypass probes are not exhaustive path search. No live browser or human completion claimed.'};writeFileSync(`docs/room-bank/${name}-expansion-proof.json`,JSON.stringify(proof,null,2)+'\n');console.log(`PASS ${name}: whole ${proof.whole.frames}f; fresh ${parts.join('/')}; author parity; ${probes.length} sensitivity/bypass probes.`);
 }

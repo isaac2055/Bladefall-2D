@@ -16,7 +16,7 @@ try{
  const originalSupplied=supplied;w.dispatchEvent(new w.MessageEvent('message',{origin:'https://wrong.example',source:frame.contentWindow,data:{type:'bladefall-workshop-document-request',id:draft.id,nonce:'wrong'}}));assert.equal(supplied,originalSupplied,'other origins cannot read drafts');
  const receipts=[];let parentWindow;
  child=await exploreRuntime('?workshopPlay='+encodeURIComponent(draft.id),{beforeScript:async(cw,src)=>{
-  if(src!=='bladefall-workshop-bridge.js')return;
+  if((src||'').split('?')[0]!=='bladefall-workshop-bridge.js')return;
   parentWindow={postMessage(message,origin){receipts.push(message);if(message.type==='bladefall-workshop-document-request')queueMicrotask(()=>cw.dispatchEvent(new cw.MessageEvent('message',{origin:cw.location.origin,source:parentWindow,data:{type:'bladefall-workshop-document',nonce:message.nonce,document:JSON.parse(JSON.stringify(draft))}})));}};
   Object.defineProperty(cw,'parent',{value:parentWindow});
  }});await tick();

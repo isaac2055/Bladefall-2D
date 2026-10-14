@@ -1,3 +1,29 @@
+## 7.336.0: Cores 16–20; cloud drafts live (2026-10-14, Claude)
+
+Isaac approved the API deploy and asked for the last five Cores, following Codex's design notes (one large single room per Core, five saves and six sections, the world's own device, whole route plus every fresh restart proven, zero extra crumble grace for 16–20).
+
+**Cloud:** `npm run deploy:api` deployed the `bladefall-2d` worker (version 7805073d). `/api/workshop` also had to be added to `public/_routes.json`: Pages only runs Functions for listed paths, which is why production answered an empty 405. Production now returns `{"error":"profile"}` for a bad profile and 404 `share-not-found` for an unknown share (no data written by those checks). `check-cloudflare-assets.mjs` expects the new route.
+
+**Cores 16–20** (`author-{cliffs,shores,colony,path,sunspire}-core.mjs` → `fractured/111…115`, worlds 116–120, drafts awaiting review):
+
+| Core | Room | Device | Whole | Fresh sections |
+|---|---|---|---:|---|
+| 16 Thunder Cliffs | Every Dash Turns the Cliff (spiral, 20 ring swings) | hook rings + A/B switchback: dash out to bring blue in, jump out to keep gold | 1498 | 208/259/338/242/194/266 |
+| 17 Landing Shores | The Tide Keeps Time (13 basins) | per-basin tides: ride floats, leave before ceiling thorns; swim drowned thorn fields; paired floats | 2523 | 215/786/540/443/317/517 |
+| 18 The Colony | Between the Lamps (6 galleries) | sweeping watch lamps, smoke, thorn gaps, stair shafts | 1947 | 264/638/282/276/336/295 |
+| 19 Path to the Palace | The Hours of the Sun (tower) | shuttered sun beams across the climb; strike each mirror to turn its beam into the wall | 1996 | 280/373/292/374/463/362 |
+| 20 Sunspire | The Last Light (7 chambers) | walls of light crossed only by your own portals; fall into yours, rise out of the far pit | 1155 | 194/250/299/194/214/208 |
+
+Probes (`expansion-cores-check.mjs 111…115`): no rings or no blue ledges, no tides, no smoke, no louvres, or no portal stone each break the route. The checker also asserts the device is actually used: blue landings, swim and ride frames, frames sheltered in smoke while a lamp looks, six mirror strikes, six fast upward portal exits.
+
+**Engine additions (opt-in, existing rooms unchanged):**
+- `coreCheckpoints[].resetPhase`: a save turns the A/B cliff back to phase 0, as a restart there would.
+- Water `tides:[…]`: several seas per room, each with its own clock and `phase`; `tideAt`/`tideSafe` exported. Single `tide` rooms behave as before; the precision verifier passes 440/440, including Part XVII. Shared co-op lists `tides` as supported.
+
+**Authoring tools:** `prove-causeway-core.mjs` stage options `phase`, `swim`; it rejects states while being seen by a lamp; multi-tide clocks are part of the duplicate key so it can wait for a sea. Two workshop checks now ignore `?v=` on the bridge script name (the release bump broke their exact-name hook; the game itself was unaffected).
+
+**Checks:** cores-check (twenty), expansion 106–115, room bank 152 (`--check-batch` batch 29/run 19), workshop 60/60, test tools, precision 440/440, Pages API (Miniflare), Cloudflare dry run, SW 466 entries consistent. All five Cores load in headless Chrome without page errors (screenshots inspected). Not human-played: difficulty and feel need Isaac's review; Core 20 is the shortest (19 s).
+
 ## 7.335.0: level builder released; Cores 11–15 (2026-10-14, Claude continuing Codex)
 
 Codex built the level builder and Cores 11–14 and stopped mid-Core 15 at 08:58 with nothing committed (full record: `LLM-HANDOFF/WORKSHOP-AND-CORES-11-15-IN-PROGRESS.md`). Claude resumed from its saved route rather than restarting.

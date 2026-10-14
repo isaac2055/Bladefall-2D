@@ -13,7 +13,7 @@ try{
  ui.element.querySelector('[data-action=test]').click();await tick();const preview=B.state().preview,frame=preview.querySelector('iframe'),outgoing=[];let cw,parentWindow;
  frame.contentWindow.postMessage=data=>{if(cw)cw.dispatchEvent(new cw.MessageEvent('message',{origin:cw.location.origin,source:parentWindow,data}));else outgoing.push(data);};
  child=await exploreRuntime('?workshopPlay='+doc.id,{beforeScript:async(win,src)=>{
-  if(src!=='bladefall-workshop-bridge.js')return;cw=win;parentWindow={postMessage:data=>queueMicrotask(()=>w.dispatchEvent(new w.MessageEvent('message',{origin:w.location.origin,source:frame.contentWindow,data})))};Object.defineProperty(cw,'parent',{value:parentWindow});
+  if((src||'').split('?')[0]!=='bladefall-workshop-bridge.js')return;cw=win;parentWindow={postMessage:data=>queueMicrotask(()=>w.dispatchEvent(new w.MessageEvent('message',{origin:w.location.origin,source:frame.contentWindow,data})))};Object.defineProperty(cw,'parent',{value:parentWindow});
  }});await tick();
  assert.equal(cw.__BF.mode,'pause','first participant waits for a partner');assert(preview.textContent.includes('Waiting for a partner'));
  const guestMessages=[],socket=host.connect(m=>guestMessages.push(m));socket.receive({type:'hello',actor:'friend',token:'friend-token',name:'Friend'});socket.receive({type:'play',action:'join',test:invitation.id});await tick();

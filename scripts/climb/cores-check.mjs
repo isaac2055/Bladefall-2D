@@ -9,7 +9,7 @@ globalThis.localStorage={getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.
 globalThis.BLADEFALL_CLIMB=true;
 for(const f of ['climb','climb-bank-passages','climb-atlas','climb-passages','climb-passage-tapes','climb-worlds','climb-finale-tapes','climb-finale','climb-core-tapes','climb-cores','climb-rewards','climb-geography','climb-geography-build','pcore-dev-core-checkpoints-view'])require('../../public/bladefall-'+f+'.js');
 const CL=globalThis.BladefallClimb,progress=globalThis.BladefallCoreProgress,cores=globalThis.BladefallClimbCores;
-assert.deepEqual(cores.worlds.map(w=>w.n),Array.from({length:15},(_,i)=>101+i));assert.equal(CL.worlds.length,57);assert(!existsSync(new URL('../../public/bladefall-climb-csides.js',import.meta.url)));
+assert.deepEqual(cores.worlds.map(w=>w.n),Array.from({length:20},(_,i)=>101+i));assert.equal(CL.worlds.length,62);assert(!existsSync(new URL('../../public/bladefall-climb-csides.js',import.meta.url)));
 const rows=[];
 for(const [i,w] of cores.worlds.entries()){
  assert.equal(w.rooms.length,1);assert.equal(w.sections.length,1);assert(w.rooms[0].coreCheckpoints.length>=2);const d=w.rooms[0],source=globalThis.BladefallClimbCoreData[i];
@@ -30,14 +30,14 @@ for(const [i,w] of cores.worlds.entries()){
  const probes=[[[900,'r']],Array.from({length:30},()=>[[8,'rj'],[8,'rx'],[20,'r']]).flat()];for(const tape of probes)assert.equal(runRoom([d],0,tape).exited,false);
  rows.push({world:w.n,name:d.name,draft:w.draft,wholeFrames:full.exitFrame+1,partFrames:parts,deaths:full.deaths,checkpointDeathReset:true,durableRestore:true,ordinaryProbesStopped:probes.length});
 }
-for(const [i,w]of cores.worlds.entries()){assert.equal(w.rooms[0].crumbleExtraFrames,i<5?60:i<10?40:20);assert.equal(w.rooms[0].coreCheckpoints.length,i<5?[6,8,4,4,4][i]:5);}
+for(const [i,w]of cores.worlds.entries()){assert.equal(w.rooms[0].crumbleExtraFrames,i<5?60:i<10?40:i<15?20:0);assert.equal(w.rooms[0].coreCheckpoints.length,i<5?[6,8,4,4,4][i]:5);}
 // The player's exact requested supplemental platforms and one-second Woods grace.
 const trumpet=cores.worlds[0].rooms[0],woods=cores.worlds[1].rooms[0];assert(trumpet.coreCheckpoints.some(q=>q.c===116&&q.r===11));assert(woods.coreCheckpoints.some(q=>q.c===108&&q.r===26));assert(woods.coreCheckpoints.some(q=>q.c===88&&q.r===11));assert.equal(woods.crumbleExtraFrames,60);const opening=Core.createGame([woods]);Core.step(opening,keysToInput(''));assert.equal(opening.ents.find(e=>e.type==='crumble'&&e.shaking)?.shaking,84);
 for(const [d,revision,index,expected]of [[trumpet,1,1,3],[woods,2,1,5]]){storage.set('bladefall.cores.checkpoints.v1',JSON.stringify({[d.coreProgressKey]:{revision,index}}));assert.equal(progress.saved(d).index,expected);progress.clear(d);}
 // The grace is opt-in: ordinary rooms stay at 24f.
 const small={id:'timing-fixture',cols:40,rows:23,map:Array.from({length:23},(_,r)=>r===21?'..P.....................................':r===22?'..~~~~~.................................':'.'.repeat(40)),exit:'right',movement:'survive-2'};
 for(const [core,extra,expected] of [[undefined,60,24],[1,60,84],[2,45,69]]){const g=Core.createGame([{...small,core,crumbleExtraFrames:extra}]);Core.step(g,keysToInput(''));const e=g.ents.find(e=>e.type==='crumble'&&e.shaking);assert(e);assert.equal(e.shaking,expected);}
-const built=globalThis.BladefallClimbGeographyBuild.build(CL.worlds),map=globalThis.BladefallClimbGeography.mapSvg(built.geo);assert(!map.includes('101 ·'));assert(!map.includes('102 ·'));for(const n of Array.from({length:13},(_,i)=>103+i))assert(!map.includes(n+' ·'));
+const built=globalThis.BladefallClimbGeographyBuild.build(CL.worlds),map=globalThis.BladefallClimbGeography.mapSvg(built.geo);assert(!map.includes('101 ·'));assert(!map.includes('102 ·'));for(const n of Array.from({length:18},(_,i)=>103+i))assert(!map.includes(n+' ·'));
 const reward=globalThis.BladefallClimbRewards;assert(!reward.coreOpen(1));reward.perfect(1);assert(!reward.coreOpen(1));reward.perfect(21);assert(reward.coreOpen(1));assert(!reward.coreOpen(2));
 // Exercise the actual entry and completion hooks without a browser or gameplay UI.
 const dom=new JSDOM('<main id="overlay"></main>');globalThis.document=dom.window.document;
@@ -57,7 +57,7 @@ api.view.g.coreDemo=true;PV.exit(api.view,()=>{});assert(!reward.state().csides[
 PV.exit(api.view,()=>{});assert(reward.state().csides[1]);assert(overlay.includes('The trumpet sounds.'));
 reward.perfect(2);reward.perfect(22);assert(PV.climb.startWorld(102));PV.exit(api.view,()=>{});assert(reward.state().csides[2],'approved Woods Core earns completion reward');
 for(const k of [3,4,5]){assert(!reward.coreOpen(k));reward.perfect(k);assert(!reward.coreOpen(k));reward.perfect(k+20);assert(PV.climb.startWorld(100+k));PV.exit(api.view,()=>{});assert(reward.state().csides[k]);}
-for(const k of [6,7,8,9,10,11,12,13,14,15]){assert(!reward.coreOpen(k));reward.perfect(k);assert(!reward.coreOpen(k));reward.perfect(k+20);assert(PV.climb.startWorld(100+k));PV.exit(api.view,()=>{});assert(!reward.state().csides[k],'drafts await player approval');}
+for(const k of [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]){assert(!reward.coreOpen(k));reward.perfect(k);assert(!reward.coreOpen(k));reward.perfect(k+20);assert(PV.climb.startWorld(100+k));PV.exit(api.view,()=>{});assert(!reward.state().csides[k],'drafts await player approval');}
 for(const [file,sha] of Object.entries(JSON.parse(readFileSync(new URL('../../docs/room-bank/cores-ordinary-baseline.json',import.meta.url)))))assert.equal(createHash('sha256').update(readFileSync(file)).digest('hex'),sha,file+' unchanged');
-writeFileSync(new URL('../../docs/room-bank/cores-proof.json',import.meta.url),JSON.stringify({version:'7.335.0',method:'Native simulation, saved-pose part routes, persistence and DOM entry/completion hooks; no live browser verification',ordinarySourcesUnchanged:132,cores:rows},null,2)+'\n');
-console.log('PASS: fifteen Core whole routes and all authored restart parts, death/terrain resets, durable saves, ordinary crumble timing, Garden gating/resume/restart, demo protection, approved Core rewards, hidden geography, and 132 unchanged ordinary sources.');
+writeFileSync(new URL('../../docs/room-bank/cores-proof.json',import.meta.url),JSON.stringify({version:'7.336.0',method:'Native simulation, saved-pose part routes, persistence and DOM entry/completion hooks; no live browser verification',ordinarySourcesUnchanged:132,cores:rows},null,2)+'\n');
+console.log('PASS: twenty Core whole routes and all authored restart parts, death/terrain resets, durable saves, ordinary crumble timing, Garden gating/resume/restart, demo protection, approved Core rewards, hidden geography, and 132 unchanged ordinary sources.');

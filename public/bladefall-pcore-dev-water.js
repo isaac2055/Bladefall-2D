@@ -14,7 +14,9 @@
    frames to turn (7.308: holdLow/holdHigh, if given, hold the low and high water for different times). Its clock
    starts with the room's first input. Floats (glyph F) rest where they are
    drawn and ride the surface up when the sea is above them. Thorns under the surface are drowned:
-   harmless until the sea leaves them. */
+   harmless until the sea leaves them.
+   (7.336, opt-in) `tides:[{c0,c1,low,high,hold,move,phase}, …]`: several seas in one room, each on its own clock
+   (phase offsets it). A room with `tide` alone plays exactly as before. */
 (function(root){
 'use strict';
 const C=()=>root.BladefallPrecisionCore;
@@ -27,7 +29,7 @@ function reset(g){
  g.water=null;
  const cells=new Uint8Array(COLS*ROWS);let any=false;
  def.map.forEach((row,r)=>{for(let c=0;c<COLS;c++)if(row[c]==='w'){cells[r*COLS+c]=1;any=true;}});
- const tide=def.tide?{...def.tide,clock:0}:null;
+ const tides=(def.tides||(def.tide?[def.tide]:[])).map(t=>({...t,clock:t.phase||0})),tide=tides[0]||null;
  if(!any&&!tide&&!def.map.some(r=>r.includes('n')))return;
  // Undo any ice a previous attempt left behind.
  room.ice=room.ice||new Uint8Array(COLS*ROWS);
@@ -41,29 +43,32 @@ function reset(g){
    for(const [dc,dr]of [[1,0],[-1,0],[0,1],[0,-1]]){const cc=c+dc,rr=r+dr;if(cc<0||cc>=COLS||rr<0||rr>=ROWS)continue;const j=rr*COLS+cc;if(cells[j]&&body[j]<0){body[j]=id;stack.push(j);}}}
   pools.push({id,cells:list,frozen:0,pending:new Set()});
  }
- g.water={cells,body,pools,tide,thaw:def.thaw||WK.thaw,
+ g.water={cells,body,pools,tide,tides,thaw:def.thaw||WK.thaw,
   currents:(def.currents||[]).map(z=>({x:z.c*TILE,y:z.r*TILE,w:z.w*TILE,h:z.h*TILE,dx:z.dx||0,dy:z.dy||0}))};
  def.map.forEach((row,r)=>{for(let c=0;c<COLS;c++)if(row[c]==='n')g.ents.push({type:'condenser',dev:true,x:c*TILE,y:r*TILE,w:8,h:8,timer:0,id:'cd'+g.ents.length});});
  if(tide){
   for(const b of Core.groupsOf(def,'F'))g.ents.push({type:'float',dev:true,solid:true,x:b.x,y:b.y,w:b.w,h:b.h,homeY:b.y,remX:0,remY:0,id:'fl'+g.ents.length});
-  g.spikeSafe=(c,r)=>c>=tide.c0&&c<=tide.c1&&r*TILE>=surfaceY(g);
+  g.spikeSafe=(c,r)=>tideSafe(g,c,r);
  }
 }
 /* The tide's surface in pixels (lower y = higher sea). */
-function surfaceY(g){
- const t=g.water.tide;if(!t)return Infinity;
+function surfaceY(g,t=g.water.tide){
+ if(!t)return Infinity;
  // (7.308, opt-in) holdLow/holdHigh hold the two ends for different times; without them both use `hold`.
  const lo=t.holdLow??t.hold,hi=t.holdHigh??t.hold;
  const lowY=t.low*TILE,highY=t.high*TILE,cyc=lo+hi+2*t.move,k=t.clock%cyc;
  let f;if(k<lo)f=0;else if(k<lo+t.move)f=(k-lo)/t.move;else if(k<lo+t.move+hi)f=1;else f=1-(k-lo-t.move-hi)/t.move;
  return Math.round(lowY+(highY-lowY)*f);
 }
+/* The sea over column c, if any (the first tide whose columns hold it). */
+function tideAt(g,c){const w=g.water;if(!w)return null;for(const t of w.tides||(w.tide?[w.tide]:[]))if(c>=t.c0&&c<=t.c1)return t;return null;}
+function tideSafe(g,c,r){const t=tideAt(g,c);return !!t&&r*TILE>=surfaceY(g,t);}
 function inWater(g,x,y){
  const w=g.water,COLS=g.room.cols,ROWS=g.room.rows;if(!w)return false;
  const c=Math.floor(x/TILE),r=Math.floor(y/TILE);if(c<0||c>=COLS||r<0||r>=ROWS)return false;
  const i=r*COLS+c;
  if(w.cells[i]&&g.room.grid[i]!==C().SOLID)return true;
- const t=w.tide;if(t&&c>=t.c0&&c<=t.c1&&y>=surfaceY(g)&&g.room.grid[i]!==C().SOLID)return true;
+ const t=tideAt(g,c);if(t&&y>=surfaceY(g,t)&&g.room.grid[i]!==C().SOLID)return true;
  return false;
 }
 function currentAt(g,x,y,w,h){let dx=0,dy=0;for(const z of g.water.currents)if(overlap(x,y,w,h,z.x,z.y,z.w,z.h)){dx+=z.dx;dy+=z.dy;}return [dx,dy];}
@@ -91,9 +96,9 @@ function before(g,inp){
  const w=g.water;if(!w)return;
  const Core=C(),p=g.p,room=g.room,COLS=room.cols;
  if(w.tide&&g.awake){
-  const before=surfaceY(g);w.tide.clock++;const now=surfaceY(g);
-  for(const e of g.ents){if(e.type!=='float')continue;const want=Math.min(e.homeY,now-e.h);if(want!==e.y)Core.moveSolid(g,e,0,want-e.y-e.remY);}
-  if(before!==now)g.tideMoved=true;
+  const tides=w.tides||[w.tide];
+  for(const t of tides){const before=surfaceY(g,t);t.clock++;if(before!==surfaceY(g,t))g.tideMoved=true;}
+  for(const e of g.ents){if(e.type!=='float')continue;const t=tideAt(g,Math.floor((e.x+e.w/2)/TILE));const want=t?Math.min(e.homeY,surfaceY(g,t)-e.h):e.homeY;if(want!==e.y)Core.moveSolid(g,e,0,want-e.y-e.remY);}
  }
  // Frozen pools: count down; cells waiting on the knight or the lantern freeze once they are clear.
  for(const pool of w.pools){
@@ -151,5 +156,5 @@ function afterPlayer(g,inp){
  }
 }
 (root.BladefallPrecisionDevices=root.BladefallPrecisionDevices||[]).push({name:'water',reset,before,forces,airJump,after,afterPlayer});
-root.BladefallPrecisionWater=Object.freeze({WK,inWater,surfaceY,freeze,thaw});
+root.BladefallPrecisionWater=Object.freeze({WK,inWater,surfaceY,tideAt,tideSafe,freeze,thaw});
 })(typeof window!=='undefined'?window:globalThis);

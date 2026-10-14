@@ -1,0 +1,56 @@
+{
+  "room": "bank-f113",
+  "status": "Native route verified; integrated as a playable Core draft awaiting player review",
+  "whole": {
+    "frames": 1947,
+    "deaths": 0,
+    "eventCounts": {
+      "dash": 45,
+      "refill-dash": 45,
+      "super": 4,
+      "glimpse": 28,
+      "land": 36,
+      "ultra": 19,
+      "hyper": 17,
+      "reverse-hyper": 8,
+      "walljump": 1,
+      "jump": 17,
+      "core-checkpoint": 5,
+      "late-reverse": 2,
+      "strike": 1,
+      "exit": 1
+    },
+    "minimumStamina": 110
+  },
+  "freshParts": [
+    264,
+    638,
+    282,
+    276,
+    336,
+    295
+  ],
+  "probes": [
+    {
+      "name": "hold right",
+      "exited": false,
+      "deaths": 19
+    },
+    {
+      "name": "jump/dash right",
+      "exited": false,
+      "deaths": 28
+    },
+    {
+      "name": "without smoke",
+      "exited": false,
+      "deaths": 6
+    }
+  ],
+  "worldInteractions": {
+    "shelteredFrames": 67,
+    "lamps": 19,
+    "glimpses": 28
+  },
+  "limits": "These authored-route and basic bypass probes are not exhaustive path search. No live browser or human completion claimed."
+}

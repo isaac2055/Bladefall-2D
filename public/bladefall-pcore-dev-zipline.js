@@ -34,7 +34,7 @@ const centre=(c,r)=>({x:c*TILE+4,y:r*TILE+2.5});   // knight's centre standing o
 // 7.280 fix: a room with a tide already has a thorn rule (the tide drowns thorns), so a ride must take it over for its
 // length and hand the tide's rule back after (before this, riders in tide rooms died on thorns the tear crossed).
 function spikesBack(g){const t=g.water&&g.water.tide,W=root.BladefallPrecisionWater;
- g.spikeSafe=t&&W?((c,r)=>c>=t.c0&&c<=t.c1&&r*TILE>=W.surfaceY(g)):null;}
+ g.spikeSafe=t&&W?((c,r)=>W.tideSafe(g,c,r)):null;}
 
 function reset(g){
  const lines=g.room.def.lines;

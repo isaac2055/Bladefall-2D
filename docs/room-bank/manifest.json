@@ -1,7 +1,7 @@
 {
   "version": "7.334.0",
-  "activeBatch": 28,
-  "activeRun": 18,
+  "activeBatch": 29,
+  "activeRun": 19,
   "status": "User-approved bank plus a separate queue of revisions and new candidates",
   "rooms": [
     {
@@ -82030,6 +82030,219 @@
       "revision": "40cc96b492e9",
       "source": "scripts/room-bank/fractured/110-bank-f110.json",
       "tapeFrames": 1452
+    },
+    {
+      "id": "bank-f111",
+      "name": "Every Dash Turns the Cliff",
+      "side": "fractured",
+      "batch": 29,
+      "run": 19,
+      "collection": "cores",
+      "coreIndex": 16,
+      "format": "superroom",
+      "localOnly": false,
+      "acceptance": "candidate",
+      "needsReview": true,
+      "status": "route-proven",
+      "author": "Claude",
+      "difficulty": 5,
+      "worlds": [
+        16,
+        36
+      ],
+      "tags": [
+        "hook-ring",
+        "switchback",
+        "spikes"
+      ],
+      "newMechanics": [],
+      "role": "Thunder Cliffs Core: swing, then choose whether the cliff turns",
+      "solution": "Swing from each ring; dash out to bring a blue ledge in, jump out to keep a gold one. Saves turn the cliff back.",
+      "requiredEvents": [
+        "hook",
+        "phase",
+        "core-checkpoint"
+      ],
+      "requiredEventCounts": {
+        "hook": 20,
+        "phase": 14,
+        "core-checkpoint": 5
+      },
+      "coreDescription": "The storm turns the cliff each time you dash. Count before you let go.",
+      "draft": true,
+      "humanReview": "Native whole route and all six fresh checkpoint sections verified. Awaiting player review.",
+      "revision": "0d602f871660",
+      "source": "scripts/room-bank/fractured/111-bank-f111.json",
+      "tapeFrames": 1498
+    },
+    {
+      "id": "bank-f112",
+      "name": "The Tide Keeps Time",
+      "side": "fractured",
+      "batch": 29,
+      "run": 19,
+      "collection": "cores",
+      "coreIndex": 17,
+      "format": "superroom",
+      "localOnly": false,
+      "acceptance": "candidate",
+      "needsReview": true,
+      "status": "route-proven",
+      "author": "Claude",
+      "difficulty": 5,
+      "worlds": [
+        17,
+        37
+      ],
+      "tags": [
+        "tide",
+        "float",
+        "swim",
+        "thorns"
+      ],
+      "newMechanics": [
+        "multi-tide"
+      ],
+      "role": "Landing Shores Core: every basin keeps its own tide",
+      "solution": "Ride each float on its rising sea and leave before the ceiling thorns; swim the drowned thorn fields at high water; change floats as two opposite tides pass.",
+      "requiredEvents": [
+        "splash",
+        "core-checkpoint"
+      ],
+      "requiredEventCounts": {
+        "core-checkpoint": 5
+      },
+      "coreDescription": "Every basin keeps its own sea. Leave on the tide, not after it.",
+      "draft": true,
+      "humanReview": "Native whole route and all six fresh checkpoint sections verified. Awaiting player review.",
+      "revision": "66b8020a8292",
+      "source": "scripts/room-bank/fractured/112-bank-f112.json",
+      "tapeFrames": 2526
+    },
+    {
+      "id": "bank-f113",
+      "name": "Between the Lamps",
+      "side": "fractured",
+      "batch": 29,
+      "run": 19,
+      "collection": "cores",
+      "coreIndex": 18,
+      "format": "superroom",
+      "localOnly": false,
+      "acceptance": "candidate",
+      "needsReview": true,
+      "status": "route-proven",
+      "author": "Claude",
+      "difficulty": 5,
+      "worlds": [
+        18,
+        38
+      ],
+      "tags": [
+        "watch-light",
+        "smoke",
+        "thorns"
+      ],
+      "newMechanics": [],
+      "role": "Colony Core: cross six lamp-lit galleries unseen",
+      "solution": "Read each lamp’s sweep, wait in smoke, and cross the open floor and thorn gaps between passes; dash through a cone when a pass cannot be waited out.",
+      "requiredEvents": [
+        "core-checkpoint"
+      ],
+      "requiredEventCounts": {
+        "core-checkpoint": 5
+      },
+      "coreDescription": "The colony keeps its lamps lit. Move when they look away.",
+      "draft": true,
+      "humanReview": "Native whole route and all six fresh checkpoint sections verified. Awaiting player review.",
+      "revision": "685ea3bb3475",
+      "source": "scripts/room-bank/fractured/113-bank-f113.json",
+      "tapeFrames": 1960
+    },
+    {
+      "id": "bank-f114",
+      "name": "The Hours of the Sun",
+      "side": "fractured",
+      "batch": 29,
+      "run": 19,
+      "collection": "cores",
+      "coreIndex": 19,
+      "format": "superroom",
+      "localOnly": false,
+      "acceptance": "candidate",
+      "needsReview": true,
+      "status": "route-proven",
+      "author": "Claude",
+      "difficulty": 5,
+      "worlds": [
+        19,
+        39
+      ],
+      "tags": [
+        "beam",
+        "shutter",
+        "mirror",
+        "thorns"
+      ],
+      "newMechanics": [],
+      "role": "Path Core: climb the sunlit tower between the beams",
+      "solution": "Climb the ledges, crossing each beam row while its louvre is shut; strike each section’s mirror so the falling beam turns into the wall instead of across the tower.",
+      "requiredEvents": [
+        "mirror",
+        "core-checkpoint"
+      ],
+      "requiredEventCounts": {
+        "mirror": 6,
+        "core-checkpoint": 5
+      },
+      "coreDescription": "The sun keeps its hours. Climb between them.",
+      "draft": true,
+      "humanReview": "Native whole route and all six fresh checkpoint sections verified. Awaiting player review.",
+      "revision": "b7e9d596b405",
+      "source": "scripts/room-bank/fractured/114-bank-f114.json",
+      "tapeFrames": 2018
+    },
+    {
+      "id": "bank-f115",
+      "name": "The Last Light",
+      "side": "fractured",
+      "batch": 29,
+      "run": 19,
+      "collection": "cores",
+      "coreIndex": 20,
+      "format": "superroom",
+      "localOnly": false,
+      "acceptance": "candidate",
+      "needsReview": true,
+      "status": "route-proven",
+      "author": "Claude",
+      "difficulty": 5,
+      "worlds": [
+        20,
+        40
+      ],
+      "tags": [
+        "portal",
+        "beam",
+        "fling"
+      ],
+      "newMechanics": [],
+      "role": "Sunspire Core: pass every wall of light through your own door",
+      "solution": "In each chamber open one end on the departure stone and one in the arrival pit beyond the light, climb the perch and fall into your end: the fall becomes the rise out of the far pit, onto the higher floor.",
+      "requiredEvents": [
+        "portal-pass",
+        "core-checkpoint"
+      ],
+      "requiredEventCounts": {
+        "portal-pass": 6,
+        "core-checkpoint": 5
+      },
+      "coreDescription": "The light cannot be crossed. The door can.",
+      "draft": true,
+      "humanReview": "Native whole route and all six fresh checkpoint sections verified. Awaiting player review.",
+      "revision": "14533d27d3e7",
+      "source": "scripts/room-bank/fractured/115-bank-f115.json",
+      "tapeFrames": 1156
     }
   ]
 }

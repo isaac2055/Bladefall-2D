@@ -1,0 +1,59 @@
+{
+  "room": "bank-f112",
+  "status": "Native route verified; integrated as a playable Core draft awaiting player review",
+  "whole": {
+    "frames": 2523,
+    "deaths": 0,
+    "eventCounts": {
+      "jump": 39,
+      "dash": 32,
+      "land": 19,
+      "refill-dash": 32,
+      "strike": 17,
+      "splash": 11,
+      "super": 8,
+      "core-checkpoint": 5,
+      "stroke": 30,
+      "reverse-super": 2,
+      "ultra": 5,
+      "hyper": 3,
+      "reverse-hyper": 1,
+      "walljump": 2,
+      "grab": 1,
+      "climbjump": 1,
+      "exit": 1
+    },
+    "minimumStamina": 82.2
+  },
+  "freshParts": [
+    215,
+    786,
+    540,
+    443,
+    317,
+    517
+  ],
+  "probes": [
+    {
+      "name": "hold right",
+      "exited": false,
+      "deaths": 12
+    },
+    {
+      "name": "jump/dash right",
+      "exited": false,
+      "deaths": 20
+    },
+    {
+      "name": "without the tides",
+      "exited": false,
+      "deaths": 22
+    }
+  ],
+  "worldInteractions": {
+    "swimFrames": 895,
+    "rideFrames": 64,
+    "tides": 13
+  },
+  "limits": "These authored-route and basic bypass probes are not exhaustive path search. No live browser or human completion claimed."
+}

@@ -25,17 +25,17 @@ function drawBack(b,g){
    tops.forEach((i,j)=>{const x=(i%COLS)*TILE,y=((i/COLS)|0)*TILE;for(let h=0;h<2;h++){const lit=j*2+h<k;px(b,x+1+h*4,y-2,2,1,lit?(pool.frozen<60&&(t>>2)&1?'#ff9a6a':'#e8fbff'):'#40606e');}});
   }
  }
- // tide
- if(w.tide){
-  const sy=W.surfaceY(g),x0=w.tide.c0*TILE,x1=(w.tide.c1+1)*TILE;
-  for(let r=Math.floor(sy/TILE);r<ROWS;r++)for(let c=w.tide.c0;c<=w.tide.c1;c++){
+ // tide (7.336: every sea in the room)
+ for(const tide of w.tides||(w.tide?[w.tide]:[])){
+  const sy=W.surfaceY(g,tide),x0=tide.c0*TILE,x1=(tide.c1+1)*TILE;
+  for(let r=Math.floor(sy/TILE);r<ROWS;r++)for(let c=tide.c0;c<=tide.c1;c++){
    if(room.grid[r*COLS+c]===1)continue;const y0=Math.max(r*TILE,sy);b.globalAlpha=.42;px(b,c*TILE,y0,8,(r+1)*TILE-y0,'#23628f');b.globalAlpha=1;}
   for(let x=x0;x<x1;x+=2){const k=Math.round(Math.sin((t+x)/9));px(b,x,sy+k,2,1,'#a8dcff');}
   // Optional local sight glass: shows the same tide when the basin is below the camera.
   const gauge=room.def.tideGauge;
   if(gauge){
    const x=gauge.c*TILE,y=gauge.r*TILE,h=(gauge.h||3)*TILE;
-   const top=Math.min(w.tide.high,w.tide.low)*TILE,bottom=Math.max(w.tide.high,w.tide.low)*TILE;
+   const top=Math.min(tide.high,tide.low)*TILE,bottom=Math.max(tide.high,tide.low)*TILE;
    const fill=Math.max(0,Math.min(1,(bottom-sy)/Math.max(1,bottom-top))),level=y+h-2-Math.round(fill*(h-4));
    px(b,x,y,7,h,'#607584');px(b,x+1,y+1,5,h-2,'#192c3b');
    px(b,x+2,level,3,y+h-1-level,'#4c9bbc');
@@ -43,7 +43,7 @@ function drawBack(b,g){
    px(b,x+1,level-1,5,2,'#c49b63');px(b,x+2,level-1,3,1,'#f0d29a');
   }
   // high and low water marks on the left wall of the sea
-  px(b,x0,w.tide.high*TILE,3,1,'#e8d8a0');px(b,x0,w.tide.low*TILE,3,1,'#8aa0b0');
+  px(b,x0,tide.high*TILE,3,1,'#e8d8a0');px(b,x0,tide.low*TILE,3,1,'#8aa0b0');
  }
  for(const z of w.currents){
   b.globalAlpha=.6;const sp=Math.hypot(z.dx,z.dy)||1,ux=z.dx/sp,uy=z.dy/sp,n=Math.max(2,(z.w*z.h)/200|0);
