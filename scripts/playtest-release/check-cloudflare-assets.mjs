@@ -25,7 +25,7 @@ assert.match(pkg.scripts['deploy:api'],/--config wrangler\.api\.jsonc(?:\s|$)/);
 const proposed=JSON.parse(await readFile('scripts/playtest-release/pages-api-binding.json','utf8'));
 assert.deepEqual(proposed.services,[{binding:'PLAYTEST_API',service:api.name}]);assert.deepEqual(proposed.env.preview.services,[]);
 if(pages.services){assert.deepEqual(pages.services,proposed.services);assert.deepEqual(pages.env.preview.services,[]);}
-assert.deepEqual(JSON.parse(await readFile('public/_routes.json','utf8')),{version:1,include:['/api/playtest','/api/feedback-export'],exclude:[]});
+assert.deepEqual(JSON.parse(await readFile('public/_routes.json','utf8')),{version:1,include:['/api/playtest','/api/feedback-export','/api/workshop'],exclude:[]});
 assert((await stat(resolve(base,'index.html'))).isFile(),'Pages output needs an index.html');
 async function scan(dir){for(const f of await readdir(dir,{withFileTypes:true})){const p=resolve(dir,f.name);if(f.isDirectory())await scan(p);else {if((await stat(p)).size>25*1024*1024)throw Error('Cloudflare asset exceeds 25 MiB: '+p);count++;}}}
 await scan(base);if(count>20000)throw Error('Too many static assets');console.log('Cloudflare configuration checked: Pages publishes public/; API-only service configuration and legacy Worker preserved. Pages API binding '+(pages.services?'staged':'not activated')+'. Static assets: '+count+' files.');
