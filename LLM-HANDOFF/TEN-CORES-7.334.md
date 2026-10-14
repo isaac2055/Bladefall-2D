@@ -1,6 +1,6 @@
 # 7.334 — ten Cores, Ascend, and world-specific scenery
 
-Implementation and native/DOM checks complete. Release commit/push and Cloudflare byte verification are the final publication steps. Do not deploy to Netlify. Browser automation was denied earlier: no browser/CDP workaround and no claim of live browser or human completion. Never stage unrelated `.Rhistory`.
+Published game commit `191acc7` on main. Cloudflare production deployment `83dfa020-cd7e-48c6-91b3-1012a010fac6` succeeded (confirmed through the Pages API via Wrangler). Live SHA-256 bytes match the local index, precision page, service worker, Core data/registry/geography, scenery, Room Bank data/view, and leaderboard module. The GitHub check notification was still in progress after the provider had completed; use the provider result and live bytes as publication evidence. Implementation and native/DOM checks are complete. Do not deploy to Netlify. Browser automation was denied earlier: no browser/CDP workaround and no claim of live browser or human completion. Never stage unrelated `.Rhistory`.
 
 ## Player-facing changes
 
