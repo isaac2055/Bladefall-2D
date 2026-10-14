@@ -10,6 +10,9 @@ import {Core,Rooms,keysToInput,expand} from './pcore-tape.mjs';
 
 const SKIP=new Set(['defs','rooms','room','spikeSafe']);
 export function snapshot(g){const o={};for(const k in g)if(!SKIP.has(k))o[k]=g[k];const c=structuredClone(o);c.defs=g.defs;c.rooms=g.rooms;c.room=g.room;
+ // Freezing changes terrain in place. Each search branch needs its own ice/grid,
+ // or one candidate's freeze/thaw silently changes the other candidates' physics.
+ if(g.water)c.room={...g.room,grid:g.room.grid.slice(),ice:g.room.ice?.slice()};
  // Tide hazard callbacks close over the game: bind a fresh callback to this snapshot.
  if(c.water?.tide){const t=c.water.tide;c.spikeSafe=(cc,r)=>cc>=t.c0&&cc<=t.c1&&r*8>=globalThis.BladefallPrecisionWater.surfaceY(c);}else c.spikeSafe=g.spikeSafe||null;
  return c;}

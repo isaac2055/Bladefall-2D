@@ -1,0 +1,75 @@
+{
+  "room": "bank-f104",
+  "status": "Native route verified; integrated as a playable Core draft awaiting player review",
+  "whole": {
+    "frames": 2166,
+    "deaths": 0,
+    "eventCounts": {
+      "dash": 21,
+      "refill-dash": 20,
+      "super": 7,
+      "strike": 16,
+      "freeze": 60,
+      "grab": 26,
+      "ice": 32,
+      "jump": 24,
+      "climbjump": 19,
+      "pod": 4,
+      "walljump": 15,
+      "pogo-loft": 1,
+      "thaw": 39,
+      "condenser": 6,
+      "feather": 4,
+      "feather-jump": 4,
+      "land": 8,
+      "core-checkpoint": 5,
+      "zip-start": 1,
+      "zip-stop": 1,
+      "feather-back": 3,
+      "zip-home": 1,
+      "ultra": 2,
+      "hyper": 2,
+      "wallboost": 2,
+      "portal-open": 2,
+      "portal-fizzle": 5,
+      "portal-pass": 1,
+      "refill": 1,
+      "refill-back": 1,
+      "wallbounce": 1,
+      "late-wallbounce": 1,
+      "exit": 1
+    },
+    "minimumStamina": -9
+  },
+  "freshParts": [
+    446,
+    307,
+    550,
+    393,
+    455,
+    50
+  ],
+  "probes": [
+    {
+      "name": "remove grab",
+      "exited": false,
+      "deaths": 18
+    },
+    {
+      "name": "hold right",
+      "exited": false,
+      "deaths": 17
+    },
+    {
+      "name": "jump/dash right",
+      "exited": false,
+      "deaths": 23
+    },
+    {
+      "name": "authored route without water columns",
+      "exited": false,
+      "deaths": 18
+    }
+  ],
+  "limits": "These authored-route and basic bypass probes are not exhaustive path search. No live browser or human completion claimed."
+}

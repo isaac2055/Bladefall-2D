@@ -109,15 +109,31 @@
     "exit": "right",
     "core": 3,
     "coreProgressKey": "core-causeway",
-    "coreProgressRevision": 2,
+    "coreProgressRevision": 3,
     "counterweightFlow": true,
     "coreCheckpoints": [
+      {
+        "c": 78,
+        "r": 84,
+        "facing": 1,
+        "name": "The Momentum Catch",
+        "width": 24,
+        "resetClocks": false
+      },
       {
         "c": 149,
         "r": 62,
         "width": 64,
         "facing": -1,
         "name": "The East Anchorage"
+      },
+      {
+        "c": 95,
+        "r": 54,
+        "facing": -1,
+        "name": "The Hanging Return",
+        "width": 24,
+        "resetClocks": false
       },
       {
         "c": 12,
@@ -172,8 +188,12 @@
     "hint": "Keep the lift’s throw. Dive under the brakes, launch off the cracked shelves, then catch the safe sides of the brake housings.",
     "coreProgressMigrations": {
       "1": [
-        0,
-        1
+        1,
+        3
+      ],
+      "2": [
+        1,
+        3
       ]
     }
   },
@@ -212,7 +232,7 @@
       "core-checkpoint"
     ],
     "requiredEventCounts": {
-      "core-checkpoint": 2,
+      "core-checkpoint": 4,
       "counterweight-relay": 1,
       "grab": 1,
       "zip-start": 7
@@ -846,18 +866,40 @@
         [
           16,
           "r"
-        ],
+        ]
+      ],
+      [
         [
           8,
-          "rdx"
+          "ldx"
         ],
         [
           4,
-          "rd"
+          "ld"
+        ],
+        [
+          18,
+          "rj"
+        ],
+        [
+          18,
+          "rds"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          5,
+          "r"
+        ],
+        [
+          18,
+          "rj"
         ],
         [
           10,
-          "rj"
+          "r"
         ],
         [
           5,
@@ -872,16 +914,12 @@
           "rj"
         ],
         [
+          8,
+          "ldx"
+        ],
+        [
           4,
-          "r"
-        ],
-        [
-          5,
-          "rdx"
-        ],
-        [
-          5,
-          "r"
+          "ld"
         ],
         [
           18,
@@ -896,30 +934,6 @@
           "r"
         ],
         [
-          5,
-          "rdx"
-        ],
-        [
-          5,
-          "r"
-        ],
-        [
-          18,
-          "rj"
-        ],
-        [
-          18,
-          ""
-        ],
-        [
-          18,
-          "l"
-        ],
-        [
-          10,
-          "lj"
-        ],
-        [
           8,
           "ux"
         ],
@@ -928,6 +942,14 @@
           "u"
         ],
         [
+          10,
+          "r"
+        ],
+        [
+          18,
+          "djs"
+        ],
+        [
           5,
           "rdx"
         ],
@@ -936,7 +958,7 @@
           "r"
         ],
         [
-          8,
+          18,
           "rj"
         ]
       ],
@@ -996,10 +1018,16 @@
         [
           4,
           "ld"
+        ]
+      ],
+      [
+        [
+          2,
+          "l"
         ],
         [
-          18,
-          "djs"
+          5,
+          ""
         ],
         [
           5,
@@ -1015,19 +1043,27 @@
         ],
         [
           4,
-          "lg"
+          "rj"
         ],
         [
-          10,
-          "lgj"
+          5,
+          "ldx"
         ],
         [
-          8,
-          "ux"
+          5,
+          "l"
+        ],
+        [
+          18,
+          "lj"
         ],
         [
           4,
-          "u"
+          "lg"
+        ],
+        [
+          28,
+          "lug"
         ],
         [
           18,
@@ -1090,11 +1126,11 @@
           "lj"
         ],
         [
-          5,
-          "lx"
+          18,
+          ""
         ],
         [
-          5,
+          18,
           "l"
         ],
         [
@@ -1102,24 +1138,16 @@
           "lj"
         ],
         [
-          18,
-          ""
-        ],
-        [
-          18,
-          "lj"
-        ],
-        [
           8,
-          "ux"
+          "rux"
         ],
         [
           4,
-          "u"
+          "ru"
         ],
         [
-          18,
-          "r"
+          15,
+          ""
         ]
       ],
       [
@@ -1311,7 +1339,7 @@
     ],
     "reachedStage": 19,
     "partReached": {
-      "1": 12,
+      "1": 5,
       "2": 19
     },
     "fullFrames": 1238

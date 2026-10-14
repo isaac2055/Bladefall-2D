@@ -4,8 +4,10 @@
     "name": "The Borrowed Sky",
     "wholeFrames": 1837,
     "partFrames": [
-      690,
-      655,
+      235,
+      459,
+      145,
+      521,
       508
     ],
     "counts": {
@@ -21,13 +23,13 @@
       "wind": 21,
       "crumble-shake": 2,
       "climbhop": 3,
+      "core-checkpoint": 4,
       "strike": 6,
       "crumble": 2,
       "pogo-loft": 2,
       "pod": 3,
       "walljump": 3,
       "crumble-back": 2,
-      "core-checkpoint": 2,
       "refill": 7,
       "refill-back": 6,
       "exit": 1
@@ -46,8 +48,10 @@
     "name": "The Unbroken Answer",
     "wholeFrames": 1657,
     "partFrames": [
-      547,
-      575,
+      293,
+      290,
+      308,
+      298,
       558
     ],
     "counts": {
@@ -62,6 +66,7 @@
       "land": 14,
       "crumble-shake": 10,
       "crumble": 9,
+      "core-checkpoint": 4,
       "crumble-back": 9,
       "grab": 5,
       "jump": 4,
@@ -70,7 +75,6 @@
       "strike": 2,
       "super": 3,
       "zip-stop": 2,
-      "core-checkpoint": 2,
       "zip-home": 2,
       "climbhop": 4,
       "walljump": 2,

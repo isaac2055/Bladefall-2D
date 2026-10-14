@@ -121,14 +121,30 @@
     "exit": "right",
     "core": 5,
     "coreProgressKey": "core-marksman",
-    "coreProgressRevision": 1,
+    "coreProgressRevision": 2,
     "coreCheckpoints": [
+      {
+        "c": 100,
+        "r": 98,
+        "facing": 1,
+        "name": "The Lower Watch",
+        "width": 24,
+        "resetClocks": false
+      },
       {
         "c": 151,
         "r": 69,
         "width": 80,
         "facing": -1,
         "name": "The East Watch"
+      },
+      {
+        "c": 87,
+        "r": 59,
+        "facing": -1,
+        "name": "The Grip Gallery",
+        "width": 24,
+        "resetClocks": false
       },
       {
         "c": 13,
@@ -401,7 +417,13 @@
       ]
     ],
     "hint": "Spend the dash, meet the falling arrow, and spend its answer before the next ledge disappears.",
-    "rbr": 5
+    "rbr": 5,
+    "coreProgressMigrations": {
+      "1": [
+        1,
+        3
+      ]
+    }
   },
   "bank": {
     "side": "fractured",
@@ -438,7 +460,7 @@
     ],
     "requiredEventCounts": {
       "parry": 6,
-      "core-checkpoint": 2,
+      "core-checkpoint": 4,
       "zip-start": 2
     },
     "coreDescription": "Turn the watch’s arrows into your next dash, across three continuous tiers of broken stone.",
@@ -1299,7 +1321,21 @@
           "r"
         ],
         [
-          18,
+          15,
+          "rj"
+        ]
+      ],
+      [
+        [
+          8,
+          "l"
+        ],
+        [
+          28,
+          ""
+        ],
+        [
+          3,
           "rj"
         ],
         [
@@ -1509,7 +1545,21 @@
           "lj"
         ],
         [
-          10,
+          4,
+          "l"
+        ]
+      ],
+      [
+        [
+          7,
+          "r"
+        ],
+        [
+          7,
+          ""
+        ],
+        [
+          6,
           "l"
         ],
         [
@@ -1545,20 +1595,20 @@
           "lgp"
         ],
         [
-          8,
+          5,
           "ldx"
         ],
         [
-          4,
-          "ld"
+          5,
+          "l"
         ],
         [
-          18,
+          36,
           "lj"
         ],
         [
-          18,
-          "ljp"
+          4,
+          "lp"
         ],
         [
           8,
@@ -1569,16 +1619,24 @@
           "lu"
         ],
         [
-          18,
-          "lj"
+          5,
+          "ldx"
         ],
         [
-          18,
+          5,
           "l"
         ],
         [
           18,
-          "rj"
+          "lj"
+        ],
+        [
+          28,
+          ""
+        ],
+        [
+          18,
+          "lj"
         ],
         [
           8,
@@ -1597,7 +1655,7 @@
           "l"
         ],
         [
-          18,
+          10,
           "lj"
         ]
       ],
@@ -1819,7 +1877,7 @@
           "r"
         ],
         [
-          18,
+          14,
           "rj"
         ]
       ]

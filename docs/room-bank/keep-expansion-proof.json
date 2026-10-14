@@ -1,0 +1,65 @@
+{
+  "room": "bank-f101",
+  "status": "Native route verified; integrated as a playable Core draft awaiting player review",
+  "whole": {
+    "frames": 1817,
+    "deaths": 0,
+    "eventCounts": {
+      "dash": 20,
+      "refill-dash": 20,
+      "super": 7,
+      "portal-fizzle": 9,
+      "grab": 23,
+      "enemy-shot": 38,
+      "jump": 10,
+      "climbjump": 8,
+      "strike": 4,
+      "pogo-low": 1,
+      "pod": 1,
+      "parry-ready": 15,
+      "walljump": 15,
+      "refill": 3,
+      "enemy-hit": 34,
+      "portal-open": 9,
+      "climbhop": 5,
+      "portal-pass": 4,
+      "land": 9,
+      "core-checkpoint": 5,
+      "refill-back": 3,
+      "crumble-shake": 1,
+      "zip-start": 3,
+      "crumble": 1,
+      "zip-stop": 2,
+      "crumble-back": 1,
+      "zip-home": 2,
+      "exit": 1
+    },
+    "minimumStamina": 18.1
+  },
+  "freshParts": [
+    287,
+    579,
+    257,
+    324,
+    270,
+    99
+  ],
+  "probes": [
+    {
+      "name": "remove grab",
+      "exited": false,
+      "deaths": 13
+    },
+    {
+      "name": "hold right",
+      "exited": false,
+      "deaths": 18
+    },
+    {
+      "name": "jump/dash right",
+      "exited": false,
+      "deaths": 23
+    }
+  ],
+  "limits": "These authored-route and basic bypass probes are not exhaustive path search. No live browser or human completion claimed."
+}

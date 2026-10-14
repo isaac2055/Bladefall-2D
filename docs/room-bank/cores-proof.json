@@ -1,5 +1,5 @@
 {
-  "version": "7.333.0",
+  "version": "7.334.0",
   "method": "Native simulation, saved-pose part routes, persistence and DOM entry/completion hooks; no live browser verification",
   "ordinarySourcesUnchanged": 132,
   "cores": [
@@ -9,9 +9,12 @@
       "draft": false,
       "wholeFrames": 2008,
       "partFrames": [
-        554,
-        584,
-        624,
+        214,
+        340,
+        245,
+        341,
+        194,
+        430,
         258
       ],
       "deaths": 0,
@@ -23,12 +26,16 @@
       "world": 102,
       "name": "The Oath Root",
       "draft": false,
-      "wholeFrames": 1602,
+      "wholeFrames": 1611,
       "partFrames": [
-        275,
-        276,
-        657,
-        363,
+        108,
+        182,
+        141,
+        137,
+        426,
+        235,
+        238,
+        114,
         204
       ],
       "deaths": 0,
@@ -42,8 +49,10 @@
       "draft": false,
       "wholeFrames": 1238,
       "partFrames": [
-        308,
-        487,
+        110,
+        221,
+        156,
+        350,
         448
       ],
       "deaths": 0,
@@ -57,8 +66,10 @@
       "draft": false,
       "wholeFrames": 1837,
       "partFrames": [
-        690,
-        655,
+        235,
+        459,
+        145,
+        521,
         508
       ],
       "deaths": 0,
@@ -72,9 +83,101 @@
       "draft": false,
       "wholeFrames": 1657,
       "partFrames": [
-        547,
-        575,
+        293,
+        290,
+        308,
+        298,
         558
+      ],
+      "deaths": 0,
+      "checkpointDeathReset": true,
+      "durableRestore": true,
+      "ordinaryProbesStopped": 2
+    },
+    {
+      "world": 106,
+      "name": "The Mason’s Grip",
+      "draft": true,
+      "wholeFrames": 1817,
+      "partFrames": [
+        287,
+        579,
+        257,
+        324,
+        270,
+        99
+      ],
+      "deaths": 0,
+      "checkpointDeathReset": true,
+      "durableRestore": true,
+      "ordinaryProbesStopped": 2
+    },
+    {
+      "world": 107,
+      "name": "The Unwritten Sentence",
+      "draft": true,
+      "wholeFrames": 2048,
+      "partFrames": [
+        407,
+        249,
+        418,
+        383,
+        575,
+        47
+      ],
+      "deaths": 0,
+      "checkpointDeathReset": true,
+      "durableRestore": true,
+      "ordinaryProbesStopped": 2
+    },
+    {
+      "world": 108,
+      "name": "The Winter Between",
+      "draft": true,
+      "wholeFrames": 1554,
+      "partFrames": [
+        381,
+        403,
+        273,
+        261,
+        215,
+        26
+      ],
+      "deaths": 0,
+      "checkpointDeathReset": true,
+      "durableRestore": true,
+      "ordinaryProbesStopped": 2
+    },
+    {
+      "world": 109,
+      "name": "The Borrowed Marble",
+      "draft": true,
+      "wholeFrames": 2166,
+      "partFrames": [
+        446,
+        307,
+        550,
+        393,
+        455,
+        50
+      ],
+      "deaths": 0,
+      "checkpointDeathReset": true,
+      "durableRestore": true,
+      "ordinaryProbesStopped": 2
+    },
+    {
+      "world": 110,
+      "name": "The Shape of the Fire",
+      "draft": true,
+      "wholeFrames": 2303,
+      "partFrames": [
+        383,
+        363,
+        443,
+        262,
+        436,
+        485
       ],
       "deaths": 0,
       "checkpointDeathReset": true,

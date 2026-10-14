@@ -129,14 +129,30 @@
     "exit": "right",
     "core": 4,
     "coreProgressKey": "core-updrafts",
-    "coreProgressRevision": 1,
+    "coreProgressRevision": 2,
     "coreCheckpoints": [
+      {
+        "c": 34,
+        "r": 91,
+        "facing": 1,
+        "name": "The First Bellows",
+        "width": 24,
+        "resetClocks": false
+      },
       {
         "c": 123,
         "r": 55,
         "width": 80,
         "facing": -1,
         "name": "The Turning Bellows"
+      },
+      {
+        "c": 84,
+        "r": 37,
+        "facing": -1,
+        "name": "The Lit Crossing",
+        "width": 24,
+        "resetClocks": false
       },
       {
         "c": 33,
@@ -224,7 +240,13 @@
         "dy": -120
       }
     ],
-    "hint": "Catch the column, leave through its mouth, and spend the dash that lights your next landing."
+    "hint": "Catch the column, leave through its mouth, and spend the dash that lights your next landing.",
+    "coreProgressMigrations": {
+      "1": [
+        1,
+        3
+      ]
+    }
   },
   "bank": {
     "side": "fractured",
@@ -263,7 +285,7 @@
       "wind": 4,
       "phase": 3,
       "pod": 1,
-      "core-checkpoint": 2
+      "core-checkpoint": 4
     },
     "coreDescription": "Thread the bellows, seed rebounds and shifting light landings in one continuous tower.",
     "draft": false,
@@ -1070,7 +1092,17 @@
           "ugj"
         ],
         [
-          18,
+          11,
+          ""
+        ]
+      ],
+      [
+        [
+          4,
+          "l"
+        ],
+        [
+          7,
           ""
         ],
         [
@@ -1304,7 +1336,21 @@
           "lj"
         ],
         [
-          36,
+          12,
+          "l"
+        ]
+      ],
+      [
+        [
+          4,
+          "r"
+        ],
+        [
+          7,
+          ""
+        ],
+        [
+          24,
           "l"
         ],
         [
@@ -1622,7 +1668,7 @@
           "r"
         ],
         [
-          18,
+          16,
           "rj"
         ]
       ]

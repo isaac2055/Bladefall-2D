@@ -273,7 +273,7 @@ function nextRoom(){
  save.shards=[...g.shards];writeSave(save);
  TEST()?.clearFlag();C.enterRoom(g,next);view.trail=[];resetScarf();view.roomTimer=0;
 }
-const takeoverOK=()=>!!save.assist.testMode;   // (7.314) a watched Survive route is not a skip
+const takeoverOK=()=>!!save.assist.testMode;   // (7.314) a watched Ascend route is not a skip
 function takeOver(){if(!takeoverOK())return;view.replay=null;delete view.coreReplayCheckpoint;root.BladefallClimbSession?.invalidate('watched route takeover');}
 function retryRoom(){if(!view.g)return;if(view.coreReplayCheckpoint!==undefined){view.g.coreRun=view.coreReplayCheckpoint;delete view.coreReplayCheckpoint;view.g.coreDemo=false;}SV()?.retry(view.g.room.id);view.replay=null;if(!TEST()?.restore()){C.resetRoom(view.g);view.g.p.state='normal';view.g.p.respawnTimer=0;}root.BladefallRouteRecording?.mark('retry');view.trail=[];resetScarf();}
 
@@ -608,7 +608,7 @@ function drawBars(b,e,light,dark){
  px(b,e.x,e.y,e.w,1,light);px(b,e.x,e.y+e.h-1,e.w,1,light);
  for(let y=e.y+6;y<e.y+e.h-1;y+=10)px(b,e.x,y,e.w,1,light);
 }
-// (7.319) a Survive skin, once earned and worn (bladefall-climb-rewards.js), dresses the knight
+// (7.319) a Ascend skin, once earned and worn (bladefall-climb-rewards.js), dresses the knight
 const SKIN=()=>root.BladefallPitchView?.climb?.state?.()?root.BladefallClimbRewards?.skin?.():null;
 function scarfColor(p){if(p.dashFlash>0&&p.dashFlash%4<2)return '#ffffff';const s=SKIN();if(s)return root.BladefallClimbRewards.scarf(s.pal,p.dashes>0,view.g?.frame||0);return p.dashes>0?'#ffb347':'#56708c';}
 function drawKnight(b,g){
@@ -798,7 +798,7 @@ function controlsCard(back){
   <td><div class="pcChips">${binds.pad[a].map((v,i)=>chip('pad',a,v,i)).join('')}${add('pad',a)}</div></td></tr>`).join('');
  const status=gp?`Controller: ${gp.id.replace(/\s*\(.*$/,'').slice(0,48)||'connected'}${gp.mapping==='standard'?'':' · non-standard layout, buttons may be mislabelled'}`
   :'No controller detected. Connect one and press any button on it (browsers hide controllers until a button is pressed).';
- showOverlay(`<div class="pcCard mid"><h1>Controls</h1><label class="pcSub"><input id="pcFeedbackToggle" type="checkbox" ${root.BladefallPlaytest?.feedbackEnabled()?'checked':''}> Review mode · rate each Survival room</label>
+ showOverlay(`<div class="pcCard mid"><h1>Controls</h1><label class="pcSub"><input id="pcFeedbackToggle" type="checkbox" ${root.BladefallPlaytest?.feedbackEnabled()?'checked':''}> Review mode · rate each Ascend room</label>
  <p class="pcSub">${status}</p>
  <table class="pcTable pcBinds"><tr><th>Action</th><th>Keyboard</th><th>Controller</th></tr>${rows}</table>
  <p class="pcSub pcNote">${view.bindNote||'Select a key or button to remove it. “+” adds one; a key already in use moves here.'}</p>
@@ -821,7 +821,7 @@ function controlsCard(back){
 }
 function assistCard(back,{fromMenu=false}={}){
  const a=save.assist,o=save.options,climb=!!root.BladefallPitchView?.climb?.state?.(),F=root.BladefallClimbFinale;
- // (7.314) the full-map switch only from the Survive menu (title → Survive), never mid-world
+ // (7.314) the full-map switch only from the Ascend menu (title → Ascend), never mid-world
  const finaleMap=!!(F&&climb&&fromMenu);
  const reviewRow=root.BladefallPlaytest?`<label class="pcOpt"><input type="checkbox" id="opReview" ${root.BladefallPlaytest.feedbackEnabled()?'checked':''}> Review mode · rate each room when you finish it</label>
  <label class="pcOpt"><input type="checkbox" id="opClock" ${root.BladefallPlaytest.clockShown?.()!==false?'checked':''}> Show the run timer</label>`:'';
@@ -843,13 +843,13 @@ function assistCard(back,{fromMenu=false}={}){
   if(finaleMap)F.setPreview($('opFinaleMap').checked);a.infiniteStamina=!!a.testMode;writeSave(save);if(view.g)view.g.assist.infiniteStamina=a.infiniteStamina;};
  overlay().querySelectorAll('input,select').forEach(el=>el.onchange=upd);
  // (7.314) every five presses of Screen shake turn test mode on or off: infinite skips and climbing stamina in
- // Survive, and a watched route can be taken over
+ // Ascend, and a watched route can be taken over
  {let presses=0;$('opShake').addEventListener('click',()=>{if(++presses%5)return;a.testMode=!a.testMode;a.infiniteStamina=a.testMode;writeSave(save);if(view.g)view.g.assist.infiniteStamina=a.infiniteStamina;
   TEST()?.sync();note(a.testMode?'Test mode on · I places a retry flag · R returns to it · mouse drag inspects the map.':'Test mode off.');});}
  // (7.312/7.314) every five presses of Show the full map turn the 100% view on or off: every world playable,
  // 41 and 42 too, and the map shown complete. Off, the map is as it was.
  if(finaleMap){let presses=0;$('opFinaleMap').addEventListener('click',()=>{if(++presses%5)return;const on=!F.unlockedAll();F.setUnlockedAll(on);
-  note(on?'Every Survive world is unlocked, Vesper and your Echo too, and the map shows the game 100% complete.':'Back to your own progress: the map shows what you have really done.');});}
+  note(on?'Every Ascend world is unlocked, Vesper and your Echo too, and the map shows the game 100% complete.':'Back to your own progress: the map shows what you have really done.');});}
  $('pcBack').onclick=()=>{upd();if(view.mode==='play')music(true);else music(false);back();};
 }
 function togglePause(){

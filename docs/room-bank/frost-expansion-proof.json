@@ -1,0 +1,74 @@
+{
+  "room": "bank-f103",
+  "status": "Native route verified; integrated as a playable Core draft awaiting player review",
+  "whole": {
+    "frames": 1554,
+    "deaths": 0,
+    "eventCounts": {
+      "ice": 6,
+      "dash": 21,
+      "refill-dash": 20,
+      "super": 7,
+      "feather": 9,
+      "enemy-shot": 33,
+      "jump": 17,
+      "feather-jump": 7,
+      "grab": 22,
+      "parry-ready": 17,
+      "climbhop": 3,
+      "land": 9,
+      "wind": 4,
+      "feather-back": 8,
+      "climbjump": 10,
+      "walljump": 6,
+      "crumble-shake": 1,
+      "core-checkpoint": 5,
+      "enemy-hit": 25,
+      "crumble": 1,
+      "strike": 2,
+      "crumble-back": 1,
+      "refill": 1,
+      "refill-back": 1,
+      "zip-start": 1,
+      "ultra": 3,
+      "hyper": 3,
+      "zip-stop": 1,
+      "zip-home": 1,
+      "parry": 2,
+      "feather-melt": 2,
+      "exit": 1
+    },
+    "minimumStamina": 29.8
+  },
+  "freshParts": [
+    381,
+    403,
+    273,
+    261,
+    215,
+    26
+  ],
+  "probes": [
+    {
+      "name": "remove grab",
+      "exited": false,
+      "deaths": 8
+    },
+    {
+      "name": "hold right",
+      "exited": false,
+      "deaths": 14
+    },
+    {
+      "name": "jump/dash right",
+      "exited": false,
+      "deaths": 23
+    },
+    {
+      "name": "authored route without frost feathers",
+      "exited": false,
+      "deaths": 9
+    }
+  ],
+  "limits": "These authored-route and basic bypass probes are not exhaustive path search. No live browser or human completion claimed."
+}

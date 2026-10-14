@@ -4,7 +4,7 @@
 'use strict';
 const px=(b,x,y,w,h,c)=>{b.fillStyle=c;b.fillRect(Math.round(x),Math.round(y),w,h);};
 const hash=(x,y)=>{let n=Math.imul(x+71,374761393)^Math.imul(y+29,668265263);n=Math.imul(n^(n>>>13),1274126177);return ((n^(n>>>16))>>>0)/4294967295;};
-const active=g=>/^cl\d+-/.test(g?.room?.id||'');
+const active=g=>!!g?.room?.def?.core||/^cl\d+-/.test(g?.room?.id||'');
 const theme=g=>({1:'outskirts',2:'woods',3:'causeway',4:'updrafts',5:'marksman',6:'keep',7:'gaol',8:'frost',9:'court',10:'ember',11:'foundry',12:'inversion',13:'citadel',14:'throne',15:'deepline',16:'cliffs',17:'shores',18:'colony',19:'palace',20:'sunspire'})[/^cl(\d+)-/.exec(g.room.id)?.[1]]||g.room.def.palette;
 function poly(b,points,col){b.fillStyle=col;b.beginPath();points.forEach(([x,y],i)=>i?b.lineTo(Math.round(x),Math.round(y)):b.moveTo(Math.round(x),Math.round(y)));b.closePath();b.fill();}
 function line(b,x,y,xx,yy,col){b.strokeStyle=col;b.lineWidth=1;b.beginPath();b.moveTo(Math.round(x)+.5,Math.round(y)+.5);b.lineTo(Math.round(xx)+.5,Math.round(yy)+.5);b.stroke();}

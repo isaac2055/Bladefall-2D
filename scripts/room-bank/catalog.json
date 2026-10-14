@@ -1,7 +1,7 @@
 {
-  "version": "7.333.0",
-  "activeBatch": 26,
-  "activeRun": 16,
+  "version": "7.334.0",
+  "activeBatch": 27,
+  "activeRun": 17,
   "retained": [
     "bank-f51",
     "bank-f71",
@@ -134,7 +134,12 @@
     "bank-f38",
     "bank-b34",
     "bank-b18",
-    "bank-b59"
+    "bank-b59",
+    "bank-f96",
+    "bank-f97",
+    "bank-f98",
+    "bank-f99",
+    "bank-f100"
   ],
   "newRoomsPerSide": 0,
   "mechanicRequirements": [],
@@ -424,7 +429,12 @@
     "bank-f97",
     "bank-f98",
     "bank-f99",
-    "bank-f100"
+    "bank-f100",
+    "bank-f101",
+    "bank-f102",
+    "bank-f103",
+    "bank-f104",
+    "bank-f105"
   ],
   "reviewRecords": [],
   "defaultGroup": "cores",

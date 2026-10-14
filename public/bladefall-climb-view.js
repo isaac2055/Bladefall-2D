@@ -252,7 +252,7 @@ function worldMenu(select=false){
   <span class="pcMeta">${(()=>{const hs=(w.secrets||[]),qs=w.quests.filter(q=>q.keepsake&&q.sections.length);const k=keepsakes();
    return `♥ ${hs.filter(x=>(save.secrets||{})[x.id]).length}/${hs.length} · ◆ ${qs.filter(q=>k[q.keepsake.id]).length}/${qs.length} · `;})()}${best?`best ${best.deaths} deaths · ${Math.floor(best.frames/3600)}:${String(Math.round(best.frames/60)%60).padStart(2,'0')}`:'not yet climbed'}${w.saved.length?` · ${w.saved.length} room${w.saved.length>1?'s':''} kept for later`:''}</span></button>`;};
  const saved=CL().worlds.flatMap(w=>w.saved.map(s=>`${s.name} (${w.name}, ${s.diff??'?'})`));
- api.showOverlay(`<div class="pcCard wide"><h1>Bladefall · Survive</h1>
+ api.showOverlay(`<div class="pcCard wide"><h1>✨ Bladefall · Ascend</h1>
  <p class="pcSub">Forty connected worlds: each room has its own fire and checkpoint. Worlds 1–20 form the base ascent; 21–40 are the harder Fractured ascent.</p>
  <div class="pcGrid">${CL().worlds.map(card).join('')}</div>
  ${root.BladefallClimbCoop?root.BladefallClimbCoop.menuHtml():''}

@@ -4,14 +4,14 @@ import {Core,keysToInput,runRoom,expand} from '../pcore-tape.mjs';
 const reports=[];
 for(const id of (process.argv.slice(2).length?process.argv.slice(2).map(Number):[99,100])){
  const x=JSON.parse(readFileSync(`scripts/room-bank/fractured/${id}-bank-f${id}.json`)),d=x.room;
- assert(d.cols*d.rows>=12000);assert.equal(d.coreCheckpoints.length,2);assert(!d.lines?.length);
+ assert(d.cols*d.rows>=12000);assert(d.coreCheckpoints.length>=4);assert(!d.lines?.length);
  const full=runRoom([d],0,x.tape),counts=full.events.reduce((o,e)=>(o[e.type]=(o[e.type]||0)+1,o),{});
  assert(full.exited&&full.deaths===0,d.id+' whole route');
  for(const[type,min]of Object.entries(x.bank.requiredEventCounts))assert((counts[type]||0)>=min,d.id+' uses '+type);
  const parts=[];
- for(let part=0;part<3;part++){
+ for(let part=0;part<=d.coreCheckpoints.length;part++){
   const g=Core.createGame([d]);if(part){g.coreRun.index=part-1;Core.resetRoom(g);g.p.state='normal';g.p.respawnTimer=0;}
-  let done=false,n=0;for(const k of expand(x.verification.partTapes[part]||[])){Core.step(g,keysToInput(k));n++;assert.equal(g.deaths,0);if(part===2?g.exited:g.coreRun.index>=part){done=true;break;}g.events.length=0;}
+  let done=false,n=0;for(const k of expand(x.verification.partTapes[part]||[])){Core.step(g,keysToInput(k));n++;assert.equal(g.deaths,0);if(part===d.coreCheckpoints.length?g.exited:g.coreRun.index>=part){done=true;break;}g.events.length=0;}
   assert(done,d.id+' independently reset part '+part);parts.push(n);
  }
  // Measure actual contact with both light-platform types, not merely dash events.

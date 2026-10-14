@@ -83,6 +83,16 @@ for(const name of ['climb-finale-tapes','climb-finale','climb-rewards'])w.eval(r
 V.options(()=>{},{fromMenu:true});for(let i=0;i<4;i++)w.document.getElementById('opFinaleMap').click();assert(!w.BladefallClimbFinale.unlockedAll());w.document.getElementById('opFinaleMap').click();assert(w.BladefallClimbFinale.unlockedAll());for(const k of [3,4,5])assert(w.BladefallClimbRewards.coreOpen(k));for(let i=0;i<5;i++)w.document.getElementById('opFinaleMap').click();assert(!w.BladefallClimbFinale.unlockedAll());for(const k of [3,4,5])assert(!w.BladefallClimbRewards.coreOpen(k));w.document.getElementById('pcBack').click();w.document.getElementById('pcOverlay').classList.remove('show');
 // At each resin launch edge the next branch is visible in the native Bank camera.
 const oldPitch=w.BladefallPitchView;w.BladefallPitchView=null;view.g=Core.createGame([woods.room]);for(const [x,next]of [[848,640],[640,432]]){view.g.p.x=x;view.g.p.y=205;view.camRoom=null;V.advance([]);assert(next+40>view.cam.x&&next<view.cam.x+view.viewportW,'next resin branch visible from launch');assert(x>=view.cam.x&&x+8<=view.cam.x+view.viewportW,'knight remains visible');}w.BladefallPitchView=oldPitch;
+// Core reviews inherit the same world palettes and scenery as Ascend.
+w.BLADEFALL_ROOM_BANK=true;w.BladefallClimbSession.refresh=()=>{};
+for(const f of ['bladefall-room-bank.js','bladefall-room-bank-view.js'])w.eval(readFileSync(new URL(f,pub),'utf8'));
+const coreSkies=new Set();for(const id of Array.from({length:10},(_,i)=>'bank-f'+(96+i))){
+ w.BladefallPitchView.start(new w.URLSearchParams('pitch=bank&group=cores&room='+id),api);
+ const def=view.g.room.def,pal=w.BladefallPitchView.palette({bank:true});assert.equal(pal,w.BladefallPitchView.climb.palette(def.palette));assert.notEqual(pal,V.palettes.throne);
+ assert(w.BladefallClimbArt.active(view.g),'Core terrain receives its origin-world details');coreSkies.add(pal.sky0);
+ assert(w.BladefallPitchView.background(brush,pal,view,320,184),'Core bank background uses world scenery');
+}
+assert.equal(coreSkies.size,10,'ten distinct world palettes');
 assert.deepEqual(uiErrors,[],'no swallowed DOM handler errors');
-console.log('PASS: actual five-click switch, I/normal blade binding, flag drawing, R/repeated state restore, preserved deaths, typing/menu/replay guards, mouse pan scaling, held screenshots, follow/resume, touch isolation, and mode-off cleanup, 137 native scene snapshots, deterministic device clocks, cross-room return, real Climb terrain/camera framing, and branch context.');
+console.log('PASS: actual five-click switch, I/normal blade binding, flag drawing, R/repeated state restore, preserved deaths, typing/menu/replay guards, mouse pan scaling, held screenshots, follow/resume, touch isolation, and mode-off cleanup, native scene snapshots across the complete bank, deterministic device clocks, cross-room return, real Climb terrain/camera framing, and branch context.');
 dom.window.close();

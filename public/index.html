@@ -312,8 +312,8 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 })();
 </script>
 <script src="bladefall-playtest-worlds.js?v=7.316.0"></script>
-<script src="bladefall-playtest-model.js?v=7.333.0"></script>
-<script src="bladefall-playtest.js?v=7.333.0"></script>
+<script src="bladefall-playtest-model.js?v=7.334.0"></script>
+<script src="bladefall-playtest.js?v=7.334.0"></script>
 <script src="bladefall-harness.js"></script>
 <script src="bladefall-core.js"></script>
 <script src="bladefall-simulation.js"></script>
@@ -347,7 +347,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-side-stories.js?v=7.232.0"></script>
 <script src="bladefall-opening-stories.js?v=7.234.0"></script>
 <script src="bladefall-side-story-world.js?v=7.234.0"></script>
-<script src="bladefall-merge-road.js?v=7.283.0"></script>
+<script src="bladefall-merge-road.js?v=7.334.0"></script>
 <script src="bladefall-zones.js?v=7.220.0"></script>
 <script src="bladefall-zone-state.js"></script>
 <script src="bladefall-recovery.js?v=7.234.0"></script>
@@ -446,7 +446,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.333.0';
+const VERSION='7.334.0';
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -24532,9 +24532,9 @@ function titleScreen(){
   const showLevelSelect=journeyDepth>0||meta.devUnlocked,showCoop=true;
   const showMap=!!meta.outskirtsFieldChart,showBoards=!!(meta.kingKills||meta.bossRushBest||hasLeaderboardRecords),showSkins=hasExtraSkin||journeyDepth>0;
   showOvHTML(`<div class="card"><h1 class="title">BLADEFALL</h1><p class="subtitle">Dreambound Action-Adventure</p>
-    ${canContinue?`<button class="bigbtn" id="contBtn">Continue — ${continueSurvive?'Survive':'Explore'}</button>`:''}
-    <button class="bigbtn ${hasRun?'ghost':''}" id="newBtn">🧭 Explore</button>
-    <button class="bigbtn" id="bladescentBtn">⚔️ Survive</button>
+    ${canContinue?`<button class="bigbtn" id="contBtn">Continue — ${continueSurvive?'Ascend':'Explore'}</button>`:''}
+    <button class="bigbtn ${hasRun?'ghost':''}" id="newBtn">🪐 Explore</button>
+    <button class="bigbtn" id="bladescentBtn">✨ Ascend</button>
     <button class="bigbtn ghost" id="boardsBtn" style="height:98px;box-sizing:border-box;">🏆 Leaderboards</button>
     ${offlineApp()?'<button class="bigbtn ghost" id="extrasBtn">Extras</button>':''}
     <div style="display:flex;gap:10px;margin-bottom:10px;">
@@ -24570,13 +24570,13 @@ function openExploreMenu(){
  document.getElementById('exploreContinue')?.addEventListener('click',continueRun);
  document.getElementById('exploreNew').onclick=()=>campaignHasProgress()?openNewGameConfirm():startFreshCampaign();
  document.getElementById('lvlSelBtn').onclick=openLevelSelect;
- document.getElementById('exploreCoop').onclick=openCoop;   // (7.320) Explore's co-op lives in Explore; Survive's in Survive
+ document.getElementById('exploreCoop').onclick=openCoop;   // (7.320) Explore's co-op lives in Explore; Ascend's in Ascend
  document.getElementById('exploreBack').onclick=titleScreen;
 }
 /* Extras belong to the offline app and local development builds. */
 function offlineApp(){return location.protocol==='file:'||['appassets.bladefall','localhost','127.0.0.1','[::1]'].includes(location.hostname)||location.hostname.endsWith('.localhost');}
 function openCoopChoice(){
- showOvHTML(`<div class="card"><h1>Co-op</h1><p class="ovsub">Choose your game</p><button class="bigbtn" id="coopExplore">🧭 Explore</button><button class="bigbtn" id="coopSurvive">⚔️ Survive</button><button class="bigbtn ghost" id="coopChoiceBack">Back</button></div>`);
+ showOvHTML(`<div class="card"><h1>Co-op</h1><p class="ovsub">Choose your game</p><button class="bigbtn" id="coopExplore">🪐 Explore</button><button class="bigbtn" id="coopSurvive">✨ Ascend</button><button class="bigbtn ghost" id="coopChoiceBack">Back</button></div>`);
  document.getElementById('coopExplore').onclick=openCoop;
  document.getElementById('coopSurvive').onclick=()=>{location.href='precision.html?pitch=climb&mode=play&coopmenu=1';};
  document.getElementById('coopChoiceBack').onclick=titleScreen;
@@ -25961,7 +25961,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.333.0').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.334.0').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */

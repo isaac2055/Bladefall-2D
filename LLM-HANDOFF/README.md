@@ -1,3 +1,7 @@
+# Latest: 7.334 ten Cores and Ascend
+
+Read [TEN-CORES-7.334.md](TEN-CORES-7.334.md) first.
+
 # Latest: 7.333 five Cores and shared co-op practice
 
 Read [FIVE-CORES-COOP-7.333.md](FIVE-CORES-COOP-7.333.md) first.

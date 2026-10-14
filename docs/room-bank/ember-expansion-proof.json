@@ -1,0 +1,83 @@
+{
+  "room": "bank-f105",
+  "status": "Native route verified; integrated as a playable Core draft awaiting player review",
+  "whole": {
+    "frames": 2303,
+    "deaths": 0,
+    "eventCounts": {
+      "dash": 25,
+      "ultra": 6,
+      "refill-dash": 25,
+      "hyper": 5,
+      "slab-molten": 71,
+      "slab": 27,
+      "grab": 28,
+      "jump": 32,
+      "climbjump": 19,
+      "slab-glass": 70,
+      "slab-stone": 67,
+      "climbhop": 1,
+      "walljump": 10,
+      "strike": 4,
+      "pod": 4,
+      "land": 11,
+      "core-checkpoint": 5,
+      "zip-start": 2,
+      "zip-stop": 2,
+      "feather": 7,
+      "feather-jump": 7,
+      "zip-home": 2,
+      "feather-back": 6,
+      "super": 2,
+      "refill": 2,
+      "refill-back": 2,
+      "portal-fizzle": 15,
+      "portal-open": 2,
+      "portal-pass": 1,
+      "pogo-low": 1,
+      "crumble-shake": 1,
+      "exit": 1
+    },
+    "minimumStamina": 24
+  },
+  "freshParts": [
+    383,
+    363,
+    443,
+    262,
+    436,
+    485
+  ],
+  "probes": [
+    {
+      "name": "remove grab",
+      "exited": false,
+      "deaths": 17
+    },
+    {
+      "name": "hold right",
+      "exited": false,
+      "deaths": 16
+    },
+    {
+      "name": "jump/dash right",
+      "exited": false,
+      "deaths": 23
+    },
+    {
+      "name": "no heated columns",
+      "exited": false,
+      "deaths": 17
+    },
+    {
+      "name": "permanently stone slabs",
+      "exited": false,
+      "deaths": 9
+    }
+  ],
+  "heatInteractions": {
+    "stoneColumnsGripped": 8,
+    "glassGatesEnteredFromBelow": 2
+  },
+  "limits": "These authored-route and basic bypass probes are not exhaustive path search. No live browser or human completion claimed."
+}

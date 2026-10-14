@@ -1,0 +1,71 @@
+{
+  "room": "bank-f102",
+  "status": "Native route verified; integrated as a playable Core draft awaiting player review",
+  "whole": {
+    "frames": 2048,
+    "deaths": 0,
+    "eventCounts": {
+      "dash": 28,
+      "refill-dash": 28,
+      "super": 3,
+      "grab": 14,
+      "parry-ready": 6,
+      "jump": 9,
+      "climbjump": 9,
+      "strike": 7,
+      "walljump": 12,
+      "refill": 2,
+      "recoil": 6,
+      "recoil-back": 6,
+      "land": 10,
+      "crumble-shake": 6,
+      "crumble": 6,
+      "refill-back": 2,
+      "core-checkpoint": 5,
+      "crumble-back": 4,
+      "enemy-tell": 2,
+      "pogo-low": 2,
+      "enemy-pogo": 1,
+      "jailer-thrust": 2,
+      "ultra": 4,
+      "hyper": 4,
+      "jailer-fell": 3,
+      "pod": 1,
+      "jailer-turn": 1,
+      "parry": 1,
+      "exit": 1
+    },
+    "minimumStamina": 40
+  },
+  "freshParts": [
+    407,
+    249,
+    418,
+    383,
+    575,
+    47
+  ],
+  "probes": [
+    {
+      "name": "remove grab",
+      "exited": false,
+      "deaths": 15
+    },
+    {
+      "name": "hold right",
+      "exited": false,
+      "deaths": 17
+    },
+    {
+      "name": "jump/dash right",
+      "exited": false,
+      "deaths": 23
+    },
+    {
+      "name": "authored route without pressure pods",
+      "exited": false,
+      "deaths": 14
+    }
+  ],
+  "limits": "These authored-route and basic bypass probes are not exhaustive path search. No live browser or human completion claimed."
+}

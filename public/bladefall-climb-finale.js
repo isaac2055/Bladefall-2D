@@ -129,7 +129,7 @@ function vesperStill(){
   :c==='kill'?'Vesper falls. You lift your blade, stronger, and listen for a voice that will not answer. The victory is yours; so is the silence.'
   :c==='forget'?'Vesper falls, and you cannot remember why the empty place beside you matters. You walk into morning carrying less than you brought.'
   :'Vesper falls to a blade that never once let him touch it. Far below the Fractured emerald, your Echo is still waiting.';
- setTimeout(()=>card(`<h1>Vesper is still</h1><p class="pcSub">${line}</p><p class="pcSub">SURVIVE COMPLETE<br><small>Vesper designed by Isaac’s little brother.</small></p>`,
+ setTimeout(()=>card(`<h1>Vesper is still</h1><p class="pcSub">${line}</p><p class="pcSub">ASCEND COMPLETE<br><small>Vesper designed by Isaac’s little brother.</small></p>`,
   [{label:'Return to the map',act:()=>PV()?.menu()},{label:'Return to title menu',act:()=>{location.href='index.html';}}]),900);
 }
 function say(kind){
