@@ -17,15 +17,15 @@ const lamp=(c,r,dir,sweep,period,phase,range=104,width=16)=>{lights.push({c,r,di
 const smoke=(c,r,w,h)=>rect(c,r,w,h,'S');
 const SECTIONS=[
  // 1 · The Lamp Gallery: a low gallery under four sweeping lamps. Crumbling floors over thorn pits leave nowhere to
- // wait; a seed lofts you to a smoke-hung ledge; then smoke pockets and crumbling stones under the last two lamps.
+ // wait. A low momentum launch crosses the first lamp; a seed lofts you to a smoke-hung ledge; then smoke pockets and crumbling stones under the last two lamps.
  ()=>{rect(2,100,86,1);for(const c of [24,38,55,70])put(c,100,'#');
   rect(3,114,10,1);put(5,113,'P');
-  rect(13,116,5,1,'^');rect(18,114,4,1,'~');land(18,114,4);rect(22,116,5,1,'^');rect(27,113,4,1,'~');land(27,113,4);
+  rect(13,116,21,1,'^');rect(13,109,13,1,'v');rect(34,114,4,1,'~');land(34,114,4);
   put(36,109,'b');stages.push({x:36*8,y:109*8,event:'pogo-loft',eventAt:true,eventRadius:24});
   rect(40,106,6,1);smoke(40,103,6,3);land(40,106,6);
   rect(47,114,13,1);smoke(52,111,3,3);land(53,114,1);
   rect(61,114,4,1,'~');land(61,114,4);rect(65,116,4,1,'^');rect(69,114,4,1,'~');land(69,114,4);
-  lamp(24,101,90,40,140,0);lamp(38,101,90,50,170,40);lamp(55,101,90,45,150,90);lamp(70,101,90,50,130,20);
+  lamp(24,112,0,25,140,0,80,14);lamp(38,101,90,50,170,40);lamp(55,101,90,45,150,90);lamp(70,101,90,50,130,20);
   save(76,114,7,'The Lamp Gallery');},
  // 2 · The Watch Shaft: three lamps on the east wall sweep the shaft. Climb the west wall through its smoke and cross
  // the lit stretches between passes, or cling under a lamp on its own wall; refills hang between.
@@ -84,5 +84,5 @@ const LIMIT=+((typeof process!=='undefined'&&process.env.SECTION_LIMIT)||SECTION
 base=m.map(r=>r.slice());SECTIONS.slice(0,LIMIT).forEach((f,i)=>{strict=true;f();});
 // carriers take their strokes in map order (rows, then columns)
 const zipList=zips.sort((a,b)=>a.r-b.r||a.c-b.c).map(q=>q.z);
-const room={id:'bank-f113',name:'Between the Lamps',cols,rows,exit:'right',core:18,coreProgressKey:'core-colony',coreProgressRevision:2,coreCheckpoints:checkpoints,crumbleExtraFrames:coreCrumbleGrace(18),movement:'survive-2',aim8:true,dashes:1,study:true,dropThru:true,palette:'colony',rbr:18,lock:[],lights,zips:zipList,hint:'Six frames in a lamp’s cone and the colony sees you. Smoke hides you; rock and machinery block the light; a lamp cannot see down its own wall. Crumbling floors give no grace.',map:m.map(r=>r.join(''))};
-writeFileSync('scripts/room-bank/fractured/113-bank-f113.json',JSON.stringify({room,bank:{side:'fractured',batch:29,run:19,collection:'cores',coreIndex:18,format:'superroom',localOnly:true,acceptance:'candidate',needsReview:true,status:'authoring',author:'Claude',difficulty:5,worlds:[18,38],tags:['watch-light','smoke','crumble','seed','refill','carrier','wall'],newMechanics:[],role:'Colony Core: climb through the colony unseen',solution:'Read every sweep, wait only in smoke or under a lamp’s own wall, and spend crumbling floors between passes.',requiredEvents:['core-checkpoint'],requiredEventCounts:{'pogo-loft':4,'zip-start':3,crumble:8,'core-checkpoint':checkpoints.length},coreDescription:'The colony keeps its lamps lit. Move when they look away.',draft:true,humanReview:'Unverified authoring draft; not published.'},tape:[],verification:{stages,partTapes:[]}},null,2)+'\n');
+const room={id:'bank-f113',name:'Between the Lamps',cols,rows,exit:'right',core:18,coreProgressKey:'core-colony',coreProgressRevision:3,coreCheckpoints:checkpoints,crumbleExtraFrames:coreCrumbleGrace(18),movement:'survive-2',aim8:true,dashes:1,study:true,dropThru:true,palette:'colony',rbr:18,lock:[],lights,zips:zipList,hint:'Six frames in a lamp’s cone and the colony sees you. Smoke hides you; rock and machinery block the light; a lamp cannot see down its own wall. Crumbling floors give no grace.',map:m.map(r=>r.join(''))};
+writeFileSync('scripts/room-bank/fractured/113-bank-f113.json',JSON.stringify({room,bank:{side:'fractured',batch:29,run:19,collection:'cores',coreIndex:18,format:'superroom',localOnly:true,acceptance:'candidate',needsReview:true,status:'authoring',author:'Claude; revised by Sol 6.1',difficulty:5,worlds:[18,38],tags:['wavedash','watch-light','smoke','crumble','seed','refill','carrier','wall'],newMechanics:[],role:'Colony Core: climb through the colony unseen',solution:'Wavedash low through the first sweep, dash up onto the crumbling perch, then loft from the seed. Read the remaining sweeps, shelter in smoke, and leave crumbling floors between passes.',requiredEvents:['core-checkpoint'],requiredEventCounts:{'pogo-loft':4,'zip-start':3,crumble:8,'core-checkpoint':checkpoints.length},coreDescription:'The colony keeps its lamps lit. Move when they look away.',draft:true,humanReview:'Unverified authoring draft; not published.'},tape:[],verification:{stages,partTapes:[]}},null,2)+'\n');

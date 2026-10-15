@@ -1,50 +1,50 @@
 {
   "room": "bank-f111",
-  "status": "Native route verified; integrated as a playable Core draft awaiting player review",
+  "status": "Native route verified; local draft awaiting integration and player review",
   "whole": {
-    "frames": 2271,
+    "frames": 2309,
     "deaths": 0,
     "eventCounts": {
       "crumble-shake": 4,
-      "jump": 19,
-      "hook": 11,
+      "phase": 36,
+      "dash": 33,
       "crumble": 4,
-      "unhook": 11,
-      "phase": 32,
-      "dash": 29,
-      "land": 19,
-      "refill-dash": 29,
+      "land": 23,
+      "refill-dash": 33,
+      "ultra": 5,
+      "hyper": 5,
+      "hook": 12,
+      "unhook": 12,
+      "jump": 25,
       "crumble-back": 4,
-      "strike": 5,
+      "grab": 8,
+      "climbhop": 1,
+      "strike": 6,
       "pogo-loft": 4,
       "pod": 4,
       "core-checkpoint": 5,
-      "ultra": 7,
-      "hyper": 6,
-      "super": 2,
-      "grab": 7,
+      "super": 3,
       "climbjump": 3,
       "walljump": 9,
       "refill": 1,
       "refill-back": 1,
-      "reverse-hyper": 1,
       "exit": 1
     },
-    "minimumStamina": 43.3
+    "minimumStamina": 44.6
   },
   "freshParts": [
-    301,
-    598,
+    367,
+    600,
     454,
-    344,
-    769,
+    422,
+    542,
     244
   ],
   "probes": [
     {
       "name": "remove grab",
       "exited": false,
-      "deaths": 25
+      "deaths": 23
     },
     {
       "name": "hold right",
@@ -59,33 +59,56 @@
     {
       "name": "without rings",
       "exited": false,
-      "deaths": 25
+      "deaths": 23
     },
     {
       "name": "without blue ledges",
       "exited": false,
-      "deaths": 24
+      "deaths": 23
     },
     {
       "name": "without gold",
       "exited": false,
-      "deaths": 21
+      "deaths": 23
     },
     {
       "name": "without seeds",
       "exited": false,
-      "deaths": 19
+      "deaths": 20
     },
     {
       "name": "without decks",
       "exited": false,
-      "deaths": 11
+      "deaths": 10
     }
   ],
   "worldInteractions": {
-    "blueLandings": 10,
-    "hooks": 11,
-    "turns": 32
+    "blueLandings": 8,
+    "hooks": 12,
+    "turns": 36,
+    "momentumGate": {
+      "airborneWavedash": {
+        "frame": 35,
+        "x": 104
+      },
+      "firstHook": 66,
+      "firstGoldLanding": 130,
+      "ordinaryProbes": 525,
+      "bypasses": 0,
+      "deckDeadlines": [
+        {
+          "id": "dk0",
+          "waitFrames": 114,
+          "cause": "spikes"
+        },
+        {
+          "id": "dk1",
+          "waitFrames": 116,
+          "cause": "spikes"
+        }
+      ],
+      "limits": "Finite probes, not exhaustive route search; no human difficulty claim."
+    }
   },
   "limits": "These authored-route and basic bypass probes are not exhaustive path search. No live browser or human completion claimed."
 }

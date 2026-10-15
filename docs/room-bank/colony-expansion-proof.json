@@ -1,42 +1,42 @@
 {
   "room": "bank-f113",
-  "status": "Native route verified; integrated as a playable Core draft awaiting player review",
+  "status": "Native route verified; local draft awaiting integration and player review",
   "whole": {
-    "frames": 2212,
+    "frames": 2177,
     "deaths": 0,
     "eventCounts": {
-      "dash": 48,
-      "refill-dash": 47,
-      "super": 7,
-      "glimpse": 20,
-      "land": 32,
-      "crumble-shake": 12,
-      "reverse-super": 1,
-      "late-reverse": 1,
-      "ultra": 10,
-      "crumble": 12,
-      "hyper": 8,
-      "strike": 9,
-      "pod": 6,
+      "jump": 15,
+      "dash": 45,
+      "land": 28,
+      "refill-dash": 45,
+      "ultra": 6,
+      "hyper": 6,
+      "glimpse": 23,
+      "crumble-shake": 11,
+      "strike": 7,
       "pogo-loft": 5,
+      "pod": 5,
+      "crumble": 11,
+      "reverse-hyper": 2,
       "crumble-back": 10,
-      "reverse-hyper": 3,
+      "late-reverse": 1,
       "core-checkpoint": 5,
-      "walljump": 6,
-      "jump": 11,
+      "super": 5,
+      "walljump": 8,
+      "grab": 7,
       "zip-start": 3,
       "zip-stop": 3,
       "zip-home": 3,
-      "grab": 7,
       "climbjump": 5,
       "refill": 2,
+      "wallbounce": 1,
       "refill-back": 2,
       "exit": 1
     },
-    "minimumStamina": 9.7
+    "minimumStamina": 3.8
   },
   "freshParts": [
-    388,
+    360,
     417,
     188,
     353,
@@ -52,28 +52,47 @@
     {
       "name": "jump/dash right",
       "exited": false,
-      "deaths": 26
+      "deaths": 23
     },
     {
       "name": "without smoke",
       "exited": false,
-      "deaths": 20
+      "deaths": 19
     },
     {
       "name": "without carriers",
       "exited": false,
-      "deaths": 15
+      "deaths": 19
     },
     {
       "name": "without seeds",
       "exited": false,
-      "deaths": 20
+      "deaths": 19
     }
   ],
   "worldInteractions": {
-    "shelteredFrames": 240,
+    "shelteredFrames": 162,
     "lamps": 26,
-    "glimpses": 20
+    "glimpses": 23,
+    "momentumGate": {
+      "airborneWavedash": {
+        "frame": 89,
+        "x": 98,
+        "y": 912
+      },
+      "firstLanding": 141,
+      "firstSeed": 166,
+      "ordinaryProbes": 810,
+      "bypasses": 0,
+      "lampTiming": {
+        "phases": 140,
+        "timedPasses": 24,
+        "seenFailures": 116,
+        "firstLampFailures": 83
+      },
+      "preserved": "Revision 2 room outside columns13–37/rows109–116 and first lamp",
+      "limits": "Finite probes; native simulation, not a human difficulty rating."
+    }
   },
   "limits": "These authored-route and basic bypass probes are not exhaustive path search. No live browser or human completion claimed."
 }

@@ -1,44 +1,43 @@
 {
   "room": "bank-f114",
-  "status": "Native route verified; integrated as a playable Core draft awaiting player review",
+  "status": "Native route verified; local draft awaiting integration and player review",
   "whole": {
-    "frames": 1962,
+    "frames": 1819,
     "deaths": 0,
     "eventCounts": {
-      "dash": 41,
-      "shutter-shut": 488,
-      "refill-dash": 41,
-      "shutter-open": 484,
-      "crumble-shake": 11,
-      "strike": 11,
-      "jump": 14,
-      "crumble": 10,
-      "land": 21,
-      "ultra": 5,
-      "hyper": 5,
-      "reverse-hyper": 1,
-      "pogo-loft": 7,
+      "strike": 14,
+      "shutter-shut": 454,
+      "shutter-open": 450,
+      "jump": 13,
+      "dash": 36,
+      "crumble-shake": 12,
+      "land": 19,
+      "refill-dash": 36,
+      "ultra": 8,
+      "hyper": 7,
+      "crumble": 12,
+      "pogo-loft": 8,
       "pod": 8,
-      "crumble-back": 9,
       "super": 2,
+      "crumble-back": 10,
       "core-checkpoint": 5,
       "mirror": 2,
-      "grab": 5,
-      "walljump": 7,
+      "walljump": 8,
+      "grab": 8,
+      "climbjump": 5,
       "refill": 2,
-      "climbjump": 3,
       "refill-back": 2,
       "zip-start": 2,
       "zip-stop": 2,
+      "reverse-super": 1,
       "zip-home": 2,
-      "pogo-low": 1,
       "exit": 1
     },
-    "minimumStamina": -8.4
+    "minimumStamina": -6.1
   },
   "freshParts": [
-    240,
-    314,
+    241,
+    343,
     383,
     232,
     330,
@@ -48,7 +47,7 @@
     {
       "name": "remove grab",
       "exited": false,
-      "deaths": 12
+      "deaths": 9
     },
     {
       "name": "hold right",
@@ -63,23 +62,56 @@
     {
       "name": "without louvres (the sun never stops)",
       "exited": false,
-      "deaths": 19
+      "deaths": 21
     },
     {
       "name": "without carriers",
       "exited": false,
-      "deaths": 7
+      "deaths": 8
     },
     {
       "name": "without seeds",
       "exited": false,
-      "deaths": 14
+      "deaths": 19
     }
   ],
   "worldInteractions": {
     "mirrors": 2,
     "beams": 21,
-    "louvres": 19
+    "louvres": 19,
+    "momentumGate": {
+      "airborneWavedash": {
+        "frame": 60,
+        "x": 97,
+        "y": 896
+      },
+      "firstSeed": 101,
+      "ordinaryProbes": 480,
+      "seedApproaches": 0,
+      "louvreTiming": {
+        "phases": 76,
+        "timedPasses": 13,
+        "beamFailures": 63,
+        "firstLouvreFailures": 26,
+        "secondLouvreFailures": 22
+      },
+      "airborneMirrors": [
+        {
+          "frame": 330,
+          "x": 632,
+          "y": 817,
+          "dashes": 1
+        },
+        {
+          "frame": 436,
+          "x": 513,
+          "y": 746,
+          "dashes": 1
+        }
+      ],
+      "preserved": "Revision 2 configuration except45 opening/mirror-approach tiles",
+      "limits": "Finite probes and native simulation; no human difficulty or exhaustive bypass claim."
+    }
   },
   "limits": "These authored-route and basic bypass probes are not exhaustive path search. No live browser or human completion claimed."
 }

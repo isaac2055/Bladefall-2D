@@ -1,47 +1,46 @@
 {
   "room": "bank-f115",
-  "status": "Native route verified; integrated as a playable Core draft awaiting player review",
+  "status": "Native route verified; local draft awaiting integration and player review",
   "whole": {
-    "frames": 2153,
+    "frames": 2157,
     "deaths": 0,
     "eventCounts": {
-      "crumble-shake": 10,
-      "dash": 35,
-      "ultra": 3,
-      "refill-dash": 35,
-      "hyper": 3,
-      "crumble": 10,
-      "land": 26,
-      "portal-open": 12,
-      "super": 4,
+      "crumble-shake": 11,
+      "dash": 36,
+      "ultra": 5,
+      "refill-dash": 36,
+      "hyper": 4,
+      "crumble": 11,
+      "land": 23,
+      "portal-open": 11,
+      "super": 2,
       "strike": 11,
-      "pogo-loft": 6,
-      "pod": 6,
-      "crumble-back": 9,
+      "pogo-loft": 9,
+      "pod": 10,
+      "crumble-back": 11,
       "portal-pass": 8,
-      "jump": 16,
-      "walljump": 6,
       "core-checkpoint": 5,
-      "climbjump": 5,
-      "portal-fizzle": 14,
+      "jump": 10,
+      "grab": 4,
+      "climbhop": 1,
+      "walljump": 5,
+      "portal-fizzle": 4,
       "zip-start": 1,
       "zip-stop": 1,
-      "grab": 4,
       "zip-home": 1,
       "refill": 1,
-      "climbhop": 1,
       "refill-back": 1,
       "exit": 1
     },
-    "minimumStamina": 37.7
+    "minimumStamina": 69.6
   },
   "freshParts": [
-    292,
-    363,
-    335,
     290,
-    484,
-    472
+    350,
+    335,
+    404,
+    432,
+    458
   ],
   "probes": [
     {
@@ -57,32 +56,245 @@
     {
       "name": "without portal stone",
       "exited": false,
-      "deaths": 12
+      "deaths": 10
     },
     {
       "name": "without carriers",
       "exited": false,
-      "deaths": 2
+      "deaths": 4
     },
     {
       "name": "without seeds",
       "exited": false,
-      "deaths": 13
+      "deaths": 10
     }
   ],
   "worldInteractions": {
     "crossings": 8,
     "exitSpeeds": [
+      -372,
+      53,
+      224,
       -170,
       170,
-      42,
-      -170,
-      42,
       -420,
-      -420,
+      0,
       420
     ],
-    "lightWalls": 4
+    "lightWalls": 4,
+    "firstTransfer": {
+      "firstSave": 290,
+      "firstPortal": {
+        "frame": 243,
+        "vy": -372.2902093797257
+      },
+      "uncorrected": [
+        {
+          "input": "",
+          "deathAfter": 14
+        },
+        {
+          "input": "l",
+          "deathAfter": 14
+        },
+        {
+          "input": "r",
+          "deathAfter": 14
+        }
+      ],
+      "correction": {
+        "probes": 68,
+        "windows": [
+          {
+            "wait": 10,
+            "pre": "r",
+            "dash": "rux"
+          },
+          {
+            "wait": 11,
+            "pre": "r",
+            "dash": "rux"
+          },
+          {
+            "wait": 12,
+            "pre": "r",
+            "dash": "rux"
+          },
+          {
+            "wait": 13,
+            "pre": "r",
+            "dash": "rux"
+          }
+        ]
+      },
+      "minimumSpeedFixture": {
+        "probes": 150,
+        "passes": 0
+      },
+      "limits": "First-section finite probes; the other Sunspire checks cover the subsequent transfers."
+    },
+    "wavedash": {
+      "wavedash": {
+        "frame": 450,
+        "x": 394,
+        "y": 908
+      },
+      "transfer": {
+        "frame": 453,
+        "vx": -312.00000000000006,
+        "vy": 52.5
+      },
+      "ordinaryApproaches": 336,
+      "portalEntries": 143,
+      "corrections": 3432,
+      "bypasses": 0,
+      "limits": "Finite native probes from the proven shooting approach; no exhaustive bypass or human difficulty claim."
+    },
+    "loopAndCarrier": {
+      "loopLaunch": {
+        "frame": 870,
+        "vy": -420
+      },
+      "freshLoopFrames": 335,
+      "carrier": {
+        "board": 946,
+        "departure": 971,
+        "idleDeathAfter": 34
+      },
+      "refill": {
+        "frame": 1165,
+        "x": 1135,
+        "y": 556
+      },
+      "returnSeed": {
+        "frame": 1226,
+        "x": 1101,
+        "y": 510
+      },
+      "carrierSave": 1285,
+      "carrierRestartFrames": 404,
+      "limits": "Native loop/carrier routes and idle-rider probe; no human difficulty or exhaustive bypass claim."
+    },
+    "horizontalLaunch": {
+      "launch": {
+        "frame": 1673,
+        "vx": 420,
+        "vy": 0
+      },
+      "save": 1711,
+      "uncorrected": [
+        {
+          "input": "",
+          "after": 16,
+          "cause": "light"
+        },
+        {
+          "input": "l",
+          "after": 17,
+          "cause": "light"
+        },
+        {
+          "input": "r",
+          "after": 16,
+          "cause": "light"
+        }
+      ],
+      "correction": {
+        "probes": 108,
+        "windows": [
+          {
+            "wait": 0,
+            "pre": "",
+            "dash": "ux"
+          },
+          {
+            "wait": 0,
+            "pre": "l",
+            "dash": "ux"
+          },
+          {
+            "wait": 1,
+            "pre": "",
+            "dash": "lux"
+          },
+          {
+            "wait": 1,
+            "pre": "",
+            "dash": "ux"
+          },
+          {
+            "wait": 1,
+            "pre": "l",
+            "dash": "lux"
+          },
+          {
+            "wait": 1,
+            "pre": "l",
+            "dash": "ux"
+          },
+          {
+            "wait": 2,
+            "pre": "",
+            "dash": "lux"
+          },
+          {
+            "wait": 2,
+            "pre": "l",
+            "dash": "lux"
+          },
+          {
+            "wait": 3,
+            "pre": "",
+            "dash": "lux"
+          },
+          {
+            "wait": 3,
+            "pre": "l",
+            "dash": "lux"
+          }
+        ]
+      },
+      "limits": "Finite correction probes and native simulation, not human difficulty verification."
+    },
+    "roofFinish": {
+      "roofDrop": {
+        "frame": 2033,
+        "vy": 420
+      },
+      "downwardSeedStrikes": [
+        {
+          "frame": 2057,
+          "x": 1148,
+          "y": 158
+        },
+        {
+          "frame": 2106,
+          "x": 1247,
+          "y": 138
+        }
+      ],
+      "landings": [
+        {
+          "frame": 2151,
+          "x": 1334,
+          "y": 133
+        }
+      ],
+      "idleDeathAfter": 14,
+      "seedRemovalSensitivity": [
+        {
+          "c": 142,
+          "r": 20,
+          "deaths": 1
+        },
+        {
+          "c": 155,
+          "r": 18,
+          "deaths": 1
+        }
+      ],
+      "limits": "Native route and removal sensitivity checks; not an exhaustive search of alternate routes."
+    }
   },
   "limits": "These authored-route and basic bypass probes are not exhaustive path search. No live browser or human completion claimed."
 }

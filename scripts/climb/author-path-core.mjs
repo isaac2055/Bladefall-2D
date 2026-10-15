@@ -21,21 +21,21 @@ const SECTIONS=[
  // and thorn gaps. You cannot wait on crumbling stone, so each crossing is timed from the stone before it.
  ()=>{rect(2,97,62,1);rect(3,112,6,1);put(5,111,'P');
   louvre(16,97,'d',[40,36,0]);louvre(26,97,'d',[36,40,30]);louvre(36,97,'d',[40,32,60]);louvre(47,97,'d',[34,38,15]);
-  rect(12,112,3,1,'~');land(12,112,3);rect(19,111,3,1,'~');land(19,111,3);
-  put(31,106,'b');stages.push({x:31*8,y:106*8,event:'pogo-loft',eventAt:true,eventRadius:24});
+  rect(12,112,2,1,'~');land(12,112,2);rect(15,108,10,1,'v');rect(15,115,15,1,'^');
+  put(31,107,'b');stages.push({x:31*8,y:107*8,event:'pogo-loft',eventAt:true,eventRadius:24});
   rect(40,110,3,1,'~');land(40,110,3);rect(51,109,5,1);land(51,109,5);
   save(60,106,7,'Morning Louvres');rect(60,107,7,3);},
  // 2 · The Mirror Stair: north up a stair of ledges. At each level a beam falls along the wall and a mirror throws
- // it across your way: strike the mirror from the ledge below to send the light into the wall. Crumbling stones
+ // it across your way: leave the crumbling approach, strike in the air, and reverse toward the next ledge. Crumbling stones
  // and a louvred crossing between.
  ()=>{rect(70,108,4,1);land(70,108,4);
   // first mirror: the beam falls down column 79 and is thrown west across row 101 until struck
   beams.push({c:79,r:72,dir:'d'});put(79,101,'/');rect(80,72,1,40);
-  rect(75,104,4,1);land(75,104,4);stages.push({x:79*8+4,y:101*8+4,event:'mirror',eventAt:true,eventRadius:12});
+  rect(72,105,3,1,'~');land(72,105,3);stages.push({x:79*8+4,y:101*8+4,event:'mirror',eventAt:true,eventRadius:12});
   rect(68,98,3,1,'~');land(68,98,3);
   // second mirror on the west wall: beam down column 62, thrown east across row 92
   beams.push({c:62,r:72,dir:'d'});put(62,92,'\\');rect(61,72,1,30);
-  rect(63,95,4,1);land(63,95,4);stages.push({x:62*8+4,y:92*8+4,event:'mirror',eventAt:true,eventRadius:12});
+  rect(65,97,3,1,'~');land(65,97,3);stages.push({x:62*8+4,y:92*8+4,event:'mirror',eventAt:true,eventRadius:12});
   rect(70,89,3,1,'~');land(70,89,3);
   rect(75,84,4,1);land(75,84,4);
   save(64,80,7,'The Mirror Stair',-1);},
@@ -83,5 +83,5 @@ const LIMIT=+((typeof process!=='undefined'&&process.env.SECTION_LIMIT)||SECTION
 base=m.map(r=>r.slice());SECTIONS.slice(0,LIMIT).forEach(f=>{strict=true;f();});
 const shutterList=shutters.sort((a,b)=>a.r-b.r||a.c-b.c).map(q=>({open:q.beat[0],shut:q.beat[1],offset:q.beat[2]}));
 const zipList=zips.sort((a,b)=>a.r-b.r||a.c-b.c).map(q=>q.z);
-const room={id:'bank-f114',name:'The Hours of the Sun',cols,rows,exit:'right',core:19,coreProgressKey:'core-path',coreProgressRevision:2,coreCheckpoints:checkpoints,crumbleExtraFrames:coreCrumbleGrace(19),movement:'survive-2',aim8:true,dashes:1,study:true,dropThru:true,palette:'palace',rbr:19,lock:[],beams,shutters:shutterList,zips:zipList,hint:'The sun burns. Cross a beam while its louvre is shut; strike a mirror to turn its light. Crumbling stone gives no grace.',map:m.map(r=>r.join(''))};
-writeFileSync('scripts/room-bank/fractured/114-bank-f114.json',JSON.stringify({room,bank:{side:'fractured',batch:29,run:19,collection:'cores',coreIndex:19,format:'superroom',localOnly:true,acceptance:'candidate',needsReview:true,status:'authoring',author:'Claude',difficulty:5,worlds:[19,39],tags:['beam','shutter','mirror','crumble','seed','carrier','wall'],newMechanics:[],role:'Path Core: cross the palace road between the sun’s hours',solution:'Time every crossing to a shut louvre from the stone before it, strike mirrors to turn light off the way, and spend crumbling stone at once.',requiredEvents:['mirror','core-checkpoint'],requiredEventCounts:{mirror:2,'pogo-loft':5,'zip-start':2,crumble:8,walljump:4,'core-checkpoint':checkpoints.length},coreDescription:'The sun keeps its hours. Climb between them.',draft:true,humanReview:'Unverified authoring draft; not published.'},tape:[],verification:{stages,partTapes:[]}},null,2)+'\n');
+const room={id:'bank-f114',name:'The Hours of the Sun',cols,rows,exit:'right',core:19,coreProgressKey:'core-path',coreProgressRevision:3,coreCheckpoints:checkpoints,crumbleExtraFrames:coreCrumbleGrace(19),movement:'survive-2',aim8:true,dashes:1,study:true,dropThru:true,palette:'palace',rbr:19,lock:[],beams,shutters:shutterList,zips:zipList,hint:'The sun burns. Cross a beam while its louvre is shut; strike a mirror to turn its light. Crumbling stone gives no grace.',map:m.map(r=>r.join(''))};
+writeFileSync('scripts/room-bank/fractured/114-bank-f114.json',JSON.stringify({room,bank:{side:'fractured',batch:29,run:19,collection:'cores',coreIndex:19,format:'superroom',localOnly:true,acceptance:'candidate',needsReview:true,status:'authoring',author:'Claude; revised by Sol 6.1',difficulty:5,worlds:[19,39],tags:['wavedash','beam','shutter','mirror','crumble','seed','carrier','wall'],newMechanics:[],role:'Path Core: cross the palace road between the sun’s hours',solution:'Land an airborne wavedash on the narrow crumble, cross both louvres with the dash restored, then loft from the seed. Leave each crumbling mirror approach, strike in the air and reverse into the next jump. Preserve the later timed wall, carrier and seed chain.',requiredEvents:['mirror','core-checkpoint'],requiredEventCounts:{mirror:2,'pogo-loft':5,'zip-start':2,crumble:8,walljump:4,'core-checkpoint':checkpoints.length},coreDescription:'The sun keeps its hours. Climb between them.',draft:true,humanReview:'Unverified authoring draft; not published.'},tape:[],verification:{stages,partTapes:[]}},null,2)+'\n');

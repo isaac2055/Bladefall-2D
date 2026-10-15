@@ -1,5 +1,5 @@
 {
-  "version": "7.334.0",
+  "version": "7.338.0",
   "activeBatch": 29,
   "activeRun": 19,
   "status": "User-approved bank plus a separate queue of revisions and new candidates",
@@ -82040,17 +82040,19 @@
       "collection": "cores",
       "coreIndex": 16,
       "format": "superroom",
-      "localOnly": false,
+      "localOnly": true,
       "acceptance": "candidate",
       "needsReview": true,
       "status": "route-proven",
-      "author": "Claude",
+      "author": "Claude; revised by Sol 6.1",
       "difficulty": 5,
       "worlds": [
         16,
         36
       ],
       "tags": [
+        "wavedash",
+        "phase-wall",
         "hook-ring",
         "switchback",
         "deck",
@@ -82061,7 +82063,7 @@
       ],
       "newMechanics": [],
       "role": "Thunder Cliffs Core: swing, ride and climb while every dash turns the cliff",
-      "solution": "Choose each dash for where it leaves the cliff: swing out with or without one, spend it on crumbling ledges, and win it back from seeds.",
+      "solution": "Wave onto blue with the dash restored, pass the absent gold wall and spend the dash from the ring. Leave both rising decks before the thorn ceilings; carry momentum west and brake onto the return ledge.",
       "requiredEvents": [
         "hook",
         "phase",
@@ -82076,10 +82078,10 @@
       },
       "coreDescription": "The storm turns the cliff each time you dash. Count before you let go.",
       "draft": true,
-      "humanReview": "Native whole route and all six fresh checkpoint sections verified. Awaiting player review.",
-      "revision": "0994e285afaf",
+      "humanReview": "Revision 3: native full and all six restart routes verified, including airborne wavedash/phase gate and both deck departure deadlines. Local draft awaiting batch integration and player review.",
+      "revision": "a17b8e13da81",
       "source": "scripts/room-bank/fractured/111-bank-f111.json",
-      "tapeFrames": 2276
+      "tapeFrames": 2313
     },
     {
       "id": "bank-f112",
@@ -82090,17 +82092,18 @@
       "collection": "cores",
       "coreIndex": 17,
       "format": "superroom",
-      "localOnly": false,
+      "localOnly": true,
       "acceptance": "candidate",
       "needsReview": true,
       "status": "route-proven",
-      "author": "Claude",
+      "author": "Claude; revised by Sol 6.1",
       "difficulty": 5,
       "worlds": [
         17,
         37
       ],
       "tags": [
+        "wavedash",
         "tide",
         "float",
         "swim",
@@ -82113,7 +82116,7 @@
         "multi-tide"
       ],
       "role": "Landing Shores Core: every basin keeps its own sea",
-      "solution": "Read each basin’s tide: ride floats and leave before the thorns, swim drowned reefs while the sea holds, fight currents, and spend crumbling stone at once.",
+      "solution": "Wavedash from the rising float across the reef. Leave the three relay floats before their thorn ceilings, detour around the spout bar, descend with the staggered tides, and launch from the last sea into the low seed approach.",
       "requiredEvents": [
         "splash",
         "core-checkpoint"
@@ -82127,10 +82130,10 @@
       },
       "coreDescription": "Every basin keeps its own sea. Leave on the tide, not after it.",
       "draft": true,
-      "humanReview": "Native whole route and all six fresh checkpoint sections verified. Awaiting player review.",
-      "revision": "e8f7ba5845cd",
+      "humanReview": "Revision 3: native full and all six fresh checkpoint routes verified, with airborne float wavedash, 600 bounded ordinary launch probes, and three relay ceiling deadlines. Local draft awaiting batch integration and player review.",
+      "revision": "424479fa1f43",
       "source": "scripts/room-bank/fractured/112-bank-f112.json",
-      "tapeFrames": 3094
+      "tapeFrames": 3585
     },
     {
       "id": "bank-f113",
@@ -82141,17 +82144,18 @@
       "collection": "cores",
       "coreIndex": 18,
       "format": "superroom",
-      "localOnly": false,
+      "localOnly": true,
       "acceptance": "candidate",
       "needsReview": true,
       "status": "route-proven",
-      "author": "Claude",
+      "author": "Claude; revised by Sol 6.1",
       "difficulty": 5,
       "worlds": [
         18,
         38
       ],
       "tags": [
+        "wavedash",
         "watch-light",
         "smoke",
         "crumble",
@@ -82162,7 +82166,7 @@
       ],
       "newMechanics": [],
       "role": "Colony Core: climb through the colony unseen",
-      "solution": "Read every sweep, wait only in smoke or under a lamp’s own wall, and spend crumbling floors between passes.",
+      "solution": "Wavedash low through the first sweep, dash up onto the crumbling perch, then loft from the seed. Read the remaining sweeps, shelter in smoke, and leave crumbling floors between passes.",
       "requiredEvents": [
         "core-checkpoint"
       ],
@@ -82174,10 +82178,10 @@
       },
       "coreDescription": "The colony keeps its lamps lit. Move when they look away.",
       "draft": true,
-      "humanReview": "Native whole route and all six fresh checkpoint sections verified. Awaiting player review.",
-      "revision": "b1f457946ae7",
+      "humanReview": "Revision 3: native full and six fresh checkpoint routes verified. Opening integrates an airborne wavedash with a low thorn crossing and lamp timing; 810 bounded ordinary probes find no bypass. Rest of revision 2 geometry and lamps preserved. Local draft awaiting batch integration and player review.",
+      "revision": "c99264138f7a",
       "source": "scripts/room-bank/fractured/113-bank-f113.json",
-      "tapeFrames": 2212
+      "tapeFrames": 2178
     },
     {
       "id": "bank-f114",
@@ -82188,17 +82192,18 @@
       "collection": "cores",
       "coreIndex": 19,
       "format": "superroom",
-      "localOnly": false,
+      "localOnly": true,
       "acceptance": "candidate",
       "needsReview": true,
       "status": "route-proven",
-      "author": "Claude",
+      "author": "Claude; revised by Sol 6.1",
       "difficulty": 5,
       "worlds": [
         19,
         39
       ],
       "tags": [
+        "wavedash",
         "beam",
         "shutter",
         "mirror",
@@ -82209,7 +82214,7 @@
       ],
       "newMechanics": [],
       "role": "Path Core: cross the palace road between the sun’s hours",
-      "solution": "Time every crossing to a shut louvre from the stone before it, strike mirrors to turn light off the way, and spend crumbling stone at once.",
+      "solution": "Land an airborne wavedash on the narrow crumble, cross both louvres with the dash restored, then loft from the seed. Leave each crumbling mirror approach, strike in the air and reverse into the next jump. Preserve the later timed wall, carrier and seed chain.",
       "requiredEvents": [
         "mirror",
         "core-checkpoint"
@@ -82224,10 +82229,10 @@
       },
       "coreDescription": "The sun keeps its hours. Climb between them.",
       "draft": true,
-      "humanReview": "Native whole route and all six fresh checkpoint sections verified. Awaiting player review.",
-      "revision": "8689fc0bc9d2",
+      "humanReview": "Revision 3: native full and all six fresh routes verified. Opening wavedash depends on both louvres; narrow crumbling mirror approaches require airborne strikes. Later four sections preserved. Local draft awaiting batch integration and player review.",
+      "revision": "80d86d1f9b2e",
       "source": "scripts/room-bank/fractured/114-bank-f114.json",
-      "tapeFrames": 1964
+      "tapeFrames": 1819
     },
     {
       "id": "bank-f115",
@@ -82238,11 +82243,11 @@
       "collection": "cores",
       "coreIndex": 20,
       "format": "superroom",
-      "localOnly": false,
+      "localOnly": true,
       "acceptance": "candidate",
       "needsReview": true,
       "status": "route-proven",
-      "author": "Claude",
+      "author": "Claude; revised by Sol 6.1",
       "difficulty": 5,
       "worlds": [
         20,
@@ -82251,6 +82256,7 @@
       "tags": [
         "portal",
         "beam",
+        "wavedash",
         "fling",
         "crumble",
         "seed",
@@ -82258,24 +82264,26 @@
       ],
       "newMechanics": [],
       "role": "Sunspire Core: pass every wall of light through your own doors",
-      "solution": "Place each pair of doors where your speed will be turned the way you need: falls into rises, dashes into rises, loops into launches.",
+      "solution": "Brake into a high fall for the first door; wave through the wall door with a dash retained; re-aim the loop in flight; leave the carrier before its ceiling, cut the westward seed return; reverse the horizontal fall launch before the light; catch both seeds after the final roof drop.",
       "requiredEvents": [
         "portal-pass",
         "core-checkpoint"
       ],
       "requiredEventCounts": {
         "portal-pass": 6,
-        "pogo-loft": 5,
+        "pogo-loft": 9,
         "zip-start": 1,
         "crumble": 6,
-        "core-checkpoint": 5
+        "core-checkpoint": 5,
+        "hyper": 1,
+        "refill": 1
       },
       "coreDescription": "The light cannot be crossed. The door can.",
       "draft": true,
-      "humanReview": "Native whole route and all six fresh checkpoint sections verified. Awaiting player review.",
-      "revision": "ea2e3b9a4fb1",
+      "humanReview": "Revision 3 native full route and six fresh checkpoint routes verified; awaiting player difficulty review.",
+      "revision": "6d2707e481ba",
       "source": "scripts/room-bank/fractured/115-bank-f115.json",
-      "tapeFrames": 2156
+      "tapeFrames": 2157
     }
   ]
 }

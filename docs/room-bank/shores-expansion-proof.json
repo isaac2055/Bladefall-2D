@@ -1,44 +1,48 @@
 {
   "room": "bank-f112",
-  "status": "Native route verified; integrated as a playable Core draft awaiting player review",
+  "status": "Native route verified; local draft awaiting integration and player review",
   "whole": {
-    "frames": 3094,
+    "frames": 3581,
     "deaths": 0,
     "eventCounts": {
-      "crumble-shake": 10,
-      "dash": 40,
-      "refill-dash": 39,
-      "super": 7,
-      "crumble": 10,
-      "land": 34,
-      "grab": 5,
-      "jump": 43,
-      "climbjump": 4,
-      "crumble-back": 9,
-      "core-checkpoint": 5,
-      "ultra": 8,
+      "crumble-shake": 12,
+      "dash": 41,
+      "ultra": 9,
+      "refill-dash": 41,
       "hyper": 8,
-      "splash": 14,
-      "stroke": 23,
-      "strike": 12,
-      "reverse-hyper": 1,
+      "crumble": 12,
+      "land": 24,
+      "jump": 36,
+      "crumble-back": 10,
+      "walljump": 4,
+      "grab": 9,
+      "climbjump": 4,
+      "core-checkpoint": 5,
+      "splash": 22,
+      "stroke": 22,
+      "super": 5,
+      "strike": 14,
       "pogo-loft": 4,
-      "pod": 4,
-      "wallbounce": 2,
-      "walljump": 7,
+      "pod": 5,
+      "wallbounce": 1,
       "refill": 1,
+      "freeze": 2,
+      "ice": 5,
       "refill-back": 1,
+      "thaw": 2,
+      "climbhop": 1,
+      "reverse-hyper": 1,
       "exit": 1
     },
     "minimumStamina": -3.6
   },
   "freshParts": [
-    280,
-    653,
-    588,
-    497,
-    625,
-    860
+    310,
+    304,
+    566,
+    757,
+    471,
+    941
   ],
   "probes": [
     {
@@ -54,28 +58,56 @@
     {
       "name": "without the tides",
       "exited": false,
-      "deaths": 29
+      "deaths": 36
     },
     {
       "name": "without currents",
       "exited": false,
-      "deaths": 10
+      "deaths": 9
     },
     {
       "name": "without floats",
       "exited": false,
-      "deaths": 19
+      "deaths": 31
     },
     {
       "name": "without seeds",
       "exited": false,
-      "deaths": 8
+      "deaths": 10
     }
   ],
   "worldInteractions": {
-    "swimFrames": 497,
-    "rideFrames": 184,
-    "tides": 10
+    "swimFrames": 563,
+    "rideFrames": 84,
+    "tides": 10,
+    "momentumGate": {
+      "airborneWavedash": {
+        "frame": 87,
+        "x": 169,
+        "y": 943
+      },
+      "reefLanding": 142,
+      "ordinaryFloatProbes": 600,
+      "bypasses": 0,
+      "relayDeadlines": [
+        {
+          "x": 984,
+          "waitFrames": 86,
+          "cause": "spikes"
+        },
+        {
+          "x": 1056,
+          "waitFrames": 64,
+          "cause": "spikes"
+        },
+        {
+          "x": 1128,
+          "waitFrames": 69,
+          "cause": "spikes"
+        }
+      ],
+      "limits": "Finite probes; native simulation, not human difficulty verification."
+    }
   },
   "limits": "These authored-route and basic bypass probes are not exhaustive path search. No live browser or human completion claimed."
 }

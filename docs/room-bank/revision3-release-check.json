@@ -1,0 +1,10 @@
+{
+  "baseline": "52f6940",
+  "version": "7.338.0",
+  "baselineFailures": 53,
+  "currentFailures": 53,
+  "newFailures": [],
+  "resolvedFailures": [],
+  "mirrorParity": true,
+  "explanation": "Legacy reference discovery and size-budget failures reproduce at HEAD; this revision adds none."
+}

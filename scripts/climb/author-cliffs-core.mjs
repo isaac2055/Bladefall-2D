@@ -14,17 +14,18 @@ const land=(c,r,w,extra={})=>stages.push({x:(c+Math.floor(w/2))*8,y:r*8-11,...ex
 const hook=(c,r,extra={})=>stages.push({x:c*8,y:r*8+8,event:'hook',eventAt:true,eventRadius:40,...extra});
 const save=(c,r,w,name,facing=1)=>{rect(c,r,w,1);checkpoints.push({c:c+Math.floor(w/2),r:r-1,width:w*8,facing,name,resetPhase:true});land(c,r,w);};
 const SECTIONS=[
- // 1 · The Storm Ledge: off a crumbling start, dash out of the swing to bring the blue ledge in; a long jump-out
- // swing keeps it blue; a seed returns the dash in the air, and that dash turns the cliff gold for the landing.
- ()=>{rect(4,136,6,1,'~');put(6,135,'P');
-  put(14,130,'O');rect(24,133,5,1,'B');hook(14,130,{phase:0});land(24,133,5,{phase:1});
-  put(32,127,'O');rect(44,130,5,1,'B');hook(32,127,{phase:1});land(44,130,5,{phase:1});
-  put(59,122,'b');rect(63,124,4,1,'A');stages.push({x:59*8,y:122*8,event:'pogo-loft',eventAt:true,eventRadius:24,phase:0});land(63,124,4,{phase:0});
-  save(76,122,7,'The Storm Ledge');},
+ // 1 · The Storm Ledge: the opening wavedash carries a refilled dash to a remote ring.
+ // Spending that dash out of the ring turns the landing gold; a bare air dash arrives empty.
+ // Keep gold through the next swing, then cut the high seed and spend its refill to restore the last gold ledge.
+ ()=>{rect(4,132,4,1,'~');put(6,131,'P');rect(12,136,5,1,'B');
+  rect(28,124,2,18,'A');rect(26,123,6,1,'^');put(36,135,'O');rect(50,133,4,1,'A');hook(36,135,{phase:1,minDashes:1});land(50,133,4,{phase:0});
+  put(62,127,'O');rect(74,130,4,1,'A');hook(62,127,{phase:0});land(74,130,4,{phase:0});
+  put(89,122,'b');rect(98,124,4,1,'A');stages.push({x:89*8,y:122*8,event:'pogo-loft',eventAt:true,eventRadius:24,phase:1});land(98,124,4,{phase:0});
+  save(108,122,7,'The Storm Ledge');},
  // 2 · The Rolling Deck: a deck climbs out over the void; leave it high for a ring, dash the blue ledge in, cross
  // to crumbling stone with no grace, catch a thorn-capped wall, and kick back to the ring that clears its cap.
- ()=>{decks.push({c:83,r:123,w:4,h:1,to:[18,-10],period:220,phase:0});
-  put(106,108,'O');rect(116,111,4,1,'B');hook(106,108,{phase:0,minDashes:1});land(116,111,4,{phase:1});
+ ()=>{decks.push({c:115,r:123,w:4,h:1,to:[-14,-10],period:220,phase:0});stages.push({x:936,y:973,deck:0,minDashes:1});
+  rect(100,112,6,1,'v');put(106,108,'O');rect(116,111,4,1,'B');hook(106,108,{phase:0,minDashes:1});land(116,111,4,{phase:1});
   rect(128,107,4,1,'~');land(128,107,4);
   crown(140,90,14);stages.push({x:139*8-2,y:96*8,grip:true,toleranceY:40});
   put(132,86,'O');hook(132,86);
@@ -46,14 +47,14 @@ const SECTIONS=[
   put(101,51,'b');stages.push({x:101*8,y:51*8,event:'pogo-loft',eventAt:true,eventRadius:24,phase:0});
   rect(90,59,4,1,'B');land(90,59,4,{phase:1});
   rect(78,58,4,1,'~');land(78,58,4);
-  rect(63,58,4,1,'A');land(63,58,4,{phase:0});
+  rect(54,62,3,1,'A');land(54,62,3,{phase:0,minVx:-100});
   put(58,52,'O');hook(58,52,{phase:0,minDashes:1});
   rect(45,55,4,1,'B');land(45,55,4,{phase:1});
   save(30,54,7,'The Burning Bridge',-1);},
  // 5 · The Lift: a deck rises up the west face. Leave it at the top for a ring and dash blue in; then a ring chain,
  // one swing into the next without landing: keep the first, turn the cliff gold out of the second.
- ()=>{decks.push({c:38,r:55,w:4,h:1,to:[0,-20],period:240,phase:0});
-  put(47,31,'O');hook(47,31,{phase:0,minDashes:1});
+ ()=>{decks.push({c:38,r:55,w:4,h:1,to:[0,-20],period:240,phase:0});stages.push({x:312,y:429,deck:1,minDashes:1,ground:true,phase:0,normal:true});
+  rect(37,34,6,1,'v');put(47,31,'O');hook(47,31,{phase:0,minDashes:1});
   rect(57,34,4,1,'B');land(57,34,4,{phase:1});
   put(65,28,'O');hook(65,28,{phase:1});
   put(80,24,'O');hook(80,24,{phase:1,minDashes:1});
@@ -71,5 +72,5 @@ const SECTIONS=[
 ];
 const LIMIT=+((typeof process!=='undefined'&&process.env.SECTION_LIMIT)||SECTIONS.length);
 SECTIONS.slice(0,LIMIT).forEach(f=>f());
-const room={id:'bank-f111',name:'Every Dash Turns the Cliff',cols,rows,exit:'right',core:16,coreProgressKey:'core-cliffs',coreProgressRevision:2,coreCheckpoints:checkpoints,crumbleExtraFrames:coreCrumbleGrace(16),movement:'survive-2',aim8:true,dashes:1,study:true,dropThru:true,palette:'cliffs',rbr:16,lock:[],decks,hint:'Hold grab near a ring to swing. Every dash turns the cliff: gold ledges stand until you dash, blue ones only after. Crumbling ledges give no grace; a seed cut with jump held gives your dash back.',map:m.map(r=>r.join(''))};
-writeFileSync('scripts/room-bank/fractured/111-bank-f111.json',JSON.stringify({room,bank:{side:'fractured',batch:29,run:19,collection:'cores',coreIndex:16,format:'superroom',localOnly:true,acceptance:'candidate',needsReview:true,status:'authoring',author:'Claude',difficulty:5,worlds:[16,36],tags:['hook-ring','switchback','deck','crumble','seed','refill','wall'],newMechanics:[],role:'Thunder Cliffs Core: swing, ride and climb while every dash turns the cliff',solution:'Choose each dash for where it leaves the cliff: swing out with or without one, spend it on crumbling ledges, and win it back from seeds.',requiredEvents:['hook','phase','core-checkpoint'],requiredEventCounts:{hook:10,'pogo-loft':4,walljump:6,crumble:4,'core-checkpoint':checkpoints.length},coreDescription:'The storm turns the cliff each time you dash. Count before you let go.',draft:true,humanReview:'Unverified authoring draft; not published.'},tape:[],verification:{stages,partTapes:[]}},null,2)+'\n');
+const room={id:'bank-f111',name:'Every Dash Turns the Cliff',cols,rows,exit:'right',core:16,coreProgressKey:'core-cliffs',coreProgressRevision:3,coreCheckpoints:checkpoints,crumbleExtraFrames:coreCrumbleGrace(16),movement:'survive-2',aim8:true,dashes:1,study:true,dropThru:true,palette:'cliffs',rbr:16,lock:[],decks,hint:'Wave onto blue and carry the restored dash through the phase wall. Spend it from the ring to bring gold back. Leave the rising decks before their thorn ceilings. Hold grab to swing and jump through seed cuts.',map:m.map(r=>r.join(''))};
+writeFileSync('scripts/room-bank/fractured/111-bank-f111.json',JSON.stringify({room,bank:{side:'fractured',batch:29,run:19,collection:'cores',coreIndex:16,format:'superroom',localOnly:true,acceptance:'candidate',needsReview:true,status:'authoring',author:'Claude; revised by Sol 6.1',difficulty:5,worlds:[16,36],tags:['wavedash','phase-wall','hook-ring','switchback','deck','crumble','seed','refill','wall'],newMechanics:[],role:'Thunder Cliffs Core: swing, ride and climb while every dash turns the cliff',solution:'Wave onto blue with the dash restored, pass the absent gold wall and spend the dash from the ring. Leave both rising decks before the thorn ceilings; carry momentum west and brake onto the return ledge.',requiredEvents:['hook','phase','core-checkpoint'],requiredEventCounts:{hook:10,'pogo-loft':4,walljump:6,crumble:4,'core-checkpoint':checkpoints.length},coreDescription:'The storm turns the cliff each time you dash. Count before you let go.',draft:true,humanReview:'Unverified authoring draft; not published.'},tape:[],verification:{stages,partTapes:[]}},null,2)+'\n');
