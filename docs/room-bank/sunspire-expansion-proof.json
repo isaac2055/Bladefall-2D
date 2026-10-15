@@ -2,62 +2,87 @@
   "room": "bank-f115",
   "status": "Native route verified; integrated as a playable Core draft awaiting player review",
   "whole": {
-    "frames": 1155,
+    "frames": 2153,
     "deaths": 0,
     "eventCounts": {
-      "dash": 24,
+      "crumble-shake": 10,
+      "dash": 35,
       "ultra": 3,
-      "refill-dash": 24,
+      "refill-dash": 35,
       "hyper": 3,
+      "crumble": 10,
+      "land": 26,
       "portal-open": 12,
-      "land": 18,
-      "grab": 1,
-      "climbhop": 1,
-      "strike": 6,
-      "portal-pass": 6,
+      "super": 4,
+      "strike": 11,
+      "pogo-loft": 6,
+      "pod": 6,
+      "crumble-back": 9,
+      "portal-pass": 8,
+      "jump": 16,
+      "walljump": 6,
       "core-checkpoint": 5,
-      "jump": 7,
-      "walljump": 2,
+      "climbjump": 5,
+      "portal-fizzle": 14,
+      "zip-start": 1,
+      "zip-stop": 1,
+      "grab": 4,
+      "zip-home": 1,
+      "refill": 1,
+      "climbhop": 1,
+      "refill-back": 1,
       "exit": 1
     },
-    "minimumStamina": 96.9
+    "minimumStamina": 37.7
   },
   "freshParts": [
-    194,
-    250,
-    299,
-    194,
-    214,
-    208
+    292,
+    363,
+    335,
+    290,
+    484,
+    472
   ],
   "probes": [
     {
       "name": "hold right",
       "exited": false,
-      "deaths": 14
+      "deaths": 10
     },
     {
       "name": "jump/dash right",
       "exited": false,
-      "deaths": 23
+      "deaths": 14
     },
     {
       "name": "without portal stone",
       "exited": false,
-      "deaths": 5
+      "deaths": 12
+    },
+    {
+      "name": "without carriers",
+      "exited": false,
+      "deaths": 2
+    },
+    {
+      "name": "without seeds",
+      "exited": false,
+      "deaths": 13
     }
   ],
   "worldInteractions": {
-    "crossings": 6,
+    "crossings": 8,
     "exitSpeeds": [
       -170,
+      170,
+      42,
       -170,
-      -170,
-      -347,
-      -170,
-      -170
+      42,
+      -420,
+      -420,
+      420
     ],
-    "lightWalls": 6
+    "lightWalls": 4
   },
   "limits": "These authored-route and basic bypass probes are not exhaustive path search. No live browser or human completion claimed."
 }

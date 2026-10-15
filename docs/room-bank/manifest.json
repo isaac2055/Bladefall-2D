@@ -82053,27 +82053,33 @@
       "tags": [
         "hook-ring",
         "switchback",
-        "spikes"
+        "deck",
+        "crumble",
+        "seed",
+        "refill",
+        "wall"
       ],
       "newMechanics": [],
-      "role": "Thunder Cliffs Core: swing, then choose whether the cliff turns",
-      "solution": "Swing from each ring; dash out to bring a blue ledge in, jump out to keep a gold one. Saves turn the cliff back.",
+      "role": "Thunder Cliffs Core: swing, ride and climb while every dash turns the cliff",
+      "solution": "Choose each dash for where it leaves the cliff: swing out with or without one, spend it on crumbling ledges, and win it back from seeds.",
       "requiredEvents": [
         "hook",
         "phase",
         "core-checkpoint"
       ],
       "requiredEventCounts": {
-        "hook": 20,
-        "phase": 14,
+        "hook": 10,
+        "pogo-loft": 4,
+        "walljump": 6,
+        "crumble": 4,
         "core-checkpoint": 5
       },
       "coreDescription": "The storm turns the cliff each time you dash. Count before you let go.",
       "draft": true,
       "humanReview": "Native whole route and all six fresh checkpoint sections verified. Awaiting player review.",
-      "revision": "0d602f871660",
+      "revision": "0994e285afaf",
       "source": "scripts/room-bank/fractured/111-bank-f111.json",
-      "tapeFrames": 1498
+      "tapeFrames": 2276
     },
     {
       "id": "bank-f112",
@@ -82098,26 +82104,33 @@
         "tide",
         "float",
         "swim",
-        "thorns"
+        "current",
+        "crumble",
+        "seed",
+        "wall"
       ],
       "newMechanics": [
         "multi-tide"
       ],
-      "role": "Landing Shores Core: every basin keeps its own tide",
-      "solution": "Ride each float on its rising sea and leave before the ceiling thorns; swim the drowned thorn fields at high water; change floats as two opposite tides pass.",
+      "role": "Landing Shores Core: every basin keeps its own sea",
+      "solution": "Read each basin’s tide: ride floats and leave before the thorns, swim drowned reefs while the sea holds, fight currents, and spend crumbling stone at once.",
       "requiredEvents": [
         "splash",
         "core-checkpoint"
       ],
       "requiredEventCounts": {
+        "splash": 8,
+        "pogo-loft": 4,
+        "crumble": 5,
+        "walljump": 1,
         "core-checkpoint": 5
       },
       "coreDescription": "Every basin keeps its own sea. Leave on the tide, not after it.",
       "draft": true,
       "humanReview": "Native whole route and all six fresh checkpoint sections verified. Awaiting player review.",
-      "revision": "66b8020a8292",
+      "revision": "e8f7ba5845cd",
       "source": "scripts/room-bank/fractured/112-bank-f112.json",
-      "tapeFrames": 2526
+      "tapeFrames": 3094
     },
     {
       "id": "bank-f113",
@@ -82141,23 +82154,30 @@
       "tags": [
         "watch-light",
         "smoke",
-        "thorns"
+        "crumble",
+        "seed",
+        "refill",
+        "carrier",
+        "wall"
       ],
       "newMechanics": [],
-      "role": "Colony Core: cross six lamp-lit galleries unseen",
-      "solution": "Read each lamp’s sweep, wait in smoke, and cross the open floor and thorn gaps between passes; dash through a cone when a pass cannot be waited out.",
+      "role": "Colony Core: climb through the colony unseen",
+      "solution": "Read every sweep, wait only in smoke or under a lamp’s own wall, and spend crumbling floors between passes.",
       "requiredEvents": [
         "core-checkpoint"
       ],
       "requiredEventCounts": {
+        "pogo-loft": 4,
+        "zip-start": 3,
+        "crumble": 8,
         "core-checkpoint": 5
       },
       "coreDescription": "The colony keeps its lamps lit. Move when they look away.",
       "draft": true,
       "humanReview": "Native whole route and all six fresh checkpoint sections verified. Awaiting player review.",
-      "revision": "685ea3bb3475",
+      "revision": "b1f457946ae7",
       "source": "scripts/room-bank/fractured/113-bank-f113.json",
-      "tapeFrames": 1960
+      "tapeFrames": 2212
     },
     {
       "id": "bank-f114",
@@ -82182,25 +82202,32 @@
         "beam",
         "shutter",
         "mirror",
-        "thorns"
+        "crumble",
+        "seed",
+        "carrier",
+        "wall"
       ],
       "newMechanics": [],
-      "role": "Path Core: climb the sunlit tower between the beams",
-      "solution": "Climb the ledges, crossing each beam row while its louvre is shut; strike each section’s mirror so the falling beam turns into the wall instead of across the tower.",
+      "role": "Path Core: cross the palace road between the sun’s hours",
+      "solution": "Time every crossing to a shut louvre from the stone before it, strike mirrors to turn light off the way, and spend crumbling stone at once.",
       "requiredEvents": [
         "mirror",
         "core-checkpoint"
       ],
       "requiredEventCounts": {
-        "mirror": 6,
+        "mirror": 2,
+        "pogo-loft": 5,
+        "zip-start": 2,
+        "crumble": 8,
+        "walljump": 4,
         "core-checkpoint": 5
       },
       "coreDescription": "The sun keeps its hours. Climb between them.",
       "draft": true,
       "humanReview": "Native whole route and all six fresh checkpoint sections verified. Awaiting player review.",
-      "revision": "b7e9d596b405",
+      "revision": "8689fc0bc9d2",
       "source": "scripts/room-bank/fractured/114-bank-f114.json",
-      "tapeFrames": 2018
+      "tapeFrames": 1964
     },
     {
       "id": "bank-f115",
@@ -82224,25 +82251,31 @@
       "tags": [
         "portal",
         "beam",
-        "fling"
+        "fling",
+        "crumble",
+        "seed",
+        "carrier"
       ],
       "newMechanics": [],
-      "role": "Sunspire Core: pass every wall of light through your own door",
-      "solution": "In each chamber open one end on the departure stone and one in the arrival pit beyond the light, climb the perch and fall into your end: the fall becomes the rise out of the far pit, onto the higher floor.",
+      "role": "Sunspire Core: pass every wall of light through your own doors",
+      "solution": "Place each pair of doors where your speed will be turned the way you need: falls into rises, dashes into rises, loops into launches.",
       "requiredEvents": [
         "portal-pass",
         "core-checkpoint"
       ],
       "requiredEventCounts": {
         "portal-pass": 6,
+        "pogo-loft": 5,
+        "zip-start": 1,
+        "crumble": 6,
         "core-checkpoint": 5
       },
       "coreDescription": "The light cannot be crossed. The door can.",
       "draft": true,
       "humanReview": "Native whole route and all six fresh checkpoint sections verified. Awaiting player review.",
-      "revision": "14533d27d3e7",
+      "revision": "ea2e3b9a4fb1",
       "source": "scripts/room-bank/fractured/115-bank-f115.json",
-      "tapeFrames": 1156
+      "tapeFrames": 2156
     }
   ]
 }

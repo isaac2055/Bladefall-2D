@@ -41,17 +41,17 @@ for(const id of ids){
  }
  if(id===114){
   assert.deepEqual(authored.verification.stages,x.verification.stages,'Path stage/source parity');
-  assert.ok((counts.mirror||0)>=6,'every section turns its mirror');
-  for(const[label,room]of [['without louvres (the sun never stops)',{...x.room,map:x.room.map.map(row=>row.replaceAll('X','.'))}],['mirrors left untouched',{...x.room,map:x.room.map}]].slice(0,1)){const r=runRoom([room],0,x.tape);assert.ok(!r.exited&&r.deaths>0,label);probes.push({name:label,exited:r.exited,deaths:r.deaths});}
+  assert.ok((counts.mirror||0)>=2,'the mirror stair turns both mirrors');
+  for(const[label,room]of [['without louvres (the sun never stops)',{...x.room,map:x.room.map.map(row=>row.replaceAll('X','.'))}],['without carriers',{...x.room,map:x.room.map.map(row=>row.replaceAll('Z','.'))}],['without seeds',{...x.room,map:x.room.map.map(row=>row.replaceAll('b','.'))}]]){const r=runRoom([room],0,x.tape);assert.ok(!r.exited&&r.deaths>0,label);probes.push({name:label,exited:r.exited,deaths:r.deaths});}
   worldInteractions={mirrors:counts.mirror,beams:x.room.beams.length,louvres:x.room.shutters.length};
  }
  if(id===115){
   assert.deepEqual(authored.verification.stages,x.verification.stages,'Sunspire stage/source parity');
-  // every crossing is a portal pass that rises: the knight leaves the far pit upward, onto a higher floor
-  const g=Core.createGame([x.room]),rises=[];
-  for(const k of expand(x.tape)){Core.step(g,keysToInput(k));for(const e of g.events)if(e.type==='portal-pass'&&e.kind==='knight')rises.push(Math.round(g.p.vy));g.events.length=0;}
-  assert.ok(rises.filter(v=>v<=-150).length>=6,'six crossings leave a floor door fast and upward');
-  for(const[label,room]of [['without portal stone',{...x.room,map:x.room.map.map(row=>row.replaceAll('%','#'))}]]){const r=runRoom([room],0,x.tape);assert.ok(!r.exited,label);probes.push({name:label,exited:r.exited,deaths:r.deaths});}
+  // the doors are used every way: falls turned into rises, a loop at full speed, a drop out of a roof door
+  const g=Core.createGame([x.room]),exits=[];
+  for(const k of expand(x.tape)){Core.step(g,keysToInput(k));for(const e of g.events)if(e.type==='portal-pass'&&e.kind==='knight')exits.push(Math.round(g.p.vy));g.events.length=0;}
+  const rises=exits;assert.ok(exits.length>=6,'at least six door passes');assert.ok(exits.filter(v=>v<=-300).length>=2,'two launches out of floor doors at speed');assert.ok(exits.some(v=>v>=300),'a drop out of the roof door at speed');
+  for(const[label,room]of [['without portal stone',{...x.room,map:x.room.map.map(row=>row.replaceAll('%','#'))}],['without carriers',{...x.room,map:x.room.map.map(row=>row.replaceAll('Z','.'))}],['without seeds',{...x.room,map:x.room.map.map(row=>row.replaceAll('b','.'))}]]){const r=runRoom([room],0,x.tape);assert.ok(!r.exited,label);probes.push({name:label,exited:r.exited,deaths:r.deaths});}
   worldInteractions={crossings:rises.length,exitSpeeds:rises,lightWalls:x.room.beams.length};
  }
  if(id===112){

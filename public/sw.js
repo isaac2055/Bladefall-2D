@@ -1,7 +1,7 @@
 /* Bladefall service worker — offline play + fast reloads once installed.
    Bump CACHE_NAME on a deploy where you want returning players to pick up
    the change immediately instead of waiting on the network-first refresh. */
-const CACHE_NAME = 'bladefall-v504-cores-20';
+const CACHE_NAME = 'bladefall-v505-cores-20-v2';
 const CORE_ASSETS = [
   './bladefall-pcore-dev-workshop-room.js?v=7.335.0','./bladefall-workshop-ascend-coop-core.js?v=7.336.0','./bladefall-workshop-ascend-play.js?v=7.335.0','./bladefall-workshop-ascend.js?v=7.335.0','./bladefall-workshop-bridge.js?v=7.335.0','./bladefall-workshop-cloud.js?v=7.335.0','./bladefall-workshop-cobuild.js?v=7.335.0','./bladefall-workshop-collaboration.js?v=7.335.0','./bladefall-workshop-explore-runtime.js?v=7.335.0','./bladefall-workshop-explore.js?v=7.335.0','./bladefall-workshop-library.js?v=7.335.0','./bladefall-workshop-model.js?v=7.335.0','./bladefall-workshop-native-play.js?v=7.335.0','./bladefall-workshop-network.js?v=7.335.0','./bladefall-workshop-play-link.js?v=7.335.0','./bladefall-workshop-properties.js?v=7.335.0','./bladefall-workshop-render.js?v=7.335.0','./bladefall-workshop-sandbox.js?v=7.335.0','./bladefall-workshop-selection.js?v=7.335.0','./bladefall-workshop-sources.js?v=7.335.0','./bladefall-workshop-store.js?v=7.335.0','./bladefall-workshop-ui.js?v=7.335.0',
   './coop-practice.html','./bladefall-coop-practice-core.js?v=7.334.0',
@@ -140,7 +140,7 @@ const CORE_ASSETS = [
   './bladefall-pcore-dev-moving-hook-view.js?v=7.303.0',
   './bladefall-pcore-dev-recoil.js?v=7.335.0',
   './bladefall-pcore-dev-recoil-view.js?v=7.303.0',
-  './bladefall-room-bank.js?v=7.336.0',
+  './bladefall-room-bank.js?v=7.337.0',
   './bladefall-room-bank-view.js?v=7.334.0',
   './bladefall-pcore-dev-step-relay.js?v=7.335.0',
   './bladefall-pcore-dev-step-relay-view.js?v=7.286.0',
@@ -152,7 +152,7 @@ const CORE_ASSETS = [
   './bladefall-climb-worlds.js?v=7.308.2',
   './bladefall-climb-finale-tapes.js?v=7.317.0',
   './bladefall-climb-finale.js?v=7.334.0',
-  './bladefall-climb-core-tapes.js?v=7.336.0',
+  './bladefall-climb-core-tapes.js?v=7.337.0',
   './bladefall-climb-cores.js?v=7.336.0',
   './bladefall-climb-rewards.js?v=7.334.0',
   './bladefall-climb-art.js?v=7.334.0',
@@ -272,7 +272,7 @@ const CORE_ASSETS = [
   './bladefall-pcore-dev-throne.js?v=7.335.0',
   './bladefall-pcore-dev-void.js?v=7.335.0',
   './bladefall-pcore-dev-watch.js?v=7.335.0',
-  './bladefall-pcore-dev-water.js?v=7.336.0',
+  './bladefall-pcore-dev-water.js?v=7.337.0',
   './bladefall-pcore-dev-finale.js?v=7.335.0',
   './bladefall-pcore-dev-beam-view.js?v=7.257.0',
   './bladefall-pcore-dev-citadel-view.js?v=7.257.0',
@@ -287,7 +287,7 @@ const CORE_ASSETS = [
   './bladefall-pcore-dev-throne-view.js?v=7.335.0',
   './bladefall-pcore-dev-void-view.js?v=7.335.0',
   './bladefall-pcore-dev-watch-view.js?v=7.257.0',
-  './bladefall-pcore-dev-water-view.js?v=7.336.0',
+  './bladefall-pcore-dev-water-view.js?v=7.337.0',
   './bladefall-pcore-dev-finale-view.js?v=7.317.0',
   './bladefall-pcore-parts.js?v=7.257.0',
   './bladefall-pcore-part-075-gaol.js?v=7.257.0',

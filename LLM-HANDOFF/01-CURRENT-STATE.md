@@ -1,3 +1,23 @@
+## 7.337.0: Cores 16–20 rebuilt as hand-authored sections (2026-10-15, Claude)
+
+Isaac: the 7.336 Cores 16–20 were much easier and more repetitive than Codex's 1–15; they should extend them in difficulty and share their dynamic structure. Studied Cores 6–15 first: each section is a distinct beat that layers the world device over the base kit (crumbling departures/landings, refills beyond walls, seeds, carriers, springs, capped walls), the route reverses and changes height, and gaps sit near the movement envelope (measured: ~14 tiles flat from stone, 12 from crumble, 8 rows up short).
+
+All five were rewritten section by section (one `SECTIONS` entry per beat, proved before the next):
+
+| Core | Room | Sections | Whole | Tech (super/hyper/ultra/wb) | Climb (wj/cj/grab) | Crumbles |
+|---|---|---|---:|---:|---:|---:|
+| 16 Cliffs | Every Dash Turns the Cliff | Storm Ledge, Rolling Deck, Gold Chimney, Burning Bridge, Lift, Last Strike | 38 s | 15 | 19 | 4 |
+| 17 Shores | The Tide Keeps Time | Ebb, Undertow, Relay, Spouts, Drowned Stair, Last Tide | 52 s | 25 | 16 | 10 |
+| 18 Colony | Between the Lamps | Lamp Gallery, Watch Shaft, Carrier Run, Up-Lit Chimney, Crossfire, Falling Watch | 37 s | 25 | 18 | 12 |
+| 19 Path | The Hours of the Sun | Morning Louvres, Mirror Stair, Wall of Noon, Carrier Hour, Sundial, Last Window | 33 s | 12 | 15 | 10 |
+| 20 Sunspire | The Last Light | First Door, Thrown Door, Loop (420 px/s re-aim), Rising Carrier, Long Fall, roof-door drop | 36 s | 10 | 15 | 10 |
+
+For comparison, 11–15 run 23–33 s, with 9–24 tech, 1–29 climb and 1–9 crumbles (at 20 frames of grace; 16–20 have none). Every Core: whole route and six fresh restarts proven; `expansion-cores-check.mjs 106…115` all PASS, with device probes (removing rings/blue/gold/seeds/decks; tides/currents/floats/seeds; smoke/carriers/seeds; louvres/carriers/seeds; portal stone/carriers/seeds each break the route) and usage asserts.
+
+**Engine (opt-in):** tides may carry `r0`/`r1` rows so seas stack in the same columns (water module, view clipping); `resetPhase` saves from 7.336 are kept. **Authoring tools:** prover duplicate key now includes deck, lamp and beam clocks; new stage constraints `portals` (named door pair), `maxVx`, `minVy`. Author scripts use an overlap guard. Carriers and louvres are sorted into map order before writing (they are bound by scan order).
+
+**Checks:** cores-check (twenty, strict next-save restarts), room bank 152, workshop 60/60, test tools, precision 440/440, Pages API, Cloudflare assets, SW 466 consistent; all five load in headless Chrome without page errors (screenshots inspected). Not human-played.
+
 ## 7.336.0: Cores 16–20; cloud drafts live (2026-10-14, Claude)
 
 Isaac approved the API deploy and asked for the last five Cores, following Codex's design notes (one large single room per Core, five saves and six sections, the world's own device, whole route plus every fresh restart proven, zero extra crumble grace for 16–20).
