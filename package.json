@@ -55,7 +55,9 @@
     "verify:api": "node scripts/playtest-release/check-pages-api.mjs",
     "activate:api": "node scripts/playtest-release/activate-pages-api.mjs --activate",
     "verify:level-editor": "node scripts/workshop/check.mjs",
-    "verify:watch": "node scripts/climb/watch-check.mjs"
+    "verify:watch": "node scripts/climb/watch-check.mjs",
+    "routes": "node scripts/routes/solve.mjs",
+    "verify:routes": "node scripts/routes/seed-check.mjs"
   },
   "dependencies": {
     "@netlify/blobs": "^11.1.4",

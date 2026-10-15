@@ -1,3 +1,59 @@
+## 7.340.0: intended routes survive edits; fix them without an LLM (2026-10-15, Claude)
+
+Isaac's goal: watch the whole game, pick favourite levels, edit them, and assemble an alpha himself, without
+watch routes breaking. He chose to skip Explore watch. How-to for Isaac: `docs/WATCH-ROUTES.md`.
+
+**Drafts carry their route.** `definition.route` = {tape, path (every 8 frames: x, y, vx, vy, dashes, lit+open+held
+doors, carrying), sample, frames, room digest, flags {dropThru, springUp}, source original|recorded|solved, at}.
+Ascend `compile()` ignores it, so undo/redo, cloud, share, Export/Import and the server all carry it unchanged.
+- Seeded from the game's tape and climb physics when copying: Pause → Edit this level (`bridge.editAscend`), and
+  the library's Original game levels (`sources.js` keeps tape + flags per row). Older drafts get the route on open.
+- `npm run verify:routes` (`scripts/routes/seed-check.mjs`, real browser): 1986 originals, 1456 with routes,
+  **1450 fit Test play**. The 6 that don't rely on game-view logic outside the room: cl21-fo21-lookout,
+  cl32-bank-f12, cl33-fv33-middle, cl37-bank-f56, cl41-stay, cl42-throne.
+
+**Test play** (`public/bladefall-workshop-routes.js`, bar on the builder's test frame):
+- It checks the route against the edited room. If it fits, the tape is registered, so **Watch route** and the
+  pause menu's Watch work.
+- `begin()` applies the flags and re-enters the room with `g.workshop=true`. The first try therefore equals
+  retries, Watch and the solver; before this, the first load ran without workshop rules.
+- **Clean clear**: a deathless clear from spawn is replayed headless and saved. If a fitting route exists, the bar
+  asks first (Use my run).
+- **Clear with deaths**: the lives are chained into a path; Use my run → the solver follows it.
+- **Find a route**: the solver runs in the test frame in slices, with progress on the bar.
+- Hooks: `pcore-view` tick calls `BladefallWorkshopRoutes.frame` (workshop play only), and `retryRoom` calls
+  `fresh`. `bridge.complete()` tells Watch from play. The UI controller exposes `apply`.
+
+**Solver** (`public/bladefall-route-solver.js`, browser and Node, same engine):
+- `play()` is Watch's rules (90 idle frames after the tape).
+- `repair()` keeps the old inputs up to a second before they fail, then beam-searches to each waypoint. Arrival
+  needs the same place (within 3 px where the route stood still), dashes, progress count and carrying.
+- After each waypoint it tries to rejoin the old inputs, including waiting out the difference when early. It skips
+  unreachable waypoints, backtracks, and ends with an exit search.
+- Bug found and fixed during testing: rejoining past the tape's end stepped idle frames that weren't recorded,
+  which desynced the route.
+
+**Offline:** `npm run routes -- file.bladefall.json|folder` checks and repairs exported drafts in place;
+`--check` only reports (exit 1); `--budget N` searches longer.
+
+**Measured** (one wall tile dropped onto the route; `node scripts/routes/repair-rate.mjs`, plus a banked-room
+variant):
+- Precision Core rooms: 19/23 repaired at 40% of the route and 19/24 at 70%; median 0.9 s.
+- Banked superrooms: 34/54 (63%, budget 300000, median 0.7 s).
+- Cores: the one sampled (f100, a parry-timed bullet pattern with a wall on its crumble ledge) was not repaired.
+- Failures are timing-locked moments (pogoing a patrolling foe, mid-glide lantern catches, parry windows). The
+  answer there is a clean clear in Test play.
+
+**Checks:**
+- `node scripts/workshop/routes-check.mjs` (now in `verify:level-editor`): jsdom builder + test frame end to end.
+- Level-editor suite passes; `verify:watch` passes (all worlds, both ascents, every Core); verify-precision-core
+  440/440; room-bank 152 routes; test-tools; Pages API; Cloudflare assets.
+- Real browser: World 3 room → edit (wall) → Test play reported the route broken → Find a route found 3.3 s and
+  saved it → Watch route reached the exit.
+
+**Next:** when Isaac brings his alpha drafts, wrap them as a release. Test play rules (ports are exits, seams open)
+differ from the climb road's, so re-check each route in campaign context.
+
 ## 7.339.0: every Core published; watch the intended routes in Ascend (2026-10-15, Claude)
 
 **Published:** Isaac approved all Cores. F96–F115 `draft:false`, `acceptance:'banked'`, in `catalog.banked`; beating any Core now earns its reward (cores-check updated).

@@ -275,7 +275,7 @@ function nextRoom(){
 }
 const takeoverOK=()=>!!save.assist.testMode;   // (7.314) a watched Ascend route is not a skip
 function takeOver(){if(!takeoverOK())return;view.replay=null;delete view.coreReplayCheckpoint;root.BladefallClimbSession?.invalidate('watched route takeover');}
-function retryRoom(){if(root.BladefallWorkshopNativePlay?.retry?.())return;if(!view.g)return;if(view.coreReplayCheckpoint!==undefined){view.g.coreRun=view.coreReplayCheckpoint;delete view.coreReplayCheckpoint;view.g.coreDemo=false;}SV()?.retry(view.g.room.id);view.replay=null;if(!TEST()?.restore()){C.resetRoom(view.g);view.g.p.state='normal';view.g.p.respawnTimer=0;}root.BladefallRouteRecording?.mark('retry');view.trail=[];resetScarf();}
+function retryRoom(){if(root.BladefallWorkshopNativePlay?.retry?.())return;if(!view.g)return;if(view.coreReplayCheckpoint!==undefined){view.g.coreRun=view.coreReplayCheckpoint;delete view.coreReplayCheckpoint;view.g.coreDemo=false;}SV()?.retry(view.g.room.id);view.replay=null;if(!TEST()?.restore()){C.resetRoom(view.g);view.g.p.state='normal';view.g.p.respawnTimer=0;}root.BladefallRouteRecording?.mark('retry');root.BladefallWorkshopRoutes?.fresh(view.g);view.trail=[];resetScarf();}
 
 /* ---------------------------------------------------------------- loop */
 function frame(now){
@@ -316,7 +316,7 @@ function tick(input){
   if(r.i>r.frames.length+90){if(takeoverOK())takeOver();else{retryRoom();root.BladefallPitchView?.climb?.announce?.('Your turn',150);return;}}
  }
  if(!view.replay)SV()?.frame(g.room.id);
- const recorded=!view.replay&&root.BladefallRouteRecording?.before(g,inp);C.step(g,inp);if(recorded)root.BladefallRouteRecording.after(g);view.chapterStats.frames++;if(g.awake!==false)view.roomTimer++;
+ const recorded=!view.replay&&root.BladefallRouteRecording?.before(g,inp);C.step(g,inp);if(recorded)root.BladefallRouteRecording.after(g);if(!view.replay&&root.BLADEFALL_WORKSHOP_PLAY)root.BladefallWorkshopRoutes?.frame(g,inp);view.chapterStats.frames++;if(g.awake!==false)view.roomTimer++;
  for(const e of g.events)handleEvent(e);
  g.events.length=0;
  updateVisuals();
