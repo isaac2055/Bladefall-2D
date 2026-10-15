@@ -151,9 +151,11 @@ function sprite(b,x,y,f,pose,pal,dash,t=0,squash=1,stretch=1,run=0,silhouette=nu
 /* ---------------------------------------------------------------- the Garden & skins card */
 function card(api,back){
  const r=state(),open=k=>csideOpen(k),all=!!root.BladefallClimbFinale?.unlockedAll?.(),st=PV()?.state?.(),visited=st?.atlas?.state?.visited||{},seen=k=>all||k===1||!!visited[k]||st?.world?.n===k||beaten(k)||beaten(k-1)||halves(k).root,showTop=all||Array.from({length:20},(_,i)=>i+21).some(n=>PV()?.fracturedOpen?.(n)||beaten(n)||r.perfect[n]);
+ // (7.339) every Core you can open, in order, for Watch all Cores
+ const watchable=(root.BladefallClimbCores?.worlds||[]).filter(w=>csideOpen(w.cside)).map(w=>w.n);
  const rows=PLANTS.slice(1).map((p,i)=>{const k=i+1,h=all?{root:true,top:true}:halves(k);if(!seen(k))return '';const w1=CL()?.world(k)?.name||('World '+k),w2=CL()?.world(k+20)?.name||('World '+(k+20));
   const cw=(root.BladefallClimbCores?.worlds||[]).find(w=>w.cside===k),canPlay=cw&&open(k),progress=cw&&root.BladefallCoreProgress?.saved(cw.rooms[0]);
-  return `<tr><td style="color:${p.col}">✿ ${k===1&&!showTop?p.root:p.name}</td><td title="perfect ${w1}">${h.root?'● '+p.root:'○ '+p.root}</td>${showTop?`<td title="perfect ${w2}">${h.top?'● '+p.top:'○ '+p.top}</td>`:''}<td>${canPlay?`<button class="pcBtn ghost" data-cside="${cw.n}" style="padding:2px 8px">${progress?'Continue Core · Part '+(progress.index+2)+'/'+(cw.rooms[0].coreCheckpoints.length+1):cw.draft?'Try Core draft':r.csides[k]?'Play Core ✓':'Play Core'}</button>${progress?` <button class="pcBtn ghost" data-core-restart="${cw.n}" style="padding:2px 8px">Restart</button>`:''}`:r.csides[k]?'Core ✓':open(k)?'<span style="color:#ffd98a">Core open · coming soon</span>':''}</td></tr>`;}).join('');
+  return `<tr><td style="color:${p.col}">✿ ${k===1&&!showTop?p.root:p.name}</td><td title="perfect ${w1}">${h.root?'● '+p.root:'○ '+p.root}</td>${showTop?`<td title="perfect ${w2}">${h.top?'● '+p.top:'○ '+p.top}</td>`:''}<td>${canPlay?`<button class="pcBtn ghost" data-cside="${cw.n}" style="padding:2px 8px">${progress?'Continue Core · Part '+(progress.index+2)+'/'+(cw.rooms[0].coreCheckpoints.length+1):cw.draft?'Try Core draft':r.csides[k]?'Play Core ✓':'Play Core'}</button>${progress?` <button class="pcBtn ghost" data-core-restart="${cw.n}" style="padding:2px 8px">Restart</button>`:''}<br><button class="pcBtn ghost" data-core-watch="${cw.n}" style="padding:2px 8px;margin-top:3px">Watch Core</button>`:r.csides[k]?'Core ✓':open(k)?'<span style="color:#ffd98a">Core open · coming soon</span>':''}</td></tr>`;}).join('');
  // (7.326) Only the skins you have, and the next one on each track: the story (base, Fractured, Echo, all hearts,
  // everything) and the hearts (21, 41, 61). Starlit Regalia and the Haunt are surprises, shown once earned.
  const STORY=['ascendant','fractured','echo','gilded','prism'],HEARTS=['gardener','ember','heartbound'];
@@ -163,7 +165,7 @@ function card(api,back){
  const sk=visible.map(s=>`<button class="pcChoice" data-skin="${s.id}" style="text-align:left;display:flex;align-items:center;gap:10px"><canvas width="96" height="40" data-skin-art="${s.id}" style="image-rendering:pixelated;width:144px;height:60px;flex:none"></canvas><span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span class="pcName">${earned(s.id)?s.name:'???'}${r.skin===s.id&&earned(s.id)?' · worn':''}</span><span class="pcDesc">${howOf(s)}${earned(s.id)?'':canBuy(s.id)?' · <b style="color:#ffd98a">open it now</b>':''}</span></span></button>`).join('');
  api.showOverlay(`<div class="pcCard wide"><h1>Garden &amp; skins</h1>
   <p class="pcSub">Finish a world without dying on its road (optional routes don’t count) to grow its plant.${showTop?' Both halves open that world’s Core.':''}</p>
-  <table class="pcTable" style="font-size:.85em"><tr><td></td><td>Bottom</td>${showTop?'<td>Top</td>':''}<td></td></tr>${rows}</table>
+  <table class="pcTable" style="font-size:.85em"><tr><td></td><td>Bottom</td>${showTop?'<td>Top</td>':''}<td>${watchable.length?'<button class="pcBtn ghost" id="rwWatchAll" style="padding:2px 8px">Watch all Cores</button>':''}</td></tr>${rows}</table>
   <h2 class="pcPart">Skins</h2><p class="pcSub">With a dash · without. ♥ ${hearts().got} collected.</p>
   <div class="pcGrid"><button class="pcChoice" data-skin="" style="text-align:left;display:flex;align-items:center;gap:10px"><canvas width="96" height="40" data-skin-art="" style="image-rendering:pixelated;width:144px;height:60px;flex:none"></canvas><span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span class="pcName">The knight${!r.skin?' · worn':''}</span><span class="pcDesc">The original</span></span></button>${sk}</div>
   <button class="pcBtn" id="rwBack" data-back>Done</button></div>`);
@@ -179,6 +181,8 @@ function card(api,back){
   if(canBuy(id)){buy(id);wear(id);card(api,back);return;}   // (7.321) opened by the hearts you have collected (they are not spent)
   paint();});
  document.querySelectorAll('[data-cside]').forEach(el=>el.onclick=()=>{clearInterval(timer);root.BladefallPitchView?.climb?.startWorld(+el.dataset.cside);});
+ document.querySelectorAll('[data-core-watch]').forEach(el=>el.onclick=()=>{clearInterval(timer);root.BladefallPitchView?.climb?.watchWorlds([+el.dataset.coreWatch]);});
+ {const b=document.getElementById('rwWatchAll');if(b)b.onclick=()=>{clearInterval(timer);root.BladefallPitchView?.climb?.watchWorlds(watchable,'Every Core');};}
  document.querySelectorAll('[data-core-restart]').forEach(el=>el.onclick=()=>{clearInterval(timer);root.BladefallPitchView?.climb?.startWorld(+el.dataset.coreRestart,null,true);});
  document.getElementById('rwBack').onclick=()=>{clearInterval(timer);back();};
 }

@@ -350,8 +350,8 @@
     "coreIndex": 17,
     "format": "superroom",
     "localOnly": true,
-    "acceptance": "candidate",
-    "needsReview": true,
+    "acceptance": "banked",
+    "needsReview": false,
     "status": "route-proven",
     "author": "Claude; revised by Sol 6.1",
     "difficulty": 5,
@@ -386,8 +386,8 @@
       "core-checkpoint": 5
     },
     "coreDescription": "Every basin keeps its own sea. Leave on the tide, not after it.",
-    "draft": true,
-    "humanReview": "Revision 3: native full and all six fresh checkpoint routes verified, with airborne float wavedash, 600 bounded ordinary launch probes, and three relay ceiling deadlines. Local draft awaiting batch integration and player review."
+    "draft": false,
+    "humanReview": "Published by Isaac (2026-10-15): solid drafts."
   },
   "tape": [
     [

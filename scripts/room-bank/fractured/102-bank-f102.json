@@ -232,8 +232,8 @@
     "coreIndex": 7,
     "format": "superroom",
     "localOnly": false,
-    "acceptance": "candidate",
-    "needsReview": true,
+    "acceptance": "banked",
+    "needsReview": false,
     "status": "route-proven",
     "author": "Sol 6.1",
     "difficulty": 5,
@@ -264,9 +264,9 @@
       "jailer-fell": 3,
       "core-checkpoint": 5
     },
-    "coreDescription": "Turn the prison\u2019s pressure against it and catch each wall before the next fall.",
-    "draft": true,
-    "humanReview": "Native whole route and every fresh checkpoint route verified. Awaiting player review."
+    "coreDescription": "Turn the prison’s pressure against it and catch each wall before the next fall.",
+    "draft": false,
+    "humanReview": "Published by Isaac (2026-10-15): solid drafts."
   },
   "tape": [
     [

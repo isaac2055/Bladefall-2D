@@ -408,8 +408,8 @@
     "coreIndex": 19,
     "format": "superroom",
     "localOnly": true,
-    "acceptance": "candidate",
-    "needsReview": true,
+    "acceptance": "banked",
+    "needsReview": false,
     "status": "route-proven",
     "author": "Claude; revised by Sol 6.1",
     "difficulty": 5,
@@ -443,8 +443,8 @@
       "core-checkpoint": 5
     },
     "coreDescription": "The sun keeps its hours. Climb between them.",
-    "draft": true,
-    "humanReview": "Revision 3: native full and all six fresh routes verified. Opening wavedash depends on both louvres; narrow crumbling mirror approaches require airborne strikes. Later four sections preserved. Local draft awaiting batch integration and player review."
+    "draft": false,
+    "humanReview": "Published by Isaac (2026-10-15): solid drafts."
   },
   "tape": [
     [

@@ -204,8 +204,8 @@
     "coreIndex": 11,
     "format": "superroom",
     "localOnly": false,
-    "acceptance": "candidate",
-    "needsReview": true,
+    "acceptance": "banked",
+    "needsReview": false,
     "status": "route-proven",
     "author": "Sol 6.1",
     "difficulty": 5,
@@ -237,8 +237,8 @@
       "crumble-shake": 1
     },
     "coreDescription": "Strike the iron, make the footing, and turn before the next stroke.",
-    "draft": true,
-    "humanReview": "Native whole route and every fresh checkpoint route verified. Awaiting player review."
+    "draft": false,
+    "humanReview": "Published by Isaac (2026-10-15): solid drafts."
   },
   "tape": [
     [

@@ -466,8 +466,8 @@
     "coreIndex": 18,
     "format": "superroom",
     "localOnly": true,
-    "acceptance": "candidate",
-    "needsReview": true,
+    "acceptance": "banked",
+    "needsReview": false,
     "status": "route-proven",
     "author": "Claude; revised by Sol 6.1",
     "difficulty": 5,
@@ -498,8 +498,8 @@
       "core-checkpoint": 5
     },
     "coreDescription": "The colony keeps its lamps lit. Move when they look away.",
-    "draft": true,
-    "humanReview": "Revision 3: native full and six fresh checkpoint routes verified. Opening integrates an airborne wavedash with a low thorn crossing and lamp timing; 810 bounded ordinary probes find no bypass. Rest of revision 2 geometry and lamps preserved. Local draft awaiting batch integration and player review."
+    "draft": false,
+    "humanReview": "Published by Isaac (2026-10-15): solid drafts."
   },
   "tape": [
     [

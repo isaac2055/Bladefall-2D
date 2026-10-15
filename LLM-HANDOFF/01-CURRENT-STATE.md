@@ -1,3 +1,17 @@
+## 7.339.0: every Core published; watch the intended routes in Ascend (2026-10-15, Claude)
+
+**Published:** Isaac approved all Cores. F96–F115 `draft:false`, `acceptance:'banked'`, in `catalog.banked`; beating any Core now earns its reward (cores-check updated).
+
+**Watch mode** (`bladefall-climb-view.js` `watchWorlds/watchNext/roadOf`): the intended routes play back to back, every road section (atlasStart→atlasEnd, sections with a tape) from its fire, then the next world. Nothing is saved, scored or unlocked; any takeover ends it; `[`/`]` set the watch speed 1/2/4/8× (`save.options.watchSpeed`).
+- World map card: **Watch world** beside Play world.
+- Tap an emerald between regions: watch the whole Emerald (1–20) or Fractured (21–40) ascent (only when every world of that emerald is open).
+- Garden & skins: **Watch Core** under each Play Core; **Watch all Cores** in the header.
+- A section whose route dies or never exits is skipped and logged (`PV.climb.watchLog()`).
+
+**Bug fixed by this:** the climb view set `g.springUp` on Cores, so Cores 14 and 15 (springs) played with different spring physics than they were proven with; Cores now keep native springs.
+
+**Check:** `npm run verify:watch` (`scripts/climb/watch-check.mjs`, serves public/ itself, real browser at 8×): Emerald 1–20, Fractured 21–40 and Cores 1–20 all watched with zero skips. Also cores-check, room bank 152, workshop 60/60, test tools, precision 440/440.
+
 ## 7.337.0: Cores 16–20 rebuilt as hand-authored sections (2026-10-15, Claude)
 
 Isaac: the 7.336 Cores 16–20 were much easier and more repetitive than Codex's 1–15; they should extend them in difficulty and share their dynamic structure. Studied Cores 6–15 first: each section is a distinct beat that layers the world device over the base kit (crumbling departures/landings, refills beyond walls, seeds, carriers, springs, capped walls), the route reverses and changes height, and gaps sit near the movement envelope (measured: ~14 tiles flat from stone, 12 from crumble, 8 rows up short).

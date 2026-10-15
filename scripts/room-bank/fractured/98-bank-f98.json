@@ -205,8 +205,8 @@
     "coreIndex": 3,
     "format": "superroom",
     "localOnly": false,
-    "acceptance": "candidate",
-    "needsReview": true,
+    "acceptance": "banked",
+    "needsReview": false,
     "status": "route-proven",
     "author": "Sol 6.1",
     "difficulty": 5,
@@ -239,7 +239,7 @@
     },
     "coreDescription": "Launch from the counterweights and carry the speed through the broken gantries. One room, three demanding legs.",
     "draft": false,
-    "humanReview": "Revised for counterweight flow. Native whole and independent checkpoint routes pass; awaiting player review."
+    "humanReview": "Published by Isaac (2026-10-15): solid drafts."
   },
   "tape": [
     [

@@ -297,9 +297,10 @@ function loop(dt){
   if(view.replay&&pad.any&&!lp.any&&view.mode==='play'&&!view.paused&&takeoverOK())takeOver();
  }else if(pad.nav)Object.assign(nav.held,pad.nav);
  if(view.mode==='play'&&!view.paused&&!TEST()?.inspecting()){
-  view.frameAcc+=dt*(save.assist.speed||1);
-  let steps=0;
-  while(view.frameAcc>=1/60&&steps<5){view.frameAcc-=1/60;steps++;tick(input);}
+  // (7.339) a watched route plays at its own speed ([ and ] change it: 1×, 2×, 4×, 8×)
+  view.frameAcc+=dt*(view.replay?(save.options.watchSpeed||1):(save.assist.speed||1));
+  let steps=0;const cap=view.replay?10:5;
+  while(view.frameAcc>=1/60&&steps<cap){view.frameAcc-=1/60;steps++;tick(input);}
  }else view.frameAcc=0;
  render();
 }
@@ -749,7 +750,7 @@ function drawHud(ctx,ox,oy,scale,g){
  const right=`✕ ${view.chapterStats.deaths}`+(shardsTotal?`   ◆ ${g.shards.size}/${shardsTotal}`:'');
  ctx.fillStyle='#00000088';const rw=ctx.measureText(right).width;ctx.fillRect(ox+W*scale-rw-pad-6,oy+pad-3,rw+10,fs+6);
  ctx.fillStyle='#cfc6b4';ctx.fillText(right,ox+W*scale-rw-pad,oy+pad);
- if(view.replay){ctx.fillStyle='#ffcf7a';ctx.fillText(takeoverOK()?'▶ INTENDED ROUTE — any input to take over':'▶ INTENDED ROUTE — then it is your turn, from the fire',ox+pad,oy+H*scale-fs-pad);}
+ if(view.replay){ctx.fillStyle='#ffcf7a';const ws=save.options.watchSpeed||1,watching=!!root.BladefallPitchView?.climb?.watching?.();ctx.fillText((watching?'▶ WATCHING':'▶ INTENDED ROUTE')+` · ${ws}× ([ ] speed)`+(takeoverOK()?' — any input to take over':watching?' — Esc to stop':' — then it is your turn, from the fire'),ox+pad,oy+H*scale-fs-pad);}
  else if(g.awake===false&&g.room.def.movement!=='survive-2'&&g.room.def.bank?.run!==3&&!g.room.def.showHintAtRest){ctx.fillStyle='#d8cfb9';const lk=g.room.def.lock||[];ctx.fillText(`Look first · act when ready · ${lk.includes('parry')?'':actionLabel('parry')+' parry · '}${lk.includes('strike')?'':actionLabel('strike')+' blade · '}${lastDevice==='pad'?actionLabel('pause'):'Esc'} room question`,ox+pad,oy+H*scale-fs-pad);}
  else if(g.room.hint&&view.roomTimer<600){ctx.globalAlpha=Math.min(1,(600-view.roomTimer)/60);ctx.fillStyle='#d8cfb9';
   // A hint wider than the room (big touch text, long gesture names) breaks at its middle dot onto two lines.
@@ -977,6 +978,7 @@ function boot(){
   if(e.repeat)return;
   const typing=e.target?.closest?.('input,textarea,select,[contenteditable]');
   if(code==='KeyY'&&!e.isComposing&&!open&&!typing&&!view.paused&&!e.repeat&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();root.BladefallRouteRecording?.toggle();return;}
+  if(view.replay&&(code==='BracketRight'||code==='BracketLeft')&&!typing){e.preventDefault();const steps=[1,2,4,8],i=steps.indexOf(save.options.watchSpeed||1);save.options.watchSpeed=steps[Math.max(0,Math.min(3,i+(code==='BracketRight'?1:-1)))];persist();return;}
   if(code==='KeyI'&&save.assist.testMode&&!open&&!view.paused&&!typing&&!e.isComposing&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();if(!view.replay)TEST()?.place();return;}
   const act=keyAction(code);
   if(view.replay&&view.mode==='play'&&!view.paused&&PLAY_ACTIONS.includes(act)&&takeoverOK()){takeOver();}
@@ -1028,6 +1030,6 @@ function drawWorkshop(b,g,area){
  for(const d of devices)d.drawFront?.(b,g,editorView,pal);
  }finally{b.restore();}
 }
-root.BladefallPrecisionView={workshopFrame,clearInput:()=>{keys.clear();latchHeld();},options:(back,o)=>assistCard(back,o),testMode:()=>!!save.assist.testMode,pureMode:()=>!!save.options.pure,boot,view,startChapter,retryRoom,mainMenu,advance,pump,goRoom,persist,drawOther,drawStatic,drawWorkshop,palettes:PAL,drawKnight:drawKnightSprite};
+root.BladefallPrecisionView={workshopFrame,watchRoute,clearInput:()=>{keys.clear();latchHeld();},options:(back,o)=>assistCard(back,o),testMode:()=>!!save.assist.testMode,pureMode:()=>!!save.options.pure,boot,view,startChapter,retryRoom,mainMenu,advance,pump,goRoom,persist,drawOther,drawStatic,drawWorkshop,palettes:PAL,drawKnight:drawKnightSprite};
 if(typeof document!=='undefined'){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();}
 })(typeof window!=='undefined'?window:globalThis);

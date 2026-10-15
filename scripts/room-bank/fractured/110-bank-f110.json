@@ -232,8 +232,8 @@
     "coreIndex": 15,
     "format": "superroom",
     "localOnly": false,
-    "acceptance": "candidate",
-    "needsReview": true,
+    "acceptance": "banked",
+    "needsReview": false,
     "status": "route-proven",
     "author": "Sol 6.1",
     "difficulty": 5,
@@ -267,8 +267,8 @@
       "core-checkpoint": 5
     },
     "coreDescription": "The rails end before the route does. Take their speed with you.",
-    "draft": true,
-    "humanReview": "Native whole route and every fresh checkpoint route verified. Awaiting player review."
+    "draft": false,
+    "humanReview": "Published by Isaac (2026-10-15): solid drafts."
   },
   "tape": [
     [

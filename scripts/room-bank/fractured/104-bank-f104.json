@@ -292,8 +292,8 @@
     "coreIndex": 9,
     "format": "superroom",
     "localOnly": false,
-    "acceptance": "candidate",
-    "needsReview": true,
+    "acceptance": "banked",
+    "needsReview": false,
     "status": "route-proven",
     "author": "Sol 6.1",
     "difficulty": 5,
@@ -327,9 +327,9 @@
       "zip-start": 1,
       "core-checkpoint": 5
     },
-    "coreDescription": "Make your own walls from the Court\u2019s falling water, then move before they thaw.",
-    "draft": true,
-    "humanReview": "Native whole route and every fresh checkpoint route verified. Awaiting player review."
+    "coreDescription": "Make your own walls from the Court’s falling water, then move before they thaw.",
+    "draft": false,
+    "humanReview": "Published by Isaac (2026-10-15): solid drafts."
   },
   "tape": [
     [

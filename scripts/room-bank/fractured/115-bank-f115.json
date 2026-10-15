@@ -223,8 +223,8 @@
     "coreIndex": 20,
     "format": "superroom",
     "localOnly": true,
-    "acceptance": "candidate",
-    "needsReview": true,
+    "acceptance": "banked",
+    "needsReview": false,
     "status": "route-proven",
     "author": "Claude; revised by Sol 6.1",
     "difficulty": 5,
@@ -258,8 +258,8 @@
       "refill": 1
     },
     "coreDescription": "The light cannot be crossed. The door can.",
-    "draft": true,
-    "humanReview": "Revision 3 native full route and six fresh checkpoint routes verified; awaiting player difficulty review."
+    "draft": false,
+    "humanReview": "Published by Isaac (2026-10-15): solid drafts."
   },
   "tape": [
     [

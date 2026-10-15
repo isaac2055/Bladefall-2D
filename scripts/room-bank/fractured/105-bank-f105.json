@@ -273,8 +273,8 @@
     "coreIndex": 10,
     "format": "superroom",
     "localOnly": false,
-    "acceptance": "candidate",
-    "needsReview": true,
+    "acceptance": "banked",
+    "needsReview": false,
     "status": "route-proven",
     "author": "Sol 6.1",
     "difficulty": 5,
@@ -308,8 +308,8 @@
       "crumble-shake": 1
     },
     "coreDescription": "Catch the cooling stone, then leave before the fire takes its shape back.",
-    "draft": true,
-    "humanReview": "Native whole route and every fresh checkpoint route verified. Awaiting player review."
+    "draft": false,
+    "humanReview": "Published by Isaac (2026-10-15): solid drafts."
   },
   "tape": [
     [

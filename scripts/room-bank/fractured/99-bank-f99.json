@@ -256,8 +256,8 @@
     "coreIndex": 4,
     "format": "superroom",
     "localOnly": false,
-    "acceptance": "candidate",
-    "needsReview": true,
+    "acceptance": "banked",
+    "needsReview": false,
     "status": "route-proven",
     "author": "Sol 6.1",
     "difficulty": 5,
@@ -289,7 +289,7 @@
     },
     "coreDescription": "Thread the bellows, seed rebounds and shifting light landings in one continuous tower.",
     "draft": false,
-    "humanReview": "Native whole and all three fresh checkpoint routes verified. Awaiting player review; not banked."
+    "humanReview": "Published by Isaac (2026-10-15): solid drafts."
   },
   "tape": [
     [

@@ -97,7 +97,7 @@
     {
       "world": 106,
       "name": "The Mason’s Grip",
-      "draft": true,
+      "draft": false,
       "wholeFrames": 1817,
       "partFrames": [
         287,
@@ -115,7 +115,7 @@
     {
       "world": 107,
       "name": "The Unwritten Sentence",
-      "draft": true,
+      "draft": false,
       "wholeFrames": 2048,
       "partFrames": [
         407,
@@ -133,7 +133,7 @@
     {
       "world": 108,
       "name": "The Winter Between",
-      "draft": true,
+      "draft": false,
       "wholeFrames": 1554,
       "partFrames": [
         381,
@@ -151,7 +151,7 @@
     {
       "world": 109,
       "name": "The Borrowed Marble",
-      "draft": true,
+      "draft": false,
       "wholeFrames": 2166,
       "partFrames": [
         446,
@@ -169,7 +169,7 @@
     {
       "world": 110,
       "name": "The Shape of the Fire",
-      "draft": true,
+      "draft": false,
       "wholeFrames": 2303,
       "partFrames": [
         383,
@@ -187,7 +187,7 @@
     {
       "world": 111,
       "name": "The Iron Answer",
-      "draft": true,
+      "draft": false,
       "wholeFrames": 1809,
       "partFrames": [
         199,
@@ -205,7 +205,7 @@
     {
       "world": 112,
       "name": "The Weight Above",
-      "draft": true,
+      "draft": false,
       "wholeFrames": 1640,
       "partFrames": [
         214,
@@ -223,7 +223,7 @@
     {
       "world": 113,
       "name": "What the Wall Leaves",
-      "draft": true,
+      "draft": false,
       "wholeFrames": 1962,
       "partFrames": [
         324,
@@ -241,7 +241,7 @@
     {
       "world": 114,
       "name": "The Place You Left",
-      "draft": true,
+      "draft": false,
       "wholeFrames": 1404,
       "partFrames": [
         195,
@@ -259,7 +259,7 @@
     {
       "world": 115,
       "name": "No Track Beyond",
-      "draft": true,
+      "draft": false,
       "wholeFrames": 1449,
       "partFrames": [
         155,
@@ -277,7 +277,7 @@
     {
       "world": 116,
       "name": "Every Dash Turns the Cliff",
-      "draft": true,
+      "draft": false,
       "wholeFrames": 2309,
       "partFrames": [
         367,
@@ -295,7 +295,7 @@
     {
       "world": 117,
       "name": "The Tide Keeps Time",
-      "draft": true,
+      "draft": false,
       "wholeFrames": 3581,
       "partFrames": [
         310,
@@ -313,7 +313,7 @@
     {
       "world": 118,
       "name": "Between the Lamps",
-      "draft": true,
+      "draft": false,
       "wholeFrames": 2177,
       "partFrames": [
         360,
@@ -331,7 +331,7 @@
     {
       "world": 119,
       "name": "The Hours of the Sun",
-      "draft": true,
+      "draft": false,
       "wholeFrames": 1819,
       "partFrames": [
         241,
@@ -349,7 +349,7 @@
     {
       "world": 120,
       "name": "The Last Light",
-      "draft": true,
+      "draft": false,
       "wholeFrames": 2157,
       "partFrames": [
         290,

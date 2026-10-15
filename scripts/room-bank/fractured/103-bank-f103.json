@@ -210,7 +210,7 @@
         "dy": 0
       }
     ],
-    "hint": "Carry the ice\u2019s speed into the feather, then catch the sheltered face. The wind cannot push you while you cling, but your grip is still running out.",
+    "hint": "Carry the ice’s speed into the feather, then catch the sheltered face. The wind cannot push you while you cling, but your grip is still running out.",
     "zips": [
       [
         -4,
@@ -240,8 +240,8 @@
     "coreIndex": 8,
     "format": "superroom",
     "localOnly": false,
-    "acceptance": "candidate",
-    "needsReview": true,
+    "acceptance": "banked",
+    "needsReview": false,
     "status": "route-proven",
     "author": "Sol 6.1",
     "difficulty": 5,
@@ -274,8 +274,8 @@
       "core-checkpoint": 5
     },
     "coreDescription": "The ridge keeps climbing. Spend each feather in the air, and use the sheltered faces to turn your momentum.",
-    "draft": true,
-    "humanReview": "Native whole route and every fresh checkpoint route verified. Awaiting player review."
+    "draft": false,
+    "humanReview": "Published by Isaac (2026-10-15): solid drafts."
   },
   "tape": [
     [

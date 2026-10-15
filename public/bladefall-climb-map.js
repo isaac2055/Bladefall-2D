@@ -331,15 +331,15 @@ function buildSvg(model){
  const fin0=model.finale||{},bright=!!fin0.preview;
  P.push(gemDefs());
  if(bright)P.push(finishedGem());
- const facet=(pts,fill,op,edge)=>`<polygon points="${pts.map(p=>p.join(',')).join(' ')}" fill="${fill}" fill-opacity="${op}"${edge?` stroke="${edge}" stroke-opacity="${bright?.2:.09}" stroke-width="1"`:''}/>`;
+ const facet=(pts,fill,op,edge,gem)=>`<polygon${gem?` data-emerald="${gem}" style="cursor:pointer"`:''} points="${pts.map(p=>p.join(',')).join(' ')}" fill="${fill}" fill-opacity="${op}"${edge?` stroke="${edge}" stroke-opacity="${bright?.2:.09}" stroke-width="1"`:''}/>`;
  // the two emeralds' facets: green above, violet below, each a cut gem with a glow at its heart
  for(const fr of [false,true]){
   if(regions.some(n=>fr?n>20:n<=20)){
    const outer=OUTER.map(v=>corner(v,fr)),edge=fr?'#efe4ff':'#e4ffef',c=at(fr?[0,13]:[0,4.3]);
    const has=v=>Array.isArray(v)||v===19||regions.includes(fr?v+20:v),whole=OUTER.every(has);
-   if(whole)P.push(facet(outer,fr?'url(#cmV2)':'url(#cmG2)',bright?.1:.11,edge));
+   if(whole)P.push(facet(outer,fr?'url(#cmV2)':'url(#cmG2)',bright?.1:.11,edge,fr?'fractured':'base'));
    if(!bright&&whole)P.push(`<circle cx="${c[0]}" cy="${c[1]}" r="${2.6*SX}" fill="url(#${fr?'cmGlowV':'cmGlowG'})" opacity=".45"/>`);
-   FACETS.forEach(([ids,op],i)=>ids.every(has)&&P.push(facet(ids.map(v=>corner(v,fr)),`url(#${fr?(i%2?'cmV1':'cmV2'):(i%2?'cmG1':'cmG2')})`,op*(bright?3.2:2.2),edge)));
+   FACETS.forEach(([ids,op],i)=>ids.every(has)&&P.push(facet(ids.map(v=>corner(v,fr)),`url(#${fr?(i%2?'cmV1':'cmV2'):(i%2?'cmG1':'cmG2')})`,op*(bright?3.2:2.2),edge,fr?'fractured':'base')));
    // glints where the outer cuts meet
    if(whole)for(let i=0;i<outer.length;i+=2){const a=outer[i],b=outer[(i+1)%outer.length];if(!a||!b)continue;P.push(star((a[0]+b[0])/2,(a[1]+b[1])/2,bright?9:5,bright?.9:.4));}
   }
@@ -454,6 +454,7 @@ function mount(host,opts={}){
   <div class="cm-tools">
     <select class="cm-b" data-cm="pick" aria-label="Show a region">${regions.map(n=>`<option value="${n}"${n===startN?' selected':''}>${n} · ${esc(nameOf(n))}</option>`).join('')}</select>
     ${opts.onStart?'<button class="cm-b" id="cmPlayWorld">Play world</button>':''}
+    ${opts.onWatch?'<button class="cm-b" id="cmWatchWorld">Watch world</button>':''}
     <button class="cm-b" data-cm="me">Find me</button>
     <button class="cm-b" id="cmKey" aria-label="Map key">?</button>
     <button class="cm-b" data-cm="all">Fit all</button>
@@ -516,6 +517,7 @@ function mount(host,opts={}){
   chipbar.innerHTML=`<b>${n} · ${esc(w?.name||'')}</b> <small>· ${esc(state)}${n===42?(fin.merged?' · merged':' · unmerged'):''}</small>`;
   detail.innerHTML=`<h2>${n} · ${esc(w?.name||'')}${done?'<span class="cm-chip done">'+(n===41?'defeated':'still')+'</span>':'<span class="cm-chip next">open to you</span>'}</h2><div>${text}</div>`;
   const play=host.querySelector('#cmPlayWorld');if(play){const locked=opts.canStart&&!opts.canStart(n);play.disabled=!!locked;play.textContent=locked?'Locked':'Play world';play.title='Play '+(w?.name||'');play.setAttribute('aria-label',play.title);play.onclick=()=>opts.onStart(n);}
+  {const wb=host.querySelector('#cmWatchWorld');if(wb){const locked=opts.canStart&&!opts.canStart(n);wb.disabled=!!locked;wb.title='Watch the intended route of '+(w?.name||'');wb.onclick=()=>opts.onWatch(n);}}
  }
  function card(n){
   if(n>40)return crownCard(n);
@@ -542,13 +544,14 @@ function mount(host,opts={}){
    <div class="cm-tip">${esc(where?(current?'📍 ':'')+where:state)}</div>`;
   detail.querySelectorAll('[data-tip]').forEach(el=>{el.title=el.dataset.tip;el.onclick=()=>{detail.querySelector('.cm-tip').textContent=el.dataset.tip;};});
   const play=host.querySelector('#cmPlayWorld');if(play){const locked=opts.canStart&&!opts.canStart(n);play.disabled=!!locked;play.textContent=locked?'Locked':'Play world';const why=locked?(opts.lockedWhy?.(n)||'Locked'):'';play.title=locked?why:'Play '+(w?.name||nameOf(n));play.setAttribute('aria-label',play.title);play.onclick=()=>opts.onStart(n);if(locked)detail.querySelector('.cm-tip').textContent='🔒 '+why;}
+  {const wb=host.querySelector('#cmWatchWorld');if(wb){const locked=opts.canStart&&!opts.canStart(n);wb.disabled=!!locked;wb.title='Watch the intended route of '+(w?.name||nameOf(n));wb.onclick=()=>opts.onWatch(n);}}
  }
  function select(n,pan=false){
   if(!regions.includes(n))return;model.selected=n;if(pick)pick.value=String(n);render();card(n);
   if(pan){const p=pos(n),hw=W/2/k,hh=H/2/k;if(Math.abs(p[0]-cx)>hw*.7||Math.abs(p[1]-cy)>hh*.7)focusPoint(p,Math.max(k,.75));}
  }
  // pointers: one drags, two pinch; a tap on a region selects it
- const pts=new Map();let gesture=null,moved=0,downNode=null;
+ const pts=new Map();let gesture=null,moved=0,downNode=null,downGem=null;
  const local=e=>{const r=view.getBoundingClientRect();return [e.clientX-r.left,e.clientY-r.top];};
  const worldAt=([sx,sy])=>[cx+(sx-W/2)/k,cy+(sy-H/2)/k];
  view.addEventListener('pointerdown',e=>{
@@ -556,7 +559,7 @@ function mount(host,opts={}){
   if(e.target.closest('.cm-chipbar')){detail.scrollIntoView({block:'nearest',behavior:'smooth'});return;}
   cancelAnimationFrame(anim);
   pts.set(e.pointerId,local(e));try{view.setPointerCapture(e.pointerId);}catch(err){}
-  if(pts.size===1){moved=0;downNode=e.target.closest?.('[data-n]')?.getAttribute('data-n')||null;gesture={kind:'drag',last:local(e)};}
+  if(pts.size===1){moved=0;downNode=e.target.closest?.('[data-n]')?.getAttribute('data-n')||null;downGem=downNode?null:e.target.closest?.('[data-emerald]')?.getAttribute('data-emerald')||null;gesture={kind:'drag',last:local(e)};}
   else if(pts.size===2){const [a,b]=[...pts.values()];gesture={kind:'pinch',d0:Math.hypot(a[0]-b[0],a[1]-b[1])||1,k0:k,m0:worldAt([(a[0]+b[0])/2,(a[1]+b[1])/2])};downNode=null;}
   view.classList.add('cm-drag');e.preventDefault();
  });
@@ -568,7 +571,8 @@ function mount(host,opts={}){
  });
  const up=e=>{
   if(!pts.has(e.pointerId))return;pts.delete(e.pointerId);
-  if(pts.size===0){view.classList.remove('cm-drag');if(gesture?.kind==='drag'&&moved<=6&&downNode)select(+downNode);gesture=null;downNode=null;}
+  if(pts.size===0){view.classList.remove('cm-drag');if(gesture?.kind==='drag'&&moved<=6&&downNode)select(+downNode);
+   else if(gesture?.kind==='drag'&&moved<=6&&downGem&&opts.onWatchAscent&&confirm(downGem==='fractured'?'Watch the whole Fractured ascent, world by world?':'Watch the whole Emerald ascent, world by world?'))opts.onWatchAscent(downGem==='fractured');gesture=null;downNode=null;}
   else if(pts.size===1){const [p]=[...pts.values()];gesture={kind:'drag',last:p};}
  };
  view.addEventListener('pointerup',up);view.addEventListener('pointercancel',up);

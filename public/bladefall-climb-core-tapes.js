@@ -9543,7 +9543,7 @@
     ]
    ]
   ],
-  "draft": true,
+  "draft": false,
   "description": "Keep moving around the thorned piers; turn the mason’s doors while hanging from their safe sides.",
   "fire": {
    "r": 146,
@@ -11264,7 +11264,7 @@
     ]
    ]
   ],
-  "draft": true,
+  "draft": false,
   "description": "Turn the prison’s pressure against it and catch each wall before the next fall.",
   "fire": {
    "r": 23,
@@ -12665,7 +12665,7 @@
     ]
    ]
   ],
-  "draft": true,
+  "draft": false,
   "description": "The ridge keeps climbing. Spend each feather in the air, and use the sheltered faces to turn your momentum.",
   "fire": {
    "r": 106,
@@ -14634,7 +14634,7 @@
     ]
    ]
   ],
-  "draft": true,
+  "draft": false,
   "description": "Make your own walls from the Court’s falling water, then move before they thaw.",
   "fire": {
    "r": 137,
@@ -16784,7 +16784,7 @@
     ]
    ]
   ],
-  "draft": true,
+  "draft": false,
   "description": "Catch the cooling stone, then leave before the fire takes its shape back.",
   "fire": {
    "r": 120,
@@ -18349,7 +18349,7 @@
     ]
    ]
   ],
-  "draft": true,
+  "draft": false,
   "description": "Strike the iron, make the footing, and turn before the next stroke.",
   "fire": {
    "r": 125,
@@ -19832,7 +19832,7 @@
     ]
    ]
   ],
-  "draft": true,
+  "draft": false,
   "description": "Borrow the ceiling for a heartbeat, then turn its weight back toward the floor.",
   "fire": {
    "r": 120,
@@ -21338,7 +21338,7 @@
     ]
    ]
   ],
-  "draft": true,
+  "draft": false,
   "description": "The wall holds once. Its absence is your next passage.",
   "fire": {
    "r": 136,
@@ -22704,7 +22704,7 @@
     ]
    ]
   ],
-  "draft": true,
+  "draft": false,
   "description": "Keep the place, borrow the motion, and leave before your wake returns.",
   "fire": {
    "r": 137,
@@ -24037,7 +24037,7 @@
     ]
    ]
   ],
-  "draft": true,
+  "draft": false,
   "description": "The rails end before the route does. Take their speed with you.",
   "fire": {
    "r": 150,
@@ -25931,7 +25931,7 @@
     ]
    ]
   ],
-  "draft": true,
+  "draft": false,
   "description": "The storm turns the cliff each time you dash. Count before you let go.",
   "fire": {
    "r": 131,
@@ -28358,7 +28358,7 @@
     ]
    ]
   ],
-  "draft": true,
+  "draft": false,
   "description": "Every basin keeps its own sea. Leave on the tide, not after it.",
   "fire": {
    "r": 117,
@@ -30469,7 +30469,7 @@
     ]
    ]
   ],
-  "draft": true,
+  "draft": false,
   "description": "The colony keeps its lamps lit. Move when they look away.",
   "fire": {
    "r": 113,
@@ -32322,7 +32322,7 @@
     ]
    ]
   ],
-  "draft": true,
+  "draft": false,
   "description": "The sun keeps its hours. Climb between them.",
   "fire": {
    "r": 111,
@@ -34198,7 +34198,7 @@
     ]
    ]
   ],
-  "draft": true,
+  "draft": false,
   "description": "The light cannot be crossed. The door can.",
   "fire": {
    "r": 117,

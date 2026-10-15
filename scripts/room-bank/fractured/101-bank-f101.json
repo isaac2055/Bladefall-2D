@@ -1,7 +1,7 @@
 {
   "room": {
     "id": "bank-f101",
-    "name": "The Mason\u2019s Grip",
+    "name": "The Mason’s Grip",
     "cols": 96,
     "rows": 152,
     "map": [
@@ -247,8 +247,8 @@
     "coreIndex": 6,
     "format": "superroom",
     "localOnly": false,
-    "acceptance": "candidate",
-    "needsReview": true,
+    "acceptance": "banked",
+    "needsReview": false,
     "status": "route-proven",
     "author": "Sol 6.1",
     "difficulty": 5,
@@ -280,9 +280,9 @@
       "core-checkpoint": 5,
       "zip-start": 3
     },
-    "coreDescription": "Keep moving around the thorned piers; turn the mason\u2019s doors while hanging from their safe sides.",
-    "draft": true,
-    "humanReview": "Native whole route and every fresh checkpoint route verified. Awaiting player review."
+    "coreDescription": "Keep moving around the thorned piers; turn the mason’s doors while hanging from their safe sides.",
+    "draft": false,
+    "humanReview": "Published by Isaac (2026-10-15): solid drafts."
   },
   "tape": [
     [
