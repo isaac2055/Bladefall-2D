@@ -16,7 +16,10 @@ const MOUNTS={
  0:{id:'bellwing',name:'The Bellwing',story:'gatekeeper',accent:'#d8b070',cruise:430,speed:1400,
   roosts:[{id:'camp',x:1050,land:900,face:-1,label:'the camp',flyTo:'door'},
           {id:'door',x:13330,land:13440,face:1,label:'the Mothlight Door',flyTo:'camp'}],
-  intro:'The bronze drake from the old belfry. It followed the bell down and never went back up.'},
+  intro:'The bronze drake from the old belfry. It followed the bell down and never went back up.',
+  // From up there the whole road lies open: the three bearings Mara asked for line up on their own, so the
+  // flight does her survey and the chart is yours without walking back to the Muster (Isaac, 7.344).
+  arrive:to=>to.id==='door'&&outskirtsSurveyFromTheAir()},
 };
 const COLORS={body:'#8a6a3a',dark:'#4a3420',belly:'#c9a46a',wing:'#6b4a2a',edge:'#d8b070',eye:'#ffd27a',horn:'#e8dcc0'};
 const ok=()=>typeof G!=='undefined'&&!!G&&!G.workshopBlank;
@@ -25,6 +28,19 @@ function earned(m){
  try{return root.BladefallSideStories.row(root.BladefallSideStoryWorld.state(),m.story).phase==='completed';}catch(e){return false;}
 }
 const usable=()=>!watchLike()&&!G.coopSession&&!G.bossRush;
+function outskirtsSurveyFromTheAir(){
+ if(G.stageIndex!==0)return;
+ const stakes=G.obstacles.filter(o=>o.type==='surveyStake');
+ let turned=0;for(const o of stakes)if(!o.aligned){o.aligned=true;o.flash=1;turned++;}
+ if(G.outskirtsSurvey)G.outskirtsSurvey.aligned=stakes.length;
+ const mara=(G.npcs||[]).find(n=>n.kind==='survey');
+ if(mara&&!mara.done){
+  mara.asked=true;mara.done=true;
+  if(typeof coopGrantTravelerReward==='function')coopGrantTravelerReward(mara);
+  if(typeof recordQuestEvent==='function')recordQuestEvent({type:'traveler-helped',target:mara.profileId},true);
+  if(typeof toast==='function')toast('<b style="color:#e4d9a7">MARA’S FIELD CHART</b><br>From the air the road lies open: ASH, GLASS and IRON line up in one glance. You mark the bearings on Mara’s chart. It’s yours now, and she’ll have it copied at the Muster.',7000);
+ }else if(turned&&typeof toast==='function')toast('<b style="color:#e4d9a7">THE THREE BEARINGS</b><br>From the air, ASH, GLASS and IRON line up in one glance.',5000);
+}
 function floorAt(x){
  let y=0;for(const o of G.obstacles)if(o.type==='plat'&&!o.gone&&!o.ceiling&&!o.fake&&(o.y||0)<=60&&x>=o.x-o.w/2&&x<=o.x+o.w/2)y=Math.max(y,o.y||0);
  return y;
@@ -92,6 +108,7 @@ function update(dt){
   // Set down short of the door, facing it; the drake perches on the roost there.
   p.x=f.to.land;p.y=floorAt(f.to.land);p.vx=0;p.vy=0;p.onGround=false;p.face=f.to.face;p.safeX=p.x;
   G.mountAt=f.to.id;G.mountFlight=null;BFKeyboard.clearPressed();
+  try{mount()?.arrive?.(f.to);}catch(e){}
   if(typeof addText==='function')addText(p.x,GROUND_Y-p.y-70,f.to.label.toUpperCase(),mount()?.accent||'#d8b070',true);
  }
  return true;

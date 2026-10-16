@@ -2,6 +2,7 @@
 //   - before "A Bell for the Camp" is finished there is no roost in the Outskirts;
 //   - finished, the Bellwing roosts by the camp; Up there offers the flight, and it sets the knight down facing
 //     the Mothlight Door; from the roost there it flies him back to the camp;
+//   - the flight does Mara's survey: her three bearings aligned and her field chart granted;
 //   - under the TAS/watch rules (Watch, ● Record, route building) there is no roost even when finished.
 //   node scripts/explore/mount-check.mjs            (serves public/ itself)
 import assert from 'node:assert/strict';
@@ -49,6 +50,11 @@ const out=await ride(page,'camp');
 assert.ok(out.high>150,'flew over the road (highest '+Math.round(out.high)+')');
 assert.equal(out.mode,'play');assert.equal(out.at,'door');assert.equal(out.face,1);assert.ok(!out.dead);
 assert.ok(out.x>13300&&out.x<13600,'set down short of the Mothlight Door (x='+out.x+')');
+// The flight does Mara's survey: all three bearings aligned and her chart granted.
+const chart=await page.evaluate(()=>({chart:!!meta.outskirtsFieldChart,aligned:G.obstacles.filter(o=>o.type==='surveyStake'&&o.aligned).length,
+ stakes:G.obstacles.filter(o=>o.type==='surveyStake').length,maraDone:!!(G.npcs||[]).find(n=>n.kind==='survey')?.done}));
+assert.ok(chart.stakes>=3&&chart.aligned===chart.stakes,'all bearings aligned ('+chart.aligned+'/'+chart.stakes+')');
+assert.ok(chart.chart&&chart.maraDone,'Mara\'s field chart granted');
 const back=await ride(page,'door');
 assert.equal(back.at,'camp');assert.ok(back.x<1200,'back at the camp (x='+back.x+')');
 await page.close();
@@ -60,4 +66,4 @@ await finish(tas);
 assert.deepEqual(await roosts(tas),[],'no roost under the TAS/watch rules');
 await browser.close();server.close();
 assert.deepEqual(errors,[],'page errors');
-console.log(`PASS: no roost before the story; the Bellwing flew camp → Mothlight Door (x=${out.x}, up to ${Math.round(out.high)}) and back (x=${back.x}); none under TAS rules; no page errors.`);
+console.log(`PASS: no roost before the story; the Bellwing flew camp → Mothlight Door (x=${out.x}, up to ${Math.round(out.high)}), aligned ${chart.aligned}/${chart.stakes} bearings and granted Mara's chart, and flew back (x=${back.x}); none under TAS rules; no page errors.`);
