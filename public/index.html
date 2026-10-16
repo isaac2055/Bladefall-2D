@@ -329,7 +329,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-workshop-library.js?v=7.335.0"></script>
 <script src="bladefall-workshop-explore-runtime.js?v=7.335.0"></script>
 <script src="bladefall-playtest-worlds.js?v=7.316.0"></script>
-<script src="bladefall-explore-routes.js?v=7.341.0"></script>
+<script src="bladefall-explore-routes.js?v=7.341.1"></script>
 <script src="bladefall-playtest-model.js?v=7.334.0"></script>
 <script src="bladefall-playtest.js?v=7.334.0"></script>
 <script src="bladefall-harness.js"></script>
@@ -464,7 +464,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.341.0';
+const VERSION='7.341.1';
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -26217,7 +26217,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.341.0').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.341.1').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */
