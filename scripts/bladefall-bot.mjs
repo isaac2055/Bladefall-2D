@@ -12,6 +12,8 @@
  *
  * Boss fights and cross-zone streaming remain outside this traversal runner.
  * Mechanism and traversal inputs are searched against the real simulation.
+ * solveLevel({debugGraph:true}) returns the ledge graph (each ledge, its distance to the goal and its
+ * neighbours) instead of searching: a level whose start ledge has no distance cannot be planned at all.
  */
 
 export async function solveLevel(options) {
@@ -39,6 +41,9 @@ export async function solveLevel(options) {
   const hasWeapon = can('weapon') && !!(G.p && G.p.weapon);
   const MAX_RISE = apex * (hasDouble ? 2.35 : 1.15) + 40;
   const MAX_REACH = RUN * (2 * JUMP / GRAV) * (hasDouble ? 2.4 : 1.5) + (hasDash ? 240 : 0) + 90;
+  // A hop down to a lower ledge stays in the air longer, so it carries further: the extra fall time at full run.
+  // Without this a 300-unit gap off a 250-unit ledge read as uncrossable, cutting the graph in two.
+  const reachFor = (drop) => MAX_REACH + RUN * (Math.sqrt(JUMP * JUMP + 2 * GRAV * Math.max(0, drop)) - JUMP) / GRAV;
 
   // ---- geometry ------------------------------------------------------------
   // Ledge objects are cached by GEOMETRY, not by obstacle: restoreState() hands
@@ -276,7 +281,7 @@ export async function solveLevel(options) {
             anchor.x >= b.x0 && anchor.x <= b.x1 && Math.abs(anchor.y - b.y) < 20));
       if (linked) { out.push({ b, cost: 1.5 }); continue; }
       const refill = graphCrystals.some(c => c.x >= Math.min(a.x0,b.x0)-60 && c.x <= Math.max(a.x1,b.x1)+60 && (c.y||0)>a.y && (c.y||0)<a.y+apex+65);
-      if (gap > (G.p.hasJetpack ? Math.max(MAX_REACH, 650) : MAX_REACH) || b.y - a.y > (G.p.hasJetpack ? Math.max(MAX_RISE, 650) : refill ? Math.max(MAX_RISE, apex*2.35+40) : MAX_RISE) || b.y < a.y - 700) continue;
+      if (gap > (G.p.hasJetpack ? Math.max(reachFor(a.y - b.y), 650) : reachFor(a.y - b.y)) || b.y - a.y > (G.p.hasJetpack ? Math.max(MAX_RISE, 650) : refill ? Math.max(MAX_RISE, apex*2.35+40) : MAX_RISE) || b.y < a.y - 700) continue;
       if (blockedBetween(a, b)) continue;
       out.push({ b, cost: 1 + gap / 300 + Math.abs(b.y - a.y) / 200 + hazardsBetween(front(a), back(b)) * 0.6 });
     }
@@ -843,9 +848,20 @@ export async function solveLevel(options) {
   }
 
   // ---- main drive, then replay to prove the route is real -------------------------
+  // The goal ledges. A level is left by a world door standing just short of its end, usually with a full-height
+  // wall between the door and the last few units of floor; seeding only ledges that reach past goalX picked that
+  // walled-off sliver, which nothing can reach, so every ledge in the level read as a dead end (distance
+  // Infinity) and the driver fell back to accepting only landings beyond its own ledge's front edge.
+  const GOAL_SLACK = goalKind === 'level-end' ? 400 : 0;
+  const goalSeeds = () => all.filter((l) => (front(l) - goalX) * travel >= -GOAL_SLACK);
   tas.saveState('bot-origin');
+  if (opt.debugGraph) {
+    rebuildGraph(goalSeeds);
+    const cur = standingOn();
+    return { cur: cur && key(cur), dcur: cur && distOf(cur), ledges: all.map((l) => ({ k: key(l), d: distOf(l), n: neighbours(l).map((r) => key(r.b)) })) };
+  }
   const main = drive({
-    direction: baseTravel, seeds: () => all.filter((l) => (front(l) - goalX) * travel >= 0), done: reachedGoal,
+    direction: baseTravel, seeds: goalSeeds, done: reachedGoal,
     point: () => ({ x: goalX, y: (standingOn() || { y: G.p.y || 0 }).y }),
     maxSegments: opt.maxSegments, allowBoundary: true, mechanisms: true, allowBlood: opt.allowBloodLoss, label: 'main',
   });
