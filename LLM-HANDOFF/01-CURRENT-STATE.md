@@ -1,3 +1,63 @@
+## 7.343.0: Explore route bot fixes; the Bellwing (2026-10-16, Claude, cloud session)
+
+**Why the Explore route bot found so few routes** (`scripts/bladefall-bot.mjs`):
+- **Three generic bugs,** fixed. Each one left the bot stuck at its first ledge ("every hop from the current ledge
+  failed"):
+  1. *Goal ledges behind the end wall.* The goal was "ledges reaching past the level's end". Levels end at a world
+     door with a full-height wall just behind it, so the only goal ledge was a walled-off sliver. No ledge could
+     reach it, every distance was Infinity, and the driver fell back to accepting only landings beyond its own
+     ledge's front edge. That fails on any long floor whose way on is up some stairs. Now ledges ending within 400
+     units of the end count.
+  2. *Reach ignored the drop.* A 300-unit gap off a 250-unit ledge read as uncrossable. Reach now adds the extra
+     fall time at full run.
+  3. *Progress thrown away on failure.* Backtracking banned each dead end back to the first ledge, then returned
+     that branch. Stage 1 went 4333 units and reported 210. The main drive now returns its furthest committed
+     branch.
+- **What still blocks full routes is level-specific:** scripted mechanisms the bot does not model.
+  - Stage 1 (and 22): the Oathblade is behind its ritual (the stump and counterweight steps), and the pits are
+    crossed by up-striking the resin blades.
+  - Stage 2: a full-height door worked by levers and a plate.
+  - Stage 4: portal-gated walls.
+  - Boss arenas.
+  - Each needs teaching the bot that mechanism, or a ● Record by hand. `solveLevel({debugGraph:true})` shows a
+    level's graph.
+- **Routes after a full rebuild** (budget 60000, --blood, from a worktree of the committed bot):
+  - Full: 0, 15, 35.
+  - Partial: 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 18, 19, 21, 23, 24, 25, 30, 39.
+  - New partials: 1, 2, 4, 6, 10, 11, 12, 23, 25, 30.
+  - Partials that now go further: 3, 5, 7, 8, 18, 19, 21, 24, 39.
+  - Still none: 9 (16%, under the builder's 20% bar), 13, 16, 17, 20, 22, 26–29, 31–34, 36–38, 40.
+  - Their ledge graphs break at the first gate (a Fractured start ledge connects to nothing); see the list above.
+  - I tried letting the graph take climbing switchback hops (Fractured Keep's west stair). It found nothing more,
+    because those gates need the level's mechanism anyway, so I left it out.
+
+**The Bellwing** (`public/bladefall-explore-mounts.js`, new):
+- **Earning it:** finish Rowan's "A Bell for the Camp" (the kind ending). The bronze drake from the old belfry then
+  roosts by the camp (x 1050).
+- **Riding it:** Up at the roost flies the knight high over the Outskirts and sets him down facing the Mothlight
+  Door (x 13440). The roost there (x 13330) flies him back. If the drake is at the other end, Up whistles it over.
+  Hold the way you are flying to hurry (9 s, or about 5 s hurried).
+- **How it works:**
+  - Roosts are interactables, like a side story's props.
+  - The flight holds the world still, like a gate walk, while the camera eases on and then locks.
+  - The drake is drawn in both renderers: the respec renderer's object loop and knight, and the classic draw.
+  - Rowan's thanks text names the reward.
+- **Never runs** under the TAS/watch rules (Watch, ● Record, route building), in co-op, or before the story is
+  finished. So routes, recordings and hashes are untouched.
+- **Check:** `npm run verify:mounts` (`scripts/explore/mount-check.mjs`): no roost before; ride there and back; none
+  under TAS; no page errors.
+- **Next (Isaac asked for one per quest):** ideas are in this session's chat. `MOUNTS[stage]` is the hook; a
+  region's entry needs roosts and a story id, and the flight is generic. Mounts that are not flights (a sled, a
+  handcar, a glider) need their own update and draw.
+
+**Checks:**
+- `npm run verify:explore-routes` PASS: 22 of 22 play through in the real Watch, on the final tree with the
+  Bellwing code.
+- `npm run verify:mounts` PASS.
+- `npm run build` PASS.
+- Unit tests: 117 pass, the same 15 failures as the 7.341.1 baseline (none new); the run hung at exit after the last test, so it has no closing summary.
+- **Not done:** human playtest of the flight's feel and the drake's art.
+
 ## 7.342.0: every Ascend room wears its world's look (2026-10-16, Claude, cloud session)
 
 Isaac: imported levels, superrooms and others broke away from their world's theme; each world should feel unique
