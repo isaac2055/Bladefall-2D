@@ -724,6 +724,12 @@ export async function solveLevel(options) {
     const stack = [{ save: tag + 'seg0', ledge: current, inputsBefore: winning.length }];
     tas.saveState(tag + 'seg0');
     let failure = null, backtracks = 0, lastTried = null, lastFrom = null;
+    // The furthest committed position along the drive. A stall makes the driver backtrack, banning each dead
+    // end, until it is back on its first ledge; returning that branch threw away everything it had crossed, so
+    // a level the bot got a third of the way through reported no progress at all. The main drive keeps the
+    // furthest branch instead, and returns it when it fails.
+    const progressOf = () => (G.p.x - stack[0].ledge.x) * travel;
+    let best = null;
 
     while (stack.length && solved.length < cfg.maxSegments) {
       if (totalExpansions >= opt.totalExpansions) { failure = { failedSegment: solved.length, reason: 'expansion budget exhausted', from: lastFrom, tried: lastTried }; break; }
@@ -834,12 +840,20 @@ export async function solveLevel(options) {
       const save = tag + 'seg' + stack.length;
       tas.saveState(save);
       stack.push({ save, ledge: advanced.ledge, inputsBefore: winning.length });
+      if (cfg.keepFurthest && G.p.onGround && !G.p.dead && (!best || progressOf() > best.progress)) {
+        tas.saveState(tag + 'best'); best = { progress: progressOf(), inputs: winning.slice(), solved: solved.slice() };
+      }
     }
-    // Return the committed branch, never the last failed search or popped route.
+    // Return the committed branch, never the last failed search or popped route; or, for the main drive, the
+    // furthest branch it committed if that got further.
     if (failure && stack.length) {
       const committed = stack[stack.length - 1];
       tas.restoreState(committed.save);
       winning.length = committed.inputsBefore;
+      if (best && best.progress > progressOf() + 40) {
+        tas.restoreState(tag + 'best'); winning.length = 0; winning.push(...best.inputs);
+        solved.length = 0; solved.push(...best.solved); failure.furthest = Math.round(best.progress);
+      }
     }
     const ok = cfg.done();
     if (!ok && !failure) failure = { failedSegment: solved.length, reason: stack.length ? 'segment limit reached' : 'no route', from: lastFrom, tried: lastTried };
@@ -863,7 +877,7 @@ export async function solveLevel(options) {
   const main = drive({
     direction: baseTravel, seeds: goalSeeds, done: reachedGoal,
     point: () => ({ x: goalX, y: (standingOn() || { y: G.p.y || 0 }).y }),
-    maxSegments: opt.maxSegments, allowBoundary: true, mechanisms: true, allowBlood: opt.allowBloodLoss, label: 'main',
+    maxSegments: opt.maxSegments, allowBoundary: true, mechanisms: true, allowBlood: opt.allowBloodLoss, label: 'main', keepFurthest: true,
   });
   const reached = tas.getPlayerState();
   const reachedState = tas.saveState('bot-result');
