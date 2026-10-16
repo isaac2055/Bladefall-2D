@@ -1,19 +1,19 @@
-# Handoff 7.344.0–7.345.0: quest shortcuts in every region (with a test mode and gallery), plan-driven Explore routes
+# Handoff 7.344.0–7.346.0: quest shortcuts in every region (two-way, earned by playing through; test mode and gallery), plan-driven Explore routes
 
 Written 2026-10-16 by Claude, in a cloud session. Everything below is on `main`. Give this file to the local LLM so it can bring the local/offline copy up to date and carry the work on.
 
 ## 1. Bringing the local/offline copy up to date
 
 1. Run `git pull origin main`. Everything is in the repo; nothing lives only in the cloud.
-2. Version **7.345.0**:
-   - `VERSION`, the `sw.js?v=` registration, and `?v=7.345.0` on `bladefall-explore-mounts.js`, in `public/index.html` and `public/sw.js`;
+2. Version **7.346.0**:
+   - `VERSION`, the `sw.js?v=` registration, and `?v=7.346.0` on `bladefall-explore-mounts.js`, in `public/index.html` and `public/sw.js`;
    - `bladefall-explore-routes.js` stays at `?v=7.344.0`;
-   - `CACHE_NAME = 'bladefall-v514-shortcut-gallery'`.
+   - `CACHE_NAME = 'bladefall-v515-two-way-shortcuts'`.
 3. The APK was not rebuilt, because the cloud container has no Android SDK. The download link still points at v7.341.0.
-   - If the local machine can build the APK, build and release v7.345.0, then point `#apkBtn`'s href in `public/index.html` at it.
+   - If the local machine can build the APK, build and release v7.346.0, then point `#apkBtn`'s href in `public/index.html` at it.
 4. Checks worth running locally (each serves `public/` itself):
-   - `npm run verify:mounts`: the Bellwing, plus Mara's chart.
-   - `npm run verify:mounts-tour`: all 19 other regions' shortcuts.
+   - `npm run verify:mounts`: the Bellwing, Mara's chart, and the perch kept across a reload and in the save.
+   - `npm run verify:mounts-tour`: the other 18 regions' shortcuts: home roost first, then both ways, and where each mount ends up perched.
    - `npm run verify:mounts-test-mode`: the five-tap test mode and the gallery (7.345).
    - `npm run verify:explore-routes`: re-watches every stored route in the real Watch.
    - `npm run verify:looks`: Ascend themes from 7.342.
@@ -29,13 +29,13 @@ Test: `scripts/explore/mount-check.mjs`.
 ### b. A quest shortcut for every region (`public/bladefall-explore-mounts.js`)
 
 Finishing a region's side story (the kind ending, phase `completed`) installs that region's shortcut.
-- Each shortcut has two roosts: one by the quest giver, one near the region's far end. Up at either one rides to the other.
+- Each shortcut has two roosts. Up at either one rides to the other. **Where the roosts are, and when they open, changed in 7.346; see section b3.**
 - There are three kinds:
   - **flight**: a creature or vehicle carries the knight over the level.
   - **zip**: a line.
   - **blink**: a door, gate or hatch that skips ahead.
 - Before the abilities the region grants are held, the roost answers "Not yet…", so a shortcut never skips an ability pickup.
-- **The Deep Line (15)** is a cart level. Its handcar is offered as the stage loads instead: press Up in the first ~7 s.
+- **The Deep Line (15)** has no shortcut since 7.346, because the cart is the ride. The handcar, which used to be offered at load, was removed.
 - Shortcuts are never installed under the TAS/Watch rules, so routes stay honest.
 
 | Stage | Shortcut | Story id | Kind |
@@ -54,7 +54,6 @@ Finishing a region's side story (the kind ending, phase `completed`) installs th
 | 11 | The Ceiling Way | neighbors | blink |
 | 12 | The Other Side | figure | blink |
 | 13 | The Last Alarm | alarm | blink |
-| 15 | The Miner's Handcar | miner | blink (offer at load) |
 | 16 | The Sailors' Skiff | sailors | flight |
 | 17 | The Birthday Rocket | birthday | flight |
 | 18 | The Paper Crane | mother | flight |
@@ -64,7 +63,7 @@ Finishing a region's side story (the kind ending, phase `completed`) installs th
 **Owner decision pending.** Some regions already had a shortcut, for example Updrafts' own. The owner asked that the new quest shortcuts be added *alongside* existing ones for now. Where an old and a new shortcut cover similar distances, one should eventually go (usually the old one), **but only after asking the owner**. Nothing existing was removed.
 
 Tests:
-- `scripts/explore/mounts-tour.mjs [stage…] [--shots dir]`: the gate refusal, the ride there and back, and the offer mode on 15.
+- `scripts/explore/mounts-tour.mjs [stage…] [--shots dir]`: only the home roost until it's reached, the gate refusal, the ride there and back, and the perch.
 - `scripts/explore/mount-check.mjs`.
 
 ### b2. Shortcut test mode and gallery (7.345.0)
@@ -81,7 +80,67 @@ Tests:
   - start → destination;
   - the side story that earns it, and its intro line.
   - It works without the test mode. CSS class `.card.scgallery` widens the overlay; the grid falls to one column on phones.
-- **Test:** `scripts/explore/mounts-test-mode.mjs [--shots dir]`. It covers the 4 taps vs 5, the tab mark, all 20 regions in level-select runs with no story, none in a campaign run, the 20 gallery pictures drawn, and turning it off. It passes.
+- **Test:** `scripts/explore/mounts-test-mode.mjs [--shots dir]`. It covers the 4 taps vs 5, the tab mark, all 19 regions with a shortcut in level-select runs with no story, none in a campaign run, the 19 gallery pictures drawn, and turning it off. It passes.
+
+### b3. Two-way shortcuts, and only the Outskirts skippable on a first visit (7.346.0)
+
+The owner's design goals:
+- The Outskirts are a long, plain walk, so they may be skipped as soon as the quest is done.
+- Every other region has to be played through first. Its shortcut is there to make backtracking quick, and it rewards finishing the quest.
+- Every shortcut runs both ways.
+- The Deep Line needs no shortcut.
+
+**Rules, in `public/bladefall-explore-mounts.js`:**
+- **Home roost** is `roosts[0]`, at the region's far end in the direction it is walked:
+  - `near:'end'`: the exit;
+  - `near:'arena'`: the edge of the boss's arena while the boss stands. Once the boss has fallen, `resolve()` falls back to `'end'`, by the exit.
+  - The mount first waits here.
+- **Entrance roost** is `roosts[1]`, at `near:'start'`, the region's entrance.
+- **Unlock:** finishing the side story installs only the home roost. The entrance roost appears once the knight has stood at the home roost on foot (`noteReached()`, within 240×160, on the ground), which means having played the region to its end. A toast says "The way back is open".
+  - Reaching the home roost counts even before the story is finished, because `G.mountHome` is tracked regardless.
+  - The Outskirts are the exception: `opened()` is always true for stage 0, so the Bellwing waits by the camp and can skip the walk at once.
+- **Both ways, and perched where it lands:** flights (creatures and craft) are a single mount, perched where it last set the knight down.
+  - At the empty roost, Up offers to call it over ("↑ WHISTLE" for the drakes, "↑ CALL IT OVER" for the others) and then ride.
+  - Zips (lines) and blinks (passages and doors) are fixed structures and work from both ends.
+- **Persistence:**
+  - In the campaign: `meta.mounts = {perch:{stage:roostId}, reached:{stage:true}}`, which is saved.
+  - In a level-select run: `G.sessionMounts`, carried by `savedRunSession` in index.html.
+  - So fly the Bellwing to the Mothlight Door, and it is still perched there when you come back from Black Woods to backtrack.
+- Test mode (b2) opens every entrance roost too. The "Not yet" ability gate still applies outside test mode.
+
+**Per region (base):**
+
+| # | Region | Shortcut | Home roost (waits here; reached on foot opens the way back) | Entrance roost | Notes |
+|---|---|---|---|---|---|
+| 0 | Outskirts | Bellwing | the camp (x 1050) | the Mothlight Door (13330) | The only one skippable at once. Flying to the door also grants Mara's chart. |
+| 1 | Black Woods | Mothlight Swarm | the Brute Road (end, ~11700) | the woods' edge (~1080) | Oathblade first: the ability gate, plus reaching the end. |
+| 2 | Broken Causeway | Silas's Chain Trolley | Chainwake Camp (arena edge, east) | the causeway's west end | Rides east → west, then back. Possible double: the causeway repair door (5360). |
+| 3 | The Updrafts | Cartographer's Kite | the canyon's end (~17300) | the canyon mouth (~230) | Possible double: Updrafts' own return shortcut (the owner mentioned it). |
+| 4 | Hollow Marksman | Recruit's Rope Arrow | the Marksman's ridge (arena edge) | the trailhead | |
+| 5 | Ruined Keep | Archivist's Postern | the Keep's far wall (~17300) | the gatehouse | Possible doubles: keep-weight / belfry-fold. |
+| 6 | The Warden (walked west) | Keeper's Service Way | the Gaol's west yard (arena, ~3020) | the Eastern Crown (~14400) | |
+| 7 | Frostfell | Perfect-Day Sled | the summit road (~14220, y 650) | the warden's gate (~600) | **Double:** the muster engine ring (1330 ↔ 7220 ↔ 14680) covers the same distance. Ask the owner which to keep. |
+| 8 | Frost Sorcerer | Rime Drake | the Court's last stair (arena) | the sluice | |
+| 9 | Emberdeep | Quota Cart | the Deep Stair (~15700) | the mine head (~600, y 640) | |
+| 10 | Ember Colossus | Automaton's Throw | the last bay (arena) | the foundry gate | |
+| 11 | The Inversion (walked west) | Ceiling Way | the west gate (~700) | the Fall In (~15650, y 1200) | |
+| 12 | Void Tyrant (walked west) | The Other Side | the Tyrant's hall (arena, ~1490) | the east gate (~16400) | |
+| 13 | Abyss King | The Last Alarm | the throne road (King's arena edge, ~4770; by the rail head once he falls) | the Throne's gate | |
+| 15 | The Deep Line | none | | | The cart is the ride. |
+| 16 | Thunder Cliffs | Sailors' Skiff | the hydra's water (arena) | the cliff landing | |
+| 17 | Landing Shores | Birthday Rocket | the far shore (~12100, y 720) | the landing beach | |
+| 18 | The Colony | Paper Crane | the road gate (~10100) | the Colony gate | |
+| 19 | Path to the Palace | Pilgrim's Feather Cloak | the palace steps (~9700, y 770) | the palace road | |
+| 20 | Sunspire Palace | Moonflower | the Day King's court (arena) | the palace gate | |
+
+Positions are what the tour measured in a level-select run; boss levels were measured with the boss alive. **Doubles are not removed**: per the owner, remove one only after asking them.
+
+Ideas not used, if a region needs more locking later:
+- an entrance roost that needs an item found near the end;
+- a checkpoint flag.
+
+The current rule, reaching the home roost on foot, already means the region has been played through.
+
 
 
 
@@ -152,7 +211,7 @@ Workflow that worked, per level:
 
 ## 3. Files touched in this stretch
 
-- `public/bladefall-explore-mounts.js` (7.345: test mode, `preview`)
+- `public/bladefall-explore-mounts.js` (7.345: test mode, `preview`; 7.346: home and entrance roosts, `store()`/`perchOf()`/`noteReached()`/`placeRoosts()`, no Deep Line)
 - `public/bladefall-side-story-world.js`
 - `public/bladefall-respec-renderer.js`
 - `public/index.html`: Watch finish routes, mount hooks, version, and (7.345) the Base 5-tap toggle, the ✦ line, the gallery button, `openShortcutGallery()` and `.card.scgallery`.

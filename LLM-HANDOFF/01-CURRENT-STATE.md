@@ -1,3 +1,10 @@
+## 7.346.0: two-way quest shortcuts; only the Outskirts skippable at first (2026-10-16, Claude, cloud session)
+
+- **Every shortcut runs both ways.** A flying mount stays perched where it set you down, in the save or the level-select session; Up at the empty roost calls it over. Lines and passages work from both ends.
+- **Home roosts moved.** Every region except the Outskirts now has its home roost at its far end (the exit, or the boss-arena edge while the boss lives). The entrance roost opens only after you have reached the home roost on foot, so each region has to be played through first. The Outskirts' Bellwing still waits by the camp.
+- **The Deep Line's shortcut was removed.**
+- **Details and the per-region table:** `LLM-HANDOFF/HANDOFF-7.344.0.md`, section 2.b3. It also lists possible doubles with older shortcuts (Frostfell's muster ring, Updrafts, the causeway door, the Keep). None was removed; the owner decides.
+
 ## 7.345.0: shortcut test mode and gallery (2026-10-16, Claude, cloud session)
 
 - **Test mode:** Level Select, tap Base 5× within 3 s to toggle it (the tab shows "Base ✦"). Level-select runs then get every region's quest shortcut with no side story and no ability gate. Campaign runs are unaffected, and the setting is kept per device.
