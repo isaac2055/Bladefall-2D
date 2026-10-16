@@ -1,7 +1,7 @@
 // Quest mounts (7.343, public/bladefall-explore-mounts.js), in a real browser:
 //   - before "A Bell for the Camp" is finished there is no roost in the Outskirts;
 //   - finished, the Bellwing roosts by the camp; Up there offers the flight, and it sets the knight down facing
-//     the Mothlight Door; from the roost there it flies him back to the camp;
+//     the Mothlight Door; it stays perched there (across a stage reload, and in the save), and flies him back;
 //   - the flight does Mara's survey: her three bearings aligned and her field chart granted;
 //   - under the TAS/watch rules (Watch, ● Record, route building) there is no roost even when finished.
 //   node scripts/explore/mount-check.mjs            (serves public/ itself)
@@ -38,7 +38,7 @@ async function ride(page,from){
  assert.ok(clicked,'flight offered at the '+from+' roost');
  const t0=Date.now();let high=0;
  while(Date.now()-t0<20000){await sleep(250);const s=await page.evaluate(()=>({f:!!G.mountFlight,y:G.p.y}));high=Math.max(high,s.y);if(!s.f&&Date.now()-t0>2000)break;}
- return {clicked,high,...await page.evaluate(()=>({x:Math.round(G.p.x),face:G.p.face,mode,at:G.mountAt,dead:G.p.dead}))};
+ return {clicked,high,...await page.evaluate(()=>({x:Math.round(G.p.x),face:G.p.face,mode,at:BladefallMounts.perch(),dead:G.p.dead}))};
 }
 
 const page=await open('?nosw=1');
@@ -55,8 +55,14 @@ const chart=await page.evaluate(()=>({chart:!!meta.outskirtsFieldChart,aligned:G
  stakes:G.obstacles.filter(o=>o.type==='surveyStake').length,maraDone:!!(G.npcs||[]).find(n=>n.kind==='survey')?.done}));
 assert.ok(chart.stakes>=3&&chart.aligned===chart.stakes,'all bearings aligned ('+chart.aligned+'/'+chart.stakes+')');
 assert.ok(chart.chart&&chart.maraDone,'Mara\'s field chart granted');
+// It stays perched at the door: leave the Outskirts and come back, and it is still there to ride back west.
+const kept=await page.evaluate(()=>{loadStage(0);BladefallMounts.install();return {perch:BladefallMounts.perch(),roosts:G.obstacles.filter(o=>o.mountRoost).length};});
+assert.equal(kept.perch,'door','still perched at the door after the stage reloads');assert.equal(kept.roosts,2);
 const back=await ride(page,'door');
 assert.equal(back.at,'camp');assert.ok(back.x<1200,'back at the camp (x='+back.x+')');
+// A campaign keeps the perch in the save.
+const saved=await page.evaluate(()=>{const was=meta.mounts;meta.mounts={perch:{0:'door'},reached:{}};persist();const back=loadSave().mounts;meta.mounts=was;persist();return back;});
+assert.equal(saved?.perch?.[0],'door','the save keeps where the Bellwing is perched');
 await page.close();
 
 // Under the TAS rules the roost is never installed.
@@ -66,4 +72,4 @@ await finish(tas);
 assert.deepEqual(await roosts(tas),[],'no roost under the TAS/watch rules');
 await browser.close();server.close();
 assert.deepEqual(errors,[],'page errors');
-console.log(`PASS: no roost before the story; the Bellwing flew camp → Mothlight Door (x=${out.x}, up to ${Math.round(out.high)}), aligned ${chart.aligned}/${chart.stakes} bearings and granted Mara's chart, and flew back (x=${back.x}); none under TAS rules; no page errors.`);
+console.log(`PASS: no roost before the story; the Bellwing flew camp → Mothlight Door (x=${out.x}, up to ${Math.round(out.high)}), aligned ${chart.aligned}/${chart.stakes} bearings and granted Mara's chart, stayed perched at the door across a reload (and in the save), and flew back (x=${back.x}); none under TAS rules; no page errors.`);

@@ -12,7 +12,16 @@
 
    A ride is a short cinematic: the world holds still, as for a gate walk. It opens only when the story is
    finished (its kind ending) and the region's own ability is yours (the Oathblade before the moths will lift
-   you, Dash before Silas's trolley), so a shortcut never skips what the region gives. Nothing here runs under
+   you, Dash before Silas's trolley), so a shortcut never skips what the region gives.
+
+   NOTHING BUT THE OUTSKIRTS IS SKIPPED THE FIRST TIME (Isaac, 7.346). The Outskirts are a long walk of plain
+   jumps, so the Bellwing waits by the camp and may fly you past them at once. Everywhere else the shortcut is
+   for coming back: its home roost is at the region's far end (the exit, or the edge of the boss's arena while
+   the boss stands), the mount waits there, and the other roost (at the region's entrance) only opens once
+   you have stood at the home roost on foot, which means having played the region through to its end. Every
+   shortcut runs both ways, and a mount that travels stays where it set you down: fly the Bellwing to the
+   Mothlight Door and it is perched there when you come back to backtrack; at the empty roost, Up calls it
+   over. Lines and passages (zip, blink) are fixed at both ends. The Deep Line has none: the cart is the ride. Nothing here runs under
    the watch/TAS rules (Watch, ● Record, route building), in co-op, or in a boss rush, so routes, recordings and
    the shared session never see it. Hold the way you are going to hurry a flight or a zip. */
 (function(root){
@@ -30,7 +39,7 @@ const MOUNTS={
   // flight does her survey and the chart is yours without walking back to the Muster (Isaac, 7.344).
   arrive:to=>to.id==='door'&&outskirtsSurveyFromTheAir()},
  1:{id:'moths',name:'The Mothlight Swarm',story:'refuge',accent:'#c4ecd0',kind:'flight',art:'moths',seat:-62,cruise:330,speed:1250,
-  roosts:[{id:'kitchen',near:'actor',off:280,label:'Elsie’s kitchen'},{id:'far',near:'end',label:'the Brute Road'}],
+  roosts:[{id:'far',near:'end',label:'the Brute Road'},{id:'edge',near:'start',label:'the woods’ edge'}],
   verb:'↑  CALL THE MOTHS',go:'Ride the moths to',
   intro:'Elsie’s lantern draws the woods’ moths in clouds now that it hangs right. Hold up the light and enough of them will lift you over the canopy.'},
  2:{id:'trolley',name:'Silas’s Chain Trolley',story:'defector',accent:'#d59a68',kind:'zip',art:'zip',speed:1300,
@@ -38,73 +47,67 @@ const MOUNTS={
   verb:'↑  RIDE THE CHAIN',go:'Ride the chain to',
   intro:'Silas ran the old maintenance chain from the camp to the causeway’s far end. “It counts its own links now. Hold on and it will take you.”'},
  3:{id:'kite',name:'The Cartographer’s Kite',story:'cartographer',accent:'#9fe0ff',kind:'flight',art:'kite',seat:-70,cruise:420,speed:1250,
-  roosts:[{id:'desk',near:'actor',off:350,label:'the Cartographer’s desk'},{id:'far',near:'end',label:'the canyon’s end'}],
+  roosts:[{id:'far',near:'end',label:'the canyon’s end'},{id:'mouth',near:'start',label:'the canyon mouth'}],
   verb:'↑  TAKE THE KITE',go:'Kite to',
   intro:'The Cartographer’s survey kite, its frame mended and the spar re-strung. On this wind it will carry a knight the length of the canyon.'},
  4:{id:'arrow',name:'The Recruit’s Rope Arrow',story:'recruit',accent:'#c8b07a',kind:'zip',art:'zip',speed:1350,
-  roosts:[{id:'camp',near:'actor',off:300,label:'the Recruit’s camp'},{id:'far',near:'arena',label:'the Marksman’s ridge'}],
+  roosts:[{id:'far',near:'arena',label:'the Marksman’s ridge'},{id:'trail',near:'start',label:'the trailhead'}],
   verb:'↑  RIDE THE LINE',go:'Ride the line to',
   intro:'The Recruit’s rope arrow, shot clean across to the ridge. A line strung like that will take your weight.'},
  5:{id:'postern',name:'The Archivist’s Postern',story:'archivist',accent:'#b8c0d8',kind:'blink',art:'door',
-  roosts:[{id:'hearth',near:'actor',off:300,label:'the gatehouse hearth'},{id:'far',near:'end',label:'the Keep’s far wall'}],
+  roosts:[{id:'far',near:'end',label:'the Keep’s far wall'},{id:'gate',near:'start',label:'the gatehouse'}],
   verb:'↑  USE THE POSTERN',go:'Take the passage to',
   intro:'The Archivist’s key fits the old postern. The records call it the servants’ way: it runs inside the walls from the gatehouse to the far end of the Keep.'},
  6:{id:'service',name:'The Keeper’s Service Way',story:'keeper',accent:'#9fb8b0',kind:'blink',art:'gate',
-  roosts:[{id:'camp',near:'actor',off:350,label:'the Keeper’s post'},{id:'far',near:'start',label:'the Eastern Crown'}],
+  roosts:[{id:'far',near:'arena',label:'the Gaol’s west yard'},{id:'crown',near:'start',label:'the Eastern Crown'}],
   verb:'↑  TAKE THE SERVICE WAY',go:'Take the service way to',
   intro:'The Service Keeper stood aside and left the grille unlocked. Behind it, a passage the jailers used, the length of the Gaol.'},
  7:{id:'sled',name:'The Perfect-Day Sled',story:'winter',accent:'#e0f0ff',kind:'flight',art:'sled',seat:8,cruise:150,speed:1350,
-  roosts:[{id:'refuge',near:'actor',off:300,label:'the banked refuge'},{id:'far',near:'end',label:'the high street'}],
+  roosts:[{id:'far',near:'end',label:'the summit road'},{id:'gate',near:'start',label:'the warden’s gate'}],
   verb:'↑  TAKE THE SLED',go:'Sled to',
   intro:'Her sled from the perfect day, waxed and ready. Push off and it will run you the whole of Frostfell.'},
- 8:{id:'rime',name:'The Rime Drake',story:'ember-pet',accent:'#bfe4ff',kind:'flight',art:'rime',seat:15,cruise:400,speed:1350,follows:true,
-  roosts:[{id:'refuge',near:'actor',off:350,label:'the sluice refuge'},{id:'far',near:'arena',label:'the Court’s last stair'}],
+ 8:{id:'rime',name:'The Rime Drake',story:'ember-pet',accent:'#bfe4ff',kind:'flight',art:'rime',creature:true,seat:15,cruise:400,speed:1350,
+  roosts:[{id:'far',near:'arena',label:'the Court’s last stair'},{id:'sluice',near:'start',label:'the sluice'}],
   verb:'↑  RIDE THE RIME DRAKE',go:'Fly to',
   intro:'The little winter you kept is not little any more. It follows you through the Court and will carry you if you climb on.'},
  9:{id:'ore',name:'The Quota Cart',story:'quota',accent:'#ff9a4a',kind:'blink',art:'cart',
-  roosts:[{id:'yard',near:'actor',off:350,label:'the workers’ yard'},{id:'far',near:'end',label:'the Deep Stair'}],
+  roosts:[{id:'far',near:'end',label:'the Deep Stair'},{id:'head',near:'start',label:'the mine head'}],
   verb:'↑  RIDE THE CART',go:'Ride the cart to',
   intro:'The workers kept one ore cart off the quota for you. The line runs through the dark the length of Emberdeep.'},
- 10:{id:'throw',name:'The Automaton’s Throw',story:'automaton',accent:'#ffc070',kind:'flight',art:'throw',seat:0,cruise:360,speed:1500,follows:true,
-  roosts:[{id:'yard',near:'actor',off:350,label:'the casting yard'},{id:'far',near:'arena',label:'the last bay'}],
+ 10:{id:'throw',name:'The Automaton’s Throw',story:'automaton',accent:'#ffc070',kind:'flight',art:'throw',seat:0,cruise:360,speed:1500,
+  roosts:[{id:'far',near:'arena',label:'the last bay'},{id:'gate',near:'start',label:'the foundry gate'}],
   verb:'↑  ASK FOR A THROW',go:'Be thrown to',
   intro:'The war automaton has found small work it likes: throwing you. It braces, cups its hands and waits.'},
  11:{id:'ceiling',name:'The Ceiling Way',story:'neighbors',accent:'#c9a0ff',kind:'blink',art:'hatch',
-  roosts:[{id:'flat',near:'actor',off:-400,label:'the neighbours’ flat'},{id:'far',near:'end',label:'the west gate'}],
+  roosts:[{id:'far',near:'end',label:'the west gate'},{id:'fall',near:'start',label:'the Fall In'}],
   verb:'↑  TAKE THE CEILING WAY',go:'Walk the ceiling to',
   intro:'The neighbours took tea on the ceiling and showed you their way up. Upside down, the Inversion is one long corridor.'},
  12:{id:'mirror',name:'The Other Side',story:'figure',accent:'#d6b0ff',kind:'blink',art:'mirror',
-  roosts:[{id:'refuge',near:'actor',off:350,label:'the Figure’s refuge'},{id:'far',near:'start',label:'the east gate'}],
+  roosts:[{id:'far',near:'arena',label:'the Tyrant’s hall'},{id:'east',near:'start',label:'the east gate'}],
   verb:'↑  STEP THROUGH',go:'Step through to',
   intro:'The Figure’s mirror. Its other side is the far end of the Citadel; it says the glass remembers you now.'},
  13:{id:'alarm',name:'The Last Alarm',story:'alarm',accent:'#c9b8ff',kind:'blink',art:'bell',
-  roosts:[{id:'post',near:'actor',off:300,label:'the Bellkeeper’s post'},{id:'far',near:'arena',label:'the throne road'}],
+  roosts:[{id:'far',near:'arena',label:'the throne road'},{id:'gate',near:'start',label:'the Throne’s gate'}],
   verb:'↑  RING THE ALARM',go:'Ring and go to',
   intro:'The Bellkeeper’s last alarm. Ring it and every door on the throne road opens for one breath.'},
- // The Deep Line is ridden in a cart from the first frame, so nobody stands at a roost there: while the cart
- // sets off, Up takes the handcar instead, and the cart rolls on to the end from where it sets you down.
- 15:{id:'handcar',name:'The Miner’s Handcar',story:'miner',accent:'#ffe07a',kind:'blink',art:'handcar',offer:true,
-  roosts:[{id:'head',near:'start',label:'the line head'},{id:'far',near:'end',label:'the end of the line'}],
-  verb:'↑  PUMP THE HANDCAR',go:'Ride the handcar to',
-  intro:'The miner’s handcar, found again below the bell. It runs the whole Deep Line on its own track.'},
  16:{id:'skiff',name:'The Sailors’ Skiff',story:'sailors',accent:'#a8dcff',kind:'flight',art:'skiff',seat:12,cruise:110,speed:1250,
-  roosts:[{id:'push-off',near:'actor',off:350,label:'the push-off'},{id:'far',near:'arena',label:'the hydra’s water'}],
+  roosts:[{id:'far',near:'arena',label:'the hydra’s water'},{id:'landing',near:'start',label:'the cliff landing'}],
   verb:'↑  TAKE THE SKIFF',go:'Sail to',
   intro:'The sailors’ skiff, for luck. It runs before any wind along these cliffs.'},
  17:{id:'rocket',name:'The Birthday Rocket',story:'birthday',accent:'#ffd070',kind:'flight',art:'rocket',seat:10,cruise:520,speed:1500,
-  roosts:[{id:'party',near:'actor',off:350,label:'the party'},{id:'far',near:'end',label:'the far shore'}],
+  roosts:[{id:'far',near:'end',label:'the far shore'},{id:'beach',near:'start',label:'the landing beach'}],
   verb:'↑  LIGHT THE ROCKET',go:'Launch to',
   intro:'The biggest rocket from the party, saved for you. All at once, the Organizer says: light it and hold on.'},
  18:{id:'crane',name:'The Paper Crane',story:'mother',accent:'#f0e6d0',kind:'flight',art:'crane',seat:14,cruise:380,speed:1250,
-  roosts:[{id:'home',near:'actor',off:350,label:'the Mother’s home'},{id:'far',near:'start',label:'the Colony gate'}],
+  roosts:[{id:'far',near:'end',label:'the road gate'},{id:'gate',near:'start',label:'the Colony gate'}],
   verb:'↑  RIDE THE CRANE',go:'Fly the crane to',
   intro:'Her child folded a paper crane for you, and in the Colony that is enough: it unfolds big enough to carry you.'},
  19:{id:'cloak',name:'The Pilgrim’s Feather Cloak',story:'pilgrim',accent:'#fff0c0',kind:'flight',art:'cloak',seat:0,cruise:360,speed:1150,
-  roosts:[{id:'shrine',near:'actor',off:350,label:'the pilgrims’ shrine'},{id:'far',near:'end',label:'the palace steps'}],
+  roosts:[{id:'far',near:'end',label:'the palace steps'},{id:'road',near:'start',label:'the palace road'}],
   verb:'↑  WEAR THE CLOAK',go:'Glide to',
   intro:'The lightest pilgrim’s feather cloak. Jump from the shrine wall and the road will pass beneath you.'},
  20:{id:'moonflower',name:'The Moonflower',story:'garden',accent:'#e8f0ff',kind:'flight',art:'seed',seat:-64,cruise:400,speed:1150,
-  roosts:[{id:'garden',near:'actor',off:350,label:'the night garden'},{id:'far',near:'arena',label:'the Day King’s court'}],
+  roosts:[{id:'far',near:'arena',label:'the Day King’s court'},{id:'gate',near:'start',label:'the palace gate'}],
   verb:'↑  TAKE THE MOONFLOWER',go:'Float to',
   intro:'A moonflower from the night garden, gone to seed. Its pod lifts at dusk and drifts where you point it.'},
 };
@@ -124,6 +127,18 @@ function earned(m){
  try{return root.BladefallSideStories.row(root.BladefallSideStoryWorld.state(),m.story).phase==='completed';}catch(e){return false;}
 }
 const usable=()=>!watchLike()&&!G.coopSession&&!G.bossRush;
+/* Where each region's mount is perched and whether its home roost has been reached on foot. A campaign keeps
+   them in the save (meta.mounts); a level-select run keeps them for the session (G.sessionMounts, carried by
+   savedRunSession), like its side stories. */
+function store(){
+ if(G.levelSelectMode)return G.sessionMounts||(G.sessionMounts={perch:{},reached:{}});
+ if(typeof meta==='undefined')return G.mountStore||(G.mountStore={perch:{},reached:{}});
+ const s=meta.mounts||(meta.mounts={});s.perch=s.perch||{};s.reached=s.reached||{};return s;
+}
+const keep=()=>{if(!G.levelSelectMode&&typeof persist==='function')persist();};
+const travels=m=>m.kind==='flight';   // a creature or craft: one of it, wherever it last set you down
+const perchOf=m=>store().perch[G.stageIndex]||G.mountRoosts?.[0]?.id;
+const opened=()=>G.stageIndex===0||testing()||!!store().reached[G.stageIndex];
 // What this region gives (its own ability) must already be yours.
 function missing(){
  if(testing())return [];
@@ -180,9 +195,11 @@ function resolve(m){
  const actor=G.obstacles.find(o=>o.sideStoryRole==='actor');
  const out=[];
  for(const r of m.roosts){
-  let t=r.near==='actor'?(actor?actor.x:null):r.near==='end'?(fwd>0?len-700:700):r.near==='start'?(fwd>0?600:len-600):r.near==='arena'?bossEdge(fwd):r.near;
+  // A fallen boss leaves the home roost by the region's exit instead of short of its arena.
+  const arena=r.near==='arena'?bossEdge(fwd):null,near=r.near==='arena'&&arena==null?'end':r.near;
+  let t=near==='actor'?(actor?actor.x:null):near==='end'?(fwd>0?len-700:700):near==='start'?(fwd>0?600:len-600):near==='arena'?arena:near;
   if(t==null)return null;
-  if(r.near==='actor')t+=(r.off||0)*fwd;else if(r.near==='arena')t-=fwd*320;
+  if(near==='actor')t+=(r.off||0)*fwd;else if(near==='arena')t-=fwd*320;
   const s=spot(t,r.near==='actor'?actor.y||0:null);if(!s)return null;
   out.push({...r,x:s.x,y:s.y,x0:s.x0,x1:s.x1});
  }
@@ -191,25 +208,35 @@ function resolve(m){
 }
 function install(){
  if(!ok())return;
- G.obstacles=G.obstacles.filter(o=>!o.mountRoost);G.mountFlight=null;G.mountRoosts=null;G.mountOffer=null;
- const m=mount();if(!m||!usable()||!earned(m))return;
+ G.obstacles=G.obstacles.filter(o=>!o.mountRoost);G.mountFlight=null;G.mountRoosts=null;G.mountHome=null;
+ const m=mount();if(!m||!usable())return;
  const roosts=resolve(m);if(!roosts)return;
+ // Reaching the home roost on foot counts whether or not the story is finished yet.
+ G.mountHome=roosts[0];
+ if(!earned(m))return;
  G.mountRoosts=roosts;
- if(m.offer){
-  if(missing().length)return;
-  G.mountOffer={until:(G.time||0)+7};
-  if(typeof toast==='function')toast('<b style="color:'+m.accent+'">'+m.name.toUpperCase()+'</b><br>Press ↑ to take it to '+roosts[1].label+'.',6500);
-  return;
- }
- if(m.creature)G.mountAt=G.mountAt&&roosts.some(r=>r.id===G.mountAt)?G.mountAt:roosts[0].id;
- for(const r of roosts)G.obstacles.push({type:'mountRoost',mountRoost:r.id,mount:m.id,x:r.x,y:r.y,w:96,h:70,accent:m.accent});
+ const st=store();if(!roosts.some(r=>r.id===st.perch[G.stageIndex]))st.perch[G.stageIndex]=roosts[0].id;
+ placeRoosts();
+}
+// The home roost always; the far one once the region has been played to its end (the Outskirts at once).
+function placeRoosts(){
+ const m=mount();G.obstacles=G.obstacles.filter(o=>!o.mountRoost);
+ for(const r of opened()?G.mountRoosts:[G.mountRoosts[0]])G.obstacles.push({type:'mountRoost',mountRoost:r.id,mount:m.id,x:r.x,y:r.y,w:96,h:70,accent:m.accent});
+}
+function noteReached(){
+ const h=G.mountHome;if(!h||G.mountFlight||G.p.dead||store().reached[G.stageIndex])return;
+ if(Math.abs(G.p.x-h.x)>240||Math.abs((G.p.y||0)-h.y)>160||!G.p.onGround)return;
+ store().reached[G.stageIndex]=true;keep();
+ const m=mount();if(!G.mountRoosts)return;
+ placeRoosts();
+ if(typeof toast==='function')toast('<b style="color:'+m.accent+'">'+m.name.toUpperCase()+'</b><br>The way back is open: ↑ here to '+G.mountRoosts[1].label+'.',4200);
 }
 const roostOf=o=>G.mountRoosts?.find(r=>r.id===o.mountRoost)||null;
 const otherOf=r=>G.mountRoosts?.find(x=>x.id===r.flyTo)||null;
 function interactable(o){return !!(mount()&&roostOf(o)&&!G.mountFlight&&usable());}
 function prompt(o){
  const m=mount();
- if(m.creature&&G.mountAt!==o.mountRoost)return '↑  WHISTLE';
+ if(travels(m)&&perchOf(m)!==o.mountRoost)return m.creature?'↑  WHISTLE':'↑  CALL IT OVER';
  return m.verb||'↑  RIDE THE '+m.name.replace(/^The /,'').toUpperCase();
 }
 function panel(m,text,choices){
@@ -224,8 +251,9 @@ function interact(o){
  const to=otherOf(r);if(!to)return false;
  const lacking=missing();
  if(lacking.length)return panel(m,'Not yet. '+m.name.replace(/^The /,'the ').replace(/^./,ch=>ch.toUpperCase())+' waits until this region has given you what it keeps: '+lacking.map(abilityName).join(', ')+'.',[{label:'Leave',action:()=>BladefallConversation.close()}]);
- const here=!m.creature||G.mountAt===r.id;
- const text=here?m.intro+(m.creature?' It shakes out its wings and looks toward '+to.label+'.':''):'You whistle. Somewhere far down the road, wings open.';
+ const here=!travels(m)||perchOf(m)===r.id;
+ const text=here?m.intro+(m.creature?' It shakes out its wings and looks toward '+to.label+'.':''):
+  m.creature?'You whistle. Somewhere far down the road, wings open.':m.name.replace(/^The /,'The ')+' waits at '+to.label+'. Call it over?';
  return panel(m,text,[
   {label:(m.go||'Fly to')+' '+to.label,action:()=>{BladefallConversation.close();start(m,r,to,!here);}},
   {label:'Not now',action:()=>{if(!here)G.mountFlight={kind:'arrive',roost:r,t:0,dur:1.6,dir:r.x<G.levelLength/2?1:-1};BladefallConversation.close();}},
@@ -246,19 +274,12 @@ function start(m,from,to,arriving){
   cruise:Math.min(m.cruise||300,Math.round(VH*.62)),y0:from.y+rest,y1:land.y+rest,x:from.x,y:from.y+rest};
 }
 function update(dt){
- const o=G?.mountOffer;
- if(o&&!G.mountFlight){
-  if((G.time||0)>o.until||!usable())G.mountOffer=null;
-  else if(BFKeyboard.isPressed('ArrowUp')||BFKeyboard.isPressed('KeyW')||(typeof BFPad!=='undefined'&&BFPad.isPressed('aimup'))){
-   const m=mount(),far=G.mountRoosts[1];G.mountOffer=null;
-   start(m,{id:'here',x:G.p.x,y:G.p.y},far,false);
-  }
- }
+ if(G?.mountHome&&usable())noteReached();
  const f=G?.mountFlight;if(!f)return false;
  const p=G.p;G.time+=dt;f.t+=dt;
  if(f.kind==='arrive'){
   // Whistled for and left at the roost: it lands and waits there.
-  if(f.t>=f.dur){G.mountAt=f.roost.id;G.mountFlight=null;}
+  if(f.t>=f.dur){store().perch[G.stageIndex]=f.roost.id;keep();G.mountFlight=null;}
   return false;   // the world keeps running while it comes
  }
  p.vx=0;p.vy=0;p.invuln=Math.max(p.invuln||0,1);p.atkTimer=0;p.dodgeTimer=0;p.slamming=false;
@@ -297,7 +318,7 @@ function blink(f,p,dt){
 function arrive(f,p){
  // Set down by the far roost, facing on.
  p.x=f.land.x;p.y=f.land.y;p.vx=0;p.vy=0;p.onGround=false;p.face=f.land.face;p.safeX=p.x;p.mergeHidden=false;
- const m=mount();if(m?.creature)G.mountAt=f.to.id;
+ const m=mount();if(m&&travels(m)){store().perch[G.stageIndex]=f.to.id;keep();}
  G.mountFlight=null;BFKeyboard.clearPressed();
  try{m?.arrive?.(f.to);}catch(e){}
  if(typeof addText==='function')addText(p.x,GROUND_Y-p.y-70,f.to.label.toUpperCase(),m?.accent||'#d8b070',true);
@@ -460,16 +481,16 @@ function drawRoost(c,o){
   return doorArt(c,o.x,o.y||0,1,t,m.art,m.accent,glow);
  }
  if(m.kind==='zip'){post(c,o.x-37,o.y||0,m.accent,true);return zipStub(c,o,t);}
- if(m.art!=='cloak'&&m.art!=='throw')post(c,o.x,o.y||0,m.accent,false);
- if(m.creature){
-  if(f?.kind==='arrive'&&f.roost.id===o.mountRoost){const k=ease(Math.min(1,f.t/f.dur));return drake(c,o.x+(1-k)*f.dir*-520,(o.y||0)+26+(1-k)*420,f.dir,t,k<.9?'fly':'perch');}
-  if(f?.kind==='ride'&&f.from.id===o.mountRoost&&f.arrive<1){const k=ease(f.arrive);return drake(c,o.x+(1-k)*f.dir*-520,(o.y||0)+26+(1-k)*420,f.dir,t,k<.9?'fly':'perch');}
-  if(G.mountAt===o.mountRoost&&!(f?.kind==='ride'))rest(c,m,o,t);
-  return;
+ post(c,o.x,o.y||0,m.accent,false);
+ // Called over (or coming for a ride from the far roost): the drakes fly in; anything else glides in.
+ const coming=f?.kind==='arrive'&&f.roost.id===o.mountRoost?ease(Math.min(1,f.t/f.dur)):f?.kind==='ride'&&f.from.id===o.mountRoost&&f.arrive<1?ease(f.arrive):null;
+ if(coming!=null){
+  const dx=(1-coming)*f.dir*-520,dy=(1-coming)*420;
+  if(m.art==='drake'||m.art==='rime')return drake(c,o.x+dx,(o.y||0)+26+dy,f.dir,t,coming<.9?'fly':'perch',m.art==='rime'?RIME:BRONZE);
+  c.save();c.globalAlpha=Math.min(1,coming*1.4);rest(c,m,{...o,x:o.x+dx,y:(o.y||0)+dy},t);c.restore();return;
  }
  if(f?.kind==='ride'&&f.from.id===o.mountRoost&&m.art!=='throw')return;   // it is under him
- if(m.follows){const near=G.mountRoosts.reduce((a,b)=>Math.abs(b.x-G.p.x)<Math.abs(a.x-G.p.x)?b:a);if(near.id!==o.mountRoost)return;}
- rest(c,m,o,t);
+ if(perchOf(m)===o.mountRoost)rest(c,m,o,t);
 }
 function zipStub(c,o,t){
  const other=otherOf(roostOf(o));if(!other)return;
@@ -565,10 +586,11 @@ function preview(c,stage,t,w,h){
  c.restore();
  // Labels in card pixels: where it starts and where it sets you down.
  c.save();c.font='600 11px system-ui,sans-serif';c.fillStyle='#d8d0c0';c.textBaseline='bottom';
- const [r0,r1]=m.roosts;c.textAlign='left';c.fillText(r0.label,6,h-3);c.textAlign='right';c.fillText('→ '+r1.label,w-6,h-3);c.restore();
+ const [r0,r1]=m.roosts;c.textAlign='left';c.fillText(r0.label,6,h-3);c.textAlign='right';c.fillText('⇄ '+r1.label,w-6,h-3);c.restore();
  return true;
 }
 root.BladefallMounts=Object.freeze({MOUNTS,install,interactable,prompt,interact,update,drawRoost,drawUnder,drawOver,
  flying:()=>!!(G?.mountFlight?.kind==='ride'),roosts:()=>G?.mountRoosts||null,missing,preview,
+ perch:()=>G?.mountRoosts?perchOf(mount()):null,reached:()=>!!(G&&store().reached[G.stageIndex]),
  testMode:()=>testOn,setTestMode});
 })(typeof window!=='undefined'?window:globalThis);

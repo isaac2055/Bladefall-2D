@@ -40,7 +40,8 @@ const cards=await page.evaluate(()=>[...document.querySelectorAll('#scGallery ca
  cv.scrollIntoView();const c=cv.getContext('2d');BladefallMounts.preview(c,+cv.dataset.sc,1.7,cv.width,cv.height);
  const d=c.getImageData(0,0,cv.width,cv.height).data,seen=new Set();for(let i=0;i<d.length;i+=4*37)seen.add(d[i]<<16|d[i+1]<<8|d[i+2]);
  return {stage:+cv.dataset.sc,colours:seen.size};}));
-assert.equal(cards.length,20,'twenty cards');
+const nMounts=await page.evaluate(()=>Object.keys(BladefallMounts.MOUNTS).length);
+assert.equal(cards.length,nMounts,'a card per shortcut');
 for(const c of cards)assert.ok(c.colours>25,`stage ${c.stage}'s picture is drawn (${c.colours} colours)`);
 if(shots){await page.evaluate(()=>{const g=document.querySelector('#scGallery canvas').closest('div[style*=grid]');g.scrollTop=0;});await sleep(600);await page.screenshot({path:shots+'/gallery.png'});await page.setViewport({width:390,height:844});await sleep(600);await page.screenshot({path:shots+'/gallery-phone.png'});await page.setViewport({width:1280,height:900});}
 await page.click('#scBack');await sleep(300);
@@ -49,10 +50,10 @@ const rows=[];
 for(const stage of Object.keys(await page.evaluate(()=>BladefallMounts.MOUNTS)).map(Number)){
  await page.evaluate(s=>beginRun(0,null,{hp:1,dmg:1},{startStage:s,levelSelect:true}),stage);await sleep(1200);
  const r=await page.evaluate(()=>{BladefallMounts.install();
-  return {roosts:(BladefallMounts.roosts()||[]).length,missing:BladefallMounts.missing(),offer:!!G.mountOffer,placed:G.obstacles.filter(o=>o.mountRoost).length,ls:!!G.levelSelectMode,stage:G.stageIndex};});
+  return {roosts:(BladefallMounts.roosts()||[]).length,missing:BladefallMounts.missing(),placed:G.obstacles.filter(o=>o.mountRoost).length,ls:!!G.levelSelectMode,stage:G.stageIndex};});
  rows.push({stage,...r});
  assert.equal(r.roosts,2,`stage ${stage}: both roosts `+JSON.stringify(r));assert.deepEqual(r.missing,[],`stage ${stage}: no "Not yet" gate`);
- assert.ok(stage===15?r.offer:r.placed===2,`stage ${stage}: ${stage===15?'the handcar is offered':'the roosts stand'}`);
+ assert.equal(r.placed,2,`stage ${stage}: both roosts stand`);
 }
 // A campaign run never sees the test mode.
 const campaign=await page.evaluate(()=>{beginRun(0,null,{hp:1,dmg:1},{startStage:0});BladefallMounts.install();return G.obstacles.filter(o=>o.mountRoost).length;});

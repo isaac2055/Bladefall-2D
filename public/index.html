@@ -365,7 +365,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-side-stories.js?v=7.232.0"></script>
 <script src="bladefall-opening-stories.js?v=7.234.0"></script>
 <script src="bladefall-side-story-world.js?v=7.343.0"></script>
-<script src="bladefall-explore-mounts.js?v=7.345.0"></script>
+<script src="bladefall-explore-mounts.js?v=7.346.0"></script>
 <script src="bladefall-merge-road.js?v=7.334.0"></script>
 <script src="bladefall-zones.js?v=7.220.0"></script>
 <script src="bladefall-zone-state.js"></script>
@@ -465,7 +465,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.345.0';
+const VERSION='7.346.0';
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -24727,12 +24727,13 @@ function openShortcutGallery(){
     return `<div class="scCard" style="border:1px solid ${m.accent}55;border-radius:10px;padding:8px;background:#0c0e14;">
       <canvas data-sc="${i}" width="320" height="180" style="width:100%;height:auto;display:block;border-radius:6px;"></canvas>
       <div style="margin-top:6px;font-weight:700;color:${m.accent};font-size:14px;">${escText(m.name)}</div>
-      <div style="font-size:11px;color:var(--muted);margin:2px 0 4px;">${tag} · ${escText(st.name||'')} · ${kinds[m.kind]||m.kind}${m.offer?' · offered as the cart sets off':''}</div>
-      <div style="font-size:12px;color:#d8d0c0;">${escText(m.roosts[0].label)} → ${escText(m.roosts[1].label)}</div>
+      <div style="font-size:11px;color:var(--muted);margin:2px 0 4px;">${tag} · ${escText(st.name||'')} · ${kinds[m.kind]||m.kind}</div>
+      <div style="font-size:12px;color:#d8d0c0;">${escText(m.roosts[0].label)} ⇄ ${escText(m.roosts[1].label)}</div>
+      <div style="font-size:11px;color:#c8b070;margin-top:3px;">${i===0?'Skips the walk the first time: it waits by the camp.':`For coming back: it waits at ${escText(m.roosts[0].label)}, and the way back opens once you reach it on foot.`}</div>
       <div style="font-size:11px;color:#b0a890;margin-top:4px;">Earned by: ${escText(q?.title||m.story)}${q?.name?' ('+escText(q.name)+')':''}</div>
       <div style="font-size:11px;color:#8a8478;margin-top:4px;line-height:1.35;">${escText(m.intro||'')}</div></div>`;}).join('');
   showOvHTML(`<div class="card scgallery" id="scGallery"><h2 class="ovh">Quest shortcuts</h2>
-    <p class="ovsub">Finish a region’s side story (its kind ending) for a way across that region · ${M.testMode()?'shortcut test is on':'tap Base 5× in Level Select to try them all'}</p>
+    <p class="ovsub">Finish a region’s side story (its kind ending) for a way across it, both ways · ${M.testMode()?'shortcut test is on':'tap Base 5× in Level Select to try them all'}</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;max-height:62vh;overflow-y:auto;">${cards}</div>
     <button class="bigbtn ghost" id="scBack" style="margin-top:10px;">Back</button></div>`,'scgallery');
   document.getElementById('scBack').onclick=openLevelSelect;
@@ -25606,6 +25607,8 @@ function savedRunSession(source){
      lost every session clear (and the Deep Line's west gate refused again), and a resumed
      westbound ride reloaded the FORWARD line under the player. */
   sessionClearedZones:Array.isArray(source.sessionClearedZones)?source.sessionClearedZones.map(String):[],
+  // Where each region's quest mount is perched, and which home roosts were reached (bladefall-explore-mounts.js).
+  sessionMounts:levelSelectMode&&source.sessionMounts?JSON.parse(JSON.stringify(source.sessionMounts)):null,
   deepLineReturn:!!source.deepLineReturn};
 }
 function saveRunAtStage(stageIndex,playerSnapshot){
@@ -26263,7 +26266,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.345.0').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.346.0').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */
