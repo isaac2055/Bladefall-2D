@@ -15,5 +15,9 @@ const go=(x,max=3000,extra={})=>{for(let i=0;i<max&&Math.abs(G.p.x-x)>8&&!G.p.de
 const wait=(n)=>tas.stepFrames(n,{});
 const press=(input,n=1)=>tas.stepFrames(n,input);
 const steer=(x)=>{const e=x-G.p.x-G.p.vx*.13;return {right:e>3,left:e<-3};};
+// Fight whatever stands within r: close to striking range, face it, swing. Returns true once none is left.
+const foes=(r)=>G.enemies.filter(e=>!e.dead&&!e.boss&&e.hp>0&&Math.abs(e.x-G.p.x)<r&&Math.abs((e.y||0)-(G.p.y||0))<120);
+const fight=(r=260,max=900)=>{for(let i=0;i<max&&!G.p.dead;i++){const f=foes(r).sort((a,b)=>Math.abs(a.x-G.p.x)-Math.abs(b.x-G.p.x))[0];if(!f)return true;
+ const d=f.x-G.p.x,far=Math.abs(d)>46;tas.stepFrames(1,{right:d>0&&(far||G.p.face<0),left:d<0&&(far||G.p.face>0),attack:!far&&i%10===0});}return !foes(r).length;};
 `;
 export const script=(label,body)=>({label,script:HELPERS+body});
