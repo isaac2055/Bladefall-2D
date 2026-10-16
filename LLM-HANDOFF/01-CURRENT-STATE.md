@@ -1,3 +1,20 @@
+## 7.344.0: quest shortcuts in every region; plan-driven Explore routes (2026-10-16, Claude, cloud session)
+
+Full details are in `LLM-HANDOFF/HANDOFF-7.344.0.md`.
+
+- **The Bellwing grants Mara's chart.** Flying the Bellwing camp → door also aligns her three bearings and grants her field chart.
+- **Every region's side story now earns a shortcut.** See `public/bladefall-explore-mounts.js`; there are 19 more, for stages 1–20 (not 14). They come as flights, zips and blinks between two roosts.
+  - Each is gated until the region's abilities are held.
+  - The Deep Line offers its handcar at load instead.
+  - Existing shortcuts were kept, so some regions now have two (Updrafts, for example). Remove one only after asking the owner.
+- **Explore routes now use per-level plans** (`scripts/explore-routes/plans/NN.mjs`, documented in `plan-kit.mjs`):
+  - New full routes: 1, 7 (the summit, a place-ended route), 17, 18, 19.
+  - New route to the boss: 2.
+  - The bot passes a seam crossing whose knight state replays exactly, even if effects in the last frame differ.
+  - `build.mjs --out` lets builds run in parallel.
+- **Next:** full routes for 3, 5, 9 and 11 (a draft for 3 is in `plans-wip/`). After that, boss-arena routes for 4, 6, 8, 10, 12, 13, 16 and 20, then Fractured.
+- **The APK was not rebuilt** (no Android SDK in the cloud); the link stays on v7.341.0.
+
 ## 7.343.0: Explore route bot fixes; the Bellwing (2026-10-16, Claude, cloud session)
 
 **Why the Explore route bot found so few routes** (`scripts/bladefall-bot.mjs`):
