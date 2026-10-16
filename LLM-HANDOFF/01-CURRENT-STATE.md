@@ -1,3 +1,48 @@
+## 7.342.0: every Ascend room wears its world's look (2026-10-16, Claude, cloud session)
+
+Isaac: imported levels, superrooms and others broke away from their world's theme; each world should feel unique
+without obvious affixes. Presentation only: no room definition, collision, tape, route or save changed.
+
+**What was wrong** (screenshots of every world's road and imports, before and after, in a headless browser):
+- **Imported Room Bank rooms kept their bank palette.** Examples: `path` in the Outskirts, `foundry` in Black Woods,
+  `sunspire` gold in the Fractured Outskirts. Four of those names (`path`, `rift`, `shore`, `switchback`) were never
+  defined in Ascend, so those rooms drew as the generic `footing` grey-blue.
+- **All 20 Fractured worlds used one palette, `fractured`, which Ascend also never defined.** Every Fractured room
+  drew as `footing`, under one shared violet sky and one generic skyline.
+- **The sky blended the two worlds whose anchor points were nearest the camera.** A room far out along its road
+  (often an import or the closing superroom) wore a neighbouring world's skyline. Examples: Frostfell's peaks in
+  the Updrafts, woods trees in the Colony, keep towers in Ember Colossus.
+- **The borderland colours for worlds 25–40 were one shared violet.**
+
+**What changed:**
+- **`public/bladefall-climb-looks.js`** (new) decides each room's look:
+  - Base worlds: an imported room (`campaignImport`/`bank`) takes its world's palette. Native rooms keep theirs,
+    e.g. the Black Woods' mothlight and thicket glades.
+  - Fractured worlds: every room takes the world's own palette, built from that world's Explore art colour table
+    (`bladefall-fractured-*-art.js`): sky, stone, edges and light.
+  - Backdrop and stone detail are the base world's (the Fractured Keep shows the Keep's towers), plus slow stone
+    shards, faint rifts in the world's light, and rare hairline cracks.
+- **`bladefall-climb-view.js`:** every room/sky palette lookup goes through `roomPal`/`worldPal`. The sky is the
+  world of the room you are in, with a 0.7 s crossfade when you cross into another world (`skyLayers`). Worlds
+  41–42 and the Cores keep the old blend, unchanged.
+- **`bladefall-climb-passage-art.js`:** Fractured borderlands use each world's colours.
+- **`bladefall-climb-art.js`:** themes come from the looks module, with a fallback, so it still runs alone in
+  `verify-climb-art`.
+- **Left alone:** the borderland corridors' own materials (seams between worlds, by design); native rooms'
+  palettes in base worlds; decor (native challenge rooms carry almost none either, so bare imports aren't a tell).
+
+**Checks:**
+- `npm run verify:looks` (new; `scripts/climb/looks-check.mjs`, real browser): 1355 rooms in 40 worlds; 127
+  imports match their world's palette and sky; no undefined palettes; 20 distinct Fractured palettes.
+- `verify-climb-art` PASS (now loads the looks module too).
+- `npm run verify:watch` PASS: worlds 1–40 and Cores 1–20, every route to its exit with no deaths.
+- `page-check 4`: identical to the 7.341.1 baseline.
+- Finale 41/42: pixel-identical to before.
+- `npm run build` (Cloudflare assets) PASS.
+- Unit tests: the same failures as the 7.341.1 baseline, no new ones.
+- **Not done:** human review of the Fractured palettes (taste, readability). APK not rebuilt (no Android SDK in
+  the cloud container); the link stays on the v7.341.0 release.
+
 ## 7.341.1: Explore boss pass and retry pass (2026-10-16, Claude, cloud session)
 
 Continued the 7.341.0 routes in a Claude Code cloud container (4 cores, Linux, puppeteer's Chrome 150 headless via
