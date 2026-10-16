@@ -1,3 +1,29 @@
+## 7.341.1: Explore boss pass and retry pass (2026-10-16, Claude, cloud session)
+
+Continued the 7.341.0 routes in a Claude Code cloud container (4 cores, Linux, puppeteer's Chrome 150 headless via
+`tests/launch-chrome.mjs`, `--jobs 2`).
+- **Boss pass** (`build.mjs base --boss-only --blood --jobs 2`): **8 (sorcerer) partial**, watched to x=9378 of
+  13020 (it stops short of the arena edge, so ● Record finishes the walk-in as well as the fight). No route for 2, 4,
+  6, 10, 12, 13, 16 or 20: "every hop from the current ledge failed" at the start ledge (6: budget exhausted near the
+  start; 16 reached x=980, under the 20% bar).
+- **Retry pass** (`build.mjs 1 3 7 9 11 17 22 23 25–34 36 37 38 40 --no-boss --blood --jobs 2 --budget 60000`):
+  **3 partial** (x=6764 of 18000, 85 min to solve) and **7 partial** (x=6083 of 15100). The rest stall on the start
+  ledge, as in 7.341.0; every Fractured level stops at x=140–300.
+  - The build summary reports "0 of N stages have a watched route", because it doesn't count partial routes as
+    watched. The partials are saved.
+- **Routes now** (`public/bladefall-explore-routes.js`):
+  - Full: 0, 15, 35.
+  - Partial: 3, 5, 7, 8 (boss), 18, 19, 21, 24, 39.
+  - None, base: 1, 2, 4, 6, 9, 10, 11, 12, 13, 16, 17, 20.
+  - None, Fractured: 22, 23, 25–34, 36, 37, 38, 40.
+- **Checks:** `npm run verify:explore-routes` PASS, 12 of 12 play through in the real Watch.
+- **Version:** bumped `bladefall-explore-routes.js?v=`, `VERSION`, `sw.js?v=` and `CACHE_NAME`
+  (`bladefall-v510-explore-routes`).
+- **APK:** not built. The container has no Android SDK, so the title-menu APK link still points at the v7.341.0
+  release.
+- **Next:** more search budget won't fix the start-ledge stalls; the bot's first hop fails there. Fix the bot's
+  opening hop for these levels, or ● Record them by hand (docs/WATCH-ROUTES.md).
+
 ## 7.341.0: Explore watch and record (2026-10-16, Claude)
 
 - **Level Select** (Explore): ▶ Watch per level, ▶ Watch all base / Fractured, and ● Record per level.
