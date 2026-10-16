@@ -356,6 +356,7 @@ ASSETS=(
   bladefall-side-stories.js
   bladefall-opening-stories.js
   bladefall-side-story-world.js
+  bladefall-explore-mounts.js
   bladefall-gate-trials.js
   bladefall-merge-road.js
   bladefall-advancement.js

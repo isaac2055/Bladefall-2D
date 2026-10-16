@@ -4893,6 +4893,7 @@ function render(main, env){
       if(inX && inY){ drawPlat(o); polarityTrim(o); } continue; }
     if(!vis(o)) continue;
     if(o.sideStory){legacyDraw((c,obj)=>window.BladefallSideStoryWorld.draw(c,obj),o);continue;}
+    if(o.mountRoost){legacyDraw((c,obj)=>window.BladefallMounts.drawRoost(c,obj),o);continue;}   // 7.343: a quest mount's roost
     switch(o.type){
       case 'wall': if(o.actArt && ext('object', o)) break; if(o.gatehouseWall) break; if(!o.gone) drawWall(o); break;
       case 'scenery': {
@@ -4962,7 +4963,9 @@ function render(main, env){
   legacyDraw(L.drawTemporalEcho, G.echoTrial);
   if(env.ghost) drawPartner(env.ghost);
   drawBlight();
+  legacyDraw(c => window.BladefallMounts?.drawUnder(c), null);   // 7.343: the knight's mount, under him
   drawCartRide(G.p);
+  legacyDraw(c => window.BladefallMounts?.drawOver(c), null);
   for(const pr of G.projectiles){if(pr.gasCloud){drawGasCloud(pr);continue;}if(G.stageIndex===7&&drawFrostProjectile(pr))continue;if(G.stageIndex===8&&drawCourtProjectile(pr))continue;legacyDraw(L.drawProjectile, pr);}
   // THE ECHO DRAWS IN NORMAL BLENDING, BEFORE THE ADDITIVE PASS. drawParticles runs
   // under globalCompositeOperation 'lighter', where a semi-transparent mid-tone body

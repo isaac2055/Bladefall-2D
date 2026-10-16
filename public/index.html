@@ -364,7 +364,8 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-conversation.js?v=7.234.0"></script>
 <script src="bladefall-side-stories.js?v=7.232.0"></script>
 <script src="bladefall-opening-stories.js?v=7.234.0"></script>
-<script src="bladefall-side-story-world.js?v=7.234.0"></script>
+<script src="bladefall-side-story-world.js?v=7.343.0"></script>
+<script src="bladefall-explore-mounts.js?v=7.343.0"></script>
 <script src="bladefall-merge-road.js?v=7.334.0"></script>
 <script src="bladefall-zones.js?v=7.220.0"></script>
 <script src="bladefall-zone-state.js"></script>
@@ -11345,6 +11346,7 @@ function loadStage(i){
     restorePlayerCheckpointFlag();
     sanitizeJourneyLoot();
     BladefallSideStoryWorld.install();
+    window.BladefallMounts?.install();   // 7.343: quest mounts (the Outskirts' Bellwing)
     window.BladefallEarlyPlatforming?.install();
     refreshAuthoringSnapshot(s);
     if(G.stageIndex===0)preloadLevel1Samples();
@@ -12287,6 +12289,7 @@ function outskirtsReplayText(o){
 }
 function outskirtsAuthoredInteractable(o){
   if(o?.sideStory)return BladefallSideStoryWorld.interactable(o);
+  if(o?.mountRoost)return !!window.BladefallMounts?.interactable(o);
   if(!o||(o.quietV4&&!(G.stageIndex<=2&&o.dialogue))||(o.type==='storyRelic'&&o.found))return false;
   if(o.echoRelayLever||o.echoSalvage)return !o.gone;
   if(o.actTwoUp)return !o.gone&&!o.actMute;   // Act Two's own Up targets (bladefall-act-two.js interact)
@@ -12426,6 +12429,7 @@ function beginOutskirtsInteraction(forced){
   const o=forced||outskirtsInteractionCandidate();
   if(!o)return false;
   if(o.sideStory)return BladefallSideStoryWorld.interact(o);
+  if(o.mountRoost)return BladefallMounts.interact(o);
   if(!forced&&G.coopSession&&coopActive()&&NET.isGuest()&&coopHostRunsInteraction(o)){coopSendUpIntent(o);return true;}
   if(o.courtAction)return interactWhiteCourt(o);
   if(o.frostMineDoor){
@@ -17358,7 +17362,7 @@ function update(dt){
   if(G.usedTestMode||coopActive())BladefallPlaytest.invalidate('test mode or co-op');
   if(!G.workshopBlank){
   BladefallSideStoryWorld.update(dt);
-  if(updateRailTransition(dt)||updateEmberDoorEntry(dt)||updateGateWalk(dt))return;
+  if(window.BladefallMounts?.update(dt)||updateRailTransition(dt)||updateEmberDoorEntry(dt)||updateGateWalk(dt))return;
   updateBlight(dt);
   updateEchoRooms(dt);
   updateCausewayKeeper();
@@ -20809,7 +20813,9 @@ function render(){
       ctx.restore();
     }
   }
+  window.BladefallMounts?.drawUnder(ctx);
   drawHeroFull(ctx,G.p);
+  window.BladefallMounts?.drawOver(ctx);
   if(G.cartMode)drawCart(ctx,G.p);
   if(flipping)ctx.restore();
   if(G.p.hasJetpack && G.p.fuel < 100){
@@ -20892,6 +20898,7 @@ function interactionPrompt(){
   const target=outskirtsInteractionCandidate();
   if(!target||(G.outskirtsAnnotation&&G.outskirtsAnnotation.source===target))return null;
   if(target.sideStory)return {target,verb:BladefallSideStoryWorld.prompt(target)};
+  if(target.mountRoost)return {target,verb:BladefallMounts.prompt(target)};
   const verb=target.echoRelayLever?'↑  RELEASE':target.echoSalvage?'↑  TAKE':target.frostMineDoor?'↑  ENTER MINE':target.frostMusterEngine?(persistentCircuitOpen('frost-muster')?'MUSTER ENGINE':'↑  TURN'):target.throneBoat?'↑  PUSH OFF':target.actTwoUp?'↑  '+(target.actVerb||'EXAMINE'):target.frostReturn||target.frostReturnExit||target.keepReturn||target.keepReturnExit?'↑  PASSAGE':target.repairCatch||target.keepDropRelease?'↑  RELEASE':target.questActor||target.kind==='survey'||target.profileId==='bram'?'↑  TALK':target.sentinelVigil&&hasCapability('weapon')?'↑  CHALLENGE':target.keepWallJump||target.keepVaultKey?'↑  EXAMINE':target.type==='surveyStake'&&!target.aligned?'↑  ALIGN':'↑  READ';
   return {target,verb};
 }
@@ -21882,6 +21889,7 @@ function drawExploreObstacles(ctx,vis){
     else if(o.type==='storyRelic')drawStoryRelic(ctx,o);
     else if(o.type==='surveyStake')drawSurveyStake(ctx,o);
     else if(o.sideStory)BladefallSideStoryWorld.draw(ctx,o);
+    else if(o.mountRoost)window.BladefallMounts?.drawRoost(ctx,o);
     else if(o.type==='ambientFigure')drawAmbientFigure(ctx,o);
     else if(o.type==='sign')drawSign(ctx,o);
     else if(o.type==='check')drawCheckpoint(ctx,o);
