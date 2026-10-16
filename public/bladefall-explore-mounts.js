@@ -112,12 +112,21 @@ const MOUNTS={
 const WEST=new Set([6,11,12]);
 const ok=()=>typeof G!=='undefined'&&!!G&&!G.workshopBlank;
 const mount=()=>ok()?MOUNTS[G.stageIndex]||null:null;
+/* Shortcut test mode (7.345): five taps on Base in the level select open every region's shortcut for runs
+   started from the level select, story or no story, and lift the "Not yet" ability gate, so each one can be
+   tried at once. It is kept on this device until five more taps; campaign runs never see it. */
+const TEST_KEY='bladefall.mounts.test';
+let testOn=(()=>{try{return root.localStorage?.getItem(TEST_KEY)==='1';}catch(e){return false;}})();
+function setTestMode(on){testOn=!!on;try{on?root.localStorage.setItem(TEST_KEY,'1'):root.localStorage.removeItem(TEST_KEY);}catch(e){}return testOn;}
+const testing=()=>testOn&&ok()&&!!G.levelSelectMode;
 function earned(m){
+ if(testing())return true;
  try{return root.BladefallSideStories.row(root.BladefallSideStoryWorld.state(),m.story).phase==='completed';}catch(e){return false;}
 }
 const usable=()=>!watchLike()&&!G.coopSession&&!G.bossRush;
 // What this region gives (its own ability) must already be yours.
 function missing(){
+ if(testing())return [];
  try{
   const here=new Set(levelSelectCapabilitiesForStage(G.stageIndex).acquired),next=levelSelectCapabilitiesForStage(G.stageIndex+1).acquired;
   return next.filter(id=>!here.has(id)&&!hasCapability(id));
@@ -501,6 +510,65 @@ function drawOver(c){
  if(f.art==='drake'||f.art==='rime'){c.save();c.translate(Math.round(f.x),Math.round(SY(f.y)));c.scale(f.dir,1);wing(c,.35+Math.sin((G.time||0)*9)*.75,true,f.art==='rime'?RIME:BRONZE);c.restore();}
  if(f.art==='moths')moths(c,f.x,f.y-30,G.time||0,8,34,false);
 }
+// ---- the level select's gallery (7.345) -------------------------------------------------------------------
+// A small looping scene of one region's shortcut on a card canvas (w×h pixels): its two roosts, the way between
+// and the ride, drawn with the same art as the game. Card units are world units scaled by k, ground near the foot.
+function knight(c,x,y,dir){
+ at(c,x,y,dir);
+ box(c,'#7a2a2a',-10,-31,6,22);box(c,'#2a2a34',-7,-44,14,14);box(c,'#c8ccd8',-6,-43,12,12);box(c,'#1a1a22',1,-39,5,2);
+ box(c,'#9aa0b0',-6,-31,13,19);box(c,'#3a3a46',-6,-12,5,12);box(c,'#3a3a46',2,-12,5,12);box(c,'#e8e8f0',8,-36,2,20);box(c,'#8a7a5a',6,-17,6,2);
+ c.restore();
+}
+function preview(c,stage,t,w,h){
+ const m=MOUNTS[stage];if(!m||typeof GROUND_Y==='undefined')return false;
+ const k=Math.min(w/420,h/240),gy=h-18,W=w/k,A=56,B=W-56,top=(gy-14)/k;
+ c.save();c.beginPath();c.rect(0,0,w,h);c.clip();
+ const sky=c.createLinearGradient(0,0,0,h);sky.addColorStop(0,'#10141e');sky.addColorStop(1,'#262c38');c.fillStyle=sky;c.fillRect(0,0,w,h);
+ c.globalAlpha=.5;for(let i=0;i<18;i++){c.fillStyle='#d8e0f0';c.fillRect((i*97+stage*31)%w,(i*53+stage*17)%(gy*.6),1,1);}c.globalAlpha=1;
+ c.fillStyle='#2a2622';c.fillRect(0,gy,w,h-gy);c.fillStyle=m.accent;c.globalAlpha=.35;c.fillRect(0,gy,w,2);c.globalAlpha=1;
+ c.translate(0,gy);c.scale(k,k);c.translate(0,-GROUND_Y);
+ const loop=3.6,ph=(t%loop)/loop,u=Math.min(1,Math.max(0,(ph-.12)/.76)),e=ease(u),dir=1;
+ const label=(x,text,al)=>{c.save();c.translate(x,SY(-6));c.scale(1/k,1/k);c.font='600 11px system-ui,sans-serif';c.textAlign=al;c.fillStyle='#c8c0b0';c.fillText(text,0,12);c.restore();};
+ const dash=pts=>{c.save();c.setLineDash([6,7]);c.strokeStyle=m.accent;c.globalAlpha=.55;c.lineWidth=2;c.beginPath();pts.forEach(([x,y],i)=>i?c.lineTo(x,SY(y)):c.moveTo(x,SY(y)));c.stroke();c.restore();};
+ if(m.kind==='blink'){
+  doorArt(c,A,0,1,t,m.art,m.accent,u>0&&u<.4?Math.sin(Math.PI*u/.4):0);doorArt(c,B,0,1,t,m.art,m.accent,u>.55&&u<.95?Math.sin(Math.PI*(u-.55)/.4):0);
+  dash([[A+30,90],[(A+B)/2,140],[B-30,90]]);
+  if(u<.32)knight(c,A-50+Math.min(1,u/.28)*50,0,1);else if(u>.62)knight(c,B+Math.min(1,(u-.62)/.3)*46,0,1);
+  const a=u<.35?Math.max(0,(u-.22)/.13):u<.6?1:Math.max(0,1-(u-.6)/.12);
+  if(a>0){c.save();c.globalAlpha=a*.85;c.fillStyle='#05040a';c.fillRect(-50,SY(top+40),W+100,top+80);c.restore();}
+ }else if(m.kind==='zip'){
+  post(c,A-37,0,m.accent,true);post(c,B-37,0,m.accent,true);
+  const y0=110,yAt=v=>y0-Math.sin(Math.PI*v)*40;
+  c.save();c.strokeStyle='#c8b890';c.lineWidth=1.5;c.beginPath();for(let i=0;i<=30;i++){const v=i/30;i?c.lineTo(A+(B-A)*v,SY(yAt(v))):c.moveTo(A,SY(yAt(0)));}c.stroke();c.restore();
+  const x=A+(B-A)*e,y=yAt(e);box(c,'#5a4a3a',x-6,SY(y)-4,12,8);c.save();c.strokeStyle='#8a7a5a';c.beginPath();c.moveTo(x,SY(y)+4);c.lineTo(x,SY(y)+16);c.stroke();c.restore();
+  knight(c,x-4,y-56,1);
+ }else{
+  const ground=m.seat>=0?26:70,cruise=Math.min(m.cruise||300,top*.42),lift=v=>ease(Math.min(1,v/.12))*ease(Math.min(1,(1-v)/.15));
+  const yAt=v=>ground+cruise*lift(v)+Math.sin(t*3.1)*6*lift(v);
+  if(m.art!=='cloak'&&m.art!=='throw'){post(c,A,0,m.accent,false);post(c,B,0,m.accent,false);}
+  const path=[];for(let i=0;i<=30;i++){const v=i/30;path.push([A+(B-A)*ease(v),yAt(v)+(m.seat<0?m.seat:0)]);}dash(path);
+  const x=A+(B-A)*e,y=yAt(u),flying=u>0&&u<1,seat=m.seat||0;
+  switch(m.art){
+   case 'drake':case 'rime':{const P=m.art==='rime'?RIME:BRONZE;drake(c,x,y,dir,t,flying?'fly':'perch',P);knight(c,x-4,y+seat,dir);
+    if(flying){c.save();c.translate(Math.round(x),Math.round(SY(y)));wing(c,.35+Math.sin(t*9)*.75,true,P);c.restore();}break;}
+   case 'moths':moths(c,x,y,t,22,30,false);knight(c,x-4,y+seat,dir);moths(c,x,y-30,t,8,34,false);break;
+   case 'kite':kite(c,x,y,dir,t,flying);knight(c,x-4,y+seat,dir);c.save();c.strokeStyle='#d8c890';c.lineWidth=1;c.beginPath();c.moveTo(x,SY(y-28));c.lineTo(x,SY(y+seat+40));c.stroke();c.restore();break;
+   case 'sled':sled(c,x,y,dir,t,flying);knight(c,x-4,y+6,dir);break;
+   case 'skiff':skiff(c,x,y,dir,t,flying);knight(c,x-12,y+9,dir);break;
+   case 'rocket':rocket(c,x,y,dir,t,flying);knight(c,x-6,y+5,dir);break;
+   case 'crane':crane(c,x,y,dir,t,flying);knight(c,x+4,y+6,dir);break;
+   case 'cloak':knight(c,x,y,dir);cloakWings(c,x,y+44,dir,t,flying);break;
+   case 'seed':seed(c,x,y,t);knight(c,x-4,y+seat,dir);break;
+   case 'throw':automaton(c,A,0,dir,t,u<.15?u/.15:0);if(flying)comet(c,x,y,dir,t);knight(c,x,y,dir);break;
+  }
+ }
+ c.restore();
+ // Labels in card pixels: where it starts and where it sets you down.
+ c.save();c.font='600 11px system-ui,sans-serif';c.fillStyle='#d8d0c0';c.textBaseline='bottom';
+ const [r0,r1]=m.roosts;c.textAlign='left';c.fillText(r0.label,6,h-3);c.textAlign='right';c.fillText('→ '+r1.label,w-6,h-3);c.restore();
+ return true;
+}
 root.BladefallMounts=Object.freeze({MOUNTS,install,interactable,prompt,interact,update,drawRoost,drawUnder,drawOver,
- flying:()=>!!(G?.mountFlight?.kind==='ride'),roosts:()=>G?.mountRoosts||null,missing});
+ flying:()=>!!(G?.mountFlight?.kind==='ride'),roosts:()=>G?.mountRoosts||null,missing,preview,
+ testMode:()=>testOn,setTestMode});
 })(typeof window!=='undefined'?window:globalThis);

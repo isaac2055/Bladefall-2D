@@ -62,7 +62,8 @@
     "explore-routes": "node scripts/explore-routes/add.mjs",
     "verify:explore-routes": "node scripts/explore-routes/check.mjs",
     "verify:mounts": "node scripts/explore/mount-check.mjs",
-    "verify:mounts-tour": "node scripts/explore/mounts-tour.mjs"
+    "verify:mounts-tour": "node scripts/explore/mounts-tour.mjs",
+    "verify:mounts-test-mode": "node scripts/explore/mounts-test-mode.mjs"
   },
   "dependencies": {
     "@netlify/blobs": "^11.1.4",

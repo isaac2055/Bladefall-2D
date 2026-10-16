@@ -166,7 +166,7 @@ body.a11y-reduced-motion *,body.a11y-reduced-motion *::before,body.a11y-reduced-
 .settingsgrid label{display:flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:8px 10px;color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
 .settingsgrid input[type=checkbox]{width:18px;height:18px;flex:0 0 auto;accent-color:var(--amber);}
 .settingsgrid small{display:block;color:var(--muted);font-size:10px;font-weight:500;margin-left:auto;text-align:right;}
-.card.mapcard{max-width:min(920px,calc(100vw - 42px));}
+.card.mapcard{max-width:min(920px,calc(100vw - 42px));}.card.scgallery{max-width:min(1100px,calc(100vw - 42px));}
 .worldmap{width:100%;height:auto;max-height:56vh;display:block;background:radial-gradient(circle at 20% 4%,rgba(232,163,61,.09),transparent 36%),linear-gradient(180deg,#10131b,#08090e);border:1px solid var(--line);border-radius:14px;margin:10px 0;}
 .worldmap .route{stroke-width:3;fill:none;stroke-linecap:round}.worldmap .route.hidden{stroke:#252833;stroke-dasharray:4 8}.worldmap .route.locked{stroke:#5b3340;stroke-dasharray:5 7}.worldmap .route.available,.worldmap .route.frontier{stroke:#e8a33d;stroke-dasharray:8 6}.worldmap .route.traversed{stroke:#66778c}
 .worldmap .node circle{stroke-width:3}.worldmap .node.hidden{opacity:.28}.worldmap .node.hidden circle{fill:#11131a;stroke:#30333d}.worldmap .node.frontier circle{fill:#2a2011;stroke:#e8a33d}.worldmap .node.visited circle{fill:#263342;stroke:#8295a9}.worldmap .node.cleared circle{fill:#17382c;stroke:#5fd17a}.worldmap .node.current circle{fill:#5a4422;stroke:#ffd76a;stroke-width:5}.worldmap text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#f3f1ea;font-size:12px;font-weight:850;paint-order:stroke;stroke:#08090e;stroke-width:4px;stroke-linejoin:round}.worldmap .hidden text{display:none}.worldmap .map-region{fill:#6e7380;font-size:10px;letter-spacing:.16em;stroke-width:3px}.worldmap .shortcut path{fill:#121823;stroke:#91d9e8;stroke-width:2}.worldmap .shortcut text{fill:#91d9e8;font-size:9px;letter-spacing:.08em}.worldmap .shortcut.open path{fill:#315c48;stroke:#8dffbf}.worldmap .shortcut.open text{fill:#8dffbf}.worldmap .shortcut.urgent path{animation:mapShortcutPulse 1.15s ease-in-out infinite}.worldmap .shortcut.locked{opacity:.45}.worldlegend{display:flex;justify-content:center;flex-wrap:wrap;gap:13px;font-size:11px;color:var(--muted);margin:-3px 0 10px}.worldlegend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px;vertical-align:0}@keyframes mapShortcutPulse{50%{filter:drop-shadow(0 0 7px #91d9e8);transform:translateY(-1px)}}
@@ -365,7 +365,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-side-stories.js?v=7.232.0"></script>
 <script src="bladefall-opening-stories.js?v=7.234.0"></script>
 <script src="bladefall-side-story-world.js?v=7.343.0"></script>
-<script src="bladefall-explore-mounts.js?v=7.344.0"></script>
+<script src="bladefall-explore-mounts.js?v=7.345.0"></script>
 <script src="bladefall-merge-road.js?v=7.334.0"></script>
 <script src="bladefall-zones.js?v=7.220.0"></script>
 <script src="bladefall-zone-state.js"></script>
@@ -465,7 +465,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.344.0';
+const VERSION='7.345.0';
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -24645,7 +24645,7 @@ function openExtras(){
    you have actually REACHED in that tier — no skipping ahead — unless the dev
    unlock is in. A stage-01 start follows the real weaponless campaign; diagnostic
    mid-world warps receive a compatibility blade and no armor. */
-let lvlSelTab=0;
+let lvlSelTab=0,lvlBaseTaps=[];
 function openLevelSelect(){
   mode='title';
   meta.reach=meta.reach||{};
@@ -24657,7 +24657,7 @@ function openLevelSelect(){
   // ACT THREE: one Fractured tab (every echo, playable once built) in place of the NG+ tiers.
   const tabs=[0,'fx'].map(i=>{
     const on=i===t;
-    return `<button class="bigbtn ${on?'':'ghost'}" data-tab="${i}" style="flex:1;padding:9px;margin:0;font-size:13px;${i==='fx'?'border-color:#8a5cd8;':''}">${i===0?'Base':'Fractured'}</button>`;
+    return `<button class="bigbtn ${on?'':'ghost'}" data-tab="${i}" style="flex:1;padding:9px;margin:0;font-size:13px;${i==='fx'?'border-color:#8a5cd8;':''}">${i===0?(window.BladefallMounts?.testMode()?'Base ✦':'Base'):'Fractured'}</button>`;
   }).join('');
   const rows=t==='fx'&&typeof BladefallRiftShards!=='undefined'?BladefallRiftShards.levelSelectRows():STAGES.map((st,i)=>{
     if(st.act===3||st.finalBattle)return '';
@@ -24687,9 +24687,17 @@ function openLevelSelect(){
     ${t==='fx'?'':`<p class="ovsub" style="font-size:11px;opacity:.75;margin-top:-6px;">
       Complete any world continuously to save its time · whole-game totals combine your world bests</p>`}
     <div style="display:flex;gap:8px;margin-bottom:10px;">${tabs}</div>
+    ${t!=='fx'&&window.BladefallMounts?.testMode()?`<p class="ovsub" id="lvlShortcutTest" style="font-size:12px;color:#ffd27a;margin:-4px 0 8px;">✦ Shortcut test: every region’s quest shortcut is open in level-select runs · tap Base 5× to turn off</p>`:''}
     <div class="choices" id="lvlList" style="max-height:44vh;overflow-y:auto;">${rows}</div>
+    ${t!=='fx'&&window.BladefallMounts?.preview?'<button class="bigbtn ghost" id="lvlShortcuts" style="margin:8px 0 0;padding:8px;font-size:13px;">✦ Quest shortcuts · what each region’s side story gives</button>':''}
     <button class="bigbtn ghost" id="lvlBack">Back</button></div>`);
-  document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{lvlSelTab=b.dataset.tab==='fx'?'fx':+b.dataset.tab;openLevelSelect();});
+  document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{
+    // Five quick taps on Base: the shortcut test mode (bladefall-explore-mounts.js), on or off.
+    if(b.dataset.tab==='0'&&window.BladefallMounts?.setTestMode){const now=Date.now();lvlBaseTaps=lvlBaseTaps.filter(x=>now-x<3000);lvlBaseTaps.push(now);
+      if(lvlBaseTaps.length>=5){lvlBaseTaps=[];const on=BladefallMounts.setTestMode(!BladefallMounts.testMode());
+        toast(on?'✦ Shortcut test on · every quest shortcut is open in level-select runs':'Shortcut test off · shortcuts need their side stories again',3200);}}
+    lvlSelTab=b.dataset.tab==='fx'?'fx':+b.dataset.tab;openLevelSelect();});
+  const scBtn=document.getElementById('lvlShortcuts');if(scBtn)scBtn.onclick=openShortcutGallery;
   document.querySelectorAll('.lvlbtn[data-fx]').forEach(b=>b.onclick=()=>beginRun(0,null,{hp:1,dmg:1},{startStage:+b.dataset.fx,levelSelect:true}));
   const SC={0:{hp:1,dmg:1},1:{hp:1.5,dmg:1.5},2:{hp:2.5,dmg:2.5}};
   // Starting a tier from its FIRST stage is a legitimate full run — you still
@@ -24707,6 +24715,34 @@ function openLevelSelect(){
   // in the head (it finds the nearest overflow container under the pointer).
 }
 
+/* (7.345) The quest shortcuts gallery: one card per region with a looping picture of its shortcut (drawn by
+   BladefallMounts.preview with the game's own art), the side story that earns it, and where it takes you. */
+function openShortcutGallery(){
+  mode='title';
+  const M=window.BladefallMounts,stories=window.BladefallSideStories?.byId||{};
+  const ids=Object.keys(M.MOUNTS).map(Number).sort((a,b)=>a-b);
+  const kinds={flight:'flight',zip:'line',blink:'way through'};
+  const cards=ids.map(i=>{const m=M.MOUNTS[i],q=stories[m.story],st=STAGES[i]||{};
+    const tag=String(i<BONUS_STAGE?i+1:i).padStart(2,'0');
+    return `<div class="scCard" style="border:1px solid ${m.accent}55;border-radius:10px;padding:8px;background:#0c0e14;">
+      <canvas data-sc="${i}" width="320" height="180" style="width:100%;height:auto;display:block;border-radius:6px;"></canvas>
+      <div style="margin-top:6px;font-weight:700;color:${m.accent};font-size:14px;">${escText(m.name)}</div>
+      <div style="font-size:11px;color:var(--muted);margin:2px 0 4px;">${tag} · ${escText(st.name||'')} · ${kinds[m.kind]||m.kind}${m.offer?' · offered as the cart sets off':''}</div>
+      <div style="font-size:12px;color:#d8d0c0;">${escText(m.roosts[0].label)} → ${escText(m.roosts[1].label)}</div>
+      <div style="font-size:11px;color:#b0a890;margin-top:4px;">Earned by: ${escText(q?.title||m.story)}${q?.name?' ('+escText(q.name)+')':''}</div>
+      <div style="font-size:11px;color:#8a8478;margin-top:4px;line-height:1.35;">${escText(m.intro||'')}</div></div>`;}).join('');
+  showOvHTML(`<div class="card scgallery" id="scGallery"><h2 class="ovh">Quest shortcuts</h2>
+    <p class="ovsub">Finish a region’s side story (its kind ending) for a way across that region · ${M.testMode()?'shortcut test is on':'tap Base 5× in Level Select to try them all'}</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;max-height:62vh;overflow-y:auto;">${cards}</div>
+    <button class="bigbtn ghost" id="scBack" style="margin-top:10px;">Back</button></div>`,'scgallery');
+  document.getElementById('scBack').onclick=openLevelSelect;
+  const t0=performance.now();
+  const frame=now=>{const host=document.getElementById('scGallery');if(!host)return;
+    for(const cv of host.querySelectorAll('canvas[data-sc]')){const r=cv.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)continue;
+      const c=cv.getContext('2d');c.setTransform(1,0,0,1,0,0);try{M.preview(c,+cv.dataset.sc,(now-t0)/1000,cv.width,cv.height);}catch(e){}}
+    requestAnimationFrame(frame);};
+  requestAnimationFrame(frame);
+}
 /* (7.341) Watch in the level select: ▶ Watch beside every open level with an intended route, and Watch all
    for the tab (every base or every Fractured route, in order: review the whole game in one sitting).
    ● Record plays the level yourself under the watch's rules and saves the run as its route; on a route that
@@ -26227,7 +26263,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.344.0').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.345.0').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */

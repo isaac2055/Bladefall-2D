@@ -1,18 +1,20 @@
-# Handoff 7.344.0: quest shortcuts in every region, plan-driven Explore routes
+# Handoff 7.344.0–7.345.0: quest shortcuts in every region (with a test mode and gallery), plan-driven Explore routes
 
 Written 2026-10-16 by Claude, in a cloud session. Everything below is on `main`. Give this file to the local LLM so it can bring the local/offline copy up to date and carry the work on.
 
 ## 1. Bringing the local/offline copy up to date
 
 1. Run `git pull origin main`. Everything is in the repo; nothing lives only in the cloud.
-2. Version **7.344.0**:
-   - `VERSION`, the `sw.js?v=` registration, and `?v=7.344.0` on `bladefall-explore-routes.js` and `bladefall-explore-mounts.js`, in `public/index.html` and `public/sw.js`;
-   - `CACHE_NAME = 'bladefall-v513-quest-shortcuts'`.
+2. Version **7.345.0**:
+   - `VERSION`, the `sw.js?v=` registration, and `?v=7.345.0` on `bladefall-explore-mounts.js`, in `public/index.html` and `public/sw.js`;
+   - `bladefall-explore-routes.js` stays at `?v=7.344.0`;
+   - `CACHE_NAME = 'bladefall-v514-shortcut-gallery'`.
 3. The APK was not rebuilt, because the cloud container has no Android SDK. The download link still points at v7.341.0.
-   - If the local machine can build the APK, build and release v7.344.0, then point `#apkBtn`'s href in `public/index.html` at it.
+   - If the local machine can build the APK, build and release v7.345.0, then point `#apkBtn`'s href in `public/index.html` at it.
 4. Checks worth running locally (each serves `public/` itself):
    - `npm run verify:mounts`: the Bellwing, plus Mara's chart.
    - `npm run verify:mounts-tour`: all 19 other regions' shortcuts.
+   - `npm run verify:mounts-test-mode`: the five-tap test mode and the gallery (7.345).
    - `npm run verify:explore-routes`: re-watches every stored route in the real Watch.
    - `npm run verify:looks`: Ascend themes from 7.342.
 
@@ -65,7 +67,23 @@ Tests:
 - `scripts/explore/mounts-tour.mjs [stage…] [--shots dir]`: the gate refusal, the ride there and back, and the offer mode on 15.
 - `scripts/explore/mount-check.mjs`.
 
-### c. Explore routes: per-level plans for the route bot
+### b2. Shortcut test mode and gallery (7.345.0)
+
+- **Test mode.** In Explore → Level Select, tap **Base** (the tab left of Fractured) **5 times within 3 s**.
+  - A toast confirms it, the tab reads **Base ✦**, and a gold line under the tabs says the test is on.
+  - While it's on, every **level-select run** gets its region's quest shortcut without the side story. The "Not yet" ability gate is lifted too, so each shortcut can be tried at once.
+  - Campaign runs never see it, and neither do Watch/● Record/TAS or co-op.
+  - It is kept on this device (`localStorage` key `bladefall.mounts.test`) until 5 more taps turn it off.
+  - Code: `testing()`, `setTestMode()` and `testMode()` in `public/bladefall-explore-mounts.js`; `earned()` and `missing()` consult it. The tap counter is `lvlBaseTaps` in `openLevelSelect()` (index.html).
+- **Gallery.** Level Select (Base tab) → **✦ Quest shortcuts** opens `openShortcutGallery()`, a grid of 20 cards. Each card has:
+  - a looping picture of the shortcut, drawn with the game's own mount art by `BladefallMounts.preview(ctx, stage, t, w, h)`, showing the two roosts, the route between them and the knight riding;
+  - the shortcut's name, region and kind;
+  - start → destination;
+  - the side story that earns it, and its intro line.
+  - It works without the test mode. CSS class `.card.scgallery` widens the overlay; the grid falls to one column on phones.
+- **Test:** `scripts/explore/mounts-test-mode.mjs [--shots dir]`. It covers the 4 taps vs 5, the tab mark, all 20 regions in level-select runs with no story, none in a campaign run, the 20 gallery pictures drawn, and turning it off. It passes.
+
+
 
 The bot (`scripts/bladefall-bot.mjs`) drives platforming well but cannot discover a level's own mechanisms: rituals, levers, hoists, rings, lifts and gate fights. Levels now get a **plan**: `scripts/explore-routes/plans/NN.mjs`, one file per stage, loaded by `plans.mjs`.
 
@@ -134,13 +152,13 @@ Workflow that worked, per level:
 
 ## 3. Files touched in this stretch
 
-- `public/bladefall-explore-mounts.js`
+- `public/bladefall-explore-mounts.js` (7.345: test mode, `preview`)
 - `public/bladefall-side-story-world.js`
 - `public/bladefall-respec-renderer.js`
-- `public/index.html`: Watch finish routes, mount hooks, version.
+- `public/index.html`: Watch finish routes, mount hooks, version, and (7.345) the Base 5-tap toggle, the ✦ line, the gallery button, `openShortcutGallery()` and `.card.scgallery`.
 - `public/sw.js`
 - `public/bladefall-explore-routes.js`
 - `scripts/bladefall-bot.mjs`
 - `scripts/explore-routes/build.mjs`, `plans.mjs`, `plan-kit.mjs`, `plans/*.mjs`, `plans-wip/03.mjs`
-- `scripts/explore/mount-check.mjs`, `mounts-tour.mjs`
+- `scripts/explore/mount-check.mjs`, `mounts-tour.mjs`, `mounts-test-mode.mjs` (7.345)
 - `package.json`, `build-deploy.sh`

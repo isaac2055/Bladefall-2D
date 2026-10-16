@@ -1,3 +1,10 @@
+## 7.345.0: shortcut test mode and gallery (2026-10-16, Claude, cloud session)
+
+- **Test mode:** Level Select, tap Base 5× within 3 s to toggle it (the tab shows "Base ✦"). Level-select runs then get every region's quest shortcut with no side story and no ability gate. Campaign runs are unaffected, and the setting is kept per device.
+- **Gallery:** Level Select → "✦ Quest shortcuts" shows 20 cards, each with a looping picture of the ride (`BladefallMounts.preview`), the route, and the quest that earns it.
+- **Test:** `npm run verify:mounts-test-mode`.
+- **Details:** `LLM-HANDOFF/HANDOFF-7.344.0.md`, section 2.b2.
+
 ## 7.344.0: quest shortcuts in every region; plan-driven Explore routes (2026-10-16, Claude, cloud session)
 
 Full details are in `LLM-HANDOFF/HANDOFF-7.344.0.md`.
