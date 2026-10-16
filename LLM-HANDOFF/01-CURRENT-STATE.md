@@ -1,3 +1,32 @@
+## 7.341.0: Explore watch and record (2026-10-16, Claude)
+
+- **Level Select** (Explore): ▶ Watch per level, ▶ Watch all base / Fractured, and ● Record per level.
+  - Record plays the level under watch rules. On boss or partial routes it replays the route to its end, then hands
+    over control.
+  - Export recorded routes, then run `npm run explore-routes -- file` (verifies each recording in a headless Watch,
+    then merges it).
+  - `npm run verify:explore-routes` re-watches every route.
+- **Engine** (`index.html`, `EXPLORE WATCH`):
+  - The TAS start uses `R.meta` default save data, the level-select loadout and seed 0xB07. The simulation is forced
+    to 1440×900 (`withWatchView`); the camera is redrawn for the window only.
+  - `watchLike()` replaces the TAS checks that affect the simulation. `watchAuto()` (watch, or a TAS run with
+    `window.__tasAutoDialogue`) answers conversations with the first choice, keeps loot and skips shops.
+  - The level-select muster now also applies to the route builder.
+  - Landing Shores' `fleeX` function became data (snapshots).
+  - Nothing persists while watching.
+- **Routes** (`public/bladefall-explore-routes.js`, built by `scripts/explore-routes/build.mjs` with the traversal bot):
+  - Full: 0, 15, 35.
+  - Partial: 5, 18, 19, 21, 24, 39.
+  - The bot stalls on most other levels: "every hop failed", or an exhausted budget/timeout. Fractured levels start
+    with the source kit and take damage early.
+- **Not done:** the boss pass (`build.mjs base --boss-only --blood`; the builder picks the nearest boss arena edge
+  either way).
+- **Checks:** `scripts/explore-routes/record-check.mjs` passes (real keys → saved → watched back pixel-exact, save
+  untouched). Watch all base chained 5 routes. Unit tests: 1120/1193, the same 73 failures as the 7.340 baseline.
+  The tas-runtime "normal campaign startup" failure predates this work.
+- **Warning:** the sweep runs 6 parallel headless Chromes for hours. Isaac's Mac may have crashed during it, so use
+  `--jobs 2`.
+
 ## 7.340.0: intended routes survive edits; fix them without an LLM (2026-10-15, Claude)
 
 Isaac's goal: watch the whole game, pick favourite levels, edit them, and assemble an alpha himself, without

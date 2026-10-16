@@ -329,6 +329,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-workshop-library.js?v=7.335.0"></script>
 <script src="bladefall-workshop-explore-runtime.js?v=7.335.0"></script>
 <script src="bladefall-playtest-worlds.js?v=7.316.0"></script>
+<script src="bladefall-explore-routes.js?v=7.341.0"></script>
 <script src="bladefall-playtest-model.js?v=7.334.0"></script>
 <script src="bladefall-playtest.js?v=7.334.0"></script>
 <script src="bladefall-harness.js"></script>
@@ -390,9 +391,9 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-inventory.js"></script>
 <script src="bladefall-dialogue.js?v=7.231.0"></script>
 <script src="bladefall-text.js?v=7.233.0"></script>
-<script src="bladefall-act-two.js?v=7.303.0"></script>
+<script src="bladefall-act-two.js?v=7.341.0"></script>
 <script src="bladefall-act-two-art.js?v=7.201.0"></script>
-<script src="bladefall-landing-shores.js?v=7.231.0"></script>
+<script src="bladefall-landing-shores.js?v=7.341.0"></script>
 <script src="bladefall-landing-shores-art.js?v=7.201.0"></script>
 <script src="bladefall-colony.js?v=7.231.0"></script>
 <script src="bladefall-colony-art.js?v=7.231.0"></script>
@@ -463,7 +464,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.340.0';
+const VERSION='7.341.0';
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -715,6 +716,9 @@ const BFRuntime=BFCore.createRuntime({gameVersion:VERSION,fixedHz:60,metricSampl
 const BF_TAS_ENABLED=typeof location!=='undefined'&&new URLSearchParams(location.search).has('tas');
 const BF_TAS_SEED=0xB1ADEFA1;
 let tasInjected=null,tasPrevious={},tasStepping=false;
+let exploreWatch=null;const watchLike=()=>BF_TAS_ENABLED||!!exploreWatch;   // 7.341: a watched route runs under the TAS rules
+// …and walks through menus a route cannot answer (conversations, loot swaps, shops). TAS runs opt in (the route builder).
+const watchAuto=()=>!!exploreWatch||(BF_TAS_ENABLED&&!!window.__tasAutoDialogue);
 const BFSimulation=BFSimulationModule.createSimulation({fixedHz:BFRuntime.fixedHz,maxTraceTicks:BFRuntime.fixedHz*60*180,harness:BF_TAS_ENABLED,fixedSeed:BF_TAS_SEED});
 const BFPlatformer=BFPlatformerModule.createController();
 const BFEnvironment=BFEnvironmentModule.createEnvironment();
@@ -957,7 +961,7 @@ if(!BFEcologyValidation.ok)throw new Error('Bladefall ecology validation failed'
 const SAVE_KEY='bladefall_v2';
 const LEADERBOARD_KEY='bladefall_leaderboards_v1';
 function loadSave(){return BFSaveStore.read(SAVE_KEY,{})||{};}
-function persist(){if(!BF_TAS_ENABLED)BFSaveStore.write(SAVE_KEY,meta);}
+function persist(){if(!BF_TAS_ENABLED&&!exploreWatch)BFSaveStore.write(SAVE_KEY,meta);}   // a watch runs on default save data and never saves
 function loadLeaderboards(){
   const saved=BFSaveStore.read(LEADERBOARD_KEY,{})||{};
   const out=BFMilestonesModule.createArchive(saved);
@@ -1117,7 +1121,9 @@ function seedLevelSelectPriorWorld(startStage){
     if(latch.stage>=target)continue;
     // The bell follows musterRecalled()'s own rule: the automated harness keeps full
     // control of its muster state, so it is never rung for it from the menu.
-    if(latch.circuit==='frost-muster'&&typeof window!=='undefined'&&window.BladefallHarness)continue;
+    // (7.341) A route-builder run (window.__tasAutoDialogue) plays like a real Level Select run, muster included,
+    // so its routes replay in the game's Watch.
+    if(latch.circuit==='frost-muster'&&typeof window!=='undefined'&&window.BladefallHarness&&!window.__tasAutoDialogue)continue;
     G.sessionZoneState=BFZoneStateModule.setCircuit(G.sessionZoneState,latch.zone,latch.circuit,
       {open:true,solved:true,source:'level-select-prior'});
   }
@@ -2521,8 +2527,8 @@ let bfPadPlayLatch=false;
 /* RAW_KEYS/RAW_PRESSED only — never LittleJS's key map. The engine aliases WASD
    onto the arrow keys, so its keyIsDown('ArrowRight') goes true when you press D:
    with dash bound to D, every dash read "moving right" and went right. */
-function keyDownFor(action){return BF_TAS_ENABLED?!!(tasInjected&&tasInjected.held[tasAction(action)]):(BFKeyboard.isDown(kbCode(action))||(!bfPadPlayLatch&&BFPad.isDown(action)));}
-function keyPressedFor(action){return BF_TAS_ENABLED?!!(tasInjected&&tasInjected.pressed[tasAction(action)]):(BFKeyboard.isPressed(kbCode(action))||(!bfPadPlayLatch&&BFPad.isPressed(action)));}
+function keyDownFor(action){return watchLike()?!!(tasInjected&&tasInjected.held[tasAction(action)]):(BFKeyboard.isDown(kbCode(action))||(!bfPadPlayLatch&&BFPad.isDown(action)));}
+function keyPressedFor(action){return watchLike()?!!(tasInjected&&tasInjected.pressed[tasAction(action)]):(BFKeyboard.isPressed(kbCode(action))||(!bfPadPlayLatch&&BFPad.isPressed(action)));}
 function keyLabel(code){
   if(!code)return '?';
   const MAP={ArrowLeft:'←',ArrowRight:'→',ArrowUp:'↑',ArrowDown:'↓',Space:'Space',Escape:'Esc'};
@@ -2642,7 +2648,7 @@ function audioCue(type,x,caption){
   return cue;
 }
 function impactSfx(o,type,x,caption){
-  if(BF_TAS_ENABLED)return;
+  if(watchLike())return;
   try{
     const cue=audioCue(type||'hit',x,caption);if(cue.gain<=0)return;
     const ac=(typeof audioContext!=='undefined'&&audioContext)||null;if(!ac)return;
@@ -2681,7 +2687,7 @@ function impactSfx(o,type,x,caption){
   }catch(e){}
 }
 function tonalSfx(type,notes,x){
-  if(BF_TAS_ENABLED)return;
+  if(watchLike())return;
   const cue=audioCue(type,x);if(cue.gain<=0)return;
   notes.forEach(([delay,args])=>setTimeout(()=>{
     const p=args.slice();p[0]=(p[0]||0)*cue.gain;zzfx(...p);
@@ -2708,7 +2714,7 @@ function level1Terrain(p){
   return p&&p._level1Terrain||(p&&p.y>8?'stone':'dirt');
 }
 function playLevel1Sample(key,x,options){
-  if(BF_TAS_ENABLED)return true;
+  if(watchLike())return true;
   // The opening-world movement palette follows the knight through the first
   // authored region. Later worlds may replace it with their own surfaces.
   if(!G||G.stageIndex>3||mode!=='play'||!meta.soundOn)return false;
@@ -3663,7 +3669,7 @@ function beginRun(ngPlus,carrySnap,scales,opts){
   }
 }
 function playCutscene(lines, type, onComplete) {
-  if(BF_TAS_ENABLED)throw new Error('TAS cannot start an asynchronous cutscene');
+  if(watchLike())throw new Error('TAS cannot start an asynchronous cutscene');
     const cs = document.getElementById('cutscene');
     const ct = document.getElementById('cutText');
     const cv = document.getElementById('cutCanvas');
@@ -3911,7 +3917,7 @@ function drawDaturaCinematicFrame(c,scriptId,beatIndex,T,w,h){
   const vignette=c.createRadialGradient(w/2,h/2,h*.18,w/2,h/2,Math.max(w,h)*.72);vignette.addColorStop(0,'rgba(0,0,0,0)');vignette.addColorStop(1,'rgba(0,0,0,.7)');c.fillStyle=vignette;c.fillRect(0,0,w,h);c.restore();
 }
 function playDaturaCinematic(scriptId,onComplete){
-  if(BF_TAS_ENABLED)throw new Error('TAS cannot start an asynchronous cinematic');
+  if(watchLike())throw new Error('TAS cannot start an asynchronous cinematic');
   const script=BFCinematicsModule.script(scriptId);if(!script){onComplete();return;}
   const cs=document.getElementById('cutscene'),ct=document.getElementById('cutText'),cv=document.getElementById('cutCanvas'),c=cv.getContext('2d');
   cv.width=window.innerWidth;cv.height=window.innerHeight;cs.classList.remove('hide','fadein');
@@ -6116,7 +6122,7 @@ function musterRecalled(){
      the parts were unclaimable from the menu. The amnesty exists so a previewed stage
      behaves like a reached one; these three qualify by the same argument. */
   if(G.levelSelectMode&&(G.stageIndex>=8||SHIP_PART_STAGES.has(G.stageIndex))&&
-    !(typeof window!=='undefined'&&window.BladefallHarness))return true;
+    !(typeof window!=='undefined'&&window.BladefallHarness&&!window.__tasAutoDialogue))return true;
   if(typeof window!=='undefined'&&window.__BF_MUSTER_FORCE!==undefined)return !!window.__BF_MUSTER_FORCE;   // harness/bot only
   if(G.stageIndex===7)return persistentCircuitOpen('frost-muster');
   const state=G.levelSelectMode?G.sessionZoneState:meta.zoneState;
@@ -10963,7 +10969,7 @@ function restorePlayerCheckpointFlag(){
 /* The first death of a save is the one time the game points at the flag (owner, 7.231).
    Shown only if a flag is in hand to plant; it never appears again for this save. */
 function showFirstFallFlagHint(){
-  if(G.workshopBlank||meta.flagHintShown||G.coopSession||G.bossRush||meta.hardcore||BF_TAS_ENABLED)return false;
+  if(G.workshopBlank||meta.flagHintShown||G.coopSession||G.bossRush||meta.hardcore||watchLike())return false;
   meta.flagHintShown=true;persist();
   if(!(G.checkpointCharge>0)||typeof BladefallConversation==='undefined')return false;
   const key=keyLabel(kbCode('checkpoint')),session=G;
@@ -12512,7 +12518,7 @@ function updatePhysicalWorldSeams(partnerSpec){
       G.p.vx=0;G.p.vy=0;G.p.atkTimer=0;G.p.dodgeTimer=0;G.p.slamming=false;}
     return;
   }
-  if(!partnerSpec&&worldDoor(spec.connector)&&spec.cross&&!BF_TAS_ENABLED&&!G.gateWalk?.ready){
+  if(!partnerSpec&&worldDoor(spec.connector)&&spec.cross&&!watchLike()&&!G.gateWalk?.ready){
     // A sealed door refuses before the knight walks into it, not after.
     if(!G.gateWalk){const gate=BFZonesModule.eligibility(spec.connector,spec.zone,zoneTraversalState());
       if(!gate.allowed&&gate.reason==='capability-required'){if(!G._doorRefusedT||G.time-G._doorRefusedT>2.5){G._doorRefusedT=G.time;toast('The threshold is sealed against you yet.');}return;}}
@@ -12520,7 +12526,7 @@ function updatePhysicalWorldSeams(partnerSpec){
       G.p.vx=0;G.p.vy=0;G.p.atkTimer=0;G.p.dodgeTimer=0;G.p.slamming=false;}
     return;
   }
-  if(BF_TAS_ENABLED){if(spec.cross)throw new Error('TAS reached a zone boundary');return;}
+  if(watchLike()){if(spec.cross)throw new Error('TAS reached a zone boundary');return;}
   const state=zoneTraversalState();
   if(spec.warm&&BFZoneStreamer.diagnostics().phase==='idle'){
     BFZoneStreamer.warm(spec.connector,spec.zone,state).catch(()=>{});
@@ -12557,7 +12563,7 @@ function updatePhysicalWorldSeams(partnerSpec){
   });
 }
 function beginPhysicalBranchTransition(connector,zone,sourceObject){
-  if(BF_TAS_ENABLED)throw new Error('TAS cannot start an asynchronous zone transition');
+  if(watchLike())throw new Error('TAS cannot start an asynchronous zone transition');
   if(!G||G.physicalSeamCrossing)return false;
   if(G.coopSession&&coopActive()&&!coopExitRequest('branch',{connector,zone},sourceObject))return false;
   const state=zoneTraversalState(),plan=BFZonesModule.planTransition(connector,zone,state);
@@ -13634,7 +13640,7 @@ function openFieldConversation(source,title,line,options){
   const responses=opts.responses||BladefallConversation.voice(source.name||title)||[
     ['I’m listening.','All right. I’ll keep it short.'],['Go on.','That’s about all of it, honestly.'],['Get on with it.','Suit yourself. You’ve heard it.']
   ];
-  const choose=(i)=>{
+  const apply=(i)=>{
     const active=journeyState();active.attitudes[key]=i;
     if(typeof BladefallRiftShards!=='undefined'&&responses[i][2])BladefallRiftShards.chose(responses[i]);
     if(G.levelSelectMode)G.sessionJourney=active;else{meta.journey=active;persist();}
@@ -13642,9 +13648,11 @@ function openFieldConversation(source,title,line,options){
     if(opts.reward){grantJourneyReward(opts.reward);
       for(let k=0;k<12;k++)G.particles.push({x:source.x||G.p.x,y:GROUND_Y-(source.y||G.p.y)-24,vx:(k-6)*12,vy:-30-k*5,sz:2,color:'#e0c59e',life:.6});
     }
-    BladefallConversation.show({title,text:responses[i][1],accent:source.accent,onClose:close});
-    mode='conversation';
   };
+  const choose=(i)=>{apply(i);BladefallConversation.show({title,text:responses[i][1],accent:source.accent,onClose:close});mode='conversation';};
+  // (7.341) A watched route or the traversal bot answers with the first reply and walks on: the same gift or
+  // reward a player would get, without stopping the run for a dialogue nobody is reading.
+  if(watchAuto()){if(person&&prior===undefined)apply(0);mode='play';return true;}
   BladefallConversation.show({title,text:prior===undefined?line:line+'\n\n'+responses[prior][1],accent:source.accent,onClose:close,
     choices:person&&prior===undefined?responses.map((r,i)=>({label:r[0],action:()=>choose(i)})):undefined});
   mode='conversation';return true;
@@ -13671,6 +13679,7 @@ function openRegionalShop(shopObject,countVisit){
     recordQuestEvent({type:'shop-visit',target:shop.id},true);
   }
   if(journeyActive())return openJourneyWorkshop(shopObject,shop);
+  if(watchAuto())return false;   // (7.341) watched and bot runs walk past the counter
   mode='shop';showGameUI(false);
   const items=BFShopsModule.inventory(meta.shops,shop.id),gold=meta.gold||0;
   const questDialogue=BFQuestsModule.dialogue(meta.quests,shop.id,questProgressionContext());
@@ -14419,7 +14428,7 @@ const CHARGE_T=0.6; // hold this long for a heavy strike
 function directionalBladeAvailable(){return !!window.BladefallEarlyPlatforming?.bladeAvailable()||hasGift('pure-nail')||!!(window.BladefallCeleste&&BladefallCeleste.active());}
 function aimBlade(p){
   const down=!p.onGround&&(keyDownFor('slam')||input.jz>.5);
-  const up=input.jz<-.5||(BF_TAS_ENABLED?tasInjected?.held?.up:(BFKeyboard.isDown('ArrowUp')||BFPad.isDown('aimup')));
+  const up=input.jz<-.5||(watchLike()?tasInjected?.held?.up:(BFKeyboard.isDown('ArrowUp')||BFPad.isDown('aimup')));
   if(!down&&!up)return false;
   p.pogoSwing=!!down;p.upSlashSwing=!down&&!!up;p.bladeDirection=down?'down':'up';
   if(down){p.slamming=false;p.vy=Math.min(p.vy,160);}
@@ -17401,7 +17410,7 @@ function update(dt){
   if(keyPressedFor('dash'))input.dodgeEdge=true;
   if(keyPressedFor('counter')&&hasCapability('counter')&&p.counterCd<=0){p.counterT=.22;p.counterCd=.7;}
   if(keyPressedFor('pause'))openPause();
-  if(!fieldLoadoutActive()&&!BF_TAS_ENABLED&&BFKeyboard.isPressed('KeyI')&&playerBuildDiscovery().bag)openBag(()=>{mode='play';showOverlay(false);});
+  if(!fieldLoadoutActive()&&!watchLike()&&BFKeyboard.isPressed('KeyI')&&playerBuildDiscovery().bag)openBag(()=>{mode='play';showOverlay(false);});
   if(keyPressedFor('pickup'))collectNearbyItem();
   if(keyPressedFor('checkpoint')||input.checkpointEdge){if(window.BladefallEarlyPlatforming?.retry()){}else if(window.BladefallCeleste&&BladefallCeleste.active())BladefallCeleste.retry();else placeEarnedCheckpoint();}
   input.checkpointEdge=false;
@@ -17410,7 +17419,7 @@ function update(dt){
   const touchInteract=touchUp&&!input.touchUpUsed&&input.touchUpT>=.25;
   if(!touchUp)input.touchUpUsed=false;
   if(touchInteract)input.touchUpUsed=true;
-  if(!(keyDownFor('dash')||input.dodge)&&(BF_TAS_ENABLED?!!(tasInjected&&tasInjected.pressed.interact):(touchInteract||BFKeyboard.isPressed('ArrowUp')||BFPad.isPressed('aimup'))))beginOutskirtsInteraction();
+  if(!(keyDownFor('dash')||input.dodge)&&(watchLike()?!!(tasInjected&&tasInjected.pressed.interact):(touchInteract||BFKeyboard.isPressed('ArrowUp')||BFPad.isPressed('aimup'))))beginOutskirtsInteraction();
   if(keyPressedFor('tool')||input.toolEdge)useEquippedTool();input.toolEdge=false;
   if(keyPressedFor('swap'))swapWeapon();
   // THE ECHO: one key, two jobs. Leave a second body, or trade places with the one
@@ -17504,7 +17513,7 @@ function update(dt){
     p.dodgeCdT=meta.testMode?0:effDodgeCd(p);
     p.dodgeTimer=movement.tuning.dashDurationSeconds;
     p.dashX=mx||p.face;
-    p.dashUp=!!(input.jz<-.5||(BF_TAS_ENABLED?tasInjected?.held?.up:(BFKeyboard.isDown('ArrowUp')||BFPad.isDown('aimup'))));
+    p.dashUp=!!(input.jz<-.5||(watchLike()?tasInjected?.held?.up:(BFKeyboard.isDown('ArrowUp')||BFPad.isDown('aimup'))));
     p.dashDiagonal=p.dashUp&&Math.abs(mx)>.25;
     if(p.dashUp){p.dashX=p.dashDiagonal?Math.sign(mx):0;p.onGround=false;p.floorPlat=null;p.vy=-680*(p.dashDiagonal?Math.SQRT1_2:1);p.vx=p.dashX*spd*movement.tuning.dashSpeedMultiplier*Math.SQRT1_2;}
     window.BladefallCeleste?.labStart(p);
@@ -24574,7 +24583,7 @@ function titleScreen(){
       <button class="bigbtn ghost" id="sndBtn" style="flex:1;">Sound: ${meta.soundOn?'On 🔊':'Off 🔇'}</button>
       <button class="bigbtn ghost" id="settingsBtn" style="flex:1;">⚙ Controls</button>
     </div>
-    <a class="bigbtn ghost" id="apkBtn" href="https://github.com/isaac2055/Bladefall-2D/releases/download/v7.340.0/Bladefall-7.340.0.apk" style="display:block;text-align:center;box-sizing:border-box;text-decoration:none" download>Download APK</a>
+    <a class="bigbtn ghost" id="apkBtn" href="https://github.com/isaac2055/Bladefall-2D/releases/download/v7.341.0/Bladefall-7.341.0.apk" style="display:block;text-align:center;box-sizing:border-box;text-decoration:none" download>Download APK</a>
     <p class="hint">v${VERSION}</p></div>`);
   if(canContinue)document.getElementById('contBtn').onclick=()=>{if(continueSurvive)location.href='precision.html?pitch=climb&resume=1&mode='+(lastPlayed.mode==='review'?'review':'play');else continueRun();};
   document.getElementById('newBtn').onclick=openExploreMenu;
@@ -24685,10 +24694,41 @@ function openLevelSelect(){
     go();
   });
   document.getElementById('lvlBack').onclick=openExploreMenu;
+  addExploreWatchButtons(t);
   // Wheel/touch scrolling of #lvlList is handled by the delegated scroll handler
   // in the head (it finds the nearest overflow container under the pointer).
 }
 
+/* (7.341) Watch in the level select: ▶ Watch beside every open level with an intended route, and Watch all
+   for the tab (every base or every Fractured route, in order: review the whole game in one sitting).
+   ● Record plays the level yourself under the watch's rules and saves the run as its route; on a route that
+   stops at a boss (or that you saved partway) it first replays the route, then hands you the controls there.
+   Export recordings downloads them; npm run explore-routes -- <file> adds them to the game. */
+function addExploreWatchButtons(tab){
+  const list=document.getElementById('lvlList');if(!list||!exploreRoutes())return;
+  const small='flex:0 0 auto;width:auto;margin:0;padding:6px 10px;font-size:12px;';
+  for(const b of [...list.querySelectorAll('.lvlbtn[data-i],.lvlbtn[data-fx]')]){
+    const s=+(b.dataset.i??b.dataset.fx);if(b.disabled||STAGES[s]?.finalBattle)continue;
+    const route=exploreRoute(s),row=document.createElement('div');row.style.cssText='display:flex;gap:6px;align-items:stretch;';
+    b.replaceWith(row);b.style.flex='1';b.style.minWidth='0';row.append(b);
+    if(route){const w=document.createElement('button');w.className='choice lvlwatch';w.type='button';w.textContent=route.end==='level-end'?'▶ Watch':'▶ Watch ·';
+      w.title=route.end==='boss'?'Watch the route to the boss arena':route.end==='partial'?'Watch the recorded part of the route':'Watch the intended route';
+      w.style.cssText=small;w.onclick=e=>{e.stopPropagation();exploreWatchStart([s]);};row.append(w);}
+    const cont=!!route&&route.end!=='level-end',r=document.createElement('button');r.className='choice lvlrecord';r.type='button';r.textContent='●';
+    r.title=cont?(route.end==='boss'?'Record the boss fight: the route plays to the arena, then you take over':'Continue recording from where the route ends'):(route?'Record a new route from the start (replaces this one on this device)':'Record this level\'s route yourself');
+    r.style.cssText=small+'color:#ff8f8f;';r.onclick=e=>{e.stopPropagation();exploreWatchStart([s],'',{record:true,cont});};row.append(r);
+  }
+  const fx=tab==='fx',all=[...new Set([...Object.keys(exploreRoutes().stages||{}),...Object.keys(exploreLocalRoutes())])].map(Number).filter(s=>fx?s>=21&&s<=40:s<=20).sort((a,b)=>a-b);
+  if(all.length){const btn=document.createElement('button');btn.className='bigbtn ghost';btn.id='lvlWatchAll';
+    btn.textContent=`▶ Watch all ${fx?'Fractured':'base'} levels (${all.length})`;btn.style.cssText='margin:0 0 8px;padding:8px;font-size:13px;';
+    btn.title='Plays every intended route in order · [ and ] change speed, N skips a level, Esc stops';
+    list.before(btn);btn.onclick=()=>exploreWatchStart(all,fx?'Fractured':'Base');}
+  const local=exploreLocalRoutes(),n=Object.keys(local).length;
+  if(n){const ex=document.createElement('button');ex.className='bigbtn ghost';ex.id='lvlExportRoutes';ex.style.cssText='margin:8px 0 0;padding:8px;font-size:13px;';
+    ex.textContent=`⬇ Export ${n} recorded route${n>1?'s':''}`;ex.title='Downloads your recordings; npm run explore-routes -- <file> adds them to the game';
+    list.after(ex);ex.onclick=()=>{const blob=new Blob([JSON.stringify({schema:'bladefall.explore-routes',version:1,build:VERSION,view:exploreRoutes().view,seed:exploreRoutes().seed,stages:local},null,1)],{type:'application/json'});
+      const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='bladefall-explore-routes-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);};}
+}
 /* Factory reset: the true fresh start behind five taps of Reset Controls.
    Wipes campaign progress, but intentionally leaves the separately stored,
    permanent leaderboard archive untouched. */
@@ -25193,6 +25233,7 @@ function winGame(){
 function fmt(n){return Math.round(n*100)/100;}
 /* An even trade is the player's call: 1 keeps the current item, 2 takes the find. */
 function offerTie(keepHtml,keepDesc,takeHtml,takeDesc,onTake,title,subtitle,onSalvage,salvageDesc){
+  if(watchAuto()){mode='play';return;}   // (7.341) watched and bot runs keep what they carry
   mode='upgrade';
   showOvHTML(`<div class="card"><p class="ovsub" style="color:var(--amber);letter-spacing:.22em;margin-bottom:2px;">${title||'EVEN TRADE'}</p>
     <h2 class="ovh">${subtitle||'Same value — your call'}</h2><p class="ovsub">Press 1 to keep yours, 2 to switch</p>
@@ -25261,6 +25302,7 @@ function playerBuildDiscovery(){
     bag:!fieldLoadoutActive()&&(inventory.items.length>0||meaningfulGift||archive.found>0),build:armor||materials||blood||forge||echoes||tools||technique};
 }
 function openPause(){
+  if(exploreWatch){if(exploreWatch.record&&exploreWatch.f>=exploreWatch.frames.length)exploreRecordPause();else exploreWatchStop(false);return;}
   mode='pause';updateBossHealthBar();const chartOwned=!!meta.outskirtsFieldChart,discovery=playerBuildDiscovery();
   showOvHTML(`<div class="card"><h2 class="ovh">Paused</h2>
     <button class="bigbtn" id="resBtn">Resume</button>
@@ -25662,6 +25704,7 @@ function simulationInputFrame(){
 }
 function gameUpdate(){
   if(window.BladefallWorkshopBridge?.state().active)return;
+  if(exploreWatch&&!tasStepping){exploreWatchTick();return;}
   if(BF_TAS_ENABLED&&!tasStepping)return;
   const started=performance.now();
   pollExploreController();
@@ -25687,7 +25730,7 @@ function gameUpdate(){
 function gameUpdatePost(){}
 function gameRender(){
   if(BF_TAS_ENABLED)return; // Rendering may append particles; manual mode owns updates.
-  const started=performance.now();recalcVP();render();BFRuntime.metrics.record('render',performance.now()-started);
+  const started=performance.now();recalcVP();if(exploreWatch)exploreWatchRender(render);else render();BFRuntime.metrics.record('render',performance.now()-started);
   const rendererState=BFRenderer&&BFRenderer.diagnostics();
   if(rendererState&&rendererState.frame%60===0){
     const memory=performance.memory&&performance.memory.usedJSHeapSize||0;
@@ -25771,7 +25814,7 @@ function tasFrameDigest(){
 function tasCode(action){return action==='interact'?'ArrowUp':kbCode(action);}
 function tasAction(action){return {dash:'dodge',slam:'down',companion:'command'}[action]||action;}
 function tasApplyFrame(held,pressed){
-  if(!BF_TAS_ENABLED)throw new Error('TAS requires ?tas=1');
+  if(!watchLike())throw new Error('TAS requires ?tas=1');
   tasInjected={held:{},pressed:{}};
   for(const action of held||[])tasInjected.held[tasAction(action)]=true;
   for(const action of pressed||[])tasInjected.pressed[tasAction(action)]=true;
@@ -25788,9 +25831,15 @@ function tasDeterministicCall(callback){
     return callback();
   }finally{Math.random=random;Date.now=now;}
 }
+// (7.341) Any other conversation (side stories, rift shards, gate trials) takes its first choice until play resumes.
+function watchResolveDialogue(){
+  if(!watchAuto())return;
+  for(let i=0;i<16&&mode==='conversation';i++){const b=document.querySelector('#fieldConversation .bfc-choices button');if(b)b.click();else break;}
+  if(mode==='conversation'){window.BladefallConversation?.close();if(mode==='conversation'){mode='play';showGameUI(true);}}
+}
 function tasAdvanceFrame(held,pressed){
   tasApplyFrame(held,pressed);
-  try{tasStepping=true;tasDeterministicCall(gameUpdate);}
+  try{tasStepping=true;tasDeterministicCall(()=>{gameUpdate();watchResolveDialogue();});}
   finally{tasStepping=false;tasInjected=null;}
 }
 function tasPrepareRun(){
@@ -25908,6 +25957,153 @@ function runTASPlan(plan,options){
     events,samples,nativeTrace,errors:(window.__errs||[]).slice(startErrors)};
   receipt.checksum=BFCore.hashSeed(JSON.stringify({seed,ticks,events,samples,nativeTrace}));return Object.freeze(receipt);
 }
+/* EXPLORE WATCH (7.341). Plays a level's intended route (public/bladefall-explore-routes.js) inside the
+   normal game, and records new ones. A route is a list of button states from the level-select start, found by
+   the traversal bot (scripts/explore-routes/build.mjs) or played by you in Record mode. It replays exactly
+   because watching and recording rebuild the bot's conditions: the TAS start (default save data, level-select
+   loadout, fixed seed), the same 1440×900 simulation view, and seeded randomness. Only the drawing uses your
+   window and camera. Nothing is saved to your campaign while watching or recording. */
+const WATCH_KEYS={left:'l',right:'r',down:'d',jump:'j',attack:'a',dodge:'x',portal:'p',flip:'f',command:'c',pickup:'k',counter:'n',slam:'s',tool:'t',interact:'i',hook:'h',up:'u',checkpoint:'q',echo:'e',swap:'b'};
+const WATCH_ACTIONS=Object.fromEntries(Object.entries(WATCH_KEYS).map(([a,k])=>[k,a]));
+// Which keybinding drives each recorded action (up/interact share the Up arrow, as in play).
+const RECORD_BINDS={left:'left',right:'right',down:'slam',jump:'jump',attack:'attack',dodge:'dash',portal:'portal',flip:'flip',command:'companion',pickup:'pickup',counter:'counter',tool:'tool',hook:'hook',checkpoint:'checkpoint',echo:'echo',swap:'swap'};
+function exploreRoutes(){return window.BladefallExploreRoutes||null;}
+function exploreLocalRoute(stage){try{const r=JSON.parse(localStorage.getItem('bladefall.explore.route.'+stage)||'null');return r&&Array.isArray(r.tape)?r:null;}catch(e){return null;}}
+function exploreRoute(stage){return exploreLocalRoute(stage)||exploreRoutes()?.stages?.[stage]||null;}
+function exploreLocalRoutes(){const out={};for(let s=0;s<=45;s++){const r=exploreLocalRoute(s);if(r)out[s]=r;}return out;}
+function exploreWatchSpeed(){let s=1;try{s=+localStorage.getItem('bladefall.explore.watchSpeed')||1;}catch(e){}return [1,2,4,8].includes(s)?s:1;}
+// The simulation always sees the view the route was recorded in; drawing gets the window back.
+function withWatchView(fn){
+  const view=exploreRoutes()?.view||{w:1440,h:900},saved=[VW,VH,GROUND_Y];
+  VW=view.w;VH=view.h;GROUND_Y=VH-Math.max(120,VH*0.20);
+  try{return fn();}finally{[VW,VH,GROUND_Y]=saved;}
+}
+function exploreWatchReset(){
+  // The bot's start: default save data (never the player's), cleared input, fresh keyboard.
+  for(const key of Object.keys(meta))delete meta[key];
+  Object.assign(meta,JSON.parse(exploreRoutes().meta),{keybinds:{...KB_DEFAULTS},skinsOwned:{warden:true},testMode:false,hardcore:false,autoAttack:false});
+  BFKeyboard.reset();tasPrevious={};tasInjected=null;
+  for(const key of Object.keys(input))input[key]=typeof input[key]==='number'?0:false;
+}
+function exploreWatchBanner(){
+  let el=document.getElementById('exploreWatchBanner');const W=exploreWatch;
+  if(!W){el?.remove();return;}
+  if(!el){el=document.createElement('div');el.id='exploreWatchBanner';el.style.cssText='position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:60;padding:6px 12px;border-radius:6px;background:rgba(10,12,18,.78);color:#f3d79a;font:600 12px system-ui;letter-spacing:.04em;cursor:pointer;';
+    // Tap: cycle the speed while watching, or pause a recording (the pause button stops a watch).
+    el.onclick=()=>{const X=exploreWatch;if(!X)return;if(X.record&&X.f>=X.frames.length){exploreRecordPause();return;}const st=[1,2,4,8];X.speed=st[(st.indexOf(X.speed)+1)%4];try{localStorage.setItem('bladefall.explore.watchSpeed',String(X.speed));}catch(e){}exploreWatchBanner();};
+    document.body.append(el);}
+  const live=W.record&&W.f>=W.frames.length,name=STAGES[W.stage]?.name||'';
+  el.style.color=live?'#ff8f8f':'#f3d79a';
+  el.textContent=live?`● RECORDING ${name} · ${(W.rec.length/60).toFixed(0)} s · Esc to save or discard`
+    :`▶ ${W.record?'REPLAYING TO YOUR TURN':'WATCHING'} ${name}${W.list.length>1?` · ${W.i+1}/${W.list.length}`:''} · ${W.speed}× · [ ] speed${W.record?'':' · N next'} · Esc stop`;
+}
+function exploreWatchBegin(){
+  const W=exploreWatch,stage=W.list[W.i],route=W.record&&!W.cont?null:exploreRoute(stage);
+  exploreWatchReset();
+  withWatchView(()=>tasDeterministicCall(()=>beginRun(0,null,{hp:1,dmg:1},{startStage:stage,levelSelect:true,testRun:true,runSeed:exploreRoutes().seed})));
+  W.frames=[];if(route)for(const [n,k] of route.tape)for(let i=0;i<n;i++)W.frames.push(k||'');
+  W.f=0;W.stage=stage;W.cam=null;W.end=route?.end||'level-end';W.after=0;W.rec=[];W.deaths=0;W.paused=false;
+  const name=STAGES[stage]?.name||('Stage '+stage);
+  toast(W.record?(W.frames.length?`Replaying the route to its end · then it is your turn (${name})`:`● Recording ${name} · play it through · Esc to finish`)
+    :`▶ ${W.label?W.label+' · ':''}${name}${W.list.length>1?` (${W.i+1}/${W.list.length})`:''}`,2800);
+  exploreWatchBanner();
+}
+function exploreWatchStart(stages,label='',opts={}){
+  const list=opts.record?stages:stages.filter(s=>exploreRoute(s));
+  if(!exploreRoutes()?.meta){toast('Intended routes are not loaded');return false;}
+  if(!list.length){toast('No intended route is recorded for this level yet');return false;}
+  if(coopActive()){toast('Watching is single-player');return false;}
+  exploreWatch={list,i:0,label,savedMeta:JSON.stringify(meta),log:[],speed:exploreWatchSpeed(),record:!!opts.record,cont:!!opts.cont};
+  showOverlay(false);exploreWatchBegin();mode='play';hudUpdate();return true;
+}
+function exploreWatchNext(reason){
+  const W=exploreWatch;if(!W)return;
+  if(W.record){exploreRecordFinish(reason?'partial':'level-end');return;}
+  W.log.push({stage:W.stage,ok:!reason,reason:reason||null,frame:W.f,of:W.frames.length,x:G&&G.p?Math.round(G.p.x):null,deaths:W.deaths});window.__exploreWatchLog=W.log;
+  if(++W.i>=W.list.length){exploreWatchStop(true);return;}
+  exploreWatchBegin();
+}
+function exploreWatchStop(finished,message){
+  const W=exploreWatch;if(!W)return;exploreWatch=null;exploreWatchBanner();
+  for(const key of Object.keys(meta))delete meta[key];Object.assign(meta,JSON.parse(W.savedMeta));
+  tasInjected=null;tasPrevious={};BFKeyboard.reset();G=null;
+  if(message)toast(message,3200);else if(finished)toast(W.list.length>1?'Watched to the end':'The route reached its end',2400);
+  openLevelSelect();
+}
+// Recording ends: keep the route on this device (it plays at once) — Export in the level select takes it to the game.
+function exploreRecordFinish(end){
+  const W=exploreWatch,all=W.frames.slice(0,Math.min(W.f,W.frames.length)).concat(W.rec),tape=[];
+  for(const k of all){const last=tape[tape.length-1];if(last&&last[1]===k)last[0]++;else tape.push([1,k]);}
+  if(!W.rec.length){exploreWatchStop(false,'Nothing was recorded');return;}
+  const route={tape,frames:all.length,end,source:'recorded',deaths:W.deaths,reachedX:G&&G.p?Math.round(G.p.x):null,at:new Date().toISOString(),build:VERSION};
+  try{localStorage.setItem('bladefall.explore.route.'+W.stage,JSON.stringify(route));}catch(e){exploreWatchStop(false,'Could not save the recording: '+e.message);return;}
+  exploreWatchStop(false,end==='level-end'?`Saved your run as ${STAGES[W.stage]?.name}'s route · Export in the level select adds it to the game`:`Saved your run so far (it ends here) · ● Record again to continue from its end`);
+}
+function exploreRecordPause(){
+  const W=exploreWatch;W.paused=true;mode='pause';exploreWatchBanner();
+  showOvHTML(`<div class="card"><h2 class="ovh">Recording paused</h2><p class="ovsub">${(W.rec.length/60).toFixed(1)} s recorded${W.deaths?` · ${W.deaths} death${W.deaths>1?'s':''} (they replay too)`:''}</p>
+    <button class="bigbtn" id="recResume">Keep recording</button>
+    <button class="bigbtn ghost" id="recSave">Save · the route ends here</button>
+    <button class="bigbtn ghost" id="recDiscard" style="color:var(--danger);">Discard this recording</button></div>`);
+  document.getElementById('recResume').onclick=()=>{W.paused=false;mode='play';showOverlay(false);BFKeyboard.reset();exploreWatchBanner();};
+  document.getElementById('recSave').onclick=()=>{mode='play';exploreRecordFinish('partial');};
+  document.getElementById('recDiscard').onclick=()=>{mode='play';exploreWatchStop(false,'Recording discarded');};
+}
+// The player's own buttons, through their own keybindings and controller.
+function exploreRecordHeld(){
+  const binds=(JSON.parse(exploreWatch.savedMeta).keybinds)||{},down=b=>BFKeyboard.isDown(BFInputModule.normalizeCode(binds[b]||KB_DEFAULTS[b]))||BFPad.isDown(b);
+  const held=Object.entries(RECORD_BINDS).filter(([,b])=>down(b)).map(([a])=>a);
+  if(BFKeyboard.isDown('ArrowUp')||BFPad.isDown('aimup'))held.push('up','interact');
+  // Touch controls (the phone build): the joystick and on-screen buttons.
+  const t=input;if(t.jx<-0.35)held.push('left');if(t.jx>0.35)held.push('right');if(t.jz>0.5)held.push('down');if(t.jz<-0.5)held.push('up','interact');
+  for(const k of ['jump','attack','dodge','portal','flip','command','tool'])if(t[k])held.push(k);
+  return [...new Set(held)];
+}
+// One engine frame: the player's keys steer the watch, then the route (or, recording, the player) steps the game.
+function exploreWatchTick(){
+  const W=exploreWatch;if(W.paused)return;
+  const live=()=>W.record&&W.f>=W.frames.length;
+  if(BFKeyboard.isPressed('Escape')||BFPad.isPressed('pause')){BFKeyboard.clearPressed();if(live())exploreRecordPause();else exploreWatchStop(false);return;}
+  if(!live()&&(BFKeyboard.isPressed('BracketRight')||BFKeyboard.isPressed('BracketLeft'))){
+    const steps=[1,2,4,8],i=steps.indexOf(W.speed)+(BFKeyboard.isPressed('BracketRight')?1:-1);
+    W.speed=steps[Math.max(0,Math.min(3,i))];try{localStorage.setItem('bladefall.explore.watchSpeed',String(W.speed));}catch(e){}
+    toast('Watch speed '+W.speed+'×',900);exploreWatchBanner();
+  }
+  if(!W.record&&BFKeyboard.isPressed('KeyN')){BFKeyboard.clearPressed();exploreWatchNext('skipped');return;}
+  const steps=live()?1:W.record?8:W.speed;
+  for(let n=0;n<steps&&exploreWatch===W&&!W.paused;n++){
+    let held,touch=null;
+    if(live()){held=exploreRecordHeld();touch={...input};W.rec.push([...new Set(held.map(a=>WATCH_KEYS[a]))].join(''));if(W.rec.length%60===1)exploreWatchBanner();}
+    else if(W.f>=W.frames.length){
+      // A boss level's route stops at the arena: hold a moment, then move on.
+      if(W.end==='boss'||W.end==='partial'){if(W.after++===0)toast(W.end==='boss'?'The boss is ahead · ● Record in the level select continues from here':'The recorded route ends here',2600);if(W.after<90)break;}
+      exploreWatchNext(W.end==='boss'||W.end==='partial'?null:'route ended before the exit');return;
+    }
+    else{held=[...W.frames[W.f]].map(k=>WATCH_ACTIONS[k]).filter(Boolean);if(W.record&&W.f+1===W.frames.length)toast('Your turn · ● recording',2200);}
+    W.f++;
+    const pressed=held.filter(a=>!tasPrevious[a]),deadBefore=!!(G.p&&G.p.dead);
+    try{withWatchView(()=>{tasApplyFrame(held,pressed);tasStepping=true;tasDeterministicCall(()=>{gameUpdate();watchResolveDialogue();});});}
+    catch(error){tasStepping=false;tasInjected=null;
+      // Routes end where the TAS runner stops: the level's exit door or an asynchronous scene.
+      exploreWatchNext(/zone boundary|asynchronous/i.test(error.message)?null:'error: '+error.message);return;}
+    finally{tasStepping=false;tasInjected=null;}
+    tasPrevious=Object.fromEntries(held.map(a=>[a,true]));
+    // The step cleared the touch buttons; a finger still on one keeps holding it.
+    if(touch)for(const k of ['jump','attack','dodge','portal','flip','command','tool','jx','jz'])input[k]=touch[k];
+    if(window.__exploreWatchTraceOn&&G&&G.p)(window.__exploreWatchTrace||=[]).push([W.f,Math.round(G.p.x*100)/100,Math.round(G.p.y*100)/100,mode,BFSimulation.snapshot().tick]);   // debugging divergence (scripts/explore-routes)
+    if(!G||G.stageIndex!==W.stage||mode!=='play'){exploreWatchNext(null);return;}   // the level ended (exit, portal prompt or next stage)
+    if(G.p&&G.p.dead&&!deadBefore)W.deaths++;
+  }
+  if(!live())BFKeyboard.reset();else BFKeyboard.clearPressed();
+}
+// Draw with the window's view, framing the knight; the simulation's own camera is put back afterwards.
+function exploreWatchRender(draw){
+  const W=exploreWatch;if(!W||!G||!G.p)return draw();
+  const tx=Math.max(0,Math.min(Math.max(0,(G.levelLength||VW)-VW),G.p.x-VW*.38)),ty=Math.max(0,G.p.y-(GROUND_Y-260));
+  if(!W.cam)W.cam={x:tx,y:ty};W.cam.x+=(tx-W.cam.x)*.18;W.cam.y+=(ty-W.cam.y)*.18;
+  const saved=[G.cam,G.camY];G.cam=W.cam.x;G.camY=W.cam.y;
+  try{return draw();}finally{[G.cam,G.camY]=saved;}
+}
 const BFTAS=BF_TAS_ENABLED?Object.freeze({run:runTASPlan,digest:tasFrameDigest,actions:TAS_ACTIONS,resetGame:tasResetGame,getPlayerState:tasGetPlayerState,stepFrames:tasStepFrames,saveState:tasSaveState,restoreState:tasRestoreState}):null;
 function integrationState(){
   const enemies=G&&G.enemies||[],travelers=G&&G.npcs||[];
@@ -26021,7 +26217,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.340.0').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.341.0').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */

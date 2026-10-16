@@ -19,6 +19,7 @@ ASSETS=(
   bladefall-workshop-bridge.js
   bladefall-workshop-routes.js
   bladefall-route-solver.js
+  bladefall-explore-routes.js
   bladefall-workshop-cloud.js
   bladefall-workshop-cobuild.js
   bladefall-workshop-collaboration.js

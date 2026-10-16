@@ -188,7 +188,8 @@ function init(){
   for(const E of ENCOUNTERS)
     A.enc[E.id] = { st:done(c, E.circuit) ? 'done' : 'idle', wave:-1, waveT:0, foes:[], tollT:0.8, refillT:2.5, silenced:false, t:0, overseer:null };
   // Silenced at the gate, they run for the cliff path or back in through the postern.
-  A.enc.gate.fleeX = (f) => f.x < G.p.x ? HEAD.x1 - 40 : PALISADE_X - 30;
+  // Plain data, not a function: level state must survive save/restore (7.341: watched routes and the bot rely on it).
+  A.enc.gate.fleeSplit = { left: HEAD.x1 - 40, right: PALISADE_X - 30 };
   setBars(['sun-arch'], A.enc.landing.st !== 'done');
   setBars(['bell-gate'], false);
   const r = refs();

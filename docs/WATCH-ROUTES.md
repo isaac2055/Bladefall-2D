@@ -12,6 +12,45 @@ check, watch, re-record and repair that route yourself, in the game or offline. 
 - **Pause menu** in any room that has a route: **Watch the intended route**.
 - `[` and `]` set the watch speed (1×, 2×, 4×, 8×).
 
+## Watching Explore (7.341)
+
+**Explore → Level Select** shows these:
+- **▶ Watch** beside each open level that has a route.
+- **▶ Watch all base levels** or **▶ Watch all Fractured levels** at the top of the tab, which plays every route
+  in order.
+- While watching: `[` and `]` set the speed (1×, 2×, 4×, 8×), `N` skips to the next level, and `Esc` (or the pause
+  button) stops.
+- A boss level's route stops at the edge of the boss arena, and a route the bot only half-solved stops where it
+  got stuck (its button reads **▶ Watch ·**).
+
+**● Record** (the red dot on each level) is how you add or fix a route yourself:
+- **On a level with no route, or a full one:** ● Record starts the level and records your play from the start.
+- **On a boss level, or a partial route:** ● Record first replays the route quickly to where it stops, then hands
+  you the controls at that point, so you only play the boss fight or the missing part.
+- **Pausing:** press `Esc` to pause, then pick **Keep recording**, **Save · the route ends here**, or **Discard**.
+- **Reaching the exit:** this saves the recording automatically.
+- **Deaths** are recorded and replay too.
+- **Where it's saved:** on this device. Watch uses your recording straight away, and nothing touches your campaign save.
+- **Adding it to the game:** press **⬇ Export recorded routes** in the level select, then:
+
+```bash
+npm run explore-routes -- ~/Downloads/bladefall-explore-routes-2026-10-16.json
+```
+
+That command plays each recording through the real Watch in a test page, adds the ones that end where you ended
+to `public/bladefall-explore-routes.js`, and reports any that don't. To check every Explore route after the game
+changes:
+
+```bash
+npm run verify:explore-routes
+```
+
+Why it replays exactly: watching and recording start every level the same way. They use default save data (never
+yours), the level-select loadout, a fixed random seed and a fixed 1440×900 view for the game's logic. Only the
+picture uses your window. Conversations answer with the first reply and loot swaps keep what you carry, so a
+route never waits on a menu. A route made for one build may stop fitting after that level is edited; re-record
+it.
+
 ## Editing a level without losing its route
 
 1. Open the level in the builder, from **Pause → Edit this level** or from **Level builder → New / Open → Original

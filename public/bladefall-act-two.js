@@ -1251,7 +1251,7 @@ function silence(A, S, e, fleeX){
   burst(e.x - e.shieldFace * 18, e.y + 34, '#f3d67a', 18);
   G.shake = Math.max(G.shake || 0, 6); G.hitstop = Math.max(G.hitstop || 0, 0.08);
   if(meta.soundOn) SFX.hit();
-  const to = fleeX || S.fleeX || ((f) => f.x - 900 * (Math.sign(G.p.x - f.x) || 1));
+  const split = S.fleeSplit, to = fleeX || (split && ((f) => f.x < G.p.x ? split.left : split.right)) || S.fleeX || ((f) => f.x - 900 * (Math.sign(G.p.x - f.x) || 1));
   for(const f of S.foes) if(!f.dead && f.actFoe === 'belled'){
     if(f.zealot) continue;                                     // no bell drives these; none stops them
     if(f.shackle){ f.st = 'sit'; f.t = 0; }
