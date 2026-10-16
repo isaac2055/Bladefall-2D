@@ -15,6 +15,7 @@ import {existsSync} from 'node:fs';
 import {resolve,extname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {launchChrome} from '../../tests/launch-chrome.mjs';
+import {PLANS} from './plans.mjs';
 
 const REPO=fileURLToPath(new URL('../../',import.meta.url)),PUBLIC=resolve(REPO,'public'),OUT=resolve(PUBLIC,'bladefall-explore-routes.js');
 const SEED=0xB07,VIEW={w:1440,h:900};
@@ -65,7 +66,8 @@ async function solve(stage){
   const b=await page.evaluate(boot,{stage,seed:SEED});
   if(b.boss&&noBoss)return {stage,skip:'boss level'};if(!b.boss&&bossOnly)return {stage,skip:'no boss'};
   const goalX=b.boss?b.boss.goal:null,t0=Date.now();
-  const r=await page.evaluate(bot.solveLevel,{goalX,totalExpansions:budget,allowBloodLoss:blood});
+  const plan=PLANS[stage]||null,finishX=b.boss?goalX:plan?.finish??null;
+  const r=await page.evaluate(bot.solveLevel,{goalX:finishX,totalExpansions:budget,allowBloodLoss:blood,plan:plan?.steps||null});
   const inputs=[...Array(b.settle).fill({}),...(r.winningInputs||[])];
   return {stage,b,r,inputs,tape:encode(inputs),seconds:Math.round((Date.now()-t0)/1000),errors};
  }catch(e){return {stage,error:e.message};}

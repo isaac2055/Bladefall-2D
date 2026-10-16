@@ -442,6 +442,32 @@ export async function solveLevel(options) {
         } });
       }
     }
+    // Resin blades (Black Woods' crossings): jump toward one and strike it as it passes over the knight's head
+    // (up blade) or under his feet (down blade); the strike throws him up, and he drifts on across the pit.
+    for (const bl of G.obstacles.filter(o => o.type === 'earlyBlade' && Math.abs(o.x - G.p.x) < 700 && (o.x - G.p.x) * dir > -60)) {
+      const up = bl.direction !== 'down';
+      for (const off of [90, 60, 120, 30, 150]) for (const hold of [14, 8, 20]) approaches.push({ name: `blade${Math.round(bl.x)}o${off}h${hold}`, exec: (step) => {
+        if (!G.p.onGround) return null;
+        const here = standingOn(); if (!here) return null;
+        const launch = Math.max(here.x0 + 4, Math.min(here.x1 - 4, bl.x - dir * off));
+        for (let i = 0; i < 240 && Math.abs(G.p.x - launch) > 4; i++) {
+          const why = step(G.p.x < launch ? { right: true } : { left: true }); if (why) return why;
+          if (!G.p.onGround) return null;
+        }
+        let struck = false;
+        for (let i = 0; i < 90; i++) {
+          const live = G.obstacles.find(o => o.type === 'earlyBlade' && o.earlyId === bl.earlyId) || bl, ph = G.p.h || 44;
+          const near = Math.abs(G.p.x - live.x) < (live.w || 48) / 2 + 10;
+          const inRange = near && (up ? live.y >= G.p.y + ph - 10 && live.y <= G.p.y + ph + 64 : G.p.y >= live.y - 10 && G.p.y <= live.y + 65);
+          const input = { ...D };
+          if (i < hold) input.jump = true;
+          if (!struck && inRange && !G.p.onGround) { input.attack = true; if (up) input.up = true; else input.slam = true; struck = true; }
+          const why = step(input); if (why) return why;
+          if (i > 10 && G.p.onGround) break;
+        }
+        return null;
+      } });
+    }
     if (target && G.p.hasJetpack) approaches.unshift({name:'flyToLedge',exec:(step)=>{
       if(G.p.fuel<=0)return null;
       let cruise=G.p.y>target.y+70, descend=false;
@@ -874,6 +900,55 @@ export async function solveLevel(options) {
     const cur = standingOn();
     return { cur: cur && key(cur), dcur: cur && distOf(cur), ledges: all.map((l) => ({ k: key(l), d: distOf(l), n: neighbours(l).map((r) => key(r.b)) })) };
   }
+  // A level's plan (scripts/explore-routes/plans.mjs): steps the level needs before its road can be driven,
+  // e.g. Black Woods' Oathblade, taken from behind its ritual. Each 'reach' is driven to like a detour; 'press'
+  // holds inputs; a step that cannot be done ends the plan and the main drive starts from there.
+  const planInputs = [], planLog = [];
+  for (const stepDef of opt.plan || []) {
+    if (stepDef.reach) {
+      const [px, py] = stepDef.reach, xr = stepDef.xr || 20, yr = stepDef.yr || 12;
+      const near = () => G.p.onGround && Math.abs(G.p.x - px) <= xr && Math.abs((G.p.y || 0) - py) <= yr;
+      ledges(); const floor = ledgeUnder(px, py + 6);
+      if (!near()) {
+        if (!floor) { planLog.push({ step: stepDef, ok: false, why: 'no ledge there' }); break; }
+        tas.saveState('plan-step');
+        const res = drive({ direction: Math.sign(px - G.p.x) || baseTravel, seeds: () => [floor], done: near, point: () => ({ x: px, y: py }),
+          maxSegments: 60, allowBoundary: false, mechanisms: false, allowBlood: opt.allowBloodLoss, label: 'plan' });
+        if (!res.ok) { tas.restoreState('plan-step'); planLog.push({ step: stepDef, ok: false, why: res.failure?.reason, from: res.failure?.from }); break; }
+        planInputs.push(...res.inputs);
+      }
+      planLog.push({ step: stepDef, ok: true, x: Math.round(G.p.x), y: Math.round(G.p.y || 0) });
+    }
+    if (stepDef.press) for (const [input, n] of stepDef.press) for (let i = 0; i < n; i++) { planInputs.push(input); stepFrame(input); }
+    // A closed-loop script for a mechanism the bot can't find (e.g. Frostfell's thermal circuit). It drives the
+    // real simulation through tas.stepFrames, and every frame it steps is recorded into the route.
+    if (stepDef.script) {
+      // A script may search (save, try, restore): a restore rewinds the recording to that save, so only the
+      // path it kept is in the route. The script gets a recording view of the TAS API (the API object itself
+      // cannot be patched).
+      const rec = [], marks = {};
+      const T = {};
+      for (const k of Object.keys(tas)) { const v = tas[k]; T[k] = typeof v === 'function' ? v.bind(tas) : v; }
+      T.stepFrames = (n, input) => {
+        for (let i = 0; i < n; i++) {
+          rec.push(input || {});
+          try { tas.stepFrames(1, input || {}); }
+          catch (error) {
+            if (/zone boundary/i.test(String(error && error.message)) && (G.p.x - G.levelLength / 2) * baseTravel > 0) crossedBoundary = true;
+            throw error;
+          }
+        }
+      };
+      T.saveState = (name) => { marks[name] = rec.length; return tas.saveState(name); };
+      T.restoreState = (name) => { if (name in marks) rec.length = marks[name]; return tas.restoreState(name); };
+      let out = null, err = null;
+      try { out = new Function('tas', stepDef.script)(T); } catch (e) { err = crossedBoundary ? null : String(e && e.message || e); }
+      planInputs.push(...rec);
+      planLog.push({ step: stepDef.label || 'script', ok: !err && out !== false, frames: rec.length, x: Math.round(G.p.x), y: Math.round(G.p.y || 0), err, out: out && typeof out === 'object' ? out : undefined });
+      if (err || out === false || G.p.dead) break;
+    }
+  }
+  ledges(); buildMacros(baseTravel);
   const main = drive({
     direction: baseTravel, seeds: goalSeeds, done: reachedGoal,
     point: () => ({ x: goalX, y: (standingOn() || { y: G.p.y || 0 }).y }),
@@ -886,7 +961,7 @@ export async function solveLevel(options) {
   crossedBoundary = false; wrongWayBoundary = false;
   let replayFrames = 0;
   const evidence = { crystalRefills:0, portalPlacements:0, flightFrames:0 };
-  for (const input of main.inputs) {
+  for (const input of [...planInputs, ...main.inputs]) {
     const crystals = G.obstacles.filter(o=>o.type==='crystal').map(o=>[o,o.cdT||0]);
     const mouths = G.cratePortals.length, fuel = G.p.fuel || 0;
     replayFrames++; const stepped = stepFrame(input);
@@ -905,8 +980,8 @@ export async function solveLevel(options) {
     pass: routeReached && reachedGoal() && !G.p.dead && replayIdentical,
     routeReached, playerReplayIdentical, replayScope: 'full-simulation', stateHash, evidence,
     direction: baseTravel, goalX, goalKind, crossedBoundary, reachedX: Math.round(replay.x),
-    segments: main.solved.length, backtracks: main.backtracks,
-    frames: main.inputs.length, replayFrames, expansions: totalExpansions, replayIdentical,
+    segments: main.solved.length, backtracks: main.backtracks, plan: planLog,
+    frames: planInputs.length + main.inputs.length, replayFrames, expansions: totalExpansions, replayIdentical,
     capabilities: { doubleJump: hasDouble, dash: hasDash, weapon: hasWeapon },
     envelope: { maxRise: Math.round(MAX_RISE), maxReach: Math.round(MAX_REACH) },
     costedSegments: main.solved.filter((r) => r.costBlood).length,
@@ -916,7 +991,7 @@ export async function solveLevel(options) {
     ...(main.failure || {}),
     ...(!replayIdentical ? { reason: 'full simulation replay differs', failedSegment: main.failure?.failedSegment ?? main.solved.length } : {}),
     solved: main.solved.slice(0, opt.traceLimit),
-    winningInputs: main.inputs,
+    winningInputs: [...planInputs, ...main.inputs],
   };
 }
 
