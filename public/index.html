@@ -26010,7 +26010,7 @@ function exploreWatchBegin(){
   exploreWatchReset();
   withWatchView(()=>tasDeterministicCall(()=>beginRun(0,null,{hp:1,dmg:1},{startStage:stage,levelSelect:true,testRun:true,runSeed:exploreRoutes().seed})));
   W.frames=[];if(route)for(const [n,k] of route.tape)for(let i=0;i<n;i++)W.frames.push(k||'');
-  W.f=0;W.stage=stage;W.cam=null;W.end=route?.end||'level-end';W.after=0;W.rec=[];W.deaths=0;W.paused=false;
+  W.f=0;W.stage=stage;W.cam=null;W.end=route?.end||'level-end';W.finish=route?.finishX!=null?{x:route.finishX,note:route.finishNote||''}:null;W.after=0;W.rec=[];W.deaths=0;W.paused=false;
   const name=STAGES[stage]?.name||('Stage '+stage);
   toast(W.record?(W.frames.length?`Replaying the route to its end · then it is your turn (${name})`:`● Recording ${name} · play it through · Esc to finish`)
     :`▶ ${W.label?W.label+' · ':''}${name}${W.list.length>1?` (${W.i+1}/${W.list.length})`:''}`,2800);
@@ -26084,8 +26084,10 @@ function exploreWatchTick(){
     if(live()){held=exploreRecordHeld();touch={...input};W.rec.push([...new Set(held.map(a=>WATCH_KEYS[a]))].join(''));if(W.rec.length%60===1)exploreWatchBanner();}
     else if(W.f>=W.frames.length){
       // A boss level's route stops at the arena: hold a moment, then move on.
-      if(W.end==='boss'||W.end==='partial'){if(W.after++===0)toast(W.end==='boss'?'The boss is ahead · ● Record in the level select continues from here':'The recorded route ends here',2600);if(W.after<90)break;}
-      exploreWatchNext(W.end==='boss'||W.end==='partial'?null:'route ended before the exit');return;
+      // A level whose end is a place, not a door (Frostfell's summit: its road on opens from the far side).
+      const atFinish=W.end==='level-end'&&W.finish&&G.p&&G.p.x>=W.finish.x;
+      if(W.end==='boss'||W.end==='partial'||atFinish){if(W.after++===0)toast(atFinish?(W.finish.note||'The route ends here'):W.end==='boss'?'The boss is ahead · ● Record in the level select continues from here':'The recorded route ends here',2600);if(W.after<90)break;}
+      exploreWatchNext(W.end==='boss'||W.end==='partial'||atFinish?null:'route ended before the exit');return;
     }
     else{held=[...W.frames[W.f]].map(k=>WATCH_ACTIONS[k]).filter(Boolean);if(W.record&&W.f+1===W.frames.length)toast('Your turn · ● recording',2200);}
     W.f++;

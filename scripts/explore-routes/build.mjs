@@ -9,6 +9,7 @@
 //   node scripts/explore-routes/build.mjs --no-boss base  skip stages with a boss
 //   --budget 60000   bot search budget (default 30000)   --jobs 4   stages solved at once
 //   --blood          let the bot take damage on a hop (a second try for stalled stages)
+//   --out file       write the routes there instead (starts from the game's routes; for parallel builds, merged by hand)
 import {createServer} from 'node:http';
 import {readFile,writeFile} from 'node:fs/promises';
 import {existsSync} from 'node:fs';
@@ -17,13 +18,13 @@ import {fileURLToPath} from 'node:url';
 import {launchChrome} from '../../tests/launch-chrome.mjs';
 import {PLANS} from './plans.mjs';
 
-const REPO=fileURLToPath(new URL('../../',import.meta.url)),PUBLIC=resolve(REPO,'public'),OUT=resolve(PUBLIC,'bladefall-explore-routes.js');
+const REPO=fileURLToPath(new URL('../../',import.meta.url)),PUBLIC=resolve(REPO,'public'),GAME_ROUTES=resolve(PUBLIC,'bladefall-explore-routes.js');
 const SEED=0xB07,VIEW={w:1440,h:900};
 const KEYS={left:'l',right:'r',down:'d',jump:'j',attack:'a',dodge:'x',dash:'x',portal:'p',flip:'f',command:'c',companion:'c',pickup:'k',counter:'n',slam:'s',tool:'t',interact:'i',hook:'h',up:'u',checkpoint:'q'};
 const ORDER='lrdujaxpfcknsthiq';
 const argv=process.argv.slice(2),opt=(n,d)=>{const i=argv.indexOf('--'+n);return i>=0?argv[i+1]:d;};
-const budget=+opt('budget',30000),jobs=+opt('jobs',4),noBoss=argv.includes('--no-boss'),bossOnly=argv.includes('--boss-only'),blood=argv.includes('--blood');
-const words=argv.filter((a,i)=>!a.startsWith('--')&&!['--budget','--jobs'].includes(argv[i-1]));
+const OUT=resolve(opt('out',GAME_ROUTES)),budget=+opt('budget',30000),jobs=+opt('jobs',4),noBoss=argv.includes('--no-boss'),bossOnly=argv.includes('--boss-only'),blood=argv.includes('--blood');
+const words=argv.filter((a,i)=>!a.startsWith('--')&&!['--budget','--jobs','--out'].includes(argv[i-1]));
 const BASE=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20],FRACTURED=Array.from({length:20},(_,i)=>21+i);
 const stages=words.flatMap(w=>w==='base'?BASE:w==='fractured'?FRACTURED:w==='all'?[...BASE,...FRACTURED]:[+w]).filter(Number.isInteger);
 if(!stages.length){console.log('Usage: node scripts/explore-routes/build.mjs [base|fractured|all|<stage>…] [--no-boss|--boss-only] [--budget N] [--jobs N]');process.exit(2);}
@@ -36,8 +37,9 @@ const browser=await launchChrome({headless:true,protocolTimeout:10_800_000,args:
 const bot=await import('../bladefall-bot.mjs');
 
 async function existing(){
- if(!existsSync(OUT))return {version:1,view:VIEW,seed:SEED,meta:null,stages:{}};
- const text=await readFile(OUT,'utf8'),g={};new Function('globalThis',text)(g);return g.BladefallExploreRoutes;
+ const from=existsSync(OUT)?OUT:GAME_ROUTES;
+ if(!existsSync(from))return {version:1,view:VIEW,seed:SEED,meta:null,stages:{}};
+ const text=await readFile(from,'utf8'),g={};new Function('globalThis',text)(g);return g.BladefallExploreRoutes;
 }
 const encode=inputs=>{const tape=[];for(const inp of inputs){const k=[...new Set(Object.entries(inp||{}).filter(([,v])=>v).map(([a])=>KEYS[a]).filter(Boolean))].sort((a,b)=>ORDER.indexOf(a)-ORDER.indexOf(b)).join('');const last=tape.at(-1);if(last&&last[1]===k)last[0]++;else tape.push([1,k]);}return tape;};
 
@@ -58,7 +60,9 @@ function boot({stage,seed}){
  return {settle,meta:TAS_INITIAL_META,stage:G.stageIndex,levelLength:G.levelLength,x:G.p.x,boss:b?{type:b.type,x:Math.round(b.x),arena:Math.round(arena),goal:Math.round(goal)}:null};
 }
 
+const planFor=stage=>PLANS[stage]||null;
 async function solve(stage){
+ const plan=planFor(stage);
  const page=await browser.newPage();await page.setViewport({width:VIEW.w,height:VIEW.h,deviceScaleFactor:1});
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
  try{
@@ -66,7 +70,7 @@ async function solve(stage){
   const b=await page.evaluate(boot,{stage,seed:SEED});
   if(b.boss&&noBoss)return {stage,skip:'boss level'};if(!b.boss&&bossOnly)return {stage,skip:'no boss'};
   const goalX=b.boss?b.boss.goal:null,t0=Date.now();
-  const plan=PLANS[stage]||null,finishX=b.boss?goalX:plan?.finish??null;
+  const finishX=b.boss?goalX:plan?.finish??null;
   const r=await page.evaluate(bot.solveLevel,{goalX:finishX,totalExpansions:budget,allowBloodLoss:blood,plan:plan?.steps||null});
   const inputs=[...Array(b.settle).fill({}),...(r.winningInputs||[])];
   return {stage,b,r,inputs,tape:encode(inputs),seconds:Math.round((Date.now()-t0)/1000),errors};
@@ -103,7 +107,7 @@ async function worker(){
   if(!s.r.pass&&(progress<0.2||!(s.r.winningInputs||[]).length)){console.log(`stage ${name}: bot stopped at x=${s.r.reachedX}/${goal} (${s.r.reason||s.r.failure||'no route'}) in ${s.seconds} s`);results.push({stage,ok:false,why:'bot stopped at x='+s.r.reachedX,reached:s.r.reachedX,goal});continue;}
   const prior=routes.stages[stage];
   if(!s.r.pass&&prior&&(prior.end!=='partial'||(prior.reachedX||0)>=s.r.reachedX)){console.log(`stage ${name}: bot stopped at x=${s.r.reachedX}/${goal}; keeping the existing route`);results.push({stage,ok:!!prior,why:'kept existing'});continue;}
-  const route={tape:s.tape,frames:s.inputs.length,end:s.r.pass?(s.b.boss?'boss':'level-end'):'partial',boss:s.b.boss?.type||null,reachedX:s.r.reachedX,goalX:goal,source:'bot',at:new Date().toISOString()};
+  const route={tape:s.tape,frames:s.inputs.length,end:s.r.pass?(s.b.boss?'boss':'level-end'):'partial',boss:s.b.boss?.type||null,reachedX:s.r.reachedX,goalX:goal,source:'bot',at:new Date().toISOString(),...(s.r.pass&&!s.b.boss&&planFor(stage)?.finish!=null?{finishX:planFor(stage).finish,finishNote:planFor(stage).finishNote||null}:{})};
   const v=await verify(routes,stage,route);
   if(!v.ok||Math.abs((v.x??-1e9)-s.r.reachedX)>2){console.log(`stage ${name}: route found (${s.inputs.length} frames) but the watch ended at x=${v.x} (${v.reason||'position differs'}, bot x=${s.r.reachedX})${v.errors?.length?' errors: '+v.errors.join(' | '):''}`);results.push({stage,ok:false,why:'watch replay differs: '+(v.reason||('x '+v.x+' vs '+s.r.reachedX))});continue;}
   routes.stages[stage]=route;results.push({stage,ok:route.end!=='partial',partial:route.end==='partial'});
