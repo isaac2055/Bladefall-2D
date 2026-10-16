@@ -8,7 +8,7 @@ import {Core} from './rbr-lib.mjs';
 const worlds=[];
 const scope={BladefallClimb:{addWorld:w=>worlds.push(w)},BladefallPrecisionDeviceViews:[]};
 vm.createContext(scope);
-for(const file of ['bladefall-pcore-pitches-view.js','bladefall-climb-worlds.js','bladefall-climb-art.js'])vm.runInContext(readFileSync(new URL('../public/'+file,import.meta.url),'utf8'),scope);
+for(const file of ['bladefall-pcore-pitches-view.js','bladefall-climb-worlds.js','bladefall-climb-looks.js','bladefall-climb-art.js'])vm.runInContext(readFileSync(new URL('../public/'+file,import.meta.url),'utf8'),scope);
 const folk=scope.BladefallPitchView.helpers.FOLK;
 worlds.forEach(w=>Object.assign(folk,w.folk));
 const art=scope.BladefallClimbArt,pal={sky0:'#101820',sky1:'#354657',far:'#263444',rock:'#4a4658',rockD:'#2b2937',edge:'#8f88a6',moss:'#6f8d5a',accent:'#e9c47a'};

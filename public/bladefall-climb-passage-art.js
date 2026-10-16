@@ -5,6 +5,8 @@ const colors={1:['#111b30','#54536b','#343f51','#a5a989'],2:['#071b1b','#365750'
  15:['#0d0d12','#4a4038','#2c2824','#e0b060'],16:['#121a26','#5a6a7a','#36404c','#c8d4dc'],17:['#13263a','#8a8a70','#4a5560','#e2d6a8'],18:['#1a1512','#6a5240','#3e342c','#e0a868'],19:['#2a2236','#b09a78','#6a6058','#f0dca0'],20:['#2e2030','#c8a060','#7a6450','#ffe6a0'],
  21:['#150f22','#6a5a88','#3a3050','#c8b0f0'],22:['#0e1420','#506a80','#2c3a48','#a8c8e8'],23:['#1c1424','#8a6a88','#4a3a50','#e0b8e0'],24:['#141a2a','#8a86a8','#4a4a62','#d8d0f0'],
  25:['#140e20','#6e5e8c','#3a3050','#c8b0f0'],26:['#140e20','#6e5e8c','#3a3050','#c8b0f0'],27:['#140e20','#6e5e8c','#3a3050','#c8b0f0'],28:['#140e20','#6e5e8c','#3a3050','#c8b0f0'],29:['#140e20','#6e5e8c','#3a3050','#c8b0f0'],30:['#140e20','#6e5e8c','#3a3050','#c8b0f0'],31:['#140e20','#6e5e8c','#3a3050','#c8b0f0'],32:['#140e20','#6e5e8c','#3a3050','#c8b0f0'],33:['#140e20','#6e5e8c','#3a3050','#c8b0f0'],34:['#140e20','#6e5e8c','#3a3050','#c8b0f0'],35:['#140e20','#6e5e8c','#3a3050','#c8b0f0'],36:['#140e20','#6e5e8c','#3a3050','#c8b0f0'],37:['#140e20','#6e5e8c','#3a3050','#c8b0f0'],38:['#140e20','#6e5e8c','#3a3050','#c8b0f0'],39:['#140e20','#6e5e8c','#3a3050','#c8b0f0'],40:['#140e20','#6e5e8c','#3a3050','#c8b0f0']};
+// (7.342) A Fractured world's borderland colours come from its own look, not one shared violet.
+const tone=n=>root.BladefallClimbLooks?.passageColors(n)||colors[n];
 const hash=(n)=>{const x=Math.sin(n*127.1+311.7)*43758.5453;return x-Math.floor(x);};
 function mix(a,b,t){t=Math.max(0,Math.min(1,t));const n=parseInt(a.slice(1),16),m=parseInt(b.slice(1),16);return '#'+[16,8,0].map(s=>Math.round(((n>>s)&255)*(1-t)+((m>>s)&255)*t).toString(16).padStart(2,'0')).join('');}
 function rect(b,x,y,w,h,c){b.fillStyle=c;b.fillRect(Math.round(x),Math.round(y),Math.round(w),Math.round(h));}
@@ -13,7 +15,7 @@ function shape(b,pts,c){b.fillStyle=c;b.beginPath();pts.forEach(([x,y],i)=>i?b.l
 function arch(b,x,y,w,h,c,thick=5){b.strokeStyle=c;b.lineWidth=thick;b.beginPath();b.moveTo(x,y+h);b.lineTo(x,y+w*.6);b.bezierCurveTo(x,y-w*.12,x+w,y-w*.12,x+w,y+w*.6);b.lineTo(x+w,y+h);b.stroke();}
 function chain(b,x,y,len,c){for(let j=0;j<len;j+=8){b.strokeStyle=c;b.lineWidth=1;b.strokeRect(x+(j%16?1:0),y+j,3,6);}}
 function background(b,g,cam,W,H){
- const d=g.room.def.atlasTransit,a=colors[d.left],z=colors[d.right],t=Math.max(0,Math.min(1,(cam.x+W/2)/g.room.w));
+ const d=g.room.def.atlasTransit,a=tone(d.left),z=tone(d.right),t=Math.max(0,Math.min(1,(cam.x+W/2)/g.room.w));
  const themes={roots:['#061b21','#254a40','#65876c'],canopy:['#091d29','#234942','#91bfa0'],viaduct:['#262137','#a37865','#e6bd91'],aqueduct:['#0c2631','#416d78','#85cbc8'],belltower:['#242136','#73666a','#d6b383'],siege:['#241827','#6a4349','#bc8770'],thaw:['#15334b','#7fa8ba','#d0eef1'],chains:['#080f1d','#28394b','#688399'],glass:['#142643','#607caa','#bbd7fb'],procession:['#17182f','#4b536f','#bcc3db'],spillway:['#081e27','#203e42','#739b91'],windbridge:['#24374d','#9296a1','#eed5b1'],cinder:['#1c0b08','#5e2414','#ff9a4a'],foundry:['#160e0b','#4d301e','#ffc070'],prism:['#101530','#3d3466','#c4b4ff'],void:['#07060f','#241a3a','#a77be0'],drowned:['#04070d','#132236','#7fa6c8'],rail:['#0b0b10','#2c2620','#e0a850'],cliffs:['#101826','#3c4c5e','#cfe0f0'],shores:['#10243a','#4a6a7a','#f0e0b0'],colony:['#18120f','#4a382c','#f0b070'],sunpath:['#2a2238','#8a6a5a','#ffe0a0'],sunspire:['#2c1e2e','#a07850','#fff0b8'],fractured:['#120a1e','#3a2a52','#c8b0f0']};
  const th=themes[d.style],sky=b.createLinearGradient(0,0,0,H);sky.addColorStop(0,th[0]);sky.addColorStop(1,th[1]);b.fillStyle=sky;b.fillRect(0,0,W,H);
  const time=g.frame,pt=(x,y,k)=>({x:x-cam.x*k,y:y-cam.y*k}),ink=(n)=>mix(th[0],th[2],n);
@@ -137,12 +139,12 @@ function terrainPalette(def,base){
 }
 function terrain(b,g){
  const d=g.room.def.atlasTransit;if(!d)return;
- const a=colors[d.left],z=colors[d.right];
+ const a=tone(d.left),z=tone(d.right);
  for(let r=0;r<g.room.rows;r++)for(let c=0;c<g.room.cols;c++){
   if(g.room.grid[r*g.room.cols+c]!==1)continue;
   const mat={roots:['#263e34','#88aa70'],canopy:['#354238','#a6ba80'],viaduct:['#67555b','#cfb797'],aqueduct:['#355c62','#91b6b4'],belltower:['#48414e','#b9ad95'],siege:['#51414a','#b49582'],thaw:['#4b768d','#d5ecec'],glass:['#39577e','#caeaff'],chains:['#223446','#94a5ad'],procession:['#45445e','#abb7d0'],spillway:['#263f42','#728d87'],windbridge:['#6a6665','#c3b391'],cinder:['#4a2a22','#e08a52'],foundry:['#43342c','#d0a066'],prism:['#38345a','#b9a8ef'],void:['#2e2840','#a68fd0'],drowned:['#1e2a3c','#7fa6c8'],rail:['#2c2824','#c09060'],cliffs:['#36404c','#b8c8d4'],shores:['#4a5560','#d8cca0'],colony:['#3e342c','#d09a68'],sunpath:['#6a6058','#e8d4a0'],sunspire:['#7a6450','#ffe0a0'],fractured:['#3c2c4e','#b49ae0']}[d.style];
   const t=c/(g.room.cols-1),nearLeft=c<g.room.cols/2,n=nearLeft?d.left:d.right;
-  const region=root.BladefallClimb?.world(n),pal=root.BladefallPitchView?.climb?.palette(region?.palette);
+  const region=root.BladefallClimb?.world(n),pal=root.BladefallPitchView?.climb?.palette(root.BladefallClimbLooks?.worldPalette(n,region?.palette)||region?.palette);
   const fade=Math.min(1,(nearLeft?c:g.room.cols-1-c)*8/256);
   const exposed=!r||g.room.grid[(r-1)*g.room.cols+c]!==1||!c||c===g.room.cols-1||g.room.grid[r*g.room.cols+c-1]!==1||g.room.grid[r*g.room.cols+c+1]!==1;
   const base=(exposed?pal?.rock:pal?.rockD)||(nearLeft?a[2]:z[2]);
@@ -192,7 +194,7 @@ function details(b,g,viewport){
  const d=g.room.def.atlasTransit;
  if(!d){
   if(!g.room.def.atlasJunction)return;
-  const n=g.room.def.atlasRegion,a=colors[n]||colors[1];
+  const n=g.room.def.atlasRegion,a=tone(n)||colors[1];
   const ground=g.room.def.atlasFloor;
   for(const e of g.ents.filter(e=>e.type==='thru')){
    const x=e.x,y=e.y,w=e.w;
@@ -228,7 +230,7 @@ function details(b,g,viewport){
   }
   return;
  }
- const a=colors[d.left],z=colors[d.right],time=g.frame;
+ const a=tone(d.left),z=tone(d.right),time=g.frame;
  for(const p of d.decks){
   const x=p.c*8,y=p.r*8,w=p.w*8,col=mix(a[3],z[3],x/g.room.w),dark=mix(a[2],z[2],x/g.room.w);
   if(p.material==='root'){

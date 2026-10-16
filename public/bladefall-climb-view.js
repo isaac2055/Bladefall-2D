@@ -44,11 +44,16 @@ const CPAL={
 };
 function palFor(name){
  const w=st&&st.world;
- return CPAL[name]||(CL().worlds.find(region=>region.palettes?.[name])?.palettes[name])||(V().palettes&&V().palettes[name])||(H.PAL&&H.PAL[name])||V().palettes.footing;
+ return CPAL[name]||LOOKS()?.palettes[name]||(CL().worlds.find(region=>region.palettes?.[name])?.palettes[name])||(V().palettes&&V().palettes[name])||(H.PAL&&H.PAL[name])||V().palettes.footing;
 }
+// (7.342) A room is drawn in its world's look (bladefall-climb-looks.js): imported rooms take their world's palette and
+// each Fractured world has its own. Every drawing of a room or a world's sky asks these two.
+const LOOKS=()=>root.BladefallClimbLooks;
+function roomPal(def,fallback=st?.world?.palette){return palFor((def&&(LOOKS()?LOOKS().roomPalette(def):def.palette))||fallback);}
+function worldPal(w){return palFor(LOOKS()?LOOKS().worldPalette(w?.n,w?.palette):w?.palette);}
 PV.palette=ch=>{
  if(!st||!isClimb(ch))return BASE.palette(ch);
- const d=st.view.g&&st.view.g.room.def;return palFor(d&&d.palette||st.world.palette);
+ const d=st.view.g&&st.view.g.room.def;return roomPal(d);
 };
 
 /* ---------------------------------------------------------------- where things are */
@@ -256,7 +261,7 @@ function drawPassageViews(b,g){
   for(const r of scene.rooms){
    if(r.x>cam.x+SW||r.x+r.w<cam.x||r.y>cam.y+SH||r.y+r.h<cam.y)continue;
    const def=defOf(r.room),cached=st.frozen?.get(r.room)||displayGame(r.room,true),other={...cached,frame:g.frame};
-   b.save();b.translate(r.x,r.y);V().drawOther(b,other,palFor(def.palette));root.BladefallClimbPassageArt?.details(b,other);drawFolk(b,other,def,false,scene.target.world);b.restore();
+   b.save();b.translate(r.x,r.y);V().drawOther(b,other,roomPal(def));root.BladefallClimbPassageArt?.details(b,other);drawFolk(b,other,def,false,scene.target.world);b.restore();
   }
   b.restore();
  }
@@ -414,14 +419,14 @@ function drawWorldUpright(b,g,view,pal){
  const rects=all.map(s=>{const d=defOf(s.room),sky=d.atlasJunction?SH*2:0;return {x:s.x*TILE-pl.x,y:s.y*TILE-pl.y-sky,w:(d.cols||40)*8,h:(d.rows||23)*8+sky};});
  for(const socket of visibleSockets(g)){const scene=neighbourScene(g,socket);if(!scene)continue;
   for(const r of scene.rooms){const left=socket.edge==='left'?r.x:Math.max(g.room.w,r.x),right=socket.edge==='left'?Math.min(0,r.x+r.w):r.x+r.w;if(right>left){const sky=defOf(r.room).atlasJunction?SH*2:0,top=Math.max(r.y-sky,socket.viewTop),bottom=Math.min(r.y+r.h,socket.viewBottom);if(bottom>top)rects.push({...r,x:left,y:top,w:right-left,h:bottom-top});}}
-  neighbours.push({edge:socket.edge,top:socket.viewTop,bottom:socket.viewBottom,color:palFor(scene.def.palette).rockD});
+  neighbours.push({edge:socket.edge,top:socket.viewTop,bottom:socket.viewBottom,color:roomPal(scene.def).rockD});
  }
  // Fill the complement of the union, rather than an even/odd mask: overlapping
  // views at an atlas junction must never turn the neighbour into a solid panel.
  const vx=cx-pl.x-16,vy=cy-pl.y-16,vw=SW+32,vh=SH+32;
  const visible=rects.filter(r=>r.x<vx+vw&&r.x+r.w>vx&&r.y<vy+vh&&r.y+r.h>vy);
  const ys=[vy,vy+vh,...visible.flatMap(r=>[Math.max(vy,r.y),Math.min(vy+vh,r.y+r.h)])].sort((a,b)=>a-b);
- b.save();const ownRock=palFor(g.room.def.palette||st.world.palette).rockD;
+ b.save();const ownRock=roomPal(g.room.def).rockD;
  const fillGap=(x,y,w,h)=>{
   const cuts=[x,...[0,g.room.w].filter(v=>v>x&&v<x+w),x+w];
   for(let j=1;j<cuts.length;j++){const left=cuts[j-1],right=cuts[j],mid=(left+right)/2;
@@ -448,7 +453,7 @@ function drawWorldUpright(b,g,view,pal){
   // Behind: the section as you left it (gates open, the boss gone). Ahead: as it waits, the next one's way in open.
   const g2=(st.frozen&&st.frozen.get(s.room))||displayGame(s.room,true);
   b.save();b.translate(x-pl.x,y-pl.y);
-  V().drawOther(b,g2,palFor(def.palette));root.BladefallClimbPassageArt?.details(b,g2);
+  V().drawOther(b,g2,roomPal(def));root.BladefallClimbPassageArt?.details(b,g2);
   drawFolk(b,g2,def,false);drawReward(b,s.room,g.frame);
   b.restore();
  });
@@ -484,7 +489,7 @@ function drawFoldedViews(b,g,pl,visible,cam){
    const top=Math.max(floor-48,r.y*8-pl.y+s.viewTop),bottom=Math.min(floor+16,r.y*8-pl.y+s.viewBottom);
    const left=s.edge==='left'?localCam.x:Math.max(localCam.x,sx),right=s.edge==='left'?Math.min(sx,localCam.x+SW):localCam.x+SW;
    if(right<=left||top>localCam.y+SH||bottom<localCam.y)continue;
-   const dx=sx-peer.plane,dy=floor-peer.floor*8,scene={...(st.frozen.get(target.id)||displayGame(target.id,true)),frame:st.view.g.frame,foldPreview:true},pal=palFor(target.palette);
+   const dx=sx-peer.plane,dy=floor-peer.floor*8,scene={...(st.frozen.get(target.id)||displayGame(target.id,true)),frame:st.view.g.frame,foldPreview:true},pal=roomPal(target);
    b.save();clipExterior(b,{x:left,y:top,w:right-left,h:bottom-top},visible.map(room=>({x:room.x*8-pl.x,y:room.y*8-pl.y,w:room.w*8,h:room.h*8})));
    // Background is rendered at the same local camera as the destination tiles.
    b.save();b.translate(localCam.x,localCam.y);
@@ -515,7 +520,7 @@ function drawGeography(b,g,view,pl,cam=st.cam||{x:pl.x,y:pl.y}){
   else rects.push({x:r.x*8,y:r.y*8,w:r.w*8,h:r.h*8});
  }
  const x0=cam.x-16,x1=cam.x+SW+16,y0=cam.y-16,y1=cam.y+SH+16,ys=[y0,y1,...rects.flatMap(r=>[Math.max(y0,r.y),Math.min(y1,r.y+r.h)])].filter(y=>y>=y0&&y<=y1).sort((a,b)=>a-b);
- const masonry=palFor(g.room.def.palette||st.world.palette);
+ const masonry=roomPal(g.room.def);
  const rock=(x,y,w,h)=>{b.fillStyle=masonry.rockD;b.fillRect(x-pl.x,y-pl.y,w,h);b.save();b.beginPath();b.rect(x-pl.x,y-pl.y,w,h);b.clip();b.fillStyle=masonry.rock;for(let yy=Math.floor(y/8)*8;yy<y+h;yy+=8)for(let xx=Math.floor(x/16)*16;xx<x+w;xx+=16)b.fillRect(xx-pl.x+2+(Math.floor(yy/8)%2)*4,yy-pl.y+5,7,1);b.restore();};
  for(let i=1;i<ys.length;i++){
   const y=ys[i-1],h=ys[i]-y;if(h<=0)continue;let x=x0;
@@ -527,7 +532,7 @@ function drawGeography(b,g,view,pl,cam=st.cam||{x:pl.x,y:pl.y}){
   if(cached.flipped){scene.room=cached.room.upright||cached.room;scene.flipped=false;}   // a flipped room's tiles, the right way up (7.280)
   b.save();b.translate(r.x*8-pl.x,r.y*8-pl.y);
   const local={x:cam.x-r.x*8,y:cam.y-r.y*8};
-  if(r.id===st.view.g.room.id)V().drawStatic(b,scene,palFor(r.def.palette),local);else{V().drawOther(b,scene,palFor(r.def.palette),local);drawReward(b,r.id,g.frame);drawDoorBeams(b,r.def,scene.room,g.frame,CL().world(r.world));}
+  if(r.id===st.view.g.room.id)V().drawStatic(b,scene,roomPal(r.def),local);else{V().drawOther(b,scene,roomPal(r.def),local);drawReward(b,r.id,g.frame);drawDoorBeams(b,r.def,scene.room,g.frame,CL().world(r.world));}
   drawFolk(b,scene,r.def,r.id===st.view.g.room.id,CL().world(r.world));
   b.restore();
  }
@@ -553,7 +558,7 @@ function paintRegion(key,game,place,cam){
  drawGeography(brush,game,st.view,place,cam);brush.restore();return layer;
 }
 function paintCorridor(key,game,local){
- const {layer,brush}=sceneLayer(key),pal=root.BladefallClimbPassageArt.terrainPalette(game.room.def,palFor(game.room.def.palette));
+ const {layer,brush}=sceneLayer(key),pal=root.BladefallClimbPassageArt.terrainPalette(game.room.def,roomPal(game.room.def));
  root.BladefallClimbPassageArt.background(brush,game,local,SW,SH);
  // The room's surrounding stone belongs to this corridor, never the active world.
  brush.save();brush.translate(-local.x,-local.y);brush.fillStyle=pal.rockD;
@@ -1323,14 +1328,27 @@ PV.draw=function(b,g,view){
 };
 
 /* ---------------------------------------------------------------- the sky, continuous across the world */
+// (7.342) The sky is the world you are in: the world of the room the knight (or a folded view's donor) stands in. It
+// used to blend the two worlds whose anchor points were nearest the camera, so a room set far out along its road
+// (often an imported room or a superroom) wore a neighbouring world's skyline. Crossing into another world fades
+// the old sky out over 0.7 s. Worlds 1–40 only.
+function skyLayers(view){
+ const geo=CL().geography,here=geo.rooms.get(view.g.room.id)?.world;
+ if(!here||here>40||!geo.regions.has(here)||!CL().world(here))return null;   // the finale and the Cores keep their blend
+ if(view.g!==st.view.g)return [{n:here,a:1}];
+ const now=performance.now();
+ if(!st.sky||st.sky.n!==here)st.sky={n:here,from:st.sky?.n??null,at:st.sky?now:-Infinity};
+ const k=Math.min(1,(now-st.sky.at)/700);
+ return st.sky.from&&k<1&&CL().world(st.sky.from)?[{n:st.sky.from,a:1},{n:here,a:k*k*(3-2*k)}]:[{n:here,a:1}];
+}
 function geographyBackground(b,view,W,Hh,cam=st.cam||{x:0,y:0}){
  const geo=CL().geography,cx=(cam.x+W/2)/8,cy=(cam.y+Hh/2)/8;
  if(view.g.room.def.atlasFold){const pl=sectionOf(view.g);root.BladefallClimbPassageArt.background(b,view.g,{x:cam.x-pl.x,y:cam.y-pl.y},W,Hh);return true;}
- const regions=[...geo.regions.values()].map(r=>{const a=root.BladefallClimbGeographyBuild.anchors[r.world];return {r,d:Math.hypot(cx-a[0],cy-a[1])};}).sort((a,b)=>a.d-b.d).slice(0,2);
- for(let i=0;i<regions.length;i++){
-  const {r,d}=regions[i],w=CL().world(r.world),scene={...displayGame(w.atlasStart,true),frame:view.g.frame};
-  b.save();if(i)b.globalAlpha=Math.min(.5,Math.pow((regions[0].d+30)/(d+30),4)*.5);
-  root.BladefallClimbArt.background(b,scene,cam,W,Hh,palFor(w.palette));b.restore();
+ const layers=skyLayers(view)||[...geo.regions.values()].map(r=>{const a=root.BladefallClimbGeographyBuild.anchors[r.world];return {n:r.world,d:Math.hypot(cx-a[0],cy-a[1])};}).sort((a,b)=>a.d-b.d).slice(0,2)
+  .map((r,i,all)=>({n:r.n,a:i?Math.min(.5,Math.pow((all[0].d+30)/(r.d+30),4)*.5):1}));
+ for(const {n,a} of layers){
+  const w=CL().world(n),scene={...displayGame(w.atlasStart,true),frame:view.g.frame};
+  b.save();b.globalAlpha=a;root.BladefallClimbArt.background(b,scene,cam,W,Hh,worldPal(w));b.restore();
  }
  for(const room of geo.visible(cam,W,Hh))if(room.def.atlasTerrain){
   const scene={...(room.id===view.g.room.id?view.g:st.frozen.get(room.id)||displayGame(room.id,true)),frame:view.g.frame};
@@ -1343,7 +1361,7 @@ function geographyBackground(b,view,W,Hh,cam=st.cam||{x:0,y:0}){
 PV.background=function(b,pal,view,W,Hh){
  if(!st||!isClimb(chapterNow(view)))return BASE.background(b,pal,view,W,Hh);
  if(CL().geography)return true;
- const d=view.g.room.def,t=view.g.frame,cam=st.cam||{x:0,y:0},p=palFor(d.palette||st.world.palette);
+ const d=view.g.room.def,t=view.g.frame,cam=st.cam||{x:0,y:0},p=roomPal(d);
  if(root.BladefallClimbArt){
   const paint=(game,local,world,brush=b)=>{if(game.room.def.atlasTransit){
    root.BladefallClimbPassageArt.background(brush,game,local,W,Hh);
@@ -1359,7 +1377,7 @@ PV.background=function(b,pal,view,W,Hh){
     const other=displayGame(target.room,true),pos=CL().place(target.world,target.room);
     const dx=left?-other.room.w:game.room.w,dy=(port.floor-target.floor)*8;
     q.clearRect(0,0,W,Hh);
-    root.BladefallClimbArt.background(q,{...other,frame:game.frame},{x:local.x-dx+pos.x,y:local.y-dy+pos.y},W,Hh,palFor(other.room.def.palette));
+    root.BladefallClimbArt.background(q,{...other,frame:game.frame},{x:local.x-dx+pos.x,y:local.y-dy+pos.y},W,Hh,roomPal(other.room.def));
     q.save();q.globalCompositeOperation='destination-in';
     const fade=q.createLinearGradient(left?edge:edge-reach,0,left?edge+reach:edge,0);
     fade.addColorStop(0,left?'#000':'transparent');fade.addColorStop(1,left?'transparent':'#000');
@@ -1367,7 +1385,7 @@ PV.background=function(b,pal,view,W,Hh){
    }
    return true;
   }
-   const pos=CL().place(world,game.room.id);return root.BladefallClimbArt.background(brush,game,{x:local.x+(pos?.x||0),y:local.y+(pos?.y||0)},W,Hh,palFor(game.room.def.palette));};
+   const pos=CL().place(world,game.room.id);return root.BladefallClimbArt.background(brush,game,{x:local.x+(pos?.x||0),y:local.y+(pos?.y||0)},W,Hh,roomPal(game.room.def));};
   paint(view.g,view.cam,st.world);
   for(const s of visibleSockets(view.g)){
    const target=socketTarget(view.g,s);if(!target)continue;const def=defOf(target.room),tw=(def.cols||40)*8;

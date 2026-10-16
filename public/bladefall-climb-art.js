@@ -5,7 +5,11 @@
 const px=(b,x,y,w,h,c)=>{b.fillStyle=c;b.fillRect(Math.round(x),Math.round(y),w,h);};
 const hash=(x,y)=>{let n=Math.imul(x+71,374761393)^Math.imul(y+29,668265263);n=Math.imul(n^(n>>>13),1274126177);return ((n^(n>>>16))>>>0)/4294967295;};
 const active=g=>!!g?.room?.def?.core||/^cl\d+-/.test(g?.room?.id||'');
-const theme=g=>({1:'outskirts',2:'woods',3:'causeway',4:'updrafts',5:'marksman',6:'keep',7:'gaol',8:'frost',9:'court',10:'ember',11:'foundry',12:'inversion',13:'citadel',14:'throne',15:'deepline',16:'cliffs',17:'shores',18:'colony',19:'palace',20:'sunspire'})[/^cl(\d+)-/.exec(g.room.id)?.[1]]||g.room.def.palette;
+const NATIVE={1:'outskirts',2:'woods',3:'causeway',4:'updrafts',5:'marksman',6:'keep',7:'gaol',8:'frost',9:'court',10:'ember',11:'foundry',12:'inversion',13:'citadel',14:'throne',15:'deepline',16:'cliffs',17:'shores',18:'colony',19:'palace',20:'sunspire'};
+// (7.342) A room's backdrop and stone detail are its world's (bladefall-climb-looks.js): a Fractured world draws its base
+// world's skyline and stone under its own fractured sky.
+const look=g=>root.BladefallClimbLooks?.theme(g.room.def,g.room.id)||{key:NATIVE[/^cl(\d+)-/.exec(g.room.id)?.[1]]||g.room.def.palette,fractured:null};
+const theme=g=>look(g).key;
 function poly(b,points,col){b.fillStyle=col;b.beginPath();points.forEach(([x,y],i)=>i?b.lineTo(Math.round(x),Math.round(y)):b.moveTo(Math.round(x),Math.round(y)));b.closePath();b.fill();}
 function line(b,x,y,xx,yy,col){b.strokeStyle=col;b.lineWidth=1;b.beginPath();b.moveTo(Math.round(x)+.5,Math.round(y)+.5);b.lineTo(Math.round(xx)+.5,Math.round(yy)+.5);b.stroke();}
 function arch(b,x,y,w,h,col){b.strokeStyle=col;b.lineWidth=3;b.beginPath();b.moveTo(x,y+h);b.lineTo(x,y+w/2);b.quadraticCurveTo(x+w/2,y-7,x+w,y+w/2);b.lineTo(x+w,y+h);b.stroke();}
@@ -14,7 +18,7 @@ const skies={outskirts:['#10182b','#51415b'],woods:['#091b1c','#203c35'],causewa
  deepline:['#0b0b10','#2a241e'],cliffs:['#101826','#3a4a5c'],shores:['#14304a','#6a8a96'],colony:['#18120f','#4a3428'],palace:['#2c2440','#a8806a'],sunspire:['#3a2638','#d0a060'],
  fractured:['#0e0a1a','#3a2652']};   // (7.278) the Fractured worlds 21–24
 function background(b,g,cam,W,H,p){
- const k=theme(g),t=g.frame,sky=skies[k]||skies.outskirts;
+ const L=look(g),k=L.key,t=g.frame,sky=L.fractured?.sky||skies[k]||skies.outskirts;
  b.save();const gr=b.createLinearGradient(0,0,0,H);gr.addColorStop(0,sky[0]);gr.addColorStop(1,sky[1]);b.fillStyle=gr;b.fillRect(0,0,W,H);
  if(['outskirts','keep','frost','court'].includes(k)){
   for(let i=0;i<32;i++){b.globalAlpha=.2+.3*Math.abs(Math.sin(t/100+i));px(b,((hash(i,2)*W-cam.x*.025)%W+W)%W,hash(i,7)*H*.6,1,1,'#cbdde0');}b.globalAlpha=1;
@@ -124,6 +128,7 @@ function background(b,g,cam,W,H,p){
   }
  }
  b.globalAlpha=1;
+ if(L.fractured)fracture(b,cam,W,H,t,L.fractured);
  // Atmospheric particles are deliberately dimmer than gameplay cues.
  const snow=k==='frost'||k==='court',wind=k==='updrafts'||k==='marksman';
  if(['ember','foundry','throne','inversion','citadel'].includes(k)){
@@ -138,9 +143,25 @@ function background(b,g,cam,W,H,p){
  }
  b.restore();return true;
 }
+// (7.342) The fracture over a Fractured world's skyline: slow stone shards adrift and thin rifts in the world's light.
+// Far behind the play and dim, like the other atmosphere.
+function fracture(b,cam,W,H,t,f){
+ for(let i=0;i<9;i++){
+  const dep=.03+hash(i,51)*.07,x=((hash(i,52)*W*1.6-cam.x*dep+Math.sin(t/240+i)*5)%(W*1.6)+W*1.6)%(W*1.6)-W*.3,y=hash(i,53)*H*.62-cam.y*dep*.25+Math.sin(t/170+i*2)*3;
+  const s=5+hash(i,54)*13,tilt=hash(i,55)*.8-.4;
+  b.globalAlpha=.55;poly(b,[[x,y-s],[x+s*.9,y-s*.2+tilt*s],[x+s*.35,y+s*.8],[x-s*.7,y+s*.25-tilt*s]],f.far);
+  b.globalAlpha=.3+.12*Math.sin(t/90+i);line(b,x-s*.7,y+s*.25-tilt*s,x,y-s,f.accent);
+ }
+ for(let i=0;i<2;i++){
+  let x=((hash(i,61)*W-cam.x*.02)%W+W)%W,y=8+hash(i,62)*H*.25;const n=3+Math.floor(hash(i,63)*3),dir=hash(i,64)>.5?1:-1;
+  b.globalAlpha=.1+.05*Math.sin(t/120+i*3);
+  for(let j=0;j<n;j++){const nx=x+dir*(5+hash(i,j+70)*9),ny=y+(hash(j,i+80)-.35)*8;line(b,x,y,nx,ny,f.accent);x=nx;y=ny;}
+ }
+ b.globalAlpha=1;
+}
 function terrain(b,g,p){
  if(!active(g))return;
- const k=theme(g),rm=g.room,cols=rm.cols,rows=rm.rows;
+ const L=look(g),k=L.key,rm=g.room,cols=rm.cols,rows=rm.rows;
  const solid=(c,r)=>c>=0&&r>=0&&c<cols&&r<rows&&rm.grid[r*cols+c]===1;
  b.save();
  for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){
@@ -183,6 +204,7 @@ function terrain(b,g,p){
    if(n>.45)px(b,x+1,y+3,5,1,k==='updrafts'?'#745a3e':p.rockD);
    if(n>.8){px(b,x+4,y+4,1,3,p.rockD);px(b,x+5,y+5,2,1,p.rockD);}
   }
+  if(L.fractured&&!top&&n>.965&&solid(c,r+1)){b.globalAlpha=.45;line(b,x+1,y+1+Math.floor(n*20)%4,x+6,y+5,L.fractured.accent);px(b,x+6,y+5,1,2,L.fractured.accent);b.globalAlpha=1;}
  }
  b.restore();
 }

@@ -249,6 +249,7 @@ ASSETS=(
   bladefall-climb-passage-tapes.js
   bladefall-climb-geography.js
   bladefall-climb-geography-build.js
+  bladefall-climb-looks.js
   bladefall-climb-art.js
   bladefall-climb-passage-art.js
   bladefall-climb-map.js
