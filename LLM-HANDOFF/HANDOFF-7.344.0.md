@@ -1,4 +1,4 @@
-# Handoff 7.344.0–7.351.0: quest shortcuts in every region (two-way, earned by playing through, each its own kind of ride; test mode and gallery), tester's tools behind test mode, a real New Game, plan-driven Explore routes
+# Handoff 7.344.0–7.352.0: quest shortcuts in every region (two-way, earned by playing through, each its own kind of ride; test mode and gallery), tester's tools behind test mode, a real New Game, plan-driven Explore routes
 
 Written 2026-10-16 by Claude, in a cloud session. Everything below is on `main`. Give this file to the local LLM so it can bring the local/offline copy up to date and carry the work on.
 
@@ -351,4 +351,28 @@ Version 7.351.0:
   - Explore's test mode, Ascend's test mode or the developer unlock reveal everything.
 
 Checked in a browser on a fresh profile, with test mode on, and in Ascend's menu; no page errors.
+
+## 7. 7.352.0: "???" for Fractured in Explore; Ascend's worlds locked until reached; Ascend New Game
+
+Version 7.352.0:
+- `VERSION` and the `sw.js?v=` registrations.
+- `?v=7.352.0` on `bladefall-climb-map.js`, `bladefall-climb-view.js` and `bladefall-pcore-view.js`, in precision.html and sw.js.
+- `CACHE_NAME = 'bladefall-v521-ascend-locks'`.
+
+**Explore Level Select:** the Fractured tab reads **???** until the save has opened an echo, or test mode or the developer unlock is on. Five taps on it still toggle test mode.
+
+**Ascend world locks** (`fracturedOpen()` in `bladefall-climb-view.js`):
+- **Base worlds:** were always playable. Now world 1 is always open, and world n opens once world n−1 is finished, the atlas checkpoint has reached n, or n is cleared.
+- **Test mode and the full unlock** (`BladefallClimbFinale.unlockedAll`) open everything.
+- **What locked means:** the map's "Play world" and "Watch" are disabled, and locked worlds read "???" in the region list, the map labels and the world card. This uses the new `opts.known` passed to `BladefallClimbMap.mount`, through `label()` in `bladefall-climb-map.js`.
+
+**Ascend New Game:** in Assist & options, opened from the Ascend menu, a new button reads "New game · erase all Ascend progress".
+- It needs two presses.
+- It clears Ascend's own progress: the `bladefall.climb.*` keys, `bladefall.rbr.v1`, and the pcore save except its `options` and `assist`. It also re-locks the playtest `survival` unlocks.
+- It then reloads Ascend at the start. The leaderboards are kept.
+
+Checked in a browser with a fresh save:
+- Ascend lists "2 · ???" and the rest, and world 2+ show "Locked".
+- Explore's tab reads ???, and five taps turn on test mode, which shows "Fractured ✦".
+- No page errors.
 

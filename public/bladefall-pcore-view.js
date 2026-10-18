@@ -842,8 +842,16 @@ function assistCard(back,{fromMenu=false}={}){
  ${reviewRow}
  ${finaleMap?`<label class="pcOpt"><input type="checkbox" id="opFinaleMap" ${F.preview()?'checked':''}> Show the full map (Vesper, your Echo and the whole Fractured emerald)</label>`:''}
  <p class="pcSub" id="asNote" style="color:#ffd98a"></p>
+ ${climb&&fromMenu?'<button class="pcBtn ghost" id="pcNewGame" style="color:#ff9a8a">New game · erase all Ascend progress</button>':''}
  <button class="pcBtn" id="pcBack" data-back>Done</button></div>`);
  const $=id=>document.getElementById(id),note=t=>{$('asNote').textContent=t;};
+ // (7.352) New game: Ascend's journey (worlds, hearts, skips, map, rewards, Fractured unlocks) starts over; these
+ // options, test mode and the leaderboards stay. Two presses, so it is never one slip.
+ {let armed=false;$('pcNewGame')?.addEventListener('click',()=>{if(!armed){armed=true;note('Press again to erase all Ascend progress and start at the Outskirts.');$('pcNewGame').textContent='Press again to confirm';return;}
+  for(const k of ['bladefall.climb.atlas.v1','bladefall.climb.finale.v1','bladefall.climb.rewards.v1','bladefall.climb.unlock-all.v1','bladefall.climb.v1','bladefall.rbr.v1'])localStorage.removeItem(k);
+  for(const k of Object.keys(save))if(!['options','assist'].includes(k))delete save[k];Object.assign(save,{shards:[],cleared:{},best:{}});writeSave(save);
+  root.BladefallPlaytest?.relock?.('survival');try{const lp=JSON.parse(localStorage.getItem('bladefall.last-played.v1'))||{};if(lp.game==='survive')localStorage.removeItem('bladefall.last-played.v1');}catch(e){}
+  location.href='precision.html?pitch=climb&mode=play';});}
  const upd=()=>{a.speed=+$('asSpeed').value;o.shake=$('opShake').checked;o.sound=$('opSound').checked;o.music=$('opMusic').checked;if($('opPure'))o.pure=$('opPure').checked;
   if($('opReview'))root.BladefallPlaytest.setFeedback($('opReview').checked);if($('opClock'))root.BladefallPlaytest.setClock?.($('opClock').checked);
   if(finaleMap)F.setPreview($('opFinaleMap').checked);a.infiniteStamina=!!a.testMode;writeSave(save);if(view.g)view.g.assist.infiniteStamina=a.infiniteStamina;};

@@ -465,7 +465,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.351.0';
+const VERSION='7.352.0';
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -24680,7 +24680,9 @@ function openLevelSelect(){
   const tabs=[0,'fx'].map(i=>{
     const on=i===t;
     const mark=window.BladefallMounts?.testMode()?' ✦':'';
-    return `<button class="bigbtn ${on?'':'ghost'}" data-tab="${i}" style="flex:1;padding:9px;margin:0;font-size:13px;${i==='fx'?'border-color:#8a5cd8;':''}">${i===0?'Base'+mark:'Fractured'+mark}</button>`;
+    // (7.352) Fractured is "???" until one of its echoes is open (test mode opens them); five taps still toggle test mode.
+    const fxKnown=!!window.BladefallMounts?.testMode()||!!meta.devUnlocked||!!window.BladefallPlaytest?.state().data.unlocks.explore.length;
+    return `<button class="bigbtn ${on?'':'ghost'}" data-tab="${i}" style="flex:1;padding:9px;margin:0;font-size:13px;${i==='fx'?'border-color:#8a5cd8;':''}">${i===0?'Base'+mark:(fxKnown?'Fractured':'???')+mark}</button>`;
   }).join('');
   const rows=t==='fx'&&typeof BladefallRiftShards!=='undefined'?BladefallRiftShards.levelSelectRows():STAGES.map((st,i)=>{
     if(st.act===3||st.finalBattle)return '';
@@ -26293,7 +26295,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.351.0').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.352.0').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */

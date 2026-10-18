@@ -15,6 +15,8 @@ const AT=()=>root.BladefallClimbAtlas,CL=()=>root.BladefallClimb,PS=()=>root.Bla
 const SX=160,SY=100,NW=152,NH=60,TIP=[0,8.65],FLIP=17.3;
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const nameOf=n=>CL()?.world?.(n)?.name||PS()?.names?.[n]||('Region '+n);
+// (7.352) a world not yet reached reads "???" on the map, its card and the region list.
+let knownFn=null;const label=(n,w)=>knownFn&&!knownFn(n)?'???':(w?.name||nameOf(n));
 const worldOf=n=>CL()?.world?.(n)||null;
 const defIn=(n,id)=>worldOf(n)?.rooms.find(d=>d.id===id)||null;
 const atlasNow=()=>root.BladefallPitchView?.climb?.state?.()?.atlas||null;
@@ -387,7 +389,7 @@ function buildSvg(model){
   // (7.315) hearts: a world beaten with every heart found glows rose, so the ones still hiding hearts stand out
   const hh=model.hearts?.[n],whole=!!(cleared&&hh&&hh.got>=hh.total);
   const base=colorOf(n),fill=visited?mix(base,'#10151c',.58):'#1a2029',stroke=current?'#fff1b3':sel?'#a9d4ff':whole?'#ff8fd0':cleared?'#e7c873':next?'#6fe0a0':visited?mix(base,'#ffffff',.15):'#3f4757';
-  const text=visited||next||current?'#efe6cf':'#8f97a5',name=wrap(w?.name||nameOf(n));
+  const text=visited||next||current?'#efe6cf':'#8f97a5',name=wrap(label(n,w));
   const g=[`<g class="cm-node" data-n="${n}" transform="translate(${c[0].toFixed(1)},${c[1].toFixed(1)})">`];
   if(current)g.push(`<circle class="cm-pulse" r="${NW*.55}" fill="none" stroke="#ffe08a" stroke-width="4"/>`);
   const dim=!visited&&!next&&!current;
@@ -422,6 +424,7 @@ function buildSvg(model){
 
 /* ---------------------------------------------------------------- mount: the map, its controls and the region card */
 function mount(host,opts={}){
+ knownFn=opts.known||null;
  injectCss();
  const atlas=opts.atlas||atlasNow();if(!host||!atlas)return null;
  const cardEl=host.closest?.('.pcCard');if(cardEl){cardEl.classList.add('cm-card');const short=()=>cardEl.classList.toggle('cm-short',innerHeight<=520);short();}
@@ -452,7 +455,7 @@ function mount(host,opts={}){
  };
  host.innerHTML=`<div class="cm-wrap">
   <div class="cm-tools">
-    <select class="cm-b" data-cm="pick" aria-label="Show a region">${regions.map(n=>`<option value="${n}"${n===startN?' selected':''}>${n} · ${esc(nameOf(n))}</option>`).join('')}</select>
+    <select class="cm-b" data-cm="pick" aria-label="Show a region">${regions.map(n=>`<option value="${n}"${n===startN?' selected':''}>${n} · ${opts.known&&!opts.known(n)?'???':esc(nameOf(n))}</option>`).join('')}</select>
     ${opts.onStart?'<button class="cm-b" id="cmPlayWorld">Play world</button>':''}
     ${opts.onWatch?'<button class="cm-b" id="cmWatchWorld">Watch world</button>':''}
     <button class="cm-b" data-cm="me">Find me</button>
@@ -537,14 +540,14 @@ function mount(host,opts={}){
   const where=onRoad?`on ${PS()?.designs?.[onRoad.id]?.[0]||'the road'}`:at?.kind==='section'?`section ${at.i}${at.name?' · '+at.name:''}`:at?.name||'';
   const road=m=>`<button class="cm-road ${m.open?'open':'shut'}" data-tip="${tipOf(`${m.passage||'Passage'} to ${m.toName} · ${m.open?'open':'opens when you '+m.reason}`)}">${m.edge==='left'?'←':'→'} ${esc(m.toName)}${m.open?'':' 🔒'}</button>`;
   const state=onRoad?'on its road':current?'you are here':pr?.cleared?'cleared':inf.next?'open to you':visited?'visited':'not yet visited';
-  chipbar.innerHTML=`<b>${n} · ${esc(w?.name||nameOf(n))}</b> <small>${current?'📍 ':''}${pr?`${pr.solved}/${pr.total}`:''}${hh&&hh.total?` · ♥${hh.got}/${hh.total}`:''}</small>`;
-  detail.innerHTML=`<div class="cm-c-h"><b>${n} · ${esc(w?.name||nameOf(n))}</b>${current?'<span class="cm-chip here">📍 you</span>':pr?.cleared?'<span class="cm-chip done">✓</span>':''}<span class="cm-c-icons">${icons.join('')}</span></div>
+  chipbar.innerHTML=`<b>${n} · ${esc(label(n,w))}</b> <small>${current?'📍 ':''}${pr?`${pr.solved}/${pr.total}`:''}${hh&&hh.total?` · ♥${hh.got}/${hh.total}`:''}</small>`;
+  detail.innerHTML=`<div class="cm-c-h"><b>${n} · ${esc(label(n,w))}</b>${current?'<span class="cm-chip here">📍 you</span>':pr?.cleared?'<span class="cm-chip done">✓</span>':''}<span class="cm-c-icons">${icons.join('')}</span></div>
    ${segs?`<div class="cm-c-bar" data-tip="${tipOf(`${pr.solved} of ${pr.total} sections cleared${where?' · you are '+(where.startsWith('on ')?'':'in ')+where:''}`)}">${segs}</div>`:''}
    ${ms.length?`<div class="cm-c-roads">${ms.map(road).join('')}</div>`:''}
    <div class="cm-tip">${esc(where?(current?'📍 ':'')+where:state)}</div>`;
   detail.querySelectorAll('[data-tip]').forEach(el=>{el.title=el.dataset.tip;el.onclick=()=>{detail.querySelector('.cm-tip').textContent=el.dataset.tip;};});
-  const play=host.querySelector('#cmPlayWorld');if(play){const locked=opts.canStart&&!opts.canStart(n);play.disabled=!!locked;play.textContent=locked?'Locked':'Play world';const why=locked?(opts.lockedWhy?.(n)||'Locked'):'';play.title=locked?why:'Play '+(w?.name||nameOf(n));play.setAttribute('aria-label',play.title);play.onclick=()=>opts.onStart(n);if(locked)detail.querySelector('.cm-tip').textContent='🔒 '+why;}
-  {const wb=host.querySelector('#cmWatchWorld');if(wb){const locked=opts.canStart&&!opts.canStart(n);wb.disabled=!!locked;wb.title='Watch the intended route of '+(w?.name||nameOf(n));wb.onclick=()=>opts.onWatch(n);}}
+  const play=host.querySelector('#cmPlayWorld');if(play){const locked=opts.canStart&&!opts.canStart(n);play.disabled=!!locked;play.textContent=locked?'Locked':'Play world';const why=locked?(opts.lockedWhy?.(n)||'Locked'):'';play.title=locked?why:'Play '+(label(n,w));play.setAttribute('aria-label',play.title);play.onclick=()=>opts.onStart(n);if(locked)detail.querySelector('.cm-tip').textContent='🔒 '+why;}
+  {const wb=host.querySelector('#cmWatchWorld');if(wb){const locked=opts.canStart&&!opts.canStart(n);wb.disabled=!!locked;wb.title='Watch the intended route of '+(label(n,w));wb.onclick=()=>opts.onWatch(n);}}
  }
  function select(n,pan=false){
   if(!regions.includes(n))return;model.selected=n;if(pick)pick.value=String(n);render();card(n);

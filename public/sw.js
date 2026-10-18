@@ -1,7 +1,7 @@
 /* Bladefall service worker — offline play + fast reloads once installed.
    Bump CACHE_NAME on a deploy where you want returning players to pick up
    the change immediately instead of waiting on the network-first refresh. */
-const CACHE_NAME = 'bladefall-v520-leaderboard-worlds';
+const CACHE_NAME = 'bladefall-v521-ascend-locks';
 const CORE_ASSETS = [
   './bladefall-pcore-dev-workshop-room.js?v=7.335.0','./bladefall-workshop-ascend-coop-core.js?v=7.336.0','./bladefall-workshop-ascend-play.js?v=7.335.0','./bladefall-workshop-ascend.js?v=7.335.0','./bladefall-workshop-bridge.js?v=7.340.0','./bladefall-workshop-routes.js?v=7.340.0','./bladefall-route-solver.js?v=7.340.0','./bladefall-explore-routes.js?v=7.344.0','./bladefall-workshop-cloud.js?v=7.335.0','./bladefall-workshop-cobuild.js?v=7.335.0','./bladefall-workshop-collaboration.js?v=7.335.0','./bladefall-workshop-explore-runtime.js?v=7.335.0','./bladefall-workshop-explore.js?v=7.335.0','./bladefall-workshop-library.js?v=7.335.0','./bladefall-workshop-model.js?v=7.335.0','./bladefall-workshop-native-play.js?v=7.335.0','./bladefall-workshop-network.js?v=7.335.0','./bladefall-workshop-play-link.js?v=7.335.0','./bladefall-workshop-properties.js?v=7.335.0','./bladefall-workshop-render.js?v=7.335.0','./bladefall-workshop-sandbox.js?v=7.335.0','./bladefall-workshop-selection.js?v=7.335.0','./bladefall-workshop-sources.js?v=7.340.0','./bladefall-workshop-store.js?v=7.335.0','./bladefall-workshop-ui.js?v=7.340.0',
   './coop-practice.html','./bladefall-coop-practice-core.js?v=7.334.0',
@@ -162,9 +162,9 @@ const CORE_ASSETS = [
   './bladefall-climb-passages.js?v=7.308.2',
   './bladefall-climb-passage-tapes.js?v=7.273.40',
   './bladefall-climb-passage-art.js?v=7.342.0',
-  './bladefall-climb-map.js?v=7.339.0',
+  './bladefall-climb-map.js?v=7.352.0',
   './bladefall-climb-session.js?v=7.334.0',
-  './bladefall-climb-view.js?v=7.351.0',
+  './bladefall-climb-view.js?v=7.352.0',
   './bladefall-climb-geography.js?v=7.329.0',
   './bladefall-climb-geography-build.js?v=7.336.0',
   './bladefall-climb-coop.js?v=7.334.0',
@@ -251,7 +251,7 @@ const CORE_ASSETS = [
   './bladefall-rbr-39-f-path.js?v=7.280.0',
   './bladefall-rbr-40-f-sunspire.js?v=7.280.0',
   // rbr-regions:end
-  './bladefall-pcore-view.js?v=7.349.0',
+  './bladefall-pcore-view.js?v=7.352.0',
   './bladefall-pcore-combat.js?v=7.335.0',
   './bladefall-pcore-combat-rooms.js?v=7.250.0',
   './bladefall-pcore-combat-tapes.js?v=7.250.0',

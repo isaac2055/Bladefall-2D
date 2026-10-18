@@ -1,3 +1,10 @@
+## 7.352.0: Fractured tab "???"; Ascend worlds locked until reached; Ascend New Game (2026-10-18, Claude, cloud session)
+
+- **Explore:** the Fractured tab reads "???" until an echo is open. Five taps still toggle test mode.
+- **Ascend:** worlds open in order, and unreached ones read "???" and can't be played; test mode opens them all.
+- **Ascend New Game:** Assist & options has a two-press button that erases Ascend's progress.
+- **Details:** `LLM-HANDOFF/HANDOFF-7.344.0.md`, section 7.
+
 ## 7.351.0: leaderboard worlds; two Ascend buttons cut (2026-10-18, Claude, cloud session)
 
 - **Ascend's map card:** "Show the room layout instead" and "Leaderboards" are gone.
