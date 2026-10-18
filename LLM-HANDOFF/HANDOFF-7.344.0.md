@@ -1,16 +1,16 @@
-# Handoff 7.344.0–7.346.0: quest shortcuts in every region (two-way, earned by playing through; test mode and gallery), plan-driven Explore routes
+# Handoff 7.344.0–7.347.0: quest shortcuts in every region (two-way, earned by playing through, each its own kind of ride; test mode and gallery), plan-driven Explore routes
 
 Written 2026-10-16 by Claude, in a cloud session. Everything below is on `main`. Give this file to the local LLM so it can bring the local/offline copy up to date and carry the work on.
 
 ## 1. Bringing the local/offline copy up to date
 
 1. Run `git pull origin main`. Everything is in the repo; nothing lives only in the cloud.
-2. Version **7.346.0**:
-   - `VERSION`, the `sw.js?v=` registration, and `?v=7.346.0` on `bladefall-explore-mounts.js`, in `public/index.html` and `public/sw.js`;
+2. Version **7.347.0**:
+   - `VERSION`, the `sw.js?v=` registration, and `?v=7.347.0` on `bladefall-explore-mounts.js` and `bladefall-respec-renderer.js`, in `public/index.html` and `public/sw.js`;
    - `bladefall-explore-routes.js` stays at `?v=7.344.0`;
-   - `CACHE_NAME = 'bladefall-v515-two-way-shortcuts'`.
+   - `CACHE_NAME = 'bladefall-v516-distinct-rides'`.
 3. The APK was not rebuilt, because the cloud container has no Android SDK. The download link still points at v7.341.0.
-   - If the local machine can build the APK, build and release v7.346.0, then point `#apkBtn`'s href in `public/index.html` at it.
+   - If the local machine can build the APK, build and release v7.347.0, then point `#apkBtn`'s href in `public/index.html` at it.
 4. Checks worth running locally (each serves `public/` itself):
    - `npm run verify:mounts`: the Bellwing, Mara's chart, and the perch kept across a reload and in the save.
    - `npm run verify:mounts-tour`: the other 18 regions' shortcuts: home roost first, then both ways, and where each mount ends up perched.
@@ -116,11 +116,11 @@ The owner's design goals:
 | 1 | Black Woods | Mothlight Swarm | the Brute Road (end, ~11700) | the woods' edge (~1080) | Oathblade first: the ability gate, plus reaching the end. |
 | 2 | Broken Causeway | Silas's Chain Trolley | Chainwake Camp (arena edge, east) | the causeway's west end | Rides east → west, then back. Possible double: the causeway repair door (5360). |
 | 3 | The Updrafts | Cartographer's Kite | the canyon's end (~17300) | the canyon mouth (~230) | Possible double: Updrafts' own return shortcut (the owner mentioned it). |
-| 4 | Hollow Marksman | Recruit's Rope Arrow | the Marksman's ridge (arena edge) | the trailhead | |
+| 4 | Hollow Marksman | Recruit's Ballista (7.347) | the Marksman's ridge (arena edge) | the trailhead | |
 | 5 | Ruined Keep | Archivist's Postern | the Keep's far wall (~17300) | the gatehouse | Possible doubles: keep-weight / belfry-fold. |
 | 6 | The Warden (walked west) | Keeper's Service Way | the Gaol's west yard (arena, ~3020) | the Eastern Crown (~14400) | |
 | 7 | Frostfell | Perfect-Day Sled | the summit road (~14220, y 650) | the warden's gate (~600) | **Double:** the muster engine ring (1330 ↔ 7220 ↔ 14680) covers the same distance. Ask the owner which to keep. |
-| 8 | Frost Sorcerer | Rime Drake | the Court's last stair (arena) | the sluice | |
+| 8 | Frost Sorcerer | The Winter Road (7.347) | the Court's last stair (arena) | the sluice | |
 | 9 | Emberdeep | Quota Cart | the Deep Stair (~15700) | the mine head (~600, y 640) | |
 | 10 | Ember Colossus | Automaton's Throw | the last bay (arena) | the foundry gate | |
 | 11 | The Inversion (walked west) | Ceiling Way | the west gate (~700) | the Fall In (~15650, y 1200) | |
@@ -140,6 +140,40 @@ Ideas not used, if a region needs more locking later:
 - a checkpoint flag.
 
 The current rule, reaching the home roost on foot, already means the region has been played through.
+
+### b4. Each shortcut its own kind of ride (7.347.0)
+
+The owner's feedback on the first versions:
+- Hollow Marksman's line was the same as the Causeway's.
+- The Frostfell sled flew above everything.
+- The White Court rode a white copy of the Bellwing.
+- Emberdeep's cart, and the Inversion, Void Tyrant and Abyss King shortcuts, were just doors.
+- The Colossus throw's fire trail read as a jetpack.
+
+The owner liked Thunder Cliffs' skiff; Landing Shores, the Colony, Path to the Palace and Sunspire are fine as they are.
+
+New ride kinds in `public/bladefall-explore-mounts.js`:
+- **Shared machinery.** They share one path function, `trace(f,u)`, which gives the knight's feet `{x, y, a, flip, hidden}` along the ride. `PATHED` lists these kinds. `heroPose()` tells the renderers how to draw the knight: `rot` (radians), `flip` (upside down), `run`/`rate`, or `air`.
+  - The hook is at the top of `drawHeroAt` in `public/bladefall-respec-renderer.js`.
+  - The legacy renderer gets it around `drawHeroFull` in index.html.
+- **Previews.** Each kind also has a gallery preview: `preview()` builds a synthetic ride and reuses `trace`.
+
+| # | Region | Now | How it rides |
+|---|---|---|---|
+| 4 | Hollow Marksman | **The Recruit's Ballista** (`launch`) | A ballista stands at each end, aimed up the road. The knight rides the bolt on a ballistic arc (`arc: .2` of the distance, capped to the view), and the bolt tilts along its path. |
+| 7 | Frostfell | **The Perfect-Day Sled** (`ground`, travels) | Two dogs in harness pull the sled along the region's floor: `profile()` follows the floor nearest the last height, keeps its height over gaps and is smoothed. The sled tilts with the slope, both uphill and downhill. It stays where it stops. |
+| 8 | Frost Sorcerer | **The Winter Road** (`slide`) | No drake. The kept little winter is now a frost fox. It runs just ahead and freezes an ice road out of the air; the road melts behind the knight, who skates it. Frost cairns mark both ends, and the fox waits at the end nearer the knight. |
+| 9 | Emberdeep | **The Quota Cart** (`rail`) | An actual cart ride. The knight sits in the cart on rails laid along the (heavily smoothed) floor, with sparks. The world goes dark apart from the cart's lantern (`darkness()`). The cart is gone from its roost while it runs. |
+| 10 | Ember Colossus | **The Automaton's Throw** (`throw`, stays behind) | The automaton throws him on a true ballistic arc. He tumbles through two somersaults and lands on his feet, with speed lines instead of the comet trail. The automaton stays where it threw from; at the other end, Up calls it over. |
+| 11 | The Inversion | **The Ceiling Way** (`ceiling`) | Gravity turns over: he falls up to the neighbours' ceiling (a band drawn `cruise` 340 above the higher end), runs it upside down, and falls back down at the far end. Hatches mark both ends. |
+| 12 | Void Tyrant | **The Other Side** (`rift`) | Mirror shards hang about every 1500 units. He steps into one, streaks as light to the next and steps out, repeatedly. |
+| 13 | Abyss King | **The Last Alarm** (`sprint`) | Ringing the bell sends shock rings out. He sprints the throne road on foot at bell speed, with afterimages and speed lines, while "every door opens for one breath". |
+
+Unchanged: 0 Bellwing; 1 moths; 2 Silas's chain line; 3 kite; 5 and 6 passages (doors); 16 skiff; 17 rocket; 18 crane; 19 cloak; 20 moonflower.
+
+**Testing:** `npm run verify:mounts-tour` covers all 18 regions both ways, `verify:mounts` and `verify:mounts-test-mode` also pass, and every new ride was checked in mid-ride screenshots and in the gallery.
+
+The ground-following rides (sled, cart, sprint) pass through walls and gates along the floor, which the stories cover ("every door opens"). If a region shows something ugly there, give its mount a cruise or its own path.
 
 
 
@@ -211,7 +245,8 @@ Workflow that worked, per level:
 
 ## 3. Files touched in this stretch
 
-- `public/bladefall-explore-mounts.js` (7.345: test mode, `preview`; 7.346: home and entrance roosts, `store()`/`perchOf()`/`noteReached()`/`placeRoosts()`, no Deep Line)
+- `public/bladefall-explore-mounts.js` (7.345: test mode, `preview`; 7.346: home and entrance roosts, `store()`/`perchOf()`/`noteReached()`/`placeRoosts()`, no Deep Line; 7.347: `trace`/`profile`/`heroPose` and the new ride kinds and art)
+- `public/bladefall-respec-renderer.js` (7.347: the `heroPose` hook in `drawHeroAt`)
 - `public/bladefall-side-story-world.js`
 - `public/bladefall-respec-renderer.js`
 - `public/index.html`: Watch finish routes, mount hooks, version, and (7.345) the Base 5-tap toggle, the ✦ line, the gallery button, `openShortcutGallery()` and `.card.scgallery`.

@@ -336,7 +336,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-core.js"></script>
 <script src="bladefall-simulation.js"></script>
 <script src="bladefall-renderer.js"></script>
-<script src="bladefall-respec-renderer.js?v=7.343.0"></script>
+<script src="bladefall-respec-renderer.js?v=7.347.0"></script>
 <script src="bladefall-platformer.js"></script>
 <script src="bladefall-environment.js"></script>
 <script src="bladefall-reactions.js"></script>
@@ -365,7 +365,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-side-stories.js?v=7.232.0"></script>
 <script src="bladefall-opening-stories.js?v=7.234.0"></script>
 <script src="bladefall-side-story-world.js?v=7.343.0"></script>
-<script src="bladefall-explore-mounts.js?v=7.346.0"></script>
+<script src="bladefall-explore-mounts.js?v=7.347.0"></script>
 <script src="bladefall-merge-road.js?v=7.334.0"></script>
 <script src="bladefall-zones.js?v=7.220.0"></script>
 <script src="bladefall-zone-state.js"></script>
@@ -465,7 +465,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.346.0';
+const VERSION='7.347.0';
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -20814,7 +20814,11 @@ function render(){
     }
   }
   window.BladefallMounts?.drawUnder(ctx);
-  drawHeroFull(ctx,G.p);
+  // A quest-shortcut ride's pose (thrown, on the ceiling, on a slope): about his middle.
+  const mountPose=window.BladefallMounts?.heroPose?.();
+  if(mountPose){ctx.save();const cx=G.p.x,cy=GROUND_Y-G.p.y-22;ctx.translate(cx,cy);if(mountPose.rot)ctx.rotate(mountPose.rot);if(mountPose.flip)ctx.scale(1,-1);ctx.translate(-cx,-cy);}
+  if(!(mountPose&&G.p.mergeHidden))drawHeroFull(ctx,G.p);
+  if(mountPose)ctx.restore();
   window.BladefallMounts?.drawOver(ctx);
   if(G.cartMode)drawCart(ctx,G.p);
   if(flipping)ctx.restore();
@@ -24721,7 +24725,7 @@ function openShortcutGallery(){
   mode='title';
   const M=window.BladefallMounts,stories=window.BladefallSideStories?.byId||{};
   const ids=Object.keys(M.MOUNTS).map(Number).sort((a,b)=>a-b);
-  const kinds={flight:'flight',zip:'line',blink:'way through'};
+  const kinds={flight:'flight',zip:'line',blink:'way through',launch:'ballista',throw:'throw',ground:'sled run',slide:'ice road',rail:'cart line',ceiling:'ceiling run',rift:'mirror shards',sprint:'bell sprint'};
   const cards=ids.map(i=>{const m=M.MOUNTS[i],q=stories[m.story],st=STAGES[i]||{};
     const tag=String(i<BONUS_STAGE?i+1:i).padStart(2,'0');
     return `<div class="scCard" style="border:1px solid ${m.accent}55;border-radius:10px;padding:8px;background:#0c0e14;">
@@ -26266,7 +26270,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.346.0').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.347.0').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */

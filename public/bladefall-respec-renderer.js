@@ -2470,6 +2470,11 @@ function heroState(p){
 }
 function drawHeroAt(p){
   if(p.mergeHidden)return;   // Merge Pitch C: the knight is in a precision pocket drawn over the world
+  // A quest-shortcut ride (bladefall-explore-mounts.js, 7.347) turns him with a slope or a throw, stands him on the
+  // ceiling, or runs him: drawn about his middle.
+  const mp=window.BladefallMounts?.heroPose?.();
+  if(mp){const cx=WX(p.x),cy=WY(p.y)-11,st=heroState(p);ctx.save();ctx.translate(cx,cy);if(mp.rot)ctx.rotate(mp.rot);if(mp.flip)ctx.scale(1,-1);ctx.translate(-cx,-cy);
+    drawFigure(WX(p.x-13),WY(p.y)-22,mp.run?{...st,run:true,air:false,anim:time*(mp.rate||14),vx:200*(p.face||1)}:mp.air?{...st,air:true,run:false}:st);ctx.restore();return;}
   if(window.BladefallCelesteArt&&BladefallCelesteArt.drawFlight(ctx,p,WX,WY,Z))return;
   if(p.dodgeTimer>0&&L.hasGift&&L.hasGift('pure-nail')){
     const x=WX(p.x),y=WY(p.y)-12;

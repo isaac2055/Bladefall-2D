@@ -1,3 +1,17 @@
+## 7.347.0: each quest shortcut its own kind of ride (2026-10-18, Claude, cloud session)
+
+Eight shortcuts, reworked on the owner's feedback:
+- **Hollow Marksman:** a ballista bolt replaces the rope line.
+- **Frostfell:** the sled is pulled by dogs along the floor instead of flying.
+- **White Court:** a frost fox's ice road replaces the drake.
+- **Emberdeep:** a real cart ride on rails, in the dark.
+- **Ember Colossus:** a tumbling ballistic throw.
+- **Inversion:** a run upside down along the ceiling.
+- **Void Tyrant:** hops between mirror shards.
+- **Abyss King:** a bell-speed sprint.
+
+The knight's pose comes from `BladefallMounts.heroPose()`, which the respec renderer now reads. Details are in `LLM-HANDOFF/HANDOFF-7.344.0.md`, section 2.b4.
+
 ## 7.346.0: two-way quest shortcuts; only the Outskirts skippable at first (2026-10-16, Claude, cloud session)
 
 - **Every shortcut runs both ways.** A flying mount stays perched where it set you down, in the save or the level-select session; Up at the empty roost calls it over. Lines and passages work from both ends.

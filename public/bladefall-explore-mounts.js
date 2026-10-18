@@ -50,10 +50,13 @@ const MOUNTS={
   roosts:[{id:'far',near:'end',label:'the canyon’s end'},{id:'mouth',near:'start',label:'the canyon mouth'}],
   verb:'↑  TAKE THE KITE',go:'Kite to',
   intro:'The Cartographer’s survey kite, its frame mended and the spar re-strung. On this wind it will carry a knight the length of the canyon.'},
- 4:{id:'arrow',name:'The Recruit’s Rope Arrow',story:'recruit',accent:'#c8b07a',kind:'zip',art:'zip',speed:1350,
+ // 7.347: each of these rides its own way (Isaac: a line like the Causeway's, a drake like the Bellwing's, doors
+ // that are only doors: make them distinct). launch/throw are a ballistic arc; ground follows the floor of the
+ // region; slide an ice road; ceiling a run upside down; rift hops between mirror shards; rail a cart in the dark.
+ 4:{id:'ballista',name:'The Recruit’s Ballista',story:'recruit',accent:'#c8b07a',kind:'launch',art:'ballista',speed:1500,arc:.2,
   roosts:[{id:'far',near:'arena',label:'the Marksman’s ridge'},{id:'trail',near:'start',label:'the trailhead'}],
-  verb:'↑  RIDE THE LINE',go:'Ride the line to',
-  intro:'The Recruit’s rope arrow, shot clean across to the ridge. A line strung like that will take your weight.'},
+  verb:'↑  MAN THE BALLISTA',go:'Ride the bolt to',
+  intro:'The Recruit re-strung the old siege ballistas at both ends of the hollow and swears a bolt will carry a knight. Hold on to the fletching.'},
  5:{id:'postern',name:'The Archivist’s Postern',story:'archivist',accent:'#b8c0d8',kind:'blink',art:'door',
   roosts:[{id:'far',near:'end',label:'the Keep’s far wall'},{id:'gate',near:'start',label:'the gatehouse'}],
   verb:'↑  USE THE POSTERN',go:'Take the passage to',
@@ -62,34 +65,34 @@ const MOUNTS={
   roosts:[{id:'far',near:'arena',label:'the Gaol’s west yard'},{id:'crown',near:'start',label:'the Eastern Crown'}],
   verb:'↑  TAKE THE SERVICE WAY',go:'Take the service way to',
   intro:'The Service Keeper stood aside and left the grille unlocked. Behind it, a passage the jailers used, the length of the Gaol.'},
- 7:{id:'sled',name:'The Perfect-Day Sled',story:'winter',accent:'#e0f0ff',kind:'flight',art:'sled',seat:8,cruise:150,speed:1350,
+ 7:{id:'sled',name:'The Perfect-Day Sled',story:'winter',accent:'#e0f0ff',kind:'ground',art:'sled',travels:true,seat:8,speed:1100,
   roosts:[{id:'far',near:'end',label:'the summit road'},{id:'gate',near:'start',label:'the warden’s gate'}],
   verb:'↑  TAKE THE SLED',go:'Sled to',
-  intro:'Her sled from the perfect day, waxed and ready. Push off and it will run you the whole of Frostfell.'},
- 8:{id:'rime',name:'The Rime Drake',story:'ember-pet',accent:'#bfe4ff',kind:'flight',art:'rime',creature:true,seat:15,cruise:400,speed:1350,
+  intro:'Her sled from the perfect day, waxed and ready, and the street’s dogs in harness. They know every road in Frostfell, up and down.'},
+ 8:{id:'winter-road',name:'The Winter Road',story:'ember-pet',accent:'#bfe4ff',kind:'slide',art:'fox',seat:0,cruise:230,speed:1300,
   roosts:[{id:'far',near:'arena',label:'the Court’s last stair'},{id:'sluice',near:'start',label:'the sluice'}],
-  verb:'↑  RIDE THE RIME DRAKE',go:'Fly to',
-  intro:'The little winter you kept is not little any more. It follows you through the Court and will carry you if you climb on.'},
- 9:{id:'ore',name:'The Quota Cart',story:'quota',accent:'#ff9a4a',kind:'blink',art:'cart',
+  verb:'↑  FOLLOW THE WINTER',go:'Skate the ice road to',
+  intro:'The little winter you kept has grown into a frost fox. It runs ahead of you and freezes a road out of the air; the road melts behind your heels.'},
+ 9:{id:'ore',name:'The Quota Cart',story:'quota',accent:'#ff9a4a',kind:'rail',art:'cart',seat:10,speed:1250,
   roosts:[{id:'far',near:'end',label:'the Deep Stair'},{id:'head',near:'start',label:'the mine head'}],
   verb:'↑  RIDE THE CART',go:'Ride the cart to',
   intro:'The workers kept one ore cart off the quota for you. The line runs through the dark the length of Emberdeep.'},
- 10:{id:'throw',name:'The Automaton’s Throw',story:'automaton',accent:'#ffc070',kind:'flight',art:'throw',seat:0,cruise:360,speed:1500,
+ 10:{id:'throw',name:'The Automaton’s Throw',story:'automaton',accent:'#ffc070',kind:'throw',art:'throw',travels:true,staysBehind:true,seat:0,arc:.24,speed:1400,
   roosts:[{id:'far',near:'arena',label:'the last bay'},{id:'gate',near:'start',label:'the foundry gate'}],
   verb:'↑  ASK FOR A THROW',go:'Be thrown to',
   intro:'The war automaton has found small work it likes: throwing you. It braces, cups its hands and waits.'},
- 11:{id:'ceiling',name:'The Ceiling Way',story:'neighbors',accent:'#c9a0ff',kind:'blink',art:'hatch',
+ 11:{id:'ceiling',name:'The Ceiling Way',story:'neighbors',accent:'#c9a0ff',kind:'ceiling',art:'hatch',cruise:340,speed:1150,
   roosts:[{id:'far',near:'end',label:'the west gate'},{id:'fall',near:'start',label:'the Fall In'}],
   verb:'↑  TAKE THE CEILING WAY',go:'Walk the ceiling to',
   intro:'The neighbours took tea on the ceiling and showed you their way up. Upside down, the Inversion is one long corridor.'},
- 12:{id:'mirror',name:'The Other Side',story:'figure',accent:'#d6b0ff',kind:'blink',art:'mirror',
+ 12:{id:'mirror',name:'The Other Side',story:'figure',accent:'#d6b0ff',kind:'rift',art:'mirror',hop:1500,
   roosts:[{id:'far',near:'arena',label:'the Tyrant’s hall'},{id:'east',near:'start',label:'the east gate'}],
   verb:'↑  STEP THROUGH',go:'Step through to',
-  intro:'The Figure’s mirror. Its other side is the far end of the Citadel; it says the glass remembers you now.'},
- 13:{id:'alarm',name:'The Last Alarm',story:'alarm',accent:'#c9b8ff',kind:'blink',art:'bell',
+  intro:'The Figure’s mirror. Its shards hang the length of the Citadel now, and the glass remembers you: step in, and step out of the next one, and the next.'},
+ 13:{id:'alarm',name:'The Last Alarm',story:'alarm',accent:'#c9b8ff',kind:'sprint',art:'bell',speed:1500,
   roosts:[{id:'far',near:'arena',label:'the throne road'},{id:'gate',near:'start',label:'the Throne’s gate'}],
   verb:'↑  RING THE ALARM',go:'Ring and go to',
-  intro:'The Bellkeeper’s last alarm. Ring it and every door on the throne road opens for one breath.'},
+  intro:'The Bellkeeper’s last alarm. Ring it and every door on the throne road opens for one breath: run, and the bell carries you.'},
  16:{id:'skiff',name:'The Sailors’ Skiff',story:'sailors',accent:'#a8dcff',kind:'flight',art:'skiff',seat:12,cruise:110,speed:1250,
   roosts:[{id:'far',near:'arena',label:'the hydra’s water'},{id:'landing',near:'start',label:'the cliff landing'}],
   verb:'↑  TAKE THE SKIFF',go:'Sail to',
@@ -136,7 +139,9 @@ function store(){
  const s=meta.mounts||(meta.mounts={});s.perch=s.perch||{};s.reached=s.reached||{};return s;
 }
 const keep=()=>{if(!G.levelSelectMode&&typeof persist==='function')persist();};
-const travels=m=>m.kind==='flight';   // a creature or craft: one of it, wherever it last set you down
+const travels=m=>m.kind==='flight'||!!m.travels;   // a creature or craft: one of it, wherever it last set you down
+// Rides on a path of their own (7.347): the knight's feet follow it (no hovering anchor, no flight lift).
+const PATHED=new Set(['launch','throw','ground','slide','rail','ceiling','rift','sprint']);
 const perchOf=m=>store().perch[G.stageIndex]||G.mountRoosts?.[0]?.id;
 const opened=()=>G.stageIndex===0||testing()||!!store().reached[G.stageIndex];
 // What this region gives (its own ability) must already be yours.
@@ -266,12 +271,57 @@ function landing(to,dir){
  return {x:Math.max(to.x0+24,Math.min(to.x1-24,to.x+dir*110)),y:to.y,face:dir};
 }
 function start(m,from,to,arriving){
- const dir=to.x>from.x?1:-1,land=landing(to,dir),dist=Math.abs(land.x-from.x);
- const rest=m.kind==='zip'?110:m.seat>=0?26:70;   // the mount's anchor above the floor at rest
- G.mountFlight={kind:'ride',mode:m.kind,art:m.art,from,to,land,dir,arrive:arriving?0:1,mount:0,u:0,t:0,lock:0,phase:0,
+ const dir=to.x>from.x?1:-1,land=landing(to,dir),dist=Math.abs(land.x-from.x),pathed=PATHED.has(m.kind);
+ const rest=pathed?0:m.kind==='zip'?110:m.seat>=0?26:70;   // the mount's anchor above the floor at rest
+ const f=G.mountFlight={kind:'ride',mode:m.kind,art:m.art,from,to,land,dir,arrive:arriving?0:1,mount:0,u:0,t:0,lock:0,phase:0,
   dur:m.kind==='blink'?2:dist/(m.speed||1300),seat:m.kind==='zip'?-56:(m.seat||0),
   // Low enough that the road stays in view below (the view is VH units tall, the ground a fifth of it up).
   cruise:Math.min(m.cruise||300,Math.round(VH*.62)),y0:from.y+rest,y1:land.y+rest,x:from.x,y:from.y+rest};
+ // A ballistic arc's height grows with its length, within the view.
+ if(m.kind==='launch'||m.kind==='throw')f.H=Math.max(220,Math.min(Math.round(VH*.55),dist*(m.arc||.2)));
+ if(m.kind==='ground'||m.kind==='rail'||m.kind==='sprint')f.prof=profile(from.x,land.x,from.y,land.y,m.kind==='rail'?14:6);
+ if(m.kind==='rift'){
+  // Mirror shards hang along the way, one every `hop` units; the knight steps out of each into the next.
+  const n=Math.max(2,Math.round(dist/(m.hop||1500)));f.hops=[];
+  for(let i=0;i<=n;i++){const x=from.x+(land.x-from.x)*i/n;f.hops.push({x,y:i===0?from.y:i===n?land.y:floorUnder(x,Math.max(from.y,land.y)+200)});}
+  f.dur=n*.85;
+ }
+ if(m.kind==='sprint'||m.kind==='rift'||m.kind==='ceiling')f.mount=1;   // no climbing on: he goes
+ if(m.kind==='launch')f.y0=from.y+30;   // he rides the bolt from where it lies in the ballista
+}
+// The floor a ride on the ground follows: from the start height, step to whichever standable floor under each x is
+// nearest the last (never up more than a jump's worth: those are ledges overhead), keep the height across gaps,
+// then smooth it and ease it into both ends. Lines in the dark (rail) are smoothed harder.
+function profile(x0,x1,ya,yb,smooth){
+ const n=Math.max(2,Math.ceil(Math.abs(x1-x0)/24)),raw=[];let h=ya;
+ for(let i=0;i<=n;i++){
+  const x=x0+(x1-x0)*i/n;let best=null;
+  for(const o of G.obstacles){if(!steady(o)||x<o.x-o.w/2||x>o.x+o.w/2)continue;const top=o.y||0;if(top>h+170)continue;if(best==null||Math.abs(top-h)<Math.abs(best-h))best=top;}
+  if(best!=null)h=best;raw.push(h);
+ }
+ const sm=raw.map((_,i)=>{let a=0,k=0;for(let j=-smooth;j<=smooth;j++){const v=raw[i+j];if(v!=null){a+=v;k++;}}return a/k;});
+ return sm.map((v,i)=>{const a=i/n,wa=Math.max(0,1-a/.06),wb=Math.max(0,1-(1-a)/.06);return v*(1-wa-wb)+ya*wa+yb*wb;});
+}
+const profAt=(f,x)=>{const P=f.prof,i=Math.max(0,Math.min(P.length-1,(x-f.from.x)/(f.land.x-f.from.x)*(P.length-1))),a=Math.floor(i),b=Math.min(P.length-1,a+1);return P[a]+(P[b]-P[a])*(i-a);};
+function floorUnder(x,below){let y=0;for(const o of G.obstacles)if(steady(o)&&x>=o.x-o.w/2&&x<=o.x+o.w/2&&(o.y||0)<=below)y=Math.max(y,o.y||0);return y;}
+// Where a pathed ride has the knight's feet at progress u (0..1): {x, y, a (the path's angle), flip, hidden}.
+function trace(f,u){
+ const dx=f.land.x-f.from.x;
+ switch(f.mode){
+  case 'launch':case 'throw':{const x=f.from.x+dx*u,y=f.y0+(f.y1-f.y0)*u+4*f.H*u*(1-u),dy=(f.y1-f.y0)+4*f.H*(1-2*u);return {x,y,a:Math.atan2(dy,Math.abs(dx))};}
+  case 'ground':case 'rail':case 'sprint':{const x=f.from.x+dx*ease(u),y=profAt(f,x),y2=profAt(f,x+f.dir*24);return {x,y,a:Math.atan2(y2-y,24)};}
+  case 'slide':{const lift=ease(Math.min(1,u/.14))*ease(Math.min(1,(1-u)/.16)),base=f.y0+(f.y1-f.y0)*u,apex=Math.max(f.y0,f.y1)+f.cruise;
+   return {x:f.from.x+dx*ease(u),y:base+(apex-base)*lift,a:0};}
+  case 'ceiling':{
+   // Gravity turns over: he falls up to the ceiling, runs it upside down, and falls back down at the far end.
+   const up=ease(Math.min(1,u/.1)),down=ease(Math.min(1,(1-u)/.1)),k=Math.min(up,down),base=f.y0+(f.y1-f.y0)*u,ceil=Math.max(f.y0,f.y1)+f.cruise;
+   return {x:f.from.x+dx*ease(u),y:base+(ceil-44-base)*k,a:0,flip:k>.5,ceil};}
+  case 'rift':{
+   const n=f.hops.length-1,s=Math.min(n-1e-6,u*n),i=Math.floor(s),k=s-i,A=f.hops[i],B=f.hops[i+1];
+   // In at one shard (.0–.3), a streak of light (.3–.7), out of the next (.7–1).
+   const m=k<.3?0:k>.7?1:ease((k-.3)/.4);return {x:A.x+(B.x-A.x)*m,y:A.y+(B.y-A.y)*m,a:0,hidden:k>.22&&k<.78,seg:i,k};}
+ }
+ return {x:f.from.x,y:f.y0,a:0};
 }
 function update(dt){
  if(G?.mountHome&&usable())noteReached();
@@ -296,13 +346,18 @@ function update(dt){
  f.u=Math.min(1,f.u+dt/f.dur*hurry);
  const u=f.u,base=f.y0+(f.y1-f.y0)*u;
  f.x=f.from.x+(f.land.x-f.from.x)*ease(u);
- if(f.mode==='zip')f.y=f.y0+(f.y1-f.y0)*ease(u)-Math.sin(Math.PI*u)*40;   // a line sags a little under the weight
+ if(PATHED.has(f.mode)){
+  const q=trace(f,u);f.x=q.x;f.y=q.y;f.a=q.a;f.flip=!!q.flip;f.ceil=q.ceil;p.mergeHidden=!!q.hidden;
+  // Running modes animate his legs (the renderers read vx and runAnim).
+  if(f.mode==='sprint'||f.mode==='ceiling'&&q.flip){p.vx=f.dir*260;p.runAnim=(p.runAnim||0)+dt*(f.mode==='sprint'?22:14);}
+ }
+ else if(f.mode==='zip')f.y=f.y0+(f.y1-f.y0)*ease(u)-Math.sin(Math.PI*u)*40;   // a line sags a little under the weight
  else{
   const lift=ease(Math.min(1,u/.12))*ease(Math.min(1,(1-u)/.15)),apex=Math.max(f.y0,f.y1)+f.cruise;
   f.y=base+(apex-base)*lift+Math.sin(f.t*3.1)*9*lift;
  }
- p.x=f.x-f.dir*4;p.y=f.y+f.seat;p.face=f.dir;p.onGround=true;
- f.lock=Math.min(1,f.lock+dt*1.5);cameraTo(f.x+f.dir*VW*.12,f.y,dt,f.lock);
+ p.x=f.x-(PATHED.has(f.mode)?0:f.dir*4);p.y=f.y+f.seat;p.face=f.dir;p.onGround=true;
+ f.lock=Math.min(1,f.lock+dt*1.5);cameraTo(f.x+f.dir*VW*.12,f.mode==='ceiling'?f.y+90:f.y,dt,f.lock);
  if(u>=1)arrive(f,p);
  return true;
 }
@@ -318,7 +373,8 @@ function blink(f,p,dt){
 function arrive(f,p){
  // Set down by the far roost, facing on.
  p.x=f.land.x;p.y=f.land.y;p.vx=0;p.vy=0;p.onGround=false;p.face=f.land.face;p.safeX=p.x;p.mergeHidden=false;
- const m=mount();if(m&&travels(m)){store().perch[G.stageIndex]=f.to.id;keep();}
+ // A mount that travels is perched where it set him down; the automaton stays where it threw him from.
+ const m=mount();if(m&&travels(m)){store().perch[G.stageIndex]=m.staysBehind?f.from.id:f.to.id;keep();}
  G.mountFlight=null;BFKeyboard.clearPressed();
  try{m?.arrive?.(f.to);}catch(e){}
  if(typeof addText==='function')addText(p.x,GROUND_Y-p.y-70,f.to.label.toUpperCase(),m?.accent||'#d8b070',true);
@@ -464,7 +520,7 @@ function rest(c,m,o,t){
   case 'rime':return drake(c,x,y+26,dir,t,'perch',RIME);
   case 'moths':return moths(c,x+37,y+58,t,10,20,true);
   case 'kite':return kite(c,x,y+40,dir,t,false);
-  case 'sled':return sled(c,x,y+6,dir,t,false);
+  case 'sled':return sledTeam(c,x,y,dir,t,false);
   case 'skiff':return skiff(c,x,y+8,dir,t,false);
   case 'rocket':return rocket(c,x,y+40,dir,t,false);
   case 'crane':return crane(c,x,y+14,dir,t,false);
@@ -479,6 +535,23 @@ function drawRoost(c,o){
  if(m.kind==='blink'){
   const glow=f?.kind==='ride'&&(f.from.id===o.mountRoost&&f.t<f.dur*.4||f.to.id===o.mountRoost&&f.t>f.dur*.55)?Math.sin(Math.PI*Math.min(1,(f.t%f.dur)/(f.dur*.4))):0;
   return doorArt(c,o.x,o.y||0,1,t,m.art,m.accent,glow);
+ }
+ const riding=f?.kind==='ride'&&f.arrive>=1,toward=(otherOf(roostOf(o))?.x??o.x+1)>o.x?1:-1;
+ // Fixed at both ends: the cart line's head, the hatch up to the ceiling, the mirror, the bell. They light as a ride
+ // leaves or reaches them; the cart is out on the line while it runs.
+ if(m.kind==='rail'||m.kind==='ceiling'||m.kind==='rift'||m.kind==='sprint'){
+  const glow=riding?(f.from.id===o.mountRoost?Math.max(0,1-f.u/.12):f.to.id===o.mountRoost?Math.max(0,(f.u-.88)/.12):0):0;
+  if(m.kind==='rail'&&riding&&f.mount>=1&&f.u<1&&(f.from.id===o.mountRoost))return post(c,o.x-37,o.y||0,m.accent,false);
+  doorArt(c,o.x,o.y||0,1,t,m.art,m.accent,glow);
+  if(m.kind==='rift')shard(c,o.x,o.y||0,t,glow);
+  return;
+ }
+ if(m.kind==='launch')return ballista(c,o.x,o.y||0,toward,t,!(riding&&f.from.id===o.mountRoost&&f.mount>=1&&f.u<1));
+ if(m.kind==='slide'){
+  cairn(c,o.x,o.y||0,m.accent,t);
+  const near=G.mountRoosts.reduce((a,b)=>Math.abs(b.x-G.p.x)<Math.abs(a.x-G.p.x)?b:a);
+  if(!riding&&near.id===o.mountRoost)fox(c,o.x-26*toward,o.y||0,toward,t,false);
+  return;
  }
  if(m.kind==='zip'){post(c,o.x-37,o.y||0,m.accent,true);return zipStub(c,o,t);}
  post(c,o.x,o.y||0,m.accent,false);
@@ -505,6 +578,34 @@ function drawUnder(c){
   box(c,'#5a4a3a',x-6,SY(y)-4,12,8);c.strokeStyle='#8a7a5a';c.beginPath();c.moveTo(x,SY(y)+4);c.lineTo(x,SY(y)+16);c.stroke();c.restore();
   return;
  }
+ if(PATHED.has(f.mode)){
+  const a=f.a||0;
+  switch(f.mode){
+   case 'launch':if(flying&&f.u<1){c.save();c.translate(Math.round(f.x),Math.round(SY(f.y-4)));c.scale(d,1);bolt(c,-a);c.restore();speedLines(c,f.x,f.y-6,d,t,'#e8dcc0',4,70);}return;
+   case 'throw':
+    if(f.u<.3){const k=f.u/.3;c.save();c.globalAlpha=1-k*.6;automaton(c,f.from.x,f.from.y,d,t,1);c.restore();}
+    if(!flying)automaton(c,f.from.x+d*30,f.from.y,d,t,f.mount);
+    else if(f.u<1){speedLines(c,f.x,f.y+10,d,t,'#ffe0b0',6,110);}
+    return;
+   case 'ground':return sledTeam(c,flying?f.x:f.from.x,flying?f.y:f.from.y,d,t,flying,flying?a:0);
+   case 'rail':if(flying){rails(c,f,t);}return;
+   case 'sprint':if(flying){speedLines(c,f.x,f.y,d,t,'#c9b8ff',9,140);
+     c.save();for(let i=1;i<=3;i++){const q=trace(f,Math.max(0,f.u-i*.012));c.globalAlpha=.22-i*.05;box(c,'#c9b8ff',q.x-7,SY(q.y)-44,14,44);}c.restore();}
+    bellRings(c,f.from.x,f.from.y,0,f.t,mount()?.accent||'#c9b8ff');return;
+   case 'slide':if(flying){iceRoad(c,f,t);const q=trace(f,Math.min(1,f.u+90/Math.max(1,Math.abs(f.land.x-f.from.x))));fox(c,q.x,q.y,d,t,true);}return;
+   case 'ceiling':if(f.u>.04&&f.u<.96)ceilingBand(c,f,t);
+    if(f.u<.14||f.u>.86){c.save();c.globalAlpha=.7;for(let i=0;i<10;i++){const k=((t*3+i/10)%1);box(c,'#c9a0ff',f.x+Math.sin(i*2.3)*24,SY(f.y+k*80*(f.flip?-1:1)+20),2,2);}c.restore();}
+    return;
+   case 'rift':{
+    for(const h of f.hops)shard(c,h.x,h.y,t,0);
+    const q=trace(f,f.u);
+    if(q.hidden){const A=f.hops[q.seg],B=f.hops[q.seg+1],e=ease(Math.min(1,Math.max(0,(q.k-.22)/.56)));
+     c.save();c.strokeStyle='#e8d8ff';c.lineCap='round';c.globalAlpha=.85;c.lineWidth=6;c.beginPath();const sx=A.x+(B.x-A.x)*Math.max(0,e-.25),ex=A.x+(B.x-A.x)*e;
+     c.moveTo(sx,SY(A.y+40+(B.y-A.y)*Math.max(0,e-.25)));c.lineTo(ex,SY(A.y+40+(B.y-A.y)*e));c.stroke();c.lineWidth=2;c.strokeStyle='#ffffff';c.stroke();c.restore();}
+    return;}
+  }
+  return;
+ }
  switch(f.art){
   case 'drake':return drake(c,x,y,d,t,flying?'fly':'perch');
   case 'rime':return drake(c,x,y,d,t,flying?'fly':'perch',RIME);
@@ -527,9 +628,119 @@ function drawOver(c){
   if(a>0){c.save();c.globalAlpha=a;c.fillStyle='#05040a';c.fillRect(G.cam-2000,-(G.camY||0)-6000,VW+4000,12000);c.restore();}
   return;
  }
+ if(f.mode==='rail'){cartBody(c,f.mount>=1?f.x:f.from.x,f.mount>=1?f.y:f.from.y,f.dir,G.time||0,f.mount>=1?f.a||0:0);if(f.mount>=1&&f.u<1)darkness(c,f);return;}
  if(f.mount<1)return;
  if(f.art==='drake'||f.art==='rime'){c.save();c.translate(Math.round(f.x),Math.round(SY(f.y)));c.scale(f.dir,1);wing(c,.35+Math.sin((G.time||0)*9)*.75,true,f.art==='rime'?RIME:BRONZE);c.restore();}
  if(f.art==='moths')moths(c,f.x,f.y-30,G.time||0,8,34,false);
+}
+// The knight's own pose on a pathed ride, for the renderers: turned with a slope or a tumble (rot, radians,
+// clockwise on screen), upside down on the ceiling (flip), running (run, rate) or in the air (air). Null: as usual.
+function heroPose(){
+ const f=G?.mountFlight;if(!f||f.kind!=='ride'||f.arrive<1||f.mount<1||f.u>=1||!PATHED.has(f.mode))return null;
+ switch(f.mode){
+  case 'throw':return {rot:f.dir*ease(f.u)*Math.PI*4,air:true};   // two somersaults, landing on his feet
+  case 'ceiling':return f.flip?{flip:true,run:true,rate:14}:{air:true};
+  case 'sprint':return {run:true,rate:24};
+  case 'launch':return {rot:-f.dir*f.a*.8};
+  case 'ground':case 'rail':return {rot:-f.dir*f.a};
+  case 'slide':return {rot:f.dir*.12};
+ }
+ return null;
+}
+// ---- the new rides' art (7.347) ----------------------------------------------------------------------------
+function bolt(c,rot){c.save();c.rotate(rot);box(c,'#7a5a3a',-36,-2,68,4);box(c,'#9a7a52',-36,-2,68,1);fill(c,'#c8ccd8',[[32,-6],[46,0],[32,6]]);
+ fill(c,'#c8b07a',[[-36,-2],[-48,-9],[-41,-2]]);fill(c,'#c8b07a',[[-36,2],[-48,9],[-41,2]]);c.restore();}
+function ballista(c,x,y,dir,t,loaded){
+ at(c,x,y,dir);
+ box(c,'#3a2c22',-26,-10,8,10);box(c,'#3a2c22',16,-10,8,10);box(c,'#5a4434',-30,-22,62,12);box(c,'#6a5040',-30,-22,62,3);
+ c.save();c.translate(2,-28);c.rotate(-.42);
+ box(c,'#6a5040',-36,-5,74,8);box(c,'#3a2c22',-40,-7,8,12);
+ c.strokeStyle='#8a6a48';c.lineWidth=4;c.beginPath();c.moveTo(28,-30);c.quadraticCurveTo(44,-1,28,28);c.stroke();
+ c.strokeStyle='#e0d0a8';c.lineWidth=1;c.beginPath();c.moveTo(28,-30);c.lineTo(loaded?-22:8,-1);c.lineTo(28,28);c.stroke();
+ if(loaded){c.translate(4,-6);bolt(c,0);}
+ c.restore();c.restore();
+}
+function dog(c,x,y,dir,t,run,ph){
+ at(c,x,y,dir);const s=run?Math.sin(t*20+ph):0;
+ box(c,'#d8dce4',-14,-19,28,10);box(c,'#8a94a4',-14,-19,28,3);box(c,'#e8ecf2',11,-25,11,9);fill(c,'#aab2c0',[[13,-25],[15,-31],[18,-25]]);
+ box(c,'#1a1a22',19,-22,2,2);box(c,'#3a3030',21,-19,2,2);fill(c,'#d8dce4',[[-14,-17],[-24,-25+s*3],[-15,-12]]);
+ for(const [lx,k] of [[-12,1],[-6,-1],[6,-1],[11,1]])box(c,'#c4c8d0',lx+s*k*3,-9,3,9);
+ c.restore();
+}
+function sledTeam(c,x,y,dir,t,moving,a=0){
+ // The sled and her two dogs in harness ahead, all on the road's slope.
+ c.save();c.translate(Math.round(x),Math.round(SY(y)));c.rotate(-dir*a);c.translate(-Math.round(x),-Math.round(SY(y)));
+ sled(c,x,y,dir,t,moving);
+ for(const [k,ph] of [[1,0],[2,1.7]]){const dx=x+dir*(30+k*40);dog(c,dx,y+1,dir,t,moving,ph);}
+ c.strokeStyle='#8a6a48';c.lineWidth=1;c.beginPath();c.moveTo(x+dir*30,SY(y+6));c.lineTo(x+dir*104,SY(y+14));c.stroke();
+ c.restore();
+}
+function fox(c,x,y,dir,t,run){
+ at(c,x,y,dir);const s=run?Math.sin(t*22):0;
+ c.globalAlpha=.25;c.fillStyle='#bfe4ff';c.beginPath();c.arc(0,-10,18,0,Math.PI*2);c.fill();c.globalAlpha=1;
+ box(c,'#eef6ff',-10,-13,20,7);box(c,'#bfe4ff',-10,-13,20,2);box(c,'#f8fcff',8,-18,8,7);fill(c,'#dceeff',[[9,-18],[11,-23],[13,-18]]);box(c,'#3a6a9a',14,-16,2,2);
+ fill(c,'#f8fcff',[[-10,-11],[-22,-18+s*3],[-24,-12],[-12,-8]]);fill(c,'#bfe4ff',[[-22,-18+s*3],[-26,-16],[-24,-12]]);
+ for(const [lx,k] of [[-8,1],[-3,-1],[4,-1],[8,1]])box(c,'#dceeff',lx+s*k*2,-6,2,6);
+ c.restore();
+}
+function cairn(c,x,y,accent,t){
+ // A frost cairn: where the ice road starts.
+ const gx=x+30,gy=SY(y);c.save();
+ box(c,'#8aa8c0',gx-12,gy-12,24,12);box(c,'#a8c4d8',gx-9,gy-22,18,10);box(c,'#c8dcec',gx-6,gy-30,12,8);
+ c.globalAlpha=.45+.2*Math.sin(t*2);c.fillStyle=accent;c.beginPath();c.arc(gx,gy-34,6,0,Math.PI*2);c.fill();c.restore();
+}
+function iceRoad(c,f,t){
+ // The road freezes a little ahead of him and melts a little behind.
+ const u=f.u,pts=[],du=1/Math.max(1,Math.abs(f.land.x-f.from.x));
+ for(let d=-420;d<=140;d+=14){const v=Math.max(0,Math.min(1,u+d*du));const q=trace(f,v);pts.push([q.x,q.y,d/420*.16]);}
+ c.save();c.lineCap='round';
+ for(const [w,col,al] of [[16,'#9fd0f0',.28],[7,'#d8f0ff',.55],[2,'#ffffff',.9]]){
+  c.globalAlpha=al;c.strokeStyle=col;c.lineWidth=w;c.beginPath();pts.forEach(([x,y],i)=>i?c.lineTo(x,SY(y-3)):c.moveTo(x,SY(y-3)));c.stroke();}
+ c.globalAlpha=.8;for(let i=0;i<pts.length;i+=3){const [x,y,k]=pts[i];if(k<-.1)continue;box(c,'#ffffff',x+Math.sin(t*7+i)*6,SY(y-6)-Math.cos(t*5+i)*5,2,2);}
+ c.restore();
+}
+function cartBody(c,x,y,dir,t,a=0){
+ c.save();c.translate(Math.round(x),Math.round(SY(y)));c.rotate(-dir*a);c.scale(dir,1);
+ box(c,'#2a2420',-30,-26,60,22);box(c,'#5a4838',-28,-24,56,4);box(c,'#ff7a2a',-24,-30,48,4);box(c,'#3a3028',-30,-6,60,3);
+ for(const wx of [-18,18]){c.fillStyle='#1a1614';c.beginPath();c.arc(wx,-2,6,0,Math.PI*2);c.fill();c.fillStyle='#6a5444';c.fillRect(wx-1,-3,2,2);}
+ box(c,'#e8c060',22,-36,4,6);   // the lantern on its post
+ c.restore();
+}
+function rails(c,f,t){
+ c.save();const span=900,step=24;
+ c.strokeStyle='#6a5a4a';c.lineWidth=2;for(const off of [0,5]){c.beginPath();let first=true;
+  for(let x=f.x-span;x<=f.x+span;x+=step){const lo=Math.min(f.from.x,f.land.x),hi=Math.max(f.from.x,f.land.x);if(x<lo||x>hi)continue;const y=profAt(f,x)-off;first?c.moveTo(x,SY(y)):c.lineTo(x,SY(y));first=false;}c.stroke();}
+ for(let x=Math.ceil((f.x-span)/40)*40;x<=f.x+span;x+=40){const lo=Math.min(f.from.x,f.land.x),hi=Math.max(f.from.x,f.land.x);if(x<lo||x>hi)continue;box(c,'#3a3028',x-5,SY(profAt(f,x))-2,10,5);}
+ c.globalAlpha=.9;for(let i=0;i<6;i++){const k=((t*6+i/6)%1);box(c,i%2?'#ffd070':'#ff8a3a',f.x-f.dir*(18+k*40)+(i%3-1)*6,SY(f.y)+2-k*14,2,2);}
+ c.restore();
+}
+function darkness(c,f){
+ // Through the dark: only the cart's lantern lights the line.
+ const x=f.x,y=SY(f.y+20),g=c.createRadialGradient(x,y,50,x,y,520);
+ g.addColorStop(0,'rgba(8,4,2,0)');g.addColorStop(.5,'rgba(8,4,2,.72)');g.addColorStop(1,'rgba(8,4,2,.93)');
+ const k=Math.min(1,f.u/.06,(1-f.u)/.06);
+ c.save();c.globalAlpha=Math.max(0,k);c.fillStyle=g;c.fillRect(G.cam-2000,-(G.camY||0)-6000,VW+4000,12000);c.restore();
+}
+function shard(c,x,y,t,glow){
+ c.save();const sy=SY(y+60)+Math.sin(t*2+x*.01)*4;
+ c.globalAlpha=.25+glow*.5;c.fillStyle='#d6b0ff';c.beginPath();c.arc(x,sy,16+glow*14,0,Math.PI*2);c.fill();
+ c.globalAlpha=1;fill(c,'#6a4a8a',[[x,sy-22],[x+10,sy],[x,sy+22],[x-10,sy]]);fill(c,'#c8b0f0',[[x,sy-18],[x+6,sy],[x,sy+4]]);
+ c.restore();
+}
+function bellRings(c,x,y,t0,t,accent){
+ const k=t-t0;if(k<0||k>1.6)return;c.save();c.strokeStyle=accent;
+ for(let i=0;i<3;i++){const r=(k-i*.18)*700;if(r<=0)continue;c.globalAlpha=Math.max(0,.6-(k-i*.18)/1.6*.6);c.lineWidth=3;c.beginPath();c.arc(x,SY(y+60),r,0,Math.PI*2);c.stroke();}
+ c.restore();
+}
+function speedLines(c,x,y,dir,t,col='#ffffff',n=7,len=90){
+ c.save();for(let i=0;i<n;i++){const k=((t*5+i*.37)%1);c.globalAlpha=(1-k)*.55;box(c,col,x-dir*(20+k*len)-(dir<0?len*.4:0),SY(y+8+i*6)+Math.sin(i*3)*3,len*.4,1);}c.restore();
+}
+function ceilingBand(c,f,t){
+ // The neighbours' ceiling: a run of upside-down floor, dripping, over him.
+ const y=SY(f.ceil);c.save();
+ for(let x=Math.floor((f.x-700)/40)*40;x<=f.x+700;x+=40){box(c,'#3a2c52',x,y-14,40,14);box(c,'#5a4a7a',x,y-2,40,2);box(c,'#2a2040',x+38,y-14,2,14);
+  if((x/40)%3===0)box(c,'#c9a0ff',x+12,y+((t*30+x)%26),2,3);}
+ c.restore();
 }
 // ---- the level select's gallery (7.345) -------------------------------------------------------------------
 // A small looping scene of one region's shortcut on a card canvas (w×h pixels): its two roosts, the way between
@@ -557,6 +768,36 @@ function preview(c,stage,t,w,h){
   if(u<.32)knight(c,A-50+Math.min(1,u/.28)*50,0,1);else if(u>.62)knight(c,B+Math.min(1,(u-.62)/.3)*46,0,1);
   const a=u<.35?Math.max(0,(u-.22)/.13):u<.6?1:Math.max(0,1-(u-.6)/.12);
   if(a>0){c.save();c.globalAlpha=a*.85;c.fillStyle='#05040a';c.fillRect(-50,SY(top+40),W+100,top+80);c.restore();}
+ }else if(PATHED.has(m.kind)){
+  // The same paths as the game's (trace), on a made-up road: a gentle rise for the sled, a long flat line otherwise.
+  const f={mode:m.kind,from:{x:A,y:0},land:{x:B,y:0},dir:1,y0:m.kind==='launch'?30:0,y1:0,u,
+   H:Math.min(top*.62,(B-A)*.5),cruise:Math.min(m.cruise||200,top*.55),
+   prof:Array.from({length:41},(_,i)=>m.kind==='ground'?Math.sin(i/40*Math.PI)*46+Math.sin(i*.8)*5:m.kind==='rail'?Math.sin(i/40*Math.PI)*16:0),
+   hops:[0,1,2,3].map(i=>({x:A+(B-A)*i/3,y:0}))};
+  const riding=u>0&&u<1,q=trace(f,u);Object.assign(f,{x:q.x,y:q.y,a:q.a||0,flip:!!q.flip,ceil:q.ceil});
+  const pose=(x,y,rot,flip)=>{c.save();c.translate(x,SY(y+22));if(rot)c.rotate(rot);if(flip)c.scale(1,-1);c.translate(-x,-SY(y+22));knight(c,x,y,1);c.restore();};
+  switch(m.kind){
+   case 'launch':ballista(c,A,0,1,t,!riding);ballista(c,B,0,-1,t,true);
+    if(riding){c.save();c.translate(q.x,SY(q.y-4));bolt(c,-q.a);c.restore();speedLines(c,q.x,q.y-6,1,t,'#e8dcc0',4,60);pose(q.x,q.y,-q.a*.8);}else knight(c,u<=0?A-40:B+30,0,1);break;
+   case 'throw':automaton(c,A,0,1,t,u<.25?1:0);
+    if(riding){speedLines(c,q.x,q.y+10,1,t,'#ffe0b0',6,90);pose(q.x,q.y,ease(u)*Math.PI*4);}else knight(c,u<=0?A+30:B,0,1);break;
+   case 'ground':post(c,A,0,m.accent,false);post(c,B,0,m.accent,false);sledTeam(c,q.x,q.y,1,t,riding,q.a);pose(q.x,q.y+8,-q.a);break;
+   case 'rail':doorArt(c,A,0,1,t,'cart',m.accent,0);doorArt(c,B,0,1,t,'cart',m.accent,0);
+    if(riding){rails(c,f,t);knight(c,q.x,q.y+10,1);cartBody(c,q.x,q.y,1,t,q.a);
+     const g=c.createRadialGradient(q.x,SY(q.y+20),30,q.x,SY(q.y+20),260);g.addColorStop(0,'rgba(8,4,2,0)');g.addColorStop(1,'rgba(8,4,2,.88)');
+     c.save();c.globalAlpha=Math.min(1,u/.08,(1-u)/.08);c.fillStyle=g;c.fillRect(-50,SY(top+40),W+100,top+80);c.restore();}
+    else knight(c,u<=0?A-36:B+36,0,1);break;
+   case 'slide':cairn(c,A,0,m.accent,t);cairn(c,B,0,m.accent,t);
+    if(riding){iceRoad(c,f,t);const r=trace(f,Math.min(1,u+.05));fox(c,r.x,r.y,1,t,true);pose(q.x,q.y,.12);}else{fox(c,u<=0?A+44:B+44,0,1,t,false);knight(c,u<=0?A:B,0,1);}break;
+   case 'ceiling':doorArt(c,A,0,1,t,'hatch',m.accent,0);doorArt(c,B,0,1,t,'hatch',m.accent,0);
+    if(riding){if(u>.04&&u<.96)ceilingBand(c,f,t);pose(q.x,q.y,0,q.flip);}else knight(c,u<=0?A+30:B+30,0,1);break;
+   case 'rift':doorArt(c,A,0,1,t,'mirror',m.accent,0);doorArt(c,B,0,1,t,'mirror',m.accent,0);for(const h of f.hops)shard(c,h.x,h.y,t,0);
+    if(riding&&q.hidden){const Ah=f.hops[q.seg],Bh=f.hops[q.seg+1],e=ease(Math.min(1,Math.max(0,(q.k-.22)/.56)));
+     c.save();c.strokeStyle='#e8d8ff';c.lineWidth=6;c.lineCap='round';c.beginPath();c.moveTo(Ah.x+(Bh.x-Ah.x)*Math.max(0,e-.25),SY(40));c.lineTo(Ah.x+(Bh.x-Ah.x)*e,SY(40));c.stroke();c.restore();}
+    else knight(c,riding?q.x:u<=0?A+30:B+30,0,1);break;
+   case 'sprint':doorArt(c,A,0,1,t,'bell',m.accent,0);doorArt(c,B,0,1,t,'bell',m.accent,0);
+    if(riding){bellRings(c,A,0,0,u*2.2,m.accent);speedLines(c,q.x,q.y,1,t,'#c9b8ff',9,110);knight(c,q.x,q.y,1);}else knight(c,u<=0?A+30:B+30,0,1);break;
+  }
  }else if(m.kind==='zip'){
   post(c,A-37,0,m.accent,true);post(c,B-37,0,m.accent,true);
   const y0=110,yAt=v=>y0-Math.sin(Math.PI*v)*40;
@@ -590,7 +831,7 @@ function preview(c,stage,t,w,h){
  return true;
 }
 root.BladefallMounts=Object.freeze({MOUNTS,install,interactable,prompt,interact,update,drawRoost,drawUnder,drawOver,
- flying:()=>!!(G?.mountFlight?.kind==='ride'),roosts:()=>G?.mountRoosts||null,missing,preview,
+ flying:()=>!!(G?.mountFlight?.kind==='ride'),roosts:()=>G?.mountRoosts||null,missing,preview,heroPose,
  perch:()=>G?.mountRoosts?perchOf(mount()):null,reached:()=>!!(G&&store().reached[G.stageIndex]),
  testMode:()=>testOn,setTestMode});
 })(typeof window!=='undefined'?window:globalThis);
