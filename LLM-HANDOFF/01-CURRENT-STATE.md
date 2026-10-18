@@ -1,3 +1,17 @@
+## 7.353.0: perfect clears celebrated; no spoilers on Ascend's map (2026-10-18, Claude)
+
+**Perfect clears.** A perfect clear of an Ascend world now plays a short full-screen animation:
+- a flash, light rays and sparks;
+- the earned plant part grows in, using the plant's colours. Base worlds show the bottom half (a bulb and roots); Fractured worlds show the top half (a bloom);
+- then PERFECT and the part's name.
+It closes after 5 s or on a tap or key, and then the old announcement follows. The code is `BladefallClimbRewards.celebrate(r, world)`, called from `rewardWorld()`. It is the same animation for every world; only the part, its name and its colours change.
+
+**Map** (`bladefall-climb-map.js`, `bladefall-climb-view.js`):
+- **The emerald gem.** Tapping it offers to watch the ascent only when every world of that emerald is open (`opts.canWatchAscent`, which uses `fracturedOpen`). That means beaten normally, test mode, or the full unlock.
+- **Locked worlds.** The "Watch world" button reads **Locked** and is disabled.
+- **Palace captions removed.** "Sunspire Palace · the whole right flank" and "The Fractured Palace · …left flank" no longer show under the palaces.
+- **Settings → "Show the full map".** The label no longer has the parenthetical. It now shows only the Fractured emerald, with names still ??? until a world is open. Worlds 41 and 42 appear only when reached, or with the five-press full unlock (`opts.brilliant`). `opts.preview` no longer sets `fin.open`.
+
 ## 7.352.0: Fractured tab "???"; Ascend worlds locked until reached; Ascend New Game (2026-10-18, Claude, cloud session)
 
 - **Explore:** the Fractured tab reads "???" until an echo is open. Five taps still toggle test mode.

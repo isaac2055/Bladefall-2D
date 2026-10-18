@@ -187,6 +187,50 @@ function card(api,back){
  document.getElementById('rwBack').onclick=()=>{clearInterval(timer);back();};
 }
 
-root.BladefallClimbRewards=Object.freeze({PLANTS,SKINS,state,earned,canBuy,buy,price,perfect,halves,coreOpen:csideOpen,coreBeaten:csideBeaten,csideOpen,csideBeaten,skin,wear,newlyEarned,sprite,scarf,plantOf,card,
+/* ---------------------------------------------------------------- a perfect clear, celebrated (7.353)
+   One animation for every world: a burst of light, the earned plant part grows into view (a bulb and roots for a
+   base world's bottom half, a bloom for a Fractured world's top half, in the plant's colours), then its name.
+   Tap, click or any key to close; it closes itself after a few seconds. */
+function drawPart(b,cx,cy,s,top,col,rootCol,t){
+ b.save();b.translate(cx,cy);b.scale(s,s);
+ if(!top){ // the bulb and its roots
+  b.strokeStyle=rootCol;b.lineWidth=2.2;b.lineCap='round';
+  for(let i=0;i<7;i++){const a=-0.9+i*0.3,len=26+((i*37)%13);b.beginPath();b.moveTo(Math.sin(a)*8,10);b.quadraticCurveTo(Math.sin(a)*20,22+len*.4,Math.sin(a)*(18+len*.5)+Math.sin(t*2+i)*1.5,22+len);b.stroke();}
+  const g=b.createRadialGradient(-6,-6,2,0,0,24);g.addColorStop(0,'#fff8e8');g.addColorStop(.45,col);g.addColorStop(1,rootCol);
+  b.fillStyle=g;b.beginPath();b.moveTo(0,-30);b.bezierCurveTo(16,-14,24,4,14,14);b.quadraticCurveTo(0,22,-14,14);b.bezierCurveTo(-24,4,-16,-14,0,-30);b.fill();
+  b.strokeStyle='rgba(255,255,255,.35)';b.lineWidth=1.2;b.beginPath();b.moveTo(-4,-20);b.quadraticCurveTo(-10,0,-6,12);b.stroke();
+ }else{ // the bloom
+  b.strokeStyle='#4e8a4a';b.lineWidth=3;b.beginPath();b.moveTo(0,40);b.quadraticCurveTo(4,16,0,0);b.stroke();
+  for(let i=0;i<6;i++){b.save();b.rotate(i*Math.PI/3+Math.sin(t*1.5)*.05);const g=b.createLinearGradient(0,0,0,-30);g.addColorStop(0,'#fffef6');g.addColorStop(1,col);b.fillStyle=g;
+   b.beginPath();b.moveTo(0,0);b.bezierCurveTo(12,-8,10,-26,0,-32);b.bezierCurveTo(-10,-26,-12,-8,0,0);b.fill();b.restore();}
+  b.fillStyle='#ffe28a';b.beginPath();b.arc(0,0,6,0,Math.PI*2);b.fill();
+ }
+ b.restore();
+}
+function celebrate(r,world){
+ if(!r||!r.plant||typeof document==='undefined')return Promise.resolve();
+ const top=(world||0)>20,p=r.plant;
+ return new Promise(done=>{
+  const wrap=document.createElement('div');wrap.style.cssText='position:fixed;inset:0;z-index:10050;display:flex;align-items:center;justify-content:center;background:rgba(6,8,12,.0);transition:background .4s;cursor:pointer';
+  const cv=document.createElement('canvas'),W=Math.min(innerWidth,720),H=Math.min(innerHeight,520);cv.width=W;cv.height=H;cv.style.cssText=`width:${W}px;height:${H}px`;wrap.append(cv);document.body.append(wrap);
+  requestAnimationFrame(()=>wrap.style.background='rgba(6,8,12,.72)');
+  const b=cv.getContext('2d'),t0=performance.now(),sparks=Array.from({length:70},(_,i)=>({a:i*2.4,r:0,v:60+(i*53)%140,c:i%3?p.col:'#fff4c8'}));let raf=0,closed=false;
+  const close=()=>{if(closed)return;closed=true;cancelAnimationFrame(raf);wrap.remove();removeEventListener('keydown',close,true);done();};
+  wrap.addEventListener('pointerdown',close);addEventListener('keydown',close,true);setTimeout(close,5200);
+  (function frame(now){const t=(now-t0)/1000;b.clearRect(0,0,W,H);const cx=W/2,cy=H*.44;
+   const flash=Math.max(0,1-t*1.6);if(flash>0){b.fillStyle=`rgba(255,250,230,${flash*.55})`;b.fillRect(0,0,W,H);}
+   const glow=b.createRadialGradient(cx,cy,4,cx,cy,170);glow.addColorStop(0,`rgba(255,240,190,${.5+.15*Math.sin(t*3)})`);glow.addColorStop(1,'rgba(255,240,190,0)');b.fillStyle=glow;b.fillRect(0,0,W,H);
+   b.save();b.translate(cx,cy);b.rotate(t*.4);b.strokeStyle='rgba(255,236,170,.18)';b.lineWidth=10;for(let i=0;i<12;i++){b.rotate(Math.PI/6);b.beginPath();b.moveTo(30,0);b.lineTo(230,0);b.stroke();}b.restore();
+   for(const s of sparks){s.r=s.v*Math.min(t,1.6)*(1+t*.2);const x=cx+Math.cos(s.a)*s.r,y=cy+Math.sin(s.a)*s.r+t*t*14;b.globalAlpha=Math.max(0,1-t/3);b.fillStyle=s.c;b.fillRect(x-2,y-2,4,4);}b.globalAlpha=1;
+   const grow=Math.min(1,Math.max(0,(t-.25)/.7)),ease=1-Math.pow(1-grow,3),bob=Math.sin(t*2.2)*4;
+   if(grow>0)drawPart(b,cx,cy+bob,2.6*ease+Math.max(0,.25*Math.sin(Math.min(1,grow)*Math.PI)),top,p.col,p.root_col,t);
+   const txt=Math.min(1,Math.max(0,(t-.9)/.5));b.globalAlpha=txt;b.textAlign='center';
+   b.fillStyle='#ffe9a8';b.font='700 34px system-ui,sans-serif';b.fillText('PERFECT',cx,H*.13+(1-txt)*10);
+   b.fillStyle='#ffffff';b.font='600 22px system-ui,sans-serif';b.fillText(r.half,cx,H*.82);
+   b.fillStyle='rgba(230,236,245,.8)';b.font='15px system-ui,sans-serif';b.fillText(r.cside?`The ${p.name} is whole · its Core is open`:`${top?'Top':'Bottom'} half of the ${p.name}`,cx,H*.82+28);
+   b.globalAlpha=1;raf=requestAnimationFrame(frame);})(t0);
+ });
+}
+root.BladefallClimbRewards=Object.freeze({celebrate,PLANTS,SKINS,state,earned,canBuy,buy,price,perfect,halves,coreOpen:csideOpen,coreBeaten:csideBeaten,csideOpen,csideBeaten,skin,wear,newlyEarned,sprite,scarf,plantOf,card,
  reset(){write({});}});
 })(typeof window!=='undefined'?window:globalThis);

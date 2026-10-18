@@ -840,7 +840,7 @@ function assistCard(back,{fromMenu=false}={}){
  ${climb?`<label class="pcOpt"><input type="checkbox" id="opPure" ${o.pure?'checked':''}> Pure play mode · no screens when you finish a world (no leaderboards, no skip-ahead): just keep playing</label>`:''}
  <p class="pcSub">Y starts or stops a private route recording. Recordings save automatically to the cloud, with offline retries.</p>
  ${reviewRow}
- ${finaleMap?`<label class="pcOpt"><input type="checkbox" id="opFinaleMap" ${F.preview()?'checked':''}> Show the full map (Vesper, your Echo and the whole Fractured emerald)</label>`:''}
+ ${finaleMap?`<label class="pcOpt"><input type="checkbox" id="opFinaleMap" ${F.preview()?'checked':''}> Show the full map</label>`:''}
  <p class="pcSub" id="asNote" style="color:#ffd98a"></p>
  ${climb&&fromMenu?'<button class="pcBtn ghost" id="pcNewGame" style="color:#ff9a8a">New game · erase all Ascend progress</button>':''}
  <button class="pcBtn" id="pcBack" data-back>Done</button></div>`);

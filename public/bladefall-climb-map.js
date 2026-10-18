@@ -352,7 +352,7 @@ function buildSvg(model){
   const pts=[...t.outer,...t.inner.slice(1,-1).reverse()].map(at),sel=+n===selected;
   const color=+n>20?'#9a7be0':'#49c27a';
   P.push(`<polygon points="${pts.map(p=>p.join(',')).join(' ')}" fill="${color}" fill-opacity="${sel?.2:.11}" stroke="${color}" stroke-opacity=".6" stroke-width="1.6"/>`);
-  const c=pos(+n);P.push(`<text class="cm-near" x="${c[0]+(t.left?-18:18)}" y="${c[1]+NH/2+22}" text-anchor="middle" font-size="12" fill="#9fb6a8" fill-opacity=".85">${esc(t.caption)}</text>`);
+  // (7.353) no caption under the palaces: it named a world the map still shows as ???
  }
  const fin=model.finale||{};
  P.push(`<text x="0" y="${fin.open?-1.5*SY-CH/2-66:-0.62*SY}" text-anchor="middle" font-size="22" letter-spacing="6" fill="#7fbf95" fill-opacity=".45">THE EMERALD ASCENT</text>`);
@@ -431,7 +431,8 @@ function mount(host,opts={}){
  const fin={...(opts.finale||{open:false})};
  // (7.310) the finished map: the crowns and the whole gem, shown from Settings whatever has been beaten
  // (7.313) the checkbox shows the two crowns on the usual map; the five-press unlock-all shows the whole gem
- if(opts.preview)fin.open=true;
+ // (7.353) Settings → Show the full map shows the Fractured emerald only; Vesper and your Echo (41, 42) appear
+ // when reached, or with the full unlock (five presses), which is opts.brilliant.
  if(opts.brilliant){fin.preview=true;fin.open=true;}
  // (7.319) only the regions you have reached for: the Fractured emerald grows with its purple hearts (opts.shown)
  const regions=[...Object.keys(AT().positions).map(Number),...(fin.open?[41,42]:[])].filter(n=>worldOf(n)&&(!opts.shown||opts.shown(n))).sort((a,b)=>a-b);
@@ -520,7 +521,7 @@ function mount(host,opts={}){
   chipbar.innerHTML=`<b>${n} · ${esc(w?.name||'')}</b> <small>· ${esc(state)}${n===42?(fin.merged?' · merged':' · unmerged'):''}</small>`;
   detail.innerHTML=`<h2>${n} · ${esc(w?.name||'')}${done?'<span class="cm-chip done">'+(n===41?'defeated':'still')+'</span>':'<span class="cm-chip next">open to you</span>'}</h2><div>${text}</div>`;
   const play=host.querySelector('#cmPlayWorld');if(play){const locked=opts.canStart&&!opts.canStart(n);play.disabled=!!locked;play.textContent=locked?'Locked':'Play world';play.title='Play '+(w?.name||'');play.setAttribute('aria-label',play.title);play.onclick=()=>opts.onStart(n);}
-  {const wb=host.querySelector('#cmWatchWorld');if(wb){const locked=opts.canStart&&!opts.canStart(n);wb.disabled=!!locked;wb.title='Watch the intended route of '+(w?.name||'');wb.onclick=()=>opts.onWatch(n);}}
+  {const wb=host.querySelector('#cmWatchWorld');if(wb){const locked=opts.canStart&&!opts.canStart(n);wb.disabled=!!locked;wb.textContent=locked?'Locked':'Watch world';wb.title=locked?'Locked':'Watch the intended route of '+(w?.name||'');wb.onclick=()=>opts.onWatch(n);}}
  }
  function card(n){
   if(n>40)return crownCard(n);
@@ -547,7 +548,7 @@ function mount(host,opts={}){
    <div class="cm-tip">${esc(where?(current?'📍 ':'')+where:state)}</div>`;
   detail.querySelectorAll('[data-tip]').forEach(el=>{el.title=el.dataset.tip;el.onclick=()=>{detail.querySelector('.cm-tip').textContent=el.dataset.tip;};});
   const play=host.querySelector('#cmPlayWorld');if(play){const locked=opts.canStart&&!opts.canStart(n);play.disabled=!!locked;play.textContent=locked?'Locked':'Play world';const why=locked?(opts.lockedWhy?.(n)||'Locked'):'';play.title=locked?why:'Play '+(label(n,w));play.setAttribute('aria-label',play.title);play.onclick=()=>opts.onStart(n);if(locked)detail.querySelector('.cm-tip').textContent='🔒 '+why;}
-  {const wb=host.querySelector('#cmWatchWorld');if(wb){const locked=opts.canStart&&!opts.canStart(n);wb.disabled=!!locked;wb.title='Watch the intended route of '+(label(n,w));wb.onclick=()=>opts.onWatch(n);}}
+  {const wb=host.querySelector('#cmWatchWorld');if(wb){const locked=opts.canStart&&!opts.canStart(n);wb.disabled=!!locked;wb.textContent=locked?'Locked':'Watch world';wb.title=locked?'Locked':'Watch the intended route of '+(label(n,w));wb.onclick=()=>opts.onWatch(n);}}
  }
  function select(n,pan=false){
   if(!regions.includes(n))return;model.selected=n;if(pick)pick.value=String(n);render();card(n);
@@ -575,7 +576,7 @@ function mount(host,opts={}){
  const up=e=>{
   if(!pts.has(e.pointerId))return;pts.delete(e.pointerId);
   if(pts.size===0){view.classList.remove('cm-drag');if(gesture?.kind==='drag'&&moved<=6&&downNode)select(+downNode);
-   else if(gesture?.kind==='drag'&&moved<=6&&downGem&&opts.onWatchAscent&&confirm(downGem==='fractured'?'Watch the whole Fractured ascent, world by world?':'Watch the whole Emerald ascent, world by world?'))opts.onWatchAscent(downGem==='fractured');gesture=null;downNode=null;}
+   else if(gesture?.kind==='drag'&&moved<=6&&downGem&&opts.onWatchAscent&&(!opts.canWatchAscent||opts.canWatchAscent(downGem==='fractured'))&&confirm(downGem==='fractured'?'Watch the whole Fractured ascent, world by world?':'Watch the whole Emerald ascent, world by world?'))opts.onWatchAscent(downGem==='fractured');gesture=null;downNode=null;}
   else if(pts.size===1){const [p]=[...pts.values()];gesture={kind:'drag',last:p};}
  };
  view.addEventListener('pointerup',up);view.addEventListener('pointercancel',up);
