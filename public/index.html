@@ -365,7 +365,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-side-stories.js?v=7.232.0"></script>
 <script src="bladefall-opening-stories.js?v=7.234.0"></script>
 <script src="bladefall-side-story-world.js?v=7.343.0"></script>
-<script src="bladefall-explore-mounts.js?v=7.348.0"></script>
+<script src="bladefall-explore-mounts.js?v=7.349.0"></script>
 <script src="bladefall-merge-road.js?v=7.334.0"></script>
 <script src="bladefall-zones.js?v=7.220.0"></script>
 <script src="bladefall-zone-state.js"></script>
@@ -465,7 +465,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.348.0';
+const VERSION='7.349.0';
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -24552,7 +24552,19 @@ function campaignHasProgress(){
     BFEquipmentEconomyModule.MATERIAL_IDS.some(id=>equipmentState().materials[id]>0)||echoState().owned.length>0||advancementState().sources.length>0||
     BFSecretsModule.vaultKeys(meta.secrets).length>0;
 }
+/* What a new dream keeps (owner, 7.349: New Game must really start over): settings and controls, the
+   leaderboard-facing records, achievements and earned skins, and the developer unlock. Everything else in the
+   save returns to its default, including what the list below never named (side stories, Mara's chart, Act
+   Two, quest mounts, hints), so nothing from the old journey survives. A factory reset (five presses of Reset
+   Controls) still wipes everything. */
+const NEW_GAME_KEEPS=['saveSchemaVersion','soundOn','musicVolume','sfxVolume','dynamicAudio','nightMode','soundCaptions','cameraAssist','reducedMotion',
+  'flashReduction','rideGhost','screenShake','graphicsQuality','rendererMode','highContrast','largeText','colorAssist','haptics','combatCues','autoAttack','autoKeep',
+  'keybinds','viewScale','viewZoom','hardcore','achievements','skin','skinsOwned','bossRushBest','totalKills','bossKills','kingKills','tyrantKills','magicBossKills',
+  'rangedBossKills','legendaryFound','flawlessStages','maxLevel','bossTypeKills','devUnlocked','linewalkerUnlocked'];
 function resetCampaignForNewGame(){
+  const keep=Object.fromEntries(NEW_GAME_KEEPS.filter(k=>k in meta).map(k=>[k,meta[k]]));
+  for(const k of Object.keys(meta))delete meta[k];
+  Object.assign(meta,JSON.parse(JSON.stringify(META_DEFAULTS)),keep);
   meta.run=null;meta.ngPlus=0;meta.bestStage=0;meta.reach={0:0};
   meta.world=BFWorldModule.createProgress();
   meta.zoneState=BFZoneStateModule.migrate(null,BFZonesModule.zones.map(zone=>zone.id)).state;
@@ -24663,7 +24675,8 @@ function openLevelSelect(){
   // ACT THREE: one Fractured tab (every echo, playable once built) in place of the NG+ tiers.
   const tabs=[0,'fx'].map(i=>{
     const on=i===t;
-    return `<button class="bigbtn ${on?'':'ghost'}" data-tab="${i}" style="flex:1;padding:9px;margin:0;font-size:13px;${i==='fx'?'border-color:#8a5cd8;':''}">${i===0?(window.BladefallMounts?.testMode()?'Base ✦':'Base'):'Fractured'}</button>`;
+    const mark=window.BladefallMounts?.testMode()?' ✦':'';
+    return `<button class="bigbtn ${on?'':'ghost'}" data-tab="${i}" style="flex:1;padding:9px;margin:0;font-size:13px;${i==='fx'?'border-color:#8a5cd8;':''}">${i===0?'Base'+mark:'Fractured'+mark}</button>`;
   }).join('');
   const rows=t==='fx'&&typeof BladefallRiftShards!=='undefined'?BladefallRiftShards.levelSelectRows():STAGES.map((st,i)=>{
     if(st.act===3||st.finalBattle)return '';
@@ -24693,15 +24706,18 @@ function openLevelSelect(){
     ${t==='fx'?'':`<p class="ovsub" style="font-size:11px;opacity:.75;margin-top:-6px;">
       Complete any world continuously to save its time · whole-game totals combine your world bests</p>`}
     <div style="display:flex;gap:8px;margin-bottom:10px;">${tabs}</div>
-    ${t!=='fx'&&window.BladefallMounts?.testMode()?`<p class="ovsub" id="lvlShortcutTest" style="font-size:12px;color:#ffd27a;margin:-4px 0 8px;">✦ Shortcut test: every region’s quest shortcut is open in level-select runs · tap Base 5× to turn off</p>`:''}
+    ${window.BladefallMounts?.testMode()?`<p class="ovsub" id="lvlShortcutTest" style="font-size:12px;color:#ffd27a;margin:-4px 0 8px;">✦ Test mode: quest shortcuts open, Watch & ● Record, Edit this level · tap Base or Fractured 5× to turn off</p>`:''}
     <div class="choices" id="lvlList" style="max-height:44vh;overflow-y:auto;">${rows}</div>
-    ${t!=='fx'&&window.BladefallMounts?.preview?'<button class="bigbtn ghost" id="lvlShortcuts" style="margin:8px 0 0;padding:8px;font-size:13px;">✦ Quest shortcuts · what each region’s side story gives</button>':''}
+    ${t!=='fx'&&window.BladefallMounts?.testMode()?'<button class="bigbtn ghost" id="lvlShortcuts" style="margin:8px 0 0;padding:8px;font-size:13px;">✦ Quest shortcuts · what each region’s side story gives</button>':''}
     <button class="bigbtn ghost" id="lvlBack">Back</button></div>`);
   document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{
-    // Five quick taps on Base: the shortcut test mode (bladefall-explore-mounts.js), on or off.
-    if(b.dataset.tab==='0'&&window.BladefallMounts?.setTestMode){const now=Date.now();lvlBaseTaps=lvlBaseTaps.filter(x=>now-x<3000);lvlBaseTaps.push(now);
+    /* Five quick taps on Base or Fractured: Explore's test mode, on or off (kept on this device). It opens every
+       quest shortcut in level-select runs (bladefall-explore-mounts.js) and shows the tester's tools: ▶ Watch and
+       ● Record, the Quest shortcuts gallery, and Edit this level in the pause menu. A copy sent out for feedback
+       shows none of them until then (owner, 7.349). */
+    if(window.BladefallMounts?.setTestMode){const now=Date.now();lvlBaseTaps=lvlBaseTaps.filter(x=>now-x<3000);lvlBaseTaps.push(now);
       if(lvlBaseTaps.length>=5){lvlBaseTaps=[];const on=BladefallMounts.setTestMode(!BladefallMounts.testMode());
-        toast(on?'✦ Shortcut test on · every quest shortcut is open in level-select runs':'Shortcut test off · shortcuts need their side stories again',3200);}}
+        toast(on?'✦ Test mode on · quest shortcuts open, Watch & Record, Edit this level':'Test mode off',3200);}}
     lvlSelTab=b.dataset.tab==='fx'?'fx':+b.dataset.tab;openLevelSelect();});
   const scBtn=document.getElementById('lvlShortcuts');if(scBtn)scBtn.onclick=openShortcutGallery;
   document.querySelectorAll('.lvlbtn[data-fx]').forEach(b=>b.onclick=()=>beginRun(0,null,{hp:1,dmg:1},{startStage:+b.dataset.fx,levelSelect:true}));
@@ -24716,7 +24732,7 @@ function openLevelSelect(){
     go();
   });
   document.getElementById('lvlBack').onclick=openExploreMenu;
-  addExploreWatchButtons(t);
+  if(window.BladefallMounts?.testMode())addExploreWatchButtons(t);   // a tester's tool (test mode)
   // Wheel/touch scrolling of #lvlList is handled by the delegated scroll handler
   // in the head (it finds the nearest overflow container under the pointer).
 }
@@ -25358,7 +25374,7 @@ function openPause(){
   mode='pause';updateBossHealthBar();const chartOwned=!!meta.outskirtsFieldChart,discovery=playerBuildDiscovery();
   showOvHTML(`<div class="card"><h2 class="ovh">Paused</h2>
     <button class="bigbtn" id="resBtn">Resume</button>
-    ${!window.BLADEFALL_WORKSHOP_PLAY?'<button class="bigbtn ghost" id="workshopEdit">Edit this level</button>':''}
+    ${!window.BLADEFALL_WORKSHOP_PLAY&&(window.BladefallMounts?.testMode()||meta.devUnlocked)?'<button class="bigbtn ghost" id="workshopEdit">Edit this level</button>':''}
     ${G?.stageIndex===44?'<button class="bigbtn" id="pwPauseRooms">Choose workshop room</button>':''}
     ${discovery.bag?'<button class="bigbtn ghost" id="bagBtn">＋ Traveler’s Bag</button>':''}
     ${chartOwned?'<button class="bigbtn ghost" id="mapBtn">◇ Dream Map</button>':''}
@@ -26273,7 +26289,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.348.0').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.349.0').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */

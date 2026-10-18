@@ -27,6 +27,10 @@ const page=await browser.newPage();await page.setViewport({width:1280,height:900
 await page.goto(`http://127.0.0.1:${server.address().port}/index.html?nosw=1`,{waitUntil:'load'});
 await page.waitForFunction(()=>typeof openLevelSelect==='function'&&window.BladefallMounts,{timeout:60000});await sleep(800);
 await page.evaluate(()=>{BladefallMounts.setTestMode(false);openLevelSelect();});
+// Off, a copy sent out for feedback shows no tester's tools: no Watch/Record, no gallery, no Edit this level.
+const hidden=await page.evaluate(()=>({watch:document.querySelectorAll('.lvlwatch,.lvlrecord,#lvlWatchAll').length,gallery:!!document.getElementById('lvlShortcuts'),
+ edit:(()=>{beginRun(0,null,{hp:1,dmg:1},{startStage:0,levelSelect:true});openPause();const e=!!document.getElementById('workshopEdit');mode='title';openLevelSelect();return e;})()}));
+assert.deepEqual(hidden,{watch:0,gallery:false,edit:false},'test-mode tools hidden while it is off');
 const tapBase=async n=>{for(let i=0;i<n;i++){await page.click('[data-tab="0"]');await sleep(120);}};
 await tapBase(4);
 assert.equal(await page.evaluate(()=>BladefallMounts.testMode()),false,'four taps do nothing');
@@ -34,6 +38,9 @@ await tapBase(1);
 assert.equal(await page.evaluate(()=>BladefallMounts.testMode()),true,'the fifth tap turns the test mode on');
 assert.match(await page.$eval('[data-tab="0"]',b=>b.textContent),/✦/,'the Base tab is marked');
 assert.ok(await page.$('#lvlShortcutTest'),'the level select says so');
+const shown=await page.evaluate(()=>({watch:document.querySelectorAll('.lvlwatch').length,record:document.querySelectorAll('.lvlrecord').length,gallery:!!document.getElementById('lvlShortcuts'),
+ edit:(()=>{beginRun(0,null,{hp:1,dmg:1},{startStage:0,levelSelect:true});openPause();const e=!!document.getElementById('workshopEdit');mode='title';openLevelSelect();return e;})()}));
+assert.ok(shown.watch>0&&shown.record>0&&shown.gallery&&shown.edit,'test mode shows Watch, Record, the gallery and Edit this level '+JSON.stringify(shown));
 // The gallery: a picture for every region.
 await page.click('#lvlShortcuts');await sleep(1500);
 const cards=await page.evaluate(()=>[...document.querySelectorAll('#scGallery canvas[data-sc]')].map(cv=>{
@@ -59,8 +66,14 @@ for(const stage of Object.keys(await page.evaluate(()=>BladefallMounts.MOUNTS)).
 const campaign=await page.evaluate(()=>{beginRun(0,null,{hp:1,dmg:1},{startStage:0});BladefallMounts.install();return G.obstacles.filter(o=>o.mountRoost).length;});
 assert.equal(campaign,0,'no roost in a campaign run');
 await page.evaluate(()=>{mode='title';openLevelSelect();});await sleep(300);
+// Five taps on Fractured toggle it too.
+const tapFx=async n=>{for(let i=0;i<n;i++){await page.click('[data-tab="fx"]');await sleep(120);}};
+await tapFx(5);
+assert.equal(await page.evaluate(()=>BladefallMounts.testMode()),false,'five taps on Fractured turn it off');
+await tapFx(5);
+assert.equal(await page.evaluate(()=>BladefallMounts.testMode()),true,'and on again');
 await tapBase(5);
 assert.equal(await page.evaluate(()=>BladefallMounts.testMode()),false,'five more taps turn it off');
 await browser.close();server.close();
 assert.deepEqual(errors,[],'page errors');
-console.log(`PASS: five taps on Base toggle the shortcut test; on, all ${rows.length} regions' shortcuts stand in level-select runs with no story or gate, none in a campaign run; the gallery draws all ${cards.length} shortcuts.`);
+console.log(`PASS: tester's tools (Watch/Record, gallery, Edit this level) hidden until test mode; five taps on Base or Fractured toggle it; on, all ${rows.length} regions' shortcuts stand in level-select runs with no story or gate, none in a campaign run; the gallery draws all ${cards.length} shortcuts.`);

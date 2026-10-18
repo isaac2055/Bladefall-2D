@@ -1,3 +1,11 @@
+## 7.349.0: tester's tools behind test mode; a real New Game; the Keep's swing (2026-10-18, Claude, cloud session)
+
+- **Explore's test mode** (5 taps on Base or Fractured) now gates Watch/Record/Export, the Quest shortcuts gallery and Edit this level, so a build sent out for feedback hides them.
+- **Ascend's Edit this level** needs Ascend's test mode.
+- **New Game** rebuilds the save from defaults, keeping only settings, records, achievements and skins (`NEW_GAME_KEEPS`).
+- **The Keep's bell-ropes** are a real pendulum.
+- **Details:** `LLM-HANDOFF/HANDOFF-7.344.0.md`, section 4.
+
 ## 7.348.0: the last two door shortcuts replaced; steady knight on rides; Faded rides setting (2026-10-18, Claude, cloud session)
 
 - **Ruined Keep:** the bell-ropes, swinging rope to rope.

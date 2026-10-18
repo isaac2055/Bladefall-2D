@@ -10,6 +10,8 @@ try{
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto(url+'/index.html',{waitUntil:'load'});await page.waitForFunction(()=>typeof exploreWatchStart==='function'&&window.__BF,{timeout:60000});
  await new Promise(r=>setTimeout(r,1000));
+ // Watch, Record and Export are test-mode tools (7.349): five taps on Base or Fractured in the level select.
+ await page.evaluate(()=>BladefallMounts.setTestMode(true));
  const saveBefore=await page.evaluate(()=>JSON.stringify(Object.fromEntries(Object.keys(localStorage).filter(k=>!k.startsWith('bladefall.explore.')&&k!=='bladefall.last-played.v1').map(k=>[k,localStorage.getItem(k)]))));
  assert(await page.evaluate(()=>exploreWatchStart([0],'',{record:true,cont:false})),'record starts');
  await page.waitForFunction(()=>exploreWatch&&exploreWatch.rec.length>5);

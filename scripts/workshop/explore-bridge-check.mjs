@@ -4,6 +4,7 @@ const tick=()=>new Promise(resolve=>setImmediate(resolve));
 const parent=await exploreRuntime();let child;
 try{
  const w=parent.w;w.beginRun(0,null,{hp:1,dmg:1},{startStage:1});const native=w.__BF.G,geometry=JSON.stringify(native.obstacles),time=native.time;
+ w.__BF.meta.devUnlocked=true;   // Edit this level is a test-mode tool (7.349)
  w.openPause();assert(w.document.getElementById('workshopEdit'));w.document.getElementById('workshopEdit').click();await tick();
  const B=w.BladefallWorkshopBridge,ui=B.state().active;assert(ui,'actual Explore pause opens builder');assert.equal(w.__BF.mode,'pause');w.gameUpdate();assert.equal(native.time,time);
  const A=w.BladefallWorkshopExplore,spawn=A.objects(ui.snapshot().definition).find(o=>o.collection==='spawn');ui.select(spawn.id);

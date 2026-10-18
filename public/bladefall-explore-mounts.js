@@ -286,17 +286,38 @@ function start(m,from,to,arriving){
   for(let i=0;i<=n;i++){const x=from.x+(land.x-from.x)*i/n;f.hops.push({x,y:i===0?from.y:i===n?land.y:floorUnder(x,Math.max(from.y,land.y)+200)});}
   f.dur=n*.85;
  }
- if(m.kind==='swing'){
-  // Release points hang in the air between the ropes; each swing dips under its rope's bell and rises to the next.
-  const n=Math.max(2,Math.round(dist/(m.hop||900)));f.swings=[];
-  const P=[];for(let i=0;i<=n;i++){const x=from.x+(land.x-from.x)*i/n,g=i===0?from.y:i===n?land.y:floorUnder(x,Math.max(from.y,land.y)+200);P.push({x,y:i===0||i===n?g:g+230,g});}
-  for(let i=0;i<n;i++){const A=P[i],B=P[i+1],floor=Math.min(A.g,B.g),D=Math.max(0,Math.min(150,Math.min(A.y,B.y)-floor-30));
-   f.swings.push({A,B,D,ax:(A.x+B.x)/2,ay:Math.max(A.y,B.y)+330});}
-  f.dur=dist/(m.speed||1250);
- }
+ if(m.kind==='swing')Object.assign(f,swingPlan(from,land,dir,x=>floorUnder(x,Math.max(from.y,land.y)+200),330,.9,520,m.speed||1050));
  if(m.kind==='cage')f.rail=Math.max(from.y,land.y)+(m.cruise||300)+170;
  if(m.kind==='sprint'||m.kind==='rift'||m.kind==='ceiling'||m.kind==='swing')f.mount=1;   // no climbing on: he goes
  if(m.kind==='launch')f.y0=from.y+30;   // he rides the bolt from where it lies in the ballista
+}
+const HAND=46;   // his feet below the rope's end, which is in his raised hands
+/* The bell-ropes (7.349): a real pendulum. He leaps up to the first rope, swings through its low point (fast at
+   the bottom, slowing at the ends), lets go at the top of the swing, flies to the next rope and catches it, and
+   at the last one drops to the floor. Ropes hang every so often; each has its anchor (a bell) a rope's length
+   plus his height above its low point, which keeps clear of the floor under it. Pieces share the ride's time by
+   the ground they cover. */
+function swingPlan(from,land,dir,floor,L,th,gap,speed){
+ const dist=Math.abs(land.x-from.x),half=(L+HAND)*Math.sin(th),n=Math.max(1,Math.floor(dist/(2*half+gap)));
+ const ropes=[],pieces=[];let cur={x:from.x,y:from.y};
+ for(let j=0;j<n;j++){
+  const ax=from.x+dir*dist*(j+.5)/n,bottom=Math.max(floor(ax),floor(ax-dir*half),floor(ax+dir*half))+36,ay=bottom+L+HAND;
+  const rope={ax,ay,L,th},lift=(L+HAND)*(1-Math.cos(th)),catchP={x:ax-dir*half,y:bottom+lift};
+  ropes.push(rope);pieces.push({type:'fly',A:cur,B:catchP,H:j===0?110:70});pieces.push({type:'swing',j});
+  cur={x:ax+dir*half,y:bottom+lift};
+ }
+ pieces.push({type:'fly',A:cur,B:{x:land.x,y:land.y},H:50});
+ // Time by ground covered, but a swing never rushes under .38 s.
+ const w=pieces.map(q=>q.type==='swing'?Math.max(2*half,.38*speed):Math.max(60,Math.abs(q.B.x-q.A.x)));const sum=w.reduce((a,b)=>a+b,0);
+ let acc=0;for(let i=0;i<pieces.length;i++){pieces[i].u0=acc/sum;acc+=w[i];pieces[i].u1=acc/sum;}
+ return {ropes,pieces,dur:sum/speed};
+}
+function swingAt(f,u){
+ const P=f.pieces;let i=0;while(i<P.length-1&&u>P[i].u1)i++;
+ const q=P[i],k=Math.max(0,Math.min(1,(u-q.u0)/Math.max(1e-6,q.u1-q.u0)));
+ if(q.type==='fly'){const x=q.A.x+(q.B.x-q.A.x)*k,y=q.A.y+(q.B.y-q.A.y)*k+4*q.H*k*(1-k);return {x,y,a:0,rope:-1,piece:i,k};}
+ const r=f.ropes[q.j],th=-r.th*Math.cos(Math.PI*k),sx=Math.sin(th)*f.dir,cy=Math.cos(th);
+ return {x:r.ax+sx*(r.L+HAND),y:r.ay-cy*(r.L+HAND),a:th,rope:q.j,hx:r.ax+sx*r.L,hy:r.ay-cy*r.L,w:Math.sin(Math.PI*k),piece:i,k};
 }
 // The floor a ride on the ground follows: from the start height, step to whichever standable floor under each x is
 // nearest the last (never up more than a jump's worth: those are ledges overhead), keep the height across gaps,
@@ -325,10 +346,7 @@ function trace(f,u){
    // Gravity turns over: he falls up to the ceiling, runs it upside down, and falls back down at the far end.
    const up=ease(Math.min(1,u/.1)),down=ease(Math.min(1,(1-u)/.1)),k=Math.min(up,down),base=f.y0+(f.y1-f.y0)*u,ceil=Math.max(f.y0,f.y1)+f.cruise;
    return {x:f.from.x+dx*ease(u),y:base+(ceil-44-base)*k,a:0,flip:k>.5,ceil};}
-  case 'swing':{
-   const n=f.swings.length,s=Math.min(n-1e-6,u*n),i=Math.floor(s),k=s-i,w=f.swings[i],e=ease(k);
-   const x=w.A.x+(w.B.x-w.A.x)*e,y=w.A.y+(w.B.y-w.A.y)*e-w.D*Math.sin(Math.PI*e);
-   return {x,y,a:Math.atan2(x-w.ax,w.ay-y-40),seg:i,k};}
+  case 'swing':return swingAt(f,u);
   case 'cage':{
    // Hoisted up to the rail, run along it, lowered at the far end; the cage swings as it goes.
    const up=ease(Math.min(1,u/.12)),down=ease(Math.min(1,(1-u)/.12)),k=Math.min(up,down),base=f.y0+(f.y1-f.y0)*u;
@@ -678,7 +696,7 @@ function heroPose(){
   case 'launch':return {rot:-f.dir*f.a*.8};
   case 'ground':case 'rail':return {rot:-f.dir*f.a};
   case 'slide':return {rot:f.dir*.12};
-  case 'swing':return {rot:Math.max(-.7,Math.min(.7,-f.a*.85)),air:true};
+  case 'swing':return {rot:-f.dir*(f.a||0),air:true};
   case 'cage':return {rot:-f.a};
  }
  return null;
@@ -782,13 +800,26 @@ function bellAnchor(c,x,y,accent,t){
  const sy=SY(y);c.save();box(c,'#3a2c22',x-26,sy-8,52,6);box(c,'#5a4434',x-24,sy-8,48,2);
  fill(c,'#8a7aa0',[[x-9,sy-2],[x+9,sy-2],[x+12,sy+16],[x-12,sy+16]]);box(c,accent,x-2,sy+16,4,4);c.restore();
 }
+function ropeLine(c,x0,y0,x1,y1,bow,col,w){
+ // A rope is never a ruled line: it bows a little across its length (bow: + one side, - the other).
+ const mx=(x0+x1)/2,my=(y0+y1)/2,dx=x1-x0,dy=y1-y0,len=Math.hypot(dx,dy)||1;
+ c.save();c.strokeStyle=col;c.lineWidth=w;c.lineCap='round';c.beginPath();c.moveTo(x0,SY(y0));
+ c.quadraticCurveTo(mx-dy/len*bow,SY(my+dx/len*bow),x1,SY(y1));c.stroke();c.restore();
+}
 function swingRopes(c,f,t){
- // Every bell within reach, and the rope he holds.
- const accent=mount()?.accent||'#b8c0d8';
- for(const w of f.swings)if(Math.abs(w.ax-f.x)<1400)bellAnchor(c,w.ax,w.ay,accent,t);
- const w=f.swings[Math.min(f.swings.length-1,Math.floor(f.u*f.swings.length))];
- c.save();c.strokeStyle='#d8c8a0';c.lineWidth=2;c.beginPath();c.moveTo(w.ax,SY(w.ay-16));c.lineTo(f.x,SY(f.y+40));c.stroke();c.restore();
- for(const v of f.swings)if(v!==w&&Math.abs(v.ax-f.x)<1400){c.save();c.strokeStyle='#a8987a';c.lineWidth=1.5;c.beginPath();c.moveTo(v.ax,SY(v.ay-16));c.lineTo(v.ax+Math.sin(t*1.3+v.ax)*8,SY(v.ay-250));c.stroke();c.restore();}
+ // Every bell within reach and its rope: the one he holds runs to his hands and bows with the swing; the ones he
+ // has let go swing back and settle; the ones ahead hang and sway, waiting.
+ const accent=mount()?.accent||'#b8c0d8',q=swingAt(f,f.u),P=f.pieces;
+ f.ropes.forEach((r,j)=>{
+  if(Math.abs(r.ax-f.x)>1500)return;
+  bellAnchor(c,r.ax,r.ay,accent,t);
+  if(q.rope===j){ropeLine(c,r.ax,r.ay-16,q.hx,q.hy,-f.dir*q.w*14,'#d8c8a0',2.4);return;}
+  const relU=P.find(p=>p.type==='swing'&&p.j===j).u1,since=(f.u-relU)*f.dur;
+  const ang=since>0?r.th*Math.exp(-1.6*since)*Math.cos(5.2*since)*f.dir:Math.sin(t*1.3+j)*.05;
+  const ex=r.ax+Math.sin(ang)*r.L,ey=r.ay-Math.cos(ang)*r.L;
+  ropeLine(c,r.ax,r.ay-16,ex,ey,Math.sin(t*2+j)*5,'#b8a888',2);
+  box(c,'#6a5444',ex-2,SY(ey)-2,4,6);   // the knot at its end
+ });
 }
 function cageArt(c,x,y,a,front){
  // The jailers' cage: a floor, bars, a ring and its chain up to the rail. (x, y): its floor.
@@ -834,8 +865,7 @@ function preview(c,stage,t,w,h){
    H:Math.min(top*.62,(B-A)*.5),cruise:Math.min(m.cruise||200,top*.55),
    prof:Array.from({length:41},(_,i)=>m.kind==='ground'?Math.sin(i/40*Math.PI)*46+Math.sin(i*.8)*5:m.kind==='rail'?Math.sin(i/40*Math.PI)*16:0),
    hops:[0,1,2,3].map(i=>({x:A+(B-A)*i/3,y:0})),rail:top-14,hang:100};
-  if(m.kind==='swing'){const P=[{x:A,y:0,g:0},{x:(A+B)/2,y:140,g:0},{x:B,y:0,g:0}];
-   f.swings=[0,1].map(i=>{const a=P[i],b=P[i+1],D=Math.max(0,Math.min(110,Math.min(a.y,b.y)-30));return {A:a,B:b,D,ax:(a.x+b.x)/2,ay:Math.min(top-12,Math.max(a.y,b.y)+150)};});}
+  if(m.kind==='swing'){Object.assign(f,swingPlan({x:A,y:0},{x:B,y:0},1,()=>0,Math.min(84,top-140),.9,60,700));f.dur=2.5;}
   const riding=u>0&&u<1,q=trace(f,u);Object.assign(f,{x:q.x,y:q.y,a:q.a||0,flip:!!q.flip,ceil:q.ceil});
   const pose=(x,y,rot,flip)=>{c.save();c.translate(x,SY(y+22));if(rot)c.rotate(rot);if(flip)c.scale(1,-1);c.translate(-x,-SY(y+22));knight(c,x,y,1);c.restore();};
   switch(m.kind){
@@ -858,9 +888,8 @@ function preview(c,stage,t,w,h){
      c.save();c.strokeStyle='#e8d8ff';c.lineWidth=6;c.lineCap='round';c.beginPath();c.moveTo(Ah.x+(Bh.x-Ah.x)*Math.max(0,e-.25),SY(40));c.lineTo(Ah.x+(Bh.x-Ah.x)*e,SY(40));c.stroke();c.restore();}
     else knight(c,riding?q.x:u<=0?A+30:B+30,0,1);break;
    case 'swing':post(c,A-37,0,m.accent,true);post(c,B-37,0,m.accent,true);
-    if(riding){const w=f.swings[Math.min(1,Math.floor(u*2))];for(const v of f.swings)bellAnchor(c,v.ax,v.ay,m.accent,t);
-     c.save();c.strokeStyle='#d8c8a0';c.lineWidth=2;c.beginPath();c.moveTo(w.ax,SY(w.ay-16));c.lineTo(q.x,SY(q.y+40));c.stroke();c.restore();pose(q.x,q.y,Math.max(-.7,Math.min(.7,-q.a*.85)));}
-    else{for(const v of f.swings)bellAnchor(c,v.ax,v.ay,m.accent,t);knight(c,u<=0?A+20:B-20,0,1);}break;
+    if(riding){f.u=u;swingRopes(c,f,t);pose(q.x,q.y,-(q.a||0));}
+    else{f.u=u<=0?0:1;swingRopes(c,f,t);knight(c,u<=0?A+20:B-20,0,1);}break;
    case 'cage':post(c,A-60,0,m.accent,true);post(c,B-60,0,m.accent,true);
     {const y=SY(f.rail);box(c,'#2e3434',-50,y-6,W+100,6);box(c,'#4a5654',-50,y-6,W+100,2);for(let x=0;x<W;x+=120)box(c,'#2e3434',x-3,y,6,14);}
     {const cx=riding?q.x:u<=0?A:B,cy=riding?q.y:0,a=riding?q.a:0;c.save();c.strokeStyle='#5a6060';c.lineWidth=2;c.beginPath();c.moveTo(cx,SY(f.rail));c.lineTo(cx,SY(cy+62));c.stroke();c.restore();

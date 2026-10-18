@@ -873,7 +873,7 @@ function togglePause(){
  ${g.room.def.question?`<p class="pcSub">${g.room.def.question}</p>`:''}
  <button class="pcBtn" id="pcResume" data-back>Resume</button><button class="pcBtn ghost" id="pcRetry">${g.room.def.coreCheckpoints?'Retry from save point':'Retry room'}</button>${g.room.def.coreCheckpoints?'<button class="pcBtn ghost" id="pcCoreRestart">Restart Core</button>':''}
  ${ch.climb&&(ch.climb<=40||g.room.def.core)?'<button class="pcBtn ghost" id="pcRoomFeedback">Leave room feedback</button>':''}
- ${!root.BLADEFALL_WORKSHOP_PLAY?'<button class="pcBtn ghost" id="pcEditLevel">Edit this level</button>':''}
+ ${!root.BLADEFALL_WORKSHOP_PLAY&&save.assist.testMode?'<button class="pcBtn ghost" id="pcEditLevel">Edit this level</button>':''}
  ${hasTape?'<button class="pcBtn ghost" id="pcWatch">Watch the intended route (review)</button>':''}
  ${backPassage?'<button class="pcBtn ghost" id="pcReturnPassage">Return through passage</button>':''}
  ${g.room.def.coreCheckpoints?'<p class="pcSub">Save lanterns keep the next part. Retry returns to your latest lantern.</p>':`<p class="pcSub">Room select${optional?' · O = optional route':''}</p><div class="pcMiniRow">${rooms}${optional}</div>`}

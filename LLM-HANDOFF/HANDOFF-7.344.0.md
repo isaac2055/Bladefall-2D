@@ -1,20 +1,22 @@
-# Handoff 7.344.0–7.348.0: quest shortcuts in every region (two-way, earned by playing through, each its own kind of ride; test mode and gallery), plan-driven Explore routes
+# Handoff 7.344.0–7.349.0: quest shortcuts in every region (two-way, earned by playing through, each its own kind of ride; test mode and gallery), tester's tools behind test mode, a real New Game, plan-driven Explore routes
 
 Written 2026-10-16 by Claude, in a cloud session. Everything below is on `main`. Give this file to the local LLM so it can bring the local/offline copy up to date and carry the work on.
 
 ## 1. Bringing the local/offline copy up to date
 
 1. Run `git pull origin main`. Everything is in the repo; nothing lives only in the cloud.
-2. Version **7.348.0**:
-   - `VERSION`, the `sw.js?v=` registration, and `?v=7.348.0` on `bladefall-explore-mounts.js` and `bladefall-respec-renderer.js`, in `public/index.html` and `public/sw.js`;
-   - `bladefall-explore-routes.js` stays at `?v=7.344.0`;
-   - `CACHE_NAME = 'bladefall-v517-no-doors'`.
+2. Version **7.349.0**:
+   - `VERSION`, the `sw.js?v=` registration, and `?v=7.349.0` on `bladefall-explore-mounts.js`, in `public/index.html` and `public/sw.js`.
+   - `?v=7.349.0` on `bladefall-pcore-view.js`, in `public/precision.html` and `public/sw.js`. precision.html's `sw.js?v=` registration is also 7.349.0.
+   - `bladefall-respec-renderer.js` stays at 7.348.0, `bladefall-explore-routes.js` at 7.344.0.
+   - `CACHE_NAME = 'bladefall-v518-tester-tools'`.
 3. The APK was not rebuilt, because the cloud container has no Android SDK. The download link still points at v7.341.0.
-   - If the local machine can build the APK, build and release v7.348.0, then point `#apkBtn`'s href in `public/index.html` at it.
+   - If the local machine can build the APK, build and release v7.349.0, then point `#apkBtn`'s href in `public/index.html` at it.
 4. Checks worth running locally (each serves `public/` itself):
    - `npm run verify:mounts`: the Bellwing, Mara's chart, and the perch kept across a reload and in the save.
    - `npm run verify:mounts-tour`: the other 18 regions' shortcuts: home roost first, then both ways, and where each mount ends up perched.
-   - `npm run verify:mounts-test-mode`: the five-tap test mode and the gallery (7.345).
+   - `npm run verify:mounts-test-mode`: Explore's five-tap test mode (Base or Fractured), what it shows and hides, and the gallery.
+   - `npm run verify:new-game`: New Game really starts over (7.349).
    - `npm run verify:explore-routes`: re-watches every stored route in the real Watch.
    - `npm run verify:looks`: Ascend themes from 7.342.
 
@@ -269,3 +271,35 @@ Workflow that worked, per level:
 - `scripts/explore-routes/build.mjs`, `plans.mjs`, `plan-kit.mjs`, `plans/*.mjs`, `plans-wip/03.mjs`
 - `scripts/explore/mount-check.mjs`, `mounts-tour.mjs`, `mounts-test-mode.mjs` (7.345)
 - `package.json`, `build-deploy.sh`
+
+## 4. 7.349.0: tester's tools behind test mode, a real New Game, a swinging swing
+
+The owner wants to send the online build to friends for feedback, so the tools for testing and editing are hidden until test mode is switched on.
+
+**Explore's test mode**
+- Turn it on or off with five quick taps (within 3 s) on **Base or Fractured** in Level Select. Both tabs then show ✦, a gold line says it's on, and it is kept per device (`bladefall.mounts.test`).
+- It is what shows:
+  - ▶ Watch, ● Record, Watch all, and Export recordings in Level Select (`addExploreWatchButtons` runs only in test mode);
+  - the **✦ Quest shortcuts** gallery button;
+  - **Edit this level** in the Explore pause menu. That button also appears with the older developer unlock, `meta.devUnlocked`.
+- It still opens every quest shortcut in level-select runs (section 2.b2).
+
+**Ascend:** **Edit this level** in the pause menu now needs Ascend's own test mode (`save.assist.testMode`, five presses of Screen shake in Ascend's options). See `bladefall-pcore-view.js`.
+
+**New Game / Begin New Dream really starts over.**
+- **The bug:** `resetCampaignForNewGame()` reset only a list of fields. Side stories, Mara's chart, Act Two, quest mounts and perches, hints, gate trials and more survived.
+- **The fix:** it now rebuilds `meta` from `META_DEFAULTS`, keeping only `NEW_GAME_KEEPS` (both in index.html): settings and controls, the leaderboard-facing records, achievements, skins, and the developer unlock. It then applies the fresh module states as before and saves.
+- The factory reset (five presses of Reset Controls) is unchanged.
+- Ascend's progress, kept under its own keys, is untouched.
+- Check: `scripts/explore/new-game-check.mjs`.
+
+**Ruined Keep bell-ropes: a real pendulum.**
+- `swingPlan()` and `swingAt()` in the mounts module:
+  1. He leaps to the first rope.
+  2. He swings on a rope-length arc (`L` 330, ±0.9 rad), fast through the bottom and slowing at the ends.
+  3. He lets go at the top, flies to the next rope and catches it, and drops to the floor after the last.
+- Ropes are drawn bowed (`ropeLine`). The one he holds runs to his hands and bows with the swing. Released ropes swing back and settle; ropes ahead sway.
+- He tilts with the rope.
+
+**Test updates:** `record-check`, `workshop/bridge-check` and `workshop/explore-bridge-check` now switch test mode on before reaching the gated buttons.
+
