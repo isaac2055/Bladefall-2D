@@ -1,3 +1,12 @@
+## 7.351.0: leaderboard worlds; two Ascend buttons cut (2026-10-18, Claude, cloud session)
+
+- **Ascend's map card:** "Show the room layout instead" and "Leaderboards" are gone.
+- **Leaderboards:**
+  - Each game opens on its first world (the Outskirts).
+  - The world picker is a button list.
+  - Unreached worlds, and Fractured until it is unlocked, read "???".
+- **Details:** `LLM-HANDOFF/HANDOFF-7.344.0.md`, section 6.
+
 ## 7.350.0: New Game resets Level Select; test mode opens every level; curved ropes (2026-10-18, Claude, cloud session)
 
 - **New Game:** it now drops the developer unlock and the Fractured unlocks, so Level Select starts at the Outskirts. It also starts the finale's "all worlds" count over.

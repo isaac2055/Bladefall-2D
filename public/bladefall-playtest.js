@@ -54,24 +54,44 @@ function feedback(info,force=false){
 
 const table=(rows,mode)=>rows.length?`<table><thead><tr><th>#</th><th>Player</th><th>Time</th><th>Deaths</th>${mode==='survival'?'<th>Hearts</th>':''}</tr></thead><tbody>${rows.map((r,i)=>`<tr><td>${i+1}</td><td>${esc(r.name)}</td><td>${M.format(r.ms)}</td><td>${r.deaths}</td>${mode==='survival'?`<td>♥ ${r.hearts||0}</td>`:''}</tr>`).join('')}</tbody></table>`:'<p>No saved times yet.</p>';
 async function complete({next,walk,menu,menuLabel='Previous menu',feedbackInfo,offer=true}={}){if(!run||run.done)return false;const result={...run,ms:Math.max(1,Math.round(run.ms)),at:new Date().toISOString()};run.done=true;refresh();if(feedbackInfo)await feedback({...result,...feedbackInfo});if(!offer)return result;const close=show(`<h2>${esc(M.world(result.mode,result.world).name)} complete</h2><p>${M.format(result.ms)} · ${result.deaths} deaths${result.mode==='survival'?` · ♥ ${result.hearts}/${M.world(result.mode,result.world)?.hearts||0}`:''}</p><h3>Top 5 · ${result.mode==='explore'?'🪐 Explore':'✨ Ascend'}</h3><div id="ptTop"></div>${result.eligible?`<form id="ptSave"><label>Leaderboard name<input name="name" value="${esc(data.name)}" maxlength="40" required placeholder="Name or nickname"></label><p>Saving publishes this name, world, time, deaths and collected hearts on this game's leaderboard.</p><button>Save my time</button></form>`:`<p>Practice run: ${esc(result.reason||'not completed continuously')}.</p>`}<p id="ptStatus" role="status"></p><div class="ptrow">${next?'<button id="ptNext">Skip to next world</button>':''}${walk?'<button id="ptWalk">Walk to next world</button>':''}<button id="ptMenu">${esc(menuLabel)}</button></div>`);const render=()=>{if(dialog.open&&dialog.querySelector('#ptTop'))dialog.querySelector('#ptTop').innerHTML=table(M.best(allRecords(),{mode:result.mode,campaign:result.campaign,world:result.world}).slice(0,5),result.mode);};render();void sync().then(render);for(const[id,fn]of [['ptNext',next],['ptWalk',walk],['ptMenu',menu]])dialog.querySelector('#'+id)?.addEventListener('click',()=>{close();fn?.();});dialog.querySelector('#ptSave')?.addEventListener('submit',e=>{e.preventDefault();const name=String(new FormData(e.target).get('name')).trim().slice(0,40);if(!name)return;try{data.name=name;queue('time',{...result,player:data.player,name});e.target.remove();dialog.querySelector('#ptStatus').textContent='Saved on this device. Pending submissions retry automatically.';render();}catch{dialog.querySelector('#ptStatus').textContent='Could not save. Free storage and try again.';}});return result;}
+/* What the leaderboards may name (7.351): worlds this player has reached show their names; the rest read "???",
+   and so does the Fractured campaign until one of its worlds is open. Test modes (Explore's five taps, Ascend's
+   five Screen-shake presses, the developer unlock) reveal everything. Works on both pages (index and precision). */
+function readJSON(k){try{return JSON.parse(localStorage.getItem(k))||null;}catch{return null;}}
+function revealAll(){
+ if(root.BladefallMounts?.testMode?.())return true;
+ const m=typeof meta!=='undefined'?meta:readJSON('bladefall_v2');if(m?.devUnlocked)return true;
+ return !!readJSON('bladefall.pcore.v1')?.assist?.testMode;
+}
+function known(mode,campaign,id){
+ if(revealAll()||data.records.some(r=>r.mode===mode&&String(r.world)===String(id)))return true;
+ if(campaign==='fractured')return !!data.unlocks[mode]?.includes(String(id));
+ const n=Number(id);
+ if(mode==='explore'){const m=typeof meta!=='undefined'?meta:readJSON('bladefall_v2')||{};return n===0||n<=Math.max(m.bestStage||0,m.reach?.[0]||0,m.run?.stageIndex||0);}
+ const cp=readJSON('bladefall.climb.atlas.v1')?.checkpoint;return n===1||n<=(cp?.world||1);
+}
+const campaignKnown=(mode,campaign)=>campaign==='base'||M.catalog.some(w=>w.mode===mode&&w.campaign===campaign&&known(mode,campaign,w.id));
 function boards(initial='survival'){
  let mode=initial,campaign='base',section='world',sort='time',wid=M.catalog.find(w=>w.mode===mode&&w.campaign===campaign).id;
  const close=show('');
  const render=()=>{
+  if(!campaignKnown(mode,campaign))campaign='base';
   const worlds=M.catalog.filter(w=>w.mode===mode&&w.campaign===campaign);
   if(!worlds.some(w=>w.id===wid))wid=worlds[0].id;if(mode!=='survival')sort='time';
   const rows=section==='whole'?M.aggregate(allRecords(),mode,campaign,sort):M.best(allRecords(),{mode,campaign,world:wid,sort});
   dialog.innerHTML=`<h2>Leaderboards · ${sort==='hearts'?'hearts, then time':'fastest time'}</h2>
    <div class="ptrow">${M.MODES.map(x=>`<button data-mode="${x}" aria-pressed="${mode===x}">${x==='explore'?'🪐 Explore':'✨ Ascend'}</button>`).join('')}</div>
-   <div class="ptrow">${M.CAMPAIGNS.map(x=>`<button data-campaign="${x}" aria-pressed="${campaign===x}">${x==='base'?'Base':'Fractured'}</button>`).join('')}</div>
+   <div class="ptrow">${M.CAMPAIGNS.map(x=>campaignKnown(mode,x)?`<button data-campaign="${x}" aria-pressed="${campaign===x}">${x==='base'?'Base':'Fractured'}</button>`:`<button disabled aria-disabled="true">???</button>`).join('')}</div>
    <div class="ptrow"><button data-section="world" aria-pressed="${section==='world'}">By world</button><button data-section="whole" aria-pressed="${section==='whole'}">Whole game</button></div>
    ${mode==='survival'?`<div class="ptrow"><button data-sort="time" aria-pressed="${sort==='time'}">Fastest time</button><button data-sort="hearts" aria-pressed="${sort==='hearts'}">Most hearts · fastest time</button></div>`:''}
-   ${section==='world'?`<label>World<select id="ptWorld">${worlds.map(w=>`<option value="${w.id}" ${w.id===wid?'selected':''}>${esc(w.name)}</option>`).join('')}</select></label>`:`<p>Sum of each player's ${sort==='hearts'?'most-hearts, then fastest':'fastest'} continuous clear of all ${worlds.length} worlds. Improve any world to improve your total. Base and Fractured stay separate.</p>`}
+   ${section==='world'?`<p style="margin:12px 0 4px">World</p><div class="ptrow" id="ptWorld" style="max-height:30dvh;overflow:auto">${worlds.map(w=>known(mode,campaign,w.id)?`<button data-world="${w.id}" aria-pressed="${w.id===wid}">${esc(w.name)}</button>`:`<button disabled aria-disabled="true">???</button>`).join('')}</div>`:`<p>Sum of each player's ${sort==='hearts'?'most-hearts, then fastest':'fastest'} continuous clear of all ${worlds.length} worlds. Improve any world to improve your total. Base and Fractured stay separate.</p>`}
    ${table(rows,mode)}${adapter.startTrial?`<button id="ptStartTrial">Start ${section==='whole'?'first world':'selected world'} time trial</button>`:''}
    <p>${data.outbox.length} pending submissions. ${sort==='hearts'?'More hearts rank first; equal heart counts are ranked by time.':'Ranks use time; deaths'+(mode==='survival'?' and hearts':'')+' are shown alongside.'} Hearts count only those earned during this run.</p>
    <details><summary>Backup and transfer</summary><p>Earlier course revisions are retained in your backup.</p><button id="ptExport">Back up scores & feedback</button><label>Restore backup<input type="file" id="ptImport" accept="application/json"></label></details><button id="ptClose">Back</button><p id="ptStatus" role="status"></p>`;
-  for(const type of ['mode','campaign','section','sort'])dialog.querySelectorAll('[data-'+type+']').forEach(b=>b.onclick=()=>{if(type==='mode')mode=b.dataset.mode;else if(type==='campaign')campaign=b.dataset.campaign;else if(type==='sort')sort=b.dataset.sort;else section=b.dataset.section;render();});
-  dialog.querySelector('#ptWorld')?.addEventListener('change',e=>{wid=e.target.value;render();});
+  // A new game or campaign starts at its first world (the Outskirts), not at whichever id the last one had.
+  for(const type of ['mode','campaign','section','sort'])dialog.querySelectorAll('[data-'+type+']').forEach(b=>b.onclick=()=>{if(type==='mode'){if(mode!==b.dataset.mode)wid=null;mode=b.dataset.mode;}else if(type==='campaign'){if(campaign!==b.dataset.campaign)wid=null;campaign=b.dataset.campaign;}else if(type==='sort')sort=b.dataset.sort;else section=b.dataset.section;render();});
+  // A list of buttons, not a <select>: the native picker did not open in every browser (owner, private window).
+  dialog.querySelectorAll('[data-world]').forEach(b=>b.onclick=()=>{wid=b.dataset.world;render();});
   dialog.querySelector('#ptStartTrial')?.addEventListener('click',()=>{const chosen=section==='whole'?worlds[0].id:wid;if(adapter.canStartTrial&&!adapter.canStartTrial(mode,chosen)){dialog.querySelector('#ptStatus').textContent='Find the matching base-world item to unlock this Fractured world.';return;}close();adapter.startTrial(mode,chosen);});
   dialog.querySelector('#ptClose').onclick=close;dialog.querySelector('#ptExport').onclick=exportData;
   dialog.querySelector('#ptImport').onchange=async e=>{try{importData(JSON.parse(await e.target.files[0].text()));render();}catch{dialog.querySelector('#ptStatus').textContent='Invalid backup, or it belongs to another profile. Export this profile before replacing it.';}};

@@ -1,4 +1,4 @@
-# Handoff 7.344.0–7.350.0: quest shortcuts in every region (two-way, earned by playing through, each its own kind of ride; test mode and gallery), tester's tools behind test mode, a real New Game, plan-driven Explore routes
+# Handoff 7.344.0–7.351.0: quest shortcuts in every region (two-way, earned by playing through, each its own kind of ride; test mode and gallery), tester's tools behind test mode, a real New Game, plan-driven Explore routes
 
 Written 2026-10-16 by Claude, in a cloud session. Everything below is on `main`. Give this file to the local LLM so it can bring the local/offline copy up to date and carry the work on.
 
@@ -328,4 +328,27 @@ The throws between ropes are also higher (arc 140–150), and the swing is wider
 **Check:** `scripts/explore/new-game-check.mjs` now also covers Level Select. After New Game: no developer unlock, no Fractured unlock, only the Outskirts listed. With test mode on: every base level and all 20 Fractured echoes are open.
 
 Two unit tests already failed on main before this change and are unchanged: `tests/capabilities.test.mjs` #9 and `tests/fractured-order.test.mjs` #1.
+
+## 6. 7.351.0: leaderboard worlds, and two Ascend buttons cut
+
+Version 7.351.0:
+- `VERSION` and the `sw.js?v=` registration in index.html and precision.html.
+- `?v=7.351.0` on `bladefall-playtest.js` and `bladefall-climb-view.js`, wherever they are loaded and in sw.js.
+- `CACHE_NAME = 'bladefall-v520-leaderboard-worlds'`.
+
+**Ascend's map card** (`bladefall-climb-view.js`):
+- "Show the room layout instead" is gone. The way back to the map remains only if a save was left in room-layout view.
+- "Leaderboards" is gone; the leaderboards stay reachable from the main menu.
+
+**Leaderboards** (`bladefall-playtest.js`, `boards()`):
+- **Default world:** switching game or campaign now starts at its first world. Explore used to open on Black Woods because Ascend's first id ("1") carried over.
+- **World picker:** the World `<select>` is now a list of buttons inside the dialog. The native picker did not open for the owner in a private window.
+- **"???" names:** worlds this player hasn't reached read "???" and are disabled. The Fractured campaign button reads "???" until one of its worlds is open. This is decided by `known()`:
+  - Explore base: up to the save's best or reach stage.
+  - Ascend base: up to the atlas checkpoint world.
+  - Fractured: the playtest unlocks.
+  - Any world with one of the player's own records counts as reached.
+  - Explore's test mode, Ascend's test mode or the developer unlock reveal everything.
+
+Checked in a browser on a fresh profile, with test mode on, and in Ascend's menu; no page errors.
 
