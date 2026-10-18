@@ -1,16 +1,16 @@
-# Handoff 7.344.0–7.347.0: quest shortcuts in every region (two-way, earned by playing through, each its own kind of ride; test mode and gallery), plan-driven Explore routes
+# Handoff 7.344.0–7.348.0: quest shortcuts in every region (two-way, earned by playing through, each its own kind of ride; test mode and gallery), plan-driven Explore routes
 
 Written 2026-10-16 by Claude, in a cloud session. Everything below is on `main`. Give this file to the local LLM so it can bring the local/offline copy up to date and carry the work on.
 
 ## 1. Bringing the local/offline copy up to date
 
 1. Run `git pull origin main`. Everything is in the repo; nothing lives only in the cloud.
-2. Version **7.347.0**:
-   - `VERSION`, the `sw.js?v=` registration, and `?v=7.347.0` on `bladefall-explore-mounts.js` and `bladefall-respec-renderer.js`, in `public/index.html` and `public/sw.js`;
+2. Version **7.348.0**:
+   - `VERSION`, the `sw.js?v=` registration, and `?v=7.348.0` on `bladefall-explore-mounts.js` and `bladefall-respec-renderer.js`, in `public/index.html` and `public/sw.js`;
    - `bladefall-explore-routes.js` stays at `?v=7.344.0`;
-   - `CACHE_NAME = 'bladefall-v516-distinct-rides'`.
+   - `CACHE_NAME = 'bladefall-v517-no-doors'`.
 3. The APK was not rebuilt, because the cloud container has no Android SDK. The download link still points at v7.341.0.
-   - If the local machine can build the APK, build and release v7.347.0, then point `#apkBtn`'s href in `public/index.html` at it.
+   - If the local machine can build the APK, build and release v7.348.0, then point `#apkBtn`'s href in `public/index.html` at it.
 4. Checks worth running locally (each serves `public/` itself):
    - `npm run verify:mounts`: the Bellwing, Mara's chart, and the perch kept across a reload and in the save.
    - `npm run verify:mounts-tour`: the other 18 regions' shortcuts: home roost first, then both ways, and where each mount ends up perched.
@@ -45,8 +45,8 @@ Finishing a region's side story (the kind ending, phase `completed`) installs th
 | 2 | Silas's Chain Trolley | defector | zip |
 | 3 | The Cartographer's Kite | cartographer | flight |
 | 4 | The Recruit's Rope Arrow | recruit | zip |
-| 5 | The Archivist's Postern | archivist | blink |
-| 6 | The Keeper's Service Way | keeper | blink |
+| 5 | The Archivist's Bell-Ropes (7.348) | archivist | swing |
+| 6 | The Keeper's Cage Run (7.348) | keeper | cage |
 | 7 | The Perfect-Day Sled | winter | flight |
 | 8 | The Rime Drake | ember-pet | flight |
 | 9 | The Quota Cart | quota | blink |
@@ -117,8 +117,8 @@ The owner's design goals:
 | 2 | Broken Causeway | Silas's Chain Trolley | Chainwake Camp (arena edge, east) | the causeway's west end | Rides east → west, then back. Possible double: the causeway repair door (5360). |
 | 3 | The Updrafts | Cartographer's Kite | the canyon's end (~17300) | the canyon mouth (~230) | Possible double: Updrafts' own return shortcut (the owner mentioned it). |
 | 4 | Hollow Marksman | Recruit's Ballista (7.347) | the Marksman's ridge (arena edge) | the trailhead | |
-| 5 | Ruined Keep | Archivist's Postern | the Keep's far wall (~17300) | the gatehouse | Possible doubles: keep-weight / belfry-fold. |
-| 6 | The Warden (walked west) | Keeper's Service Way | the Gaol's west yard (arena, ~3020) | the Eastern Crown (~14400) | |
+| 5 | Ruined Keep | Archivist's Bell-Ropes | the Keep's far wall (~17300) | the gatehouse | Possible doubles: keep-weight / belfry-fold. |
+| 6 | The Warden (walked west) | Keeper's Cage Run | the Gaol's west yard (arena, ~3020) | the Eastern Crown (~14400) | |
 | 7 | Frostfell | Perfect-Day Sled | the summit road (~14220, y 650) | the warden's gate (~600) | **Double:** the muster engine ring (1330 ↔ 7220 ↔ 14680) covers the same distance. Ask the owner which to keep. |
 | 8 | Frost Sorcerer | The Winter Road (7.347) | the Court's last stair (arena) | the sluice | |
 | 9 | Emberdeep | Quota Cart | the Deep Stair (~15700) | the mine head (~600, y 640) | |
@@ -169,7 +169,20 @@ New ride kinds in `public/bladefall-explore-mounts.js`:
 | 12 | Void Tyrant | **The Other Side** (`rift`) | Mirror shards hang about every 1500 units. He steps into one, streaks as light to the next and steps out, repeatedly. |
 | 13 | Abyss King | **The Last Alarm** (`sprint`) | Ringing the bell sends shock rings out. He sprints the throne road on foot at bell speed, with afterimages and speed lines, while "every door opens for one breath". |
 
-Unchanged: 0 Bellwing; 1 moths; 2 Silas's chain line; 3 kite; 5 and 6 passages (doors); 16 skiff; 17 rocket; 18 crane; 19 cloak; 20 moonflower.
+Unchanged: 0 Bellwing; 1 moths; 2 Silas's chain line; 3 kite; 16 skiff; 17 rocket; 18 crane; 19 cloak; 20 moonflower. Regions 5 and 6, which were still doors, changed in 7.348; see below.
+
+**7.348.0: no shortcut is a plain door any more, and the knight is drawn steadily.**
+
+| # | Region | Now | How it rides |
+|---|---|---|---|
+| 5 | Ruined Keep | **The Archivist's Bell-Ropes** (`swing`) | The Keep's bell-ropes hang every ~900 units. He swings rope to rope, with release points in the air between them. Each swing dips under its rope's bell, the rope is drawn to his hands, and he tilts with it. Bell posts mark both ends. |
+| 6 | The Warden | **The Keeper's Cage Run** (`cage`, travels) | He steps into the jailers' iron cage. It is hoisted to an overhead rail (`cruise` 300, hanging 170 below), runs along it swaying, and is lowered at the far end. The cage stays where it stops; at the empty end, Up calls it over. |
+
+- **No more flashing.** Rides used to give the knight invulnerability every frame, and its hurt-blink made him flash for the whole ride. The world is held still during a ride, so `update()` now sets `p.invuln=0` and `p.hurtFlash=0` instead, and he is drawn steadily, as in normal play.
+- **Faded rides (a setting).** Settings › Camera & Motion › **Faded rides**, under Reduce flashes. It is stored as `meta.rideGhost`, default off. When it's on, the knight is drawn at a steady 50% alpha from boarding to landing on every quest shortcut, which reads as him passing through the walls and rock the rides cross.
+  - Code: `BladefallMounts.heroAlpha()`, used by `drawHeroAt` in the respec renderer and around `drawHeroFull` in the legacy one.
+  - The owner wants to try both looks; keep whichever they choose, and consider making it the only one.
+- **Tests:** `scripts/explore/mounts-tour.mjs --ghost` runs the tour with faded rides on.
 
 **Testing:** `npm run verify:mounts-tour` covers all 18 regions both ways, `verify:mounts` and `verify:mounts-test-mode` also pass, and every new ride was checked in mid-ride screenshots and in the gallery.
 

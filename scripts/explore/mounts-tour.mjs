@@ -5,7 +5,7 @@
 //   - with it held, a ride from the home roost sets the knight down by the entrance roost, alive and in play, and
 //     the ride back sets him down by the home roost; a mount that travels is perched wherever it set him down;
 //   - no page errors.
-//   node scripts/explore/mounts-tour.mjs [stage…] [--shots dir]      (serves public/ itself)
+//   node scripts/explore/mounts-tour.mjs [stage…] [--shots dir] [--ghost]      (serves public/ itself; --ghost: faded rides)
 import http from 'node:http';
 import {readFile,mkdir} from 'node:fs/promises';
 import {extname,join,normalize} from 'node:path';
@@ -20,7 +20,7 @@ const server=http.createServer(async(req,res)=>{
  catch{res.writeHead(404);res.end();}
 });
 await new Promise(r=>server.listen(0,'127.0.0.1',r));
-const args=process.argv.slice(2),shots=args.includes('--shots')?args[args.indexOf('--shots')+1]:null;
+const args=process.argv.slice(2),shots=args.includes('--shots')?args[args.indexOf('--shots')+1]:null,ghost=args.includes('--ghost');
 const asked=args.filter((a,i)=>/^\d+$/.test(a)&&args[i-1]!=='--shots').map(Number);
 const stages=asked.length?asked:[1,2,3,4,5,6,7,8,9,10,11,12,13,16,17,18,19,20];
 if(shots)await mkdir(shots,{recursive:true});
@@ -34,6 +34,7 @@ for(const stage of stages){
   await page.goto(`http://127.0.0.1:${server.address().port}/index.html?nosw=1`,{waitUntil:'load'});
   await page.waitForFunction(()=>typeof beginRun==='function'&&window.BladefallMounts,{timeout:60000});await sleep(800);
   await page.evaluate(s=>beginRun(0,null,{hp:1,dmg:1},{startStage:s,levelSelect:true}),stage);await sleep(1500);
+  if(ghost)await page.evaluate(()=>{meta.rideGhost=true;});   // Settings › Faded rides
   const m=await page.evaluate(s=>{const m=BladefallMounts.MOUNTS[s];G.sessionSideStories={quests:{[m.story]:{phase:'completed',claimed:true}}};BladefallMounts.install();
    return {name:m.name,kind:m.kind,roosts:(BladefallMounts.roosts()||[]).map(r=>({id:r.id,x:Math.round(r.x),y:Math.round(r.y)})),missing:BladefallMounts.missing(),
     placed:G.obstacles.filter(o=>o.mountRoost).map(o=>o.mountRoost)};},stage);

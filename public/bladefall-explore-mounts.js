@@ -57,14 +57,14 @@ const MOUNTS={
   roosts:[{id:'far',near:'arena',label:'the Marksman’s ridge'},{id:'trail',near:'start',label:'the trailhead'}],
   verb:'↑  MAN THE BALLISTA',go:'Ride the bolt to',
   intro:'The Recruit re-strung the old siege ballistas at both ends of the hollow and swears a bolt will carry a knight. Hold on to the fletching.'},
- 5:{id:'postern',name:'The Archivist’s Postern',story:'archivist',accent:'#b8c0d8',kind:'blink',art:'door',
+ 5:{id:'bell-ropes',name:'The Archivist’s Bell-Ropes',story:'archivist',accent:'#b8c0d8',kind:'swing',art:'bellrope',hop:900,speed:1250,
   roosts:[{id:'far',near:'end',label:'the Keep’s far wall'},{id:'gate',near:'start',label:'the gatehouse'}],
-  verb:'↑  USE THE POSTERN',go:'Take the passage to',
-  intro:'The Archivist’s key fits the old postern. The records call it the servants’ way: it runs inside the walls from the gatehouse to the far end of the Keep.'},
- 6:{id:'service',name:'The Keeper’s Service Way',story:'keeper',accent:'#9fb8b0',kind:'blink',art:'gate',
+  verb:'↑  TAKE THE BELL-ROPES',go:'Swing the bell-ropes to',
+  intro:'The Archivist found the ringers’ plan: the Keep’s bell-ropes were hung so a ringer could cross the whole wall without touching the ground. Each rope swings you to the next.'},
+ 6:{id:'cage',name:'The Keeper’s Cage Run',story:'keeper',accent:'#9fb8b0',kind:'cage',art:'cage',travels:true,cruise:300,speed:1150,
   roosts:[{id:'far',near:'arena',label:'the Gaol’s west yard'},{id:'crown',near:'start',label:'the Eastern Crown'}],
-  verb:'↑  TAKE THE SERVICE WAY',go:'Take the service way to',
-  intro:'The Service Keeper stood aside and left the grille unlocked. Behind it, a passage the jailers used, the length of the Gaol.'},
+  verb:'↑  STEP INTO THE CAGE',go:'Ride the cage to',
+  intro:'The Service Keeper stood aside and unchained the jailers’ cage. It runs on the old overhead rail the length of the Gaol, high above the cells.'},
  7:{id:'sled',name:'The Perfect-Day Sled',story:'winter',accent:'#e0f0ff',kind:'ground',art:'sled',travels:true,seat:8,speed:1100,
   roosts:[{id:'far',near:'end',label:'the summit road'},{id:'gate',near:'start',label:'the warden’s gate'}],
   verb:'↑  TAKE THE SLED',go:'Sled to',
@@ -141,7 +141,7 @@ function store(){
 const keep=()=>{if(!G.levelSelectMode&&typeof persist==='function')persist();};
 const travels=m=>m.kind==='flight'||!!m.travels;   // a creature or craft: one of it, wherever it last set you down
 // Rides on a path of their own (7.347): the knight's feet follow it (no hovering anchor, no flight lift).
-const PATHED=new Set(['launch','throw','ground','slide','rail','ceiling','rift','sprint']);
+const PATHED=new Set(['launch','throw','ground','slide','rail','ceiling','rift','sprint','swing','cage']);
 const perchOf=m=>store().perch[G.stageIndex]||G.mountRoosts?.[0]?.id;
 const opened=()=>G.stageIndex===0||testing()||!!store().reached[G.stageIndex];
 // What this region gives (its own ability) must already be yours.
@@ -286,7 +286,16 @@ function start(m,from,to,arriving){
   for(let i=0;i<=n;i++){const x=from.x+(land.x-from.x)*i/n;f.hops.push({x,y:i===0?from.y:i===n?land.y:floorUnder(x,Math.max(from.y,land.y)+200)});}
   f.dur=n*.85;
  }
- if(m.kind==='sprint'||m.kind==='rift'||m.kind==='ceiling')f.mount=1;   // no climbing on: he goes
+ if(m.kind==='swing'){
+  // Release points hang in the air between the ropes; each swing dips under its rope's bell and rises to the next.
+  const n=Math.max(2,Math.round(dist/(m.hop||900)));f.swings=[];
+  const P=[];for(let i=0;i<=n;i++){const x=from.x+(land.x-from.x)*i/n,g=i===0?from.y:i===n?land.y:floorUnder(x,Math.max(from.y,land.y)+200);P.push({x,y:i===0||i===n?g:g+230,g});}
+  for(let i=0;i<n;i++){const A=P[i],B=P[i+1],floor=Math.min(A.g,B.g),D=Math.max(0,Math.min(150,Math.min(A.y,B.y)-floor-30));
+   f.swings.push({A,B,D,ax:(A.x+B.x)/2,ay:Math.max(A.y,B.y)+330});}
+  f.dur=dist/(m.speed||1250);
+ }
+ if(m.kind==='cage')f.rail=Math.max(from.y,land.y)+(m.cruise||300)+170;
+ if(m.kind==='sprint'||m.kind==='rift'||m.kind==='ceiling'||m.kind==='swing')f.mount=1;   // no climbing on: he goes
  if(m.kind==='launch')f.y0=from.y+30;   // he rides the bolt from where it lies in the ballista
 }
 // The floor a ride on the ground follows: from the start height, step to whichever standable floor under each x is
@@ -316,6 +325,15 @@ function trace(f,u){
    // Gravity turns over: he falls up to the ceiling, runs it upside down, and falls back down at the far end.
    const up=ease(Math.min(1,u/.1)),down=ease(Math.min(1,(1-u)/.1)),k=Math.min(up,down),base=f.y0+(f.y1-f.y0)*u,ceil=Math.max(f.y0,f.y1)+f.cruise;
    return {x:f.from.x+dx*ease(u),y:base+(ceil-44-base)*k,a:0,flip:k>.5,ceil};}
+  case 'swing':{
+   const n=f.swings.length,s=Math.min(n-1e-6,u*n),i=Math.floor(s),k=s-i,w=f.swings[i],e=ease(k);
+   const x=w.A.x+(w.B.x-w.A.x)*e,y=w.A.y+(w.B.y-w.A.y)*e-w.D*Math.sin(Math.PI*e);
+   return {x,y,a:Math.atan2(x-w.ax,w.ay-y-40),seg:i,k};}
+  case 'cage':{
+   // Hoisted up to the rail, run along it, lowered at the far end; the cage swings as it goes.
+   const up=ease(Math.min(1,u/.12)),down=ease(Math.min(1,(1-u)/.12)),k=Math.min(up,down),base=f.y0+(f.y1-f.y0)*u;
+   const x=f.from.x+(f.land.x-f.from.x)*(u<.12?0:u>.88?1:ease((u-.12)/.76));
+   return {x,y:base+(f.rail-(f.hang||170)-base)*k,a:Math.sin(u*Math.PI*9)*.09*k,hang:k};}
   case 'rift':{
    const n=f.hops.length-1,s=Math.min(n-1e-6,u*n),i=Math.floor(s),k=s-i,A=f.hops[i],B=f.hops[i+1];
    // In at one shard (.0–.3), a streak of light (.3–.7), out of the next (.7–1).
@@ -332,7 +350,8 @@ function update(dt){
   if(f.t>=f.dur){store().perch[G.stageIndex]=f.roost.id;keep();G.mountFlight=null;}
   return false;   // the world keeps running while it comes
  }
- p.vx=0;p.vy=0;p.invuln=Math.max(p.invuln||0,1);p.atkTimer=0;p.dodgeTimer=0;p.slamming=false;
+ // The world holds still while he rides, so he needs no invulnerability (whose blink made him flash all ride).
+ p.vx=0;p.vy=0;p.invuln=0;p.hurtFlash=0;p.atkTimer=0;p.dodgeTimer=0;p.slamming=false;
  if(f.arrive<1){f.arrive=Math.min(1,f.arrive+dt/1.4);p.onGround=true;cameraTo(p.x,p.y,dt);return true;}
  if(f.mode==='blink')return blink(f,p,dt);
  if(f.mount<1){
@@ -527,6 +546,8 @@ function rest(c,m,o,t){
   case 'cloak':{post(c,x-40,y,m.accent,false);return cloakWings(c,x+2,y+70,-1,t,false);}
   case 'seed':return seed(c,x,y+70,t);
   case 'throw':return automaton(c,x,y,dir,t,0);
+  case 'cage':{post(c,x-60,y,'#9fb8b0',true);c.save();c.strokeStyle='#5a6060';c.lineWidth=2;c.beginPath();c.moveTo(x,SY(y+118));c.lineTo(x,SY(y+62));c.stroke();c.restore();
+   box(c,'#3a2c22',x-24,SY(y+120),50,5);cageArt(c,x,y,0,false);cageArt(c,x,y,0,true);return;}
  }
 }
 function drawRoost(c,o){
@@ -547,6 +568,9 @@ function drawRoost(c,o){
   return;
  }
  if(m.kind==='launch')return ballista(c,o.x,o.y||0,toward,t,!(riding&&f.from.id===o.mountRoost&&f.mount>=1&&f.u<1));
+ if(m.kind==='swing'){post(c,o.x-37,o.y||0,m.accent,true);bellAnchor(c,o.x,(o.y||0)+130,m.accent,t);
+  if(!(riding&&f.u<1)){c.save();c.strokeStyle='#d8c8a0';c.lineWidth=2;c.beginPath();c.moveTo(o.x,SY((o.y||0)+114));c.lineTo(o.x+Math.sin(t*1.4)*4,SY((o.y||0)+46));c.stroke();c.restore();}
+  return;}
  if(m.kind==='slide'){
   cairn(c,o.x,o.y||0,m.accent,t);
   const near=G.mountRoosts.reduce((a,b)=>Math.abs(b.x-G.p.x)<Math.abs(a.x-G.p.x)?b:a);
@@ -596,6 +620,9 @@ function drawUnder(c){
    case 'ceiling':if(f.u>.04&&f.u<.96)ceilingBand(c,f,t);
     if(f.u<.14||f.u>.86){c.save();c.globalAlpha=.7;for(let i=0;i<10;i++){const k=((t*3+i/10)%1);box(c,'#c9a0ff',f.x+Math.sin(i*2.3)*24,SY(f.y+k*80*(f.flip?-1:1)+20),2,2);}c.restore();}
     return;
+   case 'swing':if(flying)swingRopes(c,f,t);return;
+   case 'cage':if(flying){railTrack(c,f,t);c.save();c.strokeStyle='#5a6060';c.lineWidth=2;c.beginPath();c.moveTo(f.x,SY(f.rail));c.lineTo(f.x+Math.sin(f.a||0)*-60,SY(f.y+62));c.stroke();c.restore();}
+    cageArt(c,flying?f.x:f.from.x,flying?f.y:f.from.y,flying?f.a||0:0,false);return;
    case 'rift':{
     for(const h of f.hops)shard(c,h.x,h.y,t,0);
     const q=trace(f,f.u);
@@ -628,6 +655,7 @@ function drawOver(c){
   if(a>0){c.save();c.globalAlpha=a;c.fillStyle='#05040a';c.fillRect(G.cam-2000,-(G.camY||0)-6000,VW+4000,12000);c.restore();}
   return;
  }
+ if(f.mode==='cage'){cageArt(c,f.mount>=1?f.x:f.from.x,f.mount>=1?f.y:f.from.y,f.mount>=1?f.a||0:0,true);return;}
  if(f.mode==='rail'){cartBody(c,f.mount>=1?f.x:f.from.x,f.mount>=1?f.y:f.from.y,f.dir,G.time||0,f.mount>=1?f.a||0:0);if(f.mount>=1&&f.u<1)darkness(c,f);return;}
  if(f.mount<1)return;
  if(f.art==='drake'||f.art==='rime'){c.save();c.translate(Math.round(f.x),Math.round(SY(f.y)));c.scale(f.dir,1);wing(c,.35+Math.sin((G.time||0)*9)*.75,true,f.art==='rime'?RIME:BRONZE);c.restore();}
@@ -635,6 +663,12 @@ function drawOver(c){
 }
 // The knight's own pose on a pathed ride, for the renderers: turned with a slope or a tumble (rot, radians,
 // clockwise on screen), upside down on the ceiling (flip), running (run, rate) or in the air (air). Null: as usual.
+// The knight's look on any ride: steady (1), or steadily faded (Settings › Faded rides), which reads as
+// passing through the walls and rock the rides cross.
+function heroAlpha(){
+ const f=G?.mountFlight;if(!f||f.kind!=='ride'||f.arrive<1)return 1;
+ return typeof meta!=='undefined'&&meta.rideGhost?.5:1;
+}
 function heroPose(){
  const f=G?.mountFlight;if(!f||f.kind!=='ride'||f.arrive<1||f.mount<1||f.u>=1||!PATHED.has(f.mode))return null;
  switch(f.mode){
@@ -644,6 +678,8 @@ function heroPose(){
   case 'launch':return {rot:-f.dir*f.a*.8};
   case 'ground':case 'rail':return {rot:-f.dir*f.a};
   case 'slide':return {rot:f.dir*.12};
+  case 'swing':return {rot:Math.max(-.7,Math.min(.7,-f.a*.85)),air:true};
+  case 'cage':return {rot:-f.a};
  }
  return null;
 }
@@ -742,6 +778,30 @@ function ceilingBand(c,f,t){
   if((x/40)%3===0)box(c,'#c9a0ff',x+12,y+((t*30+x)%26),2,3);}
  c.restore();
 }
+function bellAnchor(c,x,y,accent,t){
+ const sy=SY(y);c.save();box(c,'#3a2c22',x-26,sy-8,52,6);box(c,'#5a4434',x-24,sy-8,48,2);
+ fill(c,'#8a7aa0',[[x-9,sy-2],[x+9,sy-2],[x+12,sy+16],[x-12,sy+16]]);box(c,accent,x-2,sy+16,4,4);c.restore();
+}
+function swingRopes(c,f,t){
+ // Every bell within reach, and the rope he holds.
+ const accent=mount()?.accent||'#b8c0d8';
+ for(const w of f.swings)if(Math.abs(w.ax-f.x)<1400)bellAnchor(c,w.ax,w.ay,accent,t);
+ const w=f.swings[Math.min(f.swings.length-1,Math.floor(f.u*f.swings.length))];
+ c.save();c.strokeStyle='#d8c8a0';c.lineWidth=2;c.beginPath();c.moveTo(w.ax,SY(w.ay-16));c.lineTo(f.x,SY(f.y+40));c.stroke();c.restore();
+ for(const v of f.swings)if(v!==w&&Math.abs(v.ax-f.x)<1400){c.save();c.strokeStyle='#a8987a';c.lineWidth=1.5;c.beginPath();c.moveTo(v.ax,SY(v.ay-16));c.lineTo(v.ax+Math.sin(t*1.3+v.ax)*8,SY(v.ay-250));c.stroke();c.restore();}
+}
+function cageArt(c,x,y,a,front){
+ // The jailers' cage: a floor, bars, a ring and its chain up to the rail. (x, y): its floor.
+ c.save();c.translate(Math.round(x),Math.round(SY(y)));c.rotate(a);
+ if(!front){box(c,'#2a2a30',-22,-2,44,4);box(c,'#3a3a44',-24,-62,48,4);}
+ else{for(let i=-20;i<=20;i+=8)box(c,'#4a4a56',i-1,-60,2,58);box(c,'#5a5a66',-24,-62,48,3);box(c,'#3a3a44',-22,-2,44,3);}
+ c.restore();
+}
+function railTrack(c,f,t){
+ const y=SY(f.rail);c.save();box(c,'#2e3434',f.x-1200,y-6,2400,6);box(c,'#4a5654',f.x-1200,y-6,2400,2);
+ for(let x=Math.floor((f.x-1200)/160)*160;x<=f.x+1200;x+=160){box(c,'#2e3434',x-3,y,6,18);}
+ c.restore();
+}
 // ---- the level select's gallery (7.345) -------------------------------------------------------------------
 // A small looping scene of one region's shortcut on a card canvas (w×h pixels): its two roosts, the way between
 // and the ride, drawn with the same art as the game. Card units are world units scaled by k, ground near the foot.
@@ -773,7 +833,9 @@ function preview(c,stage,t,w,h){
   const f={mode:m.kind,from:{x:A,y:0},land:{x:B,y:0},dir:1,y0:m.kind==='launch'?30:0,y1:0,u,
    H:Math.min(top*.62,(B-A)*.5),cruise:Math.min(m.cruise||200,top*.55),
    prof:Array.from({length:41},(_,i)=>m.kind==='ground'?Math.sin(i/40*Math.PI)*46+Math.sin(i*.8)*5:m.kind==='rail'?Math.sin(i/40*Math.PI)*16:0),
-   hops:[0,1,2,3].map(i=>({x:A+(B-A)*i/3,y:0}))};
+   hops:[0,1,2,3].map(i=>({x:A+(B-A)*i/3,y:0})),rail:top-14,hang:100};
+  if(m.kind==='swing'){const P=[{x:A,y:0,g:0},{x:(A+B)/2,y:140,g:0},{x:B,y:0,g:0}];
+   f.swings=[0,1].map(i=>{const a=P[i],b=P[i+1],D=Math.max(0,Math.min(110,Math.min(a.y,b.y)-30));return {A:a,B:b,D,ax:(a.x+b.x)/2,ay:Math.min(top-12,Math.max(a.y,b.y)+150)};});}
   const riding=u>0&&u<1,q=trace(f,u);Object.assign(f,{x:q.x,y:q.y,a:q.a||0,flip:!!q.flip,ceil:q.ceil});
   const pose=(x,y,rot,flip)=>{c.save();c.translate(x,SY(y+22));if(rot)c.rotate(rot);if(flip)c.scale(1,-1);c.translate(-x,-SY(y+22));knight(c,x,y,1);c.restore();};
   switch(m.kind){
@@ -795,6 +857,14 @@ function preview(c,stage,t,w,h){
     if(riding&&q.hidden){const Ah=f.hops[q.seg],Bh=f.hops[q.seg+1],e=ease(Math.min(1,Math.max(0,(q.k-.22)/.56)));
      c.save();c.strokeStyle='#e8d8ff';c.lineWidth=6;c.lineCap='round';c.beginPath();c.moveTo(Ah.x+(Bh.x-Ah.x)*Math.max(0,e-.25),SY(40));c.lineTo(Ah.x+(Bh.x-Ah.x)*e,SY(40));c.stroke();c.restore();}
     else knight(c,riding?q.x:u<=0?A+30:B+30,0,1);break;
+   case 'swing':post(c,A-37,0,m.accent,true);post(c,B-37,0,m.accent,true);
+    if(riding){const w=f.swings[Math.min(1,Math.floor(u*2))];for(const v of f.swings)bellAnchor(c,v.ax,v.ay,m.accent,t);
+     c.save();c.strokeStyle='#d8c8a0';c.lineWidth=2;c.beginPath();c.moveTo(w.ax,SY(w.ay-16));c.lineTo(q.x,SY(q.y+40));c.stroke();c.restore();pose(q.x,q.y,Math.max(-.7,Math.min(.7,-q.a*.85)));}
+    else{for(const v of f.swings)bellAnchor(c,v.ax,v.ay,m.accent,t);knight(c,u<=0?A+20:B-20,0,1);}break;
+   case 'cage':post(c,A-60,0,m.accent,true);post(c,B-60,0,m.accent,true);
+    {const y=SY(f.rail);box(c,'#2e3434',-50,y-6,W+100,6);box(c,'#4a5654',-50,y-6,W+100,2);for(let x=0;x<W;x+=120)box(c,'#2e3434',x-3,y,6,14);}
+    {const cx=riding?q.x:u<=0?A:B,cy=riding?q.y:0,a=riding?q.a:0;c.save();c.strokeStyle='#5a6060';c.lineWidth=2;c.beginPath();c.moveTo(cx,SY(f.rail));c.lineTo(cx,SY(cy+62));c.stroke();c.restore();
+     cageArt(c,cx,cy,a,false);pose(cx,cy,-a);cageArt(c,cx,cy,a,true);}break;
    case 'sprint':doorArt(c,A,0,1,t,'bell',m.accent,0);doorArt(c,B,0,1,t,'bell',m.accent,0);
     if(riding){bellRings(c,A,0,0,u*2.2,m.accent);speedLines(c,q.x,q.y,1,t,'#c9b8ff',9,110);knight(c,q.x,q.y,1);}else knight(c,u<=0?A+30:B+30,0,1);break;
   }
@@ -831,7 +901,7 @@ function preview(c,stage,t,w,h){
  return true;
 }
 root.BladefallMounts=Object.freeze({MOUNTS,install,interactable,prompt,interact,update,drawRoost,drawUnder,drawOver,
- flying:()=>!!(G?.mountFlight?.kind==='ride'),roosts:()=>G?.mountRoosts||null,missing,preview,heroPose,
+ flying:()=>!!(G?.mountFlight?.kind==='ride'),roosts:()=>G?.mountRoosts||null,missing,preview,heroPose,heroAlpha,
  perch:()=>G?.mountRoosts?perchOf(mount()):null,reached:()=>!!(G&&store().reached[G.stageIndex]),
  testMode:()=>testOn,setTestMode});
 })(typeof window!=='undefined'?window:globalThis);

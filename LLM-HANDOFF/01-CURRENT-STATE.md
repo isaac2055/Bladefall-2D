@@ -1,3 +1,12 @@
+## 7.348.0: the last two door shortcuts replaced; steady knight on rides; Faded rides setting (2026-10-18, Claude, cloud session)
+
+- **Ruined Keep:** the bell-ropes, swinging rope to rope.
+- **The Warden:** the jailers' cage, on an overhead rail.
+- No quest shortcut is a plain door any more.
+- **No more flashing:** the knight no longer blinks during rides, because rides no longer set invulnerability.
+- **New setting:** Settings › Camera & Motion › Faded rides (`meta.rideGhost`) draws him steadily see-through instead, so the owner can compare the two looks.
+- **Details:** `LLM-HANDOFF/HANDOFF-7.344.0.md`, section 2.b4.
+
 ## 7.347.0: each quest shortcut its own kind of ride (2026-10-18, Claude, cloud session)
 
 Eight shortcuts, reworked on the owner's feedback:

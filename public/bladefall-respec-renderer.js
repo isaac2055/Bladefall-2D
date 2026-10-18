@@ -2472,8 +2472,8 @@ function drawHeroAt(p){
   if(p.mergeHidden)return;   // Merge Pitch C: the knight is in a precision pocket drawn over the world
   // A quest-shortcut ride (bladefall-explore-mounts.js, 7.347) turns him with a slope or a throw, stands him on the
   // ceiling, or runs him: drawn about his middle.
-  const mp=window.BladefallMounts?.heroPose?.();
-  if(mp){const cx=WX(p.x),cy=WY(p.y)-11,st=heroState(p);ctx.save();ctx.translate(cx,cy);if(mp.rot)ctx.rotate(mp.rot);if(mp.flip)ctx.scale(1,-1);ctx.translate(-cx,-cy);
+  const mp=window.BladefallMounts?.heroPose?.(),ga=window.BladefallMounts?.heroAlpha?.()??1;
+  if(mp){const cx=WX(p.x),cy=WY(p.y)-11,st=heroState(p);ctx.save();ctx.globalAlpha=ga;ctx.translate(cx,cy);if(mp.rot)ctx.rotate(mp.rot);if(mp.flip)ctx.scale(1,-1);ctx.translate(-cx,-cy);
     drawFigure(WX(p.x-13),WY(p.y)-22,mp.run?{...st,run:true,air:false,anim:time*(mp.rate||14),vx:200*(p.face||1)}:mp.air?{...st,air:true,run:false}:st);ctx.restore();return;}
   if(window.BladefallCelesteArt&&BladefallCelesteArt.drawFlight(ctx,p,WX,WY,Z))return;
   if(p.dodgeTimer>0&&L.hasGift&&L.hasGift('pure-nail')){
@@ -2506,8 +2506,9 @@ function drawHeroAt(p){
 
   for(const g of heroAnim.ghosts){ ctx.globalAlpha = g.t / .22 * .45;
     flipWrap(WY(g.y) - 22, 22, () => drawFigure(WX(g.x - 13), WY(g.y) - 22, { face:g.face, ghost:true, air:true, dashing:true })); }
-  ctx.globalAlpha = 1;
+  ctx.globalAlpha = ga;   // 1, or a quest-shortcut ride's faded look (Settings › Faded rides)
   flipWrap(WY(p.y) - 22, 22, () => drawFigure(WX(p.x - 13), WY(p.y) - 22, heroState(p)));
+  ctx.globalAlpha = 1;
   { const x = typeof window !== 'undefined' && window.BladefallActTwoArt; if(x && x.hero && curG) x.hero(EXT_API, p); }
   { const r = typeof window !== 'undefined' && window.BladefallRiftShards; if(r && r.draw && curG) r.draw(EXT_API); }   // Act Three: rift shards, in every region   // Act Two's marks on the knight, in every region
   if(p.hasJetpack && p.fuel < 100){ const fx = WX(p.x) - 8, fy = WY(p.y) - 30; B(fx, fy, 16, 2, P.skyTop); B(fx, fy, Math.round(16 * Math.max(0, p.fuel) / 100), 2, P.amber); }
