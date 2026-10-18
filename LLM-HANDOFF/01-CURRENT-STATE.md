@@ -1,3 +1,10 @@
+## 7.350.0: New Game resets Level Select; test mode opens every level; curved ropes (2026-10-18, Claude, cloud session)
+
+- **New Game:** it now drops the developer unlock and the Fractured unlocks, so Level Select starts at the Outskirts. It also starts the finale's "all worlds" count over.
+- **Explore's test mode** (5 taps on Base or Fractured) opens every base and Fractured level.
+- **The Keep's bell-ropes** bend: trailing, whipping, a lazy S. The throws between ropes are higher.
+- **Details:** `LLM-HANDOFF/HANDOFF-7.344.0.md`, section 5.
+
 ## 7.349.0: tester's tools behind test mode; a real New Game; the Keep's swing (2026-10-18, Claude, cloud session)
 
 - **Explore's test mode** (5 taps on Base or Fractured) now gates Watch/Record/Export, the Quest shortcuts gallery and Edit this level, so a build sent out for feedback hides them.

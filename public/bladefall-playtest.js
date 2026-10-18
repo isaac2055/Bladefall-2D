@@ -91,9 +91,11 @@ function importData(raw){
  try{persist();}catch(e){data=before;throw e;}void sync();
 }
 
+// A new game closes what the old save had opened (Explore's Fractured echoes); Ascend's own are untouched.
+function relock(mode){if(data.unlocks[mode]?.length){data.unlocks[mode]=[];persist();}}
 function unlock(mode,world){const list=data.unlocks[mode];world=String(world);if(!list.includes(world)){list.push(world);persist();return true;}return false;}
 const unlocked=(mode,world)=>data.unlocks[mode]?.includes(String(world));
-root.BladefallPlaytest={isOpen:()=>!!dialog?.open,reset:()=>{run=null;refresh();},setup,start,tick,death,collectHeart,hasHeart,invalidate,complete,feedback,saveFeedback,feedbackState,saveRecording,recordingState,feedbackEnabled,setFeedback,clockShown,setClock,boards,exportData,importData,unlock,unlocked,sync,state:()=>({run,data}),isPublic:()=>!local(),model:M};
+root.BladefallPlaytest={isOpen:()=>!!dialog?.open,reset:()=>{run=null;refresh();},setup,start,tick,death,collectHeart,hasHeart,invalidate,complete,feedback,saveFeedback,feedbackState,saveRecording,recordingState,feedbackEnabled,setFeedback,clockShown,setClock,boards,exportData,importData,unlock,unlocked,relock,sync,state:()=>({run,data}),isPublic:()=>!local(),model:M};
 root.document?.addEventListener('visibilitychange',()=>{if(document.hidden)invalidate('tab hidden');});
 root.addEventListener?.('online',sync);root.addEventListener?.('pagehide',()=>{if(run&&!run.done)invalidate('world interrupted');});root.setInterval?.(()=>{if(!document.hidden&&data.outbox.length)void sync();},30000);
 })(globalThis);

@@ -1,17 +1,17 @@
-# Handoff 7.344.0–7.349.0: quest shortcuts in every region (two-way, earned by playing through, each its own kind of ride; test mode and gallery), tester's tools behind test mode, a real New Game, plan-driven Explore routes
+# Handoff 7.344.0–7.350.0: quest shortcuts in every region (two-way, earned by playing through, each its own kind of ride; test mode and gallery), tester's tools behind test mode, a real New Game, plan-driven Explore routes
 
 Written 2026-10-16 by Claude, in a cloud session. Everything below is on `main`. Give this file to the local LLM so it can bring the local/offline copy up to date and carry the work on.
 
 ## 1. Bringing the local/offline copy up to date
 
 1. Run `git pull origin main`. Everything is in the repo; nothing lives only in the cloud.
-2. Version **7.349.0**:
-   - `VERSION`, the `sw.js?v=` registration, and `?v=7.349.0` on `bladefall-explore-mounts.js`, in `public/index.html` and `public/sw.js`.
-   - `?v=7.349.0` on `bladefall-pcore-view.js`, in `public/precision.html` and `public/sw.js`. precision.html's `sw.js?v=` registration is also 7.349.0.
-   - `bladefall-respec-renderer.js` stays at 7.348.0, `bladefall-explore-routes.js` at 7.344.0.
-   - `CACHE_NAME = 'bladefall-v518-tester-tools'`.
+2. Version **7.350.0**:
+   - `VERSION` and the `sw.js?v=` registration in `public/index.html` and `public/precision.html`.
+   - `?v=7.350.0` on `bladefall-explore-mounts.js`, `bladefall-playtest.js`, `bladefall-rift-shards.js` and `bladefall-explore-finale.js`, wherever they are loaded (`public/index.html`, `public/precision.html`) and in `public/sw.js`.
+   - `bladefall-pcore-view.js` stays at 7.349.0, `bladefall-respec-renderer.js` at 7.348.0, `bladefall-explore-routes.js` at 7.344.0.
+   - `CACHE_NAME = 'bladefall-v519-new-game-level-select'`.
 3. The APK was not rebuilt, because the cloud container has no Android SDK. The download link still points at v7.341.0.
-   - If the local machine can build the APK, build and release v7.349.0, then point `#apkBtn`'s href in `public/index.html` at it.
+   - If the local machine can build the APK, build and release v7.350.0, then point `#apkBtn`'s href in `public/index.html` at it.
 4. Checks worth running locally (each serves `public/` itself):
    - `npm run verify:mounts`: the Bellwing, Mara's chart, and the perch kept across a reload and in the save.
    - `npm run verify:mounts-tour`: the other 18 regions' shortcuts: home roost first, then both ways, and where each mount ends up perched.
@@ -302,4 +302,30 @@ The owner wants to send the online build to friends for feedback, so the tools f
 - He tilts with the rope.
 
 **Test updates:** `record-check`, `workshop/bridge-check` and `workshop/explore-bridge-check` now switch test mode on before reaching the gated buttons.
+
+## 5. 7.350.0: New Game resets Level Select; test mode opens every level; ropes that curve
+
+**New Game resets Level Select.**
+- **What kept the levels open:** New Game kept `meta.devUnlocked`, the old Hardcore-flick developer unlock, which opens every level. The Fractured echoes the save had opened also survived, because they live in the playtest store (`bladefall.playtest.v1` → `unlocks.explore`), not in `meta`.
+- **What New Game does now:**
+  - drops `devUnlocked` (it is no longer in `NEW_GAME_KEEPS`) and `testMode`;
+  - calls the new `BladefallPlaytest.relock('explore')`. Ascend's `unlocks.survival` is untouched.
+  - stamps `meta.journeyStartedAt`, so the finale's "all worlds completed" check (`bladefall-explore-finale.js`) ignores explore finishes recorded before the new game. Those records stay on the leaderboards.
+- **Result:** after New Game, Level Select offers only the Outskirts and no Fractured echo. On a local build, the Final Echo and Vesper rows always show, as before.
+
+**Explore's test mode opens every level.** Five taps on Base or Fractured now also open every level on both tabs:
+- the base list, through `dev` in `openLevelSelect`;
+- every built Fractured echo (`levelSelectRows` in the rift shards module);
+- the finale rows.
+
+**Bell-ropes that curve.** The owner still saw straight lines, so `ropeLine()` now draws each rope as a cubic bezier with two independent offsets:
+- **The rope he holds** trails the swing, bowed back against his direction and most strongly through the bottom.
+- **A rope he has let go** whips back with a bend against its own motion, then settles.
+- **Ropes waiting ahead** hang in a lazy S.
+
+The throws between ropes are also higher (arc 140–150), and the swing is wider (±1.05 rad).
+
+**Check:** `scripts/explore/new-game-check.mjs` now also covers Level Select. After New Game: no developer unlock, no Fractured unlock, only the Outskirts listed. With test mode on: every base level and all 20 Fractured echoes are open.
+
+Two unit tests already failed on main before this change and are unchanged: `tests/capabilities.test.mjs` #9 and `tests/fractured-order.test.mjs` #1.
 

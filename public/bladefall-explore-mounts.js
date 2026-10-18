@@ -286,7 +286,7 @@ function start(m,from,to,arriving){
   for(let i=0;i<=n;i++){const x=from.x+(land.x-from.x)*i/n;f.hops.push({x,y:i===0?from.y:i===n?land.y:floorUnder(x,Math.max(from.y,land.y)+200)});}
   f.dur=n*.85;
  }
- if(m.kind==='swing')Object.assign(f,swingPlan(from,land,dir,x=>floorUnder(x,Math.max(from.y,land.y)+200),330,.9,520,m.speed||1050));
+ if(m.kind==='swing')Object.assign(f,swingPlan(from,land,dir,x=>floorUnder(x,Math.max(from.y,land.y)+200),330,1.05,520,m.speed||1050));
  if(m.kind==='cage')f.rail=Math.max(from.y,land.y)+(m.cruise||300)+170;
  if(m.kind==='sprint'||m.kind==='rift'||m.kind==='ceiling'||m.kind==='swing')f.mount=1;   // no climbing on: he goes
  if(m.kind==='launch')f.y0=from.y+30;   // he rides the bolt from where it lies in the ballista
@@ -303,10 +303,10 @@ function swingPlan(from,land,dir,floor,L,th,gap,speed){
  for(let j=0;j<n;j++){
   const ax=from.x+dir*dist*(j+.5)/n,bottom=Math.max(floor(ax),floor(ax-dir*half),floor(ax+dir*half))+36,ay=bottom+L+HAND;
   const rope={ax,ay,L,th},lift=(L+HAND)*(1-Math.cos(th)),catchP={x:ax-dir*half,y:bottom+lift};
-  ropes.push(rope);pieces.push({type:'fly',A:cur,B:catchP,H:j===0?110:70});pieces.push({type:'swing',j});
+  ropes.push(rope);pieces.push({type:'fly',A:cur,B:catchP,H:j===0?150:140});pieces.push({type:'swing',j});
   cur={x:ax+dir*half,y:bottom+lift};
  }
- pieces.push({type:'fly',A:cur,B:{x:land.x,y:land.y},H:50});
+ pieces.push({type:'fly',A:cur,B:{x:land.x,y:land.y},H:90});
  // Time by ground covered, but a swing never rushes under .38 s.
  const w=pieces.map(q=>q.type==='swing'?Math.max(2*half,.38*speed):Math.max(60,Math.abs(q.B.x-q.A.x)));const sum=w.reduce((a,b)=>a+b,0);
  let acc=0;for(let i=0;i<pieces.length;i++){pieces[i].u0=acc/sum;acc+=w[i];pieces[i].u1=acc/sum;}
@@ -800,12 +800,16 @@ function bellAnchor(c,x,y,accent,t){
  const sy=SY(y);c.save();box(c,'#3a2c22',x-26,sy-8,52,6);box(c,'#5a4434',x-24,sy-8,48,2);
  fill(c,'#8a7aa0',[[x-9,sy-2],[x+9,sy-2],[x+12,sy+16],[x-12,sy+16]]);box(c,accent,x-2,sy+16,4,4);c.restore();
 }
-function ropeLine(c,x0,y0,x1,y1,bow,col,w){
- // A rope is never a ruled line: it bows a little across its length (bow: + one side, - the other).
- const mx=(x0+x1)/2,my=(y0+y1)/2,dx=x1-x0,dy=y1-y0,len=Math.hypot(dx,dy)||1;
+function ropeLine(c,x0,y0,x1,y1,b1,b2,col,w){
+ // A rope is never a ruled line (7.350: the owner still saw straight lines). It is drawn as a cubic whose two
+ // inner points stand off the straight line by b1 (a third of the way down) and b2 (two thirds): the same sign
+ // bends it into a bow, opposite signs into an S.
+ const dx=x1-x0,dy=y1-y0,len=Math.hypot(dx,dy)||1,nx=-dy/len,ny=dx/len;
  c.save();c.strokeStyle=col;c.lineWidth=w;c.lineCap='round';c.beginPath();c.moveTo(x0,SY(y0));
- c.quadraticCurveTo(mx-dy/len*bow,SY(my+dx/len*bow),x1,SY(y1));c.stroke();c.restore();
+ c.bezierCurveTo(x0+dx/3+nx*b1,SY(y0+dy/3+ny*b1),x0+dx*2/3+nx*b2,SY(y0+dy*2/3+ny*b2),x1,SY(y1));c.stroke();c.restore();
 }
+// Which way a rope's normal (as ropeLine takes it) points against a horizontal motion: +1 or -1.
+const against=(x0,y0,x1,y1,dir)=>{const dy=y1-y0,len=Math.hypot(x1-x0,dy)||1;return -dy/len*dir>0?-1:1;};
 function swingRopes(c,f,t){
  // Every bell within reach and its rope: the one he holds runs to his hands and bows with the swing; the ones he
  // has let go swing back and settle; the ones ahead hang and sway, waiting.
@@ -813,11 +817,17 @@ function swingRopes(c,f,t){
  f.ropes.forEach((r,j)=>{
   if(Math.abs(r.ax-f.x)>1500)return;
   bellAnchor(c,r.ax,r.ay,accent,t);
-  if(q.rope===j){ropeLine(c,r.ax,r.ay-16,q.hx,q.hy,-f.dir*q.w*14,'#d8c8a0',2.4);return;}
+  if(q.rope===j){
+   // Held: it trails the swing, bowed back against the way he is going, most where it is fastest (the bottom).
+   const s=against(r.ax,r.ay,q.hx,q.hy,f.dir),bend=s*(16+46*q.w);
+   ropeLine(c,r.ax,r.ay-16,q.hx,q.hy,bend*.75,bend,'#d8c8a0',2.4);return;}
   const relU=P.find(p=>p.type==='swing'&&p.j===j).u1,since=(f.u-relU)*f.dur;
-  const ang=since>0?r.th*Math.exp(-1.6*since)*Math.cos(5.2*since)*f.dir:Math.sin(t*1.3+j)*.05;
+  const angAt=s=>s>0?r.th*Math.exp(-1.6*s)*Math.cos(5.2*s)*f.dir:Math.sin(t*1.3+j)*.05;
+  const ang=angAt(since),vel=(angAt(since+.03)-ang)/.03;
   const ex=r.ax+Math.sin(ang)*r.L,ey=r.ay-Math.cos(ang)*r.L;
-  ropeLine(c,r.ax,r.ay-16,ex,ey,Math.sin(t*2+j)*5,'#b8a888',2);
+  // Let go, it whips back and settles, bending against its own swing; waiting, it hangs in a lazy S.
+  const whip=since>0?Math.max(-60,Math.min(60,-vel*14)):0,lazy=Math.sin(t*1.7+j*2)*20;
+  ropeLine(c,r.ax,r.ay-16,ex,ey,whip*.7+lazy,whip-lazy,'#b8a888',2);
   box(c,'#6a5444',ex-2,SY(ey)-2,4,6);   // the knot at its end
  });
 }

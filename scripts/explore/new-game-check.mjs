@@ -25,7 +25,7 @@ await page.evaluate(()=>{
  Object.assign(meta,{run:{stageIndex:3},bestStage:7,actTwoReached:true,gold:420,outskirtsFieldChart:true,outskirtsMaraRelocated:true,upStrikeTaught:true,flagHintShown:true,
   sideStories:{quests:{gatekeeper:{phase:'completed',claimed:true}}},mounts:{perch:{0:'door'},reached:{1:true}},loreRead:{a:1},
   musicVolume:.13,rideGhost:true,keybinds:{jump:'KeyK'},bossRushBest:99,achievements:{first:true},skin:'ember',skinsOwned:{warden:true,ember:true}});
- meta.world=BFWorldModule.createProgress();meta.world.visited.push('black-woods');persist();
+ meta.world=BFWorldModule.createProgress();meta.world.visited.push('black-woods');meta.devUnlocked=true;meta.reach={0:12};BladefallPlaytest.unlock('explore',21);persist();
  openExploreMenu();
 });
 await page.click('#exploreNew');await sleep(400);
@@ -46,6 +46,16 @@ assert.ok(!/"a"/.test(after.lore||''),'lore read cleared');
 assert.deepEqual(after.visited,['outskirts'],'world progress cleared');
 assert.deepEqual(after.kept,{music:.13,ghost:true,keys:'KeyK',rush:99,ach:true,skin:'ember',skins:2},'settings, records, achievements and skins kept');
 assert.equal(after.savedChart,false,'the reset is saved');assert.equal(after.savedMusic,.13);
+// Level Select starts over too: only the Outskirts, no Fractured echo (the finale rows, 45 and 43, always show on a
+// local build); Explore's test mode opens them all.
+const rows=()=>page.evaluate(()=>{lvlSelTab=0;openLevelSelect();const base=[...document.querySelectorAll('.lvlbtn[data-i]')].length;lvlSelTab='fx';openLevelSelect();
+ const fx=[...document.querySelectorAll('.lvlbtn[data-fx]')].map(b=>b.dataset.fx).filter(v=>v!=='45'&&v!=='43').length;window.__fxRows=[...document.querySelectorAll('.lvlbtn[data-fx]')].map(b=>b.dataset.fx+':'+b.textContent.slice(0,30));lvlSelTab=0;openLevelSelect();return {base,fx};});
+const fresh=await page.evaluate(()=>{mode='title';BladefallMounts.setTestMode(false);lvlSelTab=0;openLevelSelect();return {dev:!!meta.devUnlocked,fxUnlock:BladefallPlaytest.unlocked('explore',21)};});
+const closed=await rows();
+assert.deepEqual(fresh,{dev:false,fxUnlock:false},'the developer unlock and the Fractured unlocks are gone');
+assert.equal(closed.base,1,'only the Outskirts in Level Select');assert.equal(closed.fx,0,'no Fractured echo '+JSON.stringify(await page.evaluate(()=>window.__fxRows)));
+await page.evaluate(()=>BladefallMounts.setTestMode(true));const open=await rows();await page.evaluate(()=>BladefallMounts.setTestMode(false));
+assert.ok(open.base>=15&&open.fx>=1,'test mode opens every level '+JSON.stringify(open));
 await browser.close();server.close();
 assert.deepEqual(errors,[],'page errors');
-console.log('PASS: New Game clears the whole journey (run, world, side stories, Mara\'s chart, Act Two, quest mounts, hints, gold, lore) and keeps settings, records, achievements and skins; the new run starts in the Outskirts.');
+console.log('PASS: New Game clears the whole journey (run, world, side stories, Mara\'s chart, Act Two, quest mounts, hints, gold, lore, Level Select and its unlocks) and keeps settings, records, achievements and skins; the new run starts in the Outskirts.');

@@ -17,12 +17,14 @@ function allWorldsCompleted(){
  // Existing saved solo world finishes count; no online stranger's records and no unlock-only inference.
  const data=root.BladefallPlaytest?.state().data;
  const records=[...(data?.records||[]),...(Array.isArray(data?.archives)?data.archives.flatMap(a=>Array.isArray(a?.records)?a.records:[]):[])];
- for(const r of records)if(r?.mode==='explore'&&r.player===data.player&&r.eligible!==false)cleared.add(Number(r.world));
+ // A New Game starts the count over (7.350): finishes recorded before it are leaderboard history, not this journey.
+ const since=meta.journeyStartedAt||'';
+ for(const r of records)if(r?.mode==='explore'&&r.player===data.player&&r.eligible!==false&&!(since&&String(r.at||'')<since))cleared.add(Number(r.world));
  return MAIN.every(i=>cleared.has(i));
 }
 function visible(){
  const host=root.location?.hostname||'',local=root.location?.protocol==='file:'||/^(localhost|127\.0\.0\.1|\[::1\])$/.test(host);
- return local||allWorldsCompleted();
+ return local||!!root.BladefallMounts?.testMode()||allWorldsCompleted();   // Explore's test mode shows them too
 }
 function choice(){return G?.coopSession?G.finalEchoChoice||null:state().choice;}
 function vesperMerged(){return !!(G?.vesperFromEcho&&G.vesperMergeReady&&choice()==='merge');}
