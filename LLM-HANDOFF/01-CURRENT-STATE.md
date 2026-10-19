@@ -1,3 +1,12 @@
+## 7.354.0: feedback ratings as buttons; testers read each other's feedback (2026-10-18, Claude)
+
+- **Ratings are buttons.** Fun and Difficulty are now number buttons. The native `<select>` would not open with a mouse in Explore. Saving needs both ratings.
+- **New server route.** `GET /api/playtest?feedback=1` (`server/playtest-service.mjs`) returns the season's feedback: mode, world, name, ratings, comment, build and date. It never returns player ids or tokens. Deployed with `npm run deploy:api` (Isaac asked for it).
+- **In the game.** Leaderboards → **Read testers' feedback** (`readFeedback()` in `bladefall-playtest.js`) lists every note newest first, filterable by All, Explore, Ascend, or Rooms & Cores.
+- **Wording.** The feedback form now says that other testers can read your note.
+- **Isaac's first 5 test notes arrived** (4 Ascend, 1 Explore).
+- **Known nit.** Notes store build `7.334.0` by default, because `saveFeedback` uses a fallback version string.
+
 ## 7.353.0: perfect clears celebrated; no spoilers on Ascend's map (2026-10-18, Claude)
 
 **Perfect clears.** A perfect clear of an Ascend world now plays a short full-screen animation:

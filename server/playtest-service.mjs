@@ -17,6 +17,13 @@ export async function handle(request,store){
  return new Response(result.body,{status:result.status,headers});
 }
 async function handleRequest(request,store){
+ if(request.method==='GET'&&new URL(request.url).searchParams.has('feedback')){
+  // (7.354) Testers read each other's feedback in the game: ratings and comments only, never player ids or tokens.
+  const listing=await store.list({prefix:'feedback/'+M.SEASON+'/'}),rows=[];
+  for(let i=0;i<listing.blobs.length;i+=20){const got=await Promise.all(listing.blobs.slice(i,i+20).map(b=>store.get(b.key,{type:'json'})));rows.push(...got.filter(Boolean));}
+  const pub=rows.map(r=>({mode:r.mode,campaign:r.campaign,world:r.world,room:r.room||'',name:r.name,fun:r.fun,difficulty:r.difficulty,comment:String(r.comment||'').slice(0,4000),build:r.build||'',at:r.at})).sort((a,b)=>String(b.at).localeCompare(String(a.at)));
+  return response({season:M.SEASON,feedback:pub});
+ }
  if(request.method==='GET'){
   const listing=await store.list({prefix:'times/'+M.SEASON+'/'}),records=[];
   for(let i=0;i<listing.blobs.length;i+=20){const rows=await Promise.all(listing.blobs.slice(i,i+20).map(b=>store.get(b.key,{type:'json'})));records.push(...rows.filter(M.valid));}
