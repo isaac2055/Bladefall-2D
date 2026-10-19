@@ -1,3 +1,10 @@
+## 7.356.0: rate every world on its complete screen; the perfect animation first; Pure play (2026-10-18, Claude)
+
+- **Rating on the complete screen.** In both modes, the world-complete screen (`complete()` in `bladefall-playtest.js`) now has **Rate this world** under the leaderboard: Fun and Difficulty buttons, a comment, and **Send feedback**. It is shown by default, separate from Ascend's per-room review mode. The helpers are `rateFields()` and `wireRate()`. Ascend passes `rate:{...}`; Explore reuses its `feedbackInfo`.
+- **Pure play.** A checkbox at the bottom of that screen, "don't show this screen after a world", sets `data.settings.pure`. `pure()` also honours Ascend's own Pure play option, `save.options.pure`. While it's on, `complete()` skips both the leaderboard and the feedback.
+- **The perfect animation now plays first.** In Ascend, `rewardWorld()` returns a promise that settles when the celebration ends, and the complete screen waits for it via `st.rewardShown`. Before this, the modal dialog covered the animation, so Isaac never saw it.
+- **"Your partner's progress stays separate"** is now said only while co-op is on.
+
 ## 7.355.0: feedback carries the real version; test feedback cleared; Backup and transfer removed (2026-10-18, Claude)
 
 - **Real version on feedback.** Notes now store the build they were played on. `globalThis.BLADEFALL_VERSION` is set in index.html (from `VERSION`) and in precision.html's head; bump both when versioning.

@@ -869,17 +869,17 @@ PV.exit=function(view,nextRoom){
   store('bladefall.climb.atlas.v1',st.atlas.snapshot());
   if(opened.length)announce('Road opened · '+st.atlas.routes(st.world.n).filter(l=>opened.includes(l.id)).map(l=>CL().world(l.to).name).join(' / '),240);
   if(g.room.id===st.world.atlasEnd&&worldClearReady()){const was=!!save.cleared[st.world.n];save.cleared[st.world.n]=true;store(SAVE,save);
-   rewardWorld();
+   st.rewardShown=rewardWorld();   // (7.356) the perfect-clear animation plays before the world-complete screen
    try{root.BladefallClimbCoop?.worldDone?.({world:st.world.n,name:st.world.name,deaths:view.chapterStats.deaths,frames:view.chapterStats.frames});}catch(e){}
    if(!was&&st.world.n<=20&&purpleHeld(st.world.n)){root.BladefallPlaytest?.unlock('survival',st.world.n+20);announce(`${CL().world(st.world.n+20)?.name||'Its Fractured world'} is open · play it from the map`,300);}if(st.world.n===9)announce('The inner ascent is open · the upper crown lies ahead',360);}
  }
- if(g.room.id===st.world.atlasEnd&&!worldClearReady()){root.BladefallClimbSession?.invalidate('unfinished rooms');announce('Finish your remaining rooms to complete this world. Your partner’s progress stays separate.',240);}
+ if(g.room.id===st.world.atlasEnd&&!worldClearReady()){root.BladefallClimbSession?.invalidate('unfinished rooms');announce('Finish your remaining rooms to complete this world.'+(root.BladefallClimbCoop?.state?.()?.status==='on'?' Your partner’s progress stays separate.':''),240);}
  if(g.room.id===st.world.atlasEnd&&worldClearReady()&&!st.completionOffered&&V().pureMode?.()){st.completionOffered=true;announce(`${st.world.name} · complete`,200);}   // (7.318) pure play: no screens
  if(g.room.id===st.world.atlasEnd&&worldClearReady()&&!st.completionOffered&&root.BladefallPlaytest){
   st.completionOffered=true;
   const w=st.world,next=CL().world(w.n+1),canNext=next&&(next.n<=20||root.BladefallPlaytest.unlocked('survival',next.n));
   const walk=()=>{view.mode='play';view.paused=false;st.api.hideOverlay();if(k<pl.chain.length-1)carryInto(pl,pl.chain[k+1]);else{g.exited=false;g.p.x=Math.min(g.room.w-g.p.w-2,Math.max(2,g.p.x));}};
-  void root.BladefallPlaytest.complete({next:canNext?()=>startWorld(next.n):null,walk,menu:()=>atlasMap()});return true;
+  Promise.resolve(st.rewardShown).then(()=>root.BladefallPlaytest.complete({next:canNext?()=>startWorld(next.n):null,walk,menu:()=>atlasMap(),rate:{mode:'survival',world:String(w.n),campaign:w.n>20?'fractured':'base',name:w.name,room:w.atlasEnd}}));st.rewardShown=null;return true;
  }
  if(k<pl.chain.length-1){carryInto(pl,pl.chain[k+1]);return true;}
  worldDone(view);return true;
@@ -1182,11 +1182,12 @@ PV.slideFrame=function(buf,W,Hh){
 /* (7.319) A world finished: a perfect run's half of its plant (and the Core if both halves are in), and any skin
    newly earned. Said, never a screen. */
 function rewardWorld(){
- const R=root.BladefallClimbRewards;if(!R||st.world.n>40)return;
+ const R=root.BladefallClimbRewards;if(!R||st.world.n>40)return Promise.resolve();let shown=Promise.resolve();
  if(st.perfectRun&&st.roadDeaths===0){const r=R.perfect(st.world.n);
   // (7.353) a perfect clear is a moment: the earned plant part grows into view (the same animation for every world)
-  if(r&&!r.already)setTimeout(()=>{(R.celebrate?R.celebrate(r,st.world.n):Promise.resolve()).then(()=>announce(r.cside?`Perfect · ${r.half} · the ${r.plant.name} is whole: its Core is open`:`Perfect clear · ${r.half} (${r.plant.name})`,320));},400);}
+  if(r&&!r.already)shown=new Promise(res=>setTimeout(()=>{(R.celebrate?R.celebrate(r,st.world.n):Promise.resolve()).then(()=>{res();announce(r.cside?`Perfect · ${r.half} · the ${r.plant.name} is whole: its Core is open`:`Perfect clear · ${r.half} (${r.plant.name})`,320);});},400));}
  setTimeout(()=>{for(const s of R.newlyEarned())announce(`New skin · ${s.name} · wear it from Garden & skins`,320);},2400);
+ return shown;
 }
 function worldClearReady(){
  if(root.BladefallClimbCoop?.state?.()?.status==='on')return true;   // (7.318) co-op: teleports to your partner count
