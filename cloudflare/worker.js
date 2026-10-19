@@ -7,6 +7,11 @@ export class PlaytestStore extends DurableObject {
   constructor(ctx,env){
     super(ctx,env);
     ctx.storage.sql.exec('CREATE TABLE IF NOT EXISTS records (key TEXT PRIMARY KEY, value TEXT NOT NULL)');
+    // (7.355) One-time: clear the owner's test feedback before outside testers start (runs once, marked done).
+    if(!ctx.storage.sql.exec("SELECT 1 FROM records WHERE key = 'migrations/clear-test-feedback-7355'").toArray().length){
+      ctx.storage.sql.exec("DELETE FROM records WHERE substr(key,1,9) = 'feedback/'");
+      ctx.storage.sql.exec("INSERT OR IGNORE INTO records (key,value) VALUES ('migrations/clear-test-feedback-7355','true')");
+    }
     this.store={
       get:async key=>{const rows=ctx.storage.sql.exec('SELECT value FROM records WHERE key = ?',key).toArray();return rows.length?JSON.parse(rows[0].value):null;},
       setJSON:async(key,value,{onlyIfNew=false}={})=>{

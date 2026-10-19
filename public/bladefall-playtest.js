@@ -18,7 +18,7 @@ async function sync(){if(syncing){syncAgain=true;return;}if(navigator.onLine===f
 function queue(kind,record){const before=JSON.stringify(data);try{data[kind==='time'?'records':kind==='recording'?'recordings':'feedback'].push(kind==='recording'?{id:record.id,name:record.name,room:record.room,frames:record.frames,recordedAt:record.recordedAt}:record);data.outbox.push({kind,record});persist();}catch(e){data=JSON.parse(before);throw e;}void sync();}
 function feedbackState(id){const exists=data.feedback.some(r=>r.id===id);return !exists?'unsaved':data.outbox.some(x=>x.record.id===id)?'pending':'synced';}
 function saveFeedback(info){
- const record={...info,id:info.id||uuid(),season:M.SEASON,player:data.player,world:String(info.world),room:info.room||'',name:info.name||info.room,ms:Math.round(info.ms||0),deaths:info.deaths||0,build:info.build||'7.334.0',at:info.recordedAt||new Date().toISOString()};
+ const record={...info,id:info.id||uuid(),season:M.SEASON,player:data.player,world:String(info.world),room:info.room||'',name:info.name||info.room,ms:Math.round(info.ms||0),deaths:info.deaths||0,build:info.build||globalThis.BLADEFALL_VERSION||'?',at:info.recordedAt||new Date().toISOString()};
  if(!M.validFeedback(record))throw Error('Invalid feedback');
  if(feedbackState(record.id)==='unsaved')queue('feedback',record);else void sync();
  return record.id;
@@ -102,15 +102,14 @@ function boards(initial='survival'){
    ${section==='world'?`<p style="margin:12px 0 4px">World</p><div class="ptrow" id="ptWorld" style="max-height:30dvh;overflow:auto">${worlds.map(w=>known(mode,campaign,w.id)?`<button data-world="${w.id}" aria-pressed="${w.id===wid}">${esc(w.name)}</button>`:`<button disabled aria-disabled="true">???</button>`).join('')}</div>`:`<p>Sum of each player's ${sort==='hearts'?'most-hearts, then fastest':'fastest'} continuous clear of all ${worlds.length} worlds. Improve any world to improve your total. Base and Fractured stay separate.</p>`}
    ${table(rows,mode)}${adapter.startTrial?`<button id="ptStartTrial">Start ${section==='whole'?'first world':'selected world'} time trial</button>`:''}
    <p>${data.outbox.length} pending submissions. ${sort==='hearts'?'More hearts rank first; equal heart counts are ranked by time.':'Ranks use time; deaths'+(mode==='survival'?' and hearts':'')+' are shown alongside.'} Hearts count only those earned during this run.</p>
-   <button id="ptReadFeedback">Read testers’ feedback</button> <details><summary>Backup and transfer</summary><p>Earlier course revisions are retained in your backup.</p><button id="ptExport">Back up scores & feedback</button><label>Restore backup<input type="file" id="ptImport" accept="application/json"></label></details><button id="ptClose">Back</button><p id="ptStatus" role="status"></p>`;
+   <button id="ptReadFeedback">Read testers’ feedback</button> <button id="ptClose">Back</button><p id="ptStatus" role="status"></p>`;
   // A new game or campaign starts at its first world (the Outskirts), not at whichever id the last one had.
   for(const type of ['mode','campaign','section','sort'])dialog.querySelectorAll('[data-'+type+']').forEach(b=>b.onclick=()=>{if(type==='mode'){if(mode!==b.dataset.mode)wid=null;mode=b.dataset.mode;}else if(type==='campaign'){if(campaign!==b.dataset.campaign)wid=null;campaign=b.dataset.campaign;}else if(type==='sort')sort=b.dataset.sort;else section=b.dataset.section;render();});
   // A list of buttons, not a <select>: the native picker did not open in every browser (owner, private window).
   dialog.querySelectorAll('[data-world]').forEach(b=>b.onclick=()=>{wid=b.dataset.world;render();});
   dialog.querySelector('#ptStartTrial')?.addEventListener('click',()=>{const chosen=section==='whole'?worlds[0].id:wid;if(adapter.canStartTrial&&!adapter.canStartTrial(mode,chosen)){dialog.querySelector('#ptStatus').textContent='Find the matching base-world item to unlock this Fractured world.';return;}close();adapter.startTrial(mode,chosen);});
-  dialog.querySelector('#ptClose').onclick=close;dialog.querySelector('#ptExport').onclick=exportData;
+  dialog.querySelector('#ptClose').onclick=close;
   dialog.querySelector('#ptReadFeedback').onclick=()=>{close();readFeedback(boards);};
-  dialog.querySelector('#ptImport').onchange=async e=>{try{importData(JSON.parse(await e.target.files[0].text()));render();}catch{dialog.querySelector('#ptStatus').textContent='Invalid backup, or it belongs to another profile. Export this profile before replacing it.';}};
  };
  render();void sync().then(()=>{if(dialog.open&&dialog.querySelector('#ptWorld'))render();});
 }

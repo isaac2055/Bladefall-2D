@@ -1,3 +1,9 @@
+## 7.355.0: feedback carries the real version; test feedback cleared; Backup and transfer removed (2026-10-18, Claude)
+
+- **Real version on feedback.** Notes now store the build they were played on. `globalThis.BLADEFALL_VERSION` is set in index.html (from `VERSION`) and in precision.html's head; bump both when versioning.
+- **Test feedback cleared.** A one-time migration in the worker's `PlaytestStore` constructor deletes every `feedback/` row, then records `migrations/clear-test-feedback-7355` so it never runs again. It cleared Isaac's test notes before outside testing; deployed with `npm run deploy:api`.
+- **Backup and transfer removed.** The section is gone from the Leaderboards dialog, since everything auto-saves and syncs. `exportData`/`importData` remain in code, unused by the UI.
+
 ## 7.354.0: feedback ratings as buttons; testers read each other's feedback (2026-10-18, Claude)
 
 - **Ratings are buttons.** Fun and Difficulty are now number buttons. The native `<select>` would not open with a mouse in Explore. Saving needs both ratings.
