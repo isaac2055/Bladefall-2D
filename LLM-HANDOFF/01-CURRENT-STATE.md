@@ -1,3 +1,9 @@
+## 7.357.1: world doors work again (2026-10-20, Claude)
+
+- **The bug:** 7.357.0 marked door arrivals on the zone plan (`plan._doorArrival`), but the plan is frozen. The write threw inside the async crossing, so every world door said "The road shudders but holds".
+- **The fix:** a `DOOR_ARRIVALS` WeakSet records handled plans instead. Checked in a browser: Outskirts → Black Woods crosses, and the knight walks out of the door once.
+- **Dash only working with Caps Lock or Shift** doesn't reproduce: real `d` and `Shift+D` both dash with default binds. It is very likely a browser extension that binds lowercase letters, such as Vimium (`d` scrolls, `f` shows link hints). Asked Isaac to try an incognito window or disable it for the site.
+
 ## 7.357.0: Explore fixes from Isaac's campaign test (2026-10-20, Claude)
 
 - **Edit this level** in Explore's pause menu now needs test mode only. `meta.devUnlocked` no longer shows it.

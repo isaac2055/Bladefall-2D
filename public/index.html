@@ -465,7 +465,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.357.0';globalThis.BLADEFALL_VERSION=VERSION;
+const VERSION='7.357.1';globalThis.BLADEFALL_VERSION=VERSION;
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -11918,10 +11918,12 @@ function atWorldDoor(connector){
 }
 function mothlightDoor(){return worldDoor('outskirts-black-woods');}
 function atMothlightDoor(){return atWorldDoor('outskirts-black-woods');}
+const DOOR_ARRIVALS=new WeakSet();
 function beginMothlightArrival(plan){
   if(!plan||!WORLD_DOORS[plan.connectorId])return;
   // (7.357) arrive() and releaseSource() both call this: walk out of the door once, not twice.
-  if(plan._doorArrival||G.gateWalk?.arrival)return;plan._doorArrival=true;
+  // The plan object is frozen: remember handled plans aside (writing to it threw and failed the crossing, 7.357.1).
+  if(DOOR_ARRIVALS.has(plan)||G.gateWalk?.arrival)return;DOOR_ARRIVALS.add(plan);
   const d=worldDoor(plan.connectorId);if(!d)return;
   G.gateWalk={t:0,arrival:true,x:d.x,y:d.y,dir:-d.into,toX:d.x-d.into*90,depth:1};
   Object.assign(G.p,{x:d.x,y:d.y,vx:0,vy:0,face:-d.into});
@@ -24619,7 +24621,7 @@ function titleScreen(){
       <button class="bigbtn ghost" id="sndBtn" style="flex:1;">Sound: ${meta.soundOn?'On 🔊':'Off 🔇'}</button>
       <button class="bigbtn ghost" id="settingsBtn" style="flex:1;">⚙ Controls</button>
     </div>
-    <a class="bigbtn ghost" id="apkBtn" href="https://github.com/isaac2055/Bladefall-2D/releases/download/v7.357.0/Bladefall-7.357.0.apk" style="display:block;text-align:center;box-sizing:border-box;text-decoration:none" download>Download APK</a>
+    <a class="bigbtn ghost" id="apkBtn" href="https://github.com/isaac2055/Bladefall-2D/releases/download/v7.357.1/Bladefall-7.357.1.apk" style="display:block;text-align:center;box-sizing:border-box;text-decoration:none" download>Download APK</a>
     <p class="hint">v${VERSION}</p></div>`);
   if(canContinue)document.getElementById('contBtn').onclick=()=>{if(continueSurvive)location.href='precision.html?pitch=climb&resume=1&mode='+(lastPlayed.mode==='review'?'review':'play');else continueRun();};
   document.getElementById('newBtn').onclick=openExploreMenu;
@@ -26306,7 +26308,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.357.0').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.357.1').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */
