@@ -1,3 +1,16 @@
+## 7.357.0: Explore fixes from Isaac's campaign test (2026-10-20, Claude)
+
+- **Edit this level** in Explore's pause menu now needs test mode only. `meta.devUnlocked` no longer shows it.
+- **Pure play** is in Settings → Playtesting (`ptPureToggle`), and the checkbox on the world-complete screen is bigger and boxed.
+- **Silas's trolley (Causeway):** both roosts open as soon as his quest is done, so it rides straight back west. `opened()` in mounts covers stages 0 and 2.
+- **World doors walked out twice.** `beginMothlightArrival` was called by both `arrive` and `releaseSource`; it now runs once per plan.
+- **A fall in a new world** no longer restarts you in the previous one. If the recovery plan's zone differs from the current zone, you restart at your flag, your checkpoint, or `G.levelSpawn` (new; set in `loadStage`).
+- **Updrafts → Black Woods** now arrives on the ledge at (6350, 250). It used to put you in the pit at y 0, so you fell and took damage.
+- **Dash:** one dash per time in the air (`p.airDashUsed`, reset on the ground, on a wall, or at a refill crystal). The old `meta.testMode` zero-cooldown made chained air dashes into flight. Explore routes that chain air dashes may need re-recording.
+- **Waystations:** one per region, now about halfway through (`compatibilityRecoveryPosition(contract, 0.5)`); the authored anchors are ignored. The respec brazier labels it "WAYSTATION · E TO LIGHT" when you're close, and "WAYSTATION" once lit. All 20 base sites were checked standing on floor.
+- **Outskirts → Gaol** (western breach): wall-jump alone now opens it in the campaign too (`worldRequirementOpen('keep-west-seal')`).
+- **Open question for Isaac:** "dash and other abilities should not be case sensitive". Both modes read `event.code`, so key case and Caps Lock don't matter; asked what he meant.
+
 ## 7.356.0: rate every world on its complete screen; the perfect animation first; Pure play (2026-10-18, Claude)
 
 - **Rating on the complete screen.** In both modes, the world-complete screen (`complete()` in `bladefall-playtest.js`) now has **Rate this world** under the leaderboard: Fun and Difficulty buttons, a comment, and **Send feedback**. It is shown by default, separate from Ascend's per-room review mode. The helpers are `rateFields()` and `wireRate()`. Ascend passes `rate:{...}`; Explore reuses its `feedbackInfo`.

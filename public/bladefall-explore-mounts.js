@@ -143,7 +143,9 @@ const travels=m=>m.kind==='flight'||!!m.travels;   // a creature or craft: one o
 // Rides on a path of their own (7.347): the knight's feet follow it (no hovering anchor, no flight lift).
 const PATHED=new Set(['launch','throw','ground','slide','rail','ceiling','rift','sprint','swing','cage']);
 const perchOf=m=>store().perch[G.stageIndex]||G.mountRoosts?.[0]?.id;
-const opened=()=>G.stageIndex===0||testing()||!!store().reached[G.stageIndex];
+// (7.357) The Outskirts and the Causeway open both ends at once: Silas's trolley, earned after the Brute, rides you
+// straight back west instead of a long manual backtrack (owner).
+const opened=()=>G.stageIndex===0||G.stageIndex===2||testing()||!!store().reached[G.stageIndex];
 // What this region gives (its own ability) must already be yours.
 function missing(){
  if(testing())return [];

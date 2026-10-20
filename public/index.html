@@ -331,12 +331,12 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-playtest-worlds.js?v=7.316.0"></script>
 <script src="bladefall-explore-routes.js?v=7.344.0"></script>
 <script src="bladefall-playtest-model.js?v=7.334.0"></script>
-<script src="bladefall-playtest.js?v=7.356.0"></script>
+<script src="bladefall-playtest.js?v=7.357.0"></script>
 <script src="bladefall-harness.js"></script>
 <script src="bladefall-core.js"></script>
 <script src="bladefall-simulation.js"></script>
 <script src="bladefall-renderer.js"></script>
-<script src="bladefall-respec-renderer.js?v=7.348.0"></script>
+<script src="bladefall-respec-renderer.js?v=7.357.0"></script>
 <script src="bladefall-platformer.js"></script>
 <script src="bladefall-environment.js"></script>
 <script src="bladefall-reactions.js"></script>
@@ -365,7 +365,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-side-stories.js?v=7.232.0"></script>
 <script src="bladefall-opening-stories.js?v=7.234.0"></script>
 <script src="bladefall-side-story-world.js?v=7.343.0"></script>
-<script src="bladefall-explore-mounts.js?v=7.350.0"></script>
+<script src="bladefall-explore-mounts.js?v=7.357.0"></script>
 <script src="bladefall-merge-road.js?v=7.334.0"></script>
 <script src="bladefall-zones.js?v=7.220.0"></script>
 <script src="bladefall-zone-state.js"></script>
@@ -465,7 +465,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.356.0';globalThis.BLADEFALL_VERSION=VERSION;
+const VERSION='7.357.0';globalThis.BLADEFALL_VERSION=VERSION;
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -4319,7 +4319,8 @@ function worldRequirementOpen(requirement){
     // Standalone level entry owns its abilities; campaign progress must not
     // activate the return shaft for a jump-only Outskirts preview.
     if(G&&G.levelSelectMode)return hasCapability('wall-jump');
-    return !!((meta.world&&meta.world.keepWestSealOpen)||(G&&G.keepWestSealOpen)||BFSecretsModule.vaultKeys(meta.secrets).includes('keep-key'));
+    // (7.357) Wall-jump alone opens the western breach to the Gaol (owner: a save that had wall-cling was turned away).
+    return !!((meta.world&&meta.world.keepWestSealOpen)||(G&&G.keepWestSealOpen)||BFSecretsModule.vaultKeys(meta.secrets).includes('keep-key')||hasCapability('wall-jump'));
   }
   return false;
 }
@@ -10551,6 +10552,7 @@ function buildCustomLevel(L,s){
   G.levelLength=L.len+ext;
   if(Number.isFinite(L.spawnX)){G.p.x=L.spawnX;G.p.ckX=L.spawnX;}
   if(Number.isFinite(L.spawnY)){G.p.y=L.spawnY;G.p.ckY=L.spawnY;}
+  G.levelSpawn={x:G.p.x,y:G.p.y||0};   // (7.357) where a fall restarts a level you've planted no flag in
   // Layer the NG+ variants over the base level rather than replacing it.
   const objs=[...L.objects],loot=[...(L.loot||[])],ens=[...(L.enemies||[])];
   // NG+1 is the jetpack tier, so it gets the sky road. NG+2 revokes the jetpack and
@@ -10933,9 +10935,9 @@ function applyZoneHydration(view,manifest){
   G.persistentEncounters=Object.assign({},view.encounters);
   G.discoveredZoneCells=[...view.discoveredCells];
 }
-function compatibilityRecoveryPosition(contract){
+function compatibilityRecoveryPosition(contract,ratio){
   const zone=BFZonesModule.zone(contract.zoneId),length=Math.max(1,G.levelLength||zone.localBounds.x2);
-  const targetX=Math.max(70,Math.min(length-70,contract.position.x/Math.max(1,zone.localBounds.x2)*length));
+  const targetX=Math.max(70,Math.min(length-70,Number.isFinite(ratio)?length*ratio:contract.position.x/Math.max(1,zone.localBounds.x2)*length));
   const candidates=(G.obstacles||[]).filter(o=>o.type==='plat'&&!o.ceiling&&!o.gone&&!o.fake&&!o.gate&&!o.crumble&&o.y>=0&&o.y<900&&o.w>=90);
   // Prefer the authored floor beneath the contract position. Pure centre-distance
   // can choose the lip of a nearby high terrace even while a broad refuge floor
@@ -10948,8 +10950,8 @@ function compatibilityRecoveryPosition(contract){
 }
 function installZoneRestSite(zoneId){
   const contract=BFRecoveryModule.siteForZone(zoneId);if(!contract)return;
-  const anchor=(G.obstacles||[]).find(o=>o.restSiteAnchor===contract.id);
-  const position=anchor?{x:anchor.x,y:anchor.y||0,compatibility:false}:compatibilityRecoveryPosition(contract);
+  // (7.357) One waystation about halfway through each level (owner): it lights a checkpoint and a fast-travel point.
+  const position=compatibilityRecoveryPosition(contract,0.5);
   const marker={type:'restSite',id:contract.id,siteId:contract.id,zoneId,name:contract.name,
     fastTravel:contract.fastTravel,x:position.x,y:position.y,w:58,h:64,compatibility:position.compatibility};
   G.zoneRestSite=marker;G.obstacles.push(marker);
@@ -11650,7 +11652,7 @@ function compatibilityZoneArrival(plan){
   // Updrafts level shell. Enter at the authored opening rather than dropping the
   // player into the middle of a later room; returning restores the root seam.
   if(plan.connectorId==='black-woods-updrafts'&&plan.targetZoneId==='updrafts'){x=70;y=0;}
-  if(plan.connectorId==='black-woods-updrafts'&&plan.targetZoneId==='black-woods'){x=6350;y=0;}
+  if(plan.connectorId==='black-woods-updrafts'&&plan.targetZoneId==='black-woods'){x=6350;y=250;}   // (7.357) on the ledge under the chimney, not in the pit below it
   if(plan.connectorId==='updrafts-marksman'&&plan.targetZoneId==='hollow-marksman'){x=70;y=0;}
   /*   YOU COME BACK ONTO THE LEDGE YOU LEFT FROM. Owner: "when returning to updrafts
      from hollow marksman, you spawn in bottom and just repeatedly take damage until
@@ -11918,6 +11920,8 @@ function mothlightDoor(){return worldDoor('outskirts-black-woods');}
 function atMothlightDoor(){return atWorldDoor('outskirts-black-woods');}
 function beginMothlightArrival(plan){
   if(!plan||!WORLD_DOORS[plan.connectorId])return;
+  // (7.357) arrive() and releaseSource() both call this: walk out of the door once, not twice.
+  if(plan._doorArrival||G.gateWalk?.arrival)return;plan._doorArrival=true;
   const d=worldDoor(plan.connectorId);if(!d)return;
   G.gateWalk={t:0,arrival:true,x:d.x,y:d.y,dir:-d.into,toX:d.x-d.into*90,depth:1};
   Object.assign(G.p,{x:d.x,y:d.y,vx:0,vy:0,face:-d.into});
@@ -12867,7 +12871,7 @@ function ngRemixEnemyDeath(e){
   }
   if(e.riftMarked>0&&remixHas('marked-quarry')){
     const p=G.p;
-    p.dodgeCdT=0;p.jumps=Math.min(p.jumps,1);p.airRefill=true;
+    p.dodgeCdT=0;p.jumps=Math.min(p.jumps,1);p.airRefill=true;p.airDashUsed=false;
     restoreBlood(p,.2);
     addText(e.x,GROUND_Y-e.y-e.h-22,'RIFT SPOILS','#d8b7ff',true);
     for(let i=0;i<14;i++)G.particles.push({x:e.x,y:GROUND_Y-e.y-e.h*.5,
@@ -12878,7 +12882,7 @@ function ngRemixEnemyDeath(e){
 function releaseRiftBloom(entry,exit){
   const p=G.p;
   if(!hasGift('rift-bloom')||(p.riftBloomCd||0)>0)return;
-  p.riftBloomCd=4;p.dodgeCdT=0;p.jumps=Math.min(p.jumps,1);p.airRefill=true;
+  p.riftBloomCd=4;p.dodgeCdT=0;p.jumps=Math.min(p.jumps,1);p.airRefill=true;p.airDashUsed=false;
   const damage=Math.max(4,(p.weapon?p.weapon.dmg:9)*effPower(p)*.35);
   for(const mouth of [entry,exit]){
     G.aoes.push({x:mouth.x,y:mouth.y,r:92,fromPlayer:true,ordinaryOnly:1,
@@ -12894,7 +12898,7 @@ function ngRemixPlayerTransit(result){
   releaseRiftBloom(result.entry,result.exit);
   if(!remixHas('rift-renewal')||
      !BFRemix.trigger('rift-renewal','player-transit',G.time,2.4))return;
-  const p=G.p;p.dodgeCdT=0;p.jumps=Math.min(p.jumps,1);p.airRefill=true;
+  const p=G.p;p.dodgeCdT=0;p.jumps=Math.min(p.jumps,1);p.airRefill=true;p.airDashUsed=false;
   addText(result.exit.x,GROUND_Y-result.exit.y-60,'RIFT RENEWAL','#8fdcff',false);
 }
 /* Coins already banked in meta render as dim ghosts — you know you've been here. */
@@ -17512,12 +17516,15 @@ function update(dt){
   // The window is 0.6 s and is set by nothing but a seam, so letting it run through a
   // brief ground contact cannot leak into ordinary movement.
   if(p._ballisticT>0)p._ballisticT-=dt;
-  if((movement.dash||testDash)&&(!window.BladefallCeleste||BladefallCeleste.labCanDash())&&p.dashBuf>0&&p.dodgeCdT<=0&&p.dodgeTimer<=0&&!G.cartMode&&!(p._flungT>0)){
+  // (7.357) One dash per time in the air: landing, a wall or a refill gives it back. Chained air dashes were flight.
+  if(p.onGround||p.onWall)p.airDashUsed=false;
+  if((movement.dash||testDash)&&(!window.BladefallCeleste||BladefallCeleste.labCanDash())&&p.dashBuf>0&&p.dodgeCdT<=0&&p.dodgeTimer<=0&&!G.cartMode&&!(p._flungT>0)&&!(p.airDashUsed&&!p.onGround)){
     p.dashBuf=0;
     p.dodgeCdT=meta.testMode?0:effDodgeCd(p);
     p.dodgeTimer=movement.tuning.dashDurationSeconds;
     p.dashX=mx||p.face;
     p.dashUp=!!(input.jz<-.5||(watchLike()?tasInjected?.held?.up:(BFKeyboard.isDown('ArrowUp')||BFPad.isDown('aimup'))));
+    if(!p.onGround||p.dashUp)p.airDashUsed=true;
     p.dashDiagonal=p.dashUp&&Math.abs(mx)>.25;
     if(p.dashUp){p.dashX=p.dashDiagonal?Math.sign(mx):0;p.onGround=false;p.floorPlat=null;p.vy=-680*(p.dashDiagonal?Math.SQRT1_2:1);p.vx=p.dashX*spd*movement.tuning.dashSpeedMultiplier*Math.SQRT1_2;}
     window.BladefallCeleste?.labStart(p);
@@ -18029,7 +18036,7 @@ function update(dt){
     if(Math.abs(p.x-o.x)<36&&Math.abs((p.y+p.h/2)-o.y)<42){
       o.cdT=2.5;
       const refill=BFMovementProgressionModule.refill(activeCapabilityProgress());
-      p.jumps=refill.jumps;p.airRefill=true;if(refill.dashReady)p.dodgeCdT=0;
+      p.jumps=refill.jumps;p.airRefill=true;if(refill.dashReady){p.dodgeCdT=0;p.airDashUsed=false;}
       ngRemixCrystal(o);
       if(p.hasJetpack)p.fuel=Math.min(100,p.fuel+(o.packRefill??50));
       if(p.hasJetpack&&G.stageIndex===3&&o.fullPackRefill!==false)p.fuel=100;
@@ -24612,7 +24619,7 @@ function titleScreen(){
       <button class="bigbtn ghost" id="sndBtn" style="flex:1;">Sound: ${meta.soundOn?'On 🔊':'Off 🔇'}</button>
       <button class="bigbtn ghost" id="settingsBtn" style="flex:1;">⚙ Controls</button>
     </div>
-    <a class="bigbtn ghost" id="apkBtn" href="https://github.com/isaac2055/Bladefall-2D/releases/download/v7.356.0/Bladefall-7.356.0.apk" style="display:block;text-align:center;box-sizing:border-box;text-decoration:none" download>Download APK</a>
+    <a class="bigbtn ghost" id="apkBtn" href="https://github.com/isaac2055/Bladefall-2D/releases/download/v7.357.0/Bladefall-7.357.0.apk" style="display:block;text-align:center;box-sizing:border-box;text-decoration:none" download>Download APK</a>
     <p class="hint">v${VERSION}</p></div>`);
   if(canContinue)document.getElementById('contBtn').onclick=()=>{if(continueSurvive)location.href='precision.html?pitch=climb&resume=1&mode='+(lastPlayed.mode==='review'?'review':'play');else continueRun();};
   document.getElementById('newBtn').onclick=openExploreMenu;
@@ -24831,7 +24838,7 @@ function openSettings(returnTo){
     `<div class="kbrow"><span class="kbname">${KB_LABELS[id]}</span><button class="kbkey" id="kb_${id}">${keyLabel(kbCode(id))}</button></div>`
   ).join('');
   showOvHTML(`<div class="card settingscard"><h2 class="ovh">Settings</h2>
-    <div class="settingsection">Playtesting</div><label class="kbrow"><span>Review mode · rate each level when you finish it</span><input id="ptFeedbackToggle" type="checkbox" ${BladefallPlaytest.feedbackEnabled()?'checked':''}></label><label class="kbrow"><span>Show the run timer</span><input id="ptClockToggle" type="checkbox" ${BladefallPlaytest.clockShown()?'checked':''}></label><button class="bigbtn ghost" id="ptBoards">Speedrun leaderboards</button><div class="settingsection">Audio</div>
+    <div class="settingsection">Playtesting</div><label class="kbrow"><span><b>Pure play</b> · no leaderboard or rating screen when you finish a world</span><input id="ptPureToggle" type="checkbox" ${BladefallPlaytest.pure()?'checked':''}></label><label class="kbrow"><span>Review mode · rate each level when you finish it</span><input id="ptFeedbackToggle" type="checkbox" ${BladefallPlaytest.feedbackEnabled()?'checked':''}></label><label class="kbrow"><span>Show the run timer</span><input id="ptClockToggle" type="checkbox" ${BladefallPlaytest.clockShown()?'checked':''}></label><button class="bigbtn ghost" id="ptBoards">Speedrun leaderboards</button><div class="settingsection">Audio</div>
     <p class="ovsub" style="margin-bottom:6px;text-align:left;">Music Volume</p>
     <div class="volrow"><span>🔈</span><input type="range" id="volSlider" style="touch-action:none; pointer-events:auto; user-select:auto; -webkit-user-select:auto;" min="0" max="100" value="${vol}"><span id="volLabel" style="width:38px;text-align:right;color:var(--ink);font-weight:700;">${vol}%</span></div>
     <p class="ovsub" style="margin:8px 0 6px;text-align:left;">Effects Volume</p>
@@ -24936,6 +24943,7 @@ function openSettings(returnTo){
   const rendererSelect=document.getElementById('rendererSelect');if(rendererSelect)rendererSelect.onchange=()=>{meta.rendererMode=rendererSelect.value;persist();};
   const viewScaleSelect=document.getElementById('viewScaleSelect');if(viewScaleSelect)viewScaleSelect.onchange=()=>{meta.viewScale=viewScaleSelect.value;persist();applyViewScale();};
   document.getElementById('ptFeedbackToggle').onchange=e=>BladefallPlaytest.setFeedback(e.target.checked);
+  document.getElementById('ptPureToggle').onchange=e=>BladefallPlaytest.setPure(e.target.checked);
   document.getElementById('ptClockToggle').onchange=e=>BladefallPlaytest.setClock(e.target.checked);
   document.getElementById('ptBoards').onclick=()=>BladefallPlaytest.boards('survival');
   const viewZoomSelect=document.getElementById('viewZoomSelect');if(viewZoomSelect)viewZoomSelect.onchange=()=>{setGameZoom(+viewZoomSelect.value);};
@@ -25188,6 +25196,9 @@ function die(){
     let death=G.coopSession?BFRecoveryModule.recordDeath(coopRecoveryState(),zoneId,fallback)
       :BFRecoveryModule.recordDeath(meta.recovery,zoneId,fallback);
     if(G.workshop)death={...death,plan:{...death.plan,zoneId,position:fallback}};
+    // (7.357) A fall in a new world never sends you back to the last one: with no flag planted here, start this level again.
+    if(death.plan.zoneId!==zoneId){const placed=G.placedCheckpoint&&G.placedCheckpoint.stage===G.stageIndex;
+      death={...death,plan:{...death.plan,zoneId,position:placed?{x:G.placedCheckpoint.x,y:G.placedCheckpoint.y}:G.p.ckSet?fallback:(G.levelSpawn||fallback)}};}
     if(G.coopSession)G.coopRecovery=death.state;else meta.recovery=death.state;
     const snap=G.checkpointLoadout||meta.run&&meta.run.p||G.levelStartSnap,stage=BFZonesModule.zone(death.plan.zoneId).stageIndex;
     G.zonePersistenceManifest=null;G._suppressEntranceCheckpoint=true;
@@ -25380,7 +25391,7 @@ function openPause(){
   mode='pause';updateBossHealthBar();const chartOwned=!!meta.outskirtsFieldChart,discovery=playerBuildDiscovery();
   showOvHTML(`<div class="card"><h2 class="ovh">Paused</h2>
     <button class="bigbtn" id="resBtn">Resume</button>
-    ${!window.BLADEFALL_WORKSHOP_PLAY&&(window.BladefallMounts?.testMode()||meta.devUnlocked)?'<button class="bigbtn ghost" id="workshopEdit">Edit this level</button>':''}
+    ${!window.BLADEFALL_WORKSHOP_PLAY&&window.BladefallMounts?.testMode()?'<button class="bigbtn ghost" id="workshopEdit">Edit this level</button>':''}
     ${G?.stageIndex===44?'<button class="bigbtn" id="pwPauseRooms">Choose workshop room</button>':''}
     ${discovery.bag?'<button class="bigbtn ghost" id="bagBtn">＋ Traveler’s Bag</button>':''}
     ${chartOwned?'<button class="bigbtn ghost" id="mapBtn">◇ Dream Map</button>':''}
@@ -26295,7 +26306,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.356.0').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.357.0').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */

@@ -4624,7 +4624,10 @@ function drawCheckpoint(o){
   if(on) glow(bx + 5, by - 25, 20, '255,180,84', .35);
 }
 function drawBrazier(o){
-  const bx = WX(o.x), by = WY(o.y || 0), lit = !!(o.lit || o.active || o.used);
+  const bx = WX(o.x), by = WY(o.y || 0), way = o.type === 'restSite', lit = !!(o.lit || o.active || o.used || (way && typeof meta !== 'undefined' && meta.recovery?.activatedSites?.[o.siteId]));
+  // (7.357) a waystation says what it is: lit, or how to light it once you're close
+  if(way){ const near = curG.p && Math.abs(curG.p.x - o.x) < 320 && Math.abs((curG.p.y || 0) - (o.y || 0)) < 160;
+    if(lit || near){ const txt = lit ? 'WAYSTATION' : 'WAYSTATION · E TO LIGHT'; ctx.font = 'bold 7px monospace'; ctx.textAlign = 'center'; ctx.fillStyle = P.skyTop; ctx.fillText(txt, bx + 1, by - 27); ctx.fillStyle = lit ? '#ffb45a' : '#d8c48f'; ctx.fillText(txt, bx, by - 28); } }
   B(bx - 7, by - 2, 14, 2, T.stoneDark); B(bx - 5, by - 6, 10, 4, T.stone); B(bx - 6, by - 7, 12, 1, T.stoneLit); B(bx - 1, by - 10, 2, 3, T.stoneDark);
   if(lit){ glow(bx, by - 12, 30, '255,154,58', .5); for(let i = 0; i < 5; i++){ const h = 4 + ((Math.sin(time * 9 + i * 1.7) + 1) * 3 | 0); B(bx - 3 + i * 1.5, by - 10 - h, 2, h, i % 2 ? P.ember : P.amber); } }
   else { B(bx - 3, by - 8, 6, 1, '#5a2a1a'); nearGlow(o, '255,154,58', 10); }
