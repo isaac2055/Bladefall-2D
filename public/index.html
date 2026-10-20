@@ -361,11 +361,11 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-recollections.js"></script>
 <script src="bladefall-advancement.js"></script>
 <script src="bladefall-journey.js?v=7.234.0"></script>
-<script src="bladefall-conversation.js?v=7.234.0"></script>
-<script src="bladefall-side-stories.js?v=7.232.0"></script>
+<script src="bladefall-conversation.js?v=7.353.0"></script>
+<script src="bladefall-side-stories.js?v=7.353.0"></script>
 <script src="bladefall-opening-stories.js?v=7.234.0"></script>
-<script src="bladefall-side-story-world.js?v=7.343.0"></script>
-<script src="bladefall-explore-mounts.js?v=7.350.0"></script>
+<script src="bladefall-side-story-world.js?v=7.353.0"></script>
+<script src="bladefall-explore-mounts.js?v=7.353.0"></script>
 <script src="bladefall-merge-road.js?v=7.334.0"></script>
 <script src="bladefall-zones.js?v=7.220.0"></script>
 <script src="bladefall-zone-state.js"></script>
@@ -465,7 +465,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.352.0';
+const VERSION='7.353.0';
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -13641,9 +13641,10 @@ function openFieldConversation(source,title,line,options){
   const state=journeyState(),prior=state.attitudes[key];
   mode='conversation';document.getElementById('bosshpwrap').classList.remove('on');
   const close=()=>{if(G===session){mode='play';G.outskirtsAnnotation=null;showOverlay(false);showGameUI(true);hudUpdate();}};
-  const responses=opts.responses||BladefallConversation.voice(source.name||title)||[
-    ['I’m listening.','All right. I’ll keep it short.'],['Go on.','That’s about all of it, honestly.'],['Get on with it.','Suit yourself. You’ve heard it.']
-  ];
+  // (7.353) No dialogue menus: a person with a voice (bladefall-conversation.js) has one exchange with the knight,
+  // played out as beats; anyone else just speaks. Only a reply that decides something (a rift shard's) is a choice.
+  const voiced=opts.responses||BladefallConversation.voice(source.name||title);
+  const responses=voiced||[['','']],decisive=responses.some(r=>r[2]);
   const apply=(i)=>{
     const active=journeyState();active.attitudes[key]=i;
     if(typeof BladefallRiftShards!=='undefined'&&responses[i][2])BladefallRiftShards.chose(responses[i]);
@@ -13657,24 +13658,29 @@ function openFieldConversation(source,title,line,options){
   // (7.341) A watched route or the traversal bot answers with the first reply and walks on: the same gift or
   // reward a player would get, without stopping the run for a dialogue nobody is reading.
   if(watchAuto()){if(person&&prior===undefined)apply(0);mode='play';return true;}
-  BladefallConversation.show({title,text:prior===undefined?line:line+'\n\n'+responses[prior][1],accent:source.accent,onClose:close,
-    choices:person&&prior===undefined?responses.map((r,i)=>({label:r[0],action:()=>choose(i)})):undefined});
+  if(person&&prior===undefined&&decisive){
+    BladefallConversation.show({title,text:line,accent:source.accent,onClose:close,choices:responses.map((r,i)=>({label:r[0],action:()=>choose(i)}))});
+    mode='conversation';return true;}
+  if(person&&prior===undefined)apply(0);
+  const reply=voiced?responses[prior===undefined?0:prior]:null;
+  BladefallConversation.show({title,text:reply?line+'\n\n'+reply[1]:line,accent:source.accent,onClose:close,
+    lines:reply&&prior===undefined?[{text:line},{text:reply[0],speaker:'The Knight',portrait:'knight',side:'left'},{text:reply[1]}]:undefined});
   mode='conversation';return true;
 }
 function openJourneyWorkshop(shopObject,shop){
   const id='workshop:'+shop.id,claimed=journeyState().claimed.includes(id);
   const work={
-    'ethereal-goods':['I set this fragment aside when I sorted the last delivery. Please, take it, if it’s of use. I’d rather it went with someone than sat in my drawer.','I’ll put it to use.','I’ll take it.','Finally. Something useful.'],
-    'bellows-exchange':['Your grips are coming unbound. Hold still—I’ll do both while I’m at it.','Thank you. These have had a rough journey.','How long will it take?','Try not to make them worse.'],
-    'keepers-counter':['Ha—my old stamp still takes! Bring the blade over, friend. The bow as well.','Good work deserves another chance.','Both weapons, then.','Let’s see if you still know your trade.'],
-    'white-exchange':['Found this under the stove. Kept dry all winter, somehow. Take it—it’s no good to me, and I can’t sell it.','Then I’ll carry it carefully.','What is it?','A whole winter, for that?'],
-    'sluice-counter':['A repair seal, dry beneath the drawer. A note reads: “Take what you can use.”','I’ll leave the drawer tidy.','Take the seal.','About time this place paid out.'],
-    'last-inventory':['The damp missed this drawer. Take the fragment. It’s one less thing for me to count, and I count all night.','One less thing to carry. Thank you.','What do I owe you?','You needed a whole shop to give that away?'],
-    'cinder-ledger':['Carried this through three collapsed tunnels. On fire, one of them. Your turn.','I won’t waste the trouble.','Hand it over.','You want applause for a delivery?']
+    'ethereal-goods':['I set this fragment aside when I sorted the last delivery. Please, take it, if it’s of use. I’d rather it went with someone than sat in my drawer.','I’ll put it to use.','I’ll take it.','Finally. Something useful.','Then it’s found a home. That’s all I wanted for it.'],
+    'bellows-exchange':['Your grips are coming unbound. Hold still—I’ll do both while I’m at it.','Thank you. These have had a rough journey.','How long will it take?','Try not to make them worse.','Rough is right. There—they’ll hold for a few more falls.'],
+    'keepers-counter':['Ha—my old stamp still takes! Bring the blade over, friend. The bow as well.','Good work deserves another chance.','Both weapons, then.','Let’s see if you still know your trade.','There. Mind you don’t notch it on the first door you meet.'],
+    'white-exchange':['Found this under the stove. Kept dry all winter, somehow. Take it—it’s no good to me, and I can’t sell it.','Then I’ll carry it carefully.','What is it?','A whole winter, for that?','Carefully’s the only way anything lasts out here.'],
+    'sluice-counter':['A repair seal, dry beneath the drawer. A note reads: “Take what you can use.”','I’ll leave the drawer tidy.','Take the seal.','About time this place paid out.','(The drawer slides shut on its own, as if it was waiting for that.)'],
+    'last-inventory':['The damp missed this drawer. Take the fragment. It’s one less thing for me to count, and I count all night.','One less thing to carry. Thank you.','What do I owe you?','You needed a whole shop to give that away?','Thank me by not getting it wet. Off you go.'],
+    'cinder-ledger':['Carried this through three collapsed tunnels. On fire, one of them. Your turn.','I won’t waste the trouble.','Hand it over.','You want applause for a delivery?','Good. It’s been through enough without being wasted.']
   }[shop.id];
   if(!work)return false;
-  const responses=[[work[1],'Take care of it.'],[work[2],'There. It’s yours.'],[work[3],'Take it, then. We’re done here.']];
-  return openFieldConversation({...shopObject,accent:shop.accent},shop.keeper,claimed?(shop.id==='ethereal-goods'?'You already have the spare fragment. Do look over the stall, though, if you need anything else.':'That’s all I had for you. Go on, then.'):work[0],{person:!claimed,interaction:'workshop',reward:id,responses});
+  const responses=[[work[1],work[4]]];   // (7.353) one exchange, the keeper's own reply
+  return openFieldConversation({...shopObject,accent:shop.accent},shop.keeper,claimed?(shop.id==='ethereal-goods'?'You already have the spare fragment. Do look over the stall, though, if you need anything else.':(shop.keeper||'The keeper')+' has nothing else set aside, but the stall is open.'):work[0],{person:!claimed,interaction:'workshop',reward:id,responses});
 }
 function openRegionalShop(shopObject,countVisit){
   const shop=BFShopsModule.shops.find(entry=>entry.id===shopObject.shopId);if(!shop)return false;
@@ -13768,8 +13774,8 @@ function talkQuestContact(){
   if(!result)return false;
   const earned=(meta.gold||0)-oldGold;
   const label=n.questActor?(n.name+(n.title?' · '+n.title:'')):travelerLabel(n);
-  if(journeyActive())return openFieldConversation(n,label,before&&before.line||'Mind how you go.',{person:true,interaction:before&&before.state||'quest'});
-  toast('<b style="color:'+n.accent+'">'+escText(label)+'</b><br>“'+escText(before&&before.line||'Mind how you go.')+'”'+
+  if(journeyActive())return openFieldConversation(n,label,before&&before.line||(n.name||'They')+' nods and goes back to work.',{person:true,interaction:before&&before.state||'quest'});
+  toast('<b style="color:'+n.accent+'">'+escText(label)+'</b><br>“'+escText(before&&before.line||(n.name||'They')+' nods and goes back to work.')+'”'+
     (earned?'<br><b style="color:#ffd700">Quest complete · +'+earned+' gold</b>':''),
     before&&before.state==='available'?6000:undefined);
   if(meta.soundOn)(result.changed?SFX.win():SFX.pickup());return true;
@@ -24637,11 +24643,14 @@ function openExploreMenu(){
    <button class="bigbtn" id="exploreNew">New Game</button>
    <button class="bigbtn ghost" id="lvlSelBtn">🗺 Level Select</button>
    <button class="bigbtn ghost" id="exploreCoop">👥 Co-op${coopActive()?' — CONNECTED':''}</button>
+   ${window.BladefallMounts?.testMode()?'<button class="bigbtn ghost" id="exploreDialogue">✎ Dialogue · read and edit every line</button>':''}
    <button class="bigbtn ghost" id="exploreBack">Return to title menu</button></div>`);
  document.getElementById('exploreContinue')?.addEventListener('click',continueRun);
  document.getElementById('exploreNew').onclick=()=>campaignHasProgress()?openNewGameConfirm():startFreshCampaign();
  document.getElementById('lvlSelBtn').onclick=openLevelSelect;
- document.getElementById('exploreCoop').onclick=openCoop;   // (7.320) Explore's co-op lives in Explore; Ascend's in Ascend
+ document.getElementById('exploreCoop').onclick=openCoop;
+ // (7.353) Every line in the game, editable (dialogue-editor.html; edits apply at once on this device). A test-mode tool.
+ document.getElementById('exploreDialogue')?.addEventListener('click',()=>{const w=window.open('./dialogue-editor.html','bladefall-dialogue-editor');if(!w)location.href='./dialogue-editor.html';});   // (7.320) Explore's co-op lives in Explore; Ascend's in Ascend
  document.getElementById('exploreBack').onclick=titleScreen;
 }
 /* Extras belong to the offline app and local development builds. */
@@ -26295,7 +26304,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.352.0').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.353.0').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */

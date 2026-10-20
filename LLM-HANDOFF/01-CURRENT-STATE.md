@@ -1,3 +1,11 @@
+## 7.353.0: dialogue pass, with no menus and no repeated lines; Dialogue editor in Explore (2026-10-20, Claude, cloud session)
+
+- **Side stories:** they run one way, each step a single line of the knight's own. The only kept choice is the Archivist's keep or burn.
+- **Residents:** they play one exchange automatically.
+- **Repeats:** stock and shared lines were rewritten.
+- **Dialogue editor:** Explore menu → ✎ Dialogue, shown in test mode.
+- **Details:** `LLM-HANDOFF/HANDOFF-7.344.0.md`, section 8.
+
 ## 7.352.0: Fractured tab "???"; Ascend worlds locked until reached; Ascend New Game (2026-10-18, Claude, cloud session)
 
 - **Explore:** the Fractured tab reads "???" until an echo is open. Five taps still toggle test mode.

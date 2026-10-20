@@ -20,7 +20,7 @@ try{
     if(Math.abs(G.p.x-target.x)<10&&Math.abs(G.p.y-target.y)<15&&G.p.onGround){keys.ArrowLeft=keys.ArrowRight=keys[kbCode('jump')]=false;return true;}
    }keys.ArrowLeft=keys.ArrowRight=keys[kbCode('jump')]=false;return false;}
    const choose=choice=>{const c=S.view(W.state(),id).choices.find(c=>c.id===choice);if(!c)return false;const button=[...document.querySelectorAll('#fieldConversation button')].find(b=>b.textContent===c.label);button?.click();return !!button;};
-   const actorReached=walk(actor);beginOutskirtsInteraction();const accepted=choose('short');choose('leave');
+   const actorReached=walk(actor);beginOutskirtsInteraction();const accepted=choose('short');BladefallConversation.close();
    const target=G.obstacles.find(o=>o.sideStory===id&&o.task===S.byId[id].tasks[0].id);let targetReached;
    if(action==='hook'){pressed[kbCode('hook')]=true;for(let i=0;i<90;i++)tick();targetReached=Math.abs(G.p.x-target.x)<34&&Math.abs(G.p.y-target.y)<34;beginOutskirtsInteraction();BladefallConversation.close();keys[kbCode('slam')]=true;tick();keys[kbCode('slam')]=false;}
    else if(action==='cart'){const cart=G.obstacles.find(o=>o.sideStoryRole==='cart');for(let f=0;f<600&&Math.abs(cart.x-target.x)>40;f++){keys.ArrowRight=true;tick();}keys.ArrowRight=false;targetReached=walk({x:target.x-40,y:target.y});beginOutskirtsInteraction();BladefallConversation.close();}
@@ -38,7 +38,7 @@ try{
    if(id==='sailors'){const share=G.obstacles.find(o=>o.sideStory===id&&o.task==='share');second=walk(share);beginOutskirtsInteraction();BladefallConversation.close();}
 
    if(id==='automaton'){const roof=G.obstacles.find(o=>o.sideStory===id&&o.task==='roof');second=walk(roof);beginOutskirtsInteraction();BladefallConversation.close();}
-   const returned=walk(actor);beginOutskirtsInteraction();const finished=choose('finish');choose('leave');
+   const returned=walk(actor);beginOutskirtsInteraction();const finished=choose('finish');BladefallConversation.close();
    if(id==='defector'){
     const e=G.sideStoryScene.escort;
     for(let f=0;f<1200&&!e.finished;f++){const dx=e.destination-G.p.x;keys.ArrowRight=dx>10&&Math.abs(G.p.x-actor.x)<100;keys.ArrowLeft=dx< -10&&Math.abs(G.p.x-actor.x)<100;tick();}

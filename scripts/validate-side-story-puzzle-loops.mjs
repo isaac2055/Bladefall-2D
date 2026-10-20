@@ -22,7 +22,7 @@ try{
    }keys.ArrowLeft=keys.ArrowRight=keys[kbCode('jump')]=false;return false;}
    const choose=choice=>{const c=S.view(W.state(),id).choices.find(c=>c.id===choice);if(!c)return false;const b=[...document.querySelectorAll('#fieldConversation button')].find(b=>b.textContent===c.label);b?.click();return !!b;};
    const use=()=>{beginOutskirtsInteraction();BladefallConversation.close();};
-   const actorReached=walk(actor);beginOutskirtsInteraction();const accepted=choose('short');choose('leave');let puzzle=true;const trace=[];
+   const actorReached=walk(actor);beginOutskirtsInteraction();const accepted=choose('short');BladefallConversation.close();let puzzle=true;const trace=[];
    const task=name=>G.obstacles.find(o=>o.sideStory===id&&o.task===name);
    if(id==='figure'){
     const padReached=walk(G.sideStoryScene.echoPad);puzzle=padReached&&puzzle;trace.push({padReached,x:G.p.x,y:G.p.y});press('echo');
@@ -40,7 +40,7 @@ try{
    const tasksBeforeReturn=S.row(W.state(),id).step;
    const descended=walk({x:actor.baseX-(id==='figure'?25:75)*G.sideStoryScene.base.dir,y:actor.baseY});
    if(id==='ember-pet'){puzzle=walk(task('settle'))&&puzzle;use();}
-   const returned=walk(actor);const candidate=outskirtsInteractionCandidate();trace.push({returned,x:G.p.x,y:G.p.y,candidate:{type:candidate?.type,profile:candidate?.profileId,role:candidate?.sideStoryRole}});beginOutskirtsInteraction();const finished=choose('finish');choose('leave');
+   const returned=walk(actor);const candidate=outskirtsInteractionCandidate();trace.push({returned,x:G.p.x,y:G.p.y,candidate:{type:candidate?.type,profile:candidate?.profileId,role:candidate?.sideStoryRole}});beginOutskirtsInteraction();const finished=choose('finish');BladefallConversation.close();
    const reward=G.obstacles.find(o=>o.sideStoryRole==='reward'),rewardReached=walk(reward);use();
    rows.push({id,movementTrace,trace,actorReached,accepted,puzzle,tasksBeforeReturn,descended,returned,finished,rewardReached,claimed:S.row(W.state(),id).claimed,phase:S.row(W.state(),id).phase,position:{x:G.p.x,y:G.p.y},portals:G.cratePortals.length});
   }return rows;
