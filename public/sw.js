@@ -1,7 +1,7 @@
 /* Bladefall service worker — offline play + fast reloads once installed.
    Bump CACHE_NAME on a deploy where you want returning players to pick up
    the change immediately instead of waiting on the network-first refresh. */
-const CACHE_NAME = 'bladefall-v530-voices-1';
+const CACHE_NAME = 'bladefall-v531-voices-2';
 const CORE_ASSETS = [
   './bladefall-pcore-dev-workshop-room.js?v=7.335.0','./bladefall-workshop-ascend-coop-core.js?v=7.336.0','./bladefall-workshop-ascend-play.js?v=7.335.0','./bladefall-workshop-ascend.js?v=7.335.0','./bladefall-workshop-bridge.js?v=7.340.0','./bladefall-workshop-routes.js?v=7.340.0','./bladefall-route-solver.js?v=7.340.0','./bladefall-explore-routes.js?v=7.344.0','./bladefall-workshop-cloud.js?v=7.335.0','./bladefall-workshop-cobuild.js?v=7.335.0','./bladefall-workshop-collaboration.js?v=7.335.0','./bladefall-workshop-explore-runtime.js?v=7.335.0','./bladefall-workshop-explore.js?v=7.335.0','./bladefall-workshop-library.js?v=7.335.0','./bladefall-workshop-model.js?v=7.335.0','./bladefall-workshop-native-play.js?v=7.335.0','./bladefall-workshop-network.js?v=7.335.0','./bladefall-workshop-play-link.js?v=7.335.0','./bladefall-workshop-properties.js?v=7.335.0','./bladefall-workshop-render.js?v=7.335.0','./bladefall-workshop-sandbox.js?v=7.335.0','./bladefall-workshop-selection.js?v=7.335.0','./bladefall-workshop-sources.js?v=7.340.0','./bladefall-workshop-store.js?v=7.335.0','./bladefall-workshop-ui.js?v=7.340.0',
   './coop-practice.html','./bladefall-coop-practice-core.js?v=7.334.0',
@@ -60,11 +60,11 @@ const CORE_ASSETS = [
   './bladefall-echoes.js',
   './bladefall-gifts.js',
   './bladefall-recollections.js',
-  './bladefall-voice.js?v=7.360.0',
+  './bladefall-voice.js?v=7.361.0',
   './bladefall-conversation.js?v=7.360.0',
-  './bladefall-side-stories.js?v=7.360.0',
+  './bladefall-side-stories.js?v=7.361.0',
   './bladefall-opening-stories.js?v=7.234.0',
-  './bladefall-side-story-world.js?v=7.360.0',
+  './bladefall-side-story-world.js?v=7.361.0',
   './bladefall-explore-mounts.js?v=7.360.0',
   './bladefall-merge-road.js?v=7.334.0',
   './bladefall-journey.js?v=7.234.0',
@@ -323,8 +323,8 @@ const CORE_ASSETS = [
   './bladefall-cloaked-man-art.js?v=7.304.0',
   './bladefall-causeway-story.js?v=7.234.0',
   './bladefall-early-platforming.js?v=7.248.0',
-  './bladefall-resident-art.js?v=7.234.0',
-  './bladefall-portraits.js?v=7.234.0',
+  './bladefall-resident-art.js?v=7.361.0',
+  './bladefall-portraits.js?v=7.361.0',
   './bladefall-advancement.js',
   './bladefall-zones.js?v=7.220.0',
   './bladefall-zone-state.js',
@@ -332,8 +332,8 @@ const CORE_ASSETS = [
   './bladefall-streaming.js',
   './bladefall-world.js?v=7.304.0',
   './bladefall-story.js',
-  './bladefall-shops.js?v=7.231.0',
-  './bladefall-quests.js?v=7.231.0',
+  './bladefall-shops.js?v=7.361.0',
+  './bladefall-quests.js?v=7.361.0',
   './bladefall-milestones.js',
   './bladefall-foundation-audit.js',
   './bladefall-cinematics.js',
@@ -348,9 +348,9 @@ const CORE_ASSETS = [
   './bladefall-release.js',
   './bladefall-blood.js?v=7.181.0',
   './bladefall-inventory.js',
-  './bladefall-dialogue.js?v=7.231.0',
+  './bladefall-dialogue.js?v=7.361.0',
   './bladefall-text.js?v=7.233.0',
-  './bladefall-text-catalog.js?v=7.360.0',
+  './bladefall-text-catalog.js?v=7.361.0',
   './bladefall-harness.js',
   './littlejs.min.js',
   './peerjs.min.js',

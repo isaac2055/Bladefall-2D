@@ -34,6 +34,11 @@ How to read the entries:
 - **Animations**: `bladefall-resident-art.js` `BUSY`/`attend()`: a person is busy (`s.busy`) until the knight is within 130 units, gives a one-pixel start (`s.notice`) and turns to him, and goes back to work when he leaves. Busy poses so far: Vey rewraps her knee, Olan counts patrols on his tally stick, Mara slaps her chart flat, Rowan hones his spear.
 - **Not yet animated**: the after-quest beats (Vey's ladle, Rowan ringing the bell, the Traveler's boot).
 
+### Regions 1-20 (7.361.0)
+- **Done:** every line in sections 01-20 below is in the game and voiced, except where the text differs (a line edited later in the Dialogue Editor goes silent until it is re-recorded).
+- **Cast:** see `scripts/voice/cast.json` (one voice per person; Oren keeps one voice across the Causeway, the Crown, the Keep and Emberdeep; Vey and Mara keep theirs).
+- **Busy poses:** only Vey, Olan, Mara and Rowan have bespoke ones. Everyone else uses the generic working bob (`s.idle`). The named actions below (`[orra-shake-watch]` etc.) are still to draw.
+
 ---
 
 ## 00 · The Outskirts

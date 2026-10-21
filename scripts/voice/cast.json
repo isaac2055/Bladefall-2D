@@ -1,9 +1,194 @@
 {
- "Narrator":{"name":"George","id":"JBFqnCBsd6RMkjVDRZzb"},
- "The Knight":{"name":"Daniel","id":"onwK4e9ZLuTAKqWW03F9"},
- "Vey":{"name":"Clara V.","id":"0ggs85h7hrWz8ExXnsBc"},
- "Olan":{"name":"Sir Stephen","id":"Aaz7hX6MUrjjm0ncqvAg"},
- "Mara":{"name":"Alice","id":"Xb7hH8MSUJpSbSDYk0k2"},
- "Rowan":{"name":"Mark Ritson","id":"S5BwrXIpDqxu5sni2xES"},
- "Traveler":{"name":"Jordie","id":"U977vpWUjb8YL0J1JaFF"}
+ "Narrator": {
+  "name": "George",
+  "id": "JBFqnCBsd6RMkjVDRZzb"
+ },
+ "The Knight": {
+  "name": "Daniel",
+  "id": "onwK4e9ZLuTAKqWW03F9"
+ },
+ "Vey": {
+  "name": "Clara V.",
+  "id": "0ggs85h7hrWz8ExXnsBc"
+ },
+ "Olan": {
+  "name": "Sir Stephen",
+  "id": "Aaz7hX6MUrjjm0ncqvAg"
+ },
+ "Mara": {
+  "name": "Alice",
+  "id": "Xb7hH8MSUJpSbSDYk0k2"
+ },
+ "Rowan": {
+  "name": "Mark Ritson",
+  "id": "S5BwrXIpDqxu5sni2xES"
+ },
+ "Traveler": {
+  "name": "Jordie",
+  "id": "U977vpWUjb8YL0J1JaFF"
+ },
+ "Orra": {
+  "name": "Beatrice",
+  "id": "kkPJzQOWz2Oz9cUaEaQd"
+ },
+ "Pell": {
+  "name": "Steve",
+  "id": "33aGKIlf0SKhTTaSWPVO"
+ },
+ "Hale": {
+  "name": "Callum",
+  "id": "N2lVS1w4EtoT3dr4eOWO"
+ },
+ "Bram": {
+  "name": "Long Tran",
+  "id": "l2BdBZBQH36T9mtVIzQG"
+ },
+ "Elsie": {
+  "name": "Harriet",
+  "id": "aAsWcN5jdLdiYG7Hq0YL"
+ },
+ "Tamsin": {
+  "name": "Lily",
+  "id": "pFZP5JQG7iQjIQuC4Bku"
+ },
+ "Oren": {
+  "name": "Dave",
+  "id": "shQpqsRpptiuyjOV8plT"
+ },
+ "Sable": {
+  "name": "Ian",
+  "id": "70HFmYdPmz1aKiKW6Zx3"
+ },
+ "Silas": {
+  "name": "Edmund",
+  "id": "PA0fqZPUmpGCrlN6gePh"
+ },
+ "Talla": {
+  "name": "Nora",
+  "id": "L51A0Vt79LFJ0refo6v8"
+ },
+ "Edrin": {
+  "name": "Kevin",
+  "id": "xy4F7m4lL5jsBlrYRL2P"
+ },
+ "Cartographer": {
+  "name": "Patrick",
+  "id": "7Oviyg4Mvu7reLmwzvnQ"
+ },
+ "Aven": {
+  "name": "Harmony May",
+  "id": "xYkjVyGTu2UHiLKQR1gQ"
+ },
+ "Automaton": {
+  "name": "Humanoid Neutral RBT",
+  "id": "VukfMVtvHInVUWoMNPiQ"
+ },
+ "Nim": {
+  "name": "Quinn",
+  "id": "2t3wubVNRseKNVjtlWx1"
+ },
+ "Senn": {
+  "name": "Eleanor",
+  "id": "2qQJWjw5XdG80GreshqG"
+ },
+ "Recruit": {
+  "name": "Jordan",
+  "id": "OwEAPhTFInN6VSRT9QXm"
+ },
+ "Archivist": {
+  "name": "Alastair",
+  "id": "mWieNjKKHrWSoIpdPind"
+ },
+ "Tovin": {
+  "name": "Tom",
+  "id": "TkBXFhNSp04NiWhhR7jP"
+ },
+ "Veya": {
+  "name": "Mora",
+  "id": "YHcCpa6SBWnKDaCPZJQR"
+ },
+ "Service Keeper": {
+  "name": "Tim",
+  "id": "IudHjFkI7DrAB5AYmMAs"
+ },
+ "Ines": {
+  "name": "Ayshe",
+  "id": "ItYEY8FKDBUjmjmWUqHe"
+ },
+ "Creature Keeper": {
+  "name": "Carol",
+  "id": "5u41aNhyCU6hXOcjPPv0"
+ },
+ "Venn": {
+  "name": "Boom Mike",
+  "id": "2UyW0L6yjNuo3ZH3XnoV"
+ },
+ "Ada": {
+  "name": "Linda",
+  "id": "0mLOQqwA3kovxF1ID7z6"
+ },
+ "Courier": {
+  "name": "Blue",
+  "id": "YGWwh1G8pUwWmJyCCpma"
+ },
+ "Maker": {
+  "name": "Chaz",
+  "id": "kRQJEERQdPKF3NbUpmTC"
+ },
+ "Breaker": {
+  "name": "Roland",
+  "id": "VtPXau1yA696W1NRsOyS"
+ },
+ "Clerk": {
+  "name": "The Curator",
+  "id": "gJ4a5qWqzRc6NDQT0dIz"
+ },
+ "Wendell": {
+  "name": "Shaun G.",
+  "id": "3GPXrwD4yn6kPJUA0X4j"
+ },
+ "Ottilie": {
+  "name": "Nana Margaret",
+  "id": "xIzR6egd3S3LJZbVW0c1"
+ },
+ "Figure": {
+  "name": "Romulus",
+  "id": "7lJ2JuXZKHyck5zlS7XQ"
+ },
+ "Bellkeeper": {
+  "name": "Andy",
+  "id": "xAYlDSwCLe9L8zjpSKiE"
+ },
+ "Miner": {
+  "name": "Strayan",
+  "id": "SZHzBxM5COkVC4Yl2mnK"
+ },
+ "Hallam": {
+  "name": "Harry",
+  "id": "SOYHLrjzK2X1ezoPC6cr"
+ },
+ "Sailor": {
+  "name": "Krish",
+  "id": "gazNuVFJR4BmHZXJpo5O"
+ },
+ "Organizer": {
+  "name": "Maya J",
+  "id": "0m9IEyVwDrXpg93kwWrc"
+ },
+ "Cobb": {
+  "name": "Jesse",
+  "id": "rLl4PSDTzX3VHL4wjSFI"
+ },
+ "Mother": {
+  "name": "Kriti",
+  "id": "czJCkBWzf2yfuBgx4Rmz"
+ },
+ "Pilgrim": {
+  "name": "Krish (soft)",
+  "id": "DYwOSvKbtU4wKlhzkp1x"
+ },
+ "Gardener": {
+  "name": "Obsidian",
+  "id": "QjEdRoRdZC2i3ncmFpNy"
+ }
 }

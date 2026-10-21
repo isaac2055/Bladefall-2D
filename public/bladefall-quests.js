@@ -34,9 +34,9 @@
       ],
       reward: { gold: 240 },
       dialogue: {
-        active: 'Frostfell folk can bank a fire so it keeps for days. Help Nim carry one through Frostfell, then look in on the Choir flue here. I want to know if heat will ride this wind.',
-        turnIn: 'Heard it, did you? The flue sang. Fire ought to roar in a flue that size, and that one sang. I only mend them; don’t ask me why.',
-        complete: 'Every time the wind shifts I hear that note again. Can’t get it out of my head. Aye, I’ve tried.',
+        active: 'Frostfell folk can bank a fire to keep for days. Help Nim carry one through Frostfell, then come and look at the Choir flue. I want to know if heat rides this wind.',
+        turnIn: 'The flue sang. Should’ve roared. Don’t ask me why.',
+        complete: 'Every time the wind shifts, I hear that note.',
       },
     },
     {
@@ -51,9 +51,9 @@
       ],
       reward: { gold: 320 },
       dialogue: {
-        active: 'Two things. Send one of their shots through your mouths. Then read the prayer in the Inversion. Come and tell me after.',
-        turnIn: 'You turned their shot round and read the prayer. Good. So that seal never cared what you are—only what it takes you for. I can work with that.',
-        complete: 'Every locked door I see now, I think: I’ve beaten one of you. Aye, it’s a good feeling.',
+        active: 'Two things. Send one of their shots back through your portals. Then read the prayer in the Inversion. Tell me after.',
+        turnIn: 'So the seal never cared what you are. Only what it takes you for. I can use that.',
+        complete: 'Every locked door I see now, I think: beaten one of you.',
       },
     },
     {
@@ -69,9 +69,9 @@
       ],
       reward: { gold: 200 },
       dialogue: {
-        active: 'Three entries are still missing from my list, I’m afraid. The broken standard past the Woods. The Frost Court’s siphon record. The Foundry ledger. If you pass them, would you look for me?',
-        turnIn: 'Thank you. That completes it. I’d hoped the list would feel less familiar once it was finished. It doesn’t. Forgive me—that isn’t your concern.',
-        complete: 'Your things are all entered now, and in order. I’m sorry they were ever scattered like that.',
+        active: 'This list says these things are yours. I’ve never seen you before, which is odd. Three entries are missing: the broken standard past the Woods, the Frost Court’s siphon record, and the Foundry ledger. If you pass them, would you look?',
+        turnIn: 'That completes it. I hoped the list would feel less familiar once it was finished. It doesn’t. Forgive me, that isn’t your concern.',
+        complete: 'All entered, and in order. I’m sorry they were ever scattered.',
       },
     },
     {
@@ -86,10 +86,10 @@
       ],
       reward: { gold: 160 },
       dialogue: {
-        offer: 'Gate chain’s taking the whole load on its own. I’ve listened to it groan all morning. There’s two safety catches in the Drop Yard: knock the first loose, let the hoist settle on its cradle, then free the upper one.',
-        active: 'That lower cradle used to take the weight. Right now the gate’s carrying the lot. First catch, then the upper one.',
-        turnIn: 'Hear that? Nothing. That’s the sound of a chain that isn’t about to snap.',
-        complete: 'I’ll keep this road open. Whatever’s out there, you’ve somewhere to come back to.',
+        offer: 'Two safety catches in the Drop Yard. Knock the first loose, let the hoist settle on its cradle, then free the upper one.',
+        active: 'The cradle’s meant to take that weight. Right now the gate’s taking it. First catch, then the upper.',
+        turnIn: 'Listen. Nothing. That’s a chain that isn’t about to snap.',
+        complete: 'I’ll keep this road open. You’ll want somewhere to come back to.',
       },
     },
     {
@@ -104,10 +104,10 @@
       ],
       reward: { gold: 180 },
       dialogue: {
-        offer: 'The old watch token’s got my mark on it. I left it up above the gallery. I’d like it back.',
-        active: 'I’ll be at the far gate, out of the line of fire. The token’s above the gallery.',
-        turnIn: 'That’s my mark. Cut it before any of them wore masks. Here—the purse is yours.',
-        complete: 'I used to know every archer on this watch by name. Couldn’t tell you one of them now.',
+        offer: 'The watch token above the gallery’s got my mark on it. I charted this road before anyone put a watch on it. I’d like it back.',
+        active: 'I’ll be at the far gate, out of the line of fire.',
+        turnIn: 'That’s my mark. Cut it before any of them wore masks. Here, the purse is yours.',
+        complete: 'I used to know every archer on this watch by name. Couldn’t tell you one now.',
       },
     },
   ];

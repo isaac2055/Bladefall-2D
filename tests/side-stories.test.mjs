@@ -18,7 +18,7 @@ for(const q of S.records){
   // Back again: the knight asks what is really going on, once, with no buttons.
   state=S.reduce(state,q.id,{type:'visit'}).state;const back=S.view(state,q.id);
   assert.equal(back.choices.length,0);assert.equal(back.lines[0].text,q.firstReturn?q.firstReturn[0][1]:q.question);
-  state=S.reduce(state,q.id,{type:'heard'}).state;assert.equal(S.view(state,q.id).lines,null);
+  state=S.reduce(state,q.id,{type:'heard'}).state;{const again=S.view(state,q.id).lines;assert.ok(!again||again.length===1,'after the first return, only the step');}
   for(const gone of ['medium','ask:0','accept'])assert.equal(S.reduce(state,q.id,{type:'choice',choice:gone}).error,'unavailable-choice');
   state=tasks(state,q);assert.equal(S.row(state,q.id).phase,'ready');
   const ready=S.view(state,q.id);assert.equal(ready.choices.length,q.resolutions?2:1);
@@ -27,7 +27,7 @@ for(const q of S.records){
   const result=S.reduce(state,q.id,{type:'claim'});assert.deepEqual(result.receipt,{id:q.id,value:2,scope:'regional'});
   const reloaded=S.normalize(JSON.parse(JSON.stringify(result.state)));
   assert.equal(S.reduce(reloaded,q.id,{type:'claim'}).receipt,null);
-  assert.equal(S.view(reloaded,q.id).text,q.longEnding||q.ending);
+  assert.equal(S.view(reloaded,q.id).text,S.plain(q.longEnding||q.ending));
  });
  test(`${q.id}: an old harsh save keeps its outcome and blocks reward and reopening`,()=>{
   let state=S.normalize({quests:{[q.id]:{phase:'harsh',step:0}}});

@@ -70,7 +70,7 @@ function receiveNetwork(m){
 function grantReward(q){
  if(q?.id==='refuge'&&typeof grantAuthoredAdvancementBundle==='function'){
   grantAuthoredAdvancementBundle({vitalityFragments:1},'sidestory:refuge');apply();hudUpdate();
-  return inspect(q.name+'’s thanks',q.name+' gives you a vitality fragment. Four of them add a measure of Blood.');
+  return thanks(q,q.name+' gives you a vitality fragment. Four of them add a measure of Blood.');
  }
  restoreBlood(G.p,2);apply();hudUpdate();
  if(typeof addText==='function')addText(G.p.x,GROUND_Y-G.p.y-70,'+2 BLOOD','#ff8a80',true);
@@ -81,7 +81,15 @@ function grantReward(q){
    {text:'Rowan patches you up. +2 Blood. Something bronze drops out of the empty belfry and lands on the bell-post by the camp: the drake that nested over the old bell.',speaker:'Rowan’s thanks',portrait:null},
    {text:'A drake roosted over that bell. Followed it all the way down. It’ll carry you, if you let it.',speaker:'Rowan'},
    {text:'The Bellwing roosts by the camp. Press Up at its roost to fly to the Mothlight Door, and back; hold the way you are flying to hurry it.',speaker:'The Bellwing',portrait:null}]});mode='conversation';return true;}
- return inspect((q?.name||'A friend')+'’s thanks',(q?.name||'They')+' patches you up. +2 Blood.');
+ return thanks(q,(q?.name||'They')+' patches you up. +2 Blood.');
+}
+/* (7.360) What the reward is, then the giver's own (voiced) line about it, when they have one. */
+function thanks(q,what){
+ const line=q?.rewardLine;if(!line)return inspect((q?.name||'A friend')+'’s thanks',what);
+ const [who,t]=Array.isArray(line)?line:[q.name,line],session=G;
+ BladefallConversation.show({title:(q.name||'A friend')+'’s thanks',accent:q.accent,onClose:()=>closeSession(session),
+  lines:[{text:what,speaker:(q.name||'A friend')+'’s thanks',portrait:null},{text:t,speaker:who}]});
+ mode='conversation';return true;
 }
 function receiveRewards(receipts,quiet=true){
  if(!G?.coopSession||!NET.isGuest()||!Array.isArray(receipts))return;
@@ -98,7 +106,7 @@ function panel(title,text,choices,accent,lines){const session=G;BladefallConvers
 function renderDialogue(id){
  const v=S.view(state(),id);if(!v)return false;
  const record=S.row(state(),id);
- if(id==='recruit'&&!record.rescued){if(record.node==='ready')v.text='We made it. Wait—where’s my helmet? I didn’t even notice it go.';if(record.node==='ending')v.text=record.route==='medium'?'I thought I’d feel—different, with the helmet. I’m still scared, mostly. But we got across! Could we go back for it?':'My helmet? Oh, for—again? Could we still go back for it?';}
+ if(id==='recruit'&&!record.rescued){if(record.node==='ready')v.text='Wait. Where’s my helmet? I didn’t even notice it go.';if(record.node==='ending')v.text=record.route==='medium'?S.plain(S.byId.recruit.longEnding):'My helmet? Oh, for… again? Could we still go back for it?';}
  if(v.lines){commit(id,{type:'heard'});apply();}   // the first return's exchange, heard once
  panel(v.title,v.text,v.choices.map(c=>({label:c.label,action:()=>{
    const result=commit(id,{type:'choice',choice:c.id});if(result.error)return;

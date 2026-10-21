@@ -1,3 +1,16 @@
+## 7.361.0: regions 1-20 voiced; everyone busy until you come close (2026-10-21, Claude, cloud session)
+
+- **Lines:** the style-#1 script is now in the game for every resident, escort, workshop and quest giver in regions 1-20 (the 62 replacements in `index.html`, `bladefall-dialogue.js`, `bladefall-shops.js`, `bladefall-quests.js`), and every side story speaks its steps in the giver's own words (`SPOKEN` in `bladefall-side-stories.js`). Residents can be spoken to in every region, not only the first three (`quietV4` gate moved to `stageIndex<=20`). The old knight exchanges (`VOICES`) are retired: the knight speaks only when asked.
+- **Voices:** 335 new ElevenLabs clips (366 in all, 15 MB) under `public/audio/voice/<region>/`, 41 new cast voices (`scripts/voice/cast.json`). Every take was checked by speech recognition and a pitch-drift test; 16 flagged takes were re-recorded. Escort shouts ("MIND THE FLAME!") are voiced too, and annotations outside the conversation panel play their line.
+- **Animations:** everybody without a bespoke busy pose now keeps to their side with a slow working bob, then gives the same one-pixel start and turns to the knight when he comes within 130 units (`s.idle` in `bladefall-resident-art.js`). Travellers (`G.npcs`) are left alone.
+- **Checked in a browser:** every side story giver and resident from region 1 to 20 opened and played voiced lines; the only unvoiced texts were system notices ("Speak with … before using this").
+- **Not voiced yet:** Act Two, the gate trials and the ending cinematics. That is the next phase.
+- **Rebuild the voices:** `scratchpad`-free path is `scripts/voice/lines.json` (id → exact text) + `public/audio/voice/<id>.mp3`, then `node scripts/voice/build-voice.mjs`.
+
+## 7.360.0: narrated intro; Rowan re-recorded (2026-10-21, Claude, cloud session)
+
+- The prologue line is narrated, Rowan's repeated and high-pitched takes were redone, and his three quest steps are spoken (`says`).
+
 ## 7.359.0: the Outskirts, rewritten, voiced and animated (2026-10-21, Claude, cloud session)
 
 - **Dialogue:** Vey, Olan, Mara, Rowan and the Traveler use the "busy, then they notice you" script (`LLM-HANDOFF/DIALOGUE-SCRIPT.md`). People are strangers; Olan stays "Road Keeper" and Rowan "The Gatekeeper" until he gives his name; the knight speaks only when asked ("I walked.", "I don't remember.", "No."). In the Outskirts the old knight exchanges (`VOICES`) are off.

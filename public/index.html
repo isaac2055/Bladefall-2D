@@ -361,11 +361,11 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-recollections.js"></script>
 <script src="bladefall-advancement.js"></script>
 <script src="bladefall-journey.js?v=7.234.0"></script>
-<script src="bladefall-voice.js?v=7.360.0"></script>
+<script src="bladefall-voice.js?v=7.361.0"></script>
 <script src="bladefall-conversation.js?v=7.360.0"></script>
-<script src="bladefall-side-stories.js?v=7.360.0"></script>
+<script src="bladefall-side-stories.js?v=7.361.0"></script>
 <script src="bladefall-opening-stories.js?v=7.234.0"></script>
-<script src="bladefall-side-story-world.js?v=7.360.0"></script>
+<script src="bladefall-side-story-world.js?v=7.361.0"></script>
 <script src="bladefall-explore-mounts.js?v=7.360.0"></script>
 <script src="bladefall-merge-road.js?v=7.334.0"></script>
 <script src="bladefall-zones.js?v=7.220.0"></script>
@@ -374,8 +374,8 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-streaming.js"></script>
 <script src="bladefall-world.js?v=7.304.0"></script>
 <script src="bladefall-story.js"></script>
-<script src="bladefall-shops.js?v=7.231.0"></script>
-<script src="bladefall-quests.js?v=7.231.0"></script>
+<script src="bladefall-shops.js?v=7.361.0"></script>
+<script src="bladefall-quests.js?v=7.361.0"></script>
 <script src="bladefall-milestones.js"></script>
 <script src="bladefall-foundation-audit.js"></script>
 <script src="bladefall-cinematics.js"></script>
@@ -391,7 +391,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-release.js"></script>
 <script src="bladefall-blood.js?v=7.181.0"></script>
 <script src="bladefall-inventory.js"></script>
-<script src="bladefall-dialogue.js?v=7.231.0"></script>
+<script src="bladefall-dialogue.js?v=7.361.0"></script>
 <script src="bladefall-text.js?v=7.233.0"></script>
 <script src="bladefall-act-two.js?v=7.341.0"></script>
 <script src="bladefall-act-two-art.js?v=7.201.0"></script>
@@ -457,8 +457,8 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-explore-finale.js?v=7.350.0"></script>
 <script src="bladefall-causeway-story.js?v=7.234.0"></script>
 <script src="bladefall-early-platforming.js?v=7.248.0"></script>
-<script src="bladefall-resident-art.js?v=7.234.0"></script>
-<script src="bladefall-portraits.js?v=7.234.0"></script>
+<script src="bladefall-resident-art.js?v=7.361.0"></script>
+<script src="bladefall-portraits.js?v=7.361.0"></script>
 <script src="littlejs.min.js"></script>
 <script>
 'use strict';
@@ -466,7 +466,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.360.0';globalThis.BLADEFALL_VERSION=VERSION;
+const VERSION='7.361.0';globalThis.BLADEFALL_VERSION=VERSION;
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -4520,21 +4520,21 @@ const TRAVELER_PROFILES={
     rescue:BFDialogueModule.text('woods.bram.done')},
   ilyra:{name:'Oren',title:'Chainwright',robe:'#6a668f',accent:'#9fe0ff',
     silhouette:'windwright',abilities:['current-reader'],
-    ask:'That Crown runs off three machines. Not one’s turned since the wind changed. Get them going and we’ll see what it does.',
-    thanks:'All three turning. And look—it’s lowering something. That Crown was never built to carry that.'},
+    ask:'You. From the Causeway. The Crown runs on three machines. None’s turned since the wind changed. Get them going.',
+    thanks:'All three turning. And it’s lowering something it was never built to carry.'},
   tovin:{name:'Tovin',title:'Keep Mason',robe:'#7a6253',accent:'#d8c4a5',
     silhouette:'mason',abilities:['gate-anchor'],
-    greeting:'These gates were built for two people, friend—one to hold, one to pass. I’ll stand on the old mason’s plate. You go through.',
-    danger:'FRIEND—THE GATE!',death:'Tovin fell before the Keep could open.',
+    greeting:'Tovin, mason. These gates take two: one to hold, one to pass. I’ll stand on the plate. You go.',
+    danger:'THE GATE, GO!',death:'Tovin fell before the Keep could open.',
     rescue:'Tovin survived the weight of the Keep'},
   nim:{name:'Nim',title:'Frost Tender',robe:'#52788d',accent:'#ffd98a',
     silhouette:'frost',abilities:['truth-lamp','warmth'],
-    greeting:'Stay near the flame. Some walls here aren’t real. Doors, too. The flame shows you which ones.',
-    danger:'NOT THE FLAME!',death:'Nim’s banked flame was swallowed by Frostfell.',
+    greeting:'Shh, don’t breathe on it. You’re not from the streets. Stay near the flame. Some walls here aren’t real; it shows you which.',
+    danger:'MIND THE FLAME!',death:'Nim’s banked flame was swallowed by Frostfell.',
     rescue:'Nim carried Frostfell’s flame through'},
   sera:{name:'Oren',title:'Chainwright',robe:'#a95f3b',accent:'#ffb06a',
     silhouette:'relay',abilities:['portal-relay'],
-    greeting:'That seal throws back anything iron. It’s never once stopped me.',
+    greeting:'You again. I’m starting to think you’re following me. That seal throws back anything iron. It’s never once stopped me.',
     danger:'STILL HOLDING!',death:'Oren did not come off the relay.',
     rescue:'Oren held the Emberdeep relay'}
 };
@@ -5350,8 +5350,8 @@ const UPDRAFTS_LEVEL={len:18000,portal:null,
   Scenery(2050,0,'bellows-rest',{w:1100,h:300,roomLandmark:1}),
   AmbientFigure(1600,0,'kite-mender',{
     residentId:'updrafts-kitemender',name:'Talla',title:'Kite-Mender',quietV4:true,accent:'#a9d8d6',
-    dialogue:'“Harness is tied off up above the drafts. Brake pin’s hanging right beside it—take both.”',
-    revisitDialogue:'“Look at the stretch in that cloth. You’ve been flying it hard. Good. That’s what it’s for.”'
+    dialogue:'“Hold on. Talla. I mend the kites. The harness is tied off above the drafts, with the brake pin beside it. Take both.”',
+    revisitDialogue:'“Look at the stretch in that cloth. You’ve flown it hard. That’s what it’s for.”'
   }),
   Scenery(1630,0,'white-trumpets',{sheltered:1,peoplePlace:1}),
   Pl(2410,120,75,{supportedBy:'bellows-frame',packApproach:1}),
@@ -5463,8 +5463,8 @@ const UPDRAFTS_LEVEL={len:18000,portal:null,
   Scenery(14480,0,'rain-catcher',{w:1880,h:560,roomLandmark:1}),
   AmbientFigure(13560,0,'rain-keeper',{
     residentId:'updrafts-rainkeeper',name:'Edrin',title:'Rain-Catcher Keeper',quietV4:true,accent:'#83b7c8',
-    dialogue:'“See, each gutter spills into the next one down, and the old cups tip over when they’re full. Clever, isn’t it? Nobody’s touched them in years.”',
-    revisitDialogue:'“Basin’s holding a proper level now. They’re all sharing it, see? Not a drop wasted.”'
+    dialogue:'“Each gutter spills into the next, see? Where’d you climb up from? Nobody comes up the drafts. The cups tip when they’re full. Nobody’s touched them in years.”',
+    revisitDialogue:'“Basin’s holding level. Everyone’s sharing it.”'
   }),
   Object.assign(Wl(14000,80,260,36),{cisternWall:1,basinSide:'west'}),
   Object.assign(Wl(15200,80,260,36),{cisternWall:1,basinSide:'east'}),
@@ -5543,8 +5543,8 @@ const HOLLOW_MARKSMAN_LEVEL={len:15000,
   Scenery(560,0,'fletcher-bench',{w:160,h:86,sheltered:1,peoplePlace:1}),
   AmbientFigure(720,0,'watch-fletcher',{
     residentId:'marksman-fletcher',questActor:'daro',name:'Mara',title:'Road Surveyor',accent:'#d8b875',
-    dialogue:'“The old watch token above the gallery has my mark on it. I charted this road before anyone thought to put a watch on it.”',
-    revisitDialogue:'“The road east is on my chart. Nobody’s walked it since I measured it, and that was a while ago.”'
+    dialogue:'“That’s not right. You. From the camp road. You got through the Woods, then.”',
+    revisitDialogue:'“The road east is on my chart. Nobody’s walked it since I measured it.”'
   }),
   Scenery(805,0,'white-trumpets',{sheltered:1,peoplePlace:1,daturaCorrespondence:1}),
   Scenery(980,135,'faceless-mask-rack',{w:140,h:125,peoplePlace:1}),
@@ -5574,7 +5574,7 @@ const HOLLOW_MARKSMAN_LEVEL={len:15000,
   Scenery(3960,0,'watching-road',{w:2860,h:760,roomLandmark:1}),
   AmbientFigure(2850,0,'veil-mender',{
     residentId:'marksman-veilmender',name:'Senn',title:'Veil-Mender',quietV4:true,accent:'#b7a9c9',
-    dialogue:'“The orange mouth’s nailed to the far scaffold. Doesn’t move. The blue one’s yours—put it wherever you want to start from.”',
+    dialogue:'“Mm. You’ve got a portal on you? Blue’s yours. Put it wherever you want to start. Orange is nailed to the far scaffold.”',
     revisitDialogue:'“Blue moves, orange doesn’t. Orange belongs to the watch. Don’t ask me to unpick it.”'
   }),
   Scenery(2930,0,'veil-frame',{w:130,h:132,sheltered:1,peoplePlace:1}),
@@ -5950,7 +5950,7 @@ const RECALL_RETURN_ROUTES=Object.freeze({
   warden:{x:4820,y:130,title:'TURNKEY’S RESERVE',accent:'#c7b2d5',reward:{vitalityFragments:1},
     text:'A clean field dressing lies beneath the turnkey’s spare chain. The maintenance bridges have dropped beneath the turning cells.',
     roads:[[5860,440,0],[6560,400,0]],resident:'gaol-prisoner-enna',
-    line:'“They’ve unsealed the reserve above the east end of the court—pull its chain and the two maintenance bridges come down. There’s a dressing in there, too. Take it, go on; nobody in here’s going to use it.”'},
+    line:'“They’ve unsealed the reserve above the east end of the court. Pull its chain and two maintenance bridges come down. There’s a dressing in it. Nobody in here’s going to use it.”'},
   outskirts:{x:7180,y:130,title:'MILEKEEPER’S RESERVE',accent:'#d8c48f',reward:{forgeSeals:1},
     text:'The old repair stamp still fits your palm. Two road gaps in the Hollow Mile have been bridged; the patrols keep their own route.',
     roads:[[7670,280,0],[8465,470,0]],resident:'outskirts-roadkeeper',
@@ -5958,11 +5958,11 @@ const RECALL_RETURN_ROUTES=Object.freeze({
   'black-woods':{x:7400,y:130,title:'RESINWORKERS’ RESERVE',accent:'#a5c48b',reward:{vitalityFragments:1},
     text:'Dry bandages smell faintly of resin. The old canopy walk has unfolded above the copied paths. Its last board meets the root crown.',
     roads:[[7620,180,260],[7840,180,390],[8060,180,520],[8280,220,620],[8990,1240,620]],
-    resident:'woods-clockkeeper',line:'“The workers kept dry wraps up above the end of Briar Run—my daughter used to fetch them. Let the release go and the real canopy walk comes down. Anyway, the low path’s still full of branches that aren’t there.”'},
+    resident:'woods-clockkeeper',line:'“Bells started while you were off. Nobody I know is ringing them. If the low road’s crowded, there’s the workers’ reserve above the far end of Briar Run. My daughter used to fetch wraps from it. Let it go and a walkway drops through the canopy.”'},
   brute:{x:1020,y:130,title:'CHAINWRIGHT’S RESERVE',accent:'#d59a68',reward:{forgeSeals:1},
     text:'A spare forging seal rests in the winding drum. The Chainwalk service span has lowered between the high supports, above the floor teeth.',
     roads:[[7040,1060,265],[7690,260,200],[7970,180,130]],resident:'brute-chainwright',
-    line:'“Spare seal up on the camp’s high bracket. Unwind the drum and the Chainwalk service span comes down. My old repairs’ll hold either way.”'}
+    line:'“There’s a spare seal up on the camp’s high bracket. Unwind the drum and the Chainwalk service span comes down.”'}
 });
 /* ==================== THE SHIP: THREE PARTS, THREE ZONES ====================
    Act 1 ends by building a boat and sailing out of the world. Its three parts sit in the
@@ -6219,9 +6219,9 @@ function drawFrostMusterAtmosphere(c){
   c.restore();
 }
 function frostNimLine(nim){
-  if(persistentCircuitOpen('frost-muster'))return '“I heard it too. It’s all right. The fire is still ours.”';
-  if(hasCapability('double-jump'))return '“Your footprints stopped in the snow. Then they started again, higher up. How did you do that?”';
-  return nim.done?'“I’ll look after these fires now. You go on.”':'“I saved one flame. Just one. It’ll be enough if we’re careful.”';
+  if(persistentCircuitOpen('frost-muster'))return '“You heard that too? It’s all right. The fire’s still ours.”';
+  if(hasCapability('double-jump'))return '“Your footprints stopped in the snow, then started again higher up. How?”';
+  return nim.done?'“I’ll mind the fires now. Go on.”':'“I saved one flame. Just one. It’s enough if we’re careful.”';
 }
 function updateFrostNim(nim){
   if(!nim)return;
@@ -6734,11 +6734,11 @@ const RUINED_KEEP_LEVEL={len:18000,portal:null,authoredEcology:true,
   Scenery(1600,0,'keep-hearth',{restSiteAnchor:'keep-hearth',w:180,h:120,peoplePlace:1}),
   Scenery(1790,0,'keep-service-lift',{keepReturnExit:1,w:150,h:200,peoplePlace:1,keepArchitecture:1}),
   AmbientFigure(690,0,'keep-mason',{residentId:'brute-chainwright',keepKeeper:true,name:'Oren',title:'Chainwright',accent:'#d59a68',
-    dialogue:'“The chains still hold. The floor’s another story. Watch where you put your feet.”',
-    revisitDialogue:'“I know these links. Mended half of them myself, years back. Aye, they’ll hold.”'}),
+    dialogue:'“Chains hold. Causeway, wasn’t it? The floor’s another story. Watch your feet.”',
+    revisitDialogue:'“I know these links. Mended half of them myself, years back.”'}),
   AmbientFigure(1260,0,'keep-keeper',{residentId:'keep-hearth-keeper',name:'Veya',title:'Hearth Keeper',quietV4:true,accent:'#c6b0dc',
-    dialogue:'“The west gate’s the only road out. East is just more Keep, and it isn’t friendly.”',
-    revisitDialogue:'“If you get anything out of the high archive, bring it west. Don’t leave it lying about in here.”'}),
+    dialogue:'“How’d you get in? The gate’s been shut a month. The west gate’s the only road out. East is more Keep, and it isn’t friendly.”',
+    revisitDialogue:'“If you bring anything down from the high archive, bring it west. Don’t leave it lying about.”'}),
   Scenery(930,0,'keep-clock',{fieldClock:1,clockId:'pulse-two',keepClock:1,peoplePlace:1}),
   LoreMarker(2260,0,STAGE_LORE[5]),
   SealedRecollection(2680,120,'ruined-keep','The First Keep',{supportedBy:'gatehouse-gallery'}),
@@ -6981,8 +6981,8 @@ const WARDEN_LEVEL={len:15000,portal:null,authoredEcology:true,spawnX:14480,spaw
   Scenery(4000,0,'red-court',{w:2050,h:720,roomLandmark:1,wardenArchitecture:1}),
   Scenery(4200,0,'gaol-vigil',{restSiteAnchor:'gaol-vigil',w:170,h:110,peoplePlace:1}),
   AmbientFigure(4620,0,'gaol-prisoner',{residentId:'outskirts-survivor',name:'Vey',title:'Standard-Bearer',accent:'#d8b7df',
-    gaolKeeper:true,dialogue:'“I carried the standard once, and now I carry his keys, and I’ve used neither.”',
-    revisitDialogue:'“Funny thing—these doors open from this side. Always did. Nobody ever tried.”'}),
+    gaolKeeper:true,dialogue:'“You. From the fire. They locked me in with his keys. Funny, if you think about it.”',
+    revisitDialogue:'“These doors open from this side. Always did. Nobody tried.”'}),
   LoreMarker(3260,0,STAGE_LORE[6]),
   Scenery(3040,0,'sentence-threshold',{w:260,h:300,wardenArchitecture:1}),
 
@@ -7998,7 +7998,7 @@ const WHITE_COURT_LEVEL={len:16000,spawnX:4800,spawnY:0,bossX:14300,bossSkipCapa
   CourtScenery(3240,0,'court-wheel',{courtAction:'wheel',circuitId:'court-wheel',zoneEntityId:'court-service-wheel',w:170,h:190}),
   CourtScenery(4100,0,'court-refuge',{w:1450,h:380,roomLandmark:1}),
   CourtBeat(AmbientFigure(3880,0,'court-sluicekeeper',{residentId:'outskirts-survivor',name:'Vey',title:'Sluice Keeper',accent:'#c3dfe6',courtKeeper:true,
-   courtAction:'keeper',dialogue:'“I put the standard down for good. Water I understand. It goes downhill, and it doesn’t argue.”'}),'refuge'),
+   courtAction:'keeper',dialogue:'“I put the standard down for good. Water runs downhill and doesn’t argue.”'}),'refuge'),
   CourtScenery(4800,0,'court-shaft',{courtAction:'causeway',zoneEntityId:'court-causeway-shaft',w:150,h:250}),
   CourtScenery(5100,0,'court-bench',{restSiteAnchor:'white-antechamber',w:160,h:70}),
   // THAW COURT: broad recovery ground and two elevated optional paths.
@@ -8074,9 +8074,9 @@ function interactWhiteCourt(o){
   }
   return true;
  }else if(o.courtAction==='keeper'){
-  title='VEY';body=hasCapability('attunement')?'“No orders today, and no work either. Sit with me a minute. Listen.”':wheel?'“Hear it moving? I used to keep the road. Water’s easier—it goes where you send it.”':'“You made it off the road too, then. Good. Could you free the service wheel, back west? Nothing flows till it turns.”';
+  title='VEY';body=hasCapability('attunement')?'“No orders today. Sit a minute. Listen.”':wheel?'“Hear it? I used to keep the road. Water’s easier; it goes where you send it.”':'“You made it out of there too, then. Could you free the service wheel, back west? Nothing flows until it turns.”';
  }else if(o.courtAction==='glassworker'){
-  title='ADA · GLASSWORKER';body=wheel?'“Molds are cooling even now. The court still orders cups, and not one petitioner leaves with anything in them. Figures.”':'“Dry molds crack, so I’m idle till Vey gets that wheel released. Oh—past the refuge, their cold spells will freeze a channel solid enough to stand on.”';
+  title='ADA · GLASSWORKER';body=wheel?'“Molds are cooling. The court still orders cups, and nobody leaves with anything in them.”':'“Dry molds crack. I’m idle till Vey’s wheel turns. You’re no petitioner. Past the refuge, their cold spells freeze a channel hard enough to stand on.”';
  }else if(o.courtAction==='cache'){
   if(markPersistentCircuitOpen('court-high-cache','court-high-cache')){
    grantAuthoredAdvancementBundle({vitalityFragments:1},'secret:court-high-cache');o.opened=true;o.flash=.8;
@@ -12181,10 +12181,10 @@ function outskirtsAnnotationKind(source,options){
 }
 function ambientFigureDialogue(o,revisit){
   if(!o)return'';
-  if(o.gaolKeeper&&hasCapability('counter'))return'“Here, take them. I’ve set down heavier things than a ring of keys.”';
+  if(o.gaolKeeper&&hasCapability('counter'))return'“Take them. I’ve set down heavier things than keys.”';
   if(o.keepKeeper){
-    if(G.keepWestSealOpen||G.ruinedKeepArchiveComplete||(meta.world&&meta.world.keepWestSealOpen))return'“That’s a road home, open. Better than any crown, that.”';
-    if(hasCapability('wall-jump'))return'“Grip still fits your hand, then. Good.”';
+    if(G.keepWestSealOpen||G.ruinedKeepArchiveComplete||(meta.world&&meta.world.keepWestSealOpen))return'“That’s a road home, open. Worth more than a crown.”';
+    if(hasCapability('wall-jump'))return'“Grip suits you.”';
     return revisit?o.revisitDialogue:o.dialogue;
   }
   const route=G&&RECALL_RETURN_ROUTES[BFWorldModule.stageId(G.stageIndex)];
@@ -12197,7 +12197,7 @@ function ambientFigureDialogue(o,revisit){
   if(o.clockId==='pulse-one'){
     const time=openingClockTime();
     return (Number(meta.openingClockMinute)||0)>0
-      ?'It’s reading '+time+' now. One minute since you left—it moved! Don’t say anything. I’m not calling it fixed till it does it twice.'
+      ?'It moved. One minute since you left. Don’t say anything. It hasn’t done it twice yet.'
       :BFDialogueModule.text(revisit?'woods.orra.revisit':'woods.orra.first');
   }
   if(o.residentId==='woods-veteran')return BFDialogueModule.text(hasCapability('weapon')?'woods.hale.after':'woods.hale.before');
@@ -12222,6 +12222,7 @@ function showOutskirtsAnnotation(source,html,options){
   if(window.BladefallText){copy.title=BladefallText.applyPlain(copy.title);copy.body=BladefallText.applyPlain(copy.body);}   // Dialogue Editor edits (the journey path gets them in the conversation panel)
   const next={source,x:source.x,y:source.y||0,title:copy.title,body:copy.body,kind:outskirtsAnnotationKind(source,opts),
     accent:opts.accent||source.accent||'#d8c48f',radius:opts.radius||250,manual:!!opts.manual};
+  if(!G.outskirtsAnnotation||G.outskirtsAnnotation.body!==next.body)window.BladefallVoice?.play(next.body);   // (7.361) voiced outside the conversation panel too
   G.outskirtsAnnotation=next;G.outskirtsAnnotationPending=null;
   if(G.coopSession&&NET.noteCapture&&G.obstacles)NET.noteCapture.push({i:G.obstacles.indexOf(source),html,accent:next.accent,manual:next.manual?1:0});
   BFPresentation.publish('location:annotation',{title:copy.title,body:copy.body,x:source.x,y:source.y||0,manual:!!opts.manual});
@@ -12305,7 +12306,7 @@ function outskirtsReplayText(o){
   if(o.type==='ambientFigure'&&o.met){const line=ambientFigureDialogue(o,true);
     return line?residentHeading(o).replace('<b>','<b style="color:'+(o.accent||'#c7d6b4')+'">')+line:null;}
   if(o.profileId==='bram'&&(o.asked||o.done||o.state==='follow'||o.state==='wait')){const profile=travelerProfile(o);
-    return '<b style="color:'+(o.accent||'#fff2b8')+'">'+escText(travelerLabel(o).toUpperCase())+'</b><br>“'+(o.done?'I left the lamp on this side. You’ll see which branches are real on the way back.':profile.greeting)+'”';}
+    return '<b style="color:'+(o.accent||'#fff2b8')+'">'+escText(travelerLabel(o).toUpperCase())+'</b><br>“'+(o.done?'Across! I’ll leave her burning on this side, so you can find your way back.':profile.greeting)+'”';}
   if(o.kind==='survey'&&(o.asked||o.done)){const profile=travelerProfile(o),survey=G.outskirtsSurvey||{aligned:0,total:3};
     const line=o.done?BFDialogueModule.text('outskirts.mara.replay'):survey.aligned>=survey.total?profile.found:profile.ask;
     return '<b style="color:'+(o.accent||'#e4d9a7')+'">'+escText(travelerLabel(o).toUpperCase())+'</b><br>“'+line+'”';}
@@ -12314,7 +12315,7 @@ function outskirtsReplayText(o){
 function outskirtsAuthoredInteractable(o){
   if(o?.sideStory)return BladefallSideStoryWorld.interactable(o);
   if(o?.mountRoost)return !!window.BladefallMounts?.interactable(o);
-  if(!o||(o.quietV4&&!(G.stageIndex<=2&&o.dialogue))||(o.type==='storyRelic'&&o.found))return false;
+  if(!o||(o.quietV4&&!(G.stageIndex<=20&&o.dialogue))||(o.type==='storyRelic'&&o.found))return false;   // (7.360) everyone with a line can be spoken to
   if(o.echoRelayLever||o.echoSalvage)return !o.gone;
   if(o.actTwoUp)return !o.gone&&!o.actMute;   // Act Two's own Up targets (bladefall-act-two.js interact)
   if(o.frostDamperLever)return !persistentCircuitOpen('frost-thermal');
@@ -13667,7 +13668,7 @@ function openFieldConversation(source,title,line,options){
   const close=()=>{if(G===session){mode='play';G.outskirtsAnnotation=null;showOverlay(false);showGameUI(true);hudUpdate();}};
   // (7.353) No dialogue menus: a person with a voice (bladefall-conversation.js) has one exchange with the knight,
   // played out as beats; anyone else just speaks. Only a reply that decides something (a rift shard's) is a choice.
-  const voiced=opts.responses||(G.stageIndex===0?null:BladefallConversation.voice(source.name||title));   // (7.359) Outskirts: the knight speaks only when asked
+  const voiced=opts.responses||null;   // (7.360) the knight speaks only when asked; the old knight exchanges (VOICES) are retired
   const responses=voiced||[['','']],decisive=responses.some(r=>r[2]);
   const apply=(i)=>{
     const active=journeyState();active.attitudes[key]=i;
@@ -13694,17 +13695,17 @@ function openFieldConversation(source,title,line,options){
 function openJourneyWorkshop(shopObject,shop){
   const id='workshop:'+shop.id,claimed=journeyState().claimed.includes(id);
   const work={
-    'ethereal-goods':['I set this fragment aside when I sorted the last delivery. Please, take it, if it’s of use. I’d rather it went with someone than sat in my drawer.','I’ll put it to use.','I’ll take it.','Finally. Something useful.','Then it’s found a home. That’s all I wanted for it.'],
-    'bellows-exchange':['Your grips are coming unbound. Hold still—I’ll do both while I’m at it.','Thank you. These have had a rough journey.','How long will it take?','Try not to make them worse.','Rough is right. There—they’ll hold for a few more falls.'],
-    'keepers-counter':['Ha—my old stamp still takes! Bring the blade over, friend. The bow as well.','Good work deserves another chance.','Both weapons, then.','Let’s see if you still know your trade.','There. Mind you don’t notch it on the first door you meet.'],
-    'white-exchange':['Found this under the stove. Kept dry all winter, somehow. Take it—it’s no good to me, and I can’t sell it.','Then I’ll carry it carefully.','What is it?','A whole winter, for that?','Carefully’s the only way anything lasts out here.'],
+    'ethereal-goods':['I set this fragment aside when I sorted the last delivery. I’d rather it went with someone than sat in my drawer.','I’ll put it to use.','I’ll take it.','Finally. Something useful.','Then it has somewhere to be.'],
+    'bellows-exchange':['Your grips are coming unbound. Hold still, I’ll do both.','Thank you. These have had a rough journey.','How long will it take?','Try not to make them worse.','There. They’ll hold a few more falls.'],
+    'keepers-counter':['My old stamp still takes! Bring the blade over. Bow as well.','Good work deserves another chance.','Both weapons, then.','Let’s see if you still know your trade.','Mind you don’t notch it on the first door.'],
+    'white-exchange':['Found this under the stove. Kept dry all winter, somehow. Take it; I can’t sell it.','Then I’ll carry it carefully.','What is it?','A whole winter, for that?','Carefully’s the only way anything lasts up here.'],
     'sluice-counter':['A repair seal, dry beneath the drawer. A note reads: “Take what you can use.”','I’ll leave the drawer tidy.','Take the seal.','About time this place paid out.','(The drawer slides shut on its own, as if it was waiting for that.)'],
-    'last-inventory':['The damp missed this drawer. Take the fragment. It’s one less thing for me to count, and I count all night.','One less thing to carry. Thank you.','What do I owe you?','You needed a whole shop to give that away?','Thank me by not getting it wet. Off you go.'],
-    'cinder-ledger':['Carried this through three collapsed tunnels. On fire, one of them. Your turn.','I won’t waste the trouble.','Hand it over.','You want applause for a delivery?','Good. It’s been through enough without being wasted.']
+    'last-inventory':['The damp missed this drawer. Take the fragment. One less thing to count, and I count all night.','One less thing to carry. Thank you.','What do I owe you?','You needed a whole shop to give that away?','Don’t get it wet. Off you go.'],
+    'cinder-ledger':['Carried this through three collapsed tunnels, one of them on fire. Your turn.','I won’t waste the trouble.','Hand it over.','You want applause for a delivery?','It’s been through enough. Don’t waste it.']
   }[shop.id];
   if(!work)return false;
   const responses=[[work[1],work[4]]];   // (7.353) one exchange, the keeper's own reply
-  return openFieldConversation({...shopObject,accent:shop.accent},shop.keeper,claimed?(shop.id==='ethereal-goods'?'You already have the spare fragment. Do look over the stall, though, if you need anything else.':(shop.keeper||'The keeper')+' has nothing else set aside, but the stall is open.'):work[0],{person:!claimed,interaction:'workshop',reward:id,responses});
+  return openFieldConversation({...shopObject,accent:shop.accent},shop.keeper,claimed?(shop.id==='ethereal-goods'?'You have the fragment already. The stall’s still open.':(shop.keeper||'The keeper')+' has nothing else set aside, but the stall is open.'):work[0],{person:!claimed,interaction:'workshop',reward:id,responses});
 }
 function openRegionalShop(shopObject,countVisit){
   const shop=BFShopsModule.shops.find(entry=>entry.id===shopObject.shopId);if(!shop)return false;
@@ -13828,11 +13829,11 @@ function interactWithIlyra(n){
   recordQuestEvent({type:'talk',target:'ilyra'},true);
   if(gates>0){recordQuestEvent({type:'inspect',target:'choir-flue'},true);recordQuestEvent({type:'talk',target:'ilyra'},true);}
   n.asked=true;
-  const line=gates===0?'I patched that harness myself. The wind found every loose stitch I left, too.'
-    :gates===1?'Feel that? Warm air. The old flues are drawing again.'
-    :gates===2?'Rain’s running again. All it wanted was an open gutter.'
-    :hasCapability('portal-single')?'Keep that close. I’m staying up here with the sails.'
-    :'There it is. The Crown’s kept it dry all this time. Go on, it’s yours.';
+  const line=gates===0?'I patched that harness. The wind found every loose stitch.'
+    :gates===1?'Warm air. The old flues are drawing again.'
+    :gates===2?'Rain’s running. All it wanted was an open gutter.'
+    :hasCapability('portal-single')?'I’m stopping up here with the sails.'
+    :'There. The Crown kept it dry all this while. It’s yours.';
   showOutskirtsAnnotation(n,'<b style="color:'+n.accent+'">'+escText(travelerLabel(n).toUpperCase())+'</b><br>“'+line+'”',{accent:n.accent,manual:true});
   if(meta.soundOn)SFX.pickup();
   return true;
@@ -18276,9 +18277,9 @@ function update(dt){
   // followers, vendors, or completion counters.
   for(const o of G.obstacles){
     if(G.evidenceCapture)break;
-    if((o.quietV4&&!(G.stageIndex<=2&&o.dialogue))||o.type!=='ambientFigure'||G.outskirtsInteractionTarget!==o||Math.abs(p.x-o.x)>=72||Math.abs(p.y-o.y)>=90)continue;
+    if((o.quietV4&&!(G.stageIndex<=20&&o.dialogue))||o.type!=='ambientFigure'||G.outskirtsInteractionTarget!==o||Math.abs(p.x-o.x)>=72||Math.abs(p.y-o.y)>=90)continue;
     if(o.met){
-      if(G.stageIndex===0){
+      if(G.stageIndex<=20){
         // (7.359) The Outskirts answer every press: a "you're back" line only on a later visit, and the lines that
         // follow the road (Mara's errand, Rowan's supper, the soldiers at the posts) whenever they apply.
         const line=ambientFigureDialogue(o,true);
@@ -18438,6 +18439,7 @@ function update(dt){
           if(Math.abs(e.x-n.x)<(e.w/2+18)&&Math.abs(e.y-n.y)<52){
             n.hp--;n.hitCd=1.4;n.flash=0.3;G.shake=Math.min(G.shake+3,9);
             addText(n.x,GROUND_Y-n.y-62,n.hp>0?(profile.danger||'PROTECT ME!'):'NO—','#ff5e54',true);
+            if(n.hp>0&&profile.danger&&window.BladefallVoice&&!BladefallVoice.speaking()&&mode==='play')BladefallVoice.play(profile.danger);   // (7.361) the escort's shout, voiced
             if(meta.soundOn)SFX.hurt();
             if(n.hp<=0){n.state='dead';toast(profile.death||TRAVELER_PROFILES.wanderer.death);}
             break;
@@ -26339,7 +26341,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.360.0').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.361.0').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */

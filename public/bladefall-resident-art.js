@@ -1193,7 +1193,7 @@ function facePlayer(g, o, fallback){
 }
 /* Busy, then they notice you (7.359). The Outskirts' people are at their own work until the knight comes close;
    then a short start (`s.notice` runs 0→1 over .7s, the body jolts up a pixel) and they turn to face him. They go
-   back to it when he walks off. Ids in BUSY have a busy pose; nobody else changes. */
+   back to it when he walks off. Ids in BUSY have a busy pose; since 7.361 everyone else stands at their own work (`s.idle`). */
 const BUSY = new Set(['vey', 'olan', 'mara', 'rowan']);
 const attention = new WeakMap();
 function attend(g, o, t){
@@ -1206,14 +1206,19 @@ function pose(api, id, o, extra){
   const g = api.G, t = api.time || 0, vx = o.vx != null && Math.abs(o.vx) > 8 ? o.vx : velocity(o, t);
   const walk = Math.abs(vx) > 8;
   const s = Object.assign({ id, t, ph:seed(id), walk, look:1, o, sit:false }, extra || {});
-  if(BUSY.has(id) && !walk && !s.good && !s.chartGiven && !s.run && !s.air){ const a = attend(g, o, t); s.busy = a.busy; s.notice = a.notice; }
-  s.face = walk ? Math.sign(vx) : s.busy ? (o.workFace || o.face || 1) : facePlayer(g, o, o.face || 1);
+  if(!walk && !s.good && !s.chartGiven && !s.run && !s.air && !(g && g.npcs && g.npcs.includes(o))){ const a = attend(g, o, t);
+    // (7.361) Everyone is at their own work until the knight comes close: the four with a work pose use it; the rest
+    // keep to their side, heads down in a slow working bob, and turn with the same start when they notice him.
+    if(BUSY.has(id)) s.busy = a.busy; else s.idle = a.busy;
+    s.notice = a.notice; }
+  s.face = walk ? Math.sign(vx) : (s.busy || s.idle) ? (o.workFace || o.face || 1) : facePlayer(g, o, o.face || 1);
   if(!walk && (id === 'rowan' || id === 'recruit') && every(t, id === 'recruit' ? 2.6 : 7, id === 'recruit' ? .8 : .9, s.ph)) s.look = -1;
   return s;
 }
 function render(api, id, o, s, x, y){
   const fn = D[id]; if(!fn) return false;
-  const k = kit(api, x, y - (s.notice != null && s.notice < .3 ? 1 : 0), s.face, s.t);   // the start, when they notice you
+  const bob = s.idle && Math.sin(s.t * 2.6 + s.ph * 6) > .55 ? -1 : 0;   // the working bob of someone busy with their hands
+  const k = kit(api, x, y - bob - (s.notice != null && s.notice < .3 ? 1 : 0), s.face, s.t);   // the start, when they notice you
   const c = api.ctx, a0 = c.globalAlpha;
   if(o.state === 'dead') c.globalAlpha = a0 * .25;
   else if(o.flash > 0) c.globalAlpha = a0 * (.5 + .5 * Math.sin(s.t * 40));
