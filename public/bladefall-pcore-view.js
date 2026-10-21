@@ -193,7 +193,25 @@ const CLIP={parry:['parry'],'enemy-tell':['enemy-alert',.7],'enemy-shot':['enemy
  'lantern-lost':['shatter'],climbhop:['grab',.8]};
 let sfxSet=false;
 function SX(){const X=root.BladefallSfx;if(X&&!sfxSet){sfxSet=true;X.configure({enabled:()=>!!save.options.sound,ambience:()=>save.options.ambience!==false});}return X;}
-function clip(e){const c=CLIP[e.type],X=SX();if(!c||!X)return false;return X.play(c[0],{gain:c[1],rate:c[2]});}
+// (7.367) the world devices' own events (bladefall-pcore-dev-*-view.js) get recorded sounds too, instead of their beeps
+const DEVCLIP={'alarm-note':['bell',.4,1.4],anvil:['stone-hit',1,1.3],boost:['spring'],'brute-crack':['crumble'],'brute-rear':['boss-roar',.5],'brute-stamp':['land-hard'],
+ 'cart-bump':['stone-hit',.5],'cart-land':['land-hard'],cast:['magic'],'clasp-catch':['grab'],'clasp-release':['switch'],'clasp-take':['grab'],'colossus-down':['boss-fall'],
+ 'colossus-gather':['magic',1,.7],'colossus-pour':['crumble',1,.7],'colossus-refuse':['hit-armor'],condenser:['rune'],'court-fall':['boss-fall'],'court-guard':['hit-armor'],
+ 'court-kneel':['land-hard'],'court-slam':['stone-hit'],'court-winded':['hit-armor',.6],'court-wound':['hit-flesh'],'crown-seal':['rune'],'echo-break':['shatter'],
+ 'echo-dash':['dash'],'echo-fizzle':['magic',.5],'echo-parried':['parry'],'echo-place':['rune',.5],'echo-swap':['portal'],'echo-tell':['enemy-alert'],'echo-wave':['gust'],
+ 'echo-wound':['hit-flesh'],'echo-yield':['rune'],'fault-crack':['crumble',.6],'fault-fall':['crumble'],feather:['gem'],'feather-jump':['jump'],'foothold-spent':['crumble',.5],
+ freeze:['shatter',.6,.8],glimpse:['rune',.5],gravity:['portal',.6],'guard-block':['hit-armor'],'hinge-jam':['stone-hit'],'hinge-turn':['lever'],hook:['grab'],unhook:['switch'],
+ 'icicle-break':['shatter'],'icicle-stake':['stone-hit'],'impulse-burst':['gust'],'impulse-prime':['switch'],'impulse-ready':['rune',.5],'jailer-fell':['boss-fall'],
+ 'jailer-land':['land-hard'],'jailer-thrust':['swing'],'jailer-turn':['enemy-alert'],'marksman-gone':['enemy-die'],'marksman-hit':['hit-armor'],mirror:['rune',.4,1.3],
+ 'mk-rain':['enemy-arrow'],'mk-tell':['enemy-alert'],reaim:['switch',.5],recoil:['turret'],'recoil-back':['turret',.6],'recoil-jump':['jump'],'recoil-load':['lever',.6],
+ 'recoil-release':['turret'],seen:['enemy-alert'],'shade-touch':['magic',.5],'shade-wake':['enemy-alert'],'shutter-open':['door',.5,1.3],'shutter-shut':['plate'],
+ 'slab-molten':['crumble',1,.8],'slab-stone':['stone-hit'],'sorc-blink':['portal'],'sorc-break':['shatter'],'sorc-frost':['magic'],'sorc-gone':['enemy-die'],'sorc-hit':['hit-armor'],
+ 'sorc-icicles':['enemy-shot'],'sorc-tell':['enemy-alert'],'sorc-ward':['rune'],'spent-thorn-arm':['switch'],'spent-thorn-leave':['crumble',.4],splash:['splash'],'step-relay':['plate'],
+ stroke:['swing'],'switch-high':['switch'],'switch-low':['switch',1,.85],thaw:['gust',.5],'vesper-bats':['enemy-alert'],'vesper-form':['magic'],'vesper-ghost':['portal'],
+ 'vesper-slam':['land-hard'],'vesper-slash':['swing'],'vesper-still':['rune'],'vesper-wound':['hit-flesh'],'void-in':['portal'],'void-out':['portal',1,.85],'wake-rise':['boss-roar',.5],
+ 'warden-call':['boss-roar',.6],'warden-crash':['boss-fall'],'warden-gone':['enemy-die'],'warden-hit':['hit-armor'],'warden-return':['land-hard'],'warden-rush':['dash'],
+ 'warden-shove':['stone-hit'],'warden-slam':['stone-hit'],'warden-tell':['enemy-alert'],'warden-throw':['swing'],'warden-wind':['gust'],'zip-in':['zip'],'zip-out':['stone-hit',.5]};
+function clip(e){const c=CLIP[e.type]||DEVCLIP[e.type],X=SX();if(!c||!X)return false;return X.play(c[0],{gain:c[1],rate:c[2]});}
 // footsteps: the ground under each world (bladefall-sfx.js forWorld), one step every ~0.3 s of running
 function ground(){const w=root.BladefallPitchView?.climb?.state?.()?.world;return root.BladefallSfx?.forWorld(w?.key)||['plains','stone'];}   // st.world is the world itself
 function footsteps(g){
@@ -353,8 +371,8 @@ function handleEvent(e){
  // Ordinary travel retains the eased camera; one-screen rooms still stay at zero.
  if((e.type==='respawn'||e.type==='echo-swap'||e.type==='portal-pass'&&e.kind==='knight')&&view.g&&(view.g.room.w>W||view.g.room.h>H))view.camRoom=null;
  TOUCH()?.event(e);
- const s=SFX[e.type];if(s&&save.options.sound&&!clip(e))s(e);
- for(const d of root.BladefallPrecisionDeviceViews||[]){if(save.options.sound)d.sfx?.[e.type]?.(e,{tone,noise});d.event?.(e,{view,burst,dust,shake,palette});}
+ const s=SFX[e.type],played=save.options.sound&&(CLIP[e.type]||DEVCLIP[e.type])?clip(e):false;if(s&&save.options.sound&&!played)s(e);
+ for(const d of root.BladefallPrecisionDeviceViews||[]){if(save.options.sound&&!played)d.sfx?.[e.type]?.(e,{tone,noise});d.event?.(e,{view,burst,dust,shake,palette});}
  const pal=palette();
  switch(e.type){
   case 'parry':burst(e.x,e.y,14,'#b5ffea',70,18);shake(1.5,5);break;
@@ -855,6 +873,7 @@ function assistCard(back,{fromMenu=false}={}){
  <label class="pcOpt">Game speed <select id="asSpeed">${[1,.9,.8,.7,.6,.5].map(s=>`<option value="${s}" ${((a.speed||1)===s)?'selected':''}>${Math.round(s*100)}%</option>`).join('')}</select></label>
  <label class="pcOpt"><input type="checkbox" id="opShake" ${o.shake?'checked':''}> Screen shake</label>
  <label class="pcOpt"><input type="checkbox" id="opSound" ${o.sound?'checked':''}> Sound effects</label>
+ ${root.BladefallSfx?'<label class="pcOpt"><button type="button" id="opMixer">Sound mixer…</button> pick and level every sound effect</label>':''}
  <label class="pcOpt"><input type="checkbox" id="opAmbience" ${o.ambience!==false?'checked':''}> Ambient sounds · wind, water, fire where you are</label>
  <label class="pcOpt"><input type="checkbox" id="opMusic" ${o.music?'checked':''}> Music</label>
  ${root.BladefallVoice?`<label class="pcOpt"><input type="checkbox" id="opVoices" ${root.BladefallVoice.enabled()?'checked':''}> Voice lines · people speak as you pass (off: just the music)</label>`:''}
@@ -873,6 +892,7 @@ function assistCard(back,{fromMenu=false}={}){
   for(const k of Object.keys(save))if(!['options','assist'].includes(k))delete save[k];Object.assign(save,{shards:[],cleared:{},best:{}});writeSave(save);
   root.BladefallPlaytest?.relock?.('survival');try{const lp=JSON.parse(localStorage.getItem('bladefall.last-played.v1'))||{};if(lp.game==='survive')localStorage.removeItem('bladefall.last-played.v1');}catch(e){}
   location.href='precision.html?pitch=climb&mode=play';});}
+ if($('opMixer'))$('opMixer').onclick=()=>root.BladefallSfx.openMixer();   // (7.367)
  const upd=()=>{a.speed=+$('asSpeed').value;o.shake=$('opShake').checked;o.sound=$('opSound').checked;if($('opAmbience'))o.ambience=$('opAmbience').checked;root.BladefallSfx?.configure({});o.music=$('opMusic').checked;if($('opVoices'))root.BladefallVoice.setEnabled($('opVoices').checked);if($('opPure'))o.pure=$('opPure').checked;
   if($('opReview'))root.BladefallPlaytest.setFeedback($('opReview').checked);if($('opClock'))root.BladefallPlaytest.setClock?.($('opClock').checked);
   if(finaleMap)F.setPreview($('opFinaleMap').checked);a.infiniteStamina=!!a.testMode;writeSave(save);if(view.g)view.g.assist.infiniteStamina=a.infiniteStamina;};

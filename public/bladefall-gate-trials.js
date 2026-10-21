@@ -308,7 +308,7 @@ function crashSound(x){
 }
 function openSound(x){
  if(!meta.soundOn)return;
- try{if(typeof tonalSfx==='function')tonalSfx('gate-open',[[0,[.16,,392,.02,.4,.6,1]],[.18,[.14,,587,.02,.5,.8,1]],[.4,[.12,,784,.03,.6,1,1]]],x);else SFX.levelup();}catch(e){try{SFX.levelup();}catch(_){}}
+ try{if(typeof sfxPlay==='function'&&sfxPlay('gate',x,{cue:'boss'}));else if(typeof tonalSfx==='function')tonalSfx('gate-open',[[0,[.16,,392,.02,.4,.6,1]],[.18,[.14,,587,.02,.5,.8,1]],[.4,[.12,,784,.03,.6,1,1]]],x);else SFX.levelup();}catch(e){try{SFX.levelup();}catch(_){}}
 }
 function dust(o,n,col){
  if(!G.particles)return;

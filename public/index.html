@@ -364,8 +364,8 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-recollections.js"></script>
 <script src="bladefall-advancement.js"></script>
 <script src="bladefall-journey.js?v=7.234.0"></script>
-<script src="bladefall-voice.js?v=7.365.0"></script>
-<script src="bladefall-sfx.js?v=7.366.0"></script>
+<script src="bladefall-voice.js?v=7.367.0"></script>
+<script src="bladefall-sfx.js?v=7.367.0"></script>
 <script src="bladefall-conversation.js?v=7.360.0"></script>
 <script src="bladefall-side-stories.js?v=7.361.0"></script>
 <script src="bladefall-opening-stories.js?v=7.234.0"></script>
@@ -470,7 +470,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.366.0';globalThis.BLADEFALL_VERSION=VERSION;
+const VERSION='7.367.0';globalThis.BLADEFALL_VERSION=VERSION;
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -2770,8 +2770,8 @@ function sfxPlay(name,x,o){
   const cue=audioCue((o&&o.cue)||name,Number.isFinite(x)?x:(G&&G.p?G.p.x:0),o&&o.caption);
   return X.play(name,{gain:(o&&o.gain)||1,rate:o&&o.rate,pan:cue.pan,gap:o&&o.gap});
 }
-function sfxConfigure(){globalThis.BladefallSfx?.configure({enabled:()=>!!meta.soundOn,volume:()=>meta.sfxVolume,ambience:()=>meta.ambience!==false,ambienceVolume:()=>.55*(meta.musicVolume>0?1:.7)});}
-function stageGround(){return globalThis.BladefallSfx?.forTheme(STAGES[G&&G.stageIndex]?.theme)||['plains','stone'];}
+function sfxConfigure(){globalThis.BladefallSfx?.configure({enabled:()=>!!meta.soundOn,volume:()=>meta.sfxVolume,ambience:()=>meta.ambience!==false,ambienceVolume:()=>.4*(meta.musicVolume>0?1:.7)});}
+function stageGround(){return globalThis.BladefallSfx?.forTheme(STAGES[G&&G.stageIndex]?.theme,G&&G.stageIndex)||['plains','stone'];}
 const SFX={
   // the swing itself: pure air — two breathy noise sweeps, no tone at all
   slash(x){if(G&&G.p.weapon&&playLevel1Sample('swordSwing',x,{cue:'slash',gain:.78,caption:'blade swing'}))return;if(sfxPlay('swing',x,{cue:'slash'}))return;impactSfx({layers:[[500,2600,0.13,0.13,'bandpass',1.6],
@@ -2818,7 +2818,7 @@ const SFX={
                                [2200,600,0.05,0.10,'bandpass',1.0]],
                         body:.16,bodyF:70,bodyDur:0.28,drop:.35},'enemyDie',x);},
   levelup(){if(sfxPlay('powerup',null,{cue:'levelup'}))return;tonalSfx('levelup',[[0,[.04,,523,.01,.08,.16,0,.5,,,,,,,,,,.8,.04]],[85,[.04,,659,.01,.08,.16,0,.5,,,,,,,,,,.8,.04]],[170,[.04,,784,.01,.08,.14,0,.5,,,,,,,,,,.8,.04]]]);},
-  pickup(x){if(playLevel1Sample('pickup',x,{cue:'pickup',gain:.54,rate:1.15,caption:'item collected'}))return;tonalSfx('pickup',[[0,[.03,,660,.01,.05,.1,0,.5,,,,,,,,,,.8,.03]],[70,[.03,,990,.01,.07,.16,0,.5,,,,,,,,,,.8,.03]]],x);},
+  pickup(x){if(playLevel1Sample('pickup',x,{cue:'pickup',gain:.54,rate:1.15,caption:'item collected'}))return;if(sfxPlay('gem',x,{cue:'pickup',gain:.7,gap:60}))return;tonalSfx('pickup',[[0,[.03,,660,.01,.05,.1,0,.5,,,,,,,,,,.8,.03]],[70,[.03,,990,.01,.07,.16,0,.5,,,,,,,,,,.8,.03]]],x);},
   // (7.366) named world sounds: a recorded clip, else the old pickup/levelup chime
   key(x){if(!sfxPlay('key',x,{cue:'pickup',caption:'keys jingle'}))SFX.pickup(x);},
   chest(x){if(!sfxPlay('chest',x,{cue:'pickup',caption:'chest creaks open'}))SFX.pickup(x);},
@@ -2846,7 +2846,7 @@ const SFX={
   block(x){if(!sfxPlay('hit-armor',x,{cue:'hit',caption:'steel on steel'}))SFX.hit(x);},
   death(x){sfxPlay('death',x,{cue:'hurt'});},
   alert(x){sfxPlay('enemy-alert',x,{cue:'hit',gain:.8,gap:600});},
-  enemyShot(x){if(!sfxPlay('enemy-shot',x,{cue:'shoot'}))SFX.shoot(x);},
+  enemyShot(x,shape){if(!sfxPlay(shape==='bolt'||shape==='arrow'?'enemy-arrow':'enemy-shot',x,{cue:'shoot'}))SFX.shoot(x);},
   zip(x){sfxPlay('zip',x,{cue:'dodge',gap:400});},
   chain(x){sfxPlay('chain',x,{cue:'land',gap:500});},
   door(x){if(!sfxPlay('door',x,{cue:'pickup',caption:'a door creaks'}))SFX.pickup(x);},
@@ -6223,7 +6223,7 @@ function installMusterRoster(zoneId){
     G.killGoal++;
   }
   // Bells answer in the distance as you arrive; the posts explain the rest.
-  if(meta.soundOn&&!G.levelSelectMode)tonalSfx('muster-bell',[[0,[.1,,98,.01,.9,2.2,0,.7,,,,,,,,,,.4,.12]],[70,[.05,,147,.01,.6,1.7,0,.6,,,,,,,,,,.3,.08]]],G.p.x+900);
+  if(meta.soundOn&&!G.levelSelectMode&&!sfxPlay('bell',G.p.x+900,{cue:'muster-bell',caption:'a deep bell; iron answering in the distance'}))tonalSfx('muster-bell',[[0,[.1,,98,.01,.9,2.2,0,.7,,,,,,,,,,.4,.12]],[70,[.05,,147,.01,.6,1.7,0,.6,,,,,,,,,,.3,.08]]],G.p.x+900);
 }
 /* The signaler winds up in the open, then wakes every post within earshot. A
    strike during the wind-up breaks the call; it tries again later. */
@@ -6259,7 +6259,7 @@ function strikeFrostMuster(){
   G.zonePersistenceManifest=buildZonePersistenceManifest();captureCurrentZonePersistence();
   if(!G.levelSelectMode)persist();syncLevelMusic(true);
   activateRuntimeCheckpoint('frostfell:muster-crown',{x:14100,y:650},'checkpoint',null,true);
-  if(meta.soundOn)tonalSfx('muster-bell',[[0,[.18,,98,.01,.9,2.2,0,.7,,,,,,,,,,.65,.12]],[70,[.09,,147,.01,.6,1.7,0,.6,,,,,,,,,,.5,.08]]],14400);
+  if(meta.soundOn&&!sfxPlay('bell',14400,{cue:'muster-bell',caption:'a deep bell; iron answering in the distance'}))tonalSfx('muster-bell',[[0,[.18,,98,.01,.9,2.2,0,.7,,,,,,,,,,.65,.12]],[70,[.09,,147,.01,.6,1.7,0,.6,,,,,,,,,,.5,.08]]],14400);
 }
 function updateFrostMusterCinematic(dt){
   const seq=G.frostMusterSequence;if(!seq)return false;
@@ -12485,6 +12485,9 @@ function outskirtsInteractionCandidate(){
   if(G.stageIndex>=9&&G.stageIndex<=13)for(const n of G.npcs||[]){
     if(n.profileId!=='sera'||n.dead||n.gone||n.state==='dead')continue;
     const dx=Math.abs(G.p.x-n.x),dy=Math.abs(G.p.y-n.y);
+    // (7.367) Oren walking at your heels is only talked to when you stop beside him on the ground and face him;
+    // otherwise Up (climbing, looking up) kept opening his dialogue in Emberdeep.
+    if(n.state==='follow'&&(Math.abs(G.p.vx||0)>20||!G.p.onGround||dx>44||(n.x-G.p.x)*(G.p.face||1)<0))continue;
     if(!closeSideStory&&dx<78&&dy<105)rows.push({o:n,score:(dx/78)**2+(dy/105)**2,priority:0});
   }
   // (7.363) Someone standing by a clock is talked to, not the clock: a clock is read just by walking past it
@@ -13747,7 +13750,7 @@ function openFieldConversation(source,title,line,options){
       for(let k=0;k<12;k++)G.particles.push({x:source.x||G.p.x,y:GROUND_Y-(source.y||G.p.y)-24,vx:(k-6)*12,vy:-30-k*5,sz:2,color:'#e0c59e',life:.6});
     }
   };
-  const choose=(i)=>{apply(i);BladefallConversation.show({title,text:responses[i][1],accent:source.accent,onClose:close});mode='conversation';};
+  const choose=(i)=>{apply(i);BladefallConversation.show({title,text:responses[i][1],accent:source.accent,onClose:close,lines:[{text:responses[i][0],speaker:'The Knight',portrait:'knight',side:'left'},{text:responses[i][1]}]});mode='conversation';};
   // (7.341) A watched route or the traversal bot answers with the first reply and walks on: the same gift or
   // reward a player would get, without stopping the run for a dialogue nobody is reading.
   if(watchAuto()){if(person&&prior===undefined)apply(0);mode='play';return true;}
@@ -13757,7 +13760,7 @@ function openFieldConversation(source,title,line,options){
   if(person&&prior===undefined)apply(0);
   const reply=voiced?responses[prior===undefined?0:prior]:null;
   BladefallConversation.show({title,text:reply?line+'\n\n'+reply[1]:line,accent:source.accent,onClose:close,
-    lines:reply&&prior===undefined?[{text:line},{text:reply[0],speaker:'The Knight',portrait:'knight',side:'left'},{text:reply[1]}]:undefined});
+    lines:reply?(prior===undefined?[{text:line},{text:reply[0],speaker:'The Knight',portrait:'knight',side:'left'},{text:reply[1]}]:[{text:line},{text:reply[1]}]):undefined});   // (7.367) asked again: two beats, so each line is still voiced
   mode='conversation';return true;
 }
 function openJourneyWorkshop(shopObject,shop){
@@ -17616,7 +17619,7 @@ function update(dt){
   if((movement.dash||testDash)&&(!window.BladefallCeleste||BladefallCeleste.labCanDash())&&p.dashBuf>0&&p.dodgeCdT<=0&&p.dodgeTimer<=0&&!G.cartMode&&!(p._flungT>0)&&!(p.airDashUsed&&!p.onGround)){
     p.dashBuf=0;
     p.dodgeCdT=meta.testMode?0:effDodgeCd(p);
-    p.dodgeTimer=movement.tuning.dashDurationSeconds;
+    p.dodgeTimer=movement.tuning.dashDurationSeconds*Math.max(.3,Math.min(1,meta.exploreDashReach??1));   // (7.367) Explore's dash-distance setting
     p.dashX=mx||p.face;
     p.dashUp=!!(input.jz<-.5||(watchLike()?tasInjected?.held?.up:(BFKeyboard.isDown('ArrowUp')||BFPad.isDown('aimup'))));
     if(!p.onGround||p.dashUp)p.airDashUsed=true;
@@ -20518,7 +20521,7 @@ function updateWardenPortalFight(e,p,dt,eff){
 }
 function bossShoot(e,p,courtCast=null){
   const cfg=e.shot;let ox=e.x+e.face*10,oy=e.y+e.h*0.62;
-  if(meta.soundOn&&!watchLike())SFX.enemyShot(e.x);   // (7.366)
+  if(meta.soundOn&&!watchLike())SFX.enemyShot(e.x,cfg&&cfg.shape);   // (7.366) arrows twang, orbs whoosh (7.367)
   /* THE BAND IS A HEIGHT, SO IT HAS TO BE A HEIGHT THE BOLTS ACTUALLY FLY AT.
      It used to be a rule checked against your mouths while the volley was aimed at
      the knight's chest regardless — which is why "align low / mid / high" felt
@@ -24952,6 +24955,8 @@ function openSettings(returnTo){
       <label><input type="checkbox" data-setting="dynamicAudio" ${meta.dynamicAudio?'checked':''}>Adaptive score<small>responds to danger</small></label>
       <label><input type="checkbox" data-setting="nightMode" ${meta.nightMode?'checked':''}>Night audio<small>softens combat peaks</small></label>
       <label><input type="checkbox" data-setting="soundCaptions" ${meta.soundCaptions?'checked':''}>Sound captions<small>directional text cues</small></label>
+      <label><select id="dashReachSelect" style="pointer-events:auto">${Array.from({length:15},(_,i)=>100-i*5).map(v=>`<option value="${v}" ${Math.round((meta.exploreDashReach??1)*100)===v?'selected':''}>${v}%</option>`).join('')}</select>Dash distance<small>Explore only · how far a dash carries</small></label>
+      <label><button type="button" id="sfxMixerBtn" style="pointer-events:auto">Sound mixer…</button><small>pick a version and volume for every sound effect</small></label>
       <label><input type="checkbox" data-setting="ambience" ${meta.ambience!==false?'checked':''}>Ambient sounds<small>wind, water and fire where you are</small></label>
       <label><input type="checkbox" data-setting="voices" ${meta.voices!==false&&window.BladefallVoice?.enabled()!==false?'checked':''}>Voice lines<small>people speak their lines · off for music only</small></label>
     </div>
@@ -25035,6 +25040,8 @@ function openSettings(returnTo){
   };
   const volSlider=document.getElementById('volSlider'),volLabel=document.getElementById('volLabel');
   const sfxSlider=document.getElementById('sfxSlider'),sfxLabel=document.getElementById('sfxLabel');
+  {const ds=document.getElementById('dashReachSelect');if(ds)ds.onchange=()=>{meta.exploreDashReach=Math.max(.3,Math.min(1,(+ds.value||100)/100));persist();};}   // (7.367)
+  {const mb=document.getElementById('sfxMixerBtn');if(mb)mb.onclick=()=>window.BladefallSfx?.openMixer();}   // (7.367)
   const shakeSlider=document.getElementById('shakeSlider'),shakeLabel=document.getElementById('shakeLabel');
   const qualitySelect=document.getElementById('qualitySelect');
   for(const slider of [volSlider,sfxSlider,shakeSlider])
@@ -26419,7 +26426,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.366.0').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.367.0').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */

@@ -642,5 +642,19 @@
  "ascend/w40-fs40-garden.gardener.done": "Through the gallery. Mind the light.",
  "ascend/w40-fs40-sea.hydra": "You broke our chains twice now. Climb on. We will shade you as long as we can.",
  "ascend/w40-fs40-q-upper.gardener": "Look, by the bench. Every evening, now.",
- "ascend/w40-fs40-q-upper.gardener.done": "She liked it in the evenings. So do I."
+ "ascend/w40-fs40-q-upper.gardener.done": "She liked it in the evenings. So do I.",
+ "palace/rift.servant.line": "You were here already, sir. Last night, in the Hall of Hours. You stood in front of the big dial and it went backwards.",
+ "palace/rift.servant.leave": "This, sir. On the floor under the dial. I’ve tried polishing it. It won’t take a shine.",
+ "palace/rift.servant.backwards": "A quarter to four, then half past three, then three. Then it was gone.",
+ "palace/rift.servant.scrub": "Yes, sir. The gold’s for him.",
+ "colony/rift.woman.line": "Before the King, another one came through that gate. Looked like you. Didn’t stop—went straight through the tents like we weren’t there, and a bell rang for it that nobody pulled.",
+ "colony/rift.woman.leave": "A bit of itself. Glass. Fell out of the air right by my cup.",
+ "colony/rift.woman.hurt": "Didn’t so much as look at anyone. That was worse, somehow.",
+ "colony/rift.woman.fever": "We all are. Doesn’t mean I didn’t see it.",
+ "colony/rift.knight.leave": "What did it leave behind?",
+ "colony/rift.knight.hurt": "Did it hurt anyone?",
+ "colony/rift.knight.fever": "You’re feverish.",
+ "palace/rift.knight.leave": "That wasn’t me. What did it leave?",
+ "palace/rift.knight.backwards": "Backwards?",
+ "palace/rift.knight.scrub": "Keep scrubbing."
 }

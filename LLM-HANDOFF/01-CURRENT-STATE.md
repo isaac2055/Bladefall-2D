@@ -1,3 +1,13 @@
+## 7.367.0: sound mixer, Jett as the knight, quieter beds, rift-shard voices (2026-10-21, Claude, cloud session)
+- The Knight is voiced by Jett (6IwYbsNENZgAB1dtBZDp); all 45 knight clips re-recorded, cast.json updated.
+- Sound mixer (`BladefallSfx.openMixer()`, Settings → Sound mixer… in Explore, Ascend options → Sound mixer…): every effect has versions A/B/C (`name.mp3`/`name-n.mp3`, `name.b.mp3`, `name.c.mp3`), a 0–200% volume, a test button; ambient beds too. Stored in localStorage `bladefall.sfx.mix.v1`. Export downloads `bladefall-sound-mix.json`; **to make a mix the official default, paste it into `DEFAULT_MIX` in public/bladefall-sfx.js.**
+- Effects load on the first gesture and a not-yet-decoded sound plays once decoded (dash sounds no longer drop). The ticking "machine" bed is gone (Causeway → wind, Deep Line → cave), the forest bugs are quieter and all beds sit lower under music.
+- New takes: pack (jetpack, less mechanical), bolt and the new enemy-arrow (wooden crossbow, not laser), turret (Frostfell auto-shooter and the other Ascend devices now use recorded clips through DEVCLIP in pcore-view), hit-flesh (softer).
+- Rift-shard talks (palace servant, colony sick woman) and the knight's three replies are voiced; a picked reply now shows the knight's line first.
+- Asking someone again plays their line and reply as two voiced beats (Oren's "I can bind heat into your dash" was silent on repeat).
+- Oren following in Emberdeep only takes Up when you stand still on the ground beside him, facing him.
+- Settings → Dash distance (Explore only): 100%–30% in 5% steps (`meta.exploreDashReach`, scales the dash's duration).
+
 ## 7.366.0: sound effects everywhere; editor edits publish to every player (2026-10-21, Claude, cloud session)
 
 - **Publish to game (editor):** an edit of one of the game's own levels (Ascend room or Explore stage) now has **Publish to game** and, once published, **Remove from game** in the editor header (`bladefall-workshop-publish.js`, buttons in `bladefall-workshop-ui.js`, wired in `bladefall-workshop-bridge.js`). Publishing commits the compiled level into `public/bladefall-published-levels.js` on GitHub `main` through the GitHub contents API; Cloudflare Pages rebuilds from main, and every player's game reads that file at start (`bladefall-workshop-applied.js`: a local saved edit wins, then the published one, then the original). The service worker fetches that one file network-first, so a publish reaches players without a version bump. No server deploy is involved.
