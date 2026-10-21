@@ -361,12 +361,12 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-recollections.js"></script>
 <script src="bladefall-advancement.js"></script>
 <script src="bladefall-journey.js?v=7.234.0"></script>
-<script src="bladefall-voice.js?v=7.359.0"></script>
-<script src="bladefall-conversation.js?v=7.359.0"></script>
-<script src="bladefall-side-stories.js?v=7.359.0"></script>
+<script src="bladefall-voice.js?v=7.360.0"></script>
+<script src="bladefall-conversation.js?v=7.360.0"></script>
+<script src="bladefall-side-stories.js?v=7.360.0"></script>
 <script src="bladefall-opening-stories.js?v=7.234.0"></script>
-<script src="bladefall-side-story-world.js?v=7.359.0"></script>
-<script src="bladefall-explore-mounts.js?v=7.359.0"></script>
+<script src="bladefall-side-story-world.js?v=7.360.0"></script>
+<script src="bladefall-explore-mounts.js?v=7.360.0"></script>
 <script src="bladefall-merge-road.js?v=7.334.0"></script>
 <script src="bladefall-zones.js?v=7.220.0"></script>
 <script src="bladefall-zone-state.js"></script>
@@ -466,7 +466,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.359.0';globalThis.BLADEFALL_VERSION=VERSION;
+const VERSION='7.360.0';globalThis.BLADEFALL_VERSION=VERSION;
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -3929,8 +3929,10 @@ function playDaturaCinematic(scriptId,onComplete){
   let index=-1,beatT=0,last=performance.now(),active=true,to=null,frame=null;
   activeDaturaCinematic={id:scriptId,beat:-1,beatId:null,complete:false};
   const draw=now=>{if(!active)return;const dt=Math.min(.05,(now-last)/1000);last=now;beatT+=dt;drawDaturaCinematicFrame(c,scriptId,Math.max(0,index),meta.reducedMotion?2:beatT,cv.width,cv.height);frame=requestAnimationFrame(draw);};
-  const end=()=>{if(!active)return;active=false;clearTimeout(to);cancelAnimationFrame(frame);cs.classList.add('hide');cs.classList.remove('fadein');ct.style.cssText='position:relative;z-index:1;';activeDaturaCinematic={id:scriptId,beat:script.beats.length-1,beatId:script.beats.at(-1).id,complete:true};onComplete();};
-  const next=()=>{if(!active)return;if(++index>=script.beats.length){end();return;}const beat=script.beats[index];beatT=0;activeDaturaCinematic={id:scriptId,beat:index,beatId:beat.id,complete:false};ct.textContent=beat.text;cs.classList.add('fadein');clearTimeout(to);to=setTimeout(()=>{if(!active)return;cs.classList.remove('fadein');to=setTimeout(next,650);},beat.duration);};
+  const end=()=>{if(!active)return;active=false;clearTimeout(to);window.BladefallVoice?.stop();cancelAnimationFrame(frame);cs.classList.add('hide');cs.classList.remove('fadein');ct.style.cssText='position:relative;z-index:1;';activeDaturaCinematic={id:scriptId,beat:script.beats.length-1,beatId:script.beats.at(-1).id,complete:true};onComplete();};
+  const next=()=>{if(!active)return;if(++index>=script.beats.length){end();return;}const beat=script.beats[index];beatT=0;activeDaturaCinematic={id:scriptId,beat:index,beatId:beat.id,complete:false};ct.textContent=beat.text;cs.classList.add('fadein');
+    // (7.360) Narrated: a voiced beat stays up until its line has been spoken.
+    const spoken=window.BladefallVoice?BladefallVoice.play(beat.text):0;clearTimeout(to);to=setTimeout(()=>{if(!active)return;cs.classList.remove('fadein');to=setTimeout(next,650);},Math.max(beat.duration,spoken*1000+900));};
   cs.onclick=e=>{if(e.target.id==='cutSkip')end();else if(cs.classList.contains('fadein')){cs.classList.remove('fadein');clearTimeout(to);to=setTimeout(next,300);}};
   to=setTimeout(next,350);frame=requestAnimationFrame(draw);
 }
@@ -26337,7 +26339,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.359.0').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.360.0').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */

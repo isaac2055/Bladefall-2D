@@ -5,7 +5,7 @@
 const task=(id,label,detail,capability)=>({id,label,detail,capability:capability||null});
 const records=[
 {
- id:'gatekeeper',thanks:null,unnamed:'The Gatekeeper',stage:0,title:'A Bell for the Camp',name:'Rowan',silhouette:'watcher',accent:'#b8c5a0',
+ id:'gatekeeper',thanks:null,unnamed:'The Gatekeeper',says:{ballast:'Counterweight first. Roll the stone cart onto the iron stop east of here and pull the brake.',bell:'Up the tower ledges. Let the bell go from the top; the pulley brings it down.',hang:'Now bring it back to the empty post by my bench.'},stage:0,title:'A Bell for the Camp',name:'Rowan',silhouette:'watcher',accent:'#b8c5a0',
  opening:'Gate’s shut. Nothing gets through. ...Except you. How?',short:'I walked.',accept:'Hm. Then walk up that tower and bring the bell down. Cart onto the iron stop first, then pull the brake. Bell comes to the empty post by my bench.',
  question:'Everyone’s moved to the camp. Why are you still here?',discussion:'I know where they’ve moved. It’s just—last time I left, I had a good reason. Thought I did. People got killed while I was gone.',
  firstReturn:[['them','Everyone moved to the camp. I didn’t. Last time I left a post, people died while I was gone. You ever leave one you shouldn’t have?'],['knight','I don’t remember.'],['them','Lucky.']],
@@ -226,7 +226,8 @@ function view(state,id){
  else if(r.phase==='ready'){text=q.ready;if(q.readyLines)lines=q.readyLines.map(([who,t])=>who==='them'?them(t):{text:t,speaker:who});
   choices=q.resolutions?q.resolutions.map(([label,value])=>c('finish:'+value,label)):[c('finish',q.thanks||'Continue')];}   // no thanks: the knight says nothing
  else if(r.phase==='active'){
-  const task=q.tasks[r.step].label+'. '+q.tasks[r.step].detail;
+  // (7.360) A giver says the step in their own words (`says`, voiced); the journal keeps the label and detail.
+  const task=q.says?.[q.tasks[r.step].id]||q.tasks[r.step].label+'. '+q.tasks[r.step].detail;
   // The first time back, the knight asks what is really going on; after that, just where things stand.
   if(!r.answers.length){text=q.discussion;lines=q.firstReturn?[...q.firstReturn.map(([who,t])=>who==='knight'?knight(t):them(t)),them(task)]:[knight(q.question),them(q.discussion+(q.forks?.[0]?' '+q.forks[0][1]:'')),them(task)];}
   else text=task;
