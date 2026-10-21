@@ -1,3 +1,8 @@
+## Dialogue script written, not implemented (2026-10-21, Claude, cloud session)
+
+- **What:** `LLM-HANDOFF/DIALOGUE-SCRIPT.md` is the full replacement for every spoken line, in Isaac's chosen style: people are busy, then notice you. Polite people give their name; curious people ask about you. The knight speaks only when spoken to.
+- **Next run:** implement the lines and animate the 90 busy and notice actions listed in it.
+- **Waiting on Isaac:** approve the new names (Ines, Wendell and Ottilie, Hallam, Cobb) and pick Mara or Daro in Hollow Marksman.
 ## 7.358.0 (written as 7.353.0 in a parallel cloud session, merged after 7.357.1): dialogue pass, with no menus and no repeated lines; Dialogue editor in Explore (2026-10-20, Claude, cloud session)
 
 - **Side stories:** they run one way, each step a single line of the knight's own. The only kept choice is the Archivist's keep or burn.
