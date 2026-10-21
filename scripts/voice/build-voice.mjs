@@ -20,7 +20,9 @@ const index=new Map(Object.entries(LINES).map(([id,text])=>[norm(text),id]));
 let current=null;
 function setting(){try{if(typeof meta!=='undefined'&&meta&&(meta.soundOn===false||meta.voices===false))return false;}catch(_e){}return true;}
 function volume(){try{if(typeof meta!=='undefined'&&meta&&typeof meta.sfxVolume==='number')return Math.max(0,Math.min(1,meta.sfxVolume*1.1));}catch(_e){}return .85;}
-function clipFor(text){return index.get(norm(text))||null;}
+/* Act Two and the gates mix narration with speech ("<b>OREN</b><br>The chain snaps. “He always did…”"): only the quoted words are voiced. */
+function quoted(text){const q=String(text==null?'':text).replace(/<[^>]*>/g,' ').match(/“[^”]*”/g);return q?q.map(s=>s.slice(1,-1)).join(' '):'';}
+function clipFor(text){return index.get(norm(text))||index.get(norm(quoted(text)))||null;}
 function stop(){if(current){try{current.pause();}catch(_e){}current=null;}}
 /* Plays the clip for a line of text, if there is one; returns its length in seconds (0 when silent). */
 function play(text){

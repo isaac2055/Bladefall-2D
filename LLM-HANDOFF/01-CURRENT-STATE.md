@@ -1,10 +1,17 @@
+## 7.362.0: Act Two, the gate trials and the endings voiced (2026-10-21, Claude, cloud session)
+
+- **Voices:** 72 new clips (438 in all) under `public/audio/voice/{shores,colony,path,palace,gates,ending}/` and the Updrafts cartographer's waiting line. New cast: the King (Malakor), the three hydra heads (Tide · Final Boss, Storm · Romulus, Bite · Obsidian), the woman by the gate (Linda), the servant (Ayshe), Idris the sweeper (Boom Mike), the comrade at the end (Jesse). Oren, Sable, Olan, Mara, Hale and Bram keep their region voices; the cinematics use the Narrator.
+- **Only speech is voiced:** Act Two lines mix narration with quotes (`<b>OREN</b><br>The chain snaps. “He always did…”`). `clipFor()` in `bladefall-voice.js` now falls back to the quoted words joined by spaces, so a clip's text in `lines.json` is just what is said. Lines with no quotes stay silent. Sable's water lines have one clip per path (`sable.pipe.helped`, `sable.pipe.kneeling`, `sable.spring.kneeling`). Only the first (non-deciding) reply of a choice is voiced.
+- **Checked:** every new clip resolves from a real string in the game modules; in a browser the `wake-armed` ending plays every beat, an Oren line through the annotation path plays, and a gate-trial line through the conversation panel plays. Each take was checked by speech recognition. Two Oren takes that spoke a lead-in before the line were re-recorded: the `[… tired]` tag sometimes leaks into his voice, so use plain `[gruff, plain-spoken workman]` for him.
+- **Still silent:** Act Two dynamic lines (Sunspire allied lines, the Aqueduct Crown line) and `keep/archivist.thanks` (never shown while resolutions exist). Pre-existing test failures unchanged (palace-path-stage, sunspire-stage, text-overrides, blood-inventory-dialogue: 1 each, same on 7.361.0).
+
 ## 7.361.0: regions 1-20 voiced; everyone busy until you come close (2026-10-21, Claude, cloud session)
 
 - **Lines:** the style-#1 script is now in the game for every resident, escort, workshop and quest giver in regions 1-20 (the 62 replacements in `index.html`, `bladefall-dialogue.js`, `bladefall-shops.js`, `bladefall-quests.js`), and every side story speaks its steps in the giver's own words (`SPOKEN` in `bladefall-side-stories.js`). Residents can be spoken to in every region, not only the first three (`quietV4` gate moved to `stageIndex<=20`). The old knight exchanges (`VOICES`) are retired: the knight speaks only when asked.
 - **Voices:** 335 new ElevenLabs clips (366 in all, 15 MB) under `public/audio/voice/<region>/`, 41 new cast voices (`scripts/voice/cast.json`). Every take was checked by speech recognition and a pitch-drift test; 16 flagged takes were re-recorded. Escort shouts ("MIND THE FLAME!") are voiced too, and annotations outside the conversation panel play their line.
 - **Animations:** everybody without a bespoke busy pose now keeps to their side with a slow working bob, then gives the same one-pixel start and turns to the knight when he comes within 130 units (`s.idle` in `bladefall-resident-art.js`). Travellers (`G.npcs`) are left alone.
 - **Checked in a browser:** every side story giver and resident from region 1 to 20 opened and played voiced lines; the only unvoiced texts were system notices ("Speak with … before using this").
-- **Not voiced yet:** Act Two, the gate trials and the ending cinematics. That is the next phase.
+- **Not voiced yet:** Act Two, the gate trials and the ending cinematics (done in 7.362.0).
 - **Rebuild the voices:** `scratchpad`-free path is `scripts/voice/lines.json` (id → exact text) + `public/audio/voice/<id>.mp3`, then `node scripts/voice/build-voice.mjs`.
 
 ## 7.360.0: narrated intro; Rowan re-recorded (2026-10-21, Claude, cloud session)
