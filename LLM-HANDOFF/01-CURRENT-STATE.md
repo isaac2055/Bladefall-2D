@@ -1,3 +1,10 @@
+## 7.358.0 (written as 7.353.0 in a parallel cloud session, merged after 7.357.1): dialogue pass, with no menus and no repeated lines; Dialogue editor in Explore (2026-10-20, Claude, cloud session)
+
+- **Side stories:** they run one way, each step a single line of the knight's own. The only kept choice is the Archivist's keep or burn.
+- **Residents:** they play one exchange automatically.
+- **Repeats:** stock and shared lines were rewritten.
+- **Dialogue editor:** Explore menu → ✎ Dialogue, shown in test mode.
+- **Details:** `LLM-HANDOFF/HANDOFF-7.344.0.md`, section 8.
 ## 7.357.1: world doors work again (2026-10-20, Claude)
 
 - **The bug:** 7.357.0 marked door arrivals on the zone plan (`plan._doorArrival`), but the plan is frozen. The write threw inside the async crossing, so every world door said "The road shudders but holds".

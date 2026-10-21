@@ -1,4 +1,4 @@
-# Handoff 7.344.0–7.352.0: quest shortcuts in every region (two-way, earned by playing through, each its own kind of ride; test mode and gallery), tester's tools behind test mode, a real New Game, plan-driven Explore routes
+# Handoff 7.344.0–7.353.0: quest shortcuts in every region (two-way, earned by playing through, each its own kind of ride; test mode and gallery), tester's tools behind test mode, a real New Game, plan-driven Explore routes
 
 Written 2026-10-16 by Claude, in a cloud session. Everything below is on `main`. Give this file to the local LLM so it can bring the local/offline copy up to date and carry the work on.
 
@@ -375,4 +375,49 @@ Checked in a browser with a fresh save:
 - Ascend lists "2 · ???" and the rest, and world 2+ show "Locked".
 - Explore's tab reads ???, and five taps turn on test mode, which shows "Fractured ✦".
 - No page errors.
+
+## 8. 7.358.0 (first written as 7.353.0): no dialogue menus; repeated lines removed; Dialogue editor in Explore
+
+Version 7.358.0. This work was done as 7.353.0 in a cloud session running in parallel with 7.354–7.357.1, and merged on top of them:
+- `VERSION`, `BLADEFALL_VERSION` (precision.html) and the `sw.js?v=` registrations.
+- `?v=7.358.0` on `bladefall-conversation.js`, `bladefall-side-stories.js`, `bladefall-side-story-world.js`, `bladefall-explore-mounts.js` and `bladefall-text-catalog.js` (index.html, dialogue-editor.html, sw.js).
+- `CACHE_NAME = 'bladefall-v528-dialogue-pass'`.
+
+The owner found the dialogue menus didn't work well, and stock lines ("Stay a moment.", "Good to see a friendly face.") repeated everywhere. Rule from now on: no line repeats, and no menus except where a real decision is made.
+
+**Side stories** (`bladefall-side-stories.js`, `view()` / `reduce()`) now run one way:
+1. **Offer:** one button, the knight's own line (`short`), which he then speaks.
+2. **Task.**
+3. **First return:** the knight asks `question`, and the person answers with `discussion` and the first fork's answer. This plays as beats with no buttons; a `heard` event marks it, so it plays once.
+4. **Ready:** one button with the knight's closing line. The new `thanks` field holds a unique line per story.
+5. **Ending:** always `longEnding`. Completing counts as the kind ending (`route` 'medium').
+
+Exceptions and compatibility:
+- The Archivist keeps its two `resolutions`, keep or burn the books, as the one real decision.
+- The harsh route and the stock buttons are gone from play.
+- `reduce()` still accepts `leave`, `decline` and `harsh` (hidden), so old saves and the world's harsh outcomes work.
+- The knight's acceptance lines were rewritten to stop all starting "I'll…".
+
+**Residents** (`openFieldConversation` in index.html):
+- **Voiced people:** a person with a voice (`VOICES` in `bladefall-conversation.js`, now one exchange each) plays line → knight's line → reply as beats, automatically. The first reply's gift or reward is granted.
+- **Others:** anyone without a voice just speaks; the generic "I'm listening." / "Go on." fallback is gone.
+- **The one menu kept:** responses that decide something (a rift shard's, `r[2]`) are still a choice.
+- **Shops:** shop workshops have one exchange each, with each keeper's own reply (`work[4]`).
+- **Rewrites:** generic knight lines were made specific to each person (Vey's bandage, Olan's patrol count, Oren's chain, Sable, Edrin, Veya, Daro).
+
+**Other repeats removed:**
+- "How long have you been…" asked three times (the Figure, the Miner).
+- Rowan and the Miner sharing a line.
+- The "Mind how you go." fallback.
+- The shops' shared "Take care of it." and "That's all I had".
+- Shortcut roosts now offer one action. Esc declines.
+
+**Checking repeats:** a scan of the rebuilt catalog for exact repeats and shared 5-word phrases found no other cross-character reuse. The remaining hits are the same character echoing themselves, two code paths for one prop, or UI labels. To repeat the scan, read `bladefall-text-catalog.js` (`entries`, with `places`) and look for 5-word phrases shared by lines of different speakers.
+
+**Dialogue editor:** Explore menu → **✎ Dialogue** (below Co-op, shown in Explore's test mode) opens `dialogue-editor.html`. It lists every line in the game (the catalog), edits apply at once on this device, and Export plus `node scripts/apply-text-edits.mjs <export.json> --write` writes them into the source. After source edits, run `node scripts/build-text-catalog.mjs`.
+
+**Tests:**
+- `tests/side-stories.test.mjs` was rewritten for the new flow and passes (46). It now also checks that every knight line on a side story is unique.
+- `validate-side-story-puzzle-loops` and `-ability-loops` now close the panel instead of choosing "leave". puzzle-loops passes.
+- Four other side-story validators already failed on main before this change. They need `PUPPETEER_EXECUTABLE_PATH` and a server on port 8371.
 

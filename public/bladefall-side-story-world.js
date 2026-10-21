@@ -90,17 +90,17 @@ function receiveRewards(receipts,quiet=true){
 }
 function capabilities(){return ['weapon','dash','portal-single','portal-pair','wall-jump','downward-strike','gravity-flip','chain-hook'].filter(id=>hasCapability(id)).concat(typeof echoVerbAvailable==='function'&&echoVerbAvailable()?['echo']:[]);}
 function closeSession(session){if(G!==session)return;dialogueId=null;mode='play';G.outskirtsAnnotation=null;BFKeyboard.clearPressed();showGameUI(true);hudUpdate();}
-function panel(title,text,choices,accent){const session=G;BladefallConversation.show({title,text,accent,onClose:()=>closeSession(session),choices});mode='conversation';document.getElementById('bosshpwrap')?.classList.remove('on');}
+function panel(title,text,choices,accent,lines){const session=G;BladefallConversation.show({title,text,lines:lines||undefined,accent,onClose:()=>closeSession(session),choices:choices&&choices.length?choices:undefined});mode='conversation';document.getElementById('bosshpwrap')?.classList.remove('on');}
 function renderDialogue(id){
  const v=S.view(state(),id);if(!v)return false;
  const record=S.row(state(),id);
  if(id==='recruit'&&!record.rescued){if(record.node==='ready')v.text='We made it. Wait—where’s my helmet? I didn’t even notice it go.';if(record.node==='ending')v.text=record.route==='medium'?'I thought I’d feel—different, with the helmet. I’m still scared, mostly. But we got across! Could we go back for it?':'My helmet? Oh, for—again? Could we still go back for it?';}
+ if(v.lines){commit(id,{type:'heard'});apply();}   // the first return's exchange, heard once
  panel(v.title,v.text,v.choices.map(c=>({label:c.label,action:()=>{
    const result=commit(id,{type:'choice',choice:c.id});if(result.error)return;
    apply();
-   if(c.id==='leave'||c.id==='decline'){BladefallConversation.close();return;}
    renderDialogue(id);
- }})),v.accent);dialogueId=id;return true;
+ }})),v.accent,v.lines);dialogueId=id;return true;
 }
 function inspect(title,text){panel(title,text,undefined,'#ccbfa7');return true;}
 function supportingFloor(x,y){return G.obstacles.filter(o=>o.type==='plat'&&!o.gone&&!o.ceiling&&!o.fake&&!o.crumble&&!o.gate&&o.w>=100&&x>=o.x-o.w/2+25&&x<=o.x+o.w/2-25).sort((a,b)=>Math.abs(a.y-y)-Math.abs(b.y-y))[0];}

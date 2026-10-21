@@ -40,7 +40,8 @@ for(const stage of stages){
     placed:G.obstacles.filter(o=>o.mountRoost).map(o=>o.mountRoost)};},stage);
   if(m.roosts.length!==2){fail('roosts '+JSON.stringify(m.roosts));continue;}
   // Not played through yet: only the home roost.
-  if(m.placed.length!==1||m.placed[0]!==m.roosts[0].id)fail('before reaching the home roost: '+JSON.stringify(m.placed));
+  // (7.357) Silas's line on the Causeway opens both ends as soon as his story is done.
+  if(stage!==2&&(m.placed.length!==1||m.placed[0]!==m.roosts[0].id))fail('before reaching the home roost: '+JSON.stringify(m.placed));
   // Walk up to it (stand by it): the way back opens.
   await page.evaluate(id=>{const r=BladefallMounts.roosts().find(r=>r.id===id);G.p.x=r.x+60;G.p.y=r.y;G.p.vx=0;G.p.vy=0;},m.roosts[0].id);await sleep(900);
   const opened=await page.evaluate(()=>({reached:BladefallMounts.reached(),placed:G.obstacles.filter(o=>o.mountRoost).length}));

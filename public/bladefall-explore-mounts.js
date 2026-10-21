@@ -257,14 +257,12 @@ function interact(o){
  const m=mount(),r=roostOf(o);if(!m||!r)return false;
  const to=otherOf(r);if(!to)return false;
  const lacking=missing();
- if(lacking.length)return panel(m,'Not yet. '+m.name.replace(/^The /,'the ').replace(/^./,ch=>ch.toUpperCase())+' waits until this region has given you what it keeps: '+lacking.map(abilityName).join(', ')+'.',[{label:'Leave',action:()=>BladefallConversation.close()}]);
+ if(lacking.length)return panel(m,'Not yet. '+m.name.replace(/^The /,'the ').replace(/^./,ch=>ch.toUpperCase())+' waits until this region has given you what it keeps: '+lacking.map(abilityName).join(', ')+'.');
  const here=!travels(m)||perchOf(m)===r.id;
  const text=here?m.intro+(m.creature?' It shakes out its wings and looks toward '+to.label+'.':''):
   m.creature?'You whistle. Somewhere far down the road, wings open.':m.name.replace(/^The /,'The ')+' waits at '+to.label+'. Call it over?';
- return panel(m,text,[
-  {label:(m.go||'Fly to')+' '+to.label,action:()=>{BladefallConversation.close();start(m,r,to,!here);}},
-  {label:'Not now',action:()=>{if(!here)G.mountFlight={kind:'arrive',roost:r,t:0,dur:1.6,dir:r.x<G.levelLength/2?1:-1};BladefallConversation.close();}},
- ]);
+ // (7.353) one action, no menu: closing the panel (Esc) is how you decline.
+ return panel(m,text,[{label:(m.go||'Fly to')+' '+to.label,action:()=>{BladefallConversation.close();start(m,r,to,!here);}}]);
 }
 // ---- the ride --------------------------------------------------------------------------------------------
 const ease=u=>u*u*u*(u*(u*6-15)+10);
