@@ -101,7 +101,7 @@ const rooms=[
    "########################################",
    "########################################",
    "########################################"]},
- {...{"id":"s20-garden","name":"The Evening Bench","hint":"The mirror gallery is an optional way into the garden","question":"Will you close the shutters before taking the throne road?","side":"up","people":[{"who":"gardener","name":"THE GARDENER","c":8,"r":17,"quest":"garden","line":"Three shutters. His Majesty wants them open. The flowers need darkness. Their handles are through the gallery.","lineDone":"Look, by the bench. That one hasn’t opened in years. She liked it in the evenings."}],"decor":[{"k":"evening-bench","c":12,"r":17}]},map:[
+ {...{"id":"s20-garden","name":"The Evening Bench","hint":"The mirror gallery is an optional way into the garden","question":"Will you close the shutters before taking the throne road?","side":"up","people":[{"who":"gardener","name":"THE GARDENER","c":8,"r":17,"quest":"garden","line":"His Majesty wants the three shutters open. The flowers need the dark. The handles are through the gallery.","lineDone":"By the bench. That one hasn’t opened in years. She liked it in the evenings."}],"decor":[{"k":"evening-bench","c":12,"r":17}]},map:[
    "##.....#################################",
    "#......................................#",
    "#......................................#",
@@ -317,7 +317,7 @@ const rooms=[
    "########################################",
    "########################################",
    "########################################"]},
- {...{"id":"s20-sea","name":"The Sea Terrace","hint":"The hydra has come to carry you home · a raised head shades you from the King’s last light","question":"The light falls in shafts and the heads rise and dip in turn. Where on her back are you safe as each shaft crosses?","decks":[{"c":10,"r":17,"w":12,"to":[27,0],"period":420}],"hydraRide":{"shafts":[24,29,34],"heads":[{"at":0,"w":3,"up":90,"down":50,"phase":0},{"at":4.5,"w":3,"up":90,"down":50,"phase":47},{"at":9,"w":3,"up":90,"down":50,"phase":94}]},"people":[{"who":"hydra","name":"THE THREE HEADS","voiceUntilDone":true,"c":8,"r":17,"line":"You broke our chains. The one you left on the beach walks your roads backwards. Climb on. We will carry you home."}]},map:[
+ {...{"id":"s20-sea","name":"The Sea Terrace","hint":"The hydra has come to carry you home · a raised head shades you from the King’s last light","question":"The light falls in shafts and the heads rise and dip in turn. Where on her back are you safe as each shaft crosses?","decks":[{"c":10,"r":17,"w":12,"to":[27,0],"period":420}],"hydraRide":{"shafts":[24,29,34],"heads":[{"at":0,"w":3,"up":90,"down":50,"phase":0},{"at":4.5,"w":3,"up":90,"down":50,"phase":47},{"at":9,"w":3,"up":90,"down":50,"phase":94}]},"people":[{"who":"hydra","name":"THE THREE HEADS","voiceUntilDone":true,"c":8,"r":17,"line":"You broke our chains. Your Echo walks your roads backwards. Climb on."}]},map:[
    "########################################",
    "#......................................#",
    "#......................................#",

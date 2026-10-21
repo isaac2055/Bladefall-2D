@@ -5,7 +5,7 @@
 'use strict';
 const RBR=root.BladefallRoomByRoom;if(!RBR)return;
 const rooms=[
- {...{"id":"m5-camp","name":"Shotfall Camp","exit":"right","lock":["parry","portal"],"study":true,"hint":"A bow swells before it shoots · stone stops a bolt","question":"The watch bow fires along the road on a beat. Where are you when it shoots?","foes":[{"kind":"spit","x":36,"y":17,"dir":[-1,0],"every":70,"offset":50}],"people":[{"who":"daro","c":10,"r":17,"face":1,"quest":"daro","leave":"right","line":"The old watch token’s got my mark on it. I left it up above the gallery, and I’d like it back. I’ll be at the far gate, out of the line of fire."},{"who":"mara","c":36,"r":8,"face":-1,"leave":"right","line":"I got to the watch first, and it’s been shooting at me all morning. Don’t duck the next one: meet it, and it goes home."}],"decor":[{"k":"tent","c":2,"r":17},{"k":"watchfire","c":6,"r":17},{"k":"trumpets","c":13,"r":17}]},map:[
+ {...{"id":"m5-camp","name":"Shotfall Camp","exit":"right","lock":["parry","portal"],"study":true,"hint":"A bow swells before it shoots · stone stops a bolt","question":"The watch bow fires along the road on a beat. Where are you when it shoots?","foes":[{"kind":"spit","x":36,"y":17,"dir":[-1,0],"every":70,"offset":50}],"people":[{"who":"daro","c":10,"r":17,"face":1,"quest":"daro","leave":"right","line":"The old watch token’s got my mark on it. I left it up above the gallery, and I’d like it back. I’ll be at the far gate, out of the line of fire."},{"who":"mara","c":36,"r":8,"face":-1,"leave":"right","line":"You again. The watch has shot at me all morning. Meet the bolt. Don’t duck it."}],"decor":[{"k":"tent","c":2,"r":17},{"k":"watchfire","c":6,"r":17},{"k":"trumpets","c":13,"r":17}]},map:[
    "########################################",
    "#......................................#",
    "#......................................#",
@@ -173,7 +173,7 @@ const rooms=[
    "#####...........................<#######",
    "#####^^^^^^^^^^^^^^^^^^^^^^^^^^^########",
    "########################################"]},
- {...{"id":"m5-release","name":"The Brass Release","exit":"right","side":"up","study":true,"hint":"Thorns stop you, not a bolt · a stake lit opens the gate","question":"The stake is at the top of a chimney of thorns. What can go up it for you?","foes":[{"kind":"spit","x":38,"y":17,"dir":[-1,0],"every":110,"offset":30}],"people":[{"who":"recruit","c":5,"r":17,"face":1,"quest":"recruit","line":"I can make the crossing. I can. It’s only that my helmet’s up in the watchtower, and I’d go myself, but. Well.","lineDone":"That’s it. That’s my uncle’s. Right: the bridge. I can do the bridge."}],"decor":[]},map:[
+ {...{"id":"m5-release","name":"The Brass Release","exit":"right","side":"up","study":true,"hint":"Thorns stop you, not a bolt · a stake lit opens the gate","question":"The stake is at the top of a chimney of thorns. What can go up it for you?","foes":[{"kind":"spit","x":38,"y":17,"dir":[-1,0],"every":110,"offset":30}],"people":[{"who":"recruit","c":5,"r":17,"face":1,"quest":"recruit","line":"I can make the crossing. I can. My helmet’s up the tower, that’s all.","lineDone":"That’s my uncle’s. Right. The bridge."}],"decor":[]},map:[
    "#..#####################################",
    "#..#####..###..........................#",
    "#..#####c.###..........................#",

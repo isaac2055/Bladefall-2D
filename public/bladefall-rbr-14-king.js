@@ -5,7 +5,7 @@
 'use strict';
 const RBR=root.BladefallRoomByRoom;if(!RBR)return;
 const rooms=[
- {...{"id":"k14-stair","name":"The Drowned Stair","hint":"A dash does not protect you from thorns","question":"Which landing gives you time to see the next cut?","people":[{"who":"oren","c":7,"r":17,"line":"He has two marks and one visitor. There is always a catch."}]},map:[
+ {...{"id":"k14-stair","name":"The Drowned Stair","hint":"A dash does not protect you from thorns","question":"Which landing gives you time to see the next cut?","people":[{"who":"oren","c":7,"r":17,"line":"Two marks, one visitor. There’s always a catch."}]},map:[
    "########################################",
    "#......................................#",
    "#......................................#",
@@ -101,7 +101,7 @@ const rooms=[
    "########################################",
    "########################################",
    "########################################"]},
- {...{"id":"k14-alcove","name":"The Empty Alcove","hint":"Here, the portal key leaves an echo · press again to trade places","question":"What position would you want to return to?","echo":true,"people":[{"who":"oren","c":7,"r":17,"line":"Something stayed behind when you moved. Try the key again. I’m keeping my distance."}]},map:[
+ {...{"id":"k14-alcove","name":"The Empty Alcove","hint":"Here, the portal key leaves an echo · press again to trade places","question":"What position would you want to return to?","echo":true,"people":[{"who":"oren","c":7,"r":17,"line":"Something stayed behind when you moved. Try the key again."}]},map:[
    "########################################",
    "#......................................#",
    "#......................................#",
@@ -245,7 +245,7 @@ const rooms=[
    "#########.....................<#########",
    "#########^^^^^^^^^^^^^^^^^^^^^^#########",
    "########################################"]},
- {...{"id":"k14-bellkeeper","name":"The Last Landing","hint":"The bell tower is optional; the throne lies ahead","question":"Will you climb for the all-clear before entering the throne?","side":"up","people":[{"who":"bellkeeper","c":8,"r":17,"quest":"alarm","line":"Three short, two long. Small bell, then great bell. Break either and the backup starts. The tower is up that chimney.","lineDone":"Quiet at last. They’re leaving their posts."}],"decor":[{"k":"quiet-bell","c":11,"r":17}]},map:[
+ {...{"id":"k14-bellkeeper","name":"The Last Landing","hint":"The bell tower is optional; the throne lies ahead","question":"Will you climb for the all-clear before entering the throne?","side":"up","people":[{"who":"bellkeeper","c":8,"r":17,"quest":"alarm","line":"Three short, two long. Break a bell and the backup starts. The tower’s up the chimney.","lineDone":"Quiet at last. They’re leaving their posts."}],"decor":[{"k":"quiet-bell","c":11,"r":17}]},map:[
    "##.....#################################",
    "#......................................#",
    "#......................................#",
@@ -341,7 +341,7 @@ const rooms=[
    "########################################",
    "########################################",
    "########################################"]},
- {...{"id":"k14-rail","name":"The Rail Head","hint":"The way down is open","question":"Where do you land before following the rails?","people":[{"who":"oren","c":7,"r":17,"line":"Tracks. Someone built a way out. I’ll take it.","leave":"right"}]},map:[
+ {...{"id":"k14-rail","name":"The Rail Head","hint":"The way down is open","question":"Where do you land before following the rails?","people":[{"who":"oren","c":7,"r":17,"line":"Tracks. Someone built a way out. I’m taking it.","leave":"right"}]},map:[
    "########################################",
    "#......................................#",
    "#......................................#",

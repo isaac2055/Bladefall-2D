@@ -53,7 +53,7 @@ const rooms=[
    "########################################",
    "########################################",
    "########################################"]},
- {...{"id":"u4-bellows","name":"Bellows Rest","exit":"right","hint":"A bellows-pad throws you higher than a jump, and gives your dash back","question":"The terrace is too high to jump and dash to. What would throw you higher?","people":[{"who":"talla","c":7,"r":17,"face":1,"line":"Mind the pad. It throws harder than it looks, and it doesn’t care which way you’re facing."}],"decor":[{"k":"bellows","c":11,"r":17},{"k":"kite","c":3,"r":17}]},map:[
+ {...{"id":"u4-bellows","name":"Bellows Rest","exit":"right","hint":"A bellows-pad throws you higher than a jump, and gives your dash back","question":"The terrace is too high to jump and dash to. What would throw you higher?","people":[{"who":"talla","c":7,"r":17,"face":1,"line":"Mind the pad. It throws harder than it looks."}],"decor":[{"k":"bellows","c":11,"r":17},{"k":"kite","c":3,"r":17}]},map:[
    "########################################",
    "#......................................#",
    "#......................................#",
@@ -149,7 +149,7 @@ const rooms=[
    "##########.........................<####",
    "##########^^^^^^^^^^^^^^^^^^^^^^^^^^####",
    "########################################"]},
- {...{"id":"u4-choir","name":"Choir of Drafts","exit":"right","side":"up","hint":"Thorns line the pipes: drift over a pipe wall only from above its top","question":"Each pipe lets go at a different height. From which top can you clear the next wall?","people":[{"who":"cartographer","c":31,"r":8,"face":-1,"quest":"cartographer","line":"One reading from the upper channel. Two, if the pressure changes. The funnel’s above the tall pipe; mind the old chimes on your way.","lineDone":"That interval shouldn’t occur with this spacing. No, don’t change it. Help me move the desk outside, would you? I’d like to listen."}],"winds":[{"c":9,"r":8,"w":4,"h":13,"dx":0,"dy":-240},{"c":16,"r":4,"w":4,"h":17,"dx":0,"dy":-240},{"c":23,"r":2,"w":4,"h":19,"dx":0,"dy":-240}],"decor":[{"k":"desk","c":33,"r":8},{"k":"chimes","c":28,"r":8}]},map:[
+ {...{"id":"u4-choir","name":"Choir of Drafts","exit":"right","side":"up","hint":"Thorns line the pipes: drift over a pipe wall only from above its top","question":"Each pipe lets go at a different height. From which top can you clear the next wall?","people":[{"who":"cartographer","c":31,"r":8,"face":-1,"quest":"cartographer","line":"Footsteps? Good. I need one reading from the upper funnel. Over the tall pipe.","lineDone":"That interval shouldn’t exist. Help me move the desk outside?"}],"winds":[{"c":9,"r":8,"w":4,"h":13,"dx":0,"dy":-240},{"c":16,"r":4,"w":4,"h":17,"dx":0,"dy":-240},{"c":23,"r":2,"w":4,"h":19,"dx":0,"dy":-240}],"decor":[{"k":"desk","c":33,"r":8},{"k":"chimes","c":28,"r":8}]},map:[
    "#######################....#############",
    "#......................................#",
    "#......................................#",
@@ -245,7 +245,7 @@ const rooms=[
    "########################################",
    "########################################",
    "########################################"]},
- {...{"id":"u4-catcher","name":"Rain-Catcher","exit":"right","hint":"Cracked gutters fall a moment after you stand on them","question":"Every cup in the gutter cracks. Where do you stand long enough to catch the next wind?","people":[{"who":"edrin","c":4,"r":13,"face":1,"line":"Each gutter spills into the next one down, see? The cups crack if you stand about. Don’t stand about."}],"winds":[{"c":23,"r":5,"w":4,"h":16,"dx":0,"dy":-240},{"c":31,"r":1,"w":5,"h":4,"dx":150,"dy":-150}],"decor":[{"k":"gutter","c":1,"r":13},{"k":"trumpets","c":2,"r":13}]},map:[
+ {...{"id":"u4-catcher","name":"Rain-Catcher","exit":"right","hint":"Cracked gutters fall a moment after you stand on them","question":"Every cup in the gutter cracks. Where do you stand long enough to catch the next wind?","people":[{"who":"edrin","c":4,"r":13,"face":1,"line":"Each gutter spills to the next. Don’t stand about. The cups crack."}],"winds":[{"c":23,"r":5,"w":4,"h":16,"dx":0,"dy":-240},{"c":31,"r":1,"w":5,"h":4,"dx":150,"dy":-150}],"decor":[{"k":"gutter","c":1,"r":13},{"k":"trumpets","c":2,"r":13}]},map:[
    "#######################################.",
    "#.......................................",
    "#.......................................",
@@ -269,7 +269,7 @@ const rooms=[
    "#######.............................<###",
    "#######^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^###",
    "########################################"]},
- {...{"id":"u4-span","name":"The Catcher Span","exit":"right","hint":"A weak draft only slows your fall; a pod wins the height back","question":"The span is long and the draft sinks you the whole way. Where do you win the height back?","people":[{"who":"ilyra","c":37,"r":3,"face":-1,"line":"You came across on the drafts? Good. The flues are drawing again. If anyone brings a banked flame up from Frostfell, send them to the Choir."}],"winds":[{"c":9,"r":8,"w":25,"h":10,"dx":0,"dy":-130}]},map:[
+ {...{"id":"u4-span","name":"The Catcher Span","exit":"right","hint":"A weak draft only slows your fall; a pod wins the height back","question":"The span is long and the draft sinks you the whole way. Where do you win the height back?","people":[{"who":"ilyra","c":37,"r":3,"face":-1,"line":"You came across on the drafts? Then the flues are drawing again."}],"winds":[{"c":9,"r":8,"w":25,"h":10,"dx":0,"dy":-130}]},map:[
    "########################################",
    "#.......................................",
    "#.......................................",

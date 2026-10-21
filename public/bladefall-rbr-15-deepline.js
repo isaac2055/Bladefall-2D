@@ -101,7 +101,7 @@ const rooms=[
    "#--------------------------------------#",
    "########################################",
    "########################################"]},
- {...{"id":"d15-siding","name":"The Condemned Siding","hint":"The bell below is off the main line","question":"Will you follow the sound before taking the through line?","side":"up","people":[{"who":"miner","name":"VOICE BELOW","nameDone":"THE MINER","voiceUntilDone":true,"c":8,"r":17,"quest":"miner","line":"Someone there? Take the siding! The cage is stuck. Main line goes straight past.","lineDone":"My name is back where it belongs. Give these legs a moment."}],"decor":[{"k":"shaft-bell","c":11,"r":17}]},map:[
+ {...{"id":"d15-siding","name":"The Condemned Siding","hint":"The bell below is off the main line","question":"Will you follow the sound before taking the through line?","side":"up","people":[{"who":"miner","name":"VOICE BELOW","nameDone":"THE MINER","voiceUntilDone":true,"c":8,"r":17,"quest":"miner","line":"Someone there? Take the siding! The cage is stuck.","lineDone":"My name’s back where it belongs. Give my legs a moment."}],"decor":[{"k":"shaft-bell","c":11,"r":17}]},map:[
    "##.....#################################",
    "#......................................#",
    "#......................................#",

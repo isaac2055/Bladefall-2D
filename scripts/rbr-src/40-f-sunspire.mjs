@@ -151,7 +151,7 @@ const rooms=[
  king('noon','The Last Noon',noon,{c:22,r:13,hour:2,need:3,beat:[130,110,90],wave:0,guard:24,shrug:true,ripen:30,suns:[{c:0,r:5,dir:'r'},{c:0,r:2,dir:'r'},{c:32,r:0,dir:'d'}]},{color:'orange',c:8,r:12,face:'r'},{c:0,r:5,dir:'r'},{shade:{delay:90}}),
  r('sea','The Sea Terrace','The hydra carries you home · a raised head shades you from the King’s last light · they move faster now','The light falls in four shafts and the heads rise and dip in turn. Where on her back are you safe as each shaft crosses?',sea,
   {decks:[{c:10,r:17,w:12,to:[27,0],period:400}],hydraRide:{shafts:[20,25,30,35],heads:[{at:0,w:3,up:70,down:45,phase:0},{at:4.5,w:3,up:70,down:45,phase:60},{at:9,w:3,up:70,down:45,phase:90}]},
-   people:[{who:'hydra',name:'THE THREE HEADS',voiceUntilDone:true,c:8,r:17,line:'You broke our chains twice now. Climb on. The light is harder here; we will hold our heads over you as long as we can.'}]}),
+   people:[{who:'hydra',name:'THE THREE HEADS',voiceUntilDone:true,c:8,r:17,line:'You broke our chains twice now. Climb on. We will shade you as long as we can.'}]}),
 ];
 const quests=[{...{"id":"garden-echo","title":"The Evening Flower","giver":"The gardener’s echo","from":"fs40-garden","back":{"c":5,"r":17},"keepsake":{"id":"garden-remembered","name":"The Gardener, remembered","gives":"The garden bloomed in shade every evening after. Shown at the end."},"needs":"night-flower"},rooms:[
  r('q-lower','The Lower Shutter','A gold handle over the thorns in every lane · windows on their beats · the last one shuts the light out','A handle in every lane, over the thorns, under the windows. When do you go for each, and how do you get away?',qlower,

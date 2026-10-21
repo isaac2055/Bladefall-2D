@@ -5,7 +5,7 @@
 'use strict';
 const RBR=root.BladefallRoomByRoom;if(!RBR)return;
 const rooms=[
- {...{"id":"f8-refuge","name":"Banked Refuge","exit":"right","hint":"Ice keeps whatever speed you bring onto it","question":"The street is glazed from wall to wall. What happens when you let go?","people":[{"who":"nim","c":10,"r":17,"face":1,"leave":"right","line":"Up through the mine? Then you’re colder than you look. Warm your hands. I’m off to light the braziers before the street freezes solid."}],"decor":[{"k":"f8-mine","c":0,"r":17},{"k":"hearth","c":7,"r":17},{"k":"f8-house","c":34,"r":15}]},map:[
+ {...{"id":"f8-refuge","name":"Banked Refuge","exit":"right","hint":"Ice keeps whatever speed you bring onto it","question":"The street is glazed from wall to wall. What happens when you let go?","people":[{"who":"nim","c":10,"r":17,"face":1,"leave":"right","line":"Up through the mine? Warm your hands. I’ve braziers to light."}],"decor":[{"k":"f8-mine","c":0,"r":17},{"k":"hearth","c":7,"r":17},{"k":"f8-house","c":34,"r":15}]},map:[
    "########################################",
    "#......................................#",
    "#......................................#",
@@ -29,7 +29,7 @@ const rooms=[
    "########################################",
    "########################################",
    "########################################"]},
- {...{"id":"f8-streets","name":"Working Streets","exit":"right","hint":"Ice keeps your speed after you let go: the edge comes sooner than you think","question":"Every step up the street is ice. How long do you have on each one?","people":[{"who":"nim","c":36,"r":8,"face":-1,"leave":"right","line":"That’s one lit. The fire takes the slip out of the stone near it, and nowhere else, mind."}],"decor":[{"k":"hearth","c":34,"r":8}]},map:[
+ {...{"id":"f8-streets","name":"Working Streets","exit":"right","hint":"Ice keeps your speed after you let go: the edge comes sooner than you think","question":"Every step up the street is ice. How long do you have on each one?","people":[{"who":"nim","c":36,"r":8,"face":-1,"leave":"right","line":"One lit. Fire takes the slip out of the stone. Only near it, mind."}],"decor":[{"k":"hearth","c":34,"r":8}]},map:[
    "########################################",
    "#>.....................................#",
    "#>.....................................#",
@@ -77,7 +77,7 @@ const rooms=[
    "#.....###########.............<###.....#",
    "#.....###########^^^^^^^^^^^^^^###.....#",
    "########################################"]},
- {...{"id":"f8-hearth","name":"Workers’ Hearth","exit":"right","side":"up","hint":"Cracked stone holds you still for a moment; ice never does","question":"A floe, a cracked stone, a floe. Where can you stop long enough to aim?","people":[{"who":"nim","c":2,"r":17,"face":1,"line":"This one’s mine. I’ll keep it going all night. The works are out past the floes, if you’re set on them."},{"who":"neighbour","c":12,"r":17,"face":-1,"quest":"winter","line":"Coal’s in the upper shelter. Sack’s split, so use the bucket. I can’t manage the steps anymore. They’re up the chimney there. Mind the last one.","lineDone":"Room’s warmer. Floor’s still wet. Sit down, would you? You’ve been on your feet all day."}],"decor":[{"k":"hearth","c":4,"r":17},{"k":"f8-cottage","c":6,"r":17}]},map:[
+ {...{"id":"f8-hearth","name":"Workers’ Hearth","exit":"right","side":"up","hint":"Cracked stone holds you still for a moment; ice never does","question":"A floe, a cracked stone, a floe. Where can you stop long enough to aim?","people":[{"who":"nim","c":2,"r":17,"face":1,"line":"This one’s mine. The works are past the floes."},{"who":"neighbour","c":12,"r":17,"face":-1,"quest":"winter","line":"Coal’s in the upper shelter, up the chimney. I can’t manage the steps.","lineDone":"Room’s warmer. Sit. You’ve been on your feet all day."}],"decor":[{"k":"hearth","c":4,"r":17},{"k":"f8-cottage","c":6,"r":17}]},map:[
    "##..####################################",
    "##..#..................................#",
    "##..#..................................#",
@@ -101,7 +101,7 @@ const rooms=[
    "#############....................<######",
    "#############^^^^^^^^^^^^^^^^^^^^^######",
    "########################################"]},
- {...{"id":"f8-works","name":"Thermal Works","exit":"right","hint":"Warm air lifts you while you are in it · ice won’t wait while you line up the next draft","question":"The draft sets you down on ice you can’t stand on. When do you leave for the next one?","people":[{"who":"ilyra","c":5,"r":17,"face":1,"line":"Nim’s fire in the works’ draft. That’s what the Choir’s been missing. When it’s warm I’ll carry a coal of it down myself."}],"decor":[{"k":"f8-pipes","c":1,"r":17},{"k":"f8-icicles","c":28,"r":1}],"winds":[{"c":10,"r":7,"w":4,"h":14,"dx":0,"dy":-240},{"c":23,"r":3,"w":4,"h":15,"dx":0,"dy":-240}]},map:[
+ {...{"id":"f8-works","name":"Thermal Works","exit":"right","hint":"Warm air lifts you while you are in it · ice won’t wait while you line up the next draft","question":"The draft sets you down on ice you can’t stand on. When do you leave for the next one?","people":[{"who":"ilyra","c":5,"r":17,"face":1,"line":"Nim’s fire in the draft. That’s what the Choir was missing."}],"decor":[{"k":"f8-pipes","c":1,"r":17},{"k":"f8-icicles","c":28,"r":1}],"winds":[{"c":10,"r":7,"w":4,"h":14,"dx":0,"dy":-240},{"c":23,"r":3,"w":4,"h":15,"dx":0,"dy":-240}]},map:[
    "########################################",
    "#>......................................",
    "#>......................................",
@@ -245,7 +245,7 @@ const rooms=[
    "######...........................<######",
    "######^^^^^^^^^^^^^^^^^^^^^^^^^^^^######",
    "########################################"]},
- {...{"id":"f8-engine","name":"Muster Engine","exit":"right","hint":"A jump spent inside warm air keeps all its height on top of the ride","question":"The draft lets you go well short of the gallery. What is waiting at the top of it?","people":[{"who":"sentinel","c":35,"r":2,"face":-1,"line":"Engine’s been frozen since the last muster. Ring the bell at the crown and every post on the mountain hears it."}],"decor":[{"k":"f8-engine","c":28,"r":2},{"k":"f8-flue","c":3,"r":17}],"winds":[{"c":12,"r":8,"w":4,"h":13,"dx":0,"dy":-240}]},map:[
+ {...{"id":"f8-engine","name":"Muster Engine","exit":"right","hint":"A jump spent inside warm air keeps all its height on top of the ride","question":"The draft lets you go well short of the gallery. What is waiting at the top of it?","people":[{"who":"sentinel","c":35,"r":2,"face":-1,"line":"Engine’s frozen. Ring the bell at the crown and every post will hear."}],"decor":[{"k":"f8-engine","c":28,"r":2},{"k":"f8-flue","c":3,"r":17}],"winds":[{"c":12,"r":8,"w":4,"h":13,"dx":0,"dy":-240}]},map:[
    "#######################################.",
    "#>......................................",
    "#>......................................",

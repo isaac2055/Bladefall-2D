@@ -101,7 +101,7 @@ const rooms=[
    "########################################",
    "########################################",
    "########################################"]},
- {...{"id":"p19-pilgrim","name":"The Lower Rest","hint":"The cargo sling reaches the optional summit bench","question":"Will you take the sack up the side climb?","side":"up","people":[{"who":"pilgrim","name":"THE PILGRIM","c":8,"r":17,"quest":"pilgrim","line":"Travelling with less. That is the intention. Could you send my sack up the sling? Please don’t open it.","lineDone":"Medals. Yes, mostly medals. That one is holding the pot steady. Sit down; I can manage lunch."}],"decor":[{"k":"pilgrim-sack","c":11,"r":17}]},map:[
+ {...{"id":"p19-pilgrim","name":"The Lower Rest","hint":"The cargo sling reaches the optional summit bench","question":"Will you take the sack up the side climb?","side":"up","people":[{"who":"pilgrim","name":"THE PILGRIM","c":8,"r":17,"quest":"pilgrim","line":"Travelling lighter. Send my sack up the sling? Don’t open it.","lineDone":"Medals, mostly. That one steadies the pot. Sit. I’ll make lunch."}],"decor":[{"k":"pilgrim-sack","c":11,"r":17}]},map:[
    "##.....#################################",
    "#......................................#",
    "#......................................#",
@@ -320,7 +320,7 @@ const quests=[
     "#########.....................<#########",
     "#########^^^^^^^^^^^^^^^^^^^^^^#########",
     "########################################"]},
-  {...{"id":"p19-q-bench","name":"The Summit Bench","hint":"The sack has arrived; the last stretch is on foot","question":"Where is the last safe landing before the bench?","people":[{"who":"pilgrim","name":"THE PILGRIM","c":31,"r":17,"line":"I’ll carry it from here. I could at least make lunch."}],"decor":[{"k":"pilgrim-sack","c":33,"r":17}]},map:[
+  {...{"id":"p19-q-bench","name":"The Summit Bench","hint":"The sack has arrived; the last stretch is on foot","question":"Where is the last safe landing before the bench?","people":[{"who":"pilgrim","name":"THE PILGRIM","c":31,"r":17,"line":"I’ll carry it from here. Least I can do is lunch."}],"decor":[{"k":"pilgrim-sack","c":33,"r":17}]},map:[
     "########################################",
     "#......................................#",
     "#......................................#",

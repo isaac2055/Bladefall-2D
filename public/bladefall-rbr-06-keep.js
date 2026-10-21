@@ -5,7 +5,7 @@
 'use strict';
 const RBR=root.BladefallRoomByRoom;if(!RBR)return;
 const rooms=[
- {...{"id":"k6-hearth","name":"Gatehouse Hearth","exit":"right","lock":["portal"],"hint":"A plate holds its door open while weight rests on it","question":"The gatehouse door stands open. What up in the arch is holding it?","people":[{"who":"veya","c":8,"r":17,"face":1,"line":"Sit by the fire a minute. The clock says three forty-one. It has said that since before my time."},{"who":"tovin","c":21,"r":17,"face":-1,"leave":"right","line":"See the stone up in the arch? Its weight holds the gate. Every door in this keep works that way, and most of them have lost their stones."}],"decor":[{"k":"hearth","c":5,"r":17},{"k":"clock","c":12,"r":17}]},map:[
+ {...{"id":"k6-hearth","name":"Gatehouse Hearth","exit":"right","lock":["portal"],"hint":"A plate holds its door open while weight rests on it","question":"The gatehouse door stands open. What up in the arch is holding it?","people":[{"who":"veya","c":8,"r":17,"face":1,"line":"Sit, if you’re cold. The clock says three forty-one. It always has."},{"who":"tovin","c":21,"r":17,"face":-1,"leave":"right","line":"See the stone in the arch? Its weight holds the gate."}],"decor":[{"k":"hearth","c":5,"r":17},{"k":"clock","c":12,"r":17}]},map:[
    "########################################",
    "#.............................##########",
    "#.............................##########",
@@ -125,7 +125,7 @@ const rooms=[
    "#############...............############",
    "#############^^^^^^^^^^^^^^^############",
    "########################################"]},
- {...{"id":"k6-quarter","name":"Mason’s Quarter","exit":"right","hint":"The portal key fires the way you aim · it opens only on pale stone","question":"The masons’ wall goes from floor to roof, and their door is already open on the far side. Where does yours go?","portalMode":"one","portals":[{"color":"orange","c":21,"r":15,"face":"r"}],"people":[{"who":"tovin","c":5,"r":17,"face":-1,"line":"The masons cut their walls to be opened. Here, take the key. Point it at the pale stone and the stone remembers it was a door."}],"decor":[]},map:[
+ {...{"id":"k6-quarter","name":"Mason’s Quarter","exit":"right","hint":"The portal key fires the way you aim · it opens only on pale stone","question":"The masons’ wall goes from floor to roof, and their door is already open on the far side. Where does yours go?","portalMode":"one","portals":[{"color":"orange","c":21,"r":15,"face":"r"}],"people":[{"who":"tovin","c":5,"r":17,"face":-1,"line":"Take the key. Point it at pale stone. The stone remembers it was a door."}],"decor":[]},map:[
    "########################################",
    "#...................##.................#",
    "#...................##.................#",
@@ -173,7 +173,7 @@ const rooms=[
    "########################################",
    "########################################",
    "########################################"]},
- {...{"id":"k6-belfry","name":"Split Belfry","exit":"right","hint":"With both ends yours, each shot opens the other colour · what falls in comes out falling","question":"The bell floor is high over your head, with pale stone in the roof above it. How do you get up by falling?","portalMode":"two","people":[{"who":"idris","c":31,"r":6,"face":-1,"line":"Idris. I sweep the belfry. If you are dropping in, mind the boards; I have only just done them."}],"decor":[]},map:[
+ {...{"id":"k6-belfry","name":"Split Belfry","exit":"right","hint":"With both ends yours, each shot opens the other colour · what falls in comes out falling","question":"The bell floor is high over your head, with pale stone in the roof above it. How do you get up by falling?","portalMode":"two","people":[{"who":"idris","c":31,"r":6,"face":-1,"line":"Mind the boards. I’ve only just swept them."}],"decor":[]},map:[
    "###########################%%%%%%%%#####",
    "#......................................#",
    "#......................................#",
@@ -197,7 +197,7 @@ const rooms=[
    "########################################",
    "########################################",
    "########################################"]},
- {...{"id":"k6-loft","name":"The Bell Loft","exit":"right","hint":"The keystone goes through an end like anything else, and comes out the way the other end faces","question":"The bell’s counterweight plate is up on the loft. You can climb there; how does the stone?","portalMode":"two","people":[{"who":"idris","c":20,"r":17,"face":1,"line":"The bell has not rung since its weight went. I sweep under it anyway. Habit."}],"decor":[]},map:[
+ {...{"id":"k6-loft","name":"The Bell Loft","exit":"right","hint":"The keystone goes through an end like anything else, and comes out the way the other end faces","question":"The bell’s counterweight plate is up on the loft. You can climb there; how does the stone?","portalMode":"two","people":[{"who":"idris","c":20,"r":17,"face":1,"line":"The bell stopped when its weight went. I sweep under it anyway."}],"decor":[]},map:[
    "#############################%%%%%%#####",
    "#...................................HH.#",
    "#...................................HH.#",
@@ -221,7 +221,7 @@ const rooms=[
    "########################################",
    "########################################",
    "########################################"]},
- {...{"id":"k6-archive","name":"Clinging Archive","exit":"up","side":"left","hint":"A floor end remembers how far you fell · out of a floor, you rise as fast as you fell in","question":"The way on is up a column with thorns all round it. How far must you fall to rise that high?","portalMode":"two","people":[{"who":"archivist","c":6,"r":17,"face":1,"quest":"archivist","line":"Three volumes are missing from these shelves. The upper gallery came down with them in it. If you can reach them, bring them here, and mind the bindings.","lineDone":"All three disagree about the gate. I am going to sit outside with them a while. That is as far as I have decided."}],"decor":[]},map:[
+ {...{"id":"k6-archive","name":"Clinging Archive","exit":"up","side":"left","hint":"A floor end remembers how far you fell · out of a floor, you rise as fast as you fell in","question":"The way on is up a column with thorns all round it. How far must you fall to rise that high?","portalMode":"two","people":[{"who":"archivist","c":6,"r":17,"face":1,"quest":"archivist","line":"Three volumes fell with the upper gallery. Bring them down? Mind the bindings.","lineDone":"All three disagree about the gate. I’ll sit with them a while."}],"decor":[]},map:[
    "########################....############",
    "......................................<#",
    "......................................<#",

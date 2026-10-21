@@ -125,7 +125,7 @@ const rooms=[
    "########################################",
    "########################################",
    "########################################"]},
- {...{"id":"t16-sailors","name":"The Shared Line","hint":"The loose rigging is an optional climb","question":"Will you climb for the charm before taking the cliff path?","side":"up","people":[{"who":"sailor","name":"THE SAILOR","c":8,"r":17,"quest":"sailors","line":"Lost a brass charm up in the rigging. Split down the middle. If you go aloft, keep an eye out.","lineDone":"He has his half. I have mine. Neither of us has an excuse to let go."},{"who":"apprentice","name":"THE APPRENTICE","c":12,"r":17,"quest":"sailors","line":"He says it holds the ship together. I think it’s this rope.","lineDone":"Still the rope. But I’ll keep the charm."}],"decor":[{"k":"shared-rope","c":10,"r":17}]},map:[
+ {...{"id":"t16-sailors","name":"The Shared Line","hint":"The loose rigging is an optional climb","question":"Will you climb for the charm before taking the cliff path?","side":"up","people":[{"who":"sailor","name":"THE SAILOR","c":8,"r":17,"quest":"sailors","line":"Lost half a brass charm up the rigging. If you go aloft, look.","lineDone":"He has his half. I have mine. Neither of us lets go."},{"who":"apprentice","name":"THE APPRENTICE","c":12,"r":17,"quest":"sailors","line":"He says the charm holds the ship together. I say it’s the rope.","lineDone":"Still the rope. I’m keeping the charm, though."}],"decor":[{"k":"shared-rope","c":10,"r":17}]},map:[
    "##.....#################################",
    "#......................................#",
    "#......................................#",

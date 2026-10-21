@@ -101,7 +101,7 @@ const rooms=[
    "#####################___################",
    "########################################",
    "########################################"]},
- {...{"id":"c18-family","name":"A Quiet Question","hint":"The old shelter is down the left-hand passage","question":"Will you bring the family’s own cup before crossing the watch yard?","side":"left","people":[{"who":"mother","name":"THE MOTHER","c":17,"r":17,"quest":"mother","line":"My sealed cup is in the old shelter. Bring that one. I want to know where it’s been.","lineDone":"Sable answered my questions. Mine first. Only a little, to start."},{"who":"sable","name":"SABLE","c":21,"r":17,"quest":"mother","line":"The spring is running clean. I can explain what changed, when she is ready.","lineDone":"The cup is beside the bed. We spoke quietly, after the little one fell asleep."}],"decor":[{"k":"family-cot","c":14,"r":17}]},map:[
+ {...{"id":"c18-family","name":"A Quiet Question","hint":"The old shelter is down the left-hand passage","question":"Will you bring the family’s own cup before crossing the watch yard?","side":"left","people":[{"who":"mother","name":"THE MOTHER","c":17,"r":17,"quest":"mother","line":"My sealed cup is in the old shelter. Bring that one. I want to know where it’s been.","lineDone":"Sable answered my questions. Mine first. A little, to start."},{"who":"sable","name":"SABLE","c":21,"r":17,"quest":"mother","line":"The spring runs clean. I’ll explain what changed, when she’s ready.","lineDone":"The cup’s beside the bed. We spoke quietly, once the little one slept."}],"decor":[{"k":"family-cot","c":14,"r":17}]},map:[
    "########################################",
    "#......................................#",
    "#......................................#",

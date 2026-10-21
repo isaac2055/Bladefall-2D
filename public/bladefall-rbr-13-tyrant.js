@@ -5,7 +5,7 @@
 'use strict';
 const RBR=root.BladefallRoomByRoom;if(!RBR)return;
 const rooms=[
- {...{"id":"v13-mouth","name":"The Fissure Mouth","hint":"A spent foothold lasts until you leave it","question":"Can you read the ledge before spending it?","people":[{"who":"oren","c":7,"r":17,"line":"The books hold your weight. Once. Nobody here has been back to return them."}]},map:[
+ {...{"id":"v13-mouth","name":"The Fissure Mouth","hint":"A spent foothold lasts until you leave it","question":"Can you read the ledge before spending it?","people":[{"who":"oren","c":7,"r":17,"line":"The books hold you once. Nobody’s returned them."}]},map:[
    "########################################",
    "#......................................#",
    "#......................................#",
@@ -173,7 +173,7 @@ const rooms=[
    "##########.....................#########",
    "##########^^^^^^^^^^^^^^^^^^^^^#########",
    "########################################"]},
- {...{"id":"v13-vigil","name":"The Paradox Vigil","hint":"The chimney leads to the figure behind the glass","question":"Will you take the road or find the other side of the window?","side":"up","people":[{"who":"figure","c":9,"r":17,"quest":"figure","leaveDone":"right","line":"I was waving. The release is through that chimney. I can see the lights, but not what is behind them.","lineDone":"The glass was colder on the other side. I’ll stay by the lights a little."}],"decor":[{"k":"citadel-window","c":11,"r":17}]},map:[
+ {...{"id":"v13-vigil","name":"The Paradox Vigil","hint":"The chimney leads to the figure behind the glass","question":"Will you take the road or find the other side of the window?","side":"up","people":[{"who":"figure","c":9,"r":17,"quest":"figure","leaveDone":"right","line":"I was waving. The release is up the chimney. I can’t see past the lights.","lineDone":"The glass was colder on the other side. I’ll stay by the lights."}],"decor":[{"k":"citadel-window","c":11,"r":17}]},map:[
    "###.....################################",
    "#......................................#",
    "#......................................#",

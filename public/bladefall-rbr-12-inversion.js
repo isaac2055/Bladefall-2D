@@ -5,7 +5,7 @@
 'use strict';
 const RBR=root.BladefallRoomByRoom;if(!RBR)return;
 const rooms=[
- {...{"id":"i12-fall","name":"The Fall In","hint":"A held jump carries you farther","question":"Where is the safe landing beyond the first cut?","people":[{"who":"oren","c":7,"r":17,"line":"The foundry was loud enough. Down here, even the floor disagrees with you."}]},map:[
+ {...{"id":"i12-fall","name":"The Fall In","hint":"A held jump carries you farther","question":"Where is the safe landing beyond the first cut?","people":[{"who":"oren","c":7,"r":17,"line":"Down here, even the floor disagrees with you."}]},map:[
    "########################################",
    "#......................................#",
    "#......................................#",
@@ -149,7 +149,7 @@ const rooms=[
    "########################################",
    "########################################",
    "########################################"]},
- {...{"id":"i12-court","name":"The Middle Landing","hint":"The open chimney is an optional way up","question":"Take the road, or visit the neighbours above it?","side":"up","people":[{"who":"neighbour","c":7,"r":17,"quest":"neighbours","line":"I invited her for tea. She says the floor is wrong. The service is up the chimney, if you can reach it.","lineDone":"One sugar. Six years, and I still put in two."},{"who":"neighbour2","name":"Second neighbour","c":8,"r":1,"ceiling":true,"quest":"neighbours","line":"On my table, please. His down is not my down.","lineDone":"Pass the biscuits. Slowly."}],"decor":[{"k":"tea-table","c":8,"r":17}]},map:[
+ {...{"id":"i12-court","name":"The Middle Landing","hint":"The open chimney is an optional way up","question":"Take the road, or visit the neighbours above it?","side":"up","people":[{"who":"neighbour","c":7,"r":17,"quest":"neighbours","line":"I invited her for tea. She says my floor is wrong. The service is up the chimney.","lineDone":"One sugar. Six years, and I still put in two."},{"who":"neighbour2","name":"Second neighbour","c":8,"r":1,"ceiling":true,"quest":"neighbours","line":"On my table, please. His down is not my down.","lineDone":"Pass the biscuits. Slowly."}],"decor":[{"k":"tea-table","c":8,"r":17}]},map:[
    "##.....#################################",
    "#......................................#",
    "#......................................#",

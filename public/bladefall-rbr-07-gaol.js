@@ -125,7 +125,7 @@ const rooms=[
    "########################################",
    "########################################",
    "########################################"]},
- {...{"id":"g7-cells","name":"Turning Cells","exit":"left","side":"up","hint":"A jailer turns to face you a moment after you get behind it","question":"The cell is sealed in front. Where is its other way in, and how do you get up to it?","jailers":[{"x":12,"y":17,"dir":1}],"people":[{"who":"keeper","c":31,"r":17,"face":-1,"quest":"keeper","line":"Service door. I’d want a work order, but the office upstairs hasn’t had anyone in it all week. And someone’s moved my lunch up the catwalk. Brown paper.","lineDone":"Service personnel are permitted to eat. Nobody said which side of the door. Leave it on the latch, would you?"}],"decor":[{"k":"g7-door","c":33,"r":17},{"k":"g7-shelf","c":35,"r":8},{"k":"g7-chain","c":24,"r":3}]},map:[
+ {...{"id":"g7-cells","name":"Turning Cells","exit":"left","side":"up","hint":"A jailer turns to face you a moment after you get behind it","question":"The cell is sealed in front. Where is its other way in, and how do you get up to it?","jailers":[{"x":12,"y":17,"dir":1}],"people":[{"who":"keeper","c":31,"r":17,"face":-1,"quest":"keeper","line":"Service door. No work order. And someone’s moved my lunch up the catwalk.","lineDone":"Nobody said which side of the door I eat on. Leave it on the latch."}],"decor":[{"k":"g7-door","c":33,"r":17},{"k":"g7-shelf","c":35,"r":8},{"k":"g7-chain","c":24,"r":3}]},map:[
    "##################################....##",
    "#......................................#",
    "#......................................#",
@@ -197,7 +197,7 @@ const rooms=[
    "########################################",
    "########################################",
    "########################################"]},
- {...{"id":"g7-vigil","name":"Gaol Vigil","exit":"left","hint":"A pod can set you down on a jailer’s own lip · the parry still opens it","question":"The pod lifts you onto the landing’s lip, face to face with its jailer. What gets you past it?","jailers":[{"x":10,"y":8,"dir":1}],"people":[{"who":"vey","c":31,"r":17,"face":-1,"line":"I carried the standard once. Now I carry his keys, and I’ve used neither."},{"who":"enna","c":26,"r":17,"face":1,"line":"Don’t look down the well. He never looks at us, you know. I think that’s how he stands it."}],"decor":[{"k":"hearth","c":28,"r":17},{"k":"g7-keys","c":33,"r":17},{"k":"g7-standard","c":34,"r":17},{"k":"g7-chain-long","c":20,"r":6}]},map:[
+ {...{"id":"g7-vigil","name":"Gaol Vigil","exit":"left","hint":"A pod can set you down on a jailer’s own lip · the parry still opens it","question":"The pod lifts you onto the landing’s lip, face to face with its jailer. What gets you past it?","jailers":[{"x":10,"y":8,"dir":1}],"people":[{"who":"vey","c":31,"r":17,"face":-1,"line":"You. I carried a standard once. Now I carry his keys."},{"who":"enna","c":26,"r":17,"face":1,"line":"Don’t look down the well. He never looks at us."}],"decor":[{"k":"hearth","c":28,"r":17},{"k":"g7-keys","c":33,"r":17},{"k":"g7-standard","c":34,"r":17},{"k":"g7-chain-long","c":20,"r":6}]},map:[
    "########################################",
    "#......................................#",
    "#......................................#",

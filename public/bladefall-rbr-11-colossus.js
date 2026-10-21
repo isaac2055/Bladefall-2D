@@ -5,7 +5,7 @@
 'use strict';
 const RBR=root.BladefallRoomByRoom;if(!RBR)return;
 const rooms=[
- {...{"id":"f11-stair","decor":[{"k":"f11-crucible","c":1,"r":8},{"k":"f11-chain-long","c":24,"r":8},{"k":"f11-chain","c":30,"r":4},{"k":"f11-orders","c":33,"r":17}],"name":"The Deep Stair","exit":"right","hint":"A casting belt carries whatever stands on it","question":"The works below are running. Where does the floor take you?","people":[{"who":"oren","c":36,"r":17,"face":-1,"leave":"right","line":"Every mould in Emberdeep was poured down here. I came to read the machine that pours them. From a long way off, ideally."}]},map:[
+ {...{"id":"f11-stair","decor":[{"k":"f11-crucible","c":1,"r":8},{"k":"f11-chain-long","c":24,"r":8},{"k":"f11-chain","c":30,"r":4},{"k":"f11-orders","c":33,"r":17}],"name":"The Deep Stair","exit":"right","hint":"A casting belt carries whatever stands on it","question":"The works below are running. Where does the floor take you?","people":[{"who":"oren","c":36,"r":17,"face":-1,"leave":"right","line":"Every mould in Emberdeep came from down here. Keep your distance."}]},map:[
    "########################################",
    "#......................................#",
    "#......................................#",
@@ -125,7 +125,7 @@ const rooms=[
    "########################################",
    "########################################",
    "########################################"]},
- {...{"id":"f11-crane","decor":[{"k":"f11-hatch","c":1,"r":17},{"k":"f11-birds","c":10,"r":17},{"k":"f11-chain-long","c":23,"r":8},{"k":"f11-chain","c":35,"r":4}],"name":"The Crane","exit":"right","side":"down","hint":"A mould struck from above sets as you land on it","question":"The anvil throws you over the teeth, and there is nothing beyond them to land on. What will there be, once you cut it?","people":[{"who":"automaton","c":4,"r":17,"face":1,"quest":"automaton","line":"Please hold the left panel. I am making a birdhouse, and my hands are too large for the roof. The small gripping attachment is down in the cooling forge.","lineDone":"It is holding. Please keep your hand nearby. A bird is inspecting the roof, so we should stop moving."}]},map:[
+ {...{"id":"f11-crane","decor":[{"k":"f11-hatch","c":1,"r":17},{"k":"f11-birds","c":10,"r":17},{"k":"f11-chain-long","c":23,"r":8},{"k":"f11-chain","c":35,"r":4}],"name":"The Crane","exit":"right","side":"down","hint":"A mould struck from above sets as you land on it","question":"The anvil throws you over the teeth, and there is nothing beyond them to land on. What will there be, once you cut it?","people":[{"who":"automaton","c":4,"r":17,"face":1,"quest":"automaton","line":"Please hold the left panel. I am building a birdhouse. My hands are too large.","lineDone":"It is holding. A bird is inspecting it. Do not move."}]},map:[
    "########################################",
    "#......................................#",
    "#......................................#",
@@ -221,7 +221,7 @@ const rooms=[
    "########################################",
    "########################################",
    "########################################"]},
- {...{"id":"f11-look","decor":[{"k":"f11-orders","c":1,"r":7},{"k":"f11-chain-long","c":17,"r":8},{"k":"f11-chain","c":25,"r":4}],"name":"The Overlook","exit":"down","people":[{"who":"oren","c":5,"r":7,"face":1,"line":"It isn’t a machine. Machines don’t keep standing orders. Whatever it pours next, don’t be under it."}],"hint":"Cut down as you land and a mould sets under you","question":"The pit floor is a long way down, and all of it is hot. Where do you stop on the way?"},map:[
+ {...{"id":"f11-look","decor":[{"k":"f11-orders","c":1,"r":7},{"k":"f11-chain-long","c":17,"r":8},{"k":"f11-chain","c":25,"r":4}],"name":"The Overlook","exit":"down","people":[{"who":"oren","c":5,"r":7,"face":1,"line":"Machines don’t keep standing orders. Whatever it pours, don’t be under it."}],"hint":"Cut down as you land and a mould sets under you","question":"The pit floor is a long way down, and all of it is hot. Where do you stop on the way?"},map:[
    "########################################",
    "#......................................#",
    "#......................................#",

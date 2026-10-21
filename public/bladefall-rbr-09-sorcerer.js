@@ -53,7 +53,7 @@ const rooms=[
    "#######wwwwwwwwwwwwwwwwwwwwwwwwww#######",
    "#######^^^^^^^^^^^^^^^^^^^^^^^^^^#######",
    "########################################"]},
- {...{"id":"s9-wheel","name":"The Service Wheel","exit":"up","thaw":150,"hint":"Ice thaws when its ticks run out · strike the water again","question":"The wheel’s catch is across the sluice and the door is on this side. Will the ice still be there on the way back?","currents":[{"c":8,"r":15,"w":24,"h":6,"dy":180}],"people":[{"who":"vey","c":5,"r":13,"face":1,"line":"I put the standard down for good. Water I understand: it goes downhill, and it doesn’t argue. The wheel’s catch is over the far side, if you’re going that way."}],"decor":[{"k":"s9-wheel","c":37,"r":13}]},map:[
+ {...{"id":"s9-wheel","name":"The Service Wheel","exit":"up","thaw":150,"hint":"Ice thaws when its ticks run out · strike the water again","question":"The wheel’s catch is across the sluice and the door is on this side. Will the ice still be there on the way back?","currents":[{"c":8,"r":15,"w":24,"h":6,"dy":180}],"people":[{"who":"vey","c":5,"r":13,"face":1,"line":"Water I understand. It goes downhill. The wheel’s catch is past the far side."}],"decor":[{"k":"s9-wheel","c":37,"r":13}]},map:[
    "#.....##################################",
    "#.....##...............................#",
    "#.....##...............................#",
@@ -77,7 +77,7 @@ const rooms=[
    "########wwwwwwwwwwwwwwwwwwwwwwww########",
    "########^^^^^^^^^^^^^^^^^^^^^^^^########",
    "########################################"]},
- {...{"id":"s9-refuge","name":"The Sluice Refuge","exit":"right","thaw":200,"hint":"Frozen water is stone while it lasts · you can climb it","question":"The way on is above the overflow, and its ledge is thorned. What is a waterfall, frozen?","currents":[{"c":20,"r":6,"w":3,"h":15,"dy":320}],"people":[{"who":"ada","c":9,"r":17,"face":1,"line":"Dry molds crack, so I’m idle till the wheel turns. Funny thing about the overflow: hit it hard and it stands up like glass."}],"decor":[{"k":"bench","c":4,"r":17},{"k":"s9-molds","c":12,"r":17},{"k":"hearth","c":15,"r":17}]},map:[
+ {...{"id":"s9-refuge","name":"The Sluice Refuge","exit":"right","thaw":200,"hint":"Frozen water is stone while it lasts · you can climb it","question":"The way on is above the overflow, and its ledge is thorned. What is a waterfall, frozen?","currents":[{"c":20,"r":6,"w":3,"h":15,"dy":320}],"people":[{"who":"ada","c":9,"r":17,"face":1,"line":"Hit the overflow hard enough and it stands up like glass."}],"decor":[{"k":"bench","c":4,"r":17},{"k":"s9-molds","c":12,"r":17},{"k":"hearth","c":15,"r":17}]},map:[
    "########################################",
    "#......................................#",
    "#.......................................",
@@ -149,7 +149,7 @@ const rooms=[
    "#########ww...............ww..<#########",
    "#########^^^^^^^^^^^^^^^^^^^^^##########",
    "########################################"]},
- {...{"id":"s9-glass","name":"The Glassworks","exit":"right","side":"up","thaw":300,"hint":"Strike a condenser and every pool in the room freezes · with the lantern in your hands you cannot strike","question":"The light has to reach the kiln plate, and with it in your hands the blade is useless. What else can freeze the pool?","currents":[{"c":11,"r":16,"w":21,"h":5,"dy":180}],"people":[{"who":"handler","c":7,"r":8,"face":1,"quest":"creature","line":"Don’t touch his back. Under the jaw, if he lets you — no, he’s not letting you. He’s too hot to settle, and the cold intake’s up the wall, through the roof.","lineDone":"There. Look at his feet. He only does that when he’s properly asleep."}],"decor":[{"k":"s9-kiln","c":33,"r":15},{"k":"s9-pen","c":8,"r":8}]},map:[
+ {...{"id":"s9-glass","name":"The Glassworks","exit":"right","side":"up","thaw":300,"hint":"Strike a condenser and every pool in the room freezes · with the lantern in your hands you cannot strike","question":"The light has to reach the kiln plate, and with it in your hands the blade is useless. What else can freeze the pool?","currents":[{"c":11,"r":16,"w":21,"h":5,"dy":180}],"people":[{"who":"handler","c":7,"r":8,"face":1,"quest":"creature","line":"Don’t touch his back. He’s too hot to sleep. The cold intake’s up through the roof.","lineDone":"Look at his feet. He only does that asleep."}],"decor":[{"k":"s9-kiln","c":33,"r":15},{"k":"s9-pen","c":8,"r":8}]},map:[
    "#....###################################",
    "#......................................#",
    "#......................................#",

@@ -125,7 +125,7 @@ const rooms=[
    "########################################",
    "########################################",
    "########################################"]},
- {...{"id":"s17-porch","name":"Behind the Sail","hint":"The wreck cabin is an optional climb","question":"Will you fetch the candle tin before crossing the next bay?","side":"up","people":[{"who":"organizer","name":"THE ORGANIZER","c":8,"r":17,"quest":"birthday","line":"Candles! The tin is in the upper wreck cabin. Keep it dry; it’s the only one.","lineDone":"Candles are lit. We’ll bring the cake out here."},{"who":"soldier","name":"THE SOLDIER","c":14,"r":17,"quest":"birthday","line":"A birthday? Porch would suit me. Don’t make an announcement about it.","lineDone":"That’s a good cake. It’s quiet out here."}],"decor":[{"k":"porch-table","c":16,"r":17}]},map:[
+ {...{"id":"s17-porch","name":"Behind the Sail","hint":"The wreck cabin is an optional climb","question":"Will you fetch the candle tin before crossing the next bay?","side":"up","people":[{"who":"organizer","name":"THE ORGANIZER","c":8,"r":17,"quest":"birthday","line":"Candles! The tin’s in the upper wreck cabin. Keep it dry!","lineDone":"Candles lit! Bring the cake out here."},{"who":"soldier","name":"THE SOLDIER","c":14,"r":17,"quest":"birthday","line":"A birthday? Fine. Don’t make an announcement.","lineDone":"Good cake. Quiet out here."}],"decor":[{"k":"porch-table","c":16,"r":17}]},map:[
    "##.....#################################",
    "#......................................#",
    "#......................................#",

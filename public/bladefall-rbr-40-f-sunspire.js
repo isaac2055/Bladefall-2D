@@ -317,7 +317,7 @@ const rooms=[
    "########################################",
    "########################################",
    "########################################"]},
- {...{"id":"fs40-sea","name":"The Sea Terrace","hint":"The hydra carries you home · a raised head shades you from the King’s last light · they move faster now","question":"The light falls in four shafts and the heads rise and dip in turn. Where on her back are you safe as each shaft crosses?","decks":[{"c":10,"r":17,"w":12,"to":[27,0],"period":400}],"hydraRide":{"shafts":[20,25,30,35],"heads":[{"at":0,"w":3,"up":70,"down":45,"phase":0},{"at":4.5,"w":3,"up":70,"down":45,"phase":60},{"at":9,"w":3,"up":70,"down":45,"phase":90}]},"people":[{"who":"hydra","name":"THE THREE HEADS","voiceUntilDone":true,"c":8,"r":17,"line":"You broke our chains twice now. Climb on. The light is harder here; we will hold our heads over you as long as we can."}]},map:[
+ {...{"id":"fs40-sea","name":"The Sea Terrace","hint":"The hydra carries you home · a raised head shades you from the King’s last light · they move faster now","question":"The light falls in four shafts and the heads rise and dip in turn. Where on her back are you safe as each shaft crosses?","decks":[{"c":10,"r":17,"w":12,"to":[27,0],"period":400}],"hydraRide":{"shafts":[20,25,30,35],"heads":[{"at":0,"w":3,"up":70,"down":45,"phase":0},{"at":4.5,"w":3,"up":70,"down":45,"phase":60},{"at":9,"w":3,"up":70,"down":45,"phase":90}]},"people":[{"who":"hydra","name":"THE THREE HEADS","voiceUntilDone":true,"c":8,"r":17,"line":"You broke our chains twice now. Climb on. We will shade you as long as we can."}]},map:[
    "########################################",
    "#......................................#",
    "#......................................#",
