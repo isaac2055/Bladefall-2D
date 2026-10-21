@@ -5,7 +5,7 @@
 'use strict';
 const RBR=root.BladefallRoomByRoom;if(!RBR)return;
 const rooms=[
- {...{"id":"c3-camp","name":"Chainwake Camp","exit":"right","hint":"A lift runs only while weight is on it, then it comes home","question":"The causeway’s lifts hang still. What would set one moving?","people":[{"who":"sable","c":8,"r":17,"face":1,"line":"Sable. I carry back the ones the causeway doesn’t. It’s been a quiet month — nothing up there moves any more."},{"who":"oren","c":31,"r":17,"face":-1,"leave":"right","line":"That lift’s been hanging there since the brake seized. I’ve freed the one in the Drop Yard. Come and stand on it before I lose my nerve."}],"decor":[{"k":"tent","c":1,"r":17},{"k":"watchfire","c":5,"r":17},{"k":"cw-stretcher","c":9,"r":17},{"k":"cw-crate","c":16,"r":17},{"k":"cw-chain-long","c":25,"r":5},{"k":"cw-chain-long","c":28,"r":5},{"k":"cw-winch","c":33,"r":17}],"zips":[[0,-2]]},map:[
+ {...{"id":"c3-camp","name":"Chainwake Camp","exit":"right","hint":"A lift runs only while weight is on it, then it comes home","question":"The causeway’s lifts hang still. What would set one moving?","people":[{"who":"sable","c":8,"r":17,"face":1,"line":"Not one of the yard’s, are you? Nothing up there’s moved in a month."},{"who":"oren","c":31,"r":17,"face":-1,"leave":"right","line":"Hear that? Nothing. The Drop Yard lift is free. Stand on it."}],"decor":[{"k":"tent","c":1,"r":17},{"k":"watchfire","c":5,"r":17},{"k":"cw-stretcher","c":9,"r":17},{"k":"cw-crate","c":16,"r":17},{"k":"cw-chain-long","c":25,"r":5},{"k":"cw-chain-long","c":28,"r":5},{"k":"cw-winch","c":33,"r":17}],"zips":[[0,-2]]},map:[
    "########################################",
    "#......................................#",
    "#......................................#",
@@ -29,7 +29,7 @@ const rooms=[
    "########################################",
    "########################################",
    "########################################"]},
- {...{"id":"c3-drop","name":"Drop Yard","exit":"right","hint":"Stand on a lift and it carries you to the end of its line","question":"The far shelf is out of any jump’s reach. What will carry you there?","people":[{"who":"oren","c":6,"r":17,"face":1,"line":"She comes back down on her own. Everything on this causeway does, sooner or later."}],"decor":[{"k":"cw-winch","c":1,"r":17},{"k":"cw-chain-long","c":18,"r":19},{"k":"cw-chain-long","c":21,"r":19},{"k":"cw-crate","c":34,"r":8}],"zips":[[0,-11]]},map:[
+ {...{"id":"c3-drop","name":"Drop Yard","exit":"right","hint":"Stand on a lift and it carries you to the end of its line","question":"The far shelf is out of any jump’s reach. What will carry you there?","people":[{"who":"oren","c":6,"r":17,"face":1,"line":"She comes back down on her own. Ride her up."}],"decor":[{"k":"cw-winch","c":1,"r":17},{"k":"cw-chain-long","c":18,"r":19},{"k":"cw-chain-long","c":21,"r":19},{"k":"cw-crate","c":34,"r":8}],"zips":[[0,-11]]},map:[
    "########################################",
    "#......................................#",
    "#......................................#",
@@ -77,7 +77,7 @@ const rooms=[
    "...P...............<####################",
    "#######.......ZZZZ.<####################",
    "#######............<####################"]},
- {...{"id":"c3-patrol","name":"The Patrol Road","exit":"right","side":"up","hint":"A lift throws you the way it was going","question":"The road ends in open air. How far does a flat lift throw you?","people":[{"who":"silas","c":11,"r":13,"face":-1,"quest":"defector","line":"Forty paces, then I turn. The governor up the maintenance ladder decides that, not me. Break its gear and I’ll find out where I’d rather walk.","lineDone":"The gear is still. I took one step past the turning point, then I sat down here, because I wanted to."}],"decor":[{"k":"bench","c":6,"r":13},{"k":"cw-chain","c":2,"r":13}],"zips":[[6,0]]},map:[
+ {...{"id":"c3-patrol","name":"The Patrol Road","exit":"right","side":"up","hint":"A lift throws you the way it was going","question":"The road ends in open air. How far does a flat lift throw you?","people":[{"who":"silas","c":11,"r":13,"face":-1,"quest":"defector","line":"…thirty-nine, forty. Can’t stop. Break the gear up the ladder?","lineDone":"Forty-one. Then I sat. My choice."}],"decor":[{"k":"bench","c":6,"r":13},{"k":"cw-chain","c":2,"r":13}],"zips":[[6,0]]},map:[
    "#....###################################",
    "#....#.................................#",
    "#....#.................................#",

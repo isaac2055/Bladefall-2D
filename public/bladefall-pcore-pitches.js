@@ -10,7 +10,7 @@
 const wanted=root.BLADEFALL_PITCHES||(root.location&&/[?&]pitch=/.test(root.location.search||''));
 if(!wanted||!root.BladefallPrecisionRooms||!root.BladefallPrecisionRooms.addPart)return;
 const rooms={
- "mp-verge":{"id":"mp-verge","name":"The Poisoned Verge","exit":"right","palette":"outskirts","hint":"Jump the poison \u00b7 a pool too wide to jump wants the dash","question":"The pool is wider than any jump. What else carries you?","people":[{"who":"vey","c":7,"r":17,"face":1,"line":"Room by the fire if you want it. Mind the white flowers past the wall \u2014 they don't forgive."}],"decor":[{"k":"watchfire","c":9,"r":17},{"k":"tent","c":1,"r":17},{"k":"trumpets","c":27,"r":17},{"k":"trumpets","c":33,"r":17}],map:[
+ "mp-verge":{"id":"mp-verge","name":"The Poisoned Verge","exit":"right","palette":"outskirts","hint":"Jump the poison \u00b7 a pool too wide to jump wants the dash","question":"The pool is wider than any jump. What else carries you?","people":[{"who":"vey","c":7,"r":17,"face":1,"line":"Fire\u2019s for anyone. Just don\u2019t touch the white flowers."}],"decor":[{"k":"watchfire","c":9,"r":17},{"k":"tent","c":1,"r":17},{"k":"trumpets","c":27,"r":17},{"k":"trumpets","c":33,"r":17}],map:[
   "########################################",
   "#......................................#",
   "#......................................#",
@@ -58,7 +58,7 @@ const rooms={
   "########################################",
   "########################################",
   "########################################"]},
- "mp-cut":{"id":"mp-cut","name":"Watcher's Cut","exit":"right","palette":"outskirts","bearing":"GLASS","hint":"A crystal gives your dash back in the air","question":"One dash will not cross the cut. Where can you get another?","people":[{"who":"olan","c":6,"r":17,"face":1,"line":"Don\u2019t go trustin\u2019 that clock. And don\u2019t trust the cut neither \u2014 the glass in the air\u2019s the only footing over it."}],"decor":[{"k":"mast","c":36,"r":14}],map:[
+ "mp-cut":{"id":"mp-cut","name":"Watcher's Cut","exit":"right","palette":"outskirts","bearing":"GLASS","hint":"A crystal gives your dash back in the air","question":"One dash will not cross the cut. Where can you get another?","people":[{"who":"olan","c":6,"r":17,"face":1,"line":"Clock\u2019s stopped. The cut\u2019s worse. Only the glass in the air holds."}],"decor":[{"k":"mast","c":36,"r":14}],map:[
   "########################################",
   "#......................................#",
   "#......................................#",

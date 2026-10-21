@@ -26,7 +26,7 @@ How to read the entries:
 
 ---
 
-## Ascend · worlds 1-3 (proposal, 7.363.0; not in the game yet)
+## Ascend · worlds 1-3 (in the game and voiced, 7.364.0)
 
 Ascend is not a story game: a person says one short line as you pass, on their own (no talking to them). Rules as above (strangers first, recognition only from the last place you met), but each line is one beat, about ten words, and points at the room's trick where it can. Lines live in `people[].line` / `lineDone` in `public/bladefall-climb-worlds.js`. Recordings come later; the game already plays a clip when a line has one (Assist & options → Voice lines).
 

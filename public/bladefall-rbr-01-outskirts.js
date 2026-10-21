@@ -5,7 +5,7 @@
 'use strict';
 const RBR=root.BladefallRoomByRoom;if(!RBR)return;
 const rooms=[
- {...{"id":"o1-road","name":"The Verge Road","exit":"right","hint":"Hold jump to jump higher","question":"Two beds of white flowers and a bank. How high, and how far, does one jump go?","people":[{"who":"vey","c":6,"r":17,"face":1,"line":"Room by the fire if you want it. Mind the white flowers past the wall — they don't forgive."}],"decor":[{"k":"tent","c":1,"r":17},{"k":"watchfire","c":8,"r":17},{"k":"trumpets","c":11,"r":17},{"k":"trumpets","c":27,"r":15}]},map:[
+ {...{"id":"o1-road","name":"The Verge Road","exit":"right","hint":"Hold jump to jump higher","question":"Two beds of white flowers and a bank. How high, and how far, does one jump go?","people":[{"who":"vey","c":6,"r":17,"face":1,"line":"Fire’s for anyone. Just don’t touch the white flowers."}],"decor":[{"k":"tent","c":1,"r":17},{"k":"watchfire","c":8,"r":17},{"k":"trumpets","c":11,"r":17},{"k":"trumpets","c":27,"r":15}]},map:[
    "########################################",
    "#......................................#",
    "#......................................#",
@@ -29,7 +29,7 @@ const rooms=[
    "########################################",
    "########################################",
    "########################################"]},
- {...{"id":"o1-verge","name":"The Poisoned Verge","exit":"right","hint":"A dash crosses what a jump cannot","question":"The pool is wider than any jump. What else carries you?","people":[{"who":"mara","c":4,"r":17,"face":1,"quest":"mara","leave":"right","line":"Mara. I’m surveying the old road. Three bearings stand off it — ASH, GLASS, IRON — where nobody’s set foot in years. Touch them if you can. I’ll be at the Muster."}],"decor":[{"k":"trumpets","c":27,"r":17},{"k":"trumpets","c":33,"r":17}]},map:[
+ {...{"id":"o1-verge","name":"The Poisoned Verge","exit":"right","hint":"A dash crosses what a jump cannot","question":"The pool is wider than any jump. What else carries you?","people":[{"who":"mara","c":4,"r":17,"face":1,"quest":"mara","leave":"right","line":"Oh! Hello. Mara, surveyor. Three posts off this road: Ash, Glass, Iron. Touch them for me?"}],"decor":[{"k":"trumpets","c":27,"r":17},{"k":"trumpets","c":33,"r":17}]},map:[
    "########################################",
    "#......................................#",
    "#......................................#",
@@ -77,7 +77,7 @@ const rooms=[
    "########################################",
    "########################################",
    "########################################"]},
- {...{"id":"o1-camp","name":"Camp Echo","exit":"up","side":"right","hint":"A survey stake lights when you touch it · every stake lit opens the shaft","question":"The shaft is shut. What up on the perch would open it?","bearing":"ASH","people":[{"who":"sentinel","c":17,"r":17,"face":-1,"line":"The stake’s up on the old perch. The shaft won’t open for anyone who hasn’t touched it."},{"who":"rowan","c":31,"r":17,"face":-1,"quest":"rowan","line":"Bell’s still up the old tower, east of here. I want it hung in camp, where we’d hear trouble coming. The yard’s out that way.","lineDone":"There. Now the camp can hear itself think."}],"decor":[{"k":"clock","c":24,"r":17},{"k":"tent","c":27,"r":17},{"k":"post","c":33,"r":17}]},map:[
+ {...{"id":"o1-camp","name":"Camp Echo","exit":"up","side":"right","hint":"A survey stake lights when you touch it · every stake lit opens the shaft","question":"The shaft is shut. What up on the perch would open it?","bearing":"ASH","people":[{"who":"sentinel","c":17,"r":17,"face":-1,"line":"Came up the west road? Huh. Touch the stake on the perch."},{"who":"rowan","c":31,"r":17,"face":-1,"quest":"rowan","line":"Gate’s shut. You got through anyway. Bell’s up the east tower.","lineDone":"There. Now we’ll hear them coming."}],"decor":[{"k":"clock","c":24,"r":17},{"k":"tent","c":27,"r":17},{"k":"post","c":33,"r":17}]},map:[
    "##################################....##",
    "##################################GGGG##",
    "##################################GGGG##",
@@ -149,7 +149,7 @@ const rooms=[
    "########..............................<#",
    "########^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
    "########################################"]},
- {...{"id":"o1-cut","name":"Watcher’s Cut","exit":"right","bearing":"GLASS","hint":"A crystal grows back a moment after you take it","question":"One crystal is not enough to cross the cut. Where can you get another?","people":[{"who":"olan","c":6,"r":17,"face":1,"line":"Don’t go trustin’ that clock. And don’t trust the cut neither — the glass in the air’s the only footing over it."}],"decor":[{"k":"mast","c":36,"r":14}]},map:[
+ {...{"id":"o1-cut","name":"Watcher’s Cut","exit":"right","bearing":"GLASS","hint":"A crystal grows back a moment after you take it","question":"One crystal is not enough to cross the cut. Where can you get another?","people":[{"who":"olan","c":6,"r":17,"face":1,"line":"Clock’s stopped. The cut’s worse. Only the glass in the air holds."}],"decor":[{"k":"mast","c":36,"r":14}]},map:[
    "########################################",
    "#......................................#",
    "#......................................#",
@@ -221,7 +221,7 @@ const rooms=[
    "######..........................########",
    "######^^^^^^^^^^^^^^^^^^^^^^^^^^########",
    "########################################"]},
- {...{"id":"o1-muster","name":"Broken Muster","exit":"right","bearing":"IRON","hint":"Climb, then let go and fall to the stake","question":"The muster gate is shut. What would the post on the old wall open?","people":[{"who":"mara","c":31,"r":17,"face":-1,"quest":"mara","chart":true,"line":"You came the long way round too. Show me the chart — any bearing you touched, I’ll take.","lineDone":"ASH, GLASS, IRON. All three agree. The tunnel reaches the woods — I’ll mark it."}],"decor":[{"k":"palisade","c":21,"r":17},{"k":"palisade","c":35,"r":17}]},map:[
+ {...{"id":"o1-muster","name":"Broken Muster","exit":"right","bearing":"IRON","hint":"Climb, then let go and fall to the stake","question":"The muster gate is shut. What would the post on the old wall open?","people":[{"who":"mara","c":31,"r":17,"face":-1,"quest":"mara","chart":true,"line":"Made it. Any bearings for me?","lineDone":"Ash, Glass, Iron. They agree. The road goes through."}],"decor":[{"k":"palisade","c":21,"r":17},{"k":"palisade","c":35,"r":17}]},map:[
    "########################################",
    "#.................GG...................#",
    "#.................GG...................#",

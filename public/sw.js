@@ -1,7 +1,7 @@
 /* Bladefall service worker — offline play + fast reloads once installed.
    Bump CACHE_NAME on a deploy where you want returning players to pick up
    the change immediately instead of waiting on the network-first refresh. */
-const CACHE_NAME = 'bladefall-v533-editor-live';
+const CACHE_NAME = 'bladefall-v534-ascend-voices';
 const CORE_ASSETS = [
   './bladefall-pcore-dev-workshop-room.js?v=7.335.0','./bladefall-workshop-ascend-coop-core.js?v=7.336.0','./bladefall-workshop-ascend-play.js?v=7.335.0','./bladefall-workshop-ascend.js?v=7.335.0','./bladefall-workshop-applied.js?v=7.363.0','./bladefall-workshop-bridge.js?v=7.363.0','./bladefall-workshop-routes.js?v=7.340.0','./bladefall-route-solver.js?v=7.340.0','./bladefall-explore-routes.js?v=7.344.0','./bladefall-workshop-cloud.js?v=7.335.0','./bladefall-workshop-cobuild.js?v=7.335.0','./bladefall-workshop-collaboration.js?v=7.335.0','./bladefall-workshop-explore-runtime.js?v=7.363.0','./bladefall-workshop-explore.js?v=7.363.0','./bladefall-workshop-library.js?v=7.335.0','./bladefall-workshop-model.js?v=7.335.0','./bladefall-workshop-native-play.js?v=7.335.0','./bladefall-workshop-network.js?v=7.335.0','./bladefall-workshop-play-link.js?v=7.335.0','./bladefall-workshop-properties.js?v=7.335.0','./bladefall-workshop-render.js?v=7.335.0','./bladefall-workshop-sandbox.js?v=7.335.0','./bladefall-workshop-selection.js?v=7.335.0','./bladefall-workshop-sources.js?v=7.340.0','./bladefall-workshop-store.js?v=7.335.0','./bladefall-workshop-ui.js?v=7.363.0',
   './coop-practice.html','./bladefall-coop-practice-core.js?v=7.334.0',
@@ -60,7 +60,7 @@ const CORE_ASSETS = [
   './bladefall-echoes.js',
   './bladefall-gifts.js',
   './bladefall-recollections.js',
-  './bladefall-voice.js?v=7.363.0',
+  './bladefall-voice.js?v=7.364.0',
   './bladefall-conversation.js?v=7.360.0',
   './bladefall-side-stories.js?v=7.361.0',
   './bladefall-opening-stories.js?v=7.234.0',
@@ -129,7 +129,7 @@ const CORE_ASSETS = [
   './bladefall-pcore-rooms.js?v=7.253.0',
   './bladefall-pcore-tapes.js?v=7.253.0',
   './bladefall-pcore-survey.js?v=7.264.0',
-  './bladefall-pcore-pitches.js?v=7.257.0',
+  './bladefall-pcore-pitches.js?v=7.364.0',
   './bladefall-pcore-touch.js?v=7.334.0',
   './bladefall-pcore-pitches-view.js?v=7.259.0',
   './bladefall-pcore-dev-spent-thorn.js?v=7.335.0',
@@ -151,7 +151,7 @@ const CORE_ASSETS = [
   './bladefall-rbr.js?v=7.280.0',
   './bladefall-rbr-view.js?v=7.264.0',
   './bladefall-climb.js?v=7.273.40',
-  './bladefall-climb-worlds.js?v=7.308.2',
+  './bladefall-climb-worlds.js?v=7.364.0',
   './bladefall-climb-finale-tapes.js?v=7.317.0',
   './bladefall-climb-finale.js?v=7.334.0',
   './bladefall-climb-core-tapes.js?v=7.339.0',
@@ -170,13 +170,13 @@ const CORE_ASSETS = [
   './bladefall-climb-geography-build.js?v=7.336.0',
   './bladefall-climb-coop.js?v=7.334.0',
   // rbr-regions:start (Room by Room region files, one per built region)
-  './bladefall-rbr-01-outskirts.js?v=7.280.0',
-  './bladefall-rbr-03-causeway.js?v=7.280.0',
+  './bladefall-rbr-01-outskirts.js?v=7.364.0',
+  './bladefall-rbr-03-causeway.js?v=7.364.0',
   './bladefall-pcore-dev-rbr-causeway.js?v=7.335.0',
   './bladefall-pcore-dev-rbr-causeway-view.js?v=7.280.0',
   './bladefall-rbr-04-updrafts.js?v=7.264.0',
   './bladefall-pcore-dev-rbr-updrafts.js?v=7.335.0',
-  './bladefall-rbr-02-woods.js?v=7.264.0',
+  './bladefall-rbr-02-woods.js?v=7.364.0',
   './bladefall-rbr-05-marksman.js?v=7.280.0',
   './bladefall-pcore-dev-rbr-marksman.js?v=7.335.0',
   './bladefall-pcore-dev-rbr-marksman-view.js?v=7.280.0',
@@ -350,7 +350,7 @@ const CORE_ASSETS = [
   './bladefall-inventory.js',
   './bladefall-dialogue.js?v=7.361.0',
   './bladefall-text.js?v=7.233.0',
-  './bladefall-text-catalog.js?v=7.363.0',
+  './bladefall-text-catalog.js?v=7.364.0',
   './bladefall-harness.js',
   './littlejs.min.js',
   './peerjs.min.js',

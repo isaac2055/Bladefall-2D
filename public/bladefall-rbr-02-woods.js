@@ -5,7 +5,7 @@
 'use strict';
 const RBR=root.BladefallRoomByRoom;if(!RBR)return;
 const rooms=[
- {...{"id":"w2-tunnel","name":"The Root Tunnel","exit":"right","lock":["strike","parry","portal"],"hint":"Hold grab against a wall to climb it","question":"The bank is higher than any jump. What still carries you up?","people":[{"who":"mara","c":9,"r":17,"face":1,"leave":"right","line":"Chart says the tunnel comes up here, and for once the chart’s right. There’s a refuge on ahead. I’ll tell them you’re coming."}],"decor":[{"k":"roots","c":4,"r":9},{"k":"roots","c":11,"r":9},{"k":"lantern","c":13,"r":17},{"k":"fern","c":31,"r":9},{"k":"fern","c":35,"r":9}]},map:[
+ {...{"id":"w2-tunnel","name":"The Root Tunnel","exit":"right","lock":["strike","parry","portal"],"hint":"Hold grab against a wall to climb it","question":"The bank is higher than any jump. What still carries you up?","people":[{"who":"mara","c":9,"r":17,"face":1,"leave":"right","line":"You again. The tunnel comes up right here. Refuge is ahead."}],"decor":[{"k":"roots","c":4,"r":9},{"k":"roots","c":11,"r":9},{"k":"lantern","c":13,"r":17},{"k":"fern","c":31,"r":9},{"k":"fern","c":35,"r":9}]},map:[
    "########################################",
    "################.......................#",
    "################.......................#",
@@ -29,7 +29,7 @@ const rooms=[
    "################.........###############",
    "################^^^^^^^^^###############",
    "########################################"]},
- {...{"id":"w2-refuge","name":"Mothlight Refuge","exit":"right","lock":["strike","parry","portal"],"palette":"mothlight","hint":"Jump up through a plank from below · a cracked board gives way","question":"The refuge is built up the trunk. Which boards carry you to the high walk?","people":[{"who":"orra","c":6,"r":17,"face":1,"line":"Stopped again. Wound it this morning, same as every morning since my daughter gave it me."},{"who":"pell","c":25,"r":11,"face":-1,"line":"Those pods up the trees are ours. We cut them for the seed, and a cut one kicks like a mule. You’ll want a blade for that."}],"decor":[{"k":"clock","c":9,"r":17},{"k":"hut","c":11,"r":17},{"k":"lantern","c":23,"r":17},{"k":"hut","c":22,"r":11},{"k":"lantern","c":5,"r":11},{"k":"lantern","c":36,"r":5}]},map:[
+ {...{"id":"w2-refuge","name":"Mothlight Refuge","exit":"right","lock":["strike","parry","portal"],"palette":"mothlight","hint":"Jump up through a plank from below · a cracked board gives way","question":"The refuge is built up the trunk. Which boards carry you to the high walk?","people":[{"who":"orra","c":6,"r":17,"face":1,"line":"Stopped again. Don’t ask me the time."},{"who":"pell","c":25,"r":11,"face":-1,"line":"Not resin crew, are you? A cut pod kicks. Get a blade."}],"decor":[{"k":"clock","c":9,"r":17},{"k":"hut","c":11,"r":17},{"k":"lantern","c":23,"r":17},{"k":"hut","c":22,"r":11},{"k":"lantern","c":5,"r":11},{"k":"lantern","c":36,"r":5}]},map:[
    "########################################",
    "#......................................#",
    "#.......................................",
@@ -53,7 +53,7 @@ const rooms=[
    "########################################",
    "########################################",
    "########################################"]},
- {...{"id":"w2-clearing","name":"Oathblade Clearing","exit":"right","hint":"Strike with the blade · a cut lights a stake the hand can’t reach","question":"The stake is caged in roots. What reaches farther than your hand?","people":[{"who":"hale","c":9,"r":17,"face":-1,"line":"Sword was in those roots. Took me all morning to work it loose, and my shoulder with it. It’s yours. I’m done swinging things."}],"decor":[{"k":"cradle","c":5,"r":17},{"k":"fern","c":14,"r":17},{"k":"fern","c":27,"r":17},{"k":"fern","c":34,"r":17}]},map:[
+ {...{"id":"w2-clearing","name":"Oathblade Clearing","exit":"right","hint":"Strike with the blade · a cut lights a stake the hand can’t reach","question":"The stake is caged in roots. What reaches farther than your hand?","people":[{"who":"hale","c":9,"r":17,"face":-1,"line":"Sword was in those roots. Cost me a shoulder. Take it."}],"decor":[{"k":"cradle","c":5,"r":17},{"k":"fern","c":14,"r":17},{"k":"fern","c":27,"r":17},{"k":"fern","c":34,"r":17}]},map:[
    "########################################",
    "#......................................#",
    "#......................................#",
@@ -149,7 +149,7 @@ const rooms=[
    "#######...............................<#",
    "#######^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
    "########################################"]},
- {...{"id":"w2-kitchen","name":"Elsie’s Kitchen","exit":"right","side":"up","hint":"A cut lights a stake in passing · the gate opens when it is lit","question":"The gate wants the stake lit, and the stake hangs over the thorns. What gets you up to it?","people":[{"who":"elsie","c":11,"r":17,"face":-1,"quest":"refuge","line":"Careful of the step, love, the end’s rotten. My lantern’s caught up in the branches over the kitchen. I’d climb for it myself, but look at me.","lineDone":"There. A working lamp and two bowls. Sit down before it gets cold."}],"decor":[{"k":"table","c":8,"r":17},{"k":"stove","c":13,"r":17},{"k":"step","c":14,"r":17},{"k":"fern","c":35,"r":17},{"k":"lantern","c":5,"r":3},{"k":"elsielamp","c":8,"r":17}]},map:[
+ {...{"id":"w2-kitchen","name":"Elsie’s Kitchen","exit":"right","side":"up","hint":"A cut lights a stake in passing · the gate opens when it is lit","question":"The gate wants the stake lit, and the stake hangs over the thorns. What gets you up to it?","people":[{"who":"elsie","c":11,"r":17,"face":-1,"quest":"refuge","line":"Mind the step. Elsie. My lantern’s stuck up in the branches. Fetch it?","lineDone":"Lamp’s lit. Two bowls. Sit."}],"decor":[{"k":"table","c":8,"r":17},{"k":"stove","c":13,"r":17},{"k":"step","c":14,"r":17},{"k":"fern","c":35,"r":17},{"k":"lantern","c":5,"r":3},{"k":"elsielamp","c":8,"r":17}]},map:[
    "#....###################################",
    "#......................................#",
    "#......................................#",
@@ -173,7 +173,7 @@ const rooms=[
    "###############................<<#######",
    "###############^^^^^^^^^^^^^^^^^^#######",
    "########################################"]},
- {...{"id":"w2-edge","name":"Thicket’s Edge","exit":"right","palette":"thicket","hint":"Every dash swaps the true branches and the copies","question":"The copies turn true when you dash. Where will the next dash put a floor?","people":[{"who":"bram","c":6,"r":17,"face":1,"line":"Lamp shows the copies. See how the light goes straight through that one? I’m not going in there. Last time I came out somewhere else."}],"decor":[{"k":"fern","c":2,"r":17},{"k":"fern","c":35,"r":11}]},map:[
+ {...{"id":"w2-edge","name":"Thicket’s Edge","exit":"right","palette":"thicket","hint":"Every dash swaps the true branches and the copies","question":"The copies turn true when you dash. Where will the next dash put a floor?","people":[{"who":"bram","c":6,"r":17,"face":1,"line":"Easy, easy… Bram. Light goes through a branch? It isn’t there."}],"decor":[{"k":"fern","c":2,"r":17},{"k":"fern","c":35,"r":11}]},map:[
    "########################################",
    "#>.....................................#",
    "#>.....................................#",

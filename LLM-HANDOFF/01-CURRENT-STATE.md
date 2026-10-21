@@ -1,3 +1,10 @@
+## 7.364.0: Ascend worlds 1-3 speak the new lines (2026-10-21, Claude, cloud session)
+
+- The proposed Ascend lines for worlds 1-3 (DIALOGUE-SCRIPT.md, "Ascend · worlds 1-3") are in the game: `people[].line/lineDone` in `bladefall-climb-worlds.js`, the room files `bladefall-rbr-01/02/03-*.js`, `bladefall-pcore-pitches.js`, and their sources (`scripts/rbr-src/0[123]-*.mjs`, `scripts/climb/source-worlds-7.303.json`), so a rebuild keeps them.
+- 20 clips under `public/audio/voice/ascend/` (484 in all), same voices as each person has in Explore; the Ascend Sentinel is new (Faithful_Engineer). They play on their own the first time you come near (7.363 hook); Voice lines in Assist & options turns them off.
+- Checked in a browser: walking up to the people in each world's first room plays their clip. Two takes flagged by the rough check (Mara, Bram) were confirmed word-for-word with ElevenLabs Scribe.
+- Knight voice: six auditions sent to Isaac (Mark Vale, Oliver, Graeme, Ordinary Sun, Grits Oxley, Derek Robinson), waiting for his pick. The knight is still Daniel in the game.
+
 ## 7.363.0: level edits go live on save; echoes wait for the Abyss King; Ascend speaks (2026-10-21, Claude, cloud session)
 
 - **Edits apply when saved (this device):** `public/bladefall-workshop-applied.js`. Saving an editor draft whose `source` is a game level (Pause → Edit this level, or an original from the library) makes it that level: Ascend rooms are built from it in `createGame` (pcore) and `defOf` (climb view); Explore stages assemble natively, then take its geometry in the workshop explore runtime's `loaded()`. Closing the editor rebuilds the room/stage you are in (Explore keeps your position). Pause shows **Use the original level** while an edit is live. Test-play and catalogue frames never apply anything. Ascend rooms are stored compiled in localStorage (`bladefall.workshop.applied.v1`); Explore stages are read back from the draft library (IndexedDB) at start. **Not global:** other players only get an edit when it is committed to the game; publishing to everyone would need an organizer-only write to the cloud API plus the game reading it at start (not built).
