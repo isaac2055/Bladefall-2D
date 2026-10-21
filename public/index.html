@@ -361,11 +361,12 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-recollections.js"></script>
 <script src="bladefall-advancement.js"></script>
 <script src="bladefall-journey.js?v=7.234.0"></script>
-<script src="bladefall-conversation.js?v=7.358.0"></script>
-<script src="bladefall-side-stories.js?v=7.358.0"></script>
+<script src="bladefall-voice.js?v=7.359.0"></script>
+<script src="bladefall-conversation.js?v=7.359.0"></script>
+<script src="bladefall-side-stories.js?v=7.359.0"></script>
 <script src="bladefall-opening-stories.js?v=7.234.0"></script>
-<script src="bladefall-side-story-world.js?v=7.358.0"></script>
-<script src="bladefall-explore-mounts.js?v=7.358.0"></script>
+<script src="bladefall-side-story-world.js?v=7.359.0"></script>
+<script src="bladefall-explore-mounts.js?v=7.359.0"></script>
 <script src="bladefall-merge-road.js?v=7.334.0"></script>
 <script src="bladefall-zones.js?v=7.220.0"></script>
 <script src="bladefall-zone-state.js"></script>
@@ -465,7 +466,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.358.0';globalThis.BLADEFALL_VERSION=VERSION;
+const VERSION='7.359.0';globalThis.BLADEFALL_VERSION=VERSION;
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -972,7 +973,7 @@ function loadLeaderboards(){
 }
 function persistLeaderboards(){BFSaveStore.write(LEADERBOARD_KEY,leaderboards);}
 const leaderboards=loadLeaderboards();
-const META_DEFAULTS={saveSchemaVersion:BFReleaseModule.SAVE_SCHEMA_VERSION,ngPlus:0,bestStage:0,actTwoReached:false,soundOn:true,musicVolume:0.4,sfxVolume:0.8,dynamicAudio:true,nightMode:false,soundCaptions:false,cameraAssist:true,reducedMotion:false,flashReduction:false,rideGhost:false,screenShake:1,graphicsQuality:'auto',rendererMode:'v4',highContrast:false,largeText:false,colorAssist:false,haptics:true,combatCues:true,totalKills:0,bossKills:0,kingKills:0,tyrantKills:0,magicBossKills:0,rangedBossKills:0,legendaryFound:0,flawlessStages:0,maxLevel:1,lastNgHp:1,lastNgDmg:1,autoAttack:false,autoKeep:false,run:null,world:null,zoneState:null,recovery:null,capabilities:null,weaponTechniques:null,advancement:null,legacyTrainingCredit:null,equipment:null,inventory:null,echoes:null,gifts:null,recollections:null,secrets:null,story:null,shops:null,quests:null,sideStories:null,achievements:{},keybinds:null,coins:{},vaultCleared:false,followerTier:0,linewalkerUnlocked:false,devUnlocked:false,reach:null,gold:0,skin:'warden',skinsOwned:null,bossRushBest:0,bossTypeKills:null,outskirtsFieldChart:false,outskirtsMaraRelocated:false,portalPairProved:false,openingClockMinute:0,flagHintShown:false,upStrikeTaught:false,gateTrials:null,viewScale:'close',viewZoom:1};
+const META_DEFAULTS={saveSchemaVersion:BFReleaseModule.SAVE_SCHEMA_VERSION,ngPlus:0,bestStage:0,actTwoReached:false,soundOn:true,musicVolume:0.4,sfxVolume:0.8,dynamicAudio:true,nightMode:false,soundCaptions:false,voices:true,cameraAssist:true,reducedMotion:false,flashReduction:false,rideGhost:false,screenShake:1,graphicsQuality:'auto',rendererMode:'v4',highContrast:false,largeText:false,colorAssist:false,haptics:true,combatCues:true,totalKills:0,bossKills:0,kingKills:0,tyrantKills:0,magicBossKills:0,rangedBossKills:0,legendaryFound:0,flawlessStages:0,maxLevel:1,lastNgHp:1,lastNgDmg:1,autoAttack:false,autoKeep:false,run:null,world:null,zoneState:null,recovery:null,capabilities:null,weaponTechniques:null,advancement:null,legacyTrainingCredit:null,equipment:null,inventory:null,echoes:null,gifts:null,recollections:null,secrets:null,story:null,shops:null,quests:null,sideStories:null,achievements:{},keybinds:null,coins:{},vaultCleared:false,followerTier:0,linewalkerUnlocked:false,devUnlocked:false,reach:null,gold:0,skin:'warden',skinsOwned:null,bossRushBest:0,bossTypeKills:null,outskirtsFieldChart:false,outskirtsMaraRelocated:false,portalPairProved:false,openingClockMinute:0,flagHintShown:false,upStrikeTaught:false,gateTrials:null,viewScale:'close',viewZoom:1};
 const BFSaveMigration=BFReleaseModule.migrateSave(BF_TAS_ENABLED?null:loadSave(),META_DEFAULTS);
 const meta=Object.assign({},META_DEFAULTS,BFSaveMigration.save);
 const BFWorldMigration=BFWorldModule.migrateProgress(meta.world,meta);
@@ -4502,8 +4503,8 @@ function SurveyStake(x,y,route,o){return Object.assign({
 const TRAVELER_PROFILES={
   wanderer:{name:'Traveler',title:'Hollow Wanderer',robe:'#66706d',accent:'#d9e0dc',
     silhouette:'wanderer',abilities:[],
-    greeting:'There’s a way through up ahead, I think. Walk with me a bit?',
-    danger:'STAY CLOSE!',death:'The traveler was lost to the Hollow.',
+    greeting:'Oh, hello. Road ahead goes through, I think. Mind if I walk behind you?',
+    danger:'WAIT FOR ME!',death:'The traveler was lost to the Hollow.',
     rescue:'The traveler made it through'},
   mara:{name:'Mara',title:'Road Surveyor',robe:'#65754f',accent:'#e4d9a7',
     silhouette:'surveyor',abilities:['route-reader'],questItem:'field chart',questVisual:'chart',
@@ -4966,7 +4967,7 @@ const LEVELS=[
   // crumbling perches and a sentry add risk without blocking forward travel.
   Scenery(5800,0,'watchers-cut',{w:2250,h:520,roomLandmark:1}),
   OpeningBeat(Gr(4700,5040),'teach','route-choice'),
-  AmbientFigure(4900,0,'cut-watcher',{residentId:'outskirts-roadkeeper',name:'Olan',title:'Road Keeper',
+  AmbientFigure(4900,0,'cut-watcher',{residentId:'outskirts-roadkeeper',name:'Olan',title:'Road Keeper',unnamed:true,workFace:-1,
     silhouette:'watcher',quietV4:true,accent:'#b8c5a0',dialogue:BFDialogueModule.text('outskirts.olan.first'),
     revisitDialogue:BFDialogueModule.text('outskirts.olan.revisit'),musterDialogue:BFDialogueModule.text('outskirts.olan.muster')}),
   // One sheltered road below a broken lookout walk. The coin and GLASS
@@ -12187,6 +12188,10 @@ function ambientFigureDialogue(o,revisit){
   const route=G&&RECALL_RETURN_ROUTES[BFWorldModule.stageId(G.stageIndex)];
   if(route&&!o.musterDialogue&&o.residentId===route.resident&&musterRecalled())return route.line;
   if(o.musterDialogue&&musterRecalled())return o.musterDialogue;
+  // (7.359) The Outskirts know each other: Vey hears Rowan is coming to supper, Olan points Mara's helper up the hill.
+  if(o.residentId==='outskirts-survivor'&&G.stageIndex===0&&revisit&&typeof BladefallSideStories!=='undefined'&&BladefallSideStories.row(BladefallSideStoryWorld.state(),'gatekeeper').phase==='completed')return BFDialogueModule.text('outskirts.vey.rowan');
+  if(o.residentId==='outskirts-roadkeeper'&&G.stageIndex===0){const mara=(G.npcs||[]).find(n=>n.kind==='survey'),glass=(G.obstacles||[]).find(x=>x.type==='surveyStake'&&x.bearingName==='GLASS');
+    if(mara&&mara.asked&&!mara.done&&glass&&!glass.aligned)return BFDialogueModule.text('outskirts.olan.hint');}
   if(o.clockId==='pulse-one'){
     const time=openingClockTime();
     return (Number(meta.openingClockMinute)||0)>0
@@ -12195,6 +12200,17 @@ function ambientFigureDialogue(o,revisit){
   }
   if(o.residentId==='woods-veteran')return BFDialogueModule.text(hasCapability('weapon')?'woods.hale.after':'woods.hale.before');
   return revisit?(o.revisitDialogue||o.dialogue):(o.dialogue||o.revisitDialogue);
+}
+/* A resident's heading: NAME · TITLE, or just the title for someone who has not given their name (Olan, 7.359). */
+function residentHeading(o){
+  const name=o.unnamed?(o.title||o.role):(o.name||o.role);
+  return '<b>'+escText(String(name).toUpperCase())+(o.title&&!o.unnamed?' · '+escText(o.title.toUpperCase()):'')+'</b><br>';
+}
+/* Olan asks the knight about the soldiers at the posts; the knight answers, and Olan has the last word. */
+function residentTalk(o,line){
+  const opts={accent:o.accent};
+  if(o.residentId==='outskirts-roadkeeper'&&line===o.musterDialogue)opts.responses=[['No.',BFDialogueModule.text('outskirts.olan.slow')]];
+  return opts;
 }
 function showOutskirtsAnnotation(source,html,options){
   if(!G||G.stageIndex<0||G.stageIndex>V4_LAST_STAGE||!source)return false;
@@ -12285,11 +12301,11 @@ function outskirtsReplayText(o){
   if(o.type==='surveyStake'&&o.aligned){const name=(o.bearingName||o.route||'ROAD').toUpperCase(),why=name==='ASH'?'western starting point beside the abandoned camp':name==='GLASS'?'elevated sightline through Watcher’s Cut':'eastern endpoint at Broken Muster';
     return '<b style="color:'+(o.accent||'#d8c48f')+'">'+escText(name)+' STAKE</b><br>This fixes the '+why+'.';}
   if(o.type==='ambientFigure'&&o.met){const line=ambientFigureDialogue(o,true);
-    return line?'<b style="color:'+(o.accent||'#c7d6b4')+'">'+escText((o.name||o.role).toUpperCase())+(o.title?' · '+escText(o.title.toUpperCase()):'')+'</b><br>'+line:null;}
+    return line?residentHeading(o).replace('<b>','<b style="color:'+(o.accent||'#c7d6b4')+'">')+line:null;}
   if(o.profileId==='bram'&&(o.asked||o.done||o.state==='follow'||o.state==='wait')){const profile=travelerProfile(o);
     return '<b style="color:'+(o.accent||'#fff2b8')+'">'+escText(travelerLabel(o).toUpperCase())+'</b><br>“'+(o.done?'I left the lamp on this side. You’ll see which branches are real on the way back.':profile.greeting)+'”';}
   if(o.kind==='survey'&&(o.asked||o.done)){const profile=travelerProfile(o),survey=G.outskirtsSurvey||{aligned:0,total:3};
-    const line=o.done?'Chart’s yours now. Everything you’ve crossed is on it; what you couldn’t reach is left blank.':survey.aligned>=survey.total?profile.found:profile.ask;
+    const line=o.done?BFDialogueModule.text('outskirts.mara.replay'):survey.aligned>=survey.total?profile.found:profile.ask;
     return '<b style="color:'+(o.accent||'#e4d9a7')+'">'+escText(travelerLabel(o).toUpperCase())+'</b><br>“'+line+'”';}
   return null;
 }
@@ -13649,7 +13665,7 @@ function openFieldConversation(source,title,line,options){
   const close=()=>{if(G===session){mode='play';G.outskirtsAnnotation=null;showOverlay(false);showGameUI(true);hudUpdate();}};
   // (7.353) No dialogue menus: a person with a voice (bladefall-conversation.js) has one exchange with the knight,
   // played out as beats; anyone else just speaks. Only a reply that decides something (a rift shard's) is a choice.
-  const voiced=opts.responses||BladefallConversation.voice(source.name||title);
+  const voiced=opts.responses||(G.stageIndex===0?null:BladefallConversation.voice(source.name||title));   // (7.359) Outskirts: the knight speaks only when asked
   const responses=voiced||[['','']],decisive=responses.some(r=>r[2]);
   const apply=(i)=>{
     const active=journeyState();active.attitudes[key]=i;
@@ -18260,10 +18276,14 @@ function update(dt){
     if(G.evidenceCapture)break;
     if((o.quietV4&&!(G.stageIndex<=2&&o.dialogue))||o.type!=='ambientFigure'||G.outskirtsInteractionTarget!==o||Math.abs(p.x-o.x)>=72||Math.abs(p.y-o.y)>=90)continue;
     if(o.met){
-      if(o.persistedMeet&&!o.revisitSpoken&&(o.revisitDialogue||o.armedDialogue||o.clockId)){
+      if(G.stageIndex===0){
+        // (7.359) The Outskirts answer every press: a "you're back" line only on a later visit, and the lines that
+        // follow the road (Mara's errand, Rowan's supper, the soldiers at the posts) whenever they apply.
+        const line=ambientFigureDialogue(o,true);
+        if(line&&!(line===o.revisitDialogue&&!o.persistedMeet))showOutskirtsAnnotation(o,residentHeading(o)+line,residentTalk(o,line));
+      }else if(o.persistedMeet&&!o.revisitSpoken&&(o.revisitDialogue||o.armedDialogue||o.clockId)){
         o.revisitSpoken=true;
-        showOutskirtsAnnotation(o,'<b>'+escText((o.name||o.role).toUpperCase())+
-          (o.title?' · '+escText(o.title.toUpperCase()):'')+'</b><br>'+ambientFigureDialogue(o,true),{accent:o.accent});
+        showOutskirtsAnnotation(o,residentHeading(o)+ambientFigureDialogue(o,true),{accent:o.accent});
       }
       continue;
     }
@@ -18271,8 +18291,7 @@ function update(dt){
     if(o.residentId)recordStoryResident(o.residentId);
     if(o.clockId)recordStoryClock(o.clockId);
     if(G.peopleAndPlace){const row=G.peopleAndPlace.witnesses.find(w=>w.role===o.role);if(row)row.met=true;}
-    if(o.dialogue)showOutskirtsAnnotation(o,'<b>'+escText((o.name||o.role).toUpperCase())+
-      (o.title?' · '+escText(o.title.toUpperCase()):'')+'</b><br>'+ambientFigureDialogue(o,false),{accent:o.accent});
+    if(o.dialogue){const line=ambientFigureDialogue(o,false);showOutskirtsAnnotation(o,residentHeading(o)+line,residentTalk(o,line));}
     else if(o.role==='cut-watcher')showOutskirtsAnnotation(o,'<b>CUT WATCHER</b><br>“Glass post’s on the upper road. Shorter that way. Lower road’s safer, mind.”',{accent:'#b8c5a0'});
   }
   // A press owns at most one object and one simulation frame.
@@ -18287,7 +18306,7 @@ function update(dt){
     if(n.done){
       if(n.kind==='survey'&&residentInteraction===n&&!n.revisitSpoken&&Math.abs(p.x-n.x)<58&&Math.abs(p.y-n.y)<76){
         n.revisitSpoken=true;
-        showOutskirtsAnnotation(n,'<b>'+travelerLabel(n)+'</b><br>“Keep it dry. I haven’t got a spare.”',{accent:n.accent});
+        showOutskirtsAnnotation(n,'<b>'+travelerLabel(n)+'</b><br>“'+BFDialogueModule.text('outskirts.mara.handover')+'”',{accent:n.accent});
       }else if(n.profileId==='bram'&&!n.gateSkin&&residentInteraction===n&&Math.abs(p.x-n.x)<58&&Math.abs(p.y-n.y)<76){
         n.revisitSpoken=true;
         showOutskirtsAnnotation(n,'<b>BRAM</b><br>“'+profile.rescue+'”',{accent:n.accent});
@@ -24574,7 +24593,7 @@ function campaignHasProgress(){
    developer unlock that opened every level goes, and so do the Fractured echoes the save had opened (kept by
    the playtest store); Explore's test mode (five taps on Base or Fractured) opens them all again for testing.
    A factory reset (five presses of Reset Controls) still wipes everything. */
-const NEW_GAME_KEEPS=['saveSchemaVersion','soundOn','musicVolume','sfxVolume','dynamicAudio','nightMode','soundCaptions','cameraAssist','reducedMotion',
+const NEW_GAME_KEEPS=['saveSchemaVersion','soundOn','musicVolume','sfxVolume','dynamicAudio','nightMode','soundCaptions','voices','cameraAssist','reducedMotion',
   'flashReduction','rideGhost','screenShake','graphicsQuality','rendererMode','highContrast','largeText','colorAssist','haptics','combatCues','autoAttack','autoKeep',
   'keybinds','viewScale','viewZoom','hardcore','achievements','skin','skinsOwned','bossRushBest','totalKills','bossKills','kingKills','tyrantKills','magicBossKills',
   'rangedBossKills','legendaryFound','flawlessStages','maxLevel','bossTypeKills'];
@@ -24858,6 +24877,7 @@ function openSettings(returnTo){
       <label><input type="checkbox" data-setting="dynamicAudio" ${meta.dynamicAudio?'checked':''}>Adaptive score<small>responds to danger</small></label>
       <label><input type="checkbox" data-setting="nightMode" ${meta.nightMode?'checked':''}>Night audio<small>softens combat peaks</small></label>
       <label><input type="checkbox" data-setting="soundCaptions" ${meta.soundCaptions?'checked':''}>Sound captions<small>directional text cues</small></label>
+      <label><input type="checkbox" data-setting="voices" ${meta.voices!==false?'checked':''}>Voices<small>spoken lines (the Outskirts so far)</small></label>
     </div>
     <div class="settingsection">Camera & Motion</div>
     <div class="settingsgrid">
@@ -26317,7 +26337,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.358.0').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.359.0').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */

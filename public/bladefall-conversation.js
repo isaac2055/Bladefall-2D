@@ -97,7 +97,7 @@
     return {face,side,name,text:String(b.text==null?'':b.text),accent:b.accent||accent,mood:b.mood||(P&&P.mood?P.mood(b.text):'neutral')};
   }
 
-  function close(){if(!panel)return;cancelAnimationFrame(loop);panel.remove();panel=null;view=null;cameraOff();const done=finish;finish=null;if(previousFocus&&previousFocus.isConnected)previousFocus.focus();if(done)done();}
+  function close(){if(!panel)return;cancelAnimationFrame(loop);root.BladefallVoice?.stop();panel.remove();panel=null;view=null;cameraOff();const done=finish;finish=null;if(previousFocus&&previousFocus.isConnected)previousFocus.focus();if(done)done();}
   // Escape also works after clicking the world and moving focus off the panel; Enter/Space still advance a line.
   window.addEventListener('keydown',e=>{
     if(!panel)return;
@@ -132,12 +132,12 @@
       list.append(button);}
 
     // ── the reveal ──
-    let at=0,count=0,hold=0,last=performance.now(),nextBlink=last+2600+Math.random()*1800,blinkUntil=0,drawn='';
+    let at=0,count=0,hold=0,last=performance.now(),nextBlink=last+2600+Math.random()*1800,blinkUntil=0,drawn='',rate=RATE,voiced=false;
     const instant=reduced();
     const cur=()=>beats[at],full=()=>count>=cur().text.length,final=()=>at===beats.length-1;
     function paint(now){
       const b=cur(),P=faces();if(!b.face||!P)return;
-      const talking=!full()&&hold<=0,mouth=talking?[0,1,1,0,1,2,1,0][Math.floor(now/120)%8]:0;
+      const talking=(!full()||voiced&&root.BladefallVoice?.speaking())&&hold<=0,mouth=talking?[0,1,1,0,1,2,1,0][Math.floor(now/120)%8]:0;
       if(now>nextBlink){blinkUntil=now+130;nextBlink=now+2400+Math.random()*2200;}
       const blink=now<blinkUntil,yawn=!talking&&b.face&&/clerk|servicekeeper/.test(b.face)&&(now%9000)<900,key=b.face+mouth+blink+b.mood+yawn+((now/250)|0);
       if(key===drawn)return;drawn=key;P.draw(fctx,b.face,{t:now/1000,blink,mouth,mood:b.mood,yawn});
@@ -146,6 +146,8 @@
       const b=cur();heading.textContent=b.name;panel.style.setProperty('--voice',b.accent||accent||'#c9baa0');
       faceBox.style.display=b.face?'':'none';faceBox.classList.toggle('bfc-right',b.side==='right');panel.classList.toggle('bfc-rightspeaker',!!b.face&&b.side==='right');
       drawn='';paint(performance.now());
+      // (7.359) A voiced line (bladefall-voice.js) is spoken, and its text is typed out to finish with the voice.
+      const secs=root.BladefallVoice?root.BladefallVoice.play(b.text):0;voiced=secs>0;rate=voiced?Math.max(8,b.text.length/(secs*.92)):RATE;
     }
     function sync(){
       const b=cur();shown.textContent=b.text.slice(0,count);rest.textContent=b.text.slice(count);
@@ -162,8 +164,8 @@
       const dt=Math.min(.1,(now-last)/1000);last=now;const b=cur();
       if(!full()){
         if(hold>0)hold-=dt;
-        else{const before=count;count=Math.min(b.text.length,count+dt*RATE);const whole=Math.floor(count);
-          for(let i=Math.floor(before);i<whole;i++){const ch=b.text[i];const pause=/[.!?…]/.test(ch)&&b.text[i+1]!==ch?.32:/[,;:—–]/.test(ch)?.14:ch==='\n'?.3:0;if(pause&&i<b.text.length-1){count=i+1;hold=pause;break;}}
+        else{const before=count;count=Math.min(b.text.length,count+dt*rate);const whole=Math.floor(count);
+          if(!voiced)for(let i=Math.floor(before);i<whole;i++){const ch=b.text[i];const pause=/[.!?…]/.test(ch)&&b.text[i+1]!==ch?.32:/[,;:—–]/.test(ch)?.14:ch==='\n'?.3:0;if(pause&&i<b.text.length-1){count=i+1;hold=pause;break;}}
           count=Math.min(count,b.text.length);}
         const c=Math.floor(count);if(shown.textContent.length!==c)sync();if(full())complete();
       }

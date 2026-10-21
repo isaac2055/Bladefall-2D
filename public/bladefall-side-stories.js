@@ -5,13 +5,14 @@
 const task=(id,label,detail,capability)=>({id,label,detail,capability:capability||null});
 const records=[
 {
- id:'gatekeeper',thanks:'Then the bench can face the tents tonight.',stage:0,title:'A Bell for the Camp',name:'Rowan',silhouette:'watcher',accent:'#b8c5a0',
- opening:'Bell’s still up the tower, east along the road. I want it hung here, where the camp can hear it if there’s trouble. Counterweight first. Push the stone cart onto the iron stop and pull the brake handle. Can you do that?',short:'Counterweight first, then the bell. I’ll start with the cart.',accept:'Cart secured, then up the tower ledges and let the bell go. The pulley brings it down. Bring it back to the empty post by my bench.',
+ id:'gatekeeper',thanks:null,unnamed:'The Gatekeeper',stage:0,title:'A Bell for the Camp',name:'Rowan',silhouette:'watcher',accent:'#b8c5a0',
+ opening:'Gate’s shut. Nothing gets through. ...Except you. How?',short:'I walked.',accept:'Hm. Then walk up that tower and bring the bell down. Cart onto the iron stop first, then pull the brake. Bell comes to the empty post by my bench.',
  question:'Everyone’s moved to the camp. Why are you still here?',discussion:'I know where they’ve moved. It’s just—last time I left, I had a good reason. Thought I did. People got killed while I was gone.',
+ firstReturn:[['them','Everyone moved to the camp. I didn’t. Last time I left a post, people died while I was gone. You ever leave one you shouldn’t have?'],['knight','I don’t remember.'],['them','Lucky.']],
  forks:[['Could you watch the camp instead?','Could. I’d want to see this road. Put the bell by the camp; I’ll see whether I can hear it.'],['I could stay here while you have a look.','Until I’m back. You understand? Don’t go looking for me. Fetch the bell first.']],
  tasks:[task('ballast','Secure the counterweight','Push the stone-filled cart onto the iron stop east of camp, then pull the brake handle.'),task('bell','Lower the watch bell','Climb the tower ledges to the bell at the top and release its mounting.'),task('hang','Hang the bell at camp','Return along the road to the empty post beside the gatekeeper’s bench.')],
- ready:'I heard it. Clear enough from here, too.',ending:'All right. Give me a moment to move this bench. I can see the road from here, and that bell will carry over the tents. I’ll have supper with the others tonight. If I keep getting up to check the gate, you can tell me to sit down.',longEnding:'I used to take the evening watch with my brother. He’d complain about the cold, then give me half his blanket anyway. After he died, I kept doing both shifts. Nobody asked me to; I just didn’t know what else to do when evening came.\n\nThis is better. I can hear the bell from the bench, and I can still see anyone coming up the road. Will you tell Vey I’m coming over for supper? Tell him I’ll bring my own bowl. He always makes too much, but he’ll pretend he wasn’t expecting me.',
- harsh:'You’re guarding an empty road because you’re afraid to do anything else.',refusal:'Enough. You weren’t here. Keep walking.',after:'Bell’s holding. I’m staying here tonight.',afterHarsh:'Road’s open. Move along.',good:'Rowan drags his bench over to the camp side of the post, tests the bell rope, and sits down. For a while he keeps one hand on his spear. Then he props it against the bench and makes room beside him. The gate is still in view; he no longer has to spend the evening alone to watch it.',bad:'Rowan puts his hand out to end the conversation. He turns his bench back toward the gate and stays there, watching the empty approach. The camp carries on behind him. Any work you already did on the bell remains, but he will not come over for supper tonight.'
+ ready:'That’ll carry.',readyLines:[['them','That’ll carry.'],['Rowan','Rowan, by the way. I’m still deciding what to make of you.']],ending:'I’ll move the bench to the camp side. Still see the road from there.',longEnding:'My brother and I took the evening watch together. He’d moan about the cold, then hand me half his blanket. After he died I kept doing both shifts. Nobody asked me to. Evening came and I didn’t know what else to do with it.\n\nThis is better. I can hear the bell from the bench, and I can see the road.',
+ harsh:'You’re guarding an empty road because you’re afraid to do anything else.',refusal:'Enough. You weren’t here. Keep walking.',after:'Bench faces the tents now.',afterHarsh:'Road’s open. Move along.',good:'Rowan drags his bench over to the camp side of the post, tests the bell rope, and sits down. For a while he keeps one hand on his spear. Then he props it against the bench and makes room beside him. The gate is still in view; he no longer has to spend the evening alone to watch it.',bad:'Rowan puts his hand out to end the conversation. He turns his bench back toward the gate and stays there, watching the empty approach. The camp carries on behind him. Any work you already did on the bell remains, but he will not come over for supper tonight.'
 },
 {
  id:'refuge',thanks:'Just salty enough. Pass the bread?',stage:1,title:'A Place for Supper',name:'Elsie',silhouette:'huddled',accent:'#deb985',
@@ -222,16 +223,19 @@ function view(state,id){
  case 'refusal':text=q.refusal;break;
  default:
  if(r.phase==='completed'||r.phase==='harsh')text=r.phase==='harsh'?q.afterHarsh:q.after;
- else if(r.phase==='ready'){text=q.ready;choices=q.resolutions?q.resolutions.map(([label,value])=>c('finish:'+value,label)):[c('finish',q.thanks)];}
+ else if(r.phase==='ready'){text=q.ready;if(q.readyLines)lines=q.readyLines.map(([who,t])=>who==='them'?them(t):{text:t,speaker:who});
+  choices=q.resolutions?q.resolutions.map(([label,value])=>c('finish:'+value,label)):[c('finish',q.thanks||'Continue')];}   // no thanks: the knight says nothing
  else if(r.phase==='active'){
   const task=q.tasks[r.step].label+'. '+q.tasks[r.step].detail;
   // The first time back, the knight asks what is really going on; after that, just where things stand.
-  if(!r.answers.length){text=q.discussion;lines=[knight(q.question),them(q.discussion+(q.forks?.[0]?' '+q.forks[0][1]:'')),them(task)];}
+  if(!r.answers.length){text=q.discussion;lines=q.firstReturn?[...q.firstReturn.map(([who,t])=>who==='knight'?knight(t):them(t)),them(task)]:[knight(q.question),them(q.discussion+(q.forks?.[0]?' '+q.forks[0][1]:'')),them(task)];}
   else text=task;
  }
  else{text=q.opening;choices=[c('short',q.short)];}
  }
- return {id,title:q.name,questTitle:q.title,accent:q.accent,text,lines,choices,phase:r.phase,route:r.route,reward:r.reward,objective:r.phase==='active'?q.tasks[r.step]:null};
+ // (7.359) Someone who has not given their name yet is their trade in the header (Rowan: The Gatekeeper).
+ const named=!q.unnamed||r.phase==='completed'||r.node==='ending';
+ return {id,title:named?q.name:q.unnamed,questTitle:q.title,accent:q.accent,text,lines,choices,phase:r.phase,route:r.route,reward:r.reward,objective:r.phase==='active'?q.tasks[r.step]:null};
 }
 function reduce(raw,id,event){
  const state=normalize(raw),q=byId[id];if(!q)return {state,changed:false,error:'unknown-story'};

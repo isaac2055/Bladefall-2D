@@ -76,7 +76,11 @@ function grantReward(q){
  if(typeof addText==='function')addText(G.p.x,GROUND_Y-G.p.y-70,'+2 BLOOD','#ff8a80',true);
  // 7.343: the Bellwing. Its roost goes up by the camp straight away (bladefall-explore-mounts.js).
  if(q?.id==='gatekeeper'&&root.BladefallMounts){root.BladefallMounts.install();
-  return inspect('Rowan’s thanks','Rowan patches you up. +2 Blood. Something bronze drops out of the empty belfry and lands on the bell-post by the camp: the drake that nested over the old bell. “Followed it down,” Rowan says. “It’ll carry you, if you ask. Saves your boots on that road.” The Bellwing roosts by the camp. Press Up at its roost to fly to the Mothlight Door, and back; hold the way you are flying to hurry it.');}
+  // (7.359) Three beats: what happens, Rowan's own (voiced) line, and how to use the drake.
+  const session=G;BladefallConversation.show({title:'Rowan’s thanks',accent:q.accent,onClose:()=>closeSession(session),lines:[
+   {text:'Rowan patches you up. +2 Blood. Something bronze drops out of the empty belfry and lands on the bell-post by the camp: the drake that nested over the old bell.',speaker:'Rowan’s thanks',portrait:null},
+   {text:'A drake roosted over that bell. Followed it all the way down. It’ll carry you, if you let it.',speaker:'Rowan'},
+   {text:'The Bellwing roosts by the camp. Press Up at its roost to fly to the Mothlight Door, and back; hold the way you are flying to hurry it.',speaker:'The Bellwing',portrait:null}]});mode='conversation';return true;}
  return inspect((q?.name||'A friend')+'’s thanks',(q?.name||'They')+' patches you up. +2 Blood.');
 }
 function receiveRewards(receipts,quiet=true){

@@ -234,7 +234,7 @@ test('Mara requires a deliberate interaction, runs to Broken Muster in sight, an
   assert.equal(annotations.length,0);
   api.begin();api.tick();
   assert.equal(n.asked,true);
-  assert.match(annotations.at(-1),/bearings/i);
+  assert.match(annotations.at(-1),/bearing/i);
   assert.equal(meta.outskirtsMaraRelocated,true,'the save puts her at the Muster from the moment she sets off');
   assert.equal(n.x,1950,'talking does not teleport the surveyor on screen');
   const at=seconds=>{const out=[];for(let i=0;i<seconds*60&&n.maraRun;i++){api.run(1/60);out.push(n.x);}return out;};
@@ -483,9 +483,9 @@ test('Mara offers one optional road survey while the stakes respond without rout
   assert.match(stage,/SurveyStake\(2340,0,'verge',\{bearingName:'ASH'/);
   assert.match(stage,/SurveyStake\(11370,0,'muster',\{bearingName:'IRON'/);
   const ask=Dialogue.text('outskirts.mara.ask'),done=Dialogue.text('outskirts.mara.done');
-  assert.match(ask,/bearings/i);assert.match(ask,/chart/i);
-  assert.match(done,/tunnel reaches the woods/i);assert.match(done,/chart/i);
-  for(const line of [ask,done])assert.ok(line.split(/\s+/).length<=16,'Mara stays brief: '+line);
+  assert.match(ask,/bearing/i);assert.match(ask,/posts/i);
+  assert.match(done,/reaches the woods/i);assert.match(done,/chart/i);
+  for(const line of [ask,done])assert.ok(line.split(/\s+/).length<=36,'Mara stays brief: '+line);   // (7.359) she is busy first, then asks
   const alignment=sourceBetween("}else if(o.type==='surveyStake'&&!o.aligned",'// Incidental people establish');
   assert.match(alignment,/o\.aligned=true;o\.flash=1/);
   assert.match(alignment,/coopSendTravelerIntent/);

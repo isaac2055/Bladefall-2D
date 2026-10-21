@@ -1,6 +1,6 @@
 # Bladefall dialogue script: "Busy, then they notice you"
 
-Status: **written, not implemented.** This is the full replacement script for every spoken line in the game, in the style the owner picked ("#1": each person reacts in their own way). The next run implements it and animates the actions.
+Status: **the Outskirts are implemented and voiced (7.359.0); every other region is written, not implemented.** This is the full replacement script for every spoken line in the game, in the style the owner picked ("#1": each person reacts in their own way). The next run implements it and animates the actions.
 
 ---
 
@@ -26,12 +26,22 @@ How to read the entries:
 
 ---
 
+## How the Outskirts were built (7.359.0), for the next regions
+
+- **Lines** live where they always did: `bladefall-dialogue.js` (residents), `bladefall-side-stories.js` (Rowan: `firstReturn`, `readyLines`, `unnamed`, `thanks:null`), `index.html` (`ambientFigureDialogue`, `residentHeading`, `residentTalk`).
+- **Voices**: `public/audio/voice/<region>/<id>.mp3`, listed with their exact text in `public/bladefall-voice.js`. The conversation box plays a clip when the line on screen matches it (case and punctuation ignored) and types the text out to finish with the voice. Settings → Voices turns them off. Clips are ElevenLabs `eleven_v4`, the first of four takes, loudness-normalised to -18 LUFS, 64 kbps mono.
+- **Cast**: Vey · Clara V. (`0ggs85h7hrWz8ExXnsBc`), Olan · Sir Stephen (`Aaz7hX6MUrjjm0ncqvAg`), Mara · Alice (`Xb7hH8MSUJpSbSDYk0k2`), Rowan · Mark Ritson (`S5BwrXIpDqxu5sni2xES`), the Knight · Daniel (`onwK4e9ZLuTAKqWW03F9`), the Traveler · Jordie (`U977vpWUjb8YL0J1JaFF`). Keep the Knight's voice for every region.
+- **Animations**: `bladefall-resident-art.js` `BUSY`/`attend()`: a person is busy (`s.busy`) until the knight is within 130 units, gives a one-pixel start (`s.notice`) and turns to him, and goes back to work when he leaves. Busy poses so far: Vey rewraps her knee, Olan counts patrols on his tally stick, Mara slaps her chart flat, Rowan hones his spear.
+- **Not yet animated**: the after-quest beats (Vey's ladle, Rowan ringing the bell, the Traveler's boot).
+
+---
+
 ## 00 · The Outskirts
 
 ### Vey · Wounded Standard-Bearer · P
 `outskirts.vey.before / .after`, plus a new third line once Rowan's quest is done.
 
-- *[`vey-rewrap`] Rewrapping the bandage on his leg. He pulls the knot tight, winces, and looks up.*
+- *[`vey-rewrap`] Rewrapping the bandage on her leg. She pulls the knot tight, winces, and looks up.*
 - **First:** "Nearly... there. Sorry, I'd stand, but I'd regret it. Vey. The fire's for anyone."
 - **When you come back:** "Back again. Sit, if you like. I won't ask where you've been."
 - **After Rowan's bell:** *[`vey-ladle`] Ladling stew into a second bowl.* "Rowan's coming over tonight. Says he's bringing his own bowl. I'll pretend that's a surprise."
@@ -316,8 +326,8 @@ index.html ~6737.
 ### Vey · Standard-Bearer, in a cell · P, recognises you
 index.html ~6981.
 
-- *[`vey-keys-turn`] Sitting against the bars, turning a ring of keys over and over.*
-- **First:** "You. From the fire." *(He holds up the keys.)* "They locked me in with his keys. Funny, if you think about it."
+- *[`vey-keys-turn`] Sitting against the bars, turning a ring of keys over and over.* (Vey is a woman in the art.)
+- **First:** "You. From the fire." *(She holds up the keys.)* "They locked me in with his keys. Funny, if you think about it."
 - **Later:** "These doors open from this side. Always did. Nobody tried."
 - **Has counter:** "Take them. I've set down heavier things than keys."
 - **Turnkey's Reserve:** "They've unsealed the reserve above the east end of the court. Pull its chain and two maintenance bridges come down. There's a dressing in it. Nobody in here's going to use it."
@@ -381,7 +391,7 @@ Suggested name: **Ines**.
 `interactWhiteCourt`, index.html ~8074, and ~7998.
 
 - *[`vey-hand-water`] Sitting by the channel with one hand trailing in the water.*
-- **First:** "You made it out of there too, then." *(He nods west.)* "Could you free the service wheel, back that way? Nothing flows until it turns."
+- **First:** "You made it out of there too, then." *(She nods west.)* "Could you free the service wheel, back that way? Nothing flows until it turns."
 - **Wheel turning:** "Hear it? I used to keep the road. Water's easier; it goes where you send it."
 - **Has attunement:** "No orders today. Sit a minute. Listen."
 - **Standard:** "I put the standard down for good. Water runs downhill and doesn't argue."

@@ -1,0 +1,59 @@
+/* Bladefall — SPOKEN LINES (7.359). Voiced with ElevenLabs (eleven_v4), saved as files under ./audio/voice/.
+   A line is voiced when the text on screen is exactly one of these (compared without case, quotes or punctuation),
+   so a line changed in the Dialogue Editor simply goes back to silent. BladefallConversation calls play() per beat.
+   Cast (the Outskirts): Vey · Clara V. | Olan · Sir Stephen | Mara · Alice | Rowan · Mark Ritson | the Knight · Daniel |
+   the Traveler · Jordie. Regenerate a clip with the same text and file name to recast it. */
+(function(root){
+'use strict';
+const BASE='./audio/voice/';
+const LINES={
+ "outskirts/vey.first": "Nearly... there. Sorry, I’d stand, but I’d regret it. Vey. The fire’s for anyone.",
+ "outskirts/vey.back": "Back again. Sit, if you like. I won’t ask where you’ve been.",
+ "outskirts/vey.rowan": "Rowan’s coming over tonight. Says he’s bringing his own bowl. I’ll pretend that’s a surprise.",
+ "outskirts/olan.first": "Twenty to four. Every blessed day. ...You came from the west? There’s nothing west but the old camp. Patrols turn at the post. Mind them.",
+ "outskirts/olan.back": "You got past the patrols? Hm. Most turn round at the first post.",
+ "outskirts/olan.muster": "Soldiers at every post, and I never heard them march in. Did you?",
+ "outskirts/olan.slow": "Then go slow at the crossing.",
+ "outskirts/olan.hint": "Mara’s after the Glass post? Upper road. Quicker, if heights don’t bother you.",
+ "outskirts/mara.ask": "Stay flat, you... Oh. Hello. Mara, surveyor. Could I borrow your legs? Three posts between here and the Muster, and I need a bearing off each one. Stand close until the vane swings.",
+ "outskirts/mara.progress": "Still missing some. Ash is by the old camp. Glass is up on the high ledge in Watcher’s Cut. Iron’s at the Muster.",
+ "outskirts/mara.done": "That’s all three. It reaches the woods. Thank you. Keep the chart; I’ll draw another.",
+ "outskirts/mara.handover": "Keep it out of the rain. I’ve only got the one.",
+ "outskirts/mara.replay": "Everything you’ve walked is drawn in. The blanks are the bits you haven’t.",
+ "outskirts/rowan.opening": "Gate’s shut. Nothing gets through. ...Except you. How?",
+ "outskirts/rowan.accept": "Hm. Then walk up that tower and bring the bell down. Cart onto the iron stop first, then pull the brake. Bell comes to the empty post by my bench.",
+ "outskirts/rowan.past": "Everyone moved to the camp. I didn’t. Last time I left a post, people died while I was gone. You ever leave one you shouldn’t have?",
+ "outskirts/rowan.lucky": "Lucky.",
+ "outskirts/rowan.ready": "That’ll carry.",
+ "outskirts/rowan.name": "Rowan, by the way. I’m still deciding what to make of you.",
+ "outskirts/rowan.long": "My brother and I took the evening watch together. He’d moan about the cold, then hand me half his blanket. After he died I kept doing both shifts. Nobody asked me to. Evening came and I didn’t know what else to do with it.\n\nThis is better. I can hear the bell from the bench, and I can see the road.",
+ "outskirts/rowan.after": "Bench faces the tents now.",
+ "outskirts/rowan.reward": "A drake roosted over that bell. Followed it all the way down. It’ll carry you, if you let it.",
+ "outskirts/knight.walked": "I walked.",
+ "outskirts/knight.dontremember": "I don’t remember.",
+ "outskirts/knight.no": "No.",
+ "outskirts/traveler.greet": "Oh, hello. Road ahead goes through, I think. Mind if I walk behind you?",
+ "outskirts/traveler.bark": "WAIT FOR ME!"
+};
+const SECONDS={"outskirts/vey.first":9.61,"outskirts/vey.back":4.78,"outskirts/vey.rowan":6.84,"outskirts/olan.first":10.21,"outskirts/olan.back":4.83,"outskirts/olan.muster":4.68,"outskirts/olan.slow":2.01,"outskirts/olan.hint":5.46,"outskirts/mara.ask":13.92,"outskirts/mara.progress":8.36,"outskirts/mara.done":6.35,"outskirts/mara.handover":3.29,"outskirts/mara.replay":4.62,"outskirts/rowan.opening":8.23,"outskirts/rowan.accept":9.69,"outskirts/rowan.past":7.97,"outskirts/rowan.lucky":1.93,"outskirts/rowan.ready":1.36,"outskirts/rowan.name":4.08,"outskirts/rowan.long":19.85,"outskirts/rowan.after":1.93,"outskirts/rowan.reward":5.62,"outskirts/knight.walked":1.44,"outskirts/knight.dontremember":2.51,"outskirts/knight.no":1.07,"outskirts/traveler.greet":4.65,"outskirts/traveler.bark":1.18};
+const norm=t=>String(t==null?'':t).toLowerCase().replace(/[‘’]/g,"'").replace(/<[^>]*>/g,' ').replace(/[^a-z0-9']+/g,' ').trim();
+const index=new Map(Object.entries(LINES).map(([id,text])=>[norm(text),id]));
+let current=null;
+function setting(){
+  try{if(typeof meta!=='undefined'&&meta){if(meta.soundOn===false||meta.voices===false)return false;return true;}}catch(_e){}
+  return true;
+}
+function volume(){try{if(typeof meta!=='undefined'&&meta&&typeof meta.sfxVolume==='number')return Math.max(0,Math.min(1,meta.sfxVolume*1.1));}catch(_e){}return .85;}
+function clipFor(text){return index.get(norm(text))||null;}
+function stop(){if(current){try{current.pause();}catch(_e){}current=null;}}
+/* Plays the clip for a line of text, if there is one; returns its length in seconds (0 when silent). */
+function play(text){
+  stop();const id=clipFor(text);if(!id||!setting()||typeof Audio==='undefined')return 0;
+  try{const a=new Audio(BASE+id+'.mp3');a.volume=volume();current=a;const p=a.play();if(p&&p.catch)p.catch(()=>{});}catch(_e){return 0;}
+  return SECONDS[id]||0;
+}
+function speaking(){return !!current&&!current.paused&&!current.ended;}
+const api=Object.freeze({LINES,SECONDS,clipFor,play,stop,speaking,norm});
+if(typeof module==='object'&&module.exports)module.exports=api;
+root.BladefallVoice=api;
+})(typeof globalThis!=='undefined'?globalThis:window);

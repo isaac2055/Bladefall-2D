@@ -384,7 +384,7 @@ const NAMES = {
   BREAKER:'breaker', 'WAR AUTOMATON':'automaton', 'SLEEPLESS CLERK':'clerk', NEIGHBORS:'neighbor', NEIGHBOR:'neighbor', 'UPSTAIRS NEIGHBOR':'upstairs',
   FIGURE:'figure', BELLKEEPER:'bellkeeper', 'TIRED DEFENDER':'defender', LOOKOUT:'lookout', VOLUNTEER:'volunteer', MINER:'miner', SAILORS:'sailor',
   'STRANDED SAILOR':'stranded', ORGANIZER:'organizer', SOLDIER:'soldier', MOTHER:'mother', PILGRIM:'pilgrim', 'PALACE GARDENER':'gardener',
-  OLAN:'olan', ORRA:'orra', PELL:'pell', HALE:'hale', TALLA:'talla', EDRIN:'edrin', SENN:'senn', VEYA:'veya',
+  OLAN:'olan', 'ROAD KEEPER':'olan', GATEKEEPER:'rowan', ORRA:'orra', PELL:'pell', HALE:'hale', TALLA:'talla', EDRIN:'edrin', SENN:'senn', VEYA:'veya',
   'KNEELING MAN':'orenAct2', 'WOMAN BY THE GATE':'sickwoman', 'SERVANT IN A GOLD MASK':'servant', 'SERVANT':'servant',
   KNIGHT:'knight', YOU:'knight',
 };

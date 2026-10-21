@@ -176,7 +176,13 @@ D.rowan = (k, s) => {
   h.R(-3, sh - 8, 7, 2, IRON.c); h.R(-2, sh - 9, 5, 1, IRON.l); h.P(-3, sh - 8, IRON.l);
   h.R(-7, sh - 6, 15, 1, IRON.l); h.P(-7, sh - 5, IRON.d); h.P(7, sh - 5, IRON.d);
   // the spear in his fist
-  if(!s.sit){ const bob = s.walk ? stride(k, s, 1) : 0; spear(8, -1, 8, -43 + bob); k.L(5, sh + 1, 7, sh + 6, 2, C.c); hand(k, 7, sh + 6, sk); }
+  if(!s.sit && s.busy){   // the spear tipped across him, head up by his shoulder; the whetstone drawn down its edge
+    const st = Math.round(((k.t * 1.6 + s.ph) % 1) * 4), wx = 13, wy = -35 + st;
+    spear(3, -1, 13, -30); k.L(5, sh + 1, 9, sh + 8, 2, C.c); hand(k, 9, sh + 8, sk);
+    k.L(5, sh + 3, wx - 2, wy + 2, 2, C.d); k.R(wx - 1, wy, 3, 2, '#7a7468'); k.P(wx - 1, wy, '#a8a294'); hand(k, wx - 2, wy + 2, sk);
+    if(st === 3 && every(k.t, .63, .08, s.ph)) k.P(wx + 2, wy - 1, '#fff2b0');
+  }
+  else if(!s.sit){ const bob = s.walk ? stride(k, s, 1) : 0; spear(8, -1, 8, -43 + bob); k.L(5, sh + 1, 7, sh + 6, 2, C.c); hand(k, 7, sh + 6, sk); }
   else { k.L(5, sh + 2, 6, hem - 1, 2, C.c); hand(k, 5, hem - 2, sk); }
 };
 
@@ -221,9 +227,13 @@ D.mara = (k, s) => {
   }
   // the chart (handed across once her survey is done)
   if(s.chartGiven){ k.L(3, -24, 5, -17, 2, C.c); hand(k, 5, -17, sk); return; }
-  const lift = Math.round(Math.sin(k.t * 4.1 + s.ph) * .8);
+  // busy: the wind keeps lifting the chart's corner and she keeps slapping it flat
+  const gust = s.busy ? (k.t * .9 + s.ph) % 1 : 0, slap = s.busy && gust > .82;
+  const lift = s.busy ? (slap ? 0 : -Math.round(Math.min(3, gust * 4.5) * (1 + Math.sin(k.t * 19) * .2))) : Math.round(Math.sin(k.t * 4.1 + s.ph) * .8);
   k.L(3, -24, 4, -19, 2, C.c);
   k.R(4, -23, 8, 6, '#ecdcb0'); k.R(4, -23, 8, 1, '#fff2cc'); k.R(11, -23 + lift, 1, 1, '#fff2cc');
+  if(lift < -1){ k.R(10, -23 + lift, 2, -lift, '#ecdcb0'); k.P(11, -24 + lift, '#fff2cc'); }
+  if(slap){ k.L(-2, -24, 9, -24, 2, C.c); hand(k, 9, -25, sk); }
   k.R(5, -21, 5, 1, '#8a6a4a'); k.R(7, -20, 1, 2, '#6a8aa0'); k.P(9, -19, '#c43a2a'); k.P(6, -18, '#8a6a4a');
   hand(k, 3, -20, sk); hand(k, 11, -20, sk);
 };
@@ -246,11 +256,17 @@ D.vey = (k, s) => {
   if(low){ k.R(-4, -6, 6, 2, trouser); k.L(1, -6, 4, -9, 2, trouser); k.L(4, -9, 6, -3, 2, trouser); k.R(5, -2, 3, 2, BOOT); }
   else { const st = stride(k, s); k.R(-3 + st, -8, 2, 7, trouser); k.R(1 - st, -8, 2, 7, trouser); k.R(-3 + st, -2, 3, 2, BOOT); k.R(1 - st, -2, 3, 2, BOOT); }
   const sh = low ? -18 : -19, base = low ? 1 : 0;
-  k.L(-4, sh + 1, -5, sh + 8, 2, J.d); hand(k, -6, sh + 8, sk);
+  if(s.busy && low){   // rewrapping the bandage round her knee: the hand circles it, the loose end trails
+    const a = k.t * 4.2 + s.ph, cx = 3 + Math.round(Math.cos(a) * 2), cy = -9 + Math.round(Math.sin(a) * 1.5);
+    k.R(2, -10, 4, 2, sling); k.P(3, -10, '#fffaee');
+    k.L(-4, sh + 1, cx, cy, 2, J.d); hand(k, cx, cy, sk);
+    for(let i = 1; i < 4; i++) k.P(cx + i, cy + 1 + (i >> 1) + Math.round(Math.sin(a + i) * .6), i < 3 ? sling : '#cfc4ac');
+  } else { k.L(-4, sh + 1, -5, sh + 8, 2, J.d); hand(k, -6, sh + 8, sk); }
   k.poly([[-4, sh], [4, sh], [4, base - 7], [-4, base - 7]], J);
   for(let i = 0; i < 9; i++) k.R(-4 + i, sh + 1 + i, 2, 1, i < 2 ? R.l : R.c);                 // the sash
   k.R(1, sh + 4, 4, 3, sling); k.R(1, sh + 4, 4, 1, '#fffaee'); k.L(0, sh, 3, sh + 4, 1, '#cfc4ac'); // the sling
-  // the head, the headband and its tails
+  // the head, the headband and its tails (bowed over the bandage while she works)
+  if(s.busy && low) k = k.at(1, 1);
   face(k, -1, sh - 5, sk, { ey:2, mouth:'#8a4a3a' });
   k.R(-3, sh - 6, 6, 2, hair); k.R(-3, sh - 4, 2, 3, hair);
   k.R(-3, sh - 5, 6, 1, R.l); k.P(3, sh - 5, R.c);
@@ -866,11 +882,15 @@ D.olan = (k, s) => {
   k.poly([[-6, -25], [2, -25], [5, -8], [-5, -8]], C);
   k.R(0, -23, 1, 15, C.d); k.R(-5, -16, 9, 1, '#2e2a26'); k.P(-5, -24, C.l);
   k.L(-5, -23, -7, -22, 2, C.d);
-  face(k, -2, -30, sk, { h:5, ey:2, nose:true }); k.R(-2, -26, 4, 1, '#a8a49c');
-  k.R(-4, -32, 6, 3, cap.c); k.R(-3, -33, 4, 1, cap.c); k.R(-4, -32, 6, 1, cap.l); k.R(-4, -30, 6, 1, cap.d);
-  k.L(1, -23, 4, -17, 2, C.c); hand(k, 4, -18, sk);
-  k.R(6, -23, 1, 9, WOOD.l); for(let i = 0; i < 4; i++) k.P(6, -22 + i * 2, WOOD.d);
-  k.P(5, -22 + (((k.t * .8 + s.ph * 4) | 0) % 4) * 2, sk.l);
+  // busy: head down over the tally stick, counting the patrols under his breath (the thumb runs the notches)
+  const h = s.busy ? k.at(1, 1) : k, count = s.busy ? 3.2 : .8;
+  face(h, -2, -30, sk, { h:5, ey:s.busy ? 3 : 2, nose:true }); h.R(-2, -26, 4, 1, '#a8a49c');
+  if(s.busy && every(k.t, .5, .25, s.ph)) h.P(1, -26, '#7a4a3a');
+  h.R(-4, -32, 6, 3, cap.c); h.R(-3, -33, 4, 1, cap.c); h.R(-4, -32, 6, 1, cap.l); h.R(-4, -30, 6, 1, cap.d);
+  const lift = s.busy ? -3 : 0;
+  k.L(1, -23, 4, -17 + lift, 2, C.c); hand(k, 4, -18 + lift, sk);
+  k.R(6, -23 + lift, 1, 9, WOOD.l); for(let i = 0; i < 4; i++) k.P(6, -22 + lift + i * 2, WOOD.d);
+  k.P(5, -22 + lift + (((k.t * count + s.ph * 4) | 0) % 4) * 2, sk.l);
 };
 /* ORRA · Black Woods · the clock keeper. Small and round-shouldered in dusky plum, a white bun with a pencil through
    it, big round spectacles; her daughter's watch swings on its chain, and now and then goes up to her ear. */
@@ -1171,17 +1191,29 @@ function facePlayer(g, o, fallback){
   const p = g && g.p; if(p && Math.abs(p.x - o.x) < 240 && Math.abs((p.y || 0) - (o.y || 0)) < 180) return p.x >= o.x ? 1 : -1;
   return fallback || 1;
 }
+/* Busy, then they notice you (7.359). The Outskirts' people are at their own work until the knight comes close;
+   then a short start (`s.notice` runs 0→1 over .7s, the body jolts up a pixel) and they turn to face him. They go
+   back to it when he walks off. Ids in BUSY have a busy pose; nobody else changes. */
+const BUSY = new Set(['vey', 'olan', 'mara', 'rowan']);
+const attention = new WeakMap();
+function attend(g, o, t){
+  const p = g && g.p, near = !!p && Math.abs(p.x - o.x) < 130 && Math.abs((p.y || 0) - (o.y || 0)) < 90;
+  let a = attention.get(o); if(!a){ a = { near:false, since:-9 }; attention.set(o, a); }
+  if(near && !a.near) a.since = t; a.near = near;
+  return near ? { busy:false, notice:Math.min(1, (t - a.since) / .7) } : { busy:true, notice:1 };
+}
 function pose(api, id, o, extra){
   const g = api.G, t = api.time || 0, vx = o.vx != null && Math.abs(o.vx) > 8 ? o.vx : velocity(o, t);
   const walk = Math.abs(vx) > 8;
   const s = Object.assign({ id, t, ph:seed(id), walk, look:1, o, sit:false }, extra || {});
-  s.face = walk ? Math.sign(vx) : facePlayer(g, o, o.face || 1);
+  if(BUSY.has(id) && !walk && !s.good && !s.chartGiven && !s.run && !s.air){ const a = attend(g, o, t); s.busy = a.busy; s.notice = a.notice; }
+  s.face = walk ? Math.sign(vx) : s.busy ? (o.workFace || o.face || 1) : facePlayer(g, o, o.face || 1);
   if(!walk && (id === 'rowan' || id === 'recruit') && every(t, id === 'recruit' ? 2.6 : 7, id === 'recruit' ? .8 : .9, s.ph)) s.look = -1;
   return s;
 }
 function render(api, id, o, s, x, y){
   const fn = D[id]; if(!fn) return false;
-  const k = kit(api, x, y, s.face, s.t);
+  const k = kit(api, x, y - (s.notice != null && s.notice < .3 ? 1 : 0), s.face, s.t);   // the start, when they notice you
   const c = api.ctx, a0 = c.globalAlpha;
   if(o.state === 'dead') c.globalAlpha = a0 * .25;
   else if(o.flash > 0) c.globalAlpha = a0 * (.5 + .5 * Math.sin(s.t * 40));

@@ -1,3 +1,11 @@
+## 7.359.0: the Outskirts, rewritten, voiced and animated (2026-10-21, Claude, cloud session)
+
+- **Dialogue:** Vey, Olan, Mara, Rowan and the Traveler use the "busy, then they notice you" script (`LLM-HANDOFF/DIALOGUE-SCRIPT.md`). People are strangers; Olan stays "Road Keeper" and Rowan "The Gatekeeper" until he gives his name; the knight speaks only when asked ("I walked.", "I don't remember.", "No."). In the Outskirts the old knight exchanges (`VOICES`) are off.
+- **Voices:** 27 ElevenLabs clips in `public/audio/voice/outskirts/` (1.3 MB), played by `public/bladefall-voice.js` from `BladefallConversation`. Settings → Voices (on by default; also off when sound is off).
+- **Animations:** busy loops and a notice start for Vey, Olan, Mara and Rowan (`bladefall-resident-art.js`).
+- **Tests:** side stories 47 pass (Rowan's new beats covered); `outskirts-stage` back to its earlier 29 pass / 5 pre-existing fails after updating Mara's copy checks.
+- **How to extend to the next region:** see "How the Outskirts were built" at the top of the script.
+
 ## Dialogue script written, not implemented (2026-10-21, Claude, cloud session)
 
 - **What:** `LLM-HANDOFF/DIALOGUE-SCRIPT.md` is the full replacement for every spoken line, in Isaac's chosen style: people are busy, then notice you. Polite people give their name; curious people ask about you. The knight speaks only when spoken to.
