@@ -1,9 +1,9 @@
 /* Bladefall service worker — offline play + fast reloads once installed.
    Bump CACHE_NAME on a deploy where you want returning players to pick up
    the change immediately instead of waiting on the network-first refresh. */
-const CACHE_NAME = 'bladefall-v535-ascend-all-voices';
+const CACHE_NAME = 'bladefall-v536-sfx-publish';
 const CORE_ASSETS = [
-  './bladefall-pcore-dev-workshop-room.js?v=7.335.0','./bladefall-workshop-ascend-coop-core.js?v=7.336.0','./bladefall-workshop-ascend-play.js?v=7.335.0','./bladefall-workshop-ascend.js?v=7.335.0','./bladefall-workshop-applied.js?v=7.363.0','./bladefall-workshop-bridge.js?v=7.363.0','./bladefall-workshop-routes.js?v=7.340.0','./bladefall-route-solver.js?v=7.340.0','./bladefall-explore-routes.js?v=7.344.0','./bladefall-workshop-cloud.js?v=7.335.0','./bladefall-workshop-cobuild.js?v=7.335.0','./bladefall-workshop-collaboration.js?v=7.335.0','./bladefall-workshop-explore-runtime.js?v=7.363.0','./bladefall-workshop-explore.js?v=7.363.0','./bladefall-workshop-library.js?v=7.335.0','./bladefall-workshop-model.js?v=7.335.0','./bladefall-workshop-native-play.js?v=7.335.0','./bladefall-workshop-network.js?v=7.335.0','./bladefall-workshop-play-link.js?v=7.335.0','./bladefall-workshop-properties.js?v=7.335.0','./bladefall-workshop-render.js?v=7.335.0','./bladefall-workshop-sandbox.js?v=7.335.0','./bladefall-workshop-selection.js?v=7.335.0','./bladefall-workshop-sources.js?v=7.340.0','./bladefall-workshop-store.js?v=7.335.0','./bladefall-workshop-ui.js?v=7.363.0',
+  './bladefall-pcore-dev-workshop-room.js?v=7.335.0','./bladefall-workshop-ascend-coop-core.js?v=7.336.0','./bladefall-workshop-ascend-play.js?v=7.335.0','./bladefall-workshop-ascend.js?v=7.335.0','./bladefall-workshop-applied.js?v=7.366.0','./bladefall-workshop-bridge.js?v=7.366.0','./bladefall-workshop-routes.js?v=7.340.0','./bladefall-route-solver.js?v=7.340.0','./bladefall-explore-routes.js?v=7.344.0','./bladefall-workshop-cloud.js?v=7.335.0','./bladefall-workshop-cobuild.js?v=7.335.0','./bladefall-workshop-collaboration.js?v=7.335.0','./bladefall-workshop-explore-runtime.js?v=7.363.0','./bladefall-workshop-explore.js?v=7.363.0','./bladefall-workshop-library.js?v=7.335.0','./bladefall-workshop-model.js?v=7.335.0','./bladefall-workshop-native-play.js?v=7.335.0','./bladefall-workshop-network.js?v=7.335.0','./bladefall-workshop-play-link.js?v=7.335.0','./bladefall-workshop-properties.js?v=7.335.0','./bladefall-workshop-render.js?v=7.335.0','./bladefall-workshop-sandbox.js?v=7.335.0','./bladefall-workshop-selection.js?v=7.335.0','./bladefall-workshop-sources.js?v=7.340.0','./bladefall-workshop-store.js?v=7.335.0','./bladefall-workshop-ui.js?v=7.366.0',
   './coop-practice.html','./bladefall-coop-practice-core.js?v=7.334.0',
   './bladefall-coop-practice-session.js?v=7.334.0','./bladefall-coop-practice-view.js?v=7.334.0',
   './bladefall-route-recording.js?v=7.334.0','./bladefall-pcore-test-tools.js?v=7.335.0',
@@ -61,6 +61,9 @@ const CORE_ASSETS = [
   './bladefall-gifts.js',
   './bladefall-recollections.js',
   './bladefall-voice.js?v=7.365.0',
+  './bladefall-sfx.js?v=7.366.0',
+  './bladefall-published-levels.js',
+  './bladefall-workshop-publish.js?v=7.366.0',
   './bladefall-conversation.js?v=7.360.0',
   './bladefall-side-stories.js?v=7.361.0',
   './bladefall-opening-stories.js?v=7.234.0',
@@ -252,7 +255,7 @@ const CORE_ASSETS = [
   './bladefall-rbr-39-f-path.js?v=7.280.0',
   './bladefall-rbr-40-f-sunspire.js?v=7.365.0',
   // rbr-regions:end
-  './bladefall-pcore-view.js?v=7.363.0',
+  './bladefall-pcore-view.js?v=7.366.0',
   './bladefall-pcore-combat.js?v=7.335.0',
   './bladefall-pcore-combat-rooms.js?v=7.250.0',
   './bladefall-pcore-combat-tapes.js?v=7.250.0',
@@ -350,7 +353,7 @@ const CORE_ASSETS = [
   './bladefall-inventory.js',
   './bladefall-dialogue.js?v=7.361.0',
   './bladefall-text.js?v=7.233.0',
-  './bladefall-text-catalog.js?v=7.365.0',
+  './bladefall-text-catalog.js?v=7.366.0',
   './bladefall-harness.js',
   './littlejs.min.js',
   './peerjs.min.js',
@@ -448,6 +451,91 @@ const CORE_ASSETS = [
   './audio/sfx/level1/sword-impact-2.ogg',
   './audio/sfx/level1/sword-impact-3.ogg',
   './audio/sfx/level1/pickup-lock.ogg',
+  './audio/sfx/bell.mp3',
+  './audio/sfx/bolt.mp3',
+  './audio/sfx/boss-fall.mp3',
+  './audio/sfx/boss-roar.mp3',
+  './audio/sfx/campfire.mp3',
+  './audio/sfx/chain.mp3',
+  './audio/sfx/chest.mp3',
+  './audio/sfx/coin.mp3',
+  './audio/sfx/coins.mp3',
+  './audio/sfx/crumble.mp3',
+  './audio/sfx/dash-1.mp3',
+  './audio/sfx/dash-2.mp3',
+  './audio/sfx/death.mp3',
+  './audio/sfx/door.mp3',
+  './audio/sfx/enemy-alert.mp3',
+  './audio/sfx/enemy-die-1.mp3',
+  './audio/sfx/enemy-die-2.mp3',
+  './audio/sfx/enemy-shot.mp3',
+  './audio/sfx/fanfare.mp3',
+  './audio/sfx/gate.mp3',
+  './audio/sfx/gem.mp3',
+  './audio/sfx/grab.mp3',
+  './audio/sfx/gust.mp3',
+  './audio/sfx/heal.mp3',
+  './audio/sfx/hit-armor-1.mp3',
+  './audio/sfx/hit-armor-2.mp3',
+  './audio/sfx/hit-flesh-1.mp3',
+  './audio/sfx/hit-flesh-2.mp3',
+  './audio/sfx/hurt.mp3',
+  './audio/sfx/jump-1.mp3',
+  './audio/sfx/jump-2.mp3',
+  './audio/sfx/key.mp3',
+  './audio/sfx/land-hard.mp3',
+  './audio/sfx/land-soft-1.mp3',
+  './audio/sfx/land-soft-2.mp3',
+  './audio/sfx/lantern.mp3',
+  './audio/sfx/lever.mp3',
+  './audio/sfx/magic.mp3',
+  './audio/sfx/pack.mp3',
+  './audio/sfx/page.mp3',
+  './audio/sfx/parry.mp3',
+  './audio/sfx/plate.mp3',
+  './audio/sfx/pod.mp3',
+  './audio/sfx/portal.mp3',
+  './audio/sfx/powerup.mp3',
+  './audio/sfx/quest.mp3',
+  './audio/sfx/rune.mp3',
+  './audio/sfx/shatter.mp3',
+  './audio/sfx/splash.mp3',
+  './audio/sfx/spring.mp3',
+  './audio/sfx/step-dirt-1.mp3',
+  './audio/sfx/step-dirt-2.mp3',
+  './audio/sfx/step-dirt-3.mp3',
+  './audio/sfx/step-metal-1.mp3',
+  './audio/sfx/step-metal-2.mp3',
+  './audio/sfx/step-metal-3.mp3',
+  './audio/sfx/step-snow-1.mp3',
+  './audio/sfx/step-snow-2.mp3',
+  './audio/sfx/step-snow-3.mp3',
+  './audio/sfx/step-stone-1.mp3',
+  './audio/sfx/step-stone-2.mp3',
+  './audio/sfx/step-wood-1.mp3',
+  './audio/sfx/step-wood-2.mp3',
+  './audio/sfx/step-wood-3.mp3',
+  './audio/sfx/stone-hit.mp3',
+  './audio/sfx/swing-1.mp3',
+  './audio/sfx/swing-2.mp3',
+  './audio/sfx/switch.mp3',
+  './audio/sfx/ui-move.mp3',
+  './audio/sfx/ui-open.mp3',
+  './audio/sfx/ui-select.mp3',
+  './audio/sfx/walljump.mp3',
+  './audio/sfx/wallslide.mp3',
+  './audio/sfx/zip.mp3',
+  './audio/sfx/amb/cave.mp3',
+  './audio/sfx/amb/dungeon.mp3',
+  './audio/sfx/amb/forest.mp3',
+  './audio/sfx/amb/forge.mp3',
+  './audio/sfx/amb/hall.mp3',
+  './audio/sfx/amb/heights.mp3',
+  './audio/sfx/amb/machine.mp3',
+  './audio/sfx/amb/plains.mp3',
+  './audio/sfx/amb/shore.mp3',
+  './audio/sfx/amb/snow.mp3',
+  './audio/sfx/amb/void.mp3',
   './manifest.webmanifest',
   './icon.svg',
   './icon-192.png',
@@ -478,6 +566,16 @@ self.addEventListener('fetch', (e) => {
   if (e.request.method !== 'GET' || url.origin !== location.origin || (url.pathname.startsWith('/.netlify/')||url.pathname.startsWith('/api/'))) return;
 
   const isPage = e.request.mode === 'navigate' || url.pathname.endsWith('.html') || url.pathname.endsWith('/');
+
+  // (7.366) Levels published from the editor change without a release: always ask the network first.
+  if (url.pathname.endsWith('/bladefall-published-levels.js')) {
+    e.respondWith(
+      fetch(e.request, { cache: 'no-cache' })
+        .then((res) => { const copy = res.clone(); caches.open(CACHE_NAME).then((c) => c.put(e.request, copy)); return res; })
+        .catch(() => caches.match(e.request, { ignoreSearch: true }).then((r) => r || new Response('', { headers: { 'Content-Type': 'text/javascript' } })))
+    );
+    return;
+  }
 
   if (isPage) {
     // Network-first for the page itself, so a fresh deploy shows up right

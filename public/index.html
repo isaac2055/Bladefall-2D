@@ -316,7 +316,9 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-workshop-ascend.js?v=7.335.0"></script>
 <script src="bladefall-workshop-explore.js?v=7.363.0"></script>
 <script src="bladefall-workshop-store.js?v=7.335.0"></script>
-<script src="bladefall-workshop-applied.js?v=7.363.0"></script>
+<script src="bladefall-published-levels.js"></script>
+<script src="bladefall-workshop-applied.js?v=7.366.0"></script>
+<script src="bladefall-workshop-publish.js?v=7.366.0"></script>
 <script src="bladefall-workshop-cloud.js?v=7.335.0"></script>
 <script src="bladefall-workshop-play-link.js?v=7.335.0"></script>
 <script src="bladefall-workshop-collaboration.js?v=7.335.0"></script>
@@ -325,7 +327,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-workshop-selection.js?v=7.335.0"></script>
 <script src="bladefall-workshop-properties.js?v=7.335.0"></script>
 <script src="bladefall-workshop-render.js?v=7.335.0"></script>
-<script src="bladefall-workshop-ui.js?v=7.363.0"></script>
+<script src="bladefall-workshop-ui.js?v=7.366.0"></script>
 <script src="bladefall-workshop-sources.js?v=7.340.0"></script>
 <script src="bladefall-workshop-library.js?v=7.335.0"></script>
 <script src="bladefall-workshop-explore-runtime.js?v=7.363.0"></script>
@@ -363,6 +365,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-advancement.js"></script>
 <script src="bladefall-journey.js?v=7.234.0"></script>
 <script src="bladefall-voice.js?v=7.365.0"></script>
+<script src="bladefall-sfx.js?v=7.366.0"></script>
 <script src="bladefall-conversation.js?v=7.360.0"></script>
 <script src="bladefall-side-stories.js?v=7.361.0"></script>
 <script src="bladefall-opening-stories.js?v=7.234.0"></script>
@@ -467,7 +470,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.365.0';globalThis.BLADEFALL_VERSION=VERSION;
+const VERSION='7.366.0';globalThis.BLADEFALL_VERSION=VERSION;
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -1043,6 +1046,7 @@ function applyPresentationSettings(){
   document.body.classList.toggle('a11y-contrast',!!meta.highContrast);
   document.body.classList.toggle('a11y-reduced-motion',!!meta.reducedMotion);
   BFAudio.applySettings({soundOn:meta.soundOn,musicVolume:meta.musicVolume,sfxVolume:meta.sfxVolume,dynamicAudio:meta.dynamicAudio,nightMode:meta.nightMode,captions:meta.soundCaptions});
+  if(typeof sfxConfigure==='function')sfxConfigure();
   BFCamera.applySettings({cameraAssist:meta.cameraAssist,reducedMotion:meta.reducedMotion,screenShake:meta.screenShake});
   if(BFRenderer)BFRenderer.quality.force(meta.graphicsQuality==='auto'?null:meta.graphicsQuality);
 }
@@ -2732,6 +2736,23 @@ function playLevel1Sample(key,x,options){
     audio.playbackRate=(options&&options.rate)||1;audio.play().catch(()=>{});}catch(e){}
   return true;
 }
+/* (7.366) Footsteps on every region's own ground after the opening ones, the region's ambient bed, and a roar the first
+   time the knight comes within reach of a boss. Runs once a frame from the play loop. */
+let _sfxBedStage=null,_sfxBossHeard=null,_sfxSet=false;
+function updateWorldSounds(p,dt){
+  const X=globalThis.BladefallSfx;if(!X||!G||!p)return;
+  if(!_sfxSet){_sfxSet=true;sfxConfigure();}
+  const bedKey=meta.soundOn&&!watchLike()?G.stageIndex:null;
+  if(bedKey!==_sfxBedStage){_sfxBedStage=bedKey;X.ambience(bedKey===null?null:stageGround()[0]);}
+  if(G.boss&&!G.boss.dead&&_sfxBossHeard!==G.boss&&Math.abs(G.boss.x-p.x)<620){_sfxBossHeard=G.boss;if(meta.soundOn)SFX.boss(G.boss.x);}
+  if(G.stageIndex<=3||p.dead)return;
+  const moving=p.onGround&&Math.abs(p.vx)>35&&!p.slamming;
+  if(!moving){p._stepT=Math.min(p._stepT||0,.08);return;}
+  p._stepT=(p._stepT||0)-dt;if(p._stepT>0)return;
+  sfxPlay('step-'+stageGround()[1],p.x,{cue:'land',gap:120,caption:'footsteps'});
+  p._stepT=Math.max(.3,Math.min(.46,96/Math.max(1,Math.abs(p.vx))));
+}
+setInterval(()=>{if(_sfxBedStage!==null&&(typeof mode==='undefined'||mode!=='play')){_sfxBedStage=null;globalThis.BladefallSfx?.ambience(null);}},800);
 function updateLevel1Footsteps(p,dt){
   if(!p||G.stageIndex>3||p.dead)return;
   const moving=p.onGround&&Math.abs(p.vx)>35&&!p.slamming;
@@ -2741,21 +2762,31 @@ function updateLevel1Footsteps(p,dt){
   playLevel1Sample(terrain+'Step',p.x,{cue:'land',gain:.20,rate:.96+Math.min(.12,speed/1900),caption:'light '+terrain+' footsteps'});
   p._level1StepT=Math.max(.34,Math.min(.49,96/Math.max(1,speed)));
 }
+/* (7.366) Recorded sounds (bladefall-sfx.js) for every region. The opening regions keep their chainmail samples above;
+   the synthesized sounds below stay as the fallback when a clip is missing. */
+function sfxPlay(name,x,o){
+  const X=globalThis.BladefallSfx;if(!X||!X.has(name))return false;
+  if(watchLike()||!meta.soundOn||(mode!=='play'&&!(o&&o.ui)))return true;
+  const cue=audioCue((o&&o.cue)||name,Number.isFinite(x)?x:(G&&G.p?G.p.x:0),o&&o.caption);
+  return X.play(name,{gain:(o&&o.gain)||1,rate:o&&o.rate,pan:cue.pan,gap:o&&o.gap});
+}
+function sfxConfigure(){globalThis.BladefallSfx?.configure({enabled:()=>!!meta.soundOn,volume:()=>meta.sfxVolume,ambience:()=>meta.ambience!==false,ambienceVolume:()=>.55*(meta.musicVolume>0?1:.7)});}
+function stageGround(){return globalThis.BladefallSfx?.forTheme(STAGES[G&&G.stageIndex]?.theme)||['plains','stone'];}
 const SFX={
   // the swing itself: pure air — two breathy noise sweeps, no tone at all
-  slash(x){if(G&&G.p.weapon&&playLevel1Sample('swordSwing',x,{cue:'slash',gain:.78,caption:'blade swing'}))return;impactSfx({layers:[[500,2600,0.13,0.13,'bandpass',1.6],
+  slash(x){if(G&&G.p.weapon&&playLevel1Sample('swordSwing',x,{cue:'slash',gain:.78,caption:'blade swing'}))return;if(sfxPlay('swing',x,{cue:'slash'}))return;impactSfx({layers:[[500,2600,0.13,0.13,'bandpass',1.6],
                             [300,1200,0.16,0.09,'bandpass',2.2]]},'slash',x);},
   // a bolt leaving: a muffled release of air, not a laser
-  shoot(x){impactSfx({layers:[[1300,320,0.09,0.15,'bandpass',1.2]],body:.10,bodyF:150,bodyDur:0.08,drop:.6},'shoot',x);},
+  shoot(x){if(sfxPlay('bolt',x,{cue:'shoot'}))return;impactSfx({layers:[[1300,320,0.09,0.15,'bandpass',1.2]],body:.10,bodyF:150,bodyDur:0.08,drop:.6},'shoot',x);},
   // blade meets flesh: an 8ms snap, a thock sweeping down, a knuckle of bass
-  hit(x){if(G&&G.p.weapon&&playLevel1Sample('swordImpact',x,{cue:'hit',gain:.82,caption:'blade impact'}))return;impactSfx({layers:[[2600,1500,0.045,0.30,'highpass',0.7],
+  hit(x){if(G&&G.p.weapon&&playLevel1Sample('swordImpact',x,{cue:'hit',gain:.82,caption:'blade impact'}))return;if(sfxPlay('hit-flesh',x,{cue:'hit'}))return;impactSfx({layers:[[2600,1500,0.045,0.30,'highpass',0.7],
                           [900,240,0.10,0.30,'bandpass',1.1]],
                    body:.20,bodyF:150,bodyDur:0.12,drop:.45},'hit',x);},
   // taking a wound: a dark thud with grit and a sub drop — a body blow, no chime
-  hurt(x){impactSfx({layers:[[1400,300,0.06,0.15,'bandpass',1.0],
+  hurt(x){if(sfxPlay('hurt',x,{cue:'hurt'}))return;impactSfx({layers:[[1400,300,0.06,0.15,'bandpass',1.0],
                            [600,90,0.26,0.34,'lowpass',0.8]],
                     body:.30,bodyF:95,bodyDur:0.34,drop:.40},'hurt',x);},
-  jump(x){const terrain=level1Terrain(G&&G.p);if(playLevel1Sample(terrain+'Jump',x,{cue:'jump',gain:.68,caption:'armored '+terrain+' jump'}))return;impactSfx({layers:[[600,1500,0.08,0.09,'bandpass',1.5]]},'jump',x);},   // a puff of effort
+  jump(x){const terrain=level1Terrain(G&&G.p);if(playLevel1Sample(terrain+'Jump',x,{cue:'jump',gain:.68,caption:'armored '+terrain+' jump'}))return;if(sfxPlay('jump',x,{cue:'jump'}))return;impactSfx({layers:[[600,1500,0.08,0.09,'bandpass',1.5]]},'jump',x);},   // a puff of effort
   land(material,x,impactSpeed){
     const speed=Math.abs(impactSpeed||0),terrain=G&&G.p&&G.p.y>8?'stone':'dirt';
     // Level 1 is full of short, precise jumps. Tiny touchdowns stay silent,
@@ -2771,25 +2802,58 @@ const SFX={
       impactSfx({layers:[[360,105,0.07,0.08,'lowpass',0.65]],body:.05,bodyF:88,bodyDur:0.07,drop:.5,
         gain:openingSurface.gain*.42,pitch:openingSurface.pitch},'land',x,terrain+' landing');return;
     }
+    if(speed<200)return;if(sfxPlay(speed>=620?'land-hard':'land-soft',x,{cue:'land',gain:speed>=620?1:.8}))return;
     const s=BFAudio.surface(material);impactSfx({layers:[[420,90,0.09,0.14,'lowpass',0.8]],body:.10,bodyF:95,bodyDur:0.09,drop:.55,gain:s.gain,pitch:s.pitch},'land',x,s.caption);
   },
-  dodge(x){impactSfx({layers:[[350,2000,0.13,0.13,'bandpass',1.8]]},'dodge',x);},   // pure air, faster than slash
+  dodge(x){if(sfxPlay('dash',x,{cue:'dodge'}))return;impactSfx({layers:[[350,2000,0.13,0.13,'bandpass',1.8]]},'dodge',x);},   // pure air, faster than slash
   pack(x,low){
+    if(sfxPlay('pack',x,{cue:low?'pack-low':'pack',gain:low?.6:1,rate:low?.85:1,gap:180}))return;
     // Cloth intake plus a wooden bellows body: deliberately no flame/rocket tone.
     impactSfx({layers:[[low?950:720,low?1500:1180,.11,low?.08:.12,'bandpass',1.25],
       [210,95,.16,.08,'lowpass',.55]],gain:low?.42:.28},low?'pack-low':'pack',x,low?'loose cloth flutter':'aerie bellows');
   },
-  windGate(note,x){tonalSfx('windGate',[[0,[.03,,note||440,.02,.18,.32,0,.65,,,,,,,,,,.55,.05]]],x);},
+  windGate(note,x){if(sfxPlay('gust',x,{cue:'windGate',gain:.7,rate:note?Math.max(.8,Math.min(1.3,note/440)):1,gap:250}))return;tonalSfx('windGate',[[0,[.03,,note||440,.02,.18,.32,0,.65,,,,,,,,,,.55,.05]]],x);},
   // a foe collapsing: a dark wet crunch settling into dust — no tone anywhere
-  enemyDie(x){impactSfx({layers:[[900,140,0.24,0.22,'lowpass',0.9],
+  enemyDie(x){if(sfxPlay('enemy-die',x,{cue:'enemyDie'}))return;impactSfx({layers:[[900,140,0.24,0.22,'lowpass',0.9],
                                [2200,600,0.05,0.10,'bandpass',1.0]],
                         body:.16,bodyF:70,bodyDur:0.28,drop:.35},'enemyDie',x);},
-  levelup(){tonalSfx('levelup',[[0,[.04,,523,.01,.08,.16,0,.5,,,,,,,,,,.8,.04]],[85,[.04,,659,.01,.08,.16,0,.5,,,,,,,,,,.8,.04]],[170,[.04,,784,.01,.08,.14,0,.5,,,,,,,,,,.8,.04]]]);},
+  levelup(){if(sfxPlay('powerup',null,{cue:'levelup'}))return;tonalSfx('levelup',[[0,[.04,,523,.01,.08,.16,0,.5,,,,,,,,,,.8,.04]],[85,[.04,,659,.01,.08,.16,0,.5,,,,,,,,,,.8,.04]],[170,[.04,,784,.01,.08,.14,0,.5,,,,,,,,,,.8,.04]]]);},
   pickup(x){if(playLevel1Sample('pickup',x,{cue:'pickup',gain:.54,rate:1.15,caption:'item collected'}))return;tonalSfx('pickup',[[0,[.03,,660,.01,.05,.1,0,.5,,,,,,,,,,.8,.03]],[70,[.03,,990,.01,.07,.16,0,.5,,,,,,,,,,.8,.03]]],x);},
+  // (7.366) named world sounds: a recorded clip, else the old pickup/levelup chime
+  key(x){if(!sfxPlay('key',x,{cue:'pickup',caption:'keys jingle'}))SFX.pickup(x);},
+  chest(x){if(!sfxPlay('chest',x,{cue:'pickup',caption:'chest creaks open'}))SFX.pickup(x);},
+  checkpoint(x){if(!sfxPlay('campfire',x,{cue:'pickup',caption:'fire catches'}))SFX.pickup(x);},
+  page(x){if(!sfxPlay('page',x,{cue:'pickup',caption:'paper rustles'}))SFX.pickup(x);},
+  gold(x){if(!sfxPlay('coin',x,{cue:'pickup',caption:'coin'}))SFX.pickup(x);},
+  buy(){if(!sfxPlay('coins',null,{cue:'pickup',caption:'coins counted out',ui:true}))SFX.pickup();},
+  ui(){if(!sfxPlay('ui-select',null,{cue:'pickup',ui:true}))SFX.pickup();},
+  heal(x){if(!sfxPlay('heal',x,{cue:'levelup',caption:'warm shimmer'}))SFX.levelup();},
+  gem(x){if(!sfxPlay('gem',x,{cue:'pickup',caption:'crystal chime'}))SFX.pickup(x);},
+  quest(x){if(!sfxPlay('quest',x,{cue:'levelup',caption:'task done'}))SFX.levelup();},
+  secret(x){if(!sfxPlay('rune',x,{cue:'levelup',caption:'something hidden answers'}))SFX.levelup();},
+  gate(x){if(!sfxPlay('gate',x,{cue:'boss',caption:'stone grinds open'}))SFX.levelup();},
+  portal(x){if(!sfxPlay('portal',x,{cue:'magic',caption:'the air folds'}))SFX.magic(null,x);},
+  lantern(x){if(!sfxPlay('lantern',x,{cue:'pickup',caption:'lantern lifted'}))SFX.pickup(x);},
+  greet(x){sfxPlay('ui-open',x,{cue:'pickup',gain:.6,gap:400});},
+  bossFall(x){if(!sfxPlay('boss-fall',x,{cue:'boss',caption:'something huge falls'}))SFX.boss(x);},
+  bell(x){if(!sfxPlay('bell',x,{cue:'muster-bell',caption:'a deep bell'}))tonalSfx('levelup',[[0,[.05,,330,.02,.5,.9,0,.6,,,,,,,,,,.5,.1]]],x);},
+  splash(x){sfxPlay('splash',x,{cue:'land',gap:300});},
+  spring(x){sfxPlay('spring',x,{cue:'jump',gap:150});},
+  crumble(x){sfxPlay('crumble',x,{cue:'land',gap:200});},
+  lever(x){if(!sfxPlay('lever',x,{cue:'pickup',caption:'lever clunks'}))SFX.pickup(x);},
+  plate(x){sfxPlay('plate',x,{cue:'pickup',gap:250});},
+  parry(x){if(!sfxPlay('parry',x,{cue:'hit',caption:'blades ring'}))SFX.hit(x);},
+  block(x){if(!sfxPlay('hit-armor',x,{cue:'hit',caption:'steel on steel'}))SFX.hit(x);},
+  death(x){sfxPlay('death',x,{cue:'hurt'});},
+  alert(x){sfxPlay('enemy-alert',x,{cue:'hit',gain:.8,gap:600});},
+  enemyShot(x){if(!sfxPlay('enemy-shot',x,{cue:'shoot'}))SFX.shoot(x);},
+  zip(x){sfxPlay('zip',x,{cue:'dodge',gap:400});},
+  chain(x){sfxPlay('chain',x,{cue:'land',gap:500});},
+  door(x){if(!sfxPlay('door',x,{cue:'pickup',caption:'a door creaks'}))SFX.pickup(x);},
   // a boss arrival/fall: a long rolling rumble
-  boss(x){impactSfx({layers:[[300,55,0.55,0.28,'lowpass',1.2]],body:.22,bodyF:52,bodyDur:0.6,drop:.5},'boss',x);},
-  win(){tonalSfx('win',[[0,[.04,,523,.01,.1,.2,0,.5,,,,,,,,,,.8,.04]],[115,[.04,,659,.01,.1,.2,0,.5,,,,,,,,,,.8,.04]],[230,[.04,,784,.01,.1,.2,0,.5,,,,,,,,,,.8,.04]],[345,[.04,,1047,.01,.12,.2,0,.5,,,,,,,,,,.8,.04]]]);},
-  magic(el,x){tonalSfx('magic',[[0,[.04,,520,.02,.1,.2,0,.8,,,,,,,,,,,.04]]],x);}
+  boss(x){if(sfxPlay('boss-roar',x,{cue:'boss'}))return;impactSfx({layers:[[300,55,0.55,0.28,'lowpass',1.2]],body:.22,bodyF:52,bodyDur:0.6,drop:.5},'boss',x);},
+  win(){if(sfxPlay('fanfare',null,{cue:'win',ui:true}))return;tonalSfx('win',[[0,[.04,,523,.01,.1,.2,0,.5,,,,,,,,,,.8,.04]],[115,[.04,,659,.01,.1,.2,0,.5,,,,,,,,,,.8,.04]],[230,[.04,,784,.01,.1,.2,0,.5,,,,,,,,,,.8,.04]],[345,[.04,,1047,.01,.12,.2,0,.5,,,,,,,,,,.8,.04]]]);},
+  magic(el,x){if(sfxPlay('magic',x,{cue:'magic'}))return;tonalSfx('magic',[[0,[.04,,520,.02,.1,.2,0,.8,,,,,,,,,,,.04]]],x);}
 };
 
 /* ================================================================
@@ -13743,7 +13807,7 @@ function openRegionalShop(shopObject,countVisit){
     if(!result.ok){toast(result.reason==='insufficient-gold'?'Not enough gold.':'That item is no longer available.');openRegionalShop(shopObject,false);return;}
     if(!shopGrant(result.item))return;
     meta.shops=result.progress;meta.gold=result.gold;G.checkpointLoadout=snapOf(G.p);saveRunAtStage(G.stageIndex,G.checkpointLoadout);hudUpdate();
-    if(meta.soundOn)SFX.pickup();toast('Purchased: <b>'+escText(result.item.name)+'</b>');
+    if(meta.soundOn)SFX.buy();toast('Purchased: <b>'+escText(result.item.name)+'</b>');
     openRegionalShop(shopObject,false);
   });
   document.getElementById('shopLeave').onclick=()=>{mode='play';showOverlay(false);showGameUI(true);hudUpdate();};
@@ -14957,7 +15021,7 @@ function killEnemy(e,coopOpts){
   }
   if(G.p.mods&&G.p.mods.volatile&&!e.boss)
     G.aoes.push({x:e.x,y:e.y,r:90,fromPlayer:true,dmg:Math.min(e.maxHp*0.3,60*effPower(G.p)),color:'#ffb04a',el:'fire',echoSource:'volatile'});
-  if(e.boss){meta.bossKills++;if(e.type==='king')meta.kingKills++;if(e.type==='tyrant')meta.tyrantKills++;
+  if(e.boss){if(meta.soundOn)SFX.bossFall(e.x);meta.bossKills++;if(e.type==='king')meta.kingKills++;if(e.type==='tyrant')meta.tyrantKills++;
     if(G.p.weapon&&G.p.weapon.sch==='mag')meta.magicBossKills++;if(G.p.weapon&&G.p.weapon.cls==='ranged')meta.rangedBossKills++;
     // Per-boss-type tally drives skin unlocks (beat a given boss -> earn its skin).
     if(!G.levelSelectMode){
@@ -17597,7 +17661,7 @@ function update(dt){
       const signals=G.deepLineSignals||0;
       if(o.signalCapacitor&&!signals)continue;
       o.cd=1.2;
-      G.padBoost=o.signalCapacitor?0.55+signals*0.48:1.8;
+      G.padBoost=o.signalCapacitor?0.55+signals*0.48:1.8;if(meta.soundOn)SFX.spring(p.x);
       addText(p.x,GROUND_Y-p.y-60,
         o.signalCapacitor?'SIGNAL SURGE '+signals+'/2':'BOOST!','#ffd76a',true);
       if(meta.soundOn)SFX.dodge();
@@ -17907,7 +17971,7 @@ function update(dt){
       // until you land. The momentum you entered with is the momentum you get.
       // A portal taken straight out of a seam inherits the ballistic window — that
       // chain is the authored crossing and its speed must survive a held stick.
-      p.jumps=p.maxJumps; p._flungT=1.4;p.portalTravelT=2.2;
+      p.jumps=p.maxJumps; p._flungT=1.4;p.portalTravelT=2.2;if(meta.soundOn)SFX.portal(p.x);
       if(p._ballisticT>0)p._ballisticT=1.4;
       const echoTransit=resolveEchoEvent('portal:transit',{kind:'personal',entry:p._portalEntry,exit});
       if(G.stageIndex===4&&G.boss&&G.boss.dead&&G.cratePortals.includes(p._portalEntry)&&G.cratePortals.includes(exit))markSecondMouthProof();
@@ -18071,7 +18135,7 @@ function update(dt){
       ngRemixCrystal(o);
       if(p.hasJetpack)p.fuel=Math.min(100,p.fuel+(o.packRefill??50));
       if(p.hasJetpack&&G.stageIndex===3&&o.fullPackRefill!==false)p.fuel=100;
-      if(meta.soundOn)SFX.pickup();
+      if(meta.soundOn)SFX.gem(o.x);
       for(let i=0;i<10;i++){const a=i*0.628;
         G.particles.push({x:o.x+Math.cos(a)*8,y:GROUND_Y-o.y+Math.sin(a)*8,vx:Math.cos(a)*170,vy:Math.sin(a)*170,sz:2.5,color:'#7fe8ff',life:0.3});}
     }
@@ -18086,7 +18150,7 @@ function update(dt){
       G.runCoinFound=G.runCoinFound||{};G.runCoinFound['s'+G.stageIndex]=true;
       if(o.ghost){
         addText(o.x,GROUND_Y-o.y-24,'COIN ROUTE','#ffd700',false);
-        if(meta.soundOn)SFX.pickup();
+        if(meta.soundOn)SFX.gem(o.x);
         continue;
       }
       meta.coins['s'+G.stageIndex]=true;persist();
@@ -18094,7 +18158,7 @@ function update(dt){
       toast(n===1
         ?'SECRET COIN <b style="color:#ffd700">1/'+COIN_TOTAL+'</b> — one old road tally begins'
         :'SECRET COIN <b style="color:#ffd700">'+n+'/'+COIN_TOTAL+'</b>');
-      if(meta.soundOn)SFX.levelup();
+      if(meta.soundOn){SFX.gold(o.x);SFX.secret(o.x);}
       G.hitstop=3;
       for(let i=0;i<16;i++){const a=i*0.39;
         G.particles.push({x:o.x,y:GROUND_Y-o.y,vx:Math.cos(a)*(120+Math.random()*140),vy:Math.sin(a)*140-60,sz:2+Math.random()*3,color:i%2?'#ffd700':'#fff6c8',life:0.5});}
@@ -18140,7 +18204,7 @@ function update(dt){
       coopSendTravelerIntent(null,'questPickup',{i:G.obstacles.indexOf(o)});
       const owner=G.npcs.find(n=>n.kind==='fetch'),profile=travelerProfile(owner);
       toast(profile.found||('Found the '+(o.questItem||'lost lantern')+' — <b>bring it back</b>.'));
-      if(meta.soundOn)SFX.pickup();
+      if(meta.soundOn)SFX.lantern(o.x);
     }
   }
 
@@ -18164,7 +18228,7 @@ function update(dt){
       }
       if(G.worldProgressEligible&&G.ngPlus===0){meta.loreRead[o.loreId]=true;persist();}
       recordQuestEvent({type:'inspect',target:o.loreId});
-      if(meta.soundOn)SFX.pickup();
+      if(meta.soundOn)SFX.page(o.x);
     }
   }
 
@@ -18181,7 +18245,7 @@ function update(dt){
       if(o.sealedRecollection){
         o.found=true;o.read=true;discoverRecollection(o.sealedRecollection);
         showOutskirtsAnnotation(o,'<b style="color:#c6a5e8">'+escText(o.title)+'</b><br>A darker version of this road is pressed into black glass. Its lock has no key yet.',{accent:'#a780c9'});
-        if(meta.soundOn)SFX.levelup();continue;
+        if(meta.soundOn)SFX.secret(o.x);continue;
       }
       o.found=true;o.read=true;recordStoryMemory(o.memoryId);
       recordQuestEvent({type:'inspect',target:o.memoryId});
@@ -18191,15 +18255,15 @@ function update(dt){
       const memoryText=outskirtsStoryRelicText(o);
       const memoryHtml='<b style="color:'+(o.accent||'#d8c48f')+'">'+escText(o.title||'A remembered thing')+'</b><br>'+memoryText;
       if(journeyActive()||G.stageIndex<=6)showOutskirtsAnnotation(o,memoryHtml,{accent:o.accent});else toast(memoryHtml,6000);
-      if(meta.soundOn)SFX.pickup();
+      if(meta.soundOn)SFX.page(o.x);
     }else if(o.type==='scenery'&&o.warmAsh&&!o.read&&Math.abs(p.x-o.x)<74&&Math.abs(p.y-o.y)<90){
       o.read=true;recordSearcherSign('warm-ash');
       showOutskirtsAnnotation(o,'<b>WARM ASH</b><br>The coals are still warm. This camp was abandoned recently.',{accent:'#c4b39d'});
-      if(meta.soundOn)SFX.pickup();
+      if(meta.soundOn)SFX.page(o.x);
     }else if(o.type==='scenery'&&o.flowerClue&&!o.read&&Math.abs(p.x-o.x)<74&&Math.abs(p.y-o.y)<90){
       o.read=true;meta.loreRead['outskirts-white-trumpets']=true;persist();
       showOutskirtsAnnotation(o,'<b>WHITE TRUMPET FLOWERS</b><br>Crushed pale flowers stain a discarded tin cup.',{accent:'#e8e4cf'});
-      if(meta.soundOn)SFX.pickup();
+      if(meta.soundOn)SFX.page(o.x);
     }else if(o.type==='scenery'&&o.fieldClock&&!o.read&&Math.abs(p.x-o.x)<76&&Math.abs(p.y-o.y)<100){
       o.read=true;
       if(o.woodsClock){meta.loreRead['black-woods-clock']=true;recordStoryClock('pulse-one');
@@ -18211,31 +18275,31 @@ function update(dt){
           ?'It moved one minute while you crossed the Woods. Now it trembles in place.'
           :'The second hand shakes, but never moves forward.'),{accent:'#d4c590'});}
       persist();
-      if(meta.soundOn)SFX.pickup();
+      if(meta.soundOn)SFX.page(o.x);
     }else if(o.type==='scenery'&&o.sentinelVigil&&!o.read&&Math.abs(p.x-o.x)<86&&Math.abs(p.y-o.y)<110){
       o.read=true;sightVaultSecretObject(o);
       showOutskirtsAnnotation(o,'<b>WEAPON-LOCKED VIGIL</b><br>A sword-shaped lock. Return after finding a weapon in Black Woods.',{accent:'#d8c48f'});
-      if(meta.soundOn)SFX.pickup();
+      if(meta.soundOn)SFX.secret(o.x);
     }else if(o.type==='scenery'&&o.dashOverlook&&!o.read&&Math.abs(p.x-o.x)<72&&Math.abs(p.y-o.y)<80){
       o.read=true;meta.loreRead['outskirts-dash-overlook']=true;addGold(40);persist();
       showOutskirtsAnnotation(o,'<b>WATCHER’S DEAD DROP · +40g</b><br>A route token marks the western breach as a later climbing path.',{accent:'#91d9e8'});
       addText(o.x,GROUND_Y-o.y-54,'DEAD DROP FOUND','#91d9e8',true);
-      if(meta.soundOn)SFX.levelup();
+      if(meta.soundOn)SFX.gold(o.x);
     }else if(o.type==='scenery'&&o.wallJumpOverlook&&!o.read&&Math.abs(p.x-o.x)<76&&Math.abs(p.y-o.y)<96){
       o.read=true;meta.loreRead['outskirts-wall-overlook']=true;
       const credited=BFEquipmentEconomyModule.credit(meta.equipment,{iron:1,weave:1},'outskirts-wall-overlook');
       meta.equipment=credited.state;addGold(50);persist();
       showOutskirtsAnnotation(o,'<b>HIGH WATCH STANDARD · CACHE FOUND</b><br>The standard confirms a hidden route from the western breach to the Warden.',{accent:'#d8c48f'});
       addText(o.x,GROUND_Y-o.y-150,'HIGH ROUTE CHARTED','#d8c48f',true);
-      if(meta.soundOn)SFX.levelup();
+      if(meta.soundOn)SFX.chest(o.x);
     }else if(o.type==='scenery'&&o.woodsReturnSecret&&!o.read&&Math.abs(p.x-o.x)<86&&Math.abs(p.y-o.y)<105){
       o.read=true;meta.loreRead['black-woods-root-seam']=true;sightVaultSecretObject(o);persist();
       showOutskirtsAnnotation(o,'<b>BRUISED ROOT SEAM</b><br>The grain bends east, but an old impact scar drives straight through it. Return with enough speed.',{accent:'#b78b58'});
-      if(meta.soundOn)SFX.pickup();
+      if(meta.soundOn)SFX.secret(o.x);
     }else if(o.type==='scenery'&&o.routeReveal==='brute'&&!o.read&&Math.abs(p.x-o.x)<96&&Math.abs(p.y-o.y)<120){
       o.read=true;meta.loreRead['black-woods-brute-route']=true;persist();
       showOutskirtsAnnotation(o,'<b>ROOT TUNNEL</b><br>The passage continues into Broken Causeway. The Oathblade makes the route yours.',{accent:'#c7d6b4'});
-      if(meta.soundOn)SFX.pickup();
+      if(meta.soundOn)SFX.page(o.x);
     }else if(o.type==='scenery'&&o.routeReveal&&!o.read&&Math.abs(p.x-o.x)<88&&Math.abs(p.y-o.y)<110){
       if(!meta.outskirtsFieldChart){
         if(!o.unchartedNotice){o.unchartedNotice=true;showOutskirtsAnnotation(o,'<b>BOUNDARY LANTERN</b><br>The tunnel continues east. Mara’s chart can mark it.',{accent:'#d6e3a1'});}
@@ -18243,7 +18307,7 @@ function update(dt){
         o.read=true;meta.loreRead['outskirts-black-woods-route']=true;persist();
         showOutskirtsAnnotation(o,'<b>FIELD CHART UPDATED</b><br>Mothlight Tunnel leads east to Black Woods. This path remains open.',{accent:'#d6e3a1'});
         addText(o.x,GROUND_Y-o.y-146,'FRONTIER MARKED','#d6e3a1',true);
-        if(meta.soundOn)SFX.pickup();
+        if(meta.soundOn)SFX.page(o.x);
       }
     }else if(o.type==='scenery'&&o.patrolCache&&!o.read&&Math.abs(p.x-o.x)<82&&Math.abs(p.y-o.y)<90){
       const remaining=outskirtsHollowPatrolAlive();
@@ -18257,7 +18321,7 @@ function update(dt){
         meta.equipment=credited.state;addGold(20);persist();
         showOutskirtsAnnotation(o,'<b>HOLLOW-MILE CORRESPONDENCE · CACHE FOUND</b><br>“Do not pursue beyond the low standards.”',{accent:'#d8c48f'});
         addText(o.x,GROUND_Y-o.y-58,'PATROL CACHE OPEN','#d8c48f',true);
-        if(meta.soundOn)SFX.levelup();
+        if(meta.soundOn)SFX.chest(o.x);
       }
     }else if(o.type==='scenery'&&o.searcherSign&&!o.read&&Math.abs(p.x-o.x)<82&&Math.abs(p.y-o.y)<100){
       o.read=true;recordSearcherSign(o.searcherSign);
@@ -18265,7 +18329,7 @@ function update(dt){
         ?['CLEAN FIELD BANDAGE','A clean military wrap is knotted above the service current. Its loose end points forward, away from the camp.']
         :['A VOICE BEYOND THE TREES','Someone calls the name you stopped using. The branches answer in your voice.'];
       showOutskirtsAnnotation(o,'<b>'+signCopy[0]+'</b><br>'+signCopy[1],{accent:'#c7d6b4'});
-      if(meta.soundOn)SFX.pickup();
+      if(meta.soundOn)SFX.page(o.x);
     }else if(o.type==='surveyStake'&&!o.aligned&&Math.abs(p.x-o.x)<48&&Math.abs(p.y-o.y)<72){
       o.aligned=true;o.flash=1;
       coopSendTravelerIntent(null,'surveyStake',{i:G.obstacles.indexOf(o)});
@@ -18425,7 +18489,7 @@ function update(dt){
         else if(journeyActive())showOutskirtsAnnotation(n,greeting,{accent:n.accent});
         else toast('<b style="color:'+n.accent+'">'+travelerLabel(n)+'</b><br>“'+
           (profile.greeting||TRAVELER_PROFILES.wanderer.greeting)+'”');
-        if(meta.soundOn)SFX.pickup();
+        if(meta.soundOn)SFX.greet(n.x);
       } else if(n.state==='follow'||n.state==='wait'||n.state==='send'){
         if(n.profileId==='bram'&&!n.gateSkin&&near&&residentInteraction===n)   // Gate Trials: once Olan carries the lamp, Up says nothing
           showOutskirtsAnnotation(n,'<b>BRAM</b><br>“'+BFDialogueModule.text('woods.bram.repeat')+'”',{accent:n.accent});
@@ -18458,7 +18522,7 @@ function update(dt){
         n.asked=true;coopSendTravelerIntent(n,'asked');
         beginMaraRun(n);   // saves her at the Muster now; she sets off once the talk closes
         showOutskirtsAnnotation({x:n.x,y:n.y,accent:n.accent},'<b>'+travelerLabel(n)+'</b><br>“'+profile.ask+'”',{accent:n.accent,radius:290,kind:'person'});
-        if(meta.soundOn)SFX.pickup();
+        if(meta.soundOn)SFX.greet(n.x);
       }else if(n.asked&&near&&residentInteraction===n&&survey.aligned>=survey.total){
         n.done=true;coopSendTravelerIntent(n,'done');coopGrantTravelerReward(n);
         recordQuestEvent({type:'traveler-helped',target:n.profileId},true);
@@ -18473,7 +18537,7 @@ function update(dt){
         coopSendTravelerIntent(n,'asked');
         toast('<b style="color:'+n.accent+'">'+travelerLabel(n)+'</b><br>“'+
           (profile.ask||('I lost my '+n.questItem+' somewhere ahead. Will you bring it back?'))+'”');
-        if(meta.soundOn)SFX.pickup();
+        if(meta.soundOn)SFX.greet(n.x);
       } else if(n.asked&&near&&p.qitem){
         n.done=true;p.qitem=false;
         coopSendTravelerIntent(n,'done');
@@ -18671,7 +18735,7 @@ function update(dt){
       if(p.hasJetpack)p.fuel=100;
       p.invuln=Math.max(p.invuln,0.85);
       if(G.stageIndex!==3)addText(o.x,GROUND_Y-o.y-70,'CHECKPOINT','#5fd17a',false);
-      if(meta.soundOn)SFX.pickup();
+      if(meta.soundOn)SFX.checkpoint(o.x);
     }
   }
 
@@ -18692,7 +18756,7 @@ function update(dt){
   if(mx!==0)p.face=mx>0?1:-1;
   // Animation
   if(Math.abs(p.vx)>20&&p.onGround)p.runAnim+=dt*12;else p.runAnim*=0.85;
-  updateLevel1Footsteps(p,dt);
+  updateLevel1Footsteps(p,dt);updateWorldSounds(p,dt);
   p.sqV=(p.sqV||0)*0.85;   // squash/stretch springs back to rest
   // Heel dust while sprinting
   p.dustT=(p.dustT||0)-dt;
@@ -19652,8 +19716,8 @@ function update(dt){
     }
     if(near){
       if(pk.fakeLoot) triggerFakeLoot(pk);
-      else if(pk.key) { p.keys++; pk.taken=true; addText(pk.x, GROUND_Y-pk.y-30, '+ KEY', '#ffdd44', true); if(meta.soundOn)SFX.pickup(); }
-      else if(pk.jetpack){p.hasJetpack=true;p.fuel=100;toast('Acquired <b style="color:#e8a33d">Jetpack</b>! (Hold Jump)');if(meta.soundOn)SFX.pickup();}
+      else if(pk.key) { p.keys++; pk.taken=true; addText(pk.x, GROUND_Y-pk.y-30, '+ KEY', '#ffdd44', true); if(meta.soundOn)SFX.key(pk.x); }
+      else if(pk.jetpack){p.hasJetpack=true;p.fuel=100;toast('Acquired <b style="color:#e8a33d">Jetpack</b>! (Hold Jump)');if(meta.soundOn)SFX.pack(p.x);}
       else if(pk.power){
         const P=POWERS[pk.power];
         if(pk.power==='star')p.starT=P.dur;
@@ -19677,7 +19741,7 @@ function update(dt){
           if (o.type === 'chest' && !o.opened) {
               if(Math.abs(p.x - o.x) < 40 && Math.abs(p.y - o.y) < 40) {
                   o.opened = true; p.keys--;
-                  if(meta.soundOn)SFX.pickup();
+                  if(meta.soundOn)SFX.chest(o.x);
                   dropBossItem(o.bossType, o.x, o.y + 30);
                   for(let i=0;i<10;i++)G.particles.push({x:o.x+(Math.random()-0.5)*40,y:GROUND_Y-o.y,vx:(Math.random()-0.5)*150,vy:-100-Math.random()*150,sz:3+Math.random()*4,color:'#e8a33d',life:0.5});
               }
@@ -19692,7 +19756,7 @@ function update(dt){
     if(p.onGround&&p.y<160&&Math.abs(p.x-o.x)<44){
       o.used=true;
       toast('The line below the world opens\u2026');
-      if(meta.soundOn)SFX.levelup();
+      if(meta.soundOn)SFX.secret(o.x);
       const lineCarry=snapOf(G.p);lineCarry.hasJetpack=false;
       commitStageCompletion();recordWorldClear();meta.vaultCleared=true;persist();
       loadStage(SECRET_STAGE);
@@ -20454,6 +20518,7 @@ function updateWardenPortalFight(e,p,dt,eff){
 }
 function bossShoot(e,p,courtCast=null){
   const cfg=e.shot;let ox=e.x+e.face*10,oy=e.y+e.h*0.62;
+  if(meta.soundOn&&!watchLike())SFX.enemyShot(e.x);   // (7.366)
   /* THE BAND IS A HEIGHT, SO IT HAS TO BE A HEIGHT THE BOLTS ACTUALLY FLY AT.
      It used to be a rule checked against your mouths while the volley was aimed at
      the knight's chest regardless — which is why "align low / mid / high" felt
@@ -24887,6 +24952,7 @@ function openSettings(returnTo){
       <label><input type="checkbox" data-setting="dynamicAudio" ${meta.dynamicAudio?'checked':''}>Adaptive score<small>responds to danger</small></label>
       <label><input type="checkbox" data-setting="nightMode" ${meta.nightMode?'checked':''}>Night audio<small>softens combat peaks</small></label>
       <label><input type="checkbox" data-setting="soundCaptions" ${meta.soundCaptions?'checked':''}>Sound captions<small>directional text cues</small></label>
+      <label><input type="checkbox" data-setting="ambience" ${meta.ambience!==false?'checked':''}>Ambient sounds<small>wind, water and fire where you are</small></label>
       <label><input type="checkbox" data-setting="voices" ${meta.voices!==false&&window.BladefallVoice?.enabled()!==false?'checked':''}>Voice lines<small>people speak their lines · off for music only</small></label>
     </div>
     <div class="settingsection">Camera & Motion</div>
@@ -25060,7 +25126,7 @@ function openSkins(){
   document.querySelectorAll('[data-skin]').forEach(b=>b.onclick=()=>{
     const id=b.dataset.skin,s=SKINS[id];
     if(meta.skinsOwned[id]||s.unlock(meta)){
-      meta.skinsOwned[id]=true;meta.skin=id;syncGiftUnlocks(true);persist();if(meta.soundOn)SFX.pickup();openSkins();
+      meta.skinsOwned[id]=true;meta.skin=id;syncGiftUnlocks(true);persist();if(meta.soundOn)SFX.ui();openSkins();
     }
   });
   document.getElementById('skinsGifts').onclick=()=>openGifts(openSkins);
@@ -25081,7 +25147,7 @@ function openGifts(back){
     <button class="bigbtn ghost" id="giftsBack">Back</button></div>`);
   document.querySelectorAll('[data-gift]').forEach(button=>button.onclick=()=>{
     const result=BladefallGifts.equip(meta.gifts,button.dataset.gift);if(!result.ok)return;
-    meta.gifts=result.state;persist();if(meta.soundOn)SFX.pickup();openGifts(back);
+    meta.gifts=result.state;persist();if(meta.soundOn)SFX.ui();openGifts(back);
   });
   document.getElementById('giftsBack').onclick=back||titleScreen;
 }
@@ -25223,7 +25289,7 @@ function bossRushDeath(){
 function die(){
   if(window.BladefallExploreFinale?.encounterDefeat())return;
   BladefallPlaytest.death();
-  if(meta.soundOn)SFX.hurt();
+  if(meta.soundOn){SFX.hurt();SFX.death(G&&G.p?G.p.x:0);}
   // Boss Rush is all-or-nothing: a fall ends the attempt, hardcore or not.
   if(G.bossRush){bossRushDeath();return;}
   if(G.coopSession&&coopActive()){coopPersonalRecovery();return;}
@@ -25520,7 +25586,7 @@ function openEchoLoom(){
     const id=button.dataset.echo,state=BFEchoesModule.createState(meta.echoes),equipped=state.equipped.includes(id);
     const result=equipped?BFEchoesModule.unequip(state,id,{atRest:true}):BFEchoesModule.equip(state,id,{atRest:true});
     if(!result.ok){toast(result.reason==='capacity-exceeded'?'Not enough Echo capacity.':result.reason==='slot-limit'?'Only three Echoes can be held at once.':'The weave will not move.');return;}
-    if(result.changed){meta.echoes=result.state;BFEchoes.record(equipped?'unequipped':'equipped',id);syncEchoRuntimeMods();saveRunAtStage(G.stageIndex,snapOf(G.p));persist();hudUpdate();if(meta.soundOn)SFX.pickup();}
+    if(result.changed){meta.echoes=result.state;BFEchoes.record(equipped?'unequipped':'equipped',id);syncEchoRuntimeMods();saveRunAtStage(G.stageIndex,snapOf(G.p));persist();hudUpdate();if(meta.soundOn)SFX.ui();}
     openEchoLoom();
   });
   document.getElementById('echoBack').onclick=openAdvancement;
@@ -25539,7 +25605,7 @@ function openToolKit(){
     ${state.equippedTool?`<button class="bigbtn ghost" id="toolUnequip" ${atRest?'':'disabled style="opacity:.45;"'}>Carry No Tool</button>`:''}
     <button class="bigbtn ghost" id="toolBack">Back</button></div>`);
   document.querySelectorAll('[data-tool]').forEach(button=>button.onclick=()=>{const result=BFEquipmentEconomyModule.equipTool(meta.equipment,button.dataset.tool);if(!result.ok)return;
-    meta.equipment=result.state;BFEquipmentEconomy.record('tool-equipped',button.dataset.tool);persist();hudUpdate();if(meta.soundOn)SFX.pickup();openToolKit();});
+    meta.equipment=result.state;BFEquipmentEconomy.record('tool-equipped',button.dataset.tool);persist();hudUpdate();if(meta.soundOn)SFX.ui();openToolKit();});
   const unequip=document.getElementById('toolUnequip');if(unequip)unequip.onclick=()=>{if(!atRest)return;const result=BFEquipmentEconomyModule.equipTool(meta.equipment,null);meta.equipment=result.state;persist();hudUpdate();openToolKit();};
   document.getElementById('toolBack').onclick=openAdvancement;
 }
@@ -25778,7 +25844,7 @@ function openForge(){
     if(r.resourceCost){const spent=BFEquipmentEconomyModule.spend(meta.equipment,meta.gold||0,r.resourceCost);if(!spent.ok)return;meta.equipment=spent.state;meta.gold=spent.gold;}
     else addGold(-r.cost);
     if(r.sealCost){const seals=BFAdvancementModule.spendSeals(meta.advancement,r.sealCost);if(!seals.ok)return;meta.advancement=seals.state;}
-    r.act();saveRunAtStage(G.stageIndex,snapOf(G.p));persist();hudUpdate();if(meta.soundOn)SFX.pickup();openForge();
+    r.act();saveRunAtStage(G.stageIndex,snapOf(G.p));persist();hudUpdate();if(meta.soundOn)SFX.buy();openForge();
   });
   document.getElementById('forgeBack').onclick=openAdvancement;
 }
@@ -26353,7 +26419,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.365.0').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.366.0').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */
@@ -27483,7 +27549,7 @@ function coopRevive(p,silent){
   p.downed=false;p.dead=false;
   p.hp=Math.max(1,Math.round(effMaxHp(p)*0.5));
   p.invuln=2.0;
-  if(!silent){addText(p.x,GROUND_Y-p.y-72,'REVIVED','#5fd17a',true);if(meta.soundOn)SFX.levelup();}
+  if(!silent){addText(p.x,GROUND_Y-p.y-72,'REVIVED','#5fd17a',true);if(meta.soundOn)SFX.heal(p.x);}
 }
 /* Both down: keep the shared world, recover each knight at their own checkpoint. */
 function coopCheckWipe(){
@@ -27924,6 +27990,6 @@ function openCoop(){
 <script src="bladefall-workshop-native-play.js?v=7.335.0"></script>
 <script src="bladefall-route-solver.js?v=7.340.0"></script>
 <script src="bladefall-workshop-routes.js?v=7.340.0"></script>
-<script src="bladefall-workshop-bridge.js?v=7.363.0"></script>
+<script src="bladefall-workshop-bridge.js?v=7.366.0"></script>
 </body>
 </html>

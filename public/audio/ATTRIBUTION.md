@@ -136,3 +136,7 @@ lock/pickup sound are from Free Fantasy SFX Pack by TomMusic.
 - Runtime files: `sfx/level1/*.ogg`
 - The pack was supplied by the project owner for use in Bladefall. Preserve the
   downloaded pack and its source-page terms with project records.
+
+## Sound effects and ambient loops (7.366)
+
+`audio/sfx/*.mp3` and `audio/sfx/amb/*.mp3` (everything outside `audio/sfx/level1/`) were generated for Bladefall with ElevenLabs Sound Effects (`eleven_text_to_sound_v2`), then trimmed and loudness-matched.

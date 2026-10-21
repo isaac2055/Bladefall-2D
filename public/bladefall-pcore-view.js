@@ -184,6 +184,25 @@ function noise(dur,vol=.05,hp=800,delay=0){
  const s=a.createBufferSource(),fl=a.createBiquadFilter(),gn=a.createGain();s.buffer=buf;fl.type='highpass';fl.frequency.value=hp;gn.gain.value=vol;
  s.connect(fl).connect(gn).connect(a.destination);s.start(t);
 }
+/* (7.366) Recorded sounds (bladefall-sfx.js) play first; the synthesized ones below are the fallback. type → [clip, gain, rate] */
+const CLIP={parry:['parry'],'enemy-tell':['enemy-alert',.7],'enemy-shot':['enemy-shot'],'enemy-hit':['hit-flesh'],'guard-block':['hit-armor'],'enemy-defeat':['enemy-die'],
+ 'receiver-lit':['rune'],breach:['crumble',1.2,.85],jump:['jump'],walljump:['walljump'],dash:['dash'],super:['dash',1.1,.9],hyper:['dash',1.2,.85],wallbounce:['walljump',1.1,1.1],
+ land:['land-soft'],refill:['gem',.7,1.2],death:['death'],'stone-hit':['stone-hit'],'stone-stop':['stone-hit',1.2,.8],phase:['switch'],strike:['swing'],pod:['pod'],
+ bell:['bell'],'stone-lit':['rune',.9,1.1],'gate-open':['gate'],crumble:['crumble'],'crumble-shake':['crumble',.35,1.3],spring:['spring'],shard:['gem',1.2],
+ 'zip-start':['zip'],'zip-stop':['stone-hit',.5,1.1],pickup:['lantern'],throw:['dash',.6,1.3],plate:['plate'],'held-open':['lever'],'held-close':['lever',.8,.9],
+ 'lantern-lost':['shatter'],climbhop:['grab',.8]};
+let sfxSet=false;
+function SX(){const X=root.BladefallSfx;if(X&&!sfxSet){sfxSet=true;X.configure({enabled:()=>!!save.options.sound,ambience:()=>save.options.ambience!==false});}return X;}
+function clip(e){const c=CLIP[e.type],X=SX();if(!c||!X)return false;return X.play(c[0],{gain:c[1],rate:c[2]});}
+// footsteps: the ground under each world (bladefall-sfx.js forWorld), one step every ~0.3 s of running
+function ground(){const w=root.BladefallPitchView?.climb?.state?.()?.world;return root.BladefallSfx?.forWorld(w?.key)||['plains','stone'];}   // st.world is the world itself
+function footsteps(g){
+ const p=g.p,X=SX();if(!X||!save.options.sound)return;
+ if(!p||!p.onGround||p.state!=='normal'||Math.abs(p.vx||0)<20){view.stepT=Math.min(view.stepT||0,4);return;}
+ if((view.stepT=(view.stepT||0)-1)>0)return;view.stepT=17;X.play('step-'+ground()[1],{gap:120});
+}
+let bedFor=null;
+function ambienceFor(){const X=SX();if(!X)return;const key=root.BladefallPitchView?.climb?.state?.()?.world?.n||null;if(key===bedFor)return;bedFor=key;X.ambience(key?ground()[0]:null);}
 const SFX={
  parry:()=>{tone(960,.13,'triangle',.06,440);noise(.05,.03,1800);},'enemy-tell':()=>tone(190,.09,'triangle',.018,70),'enemy-shot':()=>noise(.07,.02,1800),'enemy-hit':()=>noise(.08,.04,500),'guard-block':()=>tone(340,.08,'square',.03),'enemy-defeat':()=>noise(.15,.05,400),'receiver-lit':()=>tone(880,.25,'triangle',.05,440),'breach':()=>noise(.3,.07,200),
  jump:()=>tone(330,.08,'square',.035,180),walljump:()=>{tone(300,.08,'square',.035,220);noise(.05,.02,2000);},
@@ -318,7 +337,7 @@ function tick(input){
  if(!view.replay)SV()?.frame(g.room.id);
  const recorded=!view.replay&&root.BladefallRouteRecording?.before(g,inp);C.step(g,inp);if(recorded)root.BladefallRouteRecording.after(g);if(!view.replay&&root.BLADEFALL_WORKSHOP_PLAY)root.BladefallWorkshopRoutes?.frame(g,inp);view.chapterStats.frames++;if(g.awake!==false)view.roomTimer++;
  for(const e of g.events)handleEvent(e);
- g.events.length=0;
+ g.events.length=0;footsteps(g);ambienceFor();
  updateVisuals();
 }
 function workshopFrame(g){view.g=g;for(const e of g.events)if(e.type!=='exit')handleEvent(e);g.events.length=0;}
@@ -334,7 +353,7 @@ function handleEvent(e){
  // Ordinary travel retains the eased camera; one-screen rooms still stay at zero.
  if((e.type==='respawn'||e.type==='echo-swap'||e.type==='portal-pass'&&e.kind==='knight')&&view.g&&(view.g.room.w>W||view.g.room.h>H))view.camRoom=null;
  TOUCH()?.event(e);
- const s=SFX[e.type];if(s&&save.options.sound)s(e);
+ const s=SFX[e.type];if(s&&save.options.sound&&!clip(e))s(e);
  for(const d of root.BladefallPrecisionDeviceViews||[]){if(save.options.sound)d.sfx?.[e.type]?.(e,{tone,noise});d.event?.(e,{view,burst,dust,shake,palette});}
  const pal=palette();
  switch(e.type){
@@ -836,6 +855,7 @@ function assistCard(back,{fromMenu=false}={}){
  <label class="pcOpt">Game speed <select id="asSpeed">${[1,.9,.8,.7,.6,.5].map(s=>`<option value="${s}" ${((a.speed||1)===s)?'selected':''}>${Math.round(s*100)}%</option>`).join('')}</select></label>
  <label class="pcOpt"><input type="checkbox" id="opShake" ${o.shake?'checked':''}> Screen shake</label>
  <label class="pcOpt"><input type="checkbox" id="opSound" ${o.sound?'checked':''}> Sound effects</label>
+ <label class="pcOpt"><input type="checkbox" id="opAmbience" ${o.ambience!==false?'checked':''}> Ambient sounds · wind, water, fire where you are</label>
  <label class="pcOpt"><input type="checkbox" id="opMusic" ${o.music?'checked':''}> Music</label>
  ${root.BladefallVoice?`<label class="pcOpt"><input type="checkbox" id="opVoices" ${root.BladefallVoice.enabled()?'checked':''}> Voice lines · people speak as you pass (off: just the music)</label>`:''}
  ${climb?`<label class="pcOpt"><input type="checkbox" id="opPure" ${o.pure?'checked':''}> Pure play mode · no screens when you finish a world (no leaderboards, no skip-ahead): just keep playing</label>`:''}
@@ -853,7 +873,7 @@ function assistCard(back,{fromMenu=false}={}){
   for(const k of Object.keys(save))if(!['options','assist'].includes(k))delete save[k];Object.assign(save,{shards:[],cleared:{},best:{}});writeSave(save);
   root.BladefallPlaytest?.relock?.('survival');try{const lp=JSON.parse(localStorage.getItem('bladefall.last-played.v1'))||{};if(lp.game==='survive')localStorage.removeItem('bladefall.last-played.v1');}catch(e){}
   location.href='precision.html?pitch=climb&mode=play';});}
- const upd=()=>{a.speed=+$('asSpeed').value;o.shake=$('opShake').checked;o.sound=$('opSound').checked;o.music=$('opMusic').checked;if($('opVoices'))root.BladefallVoice.setEnabled($('opVoices').checked);if($('opPure'))o.pure=$('opPure').checked;
+ const upd=()=>{a.speed=+$('asSpeed').value;o.shake=$('opShake').checked;o.sound=$('opSound').checked;if($('opAmbience'))o.ambience=$('opAmbience').checked;root.BladefallSfx?.configure({});o.music=$('opMusic').checked;if($('opVoices'))root.BladefallVoice.setEnabled($('opVoices').checked);if($('opPure'))o.pure=$('opPure').checked;
   if($('opReview'))root.BladefallPlaytest.setFeedback($('opReview').checked);if($('opClock'))root.BladefallPlaytest.setClock?.($('opClock').checked);
   if(finaleMap)F.setPreview($('opFinaleMap').checked);a.infiniteStamina=!!a.testMode;writeSave(save);if(view.g)view.g.assist.infiniteStamina=a.infiniteStamina;};
  overlay().querySelectorAll('input,select').forEach(el=>el.onchange=upd);

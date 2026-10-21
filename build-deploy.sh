@@ -17,6 +17,8 @@ ASSETS=(
   bladefall-workshop-ascend-play.js
   bladefall-workshop-ascend.js
   bladefall-workshop-applied.js
+  bladefall-published-levels.js
+  bladefall-workshop-publish.js
   bladefall-workshop-bridge.js
   bladefall-workshop-routes.js
   bladefall-route-solver.js
@@ -380,6 +382,7 @@ ASSETS=(
   bladefall-multiplayer.js
   bladefall-coop-journey.js
   bladefall-audio.js
+  bladefall-sfx.js
   bladefall-camera.js
   bladefall-release.js
   bladefall-blood.js
@@ -391,6 +394,91 @@ ASSETS=(
   littlejs.min.js
   music.mp3
   audio/ATTRIBUTION.md
+  audio/sfx/bell.mp3
+  audio/sfx/bolt.mp3
+  audio/sfx/boss-fall.mp3
+  audio/sfx/boss-roar.mp3
+  audio/sfx/campfire.mp3
+  audio/sfx/chain.mp3
+  audio/sfx/chest.mp3
+  audio/sfx/coin.mp3
+  audio/sfx/coins.mp3
+  audio/sfx/crumble.mp3
+  audio/sfx/dash-1.mp3
+  audio/sfx/dash-2.mp3
+  audio/sfx/death.mp3
+  audio/sfx/door.mp3
+  audio/sfx/enemy-alert.mp3
+  audio/sfx/enemy-die-1.mp3
+  audio/sfx/enemy-die-2.mp3
+  audio/sfx/enemy-shot.mp3
+  audio/sfx/fanfare.mp3
+  audio/sfx/gate.mp3
+  audio/sfx/gem.mp3
+  audio/sfx/grab.mp3
+  audio/sfx/gust.mp3
+  audio/sfx/heal.mp3
+  audio/sfx/hit-armor-1.mp3
+  audio/sfx/hit-armor-2.mp3
+  audio/sfx/hit-flesh-1.mp3
+  audio/sfx/hit-flesh-2.mp3
+  audio/sfx/hurt.mp3
+  audio/sfx/jump-1.mp3
+  audio/sfx/jump-2.mp3
+  audio/sfx/key.mp3
+  audio/sfx/land-hard.mp3
+  audio/sfx/land-soft-1.mp3
+  audio/sfx/land-soft-2.mp3
+  audio/sfx/lantern.mp3
+  audio/sfx/lever.mp3
+  audio/sfx/magic.mp3
+  audio/sfx/pack.mp3
+  audio/sfx/page.mp3
+  audio/sfx/parry.mp3
+  audio/sfx/plate.mp3
+  audio/sfx/pod.mp3
+  audio/sfx/portal.mp3
+  audio/sfx/powerup.mp3
+  audio/sfx/quest.mp3
+  audio/sfx/rune.mp3
+  audio/sfx/shatter.mp3
+  audio/sfx/splash.mp3
+  audio/sfx/spring.mp3
+  audio/sfx/step-dirt-1.mp3
+  audio/sfx/step-dirt-2.mp3
+  audio/sfx/step-dirt-3.mp3
+  audio/sfx/step-metal-1.mp3
+  audio/sfx/step-metal-2.mp3
+  audio/sfx/step-metal-3.mp3
+  audio/sfx/step-snow-1.mp3
+  audio/sfx/step-snow-2.mp3
+  audio/sfx/step-snow-3.mp3
+  audio/sfx/step-stone-1.mp3
+  audio/sfx/step-stone-2.mp3
+  audio/sfx/step-wood-1.mp3
+  audio/sfx/step-wood-2.mp3
+  audio/sfx/step-wood-3.mp3
+  audio/sfx/stone-hit.mp3
+  audio/sfx/swing-1.mp3
+  audio/sfx/swing-2.mp3
+  audio/sfx/switch.mp3
+  audio/sfx/ui-move.mp3
+  audio/sfx/ui-open.mp3
+  audio/sfx/ui-select.mp3
+  audio/sfx/walljump.mp3
+  audio/sfx/wallslide.mp3
+  audio/sfx/zip.mp3
+  audio/sfx/amb/cave.mp3
+  audio/sfx/amb/dungeon.mp3
+  audio/sfx/amb/forest.mp3
+  audio/sfx/amb/forge.mp3
+  audio/sfx/amb/hall.mp3
+  audio/sfx/amb/heights.mp3
+  audio/sfx/amb/machine.mp3
+  audio/sfx/amb/plains.mp3
+  audio/sfx/amb/shore.mp3
+  audio/sfx/amb/snow.mp3
+  audio/sfx/amb/void.mp3
   audio/music/midnight-field.mp3
   audio/music/watchful-greenwood.mp3
   audio/music/the-iron-causeway.mp3
