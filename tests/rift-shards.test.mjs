@@ -115,10 +115,14 @@ test('undiscovered Fractured region names remain hidden until the corresponding 
   sandbox.window.BladefallFractured={echoFor:i=>i+21};
   sandbox.window.BladefallExploreFinale={visible:()=>false};
   sandbox.window.BladefallPlaytest={unlocked:()=>false};
+  const kills=world.meta.bossTypeKills;world.meta.bossTypeKills={king:1};   // (7.363) the echoes open only after the Abyss King
   let rows=R.levelSelectRows();
   assert.equal((rows.match(/Undiscovered/g)||[]).length,20);
   for(const [name] of R.FRACTURED)assert.ok(!rows.includes(name),name);
   world.meta.riftShards={outskirts:true};rows=R.levelSelectRows();
   assert.match(rows,/Fractured Outskirts/);assert.ok(!rows.includes('Fractured Woods'));
-  world.meta.riftShards=prior;
+  world.meta.bossTypeKills={};world.meta.kingKills=0;rows=R.levelSelectRows();
+  assert.equal((rows.match(/Defeat the Abyss King/g)||[]).length,20,'a held shard opens nothing before the Abyss King falls');
+  assert.ok(!rows.includes('Fractured Outskirts'));
+  world.meta.riftShards=prior;world.meta.bossTypeKills=kills;
 });

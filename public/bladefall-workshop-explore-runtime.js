@@ -15,6 +15,9 @@ function create(api){
    api.rebuild();return;
   }
   try{baseline=A().fromState(g);captureError=null;}catch(e){baseline=null;captureError=e;}
+  // (7.363) the campaign takes a saved editor draft of this stage, after the original has been captured for the editor
+  const applied=root.BladefallWorkshopApplied?.explore(g.stageIndex);
+  if(applied)try{const level=A().compile(applied,{nativeRoot:g});Object.assign(g,level.context||{});for(const key of [...A().collections,'boss','portal','levelLength','killGoal'])g[key]=level[key];g.workshopApplied=true;api.rebuild();}catch(e){console.warn('Bladefall: the saved edit of this stage could not be applied',e);}
  }
  function loadBlank(){if(!definition)return false;const level=A().compile(definition);if(!level.blank)return false;loaded();api.blankLoadout?.(level.kit||'full');return true;}
  function capture(){if(captureError)throw captureError;if(!baseline)loaded();if(captureError)throw captureError;return M().json(baseline);}
@@ -23,7 +26,7 @@ function create(api){
  function retry(){if(definition)start(definition);}
  function changingStage(i){if(definition&&i!==A().compile(definition).stageIndex){complete();return true;}return false;}
  function complete(){if(!definition)return false;if(root.BladefallWorkshopNativePlay?.complete())return true;api.pause();root.BladefallWorkshopBridge.complete();return true;}
- return {drawWorkshop:api.drawWorkshop,loaded,loadBlank,capture,captureSource,start,retry,changingStage,complete,pause:api.pause,resume:api.resume,state:api.state,stages:api.stages};
+ return {reload:api.reload,drawWorkshop:api.drawWorkshop,loaded,loadBlank,capture,captureSource,start,retry,changingStage,complete,pause:api.pause,resume:api.resume,state:api.state,stages:api.stages};
 }
 root.BladefallWorkshopExploreRuntimeFactory={create};
 })(globalThis);

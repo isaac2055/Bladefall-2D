@@ -14,7 +14,9 @@ async function play(doc,ui,co=null,test=null){if(!co)await store().save(doc);co?
 }
 function openEditor(doc,library,onExit,co=null){
  const adapter=doc.mode==='ascend'?root.BladefallWorkshopAscend:root.BladefallWorkshopExplore;
- active=root.BladefallWorkshopUI.open({document:doc,adapter,session:co?.session,actor:co?.actor,collaboration:co,cloud:library.cloud,onSave:library.save,onTest:async(current,ui)=>{if(co){const test=await co.offerTest();await play(test.document,ui,co,test);}else await play(current,ui);},onJoinTest:async(test,ui)=>{try{if(test)await play(test.document,ui,co,test);}catch(e){ui.status(e.message,true);ui.resume();}},onExit:()=>{co?.close();active=null;onExit();},onCoBuild:(current,ui)=>{ui.suspend();root.BladefallWorkshopCoBuild.open({document:current,onCancel:()=>ui.resume(),onSession:(next,collaboration,warning)=>{ui.close({notify:false});active=null;const opened=openEditor(next,library,onExit,collaboration);if(!collaboration)void opened.save().then(()=>{if(warning)opened.status(warning,true);});}});},onLeaveBuild:()=>{const recovered=co.localCopy();co.close();active.close({notify:false});active=null;const next=openEditor(recovered.document,library,onExit);void next.save().then(()=>{if(recovered.warning)next.status(recovered.warning,true);});},onLibrary:(current,ui)=>{
+ // (7.363) saving a draft of a game level also makes it that level in the game (bladefall-workshop-applied.js)
+ const applied=root.BladefallWorkshopApplied,onSave=async d=>{const r=await library.save(d);applied?.record(d);return r;},savedNote=d=>applied?.keyOf(d)&&applied.has(d.mode,d.mode==='ascend'?d.source.id:d.source.id.slice(14))?' · now the game’s level':'';
+ active=root.BladefallWorkshopUI.open({document:doc,adapter,session:co?.session,actor:co?.actor,collaboration:co,cloud:library.cloud,onSave,savedNote,onTest:async(current,ui)=>{if(co){const test=await co.offerTest();await play(test.document,ui,co,test);}else await play(current,ui);},onJoinTest:async(test,ui)=>{try{if(test)await play(test.document,ui,co,test);}catch(e){ui.status(e.message,true);ui.resume();}},onExit:()=>{co?.close();active=null;onExit();},onCoBuild:(current,ui)=>{ui.suspend();root.BladefallWorkshopCoBuild.open({document:current,onCancel:()=>ui.resume(),onSession:(next,collaboration,warning)=>{ui.close({notify:false});active=null;const opened=openEditor(next,library,onExit,collaboration);if(!collaboration)void opened.save().then(()=>{if(warning)opened.status(warning,true);});}});},onLeaveBuild:()=>{const recovered=co.localCopy();co.close();active.close({notify:false});active=null;const next=openEditor(recovered.document,library,onExit);void next.save().then(()=>{if(recovered.warning)next.status(recovered.warning,true);});},onLibrary:(current,ui)=>{
   ui.suspend();root.BladefallWorkshopLibrary.open({document:current,store:library,onClose:()=>ui.resume(),onOpen:async next=>{
    // Validate before replacing the open editor; a corrupt import must leave its edits recoverable.
    const A=next.mode==='ascend'?root.BladefallWorkshopAscend:root.BladefallWorkshopExplore;A.compile(next.definition);
@@ -22,6 +24,18 @@ function openEditor(doc,library,onExit,co=null){
   }});
  }});co?.attach(active);if(co)void active.save();if(doc.mode==='ascend'&&root.BladefallWorkshopRoutes)active.status(root.BladefallWorkshopRoutes.describe(doc));return active;
 }
+/* (7.363) Rebuild the room you are in from its applied draft (or the original again), and start it from its spawn. */
+function refreshAscendRoom(){
+ const V=root.BladefallPrecisionView,g=V?.view.g,C=root.BladefallPrecisionCore,A=root.BladefallWorkshopApplied;if(!g||!C||!A)return false;
+ const next=A.ascend(A.original(g.room.def));if(next===g.room.def)return false;
+ const i=g.roomIndex;g.defs=g.defs.slice();g.defs[i]=next;g.rooms[i]=C.parseRoom(next,i);C.resetRoom(g);return true;
+}
+function useOriginal(mode){
+ const A=root.BladefallWorkshopApplied;if(!A)return false;
+ if(mode==='ascend'){const g=root.BladefallPrecisionView?.view.g;if(!g)return false;const id=g.room.def.origin||g.room.id;if(!A.restore('ascend',id))return false;refreshAscendRoom();return true;}
+ const runtime=root.BladefallWorkshopExploreRuntime,g=runtime?.state();if(!g||!A.restore('explore',g.stageIndex))return false;runtime.reload?.();return true;
+}
+function edited(mode){const A=root.BladefallWorkshopApplied;if(!A)return false;if(mode==='ascend'){const g=root.BladefallPrecisionView?.view.g;return !!g&&A.has('ascend',g.room.def.origin||g.room.id);}const g=root.BladefallWorkshopExploreRuntime?.state();return !!g&&A.has('explore',g.stageIndex);}
 async function editAscend(){if(active||opening||root.BLADEFALL_WORKSHOP_PLAY)return;const V=root.BladefallPrecisionView,g=V?.view.g;if(!g)return;
  opening=true;const view=V.view,oldPaused=view.paused;view.paused=true;V.clearInput();root.BladefallRouteRecording?.stop('opened level editor');root.BladefallClimbSession?.invalidate('level editor');
  try{const library=store(),source={id:g.room.def.origin||g.room.id,mode:'ascend'},list=await library.list(),last=list.find(d=>d.mode==='ascend'&&d.source?.id===source.id);const W=root.BladefallWorkshopRoutes,tape=root.BladefallPrecisionRooms?.tapes?.[g.room.id],flags={dropThru:!!g.dropThru,springUp:!!g.springUp},fresh=root.BladefallWorkshopAscend.fromRoom(g.room.def);
@@ -29,7 +43,8 @@ async function editAscend(){if(active||opening||root.BLADEFALL_WORKSHOP_PLAY)ret
   // (7.340) an older draft gains the game's route too, so edits can be checked against it.
   const seedRoute=!doc.definition.route&&W?W.attach(fresh,tape,flags).route:null;
   const overlay=document.getElementById('pcOverlay');overlay?.classList.remove('show');if(overlay)overlay.innerHTML='';
-  const ui=openEditor(doc,library,()=>{view.paused=false;view.frameAcc=0;V.clearInput();});if(seedRoute)ui.apply({path:['definition','route'],value:seedRoute});
+  const before=root.BladefallWorkshopApplied?.revision('ascend',source.id);
+  const ui=openEditor(doc,library,()=>{if(root.BladefallWorkshopApplied?.revision('ascend',source.id)!==before)refreshAscendRoom();view.paused=false;view.frameAcc=0;V.clearInput();});if(seedRoute)ui.apply({path:['definition','route'],value:seedRoute});
  }catch(e){view.paused=oldPaused;root.alert('Could not open the editor: '+e.message);}finally{opening=false;}
 }
 async function editExplore(){
@@ -37,7 +52,8 @@ async function editExplore(){
  opening=true;runtime.pause();root.BladefallPlaytest?.invalidate?.('level editor');
  try{const library=store(),source={id:'explore-stage-'+g.stageIndex,mode:'explore'},list=await library.list(),last=list.find(d=>d.mode==='explore'&&d.source?.id===source.id);
   const doc=last?await library.load(last.id):M().create({id:root.crypto.randomUUID(),mode:'explore',name:runtime.stages()[g.stageIndex].name,source,definition:runtime.capture()});
-  await library.save(doc);openEditor(doc,library,()=>runtime.resume());
+  await library.save(doc);const stage=g.stageIndex,before=root.BladefallWorkshopApplied?.revision('explore',stage);
+  openEditor(doc,library,()=>{runtime.resume();if(root.BladefallWorkshopApplied?.revision('explore',stage)!==before)runtime.reload?.();});
  }catch(e){runtime.resume();root.alert('Could not open the editor: '+e.message);}finally{opening=false;}
 }
 async function loadPlayDocument(id){
@@ -62,6 +78,6 @@ async function bootPlaytest(){const share=new URLSearchParams(root.location.sear
   root.parent.postMessage({type:'bladefall-workshop-coop-ready',document:doc.id},root.location.origin);
  }catch(e){root.parent.postMessage({type:'bladefall-workshop-error',message:e.message},root.location.origin);}
 }
-root.BladefallWorkshopBridge={editAscend,editExplore,complete,isPlaytest:()=>!!root.BLADEFALL_WORKSHOP_PLAY,loadPlayDocument,state:()=>({active,preview,playDocument})};
+root.BladefallWorkshopBridge={editAscend,editExplore,useOriginal,edited,refreshAscendRoom,complete,isPlaytest:()=>!!root.BLADEFALL_WORKSHOP_PLAY,loadPlayDocument,state:()=>({active,preview,playDocument})};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bootPlaytest);else void bootPlaytest();
 })(globalThis);

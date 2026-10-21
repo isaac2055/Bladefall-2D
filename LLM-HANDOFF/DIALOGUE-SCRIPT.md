@@ -26,6 +26,42 @@ How to read the entries:
 
 ---
 
+## Ascend · worlds 1-3 (proposal, 7.363.0; not in the game yet)
+
+Ascend is not a story game: a person says one short line as you pass, on their own (no talking to them). Rules as above (strangers first, recognition only from the last place you met), but each line is one beat, about ten words, and points at the room's trick where it can. Lines live in `people[].line` / `lineDone` in `public/bladefall-climb-worlds.js`. Recordings come later; the game already plays a clip when a line has one (Assist & options → Voice lines).
+
+### 1 · The Outskirts
+| Where | Who | Now | Proposed |
+|---|---|---|---|
+| The Verge Road | Vey | Room by the fire if you want it. Mind the white flowers past the wall — they don't forgive. | Fire's for anyone. Just don't touch the white flowers. |
+| The Poisoned Verge | Mara | Mara. I'm surveying the old road. Three bearings stand off it — ASH, GLASS, IRON — where nobody's set foot in years. Touch them if you can. I'll be at the Muster. | Oh! Hello. Mara, surveyor. Three posts off this road: Ash, Glass, Iron. Touch them for me? |
+| Camp | Sentinel | The stake's up on the old perch. The shaft won't open for anyone who hasn't touched it. | Came up the west road? Huh. Touch the stake on the perch. |
+| Camp | Rowan | Bell's still up the old tower, east of here. I want it hung in camp, where we'd hear trouble coming. The yard's out that way. | Gate's shut. You got through anyway. Bell's up the east tower. |
+| Camp, after | Rowan | There. Now the camp can hear itself think. | There. Now we'll hear them coming. |
+| Watcher's Cut | Olan | Don't go trustin' that clock. And don't trust the cut neither — the glass in the air's the only footing over it. | Clock's stopped. The cut's worse. Only the glass in the air holds. |
+| The Muster | Mara | You came the long way round too. Show me the chart — any bearing you touched, I'll take. | Made it. Any bearings for me? |
+| The Muster, after | Mara | ASH, GLASS, IRON. All three agree. The tunnel reaches the woods — I'll mark it. | Ash, Glass, Iron. They agree. The road goes through. |
+
+### 2 · Black Woods
+| Where | Who | Now | Proposed |
+|---|---|---|---|
+| Refuge | Orra | Stopped again. Wound it this morning, same as every morning since my daughter gave it me. | Stopped again. Don't ask me the time. |
+| Refuge | Pell | Those pods up the trees are ours. We cut them for the seed, and a cut one kicks like a mule. You'll want a blade for that. | Not resin crew, are you? A cut pod kicks. Get a blade. |
+| Refuge | Mara | Chart says the tunnel comes up here, and for once the chart's right. There's a refuge on ahead. I'll tell them you're coming. | You again. The tunnel comes up right here. Refuge is ahead. |
+| Clearing | Hale | Sword was in those roots. Took me all morning to work it loose, and my shoulder with it. It's yours. I'm done swinging things. | Sword was in those roots. Cost me a shoulder. Take it. |
+| Kitchen | Elsie | Careful of the step, love, the end's rotten. My lantern's caught up in the branches over the kitchen. I'd climb for it myself, but look at me. | Mind the step. Elsie. My lantern's stuck up in the branches. Fetch it? |
+| Kitchen, after | Elsie | There. A working lamp and two bowls. Sit down before it gets cold. | Lamp's lit. Two bowls. Sit. |
+| Thicket edge | Bram | Lamp shows the copies. See how the light goes straight through that one? I'm not going in there. Last time I came out somewhere else. | Easy, easy... Bram. Light goes through a branch? It isn't there. |
+
+### 3 · Broken Causeway
+| Where | Who | Now | Proposed |
+|---|---|---|---|
+| Camp | Sable | Sable. I carry back the ones the causeway doesn't. It's been a quiet month — nothing up there moves any more. | Not one of the yard's, are you? Nothing up there's moved in a month. |
+| Camp | Oren | That lift's been hanging there since the brake seized. I've freed the one in the Drop Yard. Come and stand on it before I lose my nerve. | Hear that? Nothing. The Drop Yard lift is free. Stand on it. |
+| Hoist | Oren | She comes back down on her own. Everything on this causeway does, sooner or later. | She comes back down on her own. Ride her up. |
+| Patrol walk | Silas | Forty paces, then I turn. The governor up the maintenance ladder decides that, not me. Break its gear and I'll find out where I'd rather walk. | ...thirty-nine, forty. Can't stop. Break the gear up the ladder? |
+| Patrol walk, after | Silas | The gear is still. I took one step past the turning point, then I sat down here, because I wanted to. | Forty-one. Then I sat. My choice. |
+
 ## How the Outskirts were built (7.359.0), for the next regions
 
 - **Lines** live where they always did: `bladefall-dialogue.js` (residents), `bladefall-side-stories.js` (Rowan: `firstReturn`, `readyLines`, `unnamed`, `thanks:null`), `index.html` (`ambientFigureDialogue`, `residentHeading`, `residentTalk`).

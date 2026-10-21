@@ -289,7 +289,7 @@ D.elsie = (k, s) => {
   if(s.sit){ stool(k, -6, 6, 11); k.R(1, -7, 5, 2, dress.c); k.R(4, -5, 2, 4, dress.d); k.R(4, -2, 3, 2, BOOT); }
   else { k.R(-3, -2, 3, 2, BOOT); k.R(1, -2, 3, 2, BOOT); }
   // the ladle, stirring the air
-  const cx = Math.round(Math.cos(k.t * 3 + s.ph)), cy = Math.round(Math.sin(k.t * 3 + s.ph));
+  const sp = s.busy ? 6.5 : 3, cx = Math.round(Math.cos(k.t * sp + s.ph) * (s.busy ? 2 : 1)), cy = Math.round(Math.sin(k.t * sp + s.ph));   // busy [elsie-stir]
   k.L(-5, b - 11, -7 + cx, b - 20 + cy, 1, WOOD.l); k.R(-9 + cx, b - 22 + cy, 3, 2, WOOD.c); k.P(-9 + cx, b - 22 + cy, WOOD.l);
   hand(k, -6, b - 12, sk);
   k.poly([[-5, b - 12], [5, b - 12], [7, b - 1], [-7, b - 1]], dress);
@@ -349,7 +349,7 @@ D.oren = (k, s) => {
   k.poly([[-4, -17], [4, -17], [5, -5], [-5, -5]], A);
   k.R(-4, -21, 1, 4, A.d); k.R(3, -21, 1, 4, A.d); k.R(-1, -11, 3, 2, A.d);
   // the head sits straight on the shoulders
-  const bob = every(k.t, 2.4, 1.2, s.ph) ? 1 : 0;
+  const bob = s.busy ? 2 : every(k.t, 2.4, 1.2, s.ph) ? 1 : 0;   // busy [oren-ear-chain]: head down to the links
   k.R(-3, -27 + bob, 6, 6, sk.c); k.R(-2, -28 + bob, 4, 1, sk.l); k.P(-3, -27 + bob, sk.l); k.P(-2, -24 + bob, sk.d);
   k.R(0, -25 + bob, 3, 1, '#7a4a30'); k.P(0, -24 + bob, EYE); k.P(2, -24 + bob, EYE); k.P(3, -23 + bob, sk.c);
   k.R(-1, -22 + bob, 5, 3, beard); k.R(0, -19 + bob, 4, 3, beard); k.P(1, -16 + bob, beard); k.P(0, -21 + bob, '#5a3a2a');
@@ -357,6 +357,7 @@ D.oren = (k, s) => {
   const sw = Math.sin(k.t * 2.2 + s.ph) * 1.5;
   chain(k, [[-6, -20], [-2, -15], [2, -11], [5, -8]], 5);
   chain(k, [[5, -8], [7 + sw * .6, -5], [5 + sw, -3], [3, -6]]);
+  if(s.busy && !s.walk){ const tap = every(k.t, 1.6, .25, s.ph) ? 1 : 0; k.L(-7, -19, -3, -15 - tap, 2, SHIRT.c); k.R(-4, -16 - tap, 3, 3, sk.c); k.P(-4, -16 - tap, sk.l); }
   // the sledge
   if(s.walk){ k.L(6, -18, 2, -26, 1, WOOD.c); k.R(-1, -30, 5, 4, IRON.c); k.R(-1, -30, 5, 1, IRON.l); k.L(5, -19, 7, -15, 3, SHIRT.c); k.R(5, -20, 3, 3, sk.c); }
   else { k.R(10, -12, 1, 9, WOOD.c); k.R(8, -4, 6, 4, IRON.c); k.R(8, -4, 6, 1, IRON.l); k.P(13, -3, IRON.d); k.L(6, -19, 8, -13, 3, SHIRT.c); k.R(8, -14, 3, 3, sk.c); k.P(8, -14, sk.l); }
@@ -400,10 +401,17 @@ D.sable = (k, s) => {
   k.R(-3, -27, 6, 7, C.c); k.R(-3, -27, 6, 1, C.l); k.R(-3, -26, 1, 6, C.l); k.R(3, -25, 2, 3, C.c); k.P(4, -25, C.l);
   k.R(0, -24, 3, 4, sk.d); k.P(1, -23, '#f0d8a0'); k.P(3, -23, '#f0d8a0'); k.P(2, -21, sk.c);
   k.R(1, -20, 3, 15, I.c); k.R(1, -20, 1, 15, I.l); k.R(2, -6, 2, 2, I.d);                    // the scarf
+  if(s.busy){   // [sable-knot]: both hands up at the pole, pulling a knot tight; the cup steams on the ground
+    const pull = every(k.t, 1.4, .35, s.ph) ? 1 : 0;
+    k.L(2, -18, -3, -22 - pull, 2, C.c); hand(k, -4, -23 - pull, sk); k.L(3, -16, -2, -18 + pull, 2, C.c); hand(k, -3, -19 + pull, sk);
+    k.R(-6, -22, 2, 1, '#6a4a30'); k.P(-4 - pull, -21, '#6a4a30');
+    k.R(7, -3, 3, 3, '#9aa4a8'); k.R(7, -3, 3, 1, '#c9ced0'); steam(k, 8, -4, 2, 6, s.ph);
+  } else {
   hand(k, 3, -13, sk); hand(k, 7, -13, sk);
   k.R(5, -14, 3, 3, '#9aa4a8'); k.R(5, -14, 3, 1, '#c9ced0');
   if(s.water) k.P(6, -14, '#9fd8f0');
   steam(k, 6, -15, 2, 6, s.ph);
+  }
 };
 
 /* THE CARTOGRAPHER · the Updrafts · blind. Stooped forward over a cane, a plum robe, a long white beard, a
@@ -903,9 +911,11 @@ D.orra = (k, s) => {
   face(k, -1, -22, sk, { eyes:false, mouth:'#a06050' });
   k.R(0, -21, 2, 2, '#d8eef4'); k.R(2, -21, 2, 2, '#d8eef4'); k.P(1, -20, EYE); k.P(3, -20, EYE);
   k.R(-3, -23, 6, 1, hair); k.R(-3, -22, 2, 3, hair); k.R(-2, -26, 4, 3, hair); k.P(-2, -26, '#ffffff'); k.L(-4, -27, 1, -25, 1, '#d8a040');
-  if(every(k.t, 5, 1.6, s.ph)){ k.L(3, -17, 3, -21, 2, SH.c); hand(k, 3, -22, sk); k.R(4, -23, 3, 3, BRASS.c); k.P(5, -22, '#fff8e0'); }
+  // busy [orra-shake-watch]: the watch to her ear, then out at arm's length for a shake, and back to the ear
+  const ear = s.busy ? every(k.t, 2.2, 1.2, s.ph) : every(k.t, 5, 1.6, s.ph), shake = s.busy && !ear && every(k.t + .1, 2.2, .7, s.ph);
+  if(ear){ k.L(3, -17, 3, -21, 2, SH.c); hand(k, 3, -22, sk); k.R(4, -23, 3, 3, BRASS.c); k.P(5, -22, '#fff8e0'); }
   else {
-    const sw = Math.round(Math.sin(k.t * 2.5 + s.ph) * 1.4);
+    const sw = shake ? ((k.t * 22 | 0) % 2 ? 2 : -1) : Math.round(Math.sin(k.t * 2.5 + s.ph) * 1.4);
     k.L(3, -16, 5, -13, 2, SH.c); hand(k, 5, -14, sk);
     k.L(6, -12, 6 + sw, -9, 1, BRASS.l); k.R(5 + sw, -9, 3, 3, BRASS.c); k.P(6 + sw, -8, '#fff8e0'); k.P(6 + sw, -9, BRASS.d);
   }
@@ -922,7 +932,11 @@ D.pell = (k, s) => {
   const p = ((k.t + s.ph * 1.8) % 1.8) / 1.8; k.alpha(1 - p, () => k.P(12 + sw, -9 + Math.round(p * 8), '#e89a2a'));
   k.poly([[-5, -19], [5, -19], [6, -7], [-6, -7]], SM);
   k.R(-3, -15, 7, 9, apron.c); k.R(-3, -15, 7, 1, apron.l); k.P(0, -11, '#e0a030'); k.P(2, -9, '#c07a20'); k.P(-2, -8, '#e0a030');
-  k.L(-5, -18, -8, -20, 2, sk.c); hand(k, -9, -21, sk); k.L(5, -18, 8, -20, 2, sk.c); hand(k, 8, -21, sk);
+  if(s.busy){   // [pell-scrape]: the knife drawn down the bark into the jar held under it
+    const sc = Math.round(((k.t * 1.6 + s.ph) % 1) * 7);
+    k.L(-5, -18, -9, -24 + sc, 2, sk.c); hand(k, -10, -25 + sc, sk); k.R(-12, -26 + sc, 3, 1, IRON.l);
+    k.L(5, -18, -7, -14, 2, sk.c); hand(k, -8, -15, sk); k.R(-10, -16, 3, 4, '#d8c8a0'); k.R(-10, -14, 3, 2, '#e8a030');
+  } else { k.L(-5, -18, -8, -20, 2, sk.c); hand(k, -9, -21, sk); k.L(5, -18, 8, -20, 2, sk.c); hand(k, 8, -21, sk); }
   face(k, -1, -25, sk, { h:5, ey:2, nose:true }); k.R(-3, -22, 2, 2, '#5a3a22');
   k.R(-3, -27, 7, 3, K2.c); k.R(-3, -27, 7, 1, K2.l); k.P(-4, -25, K2.c); k.P(-5, -24 + (sw > 0 ? 1 : 0), K2.d);
 };
@@ -937,10 +951,13 @@ D.hale = (k, s) => {
   k.poly([[-6, -20], [5, -20], [6, -6], [-6, -6]], C);
   k.L(-5, -19, 3, -9, 1, '#5a4030'); k.R(-6, -10, 12, 1, '#4a3424'); k.P(0, -10, BRASS.c);            // baldric and belt
   k.R(-7, -21, 5, 3, IRON.c); k.R(-7, -21, 5, 1, IRON.l); k.P(-3, -19, IRON.d);                              // pauldron
-  k.R(3, -20, 3, 5, band); k.R(3, -18, 3, 1, '#c8bca4'); k.R(3, -16, 3, 1, '#c8bca4');                   // bandaged shoulder
-  const sip = every(k.t, 5.5, 1.3, s.ph);
+  const roll = s.busy ? Math.round(Math.sin(k.t * 2.4 + s.ph) * 1.2) : 0;   // busy [hale-shoulder]: rolling the bad one
+  k.R(3, -20 + roll, 3, 5, band); k.R(3, -18 + roll, 3, 1, '#c8bca4'); k.R(3, -16 + roll, 3, 1, '#c8bca4');   // bandaged shoulder
+  const sip = !s.busy && every(k.t, 5.5, 1.3, s.ph);
   k.L(-5, -17, -3, -9, 2, C.d); hand(k, -3, -10, sk);
   if(sip){ k.L(4, -15, 3, -21, 2, C.c); hand(k, 2, -23, sk); k.R(3, -25, 3, 4, '#8a6a44'); k.P(3, -25, '#a8845a'); }
+  else if(s.busy){ const cx = Math.round(Math.cos(k.t * 2.4 + s.ph) * 2), cy = Math.round(Math.sin(k.t * 2.4 + s.ph) * 2);
+    k.L(4, -15 + roll, 7 + cx, -12 + cy, 2, C.c); hand(k, 7 + cx, -12 + cy, sk); k.R(9, -4, 3, 4, '#8a6a44'); k.P(9, -4, '#a8845a'); }
   else { k.L(4, -15, 6, -11, 2, C.c); hand(k, 6, -11, sk); k.R(8, -13, 3, 4, '#8a6a44'); k.P(8, -13, '#a8845a'); k.P(9, -14, '#c8b890'); }
   face(k, -1, -26, sk, { h:5, ey:2, nose:true });
   k.R(-1, -25, 2, 2, '#1a1418'); k.R(-3, -26, 3, 1, '#2a2020');
@@ -1194,7 +1211,7 @@ function facePlayer(g, o, fallback){
 /* Busy, then they notice you (7.359). The Outskirts' people are at their own work until the knight comes close;
    then a short start (`s.notice` runs 0→1 over .7s, the body jolts up a pixel) and they turn to face him. They go
    back to it when he walks off. Ids in BUSY have a busy pose; since 7.361 everyone else stands at their own work (`s.idle`). */
-const BUSY = new Set(['vey', 'olan', 'mara', 'rowan']);
+const BUSY = new Set(['vey', 'olan', 'mara', 'rowan', 'orra', 'pell', 'hale', 'elsie', 'oren', 'sable']);   // (7.363) + the Woods and the Causeway
 const attention = new WeakMap();
 function attend(g, o, t){
   const p = g && g.p, near = !!p && Math.abs(p.x - o.x) < 130 && Math.abs((p.y || 0) - (o.y || 0)) < 90;

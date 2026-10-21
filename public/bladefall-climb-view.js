@@ -57,7 +57,7 @@ PV.palette=ch=>{
 };
 
 /* ---------------------------------------------------------------- where things are */
-function defOf(id){return R().all.find(r=>r.id===id)||(st&&st.world&&CL().def(st.world,id))||null;}
+function defOf(id){const d=R().all.find(r=>r.id===id)||(st&&st.world&&CL().def(st.world,id))||null;return d&&root.BladefallWorkshopApplied?root.BladefallWorkshopApplied.ascend(d):d;}   // (7.363) an applied editor draft
 function sectionOf(g){const pl=CL().place(st.world,g.room.id);return pl;}
 /* (7.280) The Inversion's gravity prisms simulate a flipped room mirrored top to bottom (g.room is a mirrored copy,
    the knight's y mirrored). The Climb frames and draws the world upright, so whatever places the knight in the world
@@ -139,7 +139,7 @@ function startWorld(n,room=null,fromStart=false){
  if(room==null)room=Math.max(0,w.chapter.rooms.findIndex(r=>r.id===w.atlasStart));
  room=Math.max(0,Math.min(w.chapter.rooms.length-1,room|0));
  const c=R().chapters.indexOf(w.chapter);if(c<0)return false;
- Object.assign(st,{perfectRun:!resumeProgress,roadDeaths:0,deathMark:null,resumeProgress,trialProgress:true,trialSolved:new Set(),walkTrial:false,riftCooldown:60,completionOffered:false,skips:3,dropHint:null,burst:null,sealedSaid:false,branchVia:null,returningCeiling:null,enteredAt:null,portCache:null,nearPort:null,lit:{},world:w,chapter:c,quest:null,cam:null,closed:new Set(),toast:null,slide:null,spoke:new Set(),gone:new Set(),walk:{},trail:[],dispCache:new Map(),frozen:new Map()});
+ Object.assign(st,{heard:new Set(),perfectRun:!resumeProgress,roadDeaths:0,deathMark:null,resumeProgress,trialProgress:true,trialSolved:new Set(),walkTrial:false,riftCooldown:60,completionOffered:false,skips:3,dropHint:null,burst:null,sealedSaid:false,branchVia:null,returningCeiling:null,enteredAt:null,portCache:null,nearPort:null,lit:{},world:w,chapter:c,quest:null,cam:null,closed:new Set(),toast:null,slide:null,spoke:new Set(),gone:new Set(),walk:{},trail:[],dispCache:new Map(),frozen:new Map()});
  st.api.startChapter(c,room);
  if(w.core){if(fromStart)root.BladefallCoreProgress?.clear(st.view.g.room.def);else if(!st.review&&root.BladefallCoreProgress?.restore(st.view.g)){st.resumeProgress=true;st.perfectRun=false;for(const q of st.view.scarf||[]){q.x=st.view.g.p.x+4;q.y=st.view.g.p.y+3;}}}
  root.BladefallClimbSession?.start();
@@ -824,8 +824,7 @@ function openFracturedPortal(){
 function riftPortal(){
  if(st.world.n>40)return null;   // (7.309) the finale's worlds have no base twin
  if(st.world.n<=20)return fracturedOpen(st.world.n+20)?save.riftPortals?.[st.world.n]||null:null;   // (7.316) the portal opens once the world is beaten too
- const w=st.world,g=st.view.g;if(g.room.id!==w.atlasStart)return null;
- return {world:w.n,room:g.room.id,x:g.room.spawn.x+20,y:g.room.spawn.y,to:w.n-20,returning:true};
+ return null;   // (7.363) a Fractured world has no way back to its base twin: the return portal only got in the way
 }
 function useRiftPortal(){
  const portal=riftPortal();if(!portal)return false;
@@ -1442,7 +1441,11 @@ PV.hud=function(ctx,ox,oy,scale,g,view){
   if(!near){const leave=who.leave||(who.leaveDone&&questDone(questOf(who.quest))?who.leaveDone:null);if(leave&&st.spoke.has(key)&&!st.walk[key])startWalk(key,who,d,who._x,who._y,leave==='left'?-1:1);continue;}
   const q=who.quest&&questOf(who.quest);
   if(q&&who.chart&&q.bearings&&bearingsHeld(g,q).length===q.bearings.length)grant(q);
-  const line=q&&questDone(q)&&who.lineDone?who.lineDone:who.line;st.spoke.add(key);
+  const line=q&&questDone(q)&&who.lineDone?who.lineDone:who.line;
+  // (7.363) Ascend speaks on its own: the first time you come near someone, their line plays (when it has a recording;
+  // Voice lines in Assist & options turns it off). A finished quest's line is a new line, so it plays too.
+  const heard=key+':'+line;if(!st.heard)st.heard=new Set();if(!st.heard.has(heard)){st.heard.add(heard);if(!st.view.replay)root.BladefallVoice?.play(line);}
+  st.spoke.add(key);
   bubble(ctx,ox,oy,scale,fs,cam,view,W0,who,q&&questDone(q)&&who.nameDone?who.nameDone:who.name||nameOf(who.who),line);
  }
  if(d.atlasJunction||d.atlasTransit){

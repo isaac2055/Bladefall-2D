@@ -128,6 +128,8 @@ function groupsOf(def,ch){
 
 /* ---------------------------------------------------------------- game state */
 function createGame(defs,opts={}){
+ // (7.363) a saved editor draft of a room replaces it on this device (bladefall-workshop-applied.js)
+ const A=(typeof window!=='undefined'?window:globalThis).BladefallWorkshopApplied;if(A)defs=defs.map(d=>A.ascend(d)||d);
  const g={defs,rooms:defs.map(parseRoom),roomIndex:0,room:null,frame:0,roomFrame:0,freeze:0,deaths:0,roomDeaths:0,
   shards:new Set(opts.shards||[]),events:[],phase:0,p:null,ents:[],prev:{},buf:{jump:0,dash:0,grab:0,strike:0},
   exited:false,assist:{infiniteStamina:false,...(opts.assist||{})}};

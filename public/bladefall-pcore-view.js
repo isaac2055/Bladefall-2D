@@ -837,6 +837,7 @@ function assistCard(back,{fromMenu=false}={}){
  <label class="pcOpt"><input type="checkbox" id="opShake" ${o.shake?'checked':''}> Screen shake</label>
  <label class="pcOpt"><input type="checkbox" id="opSound" ${o.sound?'checked':''}> Sound effects</label>
  <label class="pcOpt"><input type="checkbox" id="opMusic" ${o.music?'checked':''}> Music</label>
+ ${root.BladefallVoice?`<label class="pcOpt"><input type="checkbox" id="opVoices" ${root.BladefallVoice.enabled()?'checked':''}> Voice lines · people speak as you pass (off: just the music)</label>`:''}
  ${climb?`<label class="pcOpt"><input type="checkbox" id="opPure" ${o.pure?'checked':''}> Pure play mode · no screens when you finish a world (no leaderboards, no skip-ahead): just keep playing</label>`:''}
  <p class="pcSub">Y starts or stops a private route recording. Recordings save automatically to the cloud, with offline retries.</p>
  ${reviewRow}
@@ -852,7 +853,7 @@ function assistCard(back,{fromMenu=false}={}){
   for(const k of Object.keys(save))if(!['options','assist'].includes(k))delete save[k];Object.assign(save,{shards:[],cleared:{},best:{}});writeSave(save);
   root.BladefallPlaytest?.relock?.('survival');try{const lp=JSON.parse(localStorage.getItem('bladefall.last-played.v1'))||{};if(lp.game==='survive')localStorage.removeItem('bladefall.last-played.v1');}catch(e){}
   location.href='precision.html?pitch=climb&mode=play';});}
- const upd=()=>{a.speed=+$('asSpeed').value;o.shake=$('opShake').checked;o.sound=$('opSound').checked;o.music=$('opMusic').checked;if($('opPure'))o.pure=$('opPure').checked;
+ const upd=()=>{a.speed=+$('asSpeed').value;o.shake=$('opShake').checked;o.sound=$('opSound').checked;o.music=$('opMusic').checked;if($('opVoices'))root.BladefallVoice.setEnabled($('opVoices').checked);if($('opPure'))o.pure=$('opPure').checked;
   if($('opReview'))root.BladefallPlaytest.setFeedback($('opReview').checked);if($('opClock'))root.BladefallPlaytest.setClock?.($('opClock').checked);
   if(finaleMap)F.setPreview($('opFinaleMap').checked);a.infiniteStamina=!!a.testMode;writeSave(save);if(view.g)view.g.assist.infiniteStamina=a.infiniteStamina;};
  overlay().querySelectorAll('input,select').forEach(el=>el.onchange=upd);
@@ -881,7 +882,7 @@ function togglePause(){
  ${g.room.def.question?`<p class="pcSub">${g.room.def.question}</p>`:''}
  <button class="pcBtn" id="pcResume" data-back>Resume</button><button class="pcBtn ghost" id="pcRetry">${g.room.def.coreCheckpoints?'Retry from save point':'Retry room'}</button>${g.room.def.coreCheckpoints?'<button class="pcBtn ghost" id="pcCoreRestart">Restart Core</button>':''}
  ${ch.climb&&(ch.climb<=40||g.room.def.core)?'<button class="pcBtn ghost" id="pcRoomFeedback">Leave room feedback</button>':''}
- ${!root.BLADEFALL_WORKSHOP_PLAY&&save.assist.testMode?'<button class="pcBtn ghost" id="pcEditLevel">Edit this level</button>':''}
+ ${!root.BLADEFALL_WORKSHOP_PLAY&&save.assist.testMode?'<button class="pcBtn ghost" id="pcEditLevel">Edit this level</button>':''}${!root.BLADEFALL_WORKSHOP_PLAY&&root.BladefallWorkshopBridge?.edited('ascend')?'<button class="pcBtn ghost" id="pcOriginalLevel">Use the original level</button>':''}
  ${hasTape?'<button class="pcBtn ghost" id="pcWatch">Watch the intended route (review)</button>':''}
  ${backPassage?'<button class="pcBtn ghost" id="pcReturnPassage">Return through passage</button>':''}
  ${g.room.def.coreCheckpoints?'<p class="pcSub">Save lanterns keep the next part. Retry returns to your latest lantern.</p>':`<p class="pcSub">Room select${optional?' · O = optional route':''}</p><div class="pcMiniRow">${rooms}${optional}</div>`}
@@ -891,6 +892,7 @@ function togglePause(){
  ${ch.climb?'<a class="pcBtn ghost" href="index.html">Return to title menu</a>':''}</div>`);
  document.getElementById('pcResume').onclick=togglePause;
  document.getElementById('pcEditLevel')?.addEventListener('click',()=>root.BladefallWorkshopBridge?.editAscend());
+ document.getElementById('pcOriginalLevel')?.addEventListener('click',()=>{root.BladefallWorkshopBridge.useOriginal('ascend');togglePause();});
  document.getElementById('pcSkipSection')?.addEventListener('click',()=>{if(!root.BladefallPitchView.climb.skipInfo().allowed)return;view.paused=false;hideOverlay();root.BladefallPitchView.climb.skipSection({fromPause:true});});
  document.getElementById('pcReturnPassage')?.addEventListener('click',()=>root.BladefallPitchView.climb.returnPassage());
  document.getElementById('pcCtl').onclick=()=>{const back=()=>{view.paused=false;togglePause();};touchUI()?TOUCH().card(back):controlsCard(back);};

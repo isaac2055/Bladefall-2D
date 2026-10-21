@@ -314,8 +314,9 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 </script>
 <script src="bladefall-workshop-model.js?v=7.335.0"></script>
 <script src="bladefall-workshop-ascend.js?v=7.335.0"></script>
-<script src="bladefall-workshop-explore.js?v=7.335.0"></script>
+<script src="bladefall-workshop-explore.js?v=7.363.0"></script>
 <script src="bladefall-workshop-store.js?v=7.335.0"></script>
+<script src="bladefall-workshop-applied.js?v=7.363.0"></script>
 <script src="bladefall-workshop-cloud.js?v=7.335.0"></script>
 <script src="bladefall-workshop-play-link.js?v=7.335.0"></script>
 <script src="bladefall-workshop-collaboration.js?v=7.335.0"></script>
@@ -324,10 +325,10 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-workshop-selection.js?v=7.335.0"></script>
 <script src="bladefall-workshop-properties.js?v=7.335.0"></script>
 <script src="bladefall-workshop-render.js?v=7.335.0"></script>
-<script src="bladefall-workshop-ui.js?v=7.340.0"></script>
+<script src="bladefall-workshop-ui.js?v=7.363.0"></script>
 <script src="bladefall-workshop-sources.js?v=7.340.0"></script>
 <script src="bladefall-workshop-library.js?v=7.335.0"></script>
-<script src="bladefall-workshop-explore-runtime.js?v=7.335.0"></script>
+<script src="bladefall-workshop-explore-runtime.js?v=7.363.0"></script>
 <script src="bladefall-playtest-worlds.js?v=7.316.0"></script>
 <script src="bladefall-explore-routes.js?v=7.344.0"></script>
 <script src="bladefall-playtest-model.js?v=7.334.0"></script>
@@ -361,7 +362,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-recollections.js"></script>
 <script src="bladefall-advancement.js"></script>
 <script src="bladefall-journey.js?v=7.234.0"></script>
-<script src="bladefall-voice.js?v=7.362.0"></script>
+<script src="bladefall-voice.js?v=7.363.0"></script>
 <script src="bladefall-conversation.js?v=7.360.0"></script>
 <script src="bladefall-side-stories.js?v=7.361.0"></script>
 <script src="bladefall-opening-stories.js?v=7.234.0"></script>
@@ -403,7 +404,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-palace-path-art.js?v=7.201.0"></script>
 <script src="bladefall-sunspire.js?v=7.231.0"></script>
 <script src="bladefall-sunspire-art.js?v=7.231.0"></script>
-<script src="bladefall-rift-shards.js?v=7.350.0"></script>
+<script src="bladefall-rift-shards.js?v=7.363.0"></script>
 <script src="bladefall-fractured.js?v=7.303.0"></script>
 <script src="bladefall-fractured-outskirts.js?v=7.228.1"></script>
 <script src="bladefall-fractured-outskirts-art.js?v=7.211.1"></script>
@@ -457,7 +458,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-explore-finale.js?v=7.350.0"></script>
 <script src="bladefall-causeway-story.js?v=7.234.0"></script>
 <script src="bladefall-early-platforming.js?v=7.248.0"></script>
-<script src="bladefall-resident-art.js?v=7.361.0"></script>
+<script src="bladefall-resident-art.js?v=7.363.0"></script>
 <script src="bladefall-portraits.js?v=7.361.0"></script>
 <script src="littlejs.min.js"></script>
 <script>
@@ -466,7 +467,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.362.0';globalThis.BLADEFALL_VERSION=VERSION;
+const VERSION='7.363.0';globalThis.BLADEFALL_VERSION=VERSION;
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -12422,6 +12423,9 @@ function outskirtsInteractionCandidate(){
     const dx=Math.abs(G.p.x-n.x),dy=Math.abs(G.p.y-n.y);
     if(!closeSideStory&&dx<78&&dy<105)rows.push({o:n,score:(dx/78)**2+(dy/105)**2,priority:0});
   }
+  // (7.363) Someone standing by a clock is talked to, not the clock: a clock is read just by walking past it
+  // (Orra stands on Black Woods' stopped clock).
+  if(rows.some(r=>r.o.type==='ambientFigure'||r.o.sideStory||r.o.profileId))for(let i=rows.length-1;i>=0;i--)if(rows[i].o.fieldClock)rows.splice(i,1);
   rows.sort((a,b)=>a.score-b.score||a.priority-b.priority||a.o.x-b.o.x);
   return rows.length?rows[0].o:null;
 }
@@ -24675,7 +24679,7 @@ function openExploreMenu(){
    <button class="bigbtn" id="exploreNew">New Game</button>
    <button class="bigbtn ghost" id="lvlSelBtn">🗺 Level Select</button>
    <button class="bigbtn ghost" id="exploreCoop">👥 Co-op${coopActive()?' — CONNECTED':''}</button>
-   ${window.BladefallMounts?.testMode()?'<button class="bigbtn ghost" id="exploreDialogue">✎ Dialogue · read and edit every line</button>':''}
+   ${window.BladefallMounts?.testMode()?'<button class="bigbtn ghost" id="exploreLevelEditor">✎ Level editor · edit any level, saves go live</button><button class="bigbtn ghost" id="exploreDialogue">✎ Dialogue · read and edit every line</button>':''}
    <button class="bigbtn ghost" id="exploreBack">Return to title menu</button></div>`);
  document.getElementById('exploreContinue')?.addEventListener('click',continueRun);
  document.getElementById('exploreNew').onclick=()=>campaignHasProgress()?openNewGameConfirm():startFreshCampaign();
@@ -24683,6 +24687,8 @@ function openExploreMenu(){
  document.getElementById('exploreCoop').onclick=openCoop;
  // (7.353) Every line in the game, editable (dialogue-editor.html; edits apply at once on this device). A test-mode tool.
  document.getElementById('exploreDialogue')?.addEventListener('click',()=>{const w=window.open('./dialogue-editor.html','bladefall-dialogue-editor');if(!w)location.href='./dialogue-editor.html';});   // (7.320) Explore's co-op lives in Explore; Ascend's in Ascend
+ // (7.363) The level editor from the menu: it opens on the Outskirts; New / Open lists every original level.
+ document.getElementById('exploreLevelEditor')?.addEventListener('click',()=>{beginRun(0,null,{hp:1,dmg:1},{startStage:0,levelSelect:true});setTimeout(()=>window.BladefallWorkshopBridge?.editExplore(),400);});
  document.getElementById('exploreBack').onclick=titleScreen;
 }
 /* Extras belong to the offline app and local development builds. */
@@ -24881,7 +24887,7 @@ function openSettings(returnTo){
       <label><input type="checkbox" data-setting="dynamicAudio" ${meta.dynamicAudio?'checked':''}>Adaptive score<small>responds to danger</small></label>
       <label><input type="checkbox" data-setting="nightMode" ${meta.nightMode?'checked':''}>Night audio<small>softens combat peaks</small></label>
       <label><input type="checkbox" data-setting="soundCaptions" ${meta.soundCaptions?'checked':''}>Sound captions<small>directional text cues</small></label>
-      <label><input type="checkbox" data-setting="voices" ${meta.voices!==false?'checked':''}>Voices<small>spoken lines (the Outskirts so far)</small></label>
+      <label><input type="checkbox" data-setting="voices" ${meta.voices!==false&&window.BladefallVoice?.enabled()!==false?'checked':''}>Voice lines<small>people speak their lines · off for music only</small></label>
     </div>
     <div class="settingsection">Camera & Motion</div>
     <div class="settingsgrid">
@@ -24909,7 +24915,7 @@ function openSettings(returnTo){
     </label>
     <label class="kbrow" style="margin-top:7px;"><span class="kbname">Zoom</span>
       <select id="viewZoomSelect" style="min-width:120px;padding:7px;border-radius:8px;background:var(--bg);border:1px solid var(--line);color:var(--ink);">
-        ${[[0.70,'70% · farther'],[0.75,'75%'],[0.80,'80%'],[0.85,'85%'],[0.9,'90%'],[0.95,'95%'],[1,'100%'],[1.05,'105%'],[1.1,'110%'],[1.15,'115% · closer']].map(([z,label])=>`<option value="${z}" ${Math.abs((+meta.viewZoom||1)-z)<.001?'selected':''}>${label}</option>`).join('')}
+        ${[[0.50,'50% · farthest'],[0.55,'55%'],[0.60,'60%'],[0.65,'65%'],[0.70,'70%'],[0.75,'75%'],[0.80,'80%'],[0.85,'85%'],[0.9,'90%'],[0.95,'95%'],[1,'100%'],[1.05,'105%'],[1.1,'110%'],[1.15,'115% · closer']].map(([z,label])=>`<option value="${z}" ${Math.abs((+meta.viewZoom||1)-z)<.001?'selected':''}>${label}</option>`).join('')}
       </select>
     </label>
     <p class="ovsub" style="font-size:12px;margin:8px 0;">Zoom: Ctrl / ⌘ + or − · Ctrl / ⌘ 0 resets</p>
@@ -24943,6 +24949,7 @@ function openSettings(returnTo){
   if(tmChk)tmChk.onchange=e=>{meta.testMode=e.target.checked;if(!meta.testMode)revokeTestModeLoaner();persist();hudUpdate();};
   document.querySelectorAll('[data-setting]').forEach(el=>el.onchange=e=>{
     meta[e.target.dataset.setting]=e.target.checked;applyPresentationSettings();persist();
+    if(e.target.dataset.setting==='voices')window.BladefallVoice?.setEnabled(e.target.checked);   // (7.363) shared with Ascend
   });
   // Hardcore toggle — and the secret knock. Five flicks of this switch inside
   // five seconds unlocks the developer options (Test Mode + full level select).
@@ -25426,7 +25433,8 @@ function openPause(){
   mode='pause';updateBossHealthBar();const chartOwned=!!meta.outskirtsFieldChart,discovery=playerBuildDiscovery();
   showOvHTML(`<div class="card"><h2 class="ovh">Paused</h2>
     <button class="bigbtn" id="resBtn">Resume</button>
-    ${!window.BLADEFALL_WORKSHOP_PLAY&&window.BladefallMounts?.testMode()?'<button class="bigbtn ghost" id="workshopEdit">Edit this level</button>':''}
+    ${!window.BLADEFALL_WORKSHOP_PLAY&&window.BladefallMounts?.testMode()?'<button class="bigbtn" id="workshopEdit" style="border-color:#e0b35a;">✎ Level editor · edit this level</button>':''}
+    ${!window.BLADEFALL_WORKSHOP_PLAY&&window.BladefallWorkshopBridge?.edited('explore')?'<button class="bigbtn ghost" id="workshopOriginal">↺ Use the original level</button>':''}
     ${G?.stageIndex===44?'<button class="bigbtn" id="pwPauseRooms">Choose workshop room</button>':''}
     ${discovery.bag?'<button class="bigbtn ghost" id="bagBtn">＋ Traveler’s Bag</button>':''}
     ${chartOwned?'<button class="bigbtn ghost" id="mapBtn">◇ Dream Map</button>':''}
@@ -25436,6 +25444,7 @@ function openPause(){
     <button class="bigbtn ghost" id="qmenu">Quit to Menu</button></div>`);
   document.getElementById('resBtn').onclick=()=>{mode='play';showOverlay(false);};
   const workshopEdit=document.getElementById('workshopEdit');if(workshopEdit)workshopEdit.onclick=()=>window.BladefallWorkshopBridge.editExplore();
+  document.getElementById('workshopOriginal')?.addEventListener('click',()=>{showOverlay(false);mode='play';window.BladefallWorkshopBridge.useOriginal('explore');toast('The original level is back',1800);});
   const pwRooms=document.getElementById('pwPauseRooms');if(pwRooms)pwRooms.onclick=BladefallPrecisionWorkshop.menu;
   const bagBtn=document.getElementById('bagBtn'),mapBtn=document.getElementById('mapBtn'),questBtn=document.getElementById('questBtn'),advanceBtn=document.getElementById('advanceBtn');
   if(bagBtn)bagBtn.onclick=()=>openBag(openPause);
@@ -25873,19 +25882,19 @@ glEnable=false;
 // as window × canvasPixelRatio and stretches it back over the window, so a ratio below 1 is a
 // crisp zoom and the DOM HUD keeps its size. 'window' restores the old one-unit-per-pixel view.
 // TAS runs and index.html?view=wide keep the old view so bots and camera tests see what they expect.
-const VIEW_HEIGHT=400;   // at 100% zoom (Settings → Zoom, 70–115%)
+const VIEW_HEIGHT=400;   // at 100% zoom (Settings → Zoom, 50–115%)
 function applyViewScale(){
   let wide=meta.viewScale==='window'||BF_TAS_ENABLED;
   try{if(new URLSearchParams(location.search).get('view')==='wide')wide=true;}catch(e){}
-  // Zoom trims the close view by up to 15% either way: 115% shows 348 units of height, 85% shows 471.
-  const zoom=Math.min(1.15,Math.max(.70,+meta.viewZoom||1));
+  // Zoom: 115% shows 348 units of height, 50% shows 800.
+  const zoom=Math.min(1.15,Math.max(.50,+meta.viewZoom||1));
   canvasPixelRatio=wide||!(innerHeight>0)?1:Math.min(2.5,VIEW_HEIGHT/zoom/innerHeight);
   canvasMaxSize=vec2(Math.max(1920,Math.ceil(innerWidth*canvasPixelRatio)),Math.max(1080,Math.ceil(innerHeight*canvasPixelRatio)));
   canvasMinAspect=canvasMaxAspect=0;
   const c=document.querySelector('#gameContainer canvas');if(c)c.style.imageRendering=wide?'':'pixelated';
 }
 function setGameZoom(value){
-  meta.viewZoom=Math.max(.70,Math.min(1.15,Math.round(value*100)/100));
+  meta.viewZoom=Math.max(.50,Math.min(1.15,Math.round(value*100)/100));
   meta.viewScale='close';
   persist();applyViewScale();
   const zoomSelect=document.getElementById('viewZoomSelect');
@@ -26267,6 +26276,9 @@ window.BladefallWorkshopExploreRuntime=window.BladefallWorkshopExploreRuntimeFac
     if(hasCapability('weapon'))G.p.weapon=makeWeapon(BFWeaponProgressionModule.FIRST_WEAPON.archetype,BFWeaponProgressionModule.FIRST_WEAPON.rarity,BFWeaponProgressionModule.FIRST_WEAPON.name);
     syncWeaponCapabilities(G.p);syncPortalCapabilities();G.levelStartSnap=snapOf(G.p);},
   begin:stage=>beginRun(0,null,{hp:1,dmg:1},{startStage:stage,levelSelect:true,testRun:true,runSeed:'workshop'}),
+  // (7.363) a saved edit of the stage you are standing in takes effect now: the stage is rebuilt and you stay where you were
+  reload:()=>{const st=G.stageIndex,x=G.p.x,y=G.p.y;if(G.levelSelectMode)beginRun(0,null,{hp:1,dmg:1},{startStage:st,levelSelect:true});else{saveRunAtStage(st,snapOf(G.p));continueRun();}
+    if(G&&G.stageIndex===st){G.p.x=G.p.ckX=x;G.p.y=G.p.ckY=y;G.p.ckSet=true;G.p.vx=G.p.vy=0;}},
   pause:()=>{mode='pause';clearExploreTouchInput();BFKeyboard.reset();showOverlay(false);},
   resume:()=>{clearExploreTouchInput();BFKeyboard.reset();resumePlay();}
 });
@@ -26341,7 +26353,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.362.0').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.363.0').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */
@@ -27912,6 +27924,6 @@ function openCoop(){
 <script src="bladefall-workshop-native-play.js?v=7.335.0"></script>
 <script src="bladefall-route-solver.js?v=7.340.0"></script>
 <script src="bladefall-workshop-routes.js?v=7.340.0"></script>
-<script src="bladefall-workshop-bridge.js?v=7.340.0"></script>
+<script src="bladefall-workshop-bridge.js?v=7.363.0"></script>
 </body>
 </html>

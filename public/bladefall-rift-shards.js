@@ -74,6 +74,10 @@ function store(){
   return meta.riftShards || (meta.riftShards = {});
 }
 function held(id){ return !!store()[id]; }
+/* (7.363) Shards can be found any time, but the echoes stay shut until the Abyss King has fallen once.
+   Test mode (five taps on Base or Fractured) still opens them all. */
+function kingFallen(){ const m = typeof meta !== 'undefined' ? meta : {}; return ((m.bossTypeKills||{}).king||0) > 0 || (m.kingKills||0) > 0; }
+function echoesOpen(){ return kingFallen() || !!root.BladefallMounts?.testMode(); }
 function count(){ const s = store(); return SHARDS.filter(x => s[x.id]).length; }
 function complete(){ return count() >= TOTAL; }
 
@@ -81,7 +85,7 @@ function grant(id){
   const S = BY_ID[id]; if(!S || held(id)) return false;
   const first = count() === 0;
   store()[id] = true;
-  const echo=builtStage(S.stage);if(echo!=null)root.BladefallPlaytest?.unlock('explore',echo);
+  const echo=builtStage(S.stage);if(echo!=null&&kingFallen())root.BladefallPlaytest?.unlock('explore',echo);
   meta.riftPortals=meta.riftPortals||{};meta.riftPortals[S.stage]={x:G.p.x+48,y:G.p.y,to:echo};
   persist();
   try{ if(!(G && G.levelSelectMode)) persist(); }catch(_e){}
@@ -100,7 +104,7 @@ function firstCard(S){
   try{
     mode = 'conversation';
     BladefallConversation.show({ title:'A RIFT SHARD', accent:'#b98cff',
-      text:`A sliver of violet glass, cold, and humming like a struck bell. It is the colour your Echo was.\n\nIt came this way — backwards, down a road you had already walked — and it left this behind. There will be one in every region you have crossed: twenty. Each shard opens its matching Fractured region immediately. A violet portal waits here; press your Take Item control beside it to enter. You can return through the portal or select the unlocked echo from Level Select.\n\n${S.region}: 1 of ${TOTAL}.`,
+      text:`A sliver of violet glass, cold, and humming like a struck bell. It is the colour your Echo was.\n\nIt came this way — backwards, down a road you had already walked — and it left this behind. There will be one in every region you have crossed: twenty. ${kingFallen()?'Each shard opens its matching Fractured region. A violet portal waits here; press your Take Item control beside it to enter, or choose the echo from Level Select.':'Each shard will open its matching Fractured region, but not yet: the echoes stay shut while the Abyss King still stands.'}\n\n${S.region}: 1 of ${TOTAL}.`,
       onClose:() => { mode = 'play'; try{ showOverlay(false); showGameUI(true); hudUpdate(); }catch(_e){} } });
   }catch(_e){ try{ toast('<b>RIFT SHARD</b> · 1 of ' + TOTAL, 3200); }catch(_e2){} }
 }
@@ -110,7 +114,7 @@ let lastObs = null;
 function install(){
   if(typeof G === 'undefined' || !G || !G.obstacles) return;
   if(lastObs === G.obstacles) return;
-  for(const S of SHARDS)if(held(S.id)||meta.riftShards?.[S.id]){const echo=builtStage(S.stage);if(echo!=null)root.BladefallPlaytest?.unlock('explore',echo);}
+  if(kingFallen())for(const S of SHARDS)if(held(S.id)||meta.riftShards?.[S.id]){const echo=builtStage(S.stage);if(echo!=null)root.BladefallPlaytest?.unlock('explore',echo);}
   lastObs = G.obstacles;
   for(const S of SHARDS){
     if(S.stage !== G.stageIndex || S.x == null || held(S.id)) continue;
@@ -206,15 +210,15 @@ function ledgerRows(){
   }).join('');
 }
 function showLedger(onBack, fromActTwo){
-  const done = SHARDS.some(S=>held(S.id)||meta.riftShards?.[S.id]);
+  const done = echoesOpen() && SHARDS.some(S=>held(S.id)||meta.riftShards?.[S.id]);
   const intro = fromActTwo
     ? 'The hydra sets you down on the island’s shore. Your Echo is not here. It went back into the roads you walked, and every region kept a piece of it.'
     : 'Your Echo is hiding in the echoes of the roads you walked. Every region kept a piece of it.';
   showOvHTML(`<div class="card"><p class="ovsub" style="letter-spacing:.3em;margin:0 0 6px;">ACT THREE · THE ECHOES</p>
     <h2 class="ovh" style="margin:0 0 6px;">Rift Shards — ${count()} of ${TOTAL}</h2>
-    <p class="ovsub" style="margin:0 0 12px;">${intro} ${done ? 'Your collected shards have opened their matching echoes.' : 'Each shard opens its matching echo immediately.'}</p>
+    <p class="ovsub" style="margin:0 0 12px;">${intro} ${!echoesOpen() ? 'The echoes stay shut until the Abyss King falls.' : done ? 'Your collected shards have opened their matching echoes.' : 'Each shard opens its matching echo.'}</p>
     <div class="choices" id="riftList" style="max-height:44vh;overflow-y:auto;gap:8px;">${ledgerRows()}</div>
-    <button class="bigbtn" id="riftGo" ${done ? '' : 'disabled style="opacity:.4;"'}>${done ? 'Choose an unlocked Fractured world' : 'Find a shard to open its echo'}</button>
+    <button class="bigbtn" id="riftGo" ${done ? '' : 'disabled style="opacity:.4;"'}>${done ? 'Choose an unlocked Fractured world' : !echoesOpen() ? 'Defeat the Abyss King to open the echoes' : 'Find a shard to open its echo'}</button>
     <button class="bigbtn ghost" id="riftBack">Back</button></div>`);
   const go = document.getElementById('riftGo'); if(go && done) go.onclick = ()=>{lvlSelTab='fx';openLevelSelect();};
   const back = document.getElementById('riftBack'); if(back) back.onclick = () => (onBack || titleScreen)();
@@ -246,6 +250,7 @@ function levelSelectRows(){
     const at = builtStage(source), tag = String(i + 21);
     if(at == null) return `<button class="choice lvlbtn" disabled style="opacity:.35;"><div class="cname"><span style="color:var(--muted);min-width:26px;display:inline-block;">${tag}</span>Undiscovered<span class="ckey">NOT YET BUILT</span></div></button>`;
     // Explore's test mode (five taps on Base or Fractured) opens every built echo.
+    if(!echoesOpen())return `<button class="choice lvlbtn" disabled><div class="cname">${tag} · Sealed<span class="ckey">Defeat the Abyss King</span></div></button>`;
     if(!root.BladefallMounts?.testMode()&&!root.BladefallPlaytest?.unlocked('explore',at)&&!held(SHARDS.find(s=>s.stage===source)?.id)&&!meta.riftShards?.[SHARDS.find(s=>s.stage===source)?.id])return `<button class="choice lvlbtn" disabled><div class="cname">${tag} · Undiscovered<span class="ckey">Find its Rift Shard</span></div></button>`;
     return `<button class="choice lvlbtn" data-fx="${at}"><div class="cname"><span style="color:#c9a8ff;min-width:26px;display:inline-block;">${tag}</span>${name}<span class="ckey" style="text-transform:uppercase;">echo</span></div></button>`;
   }).join('') + last;
@@ -266,7 +271,7 @@ function currentPortal(){
   G.riftEntrances=G.riftEntrances||{};const spawn=G.riftEntrances[G.stageIndex]||(G.riftEntrances[G.stageIndex]={x:G.p.x,y:G.p.y});
   return {...spawn,to:source.stage,returning:true};
  }
- return meta.riftPortals?.[G.stageIndex]||null;
+ return echoesOpen()?meta.riftPortals?.[G.stageIndex]||null:null;
 }
 function useRiftPortal(){
  const portal=currentPortal();if(!portal||portal.to==null)return false;
@@ -297,7 +302,7 @@ function drawRiftPortal(api){
 
 root.BladefallRiftShards = Object.freeze({
   useRiftPortal,currentPortal,
-  TOTAL, SHARDS, FRACTURED, held, count, complete, grant, install, update, draw, converse, chose, look, questDone,
+  TOTAL, SHARDS, FRACTURED, held, kingFallen, echoesOpen, count, complete, grant, install, update, draw, converse, chose, look, questDone,
   showLedger, beginActThree, titleButton, bindTitle, levelSelectRows,
 });
 })(typeof window !== 'undefined' ? window : globalThis);

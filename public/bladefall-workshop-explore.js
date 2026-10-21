@@ -10,6 +10,7 @@ function pack(value,{nativeRoot}={}){
  const nodes={},seen=new Map();let next=0;
  function encode(v){
   if(v===undefined)return {$undefined:true};
+  if(typeof v==='number'&&!Number.isFinite(v))return {$num:String(v)};   // (7.363) Infinity / NaN in stage state (the Outskirts has some)
   if(v===null||['number','string','boolean'].includes(typeof v))return M().json(v);
   if(typeof v==='function'&&nativePaths.has(v))return {$native:nativePaths.get(v)};
   if(typeof v!=='object')throw Error('This level contains executable state that cannot be saved as a level.');
@@ -38,6 +39,7 @@ function unpack(input,{nativeRoot}={}){
    if(typeof fn!=='function')throw Error('This level uses a native behavior that is no longer available.');return fn;
   }
   if(v.$undefined===true&&Object.keys(v).length===1)return undefined;
+  if(typeof v.$num==='string'&&Object.keys(v).length===1){if(!['Infinity','-Infinity','NaN'].includes(v.$num))throw Error('Invalid number in level data.');return Number(v.$num);}
   if(typeof v.$ref!=='string'||Object.keys(v).length!==1||!Object.hasOwn(out,v.$ref))throw Error('An object link points to missing level data.');return out[v.$ref];
  }
  for(const[id,n]of Object.entries(graph.nodes)){
