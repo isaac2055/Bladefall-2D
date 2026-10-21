@@ -62,6 +62,319 @@ Ascend is not a story game: a person says one short line as you pass, on their o
 | Patrol walk | Silas | Forty paces, then I turn. The governor up the maintenance ladder decides that, not me. Break its gear and I'll find out where I'd rather walk. | ...thirty-nine, forty. Can't stop. Break the gear up the ladder? |
 | Patrol walk, after | Silas | The gear is still. I took one step past the turning point, then I sat down here, because I wanted to. | Forty-one. Then I sat. My choice. |
 
+
+## Ascend · worlds 4-40 (in the game and voiced, 7.365.0)
+
+Same rules as worlds 1-3. Worlds 21-40 are the Fractured twins of 1-20; their people are listed per world. Room ids are the `cl{n}-…` ids in `bladefall-climb-worlds.js`; *after* is `lineDone`.
+
+### 4 · The Updrafts
+| Room | Who | Line |
+|---|---|---|
+| cl4-u4-bellows | Talla | Mind the pad. It throws harder than it looks. |
+| cl4-u4-choir | Cartographer | Footsteps? Good. I need one reading from the upper funnel. Over the tall pipe. |
+| cl4-u4-choir (after) | Cartographer | That interval shouldn’t exist. Help me move the desk outside? |
+| cl4-u4-catcher | Edrin | Each gutter spills to the next. Don’t stand about. The cups crack. |
+| cl4-u4-span | Ilyra | You came across on the drafts? Then the flues are drawing again. |
+
+### 5 · Hollow Marksman
+| Room | Who | Line |
+|---|---|---|
+| cl5-m5-camp | Mara | You again. The watch has shot at me all morning. Meet the bolt. Don’t duck it. |
+| cl5-m5-release | Recruit | I can make the crossing. I can. My helmet’s up the tower, that’s all. |
+| cl5-m5-release (after) | Recruit | That’s my uncle’s. Right. The bridge. |
+
+### 6 · Ruined Keep
+| Room | Who | Line |
+|---|---|---|
+| cl6-k6-refectory | Veya | Sit, if you’re cold. The clock says three forty-one. It always has. |
+| cl6-k6-refectory | Tovin | See the stone in the arch? Its weight holds the gate. |
+| cl6-k6-quarter | Tovin | Take the key. Point it at pale stone. The stone remembers it was a door. |
+| cl6-k6-belfry | Idris | Mind the boards. I’ve only just swept them. |
+| cl6-k6-loft | Idris | The bell stopped when its weight went. I sweep under it anyway. |
+| cl6-k6-archive | Archivist | Three volumes fell with the upper gallery. Bring them down? Mind the bindings. |
+| cl6-k6-archive (after) | Archivist | All three disagree about the gate. I’ll sit with them a while. |
+
+### 7 · The Warden
+| Room | Who | Line |
+|---|---|---|
+| cl7-g7-cells | Keeper | Service door. No work order. And someone’s moved my lunch up the catwalk. |
+| cl7-g7-cells (after) | Keeper | Nobody said which side of the door I eat on. Leave it on the latch. |
+| cl7-g7-vigil | Vey | You. I carried a standard once. Now I carry his keys. |
+| cl7-g7-vigil | Enna | Don’t look down the well. He never looks at us. |
+
+### 8 · Frostfell
+| Room | Who | Line |
+|---|---|---|
+| cl8-f8-refuge | Nim | Up through the mine? Warm your hands. I’ve braziers to light. |
+| cl8-f8-streets | Nim | One lit. Fire takes the slip out of the stone. Only near it, mind. |
+| cl8-f8-hearth | Nim | This one’s mine. The works are past the floes. |
+| cl8-f8-hearth | Neighbour | Coal’s in the upper shelter, up the chimney. I can’t manage the steps. |
+| cl8-f8-hearth (after) | Neighbour | Room’s warmer. Sit. You’ve been on your feet all day. |
+| cl8-f8-works | Ilyra | Nim’s fire in the draft. That’s what the Choir was missing. |
+| cl8-f8-engine | Sentinel | Engine’s frozen. Ring the bell at the crown and every post will hear. |
+
+### 9 · Frost Sorcerer
+| Room | Who | Line |
+|---|---|---|
+| cl9-s9-wheel | Vey | Water I understand. It goes downhill. The wheel’s catch is past the far side. |
+| cl9-s9-refuge | Ada | Hit the overflow hard enough and it stands up like glass. |
+| cl9-s9-glass | Handler | Don’t touch his back. He’s too hot to sleep. The cold intake’s up through the roof. |
+| cl9-s9-glass (after) | Handler | Look at his feet. He only does that asleep. |
+
+### 10 · Emberdeep
+| Room | Who | Line |
+|---|---|---|
+| cl10-e10-door | Oren | Court’s cold still on you? Enjoy it. Nothing down here’s done cooling. |
+| cl10-e10-draw | Oren | The seal turns iron back. Lets me through. Don’t ask. |
+| cl10-e10-bridge | Oren | I used to be the weight that held this. Now it holds itself. |
+| cl10-e10-line | Maker | I finish one, he smashes it. Every time. The counters are up the chute. |
+| cl10-e10-line (after) | Maker | Mine’s green. His is green. Break time. |
+| cl10-e10-line | Breaker | It comes down, I scrap it. Nobody’s been in that office for months. |
+| cl10-e10-line (after) | Breaker | Same piece, counted twice. Sit. She brought lunch for two. |
+| cl10-e10-stair | Oren | Foundry’s through there. Still pouring. Nobody to pour for. |
+
+### 11 · Ember Colossus
+| Room | Who | Line |
+|---|---|---|
+| cl11-f11-stair | Oren | Every mould in Emberdeep came from down here. Keep your distance. |
+| cl11-f11-crane | Automaton | Please hold the left panel. I am building a birdhouse. My hands are too large. |
+| cl11-f11-crane (after) | Automaton | It is holding. A bird is inspecting it. Do not move. |
+| cl11-f11-look | Oren | Machines don’t keep standing orders. Whatever it pours, don’t be under it. |
+
+### 12 · The Inversion
+| Room | Who | Line |
+|---|---|---|
+| cl12-i12-fall | Oren | Down here, even the floor disagrees with you. |
+| cl12-i12-court | Neighbour | I invited her for tea. She says my floor is wrong. The service is up the chimney. |
+| cl12-i12-court (after) | Neighbour | One sugar. Six years, and I still put in two. |
+| cl12-i12-court | Neighbour2 | On my table, please. His down is not my down. |
+| cl12-i12-court (after) | Neighbour2 | Pass the biscuits. Slowly. |
+
+### 13 · The Void Tyrant
+| Room | Who | Line |
+|---|---|---|
+| cl13-v13-mouth | Oren | The books hold you once. Nobody’s returned them. |
+| cl13-v13-vigil | Figure | I was waving. The release is up the chimney. I can’t see past the lights. |
+| cl13-v13-vigil (after) | Figure | The glass was colder on the other side. I’ll stay by the lights. |
+
+### 14 · The Abyss King
+| Room | Who | Line |
+|---|---|---|
+| cl14-k14-stair | Oren | Two marks, one visitor. There’s always a catch. |
+| cl14-k14-alcove | Oren | Something stayed behind when you moved. Try the key again. |
+| cl14-k14-bellkeeper | Bellkeeper | Three short, two long. Break a bell and the backup starts. The tower’s up the chimney. |
+| cl14-k14-bellkeeper (after) | Bellkeeper | Quiet at last. They’re leaving their posts. |
+| cl14-k14-rail | Oren | Tracks. Someone built a way out. I’m taking it. |
+
+### 15 · The Deep Line
+| Room | Who | Line |
+|---|---|---|
+| cl15-d15-siding | Miner | Someone there? Take the siding! The cage is stuck. |
+| cl15-d15-siding (after) | Miner | My name’s back where it belongs. Give my legs a moment. |
+
+### 16 · Thunder Cliffs
+| Room | Who | Line |
+|---|---|---|
+| cl16-t16-sailors | Sailor | Lost half a brass charm up the rigging. If you go aloft, look. |
+| cl16-t16-sailors (after) | Sailor | He has his half. I have mine. Neither of us lets go. |
+| cl16-t16-sailors | Apprentice | He says the charm holds the ship together. I say it’s the rope. |
+| cl16-t16-sailors (after) | Apprentice | Still the rope. I’m keeping the charm, though. |
+
+### 17 · The Landing Shores
+| Room | Who | Line |
+|---|---|---|
+| cl17-s17-porch | Organizer | Candles! The tin’s in the upper wreck cabin. Keep it dry! |
+| cl17-s17-porch (after) | Organizer | Candles lit! Bring the cake out here. |
+| cl17-s17-porch | Soldier | A birthday? Fine. Don’t make an announcement. |
+| cl17-s17-porch (after) | Soldier | Good cake. Quiet out here. |
+
+### 18 · The Colony
+| Room | Who | Line |
+|---|---|---|
+| cl18-c18-family | Mother | My sealed cup is in the old shelter. Bring that one. I want to know where it’s been. |
+| cl18-c18-family (after) | Mother | Sable answered my questions. Mine first. A little, to start. |
+| cl18-c18-family | Sable | The spring runs clean. I’ll explain what changed, when she’s ready. |
+| cl18-c18-family (after) | Sable | The cup’s beside the bed. We spoke quietly, once the little one slept. |
+
+### 19 · The Path to the Palace
+| Room | Who | Line |
+|---|---|---|
+| cl19-p19-pilgrim | Pilgrim | Travelling lighter. Send my sack up the sling? Don’t open it. |
+| cl19-p19-pilgrim (after) | Pilgrim | Medals, mostly. That one steadies the pot. Sit. I’ll make lunch. |
+| cl19-p19-q-bench | Pilgrim | I’ll carry it from here. Least I can do is lunch. |
+
+### 20 · Sunspire Palace
+| Room | Who | Line |
+|---|---|---|
+| cl20-s20-garden | Gardener | His Majesty wants the three shutters open. The flowers need the dark. The handles are through the gallery. |
+| cl20-s20-garden (after) | Gardener | By the bench. That one hasn’t opened in years. She liked it in the evenings. |
+| cl20-s20-sea | Hydra | You broke our chains. Your Echo walks your roads backwards. Climb on. |
+
+### 21 · The Fractured Outskirts
+| Room | Who | Line |
+|---|---|---|
+| cl21-fo21-map | Mara | Your chart still has a road here. Mine stopped. |
+| cl21-fo21-map (after) | Mara | There it is. A way through the blank. |
+| cl21-fo21-camp | Rowan | The bell is behind you. It always was. |
+| cl21-fo21-camp (after) | Rowan | Someone answered. I can leave it ringing. |
+| cl21-fo21-q-chart | Mara | I drew the way out. Keep the part that still leads somewhere. |
+| cl21-fo21-q-chart (after) | Mara | The blank has an edge now. |
+| cl21-fo21-q-bell | Rowan | I heard it. That was enough. |
+| cl21-fo21-q-bell (after) | Rowan | You heard it too. |
+
+### 22 · The Fractured Woods
+| Room | Who | Line |
+|---|---|---|
+| cl22-fw22-kitchen | Elsie | I left a bowl out. Habit, I suppose. |
+| cl22-fw22-kitchen (after) | Elsie | Still warm. Don’t ask me how. |
+| cl22-fw22-q-lantern | Elsie | I knew you’d find the table. |
+| cl22-fw22-q-lantern (after) | Elsie | You never did like eating alone. |
+
+### 23 · The Fractured Causeway
+| Room | Who | Line |
+|---|---|---|
+| cl23-fc23-silas | Silas | Forty paces. I remember the forty-first better. |
+| cl23-fc23-silas (after) | Silas | I chose that step. That part still belongs to me. |
+| cl23-fc23-q-governor | Silas | There was a bench beyond the turning point. I never knew. |
+| cl23-fc23-q-governor (after) | Silas | I sat there because I wanted to. |
+
+### 24 · The Fractured Updrafts
+| Room | Who | Line |
+|---|---|---|
+| cl24-fu24-choir | Cartographer | The same interval. I hear it even when the air goes quiet. |
+| cl24-fu24-choir (after) | Cartographer | There. Above the pipes. That was the part I missed. |
+| cl24-fu24-q-funnel | Cartographer | It was never silence. I had stopped listening. |
+| cl24-fu24-q-funnel (after) | Cartographer | Leave the window open. |
+
+### 25 · The Fractured Marksman
+| Room | Who | Line |
+|---|---|---|
+| cl25-fm25-release | Recruit | I made the crossing. I keep making it, to be sure I did. |
+| cl25-fm25-release (after) | Recruit | You came up behind me. I didn’t duck. |
+| cl25-fm25-q-top | Recruit | The helmet was never what held me up. |
+| cl25-fm25-q-top (after) | Recruit | I can put it down now. The bridge will still be there. |
+
+### 26 · The Fractured Keep
+| Room | Who | Line |
+|---|---|---|
+| cl26-fk26-archive | Archivist | There was a fourth volume. It agreed with all three, so I left it. |
+| cl26-fk26-archive (after) | Archivist | You found it. Read me the last line. |
+| cl26-fk26-q-rain | Archivist | It says the gate was only ever a door. |
+| cl26-fk26-q-rain (after) | Archivist | I will sit with that one for a while. |
+
+### 27 · The Fractured Warden
+| Room | Who | Line |
+|---|---|---|
+| cl27-fg27-cells | Keeper | I still hold the door. Habit. Nobody comes through. |
+| cl27-fg27-cells (after) | Keeper | You came through. That’s a first. |
+| cl27-fg27-q-catwalk | Keeper | Brown paper. Same lunch. Different side of the door. |
+| cl27-fg27-q-catwalk (after) | Keeper | Leave it open behind you. I’ll eat outside. |
+
+### 28 · The Fractured Frostfell
+| Room | Who | Line |
+|---|---|---|
+| cl28-ff28-hearth | Neighbour | The stove went cold the day after. I kept the cup on the sill anyway. |
+| cl28-ff28-hearth (after) | Neighbour | You climbed it. The last step too. |
+| cl28-ff28-q-shelter | Neighbour | That’s the warmth I remember. Not the coal. |
+| cl28-ff28-q-shelter (after) | Neighbour | Sit a minute. Then go on. |
+
+### 29 · The Fractured Sorcerer
+| Room | Who | Line |
+|---|---|---|
+| cl29-fs29-glass | Handler | He never settled again without the cold. I kept the glove. |
+| cl29-fs29-glass (after) | Handler | Gently. He knows the glove, not you. |
+| cl29-fs29-q-pen | Handler | Look at his feet. Properly asleep. |
+| cl29-fs29-q-pen (after) | Handler | That’s all I wanted. One more time. |
+
+### 30 · The Fractured Emberdeep
+| Room | Who | Line |
+|---|---|---|
+| cl30-fe30-line | Maker | Same piece, round and round. We never stopped it. |
+| cl30-fe30-line (after) | Maker | You can stop it. Up there, with the counters. |
+| cl30-fe30-q-loft | Maker | Both green. Nobody counted after that. |
+| cl30-fe30-q-loft (after) | Maker | Lunch for two, on the bench, for good. |
+
+### 31 · The Fractured Colossus
+| Room | Who | Line |
+|---|---|---|
+| cl31-ff31-crane | Automaton | I made a sixth birdhouse. My hands are still too large for the roof. |
+| cl31-ff31-crane (after) | Automaton | Please hold the panel. Gently. A bird is near. |
+| cl31-ff31-q-shelf | Automaton | It is holding. The bird is inside. |
+| cl31-ff31-q-shelf (after) | Automaton | We should stop moving. It is sleeping. |
+
+### 32 · The Fractured Inversion
+| Room | Who | Line |
+|---|---|---|
+| cl32-fi32-court | Neighbour | We never agreed which way was down. We had tea anyway. |
+| cl32-fi32-court (after) | Neighbour | Bring the second cup. Either table. |
+| cl32-fi32-q-service | Neighbour | One sugar. She noticed. |
+| cl32-fi32-q-service (after) | Neighbour | Her down, my down. The tea stays in the cup. |
+
+### 33 · The Fractured Tyrant
+| Room | Who | Line |
+|---|---|---|
+| cl33-fv33-vigil | Figure | I went toward the lights. I wanted to see what was behind them. |
+| cl33-fv33-vigil (after) | Figure | Come and look. It’s not what I feared. |
+| cl33-fv33-q-light | Figure | Only more windows. More people waving. |
+| cl33-fv33-q-light (after) | Figure | I’ll wave back, this time. |
+
+### 34 · The Fractured King
+| Room | Who | Line |
+|---|---|---|
+| cl34-fk34-bellkeeper | Bellkeeper | The bell rang one last time after you left. I still count it. |
+| cl34-fk34-bellkeeper (after) | Bellkeeper | Three short, two long. Then nothing. |
+| cl34-fk34-q-signal | Bellkeeper | Quiet. The posts are empty. |
+| cl34-fk34-q-signal (after) | Bellkeeper | They all went home. I can too. |
+
+### 35 · The Fractured Line
+| Room | Who | Line |
+|---|---|---|
+| cl35-fd35-siding | Miner | My name is in the ledger. I keep reading it, to be sure. |
+| cl35-fd35-siding (after) | Miner | Down the siding. You know the way now. |
+| cl35-fd35-q-ledger | Miner | There. In ink, not chalk. |
+| cl35-fd35-q-ledger (after) | Miner | I’ll walk out on the main line this time. |
+
+### 36 · The Fractured Cliffs
+| Room | Who | Line |
+|---|---|---|
+| cl36-ft36-sailors | Sailor | We each kept a half. We never once let go. |
+| cl36-ft36-sailors (after) | Sailor | The rigging again. Keep an eye out. |
+| cl36-ft36-q-charm | Sailor | Still the rope. It was always the rope. |
+| cl36-ft36-q-charm (after) | Sailor | But we kept the charm. |
+
+### 37 · The Fractured Shores
+| Room | Who | Line |
+|---|---|---|
+| cl37-fs37-porch | Organizer | They lit every candle. Nobody made an announcement. |
+| cl37-fs37-porch (after) | Organizer | Up in the wreck. Keep it dry. |
+| cl37-fs37-q-cabin | Organizer | That was a good cake. |
+| cl37-fs37-q-cabin (after) | Organizer | It is quiet out here. I like it quiet. |
+
+### 38 · The Fractured Colony
+| Room | Who | Line |
+|---|---|---|
+| cl38-fc38-family | Mother | The cup is still beside the bed. I asked my questions first. |
+| cl38-fc38-family (after) | Mother | The old shelter. You know where it’s been. |
+| cl38-fc38-q-cup | Mother | Only a little, to start. Then more. |
+| cl38-fc38-q-cup (after) | Mother | She is asleep. We spoke quietly. |
+
+### 39 · The Fractured Path
+| Room | Who | Line |
+|---|---|---|
+| cl39-fp39-pilgrim | Pilgrim | I left the medals somewhere. Not all of them. |
+| cl39-fp39-pilgrim (after) | Pilgrim | Send the sack up. Don’t open it. Fine, open it. |
+| cl39-fp39-q-bench | Pilgrim | One medal. It holds the pot steady. |
+| cl39-fp39-q-bench (after) | Pilgrim | That is the right weight to carry. |
+
+### 40 · The Fractured Palace
+| Room | Who | Line |
+|---|---|---|
+| cl40-fs40-garden | Gardener | The shutters stay closed now. The garden decided. |
+| cl40-fs40-garden (after) | Gardener | Through the gallery. Mind the light. |
+| cl40-fs40-sea | Hydra | You broke our chains twice now. Climb on. We will shade you as long as we can. |
+| cl40-fs40-q-upper | Gardener | Look, by the bench. Every evening, now. |
+| cl40-fs40-q-upper (after) | Gardener | She liked it in the evenings. So do I. |
+
 ## How the Outskirts were built (7.359.0), for the next regions
 
 - **Lines** live where they always did: `bladefall-dialogue.js` (residents), `bladefall-side-stories.js` (Rowan: `firstReturn`, `readyLines`, `unnamed`, `thanks:null`), `index.html` (`ambientFigureDialogue`, `residentHeading`, `residentTalk`).

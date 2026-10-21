@@ -1267,8 +1267,9 @@ function drawFolk(b,g,d,live,world=st.world){
  for(const pr of d.decor||[])H.prop(b,pr.k,pr.c*8,pr.r*8,t);
  for(const who of d.people||[]){
   const key=d.id+':'+who.who;if(st.gone.has(key))continue;
-  if(who.voiceUntilDone&&!questDone(questOf(who.quest)))continue;
   let x=who.c*8+4,y=who.ceiling?who.r*8:who.r*8+8,face=live?(g.p.x+4<x?-1:1):(who.face||1);
+  // (7.365) a voice before they are seen: not drawn, but still heard when you come near (as in the Room by Room view)
+  if(who.voiceUntilDone&&!questDone(questOf(who.quest))){if(live){who._x=x;who._y=y;}continue;}
   if(st.walk[key])continue;                                  // on her way: drawn by drawWalkers
   if(live&&Object.values(st.walk).some(w=>!w.done&&w.who===who.who&&w.dest===d.id))continue;   // not there yet
   if(!live&&Object.values(st.walk).some(w=>!w.done&&w.who===who.who&&w.dest===d.id))continue;

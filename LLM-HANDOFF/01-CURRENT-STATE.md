@@ -1,3 +1,11 @@
+## 7.365.0: all of Ascend speaks (2026-10-21, Claude, cloud session)
+
+- **Lines:** worlds 4-40 got the short, stranger-first rewrites (76 lines rewritten; full list in DIALOGUE-SCRIPT.md, "Ascend · worlds 4-40"). Applied in `bladefall-climb-worlds.js`, the `bladefall-rbr-*.js` room files, `bladefall-pcore-pitches.js` and their sources (`scripts/rbr-src/*.mjs`, `scripts/climb/source-worlds-7.303.json`).
+- **Voices:** 160 new clips under `public/audio/voice/ascend/` (every `line`/`lineDone` in worlds 4-40). Each person keeps their Explore voice. New cast: Ilyra (Yasmin), Enna (Tonia), the Ascend apprentice (Hassan), the Ascend soldier (Mister Gruff). Frostfell and Inversion neighbours reuse existing voices. Every take was checked by speech recognition and a pitch test; flagged takes were confirmed with ElevenLabs Scribe or re-recorded.
+- **Unseen voices speak in Ascend:** people marked `voiceUntilDone` (the miner's echo at the Condemned Siding, the hydra on the Sea Terrace) were skipped entirely by the climb view: not drawn and never heard. They are still not drawn, but their line now shows and plays when you come near, as in the Room by Room view (`drawFolk` in `bladefall-climb-view.js`).
+- **Checked in a browser** (`?pitch=climb&mode=play&review=1`): walking up to people in worlds 4, 8, 12, 16, 21, 24, 28, 32, 35, 38 and 40 plays each one's clip. The three takes the rough check flagged hardest were confirmed word for word with Scribe. Release check: same list as 7.364 plus the deploy mirror. rift-shards 7/0, side-stories 47/0.
+- **Knight voice:** round 1 (six voices) was rejected. Round 2 sent: Vane, Alaric, Garrison, Jase, Gravel Midnight, Sterling, Cole. Waiting for Isaac's pick; the knight is still Daniel.
+
 ## 7.364.0: Ascend worlds 1-3 speak the new lines (2026-10-21, Claude, cloud session)
 
 - The proposed Ascend lines for worlds 1-3 (DIALOGUE-SCRIPT.md, "Ascend · worlds 1-3") are in the game: `people[].line/lineDone` in `bladefall-climb-worlds.js`, the room files `bladefall-rbr-01/02/03-*.js`, `bladefall-pcore-pitches.js`, and their sources (`scripts/rbr-src/0[123]-*.mjs`, `scripts/climb/source-worlds-7.303.json`), so a rebuild keeps them.
