@@ -1,3 +1,8 @@
+## 7.370.0: one dash take; shortcut ride sounds; the Two Banks removed (2026-10-22, Claude, cloud session)
+- Dash: a single take (audio/sfx/dash.mp3, was dash-1/dash-2 alternating; Isaac heard every second dash as silent, in both modes, even after loudness-matching). B/C stay for the mixer.
+- Explore shortcuts (bladefall-explore-mounts.js): a take-off cue (`mount-*`: drake, ballista, rocket, latch, dogs, lift) and a seamless 8 s loop per ride (`ride-*`, 19 of them, eleven_text_to_sound_v2 with loop:true) for the whole ride; land-hard on arrival. New `BladefallSfx.loop(name)` returns a stop(fade). All in the Sound mixer under "Shortcuts", with A/B/C. Ride loops are not precached or preloaded (fetched when a ride starts).
+- Ascend Co-op: "The Two Banks · 8 shared puzzle rooms" deleted (coop-practice.html, bladefall-coop-practice-{core,session,view}.js and scripts/climb/coop-{practice,session,ui,latency}-check + routes). To be reworked as real Ascend later; git history has it (7.369.0).
+
 ## 7.369.0: climb by holding Up; even sound takes; Fractured top half for a clear; Frostfell catches gone (2026-10-22, Claude, cloud session)
 - Ascend (pcore): holding Up against a wall climbs it without grab (not while a dash is pressed); climbing up costs no stamina; climbUpSpeed -45 → -60. verify-precision-core still times out at 600 s, as before.
 - SFX: every alternate take (name-n, .b, .c) loudness-matched to its main file within 2 dB (dash-2 was 6 dB quieter, so every second dash seemed silent). Main files untouched.

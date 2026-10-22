@@ -87,8 +87,7 @@ CO.menuHtml=function(){
   :s==='on'?`<p class="pcSub">Playing together${code&&code!=='LOCAL'?' · '+code:''}. Race at your own pace. Hold <b>T</b> (or <b>P2</b> on a phone) to appear beside your partner: a teleport counts as a skip. Your blade can bonk them.</p>`
   :s==='lost'?`<p class="pcSub">Your partner left.</p>`
   :`<p class="pcSub">${CO.err||'Something went wrong.'}</p>`;
- return `<div class="pcCard" id="coPanel" style="margin-top:.6em"><h2 style="margin:.2em 0">Co-op</h2><p><a class="pcBtn ghost" href="coop-practice.html">The Two Banks · 8 shared puzzle rooms</a></p>
- <p class="pcSub">Two knights, one world: each of you clears every section yourself, and you see your partner do it. Either of you can go on ahead.</p>
+ return `<div class="pcCard" id="coPanel" style="margin-top:.6em"><h2 style="margin:.2em 0">Co-op</h2> <p class="pcSub">Two knights, one world: each of you clears every section yourself, and you see your partner do it. Either of you can go on ahead.</p>
  ${body}${s!=='off'?'<button class="pcBtn ghost" id="coLeave">Leave co-op</button>':''}</div>`;
 };
 CO.bindMenu=function(){

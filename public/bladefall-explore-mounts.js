@@ -215,7 +215,7 @@ function resolve(m){
 }
 function install(){
  if(!ok())return;
- G.obstacles=G.obstacles.filter(o=>!o.mountRoost);G.mountFlight=null;G.mountRoosts=null;G.mountHome=null;
+ G.obstacles=G.obstacles.filter(o=>!o.mountRoost);G.mountFlight=null;rideEnd(.1);G.mountRoosts=null;G.mountHome=null;
  const m=mount();if(!m||!usable())return;
  const roosts=resolve(m);if(!roosts)return;
  // Reaching the home roost on foot counts whether or not the story is finished yet.
@@ -266,6 +266,18 @@ function interact(o){
 }
 // ---- the ride --------------------------------------------------------------------------------------------
 const ease=u=>u*u*u*(u*(u*6-15)+10);
+/* (7.370) Sound: a take-off cue and a loop for the length of the ride (bladefall-sfx.js; both in the Sound mixer). */
+const RIDE_LOOP={drake:'ride-drake',moths:'ride-moths',zip:'ride-zip',kite:'ride-kite',ballista:'ride-bolt',bellrope:'ride-rope',cage:'ride-cage',sled:'ride-sled',
+ fox:'ride-ice',cart:'ride-cart',throw:'ride-throw',hatch:'ride-ceiling',mirror:'ride-mirror',bell:'ride-sprint',skiff:'ride-skiff',rocket:'ride-rocket',crane:'ride-crane',
+ cloak:'ride-cloak',seed:'ride-seed'};
+const RIDE_START={drake:'mount-drake',ballista:'mount-ballista',rocket:'mount-rocket',zip:'mount-latch',cage:'mount-latch',cart:'mount-latch',sled:'mount-dogs',throw:'mount-ballista'};
+let rideStop=null;
+function rideSound(art){
+ rideEnd(0);const X=root.BladefallSfx;if(!X)return;
+ X.play(RIDE_START[art]||'mount-lift',{detune:0});
+ if(RIDE_LOOP[art])rideStop=X.loop(RIDE_LOOP[art]);
+}
+function rideEnd(fade=.6){if(rideStop){rideStop(fade);rideStop=null;}}
 function landing(to,dir){
  if(Number.isFinite(to.land))return {x:to.land,y:floorAt(to.land),face:to.face};
  return {x:Math.max(to.x0+24,Math.min(to.x1-24,to.x+dir*110)),y:to.y,face:dir};
@@ -273,6 +285,7 @@ function landing(to,dir){
 function start(m,from,to,arriving){
  const dir=to.x>from.x?1:-1,land=landing(to,dir),dist=Math.abs(land.x-from.x),pathed=PATHED.has(m.kind);
  const rest=pathed?0:m.kind==='zip'?110:m.seat>=0?26:70;   // the mount's anchor above the floor at rest
+ rideSound(m.art);
  const f=G.mountFlight={kind:'ride',mode:m.kind,art:m.art,from,to,land,dir,arrive:arriving?0:1,mount:0,u:0,t:0,lock:0,phase:0,
   dur:m.kind==='blink'?2:dist/(m.speed||1300),seat:m.kind==='zip'?-56:(m.seat||0),
   // Low enough that the road stays in view below (the view is VH units tall, the ground a fifth of it up).
@@ -412,7 +425,7 @@ function arrive(f,p){
  p.x=f.land.x;p.y=f.land.y;p.vx=0;p.vy=0;p.onGround=false;p.face=f.land.face;p.safeX=p.x;p.mergeHidden=false;
  // A mount that travels is perched where it set him down; the automaton stays where it threw him from.
  const m=mount();if(m&&travels(m)){store().perch[G.stageIndex]=m.staysBehind?f.from.id:f.to.id;keep();}
- G.mountFlight=null;BFKeyboard.clearPressed();
+ G.mountFlight=null;BFKeyboard.clearPressed();rideEnd();root.BladefallSfx?.play('land-hard',{gain:.7});
  try{m?.arrive?.(f.to);}catch(e){}
  if(typeof addText==='function')addText(p.x,GROUND_Y-p.y-70,f.to.label.toUpperCase(),m?.accent||'#d8b070',true);
 }

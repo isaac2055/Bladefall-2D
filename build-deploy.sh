@@ -40,10 +40,6 @@ ASSETS=(
   bladefall-workshop-sources.js
   bladefall-workshop-store.js
   bladefall-workshop-ui.js
-  coop-practice.html
-  bladefall-coop-practice-core.js
-  bladefall-coop-practice-session.js
-  bladefall-coop-practice-view.js
   bladefall-explore-finale.js
   bladefall-pcore-dev-finale.js
   bladefall-pcore-dev-finale-view.js
@@ -434,10 +430,9 @@ ASSETS=(
   audio/sfx/crumble.b.mp3
   audio/sfx/crumble.c.mp3
   audio/sfx/crumble.mp3
-  audio/sfx/dash-1.mp3
-  audio/sfx/dash-2.mp3
   audio/sfx/dash.b.mp3
   audio/sfx/dash.c.mp3
+  audio/sfx/dash.mp3
   audio/sfx/death.b.mp3
   audio/sfx/death.c.mp3
   audio/sfx/death.mp3
@@ -508,6 +503,24 @@ ASSETS=(
   audio/sfx/magic.b.mp3
   audio/sfx/magic.c.mp3
   audio/sfx/magic.mp3
+  audio/sfx/mount-ballista.b.mp3
+  audio/sfx/mount-ballista.c.mp3
+  audio/sfx/mount-ballista.mp3
+  audio/sfx/mount-dogs.b.mp3
+  audio/sfx/mount-dogs.c.mp3
+  audio/sfx/mount-dogs.mp3
+  audio/sfx/mount-drake.b.mp3
+  audio/sfx/mount-drake.c.mp3
+  audio/sfx/mount-drake.mp3
+  audio/sfx/mount-latch.b.mp3
+  audio/sfx/mount-latch.c.mp3
+  audio/sfx/mount-latch.mp3
+  audio/sfx/mount-lift.b.mp3
+  audio/sfx/mount-lift.c.mp3
+  audio/sfx/mount-lift.mp3
+  audio/sfx/mount-rocket.b.mp3
+  audio/sfx/mount-rocket.c.mp3
+  audio/sfx/mount-rocket.mp3
   audio/sfx/pack.b.mp3
   audio/sfx/pack.c.mp3
   audio/sfx/pack.mp3
@@ -532,6 +545,63 @@ ASSETS=(
   audio/sfx/quest.b.mp3
   audio/sfx/quest.c.mp3
   audio/sfx/quest.mp3
+  audio/sfx/ride-bolt.b.mp3
+  audio/sfx/ride-bolt.c.mp3
+  audio/sfx/ride-bolt.mp3
+  audio/sfx/ride-cage.b.mp3
+  audio/sfx/ride-cage.c.mp3
+  audio/sfx/ride-cage.mp3
+  audio/sfx/ride-cart.b.mp3
+  audio/sfx/ride-cart.c.mp3
+  audio/sfx/ride-cart.mp3
+  audio/sfx/ride-ceiling.b.mp3
+  audio/sfx/ride-ceiling.c.mp3
+  audio/sfx/ride-ceiling.mp3
+  audio/sfx/ride-cloak.b.mp3
+  audio/sfx/ride-cloak.c.mp3
+  audio/sfx/ride-cloak.mp3
+  audio/sfx/ride-crane.b.mp3
+  audio/sfx/ride-crane.c.mp3
+  audio/sfx/ride-crane.mp3
+  audio/sfx/ride-drake.b.mp3
+  audio/sfx/ride-drake.c.mp3
+  audio/sfx/ride-drake.mp3
+  audio/sfx/ride-ice.b.mp3
+  audio/sfx/ride-ice.c.mp3
+  audio/sfx/ride-ice.mp3
+  audio/sfx/ride-kite.b.mp3
+  audio/sfx/ride-kite.c.mp3
+  audio/sfx/ride-kite.mp3
+  audio/sfx/ride-mirror.b.mp3
+  audio/sfx/ride-mirror.c.mp3
+  audio/sfx/ride-mirror.mp3
+  audio/sfx/ride-moths.b.mp3
+  audio/sfx/ride-moths.c.mp3
+  audio/sfx/ride-moths.mp3
+  audio/sfx/ride-rocket.b.mp3
+  audio/sfx/ride-rocket.c.mp3
+  audio/sfx/ride-rocket.mp3
+  audio/sfx/ride-rope.b.mp3
+  audio/sfx/ride-rope.c.mp3
+  audio/sfx/ride-rope.mp3
+  audio/sfx/ride-seed.b.mp3
+  audio/sfx/ride-seed.c.mp3
+  audio/sfx/ride-seed.mp3
+  audio/sfx/ride-skiff.b.mp3
+  audio/sfx/ride-skiff.c.mp3
+  audio/sfx/ride-skiff.mp3
+  audio/sfx/ride-sled.b.mp3
+  audio/sfx/ride-sled.c.mp3
+  audio/sfx/ride-sled.mp3
+  audio/sfx/ride-sprint.b.mp3
+  audio/sfx/ride-sprint.c.mp3
+  audio/sfx/ride-sprint.mp3
+  audio/sfx/ride-throw.b.mp3
+  audio/sfx/ride-throw.c.mp3
+  audio/sfx/ride-throw.mp3
+  audio/sfx/ride-zip.b.mp3
+  audio/sfx/ride-zip.c.mp3
+  audio/sfx/ride-zip.mp3
   audio/sfx/rune.b.mp3
   audio/sfx/rune.c.mp3
   audio/sfx/rune.mp3

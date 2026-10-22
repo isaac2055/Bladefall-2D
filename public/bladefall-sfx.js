@@ -10,17 +10,19 @@
 'use strict';
 const BASE='./audio/sfx/',KEY='bladefall.sfx.mix.v1';
 // version A: name → number of takes on disk (1 = name.mp3; more = name-1.mp3 … name-n.mp3)
-const BANK=Object.freeze({bell:1,bolt:1,'boss-fall':1,'boss-roar':1,campfire:1,chain:1,chest:1,coin:1,coins:1,crumble:1,dash:2,death:1,door:1,
+const BANK=Object.freeze({bell:1,bolt:1,'boss-fall':1,'boss-roar':1,campfire:1,chain:1,chest:1,coin:1,coins:1,crumble:1,dash:1,death:1,door:1,
  'enemy-alert':1,'enemy-arrow':1,'enemy-die':2,'enemy-shot':1,fanfare:1,gate:1,gem:1,grab:1,gust:1,heal:1,'hit-armor':2,'hit-flesh':1,hurt:1,jump:2,key:1,
  'land-hard':1,'land-soft':2,lantern:1,lever:1,magic:1,pack:1,page:1,parry:1,plate:1,pod:1,portal:1,powerup:1,quest:1,rune:1,shatter:1,
  splash:1,spring:1,'step-dirt':3,'step-metal':3,'step-snow':3,'step-stone':2,'step-wood':3,'stone-hit':1,swing:2,switch:1,turret:1,'ui-move':1,
- 'ui-open':1,'ui-select':1,walljump:1,wallslide:1,zip:1});
+ 'ui-open':1,'ui-select':1,walljump:1,wallslide:1,zip:1,
+ 'ride-drake':1,'ride-moths':1,'ride-zip':1,'ride-kite':1,'ride-bolt':1,'ride-rope':1,'ride-cage':1,'ride-sled':1,'ride-ice':1,'ride-cart':1,'ride-throw':1,'ride-ceiling':1,'ride-mirror':1,'ride-sprint':1,'ride-skiff':1,'ride-rocket':1,'ride-crane':1,'ride-cloak':1,'ride-seed':1,'mount-drake':1,'mount-ballista':1,'mount-rocket':1,'mount-latch':1,'mount-dogs':1,'mount-lift':1});
 // relative loudness of each clip (they are all peak-normalised on disk)
 const LEVEL=Object.freeze({'step-dirt':.32,'step-stone':.3,'step-wood':.32,'step-metal':.26,'step-snow':.34,jump:.4,'land-soft':.42,'land-hard':.6,
  dash:.5,walljump:.45,grab:.4,wallslide:.3,swing:.55,'hit-flesh':.45,'hit-armor':.55,parry:.6,'enemy-die':.5,hurt:.6,death:.7,bolt:.5,'enemy-shot':.4,
  'enemy-arrow':.4,turret:.45,'enemy-alert':.35,magic:.45,'boss-roar':.8,'boss-fall':.8,coin:.45,coins:.5,gem:.45,key:.5,chest:.6,gate:.65,door:.55,lever:.55,plate:.45,
  switch:.45,crumble:.5,bell:.6,campfire:.5,heal:.5,powerup:.5,portal:.55,chain:.45,lantern:.5,page:.45,quest:.5,zip:.45,pod:.5,'stone-hit':.55,
- rune:.5,'ui-move':.25,'ui-select':.3,'ui-open':.35,splash:.55,spring:.5,pack:.35,fanfare:.55,shatter:.5,gust:.5});
+ rune:.5,'ui-move':.25,'ui-select':.3,'ui-open':.35,splash:.55,spring:.5,pack:.35,fanfare:.55,shatter:.5,gust:.5,
+ 'ride-drake':.4,'ride-moths':.4,'ride-zip':.4,'ride-kite':.4,'ride-bolt':.4,'ride-rope':.4,'ride-cage':.4,'ride-sled':.4,'ride-ice':.4,'ride-cart':.4,'ride-throw':.4,'ride-ceiling':.4,'ride-mirror':.4,'ride-sprint':.4,'ride-skiff':.4,'ride-rocket':.4,'ride-crane':.4,'ride-cloak':.4,'ride-seed':.4,'mount-drake':.55,'mount-ballista':.55,'mount-rocket':.55,'mount-latch':.55,'mount-dogs':.55,'mount-lift':.55});
 const BEDS=Object.freeze(['plains','forest','heights','cave','forge','snow','shore','hall','void','dungeon']);
 // how loud each bed sits under the music by default (7.367: all quieter; the forest's insects much quieter)
 const BEDLEVEL=Object.freeze({plains:.55,forest:.28,heights:.45,cave:.5,forge:.45,snow:.45,shore:.5,hall:.5,void:.4,dungeon:.4});
@@ -30,6 +32,7 @@ const DEFAULT_MIX=Object.freeze({sounds:{},beds:{}});
 const GROUPS=[['Movement',['step-stone','step-dirt','step-wood','step-metal','step-snow','jump','land-soft','land-hard','dash','walljump','grab','wallslide','spring','splash','pack','zip']],
  ['Combat',['swing','bolt','hit-flesh','hit-armor','parry','hurt','death','enemy-alert','enemy-shot','enemy-arrow','turret','enemy-die','magic','boss-roar','boss-fall']],
  ['World',['coin','coins','gem','key','chest','gate','door','lever','plate','switch','crumble','stone-hit','pod','rune','bell','campfire','heal','powerup','portal','chain','lantern','page','quest','shatter','gust','fanfare']],
+ ['Shortcuts (Explore rides)',['ride-drake','ride-moths','ride-zip','ride-kite','ride-bolt','ride-rope','ride-cage','ride-sled','ride-ice','ride-cart','ride-throw','ride-ceiling','ride-mirror','ride-sprint','ride-skiff','ride-rocket','ride-crane','ride-cloak','ride-seed','mount-drake','mount-ballista','mount-rocket','mount-latch','mount-dogs','mount-lift']],
  ['Menus',['ui-move','ui-select','ui-open']]];
 const LABEL={'step-stone':'Footsteps · stone','step-dirt':'Footsteps · dirt','step-wood':'Footsteps · wood','step-metal':'Footsteps · metal','step-snow':'Footsteps · snow',
  jump:'Jump','land-soft':'Landing','land-hard':'Hard landing',dash:'Dash',walljump:'Wall jump',grab:'Ledge grab',wallslide:'Wall slide',spring:'Spring / boost pad',
@@ -38,7 +41,8 @@ const LABEL={'step-stone':'Footsteps · stone','step-dirt':'Footsteps · dirt','
  'enemy-die':'Enemy defeated',magic:'Magic','boss-roar':'Boss roar','boss-fall':'Boss falls',coin:'Coin',coins:'Purchase',gem:'Crystal / shard',key:'Key',chest:'Chest',
  gate:'Stone gate',door:'Door',lever:'Lever',plate:'Pressure plate',switch:'Switch',crumble:'Crumbling ground','stone-hit':'Stone block',pod:'Seed pod',rune:'Rune / secret',
  bell:'Bell',campfire:'Checkpoint fire',heal:'Heal / revive',powerup:'Power-up / level up',portal:'Portal',chain:'Chain lift',lantern:'Lantern',page:'Notes and signs',
- quest:'Task done',shatter:'Lantern breaks',gust:'Wind gate',fanfare:'Victory','ui-move':'Menu tick','ui-select':'Menu confirm','ui-open':'Someone greets you'};
+ quest:'Task done',shatter:'Lantern breaks',gust:'Wind gate',fanfare:'Victory','ui-move':'Menu tick','ui-select':'Menu confirm','ui-open':'Someone greets you',
+ 'ride-drake':'Bellwing in flight','ride-moths':'Moth swarm','ride-zip':'Chain trolley','ride-kite':'Kite','ride-bolt':'Riding the ballista bolt','ride-rope':'Bell-ropes','ride-cage':'Cage run','ride-sled':'Dog sled','ride-ice':'Winter Road slide','ride-cart':'Quota cart','ride-throw':'Automaton’s throw','ride-ceiling':'Ceiling Way','ride-mirror':'Mirror crossing','ride-sprint':'Last Alarm sprint','ride-skiff':'Sky skiff','ride-rocket':'Birthday rocket','ride-crane':'Paper crane','ride-cloak':'Feather cloak','ride-seed':'Moonflower drift','mount-drake':'Bellwing takes off','mount-ballista':'Ballista fires','mount-rocket':'Rocket lights','mount-latch':'Trolley / cage / cart latch','mount-dogs':'Sled dogs set off','mount-lift':'Lift-off'};
 const BEDLABEL={plains:'Open fields',forest:'Black Woods (night insects)',heights:'High wind',cave:'Caves',forge:'Fire and lava',snow:'Snow wind',shore:'Shore waves',
  hall:'Palace halls',void:'Fractured / void',dungeon:'Dungeon'};
 let mix=load();
@@ -65,7 +69,7 @@ function fetchBuffer(path){
   .then(buf=>{buffers.set(path,buf);pending.delete(path);return buf;}).catch(()=>{buffers.set(path,null);pending.delete(path);return null;});
  pending.set(path,p);return p;
 }
-function preload(names){for(const n of names||Object.keys(BANK))for(const p of paths(n))fetchBuffer(p);}
+function preload(names){for(const n of names||Object.keys(BANK).filter(n=>!n.startsWith('ride-')))for(const p of paths(n))fetchBuffer(p);}
 function has(name){return !!BANK[name];}
 function on(){try{return settings.enabled()!==false;}catch(_e){return true;}}
 function start(buf,name,opts){
@@ -89,6 +93,16 @@ function play(name,opts={}){
  if(buf===undefined){fetchBuffer(path).then(b=>{if(b)start(b,name,opts);});return true;}   // first use: plays as soon as it decodes
  if(!buf)return false;
  return start(buf,name,opts);
+}
+/* (7.370) A looping sound for as long as something lasts (a shortcut ride): loop(name) starts it and returns a stop(fade)
+   function. It follows the sound's mixer version and volume like play(). */
+function loop(name,opts={}){
+ const none=()=>{};if(!BANK[name]||!on()||vol(name)<=0)return none;const a=ac();if(!a)return none;if(a.state!=='running')a.resume().catch(()=>{});
+ let src=null,g=null,stopped=false;const path=paths(name)[0];
+ fetchBuffer(path).then(buf=>{if(!buf||stopped)return;try{let master=1;try{master=+settings.volume();}catch(_e){}
+  g=a.createGain();g.gain.value=0;g.connect(out);src=a.createBufferSource();src.buffer=buf;src.loop=true;src.connect(g);src.start();
+  ramp(g.gain,Math.max(0,Math.min(2,(LEVEL[name]??.4)*(opts.gain??1)*vol(name)*master)),.15);}catch(_e){}});
+ return (fade=.5)=>{stopped=true;if(g)ramp(g.gain,0,fade/3);const s=src;setTimeout(()=>{try{s?.stop();}catch(_e){}},fade*1000+200);};
 }
 /* Ambient bed: one 20 s loop at a time, crossfaded. ambience(null) fades it out. */
 function bedTarget(name,gain=1){let level=.5;try{level=+settings.ambienceVolume()*(settings.ambience()!==false&&on()?1:0);}catch(_e){}return Math.max(0,Math.min(1,level*gain*(BEDLEVEL[name]??.5)*bedVol(name)));}
@@ -161,5 +175,5 @@ function openMixer(){
   else if(x==='reset'){if(root.confirm('Put every sound back to its default version and volume?')){resetMix();openMixer();}}});
  document.body.append(el);wake();
 }
-root.BladefallSfx=Object.freeze({play,has,preload,ambience,configure,state,forTheme,forWorld,openMixer,exportMix,importMix,resetMix,BANK,BEDS});
+root.BladefallSfx=Object.freeze({play,loop,has,preload,ambience,configure,state,forTheme,forWorld,openMixer,exportMix,importMix,resetMix,BANK,BEDS});
 })(globalThis);
