@@ -340,6 +340,13 @@ D.vey = (k, s) => {
   k.R(-3, sh - 5, 6, 1, R.l); k.P(3, sh - 5, R.c);
   for(let i = 0; i < 7; i++){ const w = Math.round(Math.sin(k.t * 4.2 + s.ph - i * .75) * (i * .3)); k.P(-4 - i, sh - 5 + (i >> 1) + w, i % 2 ? R.c : R.l); if(i < 5) k.P(-4 - i, sh - 4 + (i >> 1) + w, R.d); }
   // what her free hand holds, by region
+  if(low && !s.prop){   // (7.372) her fire ("the fire's for anyone"): stones, crossed logs, flames, embers rising, its glow
+    const fx = 14; k.glow(fx, -5, 34, '255,150,70', .28); k.glow(fx, -4, 12, '255,210,140', .3);
+    for(const [dx, c] of [[-4, '#6a645c'], [-2, '#7a746a'], [2, '#6a645c'], [4, '#5a554e']]) k.R(fx + dx, -2, 2, 2, c);
+    k.L(fx - 3, -1, fx + 3, -3, 1, WOOD.d); k.L(fx - 3, -3, fx + 3, -1, 1, WOOD.c);
+    const fl = k.t * 9 + s.ph * 5; k.R(fx - 1, -5, 3, 3, '#ff8a30'); k.R(fx, -7 - (Math.sin(fl) > .3 ? 1 : 0), 1, 3, '#ffc040'); k.P(fx - 1, -6 - (Math.sin(fl * 1.3) > 0 ? 1 : 0), '#ff7a2a'); k.P(fx + 1, -6 - (Math.sin(fl * .8 + 1) > .2 ? 1 : 0), '#ffb040'); k.P(fx, -4, '#fff4c0');
+    for(let i = 0; i < 3; i++){ const q = (k.t * .7 + i / 3 + s.ph) % 1; k.alpha(1 - q, () => k.P(fx + Math.round(Math.sin(q * 7 + i * 2) * 2), -8 - Math.round(q * 14), q < .5 ? '#ffb040' : '#ff7030')); }
+  }
   if(s.prop === 'keys'){ const kx = 7, ky = sh + 11; k.L(4, sh + 2, 6, ky - 2, 2, J.c); hand(k, 5, ky - 2, sk);
     k.R(kx - 1, ky, 5, 1, BRASS.c); k.R(kx - 1, ky, 1, 4, BRASS.c); k.R(kx + 3, ky, 1, 4, BRASS.c); k.R(kx - 1, ky + 3, 5, 1, BRASS.d);
     const sw = Math.round(Math.sin(k.t * 2.4 + s.ph)); k.R(kx + 1 + sw, ky + 4, 1, 4, BRASS.l); k.R(kx + 1 + sw, ky + 7, 2, 1, BRASS.c); k.R(kx - 2 - sw, ky + 4, 1, 3, BRASS.c); }

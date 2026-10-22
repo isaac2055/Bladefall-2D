@@ -432,6 +432,7 @@ ASSETS=(
   audio/sfx/crumble.mp3
   audio/sfx/dash.b.mp3
   audio/sfx/dash.c.mp3
+  audio/sfx/dash.d.mp3
   audio/sfx/dash.mp3
   audio/sfx/death.b.mp3
   audio/sfx/death.c.mp3

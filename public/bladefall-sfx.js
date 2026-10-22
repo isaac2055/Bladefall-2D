@@ -48,7 +48,9 @@ const BEDLABEL={plains:'Open fields',forest:'Black Woods (night insects)',height
 let mix=load();
 function load(){let m=null;try{m=JSON.parse(root.localStorage?.getItem(KEY)||'null');}catch(_e){}return {sounds:{...DEFAULT_MIX.sounds,...(m?.sounds||{})},beds:{...DEFAULT_MIX.beds,...(m?.beds||{})}};}
 function save(){try{root.localStorage?.setItem(KEY,JSON.stringify(mix));}catch(_e){}}
-const pick=name=>Math.max(0,Math.min(2,mix.sounds[name]?.v|0)),vol=name=>mix.sounds[name]?.vol??1,bedVol=b=>mix.beds[b]??1;
+// (7.372) how many versions a sound has (A, B, C; the dash also D, the old second take)
+const NVER={dash:4},nver=n=>NVER[n]||3;
+const pick=name=>Math.max(0,Math.min(nver(name)-1,mix.sounds[name]?.v|0)),vol=name=>mix.sounds[name]?.vol??1,bedVol=b=>mix.beds[b]??1;
 let ctx=null,out=null,bedBus=null,settings={enabled:()=>true,volume:()=>.8,ambience:()=>true,ambienceVolume:()=>.5};
 const buffers=new Map(),pending=new Map(),turn=new Map(),lastAt=new Map();
 let bed=null,preloaded=false;   // bed: {name,src,gain}
@@ -61,7 +63,7 @@ function ramp(param,v,tc){try{if(param.setTargetAtTime)param.setTargetAtTime(v,c
 // (7.367) the first touch or key wakes the audio and decodes every chosen clip, so no sound is silent on its first use
 function wake(){const a=ac();if(a&&a.state!=='running')a.resume().catch(()=>{});if(a&&!preloaded){preloaded=true;preload();}}
 if(typeof document!=='undefined')for(const t of ['pointerdown','touchend','keydown'])document.addEventListener(t,wake,{capture:true,passive:true});
-function paths(name,v=pick(name)){return v?[BASE+name+(v===1?'.b':'.c')+'.mp3']:Array.from({length:BANK[name]},(_,i)=>BASE+name+(BANK[name]>1?'-'+(i+1):'')+'.mp3');}
+function paths(name,v=pick(name)){return v?[BASE+name+'.'+'abcd'[v]+'.mp3']:Array.from({length:BANK[name]},(_,i)=>BASE+name+(BANK[name]>1?'-'+(i+1):'')+'.mp3');}
 function fetchBuffer(path){
  if(buffers.has(path))return Promise.resolve(buffers.get(path));if(pending.has(path))return pending.get(path);
  const a=ac();if(!a||!root.fetch)return Promise.resolve(null);
@@ -149,19 +151,20 @@ function openMixer(){
 #bfSfxMixer header{display:flex;gap:8px;align-items:center;padding:10px 12px;border-bottom:1px solid #2c3a50;flex-wrap:wrap}#bfSfxMixer header b{flex:1}
 #bfSfxMixer .list{overflow:auto;padding:4px 12px 12px}#bfSfxMixer h3{margin:14px 0 6px;font-size:13px;color:#9fb6d6;text-transform:uppercase;letter-spacing:.05em}
 #bfSfxMixer .row{display:grid;grid-template-columns:1fr auto auto minmax(90px,170px) 44px;gap:8px;align-items:center;padding:3px 0}
-#bfSfxMixer button,#bfSfxMixer select{background:#22314a;color:#e8eef7;border:1px solid #4a6286;border-radius:4px;padding:4px 8px;font:inherit}
+#bfSfxMixer [data-v] button{padding:4px 7px;margin-right:2px}#bfSfxMixer button,#bfSfxMixer select{background:#22314a;color:#e8eef7;border:1px solid #4a6286;border-radius:4px;padding:4px 8px;font:inherit}
 #bfSfxMixer input[type=range]{width:100%}#bfSfxMixer .pct{text-align:right;font-variant-numeric:tabular-nums;color:#bcd}
 #bfSfxMixer textarea{width:100%;height:80px;background:#0d131c;color:#dfe;border:1px solid #3a4a62;font:12px monospace}
 #bfSfxMixer small{color:#8fa3bf}@media(max-width:560px){#bfSfxMixer .row{grid-template-columns:1fr auto auto;}#bfSfxMixer .row input,#bfSfxMixer .row .pct{grid-column:span 1}}</style>
 <div class="box"><header><b>Sound mixer</b><button data-x="export">Export</button><button data-x="import">Import</button><button data-x="reset">Reset all</button><button data-x="close">Done</button></header>
-<div class="list"><small>Pick a version (A, B or C) and a volume for each sound; ▶ plays it. Changes apply at once and are kept on this device. Export gives a text you can send to make your mix the game's default.</small><div data-io hidden><textarea data-text></textarea><button data-x="apply">Apply pasted mix</button></div><div data-rows></div></div></div>`;
+<div class="list"><small>Pick a version (A, B or C; tap to hear it) and a volume for each sound; ▶ plays it. Changes apply at once and are kept on this device. Export gives a text you can send to make your mix the game's default.</small><div data-io hidden><textarea data-text></textarea><button data-x="apply">Apply pasted mix</button></div><div data-rows></div></div></div>`;
  const rows=el.querySelector('[data-rows]'),row=(label,id,isBed)=>{const r=document.createElement('div');r.className='row';
   const v=isBed?null:pick(id),volume=isBed?bedVol(id):vol(id);
-  r.innerHTML=`<span>${label}</span>${isBed?'<span></span>':`<select data-v>${['A','B','C'].map((t,i)=>`<option value="${i}" ${i===v?'selected':''}>${t}</option>`).join('')}</select>`}<button data-t>▶</button><input type="range" min="0" max="200" step="5" value="${Math.round(volume*100)}"><span class="pct">${Math.round(volume*100)}%</span>`;
+  r.innerHTML=`<span>${label}</span>${isBed?'<span></span>':`<span data-v>${'ABCD'.slice(0,nver(id)).split('').map((t,i)=>`<button data-vi="${i}" style="${i===v?'background:#4a7ad0;border-color:#9cc0ff':''}">${t}</button>`).join('')}</span>`}<button data-t>▶</button><input type="range" min="0" max="200" step="5" value="${Math.round(volume*100)}"><span class="pct">${Math.round(volume*100)}%</span>`;
   const range=r.querySelector('input'),pct=r.querySelector('.pct');
   range.oninput=()=>{const x=+range.value/100;pct.textContent=range.value+'%';if(isBed){mix.beds[id]=x;refresh();}else mix.sounds[id]={...(mix.sounds[id]||{}),vol:x};save();};
   r.querySelector('[data-t]').onclick=()=>isBed?testBed(id):test(id);
-  if(!isBed)r.querySelector('[data-v]').onchange=e=>{mix.sounds[id]={...(mix.sounds[id]||{}),v:+e.target.value};save();preload([id]);test(id);};
+  if(!isBed)r.querySelectorAll('[data-vi]').forEach(b=>b.onclick=()=>{const vi=+b.dataset.vi;mix.sounds[id]={...(mix.sounds[id]||{}),v:vi};save();preload([id]);test(id);
+   r.querySelectorAll('[data-vi]').forEach(o=>o.style.cssText=+o.dataset.vi===vi?'background:#4a7ad0;border-color:#9cc0ff':'');});
   return r;};
  for(const [g,names] of GROUPS){const h=document.createElement('h3');h.textContent=g;rows.append(h);for(const n of names)if(BANK[n])rows.append(row(LABEL[n]||n,n,false));}
  const h=document.createElement('h3');h.textContent='Ambient sounds';rows.append(h);for(const b of BEDS)rows.append(row(BEDLABEL[b]||b,b,true));

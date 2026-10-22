@@ -1,3 +1,9 @@
+## 7.372.0: mixer version buttons, dash D, Vey's fire, jump 90%, falls rewind locally (2026-10-22, Claude, cloud session)
+- Sound mixer: the version <select> could not be opened in the game (Isaac); replaced by A/B/C buttons (tap plays it). The dash has a D: the old second take (audio/sfx/dash.d.mp3, `NVER`).
+- Vey (seated, Outskirts) has her campfire drawn beside her (resident-art).
+- Explore jump-height default 90% (`meta.exploreJumpHeight ?? .9`).
+- hurtPlayer's non-real-damage branch (pit falls, hazards): if he survives, he goes back to the ground he stood on ~0.5 s before (`p.safeTrail`, recorded every .15 s on solid, non-moving ground in update()); the room is not reset. Only a fall that kills him goes to the checkpoint. Watched routes/bots and co-op keep the old checkpoint rewind.
+
 ## 7.371.0: busy work as routines (Outskirts and Black Woods) (2026-10-22, Claude, cloud session)
 - bladefall-resident-art.js: `routine(t, ph, variants)` runs a loop of named beats with eased progress (variants of equal length picked per loop, seeded per person), `swing(u, up, down)` for there-and-back moves. Isaac asked for more realistic busy animations, Outskirts and Black Woods first, and will give feedback before the rest.
   - Rowan: whetstone strokes up the edge (contact, lift off, spark), lifts the spear to sight it and thumb the edge, glances down the road.
