@@ -379,6 +379,7 @@ function tick(input){
   if(r.i>r.frames.length+90){if(takeoverOK())takeOver();else{retryRoom();root.BladefallPitchView?.climb?.announce?.('Your turn',150);return;}}
  }
  if(!view.replay)SV()?.frame(g.room.id);
+ g.touchClimb=touchUI()&&!view.replay;   // (7.374.1) touch-only climbing; watched routes replay as authored
  const recorded=!view.replay&&root.BladefallRouteRecording?.before(g,inp);C.step(g,inp);if(recorded)root.BladefallRouteRecording.after(g);if(!view.replay&&root.BLADEFALL_WORKSHOP_PLAY)root.BladefallWorkshopRoutes?.frame(g,inp);view.chapterStats.frames++;if(g.awake!==false)view.roomTimer++;
  for(const e of g.events)handleEvent(e);
  g.events.length=0;footsteps(g);ambienceFor();

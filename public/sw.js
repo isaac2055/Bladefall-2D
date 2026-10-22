@@ -1,7 +1,7 @@
 /* Bladefall service worker — offline play + fast reloads once installed.
    Bump CACHE_NAME on a deploy where you want returning players to pick up
    the change immediately instead of waiting on the network-first refresh. */
-const CACHE_NAME = 'bladefall-v546-walk-seams';
+const CACHE_NAME = 'bladefall-v547-desktop-climb';
 const CORE_ASSETS = [
   './bladefall-pcore-dev-workshop-room.js?v=7.374.0','./bladefall-workshop-ascend-coop-core.js?v=7.336.0','./bladefall-workshop-ascend-play.js?v=7.335.0','./bladefall-workshop-ascend.js?v=7.335.0','./bladefall-workshop-applied.js?v=7.366.0','./bladefall-workshop-bridge.js?v=7.366.0','./bladefall-workshop-routes.js?v=7.340.0','./bladefall-route-solver.js?v=7.340.0','./bladefall-explore-routes.js?v=7.344.0','./bladefall-workshop-cloud.js?v=7.335.0','./bladefall-workshop-cobuild.js?v=7.335.0','./bladefall-workshop-collaboration.js?v=7.335.0','./bladefall-workshop-explore-runtime.js?v=7.363.0','./bladefall-workshop-explore.js?v=7.363.0','./bladefall-workshop-library.js?v=7.335.0','./bladefall-workshop-model.js?v=7.335.0','./bladefall-workshop-native-play.js?v=7.335.0','./bladefall-workshop-network.js?v=7.335.0','./bladefall-workshop-play-link.js?v=7.335.0','./bladefall-workshop-properties.js?v=7.335.0','./bladefall-workshop-render.js?v=7.335.0','./bladefall-workshop-sandbox.js?v=7.335.0','./bladefall-workshop-selection.js?v=7.335.0','./bladefall-workshop-sources.js?v=7.340.0','./bladefall-workshop-store.js?v=7.335.0','./bladefall-workshop-ui.js?v=7.366.0',
   './bladefall-route-recording.js?v=7.334.0','./bladefall-pcore-test-tools.js?v=7.335.0',
@@ -122,7 +122,7 @@ const CORE_ASSETS = [
   './bladefall-fractured-palace.js?v=7.304.0',
   './bladefall-fractured-palace-art.js?v=7.220.2',
   './precision.html',
-  './bladefall-pcore.js?v=7.374.0',
+  './bladefall-pcore.js?v=7.374.1',
   './bladefall-pcore-foes.js?v=7.335.0',
   './bladefall-pcore-foes-view.js?v=7.270.art2',
   './bladefall-pcore-portals.js?v=7.335.0',
@@ -253,7 +253,7 @@ const CORE_ASSETS = [
   './bladefall-rbr-39-f-path.js?v=7.280.0',
   './bladefall-rbr-40-f-sunspire.js?v=7.365.0',
   // rbr-regions:end
-  './bladefall-pcore-view.js?v=7.373.0',
+  './bladefall-pcore-view.js?v=7.374.1',
   './bladefall-pcore-combat.js?v=7.335.0',
   './bladefall-pcore-combat-rooms.js?v=7.250.0',
   './bladefall-pcore-combat-tapes.js?v=7.250.0',

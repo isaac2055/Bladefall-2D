@@ -1,3 +1,10 @@
+## 7.374.1: climbing by holding Up is touch-only again; every watch route plays (2026-10-22, Claude)
+
+- **What broke `verify:watch` (71 skipped routes).** Bisected to 7.369.0 (92b7979): "climb by holding Up" changed `bladefall-pcore.js` for every player. Up alone grabbed walls, climbing went from -45 to -60 px/s, and climbing up cost no stamina. Every intended route was recorded under the old rules: tapes that hold Up while jumping or aiming caught walls, and authored climbs topped out early.
+- **Isaac's ruling.** Holding Up to climb is for mobile only. On desktop you still hold grab, and the climb stays timed (stamina) as before.
+- **The fix.** These three rules apply only when `g.touchClimb` is set. The view sets it each tick from `touchUI()`, never during a watched replay (`bladefall-pcore-view.js` tick). `K.climbUpSpeed` is back to -45; `K.touchClimbUpSpeed` is -60. No tapes or geometry changed.
+- **Checks.** `npm run verify:watch` passes for all worlds and Cores (it failed on 7.369 through 7.374.0).
+
 ## 7.374.0: walk through every Ascend doorway without jumping (2026-10-22, Claude)
 
 - **The bug.** Atlas sockets were authored two ways: `floor` is either the row the feet stand on, or the row above it. The walking-seam test in `boundsBlock` (`bladefall-pcore.js`) and `passageWalk` (`bladefall-climb-view.js`) wanted the feet within a pixel of `floor*8`, so a walker was refused at half of those doorways until a jump happened to line him up. That is why it "sometimes randomly worked".

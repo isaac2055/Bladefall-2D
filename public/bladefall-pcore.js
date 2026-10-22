@@ -22,7 +22,7 @@ const K=Object.freeze({
  wallJumpCheck:3,superWallJumpCheck:5,wallJumpForceFrames:f(.16),wallJumpH:130,
  wallSlideStartMax:20,wallSlideFrames:f(1.2),wallSpeedRetentionFrames:4,
  climbMaxStamina:110,climbUpCost:100/2.2,climbStillCost:100/10,climbJumpCost:110/4,climbTired:20,
- climbUpSpeed:-60,climbDownSpeed:80,climbSlipSpeed:30,climbAccel:900,climbCheck:2,
+ climbUpSpeed:-45,touchClimbUpSpeed:-60,climbDownSpeed:80,climbSlipSpeed:30,climbAccel:900,climbCheck:2,
  climbHopX:100,climbHopY:-120,climbHopForceFrames:f(.2),climbJumpBoostFrames:f(.2),climbNoMoveFrames:f(.1),
  dashSpeed:240,endDashSpeed:160,endDashUpMult:.75,dashFrames:f(.15),dashCooldownFrames:f(.2),
  dashRefillCooldownFrames:f(.1),dashFreezeFrames:3,ultraMult:1.2,
@@ -512,8 +512,9 @@ function normalUpdate(g,p,inp){
   lan.x=p.x;lan.y=p.y-8;if(solidAt(g,lan.x,lan.y,8,8)){lan.y=p.y;if(solidAt(g,lan.x,lan.y,8,8)){lan.x=p.x;lan.y=p.y+3;}}
   lan.remX=lan.remY=0;emit(g,'throw',{dir:p.facing});
  }
- // (7.369) Holding Up against a wall climbs it, as if grab were held (not when a dash is pressed: up-dashes along walls stay).
- const upGrab=!inp.grab&&inp.my<0&&g.buf.dash<=0&&!p.carrying&&climbCheck(g,p,p.facing);
+ // (7.369) On touch controls, holding Up against a wall climbs it, as if grab were held (not when a dash is pressed:
+ // up-dashes along walls stay). (7.374.1) Keyboard and pad keep grab, as authored; g.touchClimb is set by the view.
+ const upGrab=g.touchClimb&&!inp.grab&&inp.my<0&&g.buf.dash<=0&&!p.carrying&&climbCheck(g,p,p.facing);
  if((inp.grab&&p.vy>=0||upGrab)&&!p.carrying&&p.stamina>=K.climbTired&&sign(p.vx)!==-p.facing){
   if(climbCheck(g,p,p.facing)){enterClimb(g,p);return climbUpdate(g,p,inp);}
   // Climb snap: a wall just above the hands pulls you up to it.
@@ -564,7 +565,7 @@ function enterClimb(g,p){
  emit(g,'grab',{x:p.x+(p.facing>0?8:0),y:p.y+4});
 }
 function climbUpdate(g,p,inp){
- if(!(inp.grab||inp.my<0)||p.carrying){p.state='normal';return;}
+ if(!(inp.grab||g.touchClimb&&inp.my<0)||p.carrying){p.state='normal';return;}
  if(g.buf.jump>0){
   if(inp.mx===-p.facing)wallJump(g,p,inp,-p.facing);else climbJump(g,p,inp);
   return;
@@ -580,7 +581,7 @@ function climbUpdate(g,p,inp){
  if(p.climbNoMove<=0){
   if(inp.my<0){
    // Blocked head: hold still. Wall ends at the head: climb hops over above.
-   if(solidAt(g,p.x,p.y-1,p.w,p.h)){target=0;}else{target=K.climbUpSpeed;cost=0;}   // (7.369) climbing up is free: tall walls no longer slip you back down
+   if(solidAt(g,p.x,p.y-1,p.w,p.h)){target=0;}else{target=g.touchClimb?K.touchClimbUpSpeed:K.climbUpSpeed;cost=g.touchClimb?0:K.climbUpCost;}   // (7.369) on touch, climbing up is faster and free; keyboard keeps the timed climb
   }else if(inp.my>0){target=K.climbDownSpeed;cost=0;}
  }
  if(p.stamina<=0){target=K.climbSlipSpeed;}
