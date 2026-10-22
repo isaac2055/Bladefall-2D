@@ -55,7 +55,7 @@ function ac(){
 }
 function ramp(param,v,tc){try{if(param.setTargetAtTime)param.setTargetAtTime(v,ctx.currentTime,tc);else param.value=v;}catch(_e){try{param.value=v;}catch(_e2){}}}
 // (7.367) the first touch or key wakes the audio and decodes every chosen clip, so no sound is silent on its first use
-function wake(){const a=ac();if(a&&a.state==='suspended')a.resume().catch(()=>{});if(a&&!preloaded){preloaded=true;preload();}}
+function wake(){const a=ac();if(a&&a.state!=='running')a.resume().catch(()=>{});if(a&&!preloaded){preloaded=true;preload();}}
 if(typeof document!=='undefined')for(const t of ['pointerdown','touchend','keydown'])document.addEventListener(t,wake,{capture:true,passive:true});
 function paths(name,v=pick(name)){return v?[BASE+name+(v===1?'.b':'.c')+'.mp3']:Array.from({length:BANK[name]},(_,i)=>BASE+name+(BANK[name]>1?'-'+(i+1):'')+'.mp3');}
 function fetchBuffer(path){
@@ -81,8 +81,9 @@ function start(buf,name,opts){
 /* opts: gain (×LEVEL), rate, pan (-1…1), detune (random ± rate spread), gap (min ms between repeats of this name) */
 function play(name,opts={}){
  if(!BANK[name])return false;if(!on())return true;if(vol(name)<=0)return true;
- const a=ac();if(!a)return false;if(a.state==='suspended')a.resume().catch(()=>{});
- const now=a.currentTime*1000,gap=opts.gap??35;if(now-(lastAt.get(name)??-1e9)<gap)return true;lastAt.set(name,now);
+ const a=ac();if(!a)return false;if(a.state!=='running')a.resume().catch(()=>{});
+ // (7.368) wall-clock gap: the audio clock stops while the context is suspended, and every later play looked like a repeat
+ const now=root.performance?root.performance.now():Date.now(),gap=opts.gap??35;if(now-(lastAt.get(name)??-1e9)<gap)return true;lastAt.set(name,now);
  const list=paths(name),i=(turn.get(name)||0)%list.length;turn.set(name,i+1);
  const path=list[i],buf=buffers.get(path);
  if(buf===undefined){fetchBuffer(path).then(b=>{if(b)start(b,name,opts);});return true;}   // first use: plays as soon as it decodes

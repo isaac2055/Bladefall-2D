@@ -365,7 +365,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-advancement.js"></script>
 <script src="bladefall-journey.js?v=7.234.0"></script>
 <script src="bladefall-voice.js?v=7.367.1"></script>
-<script src="bladefall-sfx.js?v=7.367.0"></script>
+<script src="bladefall-sfx.js?v=7.368.0"></script>
 <script src="bladefall-conversation.js?v=7.360.0"></script>
 <script src="bladefall-side-stories.js?v=7.361.0"></script>
 <script src="bladefall-opening-stories.js?v=7.234.0"></script>
@@ -470,7 +470,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.367.1';globalThis.BLADEFALL_VERSION=VERSION;
+const VERSION='7.368.0';globalThis.BLADEFALL_VERSION=VERSION;
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -2764,6 +2764,9 @@ function updateLevel1Footsteps(p,dt){
 }
 /* (7.366) Recorded sounds (bladefall-sfx.js) for every region. The opening regions keep their chainmail samples above;
    the synthesized sounds below stay as the fallback when a clip is missing. */
+/* (7.368) Explore's dash-distance setting (5–100%): split evenly between the dash's length and its speed (√ each),
+   so the exit speed drops too and a short dash does not slide on afterwards. */
+function exploreDashScale(){return Math.sqrt(Math.max(.05,Math.min(1,meta.exploreDashReach??1)));}
 function sfxPlay(name,x,o){
   const X=globalThis.BladefallSfx;if(!X||!X.has(name))return false;
   if(watchLike()||!meta.soundOn||(mode!=='play'&&!(o&&o.ui)))return true;
@@ -17619,12 +17622,12 @@ function update(dt){
   if((movement.dash||testDash)&&(!window.BladefallCeleste||BladefallCeleste.labCanDash())&&p.dashBuf>0&&p.dodgeCdT<=0&&p.dodgeTimer<=0&&!G.cartMode&&!(p._flungT>0)&&!(p.airDashUsed&&!p.onGround)){
     p.dashBuf=0;
     p.dodgeCdT=meta.testMode?0:effDodgeCd(p);
-    p.dodgeTimer=movement.tuning.dashDurationSeconds*Math.max(.3,Math.min(1,meta.exploreDashReach??1));   // (7.367) Explore's dash-distance setting
+    p.dodgeTimer=movement.tuning.dashDurationSeconds*exploreDashScale();   // (7.367) Explore's dash-distance setting
     p.dashX=mx||p.face;
     p.dashUp=!!(input.jz<-.5||(watchLike()?tasInjected?.held?.up:(BFKeyboard.isDown('ArrowUp')||BFPad.isDown('aimup'))));
     if(!p.onGround||p.dashUp)p.airDashUsed=true;
     p.dashDiagonal=p.dashUp&&Math.abs(mx)>.25;
-    if(p.dashUp){p.dashX=p.dashDiagonal?Math.sign(mx):0;p.onGround=false;p.floorPlat=null;p.vy=-680*(p.dashDiagonal?Math.SQRT1_2:1);p.vx=p.dashX*spd*movement.tuning.dashSpeedMultiplier*Math.SQRT1_2;}
+    if(p.dashUp){p.dashX=p.dashDiagonal?Math.sign(mx):0;p.onGround=false;p.floorPlat=null;p.vy=-680*exploreDashScale()*(p.dashDiagonal?Math.SQRT1_2:1);p.vx=p.dashX*spd*movement.tuning.dashSpeedMultiplier*exploreDashScale()*Math.SQRT1_2;}
     window.BladefallCeleste?.labStart(p);
     recordMovementUse('dash');
     resolveEchoEvent('player:dash',{x:p.x,y:p.y,direction:p.dashX});
@@ -17707,8 +17710,8 @@ function update(dt){
     p.dodgeTimer-=dt;
     if(window.BladefallCeleste?.lab()){BladefallCeleste.labVelocity(p);}
     else {
-    const targetVx = (p.dashUp?p.dashX*(p.dashDiagonal?Math.SQRT1_2:1):(mx !== 0 ? mx : p.dashX)) * spd * movement.tuning.dashSpeedMultiplier;
-    if(p.dashUp)p.vy=-680*(p.dashDiagonal?Math.SQRT1_2:1);
+    const targetVx = (p.dashUp?p.dashX*(p.dashDiagonal?Math.SQRT1_2:1):(mx !== 0 ? mx : p.dashX)) * spd * movement.tuning.dashSpeedMultiplier * exploreDashScale();
+    if(p.dashUp)p.vy=-680*exploreDashScale()*(p.dashDiagonal?Math.SQRT1_2:1);
     p.vx=BFPlatformer.blendVelocity(p.vx,targetVx,BFPlatformer.profiles.precision.dash,dt);
     }
     // Add shadow clones during dash
@@ -17802,7 +17805,7 @@ function update(dt){
         // jump even before the permanent double-jump memory exists.
         const crystalJump=airborne&&p.airRefill;
         const jumpVelocity=G.cartMode?560:BFMovementProgressionModule.jumpVelocity(activeCapabilityProgress(),airborne&&!crystalJump);
-        p.jumpBuf=0;p.vy=-jumpVelocity*gravDir;   // the cart leaps heavier but higher
+        p.jumpBuf=0;p.vy=-jumpVelocity*(G.cartMode?1:Math.sqrt(Math.max(.3,Math.min(1.5,meta.exploreJumpHeight??1))))*gravDir;   // (7.368) Explore's jump-height setting: height scales with v², so √; covers the double jump too   // the cart leaps heavier but higher
         p.jumps++;p.airRefill=false;p.onGround=false;p.floorPlat=null;p.jumpCutOk=true;
         recordMovementUse(airborne?'double-jump':'jump');
         p.sqV=-0.22;   // stretch on takeoff
@@ -24955,7 +24958,8 @@ function openSettings(returnTo){
       <label><input type="checkbox" data-setting="dynamicAudio" ${meta.dynamicAudio?'checked':''}>Adaptive score<small>responds to danger</small></label>
       <label><input type="checkbox" data-setting="nightMode" ${meta.nightMode?'checked':''}>Night audio<small>softens combat peaks</small></label>
       <label><input type="checkbox" data-setting="soundCaptions" ${meta.soundCaptions?'checked':''}>Sound captions<small>directional text cues</small></label>
-      <label><select id="dashReachSelect" style="pointer-events:auto">${Array.from({length:15},(_,i)=>100-i*5).map(v=>`<option value="${v}" ${Math.round((meta.exploreDashReach??1)*100)===v?'selected':''}>${v}%</option>`).join('')}</select>Dash distance<small>Explore only · how far a dash carries</small></label>
+      <label><select id="dashReachSelect" style="pointer-events:auto">${Array.from({length:20},(_,i)=>100-i*5).map(v=>`<option value="${v}" ${Math.round((meta.exploreDashReach??1)*100)===v?'selected':''}>${v}%</option>`).join('')}</select>Dash distance<small>Explore only · how far a dash carries</small></label>
+      <label><select id="jumpHeightSelect" style="pointer-events:auto">${Array.from({length:25},(_,i)=>150-i*5).map(v=>`<option value="${v}" ${Math.round((meta.exploreJumpHeight??1)*100)===v?'selected':''}>${v}%</option>`).join('')}</select>Jump height<small>Explore only · jumps and double jumps</small></label>
       <label><button type="button" id="sfxMixerBtn" style="pointer-events:auto">Sound mixer…</button><small>pick a version and volume for every sound effect</small></label>
       <label><input type="checkbox" data-setting="ambience" ${meta.ambience!==false?'checked':''}>Ambient sounds<small>wind, water and fire where you are</small></label>
       <label><input type="checkbox" data-setting="voices" ${meta.voices!==false&&window.BladefallVoice?.enabled()!==false?'checked':''}>Voice lines<small>people speak their lines · off for music only</small></label>
@@ -25040,7 +25044,7 @@ function openSettings(returnTo){
   };
   const volSlider=document.getElementById('volSlider'),volLabel=document.getElementById('volLabel');
   const sfxSlider=document.getElementById('sfxSlider'),sfxLabel=document.getElementById('sfxLabel');
-  {const ds=document.getElementById('dashReachSelect');if(ds)ds.onchange=()=>{meta.exploreDashReach=Math.max(.3,Math.min(1,(+ds.value||100)/100));persist();};}   // (7.367)
+  {const ds=document.getElementById('dashReachSelect');if(ds)ds.onchange=()=>{meta.exploreDashReach=Math.max(.05,Math.min(1,(+ds.value||100)/100));persist();};const js=document.getElementById('jumpHeightSelect');if(js)js.onchange=()=>{meta.exploreJumpHeight=Math.max(.3,Math.min(1.5,(+js.value||100)/100));persist();};}   // (7.367)
   {const mb=document.getElementById('sfxMixerBtn');if(mb)mb.onclick=()=>window.BladefallSfx?.openMixer();}   // (7.367)
   const shakeSlider=document.getElementById('shakeSlider'),shakeLabel=document.getElementById('shakeLabel');
   const qualitySelect=document.getElementById('qualitySelect');
@@ -26426,7 +26430,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.367.1').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.368.0').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */

@@ -403,6 +403,7 @@ function startDash(g,p,inp){
  g.buf.dash=0;p.dashes--;p.state='dash';p.dashTimer=K.dashFrames;p.dashCooldown=K.dashCooldownFrames;p.dashRefillCooldown=K.dashRefillCooldownFrames;
  p.beforeDash={x:p.vx,y:p.vy};p.pressAim=inp&&inp.aim?{...inp.aim}:{x:inp?inp.mx:0,y:inp?inp.my:0};p.vx=0;p.vy=0;p.dashAim=true;p.ducking=false;p.wallBoostTimer=0;p.varJump=0;
  g.freeze=K.dashFreezeFrames;
+ emit(g,'dash-start',{x:p.x+4,y:p.y+6});   // (7.368) the dash's sound: every dash, at the press, even one cut short in its freeze
  // A dash also flips every two-phase machine in the room: the Switchback rule.
  flipPhase(g,'dash');
 }

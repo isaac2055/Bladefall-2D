@@ -186,7 +186,7 @@ function noise(dur,vol=.05,hp=800,delay=0){
 }
 /* (7.366) Recorded sounds (bladefall-sfx.js) play first; the synthesized ones below are the fallback. type → [clip, gain, rate] */
 const CLIP={parry:['parry'],'enemy-tell':['enemy-alert',.7],'enemy-shot':['enemy-shot'],'enemy-hit':['hit-flesh'],'guard-block':['hit-armor'],'enemy-defeat':['enemy-die'],
- 'receiver-lit':['rune'],breach:['crumble',1.2,.85],jump:['jump'],walljump:['walljump'],dash:['dash'],super:['dash',1.1,.9],hyper:['dash',1.2,.85],wallbounce:['walljump',1.1,1.1],
+ 'receiver-lit':['rune'],breach:['crumble',1.2,.85],jump:['jump'],walljump:['walljump'],'dash-start':['dash'],super:['dash',1.1,.9],hyper:['dash',1.2,.85],wallbounce:['walljump',1.1,1.1],
  land:['land-soft'],refill:['gem',.7,1.2],death:['death'],'stone-hit':['stone-hit'],'stone-stop':['stone-hit',1.2,.8],phase:['switch'],strike:['swing'],pod:['pod'],
  bell:['bell'],'stone-lit':['rune',.9,1.1],'gate-open':['gate'],crumble:['crumble'],'crumble-shake':['crumble',.35,1.3],spring:['spring'],shard:['gem',1.2],
  'zip-start':['zip'],'zip-stop':['stone-hit',.5,1.1],pickup:['lantern'],throw:['dash',.6,1.3],plate:['plate'],'held-open':['lever'],'held-close':['lever',.8,.9],
@@ -224,7 +224,7 @@ function ambienceFor(){const X=SX();if(!X)return;const key=root.BladefallPitchVi
 const SFX={
  parry:()=>{tone(960,.13,'triangle',.06,440);noise(.05,.03,1800);},'enemy-tell':()=>tone(190,.09,'triangle',.018,70),'enemy-shot':()=>noise(.07,.02,1800),'enemy-hit':()=>noise(.08,.04,500),'guard-block':()=>tone(340,.08,'square',.03),'enemy-defeat':()=>noise(.15,.05,400),'receiver-lit':()=>tone(880,.25,'triangle',.05,440),'breach':()=>noise(.3,.07,200),
  jump:()=>tone(330,.08,'square',.035,180),walljump:()=>{tone(300,.08,'square',.035,220);noise(.05,.02,2000);},
- dash:()=>{noise(.16,.06,1200);tone(180,.12,'sawtooth',.03,-80);},
+ 'dash-start':()=>{noise(.16,.06,1200);tone(180,.12,'sawtooth',.03,-80);},
  super:()=>{tone(260,.12,'square',.04,300);noise(.1,.03,1500);},hyper:()=>{tone(220,.14,'square',.04,380);noise(.12,.04,1500);},
  wallbounce:()=>{tone(420,.14,'triangle',.05,320);},
  land:()=>noise(.05,.025,300),refill:()=>{tone(880,.08,'triangle',.05);tone(1320,.12,'triangle',.04,0,.06);},

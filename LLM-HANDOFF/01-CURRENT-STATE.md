@@ -1,3 +1,8 @@
+## 7.368.0: a dash sound on every dash; dash down to 5%; jump height (2026-10-22, Claude, cloud session)
+- bladefall-sfx.js: the repeat gap uses wall-clock time (the audio clock freezes while a context is suspended, so every later play read as a repeat and was dropped) and resumes any non-running context.
+- Ascend: pcore emits `dash-start` in startDash; the view plays the dash clip on it (was on `dash`, after the freeze, which a cut-short dash never reached). Browser check: 8/8 dashes, Explore 6/6.
+- Explore Settings: Dash distance 100–5% (`meta.exploreDashReach`, split √ into duration and speed so the exit doesn't slide); Jump height 150–30% (`meta.exploreJumpHeight`, scales jump velocity by √, so jumps and double jumps alike).
+
 ## 7.367.1: last three knight lines in Jett (2026-10-22, Claude, cloud session)
 - outskirts/knight.walked, .dontremember, .no were still the old knight voice (recorded outside the 45-line batch); re-recorded in Jett.
 - bladefall-voice.js now requests each clip with a content stamp (`?v=<sha1>`), so a re-recorded line is never served from a cache.
