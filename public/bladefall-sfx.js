@@ -48,7 +48,7 @@ const BEDLABEL={plains:'Open fields',forest:'Black Woods (night insects)',height
 let mix=load();
 function load(){let m=null;try{m=JSON.parse(root.localStorage?.getItem(KEY)||'null');}catch(_e){}return {sounds:{...DEFAULT_MIX.sounds,...(m?.sounds||{})},beds:{...DEFAULT_MIX.beds,...(m?.beds||{})}};}
 function save(){try{root.localStorage?.setItem(KEY,JSON.stringify(mix));}catch(_e){}}
-// (7.372) how many versions a sound has (A, B, C; the dash also D, the old second take)
+// (7.372) how many versions a sound has (A, B, C; the dash also D (7.372.1: D was the favourite and is now A; D holds the take that was A))
 const NVER={dash:4},nver=n=>NVER[n]||3;
 const pick=name=>Math.max(0,Math.min(nver(name)-1,mix.sounds[name]?.v|0)),vol=name=>mix.sounds[name]?.vol??1,bedVol=b=>mix.beds[b]??1;
 let ctx=null,out=null,bedBus=null,settings={enabled:()=>true,volume:()=>.8,ambience:()=>true,ambienceVolume:()=>.5};
