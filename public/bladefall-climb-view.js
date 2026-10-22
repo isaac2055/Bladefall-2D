@@ -224,7 +224,7 @@ function passageWalk(g){
  for(const s of g.room.def.atlasSockets||[]){
   if(s.preview)continue;
   const plane=s.plane??(s.edge==='left'?0:g.room.w),near=Math.abs(p.x+p.w/2-plane)<28;
-  if(!near||p.y+p.h>s.floor*8+2||p.y<s.floor*8-32)continue;
+  if(!near||p.y+p.h>s.floor*8+10||p.y<s.floor*8-32)continue;   // (7.374) same one-row tolerance as the seam (walk through, no jump)
   const open=portOpen(g,s);st.nearPort={socket:s,open};
   const out=s.edge==='left'?p.x+p.w/2<=plane&&(inp.l||p.vx<0):p.x+p.w/2>=plane&&(inp.r||p.vx>0);
   if(out&&open)return enterPassage(s);

@@ -172,7 +172,7 @@ function boundsBlock(g,x,y,w,h){
  const ex=g.room.exit,sd=g.sideSealed?null:g.room.def.side;   // side: a second, optional way out (Room by Room's quest branches; sealed until earned)
  // Climb walking seams admit the whole body through an authored opening.
  // Other modes and closed paths retain the normal room boundary.
- const seam=edge=>root.BladefallWorkshopRoom?.open(g,edge,x,y,w,h)||(g.walkSeams||[]).some(s=>s.edge===edge&&y>=s.floor*8-Math.max(32,(s.height||0)*8)&&y+h<=s.floor*8+1);   // (a taller seam, 7.275: a terminal room's whole open exit)
+ const seam=edge=>root.BladefallWorkshopRoom?.open(g,edge,x,y,w,h)||(g.walkSeams||[]).some(s=>s.edge===edge&&y>=s.floor*8-Math.max(32,(s.height||0)*8)&&y+h<=s.floor*8+9);   // (7.374) feet on the row below the socket floor count too: sockets were authored both ways, so a walker was refused on half of them   // (a taller seam, 7.275: a terminal room's whole open exit)
  // Folded corridors end at their mouth planes, not their decorative apron.
  const ports=g.room.def.atlasFold?g.room.def.atlasSockets:null;
  const left=ports?Math.min(...ports.map(s=>s.plane)):0,right=ports?Math.max(...ports.map(s=>s.plane)):g.room.w;

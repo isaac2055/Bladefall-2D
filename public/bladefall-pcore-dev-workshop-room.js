@@ -2,7 +2,7 @@
 (function(root){'use strict';
 const C=()=>root.BladefallPrecisionCore,active=g=>!!(g.workshop||g.players),alive=p=>p.state!=='dead'&&p.state!=='respawn';
 function ports(g){const d=g.room.def;return [...(d.atlasSockets||[]).filter(s=>!s.preview),...(d.doors||[]).map(s=>({...s,edge:s.edge||'up'}))];}
-function fits(s,x,y,w,h){return s.edge==='left'||s.edge==='right'?y>=s.floor*8-Math.max(32,(s.height||0)*8)&&y+h<=s.floor*8+1:Array.isArray(s.cols)&&x+w>s.cols[0]*8&&x<(s.cols[s.cols.length-1]+1)*8;}
+function fits(s,x,y,w,h){return s.edge==='left'||s.edge==='right'?y>=s.floor*8-Math.max(32,(s.height||0)*8)&&y+h<=s.floor*8+9:Array.isArray(s.cols)&&x+w>s.cols[0]*8&&x<(s.cols[s.cols.length-1]+1)*8;}
 function open(g,edge,x,y,w,h){return active(g)&&ports(g).some(s=>s.edge===edge&&fits(s,x,y,w,h));}
 function exited(g,p){if(!active(g))return false;return ports(g).some(s=>fits(s,p.x,p.y,p.w,p.h)&&(s.edge==='left'?p.x<= (s.plane??0)-p.w+2:s.edge==='right'?p.x>=(s.plane??g.room.w)-2:s.edge==='up'?p.y<=-3:s.edge==='down'?p.y>=g.room.h-2:false));}
 function reset(g){if(active(g)&&g.room.def.seam?.length){const opened=C().parseRoom(g.room.def);for(const [c,r]of g.room.def.seam){const i=r*g.room.cols+c;g.room.grid[i]=opened.grid[i];g.room.portalable[i]=opened.portalable[i];}}g.workshopRoom={closed:false};}
