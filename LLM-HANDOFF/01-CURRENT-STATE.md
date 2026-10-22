@@ -1,3 +1,7 @@
+## 7.367.1: last three knight lines in Jett (2026-10-22, Claude, cloud session)
+- outskirts/knight.walked, .dontremember, .no were still the old knight voice (recorded outside the 45-line batch); re-recorded in Jett.
+- bladefall-voice.js now requests each clip with a content stamp (`?v=<sha1>`), so a re-recorded line is never served from a cache.
+
 ## 7.367.0: sound mixer, Jett as the knight, quieter beds, rift-shard voices (2026-10-21, Claude, cloud session)
 - The Knight is voiced by Jett (6IwYbsNENZgAB1dtBZDp); all 45 knight clips re-recorded, cast.json updated.
 - Sound mixer (`BladefallSfx.openMixer()`, Settings → Sound mixer… in Explore, Ascend options → Sound mixer…): every effect has versions A/B/C (`name.mp3`/`name-n.mp3`, `name.b.mp3`, `name.c.mp3`), a 0–200% volume, a test button; ambient beds too. Stored in localStorage `bladefall.sfx.mix.v1`. Export downloads `bladefall-sound-mix.json`; **to make a mix the official default, paste it into `DEFAULT_MIX` in public/bladefall-sfx.js.**
