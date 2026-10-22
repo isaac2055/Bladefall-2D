@@ -1,3 +1,10 @@
+## 7.369.0: climb by holding Up; even sound takes; Fractured top half for a clear; Frostfell catches gone (2026-10-22, Claude, cloud session)
+- Ascend (pcore): holding Up against a wall climbs it without grab (not while a dash is pressed); climbing up costs no stamina; climbUpSpeed -45 → -60. verify-precision-core still times out at 600 s, as before.
+- SFX: every alternate take (name-n, .b, .c) loudness-matched to its main file within 2 dB (dash-2 was 6 dB quieter, so every second dash seemed silent). Main files untouched.
+- Rewards: a Fractured world's top plant half is earned by clearing it (deaths allowed); `halves()` also counts already-beaten Fractured worlds. Base bottom halves still need a perfect clear.
+- Frostfell (Explore): the two frostRecoveryLanding catch decks under the thaw rafts are removed; test updated. (frostfell-runtime has 4 pre-existing failures, unchanged.)
+- Explore defaults: dash 55%, jump 50% (`meta.exploreDashReach ?? .55`, `meta.exploreJumpHeight ?? .5`); jump range 100–30%. Watched routes and bots (watchLike) keep the authored physics.
+
 ## 7.368.0: a dash sound on every dash; dash down to 5%; jump height (2026-10-22, Claude, cloud session)
 - bladefall-sfx.js: the repeat gap uses wall-clock time (the audio clock freezes while a context is suspended, so every later play read as a repeat and was dropped) and resumes any non-running context.
 - Ascend: pcore emits `dash-start` in startDash; the view plays the dash clip on it (was on `dash`, after the freeze, which a cut-short dash never reached). Browser check: 8/8 dashes, Explore 6/6.

@@ -470,7 +470,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.368.0';globalThis.BLADEFALL_VERSION=VERSION;
+const VERSION='7.369.0';globalThis.BLADEFALL_VERSION=VERSION;
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -2766,7 +2766,7 @@ function updateLevel1Footsteps(p,dt){
    the synthesized sounds below stay as the fallback when a clip is missing. */
 /* (7.368) Explore's dash-distance setting (5–100%): split evenly between the dash's length and its speed (√ each),
    so the exit speed drops too and a short dash does not slide on afterwards. */
-function exploreDashScale(){return Math.sqrt(Math.max(.05,Math.min(1,meta.exploreDashReach??1)));}
+function exploreDashScale(){if(watchLike())return 1;return Math.sqrt(Math.max(.05,Math.min(1,meta.exploreDashReach??.55)));}
 function sfxPlay(name,x,o){
   const X=globalThis.BladefallSfx;if(!X||!X.has(name))return false;
   if(watchLike()||!meta.soundOn||(mode!=='play'&&!(o&&o.ui)))return true;
@@ -5776,9 +5776,7 @@ function frostfellFinale(){
     if([4,9,14].includes(i))objects.push(Sp(x+65,y,{w:56,period:2.8,upT:1.1,phase:i*.19,iceSpikes:1}));
     if(i%4===0)objects.push(FrostScenery(x,y-180,'frost-tower',{w:210,h:570}));
   });
-  objects.push(
-    FrostBeat(Pl(10850,780,135,{h:28,frostRecoveryLanding:1,supportedBy:'frost-tower'}),'recovery','moving-thaw-raft'),
-    FrostBeat(Pl(12150,780,245,{h:28,frostRecoveryLanding:1,supportedBy:'frost-tower'}),'recovery','moving-thaw-raft'));
+  // (7.369) No catch decks under the thaw rafts: a miss in the second half is a fall, so the climb is a real test.
   objects.push(Pl(14550,1000,650,{h:40,frostFinaleLanding:19}),Check(14100,650),
     FrostScenery(14400,650,'frost-muster-engine',{w:400,h:460,frostMusterEngine:1}),
     FrostScenery(14680,650,'frost-service',{w:100,h:100,frostReturn:1,frostSummitReturn:1}));
@@ -17805,7 +17803,7 @@ function update(dt){
         // jump even before the permanent double-jump memory exists.
         const crystalJump=airborne&&p.airRefill;
         const jumpVelocity=G.cartMode?560:BFMovementProgressionModule.jumpVelocity(activeCapabilityProgress(),airborne&&!crystalJump);
-        p.jumpBuf=0;p.vy=-jumpVelocity*(G.cartMode?1:Math.sqrt(Math.max(.3,Math.min(1.5,meta.exploreJumpHeight??1))))*gravDir;   // (7.368) Explore's jump-height setting: height scales with v², so √; covers the double jump too   // the cart leaps heavier but higher
+        p.jumpBuf=0;p.vy=-jumpVelocity*(G.cartMode||watchLike()?1:Math.sqrt(Math.max(.3,Math.min(1,meta.exploreJumpHeight??.5))))*gravDir;   // (7.368) Explore's jump-height setting: height scales with v², so √; covers the double jump too   // the cart leaps heavier but higher
         p.jumps++;p.airRefill=false;p.onGround=false;p.floorPlat=null;p.jumpCutOk=true;
         recordMovementUse(airborne?'double-jump':'jump');
         p.sqV=-0.22;   // stretch on takeoff
@@ -24958,8 +24956,8 @@ function openSettings(returnTo){
       <label><input type="checkbox" data-setting="dynamicAudio" ${meta.dynamicAudio?'checked':''}>Adaptive score<small>responds to danger</small></label>
       <label><input type="checkbox" data-setting="nightMode" ${meta.nightMode?'checked':''}>Night audio<small>softens combat peaks</small></label>
       <label><input type="checkbox" data-setting="soundCaptions" ${meta.soundCaptions?'checked':''}>Sound captions<small>directional text cues</small></label>
-      <label><select id="dashReachSelect" style="pointer-events:auto">${Array.from({length:20},(_,i)=>100-i*5).map(v=>`<option value="${v}" ${Math.round((meta.exploreDashReach??1)*100)===v?'selected':''}>${v}%</option>`).join('')}</select>Dash distance<small>Explore only · how far a dash carries</small></label>
-      <label><select id="jumpHeightSelect" style="pointer-events:auto">${Array.from({length:25},(_,i)=>150-i*5).map(v=>`<option value="${v}" ${Math.round((meta.exploreJumpHeight??1)*100)===v?'selected':''}>${v}%</option>`).join('')}</select>Jump height<small>Explore only · jumps and double jumps</small></label>
+      <label><select id="dashReachSelect" style="pointer-events:auto">${Array.from({length:20},(_,i)=>100-i*5).map(v=>`<option value="${v}" ${Math.round((meta.exploreDashReach??.55)*100)===v?'selected':''}>${v}%</option>`).join('')}</select>Dash distance<small>Explore only · how far a dash carries</small></label>
+      <label><select id="jumpHeightSelect" style="pointer-events:auto">${Array.from({length:15},(_,i)=>100-i*5).map(v=>`<option value="${v}" ${Math.round((meta.exploreJumpHeight??.5)*100)===v?'selected':''}>${v}%</option>`).join('')}</select>Jump height<small>Explore only · jumps and double jumps</small></label>
       <label><button type="button" id="sfxMixerBtn" style="pointer-events:auto">Sound mixer…</button><small>pick a version and volume for every sound effect</small></label>
       <label><input type="checkbox" data-setting="ambience" ${meta.ambience!==false?'checked':''}>Ambient sounds<small>wind, water and fire where you are</small></label>
       <label><input type="checkbox" data-setting="voices" ${meta.voices!==false&&window.BladefallVoice?.enabled()!==false?'checked':''}>Voice lines<small>people speak their lines · off for music only</small></label>
@@ -25044,7 +25042,7 @@ function openSettings(returnTo){
   };
   const volSlider=document.getElementById('volSlider'),volLabel=document.getElementById('volLabel');
   const sfxSlider=document.getElementById('sfxSlider'),sfxLabel=document.getElementById('sfxLabel');
-  {const ds=document.getElementById('dashReachSelect');if(ds)ds.onchange=()=>{meta.exploreDashReach=Math.max(.05,Math.min(1,(+ds.value||100)/100));persist();};const js=document.getElementById('jumpHeightSelect');if(js)js.onchange=()=>{meta.exploreJumpHeight=Math.max(.3,Math.min(1.5,(+js.value||100)/100));persist();};}   // (7.367)
+  {const ds=document.getElementById('dashReachSelect');if(ds)ds.onchange=()=>{meta.exploreDashReach=Math.max(.05,Math.min(1,(+ds.value||100)/100));persist();};const js=document.getElementById('jumpHeightSelect');if(js)js.onchange=()=>{meta.exploreJumpHeight=Math.max(.3,Math.min(1,(+js.value||100)/100));persist();};}   // (7.367)
   {const mb=document.getElementById('sfxMixerBtn');if(mb)mb.onclick=()=>window.BladefallSfx?.openMixer();}   // (7.367)
   const shakeSlider=document.getElementById('shakeSlider'),shakeLabel=document.getElementById('shakeLabel');
   const qualitySelect=document.getElementById('qualitySelect');
@@ -26430,7 +26428,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.368.0').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.369.0').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */

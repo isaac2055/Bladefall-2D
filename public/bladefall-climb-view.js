@@ -291,7 +291,7 @@ function heartTotals(){const c=heartCounts(false);let got=0,total=0;for(const k 
 function heartCounts(all){const out={};for(const w of CL().worlds){if(w.n>40)continue;const hs=heartRoutes(w),pq=hs.find(br=>isPurple(w,br));
  out[w.n]={total:hs.length,got:all?hs.length:hs.filter(br=>heartTaken(w,br)).length,purple:pq?{got:all||heartTaken(w,pq),opens:w.n+20}:null};}return out;}
 function plantLine(n){const R=root.BladefallClimbRewards;if(!R||n<1||n>40)return '';const p=R.plantOf(n),k=n>20?n-20:n,h=R.halves(k),mine=n>20?h.top:h.root;
- return `<br><span style="color:${p.col}">✿ ${mine?'●':'○'} ${n>20?p.top:p.root}</span> <small>(${p.name}: ${n>20?'top':'bottom'} half, for a perfect clear: no deaths on the road)</small>${R.csideOpen(k)?' · <b style="color:#ffd98a">Core open</b>':''}`;}
+ return `<br><span style="color:${p.col}">✿ ${mine?'●':'○'} ${n>20?p.top:p.root}</span> <small>(${p.name}: ${n>20?'top half, for clearing this world':'bottom half, for a perfect clear: no deaths on the road'})</small>${R.csideOpen(k)?' · <b style="color:#ffd98a">Core open</b>':''}`;}
 function completeAtlas(){
  const A=st.atlas,s=A.state,state={...s,visited:{},open:{},solved:{...s.solved}};
  for(let n=1;n<=40;n++)state.visited[n]=true;for(const l of A.links)state.open[l.id]=true;
@@ -1182,9 +1182,11 @@ PV.slideFrame=function(buf,W,Hh){
    newly earned. Said, never a screen. */
 function rewardWorld(){
  const R=root.BladefallClimbRewards;if(!R||st.world.n>40)return Promise.resolve();let shown=Promise.resolve();
- if(st.perfectRun&&st.roadDeaths===0){const r=R.perfect(st.world.n);
+ // (7.369) a Fractured world's top half needs only the clear; a base world's bottom half still needs no deaths
+ const clean=st.perfectRun&&st.roadDeaths===0;
+ if(st.world.n>20||clean){const r=R.perfect(st.world.n);
   // (7.353) a perfect clear is a moment: the earned plant part grows into view (the same animation for every world)
-  if(r&&!r.already)shown=new Promise(res=>setTimeout(()=>{(R.celebrate?R.celebrate(r,st.world.n):Promise.resolve()).then(()=>{res();announce(r.cside?`Perfect · ${r.half} · the ${r.plant.name} is whole: its Core is open`:`Perfect clear · ${r.half} (${r.plant.name})`,320);});},400));}
+  if(r&&!r.already)shown=new Promise(res=>setTimeout(()=>{(R.celebrate?R.celebrate(r,st.world.n):Promise.resolve()).then(()=>{res();announce(r.cside?`${clean?'Perfect · ':''}${r.half} · the ${r.plant.name} is whole: its Core is open`:`${clean?'Perfect clear':'Cleared'} · ${r.half} (${r.plant.name})`,320);});},400));}
  setTimeout(()=>{for(const s of R.newlyEarned())announce(`New skin · ${s.name} · wear it from Garden & skins`,320);},2400);
  return shown;
 }

@@ -2,7 +2,7 @@
 
    Perfect clear: a world finished from its start without dying on its road (optional routes do not count, and for
    now skips are allowed, so a perfect clear is always possible). A perfect base world gives the bottom half of its
-   world's plant; a perfect Fractured world gives the top half. With both halves, that world's Core unlocks. The
+   world's plant; clearing its Fractured world gives the top half (7.369: deaths allowed there). With both halves, that world's Core unlocks. The
    Cores are continuous worlds with authored save points; csideBeaten(k) keeps the existing reward-save format.
 
    Skins (Settings-free: the world map's Garden & skins card). Each is earned once and kept:
@@ -95,7 +95,7 @@ function earned(id){
 function canBuy(id){const s=SKINS.find(x=>x.id===id),p=s&&price(s);return !!(p&&!earned(id)&&hearts().got>=p);}
 function buy(id){if(!canBuy(id))return false;const r=state();r.bought=r.bought||{};r.bought[id]=true;write(r);return true;}
 function plantOf(n){return PLANTS[n>20?n-20:n]||null;}
-function halves(k){const r=state();return {root:!!r.perfect[k],top:!!r.perfect[k+20]};}
+function halves(k){const r=state();return {root:!!r.perfect[k],top:!!r.perfect[k+20]||beaten(k+20)};}   // (7.369) a Fractured clear is enough for the top half
 function csideOpen(k){const h=halves(k);return !!root.BladefallClimbFinale?.unlockedAll?.()||!!state().csides[k]||h.root&&h.top;}
 // a world finished perfectly: its half of the plant, and maybe its Core
 function perfect(n){
@@ -164,7 +164,7 @@ function card(api,back){
  const howOf=s=>s.buy?`${price(s)} hearts`:!showTop&&s.id==='ascendant'?'Complete all twenty worlds':s.how;
  const sk=visible.map(s=>`<button class="pcChoice" data-skin="${s.id}" style="text-align:left;display:flex;align-items:center;gap:10px"><canvas width="96" height="40" data-skin-art="${s.id}" style="image-rendering:pixelated;width:144px;height:60px;flex:none"></canvas><span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span class="pcName">${earned(s.id)?s.name:'???'}${r.skin===s.id&&earned(s.id)?' · worn':''}</span><span class="pcDesc">${howOf(s)}${earned(s.id)?'':canBuy(s.id)?' · <b style="color:#ffd98a">open it now</b>':''}</span></span></button>`).join('');
  api.showOverlay(`<div class="pcCard wide"><h1>Garden &amp; skins</h1>
-  <p class="pcSub">Finish a world without dying on its road (optional routes don’t count) to grow its plant.${showTop?' Both halves open that world’s Core.':''}</p>
+  <p class="pcSub">Finish a world without dying on its road (optional routes don’t count) to grow its plant’s roots${showTop?'; clear its Fractured world for the top. Both halves open that world’s Core.':'.'}</p>
   <table class="pcTable" style="font-size:.85em"><tr><td></td><td>Bottom</td>${showTop?'<td>Top</td>':''}<td>${watchable.length?'<button class="pcBtn ghost" id="rwWatchAll" style="padding:2px 8px">Watch all Cores</button>':''}</td></tr>${rows}</table>
   <h2 class="pcPart">Skins</h2><p class="pcSub">With a dash · without. ♥ ${hearts().got} collected.</p>
   <div class="pcGrid"><button class="pcChoice" data-skin="" style="text-align:left;display:flex;align-items:center;gap:10px"><canvas width="96" height="40" data-skin-art="" style="image-rendering:pixelated;width:144px;height:60px;flex:none"></canvas><span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span class="pcName">The knight${!r.skin?' · worn':''}</span><span class="pcDesc">The original</span></span></button>${sk}</div>

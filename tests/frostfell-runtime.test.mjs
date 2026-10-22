@@ -151,15 +151,10 @@ test('the thermal wheel has reachable dry footing and its shutter cuts the real 
  assert.equal(outlet.y,receiver.y);assert.ok(receiver.y>=shutter.y-shutter.h&&receiver.y<=shutter.y);
  for(let x=4720;x<=6620;x+=100)assert.ok(objects.some(o=>o.type==='plat'&&o.y===0&&Math.abs(o.x-x)<=o.w/2),'misses retain the thermal recovery floor');
 });
-test('moving thaw rafts have lower catches and a reachable return to the ice route',()=>{
- const {objects}=authoredLevel(),rafts=objects.filter(o=>o.frostThawRaft),catches=objects.filter(o=>o.frostRecoveryLanding);
- assert.equal(rafts.length,2);assert.equal(catches.length,2);
- for(const raft of rafts){
-  assert.ok(!raft.ice&&raft.move.dx>0&&raft.move.dy===0);
-  const catchDeck=catches.find(o=>o.y<raft.y&&o.x-o.w/2<=raft.x-raft.move.dx-raft.w/2&&o.x+o.w/2>=raft.x+raft.move.dx+raft.w/2);
-  assert.ok(catchDeck,'the whole raft sweep has a catch underneath');
-  assert.ok(objects.some(o=>Number.isInteger(o.frostFinaleLanding)&&o.x<raft.x&&o.y>catchDeck.y&&o.y-catchDeck.y<=150&&Math.abs(o.x-catchDeck.x)<catchDeck.w/2),'missed rafts have a backward Double Jump return');
- }
+test('moving thaw rafts have no catch decks underneath (7.369: a miss is a fall)',()=>{
+ const {objects}=authoredLevel(),rafts=objects.filter(o=>o.frostThawRaft);
+ assert.equal(rafts.length,2);assert.equal(objects.filter(o=>o.frostRecoveryLanding).length,0);
+ for(const raft of rafts)assert.ok(!raft.ice&&raft.move.dx>0&&raft.move.dy===0);
 });
 test('Frostfell passages cycle through the summit only once reached and save each arrival checkpoint',()=>{
  const {ctx,circuits,saved}=harness({preview:true});
