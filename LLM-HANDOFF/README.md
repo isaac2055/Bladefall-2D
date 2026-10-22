@@ -1,3 +1,5 @@
+# Read 00-START-HERE.md first (reference sheet, 7.373.0).
+
 # Latest: 7.334 ten Cores and Ascend
 
 Read [TEN-CORES-7.334.md](TEN-CORES-7.334.md) first.
