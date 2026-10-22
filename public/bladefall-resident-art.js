@@ -129,6 +129,20 @@ function chain(k, pts, glint){
 function stool(k, dx, h, w){ w = w || 9; k.R(dx, -h, w, 2, '#8e715c'); k.R(dx, -h, w, 1, '#b8987a'); k.R(dx + 1, -h + 2, 1, h - 2, '#5e4a3a'); k.R(dx + w - 2, -h + 2, 1, h - 2, '#5e4a3a'); }
 function stride(k, s, amp){ return s.walk ? Math.round(Math.sin(k.t * 10 + s.ph) * (amp || 2)) : 0; }
 function every(t, period, dur, ph){ return ((t + (ph || 0) * period) % period) < dur; }
+/* (7.371) Busy work as a routine, not one sine: a loop of beats (name, seconds), eased inside each beat. A routine can
+   have variants of the same total length; each loop picks one (seeded per person and loop), so the same person
+   does not repeat the same moves on a metronome. r = { name, u (0..1), p (eased), i, loop, at (seconds into the beat) }. */
+const ease = x => x <= 0 ? 0 : x >= 1 ? 1 : x * x * (3 - 2 * x);
+function hash2(a, b){ let h = (Math.imul(a | 0, 374761393) + Math.imul(b | 0, 668265263)) >>> 0; h = Math.imul(h ^ (h >>> 13), 1274126177) >>> 0; return ((h ^ (h >>> 16)) >>> 0) / 4294967296; }
+function routine(t, ph, variants){
+  const total = variants[0].reduce((a, b) => a + b[1], 0), T = t + ph * total * 7, loop = Math.floor(T / total);
+  const beats = variants[Math.floor(hash2(loop, Math.round(ph * 1000)) * variants.length)];
+  let r = T - loop * total;
+  for(let i = 0; i < beats.length; i++){ const d = beats[i][1]; if(r < d) return { name:beats[i][0], u:r / d, p:ease(r / d), i, loop, at:r, d }; r -= d; }
+  const b = beats[beats.length - 1]; return { name:b[0], u:1, p:1, i:beats.length - 1, loop, at:b[1], d:b[1] };
+}
+/* a there-and-back within a beat: 0 → 1 by `up`, held, back to 0 from `down` */
+const swing = (u, up, down) => u < up ? ease(u / up) : u < down ? 1 : 1 - ease((u - down) / (1 - down));
 
 const SKIN = {
   fair:pal('#f2cfae', '#ffe4c8', '#c89a78'), ruddy:pal('#e3a883', '#f6c6a2', '#b27856'), tan:pal('#d39a70', '#ecb88c', '#9e6a48'),
@@ -167,8 +181,15 @@ D.rowan = (k, s) => {
   for(let yy = sh + 3; yy < hem - 1; yy += 3) for(let xx = -5; xx < 6; xx += 2) k.P(xx + ((yy >> 1) & 1), yy, C.d);
   k.R(-6, sh + 10, 13, 1, '#3a2a24'); k.R(0, sh + 10, 2, 1, '#e0b85a');
 
-  // the head: he keeps glancing back down the road
-  const h = s.look < 0 ? k.flip() : k;
+  // (7.371) busy: sharpening the spear in strokes, then lifting it to sight along the edge, a glance down the road
+  const RT = !s.sit && s.busy ? routine(k.t, s.ph, [
+    [['stroke', .75], ['stroke', .75], ['stroke', .75], ['stroke', .75], ['rest', .5], ['inspect', 1.8], ['look', 1.1]],
+    [['stroke', .75], ['stroke', .75], ['stroke', .75], ['stroke', .75], ['stroke', .75], ['stroke', .75], ['rest', .3], ['inspect', 1.6]],
+    [['stroke', .7], ['stroke', .7], ['stroke', .7], ['look', 1.4], ['stroke', .7], ['stroke', .7], ['inspect', 1.5]]]) : null;
+  // the head: he keeps glancing back down the road; over the stone it bows to the blade
+  const look = RT ? (RT.name === 'look' && RT.u > .1 && RT.u < .85 ? -1 : 1) : s.look;
+  const h0 = RT && RT.name === 'stroke' ? k.at(1, 1) : RT && RT.name === 'inspect' && RT.u > .2 && RT.u < .85 ? k.at(0, -1) : k;
+  const h = look < 0 ? h0.flip() : h0;
   h.R(-2, sh - 1, 5, 1, C.l);
   face(h, 0, sh - 5, sk, { nose:true, shade:true, ey:1 });
   h.R(-3, sh - 5, 3, 3, grey); h.P(-1, sh - 4, sk.d);
@@ -176,11 +197,18 @@ D.rowan = (k, s) => {
   h.R(-3, sh - 8, 7, 2, IRON.c); h.R(-2, sh - 9, 5, 1, IRON.l); h.P(-3, sh - 8, IRON.l);
   h.R(-7, sh - 6, 15, 1, IRON.l); h.P(-7, sh - 5, IRON.d); h.P(7, sh - 5, IRON.d);
   // the spear in his fist
-  if(!s.sit && s.busy){   // the spear tipped across him, head up by his shoulder; the whetstone drawn down its edge
-    const st = Math.round(((k.t * 1.6 + s.ph) % 1) * 4), wx = 13, wy = -35 + st;
-    spear(3, -1, 13, -30); k.L(5, sh + 1, 9, sh + 8, 2, C.c); hand(k, 9, sh + 8, sk);
-    k.L(5, sh + 3, wx - 2, wy + 2, 2, C.d); k.R(wx - 1, wy, 3, 2, '#7a7468'); k.P(wx - 1, wy, '#a8a294'); hand(k, wx - 2, wy + 2, sk);
-    if(st === 3 && every(k.t, .63, .08, s.ph)) k.P(wx + 2, wy - 1, '#fff2b0');
+  if(RT){   // the spear tipped across him; the whetstone pushed up the edge (contact) and brought back off it
+    const insp = RT.name === 'inspect' ? swing(RT.u, .25, .8) : 0, tx = 13 - Math.round(insp * 2), ty = -30 - Math.round(insp * 3);
+    spear(3, -1, tx, ty); k.L(5, sh + 1, 9, sh + 8 - Math.round(insp), 2, C.c); hand(k, 9, sh + 8 - Math.round(insp), sk);
+    let wx = 9, wy = sh + 12, stone = true;
+    if(RT.name === 'stroke'){
+      const push = RT.u < .62, q = push ? ease(RT.u / .62) : 1 - ease((RT.u - .62) / .38);
+      wx = tx + (push ? 0 : 2); wy = ty - 1 - Math.round(q * 4);
+      if(RT.u > .54 && RT.u < .64) k.P(wx + 2, wy - 1, '#fff2b0');
+    } else if(RT.name === 'inspect' && RT.u > .5 && RT.u < .75){ wx = tx + 1; wy = ty - 3; stone = false; }   // the thumb tries the edge
+    k.L(5, sh + 3, wx - 2, wy + 2, 2, C.d);
+    if(stone){ k.R(wx - 1, wy, 3, 2, '#7a7468'); k.P(wx - 1, wy, '#a8a294'); }
+    hand(k, wx - 2, wy + 2, sk);
   }
   else if(!s.sit){ const bob = s.walk ? stride(k, s, 1) : 0; spear(8, -1, 8, -43 + bob); k.L(5, sh + 1, 7, sh + 6, 2, C.c); hand(k, 7, sh + 6, sk); }
   else { k.L(5, sh + 2, 6, hem - 1, 2, C.c); hand(k, 5, hem - 2, sk); }
@@ -214,11 +242,17 @@ D.mara = (k, s) => {
   u.R(-4, -17, 9, 1, '#4a3020'); u.R(-6, -19, 1, 5, BRASS.c); u.P(-6, -19, BRASS.l);   // belt, spyglass
   if(moving){ u.R(-6, -29, 3, 1, hair); u.P(-7, -28 + (flap & 1), hair); }             // the braid streams behind
   else { k.P(-5, -29, hair); k.R(-5, -28, 1, 4 + (flap > 0 ? 1 : 0), hair); }          // the braid
-  face(u, 0, -31, sk, { nose:true, mouth:'#b0705a' });
-  u.R(-3, -31, 3, 4, hair);
-  u.R(-3, -34, 7, 3, cap.c); u.R(-3, -34, 7, 1, cap.l); u.R(3, -32, 3, 1, cap.d);
-  u.R(-1, -35, 2, 2, BRASS.c); u.R(2, -35, 2, 2, BRASS.c); u.P(0, -34, '#bff4ff'); u.P(3, -34, '#bff4ff');
-  if(every(k.t, 4.5, .25, s.ph)) u.P(3, -35, '#ffffff');
+  // (7.371) busy: she studies the chart, pencils a mark, sights the road through the spyglass, fights the wind for it
+  const RT = s.busy && !moving && !s.chartGiven ? routine(k.t, s.ph, [
+    [['study', 2.0], ['mark', 1.6], ['sight', 1.8], ['gust', 1.8]],
+    [['study', 1.6], ['sight', 2.2], ['mark', 1.6], ['study', 1.8]],
+    [['mark', 1.4], ['study', 1.6], ['gust', 1.8], ['sight', 2.4]]]) : null;
+  const hd = RT && (RT.name === 'study' || RT.name === 'mark') ? u.at(1, 1) : RT && RT.name === 'sight' ? u.at(0, -Math.round(swing(RT.u, .2, .85))) : u;
+  face(hd, 0, -31, sk, { nose:true, mouth:'#b0705a' });
+  hd.R(-3, -31, 3, 4, hair);
+  hd.R(-3, -34, 7, 3, cap.c); hd.R(-3, -34, 7, 1, cap.l); hd.R(3, -32, 3, 1, cap.d);
+  hd.R(-1, -35, 2, 2, BRASS.c); hd.R(2, -35, 2, 2, BRASS.c); hd.P(0, -34, '#bff4ff'); hd.P(3, -34, '#bff4ff');
+  if(every(k.t, 4.5, .25, s.ph)) hd.P(3, -35, '#ffffff');
   if(moving){
     // the chart rolled tight under the near arm
     u.R(-3, -21, 8, 2, '#ecdcb0'); u.R(-3, -21, 8, 1, '#fff2cc'); u.P(-3, -20, '#8a6a4a');
@@ -227,15 +261,31 @@ D.mara = (k, s) => {
   }
   // the chart (handed across once her survey is done)
   if(s.chartGiven){ k.L(3, -24, 5, -17, 2, C.c); hand(k, 5, -17, sk); return; }
-  // busy: the wind keeps lifting the chart's corner and she keeps slapping it flat
-  const gust = s.busy ? (k.t * .9 + s.ph) % 1 : 0, slap = s.busy && gust > .82;
-  const lift = s.busy ? (slap ? 0 : -Math.round(Math.min(3, gust * 4.5) * (1 + Math.sin(k.t * 19) * .2))) : Math.round(Math.sin(k.t * 4.1 + s.ph) * .8);
+  if(RT && RT.name === 'sight'){
+    // the chart down at her side in one hand; the spyglass up to her eye in the other, a slow sweep along the road
+    const up = swing(RT.u, .22, .82), sweep = Math.round(Math.sin(RT.at * 1.7) * up);
+    k.R(4, -16, 7, 4, '#ecdcb0'); k.R(4, -16, 7, 1, '#fff2cc'); k.P(10, -13 + Math.round(Math.sin(k.t * 5) * .6), '#fff2cc');
+    k.L(3, -24, 4, -17, 2, C.c); hand(k, 3, -16, sk);
+    const gx = Math.round(-6 + up * 10), gy = Math.round(-19 - up * 11) + (up > .9 ? sweep : 0);
+    k.L(-1, -24, gx, gy + 1, 2, C.d); hand(k, gx - 1, gy, sk);
+    if(up > .5){ k.R(gx, gy - 1, 5, 2, BRASS.c); k.R(gx, gy - 1, 5, 1, BRASS.l); k.P(gx + 4, gy, BRASS.d); if(every(k.t, 1.3, .15, s.ph)) k.P(gx + 4, gy - 1, '#ffffff'); }
+    else { k.R(gx - 1, gy - 2, 2, 4, BRASS.c); k.P(gx - 1, gy - 2, BRASS.l); }
+    return;
+  }
+  // busy: the wind lifts the chart's corner and she slaps it flat (a gust beat), or it only stirs while she reads
+  const gust = RT && RT.name === 'gust' ? RT.u : 0, slap = gust > .78;
+  const lift = gust ? (slap ? 0 : -Math.round(Math.min(3, gust * 4) * (1 + Math.sin(k.t * 19) * .2))) : Math.round(Math.sin(k.t * 4.1 + s.ph) * .8);
   k.L(3, -24, 4, -19, 2, C.c);
   k.R(4, -23, 8, 6, '#ecdcb0'); k.R(4, -23, 8, 1, '#fff2cc'); k.R(11, -23 + lift, 1, 1, '#fff2cc');
   if(lift < -1){ k.R(10, -23 + lift, 2, -lift, '#ecdcb0'); k.P(11, -24 + lift, '#fff2cc'); }
   if(slap){ k.L(-2, -24, 9, -24, 2, C.c); hand(k, 9, -25, sk); }
   k.R(5, -21, 5, 1, '#8a6a4a'); k.R(7, -20, 1, 2, '#6a8aa0'); k.P(9, -19, '#c43a2a'); k.P(6, -18, '#8a6a4a');
-  hand(k, 3, -20, sk); hand(k, 11, -20, sk);
+  hand(k, 3, -20, sk);
+  if(RT && RT.name === 'mark'){   // the pencil in short strokes across the sheet; the line grows as she draws
+    const n = Math.min(4, Math.floor(RT.u * 5)), px = 6 + n + ((k.t * 9 | 0) % 2), py = -22 + ((k.t * 6 | 0) % 2);
+    for(let i = 0; i < n; i++) k.P(6 + i, -22 + (i & 1), '#3a2a1e');
+    k.L(-1, -24, px - 1, py + 2, 2, C.d); hand(k, px - 1, py + 1, sk); k.P(px, py - 1, '#c89a3a'); k.P(px + 1, py - 2, '#c89a3a');
+  } else hand(k, 11, -20, sk);
 };
 
 /* VEY · the standard-bearer (Outskirts, the Gaol, the White Court). Wiry, one arm in a sling, a rose headband
@@ -252,21 +302,39 @@ D.vey = (k, s) => {
     k.R(tx + 2, ty + 3, 2, 2, BRASS.l);
   };
   if(low) standard(-9, -4, -28); else if(s.prop !== 'wrench') standard(-8, -8, -36);
+  // (7.371) busy, sitting: one hand (the other is in the sling) winds the bandage round her knee, pulls it tight, holds
+  // the end in her teeth to knot it, then tries the knee
+  const RT = s.busy && low ? routine(k.t, s.ph, [
+    [['wind', .9], ['wind', .9], ['wind', .9], ['tug', .8], ['bite', 1.0], ['flex', 1.1], ['rest', .8]],
+    [['wind', .9], ['wind', .9], ['wind', .9], ['wind', .9], ['tug', .8], ['bite', 1.0], ['rest', 1.0]]]) : null;
+  const fk = RT && RT.name === 'flex' ? Math.round(swing(RT.u, .3, .6) * 2) : 0;
   // sitting on her bedroll, knees up; or standing
-  if(low){ k.R(-4, -6, 6, 2, trouser); k.L(1, -6, 4, -9, 2, trouser); k.L(4, -9, 6, -3, 2, trouser); k.R(5, -2, 3, 2, BOOT); }
+  if(low){ k.R(-4, -6, 6, 2, trouser); k.L(1, -6, 4 + fk, -9 + (fk >> 1), 2, trouser); k.L(4 + fk, -9 + (fk >> 1), 6 + fk, -3, 2, trouser); k.R(5 + fk, -2, 3, 2, BOOT); }
   else { const st = stride(k, s); k.R(-3 + st, -8, 2, 7, trouser); k.R(1 - st, -8, 2, 7, trouser); k.R(-3 + st, -2, 3, 2, BOOT); k.R(1 - st, -2, 3, 2, BOOT); }
   const sh = low ? -18 : -19, base = low ? 1 : 0;
-  if(s.busy && low){   // rewrapping the bandage round her knee: the hand circles it, the loose end trails
-    const a = k.t * 4.2 + s.ph, cx = 3 + Math.round(Math.cos(a) * 2), cy = -9 + Math.round(Math.sin(a) * 1.5);
-    k.R(2, -10, 4, 2, sling); k.P(3, -10, '#fffaee');
-    k.L(-4, sh + 1, cx, cy, 2, J.d); hand(k, cx, cy, sk);
-    for(let i = 1; i < 4; i++) k.P(cx + i, cy + 1 + (i >> 1) + Math.round(Math.sin(a + i) * .6), i < 3 ? sling : '#cfc4ac');
-  } else { k.L(-4, sh + 1, -5, sh + 8, 2, J.d); hand(k, -6, sh + 8, sk); }
+  const knee = () => {
+    const kx = 2 + fk, ky = -10 + (fk >> 1);
+    k.R(kx, ky, 4, 2, sling); k.P(kx + 1, ky, '#fffaee');
+    if(RT.name === 'wind'){   // round the knee: in front of it on the way down, hidden behind it on the way back up
+      const a = RT.p * Math.PI * 2, front = Math.sin(a) >= 0, cx = kx + 1 + Math.round(Math.cos(a) * 3), cy = ky + Math.round(Math.sin(a) * 2);
+      if(front){ k.L(-4, sh + 1, cx, cy, 2, J.d); hand(k, cx, cy, sk); }
+      else { k.L(-4, sh + 1, kx - 1, ky - 1, 2, J.d); k.P(kx + 4, ky + 1, sk.d); }
+      for(let i = 1; i < 4; i++) k.P(kx + 3 + i, ky + 1 + (i >> 1), i < 3 ? sling : '#cfc4ac');   // the roll's loose end
+    } else if(RT.name === 'tug'){   // the end pulled hard back toward her
+      const q = swing(RT.u, .35, .7), hx = kx + 3 - Math.round(q * 5), hy = ky - Math.round(q * 3);
+      k.L(-4, sh + 1, hx, hy, 2, J.d); hand(k, hx, hy, sk); k.L(kx + 3, ky + 1, hx + 1, hy + 1, 1, sling);
+    } else if(RT.name === 'bite'){   // the end up to her teeth, held there while the hand knots it
+      const q = swing(RT.u, .3, .75), hx = kx + 1 + Math.round(q * -2), hy = ky - Math.round(q * 10);
+      k.L(-4, sh + 1, hx, hy, 2, J.d); hand(k, hx, hy, sk); k.L(kx + 2, ky, hx + 1, hy, 1, sling);
+    } else { k.L(-4, sh + 1, kx + 1, ky - 1, 2, J.d); hand(k, kx + 1, ky - 2, sk); }   // flex / rest: the hand on the knee
+  };
+  if(!RT){ k.L(-4, sh + 1, -5, sh + 8, 2, J.d); hand(k, -6, sh + 8, sk); }
   k.poly([[-4, sh], [4, sh], [4, base - 7], [-4, base - 7]], J);
   for(let i = 0; i < 9; i++) k.R(-4 + i, sh + 1 + i, 2, 1, i < 2 ? R.l : R.c);                 // the sash
   k.R(1, sh + 4, 4, 3, sling); k.R(1, sh + 4, 4, 1, '#fffaee'); k.L(0, sh, 3, sh + 4, 1, '#cfc4ac'); // the sling
+  if(RT) knee();   // in front of her: the knee is drawn up before her
   // the head, the headband and its tails (bowed over the bandage while she works)
-  if(s.busy && low) k = k.at(1, 1);
+  if(RT) k = RT.name === 'bite' ? k.at(1, Math.round(swing(RT.u, .3, .75) * 2)) : RT.name === 'tug' ? k.at(0, 0) : RT.name === 'wind' ? k.at(1, 1) : k.at(0, Math.round(fk / 2));
   face(k, -1, sh - 5, sk, { ey:2, mouth:'#8a4a3a' });
   k.R(-3, sh - 6, 6, 2, hair); k.R(-3, sh - 4, 2, 3, hair);
   k.R(-3, sh - 5, 6, 1, R.l); k.P(3, sh - 5, R.c);
@@ -288,10 +356,33 @@ D.elsie = (k, s) => {
   shadow(k, 14);
   if(s.sit){ stool(k, -6, 6, 11); k.R(1, -7, 5, 2, dress.c); k.R(4, -5, 2, 4, dress.d); k.R(4, -2, 3, 2, BOOT); }
   else { k.R(-3, -2, 3, 2, BOOT); k.R(1, -2, 3, 2, BOOT); }
+  // (7.371) busy: a pot on the embers beside her; she stirs it, tastes from the ladle, knocks it on the rim
+  const RT = s.busy && !s.sit ? routine(k.t, s.ph, [
+    [['stir', 2.4], ['taste', 1.4], ['stir', 1.6], ['tap', .8], ['rest', .4]],
+    [['stir', 2.0], ['tap', .8], ['stir', 1.6], ['taste', 1.4], ['rest', .8]]]) : null;
+  if(!s.sit && !s.walk){   // her pot in front of her: iron, on three stones, embers under it, steam off the top
+    const px = 8;
+    k.R(px - 1, -2, 2, 2, '#5a5650'); k.R(px + 9, -2, 2, 2, '#5a5650'); k.R(px + 4, -1, 2, 1, '#5a5650');
+    const em = Math.sin(k.t * 9) > 0; k.P(px + 2, -2, em ? '#ff9a30' : '#e0602a'); k.P(px + 6, -2, em ? '#e0602a' : '#ffc040'); k.glow(px + 5, -3, 10, '255,140,60', .18);
+    k.R(px, -9, 10, 7, IRON.d); k.R(px + 1, -9, 8, 6, '#3a3e44'); k.R(px - 1, -10, 12, 1, IRON.l); k.R(px, -9, 10, 1, '#5a3a22');
+    steam(k, px + 5, -11, 4, 10, s.ph, '#e8e4dc');
+  }
+  if(RT){
+    const px = 8;
+    hand(k, -6, b - 12, sk);   // the other hand on her hip
+    let hx, hy, tx, ty;   // the stirring hand and the ladle's bowl
+    if(RT.name === 'stir'){ const a = RT.at * 5.2 + s.ph * 6; tx = px + 4 + Math.round(Math.cos(a) * 3); ty = -9 + Math.round(Math.sin(a) * .7); hx = 5 + Math.round(Math.cos(a) * 1.4); hy = b - 11 + Math.round(Math.sin(a) * .6); }
+    else if(RT.name === 'taste'){ const q = swing(RT.u, .3, .75); tx = Math.round(px + 4 - q * 9); ty = Math.round(-9 - q * 7); hx = Math.round(5 - q * 2); hy = Math.round(b - 11 - q * 3);
+      if(RT.u > .3 && RT.u < .75) steam(k, tx + 1, ty - 1, 2, 4, s.ph * 2, '#f2f0ea'); }
+    else if(RT.name === 'tap'){ const knock = (RT.u * 2) % 1 < .3; tx = px + 8; ty = knock ? -10 : -12; hx = 6; hy = b - 12; if(knock) k.P(px + 10, -11, '#fff2c8'); }
+    else { tx = px + 5; ty = -10; hx = 5; hy = b - 11; }
+    RT._hx = hx; RT._hy = hy; RT._lad = () => { k.L(hx + 1, hy + 1, tx + 1, ty - 1, 1, WOOD.l); k.R(tx, ty, 3, 2, WOOD.c); k.P(tx, ty, WOOD.l); };
+  } else {
   // the ladle, stirring the air
-  const sp = s.busy ? 6.5 : 3, cx = Math.round(Math.cos(k.t * sp + s.ph) * (s.busy ? 2 : 1)), cy = Math.round(Math.sin(k.t * sp + s.ph));   // busy [elsie-stir]
+  const sp = 3, cx = Math.round(Math.cos(k.t * sp + s.ph)), cy = Math.round(Math.sin(k.t * sp + s.ph));
   k.L(-5, b - 11, -7 + cx, b - 20 + cy, 1, WOOD.l); k.R(-9 + cx, b - 22 + cy, 3, 2, WOOD.c); k.P(-9 + cx, b - 22 + cy, WOOD.l);
   hand(k, -6, b - 12, sk);
+  }
   k.poly([[-5, b - 12], [5, b - 12], [7, b - 1], [-7, b - 1]], dress);
   k.R(-2, b - 11, 6, 10, apron); k.R(-2, b - 11, 6, 1, '#fffaf0'); k.R(3, b - 10, 1, 9, '#cdbf9c');
   k.poly([[-5, b - 15], [5, b - 15], [6, b - 10], [-6, b - 10]], R);                              // the shawl
@@ -302,8 +393,9 @@ D.elsie = (k, s) => {
   k.P(-1, b - 21, R.c); k.P(-2, b - 22, R.l); k.P(1, b - 21, R.c); k.P(2, b - 22, R.l);           // the knot's ears
   // the bowl: in her hands, or pushed across to your place at supper
   const slide = s.good && s.at < 3 ? Math.round(Math.min(1, s.at / 3) * 11) : s.good ? 99 : 0;
-  if(slide < 99){ const bx = 4 + slide; k.R(bx, b - 12, 5, 2, '#e0d2b0'); k.R(bx, b - 12, 5, 1, '#fff6dc'); k.R(bx + 1, b - 10, 3, 1, '#b8a888'); steam(k, bx + 2, b - 13, 3, 7, s.ph); }
-  hand(k, 4, b - 11, sk);
+  if(RT){ RT._lad(); hand(k, RT._hx, RT._hy, sk); }
+  else if(slide < 99){ const bx = 4 + slide; k.R(bx, b - 12, 5, 2, '#e0d2b0'); k.R(bx, b - 12, 5, 1, '#fff6dc'); k.R(bx + 1, b - 10, 3, 1, '#b8a888'); steam(k, bx + 2, b - 13, 3, 7, s.ph); }
+  if(!RT) hand(k, 4, b - 11, sk);
   if(s.bad){ const ext = Math.round(Math.min(1, (s.at || 9) / 1.5) * 5); k.L(4, b - 13, 6 + ext, b - 13, 2, R.c); hand(k, 7 + ext, b - 14, sk); }
 };
 
@@ -313,10 +405,17 @@ D.elsie = (k, s) => {
 D.bram = (k, s) => {
   const C = pal('#d8d0b8', '#f6f0de', '#9a927a'), A = pal('#e0a030', '#ffcc60', '#9a6a14'), sk = SKIN.tan, cap = pal('#2e2c38', '#4c4a5a', '#1a1822'), hair = '#3a2a20';
   shadow(k, 14);
-  k.L(-5, -25, -8, -43, 1, WOOD.c); k.P(-8, -44, BRASS.l); k.P(-7, -45, BRASS.c);                // the lighting pole
+  // (7.371) busy: his lantern's glass polished with a rag, the wick trimmed (the flame jumps), and the lantern lifted
+  // high to look off into the dark; between times it hangs at his side
+  const RT = s.busy && !s.walk && !s.handedOver ? routine(k.t, s.ph, [
+    [['polish', 2.0], ['trim', 1.6], ['raise', 1.4], ['rest', 1.0]],
+    [['raise', 1.6], ['rest', .8], ['polish', 2.2], ['trim', 1.4]]]) : null;
+  const pole = !RT || RT.name === 'rest' || RT.name === 'raise';
+  if(pole){ k.L(-5, -25, -8, -43, 1, WOOD.c); k.P(-8, -44, BRASS.l); k.P(-7, -45, BRASS.c); }   // the lighting pole
+  else { k.L(-12, -1, -9, -34, 1, WOOD.c); k.P(-9, -35, BRASS.l); }                              // leant against him while his hands are busy
   const st = stride(k, s, 1);
   k.R(-3 + st, -5, 2, 4, '#3a3834'); k.R(1 - st, -5, 2, 4, '#3a3834'); k.R(-3 + st, -2, 3, 2, BOOT); k.R(1 - st, -2, 3, 2, BOOT);
-  k.L(-4, -25, -5, -18, 2, C.d); hand(k, -6, -18, sk);
+  if(pole) { k.L(-4, -25, -5, -18, 2, C.d); hand(k, -6, -18, sk); }
   k.poly([[-4, -27], [4, -27], [6, -4], [-6, -4]], C);
   k.R(1, -22, 1, 18, C.d); k.P(2, -20, '#8a826c'); k.P(2, -16, '#8a826c'); k.P(2, -12, '#8a826c');
   k.R(-4, -27, 9, 2, A.c); k.R(-4, -27, 9, 1, A.l);
@@ -326,13 +425,25 @@ D.bram = (k, s) => {
   k.R(-3, -34, 7, 2, cap.c); k.R(-3, -34, 7, 1, cap.l); k.R(-2, -36, 5, 2, cap.c); k.P(-2, -36, cap.l);
   k.R(-2, -38, 3, 2, cap.c); k.P(-3, -39, cap.c); k.P(-4, -40, cap.l);
   // the lantern (it is on the post once the lesson is over)
-  k.L(4, -25, 6, -17, 2, C.c); hand(k, 5, -17, sk);
+  let ly = 0, lxo = 0;
+  if(RT && RT.name === 'raise'){ const q = swing(RT.u, .3, .8); ly = -Math.round(q * 14); lxo = Math.round(q * 2); }
+  else if(RT && (RT.name === 'polish' || RT.name === 'trim')){ ly = -5; lxo = -1; }
+  k.L(4, -25, 6 + lxo, -17 + ly, 2, C.c); hand(k, 5 + lxo, -17 + ly, sk);
   if(!s.handedOver){
-    const lx = 6 + Math.round(Math.sin(k.t * 2.2 + s.ph) * (s.walk ? 1.5 : .8)), lit = s.lit;
-    k.R(lx, -16, 1, 2, IRON.c);
-    k.R(lx - 3, -14, 7, 1, IRON.l); k.R(lx - 3, -13, 7, 9, '#3e3e2a'); k.R(lx - 2, -12, 5, 7, lit ? '#ffe9a0' : '#8d8859'); k.R(lx, -12, 1, 7, lit ? '#fff8d8' : '#a8a070');
-    k.R(lx - 3, -5, 7, 1, IRON.d);
-    if(lit){ k.glow(lx, -9, 30, '255,214,120', .32); k.glow(lx, -9, 10, '255,236,170', .35); }
+    const lx = 6 + lxo + (RT && RT.name !== 'rest' ? 0 : Math.round(Math.sin(k.t * 2.2 + s.ph) * (s.walk ? 1.5 : .8))), lit = s.lit;
+    const jump = RT && RT.name === 'trim' && RT.u > .5 && RT.u < .7, open = RT && RT.name === 'trim' && RT.u > .2 && RT.u < .85;
+    k.R(lx, -16 + ly, 1, 2, IRON.c);
+    k.R(lx - 3, -14 + ly, 7, 1, IRON.l); k.R(lx - 3, -13 + ly, 7, 9, '#3e3e2a'); k.R(lx - 2, -12 + ly, 5, 7, lit ? '#ffe9a0' : '#8d8859'); k.R(lx, -12 + ly, 1, 7, lit ? '#fff8d8' : '#a8a070');
+    if(open){ k.R(lx + 3, -13 + ly, 2, 7, '#3e3e2a'); k.P(lx, -9 + ly, jump ? '#ffffff' : '#ffb040'); }   // the little door swung open
+    k.R(lx - 3, -5 + ly, 7, 1, IRON.d);
+    if(lit || jump){ k.glow(lx, -9 + ly, jump ? 40 : 30, '255,214,120', jump ? .45 : .32); k.glow(lx, -9 + ly, 10, '255,236,170', .35); }
+    if(RT && RT.name === 'polish'){   // the rag in circles on the glass
+      const a = RT.at * 6.5, rx = lx - 2 + Math.round(Math.cos(a) * 1.5), ry = -10 + ly + Math.round(Math.sin(a) * 2);
+      k.L(-4, -25, rx - 1, ry + 1, 2, C.d); k.R(rx - 1, ry - 1, 3, 3, '#cfc6b0'); hand(k, rx, ry, sk);
+    } else if(RT && RT.name === 'trim'){   // fingers in at the wick
+      const fx = lx + 1 + (open ? 2 : 4), fy = -10 + ly + Math.round(Math.sin(RT.at * 12) * .6);
+      k.L(-4, -25, fx - 1, fy, 2, C.d); hand(k, fx, fy, sk);
+    }
   }
 };
 
@@ -885,20 +996,37 @@ D.gardener = (k, s) => {
 D.olan = (k, s) => {
   const C = pal('#4a7a7c', '#6c9c9a', '#2e5052'), sk = SKIN.ruddy, cap = pal('#3c3a42', '#5a5862', '#26242a');
   shadow(k, 14);
+  // (7.371) busy: he watches the road, counts the patrols off the notches, leans on his hip to cut a new one, blows it clean
+  const RT = s.busy ? routine(k.t, s.ph, [
+    [['watch', 1.6], ['count', 1.6], ['notch', 1.8], ['blow', 1.0]],
+    [['count', 1.6], ['watch', 2.2], ['count', 1.4], ['watch', .8]],
+    [['watch', 1.2], ['notch', 1.8], ['blow', 1.0], ['count', 2.0]]]) : null;
   k.L(-6, -21, -8, -1, 1, WOOD.c); k.R(-9, -22, 4, 1, WOOD.l); k.P(-8, -1, WOOD.d);                 // the crutch
   k.R(-3, -8, 2, 7, '#3a3430'); k.R(-3, -2, 3, 2, BOOT); k.R(1, -8, 2, 4, '#3a3430'); k.R(1, -4, 1, 4, WOOD.l);   // boot, peg
   k.poly([[-6, -25], [2, -25], [5, -8], [-5, -8]], C);
   k.R(0, -23, 1, 15, C.d); k.R(-5, -16, 9, 1, '#2e2a26'); k.P(-5, -24, C.l);
-  k.L(-5, -23, -7, -22, 2, C.d);
-  // busy: head down over the tally stick, counting the patrols under his breath (the thumb runs the notches)
-  const h = s.busy ? k.at(1, 1) : k, count = s.busy ? 3.2 : .8;
-  face(h, -2, -30, sk, { h:5, ey:s.busy ? 3 : 2, nose:true }); h.R(-2, -26, 4, 1, '#a8a49c');
-  if(s.busy && every(k.t, .5, .25, s.ph)) h.P(1, -26, '#7a4a3a');
+  const cutting = RT && RT.name === 'notch', down = RT && RT.name !== 'watch';
+  if(!cutting) k.L(-5, -23, -7, -22, 2, C.d);
+  // head down over the stick while he counts or cuts; up and along the road while he watches (a slow look each way)
+  const h0 = down ? k.at(1, 1) : k, h = RT && RT.name === 'watch' && RT.u > .45 && RT.u < .8 ? h0.flip() : h0;
+  face(h, -2, -30, sk, { h:5, ey:down ? 3 : 2, nose:true }); h.R(-2, -26, 4, 1, '#a8a49c');
+  if(RT && (RT.name === 'count' || RT.name === 'watch' && RT.u > .85) && every(k.t, .5, .25, s.ph)) h.P(1, -26, '#7a4a3a');   // lips counting
+  if(RT && RT.name === 'blow' && RT.u > .3 && RT.u < .8) h.P(2, -26, '#7a4a3a');
   h.R(-4, -32, 6, 3, cap.c); h.R(-3, -33, 4, 1, cap.c); h.R(-4, -32, 6, 1, cap.l); h.R(-4, -30, 6, 1, cap.d);
-  const lift = s.busy ? -3 : 0;
-  k.L(1, -23, 4, -17 + lift, 2, C.c); hand(k, 4, -18 + lift, sk);
-  k.R(6, -23 + lift, 1, 9, WOOD.l); for(let i = 0; i < 4; i++) k.P(6, -22 + lift + i * 2, WOOD.d);
-  k.P(5, -22 + lift + (((k.t * count + s.ph * 4) | 0) % 4) * 2, sk.l);
+  const lift = RT ? (RT.name === 'blow' ? -3 - Math.round(swing(RT.u, .25, .8) * 5) : RT.name === 'watch' ? -1 : -3) : 0;
+  const sx = RT && RT.name === 'blow' ? 4 : 6;
+  k.L(1, -23, sx - 2, -17 + lift, 2, C.c); hand(k, sx - 2, -18 + lift, sk);
+  k.R(sx, -23 + lift, 1, 9, WOOD.l); for(let i = 0; i < 4; i++) k.P(sx, -22 + lift + i * 2, WOOD.d);
+  if(RT && (RT.name === 'count' || !RT)) k.P(sx - 1, -22 + lift + (((k.t * 3.2 + s.ph * 4) | 0) % 4) * 2, sk.l);
+  else if(!RT) k.P(5, -22 + (((k.t * .8 + s.ph * 4) | 0) % 4) * 2, sk.l);
+  if(cutting){   // the knife hand comes across from the crutch; three short cuts, chips falling
+    const cut = (RT.u * 3) % 1, hy = -17 + lift - Math.round(ease(Math.min(1, cut * 1.6)) * 2), n = Math.floor(RT.u * 3);
+    k.L(-5, -23, 4, hy + 1, 2, C.d); hand(k, 4, hy, sk); k.P(5, hy - 1, IRON.l);
+    k.P(6, -16 + lift, n > 1 ? WOOD.d : '#c8a878');
+    if(cut > .55){ const f = (cut - .55) / .45; k.alpha(1 - f, () => { k.P(7, -16 + lift + Math.round(f * 12), '#d8b888'); k.P(8 + (n & 1), -15 + lift + Math.round(f * 10), '#c8a878'); }); }
+  }
+  if(RT && RT.name === 'blow' && RT.u > .35 && RT.u < .9){ const f = (RT.u - .35) / .55;   // the shavings blown off the stick
+    k.alpha(1 - f, () => { for(let i = 0; i < 3; i++) k.P(sx + 1 + Math.round(f * (5 + i * 2)), -20 + lift + i * 2 - Math.round(f * 2), '#d8b888'); }); }
 };
 /* ORRA · Black Woods · the clock keeper. Small and round-shouldered in dusky plum, a white bun with a pencil through
    it, big round spectacles; her daughter's watch swings on its chain, and now and then goes up to her ear. */
@@ -908,11 +1036,34 @@ D.orra = (k, s) => {
   k.R(-3, -2, 3, 2, BOOT); k.R(1, -2, 3, 2, BOOT);
   k.poly([[-4, -17], [4, -17], [6, -1], [-6, -1]], C);
   k.poly([[-5, -18], [4, -18], [5, -12], [-6, -11]], SH); k.P(-6, -11, SH.d); k.P(-4, -10, SH.d); k.P(-2, -11, SH.d);
-  face(k, -1, -22, sk, { eyes:false, mouth:'#a06050' });
-  k.R(0, -21, 2, 2, '#d8eef4'); k.R(2, -21, 2, 2, '#d8eef4'); k.P(1, -20, EYE); k.P(3, -20, EYE);
-  k.R(-3, -23, 6, 1, hair); k.R(-3, -22, 2, 3, hair); k.R(-2, -26, 4, 3, hair); k.P(-2, -26, '#ffffff'); k.L(-4, -27, 1, -25, 1, '#d8a040');
-  // busy [orra-shake-watch]: the watch to her ear, then out at arm's length for a shake, and back to the ear
-  const ear = s.busy ? every(k.t, 2.2, 1.2, s.ph) : every(k.t, 5, 1.6, s.ph), shake = s.busy && !ear && every(k.t + .1, 2.2, .7, s.ph);
+  // (7.371) busy: the watch to her ear (head tipped to it), then down to read its face and tap the glass, a turn of the
+  // crown, a hard shake at arm's length, and a sigh as it drops on its chain
+  const RT = s.busy ? routine(k.t, s.ph, [
+    [['listen', 1.8], ['read', 1.4], ['shake', .9], ['listen', 1.5], ['sigh', 1.0]],
+    [['read', 1.6], ['wind', 1.6], ['listen', 1.8], ['shake', .9], ['sigh', .7]]]) : null;
+  const hk = RT ? (RT.name === 'listen' ? k.at(1, 0) : RT.name === 'read' || RT.name === 'wind' ? k.at(1, 1) : RT.name === 'sigh' ? k.at(0, Math.round(swing(RT.u, .3, .7))) : k) : k;
+  face(hk, -1, -22, sk, { eyes:false, mouth:'#a06050' });
+  hk.R(0, -21, 2, 2, '#d8eef4'); hk.R(2, -21, 2, 2, '#d8eef4');
+  if(RT && RT.name === 'listen' && RT.u > .25 && RT.u < .85){ hk.R(1, -20, 1, 1, '#a08890'); hk.R(3, -20, 1, 1, '#a08890'); }   // eyes shut, listening
+  else { hk.P(1, -20, EYE); hk.P(3, -20, EYE); }
+  hk.R(-3, -23, 6, 1, hair); hk.R(-3, -22, 2, 3, hair); hk.R(-2, -26, 4, 3, hair); hk.P(-2, -26, '#ffffff'); hk.L(-4, -27, 1, -25, 1, '#d8a040');
+  if(RT && RT.name !== 'shake' && RT.name !== 'sigh'){
+    if(RT.name === 'listen'){ const q = swing(RT.u, .2, .85), hy = Math.round(-14 - q * 8);
+      k.L(3, -17, 3, hy + 1, 2, SH.c); hand(k, 3, hy, sk); k.R(4, hy - 1, 3, 3, BRASS.c); k.P(5, hy, '#fff8e0'); }
+    else {   // read / wind: the watch up before her, the other hand's finger at the glass or the crown
+      const wx = 6, wy = -15; k.L(3, -16, 5, wy + 1, 2, SH.c); hand(k, 5, wy + 1, sk); k.R(wx, wy - 1, 3, 3, BRASS.c); k.P(wx + 1, wy, '#fff8e0'); k.P(wx + 1, wy - 1, BRASS.d);
+      const tap = RT.name === 'read' ? (RT.u > .5 && ((RT.at * 6) | 0) % 2 === 0 ? 1 : 0) : 0, tw = RT.name === 'wind' ? (((RT.at * 8) | 0) % 2) : 0;
+      k.L(-3, -16, wx - 1, wy - 2 + tap, 2, SH.d); k.P(wx + (RT.name === 'wind' ? 1 : 0), wy - 2 + tap - (RT.name === 'wind' ? 1 : 0), sk.l);
+      if(tw) k.P(wx + 2, wy - 3, sk.c);
+    }
+  } else if(RT){   // shake: hard and fast at arm's length; sigh: it drops back to swing on its chain
+    const sh = RT.name === 'shake', jx = sh ? ((k.t * 26 | 0) % 2 ? 2 : -1) : 0, jy = sh ? ((k.t * 19 | 0) % 2) : Math.round(swing(RT.u, .3, .7));
+    k.L(3, -16, 6, -14 + jy, 2, SH.c); hand(k, 6 + (sh ? jx >> 1 : 0), -15 + jy, sk);
+    const sw = sh ? jx : Math.round(Math.sin(k.t * 4 + s.ph) * 1.6);
+    k.L(7, -13 + jy, 7 + sw, -9 + jy, 1, BRASS.l); k.R(6 + sw, -9 + jy, 3, 3, BRASS.c); k.P(7 + sw, -8 + jy, '#fff8e0'); k.P(7 + sw, -9 + jy, BRASS.d);
+  }
+  if(RT) return;
+  const ear = every(k.t, 5, 1.6, s.ph), shake = false;
   if(ear){ k.L(3, -17, 3, -21, 2, SH.c); hand(k, 3, -22, sk); k.R(4, -23, 3, 3, BRASS.c); k.P(5, -22, '#fff8e0'); }
   else {
     const sw = shake ? ((k.t * 22 | 0) % 2 ? 2 : -1) : Math.round(Math.sin(k.t * 2.5 + s.ph) * 1.4);
@@ -924,21 +1075,41 @@ D.orra = (k, s) => {
    spotted with resin; a yoke over both shoulders with a bucket at each end, one of them dripping amber. */
 D.pell = (k, s) => {
   const K2 = pal('#3a94a2', '#62b8c2', '#1e5e6a'), SM = pal('#6a6a70', '#8a8a90', '#46464c'), sk = SKIN.tan, apron = pal('#7a5a3a', '#9a7a52', '#4e3822');
+  // (7.371) busy: the yoke hitched up on his shoulders (the buckets jump and swing), a paddle dipped in the front
+  // bucket and lifted to watch the resin run off it, the paddle wiped on his apron, a look and a tap at the back bucket
+  const RT = s.busy ? routine(k.t, s.ph, [
+    [['settle', 1.0], ['skim', 2.2], ['wipe', 1.0], ['check', 1.4], ['rest', .8]],
+    [['skim', 2.0], ['settle', 1.0], ['check', 1.4], ['skim', 1.6], ['wipe', .4]]]) : null;
   shadow(k, 16);
-  const sw = Math.round(Math.sin(k.t * 1.7 + s.ph) * .8);
+  const hitch = RT && RT.name === 'settle' ? Math.round(swing(RT.u, .25, .45) * 2) : 0;
+  const kick = RT && RT.name === 'settle' ? Math.sin(Math.max(0, RT.u - .4) * 14) * 2.2 * (1 - RT.u) : RT && RT.name === 'check' && RT.u > .5 ? Math.sin((RT.u - .5) * 16) * 2 * (1 - RT.u) : 0;
+  const sw = Math.round(Math.sin(k.t * 1.7 + s.ph) * .8 + kick), y0 = -hitch;
   k.R(-4, -7, 3, 6, '#3e3a36'); k.R(1, -7, 3, 6, '#3e3a36'); k.R(-4, -2, 4, 2, BOOT); k.R(1, -2, 4, 2, BOOT);
-  k.R(-11, -21, 23, 1, WOOD.l); k.R(-11, -20, 23, 1, WOOD.d);                                            // the yoke
-  for(const bx of [-12, 10]){ k.R(bx + 1, -20, 1, 6, '#b09a70'); k.R(bx + sw, -14, 5, 5, WOOD.c); k.R(bx + sw, -14, 5, 1, WOOD.l); k.R(bx + 1 + sw, -14, 3, 1, '#e8a030'); k.R(bx + sw, -11, 5, 1, IRON.c); }
-  const p = ((k.t + s.ph * 1.8) % 1.8) / 1.8; k.alpha(1 - p, () => k.P(12 + sw, -9 + Math.round(p * 8), '#e89a2a'));
-  k.poly([[-5, -19], [5, -19], [6, -7], [-6, -7]], SM);
+  k.R(-11, -21 + y0, 23, 1, WOOD.l); k.R(-11, -20 + y0, 23, 1, WOOD.d);                                            // the yoke
+  for(const bx of [-12, 10]){ const b2 = bx < 0 ? sw : Math.round(sw * .7) + (RT && RT.name === 'skim' ? 0 : 0);
+    k.R(bx + 1, -20 + y0, 1, 6, '#b09a70'); k.R(bx + b2, -14 + y0, 5, 5, WOOD.c); k.R(bx + b2, -14 + y0, 5, 1, WOOD.l); k.R(bx + 1 + b2, -14 + y0, 3, 1, '#e8a030'); k.R(bx + b2, -11 + y0, 5, 1, IRON.c); }
+  const p = ((k.t + s.ph * 1.8) % 1.8) / 1.8; k.alpha(1 - p, () => k.P(12 + sw, -9 + y0 + Math.round(p * 8), '#e89a2a'));
+  k.poly([[-5, -19 + y0], [5, -19 + y0], [6, -7], [-6, -7]], SM);
   k.R(-3, -15, 7, 9, apron.c); k.R(-3, -15, 7, 1, apron.l); k.P(0, -11, '#e0a030'); k.P(2, -9, '#c07a20'); k.P(-2, -8, '#e0a030');
-  if(s.busy){   // [pell-scrape]: the knife drawn down the bark into the jar held under it
-    const sc = Math.round(((k.t * 1.6 + s.ph) % 1) * 7);
-    k.L(-5, -18, -9, -24 + sc, 2, sk.c); hand(k, -10, -25 + sc, sk); k.R(-12, -26 + sc, 3, 1, IRON.l);
-    k.L(5, -18, -7, -14, 2, sk.c); hand(k, -8, -15, sk); k.R(-10, -16, 3, 4, '#d8c8a0'); k.R(-10, -14, 3, 2, '#e8a030');
-  } else { k.L(-5, -18, -8, -20, 2, sk.c); hand(k, -9, -21, sk); k.L(5, -18, 8, -20, 2, sk.c); hand(k, 8, -21, sk); }
-  face(k, -1, -25, sk, { h:5, ey:2, nose:true }); k.R(-3, -22, 2, 2, '#5a3a22');
-  k.R(-3, -27, 7, 3, K2.c); k.R(-3, -27, 7, 1, K2.l); k.P(-4, -25, K2.c); k.P(-5, -24 + (sw > 0 ? 1 : 0), K2.d);
+  let look = false;
+  if(RT && RT.name === 'skim'){   // the paddle in the front bucket, stirred, then lifted to watch it run
+    const lift = swing(RT.u, .55, .9), st = RT.u < .55 ? Math.round(Math.sin(RT.at * 9) * 1.2) : 0;
+    const px = 12 + st, py = Math.round(-13 + y0 - lift * 8);
+    k.L(5, -18 + y0, px - 2, py - 1, 2, sk.c); hand(k, px - 2, py - 2, sk); k.L(px - 1, py - 1, px, py + 3, 1, WOOD.l);
+    if(lift > .6){ k.P(px, py + 4, '#e8a030'); const d = (RT.at * 2.5) % 1; k.alpha(1 - d, () => k.P(px, py + 5 + Math.round(d * 6), '#e89a2a')); }
+    k.L(-5, -18 + y0, -8, -20 + y0, 2, sk.c); hand(k, -9, -21 + y0, sk);
+  } else if(RT && RT.name === 'wipe'){   // the paddle wiped down the apron, both ways
+    const wx = Math.round(Math.sin(RT.u * Math.PI * 3) * 2);
+    k.L(5, -18 + y0, 1 + wx, -12, 2, sk.c); hand(k, 1 + wx, -13, sk); k.L(2 + wx, -13, 3 + wx, -9, 1, WOOD.l);
+    k.L(-5, -18 + y0, -8, -20 + y0, 2, sk.c); hand(k, -9, -21 + y0, sk);
+  } else if(RT && RT.name === 'check'){   // a look back at the far bucket and a tap on it
+    look = RT.u > .15 && RT.u < .85; const tap = RT.u > .45 && RT.u < .6;
+    k.L(-5, -18 + y0, tap ? -10 : -8, tap ? -15 + y0 : -20 + y0, 2, sk.c); hand(k, tap ? -11 : -9, tap ? -16 + y0 : -21 + y0, sk);
+    k.L(5, -18 + y0, 8, -20 + y0, 2, sk.c); hand(k, 8, -21 + y0, sk);
+  } else { k.L(-5, -18 + y0, -8, -20 + y0, 2, sk.c); hand(k, -9, -21 + y0, sk); k.L(5, -18 + y0, 8, -20 + y0, 2, sk.c); hand(k, 8, -21 + y0, sk); }
+  const h = look ? k.flip().at(0, y0) : RT && (RT.name === 'skim' || RT.name === 'wipe') ? k.at(1, 1 + y0) : k.at(0, y0);
+  face(h, -1, -25, sk, { h:5, ey:2, nose:true }); h.R(-3, -22, 2, 2, '#5a3a22');
+  h.R(-3, -27, 7, 3, K2.c); h.R(-3, -27, 7, 1, K2.l); h.P(-4, -25, K2.c); h.P(-5, -24 + (sw > 0 ? 1 : 0), K2.d);
 };
 /* HALE · Black Woods · the quiet veteran. Sat heavy on his bedroll, legs out: a steel-grey gambeson, one dented
    pauldron, the other shoulder bandaged, an eye patch, a cropped grey beard, his helmet on the ground beside him;
@@ -951,17 +1122,31 @@ D.hale = (k, s) => {
   k.poly([[-6, -20], [5, -20], [6, -6], [-6, -6]], C);
   k.L(-5, -19, 3, -9, 1, '#5a4030'); k.R(-6, -10, 12, 1, '#4a3424'); k.P(0, -10, BRASS.c);            // baldric and belt
   k.R(-7, -21, 5, 3, IRON.c); k.R(-7, -21, 5, 1, IRON.l); k.P(-3, -19, IRON.d);                              // pauldron
-  const roll = s.busy ? Math.round(Math.sin(k.t * 2.4 + s.ph) * 1.2) : 0;   // busy [hale-shoulder]: rolling the bad one
-  k.R(3, -20 + roll, 3, 5, band); k.R(3, -18 + roll, 3, 1, '#c8bca4'); k.R(3, -16 + roll, 3, 1, '#c8bca4');   // bandaged shoulder
+  // (7.371) busy: he works the bad shoulder (rubs it, rolls it, eases the arm up and down) and drinks between times
+  const RT = s.busy ? routine(k.t, s.ph, [
+    [['rub', 1.6], ['roll', 1.6], ['stretch', 1.4], ['drink', 1.4], ['rest', 1.0]],
+    [['drink', 1.4], ['rest', 1.2], ['roll', 1.6], ['rub', 1.4], ['stretch', 1.4]]]) : null;
+  const ra = RT && RT.name === 'roll' ? RT.at * 4 : 0, roll = RT && RT.name === 'roll' ? Math.round(Math.sin(ra) * 1.3) : 0, rollx = RT && RT.name === 'roll' ? Math.round(Math.cos(ra) * .8) : 0;
+  k.R(3 + rollx, -20 + roll, 3, 5, band); k.R(3 + rollx, -18 + roll, 3, 1, '#c8bca4'); k.R(3 + rollx, -16 + roll, 3, 1, '#c8bca4');   // bandaged shoulder
   const sip = !s.busy && every(k.t, 5.5, 1.3, s.ph);
-  k.L(-5, -17, -3, -9, 2, C.d); hand(k, -3, -10, sk);
-  if(sip){ k.L(4, -15, 3, -21, 2, C.c); hand(k, 2, -23, sk); k.R(3, -25, 3, 4, '#8a6a44'); k.P(3, -25, '#a8845a'); }
-  else if(s.busy){ const cx = Math.round(Math.cos(k.t * 2.4 + s.ph) * 2), cy = Math.round(Math.sin(k.t * 2.4 + s.ph) * 2);
-    k.L(4, -15 + roll, 7 + cx, -12 + cy, 2, C.c); hand(k, 7 + cx, -12 + cy, sk); k.R(9, -4, 3, 4, '#8a6a44'); k.P(9, -4, '#a8845a'); }
+  if(RT && RT.name === 'rub'){ const a = RT.at * 7; k.L(-5, -17, 2 + Math.round(Math.cos(a)), -18 + Math.round(Math.sin(a)), 2, C.d); hand(k, 2 + Math.round(Math.cos(a)), -19 + Math.round(Math.sin(a)), sk); }
+  else { k.L(-5, -17, -3, -9, 2, C.d); hand(k, -3, -10, sk); }
+  if(RT){
+    if(RT.name === 'drink'){ const q = swing(RT.u, .3, .75);   // the canteen up from the ground, head back, and down again
+      const cx = Math.round(9 - q * 7), cy = Math.round(-4 - q * 19);
+      k.L(4, -15, cx - 1, cy + 2, 2, C.c); hand(k, cx - 1, cy + 1, sk); k.R(cx, cy, 3, 4, '#8a6a44'); k.P(cx, cy, '#a8845a'); }
+    else if(RT.name === 'stretch'){ const q = swing(RT.u, .4, .65), ex = Math.round(6 + q * 3), ey = Math.round(-11 - q * 13);   // slowly, as far as it goes
+      k.L(4 + rollx, -15, ex, ey, 2, C.c); hand(k, ex, ey - 1, sk); k.R(9, -4, 3, 4, '#8a6a44'); k.P(9, -4, '#a8845a'); }
+    else { k.L(4 + rollx, -15 + roll, 6, -10 + roll, 2, C.c); hand(k, 6, -10 + roll, sk); k.R(9, -4, 3, 4, '#8a6a44'); k.P(9, -4, '#a8845a'); }
+  }
+  else if(sip){ k.L(4, -15, 3, -21, 2, C.c); hand(k, 2, -23, sk); k.R(3, -25, 3, 4, '#8a6a44'); k.P(3, -25, '#a8845a'); }
   else { k.L(4, -15, 6, -11, 2, C.c); hand(k, 6, -11, sk); k.R(8, -13, 3, 4, '#8a6a44'); k.P(8, -13, '#a8845a'); k.P(9, -14, '#c8b890'); }
-  face(k, -1, -26, sk, { h:5, ey:2, nose:true });
-  k.R(-1, -25, 2, 2, '#1a1418'); k.R(-3, -26, 3, 1, '#2a2020');
-  k.R(-3, -27, 5, 2, '#8a8680'); k.R(-3, -25, 2, 2, '#8a8680'); k.R(-1, -22, 5, 2, beard); k.P(3, -23, beard);
+  // the head: back for the drink, away from the shoulder as he rolls it, down while he rubs it (the eye screwed shut)
+  const hh = RT ? (RT.name === 'drink' ? k.at(-Math.round(swing(RT.u, .3, .75)), -Math.round(swing(RT.u, .3, .75))) : RT.name === 'roll' ? k.at(-1, 0) : RT.name === 'rub' ? k.at(0, 1) : k) : k;
+  face(hh, -1, -26, sk, { h:5, ey:2, nose:true, eyes:!(RT && (RT.name === 'rub' || RT.name === 'stretch' && RT.u > .35 && RT.u < .7)) });
+  if(RT && (RT.name === 'rub' || RT.name === 'stretch' && RT.u > .35 && RT.u < .7)) hh.R(1, -24, 2, 1, '#6a4030');   // wincing
+  hh.R(-1, -25, 2, 2, '#1a1418'); hh.R(-3, -26, 3, 1, '#2a2020');
+  hh.R(-3, -27, 5, 2, '#8a8680'); hh.R(-3, -25, 2, 2, '#8a8680'); hh.R(-1, -22, 5, 2, beard); hh.P(3, -23, beard);
 };
 /* TALLA · the Updrafts · the kite-mender. Wiry in a cream sailcloth smock with a scarlet sash and kerchief, two black
    braids; she flies a scarlet test kite on a line up in the draught, its tail of bows streaming. */
@@ -1211,7 +1396,7 @@ function facePlayer(g, o, fallback){
 /* Busy, then they notice you (7.359). The Outskirts' people are at their own work until the knight comes close;
    then a short start (`s.notice` runs 0→1 over .7s, the body jolts up a pixel) and they turn to face him. They go
    back to it when he walks off. Ids in BUSY have a busy pose; since 7.361 everyone else stands at their own work (`s.idle`). */
-const BUSY = new Set(['vey', 'olan', 'mara', 'rowan', 'orra', 'pell', 'hale', 'elsie', 'oren', 'sable']);   // (7.363) + the Woods and the Causeway
+const BUSY = new Set(['vey', 'olan', 'mara', 'rowan', 'orra', 'pell', 'hale', 'elsie', 'oren', 'sable', 'bram']);   // (7.371) + Bram's lantern   // (7.363) + the Woods and the Causeway
 const attention = new WeakMap();
 function attend(g, o, t){
   const p = g && g.p, near = !!p && Math.abs(p.x - o.x) < 130 && Math.abs((p.y || 0) - (o.y || 0)) < 90;

@@ -1,3 +1,16 @@
+## 7.371.0: busy work as routines (Outskirts and Black Woods) (2026-10-22, Claude, cloud session)
+- bladefall-resident-art.js: `routine(t, ph, variants)` runs a loop of named beats with eased progress (variants of equal length picked per loop, seeded per person), `swing(u, up, down)` for there-and-back moves. Isaac asked for more realistic busy animations, Outskirts and Black Woods first, and will give feedback before the rest.
+  - Rowan: whetstone strokes up the edge (contact, lift off, spark), lifts the spear to sight it and thumb the edge, glances down the road.
+  - Mara: studies the chart (head bowed), pencils marks (a line grows), sights the road through the spyglass (chart lowered), the wind lifts the corner and she slaps it down.
+  - Vey (seated): winds the bandage round her knee one-handed (hand hidden behind the knee on the back of the turn), tugs it tight, holds the end in her teeth, flexes the knee. Drawn in front of her body now (it was hidden behind it).
+  - Olan: watches the road (looks each way), counts the notches, sets the crutch hand to cut a new notch (chips fall), blows the stick clean.
+  - Elsie: a pot on three stones and embers in front of her (whenever she stands still); stirs it, tastes from the ladle (steam), knocks the ladle on the rim. The bowl is set down while she works.
+  - Orra: watch to her ear (eyes shut), reads it and taps the glass, winds the crown, shakes it hard, sighs as it drops on its chain.
+  - Pell: rewritten around the yoke: hitches it (buckets jump), skims the front bucket with a paddle (resin runs off), wipes it on his apron, looks back and taps the far bucket.
+  - Hale (seated): rubs and rolls the bandaged shoulder (wincing), eases the arm up, drinks from the canteen head back.
+  - Bram (added to BUSY): polishes the lantern glass with a rag (pole leant against him), trims the wick (door open, flame jumps), lifts the lantern high to look into the dark.
+- Preview tool used: scratchpad anim.mjs (renders drawDesign frames to PNG/GIF at 12 fps).
+
 ## 7.370.0: one dash take; shortcut ride sounds; the Two Banks removed (2026-10-22, Claude, cloud session)
 - Dash: a single take (audio/sfx/dash.mp3, was dash-1/dash-2 alternating; Isaac heard every second dash as silent, in both modes, even after loudness-matching). B/C stay for the mixer.
 - Explore shortcuts (bladefall-explore-mounts.js): a take-off cue (`mount-*`: drake, ballista, rocket, latch, dogs, lift) and a seamless 8 s loop per ride (`ride-*`, 19 of them, eleven_text_to_sound_v2 with loop:true) for the whole ride; land-hard on arrival. New `BladefallSfx.loop(name)` returns a stop(fade). All in the Sound mixer under "Shortcuts", with A/B/C. Ride loops are not precached or preloaded (fetched when a ride starts).
