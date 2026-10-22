@@ -406,12 +406,84 @@ ASSETS=(
   audio/sfx/bolt.b.mp3
   audio/sfx/bolt.c.mp3
   audio/sfx/bolt.mp3
+  audio/sfx/boss-archer-die.b.mp3
+  audio/sfx/boss-archer-die.c.mp3
+  audio/sfx/boss-archer-die.mp3
+  audio/sfx/boss-archer-hurt.b.mp3
+  audio/sfx/boss-archer-hurt.c.mp3
+  audio/sfx/boss-archer-hurt.mp3
+  audio/sfx/boss-archer-roar.b.mp3
+  audio/sfx/boss-archer-roar.c.mp3
+  audio/sfx/boss-archer-roar.mp3
+  audio/sfx/boss-brute-die.b.mp3
+  audio/sfx/boss-brute-die.c.mp3
+  audio/sfx/boss-brute-die.mp3
+  audio/sfx/boss-brute-hurt.b.mp3
+  audio/sfx/boss-brute-hurt.c.mp3
+  audio/sfx/boss-brute-hurt.mp3
+  audio/sfx/boss-brute-roar.b.mp3
+  audio/sfx/boss-brute-roar.c.mp3
+  audio/sfx/boss-brute-roar.mp3
+  audio/sfx/boss-colossus-die.b.mp3
+  audio/sfx/boss-colossus-die.c.mp3
+  audio/sfx/boss-colossus-die.mp3
+  audio/sfx/boss-colossus-hurt.b.mp3
+  audio/sfx/boss-colossus-hurt.c.mp3
+  audio/sfx/boss-colossus-hurt.mp3
+  audio/sfx/boss-colossus-roar.b.mp3
+  audio/sfx/boss-colossus-roar.c.mp3
+  audio/sfx/boss-colossus-roar.mp3
   audio/sfx/boss-fall.b.mp3
   audio/sfx/boss-fall.c.mp3
   audio/sfx/boss-fall.mp3
+  audio/sfx/boss-hydra-die.b.mp3
+  audio/sfx/boss-hydra-die.c.mp3
+  audio/sfx/boss-hydra-die.mp3
+  audio/sfx/boss-hydra-hurt.b.mp3
+  audio/sfx/boss-hydra-hurt.c.mp3
+  audio/sfx/boss-hydra-hurt.mp3
+  audio/sfx/boss-hydra-roar.b.mp3
+  audio/sfx/boss-hydra-roar.c.mp3
+  audio/sfx/boss-hydra-roar.mp3
+  audio/sfx/boss-king-die.b.mp3
+  audio/sfx/boss-king-die.c.mp3
+  audio/sfx/boss-king-die.mp3
+  audio/sfx/boss-king-hurt.b.mp3
+  audio/sfx/boss-king-hurt.c.mp3
+  audio/sfx/boss-king-hurt.mp3
+  audio/sfx/boss-king-roar.b.mp3
+  audio/sfx/boss-king-roar.c.mp3
+  audio/sfx/boss-king-roar.mp3
   audio/sfx/boss-roar.b.mp3
   audio/sfx/boss-roar.c.mp3
   audio/sfx/boss-roar.mp3
+  audio/sfx/boss-sorcerer-die.b.mp3
+  audio/sfx/boss-sorcerer-die.c.mp3
+  audio/sfx/boss-sorcerer-die.mp3
+  audio/sfx/boss-sorcerer-hurt.b.mp3
+  audio/sfx/boss-sorcerer-hurt.c.mp3
+  audio/sfx/boss-sorcerer-hurt.mp3
+  audio/sfx/boss-sorcerer-roar.b.mp3
+  audio/sfx/boss-sorcerer-roar.c.mp3
+  audio/sfx/boss-sorcerer-roar.mp3
+  audio/sfx/boss-tyrant-die.b.mp3
+  audio/sfx/boss-tyrant-die.c.mp3
+  audio/sfx/boss-tyrant-die.mp3
+  audio/sfx/boss-tyrant-hurt.b.mp3
+  audio/sfx/boss-tyrant-hurt.c.mp3
+  audio/sfx/boss-tyrant-hurt.mp3
+  audio/sfx/boss-tyrant-roar.b.mp3
+  audio/sfx/boss-tyrant-roar.c.mp3
+  audio/sfx/boss-tyrant-roar.mp3
+  audio/sfx/boss-warden-die.b.mp3
+  audio/sfx/boss-warden-die.c.mp3
+  audio/sfx/boss-warden-die.mp3
+  audio/sfx/boss-warden-hurt.b.mp3
+  audio/sfx/boss-warden-hurt.c.mp3
+  audio/sfx/boss-warden-hurt.mp3
+  audio/sfx/boss-warden-roar.b.mp3
+  audio/sfx/boss-warden-roar.c.mp3
+  audio/sfx/boss-warden-roar.mp3
   audio/sfx/campfire.b.mp3
   audio/sfx/campfire.c.mp3
   audio/sfx/campfire.mp3
@@ -488,6 +560,66 @@ ASSETS=(
   audio/sfx/key.b.mp3
   audio/sfx/key.c.mp3
   audio/sfx/key.mp3
+  audio/sfx/kn-climb-1.mp3
+  audio/sfx/kn-climb-2.mp3
+  audio/sfx/kn-climb-3.mp3
+  audio/sfx/kn-climb-4.mp3
+  audio/sfx/kn-climb-5.mp3
+  audio/sfx/kn-climb-6.mp3
+  audio/sfx/kn-climb.b.mp3
+  audio/sfx/kn-climb.c.mp3
+  audio/sfx/kn-dash-1.mp3
+  audio/sfx/kn-dash-2.mp3
+  audio/sfx/kn-dash-3.mp3
+  audio/sfx/kn-dash-4.mp3
+  audio/sfx/kn-dash-5.mp3
+  audio/sfx/kn-dash-6.mp3
+  audio/sfx/kn-dash.b.mp3
+  audio/sfx/kn-dash.c.mp3
+  audio/sfx/kn-death-1.mp3
+  audio/sfx/kn-death-2.mp3
+  audio/sfx/kn-death.b.mp3
+  audio/sfx/kn-death.c.mp3
+  audio/sfx/kn-hurt-1.mp3
+  audio/sfx/kn-hurt-2.mp3
+  audio/sfx/kn-hurt-3.mp3
+  audio/sfx/kn-hurt-4.mp3
+  audio/sfx/kn-hurt-5.mp3
+  audio/sfx/kn-hurt-6.mp3
+  audio/sfx/kn-hurt.b.mp3
+  audio/sfx/kn-hurt.c.mp3
+  audio/sfx/kn-jump-1.mp3
+  audio/sfx/kn-jump-2.mp3
+  audio/sfx/kn-jump-3.mp3
+  audio/sfx/kn-jump-4.mp3
+  audio/sfx/kn-jump-5.mp3
+  audio/sfx/kn-jump-6.mp3
+  audio/sfx/kn-jump.b.mp3
+  audio/sfx/kn-jump.c.mp3
+  audio/sfx/kn-jump2-1.mp3
+  audio/sfx/kn-jump2-2.mp3
+  audio/sfx/kn-jump2-3.mp3
+  audio/sfx/kn-jump2-4.mp3
+  audio/sfx/kn-jump2-5.mp3
+  audio/sfx/kn-jump2-6.mp3
+  audio/sfx/kn-jump2.b.mp3
+  audio/sfx/kn-jump2.c.mp3
+  audio/sfx/kn-land-1.mp3
+  audio/sfx/kn-land-2.mp3
+  audio/sfx/kn-land-3.mp3
+  audio/sfx/kn-land-4.mp3
+  audio/sfx/kn-land-5.mp3
+  audio/sfx/kn-land-6.mp3
+  audio/sfx/kn-land.b.mp3
+  audio/sfx/kn-land.c.mp3
+  audio/sfx/kn-strike-1.mp3
+  audio/sfx/kn-strike-2.mp3
+  audio/sfx/kn-strike-3.mp3
+  audio/sfx/kn-strike-4.mp3
+  audio/sfx/kn-strike-5.mp3
+  audio/sfx/kn-strike-6.mp3
+  audio/sfx/kn-strike.b.mp3
+  audio/sfx/kn-strike.c.mp3
   audio/sfx/land-hard.b.mp3
   audio/sfx/land-hard.c.mp3
   audio/sfx/land-hard.mp3
@@ -612,6 +744,33 @@ ASSETS=(
   audio/sfx/splash.b.mp3
   audio/sfx/splash.c.mp3
   audio/sfx/splash.mp3
+  audio/sfx/spot-chimes.b.mp3
+  audio/sfx/spot-chimes.c.mp3
+  audio/sfx/spot-chimes.mp3
+  audio/sfx/spot-clock.b.mp3
+  audio/sfx/spot-clock.c.mp3
+  audio/sfx/spot-clock.mp3
+  audio/sfx/spot-crowd.b.mp3
+  audio/sfx/spot-crowd.c.mp3
+  audio/sfx/spot-crowd.mp3
+  audio/sfx/spot-fire.b.mp3
+  audio/sfx/spot-fire.c.mp3
+  audio/sfx/spot-fire.mp3
+  audio/sfx/spot-forge.b.mp3
+  audio/sfx/spot-forge.c.mp3
+  audio/sfx/spot-forge.mp3
+  audio/sfx/spot-lava.b.mp3
+  audio/sfx/spot-lava.c.mp3
+  audio/sfx/spot-lava.mp3
+  audio/sfx/spot-pot.b.mp3
+  audio/sfx/spot-pot.c.mp3
+  audio/sfx/spot-pot.mp3
+  audio/sfx/spot-stream.b.mp3
+  audio/sfx/spot-stream.c.mp3
+  audio/sfx/spot-stream.mp3
+  audio/sfx/spot-waterfall.b.mp3
+  audio/sfx/spot-waterfall.c.mp3
+  audio/sfx/spot-waterfall.mp3
   audio/sfx/spring.b.mp3
   audio/sfx/spring.c.mp3
   audio/sfx/spring.mp3
@@ -652,21 +811,165 @@ ASSETS=(
   audio/sfx/turret.b.mp3
   audio/sfx/turret.c.mp3
   audio/sfx/turret.mp3
+  audio/sfx/ui-back.b.mp3
+  audio/sfx/ui-back.c.mp3
+  audio/sfx/ui-back.mp3
+  audio/sfx/ui-bag.b.mp3
+  audio/sfx/ui-bag.c.mp3
+  audio/sfx/ui-bag.mp3
+  audio/sfx/ui-map.b.mp3
+  audio/sfx/ui-map.c.mp3
+  audio/sfx/ui-map.mp3
   audio/sfx/ui-move.b.mp3
   audio/sfx/ui-move.c.mp3
   audio/sfx/ui-move.mp3
   audio/sfx/ui-open.b.mp3
   audio/sfx/ui-open.c.mp3
   audio/sfx/ui-open.mp3
+  audio/sfx/ui-pause.b.mp3
+  audio/sfx/ui-pause.c.mp3
+  audio/sfx/ui-pause.mp3
   audio/sfx/ui-select.b.mp3
   audio/sfx/ui-select.c.mp3
   audio/sfx/ui-select.mp3
+  audio/sfx/ui-world.b.mp3
+  audio/sfx/ui-world.c.mp3
+  audio/sfx/ui-world.mp3
+  audio/sfx/vo-crawl-alert.b.mp3
+  audio/sfx/vo-crawl-alert.c.mp3
+  audio/sfx/vo-crawl-alert.mp3
+  audio/sfx/vo-crawl-die.b.mp3
+  audio/sfx/vo-crawl-die.c.mp3
+  audio/sfx/vo-crawl-die.mp3
+  audio/sfx/vo-crawl-hurt.b.mp3
+  audio/sfx/vo-crawl-hurt.c.mp3
+  audio/sfx/vo-crawl-hurt.mp3
+  audio/sfx/vo-hound-alert.b.mp3
+  audio/sfx/vo-hound-alert.c.mp3
+  audio/sfx/vo-hound-alert.mp3
+  audio/sfx/vo-hound-die.b.mp3
+  audio/sfx/vo-hound-die.c.mp3
+  audio/sfx/vo-hound-die.mp3
+  audio/sfx/vo-hound-hurt.b.mp3
+  audio/sfx/vo-hound-hurt.c.mp3
+  audio/sfx/vo-hound-hurt.mp3
+  audio/sfx/vo-hulk-alert.b.mp3
+  audio/sfx/vo-hulk-alert.c.mp3
+  audio/sfx/vo-hulk-alert.mp3
+  audio/sfx/vo-hulk-die.b.mp3
+  audio/sfx/vo-hulk-die.c.mp3
+  audio/sfx/vo-hulk-die.mp3
+  audio/sfx/vo-hulk-hurt.b.mp3
+  audio/sfx/vo-hulk-hurt.c.mp3
+  audio/sfx/vo-hulk-hurt.mp3
+  audio/sfx/vo-imp-alert.b.mp3
+  audio/sfx/vo-imp-alert.c.mp3
+  audio/sfx/vo-imp-alert.mp3
+  audio/sfx/vo-imp-die.b.mp3
+  audio/sfx/vo-imp-die.c.mp3
+  audio/sfx/vo-imp-die.mp3
+  audio/sfx/vo-imp-hurt.b.mp3
+  audio/sfx/vo-imp-hurt.c.mp3
+  audio/sfx/vo-imp-hurt.mp3
+  audio/sfx/vo-soldier-alert.b.mp3
+  audio/sfx/vo-soldier-alert.c.mp3
+  audio/sfx/vo-soldier-alert.mp3
+  audio/sfx/vo-soldier-die.b.mp3
+  audio/sfx/vo-soldier-die.c.mp3
+  audio/sfx/vo-soldier-die.mp3
+  audio/sfx/vo-soldier-hurt.b.mp3
+  audio/sfx/vo-soldier-hurt.c.mp3
+  audio/sfx/vo-soldier-hurt.mp3
+  audio/sfx/vo-spirit-alert.b.mp3
+  audio/sfx/vo-spirit-alert.c.mp3
+  audio/sfx/vo-spirit-alert.mp3
+  audio/sfx/vo-spirit-die.b.mp3
+  audio/sfx/vo-spirit-die.c.mp3
+  audio/sfx/vo-spirit-die.mp3
+  audio/sfx/vo-spirit-hurt.b.mp3
+  audio/sfx/vo-spirit-hurt.c.mp3
+  audio/sfx/vo-spirit-hurt.mp3
+  audio/sfx/vo-wing-alert.b.mp3
+  audio/sfx/vo-wing-alert.c.mp3
+  audio/sfx/vo-wing-alert.mp3
+  audio/sfx/vo-wing-die.b.mp3
+  audio/sfx/vo-wing-die.c.mp3
+  audio/sfx/vo-wing-die.mp3
+  audio/sfx/vo-wing-hurt.b.mp3
+  audio/sfx/vo-wing-hurt.c.mp3
+  audio/sfx/vo-wing-hurt.mp3
   audio/sfx/walljump.b.mp3
   audio/sfx/walljump.c.mp3
   audio/sfx/walljump.mp3
   audio/sfx/wallslide.b.mp3
   audio/sfx/wallslide.c.mp3
   audio/sfx/wallslide.mp3
+  audio/sfx/work-chain.b.mp3
+  audio/sfx/work-chain.c.mp3
+  audio/sfx/work-chain.mp3
+  audio/sfx/work-cloth.b.mp3
+  audio/sfx/work-cloth.c.mp3
+  audio/sfx/work-cloth.mp3
+  audio/sfx/work-gulp.b.mp3
+  audio/sfx/work-gulp.c.mp3
+  audio/sfx/work-gulp.mp3
+  audio/sfx/work-hammer.b.mp3
+  audio/sfx/work-hammer.c.mp3
+  audio/sfx/work-hammer.mp3
+  audio/sfx/work-ladle.b.mp3
+  audio/sfx/work-ladle.c.mp3
+  audio/sfx/work-ladle.mp3
+  audio/sfx/work-pages.b.mp3
+  audio/sfx/work-pages.c.mp3
+  audio/sfx/work-pages.mp3
+  audio/sfx/work-pencil.b.mp3
+  audio/sfx/work-pencil.c.mp3
+  audio/sfx/work-pencil.mp3
+  audio/sfx/work-rag.b.mp3
+  audio/sfx/work-rag.c.mp3
+  audio/sfx/work-rag.mp3
+  audio/sfx/work-rope.b.mp3
+  audio/sfx/work-rope.c.mp3
+  audio/sfx/work-rope.mp3
+  audio/sfx/work-saw.b.mp3
+  audio/sfx/work-saw.c.mp3
+  audio/sfx/work-saw.mp3
+  audio/sfx/work-scrub.b.mp3
+  audio/sfx/work-scrub.c.mp3
+  audio/sfx/work-scrub.mp3
+  audio/sfx/work-shake.b.mp3
+  audio/sfx/work-shake.c.mp3
+  audio/sfx/work-shake.mp3
+  audio/sfx/work-slosh.b.mp3
+  audio/sfx/work-slosh.c.mp3
+  audio/sfx/work-slosh.mp3
+  audio/sfx/work-sweep.b.mp3
+  audio/sfx/work-sweep.c.mp3
+  audio/sfx/work-sweep.mp3
+  audio/sfx/work-tick.b.mp3
+  audio/sfx/work-tick.c.mp3
+  audio/sfx/work-tick.mp3
+  audio/sfx/work-tinker.b.mp3
+  audio/sfx/work-tinker.c.mp3
+  audio/sfx/work-tinker.mp3
+  audio/sfx/work-whetstone.b.mp3
+  audio/sfx/work-whetstone.c.mp3
+  audio/sfx/work-whetstone.mp3
+  audio/sfx/work-whittle.b.mp3
+  audio/sfx/work-whittle.c.mp3
+  audio/sfx/work-whittle.mp3
+  audio/sfx/wx-blizzard.b.mp3
+  audio/sfx/wx-blizzard.c.mp3
+  audio/sfx/wx-blizzard.mp3
+  audio/sfx/wx-rain.b.mp3
+  audio/sfx/wx-rain.c.mp3
+  audio/sfx/wx-rain.mp3
+  audio/sfx/wx-storm.b.mp3
+  audio/sfx/wx-storm.c.mp3
+  audio/sfx/wx-storm.mp3
+  audio/sfx/wx-thunder.b.mp3
+  audio/sfx/wx-thunder.c.mp3
+  audio/sfx/wx-thunder.mp3
   audio/sfx/zip.b.mp3
   audio/sfx/zip.c.mp3
   audio/sfx/zip.mp3

@@ -131,6 +131,7 @@ function watchNext(){
 }
 function startWorld(n,room=null,fromStart=false){
  const w=CL().world(n);if(!w||!w.chapter)return false;
+ if(!st.watchStarting)root.BladefallSfx?.play('ui-world',{gap:300});   // (7.373)
  if(!st.watchStarting)st.watching=null;
  if(w.cside){if(!st.review&&!root.BladefallClimbRewards?.csideOpen(w.cside)){announce('Finish both halves of this world perfectly to open its Core.',220);return false;}}   // (7.325)
  else if(n>40&&!st.review&&!root.BladefallClimbFinale?.open()){announce('Complete all forty worlds first.',220);return false;}
@@ -300,6 +301,7 @@ function completeAtlas(){
 }
 function atlasMap(){
  const view=st.view,active=!!view.g&&!!st.world,cp=st.atlas.state.checkpoint;
+ root.BladefallSfx?.play('ui-map',{gap:400});   // (7.373)
  view.paused=true;st.api.music(false);
  const point=n=>{const [x,y]=st.atlas.positions[n];return [160+x*92,35+(y-2.8)*70];};
  const visible=n=>!!st.atlas.state.visited[n];
@@ -1258,7 +1260,7 @@ function drawWalkers(b,g,pl){
   stepWalk(w);
   if(w.done){st.gone.add(key);continue;}   // arrived (she stands at her spot there) or gone off the end
   if(w.arrive&&Math.hypot(w.arrive.x-w.x,w.arrive.y-w.y)<10){w.done=true;st.gone.add(key);continue;}
-  (root.BladefallClimbArt?.person||H.person)(b,w.x-pl.x,w.y-pl.y,w.who,t,w.dx);
+  (root.BladefallClimbArt?.person||H.person)(b,w.x-pl.x,w.y-pl.y,w.who,t,w.dx,false);
  }
 }
 function drawFolk(b,g,d,live,world=st.world){

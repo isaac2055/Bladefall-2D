@@ -364,8 +364,8 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-recollections.js"></script>
 <script src="bladefall-advancement.js"></script>
 <script src="bladefall-journey.js?v=7.234.0"></script>
-<script src="bladefall-voice.js?v=7.367.1"></script>
-<script src="bladefall-sfx.js?v=7.372.0"></script>
+<script src="bladefall-voice.js?v=7.373.0"></script>
+<script src="bladefall-sfx.js?v=7.373.0"></script>
 <script src="bladefall-conversation.js?v=7.360.0"></script>
 <script src="bladefall-side-stories.js?v=7.361.0"></script>
 <script src="bladefall-opening-stories.js?v=7.234.0"></script>
@@ -461,7 +461,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-explore-finale.js?v=7.350.0"></script>
 <script src="bladefall-causeway-story.js?v=7.234.0"></script>
 <script src="bladefall-early-platforming.js?v=7.248.0"></script>
-<script src="bladefall-resident-art.js?v=7.372.0"></script>
+<script src="bladefall-resident-art.js?v=7.373.0"></script>
 <script src="bladefall-portraits.js?v=7.361.0"></script>
 <script src="littlejs.min.js"></script>
 <script>
@@ -470,7 +470,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.372.1';globalThis.BLADEFALL_VERSION=VERSION;
+const VERSION='7.373.0';globalThis.BLADEFALL_VERSION=VERSION;
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -2744,7 +2744,8 @@ function updateWorldSounds(p,dt){
   if(!_sfxSet){_sfxSet=true;sfxConfigure();}
   const bedKey=meta.soundOn&&!watchLike()?G.stageIndex:null;
   if(bedKey!==_sfxBedStage){_sfxBedStage=bedKey;X.ambience(bedKey===null?null:stageGround()[0]);}
-  if(G.boss&&!G.boss.dead&&_sfxBossHeard!==G.boss&&Math.abs(G.boss.x-p.x)<620){_sfxBossHeard=G.boss;if(meta.soundOn)SFX.boss(G.boss.x);}
+  if(G.boss&&!G.boss.dead&&_sfxBossHeard!==G.boss&&Math.abs(G.boss.x-p.x)<620){_sfxBossHeard=G.boss;if(meta.soundOn){SFX.boss(G.boss.x);enemyVoice(G.boss,'alert');}}
+  placeSounds(p,dt);
   if(G.stageIndex<=3||p.dead)return;
   const moving=p.onGround&&Math.abs(p.vx)>35&&!p.slamming;
   if(!moving){p._stepT=Math.min(p._stepT||0,.08);return;}
@@ -2752,7 +2753,38 @@ function updateWorldSounds(p,dt){
   sfxPlay('step-'+stageGround()[1],p.x,{cue:'land',gap:120,caption:'footsteps'});
   p._stepT=Math.max(.3,Math.min(.46,96/Math.max(1,Math.abs(p.vx))));
 }
-setInterval(()=>{if(_sfxBedStage!==null&&(typeof mode==='undefined'||mode!=='play')){_sfxBedStage=null;globalThis.BladefallSfx?.ambience(null);}},800);
+setInterval(()=>{if(_sfxBedStage!==null&&(typeof mode==='undefined'||mode!=='play')){_sfxBedStage=null;globalThis.BladefallSfx?.ambience(null);placeSounds(null);}},800);
+/* (7.373) Weather over a whole region (snow in Frostfell, a storm with thunder on the Cliffs, rain on the Updrafts) and
+   places you hear as you pass: a fire, a bubbling pot, lava, water, a forge, clocks, a crowd, chimes. Each place sound
+   is one loop whose volume and side follow the nearest source; nothing plays when it is out of earshot. */
+const WEATHER={3:['wx-rain',.45],7:['wx-blizzard',.8],8:['wx-blizzard',.7],16:['wx-storm',.9]};
+const PLACE_BY_DESIGN={vey:'spot-fire',elsie:'spot-pot',orra:'spot-clock',edrin:'spot-waterfall',creaturekeeper:'spot-forge',foundry:'spot-forge',
+  organizer:'spot-crowd',mother:'spot-crowd',gardener:'spot-chimes',talla:'spot-chimes'};
+const placeOf=id=>id==='vey'&&G.stageIndex!==0?null:PLACE_BY_DESIGN[id];   // Vey's campfire is the Outskirts'
+const PLACE_BY_TYPE={actFire:'spot-fire',actSpout:'spot-waterfall',actFountain:'spot-stream',actTap:'spot-stream',actCistern:'spot-stream',actTent:'spot-crowd'};
+const PLACE_RANGE={'spot-fire':360,'spot-pot':300,'spot-clock':320,'spot-waterfall':520,'spot-stream':460,'spot-lava':560,'spot-forge':520,'spot-crowd':480,'spot-chimes':420};
+const _places=new Map();let _placeScanT=0,_weather=null,_thunderT=8;
+function placeSounds(p,dt){
+  const X=globalThis.BladefallSfx;if(!X)return;
+  if(!p||!meta.soundOn||watchLike()||mode!=='play'||meta.ambience===false){for(const [,v] of _places)v(.6);_places.clear();if(_weather){_weather.stop(1);_weather=null;}return;}
+  const w=WEATHER[G.stageIndex];
+  if((_weather&&_weather.key)!==(w&&w[0])){if(_weather)_weather.stop(1.5);_weather=w?{key:w[0],stop:X.loop(w[0],{gain:w[1],random:true})}:null;}
+  if(w&&w[0]==='wx-storm'&&(_thunderT-=dt)<=0){_thunderT=9+Math.random()*18;sfxPlay('wx-thunder',p.x+(Math.random()-.5)*900,{cue:'boss',gain:.6+Math.random()*.4,gap:3000});}
+  if((_placeScanT-=dt)>0)return;_placeScanT=.25;
+  const near={},consider=(name,x,y)=>{if(!Number.isFinite(x))return;const d=Math.hypot(x-p.x,((y||0)-p.y)*1.4),r=PLACE_RANGE[name]||400;
+    if(d<r&&(!near[name]||d<near[name].d))near[name]={d,r,x};};
+  const R=globalThis.BladefallResidentArt;
+  for(const o of G.obstacles||[]){
+    const place=PLACE_BY_TYPE[o.type];if(place){consider(place,o.x,o.y);continue;}
+    if(o.type==='restSite'&&meta.recovery?.activatedSites?.[o.siteId])consider('spot-fire',o.x,o.y);
+    if(o.type==='fluid'){const half=(o.w||0)/2,x=Math.max(o.x-half,Math.min(o.x+half,p.x));consider(o.kind==='lava'?'spot-lava':'spot-stream',x,o.y);}
+    else if(R&&(o.residentId||o.sideStory||o.profileId)){const id=R.designFor(o);if(placeOf(id))consider(placeOf(id),o.x,o.y);}
+  }
+  if(R)for(const o of G.npcs||[]){const id=R.designFor(o);if(placeOf(id))consider(placeOf(id),o.x,o.y);}
+  for(const [name,v] of _places)if(!near[name]){v(.8);_places.delete(name);}
+  for(const [name,n] of Object.entries(near)){const g=Math.pow(1-n.d/n.r,1.5),pan=Math.max(-.8,Math.min(.8,(n.x-p.x)/500));
+    let v=_places.get(name);if(!v){v=X.loop(name,{gain:g,pan,random:true});_places.set(name,v);}else v.set(g,pan);}
+}
 function updateLevel1Footsteps(p,dt){
   if(!p||G.stageIndex>3||p.dead)return;
   const moving=p.onGround&&Math.abs(p.vx)>35&&!p.slamming;
@@ -2858,6 +2890,31 @@ const SFX={
   win(){if(sfxPlay('fanfare',null,{cue:'win',ui:true}))return;tonalSfx('win',[[0,[.04,,523,.01,.1,.2,0,.5,,,,,,,,,,.8,.04]],[115,[.04,,659,.01,.1,.2,0,.5,,,,,,,,,,.8,.04]],[230,[.04,,784,.01,.1,.2,0,.5,,,,,,,,,,.8,.04]],[345,[.04,,1047,.01,.12,.2,0,.5,,,,,,,,,,.8,.04]]]);},
   magic(el,x){if(sfxPlay('magic',x,{cue:'magic'}))return;tonalSfx('magic',[[0,[.04,,520,.02,.1,.2,0,.8,,,,,,,,,,,.04]]],x);}
 };
+
+/* (7.373) Voices. Each enemy family has its own alert / hurt / death cry and each boss its own roar, wound and fall; the
+   knight grunts with effort now and then (never words: he speaks only when spoken to). Throttled and left to chance, so
+   neither a pack of soldiers nor every jump turns into a chorus. */
+const VOICE_FAMILY={grunt:'imp',emberling:'imp',frostling:'imp',toxling:'imp',shadeling:'imp',cinderling:'imp',belled:'imp',
+  frostpike:'soldier',shieldbearer:'soldier',linesman:'soldier',signaler:'soldier',gaoler:'soldier',crownguard:'soldier',outrider:'soldier',chainmarshal:'soldier',sunguard:'soldier',
+  rimehulk:'hulk',slagwright:'hulk',flyer:'wing',voidbat:'wing',canopywing:'wing',keelman:'wing',stormgull:'wing',gargoyle:'wing',
+  crawler:'crawl',bloodeye:'crawl',reefcrab:'crawl',frostsinger:'spirit',sporecaster:'spirit',sparkling:'spirit',stormmote:'spirit',rifthound:'hound'};
+const BOSS_VOICE={brute:'brute',warden:'warden',archer:'archer',sorcerer:'sorcerer',colossus:'colossus',tyrant:'tyrant',king:'king',dayking:'king',hydra:'hydra'};
+function enemyVoice(e,ev){
+  if(!e||!meta.soundOn||watchLike())return;const b=e.boss&&BOSS_VOICE[e.type];let name;
+  if(b)name='boss-'+b+'-'+(ev==='alert'?'roar':ev);else{const f=VOICE_FAMILY[e.type];if(!f)return;name='vo-'+f+'-'+ev;}
+  if(ev==='hurt'){const now=performance.now();if(now-(e._voiceT||0)<(b?1800:700))return;e._voiceT=now;if(!b&&Math.random()<.45)return;}
+  if(ev==='alert'&&!b&&Math.random()<.5)return;   // half of them notice you quietly
+  sfxPlay(name,e.x,{cue:ev==='die'?'enemyDie':ev==='alert'&&b?'boss':'hit',gap:ev==='alert'?250:90});
+}
+// [chance, quiet ms after the knight's last sound]
+const KNIGHT_VOICE={jump:[.28,1400],jump2:[.5,900],dash:[.33,1600],land:[.75,900],hurt:[1,450],death:[1,0],strike:[.8,900],climb:[.4,1200]};
+let _knightVoiceAt=0;
+function knightVoice(kind,chance){
+  const r=KNIGHT_VOICE[kind];if(!r||!meta.soundOn||watchLike()||mode!=='play')return;
+  const now=performance.now();if(kind!=='death'&&now-_knightVoiceAt<r[1])return;if(Math.random()>(chance??r[0]))return;
+  if(kind!=='death'&&window.BladefallVoice?.speaking())return;
+  _knightVoiceAt=now;sfxPlay('kn-'+kind,G&&G.p?G.p.x:0,{cue:'jump',gap:0});
+}
 
 /* ================================================================
    SECTION 6: DRAWING UTILITIES
@@ -3678,7 +3735,7 @@ const STORY={
 };
 function markExplorePlayed(){try{localStorage.setItem('bladefall.last-played.v1',JSON.stringify({game:'explore'}));}catch{}}
 function beginRun(ngPlus,carrySnap,scales,opts){
-  BladefallPlaytest.reset();
+  BladefallPlaytest.reset();menuSfx('ui-world');
   markExplorePlayed();
   const simSeed=BFSimulation.startRun(opts&&opts.runSeed);
   const p=carrySnap?freshFromSnapshot(carrySnap):freshPlayer();
@@ -14559,7 +14616,7 @@ function doAttack(p,chargeMod){
   p.bladeChordT=verticalBlade?.08:0;
   if(verticalBlade)aimBlade(p);
   if(charged){
-    doChargedAttack(p,w);
+    doChargedAttack(p,w);if(p===G.p)knightVoice('strike');
   } else if(w.cls==='melee'){
     if(meta.soundOn)SFX.slash();
     p.swingT=0.20;p.swingHits=[];
@@ -14719,6 +14776,7 @@ function hurtPlayer(dmg,dir,dealsRealDamage,measureOverride){
     buzz(20);
     G.feedback={hitT:.52,dir:dir||0};
     if(meta.soundOn)SFX.hurt(p.x);
+    if(p.hp>0)knightVoice('hurt');
     if(p.hp<=0){p.hp=0;if(!coopDownPlayer(p)){p.dead=true;die();}}
     return;
   }
@@ -14734,6 +14792,7 @@ function hurtPlayer(dmg,dir,dealsRealDamage,measureOverride){
   buzz(25);
   G.feedback={hitT:.52,dir:dir||0};
   if(meta.soundOn)SFX.hurt(p.x);
+  if(p.hp>0)knightVoice('hurt');
   if(p.hp<=0){p.hp=0;if(!coopDownPlayer(p)){p.dead=true;die();}}
 }
 /* Elemental status effects — every element DOES something beyond the damage
@@ -14925,7 +14984,7 @@ function hitEnemy(e,dmg,dir,kb,ls,el,src){
   const rawDamage=colossusActFloor(e,colossusExposeDamage(e,courtFinalDamage(e,(meta.testMode?e.hp+1:dmg*mod)*critMul),src));
   const wardFloor=e.whiteCourtFight&&e.courtBreaks<3?e.maxHp*(e.courtBreaks===1?.66:.32):e.whiteCourtFight&&src==='spellBreak'?e.maxHp*.08:0;
   const courtDamage=e.whiteCourtFight?Math.min(rawDamage,Math.max(0,e.hp-Math.max(1,wardFloor))):rawDamage;
-  const actual=e.wardenPortalFight&&e.wardenPhase===3?Math.min(rawDamage,Math.max(0,e.hp-1)):(e.whiteCourtFight&&(e.courtBreaks<3||src==='spellBreak')?courtDamage:rawDamage);e.hp-=actual;e.hitFlash=0.12;
+  const actual=e.wardenPortalFight&&e.wardenPhase===3?Math.min(rawDamage,Math.max(0,e.hp-1)):(e.whiteCourtFight&&(e.courtBreaks<3||src==='spellBreak')?courtDamage:rawDamage);e.hp-=actual;if(e.hp>0)enemyVoice(e,'hurt');e.hitFlash=0.12;
   if(bloodVow){G.p.bloodVowT=0;}
   if(src==='melee'&&hasGift('cinder-oath')&&(G.p.cinderOathT||0)>0){
     G.p.cinderOathT=0;
@@ -15030,7 +15089,7 @@ function killEnemy(e,coopOpts){
   }
   if(G.p.mods&&G.p.mods.volatile&&!e.boss)
     G.aoes.push({x:e.x,y:e.y,r:90,fromPlayer:true,dmg:Math.min(e.maxHp*0.3,60*effPower(G.p)),color:'#ffb04a',el:'fire',echoSource:'volatile'});
-  if(e.boss){if(meta.soundOn)SFX.bossFall(e.x);meta.bossKills++;if(e.type==='king')meta.kingKills++;if(e.type==='tyrant')meta.tyrantKills++;
+  if(e.boss){if(meta.soundOn){SFX.bossFall(e.x);enemyVoice(e,'die');}meta.bossKills++;if(e.type==='king')meta.kingKills++;if(e.type==='tyrant')meta.tyrantKills++;
     if(G.p.weapon&&G.p.weapon.sch==='mag')meta.magicBossKills++;if(G.p.weapon&&G.p.weapon.cls==='ranged')meta.rangedBossKills++;
     // Per-boss-type tally drives skin unlocks (beat a given boss -> earn its skin).
     if(!G.levelSelectMode){
@@ -15072,7 +15131,7 @@ function killEnemy(e,coopOpts){
     if(e.type==='warden'&&G.stageIndex===6&&G.ngPlus===0)showWardenDefeatBriefing();
     if(e.whiteCourtFight&&G.ngPlus===0)showCourtDefeatBriefing();
   }
-  if(meta.soundOn&&!e.noDeathSpectacle)SFX.enemyDie();
+  if(meta.soundOn&&!e.noDeathSpectacle){SFX.enemyDie();enemyVoice(e,'die');}
   // Ordinary kills feed authored materials, quest state, and the ecology ledger
   // above. The former random XP/stat lottery is intentionally retired.
   // Death burst: body chunks, a bright flash ring, and elemental motes
@@ -17413,7 +17472,7 @@ function collectNearbyItem(){
 function quickSwapNearbyItem(){return collectNearbyItem();}
 function openBag(back){
   if(fieldLoadoutActive())return openFieldNotes(back);
-  if(!G)return;mode='equipment';const state=BFInventoryModule.createState(meta.inventory),rows=state.items;
+  if(!G)return;mode='equipment';menuSfx('ui-bag');const state=BFInventoryModule.createState(meta.inventory),rows=state.items;
   const campaignMantle=!G.battle&&!G.bossRush&&G.stageIndex<=4&&G.ngPlus===0;
   const gift=activeGift(),archive=BladefallRecollections.uiModel(meta.recollections);
   showOvHTML(`<div class="card"><h2 class="ovh">Traveler’s Bag</h2>
@@ -17637,7 +17696,7 @@ function update(dt){
     if(hasEcho('fault-bell'))p.faultBellT=1.5;
     if(hasGift('cinder-oath'))p.cinderOathT=1.5;
     if(hasGift('rime-step')&&p.rimeStepReady){p.rimeStepReady=false;p.rimeWakeT=.55;}
-    if(meta.soundOn)SFX.dodge();
+    if(meta.soundOn){SFX.dodge();knightVoice('dash');}
     // Burst particles
     for(let i=0;i<10;i++) G.particles.push({x:p.x,y:GROUND_Y-p.y-10,vx:(Math.random()-0.5)*300,vy:(Math.random()-0.5)*300,sz:2+Math.random()*4,color:hasGift('pure-nail')?'#ffffff':'#7788aa',life:0.4});
   }
@@ -17795,7 +17854,7 @@ function update(dt){
       p.jumpBuf=0; p.wallCoyote=0; p.vx = -wd * movement.tuning.wallJumpHorizontalVelocity; p.vy = -movement.tuning.wallJumpVerticalVelocity * gravDir; p.jumps=Math.min(1,p.maxJumps); p.onWall=false; p.onGround=false; p.jumpCutOk=false;   // v4: wall jumps commit to their arc so tapped climbs stay reliable
       p.sqV=-0.22;
       recordMovementUse('wall-jump');
-      if(meta.soundOn)SFX.jump();
+      if(meta.soundOn){SFX.jump();knightVoice('jump2',.35);}
       for(let i=0;i<8;i++) G.particles.push({x:p.x + wd*12, y:GROUND_Y-p.y-10, vx:-wd*150*Math.random(), vy:(Math.random()-0.5)*200, sz:3+Math.random()*3, color:'#fff', life:0.4});
   } else {
       if(p.onGround){p.coyote=movement.tuning.coyoteSeconds;p.airRefill=false;}
@@ -17814,7 +17873,7 @@ function update(dt){
         p.sqV=-0.22;   // stretch on takeoff
         const fy=GROUND_Y-(gravDir===1?p.y:p.y+40);
         for(let i=0;i<5;i++)G.particles.push({x:p.x+(Math.random()-0.5)*18,y:fy,vx:(Math.random()-0.5)*90,vy:20*gravDir+Math.random()*40*gravDir,sz:2+Math.random()*2,color:'#8a93a3',life:0.24});
-        if(meta.soundOn)SFX.jump();
+        if(meta.soundOn){SFX.jump();knightVoice(airborne?'jump2':'jump');}
       }
       // In the cart, a second jump press mid-air throws a 360 — land it clean
       // and the cart surges. Style IS speed on the Deep Line.
@@ -18593,7 +18652,7 @@ function update(dt){
       if(p.y<=targetFloor && p.vy > 0){
           p.y=targetFloor;
           if(!p.onGround&&targetFloor>=0){ // touchdown: squash + dust scale with impact
-            if(meta.soundOn)SFX.land(BFEnvironment.material(fl.o,false).id,p.x,p.vy);
+            if(meta.soundOn)SFX.land(BFEnvironment.material(fl.o,false).id,p.x,p.vy);if(Math.abs(p.vy)>=620)knightVoice('land');
             p.sqV=Math.min(0.32,Math.abs(p.vy)/2800);
             const n=Math.min(8,2+(Math.abs(p.vy)/230|0));
             for(let i=0;i<n;i++)G.particles.push({x:p.x+(Math.random()-0.5)*26,y:GROUND_Y-p.y,vx:(Math.random()-0.5)*140,vy:-15-Math.random()*55,sz:2+Math.random()*2.5,color:'#8a93a3',life:0.26+Math.random()*0.18});
@@ -18660,7 +18719,7 @@ function update(dt){
       if(p.y+40>=targetCeil && p.vy < 0){
           p.y=targetCeil-40;
           if(!p.onGround&&targetCeil<=20000){
-            if(meta.soundOn)SFX.land(BFEnvironment.material(cl.o,false).id,p.x,p.vy);
+            if(meta.soundOn)SFX.land(BFEnvironment.material(cl.o,false).id,p.x,p.vy);if(Math.abs(p.vy)>=620)knightVoice('land');
             p.sqV=Math.min(0.32,Math.abs(p.vy)/2800);
             const n=Math.min(8,2+(Math.abs(p.vy)/230|0));
             for(let i=0;i<n;i++)G.particles.push({x:p.x+(Math.random()-0.5)*26,y:GROUND_Y-(p.y+40),vx:(Math.random()-0.5)*140,vy:15+Math.random()*55,sz:2+Math.random()*2.5,color:'#8a93a3',life:0.26+Math.random()*0.18});
@@ -19034,7 +19093,7 @@ function update(dt){
       grounded:Math.abs(e.vy||0)<1,jumpVelocity:e.type==='rifthound'?610:570
     }):aiIntent;
     const sensedDistance=e.boss?Math.abs(e.x-enemyTarget.x):detectionIntent.distance;
-    if(!e.active&&sensedDistance<(e.noticeRange||VW*0.6)*skinPerk('stealth',1)&&(enemyTarget.cloakT||0)<=0)e.active=true;
+    if(!e.active&&sensedDistance<(e.noticeRange||VW*0.6)*skinPerk('stealth',1)&&(enemyTarget.cloakT||0)<=0){e.active=true;if(!e.boss)enemyVoice(e,'alert');}
     if(!e.active)continue;
 
     // FROZEN or FLOATING: locked out of everything — no step, no swing, no shot. Float
@@ -20968,7 +21027,7 @@ function render(){
   // Floating text — shadowed so damage numbers stay legible over any background
   for(const t of G.texts){
     ctx.globalAlpha=Math.max(0,Math.min(1,t.life*1.4));
-    ctx.font=`900 ${t.big?21:15}px -apple-system,sans-serif`;ctx.textAlign='center';
+    ctx.font=t.quiet?'italic 600 10px -apple-system,sans-serif':`900 ${t.big?21:15}px -apple-system,sans-serif`;ctx.textAlign='center';   // (7.373) quiet: a resident muttering
     ctx.lineWidth=3;ctx.strokeStyle='rgba(0,0,0,0.75)';ctx.strokeText(t.txt,t.x,t.y);
     ctx.fillStyle=t.color;ctx.fillText(t.txt,t.x,t.y);
   }
@@ -24558,7 +24617,9 @@ function showStationNotice(message,durationMs){
   node.textContent='◇  '+(window.BladefallText?BladefallText.applyPlain(String(message||'')):String(message||''));node.classList.add('show');
   clearTimeout(showStationNotice._t);showStationNotice._t=setTimeout(()=>node.classList.remove('show'),durationMs||2600);
 }
-function resumePlay(){mode='play';showOverlay(false);hudUpdate();}
+function resumePlay(){if(mode!=='play')menuSfx('ui-back');mode='play';showOverlay(false);hudUpdate();}
+/* (7.373) the menus' own sounds: map, bag, pause, back, and a world or level chosen */
+function menuSfx(name){sfxPlay(name,null,{cue:'pickup',ui:true,gap:200});}
 function escText(s){return String(s).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
 const BOARD_LABEL={base:'Base Game',ng1:'NG+1',ng2:'NG+2',rush:'Boss Rush',coop:'Co-op'};
 let leaderboardTab='base',leaderboardSort='time';
@@ -25309,7 +25370,7 @@ function bossRushDeath(){
 function die(){
   if(window.BladefallExploreFinale?.encounterDefeat())return;
   BladefallPlaytest.death();
-  if(meta.soundOn){SFX.hurt();SFX.death(G&&G.p?G.p.x:0);}
+  if(meta.soundOn){SFX.hurt();SFX.death(G&&G.p?G.p.x:0);knightVoice('death');}
   // Boss Rush is all-or-nothing: a fall ends the attempt, hardcore or not.
   if(G.bossRush){bossRushDeath();return;}
   if(G.coopSession&&coopActive()){coopPersonalRecovery();return;}
@@ -25516,7 +25577,7 @@ function playerBuildDiscovery(){
 }
 function openPause(){
   if(exploreWatch){if(exploreWatch.record&&exploreWatch.f>=exploreWatch.frames.length)exploreRecordPause();else exploreWatchStop(false);return;}
-  mode='pause';updateBossHealthBar();const chartOwned=!!meta.outskirtsFieldChart,discovery=playerBuildDiscovery();
+  if(mode==='play')menuSfx('ui-pause');mode='pause';updateBossHealthBar();const chartOwned=!!meta.outskirtsFieldChart,discovery=playerBuildDiscovery();
   showOvHTML(`<div class="card"><h2 class="ovh">Paused</h2>
     <button class="bigbtn" id="resBtn">Resume</button>
     ${!window.BLADEFALL_WORKSHOP_PLAY&&window.BladefallMounts?.testMode()?'<button class="bigbtn" id="workshopEdit" style="border-color:#e0b35a;">✎ Level editor · edit this level</button>':''}
@@ -25719,7 +25780,7 @@ function outskirtsSurveyMapStrip(){
 function openWorldMap(returnTo){
   const readOnly=!G||mode==='title';
   if(!readOnly&&!meta.outskirtsFieldChart){toast('Find the road surveyor in The Outskirts to begin a field chart.');openPause();return;}
-  mode=readOnly?'title':'pause';
+  menuSfx('ui-map');mode=readOnly?'title':'pause';
   const currentZone=G?BFWorldModule.stageId(G.stageIndex):meta.recovery.activeCheckpoint&&meta.recovery.activeCheckpoint.zoneId||'outskirts';
   const model=BFRecoveryModule.mapModel(meta.recovery,meta.zoneState,currentZone),ctx=readOnly?{campaign:false}:worldTravelContext();
   const current=model.nodes.find(node=>node.id===model.current);
@@ -26439,7 +26500,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.372.1').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.373.0').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */

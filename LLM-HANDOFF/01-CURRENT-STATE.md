@@ -1,3 +1,17 @@
+## 7.373.0: busy routines everywhere, Ascend busy beats, voices, weather, place sounds, menu sounds, barks (2026-10-22, Claude, cloud session)
+- Busy routines (bladefall-resident-art.js) for every remaining Explore resident and the six shopkeepers (always on), each with work sounds (`workSound`, distance-scaled, on the start of a beat). Not done: figure, servant.
+- Ascend people (bladefall-climb-art.js): a WORK table per role (pack, chart, book, armor, bell, herbs, basket, tools, scarf, crystal, keys, glove) drives hand beats in `person()`; climb-view passes `still=false` for walkers.
+- New sounds (ElevenLabs, A/B/C each, all in the Sound mixer under new groups):
+  - `vo-{imp,soldier,hulk,wing,crawl,spirit,hound}-{alert,hurt,die}`: enemy families (`VOICE_FAMILY` in index.html; Ascend foe kinds via `FOE` in pcore-view).
+  - `boss-{brute,warden,archer,sorcerer,colossus,tyrant,king,hydra}-{roar,hurt,die}` (`BOSS_VOICE`; Ascend boss device events via `BOSSV`).
+  - `kn-{jump,jump2,land,hurt,death,dash,strike,climb}`: the knight's effort grunts in Jett's voice, split into single grunts; version A alternates 6 takes (`kn-death` 2). `knightVoice(kind)` is random and throttled (`KNIGHT_VOICE`), never over speech. Ascend: `KV` in pcore-view.
+  - `work-*` (18), `wx-rain/storm/blizzard` loops + `wx-thunder`, `spot-*` loops (waterfall, stream, pot, fire, forge, crowd, chimes, lava, clock), `ui-map/bag/pause/back/world`.
+- `BladefallSfx.loop()` now returns stop() with `stop.set(gain, pan)`; `opts.random` starts mid-loop. Long loops (ride-, spot-, wx- beds) are not preloaded or precached.
+- Explore `placeSounds()` (from updateWorldSounds): weather by stage (`WEATHER`: Updrafts rain, Frostfell + Sorcerer blizzard, Thunder Cliffs storm + random thunder), and the nearest source of each place sound within range: `PLACE_BY_TYPE` (actFire, actSpout, actFountain, actTap, actCistern, actTent), an activated restSite, fluids (lava/water), residents via `PLACE_BY_DESIGN` (Vey's fire only in the Outskirts, Elsie's pot, Orra's clocks, forge, crowd, chimes). Ascend: world weather in pcore-view `weather()`, stopped on pause/menus.
+- Menus: `menuSfx()` on map, bag, pause, back (resumePlay), beginRun; Ascend pause/back/menuBack, startWorld, atlas map.
+- Barks: 37 busy residents mutter one short line about their work as the knight comes within ~240 px (once per visit, 9 s apart, never over speech): `bark()` in resident-art, text in `scripts/voice/lines.json` as `barks/<design id>`, voiced with each cast voice (eleven_v4, "[muttering…]" tag), shown as a quiet italic floating text (`G.texts` `quiet:true`). Defender, lookout, volunteer and stranded have no cast voice and stay silent.
+- Tests: the same pre-existing failures as before (frostfell-runtime 4, charters 1, and 7 in the wider set incl. the text-catalog one), none new.
+
 ## 7.372.0: mixer version buttons, dash D, Vey's fire, jump 90%, falls rewind locally (2026-10-22, Claude, cloud session)
 - Sound mixer: the version <select> could not be opened in the game (Isaac); replaced by A/B/C buttons (tap plays it). The dash has a D: the old second take (audio/sfx/dash.d.mp3, `NVER`).
 - Vey (seated, Outskirts) has her campfire drawn beside her (resident-art).

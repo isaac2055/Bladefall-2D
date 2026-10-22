@@ -125,7 +125,7 @@ function moveFocus(dir){
  if(best){best.focus();best.scrollIntoView({block:'nearest',inline:'nearest'});}
 }
 function menuConfirm(){const el=document.activeElement;if(!focusables().includes(el)){focusFirst();return;}el.click();}
-function menuBack(){const o=overlay();const b=o&&o.querySelector('[data-back]');if(b){b.click();return true;}return false;}
+function menuBack(){const o=overlay();const b=o&&o.querySelector('[data-back]');if(b){root.BladefallSfx?.play('ui-back',{gap:200});b.click();return true;}return false;}
 function menuNav(pad){
  if(!pad.nav||capture)return;const now=performance.now();
  for(const d of ['l','r','u','d']){const on=pad.nav[d];
@@ -212,6 +212,23 @@ const DEVCLIP={'alarm-note':['bell',.4,1.4],anvil:['stone-hit',1,1.3],boost:['sp
  'warden-call':['boss-roar',.6],'warden-crash':['boss-fall'],'warden-gone':['enemy-die'],'warden-hit':['hit-armor'],'warden-return':['land-hard'],'warden-rush':['dash'],
  'warden-shove':['stone-hit'],'warden-slam':['stone-hit'],'warden-tell':['enemy-alert'],'warden-throw':['swing'],'warden-wind':['gust'],'zip-in':['zip'],'zip-out':['stone-hit',.5]};
 function clip(e){const c=CLIP[e.type]||DEVCLIP[e.type],X=SX();if(!c||!X)return false;return X.play(c[0],{gain:c[1],rate:c[2]});}
+/* (7.373) Voices over the clips: the knight's effort grunts now and then (never words), each foe kind's cry, and the
+   bosses' own roar, wound and fall, as in Explore. */
+const KV={jump:['kn-jump',.25,1400],walljump:['kn-jump2',.35,900],super:['kn-jump2',.4,900],hyper:['kn-jump2',.4,900],'dash-start':['kn-dash',.3,1600],
+ climbhop:['kn-climb',.35,1200],death:['kn-death',1,0]};
+const FOE={guard:'soldier',sentry:'soldier',hound:'hound',husk:'imp',moth:'wing',wing:'wing',ram:'hulk',shell:'crawl',spit:'spirit'};
+const FOEV={'enemy-tell':['alert',.5,0],'enemy-hit':['hurt',.55,700],'enemy-defeat':['die',1,0]};
+const BOSSV={'brute-rear':'boss-brute-roar','brute-crack':'boss-brute-hurt','warden-call':'boss-warden-roar','warden-hit':'boss-warden-hurt','warden-gone':'boss-warden-die',
+ 'marksman-hit':'boss-archer-hurt','marksman-gone':'boss-archer-die','mk-tell':'boss-archer-roar','sorc-tell':'boss-sorcerer-roar','sorc-hit':'boss-sorcerer-hurt',
+ 'sorc-gone':'boss-sorcerer-die','colossus-gather':'boss-colossus-roar','colossus-refuse':'boss-colossus-hurt','colossus-down':'boss-colossus-die','wake-rise':'boss-tyrant-roar'};
+const voiceAt={};
+function voice(e){
+ const X=SX();if(!X||!save.options.sound||view.replay)return;const now=root.performance?root.performance.now():Date.now();
+ const once=(key,ms)=>{if(now-(voiceAt[key]??-1e9)<ms)return false;voiceAt[key]=now;return true;};
+ const k=KV[e.type];if(k){if(e.type!=='death'&&root.BladefallVoice?.speaking())return;if(Math.random()<k[1]&&once('knight',k[2]))X.play(k[0],{gap:0});return;}
+ const f=FOEV[e.type];if(f){if(Math.random()<f[1]&&once('foe-'+f[0],f[2]||250))X.play('vo-'+(FOE[e.kind]||'imp')+'-'+f[0],{gain:.85});return;}
+ const b=BOSSV[e.type];if(b&&once(b,b.endsWith('-hurt')?1800:2500))X.play(b,{gap:0});
+}
 // footsteps: the ground under each world (bladefall-sfx.js forWorld), one step every ~0.3 s of running
 function ground(){const w=root.BladefallPitchView?.climb?.state?.()?.world;return root.BladefallSfx?.forWorld(w?.key)||['plains','stone'];}   // st.world is the world itself
 function footsteps(g){
@@ -220,7 +237,16 @@ function footsteps(g){
  if((view.stepT=(view.stepT||0)-1)>0)return;view.stepT=17;X.play('step-'+ground()[1],{gap:120});
 }
 let bedFor=null;
-function ambienceFor(){const X=SX();if(!X)return;const key=root.BladefallPitchView?.climb?.state?.()?.world?.n||null;if(key===bedFor)return;bedFor=key;X.ambience(key?ground()[0]:null);}
+function ambienceFor(){const X=SX();if(!X)return;weather(X);const key=root.BladefallPitchView?.climb?.state?.()?.world?.n||null;if(key===bedFor)return;bedFor=key;X.ambience(key?ground()[0]:null);}
+// (7.373) weather over a world, as in Explore: snow in Frostfell and the Sorcerer's, a storm with thunder on the Cliffs, rain on the Updrafts
+const WEATHER={updrafts:['wx-rain',.45],frostfell:['wx-blizzard',.8],sorcerer:['wx-blizzard',.7],cliffs:['wx-storm',.9]};
+let sky=null,thunderT=600;
+setInterval(()=>{if(sky&&(view.paused||view.mode!=='play'||!save.options.sound)){sky.stop(.8);sky=null;}},500);   // the frame loop stops on a menu; the weather must too
+function weather(X){
+ const key=root.BladefallPitchView?.climb?.state?.()?.world?.key,w=save.options.sound&&save.options.ambience!==false&&view.mode==='play'&&!view.paused?WEATHER[key]:null;
+ if((sky&&sky.key)!==(w&&w[0])){if(sky)sky.stop(1.5);sky=w?{key:w[0],stop:X.loop(w[0],{gain:w[1],random:true})}:null;}
+ if(w&&w[0]==='wx-storm'&&--thunderT<=0){thunderT=540+Math.random()*1080;X.play('wx-thunder',{gain:.6+Math.random()*.4,pan:Math.random()*1.4-.7,gap:3000});}
+}
 const SFX={
  parry:()=>{tone(960,.13,'triangle',.06,440);noise(.05,.03,1800);},'enemy-tell':()=>tone(190,.09,'triangle',.018,70),'enemy-shot':()=>noise(.07,.02,1800),'enemy-hit':()=>noise(.08,.04,500),'guard-block':()=>tone(340,.08,'square',.03),'enemy-defeat':()=>noise(.15,.05,400),'receiver-lit':()=>tone(880,.25,'triangle',.05,440),'breach':()=>noise(.3,.07,200),
  jump:()=>tone(330,.08,'square',.035,180),walljump:()=>{tone(300,.08,'square',.035,220);noise(.05,.02,2000);},
@@ -372,6 +398,7 @@ function handleEvent(e){
  if((e.type==='respawn'||e.type==='echo-swap'||e.type==='portal-pass'&&e.kind==='knight')&&view.g&&(view.g.room.w>W||view.g.room.h>H))view.camRoom=null;
  TOUCH()?.event(e);
  const s=SFX[e.type],played=save.options.sound&&(CLIP[e.type]||DEVCLIP[e.type])?clip(e):false;if(s&&save.options.sound&&!played)s(e);
+ voice(e);
  for(const d of root.BladefallPrecisionDeviceViews||[]){if(save.options.sound&&!played)d.sfx?.[e.type]?.(e,{tone,noise});d.event?.(e,{view,burst,dust,shake,palette});}
  const pal=palette();
  switch(e.type){
@@ -909,8 +936,8 @@ function assistCard(back,{fromMenu=false}={}){
 }
 function togglePause(){
  if(view.mode!=='play')return;
- if(view.paused){view.paused=false;hideOverlay();return;}
- view.paused=true;const g=view.g,ch=R.chapters[view.chapter],base=chapterStart(view.chapter);
+ if(view.paused){view.paused=false;hideOverlay();root.BladefallSfx?.play('ui-back',{gap:200});return;}   // the weather comes back with the next frame
+ view.paused=true;root.BladefallSfx?.play('ui-pause',{gap:200});if(sky){sky.stop(.6);sky=null;}const g=view.g,ch=R.chapters[view.chapter],base=chapterStart(view.chapter);
  const hasTape=!!R.tapes[g.room.id],backPassage=ch.climb&&root.BladefallClimbBankPassages?.previousLink(root.BladefallPitchView?.climb?.state()?.world,g.room.id);
  let roomLabel=0;const rooms=ch.rooms.map((r,i)=>r.passage||r.connector||ch.climb&&i>=ch.mainCount?'':`<button class="pcMini ${base+i===g.roomIndex?'on':''}" title="${r.name}" data-room="${i}">${++roomLabel}${save.cleared[r.id]?'✓':''}</button>`).join('');   // the Climb's passages and shafts are not levels
  let optionalLabel=0;const optional=ch.climb?ch.rooms.map((r,i)=>i>=ch.mainCount&&!r.passage&&!r.connector?`<button class="pcMini ${base+i===g.roomIndex?'on':''}" title="${r.name}" aria-label="Optional ${optionalLabel+1}: ${r.name}" data-room="${i}">O${++optionalLabel}${save.cleared[r.id]?'✓':''}</button>`:'').join(''):'';

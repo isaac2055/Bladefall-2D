@@ -210,9 +210,28 @@ function terrain(b,g,p){
 }
 // Named belongings and proportions break up the old shared robe silhouette.
 const people={vey:['pack',1],mara:['chart',2],sentinel:['armor',3],olan:['pack',4],rowan:['bell',5],orra:['herbs',6],pell:['tools',7],hale:['armor',8],bram:['pack',9],elsie:['basket',10],oren:['tools',11],sable:['scarf',12],silas:['armor',13],talla:['scarf',14],edrin:['pack',15],ilyra:['crystal',16],cartographer:['chart',17],recruit:['armor',18],tovin:['tools',19],veya:['lantern',20],idris:['book',21],archivist:['book',22],keeper:['keys',23],enna:['basket',24],nim:['lantern',25],neighbour:['scarf',26],ada:['tools',27],handler:['glove',28]};
-function person(b,x,y,who,t,face){
- const H=root.BladefallPitchView.helpers,f=H.FOLK[who]||H.FOLK.olan,[role,seed]=people[who]||['pack',0],d=face<0?-1:1;
- const bob=Math.sin(t/36+seed)>.85?1:0,X=Math.round(x)-4,Y=Math.round(y)-15;
+/* (7.373) Busy work for the people of Ascend, by what they carry: a short routine of beats (seconds), eased, the
+   variant changing loop to loop. t is in frames. Returns {name,u,p}. */
+const WORK={pack:[[['rest',2.2],['strap',1.2],['look',1.4]],[['look',1.2],['rest',1.6],['strap',1.4]]],
+ chart:[[['read',2.2],['mark',1.4],['look',1.2]],[['mark',1.2],['read',2.6],['look',1.0]]],book:[[['read',2.4],['turn',.8],['look',1.2]],[['turn',.8],['read',2.8],['look',.8]]],
+ armor:[[['stand',2.2],['shift',1.0],['check',1.2]],[['check',1.0],['stand',2.4],['shift',1.0]]],bell:[[['hold',2.0],['ring',1.2],['hold',1.2]],[['ring',1.0],['hold',2.6],['ring',.8]]],
+ herbs:[[['sort',2.2],['sniff',1.2],['sort',1.0]],[['sniff',1.0],['sort',2.6],['rest',.8]]],basket:[[['sort',2.2],['rest',1.2],['sort',1.0]],[['rest',1.0],['sort',2.4],['sniff',1.0]]],
+ tools:[[['tap',2.0],['rest',1.2],['wipe',1.0]],[['wipe',1.0],['tap',2.4],['rest',.8]]],scarf:[[['rest',2.2],['tug',1.0],['look',1.2]],[['tug',1.0],['rest',2.4],['look',1.0]]],
+ crystal:[[['rest',2.0],['glow',1.6],['rest',.8]],[['glow',1.4],['rest',2.0],['glow',1.0]]],keys:[[['rest',2.0],['jingle',1.0],['rest',1.4]],[['jingle',1.2],['rest',2.4],['jingle',.8]]],
+ glove:[[['rest',2.0],['flex',1.0],['rest',1.4]],[['flex',1.0],['rest',2.6],['flex',.8]]]};
+const easeW=x=>x<=0?0:x>=1?1:x*x*(3-2*x);
+function work(role,t,seed){
+ const V=WORK[role];if(!V)return null;const T=t/60+seed*3.7,total=V[0].reduce((a,b)=>a+b[1],0),loop=Math.floor(T/total);
+ const beats=V[((loop*7+seed*3)>>>0)%V.length];let r=T-loop*total;
+ for(const [name,d] of beats){if(r<d)return {name,u:r/d,p:easeW(r/d),at:r};r-=d;}
+ return {name:beats[0][0],u:0,p:0,at:0};
+}
+const swingW=(u,a,b)=>u<a?easeW(u/a):u<b?1:1-easeW((u-b)/(1-b));
+function person(b,x,y,who,t,face,still=true){
+ const H=root.BladefallPitchView.helpers,f=H.FOLK[who]||H.FOLK.olan,[role,seed]=people[who]||['pack',0];
+ const W=still?work(role,t,seed):null,look=W&&W.name==='look'&&W.u>.2&&W.u<.8,d=(face<0?-1:1)*(look?-1:1);
+ const down=W&&/read|mark|turn|sort|tap|check/.test(W.name)?1:0;
+ const bob=(W?down:Math.sin(t/36+seed)>.85?1:0)||(W&&W.name==='shift'?Math.round(swingW(W.u,.3,.7)):0),X=Math.round(x)-4+(W&&W.name==='shift'?Math.round(swingW(W.u,.3,.7)):0),Y=Math.round(y)-15;
  b.save();px(b,X-1,y-1,11,1,'#00000055');
  // Boots remain planted while shoulders breathe; hems and scarves have a separate idle rhythm.
  px(b,X+1,Y+12,3,3,'#302d32');px(b,X+6,Y+12,3,3,'#302d32');
@@ -225,14 +244,27 @@ function person(b,x,y,who,t,face){
  if(f.helm){px(b,X+1,Y-1+bob,7,4,'#8e9da7');px(b,X+2,Y-1+bob,4,1,'#c1c6bf');px(b,X+2,Y+2+bob,5,1,'#29323d');}
  if((t+seed*13)%181>5)px(b,d>0?X+6:X+3,Y+3+bob,1,1,'#251f29');
  const hand=d>0?X+8:X-1,back=d>0?X-1:X+8;
- px(b,hand,Y+7+bob,2,3,f.skin);
+ // the hand's work: where it goes this beat
+ let hy=Y+7+bob,hx=hand;
+ if(W){const n=W.name,q=swingW(W.u,.25,.75);
+  if(n==='strap'){hx=d>0?X+6:X+1;hy=Y+4;}
+  else if(n==='mark'||n==='sort'||n==='tap'||n==='jingle')hy+=((W.at*5)|0)%2;
+  else if(n==='turn')hx+=Math.round((W.u-.5)*-3*d);
+  else if(n==='sniff'||n==='wipe'){hx=d>0?X+6:X+1;hy=Math.round(Y+7-q*4);}
+  else if(n==='check'){hx=d>0?X+5:X+2;hy=Y+7;}
+  else if(n==='ring')hx+=((W.at*14)|0)%2;
+  else if(n==='flex')hy+=((W.at*3)|0)%2;}
+ px(b,hx,hy,2,3,f.skin);
+ if(W&&W.name==='sort'&&W.u>.5)px(b,hx,hy-2,1,2,'#7ab05a');   // a sprig lifted out of the basket
+ if(W&&W.name==='tug'){const w2=Math.round(Math.sin(W.at*9)*2);px(b,back-2,Y+6+bob,3,4+w2,f.trim);}
+ if(W&&W.name==='glow'){b.globalAlpha=.35+Math.sin(W.at*6)*.2;px(b,(d>0?X+11:X-3)-2,Y-8,5,6,'#cfefff');b.globalAlpha=1;}
  if(role==='pack'){px(b,back-1,Y+5,3,6,'#4c4036');px(b,back-1,Y+5,3,1,f.trim);px(b,back,Y+3,2,2,'#92917a');}
  if(role==='chart'||role==='book'){px(b,hand-2,Y+6+bob,6,5,role==='book'?'#614856':'#cabb94');px(b,hand,Y+7+bob,1,3,role==='book'?f.trim:'#897854');px(b,hand+2,Y+8+bob,1,1,f.trim);}
  if(role==='armor'){px(b,X,Y+5+bob,3,3,'#92999b');px(b,X+6,Y+5+bob,3,3,'#92999b');px(b,X+3,Y+6+bob,3,3,'#697783');px(b,X+4,Y+6+bob,1,2,f.trim);}
  if(role==='scarf'||who==='mara'){const wave=Math.round(Math.sin(t/17+seed));px(b,X,Y+5+bob,9,2,f.trim);px(b,back-2,Y+6+bob,3,3+wave,f.trim);}
- if(role==='tools'||role==='keys'){px(b,hand,Y+9,1,4,'#a6a8a0');px(b,hand-1,Y+9,3,1,f.trim);px(b,hand,Y+12,3,1,'#a6a8a0');if(role==='keys')px(b,hand+3,Y+10,1,3,f.trim);}
+ if(role==='tools'||role==='keys'){px(b,hx,hy+2,1,4,'#a6a8a0');px(b,hx-1,hy+2,3,1,f.trim);px(b,hx,hy+5,3,1,'#a6a8a0');if(role==='keys')px(b,hx+3,hy+3,1,3,f.trim);}
  if(role==='basket'||role==='herbs'){px(b,hand-1,Y+9,4,4,'#896e4a');px(b,hand-1,Y+10,4,1,f.trim);for(let i=0;i<3;i++)px(b,hand-1+i,Y+6+(i%2),1,3,'#899b67');}
- if(role==='bell'){px(b,hand,Y+9,1,2,'#574332');px(b,hand-1,Y+11,3,2,'#bea16a');px(b,hand,Y+13,1,1,'#dec28b');}
+ if(role==='bell'){px(b,hx,hy+2,1,2,'#574332');px(b,hx-1,hy+4,3,2,'#bea16a');px(b,hx,hy+6,1,1,'#dec28b');}
  if(role==='glove')px(b,hand-1,Y+7+bob,3,4,'#b0865c');
  if(f.staff||f.spear){const sx=d>0?X+11:X-3;px(b,sx,Y-2,1,17,'#8a7350');if(f.spear){poly(b,[[sx-1,Y-2],[sx,Y-6],[sx+2,Y-2]],'#bac9cc');px(b,sx-1,Y+1,3,1,f.trim);}else{px(b,sx-1,Y-3,3,2,f.trim);if(role==='crystal')poly(b,[[sx,Y-7],[sx+2,Y-4],[sx,Y-1],[sx-2,Y-4]],'#a4cdda');}}
  if(f.flame||role==='lantern'){
