@@ -1,3 +1,11 @@
+## 7.374.0: walk through every Ascend doorway without jumping (2026-10-22, Claude)
+
+- **The bug.** Atlas sockets were authored two ways: `floor` is either the row the feet stand on, or the row above it. The walking-seam test in `boundsBlock` (`bladefall-pcore.js`) and `passageWalk` (`bladefall-climb-view.js`) wanted the feet within a pixel of `floor*8`, so a walker was refused at half of those doorways until a jump happened to line him up. That is why it "sometimes randomly worked".
+- **The fix.** The feet may now be up to one row lower: `+9` in the seam, and `+10` in `passageWalk` and the workshop room's `fits`.
+- **The check.** A headless sweep stood the knight on the ground at every open left or right edge of all 40 worlds (1970 spots) and held the direction. It covered 46 doorways that used to snag; all 46 now cross on foot, and none newly fail. The remaining stuck spots are closed roads, entrance sides, or test spots off ledges.
+- **Known, not caused by this change.** `npm run verify:watch` already fails on 022be8e (7.373): many rooms and every Core "died". The 7.367–7.373 movement changes (dash and jump defaults, climbing by holding Up, falls rewinding) appear to have broken the stored Ascend tapes, which need re-proving or re-recording.
+- `coop-practice.html` no longer exists, so drop it from version bumps.
+
 ## 7.373.0: busy routines everywhere, Ascend busy beats, voices, weather, place sounds, menu sounds, barks (2026-10-22, Claude, cloud session)
 - Busy routines (bladefall-resident-art.js) for every remaining Explore resident and the six shopkeepers (always on), each with work sounds (`workSound`, distance-scaled, on the start of a beat). Not done: figure, servant.
 - Ascend people (bladefall-climb-art.js): a WORK table per role (pack, chart, book, armor, bell, herbs, basket, tools, scarf, crystal, keys, glove) drives hand beats in `person()`; climb-view passes `still=false` for walkers.
