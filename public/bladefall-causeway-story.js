@@ -1,10 +1,12 @@
 /* Silas's governor belongs to the maintenance works, with the residents' authored bodies retained. */
 (function(root){
 'use strict';
-const active=()=>typeof G!=='undefined'&&G?.stageIndex===2&&G.sideStoryScene?.id==='defector';
+// (7.375) Silas's steps moved to bladefall-quest-errands.js; this file keeps only his layout.
+const taken=()=>!!root.BladefallQuestErrands;
+const active=()=>!taken()&&typeof G!=='undefined'&&G?.stageIndex===2&&G.sideStoryScene?.id==='defector';
 function layout(q){return q.id==='defector'?{x:10730,y:130,dir:1}:null;}
 function install(q,scene){
- if(q.id!=='defector')return;
+ if(q.id!=='defector'||taken())return;
  G.obstacles=G.obstacles.filter(o=>o.sideStory!=='defector'||!['step','task','scene'].includes(o.sideStoryRole));
  const add=o=>G.obstacles.push({sideStory:'defector',...o});
  for(const [i,t]of q.tasks.entries()){
@@ -26,7 +28,7 @@ function install(q,scene){
  const actor=G.obstacles.find(o=>o.sideStory==='defector'&&o.sideStoryRole==='actor');if(actor)actor.baseX=actor.x=10730;
 }
 function requirement(o,r){
- if(o.sideStory!=='defector')return null;
+ if(o.sideStory!=='defector'||taken())return null;
  if(o.task==='brake'&&Math.abs(G.p.x-o.x)>85)return 'The maintenance brake is beside the patrol walk. Use its handle beside the lift.';
  if(o.task==='gate'&&r.step<2)return 'Stop the governor above the maintenance lift first.';
  return null;
@@ -40,7 +42,7 @@ function update(dt){
  if(n){n.openingWalking=r.phase==='completed'&&!scene.escort.finished;n.governorStopped=r.step>=2||['completed','harsh'].includes(r.phase);}
 }
 function draw(c,o,q,r,scene){
- if(q.id!=='defector'||['actor','reward'].includes(o.sideStoryRole)||o.type==='plat')return false;
+ if(taken()||q.id!=='defector'||['actor','reward'].includes(o.sideStoryRole)||o.type==='plat')return false;
  const x=o.x,y=GROUND_Y-o.y,t=scene.performance?.clock||0;
  c.save();c.translate(x,y);
  if(o.sideStoryRole==='scene'){

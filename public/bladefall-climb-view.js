@@ -655,6 +655,7 @@ PV.holding=function(){
  if(st.deathMark==null)st.deathMark=g.deaths;else if(g.deaths>st.deathMark){if(!sectionOf(g)?.branch)st.roadDeaths+=g.deaths-st.deathMark;st.deathMark=g.deaths;}
  dashTale(g);
  touchReward(g,p);
+ root.BladefallClimbErrands?.tick(errandCtx());   // (7.375) quests you go and do (bladefall-climb-errands.js)
  if(d.side){const q=questFrom(d.id);g.sideSealed=sealedQuest(q);if(g.sideSealed&&(d.side==='left'?p.x<=2:d.side==='right'?p.x>=g.room.w-p.w-2:false))sayEchoSealed(q);}
  if(root.BladefallClimbCoop)try{if(root.BladefallClimbCoop.tick(g))return true;}catch(e){}
  // The seam closes once the knight stands at the fire (or is well clear of it).
@@ -923,8 +924,11 @@ function rewardSpots(){
 }
 const rewardTaken=sp=>sp.kind==='quest'?questDone(sp.br):!!(save.secrets||{})[sp.br.id];
 const heartCol=(w,br)=>isPurple(w,br)?PURPLE:w.quests.includes(br)?'#ff9fc8':heartOf(w).col;
+/* (7.375) What bladefall-climb-errands.js needs from this view. */
+function errandCtx(){return {st,routePath,defOf,uprightY,questDone,announce,Core:C(),claim:q=>grant(q)};}
 function touchReward(g,p){
  for(const sp of rewardSpots()){
+  if(root.BladefallClimbErrands?.ownsReward(sp.br))continue;   // its heart comes from handing the thing over
   if(sp.room!==g.room.id||(rewardTaken(sp)&&(sp.kind!=='secret'||root.BladefallPlaytest?.hasHeart(sp.br.id))))continue;
   if(Math.abs(p.x+p.w/2-sp.x)>9||Math.abs(uprightY(g)+p.h/2-sp.y)>11)continue;   // (rewards sit the right way up, 7.280)
   if(st.branchVia==='back'){if(!st.sealedSaid){st.sealedSaid=true;announce('Sealed · it is earned from the door',160);}continue;}
@@ -934,7 +938,7 @@ function touchReward(g,p){
 }
 function drawReward(b,roomId,t){
  for(const sp of rewardSpots()){
-  if(sp.room!==roomId)continue;const taken=rewardTaken(sp),bob=Math.round(Math.sin(t/14)*1.5),x=sp.x,y=sp.y+bob;
+  if(sp.room!==roomId||root.BladefallClimbErrands?.ownsReward(sp.br))continue;const taken=rewardTaken(sp),bob=Math.round(Math.sin(t/14)*1.5),x=sp.x,y=sp.y+bob;
   b.save();b.globalAlpha=taken?.25:1;
   if(!taken){const gl=b.createRadialGradient(x,y,1,x,y,12);gl.addColorStop(0,'rgba(255,240,200,.45)');gl.addColorStop(1,'rgba(255,240,200,0)');b.fillStyle=gl;b.fillRect(x-12,y-12,24,24);}
   {b.fillStyle=heartCol(st.world,sp.br);   // (7.316) every route's reward is a heart; the base quest's is purple
@@ -1331,6 +1335,7 @@ PV.draw=function(b,g,view){
  {const portal=riftPortal();if(portal&&portal.room===g.room.id){b.strokeStyle='#c8a5ff';b.lineWidth=2;b.strokeRect(portal.x-4,portal.y-8,16,24);b.fillStyle='#d9c3ff';b.font='6px monospace';b.fillText('↑ '+(portal.returning?'Return':'Fractured'),portal.x-12,portal.y-12);}}
  root.BladefallClimbBankPassages?.draw(b,g,st.world,g.frame);
  drawReward(b,g.room.id,g.frame);drawEchoSeals(b,g,g.frame);drawDropHint(b);
+ root.BladefallClimbErrands?.draw(b,errandCtx());
  {const pl=sectionOf(g);if(pl&&root.BladefallClimbCoop)try{root.BladefallClimbCoop.draw(b,g,pl);}catch(e){}}
  if(g.room.def.bearing)for(const e of g.ents)if(e.type==='shard'&&!e.gone){b.fillStyle='#e9c47a';b.fillRect(e.x+3,e.y-6,2,6);}
  b.restore();
@@ -1446,7 +1451,7 @@ PV.hud=function(ctx,ox,oy,scale,g,view){
   if(!near){const leave=who.leave||(who.leaveDone&&questDone(questOf(who.quest))?who.leaveDone:null);if(leave&&st.spoke.has(key)&&!st.walk[key])startWalk(key,who,d,who._x,who._y,leave==='left'?-1:1);continue;}
   const q=who.quest&&questOf(who.quest);
   if(q&&who.chart&&q.bearings&&bearingsHeld(g,q).length===q.bearings.length)grant(q);
-  const line=q&&questDone(q)&&who.lineDone?who.lineDone:who.line;
+  const line=root.BladefallClimbErrands?.line(q,questDone(q))||(q&&questDone(q)&&who.lineDone?who.lineDone:who.line);
   // (7.363) Ascend speaks on its own: the first time you come near someone, their line plays (when it has a recording;
   // Voice lines in Assist & options turns it off). A finished quest's line is a new line, so it plays too.
   const heard=key+':'+line;if(!st.heard)st.heard=new Set();if(!st.heard.has(heard)){st.heard.add(heard);if(!st.view.replay)root.BladefallVoice?.play(line);}
@@ -1473,6 +1478,7 @@ PV.hud=function(ctx,ox,oy,scale,g,view){
  for(const q of st.world.quests){
   let txt=null;const plq=sectionOf(g);if(plq&&plq.quest===q&&!st.quest)st.quest={id:q.id};
   if(q.bearings&&bearingsHeld(g,q).length){const held=bearingsHeld(g,q);txt=`${q.giver}: `+q.bearings.map(b=>(held.includes(b)?'◆':'◇')+' '+b).join('  ');}
+  else if(root.BladefallClimbErrands?.handles(q)&&!questDone(q)&&st.spoke.has(q.from+':'+((defOf(q.from).people||[]).find(w=>w.quest===q.id)||{}).who))txt=q.title+' · '+root.BladefallClimbErrands.hud(q);
   else if(st.quest&&st.quest.id===q.id)txt=q.title;
   if(!txt)continue;const tw=ctx.measureText(txt).width+fs*1.2,x0=ox+W0*scale-8;
   ctx.fillStyle='rgba(14,16,24,.75)';ctx.fillRect(x0-tw,y0,tw,fs*1.6);ctx.fillStyle='#e9c47a';ctx.fillText(txt,x0-tw+fs*.6,y0+fs*.3);y0+=fs*1.9;
@@ -1537,6 +1543,12 @@ function returnPassage(){
 function captureTestCheckpoint(){if(!st)return null;return structuredClone({quest:st.quest,branchVia:st.branchVia,returningCeiling:st.returningCeiling,enteredAt:st.enteredAt,passageEntry:st.passageEntry,closed:st.closed,lit:st.lit});}
 function restoreTestCheckpoint(context){if(!st||!context)return;Object.assign(st,structuredClone(context));st.deathMark=st.view.g.deaths;st.cam=null;st.slide=null;st.trail=[];st.dispCache.clear();}
 PV.climb={watchWorlds:(list,label)=>watchWorlds(list,label),watching:()=>st?.watching||null,watchLog:()=>st?.watchLog||[],roadOf:n=>roadOf(CL().world(n)),captureTestCheckpoint,restoreTestCheckpoint,resetCamera:()=>{if(st){st.cam=null;st.view.camRoom=null;}},testCameraBounds:()=>{if(!st?.view.g)return null;const pl=sectionOf(st.view.g),geo=CL().geography;if(geo){const b=geo.bounds;return {x:b.x*8-pl.x,y:b.y*8-pl.y,w:b.w*8,h:b.h*8};}const b=bounds(pl.chain);return {x:b.x0-pl.x,y:b.y0-pl.y,w:b.x1-b.x0,h:b.y1-b.y0};},fracturedOpen:n=>fracturedOpen(n),heartTotals:()=>heartTotals(),skipInfo,skipSection,returnPassage,useRiftPortal,riftPortal,portViews:visibleSockets,palette:palFor,state:()=>st,startWorld:(n,room=null,fromStart=false)=>startWorld(n,room,fromStart),menu:()=>worldMenu(),levels:()=>worldMenu(true),teleport:teleportTo,sectionOf:g=>sectionOf(g),defOf:id=>defOf(id),announce:(t,n)=>announce(t,n)};
+/* (7.375) While an Ascend Together puzzle runs (bladefall-climb-together.js), its shared room is not part of any climb
+   world: the climb steps aside and the base view draws, moves the camera and runs the HUD, with the puzzle's own line. */
+for(const k of ['camera','drawWorld','holding','exit','draw','background','track','chapterDone','palette']){const own=PV[k];if(typeof own!=='function')continue;
+ PV[k]=function(...a){return root.BladefallClimbTogether?.active()&&BASE[k]?BASE[k].apply(this,a):own.apply(this,a);};}
+{const own=PV.hud;PV.hud=function(ctx,ox,oy,scale,g,view){if(!root.BladefallClimbTogether?.active())return own.call(this,ctx,ox,oy,scale,g,view);
+ BASE.hud?.call(this,ctx,ox,oy,scale,g,view);root.BladefallClimbTogether.hud(ctx,ox,oy,scale,Math.max(11,Math.round(scale*3.6),Math.round(10*(view.dpr||1))));};}
 root.BladefallPitchView=PV;
 /* (7.280) A gravity prism's flip keeps the picture still. The scarf, the dash's afterimages and the sparks live in the
    room's own coordinates, which the flip mirrors, so they are turned over with it (first in the list, so the flip's own

@@ -48,16 +48,18 @@ test('Rowan goes by his trade until he gives his name (7.359)',()=>{
 });
 test('ability gates, malformed saves and unknown choices do not advance a story',()=>{
  let state=choice(null,'defector','short');
- state=S.reduce(state,'defector',{type:'task',task:'brake',capabilities:all}).state;
+ // (7.375) Silas's first step is the governor's tooth: it needs the blade
  const denied=S.reduce(state,'defector',{type:'task',task:'gear',capabilities:[]});
- assert.equal(denied.error,'requires:weapon');assert.equal(S.row(denied.state,'defector').step,1);
+ assert.equal(denied.error,'requires:weapon');assert.equal(S.row(denied.state,'defector').step,0);
+ state=S.reduce(state,'defector',{type:'task',task:'gear',capabilities:all}).state;assert.equal(S.row(state,'defector').step,1);
  assert.equal(S.reduce(state,'defector',{type:'task',task:'bogus',capabilities:all}).changed,false);
  state=S.normalize({quests:{defector:{phase:'harsh',reward:3,claimed:true,step:999},unknown:{}}});
  assert.equal(S.row(state,'defector').reward,0);assert.equal(S.row(state,'defector').claimed,false);assert.equal(state.quests.unknown,undefined);
 });
-test('archive burning retains anger without conflating it with the insulting branch',()=>{
+test('the archivist ends one way: no keep-or-burn choice (7.375)',()=>{
  const q=S.byId.archivist;let state=tasks(choice(null,q.id,'short'),q);
- state=choice(state,q.id,'finish:burn');assert.equal(S.view(state,q.id).text,q.burnLine);
+ assert.deepEqual(S.view(state,q.id).choices.map(c=>c.id),['finish']);
+ state=choice(state,q.id,'finish');assert.equal(S.row(state,q.id).phase,'completed');
  assert.equal(S.reduce(state,q.id,{type:'claim'}).receipt.value,2);
 });
 

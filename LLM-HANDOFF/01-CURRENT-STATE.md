@@ -1,3 +1,32 @@
+## 7.375.0: three quests you go and do (Explore and Ascend); Ascend Together, two-player puzzles online (2026-10-22, Claude)
+
+- **Isaac's direction.** Quest steps were "go press Up on these three places", right beside the giver. Steps now have you do different things somewhere else in the region. There are no dialogue menus. Explore rewards are the region's shortcut ride, sometimes plus a vitality fragment or forge seal; the +2 Blood healing is gone from every story. Ascend rewards stay hearts. Only Black Woods, the Causeway and the Ruined Keep were reworked, in both modes. The design notes for all 19 regions are in `docs/plans/quests-and-coop-proposal.md`.
+- **Explore** (`public/bladefall-quest-errands.js`; hooks in `bladefall-side-story-world.js`: `completeTask`, install/update/draw):
+  - **Elsie:** follow the lantern moths east until they settle; carry the lantern home (a hit and the moths take it back); split Hale's log with the blade. Reward: a vitality fragment and the moths.
+  - **Silas:** strike the governor's bright tooth. Walk him west to the sunlight: he moves only while you move, and patrol arms knock him back. Hang his key on the toll tower hook. Reward: the trolley.
+  - **Archivist,** in any order: break the bricked reading room (the west ledge at 3370/360); climb to the steward's account on the wall top at 15680/900; gather the 5 belfry pages within 22 s. Reward: a forge seal and the bell-ropes. The keep/burn choice is gone.
+  - `bladefall-causeway-story.js` now keeps only Silas's layout.
+- **Ascend** (`public/bladefall-climb-errands.js`; `errandCtx()` in `bladefall-climb-view.js`):
+  - Every spot is a point on a room's intended route, so it is always reachable.
+  - Progress is kept in `bladefall.climb.errands.v1`. The heart comes from handing the thing over; the branch-end heart is not drawn for these quests.
+  - Nothing runs while a route is watched.
+- **Ascend Together** (`bladefall-climb-together.js` and `-rooms.js`):
+  - Three rooms: Hold the Door (plates and a held door), Ring for Me (a bell flips the steps), Two Lights (two stones open the gate).
+  - The host starts them from the Co-op panel (four-letter code). It runs fullscreen in the normal Ascend view; the climb view defers to the base view while it runs.
+  - One shared room (`bladefall-workshop-ascend-coop-core.js`), with a host-led lockstep frame stream (`bladefall-workshop-ascend-play.js`). A death retries the room for both of you.
+  - Rooms are authored in `scripts/together/rooms.mjs`. Prove them with `scripts/together/prove.mjs` (two-knight routes in `routes.json`), then build with `scripts/together/build.mjs`.
+- **Checks:**
+  - `node scripts/quests/errands-check.mjs` and `node scripts/quests/climb-errands-check.mjs`;
+  - `node scripts/together/prove.mjs`;
+  - `node scripts/together/online-check.mjs`: two pages over `?coop=local`, all three rooms, games identical;
+  - `npm run verify:watch` passes;
+  - the side-story and co-op unit tests match the 7.374.1 baseline. The two old-step tests were rewritten.
+  - Screenshots: `scripts/quests/*-shots.mjs` and `scripts/together/shots.mjs` → `.cache/quest-shots/`.
+- **Not done:**
+  - New lines are unvoiced (`scripts/voice/lines.json` + `build-voice.mjs`).
+  - Real PeerJS across two machines is not tested here; Isaac tests online.
+  - The other 16 regions keep their old steps.
+
 ## 7.374.1: climbing by holding Up is touch-only again; every watch route plays (2026-10-22, Claude)
 
 - **What broke `verify:watch` (71 skipped routes).** Bisected to 7.369.0 (92b7979): "climb by holding Up" changed `bladefall-pcore.js` for every player. Up alone grabbed walls, climbing went from -45 to -60 px/s, and climbing up cost no stamina. Every intended route was recorded under the old rules: tapes that hold Up while jumping or aiming caught walls, and authored climbs topped out early.

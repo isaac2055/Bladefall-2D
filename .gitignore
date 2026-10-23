@@ -37,3 +37,4 @@ cloudflare-dist/
 
 # Private local release snapshots; not application source.
 scripts/playtest-release/before/
+.cache/

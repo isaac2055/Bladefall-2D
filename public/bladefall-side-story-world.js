@@ -66,22 +66,26 @@ function receiveNetwork(m){
  return false;
 }
 /* What finishing a side story actually gives, said plainly (owner 7.234: "you accept the help offered here"
-   didn't say it gave anything). Elsie's supper carries the Black Woods vitality fragment; the others patch you up. */
+   didn't say it gave anything). Every story leaves its shortcut ride (bladefall-explore-mounts.js); a few also give
+   something to keep: Elsie's supper a vitality fragment, the Archivist a forge seal. (7.375, Isaac: no healing;
+   with checkpoints it is pointless.) */
+const KEEPS={refuge:[{vitalityFragments:1},'a vitality fragment. Four of them add a measure of Blood'],archivist:[{forgeSeals:1},'a forge seal. Spend it at a forge to strengthen your blade']};
+function rideLine(q){const m=Object.values(root.BladefallMounts?.MOUNTS||{}).find(m=>m.story===q?.id);return m?m.name+' is yours: a shortcut across '+(STAGES?.[q.stage]?.name||'this region')+', from the far end once you have walked it.':'';}
 function grantReward(q){
- if(q?.id==='refuge'&&typeof grantAuthoredAdvancementBundle==='function'){
-  grantAuthoredAdvancementBundle({vitalityFragments:1},'sidestory:refuge');apply();hudUpdate();
-  return thanks(q,q.name+' gives you a vitality fragment. Four of them add a measure of Blood.');
+ const keep=KEEPS[q?.id];
+ if(keep&&typeof grantAuthoredAdvancementBundle==='function'){
+  grantAuthoredAdvancementBundle(keep[0],'sidestory:'+q.id);apply();hudUpdate();
+  return thanks(q,q.name+' gives you '+keep[1]+'. '+rideLine(q));
  }
- restoreBlood(G.p,2);apply();hudUpdate();
- if(typeof addText==='function')addText(G.p.x,GROUND_Y-G.p.y-70,'+2 BLOOD','#ff8a80',true);
+ apply();hudUpdate();
  // 7.343: the Bellwing. Its roost goes up by the camp straight away (bladefall-explore-mounts.js).
  if(q?.id==='gatekeeper'&&root.BladefallMounts){root.BladefallMounts.install();
   // (7.359) Three beats: what happens, Rowan's own (voiced) line, and how to use the drake.
   const session=G;BladefallConversation.show({title:'Rowan’s thanks',accent:q.accent,onClose:()=>closeSession(session),lines:[
-   {text:'Rowan patches you up. +2 Blood. Something bronze drops out of the empty belfry and lands on the bell-post by the camp: the drake that nested over the old bell.',speaker:'Rowan’s thanks',portrait:null},
+   {text:'Something bronze drops out of the empty belfry and lands on the bell-post by the camp: the drake that nested over the old bell.',speaker:'Rowan’s thanks',portrait:null},
    {text:'A drake roosted over that bell. Followed it all the way down. It’ll carry you, if you let it.',speaker:'Rowan'},
    {text:'The Bellwing roosts by the camp. Press Up at its roost to fly to the Mothlight Door, and back; hold the way you are flying to hurry it.',speaker:'The Bellwing',portrait:null}]});mode='conversation';return true;}
- return thanks(q,(q?.name||'They')+' patches you up. +2 Blood.');
+ return thanks(q,rideLine(q)||(q?.name||'They')+' thanks you.');
 }
 /* (7.360) What the reward is, then the giver's own (voiced) line about it, when they have one. */
 function thanks(q,what){
@@ -96,9 +100,9 @@ function receiveRewards(receipts,quiet=true){
  const received=G._sideStoryReceivedRewards||(G._sideStoryReceivedRewards={});let healed=false;
  for(const receipt of receipts){
   if(!S.byId[receipt?.id]||receipt.scope!=='regional'||receipt.value!==2||received[receipt.id]||!S.row(state(),receipt.id).claimed)continue;
-  received[receipt.id]=true;restoreBlood(G.p,2);healed=true;
+  received[receipt.id]=true;healed=true;
  }
- if(healed){hudUpdate();if(!quiet)inspect('A friend’s thanks','You’re patched up. +2 Blood.');}
+ if(healed){hudUpdate();if(!quiet)inspect('A friend’s thanks','Their shortcut is open to you both.');}
 }
 function capabilities(){return ['weapon','dash','portal-single','portal-pair','wall-jump','downward-strike','gravity-flip','chain-hook'].filter(id=>hasCapability(id)).concat(typeof echoVerbAvailable==='function'&&echoVerbAvailable()?['echo']:[]);}
 function closeSession(session){if(G!==session)return;dialogueId=null;mode='play';G.outskirtsAnnotation=null;BFKeyboard.clearPressed();showGameUI(true);hudUpdate();}
@@ -196,12 +200,14 @@ function install(){
   if(sable&&water){water.x=sable.x+50;water.y=sable.y;water.title='Speak with Sable';}
  }
  G.obstacles.push({type:'sideStoryProp',sideStory:q.id,sideStoryRole:'scene',x:q.id==='figure'?x+100:q.id==='gatekeeper'?x-60:x-dir*60,y,w:90,h:60,title:q.title,accent:q.accent});
- G.obstacles.push({type:'sideStoryProp',sideStory:q.id,sideStoryRole:'reward',x:q.id==='figure'?x+140:q.id==='gatekeeper'?x-100:x-dir*100,y,w:32,h:30,title:q.id==='refuge'?'Vitality fragment':'Bandages',accent:q.accent});
+ G.obstacles.push({type:'sideStoryProp',sideStory:q.id,sideStoryRole:'reward',x:q.id==='figure'?x+140:q.id==='gatekeeper'?x-100:x-dir*100,y,w:32,h:30,title:KEEPS[q.id]?'A gift':'Thanks',accent:q.accent});
  if(q.stage===16){for(const o of G.obstacles)if(o.sideStory===q.id)o.actShip=1;G.sideStoryScene.shipOffset=G.actTwo?.shipOff||0;}
  window.BladefallOpeningStories?.install(q,G.sideStoryScene);
  window.BladefallCausewayStory?.install(q,G.sideStoryScene);
+ window.BladefallQuestErrands?.install(q,G.sideStoryScene);   // (7.375) steps you go and do (bladefall-quest-errands.js)
  apply();
 }
+function syncErrands(){if(G.sideStoryScene?.errand)window.BladefallQuestErrands?.sync();}
 function waiting(scene,r){return !!scene.waitsFor&&r.phase==='offered'&&!capabilities().includes(scene.waitsFor);}
 function apply(){
  if(!active()||!G.sideStoryScene)return;
@@ -211,7 +217,7 @@ function apply(){
  for(const o of G.obstacles.filter(o=>o.sideStory===q.id)){
   o.storyPhase=r.phase;o.storyStep=r.step;
   if(['step','task','anchor'].includes(o.sideStoryRole)&&scene.waitsFor)o.gone=scene.waiting;
-  if(o.sideStoryRole==='reward')o.gone=!good||r.claimed||(q.id==='defector'&&!scene.escort?.finished);
+  if(o.sideStoryRole==='reward')o.gone=!good||r.claimed;
   if(o.sideStoryRole==='gate')o.gone=r.step>0&&!bad;
   if(o.sideStoryRole==='anchor'){const target=G.obstacles.find(p=>p.sideStory===q.id&&p.task===(r.step>0?'chimes':'funnel'));if(target){o.x=target.x;o.y=target.y;}}
   if(o.sideStoryRole==='task')o.storyDone=o.index<r.step;
@@ -239,6 +245,7 @@ function apply(){
    if(q.id==='refuge'&&good&&scene.revisit)o.gone=true;
   }
  }
+ syncErrands();
 }
 function taskAction(o){
  const q=S.byId[o.sideStory],r=S.row(state(),q.id),t=q.tasks[o.index];
@@ -313,7 +320,7 @@ function interact(o){
 }
 // A story's backdrop is scenery (7.234): as an Up target it sat over Silas and stole his conversation.
 function interactable(o){return !!o?.sideStory&&!o.gone&&['actor','task','reward'].includes(o.sideStoryRole);}
-function prompt(o){return o.sideStoryRole==='actor'?'↑  TALK · '+o.name:o.sideStoryRole==='reward'?(o.sideStory==='refuge'?'↑  TAKE':'↑  PATCH UP'):o.sideStoryRole==='scene'?'↑  LOOK':'↑  '+o.title.toUpperCase();}
+function prompt(o){return o.sideStoryRole==='actor'?'↑  TALK · '+o.name:o.sideStoryRole==='reward'?'↑  THANKS':o.sideStoryRole==='scene'?'↑  LOOK':'↑  '+o.title.toUpperCase();}
 function update(dt){
  if(!active()||!G.sideStoryScene)return;G.sideStoryScene.age+=dt;
  const scene=G.sideStoryScene,r=S.row(state(),scene.id);const actor=G.obstacles.find(o=>o.sideStoryRole==='actor');
@@ -321,7 +328,7 @@ function update(dt){
  if(scene.id==='sailors'){const offset=G.actTwo?.shipOff||0,dx=offset-(scene.shipOffset||0);if(dx){scene.base.x+=dx;for(const o of G.obstacles)if(o.sideStory===scene.id){if(o.baseX!=null)o.baseX+=dx;if(o.perchX!=null)o.perchX+=dx;}scene.shipOffset=offset;}}
  if(G.p.actHook?.ring?.sideStory===scene.id)scene.hooked=true;
  if(scene.parkedCart&&Math.abs(G.p.x-scene.base.x)>440){G.cartMode=true;scene.parkedCart=false;}
- if(r.phase==='active'){
+ if(r.phase==='active'&&!window.BladefallQuestErrands?.handles(scene.id)){
   const task=S.byId[scene.id].tasks[r.step],o=G.obstacles.find(o=>o.sideStory===scene.id&&o.task===task.id);
   if(o&&Math.abs(G.p.x-o.x)<60){
    if(task.id==='gear'&&G.p.swingT>0&&!G.p.pogoSwing&&!G.p.upSlashSwing&&Math.abs(G.p.y+G.p.h/2-o.y)<55)completePhysicalTask(o);
@@ -329,6 +336,7 @@ function update(dt){
   }
  }
 
+ window.BladefallQuestErrands?.update(dt);   // (7.375) both partners do steps; a guest's step goes to the host (commit)
  // The host moves shared followers; the guest sends its own ability/task intentions above.
  if(shared()&&NET.isGuest())return;
  const partner=shared()&&NET.isHost()&&NET.ghost?.stage===G.stageIndex&&!NET.ghost.dead?NET.ghost:null;
@@ -366,12 +374,13 @@ function update(dt){
  if(shared()&&NET.isHost()&&actor){
   scene.syncT=(scene.syncT||0)+dt;if(scene.syncT>=.1){scene.syncT=0;netSend({t:'sideStoryScene',stage:G.stageIndex,id:scene.id,x:actor.x,y:actor.y,escort:scene.escort||null,rescue:scene.rescue||null,revisit:!!scene.revisit},true);}
  }
- if(actor&&scene.id==='defector'&&r.phase!=='completed'&&(r.phase==='harsh'||r.step<2))actor.x=actor.baseX+Math.sin(G.time*.7)*45;
+ if(actor&&scene.id==='defector'&&r.phase!=='completed'&&(r.phase==='harsh'||r.step<1))actor.x=actor.baseX+Math.sin(G.time*.7)*45;   // his forty paces, until the governor stops
 }
 function draw(c,o){
  if(o.gone||o.sideStoryRole==='step')return;
  if(o.sideStory==='refuge'&&o.sideStoryRole==='scene'&&G.sideStoryScene?.revisit&&S.row(state(),'refuge').phase==='completed'&&!window.BladefallOpeningStories)return;
  const q=S.byId[o.sideStory],r=S.row(state(),q.id),good=r.phase==='completed',bad=r.phase==='harsh',scene=G.sideStoryScene;
+ if(window.BladefallQuestErrands?.draw(c,o,q,r))return;
  if(window.BladefallResidentArt?.drawStory(c,o,q,r,scene))return;   // givers and supporting speakers: bladefall-resident-art.js
  if(window.BladefallOpeningStories?.draw(c,o,q,r,scene))return;
  if(window.BladefallCausewayStory?.draw(c,o,q,r,scene))return;
@@ -450,5 +459,9 @@ function draw(c,o){
  c.restore();
 }
 function journal(){return S.journal(state()).map(q=>({id:'side:'+q.id,title:q.title,accent:S.byId[q.id].accent,status:q.status,step:S.row(state(),q.id).step,total:S.byId[q.id].tasks.length,objective:{label:q.objective},rewardValue:q.reward,claimed:q.claimed,sideStory:true}));}
-root.BladefallSideStoryWorld=Object.freeze({receiveRewards,receiveNetwork,install,update,interact,interactable,prompt,draw,state,apply,journal});
+/* (7.375) A step done out in the world (bladefall-quest-errands.js). */
+function completeTask(id,task){const o=G.obstacles.find(o=>o.sideStory===id&&o.sideStoryRole==='errand'&&o.task===task)||{sideStory:id,task,x:G.p.x,y:G.p.y,accent:S.byId[id].accent};
+ const result=commit(id,{type:'task',task,capabilities:capabilities()});if(result.changed){apply();const next=S.row(state(),id);
+ addText(G.p.x,GROUND_Y-G.p.y-95,next.phase==='ready'?'DONE · RETURN TO '+S.byId[id].name.toUpperCase():S.byId[id].tasks[next.step].label.toUpperCase(),S.byId[id].accent,false);}return result;}
+root.BladefallSideStoryWorld=Object.freeze({receiveRewards,receiveNetwork,install,update,interact,interactable,prompt,draw,state,apply,journal,completeTask});
 })(typeof globalThis!=='undefined'?globalThis:window);

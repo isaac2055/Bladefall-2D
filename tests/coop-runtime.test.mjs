@@ -539,21 +539,20 @@ test('early carriers keep local motion in co-op, with no walkway beneath a cross
 });
 
 
-test('Silas maintenance tasks and released patrol fence are shared', {timeout:120000},async t=>{
+test('Silas’s steps done by either partner are shared (7.375: governor tooth, the walk, the key)', {timeout:120000},async t=>{
  const c=await coopPair(t);await c.connect();await c.ev(c.host,()=>coopStartRun('select',2));
  assert.ok(await c.until(c.guest,()=>G?.stageIndex===2&&mode==='play'));
  await c.keepAlive(c.host);await c.keepAlive(c.guest);
  for(const side of [c.host,c.guest])await c.ev(side,()=>{G.sessionSideStories=BladefallSideStories.reduce(G.sessionSideStories,'defector',{type:'choice',choice:'short'}).state;BladefallSideStoryWorld.apply();});
- for(const [task,x,y,step] of [['brake',10790,130,1],['gear',11220,195,2],['gate',10887,130,3]]){
-  await c.placeBoth({x:10730,y:130},{x,y});
-  await c.ev(c.guest,task=>{
-   if(task==='gear'){G.p.face=1;G.p.swingT=.15;G.p.pogoSwing=G.p.upSlashSwing=false;BladefallSideStoryWorld.update(1/60);}
-   else BladefallSideStoryWorld.interact(G.obstacles.find(o=>o.sideStory==='defector'&&o.task===task));
-   BladefallConversation.close();
-  },task);
-  const done=new Function('return BladefallSideStories.row(BladefallSideStoryWorld.state(),"defector").step === '+step);
-  assert.ok(await c.until(c.host,done),'host receives '+task);assert.ok(await c.until(c.guest,done),'guest receives '+task);
- }
- for(const side of [c.host,c.guest])assert.ok(await c.until(side,()=>G.obstacles.find(o=>o.sideStoryRole==='patrolFence').gone));
+ const at=step=>new Function('return BladefallSideStories.row(BladefallSideStoryWorld.state(),"defector").step >= '+step);
+ // the partner strikes the governor's bright tooth
+ await c.placeBoth({x:10730,y:130},{x:11200,y:205});
+ await c.ev(c.guest,()=>{G.p.weapon=G.p.weapon||oathbladeWeapon();const gear=G.obstacles.find(o=>o.errand==='gear');gear.t=2.39;G.p.face=1;G.p.swingT=.15;G.p.pogoSwing=G.p.upSlashSwing=false;BladefallSideStoryWorld.update(1/60);BladefallConversation.close();});
+ assert.ok(await c.until(c.host,at(1)),'host receives the governor');assert.ok(await c.until(c.guest,at(1)),'guest sees the governor');
+ // the host finishes the walk; the partner hangs the key
+ await c.ev(c.host,()=>{BladefallSideStoryWorld.completeTask('defector','lead');});
+ assert.ok(await c.until(c.guest,at(2)),'guest receives the walk');
+ await c.ev(c.guest,()=>{const a=G.obstacles.find(o=>o.sideStory==='defector'&&o.sideStoryRole==='actor');Object.assign(G.p,{x:a.x,y:a.y,vx:0,vy:0});BladefallSideStoryWorld.update(1/60);Object.assign(G.p,{x:9300,y:325,vx:0,vy:0});BladefallSideStoryWorld.update(1/60);BladefallConversation.close();});
+ assert.ok(await c.until(c.host,at(3)),'host receives the key');
  assert.deepEqual(c.host.errors,[]);assert.deepEqual(c.guest.errors,[]);
 });

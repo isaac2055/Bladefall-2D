@@ -242,6 +242,9 @@ ASSETS=(
   bladefall-climb.js
   bladefall-climb-worlds.js
   bladefall-climb-session.js
+  bladefall-climb-errands.js
+  bladefall-climb-together-rooms.js
+  bladefall-climb-together.js
   bladefall-climb-view.js
   bladefall-climb-atlas.js
   bladefall-climb-passages.js
@@ -355,6 +358,7 @@ ASSETS=(
   bladefall-side-stories.js
   bladefall-opening-stories.js
   bladefall-side-story-world.js
+  bladefall-quest-errands.js
   bladefall-explore-mounts.js
   bladefall-gate-trials.js
   bladefall-merge-road.js

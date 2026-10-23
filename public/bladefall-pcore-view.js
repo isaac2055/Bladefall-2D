@@ -370,6 +370,7 @@ function loop(dt){
 function tick(input){
  if(view.mode!=='play'||view.paused||TEST()?.inspecting())return;
  if(root.BladefallWorkshopNativePlay?.tick?.(input)){updateVisuals();return;}
+ if(root.BladefallClimbTogether?.tick?.(input)){updateVisuals();return;}   // (7.375) Ascend Together
  const g=view.g;
  if(view.wipe>0){view.wipe--;if(view.wipe===8&&view.wipeTo){view.wipeTo();view.wipeTo=null;}return;}
  view.lastInput=input;if(root.BladefallPitchView?.holding?.())return;
@@ -937,6 +938,7 @@ function assistCard(back,{fromMenu=false}={}){
 }
 function togglePause(){
  if(view.mode!=='play')return;
+ if(root.BladefallClimbTogether?.pause?.())return;   // (7.375) its own small menu
  if(view.paused){view.paused=false;hideOverlay();root.BladefallSfx?.play('ui-back',{gap:200});return;}   // the weather comes back with the next frame
  view.paused=true;root.BladefallSfx?.play('ui-pause',{gap:200});if(sky){sky.stop(.6);sky=null;}const g=view.g,ch=R.chapters[view.chapter],base=chapterStart(view.chapter);
  const hasTape=!!R.tapes[g.room.id],backPassage=ch.climb&&root.BladefallClimbBankPassages?.previousLink(root.BladefallPitchView?.climb?.state()?.world,g.room.id);

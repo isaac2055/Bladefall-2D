@@ -23,6 +23,7 @@ function send(m){try{if(chan)chan.postMessage({...m,from:CO.role});else if(conn&
 function onMessage(m){
  if(!m||m.from===CO.role&&chan)return;
  CO.seen=Date.now();
+ if(m.t==='tg'){root.BladefallClimbTogether?.receive(m);return;}   // (7.375) Ascend Together, the two-player puzzles
  if(m.t==='hi'||m.t==='world'){
   if(CO.status!=='on'){CO.status='on';announce('Partner joined',160);}
   if(m.t==='hi'&&CO.role==='host')send({t:'hi',world:local()?.world.n||0});
@@ -84,7 +85,7 @@ CO.menuHtml=function(){
   :s==='starting'?`<p class="pcSub">Starting…</p>`
   :s==='waiting'&&CO.role==='host'?`<p class="pcSub">Your code: <b style="letter-spacing:.2em;color:#ffd98a">${code}</b> · waiting for your friend to join</p>`
   :s==='waiting'?`<p class="pcSub">Joining ${code}…</p>`
-  :s==='on'?`<p class="pcSub">Playing together${code&&code!=='LOCAL'?' · '+code:''}. Race at your own pace. Hold <b>T</b> (or <b>P2</b> on a phone) to appear beside your partner: a teleport counts as a skip. Your blade can bonk them.</p>`
+  :s==='on'?`${CO.role==='host'?'<button class="pcBtn" id="coTogether">Two-player puzzles · 3 rooms</button>':'<p class="pcSub">Your partner can start the two-player puzzles from here.</p>'}<p class="pcSub">Playing together${code&&code!=='LOCAL'?' · '+code:''}. Race at your own pace. Hold <b>T</b> (or <b>P2</b> on a phone) to appear beside your partner: a teleport counts as a skip. Your blade can bonk them.</p>`
   :s==='lost'?`<p class="pcSub">Your partner left.</p>`
   :`<p class="pcSub">${CO.err||'Something went wrong.'}</p>`;
  return `<div class="pcCard" id="coPanel" style="margin-top:.6em"><h2 style="margin:.2em 0">Co-op</h2> <p class="pcSub">Two knights, one world: each of you clears every section yourself, and you see your partner do it. Either of you can go on ahead.</p>
@@ -96,6 +97,7 @@ CO.bindMenu=function(){
  if($('coJoin'))$('coJoin').onclick=()=>join($('coCode').value);
  if($('coCode'))$('coCode').onkeydown=e=>{e.stopPropagation();if(e.key==='Enter')join($('coCode').value);};
  if($('coLeave'))$('coLeave').onclick=leave;
+ if($('coTogether'))$('coTogether').onclick=()=>root.BladefallClimbTogether?.start();
 };
 function refreshMenu(){const el=document.getElementById('coPanel');if(!el)return;el.outerHTML=CO.menuHtml();CO.bindMenu();}
 /* (7.318) A cut that lands on your partner's knight knocks them back with a flash (nobody dies), and when you have
@@ -198,6 +200,6 @@ CO.hud=function(ctx,ox,oy,scale,fs,g,view){
  ctx.save();const tw=ctx.measureText(txt).width+fs*1.2,ty=oy+H0*scale-fs*4.2;ctx.fillStyle='rgba(14,16,24,.65)';ctx.fillRect(ox+6,ty,tw,fs*1.6);ctx.fillStyle=SCARF;ctx.fillText(txt,ox+6+fs*.6,ty+fs*.3);ctx.restore();   // just above the room's hint line (the top left carries the landmark title)
 };
 addEventListener('blur',()=>{CO.tDown=false;CO.holdT=0;});
-CO.state=()=>CO;CO.host=host;CO.join=join;CO.leave=leave;
+CO.state=()=>CO;CO.host=host;CO.join=join;CO.leave=leave;CO.send=send;
 root.BladefallClimbCoop=CO;
 })(typeof window!=='undefined'?window:globalThis);
