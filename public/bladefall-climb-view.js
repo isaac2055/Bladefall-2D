@@ -1074,7 +1074,8 @@ function skipInfo(){
  const cost=finale?(st.world.n>20?3:2):1;
  let reason='';
  if(!pl||view.mode!=='play')reason='Start a world first';
- else if(pl.branch)reason='Optional routes cannot be skipped';
+ else if(pl.branch&&!test)reason='Optional routes cannot be skipped';
+ else if(pl.branch&&(()=>{const n=pl.chain[chainIndex(pl,g.room.id)+1];return !n||defOf(n.room)?.passage||defOf(n.room)?.connector;})())reason='This is the last room of the route';   // (7.376) test mode skips optional rooms too
  else if(!test&&!finale&&(d.campaignImport?.superroom||d.bank?.format==='superroom'||d.superroom||
    ['boss','sentinel','marksman','colossus','warden','sorcerer','tyrant','crown','chainHydra','dayKing','rootCrown'].some(k=>d[k])||d.combat?.enemies?.some(e=>e.brute)))reason='This boss cannot be skipped';
  else if(d.connector||d.passage||d.atlasJunction||d.atlasTransit)reason='Skips apply to normal challenges';
@@ -1111,8 +1112,7 @@ function settleInside(g){
  if(ex==='down'&&p.y>=RH-2-p.h)p.y=RH-p.h-3;else if(ex==='right'&&p.x>=RW-p.w-1)p.x=RW-p.w-3;else if(ex==='left'&&p.x<=1)p.x=2;
 }
 function claimBranch(g,br){
- if(!routeProven(g,br.obj)){if(st.provenSaid!==br.obj.id){st.provenSaid=br.obj.id;announce('The heart stays · finish every room of this route by its own way',220);}return;}
- if(br.kind==='quest'){const q=br.obj,took=q.sections.some(s=>hasShardIn(g,s.room))||!q.sections.some(s=>{const d=defOf(s.room);return d.map.join('').includes('*');});
+ if(br.kind==='quest'){const q=br.obj,took=q.sections.some(s=>hasShardIn(g,s.room))||!!V().testMode?.()||!q.sections.some(s=>{const d=defOf(s.room);return d.map.join('').includes('*');});
   if(took)grant(q);else announce('Something was left behind in there…',150);}
  else{const x=br.obj;root.BladefallPlaytest?.collectHeart(x.id);if(!save.secrets)save.secrets={};
   if(!save.secrets[x.id]){save.secrets[x.id]=true;store(SAVE,save);
@@ -1542,7 +1542,9 @@ function returnPassage(){
 }
 function captureTestCheckpoint(){if(!st)return null;return structuredClone({quest:st.quest,branchVia:st.branchVia,returningCeiling:st.returningCeiling,enteredAt:st.enteredAt,passageEntry:st.passageEntry,closed:st.closed,lit:st.lit});}
 function restoreTestCheckpoint(context){if(!st||!context)return;Object.assign(st,structuredClone(context));st.deathMark=st.view.g.deaths;st.cam=null;st.slide=null;st.trail=[];st.dispCache.clear();}
-PV.climb={watchWorlds:(list,label)=>watchWorlds(list,label),watching:()=>st?.watching||null,watchLog:()=>st?.watchLog||[],roadOf:n=>roadOf(CL().world(n)),captureTestCheckpoint,restoreTestCheckpoint,resetCamera:()=>{if(st){st.cam=null;st.view.camRoom=null;}},testCameraBounds:()=>{if(!st?.view.g)return null;const pl=sectionOf(st.view.g),geo=CL().geography;if(geo){const b=geo.bounds;return {x:b.x*8-pl.x,y:b.y*8-pl.y,w:b.w*8,h:b.h*8};}const b=bounds(pl.chain);return {x:b.x0-pl.x,y:b.y0-pl.y,w:b.x1-b.x0,h:b.y1-b.y0};},fracturedOpen:n=>fracturedOpen(n),heartTotals:()=>heartTotals(),skipInfo,skipSection,returnPassage,useRiftPortal,riftPortal,portViews:visibleSockets,palette:palFor,state:()=>st,startWorld:(n,room=null,fromStart=false)=>startWorld(n,room,fromStart),menu:()=>worldMenu(),levels:()=>worldMenu(true),teleport:teleportTo,sectionOf:g=>sectionOf(g),defOf:id=>defOf(id),announce:(t,n)=>announce(t,n)};
+/* (7.376) Forget the rooms drawn for the map and for neighbours (they were built before an edit or publish). */
+function refreshDisplay(){if(!st)return;st.dispCache?.clear();st.frozen?.clear?.();st.portCache=null;}
+PV.climb={refreshDisplay,watchWorlds:(list,label)=>watchWorlds(list,label),watching:()=>st?.watching||null,watchLog:()=>st?.watchLog||[],roadOf:n=>roadOf(CL().world(n)),captureTestCheckpoint,restoreTestCheckpoint,resetCamera:()=>{if(st){st.cam=null;st.view.camRoom=null;}},testCameraBounds:()=>{if(!st?.view.g)return null;const pl=sectionOf(st.view.g),geo=CL().geography;if(geo){const b=geo.bounds;return {x:b.x*8-pl.x,y:b.y*8-pl.y,w:b.w*8,h:b.h*8};}const b=bounds(pl.chain);return {x:b.x0-pl.x,y:b.y0-pl.y,w:b.x1-b.x0,h:b.y1-b.y0};},fracturedOpen:n=>fracturedOpen(n),heartTotals:()=>heartTotals(),skipInfo,skipSection,returnPassage,useRiftPortal,riftPortal,portViews:visibleSockets,palette:palFor,state:()=>st,startWorld:(n,room=null,fromStart=false)=>startWorld(n,room,fromStart),menu:()=>worldMenu(),levels:()=>worldMenu(true),teleport:teleportTo,sectionOf:g=>sectionOf(g),defOf:id=>defOf(id),announce:(t,n)=>announce(t,n)};
 /* (7.375) While an Ascend Together puzzle runs (bladefall-climb-together.js), its shared room is not part of any climb
    world: the climb steps aside and the base view draws, moves the camera and runs the HUD, with the puzzle's own line. */
 for(const k of ['camera','drawWorld','holding','exit','draw','background','track','chapterDone','palette']){const own=PV[k];if(typeof own!=='function')continue;

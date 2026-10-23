@@ -1,3 +1,10 @@
+## 7.376.0: hearts need only the route's own rooms; test-mode skips on optional routes; edited levels repaint (2026-10-23, Claude)
+
+- **Hearts.** The "The heart stays · finish every room of this route by its own way" rule is gone (`claimBranch` in `bladefall-climb-view.js`). Reaching the heart in an optional route's last room is enough. Test mode also skips the "something was left behind" shard check.
+- **Skips.** Test mode may skip rooms inside an optional route (normal play still may not). It cannot skip the route's last room, since the next one is a passage.
+- **Edited or published levels were drawn old but played new.** `refreshAscendRoom` (`bladefall-workshop-bridge.js`) rebuilt the room's tiles, but the painted layer of the old tiles (`staticCache` in `bladefall-pcore-view.js`, keyed by room id and `room.rev`, which a rebuilt room does not change) and the climb's own copies for neighbours (`st.dispCache`, `st.frozen`) stayed. So the old spikes were drawn while the published ones hurt. Now `V.dropStatic(id)` and `PV.climb.refreshDisplay()` run after every rebuild (editing, publishing, "Use the original level"). A fresh page load was never affected.
+- **Checks:** `node scripts/quests/published-refresh-check.mjs` (fails without the fix); `node scripts/quests/branch-rules-check.mjs`.
+
 ## 7.375.0: three quests you go and do (Explore and Ascend); Ascend Together, two-player puzzles online (2026-10-22, Claude)
 
 - **Isaac's direction.** Quest steps were "go press Up on these three places", right beside the giver. Steps now have you do different things somewhere else in the region. There are no dialogue menus. Explore rewards are the region's shortcut ride, sometimes plus a vitality fragment or forge seal; the +2 Blood healing is gone from every story. Ascend rewards stay hearts. Only Black Woods, the Causeway and the Ruined Keep were reworked, in both modes. The design notes for all 19 regions are in `docs/plans/quests-and-coop-proposal.md`.

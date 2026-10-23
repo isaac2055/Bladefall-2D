@@ -28,7 +28,10 @@ function openEditor(doc,library,onExit,co=null){
 function refreshAscendRoom(){
  const V=root.BladefallPrecisionView,g=V?.view.g,C=root.BladefallPrecisionCore,A=root.BladefallWorkshopApplied;if(!g||!C||!A)return false;
  const next=A.ascend(A.original(g.room.def));if(next===g.room.def)return false;
- const i=g.roomIndex;g.defs=g.defs.slice();g.defs[i]=next;g.rooms[i]=C.parseRoom(next,i);C.resetRoom(g);return true;
+ const i=g.roomIndex;g.defs=g.defs.slice();g.defs[i]=next;g.rooms[i]=C.parseRoom(next,i);C.resetRoom(g);
+ // (7.376) The painted layer of the old tiles (and the climb's copies of this room for its neighbours) are keyed by room id: drop them,
+ // or the old spikes stay on screen while the new ones hurt (Isaac: spikes in the real game that did not hurt).
+ V.dropStatic?.(g.room.id);root.BladefallPitchView?.climb?.refreshDisplay?.();return true;
 }
 function useOriginal(mode){
  const A=root.BladefallWorkshopApplied;if(!A)return false;

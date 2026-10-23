@@ -533,6 +533,8 @@ function drawStatic(b,g,pal,localCamera){
  }
  root.BladefallClimbPassageArt?.details(b,g,cam);
 }
+/* (7.376) A room rebuilt from an edited or published level is the same room id with new tiles: forget its painted layers. */
+function dropStatic(id){for(const k of [...staticCache.keys()])if(k.startsWith(id+'|'))staticCache.delete(k);}
 function staticLayer(g,pal){
  const key=g.room.id+'|'+view.chapter+'|'+(g.flipped?1:0)+'|'+(g.room.rev||0);
  const hit=staticCache.get(key);if(hit)return hit;
@@ -1110,6 +1112,6 @@ function drawWorkshop(b,g,area){
  for(const d of devices)d.drawFront?.(b,g,editorView,pal);
  }finally{b.restore();}
 }
-root.BladefallPrecisionView={workshopFrame,watchRoute,clearInput:()=>{keys.clear();latchHeld();},options:(back,o)=>assistCard(back,o),testMode:()=>!!save.assist.testMode,pureMode:()=>!!save.options.pure,boot,view,startChapter,retryRoom,mainMenu,advance,pump,goRoom,persist,drawOther,drawStatic,drawWorkshop,palettes:PAL,drawKnight:drawKnightSprite};
+root.BladefallPrecisionView={dropStatic,workshopFrame,watchRoute,clearInput:()=>{keys.clear();latchHeld();},options:(back,o)=>assistCard(back,o),testMode:()=>!!save.assist.testMode,pureMode:()=>!!save.options.pure,boot,view,startChapter,retryRoom,mainMenu,advance,pump,goRoom,persist,drawOther,drawStatic,drawWorkshop,palettes:PAL,drawKnight:drawKnightSprite};
 if(typeof document!=='undefined'){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();}
 })(typeof window!=='undefined'?window:globalThis);
