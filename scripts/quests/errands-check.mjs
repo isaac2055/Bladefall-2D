@@ -19,7 +19,7 @@ try{
   Q.put(5300,0);Q.frames(5);out.retaken=Q.er().find(o=>o.e==='lantern').held;
   G.p.invuln=99;Q.put(4300,0);Q.walk(820,0);Q.frames(20);out.home=Q.row('refuge').step===2;
   G.p.weapon=oathbladeWeapon();Q.walk(2250,0);G.p.face=1;for(let i=0;i<4;i++)Q.swing();
-  out.chopped=Q.row('refuge').phase==='ready';
+  out.chopped=Q.row('refuge').phase==='ready';out.completionCue=/RETURN TO ELSIE/.test(G.sideStoryScene.questBeat?.text);
   // finish: talk, then the gift is a vitality fragment (no healing)
   const actor=G.obstacles.find(o=>o.sideStory==='refuge'&&o.sideStoryRole==='actor');Q.walk(actor.x+20,0);
   BladefallSideStoryWorld.interact(actor);[...document.querySelectorAll('#fieldConversation button')].find(b=>b.textContent===BladefallSideStories.byId.refuge.thanks)?.click();BladefallConversation.close();mode='play';
@@ -36,17 +36,16 @@ try{
   const gear=G.obstacles.find(o=>o.errand==='gear');Q.put(gear.x-40,gear.y);G.p.face=1;
   // strike while the bright tooth is away: nothing; then wait for it
   gear.t=1.2;Q.swing();out.wrongTooth=Q.row('defector').step===0;
-  gear.t=2.38;Q.swing();out.gear=Q.row('defector').step===1;
+  gear.t=2.38;Q.swing();out.gear=Q.row('defector').step===1;out.gearStopped=gear.stopped;out.nextGoal=/WALK SILAS/.test(G.sideStoryScene.questBeat?.text);
+  const canvas=document.createElement('canvas'),c=canvas.getContext('2d'),tips=[];c.fillText=text=>tips.push(text);BladefallQuestErrands.draw(c,gear,BladefallSideStories.byId.defector,Q.row('defector'));out.noStaleToothTip=!tips.includes('Strike the bright tooth');
   const actor=G.obstacles.find(o=>o.sideStory==='defector'&&o.sideStoryRole==='actor');
   // standing still: Silas does not move
   Q.put(10560,0);const x0=actor.x;Q.frames(120);out.waits=Math.abs(actor.x-x0)<1;
   // walk west in short stretches, stopping while an arm is down over him
-  let guard=0,dir=-1;while(Q.row('defector').step===1&&guard++<1500){
-   const arms=G.obstacles.filter(o=>o.errand==='arm');
-   const danger=arms.some(a=>{const d=actor.x-a.x,ph=(a.t||0)%3.2;return d>0&&d<70&&!(ph<1.1);});   // only step under an arm just after it lifts
-   if(danger){Q.frames(6);continue;}
-   if(G.p.x<actor.x-160)dir=1;else if(G.p.x>actor.x-60)dir=-1;
-   const before=G.p.x;Q.frames(6,dir<0?{ArrowLeft:true}:{ArrowRight:true});if(Math.abs(G.p.x-before)<2)dir=-dir;
+  Q.put(actor.x-50,actor.y);let guard=0;
+  while(Q.row('defector').step===1&&guard++<1500){
+   const danger=G.obstacles.filter(o=>o.errand==='arm').some(a=>{const d=actor.x-a.x,ph=(a.t||0)%3.2;return d>0&&d<110&&ph>1.7;});
+   if(danger)Q.frames(3);else Q.frames(3,{ArrowLeft:true});
   }
   out.led=Q.row('defector').step===2&&Math.abs(actor.x-9480)<2;out.ledAt=Math.round(actor.x)+' step '+Q.row('defector').step+' guard '+guard;
   // the key: from Silas to the toll tower hook
@@ -60,13 +59,14 @@ try{
   // any order: the belfry pages first, too slowly, then in time
   const pages=()=>Q.er().filter(o=>o.e==='page');
   for(const p of pages().slice(0,2)){Q.put(p.x,p.y);Q.frames(3);}
-  Q.put(9050,210);Q.frames(60*23);out.windTakesThem=pages().every(p=>!p.gone);
-  for(const p of pages()){Q.put(p.x,p.y);Q.frames(3);}
+  Q.put(9050,210);Q.frames(60*19);out.windTakesThem=pages().every(p=>!p.gone);
+  for(const p of G.obstacles.filter(o=>o.errand==='page')){Q.put(p.x,p.y);Q.frames(3);}
+  out.drifting=G.obstacles.filter(o=>o.errand==='page').some(o=>Math.abs(o.x-o.home[0])>10);
   out.pages=Q.row('archivist').step===1;
   const wall=Q.er().find(o=>o.e==='volume'&&!o.gone);Q.put(wall.x,wall.y);Q.frames(5);out.wall=Q.row('archivist').step===2;
   const m=G.obstacles.find(o=>o.errand==='masonry');Q.put(m.x-45,m.y);G.p.face=1;for(let i=0;i<5;i++)Q.swing();
   const v=Q.er().find(o=>o.e==='volume'&&!o.gone);out.revealed=!!v;if(v){Q.put(v.x,v.y);Q.frames(5);}
-  out.ready=Q.row('archivist').phase==='ready';
+  out.ready=Q.row('archivist').phase==='ready';out.returnCue=/RETURN TO THE ARCHIVIST/.test(G.sideStoryScene.questBeat?.text);
   const view=BladefallSideStories.view(BladefallSideStoryWorld.state(),'archivist');out.oneButton=view.choices.length===1;
   return out;});
  for(const [k,v] of Object.entries(archivist))check('Archivist · '+k,v);

@@ -12,6 +12,38 @@ OUT="$ROOT/netlify-deploy"
 # Every file the running game actually needs (dev-only files like serve.mjs,
 # node_modules and package.json are deliberately left out).
 ASSETS=(
+  bladefall-voice.js
+  audio/voice/woods/refuge.opening.mp3
+  audio/voice/woods/refuge.accept.mp3
+  audio/voice/woods/refuge.firstReturn.mp3
+  audio/voice/woods/refuge.task.moths.mp3
+  audio/voice/woods/refuge.task.lantern.mp3
+  audio/voice/woods/refuge.task.log.mp3
+  audio/voice/ascend/errands.refuge.0.mp3
+  audio/voice/ascend/errands.refuge.1.mp3
+  audio/voice/causeway/defector.opening.mp3
+  audio/voice/causeway/defector.accept.mp3
+  audio/voice/causeway/defector.ready.mp3
+  audio/voice/causeway/defector.task.gear.mp3
+  audio/voice/causeway/defector.task.lead.mp3
+  audio/voice/causeway/defector.task.key.mp3
+  audio/voice/ascend/errands.defector.0.mp3
+  audio/voice/ascend/errands.defector.1.mp3
+  audio/voice/keep/archivist.opening.mp3
+  audio/voice/keep/archivist.accept.mp3
+  audio/voice/keep/archivist.ready.mp3
+  audio/voice/keep/archivist.longEnding.mp3
+  audio/voice/keep/archivist.thanks.mp3
+  audio/voice/keep/archivist.readyLines.1.mp3
+  audio/voice/keep/archivist.readyLines.2.mp3
+  audio/voice/keep/archivist.task.reading.mp3
+  audio/voice/keep/archivist.task.wall.mp3
+  audio/voice/keep/archivist.task.pages.mp3
+  audio/voice/ascend/errands.archivist.0.mp3
+  audio/voice/ascend/errands.archivist.1.mp3
+  audio/voice/woods/refuge.short.mp3
+  audio/voice/causeway/defector.short.mp3
+  audio/voice/keep/archivist.short.mp3
   bladefall-pcore-dev-workshop-room.js
   bladefall-workshop-ascend-coop-core.js
   bladefall-workshop-ascend-play.js

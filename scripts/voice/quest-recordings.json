@@ -1,0 +1,253 @@
+{
+ "scope": "Existing Black Woods, Causeway and Ruined Keep quests only; proposals are unvoiced.",
+ "recordings": [
+  {
+   "id": "woods/refuge.opening",
+   "voice_id": "aAsWcN5jdLdiYG7Hq0YL",
+   "model_id": "eleven_v4",
+   "flow_id": "grv9qD7IuaMd4VSKhgy4",
+   "generation_id": "8zA67iWXg9AtDNG9NtsK",
+   "text": "Mind the step, the end’s rotten. Elsie. You look like you’ve walked a long way. The moths took my lantern. They come for the light every evening, and tonight they took the whole thing, off east through the trees. Could you follow them? They never go far at a time."
+  },
+  {
+   "id": "woods/refuge.accept",
+   "voice_id": "aAsWcN5jdLdiYG7Hq0YL",
+   "model_id": "eleven_v4",
+   "flow_id": "B1huH8T2CJ0AuW1U8LGt",
+   "generation_id": "SfSuqsx1f9aEBaFvqdPN",
+   "text": "Go gently when you catch them. And mind yourself on the way home; take a knock and they’ll have it off you again."
+  },
+  {
+   "id": "woods/refuge.firstReturn",
+   "voice_id": "aAsWcN5jdLdiYG7Hq0YL",
+   "model_id": "eleven_v4",
+   "flow_id": "ngSkILliBglNgvpUNEtK",
+   "generation_id": "KYFihgqdX2JCawphNV2c",
+   "text": "Lost a bit of pantry yesterday. I finished cooking from the doorway. The house isn’t what it was. The lantern first; then the step."
+  },
+  {
+   "id": "woods/refuge.task.moths",
+   "voice_id": "aAsWcN5jdLdiYG7Hq0YL",
+   "model_id": "eleven_v4",
+   "flow_id": "d3Spy8dW6inkn7vc37d2",
+   "generation_id": "AaxBPj5lyeMnJ9TgM2HC",
+   "text": "They’ll rest a moment, then go on as you come close. East, through the trees. They tire eventually."
+  },
+  {
+   "id": "woods/refuge.task.lantern",
+   "voice_id": "aAsWcN5jdLdiYG7Hq0YL",
+   "model_id": "eleven_v4",
+   "flow_id": "DQbD4ZnDgkvlktURgq1d",
+   "generation_id": "YQOD5u0jcv70FR47AlC6",
+   "text": "Bring her home steady. If you take a knock, the moths will have her back."
+  },
+  {
+   "id": "woods/refuge.task.log",
+   "voice_id": "aAsWcN5jdLdiYG7Hq0YL",
+   "model_id": "eleven_v4",
+   "flow_id": "0Uu4vJ1ymmMNXafjOaEs",
+   "generation_id": "cqg7qUKLX72CFOTbDWfI",
+   "text": "That step wants a board. Hale cuts wood down the path; he’ll spare one if you help him split that log of his."
+  },
+  {
+   "id": "ascend/errands.refuge.0",
+   "voice_id": "aAsWcN5jdLdiYG7Hq0YL",
+   "model_id": "eleven_v4",
+   "flow_id": "Tyq3zDIEUuwsGCX1yBT9",
+   "generation_id": "G3fpko9IjSUasqLWKOSI",
+   "text": "The moths took my lantern, off into the trees past the kitchen. They never go far at a time. Could you follow them?"
+  },
+  {
+   "id": "ascend/errands.refuge.1",
+   "voice_id": "aAsWcN5jdLdiYG7Hq0YL",
+   "model_id": "eleven_v4",
+   "flow_id": "vEu9rXzN7wqgp8YAK1tJ",
+   "generation_id": "5Lnkr38puXHH1G77SsPj",
+   "text": "Bring her home steady. If you fall, the moths will have her back."
+  },
+  {
+   "id": "causeway/defector.opening",
+   "voice_id": "PA0fqZPUmpGCrlN6gePh",
+   "model_id": "eleven_v4",
+   "flow_id": "GRBsYHZ1GvAdXsEeA6eY",
+   "generation_id": "O63YZLXJ78ofIFXcaDvm",
+   "text": "Thirty-nine, forty. Good evening. I’m Silas. Forgive me for not stopping; I can’t. The governor above the maintenance lift turns me every forty paces. Ride the lift up and stop it. It has one soft tooth, the bright one. Strike that."
+  },
+  {
+   "id": "causeway/defector.accept",
+   "voice_id": "PA0fqZPUmpGCrlN6gePh",
+   "model_id": "eleven_v4",
+   "flow_id": "BIKekSb8pkU9E8v8eacL",
+   "generation_id": "LpkiSKpJifxFj2iB2y9X",
+   "text": "It comes round every few seconds. Strike anything else and you’ll only bruise your arm. I’ll be here. I’m always here."
+  },
+  {
+   "id": "causeway/defector.ready",
+   "voice_id": "PA0fqZPUmpGCrlN6gePh",
+   "model_id": "eleven_v4",
+   "flow_id": "V0Nm7wLR1r1VBfI9JoWc",
+   "generation_id": "IjbPCGpwHUSf8QfWfPiU",
+   "text": "Forty-one. Forty-two. I’ve lost count. Good."
+  },
+  {
+   "id": "causeway/defector.task.gear",
+   "voice_id": "PA0fqZPUmpGCrlN6gePh",
+   "model_id": "eleven_v4",
+   "flow_id": "zGZVRTcHBBdQ882sZjMw",
+   "generation_id": "pado6776Foq2dmAXL3wo",
+   "text": "Ride the lift up. Strike the bright tooth as it comes round."
+  },
+  {
+   "id": "causeway/defector.task.lead",
+   "voice_id": "PA0fqZPUmpGCrlN6gePh",
+   "model_id": "eleven_v4",
+   "flow_id": "4f8MbnJA3bcVCk9wMaPm",
+   "generation_id": "7pKvxloq1xzhbPhv4737",
+   "text": "I can’t start on my own. If you walk, I’ll walk. If you stop, I’ll stop. Mind the old patrol arms on the road west; they still come down."
+  },
+  {
+   "id": "causeway/defector.task.key",
+   "voice_id": "PA0fqZPUmpGCrlN6gePh",
+   "model_id": "eleven_v4",
+   "flow_id": "Ytt25nCJowkOnUshvwH5",
+   "generation_id": "HxlYNDuEXVBGXhUOSgKm",
+   "text": "Take the key out of my back, would you? Hang it on the hook at the top of the toll tower. Where I can see it, and nobody can wind me."
+  },
+  {
+   "id": "ascend/errands.defector.0",
+   "voice_id": "PA0fqZPUmpGCrlN6gePh",
+   "model_id": "eleven_v4",
+   "flow_id": "IM0nGt5SkAKg05THfYIN",
+   "generation_id": "PJlFDOGtnRF0zC1K913c",
+   "text": "Thirty-nine, forty. The governor at the top of the ladder turns me. Strike its bright tooth; anything else and you only bruise your arm."
+  },
+  {
+   "id": "ascend/errands.defector.1",
+   "voice_id": "PA0fqZPUmpGCrlN6gePh",
+   "model_id": "eleven_v4",
+   "flow_id": "Eme1mdBKb6vZGON2H07L",
+   "generation_id": "aPfBvTDSPtJMUjBHv4lQ",
+   "text": "Take the key from my back, would you? Hang it on the toll hook, at the top of the next climb. Where nobody can wind me."
+  },
+  {
+   "id": "keep/archivist.opening",
+   "voice_id": "mWieNjKKHrWSoIpdPind",
+   "model_id": "eleven_v4",
+   "flow_id": "OFw6jdkzFOGR9uKvplth",
+   "generation_id": "mijNT7WQd25JYsepNKFm",
+   "text": "Forty, forty-one, gap. Three accounts of the night the gate fell, and not one of them on these shelves. One is bricked up in the old reading room. One is on the outer wall, where the steward wrote it. The third is in the belfry, and the wind has had it for years. Will you bring them?"
+  },
+  {
+   "id": "keep/archivist.accept",
+   "voice_id": "mWieNjKKHrWSoIpdPind",
+   "model_id": "eleven_v4",
+   "flow_id": "3gBn9cSVESeln8wgyh9C",
+   "generation_id": "2l47fAdSFFYg4ia7DcIz",
+   "text": "The reading room is west of here, high up past the first stair. They bricked it up after the fire; you’ll have to break in. The wall needs climbing. And the belfry pages blow off the ledges. Lift one and the rest start going."
+  },
+  {
+   "id": "keep/archivist.ready",
+   "voice_id": "mWieNjKKHrWSoIpdPind",
+   "model_id": "eleven_v4",
+   "flow_id": "6uXetZGBwrC4QZFDD9F4",
+   "generation_id": "mvVW3NIkY1NT7OIGsp3j",
+   "text": "The bell-ringer saw the counterweight."
+  },
+  {
+   "id": "keep/archivist.longEnding",
+   "voice_id": "mWieNjKKHrWSoIpdPind",
+   "model_id": "eleven_v4",
+   "flow_id": "Ja3nTm4qf3GxtxWfyRQQ",
+   "generation_id": "RCvydOimSCuXAv62wpF7",
+   "text": "Nine years. I’ll read them once more, outside. Then I think I’ll stop."
+  },
+  {
+   "id": "keep/archivist.thanks",
+   "voice_id": "mWieNjKKHrWSoIpdPind",
+   "model_id": "eleven_v4",
+   "flow_id": "Ojo8Ip9PfTad8IMGDjGv",
+   "generation_id": "zEfvFTqM6DYgGQyD29E8",
+   "text": "I’ll carry the third account. It’s the heaviest argument."
+  },
+  {
+   "id": "keep/archivist.readyLines.1",
+   "voice_id": "mWieNjKKHrWSoIpdPind",
+   "model_id": "eleven_v4",
+   "flow_id": "76B3s3fSRtA1OhqRG6w6",
+   "generation_id": "zL2QnqkTneG0WgV5FTty",
+   "text": "The bell-ringer saw the counterweight. Cut. From the inside."
+  },
+  {
+   "id": "keep/archivist.readyLines.2",
+   "voice_id": "mWieNjKKHrWSoIpdPind",
+   "model_id": "eleven_v4",
+   "flow_id": "kTBxyUFYhxxnjEBBXFUC",
+   "generation_id": "03nsjZFKSB5LpSchW1gr",
+   "text": "Nobody held that gate open, and nobody could have shut it. I’ve been asking the wrong question for nine years. Help me carry these out to the courtyard. I need air."
+  },
+  {
+   "id": "keep/archivist.task.reading",
+   "voice_id": "mWieNjKKHrWSoIpdPind",
+   "model_id": "eleven_v4",
+   "flow_id": "yKcWJyiEAP8a5dh931ya",
+   "generation_id": "tkLkr4JQHT9p5B2sVRP1",
+   "text": "The reading room is west, high up past the first stair. The masonry is cracked. Break through."
+  },
+  {
+   "id": "keep/archivist.task.wall",
+   "voice_id": "mWieNjKKHrWSoIpdPind",
+   "model_id": "eleven_v4",
+   "flow_id": "HQIZwT7B23xMv3yHp10s",
+   "generation_id": "52jvDbUjHDuBI8DqPLmA",
+   "text": "The steward wrote on the outer wall, beyond the belfry. You’ll need to climb it."
+  },
+  {
+   "id": "keep/archivist.task.pages",
+   "voice_id": "mWieNjKKHrWSoIpdPind",
+   "model_id": "eleven_v4",
+   "flow_id": "EkieaZ2Ud1HKB8R0Iq5G",
+   "generation_id": "sCX3ztX7wTXwiCgmg8MR",
+   "text": "The bell-ringer’s pages are on the belfry ledges. Once you lift one, the wind takes the rest. Be quick."
+  },
+  {
+   "id": "ascend/errands.archivist.0",
+   "voice_id": "mWieNjKKHrWSoIpdPind",
+   "model_id": "eleven_v4",
+   "flow_id": "8ZysMSM2p91S5qGh36tu",
+   "generation_id": "6b57pXvFvB0HcalvhCG2",
+   "text": "Three accounts of the night the gate fell: one bricked up in the stacks, one at the top of the gallery, and the bell-ringer’s pages, out in the rain. Bring them?"
+  },
+  {
+   "id": "ascend/errands.archivist.1",
+   "voice_id": "mWieNjKKHrWSoIpdPind",
+   "model_id": "eleven_v4",
+   "flow_id": "glacEL782xx3hReJYRqP",
+   "generation_id": "DHNxMKGtMrZSWWZ6GDda",
+   "text": "The bell-ringer saw the counterweight. Bring them here."
+  },
+  {
+   "id": "woods/refuge.short",
+   "voice_id": "6IwYbsNENZgAB1dtBZDp",
+   "model_id": "eleven_v4",
+   "flow_id": "wPpMorzI1cL1IGQTF36R",
+   "generation_id": "b6ccvT7u83omiOdztcs5",
+   "text": "I’ll bring it back."
+  },
+  {
+   "id": "causeway/defector.short",
+   "voice_id": "6IwYbsNENZgAB1dtBZDp",
+   "model_id": "eleven_v4",
+   "flow_id": "XQvRx17WvQMHxPuTEupp",
+   "generation_id": "P3e1QaqDShKmCgDPFq4Q",
+   "text": "The bright one."
+  },
+  {
+   "id": "keep/archivist.short",
+   "voice_id": "6IwYbsNENZgAB1dtBZDp",
+   "model_id": "eleven_v4",
+   "flow_id": "XZVfGi6oZpqCnfO5NCsz",
+   "generation_id": "yUWGJOn5B4VlR0dZsRAS",
+   "text": "I’ll bring them."
+  }
+ ]
+}

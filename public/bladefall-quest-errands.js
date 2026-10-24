@@ -24,7 +24,7 @@ const STORIES={
  archivist:{stage:5,anyOrder:true,steps:{
   reading:{kind:'chop',at:[3370,360],hits:4,needs:'weapon',reveals:'volume'},
   wall:{kind:'find',at:[15680,900],item:'volume'},
-  pages:{kind:'gather',at:[[11920,180],[12020,240],[12220,300],[12420,360],[12630,260]],seconds:22}}},
+  pages:{kind:'gather',at:[[11890,120],[12090,240],[12290,300],[12500,360],[12700,260]],seconds:18}}},
 };
 const story=()=>typeof G!=='undefined'&&G?.sideStoryScene&&STORIES[G.sideStoryScene.id]&&STORIES[G.sideStoryScene.id].stage===G.stageIndex?STORIES[G.sideStoryScene.id]:null;
 const handles=id=>!!STORIES[id];
@@ -81,13 +81,13 @@ function sync(){
   if(o.errand==='arm')o.gone=!now&&!finished;o.still=finished;
  }
 }
-function finish(taskId){
+function finish(taskId,at){
  const def=story(),q=S().byId[G.sideStoryScene.id],scene=G.sideStoryScene;
  if(def.anyOrder){
   scene.errand.found.add(taskId);const k=kept();k[q.id]={found:[...scene.errand.found]};try{persist();}catch(e){}
   // Steps are counted, not ordered: the next unfinished step in the list is ticked off for each find.
-  const r=row();const next=q.tasks[r.step];if(next)W().completeTask(q.id,next.id);
- }else W().completeTask(q.id,taskId);
+  const r=row();const next=q.tasks[r.step];if(next)W().completeTask(q.id,next.id,at);
+ }else W().completeTask(q.id,taskId,at);
  sync();
 }
 function say(o,text,color){if(typeof addText==='function')addText(o.x,GROUND_Y-o.y-70,text,color||'#f2dfb7',false);}
@@ -105,7 +105,7 @@ function update(dt){
   if(o.errand==='moths'){
    if(o.from){o.fly=Math.min(1,o.fly+dt/0.9);const [x0,y0]=o.from,[x1,y1]=s.perches[o.perch];o.x=x0+(x1-x0)*o.fly;o.y=y0+(y1-y0)*o.fly+Math.sin(o.fly*Math.PI)*90;if(o.fly>=1)o.from=null;continue;}
    const last=o.perch===s.perches.length-1;
-   if(last&&near(p,o.x,o.y,40,50)){say(o,'CAUGHT · CARRY IT HOME','#c4ecd0');finish(o.task);const l=G.obstacles.find(x=>x.sideStory===q.id&&x.errand==='lantern');if(l){l.held=true;e.memo.held='lantern';}continue;}
+   if(last&&near(p,o.x,o.y,40,50)){say(o,'CAUGHT · CARRY IT HOME','#c4ecd0');finish(o.task,o);const l=G.obstacles.find(x=>x.sideStory===q.id&&x.errand==='lantern');if(l){l.held=true;e.memo.held='lantern';}continue;}
    if(!last&&near(p,o.x,o.y,160,150)){o.from=[o.x,o.y];o.perch++;o.fly=0;e.memo.perch=o.perch;}
   }
   if(o.errand==='lantern'||o.errand==='key'){
@@ -120,7 +120,7 @@ function update(dt){
     if(o.errand==='lantern'){o.x=home[0];o.y=home[1];say(p,'THE MOTHS TAKE IT BACK','#c4ecd0');}
     else{const a=G.obstacles.find(x=>x.sideStory===q.id&&x.sideStoryRole==='actor');o.x=a.x;o.y=a.y;say(p,'SILAS CATCHES THE KEY','#d59a68');}
     continue;}
-   const [tx,ty]=s.to;if(near(p,tx,ty,60,50)){o.held=false;e.memo.held=null;o.x=tx;o.y=ty;finish(o.task);say(o,o.errand==='key'?'HUNG ON THE HOOK':'HOME','#ffd781');}
+   const [tx,ty]=s.to;if(near(p,tx,ty,60,50)){o.held=false;e.memo.held=null;o.x=tx;o.y=ty;finish(o.task,o);say(o,o.errand==='key'?'HUNG ON THE HOOK':'HOME','#ffd781');}
   }
   if(o.errand==='log'||o.errand==='masonry'){
    if(newSwing&&near(p,o.x,o.y+20,70,70)){
@@ -128,26 +128,29 @@ function update(dt){
     o.hits++;o.shake=.2;if(typeof SFX!=='undefined'&&meta.soundOn)try{SFX.hit(o.x);}catch(x){}
     if(o.hits>=o.need){o.broken=true;
      if(s.reveals){const v=G.obstacles.find(x=>x.sideStory===q.id&&x.errand==='volume'&&x.task===o.task);if(v){v.hidden=false;v.gone=false;}say(o,'THE READING ROOM','#bca4db');}
-     else{finish(o.task);say(o,'HALE: “That’ll do. Board’s yours.”','#d8c48f');}}
+     else{finish(o.task,o);say(o,'HALE: “That’ll do. Board’s yours.”','#d8c48f');}}
    }
    if(o.shake>0)o.shake-=dt;
   }
-  if(o.errand==='volume'&&!o.hidden&&near(p,o.x,o.y,40,50)){o.gone=true;finish(o.task);say(o,'A VOLUME · '+(3-[...e.found].length)+' TO GO','#bca4db');}
+  if(o.errand==='volume'&&!o.hidden&&near(p,o.x,o.y,40,50)){o.gone=true;finish(o.task,o);say(o,'A VOLUME · '+(3-[...e.found].length)+' TO GO','#bca4db');}
   if(o.errand==='page'){
+   // Deterministic gusts sweep each page along its own belfry ledge.
+   const wind=Math.sin(G.time*1.35+o.n*1.7);o.x=o.home[0]+wind*60;o.y=o.home[1]+Math.sin(G.time*2+o.n)*28;
    if(!o.got&&near(p,o.x,o.y,36,46)){o.got=true;o.gone=true;if(!e.pages)e.pages={t:s.seconds,task:o.task};say(o,'A PAGE','#e6e0d4');
     const left=G.obstacles.filter(x=>x.sideStory===q.id&&x.errand==='page'&&!x.got).length;
-    if(!left){e.pages=null;finish(o.task);say(o,'THE BELL-RINGER’S ACCOUNT','#bca4db');}}
+    if(!left){e.pages=null;finish(o.task,o);say(o,'THE BELL-RINGER’S ACCOUNT','#bca4db');}}
   }
   if(o.errand==='gear'){
+   if(o.stopped)continue;
    o.t=(o.t||0)+dt;const open=o.t%2.4<.75;o.open=open;
    if(newSwing&&near(p,o.x,o.y,75,70)){
     if(!caps().includes('weapon'))say(o,'YOU NEED A BLADE','#e6e0d4');
-    else if(open){finish(o.task);say(o,'THE GOVERNOR STOPS','#d59a68');}
+    else if(open){finish(o.task,o);say(o,'THE GOVERNOR STOPS','#d59a68');}
     else{say(o,'CLANG · WAIT FOR THE BRIGHT TOOTH','#e6e0d4');o.shake=.2;}
    }
    if(o.shake>0)o.shake-=dt;
   }
-  if(o.errand==='arm')o.t=(o.t||0)+dt;
+  if(o.errand==='arm'){o.t=(o.t||0)+dt;o.shake=Math.max(0,(o.shake||0)-dt);}
  }
  if(e.pages){e.pages.t-=dt;if(e.pages.t<=0){e.pages=null;
   for(const o of G.obstacles.filter(o=>o.sideStory===q.id&&o.errand==='page')){o.got=false;o.gone=false;[o.x,o.y]=o.home;}
@@ -161,23 +164,26 @@ function lead(dt,s,scene){
  const moving=Math.abs(p.vx)>40&&Math.abs(p.x-a.x)<380&&Math.abs(p.y-a.y)<220;
  a.openingWalking=moving;
  if(moving){
-  const [tx,ty]=s.path[esc.leg],dx=tx-a.x,step=Math.min(Math.abs(dx),dt*70);a.x+=Math.sign(dx)*step;
+  const [tx,ty]=s.path[esc.leg],dx=tx-a.x,step=Math.min(Math.abs(dx),dt*Math.max(180,Math.abs(p.vx)));a.x+=Math.sign(dx)*step;
   if(ty!==a.y){const [px]=s.path[esc.leg-1];const f=Math.min(1,Math.abs(a.x-px)/Math.max(1,Math.abs(tx-px)));a.y=s.path[esc.leg-1][1]+(ty-s.path[esc.leg-1][1])*f;}
-  if(Math.abs(tx-a.x)<1){a.x=tx;a.y=ty;if(esc.leg<s.path.length-1)esc.leg++;else{esc.finished=true;a.openingWalking=false;finish('lead');say(a,'SILAS: “Warm.”','#d59a68');}}
+  if(Math.abs(tx-a.x)<1){a.x=tx;a.y=ty;if(esc.leg<s.path.length-1)esc.leg++;else{esc.finished=true;a.openingWalking=false;finish('lead',a);say(a,'SILAS: “Warm.”','#d59a68');}}
   a.baseX=a.x;a.baseY=a.y;
  }
  for(const arm of G.obstacles.filter(o=>o.errand==='arm'&&o.sideStory==='defector')){
   const down=((arm.t||0)%3.2)>2.1;arm.down=down;
-  if(down&&Math.abs(a.x-arm.x)<26){
-   const back=arm.x+Math.sign(s.path[0][0]-s.path.at(-1)[0])*130;   // the clear side behind him
-   a.x=a.baseX=back;say(a,'KNOCKED BACK','#e6e0d4');
+  if(!down)arm.struck=false;
+  if(down&&!arm.struck&&Math.abs(a.x-arm.x)<20){
+   arm.struck=true;
+   const back=arm.x+Math.sign(s.path[0][0]-s.path.at(-1)[0])*65;   // the clear side behind him
+   a.x=a.baseX=back;arm.shake=.3;say(a,'PATROL ARM · WAIT FOR IT TO LIFT','#e6e0d4');
   }
  }
 }
 /* ---------------------------------------------------------------- drawing */
 const R=(c,x,y,w,h,col)=>{c.fillStyle=col;c.fillRect(x,y,w,h);};
 function draw(c,o,q,r){
- if(o.sideStoryRole!=='errand'||!handles(q.id))return false;
+ if(!handles(q.id))return false;
+ if(o.sideStoryRole!=='errand')return false;
  if(o.gone&&!(o.errand==='drop'&&o.lit)&&!o.broken)return true;
  const t=(typeof G!=='undefined'&&G.time)||0;c.save();c.translate(Math.round(o.x),Math.round(GROUND_Y-o.y));
  if(o.shake>0)c.translate(Math.sin(t*90)*2,0);
@@ -210,12 +216,12 @@ function draw(c,o,q,r){
  }else if(o.errand==='arm'){
   const k=(o.t||0)%3.2,down=!o.still&&k>2.1,lift=o.still?1:down?0:Math.min(1,k<1.9?1:1-(k-1.9)/.2);
   R(c,-3,-150,6,20,'#4c4a42');c.save();c.translate(0,-130);c.rotate(-lift*1.2);R(c,-4,0,8,120,down?'#d26a4a':'#7b7464');c.restore();
-  if(!o.still&&Math.abs(G.p.x-o.x)<420){c.font='11px system-ui';c.textAlign='center';c.fillStyle='#e6e0d4';c.fillText('patrol arm',0,-158);}
+  if(!o.still&&Math.abs(G.p.x-o.x)<420){c.font='11px system-ui';c.textAlign='center';c.fillStyle='#e6e0d4';c.fillText(down?'WAIT · arm down':k>1.7?'ARM FALLING':'GO · arm raised',0,-158);}
  }
  c.restore();
  // what to do, near the thing
  const p=G.p,s=story()?.steps[o.task];
- if(r.phase==='active'&&Math.abs(p.x-o.x)<200&&Math.abs(p.y-o.y)<170){
+ if(r.phase==='active'&&!o.stopped&&!o.broken&&(STORIES[q.id].anyOrder?!G.sideStoryScene.errand.found.has(o.task):q.tasks[r.step]?.id===o.task)&&Math.abs(p.x-o.x)<200&&Math.abs(p.y-o.y)<170){
   const tip={moths:'Follow the moths',log:'Strike the log',masonry:'Break through',gear:'Strike the bright tooth',lantern:o.held?'':'Take the lantern',key:o.held?'':'Take the key'}[o.errand];
   if(tip){c.font='13px system-ui';c.textAlign='center';c.fillStyle='#f2dfb7';c.fillText(tip,o.x,GROUND_Y-o.y-90);}
  }
@@ -223,5 +229,17 @@ function draw(c,o,q,r){
  if(o.errand==='page'&&e?.pages&&!o.got){c.font='bold 13px system-ui';c.textAlign='center';c.fillStyle='#e6dcc4';c.fillText(Math.ceil(e.pages.t)+'s',o.x,GROUND_Y-o.y-30);}
  return true;
 }
-root.BladefallQuestErrands=Object.freeze({STORIES,handles,install,update,draw,sync});
+function drawBeat(c,q,r){
+ if(!['active','ready'].includes(r.phase))return;
+ const beat=G.sideStoryScene.questBeat,ready=r.phase==='ready';
+ if(!ready&&(!beat||G.time-beat.time>5))return;
+ const actor=G.obstacles.find(o=>o.sideStory===q.id&&o.sideStoryRole==='actor');
+ const dx=(actor?.x||G.p.x)-G.p.x;
+ const text=ready?'✓ DONE · '+(Math.abs(dx)<100?'RETURN TO ':dx<0?'← RETURN TO ':'RETURN TO → ')+q.name.toUpperCase():beat.text;
+ c.save();c.font='bold 15px system-ui';c.textAlign='center';const x=G.p.x,y=GROUND_Y-G.p.y-125,w=c.measureText(text).width+24;
+ c.fillStyle='rgba(14,16,24,.94)';c.fillRect(x-w/2,y-22,w,34);c.fillStyle=q.accent;c.fillText(text,x,y);
+ if(beat&&G.time-beat.time<2){const k=(G.time-beat.time)/2;c.strokeStyle=q.accent;c.lineWidth=3;c.globalAlpha=1-k;c.beginPath();c.arc(beat.x,GROUND_Y-beat.y-20,12+k*70,0,Math.PI*2);c.stroke();}
+ c.restore();
+}
+root.BladefallQuestErrands=Object.freeze({STORIES,handles,install,update,draw,sync,drawStatus:c=>{if(story())drawBeat(c,S().byId[G.sideStoryScene.id],row());}});
 })(typeof globalThis!=='undefined'?globalThis:window);

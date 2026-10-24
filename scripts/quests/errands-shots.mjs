@@ -13,4 +13,6 @@ try{
  await shot('5-silas-arms',()=>{BladefallSideStoryWorld.completeTask('defector','gear');__q.put(10260,0);});
  await shot('6-keep-masonry',()=>{__q.setup(5,'archivist');__q.put(3300,360);});
  await shot('7-keep-pages',()=>{__q.put(12100,240);});
+ await shot('8-elsie-return',()=>{__q.setup(1,'refuge');for(const task of ['moths','lantern','log'])BladefallSideStoryWorld.completeTask('refuge',task);__q.put(2250,0);});
+ await shot('9-archivist-return',()=>{__q.setup(5,'archivist');for(const task of ['reading','wall','pages'])BladefallSideStoryWorld.completeTask('archivist',task);__q.put(12500,360);});
 }finally{console.log('errors',errors.filter(e=>!/register/.test(e)));await close();}

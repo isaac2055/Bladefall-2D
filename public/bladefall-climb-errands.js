@@ -12,19 +12,19 @@
 'use strict';
 const KEY='bladefall.climb.errands.v1';
 const QUESTS={
- refuge:{world:2,
+ refuge:{world:2,doneLine:'Two bowls and a working lamp. That’s supper. Sit before it gets cold.',
   steps:[{kind:'chase',perches:[['cl2-w2-kitchen',.82],['cl2-w2-q-fork',.12],['cl2-w2-q-fork',.38],['cl2-w2-q-fork',.64],['cl2-w2-q-fork',.93]]},
          {kind:'carry',item:'lantern',to:'giver'}],
   lines:['The moths took my lantern, off into the trees past the kitchen. They never go far at a time. Could you follow them?',
          'Bring her home steady. If you fall, the moths will have her back.'],
   hud:['Follow the lantern moths','Bring the lantern to Elsie']},
- defector:{world:3,
+ defector:{world:3,doneLine:'Forty-one. Forty-two. I’ve lost count. Good.',
   steps:[{kind:'tooth',at:['cl3-c3-q-governor',.9]},
          {kind:'carry',item:'key',from:'giver',to:['cl3-c3-chain','top']}],
   lines:['Thirty-nine, forty. The governor at the top of the ladder turns me. Strike its bright tooth; anything else and you only bruise your arm.',
          'Take the key from my back, would you? Hang it on the toll hook, at the top of the next climb. Where nobody can wind me.'],
   hud:['Strike the governor’s bright tooth','Hang the winding key on the toll hook']},
- archivist:{world:6,anyOrder:true,
+ archivist:{world:6,anyOrder:true,doneLine:'The bell-ringer saw the counterweight. Cut. From the inside.',
   steps:[{kind:'break',at:['cl6-k6-q-stack',.5],hits:3},
          {kind:'find',at:['cl6-k6-q-gallery','top']},
          {kind:'gather',at:[['cl6-k6-q-rain',.18],['cl6-k6-q-rain',.38],['cl6-k6-q-rain',.58],['cl6-k6-q-rain',.78],['cl6-k6-q-rain',.95]],seconds:18},
@@ -88,7 +88,7 @@ function tick(c){
     else if(item==='key')ctx.announce('Silas catches the key',140);
     put(q.id,s);return;}
    const to=step.to==='giver'?giverSpot(q):spot(...step.to);
-   if(!away&&at(to,14,18)){ctx.st._errandHeld=null;s.step++;put(q.id,s);ctx.claim(q);ctx.announce(q.id==='defector'?'Hung on the hook':'Handed over',150);}
+   if(!away&&at(to,14,18)){ctx.st._errandHeld=null;s.step++;put(q.id,s);ctx.claim(q);}
   }
  }
  if(step.kind==='tooth'||Q.anyOrder){
@@ -150,7 +150,7 @@ function gear(b,x,y,t,stop,open,flash){
  if(flash){b.fillStyle='rgba(255,255,255,.4)';b.beginPath();b.arc(0,0,8,0,7);b.fill();}b.restore();
 }
 /* What the giver says now, and the HUD line. */
-function line(q,done){if(!handles(q)||done)return null;const s=state(q.id),Q=QUESTS[q.id];return Q.lines[Math.min(Q.lines.length-1,s.step>=(Q.anyOrder?3:1)?1:0)];}
+function line(q,done){if(!handles(q))return null;if(done)return QUESTS[q.id].doneLine;const s=state(q.id),Q=QUESTS[q.id];return Q.lines[Math.min(Q.lines.length-1,s.step>=(Q.anyOrder?3:1)?1:0)];}
 function hud(q){if(!handles(q))return null;const s=state(q.id),Q=QUESTS[q.id];
  if(Q.anyOrder)return s.step>=3?Q.hud[1]:Q.hud[0]+' · '+s.found.length+'/3';return Q.hud[Math.min(Q.hud.length-1,s.step)];}
 /* Its heart comes from handing the thing over, not from the end of the branch. */

@@ -4984,6 +4984,7 @@ function render(main, env){
   drawEchoBody(G);drawCombatEchoAndTrail(G);
   ctx.globalCompositeOperation = 'lighter'; drawParticles(G); ctx.globalCompositeOperation = 'source-over';
   drawTexts(G);
+  legacyDraw(c => window.BladefallQuestErrands?.drawStatus(c), null);
   glow(WX(G.p.x), WY(G.p.y) - 12, 70, '120,200,255', .14);
   ext('overlay');
   ctx.drawImage(vignette(), 0, 0);

@@ -140,7 +140,7 @@ function startWorld(n,room=null,fromStart=false){
  if(room==null)room=Math.max(0,w.chapter.rooms.findIndex(r=>r.id===w.atlasStart));
  room=Math.max(0,Math.min(w.chapter.rooms.length-1,room|0));
  const c=R().chapters.indexOf(w.chapter);if(c<0)return false;
- Object.assign(st,{heard:new Set(),perfectRun:!resumeProgress,roadDeaths:0,deathMark:null,resumeProgress,trialProgress:true,trialSolved:new Set(),walkTrial:false,riftCooldown:60,completionOffered:false,skips:3,dropHint:null,burst:null,sealedSaid:false,branchVia:null,returningCeiling:null,enteredAt:null,portCache:null,nearPort:null,lit:{},world:w,chapter:c,quest:null,cam:null,closed:new Set(),toast:null,slide:null,spoke:new Set(),gone:new Set(),walk:{},trail:[],dispCache:new Map(),frozen:new Map()});
+ Object.assign(st,{heard:new Set(),perfectRun:!resumeProgress,roadDeaths:0,deathMark:null,resumeProgress,trialProgress:true,trialSolved:new Set(),walkTrial:false,riftCooldown:60,completionOffered:false,skips:3,dropHint:null,burst:null,questAward:null,heartHud:null,sealedSaid:false,branchVia:null,returningCeiling:null,enteredAt:null,portCache:null,nearPort:null,lit:{},world:w,chapter:c,quest:null,cam:null,closed:new Set(),toast:null,slide:null,spoke:new Set(),gone:new Set(),walk:{},trail:[],dispCache:new Map(),frozen:new Map()});
  st.api.startChapter(c,room);
  if(w.core){if(fromStart)root.BladefallCoreProgress?.clear(st.view.g.room.def);else if(!st.review&&root.BladefallCoreProgress?.restore(st.view.g)){st.resumeProgress=true;st.perfectRun=false;for(const q of st.view.scarf||[]){q.x=st.view.g.p.x+4;q.y=st.view.g.p.y+3;}}}
  root.BladefallClimbSession?.start();
@@ -818,7 +818,7 @@ function drawEchoSeals(b,g,t){
  for(const ret of d.returns||[]){const q=st.world.quests.find(x=>x.id===ret.from);if(!sealedQuest(q))continue;const e=ret.edge||'up';
   ret.cols.forEach((v,i)=>e==='up'?mark(v,0,i):mark(e==='left'?0:rm.cols-1,v,i));}
 }
-function grant(q){if(!q||!q.keepsake||!grantKeepsake(q.keepsake.id))return;root.BladefallPlaytest?.collectHeart(q.id);announce(`♥ Heart · ${q.title||'an errand'}`,240);}
+function grant(q){if(!q||!q.keepsake||!grantKeepsake(q.keepsake.id))return;root.BladefallPlaytest?.collectHeart(q.id);if(st){const g=st.view.g;st.burst={x:g.p.x+4,y:uprightY(g),t:30,col:'#ff9fc8',room:g.room.id};st.questAward={frame:g.frame,title:q.title};st.heartHud=null;root.BladefallSfx?.play?.('quest');}announce(`♥ Heart · ${q.title||'an errand'}`,240);}
 function openFracturedPortal(){
  if(!st||st.world.n>20)return;const g=st.view.g,to=st.world.n+20;
  if(fracturedOpen(to))root.BladefallPlaytest?.unlock('survival',to);save.riftPortals=save.riftPortals||{};
@@ -1483,6 +1483,9 @@ PV.hud=function(ctx,ox,oy,scale,g,view){
   if(!txt)continue;const tw=ctx.measureText(txt).width+fs*1.2,x0=ox+W0*scale-8;
   ctx.fillStyle='rgba(14,16,24,.75)';ctx.fillRect(x0-tw,y0,tw,fs*1.6);ctx.fillStyle='#e9c47a';ctx.fillText(txt,x0-tw+fs*.6,y0+fs*.3);y0+=fs*1.9;
  }
+ if(!st.heartHud||g.frame%60===0)st.heartHud=heartTotals();
+ ctx.save();ctx.textAlign='right';ctx.fillStyle='#ff9fc8';ctx.fillText('♥ '+st.heartHud.got,ox+(W0-22)*scale,oy+4*scale);ctx.restore();
+ if(st.questAward){const age=(g.frame-st.questAward.frame)/60;if(age<3){const u=Math.min(1,Math.max(0,(age-.6)/1)),e=1-Math.pow(1-u,3),x=ox+W0*scale*(.5+.4*e),y=oy+scale*(50-42*e);ctx.save();ctx.textAlign='center';ctx.fillStyle='#ff9fc8';ctx.font=`bold ${Math.round(fs*(3-1.5*e))}px system-ui`;ctx.fillText('♥',x,y);ctx.font=`${fs}px monospace`;if(age>1.6){ctx.textAlign='right';ctx.fillText('HEART EARNED',ox+W0*scale-8,y+fs*2);}ctx.restore();}else st.questAward=null;}
  if(st.toast){const a=Math.min(1,st.toast.t/30,(st.toast.max-st.toast.t+1)/12);ctx.globalAlpha=a;const tw=ctx.measureText(st.toast.text).width+fs*1.4,x=ox+(W0*scale-tw)/2,y=oy+Math.round(scale*28);
   ctx.fillStyle='rgba(14,16,24,.85)';ctx.fillRect(x,y,tw,fs*1.7);ctx.fillStyle='#ffd98a';ctx.fillText(st.toast.text,x+fs*.7,y+fs*.35);ctx.globalAlpha=1;}
 };

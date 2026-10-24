@@ -22,7 +22,7 @@ try{
   // dying drops it: the moths have it again at their last perch
   out.preKill=JSON.stringify({held:st()._errandHeld,s:E.state('refuge'),E:st()._errand,room:st().view.g.room.id,deaths:st().view.g.deaths});window.BladefallPrecisionCore.kill(st().view.g,st().view.g.p,'test');V.advance(Array(90).fill(''));out.postKill=JSON.stringify({held:st()._errandHeld,s:E.state('refuge'),E:st()._errand,deaths:st().view.g.deaths});out.elsieDropped=E.state('refuge').step===0;
   at(2,W[0].at(-1));V.advance(['','']);
-  at(2,W[1]);V.advance(['','']);out.elsieHome=E.state('refuge').step===2;
+  at(2,W[1]);V.advance(['','']);out.elsieHome=E.state('refuge').step===2;out.elsieAward=!!st().questAward;out.elsieHeart=done(q);
   // ---- Silas
   q=meet(3,'defector');go(3,q.from);V.advance(['']);W=E.where('defector');
   const gear=W[0];at(3,gear);const g=st().view.g;
@@ -35,7 +35,7 @@ try{
   out.silasDetail=JSON.stringify({gear,px:st().view.g.p.x,room:st().view.g.room.id,frame:st().view.g.frame%144});
   const giver=E.where('defector')[1];
   at(3,{room:q.from,x:PV.climb.defOf(q.from).people.find(p=>p.quest==='defector').c*8+4,y:PV.climb.defOf(q.from).people.find(p=>p.quest==='defector').r*8+2});V.advance(['','']);
-  at(3,giver);V.advance(['','']);out.silasHung=E.state('defector').step===2;
+  at(3,giver);V.advance(['','']);out.silasHung=E.state('defector').step===2;out.silasAward=!!st().questAward;out.silasHeart=done(q);
   // ---- Archivist
   q=meet(6,'archivist');go(6,q.from);V.advance(['']);W=E.where('archivist');
   for(const sp of W[2].slice(0,2)){at(6,sp);}
@@ -45,8 +45,9 @@ try{
   at(6,W[0]);const g6=st().view.g;for(let k=0;k<4;k++){g6.p.facing=1;g6.p.x=W[0].x-10;V.advance(['s',...Array(40).fill('')]);}
   out.stacksDetail=JSON.stringify({sp:W[0],hits:st()._errand.hits,s:E.state('archivist'),room:st().view.g.room.id,px:st().view.g.p.x,py:st().view.g.p.y});
   at(6,W[0]);out.stacks=E.state('archivist').found.length===3;
-  at(6,W[3]);V.advance(['','']);out.archivistDone=E.state('archivist').step===4;
+  at(6,W[3]);V.advance(['','']);out.archivistDone=E.state('archivist').step===4;out.archivistAward=!!st().questAward;out.archivistHeart=done(q);
   return out;});
+ await page.screenshot({path:'.cache/quest-shots/climb-5-heart-earned.png'});
  for(const [k,v] of Object.entries(res))if(typeof v==='boolean')check(k,v);else console.log(k,v);
  check('no page errors',!errors.filter(e=>!/register/.test(e)).length,errors.join(' | '));
 }finally{await close();}
