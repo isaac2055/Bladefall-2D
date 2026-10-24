@@ -1750,7 +1750,7 @@ function drawStory(c, o, q, r, scene){
     if(o.sideStoryRole === 'actor'){
       if(opening) extra.sit = good && !o.openingWalking;   // turned away, not sat down, when you were cruel
       else extra.sit = (bad && q.id === 'garden') || (good && SEATED.includes(q.id) && !(q.id === 'defector' && !scene.escort?.finished));
-      if(q.id === 'recruit') extra.helmet = r.step >= 1 && !(scene && scene.escort && scene.escort.helmetDropped);
+      if(q.id === 'recruit') extra.helmet = scene?.round2 ? r.step === 1 && !!scene.round2.returned : r.step >= 1 && !(scene && scene.escort && scene.escort.helmetDropped);
       if(q.id === 'miner') extra.caged = r.step === 0;
     } else {
       extra.sit = !!o.seated;

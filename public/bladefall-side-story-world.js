@@ -462,7 +462,7 @@ function draw(c,o){
  }
  c.restore();
 }
-function journal(){return S.journal(state()).map(q=>({id:'side:'+q.id,title:q.title,accent:S.byId[q.id].accent,status:q.status,step:S.row(state(),q.id).step,total:S.byId[q.id].tasks.length,objective:{label:q.objective},rewardValue:q.reward,claimed:q.claimed,sideStory:true}));}
+function journal(){return S.journal(state()).map(q=>({id:'side:'+q.id,title:q.title,accent:S.byId[q.id].accent,status:q.status,step:S.row(state(),q.id).step,total:S.byId[q.id].tasks.length,objective:{label:q.status==='active'&&G.sideStoryScene?.round2&&G.sideStoryScene.id===q.id?root.BladefallRound2Explore.objective(G.sideStoryScene,S.row(state(),q.id)).text:q.objective},rewardValue:q.reward,claimed:q.claimed,sideStory:true}));}
 /* (7.375) A step done out in the world (bladefall-quest-errands.js). */
 function completeTask(id,task,at){const o=G.obstacles.find(o=>o.sideStory===id&&o.sideStoryRole==='errand'&&o.task===task)||{sideStory:id,task,x:G.p.x,y:G.p.y,accent:S.byId[id].accent};
  const result=commit(id,{type:'task',task,capabilities:capabilities()});if(result.changed){apply();const next=S.row(state(),id);

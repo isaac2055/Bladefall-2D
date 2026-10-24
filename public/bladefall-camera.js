@@ -142,7 +142,10 @@
     }
 
     applySettings(settings);
-    return Object.freeze({ update, shakeOffset, reset, sync, applySettings, diagnostics });
+    // Rest rebuilds the world, not the player's chosen framing.
+    function capture(){return {x,y,lookAhead,fallLook,anchorBias,framing,updates,last};}
+    function restore(state){if(!state)return;({x,y,lookAhead,fallLook,anchorBias,framing,updates,last}=state);}
+    return Object.freeze({ update, shakeOffset, reset, sync, applySettings, diagnostics, capture, restore });
   }
 
   root.BladefallCamera = Object.freeze({

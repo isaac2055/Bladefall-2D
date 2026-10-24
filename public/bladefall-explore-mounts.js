@@ -47,7 +47,7 @@ const MOUNTS={
   verb:'↑  RIDE THE CHAIN',go:'Ride the chain to',
   intro:'Silas ran the old maintenance chain from the camp to the causeway’s far end. “It counts its own links now. Hold on and it will take you.”'},
  3:{id:'kite',name:'The Cartographer’s Kite',story:'cartographer',accent:'#9fe0ff',kind:'flight',art:'kite',seat:-70,cruise:420,speed:1250,
-  roosts:[{id:'far',near:'end',label:'the canyon’s end'},{id:'mouth',near:'actor',off:60,label:'the outdoor desk'}],
+  roosts:[{id:'far',near:'end',label:'the canyon’s end'},{id:'mouth',near:8100,label:'the canyon landing'}],
   verb:'↑  TAKE THE KITE',go:'Kite to',
   intro:'The Cartographer’s survey kite, its frame mended and the spar re-strung. On this wind it will carry a knight the length of the canyon.'},
  // 7.347: each of these rides its own way (Isaac: a line like the Causeway's, a drake like the Bellwing's, doors

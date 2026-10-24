@@ -19,6 +19,7 @@ Read this first. Then read the newest entries at the top of `01-CURRENT-STATE.md
 - **Server:** `server/playtest-service.mjs` and `cloudflare/worker.js` (a Durable Object with SQLite). Deploy it with `npm run deploy:api`; this needs Isaac's OK. Public feedback is read at `/api/playtest?feedback=1`.
 
 ## Quests
+Read `VOICE-POLICY.md`: voice work requires separate, explicit authorization and comes last.
 See `QUESTS-HANDOFF.md` (how the reworked quests are built, six fixes owed, and the proposal for the next ones).
 
 ## Shipping a change (standing authorization: commit and push to main after checks; never Netlify; never force-push)

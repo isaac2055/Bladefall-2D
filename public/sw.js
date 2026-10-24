@@ -1,10 +1,10 @@
 /* Bladefall service worker — offline play + fast reloads once installed.
    Bump CACHE_NAME on a deploy where you want returning players to pick up
    the change immediately instead of waiting on the network-first refresh. */
-const CACHE_NAME = 'bladefall-v551-five-paired-quests';
+const CACHE_NAME = 'bladefall-v552-explore-quest-playtest';
 const CORE_ASSETS = [
   './bladefall-quest-round2-stories.js?v=7.378.0',
-  './bladefall-quest-round2.js?v=7.378.0',
+  './bladefall-quest-round2.js?v=7.379.0',
   './bladefall-climb-round2.js?v=7.378.0',
   './audio/voice/updrafts/round2.cartographer.opening.mp3?v=e6fc59f9',
   './audio/voice/updrafts/round2.cartographer.accept.mp3?v=fa6d9890',
@@ -192,9 +192,9 @@ const CORE_ASSETS = [
   './bladefall-conversation.js?v=7.360.0',
   './bladefall-side-stories.js?v=7.378.0',
   './bladefall-opening-stories.js?v=7.234.0',
-  './bladefall-side-story-world.js?v=7.378.0',
+  './bladefall-side-story-world.js?v=7.379.0',
   './bladefall-quest-errands.js?v=7.378.0',
-  './bladefall-explore-mounts.js?v=7.378.0',
+  './bladefall-explore-mounts.js?v=7.379.0',
   './bladefall-merge-road.js?v=7.334.0',
   './bladefall-journey.js?v=7.234.0',
   './bladefall-act-two.js?v=7.341.0',
@@ -455,7 +455,7 @@ const CORE_ASSETS = [
   './bladefall-cloaked-man-art.js?v=7.304.0',
   './bladefall-causeway-story.js?v=7.375.0',
   './bladefall-early-platforming.js?v=7.248.0',
-  './bladefall-resident-art.js?v=7.373.0',
+  './bladefall-resident-art.js?v=7.379.0',
   './bladefall-portraits.js?v=7.361.0',
   './bladefall-advancement.js',
   './bladefall-zones.js?v=7.220.0',
@@ -476,7 +476,7 @@ const CORE_ASSETS = [
   './bladefall-multiplayer.js',
   './bladefall-coop-journey.js?v=7.248.0',
   './bladefall-audio.js',
-  './bladefall-camera.js?v=7.212.0',
+  './bladefall-camera.js?v=7.379.0',
   './bladefall-release.js',
   './bladefall-blood.js?v=7.181.0',
   './bladefall-inventory.js',

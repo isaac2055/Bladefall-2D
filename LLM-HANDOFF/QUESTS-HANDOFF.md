@@ -1,3 +1,5 @@
+> Current voice rule: read [VOICE-POLICY.md](VOICE-POLICY.md). Quest implementation approval does not authorize dialogue or recordings.
+
 # Quests handoff (written at 7.376.0, 2026-10-23)
 
 Read `00-START-HERE.md` first, then this. The code wins over any document. Owner is Isaac (they/them).

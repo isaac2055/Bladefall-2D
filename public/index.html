@@ -370,10 +370,10 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-quest-round2-stories.js?v=7.378.0"></script>
 <script src="bladefall-side-stories.js?v=7.378.0"></script>
 <script src="bladefall-opening-stories.js?v=7.234.0"></script>
-<script src="bladefall-side-story-world.js?v=7.378.0"></script>
-<script src="bladefall-quest-round2.js?v=7.378.0"></script>
+<script src="bladefall-side-story-world.js?v=7.379.0"></script>
+<script src="bladefall-quest-round2.js?v=7.379.0"></script>
 <script src="bladefall-quest-errands.js?v=7.378.0"></script>
-<script src="bladefall-explore-mounts.js?v=7.378.0"></script>
+<script src="bladefall-explore-mounts.js?v=7.379.0"></script>
 <script src="bladefall-merge-road.js?v=7.334.0"></script>
 <script src="bladefall-zones.js?v=7.220.0"></script>
 <script src="bladefall-zone-state.js"></script>
@@ -394,7 +394,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-multiplayer.js"></script>
 <script src="bladefall-coop-journey.js?v=7.248.0"></script>
 <script src="bladefall-audio.js"></script>
-<script src="bladefall-camera.js?v=7.212.0"></script>
+<script src="bladefall-camera.js?v=7.379.0"></script>
 <script src="bladefall-release.js"></script>
 <script src="bladefall-blood.js?v=7.181.0"></script>
 <script src="bladefall-inventory.js"></script>
@@ -464,7 +464,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
 <script src="bladefall-explore-finale.js?v=7.350.0"></script>
 <script src="bladefall-causeway-story.js?v=7.375.0"></script>
 <script src="bladefall-early-platforming.js?v=7.248.0"></script>
-<script src="bladefall-resident-art.js?v=7.373.0"></script>
+<script src="bladefall-resident-art.js?v=7.379.0"></script>
 <script src="bladefall-portraits.js?v=7.361.0"></script>
 <script src="littlejs.min.js"></script>
 <script>
@@ -473,7 +473,7 @@ window.addEventListener('error',e=>{window.__errs.push((e.message||'')+' @ '+(e.
    BLADEFALL v5.1.0 — Step 2: Full Playable Game
    ECS architecture on LittleJS engine.
    ================================================================ */
-const VERSION='7.378.0';globalThis.BLADEFALL_VERSION=VERSION;
+const VERSION='7.379.0';globalThis.BLADEFALL_VERSION=VERSION;
 /* The last stage converted to the v4 rules: pixel renderer, no bag, no loot
    drops, no instructional banners, no boss move-name shouts. Raise this by one
    as each later region gets its authored pass. */
@@ -11395,6 +11395,7 @@ function nearCurrentRestSite(){
 function restAtNearbySite(){
   const marker=nearCurrentRestSite();if(!marker)return false;
   if(G.coopSession){toast('The rest site waits until you travel alone.');return true;}
+  const restView={x:G.cam,y:G.camY,frac:G.camFrac,banner:G.stageBanner,camera:BFCamera.capture()};
   captureCurrentZonePersistence();
   const visited=Object.keys(meta.zoneState.zones||{});
   const receipt=BFRecoveryModule.rest(meta.recovery,marker.siteId,visited);
@@ -11407,6 +11408,7 @@ function restAtNearbySite(){
   const site=G.zoneRestSite;G.p.x=site.x;G.p.y=site.y;G.p.vx=0;G.p.vy=0;restoreBlood(G.p,Infinity);G.p.dead=false;G.p.invuln=1;
   for(const toolId of equipmentState().ownedTools)meta.equipment=BFEquipmentEconomyModule.refillTool(meta.equipment,toolId).state;
   activateRuntimeCheckpoint(`${site.siteId}:rest`,{x:site.x,y:site.y},'rest',site.siteId,true);
+  G.cam=restView.x;G.camY=restView.y;G.camFrac=restView.frac;G.stageBanner=restView.banner;BFCamera.restore(restView.camera);
   persist();hudUpdate();showStationNotice(BFDialogueModule.text('ui.rest',{name:site.name}));
   if(meta.soundOn)SFX.pickup();return true;
 }
@@ -11477,6 +11479,7 @@ function loadStage(i){
     normalizeMarksmanAttemptAfterHydration();
     restorePlayerCheckpointFlag();
     sanitizeJourneyLoot();
+    window.BladefallRound2Explore?.restorePreviewWorld();
     BladefallSideStoryWorld.install();
     window.BladefallMounts?.install();   // 7.343: quest mounts (the Outskirts' Bellwing)
     window.BladefallEarlyPlatforming?.install();
@@ -14887,7 +14890,7 @@ function applyCrit(e,w,dmg){
 }
 /* Damage-over-time that skips knockback/flash/combo — just the slow bleed. */
 function dotDamage(e,amt,color){
-  if(e.dead||amt<=0)return;
+  if(e.dead||amt<=0||window.BladefallRound2Explore?.protectedEnemy(e))return;
   if(e.courtFinal&&!e.courtFinal.ruptured&&!(e.exposeT>0))return;
   amt=courtFinalDamage(e,amt);
   if(e.whiteCourtFight&&e.courtBreaks<3)amt=Math.min(amt,Math.max(0,e.hp-e.maxHp*(e.courtBreaks===1?.66:.32)));
@@ -14909,6 +14912,7 @@ function bossDeflect(e){
 }
 function hitEnemy(e,dmg,dir,kb,ls,el,src){
   if(e.dead)return;
+  if(window.BladefallRound2Explore?.protectedEnemy(e)){bossDeflect(e);return;}
   if(e.echoDuel&&echoDuelHit(e,src))return;
   if(e.sentinelVigil&&!e.vigilChallenge)return;
   // THE RIGHT HAND IS NOT WORN DOWN. Steel does nothing while he is standing — he is
@@ -15037,7 +15041,7 @@ function hitEnemy(e,dmg,dir,kb,ls,el,src){
   }
 }
 function killEnemy(e,coopOpts){
-  if(e.dead)return;
+  if(e.dead||window.BladefallRound2Explore?.protectedEnemy(e))return;
   if(G.stageIndex===13&&!G.bossRush&&e.echoFight&&!e.kingRecallDone){if(!e.kingRecall)startKingRecallFinale(e);return;}
   if(G.stageIndex===12&&!G.bossRush&&e.paradoxFight&&!e.echoDuelDone){if(!e.echoDuel)startTyrantEchoDuel(e);return;}
   coopOpts=coopOpts||{};
@@ -16031,6 +16035,7 @@ function updateForestEncounter(e,target,dt,eff){
    player; mantlet guards preserve a facing shield and force a deliberate flank. */
 function updateMarksmanRoadEnemy(e,target,dt,eff){
   if(G.stageIndex!==4||!e.marksmanRole)return false;
+  target=window.BladefallRound2Explore?.aimTarget(e)||target;
   const dx=target.x-e.x,dist=Math.abs(dx),dir=Math.sign(dx)||e.face||1;
   const sees=dist<(e.noticeRange||980)&&BFAISystem.lineOfSight(e,target);
   e.watchCooldown=Math.max(0,(e.watchCooldown||0)-dt);
@@ -20163,6 +20168,7 @@ function bossArena(e){
   }
 }
 function marksmanArrowCoverHit(pr,fromX,fromY){
+  if(window.BladefallRound2Explore?.catchShot(pr,fromX,fromY))return true;
   if(!G||G.stageIndex!==4||pr.life<=0||!['archer','watchSniper'].includes(pr.sourceType))return false;
   const dx=pr.x-fromX,dy=pr.y-fromY,pad=pr.size||0;let first=null,firstT=Infinity;
   for(const o of G.obstacles){
@@ -24800,7 +24806,7 @@ function titleScreen(){
       <button class="bigbtn ghost" id="sndBtn" style="flex:1;">Sound: ${meta.soundOn?'On 🔊':'Off 🔇'}</button>
       <button class="bigbtn ghost" id="settingsBtn" style="flex:1;">⚙ Controls</button>
     </div>
-    <a class="bigbtn ghost" id="apkBtn" href="https://github.com/isaac2055/Bladefall-2D/releases/download/v7.378.0/Bladefall-7.378.0.apk" style="display:block;text-align:center;box-sizing:border-box;text-decoration:none" download>Download APK</a>
+    <a class="bigbtn ghost" id="apkBtn" href="https://github.com/isaac2055/Bladefall-2D/releases/download/v7.379.0/Bladefall-7.379.0.apk" style="display:block;text-align:center;box-sizing:border-box;text-decoration:none" download>Download APK</a>
     <p class="hint">v${VERSION}</p></div>`);
   if(canContinue)document.getElementById('contBtn').onclick=()=>{if(continueSurvive)location.href='precision.html?pitch=climb&resume=1&mode='+(lastPlayed.mode==='review'?'review':'play');else continueRun();};
   document.getElementById('newBtn').onclick=openExploreMenu;
@@ -24911,7 +24917,7 @@ function openLevelSelect(){
     <button class="bigbtn ghost" id="lvlBack">Back</button></div>`);
   document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{
     /* Five quick taps on Base or Fractured: Explore's test mode, on or off (kept on this device). It opens every
-       quest shortcut in level-select runs (bladefall-explore-mounts.js) and shows the tester's tools: ▶ Watch and
+       quest shortcut in level-select runs (bladefall-explore-mounts.js?v=7.379.0) and shows the tester's tools: ▶ Watch and
        ● Record, the Quest shortcuts gallery, and Edit this level in the pause menu. A copy sent out for feedback
        shows none of them until then (owner, 7.349). */
     if(window.BladefallMounts?.setTestMode){const now=Date.now();lvlBaseTaps=lvlBaseTaps.filter(x=>now-x<3000);lvlBaseTaps.push(now);
@@ -24931,6 +24937,7 @@ function openLevelSelect(){
     go();
   });
   document.getElementById('lvlBack').onclick=openExploreMenu;
+  addExploreQuestButtons();
   if(window.BladefallMounts?.testMode())addExploreWatchButtons(t);   // a tester's tool (test mode)
   // Wheel/touch scrolling of #lvlList is handled by the delegated scroll handler
   // in the head (it finds the nearest overflow container under the pointer).
@@ -24970,6 +24977,17 @@ function openShortcutGallery(){
    ● Record plays the level yourself under the watch's rules and saves the run as its route; on a route that
    stops at a boss (or that you saved partway) it first replays the route, then hands you the controls there.
    Export recordings downloads them; npm run explore-routes -- <file> adds them to the game. */
+function addExploreQuestButtons(){
+ const list=document.getElementById('lvlList');if(!list)return;
+ for(const b of [...list.querySelectorAll('.lvlbtn[data-i]')]){
+  const stage=+b.dataset.i,q=window.BladefallSideStories?.records.find(q=>q.stage===stage);
+  if(b.disabled||!window.BladefallRound2Explore?.handles(q?.id))continue;
+  const row=document.createElement('div');row.style.cssText='display:flex;gap:6px;flex-wrap:wrap;';b.replaceWith(row);row.append(b);b.style.flex='1';b.style.minWidth='150px';
+  const button=document.createElement('button');button.className='choice lvlquest';button.dataset.quest=q.id;button.textContent='Optional quest';button.style.cssText='width:auto;flex:0 0 auto;padding:8px;font-size:12px;';
+  button.title='Start beside '+q.name+' with the regional quest tools, using normal movement';button.onclick=()=>{beginRun(0,null,{hp:1,dmg:1},{startStage:stage,levelSelect:true});window.BladefallRound2Explore.prepareStart(q.id);};row.append(button);
+ }
+}
+
 function addExploreWatchButtons(tab){
   const list=document.getElementById('lvlList');if(!list||!exploreRoutes())return;
   const small='flex:0 0 auto;width:auto;margin:0;padding:6px 10px;font-size:12px;';
@@ -25831,7 +25849,7 @@ function runRecoveryPoint(run){
 }
 function savedRunSession(source){
  const levelSelectMode=!!source.levelSelectMode;
- return {levelSelectMode,vesperEncounter:!!source.vesperEncounter,vesperFromEcho:!!source.vesperFromEcho,vesperMergeReady:!!source.vesperMergeReady,finalEchoChoice:source.finalEchoChoice||null,
+ return {levelSelectMode,questPreview:levelSelectMode?source.questPreview||null:null,vesperEncounter:!!source.vesperEncounter,vesperFromEcho:!!source.vesperFromEcho,vesperMergeReady:!!source.vesperMergeReady,finalEchoChoice:source.finalEchoChoice||null,
   sessionJourney:levelSelectMode&&source.sessionJourney?JSON.parse(JSON.stringify(source.sessionJourney)):null,
   checkpointCharge:Math.max(0,Math.min(FLAG_MAX,source.checkpointCharge|0)),
   placedCheckpoint:source.placedCheckpoint&&Number.isFinite(source.placedCheckpoint.x)&&Number.isFinite(source.placedCheckpoint.y)?{stage:source.placedCheckpoint.stage,x:source.placedCheckpoint.x,y:source.placedCheckpoint.y,encounter:source.placedCheckpoint.encounter||null}:null,
@@ -25843,7 +25861,7 @@ function savedRunSession(source){
      lost every session clear (and the Deep Line's west gate refused again), and a resumed
      westbound ride reloaded the FORWARD line under the player. */
   sessionClearedZones:Array.isArray(source.sessionClearedZones)?source.sessionClearedZones.map(String):[],
-  // Where each region's quest mount is perched, and which home roosts were reached (bladefall-explore-mounts.js).
+  // Where each region's quest mount is perched, and which home roosts were reached (bladefall-explore-mounts.js?v=7.379.0).
   sessionMounts:levelSelectMode&&source.sessionMounts?JSON.parse(JSON.stringify(source.sessionMounts)):null,
   deepLineReturn:!!source.deepLineReturn};
 }
@@ -26505,7 +26523,7 @@ Object.assign(window.__BF,{tas:BFTAS,
 /* PWA: offline play + "Add to Home Screen" installability. Needs real HTTPS
    (or localhost) to register — silently no-ops over plain http/file. */
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.378.0').catch(()=>{});});
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js?v=7.379.0').catch(()=>{});});
 }
 
 /* Portrait rotate-hint: dismissible for the rest of the session. */
