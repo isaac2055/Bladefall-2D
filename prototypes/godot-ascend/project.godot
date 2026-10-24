@@ -1,0 +1,15 @@
+; Isolated Ascend prototype. No engine physics bodies: simulation owns collision.
+config_version=5
+[application]
+config/name="Bladefall · Ascend in Godot"
+run/main_scene="res://main.tscn"
+[display]
+window/size/viewport_width=1024
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+[physics]
+common/physics_ticks_per_second=60
+[rendering]
+renderer/rendering_method="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=false
+textures/canvas_textures/default_texture_filter=0

@@ -1,3 +1,10 @@
+## Godot Ascend prototype — isolated branch, no web release (2026-10-24, Codex)
+
+- Isaac approved a small Ascend world 1 prototype on `codex/godot-ascend-prototype`; Explore comes later. See `GODOT-ASCEND-PROTOTYPE.md` and `prototypes/godot-ascend/README.md`.
+- Native 60 Hz GDScript movement and collision, native authored-map loader, world 1 devices, TileMapLayer terrain, pixel art and real point/ambient lighting. Local launcher and self-contained macOS app are available. No browser runtime inside Godot.
+- Browser/native state agrees across 18 recorded routes plus 29 varied-input probes (14,221 frames). Fourteen room transfers match. Application integration checks real keyboard input, all 29 room loads, main-road Watch completion without death, and takeover.
+- This is a comparison prototype, with campaign systems and branch-unlock routing intentionally outside scope. No shipping web files, recordings or dialogue were changed; no deployment or voice generation. Keep it on its branch for Isaac to inspect.
+
 ## 7.379.0: five Explore quests revised for normal play; no dialogue or voice work (2026-10-24, Codex)
 
 - **Scope and approval correction:** Isaac's feedback applies only to the five Explore quests introduced in 7.378.0. All character dialogue, recordings, voice catalog and Ascend quest code are unchanged. The earlier recordings were premature: approval to implement quests did not authorize voice generation. `VOICE-POLICY.md` now records the standing rule: preserve/reuse recordings, no dialogue edits during this revision, and voice work comes LAST with separate explicit authorization after playable approval. No ElevenLabs generation was called in this revision.
