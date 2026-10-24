@@ -315,13 +315,14 @@ function atlasMap(){
  let current=active?{world:st.world.n,room:view.g.room.id}:cp?{world:cp.world,room:cp.room}:null;
  if(tr){const g=view.g,s=g.room.def.atlasSockets||[],A=s.find(p=>p.world===tr.a),B=s.find(p=>p.world===tr.b),pa=A?.plane??(A?.edge==='left'?0:g.room.w),pb=B?.plane??(B?.edge==='left'?0:g.room.w);current={world:st.world.n,room:g.room.id,link:tr.link,t:Math.max(0,Math.min(1,(g.p.x+g.p.w/2-pa)/((pb-pa)||1)))};}
  const mapControls=physicalMap?`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin:10px 0">${CL().worlds.filter(w=>!w.core&&(w.n<=40||root.BladefallClimbFinale?.open())).map(w=>`<button class="pcBtn ghost" style="padding:7px;font-size:11px" data-map-region="${w.n}">${w.n} · ${w.name}</button>`).join('')}</div><button class="pcBtn ghost" id="clMapAll">Whole map</button>`:'';
- st.api.showOverlay(`<div class="pcCard" style="max-width:900px"><h1>The Emerald Ascent</h1><p class="pcSub">${active?st.world.name:cp?'Continue from '+CL().world(cp.world).name:'Begin in the Outskirts. Open roads weave the climb together.'}</p>${schematic?'<div id="clEmerald"></div>':physicalMap||`<svg viewBox="0 0 320 405" style="width:100%;max-height:55vh" role="img" aria-label="Nine regions in the inner braided ascent. Solid roads are open; dotted roads are sealed.">${paths}${nodes}<text x="160" y="14" text-anchor="middle" fill="#929aaa" font-size="9">The upper crown · future journey</text></svg>`}${schematic?'':mapControls}${schematic?'':`<p class="pcSub">${physicalMap?'Gold dot: you · Solid roads: open · Dotted roads: sealed. Select a region to zoom.':'Solid: open roads · Dotted: sealed passages'}</p>`}${root.BladefallClimbMap&&CL().geography&&!schematic?`<button class="pcBtn ghost" id="clLayout">Show the Emerald Ascent map</button>`:''}<button class="pcBtn" id="clContinue" data-back data-focus-first>${active?'Return to the climb':cp?'Continue the journey':'Begin in the Outskirts'}</button><button class="pcBtn ghost" id="clGarden">Garden &amp; skins</button><button class="pcBtn ghost" id="clSettings">Settings</button>${root.BladefallClimbCoop?root.BladefallClimbCoop.menuHtml():''}<a class="pcBtn ghost" href="index.html">Return to title menu</a></div>`);
+ st.api.showOverlay(`<div class="pcCard" style="max-width:900px"><h1>The Emerald Ascent</h1><p class="pcSub">${active?st.world.name:cp?'Continue from '+CL().world(cp.world).name:'Begin in the Outskirts. Open roads weave the climb together.'}</p>${schematic?'<div id="clEmerald"></div>':physicalMap||`<svg viewBox="0 0 320 405" style="width:100%;max-height:55vh" role="img" aria-label="Nine regions in the inner braided ascent. Solid roads are open; dotted roads are sealed.">${paths}${nodes}<text x="160" y="14" text-anchor="middle" fill="#929aaa" font-size="9">The upper crown · future journey</text></svg>`}${schematic?'':mapControls}${schematic?'':`<p class="pcSub">${physicalMap?'Gold dot: you · Solid roads: open · Dotted roads: sealed. Select a region to zoom.':'Solid: open roads · Dotted: sealed passages'}</p>`}${root.BladefallClimbMap&&CL().geography&&!schematic?`<button class="pcBtn ghost" id="clLayout">Show the Emerald Ascent map</button>`:''}<button class="pcBtn" id="clContinue" data-back data-focus-first>${active?'Return to the climb':cp?'Continue the journey':'Begin in the Outskirts'}</button><button class="pcBtn ghost" id="clGarden">Garden &amp; skins</button><button class="pcBtn ghost" id="clSettings">Settings</button>${active&&V().testMode?.()&&st.world.quests.some(q=>root.BladefallClimbRound2?.handles(q))?'<button class="pcBtn ghost" id="clReplayQuest">Replay this quest</button>':''}${root.BladefallClimbCoop?root.BladefallClimbCoop.menuHtml():''}<a class="pcBtn ghost" href="index.html">Return to title menu</a></div>`);
  if(schematic)root.BladefallClimbMap.mount(document.getElementById('clEmerald'),{hearts:heartCounts(!!root.BladefallClimbFinale?.unlockedAll?.()),atlas:root.BladefallClimbFinale?.unlockedAll?.()?completeAtlas():st.atlas,current,finale:root.BladefallClimbFinale?.mapState(),preview:root.BladefallClimbFinale?.preview(),brilliant:!!root.BladefallClimbFinale?.unlockedAll?.(),onStart:n=>startWorld(n),onWatch:n=>watchWorlds([n]),onWatchAscent:fr=>{const list=Array.from({length:20},(_,i)=>i+(fr?21:1));if(!list.every(n=>fracturedOpen(n))){announce('Open every world of this emerald to watch its whole ascent.',220);return false;}watchWorlds(list,fr?'The Fractured Ascent':'The Emerald Ascent');return true;},canWatchAscent:fr=>Array.from({length:20},(_,i)=>i+(fr?21:1)).every(n=>fracturedOpen(n)),known:n=>fracturedOpen(n),canStart:n=>n>40?!!root.BladefallClimbFinale?.canPlay(n):fracturedOpen(n),lockedWhy:n=>n>20&&n<=40?fracturedLockedWhy(n):'',
   // (7.319) the Fractured emerald builds out region by region as its purple hearts are found (Settings shows it whole)
   shown:n=>n<=20||n>40||st.review||!!root.BladefallClimbFinale?.preview?.()||!!root.BladefallClimbFinale?.unlockedAll?.()||purpleHeld(n-20)||worldBeaten(n),
   plant:n=>{const R=root.BladefallClimbRewards;if(!R||n<1||n>40)return null;const p=R.plantOf(n),k=n>20?n-20:n,h=R.halves(k);return {name:p.name,half:n>20?p.top:p.root,have:n>20?h.top:h.root,col:p.col,cside:R.csideOpen(k)};}});
  {const t=document.getElementById('clLayout');if(t)t.onclick=()=>{st.roomLayout=!st.roomLayout;atlasMap();};}
  if(!schematic&&physicalMap){const svg=document.querySelector('svg[aria-label="Physical map of the Emerald Ascent"]'),full=svg.getAttribute('viewBox');document.getElementById('clMapAll').onclick=()=>svg.setAttribute('viewBox',full);document.querySelectorAll('[data-map-region]').forEach(button=>button.onclick=()=>{const r=CL().geography.regions.get(+button.dataset.mapRegion).bounds;svg.setAttribute('viewBox',[(r.x-65)*1.65,r.y-65,(r.w+130)*1.65,r.h+130].join(' '));});}
+ document.getElementById('clReplayQuest')?.addEventListener('click',()=>{const w=st.world,q=w.quests.find(q=>root.BladefallClimbRound2?.handles(q));if(!V().testMode?.()||!q)return;root.BladefallClimbRound2.replay(q);startWorld(w.n,w.chapter.rooms.findIndex(d=>d.id===q.from));announce('Quest restarted · your collected hearts stay with you',240);});
  document.getElementById('clScores')?.addEventListener('click',()=>root.BladefallPlaytest?.boards('survival'));
  {const b=document.getElementById('clGarden');if(b)b.onclick=()=>root.BladefallClimbRewards?.card(st.api,()=>atlasMap());}
  {const b=document.getElementById('clSettings');if(b)b.onclick=()=>V().options?.(()=>atlasMap(),{fromMenu:!active});}
@@ -818,7 +819,14 @@ function drawEchoSeals(b,g,t){
  for(const ret of d.returns||[]){const q=st.world.quests.find(x=>x.id===ret.from);if(!sealedQuest(q))continue;const e=ret.edge||'up';
   ret.cols.forEach((v,i)=>e==='up'?mark(v,0,i):mark(e==='left'?0:rm.cols-1,v,i));}
 }
-function grant(q){if(!q||!q.keepsake||!grantKeepsake(q.keepsake.id))return;root.BladefallPlaytest?.collectHeart(q.id);if(st){const g=st.view.g;st.burst={x:g.p.x+4,y:uprightY(g),t:30,col:'#ff9fc8',room:g.room.id};st.questAward={frame:g.frame,title:q.title};st.heartHud=null;root.BladefallSfx?.play?.('quest');}announce(`♥ Heart · ${q.title||'an errand'}`,240);}
+function grant(q){
+ if(!q?.keepsake)return;
+ const fresh=grantKeepsake(q.keepsake.id),replayed=root.BladefallClimbRound2?.consumeReplayAward(q);
+ if(!fresh&&!replayed)return;
+ if(fresh)root.BladefallPlaytest?.collectHeart(q.id);
+ if(st){const g=st.view.g;st.burst={x:g.p.x+4,y:uprightY(g),t:30,col:'#ff9fc8',room:g.room.id};st.questAward={frame:g.frame,title:q.title};st.heartHud=null;root.BladefallSfx?.play?.('quest');}
+ announce(fresh?`♥ Heart · ${q.title||'an errand'}`:`Quest complete · heart already held`,240);
+}
 function openFracturedPortal(){
  if(!st||st.world.n>20)return;const g=st.view.g,to=st.world.n+20;
  if(fracturedOpen(to))root.BladefallPlaytest?.unlock('survival',to);save.riftPortals=save.riftPortals||{};
@@ -1112,7 +1120,7 @@ function settleInside(g){
  if(ex==='down'&&p.y>=RH-2-p.h)p.y=RH-p.h-3;else if(ex==='right'&&p.x>=RW-p.w-1)p.x=RW-p.w-3;else if(ex==='left'&&p.x<=1)p.x=2;
 }
 function claimBranch(g,br){
- if(br.kind==='quest'){const q=br.obj,took=q.sections.some(s=>hasShardIn(g,s.room))||!!V().testMode?.()||!q.sections.some(s=>{const d=defOf(s.room);return d.map.join('').includes('*');});
+ if(br.kind==='quest'){const q=br.obj;if(root.BladefallClimbErrands?.ownsReward(q))return;const took=q.sections.some(s=>hasShardIn(g,s.room))||!!V().testMode?.()||!q.sections.some(s=>{const d=defOf(s.room);return d.map.join('').includes('*');});
   if(took)grant(q);else announce('Something was left behind in there…',150);}
  else{const x=br.obj;root.BladefallPlaytest?.collectHeart(x.id);if(!save.secrets)save.secrets={};
   if(!save.secrets[x.id]){save.secrets[x.id]=true;store(SAVE,save);
@@ -1272,18 +1280,19 @@ function drawFolk(b,g,d,live,world=st.world){
  if(d.atlasTerrain){for(const port of d.atlasSockets)H.prop(b,'hearth',port.plane+(port.edge==='left'?32:-40),(port.floor-1)*8,t);}
  else if(d.atlasTransit){for(const c of [4,g.room.cols-5])H.prop(b,'hearth',c*8,(d.atlasTransit.floor[c]-1)*8,t);}
  else if(sec&&sec.sec.fire)H.prop(b,'hearth',sec.sec.fire.c*8,sec.sec.fire.r*8,t);
- for(const pr of d.decor||[])H.prop(b,pr.k,pr.c*8,pr.r*8,t);
+ for(const pr of d.decor||[])if(!root.BladefallClimbRound2?.hideDecor(d.id,pr))H.prop(b,pr.k,pr.c*8,pr.r*8,t);
  for(const who of d.people||[]){
   const key=d.id+':'+who.who;if(st.gone.has(key))continue;
   let x=who.c*8+4,y=who.ceiling?who.r*8:who.r*8+8,face=live?(g.p.x+4<x?-1:1):(who.face||1);
   // (7.365) a voice before they are seen: not drawn, but still heard when you come near (as in the Room by Room view)
   if(who.voiceUntilDone&&!questDone(questOf(who.quest))){if(live){who._x=x;who._y=y;}continue;}
+  const questPose=root.BladefallClimbRound2?.pose(who.quest,who.who,g);if(questPose?.hidden){if(live)who._x=undefined;continue;}if(questPose){x=questPose.x;y=questPose.feet;}
   if(st.walk[key])continue;                                  // on her way: drawn by drawWalkers
   if(live&&Object.values(st.walk).some(w=>!w.done&&w.who===who.who&&w.dest===d.id))continue;   // not there yet
   if(!live&&Object.values(st.walk).some(w=>!w.done&&w.who===who.who&&w.dest===d.id))continue;
   if(live&&who.follow){const tr=st.trail,lag=26,at=tr.length>lag?tr[tr.length-1-lag]:null;if(at){x=at.x+4-at.f*6;y=at.y+11;face=at.f;}}
   if(who.ceiling){b.save();b.translate(0,2*y);b.scale(1,-1);}
-  (root.BladefallClimbArt?.person||H.person)(b,x,y,who.who,t,face);if(who.ceiling)b.restore();
+  if(!(who.who==='recruit'&&questPose))(root.BladefallClimbArt?.person||H.person)(b,x,y,who.who,t,face);if(who.ceiling)b.restore();
   if(live){who._x=x;who._y=y;}
  }
 }
@@ -1451,7 +1460,7 @@ PV.hud=function(ctx,ox,oy,scale,g,view){
   if(!near){const leave=who.leave||(who.leaveDone&&questDone(questOf(who.quest))?who.leaveDone:null);if(leave&&st.spoke.has(key)&&!st.walk[key])startWalk(key,who,d,who._x,who._y,leave==='left'?-1:1);continue;}
   const q=who.quest&&questOf(who.quest);
   if(q&&who.chart&&q.bearings&&bearingsHeld(g,q).length===q.bearings.length)grant(q);
-  const line=root.BladefallClimbErrands?.line(q,questDone(q))||(q&&questDone(q)&&who.lineDone?who.lineDone:who.line);
+  const line=root.BladefallClimbErrands?.line(q,questDone(q),who.who)||(q&&questDone(q)&&who.lineDone?who.lineDone:who.line);
   // (7.363) Ascend speaks on its own: the first time you come near someone, their line plays (when it has a recording;
   // Voice lines in Assist & options turns it off). A finished quest's line is a new line, so it plays too.
   const heard=key+':'+line;if(!st.heard)st.heard=new Set();if(!st.heard.has(heard)){st.heard.add(heard);if(!st.view.replay)root.BladefallVoice?.play(line);}
@@ -1478,7 +1487,7 @@ PV.hud=function(ctx,ox,oy,scale,g,view){
  for(const q of st.world.quests){
   let txt=null;const plq=sectionOf(g);if(plq&&plq.quest===q&&!st.quest)st.quest={id:q.id};
   if(q.bearings&&bearingsHeld(g,q).length){const held=bearingsHeld(g,q);txt=`${q.giver}: `+q.bearings.map(b=>(held.includes(b)?'◆':'◇')+' '+b).join('  ');}
-  else if(root.BladefallClimbErrands?.handles(q)&&!questDone(q)&&st.spoke.has(q.from+':'+((defOf(q.from).people||[]).find(w=>w.quest===q.id)||{}).who))txt=q.title+' · '+root.BladefallClimbErrands.hud(q);
+  else if(root.BladefallClimbErrands?.handles(q)&&(!questDone(q)||root.BladefallClimbRound2?.replaying(q))&&st.spoke.has(q.from+':'+((defOf(q.from).people||[]).find(w=>w.quest===q.id)||{}).who))txt=q.title+' · '+root.BladefallClimbErrands.hud(q);
   else if(st.quest&&st.quest.id===q.id)txt=q.title;
   if(!txt)continue;const tw=ctx.measureText(txt).width+fs*1.2,x0=ox+W0*scale-8;
   ctx.fillStyle='rgba(14,16,24,.75)';ctx.fillRect(x0-tw,y0,tw,fs*1.6);ctx.fillStyle='#e9c47a';ctx.fillText(txt,x0-tw+fs*.6,y0+fs*.3);y0+=fs*1.9;

@@ -556,3 +556,19 @@ test('Silas’s steps done by either partner are shared (7.375: governor tooth, 
  assert.ok(await c.until(c.host,at(3)),'host receives the key');
  assert.deepEqual(c.host.errors,[]);assert.deepEqual(c.guest.errors,[]);
 });
+
+test('Round two quest task locations accept partner progress', {timeout:180000},async t=>{
+ const c=await coopPair(t);await c.connect();
+ for(const [stage,id]of [[3,'cartographer'],[4,'recruit'],[9,'quota'],[11,'neighbors'],[16,'sailors']]){
+  await c.ev(c.host,new Function('coopStartRun("select",'+stage+')'));
+  assert.ok(await c.until(c.guest,new Function('return G?.stageIndex==='+stage+'&&mode==="play"')));
+  for(const side of [c.host,c.guest]){await c.keepAlive(side);await c.ev(side,new Function('G.sessionCapabilities=BladefallCapabilities.createState({acquired:BladefallProgression.abilities.map(a=>a.id)});G.sessionSideStories=BladefallSideStories.reduce(G.sessionSideStories,'+JSON.stringify(id)+',{type:"choice",choice:"short"}).state;BladefallSideStoryWorld.apply();'));}
+  for(let step=0;step<3;step++){
+   const spot=await c.ev(c.guest,new Function('const q=BladefallSideStories.byId['+JSON.stringify(id)+'],task=q.tasks['+step+'].id,o=G.obstacles.find(o=>o.sideStory===q.id&&o.task===task);return o?{x:o.x,y:o.y,task}:null;'));
+   assert.ok(spot,id+' task '+step+' has a network target');await c.placeBoth({x:spot.x-100,y:spot.y},spot);
+   await c.ev(c.guest,new Function('BladefallSideStoryWorld.completeTask('+JSON.stringify(id)+','+JSON.stringify(spot.task)+');'));
+   const accepted=await c.until(c.host,new Function('return BladefallSideStories.row(BladefallSideStoryWorld.state(),'+JSON.stringify(id)+').step>='+ (step+1)));if(!accepted)console.log('FAILED PARTNER TASK',id,step,spot,await c.view(c.host),await c.view(c.guest));assert.ok(accepted,id+' partner task '+step);
+  }
+ }
+ assert.deepEqual(c.host.errors,[]);assert.deepEqual(c.guest.errors,[]);
+});

@@ -38,7 +38,7 @@ const load=()=>{try{return JSON.parse(localStorage.getItem(KEY))||{};}catch(e){r
 const save=s=>{try{localStorage.setItem(KEY,JSON.stringify(s));}catch(e){}};
 function state(id){const all=load();return all[id]||{step:0,perch:0,found:[]};}
 function put(id,s){const all=load();all[id]=s;save(all);}
-const handles=q=>!!(q&&QUESTS[q.id]);
+const handles=q=>!!(q&&QUESTS[q.id])||!!root.BladefallClimbRound2?.handles(q);
 /* A point on a room's intended route: a fraction along it, or its highest point. */
 function spot(room,at){
  const path=ctx.routePath(ctx.defOf(room));if(!path||!path.length)return null;
@@ -54,6 +54,7 @@ function questHere(){const w=ctx.st.world;const q=w.quests.find(q=>QUESTS[q.id]&
 const heldBy=()=>ctx.st._errandHeld||null;
 /* ---------------------------------------------------------------- per tick */
 function tick(c){
+ if(c.st.world?.quests.some(q=>root.BladefallClimbRound2?.handles(q)))return root.BladefallClimbRound2.tick(c);
  ctx=c;if(!live())return;
  const q=questHere();if(!q||ctx.questDone(q))return;
  const Q=QUESTS[q.id],s=state(q.id),g=ctx.st.view.g,p=g.p,room=g.room.id;
@@ -113,6 +114,7 @@ function tick(c){
 function found(q,s,i){s.found.push(i);if(s.found.length>=3)s.step=3;put(q.id,s);ctx.announce(s.found.length>=3?'All three accounts · bring them to the Archivist':'An account · '+(3-s.found.length)+' to go',170);}
 /* ---------------------------------------------------------------- drawing, in room coordinates */
 function draw(b,c){
+ if(c.st.world?.quests.some(q=>root.BladefallClimbRound2?.handles(q)))return root.BladefallClimbRound2.draw(b,c);
  ctx=c;if(!ctx.st.world)return;const q=questHere();if(!q)return;
  const g=ctx.st.view.g,room=g.room.id,t=g.frame,Q=QUESTS[q.id],s=state(q.id),done=ctx.questDone(q),E=ctx.st._errand||{};
  const R=(x,y,w,h,col)=>{b.fillStyle=col;b.fillRect(Math.round(x),Math.round(y),w,h);};
@@ -150,13 +152,13 @@ function gear(b,x,y,t,stop,open,flash){
  if(flash){b.fillStyle='rgba(255,255,255,.4)';b.beginPath();b.arc(0,0,8,0,7);b.fill();}b.restore();
 }
 /* What the giver says now, and the HUD line. */
-function line(q,done){if(!handles(q))return null;if(done)return QUESTS[q.id].doneLine;const s=state(q.id),Q=QUESTS[q.id];return Q.lines[Math.min(Q.lines.length-1,s.step>=(Q.anyOrder?3:1)?1:0)];}
-function hud(q){if(!handles(q))return null;const s=state(q.id),Q=QUESTS[q.id];
+function line(q,done,who){if(root.BladefallClimbRound2?.handles(q))return root.BladefallClimbRound2.line(q,done,who);if(!handles(q))return null;if(done)return QUESTS[q.id].doneLine;const s=state(q.id),Q=QUESTS[q.id];return Q.lines[Math.min(Q.lines.length-1,s.step>=(Q.anyOrder?3:1)?1:0)];}
+function hud(q){if(root.BladefallClimbRound2?.handles(q))return root.BladefallClimbRound2.hud(q);if(!handles(q))return null;const s=state(q.id),Q=QUESTS[q.id];
  if(Q.anyOrder)return s.step>=3?Q.hud[1]:Q.hud[0]+' · '+s.found.length+'/3';return Q.hud[Math.min(Q.hud.length-1,s.step)];}
 /* Its heart comes from handing the thing over, not from the end of the branch. */
 const ownsReward=q=>handles(q);
 /* Where each step's things are (for checks): resolved spots per step. */
-function where(id){if(!ctx)return null;const Q=QUESTS[id],q=ctx.st.world&&ctx.st.world.quests.find(x=>x.id===id);
+function where(id){if(root.BladefallClimbRound2?.handles(id))return root.BladefallClimbRound2.where(id);if(!ctx)return null;const Q=QUESTS[id],q=ctx.st.world&&ctx.st.world.quests.find(x=>x.id===id);
  return Q.steps.map(st=>st.perches?st.perches.map(a=>spot(...a)):st.at?(Array.isArray(st.at[0])?st.at.map(a=>spot(...a)):spot(...st.at)):st.to==='giver'?giverSpot(q):st.to?spot(...st.to):null);}
 root.BladefallClimbErrands=Object.freeze({QUESTS,tick,draw,line,hud,ownsReward,handles,where,state,reset:id=>{const all=load();delete all[id];save(all);}});
 })(typeof globalThis!=='undefined'?globalThis:window);

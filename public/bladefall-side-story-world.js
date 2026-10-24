@@ -69,7 +69,7 @@ function receiveNetwork(m){
    didn't say it gave anything). Every story leaves its shortcut ride (bladefall-explore-mounts.js); a few also give
    something to keep: Elsie's supper a vitality fragment, the Archivist a forge seal. (7.375, Isaac: no healing;
    with checkpoints it is pointless.) */
-const KEEPS={refuge:[{vitalityFragments:1},'a vitality fragment. Four of them add a measure of Blood'],archivist:[{forgeSeals:1},'a forge seal. Spend it at a forge to strengthen your blade']};
+const KEEPS={quota:[{forgeSeals:1},'a forge seal. Spend it at a forge to strengthen your blade'],refuge:[{vitalityFragments:1},'a vitality fragment. Four of them add a measure of Blood'],archivist:[{forgeSeals:1},'a forge seal. Spend it at a forge to strengthen your blade']};
 function rideLine(q){const m=Object.values(root.BladefallMounts?.MOUNTS||{}).find(m=>m.story===q?.id);return m?m.name+' is yours: a shortcut across '+(STAGES?.[q.stage]?.name||'this region')+', from the far end once you have walked it.':'';}
 function grantReward(q){
  const keep=KEEPS[q?.id];
@@ -110,7 +110,7 @@ function panel(title,text,choices,accent,lines){const session=G;BladefallConvers
 function renderDialogue(id){
  const v=S.view(state(),id);if(!v)return false;
  const record=S.row(state(),id);
- if(id==='recruit'&&!record.rescued){if(record.node==='ready')v.text='Wait. Where’s my helmet? I didn’t even notice it go.';if(record.node==='ending')v.text=record.route==='medium'?S.plain(S.byId.recruit.longEnding):'My helmet? Oh, for… again? Could we still go back for it?';}
+ if(id==='recruit'&&!S.byId[id].revision&&!record.rescued){if(record.node==='ready')v.text='Wait. Where’s my helmet? I didn’t even notice it go.';if(record.node==='ending')v.text=record.route==='medium'?S.plain(S.byId.recruit.longEnding):'My helmet? Oh, for… again? Could we still go back for it?';}
  if(v.lines){commit(id,{type:'heard'});apply();}   // the first return's exchange, heard once
  panel(v.title,v.text,v.choices.map(c=>({label:c.label,action:()=>{
    const result=commit(id,{type:'choice',choice:c.id});if(result.error)return;
@@ -122,7 +122,9 @@ function inspect(title,text){panel(title,text,undefined,'#ccbfa7');return true;}
 function supportingFloor(x,y){return G.obstacles.filter(o=>o.type==='plat'&&!o.gone&&!o.ceiling&&!o.fake&&!o.crumble&&!o.gate&&o.w>=100&&x>=o.x-o.w/2+25&&x<=o.x+o.w/2-25).sort((a,b)=>Math.abs(a.y-y)-Math.abs(b.y-y))[0];}
 function install(){
  if(!active())return;
- const q=S.records.find(q=>q.stage===G.stageIndex);
+ let q=S.records.find(q=>q.stage===G.stageIndex);
+ // Recorded routes keep the exact old background props; live quests replace these with noncolliding scenes.
+ if(q.watchTasks&&typeof watchLike==='function'&&watchLike())q={...q,tasks:q.watchTasks};
  G.obstacles=G.obstacles.filter(o=>!o.sideStory);
  const rest=G.zoneRestSite||{x:G.p.x,y:G.p.y};
  const dir=[0,6,11].includes(q.stage)?-1:1;
@@ -171,7 +173,7 @@ function install(){
  if(q.id==='figure'){G.sideStoryScene.echoPad={x:x+dir*138,y:y+56};const release=G.obstacles.find(o=>o.task==='release'&&o.sideStory===q.id);release.x=x+dir*280;release.y=y+168;G.obstacles.push({type:'sideStoryProp',sideStory:q.id,sideStoryRole:'echo-contact',x:x+dir*138,y:y+56,w:55,h:6,accent:q.accent});}
  if(q.id==='sailors'){
   // The aft deck ends at x=850; keep the conversation on that deck, not over its drop.
-  const share=G.obstacles.find(o=>o.task==='share'&&o.sideStory===q.id);share.x=x-35;share.y=y;
+  const share=G.obstacles.find(o=>o.task==='share'&&o.sideStory===q.id);if(share){share.x=x-35;share.y=y;}
   // Leave room between the speaker and the ship’s existing interaction at x=780.
   actor.x+=20;actor.baseX+=20;
   const prop=G.obstacles.find(o=>o.task==='charm'&&o.sideStory===q.id);
@@ -207,13 +209,14 @@ function install(){
  window.BladefallQuestErrands?.install(q,G.sideStoryScene);   // (7.375) steps you go and do (bladefall-quest-errands.js)
  apply();
 }
-function syncErrands(){if(G.sideStoryScene?.errand)window.BladefallQuestErrands?.sync();}
+function syncErrands(){if(G.sideStoryScene?.round2||G.sideStoryScene?.errand)window.BladefallQuestErrands?.sync();}
 function waiting(scene,r){return !!scene.waitsFor&&r.phase==='offered'&&!capabilities().includes(scene.waitsFor);}
 function apply(){
  if(!active()||!G.sideStoryScene)return;
  const q=S.byId[G.sideStoryScene.id],r=S.row(state(),q.id),scene=G.sideStoryScene;
  const good=r.phase==='completed',bad=r.phase==='harsh';
  scene.waiting=waiting(scene,r);
+ if(scene.round2){root.BladefallRound2Explore.sync();return;}
  for(const o of G.obstacles.filter(o=>o.sideStory===q.id)){
   o.storyPhase=r.phase;o.storyStep=r.step;
   if(['step','task','anchor'].includes(o.sideStoryRole)&&scene.waitsFor)o.gone=scene.waiting;
@@ -307,6 +310,7 @@ function interact(o){
  if(Math.abs(G.p.x-o.x)>72||Math.abs(G.p.y-o.y)>(o.sideStoryRole==='actor'||o.task==='service'?80:34))return false;
  if(o.sideStoryRole==='actor'){
   if(o.sideStory==='miner'&&G.cartMode){G.sideStoryScene.parkedCart=true;G.cartMode=false;G.p.vx=0;G.p.vy=0;G.p.x=o.x;G.p.y=o.y;}
+  if(G.sideStoryScene?.waiting&&o.sideStory==='sailors')return inspect(o.name,'The windlass on the derelict holds the Chainhook. Once the chain gate is clear, the harbour rings will take you up to that charm.');
   if(G.sideStoryScene?.waiting)return inspect(o.name,'I need the wind moved, and a sword can’t do that. There’s a portal gun up at the Crown—if you find it, come back. Please.');
   commit(o.sideStory,{type:'visit'});return renderDialogue(o.sideStory);
  }
@@ -341,7 +345,7 @@ function update(dt){
  if(shared()&&NET.isGuest())return;
  const partner=shared()&&NET.isHost()&&NET.ghost?.stage===G.stageIndex&&!NET.ghost.dead?NET.ghost:null;
  const players=partner?[G.p,partner]:[G.p];
- if(actor&&scene.rescue&&r.phase==='active'&&r.step===1){
+ if(actor&&!root.BladefallRound2Explore?.handles(scene.id)&&scene.rescue&&r.phase==='active'&&r.step===1){
   const rescue=scene.rescue,brace=G.obstacles.find(o=>o.sideStory===scene.id&&o.sideStoryRole==='brace');
   const threatened=brace&&players.find(p=>Math.abs(p.x-brace.x)<65&&Math.abs(p.y-brace.y)<45);
   if(!rescue.started&&threatened&&Math.abs(actor.x-actor.baseX)>145){rescue.started=true;rescue.remote=threatened===partner;}
@@ -356,7 +360,7 @@ function update(dt){
    }
   }
  }
- if(actor&&scene.escort){
+ if(actor&&!root.BladefallRound2Explore?.handles(scene.id)&&scene.escort){
   const escort=scene.escort,walking=scene.id==='defector'?r.phase==='completed':r.phase==='active'&&r.step===1;
   if(walking&&!escort.finished){
    const distance=escort.destination-actor.x;

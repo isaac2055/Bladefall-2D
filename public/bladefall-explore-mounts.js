@@ -47,7 +47,7 @@ const MOUNTS={
   verb:'↑  RIDE THE CHAIN',go:'Ride the chain to',
   intro:'Silas ran the old maintenance chain from the camp to the causeway’s far end. “It counts its own links now. Hold on and it will take you.”'},
  3:{id:'kite',name:'The Cartographer’s Kite',story:'cartographer',accent:'#9fe0ff',kind:'flight',art:'kite',seat:-70,cruise:420,speed:1250,
-  roosts:[{id:'far',near:'end',label:'the canyon’s end'},{id:'mouth',near:'start',label:'the canyon mouth'}],
+  roosts:[{id:'far',near:'end',label:'the canyon’s end'},{id:'mouth',near:'actor',off:60,label:'the outdoor desk'}],
   verb:'↑  TAKE THE KITE',go:'Kite to',
   intro:'The Cartographer’s survey kite, its frame mended and the spar re-strung. On this wind it will carry a knight the length of the canyon.'},
  // 7.347: each of these rides its own way (Isaac: a line like the Causeway's, a drake like the Bellwing's, doors
@@ -81,10 +81,10 @@ const MOUNTS={
   roosts:[{id:'far',near:'arena',label:'the last bay'},{id:'gate',near:'start',label:'the foundry gate'}],
   verb:'↑  ASK FOR A THROW',go:'Be thrown to',
   intro:'The war automaton has found small work it likes: throwing you. It braces, cups its hands and waits.'},
- 11:{id:'ceiling',name:'The Ceiling Way',story:'neighbors',accent:'#c9a0ff',kind:'ceiling',art:'hatch',cruise:340,speed:1150,
+ 11:{id:'ceiling',name:'The Joined Tables',story:'neighbors',accent:'#c9a0ff',kind:'blink',art:'hatch',cruise:340,speed:1150,
   roosts:[{id:'far',near:'end',label:'the west gate'},{id:'fall',near:'start',label:'the Fall In'}],
-  verb:'↑  TAKE THE CEILING WAY',go:'Walk the ceiling to',
-  intro:'The neighbours took tea on the ceiling and showed you their way up. Upside down, the Inversion is one long corridor.'},
+  verb:'↑  STEP THROUGH THE TABLE',go:'Step through to',
+  intro:'Their two tables meet through the same closed pot’s passage. Step between them, and arrive at the other end of the Inversion.'},
  12:{id:'mirror',name:'The Other Side',story:'figure',accent:'#d6b0ff',kind:'rift',art:'mirror',hop:1500,
   roosts:[{id:'far',near:'arena',label:'the Tyrant’s hall'},{id:'east',near:'start',label:'the east gate'}],
   verb:'↑  STEP THROUGH',go:'Step through to',
@@ -93,10 +93,10 @@ const MOUNTS={
   roosts:[{id:'far',near:'arena',label:'the throne road'},{id:'gate',near:'start',label:'the Throne’s gate'}],
   verb:'↑  RING THE ALARM',go:'Ring and go to',
   intro:'The Bellkeeper’s last alarm. Ring it and every door on the throne road opens for one breath: run, and the bell carries you.'},
- 16:{id:'skiff',name:'The Sailors’ Skiff',story:'sailors',accent:'#a8dcff',kind:'flight',art:'skiff',seat:12,cruise:110,speed:1250,
+ 16:{id:'skiff',name:'The Sailors’ Storm Sail',story:'sailors',accent:'#a8dcff',kind:'zip',art:'zip',stormSail:true,seat:12,cruise:110,speed:1250,
   roosts:[{id:'far',near:'arena',label:'the hydra’s water'},{id:'landing',near:'start',label:'the cliff landing'}],
-  verb:'↑  TAKE THE SKIFF',go:'Sail to',
-  intro:'The sailors’ skiff, for luck. It runs before any wind along these cliffs.'},
+  verb:'↑  TAKE THE STORM SAIL',go:'Sail along the line to',
+  intro:'A storm sail on the old harbour line, for luck. It carries you over the water and brings you home.'},
  17:{id:'rocket',name:'The Birthday Rocket',story:'birthday',accent:'#ffd070',kind:'flight',art:'rocket',seat:10,cruise:520,speed:1500,
   roosts:[{id:'far',near:'end',label:'the far shore'},{id:'beach',near:'start',label:'the landing beach'}],
   verb:'↑  LIGHT THE ROCKET',go:'Launch to',
@@ -620,16 +620,18 @@ function drawRoost(c,o){
  if(f?.kind==='ride'&&f.from.id===o.mountRoost&&m.art!=='throw')return;   // it is under him
  if(perchOf(m)===o.mountRoost)rest(c,m,o,t);
 }
+function stormSail(c,x,y,dir){c.save();c.fillStyle='#b6d7e1';c.strokeStyle='#4e6370';c.beginPath();c.moveTo(x,SY(y+2));c.lineTo(x+dir*54,SY(y+2));c.lineTo(x+dir*9,SY(y+65));c.closePath();c.fill();c.stroke();c.restore();}
 function zipStub(c,o,t){
  const other=otherOf(roostOf(o));if(!other)return;
  const dir=other.x>o.x?1:-1;c.save();c.strokeStyle='#c8b890';c.lineWidth=1.5;c.beginPath();c.moveTo(o.x,SY((o.y||0)+110));c.lineTo(o.x+dir*260,SY((o.y||0)+110+(other.y-(o.y||0))*260/Math.abs(other.x-o.x)));c.stroke();
- box(c,'#5a4a3a',o.x-4,SY((o.y||0)+110)-2,8,8);c.restore();
+ box(c,'#5a4a3a',o.x-4,SY((o.y||0)+110)-2,8,8);if(mount()?.stormSail)stormSail(c,o.x,(o.y||0)+110,dir);c.restore();
 }
 function drawUnder(c){
  const f=G?.mountFlight;if(!f||f.kind!=='ride'||f.arrive<1||f.mode==='blink')return;
  const t=G.time||0,m=mount(),flying=f.mount>=1,x=flying?f.x:f.from.x,y=flying?f.y:f.y0,d=f.dir;
  if(f.mode==='zip'){
   c.save();c.strokeStyle='#c8b890';c.lineWidth=1.5;c.beginPath();c.moveTo(f.from.x,SY(f.y0));c.quadraticCurveTo((f.from.x+f.land.x)/2,SY((f.y0+f.y1)/2-80),f.land.x,SY(f.y1));c.stroke();
+  if(m.stormSail)stormSail(c,x,y,d);
   box(c,'#5a4a3a',x-6,SY(y)-4,12,8);c.strokeStyle='#8a7a5a';c.beginPath();c.moveTo(x,SY(y)+4);c.lineTo(x,SY(y)+16);c.stroke();c.restore();
   return;
  }

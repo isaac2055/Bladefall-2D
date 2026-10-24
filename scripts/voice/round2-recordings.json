@@ -1,0 +1,821 @@
+[
+  {
+    "id": "updrafts/round2.cartographer.opening",
+    "text": "One more reading before I pack. The funnel is above the Choir. Put the current through it, would you? My measuring ribbon is tied to its rim. Please leave it tied.",
+    "speaker": "Cartographer",
+    "voice_id": "7Oviyg4Mvu7reLmwzvnQ",
+    "generation_id": "XSXRIoAUa82OSaImP44h",
+    "flow_id": "EALm6D1Q9pQZcKvIokCH",
+    "duration": 9.92
+  },
+  {
+    "id": "updrafts/round2.cartographer.accept",
+    "text": "The pale intake is on the Choir’s lower shelf. Put your mouth there; the funnel holds the other end. A steady stream, please.",
+    "speaker": "Cartographer",
+    "voice_id": "7Oviyg4Mvu7reLmwzvnQ",
+    "generation_id": "iUpm5ygL9mbw0jgGvU4D",
+    "flow_id": "7of0LCt8nUy7RaO3FR2w",
+    "duration": 7.84
+  },
+  {
+    "id": "updrafts/round2.cartographer.firstReturn.0",
+    "text": "Every instrument says the wind stops at the canyon. The trees on the other side disagree. I have been calling that interference.",
+    "speaker": "Cartographer",
+    "voice_id": "7Oviyg4Mvu7reLmwzvnQ",
+    "generation_id": "4aAVhgsSLPRauDJkzhOf",
+    "flow_id": "7mjsep0fYyqSoF8zeLW6",
+    "duration": 8.24
+  },
+  {
+    "id": "updrafts/round2.cartographer.ready",
+    "text": "That interval should not exist on this chart. It exists in the trees. Help me get this desk outside.",
+    "speaker": "Cartographer",
+    "voice_id": "7Oviyg4Mvu7reLmwzvnQ",
+    "generation_id": "Rm4zkIWZXUucJUCxRUhw",
+    "flow_id": "xMugoPfzqwDzveqLSvLu",
+    "duration": 6.48
+  },
+  {
+    "id": "updrafts/round2.cartographer.ending",
+    "text": "The chart can wait. I would like to hear the sea.",
+    "speaker": "Cartographer",
+    "voice_id": "7Oviyg4Mvu7reLmwzvnQ",
+    "generation_id": "dBdaVOx5HX3JiVGSBI0O",
+    "flow_id": "xqGNbp0qaYFoa0QRAbnU",
+    "duration": 3.28
+  },
+  {
+    "id": "updrafts/round2.cartographer.longEnding",
+    "text": "I have drawn that coastline eleven times. Never stood on it. Leave the ribbon there; it tells me when to listen. The chart can wait.",
+    "speaker": "Cartographer",
+    "voice_id": "7Oviyg4Mvu7reLmwzvnQ",
+    "generation_id": "68DUoo7zquvgcneLxv1A",
+    "flow_id": "S4K3CJClrOtgqC3ApRpb",
+    "duration": 8.4
+  },
+  {
+    "id": "updrafts/round2.cartographer.after",
+    "text": "Still listening. Not taking a reading.",
+    "speaker": "Cartographer",
+    "voice_id": "7Oviyg4Mvu7reLmwzvnQ",
+    "generation_id": "9H3zY5KzJZVi8N0xTCVp",
+    "flow_id": "l3yHf2kJ7FS6dFrk0eEd",
+    "duration": 2.64
+  },
+  {
+    "id": "updrafts/round2.cartographer.rewardLine",
+    "text": "Take the survey kite. It knows the way down this canyon better than I do.",
+    "speaker": "Cartographer",
+    "voice_id": "7Oviyg4Mvu7reLmwzvnQ",
+    "generation_id": "Kq6Z6pABAC4WpIWJCPuv",
+    "flow_id": "PD9mNMQR08AEgxJpMmk5",
+    "duration": 4.4
+  },
+  {
+    "id": "updrafts/round2.cartographer.short",
+    "text": "I’ll take the reading.",
+    "speaker": "The Knight",
+    "voice_id": "6IwYbsNENZgAB1dtBZDp",
+    "generation_id": "HdRwmTp9RimpogQ11ZJV",
+    "flow_id": "2jrNEljs1VP4bBFFu55K",
+    "duration": 1.12
+  },
+  {
+    "id": "updrafts/round2.cartographer.task.funnel",
+    "text": "The lower slate takes the current. The mouth at the funnel is fixed. Give it a moment to fill.",
+    "speaker": "Cartographer",
+    "voice_id": "7Oviyg4Mvu7reLmwzvnQ",
+    "generation_id": "JR7QHL7G7W4oRLmQzYZO",
+    "flow_id": "ozbtekrw1etVuLLjIXJw",
+    "duration": 5.76
+  },
+  {
+    "id": "updrafts/round2.cartographer.task.ribbon",
+    "text": "Oh. My ribbon. Follow it, please. It stops fighting the wind between gusts.",
+    "speaker": "Cartographer",
+    "voice_id": "7Oviyg4Mvu7reLmwzvnQ",
+    "generation_id": "yob9WTJ78TFM9RhPGH2a",
+    "flow_id": "GiVPdPYezoOFN3B4MhJG",
+    "duration": 5.68
+  },
+  {
+    "id": "updrafts/round2.cartographer.task.chimes",
+    "text": "It beats differently out there. Put your mouth at the funnel now; the chimes hold the far end. Ring them when the ribbon shines.",
+    "speaker": "Cartographer",
+    "voice_id": "7Oviyg4Mvu7reLmwzvnQ",
+    "generation_id": "09zn5D4Qcw06BqxPQXyg",
+    "flow_id": "o44dSyeee2jPtUKCl7VT",
+    "duration": 8
+  },
+  {
+    "id": "ascend/round2.cartographer.0",
+    "text": "My ribbon has blown into the channel above the Choir. Ride the drafts after it; it catches on things between gusts.",
+    "speaker": "Cartographer",
+    "voice_id": "7Oviyg4Mvu7reLmwzvnQ",
+    "generation_id": "3iNBmkopjTcLMhZzmhtq",
+    "flow_id": "pgXnDFsEatiUIMslnNyX",
+    "duration": 6.8
+  },
+  {
+    "id": "ascend/round2.cartographer.1",
+    "text": "Take it to the upper funnel. Hold it steady when the wind slackens.",
+    "speaker": "Cartographer",
+    "voice_id": "7Oviyg4Mvu7reLmwzvnQ",
+    "generation_id": "ar4qFdG9yj7bjYHpI1b9",
+    "flow_id": "9c4l9xuGYFCxG9XiKxlC",
+    "duration": 4.32
+  },
+  {
+    "id": "ascend/round2.cartographer.2",
+    "text": "Bring that reading to the chimes over my desk. Strike them on the ribbon’s bright beat.",
+    "speaker": "Cartographer",
+    "voice_id": "7Oviyg4Mvu7reLmwzvnQ",
+    "generation_id": "5Cu92s0EYoQrxRk0iCI3",
+    "flow_id": "qSY5ooMUEig3roqljo89",
+    "duration": 5.12
+  },
+  {
+    "id": "marksman/round2.recruit.opening",
+    "text": "I can make the crossing. I can. My uncle’s helmet is on the sniper’s shelf, beyond those moving shields. Could you fetch it? Then we could go together.",
+    "speaker": "Recruit",
+    "voice_id": "OwEAPhTFInN6VSRT9QXm",
+    "generation_id": "ewp3WfAqgJz3rwsbTPD0",
+    "flow_id": "mB4oaHHALQcNqVtJKoTb",
+    "duration": 10.4
+  },
+  {
+    "id": "marksman/round2.recruit.accept",
+    "text": "The high shelf, over the two moving shields. I’ll wait on this side. Right here.",
+    "speaker": "Recruit",
+    "voice_id": "OwEAPhTFInN6VSRT9QXm",
+    "generation_id": "hpMdIsbJiirJPKMdQKKv",
+    "flow_id": "S6IdS7xiyj2wdZzlUMku",
+    "duration": 5.6
+  },
+  {
+    "id": "marksman/round2.recruit.firstReturn.0",
+    "text": "Three campaigns, he wore it. I decided that meant something. I know it is only a helmet. I would still like it back.",
+    "speaker": "Recruit",
+    "voice_id": "OwEAPhTFInN6VSRT9QXm",
+    "generation_id": "hpjXXDo0t1BJTvujEKW2",
+    "flow_id": "K6IH7K9R7aBpkXWLyUK8",
+    "duration": 9.04
+  },
+  {
+    "id": "marksman/round2.recruit.ready",
+    "text": "Still afraid. Made it anyway. I think those can both be true.",
+    "speaker": "Recruit",
+    "voice_id": "OwEAPhTFInN6VSRT9QXm",
+    "generation_id": "9EQZwIgqHdXNVDGFl5M9",
+    "flow_id": "JXlXCoCsz4uu1gFvXCl0",
+    "duration": 5.12
+  },
+  {
+    "id": "marksman/round2.recruit.ending",
+    "text": "Keep the helmet on the post. It is doing something useful there.",
+    "speaker": "Recruit",
+    "voice_id": "OwEAPhTFInN6VSRT9QXm",
+    "generation_id": "6bBEpXNqfFL5c9bVpmkH",
+    "flow_id": "5J1mru6zAn8AFe7tomPh",
+    "duration": 4.16
+  },
+  {
+    "id": "marksman/round2.recruit.longEnding",
+    "text": "I kept thinking the fear would stop first. It didn’t. But I heard your feet, and I could move mine. Keep the helmet on the post. I’ll take the watch from here.",
+    "speaker": "Recruit",
+    "voice_id": "OwEAPhTFInN6VSRT9QXm",
+    "generation_id": "5i5CEAPZM89T7z3qYnsC",
+    "flow_id": "vtiHrwRgy0WK98XW5oU2",
+    "duration": 10.48
+  },
+  {
+    "id": "marksman/round2.recruit.after",
+    "text": "I can see the next volley from here. Wait for the flash, then go.",
+    "speaker": "Recruit",
+    "voice_id": "OwEAPhTFInN6VSRT9QXm",
+    "generation_id": "VOfppBDfMo1K2dUyCx5A",
+    "flow_id": "FPphiA445ejmwxGMRsMR",
+    "duration": 4.64
+  },
+  {
+    "id": "marksman/round2.recruit.rewardLine",
+    "text": "I re-strung the ballistas. A bolt will carry you back over the hollow. Hold on to the fletching.",
+    "speaker": "Recruit",
+    "voice_id": "OwEAPhTFInN6VSRT9QXm",
+    "generation_id": "UU6cPpNTAH7fhYaq43Y0",
+    "flow_id": "OMEmS95f1KINq6ZYYr1Y",
+    "duration": 6
+  },
+  {
+    "id": "marksman/round2.recruit.short",
+    "text": "I’ll get it. Then we’ll cross together.",
+    "speaker": "The Knight",
+    "voice_id": "6IwYbsNENZgAB1dtBZDp",
+    "generation_id": "zHtuu4PselY5rJYExTci",
+    "flow_id": "AyHR8rBBfHogv3n5Mou2",
+    "duration": 2.48
+  },
+  {
+    "id": "marksman/round2.recruit.task.helmet",
+    "text": "The shelf over the shields. It should still be up there.",
+    "speaker": "Recruit",
+    "voice_id": "OwEAPhTFInN6VSRT9QXm",
+    "generation_id": "Dcdo2bXmAEoaXxAeZ96T",
+    "flow_id": "bQ7XMr49GoTy11ToOAcq",
+    "duration": 3.6
+  },
+  {
+    "id": "marksman/round2.recruit.task.crossing",
+    "text": "There’s a hole clean through it. Well. Stay close. I can walk as fast as you; stop when the warning lights.",
+    "speaker": "Recruit",
+    "voice_id": "OwEAPhTFInN6VSRT9QXm",
+    "generation_id": "EVaoDu9paELV5OPlXTT8",
+    "flow_id": "WOoAhqMeLOeCWg6DM48g",
+    "duration": 8.16
+  },
+  {
+    "id": "marksman/round2.recruit.task.brace",
+    "text": "Put it on that catch by the floor slate. Give it a tap with your blade. Let a shot ring against it, then we go together.",
+    "speaker": "Recruit",
+    "voice_id": "OwEAPhTFInN6VSRT9QXm",
+    "generation_id": "qhWpLBfKvA0t6dfM3B4H",
+    "flow_id": "rDZLmxnBQHqJyyGGasuv",
+    "duration": 8.24
+  },
+  {
+    "id": "ascend/round2.recruit.0",
+    "text": "My helmet is up the side tower. Fetch it, and I will try the crossing with you.",
+    "speaker": "Recruit",
+    "voice_id": "OwEAPhTFInN6VSRT9QXm",
+    "generation_id": "eoSZumFOGgPSoZCjplWX",
+    "flow_id": "8NXHKaTCiDosL4zvex48",
+    "duration": 4.72
+  },
+  {
+    "id": "ascend/round2.recruit.1",
+    "text": "Bring it back. I am by the brass release.",
+    "speaker": "Recruit",
+    "voice_id": "OwEAPhTFInN6VSRT9QXm",
+    "generation_id": "o8uhVbbhLGS9Uc1XMn4c",
+    "flow_id": "8YYg6i4I4fwPAh575vHO",
+    "duration": 3.04
+  },
+  {
+    "id": "ascend/round2.recruit.2",
+    "text": "There is a hole through it. We will wait for a volley, then cross together. Keep moving when it is clear.",
+    "speaker": "Recruit",
+    "voice_id": "OwEAPhTFInN6VSRT9QXm",
+    "generation_id": "PyHmGaz1d7F7Ta9a3KVt",
+    "flow_id": "uTmiuPQIzRhquD1dHa0Y",
+    "duration": 6.88
+  },
+  {
+    "id": "emberdeep/round2.quota.opening.0",
+    "text": "I finish one, he smashes it. Every time.",
+    "speaker": "Maker",
+    "voice_id": "kRQJEERQdPKF3NbUpmTC",
+    "generation_id": "uC86rYGpUzyU7mTITyrL",
+    "flow_id": "Caba0hkIG2JTyy3zWbzn",
+    "duration": 3.68
+  },
+  {
+    "id": "emberdeep/round2.quota.opening.1",
+    "text": "I scrap it.",
+    "speaker": "Breaker",
+    "voice_id": "VtPXau1yA696W1NRsOyS",
+    "generation_id": "zXEmj6l3EDt6a3YzPZkP",
+    "flow_id": "8pXTYp9On0gUmnzm37hE",
+    "duration": 1.28
+  },
+  {
+    "id": "emberdeep/round2.quota.opening.2",
+    "text": "Put a mark on the loose piece at the intake. Follow it. Tell us which counter is lying.",
+    "speaker": "Maker",
+    "voice_id": "kRQJEERQdPKF3NbUpmTC",
+    "generation_id": "oHURh4nG8InSdwRN1yaS",
+    "flow_id": "nt0HMcm5vRT5ovSeS8oN",
+    "duration": 5.36
+  },
+  {
+    "id": "emberdeep/round2.quota.accept.0",
+    "text": "The pale intake, west down the line. Blade makes a good mark. Hands clear of the stamp.",
+    "speaker": "Breaker",
+    "voice_id": "VtPXau1yA696W1NRsOyS",
+    "generation_id": "f6xr30XPQ1cZzseaqaiN",
+    "flow_id": "CEY7pDYRW42eqsu4M2U4",
+    "duration": 6.72
+  },
+  {
+    "id": "emberdeep/round2.quota.firstReturn.0",
+    "text": "The supervisor said keep the line moving.",
+    "speaker": "Maker",
+    "voice_id": "kRQJEERQdPKF3NbUpmTC",
+    "generation_id": "006qxFbidtkMpSItpgQP",
+    "flow_id": "i4EuO1A9pExmkA2OR85m",
+    "duration": 2.88
+  },
+  {
+    "id": "emberdeep/round2.quota.firstReturn.1",
+    "text": "The supervisor left months ago.",
+    "speaker": "Breaker",
+    "voice_id": "VtPXau1yA696W1NRsOyS",
+    "generation_id": "5Tc3UTmmOgo7e5XYIw1Y",
+    "flow_id": "ZAhQ4r5ZgGpW14mHRr9a",
+    "duration": 2.4
+  },
+  {
+    "id": "emberdeep/round2.quota.firstReturn.2",
+    "text": "The instructions didn’t.",
+    "speaker": "Maker",
+    "voice_id": "kRQJEERQdPKF3NbUpmTC",
+    "generation_id": "d3LbsbfhKFWY36Bk9Y5D",
+    "flow_id": "W3qmFtZtTHqX5Bxz9RF4",
+    "duration": 1.68
+  },
+  {
+    "id": "emberdeep/round2.quota.ready.1",
+    "text": "Green. Same piece, counted twice.",
+    "speaker": "Breaker",
+    "voice_id": "VtPXau1yA696W1NRsOyS",
+    "generation_id": "DY9hlT4e4RW0UGCjhJak",
+    "flow_id": "7p4LmOBfKQFUfbUqMvTK",
+    "duration": 3.44
+  },
+  {
+    "id": "emberdeep/round2.quota.ending.0",
+    "text": "I brought lunch for two.",
+    "speaker": "Maker",
+    "voice_id": "kRQJEERQdPKF3NbUpmTC",
+    "generation_id": "DIhpKU9kUoHA2M3TKKwp",
+    "flow_id": "ssWZuMDd9MhM2hmMVOTo",
+    "duration": 1.68
+  },
+  {
+    "id": "emberdeep/round2.quota.ending.1",
+    "text": "Good.",
+    "speaker": "Breaker",
+    "voice_id": "VtPXau1yA696W1NRsOyS",
+    "generation_id": "QRzbPW9lkDrILVnqLYsH",
+    "flow_id": "Km6Vj7QijojL26q4WD8q",
+    "duration": 0.88
+  },
+  {
+    "id": "emberdeep/round2.quota.longEnding.2",
+    "text": "Right. Sit down.",
+    "speaker": "Maker",
+    "voice_id": "kRQJEERQdPKF3NbUpmTC",
+    "generation_id": "cMDH82LiRt4qjNGQtBrG",
+    "flow_id": "NzMr3e9U55vrR6Fjgvo3",
+    "duration": 1.52
+  },
+  {
+    "id": "emberdeep/round2.quota.after.0",
+    "text": "Still green. She saved you a seat.",
+    "speaker": "Breaker",
+    "voice_id": "VtPXau1yA696W1NRsOyS",
+    "generation_id": "AZXcSaPczzx0KHHSZ37w",
+    "flow_id": "HQDq24Tfhw2M2ujJh3tL",
+    "duration": 2.96
+  },
+  {
+    "id": "emberdeep/round2.quota.rewardLine.0",
+    "text": "One cart and a forge seal, off the books. The counters can count themselves.",
+    "speaker": "Maker",
+    "voice_id": "kRQJEERQdPKF3NbUpmTC",
+    "generation_id": "QvMM5dvgI2ZBHXYnRV96",
+    "flow_id": "DfwamUOdnJXjIxzEGOcH",
+    "duration": 5.04
+  },
+  {
+    "id": "emberdeep/round2.quota.short",
+    "text": "I’ll mark one and follow it.",
+    "speaker": "The Knight",
+    "voice_id": "6IwYbsNENZgAB1dtBZDp",
+    "generation_id": "DYTmhVtjCTBn6og9TVGx",
+    "flow_id": "w0LsXdnN0fzyRsP9RA9L",
+    "duration": 1.76
+  },
+  {
+    "id": "emberdeep/round2.quota.task.tag.0",
+    "text": "The loose one at the intake. Give it a mark we can both see.",
+    "speaker": "Maker",
+    "voice_id": "kRQJEERQdPKF3NbUpmTC",
+    "generation_id": "sWeBXC16gi2WK4Jqcr8W",
+    "flow_id": "uEErEkrAt6WL9MjF4tMX",
+    "duration": 3.52
+  },
+  {
+    "id": "emberdeep/round2.quota.task.divert.0",
+    "text": "Into the pale intake, out of the return mouth. Keep your fingers away from the stamp.",
+    "speaker": "Breaker",
+    "voice_id": "VtPXau1yA696W1NRsOyS",
+    "generation_id": "xDKB9q8GXw9IYsPh8aR4",
+    "flow_id": "94Grdx1hG5fu3Z2hnMwl",
+    "duration": 6
+  },
+  {
+    "id": "emberdeep/round2.quota.task.seat.0",
+    "text": "That is the same mark. It came back.",
+    "speaker": "Maker",
+    "voice_id": "kRQJEERQdPKF3NbUpmTC",
+    "generation_id": "wzecmIZEG72D8Pt5RGlO",
+    "flow_id": "38UAwdmFBc5rVyVSqaEY",
+    "duration": 2.8
+  },
+  {
+    "id": "emberdeep/round2.quota.task.seat.1",
+    "text": "Catch it at the return. I’ll hold the chute. Bring it to the cradle and hold the catch.",
+    "speaker": "Breaker",
+    "voice_id": "VtPXau1yA696W1NRsOyS",
+    "generation_id": "U5dKnSr2MjZPl7hoN7VM",
+    "flow_id": "wMWjBQeSYzCEbeH4i29B",
+    "duration": 5.28
+  },
+  {
+    "id": "ascend/round2.quota.0",
+    "text": "Put a mark on the piece moving up the chute. Catch it where the first counter passes it on.",
+    "speaker": "Maker",
+    "voice_id": "kRQJEERQdPKF3NbUpmTC",
+    "generation_id": "Tp9iJ4JE4lBhe4CbHP0o",
+    "flow_id": "WtFy6ODUJDXVUv4yy8Si",
+    "duration": 5.36
+  },
+  {
+    "id": "ascend/round2.quota.1",
+    "text": "Lift that marked piece through the cooling loft. Drop it and it comes back to the last safe catch.",
+    "speaker": "Maker",
+    "voice_id": "kRQJEERQdPKF3NbUpmTC",
+    "generation_id": "OyljiyRuslNv8bvbddcK",
+    "flow_id": "tXrrcRBsg0db7Sr1BY7H",
+    "duration": 5.92
+  },
+  {
+    "id": "ascend/round2.quota.2",
+    "text": "Same mark. Feed it to our side counter and hold the catch for one complete stamp.",
+    "speaker": "Maker",
+    "voice_id": "kRQJEERQdPKF3NbUpmTC",
+    "generation_id": "pLY3BuRzv8bIVbQZsoPm",
+    "flow_id": "wrDuCSX9iwmUF8Wy8zku",
+    "duration": 5.28
+  },
+  {
+    "id": "inversion/round2.neighbors.opening.0",
+    "text": "I invited her for tea.",
+    "speaker": "Wendell",
+    "voice_id": "3GPXrwD4yn6kPJUA0X4j",
+    "generation_id": "PCgfiUAixmmtNWht0ekz",
+    "flow_id": "Cu00VAuFWA3GLAsQCmM5",
+    "duration": 1.6
+  },
+  {
+    "id": "inversion/round2.neighbors.opening.1",
+    "text": "And I explained about the floor. Our caddy has rolled onto the courtyard shelf. Catch it before it goes over.",
+    "speaker": "Ottilie",
+    "voice_id": "xIzR6egd3S3LJZbVW0c1",
+    "generation_id": "jiadcbeXso6UC6tYjpwH",
+    "flow_id": "UHhnk4BtdmAopYQcROBe",
+    "duration": 7.12
+  },
+  {
+    "id": "inversion/round2.neighbors.accept.0",
+    "text": "Turn the room before it reaches the edge. Down is a matter of opinion here.",
+    "speaker": "Ottilie",
+    "voice_id": "xIzR6egd3S3LJZbVW0c1",
+    "generation_id": "Qg8CYY184Rhx4AYbTbDU",
+    "flow_id": "grAkYbBdOXFGiyE2dXCI",
+    "duration": 5.36
+  },
+  {
+    "id": "inversion/round2.neighbors.firstReturn.0",
+    "text": "We met on the middle landing before it fell.",
+    "speaker": "Wendell",
+    "voice_id": "3GPXrwD4yn6kPJUA0X4j",
+    "generation_id": "AVdqzKe6Ozhz9u5gHWzU",
+    "flow_id": "zIc9CvP7KlPdjJYsVUXU",
+    "duration": 2.72
+  },
+  {
+    "id": "inversion/round2.neighbors.firstReturn.1",
+    "text": "Last time I went over, he wore the tea.",
+    "speaker": "Ottilie",
+    "voice_id": "xIzR6egd3S3LJZbVW0c1",
+    "generation_id": "R3S0kjDAlndfZgbaoUL8",
+    "flow_id": "r5TaVBTWe55L6eawfs27",
+    "duration": 3.04
+  },
+  {
+    "id": "inversion/round2.neighbors.firstReturn.2",
+    "text": "I caught the pot.",
+    "speaker": "Wendell",
+    "voice_id": "3GPXrwD4yn6kPJUA0X4j",
+    "generation_id": "LcqL60KAxVmwcloajeaY",
+    "flow_id": "7VLA3VN38qdpNb0zprr8",
+    "duration": 1.36
+  },
+  {
+    "id": "inversion/round2.neighbors.firstReturn.3",
+    "text": "With your lap.",
+    "speaker": "Ottilie",
+    "voice_id": "xIzR6egd3S3LJZbVW0c1",
+    "generation_id": "5cEPDBWFAXYzcJFRBQbX",
+    "flow_id": "JuCP352RPiasMVBobjLF",
+    "duration": 1.36
+  },
+  {
+    "id": "inversion/round2.neighbors.ending.1",
+    "text": "I did, dear. Pass the biscuits.",
+    "speaker": "Ottilie",
+    "voice_id": "xIzR6egd3S3LJZbVW0c1",
+    "generation_id": "sK5dq3AGrHVZehaZoxoA",
+    "flow_id": "HtixBXBIYzdOXL27flrj",
+    "duration": 2.56
+  },
+  {
+    "id": "inversion/round2.neighbors.longEnding.0",
+    "text": "I still try to catch her spoons.",
+    "speaker": "Wendell",
+    "voice_id": "3GPXrwD4yn6kPJUA0X4j",
+    "generation_id": "flE4iybV7l1AJikunQ4v",
+    "flow_id": "ENQKuhWvtx327xiaoZFq",
+    "duration": 2
+  },
+  {
+    "id": "inversion/round2.neighbors.longEnding.1",
+    "text": "He does. It is quite sweet, from this way up.",
+    "speaker": "Ottilie",
+    "voice_id": "xIzR6egd3S3LJZbVW0c1",
+    "generation_id": "0cAirZrR8Dl6RgsxBR27",
+    "flow_id": "wdUFyhA0EVQkBbj6jqAu",
+    "duration": 4.08
+  },
+  {
+    "id": "inversion/round2.neighbors.after.0",
+    "text": "The tea gets here the right way up. From my side.",
+    "speaker": "Ottilie",
+    "voice_id": "xIzR6egd3S3LJZbVW0c1",
+    "generation_id": "GXNF9KHDKG3G9DFvKYU0",
+    "flow_id": "KlXme9h2e3jFs0vBu4FD",
+    "duration": 3.52
+  },
+  {
+    "id": "inversion/round2.neighbors.rewardLine.0",
+    "text": "Through our joined tables, dear. The ceiling is one long corridor when you know where to step.",
+    "speaker": "Ottilie",
+    "voice_id": "xIzR6egd3S3LJZbVW0c1",
+    "generation_id": "MuhkRkll0ULBOAm20YtF",
+    "flow_id": "ekC4ODadHNFcmfhiRcCv",
+    "duration": 6.08
+  },
+  {
+    "id": "inversion/round2.neighbors.short",
+    "text": "I’ll catch the caddy first.",
+    "speaker": "The Knight",
+    "voice_id": "6IwYbsNENZgAB1dtBZDp",
+    "generation_id": "fvBY0PqQsYAwKCUEqdxV",
+    "flow_id": "Lv1AgSVdSAFE7n7PhSmc",
+    "duration": 1.6
+  },
+  {
+    "id": "inversion/round2.neighbors.task.caddy.0",
+    "text": "Over the courtyard shelf. Turn the room to catch it before it rolls off.",
+    "speaker": "Ottilie",
+    "voice_id": "xIzR6egd3S3LJZbVW0c1",
+    "generation_id": "PubFQXMUn8l8C2r4Gx01",
+    "flow_id": "QexSIMihlISvzNN3KywB",
+    "duration": 4.72
+  },
+  {
+    "id": "inversion/round2.neighbors.task.cups.0",
+    "text": "Park the pot in the recess first. A tap with the flat of your blade. Then turn over for the cups.",
+    "speaker": "Wendell",
+    "voice_id": "3GPXrwD4yn6kPJUA0X4j",
+    "generation_id": "1dxWzIBKwXzkBHJo73tw",
+    "flow_id": "no6fCrNvtTV2pzifijKN",
+    "duration": 6.56
+  },
+  {
+    "id": "inversion/round2.neighbors.task.tables.0",
+    "text": "Now the two pale surfaces. Link them and slide the closed pot through.",
+    "speaker": "Ottilie",
+    "voice_id": "xIzR6egd3S3LJZbVW0c1",
+    "generation_id": "u74bKG65dD31wA30qXY1",
+    "flow_id": "DFFfAcMuApr3M6YU6lXu",
+    "duration": 5.44
+  },
+  {
+    "id": "inversion/round2.neighbors.task.tables.1",
+    "text": "I will catch my end.",
+    "speaker": "Wendell",
+    "voice_id": "3GPXrwD4yn6kPJUA0X4j",
+    "generation_id": "LeIybey7y0kuow0RgOE6",
+    "flow_id": "hRvr0QSGptH9u4PCaAt8",
+    "duration": 1.76
+  },
+  {
+    "id": "ascend/round2.neighbors.0",
+    "text": "The caddy is rolling on the shelf up the chimney. Turn the room and catch it.",
+    "speaker": "Wendell",
+    "voice_id": "3GPXrwD4yn6kPJUA0X4j",
+    "generation_id": "i6DgUnuoaCxzApSxFETU",
+    "flow_id": "CWrGquY6DaJOKdFgXpEr",
+    "duration": 4.4
+  },
+  {
+    "id": "ascend/round2.neighbors.1",
+    "text": "Park the pot in the service recess before turning over for the cups. A tap with your blade will set it down.",
+    "speaker": "Wendell",
+    "voice_id": "3GPXrwD4yn6kPJUA0X4j",
+    "generation_id": "67OdbeHnq7eNTVDRKMf2",
+    "flow_id": "q8xDeylip7sMjiU2U1kb",
+    "duration": 6.24
+  },
+  {
+    "id": "ascend/round2.neighbors.2",
+    "text": "Bring both back to our landing. We will tip the tray between us while you cross the room the way you came.",
+    "speaker": "Wendell",
+    "voice_id": "3GPXrwD4yn6kPJUA0X4j",
+    "generation_id": "aik5IABraH6Xb7QG7Zo3",
+    "flow_id": "FPrcEGKMdl9biLGKhGTM",
+    "duration": 5.68
+  },
+  {
+    "id": "cliffs/round2.sailors.opening.0",
+    "text": "My father’s brass charm is flashing up in the rigging. I thought I lost it. If you are going aloft, follow the flashes.",
+    "speaker": "Hallam",
+    "voice_id": "SOYHLrjzK2X1ezoPC6cr",
+    "generation_id": "M530ym3Qde8l7e9utOii",
+    "flow_id": "CnDDNYv1ngajcyU5RkMG",
+    "duration": 7.44
+  },
+  {
+    "id": "cliffs/round2.sailors.accept.0",
+    "text": "Your hook will reach the hanging rings. Mind the loose line above the deck.",
+    "speaker": "Hallam",
+    "voice_id": "SOYHLrjzK2X1ezoPC6cr",
+    "generation_id": "38V9o9oixZoAuwcDaijv",
+    "flow_id": "iklcJdXdshrohoFh8BJZ",
+    "duration": 4.4
+  },
+  {
+    "id": "cliffs/round2.sailors.firstReturn.0",
+    "text": "He carried it every voyage. I am not saying it holds the ship together. I would just like it back.",
+    "speaker": "Hallam",
+    "voice_id": "SOYHLrjzK2X1ezoPC6cr",
+    "generation_id": "mYp3PMR1ajtn1yPQAmPr",
+    "flow_id": "fyLpcgHtPLpyONZdhmfP",
+    "duration": 6.16
+  },
+  {
+    "id": "cliffs/round2.sailors.ready.0",
+    "text": "Half each. Both hands for the rope.",
+    "speaker": "Hallam",
+    "voice_id": "SOYHLrjzK2X1ezoPC6cr",
+    "generation_id": "5WZk4gkhpVjebg0KBc4C",
+    "flow_id": "qzWXum637LTSk4UbpMmA",
+    "duration": 2.48
+  },
+  {
+    "id": "cliffs/round2.sailors.ending.1",
+    "text": "So far.",
+    "speaker": "Stranded sailor",
+    "voice_id": "6BG4L4R7r9brMsrmRHkX",
+    "generation_id": "QxeBR1QsiulMSsCPUiOJ",
+    "flow_id": "bmYOP8vwRM96PY26faqK",
+    "duration": 1.04
+  },
+  {
+    "id": "cliffs/round2.sailors.longEnding.0",
+    "text": "Father said never give it away. He did not say anything about half.",
+    "speaker": "Hallam",
+    "voice_id": "SOYHLrjzK2X1ezoPC6cr",
+    "generation_id": "AkWr6BYbnpjkTgYDoHRs",
+    "flow_id": "6bSe03biVXYDxtvR4T4u",
+    "duration": 4.4
+  },
+  {
+    "id": "cliffs/round2.sailors.longEnding.1",
+    "text": "Mine is working.",
+    "speaker": "Stranded sailor",
+    "voice_id": "6BG4L4R7r9brMsrmRHkX",
+    "generation_id": "AEXZ1sXwELDcHS7xVkzw",
+    "flow_id": "GSSbVvaPfis3V48BczKs",
+    "duration": 1.28
+  },
+  {
+    "id": "cliffs/round2.sailors.longEnding.2",
+    "text": "So is mine. Sit down before your legs find out.",
+    "speaker": "Hallam",
+    "voice_id": "SOYHLrjzK2X1ezoPC6cr",
+    "generation_id": "w6bsYrGc4tufB8vvbEJ8",
+    "flow_id": "FduSJMt0w66XOESoO6LW",
+    "duration": 3.36
+  },
+  {
+    "id": "cliffs/round2.sailors.rewardLine.0",
+    "text": "Take the storm sail. It runs along the line before any wind, and it will bring you home.",
+    "speaker": "Hallam",
+    "voice_id": "SOYHLrjzK2X1ezoPC6cr",
+    "generation_id": "xkHFCZ3f24btKUGpPmlW",
+    "flow_id": "rUx2MP6yZDwCAK7UAo0L",
+    "duration": 5.6
+  },
+  {
+    "id": "cliffs/round2.sailors.short",
+    "text": "I’ll follow the flashes.",
+    "speaker": "The Knight",
+    "voice_id": "6IwYbsNENZgAB1dtBZDp",
+    "generation_id": "a84pj8s14dhOFMZyl4eK",
+    "flow_id": "S6342kUJh2nusQK3vnld",
+    "duration": 1.68
+  },
+  {
+    "id": "cliffs/round2.sailors.task.charm.0",
+    "text": "The harbour rings, once the chain gate is clear. Jump toward the next flash before hooking again. The flashing bit is caught on something.",
+    "speaker": "Hallam",
+    "voice_id": "SOYHLrjzK2X1ezoPC6cr",
+    "generation_id": "A16xvGrasunxm4MccD2R",
+    "flow_id": "9N8xah4JqEU5k28bqMh2",
+    "duration": 8.08
+  },
+  {
+    "id": "cliffs/round2.sailors.task.tension.0",
+    "text": "There is someone on that line. Hold your hook. I have the lower end.",
+    "speaker": "Hallam",
+    "voice_id": "SOYHLrjzK2X1ezoPC6cr",
+    "generation_id": "MXEf3p0NxxPqcA22G2gO",
+    "flow_id": "3hmV2rt1CFQyVXv8pQa5",
+    "duration": 4.24
+  },
+  {
+    "id": "cliffs/round2.sailors.task.descent.0",
+    "text": "It is tied into his safety line. Bring him down first. We can split it at the cleat.",
+    "speaker": "Hallam",
+    "voice_id": "SOYHLrjzK2X1ezoPC6cr",
+    "generation_id": "sb7x7MWZr5izx32FftjP",
+    "flow_id": "zAzfoJ25DSAP4rOBqB27",
+    "duration": 5.04
+  },
+  {
+    "id": "ascend/round2.sailors.0",
+    "text": "My father’s charm is up the rigging. Follow it on the hooks; it pauses where you can reach it.",
+    "speaker": "Hallam",
+    "voice_id": "SOYHLrjzK2X1ezoPC6cr",
+    "generation_id": "y8DoNvycT53VnOvV8vu5",
+    "flow_id": "6aoLnhjfoNCic3lP7Zvt",
+    "duration": 5.2
+  },
+  {
+    "id": "ascend/round2.sailors.1",
+    "text": "Someone is tied to it. Hold the line at the upper hook while I take the strain below.",
+    "speaker": "Hallam",
+    "voice_id": "SOYHLrjzK2X1ezoPC6cr",
+    "generation_id": "w8qpJ1DWRC6aRAXkgp9S",
+    "flow_id": "IQeOqKmJZOojOeQmvcJi",
+    "duration": 4.88
+  },
+  {
+    "id": "ascend/round2.sailors.2",
+    "text": "Bring the sailor back down to our deck. Stay close; we will split the charm at the cleat.",
+    "speaker": "Hallam",
+    "voice_id": "SOYHLrjzK2X1ezoPC6cr",
+    "generation_id": "RWzVi3LvO44Tnzx6sxnl",
+    "flow_id": "Hf4cbJbdxyCXMr2wsqIu",
+    "duration": 5.36
+  },
+  {
+    "id": "ascend/round2.breaker.0",
+    "text": "Mark the piece, then follow it. Hands clear of the stamp.",
+    "speaker": "Breaker",
+    "voice_id": "VtPXau1yA696W1NRsOyS",
+    "generation_id": "xnbldRUdiTSyYQfVB6pY",
+    "flow_id": "51sSonmQGOR6kv83NCet",
+    "duration": 4.24
+  },
+  {
+    "id": "ascend/round2.breaker.1",
+    "text": "Same white mark. I will hold the chute while you work the catch.",
+    "speaker": "Breaker",
+    "voice_id": "VtPXau1yA696W1NRsOyS",
+    "generation_id": "OR1XpJne526KVpcMljfp",
+    "flow_id": "zwLL6jACkwAhEeX4gVG0",
+    "duration": 4.56
+  },
+  {
+    "id": "ascend/round2.ottilie.0",
+    "text": "Park the pot before turning. His down is not my down.",
+    "speaker": "Ottilie",
+    "voice_id": "xIzR6egd3S3LJZbVW0c1",
+    "generation_id": "LjRXzxkBqn2HTk7r1HzL",
+    "flow_id": "9Md5kFgAfURDbfN6ktrR",
+    "duration": 4.72
+  },
+  {
+    "id": "ascend/round2.ottilie.1",
+    "text": "I have this end. Tip the tray gently.",
+    "speaker": "Ottilie",
+    "voice_id": "xIzR6egd3S3LJZbVW0c1",
+    "generation_id": "FTx7u6ExVgQo4YfjuDAb",
+    "flow_id": "twz0GqnX4WnBmAhYtBOL",
+    "duration": 3.2
+  }
+]

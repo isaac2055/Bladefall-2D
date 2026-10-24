@@ -27,7 +27,7 @@ const STORIES={
   pages:{kind:'gather',at:[[11890,120],[12090,240],[12290,300],[12500,360],[12700,260]],seconds:18}}},
 };
 const story=()=>typeof G!=='undefined'&&G?.sideStoryScene&&STORIES[G.sideStoryScene.id]&&STORIES[G.sideStoryScene.id].stage===G.stageIndex?STORIES[G.sideStoryScene.id]:null;
-const handles=id=>!!STORIES[id];
+const handles=id=>!!STORIES[id]||!!root.BladefallRound2Explore?.handles(id);
 const near=(a,x,y,rx,ry)=>Math.abs(a.x-x)<rx&&Math.abs(a.y-y)<ry;
 const kept=()=>{try{return meta.sideStoryErrands||(meta.sideStoryErrands={});}catch(e){return {};}};
 function caps(){return ['weapon','wall-jump'].filter(id=>typeof hasCapability==='function'&&hasCapability(id));}
@@ -35,6 +35,7 @@ function row(){return S().row(W().state(),G.sideStoryScene.id);}
 function prop(extra){return {type:'sideStoryProp',sideStory:G.sideStoryScene.id,sideStoryRole:'errand',w:30,h:30,...extra};}
 /* ---------------------------------------------------------------- install: the props for every step */
 function install(q,scene){
+ if(root.BladefallRound2Explore?.handles(q.id))return root.BladefallRound2Explore.install(q,scene);
  const def=STORIES[q.id];if(!def||def.stage!==G.stageIndex)return;
  // No staircase or Up markers: those were the old steps.
  G.obstacles=G.obstacles.filter(o=>o.sideStory!==q.id||!['step','task','routeBackdrop','carried'].includes(o.sideStoryRole));
@@ -66,6 +67,7 @@ function install(q,scene){
 }
 /* Which props show, from the saved step. */
 function sync(){
+ if(root.BladefallRound2Explore?.handles(G.sideStoryScene?.id))return root.BladefallRound2Explore.sync();
  const def=story();if(!def)return;const q=S().byId[G.sideStoryScene.id],r=row(),scene=G.sideStoryScene,e=scene.errand;
  const at=id=>def.anyOrder?(r.phase==='active'&&!e.found.has(id)):r.phase==='active'&&q.tasks[r.step]?.id===id;
  const done=id=>def.anyOrder?e.found.has(id)||r.phase==='ready'||r.phase==='completed':q.tasks.findIndex(t=>t.id===id)<r.step||r.phase==='ready'||r.phase==='completed';
@@ -93,6 +95,7 @@ function finish(taskId,at){
 function say(o,text,color){if(typeof addText==='function')addText(o.x,GROUND_Y-o.y-70,text,color||'#f2dfb7',false);}
 /* ---------------------------------------------------------------- update: doing the steps */
 function update(dt){
+ if(root.BladefallRound2Explore?.handles(G.sideStoryScene?.id))return root.BladefallRound2Explore.update(dt);
  const def=story();if(!def||typeof mode==='undefined'||mode!=='play')return;
  const scene=G.sideStoryScene,e=scene.errand;if(!e)return;
  const q=S().byId[scene.id],r=row(),p=G.p;
@@ -182,6 +185,7 @@ function lead(dt,s,scene){
 /* ---------------------------------------------------------------- drawing */
 const R=(c,x,y,w,h,col)=>{c.fillStyle=col;c.fillRect(x,y,w,h);};
 function draw(c,o,q,r){
+ if(root.BladefallRound2Explore?.handles(q.id))return root.BladefallRound2Explore.draw(c,o,q,r);
  if(!handles(q.id))return false;
  if(o.sideStoryRole!=='errand')return false;
  if(o.gone&&!(o.errand==='drop'&&o.lit)&&!o.broken)return true;
@@ -241,5 +245,5 @@ function drawBeat(c,q,r){
  if(beat&&G.time-beat.time<2){const k=(G.time-beat.time)/2;c.strokeStyle=q.accent;c.lineWidth=3;c.globalAlpha=1-k;c.beginPath();c.arc(beat.x,GROUND_Y-beat.y-20,12+k*70,0,Math.PI*2);c.stroke();}
  c.restore();
 }
-root.BladefallQuestErrands=Object.freeze({STORIES,handles,install,update,draw,sync,drawStatus:c=>{if(story())drawBeat(c,S().byId[G.sideStoryScene.id],row());}});
+root.BladefallQuestErrands=Object.freeze({STORIES,handles,install,update,draw,sync,drawStatus:c=>{root.BladefallRound2Explore?.drawStatus(c);if(story())drawBeat(c,S().byId[G.sideStoryScene.id],row());}});
 })(typeof globalThis!=='undefined'?globalThis:window);

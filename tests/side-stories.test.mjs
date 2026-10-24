@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+await import('../public/bladefall-quest-round2-stories.js');
 await import('../public/bladefall-side-stories.js');
 const S=globalThis.BladefallSideStories;
 const all=['weapon','dash','portal-single','portal-pair','wall-jump','downward-strike','gravity-flip','echo','chain-hook'];
