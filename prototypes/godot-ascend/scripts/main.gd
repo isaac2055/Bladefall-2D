@@ -1,10 +1,15 @@
 extends Node
+const World = preload("res://scripts/world.gd")
 const Core = preload("res://scripts/core.gd")
 const Loader = preload("res://scripts/room_loader.gd")
 const Landscape = preload("res://scripts/landscape.gd")
 const Controls = preload("res://scripts/controls.gd")
 const Sound = preload("res://scripts/audio.gd")
 var data
+var world
+var quest_label: Label
+var notice_label: Label
+var notice_time=0.0
 var sim
 var landscape
 var audio
@@ -18,6 +23,7 @@ var status: Label
 var title: Label
 var room_picker: OptionButton
 var watch_button: Button
+var restart_button: Button
 var capture_path = ""
 var capture_menu = false
 var audio_capture_path = ""
@@ -75,7 +81,9 @@ func _ready():
  if not test_mode: preferences.load("user://prototype-settings.cfg")
  RenderingServer.set_default_clear_color(Color("0b131c"))
  data = JSON.parse_string(FileAccess.get_file_as_string("res://data/world1.json"))
- sim = Core.new(data.constants,data.playerDefaults)
+ world=World.new(data)
+ data=world.data
+ sim=world.active()
  audio = Sound.new()
  for bus in audio.levels: audio.levels[bus] = float(preferences.get_value("audio",bus,audio.levels[bus]))
  audio.voices_enabled = preferences.get_value("audio","voices",true)
@@ -94,7 +102,9 @@ func _ready():
  landscape = Landscape.new()
  landscape.scale = Vector2(2,2)
  landscape.world_data = data
+ landscape.runtime = world
  viewport.add_child(landscape)
+ audio.world_runtime=world
  audio.spoken.connect(show_subtitle)
  landscape.reduced_motion = preferences.get_value("display","reduced_motion",false)
  create_interface()
@@ -128,6 +138,10 @@ func create_interface():
  var menu = button(header,"II  Esc",func():set_paused(not paused))
  menu.position = Vector2(1176,5)
  menu.size = Vector2(88,38)
+ quest_label=text(root_ui,"",13,"#c4c8aa")
+ quest_label.position=Vector2(24,56)
+ notice_label=text(root_ui,"",18,"#ead9a7")
+ notice_label.position=Vector2(24,91)
  room_banner = text(root_ui,"",27,"#e7dcc0")
  room_banner.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
  room_banner.position = Vector2(160,77)
@@ -153,12 +167,12 @@ func create_interface():
  scrim.size = Vector2(1280,832)
  pause_panel.add_child(scrim)
  var card = PanelContainer.new()
- card.position = Vector2(330,44)
- card.size = Vector2(620,744)
+ card.position = Vector2(330,24)
+ card.size = Vector2(620,784)
  card.add_theme_stylebox_override("panel",style("#14232e","#697b77",10))
  pause_panel.add_child(card)
  var column = VBoxContainer.new()
- column.add_theme_constant_override("separation",10)
+ column.add_theme_constant_override("separation",8)
  card.add_child(column)
  text(column,"THE OUTSKIRTS",30,"#e4d6ad")
  text(column,"A road through the old watch · Ascend",15,"#90a6ac")
@@ -166,8 +180,9 @@ func create_interface():
  row.add_theme_constant_override("separation",8)
  column.add_child(row)
  button(row,"Resume",func():set_paused(false))
- button(row,"Retry · R",func():load_section(current);set_paused(false))
+ button(row,"Retry · R",func():retry_room();set_paused(false))
  watch_button = button(row,"Watch route",func():toggle_watch();set_paused(false))
+ restart_button=button(column,"Start world over",restart_world)
  text(column,"EXPLORE A SECTION",12,"#bba984")
  room_picker = OptionButton.new()
  room_picker.custom_minimum_size = Vector2(560,40)
@@ -223,7 +238,7 @@ func _unhandled_input(event):
  if event.is_action_pressed("knight_pause"):
   set_paused(not paused)
   get_viewport().set_input_as_handled()
- elif event.is_action_pressed("knight_retry") and not paused: load_section(current)
+ elif event.is_action_pressed("knight_retry") and not paused: retry_room()
  elif event is InputEventKey and event.pressed:
   if event.physical_keycode==KEY_F11: toggle_fullscreen()
   elif event.physical_keycode==KEY_M:
@@ -250,6 +265,8 @@ func show_subtitle(who,line,seconds):
  landscape.speaker = who.to_lower()
 func _process(delta):
  if paused: return
+ notice_time=max(0,notice_time-delta)
+ notice_label.modulate.a=min(1.0,notice_time)
  banner_time = max(0,banner_time-delta)
  room_banner.modulate.a = clamp(banner_time,0,1)
  if subtitle_time>0:
@@ -260,6 +277,7 @@ func _process(delta):
 func toggle_watch():
  if watch:
   watch = false
+  sim.world_context=world
   hold = 0
   watch_button.text = "Watch route"
  else:
@@ -267,10 +285,14 @@ func toggle_watch():
   load_section(current)
 func load_section(index,smooth_join=false):
  current = index
- sim.prev = {}
- sim.buf = {"jump":0,"dash":0,"grab":0,"strike":0,"parry":0,"portal":0}
- sim.freeze = 0
- sim.load_room(Loader.parse(data.world.rooms[index]))
+ var id=data.world.rooms[index].id
+ world.enter(id,true)
+ sim=world.active()
+ if watch:
+  sim.load_room(world.parsed[id])
+  world.restore_progress(sim)
+  sim.world_context=null
+ else: sim.world_context=world
  landscape.load_scene(sim,smooth_join)
  audio.room_changed()
  tape = []
@@ -301,14 +323,28 @@ func _physics_process(_delta):
   if watch:
    if tape_frame<tape.size():
     sim.step(decode(tape[tape_frame]))
+    world.tick_inactive()
     tape_frame += 1
-  else: sim.step(input_now())
+  else: world.step(input_now())
   var effects = landscape.after_tick(before)
   audio.events(effects)
   audio.tick(sim,1.0/60.0)
-  if sim.exited:
-   if watch: hold = 45
-   else: next_section()
+  if not world.notices.is_empty():
+   notice_label.text=world.notices.pop_front()
+   notice_time=4.0
+   audio.effect("quest",0.6)
+  if watch and sim.exited: hold=45
+  if not watch and world.update_region():
+   sim=world.active()
+   current=world.regions.find(world.active_id)
+   landscape.sim=sim
+   landscape.active_position=world.placements[world.active_id]
+   landscape.snap_actor()
+   room_picker.select(current)
+   room_banner.text=sim.room.name.to_upper()
+   banner_time=1.4
+  quest_label.text=bearing_caption()
+
  dash_label.text = "◆ DASH" if sim.p.dashes>0 else "◇ DASH"
  dash_label.modulate = Color("edbf74") if sim.p.dashes>0 else Color("687e91")
  death_label.text = "%d DEATHS" % sim.deaths
@@ -331,7 +367,7 @@ func next_section():
     if not watch:
      sim.carry_from(snapshot,{"x":source.x*8,"y":source.y*8},{"x":destination.x*8,"y":destination.y*8},sim.room.def.get("atlasJunction",false))
      landscape.snap_actor()
-    if tape.is_empty() and watch: watch=false;watch_button.text="Watch route"
+    if tape.is_empty() and watch: watch=false;sim.world_context=world;watch_button.text="Watch route"
     return
  watch = false
 func capture():
@@ -356,3 +392,43 @@ func close_app(code=0):
  audio.shutdown()
  await get_tree().create_timer(0.15).timeout
  get_tree().quit(code)
+
+func bearing_caption():
+ var parts=[]
+ for name in ["ASH","GLASS","IRON"]: parts.append(("◆ " if world.bearings.has(name) else "◇ ")+name)
+ return "MARA · "+"   ".join(parts)
+func retry_room():
+ if watch:
+  load_section(current)
+  return
+ world.retry()
+ sim=world.active()
+ landscape.snap_actor()
+func restart_world():
+ world.restart()
+ audio.restart_world()
+ subtitle_panel.hide()
+ subtitle_time=0
+ landscape.speaker=""
+ landscape.clock=0
+ ticks=0
+ hold=0
+ tape=[]
+ tape_frame=0
+ watch=false
+ watch_button.text="Watch route"
+ title.text="THE OUTSKIRTS · ASCEND"
+ current=0
+ sim=world.active()
+ landscape.runtime=world
+ landscape.load_scene(sim)
+ room_picker.select(0)
+ room_banner.text=sim.room.name.to_upper()
+ banner_time=2.4
+ quest_label.text=bearing_caption()
+ notice_label.text="A new journey · The Outskirts"
+ notice_time=3
+ set_paused(false)
+
+func _exit_tree():
+ if world!=null: world.shutdown()

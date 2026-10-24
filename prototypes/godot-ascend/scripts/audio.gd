@@ -1,6 +1,7 @@
 extends Node
 ## Existing project recordings only. Buses isolate dialogue and duck music without cutting a line.
 signal spoken(name: String, text: String, seconds: float)
+var world_runtime=null
 var manifest = {}
 var cache = {}
 var music: AudioStreamPlayer
@@ -113,6 +114,9 @@ func tick(core,delta):
  for who in core.room.def.get("people",[]):
   if abs(p.x+4-who.c*8)<44 and abs(p.y+11-(who.r*8+8))<25:
    var key = core.room.id+":"+who.who+":line"
+   if who.who=="mara" and world_runtime!=null and world_runtime.mara_complete:
+    key="cl1-o1-muster:mara:lineDone"
+    world_runtime.register_mara()
    if not heard.has(key):
     heard[key] = true
     if manifest.voices.has(key): voice_queue.append(manifest.voices[key])
@@ -175,3 +179,11 @@ func shutdown():
  cache.clear()
 
 func _exit_tree(): shutdown()
+
+func restart_world():
+ heard.clear()
+ voice_queue.clear()
+ active_voice={}
+ speech.stop()
+ music.seek(0)
+ foot_clock=0

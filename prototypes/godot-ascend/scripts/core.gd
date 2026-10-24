@@ -2,6 +2,8 @@ class_name AscendCore
 extends RefCounted
 ## Native, fixed-tick port of bladefall-pcore.js. No CharacterBody2D or delta physics.
 const DT = 1.0 / 60.0
+var world_context = null
+var world_origin = Vector2.ZERO
 var K = {}
 var room = {}
 var p = {}
@@ -64,6 +66,7 @@ func emit_event(kind: String):
  events.append(kind)
 
 func tile(c: int, r: int):
+ if world_context!=null: return world_context.tile_global(c+int(world_origin.x/8),r+int(world_origin.y/8))
  if c < 0 or c >= room.cols or r < 0 or r >= room.rows: return 0
  return room.grid[r * int(room.cols) + c]
 
@@ -81,6 +84,7 @@ func solid_entity(e):
  return false
 
 func blocker(x,y,w,h, ignore = -1):
+ if world_context!=null: return world_context.blocker(self,x,y,w,h,ignore)
  var ex = room.exit
  var side = room.def.get("side", "")
  var span = room.def.get("exitSpan",[])
@@ -100,6 +104,7 @@ func blocker(x,y,w,h, ignore = -1):
 func solid(x,y,w,h,ignore = -1): return blocker(x,y,w,h,ignore) != -1
 func body_solid(dx,dy,w = -1,h = -1): return solid(p.x+dx,p.y+dy,p.w if w<0 else w,p.h if h<0 else h)
 func thru(a):
+ if world_context!=null: return world_context.thru_global(self,a)
  var bottom = a.y+a.h
  if fmod(bottom,8) == 0:
   for c in range(floori(a.x/8.0),floori((a.x+a.w-1)/8.0)+1):
@@ -482,7 +487,7 @@ func step(raw):
  var intent = inp.duplicate()
  intent.mx = p.forceMoveX if p.forceMoveTimer>0 else inp.mx
  if p.get("dropT",0)>0: p.dropT -= 1
- if room.def.get("dropThru",false) and inp.my>0 and buf.jump>0 and p.state=="normal" and thru(p) and not body_solid(0,1):
+ if (world_context!=null or room.def.get("dropThru",false)) and inp.my>0 and buf.jump>0 and p.state=="normal" and thru(p) and not body_solid(0,1):
   buf.jump = 0
   p.dropT = 8
   p.jumpGrace = 0
@@ -528,7 +533,7 @@ func step(raw):
  interact()
  if p.state != "dead":
   sweeper_collision(from)
- if p.state != "dead": check_exit()
+ if p.state != "dead" and world_context==null: check_exit()
 func update_entities():
  var pressed = false
  for e in ents:
@@ -573,7 +578,7 @@ func interact():
    if hit!=null and overlap(rect(p.x,p.y,p.w,9),hit):
     die()
     return
- if p.y>room.h+2 and room.exit!="down" and room.def.get("side","")!="down":
+ if world_context==null and p.y>room.h+2 and room.exit!="down" and room.def.get("side","")!="down":
   die()
   return
  for e in ents:

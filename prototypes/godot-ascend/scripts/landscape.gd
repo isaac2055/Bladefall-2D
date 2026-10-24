@@ -2,6 +2,7 @@ extends Node2D
 ## Presentation is interpolated and layered; the integer simulation is never modified here.
 const Room = preload("res://scripts/room_loader.gd")
 var sim
+var runtime = null
 var world_data
 var placements = {}
 var sections = []
@@ -16,6 +17,7 @@ var ambient: CanvasModulate
 var wind: GPUParticles2D
 var post: ColorRect
 var fires = []
+var wall_lamps=[]
 var surfaces = []
 var decorations = []
 var people = []
@@ -55,6 +57,7 @@ func _ready():
  occluders = Node2D.new()
  add_child(occluders)
  build_terrain()
+ draw_boundary_tiles()
  front = Node2D.new()
  front.z_index = 2
  front.draw.connect(draw_front)
@@ -93,9 +96,9 @@ func _ready():
  add_child(post)
 func hash_at(x,y,salt=0): return posmod(int(x)*73856093^int(y)*19349663^int(salt)*83492791,2147483647)
 func make_tiles():
- var image = Image.create(128,8,false,Image.FORMAT_RGBA8)
+ var image = Image.create(160,8,false,Image.FORMAT_RGBA8)
  image.fill(Color.TRANSPARENT)
- for variant in range(16):
+ for variant in range(20):
   for y in range(8):
    for x in range(8):
     if variant==15:
@@ -117,11 +120,16 @@ func make_tiles():
     elif variant==9 and x==7: color = Color("6a7880")
     elif variant==10 and y==7: color = Color("7a8581")
     if variant in [5,7,11] and x==((y+variant)%6)+1 and y in [3,4,5]: color = Color("2c3440")
+    if variant>=16:
+     color=Color("252e3a").lightened(float(variant-16)*0.012)
+     if x==7 or y==7: color=Color("1b2430")
+     elif y==0: color=color.lightened(0.035)
+     if hash_at(x,y,variant)%19==0: color=color.lightened(0.04)
     image.set_pixel(variant*8+x,y,color)
  var atlas = TileSetAtlasSource.new()
  atlas.texture = ImageTexture.create_from_image(image)
  atlas.texture_region_size = Vector2i(8,8)
- for x in range(16): atlas.create_tile(Vector2i(x,0))
+ for x in range(20): atlas.create_tile(Vector2i(x,0))
  var result = TileSet.new()
  result.tile_size = Vector2i(8,8)
  result.add_source(atlas,0)
@@ -136,6 +144,9 @@ func build_terrain():
    for c in range(cols):
     var ch = Room.glyph(d,c,r)
     var cell = Vector2i(c,r)+Vector2i(origin/8)
+    if runtime!=null:
+     var value=runtime.cells.get(cell,0)
+     ch="#" if value==1 else ("=" if value==2 else ch)
     if ch in ["#","%"]:
      var above = Room.glyph(d,c,r-1) if r>0 else "#"
      var variant = 4+hash_at(cell.x,cell.y)%4
@@ -155,9 +166,20 @@ func build_terrain():
    var position_in_world = placements[section.room]+Vector2(section.fire.c*8+3,section.fire.r*8+7)
    if not fires.any(func(f):return f.distance_to(position_in_world)<16): fires.append(position_in_world)
  for item in decorations:
+  if item.d.k=="sconce": wall_lamps.append(item.origin+Vector2(item.d.c*8+9,item.d.r*8-2))
   if item.d.k=="watchfire":
    var position_in_world = item.origin+Vector2(item.d.c*8+4,item.d.r*8+7)
    if not fires.any(func(f):return f.distance_to(position_in_world)<16): fires.append(position_in_world)
+func draw_boundary_tiles():
+ if runtime==null: return
+ for cell in runtime.closed_edges: tiles.set_cell(cell,0,Vector2i(10 if posmod(cell.y,5)==0 else 8,0))
+ # A dark rock backing around each outer wall prevents seeing into unbuilt outside space.
+ for id in runtime.regions:
+  var area=runtime.rectangles[id]
+  for r in range(int(area.position.y/8)-24,int(area.end.y/8)+24):
+   for c in range(int(area.position.x/8)-24,int(area.end.x/8)+24):
+    var cell=Vector2i(c,r)
+    if not runtime.cells.has(cell): tiles.set_cell(cell,0,Vector2i(16+hash_at(c,r)%4,0))
 func make_lights():
  var image = Image.create(128,128,false,Image.FORMAT_RGBA8)
  for y in range(128):
@@ -165,7 +187,7 @@ func make_lights():
    var distance = Vector2(x-64,y-64).length()/64.0
    image.set_pixel(x,y,Color(1,0.75,0.46,pow(max(0,1-distance),2)))
  var texture = ImageTexture.create_from_image(image)
- for point in fires:
+ for point in fires+wall_lamps:
   var light = PointLight2D.new()
   light.texture = texture
   light.energy = 1.5
@@ -199,7 +221,7 @@ func load_scene(core,smooth_join=false):
  active_position = placements.get(sim.room.id,Vector2.ZERO)
  snap_actor()
  if not smooth_join:
-  camera_float = target_camera()
+  camera_float = Vector2(max(0,actor.x-153),actor.y-133) if runtime!=null else target_camera()
   camera = camera_float
   fade = 0.16
   trails.clear()
@@ -215,9 +237,11 @@ func snap_actor():
 func before_tick():
  if sim==null: return {}
  previous_actor = current_actor
- var states = []
- for e in sim.ents: states.append({"lit":e.get("lit",false),"open":e.get("open",false),"broken":e.get("broken",false),"solid":e.get("solid",true),"shaking":e.get("shaking",0),"down":e.get("down",false),"timer":e.timer,"state":e.state,"returning":e.get("returning",false),"gone":e.get("gone",false)})
+ var states = {}
+ for e in sim.ents: states[entity_key(e)] = {"lit":e.get("lit",false),"open":e.get("open",false),"broken":e.get("broken",false),"solid":e.get("solid",true),"shaking":e.get("shaking",0),"down":e.get("down",false),"timer":e.timer,"state":e.state,"returning":e.get("returning",false),"gone":e.get("gone",false)}
  return {"entities":states,"frame":sim.frame}
+func entity_key(e):
+ return str(e.get("source_room", ""))+":"+str(e.get("source_id", e.id))
 func after_tick(before):
  if before.is_empty() or before.frame==sim.frame: return []
  current_actor = active_position+Vector2(sim.p.x,sim.p.y)
@@ -225,7 +249,9 @@ func after_tick(before):
  var types = sim.events.duplicate()
  for i in range(sim.ents.size()):
   var e = sim.ents[i]
-  var old = before.entities[i]
+  var key=entity_key(e)
+  if not before.entities.has(key): continue
+  var old = before.entities[key]
   var type = ""
   if e.type=="stone" and e.get("lit",false) and not old.lit: type="stone-lit"
   elif e.type=="gate" and e.get("open",false) and not old.open: type="gate-open"
@@ -272,8 +298,13 @@ func burst(point,count,color,speed):
   var a = float(i)*TAU/count+clock
   particles.append({"p":point,"v":Vector2(cos(a)*speed,sin(a)*speed*0.6-10),"life":0.3+float(i%4)*0.09,"max":0.57,"color":color})
 func target_camera():
- var look = clamp(sim.p.vx*0.07,-13,13) if not reduced_motion else 0
- return Vector2(max(0,actor.x-153+look),active_position.y+clamp(actor.y-active_position.y-94,0,max(0,sim.room.h-184)))
+ var look=clamp(sim.p.vx*0.07,-13,13) if not reduced_motion else 0
+ if runtime==null: return Vector2(max(0,actor.x-153+look),active_position.y+clamp(actor.y-active_position.y-94,0,max(0,sim.room.h-184)))
+ # Ownership changes never change framing. Follow a world-space dead zone instead.
+ var y=camera_float.y
+ if actor.y-y<62: y=actor.y-62
+ elif actor.y-y>136: y=actor.y-136
+ return Vector2(max(0,actor.x-153+look),y)
 func _process(delta):
  clock += delta
  if sim==null: return
@@ -400,20 +431,24 @@ func draw_front():
  for item in people:
   var point = item.origin+Vector2(item.d.c*8,item.d.r*8+8)
   if view.has_point(point): draw_person(item.d,point,item.room==sim.room.id)
- # Active hazards and machinery preserve the exact original geometry.
- for r in range(int(sim.room.rows)):
-  for c in range(int(sim.room.cols)):
-   var t = sim.tile(c,r)
-   if t>=3: draw_hazard(t,active_position+Vector2(c*8,r*8))
- for e in sim.ents: draw_entity(e,active_position)
- for e in sim.sweepers:
-  var point = active_position+Vector2(e.x,e.y)
-  circle(point,e.radius+2,Color(0.8,0.42,0.33,0.08))
-  circle(point,e.radius,Color("935d5d"))
-  circle(point,e.radius-1,Color("bf8980"))
-  for i in range(8):
-   var a = clock*1.8+i*TAU/8
-   line(point+Vector2(cos(a),sin(a))*(e.radius-1),point+Vector2(cos(a),sin(a))*(e.radius+2),"#e0b09f",0.8)
+ # Every room's actual state is visible before entry and retained after departure.
+ var scenes=runtime.cores.values() if runtime!=null else [sim]
+ for scene in scenes:
+  var origin=scene.world_origin if runtime!=null else active_position
+  if not Rect2(origin,Vector2(scene.room.w,scene.room.h)).intersects(view): continue
+  for r in range(int(scene.room.rows)):
+   for c in range(int(scene.room.cols)):
+    var t=scene.room.grid[r*int(scene.room.cols)+c]
+    if t>=3: draw_hazard(t,origin+Vector2(c*8,r*8))
+  for e in scene.ents: draw_entity(e,origin)
+  for e in scene.sweepers:
+   var point=origin+Vector2(e.x,e.y)
+   circle(point,e.radius+2,Color(0.8,0.42,0.33,0.08))
+   circle(point,e.radius,Color("935d5d"))
+   circle(point,e.radius-1,Color("bf8980"))
+   for i in range(8):
+    var a=clock*1.8+i*TAU/8
+    line(point+Vector2(cos(a),sin(a))*(e.radius-1),point+Vector2(cos(a),sin(a))*(e.radius+2),"#e0b09f",0.8)
  for trail in trails:
   var alpha = trail.life/0.18*0.3
   box(trail.p.x+1,trail.p.y,6,10,Color(0.88,0.77,0.51,alpha))
@@ -443,6 +478,13 @@ func draw_prop(kind,point):
  var x = point.x
  var y = point.y
  match kind:
+  "sconce":
+   box(x+5,y-15,2,10,"#526466")
+   line(Vector2(x+6,y-10),Vector2(x+12,y-12),"#a79d78",1.2)
+   box(x+10,y-16,3,5,"#a58b60")
+   var height=4+sin(clock*9+x)*1.2
+   box(x+10,y-16-height,3,height,"#e7a95f")
+   box(x+11,y-17-height*.6,1,height*.7,"#f1d797")
   "tent":
    polygon([Vector2(x-8,y),Vector2(x+9,y-22),Vector2(x+31,y)],"#777b64")
    polygon([Vector2(x+10,y),Vector2(x+9,y-22),Vector2(x+31,y)],"#4e5b52")
@@ -540,7 +582,10 @@ func draw_entity(e,origin):
  var y = origin.y+e.y
  match e.type:
   "gate","held":
-   if e.get("open",false) or e.type=="held" and not e.solid: return
+   if e.type=="held" and not e.solid: return
+   if e.get("open",false):
+    if e.t>=18: return
+    y-=e.h*(1-pow(1-float(e.t)/18,2))
    box(x-1,y,e.w+2,e.h,"#36434a")
    for c in range(0,int(e.w),4):
     box(x+c,y,1.5,e.h,"#b4b294")

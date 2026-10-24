@@ -70,5 +70,6 @@ static func parse(definition: Dictionary):
  assert(room.spawn!=null,"Map needs a P spawn: "+definition.id)
  return room
 static func glyph(d,c,r):
+ if r<0 or c<0: return "."
  if r>=d.map.size() or c>=d.map[r].length(): return "."
  return d.map[r][c]
