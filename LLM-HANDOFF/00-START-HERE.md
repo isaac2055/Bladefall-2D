@@ -18,6 +18,9 @@ Read this first. Then read the newest entries at the top of `01-CURRENT-STATE.md
   - Explore watch routes: `bladefall-explore-routes.js` and `scripts/explore-routes/`.
 - **Server:** `server/playtest-service.mjs` and `cloudflare/worker.js` (a Durable Object with SQLite). Deploy it with `npm run deploy:api`; this needs Isaac's OK. Public feedback is read at `/api/playtest?feedback=1`.
 
+## Quests
+See `QUESTS-HANDOFF.md` (how the reworked quests are built, six fixes owed, and the proposal for the next ones).
+
 ## Shipping a change (standing authorization: commit and push to main after checks; never Netlify; never force-push)
 1. Check for concurrent work. Codex and cloud sessions also push: run `git pull`, then read the top of `01-CURRENT-STATE.md`.
 2. Bump the version:
