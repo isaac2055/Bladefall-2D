@@ -1,0 +1,177 @@
+extends Node
+## Existing project recordings only. Buses isolate dialogue and duck music without cutting a line.
+signal spoken(name: String, text: String, seconds: float)
+var manifest = {}
+var cache = {}
+var music: AudioStreamPlayer
+var ambience: AudioStreamPlayer
+var speech: AudioStreamPlayer
+var fire: AudioStreamPlayer
+var voices_enabled = true
+var heard = {}
+var voice_queue = []
+var active_voice = {}
+var counts = {"effects":0,"voices":0,"steps":0}
+var cycle = {}
+var elapsed = 0.0
+var effort_time = -10.0
+var foot_clock = 0.0
+var work_clock = 0.0
+var paused = false
+var levels = {"Music":0.55,"Effects":0.7,"Voices":0.9,"Ambience":0.4}
+var capture_effect: AudioEffectCapture
+var recorded = PackedVector2Array()
+const EVENT_CLIPS = {"jump":"jump","walljump":"walljump","super":"dash","hyper":"dash","wallbounce":"walljump","dash-start":"dash","land":"land-soft","refill":"gem","death":"death","strike":"swing","stone-lit":"rune","gate-open":"gate","crumble":"crumble","crumble-shake":"crumble","shard":"gem","zip-start":"zip","zip-stop":"stone-hit","pickup":"lantern","throw":"dash","plate":"plate","held-open":"lever","held-close":"lever","lantern-lost":"shatter","climbhop":"grab","grab":"grab"}
+func _ready():
+ manifest = JSON.parse_string(FileAccess.get_file_as_string("res://data/audio.json"))
+ for bus in levels:
+  if AudioServer.get_bus_index(bus)<0:
+   AudioServer.add_bus()
+   AudioServer.set_bus_name(AudioServer.bus_count-1,bus)
+   AudioServer.set_bus_send(AudioServer.bus_count-1,"Master")
+ apply_levels()
+ var index = AudioServer.get_bus_index("Master")
+ if AudioServer.get_bus_effect_count(index)==0:
+  var limiter = AudioEffectLimiter.new()
+  limiter.ceiling_db = -0.6
+  AudioServer.add_bus_effect(index,limiter)
+ music = player("Music")
+ music.stream = stream(manifest.music,true)
+ music.volume_db = -8
+ music.play()
+ ambience = player("Ambience")
+ ambience.stream = stream(manifest.ambience,true)
+ ambience.volume_db = -10
+ ambience.play()
+ fire = player("Ambience")
+ fire.stream = stream(manifest.effects["spot-fire"][0],true)
+ fire.volume_db = -40
+ fire.play()
+ speech = player("Voices")
+ speech.finished.connect(func():active_voice = {})
+ apply_levels()
+func player(bus):
+ var node = AudioStreamPlayer.new()
+ node.bus = bus
+ add_child(node)
+ return node
+func stream(relative,loop = false):
+ var key = relative+str(loop)
+ if not cache.has(key):
+  var original = load("res://audio/"+relative)
+  assert(original is AudioStreamMP3,"Missing recorded stream: "+relative)
+  var clip = original.duplicate()
+  clip.loop = loop
+  cache[key] = clip
+ return cache[key]
+func apply_levels():
+ for bus in levels:
+  AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus),linear_to_db(max(0.0001,levels[bus])))
+  AudioServer.set_bus_mute(AudioServer.get_bus_index(bus),levels[bus]<=0.0001)
+func effect(name,gain = 1.0,pitch = 1.0):
+ if not manifest.effects.has(name): return
+ var files = manifest.effects[name]
+ var index = cycle.get(name,0)%files.size()
+ cycle[name] = index+1
+ var node = player("Effects")
+ node.stream = stream(files[index])
+ node.volume_db = linear_to_db(max(0.0001,0.48*gain))
+ node.pitch_scale = pitch
+ node.finished.connect(node.queue_free)
+ node.play()
+ counts.effects += 1
+func events(types):
+ for kind in types:
+  if EVENT_CLIPS.has(kind): effect(EVENT_CLIPS[kind],0.32 if kind=="crumble-shake" else 1.0)
+  if kind=="death": effort("kn-death",true)
+  elif kind in ["jump","walljump","super","hyper","dash-start","climbhop"] and elapsed-effort_time>1.6 and not speech.playing and (cycle.get("effort",0)%3)==0:
+   effort("kn-dash" if kind=="dash-start" else ("kn-climb" if kind=="climbhop" else "kn-jump"))
+  if kind in ["jump","walljump","super","hyper","dash-start","climbhop"]: cycle.effort = cycle.get("effort",0)+1
+func effort(name,force = false):
+ if speech.playing and not force: return
+ effort_time = elapsed
+ effect(name,0.58)
+func room_changed():
+ # A heard line finishes naturally across a doorway; repeated retry does not restart the recording.
+ foot_clock = 0.1
+func tick(core,delta):
+ elapsed += delta
+ if paused: return
+ var p = core.p
+ if p.onGround and p.state=="normal" and abs(p.vx)>20:
+  foot_clock -= delta
+  if foot_clock<=0:
+   effect("step-dirt",0.42,1.0+sin(elapsed)*0.025)
+   counts.steps += 1
+   foot_clock = 0.26
+ else: foot_clock = min(foot_clock,0.07)
+ work_clock -= delta
+ if work_clock<=0 and (p.state=="climb" and abs(p.vy)>4 or p.state=="normal" and p.vy>0 and core.climb_check(p.facing)):
+  effect("wallslide",0.2)
+  work_clock = 0.35
+  if elapsed-effort_time>2.8 and not speech.playing: effort("kn-climb")
+ for who in core.room.def.get("people",[]):
+  if abs(p.x+4-who.c*8)<44 and abs(p.y+11-(who.r*8+8))<25:
+   var key = core.room.id+":"+who.who+":line"
+   if not heard.has(key):
+    heard[key] = true
+    if manifest.voices.has(key): voice_queue.append(manifest.voices[key])
+    else: spoken.emit(who.get("name",who.who.capitalize()),who.line,6.0)
+ if not speech.playing and not voice_queue.is_empty(): say(voice_queue.pop_front())
+ var fires = core.room.def.get("decor",[]).filter(func(d):return d.k=="watchfire")
+ var distance = abs(p.x-fires[0].c*8) if not fires.is_empty() else 1000.0
+ fire.volume_db = lerp(fire.volume_db,linear_to_db(max(0.0001,0.35*(1-clamp(distance/150,0,1)))),0.08)
+func say(line):
+ active_voice = line
+ spoken.emit(line.name,line.text,line.seconds)
+ if voices_enabled:
+  speech.stream = stream(line.path)
+  speech.volume_db = -1
+  speech.play()
+  counts.voices += 1
+func set_paused(value):
+ paused = value
+ for node in get_children():
+  if node is AudioStreamPlayer: node.stream_paused = value
+func _process(delta):
+ if not is_instance_valid(music): return
+ music.volume_db = move_toward(music.volume_db,-17.0 if speech.playing else -8.0,delta*16)
+ if capture_effect!=null:
+  var count = capture_effect.get_frames_available()
+  if count>0: recorded.append_array(capture_effect.get_buffer(count))
+func start_capture():
+ capture_effect = AudioEffectCapture.new()
+ capture_effect.buffer_length = 2.0
+ AudioServer.add_bus_effect(0,capture_effect)
+func save_capture(path):
+ var file = FileAccess.open(path,FileAccess.WRITE)
+ var bytes = recorded.size()*4
+ file.store_buffer("RIFF".to_ascii_buffer())
+ file.store_32(bytes+36)
+ file.store_buffer("WAVEfmt ".to_ascii_buffer())
+ file.store_32(16)
+ file.store_16(1)
+ file.store_16(2)
+ file.store_32(int(AudioServer.get_mix_rate()))
+ file.store_32(int(AudioServer.get_mix_rate())*4)
+ file.store_16(4)
+ file.store_16(16)
+ file.store_buffer("data".to_ascii_buffer())
+ file.store_32(bytes)
+ for sample in recorded:
+  file.store_16(int(clamp(sample.x,-1,1)*32767)&65535)
+  file.store_16(int(clamp(sample.y,-1,1)*32767)&65535)
+ file.close()
+
+func shutdown():
+ if capture_effect!=null:
+  for i in range(AudioServer.get_bus_effect_count(0)-1,-1,-1):
+   if AudioServer.get_bus_effect(0,i)==capture_effect: AudioServer.remove_bus_effect(0,i)
+  capture_effect = null
+ for node in get_children():
+  if node is AudioStreamPlayer:
+   node.stop()
+   node.stream = null
+ cache.clear()
+
+func _exit_tree(): shutdown()

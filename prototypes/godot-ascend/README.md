@@ -12,13 +12,17 @@ prototypes/godot-ascend/tools/run.sh
 
 The local standalone application is `exports/Bladefall Ascend Prototype.app`. Rebuild with `tools/build-macos.sh`. The app carries its own Godot binary and packed project, and runs without the repository or Node. Exports and engine downloads are ignored by Git. This first package uses the universal editor binary as its runtime carrier (about 352 MB), rather than a size-optimized export template. The game data and scripts are packed separately in the small PCK. The local app is ad-hoc signed for local use; it is not Developer ID signed or notarized for distribution.
 
-Use arrows or A/D to move, Space to jump, X to dash, Shift to grab a wall or pick up/throw the lantern, and Up/Down or W/S to aim or climb. R restarts. **Watch route** plays the existing recorded inputs; **Take control** returns to keyboard play. The room selector includes all 29 world 1 rooms, including optional routes and connecting passages. **Lighting** toggles Godot's ambient and point lights for comparison.
+Controls now match the browser defaults: **arrows** move/aim, **Space/C/J** jump, **D/X/K** dash, **A/Z/Shift/L** cling/climb/carry/throw, **W/V/I** strike, **F/O** parry, **P** portal and **R** retry. World 1's original action locks still apply. **Esc** opens the pause menu; **M** toggles music and **F11** toggles fullscreen. The standard controller equivalents are mapped too (stick/d-pad, A jump, X/B dash, LB/LT cling, Y strike, RB portal and RT parry).
+
+The pause menu contains the room selector, Watch/Take control, four separate volume controls, spoken dialogue toggle, reduced motion and lighting comparison. Audio and display preferences persist locally. The app starts directly in the game rather than an engine-study toolbar.
 
 ## What is native
 
 - `scripts/core.gd`: fixed 60 Hz movement with per-pixel collision, subpixel remainders, JavaScript-compatible negative rounding, buffers, coyote time, variable jumps, directional dashes and freeze, supers/hypers/wallbounces, wall climbing and stamina. World 1's stakes/gates, lantern/plates, refills, crumbling platforms, moving lifts and swept thorn collisions are simulated in GDScript. Godot physics bodies are not used.
 - `scripts/room_loader.gd`: reads the authored character maps at 8 pixels per tile, including grouped machinery. The runtime does not contain or use the JavaScript-parsed collision arrays.
-- `scripts/landscape.gd`: native TileMapLayer terrain, nearest-neighbour pixel drawing, rebuilt scenery, CanvasModulate ambient light and a PointLight2D fire. Adjoining terrain is visible, and room transfers retain the browser's position/motion rules.
+- `scripts/landscape.gd`: cached TileMapLayer terrain with varied stone, grass edges and weathering; layered hills, clouds, towers and arches; animated tents, flags, clocks, palisades, campfires and NPC work poses; native GPU embers and drifting motes; ambient/point lighting with real terrain shadow occluders; a restrained grading/vignette shader. Jump, landing, dash, refill, gate and death effects sit above the unchanged simulation. Render interpolation, camera easing and a constrained animated plume smooth movement at higher display refresh rates. The plume turns slate when the dash is spent. Adjoining terrain stays visible across doors.
+- `scripts/audio.gd`: original **Midnight Field** score and plains ambience, nearby fire audio, alternating existing effect/effort takes, footsteps and climbing sounds. Music continues across rooms, ducks beneath speech, and pauses/resumes with gameplay. Spoken NPC lines are queued, not cut off or restarted every frame; matching subtitles stay readable when voices are disabled.
+- `scripts/controls.gd`: physical keyboard mappings imported from the shipping browser defaults, plus named Godot gamepad equivalents.
 - `scripts/main.gd`: keyboard actions, room selection, retry, recorded route playback, continuous main-road handoffs, and the comparison lighting toggle.
 - `data/world1.json`: the original world definitions, tapes, constants, player defaults and source provenance. Parsed test oracles are generated fresh by the reference runner. Source hashes identify the exact browser modules used. JavaScript is used only by the development exporter/reference tests, never inside the Godot application.
 
@@ -35,14 +39,28 @@ node prototypes/godot-ascend/tools/seam-check.mjs
 
 The reference runner loads the real browser core and all its device modules. It generates fresh traces, then launches Godot to compare native state every frame. The checked state includes player scalar fields (positions, velocities, remainders, stamina, movement states and timers), entity fields, carried-object identity, freeze/death/exit state, and the native map/entity parser. Numeric tolerance is 1e-8; whole-pixel movement is unchanged.
 
-Current result: **18 authored route traces + 29 deterministic varied-input probes, 14,221 compared frames, no differences**. All 14 main-road transfers also match the browser. The application check feeds real keyboard events, loads every room, plays all 14 main challenges to the crossroads without death, and takes control from playback. Captures from the actual GPU renderer and browser are in `.cache/godot/`.
+Current result: **18 authored route traces + 29 deterministic varied-input probes, 14,221 compared frames, no differences**. Physics and map-loading sources remain byte-for-byte unchanged by the polish pass. All 14 main-road transfers also match the browser. The application check feeds real keyboard events, loads every room, plays all 14 main challenges to the crossroads without death, and takes control from playback. Captures from the actual GPU renderer and browser are in `.cache/godot/`; the second pass is under `.cache/godot/polish/`. A captured mixed WAV demonstrates music, effects and speech with no clipped samples in the inspected take. One actual GPU capture reported 118 fps on this Mac; this is an observation, not a portable performance guarantee.
+
+Additional checks:
+
+```sh
+node prototypes/godot-ascend/tools/import-controls.mjs --check
+node prototypes/godot-ascend/tools/import-audio.mjs --check
+.cache/godot/Godot.app/Contents/MacOS/Godot --headless --audio-driver Dummy --path prototypes/godot-ascend --script res://tests/polish.gd
+```
+
+The polish check verifies the real D/A/C/W events, controller input events, all 79 MP3 decodes, non-silent output from Godot's mix bus, exact matching speech/subtitles at all six main-road NPC approaches, no repeated speech, ducking, mute, pause/resume, actual shadow occluders, and reduced motion. It does not write user preferences. Physical controller hardware has not been exercised.
 
 `tools/export-world.mjs` regenerates data after an intentional browser source update. `--check` detects stale exports. These checks establish world 1 compatibility, not compatibility with later worlds or every engine module.
 
 ## Deliberate prototype boundaries
 
-This contains the full world 1 room data and its movement/interactions, with all rooms selectable for inspection. It does not port the campaign menus, saves, quests/dialogue, audio, co-op, between-world travel, or later-region devices. Optional branches can be opened from the selector; campaign unlock/quest routing is not implemented. Art is a basic Godot treatment, not a pixel-for-pixel copy of the browser renderer. The next decision is whether this looks and feels worth pursuing before expanding scope. Explore remains a later, separate prototype.
+This contains the full world 1 room data and its movement/interactions, with all rooms selectable for inspection. It does not port campaign saves, quest progression, co-op, between-world travel, or later-region devices. Existing NPC dialogue is now spoken on approach, but its quest progression is still outside this prototype. Optional branches can be opened from the selector; campaign unlock/quest routing is not implemented. Art is a more detailed Godot treatment, not a pixel-for-pixel copy of the browser renderer. The next decision is whether this looks and feels worth pursuing before expanding scope. Explore remains a later, separate prototype.
 
-No changes to the shipping game, dialogue, recordings or deployment are required. No ElevenLabs calls are made.
+## Reused audio provenance
+
+`tools/import-audio.mjs` copies 79 existing source files byte-for-byte into `audio/` and records their paths and SHA-256 hashes in `data/audio.json`: the Outskirts score, plains ambience, effects/effort variations and eight matching NPC recordings (six approach lines plus two existing completion clips reserved for future quest integration). No dialogue was rewritten and no audio was generated. The existing unvoiced root-tender line in a between-world connector remains subtitle-only. `audio/ATTRIBUTION.md` preserves the original project provenance.
+
+`tools/import-controls.mjs` extracts the actual keyboard/pad defaults from `public/bladefall-pcore-view.js`; its check detects drift. Neither importer changes the browser game. No ElevenLabs calls are made.
 
 Godot binary: [official 4.5.1 release](https://github.com/godotengine/godot/releases/tag/4.5.1-stable). Engine license is included in `GODOT-LICENSE.txt`; Godot includes its third-party license viewer. [Godot's command-line documentation](https://docs.godotengine.org/en/stable/tutorials/editor/command_line_tutorial.html) covers editor and project launches.

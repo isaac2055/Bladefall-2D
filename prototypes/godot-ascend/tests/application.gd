@@ -10,6 +10,7 @@ func check(ok,message):
  return true
 func run():
  var app = Main.instantiate()
+ app.test_mode = true
  root.add_child(app)
  await process_frame
  app.set_physics_process(false)
@@ -47,8 +48,15 @@ func run():
   if app.sim.room.id=="cl1-atlas-crossroads": break
   app._physics_process(1.0/60.0)
  if not check(visited.size()==15 and app.sim.deaths==0,"Watch traverses all 14 main challenges to the crossroads without deaths"): return
+ if not check(not app.watch,"Watch ends cleanly at the world 1 crossroads"): return
+ app.watch = true
+ app.load_section(0)
+ for i in range(20): app._physics_process(1.0/60.0)
  var takeover_position = [app.sim.p.x,app.sim.p.y]
  app.watch_button.pressed.emit()
  if not check(not app.watch and takeover_position==[app.sim.p.x,app.sim.p.y],"Take control keeps the current position and returns to keyboard play"): return
  print("PASS application integration")
+ app.queue_free()
+ await process_frame
+ await create_timer(0.15).timeout
  quit(0)

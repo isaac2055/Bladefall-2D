@@ -1,3 +1,11 @@
+## Godot prototype 0.2.0 — standard controls, reused audio and presentation polish (2026-10-24, Codex)
+
+- Branch only: `codex/godot-ascend-prototype`. Isaac approved the first prototype and requested this polish pass. No web deployment, new voice generation, dialogue edits or Explore work.
+- Standard browser controls are imported and verified (D dash, A cling, C jump, W strike, arrows move/aim, full aliases/controller equivalents). Pause now contains room selection, Watch, volumes, voice and reduced-motion controls; M toggles music and F11 fullscreen.
+- Reuse the existing Midnight Field score, plains/fire ambience, effects and effort takes, and matching NPC recordings. All 79 assets match source hashes, including in the exported PCK. Six main-road NPC approaches speak with exact subtitles; music ducks under speech and survives room changes. Dialogue queues, mute, pause/resume and saved preferences are implemented. No ElevenLabs credits were spent on generation.
+- Extensive native presentation pass: cached varied masonry, foliage, parallax scenery, authored prop/NPC animations, GPU particles, fire lights and real terrain shadows, grading, dash trails/action bursts, dash-readiness plume, render interpolation and camera easing. Physics/map data remain unchanged.
+- Validation: 14,221 browser/native frames; 14 room transfers; real control input/audio/mixing/subtitle tests; all 79 packed MP3 hashes/decodes; all 29 room loads and full main-road Watch without death. Actual packaged app launch/render/audio capture passes (zero clipped samples). See `GODOT-ASCEND-PROTOTYPE.md` for evidence and the MP3 resource-loading packaging trap. Local signed-for-local-use app rebuilt as 0.2.0.
+
 ## Godot Ascend prototype — isolated branch, no web release (2026-10-24, Codex)
 
 - Isaac approved a small Ascend world 1 prototype on `codex/godot-ascend-prototype`; Explore comes later. See `GODOT-ASCEND-PROTOTYPE.md` and `prototypes/godot-ascend/README.md`.

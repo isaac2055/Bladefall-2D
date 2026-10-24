@@ -1,0 +1,689 @@
+{
+  "music": "music/midnight-field.mp3",
+  "ambience": "sfx/amb/plains.mp3",
+  "effects": {
+    "jump": [
+      "sfx/jump-1.mp3",
+      "sfx/jump-2.mp3"
+    ],
+    "walljump": [
+      "sfx/walljump.mp3"
+    ],
+    "dash": [
+      "sfx/dash.mp3"
+    ],
+    "land-soft": [
+      "sfx/land-soft-1.mp3",
+      "sfx/land-soft-2.mp3"
+    ],
+    "land-hard": [
+      "sfx/land-hard.mp3"
+    ],
+    "grab": [
+      "sfx/grab.mp3"
+    ],
+    "wallslide": [
+      "sfx/wallslide.mp3"
+    ],
+    "step-dirt": [
+      "sfx/step-dirt-1.mp3",
+      "sfx/step-dirt-2.mp3",
+      "sfx/step-dirt-3.mp3"
+    ],
+    "step-stone": [
+      "sfx/step-stone-1.mp3",
+      "sfx/step-stone-2.mp3"
+    ],
+    "swing": [
+      "sfx/swing-1.mp3",
+      "sfx/swing-2.mp3"
+    ],
+    "death": [
+      "sfx/death.mp3"
+    ],
+    "gem": [
+      "sfx/gem.mp3"
+    ],
+    "rune": [
+      "sfx/rune.mp3"
+    ],
+    "gate": [
+      "sfx/gate.mp3"
+    ],
+    "crumble": [
+      "sfx/crumble.mp3"
+    ],
+    "zip": [
+      "sfx/zip.mp3"
+    ],
+    "stone-hit": [
+      "sfx/stone-hit.mp3"
+    ],
+    "lantern": [
+      "sfx/lantern.mp3"
+    ],
+    "plate": [
+      "sfx/plate.mp3"
+    ],
+    "lever": [
+      "sfx/lever.mp3"
+    ],
+    "shatter": [
+      "sfx/shatter.mp3"
+    ],
+    "quest": [
+      "sfx/quest.mp3"
+    ],
+    "ui-open": [
+      "sfx/ui-open.mp3"
+    ],
+    "ui-select": [
+      "sfx/ui-select.mp3"
+    ],
+    "ui-move": [
+      "sfx/ui-move.mp3"
+    ],
+    "ui-pause": [
+      "sfx/ui-pause.mp3"
+    ],
+    "ui-back": [
+      "sfx/ui-back.mp3"
+    ],
+    "spot-fire": [
+      "sfx/spot-fire.mp3"
+    ],
+    "work-cloth": [
+      "sfx/work-cloth.mp3"
+    ],
+    "work-whetstone": [
+      "sfx/work-whetstone.mp3"
+    ],
+    "work-pages": [
+      "sfx/work-pages.mp3"
+    ],
+    "kn-jump": [
+      "sfx/kn-jump-1.mp3",
+      "sfx/kn-jump-2.mp3",
+      "sfx/kn-jump-3.mp3",
+      "sfx/kn-jump-4.mp3",
+      "sfx/kn-jump-5.mp3",
+      "sfx/kn-jump-6.mp3"
+    ],
+    "kn-jump2": [
+      "sfx/kn-jump2-1.mp3",
+      "sfx/kn-jump2-2.mp3",
+      "sfx/kn-jump2-3.mp3",
+      "sfx/kn-jump2-4.mp3",
+      "sfx/kn-jump2-5.mp3",
+      "sfx/kn-jump2-6.mp3"
+    ],
+    "kn-dash": [
+      "sfx/kn-dash-1.mp3",
+      "sfx/kn-dash-2.mp3",
+      "sfx/kn-dash-3.mp3",
+      "sfx/kn-dash-4.mp3",
+      "sfx/kn-dash-5.mp3",
+      "sfx/kn-dash-6.mp3"
+    ],
+    "kn-land": [
+      "sfx/kn-land-1.mp3",
+      "sfx/kn-land-2.mp3",
+      "sfx/kn-land-3.mp3",
+      "sfx/kn-land-4.mp3",
+      "sfx/kn-land-5.mp3",
+      "sfx/kn-land-6.mp3"
+    ],
+    "kn-death": [
+      "sfx/kn-death-1.mp3",
+      "sfx/kn-death-2.mp3"
+    ],
+    "kn-climb": [
+      "sfx/kn-climb-1.mp3",
+      "sfx/kn-climb-2.mp3",
+      "sfx/kn-climb-3.mp3",
+      "sfx/kn-climb-4.mp3",
+      "sfx/kn-climb-5.mp3",
+      "sfx/kn-climb-6.mp3"
+    ]
+  },
+  "voices": {
+    "cl1-o1-road:vey:line": {
+      "text": "Fire’s for anyone. Just don’t touch the white flowers.",
+      "id": "ascend/w1-o1-road.vey",
+      "seconds": 4.07,
+      "name": "Vey",
+      "path": "voice/ascend/w1-o1-road.vey.mp3"
+    },
+    "cl1-o1-verge:mara:line": {
+      "text": "Oh! Hello. Mara, surveyor. Three posts off this road: Ash, Glass, Iron. Touch them for me?",
+      "id": "ascend/w1-o1-verge.mara",
+      "seconds": 6.9,
+      "name": "Mara",
+      "path": "voice/ascend/w1-o1-verge.mara.mp3"
+    },
+    "cl1-o1-camp:sentinel:line": {
+      "text": "Came up the west road? Huh. Touch the stake on the perch.",
+      "id": "ascend/w1-o1-camp.sentinel",
+      "seconds": 4.1,
+      "name": "Sentinel",
+      "path": "voice/ascend/w1-o1-camp.sentinel.mp3"
+    },
+    "cl1-o1-camp:rowan:line": {
+      "text": "Gate’s shut. You got through anyway. Bell’s up the east tower.",
+      "id": "ascend/w1-o1-camp.rowan",
+      "seconds": 4.38,
+      "name": "Rowan",
+      "path": "voice/ascend/w1-o1-camp.rowan.mp3"
+    },
+    "cl1-o1-camp:rowan:lineDone": {
+      "text": "There. Now we’ll hear them coming.",
+      "id": "ascend/w1-o1-camp.rowan.done",
+      "seconds": 2.71,
+      "name": "Rowan",
+      "path": "voice/ascend/w1-o1-camp.rowan.done.mp3"
+    },
+    "cl1-o1-cut:olan:line": {
+      "text": "Clock’s stopped. The cut’s worse. Only the glass in the air holds.",
+      "id": "ascend/w1-o1-cut.olan",
+      "seconds": 4.77,
+      "name": "Olan",
+      "path": "voice/ascend/w1-o1-cut.olan.mp3"
+    },
+    "cl1-o1-muster:mara:line": {
+      "text": "Made it. Any bearings for me?",
+      "id": "ascend/w1-o1-muster.mara",
+      "seconds": 2.12,
+      "name": "Mara",
+      "path": "voice/ascend/w1-o1-muster.mara.mp3"
+    },
+    "cl1-o1-muster:mara:lineDone": {
+      "text": "Ash, Glass, Iron. They agree. The road goes through.",
+      "id": "ascend/w1-o1-muster.mara.done",
+      "seconds": 4.07,
+      "name": "Mara",
+      "path": "voice/ascend/w1-o1-muster.mara.done.mp3"
+    }
+  },
+  "unvoiced": [
+    {
+      "key": "cl1-passage-1-2:orra:line",
+      "text": "The Keep’s water finds its way down here. Follow the pale roots; they drink from the same river."
+    }
+  ],
+  "files": [
+    {
+      "path": "music/midnight-field.mp3",
+      "source": "public/audio/music/midnight-field.mp3",
+      "sha256": "4945267b23cd933aa8dcd84ddd747130050a6e7aef4ae3b48bb95ace4ad04864",
+      "bytes": 5004268
+    },
+    {
+      "path": "sfx/amb/plains.mp3",
+      "source": "public/audio/sfx/amb/plains.mp3",
+      "sha256": "a4d7ba62a1da1ee2c6a536795fcb76fa394ec59013c46fbd646c10dca4476ea2",
+      "bytes": 160540
+    },
+    {
+      "path": "sfx/jump-1.mp3",
+      "source": "public/audio/sfx/jump-1.mp3",
+      "sha256": "a0f4b07cc62922b6a7913e40123b303aade7abad86dfd0c21105863cfdb7201d",
+      "bytes": 6941
+    },
+    {
+      "path": "sfx/jump-2.mp3",
+      "source": "public/audio/sfx/jump-2.mp3",
+      "sha256": "74843a2625c22f4ec0901ae3871a532c6f8b344aad9203ecaf2de57322fb98e2",
+      "bytes": 6941
+    },
+    {
+      "path": "sfx/walljump.mp3",
+      "source": "public/audio/sfx/walljump.mp3",
+      "sha256": "3cd8d64fd2e0720f34d2f4f0c01b3442b66b9bd7bff83ec744a9a5e0af1cc6ce",
+      "bytes": 6314
+    },
+    {
+      "path": "sfx/dash.mp3",
+      "source": "public/audio/sfx/dash.mp3",
+      "sha256": "f7839e26f25bb27f81c2026ec8d57adc6dfc6a0d3006078e47fe6668eefb434b",
+      "bytes": 7881
+    },
+    {
+      "path": "sfx/land-soft-1.mp3",
+      "source": "public/audio/sfx/land-soft-1.mp3",
+      "sha256": "8bc385f586709a90b728f22de078d57b1e820a40b334c4cbbd21f4a909b088f7",
+      "bytes": 6941
+    },
+    {
+      "path": "sfx/land-soft-2.mp3",
+      "source": "public/audio/sfx/land-soft-2.mp3",
+      "sha256": "e300091accfb03ccdf56aea9faed36623809316b359493d3e3653370caac9f3d",
+      "bytes": 6941
+    },
+    {
+      "path": "sfx/land-hard.mp3",
+      "source": "public/audio/sfx/land-hard.mp3",
+      "sha256": "a0c7527b6a31e0cf6256c0585ab9678c3f9a5af6ac8fbe8a023f168d749c9563",
+      "bytes": 10389
+    },
+    {
+      "path": "sfx/grab.mp3",
+      "source": "public/audio/sfx/grab.mp3",
+      "sha256": "2767586aaec3c21d4a570926325e2f45f1282f5645f2a71ecd3552f76167f7f6",
+      "bytes": 6941
+    },
+    {
+      "path": "sfx/wallslide.mp3",
+      "source": "public/audio/sfx/wallslide.mp3",
+      "sha256": "d50176101bc70ea9040c2eed6e7fdb7ec2f12730f0da4254a8cc16b55112cc09",
+      "bytes": 12897
+    },
+    {
+      "path": "sfx/step-dirt-1.mp3",
+      "source": "public/audio/sfx/step-dirt-1.mp3",
+      "sha256": "5d08f999480a29776f7947470f8fe30c578999280fcb3f886e47745413c96a5a",
+      "bytes": 5060
+    },
+    {
+      "path": "sfx/step-dirt-2.mp3",
+      "source": "public/audio/sfx/step-dirt-2.mp3",
+      "sha256": "f14ebba3596902f529c691c996887a7064426f47d90436f4c24e6445df75a8ab",
+      "bytes": 5060
+    },
+    {
+      "path": "sfx/step-dirt-3.mp3",
+      "source": "public/audio/sfx/step-dirt-3.mp3",
+      "sha256": "c452f16399ee42d1614dec33f36d2c3cf120e8103e391901f6cd607f8ec700b0",
+      "bytes": 5060
+    },
+    {
+      "path": "sfx/step-stone-1.mp3",
+      "source": "public/audio/sfx/step-stone-1.mp3",
+      "sha256": "08b7a6a5685447ba11c52906f0e860c63e5c0d172bc45e64f940b08694cfbda6",
+      "bytes": 5060
+    },
+    {
+      "path": "sfx/step-stone-2.mp3",
+      "source": "public/audio/sfx/step-stone-2.mp3",
+      "sha256": "6e8e23df5cbf60348f3193e04971e82d682e1c81e58d1bdbe76cf6f7a864d40c",
+      "bytes": 5060
+    },
+    {
+      "path": "sfx/swing-1.mp3",
+      "source": "public/audio/sfx/swing-1.mp3",
+      "sha256": "68c960acd53ea8c58339b25697beac669ce93fb44a8c602f739018a8c1c57dd7",
+      "bytes": 6941
+    },
+    {
+      "path": "sfx/swing-2.mp3",
+      "source": "public/audio/sfx/swing-2.mp3",
+      "sha256": "e193fdd9a729ca4260f471eef6cd44a7c368b6140264415a9b0d7852dba6de27",
+      "bytes": 6941
+    },
+    {
+      "path": "sfx/death.mp3",
+      "source": "public/audio/sfx/death.mp3",
+      "sha256": "1eea7539797feab75bf4030a7ceadb2a516e14d70e79cd0fef3d4325a0004bda",
+      "bytes": 12897
+    },
+    {
+      "path": "sfx/gem.mp3",
+      "source": "public/audio/sfx/gem.mp3",
+      "sha256": "7dc87e813a1ad4821c6844515d25aa504e71eb58342cdba4307a69036d7099b6",
+      "bytes": 12897
+    },
+    {
+      "path": "sfx/rune.mp3",
+      "source": "public/audio/sfx/rune.mp3",
+      "sha256": "039481e7577a7f55a703b4feac7cdd1ef515f02953f0f31bf38daaac5d1f46c2",
+      "bytes": 18853
+    },
+    {
+      "path": "sfx/gate.mp3",
+      "source": "public/audio/sfx/gate.mp3",
+      "sha256": "0184bb80bd1c3694a48c3945fe1e72a3d9778f9335a6d4a45915332052e5a62d",
+      "bytes": 35780
+    },
+    {
+      "path": "sfx/crumble.mp3",
+      "source": "public/audio/sfx/crumble.mp3",
+      "sha256": "e87d9b0c8e11138856e6a01ef1bc5d508a60115d79f2cae272fa6ca4e49ac5fc",
+      "bytes": 12897
+    },
+    {
+      "path": "sfx/zip.mp3",
+      "source": "public/audio/sfx/zip.mp3",
+      "sha256": "37ef5c0a22f56335215be376aa96a1df91dc446a28875d633f7f1b0d94577601",
+      "bytes": 12897
+    },
+    {
+      "path": "sfx/stone-hit.mp3",
+      "source": "public/audio/sfx/stone-hit.mp3",
+      "sha256": "73eda15b06a0ad58cb1297ae3e973eeb43092387a56432237761f70a7a8496fc",
+      "bytes": 10389
+    },
+    {
+      "path": "sfx/lantern.mp3",
+      "source": "public/audio/sfx/lantern.mp3",
+      "sha256": "654725ed9e817678e8af39ae38b73fac034b04072c9834e0e565c1b7d68ba7d7",
+      "bytes": 10389
+    },
+    {
+      "path": "sfx/plate.mp3",
+      "source": "public/audio/sfx/plate.mp3",
+      "sha256": "bf96b09561e96aa4897af45bb8b962fd9948f0b3710c209b6e96cf68ca6c04bf",
+      "bytes": 6941
+    },
+    {
+      "path": "sfx/lever.mp3",
+      "source": "public/audio/sfx/lever.mp3",
+      "sha256": "70e45c1395d5958e7c46e1b8d67551f300eab798fed1701abb255587a3906fe7",
+      "bytes": 12897
+    },
+    {
+      "path": "sfx/shatter.mp3",
+      "source": "public/audio/sfx/shatter.mp3",
+      "sha256": "672530532218b1a80c1bf76a08e1513487ad0066dfabcd829e357b2d5bec429a",
+      "bytes": 15091
+    },
+    {
+      "path": "sfx/quest.mp3",
+      "source": "public/audio/sfx/quest.mp3",
+      "sha256": "4d9ebf20ed9d1d738912b75f49d56a06a693b11e89c4400c8ffdca88c5f572d4",
+      "bytes": 18853
+    },
+    {
+      "path": "sfx/ui-open.mp3",
+      "source": "public/audio/sfx/ui-open.mp3",
+      "sha256": "3bf83334b76756ea299f9e82495ea30d13c742b869b0497300270454789f11cb",
+      "bytes": 11643
+    },
+    {
+      "path": "sfx/ui-select.mp3",
+      "source": "public/audio/sfx/ui-select.mp3",
+      "sha256": "60d1e6ed0b08babd6a10d7330abadcef8d624bdbb55e2cbfc688d1b514387d36",
+      "bytes": 4433
+    },
+    {
+      "path": "sfx/ui-move.mp3",
+      "source": "public/audio/sfx/ui-move.mp3",
+      "sha256": "5455fc67b894206c83ed53c5a33ea214f593f5a084a27d25f5d41745c40ce196",
+      "bytes": 3806
+    },
+    {
+      "path": "sfx/ui-pause.mp3",
+      "source": "public/audio/sfx/ui-pause.mp3",
+      "sha256": "eda1b6ea4f494b19cc703bf340dd264d625b8c224d7f931ef8fb5b9eb99728e8",
+      "bytes": 9135
+    },
+    {
+      "path": "sfx/ui-back.mp3",
+      "source": "public/audio/sfx/ui-back.mp3",
+      "sha256": "aec04d3ea7cd5514ba366c1b9b254d920a377230418589b70080955a01b303fb",
+      "bytes": 9135
+    },
+    {
+      "path": "sfx/spot-fire.mp3",
+      "source": "public/audio/sfx/spot-fire.mp3",
+      "sha256": "b97f96d80fa2b66a0c5e0b611d402008b1312877f3e15c1c1c7a2e8a03319e88",
+      "bytes": 96907
+    },
+    {
+      "path": "sfx/work-cloth.mp3",
+      "source": "public/audio/sfx/work-cloth.mp3",
+      "sha256": "159d02b9dcca407e6f3bd46da74dd31e657db2fe91ddc28a011e4997bfac62c1",
+      "bytes": 10389
+    },
+    {
+      "path": "sfx/work-whetstone.mp3",
+      "source": "public/audio/sfx/work-whetstone.mp3",
+      "sha256": "7acbc540860acc737bc518ca299ff49570a2b2e6496648f65ebe804cdea239b0",
+      "bytes": 7881
+    },
+    {
+      "path": "sfx/work-pages.mp3",
+      "source": "public/audio/sfx/work-pages.mp3",
+      "sha256": "827c83d7cd94f7a37c41b1d8310f0c775c86153fd7802beedd007251e26f5325",
+      "bytes": 10389
+    },
+    {
+      "path": "sfx/kn-jump-1.mp3",
+      "source": "public/audio/sfx/kn-jump-1.mp3",
+      "sha256": "974e4add30df44070836b24b55d9c2e6f580f64d1caa4ae17706bbbdd5c33695",
+      "bytes": 3179
+    },
+    {
+      "path": "sfx/kn-jump-2.mp3",
+      "source": "public/audio/sfx/kn-jump-2.mp3",
+      "sha256": "f86ad8df4cf103d6c528a6ae8fa9644335fb60688314595662e4131274baf282",
+      "bytes": 4120
+    },
+    {
+      "path": "sfx/kn-jump-3.mp3",
+      "source": "public/audio/sfx/kn-jump-3.mp3",
+      "sha256": "1b9cf84806e88a355e8d8b31fd94086a8474bba8e6f720608de266c6c53e165b",
+      "bytes": 3493
+    },
+    {
+      "path": "sfx/kn-jump-4.mp3",
+      "source": "public/audio/sfx/kn-jump-4.mp3",
+      "sha256": "c579817759b92c5dafc5bde90423c480d94b2b37edf37daecbe2cf8ebc8a0618",
+      "bytes": 3493
+    },
+    {
+      "path": "sfx/kn-jump-5.mp3",
+      "source": "public/audio/sfx/kn-jump-5.mp3",
+      "sha256": "98b56dc174c0ed32cd36c5eb03ffc436460a3ecb784b9c1f4e318d0b73730899",
+      "bytes": 3179
+    },
+    {
+      "path": "sfx/kn-jump-6.mp3",
+      "source": "public/audio/sfx/kn-jump-6.mp3",
+      "sha256": "00b5b283437c091688ce0cb12cde2879f0c412ef74e4d61784326cf4754bc99e",
+      "bytes": 3493
+    },
+    {
+      "path": "sfx/kn-jump2-1.mp3",
+      "source": "public/audio/sfx/kn-jump2-1.mp3",
+      "sha256": "e7de1f68e7e6bde61b58c9f2b052a26c09bad424a51c6671cd2f659aa976385c",
+      "bytes": 4433
+    },
+    {
+      "path": "sfx/kn-jump2-2.mp3",
+      "source": "public/audio/sfx/kn-jump2-2.mp3",
+      "sha256": "d4e6ca237237a4cda92b0d60040b7a37e38a9e82fc4dbe8b7b40cb81f32941c6",
+      "bytes": 5060
+    },
+    {
+      "path": "sfx/kn-jump2-3.mp3",
+      "source": "public/audio/sfx/kn-jump2-3.mp3",
+      "sha256": "bdd6774f47f0961f5caa97cfc65ed570bf3179294b7e3af7fa53dfea55cbdd6d",
+      "bytes": 5687
+    },
+    {
+      "path": "sfx/kn-jump2-4.mp3",
+      "source": "public/audio/sfx/kn-jump2-4.mp3",
+      "sha256": "df98c65d087b16f5cced1487875e2d2b73aeaa281bf516554c3f88db866de1f9",
+      "bytes": 5374
+    },
+    {
+      "path": "sfx/kn-jump2-5.mp3",
+      "source": "public/audio/sfx/kn-jump2-5.mp3",
+      "sha256": "d2591a5a852a59580d6196bd75e363d694f8f51d47b468012f606d7cb1f83903",
+      "bytes": 4433
+    },
+    {
+      "path": "sfx/kn-jump2-6.mp3",
+      "source": "public/audio/sfx/kn-jump2-6.mp3",
+      "sha256": "477cb4e738a21188cd940ad36d4288cbc3bead693f9ce4c41501d5eded902b24",
+      "bytes": 5060
+    },
+    {
+      "path": "sfx/kn-dash-1.mp3",
+      "source": "public/audio/sfx/kn-dash-1.mp3",
+      "sha256": "858a16ea13d52792c1ae85c3915d972cf88c3b5c86544fd1da5bc706e06225e6",
+      "bytes": 4433
+    },
+    {
+      "path": "sfx/kn-dash-2.mp3",
+      "source": "public/audio/sfx/kn-dash-2.mp3",
+      "sha256": "5491c7d20284e2ba9711bd3a72b154e36588c02c8eb35dc2957d5a4b97b9b4f7",
+      "bytes": 4747
+    },
+    {
+      "path": "sfx/kn-dash-3.mp3",
+      "source": "public/audio/sfx/kn-dash-3.mp3",
+      "sha256": "bb5de4649ef08266a577828ff8874ca40af4b585cb66a95536fb6108b8767f57",
+      "bytes": 5374
+    },
+    {
+      "path": "sfx/kn-dash-4.mp3",
+      "source": "public/audio/sfx/kn-dash-4.mp3",
+      "sha256": "1d38f6b985f30170e6b7e0f3ca7ab0dee4d091bbb9cb70e09ac3d6a6bec8c404",
+      "bytes": 4433
+    },
+    {
+      "path": "sfx/kn-dash-5.mp3",
+      "source": "public/audio/sfx/kn-dash-5.mp3",
+      "sha256": "0f136946b5267caeb4982712924b4c10d44d19da459bb604936a08c80fd1b8dd",
+      "bytes": 4433
+    },
+    {
+      "path": "sfx/kn-dash-6.mp3",
+      "source": "public/audio/sfx/kn-dash-6.mp3",
+      "sha256": "25b8bcb2cfc8e75528e5e71646950cd44fd7ac6b47d793682b6ee90cd0792c9d",
+      "bytes": 5060
+    },
+    {
+      "path": "sfx/kn-land-1.mp3",
+      "source": "public/audio/sfx/kn-land-1.mp3",
+      "sha256": "63a979a5cceaf65a1f14a7076e02145863e66ac5768569ee0c2685d9482bbbb2",
+      "bytes": 8508
+    },
+    {
+      "path": "sfx/kn-land-2.mp3",
+      "source": "public/audio/sfx/kn-land-2.mp3",
+      "sha256": "c3817bf8d603b1d08eb70e872dfdaf81cef04dcaccce7a860cec91819a0990ce",
+      "bytes": 7568
+    },
+    {
+      "path": "sfx/kn-land-3.mp3",
+      "source": "public/audio/sfx/kn-land-3.mp3",
+      "sha256": "9aab67cda9b54ffe8b34cdfcec5c87258f052b011c26b8a7942333bcb552294b",
+      "bytes": 4433
+    },
+    {
+      "path": "sfx/kn-land-4.mp3",
+      "source": "public/audio/sfx/kn-land-4.mp3",
+      "sha256": "9085f98c32975d20b8c3efd60b98fe33c96db32cb553ae64c6d65c90acd1c874",
+      "bytes": 5374
+    },
+    {
+      "path": "sfx/kn-land-5.mp3",
+      "source": "public/audio/sfx/kn-land-5.mp3",
+      "sha256": "d8f1351247307564ae2c0274b9e8318ec55ae8c05b0098ad0b7c37947d39cf88",
+      "bytes": 7568
+    },
+    {
+      "path": "sfx/kn-land-6.mp3",
+      "source": "public/audio/sfx/kn-land-6.mp3",
+      "sha256": "8dd3caa17a368327fb550f922c0e1ed5313f1b892ee59cee68eb0d4f2e4740ae",
+      "bytes": 7568
+    },
+    {
+      "path": "sfx/kn-death-1.mp3",
+      "source": "public/audio/sfx/kn-death-1.mp3",
+      "sha256": "9b25163b9b1b2438c33a3fabc5adaeda0feb96c1512d6286497e93f050df63a7",
+      "bytes": 9762
+    },
+    {
+      "path": "sfx/kn-death-2.mp3",
+      "source": "public/audio/sfx/kn-death-2.mp3",
+      "sha256": "04ff5ce9cfeaa173b510c2f7c917b860f1b55bfef9c027c78dba0e92301a5d55",
+      "bytes": 9135
+    },
+    {
+      "path": "sfx/kn-climb-1.mp3",
+      "source": "public/audio/sfx/kn-climb-1.mp3",
+      "sha256": "9a1ce0ce675798881d2faccb1ea64e1a1452ee296d76723d72e8bd96ac154744",
+      "bytes": 11016
+    },
+    {
+      "path": "sfx/kn-climb-2.mp3",
+      "source": "public/audio/sfx/kn-climb-2.mp3",
+      "sha256": "953aa86d67cadbbc43e5e118008eb5ed7181a0e7d0a74e91e24d7973fe436395",
+      "bytes": 8508
+    },
+    {
+      "path": "sfx/kn-climb-3.mp3",
+      "source": "public/audio/sfx/kn-climb-3.mp3",
+      "sha256": "d091cbd9127bf1c5c48bdf36592cf2df7b85cf98a48ee49ac5fd9885dec6eb56",
+      "bytes": 11016
+    },
+    {
+      "path": "sfx/kn-climb-4.mp3",
+      "source": "public/audio/sfx/kn-climb-4.mp3",
+      "sha256": "f35a9efb2823b7b94c4abdbcc70630f0f296e97ad8b5f6b618317a6155581e83",
+      "bytes": 5687
+    },
+    {
+      "path": "sfx/kn-climb-5.mp3",
+      "source": "public/audio/sfx/kn-climb-5.mp3",
+      "sha256": "ff3c7d62674aa5d4589598b88f4a69bbd7c313f09b916f743bbcfd286b72a175",
+      "bytes": 8508
+    },
+    {
+      "path": "sfx/kn-climb-6.mp3",
+      "source": "public/audio/sfx/kn-climb-6.mp3",
+      "sha256": "328f747e44a462b0168de8b51e373907e3daf6fd65fb19d327857d3318373bb1",
+      "bytes": 6314
+    },
+    {
+      "path": "voice/ascend/w1-o1-road.vey.mp3",
+      "source": "public/audio/voice/ascend/w1-o1-road.vey.mp3",
+      "sha256": "66a67cebbad5e03bae387c7d91c1dcaecd6fc9bb0de8b9deb505cab502a81b00",
+      "bytes": 33062
+    },
+    {
+      "path": "voice/ascend/w1-o1-verge.mara.mp3",
+      "source": "public/audio/voice/ascend/w1-o1-verge.mara.mp3",
+      "sha256": "db1a9b9ebd93051cf01112ed25ede7c98b088052286e321d89516a7b55bf9fe2",
+      "bytes": 55841
+    },
+    {
+      "path": "voice/ascend/w1-o1-camp.sentinel.mp3",
+      "source": "public/audio/voice/ascend/w1-o1-camp.sentinel.mp3",
+      "sha256": "1a38b38b656db3326c74d3b5cb3a630117afbaa9f35273c1e4fb1808686d2ce7",
+      "bytes": 33480
+    },
+    {
+      "path": "voice/ascend/w1-o1-camp.rowan.mp3",
+      "source": "public/audio/voice/ascend/w1-o1-camp.rowan.mp3",
+      "sha256": "c7a8c48603db857dde38b821139e9686005221570aedcdd7a1f8b136854d753e",
+      "bytes": 35570
+    },
+    {
+      "path": "voice/ascend/w1-o1-camp.rowan.done.mp3",
+      "source": "public/audio/voice/ascend/w1-o1-camp.rowan.done.mp3",
+      "sha256": "ea18a907fbd29a8a202dbb0e681340388c9c42e4f9705a36533022a0fd7b454d",
+      "bytes": 22195
+    },
+    {
+      "path": "voice/ascend/w1-o1-cut.olan.mp3",
+      "source": "public/audio/voice/ascend/w1-o1-cut.olan.mp3",
+      "sha256": "8be16c26a8af12c8f6c808a9a3fbea2d9e9f75ea8326e4df4bcc423f76a6145d",
+      "bytes": 38705
+    },
+    {
+      "path": "voice/ascend/w1-o1-muster.mara.mp3",
+      "source": "public/audio/voice/ascend/w1-o1-muster.mara.mp3",
+      "sha256": "823587822eed36ffbd1aa4c48f4f8737a23ff118e2ccbaec241314f071761852",
+      "bytes": 17598
+    },
+    {
+      "path": "voice/ascend/w1-o1-muster.mara.done.mp3",
+      "source": "public/audio/voice/ascend/w1-o1-muster.mara.done.mp3",
+      "sha256": "9f468f9943fb6db334cb961efd5ecad47c858d09d30f1f5bc8b9b3f0928f0a71",
+      "bytes": 33062
+    }
+  ]
+}
