@@ -2,6 +2,22 @@ extends RefCounted
 ## Native world-only repairs. The original room fixtures remain intact for movement parity tests.
 static func build(source):
  var world = source.duplicate(true)
+ if int(world.n)==3:
+  # Match the lower room’s four-tile moving block at the shared seam.
+  # Widen its clearance and make the entry lip one-way so the knight can
+  # climb onto the original governor floor. Browser fixtures stay intact.
+  for d in world.rooms:
+   if d.id=="cl3-c3-q-governor":
+    d.nativeOpenLeftShaft=true
+    d.nativeLiftClearance=true
+    var lip=d.map[16]
+    lip[2]="="
+    d.map[16]=lip
+    for r in range(17,23):
+     var row=d.map[r]
+     row[2]="."
+     d.map[r]=row
+  return world
  if int(world.n)==2:
   # Align the two authored entry shafts with the roofs below. Preserve the
   # secret shaft's original width; keep all exported browser fixtures intact.

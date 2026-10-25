@@ -1,0 +1,5153 @@
+{
+  "sources": {
+    "bladefall-pcore.js": "ced41090f3e9b56ae660b7035aba7d635337d9a8c7c93251d0846776b66b2fc4",
+    "bladefall-pcore-combat.js": "af94f9287344104bf39de174ca48a0e4c562d4db7d2a90825c776af2f0d39f56",
+    "bladefall-pcore-foes.js": "ba8d86f09dcc286f12e35cb7c916b317b86e503e6e628c0aee7e3b361e97b3f5",
+    "bladefall-pcore-portals.js": "91a6f18f401d5e227a21cbcd2a886b66a6893c1fa3a6ca37defd850a3d219a04",
+    "bladefall-pcore-dev-beam.js": "055c49c55cd007f3064384805672ed39ddc9c54b206e508920621d8e3e5f1be7",
+    "bladefall-pcore-dev-citadel.js": "060cbcab64ebc11e08bff7aeee6342dbdcc9ec3f5a4ed8b963555f78da7483fe",
+    "bladefall-pcore-dev-core-checkpoints.js": "b045e97c55c652d59f52a9ccc864eb78c79a8fda04c34714b034ea706bace3f2",
+    "bladefall-pcore-dev-ember.js": "ae4d44a2fb82306ffdde2ff09670c629d3fc08debc640920f7f2fa6daf54b0b2",
+    "bladefall-pcore-dev-fault.js": "52074477e34debbc8109089c7351ce863b15f54e752b7085dea6b530648e7936",
+    "bladefall-pcore-dev-finale.js": "a2d985c81fa5dc55f496b5de2efd2d3bdcf7c56d8e13ffcbe5b110465f78c06b",
+    "bladefall-pcore-dev-foundry.js": "ec9d5e32beaa0711be0ee080396204874b05789051938fe0f8a6e6ce5c1cb56f",
+    "bladefall-pcore-dev-frost.js": "76e8c10101774e51defb1f4ec052f3f05c93c5bec0f5e336d0b53a971aab324f",
+    "bladefall-pcore-dev-gaol.js": "a93ffc17c3f49f8f82491299f0249640d6dd3531ff2846eb249251d7e1559dd4",
+    "bladefall-pcore-dev-gravity.js": "6d57f63aafd7c840c83b94b793141c666aa14e9c74bb93d385a00348a98acdc1",
+    "bladefall-pcore-dev-hinge.js": "e618f38e2ffa59fe77b806b682840872cc6cbaac87e4e85e509d74b037110999",
+    "bladefall-pcore-dev-hook.js": "c9db5eae750394019089fd3fe77a93ea994e548e736dd0cb71747d6187a2219c",
+    "bladefall-pcore-dev-impulse.js": "170326213c861f3ad17919780ba5415e0f9a50da335b4ba0440daccbdf35687b",
+    "bladefall-pcore-dev-mirror.js": "563abf8bc89187972e554d8995f7ab9909d3e8c19b13f3585bb197b9fe885f24",
+    "bladefall-pcore-dev-moving-hook.js": "b29478501ea795c63d523cf9cbb12210d0d1e923cb7d120cf18b788425618c77",
+    "bladefall-pcore-dev-rail.js": "5969523a5a26e8e49a5bbcb632fcbf96f4cd104e5796da36592ceaf0818a7534",
+    "bladefall-pcore-dev-rbr-causeway.js": "9545f02ef8fe72017aba71f5042b28f7a4c3ef1f994e19d2e5805db96f883297",
+    "bladefall-pcore-dev-rbr-cliffs.js": "d05cbd477a9275936d9e3ebcb9ffd8f9d78f22663d68affea3bc3d24311da22c",
+    "bladefall-pcore-dev-rbr-colossus.js": "eba18ead4c1d3dad8226162cb4920e7c64b1a79b97c63d9ffd5e8a6e026e5c23",
+    "bladefall-pcore-dev-rbr-deepline.js": "16b1b8a513dabbf0303bb04e4ef7272c2dad814d424a68da0f8a4f49fb980fc1",
+    "bladefall-pcore-dev-rbr-emberdeep.js": "e9d235ad02ac5bf4a49162ca1ed23ffc8cf71c763bbebab4d5c964f2c14184d6",
+    "bladefall-pcore-dev-rbr-f-outskirts.js": "b8aa716319a729fec8682c89f6343bf24f09252055c7608c1266c69e8da19b19",
+    "bladefall-pcore-dev-rbr-f-updrafts.js": "4eaa5d5ccfc418b59766ae289dd51bb2e979057d85aad7b8c7912e60d250fce7",
+    "bladefall-pcore-dev-rbr-f-woods.js": "410c4e1d3888b68e7c097642ed2e0a1372adfa5aab7a19420ba11b43c6c35853",
+    "bladefall-pcore-dev-rbr-frostfell.js": "956618773e9c654415974ef4130adb4fdd095ba742242c952dd0391527a121a2",
+    "bladefall-pcore-dev-rbr-gaol.js": "e71c25446cb99a308481842d263f1959c311085776f40ff5a3767b7b7826fca4",
+    "bladefall-pcore-dev-rbr-keep.js": "b8a0765cca2ee332da17ae8557773d77daad04c045394ed7b12084ee580d04c0",
+    "bladefall-pcore-dev-rbr-king.js": "320ed0ff1722a618b0d5c56a038a2f68187a2bb5f80b2c34d8adb8d9fe5a8b37",
+    "bladefall-pcore-dev-rbr-marksman.js": "b0938eddf47a372e5d84537a01575fca52f9b022e47f7fe72561a6d5ac4450f0",
+    "bladefall-pcore-dev-rbr-path.js": "39f7621b1c41cdf268d4f03acc1b4844db4ff6f063b02d8b81c550dfe9a3eca4",
+    "bladefall-pcore-dev-rbr-sorcerer.js": "28a177f81421f7fa88d40996b2c8a6ece14563d55e7464d914e0dba7a3db6c57",
+    "bladefall-pcore-dev-rbr-sunspire.js": "edcd9a5494c8987f6f923601335172436216c7f72fad4e227491f627847b2672",
+    "bladefall-pcore-dev-rbr-tyrant.js": "65547056703c182193c6f967d4d0e150891e5627f0d0f863e7fddc476c75b8c3",
+    "bladefall-pcore-dev-rbr-updrafts.js": "b1739991e1efde3713ab51522d6dcd196b21ceddbedeb03e9961ba60ca3ec37f",
+    "bladefall-pcore-dev-recoil.js": "52ffad00770606c45e0e4150e20498f76db4a7737012b26b79b9d928d6c1e30e",
+    "bladefall-pcore-dev-relay.js": "671a635ca4d0e10ef5adeb714a2474469bda9c18c406b3c3129e8d7ab2512a10",
+    "bladefall-pcore-dev-run9-base.js": "aa1a42c86b327fbdc5a2641fb63d29e84ff0b2b4a0a73410c8ed147ac748f983",
+    "bladefall-pcore-dev-shade.js": "83eab516773d1043db146fbe1c5f19e60b8eeb2c6ca6ff47e3293c7b4ec84ae4",
+    "bladefall-pcore-dev-spent-thorn.js": "047fffbb3355c8da5bd30fb6509a4094e4452b9910044938a86d4c5d1f6272ec",
+    "bladefall-pcore-dev-step-relay.js": "50faa5b503c8a48b60f1d8238fa19981bbcf7a6af863ca800bf276bbeef3775c",
+    "bladefall-pcore-dev-superrooms-base.js": "206d66c75e88580bddda79ec9601704b2a1962140fa533590468243f0c372fde",
+    "bladefall-pcore-dev-superrooms-colossus.js": "cc683a4c2b01c15c5347ee593c31a283af69b4b6b2b5ad02c7aca7e58c70c79c",
+    "bladefall-pcore-dev-superrooms-fractured.js": "f45fafabd6c85bcd3c66510c54ff644ef75cd1ad1a9d1f63fbec16fc0d715039",
+    "bladefall-pcore-dev-superrooms-fractured9.js": "da2023d53c98c79e166ad08e822c679eb65a11f21f65c2c24e5462b55ef5e2df",
+    "bladefall-pcore-dev-sweeper.js": "98544dd105f7895c2c64d7df4688c18980659a77a6b378bbca757e4ba031c47a",
+    "bladefall-pcore-dev-throne.js": "b1df4a78ec4261555a3ddf80edb0bc0e52e08e7054357b41e02b8ba21f5a6ccc",
+    "bladefall-pcore-dev-vector-refill.js": "5a67b1bbd37a7976014edf3f89b88e1b81efbc976b119c6a07f07ad0d391bffc",
+    "bladefall-pcore-dev-void.js": "c0d3042145ad9bee79bbaf673282635d0ed075164909df21101116052857f7a7",
+    "bladefall-pcore-dev-watch.js": "a4649ca5435a061628f1bed65862ab00153d0f50f0f01b46768e706d468626e7",
+    "bladefall-pcore-dev-water.js": "1a4848a3208fc4d5ba8d28f42b595f9e92987161b462e877e728bae886537c7c",
+    "bladefall-pcore-dev-workshop-room.js": "b7c90947fd50c9243bade7986628cb5bcd68c8c037c37db3e91df62a24a40e6e",
+    "bladefall-pcore-dev-zipline.js": "0322a7b5e34b43f38756c307b5678f7cbd7c7936d697102f834baa8968df3c68",
+    "bladefall-pcore-dev-cargo-clasp.js": "011d345e45213da639eca9c2e5bafc8bb8d20bc8e2d57989eb3b162b49794b2e",
+    "bladefall-climb-atlas.js": "41d208f88fdef5069b91b41ffb4ebc16d1f465c446750c0c490ab33b79370120",
+    "bladefall-climb-passages.js": "28f67db4bd03bebd97cfc8769b71f8c244b5cb87dedba84edd3e65f50e6cb852",
+    "bladefall-climb.js": "85b5633cb4b6588cb147db26388eb3a32abc83f51f42eee06a1ff5db59a12200",
+    "bladefall-climb-worlds.js": "14716d5994f1cee3330f626064ab52c42a75dc43407ef25f0df43252d0c57eea"
+  },
+  "playerDefaults": {
+    "x": 24,
+    "y": 133,
+    "w": 8,
+    "h": 11,
+    "remX": 0,
+    "remY": 0,
+    "vx": 0,
+    "vy": 0,
+    "facing": 1,
+    "state": "normal",
+    "dashes": 1,
+    "maxDashes": 1,
+    "stamina": 110,
+    "onGround": true,
+    "wasGround": true,
+    "jumpGrace": 0,
+    "varJump": 0,
+    "varJumpSpeed": 0,
+    "forceMoveX": 0,
+    "forceMoveTimer": 0,
+    "autoJump": false,
+    "dashTimer": 0,
+    "dashCooldown": 0,
+    "dashRefillCooldown": 0,
+    "dashDir": {
+      "x": 1,
+      "y": 0
+    },
+    "beforeDash": {
+      "x": 0,
+      "y": 0
+    },
+    "dashAim": false,
+    "ducking": false,
+    "wallSlide": 72,
+    "wallBoostDir": 0,
+    "wallBoostTimer": 0,
+    "climbNoMove": 0,
+    "retainTimer": 0,
+    "retained": 0,
+    "maxFall": 160,
+    "liftX": 0,
+    "liftY": 0,
+    "liftTimer": 0,
+    "carrying": null,
+    "strikeTimer": 0,
+    "strikeCooldown": 0,
+    "strikeDir": {
+      "x": 1,
+      "y": 0
+    },
+    "strikeHit": {},
+    "deadTimer": 0,
+    "respawnTimer": 0,
+    "dashFlash": 0,
+    "parryTimer": 0,
+    "parryCooldown": 0,
+    "fling": false,
+    "portalCool": 0,
+    "airJumps": 0,
+    "hook": null,
+    "lastRing": null,
+    "seat": null,
+    "seenT": 0
+  },
+  "source": "public/bladefall-climb-worlds.js",
+  "world": {
+    "n": 3,
+    "key": "causeway",
+    "name": "Broken Causeway",
+    "palette": "causeway",
+    "kit": [
+      "dash",
+      "strike"
+    ],
+    "blurb": "Broken Causeway: one continuous road with 13 checkpointed challenges, ending in a superroom.",
+    "outro": "The causeway, end to end. The weight that hung over the road is lying on the Brute.",
+    "sections": [
+      {
+        "room": "cl3-atlas-arrival",
+        "x": -96,
+        "y": 0,
+        "fire": {
+          "c": 48,
+          "r": 21
+        },
+        "atlasJunction": true
+      },
+      {
+        "room": "cl3-c3-camp",
+        "x": 0,
+        "y": 0,
+        "fire": {
+          "c": 2,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl3-bank-b39",
+        "x": 40,
+        "y": 1,
+        "fire": {
+          "c": 8,
+          "r": 16
+        }
+      },
+      {
+        "room": "cl3-c3-hoist",
+        "x": 80,
+        "y": -8,
+        "fire": {
+          "c": 2,
+          "r": 20
+        }
+      },
+      {
+        "room": "cl3-c3-patrol",
+        "x": 120,
+        "y": -16,
+        "fire": {
+          "c": 7,
+          "r": 13
+        }
+      },
+      {
+        "room": "cl3-c3-chain",
+        "x": 160,
+        "y": -18,
+        "fire": {
+          "c": 1,
+          "r": 19
+        }
+      },
+      {
+        "room": "cl3-c3-upper",
+        "x": 200,
+        "y": -33,
+        "fire": {
+          "c": 1,
+          "r": 19
+        }
+      },
+      {
+        "room": "cl3-c3-rise",
+        "x": 240,
+        "y": -47,
+        "fire": {
+          "c": 2,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl3-c3-well",
+        "x": 280,
+        "y": -50,
+        "fire": {
+          "c": 3,
+          "r": 7
+        }
+      },
+      {
+        "room": "cl3-walk-3-3",
+        "x": 320,
+        "y": -36,
+        "fire": null
+      },
+      {
+        "room": "cl3-bank-b11",
+        "x": 320,
+        "y": -59,
+        "fire": {
+          "c": 2,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl3-walk-4-16",
+        "x": 312,
+        "y": -83,
+        "fire": null
+      },
+      {
+        "room": "cl3-c3-road",
+        "x": 320,
+        "y": -86,
+        "fire": {
+          "c": 3,
+          "r": 6
+        }
+      },
+      {
+        "room": "cl3-c3-gantry",
+        "x": 360,
+        "y": -92,
+        "fire": {
+          "c": 2,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl3-c3-brace",
+        "x": 400,
+        "y": -92,
+        "fire": {
+          "c": 2,
+          "r": 8
+        }
+      },
+      {
+        "room": "cl3-bank-b68",
+        "x": 440,
+        "y": -108,
+        "fire": {
+          "c": 10,
+          "r": 33
+        }
+      },
+      {
+        "room": "cl3-atlas-crossroads",
+        "x": 520,
+        "y": -108,
+        "fire": {
+          "c": 48,
+          "r": 21
+        },
+        "atlasJunction": true
+      }
+    ],
+    "quests": [
+      {
+        "id": "defector",
+        "title": "The Clockwork Defector",
+        "giver": "Silas",
+        "from": "cl3-c3-patrol",
+        "back": {
+          "c": 7,
+          "r": 13
+        },
+        "keepsake": {
+          "id": "silas-key",
+          "name": "Silas’s Winding Key",
+          "gives": "The key in Silas’s back stops turning, and he sits on the patrol walk’s bench because he chose to. In the Fractured Causeway it opens Silas’s echo."
+        },
+        "sections": [
+          {
+            "room": "cl3-c3-q-ladder",
+            "x": 120,
+            "y": -39,
+            "fire": {
+              "c": 2,
+              "r": 19
+            }
+          },
+          {
+            "room": "cl3-c3-q-governor",
+            "x": 151,
+            "y": -62,
+            "fire": {
+              "c": 1,
+              "r": 15
+            }
+          },
+          {
+            "room": "cl3-pass-10",
+            "x": 191,
+            "y": -62,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl3-pass-11",
+            "x": 192,
+            "y": -68,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl3-pass-12",
+            "x": 157,
+            "y": -68,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl3-pass-13",
+            "x": 152,
+            "y": -68,
+            "fire": null,
+            "passage": true
+          }
+        ],
+        "short": false,
+        "returnTo": "cl3-c3-q-governor"
+      }
+    ],
+    "secrets": [
+      {
+        "id": "secret-3",
+        "host": "cl3-c3-upper",
+        "name": "Glass Ladder",
+        "origin": "e2",
+        "sections": [
+          {
+            "room": "cl3-secret-e2",
+            "x": 200,
+            "y": -56,
+            "fire": {
+              "c": 2,
+              "r": 19
+            }
+          },
+          {
+            "room": "cl3-pass-14",
+            "x": 240,
+            "y": -56,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl3-pass-15",
+            "x": 241,
+            "y": -62,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl3-pass-16",
+            "x": 236,
+            "y": -62,
+            "fire": null,
+            "passage": true
+          }
+        ],
+        "returnTo": "cl3-secret-e2"
+      }
+    ],
+    "rooms": [
+      {
+        "id": "cl3-c3-camp",
+        "name": "Chainwake Camp",
+        "exit": "right",
+        "hint": "A lift runs only while weight is on it, then it comes home",
+        "question": "The causeway’s lifts hang still. What would set one moving?",
+        "people": [
+          {
+            "who": "sable",
+            "c": 8,
+            "r": 17,
+            "face": 1,
+            "line": "Not one of the yard’s, are you? Nothing up there’s moved in a month."
+          },
+          {
+            "who": "oren",
+            "c": 31,
+            "r": 17,
+            "face": -1,
+            "leave": "right",
+            "line": "Hear that? Nothing. The Drop Yard lift is free. Stand on it."
+          }
+        ],
+        "decor": [
+          {
+            "k": "tent",
+            "c": 1,
+            "r": 17
+          },
+          {
+            "k": "watchfire",
+            "c": 5,
+            "r": 17
+          },
+          {
+            "k": "cw-stretcher",
+            "c": 9,
+            "r": 17
+          },
+          {
+            "k": "cw-crate",
+            "c": 16,
+            "r": 17
+          },
+          {
+            "k": "cw-chain-long",
+            "c": 25,
+            "r": 5
+          },
+          {
+            "k": "cw-chain-long",
+            "c": 28,
+            "r": 5
+          },
+          {
+            "k": "cw-winch",
+            "c": 33,
+            "r": 17
+          }
+        ],
+        "zips": [
+          [
+            0,
+            -2
+          ]
+        ],
+        "map": [
+          "########################################",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#........................ZZZZ..........#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#.......................................",
+          "........................................",
+          "........................................",
+          ".............###........................",
+          "...P.........###........................",
+          "#####################^^^################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################"
+        ],
+        "rbr": 3,
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "palette": "causeway",
+        "origin": "c3-camp",
+        "entry": "left",
+        "atlasMouth": {
+          "edge": "left",
+          "floor": 18
+        },
+        "atlasSockets": [
+          {
+            "kind": "room",
+            "edge": "left",
+            "floor": 18,
+            "to": "cl3-atlas-arrival",
+            "toFloor": 18
+          }
+        ]
+      },
+      {
+        "id": "cl3-c3-hoist",
+        "name": "The Hoist",
+        "exit": "right",
+        "hint": "Jump as a lift stops and you keep its speed",
+        "question": "The lift stops well short of the shelf. When do you leave it?",
+        "decor": [
+          {
+            "k": "cw-chain-long",
+            "c": 14,
+            "r": 20
+          },
+          {
+            "k": "cw-chain-long",
+            "c": 17,
+            "r": 20
+          },
+          {
+            "k": "cw-winch",
+            "c": 26,
+            "r": 5
+          }
+        ],
+        "zips": [
+          [
+            0,
+            -6
+          ]
+        ],
+        "map": [
+          "########################################",
+          "#......................................#",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#..................<####################",
+          "#..................<####################",
+          "#..................<####################",
+          "#..................<####################",
+          "#..................<####################",
+          "#..................<####################",
+          "#..................<####################",
+          "#..................<####################",
+          "...................<####################",
+          "...................<####################",
+          "...................<####################",
+          "...................<####################",
+          "...................<####################",
+          "...................<####################",
+          "...P...............<####################",
+          "#######.......ZZZZ.<####################",
+          "#######............<####################"
+        ],
+        "rbr": 3,
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "palette": "causeway",
+        "seam": [
+          [
+            0,
+            14,
+            "#"
+          ],
+          [
+            0,
+            15,
+            "#"
+          ],
+          [
+            0,
+            16,
+            "#"
+          ]
+        ],
+        "origin": "c3-hoist",
+        "people": [
+          {
+            "who": "oren",
+            "c": 6,
+            "r": 20,
+            "face": 1,
+            "line": "She comes back down on her own. Ride her up."
+          }
+        ]
+      },
+      {
+        "id": "cl3-c3-patrol",
+        "name": "The Patrol Road",
+        "exit": "right",
+        "side": "up",
+        "hint": "A lift throws you the way it was going",
+        "question": "The road ends in open air. How far does a flat lift throw you?",
+        "people": [
+          {
+            "who": "silas",
+            "c": 11,
+            "r": 13,
+            "face": -1,
+            "quest": "defector",
+            "line": "…thirty-nine, forty. Can’t stop. Break the gear up the ladder?",
+            "lineDone": "Forty-one. Then I sat. My choice."
+          }
+        ],
+        "decor": [
+          {
+            "k": "bench",
+            "c": 6,
+            "r": 13
+          },
+          {
+            "k": "cw-chain",
+            "c": 2,
+            "r": 13
+          }
+        ],
+        "zips": [
+          [
+            6,
+            0
+          ]
+        ],
+        "map": [
+          "#....###################################",
+          "#....#.................................#",
+          "#....#.................................#",
+          "#....#.................................#",
+          "#....#.................................#",
+          "#....#.................................#",
+          "#....#.................................#",
+          "#....#.................................#",
+          "#....#.................................#",
+          "#....#..................................",
+          "#.......................................",
+          "........................................",
+          "........................................",
+          "........P...............................",
+          "############.ZZZZ.......................",
+          "############............................",
+          "############............................",
+          "############............................",
+          "############..........................<#",
+          "############..........................<#",
+          "############..........................<#",
+          "############..........................<#",
+          "############...........................#"
+        ],
+        "rbr": 3,
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "palette": "causeway",
+        "sideQuest": "defector",
+        "seam": [
+          [
+            0,
+            11,
+            "#"
+          ],
+          [
+            0,
+            12,
+            "#"
+          ],
+          [
+            0,
+            13,
+            "#"
+          ]
+        ],
+        "origin": "c3-patrol"
+      },
+      {
+        "id": "cl3-c3-chain",
+        "name": "Chainwalk",
+        "exit": "right",
+        "hint": "A lift holds at the top for a breath, then goes home",
+        "question": "Two lifts, one above the other. How does the first one get you onto the second?",
+        "decor": [
+          {
+            "k": "cw-chain-long",
+            "c": 8,
+            "r": 19
+          },
+          {
+            "k": "cw-chain-long",
+            "c": 11,
+            "r": 19
+          },
+          {
+            "k": "cw-chain",
+            "c": 18,
+            "r": 10
+          },
+          {
+            "k": "cw-chain",
+            "c": 21,
+            "r": 10
+          }
+        ],
+        "zips": [
+          [
+            0,
+            -6
+          ],
+          [
+            0,
+            -7
+          ]
+        ],
+        "map": [
+          "########################################",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#............................<##########",
+          "#............................<##########",
+          "#............................<##########",
+          "#............................<##########",
+          "#............................<##########",
+          "#............................<##########",
+          "#.................ZZZZ.......<##########",
+          "#............................<##########",
+          ".............................<##########",
+          ".............................<##########",
+          ".............................<##########",
+          ".............................<##########",
+          ".............................<##########",
+          ".............................<##########",
+          "..P..........................<##########",
+          "######..ZZZZ.................<##########",
+          "######.......................<##########",
+          "######.......................<##########"
+        ],
+        "rbr": 3,
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "palette": "causeway",
+        "seam": [
+          [
+            0,
+            13,
+            "#"
+          ],
+          [
+            0,
+            14,
+            "#"
+          ],
+          [
+            0,
+            15,
+            "#"
+          ]
+        ],
+        "origin": "c3-chain"
+      },
+      {
+        "id": "cl3-c3-upper",
+        "name": "The Upper Chain",
+        "exit": "right",
+        "hint": "Wait a beat after a lift stops and it lets you go without a throw",
+        "question": "Three lifts, and one of them throws you at the thorns. Which of them do you leave gently?",
+        "decor": [
+          {
+            "k": "cw-chain-long",
+            "c": 6,
+            "r": 19
+          },
+          {
+            "k": "cw-chain-long",
+            "c": 9,
+            "r": 19
+          },
+          {
+            "k": "cw-chain",
+            "c": 29,
+            "r": 13
+          },
+          {
+            "k": "cw-chain",
+            "c": 32,
+            "r": 13
+          }
+        ],
+        "zips": [
+          [
+            8,
+            0
+          ],
+          [
+            0,
+            -10
+          ],
+          [
+            0,
+            -7
+          ]
+        ],
+        "map": [
+          "#..#####################################",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#..................................#####",
+          "#.................................<#####",
+          "#.................................<#####",
+          "#.................................<#####",
+          "#.................................<#####",
+          "#...........ZZZZ..................<#####",
+          "#.................................<#####",
+          "#.................................<#####",
+          "#.................................<#####",
+          "#.................................<#####",
+          "#............................ZZZZ.<#####",
+          "#.................................<#####",
+          "..................................<#####",
+          "..................................<#####",
+          "..................................<#####",
+          "..P...............................<#####",
+          "#####.ZZZZ........................<#####",
+          "#####.............................<#####",
+          "#####.............................<#####"
+        ],
+        "rbr": 3,
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "palette": "causeway",
+        "seam": [],
+        "origin": "c3-upper",
+        "doors": [
+          {
+            "edge": "up",
+            "cols": [
+              1,
+              2
+            ],
+            "to": "secret-3"
+          }
+        ]
+      },
+      {
+        "id": "cl3-c3-rise",
+        "name": "Counterweight Rise",
+        "exit": "right",
+        "hint": "Dash into a stone and it runs that way until something stops it",
+        "question": "The wall has no foothold. What can you send there to be one?",
+        "decor": [
+          {
+            "k": "cw-crate",
+            "c": 4,
+            "r": 12
+          },
+          {
+            "k": "cw-standard",
+            "c": 22,
+            "r": 17
+          }
+        ],
+        "map": [
+          "########################################",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#.............................<#########",
+          "#.............................<#########",
+          "#.............................<#########",
+          "#.............................<#########",
+          "#.............................<#########",
+          "#.............................<#########",
+          "#.......KK....................<#########",
+          "#.......KK....................<#########",
+          "##########....................<#########",
+          "..............................<#########",
+          "..............................<#########",
+          "..............................<#########",
+          "...P..........................<#########",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################"
+        ],
+        "rbr": 3,
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "palette": "causeway",
+        "seam": [],
+        "origin": "c3-rise"
+      },
+      {
+        "id": "cl3-c3-well",
+        "name": "The Weigh Well",
+        "exit": "right",
+        "hint": "A stone goes the way you strike it, down as well as across",
+        "question": "The counterweight stops up the well. Which face of it do you strike?",
+        "decor": [
+          {
+            "k": "cw-winch",
+            "c": 6,
+            "r": 7
+          },
+          {
+            "k": "cw-crate",
+            "c": 30,
+            "r": 20
+          }
+        ],
+        "map": [
+          "########################################",
+          "########################################",
+          "#......................................#",
+          "#......................................#",
+          ".......................................#",
+          ".......................................#",
+          ".......................................#",
+          "....P..................................#",
+          "############...#########################",
+          "############KKK#########################",
+          "############KKK#########################",
+          "############...#########################",
+          "############...#########################",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#^^^^^^^^^^^^^^^^^######################",
+          "########################################"
+        ],
+        "rbr": 3,
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "palette": "causeway",
+        "seam": [],
+        "origin": "c3-well"
+      },
+      {
+        "id": "cl3-c3-road",
+        "name": "The Standard Road",
+        "exit": "right",
+        "hint": "Everything the causeway has taught, in one stretch",
+        "question": "A plug, a flat lift and a crystal. In what order, and with what still in hand?",
+        "decor": [
+          {
+            "k": "cw-standard",
+            "c": 16,
+            "r": 6
+          },
+          {
+            "k": "cw-winch",
+            "c": 37,
+            "r": 11
+          }
+        ],
+        "zips": [
+          [
+            6,
+            0
+          ]
+        ],
+        "map": [
+          "########################################",
+          "######################.................#",
+          "#....................#.................#",
+          ".....................#.................#",
+          ".....................#.................#",
+          ".....................#.................#",
+          "....P................#.................#",
+          "#########...##########..................",
+          "#########KKK##########..................",
+          "#########KKK##########..................",
+          "#########...##########..................",
+          "#.................................o.....",
+          "#...................................####",
+          "#...................................####",
+          "#...................................####",
+          "#...................................####",
+          "#...................................####",
+          "#...................................####",
+          "#...................................####",
+          "#...........ZZZZ....................####",
+          "#^^^^^^^^^^^.......................#####",
+          "############.......................#####",
+          "############.......................#####"
+        ],
+        "rbr": 3,
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "palette": "causeway",
+        "seam": [],
+        "origin": "c3-road",
+        "closeWhilePlayed": false
+      },
+      {
+        "id": "cl3-c3-gantry",
+        "name": "Rise Gantry",
+        "exit": "right",
+        "hint": "A stone stays where it stops, so choose the wall before you push",
+        "question": "The counterweight sits on the lift’s car. Where should it end up?",
+        "decor": [
+          {
+            "k": "cw-chain-long",
+            "c": 9,
+            "r": 15
+          },
+          {
+            "k": "cw-chain-long",
+            "c": 12,
+            "r": 15
+          },
+          {
+            "k": "cw-crate",
+            "c": 36,
+            "r": 8
+          }
+        ],
+        "zips": [
+          [
+            0,
+            -9
+          ]
+        ],
+        "map": [
+          "########################################",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#.............................<#########",
+          "#.............................<#########",
+          "#.............................<#########",
+          "#.............................<#########",
+          "..............................<#########",
+          "..............................<#########",
+          "..............................<#########",
+          ".........KKKK.................<#########",
+          "...P.....KKKK.................<#########",
+          "#######..ZZZZ.................<#########",
+          "#######.......................<#########",
+          "#######.......................<#########",
+          "#######.......................<#########",
+          "#######.......................<#########"
+        ],
+        "rbr": 3,
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "palette": "causeway",
+        "seam": [
+          [
+            0,
+            13,
+            "#"
+          ]
+        ],
+        "origin": "c3-gantry"
+      },
+      {
+        "id": "cl3-c3-brace",
+        "name": "Broken Standard",
+        "exit": "right",
+        "hint": "The Brute commits to a charge and stops only when something stops it",
+        "question": "The brace across the road won’t give for you. What would break it?",
+        "decor": [
+          {
+            "k": "cw-standard",
+            "c": 10,
+            "r": 17
+          },
+          {
+            "k": "cw-crate",
+            "c": 35,
+            "r": 17
+          }
+        ],
+        "combat": {
+          "waitForMove": true,
+          "enemies": [
+            {
+              "kind": "hound",
+              "brute": true,
+              "x": 24,
+              "y": 128,
+              "face": 1
+            }
+          ],
+          "receivers": [],
+          "doors": [
+            {
+              "x": 240,
+              "y": 8,
+              "w": 16,
+              "h": 136,
+              "brittle": true
+            }
+          ]
+        },
+        "map": [
+          "########################################",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          ".......................................#",
+          ".......................................#",
+          ".......................................#",
+          "...P...................................#",
+          "########...............................#",
+          "#......................................#",
+          "#......................................#",
+          "#...............=========..............#",
+          "#......................................#",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################"
+        ],
+        "rbr": 3,
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "palette": "causeway",
+        "seam": [],
+        "origin": "c3-brace"
+      },
+      {
+        "id": "cl3-c3-q-ladder",
+        "name": "The Maintenance Ladder",
+        "exit": "up",
+        "hint": "Thorns line the shaft · the brake is a stone, and a stone struck from below goes up",
+        "question": "The hatch is jammed shut. Which lift puts you under it, and which one throws you into the thorns?",
+        "decor": [
+          {
+            "k": "cw-chain-long",
+            "c": 9,
+            "r": 19
+          },
+          {
+            "k": "cw-chain-long",
+            "c": 12,
+            "r": 19
+          },
+          {
+            "k": "cw-crate",
+            "c": 33,
+            "r": 4
+          }
+        ],
+        "zips": [
+          [
+            10,
+            0
+          ],
+          [
+            0,
+            -8
+          ]
+        ],
+        "map": [
+          "##############################....######",
+          "#.............................KKKK....<#",
+          "#>............................KKKK....<#",
+          "#>....................................<#",
+          "#>..........ZZZZ......................<#",
+          "#>..........................########..<#",
+          "#>....................................<#",
+          "#>....................................<#",
+          "#>....................................<#",
+          "#>....................................<#",
+          "#>....................................<#",
+          "#>....................................<#",
+          "#>....................................<#",
+          "#>....................................<#",
+          "#>....................................<#",
+          "#>....................................<#",
+          "#>....................................<#",
+          "#>....................................<#",
+          "#>....................................<#",
+          "#>.P..................................<#",
+          "#==####..ZZZZ.........................<#",
+          "#..####...............................<#",
+          "#..####...............................##"
+        ],
+        "rbr": 3,
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "palette": "causeway",
+        "quest": "defector",
+        "seam": [
+          [
+            1,
+            21,
+            "#"
+          ],
+          [
+            2,
+            21,
+            "#"
+          ],
+          [
+            1,
+            22,
+            "#"
+          ],
+          [
+            2,
+            22,
+            "#"
+          ],
+          [
+            1,
+            20,
+            "#"
+          ],
+          [
+            2,
+            20,
+            "#"
+          ]
+        ],
+        "origin": "c3-q-ladder"
+      },
+      {
+        "id": "cl3-c3-q-governor",
+        "name": "The Governor",
+        "exit": "right",
+        "hint": "A crystal pays back a dash you have already spent",
+        "question": "The gear sits on the high shelf. How many dashes does the climb take, and where is the second one?",
+        "decor": [
+          {
+            "k": "cw-gear",
+            "c": 34,
+            "r": 3
+          },
+          {
+            "k": "cw-chain",
+            "c": 7,
+            "r": 15
+          },
+          {
+            "k": "cw-chain",
+            "c": 10,
+            "r": 15
+          }
+        ],
+        "zips": [
+          [
+            12,
+            0
+          ]
+        ],
+        "map": [
+          "##..####################################",
+          "#.......................................",
+          "#.......................................",
+          "#...................................*...",
+          "#................................#######",
+          "#................................#######",
+          "#..............................o.......#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#.P....................................#",
+          "==#####ZZZZ............................#",
+          "..#####................................#",
+          "..#####................................#",
+          "..#####................................#",
+          "..#####................................#",
+          "..#####................................#",
+          "..#####................................#"
+        ],
+        "rbr": 3,
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "palette": "causeway",
+        "quest": "defector",
+        "seam": [
+          [
+            0,
+            17,
+            "#"
+          ],
+          [
+            1,
+            17,
+            "#"
+          ],
+          [
+            0,
+            18,
+            "#"
+          ],
+          [
+            1,
+            18,
+            "#"
+          ],
+          [
+            0,
+            19,
+            "#"
+          ],
+          [
+            1,
+            19,
+            "#"
+          ],
+          [
+            0,
+            20,
+            "#"
+          ],
+          [
+            1,
+            20,
+            "#"
+          ],
+          [
+            0,
+            21,
+            "#"
+          ],
+          [
+            1,
+            21,
+            "#"
+          ],
+          [
+            0,
+            22,
+            "#"
+          ],
+          [
+            1,
+            22,
+            "#"
+          ],
+          [
+            0,
+            16,
+            "#"
+          ],
+          [
+            1,
+            16,
+            "#"
+          ]
+        ],
+        "origin": "c3-q-governor",
+        "returns": [
+          {
+            "cols": [
+              2,
+              3
+            ],
+            "edge": "up",
+            "from": "defector"
+          }
+        ]
+      },
+      {
+        "id": "cl3-pass-10",
+        "name": "",
+        "exit": "up",
+        "entry": "left",
+        "seam": [
+          [
+            0,
+            2,
+            "#"
+          ],
+          [
+            0,
+            3,
+            "#"
+          ]
+        ],
+        "palette": "causeway",
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "passage": true,
+        "cols": 6,
+        "rows": 5,
+        "map": [
+          "###..#",
+          "###..#",
+          ".....#",
+          "P...s#",
+          "######"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-10"
+      },
+      {
+        "id": "cl3-pass-11",
+        "name": "",
+        "exit": "left",
+        "entry": "down",
+        "seam": [
+          [
+            2,
+            5,
+            "#"
+          ],
+          [
+            3,
+            5,
+            "#"
+          ]
+        ],
+        "palette": "causeway",
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "passage": true,
+        "cols": 5,
+        "rows": 6,
+        "map": [
+          "#####",
+          "....#",
+          "P...#",
+          "##..#",
+          "##..#",
+          "##..#"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-11"
+      },
+      {
+        "id": "cl3-pass-12",
+        "name": "",
+        "exit": "left",
+        "entry": "right",
+        "seam": [
+          [
+            34,
+            1,
+            "#"
+          ],
+          [
+            34,
+            2,
+            "#"
+          ]
+        ],
+        "palette": "causeway",
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "passage": true,
+        "cols": 35,
+        "rows": 4,
+        "map": [
+          "###################################",
+          "...................................",
+          "..................................P",
+          "###################################"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-12"
+      },
+      {
+        "id": "cl3-pass-13",
+        "name": "",
+        "exit": "down",
+        "entry": "right",
+        "seam": [
+          [
+            4,
+            1,
+            "#"
+          ],
+          [
+            4,
+            2,
+            "#"
+          ]
+        ],
+        "palette": "causeway",
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "passage": true,
+        "cols": 5,
+        "rows": 6,
+        "map": [
+          "#####",
+          "#....",
+          "#...P",
+          "#..##",
+          "#..##",
+          "#..##"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-13"
+      },
+      {
+        "id": "cl3-secret-e2",
+        "name": "Glass Ladder",
+        "map": [
+          "#####################################..#",
+          "#>.....................................#",
+          "#>......................................",
+          "#>......................................",
+          "#>...............#######################",
+          "#>....................................<#",
+          "#>..........o.........................<#",
+          "#>....................................<#",
+          "#.....................................<#",
+          "#.........o...........................<#",
+          "#.....................................<#",
+          "#.....................................<#",
+          "#.....................................<#",
+          "#.....o...............................<#",
+          "#>....................................<#",
+          "#>....................................<#",
+          "#>....................................<#",
+          "#>....................................<#",
+          "#>....................................<#",
+          "#>.P..................................<#",
+          "#==###................................##",
+          "#..###^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^##",
+          "#..#####################################"
+        ],
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "palette": "causeway",
+        "seam": [
+          [
+            1,
+            21,
+            "#"
+          ],
+          [
+            2,
+            21,
+            "#"
+          ],
+          [
+            1,
+            22,
+            "#"
+          ],
+          [
+            2,
+            22,
+            "#"
+          ],
+          [
+            1,
+            20,
+            "#"
+          ],
+          [
+            2,
+            20,
+            "#"
+          ]
+        ],
+        "origin": "e2",
+        "decor": [],
+        "secret": true,
+        "returns": [
+          {
+            "cols": [
+              37,
+              38
+            ],
+            "edge": "up",
+            "from": "secret-3"
+          }
+        ]
+      },
+      {
+        "id": "cl3-pass-14",
+        "name": "",
+        "exit": "up",
+        "entry": "left",
+        "seam": [
+          [
+            0,
+            2,
+            "#"
+          ],
+          [
+            0,
+            3,
+            "#"
+          ]
+        ],
+        "palette": "causeway",
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "passage": true,
+        "cols": 6,
+        "rows": 5,
+        "map": [
+          "###..#",
+          "###..#",
+          ".....#",
+          "P...s#",
+          "######"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-14"
+      },
+      {
+        "id": "cl3-pass-15",
+        "name": "",
+        "exit": "left",
+        "entry": "down",
+        "seam": [
+          [
+            2,
+            5,
+            "#"
+          ],
+          [
+            3,
+            5,
+            "#"
+          ]
+        ],
+        "palette": "causeway",
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "passage": true,
+        "cols": 5,
+        "rows": 6,
+        "map": [
+          "#####",
+          "....#",
+          "P...#",
+          "##..#",
+          "##..#",
+          "##..#"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-15"
+      },
+      {
+        "id": "cl3-pass-16",
+        "name": "",
+        "exit": "down",
+        "entry": "right",
+        "seam": [
+          [
+            4,
+            1,
+            "#"
+          ],
+          [
+            4,
+            2,
+            "#"
+          ]
+        ],
+        "palette": "causeway",
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "passage": true,
+        "cols": 5,
+        "rows": 6,
+        "map": [
+          "#####",
+          "#....",
+          "#...P",
+          "#..##",
+          "#..##",
+          "#..##"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-16"
+      },
+      {
+        "id": "cl3-bank-b39",
+        "name": "Borrow Only Enough",
+        "palette": "cliffs",
+        "study": true,
+        "dashes": 0,
+        "exit": "right",
+        "lock": [
+          "portal",
+          "parry"
+        ],
+        "map": [
+          "########################################",
+          "#...........#################...........",
+          "#...........#################...........",
+          "#...........#################...........",
+          "#...........#################...........",
+          "#...........#################...........",
+          "#...........#################...........",
+          "#...........#################...........",
+          "#...........vvvvvvvvvvvvvvvvv...........",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#...............<#######################",
+          "#...............<#######################",
+          "................<#######################",
+          "................<#######################",
+          "........P.......<#######################",
+          "#...............<#######################",
+          "#...............<#######################",
+          "#...............<#######################",
+          "#...............<#######################",
+          "#^^^^^^^^^^^^^^^^#######################",
+          "########################################"
+        ],
+        "recoilPlatforms": [
+          {
+            "id": "A",
+            "c": 4,
+            "r": 17,
+            "w": 8,
+            "depth": 3,
+            "loadFrames": 30,
+            "releaseSpeed": 120
+          }
+        ],
+        "hint": "No dash · Hold Down to load; release and jump from the rising plate.",
+        "question": "What part of the rise clears both the landing and the teeth?",
+        "origin": "bank-b39",
+        "bankOrigin": "bank-b39",
+        "rbr": 3,
+        "bank": {
+          "id": "bank-b39",
+          "side": "base",
+          "format": "room",
+          "collection": "",
+          "acceptance": "banked"
+        },
+        "campaignImport": {
+          "version": "7.307.0",
+          "source": "bank-b39",
+          "superroom": false
+        },
+        "seam": [
+          [
+            0,
+            14,
+            "#"
+          ],
+          [
+            0,
+            15,
+            "#"
+          ],
+          [
+            0,
+            16,
+            "#"
+          ]
+        ]
+      },
+      {
+        "id": "cl3-bank-b11",
+        "name": "Door Becomes Stair",
+        "hint": "Strike the brass hub to turn the arm. A turn needs clear space.",
+        "question": "The far pocket is low and the way home is high. Which shape can serve both journeys?",
+        "map": [
+          "########################################",
+          ".....G.............<####################",
+          ".....G.............<####################",
+          "############>......<####################",
+          "############>......<####################",
+          "############>......<####################",
+          "#>.........>.......<####################",
+          "#>.........>.......<####################",
+          "#>.........>.......<####################",
+          "#>.........>...........................#",
+          "#>.........>........................c..#",
+          "#>.........>.....................#######",
+          "#>.........>.....................#######",
+          "#>...............................#######",
+          "#>..............##...............#######",
+          "#>........######.................#######",
+          "#................................#######",
+          "#.P..............................#######",
+          "###==###.........................#######",
+          "###..###.........................#######",
+          "###..###.........................#######",
+          "###..###^^^^^^^^^^^^^^^^^^^^^^^^^#######",
+          "###..###################################"
+        ],
+        "palette": "causeway",
+        "study": true,
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "exit": "left",
+        "hingeArms": [
+          {
+            "id": "A",
+            "c": 18,
+            "r": 11,
+            "length": 10,
+            "dir": "right"
+          }
+        ],
+        "origin": "bank-b11",
+        "bankOrigin": "bank-b11",
+        "rbr": 3,
+        "bank": {
+          "id": "bank-b11",
+          "side": "base",
+          "format": "room",
+          "collection": "",
+          "acceptance": "banked"
+        },
+        "campaignImport": {
+          "version": "7.307.0",
+          "source": "bank-b11",
+          "superroom": false
+        },
+        "seam": [
+          [
+            3,
+            19,
+            "#"
+          ],
+          [
+            4,
+            19,
+            "#"
+          ],
+          [
+            3,
+            20,
+            "#"
+          ],
+          [
+            4,
+            20,
+            "#"
+          ],
+          [
+            3,
+            21,
+            "#"
+          ],
+          [
+            4,
+            21,
+            "#"
+          ],
+          [
+            3,
+            22,
+            "#"
+          ],
+          [
+            4,
+            22,
+            "#"
+          ],
+          [
+            3,
+            18,
+            "#"
+          ],
+          [
+            4,
+            18,
+            "#"
+          ]
+        ]
+      },
+      {
+        "id": "cl3-bank-b68",
+        "study": true,
+        "dashes": 1,
+        "cols": 80,
+        "rows": 38,
+        "palette": "causeway",
+        "exit": "right",
+        "name": "Let Him Clear the Causeway",
+        "rbr": 3,
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "dropThru": true,
+        "map": [
+          "################################################################################",
+          "#............................................................................###",
+          "#............................................................................###",
+          "#............................................................................###",
+          "#............................................................................###",
+          "#............................................................................###",
+          "#............................................................................###",
+          "#............................................................................###",
+          "#............................................................................###",
+          "#............................................................................###",
+          "#.................................=========..................................###",
+          "#............................................................................###",
+          "#............................................................................###",
+          "#...............................................========.....................###",
+          "#............................................................................###",
+          "#............................................................................###",
+          "#..........................................................========..........###",
+          "#............................................................................###",
+          "#....................................###.....................................###",
+          "#....................................###...........................=====.....###",
+          "#....................................###.....................................###",
+          "#.........................ZZZZZZ....<###>....................................###",
+          "#...................................<###>....................................###",
+          "#...................................<###>....................................###",
+          "#.................=======...........<###>..................======............###",
+          "#.KKKKKK............................<###>........................KKKKKK......###",
+          "#.KKKKKK............................<###>........................KKKKKK......###",
+          "#.........======....................<###>..........=======...................###",
+          "#...................................<###>....................................###",
+          "#....................................###.....................................###",
+          "#...............................................................................",
+          "................................................................................",
+          "................................................................................",
+          "..........P.....................................................................",
+          "################################################################################",
+          "################################################################################",
+          "################################################################################",
+          "################################################################################"
+        ],
+        "zips": [
+          [
+            0,
+            -12
+          ]
+        ],
+        "combat": {
+          "waitForMove": true,
+          "enemies": [
+            {
+              "kind": "hound",
+              "brute": true,
+              "crush": 2,
+              "stamp": true,
+              "x": 200,
+              "y": 256,
+              "face": -1,
+              "ward": "brute"
+            }
+          ],
+          "receivers": [],
+          "doors": [
+            {
+              "x": 296,
+              "y": 240,
+              "w": 24,
+              "h": 32,
+              "brittle": true
+            },
+            {
+              "x": 576,
+              "y": 8,
+              "w": 8,
+              "h": 264,
+              "ward": "brute"
+            }
+          ]
+        },
+        "hint": "Let the Brute commit beneath a weight. Cross the upper causeway while he clears the brace below. The second weight ends the chase.",
+        "question": "Can the same opponent open the road you need to bait his next charge?",
+        "origin": "bank-b68",
+        "bankOrigin": "bank-b68",
+        "bank": {
+          "id": "bank-b68",
+          "side": "base",
+          "format": "superroom",
+          "collection": "superrooms",
+          "acceptance": "banked"
+        },
+        "campaignImport": {
+          "version": "7.307.0",
+          "source": "bank-b68",
+          "superroom": true
+        },
+        "seam": [
+          [
+            0,
+            31,
+            "#"
+          ],
+          [
+            0,
+            32,
+            "#"
+          ],
+          [
+            0,
+            33,
+            "#"
+          ]
+        ],
+        "atlasSockets": [
+          {
+            "kind": "room",
+            "preview": true,
+            "edge": "right",
+            "floor": 34,
+            "height": 4,
+            "to": "cl3-atlas-crossroads",
+            "toFloor": 34
+          }
+        ]
+      },
+      {
+        "id": "cl3-walk-3-3",
+        "name": "The Connecting Road",
+        "connector": true,
+        "cols": 8,
+        "rows": 8,
+        "map": [
+          "##....##",
+          "##====##",
+          ".#....##",
+          ".#....##",
+          "..====##",
+          "......##",
+          ".P....##",
+          "########"
+        ],
+        "exit": "up",
+        "palette": "causeway",
+        "origin": "cl3-walk-3-3",
+        "campaignWalk": true,
+        "entry": "left",
+        "seam": [
+          [
+            0,
+            2,
+            "#"
+          ],
+          [
+            0,
+            3,
+            "#"
+          ]
+        ]
+      },
+      {
+        "id": "cl3-walk-4-16",
+        "connector": true,
+        "cols": 8,
+        "rows": 28,
+        "map": [
+          "########",
+          "##......",
+          "##......",
+          "##......",
+          "##====##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....#.",
+          "##====..",
+          "##......",
+          "##....P.",
+          "########"
+        ],
+        "exit": "right",
+        "exitSpan": [
+          1,
+          4
+        ],
+        "palette": "causeway",
+        "origin": "cl3-walk-4-16",
+        "name": "The Connecting Road",
+        "campaignWalk": true,
+        "entry": "right",
+        "seam": [
+          [
+            7,
+            23,
+            "#"
+          ]
+        ]
+      },
+      {
+        "id": "cl3-atlas-crossroads",
+        "name": "The Chain Confluence",
+        "map": [
+          "#..............................................................................................#",
+          "#..............................................................................................#",
+          "#..............................................................................................#",
+          "#..............................................................................................#",
+          "#..............................................................................................#",
+          "#..............................................................................................#",
+          "#..............................................................................................#",
+          "#..............................................................................................#",
+          "#..............................................................................................#",
+          "#..............................................................................................#",
+          "#..............................................................................................#",
+          "#..............................................................................................#",
+          "#..............................................................................................#",
+          "#..............................................................................................#",
+          "#...............................................................................................",
+          "#...............................................................................................",
+          "#...............................................................................................",
+          "#...............................................................................................",
+          "#.....................................................................MMMMMM###################M",
+          "#...........................................................................####################",
+          "#................................................MMMMMM#########################################",
+          "#...............................................P......#########################################",
+          "#............................................MM#################################################",
+          "#..............................................#################################################",
+          "#..............................................#################################################",
+          "#.................................MM############################################################",
+          "#...................................############################################################",
+          "#...................................############################################################",
+          "#.......................MM######################################################################",
+          "#.........................######################################################################",
+          "..........................######################################################################",
+          ".............MM#################################################################################",
+          "...............#################################################################################",
+          "...............#################################################################################",
+          "M###############################################################################################",
+          "################################################################################################"
+        ],
+        "cols": 96,
+        "rows": 36,
+        "exit": "none",
+        "entry": "left",
+        "dashes": 1,
+        "palette": "causeway",
+        "atlasJunction": true,
+        "connector": true,
+        "atlasSockets": [
+          {
+            "edge": "left",
+            "floor": 34,
+            "height": 4,
+            "to": "cl3-bank-b68",
+            "toFloor": 34,
+            "kind": "room"
+          },
+          {
+            "edge": "right",
+            "floor": 18,
+            "kind": "passage",
+            "link": "3-5",
+            "to": "cl3-passage-3-5",
+            "world": 3
+          }
+        ],
+        "atlasMain": {
+          "edge": "left",
+          "floor": 34,
+          "height": 4,
+          "to": "cl3-bank-b68",
+          "toFloor": 34
+        },
+        "atlasRegion": 3,
+        "atlasRoads": [
+          {
+            "edge": "left",
+            "floor": 34,
+            "points": [
+              {
+                "c": 48,
+                "r": 22
+              },
+              {
+                "c": 45,
+                "r": 22
+              },
+              {
+                "c": 34,
+                "r": 25
+              },
+              {
+                "c": 24,
+                "r": 28
+              },
+              {
+                "c": 13,
+                "r": 31
+              },
+              {
+                "c": 2,
+                "r": 34
+              }
+            ]
+          },
+          {
+            "edge": "right",
+            "floor": 18,
+            "points": [
+              {
+                "c": 48,
+                "r": 22
+              },
+              {
+                "c": 51,
+                "r": 22
+              },
+              {
+                "c": 72,
+                "r": 20
+              },
+              {
+                "c": 93,
+                "r": 18
+              }
+            ]
+          }
+        ],
+        "atlasDecks": [
+          {
+            "c": 45,
+            "r": 22,
+            "w": 5
+          },
+          {
+            "c": 34,
+            "r": 25,
+            "w": 13
+          },
+          {
+            "c": 24,
+            "r": 28,
+            "w": 12
+          },
+          {
+            "c": 13,
+            "r": 31,
+            "w": 13
+          },
+          {
+            "c": 0,
+            "r": 34,
+            "w": 15
+          },
+          {
+            "c": 46,
+            "r": 22,
+            "w": 9
+          },
+          {
+            "c": 49,
+            "r": 20,
+            "w": 27
+          },
+          {
+            "c": 70,
+            "r": 18,
+            "w": 26
+          }
+        ],
+        "atlasFloor": [
+          34,
+          34,
+          34,
+          34,
+          34,
+          34,
+          34,
+          34,
+          34,
+          34,
+          34,
+          34,
+          34,
+          34,
+          34,
+          31,
+          31,
+          31,
+          31,
+          31,
+          31,
+          31,
+          31,
+          31,
+          31,
+          31,
+          28,
+          28,
+          28,
+          28,
+          28,
+          28,
+          28,
+          28,
+          28,
+          28,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18
+        ]
+      },
+      {
+        "id": "cl3-atlas-arrival",
+        "name": "Pilgrims’ Landing",
+        "map": [
+          "#..............................................................................................#",
+          "#..............................................................................................#",
+          "#..............................................................................................#",
+          "#..............................................................................................#",
+          "#..............................................................................................#",
+          "#..............................................................................................#",
+          "................................................................................................",
+          "................................................................................................",
+          "................................................................................................",
+          "................................................................................................",
+          "MMMMMMMMMMMMMMM..................................................................MMMMMMMMMMMMMMM",
+          "#..............................................................................................#",
+          "#..............................................................................................#",
+          "#............MMMMMMMMMMMMM............................................MMMMMMMMMMMMMMMMM........#",
+          "................................................................................................",
+          "................................................................................................",
+          "........................MMMMMMMMMMMM........................MMMMMMMMMMMMMMMM....................",
+          "................................................................................................",
+          "M#######################MM............................................MMMMMM###################M",
+          "########################..........MMMMMMMMMMMMM..MMMMMMMMMMMMMMMMM..........####################",
+          "#############################################MM..MMMMMM#########################################",
+          "#############################################...P......#########################################",
+          "################################################################################################"
+        ],
+        "cols": 96,
+        "rows": 23,
+        "exit": "none",
+        "entry": "right",
+        "dashes": 1,
+        "palette": "causeway",
+        "connector": true,
+        "atlasJunction": true,
+        "atlasSockets": [
+          {
+            "edge": "right",
+            "floor": 18,
+            "to": "cl3-c3-camp",
+            "toFloor": 18,
+            "kind": "room"
+          },
+          {
+            "edge": "left",
+            "floor": 18,
+            "kind": "passage",
+            "link": "1-3",
+            "to": "cl1-passage-1-3",
+            "world": 1
+          },
+          {
+            "edge": "left",
+            "floor": 10,
+            "kind": "passage",
+            "link": "2-3",
+            "to": "cl2-passage-2-3",
+            "world": 2
+          },
+          {
+            "edge": "right",
+            "floor": 10,
+            "kind": "passage",
+            "link": "20-3",
+            "to": "cl20-passage-20-3",
+            "world": 20
+          }
+        ],
+        "atlasMain": {
+          "edge": "right",
+          "floor": 18,
+          "to": "cl3-c3-camp",
+          "toFloor": 18
+        },
+        "atlasRegion": 3,
+        "atlasRoads": [
+          {
+            "edge": "right",
+            "floor": 18,
+            "points": [
+              {
+                "c": 48,
+                "r": 22
+              },
+              {
+                "c": 51,
+                "r": 22
+              },
+              {
+                "c": 72,
+                "r": 20
+              },
+              {
+                "c": 93,
+                "r": 18
+              }
+            ]
+          },
+          {
+            "edge": "left",
+            "floor": 18,
+            "points": [
+              {
+                "c": 48,
+                "r": 22
+              },
+              {
+                "c": 45,
+                "r": 22
+              },
+              {
+                "c": 24,
+                "r": 20
+              },
+              {
+                "c": 2,
+                "r": 18
+              }
+            ]
+          },
+          {
+            "edge": "left",
+            "floor": 10,
+            "points": [
+              {
+                "c": 48,
+                "r": 22
+              },
+              {
+                "c": 45,
+                "r": 22
+              },
+              {
+                "c": 34,
+                "r": 19
+              },
+              {
+                "c": 24,
+                "r": 16
+              },
+              {
+                "c": 13,
+                "r": 13
+              },
+              {
+                "c": 2,
+                "r": 10
+              }
+            ]
+          },
+          {
+            "edge": "right",
+            "floor": 10,
+            "points": [
+              {
+                "c": 48,
+                "r": 22
+              },
+              {
+                "c": 51,
+                "r": 22
+              },
+              {
+                "c": 62,
+                "r": 19
+              },
+              {
+                "c": 72,
+                "r": 16
+              },
+              {
+                "c": 83,
+                "r": 13
+              },
+              {
+                "c": 93,
+                "r": 10
+              }
+            ]
+          }
+        ],
+        "atlasDecks": [
+          {
+            "c": 46,
+            "r": 22,
+            "w": 9
+          },
+          {
+            "c": 49,
+            "r": 20,
+            "w": 27
+          },
+          {
+            "c": 70,
+            "r": 18,
+            "w": 26
+          },
+          {
+            "c": 45,
+            "r": 22,
+            "w": 5
+          },
+          {
+            "c": 24,
+            "r": 20,
+            "w": 23
+          },
+          {
+            "c": 0,
+            "r": 18,
+            "w": 26
+          },
+          {
+            "c": 45,
+            "r": 22,
+            "w": 5
+          },
+          {
+            "c": 34,
+            "r": 19,
+            "w": 13
+          },
+          {
+            "c": 24,
+            "r": 16,
+            "w": 12
+          },
+          {
+            "c": 13,
+            "r": 13,
+            "w": 13
+          },
+          {
+            "c": 0,
+            "r": 10,
+            "w": 15
+          },
+          {
+            "c": 46,
+            "r": 22,
+            "w": 9
+          },
+          {
+            "c": 49,
+            "r": 19,
+            "w": 17
+          },
+          {
+            "c": 60,
+            "r": 16,
+            "w": 16
+          },
+          {
+            "c": 70,
+            "r": 13,
+            "w": 17
+          },
+          {
+            "c": 81,
+            "r": 10,
+            "w": 15
+          }
+        ],
+        "atlasFloor": [
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18
+        ]
+      },
+      {
+        "id": "cl3-passage-3-5",
+        "name": "Sentry’s Aqueduct",
+        "cols": 112,
+        "rows": 64,
+        "map": [
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          "................................................................................................................",
+          ".........................................................................................#######################",
+          "........................................................................................########################",
+          ".......................................................................................#########################",
+          "......................................................................................##########################",
+          ".....................................................................................###########################",
+          "....P................................................................................###########################",
+          "################....................................................................############################",
+          "##################.................................................................#############################",
+          "###################...............................................................##############################",
+          "#####################............................................................###############################",
+          "######################............................................##############################################",
+          "########################........................................################################################",
+          "########################################.......................#################################################",
+          "##########################################...................###################################################",
+          "###########################################.................####################################################",
+          "#############################################.............######################################################",
+          "################################################################################################################",
+          "################################################################################################################",
+          "################################################################################################################",
+          "################################################################################################################",
+          "################################################################################################################",
+          "################################################################################################################",
+          "################################################################################################################",
+          "################################################################################################################",
+          "################################################################################################################",
+          "################################################################################################################",
+          "################################################################################################################",
+          "################################################################################################################",
+          "################################################################################################################",
+          "################################################################################################################",
+          "################################################################################################################",
+          "################################################################################################################",
+          "################################################################################################################",
+          "################################################################################################################"
+        ],
+        "exit": "none",
+        "dashes": 1,
+        "connector": true,
+        "palette": "causeway",
+        "atlasTransit": {
+          "link": "3-5",
+          "a": 3,
+          "b": 5,
+          "left": 3,
+          "right": 5,
+          "style": "aqueduct",
+          "floor": [
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            36,
+            37,
+            37,
+            38,
+            39,
+            39,
+            40,
+            41,
+            41,
+            42,
+            42,
+            42,
+            42,
+            42,
+            42,
+            42,
+            42,
+            42,
+            42,
+            42,
+            42,
+            42,
+            42,
+            42,
+            42,
+            43,
+            43,
+            44,
+            45,
+            45,
+            46,
+            46,
+            46,
+            46,
+            46,
+            46,
+            46,
+            46,
+            46,
+            46,
+            46,
+            46,
+            46,
+            45,
+            45,
+            44,
+            43,
+            43,
+            42,
+            41,
+            41,
+            40,
+            40,
+            40,
+            40,
+            40,
+            40,
+            40,
+            40,
+            40,
+            40,
+            40,
+            40,
+            40,
+            40,
+            40,
+            39,
+            38,
+            37,
+            36,
+            34,
+            33,
+            32,
+            31,
+            30,
+            30,
+            30,
+            30,
+            30,
+            30,
+            30,
+            30,
+            30,
+            30,
+            30,
+            30,
+            30,
+            30,
+            30,
+            30,
+            30,
+            30,
+            30,
+            30,
+            30,
+            30,
+            30
+          ],
+          "gateC": null,
+          "crown": null,
+          "winch": null,
+          "decks": [],
+          "route": [
+            {
+              "c": 4,
+              "r": 36,
+              "ground": true
+            },
+            {
+              "c": 9,
+              "r": 36,
+              "ground": true
+            },
+            {
+              "c": 14,
+              "r": 36,
+              "ground": true
+            },
+            {
+              "c": 19,
+              "r": 39,
+              "ground": true
+            },
+            {
+              "c": 24,
+              "r": 42,
+              "ground": true
+            },
+            {
+              "c": 29,
+              "r": 42,
+              "ground": true
+            },
+            {
+              "c": 34,
+              "r": 42,
+              "ground": true
+            },
+            {
+              "c": 39,
+              "r": 42,
+              "ground": true
+            },
+            {
+              "c": 44,
+              "r": 45,
+              "ground": true
+            },
+            {
+              "c": 49,
+              "r": 46,
+              "ground": true
+            },
+            {
+              "c": 54,
+              "r": 46,
+              "ground": true
+            },
+            {
+              "c": 59,
+              "r": 45,
+              "ground": true
+            },
+            {
+              "c": 64,
+              "r": 41,
+              "ground": true
+            },
+            {
+              "c": 69,
+              "r": 40,
+              "ground": true
+            },
+            {
+              "c": 74,
+              "r": 40,
+              "ground": true
+            },
+            {
+              "c": 79,
+              "r": 40,
+              "ground": true
+            },
+            {
+              "c": 84,
+              "r": 36,
+              "ground": true
+            },
+            {
+              "c": 89,
+              "r": 30,
+              "ground": true
+            },
+            {
+              "c": 94,
+              "r": 30,
+              "ground": true
+            },
+            {
+              "c": 99,
+              "r": 30,
+              "ground": true
+            },
+            {
+              "c": 104,
+              "r": 30,
+              "ground": true
+            },
+            {
+              "c": 107,
+              "r": 30,
+              "ground": true
+            }
+          ],
+          "scenery": [
+            {
+              "kind": "waterfall",
+              "c": 44,
+              "r": 14,
+              "w": 4
+            },
+            {
+              "kind": "pool",
+              "c": 24,
+              "r": 47,
+              "w": 58
+            },
+            {
+              "kind": "pipe",
+              "c": 69,
+              "r": 30,
+              "w": 19
+            }
+          ],
+          "name": "Sentry’s Aqueduct"
+        },
+        "atlasSockets": [
+          {
+            "edge": "left",
+            "floor": 36,
+            "kind": "region",
+            "world": 3,
+            "link": "3-5"
+          },
+          {
+            "edge": "right",
+            "floor": 30,
+            "kind": "region",
+            "world": 5,
+            "link": "3-5"
+          }
+        ],
+        "hint": "Follow the water through the abandoned channels."
+      }
+    ],
+    "tapes": {
+      "cl3-c3-upper#door": [
+        [
+          20,
+          "rgu"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          16,
+          "u"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          16,
+          "lgu"
+        ],
+        [
+          12,
+          "j"
+        ]
+      ],
+      "cl3-pass-10#through": [
+        [
+          26,
+          "rgu"
+        ]
+      ],
+      "cl3-pass-11#through": [
+        [
+          20,
+          "lgu"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          11,
+          "lgu"
+        ]
+      ],
+      "cl3-pass-12#through": [
+        [
+          5,
+          "ldx"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          5,
+          "ldx"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          3,
+          "lj"
+        ]
+      ],
+      "cl3-pass-13#through": [
+        [
+          20,
+          ""
+        ],
+        [
+          7,
+          "j"
+        ]
+      ],
+      "cl3-pass-14#through": [
+        [
+          26,
+          "rgu"
+        ]
+      ],
+      "cl3-pass-15#through": [
+        [
+          20,
+          "lgu"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          11,
+          "lgu"
+        ]
+      ],
+      "cl3-pass-16#through": [
+        [
+          16,
+          "lgu"
+        ],
+        [
+          14,
+          "rgu"
+        ]
+      ],
+      "cl3-c3-camp": [
+        [
+          40,
+          "r"
+        ],
+        [
+          14,
+          "rj"
+        ],
+        [
+          32,
+          "r"
+        ],
+        [
+          14,
+          "rj"
+        ],
+        [
+          95,
+          "r"
+        ]
+      ],
+      "cl3-c3-hoist": [
+        [
+          24,
+          "r"
+        ],
+        [
+          16,
+          "rj"
+        ],
+        [
+          26,
+          "r"
+        ],
+        [
+          34,
+          ""
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          6,
+          ""
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          120,
+          "r"
+        ]
+      ],
+      "cl3-c3-patrol": [
+        [
+          55,
+          "r"
+        ],
+        [
+          14,
+          "rj"
+        ],
+        [
+          60,
+          "r"
+        ]
+      ],
+      "cl3-c3-patrol#side": [
+        [
+          12,
+          "lgu"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          12,
+          "lgu"
+        ]
+      ],
+      "cl3-c3-chain": [
+        [
+          12,
+          "r"
+        ],
+        [
+          14,
+          "rj"
+        ],
+        [
+          22,
+          "r"
+        ],
+        [
+          34,
+          ""
+        ],
+        [
+          14,
+          "rj"
+        ],
+        [
+          27,
+          "r"
+        ],
+        [
+          54,
+          ""
+        ],
+        [
+          14,
+          "rj"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          73,
+          "r"
+        ]
+      ],
+      "cl3-c3-upper": [
+        [
+          7,
+          "r"
+        ],
+        [
+          10,
+          "rj"
+        ],
+        [
+          57,
+          ""
+        ],
+        [
+          14,
+          "j"
+        ],
+        [
+          4,
+          ""
+        ],
+        [
+          34,
+          "r"
+        ],
+        [
+          50,
+          ""
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          51,
+          "r"
+        ],
+        [
+          3,
+          "l"
+        ],
+        [
+          31,
+          ""
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          30,
+          "r"
+        ]
+      ],
+      "cl3-c3-rise": [
+        [
+          43,
+          "r"
+        ],
+        [
+          14,
+          "lj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          35,
+          "l"
+        ],
+        [
+          6,
+          ""
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          3,
+          ""
+        ],
+        [
+          123,
+          "r"
+        ],
+        [
+          14,
+          "j"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          22,
+          "r"
+        ],
+        [
+          9,
+          ""
+        ],
+        [
+          14,
+          "j"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          71,
+          "r"
+        ]
+      ],
+      "cl3-c3-well": [
+        [
+          46,
+          "r"
+        ],
+        [
+          14,
+          ""
+        ],
+        [
+          5,
+          "dx"
+        ],
+        [
+          84,
+          ""
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          132,
+          "r"
+        ]
+      ],
+      "cl3-c3-road": [
+        [
+          30,
+          "r"
+        ],
+        [
+          14,
+          ""
+        ],
+        [
+          5,
+          "dx"
+        ],
+        [
+          80,
+          ""
+        ],
+        [
+          44,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          13,
+          "r"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          22,
+          "r"
+        ]
+      ],
+      "cl3-c3-gantry": [
+        [
+          14,
+          "r"
+        ],
+        [
+          4,
+          ""
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          50,
+          ""
+        ],
+        [
+          3,
+          "r"
+        ],
+        [
+          10,
+          "rj"
+        ],
+        [
+          57,
+          ""
+        ],
+        [
+          14,
+          "rj"
+        ],
+        [
+          10,
+          "r"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          50,
+          "r"
+        ],
+        [
+          4,
+          ""
+        ],
+        [
+          14,
+          "j"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          76,
+          "r"
+        ]
+      ],
+      "cl3-c3-brace": [
+        [
+          26,
+          "r"
+        ],
+        [
+          14,
+          "rj"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          30,
+          "r"
+        ],
+        [
+          76,
+          ""
+        ],
+        [
+          14,
+          "rj"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          68,
+          "r"
+        ]
+      ],
+      "cl3-c3-counterweight": [
+        [
+          12,
+          "j"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          40,
+          "lgu"
+        ],
+        [
+          84,
+          ""
+        ],
+        [
+          2,
+          "dx"
+        ],
+        [
+          6,
+          ""
+        ],
+        [
+          100,
+          "ru"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          8,
+          "r"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          20,
+          "lu"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          5,
+          "dx"
+        ],
+        [
+          4,
+          "lj"
+        ],
+        [
+          40,
+          "ru"
+        ],
+        [
+          6,
+          "r"
+        ]
+      ],
+      "cl3-c3-q-ladder": [
+        [
+          19,
+          "r"
+        ],
+        [
+          10,
+          "rj"
+        ],
+        [
+          50,
+          ""
+        ],
+        [
+          14,
+          "j"
+        ],
+        [
+          4,
+          ""
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          22,
+          "r"
+        ],
+        [
+          3,
+          "l"
+        ],
+        [
+          43,
+          ""
+        ],
+        [
+          10,
+          "rj"
+        ],
+        [
+          26,
+          "r"
+        ],
+        [
+          3,
+          "l"
+        ],
+        [
+          6,
+          ""
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          24,
+          ""
+        ],
+        [
+          14,
+          "j"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          1,
+          ""
+        ]
+      ],
+      "cl3-c3-q-governor": [
+        [
+          52,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          8,
+          "ux"
+        ],
+        [
+          8,
+          ""
+        ],
+        [
+          8,
+          "ux"
+        ],
+        [
+          55,
+          "r"
+        ]
+      ],
+      "cl3-secret-e2": [
+        [
+          0,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          8,
+          "l"
+        ],
+        [
+          5,
+          "lux"
+        ],
+        [
+          16,
+          "lg"
+        ],
+        [
+          132,
+          "lg"
+        ],
+        [
+          0,
+          "lgd"
+        ],
+        [
+          1,
+          "rj"
+        ],
+        [
+          18,
+          "r"
+        ],
+        [
+          0,
+          "r"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          15,
+          ""
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          17,
+          ""
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          160,
+          "r"
+        ]
+      ],
+      "cl3-bank-b39": [
+        [
+          12,
+          "d"
+        ],
+        [
+          8,
+          "r"
+        ],
+        [
+          28,
+          "rj"
+        ],
+        [
+          140,
+          "r"
+        ]
+      ],
+      "cl3-bank-b11": [
+        [
+          20,
+          "r"
+        ],
+        [
+          20,
+          "rj"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          5,
+          "r"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          15,
+          "r"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          16,
+          "j"
+        ],
+        [
+          55,
+          "r"
+        ],
+        [
+          3,
+          "rj"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          38,
+          "r"
+        ],
+        [
+          12,
+          ""
+        ],
+        [
+          24,
+          "l"
+        ],
+        [
+          3,
+          "lj"
+        ],
+        [
+          5,
+          "lx"
+        ],
+        [
+          65,
+          "l"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          1,
+          "us"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          1,
+          "us"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          1,
+          "us"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          8,
+          "j"
+        ],
+        [
+          100,
+          "rgu"
+        ],
+        [
+          4,
+          "lj"
+        ],
+        [
+          5,
+          "lx"
+        ],
+        [
+          90,
+          "l"
+        ]
+      ],
+      "cl3-bank-b68": [
+        [
+          12,
+          "j"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          60,
+          "lgu"
+        ],
+        [
+          90,
+          ""
+        ],
+        [
+          2,
+          "dx"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          35,
+          "r"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          20,
+          "r"
+        ],
+        [
+          1,
+          ""
+        ],
+        [
+          26,
+          "rj"
+        ],
+        [
+          15,
+          ""
+        ],
+        [
+          18,
+          "r"
+        ],
+        [
+          1,
+          ""
+        ],
+        [
+          26,
+          "rj"
+        ],
+        [
+          44,
+          ""
+        ],
+        [
+          26,
+          "rj"
+        ],
+        [
+          20,
+          "r"
+        ],
+        [
+          15,
+          ""
+        ],
+        [
+          24,
+          "r"
+        ],
+        [
+          1,
+          ""
+        ],
+        [
+          35,
+          "rj"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          30,
+          "r"
+        ],
+        [
+          1,
+          "dj"
+        ],
+        [
+          65,
+          ""
+        ],
+        [
+          26,
+          "rj"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          26,
+          "rj"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          12,
+          "r"
+        ],
+        [
+          35,
+          ""
+        ],
+        [
+          2,
+          "dx"
+        ],
+        [
+          70,
+          ""
+        ],
+        [
+          55,
+          "r"
+        ],
+        [
+          25,
+          "r"
+        ]
+      ],
+      "cl3-walk-3-3": [
+        [
+          12,
+          "r"
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ]
+      ],
+      "cl3-walk-4-16": [
+        [
+          12,
+          "l"
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          100,
+          "r"
+        ]
+      ]
+    },
+    "folk": {
+      "oren": {
+        "cloak": "#5b4a3a",
+        "trim": "#c8883a",
+        "skin": "#cfa07e",
+        "cap": true
+      },
+      "sable": {
+        "cloak": "#3e4a52",
+        "trim": "#d8d2c0",
+        "skin": "#b98d6c",
+        "hood": true,
+        "staff": true
+      },
+      "silas": {
+        "cloak": "#6a5038",
+        "trim": "#d59a68",
+        "skin": "#c9b9a0",
+        "helm": true
+      }
+    },
+    "props": {
+      "cw-chain": [
+        [
+          3,
+          -6,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -6,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -12,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -12,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -18,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -18,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -24,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -24,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -30,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -30,
+          1,
+          1,
+          "#b0a48e"
+        ]
+      ],
+      "cw-chain-long": [
+        [
+          3,
+          -6,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -6,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -12,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -12,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -18,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -18,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -24,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -24,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -30,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -30,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -36,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -36,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -42,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -42,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -48,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -48,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -54,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -54,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -60,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -60,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -66,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -66,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -72,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -72,
+          1,
+          1,
+          "#b0a48e"
+        ]
+      ],
+      "cw-winch": [
+        [
+          0,
+          -12,
+          1,
+          12,
+          "#4a3a2c"
+        ],
+        [
+          11,
+          -12,
+          1,
+          12,
+          "#4a3a2c"
+        ],
+        [
+          0,
+          -13,
+          12,
+          1,
+          "#6a5a48"
+        ],
+        [
+          2,
+          -10,
+          8,
+          6,
+          "#6e5236"
+        ],
+        [
+          2,
+          -8,
+          8,
+          1,
+          "#c8a060"
+        ],
+        [
+          5,
+          -15,
+          2,
+          3,
+          "#c8a060"
+        ],
+        [
+          1,
+          -1,
+          10,
+          1,
+          "#3a2e24"
+        ]
+      ],
+      "cw-stretcher": [
+        [
+          0,
+          -3,
+          15,
+          1,
+          "#8a6a40"
+        ],
+        [
+          1,
+          -2,
+          1,
+          2,
+          "#5a4632"
+        ],
+        [
+          13,
+          -2,
+          1,
+          2,
+          "#5a4632"
+        ],
+        [
+          2,
+          -5,
+          11,
+          2,
+          "#c8c0a8"
+        ],
+        [
+          3,
+          -6,
+          3,
+          1,
+          "#c8c0a8"
+        ]
+      ],
+      "cw-standard": [
+        [
+          3,
+          -34,
+          2,
+          34,
+          "#5a4a3a"
+        ],
+        [
+          5,
+          -33,
+          9,
+          7,
+          "#7a2a2a"
+        ],
+        [
+          5,
+          -26,
+          6,
+          3,
+          "#5a1e1e"
+        ],
+        [
+          12,
+          -26,
+          2,
+          2,
+          "#5a1e1e"
+        ],
+        [
+          1,
+          -35,
+          6,
+          1,
+          "#c8a060"
+        ]
+      ],
+      "cw-crate": [
+        [
+          0,
+          -8,
+          8,
+          8,
+          "#6a5032"
+        ],
+        [
+          0,
+          -8,
+          8,
+          1,
+          "#8a6a42"
+        ],
+        [
+          1,
+          -5,
+          6,
+          1,
+          "#4a3622"
+        ],
+        [
+          3,
+          -8,
+          1,
+          8,
+          "#4a3622"
+        ]
+      ],
+      "cw-gear": [
+        [
+          2,
+          -14,
+          12,
+          12,
+          "#6a5a3a"
+        ],
+        [
+          4,
+          -16,
+          8,
+          16,
+          "#6a5a3a"
+        ],
+        [
+          0,
+          -12,
+          16,
+          8,
+          "#6a5a3a"
+        ],
+        [
+          5,
+          -11,
+          6,
+          6,
+          "#2e281e"
+        ],
+        [
+          7,
+          -9,
+          2,
+          2,
+          "#c8a060"
+        ],
+        [
+          3,
+          -13,
+          10,
+          1,
+          "#9a8458"
+        ]
+      ]
+    },
+    "palettes": {},
+    "saved": [],
+    "difficulty": {
+      "min": 1,
+      "max": 6,
+      "mean": 2.2
+    },
+    "retiredRooms": {
+      "cl3-c3-drop": "cl3-c3-hoist",
+      "cl3-c3-counterweight": "cl3-bank-b68"
+    },
+    "retiredRoomDetails": [
+      {
+        "id": "cl3-c3-drop",
+        "name": "Drop Yard",
+        "to": "cl3-c3-hoist",
+        "grade": "A",
+        "evidence": "One four-tile vertical lift rises eleven tiles beside a thorned far bank. The saved route includes a 56-frame idle ride and no blade interaction; Chainwake Camp already establishes weight-triggered lift travel, while The Hoist follows with its new momentum lesson.",
+        "dialogueMoved": [
+          "oren"
+        ]
+      },
+      {
+        "id": "cl3-c3-counterweight",
+        "name": "The Counterweight",
+        "to": "cl3-bank-b68",
+        "reason": "Replaced by its native boss superroom"
+      }
+    ],
+    "checkpointLinks": [],
+    "requiredBankRooms": [
+      "cl3-bank-b39",
+      "cl3-bank-b11",
+      "cl3-bank-b68"
+    ],
+    "requiredMainRooms": [
+      "cl3-c3-camp",
+      "cl3-bank-b39",
+      "cl3-c3-hoist",
+      "cl3-c3-patrol",
+      "cl3-c3-chain",
+      "cl3-c3-upper",
+      "cl3-c3-rise",
+      "cl3-c3-well",
+      "cl3-bank-b11",
+      "cl3-c3-road",
+      "cl3-c3-gantry",
+      "cl3-c3-brace",
+      "cl3-bank-b68"
+    ],
+    "bankIntegration": {
+      "version": "7.307.0",
+      "ordinary": [
+        "cl3-bank-b39",
+        "cl3-bank-b11"
+      ],
+      "superroom": "cl3-bank-b68",
+      "beforeBoss": "cl3-c3-brace",
+      "sourceMainCount": 12,
+      "geography": "continuous",
+      "sealedEntrances": [],
+      "clearedDoorways": []
+    },
+    "continuousSeams": [
+      {
+        "from": "cl3-c3-camp",
+        "to": "cl3-bank-b39",
+        "how": "right tunnel (3 rock)",
+        "kind": "direct",
+        "entryDelta": 2,
+        "toFire": [
+          [
+            59,
+            "rgu"
+          ]
+        ]
+      },
+      {
+        "from": "cl3-bank-b39",
+        "to": "cl3-c3-hoist",
+        "how": "right tunnel (3 rock)",
+        "kind": "direct",
+        "entryDelta": 2,
+        "toFire": [
+          [
+            9,
+            "r"
+          ]
+        ]
+      },
+      {
+        "from": "cl3-c3-well",
+        "to": "cl3-walk-3-3",
+        "how": "right tunnel (2 rock)",
+        "kind": "walk",
+        "entryDelta": 2,
+        "toFire": [
+          [
+            1,
+            ""
+          ]
+        ]
+      },
+      {
+        "from": "cl3-walk-3-3",
+        "to": "cl3-bank-b11",
+        "how": "up shaft at 3–4 (10 rock)",
+        "kind": "walk",
+        "entryDelta": 0,
+        "toFire": [
+          [
+            70,
+            "lgu"
+          ],
+          [
+            16,
+            "r"
+          ]
+        ]
+      },
+      {
+        "from": "cl3-bank-b11",
+        "to": "cl3-walk-4-16",
+        "how": "left tunnel (1 rock)",
+        "kind": "walk",
+        "entryDelta": 2,
+        "toFire": [
+          [
+            1,
+            ""
+          ]
+        ]
+      },
+      {
+        "from": "cl3-walk-4-16",
+        "to": "cl3-c3-road",
+        "how": "right tunnel (0 rock)",
+        "kind": "walk",
+        "entryDelta": 1,
+        "toFire": [
+          [
+            15,
+            "r"
+          ]
+        ]
+      },
+      {
+        "from": "cl3-c3-brace",
+        "to": "cl3-bank-b68",
+        "how": "right tunnel (3 rock)",
+        "kind": "direct",
+        "entryDelta": 2,
+        "toFire": [
+          [
+            47,
+            "r"
+          ]
+        ]
+      }
+    ],
+    "atlasEnd": "cl3-bank-b68",
+    "atlasMiddle": "cl3-c3-well",
+    "atlasPassagesReady": true,
+    "passages": [
+      {
+        "room": "cl3-passage-3-5",
+        "x": 3480,
+        "y": 0,
+        "fire": {
+          "c": 4,
+          "r": 35
+        }
+      }
+    ],
+    "atlasStart": "cl3-c3-camp"
+  },
+  "constants": {
+    "maxRun": 90,
+    "runAccel": 1000,
+    "runReduce": 400,
+    "airMult": 0.65,
+    "flingMaxFall": 420,
+    "gravity": 900,
+    "halfGravThreshold": 40,
+    "maxFall": 160,
+    "fastMaxFall": 240,
+    "fastMaxAccel": 300,
+    "jumpSpeed": -105,
+    "jumpHBoost": 40,
+    "varJumpFrames": 12,
+    "jumpGraceFrames": 6,
+    "bufferFrames": 5,
+    "wallJumpCheck": 3,
+    "superWallJumpCheck": 5,
+    "wallJumpForceFrames": 10,
+    "wallJumpH": 130,
+    "wallSlideStartMax": 20,
+    "wallSlideFrames": 72,
+    "wallSpeedRetentionFrames": 4,
+    "climbMaxStamina": 110,
+    "climbUpCost": 45.45454545454545,
+    "climbStillCost": 10,
+    "climbJumpCost": 27.5,
+    "climbTired": 20,
+    "climbUpSpeed": -45,
+    "touchClimbUpSpeed": -60,
+    "climbDownSpeed": 80,
+    "climbSlipSpeed": 30,
+    "climbAccel": 900,
+    "climbCheck": 2,
+    "climbHopX": 100,
+    "climbHopY": -120,
+    "climbHopForceFrames": 12,
+    "climbJumpBoostFrames": 12,
+    "climbNoMoveFrames": 6,
+    "dashSpeed": 240,
+    "endDashSpeed": 160,
+    "endDashUpMult": 0.75,
+    "dashFrames": 9,
+    "dashCooldownFrames": 12,
+    "dashRefillCooldownFrames": 6,
+    "dashFreezeFrames": 3,
+    "ultraMult": 1.2,
+    "superJumpH": 260,
+    "hyperXMult": 1.25,
+    "hyperYMult": 0.5,
+    "superWallJumpSpeed": -160,
+    "superWallJumpH": 170,
+    "superWallVarFrames": 15,
+    "upwardCorner": 4,
+    "dashCorner": 4,
+    "liftXCap": 250,
+    "liftYCap": -130,
+    "liftGraceFrames": 10,
+    "carryMaxFall": 45,
+    "throwX": 200,
+    "throwY": -80,
+    "strikeFrames": 5,
+    "strikeCooldownFrames": 15,
+    "podSpeed": -210,
+    "podSide": 190,
+    "podDown": 150,
+    "springSpeed": -185,
+    "refillRespawnFrames": 150,
+    "crumbleShakeFrames": 24,
+    "crumbleRespawnFrames": 120,
+    "stoneAccel": 600,
+    "stoneMax": 240,
+    "deathFrames": 24,
+    "respawnFrames": 10
+  },
+  "quest": {
+    "world": 3,
+    "doneLine": "Forty-one. Forty-two. I’ve lost count. Good.",
+    "steps": [
+      {
+        "kind": "tooth",
+        "at": [
+          "cl3-c3-q-governor",
+          0.9
+        ]
+      },
+      {
+        "kind": "carry",
+        "item": "key",
+        "from": "giver",
+        "to": [
+          "cl3-c3-chain",
+          "top"
+        ]
+      }
+    ],
+    "lines": [
+      "Thirty-nine, forty. The governor at the top of the ladder turns me. Strike its bright tooth; anything else and you only bruise your arm.",
+      "Take the key from my back, would you? Hang it on the toll hook, at the top of the next climb. Where nobody can wind me."
+    ],
+    "hud": [
+      "Strike the governor’s bright tooth",
+      "Hang the winding key on the toll hook"
+    ],
+    "tooth": {
+      "room": "cl3-c3-q-governor",
+      "x": 299,
+      "y": 26
+    },
+    "hook": {
+      "room": "cl3-c3-chain",
+      "x": 169,
+      "y": 13
+    },
+    "giver": {
+      "room": "cl3-c3-patrol",
+      "x": 92,
+      "y": 106
+    }
+  },
+  "secretRewards": [
+    {
+      "id": "secret-3",
+      "room": "cl3-secret-e2",
+      "title": "Glass Ladder",
+      "name": "Cog Heart",
+      "color": "#e8a86a",
+      "x": 290,
+      "y": 26
+    }
+  ]
+}

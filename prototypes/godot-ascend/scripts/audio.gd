@@ -22,7 +22,7 @@ var paused = false
 var levels = {"Music":0.55,"Effects":0.7,"Voices":0.9,"Ambience":0.4}
 var capture_effect: AudioEffectCapture
 var recorded = PackedVector2Array()
-const EVENT_CLIPS = {"jump":"jump","walljump":"walljump","super":"dash","hyper":"dash","wallbounce":"walljump","dash-start":"dash","land":"land-soft","refill":"gem","death":"death","strike":"swing","stone-lit":"rune","gate-open":"gate","crumble":"crumble","crumble-shake":"crumble","shard":"gem","zip-start":"zip","zip-stop":"stone-hit","pickup":"lantern","throw":"dash","plate":"plate","held-open":"lever","held-close":"lever","lantern-lost":"shatter","climbhop":"grab","grab":"grab"}
+const EVENT_CLIPS = {"stone-hit":"stone-hit","stone-stop":"stone-hit","recoil-load":"lever","recoil-release":"zip","recoil-jam":"stone-hit","hinge-turn":"lever","hinge-jam":"stone-hit","brute-crack":"shatter","brute-stamp":"land-hard","enemy-tell":"stone-hit","breach":"shatter","enemy-defeat":"shatter","jump":"jump","walljump":"walljump","super":"dash","hyper":"dash","wallbounce":"walljump","dash-start":"dash","land":"land-soft","refill":"gem","death":"death","strike":"swing","stone-lit":"rune","gate-open":"gate","crumble":"crumble","crumble-shake":"crumble","shard":"gem","zip-start":"zip","zip-stop":"stone-hit","pickup":"lantern","throw":"dash","plate":"plate","held-open":"lever","held-close":"lever","lantern-lost":"shatter","climbhop":"grab","grab":"grab"}
 func _ready():
  manifest = JSON.parse_string(FileAccess.get_file_as_string("res://data/audio.json"))
  # Warm the reused resources before gameplay; first hits/lines do not load files mid-frame.
@@ -94,12 +94,28 @@ func effort(name,force = false):
  if speech.playing and not force: return
  effort_time = elapsed
  effect(name,0.58)
-func room_changed():
+func room_changed(core=null):
+ if world_runtime!=null:
+  var chapter=manifest.chapters[str(int(world_runtime.data.world.n))]
+  var id=core.room.id if core!=null else world_runtime.active_id
+  var boss=id in ["cl3-c3-brace","cl3-bank-b68"]
+  var score=stream(chapter.get("bossMusic",chapter.music) if boss else chapter.music,true)
+  if music.stream!=score:
+   music.stream=score
+   music.play()
  # A heard line finishes naturally across a doorway; repeated retry does not restart the recording.
  foot_clock = 0.1
 func tick(core,delta):
  elapsed += delta
  if paused: return
+ if world_runtime!=null and int(world_runtime.data.world.n)==3 and world_runtime.quest_complete and not heard.has("defector:done"):
+  # The hook is the hand-in. Retire the carry instruction at that exact beat.
+  heard["defector:done"]=true
+  var reminder=manifest.voices["defector:line1"].id
+  var offer=manifest.voices["defector:line0"].id
+  voice_queue=voice_queue.filter(func(line):return line.id!=reminder and line.id!=offer)
+  speech.stop()
+  say(manifest.voices["defector:done"])
  var p = core.p
  if p.onGround and p.state=="normal" and abs(p.vx)>20:
   foot_clock -= delta
@@ -124,6 +140,7 @@ func tick(core,delta):
     # on the last few steps home and leave it speaking over the completion line.
     if world_runtime.quest_lantern and not world_runtime.quest_complete: continue
     key=world_runtime.elsie_voice()
+   if who.who=="silas" and world_runtime!=null: key=world_runtime.silas_voice()
    if not heard.has(key):
     heard[key] = true
     if manifest.voices.has(key): voice_queue.append(manifest.voices[key])

@@ -106,9 +106,9 @@ func _ready():
  for bus in audio.levels: audio.levels[bus] = float(preferences.get_value("audio",bus,audio.levels[bus]))
  audio.voices_enabled = preferences.get_value("audio","voices",true)
  add_child(audio)
- # Construct both chapters before play; selecting a chapter preserves its live state.
- for number in [1,2]:
-  var chapter_data=data if number==1 else JSON.parse_string(FileAccess.get_file_as_string("res://data/world2.json"))
+ # Construct all chapters before play; selecting a chapter preserves its live state.
+ for number in [1,2,3]:
+  var chapter_data=data if number==1 else JSON.parse_string(FileAccess.get_file_as_string("res://data/world%d.json"%number))
   var chapter_world=world if number==1 else World.new(chapter_data)
   var container = SubViewportContainer.new()
   container.position = Vector2(0,48)
@@ -150,9 +150,10 @@ func _ready():
   elif args[i]=="--capture-after" and i+1<args.size(): screenshot_after = int(args[i+1])
   elif args[i]=="--menu": capture_menu = true
   elif args[i]=="--watch": watch = true
-  elif args[i] in ["--tour","--quest-tour"]:
-   switch_chapter(2)
-   var recording=JSON.parse_string(FileAccess.get_file_as_string("res://data/elsie-tour.json" if args[i]=="--quest-tour" else "res://data/world2-tour.json"))
+  elif args[i] in ["--tour","--quest-tour","--causeway-tour","--silas-tour"]:
+   switch_chapter(3 if args[i] in ["--causeway-tour","--silas-tour"] else 2)
+   var tour_file={"--tour":"world2-tour","--quest-tour":"elsie-tour","--causeway-tour":"world3-tour","--silas-tour":"silas-tour"}[args[i]]
+   var recording=JSON.parse_string(FileAccess.get_file_as_string("res://data/"+tour_file+".json"))
    if recording.has("start_room"): current=world.regions.find(recording.start_room)
    for part in recording.tape:
     for frame in range(int(part[0])): journey.append(part[1])
@@ -232,6 +233,7 @@ func create_interface():
  chapter_picker=OptionButton.new()
  chapter_picker.add_item("1 · The Outskirts")
  chapter_picker.add_item("2 · Black Woods")
+ chapter_picker.add_item("3 · Broken Causeway")
  chapter_picker.item_selected.connect(func(index):switch_chapter(index+1);set_paused(false))
  column.add_child(chapter_picker)
  text(column,"EXPLORE A SECTION",12,"#bba984")
@@ -272,7 +274,7 @@ func create_interface():
  button(light_row,"Lighting on / off",func():landscape.lit = not landscape.lit)
  button(light_row,"Fullscreen · F11",toggle_fullscreen)
  text(column,"ARROWS  Move and aim\nSPACE / C / J  Jump     D / X / K  Dash\nA / Z / SHIFT / L  Cling, climb, carry or throw\nW / V / I  Strike     R  Retry     M  Music\nController: stick / d-pad · A jump · X/B dash · LB cling",15,"#b5c0bd")
- text(column,"Native Ascend · two preloaded chapters",12,"#70888f")
+ text(column,"Native Ascend · three preloaded chapters",12,"#70888f")
  pause_panel.hide()
 func set_voices(value):
  audio.voices_enabled = value
@@ -353,7 +355,7 @@ func load_section(index,smooth_join=false):
   sim.world_context=null
  else: sim.world_context=world
  landscape.load_scene(sim,smooth_join)
- audio.room_changed()
+ audio.room_changed(sim)
  tape = []
  for part in data.world.tapes.get(sim.room.id,[]):
   for i in range(int(part[0])): tape.append(part[1])
@@ -469,6 +471,13 @@ func close_app(code=0):
  get_tree().quit(code)
 
 func bearing_caption():
+ if chapter_number==3:
+  var prefix="♥ %d · "%world.heart_count() if world.heart_count()>0 else ""
+  if world.quest_complete: return prefix+"The Clockwork Defector complete"
+  if world.quest_key: return prefix+"SILAS · Hang the winding key on the toll hook"
+  if world.silas_step==1: return prefix+"SILAS · The governor stopped · take the key from Silas"
+  if world.silas_met: return prefix+"SILAS · Strike the governor’s bright tooth"
+  return prefix+"BROKEN CAUSEWAY · Speak with Silas on the patrol road"
  if chapter_number==2:
   var prefix="♥ %d · "%world.heart_count() if world.heart_count()>0 else ""
   if world.quest_complete: return prefix+"A Place for Supper complete"
@@ -548,7 +557,7 @@ func switch_chapter(number):
  chapter_picker.select(number-1)
  title.text=data.world.name.to_upper()+" · ASCEND"
  pause_title.text=data.world.name.to_upper()
- pause_description.text="A road through the old watch · Ascend" if number==1 else "Moths, pale resin and the lantern tree · Ascend"
+ pause_description.text="A road through the old watch · Ascend" if number==1 else ("Moths, pale resin and the lantern tree · Ascend" if number==2 else "Iron, counterweights and the toll road · Ascend")
  room_banner.text=sim.room.name.to_upper()
  banner_time=2.4
  subtitle_panel.hide()

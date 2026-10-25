@@ -35,6 +35,10 @@ func _initialize():
     elif actual==expected: continue
     failure = "%s frame %d · %s expected %s got %s" % [name,index+1,key,str(expected),str(actual)]
     break
+   if failure=="" and f.has("combat") and f.combat!=null and not equivalent(sim.combat,f.combat):
+    failure="%s frame %d · combat expected %s got %s"%[name,index+1,JSON.stringify(f.combat),JSON.stringify(sim.combat)]
+   if failure=="" and f.has("bruteWaves") and not equivalent(sim.brute_waves,f.bruteWaves):
+    failure="%s frame %d · shockwave mismatch"%[name,index+1]
    if failure=="":
     for i in range(f.entities.size()):
      for key in f.entities[i]:

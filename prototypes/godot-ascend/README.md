@@ -1,6 +1,6 @@
-# Ascend in Godot — Outskirts and Black Woods prototype
+# Ascend in Godot — Outskirts, Black Woods and Broken Causeway
 
-Version **0.4.0** · A native Godot 4.5.1 prototype of **The Outskirts and Black Woods**, isolated from the shipping browser game on `codex/godot-ascend-black-woods`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.5.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods and Broken Causeway**, isolated from the shipping browser game on `codex/godot-ascend-causeway`. This is an engine comparison, not a replacement release or a full Ascend port.
 
 ## Play
 
@@ -14,7 +14,28 @@ The local standalone application is `exports/Bladefall Ascend Prototype.app`. Re
 
 Controls now match the browser defaults: **arrows** move/aim, **Space/C/J** jump, **D/X/K** dash, **A/Z/Shift/L** cling/climb/carry/throw, **W/V/I** strike, **F/O** parry, **P** portal and **R** retry. Each room’s original action locks still apply. **Esc** opens the pause menu; **M** toggles music and **F11** toggles fullscreen. The standard controller equivalents are mapped too (stick/d-pad, A jump, X/B dash, LB/LT cling, Y strike, RB portal and RT parry).
 
-The pause menu includes a **chapter selector** for The Outskirts and Black Woods. Both chapters are constructed before play, and switching preserves each chapter’s progress and position. **Start world over** resets the current world, bearings, room machinery, deaths and dialogue history without closing the app. Retry resets only the current room and preserves bearings and lit stakes. The pause menu also contains the room selector, Watch/Take control, four separate volume controls, spoken dialogue toggle, reduced motion and lighting comparison. Audio and display preferences persist locally. The app starts directly in the game rather than an engine-study toolbar.
+The pause menu includes a **chapter selector** for The Outskirts, Black Woods and Broken Causeway. All three chapters are constructed before play, and switching preserves each chapter’s progress and position. **Start world over** resets the current world, bearings, room machinery, deaths and dialogue history without closing the app. Retry resets only the current room and preserves bearings and lit stakes. The pause menu also contains the room selector, Watch/Take control, four separate volume controls, spoken dialogue toggle, reduced motion and lighting comparison. Audio and display preferences persist locally. The app starts directly in the game rather than an engine-study toolbar.
+
+
+## Broken Causeway · 0.5.0
+
+Choose **Esc → chapter selector → 3 · Broken Causeway**. The new chapter contains all 28 authored rooms, including the 15 taped main-road sections, Silas’s existing **The Clockwork Defector** quest, and the **Glass Ladder / Cog Heart** secret. Inter-world passages remain isolated previews; the chapter selector switches worlds. Explore and the browser game are unchanged.
+
+Causeway has its own dusk palette, layered broken viaducts, chains, winches, crates, standards, clockwork Silas and armored Brutes. Sliding stones now react to directional dashes. Native devices include load/release platforms, safely jamming hinged arms, cracked braces, counterweights, the Brute’s two-crush armor and grounded stamp waves. Combat actors keep the original arena bounds while the knight uses continuous world collision. One native-only repair gives the governor entry clearance for the lower room’s four-tile block and a one-way lip onto the upper floor; original browser exports stay unchanged.
+
+The Iron Causeway score, Iron Juggernaut boss score, heights ambience and existing dialogue are copied byte-for-byte. Across all three worlds the manifest contains **102 existing files and 26 voice entries**, with SHA-256 provenance. No quest or voice was generated. Silas’s governor opening, key pickup, death recovery, toll-hook hand-in and visible heart award use the existing quest. Progress remains session-only; retry keeps rewards and Start world over clears them.
+
+Verification adds:
+
+```sh
+node prototypes/godot-ascend/tools/export-world.mjs --world=3 --check
+node prototypes/godot-ascend/tools/parity.mjs --world=3
+node prototypes/godot-ascend/tools/seam-check.mjs --world=3
+```
+
+World 3 matches **46 browser/native traces and 14,496 frames**, including complete combat actor state and stamp waves. World 1 retains 47 traces / 14,221 frames; World 2 retains 41 / 12,340. Native packed-app checks cover chapter switching, all main-road Watch routes, governor timing, key recovery, reward idempotence, existing recordings and restart. Continuous normal-input proofs reach the crossroads in **5,386 frames**, complete Silas’s whole quest in **2,261 frames**, and enter, earn and return with the Cog Heart in **1,302 frames**, all with zero deaths. Each proof starts from one checkpoint and then uses no room warps, state resets, forced quest steps, physics edits or invulnerability.
+
+The corresponding checks are `tests/causeway.gd`, `tests/world3_journey.gd`, `tests/silas_journey.gd` and `tests/world3_secret.gd`. Development tools `record-world3.gd`, `record-silas.gd` and `record-cog-heart.gd` regenerate the input recordings. `--causeway-tour` and `--silas-tour` play the road and quest through the actual application. Tests and development tools are excluded from the packaged application. The evidence directory is `.cache/godot/causeway/`.
 
 ## What is native
 
@@ -23,10 +44,10 @@ The pause menu includes a **chapter selector** for The Outskirts and Black Woods
 - `scripts/landscape.gd`: cached TileMapLayer terrain with varied stone, grass edges and weathering; layered hills, clouds, towers and arches; animated tents, flags, clocks, palisades, campfires and NPC work poses; native GPU embers and drifting motes; ambient/point lighting with real terrain shadow occluders; a restrained grading/vignette shader. Jump, landing, dash, refill, gate and death effects sit above the unchanged simulation. Render interpolation, camera easing and a constrained animated plume smooth movement at higher display refresh rates. The plume turns slate when the dash is spent. Adjoining terrain stays visible across doors.
 - `scripts/audio.gd`: original **Midnight Field** score and plains ambience, nearby fire audio, alternating existing effect/effort takes, footsteps and climbing sounds. Music continues across rooms, ducks beneath speech, and pauses/resumes with gameplay. Spoken NPC lines are queued, not cut off or restarted every frame; matching subtitles stay readable when voices are disabled.
 - `scripts/controls.gd`: physical keyboard mappings imported from the shipping browser defaults, plus named Godot gamepad equivalents.
-- `scripts/world.gd`: all 30 Outskirts and 27 Black Woods room simulations, entities and hazards constructed before play; shared world collision; persistent machinery; physical travel in either direction; carried-object transfers and recovery; Ash/Glass/Iron collection and Mara acknowledgement.
+- `scripts/world.gd`: all 30 Outskirts, 27 Black Woods and 28 Causeway room simulations, entities and hazards constructed before play; shared world collision; persistent machinery; physical travel in either direction; carried-object transfers and recovery; Ash/Glass/Iron collection and Mara acknowledgement.
 - `scripts/world_layout.gd`: native-only geometry repairs, including a one-tile Black Woods kitchen roof alignment and a separate upper-watch overlook and reversible stair instead of the old junction overlapping the Gatehouse. Exposed boundaries are visible stone. Original exported browser fixtures remain intact.
 - `scripts/main.gd`: keyboard actions, room selection, retry, full-world restart, bearing HUD, recorded route playback, continuous room ownership, and the comparison lighting toggle.
-- `data/world1.json` and `data/world2.json`: the original world definitions, tapes, constants, player defaults and source provenance. Parsed test oracles are generated fresh by the reference runner. Source hashes identify the exact browser modules used. JavaScript is used only by the development exporter/reference tests, never inside the Godot application.
+- `data/world1.json`, `data/world2.json` and `data/world3.json`: the original world definitions, tapes, constants, player defaults and source provenance. Parsed test oracles are generated fresh by the reference runner. Source hashes identify the exact browser modules used. JavaScript is used only by the development exporter/reference tests, never inside the Godot application.
 
 ## Verify
 
@@ -51,25 +72,25 @@ node prototypes/godot-ascend/tools/import-audio.mjs --check
 .cache/godot/Godot.app/Contents/MacOS/Godot --headless --audio-driver Dummy --path prototypes/godot-ascend --script res://tests/polish.gd
 ```
 
-The polish check verifies the real D/A/C/W events, controller input events, all 79 MP3 decodes, non-silent output from Godot's mix bus, exact matching speech/subtitles at all six main-road NPC approaches, no repeated speech, ducking, mute, pause/resume, actual shadow occluders, and reduced motion. It does not write user preferences. Physical controller hardware has not been exercised.
+The polish check verifies the real D/A/C/W events, controller input events, all manifest MP3 decodes, non-silent output from Godot's mix bus, exact matching speech/subtitles at all six main-road NPC approaches, no repeated speech, ducking, mute, pause/resume, actual shadow occluders, and reduced motion. It does not write user preferences. Physical controller hardware has not been exercised.
 
-`tools/export-world.mjs` regenerates data after an intentional browser source update. `--check` detects stale exports. The default command checks World 1. Use `--world=2` for Black Woods. These establish the measured chapter cases, not compatibility with later worlds or every engine module.
+`tools/export-world.mjs` regenerates data after an intentional browser source update. `--check` detects stale exports. The default command checks World 1. Use `--world=2` for Black Woods or `--world=3` for Causeway. These establish the measured chapter cases, not compatibility with later worlds or every engine module.
 
 Additional continuous-world checks (run with the same Godot command prefix): `tests/world_checks.gd`, `tests/connectivity.gd`, and `tests/stair.gd`. They verify preloaded machinery, walking across the repaired camp floor and back, climbing/dropping through the Lookout, cross-room lantern recovery, normal-input collection of all three actual bearings with no deaths, Mara’s recorded acknowledgement, progress retention on retry/death, full restart, reciprocal collider openings across the connected world, and normal jumps both ways through the new stair. `tests/world_shots.gd -- OUTPUT_DIRECTORY` captures the repaired areas and restart menu for visual inspection. Current captures and logs are in `.cache/godot/world/`.
 
 ## Deliberate prototype boundaries
 
-This contains the full first-two-world room data and their supported movement/interactions, with all rooms selectable for inspection. All main-road rooms and optional branches are physically connected. The between-world passage previews remain outside the chapter travel model; use the chapter selector. Mara now registers all three bearings and speaks her existing completed-chart recording. Campaign saves, other quest chains/unlocks beyond Mara, Elsie and the Moss Heart, co-op, physical between-world passage travel, and later-region devices remain outside this prototype. Progress lasts for the current session until Start world over. Art is a more detailed Godot treatment, not a pixel-for-pixel copy of the browser renderer. The next decision is whether this looks and feels worth pursuing before expanding scope. Explore is a separate draft, left unchanged by this expansion.
+This contains the full first-three-world room data and their supported movement/interactions, with all rooms selectable for inspection. All main-road rooms and optional branches are physically connected. The between-world passage previews remain outside the chapter travel model; use the chapter selector. Mara now registers all three bearings and speaks her existing completed-chart recording. Campaign saves, other quest chains/unlocks beyond Mara, Elsie, Silas and the regional secret hearts, co-op, physical between-world passage travel, and devices beyond World 3 remain outside this prototype. Progress lasts for the current session until Start world over. Art is a more detailed Godot treatment, not a pixel-for-pixel copy of the browser renderer. The next decision is whether this looks and feels worth pursuing before expanding scope. Explore is a separate draft, left unchanged by this expansion.
 
 ## Reused audio provenance
 
-`tools/import-audio.mjs` copies 91 existing source files byte-for-byte into `audio/` and records their paths and SHA-256 hashes in `data/audio.json`: both regions’ scores and ambient beds, effects/effort variations and eighteen matching NPC/quest lines, including Mara’s acknowledgement and Elsie’s actual errand lines. No dialogue was rewritten and no audio was generated. The existing unvoiced root-tender line in a between-world connector remains subtitle-only. `audio/ATTRIBUTION.md` preserves the original project provenance.
+`tools/import-audio.mjs` copies 102 existing source files byte-for-byte into `audio/` and records their paths and SHA-256 hashes in `data/audio.json`: all three regions’ scores and ambient beds, the Causeway boss score, effects/effort variations and 26 matching NPC/quest voice entries, including Mara’s acknowledgement and the actual Elsie and Silas errand lines. No dialogue was rewritten and no audio was generated. The existing unvoiced root-tender line in a between-world connector remains subtitle-only. `audio/ATTRIBUTION.md` preserves the original project provenance.
 
 `tools/import-controls.mjs` extracts the actual keyboard/pad defaults from `public/bladefall-pcore-view.js`; its check detects drift. Neither importer changes the browser game. No ElevenLabs calls are made.
 
 Godot binary: [official 4.5.1 release](https://github.com/godotengine/godot/releases/tag/4.5.1-stable). Engine license is included in `GODOT-LICENSE.txt`; Godot includes its third-party license viewer. [Godot's command-line documentation](https://docs.godotengine.org/en/stable/tutorials/editor/command_line_tutorial.html) covers editor and project launches.
 
-## Black Woods expansion checks
+## Black Woods expansion checks · 0.4 history
 
 `data/world2.json` exports the authored Black Woods chapter and its route-derived existing Elsie quest spots. All 27 room simulations are preloaded. Native device support includes pod blade rebounds, bell/dash phase switches, deferred solidification while occupied, springs, moving decks and spent footholds. The forest uses its own terrain palette, layered trees, lanterns, kitchen props and resident work poses; the knight follows the browser default sprite's blue tunic, narrow helmet, visor, belt, sword hilt and orange plume.
 
@@ -87,7 +108,7 @@ World 2 has **41 browser/native traces and 12,340 compared frames, with no diffe
 
 `tools/record-world2.gd -- OUTPUT_JSON` regenerates the native continuous input trace. It is a development tool excluded from exports. `--world 2 --tour` runs that trace in the actual application for presentation/performance checks. Capture reports contain frame/physics median, p95, p99 and worst timing samples; short staged samples should not be treated as comprehensive performance guarantees.
 
-The Explore comparison and proposal are in `docs/plans/godot-explore-comparison-and-proposal.md`. Explore and the shipping browser game remain unchanged. The prototype retains session-only progress; campaign saves, later worlds, online services, co-op and the workshop are not implemented. Inter-world passage previews remain isolated; use the chapter selector.
+The Explore comparison and proposal are in `docs/plans/godot-explore-comparison-and-proposal.md`. Explore and the shipping browser game remain unchanged. The prototype retains session-only progress; campaign saves, worlds after Causeway, online services, co-op and the workshop are not implemented. Inter-world passage previews remain isolated; use the chapter selector.
 
 The final Black Woods verification also includes `tests/elsie_journey.gd`: **1,535 normal-input frames through the actual application**, chasing every moth perch, returning across the kitchen gap, climbing the branch, carrying the lantern through its return pipes and handing it to Elsie, with no deaths or forced quest steps. Her existing closing recording queues at the hand-in; the carry reminder does not start over the completion. `tests/world2_secret.gd` enters the secret from The Hollow Trunk, completes its challenge, collects the existing **Moss Heart** and returns through all six pipes to the clearing in **1,116 frames**, with no deaths. It also checks retained rewards, no duplicate heart, full reset and sealed preview/back entry. The native layout aligns the Hollow Trunk roof with this shaft and preserves its authored width; exported browser maps remain untouched.
 
@@ -96,3 +117,5 @@ Forest layer drawing commands are cached until the parallax chunk changes, reduc
 The 0.4 package passes application, polish/audio, Outskirts world/connectivity/stair, Black Woods integration/branch/continuous road, full Elsie and full secret checks against its packed resources. It is ad-hoc signed and verified for local use. The Explore runtime and browser `public/` tree match `e0ac32b` exactly.
 
 Final packaged timing observations on this 60 Hz Mac: wall-frame median about 16.7 ms, p95 about 17–22.4 ms across captures, with occasional larger spikes. The final 26.9-second mixed WAV has no clipped samples. The stable compatibility renderer is retained; an experimental Metal backend was rejected after an exit crash. The optimization work improves resource loading, drawing cost and presentation pacing, but does not promise stutter-free performance under every host load.
+
+Silas’s hook hand-in plays his existing closing recording immediately and removes any queued carry instruction, so the heart award and spoken line agree. The full application quest check verifies this exact transition.

@@ -22,6 +22,11 @@ var dormant = {}
 var mara_registered=false
 var parsed = {}
 var progress = {}
+var silas_met=false
+var silas_step=0
+var quest_key=false
+var quest_striking=false
+var governor_flash=0
 var elsie_met=false
 var elsie_perch=0
 var quest_lantern=false
@@ -55,6 +60,10 @@ func _init(source):
     var key=Vector2i(point/8)+Vector2i(c,r)
     var value=room.grid[r*int(room.cols)+c]
     if not cells.has(key) or value==1 or cells[key]==0: cells[key]=value
+ for id in regions:
+  if parsed[id].def.get("nativeLiftClearance",false):
+   var origin=Vector2i(placements[id]/8)
+   for r in range(17,23): cells[origin+Vector2i(-1,r)]=0
  # Close exposed edges with actual stone. No invisible room-boundary walls exist in play.
  for id in regions:
   var room=parsed[id]
@@ -63,9 +72,9 @@ func _init(source):
    for c in range(int(room.cols)):
     if c not in [0,int(room.cols)-1] and r not in [0,int(room.rows)-1]: continue
     var key=origin+Vector2i(c,r)
-    # Keep the secret's authored two-tile entry shaft open. Rock backing outside
-    # its left edge already supplies the visible solid wall; an extra cap seals it.
-    if room.def.get("nativeOpenLeftShaft",false) and c==0 and r>=18: continue
+    # Preserve the secret shaft and native governor lift clearance.
+    # Rock backing supplies the outside wall; an extra edge cap seals the entry.
+    if room.def.get("nativeOpenLeftShaft",false) and c==0 and r>=(17 if room.def.get("nativeLiftClearance",false) else 18): continue
     if cells.get(key,0)!=0: continue
     var outward=Vector2i(-1,0) if c==0 else (Vector2i(1,0) if c==int(room.cols)-1 else (Vector2i(0,-1) if r==0 else Vector2i(0,1)))
     if not cells.has(key+outward):
@@ -77,6 +86,11 @@ func restart():
  cores.clear()
  progress.clear()
  bearings.clear()
+ silas_met=false
+ silas_step=0
+ quest_key=false
+ quest_striking=false
+ governor_flash=0
  elsie_met=false
  elsie_perch=0
  quest_lantern=false
@@ -152,6 +166,7 @@ func step(raw):
  tick_inactive()
  collect_progress()
  tick_elsie()
+ tick_silas()
  tick_secret_hearts()
 func tick_inactive():
  var current=active()
@@ -210,6 +225,9 @@ func retry():
 func enter(id,practice=false):
  if id==active_id and not practice: return false
  var old=active()
+ if id=="cl3-secret-e2": secret_front_entry=not practice and active_id=="cl3-c3-upper"
+ if not practice and active_id=="cl3-secret-e2" and id=="cl3-pass-14" and secret_front_entry:
+  for reward in data.get("secretRewards",[]): claim_secret(reward)
  if id=="cl2-secret-w2": secret_front_entry=not practice and active_id=="cl2-w2-descent"
  if not practice and active_id=="cl2-secret-w2" and id=="cl2-pass-29" and secret_front_entry:
   for reward in data.get("secretRewards",[]): claim_secret(reward)
@@ -337,3 +355,44 @@ func tick_secret_hearts():
  var p=active().p
  for reward in data.get("secretRewards",[]):
   if active_id==reward.room and abs(p.x+4-reward.x)<=9 and abs(p.y+5.5-reward.y)<=11: claim_secret(reward)
+
+func silas_voice():
+ silas_met=true
+ return "defector:done" if quest_complete else ("defector:line1" if silas_step>=1 else "defector:line0")
+func tick_silas():
+ if int(data.world.n)!=3 or not silas_met or quest_complete: return
+ var core=active()
+ var died=core.deaths>quest_deaths
+ quest_deaths=core.deaths
+ var strike_new=core.p.strikeTimer>0 and not quest_striking
+ quest_striking=core.p.strikeTimer>0
+ if governor_flash>0: governor_flash-=1
+ if died and quest_key:
+  quest_key=false
+  notices.append("Silas catches the key · collect it from him again")
+  return
+ if core.p.state in ["dead","respawn"]: return
+ if silas_step==0:
+  var sp=data.quest.tooth
+  if active_id==sp.room and strike_new and core.overlap(core.strike_box(),core.rect(sp.x-10,sp.y-10,20,20)):
+   if core.frame%144<44:
+    silas_step=1
+    notices.append("The governor stops · take the key from Silas")
+   else:
+    governor_flash=8
+    notices.append("Clang · wait for the bright tooth")
+  return
+ var point=Vector2(core.p.x+4,core.p.y+5.5)
+ var sp=data.quest.hook if quest_key else data.quest.giver
+ if active_id!=sp.room: return
+ if abs(point.x-sp.x)<(14 if quest_key else 16) and abs(point.y-sp.y)<18:
+  if not quest_key:
+   quest_key=true
+   notices.append("The winding key · hang it on the toll hook")
+  else:
+   quest_key=false
+   quest_complete=true
+   silas_step=2
+   quest_award_frame=frames
+   award_color="#ff9fc8"
+   notices.append("♥ Heart · The Clockwork Defector")

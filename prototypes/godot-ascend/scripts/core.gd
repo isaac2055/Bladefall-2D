@@ -1,6 +1,10 @@
 class_name AscendCore
 extends RefCounted
 ## Native, fixed-tick port of bladefall-pcore.js. No CharacterBody2D or delta physics.
+const Causeway=preload("res://scripts/causeway_devices.gd")
+var combat={}
+var brute_waves=[]
+var actor_bounds=false
 const DT = 1.0 / 60.0
 var world_context = null
 var world_origin = Vector2.ZERO
@@ -51,12 +55,13 @@ func load_room(parsed: Dictionary, respawn = false):
  for i in range(room.def.get("decks",[]).size()):
   var d=room.def.decks[i]
   ents.append({"type":"deck","dev":true,"solid":true,"x":d.c*8,"y":d.r*8,"w":d.w*8,"h":d.get("h",1)*8,"ox":d.c*8,"oy":d.r*8,"dx":d.to[0]*8,"dy":d.to[1]*8,"period":d.get("period",180),"phase":d.get("phase",0),"remX":0.0,"remY":0.0,"clock":0,"id":"dk"+str(i)})
+ Causeway.reset(self)
  moving_decks=ents.filter(func(e):return e.type=="deck")
  spent_footholds=ents.filter(func(e):return e.type=="foothold")
  decks_awake=false
  sweepers = []
  sweeper_clock = 0
- awake = not room.def.get("study",false)
+ awake = not (room.def.get("study",false) or room.def.get("combat",{}).get("waitForMove",false))
  for d in room.def.get("sweepers",[]):
   var e = {"path":[],"period":d.get("period",180),"phase":d.get("phase",0),"radius":d.get("radius",4),"loop":d.get("loop",false),"lengths":[],"length":0.0}
   for point in d.path: e.path.append([point[0]*8+4,point[1]*8+4])
@@ -94,11 +99,12 @@ func solid_entity(e):
  match e.type:
   "toggle","held": return e.get("solid",false)
   "slide","zip": return true
-  "gate": return not e.get("open",false)
+  "combatGate","brittle","gate": return not e.get("open",false)
   "crumble": return not e.get("broken",false)
  return e.get("dev",false) and e.get("solid",false)
 
 func blocker(x,y,w,h, ignore = -1):
+ if actor_bounds and (x<0 or x+w>room.w or y<0): return -2
  if world_context!=null: return world_context.blocker(self,x,y,w,h,ignore)
  var ex = room.exit
  var side = room.def.get("side", "")
@@ -436,6 +442,9 @@ func dash_update(inp):
   p.ducking = false
   p.maxFall = K.maxFall
 func collide_h(_b,s):
+ if p.state=="dash" and _b>=0 and ents[_b].type=="slide":
+  push_stone(ents[_b],s,0)
+  return
  if p.state == "dash" and p.dashDir.y == 0:
   for i in range(1,int(K.dashCorner)+1):
    for j in [-1,1]:
@@ -448,6 +457,9 @@ func collide_h(_b,s):
   p.retainTimer = K.wallSpeedRetentionFrames
  p.vx = 0
 func collide_v(_b,s):
+ if p.state=="dash" and _b>=0 and ents[_b].type=="slide":
+  push_stone(ents[_b],0,s)
+  return
  if s < 0:
   var order = [-1] if p.vx<0 else ([1] if p.vx>0 else [-1,1])
   for d in order:
@@ -542,6 +554,7 @@ func step(raw):
   else:
    p.strikeDir = {"x":0,"y":-1} if inp.my<0 else ({"x":0,"y":1} if inp.my>0 and not p.onGround else {"x":side,"y":0})
   emit_event("strike")
+ Causeway.brute_forces(self)
  match p.state:
   "normal": normal_update(intent)
   "climb": climb_update(intent)
@@ -581,6 +594,7 @@ func update_entities():
    elif not e.solid and not overlap(p,e): e.solid = true
   if e.type=="lantern": update_lantern(e)
   if e.type=="zip": update_zip(e)
+  if e.type=="slide" and e.get("moving",false): update_slide(e)
   if e.type=="gate":
    if not e.get("open",false) and left==0 and ents.any(func(a):return a.type=="stone"):
     e.open = true
@@ -708,6 +722,7 @@ func device_groups(glyph):
    groups.append(rect(c*8,r*8,w*8,h*8))
  return groups
 func update_devices(inp):
+ Causeway.before(self,inp)
  if moving_decks.is_empty() and spent_footholds.is_empty(): return
  kick_direction=0
  if not spent_footholds.is_empty(): foothold_previous=p.duplicate()
@@ -721,6 +736,7 @@ func update_devices(inp):
   var ease=k*k*(3-2*k)
   move_solid(e,e.ox+e.dx*ease-(e.x+e.remX),e.oy+e.dy*ease-(e.y+e.remY))
 func finish_devices():
+ Causeway.after(self)
  for e in spent_footholds:
   if e.get("gone",false): continue
   var on=riding(e) or (p.state not in ["dead","respawn"] and p.onGround and p.y+p.h==e.y and p.x<e.x+e.w and p.x+p.w>e.x)
@@ -777,6 +793,9 @@ func move_solid(e,dx,dy):
  var my = js_round(e.remY)
  e.remX -= mx
  e.remY -= my
+ var combat_riders=[]
+ for q in combat.get("enemies",[]):
+  if not q.get("dead",false) and Causeway.on(q,e): combat_riders.append(q.id)
  var alive = p.state not in ["dead","respawn"]
  var riding = alive and (standing(e) or (p.state=="climb" and (p.x+p.w==e.x if p.facing>0 else p.x==e.x+e.w) and p.y<e.y+e.h and p.y+p.h>e.y))
  for axis in [0,1]:
@@ -786,6 +805,7 @@ func move_solid(e,dx,dy):
   for i in range(int(abs(count))):
    e.x += ax
    e.y += ay
+   Causeway.solid_moved(self,e,ax,ay,combat_riders)
    if alive and overlap(p,e):
     var nx = (e.x+e.w if ax>0 else e.x-p.w) if ax!=0 else p.x
     var ny = (e.y+e.h if ay>0 else e.y-p.h) if ay!=0 else p.y
@@ -911,3 +931,68 @@ func carry_from(snapshot,source,target,continuous = false):
   p.state = "normal"
  prev = snapshot.prev.duplicate()
  buf = snapshot.buf.duplicate()
+
+func push_stone(e,sx,sy):
+ if e.get("moving",false): return
+ e.merge({"moving":true,"dirX":sx,"dirY":sy,"speed":60,"acc":0,"remX":0,"remY":0},true)
+ p.state="normal"
+ p.dashTimer=0
+ p.ducking=false
+ if sx!=0:
+  p.vx=-sx*120
+  p.vy=-120
+  p.varJumpSpeed=p.vy
+  p.varJump=9
+  p.autoJump=true
+ elif sy>0:
+  p.vx=0
+  p.vy=-160
+  p.varJumpSpeed=p.vy
+  p.varJump=9
+  p.autoJump=true
+ else:
+  p.vx=0
+  p.vy=60
+ freeze=2
+ emit_event("stone-hit")
+func update_slide(e):
+ e.speed=min(K.stoneMax,e.speed+K.stoneAccel*DT)
+ e.acc=e.get("acc",0)+e.speed*DT
+ var n=floori(e.acc)
+ e.acc-=n
+ var stopped=false
+ for i in range(n):
+  if solid(e.x+e.dirX,e.y+e.dirY,e.w,e.h,ents.find(e)):
+   stopped=true
+   break
+  move_solid(e,e.dirX,e.dirY)
+  e.remX=0
+  e.remY=0
+ if n==0 and solid(e.x+e.dirX,e.y+e.dirY,e.w,e.h,ents.find(e)): stopped=true
+ if stopped:
+  e.moving=false
+  e.speed=0
+  emit_event("stone-stop")
+func strike_box():
+ var d=p.strikeDir
+ if d.x!=0 and d.y!=0: return rect(p.x+p.w-3 if d.x>0 else p.x-11,p.y-12 if d.y<0 else p.y+p.h-3,14,14)
+ if d.y<0: return rect(p.x-3,p.y-14,14,14)
+ if d.y>0: return rect(p.x-3,p.y+p.h,14,13)
+ return rect(p.x+p.w if d.x>0 else p.x-15,p.y-1,15,12)
+
+func blade_rebound(d):
+ if d.y>0:
+  p.vy=K.podSpeed
+  p.varJumpSpeed=p.vy
+  p.varJump=7
+  p.autoJump=true
+ elif d.y<0: p.vy=K.podDown
+ else:
+  p.vx=-d.x*K.podSide
+  p.vy=min(p.vy,-90)
+  p.forceMoveX=-d.x
+  p.forceMoveTimer=7
+ if p.state=="climb": p.state="normal"
+ p.jumpGrace=0
+ refill()
+ p.stamina=K.climbMaxStamina

@@ -12,7 +12,7 @@ function trace(def,tape,label=def.id){
   if(g.exited)break;
   const raw={};for(const [key,ch] of Object.entries(actions))raw[key]=(k||'').includes(ch);
   C.step(g,raw);const state={};for(const [key,value] of Object.entries(g.p))if(['number','boolean','string'].includes(typeof value))state[key]=value;
-  frames.push({raw,state,freeze:g.freeze,exited:g.exited,deaths:g.deaths,entities:JSON.parse(JSON.stringify(g.ents)),carrying:g.p.carrying?.id??null});g.events.length=0;
+  frames.push({combat:g.combat?JSON.parse(JSON.stringify(g.combat)):null,bruteWaves:JSON.parse(JSON.stringify(g.bruteWaves||[])),raw,state,freeze:g.freeze,exited:g.exited,deaths:g.deaths,entities:JSON.parse(JSON.stringify(g.ents)),carrying:g.p.carrying?.id??null});g.events.length=0;
  }
  const parsed=C.parseRoom(def,0);tests.push({id:def.id,label,frames,parsed:{...parsed,grid:[...parsed.grid],portalable:[...parsed.portalable],grill:[...parsed.grill]}});
 }

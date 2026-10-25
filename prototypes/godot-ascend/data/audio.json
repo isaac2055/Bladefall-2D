@@ -252,6 +252,41 @@
       "name": "Bram",
       "path": "voice/ascend/w2-w2-edge.bram.mp3"
     },
+    "cl3-c3-camp:sable:line": {
+      "text": "Not one of the yard’s, are you? Nothing up there’s moved in a month.",
+      "id": "ascend/w3-c3-camp.sable",
+      "seconds": 3.92,
+      "name": "Sable",
+      "path": "voice/ascend/w3-c3-camp.sable.mp3"
+    },
+    "cl3-c3-camp:oren:line": {
+      "text": "Hear that? Nothing. The Drop Yard lift is free. Stand on it.",
+      "id": "ascend/w3-c3-camp.oren",
+      "seconds": 4.22,
+      "name": "Oren",
+      "path": "voice/ascend/w3-c3-camp.oren.mp3"
+    },
+    "cl3-c3-hoist:oren:line": {
+      "text": "She comes back down on her own. Ride her up.",
+      "id": "ascend/w3-c3-hoist.oren",
+      "seconds": 2.69,
+      "name": "Oren",
+      "path": "voice/ascend/w3-c3-hoist.oren.mp3"
+    },
+    "cl3-c3-patrol:silas:line": {
+      "text": "…thirty-nine, forty. Can’t stop. Break the gear up the ladder?",
+      "id": "ascend/w3-c3-patrol.silas",
+      "seconds": 5.49,
+      "name": "Silas",
+      "path": "voice/ascend/w3-c3-patrol.silas.mp3"
+    },
+    "cl3-c3-patrol:silas:lineDone": {
+      "text": "Forty-one. Then I sat. My choice.",
+      "id": "ascend/w3-c3-patrol.silas.done",
+      "seconds": 4.81,
+      "name": "Silas",
+      "path": "voice/ascend/w3-c3-patrol.silas.done.mp3"
+    },
     "refuge:line0": {
       "text": "The moths took my lantern, off into the trees past the kitchen. They never go far at a time. Could you follow them?",
       "id": "ascend/errands.refuge.0",
@@ -272,6 +307,27 @@
       "seconds": 4.67,
       "name": "Elsie",
       "path": "voice/woods/refuge.ending.mp3"
+    },
+    "defector:line0": {
+      "text": "Thirty-nine, forty. The governor at the top of the ladder turns me. Strike its bright tooth; anything else and you only bruise your arm.",
+      "id": "ascend/errands.defector.0",
+      "seconds": 11.04,
+      "name": "Silas",
+      "path": "voice/ascend/errands.defector.0.mp3"
+    },
+    "defector:line1": {
+      "text": "Take the key from my back, would you? Hang it on the toll hook, at the top of the next climb. Where nobody can wind me.",
+      "id": "ascend/errands.defector.1",
+      "seconds": 7.84,
+      "name": "Silas",
+      "path": "voice/ascend/errands.defector.1.mp3"
+    },
+    "defector:done": {
+      "text": "Forty-one. Forty-two. I’ve lost count. Good.",
+      "id": "causeway/defector.ready",
+      "seconds": 4.8,
+      "name": "Silas",
+      "path": "voice/causeway/defector.ready.mp3"
     }
   },
   "unvoiced": [
@@ -304,6 +360,24 @@
       "source": "public/audio/sfx/amb/forest.mp3",
       "sha256": "54235e020abbcf0b0cdb89072f2a1e4df38269a828083150ebd731d2bc704e12",
       "bytes": 160540
+    },
+    {
+      "path": "music/the-iron-causeway.mp3",
+      "source": "public/audio/music/the-iron-causeway.mp3",
+      "sha256": "8275040fbed0241603e01c400e1814c795583edda545749e0fe8b66542231bd5",
+      "bytes": 5042511
+    },
+    {
+      "path": "sfx/amb/heights.mp3",
+      "source": "public/audio/sfx/amb/heights.mp3",
+      "sha256": "e23289d893bc52959d8fb8a9667458ed4260d7ae4781f39f0c56779c29515539",
+      "bytes": 160540
+    },
+    {
+      "path": "music/iron-juggernaut.mp3",
+      "source": "public/audio/music/iron-juggernaut.mp3",
+      "sha256": "5a2f64e9f199615ffe5a751cbbd0225dd2dd85366ab9161262ce52040aeaa68d",
+      "bytes": 3602433
     },
     {
       "path": "sfx/jump-1.mp3",
@@ -810,6 +884,36 @@
       "bytes": 42257
     },
     {
+      "path": "voice/ascend/w3-c3-camp.sable.mp3",
+      "source": "public/audio/voice/ascend/w3-c3-camp.sable.mp3",
+      "sha256": "9ea905de18f951a8fc1277819f22be048e6f791e3bc8ecc4eecdfa98d1c9fa1a",
+      "bytes": 31808
+    },
+    {
+      "path": "voice/ascend/w3-c3-camp.oren.mp3",
+      "source": "public/audio/voice/ascend/w3-c3-camp.oren.mp3",
+      "sha256": "98f36cf2df47c49f92aa90faa551a8fc1c35e8aafb03211a2179174e158bf20c",
+      "bytes": 34316
+    },
+    {
+      "path": "voice/ascend/w3-c3-hoist.oren.mp3",
+      "source": "public/audio/voice/ascend/w3-c3-hoist.oren.mp3",
+      "sha256": "e34a956d20cafa276044b140a18ad8cfbc76187e0a10a74515c91d5d13172cfc",
+      "bytes": 21986
+    },
+    {
+      "path": "voice/ascend/w3-c3-patrol.silas.mp3",
+      "source": "public/audio/voice/ascend/w3-c3-patrol.silas.mp3",
+      "sha256": "4d1ae1bd275de5e85384d52a3994723d12cf72acc398971aabc3e54e29d00470",
+      "bytes": 44556
+    },
+    {
+      "path": "voice/ascend/w3-c3-patrol.silas.done.mp3",
+      "source": "public/audio/voice/ascend/w3-c3-patrol.silas.done.mp3",
+      "sha256": "6d375d3dbff722f9fcb94c4899db56700b0a48f867854f06ad7d3a3d7f5ccb42",
+      "bytes": 38914
+    },
+    {
       "path": "voice/ascend/errands.refuge.0.mp3",
       "source": "public/audio/voice/ascend/errands.refuge.0.mp3",
       "sha256": "ae3fdbdffc949f6491efec25667ffd1f1c566651484858c348a7816be4869e27",
@@ -826,6 +930,24 @@
       "source": "public/audio/voice/woods/refuge.ending.mp3",
       "sha256": "55f77e2a4540510b0f755c8a5a258530b48ac9b43d7cdb73f3e4659b5d8b7564",
       "bytes": 37869
+    },
+    {
+      "path": "voice/ascend/errands.defector.0.mp3",
+      "source": "public/audio/voice/ascend/errands.defector.0.mp3",
+      "sha256": "965bd6360b9d2f848606f4145020e2c04ce88a73641ca06b5f1a5c2dcb2b666f",
+      "bytes": 194801
+    },
+    {
+      "path": "voice/ascend/errands.defector.1.mp3",
+      "source": "public/audio/voice/ascend/errands.defector.1.mp3",
+      "sha256": "23aa9837f2f56c4fda02dce2f5c93cf0637ef8a1f210c46ca89e5d03e320a867",
+      "bytes": 143810
+    },
+    {
+      "path": "voice/causeway/defector.ready.mp3",
+      "source": "public/audio/voice/causeway/defector.ready.mp3",
+      "sha256": "2c8295740a65e1c1a1df4ae6714ae960f9fb382b1ed4b9a1aa1cfd55891fac3d",
+      "bytes": 94909
     }
   ],
   "chapters": {
@@ -836,6 +958,11 @@
     "2": {
       "music": "music/watchful-greenwood.mp3",
       "ambience": "sfx/amb/forest.mp3"
+    },
+    "3": {
+      "music": "music/the-iron-causeway.mp3",
+      "bossMusic": "music/iron-juggernaut.mp3",
+      "ambience": "sfx/amb/heights.mp3"
     }
   }
 }

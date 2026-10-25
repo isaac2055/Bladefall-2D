@@ -3,6 +3,7 @@ extends Node2D
 const Room = preload("res://scripts/room_loader.gd")
 var sim
 var forest=false
+var causeway=false
 var sky_gradient: Texture2D
 var forest_layers=[]
 var draw_cpu_us={"background":0,"foreground":0,"presentation":0}
@@ -48,9 +49,12 @@ var ink_color = Color.WHITE
 var observed = {"bursts":0,"afterimages":0,"joins":0}
 func _ready():
  forest=int(world_data.world.n)==2
+ causeway=int(world_data.world.n)==3
  var sky=Image.create(1,184,false,Image.FORMAT_RGBA8)
  for y in range(184):
   sky.set_pixel(0,y,Color("0b191b").lerp(Color("344937"),float(y)/225) if forest else Color("101526").lerp(Color("53636a"),float(y)/200.0))
+ if causeway:
+  for y in range(184): sky.set_pixel(0,y,Color("191b2c").lerp(Color("916d59"),float(y)/220))
  sky_gradient=ImageTexture.create_from_image(sky)
  if forest:
   for layer in range(3):
@@ -143,6 +147,9 @@ func make_tiles():
      if hash_at(x,y,variant)%19==0: color=color.lightened(0.04)
     if forest:
      color=Color(color.r*0.72,color.g*0.92,color.b*0.72,color.a)
+    if causeway:
+     color=Color(color.r*1.08,color.g*0.88,color.b*0.76,color.a)
+     if variant<4 and y<2: color=Color("9c8a6e") if y==0 else Color("625b53")
     image.set_pixel(variant*8+x,y,color)
  var atlas = TileSetAtlasSource.new()
  atlas.texture = ImageTexture.create_from_image(image)
@@ -389,6 +396,10 @@ func circle(point,radius,color): ink.draw_circle(point,radius,Color(color) if co
 func _draw():
  var profile_start=Time.get_ticks_usec()
  ink = self
+ if causeway:
+  draw_causeway()
+  draw_cpu_us.background=Time.get_ticks_usec()-profile_start
+  return
  if forest:
   draw_woods()
   draw_cpu_us.background=Time.get_ticks_usec()-profile_start
@@ -477,6 +488,12 @@ func draw_front():
     if t>=3: draw_hazard(t,origin+Vector2(c*8,r*8))
   for e in scene.ents:
    if Rect2(origin+Vector2(e.x,e.y),Vector2(e.w,e.h)).grow(18).intersects(view): draw_entity(e,origin)
+  for wave in scene.brute_waves:
+   var point=origin+Vector2(wave.x,wave.y)
+   if view.has_point(point):
+    for k in range(4): box(point.x-1+k,point.y-2-k%2*3,1,2+k%2*3,"#d6ad76")
+  for enemy in scene.combat.get("enemies",[]):
+   if not enemy.get("dead",false) and view.has_point(origin+Vector2(enemy.x,enemy.y)): draw_hound(enemy,origin)
   for e in scene.sweepers:
    var point=origin+Vector2(e.x,e.y)
    circle(point,e.radius+2,Color(0.8,0.42,0.33,0.08))
@@ -492,8 +509,9 @@ func draw_front():
   var col = part.color
   col.a = clamp(part.life/part.max,0,1)*0.8
   box(part.p.x,part.p.y,1,1,col)
- if runtime!=null and forest:
-  draw_elsie_quest()
+ if runtime!=null:
+  if forest: draw_elsie_quest()
+  if causeway: draw_silas_quest()
   draw_world_hearts()
  if sim.p.state!="dead": draw_knight()
  ink.draw_set_transform(Vector2.ZERO)
@@ -518,6 +536,33 @@ func draw_prop(kind,point):
  var x = point.x
  var y = point.y
  match kind:
+  "cw-chain","cw-chain-long":
+   var length=58 if kind=="cw-chain-long" else 28
+   line(Vector2(x+3,y-length),Vector2(x+3,y),"#544d48",1)
+   for r in range(0,length,5):
+    ink.draw_arc(Vector2(x+3,y-r),2,0,TAU,8,Color("#b2a08a"),.6)
+  "cw-winch","cw-gear":
+   var center=Vector2(x+6,y-7)
+   box(x-3,y-2,19,2,"#6c6051")
+   circle(center,7,"#393b40")
+   circle(center,5,"#a68b62")
+   var a=clock*.5 if kind=="cw-gear" else sin(clock*.3)*.1
+   for i in range(6):
+    var d=Vector2(cos(a+i*TAU/6),sin(a+i*TAU/6))
+    line(center+d*2,center+d*8,"#d3b583",1.5)
+   circle(center,2,"#464347")
+  "cw-crate":
+   box(x,y-12,14,12,"#75634d")
+   box(x+1,y-11,12,10,"#4f4d49")
+   line(Vector2(x+1,y-11),Vector2(x+13,y-1),"#ab8d64",1.5)
+   box(x+1,y-12,12,1,"#c1a579")
+  "cw-stretcher":
+   line(Vector2(x-3,y-5),Vector2(x+25,y-5),"#ba9d72",1.5)
+   box(x,y-6,22,2,"#8b8371")
+   for side in [1,20]: box(x+side,y-4,2,4,"#625a4e")
+  "cw-standard":
+   box(x,y-30,1,30,"#a99a7f")
+   for i in range(10): box(x+i+1,y-28+sin(clock*2+i*.2),1,10,"#93694f" if i%3 else "#bb946b")
   "sconce":
    box(x+5,y-15,2,10,"#526466")
    line(Vector2(x+6,y-10),Vector2(x+12,y-12),"#a79d78",1.2)
@@ -623,6 +668,20 @@ func draw_person(who,point,active):
  box(x+(3 if face>0 else 0),y-13+sit,1,1,"#3c4544")
  if active and speaker==who.who and int(clock*6)%2==0: box(x+(3 if face>0 else 0),y-11+sit,1,1,"#5e534a")
  match who.who:
+  "silas":
+   box(x-1,y-14,7,6,"#a6a49a")
+   box(x,y-13,5,2,"#45454a")
+   box(x+1,y-13,1,1,"#edc783")
+   circle(Vector2(x+3,y-5),2,"#b29868")
+   line(Vector2(x+3,y-8),Vector2(x+3,y-2),"#574a38")
+   box(x-6,y-8,4,1,"#c7a76a")
+   box(x-7,y-10,2,5,"#c7a76a")
+  "oren":
+   line(Vector2(x+3,y-8),Vector2(x+10,y-5+sin(phase)*2),"#c9b08b",1.4)
+   box(x+8,y-3,10,3,"#6a5d4c")
+  "sable":
+   box(x-3,y-17,11,2,"#57545c")
+   line(Vector2(x+9,y-17),Vector2(x+9,y),"#9e8968")
   "elsie":
    box(x+8,y-3,8,3,"#484d42")
    box(x+9,y-6,6,4,"#727b60")
@@ -694,6 +753,29 @@ func draw_entity(e,origin):
    box(x+jitter,y,e.w,1,"#bfb89b")
    for c in range(3,int(e.w),7):
     line(Vector2(x+c,y+1),Vector2(x+c-1,y+e.h-1),"#424d50")
+  "recoilPlatform":
+   var base=origin+Vector2(e.ox,e.oy+e.depth+7)
+   for side in [3,e.w-5]:
+    var start=Vector2(x+side,y+e.h)
+    for k in range(5):
+     line(start+Vector2(-2 if k%2==0 else 2,(base.y-start.y)*k/5),start+Vector2(2 if k%2==0 else -2,(base.y-start.y)*(k+1)/5),"#b19266")
+   box(x,y,e.w,e.h,"#605a50")
+   box(x,y,e.w,2,"#dab77a")
+   for c in range(4,int(e.w),8): box(x+c,y+3,2,2,"#b29263")
+  "hingeArm":
+   box(x,y,e.w,e.h,"#73665b")
+   box(x,y,e.w,1,"#bca37a")
+   var hub=origin+Vector2(e.pivotX+4,e.pivotY+4)
+   circle(hub,5,"#332e2c")
+   circle(hub,3.5,"#edd099" if e.pulse>0 else ("#cd7c69" if e.jam>0 else "#b99865"))
+   line(hub-Vector2(2,0),hub+Vector2(2,0),"#51473b")
+  "combatGate","brittle":
+   if e.open: return
+   box(x,y,e.w,e.h,"#6d5e58" if e.type=="brittle" else "#414b55")
+   for r in range(2,int(e.h),8): line(Vector2(x,y+r),Vector2(x+e.w,y+r),"#aa8f73")
+   if e.type=="brittle":
+    line(Vector2(x+e.w/2,y+2),Vector2(x+e.w/2-3,y+e.h/2),"#312c2d",1.5)
+    line(Vector2(x+e.w/2-3,y+e.h/2),Vector2(x+e.w/2+2,y+e.h-2),"#312c2d",1.5)
   "zip":
    line(origin+Vector2(e.ox+e.w/2,e.oy),origin+Vector2(e.tx+e.w/2,e.ty),"#8c967e",0.7)
    box(x,y,e.w,e.h,"#53635e")
@@ -884,3 +966,72 @@ func draw_world_hearts():
   var u=clamp((age-0.6)/1.0,0,1)
   var at=(actor+Vector2(4,-10)).lerp(camera+Vector2(285,10),1-pow(1-u,3))
   pixel_heart(at,Color(runtime.award_color))
+
+func draw_causeway():
+ ink.draw_texture_rect(sky_gradient,Rect2(0,0,320,184),false)
+ circle(Vector2(245,39),18,Color(.92,.63,.38,.08))
+ circle(Vector2(245,39),11,"#d2a579")
+ for layer in range(3):
+  var parallax=.06+layer*.075
+  var pitch=76-layer*10
+  var offset=fposmod(camera.x*parallax,pitch)
+  for i in range(-1,7):
+   var x=i*pitch-offset
+   var y=88+layer*26-camera.y*.025
+   var col=["#33343d","#444049","#55474a"][layer]
+   box(x,y,9,110,col)
+   box(x-2,y-5,pitch+4,5,col)
+   # Arched viaduct piers and hanging iron chains over the mist.
+   for k in range(8):
+    var xx=x+9+k*(pitch-9)/8.0
+    var depth=5+pow((k-3.5)/3.5,2)*16
+    box(xx,y,(pitch-9)/8.0+1,depth,col)
+   line(Vector2(x+4,y-5),Vector2(x+pitch-3,y-5),"#71605b",.7)
+   if layer==2:
+    for r in range(5):
+     ink.draw_arc(Vector2(x+pitch/2,y+20+r*7),2,0,TAU,8,Color("6d5d56"),.7)
+    line(Vector2(x+pitch/2,y-2),Vector2(x+pitch/2,y+18),"#74645c")
+ for band in range(5):
+  for i in range(7):
+   var x=fposmod(i*63-clock*(2+band*.5)-camera.x*.1,400)-45
+   box(x,107+band*18+sin(clock*.2+i)*2,62,3,Color(.83,.73,.65,.04))
+func draw_hound(e,origin):
+ var at=origin+Vector2(e.x,e.y)
+ var col="#b88469" if e.flash>0 else ("#cd9a61" if e.state=="tell" else "#7f7067")
+ box(at.x+2,at.y+1,e.w-4,e.h-4,col)
+ for i in range(e.get("cracks",0)): line(at+Vector2(7+i*5,2),at+Vector2(9+i*5,e.h-4),"#e7bd7c",1.2)
+ box(at.x+(e.w-4 if e.face>0 else -2),at.y,6,5,col)
+ box(at.x+(e.w if e.face>0 else -1),at.y+1,1,1,"#f0ce87")
+ for side in [2,11]:
+  var stride=sin(clock*12+side)*1.5 if e.state=="attack" else 0
+  box(at.x+side+stride,at.y+e.h-4,3,4,"#514e51")
+ if e.state=="tell":
+  box(at.x+7,at.y-7,1,4,"#f4d390")
+  box(at.x+7,at.y-2,1,1,"#f4d390")
+func draw_silas_quest():
+ var sp=runtime.data.quest.tooth
+ var point=runtime.placements[sp.room]+Vector2(sp.x,sp.y-4)
+ if Rect2(camera-Vector2(20,20),Vector2(360,224)).has_point(point):
+  var stopped=runtime.silas_step>=1
+  var core=runtime.cores[sp.room]
+  var angle=0.0 if stopped else core.frame*TAU/144
+  var col=Color("#776953" if stopped else "#d0a85f")
+  circle(point,6,col)
+  for i in range(8):
+   var a=angle+i*TAU/8
+   var edge=point+Vector2(cos(a),sin(a))*8
+   circle(edge,1.5,"#fff1b8" if i==7 and not stopped and core.frame%144<44 else col)
+  circle(point,2,"#363436")
+  if runtime.governor_flash>0: circle(point,9,Color(1,.7,.4,.25))
+ sp=runtime.data.quest.hook
+ point=runtime.placements[sp.room]+Vector2(sp.x,sp.y)
+ if runtime.silas_step>=1:
+  line(point+Vector2(-3,-8),point+Vector2(3,-8),"#bca477")
+  line(point+Vector2(0,-8),point,"#bca477")
+  if runtime.quest_complete: draw_key(point+Vector2(0,-3))
+ if runtime.quest_key: draw_key(actor+Vector2(4-sim.p.facing*6,-2))
+func draw_key(at):
+ circle(at,2,"#e1b973")
+ circle(at,1,"#544838")
+ box(at.x,at.y+1,1,5,"#e1b973")
+ box(at.x,at.y+4,3,1,"#e1b973")

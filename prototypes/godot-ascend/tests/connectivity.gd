@@ -41,11 +41,11 @@ func _initialize():
  for section in world.data.world.sections:
   if not reached.has(section.room): ok=false
  for id in world.regions:
-  if id not in ["cl1-passage-1-2","cl1-passage-1-3","cl2-passage-2-4","cl2-passage-2-3"] and not reached.has(id): ok=false
+  if id not in ["cl1-passage-1-2","cl1-passage-1-3","cl2-passage-2-4","cl2-passage-2-3","cl3-passage-3-5"] and not reached.has(id): ok=false
  for a in edges:
   for b in edges[a]:
    if a not in edges[b]: ok=false
  if number==1 and "cl1-atlas-crossroads" in edges["cl1-o1-gate"]: ok=false
- print(("PASS all main rooms and optional branches connect in both directions"+("; no overlap between Gatehouse and Upper Watch" if number==1 else "; Black Woods secret entrance and return are connected")) if ok else "FAIL physical connectivity")
+ print(("PASS all main rooms and optional branches connect in both directions"+("; no overlap between Gatehouse and Upper Watch" if number==1 else "; optional entrances and returns are connected")) if ok else "FAIL physical connectivity")
  world.shutdown()
  quit(0 if ok else 1)

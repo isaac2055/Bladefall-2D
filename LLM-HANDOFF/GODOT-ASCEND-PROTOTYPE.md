@@ -1,3 +1,19 @@
+# Broken Causeway expansion · 0.5.0 · 2026-10-25
+
+Current branch: `codex/godot-ascend-causeway`. Source: `prototypes/godot-ascend/`. Local standalone: `prototypes/godot-ascend/exports/Bladefall Ascend Prototype.app`. Godot remains pinned to 4.5.1 with the stable compatibility renderer.
+
+The chapter selector now contains all three worlds, preserving each world’s state across switches. Causeway has all 28 original room definitions, its existing Silas quest and Cog Heart secret. Explore and `public/` are unchanged. Physical inter-world passages are explicitly out of scope at Isaac’s request; previews remain isolated. No new quests, dialogue or ElevenLabs audio were created.
+
+Read the new 0.5 section in the prototype README for devices, source provenance, commands and session-only progress boundaries. `causeway_devices.gd` ports recoil platforms, hinged arms and the Causeway Combat/Brute subset from the actual browser modules. Arena actors use authored room bounds while the knight crosses the shared world. Future combat regions with other actor kinds need their own port; current world data only uses Brutes. Parity compares combat state and wave arrays in addition to existing player/entity/lifecycle state.
+
+A native-only governor seam repair admits the lower room’s four-tile moving block, preserves its west clearance, and makes the upper entry lip one-way. Without this, the original isolated fixtures pass but their block jams in continuous world collision. The exported original remains untouched and is still used by Watch/parity.
+
+Current evidence: `.cache/godot/causeway/`. World 3 parity: 46 traces / 14,496 frames. Continuous road: 5,386 frames. Full Silas quest: 2,261 frames. Full Cog Heart entrance, challenge and return: 1,302 frames. All three journeys use normal inputs with zero deaths, no intermediate warps/resets/physics edits. All 16 packaged integration/regression cases pass, including previous-world checks. The audio manifest reuses 102 source recordings with SHA-256 provenance and 26 voice entries. Main switches the music/ambience and disables inactive rendering.
+
+Previous development history follows; older version limits below are historical.
+
+---
+
 # Native Ascend 0.4 · Black Woods (2026-10-25)
 
 The local standalone app is `prototypes/godot-ascend/exports/Bladefall Ascend Prototype.app`, version 0.4.0. Source is on `codex/godot-ascend-black-woods`. Esc opens the chapter selector; Black Woods starts at Mothlight Refuge. Both chapters are preloaded and retain their individual session progress. No Explore or shipping browser code was changed; no recordings were generated.
@@ -73,3 +89,5 @@ Short GPU samples at the kitchen (not a final benchmark): physics median ~0.39 m
 Packaged quest captures on this 60 Hz Mac measured wall-clock medians around 16.7 ms. Across runs, p95 varied from about 17.0 to 22.4 ms, with occasional larger outliers (the last capture's worst sample was 95.4 ms). Physics stayed sub-millisecond in the median. These measurements are intentionally reported as variable rather than selecting the best run. The roughly 26.9-second final mixed WAV is non-silent (peak 0.593, RMS 0.056) with zero clipped samples. The final screenshot shows the heart award and the correct closing subtitle, “Two bowls and a working lamp…”; the carry reminder no longer plays over it.
 
 An unshipped Metal/mobile-renderer CLI experiment had steadier timing but crashed during exit (signal 11). The package keeps the established compatibility renderer. Do not enable Metal based solely on that experiment's FPS. Remaining occasional frame-time spikes are a documented limitation, not a claim that Explore's reported freezes were fixed. All packaged-check logs are free of engine errors and warnings; the failed Metal experiment is separate (`metal-profile.log`).
+
+Silas’s hook hand-in plays his existing closing recording immediately and removes any queued carry instruction, so the heart award and spoken line agree. The full application quest check verifies this exact transition.
