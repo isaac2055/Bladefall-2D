@@ -7,12 +7,14 @@ const w=ctx.BladefallClimb.world(number),C=ctx.BladefallPrecisionCore;
 const tests=[];
 const actions={l:'l',r:'r',u:'u',d:'d',jump:'j',dash:'x',grab:'g',strike:'s',parry:'p',portal:'q'};
 function trace(def,tape,label=def.id){
+ // The browser closeSeam restores these authored entry tiles at the checkpoint.
+ if(number>=21&&def.closeWhilePlayed&&def.seam){const map=def.map.map(row=>[...row]);for(const [c,r,ch]of def.seam)map[r][c]=ch;def={...def,map:map.map(row=>row.join(''))};}
  const g=C.createGame([def]),frames=[];
  for(const [n,k] of tape)for(let i=0;i<n;i++){
   if(g.exited)break;
   const raw={};for(const [key,ch] of Object.entries(actions))raw[key]=(k||'').includes(ch);
   C.step(g,raw);const state={};for(const [key,value] of Object.entries(g.p))if(['number','boolean','string'].includes(typeof value))state[key]=value;
-  frames.push({combat:g.combat?JSON.parse(JSON.stringify(g.combat)):null,bruteWaves:JSON.parse(JSON.stringify(g.bruteWaves||[])),raw,state,freeze:g.freeze,exited:g.exited,deaths:g.deaths,entities:JSON.parse(JSON.stringify(g.ents)),carrying:g.p.carrying?.id??null});g.events.length=0;
+  frames.push({nested:JSON.parse(JSON.stringify(Object.fromEntries(["move2","hook","lastRing","ride"].filter(k=>g.p[k]!==undefined).map(k=>[k,g.p[k]])))),devices:JSON.parse(JSON.stringify({sentinel:g.sentinel??null,oathRoot:g.oathRoot??null,resinWind:g.resinWind??null,rootLash:g.rootLash??null,superFractured:g.superFractured??null,beams:g.beams??null})),combat:g.combat?JSON.parse(JSON.stringify(g.combat)):null,bruteWaves:JSON.parse(JSON.stringify(g.bruteWaves||[])),raw,state,freeze:g.freeze,exited:g.exited,deaths:g.deaths,entities:JSON.parse(JSON.stringify(g.ents)),carrying:g.p.carrying?.id??null});g.events.length=0;
  }
  const parsed=C.parseRoom(def,0);tests.push({id:def.id,label,frames,parsed:{...parsed,grid:[...parsed.grid],portalable:[...parsed.portalable],grill:[...parsed.grill]}});
 }
@@ -21,6 +23,7 @@ for(const def of w.rooms){const tape=w.tapes[def.id];if(tape)trace(def,tape);}
 let seed=0xb1ade;
 const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/2**32;};
 for(const def of w.rooms){const tape=[];for(let i=0;i<40;i++){let k='';for(const ch of ['l','r','u','d','j','x','g','s'])if(random()<0.25)k+=ch;tape.push([5+Math.floor(random()*11),k]);}trace(def,tape,def.id+' / varied inputs');}
+for(const def of w.rooms)if(def.combat||def.foes||def.portalMode){const tape=[];for(let i=0;i<48;i++)tape.push([7,i%4===0?'rp':i%4===1?'uqs':i%4===2?'lj':'rdxp']);trace(def,tape,def.id+' / ward and portal inputs');}
 fs.mkdirSync(path.join(root,'.cache/godot'),{recursive:true});const file=path.join(root,`.cache/godot/reference-world${number}.json`);fs.writeFileSync(file,JSON.stringify(tests));
 const engine=process.env.GODOT||path.join(root,'.cache/godot/Godot.app/Contents/MacOS/Godot');
 const result=spawnSync(engine,['--headless','--path',project,'--script','res://tests/parity.gd','--',file],{encoding:'utf8',timeout:30000});process.stdout.write(result.stdout||'');process.stderr.write(result.stderr||'');process.exit(/SCRIPT ERROR|Parse Error/.test(result.stderr||'')?1:result.status??1);

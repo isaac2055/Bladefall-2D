@@ -35,10 +35,19 @@ func _initialize():
     elif actual==expected: continue
     failure = "%s frame %d · %s expected %s got %s" % [name,index+1,key,str(expected),str(actual)]
     break
+   if failure=="" and f.has("nested"):
+    for key in f.nested:
+     if not equivalent(sim.p.get(key),f.nested[key]): failure="%s frame %d · nested %s expected %s got %s"%[name,index+1,key,JSON.stringify(f.nested[key]),JSON.stringify(sim.p.get(key))];break
+   if failure=="" and f.has("devices"):
+    var devices={"sentinel":sim.sentinel,"oathRoot":sim.oath_root,"resinWind":sim.resin_wind,"rootLash":sim.root_lash,"superFractured":sim.super_fractured,"beams":sim.beams}
+    for key in f.devices:
+     if not equivalent(devices[key],f.devices[key]): failure="%s frame %d · device %s expected %s got %s"%[name,index+1,key,JSON.stringify(f.devices[key]),JSON.stringify(devices[key])];break
    if failure=="" and f.has("combat") and f.combat!=null and not equivalent(sim.combat,f.combat):
     failure="%s frame %d · combat expected %s got %s"%[name,index+1,JSON.stringify(f.combat),JSON.stringify(sim.combat)]
    if failure=="" and f.has("bruteWaves") and not equivalent(sim.brute_waves,f.bruteWaves):
     failure="%s frame %d · shockwave mismatch"%[name,index+1]
+   if failure=="" and sim.ents.size()!=f.entities.size():
+    failure="%s frame %d · entity count expected %d got %d"%[name,index+1,f.entities.size(),sim.ents.size()]
    if failure=="":
     for i in range(f.entities.size()):
      for key in f.entities[i]:
@@ -63,6 +72,11 @@ func _initialize():
   if failure!="":
    failed += 1
    print("FAIL ",failure)
+   if index<test.frames.size():
+    var expected_frame=test.frames[index]
+    for key in expected_frame.state:
+     if not equivalent(sim.p.get(key),expected_frame.state[key]): print("  field ",key," expected ",expected_frame.state[key]," got ",sim.p.get(key))
+    print("  events ",sim.events," combat ",JSON.stringify(sim.combat))
   else: print("PASS ",name," · ",index," frames")
  print("Compared ",count," frames; ",failed," of ",tests.size()," traces failed")
  quit(1 if failed>0 else 0)

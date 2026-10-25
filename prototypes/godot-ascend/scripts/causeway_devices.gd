@@ -15,6 +15,9 @@ static func reset(g):
   e.merge(pose(e,d.dir))
   g.ents.append(e)
  if g.room.def.has("combat"):
+  g.freeze=0
+  g.prev={}
+  for key in g.buf: g.buf[key]=0
   var d=g.room.def.combat
   g.combat={"awake":not d.get("waitForMove",false),"shots":[],"serial":0,"parries":0,"kills":0,"pogos":0,"receivers":[],"enemies":[],"hits":0}
   for i in range(d.enemies.size()):
@@ -143,7 +146,7 @@ static func combat_before(g):
   if e.exposed>0: e.exposed-=1
   if e.stun>0:
    e.stun-=1
-   e.vy=min(160,e.vy+g.K.gravity*g.DT)
+   if e.stun>0: e.vy=min(160,e.vy+g.K.gravity*g.DT)
    g.move_axis(e,e.vx*g.DT,true,-1,true,func(_b,_s):e.vx=0)
    g.move_axis(e,e.vy*g.DT,false,-1,true,func(_b,_s):e.vy=0)
    continue
@@ -225,7 +228,19 @@ static func combat_after(g):
     e.t=45
     g.emit_event("enemy-hit")
  for e in g.combat.enemies:
-  if not e.get("dead",false) and e.state=="attack" and g.overlap(g.rect(p.x,p.y,p.w,9),e):
+  if e.get("dead",false) or e.state!="attack": continue
+  if p.parryTimer>0 and g.overlap(g.rect(p.x-5,p.y-5,p.w+10,p.h+10),e):
+   g.combat.parries+=1
+   g.parry_success()
+   e.state="recover"
+   e.t=48
+   e.exposed=90
+   e.stun=12
+   e.vx=0
+   e.vy=0
+   g.emit_event("parry")
+   continue
+  if g.overlap(g.rect(p.x,p.y,p.w,9),e):
    g.combat.hits+=1
    g.die()
    return

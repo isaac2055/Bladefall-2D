@@ -1,6 +1,6 @@
-# Ascend in Godot — Outskirts, Black Woods and Broken Causeway
+# Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.5.1** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods and Broken Causeway**, isolated from the shipping browser game on `codex/godot-ascend-causeway`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.6.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, isolated from the shipping browser game on `codex/godot-ascend-fractured`. This is an engine comparison, not a replacement release or a full Ascend port.
 
 ## Play
 
@@ -14,10 +14,31 @@ The local standalone application is `exports/Bladefall Ascend Prototype.app`. Re
 
 Controls now match the browser defaults: **arrows** move/aim, **Space/C/J** jump, **D/X/K** dash, **A/Z/Shift/L** cling/climb/carry/throw, **W/V/I** strike, **F/O** parry, **P** portal and **R** retry. Each room’s original action locks still apply. **Esc** opens the pause menu; **M** toggles music and **F11** toggles fullscreen. The standard controller equivalents are mapped too (stick/d-pad, A jump, X/B dash, LB/LT cling, Y strike, RB portal and RT parry).
 
-The pause menu includes a **chapter selector** for The Outskirts, Black Woods and Broken Causeway. All three chapters are constructed before play, and switching preserves each chapter’s progress and position. **Start world over** resets the current world, bearings, room machinery, deaths and dialogue history without closing the app. Retry resets only the current room and preserves bearings and lit stakes. The pause menu also contains the room selector, Watch/Take control, four separate volume controls, spoken dialogue toggle, reduced motion and lighting comparison. Audio and display preferences persist locally. The app starts directly in the game rather than an engine-study toolbar.
+The pause menu includes a **chapter selector** for The Outskirts, Black Woods, Broken Causeway and their three Fractured versions. All six chapters are constructed before play, and switching preserves each chapter’s progress and position. **Start world over** resets the current world, bearings, room machinery, deaths and dialogue history without closing the app. Retry resets only the current room and preserves bearings and lit stakes. The pause menu also contains the room selector, Watch/Take control, four separate volume controls, spoken dialogue toggle, reduced motion and lighting comparison. Audio and display preferences persist locally. The app starts directly in the game rather than an engine-study toolbar.
 
 
-## Broken Causeway · 0.5.0
+## Fractured worlds · 0.6.0
+
+Choose **Esc → chapter selector → Fractured Outskirts, Fractured Woods or Fractured Causeway**. All 112 authored rooms (38/37/37) are preloaded alongside the original three chapters. This imports existing authored worlds; it adds no quests, dialogue or voices. Existing echo errands and regional secret hearts have front-entry gates, one-time rewards, retry retention and restart reset. Progress remains session-only. Inter-world passages remain previews, and Explore/browser files are unchanged.
+
+Native devices now include Sentinel bells and the two-stage encounter, moving hooks and rings, ziplines, beam mirrors/shutters, oath roots and resin wind, moths, anvils, feathers, void stones, paired portals, gravity prisms and mine carts. World-only entry repairs preserve authored shafts and align the East Counterweight and final arena mouths with their four-tile climbing connectors; three retractable entry seams visibly close near their campfire and reopen for backtracking. Watch restores the browser's authored closed seam at those checkpoints. Original exported room maps remain intact for reference tests. Dash-movable stones now have a visible body both before and after being moved.
+
+The audio manifest reuses **125 existing files and 42 voice entries**, including regional Fractured scores and recorded echo dialogue. The original unvoiced connector line stays subtitle-only. No synthesis or ElevenLabs requests were made.
+
+Reference checks cover all six worlds: **322 traces / 95,367 frames, zero mismatches**, including nested rope/riding state, combat, beams, roots, and targeted parry/portal inputs. The Fractured main roads complete in **7,907 / 6,583 / 8,954 frames**, all with zero deaths. Their recordings use normal inputs from the initial campfire through the crossroads, without position changes, room warps or state resets. Room Watch checks cover 21/23/23 playable authored routes; socket previews are excluded. GPU checks verify visible paint for all 28 authored entity types, including sliding stones.
+
+```sh
+node prototypes/godot-ascend/tools/export-world.mjs --world=21 --check
+node prototypes/godot-ascend/tools/parity.mjs --world=21
+# Repeat for 22 and 23.
+# Godot --path prototypes/godot-ascend --script res://tests/fractured.gd
+# Godot --path prototypes/godot-ascend --script res://tests/fractured_journey.gd
+# GPU renderer required for tests/fractured_render.gd.
+```
+
+`--fractured-tour 21` (or 22/23) replays a continuous road through the actual application. Tests distinguish geometric branch connectivity, checkpoint route completion, and reward-state fixtures; they do not claim complete normal-input optional-branch return journeys. The 0.6.0 packed app passes 21 integration/regression cases, plus both GPU paint checks (28 entity types and idle/moving stones). Actual packed captures cover all three Fractured chapters. Its inspected 3.52-second mixed WAV is non-silent with zero clipped samples; the local app signature verifies. Evidence is in `.cache/godot/fractured/`.
+
+## Broken Causeway · 0.5.0 (history)
 
 Choose **Esc → chapter selector → 3 · Broken Causeway**. The new chapter contains all 28 authored rooms, including the 15 taped main-road sections, Silas’s existing **The Clockwork Defector** quest, and the **Glass Ladder / Cog Heart** secret. Inter-world passages remain isolated previews; the chapter selector switches worlds. Explore and the browser game are unchanged.
 
@@ -80,11 +101,11 @@ Additional continuous-world checks (run with the same Godot command prefix): `te
 
 ## Deliberate prototype boundaries
 
-This contains the full first-three-world room data and their supported movement/interactions, with all rooms selectable for inspection. All main-road rooms and optional branches are physically connected. The between-world passage previews remain outside the chapter travel model; use the chapter selector. Mara now registers all three bearings and speaks her existing completed-chart recording. Campaign saves, other quest chains/unlocks beyond Mara, Elsie, Silas and the regional secret hearts, co-op, physical between-world passage travel, and devices beyond World 3 remain outside this prototype. Progress lasts for the current session until Start world over. Art is a more detailed Godot treatment, not a pixel-for-pixel copy of the browser renderer. The next decision is whether this looks and feels worth pursuing before expanding scope. Explore is a separate draft, left unchanged by this expansion.
+This contains the full first-three-world and corresponding Fractured room data and their supported movement/interactions, with all rooms selectable for inspection. All main-road rooms and optional branches are physically connected. The between-world passage previews remain outside the chapter travel model; use the chapter selector. Mara now registers all three bearings and speaks her existing completed-chart recording. Campaign saves, other quest chains/unlocks beyond Mara, Elsie, Silas and the regional secret hearts, co-op, physical between-world passage travel, and devices outside these six chapters remain outside this prototype. Progress lasts for the current session until Start world over. Art is a more detailed Godot treatment, not a pixel-for-pixel copy of the browser renderer. The next decision is whether this looks and feels worth pursuing before expanding scope. Explore is a separate draft, left unchanged by this expansion.
 
 ## Reused audio provenance
 
-`tools/import-audio.mjs` copies 102 existing source files byte-for-byte into `audio/` and records their paths and SHA-256 hashes in `data/audio.json`: all three regions’ scores and ambient beds, the Causeway boss score, effects/effort variations and 26 matching NPC/quest voice entries, including Mara’s acknowledgement and the actual Elsie and Silas errand lines. No dialogue was rewritten and no audio was generated. The existing unvoiced root-tender line in a between-world connector remains subtitle-only. `audio/ATTRIBUTION.md` preserves the original project provenance.
+`tools/import-audio.mjs` copies 125 existing source files byte-for-byte into `audio/` and records their paths and SHA-256 hashes in `data/audio.json`: all three regions’ scores and ambient beds, the Causeway boss score, effects/effort variations and 42 matching NPC/quest voice entries, including Mara’s acknowledgement and the actual Elsie and Silas errand lines. No dialogue was rewritten and no audio was generated. The existing unvoiced root-tender line in a between-world connector remains subtitle-only. `audio/ATTRIBUTION.md` preserves the original project provenance.
 
 `tools/import-controls.mjs` extracts the actual keyboard/pad defaults from `public/bladefall-pcore-view.js`; its check detects drift. Neither importer changes the browser game. No ElevenLabs calls are made.
 

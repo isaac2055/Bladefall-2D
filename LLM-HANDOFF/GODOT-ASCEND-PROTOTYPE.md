@@ -1,3 +1,13 @@
+# Fractured worlds expansion · 0.6.0 · 2026-10-25
+
+Current branch: `codex/godot-ascend-fractured`. The first three Ascend worlds and their three authored Fractured counterparts are selectable. Source: `prototypes/godot-ascend/`; local standalone: `prototypes/godot-ascend/exports/Bladefall Ascend Prototype.app`. No browser/Explore changes or deployment. The movable dash stones now render before and after movement.
+
+The new chapters contain 112 authored rooms (38/37/37), existing echo quests and three secret hearts, 67 playable Watch routes, and native ports of the devices needed by these chapters. All six chapters are preloaded and retain session state across switching. Use the README's 0.6 section for mechanisms, entry repairs, commands, input recordings and validation boundaries. Existing recordings only: 125 unique files, 42 voice entries, SHA-256 provenance; no ElevenLabs synthesis and no newly authored quests.
+
+Browser/native reference results: 322 traces and 95,367 frames with zero mismatches across worlds 1/2/3/21/22/23. Additional tests cover geometric connectivity, visible entity paint, playable Watch routes, reward gating/idempotence/retry/restart and normal-input main-road recordings. Optional-branch return journeys are not fully recorded; reward fixture checks are labeled separately. Packed 0.6.0: 21 integration cases plus two GPU paint checks pass; all three Fractured chapters were captured in the actual packaged renderer. Inspected packed mix: 3.52 seconds, non-silent, zero clipped samples. Continuous roads: 7,907 / 6,583 / 8,954 normal-input frames, zero deaths. Evidence is local and ignored under `.cache/godot/fractured/`. Engine remains pinned to Godot 4.5.1; progress remains session-only. Inter-world passages remain previews.
+
+---
+
 # Broken Causeway expansion · 0.5.0 · 2026-10-25
 
 Current branch: `codex/godot-ascend-causeway`. Source: `prototypes/godot-ascend/`. Local standalone: `prototypes/godot-ascend/exports/Bladefall Ascend Prototype.app`. Godot remains pinned to 4.5.1 with the stable compatibility renderer.

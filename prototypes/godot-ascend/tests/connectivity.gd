@@ -41,7 +41,7 @@ func _initialize():
  for section in world.data.world.sections:
   if not reached.has(section.room): ok=false
  for id in world.regions:
-  if id not in ["cl1-passage-1-2","cl1-passage-1-3","cl2-passage-2-4","cl2-passage-2-3","cl3-passage-3-5"] and not reached.has(id): ok=false
+  if not world.parsed[id].def.get("atlasTransit",false) and not "-socket-" in id and id not in ["cl1-passage-1-2","cl1-passage-1-3","cl2-passage-2-4","cl2-passage-2-3","cl3-passage-3-5"] and not reached.has(id): ok=false
  for a in edges:
   for b in edges[a]:
    if a not in edges[b]: ok=false

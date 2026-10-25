@@ -2,6 +2,25 @@ extends RefCounted
 ## Native world-only repairs. The original room fixtures remain intact for movement parity tests.
 static func build(source):
  var world = source.duplicate(true)
+ if int(world.n) in [21,22,23]:
+  # Authored bottom-left shafts use the outside backing as their west wall.
+  # An extra boundary tile would narrow those two-tile mouths to one tile.
+  for d in world.rooms:
+   if d.map.size()>=23 and d.map[-1].begins_with(".."): d.nativeOpenLeftShaft=true
+   if d.id=="cl23-fc23-east":
+    # Align the upper entry with the connector's four-tile climbing shaft.
+    for r in range(18,23):
+     var row=d.map[r]
+     row[30]="=" if r==18 else "."
+     row[33]="=" if r==18 else "."
+     d.map[r]=row
+   if d.id=="cl23-bank-f69":
+    for r in range(34,36):
+     var row=d.map[r]
+     row[30]="=" if r==34 else "."
+     row[33]="=" if r==34 else "."
+     d.map[r]=row
+  return world
  if int(world.n)==3:
   # Match the lower room’s four-tile moving block at the shared seam.
   # Widen its clearance and make the entry lip one-way so the knight can

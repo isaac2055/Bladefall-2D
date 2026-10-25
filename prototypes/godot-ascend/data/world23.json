@@ -1,0 +1,5986 @@
+{
+  "sources": {
+    "bladefall-pcore.js": "ced41090f3e9b56ae660b7035aba7d635337d9a8c7c93251d0846776b66b2fc4",
+    "bladefall-pcore-combat.js": "af94f9287344104bf39de174ca48a0e4c562d4db7d2a90825c776af2f0d39f56",
+    "bladefall-pcore-foes.js": "ba8d86f09dcc286f12e35cb7c916b317b86e503e6e628c0aee7e3b361e97b3f5",
+    "bladefall-pcore-portals.js": "91a6f18f401d5e227a21cbcd2a886b66a6893c1fa3a6ca37defd850a3d219a04",
+    "bladefall-pcore-dev-beam.js": "055c49c55cd007f3064384805672ed39ddc9c54b206e508920621d8e3e5f1be7",
+    "bladefall-pcore-dev-citadel.js": "060cbcab64ebc11e08bff7aeee6342dbdcc9ec3f5a4ed8b963555f78da7483fe",
+    "bladefall-pcore-dev-core-checkpoints.js": "b045e97c55c652d59f52a9ccc864eb78c79a8fda04c34714b034ea706bace3f2",
+    "bladefall-pcore-dev-ember.js": "ae4d44a2fb82306ffdde2ff09670c629d3fc08debc640920f7f2fa6daf54b0b2",
+    "bladefall-pcore-dev-fault.js": "52074477e34debbc8109089c7351ce863b15f54e752b7085dea6b530648e7936",
+    "bladefall-pcore-dev-finale.js": "a2d985c81fa5dc55f496b5de2efd2d3bdcf7c56d8e13ffcbe5b110465f78c06b",
+    "bladefall-pcore-dev-foundry.js": "ec9d5e32beaa0711be0ee080396204874b05789051938fe0f8a6e6ce5c1cb56f",
+    "bladefall-pcore-dev-frost.js": "76e8c10101774e51defb1f4ec052f3f05c93c5bec0f5e336d0b53a971aab324f",
+    "bladefall-pcore-dev-gaol.js": "a93ffc17c3f49f8f82491299f0249640d6dd3531ff2846eb249251d7e1559dd4",
+    "bladefall-pcore-dev-gravity.js": "6d57f63aafd7c840c83b94b793141c666aa14e9c74bb93d385a00348a98acdc1",
+    "bladefall-pcore-dev-hinge.js": "e618f38e2ffa59fe77b806b682840872cc6cbaac87e4e85e509d74b037110999",
+    "bladefall-pcore-dev-hook.js": "c9db5eae750394019089fd3fe77a93ea994e548e736dd0cb71747d6187a2219c",
+    "bladefall-pcore-dev-impulse.js": "170326213c861f3ad17919780ba5415e0f9a50da335b4ba0440daccbdf35687b",
+    "bladefall-pcore-dev-mirror.js": "563abf8bc89187972e554d8995f7ab9909d3e8c19b13f3585bb197b9fe885f24",
+    "bladefall-pcore-dev-moving-hook.js": "b29478501ea795c63d523cf9cbb12210d0d1e923cb7d120cf18b788425618c77",
+    "bladefall-pcore-dev-rail.js": "5969523a5a26e8e49a5bbcb632fcbf96f4cd104e5796da36592ceaf0818a7534",
+    "bladefall-pcore-dev-rbr-causeway.js": "9545f02ef8fe72017aba71f5042b28f7a4c3ef1f994e19d2e5805db96f883297",
+    "bladefall-pcore-dev-rbr-cliffs.js": "d05cbd477a9275936d9e3ebcb9ffd8f9d78f22663d68affea3bc3d24311da22c",
+    "bladefall-pcore-dev-rbr-colossus.js": "eba18ead4c1d3dad8226162cb4920e7c64b1a79b97c63d9ffd5e8a6e026e5c23",
+    "bladefall-pcore-dev-rbr-deepline.js": "16b1b8a513dabbf0303bb04e4ef7272c2dad814d424a68da0f8a4f49fb980fc1",
+    "bladefall-pcore-dev-rbr-emberdeep.js": "e9d235ad02ac5bf4a49162ca1ed23ffc8cf71c763bbebab4d5c964f2c14184d6",
+    "bladefall-pcore-dev-rbr-f-outskirts.js": "b8aa716319a729fec8682c89f6343bf24f09252055c7608c1266c69e8da19b19",
+    "bladefall-pcore-dev-rbr-f-updrafts.js": "4eaa5d5ccfc418b59766ae289dd51bb2e979057d85aad7b8c7912e60d250fce7",
+    "bladefall-pcore-dev-rbr-f-woods.js": "410c4e1d3888b68e7c097642ed2e0a1372adfa5aab7a19420ba11b43c6c35853",
+    "bladefall-pcore-dev-rbr-frostfell.js": "956618773e9c654415974ef4130adb4fdd095ba742242c952dd0391527a121a2",
+    "bladefall-pcore-dev-rbr-gaol.js": "e71c25446cb99a308481842d263f1959c311085776f40ff5a3767b7b7826fca4",
+    "bladefall-pcore-dev-rbr-keep.js": "b8a0765cca2ee332da17ae8557773d77daad04c045394ed7b12084ee580d04c0",
+    "bladefall-pcore-dev-rbr-king.js": "320ed0ff1722a618b0d5c56a038a2f68187a2bb5f80b2c34d8adb8d9fe5a8b37",
+    "bladefall-pcore-dev-rbr-marksman.js": "b0938eddf47a372e5d84537a01575fca52f9b022e47f7fe72561a6d5ac4450f0",
+    "bladefall-pcore-dev-rbr-path.js": "39f7621b1c41cdf268d4f03acc1b4844db4ff6f063b02d8b81c550dfe9a3eca4",
+    "bladefall-pcore-dev-rbr-sorcerer.js": "28a177f81421f7fa88d40996b2c8a6ece14563d55e7464d914e0dba7a3db6c57",
+    "bladefall-pcore-dev-rbr-sunspire.js": "edcd9a5494c8987f6f923601335172436216c7f72fad4e227491f627847b2672",
+    "bladefall-pcore-dev-rbr-tyrant.js": "65547056703c182193c6f967d4d0e150891e5627f0d0f863e7fddc476c75b8c3",
+    "bladefall-pcore-dev-rbr-updrafts.js": "b1739991e1efde3713ab51522d6dcd196b21ceddbedeb03e9961ba60ca3ec37f",
+    "bladefall-pcore-dev-recoil.js": "52ffad00770606c45e0e4150e20498f76db4a7737012b26b79b9d928d6c1e30e",
+    "bladefall-pcore-dev-relay.js": "671a635ca4d0e10ef5adeb714a2474469bda9c18c406b3c3129e8d7ab2512a10",
+    "bladefall-pcore-dev-run9-base.js": "aa1a42c86b327fbdc5a2641fb63d29e84ff0b2b4a0a73410c8ed147ac748f983",
+    "bladefall-pcore-dev-shade.js": "83eab516773d1043db146fbe1c5f19e60b8eeb2c6ca6ff47e3293c7b4ec84ae4",
+    "bladefall-pcore-dev-spent-thorn.js": "047fffbb3355c8da5bd30fb6509a4094e4452b9910044938a86d4c5d1f6272ec",
+    "bladefall-pcore-dev-step-relay.js": "50faa5b503c8a48b60f1d8238fa19981bbcf7a6af863ca800bf276bbeef3775c",
+    "bladefall-pcore-dev-superrooms-base.js": "206d66c75e88580bddda79ec9601704b2a1962140fa533590468243f0c372fde",
+    "bladefall-pcore-dev-superrooms-colossus.js": "cc683a4c2b01c15c5347ee593c31a283af69b4b6b2b5ad02c7aca7e58c70c79c",
+    "bladefall-pcore-dev-superrooms-fractured.js": "f45fafabd6c85bcd3c66510c54ff644ef75cd1ad1a9d1f63fbec16fc0d715039",
+    "bladefall-pcore-dev-superrooms-fractured9.js": "da2023d53c98c79e166ad08e822c679eb65a11f21f65c2c24e5462b55ef5e2df",
+    "bladefall-pcore-dev-sweeper.js": "98544dd105f7895c2c64d7df4688c18980659a77a6b378bbca757e4ba031c47a",
+    "bladefall-pcore-dev-throne.js": "b1df4a78ec4261555a3ddf80edb0bc0e52e08e7054357b41e02b8ba21f5a6ccc",
+    "bladefall-pcore-dev-vector-refill.js": "5a67b1bbd37a7976014edf3f89b88e1b81efbc976b119c6a07f07ad0d391bffc",
+    "bladefall-pcore-dev-void.js": "c0d3042145ad9bee79bbaf673282635d0ed075164909df21101116052857f7a7",
+    "bladefall-pcore-dev-watch.js": "a4649ca5435a061628f1bed65862ab00153d0f50f0f01b46768e706d468626e7",
+    "bladefall-pcore-dev-water.js": "1a4848a3208fc4d5ba8d28f42b595f9e92987161b462e877e728bae886537c7c",
+    "bladefall-pcore-dev-workshop-room.js": "b7c90947fd50c9243bade7986628cb5bcd68c8c037c37db3e91df62a24a40e6e",
+    "bladefall-pcore-dev-zipline.js": "0322a7b5e34b43f38756c307b5678f7cbd7c7936d697102f834baa8968df3c68",
+    "bladefall-pcore-dev-cargo-clasp.js": "011d345e45213da639eca9c2e5bafc8bb8d20bc8e2d57989eb3b162b49794b2e",
+    "bladefall-climb-atlas.js": "41d208f88fdef5069b91b41ffb4ebc16d1f465c446750c0c490ab33b79370120",
+    "bladefall-climb-passages.js": "28f67db4bd03bebd97cfc8769b71f8c244b5cb87dedba84edd3e65f50e6cb852",
+    "bladefall-climb.js": "85b5633cb4b6588cb147db26388eb3a32abc83f51f42eee06a1ff5db59a12200",
+    "bladefall-climb-worlds.js": "14716d5994f1cee3330f626064ab52c42a75dc43407ef25f0df43252d0c57eea"
+  },
+  "playerDefaults": {
+    "x": 24,
+    "y": 85,
+    "w": 8,
+    "h": 11,
+    "remX": 0,
+    "remY": 0,
+    "vx": 0,
+    "vy": 0,
+    "facing": 1,
+    "state": "normal",
+    "dashes": 1,
+    "maxDashes": 1,
+    "stamina": 110,
+    "onGround": true,
+    "wasGround": true,
+    "jumpGrace": 0,
+    "varJump": 0,
+    "varJumpSpeed": 0,
+    "forceMoveX": 0,
+    "forceMoveTimer": 0,
+    "autoJump": false,
+    "dashTimer": 0,
+    "dashCooldown": 0,
+    "dashRefillCooldown": 0,
+    "dashDir": {
+      "x": 1,
+      "y": 0
+    },
+    "beforeDash": {
+      "x": 0,
+      "y": 0
+    },
+    "dashAim": false,
+    "ducking": false,
+    "wallSlide": 72,
+    "wallBoostDir": 0,
+    "wallBoostTimer": 0,
+    "climbNoMove": 0,
+    "retainTimer": 0,
+    "retained": 0,
+    "maxFall": 160,
+    "liftX": 0,
+    "liftY": 0,
+    "liftTimer": 0,
+    "carrying": null,
+    "strikeTimer": 0,
+    "strikeCooldown": 0,
+    "strikeDir": {
+      "x": 1,
+      "y": 0
+    },
+    "strikeHit": {},
+    "deadTimer": 0,
+    "respawnTimer": 0,
+    "dashFlash": 0,
+    "parryTimer": 0,
+    "parryCooldown": 0,
+    "fling": false,
+    "portalCool": 0,
+    "airJumps": 0,
+    "hook": null,
+    "lastRing": null,
+    "seat": null,
+    "seenT": 0
+  },
+  "source": "public/bladefall-climb-worlds.js",
+  "world": {
+    "n": 23,
+    "key": "f-causeway",
+    "name": "The Fractured Causeway",
+    "palette": "fractured",
+    "kit": [
+      "dash",
+      "strike",
+      "parry",
+      "portal"
+    ],
+    "blurb": "The Fractured Causeway: one continuous road with 13 checkpointed challenges, ending in a superroom.",
+    "outro": "Three counterweights lie across three silent courts. The Iron Echo has stopped trying. The wind beyond the causeway blows uphill.",
+    "sections": [
+      {
+        "room": "cl23-atlas-arrival",
+        "x": -88,
+        "y": -6,
+        "fire": {
+          "c": 44,
+          "r": 21
+        },
+        "atlasJunction": true
+      },
+      {
+        "room": "cl23-fc23-camp",
+        "x": 0,
+        "y": 0,
+        "fire": {
+          "c": 2,
+          "r": 11
+        }
+      },
+      {
+        "room": "cl23-fc23-yard",
+        "x": 40,
+        "y": -5,
+        "fire": {
+          "c": 2,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl23-fc23-relay",
+        "x": 80,
+        "y": -15,
+        "fire": {
+          "c": 1,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl23-fc23-silas",
+        "x": 120,
+        "y": -25,
+        "fire": {
+          "c": 3,
+          "r": 13
+        }
+      },
+      {
+        "room": "cl23-bank-b46",
+        "x": 160,
+        "y": -22,
+        "fire": {
+          "c": 6,
+          "r": 15
+        }
+      },
+      {
+        "room": "cl23-bank-f23",
+        "x": 200,
+        "y": -18,
+        "fire": {
+          "c": 3,
+          "r": 7
+        }
+      },
+      {
+        "room": "cl23-fc23-counterpoise",
+        "x": 240,
+        "y": -25,
+        "fire": {
+          "c": 3,
+          "r": 15
+        }
+      },
+      {
+        "room": "cl23-conn-1",
+        "x": 280,
+        "y": -52,
+        "fire": {
+          "c": 0,
+          "r": 30
+        }
+      },
+      {
+        "room": "cl23-fc23-chainwalk",
+        "x": 288,
+        "y": -66,
+        "fire": {
+          "c": 1,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl23-conn-2",
+        "x": 240,
+        "y": -61,
+        "fire": {
+          "c": 44,
+          "r": 3
+        }
+      },
+      {
+        "room": "cl23-fc23-gantry",
+        "x": 200,
+        "y": -75,
+        "fire": {
+          "c": 36,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl23-conn-3",
+        "x": 226,
+        "y": -107,
+        "fire": {
+          "c": 1,
+          "r": 29
+        }
+      },
+      {
+        "room": "cl23-fc23-standard",
+        "x": 235,
+        "y": -112,
+        "fire": {
+          "c": 2,
+          "r": 8
+        }
+      },
+      {
+        "room": "cl23-fc23-west",
+        "x": 275,
+        "y": -112,
+        "fire": {
+          "c": 5,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl23-conn-4",
+        "x": 315,
+        "y": -125,
+        "fire": {
+          "c": 0,
+          "r": 30
+        }
+      },
+      {
+        "room": "cl23-fc23-east",
+        "x": 289,
+        "y": -148,
+        "fire": {
+          "c": 32,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl23-conn-5",
+        "x": 280,
+        "y": -161,
+        "fire": {
+          "c": 6,
+          "r": 30
+        }
+      },
+      {
+        "room": "cl23-bank-f69",
+        "x": 251,
+        "y": -197,
+        "fire": {
+          "c": 33,
+          "r": 33
+        }
+      },
+      {
+        "room": "cl23-walk-6-9",
+        "x": 331,
+        "y": -200,
+        "fire": null
+      },
+      {
+        "room": "cl23-fc23-middle",
+        "x": 314,
+        "y": -223,
+        "fire": {
+          "c": 21,
+          "r": 17
+        }
+      },
+      {
+        "room": "cl23-atlas-crossroads",
+        "x": 354,
+        "y": -223,
+        "fire": {
+          "c": 44,
+          "r": 21
+        },
+        "atlasJunction": true
+      }
+    ],
+    "quests": [
+      {
+        "id": "silas-echo",
+        "title": "The Forty-First Pace",
+        "giver": "Silas’s echo",
+        "from": "cl23-fc23-silas",
+        "back": {
+          "c": 3,
+          "r": 13
+        },
+        "keepsake": {
+          "id": "silas-remembered",
+          "name": "Silas, remembered",
+          "gives": "His first freely chosen step outlasted the machine that counted the others. Shown at the end."
+        },
+        "needs": "silas-key",
+        "sections": [
+          {
+            "room": "cl23-fc23-q-ladder",
+            "x": -1,
+            "y": -23,
+            "fire": {
+              "c": 2,
+              "r": 19
+            }
+          },
+          {
+            "room": "cl23-fc23-q-governor",
+            "x": 4,
+            "y": -46,
+            "fire": {
+              "c": 1,
+              "r": 15
+            }
+          },
+          {
+            "room": "cl23-pass-19",
+            "x": 44,
+            "y": -46,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl23-pass-20",
+            "x": 45,
+            "y": -52,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl23-pass-21",
+            "x": 10,
+            "y": -52,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl23-pass-22",
+            "x": 5,
+            "y": -52,
+            "fire": null,
+            "passage": true
+          }
+        ],
+        "short": false,
+        "returnTo": "cl23-fc23-q-governor"
+      }
+    ],
+    "secrets": [
+      {
+        "id": "secret-23",
+        "host": "cl23-fc23-middle",
+        "name": "Pogo Up",
+        "origin": "p117",
+        "sections": [
+          {
+            "room": "cl23-secret-p117",
+            "x": 317,
+            "y": -246,
+            "fire": {
+              "c": 1,
+              "r": 19
+            }
+          },
+          {
+            "room": "cl23-pass-23",
+            "x": 357,
+            "y": -231,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl23-pass-24",
+            "x": 359,
+            "y": -245,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl23-pass-25",
+            "x": 358,
+            "y": -250,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl23-pass-26",
+            "x": 314,
+            "y": -250,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl23-pass-27",
+            "x": 309,
+            "y": -250,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl23-pass-28",
+            "x": 309,
+            "y": -245,
+            "fire": null,
+            "passage": true
+          },
+          {
+            "room": "cl23-pass-29",
+            "x": 309,
+            "y": -209,
+            "fire": null,
+            "passage": true
+          }
+        ],
+        "returnTo": "cl23-fc23-middle"
+      }
+    ],
+    "rooms": [
+      {
+        "id": "cl23-fc23-camp",
+        "name": "Chainwake, After the Bell",
+        "exit": "right",
+        "hint": "Jump as the lift slams to a stop and it throws you · a down-diagonal dash that lands keeps going (an ultra) · jump out of it over the pit",
+        "question": "The lift throws you straight at the roof, and the sill under it is cracked. How do you get under it without losing the speed?",
+        "decor": [
+          {
+            "k": "tent",
+            "c": 1,
+            "r": 11
+          },
+          {
+            "k": "watchfire",
+            "c": 5,
+            "r": 11
+          }
+        ],
+        "zips": [
+          [
+            8,
+            0
+          ]
+        ],
+        "map": [
+          "##..####################################",
+          "#...........................<###########",
+          "#...........................<###########",
+          "#...........................<###########",
+          "#...........................<###########",
+          "#...........................<###########",
+          "#...........................<###########",
+          "#...........................<###########",
+          "............................vvvvvvvvvvv#",
+          "........................................",
+          "........................................",
+          "...P....................................",
+          "#########ZZZZ...............~~~.........",
+          "#########..............................#",
+          "#########..............................#",
+          "#########..............................#",
+          "#########..............................#",
+          "#########..............................#",
+          "#########..............................#",
+          "#########..............................#",
+          "#########..............................#",
+          "#########^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+          "########################################"
+        ],
+        "rbr": 23,
+        "palette": "fractured",
+        "origin": "fc23-camp",
+        "doors": [
+          {
+            "edge": "up",
+            "cols": [
+              2,
+              3
+            ],
+            "to": "silas-echo"
+          }
+        ],
+        "entry": "left",
+        "atlasMouth": {
+          "edge": "left",
+          "floor": 12
+        },
+        "atlasSockets": [
+          {
+            "kind": "room",
+            "edge": "left",
+            "floor": 12,
+            "to": "cl23-atlas-arrival",
+            "toFloor": 18
+          }
+        ]
+      },
+      {
+        "id": "cl23-fc23-yard",
+        "name": "The Drop Yard",
+        "exit": "right",
+        "hint": "Land the down-diagonal dash and it keeps going along the floor (an ultra) · jump out of it and it is a hyper · catch the far wall and climb to the door",
+        "question": "The sill under the roof is cracked and the yard beyond is wide. What do you land with, and what do you leave with?",
+        "zips": [
+          [
+            7,
+            0
+          ]
+        ],
+        "map": [
+          "########################################",
+          "#......................................#",
+          "#......................................#",
+          "#........................^^^^^^^^^.....#",
+          "#........................<#######>.....#",
+          "#........................<#######>......",
+          "#........................<#######>......",
+          "#........................<#######>......",
+          "#........................<#######>.....#",
+          "#........................<#######>.....#",
+          "#........................<#######>.....#",
+          "#........................<#######>.....#",
+          "#........................<#######>.....#",
+          "#........................<#######>.....#",
+          ".........................<#######>.....#",
+          ".......................................#",
+          ".......................................#",
+          "...P...................................#",
+          "#######ZZZZ..............~~~...........#",
+          "#######................................#",
+          "#######................................#",
+          "#######^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+          "########################################"
+        ],
+        "rbr": 23,
+        "palette": "fractured",
+        "seam": [
+          [
+            0,
+            14,
+            "#"
+          ],
+          [
+            0,
+            15,
+            "#"
+          ],
+          [
+            0,
+            16,
+            "#"
+          ],
+          [
+            0,
+            17,
+            "#"
+          ]
+        ],
+        "origin": "fc23-yard",
+        "decor": []
+      },
+      {
+        "id": "cl23-fc23-relay",
+        "name": "The Relay Gantry",
+        "exit": "right",
+        "hint": "Dash into a tear while the lift’s throw still carries you · it sets you down on a cracked perch · onto the next lift, and jump off it over the brake thorns",
+        "question": "The tear’s mouth is in the air. When is it in reach, and how long does the perch it sets you on hold?",
+        "lines": [
+          {
+            "a": [
+              21,
+              13
+            ],
+            "b": [
+              26,
+              6
+            ],
+            "setDown": true
+          }
+        ],
+        "zips": [
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "map": [
+          "########################################",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#.....................................<#",
+          "#...................................vvv#",
+          "#..............................ZZZZ....#",
+          "#...................................<###",
+          "#........................~~~........<###",
+          "#...................................<###",
+          "#...................................<###",
+          "#...................................<###",
+          "#...................................<###",
+          "#...................................<###",
+          "....................................<###",
+          "....................................<###",
+          "....................................<###",
+          "..P.................................<###",
+          "######ZZZZ..........................<###",
+          "######..............................<###",
+          "######..............................<###",
+          "######^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^###",
+          "########################################"
+        ],
+        "rbr": 23,
+        "palette": "fractured",
+        "seam": [
+          [
+            0,
+            14,
+            "#"
+          ],
+          [
+            0,
+            15,
+            "#"
+          ],
+          [
+            0,
+            16,
+            "#"
+          ],
+          [
+            0,
+            17,
+            "#"
+          ]
+        ],
+        "origin": "fc23-relay",
+        "decor": []
+      },
+      {
+        "id": "cl23-fc23-silas",
+        "name": "The Forty-First Pace",
+        "exit": "right",
+        "hint": "Silas’s winding key opens the abandoned maintenance shaft · the road: a throw, a dive, a hyper, a dive under the brake housing",
+        "question": "Will you follow the step beyond his old turning point?",
+        "people": [
+          {
+            "who": "silas",
+            "name": "SILAS’S ECHO",
+            "c": 5,
+            "r": 13,
+            "quest": "silas-echo",
+            "line": "Forty paces. I remember the forty-first better.",
+            "lineDone": "I chose that step. That part still belongs to me."
+          }
+        ],
+        "decor": [
+          {
+            "k": "bench",
+            "c": 1,
+            "r": 13
+          }
+        ],
+        "zips": [
+          [
+            6,
+            0
+          ]
+        ],
+        "map": [
+          "#....###################################",
+          "#....#.................................#",
+          "#....#.................................#",
+          "#....#....................^^^^^^^^^^^^^#",
+          "#....#....................<#############",
+          "#....#....................<#############",
+          "#....#....................<#############",
+          "#....#....................<#############",
+          "#....#....................<#############",
+          "#....#....................<#############",
+          "..........................<#############",
+          "..........................<#############",
+          "..........................<#############",
+          "....P.....................<#############",
+          "#######ZZZZ.......................<#####",
+          "#######...........................<#####",
+          "#######...........................vvvvv#",
+          "#######...................~~~...........",
+          "#######.................................",
+          "#######................................#",
+          "#######...........................~~~..#",
+          "#######^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+          "########################################"
+        ],
+        "rbr": 23,
+        "palette": "fractured",
+        "seam": [
+          [
+            0,
+            10,
+            "#"
+          ],
+          [
+            0,
+            11,
+            "#"
+          ],
+          [
+            0,
+            12,
+            "#"
+          ],
+          [
+            0,
+            13,
+            "#"
+          ]
+        ],
+        "origin": "fc23-silas",
+        "closeWhilePlayed": true
+      },
+      {
+        "id": "cl23-fc23-counterpoise",
+        "name": "The Counterpoise",
+        "exit": "right",
+        "hint": "Throw, dive under the bar, hyper · dash into the tear in flight · two hypers under the brake, cracked shelf to cracked shelf",
+        "question": "The same causeway, the other way, and the brake roof over the top. Where does each hyper start?",
+        "lines": [
+          {
+            "a": [
+              34,
+              17
+            ],
+            "b": [
+              6,
+              2
+            ],
+            "setDown": true
+          }
+        ],
+        "zips": [
+          [
+            5,
+            0
+          ]
+        ],
+        "map": [
+          "########################################",
+          "#>.......vvvvvvvvvvvvvvvvvvvvvvvvvvv....",
+          "#>......................................",
+          "#>......................................",
+          "#>....~~~~.........~~~..........########",
+          "#>..............................########",
+          "#>....................................<#",
+          "#>....................................<#",
+          "#>....................................<#",
+          "#>^^^^^^^^^...........................<#",
+          "#>#########...........................<#",
+          "#>vvvvvvvvv...........................<#",
+          "...................^^^^^^^............<#",
+          "...................#######............<#",
+          "...................vvvvvvv............<#",
+          "..P...................................<#",
+          "#######ZZZZ...........................<#",
+          "#######...............................<#",
+          "#######............~~~................<#",
+          "#######...............................<#",
+          "#######...............................<#",
+          "#######^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+          "########################################"
+        ],
+        "rbr": 23,
+        "palette": "fractured",
+        "seam": [
+          [
+            0,
+            12,
+            "#"
+          ],
+          [
+            0,
+            13,
+            "#"
+          ],
+          [
+            0,
+            14,
+            "#"
+          ],
+          [
+            0,
+            15,
+            "#"
+          ],
+          [
+            1,
+            12,
+            ">"
+          ],
+          [
+            1,
+            13,
+            ">"
+          ],
+          [
+            1,
+            14,
+            ">"
+          ],
+          [
+            1,
+            15,
+            ">"
+          ]
+        ],
+        "origin": "fc23-counterpoise",
+        "decor": []
+      },
+      {
+        "id": "cl23-conn-1",
+        "name": "",
+        "exit": "right",
+        "palette": "fractured",
+        "connector": true,
+        "cols": 8,
+        "rows": 32,
+        "map": [
+          "########",
+          "###.....",
+          "###.....",
+          "###.....",
+          "###....#",
+          "###....#",
+          "###....#",
+          "###....#",
+          "###....#",
+          "###....#",
+          "###....#",
+          "###....#",
+          "###....#",
+          "###....#",
+          "###....#",
+          "###....#",
+          "###....#",
+          "###....#",
+          "###....#",
+          "###....#",
+          "###....#",
+          "###....#",
+          "###....#",
+          "###....#",
+          "###....#",
+          "###....#",
+          "###....#",
+          ".##....#",
+          ".......#",
+          ".......#",
+          ".P.....#",
+          "########"
+        ],
+        "hint": "",
+        "question": "",
+        "seam": [
+          [
+            0,
+            27,
+            "#"
+          ]
+        ],
+        "origin": "conn-1",
+        "decor": []
+      },
+      {
+        "id": "cl23-fc23-chainwalk",
+        "name": "The Broken Chainwalk",
+        "exit": "left",
+        "hint": "Cracked links under the brake roof: hyper link to link · dash into the tear in flight · it sets you on a cracked perch: back along the high walk",
+        "question": "Out along the low walk, up the tear, back along the high walk, and no link that holds. Where does each hyper start?",
+        "lines": [
+          {
+            "a": [
+              37,
+              18
+            ],
+            "b": [
+              34,
+              7
+            ],
+            "setDown": true
+          }
+        ],
+        "map": [
+          "########################################",
+          "#....#############################.....#",
+          "#....#############################.....#",
+          "#....#############################.....#",
+          "#....#############################.....#",
+          "#....vvvvvvvvvvvvvvvvvvvvvvvvvvvvv.....#",
+          ".......................................#",
+          ".......................................#",
+          ".......................................#",
+          "#####^^^^^~~~^^^^^^^^~~~^^^^^^^^~~~....#",
+          "#....#####^^^########^^^########^>....<#",
+          "#....############################>....<#",
+          "#....############################>....<#",
+          "#....############################>....<#",
+          ".....vvvvvvvvvvvvvvvvvvvvvvvvvvvvv....<#",
+          "......................................<#",
+          "......................................<#",
+          "..P...................................<#",
+          "#####.........~~~........~~~..........<#",
+          "#####.................................<#",
+          "#####.................................<#",
+          "#####^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+          "########################################"
+        ],
+        "rbr": 23,
+        "palette": "fractured",
+        "seam": [
+          [
+            0,
+            14,
+            "#"
+          ],
+          [
+            0,
+            15,
+            "#"
+          ],
+          [
+            0,
+            16,
+            "#"
+          ],
+          [
+            0,
+            17,
+            "#"
+          ]
+        ],
+        "origin": "fc23-chainwalk",
+        "decor": []
+      },
+      {
+        "id": "cl23-conn-2",
+        "name": "",
+        "exit": "left",
+        "palette": "fractured",
+        "connector": true,
+        "cols": 48,
+        "rows": 6,
+        "map": [
+          "##############################################..",
+          "................................................",
+          "................................................",
+          ".............................................P..",
+          "################################################",
+          "################################################"
+        ],
+        "hint": "",
+        "question": "",
+        "seam": [
+          [
+            47,
+            0,
+            "#"
+          ],
+          [
+            46,
+            0,
+            "#"
+          ]
+        ],
+        "origin": "conn-2",
+        "decor": []
+      },
+      {
+        "id": "cl23-fc23-gantry",
+        "name": "The Last Gantry",
+        "exit": "up",
+        "hint": "Throw, dive, hyper · dash into the tear in flight · the lip it sets you on is cracked: super off it before it falls",
+        "question": "Eight moves and nowhere to stand between them. Which one do you rehearse first?",
+        "lines": [
+          {
+            "a": [
+              3,
+              17
+            ],
+            "b": [
+              7,
+              2
+            ],
+            "setDown": true
+          }
+        ],
+        "zips": [
+          [
+            -7,
+            0
+          ]
+        ],
+        "map": [
+          "#########################....###########",
+          "#......................................#",
+          "#......................................#",
+          "#................o.....................#",
+          "#......~~~~..........###################",
+          "#....................vvvvvvvvvvvvvvvvvv#",
+          "#......................................#",
+          "#.....^^^^^^^^^^.......................#",
+          "#>....<########>.......................#",
+          "#>....<########>.......................#",
+          "#>....<########>.......................#",
+          "#>....<########>.......................#",
+          "#>....<########>.......................#",
+          "#>....<########>.......................#",
+          "#>....<########>........................",
+          "#>......................................",
+          "#>......................................",
+          "#>...................................P..",
+          "#>...........~~~..............ZZZZ######",
+          "#>................................######",
+          "#>................................######",
+          "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^######",
+          "########################################"
+        ],
+        "rbr": 23,
+        "palette": "fractured",
+        "seam": [
+          [
+            39,
+            14,
+            "#"
+          ],
+          [
+            39,
+            15,
+            "#"
+          ],
+          [
+            39,
+            16,
+            "#"
+          ],
+          [
+            39,
+            17,
+            "#"
+          ]
+        ],
+        "origin": "fc23-gantry",
+        "decor": []
+      },
+      {
+        "id": "cl23-conn-3",
+        "name": "",
+        "exit": "right",
+        "palette": "fractured",
+        "connector": true,
+        "cols": 9,
+        "rows": 32,
+        "map": [
+          "#########",
+          "#........",
+          "#........",
+          "#........",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#.P..####",
+          "==#######",
+          "..#######"
+        ],
+        "hint": "",
+        "question": "",
+        "seam": [
+          [
+            0,
+            31,
+            "#"
+          ],
+          [
+            1,
+            31,
+            "#"
+          ],
+          [
+            0,
+            30,
+            "#"
+          ],
+          [
+            1,
+            30,
+            "#"
+          ]
+        ],
+        "origin": "conn-3",
+        "decor": []
+      },
+      {
+        "id": "cl23-fc23-standard",
+        "name": "The Broken Standard",
+        "exit": "right",
+        "hint": "The Iron Echo can break what your blade cannot · every charge ends in a stamp along the floor",
+        "question": "Where will its committed charge end, and where will you be when the floor shakes?",
+        "decor": [
+          {
+            "k": "cw-standard",
+            "c": 10,
+            "r": 17
+          },
+          {
+            "k": "cw-crate",
+            "c": 35,
+            "r": 17
+          }
+        ],
+        "combat": {
+          "waitForMove": true,
+          "enemies": [
+            {
+              "kind": "hound",
+              "brute": true,
+              "stamp": "always",
+              "x": 24,
+              "y": 128,
+              "face": 1
+            }
+          ],
+          "receivers": [],
+          "doors": [
+            {
+              "x": 240,
+              "y": 8,
+              "w": 16,
+              "h": 136,
+              "brittle": true
+            }
+          ]
+        },
+        "map": [
+          "########################################",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          ".......................................#",
+          ".......................................#",
+          ".......................................#",
+          "...P...................................#",
+          "########...............................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "#.......................................",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################"
+        ],
+        "rbr": 23,
+        "palette": "fractured",
+        "seam": [],
+        "origin": "fc23-standard"
+      },
+      {
+        "id": "cl23-fc23-west",
+        "name": "The West Counterweight",
+        "exit": "right",
+        "study": true,
+        "hint": "Two weights, two crushes · after the first it gets up faster, and every charge ends in a stamp",
+        "question": "The first weight only cracks it. Where must the armour stop before the second falls?",
+        "decor": [
+          {
+            "k": "cw-chain-long",
+            "c": 1,
+            "r": 8
+          },
+          {
+            "k": "cw-chain-long",
+            "c": 4,
+            "r": 8
+          },
+          {
+            "k": "cw-chain-long",
+            "c": 32,
+            "r": 8
+          },
+          {
+            "k": "cw-chain-long",
+            "c": 35,
+            "r": 8
+          }
+        ],
+        "combat": {
+          "waitForMove": true,
+          "enemies": [
+            {
+              "kind": "hound",
+              "brute": true,
+              "crush": 2,
+              "stamp": "always",
+              "x": 200,
+              "y": 128,
+              "face": -1,
+              "ward": "brute"
+            }
+          ],
+          "receivers": [],
+          "doors": [
+            {
+              "x": 296,
+              "y": 8,
+              "w": 8,
+              "h": 136,
+              "ward": "brute"
+            }
+          ]
+        },
+        "map": [
+          "########################################",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#KKKK...........................KKKK...#",
+          "#KKKK...........................KKKK...#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "........................................",
+          "........................................",
+          "........................................",
+          "......P.................................",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################"
+        ],
+        "rbr": 23,
+        "palette": "fractured",
+        "seam": [
+          [
+            0,
+            14,
+            "#"
+          ],
+          [
+            0,
+            15,
+            "#"
+          ],
+          [
+            0,
+            16,
+            "#"
+          ],
+          [
+            0,
+            17,
+            "#"
+          ]
+        ],
+        "origin": "fc23-west"
+      },
+      {
+        "id": "cl23-conn-4",
+        "name": "",
+        "exit": "up",
+        "palette": "fractured",
+        "connector": true,
+        "cols": 9,
+        "rows": 32,
+        "map": [
+          "####....#",
+          "####....#",
+          "####....#",
+          "####....#",
+          "####....#",
+          "####....#",
+          "####....#",
+          "####....#",
+          "####....#",
+          "####....#",
+          "####....#",
+          "####....#",
+          "####....#",
+          "####....#",
+          "####....#",
+          "####....#",
+          "####....#",
+          "####....#",
+          "####....#",
+          "####....#",
+          "####....#",
+          "####....#",
+          "####....#",
+          "####....#",
+          "####....#",
+          "####....#",
+          "####....#",
+          "........#",
+          "........#",
+          "........#",
+          ".P......#",
+          "#########"
+        ],
+        "hint": "",
+        "question": "",
+        "seam": [],
+        "origin": "conn-4",
+        "decor": []
+      },
+      {
+        "id": "cl23-fc23-east",
+        "name": "The East Counterweight",
+        "exit": "left",
+        "study": true,
+        "hint": "The second court runs the other way · two weights again, and it is quicker after the first",
+        "question": "Can you put the weight between its charge and the floor twice?",
+        "decor": [
+          {
+            "k": "cw-chain-long",
+            "c": 38,
+            "r": 8
+          },
+          {
+            "k": "cw-chain-long",
+            "c": 35,
+            "r": 8
+          },
+          {
+            "k": "cw-chain-long",
+            "c": 7,
+            "r": 8
+          },
+          {
+            "k": "cw-chain-long",
+            "c": 4,
+            "r": 8
+          }
+        ],
+        "combat": {
+          "waitForMove": true,
+          "enemies": [
+            {
+              "kind": "hound",
+              "brute": true,
+              "crush": 2,
+              "stamp": "always",
+              "x": 96,
+              "y": 128,
+              "face": 1,
+              "ward": "brute"
+            }
+          ],
+          "receivers": [],
+          "doors": [
+            {
+              "x": 16,
+              "y": 8,
+              "w": 8,
+              "h": 136,
+              "ward": "brute"
+            }
+          ]
+        },
+        "map": [
+          "########################################",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#...KKKK...........................KKKK#",
+          "#...KKKK...........................KKKK#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          ".......................................#",
+          ".......................................#",
+          ".......................................#",
+          ".................................P.....#",
+          "###############################==#######",
+          "###############################..#######",
+          "###############################..#######",
+          "###############################..#######",
+          "###############################..#######"
+        ],
+        "rbr": 23,
+        "palette": "fractured",
+        "seam": [
+          [
+            31,
+            19,
+            "#"
+          ],
+          [
+            32,
+            19,
+            "#"
+          ],
+          [
+            31,
+            20,
+            "#"
+          ],
+          [
+            32,
+            20,
+            "#"
+          ],
+          [
+            31,
+            21,
+            "#"
+          ],
+          [
+            32,
+            21,
+            "#"
+          ],
+          [
+            31,
+            22,
+            "#"
+          ],
+          [
+            32,
+            22,
+            "#"
+          ],
+          [
+            31,
+            18,
+            "#"
+          ],
+          [
+            32,
+            18,
+            "#"
+          ]
+        ],
+        "origin": "fc23-east"
+      },
+      {
+        "id": "cl23-conn-5",
+        "name": "",
+        "exit": "up",
+        "palette": "fractured",
+        "connector": true,
+        "cols": 9,
+        "rows": 32,
+        "map": [
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#....####",
+          "#........",
+          "#........",
+          "#........",
+          "#......P.",
+          "#########"
+        ],
+        "hint": "",
+        "question": "",
+        "seam": [],
+        "origin": "conn-5",
+        "decor": []
+      },
+      {
+        "id": "cl23-fc23-middle",
+        "name": "The Quiet Passage",
+        "origin": "fc23-middle",
+        "exit": "right",
+        "cols": 40,
+        "rows": 23,
+        "map": [
+          "##..####################################",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#......................................#",
+          "#.......................................",
+          "#.......................................",
+          "........................................",
+          "......................P.................",
+          "####################==##################",
+          "####################..##################",
+          "####################..##################",
+          "####################..##################",
+          "####################..##################"
+        ],
+        "palette": "fractured",
+        "connector": true,
+        "retiredChallenge": true,
+        "seam": [
+          [
+            20,
+            19,
+            "#"
+          ],
+          [
+            21,
+            19,
+            "#"
+          ],
+          [
+            20,
+            20,
+            "#"
+          ],
+          [
+            21,
+            20,
+            "#"
+          ],
+          [
+            20,
+            21,
+            "#"
+          ],
+          [
+            21,
+            21,
+            "#"
+          ],
+          [
+            20,
+            22,
+            "#"
+          ],
+          [
+            21,
+            22,
+            "#"
+          ],
+          [
+            20,
+            18,
+            "#"
+          ],
+          [
+            21,
+            18,
+            "#"
+          ]
+        ],
+        "doors": [
+          {
+            "edge": "up",
+            "cols": [
+              2,
+              3
+            ],
+            "to": "secret-23"
+          }
+        ],
+        "returns": [
+          {
+            "cols": [
+              16,
+              17
+            ],
+            "edge": "left",
+            "from": "secret-23"
+          }
+        ],
+        "people": [],
+        "atlasSockets": [
+          {
+            "kind": "room",
+            "preview": true,
+            "edge": "right",
+            "floor": 18,
+            "height": 4,
+            "to": "cl23-atlas-crossroads",
+            "toFloor": 18
+          }
+        ]
+      },
+      {
+        "id": "cl23-fc23-q-ladder",
+        "name": "The Quiet Maintenance Shaft",
+        "exit": "up",
+        "hint": "The lift’s throw, a dive onto the cracked sill and a hyper out · dash into the tear in flight · two hypers under the brake, cracked sill to cracked sill · up and out",
+        "question": "Eleven moves, and every sill in the shaft is cracked. Where does each one start?",
+        "lines": [
+          {
+            "a": [
+              35,
+              15
+            ],
+            "b": [
+              32,
+              4
+            ],
+            "setDown": true
+          }
+        ],
+        "zips": [
+          [
+            6,
+            0
+          ]
+        ],
+        "map": [
+          "#####...################################",
+          "#>.......####################.........<#",
+          "#>.......####################.........<#",
+          "#>.......vvvvvvvvvvvvvvvvvvvv.........<#",
+          "#>....................................<#",
+          "#>....................................<#",
+          "#>...~~~..........~~~.........~~~.....<#",
+          "#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^.......<#",
+          "##############################>.......<#",
+          "##############################>.......<#",
+          "#vvvvvvvvvvvvvvvvvvvvv<#######>.......<#",
+          "#>....................<#######>.......<#",
+          "#>....................<#######>.......<#",
+          "#>....................<#######>.......<#",
+          "#>....................<#######>.......<#",
+          "#>....................vvvvvvvvv.......<#",
+          "#>....................................<#",
+          "#>....................................<#",
+          "#>....................................<#",
+          "#>.P.....................~~~..........<#",
+          "####==#ZZZZ...........................<#",
+          "####..#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<#",
+          "####..##################################"
+        ],
+        "rbr": 23,
+        "palette": "fractured",
+        "quest": "silas-echo",
+        "seam": [
+          [
+            4,
+            21,
+            "#"
+          ],
+          [
+            5,
+            21,
+            "#"
+          ],
+          [
+            4,
+            22,
+            "#"
+          ],
+          [
+            5,
+            22,
+            "#"
+          ],
+          [
+            4,
+            20,
+            "#"
+          ],
+          [
+            5,
+            20,
+            "#"
+          ]
+        ],
+        "origin": "fc23-q-ladder",
+        "decor": []
+      },
+      {
+        "id": "cl23-fc23-q-governor",
+        "name": "A Gear That No Longer Turns",
+        "exit": "right",
+        "hint": "Throw, dive under the bar, hyper · the tear carries you once, to the far corner · super off its cracked lip · the crystal pays back a dash · two more cracked shelves",
+        "question": "The gear sits at the far end of the top of the room, three cracked shelves away. How many dashes is that, and which one does the crystal pay for?",
+        "lines": [
+          {
+            "a": [
+              34,
+              17
+            ],
+            "b": [
+              8,
+              2
+            ],
+            "setDown": true,
+            "once": true
+          }
+        ],
+        "people": [
+          {
+            "who": "silas",
+            "name": "SILAS’S ECHO",
+            "c": 38,
+            "r": 3,
+            "quest": "silas-echo",
+            "line": "There was a bench beyond the turning point. I never knew.",
+            "lineDone": "I sat there because I wanted to."
+          }
+        ],
+        "decor": [
+          {
+            "k": "cw-gear",
+            "c": 35,
+            "r": 3
+          }
+        ],
+        "zips": [
+          [
+            5,
+            0
+          ]
+        ],
+        "map": [
+          "##..####################################",
+          "#.......................................",
+          "#...............o.......................",
+          "#....................................*..",
+          "#.....~~~............~~~.....~~~...#####",
+          "#..................................#####",
+          "#............................^^^......<#",
+          "#.....................................<#",
+          "#.....................................<#",
+          "#.....................................<#",
+          "#.....................................<#",
+          "#.....................................<#",
+          "#..................^^^^^^^............<#",
+          "#..................#######............<#",
+          "#..................vvvvvvv............<#",
+          "#.P...................................<#",
+          "==#####ZZZZ...........................<#",
+          "..#####...............................<#",
+          "..#####............~~~................<#",
+          "..#####...............................<#",
+          "..#####...............................<#",
+          "..#####^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+          "..######################################"
+        ],
+        "rbr": 23,
+        "palette": "fractured",
+        "quest": "silas-echo",
+        "seam": [
+          [
+            0,
+            17,
+            "#"
+          ],
+          [
+            1,
+            17,
+            "#"
+          ],
+          [
+            0,
+            18,
+            "#"
+          ],
+          [
+            1,
+            18,
+            "#"
+          ],
+          [
+            0,
+            19,
+            "#"
+          ],
+          [
+            1,
+            19,
+            "#"
+          ],
+          [
+            0,
+            20,
+            "#"
+          ],
+          [
+            1,
+            20,
+            "#"
+          ],
+          [
+            0,
+            21,
+            "#"
+          ],
+          [
+            1,
+            21,
+            "#"
+          ],
+          [
+            0,
+            22,
+            "#"
+          ],
+          [
+            1,
+            22,
+            "#"
+          ],
+          [
+            0,
+            16,
+            "#"
+          ],
+          [
+            1,
+            16,
+            "#"
+          ]
+        ],
+        "origin": "fc23-q-governor",
+        "returns": [
+          {
+            "cols": [
+              2,
+              3
+            ],
+            "edge": "up",
+            "from": "silas-echo"
+          }
+        ]
+      },
+      {
+        "id": "cl23-pass-19",
+        "name": "",
+        "exit": "up",
+        "entry": "left",
+        "seam": [
+          [
+            0,
+            2,
+            "#"
+          ],
+          [
+            0,
+            3,
+            "#"
+          ]
+        ],
+        "palette": "fractured",
+        "passage": true,
+        "cols": 6,
+        "rows": 5,
+        "map": [
+          "###..#",
+          "###..#",
+          ".....#",
+          "P...s#",
+          "######"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-19"
+      },
+      {
+        "id": "cl23-pass-20",
+        "name": "",
+        "exit": "left",
+        "entry": "down",
+        "seam": [
+          [
+            2,
+            5,
+            "#"
+          ],
+          [
+            3,
+            5,
+            "#"
+          ]
+        ],
+        "palette": "fractured",
+        "passage": true,
+        "cols": 5,
+        "rows": 6,
+        "map": [
+          "#####",
+          "....#",
+          "P...#",
+          "##..#",
+          "##..#",
+          "##..#"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-20"
+      },
+      {
+        "id": "cl23-pass-21",
+        "name": "",
+        "exit": "left",
+        "entry": "right",
+        "seam": [
+          [
+            34,
+            1,
+            "#"
+          ],
+          [
+            34,
+            2,
+            "#"
+          ]
+        ],
+        "palette": "fractured",
+        "passage": true,
+        "cols": 35,
+        "rows": 4,
+        "map": [
+          "###################################",
+          "...................................",
+          "..................................P",
+          "###################################"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-21"
+      },
+      {
+        "id": "cl23-pass-22",
+        "name": "",
+        "exit": "down",
+        "entry": "right",
+        "seam": [
+          [
+            4,
+            1,
+            "#"
+          ],
+          [
+            4,
+            2,
+            "#"
+          ]
+        ],
+        "palette": "fractured",
+        "passage": true,
+        "cols": 5,
+        "rows": 6,
+        "map": [
+          "#####",
+          "#....",
+          "#...P",
+          "#..##",
+          "#..##",
+          "#..##"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-22"
+      },
+      {
+        "id": "cl23-secret-p117",
+        "name": "Pogo Up",
+        "hint": "",
+        "question": "The roof is thorns and the pods hang just under it. Which way do you cut to bounce off them?",
+        "map": [
+          "########################################",
+          "#########>vvvvvvvvvvvvvvvvvvvvvvvvvvvvv#",
+          "#########>.............................#",
+          "#########>.............................#",
+          "#########>.......b.....................#",
+          "#########>.............................#",
+          "#########>.............................#",
+          "#########>.............................#",
+          "#########>.............................#",
+          "#########>..............b..............#",
+          "#########>.............................#",
+          "#########>.............................#",
+          "#########>.Q...........................#",
+          "#########..Q...........................#",
+          "#..........Q...........................#",
+          "#......................................#",
+          "#................................#######",
+          "#.......................................",
+          "#.......................................",
+          "#.P......^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#",
+          "==######################################",
+          "..######################################",
+          "..######################################"
+        ],
+        "lock": [],
+        "palette": "fractured",
+        "seam": [
+          [
+            0,
+            21,
+            "#"
+          ],
+          [
+            1,
+            21,
+            "#"
+          ],
+          [
+            0,
+            22,
+            "#"
+          ],
+          [
+            1,
+            22,
+            "#"
+          ],
+          [
+            0,
+            20,
+            "#"
+          ],
+          [
+            1,
+            20,
+            "#"
+          ]
+        ],
+        "origin": "p117",
+        "decor": [],
+        "secret": true
+      },
+      {
+        "id": "cl23-pass-23",
+        "name": "",
+        "exit": "up",
+        "entry": "left",
+        "seam": [
+          [
+            0,
+            2,
+            "#"
+          ],
+          [
+            0,
+            3,
+            "#"
+          ]
+        ],
+        "palette": "fractured",
+        "lock": [],
+        "passage": true,
+        "cols": 6,
+        "rows": 5,
+        "map": [
+          "###..#",
+          "###..#",
+          ".....#",
+          "P...s#",
+          "######"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-23"
+      },
+      {
+        "id": "cl23-pass-24",
+        "name": "",
+        "exit": "up",
+        "entry": "down",
+        "seam": [
+          [
+            1,
+            13,
+            "#"
+          ],
+          [
+            2,
+            13,
+            "#"
+          ]
+        ],
+        "palette": "fractured",
+        "lock": [],
+        "passage": true,
+        "cols": 4,
+        "rows": 14,
+        "map": [
+          "#P.#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-24"
+      },
+      {
+        "id": "cl23-pass-25",
+        "name": "",
+        "exit": "left",
+        "entry": "down",
+        "seam": [
+          [
+            2,
+            4,
+            "#"
+          ],
+          [
+            3,
+            4,
+            "#"
+          ]
+        ],
+        "palette": "fractured",
+        "lock": [],
+        "passage": true,
+        "cols": 5,
+        "rows": 5,
+        "map": [
+          "#####",
+          "....#",
+          "P...#",
+          "##..#",
+          "##..#"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-25"
+      },
+      {
+        "id": "cl23-pass-26",
+        "name": "",
+        "exit": "left",
+        "entry": "right",
+        "seam": [
+          [
+            43,
+            1,
+            "#"
+          ],
+          [
+            43,
+            2,
+            "#"
+          ]
+        ],
+        "palette": "fractured",
+        "lock": [],
+        "passage": true,
+        "cols": 44,
+        "rows": 4,
+        "map": [
+          "############################################",
+          "............................................",
+          "...........................................P",
+          "############################################"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-26"
+      },
+      {
+        "id": "cl23-pass-27",
+        "name": "",
+        "exit": "down",
+        "entry": "right",
+        "seam": [
+          [
+            4,
+            1,
+            "#"
+          ],
+          [
+            4,
+            2,
+            "#"
+          ]
+        ],
+        "palette": "fractured",
+        "lock": [],
+        "passage": true,
+        "cols": 5,
+        "rows": 5,
+        "map": [
+          "#####",
+          "#....",
+          "#...P",
+          "#..##",
+          "#..##"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-27"
+      },
+      {
+        "id": "cl23-pass-28",
+        "name": "",
+        "exit": "down",
+        "entry": "up",
+        "seam": [
+          [
+            1,
+            0,
+            "#"
+          ],
+          [
+            2,
+            0,
+            "#"
+          ]
+        ],
+        "palette": "fractured",
+        "lock": [],
+        "passage": true,
+        "cols": 4,
+        "rows": 36,
+        "map": [
+          "#P.#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#",
+          "#..#"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-28"
+      },
+      {
+        "id": "cl23-pass-29",
+        "name": "",
+        "exit": "right",
+        "entry": "up",
+        "seam": [
+          [
+            1,
+            0,
+            "#"
+          ],
+          [
+            2,
+            0,
+            "#"
+          ]
+        ],
+        "palette": "fractured",
+        "lock": [],
+        "passage": true,
+        "cols": 5,
+        "rows": 5,
+        "map": [
+          "#..##",
+          "#..##",
+          "#....",
+          "#P...",
+          "#####"
+        ],
+        "hint": "",
+        "question": "",
+        "origin": "pass-29"
+      },
+      {
+        "id": "cl23-bank-b46",
+        "name": "Let the Train Go Low",
+        "palette": "foundry",
+        "study": true,
+        "dashes": 0,
+        "lock": [
+          "portal",
+          "parry"
+        ],
+        "map": [
+          "########################################",
+          "#.....................................G#",
+          "#.....................................G#",
+          "#.....................................G#",
+          "#.....................................G#",
+          "#.....................................G#",
+          "#.........................X...........G#",
+          "#.....................................G#",
+          "#.....................................G.",
+          "#.....................................G.",
+          "#.....................................G.",
+          "#........................#/.........\\.G.",
+          ".................f.......#...#######.###",
+          ".......................--#...#######.###",
+          ".............................###c.../###",
+          "......P......................###########",
+          "#...CCCCC....................###########",
+          "#---------)-k.................##########",
+          "#...........................############",
+          "#...........................############",
+          "#............--------------.############",
+          "#^^^^^^^^^^^^^^^^^^^........############",
+          "########################################"
+        ],
+        "hint": "Send the train low. Cut the mirror during your feather flight, before its shutter opens.",
+        "question": "Which branch should the train take when its rider can choose a different flight?",
+        "beams": [
+          {
+            "c": 27,
+            "r": 22,
+            "dir": "u"
+          },
+          {
+            "c": 26,
+            "r": 0,
+            "dir": "d"
+          }
+        ],
+        "shutters": [
+          {
+            "open": 60,
+            "shut": 80,
+            "offset": 60
+          }
+        ],
+        "origin": "bank-b46",
+        "bankOrigin": "bank-b46",
+        "rbr": 23,
+        "bank": {
+          "id": "bank-b46",
+          "side": "fractured",
+          "format": "compact",
+          "collection": "run5",
+          "acceptance": "banked"
+        },
+        "campaignImport": {
+          "version": "7.307.0",
+          "source": "bank-b46",
+          "superroom": false
+        },
+        "seam": [
+          [
+            0,
+            12,
+            "#"
+          ],
+          [
+            0,
+            13,
+            "#"
+          ],
+          [
+            0,
+            14,
+            "#"
+          ],
+          [
+            0,
+            15,
+            "#"
+          ]
+        ]
+      },
+      {
+        "id": "cl23-bank-f23",
+        "name": "Shorten the Arc",
+        "palette": "cliffs",
+        "study": true,
+        "exit": "right",
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "map": [
+          "########################################",
+          "#.....................................G#",
+          "#.....................................G#",
+          "#.....................................G#",
+          "......................................G#",
+          "......................................G.",
+          "......................................G.",
+          "...P..................................G.",
+          "#########...................O.........G.",
+          "#########>........................<#####",
+          "#########>......O.................<#####",
+          "#########>........................<#####",
+          "#########>........................<#####",
+          "#########>........................<#####",
+          "#########>........................<#####",
+          "#########>........................<#####",
+          "#########>......c.................<#####",
+          "#########>........................<#####",
+          "#########>........................<#####",
+          "#########>........................<#####",
+          "#########>........................<#####",
+          "#########^^^^^^^^^^^^^^^^^^^^^^^^^^#####",
+          "########################################"
+        ],
+        "hint": "Hold grab to hang. Up shortens the chain; down pays it out. The moving thorns keep their routes.",
+        "question": "Where can you remain on the chain while the dangerous part of its arc is occupied?",
+        "sweepers": [
+          {
+            "id": "A",
+            "path": [
+              [
+                10,
+                16
+              ],
+              [
+                22,
+                16
+              ]
+            ],
+            "period": 240,
+            "phase": 60,
+            "radius": 5,
+            "loop": false
+          },
+          {
+            "id": "B",
+            "path": [
+              [
+                24,
+                5
+              ],
+              [
+                24,
+                18
+              ]
+            ],
+            "period": 220,
+            "phase": 20,
+            "radius": 5,
+            "loop": false
+          }
+        ],
+        "origin": "bank-f23",
+        "bankOrigin": "bank-f23",
+        "rbr": 23,
+        "bank": {
+          "id": "bank-f23",
+          "side": "fractured",
+          "format": "room",
+          "collection": "",
+          "acceptance": "banked"
+        },
+        "campaignImport": {
+          "version": "7.307.0",
+          "source": "bank-f23",
+          "superroom": false
+        },
+        "seam": [
+          [
+            0,
+            4,
+            "#"
+          ],
+          [
+            0,
+            5,
+            "#"
+          ],
+          [
+            0,
+            6,
+            "#"
+          ],
+          [
+            0,
+            7,
+            "#"
+          ]
+        ]
+      },
+      {
+        "id": "cl23-bank-f69",
+        "name": "His Charge Opens Your Return",
+        "palette": "fractured",
+        "rbr": 23,
+        "study": true,
+        "movement": "survive-2",
+        "aim8": true,
+        "cols": 80,
+        "rows": 36,
+        "exit": "right",
+        "zips": [
+          [
+            0,
+            -13
+          ],
+          [
+            0,
+            -13
+          ],
+          [
+            0,
+            -15
+          ]
+        ],
+        "lock": [
+          "parry",
+          "portal"
+        ],
+        "combat": {
+          "waitForMove": true,
+          "enemies": [
+            {
+              "kind": "hound",
+              "brute": true,
+              "crush": 3,
+              "stamp": "always",
+              "x": 320,
+              "y": 256,
+              "face": -1,
+              "ward": "brute"
+            }
+          ],
+          "receivers": [],
+          "doors": [
+            {
+              "x": 448,
+              "y": 8,
+              "w": 8,
+              "h": 264,
+              "ward": "brute"
+            }
+          ]
+        },
+        "hint": "Two falling weights only crack him. Return behind the first weight: it can finish its journey sideways.",
+        "question": "How can the weight you dropped first become both your final weapon and your return launch?",
+        "map": [
+          "################################################################################",
+          "#..............................................................................#",
+          "#..............................................................................#",
+          "#..............................................................................#",
+          "#..............................................................................#",
+          "#..............................................................................#",
+          "#..............................................................................#",
+          "#..............................................................................#",
+          "#...............................................................................",
+          "#...............................................................................",
+          "#...............................................................................",
+          "#...............................................................................",
+          "#.......................................#######...........................######",
+          "#..............................................................................#",
+          "#..............................................................................#",
+          "#..............................................................................#",
+          "#.............................................................########.........#",
+          "#.........................KKKK.......................KKK.......................#",
+          "#.........................KKKK.......................KKK.......................#",
+          "#..............................................................................#",
+          "#..............................................................................#",
+          "#..............................................................................#",
+          "#..............................................................................#",
+          "#..............................................................................#",
+          "#..............................................................................#",
+          "#..............................................................................#",
+          "#................................ZZZZZ..........ZZZZZ..........................#",
+          "#..............................................................................#",
+          "#..............................................................................#",
+          "#..............................................................................#",
+          "#.....................ZZZZ.....................................................#",
+          "#..............................................................................#",
+          "#..............................................................................#",
+          "#........................#.......P.............................................#",
+          "###############################==###############################################",
+          "###############################..###############################################"
+        ],
+        "anvilSleds": [
+          {
+            "c": 26,
+            "r": 17,
+            "offset": 3
+          }
+        ],
+        "origin": "bank-f69",
+        "bankOrigin": "bank-f69",
+        "bank": {
+          "id": "bank-f69",
+          "side": "fractured",
+          "format": "superroom",
+          "collection": "superrooms",
+          "acceptance": "banked"
+        },
+        "campaignImport": {
+          "version": "7.307.0",
+          "source": "bank-f69",
+          "superroom": true
+        },
+        "seam": [
+          [
+            31,
+            35,
+            "#"
+          ],
+          [
+            32,
+            35,
+            "#"
+          ],
+          [
+            31,
+            34,
+            "#"
+          ],
+          [
+            32,
+            34,
+            "#"
+          ]
+        ]
+      },
+      {
+        "id": "cl23-walk-6-9",
+        "name": "The Connecting Road",
+        "connector": true,
+        "cols": 8,
+        "rows": 16,
+        "map": [
+          "##....##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          "##....##",
+          "##====##",
+          "##....##",
+          ".#....##",
+          "..====##",
+          "......##",
+          ".P....##",
+          "########"
+        ],
+        "exit": "up",
+        "palette": "fractured",
+        "origin": "cl23-walk-6-9",
+        "campaignWalk": true,
+        "entry": "left",
+        "seam": [
+          [
+            0,
+            11,
+            "#"
+          ]
+        ]
+      },
+      {
+        "id": "cl23-atlas-crossroads",
+        "name": "The Last Count",
+        "map": [
+          "#......................................................................................#",
+          "#......................................................................................#",
+          "#......................................................................................#",
+          "#......................................................................................#",
+          "#......................................................................................#",
+          "#......................................................................................#",
+          "#......................................................................................#",
+          "#......................................................................................#",
+          "#......................................................................................#",
+          "#......................................................................................#",
+          "#......................................................................................#",
+          "#......................................................................................#",
+          "#......................................................................................#",
+          "#......................................................................................#",
+          "........................................................................................",
+          "........................................................................................",
+          "........................................................................................",
+          "........................................................................................",
+          "M#####################MM........................................MMMMMM#################M",
+          "######################................................................##################",
+          "#########################################MM..MMMMMM#####################################",
+          "#########################################...P......#####################################",
+          "########################################################################################"
+        ],
+        "cols": 88,
+        "rows": 23,
+        "exit": "none",
+        "entry": "left",
+        "dashes": 1,
+        "palette": "fractured",
+        "atlasJunction": true,
+        "connector": true,
+        "atlasSockets": [
+          {
+            "edge": "left",
+            "floor": 18,
+            "height": 4,
+            "to": "cl23-fc23-middle",
+            "toFloor": 18,
+            "kind": "room"
+          },
+          {
+            "edge": "right",
+            "floor": 18,
+            "kind": "passage",
+            "link": "23-25",
+            "to": "cl23-passage-23-25",
+            "world": 23
+          }
+        ],
+        "atlasMain": {
+          "edge": "left",
+          "floor": 18,
+          "height": 4,
+          "to": "cl23-fc23-middle",
+          "toFloor": 18
+        },
+        "atlasRegion": 23,
+        "atlasRoads": [
+          {
+            "edge": "left",
+            "floor": 18,
+            "points": [
+              {
+                "c": 44,
+                "r": 22
+              },
+              {
+                "c": 41,
+                "r": 22
+              },
+              {
+                "c": 22,
+                "r": 20
+              },
+              {
+                "c": 2,
+                "r": 18
+              }
+            ]
+          },
+          {
+            "edge": "right",
+            "floor": 18,
+            "points": [
+              {
+                "c": 44,
+                "r": 22
+              },
+              {
+                "c": 47,
+                "r": 22
+              },
+              {
+                "c": 66,
+                "r": 20
+              },
+              {
+                "c": 85,
+                "r": 18
+              }
+            ]
+          }
+        ],
+        "atlasDecks": [
+          {
+            "c": 41,
+            "r": 22,
+            "w": 5
+          },
+          {
+            "c": 22,
+            "r": 20,
+            "w": 21
+          },
+          {
+            "c": 0,
+            "r": 18,
+            "w": 24
+          },
+          {
+            "c": 42,
+            "r": 22,
+            "w": 9
+          },
+          {
+            "c": 45,
+            "r": 20,
+            "w": 25
+          },
+          {
+            "c": 64,
+            "r": 18,
+            "w": 24
+          }
+        ],
+        "atlasFloor": [
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18
+        ]
+      },
+      {
+        "id": "cl23-atlas-arrival",
+        "name": "The Echo Camp",
+        "map": [
+          "#......................................................................................#",
+          "#......................................................................................#",
+          "#......................................................................................#",
+          "#......................................................................................#",
+          "#......................................................................................#",
+          "#......................................................................................#",
+          ".......................................................................................#",
+          ".......................................................................................#",
+          ".......................................................................................#",
+          ".......................................................................................#",
+          "MMMMMMMMMMMMMM.........................................................................#",
+          "#......................................................................................#",
+          "#......................................................................................#",
+          "#...........MMMMMMMMMMMM...............................................................#",
+          "........................................................................................",
+          "........................................................................................",
+          "......................MMMMMMMMMMM.......................................................",
+          "........................................................................................",
+          "M#####################MM........................................MMMMMM#################M",
+          "######################.........MMMMMMMMMMMM...........................##################",
+          "#########################################MM..MMMMMM#####################################",
+          "#########################################...P......#####################################",
+          "########################################################################################"
+        ],
+        "cols": 88,
+        "rows": 23,
+        "exit": "none",
+        "entry": "right",
+        "dashes": 1,
+        "palette": "fractured",
+        "connector": true,
+        "atlasJunction": true,
+        "atlasSockets": [
+          {
+            "edge": "right",
+            "floor": 18,
+            "to": "cl23-fc23-camp",
+            "toFloor": 12,
+            "kind": "room"
+          },
+          {
+            "edge": "left",
+            "floor": 18,
+            "kind": "passage",
+            "link": "21-23",
+            "to": "cl21-passage-21-23",
+            "world": 21
+          },
+          {
+            "edge": "left",
+            "floor": 10,
+            "kind": "passage",
+            "link": "22-23",
+            "to": "cl22-passage-22-23",
+            "world": 22
+          }
+        ],
+        "atlasMain": {
+          "edge": "right",
+          "floor": 18,
+          "to": "cl23-fc23-camp",
+          "toFloor": 12
+        },
+        "atlasRegion": 23,
+        "atlasRoads": [
+          {
+            "edge": "right",
+            "floor": 18,
+            "points": [
+              {
+                "c": 44,
+                "r": 22
+              },
+              {
+                "c": 47,
+                "r": 22
+              },
+              {
+                "c": 66,
+                "r": 20
+              },
+              {
+                "c": 85,
+                "r": 18
+              }
+            ]
+          },
+          {
+            "edge": "left",
+            "floor": 18,
+            "points": [
+              {
+                "c": 44,
+                "r": 22
+              },
+              {
+                "c": 41,
+                "r": 22
+              },
+              {
+                "c": 22,
+                "r": 20
+              },
+              {
+                "c": 2,
+                "r": 18
+              }
+            ]
+          },
+          {
+            "edge": "left",
+            "floor": 10,
+            "points": [
+              {
+                "c": 44,
+                "r": 22
+              },
+              {
+                "c": 41,
+                "r": 22
+              },
+              {
+                "c": 31,
+                "r": 19
+              },
+              {
+                "c": 22,
+                "r": 16
+              },
+              {
+                "c": 12,
+                "r": 13
+              },
+              {
+                "c": 2,
+                "r": 10
+              }
+            ]
+          }
+        ],
+        "atlasDecks": [
+          {
+            "c": 42,
+            "r": 22,
+            "w": 9
+          },
+          {
+            "c": 45,
+            "r": 20,
+            "w": 25
+          },
+          {
+            "c": 64,
+            "r": 18,
+            "w": 24
+          },
+          {
+            "c": 41,
+            "r": 22,
+            "w": 5
+          },
+          {
+            "c": 22,
+            "r": 20,
+            "w": 21
+          },
+          {
+            "c": 0,
+            "r": 18,
+            "w": 24
+          },
+          {
+            "c": 41,
+            "r": 22,
+            "w": 5
+          },
+          {
+            "c": 31,
+            "r": 19,
+            "w": 12
+          },
+          {
+            "c": 22,
+            "r": 16,
+            "w": 11
+          },
+          {
+            "c": 12,
+            "r": 13,
+            "w": 12
+          },
+          {
+            "c": 0,
+            "r": 10,
+            "w": 14
+          }
+        ],
+        "atlasFloor": [
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18
+        ]
+      },
+      {
+        "id": "cl23-passage-23-25",
+        "name": "The Glass Aqueduct",
+        "cols": 108,
+        "rows": 64,
+        "map": [
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "............................................................................................................",
+          "....P.......................................................................................................",
+          "############################################################################################################",
+          "############################################################################################################",
+          "############################################################################################################",
+          "############################################################################################################",
+          "############################################################################################################"
+        ],
+        "exit": "none",
+        "dashes": 1,
+        "connector": true,
+        "palette": "fractured",
+        "atlasTransit": {
+          "link": "23-25",
+          "a": 23,
+          "b": 25,
+          "left": 23,
+          "right": 25,
+          "style": "fractured",
+          "floor": [
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59,
+            59
+          ],
+          "gateC": null,
+          "crown": null,
+          "winch": null,
+          "decks": [],
+          "route": [],
+          "scenery": [],
+          "name": "The Glass Aqueduct"
+        },
+        "atlasSockets": [
+          {
+            "edge": "left",
+            "floor": 30,
+            "kind": "region",
+            "world": 23,
+            "link": "23-25"
+          },
+          {
+            "edge": "right",
+            "floor": 30,
+            "kind": "region",
+            "world": 25,
+            "link": "23-25"
+          }
+        ]
+      }
+    ],
+    "tapes": {
+      "cl23-fc23-camp#door": [
+        [
+          12,
+          "lj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          16,
+          "u"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          6,
+          "r"
+        ]
+      ],
+      "cl23-fc23-middle#door": [
+        [
+          5,
+          "lx"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          5,
+          "lux"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          12,
+          "j"
+        ]
+      ],
+      "cl23-pass-19#through": [
+        [
+          25,
+          "rgu"
+        ]
+      ],
+      "cl23-pass-20#through": [
+        [
+          51,
+          "lgu"
+        ]
+      ],
+      "cl23-pass-21#through": [
+        [
+          5,
+          "ldx"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          5,
+          "ldx"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          3,
+          "lj"
+        ]
+      ],
+      "cl23-pass-22#through": [
+        [
+          27,
+          ""
+        ]
+      ],
+      "cl23-pass-23#through": [
+        [
+          14,
+          "rgu"
+        ]
+      ],
+      "cl23-pass-24#through": [
+        [
+          12,
+          "rgu"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          5,
+          "j"
+        ]
+      ],
+      "cl23-pass-25#through": [
+        [
+          50,
+          "lgu"
+        ]
+      ],
+      "cl23-pass-26#through": [
+        [
+          5,
+          "ldx"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          40,
+          "lgu"
+        ],
+        [
+          5,
+          "ldx"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          40,
+          "lgu"
+        ],
+        [
+          7,
+          "lj"
+        ]
+      ],
+      "cl23-pass-27#through": [
+        [
+          43,
+          "l"
+        ]
+      ],
+      "cl23-pass-28#through": [
+        [
+          100,
+          ""
+        ],
+        [
+          10,
+          "u"
+        ]
+      ],
+      "cl23-pass-29#through": [
+        [
+          24,
+          "rgu"
+        ]
+      ],
+      "cl23-fc23-camp": [
+        [
+          5,
+          "rx"
+        ],
+        [
+          40,
+          "ru"
+        ],
+        [
+          3,
+          "j"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          5,
+          "rdx"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          6,
+          "r"
+        ]
+      ],
+      "cl23-fc23-yard": [
+        [
+          40,
+          "ru"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          3,
+          "r"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          20,
+          "rg"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          20,
+          "rgu"
+        ]
+      ],
+      "cl23-fc23-relay": [
+        [
+          5,
+          "rx"
+        ],
+        [
+          20,
+          "lu"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          10,
+          "lu"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          32,
+          "ru"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          20,
+          "ru"
+        ]
+      ],
+      "cl23-fc23-silas": [
+        [
+          20,
+          "ru"
+        ],
+        [
+          5,
+          "rdx"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          40,
+          "ru"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          12,
+          "j"
+        ]
+      ],
+      "cl23-fc23-silas#side": [
+        [
+          12,
+          "lj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          20,
+          "lg"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          20,
+          "rgu"
+        ]
+      ],
+      "cl23-fc23-counterpoise": [
+        [
+          30,
+          "r"
+        ],
+        [
+          22,
+          ""
+        ],
+        [
+          22,
+          "r"
+        ],
+        [
+          5,
+          "rdx"
+        ],
+        [
+          3,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          18,
+          "r"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          40,
+          ""
+        ],
+        [
+          4,
+          ""
+        ],
+        [
+          6,
+          ""
+        ],
+        [
+          12,
+          "r"
+        ],
+        [
+          5,
+          "rdx"
+        ],
+        [
+          8,
+          "rj"
+        ],
+        [
+          13,
+          "r"
+        ],
+        [
+          5,
+          "rdx"
+        ],
+        [
+          8,
+          "rj"
+        ],
+        [
+          40,
+          "r"
+        ]
+      ],
+      "cl23-conn-1": [
+        [
+          12,
+          "rj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          20,
+          "rgu"
+        ]
+      ],
+      "cl23-fc23-chainwalk": [
+        [
+          5,
+          "rdx"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          12,
+          "lu"
+        ],
+        [
+          8,
+          "rj"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          2,
+          "rux"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          12,
+          "l"
+        ],
+        [
+          5,
+          "ldx"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          12,
+          "ru"
+        ],
+        [
+          5,
+          "lx"
+        ],
+        [
+          5,
+          "ldx"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          20,
+          "lu"
+        ]
+      ],
+      "cl23-conn-2": [
+        [
+          384,
+          "l"
+        ]
+      ],
+      "cl23-fc23-gantry": [
+        [
+          30,
+          "l"
+        ],
+        [
+          22,
+          ""
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          5,
+          "ldx"
+        ],
+        [
+          4,
+          "l"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          10,
+          "l"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          6,
+          ""
+        ],
+        [
+          3,
+          "rx"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          8,
+          "r"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          20,
+          "r"
+        ],
+        [
+          14,
+          "rj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          20,
+          ""
+        ]
+      ],
+      "cl23-conn-3": [
+        [
+          12,
+          "rj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          16,
+          "gu"
+        ],
+        [
+          20,
+          "rgu"
+        ]
+      ],
+      "cl23-fc23-standard": [
+        [
+          5,
+          "rdx"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          40,
+          "ru"
+        ],
+        [
+          8,
+          "j"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          20,
+          "rg"
+        ],
+        [
+          20,
+          "rg"
+        ],
+        [
+          12,
+          "rg"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          5,
+          "rdx"
+        ],
+        [
+          20,
+          "ru"
+        ],
+        [
+          12,
+          "rj"
+        ]
+      ],
+      "cl23-fc23-west": [
+        [
+          12,
+          "j"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          40,
+          "lgu"
+        ],
+        [
+          84,
+          ""
+        ],
+        [
+          2,
+          "dx"
+        ],
+        [
+          3,
+          ""
+        ],
+        [
+          80,
+          "ru"
+        ],
+        [
+          5,
+          "rdx"
+        ],
+        [
+          8,
+          "rj"
+        ],
+        [
+          12,
+          "ru"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          20,
+          "rg"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          9,
+          "r"
+        ],
+        [
+          5,
+          "dx"
+        ],
+        [
+          4,
+          "lj"
+        ],
+        [
+          40,
+          "ru"
+        ],
+        [
+          6,
+          "r"
+        ]
+      ],
+      "cl23-conn-4": [
+        [
+          6,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          12,
+          "j"
+        ]
+      ],
+      "cl23-fc23-east": [
+        [
+          12,
+          "j"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          40,
+          "rgu"
+        ],
+        [
+          84,
+          ""
+        ],
+        [
+          2,
+          "dx"
+        ],
+        [
+          3,
+          ""
+        ],
+        [
+          80,
+          "lu"
+        ],
+        [
+          5,
+          "ldx"
+        ],
+        [
+          8,
+          "lj"
+        ],
+        [
+          12,
+          "lu"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          20,
+          "lg"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          9,
+          "l"
+        ],
+        [
+          5,
+          "dx"
+        ],
+        [
+          4,
+          "rj"
+        ],
+        [
+          40,
+          "lu"
+        ],
+        [
+          6,
+          "l"
+        ]
+      ],
+      "cl23-conn-5": [
+        [
+          20,
+          "lgu"
+        ],
+        [
+          12,
+          "lj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          20,
+          "lgu"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          20,
+          "rgu"
+        ],
+        [
+          12,
+          "j"
+        ],
+        [
+          12,
+          "j"
+        ]
+      ],
+      "cl23-fc23-middle": [
+        [
+          97,
+          "r"
+        ]
+      ],
+      "cl23-fc23-q-ladder": [
+        [
+          30,
+          "r"
+        ],
+        [
+          22,
+          ""
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          5,
+          "rdx"
+        ],
+        [
+          3,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          9,
+          "r"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          14,
+          ""
+        ],
+        [
+          8,
+          ""
+        ],
+        [
+          5,
+          "ldx"
+        ],
+        [
+          8,
+          "lj"
+        ],
+        [
+          12,
+          "l"
+        ],
+        [
+          5,
+          "ldx"
+        ],
+        [
+          8,
+          "lj"
+        ],
+        [
+          11,
+          "l"
+        ],
+        [
+          10,
+          "rj"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          20,
+          ""
+        ]
+      ],
+      "cl23-fc23-q-governor": [
+        [
+          30,
+          "r"
+        ],
+        [
+          22,
+          ""
+        ],
+        [
+          22,
+          "r"
+        ],
+        [
+          5,
+          "rdx"
+        ],
+        [
+          3,
+          "r"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          18,
+          "r"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          40,
+          ""
+        ],
+        [
+          4,
+          ""
+        ],
+        [
+          3,
+          "rx"
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          4,
+          "r"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          13,
+          "r"
+        ],
+        [
+          1,
+          "r"
+        ],
+        [
+          5,
+          "rdx"
+        ],
+        [
+          8,
+          "rj"
+        ],
+        [
+          10,
+          ""
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          6,
+          "r"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          60,
+          "r"
+        ]
+      ],
+      "cl23-secret-p117": [
+        [
+          30,
+          "r"
+        ],
+        [
+          10,
+          "rj"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          28,
+          "r"
+        ],
+        [
+          1,
+          "us"
+        ],
+        [
+          14,
+          "r"
+        ],
+        [
+          14,
+          "rj"
+        ],
+        [
+          1,
+          "us"
+        ],
+        [
+          28,
+          "r"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          14,
+          "r"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          14,
+          "rj"
+        ]
+      ],
+      "cl23-bank-b46": [
+        [
+          17,
+          "r"
+        ],
+        [
+          15,
+          "rj"
+        ],
+        [
+          1,
+          "r"
+        ],
+        [
+          8,
+          "rj"
+        ],
+        [
+          1,
+          "rjds"
+        ],
+        [
+          16,
+          "rj"
+        ],
+        [
+          80,
+          "r"
+        ]
+      ],
+      "cl23-bank-f23": [
+        [
+          36,
+          "r"
+        ],
+        [
+          40,
+          "ug"
+        ],
+        [
+          60,
+          "ug"
+        ],
+        [
+          40,
+          "dg"
+        ],
+        [
+          50,
+          "ug"
+        ],
+        [
+          10,
+          "rg"
+        ],
+        [
+          1,
+          "rjg"
+        ],
+        [
+          8,
+          "r"
+        ],
+        [
+          6,
+          "rux"
+        ],
+        [
+          23,
+          "r"
+        ],
+        [
+          40,
+          "ug"
+        ],
+        [
+          1,
+          "rjg"
+        ],
+        [
+          80,
+          "r"
+        ]
+      ],
+      "cl23-bank-f69": [
+        [
+          20,
+          "lj"
+        ],
+        [
+          5,
+          "lux"
+        ],
+        [
+          10,
+          "l"
+        ],
+        [
+          90,
+          ""
+        ],
+        [
+          12,
+          "rj"
+        ],
+        [
+          35,
+          ""
+        ],
+        [
+          5,
+          "dx"
+        ],
+        [
+          45,
+          ""
+        ],
+        [
+          50,
+          "r"
+        ],
+        [
+          48,
+          "r"
+        ],
+        [
+          5,
+          "ux"
+        ],
+        [
+          25,
+          "r"
+        ],
+        [
+          55,
+          ""
+        ],
+        [
+          20,
+          "rj"
+        ],
+        [
+          35,
+          ""
+        ],
+        [
+          5,
+          "dx"
+        ],
+        [
+          65,
+          ""
+        ],
+        [
+          30,
+          ""
+        ],
+        [
+          10,
+          "l"
+        ],
+        [
+          40,
+          ""
+        ],
+        [
+          30,
+          "lj"
+        ],
+        [
+          5,
+          "lx"
+        ],
+        [
+          110,
+          "l"
+        ],
+        [
+          70,
+          ""
+        ],
+        [
+          25,
+          "r"
+        ],
+        [
+          1,
+          "j"
+        ],
+        [
+          2,
+          "r"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          35,
+          ""
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          120,
+          ""
+        ],
+        [
+          25,
+          "rj"
+        ],
+        [
+          5,
+          "rx"
+        ],
+        [
+          100,
+          "r"
+        ],
+        [
+          20,
+          ""
+        ],
+        [
+          20,
+          "rj"
+        ],
+        [
+          35,
+          ""
+        ],
+        [
+          11,
+          "rj"
+        ],
+        [
+          25,
+          ""
+        ],
+        [
+          1,
+          "j"
+        ],
+        [
+          1,
+          "ds"
+        ],
+        [
+          30,
+          "r"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          40,
+          "r"
+        ],
+        [
+          15,
+          ""
+        ],
+        [
+          20,
+          "rj"
+        ],
+        [
+          5,
+          "rux"
+        ],
+        [
+          65,
+          "r"
+        ]
+      ],
+      "cl23-walk-6-9": [
+        [
+          12,
+          "r"
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ],
+        [
+          20,
+          "j"
+        ],
+        [
+          18,
+          ""
+        ]
+      ]
+    },
+    "folk": {
+      "oren": {
+        "cloak": "#5b4a3a",
+        "trim": "#c8883a",
+        "skin": "#cfa07e",
+        "cap": true
+      },
+      "sable": {
+        "cloak": "#3e4a52",
+        "trim": "#d8d2c0",
+        "skin": "#b98d6c",
+        "hood": true,
+        "staff": true
+      },
+      "silas": {
+        "cloak": "#6a5038",
+        "trim": "#d59a68",
+        "skin": "#c9b9a0",
+        "helm": true
+      }
+    },
+    "props": {
+      "cw-chain": [
+        [
+          3,
+          -6,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -6,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -12,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -12,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -18,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -18,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -24,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -24,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -30,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -30,
+          1,
+          1,
+          "#b0a48e"
+        ]
+      ],
+      "cw-chain-long": [
+        [
+          3,
+          -6,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -6,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -12,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -12,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -18,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -18,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -24,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -24,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -30,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -30,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -36,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -36,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -42,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -42,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -48,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -48,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -54,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -54,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -60,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -60,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -66,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -66,
+          1,
+          1,
+          "#b0a48e"
+        ],
+        [
+          3,
+          -72,
+          2,
+          5,
+          "#7d7466"
+        ],
+        [
+          3,
+          -72,
+          1,
+          1,
+          "#b0a48e"
+        ]
+      ],
+      "cw-winch": [
+        [
+          0,
+          -12,
+          1,
+          12,
+          "#4a3a2c"
+        ],
+        [
+          11,
+          -12,
+          1,
+          12,
+          "#4a3a2c"
+        ],
+        [
+          0,
+          -13,
+          12,
+          1,
+          "#6a5a48"
+        ],
+        [
+          2,
+          -10,
+          8,
+          6,
+          "#6e5236"
+        ],
+        [
+          2,
+          -8,
+          8,
+          1,
+          "#c8a060"
+        ],
+        [
+          5,
+          -15,
+          2,
+          3,
+          "#c8a060"
+        ],
+        [
+          1,
+          -1,
+          10,
+          1,
+          "#3a2e24"
+        ]
+      ],
+      "cw-stretcher": [
+        [
+          0,
+          -3,
+          15,
+          1,
+          "#8a6a40"
+        ],
+        [
+          1,
+          -2,
+          1,
+          2,
+          "#5a4632"
+        ],
+        [
+          13,
+          -2,
+          1,
+          2,
+          "#5a4632"
+        ],
+        [
+          2,
+          -5,
+          11,
+          2,
+          "#c8c0a8"
+        ],
+        [
+          3,
+          -6,
+          3,
+          1,
+          "#c8c0a8"
+        ]
+      ],
+      "cw-standard": [
+        [
+          3,
+          -34,
+          2,
+          34,
+          "#5a4a3a"
+        ],
+        [
+          5,
+          -33,
+          9,
+          7,
+          "#7a2a2a"
+        ],
+        [
+          5,
+          -26,
+          6,
+          3,
+          "#5a1e1e"
+        ],
+        [
+          12,
+          -26,
+          2,
+          2,
+          "#5a1e1e"
+        ],
+        [
+          1,
+          -35,
+          6,
+          1,
+          "#c8a060"
+        ]
+      ],
+      "cw-crate": [
+        [
+          0,
+          -8,
+          8,
+          8,
+          "#6a5032"
+        ],
+        [
+          0,
+          -8,
+          8,
+          1,
+          "#8a6a42"
+        ],
+        [
+          1,
+          -5,
+          6,
+          1,
+          "#4a3622"
+        ],
+        [
+          3,
+          -8,
+          1,
+          8,
+          "#4a3622"
+        ]
+      ],
+      "cw-gear": [
+        [
+          2,
+          -14,
+          12,
+          12,
+          "#6a5a3a"
+        ],
+        [
+          4,
+          -16,
+          8,
+          16,
+          "#6a5a3a"
+        ],
+        [
+          0,
+          -12,
+          16,
+          8,
+          "#6a5a3a"
+        ],
+        [
+          5,
+          -11,
+          6,
+          6,
+          "#2e281e"
+        ],
+        [
+          7,
+          -9,
+          2,
+          2,
+          "#c8a060"
+        ],
+        [
+          3,
+          -13,
+          10,
+          1,
+          "#9a8458"
+        ]
+      ]
+    },
+    "palettes": {},
+    "saved": [],
+    "difficulty": {
+      "min": null,
+      "max": null,
+      "mean": null
+    },
+    "retiredRooms": {
+      "cl23-fc23-well": "cl23-fc23-gantry",
+      "cl23-fc23-rise": "cl23-fc23-counterpoise",
+      "cl23-fc23-middle": "cl23-bank-f69"
+    },
+    "retiredRoomDetails": [
+      {
+        "id": "cl23-fc23-well",
+        "name": "The Unlit Well",
+        "to": "cl23-fc23-gantry",
+        "grade": "A",
+        "evidence": "A descending solid staircase with no hazard glyph, enemy or device; the entire saved route is [200, left]. The hint explicitly calls it a breath before the courts. This is the clearest Fractured low-complexity slot, but keep some safe boss preparation rather than filling every breather.",
+        "dialogueMoved": []
+      },
+      {
+        "id": "cl23-fc23-rise",
+        "name": "The Counterweight Rise",
+        "to": "cl23-fc23-counterpoise",
+        "grade": "B",
+        "evidence": "One rising lift launches to a cracked lip and then a second cracked sill; the main demand is two supers in succession. The first lift/ultra route and Relay Gantry already teach lift momentum and unstable arrival, while Last Gantry is the fuller combination. Preserve vertical/horizontal seam orientation.",
+        "dialogueMoved": []
+      },
+      {
+        "id": "cl23-fc23-middle",
+        "name": "The Last Count",
+        "to": "cl23-bank-f69",
+        "reason": "Replaced by its native boss superroom"
+      }
+    ],
+    "checkpointLinks": [],
+    "requiredBankRooms": [
+      "cl23-bank-b46",
+      "cl23-bank-f23",
+      "cl23-bank-f69"
+    ],
+    "requiredMainRooms": [
+      "cl23-fc23-camp",
+      "cl23-fc23-yard",
+      "cl23-fc23-relay",
+      "cl23-fc23-silas",
+      "cl23-bank-b46",
+      "cl23-bank-f23",
+      "cl23-fc23-counterpoise",
+      "cl23-fc23-chainwalk",
+      "cl23-fc23-gantry",
+      "cl23-fc23-standard",
+      "cl23-fc23-west",
+      "cl23-fc23-east",
+      "cl23-bank-f69"
+    ],
+    "bankIntegration": {
+      "version": "7.307.0",
+      "ordinary": [
+        "cl23-bank-b46",
+        "cl23-bank-f23"
+      ],
+      "superroom": "cl23-bank-f69",
+      "beforeBoss": "cl23-fc23-west",
+      "sourceMainCount": 13,
+      "geography": "continuous",
+      "sealedEntrances": [
+        "cl23-fc23-silas"
+      ],
+      "clearedDoorways": [
+        "cl23-fc23-counterpoise:4"
+      ]
+    },
+    "continuousSeams": [
+      {
+        "from": "cl23-fc23-silas",
+        "to": "cl23-bank-b46",
+        "how": "right tunnel (4 rock)",
+        "kind": "direct",
+        "entryDelta": 0,
+        "toFire": [
+          [
+            44,
+            "rgu"
+          ]
+        ]
+      },
+      {
+        "from": "cl23-bank-b46",
+        "to": "cl23-bank-f23",
+        "how": "right tunnel (4 rock)",
+        "kind": "direct",
+        "entryDelta": 1,
+        "toFire": [
+          [
+            65,
+            ""
+          ],
+          [
+            10,
+            "r"
+          ]
+        ]
+      },
+      {
+        "from": "cl23-bank-f23",
+        "to": "cl23-fc23-counterpoise",
+        "how": "right tunnel (4 rock)",
+        "kind": "direct",
+        "entryDelta": 1,
+        "toFire": [
+          [
+            4,
+            "r"
+          ]
+        ]
+      },
+      {
+        "from": "cl23-conn-2",
+        "to": "cl23-fc23-gantry",
+        "how": "left tunnel (4 rock)",
+        "kind": "direct",
+        "entryDelta": 2,
+        "toFire": [
+          [
+            4,
+            "l"
+          ]
+        ]
+      },
+      {
+        "from": "cl23-conn-5",
+        "to": "cl23-bank-f69",
+        "how": "up shaft at 31–32 (4 rock)",
+        "kind": "direct",
+        "entryDelta": 0,
+        "toFire": [
+          [
+            16,
+            "lgu"
+          ],
+          [
+            12,
+            "j"
+          ],
+          [
+            16,
+            "u"
+          ]
+        ]
+      },
+      {
+        "from": "cl23-bank-f69",
+        "to": "cl23-walk-6-9",
+        "how": "right tunnel (1 rock)",
+        "kind": "walk",
+        "entryDelta": 2,
+        "toFire": [
+          [
+            1,
+            ""
+          ]
+        ]
+      },
+      {
+        "from": "cl23-walk-6-9",
+        "to": "cl23-fc23-middle",
+        "how": "up shaft at 20–21 (10 rock)",
+        "kind": "walk",
+        "entryDelta": 0,
+        "toFire": [
+          [
+            70,
+            "rgu"
+          ],
+          [
+            19,
+            "l"
+          ]
+        ]
+      }
+    ],
+    "atlasEnd": "cl23-fc23-middle",
+    "atlasMiddle": "cl23-fc23-gantry",
+    "atlasPassagesReady": true,
+    "passages": [
+      {
+        "room": "cl23-passage-23-25",
+        "x": 7800,
+        "y": 0,
+        "fire": {
+          "c": 4,
+          "r": 58
+        }
+      }
+    ],
+    "atlasStart": "cl23-fc23-camp"
+  },
+  "constants": {
+    "maxRun": 90,
+    "runAccel": 1000,
+    "runReduce": 400,
+    "airMult": 0.65,
+    "flingMaxFall": 420,
+    "gravity": 900,
+    "halfGravThreshold": 40,
+    "maxFall": 160,
+    "fastMaxFall": 240,
+    "fastMaxAccel": 300,
+    "jumpSpeed": -105,
+    "jumpHBoost": 40,
+    "varJumpFrames": 12,
+    "jumpGraceFrames": 6,
+    "bufferFrames": 5,
+    "wallJumpCheck": 3,
+    "superWallJumpCheck": 5,
+    "wallJumpForceFrames": 10,
+    "wallJumpH": 130,
+    "wallSlideStartMax": 20,
+    "wallSlideFrames": 72,
+    "wallSpeedRetentionFrames": 4,
+    "climbMaxStamina": 110,
+    "climbUpCost": 45.45454545454545,
+    "climbStillCost": 10,
+    "climbJumpCost": 27.5,
+    "climbTired": 20,
+    "climbUpSpeed": -45,
+    "touchClimbUpSpeed": -60,
+    "climbDownSpeed": 80,
+    "climbSlipSpeed": 30,
+    "climbAccel": 900,
+    "climbCheck": 2,
+    "climbHopX": 100,
+    "climbHopY": -120,
+    "climbHopForceFrames": 12,
+    "climbJumpBoostFrames": 12,
+    "climbNoMoveFrames": 6,
+    "dashSpeed": 240,
+    "endDashSpeed": 160,
+    "endDashUpMult": 0.75,
+    "dashFrames": 9,
+    "dashCooldownFrames": 12,
+    "dashRefillCooldownFrames": 6,
+    "dashFreezeFrames": 3,
+    "ultraMult": 1.2,
+    "superJumpH": 260,
+    "hyperXMult": 1.25,
+    "hyperYMult": 0.5,
+    "superWallJumpSpeed": -160,
+    "superWallJumpH": 170,
+    "superWallVarFrames": 15,
+    "upwardCorner": 4,
+    "dashCorner": 4,
+    "liftXCap": 250,
+    "liftYCap": -130,
+    "liftGraceFrames": 10,
+    "carryMaxFall": 45,
+    "throwX": 200,
+    "throwY": -80,
+    "strikeFrames": 5,
+    "strikeCooldownFrames": 15,
+    "podSpeed": -210,
+    "podSide": 190,
+    "podDown": 150,
+    "springSpeed": -185,
+    "refillRespawnFrames": 150,
+    "crumbleShakeFrames": 24,
+    "crumbleRespawnFrames": 120,
+    "stoneAccel": 600,
+    "stoneMax": 240,
+    "deathFrames": 24,
+    "respawnFrames": 10
+  },
+  "branchRewards": [
+    {
+      "id": "silas-echo",
+      "kind": "quest",
+      "room": "cl23-fc23-q-governor",
+      "title": "The Forty-First Pace",
+      "name": "Silas, remembered",
+      "color": "#ff9fc8",
+      "host": "cl23-fc23-silas",
+      "rooms": [
+        "cl23-fc23-q-ladder",
+        "cl23-fc23-q-governor",
+        "cl23-pass-19",
+        "cl23-pass-20",
+        "cl23-pass-21",
+        "cl23-pass-22"
+      ],
+      "x": 272,
+      "y": 26
+    },
+    {
+      "id": "secret-23",
+      "kind": "secret",
+      "room": "cl23-secret-p117",
+      "title": "Pogo Up",
+      "name": "Heart",
+      "color": "#ffd28a",
+      "host": "cl23-fc23-middle",
+      "rooms": [
+        "cl23-secret-p117",
+        "cl23-pass-23",
+        "cl23-pass-24",
+        "cl23-pass-25",
+        "cl23-pass-26",
+        "cl23-pass-27",
+        "cl23-pass-28",
+        "cl23-pass-29"
+      ],
+      "x": 257,
+      "y": 141
+    }
+  ]
+}

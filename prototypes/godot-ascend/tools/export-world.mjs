@@ -42,6 +42,17 @@ if(number===3){
  payload.quest={...quest,tooth:spot(quest.steps[0].at),hook:spot(quest.steps[1].to),giver:{room:q.from,x:person.c*8+4,y:person.r*8+2}};
  payload.secretRewards=world.secrets.map(br=>{const section=br.sections.filter(s=>!s.passage&&!world.rooms.find(d=>d.id===s.room).connector).at(-1),points=route(section.room);return {id:br.id,room:section.room,title:br.name,name:'Cog Heart',color:'#e8a86a',...points[Math.max(0,points.length-22)]};});
 }
+if(number>=21&&number<=23){
+ const actions={l:'l',r:'r',u:'u',d:'d',jump:'j',dash:'x',grab:'g',strike:'s',parry:'p',portal:'q'};
+ function pathOf(id){const g=Core.createGame([world.rooms.find(d=>d.id===id)]),points=[];
+  for(const [n,k] of world.tapes[id]||[])for(let i=0;i<n;i++){const raw={};for(const [key,ch]of Object.entries(actions))raw[key]=k.includes(ch);Core.step(g,raw);points.push({x:g.p.x+4,y:(g.flipped?g.room.h-g.p.y-g.p.h:g.p.y)+5});if(g.events.some(e=>e.type==='exit'))i=n;g.events.length=0;}return points;}
+ payload.branchRewards=[];
+ for(const [kind,branches]of [['quest',world.quests.filter(q=>q.keepsake)],['secret',world.secrets]])for(const br of branches){
+  const section=br.sections.filter(s=>!s.passage&&!world.rooms.find(d=>d.id===s.room).connector).at(-1);if(!section)continue;
+  const points=pathOf(section.room);if(!points.length)throw Error('No route for '+br.id);
+  payload.branchRewards.push({id:br.id,kind,room:section.room,title:br.title||br.name,name:kind==='secret'?'Heart':br.keepsake.name,color:kind==='secret'?'#ffd28a':'#ff9fc8',host:br.from||br.host,rooms:br.sections.map(s=>s.room),...points[Math.max(0,points.length-22)]});
+ }
+}
 const destination=path.join(root,`prototypes/godot-ascend/data/world${number}.json`),text=JSON.stringify(payload,null,2)+'\n';
 if(process.argv.includes('--check')){if(fs.readFileSync(destination,'utf8')!==text)throw Error('World data is stale: regenerate export-world.mjs');console.log('Export matches original browser sources');process.exit(0);}
 fs.writeFileSync(destination,text);

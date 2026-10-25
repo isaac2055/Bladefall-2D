@@ -7,6 +7,7 @@ const Controls = preload("res://scripts/controls.gd")
 const Sound = preload("res://scripts/audio.gd")
 var data
 var world
+const CHAPTERS=[1,2,3,21,22,23]
 var chapters = {}
 var chapter_number = 1
 var chapter_picker: OptionButton
@@ -107,7 +108,7 @@ func _ready():
  audio.voices_enabled = preferences.get_value("audio","voices",true)
  add_child(audio)
  # Construct all chapters before play; selecting a chapter preserves its live state.
- for number in [1,2,3]:
+ for number in CHAPTERS:
   var chapter_data=data if number==1 else JSON.parse_string(FileAccess.get_file_as_string("res://data/world%d.json"%number))
   var chapter_world=world if number==1 else World.new(chapter_data)
   var container = SubViewportContainer.new()
@@ -155,6 +156,12 @@ func _ready():
    var tour_file={"--tour":"world2-tour","--quest-tour":"elsie-tour","--causeway-tour":"world3-tour","--silas-tour":"silas-tour"}[args[i]]
    var recording=JSON.parse_string(FileAccess.get_file_as_string("res://data/"+tour_file+".json"))
    if recording.has("start_room"): current=world.regions.find(recording.start_room)
+   for part in recording.tape:
+    for frame in range(int(part[0])): journey.append(part[1])
+  elif args[i]=="--fractured-tour" and i+1<args.size():
+   var number=int(args[i+1])
+   switch_chapter(number)
+   var recording=JSON.parse_string(FileAccess.get_file_as_string("res://data/world%d-tour.json"%number))
    for part in recording.tape:
     for frame in range(int(part[0])): journey.append(part[1])
   elif args[i]=="--no-lighting": landscape.lit=false
@@ -231,10 +238,9 @@ func create_interface():
  watch_button = button(row,"Watch route",func():toggle_watch();set_paused(false))
  restart_button=button(column,"Start world over",restart_world)
  chapter_picker=OptionButton.new()
- chapter_picker.add_item("1 · The Outskirts")
- chapter_picker.add_item("2 · Black Woods")
- chapter_picker.add_item("3 · Broken Causeway")
- chapter_picker.item_selected.connect(func(index):switch_chapter(index+1);set_paused(false))
+ for number in CHAPTERS:
+  chapter_picker.add_item((str(number)+" · ")+chapters[number].world.data.world.name)
+ chapter_picker.item_selected.connect(func(index):switch_chapter(CHAPTERS[index]);set_paused(false))
  column.add_child(chapter_picker)
  text(column,"EXPLORE A SECTION",12,"#bba984")
  room_picker = OptionButton.new()
@@ -274,7 +280,7 @@ func create_interface():
  button(light_row,"Lighting on / off",func():landscape.lit = not landscape.lit)
  button(light_row,"Fullscreen · F11",toggle_fullscreen)
  text(column,"ARROWS  Move and aim\nSPACE / C / J  Jump     D / X / K  Dash\nA / Z / SHIFT / L  Cling, climb, carry or throw\nW / V / I  Strike     R  Retry     M  Music\nController: stick / d-pad · A jump · X/B dash · LB cling",15,"#b5c0bd")
- text(column,"Native Ascend · three preloaded chapters",12,"#70888f")
+ text(column,"Native Ascend · six preloaded chapters",12,"#70888f")
  pause_panel.hide()
 func set_voices(value):
  audio.voices_enabled = value
@@ -338,6 +344,9 @@ func toggle_watch():
  if watch:
   watch = false
   sim.world_context=world
+  if world.seam_tiles.has(sim.room.id):
+   world.set_seam(sim.room.id,true)
+   sim.room=world.parsed[sim.room.id]
   hold = 0
   watch_button.text = "Watch route"
  else:
@@ -350,7 +359,8 @@ func load_section(index,smooth_join=false):
  world.enter(id,true)
  sim=world.active()
  if watch:
-  sim.load_room(world.parsed[id])
+  sim.load_room(world.watch_room(id))
+  if world.seam_tiles.has(id): world.set_seam(id,true)
   world.restore_progress(sim)
   sim.world_context=null
  else: sim.world_context=world
@@ -471,6 +481,15 @@ func close_app(code=0):
  get_tree().quit(code)
 
 func bearing_caption():
+ if chapter_number>=21:
+  var prefix="♥ %d · "%world.heart_count() if world.heart_count()>0 else ""
+  if sim.oath_root!=null and not sim.oath_root.taken:
+   return prefix+("OATHBLADE · Press ↑ near the freed blade" if sim.oath_root.released else "OATHBLADE · Stand on the root counterweight to free the blade")
+  if sim.root_lash!=null and sim.root_lash.crown!=null and not sim.root_lash.crown.cut: return prefix+"Cut the root crown · the timed roots stop when it falls"
+  if sim.sentinel!=null and not sim.sentinel.done: return prefix+"Ride the committed hammer or shoulders, then reach the bell"
+  for reward in world.data.get("branchRewards",[]):
+   if world.active_id in reward.rooms: return prefix+reward.title+(" · Heart earned" if world.branch_hearts.has(reward.id) else " · Optional heart")
+  return prefix+sim.room.def.get("hint",world.data.world.name)
  if chapter_number==3:
   var prefix="♥ %d · "%world.heart_count() if world.heart_count()>0 else ""
   if world.quest_complete: return prefix+"The Clockwork Defector complete"
@@ -554,10 +573,11 @@ func switch_chapter(number):
  room_picker.clear()
  for i in range(data.world.rooms.size()): room_picker.add_item("%02d · %s" % [i+1,data.world.rooms[i].get("name",data.world.rooms[i].id)])
  room_picker.select(current)
- chapter_picker.select(number-1)
+ chapter_picker.select(CHAPTERS.find(number))
  title.text=data.world.name.to_upper()+" · ASCEND"
  pause_title.text=data.world.name.to_upper()
  pause_description.text="A road through the old watch · Ascend" if number==1 else ("Moths, pale resin and the lantern tree · Ascend" if number==2 else "Iron, counterweights and the toll road · Ascend")
+ if number>=21: pause_description.text="The remembered road · Fractured Ascend"
  room_banner.text=sim.room.name.to_upper()
  banner_time=2.4
  subtitle_panel.hide()

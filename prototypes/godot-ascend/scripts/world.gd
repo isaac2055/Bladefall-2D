@@ -33,6 +33,12 @@ var quest_lantern=false
 var quest_complete=false
 var quest_award_frame=-1000
 var quest_deaths=0
+var seam_tiles={}
+var seam_closed={}
+var branch_hearts={}
+var branch_entered={}
+var portal_rooms={}
+var portal_cells={}
 var secret_hearts={}
 var secret_front_entry=false
 var award_color="#ff9fc8"
@@ -46,6 +52,9 @@ func _init(source):
  for s in sections: placements[s.room]=Vector2(s.x*8,s.y*8)
  for d in data.world.rooms:
   var room=Loader.parse(d)
+  for r in range(int(room.rows)):
+   for c in range(int(room.cols)):
+    if Loader.glyph(d,c,r) in ["-","(",")","I","{","}"]: room.grid[r*int(room.cols)+c]=1
   parsed[d.id]=room
   var point=placements.get(d.id,Vector2.ZERO)
   rectangles[d.id]=Rect2(point,Vector2(room.w,room.h))
@@ -80,10 +89,20 @@ func _init(source):
     if not cells.has(key+outward):
      cells[key]=1
      closed_edges.append(key)
+ for id in regions:
+  var def=parsed[id].def
+  if int(data.world.n)>=21 and def.get("closeWhilePlayed",false) and def.has("seam"):
+   seam_tiles[id]=[]
+   for tile in def.seam:
+    var local=Vector2i(tile[0],tile[1])
+    var key=Vector2i(placements[id]/8)+local
+    var value={"#":1,"%":1,"=":2,"^":3,"v":4,"<":5,">":6}.get(tile[2],0)
+    seam_tiles[id].append({"local":local,"point":key,"open":cells.get(key,0),"closed":value})
  restart()
 func restart():
  for old in cores.values(): old.world_context=null
  cores.clear()
+ for id in seam_tiles: set_seam(id,false)
  progress.clear()
  bearings.clear()
  silas_met=false
@@ -97,6 +116,10 @@ func restart():
  quest_complete=false
  quest_award_frame=-1000
  quest_deaths=0
+ branch_hearts.clear()
+ branch_entered.clear()
+ portal_rooms.clear()
+ portal_cells.clear()
  secret_hearts.clear()
  secret_front_entry=false
  award_color="#ff9fc8"
@@ -123,10 +146,11 @@ func restart():
 func active(): return cores[active_id]
 func position(core=null):
  var current=active() if core==null else core
- return current.world_origin+Vector2(current.p.x,current.p.y)
-func tile_global(c,r): return cells.get(Vector2i(c,r),1)
+ return current.world_origin+Vector2(current.p.x,current.room.h-current.p.y-current.p.h if current.flipped else current.p.y)
+func tile_global(c,r): return 0 if portal_cells.has(Vector2i(c,r)) else cells.get(Vector2i(c,r),1)
 func blocker(core,x,y,w,h,ignore):
  var origin=core.world_origin
+ if core.flipped: y=core.room.h-y-h
  var gx=x+origin.x
  var gy=y+origin.y
  for r in range(floori(gy/8.0),floori((gy+h-1)/8.0)+1):
@@ -140,22 +164,26 @@ func blocker(core,x,y,w,h,ignore):
   for i in range(other.ents.size()):
    if other==core and i==ignore: continue
    var e=other.ents[i]
-   if other.solid_entity(e) and area.intersects(Rect2(e.x+shift.x,e.y+shift.y,e.w,e.h)):
+   if other.solid_entity(e) and area.intersects(Rect2(e.x+shift.x,(other.room.h-e.y-e.h if other.flipped else e.y)+shift.y,e.w,e.h)):
     return i if other==core else -2
  return -1
 func thru_global(core,a):
  var x=a.x+core.world_origin.x
- var y=a.y+core.world_origin.y+a.h
+ var y=(core.room.h-a.y-a.h if core.flipped else a.y+a.h)+core.world_origin.y
  if fmod(y,8)==0:
   for c in range(floori(x/8.0),floori((x+a.w-1)/8.0)+1):
-   if tile_global(c,int(y/8))==2: return true
+   if tile_global(c,int(y/8)-(1 if core.flipped else 0))==2: return true
  for id in nearby(Rect2(x,y-1,a.w,3)):
   var other=cores[id]
   for e in other.ents:
-   if e.type=="thru" and not e.get("gone",false) and e.y+other.world_origin.y==y and x<e.x+other.world_origin.x+e.w and x+a.w>e.x+other.world_origin.x: return true
+   if e.type!="thru" or e.get("gone",false): continue
+   var ey=(other.room.h-e.y-e.h if other.flipped else e.y)+other.world_origin.y
+   var edge=ey+e.h if core.flipped else ey
+   if edge==y and x<e.x+other.world_origin.x+e.w and x+a.w>e.x+other.world_origin.x: return true
  return false
 func step(raw):
  var current=active()
+ update_seams(raw)
  var old_state=current.p.state
  if old_state=="dead" and current.p.deadTimer<=1 and current.freeze==0: return_extra_objects(current)
  frames+=1
@@ -168,6 +196,7 @@ func step(raw):
  tick_elsie()
  tick_silas()
  tick_secret_hearts()
+ tick_branch_rewards()
 func tick_inactive():
  var current=active()
  for id in regions:
@@ -214,7 +243,8 @@ func restore_progress(core):
   for moved in other.ents:
    if moved.get("source_room", "")==core.room.id:
     core.ents=core.ents.filter(func(e):return e.source_id!=moved.source_id)
- for i in range(core.ents.size()): core.ents[i].id=i
+ for i in range(core.ents.size()):
+  if not core.ents[i].id is String: core.ents[i].id=i
 func retry():
  var core=active()
  var deaths=core.deaths
@@ -225,6 +255,11 @@ func retry():
 func enter(id,practice=false):
  if id==active_id and not practice: return false
  var old=active()
+ if old.flipped: old.GravityDevice.mirror(old)
+ for reward in data.get("branchRewards",[]):
+  if practice and id in reward.rooms: branch_entered[reward.id]=false
+  elif id==reward.rooms[0] and active_id==reward.host: branch_entered[reward.id]=true
+  if not practice and active_id==reward.room and id in reward.rooms and id!=reward.room and branch_entered.get(reward.id,false): claim_branch(reward)
  if id=="cl3-secret-e2": secret_front_entry=not practice and active_id=="cl3-c3-upper"
  if not practice and active_id=="cl3-secret-e2" and id=="cl3-pass-14" and secret_front_entry:
   for reward in data.get("secretRewards",[]): claim_secret(reward)
@@ -243,6 +278,7 @@ func enter(id,practice=false):
   destination.p.maxDashes=destination.room.maxDashes
   destination.p.dashes=destination.room.maxDashes
   destination.p.strikeHit={}
+  destination.MovementTwo.reset(destination)
   destination.freeze=0
   destination.prev={}
   destination.buf={"jump":0,"dash":0,"grab":0,"strike":0,"parry":0,"portal":0}
@@ -252,7 +288,8 @@ func enter(id,practice=false):
  var carry=motion.carrying
  if carry!=null:
   old.ents.erase(carry)
-  for i in range(old.ents.size()): old.ents[i].id=i
+  for i in range(old.ents.size()):
+   if not old.ents[i].id is String: old.ents[i].id=i
   carry.x+=old.world_origin.x-destination.world_origin.x
   carry.y+=old.world_origin.y-destination.world_origin.y
   carry.ox+=old.world_origin.x-destination.world_origin.x
@@ -260,6 +297,9 @@ func enter(id,practice=false):
   carry.id=destination.ents.size()
   destination.ents.append(carry)
  destination.p=motion
+ if destination.room.def.get("movement","")=="survive-2":
+  if not destination.p.has("move2"): destination.MovementTwo.reset(destination)
+ else: destination.p.erase("move2")
  destination.p.x=point.x-destination.world_origin.x
  destination.p.y=point.y-destination.world_origin.y
  destination.p.maxDashes=destination.room.maxDashes
@@ -343,7 +383,7 @@ func elsie_voice():
  elsie_met=true
  return "refuge:done" if quest_complete else ("refuge:line1" if quest_lantern else "refuge:line0")
 
-func heart_count(): return int(quest_complete)+secret_hearts.size()
+func heart_count(): return int(quest_complete)+secret_hearts.size()+branch_hearts.size()
 func claim_secret(reward):
  if secret_hearts.has(reward.id): return
  secret_hearts[reward.id]=true
@@ -396,3 +436,64 @@ func tick_silas():
    quest_award_frame=frames
    award_color="#ff9fc8"
    notices.append("♥ Heart · The Clockwork Defector")
+
+func set_portal_holes(core,holes):
+ var points=[]
+ for cell in holes:
+  points.append(Vector2i(core.world_origin/8)+Vector2i(cell.x,int(core.room.rows)-1-cell.y if core.flipped else cell.y))
+ portal_rooms[core.room.id]=points
+ portal_cells.clear()
+ for list in portal_rooms.values():
+  for cell in list: portal_cells[cell]=true
+func claim_branch(reward):
+ if branch_hearts.has(reward.id): return
+ branch_hearts[reward.id]=true
+ quest_award_frame=frames
+ award_color=reward.color
+ notices.append("♥ Heart · "+reward.title)
+func tick_branch_rewards():
+ var core=active()
+ if core.p.state in ["dead","respawn"]: return
+ var p=Vector2(core.p.x+4,(core.room.h-core.p.y-core.p.h if core.flipped else core.p.y)+5.5)
+ for reward in data.get("branchRewards",[]):
+  if active_id==reward.room and branch_entered.get(reward.id,false) and abs(p.x-reward.x)<=9 and abs(p.y-reward.y)<=11: claim_branch(reward)
+
+func set_seam(id,closed):
+ seam_closed[id]=closed
+ for tile in seam_tiles.get(id,[]):
+  var value=tile.closed if closed else tile.open
+  cells[tile.point]=value
+  var index=tile.local.y*int(parsed[id].cols)+tile.local.x
+  parsed[id].grid[index]=value
+  if cores.has(id): cores[id].room.grid[index]=value
+func update_seams(raw):
+ for id in seam_tiles:
+  if id!=active_id:
+   if seam_closed.get(id,false): set_seam(id,false)
+   continue
+  var core=active()
+  var p=core.p
+  var near=abs(p.x-core.room.spawn.x)<=12 and abs(p.y-core.room.spawn.y)<=12
+  var ordinary=p.state=="normal" and p.onGround and not raw.get("grab",false) and not raw.get("jump",false) and not raw.get("dash",false)
+  var walking_back=false
+  if ordinary:
+   for tile in seam_tiles[id]:
+    var left=tile.local.x==0 and raw.get("l",false)
+    var right=tile.local.x==int(core.room.cols)-1 and raw.get("r",false)
+    if (left or right) and abs(tile.local.x*8+4-p.x-4)<72: walking_back=true
+  if walking_back:
+   if seam_closed.get(id,false): set_seam(id,false)
+   continue
+  if seam_closed.get(id,false) or not near or p.state!="normal" or not p.onGround: continue
+  var clear=true
+  for tile in seam_tiles[id]:
+   if tile.closed!=0 and core.overlap(p,core.rect(tile.local.x*8,tile.local.y*8,8,8)): clear=false
+  if clear: set_seam(id,true)
+func watch_room(id):
+ if not seam_tiles.has(id): return parsed[id]
+ var def=parsed[id].def.duplicate(true)
+ for tile in def.seam:
+  var row=def.map[int(tile[1])]
+  row[int(tile[0])]=tile[2]
+  def.map[int(tile[1])]=row
+ return Loader.parse(def)

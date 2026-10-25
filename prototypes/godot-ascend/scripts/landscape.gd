@@ -2,6 +2,7 @@ extends Node2D
 ## Presentation is interpolated and layered; the integer simulation is never modified here.
 const Room = preload("res://scripts/room_loader.gd")
 var sim
+var fractured=false
 var forest=false
 var causeway=false
 var sky_gradient: Texture2D
@@ -48,13 +49,16 @@ var ambient_counter = 0.0
 var ink_color = Color.WHITE
 var observed = {"bursts":0,"afterimages":0,"joins":0}
 func _ready():
- forest=int(world_data.world.n)==2
- causeway=int(world_data.world.n)==3
+ fractured=int(world_data.world.n)>=21
+ forest=int(world_data.world.n) in [2,22]
+ causeway=int(world_data.world.n) in [3,23]
  var sky=Image.create(1,184,false,Image.FORMAT_RGBA8)
  for y in range(184):
   sky.set_pixel(0,y,Color("0b191b").lerp(Color("344937"),float(y)/225) if forest else Color("101526").lerp(Color("53636a"),float(y)/200.0))
  if causeway:
   for y in range(184): sky.set_pixel(0,y,Color("191b2c").lerp(Color("916d59"),float(y)/220))
+ if fractured:
+  for y in range(184): sky.set_pixel(0,y,Color("111020").lerp(Color("485866" if forest else ("6c4a66" if causeway else "514563")),float(y)/205))
  sky_gradient=ImageTexture.create_from_image(sky)
  if forest:
   for layer in range(3):
@@ -150,6 +154,9 @@ func make_tiles():
     if causeway:
      color=Color(color.r*1.08,color.g*0.88,color.b*0.76,color.a)
      if variant<4 and y<2: color=Color("9c8a6e") if y==0 else Color("625b53")
+    if fractured:
+     color=Color(color.r*.88,color.g*.88,color.b*1.15,color.a)
+     if variant<16 and y in [3,4,5] and x==(variant*3+y)%7 and variant%3==0: color=Color("#9eb9ce")
     image.set_pixel(variant*8+x,y,color)
  var atlas = TileSetAtlasSource.new()
  atlas.texture = ImageTexture.create_from_image(image)
@@ -254,11 +261,13 @@ func load_scene(core,smooth_join=false):
  else: observed.joins += 1
  queue_redraw()
 func snap_actor():
- current_actor = active_position+Vector2(sim.p.x,sim.p.y)
+ current_actor = actor_position()
  previous_actor = current_actor
  actor = current_actor
  plume.clear()
  for i in range(7): plume.append(actor+Vector2(3,4))
+func actor_position():
+ return active_position+Vector2(sim.p.x,sim.room.h-sim.p.y-sim.p.h if sim.flipped else sim.p.y)
 func before_tick():
  if sim==null: return {}
  previous_actor = current_actor
@@ -269,7 +278,7 @@ func entity_key(e):
  return str(e.get("source_room", ""))+":"+str(e.get("source_id", e.id))
 func after_tick(before):
  if before.is_empty() or before.frame==sim.frame: return []
- current_actor = active_position+Vector2(sim.p.x,sim.p.y)
+ current_actor = actor_position()
  if previous_actor.distance_to(current_actor)>55 or "respawn" in sim.events: snap_actor()
  var types = sim.events.duplicate()
  for i in range(sim.ents.size()):
@@ -316,6 +325,9 @@ func event_effect(type,point):
   "gate-open","held-open","crumble":
    shake = 0.12
    burst(point,14,Color("a6a28e"),24)
+  "parry","parry-success": burst(point,12,Color("#c2ecfa"),30)
+  "portal-pass","gravity","void-in","void-out": burst(point,14,Color("#c8a4ee"),28)
+  "sentinel-bell": burst(point,18,Color("#f2d28a"),35)
   "zip-start","zip-stop": burst(point,8,Color("dbbe83"),20)
 func burst(point,count,color,speed):
  observed.bursts += 1
@@ -485,9 +497,30 @@ func draw_front():
   for r in range(max(0,floori((view.position.y-origin.y)/8)),min(int(scene.room.rows),ceili((view.end.y-origin.y)/8))):
    for c in range(max(0,floori((view.position.x-origin.x)/8)),min(int(scene.room.cols),ceili((view.end.x-origin.x)/8))):
     var t=scene.room.grid[r*int(scene.room.cols)+c]
-    if t>=3: draw_hazard(t,origin+Vector2(c*8,r*8))
+    var glyph=scene.room.def.map[r][c]
+    if glyph in ["-","(",")"]:
+     var rail=origin+Vector2(c*8,(int(scene.room.rows)-1-r if scene.flipped else r)*8)
+     box(rail.x,rail.y,8,2,"#debe82" if glyph!= "-" else "#a9b2be")
+     box(rail.x+2,rail.y+3,3,4,"#585b68")
+     if glyph!= "-": line(rail+Vector2(2,3),rail+Vector2(6,5),"#efac69",1)
+    if glyph=="%":
+     var surface=origin+Vector2(c*8,(int(scene.room.rows)-1-r if scene.flipped else r)*8)
+     box(surface.x,surface.y,8,8,"#c8c8cc")
+     box(surface.x+1,surface.y+1,6,1,"#edf0ed")
+     line(surface+Vector2(2,3),surface+Vector2(6,6),"#9d95ad",.8)
+    if t>=3:
+     if scene.flipped: t=4 if t==3 else (3 if t==4 else t)
+     draw_hazard(t,origin+Vector2(c*8,(int(scene.room.rows)-1-r if scene.flipped else r)*8))
   for e in scene.ents:
-   if Rect2(origin+Vector2(e.x,e.y),Vector2(e.w,e.h)).grow(18).intersects(view): draw_entity(e,origin)
+   var painted=e
+   if scene.flipped:
+    painted=e.duplicate(true)
+    scene.GravityDevice.mirror_body(painted,scene.room.h)
+    if e.type=="zipline":
+     painted.ay=scene.room.h-e.ay
+     painted.by=scene.room.h-e.by
+   if Rect2(origin+Vector2(painted.x,painted.y),Vector2(painted.w,painted.h)).grow(18).intersects(view): draw_entity(painted,origin)
+  draw_region_devices(scene,origin,view)
   for wave in scene.brute_waves:
    var point=origin+Vector2(wave.x,wave.y)
    if view.has_point(point):
@@ -510,10 +543,13 @@ func draw_front():
   col.a = clamp(part.life/part.max,0,1)*0.8
   box(part.p.x,part.p.y,1,1,col)
  if runtime!=null:
-  if forest: draw_elsie_quest()
-  if causeway: draw_silas_quest()
+  if int(world_data.world.n)==2: draw_elsie_quest()
+  if causeway and int(world_data.world.n)==3: draw_silas_quest()
   draw_world_hearts()
- if sim.p.state!="dead": draw_knight()
+ if sim.p.state!="dead":
+  if sim.flipped: ink.draw_set_transform(Vector2(-camera.x,-camera.y+actor.y*2+sim.p.h),0,Vector2(1,-1))
+  draw_knight()
+  if sim.flipped: ink.draw_set_transform(-camera)
  ink.draw_set_transform(Vector2.ZERO)
  if flash>0 and not reduced_motion: box(0,0,320,184,Color(0.92,0.85,0.65,flash*0.7))
  if fade>0: box(0,0,320,184,Color(0.03,0.05,0.08,fade*2.5))
@@ -533,6 +569,9 @@ func draw_fire(point):
   var smoke = Vector2(x-age*8+sin(age*5+x)*3,y-6-age*27)
   circle(smoke,2+age*4,Color(0.51,0.55,0.55,(1-age)*0.065))
 func draw_prop(kind,point):
+ if fractured and world_data.world.get("props",{}).has(kind):
+  for bit in world_data.world.props[kind]: box(point.x+bit[0],point.y+bit[1],bit[2],bit[3],bit[4])
+  return
  var x = point.x
  var y = point.y
  match kind:
@@ -753,6 +792,74 @@ func draw_entity(e,origin):
    box(x+jitter,y,e.w,1,"#bfb89b")
    for c in range(3,int(e.w),7):
     line(Vector2(x+c,y+1),Vector2(x+c-1,y+e.h-1),"#424d50")
+  "superRest","resinBranch":
+   var solid=e.get("solid",true)
+   box(x,y,e.w,e.h,Color("#8c8aaa") if solid else Color(.5,.65,.8,.18))
+   box(x,y,e.w,1,"#c6d7ce" if solid else "#536373")
+   for c in range(3,int(e.w),7): line(Vector2(x+c,y+1),Vector2(x+c+3,y+e.h-1),"#4a4657")
+  "sentinelStep":
+   box(x,y,e.w,e.h,"#4e5266")
+   box(x,y,e.w,2,"#c9c2ae")
+   box(x+2,y+3,e.w-4,e.h-6,"#72748a")
+   for c in range(3,int(e.w),6): box(x+c,y+5,2,max(1,e.h-10),"#3d4154")
+   box(x+e.w/2-4,y+8,8,2,"#e0b58c")
+   line(Vector2(x+e.w/2,y+12),Vector2(x+e.w/2,y+e.h-4),"#b0a9a1",2)
+  "hookCarrier":
+   line(origin+Vector2(e.ox+e.w/2,e.oy),origin+Vector2(e.ox+e.dx+e.w/2,e.oy+e.dy),"#596a83",1)
+   box(x,y,e.w,e.h,"#55546b")
+   box(x,y,e.w,2,"#c4b1d1")
+   for c in range(3,int(e.w),6): box(x+c,y+3,2,2,"#d4c3a4")
+  "ring":
+   var center=Vector2(x+4,y+4)
+   ink.draw_arc(center,3.2,0,TAU,16,Color("#b8d5da"),1.3)
+   circle(center,5.5,Color(.5,.7,.9,.09))
+   box(x+3,y-1,2,2,"#dacbb1")
+  "zipline":
+   var from=origin+Vector2(e.ax,e.ay)
+   var to=origin+Vector2(e.bx,e.by)
+   var col=Color("#c0b7ff") if e.state=="" else Color("#515371")
+   line(from,to,Color(col,.3),1)
+   for at in [from,to]:
+    circle(at,4,Color(col,.12))
+    line(at-Vector2(1,4),at+Vector2(1,4),col,1.5)
+    line(at-Vector2(2,2),at+Vector2(2,2),col,1)
+   if e.pulse>0: line(from,to,Color(col,.6),2)
+  "mirror":
+   box(x,y,8,8,"#4a5264")
+   var from=Vector2(x+1,y+6 if e.slant=="/" else y+1)
+   var to=Vector2(x+6,y+1 if e.slant=="/" else y+6)
+   line(from,to,"#e1dceb",1.5)
+   box(x+3,y+3,2,2,"#c1a678")
+  "shutter":
+   box(x,y,e.w,e.h,Color(.3,.35,.5,.16) if e.open else Color("#675970"))
+   for r in range(1,int(e.h),4): line(Vector2(x,y+r),Vector2(x+e.w,y+r),"#79778e" if e.open else "#d6b88e",.6 if e.open else 1.3)
+  "anvil":
+   polygon([Vector2(x-2,y),Vector2(x+10,y),Vector2(x+8,y+3),Vector2(x+5,y+4),Vector2(x+6,y+7),Vector2(x+1,y+7),Vector2(x+2,y+4),Vector2(x,y+3)],"#9396b0")
+   box(x-1,y,10,1,"#ebe0c3")
+   box(x,y+7,8,1,"#4c5067")
+  "feather":
+   if e.timer>0: return
+   var bob=sin(clock*2+x)
+   line(Vector2(x+1,y+7+bob),Vector2(x+6,y+bob),"#d6edf0")
+   for r in range(4): line(Vector2(x+2+r,y+6-r+bob),Vector2(x+1+r,y+3-r+bob),"#a8c4e2",1)
+  "switch":
+   box(x+2,y+4,4,4,"#aa8f6a")
+   line(Vector2(x+4,y+4),Vector2(x+6,y-2),"#d4bb85",1.4)
+  "cart":
+   box(x,y,e.w,e.h,"#636078")
+   box(x-1,y,e.w+2,2,"#c6b7a0")
+   for c in [2,e.w-4]: circle(Vector2(x+c,y+e.h),2,"#b1adc5")
+   line(Vector2(x+2,y+3),Vector2(x+e.w-2,y+3),"#444456")
+  "void":
+   box(x,y,e.w,e.h,"#171c36")
+   for r in range(1,int(e.h),4): line(Vector2(x+1,y+r),Vector2(x+e.w-1,y+r),Color(.4,.4,.7,.25))
+   ink.draw_rect(Rect2(x+.5,y+.5,e.w-1,e.h-1),Color("#9294c5"),false,.7)
+  "prism":
+   var center=Vector2(x+e.w/2,y+e.h/2)
+   polygon([center+Vector2(0,-5),center+Vector2(5,0),center+Vector2(0,5),center+Vector2(-5,0)],"#82c3d0" if e.armed else "#566c84")
+   line(center-Vector2(0,3),center+Vector2(0,3),"#e8d7ed")
+   line(center+Vector2(-2,-1),center+Vector2(0,-3),"#e8d7ed")
+   line(center+Vector2(0,3),center+Vector2(2,1),"#e8d7ed")
   "slide":
    # Sliding stones are live solids, including after they leave their map glyphs.
    box(x,y,e.w,e.h,"#55565b")
@@ -849,6 +956,10 @@ func draw_knight():
  var x = actor.x
  var y = actor.y
  var face = p.facing
+ if p.parryTimer>0:
+  var aim=p.get("pressAim",{"x":face,"y":0})
+  var angle=atan2(aim.y,aim.x) if aim.x!=0 or aim.y!=0 else (0.0 if face>0 else PI)
+  ink.draw_arc(Vector2(x+4,y+5.5),13,angle-1.1,angle+1.1,16,Color("#d6f4ff"),1.5)
  var ready_color = Color("ffb347") if p.dashes>0 else Color("56708c")
  for i in range(1,plume.size()):
   line(plume[i-1],plume[i],Color(ready_color,1-float(i)/10),max(0.5,1.5-i*.15))
@@ -969,15 +1080,15 @@ func pixel_heart(point,color):
   box(point.x+row[0],point.y+row[1],row[2],1,color)
  box(point.x-3,point.y-2,1,1,Color(1,1,1,color.a))
 func draw_world_hearts():
- for reward in runtime.data.get("secretRewards",[]):
+ for reward in runtime.data.get("secretRewards",[])+runtime.data.get("branchRewards",[]):
   var point=runtime.placements[reward.room]+Vector2(reward.x,reward.y+sin(clock*3))
   if not Rect2(camera-Vector2(15,15),Vector2(350,214)).has_point(point): continue
-  var taken=runtime.secret_hearts.has(reward.id)
+  var taken=runtime.secret_hearts.has(reward.id) or runtime.branch_hearts.has(reward.id)
   var color=Color(reward.color)
   if taken: color.a=0.25
   else: circle(point,11,Color(color,0.08))
   pixel_heart(point,color)
-  if not taken and not runtime.secret_front_entry: ink.draw_arc(point,8,0,TAU,24,Color(.8,.85,1,.5),0.7)
+  if not taken and not (runtime.branch_entered.get(reward.id,false) if reward.has("kind") else runtime.secret_front_entry): ink.draw_arc(point,8,0,TAU,24,Color(.8,.85,1,.5),0.7)
  var age=(runtime.frames-runtime.quest_award_frame)/60.0
  if age>=0 and age<3:
   var u=clamp((age-0.6)/1.0,0,1)
@@ -1052,3 +1163,85 @@ func draw_key(at):
  circle(at,1,"#544838")
  box(at.x,at.y+1,1,5,"#e1b973")
  box(at.x,at.y+4,3,1,"#e1b973")
+
+func draw_region_devices(scene,origin,view):
+ if runtime!=null and runtime.seam_closed.get(scene.room.id,false):
+  for tile in runtime.seam_tiles[scene.room.id]:
+   var at=Vector2(tile.point)*8
+   if not view.has_point(at): continue
+   if tile.closed==1:
+    box(at.x,at.y,8,8,"#4a5262")
+    box(at.x,at.y,8,1,"#b8adbf")
+    line(at+Vector2(1,2),at+Vector2(6,7),"#343b4c")
+   elif tile.closed>=3: draw_hazard(tile.closed,at)
+ if scene.beams!=null:
+  for beam in scene.beams.paths:
+   var from=origin+Vector2(beam[0],scene.room.h-beam[1] if scene.flipped else beam[1])
+   var to=origin+Vector2(beam[2],scene.room.h-beam[3] if scene.flipped else beam[3])
+   line(from,to,Color(1,.82,.55,.13),4)
+   line(from,to,"#ffe3a1",1.5)
+ if scene.foes!=null:
+  for foe in scene.foes:
+   if not foe.alive: continue
+   var at=origin+Vector2(foe.x+4,scene.room.h-foe.y-4 if scene.flipped else foe.y+4)
+   if view.has_point(at):
+    var flap=abs(sin(clock*13))*3
+    polygon([at+Vector2(-5,-flap),at+Vector2(-1,3),at+Vector2(0,-2)],"#b6d7e1")
+    polygon([at+Vector2(5,-flap),at+Vector2(1,3),at+Vector2(0,-2)],"#9ab8da")
+    box(at.x,at.y-2,1,5,"#ddd9bd")
+ if scene.sentinel!=null:
+  var s=scene.sentinel
+  var bell=origin+Vector2(s.c*8+4,s.r*8+4)
+  if view.has_point(bell):
+   circle(bell,7,Color(.9,.7,.4,.12))
+   polygon([bell+Vector2(-3,-3),bell+Vector2(3,-3),bell+Vector2(5,3),bell+Vector2(-5,3)],"#9fc9bd" if s.done else "#e0bb81")
+   box(bell.x-1,bell.y+4,2,2,"#f5dc9d")
+  var t=int(s.t)%int(s.period)
+  if not s.done and t>0 and t<30:
+   if s.mode=="hammer":
+    var at=origin+Vector2(s.target,s.land)
+    line(Vector2(at.x,camera.y),at+Vector2(0,40),Color(1,.65,.5,.35),1)
+    line(at-Vector2(14,0),at+Vector2(14,0),"#e7b6a0",1.5)
+   else: line(origin+Vector2(s.from,s.ry+40),origin+Vector2(s.to,s.ry+40),"#d2a192",1.5)
+ if scene.root_lash!=null:
+  for lash in scene.root_lash.lashes:
+   var at=origin+Vector2(lash.c0*8,lash.r0*8)
+   var size=Vector2((lash.c1-lash.c0+1)*8,(lash.r1-lash.r0+1)*8)
+   if not view.intersects(Rect2(at,size)): continue
+   if lash.live:
+    box(at.x,at.y,size.x,size.y,Color(.55,.25,.55,.14))
+    for x in range(0,int(size.x),5):
+     line(at+Vector2(x,0),at+Vector2(x+2,size.y),"#8e638e",1)
+     polygon([at+Vector2(x,size.y-5),at+Vector2(x+2,size.y),at+Vector2(x+4,size.y-5)],"#db9fb1")
+   elif lash.warn:
+    for x in range(0,int(size.x),5): box(at.x+x,at.y+size.y-1,2,1,"#d6b8d2")
+  var crown=scene.root_lash.crown
+  if crown!=null:
+   var at=origin+Vector2(crown.c*8+8,crown.r*8+8)
+   if view.has_point(at):
+    circle(at,8,"#4a4553" if crown.cut else "#667171")
+    for i in range(5):
+     var d=Vector2(cos(i*TAU/5),sin(i*TAU/5))
+     line(at+d*4,at+d*10,"#6a5a73" if crown.cut else "#b9cebe",1.5)
+    if not crown.cut: circle(at,3,"#dab4d2")
+ if scene.oath_root!=null and not scene.oath_root.taken:
+  var o=scene.oath_root
+  var at=origin+Vector2(o.bladeC*8+4,o.bladeR*8)
+  if view.has_point(at):
+   box(at.x-1,at.y-10,2,11,"#d4e1ec" if o.released else "#7d8593")
+   box(at.x-4,at.y-1,8,1,"#cfb58a")
+   box(at.x,at.y,1,4,"#9c8d79")
+   if o.released: circle(at,10,Color(.7,.7,.9,.12))
+ if scene.portals!=null:
+  for pt in scene.portals.values():
+   if pt==null: continue
+   var b=scene.PortalDevices.box(scene,pt)
+   if scene.flipped: b.y=scene.room.h-b.y-b.h
+   var at=origin+Vector2(b.x,b.y)
+   var col=Color("#efa97d" if pt.color=="orange" else "#89bee9")
+   box(at.x,at.y,b.w,b.h,"#141e34")
+   ink.draw_rect(Rect2(at+Vector2(.6,.6),Vector2(b.w-1.2,b.h-1.2)),col,false,1)
+ if sim==scene and sim.p.hook!=null:
+  var ring=sim.p.hook.ring
+  var at=origin+Vector2(ring.x+4,scene.room.h-ring.y-4 if scene.flipped else ring.y+4)
+  line(at,actor+Vector2(4,4),"#a6c4ce",.8)

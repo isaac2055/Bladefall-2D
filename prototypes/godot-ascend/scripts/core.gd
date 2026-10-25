@@ -1,6 +1,30 @@
 class_name AscendCore
 extends RefCounted
 ## Native, fixed-tick port of bladefall-pcore.js. No CharacterBody2D or delta physics.
+const LightDevices=preload("res://scripts/light_devices.gd")
+const RopeDevices=preload("res://scripts/rope_devices.gd")
+var beams=null
+const GravityDevice=preload("res://scripts/gravity_device.gd")
+const RailDevice=preload("res://scripts/rail_device.gd")
+var flipped=false
+var upright_room=null
+const PortalDevices=preload("res://scripts/portal_devices.gd")
+var portals=null
+var portal_holes={}
+var portal_next="blue"
+var portal_shots=0
+const ItemDevices=preload("res://scripts/item_devices.gd")
+var foes=null
+var foe_clock=0
+var void_travel=null
+var void_grace=0
+const MovementTwo=preload("res://scripts/movement_two.gd")
+const Fractured=preload("res://scripts/fractured_devices.gd")
+var sentinel=null
+var oath_root=null
+var resin_wind=null
+var root_lash=null
+var super_fractured=null
 const Causeway=preload("res://scripts/causeway_devices.gd")
 var combat={}
 var brute_waves=[]
@@ -44,6 +68,7 @@ func load_room(parsed: Dictionary, respawn = false):
  p.maxDashes = room.maxDashes
  p.dashes = room.maxDashes
  p.strikeHit = {}
+ MovementTwo.reset(self)
  ents = room.entities.duplicate(true)
  for i in range(ents.size()):
   var e = ents[i]
@@ -55,7 +80,16 @@ func load_room(parsed: Dictionary, respawn = false):
  for i in range(room.def.get("decks",[]).size()):
   var d=room.def.decks[i]
   ents.append({"type":"deck","dev":true,"solid":true,"x":d.c*8,"y":d.r*8,"w":d.w*8,"h":d.get("h",1)*8,"ox":d.c*8,"oy":d.r*8,"dx":d.to[0]*8,"dy":d.to[1]*8,"period":d.get("period",180),"phase":d.get("phase",0),"remX":0.0,"remY":0.0,"clock":0,"id":"dk"+str(i)})
+ PortalDevices.reset(self)
  Causeway.reset(self)
+ LightDevices.reset(self)
+ ItemDevices.reset_early(self)
+ GravityDevice.reset(self)
+ RopeDevices.reset(self)
+ RailDevice.reset(self)
+ Fractured.reset(self)
+ ItemDevices.reset_late(self)
+ LightDevices.trace(self)
  moving_decks=ents.filter(func(e):return e.type=="deck")
  spent_footholds=ents.filter(func(e):return e.type=="foothold")
  decks_awake=false
@@ -86,7 +120,10 @@ func emit_event(kind: String):
  events.append(kind)
 
 func tile(c: int, r: int):
- if world_context!=null: return world_context.tile_global(c+int(world_origin.x/8),r+int(world_origin.y/8))
+ if portal_holes.has(Vector2i(c,r)): return 0
+ if world_context!=null:
+  var t=world_context.tile_global(c+int(world_origin.x/8),(int(room.rows)-1-r if flipped else r)+int(world_origin.y/8))
+  return (4 if t==3 else (3 if t==4 else t)) if flipped else t
  if c < 0 or c >= room.cols or r < 0 or r >= room.rows: return 0
  return room.grid[r * int(room.cols) + c]
 
@@ -188,8 +225,9 @@ func lift():
  if p.liftTimer <= 0: return {"x":0,"y":0}
  return {"x":clamp(p.liftX,-K.liftXCap,K.liftXCap),"y":max(K.liftYCap,p.liftY) if p.liftY<0 else 0}
 func jump(inp,kind = "jump",direction = 0):
+ MovementTwo.clear_action(self)
  buf.jump = 0
- p.ducking = false
+ if kind!="jump": p.ducking=false
  p.jumpGrace = 0
  p.varJump = K.superWallVarFrames if kind == "wallbounce" else K.varJumpFrames
  p.autoJump = false
@@ -223,12 +261,18 @@ func climb_jump(inp):
  kick_direction=-p.facing
  emit_event("climbjump")
 func super_jump():
+ var old_dir=sign(p.dashDir.x) if p.dashDir.x!=0 else p.facing
+ var direction=p.move2.inputX if p.has("move2") and p.move2.inputX!=0 else old_dir
+ if p.has("move2") and direction!=old_dir:
+  p.retainTimer=0
+  p.retained=0
+ MovementTwo.clear_action(self)
  buf.jump = 0
  p.jumpGrace = 0
  p.varJump = K.varJumpFrames
  p.autoJump = false
  p.wallSlide = K.wallSlideFrames
- p.facing = sign(p.dashDir.x) if p.dashDir.x != 0 else p.facing
+ p.facing = direction
  p.vx = K.superJumpH*p.facing
  p.vy = K.jumpSpeed
  if p.ducking:
@@ -243,6 +287,7 @@ func super_jump():
  p.state = "normal"
  emit_event("super")
 func start_dash(inp):
+ MovementTwo.clear_action(self)
  buf.dash = 0
  p.dashes -= 1
  p.state = "dash"
@@ -261,6 +306,7 @@ func start_dash(inp):
  emit_event("dash-start")
  flip_phase()
 func enter_climb():
+ MovementTwo.clear_action(self)
  p.state = "climb"
  p.vx = 0
  p.vy *= 0.2
@@ -273,6 +319,7 @@ func enter_climb():
   else: break
  emit_event("grab")
 func normal_update(inp):
+ if MovementTwo.normal(self,inp): return
  if buf.grab>0:
   if p.carrying == null:
    for e in ents:
@@ -321,7 +368,9 @@ func normal_update(inp):
   start_dash(inp)
   return
  var mult = p.get("traction",1) if p.onGround else K.airMult
- if abs(p.vx) > K.maxRun and sign(p.vx) == inp.mx: p.vx = approach(p.vx,K.maxRun*inp.mx,K.runReduce*mult*DT)
+ if (p.fling or p.get("coast",false)) and not p.onGround and abs(p.vx)>K.maxRun:
+  if inp.mx==-sign(p.vx): p.vx=approach(p.vx,0,K.runReduce*mult*DT)
+ elif abs(p.vx) > K.maxRun and sign(p.vx) == inp.mx: p.vx = approach(p.vx,K.maxRun*inp.mx,K.runReduce*mult*DT)
  else: p.vx = approach(p.vx,K.maxRun*inp.mx,K.runAccel*mult*DT)
  if p.wallBoostTimer > 0 and inp.mx == p.wallBoostDir:
   p.vx = K.wallJumpH*inp.mx
@@ -332,6 +381,7 @@ func normal_update(inp):
   var max_fall = K.carryMaxFall if p.carrying != null else (K.fastMaxFall if inp.my>0 and p.vy>=K.maxFall else K.maxFall)
   p.maxFall = approach(p.maxFall,max_fall,K.fastMaxAccel*DT)
   if p.carrying != null: p.maxFall = min(p.maxFall,K.carryMaxFall)
+  if p.fling and p.carrying==null: p.maxFall=max(p.maxFall,K.flingMaxFall)
   var fall = p.maxFall
   if inp.mx == p.facing and p.vy > 0 and p.carrying == null and climb_check(p.facing):
    fall = K.wallSlideStartMax+(fall-K.wallSlideStartMax)*(1-p.wallSlide/K.wallSlideFrames)
@@ -349,7 +399,11 @@ func normal_update(inp):
     if wall_check(direction):
      if p.facing == direction and inp.grab and p.stamina > 0 and climb_check(direction): climb_jump(inp)
      else: jump(inp,"walljump",-direction)
-     break
+     return
+  if p.airJumps>0 and p.carrying==null and p.state=="normal":
+   p.airJumps=0
+   jump(inp)
+   emit_event("feather-jump")
 func climb_update(inp):
  if not inp.grab or p.carrying != null:
   p.state = "normal"
@@ -405,16 +459,19 @@ func dash_update(inp):
   if sign(p.beforeDash.x) == sign(p.vx) and abs(p.beforeDash.x)>abs(p.vx): p.vx = p.beforeDash.x
   if p.dashDir.y > 0 and p.dashDir.x != 0: p.ducking = true
   emit_event("dash")
+ if MovementTwo.dash_catch(self): return
  if p.onGround and p.dashDir.x != 0 and p.dashDir.y > 0:
   p.dashDir = {"x":sign(p.dashDir.x),"y":0}
   p.vy = 0
   p.vx *= K.ultraMult
   p.ducking = true
   emit_event("ultra")
+ MovementTwo.dash_track(self)
  if buf.jump > 0:
   if p.dashDir.y == 0 and p.jumpGrace > 0:
    super_jump()
    return
+  if MovementTwo.late_reverse(self,inp): return
   if p.dashDir.x == 0 and p.dashDir.y < 0:
    for direction in [1,-1]:
     if body_solid(direction*K.superWallJumpCheck,0) and not thorned(direction):
@@ -434,6 +491,7 @@ func dash_update(inp):
   return
  p.dashTimer -= 1
  if p.dashTimer <= 0:
+  MovementTwo.dash_end(self)
   if p.dashDir.y <= 0:
    p.vx = p.dashDir.x*K.endDashSpeed*(abs(p.vx)/K.dashSpeed if abs(p.vx)>K.dashSpeed else 1)
    p.vy = p.dashDir.y*K.endDashSpeed
@@ -442,6 +500,7 @@ func dash_update(inp):
   p.ducking = false
   p.maxFall = K.maxFall
 func collide_h(_b,s):
+ if _b>=0 and (ItemDevices.dash_hit(self,ents[_b]) or RailDevice.dash_hit(self,ents[_b],s)): return
  if p.state=="dash" and _b>=0 and ents[_b].type=="slide":
   push_stone(ents[_b],s,0)
   return
@@ -457,6 +516,7 @@ func collide_h(_b,s):
   p.retainTimer = K.wallSpeedRetentionFrames
  p.vx = 0
 func collide_v(_b,s):
+ if _b>=0 and ItemDevices.dash_hit(self,ents[_b]): return
  if p.state=="dash" and _b>=0 and ents[_b].type=="slide":
   push_stone(ents[_b],0,s)
   return
@@ -474,6 +534,7 @@ func read_input(raw):
  for key in ["l","r","u","d","jump","dash","grab","strike","parry","portal"]:
   inp[key] = raw.get(key,false)
   if buf.has(key) and inp[key] and not prev.get(key,false): buf[key] = int(K.bufferFrames) if key in ["jump","dash"] else 3
+ MovementTwo.read(self,inp)
  prev = inp.duplicate()
  inp.mx = int(inp.r)-int(inp.l)
  inp.my = int(inp.d)-int(inp.u)
@@ -481,7 +542,7 @@ func read_input(raw):
 func step(raw):
  frame += 1
  events = []
- raw = raw.duplicate()
+ raw = Fractured.input(self,GravityDevice.input(self,raw.duplicate()))
  for key in room.def.get("lock",[]): raw[key] = false
  if freeze > 0:
   read_input(raw)
@@ -489,6 +550,7 @@ func step(raw):
   return
  for key in buf:
   if buf[key]>0: buf[key] -= 1
+ MovementTwo.before_read(self)
  var inp = read_input(raw)
  room_frame += 1
  update_entities()
@@ -503,6 +565,7 @@ func step(raw):
   if p.respawnTimer<=0: p.state = "normal"
   return
  if not awake and (inp.mx!=0 or inp.my!=0 or inp.jump or inp.dash or inp.grab or inp.strike or inp.parry): awake = true
+ if awake and (not combat.is_empty() or foes!=null): parry_step(inp)
  var from = {"x":p.x,"y":p.y}
  update_devices(inp)
  if awake: sweeper_clock += 1
@@ -518,6 +581,7 @@ func step(raw):
      e.ty = e.oy+d.after[1]*8
  for key in ["dashCooldown","dashRefillCooldown","forceMoveTimer","wallBoostTimer","climbNoMove","liftTimer","strikeCooldown","dashFlash","varJump"]:
   if p[key]>0: p[key] -= 1
+ MovementTwo.before_player(self,inp)
  p.traction = 1
  var intent = inp.duplicate()
  intent.mx = p.forceMoveX if p.forceMoveTimer>0 else inp.mx
@@ -529,6 +593,10 @@ func step(raw):
   p.y += 1
  p.wasGround = p.onGround
  p.onGround = p.vy>=0 and (body_solid(0,1) or (not p.get("dropT",0)>0 and thru(p)))
+ MovementTwo.landed(self)
+ if (p.fling or p.get("coast",false)) and (p.onGround or p.state in ["climb","dash"]):
+  p.coast=false
+  p.fling=false
  if p.onGround:
   if not p.wasGround and p.get("lastFallSpeed",0)>40: emit_event("land")
   p.jumpGrace = K.jumpGraceFrames
@@ -543,34 +611,46 @@ func step(raw):
   if not body_solid(sign(p.retained),0):
    p.vx = p.retained
    p.retainTimer = 0
- if buf.strike>0 and p.strikeCooldown<=0 and p.state!="dash" and p.carrying==null and p.parryTimer<=0:
+ var dash_cut=MovementTwo.can_cut(self)
+ if buf.strike>0 and p.strikeCooldown<=0 and (p.state!="dash" or dash_cut) and p.carrying==null and p.parryTimer<=0:
+  if p.has("move2"):
+   p.move2.wallGrace=0
+   if p.state!="dash": p.move2.reverse=null
   buf.strike = 0
   p.strikeTimer = K.strikeFrames
   p.strikeCooldown = K.strikeCooldownFrames
   p.strikeHit.clear()
   var side = -p.facing if p.state=="climb" else p.facing
   if room.def.get("aim8",false):
-   p.strikeDir = {"x":inp.mx,"y":-1} if inp.my<0 else ({"x":inp.mx,"y":1} if inp.my>0 and not p.onGround else {"x":inp.mx if inp.mx!=0 else side,"y":0})
+   p.strikeDir = {"x":inp.mx,"y":-1} if inp.my<0 else ({"x":inp.mx,"y":1} if inp.my>0 and not p.onGround and not dash_cut else {"x":inp.mx if inp.mx!=0 else side,"y":0})
   else:
-   p.strikeDir = {"x":0,"y":-1} if inp.my<0 else ({"x":0,"y":1} if inp.my>0 and not p.onGround else {"x":side,"y":0})
+   p.strikeDir = {"x":0,"y":-1} if inp.my<0 else ({"x":0,"y":1} if inp.my>0 and not p.onGround and not dash_cut else {"x":side,"y":0})
   emit_event("strike")
- Causeway.brute_forces(self)
  match p.state:
   "normal": normal_update(intent)
   "climb": climb_update(intent)
   "dash": dash_update(intent)
+ if p.state=="dead": return
+ RopeDevices.forces(self,inp)
+ RailDevice.forces(self)
+ Causeway.brute_forces(self)
+ Fractured.forces(self)
+ ItemDevices.forces(self)
  move_axis(p,p.vx*DT+p.get("pushX",0),true,-1,true,collide_h)
  p.pushX = 0
- move_axis(p,p.vy*DT,false,-1,not p.get("dropT",0)>0,collide_v)
+ if p.state!="dead": move_axis(p,p.vy*DT,false,-1,not p.get("dropT",0)>0,collide_v)
+ if p.has("move2") and (p.state=="dash" or p.move2.naturalDashFrame==room_frame): MovementTwo.dash_catch(self)
  if p.carrying != null:
   p.carrying.x = p.x
   p.carrying.y = p.y-8
  if p.strikeTimer>0: p.strikeTimer -= 1
- interact()
- finish_devices()
+ if p.state!="dead":
+  interact()
+  if p.state!="dead": finish_devices()
  if p.state != "dead":
   sweeper_collision(from)
  if p.state != "dead" and world_context==null: check_exit()
+ MovementTwo.after(self)
 func update_entities():
  var pressed = false
  for e in ents:
@@ -596,7 +676,7 @@ func update_entities():
   if e.type=="zip": update_zip(e)
   if e.type=="slide" and e.get("moving",false): update_slide(e)
   if e.type=="gate":
-   if not e.get("open",false) and left==0 and ents.any(func(a):return a.type=="stone"):
+   if not e.get("open",false) and left==0 and (e.get("devKeyed",false) or ents.any(func(a):return a.type=="stone")) and not Fractured.gate_hold(self):
     e.open = true
     e.t = 0
    if e.get("open",false): e.t += 1
@@ -616,6 +696,7 @@ func update_entities():
 func interact():
  for r in range(floori(p.y/8.0),floori((p.y+8)/8.0)+1):
   for c in range(floori(p.x/8.0),floori((p.x+p.w-1)/8.0)+1):
+   if p.state=="ride": continue
    var t = tile(c,r)
    var hit = null
    if t==3 and p.vy>=0: hit = rect(c*8,r*8+5,8,3)
@@ -672,21 +753,7 @@ func interact():
    if e.type=="pod" and e.timer==0:
     p.strikeHit[e.id]=true
     e.timer=30
-    if d.y>0:
-     p.vy=K.podSpeed
-     p.varJumpSpeed=p.vy
-     p.varJump=7
-     p.autoJump=true
-    elif d.y<0: p.vy=K.podDown
-    else:
-     p.vx=-d.x*K.podSide
-     p.vy=min(p.vy,-90)
-     p.forceMoveX=-d.x
-     p.forceMoveTimer=7
-    if p.state=="climb": p.state="normal"
-    p.jumpGrace=0
-    refill()
-    p.stamina=K.climbMaxStamina
+    blade_rebound(d)
     freeze=3
     emit_event("pod")
    elif e.type=="stone" and not e.get("lit",false):
@@ -723,6 +790,14 @@ func device_groups(glyph):
  return groups
 func update_devices(inp):
  Causeway.before(self,inp)
+ ItemDevices.foes_before(self)
+ PortalDevices.before(self,inp)
+ LightDevices.before(self)
+ ItemDevices.before(self)
+ GravityDevice.before(self)
+ RopeDevices.before(self,inp)
+ RailDevice.before(self,inp)
+ Fractured.before(self)
  if moving_decks.is_empty() and spent_footholds.is_empty(): return
  kick_direction=0
  if not spent_footholds.is_empty(): foothold_previous=p.duplicate()
@@ -737,6 +812,13 @@ func update_devices(inp):
   move_solid(e,e.ox+e.dx*ease-(e.x+e.remX),e.oy+e.dy*ease-(e.y+e.remY))
 func finish_devices():
  Causeway.after(self)
+ ItemDevices.foes_after(self)
+ PortalDevices.after(self)
+ ItemDevices.after(self)
+ LightDevices.after(self)
+ if p.state=="dead": return
+ RopeDevices.after(self)
+ Fractured.after(self)
  for e in spent_footholds:
   if e.get("gone",false): continue
   var on=riding(e) or (p.state not in ["dead","respawn"] and p.onGround and p.y+p.h==e.y and p.x<e.x+e.w and p.x+p.w>e.x)
@@ -981,8 +1063,13 @@ func strike_box():
  return rect(p.x+p.w if d.x>0 else p.x-15,p.y-1,15,12)
 
 func blade_rebound(d):
+ MovementTwo.clear_action(self)
  if d.y>0:
-  p.vy=K.podSpeed
+  var loft=not p.has("move2") or p.move2.jumpHeld or p.move2.jumpIntent>0
+  p.vy=K.podSpeed if loft else -135
+  if p.has("move2"):
+   buf.jump=0
+   emit_event("pogo-loft" if loft else "pogo-low")
   p.varJumpSpeed=p.vy
   p.varJump=7
   p.autoJump=true
@@ -996,3 +1083,21 @@ func blade_rebound(d):
  p.jumpGrace=0
  refill()
  p.stamina=K.climbMaxStamina
+
+func parry_step(inp):
+ if p.parryTimer>0: p.parryTimer-=1
+ if p.parryCooldown>0: p.parryCooldown-=1
+ if buf.parry>0 and p.parryCooldown<=0 and p.state!="dash" and p.carrying==null:
+  buf.parry=0
+  buf.strike=0
+  buf.dash=0
+  p.strikeTimer=0
+  p.parryTimer=9
+  p.parryCooldown=18
+  p.parryAim={"x":inp.mx,"y":inp.my}
+  emit_event("parry-ready")
+func parry_success():
+ p.parryTimer=0
+ p.parryCooldown=0
+ refill()
+ freeze=max(freeze,3)

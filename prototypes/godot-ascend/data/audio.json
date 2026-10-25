@@ -2,6 +2,15 @@
   "music": "music/midnight-field.mp3",
   "ambience": "sfx/amb/plains.mp3",
   "effects": {
+    "bell": [
+      "sfx/bell.mp3"
+    ],
+    "parry": [
+      "sfx/parry.mp3"
+    ],
+    "portal": [
+      "sfx/portal.mp3"
+    ],
     "jump": [
       "sfx/jump-1.mp3",
       "sfx/jump-2.mp3"
@@ -287,6 +296,118 @@
       "name": "Silas",
       "path": "voice/ascend/w3-c3-patrol.silas.done.mp3"
     },
+    "cl21-fo21-map:mara:line": {
+      "text": "Your chart still has a road here. Mine stopped.",
+      "id": "ascend/w21-fo21-map.mara",
+      "seconds": 3.08,
+      "name": "MARA’S ECHO",
+      "path": "voice/ascend/w21-fo21-map.mara.mp3"
+    },
+    "cl21-fo21-map:mara:lineDone": {
+      "text": "There it is. A way through the blank.",
+      "id": "ascend/w21-fo21-map.mara.done",
+      "seconds": 2.38,
+      "name": "MARA’S ECHO",
+      "path": "voice/ascend/w21-fo21-map.mara.done.mp3"
+    },
+    "cl21-fo21-camp:rowan:line": {
+      "text": "The bell is behind you. It always was.",
+      "id": "ascend/w21-fo21-camp.rowan",
+      "seconds": 3.1,
+      "name": "ROWAN’S ECHO",
+      "path": "voice/ascend/w21-fo21-camp.rowan.mp3"
+    },
+    "cl21-fo21-camp:rowan:lineDone": {
+      "text": "Someone answered. I can leave it ringing.",
+      "id": "ascend/w21-fo21-camp.rowan.done",
+      "seconds": 2.84,
+      "name": "ROWAN’S ECHO",
+      "path": "voice/ascend/w21-fo21-camp.rowan.done.mp3"
+    },
+    "cl21-fo21-q-chart:mara:line": {
+      "text": "I drew the way out. Keep the part that still leads somewhere.",
+      "id": "ascend/w21-fo21-q-chart.mara",
+      "seconds": 3.4,
+      "name": "MARA’S ECHO",
+      "path": "voice/ascend/w21-fo21-q-chart.mara.mp3"
+    },
+    "cl21-fo21-q-chart:mara:lineDone": {
+      "text": "The blank has an edge now.",
+      "id": "ascend/w21-fo21-q-chart.mara.done",
+      "seconds": 1.79,
+      "name": "MARA’S ECHO",
+      "path": "voice/ascend/w21-fo21-q-chart.mara.done.mp3"
+    },
+    "cl21-fo21-q-bell:rowan:line": {
+      "text": "I heard it. That was enough.",
+      "id": "ascend/w21-fo21-q-bell.rowan",
+      "seconds": 2.29,
+      "name": "ROWAN’S ECHO",
+      "path": "voice/ascend/w21-fo21-q-bell.rowan.mp3"
+    },
+    "cl21-fo21-q-bell:rowan:lineDone": {
+      "text": "You heard it too.",
+      "id": "ascend/w21-fo21-q-bell.rowan.done",
+      "seconds": 1.54,
+      "name": "ROWAN’S ECHO",
+      "path": "voice/ascend/w21-fo21-q-bell.rowan.done.mp3"
+    },
+    "cl22-fw22-kitchen:elsie:line": {
+      "text": "I left a bowl out. Habit, I suppose.",
+      "id": "ascend/w22-fw22-kitchen.elsie",
+      "seconds": 3.21,
+      "name": "ELSIE’S ECHO",
+      "path": "voice/ascend/w22-fw22-kitchen.elsie.mp3"
+    },
+    "cl22-fw22-kitchen:elsie:lineDone": {
+      "text": "Still warm. Don’t ask me how.",
+      "id": "ascend/w22-fw22-kitchen.elsie.done",
+      "seconds": 2.97,
+      "name": "ELSIE’S ECHO",
+      "path": "voice/ascend/w22-fw22-kitchen.elsie.done.mp3"
+    },
+    "cl22-fw22-q-lantern:elsie:line": {
+      "text": "I knew you’d find the table.",
+      "id": "ascend/w22-fw22-q-lantern.elsie",
+      "seconds": 2.23,
+      "name": "ELSIE’S ECHO",
+      "path": "voice/ascend/w22-fw22-q-lantern.elsie.mp3"
+    },
+    "cl22-fw22-q-lantern:elsie:lineDone": {
+      "text": "You never did like eating alone.",
+      "id": "ascend/w22-fw22-q-lantern.elsie.done",
+      "seconds": 2.37,
+      "name": "ELSIE’S ECHO",
+      "path": "voice/ascend/w22-fw22-q-lantern.elsie.done.mp3"
+    },
+    "cl23-fc23-silas:silas:line": {
+      "text": "Forty paces. I remember the forty-first better.",
+      "id": "ascend/w23-fc23-silas.silas",
+      "seconds": 4.43,
+      "name": "SILAS’S ECHO",
+      "path": "voice/ascend/w23-fc23-silas.silas.mp3"
+    },
+    "cl23-fc23-silas:silas:lineDone": {
+      "text": "I chose that step. That part still belongs to me.",
+      "id": "ascend/w23-fc23-silas.silas.done",
+      "seconds": 4.36,
+      "name": "SILAS’S ECHO",
+      "path": "voice/ascend/w23-fc23-silas.silas.done.mp3"
+    },
+    "cl23-fc23-q-governor:silas:line": {
+      "text": "There was a bench beyond the turning point. I never knew.",
+      "id": "ascend/w23-fc23-q-governor.silas",
+      "seconds": 4.24,
+      "name": "SILAS’S ECHO",
+      "path": "voice/ascend/w23-fc23-q-governor.silas.mp3"
+    },
+    "cl23-fc23-q-governor:silas:lineDone": {
+      "text": "I sat there because I wanted to.",
+      "id": "ascend/w23-fc23-q-governor.silas.done",
+      "seconds": 2.86,
+      "name": "SILAS’S ECHO",
+      "path": "voice/ascend/w23-fc23-q-governor.silas.done.mp3"
+    },
     "refuge:line0": {
       "text": "The moths took my lantern, off into the trees past the kitchen. They never go far at a time. Could you follow them?",
       "id": "ascend/errands.refuge.0",
@@ -378,6 +499,48 @@
       "source": "public/audio/music/iron-juggernaut.mp3",
       "sha256": "5a2f64e9f199615ffe5a751cbbd0225dd2dd85366ab9161262ce52040aeaa68d",
       "bytes": 3602433
+    },
+    {
+      "path": "music/crystalline-trials.mp3",
+      "source": "public/audio/music/crystalline-trials.mp3",
+      "sha256": "a35d598e327052afe7a0dccce87873471fbb2f912f0bd212b9dd241305380067",
+      "bytes": 4322159
+    },
+    {
+      "path": "music/the-archive-of-violet-portals.mp3",
+      "source": "public/audio/music/the-archive-of-violet-portals.mp3",
+      "sha256": "337bcfa072ce73452e7b72f113f0284496ec45d7717a68a882fc6f513e9298b2",
+      "bytes": 4322159
+    },
+    {
+      "path": "music/fractured-the-iron-causeway.mp3",
+      "source": "public/audio/music/fractured-the-iron-causeway.mp3",
+      "sha256": "dafe1bb078f4ceeaf845c6d09d35d83cb316b9f4d37ec50c547917d1e8513856",
+      "bytes": 5489519
+    },
+    {
+      "path": "music/fractured-iron-juggernaut.mp3",
+      "source": "public/audio/music/fractured-iron-juggernaut.mp3",
+      "sha256": "9d669d9615e360305f16f81bbabed7f68b3664556f410be16d7d1a6d38584e47",
+      "bytes": 3924679
+    },
+    {
+      "path": "sfx/bell.mp3",
+      "source": "public/audio/sfx/bell.mp3",
+      "sha256": "49fee26e17a51d08fbdd5114c9fe66944086136d24c076de7c84e5be4fc57efe",
+      "bytes": 53648
+    },
+    {
+      "path": "sfx/parry.mp3",
+      "source": "public/audio/sfx/parry.mp3",
+      "sha256": "7bdf3d2bafdb05574dc66e386b7cd80139865618386ce0696effce37e92b3a61",
+      "bytes": 12897
+    },
+    {
+      "path": "sfx/portal.mp3",
+      "source": "public/audio/sfx/portal.mp3",
+      "sha256": "f3b052f05ccf0fd3f0f773e96d268ec22fde701394c4cb54f16bceb699a7c6ec",
+      "bytes": 12897
     },
     {
       "path": "sfx/jump-1.mp3",
@@ -914,6 +1077,102 @@
       "bytes": 38914
     },
     {
+      "path": "voice/ascend/w21-fo21-map.mara.mp3",
+      "source": "public/audio/voice/ascend/w21-fo21-map.mara.mp3",
+      "sha256": "61dca6eac22c1f5f9ac3c61b4f0d4f29221d7f7daa8038aeb37e1c1b12f61c20",
+      "bytes": 25121
+    },
+    {
+      "path": "voice/ascend/w21-fo21-map.mara.done.mp3",
+      "source": "public/audio/voice/ascend/w21-fo21-map.mara.done.mp3",
+      "sha256": "1794040e61aa357031cd40dc636e5cba4b81bbb9db7a42c0ffb5b9001fcfafb5",
+      "bytes": 19688
+    },
+    {
+      "path": "voice/ascend/w21-fo21-camp.rowan.mp3",
+      "source": "public/audio/voice/ascend/w21-fo21-camp.rowan.mp3",
+      "sha256": "ab8f0e7b0513ba34d72899a91e2ebf23618c13e26eca52289afc8830baf7afa7",
+      "bytes": 25330
+    },
+    {
+      "path": "voice/ascend/w21-fo21-camp.rowan.done.mp3",
+      "source": "public/audio/voice/ascend/w21-fo21-camp.rowan.done.mp3",
+      "sha256": "37dedbbde8582434b46d5c9a52e4e04285419c8ad558f7ef97a6cb8cf2c739c6",
+      "bytes": 23240
+    },
+    {
+      "path": "voice/ascend/w21-fo21-q-chart.mara.mp3",
+      "source": "public/audio/voice/ascend/w21-fo21-q-chart.mara.mp3",
+      "sha256": "3cacf24c808e81abb09ca8445941167716150628695eefb2168380424c2cc9e1",
+      "bytes": 27838
+    },
+    {
+      "path": "voice/ascend/w21-fo21-q-chart.mara.done.mp3",
+      "source": "public/audio/voice/ascend/w21-fo21-q-chart.mara.done.mp3",
+      "sha256": "68f7a17c877bae961788cc684f38d2951292bf79e5f1d0fdae5f229f3aa4e8e6",
+      "bytes": 14881
+    },
+    {
+      "path": "voice/ascend/w21-fo21-q-bell.rowan.mp3",
+      "source": "public/audio/voice/ascend/w21-fo21-q-bell.rowan.mp3",
+      "sha256": "f615aad8bb7dfb4da332d609a1ab0d00a3196be862eab1dec6c57de92612d038",
+      "bytes": 18852
+    },
+    {
+      "path": "voice/ascend/w21-fo21-q-bell.rowan.done.mp3",
+      "source": "public/audio/voice/ascend/w21-fo21-q-bell.rowan.done.mp3",
+      "sha256": "51c11601ef0855de7eab411ebdd2a98546e560dc60b197b5f6d95f64791076b3",
+      "bytes": 12791
+    },
+    {
+      "path": "voice/ascend/w22-fw22-kitchen.elsie.mp3",
+      "source": "public/audio/voice/ascend/w22-fw22-kitchen.elsie.mp3",
+      "sha256": "b361af6b1ea24e90bebce598f2a5dfde0c7629d0cbe036f38a513f582e12b2ed",
+      "bytes": 26375
+    },
+    {
+      "path": "voice/ascend/w22-fw22-kitchen.elsie.done.mp3",
+      "source": "public/audio/voice/ascend/w22-fw22-kitchen.elsie.done.mp3",
+      "sha256": "1a1e14f487c1b0bd462cb8b6aac3640db40155db7128bbae08e6ca1d5d1c2953",
+      "bytes": 24285
+    },
+    {
+      "path": "voice/ascend/w22-fw22-q-lantern.elsie.mp3",
+      "source": "public/audio/voice/ascend/w22-fw22-q-lantern.elsie.mp3",
+      "sha256": "401a17d438230f3d53b5efa723556087e97f11f2a9ddfe7b3faca6f9d6024c43",
+      "bytes": 18434
+    },
+    {
+      "path": "voice/ascend/w22-fw22-q-lantern.elsie.done.mp3",
+      "source": "public/audio/voice/ascend/w22-fw22-q-lantern.elsie.done.mp3",
+      "sha256": "88e1762aca1ba34a152ee1962133e63949b9e4661e44ffdc6c343ffcfa7b0d93",
+      "bytes": 19479
+    },
+    {
+      "path": "voice/ascend/w23-fc23-silas.silas.mp3",
+      "source": "public/audio/voice/ascend/w23-fc23-silas.silas.mp3",
+      "sha256": "7f66f7f3e1c715c397bb4edf3bf881648ac009248421f260f034d48238772c95",
+      "bytes": 35988
+    },
+    {
+      "path": "voice/ascend/w23-fc23-silas.silas.done.mp3",
+      "source": "public/audio/voice/ascend/w23-fc23-silas.silas.done.mp3",
+      "sha256": "8bc272234f0027a7f17f3c40f6009bc8ed971e66d3a2097974ea25bfcdac3f4c",
+      "bytes": 35570
+    },
+    {
+      "path": "voice/ascend/w23-fc23-q-governor.silas.mp3",
+      "source": "public/audio/voice/ascend/w23-fc23-q-governor.silas.mp3",
+      "sha256": "894950c80cc2e43ea4b444ae084d7f4e132f9a61de2884e97c0575947a29d980",
+      "bytes": 34525
+    },
+    {
+      "path": "voice/ascend/w23-fc23-q-governor.silas.done.mp3",
+      "source": "public/audio/voice/ascend/w23-fc23-q-governor.silas.done.mp3",
+      "sha256": "0d4a602e58e97fbf0858f2670ddf2911ee0e7ca6e55661c91047a183a2ed258b",
+      "bytes": 23449
+    },
+    {
       "path": "voice/ascend/errands.refuge.0.mp3",
       "source": "public/audio/voice/ascend/errands.refuge.0.mp3",
       "sha256": "ae3fdbdffc949f6491efec25667ffd1f1c566651484858c348a7816be4869e27",
@@ -962,6 +1221,19 @@
     "3": {
       "music": "music/the-iron-causeway.mp3",
       "bossMusic": "music/iron-juggernaut.mp3",
+      "ambience": "sfx/amb/heights.mp3"
+    },
+    "21": {
+      "music": "music/crystalline-trials.mp3",
+      "ambience": "sfx/amb/plains.mp3"
+    },
+    "22": {
+      "music": "music/the-archive-of-violet-portals.mp3",
+      "ambience": "sfx/amb/forest.mp3"
+    },
+    "23": {
+      "music": "music/fractured-the-iron-causeway.mp3",
+      "bossMusic": "music/fractured-iron-juggernaut.mp3",
       "ambience": "sfx/amb/heights.mp3"
     }
   }
