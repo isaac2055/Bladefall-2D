@@ -753,6 +753,23 @@ func draw_entity(e,origin):
    box(x+jitter,y,e.w,1,"#bfb89b")
    for c in range(3,int(e.w),7):
     line(Vector2(x+c,y+1),Vector2(x+c-1,y+e.h-1),"#424d50")
+  "slide":
+   # Sliding stones are live solids, including after they leave their map glyphs.
+   box(x,y,e.w,e.h,"#55565b")
+   box(x,y,e.w,2,"#d7ba83")
+   box(x,y+e.h-2,e.w,2,"#353b43")
+   for c in range(3,int(e.w)-2,8):
+    box(x+c,y+3,2,2,"#b39b73")
+    if e.h>9: box(x+c,y+e.h-5,2,2,"#9b8666")
+   var center=Vector2(x+e.w/2,y+e.h/2)
+   circle(center,min(4,e.h/2-1),"#343b43")
+   if e.get("moving",false):
+    var dir=Vector2(e.dirX,e.dirY)
+    line(center-dir*2,center+dir*3,"#f3d296",1.3)
+    line(center+dir*3,center+dir+Vector2(-dir.y,dir.x)*2,"#f3d296")
+    line(center+dir*3,center+dir-Vector2(-dir.y,dir.x)*2,"#f3d296")
+   else:
+    box(center.x-1,center.y-1,2,2,"#d4b988")
   "recoilPlatform":
    var base=origin+Vector2(e.ox,e.oy+e.depth+7)
    for side in [3,e.w-5]:

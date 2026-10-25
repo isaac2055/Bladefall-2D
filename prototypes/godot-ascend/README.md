@@ -1,6 +1,6 @@
 # Ascend in Godot — Outskirts, Black Woods and Broken Causeway
 
-Version **0.5.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods and Broken Causeway**, isolated from the shipping browser game on `codex/godot-ascend-causeway`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.5.1** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods and Broken Causeway**, isolated from the shipping browser game on `codex/godot-ascend-causeway`. This is an engine comparison, not a replacement release or a full Ascend port.
 
 ## Play
 
@@ -119,3 +119,5 @@ The 0.4 package passes application, polish/audio, Outskirts world/connectivity/s
 Final packaged timing observations on this 60 Hz Mac: wall-frame median about 16.7 ms, p95 about 17–22.4 ms across captures, with occasional larger spikes. The final 26.9-second mixed WAV has no clipped samples. The stable compatibility renderer is retained; an experimental Metal backend was rejected after an exit crash. The optimization work improves resource loading, drawing cost and presentation pacing, but does not promise stutter-free performance under every host load.
 
 Silas’s hook hand-in plays his existing closing recording immediately and removes any queued carry instruction, so the heart award and spoken line agree. The full application quest check verifies this exact transition.
+
+0.5.1 fixes invisible dash-movable stones: the renderer now draws their actual simulated rectangles before and after movement. `tests/sliding_block_render.gd` checks GPU-rendered pixels from an authored Causeway block in both states.
