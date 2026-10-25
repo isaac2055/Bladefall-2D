@@ -46,6 +46,6 @@ func _initialize():
   for b in edges[a]:
    if a not in edges[b]: ok=false
  if number==1 and "cl1-atlas-crossroads" in edges["cl1-o1-gate"]: ok=false
- print("PASS all main rooms and optional branches connect in both directions; no overlap between Gatehouse and Upper Watch" if ok else "FAIL physical connectivity")
+ print(("PASS all main rooms and optional branches connect in both directions"+("; no overlap between Gatehouse and Upper Watch" if number==1 else "; Black Woods secret entrance and return are connected")) if ok else "FAIL physical connectivity")
  world.shutdown()
  quit(0 if ok else 1)

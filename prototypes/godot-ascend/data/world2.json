@@ -5306,5 +5306,16 @@
         "y": 36
       }
     ]
-  }
+  },
+  "secretRewards": [
+    {
+      "id": "secret-2",
+      "room": "cl2-secret-w2",
+      "title": "Read the Colors",
+      "name": "Moss Heart",
+      "color": "#9fdc7a",
+      "x": 308,
+      "y": 107
+    }
+  ]
 }

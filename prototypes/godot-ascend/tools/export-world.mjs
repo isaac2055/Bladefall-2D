@@ -20,6 +20,16 @@ if(number===2){
   }
   return {room:id,...points[Math.min(points.length-1,Math.max(0,Math.round(fraction*(points.length-1))))]};
  })};
+ payload.secretRewards=world.secrets.map(br=>{
+  const section=br.sections.filter(s=>!s.passage&&!world.rooms.find(d=>d.id===s.room).connector).at(-1);
+  const def=world.rooms.find(d=>d.id===section.room),g=Core.createGame([def]),points=[];
+  for(const [n,k] of world.tapes[def.id])for(let i=0;i<n&&!g.exited;i++){
+   const raw={};for(const [key,ch]of Object.entries(actions))raw[key]=k.includes(ch);
+   Core.step(g,raw);points.push({x:g.p.x+4,y:g.p.y+5});g.events.length=0;
+  }
+  return {id:br.id,room:def.id,title:br.name,name:'Moss Heart',color:'#9fdc7a',...points[Math.max(0,points.length-22)]};
+ });
+
 }
 const destination=path.join(root,`prototypes/godot-ascend/data/world${number}.json`),text=JSON.stringify(payload,null,2)+'\n';
 if(process.argv.includes('--check')){if(fs.readFileSync(destination,'utf8')!==text)throw Error('World data is stale: regenerate export-world.mjs');console.log('Export matches original browser sources');process.exit(0);}

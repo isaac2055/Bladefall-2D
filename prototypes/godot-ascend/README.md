@@ -1,6 +1,6 @@
 # Ascend in Godot — Outskirts and Black Woods prototype
 
-A native Godot 4.5.1 prototype of **The Outskirts and Black Woods**, isolated from the shipping browser game on `codex/godot-ascend-black-woods`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.4.0** · A native Godot 4.5.1 prototype of **The Outskirts and Black Woods**, isolated from the shipping browser game on `codex/godot-ascend-black-woods`. This is an engine comparison, not a replacement release or a full Ascend port.
 
 ## Play
 
@@ -59,7 +59,7 @@ Additional continuous-world checks (run with the same Godot command prefix): `te
 
 ## Deliberate prototype boundaries
 
-This contains the full first-two-world room data and their supported movement/interactions, with all rooms selectable for inspection. All main-road rooms and optional branches are physically connected. The between-world passage previews remain outside the chapter travel model; use the chapter selector. Mara now registers all three bearings and speaks her existing completed-chart recording. Campaign saves, other quest chains/unlocks beyond Mara and Elsie, co-op, physical between-world passage travel, and later-region devices remain outside this prototype. Progress lasts for the current session until Start world over. Art is a more detailed Godot treatment, not a pixel-for-pixel copy of the browser renderer. The next decision is whether this looks and feels worth pursuing before expanding scope. Explore is a separate draft, left unchanged by this expansion.
+This contains the full first-two-world room data and their supported movement/interactions, with all rooms selectable for inspection. All main-road rooms and optional branches are physically connected. The between-world passage previews remain outside the chapter travel model; use the chapter selector. Mara now registers all three bearings and speaks her existing completed-chart recording. Campaign saves, other quest chains/unlocks beyond Mara, Elsie and the Moss Heart, co-op, physical between-world passage travel, and later-region devices remain outside this prototype. Progress lasts for the current session until Start world over. Art is a more detailed Godot treatment, not a pixel-for-pixel copy of the browser renderer. The next decision is whether this looks and feels worth pursuing before expanding scope. Explore is a separate draft, left unchanged by this expansion.
 
 ## Reused audio provenance
 
@@ -87,4 +87,12 @@ World 2 has **41 browser/native traces and 12,340 compared frames, with no diffe
 
 `tools/record-world2.gd -- OUTPUT_JSON` regenerates the native continuous input trace. It is a development tool excluded from exports. `--world 2 --tour` runs that trace in the actual application for presentation/performance checks. Capture reports contain frame/physics median, p95, p99 and worst timing samples; short staged samples should not be treated as comprehensive performance guarantees.
 
-The Explore comparison and proposal are in `docs/plans/godot-explore-comparison-and-proposal.md`. Explore and the shipping browser game remain unchanged. The prototype retains session-only progress; campaign saves, later worlds, online services, co-op and the workshop are not implemented. The two future-world passage previews in each chapter remain isolated until their destinations are ported.
+The Explore comparison and proposal are in `docs/plans/godot-explore-comparison-and-proposal.md`. Explore and the shipping browser game remain unchanged. The prototype retains session-only progress; campaign saves, later worlds, online services, co-op and the workshop are not implemented. Inter-world passage previews remain isolated; use the chapter selector.
+
+The final Black Woods verification also includes `tests/elsie_journey.gd`: **1,535 normal-input frames through the actual application**, chasing every moth perch, returning across the kitchen gap, climbing the branch, carrying the lantern through its return pipes and handing it to Elsie, with no deaths or forced quest steps. Her existing closing recording queues at the hand-in; the carry reminder does not start over the completion. `tests/world2_secret.gd` enters the secret from The Hollow Trunk, completes its challenge, collects the existing **Moss Heart** and returns through all six pipes to the clearing in **1,116 frames**, with no deaths. It also checks retained rewards, no duplicate heart, full reset and sealed preview/back entry. The native layout aligns the Hollow Trunk roof with this shaft and preserves its authored width; exported browser maps remain untouched.
+
+Forest layer drawing commands are cached until the parallax chunk changes, reducing measured background script drawing from roughly 1.0 ms to 0.12 ms on this Mac. On macOS, presentation is paced to the detected display refresh rate with OpenGL VSync disabled; physics remains fixed at 60 Hz. This was selected after direct timing comparisons on the host's 60 Hz display. `wall_frame_ms` records actual elapsed frame times separately from Godot's smoothed delta. Packaged GPU captures, complete timing reports and the non-silent mixed audio recording are in `.cache/godot/black-woods/`. The reported results describe this Mac and these routes; they do not establish a portable frame-rate guarantee.
+
+The 0.4 package passes application, polish/audio, Outskirts world/connectivity/stair, Black Woods integration/branch/continuous road, full Elsie and full secret checks against its packed resources. It is ad-hoc signed and verified for local use. The Explore runtime and browser `public/` tree match `e0ac32b` exactly.
+
+Final packaged timing observations on this 60 Hz Mac: wall-frame median about 16.7 ms, p95 about 17–22.4 ms across captures, with occasional larger spikes. The final 26.9-second mixed WAV has no clipped samples. The stable compatibility renderer is retained; an experimental Metal backend was rejected after an exit crash. The optimization work improves resource loading, drawing cost and presentation pacing, but does not promise stutter-free performance under every host load.

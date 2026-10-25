@@ -52,6 +52,8 @@ var preferences = ConfigFile.new()
 var test_mode = false
 var closing = false
 var measured_frames=[]
+var last_frame_usec=0
+var real_frame_times=[]
 var measured_physics=[]
 var journey=[]
 var journey_frame=0
@@ -87,6 +89,13 @@ func button(parent,value,callback):
 func _ready():
  get_tree().auto_accept_quit = false
  Controls.bind()
+ # macOS OpenGL VSync intermittently waits an extra display interval on this host.
+ # Pace presentation to the actual display instead; simulation remains fixed at 60 Hz.
+ if OS.get_name()=="macOS" and DisplayServer.get_name()!="headless":
+  var refresh=DisplayServer.screen_get_refresh_rate()
+  if refresh>0:
+   DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+   Engine.max_fps=int(round(refresh))
  if not test_mode: preferences.load("user://prototype-settings.cfg")
  RenderingServer.set_default_clear_color(Color("0b131c"))
  data = JSON.parse_string(FileAccess.get_file_as_string("res://data/world1.json"))
@@ -141,8 +150,10 @@ func _ready():
   elif args[i]=="--capture-after" and i+1<args.size(): screenshot_after = int(args[i+1])
   elif args[i]=="--menu": capture_menu = true
   elif args[i]=="--watch": watch = true
-  elif args[i]=="--tour":
-   var recording=JSON.parse_string(FileAccess.get_file_as_string("res://data/world2-tour.json"))
+  elif args[i] in ["--tour","--quest-tour"]:
+   switch_chapter(2)
+   var recording=JSON.parse_string(FileAccess.get_file_as_string("res://data/elsie-tour.json" if args[i]=="--quest-tour" else "res://data/world2-tour.json"))
+   if recording.has("start_room"): current=world.regions.find(recording.start_room)
    for part in recording.tape:
     for frame in range(int(part[0])): journey.append(part[1])
   elif args[i]=="--no-lighting": landscape.lit=false
@@ -307,7 +318,11 @@ func show_subtitle(who,line,seconds):
  landscape.speaker = who.to_lower()
 func _process(delta):
  if paused: return
- if capture_path!="" and ticks>30: measured_frames.append(delta*1000)
+ var frame_usec=Time.get_ticks_usec()
+ if capture_path!="" and ticks>30:
+  measured_frames.append(delta*1000)
+  if last_frame_usec>0: real_frame_times.append((frame_usec-last_frame_usec)/1000.0)
+ last_frame_usec=frame_usec
  notice_time=max(0,notice_time-delta)
  notice_label.modulate.a=min(1.0,notice_time)
  banner_time = max(0,banner_time-delta)
@@ -426,8 +441,16 @@ func capture():
  if audio_capture_path!="": audio.save_capture(audio_capture_path)
  var report = {"fps":Engine.get_frames_per_second(),"audio":audio.counts,"presentation":landscape.observed,"shadow_occluders":landscape.occluder_count,"lights":landscape.lights.size(),"room":sim.room.id,"camera":[landscape.camera.x,landscape.camera.y]}
  report.frame_ms=timing_stats(measured_frames)
+ report.wall_frame_ms=timing_stats(real_frame_times)
+ report.refresh_hz=DisplayServer.screen_get_refresh_rate()
+ report.vsync=DisplayServer.window_get_vsync_mode()
+ report.chapter_render_modes={}
+ for number in chapters: report.chapter_render_modes[number]=chapters[number].viewport.render_target_update_mode
  report.physics_ms=timing_stats(measured_physics)
  report.draw_calls=Performance.get_monitor(Performance.RENDER_TOTAL_DRAW_CALLS_IN_FRAME)
+ report.draw_cpu_us=landscape.draw_cpu_us
+ report.engine_process_ms=Performance.get_monitor(Performance.TIME_PROCESS)*1000
+ report.engine_physics_ms=Performance.get_monitor(Performance.TIME_PHYSICS_PROCESS)*1000
  var file = FileAccess.open(capture_path+".json",FileAccess.WRITE)
  file.store_string(JSON.stringify(report,"  "))
  file.close()
@@ -447,10 +470,11 @@ func close_app(code=0):
 
 func bearing_caption():
  if chapter_number==2:
-  if world.quest_complete: return "♥ 1 · A Place for Supper complete"
-  if world.quest_lantern: return "ELSIE · Bring the lantern home · falling lets the moths take it back"
-  if world.elsie_met: return "ELSIE · Follow the lantern moths through her branch"
-  return "BLACK WOODS · Speak with Elsie at her kitchen"
+  var prefix="♥ %d · "%world.heart_count() if world.heart_count()>0 else ""
+  if world.quest_complete: return prefix+"A Place for Supper complete"
+  if world.quest_lantern: return prefix+"ELSIE · Bring the lantern home · falling lets the moths take it back"
+  if world.elsie_met: return prefix+"ELSIE · Follow the lantern moths through her branch"
+  return prefix+"BLACK WOODS · Speak with Elsie at her kitchen"
  var parts=[]
  for name in ["ASH","GLASS","IRON"]: parts.append(("◆ " if world.bearings.has(name) else "◇ ")+name)
  return "MARA · "+"   ".join(parts)

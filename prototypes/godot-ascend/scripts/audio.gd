@@ -119,7 +119,11 @@ func tick(core,delta):
    if who.who=="mara" and world_runtime!=null and world_runtime.mara_complete:
     key="cl1-o1-muster:mara:lineDone"
     world_runtime.register_mara()
-   if who.who=="elsie" and world_runtime!=null: key=world_runtime.elsie_voice()
+   if who.who=="elsie" and world_runtime!=null:
+    # Hand-in triggers inside this approach radius. Do not start the carry reminder
+    # on the last few steps home and leave it speaking over the completion line.
+    if world_runtime.quest_lantern and not world_runtime.quest_complete: continue
+    key=world_runtime.elsie_voice()
    if not heard.has(key):
     heard[key] = true
     if manifest.voices.has(key): voice_queue.append(manifest.voices[key])

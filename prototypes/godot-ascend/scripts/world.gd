@@ -28,6 +28,9 @@ var quest_lantern=false
 var quest_complete=false
 var quest_award_frame=-1000
 var quest_deaths=0
+var secret_hearts={}
+var secret_front_entry=false
+var award_color="#ff9fc8"
 func _init(source):
  data=source.duplicate(true)
  data.world=Layout.build(source.world)
@@ -60,6 +63,9 @@ func _init(source):
    for c in range(int(room.cols)):
     if c not in [0,int(room.cols)-1] and r not in [0,int(room.rows)-1]: continue
     var key=origin+Vector2i(c,r)
+    # Keep the secret's authored two-tile entry shaft open. Rock backing outside
+    # its left edge already supplies the visible solid wall; an extra cap seals it.
+    if room.def.get("nativeOpenLeftShaft",false) and c==0 and r>=18: continue
     if cells.get(key,0)!=0: continue
     var outward=Vector2i(-1,0) if c==0 else (Vector2i(1,0) if c==int(room.cols)-1 else (Vector2i(0,-1) if r==0 else Vector2i(0,1)))
     if not cells.has(key+outward):
@@ -77,6 +83,9 @@ func restart():
  quest_complete=false
  quest_award_frame=-1000
  quest_deaths=0
+ secret_hearts.clear()
+ secret_front_entry=false
+ award_color="#ff9fc8"
  mara_complete=false
  mara_registered=false
  dormant=data.playerDefaults.duplicate(true)
@@ -143,6 +152,7 @@ func step(raw):
  tick_inactive()
  collect_progress()
  tick_elsie()
+ tick_secret_hearts()
 func tick_inactive():
  var current=active()
  for id in regions:
@@ -200,6 +210,9 @@ func retry():
 func enter(id,practice=false):
  if id==active_id and not practice: return false
  var old=active()
+ if id=="cl2-secret-w2": secret_front_entry=not practice and active_id=="cl2-w2-descent"
+ if not practice and active_id=="cl2-secret-w2" and id=="cl2-pass-29" and secret_front_entry:
+  for reward in data.get("secretRewards",[]): claim_secret(reward)
  var point=position()
  var motion=old.p
  if practice:
@@ -298,6 +311,7 @@ func tick_elsie():
    quest_lantern=false
    quest_complete=true
    quest_award_frame=frames
+   award_color="#ff9fc8"
    notices.append("♥ Heart · A Place for Supper")
   return
  var perch=data.quest.perches[elsie_perch]
@@ -310,3 +324,16 @@ func tick_elsie():
 func elsie_voice():
  elsie_met=true
  return "refuge:done" if quest_complete else ("refuge:line1" if quest_lantern else "refuge:line0")
+
+func heart_count(): return int(quest_complete)+secret_hearts.size()
+func claim_secret(reward):
+ if secret_hearts.has(reward.id): return
+ secret_hearts[reward.id]=true
+ quest_award_frame=frames
+ award_color=reward.color
+ notices.append("♥ "+reward.name+" · "+reward.title)
+func tick_secret_hearts():
+ if not secret_front_entry or active().p.state in ["dead","respawn"]: return
+ var p=active().p
+ for reward in data.get("secretRewards",[]):
+  if active_id==reward.room and abs(p.x+4-reward.x)<=9 and abs(p.y+5.5-reward.y)<=11: claim_secret(reward)

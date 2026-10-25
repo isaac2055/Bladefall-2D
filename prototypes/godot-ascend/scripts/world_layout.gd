@@ -3,9 +3,14 @@ extends RefCounted
 static func build(source):
  var world = source.duplicate(true)
  if int(world.n)==2:
-  # The authored fork's bottom-left shaft is offset one tile from the kitchen roof.
-  # Open its overlapping roof tile in the native world only; keep browser fixtures intact.
+  # Align the two authored entry shafts with the roofs below. Preserve the
+  # secret shaft's original width; keep all exported browser fixtures intact.
   for d in world.rooms:
+   if d.id=="cl2-secret-w2": d.nativeOpenLeftShaft=true
+   if d.id=="cl2-w2-descent":
+    var roof=d.map[0]
+    roof[3]="."
+    d.map[0]=roof
    if d.id=="cl2-w2-kitchen":
     var roof=d.map[0]
     roof[5]="."

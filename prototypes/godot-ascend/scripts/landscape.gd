@@ -4,6 +4,8 @@ const Room = preload("res://scripts/room_loader.gd")
 var sim
 var forest=false
 var sky_gradient: Texture2D
+var forest_layers=[]
+var draw_cpu_us={"background":0,"foreground":0,"presentation":0}
 var runtime = null
 var world_data
 var placements = {}
@@ -50,6 +52,13 @@ func _ready():
  for y in range(184):
   sky.set_pixel(0,y,Color("0b191b").lerp(Color("344937"),float(y)/225) if forest else Color("101526").lerp(Color("53636a"),float(y)/200.0))
  sky_gradient=ImageTexture.create_from_image(sky)
+ if forest:
+  for layer in range(3):
+   var node=Node2D.new()
+   node.set_meta("base",-999999)
+   node.draw.connect(draw_forest_layer.bind(layer,node))
+   add_child(node)
+   forest_layers.append(node)
  texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
  sections = world_data.world.sections.duplicate(true)
  for q in world_data.world.quests: sections.append_array(q.sections)
@@ -315,6 +324,7 @@ func target_camera():
  elif actor.y-y>136: y=actor.y-136
  return Vector2(actor.x-153+look,y)
 func _process(delta):
+ var profile_start=Time.get_ticks_usec()
  clock += delta
  if sim==null: return
  actor = previous_actor.lerp(current_actor,clamp(Engine.get_physics_interpolation_fraction(),0,1))
@@ -324,6 +334,15 @@ func _process(delta):
  var offset = Vector2.ZERO
  if shake>0 and not reduced_motion: offset=Vector2(sin(clock*97),cos(clock*83))*shake*4
  camera = (camera_float+offset).snapped(Vector2(0.5,0.5))
+ for layer in range(forest_layers.size()):
+  var node=forest_layers[layer]
+  var parallax=0.035+layer*0.055
+  var spacing=31+layer*16
+  var base=int(floor(camera.x*parallax/spacing))
+  node.position=Vector2(-fposmod(camera.x*parallax,spacing),-camera.y*0.008)
+  if node.get_meta("base")!=base:
+   node.set_meta("base",base)
+   node.queue_redraw()
  tiles.position = -camera
  occluders.position = -camera
  ambient.color = Color("bcc2d2") if lit else Color.WHITE
@@ -362,14 +381,17 @@ func _process(delta):
  post.material.set_shader_parameter("strength",0.5 if reduced_motion else 1.0)
  queue_redraw()
  front.queue_redraw()
+ draw_cpu_us.presentation=Time.get_ticks_usec()-profile_start
 func box(x,y,w,h,color): ink.draw_rect(Rect2(x,y,w,h),Color(color) if color is String else color)
 func line(a,b,color,width=1.0): ink.draw_line(a,b,Color(color) if color is String else color,width)
 func polygon(points,color): ink.draw_colored_polygon(PackedVector2Array(points),Color(color) if color is String else color)
 func circle(point,radius,color): ink.draw_circle(point,radius,Color(color) if color is String else color)
 func _draw():
+ var profile_start=Time.get_ticks_usec()
  ink = self
  if forest:
   draw_woods()
+  draw_cpu_us.background=Time.get_ticks_usec()-profile_start
   return
  ink.draw_texture_rect(sky_gradient,Rect2(0,0,320,184),false)
  # A fixed celestial depth with slowly moving cloud veils.
@@ -418,8 +440,10 @@ func _draw():
   var x = i*45-fposmod(camera.x*0.4,45)
   box(x,132,4,52,Color(0.22,0.29,0.33,0.55))
   line(Vector2(x+4,138),Vector2(x+34,138),Color(0.24,0.3,0.34,0.45),2)
+ draw_cpu_us.background=Time.get_ticks_usec()-profile_start
 func draw_front():
  if sim==null: return
+ var profile_start=Time.get_ticks_usec()
  ink = front
  ink.draw_set_transform(-camera)
  var view = Rect2(camera-Vector2(20,35),Vector2(360,235))
@@ -468,11 +492,14 @@ func draw_front():
   var col = part.color
   col.a = clamp(part.life/part.max,0,1)*0.8
   box(part.p.x,part.p.y,1,1,col)
- if runtime!=null and forest: draw_elsie_quest()
+ if runtime!=null and forest:
+  draw_elsie_quest()
+  draw_world_hearts()
  if sim.p.state!="dead": draw_knight()
  ink.draw_set_transform(Vector2.ZERO)
  if flash>0 and not reduced_motion: box(0,0,320,184,Color(0.92,0.85,0.65,flash*0.7))
  if fade>0: box(0,0,320,184,Color(0.03,0.05,0.08,fade*2.5))
+ draw_cpu_us.foreground=Time.get_ticks_usec()-profile_start
 func draw_fire(point):
  var x = point.x
  var y = point.y
@@ -792,26 +819,6 @@ func draw_woods():
  var moon=Vector2(fposmod(255-camera.x*0.018,380)-20,30-camera.y*0.012)
  circle(moon,16,Color("abb997"))
  circle(moon+Vector2(4,-1),14,Color("22382d"))
- for layer in range(3):
-  var parallax=0.035+layer*0.055
-  var spacing=31+layer*16
-  var offset=fposmod(camera.x*parallax,spacing)
-  var base=int(floor(camera.x*parallax/spacing))
-  var col=[Color("162d29"),Color("1e3930"),Color("294332")][layer]
-  for i in range(-2,14):
-   var seed=hash_at(i+base,layer)
-   var x=i*spacing-offset
-   var width=3+seed%5+layer*2
-   var top=5+seed%55-camera.y*0.008
-   box(x,top,width,200,col)
-   for branch in range(3):
-    var yy=top+10+branch*24
-    var side=1 if (seed+branch)%2 else -1
-    line(Vector2(x+width/2,yy+10),Vector2(x+width/2+side*(12+seed%14),yy-5),col,2+layer)
-    var reach=14+hash_at(i+base,branch+layer)%18
-    polygon([Vector2(x-reach,yy-2),Vector2(x-reach+4,yy-8),Vector2(x-reach+1,yy-12),Vector2(x-7,yy-16),Vector2(x-3,yy-24-layer*2),Vector2(x+5,yy-21),Vector2(x+width+4,yy-25),Vector2(x+width+11,yy-15),Vector2(x+width+reach-4,yy-13),Vector2(x+width+reach,yy-5),Vector2(x+width+reach-7,yy+2)],col)
-   if layer==2:
-    line(Vector2(x+width-1,top+20),Vector2(x+width-1,top+100),Color("3c5340"),0.7)
  for i in range(18):
   var x=fposmod(i*47.3+sin(clock*.3+i)*3-camera.x*.12,340)-10
   var y=40+fposmod(i*31.7-camera.y*.04,130)
@@ -824,15 +831,7 @@ func draw_woods():
 func draw_elsie_quest():
  if not runtime.elsie_met: return
  var point=Vector2.ZERO
- if runtime.quest_complete:
-  var age=(runtime.frames-runtime.quest_award_frame)/60.0
-  if age<3:
-   var u=clamp((age-0.6)/1.0,0,1)
-   var start=actor+Vector2(4,-10)
-   var target=camera+Vector2(285,10)
-   var at=start.lerp(target,1-pow(1-u,3))
-   polygon([at+Vector2(0,4),at+Vector2(-4,0),at+Vector2(-4,-3),at+Vector2(-1,-4),at,at+Vector2(1,-4),at+Vector2(4,-3),at+Vector2(4,0)],"#ff9fc8")
-  return
+ if runtime.quest_complete: return
  if runtime.quest_lantern: point=actor+Vector2(4,-6)
  else:
   var perch=runtime.data.quest.perches[runtime.elsie_perch]
@@ -845,3 +844,43 @@ func draw_elsie_quest():
   for i in range(4):
    var at=point+Vector2(cos(clock*2+i*1.6)*7,sin(clock*2.7+i*1.6)*4)
    box(at.x-1,at.y,2,1,"#d9dfb5")
+
+func draw_forest_layer(layer,node):
+ ink=node
+ var base=int(node.get_meta("base"))
+ var spacing=31+layer*16
+ var col=[Color("162d29"),Color("1e3930"),Color("294332")][layer]
+ for i in range(-2,14):
+  var seed=hash_at(i+base,layer)
+  var x=i*spacing
+  var width=3+seed%5+layer*2
+  var top=5+seed%55
+  box(x,top,width,200,col)
+  for branch in range(3):
+   var yy=top+10+branch*24
+   var side=1 if (seed+branch)%2 else -1
+   line(Vector2(x+width/2,yy+10),Vector2(x+width/2+side*(12+seed%14),yy-5),col,2+layer)
+   var reach=14+hash_at(i+base,branch+layer)%18
+   polygon([Vector2(x-reach,yy-2),Vector2(x-reach+4,yy-8),Vector2(x-reach+1,yy-12),Vector2(x-7,yy-16),Vector2(x-3,yy-24-layer*2),Vector2(x+5,yy-21),Vector2(x+width+4,yy-25),Vector2(x+width+11,yy-15),Vector2(x+width+reach-4,yy-13),Vector2(x+width+reach,yy-5),Vector2(x+width+reach-7,yy+2)],col)
+  if layer==2:
+   line(Vector2(x+width-1,top+20),Vector2(x+width-1,top+100),Color("3c5340"),0.7)
+
+func pixel_heart(point,color):
+ for row in [[-4,-3,3],[1,-3,3],[-5,-2,10],[-5,-1,10],[-4,0,8],[-3,1,6],[-2,2,4],[-1,3,2]]:
+  box(point.x+row[0],point.y+row[1],row[2],1,color)
+ box(point.x-3,point.y-2,1,1,Color(1,1,1,color.a))
+func draw_world_hearts():
+ for reward in runtime.data.get("secretRewards",[]):
+  var point=runtime.placements[reward.room]+Vector2(reward.x,reward.y+sin(clock*3))
+  if not Rect2(camera-Vector2(15,15),Vector2(350,214)).has_point(point): continue
+  var taken=runtime.secret_hearts.has(reward.id)
+  var color=Color(reward.color)
+  if taken: color.a=0.25
+  else: circle(point,11,Color(color,0.08))
+  pixel_heart(point,color)
+  if not taken and not runtime.secret_front_entry: ink.draw_arc(point,8,0,TAU,24,Color(.8,.85,1,.5),0.7)
+ var age=(runtime.frames-runtime.quest_award_frame)/60.0
+ if age>=0 and age<3:
+  var u=clamp((age-0.6)/1.0,0,1)
+  var at=(actor+Vector2(4,-10)).lerp(camera+Vector2(285,10),1-pow(1-u,3))
+  pixel_heart(at,Color(runtime.award_color))
