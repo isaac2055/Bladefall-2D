@@ -66,7 +66,7 @@ func paint():
  Art.fern(a,Vector2(246,183))
  canvas.draw_set_transform(Vector2.ZERO)
  caption(Vector2(20,22),"KNIGHT STUDY · idle and moving · the same 8 × 11 body")
- for i in range(3): caption(Vector2(104+i*380,156),["Classic","Wayfarer","Sentinel"][i])
+ for i in range(3): caption(Vector2(104+i*380,156),["Pixel","Ink","Illustration"][i])
  caption(Vector2(20,234),"PEOPLE OF THE ROAD")
  for i in range(names.size()): caption(Vector2(100+i*244,380),names[i].capitalize())
  caption(Vector2(20,460),"COLLECTIBLES AND DEVICES · original pickup and collision bounds")

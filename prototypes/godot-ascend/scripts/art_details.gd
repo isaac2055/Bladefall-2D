@@ -13,6 +13,10 @@ static func flora_safe(a,point,width=14,height=16):
  if a.runtime==null: return true
  var area=Rect2(point+Vector2(-4,-height),Vector2(width+4,height))
  if not ground_clear(a,point,width,height): return false
+ if a.runtime.data.has("whiteFlowers"):
+  for patch in a.runtime.data.whiteFlowers.patches:
+   var toxic=Rect2(a.runtime.placements[patch.room]+Vector2(patch.x,patch.y),Vector2(patch.w,patch.h))
+   if area.grow(3).intersects(toxic): return false
  for id in a.runtime.nearby(area.grow(8)):
   var core=a.runtime.cores[id]
   for e in core.ents:

@@ -1,3 +1,15 @@
+# Outskirts hazards and new renderers · 0.9.0 · 2026-10-25
+
+Current branch: `codex/godot-ascend-revision`. Local app: `prototypes/godot-ascend/exports/Bladefall Ascend Prototype.app`.
+
+Native World 1 bunnies have autonomous clocks, including unvisited sleeping rooms and player freeze/death, with phase retained on retry. Four native white-flower patches apply three seconds of sap: 55% run, 67% jump launch, 60% dash, immediate weakening on contact, refresh on touch and full recovery/cure. `data/white-flowers.json` holds positions/tuning; original world JSON and browser sources are untouched. Source fixture parity remains distinct from these requested live changes. Watch uses the original reference fixture; Take control / entry / chapter switches restore native hazards.
+
+The old costumes and extra gaits are replaced with Pixel, Ink and Illustration renderers, independent people styles and measured walking. `character_styles.gd` draws continuous-curve characters, glass lanterns and Outskirts timber/iron lifts. Full-resolution character rendering supports non-pixel edges. Existing narration is reused. No new quests or audio synthesis. No editor tooling was built, and Elsie's table, Mirror Thicket spike layout and Black Woods bunny colors were deliberately left alone.
+
+`tests/revision.gd` checks new mechanics, clock continuity, phase/cure/recovery, all patch contacts, clean versus lethal crossings, native/reference transitions and preferences. `tests/art.gd` covers independent style combinations, pixels and real save/reload. Validation: 25 packaged integration cases; GPU style/prop/entity captures; 322 original reference traces / 95,367 matching frames. The native flower/bunny changes have their own tests. Preference startup is tested with an obsolete gait value and restores measured walking. The mixed audio take has no clipped samples and the local signature verifies. Evidence: `.cache/godot/revision/`. See the README 0.9 section for detailed behavior and scope.
+
+---
+
 # Character and environment art · 0.8.0 · 2026-10-25
 
 Current branch: `codex/godot-ascend-art`. Local app: `prototypes/godot-ascend/exports/Bladefall Ascend Prototype.app`. Esc → Knight appearance provides three walks plus Off, three similar knight designs and live previews. Choices persist across relaunches and all chapters. The idle cloth hangs down with a slight wave; moving cloth retains the previous trailing curve.

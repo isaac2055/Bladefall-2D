@@ -1,0 +1,12 @@
+{
+  "durationFrames": 180,
+  "runMultiplier": 0.55,
+  "jumpMultiplier": 0.67,
+  "dashMultiplier": 0.6,
+  "patches": [
+    {"room":"cl1-o1-road","x":64,"y":137,"w":8,"h":7,"reason":"Before the first thorn gap; jumping over the patch preserves the crossing."},
+    {"room":"cl1-o1-verge","x":64,"y":137,"w":8,"h":7,"reason":"The short approach to the broad thorn bed rewards an early jump."},
+    {"room":"cl1-o1-mile","x":32,"y":137,"w":8,"h":7,"reason":"At the launch ledge before the crumbling-platform chain."},
+    {"room":"cl1-o1-yard","x":32,"y":137,"w":8,"h":7,"reason":"Before the elevated climb, where a weakened jump or dash is dangerous."}
+  ]
+}

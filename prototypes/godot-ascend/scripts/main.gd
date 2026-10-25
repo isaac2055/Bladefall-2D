@@ -51,10 +51,11 @@ var mute_music_level = 0.55
 var volume_sliders = {}
 var preferences = ConfigFile.new()
 var preferences_path="user://prototype-settings.cfg"
-var walking_picker: OptionButton
+var npc_picker: OptionButton
 var design_picker: OptionButton
 var appearance_preview: Control
 var preview_clock=0.0
+var preview_people=[]
 var test_mode = false
 var closing = false
 var measured_frames=[]
@@ -120,18 +121,19 @@ func _ready():
   container.position = Vector2(0,48)
   container.size = Vector2(1280,736)
   container.stretch = true
-  container.stretch_shrink = 2
+  container.stretch_shrink = 1
   var view = SubViewport.new()
-  view.size = Vector2i(640,368)
+  view.size = Vector2i(1280,736)
   view.render_target_update_mode = SubViewport.UPDATE_ALWAYS if number==1 else SubViewport.UPDATE_DISABLED
   view.canvas_item_default_texture_filter = Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST
   container.add_child(view)
   add_child(container)
   var scene = Landscape.new()
-  scene.scale = Vector2(2,2)
+  scene.scale = Vector2(4,4)
   scene.world_data = chapter_world.data
   scene.runtime = chapter_world
-  scene.walking_style=clampi(int(preferences.get_value("display","walking_style",1)),0,3)
+  scene.walking_style=1
+  scene.npc_design=clampi(int(preferences.get_value("display","npc_design",1)),0,2)
   scene.knight_design=clampi(int(preferences.get_value("display","knight_design",0)),0,2)
   scene.reduced_motion = preferences.get_value("display","reduced_motion",false)
   view.add_child(scene)
@@ -247,7 +249,7 @@ func create_interface():
  column.add_child(row)
  button(row,"Resume",func():set_paused(false))
  button(row,"Retry · R",func():retry_room();set_paused(false))
- watch_button = button(row,"Watch route",func():toggle_watch();set_paused(false))
+ watch_button = button(row,"Watch reference",func():toggle_watch();set_paused(false))
  restart_button=button(column,"Start world over",restart_world)
  chapter_picker=OptionButton.new()
  for number in CHAPTERS:
@@ -262,22 +264,31 @@ func create_interface():
  room_picker.item_selected.connect(func(index):load_section(index);set_paused(false))
  column.add_child(room_picker)
  text(column,"KNIGHT APPEARANCE",12,"#bba984")
- walking_picker=OptionButton.new()
- for label in ["Walking · Off","Walking · Measured","Walking · Stride","Walking · March"]: walking_picker.add_item(label)
- walking_picker.select(landscape.walking_style)
- walking_picker.item_selected.connect(func(index):apply_art_settings(index,landscape.knight_design))
- column.add_child(walking_picker)
+ text(column,"Walking · Measured",14,"#a6b7bb")
  design_picker=OptionButton.new()
- for label in ["Knight · Classic","Knight · Wayfarer","Knight · Sentinel"]: design_picker.add_item(label)
+ for label in ["Knight · Pixel","Knight · Ink","Knight · Illustration"]: design_picker.add_item(label)
  design_picker.select(landscape.knight_design)
- design_picker.item_selected.connect(func(index):apply_art_settings(landscape.walking_style,index))
+ design_picker.item_selected.connect(func(index):apply_character_settings(index,landscape.npc_design))
  column.add_child(design_picker)
+ npc_picker=OptionButton.new()
+ for label in ["People · Pixel","People · Ink","People · Illustration"]: npc_picker.add_item(label)
+ npc_picker.select(landscape.npc_design)
+ npc_picker.item_selected.connect(func(index):apply_character_settings(landscape.knight_design,index))
+ column.add_child(npc_picker)
  appearance_preview=Control.new()
- appearance_preview.custom_minimum_size=Vector2(560,88)
+ appearance_preview.custom_minimum_size=Vector2(560,168)
  appearance_preview.mouse_filter=Control.MOUSE_FILTER_IGNORE
+ for name in ["vey","mara","rowan","elsie","silas"]:
+  var found=false
+  for chapter in chapters.values():
+   for room in chapter.world.data.world.rooms:
+    for person in room.get("people",[]):
+     if person.who==name and not found:
+      preview_people.append(person)
+      found=true
  appearance_preview.draw.connect(draw_appearance_preview)
  column.add_child(appearance_preview)
- text(column,"Idle cape · walk right · walk left",12,"#90a6ac")
+ text(column,"Idle / walk / turn · People preview below",12,"#90a6ac")
  text(column,"SOUND",12,"#bba984")
  for bus in ["Music","Effects","Voices","Ambience"]:
   var sound_row = HBoxContainer.new()
@@ -311,25 +322,28 @@ func create_interface():
  text(column,"ARROWS  Move and aim\nSPACE / C / J  Jump     D / X / K  Dash\nA / Z / SHIFT / L  Cling, climb, carry or throw\nW / V / I  Strike     R  Retry     M  Music\nController: stick / d-pad · A jump · X/B dash · LB cling",15,"#b5c0bd")
  text(column,"Native Ascend · six preloaded chapters",12,"#70888f")
  pause_panel.hide()
-func apply_art_settings(walk,design):
+func apply_character_settings(design,npc):
  for chapter in chapters.values():
-  chapter.landscape.walking_style=walk
+  chapter.landscape.walking_style=1
   chapter.landscape.knight_design=design
+  chapter.landscape.npc_design=npc
   chapter.landscape.queue_redraw()
   chapter.landscape.front.queue_redraw()
- walking_picker.select(walk)
  design_picker.select(design)
+ npc_picker.select(npc)
  appearance_preview.queue_redraw()
  save_preferences()
 func draw_appearance_preview():
  var old_ink=landscape.ink
  landscape.ink=appearance_preview
- appearance_preview.draw_rect(Rect2(0,0,560,88),Color("#0e1a26"))
+ appearance_preview.draw_rect(Rect2(0,0,560,168),Color("#0e1a26"))
  appearance_preview.draw_set_transform(Vector2(72,12),0,Vector2(5,5))
  for i in range(3):
   var pose=sim.p.duplicate(true)
   pose.merge({"vx":0 if i==0 else 90,"vy":0,"facing":-1 if i==2 else 1,"state":"normal","onGround":true,"tired":false,"parryTimer":0,"strikeTimer":0,"carrying":null,"dashes":1},true)
   landscape.draw_knight(pose,Vector2(i*32,0),preview_clock*65)
+ appearance_preview.draw_set_transform(Vector2(40,150),0,Vector2(3,3))
+ for i in range(preview_people.size()): landscape.draw_person(preview_people[i],Vector2(i*32,0),false)
  appearance_preview.draw_set_transform(Vector2.ZERO)
  landscape.ink=old_ink
 func set_voices(value):
@@ -341,7 +355,8 @@ func save_preferences():
  for bus in audio.levels: preferences.set_value("audio",bus,audio.levels[bus])
  preferences.set_value("audio","voices",audio.voices_enabled)
  preferences.set_value("display","reduced_motion",landscape.reduced_motion)
- preferences.set_value("display","walking_style",landscape.walking_style)
+ preferences.set_value("display","walking_style",1)
+ preferences.set_value("display","npc_design",landscape.npc_design)
  preferences.set_value("display","knight_design",landscape.knight_design)
  preferences.save(preferences_path)
 func toggle_fullscreen():
@@ -399,11 +414,12 @@ func toggle_watch():
  if watch:
   watch = false
   sim.world_context=world
+  world.configure_live_core(sim)
   if world.seam_tiles.has(sim.room.id):
    world.set_seam(sim.room.id,true)
    sim.room=world.parsed[sim.room.id]
   hold = 0
-  watch_button.text = "Watch route"
+  watch_button.text = "Watch reference"
  else:
   watch = true
   load_section(current)
@@ -414,11 +430,16 @@ func load_section(index,smooth_join=false):
  world.enter(id,true)
  sim=world.active()
  if watch:
+  sim.autonomous_sweepers=false
+  sim.pollen_config={}
+  sim.white_flowers=[]
   sim.load_room(world.watch_room(id))
   if world.seam_tiles.has(id): world.set_seam(id,true)
   world.restore_progress(sim)
   sim.world_context=null
- else: sim.world_context=world
+ else:
+  world.configure_live_core(sim)
+  sim.world_context=world
  landscape.load_scene(sim,smooth_join)
  audio.room_changed(sim)
  tape = []
@@ -427,8 +448,8 @@ func load_section(index,smooth_join=false):
  tape_frame = 0
  hold = 0
  room_picker.select(index)
- watch_button.text = "Take control" if watch else "Watch route"
- title.text = data.world.name.to_upper()+" · "+("WATCHING" if watch else "ASCEND")
+ watch_button.text = "Take control" if watch else "Watch reference"
+ title.text = data.world.name.to_upper()+" · "+("REFERENCE" if watch else "ASCEND")
  room_banner.text = sim.room.name.to_upper()
  banner_time = 2.4
 func input_now(): return Controls.read()
@@ -478,7 +499,7 @@ func _physics_process(_delta):
  dash_label.text = "◆ DASH" if sim.p.dashes>0 else "◇ DASH"
  dash_label.modulate = Color("edbf74") if sim.p.dashes>0 else Color("687e91")
  death_label.text = "%d DEATHS" % sim.deaths
- if watch: status.text = "RECORDED ROUTE     ·     Esc opens the menu     ·     Take control to play"
+ if watch: status.text = "ORIGINAL ROUTE     ·     Esc opens the menu     ·     Take control to play the updated world"
  else: status.text = "← → MOVE     SPACE / C JUMP     D DASH     A CLING / CARRY     W STRIKE     R RETRY"
  if capture_path!="" and ticks>30: measured_physics.append((Time.get_ticks_usec()-physics_start)/1000.0)
  if capture_path!="" and ticks==screenshot_after: capture.call_deferred()
@@ -498,7 +519,7 @@ func next_section():
     if not watch:
      sim.carry_from(snapshot,{"x":source.x*8,"y":source.y*8},{"x":destination.x*8,"y":destination.y*8},sim.room.def.get("atlasJunction",false))
      landscape.snap_actor()
-    if tape.is_empty() and watch: watch=false;sim.world_context=world;watch_button.text="Watch route"
+    if tape.is_empty() and watch: watch=false;sim.world_context=world;world.configure_live_core(sim);watch_button.text="Watch reference"
     return
  watch = false
 func capture():
@@ -536,6 +557,7 @@ func close_app(code=0):
  get_tree().quit(code)
 
 func bearing_caption():
+ if sim.p.get("pollen",0)>0: return "WHITE FLOWER SAP · movement weakened · %.1fs"%(sim.p.pollen/60.0)
  if chapter_number>=21:
   var prefix="♥ %d · "%world.heart_count() if world.heart_count()>0 else ""
   if sim.oath_root!=null and not sim.oath_root.taken:
@@ -580,7 +602,7 @@ func restart_world():
  tape=[]
  tape_frame=0
  watch=false
- watch_button.text="Watch route"
+ watch_button.text="Watch reference"
  title.text=data.world.name.to_upper()+" · ASCEND"
  current=0
  sim=world.active()
@@ -610,6 +632,8 @@ func switch_chapter(number):
  world=chapter.world
  data=world.data
  sim=world.active()
+ sim.world_context=world
+ world.configure_live_core(sim)
  landscape=chapter.landscape
  viewport=chapter.viewport
  audio.world_runtime=world
@@ -624,7 +648,7 @@ func switch_chapter(number):
  tape=[]
  hold=0
  tape_frame=0
- watch_button.text="Watch route"
+ watch_button.text="Watch reference"
  room_picker.clear()
  for i in range(data.world.rooms.size()): room_picker.add_item("%02d · %s" % [i+1,data.world.rooms[i].get("name",data.world.rooms[i].id)])
  room_picker.select(current)

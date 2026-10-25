@@ -48,6 +48,9 @@ var shards = {}
 var events = []
 var defaults = {}
 var sweepers = []
+var autonomous_sweepers=false
+var white_flowers=[]
+var pollen_config={}
 var sweeper_clock = 0
 var awake = true
 var decks_awake = false
@@ -61,6 +64,7 @@ func _init(constants: Dictionary, player_defaults: Dictionary):
  defaults = player_defaults
 
 func load_room(parsed: Dictionary, respawn = false):
+ var saved_sweeper_clock=sweeper_clock if autonomous_sweepers else 0
  room = parsed
  p = defaults.duplicate(true)
  p.x = room.spawn.x
@@ -94,7 +98,7 @@ func load_room(parsed: Dictionary, respawn = false):
  spent_footholds=ents.filter(func(e):return e.type=="foothold")
  decks_awake=false
  sweepers = []
- sweeper_clock = 0
+ sweeper_clock = saved_sweeper_clock
  awake = not (room.def.get("study",false) or room.def.get("combat",{}).get("waitForMove",false))
  for d in room.def.get("sweepers",[]):
   var e = {"path":[],"period":d.get("period",180),"phase":d.get("phase",0),"radius":d.get("radius",4),"loop":d.get("loop",false),"lengths":[],"length":0.0}
@@ -105,7 +109,7 @@ func load_room(parsed: Dictionary, respawn = false):
    var distance = sqrt(pow(a[0]-b[0],2)+pow(a[1]-b[1],2))
    e.lengths.append(distance)
    e.length += distance
-  e.merge(sweeper_at(e,0))
+  e.merge(sweeper_at(e,sweeper_clock))
   e.prevX = e.x
   e.prevY = e.y
   sweepers.append(e)
@@ -244,6 +248,7 @@ func jump(inp,kind = "jump",direction = 0):
  var l = lift()
  p.vx += l.x
  p.vy += l.y
+ p.vy*=pollen_scale("jump")
  p.varJumpSpeed = p.vy
  if kind == "jump": p.liftTimer = 0
  else:
@@ -282,6 +287,7 @@ func super_jump():
  var l = lift()
  p.vx += l.x
  p.vy += l.y
+ p.vy*=pollen_scale("jump")
  p.varJumpSpeed = p.vy
  p.liftTimer = 0
  p.state = "normal"
@@ -367,11 +373,12 @@ func normal_update(inp):
  if buf.dash > 0 and p.dashes > 0 and p.dashCooldown <= 0 and p.carrying == null:
   start_dash(inp)
   return
+ var pace=pollen_scale("run")
  var mult = p.get("traction",1) if p.onGround else K.airMult
  if (p.fling or p.get("coast",false)) and not p.onGround and abs(p.vx)>K.maxRun:
   if inp.mx==-sign(p.vx): p.vx=approach(p.vx,0,K.runReduce*mult*DT)
- elif abs(p.vx) > K.maxRun and sign(p.vx) == inp.mx: p.vx = approach(p.vx,K.maxRun*inp.mx,K.runReduce*mult*DT)
- else: p.vx = approach(p.vx,K.maxRun*inp.mx,K.runAccel*mult*DT)
+ elif abs(p.vx) > K.maxRun*pace and sign(p.vx) == inp.mx: p.vx = approach(p.vx,K.maxRun*pace*inp.mx,K.runReduce*mult*DT)
+ else: p.vx = approach(p.vx,K.maxRun*pace*inp.mx,K.runAccel*mult*DT)
  if p.wallBoostTimer > 0 and inp.mx == p.wallBoostDir:
   p.vx = K.wallJumpH*inp.mx
   p.stamina += K.climbJumpCost
@@ -454,9 +461,9 @@ func dash_update(inp):
   var length = sqrt(dx*dx+dy*dy)
   p.dashDir = {"x":dx/length,"y":dy/length}
   if dx != 0: p.facing = sign(dx)
-  p.vx = p.dashDir.x*K.dashSpeed
-  p.vy = p.dashDir.y*K.dashSpeed
-  if sign(p.beforeDash.x) == sign(p.vx) and abs(p.beforeDash.x)>abs(p.vx): p.vx = p.beforeDash.x
+  p.vx = p.dashDir.x*K.dashSpeed*pollen_scale("dash")
+  p.vy = p.dashDir.y*K.dashSpeed*pollen_scale("dash")
+  if p.get("pollen",0)<=0 and sign(p.beforeDash.x) == sign(p.vx) and abs(p.beforeDash.x)>abs(p.vx): p.vx = p.beforeDash.x
   if p.dashDir.y > 0 and p.dashDir.x != 0: p.ducking = true
   emit_event("dash")
  if MovementTwo.dash_catch(self): return
@@ -493,8 +500,8 @@ func dash_update(inp):
  if p.dashTimer <= 0:
   MovementTwo.dash_end(self)
   if p.dashDir.y <= 0:
-   p.vx = p.dashDir.x*K.endDashSpeed*(abs(p.vx)/K.dashSpeed if abs(p.vx)>K.dashSpeed else 1)
-   p.vy = p.dashDir.y*K.endDashSpeed
+   p.vx = p.dashDir.x*K.endDashSpeed*pollen_scale("dash")*(abs(p.vx)/K.dashSpeed if abs(p.vx)>K.dashSpeed else 1)
+   p.vy = p.dashDir.y*K.endDashSpeed*pollen_scale("dash")
   if p.vy < 0: p.vy *= K.endDashUpMult
   p.state = "normal"
   p.ducking = false
@@ -542,6 +549,8 @@ func read_input(raw):
 func step(raw):
  frame += 1
  events = []
+ if autonomous_sweepers: advance_sweepers(sweeper_clock+1)
+ tick_pollen()
  raw = Fractured.input(self,GravityDevice.input(self,raw.duplicate()))
  for key in room.def.get("lock",[]): raw[key] = false
  if freeze > 0:
@@ -568,11 +577,7 @@ func step(raw):
  if awake and (not combat.is_empty() or foes!=null): parry_step(inp)
  var from = {"x":p.x,"y":p.y}
  update_devices(inp)
- if awake: sweeper_clock += 1
- for e in sweepers:
-  e.prevX = e.x
-  e.prevY = e.y
-  e.merge(sweeper_at(e,sweeper_clock),true)
+ if not autonomous_sweepers: advance_sweepers(sweeper_clock+(1 if awake else 0))
  if ents.any(func(e):return e.type=="stone") and ents.filter(func(e):return e.type=="stone").all(func(e):return e.get("lit",false)):
   for d in room.def.get("bearingLifts",[]):
    for e in ents:
@@ -942,6 +947,32 @@ func update_zip(e):
    e.state = "back"
    e.t = 0
 
+func advance_sweepers(clock):
+ sweeper_clock=clock
+ for e in sweepers:
+  e.prevX=e.x
+  e.prevY=e.y
+  e.merge(sweeper_at(e,sweeper_clock),true)
+func tick_pollen():
+ if pollen_config.is_empty(): return
+ var timer=max(0,int(p.get("pollen",0))-1)
+ if p.state not in ["dead","respawn"]:
+  for patch in white_flowers:
+   if overlap(p,patch):
+    if p.get("pollen",0)<=0:
+     var dashing=p.state=="dash"
+     p.vx*=float(pollen_config.dashMultiplier if dashing else pollen_config.runMultiplier)
+     if dashing: p.vy*=float(pollen_config.dashMultiplier)
+     elif p.vy<0: p.vy*=float(pollen_config.jumpMultiplier)
+     if p.varJumpSpeed<0: p.varJumpSpeed*=float(pollen_config.jumpMultiplier)
+     emit_event("pollen-slow")
+    timer=int(pollen_config.durationFrames)
+    break
+ else: timer=0
+ if timer>0: p.pollen=timer
+ else: p.erase("pollen")
+func pollen_scale(kind):
+ return float(pollen_config.get(kind+"Multiplier",1)) if p.get("pollen",0)>0 else 1.0
 func sweeper_at(e,clock):
  if e.path.size()==1: return {"x":e.path[0][0],"y":e.path[0][1]}
  var u = fposmod(clock+e.phase,e.period)/e.period

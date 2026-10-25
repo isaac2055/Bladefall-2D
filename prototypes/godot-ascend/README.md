@@ -1,6 +1,6 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.8.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, isolated from the shipping browser game on `codex/godot-ascend-art`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.9.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, isolated from the shipping browser game on `codex/godot-ascend-revision`. This is an engine comparison, not a replacement release or a full Ascend port.
 
 ## Play
 
@@ -17,7 +17,19 @@ Controls now match the browser defaults: **arrows** move/aim, **Space/C/J** jump
 The pause menu includes a **chapter selector** for The Outskirts, Black Woods, Broken Causeway and their three Fractured versions. All six chapters are constructed before play, and switching preserves each chapter’s progress and position. **Start world over** resets the current world, bearings, room machinery, deaths and dialogue history without closing the app. Retry resets only the current room and preserves bearings and lit stakes. The pause menu also contains the room selector, Watch/Take control, four separate volume controls, spoken dialogue toggle, reduced motion and lighting comparison. Audio and display preferences persist locally. The app starts directly in the game rather than an engine-study toolbar.
 
 
-## Character and environment art · 0.8.0
+## Outskirts hazards and character renderers · 0.9.0
+
+Outskirts dust bunnies now advance while their rooms are unvisited/asleep and during the player's freeze, death and respawn. Retry preserves their phase; world restart begins a new clock. Other machinery retains its authored wake rules. This is a native World 1 behavior change; the other chapters' bunny behavior and colors are unchanged.
+
+Four hand-placed **white flower** patches in the Outskirts put Vey's warning into play. Sap lasts 180 physics frames (three seconds) after last contact and refreshes while touching a patch. Running is reduced to 55%, jump launch to 67%, and dash speed to 60%; an existing dash/jump is weakened immediately on first contact. The status line shows remaining time and petals mark the affected knight. Death/retry cures it. Ordinary movement constants are never edited. The first gap has a tested clean jump over the patch and thorns; touching the patch makes the same crossing lethal. Harmless colored flowers stay clear of the toxic patches. Native placements and tuning live in `data/white-flowers.json`; original browser maps are unchanged.
+
+Esc → Knight appearance now offers **Pixel, Ink and Illustration**, with independent **People** styles and live previews. The two new knight renderers use continuous curves and pen/paint shapes, keeping the silver helmet, visor, blue body and golden cloth. They replace the old costume swaps. All characters render at full output resolution; pixel terrain remains crisp. Measured walking is fixed for the base knight and the other gait choices have been removed. Saved obsolete gait choices migrate to measured. NPCs have new drawn silhouettes/faces with their existing tools/poses, plus the original pixel option.
+
+The real carried lantern now uses the same handled glass/flame/cage drawing as the floor lantern, with raised hands instead of an anonymous block. Outskirts lifts have timber decking, iron straps, rivets, cables and pulleys. Causeway lift artwork is retained. No changes were made to Elsie's table placement/shape, Mirror Thicket's spike layout or Black Woods bunny colors. No level editor was built; the question about Godot authoring was answered in chat.
+
+**Watch reference** remains the original browser-reference room fixture, without the new live-only flower hazards or autonomous bunny clock. Take control, room entry and chapter switching restore the live rules. `tests/revision.gd` checks these transitions, all bunny clocks, freeze/death/retry, contact/expiration/cure, recovery, run/jump/dash strength, in-flight dash contact, all four patches, lethal versus clean crossings, style selection and saved preferences. `tests/art.gd` now tests all knight/people combinations and renderer pixels. The final packaged build passes 25 integration/regression cases, GPU renderer/style checks and all 322 unmodified browser-reference traces / 95,367 frames. Native mechanic tests cover the requested deviations separately. A mixed audio capture has no clipped samples; the local app signature verifies. Evidence lives in `.cache/godot/revision/`.
+
+## Character and environment art · 0.8.0 (history)
 
 **Esc → Knight appearance** offers **Measured, Stride, March, or Off** for walking and **Classic, Wayfarer, or Sentinel** for the knight. The three designs retain the same small blue knight, narrow visor and gold cloth silhouette. Live previews show idle and both walking directions while paused. Both selections persist and apply across all six chapters; the menu scrolls to keep the audio/display controls accessible. Off freezes the legs while retaining the normal movement, cape and feel effects.
 

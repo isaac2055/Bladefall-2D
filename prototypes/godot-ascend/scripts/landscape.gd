@@ -1,10 +1,12 @@
 extends Node2D
 ## Presentation is interpolated and layered; the integer simulation is never modified here.
+const Styles=preload("res://scripts/character_styles.gd")
 const Art=preload("res://scripts/art_details.gd")
 const Room = preload("res://scripts/room_loader.gd")
 var sim
 var walking_style=1
 var knight_design=0
+var npc_design=1
 var flora_adjusted=0
 var flora_skipped=0
 var fractured=false
@@ -630,6 +632,15 @@ func draw_front():
  for surface in surfaces:
   if not view.has_point(surface): continue
   Art.grass(self,surface)
+ if runtime!=null and sim.world_context!=null and runtime.data.has("whiteFlowers"):
+  for patch in runtime.data.whiteFlowers.patches:
+   var at=runtime.placements[patch.room]+Vector2(patch.x,patch.y)
+   if not view.has_point(at): continue
+   for i in range(3):
+    var top=at+Vector2(1+i*2.6,1+sin(clock*1.5+i)*.25)
+    Styles.line(self,at+Vector2(1+i*2.6,7),top,"#839b83",.5)
+    Styles.oval(self,top,Vector2(1.5,.9),"#fffbee","#cdd8c7",.12)
+    circle(top,.3,"#d0c397")
  for item in decorations:
   var point = item.origin+Vector2(item.d.c*8,item.d.r*8+8)
   if view.has_point(point) and (item.d.k not in ["trumpets","fern"] or Art.flora_safe(self,point)): draw_prop(item.d.k,point)
@@ -845,12 +856,14 @@ func draw_person(who,point,active):
  var y = point.y
  var phase = clock*1.6+x*.03
  var sit = 3 if who.who in ["vey","rowan","hale"] else 0
- Art.person_base(self,who,point,active)
+ if npc_design==0: Art.person_base(self,who,point,active)
+ else: Styles.person(self,who,point,active,npc_design)
  match who.who:
   "silas":
-   box(x-1,y-14,7,6,"#a6a49a")
-   box(x,y-13,5,2,"#45454a")
-   box(x+1,y-13,1,1,"#edc783")
+   if npc_design==0:
+    box(x-1,y-14,7,6,"#a6a49a")
+    box(x,y-13,5,2,"#45454a")
+    box(x+1,y-13,1,1,"#edc783")
    circle(Vector2(x+3,y-5),2,"#b29868")
    line(Vector2(x+3,y-8),Vector2(x+3,y-2),"#574a38")
    box(x-6,y-8,4,1,"#c7a76a")
@@ -1031,6 +1044,9 @@ func draw_entity(e,origin):
     line(Vector2(x+e.w/2,y+2),Vector2(x+e.w/2-3,y+e.h/2),"#312c2d",1.5)
     line(Vector2(x+e.w/2-3,y+e.h/2),Vector2(x+e.w/2+2,y+e.h-2),"#312c2d",1.5)
   "zip":
+   if world_data!=null and int(world_data.world.n)==1:
+    Styles.lift(self,e,origin)
+    return
    line(origin+Vector2(e.ox+e.w/2,e.oy),origin+Vector2(e.tx+e.w/2,e.ty),"#8c967e",0.7)
    box(x,y,e.w,e.h,"#53635e")
    box(x,y,e.w,2,"#c8b58a")
@@ -1083,13 +1099,7 @@ func draw_entity(e,origin):
     line(sparkle-Vector2(1,0),sparkle+Vector2(1,0),Color(color,.7),.6)
     line(sparkle-Vector2(0,1),sparkle+Vector2(0,1),Color(color,.7),.6)
   "lantern":
-   ink.draw_arc(Vector2(x+4,y),2,PI,TAU,8,Color("#c7b77e"),.8)
-   circle(Vector2(x+4,y+4),8,Color(1,.78,.4,.08))
-   box(x+2,y,4,2,"#9c9d80")
-   box(x,y+2,8,6,"#9a805a")
-   box(x+2,y+3,4,4,"#f4d38b")
-   box(x+3,y+3+sin(clock*7)*.3,2,3,"#fff1bc")
-   box(x+3,y+2,1,6,"#a69a73")
+   Styles.lantern(self,Vector2(x,y))
   "plate":
    box(x-1,y-1,e.w+2,e.h+1,"#485959")
    box(x,y,e.w,e.h,"#9fc7a6" if e.get("down",false) else "#b9ac7f")
@@ -1110,6 +1120,10 @@ func draw_knight(pose=null,at=Vector2(INF,INF),phase_override=-1.0):
   var angle=atan2(aim.y,aim.x) if aim.x!=0 or aim.y!=0 else (0.0 if face>0 else PI)
   ink.draw_arc(Vector2(x+4,y+5.5),13,angle-1.1,angle+1.1,16,Color("#d6f4ff"),1.5)
  var ready_color = Color("ffb347") if p.dashes>0 else Color("56708c")
+ if knight_design>0:
+  Styles.knight(self,p,Vector2(x,y),phase,knight_design)
+  draw_knight_attachments(p,Vector2(x,y))
+  return
  var cloak=plume
  if preview:
   cloak=[Vector2(x+3,y+4)]
@@ -1129,34 +1143,23 @@ func draw_knight(pose=null,at=Vector2(INF,INF),phase_override=-1.0):
  var width=max(6,round(8*sx))
  var bx=x+4-width/2
  var by=y+11-height
- var colors=["#2d4a78","#345569","#35466b"]
- var body="#c05050" if p.get("tired",false) and int(sim.frame/4)%2==0 else colors[knight_design]
- var walking_now=p.onGround and p.state=="normal" and abs(p.vx)>10 and walking_style>0
- var cycle=phase/(4.7 if walking_style==1 else (5.6 if walking_style==2 else 4.0))
+ var body="#c05050" if p.get("tired",false) and int(sim.frame/4)%2==0 else "#2d4a78"
+ var walking_now=p.onGround and p.state=="normal" and abs(p.vx)>10
+ var cycle=phase/4.7
  for side in [-1,1]:
   var stride=sin(cycle+(.0 if side<0 else PI)) if walking_now else 0.0
-  var offset=round(stride*(1 if walking_style==1 else 1.8))
-  var lift=0 if not walking_now else (round(max(0,-stride)*(2 if walking_style==3 else 1)))
+  var offset=round(stride)
+  var lift=0 if not walking_now else (round(max(0,-stride)*1))
   var foot=bx+(1 if side<0 else width-3)+offset
   box(foot,by+height-2-lift,2,2,"#1c2938")
   box(foot,by+height-2-lift,1,1,"#82909d")
-  if walking_now and walking_style==2: line(Vector2(bx+(2 if side<0 else width-3),by+height-4),Vector2(foot,by+height-2-lift),"#586a83",1)
  box(bx+1,by+4,width-2,height-6,body)
- box(bx+1,by+4,width-2,1,["#4a6aa0","#64878d","#637391"][knight_design])
+ box(bx+1,by+4,width-2,1,"#4a6aa0")
  box(bx+1,by+height-4,width-2,1,"#6b4e2a")
  box(bx if face>0 else bx+width-1,by+height-6,1,4,"#c9ced8")
  box(bx+1,by,width-2,5,"#b9c2cf")
  box(bx+1,by+4,width-2,1,"#7c8796")
  box(bx+width-4 if face>0 else bx+2,by+2,2,1,"#1a1f28")
- if knight_design==1:
-  box(bx+2,by+5,1,height-8,"#adc0b6")
-  box(bx+width/2,by+height-4,1,1,"#e6c58f")
-  box(bx+1,by+1,1,2,"#e0daca")
- elif knight_design==2:
-  box(bx,by+4,2,2,"#a7b7c9")
-  box(bx+width-2,by+4,2,2,"#c2c9ce")
-  box(bx+width/2,by,1,4,"#e0e1d4")
-  box(bx+1,by+3,width-2,1,"#6a7789")
  box(bx+width/2-1,by-2,2,2,ready_color)
  box(bx+1 if face>0 else bx+width-3,by+4,2,1,ready_color)
  if p.state=="climb":
@@ -1165,14 +1168,22 @@ func draw_knight(pose=null,at=Vector2(INF,INF),phase_override=-1.0):
   box(x+1,y-5,6*clamp(p.stamina/110,0,1),1,"#d2c08b")
  elif p.vy< -20:
   box(bx if face>0 else bx+width-1,by+3,1,2,"#b9c2cf")
+ draw_knight_attachments(p,Vector2(x,y))
+func draw_knight_attachments(p,at):
+ var x=at.x
+ var y=at.y
  if p.strikeTimer>0:
-  var aim = Vector2(p.strikeDir.x,p.strikeDir.y).normalized()
-  var center = Vector2(x+4,y+5)
-  var angle = aim.angle()+(float(p.strikeTimer)/5-.5)*1.5
-  line(center,center+Vector2(cos(angle),sin(angle))*15,"#eee4c4",1.5)
+  var aim=Vector2(p.strikeDir.x,p.strikeDir.y).normalized()
+  var center=at+Vector2(4,5)
+  var angle=aim.angle()+(float(p.strikeTimer)/5-.5)*1.5
+  Styles.line(self,center,center+Vector2(cos(angle),sin(angle))*15,"#eee4c4",1.5)
  if p.carrying!=null:
-  box(x,y-6,8,6,"#a38d61")
-  box(x+2,y-5,4,4,"#f4d38b")
+  for side in [-1,1]: Styles.line(self,at+Vector2(4+side*3,5),at+Vector2(4+side*2.5,-3),"#b6c5ce",.6)
+  Styles.lantern(self,at+Vector2(0,-8))
+ if p.get("pollen",0)>0:
+  for i in range(3):
+   var at_petal=at+Vector2(4+cos(clock*2+i*2.1)*6,6+sin(clock*3+i*2.1)*4)
+   circle(at_petal,.65,Color(.94,.97,.87,.65))
 
 func build_shadows(d,origin,cols,rows):
  var used = {}
@@ -1223,8 +1234,7 @@ func draw_elsie_quest():
   point=runtime.placements[perch.room]+Vector2(perch.x,perch.y)
  if not Rect2(camera-Vector2(20,20),Vector2(360,224)).has_point(point): return
  circle(point,9,Color(1,.8,.4,.08))
- box(point.x-2,point.y-3,4,6,"#b79d68")
- box(point.x-1,point.y-2,2,4,"#ffe6a2")
+ Styles.lantern(self,point-Vector2(4,4))
  if not runtime.quest_lantern:
   for i in range(4):
    var at=point+Vector2(cos(clock*2+i*1.6)*7,sin(clock*2.7+i*1.6)*4)

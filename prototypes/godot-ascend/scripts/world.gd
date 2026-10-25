@@ -44,6 +44,7 @@ var secret_front_entry=false
 var award_color="#ff9fc8"
 func _init(source):
  data=source.duplicate(true)
+ if int(source.world.n)==1: data.whiteFlowers=JSON.parse_string(FileAccess.get_file_as_string("res://data/white-flowers.json"))
  data.world=Layout.build(source.world)
  var sections=data.world.sections.duplicate(true)
  for q in data.world.quests: sections.append_array(q.sections)
@@ -136,6 +137,7 @@ func restart():
   var core=Core.new(data.constants,data.playerDefaults)
   core.load_room(parsed[id])
   core.world_context=self
+  configure_live_core(core)
   core.world_origin=placements[id]
   for e in core.ents:
    e.source_room=id
@@ -143,6 +145,11 @@ func restart():
   cores[id]=core
  active_id=data.world.get("atlasStart",data.world.sections[0].room)
  checkpoint_id=active_id
+func configure_live_core(core):
+ core.autonomous_sweepers=int(data.world.n)==1
+ if data.has("whiteFlowers"):
+  core.pollen_config=data.whiteFlowers
+  core.white_flowers=data.whiteFlowers.patches.filter(func(patch):return patch.room==core.room.id)
 func active(): return cores[active_id]
 func position(core=null):
  var current=active() if core==null else core
@@ -209,11 +216,7 @@ func tick_inactive():
   other.update_devices({"mx":0,"my":0,"jump":false,"dash":false,"grab":false,"strike":false,"parry":false,"portal":false})
   other.p=player
   other.room_frame+=1
-  if other.awake: other.sweeper_clock+=1
-  for e in other.sweepers:
-   e.prevX=e.x
-   e.prevY=e.y
-   e.merge(other.sweeper_at(e,other.sweeper_clock),true)
+  other.advance_sweepers(other.sweeper_clock+(1 if other.awake or int(data.world.n)==1 else 0))
 func collect_progress():
  # Only the active knight can collect or light a stake. Inactive machinery cannot.
  for id in [active_id]:
@@ -272,6 +275,8 @@ func enter(id,practice=false):
   active_id=id
   checkpoint_id=id
   var destination=active()
+  configure_live_core(destination)
+  destination.world_context=self
   destination.p=data.playerDefaults.duplicate(true)
   destination.p.x=destination.room.spawn.x
   destination.p.y=destination.room.spawn.y
@@ -285,6 +290,8 @@ func enter(id,practice=false):
   return true
  active_id=id
  var destination=active()
+ configure_live_core(destination)
+ destination.world_context=self
  var carry=motion.carrying
  if carry!=null:
   old.ents.erase(carry)
