@@ -47,11 +47,56 @@ var trails = []
 var plume = []
 var ambient_counter = 0.0
 var ink_color = Color.WHITE
-var observed = {"bursts":0,"afterimages":0,"joins":0}
+var observed = {"bursts":0,"afterimages":0,"joins":0,"landings":0,"dash_hits":0,"wall_sparks":0,"deaths":0,"respawns":0,"awards":0}
+# All timers below are presentation seconds. No simulation clock or input is changed.
+var accent=Color("#efbf79")
+var mood=Color("#bac9dc")
+var camera_lead=Vector2.ZERO
+var camera_velocity=Vector2.ZERO
+var camera_kick=Vector2.ZERO
+var kick_velocity=Vector2.ZERO
+var rings=[]
+var impact_power=0.0
+var render_hold=0.0
+var held_actor=Vector2.ZERO
+var death_time=0.0
+var death_point=Vector2.ZERO
+var respawn_time=0.0
+var award_time=-1.0
+var award_point=Vector2.ZERO
+var award_seen=-1000
+var wall_spark_frame=-100
+var dash_ghost_frame=-100
+var landing_speed=0.0
+var observed_room=""
+func configure_mood():
+ var colors={1:["#efbf79","#bac9dc"],2:["#b7e1a0","#a9c4ab"],3:["#f3a66d","#cfb6a7"],21:["#cbb7ff","#b6aedc"],22:["#84e6d8","#98bfc2"],23:["#e8a5dc","#c4a6cf"]}
+ var pair=colors.get(int(world_data.world.n),colors[1])
+ accent=Color(pair[0])
+ mood=Color(pair[1])
+func ring_at(point,color,power=1.0,kind="impact"):
+ rings.append({"p":point,"color":color,"life":0.4,"max":0.4,"power":power,"kind":kind})
+func kick(velocity):
+ if not reduced_motion: kick_velocity+=velocity
+func reset_feel():
+ wall_spark_frame=-100
+ dash_ghost_frame=-100
+ camera_velocity=Vector2.ZERO
+ camera_lead=Vector2.ZERO
+ camera_kick=Vector2.ZERO
+ kick_velocity=Vector2.ZERO
+ render_hold=0
+ death_time=0
+ respawn_time=0
+ award_time=-1
+ award_seen=runtime.quest_award_frame if runtime!=null else -1000
+ rings.clear()
+ impact_power=0
 func _ready():
  fractured=int(world_data.world.n)>=21
  forest=int(world_data.world.n) in [2,22]
  causeway=int(world_data.world.n) in [3,23]
+ configure_mood()
  var sky=Image.create(1,184,false,Image.FORMAT_RGBA8)
  for y in range(184):
   sky.set_pixel(0,y,Color("0b191b").lerp(Color("344937"),float(y)/225) if forest else Color("101526").lerp(Color("53636a"),float(y)/200.0))
@@ -99,14 +144,14 @@ func _ready():
  var material = ParticleProcessMaterial.new()
  material.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_BOX
  material.emission_box_extents = Vector3(180,110,0)
- material.direction = Vector3(-1,-0.08,0)
+ material.direction = Vector3(-1,-0.08,0) if not forest else Vector3(.3,-.5,0)
  material.spread = 12
  material.gravity = Vector3(0,-0.2,0)
- material.initial_velocity_min = 4
- material.initial_velocity_max = 9
+ material.initial_velocity_min = 2 if forest else (10 if causeway else 4)
+ material.initial_velocity_max = 5 if forest else (19 if causeway else 9)
  material.scale_min = 0.35
  material.scale_max = 0.6
- material.color = Color(0.8,0.85,0.82,0.28)
+ material.color = Color(accent,0.25 if fractured else .18)
  wind.process_material = material
  wind.z_index = 3
  add_child(wind)
@@ -253,6 +298,7 @@ func load_scene(core,smooth_join=false):
  active_position = placements.get(sim.room.id,Vector2.ZERO)
  snap_actor()
  if not smooth_join:
+  reset_feel()
   camera_float = Vector2(actor.x-153,actor.y-133) if runtime!=null else target_camera()
   camera = camera_float
   fade = 0.16
@@ -270,10 +316,14 @@ func actor_position():
  return active_position+Vector2(sim.p.x,sim.room.h-sim.p.y-sim.p.h if sim.flipped else sim.p.y)
 func before_tick():
  if sim==null: return {}
+ if observed_room!=sim.room.id:
+  observed_room=sim.room.id
+  wall_spark_frame=-100
+  dash_ghost_frame=-100
  previous_actor = current_actor
  var states = {}
  for e in sim.ents: states[entity_key(e)] = {"lit":e.get("lit",false),"open":e.get("open",false),"broken":e.get("broken",false),"solid":e.get("solid",true),"shaking":e.get("shaking",0),"down":e.get("down",false),"timer":e.get("timer",0),"state":e.get("state","idle"),"returning":e.get("returning",false),"gone":e.get("gone",false)}
- return {"entities":states,"frame":sim.frame}
+ return {"entities":states,"frame":sim.frame,"fall_speed":max(sim.p.vy,sim.p.get("lastFallSpeed",0))}
 func entity_key(e):
  return str(e.get("source_room", ""))+":"+str(e.get("source_id", e.id))
 func after_tick(before):
@@ -303,24 +353,85 @@ func after_tick(before):
   if type!="":
    types.append(type)
    event_effect(type,active_position+Vector2(e.x+e.w/2,e.y+e.h/2))
- for type in sim.events: event_effect(type,current_actor+Vector2(4,9))
+ landing_speed=before.get("fall_speed",0)
+ if "land" in types and landing_speed>115: types[types.find("land")]="land-heavy"
+ for type in sim.events: event_effect(type,current_actor+Vector2(4,0 if sim.flipped else 11))
+ # A cadence in simulation frames makes contact sparks independent of render fps.
+ if sim.p.state=="normal" and not sim.p.onGround and sim.p.vy>0 and sim.p.wallSlide<sim.K.wallSlideFrames and sim.climb_check(sim.p.facing) and sim.frame-wall_spark_frame>=4:
+  wall_spark_frame=sim.frame
+  observed.wall_sparks+=1
+  var at=current_actor+Vector2(8 if sim.p.facing>0 else 0,7)
+  for i in range(3 if not reduced_motion else 1):
+   var life=.16+i*.045
+   particles.append({"p":at,"v":Vector2(-sim.p.facing*(14+i*9),-12+i*13),"life":life,"max":life,"color":accent,"spark":true})
+ if sim.p.state=="dash" and sim.frame-dash_ghost_frame>=2:
+  dash_ghost_frame=sim.frame
+  trails.append({"p":current_actor,"life":.22,"max":.22,"color":accent,"dir":Vector2(sim.p.dashDir.x,sim.p.dashDir.y)})
+  observed.afterimages+=1
+ if runtime!=null and runtime.quest_award_frame!=award_seen:
+  award_seen=runtime.quest_award_frame
+  if runtime.frames-award_seen<=1:
+   award_time=0
+   award_point=current_actor+Vector2(4,-8)
+   observed.awards+=1
+   ring_at(award_point,Color(runtime.award_color),1.5,"award")
+   burst(award_point,28,Color(runtime.award_color),40)
+   kick(Vector2(0,28))
  return types
 func event_effect(type,point):
  match type:
   "jump","walljump","climbhop": burst(point,6,Color("b8b8a1"),18)
   "land":
-   squash = 0.15
-   burst(point+Vector2(0,2),8,Color("b7b49a"),22)
-  "dash":
-   flash = 0.05
-   burst(point,12,Color("edbd72"),35)
+   var power=clamp((landing_speed-35)/125.0,.2,1.4)
+   observed.landings+=1
+   impact_power=max(impact_power,power)
+   squash=max(squash,.13+power*.23)
+   shake=max(shake,power*.12)
+   var normal=-1 if sim.flipped else 1
+   kick(Vector2(0,40*power*normal))
+   ring_at(point,accent,power)
+   for side in [-1,1]:
+    for i in range(2 if reduced_motion else 4+int(power*5)):
+     var life=.2+i*.025
+     particles.append({"p":point+Vector2(side*3,0),"v":Vector2(side*(15+i*5)*power,(-8-i*2)*normal),"life":life,"max":life,"color":mood,"dust":true})
+  "dash","dash-start":
+   observed.dash_hits+=1
+   flash=max(flash,.1)
+   render_hold=.045 if not reduced_motion else 0.0
+   held_actor=current_actor
+   var aim=sim.p.get("pressAim",{"x":sim.p.facing,"y":0})
+   var dir=Vector2(aim.x,aim.y)
+   if dir==Vector2.ZERO: dir=Vector2(sim.p.facing,0)
+   dir=dir.normalized()
+   kick(-dir*34)
+   ring_at(point,accent,.7,"dash")
+   burst(point,14,accent,42)
   "death":
-   shake = 0.23
-   flash = 0.08
-   burst(point,28,Color("e8cbb3"),50)
+   observed.deaths+=1
+   death_time=.55
+   death_point=point
+   shake=max(shake,.3)
+   flash=max(flash,.1)
+   render_hold=.055 if not reduced_motion else 0.0
+   held_actor=current_actor
+   kick(Vector2(-sim.p.facing*35,-30))
+   ring_at(point,Color("#dc9b9f"),1.2,"death")
+   burst(point,38,Color("#e5bbbe"),65)
+   trails.clear()
   "respawn":
-   fade = 0.12
-   burst(point,18,Color("e7c887"),28)
+   observed.respawns+=1
+   respawn_time=.6
+   death_time=0
+   render_hold=0
+   fade=.15
+   wall_spark_frame=-100
+   dash_ghost_frame=-100
+   camera_float=Vector2(current_actor.x-153,current_actor.y-118) if runtime!=null else target_camera()
+   camera_velocity=Vector2.ZERO
+   camera_kick=Vector2.ZERO
+   kick_velocity=Vector2.ZERO
+   ring_at(point,accent,1.4,"respawn")
+   burst(point,22,accent,27)
   "refill","refill-dash","shard","stone-lit": burst(point,10,Color("d4e2b1"),24)
   "gate-open","held-open","crumble":
    shake = 0.12
@@ -330,29 +441,62 @@ func event_effect(type,point):
   "sentinel-bell": burst(point,18,Color("#f2d28a"),35)
   "zip-start","zip-stop": burst(point,8,Color("dbbe83"),20)
 func burst(point,count,color,speed):
+ if reduced_motion:
+  count=min(count,6)
+  speed*=.35
  observed.bursts += 1
  for i in range(count):
   var a = float(i)*TAU/count+clock
   particles.append({"p":point,"v":Vector2(cos(a)*speed,sin(a)*speed*0.6-10),"life":0.3+float(i%4)*0.09,"max":0.57,"color":color})
 func target_camera():
- var look=clamp(sim.p.vx*0.07,-13,13) if not reduced_motion else 0
- if runtime==null: return Vector2(max(0,actor.x-153+look),active_position.y+clamp(actor.y-active_position.y-94,0,max(0,sim.room.h-184)))
- # Ownership changes never change framing. Follow a world-space dead zone instead.
+ var look=camera_lead if not reduced_motion else Vector2.ZERO
+ if runtime==null: return Vector2(max(0,actor.x-153+look.x),active_position.y+clamp(actor.y-active_position.y-94+look.y,0,max(0,sim.room.h-184)))
+ # Continuous world coordinates keep doorway ownership out of the camera calculation.
  var y=camera_float.y
- if actor.y-y<62: y=actor.y-62
- elif actor.y-y>136: y=actor.y-136
- return Vector2(actor.x-153+look,y)
+ if actor.y+look.y-y<65: y=actor.y+look.y-65
+ elif actor.y+look.y-y>123: y=actor.y+look.y-123
+ return Vector2(actor.x-153+look.x,y)
+func spring_camera(target,delta):
+ # Exact critically damped spring: stable across frame rates and never overshoots at rest.
+ var omega=13.0 if reduced_motion else 9.0
+ var displacement=camera_float-target
+ var decay=exp(-omega*delta)
+ var temp=(camera_velocity+displacement*omega)*delta
+ camera_float=target+(displacement+temp)*decay
+ camera_velocity=(camera_velocity-temp*omega)*decay
+func tick_feel(delta):
+ var dt=min(delta,.05)
+ render_hold=max(0,render_hold-delta)
+ death_time=max(0,death_time-delta)
+ respawn_time=max(0,respawn_time-delta)
+ impact_power=max(0,impact_power-delta*5)
+ if award_time>=0:
+  award_time+=delta
+  if award_time>2.8: award_time=-1
+ var desired=Vector2(clamp(sim.p.vx*.17,-25,25),clamp(sim.p.vy*.1,-9,17))
+ if sim.p.onGround: desired.y=0
+ camera_lead=camera_lead.lerp(desired,1-exp(-dt*5))
+ if render_hold<=0: spring_camera(target_camera(),dt)
+ kick_velocity+=(-camera_kick*210-kick_velocity*22)*dt
+ camera_kick+=kick_velocity*dt
+ if reduced_motion:
+  camera_kick=Vector2.ZERO
+  kick_velocity=Vector2.ZERO
+  render_hold=0
+ for ring in rings: ring.life-=delta
+ rings=rings.filter(func(r):return r.life>0)
 func _process(delta):
  var profile_start=Time.get_ticks_usec()
  clock += delta
  if sim==null: return
  actor = previous_actor.lerp(current_actor,clamp(Engine.get_physics_interpolation_fraction(),0,1))
  if sim.p.state=="dead": actor=current_actor
+ if render_hold>0 and not reduced_motion: actor=held_actor
  walking += abs(sim.p.vx)*delta
- camera_float = camera_float.lerp(target_camera(),1-exp(-delta*(12 if reduced_motion else 7)))
+ tick_feel(delta)
  var offset = Vector2.ZERO
  if shake>0 and not reduced_motion: offset=Vector2(sin(clock*97),cos(clock*83))*shake*4
- camera = (camera_float+offset).snapped(Vector2(0.5,0.5))
+ camera = (camera_float+camera_kick+offset).snapped(Vector2(0.5,0.5))
  for layer in range(forest_layers.size()):
   var node=forest_layers[layer]
   var parallax=0.035+layer*0.055
@@ -364,7 +508,7 @@ func _process(delta):
    node.queue_redraw()
  tiles.position = -camera
  occluders.position = -camera
- ambient.color = Color("bcc2d2") if lit else Color.WHITE
+ ambient.color = mood if lit else Color.WHITE
  wind.emitting = not reduced_motion
  for item in lights:
   var point = item.point-camera
@@ -381,11 +525,6 @@ func _process(delta):
  particles = particles.filter(func(part):return part.life>0)
  for trail in trails: trail.life -= delta
  trails = trails.filter(func(t):return t.life>0)
- ambient_counter += delta
- if sim.p.state=="dash" and not reduced_motion and ambient_counter>0.025:
-  ambient_counter=0
-  trails.append({"p":actor,"life":0.18})
-  observed.afterimages += 1
  if plume.size()==7:
   plume[0] = actor+Vector2(3,4)
   for i in range(1,7):
@@ -398,6 +537,8 @@ func _process(delta):
  flash = max(0,flash-delta)
  fade = max(0,fade-delta)
  post.material.set_shader_parameter("strength",0.5 if reduced_motion else 1.0)
+ post.material.set_shader_parameter("mood_tint",Vector3(mood.r,mood.g,mood.b))
+ post.material.set_shader_parameter("pulse",0.0 if reduced_motion else max(death_time*.35,impact_power*.05))
  queue_redraw()
  front.queue_redraw()
  draw_cpu_us.presentation=Time.get_ticks_usec()-profile_start
@@ -536,12 +677,20 @@ func draw_front():
     var a=clock*1.8+i*TAU/8
     line(point+Vector2(cos(a),sin(a))*(e.radius-1),point+Vector2(cos(a),sin(a))*(e.radius+2),"#e0b09f",0.8)
  for trail in trails:
-  var alpha = trail.life/0.18*0.3
-  box(trail.p.x+1,trail.p.y,6,10,Color(0.88,0.77,0.51,alpha))
+  var alpha = trail.life/trail.max*(.15 if reduced_motion else .48)
+  var col=Color(trail.color,alpha)
+  box(trail.p.x+1,trail.p.y+1,6,9,col)
+  if not reduced_motion:
+   line(trail.p+Vector2(4,5),trail.p+Vector2(4,5)-trail.dir*12,Color(trail.color,alpha*.55),2)
  for part in particles:
   var col = part.color
   col.a = clamp(part.life/part.max,0,1)*0.8
-  box(part.p.x,part.p.y,1,1,col)
+  if part.get("spark",false):
+   circle(part.p,1.8,Color(accent,col.a*.12))
+   line(part.p,part.p-part.v.normalized()*4,col,1)
+   box(part.p.x,part.p.y,1,1,Color(1,.95,.82,col.a))
+  else: box(part.p.x,part.p.y,2 if part.get("dust",false) else 1,1,col)
+ draw_feel_world()
  if runtime!=null:
   if int(world_data.world.n)==2: draw_elsie_quest()
   if causeway and int(world_data.world.n)==3: draw_silas_quest()
@@ -551,6 +700,7 @@ func draw_front():
   draw_knight()
   if sim.flipped: ink.draw_set_transform(-camera)
  ink.draw_set_transform(Vector2.ZERO)
+ draw_award_screen()
  if flash>0 and not reduced_motion: box(0,0,320,184,Color(0.92,0.85,0.65,flash*0.7))
  if fade>0: box(0,0,320,184,Color(0.03,0.05,0.08,fade*2.5))
  draw_cpu_us.foreground=Time.get_ticks_usec()-profile_start
@@ -964,8 +1114,12 @@ func draw_knight():
  for i in range(1,plume.size()):
   line(plume[i-1],plume[i],Color(ready_color,1-float(i)/10),max(0.5,1.5-i*.15))
  # Default browser sprite (bladefall-pcore-view.js drawKnightSprite), at its 8 × 11 scale.
- var sy=1.0/(1.0+squash)
- var sx=1.0+squash
+ var amount=squash*(.3 if reduced_motion else 1.0)
+ var sy=1.0/(1.0+amount)
+ var sx=1.0+amount
+ if sim.p.state=="dash" and not reduced_motion:
+  sx+=.18*abs(sim.p.dashDir.x)
+  sy+=.18*abs(sim.p.dashDir.y)
  var height=round(11*sy)
  var width=max(6,round(8*sx))
  var bx=x+4-width/2
@@ -1089,11 +1243,47 @@ func draw_world_hearts():
   else: circle(point,11,Color(color,0.08))
   pixel_heart(point,color)
   if not taken and not (runtime.branch_entered.get(reward.id,false) if reward.has("kind") else runtime.secret_front_entry): ink.draw_arc(point,8,0,TAU,24,Color(.8,.85,1,.5),0.7)
- var age=(runtime.frames-runtime.quest_award_frame)/60.0
- if age>=0 and age<3:
-  var u=clamp((age-0.6)/1.0,0,1)
-  var at=(actor+Vector2(4,-10)).lerp(camera+Vector2(285,10),1-pow(1-u,3))
-  pixel_heart(at,Color(runtime.award_color))
+
+func draw_feel_world():
+ for ring in rings:
+  var t=1-ring.life/ring.max
+  var radius=(5+t*22*ring.power)*(0.5 if reduced_motion else 1.0)
+  var color=Color(ring.color,(1-t)*.55)
+  if ring.kind=="impact":
+   line(ring.p-Vector2(radius,0),ring.p+Vector2(radius,0),color,max(.5,1.5*(1-t)))
+  else: ink.draw_arc(ring.p,radius,0,TAU,32,color,.8)
+ if death_time>0:
+  var t=1-death_time/.55
+  circle(death_point,2+9*(1-t),Color(.9,.65,.7,(1-t)*.35))
+ if respawn_time>0:
+  var t=respawn_time/.6
+  var point=actor+Vector2(4,5)
+  circle(point,6+t*11,Color(accent,t*.09))
+  if not reduced_motion:
+   line(point+Vector2(0,-5-t*18),point+Vector2(0,5),Color(accent,t*.45),1)
+func draw_award_screen():
+ if award_time<0 or runtime==null: return
+ var col=Color(runtime.award_color)
+ var t=award_time
+ var start=award_point-camera
+ var destination=Vector2(285,10)
+ var u=clamp((t-.95)/.85,0,1)
+ var at=start.lerp(destination,u*u*(3-2*u))
+ at.y-=sin(u*PI)*24 if not reduced_motion else 0
+ if t<.95 and not reduced_motion: at.y-=sin(min(1,t/.4)*PI/2)*9
+ var alpha=clamp((2.8-t)/.5,0,1)
+ circle(at,13,Color(col,.12*alpha))
+ if t<.95:
+  for i in range(8):
+   var angle=i*TAU/8+t*.5
+   var radius=12+min(t,.6)*17
+   line(at+Vector2(cos(angle),sin(angle))*radius,at+Vector2(cos(angle),sin(angle))*(radius+3),Color(col,(1-min(t/.95,1))*.8),1)
+ var size=(1+.6*sin(min(t/.3,1)*PI)) if not reduced_motion and t<.3 else 1.0
+ ink.draw_set_transform(at,0,Vector2.ONE*size)
+ pixel_heart(Vector2.ZERO,Color(col,alpha))
+ ink.draw_set_transform(Vector2.ZERO)
+ if t>1.75:
+  ink.draw_arc(destination,6+(t-1.75)*15,0,TAU,32,Color(col,alpha*.4),1)
 
 func draw_causeway():
  ink.draw_texture_rect(sky_gradient,Rect2(0,0,320,184),false)

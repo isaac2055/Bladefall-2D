@@ -1,6 +1,6 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.6.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, isolated from the shipping browser game on `codex/godot-ascend-fractured`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.7.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, isolated from the shipping browser game on `codex/godot-ascend-feel`. This is an engine comparison, not a replacement release or a full Ascend port.
 
 ## Play
 
@@ -16,6 +16,16 @@ Controls now match the browser defaults: **arrows** move/aim, **Space/C/J** jump
 
 The pause menu includes a **chapter selector** for The Outskirts, Black Woods, Broken Causeway and their three Fractured versions. All six chapters are constructed before play, and switching preserves each chapter’s progress and position. **Start world over** resets the current world, bearings, room machinery, deaths and dialogue history without closing the app. Retry resets only the current room and preserves bearings and lit stakes. The pause menu also contains the room selector, Watch/Take control, four separate volume controls, spoken dialogue toggle, reduced motion and lighting comparison. Audio and display preferences persist locally. The app starts directly in the game rather than an engine-study toolbar.
 
+
+## Feel and atmosphere · 0.7.0
+
+Presentation now adds speed-scaled landing compression, two-sided dust, floor shock lines, a damped camera impact and the existing heavy landing recording. Dash-start (the actual core event) launches a pulse, a short actor presentation hold and a tinted, stretched trail. Contact sparks follow real wall-slide state at a simulation-frame cadence. None of these effects change inputs, movement, collisions, simulation freeze, checkpoint timing or physics steps; the 45 ms visual hold sits over the existing three-frame dash freeze.
+
+The camera uses velocity lead and a critically damped spring with continuous world coordinates. Impact impulses decay separately; respawn resets framing at the checkpoint. Death breaks into rose-colored fragments and a fading pulse, then respawn has a warm ring and vertical bloom. Quest/secret hearts expand with rays, hold above the player, arc toward the HUD, then settle with a halo; awards stay idempotent and do not stall play.
+
+All six chapters have distinct effect accents, lighting and ambient drift: cool blue and gold Outskirts, green woodland motes, warm iron wind, violet Fractured Outskirts, teal Fractured Woods and rose-violet Fractured Causeway. Reduced motion removes visual holds, camera impulses, shake, look-ahead and ambient drift, and reduces burst counts and sprite compression. No new assets, voices or quests are generated.
+
+`tests/feel.gd` exercises actual landing/dash/wall contact/death/respawn events, reward fixtures, camera settling and reduced motion. It snapshots player/entity/combat/beam/event/frame/freeze state around 679 presentation updates at varied render deltas. Run with an output directory using the GPU renderer to capture six moods and each effect. Existing browser parity and continuous-road tests remain the movement authority. `tests/feel_journey.gd` replays the complete Outskirts Fractured road through the actual app: 7,907 unchanged physics frames, 18 smooth ownership transfers and zero deaths with varied render deltas. All 322 browser traces / 95,367 frames still match, and the packed build passes 22 integration/regression cases plus the GPU effect check. The inspected 3.67-second mixed audio take has no clipped samples. Core, world, devices, authored data and application input/physics scheduling remain unchanged. Evidence lives in `.cache/godot/feel/`.
 
 ## Fractured worlds · 0.6.0
 

@@ -1,3 +1,13 @@
+# Presentation pass · 0.7.0 · 2026-10-25
+
+Current branch: `codex/godot-ascend-feel`. The local standalone is rebuilt at `prototypes/godot-ascend/exports/Bladefall Ascend Prototype.app`. This pass changes `landscape.gd`, the atmosphere shader and the heavy-landing audio event mapping. Core/world/device/movement code and authored data are unchanged. No web deployment or Explore changes.
+
+Speed-scaled heavy impacts, dash-start pulses/visual holds/trails, wall-slide sparks, velocity camera lead and damped settling, six mood palettes, death breakup, checkpoint bloom and heart-award choreography are documented in the README. Presentation timers run in render time; the core's existing freeze and every physics/input step remain untouched. Reduced motion disables holds, impulse/lead/shake and drift and reduces bursts.
+
+`tests/feel.gd` checks real events, rewards, camera convergence, reduced motion and 679 before/after presentation state snapshots. GPU captures cover each mood and effect. Evidence: `.cache/godot/feel/`. Validation: 322 browser traces / 95,367 matching frames; 22 packed regression cases; GPU effect captures and reduced-motion/inverted-impact checks; an actual-app road with 7,907 unchanged physics frames, 18 continuous ownership transitions and zero deaths. Inspected 3.67-second mix: no clipped samples. `tests/feel_journey.gd` verifies camera transfer continuity while running the original recording. Existing full browser parity and continuous-road recordings remain the movement reference.
+
+---
+
 # Fractured worlds expansion · 0.6.0 · 2026-10-25
 
 Current branch: `codex/godot-ascend-fractured`. The first three Ascend worlds and their three authored Fractured counterparts are selectable. Source: `prototypes/godot-ascend/`; local standalone: `prototypes/godot-ascend/exports/Bladefall Ascend Prototype.app`. No browser/Explore changes or deployment. The movable dash stones now render before and after movement.
