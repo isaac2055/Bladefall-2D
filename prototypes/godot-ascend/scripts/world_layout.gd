@@ -2,6 +2,16 @@ extends RefCounted
 ## Native world-only repairs. The original room fixtures remain intact for movement parity tests.
 static func build(source):
  var world = source.duplicate(true)
+ if int(world.n)==2:
+  # The authored fork's bottom-left shaft is offset one tile from the kitchen roof.
+  # Open its overlapping roof tile in the native world only; keep browser fixtures intact.
+  for d in world.rooms:
+   if d.id=="cl2-w2-kitchen":
+    var roof=d.map[0]
+    roof[5]="."
+    d.map[0]=roof
+  return world
+ if int(world.n)!=1: return world
  # The browser drew the final junction over the Gatehouse and relied on room ownership.
  # Give the overlook its own rock above the road, reached by a real, reversible stairwell.
  for s in world.sections:

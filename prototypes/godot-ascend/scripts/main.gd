@@ -7,6 +7,11 @@ const Controls = preload("res://scripts/controls.gd")
 const Sound = preload("res://scripts/audio.gd")
 var data
 var world
+var chapters = {}
+var chapter_number = 1
+var chapter_picker: OptionButton
+var pause_title: Label
+var pause_description: Label
 var quest_label: Label
 var notice_label: Label
 var notice_time=0.0
@@ -46,6 +51,10 @@ var volume_sliders = {}
 var preferences = ConfigFile.new()
 var test_mode = false
 var closing = false
+var measured_frames=[]
+var measured_physics=[]
+var journey=[]
+var journey_frame=0
 func text(parent,value,size,color="#d8dfd9"):
  var l = Label.new()
  l.text = value
@@ -88,22 +97,39 @@ func _ready():
  for bus in audio.levels: audio.levels[bus] = float(preferences.get_value("audio",bus,audio.levels[bus]))
  audio.voices_enabled = preferences.get_value("audio","voices",true)
  add_child(audio)
- var container = SubViewportContainer.new()
- container.position = Vector2(0,48)
- container.size = Vector2(1280,736)
- container.stretch = true
- container.stretch_shrink = 2
- viewport = SubViewport.new()
- viewport.size = Vector2i(640,368)
- viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
- viewport.canvas_item_default_texture_filter = Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST
- container.add_child(viewport)
- add_child(container)
- landscape = Landscape.new()
- landscape.scale = Vector2(2,2)
- landscape.world_data = data
- landscape.runtime = world
- viewport.add_child(landscape)
+ # Construct both chapters before play; selecting a chapter preserves its live state.
+ for number in [1,2]:
+  var chapter_data=data if number==1 else JSON.parse_string(FileAccess.get_file_as_string("res://data/world2.json"))
+  var chapter_world=world if number==1 else World.new(chapter_data)
+  var container = SubViewportContainer.new()
+  container.position = Vector2(0,48)
+  container.size = Vector2(1280,736)
+  container.stretch = true
+  container.stretch_shrink = 2
+  var view = SubViewport.new()
+  view.size = Vector2i(640,368)
+  view.render_target_update_mode = SubViewport.UPDATE_ALWAYS if number==1 else SubViewport.UPDATE_DISABLED
+  view.canvas_item_default_texture_filter = Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST
+  container.add_child(view)
+  add_child(container)
+  var scene = Landscape.new()
+  scene.scale = Vector2(2,2)
+  scene.world_data = chapter_world.data
+  scene.runtime = chapter_world
+  scene.reduced_motion = preferences.get_value("display","reduced_motion",false)
+  view.add_child(scene)
+  scene.load_scene(chapter_world.active())
+  scene.set_process(number==1)
+  if number!=1:
+   scene.process_mode=Node.PROCESS_MODE_DISABLED
+   for item in scene.lights:
+    item.node.hide()
+    item.sparks.emitting=false
+   scene.wind.emitting=false
+  container.visible=number==1
+  chapters[number]={"world":chapter_world,"landscape":scene,"container":container,"viewport":view}
+ landscape=chapters[1].landscape
+ viewport=chapters[1].viewport
  audio.world_runtime=world
  audio.spoken.connect(show_subtitle)
  landscape.reduced_motion = preferences.get_value("display","reduced_motion",false)
@@ -115,8 +141,17 @@ func _ready():
   elif args[i]=="--capture-after" and i+1<args.size(): screenshot_after = int(args[i+1])
   elif args[i]=="--menu": capture_menu = true
   elif args[i]=="--watch": watch = true
+  elif args[i]=="--tour":
+   var recording=JSON.parse_string(FileAccess.get_file_as_string("res://data/world2-tour.json"))
+   for part in recording.tape:
+    for frame in range(int(part[0])): journey.append(part[1])
+  elif args[i]=="--no-lighting": landscape.lit=false
+  elif args[i]=="--no-shadows":
+   for item in landscape.lights: item.node.shadow_enabled=false
+  elif args[i]=="--world" and i+1<args.size(): switch_chapter(int(args[i+1]))
   elif args[i]=="--room" and i+1<args.size(): current = int(args[i+1])
  load_section(current)
+ if watch and tape.is_empty(): next_section()
 func create_interface():
  root_ui = Control.new()
  root_ui.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -172,10 +207,10 @@ func create_interface():
  card.add_theme_stylebox_override("panel",style("#14232e","#697b77",10))
  pause_panel.add_child(card)
  var column = VBoxContainer.new()
- column.add_theme_constant_override("separation",8)
+ column.add_theme_constant_override("separation",6)
  card.add_child(column)
- text(column,"THE OUTSKIRTS",30,"#e4d6ad")
- text(column,"A road through the old watch · Ascend",15,"#90a6ac")
+ pause_title=text(column,"THE OUTSKIRTS",26,"#e4d6ad")
+ pause_description=text(column,"A road through the old watch · Ascend",13,"#90a6ac")
  var row = HBoxContainer.new()
  row.add_theme_constant_override("separation",8)
  column.add_child(row)
@@ -183,6 +218,11 @@ func create_interface():
  button(row,"Retry · R",func():retry_room();set_paused(false))
  watch_button = button(row,"Watch route",func():toggle_watch();set_paused(false))
  restart_button=button(column,"Start world over",restart_world)
+ chapter_picker=OptionButton.new()
+ chapter_picker.add_item("1 · The Outskirts")
+ chapter_picker.add_item("2 · Black Woods")
+ chapter_picker.item_selected.connect(func(index):switch_chapter(index+1);set_paused(false))
+ column.add_child(chapter_picker)
  text(column,"EXPLORE A SECTION",12,"#bba984")
  room_picker = OptionButton.new()
  room_picker.custom_minimum_size = Vector2(560,40)
@@ -212,14 +252,16 @@ func create_interface():
  var reduced = CheckBox.new()
  reduced.text = "Reduce motion and screen shake"
  reduced.button_pressed = landscape.reduced_motion
- reduced.toggled.connect(func(value):landscape.reduced_motion=value;save_preferences())
+ reduced.toggled.connect(func(value):
+  for chapter in chapters.values(): chapter.landscape.reduced_motion=value
+  save_preferences())
  column.add_child(reduced)
  var light_row = HBoxContainer.new()
  column.add_child(light_row)
  button(light_row,"Lighting on / off",func():landscape.lit = not landscape.lit)
  button(light_row,"Fullscreen · F11",toggle_fullscreen)
  text(column,"ARROWS  Move and aim\nSPACE / C / J  Jump     D / X / K  Dash\nA / Z / SHIFT / L  Cling, climb, carry or throw\nW / V / I  Strike     R  Retry     M  Music\nController: stick / d-pad · A jump · X/B dash · LB cling",15,"#b5c0bd")
- text(column,"An Ascend prototype · The Outskirts",12,"#70888f")
+ text(column,"Native Ascend · two preloaded chapters",12,"#70888f")
  pause_panel.hide()
 func set_voices(value):
  audio.voices_enabled = value
@@ -265,6 +307,7 @@ func show_subtitle(who,line,seconds):
  landscape.speaker = who.to_lower()
 func _process(delta):
  if paused: return
+ if capture_path!="" and ticks>30: measured_frames.append(delta*1000)
  notice_time=max(0,notice_time-delta)
  notice_label.modulate.a=min(1.0,notice_time)
  banner_time = max(0,banner_time-delta)
@@ -283,6 +326,7 @@ func toggle_watch():
  else:
   watch = true
   load_section(current)
+  if tape.is_empty(): next_section()
 func load_section(index,smooth_join=false):
  current = index
  var id=data.world.rooms[index].id
@@ -302,7 +346,7 @@ func load_section(index,smooth_join=false):
  hold = 0
  room_picker.select(index)
  watch_button.text = "Take control" if watch else "Watch route"
- title.text = "THE OUTSKIRTS · "+("WATCHING" if watch else "ASCEND")
+ title.text = data.world.name.to_upper()+" · "+("WATCHING" if watch else "ASCEND")
  room_banner.text = sim.room.name.to_upper()
  banner_time = 2.4
 func input_now(): return Controls.read()
@@ -313,6 +357,7 @@ func decode(keys):
  return raw
 func _physics_process(_delta):
  if sim==null or paused: return
+ var physics_start=Time.get_ticks_usec()
  ticks += 1
  if hold>0:
   landscape.previous_actor = landscape.current_actor
@@ -325,6 +370,9 @@ func _physics_process(_delta):
     sim.step(decode(tape[tape_frame]))
     world.tick_inactive()
     tape_frame += 1
+  elif journey_frame<journey.size():
+   world.step(decode(journey[journey_frame]))
+   journey_frame+=1
   else: world.step(input_now())
   var effects = landscape.after_tick(before)
   audio.events(effects)
@@ -350,6 +398,7 @@ func _physics_process(_delta):
  death_label.text = "%d DEATHS" % sim.deaths
  if watch: status.text = "RECORDED ROUTE     ·     Esc opens the menu     ·     Take control to play"
  else: status.text = "← → MOVE     SPACE / C JUMP     D DASH     A CLING / CARRY     W STRIKE     R RETRY"
+ if capture_path!="" and ticks>30: measured_physics.append((Time.get_ticks_usec()-physics_start)/1000.0)
  if capture_path!="" and ticks==screenshot_after: capture.call_deferred()
 func next_section():
  var sections = data.world.sections
@@ -376,6 +425,9 @@ func capture():
  var result = get_viewport().get_texture().get_image().save_png(capture_path)
  if audio_capture_path!="": audio.save_capture(audio_capture_path)
  var report = {"fps":Engine.get_frames_per_second(),"audio":audio.counts,"presentation":landscape.observed,"shadow_occluders":landscape.occluder_count,"lights":landscape.lights.size(),"room":sim.room.id,"camera":[landscape.camera.x,landscape.camera.y]}
+ report.frame_ms=timing_stats(measured_frames)
+ report.physics_ms=timing_stats(measured_physics)
+ report.draw_calls=Performance.get_monitor(Performance.RENDER_TOTAL_DRAW_CALLS_IN_FRAME)
  var file = FileAccess.open(capture_path+".json",FileAccess.WRITE)
  file.store_string(JSON.stringify(report,"  "))
  file.close()
@@ -394,6 +446,11 @@ func close_app(code=0):
  get_tree().quit(code)
 
 func bearing_caption():
+ if chapter_number==2:
+  if world.quest_complete: return "♥ 1 · A Place for Supper complete"
+  if world.quest_lantern: return "ELSIE · Bring the lantern home · falling lets the moths take it back"
+  if world.elsie_met: return "ELSIE · Follow the lantern moths through her branch"
+  return "BLACK WOODS · Speak with Elsie at her kitchen"
  var parts=[]
  for name in ["ASH","GLASS","IRON"]: parts.append(("◆ " if world.bearings.has(name) else "◇ ")+name)
  return "MARA · "+"   ".join(parts)
@@ -417,7 +474,7 @@ func restart_world():
  tape_frame=0
  watch=false
  watch_button.text="Watch route"
- title.text="THE OUTSKIRTS · ASCEND"
+ title.text=data.world.name.to_upper()+" · ASCEND"
  current=0
  sim=world.active()
  landscape.runtime=world
@@ -426,9 +483,59 @@ func restart_world():
  room_banner.text=sim.room.name.to_upper()
  banner_time=2.4
  quest_label.text=bearing_caption()
- notice_label.text="A new journey · The Outskirts"
+ notice_label.text="A new journey · "+data.world.name
  notice_time=3
  set_paused(false)
 
+func switch_chapter(number):
+ if number==chapter_number or not chapters.has(number): return
+ var old=chapters[chapter_number]
+ old.container.hide()
+ old.viewport.render_target_update_mode=SubViewport.UPDATE_DISABLED
+ old.landscape.set_process(false)
+ old.landscape.process_mode=Node.PROCESS_MODE_DISABLED
+ for item in old.landscape.lights:
+  item.node.hide()
+  item.sparks.emitting=false
+ old.landscape.wind.emitting=false
+ chapter_number=number
+ var chapter=chapters[number]
+ world=chapter.world
+ data=world.data
+ sim=world.active()
+ landscape=chapter.landscape
+ viewport=chapter.viewport
+ audio.world_runtime=world
+ audio.change_chapter(number)
+ chapter.container.show()
+ viewport.render_target_update_mode=SubViewport.UPDATE_ALWAYS
+ landscape.process_mode=Node.PROCESS_MODE_INHERIT
+ landscape.set_process(not paused)
+ landscape.load_scene(sim)
+ current=world.regions.find(world.active_id)
+ watch=false
+ tape=[]
+ hold=0
+ tape_frame=0
+ watch_button.text="Watch route"
+ room_picker.clear()
+ for i in range(data.world.rooms.size()): room_picker.add_item("%02d · %s" % [i+1,data.world.rooms[i].get("name",data.world.rooms[i].id)])
+ room_picker.select(current)
+ chapter_picker.select(number-1)
+ title.text=data.world.name.to_upper()+" · ASCEND"
+ pause_title.text=data.world.name.to_upper()
+ pause_description.text="A road through the old watch · Ascend" if number==1 else "Moths, pale resin and the lantern tree · Ascend"
+ room_banner.text=sim.room.name.to_upper()
+ banner_time=2.4
+ subtitle_panel.hide()
+ subtitle_time=0
+ quest_label.text=bearing_caption()
+
 func _exit_tree():
- if world!=null: world.shutdown()
+ for chapter in chapters.values(): chapter.world.shutdown()
+
+func timing_stats(samples):
+ if samples.is_empty(): return {}
+ var ordered=samples.duplicate()
+ ordered.sort()
+ return {"samples":ordered.size(),"median":ordered[int(ordered.size()*0.5)],"p95":ordered[min(ordered.size()-1,int(ordered.size()*0.95))],"p99":ordered[min(ordered.size()-1,int(ordered.size()*0.99))],"worst":ordered[-1]}

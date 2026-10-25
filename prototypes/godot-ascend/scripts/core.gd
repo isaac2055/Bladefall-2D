@@ -22,6 +22,11 @@ var defaults = {}
 var sweepers = []
 var sweeper_clock = 0
 var awake = true
+var decks_awake = false
+var foothold_previous = {}
+var kick_direction=0
+var moving_decks=[]
+var spent_footholds=[]
 
 func _init(constants: Dictionary, player_defaults: Dictionary):
  K = constants
@@ -39,6 +44,16 @@ func load_room(parsed: Dictionary, respawn = false):
  for i in range(ents.size()):
   var e = ents[i]
   e.merge({"id":i,"ox":e.x,"oy":e.y,"remX":0.0,"remY":0.0,"vx":0.0,"vy":0.0,"timer":0,"t":0,"state":"idle"},true)
+ # Device reset order matches the browser: spent footholds precede moving decks.
+ for group in device_groups("Y"):
+  group.merge({"type":"foothold","dev":true,"solid":true,"id":"fh"+str(ents.size()),"used":false})
+  ents.append(group)
+ for i in range(room.def.get("decks",[]).size()):
+  var d=room.def.decks[i]
+  ents.append({"type":"deck","dev":true,"solid":true,"x":d.c*8,"y":d.r*8,"w":d.w*8,"h":d.get("h",1)*8,"ox":d.c*8,"oy":d.r*8,"dx":d.to[0]*8,"dy":d.to[1]*8,"period":d.get("period",180),"phase":d.get("phase",0),"remX":0.0,"remY":0.0,"clock":0,"id":"dk"+str(i)})
+ moving_decks=ents.filter(func(e):return e.type=="deck")
+ spent_footholds=ents.filter(func(e):return e.type=="foothold")
+ decks_awake=false
  sweepers = []
  sweeper_clock = 0
  awake = not room.def.get("study",false)
@@ -81,7 +96,7 @@ func solid_entity(e):
   "slide","zip": return true
   "gate": return not e.get("open",false)
   "crumble": return not e.get("broken",false)
- return false
+ return e.get("dev",false) and e.get("solid",false)
 
 func blocker(x,y,w,h, ignore = -1):
  if world_context!=null: return world_context.blocker(self,x,y,w,h,ignore)
@@ -114,7 +129,11 @@ func thru(a):
  return false
 
 # JS Math.round rounds ties toward +infinity (Godot round differs for negatives).
-func js_round(v): return floor(v+0.5)
+func js_round(v):
+ # Adding 0.5 first rounds the predecessor of 0.5 up to 1.0 in IEEE doubles.
+ # Math.round compares the fractional part, so preserve its boundary exactly.
+ var lower=floor(v)
+ return lower+1 if v-lower>=0.5 else lower
 func approach(v,t,d): return max(v-d,t) if v>t else min(v+d,t)
 func move_axis(a,amount,horizontal,ignore = -1,platforms = true,collide: Callable = Callable()):
  var rem = "remX" if horizontal else "remY"
@@ -186,6 +205,7 @@ func jump(inp,kind = "jump",direction = 0):
  else:
   p.facing = direction
   p.state = "normal"
+ if kind in ["walljump","wallbounce"]: kick_direction=direction
  emit_event(kind)
 func climb_jump(inp):
  p.stamina -= K.climbJumpCost
@@ -194,6 +214,7 @@ func climb_jump(inp):
   p.wallBoostDir = -p.facing
   p.wallBoostTimer = K.climbJumpBoostFrames
  p.state = "normal"
+ kick_direction=-p.facing
  emit_event("climbjump")
 func super_jump():
  buf.jump = 0
@@ -232,6 +253,7 @@ func start_dash(inp):
  p.varJump = 0
  freeze = K.dashFreezeFrames
  emit_event("dash-start")
+ flip_phase()
 func enter_climb():
  p.state = "climb"
  p.vx = 0
@@ -470,6 +492,7 @@ func step(raw):
   return
  if not awake and (inp.mx!=0 or inp.my!=0 or inp.jump or inp.dash or inp.grab or inp.strike or inp.parry): awake = true
  var from = {"x":p.x,"y":p.y}
+ update_devices(inp)
  if awake: sweeper_clock += 1
  for e in sweepers:
   e.prevX = e.x
@@ -531,6 +554,7 @@ func step(raw):
   p.carrying.y = p.y-8
  if p.strikeTimer>0: p.strikeTimer -= 1
  interact()
+ finish_devices()
  if p.state != "dead":
   sweeper_collision(from)
  if p.state != "dead" and world_context==null: check_exit()
@@ -541,8 +565,17 @@ func update_entities():
    var top = rect(e.x,e.y-1,e.w,e.h+1)
    e.down = overlap(p,top) or ents.any(func(l):return l.type=="lantern" and not l.get("held",false) and overlap(l,top))
    if e.down: pressed = true
+ var occupied={}
+ for e in ents:
+  if e.type=="toggle" and (overlap(p,e) or ents.any(func(l):return l.type=="lantern" and overlap(l,e))): occupied[e.body]=true
  var left = ents.filter(func(e):return e.type=="stone" and not e.get("lit",false)).size()
  for e in ents:
+  if e.type=="toggle":
+   var want=e.phase==phase
+   if want and not e.solid:
+    if occupied.has(e.body): e.pending=true
+    else: e.solid=true;e.pending=false
+   elif not want: e.solid=false;e.pending=false
   if e.type=="held":
    if pressed or e.get("latchedOpen",false): e.solid = false
    elif not e.solid and not overlap(p,e): e.solid = true
@@ -553,7 +586,7 @@ func update_entities():
     e.open = true
     e.t = 0
    if e.get("open",false): e.t += 1
-  if e.type=="refill" and e.timer>0: e.timer -= 1
+  if e.type in ["refill","pod","bell"] and e.timer>0: e.timer -= 1
   if e.type=="crumble":
    if e.get("broken",false):
     if e.timer>0: e.timer -= 1
@@ -582,6 +615,28 @@ func interact():
   die()
   return
  for e in ents:
+  if e.type=="spring" and not e.get("gone",false):
+   if overlap(p,e) and p.vy>=0 and p.state!="climb":
+    if world_context!=null:
+     p.vx=0
+     p.forceMoveTimer=0
+     p.remX=0
+     var cx=js_round(e.x+e.w/2-p.w/2)
+     if not solid(cx,p.y,p.w,p.h): p.x=cx
+    p.state="normal"
+    p.dashTimer=0
+    p.ducking=false
+    p.vy=K.springSpeed
+    p.varJumpSpeed=p.vy
+    p.varJump=K.varJumpFrames
+    p.autoJump=true
+    p.jumpGrace=0
+    p.remY=0
+    refill()
+    p.stamina=K.climbMaxStamina
+    e.timer=8
+    emit_event("spring")
+   if e.timer>0: e.timer-=1
   if e.get("gone",false) or not overlap(p,e): continue
   if e.type=="stone" and not e.get("lit",false): e.lit = true
   elif e.type=="shard": e.gone = true
@@ -591,6 +646,92 @@ func interact():
     p.stamina = K.climbMaxStamina
     e.timer = K.refillRespawnFrames
     freeze = 2
+ if p.strikeTimer>0:
+  var d=p.strikeDir
+  var sb
+  if d.x!=0 and d.y!=0: sb=rect(p.x+p.w-3 if d.x>0 else p.x-11,p.y-12 if d.y<0 else p.y+p.h-3,14,14)
+  elif d.y<0: sb=rect(p.x-3,p.y-14,14,14)
+  elif d.y>0: sb=rect(p.x-3,p.y+p.h,14,13)
+  else: sb=rect(p.x+p.w if d.x>0 else p.x-15,p.y-1,15,12)
+  for e in ents:
+   if p.strikeHit.has(e.id) or not overlap(sb,rect(e.x-2,e.y-2,e.w+4,e.h+4)): continue
+   if e.type=="pod" and e.timer==0:
+    p.strikeHit[e.id]=true
+    e.timer=30
+    if d.y>0:
+     p.vy=K.podSpeed
+     p.varJumpSpeed=p.vy
+     p.varJump=7
+     p.autoJump=true
+    elif d.y<0: p.vy=K.podDown
+    else:
+     p.vx=-d.x*K.podSide
+     p.vy=min(p.vy,-90)
+     p.forceMoveX=-d.x
+     p.forceMoveTimer=7
+    if p.state=="climb": p.state="normal"
+    p.jumpGrace=0
+    refill()
+    p.stamina=K.climbMaxStamina
+    freeze=3
+    emit_event("pod")
+   elif e.type=="stone" and not e.get("lit",false):
+    p.strikeHit[e.id]=true
+    e.lit=true
+   elif e.type=="bell" and e.timer==0:
+    p.strikeHit[e.id]=true
+    e.timer=18
+    flip_phase()
+    freeze=2
+    emit_event("bell")
+func flip_phase():
+ if ents.any(func(e):return e.type=="toggle"):
+  phase=1-phase
+  emit_event("phase")
+func device_groups(glyph):
+ var groups=[]
+ var seen={}
+ for r in range(int(room.rows)):
+  for c in range(int(room.cols)):
+   if seen.has(Vector2i(c,r)) or AscendRoomLoader.glyph(room.def,c,r)!=glyph: continue
+   var w=0
+   while c+w<room.cols and AscendRoomLoader.glyph(room.def,c+w,r)==glyph and not seen.has(Vector2i(c+w,r)): w+=1
+   var h=1
+   while r+h<room.rows:
+    var fits=true
+    for x in range(w):
+     if AscendRoomLoader.glyph(room.def,c+x,r+h)!=glyph or seen.has(Vector2i(c+x,r+h)): fits=false;break
+    if not fits: break
+    h+=1
+   for y in range(h):
+    for x in range(w): seen[Vector2i(c+x,r+y)]=true
+   groups.append(rect(c*8,r*8,w*8,h*8))
+ return groups
+func update_devices(inp):
+ if moving_decks.is_empty() and spent_footholds.is_empty(): return
+ kick_direction=0
+ if not spent_footholds.is_empty(): foothold_previous=p.duplicate()
+ for e in spent_footholds:
+  if not e.get("gone",false) and p.state not in ["dead","respawn"] and p.y+p.h==e.y and p.x<e.x+e.w and p.x+p.w>e.x: e.used=true
+ if not decks_awake and awake and (inp.mx!=0 or inp.my!=0 or inp.jump or inp.dash or inp.grab or inp.strike or inp.parry or inp.portal): decks_awake=true
+ for e in moving_decks:
+  if decks_awake: e.clock+=1
+  var u=fmod(e.clock+e.phase,e.period)/e.period
+  var k=u*2 if u<0.5 else 2-u*2
+  var ease=k*k*(3-2*k)
+  move_solid(e,e.ox+e.dx*ease-(e.x+e.remX),e.oy+e.dy*ease-(e.y+e.remY))
+func finish_devices():
+ for e in spent_footholds:
+  if e.get("gone",false): continue
+  var on=riding(e) or (p.state not in ["dead","respawn"] and p.onGround and p.y+p.h==e.y and p.x<e.x+e.w and p.x+p.w>e.x)
+  if not on and kick_direction!=0 and not foothold_previous.is_empty():
+   var q=foothold_previous
+   if overlap(rect(q.x-6 if kick_direction>0 else q.x+q.w,q.y,6,q.h),e): e.used=true
+  if on: e.used=true
+  elif e.used:
+   e.gone=true
+   e.solid=false
+   emit_event("foothold-spent")
 func check_exit():
  var ex = room.exit
  var out = p.x>=room.w-2 if ex=="right" else (p.x<=-p.w+2 if ex=="left" else (p.y<=-3 if ex=="up" else p.y>=room.h-2))
@@ -651,16 +792,16 @@ func move_solid(e,dx,dy):
     var ddx = nx-p.x
     var ddy = ny-p.y
     for j in range(int(abs(ddx))):
-     if not try_shift(p,sign(ddx),0,e.id):
+     if not try_shift(p,sign(ddx),0,ents.find(e)):
       die()
       return
     for j in range(int(abs(ddy))):
-     if not try_shift(p,0,sign(ddy),e.id):
+     if not try_shift(p,0,sign(ddy),ents.find(e)):
       die()
       return
    elif alive and riding:
-    try_shift(p,ax,0,e.id)
-    try_shift(p,0,ay,e.id)
+    try_shift(p,ax,0,ents.find(e))
+    try_shift(p,0,ay,ents.find(e))
  if alive and (riding or overlap(rect(p.x-1,p.y-1,p.w+2,p.h+2),e)) and (mx!=0 or my!=0):
   p.liftX = dx*60
   p.liftY = dy*60

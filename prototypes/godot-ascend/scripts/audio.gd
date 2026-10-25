@@ -25,6 +25,8 @@ var recorded = PackedVector2Array()
 const EVENT_CLIPS = {"jump":"jump","walljump":"walljump","super":"dash","hyper":"dash","wallbounce":"walljump","dash-start":"dash","land":"land-soft","refill":"gem","death":"death","strike":"swing","stone-lit":"rune","gate-open":"gate","crumble":"crumble","crumble-shake":"crumble","shard":"gem","zip-start":"zip","zip-stop":"stone-hit","pickup":"lantern","throw":"dash","plate":"plate","held-open":"lever","held-close":"lever","lantern-lost":"shatter","climbhop":"grab","grab":"grab"}
 func _ready():
  manifest = JSON.parse_string(FileAccess.get_file_as_string("res://data/audio.json"))
+ # Warm the reused resources before gameplay; first hits/lines do not load files mid-frame.
+ for recording in manifest.files: stream(recording.path)
  for bus in levels:
   if AudioServer.get_bus_index(bus)<0:
    AudioServer.add_bus()
@@ -117,6 +119,7 @@ func tick(core,delta):
    if who.who=="mara" and world_runtime!=null and world_runtime.mara_complete:
     key="cl1-o1-muster:mara:lineDone"
     world_runtime.register_mara()
+   if who.who=="elsie" and world_runtime!=null: key=world_runtime.elsie_voice()
    if not heard.has(key):
     heard[key] = true
     if manifest.voices.has(key): voice_queue.append(manifest.voices[key])
@@ -187,3 +190,13 @@ func restart_world():
  speech.stop()
  music.seek(0)
  foot_clock=0
+
+func change_chapter(number):
+ var chapter=manifest.chapters[str(number)]
+ music.stream=stream(chapter.music,true)
+ music.play()
+ ambience.stream=stream(chapter.ambience,true)
+ ambience.play()
+ speech.stop()
+ voice_queue.clear()
+ active_voice={}

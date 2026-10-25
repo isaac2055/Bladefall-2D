@@ -1,7 +1,9 @@
 extends SceneTree
 const World=preload("res://scripts/world.gd")
 func _initialize():
- var world=World.new(JSON.parse_string(FileAccess.get_file_as_string("res://data/world1.json")))
+ var number=int(OS.get_cmdline_user_args()[0]) if OS.get_cmdline_user_args().size()>0 else 1
+ var world=World.new(JSON.parse_string(FileAccess.get_file_as_string("res://data/world%d.json"%number)))
+ var start=world.active_id
  for core in world.cores.values():
   for e in core.ents:
    if e.type=="gate": e.open=true
@@ -27,8 +29,8 @@ func _initialize():
      open=true
      break
    if open: edges[a].append(b)
- var reached={"cl1-o1-road":true}
- var queue=["cl1-o1-road"]
+ var reached={start:true}
+ var queue=[start]
  while not queue.is_empty():
   var a=queue.pop_front()
   for b in edges[a]:
@@ -39,11 +41,11 @@ func _initialize():
  for section in world.data.world.sections:
   if not reached.has(section.room): ok=false
  for id in world.regions:
-  if id not in ["cl1-passage-1-2","cl1-passage-1-3"] and not reached.has(id): ok=false
+  if id not in ["cl1-passage-1-2","cl1-passage-1-3","cl2-passage-2-4","cl2-passage-2-3"] and not reached.has(id): ok=false
  for a in edges:
   for b in edges[a]:
    if a not in edges[b]: ok=false
- if "cl1-atlas-crossroads" in edges["cl1-o1-gate"]: ok=false
+ if number==1 and "cl1-atlas-crossroads" in edges["cl1-o1-gate"]: ok=false
  print("PASS all main rooms and optional branches connect in both directions; no overlap between Gatehouse and Upper Watch" if ok else "FAIL physical connectivity")
  world.shutdown()
  quit(0 if ok else 1)

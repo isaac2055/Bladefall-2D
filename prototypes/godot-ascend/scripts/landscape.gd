@@ -2,6 +2,8 @@ extends Node2D
 ## Presentation is interpolated and layered; the integer simulation is never modified here.
 const Room = preload("res://scripts/room_loader.gd")
 var sim
+var forest=false
+var sky_gradient: Texture2D
 var runtime = null
 var world_data
 var placements = {}
@@ -43,6 +45,11 @@ var ambient_counter = 0.0
 var ink_color = Color.WHITE
 var observed = {"bursts":0,"afterimages":0,"joins":0}
 func _ready():
+ forest=int(world_data.world.n)==2
+ var sky=Image.create(1,184,false,Image.FORMAT_RGBA8)
+ for y in range(184):
+  sky.set_pixel(0,y,Color("0b191b").lerp(Color("344937"),float(y)/225) if forest else Color("101526").lerp(Color("53636a"),float(y)/200.0))
+ sky_gradient=ImageTexture.create_from_image(sky)
  texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
  sections = world_data.world.sections.duplicate(true)
  for q in world_data.world.quests: sections.append_array(q.sections)
@@ -125,6 +132,8 @@ func make_tiles():
      if x==7 or y==7: color=Color("1b2430")
      elif y==0: color=color.lightened(0.035)
      if hash_at(x,y,variant)%19==0: color=color.lightened(0.04)
+    if forest:
+     color=Color(color.r*0.72,color.g*0.92,color.b*0.72,color.a)
     image.set_pixel(variant*8+x,y,color)
  var atlas = TileSetAtlasSource.new()
  atlas.texture = ImageTexture.create_from_image(image)
@@ -221,7 +230,7 @@ func load_scene(core,smooth_join=false):
  active_position = placements.get(sim.room.id,Vector2.ZERO)
  snap_actor()
  if not smooth_join:
-  camera_float = Vector2(max(0,actor.x-153),actor.y-133) if runtime!=null else target_camera()
+  camera_float = Vector2(actor.x-153,actor.y-133) if runtime!=null else target_camera()
   camera = camera_float
   fade = 0.16
   trails.clear()
@@ -238,7 +247,7 @@ func before_tick():
  if sim==null: return {}
  previous_actor = current_actor
  var states = {}
- for e in sim.ents: states[entity_key(e)] = {"lit":e.get("lit",false),"open":e.get("open",false),"broken":e.get("broken",false),"solid":e.get("solid",true),"shaking":e.get("shaking",0),"down":e.get("down",false),"timer":e.timer,"state":e.state,"returning":e.get("returning",false),"gone":e.get("gone",false)}
+ for e in sim.ents: states[entity_key(e)] = {"lit":e.get("lit",false),"open":e.get("open",false),"broken":e.get("broken",false),"solid":e.get("solid",true),"shaking":e.get("shaking",0),"down":e.get("down",false),"timer":e.get("timer",0),"state":e.get("state","idle"),"returning":e.get("returning",false),"gone":e.get("gone",false)}
  return {"entities":states,"frame":sim.frame}
 func entity_key(e):
  return str(e.get("source_room", ""))+":"+str(e.get("source_id", e.id))
@@ -304,7 +313,7 @@ func target_camera():
  var y=camera_float.y
  if actor.y-y<62: y=actor.y-62
  elif actor.y-y>136: y=actor.y-136
- return Vector2(max(0,actor.x-153+look),y)
+ return Vector2(actor.x-153+look,y)
 func _process(delta):
  clock += delta
  if sim==null: return
@@ -324,7 +333,7 @@ func _process(delta):
   var visible_now = Rect2(-70,-60,460,320).has_point(point)
   item.node.visible = lit and visible_now
   item.node.position = point-Vector2(0,5)
-  item.node.energy = 1.45+sin(clock*9+item.point.x)*0.07
+  item.node.energy = (0.8 if forest else 1.45)+sin(clock*9+item.point.x)*0.04
   item.sparks.position = point-Vector2(0,5)
   item.sparks.emitting = visible_now and not reduced_motion
  for part in particles:
@@ -340,7 +349,7 @@ func _process(delta):
   trails.append({"p":actor,"life":0.18})
   observed.afterimages += 1
  if plume.size()==7:
-  plume[0] = actor+Vector2(3,3)
+  plume[0] = actor+Vector2(3,4)
   for i in range(1,7):
    var target = plume[i-1]+Vector2(-sim.p.facing*1.9,sin(clock*7-i*0.8)*0.5-0.15)
    plume[i] = plume[i].lerp(target,1-exp(-delta*23))
@@ -359,8 +368,10 @@ func polygon(points,color): ink.draw_colored_polygon(PackedVector2Array(points),
 func circle(point,radius,color): ink.draw_circle(point,radius,Color(color) if color is String else color)
 func _draw():
  ink = self
- for y in range(184):
-  line(Vector2(0,y),Vector2(320,y),Color("101526").lerp(Color("53636a"),float(y)/200.0))
+ if forest:
+  draw_woods()
+  return
+ ink.draw_texture_rect(sky_gradient,Rect2(0,0,320,184),false)
  # A fixed celestial depth with slowly moving cloud veils.
  var moon = Vector2(252-camera.x*0.018,35-camera.y*0.025)
  moon.x = fposmod(moon.x+40,380)-20
@@ -436,11 +447,12 @@ func draw_front():
  for scene in scenes:
   var origin=scene.world_origin if runtime!=null else active_position
   if not Rect2(origin,Vector2(scene.room.w,scene.room.h)).intersects(view): continue
-  for r in range(int(scene.room.rows)):
-   for c in range(int(scene.room.cols)):
+  for r in range(max(0,floori((view.position.y-origin.y)/8)),min(int(scene.room.rows),ceili((view.end.y-origin.y)/8))):
+   for c in range(max(0,floori((view.position.x-origin.x)/8)),min(int(scene.room.cols),ceili((view.end.x-origin.x)/8))):
     var t=scene.room.grid[r*int(scene.room.cols)+c]
     if t>=3: draw_hazard(t,origin+Vector2(c*8,r*8))
-  for e in scene.ents: draw_entity(e,origin)
+  for e in scene.ents:
+   if Rect2(origin+Vector2(e.x,e.y),Vector2(e.w,e.h)).grow(18).intersects(view): draw_entity(e,origin)
   for e in scene.sweepers:
    var point=origin+Vector2(e.x,e.y)
    circle(point,e.radius+2,Color(0.8,0.42,0.33,0.08))
@@ -456,6 +468,7 @@ func draw_front():
   var col = part.color
   col.a = clamp(part.life/part.max,0,1)*0.8
   box(part.p.x,part.p.y,1,1,col)
+ if runtime!=null and forest: draw_elsie_quest()
  if sim.p.state!="dead": draw_knight()
  ink.draw_set_transform(Vector2.ZERO)
  if flash>0 and not reduced_motion: box(0,0,320,184,Color(0.92,0.85,0.65,flash*0.7))
@@ -493,6 +506,40 @@ func draw_prop(kind,point):
    line(Vector2(x+31,y),Vector2(x+36,y),"#7c7863")
    line(Vector2(x-8,y),Vector2(x-13,y),"#7c7863")
    box(x+20,y-3,6,3,"#6b5a42")
+  "hut":
+   box(x-10,y-23,35,23,"#405044")
+   polygon([Vector2(x-15,y-22),Vector2(x+6,y-37),Vector2(x+31,y-22)],"#687057")
+   box(x+2,y-17,9,17,"#263a32")
+   box(x+15,y-17,6,6,"#dbc78c")
+   for c in range(-8,25,5): line(Vector2(x+c,y-22),Vector2(x+c,y),"#53614c",0.6)
+  "table","step":
+   box(x-4,y-7,19,3,"#8d815f")
+   box(x-2,y-4,2,4,"#5e6048")
+   box(x+11,y-4,2,4,"#5e6048")
+   if kind=="table": box(x+2,y-10,5,3,"#c4b38b")
+  "stove":
+   box(x-3,y-8,13,8,"#53604d")
+   box(x,y-4,6,3,"#dfb56e")
+   box(x-2,y-12,11,4,"#424b41")
+   for i in range(3): circle(Vector2(x+2+sin(clock+i)*2,y-16-i*3),1.5,Color(.7,.76,.62,.12))
+  "lantern","elsielamp":
+   line(Vector2(x+3,y-24),Vector2(x+3,y-11),"#74795b")
+   box(x,y-12,6,8,"#9d8d61")
+   box(x+1,y-11,4,5,"#eddaa0")
+   circle(Vector2(x+3,y-8),9,Color(1,.8,.4,.05))
+  "cradle":
+   box(x-2,y-8,14,6,"#7c7556")
+   for i in range(4): box(x+i*3,y-11,1,8,"#a69c70")
+   line(Vector2(x-4,y),Vector2(x+13,y),"#9d9370",1)
+  "fern":
+   for i in range(5):
+    var tip=Vector2(x-6+i*3+sin(clock*1.1+x)*.5,y-4-abs(2-i)*1.5)
+    line(Vector2(x,y),tip,"#8ca06b",.8)
+    line(tip,tip+Vector2(-2,1),"#78925f",1)
+  "roots":
+   for i in range(4):
+    line(Vector2(x+i*3,y-12),Vector2(x+i*4-4,y-3),"#66734f",1.5)
+    line(Vector2(x+i*4-4,y-3),Vector2(x+i*6-8,y),"#7a8056",1)
   "trumpets":
    for i in range(4):
     var xx = x+i*2.8
@@ -536,8 +583,8 @@ func draw_person(who,point,active):
  var x = point.x
  var y = point.y
  var phase = clock*1.6+x*.03
- var coat = {"vey":"#9b8665","mara":"#788d81","rowan":"#8a8571","olan":"#777b83","sentinel":"#7e8b83","orra":"#7c8a76"}.get(who.who,"#7d887d")
- var sit = 3 if who.who in ["vey","rowan"] else 0
+ var coat = {"vey":"#9b8665","mara":"#788d81","rowan":"#8a8571","olan":"#777b83","sentinel":"#7e8b83","orra":"#7c8a76","elsie":"#8c7964","hale":"#6e7b8b","pell":"#7d8064","bram":"#7c8879"}.get(who.who,"#7d887d")
+ var sit = 3 if who.who in ["vey","rowan","hale"] else 0
  var move = sin(phase)*0.25
  box(x-3,y-1,12,1,Color(0.02,0.04,0.07,0.3))
  box(x-1,y-10+sit,7,8-sit,coat)
@@ -549,6 +596,29 @@ func draw_person(who,point,active):
  box(x+(3 if face>0 else 0),y-13+sit,1,1,"#3c4544")
  if active and speaker==who.who and int(clock*6)%2==0: box(x+(3 if face>0 else 0),y-11+sit,1,1,"#5e534a")
  match who.who:
+  "elsie":
+   box(x+8,y-3,8,3,"#484d42")
+   box(x+9,y-6,6,4,"#727b60")
+   line(Vector2(x+4,y-8),Vector2(x+12+sin(phase)*2,y-7),"#c9b597",1)
+   for i in range(2): circle(Vector2(x+11+sin(phase+i),y-10-i*3),1,Color(.8,.8,.65,.2))
+  "orra":
+   line(Vector2(x+4,y-9),Vector2(x+8,y-12+sin(phase)*.4),"#c8b195",1)
+   circle(Vector2(x+9,y-12),1.6,"#d4c38e")
+   line(Vector2(x+9,y-11),Vector2(x+7,y-5),"#958a62",.5)
+  "pell":
+   line(Vector2(x-5,y-13),Vector2(x+13,y-13),"#9a8761",1.5)
+   for side in [-4,11]:
+    line(Vector2(x+side,y-13),Vector2(x+side,y-6),"#a39878",.6)
+    box(x+side-2,y-6,5,5,"#7a795c")
+    box(x+side-1,y-5,3,1,"#c0a970")
+  "hale":
+   box(x-2,y-2,12,2,"#5f614f")
+   line(Vector2(x+2,y-7),Vector2(x+7+sin(phase),y-8),"#d4c4a4",1.5)
+   box(x+4,y-9,3,2,"#c6cbb3")
+  "bram":
+   line(Vector2(x+9,y-19),Vector2(x+9,y),"#a49672",1)
+   box(x+10,y-15,5,6,"#b49d68")
+   box(x+11,y-14,3,4,"#f4df9d")
   "vey":
    box(x-3,y-3,13,2,"#5b5547")
    box(x+9,y-5,6,4,"#3b4648")
@@ -602,6 +672,33 @@ func draw_entity(e,origin):
    box(x,y,e.w,e.h,"#53635e")
    box(x,y,e.w,2,"#c8b58a")
    for c in range(3,int(e.w)-2,7): circle(Vector2(x+c,y+e.h/2),1,"#a7a58b")
+  "toggle":
+   var col=Color("d7b46f") if e.phase==0 else Color("73b8b1")
+   if not e.solid: col.a=0.22
+   box(x,y,e.w,e.h,col.darkened(0.35))
+   box(x,y,e.w,1,col)
+   for c in range(2,int(e.w),5): box(x+c,y+2,1,min(3,e.h-2),col)
+  "pod":
+   var available=e.timer==0
+   circle(Vector2(x+4,y+4),3.8,"#a5c9a4" if available else "#42634f")
+   line(Vector2(x+2,y+1),Vector2(x+4,y+6),"#304c3d")
+   line(Vector2(x+6,y+1),Vector2(x+4,y+6),"#304c3d")
+   if available: box(x+3,y+2,2,2,"#e6edbb")
+  "bell":
+   line(Vector2(x+4,y-3),Vector2(x+4,y),"#b5a57a")
+   polygon([Vector2(x+2,y+1),Vector2(x+6,y+1),Vector2(x+8,y+6),Vector2(x,y+6)],"#bb9d68")
+   box(x+3,y+7,2,1,"#e4cc8d")
+  "deck","foothold":
+   box(x,y,e.w,e.h,"#58674e" if e.type=="foothold" else "#556d68")
+   box(x,y,e.w,1,"#c0bc88")
+   for c in range(3,int(e.w),8): box(x+c,y+2,2,2,"#9d9a73")
+   if e.get("used",false): line(Vector2(x+e.w/2,y),Vector2(x+e.w/2-2,y+e.h),"#252e30")
+  "spring":
+   box(x,y+1,8,2,"#8b9984")
+   box(x+1,y-1 if e.timer==0 else y,6,2,"#d4c995")
+  "thru":
+   box(x,y,e.w,1,"#b1b997")
+   box(x,y+1,e.w,min(e.h-1,2),"#546b5a")
   "refill","shard","stone":
    if e.type=="refill" and e.timer>0: return
    var center = Vector2(x+4,y+4)
@@ -626,29 +723,36 @@ func draw_knight():
  var x = actor.x
  var y = actor.y
  var face = p.facing
- var ready_color = Color("eeb46a") if p.dashes>0 else Color("667f94")
+ var ready_color = Color("ffb347") if p.dashes>0 else Color("56708c")
  for i in range(1,plume.size()):
-  line(plume[i-1],plume[i],Color(ready_color,1-float(i)/10),max(0.5,2.5-i*.28))
- var run = sin(walking*0.15)
- var bob = abs(run)*0.45 if p.onGround and abs(p.vx)>20 else sin(clock*2)*0.1
- var crouch = squash*2
- # Silhouette shadow, two-tone armour, moving feet and a breathing idle.
- if p.onGround: box(x-1,y+10,10,1,Color(0.01,.03,.05,.2))
- box(x+1,y+4+bob+crouch,6,5-crouch,"#53647e")
- box(x+1,y+4+bob,2,5,"#7b8d9c")
- box(x+5,y+5+bob,2,4,"#35465c")
- var leg = run*0.8 if p.onGround and abs(p.vx)>10 else (1 if not p.onGround else 0)
- box(x+1+leg,y+9,2,2,"#354052")
- box(x+5-leg,y+9-(0.5 if not p.onGround else 0),2,2,"#354052")
- box(x+1,y+bob+crouch,6,5,"#c8d1cd")
- box(x,y+1+bob+crouch,8,3,"#e1e3d3")
- box(x+1,y+1+bob+crouch,1,2,"#f2edda")
- box(x+(5 if face>0 else 1),y+2+bob+crouch,2,1,"#344353")
- box(x+3,y+4+bob+crouch,3,1,"#9ba9ab")
+  line(plume[i-1],plume[i],Color(ready_color,1-float(i)/10),max(0.5,1.5-i*.15))
+ # Default browser sprite (bladefall-pcore-view.js drawKnightSprite), at its 8 × 11 scale.
+ var sy=1.0/(1.0+squash)
+ var sx=1.0+squash
+ var height=round(11*sy)
+ var width=max(6,round(8*sx))
+ var bx=x+4-width/2
+ var by=y+11-height
+ var body="#c05050" if p.get("tired",false) and int(sim.frame/4)%2==0 else "#2d4a78"
+ box(bx+1,by+height-2,2,2,"#1c2130")
+ box(bx+width-3,by+height-2,2,2,"#1c2130")
+ if p.onGround and abs(p.vx)>10:
+  box(bx+(0 if int(walking/6)%2 else 2),by+height-1,2,1,"#1c2130")
+ box(bx+1,by+4,width-2,height-6,body)
+ box(bx+1,by+4,width-2,1,"#4a6aa0")
+ box(bx+1,by+height-4,width-2,1,"#6b4e2a")
+ box(bx if face>0 else bx+width-1,by+height-6,1,4,"#c9ced8")
+ box(bx+1,by,width-2,5,"#b9c2cf")
+ box(bx+1,by+4,width-2,1,"#7c8796")
+ box(bx+width-4 if face>0 else bx+2,by+2,2,1,"#1a1f28")
+ box(bx+width/2-1,by-2,2,2,ready_color)
+ box(bx+1 if face>0 else bx+width-3,by+4,2,1,ready_color)
  if p.state=="climb":
-  box(x+(7 if face>0 else -1),y+2,2,3,"#aebdbb")
+  box(bx+width-1 if face>0 else bx,by+3,1,3,"#b9c2cf")
   box(x+1,y-5,6,1,"#263b45")
   box(x+1,y-5,6*clamp(p.stamina/110,0,1),1,"#d2c08b")
+ elif p.vy< -20:
+  box(bx if face>0 else bx+width-1,by+3,1,2,"#b9c2cf")
  if p.strikeTimer>0:
   var aim = Vector2(p.strikeDir.x,p.strikeDir.y).normalized()
   var center = Vector2(x+4,y+5)
@@ -681,3 +785,63 @@ func build_shadows(d,origin,cols,rows):
    shadow.occluder = shape
    occluders.add_child(shadow)
    occluder_count += 1
+
+func draw_woods():
+ # Layered trunks keep the navigable foreground distinct from the forest depth.
+ ink.draw_texture_rect(sky_gradient,Rect2(0,0,320,184),false)
+ var moon=Vector2(fposmod(255-camera.x*0.018,380)-20,30-camera.y*0.012)
+ circle(moon,16,Color("abb997"))
+ circle(moon+Vector2(4,-1),14,Color("22382d"))
+ for layer in range(3):
+  var parallax=0.035+layer*0.055
+  var spacing=31+layer*16
+  var offset=fposmod(camera.x*parallax,spacing)
+  var base=int(floor(camera.x*parallax/spacing))
+  var col=[Color("162d29"),Color("1e3930"),Color("294332")][layer]
+  for i in range(-2,14):
+   var seed=hash_at(i+base,layer)
+   var x=i*spacing-offset
+   var width=3+seed%5+layer*2
+   var top=5+seed%55-camera.y*0.008
+   box(x,top,width,200,col)
+   for branch in range(3):
+    var yy=top+10+branch*24
+    var side=1 if (seed+branch)%2 else -1
+    line(Vector2(x+width/2,yy+10),Vector2(x+width/2+side*(12+seed%14),yy-5),col,2+layer)
+    var reach=14+hash_at(i+base,branch+layer)%18
+    polygon([Vector2(x-reach,yy-2),Vector2(x-reach+4,yy-8),Vector2(x-reach+1,yy-12),Vector2(x-7,yy-16),Vector2(x-3,yy-24-layer*2),Vector2(x+5,yy-21),Vector2(x+width+4,yy-25),Vector2(x+width+11,yy-15),Vector2(x+width+reach-4,yy-13),Vector2(x+width+reach,yy-5),Vector2(x+width+reach-7,yy+2)],col)
+   if layer==2:
+    line(Vector2(x+width-1,top+20),Vector2(x+width-1,top+100),Color("3c5340"),0.7)
+ for i in range(18):
+  var x=fposmod(i*47.3+sin(clock*.3+i)*3-camera.x*.12,340)-10
+  var y=40+fposmod(i*31.7-camera.y*.04,130)
+  circle(Vector2(x,y),0.45,Color(.72,.83,.48,.12+sin(clock+i)*.08))
+ for band in range(3):
+  var y=95+band*27
+  var x=fposmod(clock*.7-camera.x*.08+band*61,380)-40
+  box(x,y,95,2,Color(.58,.71,.56,.025))
+
+func draw_elsie_quest():
+ if not runtime.elsie_met: return
+ var point=Vector2.ZERO
+ if runtime.quest_complete:
+  var age=(runtime.frames-runtime.quest_award_frame)/60.0
+  if age<3:
+   var u=clamp((age-0.6)/1.0,0,1)
+   var start=actor+Vector2(4,-10)
+   var target=camera+Vector2(285,10)
+   var at=start.lerp(target,1-pow(1-u,3))
+   polygon([at+Vector2(0,4),at+Vector2(-4,0),at+Vector2(-4,-3),at+Vector2(-1,-4),at,at+Vector2(1,-4),at+Vector2(4,-3),at+Vector2(4,0)],"#ff9fc8")
+  return
+ if runtime.quest_lantern: point=actor+Vector2(4,-6)
+ else:
+  var perch=runtime.data.quest.perches[runtime.elsie_perch]
+  point=runtime.placements[perch.room]+Vector2(perch.x,perch.y)
+ if not Rect2(camera-Vector2(20,20),Vector2(360,224)).has_point(point): return
+ circle(point,9,Color(1,.8,.4,.08))
+ box(point.x-2,point.y-3,4,6,"#b79d68")
+ box(point.x-1,point.y-2,2,4,"#ffe6a2")
+ if not runtime.quest_lantern:
+  for i in range(4):
+   var at=point+Vector2(cos(clock*2+i*1.6)*7,sin(clock*2.7+i*1.6)*4)
+   box(at.x-1,at.y,2,1,"#d9dfb5")

@@ -2,7 +2,9 @@ extends SceneTree
 const Core = preload("res://scripts/core.gd")
 const Loader = preload("res://scripts/room_loader.gd")
 func _initialize():
- var data = JSON.parse_string(FileAccess.get_file_as_string("res://data/world1.json"))
+ var args=OS.get_cmdline_user_args()
+ var number=int(args[1]) if args.size()>1 else 1
+ var data = JSON.parse_string(FileAccess.get_file_as_string("res://data/world%d.json"%number))
  var fixtures = JSON.parse_string(FileAccess.get_file_as_string(OS.get_cmdline_user_args()[0]))
  for f in fixtures:
   var d = data.world.rooms.filter(func(r):return r.id==f.to)[0]

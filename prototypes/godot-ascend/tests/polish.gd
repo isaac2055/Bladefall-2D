@@ -93,7 +93,7 @@ func run():
   if not check(hashing.finish().hex_encode()==recording.sha256,"exact recording bytes: "+recording.path): return
   if not check(clip.get_length()>0,"decode "+recording.path): return
   decoded += 1
- if not check(decoded==79,"all 79 reused recordings decode in native Godot"): return
+ if not check(decoded==app.audio.manifest.files.size() and decoded>=79,"every reused recording decodes in native Godot"): return
  if not check(app.audio.music.playing and app.audio.music.stream.get_length()>10 and app.audio.ambience.playing,"original score and ambient bed decode and play"): return
  if not check(app.audio.speech.playing and app.subtitle_name.text=="VEY" and app.subtitle_text.text==app.audio.active_voice.text,"Vey recording and exact matching subtitles play on approach"): return
  if not check(peak(app.audio.recorded)>0.001,"Godot's actual output bus contains non-silent audio"): return

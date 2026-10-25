@@ -22,6 +22,12 @@ var dormant = {}
 var mara_registered=false
 var parsed = {}
 var progress = {}
+var elsie_met=false
+var elsie_perch=0
+var quest_lantern=false
+var quest_complete=false
+var quest_award_frame=-1000
+var quest_deaths=0
 func _init(source):
  data=source.duplicate(true)
  data.world=Layout.build(source.world)
@@ -65,6 +71,12 @@ func restart():
  cores.clear()
  progress.clear()
  bearings.clear()
+ elsie_met=false
+ elsie_perch=0
+ quest_lantern=false
+ quest_complete=false
+ quest_award_frame=-1000
+ quest_deaths=0
  mara_complete=false
  mara_registered=false
  dormant=data.playerDefaults.duplicate(true)
@@ -83,7 +95,7 @@ func restart():
    e.source_room=id
    e.source_id=e.id
   cores[id]=core
- active_id="cl1-o1-road"
+ active_id=data.world.get("atlasStart",data.world.sections[0].room)
  checkpoint_id=active_id
 func active(): return cores[active_id]
 func position(core=null):
@@ -130,6 +142,7 @@ func step(raw):
   restore_count+=1
  tick_inactive()
  collect_progress()
+ tick_elsie()
 func tick_inactive():
  var current=active()
  for id in regions:
@@ -139,15 +152,17 @@ func tick_inactive():
   var player=other.p
   other.p=dormant
   other.update_entities()
+  other.update_devices({"mx":0,"my":0,"jump":false,"dash":false,"grab":false,"strike":false,"parry":false,"portal":false})
   other.p=player
   other.room_frame+=1
-  other.sweeper_clock+=1
+  if other.awake: other.sweeper_clock+=1
   for e in other.sweepers:
    e.prevX=e.x
    e.prevY=e.y
    e.merge(other.sweeper_at(e,other.sweeper_clock),true)
 func collect_progress():
- for id in regions:
+ # Only the active knight can collect or light a stake. Inactive machinery cannot.
+ for id in [active_id]:
   var core=cores[id]
   var kept=progress.get(id,{})
   for e in core.ents:
@@ -266,3 +281,32 @@ func return_extra_objects(core):
   e.id=source.ents.size()
   source.ents.append(e)
  core.p.carrying=null
+
+func tick_elsie():
+ if int(data.world.n)!=2 or not elsie_met or quest_complete: return
+ var core=active()
+ if core.deaths>quest_deaths:
+  quest_deaths=core.deaths
+  if quest_lantern:
+   quest_lantern=false
+   elsie_perch=data.quest.perches.size()-1
+   notices.append("The moths take it back · find their last perch")
+ if core.p.state in ["dead","respawn"]: return
+ var point=Vector2(core.p.x+4,core.p.y+5.5)
+ if quest_lantern:
+  if active_id=="cl2-w2-kitchen" and abs(point.x-92)<14 and abs(point.y-138)<18:
+   quest_lantern=false
+   quest_complete=true
+   quest_award_frame=frames
+   notices.append("♥ Heart · A Place for Supper")
+  return
+ var perch=data.quest.perches[elsie_perch]
+ var last=elsie_perch==data.quest.perches.size()-1
+ if active_id==perch.room and abs(point.x-perch.x)<(10 if last else 44) and abs(point.y-perch.y)<(12 if last else 40):
+  if last:
+   quest_lantern=true
+   notices.append("The lantern · bring it to Elsie")
+  else: elsie_perch+=1
+func elsie_voice():
+ elsie_met=true
+ return "refuge:done" if quest_complete else ("refuge:line1" if quest_lantern else "refuge:line0")

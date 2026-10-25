@@ -202,6 +202,76 @@
       "seconds": 4.07,
       "name": "Mara",
       "path": "voice/ascend/w1-o1-muster.mara.done.mp3"
+    },
+    "cl2-w2-refuge:orra:line": {
+      "text": "Stopped again. Don’t ask me the time.",
+      "id": "ascend/w2-w2-refuge.orra",
+      "seconds": 3.14,
+      "name": "Orra",
+      "path": "voice/ascend/w2-w2-refuge.orra.mp3"
+    },
+    "cl2-w2-refuge:pell:line": {
+      "text": "Not resin crew, are you? A cut pod kicks. Get a blade.",
+      "id": "ascend/w2-w2-refuge.pell",
+      "seconds": 4.26,
+      "name": "Pell",
+      "path": "voice/ascend/w2-w2-refuge.pell.mp3"
+    },
+    "cl2-w2-refuge:mara:line": {
+      "text": "You again. The tunnel comes up right here. Refuge is ahead.",
+      "id": "ascend/w2-w2-refuge.mara",
+      "seconds": 3.97,
+      "name": "Mara",
+      "path": "voice/ascend/w2-w2-refuge.mara.mp3"
+    },
+    "cl2-w2-clearing:hale:line": {
+      "text": "Sword was in those roots. Cost me a shoulder. Take it.",
+      "id": "ascend/w2-w2-clearing.hale",
+      "seconds": 4.6,
+      "name": "Hale",
+      "path": "voice/ascend/w2-w2-clearing.hale.mp3"
+    },
+    "cl2-w2-kitchen:elsie:line": {
+      "text": "Mind the step. Elsie. My lantern’s stuck up in the branches. Fetch it?",
+      "id": "ascend/w2-w2-kitchen.elsie",
+      "seconds": 5.23,
+      "name": "Elsie",
+      "path": "voice/ascend/w2-w2-kitchen.elsie.mp3"
+    },
+    "cl2-w2-kitchen:elsie:lineDone": {
+      "text": "Lamp’s lit. Two bowls. Sit.",
+      "id": "ascend/w2-w2-kitchen.elsie.done",
+      "seconds": 2.92,
+      "name": "Elsie",
+      "path": "voice/ascend/w2-w2-kitchen.elsie.done.mp3"
+    },
+    "cl2-w2-edge:bram:line": {
+      "text": "Easy, easy… Bram. Light goes through a branch? It isn’t there.",
+      "id": "ascend/w2-w2-edge.bram",
+      "seconds": 5.21,
+      "name": "Bram",
+      "path": "voice/ascend/w2-w2-edge.bram.mp3"
+    },
+    "refuge:line0": {
+      "text": "The moths took my lantern, off into the trees past the kitchen. They never go far at a time. Could you follow them?",
+      "id": "ascend/errands.refuge.0",
+      "seconds": 7.52,
+      "name": "Elsie",
+      "path": "voice/ascend/errands.refuge.0.mp3"
+    },
+    "refuge:line1": {
+      "text": "Bring her home steady. If you fall, the moths will have her back.",
+      "id": "ascend/errands.refuge.1",
+      "seconds": 4.64,
+      "name": "Elsie",
+      "path": "voice/ascend/errands.refuge.1.mp3"
+    },
+    "refuge:done": {
+      "text": "Two bowls and a working lamp. That’s supper. Sit before it gets cold.",
+      "id": "woods/refuge.ending",
+      "seconds": 4.67,
+      "name": "Elsie",
+      "path": "voice/woods/refuge.ending.mp3"
     }
   },
   "unvoiced": [
@@ -221,6 +291,18 @@
       "path": "sfx/amb/plains.mp3",
       "source": "public/audio/sfx/amb/plains.mp3",
       "sha256": "a4d7ba62a1da1ee2c6a536795fcb76fa394ec59013c46fbd646c10dca4476ea2",
+      "bytes": 160540
+    },
+    {
+      "path": "music/watchful-greenwood.mp3",
+      "source": "public/audio/music/watchful-greenwood.mp3",
+      "sha256": "47dada6ac6df3c7a208ff01ca6002876c474e5b056fe703c06a08951495b97b9",
+      "bytes": 5034361
+    },
+    {
+      "path": "sfx/amb/forest.mp3",
+      "source": "public/audio/sfx/amb/forest.mp3",
+      "sha256": "54235e020abbcf0b0cdb89072f2a1e4df38269a828083150ebd731d2bc704e12",
       "bytes": 160540
     },
     {
@@ -684,6 +766,76 @@
       "source": "public/audio/voice/ascend/w1-o1-muster.mara.done.mp3",
       "sha256": "9f468f9943fb6db334cb961efd5ecad47c858d09d30f1f5bc8b9b3f0928f0a71",
       "bytes": 33062
+    },
+    {
+      "path": "voice/ascend/w2-w2-refuge.orra.mp3",
+      "source": "public/audio/voice/ascend/w2-w2-refuge.orra.mp3",
+      "sha256": "745ba7e8e038fae74af99496ece0196e04961388474f7cbe28afbf31296e76f7",
+      "bytes": 25748
+    },
+    {
+      "path": "voice/ascend/w2-w2-refuge.pell.mp3",
+      "source": "public/audio/voice/ascend/w2-w2-refuge.pell.mp3",
+      "sha256": "620508cf8f1d296097bda6f7831059cdd7a096490f4d6a6acad9b0612833cf53",
+      "bytes": 34734
+    },
+    {
+      "path": "voice/ascend/w2-w2-refuge.mara.mp3",
+      "source": "public/audio/voice/ascend/w2-w2-refuge.mara.mp3",
+      "sha256": "5cc09df59251183961be5fde322f1ef2fb8fc9cfe47b01d18367742abfe71071",
+      "bytes": 32435
+    },
+    {
+      "path": "voice/ascend/w2-w2-clearing.hale.mp3",
+      "source": "public/audio/voice/ascend/w2-w2-clearing.hale.mp3",
+      "sha256": "a2c71ee79547c203ff630b95a26246bea666aac35cb690439e00009145a8a217",
+      "bytes": 37451
+    },
+    {
+      "path": "voice/ascend/w2-w2-kitchen.elsie.mp3",
+      "source": "public/audio/voice/ascend/w2-w2-kitchen.elsie.mp3",
+      "sha256": "3ff84ce0aa9ab4af6ee707d04b02511c26aa7dd2a3f9346f33c992978418eb1d",
+      "bytes": 42466
+    },
+    {
+      "path": "voice/ascend/w2-w2-kitchen.elsie.done.mp3",
+      "source": "public/audio/voice/ascend/w2-w2-kitchen.elsie.done.mp3",
+      "sha256": "061fa01a64138b8552fccaa39601a722fdddc821233cdbae844fb1d16fefdfb3",
+      "bytes": 23867
+    },
+    {
+      "path": "voice/ascend/w2-w2-edge.bram.mp3",
+      "source": "public/audio/voice/ascend/w2-w2-edge.bram.mp3",
+      "sha256": "149121a3e9e5965c5759f7563aa07e16912b473a834cf485712ab8d943afd70b",
+      "bytes": 42257
+    },
+    {
+      "path": "voice/ascend/errands.refuge.0.mp3",
+      "source": "public/audio/voice/ascend/errands.refuge.0.mp3",
+      "sha256": "ae3fdbdffc949f6491efec25667ffd1f1c566651484858c348a7816be4869e27",
+      "bytes": 138377
+    },
+    {
+      "path": "voice/ascend/errands.refuge.1.mp3",
+      "source": "public/audio/voice/ascend/errands.refuge.1.mp3",
+      "sha256": "1d33800729bc06f128cc1c8b0d9fec1c7a2232c58c6d876a21fd0dff51a50d18",
+      "bytes": 92401
+    },
+    {
+      "path": "voice/woods/refuge.ending.mp3",
+      "source": "public/audio/voice/woods/refuge.ending.mp3",
+      "sha256": "55f77e2a4540510b0f755c8a5a258530b48ac9b43d7cdb73f3e4659b5d8b7564",
+      "bytes": 37869
     }
-  ]
+  ],
+  "chapters": {
+    "1": {
+      "music": "music/midnight-field.mp3",
+      "ambience": "sfx/amb/plains.mp3"
+    },
+    "2": {
+      "music": "music/watchful-greenwood.mp3",
+      "ambience": "sfx/amb/forest.mp3"
+    }
+  }
 }
