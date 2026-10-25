@@ -1,0 +1,15 @@
+# Explore Godot draft — branch only, 0.1.0
+
+Isaac approved an Explore draft at the same presentation level as the Ascend prototype. This is a native opening-journey study of the Outskirts and Black Woods, isolated in `prototypes/godot-explore/` on `codex/godot-explore-prototype`. Do not deploy it as the browser game or merge the prototype branch without a separate decision. The existing Ascend prototype is untouched.
+
+Read `prototypes/godot-explore/README.md` for scope, controls, runtime architecture, launch/build commands and exact verification coverage. The local generated app is `exports/Bladefall Explore Prototype.app`; it runs a packed native Godot project without a browser or Node. `.godot/`, exports and local evidence are ignored.
+
+The draft contains both existing maps (240 objects), all 13 opening encounter placements and their native role behaviors, weaponless traversal, the counterweight/Oathblade, four upward-strike resin pods, hazards, mantle, physical Bram traversal/light, two-way regional travel, Mara’s bearings/chart/map, Rowan’s bell quest/drake and Elsie’s moth/lantern/log quest/flight. Quest rides work in both directions. Retry and full restart are separate. The pause menu includes a real-input Watch journey and exact-position Take control, region preview and audio/display settings.
+
+All dialogue and recordings are reused. The audio importer copies 141 files with SHA-256 receipts, including 68 existing Explore speech clips. There were no ElevenLabs calls, no new dialogue and no new quests.
+
+Evidence distinguishes four fresh browser/native movement cases (741 matching frames) from native gameplay proof. The full two-region native route is 8,299 frames, zero deaths, three bearings, weapon, mantle, all four pods and Bram at his landing with no recall. Rowan’s full quest/return ride is 1,849 frames and Elsie’s is 4,897; both finish at full blood with zero deaths and no player warps or granted capabilities. Component fixtures additionally verify failure/retry handling, and the application check uses real keys/widgets, all recording hashes/decodes and actual Godot mixed output. GPU screenshots are visual fixtures, not traversal proof. Local receipts are in `.cache/godot/explore/`.
+
+Later Explore regions/bosses, campaign saves, multiplayer and the broader progression/equipment systems are not ported. In-session state is retained; restarting or quitting starts the journey over. Audio/display preferences persist. Keep the browser and Ascend prototype unchanged.
+
+The final 0.1 app passes mechanics, combat, full-journey replay, both quest replays, application integration and fresh browser/native movement parity from its PCK with no engine warnings/errors. Visual QA covers actual GPU-rendered camp, speech, weapon, resin pod, shield encounter, quest completion, both rides, pause menu and chart. A LaunchServices capture observed 88 fps, 10 real lights and 113 shadow occluders. Its 17.02-second mixed WAV has peak 0.673, RMS 0.059 and no clipped samples. Deep ad-hoc signature verification passes.

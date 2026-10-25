@@ -1,0 +1,1204 @@
+{
+  "music": [
+    "music/midnight-field.mp3",
+    "music/watchful-greenwood.mp3"
+  ],
+  "ambience": [
+    "sfx/amb/plains.mp3",
+    "sfx/amb/forest.mp3"
+  ],
+  "effects": {
+    "jump": [
+      "sfx/jump-1.mp3",
+      "sfx/jump-2.mp3"
+    ],
+    "walljump": [
+      "sfx/walljump.mp3"
+    ],
+    "dash": [
+      "sfx/dash.mp3"
+    ],
+    "land-soft": [
+      "sfx/land-soft-1.mp3",
+      "sfx/land-soft-2.mp3"
+    ],
+    "land-hard": [
+      "sfx/land-hard.mp3"
+    ],
+    "grab": [
+      "sfx/grab.mp3"
+    ],
+    "wallslide": [
+      "sfx/wallslide.mp3"
+    ],
+    "step-dirt": [
+      "sfx/step-dirt-1.mp3",
+      "sfx/step-dirt-2.mp3",
+      "sfx/step-dirt-3.mp3"
+    ],
+    "step-stone": [
+      "sfx/step-stone-1.mp3",
+      "sfx/step-stone-2.mp3"
+    ],
+    "swing": [
+      "sfx/swing-1.mp3",
+      "sfx/swing-2.mp3"
+    ],
+    "death": [
+      "sfx/death.mp3"
+    ],
+    "gem": [
+      "sfx/gem.mp3"
+    ],
+    "rune": [
+      "sfx/rune.mp3"
+    ],
+    "gate": [
+      "sfx/gate.mp3"
+    ],
+    "crumble": [
+      "sfx/crumble.mp3"
+    ],
+    "zip": [
+      "sfx/zip.mp3"
+    ],
+    "stone-hit": [
+      "sfx/stone-hit.mp3"
+    ],
+    "lantern": [
+      "sfx/lantern.mp3"
+    ],
+    "plate": [
+      "sfx/plate.mp3"
+    ],
+    "lever": [
+      "sfx/lever.mp3"
+    ],
+    "shatter": [
+      "sfx/shatter.mp3"
+    ],
+    "quest": [
+      "sfx/quest.mp3"
+    ],
+    "ui-open": [
+      "sfx/ui-open.mp3"
+    ],
+    "ui-select": [
+      "sfx/ui-select.mp3"
+    ],
+    "ui-move": [
+      "sfx/ui-move.mp3"
+    ],
+    "ui-pause": [
+      "sfx/ui-pause.mp3"
+    ],
+    "ui-back": [
+      "sfx/ui-back.mp3"
+    ],
+    "spot-fire": [
+      "sfx/spot-fire.mp3"
+    ],
+    "work-cloth": [
+      "sfx/work-cloth.mp3"
+    ],
+    "work-whetstone": [
+      "sfx/work-whetstone.mp3"
+    ],
+    "work-pages": [
+      "sfx/work-pages.mp3"
+    ],
+    "kn-jump": [
+      "sfx/kn-jump-1.mp3",
+      "sfx/kn-jump-2.mp3",
+      "sfx/kn-jump-3.mp3",
+      "sfx/kn-jump-4.mp3",
+      "sfx/kn-jump-5.mp3",
+      "sfx/kn-jump-6.mp3"
+    ],
+    "kn-jump2": [
+      "sfx/kn-jump2-1.mp3",
+      "sfx/kn-jump2-2.mp3",
+      "sfx/kn-jump2-3.mp3",
+      "sfx/kn-jump2-4.mp3",
+      "sfx/kn-jump2-5.mp3",
+      "sfx/kn-jump2-6.mp3"
+    ],
+    "kn-dash": [
+      "sfx/kn-dash-1.mp3",
+      "sfx/kn-dash-2.mp3",
+      "sfx/kn-dash-3.mp3",
+      "sfx/kn-dash-4.mp3",
+      "sfx/kn-dash-5.mp3",
+      "sfx/kn-dash-6.mp3"
+    ],
+    "kn-land": [
+      "sfx/kn-land-1.mp3",
+      "sfx/kn-land-2.mp3",
+      "sfx/kn-land-3.mp3",
+      "sfx/kn-land-4.mp3",
+      "sfx/kn-land-5.mp3",
+      "sfx/kn-land-6.mp3"
+    ],
+    "kn-death": [
+      "sfx/kn-death-1.mp3",
+      "sfx/kn-death-2.mp3"
+    ],
+    "kn-climb": [
+      "sfx/kn-climb-1.mp3",
+      "sfx/kn-climb-2.mp3",
+      "sfx/kn-climb-3.mp3",
+      "sfx/kn-climb-4.mp3",
+      "sfx/kn-climb-5.mp3",
+      "sfx/kn-climb-6.mp3"
+    ]
+  },
+  "voices": {
+    "outskirts/knight.dontremember": {
+      "id": "outskirts/knight.dontremember",
+      "path": "voice/outskirts/knight.dontremember.mp3",
+      "text": "I don’t remember."
+    },
+    "outskirts/knight.no": {
+      "id": "outskirts/knight.no",
+      "path": "voice/outskirts/knight.no.mp3",
+      "text": "No."
+    },
+    "outskirts/knight.walked": {
+      "id": "outskirts/knight.walked",
+      "path": "voice/outskirts/knight.walked.mp3",
+      "text": "I walked."
+    },
+    "outskirts/mara.ask": {
+      "id": "outskirts/mara.ask",
+      "path": "voice/outskirts/mara.ask.mp3",
+      "text": "Stay flat, you... Oh. Hello. Mara, surveyor. Could I borrow your legs? Three posts between here and the Muster, and I need a bearing off each one. Stand close until the vane swings."
+    },
+    "outskirts/mara.done": {
+      "id": "outskirts/mara.done",
+      "path": "voice/outskirts/mara.done.mp3",
+      "text": "That’s all three. It reaches the woods. Thank you. Keep the chart; I’ll draw another."
+    },
+    "outskirts/mara.handover": {
+      "id": "outskirts/mara.handover",
+      "path": "voice/outskirts/mara.handover.mp3",
+      "text": "Keep it out of the rain. I’ve only got the one."
+    },
+    "outskirts/mara.progress": {
+      "id": "outskirts/mara.progress",
+      "path": "voice/outskirts/mara.progress.mp3",
+      "text": "Still missing some. Ash is by the old camp. Glass is up on the high ledge in Watcher’s Cut. Iron’s at the Muster."
+    },
+    "outskirts/mara.replay": {
+      "id": "outskirts/mara.replay",
+      "path": "voice/outskirts/mara.replay.mp3",
+      "text": "Everything you’ve walked is drawn in. The blanks are the bits you haven’t."
+    },
+    "outskirts/olan.back": {
+      "id": "outskirts/olan.back",
+      "path": "voice/outskirts/olan.back.mp3",
+      "text": "You got past the patrols? Hm. Most turn round at the first post."
+    },
+    "outskirts/olan.first": {
+      "id": "outskirts/olan.first",
+      "path": "voice/outskirts/olan.first.mp3",
+      "text": "Twenty to four. Every blessed day. ...You came from the west? There’s nothing west but the old camp. Patrols turn at the post. Mind them."
+    },
+    "outskirts/olan.hint": {
+      "id": "outskirts/olan.hint",
+      "path": "voice/outskirts/olan.hint.mp3",
+      "text": "Mara’s after the Glass post? Upper road. Quicker, if heights don’t bother you."
+    },
+    "outskirts/olan.muster": {
+      "id": "outskirts/olan.muster",
+      "path": "voice/outskirts/olan.muster.mp3",
+      "text": "Soldiers at every post, and I never heard them march in. Did you?"
+    },
+    "outskirts/olan.reserve": {
+      "id": "outskirts/olan.reserve",
+      "path": "voice/outskirts/olan.reserve.mp3",
+      "text": "Milekeeper left a reserve up above the first stretch of Hollow Mile. Let it go and the road bridges come down. There’s a seal in it, if you can reach it. I can’t, not with these knees."
+    },
+    "outskirts/olan.slow": {
+      "id": "outskirts/olan.slow",
+      "path": "voice/outskirts/olan.slow.mp3",
+      "text": "Then go slow at the crossing."
+    },
+    "outskirts/quest.road-without-a-name.active": {
+      "id": "outskirts/quest.road-without-a-name.active",
+      "path": "voice/outskirts/quest.road-without-a-name.active.mp3",
+      "text": "Two records left to compare. The Sky-Well plaque in the Updrafts. The foundation inscription at the Ruined Keep. Copy them down when you’re passing—no special trip."
+    },
+    "outskirts/quest.road-without-a-name.complete": {
+      "id": "outskirts/quest.road-without-a-name.complete",
+      "path": "voice/outskirts/quest.road-without-a-name.complete.mp3",
+      "text": "Your notes are on the chart. Next person who takes a wagon out that way gets more than we had."
+    },
+    "outskirts/quest.road-without-a-name.turnIn": {
+      "id": "outskirts/quest.road-without-a-name.turnIn",
+      "path": "voice/outskirts/quest.road-without-a-name.turnIn.mp3",
+      "text": "They match. Same spacing on the plaque as on the Keep’s footings: same builders, same road. That goes on the chart as fact now, not a guess. Thank you."
+    },
+    "outskirts/rowan.accept": {
+      "id": "outskirts/rowan.accept",
+      "path": "voice/outskirts/rowan.accept.mp3",
+      "text": "Hm. Then walk up that tower and bring the bell down. Cart onto the iron stop first, then pull the brake. Bell comes to the empty post by my bench."
+    },
+    "outskirts/rowan.after": {
+      "id": "outskirts/rowan.after",
+      "path": "voice/outskirts/rowan.after.mp3",
+      "text": "Bench faces the tents now."
+    },
+    "outskirts/rowan.long": {
+      "id": "outskirts/rowan.long",
+      "path": "voice/outskirts/rowan.long.mp3",
+      "text": "My brother and I took the evening watch together. He’d moan about the cold, then hand me half his blanket. After he died I kept doing both shifts. Nobody asked me to. Evening came and I didn’t know what else to do with it.\n\nThis is better. I can hear the bell from the bench, and I can see the road."
+    },
+    "outskirts/rowan.lucky": {
+      "id": "outskirts/rowan.lucky",
+      "path": "voice/outskirts/rowan.lucky.mp3",
+      "text": "Lucky."
+    },
+    "outskirts/rowan.name": {
+      "id": "outskirts/rowan.name",
+      "path": "voice/outskirts/rowan.name.mp3",
+      "text": "Rowan, by the way. I’m still deciding what to make of you."
+    },
+    "outskirts/rowan.opening": {
+      "id": "outskirts/rowan.opening",
+      "path": "voice/outskirts/rowan.opening.mp3",
+      "text": "Gate’s shut. Nothing gets through. ...Except you. How?"
+    },
+    "outskirts/rowan.past": {
+      "id": "outskirts/rowan.past",
+      "path": "voice/outskirts/rowan.past.mp3",
+      "text": "Everyone moved to the camp. I didn’t. Last time I left a post, people died while I was gone. You ever leave one you shouldn’t have?"
+    },
+    "outskirts/rowan.ready": {
+      "id": "outskirts/rowan.ready",
+      "path": "voice/outskirts/rowan.ready.mp3",
+      "text": "That’ll carry."
+    },
+    "outskirts/rowan.reward": {
+      "id": "outskirts/rowan.reward",
+      "path": "voice/outskirts/rowan.reward.mp3",
+      "text": "A drake roosted over that bell. Followed it all the way down. It’ll carry you, if you let it."
+    },
+    "outskirts/rowan.task.ballast": {
+      "id": "outskirts/rowan.task.ballast",
+      "path": "voice/outskirts/rowan.task.ballast.mp3",
+      "text": "Counterweight first. Roll the stone cart onto the iron stop east of here and pull the brake."
+    },
+    "outskirts/rowan.task.bell": {
+      "id": "outskirts/rowan.task.bell",
+      "path": "voice/outskirts/rowan.task.bell.mp3",
+      "text": "Up the tower ledges. Let the bell go from the top; the pulley brings it down."
+    },
+    "outskirts/rowan.task.hang": {
+      "id": "outskirts/rowan.task.hang",
+      "path": "voice/outskirts/rowan.task.hang.mp3",
+      "text": "Now bring it back to the empty post by my bench."
+    },
+    "outskirts/traveler.bark": {
+      "id": "outskirts/traveler.bark",
+      "path": "voice/outskirts/traveler.bark.mp3",
+      "text": "WAIT FOR ME!"
+    },
+    "outskirts/traveler.greet": {
+      "id": "outskirts/traveler.greet",
+      "path": "voice/outskirts/traveler.greet.mp3",
+      "text": "Oh, hello. Road ahead goes through, I think. Mind if I walk behind you?"
+    },
+    "outskirts/vey.back": {
+      "id": "outskirts/vey.back",
+      "path": "voice/outskirts/vey.back.mp3",
+      "text": "Back again. Sit, if you like. I won’t ask where you’ve been."
+    },
+    "outskirts/vey.first": {
+      "id": "outskirts/vey.first",
+      "path": "voice/outskirts/vey.first.mp3",
+      "text": "Nearly... there. Sorry, I’d stand, but I’d regret it. Vey. The fire’s for anyone."
+    },
+    "outskirts/vey.rowan": {
+      "id": "outskirts/vey.rowan",
+      "path": "voice/outskirts/vey.rowan.mp3",
+      "text": "Rowan’s coming over tonight. Says he’s bringing his own bowl. I’ll pretend that’s a surprise."
+    },
+    "woods/bram.bark": {
+      "id": "woods/bram.bark",
+      "path": "voice/woods/bram.bark.mp3",
+      "text": "MY LAMP—!"
+    },
+    "woods/bram.done": {
+      "id": "woods/bram.done",
+      "path": "voice/woods/bram.done.mp3",
+      "text": "Across! I’ll leave her burning on this side, so you can find your way back."
+    },
+    "woods/bram.first": {
+      "id": "woods/bram.first",
+      "path": "voice/woods/bram.first.mp3",
+      "text": "Easy, easy. Oh! Bram. Sorry. Crossing? Stay where my lamp reaches. Any branch the light shines through isn’t real."
+    },
+    "woods/bram.repeat": {
+      "id": "woods/bram.repeat",
+      "path": "voice/woods/bram.repeat.mp3",
+      "text": "There, see how it goes straight through that one? Not that one. I’ll wait while you find another."
+    },
+    "woods/hale.after": {
+      "id": "woods/hale.after",
+      "path": "voice/woods/hale.after.mp3",
+      "text": "Where’d you learn to hold it like that? I’ll sit a while. Shoulder’s not finished complaining."
+    },
+    "woods/hale.before": {
+      "id": "woods/hale.before",
+      "path": "voice/woods/hale.before.mp3",
+      "text": "Another one for the sword? Roots have it. Vine runs to a counterweight. Hang off that, not the hilt."
+    },
+    "woods/orra.first": {
+      "id": "woods/orra.first",
+      "path": "voice/woods/orra.first.mp3",
+      "text": "Stopped. Again. Oh, hello. Orra. I’d tell you the time if I had it. If you’re going deeper, look at a branch before you trust it. Some of them aren’t there."
+    },
+    "woods/orra.moved": {
+      "id": "woods/orra.moved",
+      "path": "voice/woods/orra.moved.mp3",
+      "text": "It moved. One minute since you left. Don’t say anything. It hasn’t done it twice yet."
+    },
+    "woods/orra.muster": {
+      "id": "woods/orra.muster",
+      "path": "voice/woods/orra.muster.mp3",
+      "text": "Bells started while you were off. Nobody I know is ringing them. If the low road’s crowded, there’s the workers’ reserve above the far end of Briar Run. My daughter used to fetch wraps from it. Let it go and a walkway drops through the canopy."
+    },
+    "woods/orra.revisit": {
+      "id": "woods/orra.revisit",
+      "path": "voice/woods/orra.revisit.mp3",
+      "text": "Still stopped. I’ve been told never to shake it, so I’ve stopped shaking it. The path back’s clear."
+    },
+    "woods/pell.first": {
+      "id": "woods/pell.first",
+      "path": "voice/woods/pell.first.mp3",
+      "text": "You’re not resin crew. Here’s the trick, then. Amber on the windward side of a branch, it’s real. Amber on the lee side, don’t jump. You’ll go straight through."
+    },
+    "woods/pell.revisit": {
+      "id": "woods/pell.revisit",
+      "path": "voice/woods/pell.revisit.mp3",
+      "text": "Worked it out, did you? Took me a nettle patch."
+    },
+    "woods/quest.inventory-of-effects.active": {
+      "id": "woods/quest.inventory-of-effects.active",
+      "path": "voice/woods/quest.inventory-of-effects.active.mp3",
+      "text": "This list says these things are yours. I’ve never seen you before, which is odd. Three entries are missing: the broken standard past the Woods, the Frost Court’s siphon record, and the Foundry ledger. If you pass them, would you look?"
+    },
+    "woods/quest.inventory-of-effects.complete": {
+      "id": "woods/quest.inventory-of-effects.complete",
+      "path": "voice/woods/quest.inventory-of-effects.complete.mp3",
+      "text": "All entered, and in order. I’m sorry they were ever scattered."
+    },
+    "woods/quest.inventory-of-effects.turnIn": {
+      "id": "woods/quest.inventory-of-effects.turnIn",
+      "path": "voice/woods/quest.inventory-of-effects.turnIn.mp3",
+      "text": "That completes it. I hoped the list would feel less familiar once it was finished. It doesn’t. Forgive me, that isn’t your concern."
+    },
+    "woods/refuge.accept": {
+      "id": "woods/refuge.accept",
+      "path": "voice/woods/refuge.accept.mp3",
+      "text": "Go gently when you catch them. And mind yourself on the way home; take a knock and they’ll have it off you again."
+    },
+    "woods/refuge.after": {
+      "id": "woods/refuge.after",
+      "path": "voice/woods/refuge.after.mp3",
+      "text": "Still mostly a kitchen."
+    },
+    "woods/refuge.ending": {
+      "id": "woods/refuge.ending",
+      "path": "voice/woods/refuge.ending.mp3",
+      "text": "Two bowls and a working lamp. That’s supper. Sit before it gets cold."
+    },
+    "woods/refuge.firstReturn": {
+      "id": "woods/refuge.firstReturn",
+      "path": "voice/woods/refuge.firstReturn.mp3",
+      "text": "Lost a bit of pantry yesterday. I finished cooking from the doorway. The house isn’t what it was. The lantern first; then the step."
+    },
+    "woods/refuge.longEnding": {
+      "id": "woods/refuge.longEnding",
+      "path": "voice/woods/refuge.longEnding.mp3",
+      "text": "My sister cut the carrots so small you could barely find them. Said it made the soup go further. I cut mine big. If someone’s walked all day, there ought to be something on the spoon.\n\nI know this place needs more than a board and a lamp. But I can mend a little and cook a little while I work out what’s next. There’s another helping if you want it."
+    },
+    "woods/refuge.opening": {
+      "id": "woods/refuge.opening",
+      "path": "voice/woods/refuge.opening.mp3",
+      "text": "Mind the step, the end’s rotten. Elsie. You look like you’ve walked a long way. The moths took my lantern. They come for the light every evening, and tonight they took the whole thing, off east through the trees. Could you follow them? They never go far at a time."
+    },
+    "woods/refuge.ready": {
+      "id": "woods/refuge.ready",
+      "path": "voice/woods/refuge.ready.mp3",
+      "text": "Is it too salty? I never remember if I’ve salted it."
+    },
+    "woods/refuge.rewardLine": {
+      "id": "woods/refuge.rewardLine",
+      "path": "voice/woods/refuge.rewardLine.mp3",
+      "text": "The moths love that lantern now. Hold it up high and they’ll carry you over the trees."
+    },
+    "woods/refuge.short": {
+      "id": "woods/refuge.short",
+      "path": "voice/woods/refuge.short.mp3",
+      "text": "I’ll bring it back."
+    },
+    "woods/refuge.task.floor": {
+      "id": "woods/refuge.task.floor",
+      "path": "voice/woods/refuge.task.floor.mp3",
+      "text": "There’s a spare board by the door. Lay it over that step for me."
+    },
+    "woods/refuge.task.lantern": {
+      "id": "woods/refuge.task.lantern",
+      "path": "voice/woods/refuge.task.lantern.mp3",
+      "text": "Bring her home steady. If you take a knock, the moths will have her back."
+    },
+    "woods/refuge.task.line": {
+      "id": "woods/refuge.task.line",
+      "path": "voice/woods/refuge.task.line.mp3",
+      "text": "The line’s tied off at the fork, by the wooden peg. Up the branches east of here."
+    },
+    "woods/refuge.task.log": {
+      "id": "woods/refuge.task.log",
+      "path": "voice/woods/refuge.task.log.mp3",
+      "text": "That step wants a board. Hale cuts wood down the path; he’ll spare one if you help him split that log of his."
+    },
+    "woods/refuge.task.moths": {
+      "id": "woods/refuge.task.moths",
+      "path": "voice/woods/refuge.task.moths.mp3",
+      "text": "They’ll rest a moment, then go on as you come close. East, through the trees. They tire eventually."
+    },
+    "woods/refuge.task.table": {
+      "id": "woods/refuge.task.table",
+      "path": "voice/woods/refuge.task.table.mp3",
+      "text": "Now hang her over the table, by the stove."
+    },
+    "woods/refuge.thanks": {
+      "id": "woods/refuge.thanks",
+      "path": "voice/woods/refuge.thanks.mp3",
+      "text": "It’s good."
+    },
+    "woods/workshop.ethereal-goods.knight": {
+      "id": "woods/workshop.ethereal-goods.knight",
+      "path": "voice/woods/workshop.ethereal-goods.knight.mp3",
+      "text": "I’ll put it to use."
+    },
+    "woods/workshop.ethereal-goods.offer": {
+      "id": "woods/workshop.ethereal-goods.offer",
+      "path": "voice/woods/workshop.ethereal-goods.offer.mp3",
+      "text": "I set this fragment aside when I sorted the last delivery. I’d rather it went with someone than sat in my drawer."
+    },
+    "woods/workshop.ethereal-goods.reply": {
+      "id": "woods/workshop.ethereal-goods.reply",
+      "path": "voice/woods/workshop.ethereal-goods.reply.mp3",
+      "text": "Then it has somewhere to be."
+    }
+  },
+  "files": [
+    {
+      "path": "music/midnight-field.mp3",
+      "source": "public/audio/music/midnight-field.mp3",
+      "sha256": "4945267b23cd933aa8dcd84ddd747130050a6e7aef4ae3b48bb95ace4ad04864"
+    },
+    {
+      "path": "music/watchful-greenwood.mp3",
+      "source": "public/audio/music/watchful-greenwood.mp3",
+      "sha256": "47dada6ac6df3c7a208ff01ca6002876c474e5b056fe703c06a08951495b97b9"
+    },
+    {
+      "path": "sfx/amb/forest.mp3",
+      "source": "public/audio/sfx/amb/forest.mp3",
+      "sha256": "54235e020abbcf0b0cdb89072f2a1e4df38269a828083150ebd731d2bc704e12"
+    },
+    {
+      "path": "sfx/amb/plains.mp3",
+      "source": "public/audio/sfx/amb/plains.mp3",
+      "sha256": "a4d7ba62a1da1ee2c6a536795fcb76fa394ec59013c46fbd646c10dca4476ea2"
+    },
+    {
+      "path": "sfx/crumble.mp3",
+      "source": "public/audio/sfx/crumble.mp3",
+      "sha256": "e87d9b0c8e11138856e6a01ef1bc5d508a60115d79f2cae272fa6ca4e49ac5fc"
+    },
+    {
+      "path": "sfx/dash.mp3",
+      "source": "public/audio/sfx/dash.mp3",
+      "sha256": "f7839e26f25bb27f81c2026ec8d57adc6dfc6a0d3006078e47fe6668eefb434b"
+    },
+    {
+      "path": "sfx/death.mp3",
+      "source": "public/audio/sfx/death.mp3",
+      "sha256": "1eea7539797feab75bf4030a7ceadb2a516e14d70e79cd0fef3d4325a0004bda"
+    },
+    {
+      "path": "sfx/gate.mp3",
+      "source": "public/audio/sfx/gate.mp3",
+      "sha256": "0184bb80bd1c3694a48c3945fe1e72a3d9778f9335a6d4a45915332052e5a62d"
+    },
+    {
+      "path": "sfx/gem.mp3",
+      "source": "public/audio/sfx/gem.mp3",
+      "sha256": "7dc87e813a1ad4821c6844515d25aa504e71eb58342cdba4307a69036d7099b6"
+    },
+    {
+      "path": "sfx/grab.mp3",
+      "source": "public/audio/sfx/grab.mp3",
+      "sha256": "2767586aaec3c21d4a570926325e2f45f1282f5645f2a71ecd3552f76167f7f6"
+    },
+    {
+      "path": "sfx/jump-1.mp3",
+      "source": "public/audio/sfx/jump-1.mp3",
+      "sha256": "a0f4b07cc62922b6a7913e40123b303aade7abad86dfd0c21105863cfdb7201d"
+    },
+    {
+      "path": "sfx/jump-2.mp3",
+      "source": "public/audio/sfx/jump-2.mp3",
+      "sha256": "74843a2625c22f4ec0901ae3871a532c6f8b344aad9203ecaf2de57322fb98e2"
+    },
+    {
+      "path": "sfx/kn-climb-1.mp3",
+      "source": "public/audio/sfx/kn-climb-1.mp3",
+      "sha256": "9a1ce0ce675798881d2faccb1ea64e1a1452ee296d76723d72e8bd96ac154744"
+    },
+    {
+      "path": "sfx/kn-climb-2.mp3",
+      "source": "public/audio/sfx/kn-climb-2.mp3",
+      "sha256": "953aa86d67cadbbc43e5e118008eb5ed7181a0e7d0a74e91e24d7973fe436395"
+    },
+    {
+      "path": "sfx/kn-climb-3.mp3",
+      "source": "public/audio/sfx/kn-climb-3.mp3",
+      "sha256": "d091cbd9127bf1c5c48bdf36592cf2df7b85cf98a48ee49ac5fd9885dec6eb56"
+    },
+    {
+      "path": "sfx/kn-climb-4.mp3",
+      "source": "public/audio/sfx/kn-climb-4.mp3",
+      "sha256": "f35a9efb2823b7b94c4abdbcc70630f0f296e97ad8b5f6b618317a6155581e83"
+    },
+    {
+      "path": "sfx/kn-climb-5.mp3",
+      "source": "public/audio/sfx/kn-climb-5.mp3",
+      "sha256": "ff3c7d62674aa5d4589598b88f4a69bbd7c313f09b916f743bbcfd286b72a175"
+    },
+    {
+      "path": "sfx/kn-climb-6.mp3",
+      "source": "public/audio/sfx/kn-climb-6.mp3",
+      "sha256": "328f747e44a462b0168de8b51e373907e3daf6fd65fb19d327857d3318373bb1"
+    },
+    {
+      "path": "sfx/kn-dash-1.mp3",
+      "source": "public/audio/sfx/kn-dash-1.mp3",
+      "sha256": "858a16ea13d52792c1ae85c3915d972cf88c3b5c86544fd1da5bc706e06225e6"
+    },
+    {
+      "path": "sfx/kn-dash-2.mp3",
+      "source": "public/audio/sfx/kn-dash-2.mp3",
+      "sha256": "5491c7d20284e2ba9711bd3a72b154e36588c02c8eb35dc2957d5a4b97b9b4f7"
+    },
+    {
+      "path": "sfx/kn-dash-3.mp3",
+      "source": "public/audio/sfx/kn-dash-3.mp3",
+      "sha256": "bb5de4649ef08266a577828ff8874ca40af4b585cb66a95536fb6108b8767f57"
+    },
+    {
+      "path": "sfx/kn-dash-4.mp3",
+      "source": "public/audio/sfx/kn-dash-4.mp3",
+      "sha256": "1d38f6b985f30170e6b7e0f3ca7ab0dee4d091bbb9cb70e09ac3d6a6bec8c404"
+    },
+    {
+      "path": "sfx/kn-dash-5.mp3",
+      "source": "public/audio/sfx/kn-dash-5.mp3",
+      "sha256": "0f136946b5267caeb4982712924b4c10d44d19da459bb604936a08c80fd1b8dd"
+    },
+    {
+      "path": "sfx/kn-dash-6.mp3",
+      "source": "public/audio/sfx/kn-dash-6.mp3",
+      "sha256": "25b8bcb2cfc8e75528e5e71646950cd44fd7ac6b47d793682b6ee90cd0792c9d"
+    },
+    {
+      "path": "sfx/kn-death-1.mp3",
+      "source": "public/audio/sfx/kn-death-1.mp3",
+      "sha256": "9b25163b9b1b2438c33a3fabc5adaeda0feb96c1512d6286497e93f050df63a7"
+    },
+    {
+      "path": "sfx/kn-death-2.mp3",
+      "source": "public/audio/sfx/kn-death-2.mp3",
+      "sha256": "04ff5ce9cfeaa173b510c2f7c917b860f1b55bfef9c027c78dba0e92301a5d55"
+    },
+    {
+      "path": "sfx/kn-jump-1.mp3",
+      "source": "public/audio/sfx/kn-jump-1.mp3",
+      "sha256": "974e4add30df44070836b24b55d9c2e6f580f64d1caa4ae17706bbbdd5c33695"
+    },
+    {
+      "path": "sfx/kn-jump-2.mp3",
+      "source": "public/audio/sfx/kn-jump-2.mp3",
+      "sha256": "f86ad8df4cf103d6c528a6ae8fa9644335fb60688314595662e4131274baf282"
+    },
+    {
+      "path": "sfx/kn-jump-3.mp3",
+      "source": "public/audio/sfx/kn-jump-3.mp3",
+      "sha256": "1b9cf84806e88a355e8d8b31fd94086a8474bba8e6f720608de266c6c53e165b"
+    },
+    {
+      "path": "sfx/kn-jump-4.mp3",
+      "source": "public/audio/sfx/kn-jump-4.mp3",
+      "sha256": "c579817759b92c5dafc5bde90423c480d94b2b37edf37daecbe2cf8ebc8a0618"
+    },
+    {
+      "path": "sfx/kn-jump-5.mp3",
+      "source": "public/audio/sfx/kn-jump-5.mp3",
+      "sha256": "98b56dc174c0ed32cd36c5eb03ffc436460a3ecb784b9c1f4e318d0b73730899"
+    },
+    {
+      "path": "sfx/kn-jump-6.mp3",
+      "source": "public/audio/sfx/kn-jump-6.mp3",
+      "sha256": "00b5b283437c091688ce0cb12cde2879f0c412ef74e4d61784326cf4754bc99e"
+    },
+    {
+      "path": "sfx/kn-jump2-1.mp3",
+      "source": "public/audio/sfx/kn-jump2-1.mp3",
+      "sha256": "e7de1f68e7e6bde61b58c9f2b052a26c09bad424a51c6671cd2f659aa976385c"
+    },
+    {
+      "path": "sfx/kn-jump2-2.mp3",
+      "source": "public/audio/sfx/kn-jump2-2.mp3",
+      "sha256": "d4e6ca237237a4cda92b0d60040b7a37e38a9e82fc4dbe8b7b40cb81f32941c6"
+    },
+    {
+      "path": "sfx/kn-jump2-3.mp3",
+      "source": "public/audio/sfx/kn-jump2-3.mp3",
+      "sha256": "bdd6774f47f0961f5caa97cfc65ed570bf3179294b7e3af7fa53dfea55cbdd6d"
+    },
+    {
+      "path": "sfx/kn-jump2-4.mp3",
+      "source": "public/audio/sfx/kn-jump2-4.mp3",
+      "sha256": "df98c65d087b16f5cced1487875e2d2b73aeaa281bf516554c3f88db866de1f9"
+    },
+    {
+      "path": "sfx/kn-jump2-5.mp3",
+      "source": "public/audio/sfx/kn-jump2-5.mp3",
+      "sha256": "d2591a5a852a59580d6196bd75e363d694f8f51d47b468012f606d7cb1f83903"
+    },
+    {
+      "path": "sfx/kn-jump2-6.mp3",
+      "source": "public/audio/sfx/kn-jump2-6.mp3",
+      "sha256": "477cb4e738a21188cd940ad36d4288cbc3bead693f9ce4c41501d5eded902b24"
+    },
+    {
+      "path": "sfx/kn-land-1.mp3",
+      "source": "public/audio/sfx/kn-land-1.mp3",
+      "sha256": "63a979a5cceaf65a1f14a7076e02145863e66ac5768569ee0c2685d9482bbbb2"
+    },
+    {
+      "path": "sfx/kn-land-2.mp3",
+      "source": "public/audio/sfx/kn-land-2.mp3",
+      "sha256": "c3817bf8d603b1d08eb70e872dfdaf81cef04dcaccce7a860cec91819a0990ce"
+    },
+    {
+      "path": "sfx/kn-land-3.mp3",
+      "source": "public/audio/sfx/kn-land-3.mp3",
+      "sha256": "9aab67cda9b54ffe8b34cdfcec5c87258f052b011c26b8a7942333bcb552294b"
+    },
+    {
+      "path": "sfx/kn-land-4.mp3",
+      "source": "public/audio/sfx/kn-land-4.mp3",
+      "sha256": "9085f98c32975d20b8c3efd60b98fe33c96db32cb553ae64c6d65c90acd1c874"
+    },
+    {
+      "path": "sfx/kn-land-5.mp3",
+      "source": "public/audio/sfx/kn-land-5.mp3",
+      "sha256": "d8f1351247307564ae2c0274b9e8318ec55ae8c05b0098ad0b7c37947d39cf88"
+    },
+    {
+      "path": "sfx/kn-land-6.mp3",
+      "source": "public/audio/sfx/kn-land-6.mp3",
+      "sha256": "8dd3caa17a368327fb550f922c0e1ed5313f1b892ee59cee68eb0d4f2e4740ae"
+    },
+    {
+      "path": "sfx/land-hard.mp3",
+      "source": "public/audio/sfx/land-hard.mp3",
+      "sha256": "a0c7527b6a31e0cf6256c0585ab9678c3f9a5af6ac8fbe8a023f168d749c9563"
+    },
+    {
+      "path": "sfx/land-soft-1.mp3",
+      "source": "public/audio/sfx/land-soft-1.mp3",
+      "sha256": "8bc385f586709a90b728f22de078d57b1e820a40b334c4cbbd21f4a909b088f7"
+    },
+    {
+      "path": "sfx/land-soft-2.mp3",
+      "source": "public/audio/sfx/land-soft-2.mp3",
+      "sha256": "e300091accfb03ccdf56aea9faed36623809316b359493d3e3653370caac9f3d"
+    },
+    {
+      "path": "sfx/lantern.mp3",
+      "source": "public/audio/sfx/lantern.mp3",
+      "sha256": "654725ed9e817678e8af39ae38b73fac034b04072c9834e0e565c1b7d68ba7d7"
+    },
+    {
+      "path": "sfx/lever.mp3",
+      "source": "public/audio/sfx/lever.mp3",
+      "sha256": "70e45c1395d5958e7c46e1b8d67551f300eab798fed1701abb255587a3906fe7"
+    },
+    {
+      "path": "sfx/plate.mp3",
+      "source": "public/audio/sfx/plate.mp3",
+      "sha256": "bf96b09561e96aa4897af45bb8b962fd9948f0b3710c209b6e96cf68ca6c04bf"
+    },
+    {
+      "path": "sfx/quest.mp3",
+      "source": "public/audio/sfx/quest.mp3",
+      "sha256": "4d9ebf20ed9d1d738912b75f49d56a06a693b11e89c4400c8ffdca88c5f572d4"
+    },
+    {
+      "path": "sfx/rune.mp3",
+      "source": "public/audio/sfx/rune.mp3",
+      "sha256": "039481e7577a7f55a703b4feac7cdd1ef515f02953f0f31bf38daaac5d1f46c2"
+    },
+    {
+      "path": "sfx/shatter.mp3",
+      "source": "public/audio/sfx/shatter.mp3",
+      "sha256": "672530532218b1a80c1bf76a08e1513487ad0066dfabcd829e357b2d5bec429a"
+    },
+    {
+      "path": "sfx/spot-fire.mp3",
+      "source": "public/audio/sfx/spot-fire.mp3",
+      "sha256": "b97f96d80fa2b66a0c5e0b611d402008b1312877f3e15c1c1c7a2e8a03319e88"
+    },
+    {
+      "path": "sfx/step-dirt-1.mp3",
+      "source": "public/audio/sfx/step-dirt-1.mp3",
+      "sha256": "5d08f999480a29776f7947470f8fe30c578999280fcb3f886e47745413c96a5a"
+    },
+    {
+      "path": "sfx/step-dirt-2.mp3",
+      "source": "public/audio/sfx/step-dirt-2.mp3",
+      "sha256": "f14ebba3596902f529c691c996887a7064426f47d90436f4c24e6445df75a8ab"
+    },
+    {
+      "path": "sfx/step-dirt-3.mp3",
+      "source": "public/audio/sfx/step-dirt-3.mp3",
+      "sha256": "c452f16399ee42d1614dec33f36d2c3cf120e8103e391901f6cd607f8ec700b0"
+    },
+    {
+      "path": "sfx/step-stone-1.mp3",
+      "source": "public/audio/sfx/step-stone-1.mp3",
+      "sha256": "08b7a6a5685447ba11c52906f0e860c63e5c0d172bc45e64f940b08694cfbda6"
+    },
+    {
+      "path": "sfx/step-stone-2.mp3",
+      "source": "public/audio/sfx/step-stone-2.mp3",
+      "sha256": "6e8e23df5cbf60348f3193e04971e82d682e1c81e58d1bdbe76cf6f7a864d40c"
+    },
+    {
+      "path": "sfx/stone-hit.mp3",
+      "source": "public/audio/sfx/stone-hit.mp3",
+      "sha256": "73eda15b06a0ad58cb1297ae3e973eeb43092387a56432237761f70a7a8496fc"
+    },
+    {
+      "path": "sfx/swing-1.mp3",
+      "source": "public/audio/sfx/swing-1.mp3",
+      "sha256": "68c960acd53ea8c58339b25697beac669ce93fb44a8c602f739018a8c1c57dd7"
+    },
+    {
+      "path": "sfx/swing-2.mp3",
+      "source": "public/audio/sfx/swing-2.mp3",
+      "sha256": "e193fdd9a729ca4260f471eef6cd44a7c368b6140264415a9b0d7852dba6de27"
+    },
+    {
+      "path": "sfx/ui-back.mp3",
+      "source": "public/audio/sfx/ui-back.mp3",
+      "sha256": "aec04d3ea7cd5514ba366c1b9b254d920a377230418589b70080955a01b303fb"
+    },
+    {
+      "path": "sfx/ui-move.mp3",
+      "source": "public/audio/sfx/ui-move.mp3",
+      "sha256": "5455fc67b894206c83ed53c5a33ea214f593f5a084a27d25f5d41745c40ce196"
+    },
+    {
+      "path": "sfx/ui-open.mp3",
+      "source": "public/audio/sfx/ui-open.mp3",
+      "sha256": "3bf83334b76756ea299f9e82495ea30d13c742b869b0497300270454789f11cb"
+    },
+    {
+      "path": "sfx/ui-pause.mp3",
+      "source": "public/audio/sfx/ui-pause.mp3",
+      "sha256": "eda1b6ea4f494b19cc703bf340dd264d625b8c224d7f931ef8fb5b9eb99728e8"
+    },
+    {
+      "path": "sfx/ui-select.mp3",
+      "source": "public/audio/sfx/ui-select.mp3",
+      "sha256": "60d1e6ed0b08babd6a10d7330abadcef8d624bdbb55e2cbfc688d1b514387d36"
+    },
+    {
+      "path": "sfx/walljump.mp3",
+      "source": "public/audio/sfx/walljump.mp3",
+      "sha256": "3cd8d64fd2e0720f34d2f4f0c01b3442b66b9bd7bff83ec744a9a5e0af1cc6ce"
+    },
+    {
+      "path": "sfx/wallslide.mp3",
+      "source": "public/audio/sfx/wallslide.mp3",
+      "sha256": "d50176101bc70ea9040c2eed6e7fdb7ec2f12730f0da4254a8cc16b55112cc09"
+    },
+    {
+      "path": "sfx/work-cloth.mp3",
+      "source": "public/audio/sfx/work-cloth.mp3",
+      "sha256": "159d02b9dcca407e6f3bd46da74dd31e657db2fe91ddc28a011e4997bfac62c1"
+    },
+    {
+      "path": "sfx/work-pages.mp3",
+      "source": "public/audio/sfx/work-pages.mp3",
+      "sha256": "827c83d7cd94f7a37c41b1d8310f0c775c86153fd7802beedd007251e26f5325"
+    },
+    {
+      "path": "sfx/work-whetstone.mp3",
+      "source": "public/audio/sfx/work-whetstone.mp3",
+      "sha256": "7acbc540860acc737bc518ca299ff49570a2b2e6496648f65ebe804cdea239b0"
+    },
+    {
+      "path": "sfx/zip.mp3",
+      "source": "public/audio/sfx/zip.mp3",
+      "sha256": "37ef5c0a22f56335215be376aa96a1df91dc446a28875d633f7f1b0d94577601"
+    },
+    {
+      "path": "voice/outskirts/knight.dontremember.mp3",
+      "source": "public/audio/voice/outskirts/knight.dontremember.mp3",
+      "sha256": "15eb37ba0f3d1685c59e8c292a4409c93eb29ceac267c5fd875679468a3e8fdc"
+    },
+    {
+      "path": "voice/outskirts/knight.no.mp3",
+      "source": "public/audio/voice/outskirts/knight.no.mp3",
+      "sha256": "bc286a55e4717d09078661caf9c59df59c5df4f72cd3ca157d00eb58e7b5077a"
+    },
+    {
+      "path": "voice/outskirts/knight.walked.mp3",
+      "source": "public/audio/voice/outskirts/knight.walked.mp3",
+      "sha256": "11cfb9932fd1a6babc4feaf346de89b62b7cbf4d331f43563ad44111379ab7e8"
+    },
+    {
+      "path": "voice/outskirts/mara.ask.mp3",
+      "source": "public/audio/voice/outskirts/mara.ask.mp3",
+      "sha256": "21ba61e6d827ab78c3759cbf1f438268af2bf5dd4c9cb86ac582399a72a7b737"
+    },
+    {
+      "path": "voice/outskirts/mara.done.mp3",
+      "source": "public/audio/voice/outskirts/mara.done.mp3",
+      "sha256": "1d38a1c39efcc490d49849306eea6bbb0e9c38a20834ac0042d6ca3444b34592"
+    },
+    {
+      "path": "voice/outskirts/mara.handover.mp3",
+      "source": "public/audio/voice/outskirts/mara.handover.mp3",
+      "sha256": "aa42615cbebc2aabc1c93beb580f5700444e0de31b8b109dd52e2db872b40eee"
+    },
+    {
+      "path": "voice/outskirts/mara.progress.mp3",
+      "source": "public/audio/voice/outskirts/mara.progress.mp3",
+      "sha256": "2782273710296dcc12940944208110d8b3b7c5857a09bd8181cfe1139c902db2"
+    },
+    {
+      "path": "voice/outskirts/mara.replay.mp3",
+      "source": "public/audio/voice/outskirts/mara.replay.mp3",
+      "sha256": "5fee31371c6a2904f22842cf1ed3c634d6b111f143e22f4aa78d932a97c9b97e"
+    },
+    {
+      "path": "voice/outskirts/olan.back.mp3",
+      "source": "public/audio/voice/outskirts/olan.back.mp3",
+      "sha256": "280223e796ae2e5024780d16f80d0a22c9b2766bbfad405690afc0ed0a2ccba6"
+    },
+    {
+      "path": "voice/outskirts/olan.first.mp3",
+      "source": "public/audio/voice/outskirts/olan.first.mp3",
+      "sha256": "de5118796c4d13c8c58df6c83a08e29ade4868a34bbcf72affd71dee28f688df"
+    },
+    {
+      "path": "voice/outskirts/olan.hint.mp3",
+      "source": "public/audio/voice/outskirts/olan.hint.mp3",
+      "sha256": "f017cdec74d6415ba3fefe9118987d49e5b087acb3abb49995a84145ca76e19e"
+    },
+    {
+      "path": "voice/outskirts/olan.muster.mp3",
+      "source": "public/audio/voice/outskirts/olan.muster.mp3",
+      "sha256": "c99974aba2d796f63df230e9c630bfbe5fcfa443c137cb74da4aa51f3c53dd74"
+    },
+    {
+      "path": "voice/outskirts/olan.reserve.mp3",
+      "source": "public/audio/voice/outskirts/olan.reserve.mp3",
+      "sha256": "52753d193879369824f362a0c3291cd7fe90f564eb25c64a69ae3c39b98df8ae"
+    },
+    {
+      "path": "voice/outskirts/olan.slow.mp3",
+      "source": "public/audio/voice/outskirts/olan.slow.mp3",
+      "sha256": "3b8cbf5f19733512e8593fbf330e6b65e4d3ecd93c9bf77f238b0f4d1a38049c"
+    },
+    {
+      "path": "voice/outskirts/quest.road-without-a-name.active.mp3",
+      "source": "public/audio/voice/outskirts/quest.road-without-a-name.active.mp3",
+      "sha256": "0f89ab90541ecd25a53625448f2e141e8b7b1464e6c3b282a68c876f5f0f5024"
+    },
+    {
+      "path": "voice/outskirts/quest.road-without-a-name.complete.mp3",
+      "source": "public/audio/voice/outskirts/quest.road-without-a-name.complete.mp3",
+      "sha256": "979216dd6292a89b1488314226bf6bea0ccde00491e5776a762f16ccfc3c7b6f"
+    },
+    {
+      "path": "voice/outskirts/quest.road-without-a-name.turnIn.mp3",
+      "source": "public/audio/voice/outskirts/quest.road-without-a-name.turnIn.mp3",
+      "sha256": "ee36ec450e3530b183a14bba86f6b3b337b951a98a6d780e09c171a181dea7f2"
+    },
+    {
+      "path": "voice/outskirts/rowan.accept.mp3",
+      "source": "public/audio/voice/outskirts/rowan.accept.mp3",
+      "sha256": "4b74d1bfd1d67e846bd16d6ededb738ed970a4678c71a5ff2697a8609dc8415c"
+    },
+    {
+      "path": "voice/outskirts/rowan.after.mp3",
+      "source": "public/audio/voice/outskirts/rowan.after.mp3",
+      "sha256": "f696db0188b70a4f325ad80e45c309e357dd06c39c8833a6f77ea3be19246866"
+    },
+    {
+      "path": "voice/outskirts/rowan.long.mp3",
+      "source": "public/audio/voice/outskirts/rowan.long.mp3",
+      "sha256": "b1c321176364a6bc8a1d2d014bef7f255737a9c24446607aafe562a916e1168e"
+    },
+    {
+      "path": "voice/outskirts/rowan.lucky.mp3",
+      "source": "public/audio/voice/outskirts/rowan.lucky.mp3",
+      "sha256": "f78ce7330af286773772ea937f9e2ddc3c442b1d7469bd2c88656007d7e9344e"
+    },
+    {
+      "path": "voice/outskirts/rowan.name.mp3",
+      "source": "public/audio/voice/outskirts/rowan.name.mp3",
+      "sha256": "e63759684fb719909219507d942efe55c7f3b31a59c54e0ca3a651a50e883701"
+    },
+    {
+      "path": "voice/outskirts/rowan.opening.mp3",
+      "source": "public/audio/voice/outskirts/rowan.opening.mp3",
+      "sha256": "23f818847f5ece97dbc065bfed98c2e013d1214d399dabc621beea49898dde23"
+    },
+    {
+      "path": "voice/outskirts/rowan.past.mp3",
+      "source": "public/audio/voice/outskirts/rowan.past.mp3",
+      "sha256": "4a1a819761c2a3f31c9667dc6eb97dc32860c8c69e18a38a2ec43b15a16ffc8a"
+    },
+    {
+      "path": "voice/outskirts/rowan.ready.mp3",
+      "source": "public/audio/voice/outskirts/rowan.ready.mp3",
+      "sha256": "957e89975016ea89dd58c318a19464b4a88655f7984cda26b2ef67d40ee6da1f"
+    },
+    {
+      "path": "voice/outskirts/rowan.reward.mp3",
+      "source": "public/audio/voice/outskirts/rowan.reward.mp3",
+      "sha256": "5b9b61a54cb1eacd1d077f601b65fec87297aea1534e02c407bb6836faef9fb9"
+    },
+    {
+      "path": "voice/outskirts/rowan.task.ballast.mp3",
+      "source": "public/audio/voice/outskirts/rowan.task.ballast.mp3",
+      "sha256": "00693f3a8faa6ab9a38dbab6c4f675a70abc3c5386c96e98425e37269952d8ba"
+    },
+    {
+      "path": "voice/outskirts/rowan.task.bell.mp3",
+      "source": "public/audio/voice/outskirts/rowan.task.bell.mp3",
+      "sha256": "f091c8d810d349eea4a751ee3725b9885cc33b611438661c5ea6ace8554cbba6"
+    },
+    {
+      "path": "voice/outskirts/rowan.task.hang.mp3",
+      "source": "public/audio/voice/outskirts/rowan.task.hang.mp3",
+      "sha256": "0883a7b1db5fba83d5e787c73f2c0437d642f7ef74fc469ceed4762d9022a816"
+    },
+    {
+      "path": "voice/outskirts/traveler.bark.mp3",
+      "source": "public/audio/voice/outskirts/traveler.bark.mp3",
+      "sha256": "7c36eb5ff19e8c3832c24e1fd2aff143ff153375e1130019897a4501c03051f8"
+    },
+    {
+      "path": "voice/outskirts/traveler.greet.mp3",
+      "source": "public/audio/voice/outskirts/traveler.greet.mp3",
+      "sha256": "f6af25b19c923bae49937e33bdbd6d30b2acb6e78f6efa9853662691911e75ae"
+    },
+    {
+      "path": "voice/outskirts/vey.back.mp3",
+      "source": "public/audio/voice/outskirts/vey.back.mp3",
+      "sha256": "4b06139b7fd75bd29c925feb9ec20fd5fa6ddba15c34922b45b53ed18af10966"
+    },
+    {
+      "path": "voice/outskirts/vey.first.mp3",
+      "source": "public/audio/voice/outskirts/vey.first.mp3",
+      "sha256": "c891618097383916f60896d501863c97cfe1a4186de706787ad513332418a21a"
+    },
+    {
+      "path": "voice/outskirts/vey.rowan.mp3",
+      "source": "public/audio/voice/outskirts/vey.rowan.mp3",
+      "sha256": "f1af06af6bba274b115df375186a291cd52b8ad8b1d8b20b9f50bdccb2a57fcb"
+    },
+    {
+      "path": "voice/woods/bram.bark.mp3",
+      "source": "public/audio/voice/woods/bram.bark.mp3",
+      "sha256": "0d1a9beab1e4b6b104752f7c85ca82370c58cf2ef726c33105167653d0e22733"
+    },
+    {
+      "path": "voice/woods/bram.done.mp3",
+      "source": "public/audio/voice/woods/bram.done.mp3",
+      "sha256": "a570ee5e2f08565489789d8540122700b56a5f868c60f47529b820ba76732b68"
+    },
+    {
+      "path": "voice/woods/bram.first.mp3",
+      "source": "public/audio/voice/woods/bram.first.mp3",
+      "sha256": "e84ddb7e0942e920b467813fb3cee3180da6474075e900b833c65078f5127ee4"
+    },
+    {
+      "path": "voice/woods/bram.repeat.mp3",
+      "source": "public/audio/voice/woods/bram.repeat.mp3",
+      "sha256": "ee1b81a6f5a60fba417d8ca089760c0cc47825b5612af2c75ca944695d41d64a"
+    },
+    {
+      "path": "voice/woods/hale.after.mp3",
+      "source": "public/audio/voice/woods/hale.after.mp3",
+      "sha256": "bb5f0177a265198dfa895811e2f166ff839b5ee92722ad93b4801a069bd547c6"
+    },
+    {
+      "path": "voice/woods/hale.before.mp3",
+      "source": "public/audio/voice/woods/hale.before.mp3",
+      "sha256": "7eff1335e69e69847a6bf5fa7a30dbf1953dda2f5ab86fda1f632124b3149c7c"
+    },
+    {
+      "path": "voice/woods/orra.first.mp3",
+      "source": "public/audio/voice/woods/orra.first.mp3",
+      "sha256": "ef77ac9faafbe882b474dc5f6972094433b815c3081c99a7c8281b580ecce261"
+    },
+    {
+      "path": "voice/woods/orra.moved.mp3",
+      "source": "public/audio/voice/woods/orra.moved.mp3",
+      "sha256": "ee29ce0e61c12a095247c737a05965f5abf06f5ce8bb307d78d128358400e510"
+    },
+    {
+      "path": "voice/woods/orra.muster.mp3",
+      "source": "public/audio/voice/woods/orra.muster.mp3",
+      "sha256": "84ea18567e7ad6f14b4981fc10c6a2f1d134f71b3abb2dda55a861b1922c840f"
+    },
+    {
+      "path": "voice/woods/orra.revisit.mp3",
+      "source": "public/audio/voice/woods/orra.revisit.mp3",
+      "sha256": "7b143c595ef52dafdc4ffd8248615aeb0f8c65e110f0bc5052f7719aa81a6cec"
+    },
+    {
+      "path": "voice/woods/pell.first.mp3",
+      "source": "public/audio/voice/woods/pell.first.mp3",
+      "sha256": "72cf1a30c6d973df55fc36284a0fd4647e4735bc56e174a7993a8382739ac397"
+    },
+    {
+      "path": "voice/woods/pell.revisit.mp3",
+      "source": "public/audio/voice/woods/pell.revisit.mp3",
+      "sha256": "3a2aa091d0b7eeca19c4b650d20e321863f3653da282ed5ad607942441685ed7"
+    },
+    {
+      "path": "voice/woods/quest.inventory-of-effects.active.mp3",
+      "source": "public/audio/voice/woods/quest.inventory-of-effects.active.mp3",
+      "sha256": "1c3108d8dd52d5f0b0c9ab7171e8603095d48e51bf0f123e4da3adf5b19a40c6"
+    },
+    {
+      "path": "voice/woods/quest.inventory-of-effects.complete.mp3",
+      "source": "public/audio/voice/woods/quest.inventory-of-effects.complete.mp3",
+      "sha256": "b3f3820496b86c87187f23a1d951341c4772e78f16895781252189ed2169e6dd"
+    },
+    {
+      "path": "voice/woods/quest.inventory-of-effects.turnIn.mp3",
+      "source": "public/audio/voice/woods/quest.inventory-of-effects.turnIn.mp3",
+      "sha256": "a85f3cd1f30718a3240813b45e00da25473254edb13c6f4681b9c561ef170531"
+    },
+    {
+      "path": "voice/woods/refuge.accept.mp3",
+      "source": "public/audio/voice/woods/refuge.accept.mp3",
+      "sha256": "7532f41f7930159edeba2bd790e73066e66c597fb81621f5c34d5f78e4a3a12f"
+    },
+    {
+      "path": "voice/woods/refuge.after.mp3",
+      "source": "public/audio/voice/woods/refuge.after.mp3",
+      "sha256": "352ec8de8ed2339334dae8feb65e6dd2d3d614d4f3974e2b24eb676f04261885"
+    },
+    {
+      "path": "voice/woods/refuge.ending.mp3",
+      "source": "public/audio/voice/woods/refuge.ending.mp3",
+      "sha256": "55f77e2a4540510b0f755c8a5a258530b48ac9b43d7cdb73f3e4659b5d8b7564"
+    },
+    {
+      "path": "voice/woods/refuge.firstReturn.mp3",
+      "source": "public/audio/voice/woods/refuge.firstReturn.mp3",
+      "sha256": "764e11e062f5442da00365439d8ab95a5726e216d543145d93b6325eade8fcad"
+    },
+    {
+      "path": "voice/woods/refuge.longEnding.mp3",
+      "source": "public/audio/voice/woods/refuge.longEnding.mp3",
+      "sha256": "9523d42c865baca57e4e434360871e88590783aa18611061ec1ed96f8986fb0d"
+    },
+    {
+      "path": "voice/woods/refuge.opening.mp3",
+      "source": "public/audio/voice/woods/refuge.opening.mp3",
+      "sha256": "da87b92aaaddc78b1d1d64328f215fc3b6bdbf82998d069f748c4dc975d8e244"
+    },
+    {
+      "path": "voice/woods/refuge.ready.mp3",
+      "source": "public/audio/voice/woods/refuge.ready.mp3",
+      "sha256": "bf1e5c4a8b27ebbdd6ee76eb09b93dd65aed7c609e5dbdcee3f8281e162755b1"
+    },
+    {
+      "path": "voice/woods/refuge.rewardLine.mp3",
+      "source": "public/audio/voice/woods/refuge.rewardLine.mp3",
+      "sha256": "5eeceffb2aa98f0391cc4ab09485636c086bd5624ee10e1c34a1c4a62d388026"
+    },
+    {
+      "path": "voice/woods/refuge.short.mp3",
+      "source": "public/audio/voice/woods/refuge.short.mp3",
+      "sha256": "27d4e7870445c35022aed4f8a9905ee838de5420969c3a07754ca9a4e3aa07f9"
+    },
+    {
+      "path": "voice/woods/refuge.task.floor.mp3",
+      "source": "public/audio/voice/woods/refuge.task.floor.mp3",
+      "sha256": "a8706d4482daa1ea34fc66cb7acfc39de93eea40df2526f268e53454038a7ca2"
+    },
+    {
+      "path": "voice/woods/refuge.task.lantern.mp3",
+      "source": "public/audio/voice/woods/refuge.task.lantern.mp3",
+      "sha256": "23256ac0742ac34331cad053f0ea933f55dfbdd4ae9fd92d091f1cc9e3949dbd"
+    },
+    {
+      "path": "voice/woods/refuge.task.line.mp3",
+      "source": "public/audio/voice/woods/refuge.task.line.mp3",
+      "sha256": "a8192c8f297b0fb65259eb2417ae1d6b77ba49149c2b1f0b38be528f80f7b139"
+    },
+    {
+      "path": "voice/woods/refuge.task.log.mp3",
+      "source": "public/audio/voice/woods/refuge.task.log.mp3",
+      "sha256": "cefe3c1237b8ba09f2571daea7e54424c03b15c3fb910339c6c714ceb25108a1"
+    },
+    {
+      "path": "voice/woods/refuge.task.moths.mp3",
+      "source": "public/audio/voice/woods/refuge.task.moths.mp3",
+      "sha256": "64eb113949b9041bcfbe75f97b6b543501a87a3e4cf1cf07ca5e0ede1e03ad0b"
+    },
+    {
+      "path": "voice/woods/refuge.task.table.mp3",
+      "source": "public/audio/voice/woods/refuge.task.table.mp3",
+      "sha256": "2e7e40aad28e83105fef76fb182dabb9aa83fbec909166feb1feb0ad4fdb34da"
+    },
+    {
+      "path": "voice/woods/refuge.thanks.mp3",
+      "source": "public/audio/voice/woods/refuge.thanks.mp3",
+      "sha256": "9ba1d0eb972aa74e7370026b4a34e4bc7ec122e14a0624b0fc2f843089a5c006"
+    },
+    {
+      "path": "voice/woods/workshop.ethereal-goods.knight.mp3",
+      "source": "public/audio/voice/woods/workshop.ethereal-goods.knight.mp3",
+      "sha256": "0bf44902134a2c087de07fbe46165229bba9bc56a36a1869ab51ec7a61cad541"
+    },
+    {
+      "path": "voice/woods/workshop.ethereal-goods.offer.mp3",
+      "source": "public/audio/voice/woods/workshop.ethereal-goods.offer.mp3",
+      "sha256": "4fb57bd823a6ead08e18521fdfb6f07d86ce2cc68c972701a3915a8ca7e8773f"
+    },
+    {
+      "path": "voice/woods/workshop.ethereal-goods.reply.mp3",
+      "source": "public/audio/voice/woods/workshop.ethereal-goods.reply.mp3",
+      "sha256": "12de23fbd4969d6e0f5987c6df727b1fe29abecc214c07f32ee46b2e120e4ca5"
+    }
+  ]
+}

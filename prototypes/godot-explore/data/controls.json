@@ -1,0 +1,36 @@
+{
+  "source": "public/index.html / KB_DEFAULTS and beginOutskirtsInteraction",
+  "sha256": "a2dc3f5b7289b48ddad12c1abe95a6a95bf0b596da275108dda561cf54b1dfc7",
+  "keys": {
+    "left": [
+      "ArrowLeft"
+    ],
+    "right": [
+      "ArrowRight"
+    ],
+    "jump": [
+      "Space"
+    ],
+    "attack": [
+      "KeyW"
+    ],
+    "dash": [
+      "KeyD"
+    ],
+    "command": [
+      "KeyE"
+    ],
+    "pickup": [
+      "KeyC"
+    ],
+    "flag": [
+      "KeyR"
+    ],
+    "pause": [
+      "Escape"
+    ],
+    "interact": [
+      "ArrowUp"
+    ]
+  }
+}
