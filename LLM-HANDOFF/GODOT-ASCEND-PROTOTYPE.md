@@ -1,3 +1,13 @@
+# Character and environment art · 0.8.0 · 2026-10-25
+
+Current branch: `codex/godot-ascend-art`. Local app: `prototypes/godot-ascend/exports/Bladefall Ascend Prototype.app`. Esc → Knight appearance provides three walks plus Off, three similar knight designs and live previews. Choices persist across relaunches and all chapters. The idle cloth hangs down with a slight wave; moving cloth retains the previous trailing curve.
+
+`art_details.gd` contains presentation-only foliage placement/clearance, NPC/plant/hazard/dust-bunny/background drawing. `landscape.gd` adds masonry, grass, bark, gem/lantern/device detail and visual gait/design variants. `main.gd` adds settings, previews and scrollable menu layout. Core/world/devices/authored data and simulation scheduling remain unchanged. No Explore/browser changes, new quests, generated audio or deployment.
+
+`tests/art.gd` checks all variants, live GPU pixel differences, Off, cape geometry, foliage support/clearance, unchanged simulation and real save/reload using a temporary settings file. `tests/art_gallery.gd` captures the character/prop study. Evidence: `.cache/godot/art/`. Validation: 24 packed integration cases; GPU gait/design pixel checks, gallery and all entity paint checks; 322 browser traces / 95,367 matching frames. All 16 painted foliage patches satisfy clearance; six moved and four unsafe patches were omitted. Inspected 4.59-second mixed audio: zero clipped samples. The app signature verifies. See the README's 0.8 section for boundaries and commands.
+
+---
+
 # Presentation pass · 0.7.0 · 2026-10-25
 
 Current branch: `codex/godot-ascend-feel`. The local standalone is rebuilt at `prototypes/godot-ascend/exports/Bladefall Ascend Prototype.app`. This pass changes `landscape.gd`, the atmosphere shader and the heavy-landing audio event mapping. Core/world/device/movement code and authored data are unchanged. No web deployment or Explore changes.

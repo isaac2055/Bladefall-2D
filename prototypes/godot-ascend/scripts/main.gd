@@ -50,6 +50,11 @@ var root_ui: Control
 var mute_music_level = 0.55
 var volume_sliders = {}
 var preferences = ConfigFile.new()
+var preferences_path="user://prototype-settings.cfg"
+var walking_picker: OptionButton
+var design_picker: OptionButton
+var appearance_preview: Control
+var preview_clock=0.0
 var test_mode = false
 var closing = false
 var measured_frames=[]
@@ -97,7 +102,7 @@ func _ready():
   if refresh>0:
    DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
    Engine.max_fps=int(round(refresh))
- if not test_mode: preferences.load("user://prototype-settings.cfg")
+ if not test_mode: preferences.load(preferences_path)
  RenderingServer.set_default_clear_color(Color("0b131c"))
  data = JSON.parse_string(FileAccess.get_file_as_string("res://data/world1.json"))
  world=World.new(data)
@@ -126,6 +131,8 @@ func _ready():
   scene.scale = Vector2(2,2)
   scene.world_data = chapter_world.data
   scene.runtime = chapter_world
+  scene.walking_style=clampi(int(preferences.get_value("display","walking_style",1)),0,3)
+  scene.knight_design=clampi(int(preferences.get_value("display","knight_design",0)),0,2)
   scene.reduced_motion = preferences.get_value("display","reduced_motion",false)
   view.add_child(scene)
   scene.load_scene(chapter_world.active())
@@ -225,9 +232,14 @@ func create_interface():
  card.size = Vector2(620,784)
  card.add_theme_stylebox_override("panel",style("#14232e","#697b77",10))
  pause_panel.add_child(card)
+ var scroll=ScrollContainer.new()
+ scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
+ scroll.custom_minimum_size=Vector2(600,760)
+ card.add_child(scroll)
  var column = VBoxContainer.new()
+ column.size_flags_horizontal=Control.SIZE_EXPAND_FILL
  column.add_theme_constant_override("separation",6)
- card.add_child(column)
+ scroll.add_child(column)
  pause_title=text(column,"THE OUTSKIRTS",26,"#e4d6ad")
  pause_description=text(column,"A road through the old watch · Ascend",13,"#90a6ac")
  var row = HBoxContainer.new()
@@ -249,6 +261,23 @@ func create_interface():
  for i in range(data.world.rooms.size()): room_picker.add_item("%02d · %s" % [i+1,data.world.rooms[i].get("name",data.world.rooms[i].id)])
  room_picker.item_selected.connect(func(index):load_section(index);set_paused(false))
  column.add_child(room_picker)
+ text(column,"KNIGHT APPEARANCE",12,"#bba984")
+ walking_picker=OptionButton.new()
+ for label in ["Walking · Off","Walking · Measured","Walking · Stride","Walking · March"]: walking_picker.add_item(label)
+ walking_picker.select(landscape.walking_style)
+ walking_picker.item_selected.connect(func(index):apply_art_settings(index,landscape.knight_design))
+ column.add_child(walking_picker)
+ design_picker=OptionButton.new()
+ for label in ["Knight · Classic","Knight · Wayfarer","Knight · Sentinel"]: design_picker.add_item(label)
+ design_picker.select(landscape.knight_design)
+ design_picker.item_selected.connect(func(index):apply_art_settings(landscape.walking_style,index))
+ column.add_child(design_picker)
+ appearance_preview=Control.new()
+ appearance_preview.custom_minimum_size=Vector2(560,88)
+ appearance_preview.mouse_filter=Control.MOUSE_FILTER_IGNORE
+ appearance_preview.draw.connect(draw_appearance_preview)
+ column.add_child(appearance_preview)
+ text(column,"Idle cape · walk right · walk left",12,"#90a6ac")
  text(column,"SOUND",12,"#bba984")
  for bus in ["Music","Effects","Voices","Ambience"]:
   var sound_row = HBoxContainer.new()
@@ -282,6 +311,27 @@ func create_interface():
  text(column,"ARROWS  Move and aim\nSPACE / C / J  Jump     D / X / K  Dash\nA / Z / SHIFT / L  Cling, climb, carry or throw\nW / V / I  Strike     R  Retry     M  Music\nController: stick / d-pad · A jump · X/B dash · LB cling",15,"#b5c0bd")
  text(column,"Native Ascend · six preloaded chapters",12,"#70888f")
  pause_panel.hide()
+func apply_art_settings(walk,design):
+ for chapter in chapters.values():
+  chapter.landscape.walking_style=walk
+  chapter.landscape.knight_design=design
+  chapter.landscape.queue_redraw()
+  chapter.landscape.front.queue_redraw()
+ walking_picker.select(walk)
+ design_picker.select(design)
+ appearance_preview.queue_redraw()
+ save_preferences()
+func draw_appearance_preview():
+ var old_ink=landscape.ink
+ landscape.ink=appearance_preview
+ appearance_preview.draw_rect(Rect2(0,0,560,88),Color("#0e1a26"))
+ appearance_preview.draw_set_transform(Vector2(72,12),0,Vector2(5,5))
+ for i in range(3):
+  var pose=sim.p.duplicate(true)
+  pose.merge({"vx":0 if i==0 else 90,"vy":0,"facing":-1 if i==2 else 1,"state":"normal","onGround":true,"tired":false,"parryTimer":0,"strikeTimer":0,"carrying":null,"dashes":1},true)
+  landscape.draw_knight(pose,Vector2(i*32,0),preview_clock*65)
+ appearance_preview.draw_set_transform(Vector2.ZERO)
+ landscape.ink=old_ink
 func set_voices(value):
  audio.voices_enabled = value
  if not value: audio.speech.stop()
@@ -291,7 +341,9 @@ func save_preferences():
  for bus in audio.levels: preferences.set_value("audio",bus,audio.levels[bus])
  preferences.set_value("audio","voices",audio.voices_enabled)
  preferences.set_value("display","reduced_motion",landscape.reduced_motion)
- preferences.save("user://prototype-settings.cfg")
+ preferences.set_value("display","walking_style",landscape.walking_style)
+ preferences.set_value("display","knight_design",landscape.knight_design)
+ preferences.save(preferences_path)
 func toggle_fullscreen():
  DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED if DisplayServer.window_get_mode()==DisplayServer.WINDOW_MODE_FULLSCREEN else DisplayServer.WINDOW_MODE_FULLSCREEN)
 func _unhandled_input(event):
@@ -325,7 +377,10 @@ func show_subtitle(who,line,seconds):
  subtitle_panel.show()
  landscape.speaker = who.to_lower()
 func _process(delta):
- if paused: return
+ preview_clock+=delta
+ if paused:
+  appearance_preview.queue_redraw()
+  return
  var frame_usec=Time.get_ticks_usec()
  if capture_path!="" and ticks>30:
   measured_frames.append(delta*1000)

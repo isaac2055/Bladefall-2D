@@ -1,6 +1,6 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.7.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, isolated from the shipping browser game on `codex/godot-ascend-feel`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.8.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, isolated from the shipping browser game on `codex/godot-ascend-art`. This is an engine comparison, not a replacement release or a full Ascend port.
 
 ## Play
 
@@ -16,6 +16,16 @@ Controls now match the browser defaults: **arrows** move/aim, **Space/C/J** jump
 
 The pause menu includes a **chapter selector** for The Outskirts, Black Woods, Broken Causeway and their three Fractured versions. All six chapters are constructed before play, and switching preserves each chapter’s progress and position. **Start world over** resets the current world, bearings, room machinery, deaths and dialogue history without closing the app. Retry resets only the current room and preserves bearings and lit stakes. The pause menu also contains the room selector, Watch/Take control, four separate volume controls, spoken dialogue toggle, reduced motion and lighting comparison. Audio and display preferences persist locally. The app starts directly in the game rather than an engine-study toolbar.
 
+
+## Character and environment art · 0.8.0
+
+**Esc → Knight appearance** offers **Measured, Stride, March, or Off** for walking and **Classic, Wayfarer, or Sentinel** for the knight. The three designs retain the same small blue knight, narrow visor and gold cloth silhouette. Live previews show idle and both walking directions while paused. Both selections persist and apply across all six chapters; the menu scrolls to keep the audio/display controls accessible. Off freezes the legs while retaining the normal movement, cape and feel effects.
+
+At rest the shoulder cloth hangs nearly vertically with a small wave. At speed it blends into the previous trailing curve. Walking uses visual foot placement, lift and knee details; no input, body dimensions, physics or collision is changed. NPCs now have shaped coats, lapels, faces, boots and role-specific clothing while keeping their authored tools and work poses.
+
+The environment pass adds staggered masonry and chips, moss and grass clusters, colored flowers and detailed ferns, background ruin/forest/viaduct detail, bark scars, four directional pale hazard silhouettes, fuzzy dust bunnies, cut-gem bezels/facets, lantern handles/flames and machinery inlays. Foliage checks actual support, headroom, nearby hazards, people, campfires and devices. Authored flower/fern patches move to a nearby safe ledge within their room, or are omitted if none exists; the original map/prop data remains unchanged. Grass checks live terrain clearance before drawing, including retractable seams.
+
+`tests/art.gd` covers cape geometry, all 12 appearance combinations across chapters, unchanged simulation state, actual preference save/reload and all painted foliage patches. Its GPU mode compares pixels for all four gait choices and three designs and confirms still legs with Off. `tests/art_gallery.gd` renders a native art sheet. The final audit covers 16 safe painted patches: six relocated and four omitted. The 0.8.0 app passes 24 integration/regression cases plus GPU appearance, gallery, entity and movable-stone checks. All 322 browser traces / 95,367 frames still match. Its inspected 4.59-second mixed capture is non-silent with zero clipped samples. Evidence is in `.cache/godot/art/`; gameplay and browser data are unchanged.
 
 ## Feel and atmosphere · 0.7.0
 
