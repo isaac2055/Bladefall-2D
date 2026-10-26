@@ -1,6 +1,6 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.14.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.15.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
 
 ## Play
 
@@ -17,17 +17,22 @@ Controls now match the browser defaults: **arrows** move/aim, **Space/C/J** jump
 The pause menu includes a **chapter selector** for The Outskirts, Black Woods, Broken Causeway and their three Fractured versions. All six chapters are constructed before play, and switching preserves each chapter’s progress and position. **Start world over** resets the current world, bearings, room machinery, deaths and dialogue history without closing the app. Retry resets only the current room and preserves bearings and lit stakes. The pause menu also contains the room selector, Watch/Take control, a dedicated sound mixer, spoken dialogue toggle, reduced motion and lighting comparison. Audio and display preferences persist locally. The app starts directly in the game rather than an engine-study toolbar.
 
 
-## Movement Workshop · 0.14.0
+## Movement Workshop · 0.15.0
 
-**The Broken Aqueduct** replaces the six 0.13 exercises with one connected room. Double-click **Play Movement Workshop.command**, or choose **Esc → chapter selector → Test · Movement Workshop** in the standalone app. It starts at the room immediately; no campaign progress is needed. **R** retries and **H** reveals an optional hint. The fixed camera shows the entire room. The old exercise rooms are no longer in the menu.
+Four standalone movement puzzles replace The Broken Aqueduct. Double-click **Play Movement Workshop.command**, or choose **Esc → chapter selector → Test · Movement Workshop** in the standalone app. No campaign progress is needed. **R** retries, **N** selects the next room, and **H** reveals a hint. Esc also offers room selection, Previous/Next and **Watch solution**. Each room has an ordinary-input demonstration; **Take control** returns to live play. Watching awards no completion.
 
-The visible flag sits above the entrance. The western pier offers a shorter refill/wall-departure approach; the lower carrier offers a longer passage beneath the span, an eastern-bank recovery and a return across the broken upper bridge. Both use ordinary movement. An optional shard below the carrier's departure asks for a drop, dash and wall catch before returning to the same finish. It resets on death/retry and is banked only when brought to the flag. Normal completion and shard completion are tracked separately for the session; Start world over clears both. The launcher's fresh game starts with neither completed.
+| Room | Connected problem |
+| --- | --- |
+| The Broken Relay | Use the horizontal launch and spend the dash to catch the vertical counterweight; finish with its upward launch and no dash. |
+| Behind the Counterweight | Raise the weight to open the low passage, dash to the far wall, then catch the descending weight as a temporary higher foothold. |
+| Under the Lintel | Judge the first lift against its low ceiling, preserve the dash through the side transfer, then combine the horizontal launch with a final upward dash. |
+| The Return Ferry | Reach the far shard with the dash intact, use it to catch the retreating carrier, and bring the pickup home. |
 
-For an optional demonstration, open Esc, choose **Eastern crossing**, **Western pier** or **Shard detour** in the Demonstration dropdown, then **Watch solution**. Replays begin at spawn and award neither completion. **Take control** returns to live play. These recordings show possible routes; the room does not enforce their action sequences. The known routes use no hypers, supers or wall bounces. Normal movement constants, campaign rooms, quests and voice assets are unchanged.
+The first three finish at the gold flag. The ferry's flag is at home: standing there before pickup does not clear the room. Its shard resets on death/retry and only banks after the successful return. Start world over clears session completion. The rooms use the existing Outskirts jump, climb, wall jump, single dash and contact-activated moving blocks. Movement constants and the fixed outward/hold/return cycle are unchanged. Fixed housing and surrounding spikes control safe attachment surfaces; the blocks do not carry spikes.
 
-The workshop remains chapter 4 in `levels/world4.tscn`, with import data and three ordinary-input recordings in `data/world4.json`. Select **Movement Workshop · test level** in the Ascend editor dock to edit/play it. No passage or gate joins it to the campaign. Do not regenerate the scene after editing it.
+The workshop remains chapter 4 in `levels/world4.tscn`, with source data and recordings in `data/world4.json`. All four rooms are separately editable through **Movement Workshop · test level** in the Ascend dock. The fixed camera shows each complete room. No connecting passage joins them to each other or the campaign. The campaign's authored scenes, quests and voices are outside this change.
 
-`tests/workshop.gd` exercises both approaches and the optional pickup/recovery/return through the actual application. It checks that the western route avoids the eastern bank, the lower route uses the carrier and temporary landing, and the shard requires a successful return. It also exercises death, retry, device ownership, demonstrations, finish tracking, direct launch and campaign isolation. GPU mode captures the room, intermediate route positions, finishes and menu. These checks establish functionality and witnessed routes, rather than judging enjoyment. Run from the repository root:
+`tests/workshop.gd` checks native round trip, four deathless ordinary-input solutions, their observed dash/momentum states, nearby successful timings, controlled physics ablations and bounded shortcut searches. It also exercises live application play, death/retry, ferry return banking, demonstration playback, room navigation and campaign isolation. GPU mode captures starts, critical transfers, finishes and the menu. These are functional and causal checks; they do not establish enjoyment or rule out every possible human route. Details and limitations are in [WORKSHOP.md](WORKSHOP.md).
 
 ```sh
 .cache/godot/Godot.app/Contents/MacOS/Godot --headless --path prototypes/godot-ascend --script tests/workshop.gd

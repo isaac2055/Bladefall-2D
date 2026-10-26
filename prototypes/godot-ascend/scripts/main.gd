@@ -535,6 +535,7 @@ func workshop_recording():
 
 func workshop_goal_reached():
  if chapter_number!=4 or not sim.p.onGround or sim.p.state in ["dead","respawn"]: return false
+ if sim.room.def.get("workshopRequireShard",false) and not workshop_has_shard(): return false
  var goal=sim.room.def.workshopGoal
  return Rect2(goal[0],goal[1]-2,goal[2],goal[3]+4).has_point(Vector2(sim.p.x+sim.p.w/2.0,sim.p.y+sim.p.h))
 
@@ -546,7 +547,7 @@ func tick_workshop():
  workshop_completed[sim.room.id]=true
  if shard_clear: workshop_shards[sim.room.id]=true
  room_picker.set_item_text(current,("◆ " if workshop_shards.has(sim.room.id) else "✓ ")+"%02d · %s"%[current+1,sim.room.name])
- notice_label.text="Finish reached with the shard · optional detour complete" if shard_clear else "Finish reached · the optional shard is still available"
+ notice_label.text="Shard brought home · room complete" if sim.room.def.get("workshopRequireShard",false) else ("Finish reached with the shard · optional detour complete" if shard_clear else "Finish reached")
  notice_time=8
  audio.effect("gem",.6)
 
@@ -661,6 +662,10 @@ func close_app(code=0):
 
 func bearing_caption():
  if chapter_number==4:
+  if sim.room.def.get("workshopRequireShard",false):
+   return "SHARD BROUGHT HOME" if workshop_shards.has(sim.room.id) else ("SHARD FOUND · BRING IT HOME" if workshop_has_shard() else "BRING THE FAR SHARD BACK TO THE FLAG")
+  if not sim.ents.any(func(e):return e.type=="shard"):
+   return "FINISH REACHED" if workshop_completed.has(sim.room.id) else "REACH THE GOLD FLAG"
   var shard="SHARD BANKED" if workshop_shards.has(sim.room.id) else ("SHARD FOUND · BRING IT TO THE FLAG" if workshop_has_shard() else "OPTIONAL SHARD")
   return ("FINISH REACHED" if workshop_completed.has(sim.room.id) else "REACH THE GOLD FLAG")+" · "+shard
  if sim.p.get("pollen",0)>0: return "WHITE FLOWER SAP · movement weakened · %.1fs"%(sim.p.pollen/60.0)
@@ -778,7 +783,7 @@ func switch_chapter(number):
  workshop_previous.visible=number==4 and data.world.rooms.size()>1
  workshop_next.visible=workshop_previous.visible
  if number==4:
-  pause_description.text="The Broken Aqueduct · optional shard · H for a hint"
+  pause_description.text="Four movement puzzles · N for next room · H for a hint"
   workshop_recording()
  room_banner.text=sim.room.name.to_upper()
  banner_time=2.4
