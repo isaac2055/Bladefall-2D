@@ -932,7 +932,7 @@ func update_zip(e):
    e.t = 0
  elif e.state=="go" or e.state=="back":
   e.t += 1
-  var a = min(1.0,e.t/(30.0 if e.state=="go" else 120.0))
+  var a = min(1.0,e.t/(30.0 if e.state=="go" else float(e.get("returnFrames",120))))
   var nx = e.ox+(e.tx-e.ox)*a*a if e.state=="go" else e.tx+(e.ox-e.tx)*a
   var ny = e.oy+(e.ty-e.oy)*a*a if e.state=="go" else e.ty+(e.oy-e.ty)*a
   move_solid(e,nx-(e.x+e.remX),ny-(e.y+e.remY))
@@ -947,7 +947,7 @@ func update_zip(e):
    else: e.cool = 20
  elif e.state=="hold":
   e.t += 1
-  if e.t>=30:
+  if e.t>=e.get("holdFrames",30):
    e.state = "back"
    e.t = 0
 

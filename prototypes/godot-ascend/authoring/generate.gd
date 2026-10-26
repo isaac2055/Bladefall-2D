@@ -181,6 +181,9 @@ func generate(base):
       if abs(e.x-item.position.x)<.01 and abs(e.y-item.position.y)<8:
        item.preview_entity=e.duplicate(true)
        item.preview_offset=Vector2(e.x,e.y)-item.position
+       if e.has("authoring_tint"):
+        item.tint=Color(e.authoring_tint)
+        item.preview_entity.erase("authoring_tint")
        break
     if ch=="X":
      var shutters=definition.get("shutters",[])
@@ -189,6 +192,7 @@ func generate(base):
     if ch=="Z":
      var z=definition.get("zips",[])
      var target=z[zip_index] if zip_index<z.size() else [0,-4]
+     if target.size()>2 and target[2] is Dictionary: item.parameters=target[2].duplicate(true)
      curve(item,[item.position,item.position+Vector2(target[0],target[1])*8],root_node)
      zip_index+=1
   for d in definition.get("decor",[]):

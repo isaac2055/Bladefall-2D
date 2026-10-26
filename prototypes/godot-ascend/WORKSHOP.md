@@ -1,54 +1,57 @@
-# Four linked movement rooms
+# Six linked movement rooms · 0.16.0
 
-These rooms implement the four approved proposals as standalone tests in chapter 4. They replace the unsuccessful Aqueduct experiment; the campaign is unchanged. The native editor scene is `levels/world4.tscn` and the source/ordinary-input demonstrations are in `data/world4.json`.
+These standalone chapter-4 rooms use Outskirts movement and contact-activated blocks. Native scene: `levels/world4.tscn`. Source geometry and ordinary-input demonstrations: `data/world4.json`. No campaign scenes, quests, voices or connecting passages are part of this change.
 
-The earlier room let permanent landings reset the problem between moves. Its recorded solutions often survived removing carrier motion, inherited momentum or crumble behavior. The new rooms each preserve a consequence across the next transfer.
+The Broken Relay and Behind the Counterweight are preserved from 0.15. The revised Lintel and Ferry address reported shortcuts and missing preparation; Engine and Circuit combine these relationships in larger spaces. Larger rooms scroll within their boundaries. The first two retain their fixed camera.
 
 ## The Broken Relay
 
-Jump onto the first carrier without spending the dash. Leave during its fast outward motion; the jump supplies horizontal reach, and the dash completes the transfer to the lower side of the vertical counterweight. Its rising motion then supplies the exit height with no dash remaining.
-
-The final weight rises into a fixed housing. The housing prevents standing on its top and restoring the dash. The upper thorn collar and the finish's guarded underside prevent using those static surfaces as an easier route. The collar leaves room to choose an upward departure, including the normal lift grace period; it does not demand the demonstration's exact takeoff frame.
-
-The witnessed route has no intermediate landing after departing the horizontal carrier. Removing either horizontal or vertical inherited momentum breaks it. Removing the dash or freezing the blocks also breaks it. A bounded direct-jump/dash search from the first carrier does not skip the second block.
+Board the first carrier without spending the dash. Jump with horizontal momentum and dash onto the rising counterweight's lower side. Arrive with zero dashes, then use its upward launch to finish. Fixed overhead housing prevents standing on the second block to reset the dash. The witnessed route fails without either horizontal or vertical inherited momentum.
 
 ## Behind the Counterweight
 
-Touch the weight's near side to raise it, release before being taken into the housing, then dash underneath to the far wall. Its thorn collar prevents a direct climb onto the finish. Wait for the weight to descend into catching range, jump back onto its right side, climb a little and jump across to the flag.
-
-The weight is short enough that its parked lower position cannot be caught from the upper wall grip. At its raised endpoint its bottom is out of reach. Only the intermediate return positions provide the foothold. Fixed housing denies a standing reset on top. The descending velocity supplies no upward jump bonus: this room uses the foothold's position and a second ordinary jump.
-
-The solution still succeeds with inherited momentum disabled. It fails with the block frozen at its raised stop or returned immediately to its parked lower position after the dash. This is intentionally a spatial return puzzle rather than a second momentum relay.
+Activate the weight, release and dash through its opened lower passage to the far wall. Catch the weight during its descent, then jump from that temporary higher foothold to the flag. Its parked low position and raised stop both fail to provide that foothold. The route survives disabled inherited momentum: the return supplies position, not an upward boost.
 
 ## Under the Lintel
 
-The entrance is on the right. Ride the narrow rising block, judge the low roof, then transfer left onto the horizontal block's right side while preserving the dash. Its outward motion carries you right. Leave it with useful horizontal momentum, use the saved upward dash outside the roof, and steer onto the upper-right flag.
+Use the first lift to transfer onto the horizontal carrier while preserving the dash. The carrier takes you beneath a substantial dividing wall. Leave beyond that barrier with horizontal momentum and spend the dash toward the flag. Covered track prevents a standing reset.
 
-The roof makes a strong upward launch near the first block's upper stop unsafe. Waiting for that boost to settle is the recorded solution; a lower departure can trade launch height against inherited speed. The later transfer needs horizontal reach. This permits different movement choices instead of enforcing one exact input sequence.
-
-The horizontal block remains beneath a fixed roof, so it does not provide a standing dash reset. The finish's side collar denies grabbing the platform from below after a direct jump/dash from the first lift. The solution survives disabling vertical inherited momentum but fails without horizontal inherited momentum. A bounded direct-finish search from the first lift finds no clear.
+The former layout could be bypassed with an ordinary jump retaining the first lift's upward momentum. The regression fixture reproduces that successful escape in the former room, then confirms it fails in the revision. The new partition makes the carrier's passage relevant. The recorded route needs horizontal inherited momentum but does not require vertical inherited momentum.
 
 ## The Return Ferry
 
-The outward carrier launch reaches a shard beside the far wall while preserving the dash. That wall offers a grip, with spikes preventing a climb onto its top. The carrier is retreating when you leave. Jump and dash back to catch its returning top or side, recover on the carrier, then jump home.
+Board the ferry from its side. Activate the gate on the outward crossing, climb and jump over its housing, then drop to the shard. Return beneath the low roof lip through the passage the gate has opened, collecting the return refill and dashing onto the retreating ferry. Recover there, then dash up and left over its home housing to the flag.
 
-The widened carrier makes the return catch more forgiving. Standing on it after that catch can restore resources: the critical return dash has already been spent. There is no far-bank landing where an outward dash can be restored before making the catch.
+The gate must be prepared before the pickup in the demonstrated route. A real late-preparation route succeeded in an earlier draft; it is retained as a positive regression control. The revised geometry and cycle reject that route and the tested timing variants. Spikes on the roof lip prevent turning it into a safe return stepping stone. The home housing prevents an idle ferry from being an equivalent recovery point.
 
-The shard is carried until home, never permanently awarded at touch. The home flag requires the shard, so spawning or dying there cannot clear the room. Death/retry restores an unbanked pickup. The demonstration reaches the shard with one dash, spends it on the return, catches the carrier with zero and banks it at home. Retimed wall-jump attempts without the return dash do not catch the retreating carrier.
+The ferry pauses for 60 frames rather than the default 30. A 90-frame draft admitted late gate preparation; the current duration accommodates the correct route without retaining that witnessed bypass. The goal requires returning with the shard; touching it and dying does not bank it.
+
+## The Counterweight Engine
+
+Launch from the horizontal block and dash onto the central counterweight with zero dashes. Its upward launch reaches an upper pocket containing a seal and a dash refill. There is no standing landing there. Drop and dash beneath the partition through the opened throat, catching the opposite wall with zero dashes. Then catch the same weight during its return and jump to the flag.
+
+The central weight travels upward and slightly right, aligning its return with the far-wall catch. It supplies three connected functions: launch, cleared passage and returning foothold. A continuous partition prevents a direct pocket-to-flag dash. Freezing the weight at either endpoint after the pocket trip prevents the demonstrated finish. Removing the pocket refill or either launch-momentum component also breaks the route. The only recorded ground landings are the starting carrier and the finish.
+
+## The Smuggler's Circuit
+
+Prepare the gate outward and bring the seal back through the lower passage as in Ferry. Catch the returning ferry and recover a dash. Make an ordinary jump and upward dash to the high refill, dash onto the final lift with zero dashes remaining, ride it upward and jump toward the high home flag.
+
+The final lift should be saved for the return. Its authored 600-frame return leaves a prematurely activated lift too high during the ordinary ferry recovery window. The early-activation counterfactual still collects the seal but fails the return chain. Removing the high refill, the ferry's return position or vertical inherited momentum also breaks the witnessed route. The high refill and finishing lift cannot be reached from the entrance floor in the tested jump/dash samples.
+
+## Editing and timing
+
+A moving fixture's optional Parameters dictionary accepts `holdFrames` and `returnFrames`, whole numbers from 1 to 3600. Defaults remain 30 and 120; activation and outward travel remain 4 and 30. The JSON route format is `[dx_tiles, dy_tiles, {"holdFrames": 60}]`; native scene compilation preserves the optional dictionary. Timing edits belong to the individual fixture. The ferry uses holdFrames=60; Circuit's finishing lift uses returnFrames=600. Campaign fixtures omit overrides and retain their existing behavior.
 
 ## Verification and limits
 
-`tests/workshop.gd` runs ordinary inputs through both the fixed-tick physics and the actual application. `tests/workshop_routes.gd` records launches, moving-block contacts, landings, dash state and completion. The suite exercises:
+`tests/workshop.gd` checks six native editable rooms, preserved accepted-room definitions, timing validation/serialization/defaults, six deathless clears without advanced movement, observed contacts and resources, timing variations, causal counterfactuals and bounded shortcut searches. The search includes 270 Lintel departure variants, 288 late-gate variants, 60 return-wall jump/dash variants across Ferry and Circuit, and 48 Circuit entrance attempts. Positive controls reproduce the old Lintel shortcut and earlier late-preparation Ferry win.
 
-- Native scene compilation and validation, including four independently editable rooms.
-- Four deathless clears with no super, hyper, ultra or wall-bounce inputs.
-- Static-block, missing-dash and inherited-momentum counterfactuals, with different expected outcomes for each room.
-- Both unavailable endpoint positions in the returning-door room.
-- A genuinely early first-lift launch dying at the lintel, before reaching the second block.
-- Nearby successful timings for each compound transfer.
-- Bounded direct-finish searches in the relay/lintel and retimed dashless ferry returns.
-- Live room completion, carried pickup death/retry, home-flag requirements, solution playback without awards, next/previous navigation and campaign isolation.
+The application checks use the actual gameplay controller for all six routes, completion awards, pickup death/retry, demonstration playback, next/previous controls, camera bounds and campaign isolation. GPU mode writes starts, critical machinery contacts, pickups, finishes and the menu:
 
-GPU mode additionally renders all four starts, critical transfer states, finishes and the workshop menu. Run it with an absolute output directory after `--` to save PNGs and `checks.json`.
+```sh
+.cache/godot/Godot.app/Contents/MacOS/Godot --path prototypes/godot-ascend --script tests/workshop.gd -- /absolute/output/directory
+```
 
-A failed counterfactual replay proves a dependency of that replay, not the impossibility of every alternate solution. The small shortcut searches broaden that evidence but are not exhaustive. Human playtesting is still needed to judge how clearly the rooms teach their relationships and how satisfying they feel. Successful alternatives that retain the central dependencies are welcome.
+Use `--headless` to run without captures. The report contains individual checks, route observations, counterfactual results and search counts. Browser parity separately protects default movement and machinery behavior.
+
+A failed counterfactual replay proves a dependency of that replay; it does not establish impossibility of every alternative. Bounded searches broaden evidence but are not exhaustive. The authored timing choices and geometry still need human playtesting for readability, satisfaction and recovery options. Alternatives preserving the central relationships are welcome.

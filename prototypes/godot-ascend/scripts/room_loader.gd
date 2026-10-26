@@ -60,6 +60,9 @@ static func parse(definition: Dictionary):
     zi += 1
     e.tx = group.x+z[0]*8
     e.ty = group.y+z[1]*8
+    if z.size()>2 and z[2] is Dictionary:
+     for field in ["holdFrames","returnFrames"]:
+      if z[2].has(field): e[field]=max(1,int(z[2][field]))
    "G": e.type = "gate"
    "H":
     e.type = "held"

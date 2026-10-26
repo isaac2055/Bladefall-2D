@@ -111,7 +111,9 @@ static func compile_room(room):
      var curve=item.get_node("MotionPath").curve
      if curve.point_count==2:
       var offset=curve.get_point_position(1)-curve.get_point_position(0)
-      zips.append({"cell":cell,"value":[offset.x/8,offset.y/8]})
+      var value=[offset.x/8,offset.y/8]
+      if not item.parameters.is_empty(): value.append(item.parameters.duplicate(true))
+      zips.append({"cell":cell,"value":value})
     if item.tint!=Color.WHITE: visuals[key(item.preview_entity.get("type",""),item.position.x+item.preview_offset.x,item.position.y+item.preview_offset.y)]={"tint":item.tint.to_html()}
    "Prop": props.append(position_data(item))
    "NPC": people.append(position_data(item))
@@ -235,6 +237,11 @@ static func validate(root,data):
     if item.position.x<0 or item.position.y<0 or end.x>room.map_width*8 or end.y>room.map_height*8: errors.append(room.room_id+" / "+item.name+": fixture lies outside the room")
    if item.kind in ["Bunny","White flower","Mechanism"] and (item.scale!=Vector2.ONE or item.rotation!=0): errors.append(room.room_id+" / "+item.name+": this object's simulation uses position and size fields; reset node scale/rotation")
    if item.kind in ["Fixture","White flower"] and (item.footprint.x<1 or item.footprint.y<1): errors.append(room.room_id+": footprint must be positive")
+   if item.kind=="Fixture" and item.glyph=="Z":
+    for field in item.parameters:
+     var frames=item.parameters[field]
+     if field not in ["holdFrames","returnFrames"] or typeof(frames) not in [TYPE_INT,TYPE_FLOAT] or not is_finite(float(frames)) or frames!=int(frames) or frames<1 or frames>3600:
+      errors.append(room.room_id+" / "+item.name+": lift timing must use holdFrames/returnFrames with whole frames from 1 to 3600")
    if item.kind=="Bunny" or item.kind=="Fixture" and item.glyph=="Z" or item.kind=="Mechanism" and item.parameters.has("a") and item.parameters.has("b"):
     var path=item.get_node_or_null("MotionPath")
     if path==null or path.curve==null: errors.append(room.room_id+": missing MotionPath")
