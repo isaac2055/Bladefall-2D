@@ -51,10 +51,17 @@ var death_label: Label
 var root_ui: Control
 var mute_music_level = 0.55
 var volume_sliders = {}
+var mixer_panel:Control
+var mixer_effect_picker:OptionButton
+var mixer_effect_slider:HSlider
+var mixer_effect_label:Label
+var mixer_effect_names=[]
+var mixer_level_labels={}
 var preferences = ConfigFile.new()
 var preferences_path="user://prototype-settings.cfg"
 var npc_picker: OptionButton
 var design_picker: OptionButton
+var feel_picker:OptionButton
 var environment_picker: OptionButton
 var appearance_preview: Control
 var preview_clock=0.0
@@ -85,7 +92,7 @@ func style(background,border="#515b5c",radius=5):
  s.content_margin_top = 9
  s.content_margin_bottom = 9
  return s
-func button(parent,value,callback):
+func button(parent,value,callback,sound=true):
  var b = Button.new()
  b.text = value
  b.focus_mode = Control.FOCUS_NONE
@@ -93,7 +100,9 @@ func button(parent,value,callback):
  b.add_theme_stylebox_override("normal",style("#182831","#3e5157"))
  b.add_theme_stylebox_override("hover",style("#293c41","#d1b478"))
  b.add_theme_stylebox_override("pressed",style("#435148","#e5cf93"))
- b.pressed.connect(func():audio.effect("ui-select",0.6);callback.call())
+ b.pressed.connect(func():
+  if sound: audio.effect("ui-select",0.6)
+  callback.call())
  parent.add_child(b)
  return b
 func _ready():
@@ -115,6 +124,8 @@ func _ready():
  audio = Sound.new()
  for bus in audio.levels: audio.levels[bus] = float(preferences.get_value("audio",bus,audio.levels[bus]))
  audio.voices_enabled = preferences.get_value("audio","voices",true)
+ audio.effect_levels=preferences.get_value("audio_effects","levels",{}).duplicate(true)
+ audio.effect_levels.erase("ui-pause")
  add_child(audio)
  # Construct all chapters before play; selecting a chapter preserves its live state.
  for number in CHAPTERS:
@@ -139,9 +150,11 @@ func _ready():
   scene.npc_design=clampi(int(preferences.get_value("display","npc_design",1)),0,2)
   scene.knight_design=clampi(int(preferences.get_value("display","knight_design",0)),0,2)
   if number==1:
-   scene.knight_design=clampi(int(preferences.get_value("display","outskirts_knight_design",scene.knight_design)),0,7)
+   scene.knight_design=clampi(int(preferences.get_value("display","outskirts_knight_design",scene.knight_design)),0,9)
    scene.npc_design=clampi(int(preferences.get_value("display","outskirts_npc_design",scene.npc_design)),0,7)
-   scene.environment_design=clampi(int(preferences.get_value("display","outskirts_environment",0)),0,2)
+   scene.environment_design=int(preferences.get_value("display","outskirts_environment",0))
+   if not scene.environment_design in Landscape.Themes.CHOICES: scene.environment_design=0
+   scene.environment_feel=clampi(int(preferences.get_value("display","outskirts_surface",0)),0,2)
   scene.reduced_motion = preferences.get_value("display","reduced_motion",false)
   view.add_child(scene)
   scene.load_scene(chapter_world.active())
@@ -207,7 +220,7 @@ func create_interface():
  dash_label.position = Vector2(955,13)
  death_label = text(header,"0 DEATHS",14,"#a3b1b5")
  death_label.position = Vector2(1060,14)
- var menu = button(header,"II  Esc",func():set_paused(not paused))
+ var menu = button(header,"II  Esc",func():set_paused(not paused),false)
  menu.position = Vector2(1176,5)
  menu.size = Vector2(88,38)
  quest_label=text(root_ui,"",13,"#c4c8aa")
@@ -256,9 +269,10 @@ func create_interface():
  var row = HBoxContainer.new()
  row.add_theme_constant_override("separation",8)
  column.add_child(row)
- button(row,"Resume",func():set_paused(false))
+ button(row,"Resume",func():set_paused(false),false)
  button(row,"Retry · R",func():retry_room();set_paused(false))
  watch_button = button(row,"Watch reference",func():toggle_watch();set_paused(false))
+ button(column,"Sound mixer · channels and individual effects",open_mixer,false)
  restart_button=button(column,"Start world over",restart_world)
  chapter_picker=OptionButton.new()
  for number in CHAPTERS:
@@ -272,10 +286,10 @@ func create_interface():
  for i in range(data.world.rooms.size()): room_picker.add_item("%02d · %s" % [i+1,data.world.rooms[i].get("name",data.world.rooms[i].id)])
  room_picker.item_selected.connect(func(index):load_section(index);set_paused(false))
  column.add_child(room_picker)
- text(column,"OUTSKIRTS APPEARANCE · 4 STYLES × 2 DESIGNS",12,"#bba984")
+ text(column,"OUTSKIRTS APPEARANCE",12,"#bba984")
  text(column,"Walking · Measured",14,"#a6b7bb")
  design_picker=OptionButton.new()
- for id in Landscape.Styles.CHOICES: design_picker.add_item("Knight · "+Landscape.Styles.NAMES[id],id)
+ for id in Landscape.KnightStyles.CHOICES: design_picker.add_item("Knight · "+Landscape.KnightStyles.NAMES[id],id)
  design_picker.select(design_picker.get_item_index(landscape.knight_design))
  design_picker.item_selected.connect(func(index):apply_character_settings(design_picker.get_item_id(index),chapters[1].landscape.npc_design))
  column.add_child(design_picker)
@@ -285,10 +299,15 @@ func create_interface():
  npc_picker.item_selected.connect(func(index):apply_character_settings(chapters[1].landscape.knight_design,npc_picker.get_item_id(index)))
  column.add_child(npc_picker)
  environment_picker=OptionButton.new()
- for label in Landscape.Themes.NAMES: environment_picker.add_item("Scenery · "+label)
- environment_picker.select(chapters[1].landscape.environment_design)
- environment_picker.item_selected.connect(apply_environment_settings)
+ for id in Landscape.Themes.CHOICES: environment_picker.add_item("Scenery · "+Landscape.Themes.NAMES[id],id)
+ environment_picker.select(environment_picker.get_item_index(chapters[1].landscape.environment_design))
+ environment_picker.item_selected.connect(func(index):apply_environment_settings(environment_picker.get_item_id(index)))
  column.add_child(environment_picker)
+ feel_picker=OptionButton.new()
+ for label in Landscape.Themes.FEELS: feel_picker.add_item("Treatment · "+label)
+ feel_picker.select(chapters[1].landscape.environment_feel)
+ feel_picker.item_selected.connect(apply_surface_settings)
+ column.add_child(feel_picker)
  appearance_preview=Control.new()
  appearance_preview.custom_minimum_size=Vector2(560,168)
  appearance_preview.mouse_filter=Control.MOUSE_FILTER_IGNORE
@@ -303,20 +322,6 @@ func create_interface():
  appearance_preview.draw.connect(draw_appearance_preview)
  column.add_child(appearance_preview)
  text(column,"Idle / walk / turn · People preview below",12,"#90a6ac")
- text(column,"SOUND",12,"#bba984")
- for bus in ["Music","Effects","Voices","Ambience"]:
-  var sound_row = HBoxContainer.new()
-  column.add_child(sound_row)
-  var name_label = text(sound_row,bus,16)
-  name_label.custom_minimum_size.x = 110
-  var slider = HSlider.new()
-  slider.custom_minimum_size = Vector2(420,30)
-  slider.max_value = 1
-  slider.step = 0.01
-  slider.value = audio.levels[bus]
-  volume_sliders[bus] = slider
-  slider.value_changed.connect(func(value):audio.levels[bus]=value;audio.apply_levels();save_preferences())
-  sound_row.add_child(slider)
  var voices = CheckBox.new()
  voices.text = "Spoken dialogue (subtitles stay on)"
  voices.button_pressed = audio.voices_enabled
@@ -336,9 +341,10 @@ func create_interface():
  text(column,"ARROWS  Move and aim\nSPACE / C / J  Jump     D / X / K  Dash\nA / Z / SHIFT / L  Cling, climb, carry or throw\nW / V / I  Strike     R  Retry     M  Music\nController: stick / d-pad · A jump · X/B dash · LB cling",15,"#b5c0bd")
  text(column,"Native Ascend · six preloaded chapters",12,"#70888f")
  pause_panel.hide()
+ build_mixer()
 func apply_character_settings(design,npc):
  var scene=chapters[1].landscape
- scene.knight_design=clampi(design,0,7)
+ scene.knight_design=clampi(design,0,9)
  scene.npc_design=clampi(npc,0,7)
  scene.queue_redraw()
  scene.front.queue_redraw()
@@ -348,7 +354,11 @@ func apply_character_settings(design,npc):
  save_preferences()
 func apply_environment_settings(index):
  chapters[1].landscape.set_environment_design(index)
- environment_picker.select(index)
+ environment_picker.select(environment_picker.get_item_index(index))
+ save_preferences()
+func apply_surface_settings(index):
+ chapters[1].landscape.set_environment_feel(index)
+ feel_picker.select(index)
  save_preferences()
 func draw_appearance_preview():
  var old_ink=landscape.ink
@@ -371,18 +381,21 @@ func save_preferences():
  if test_mode: return
  for bus in audio.levels: preferences.set_value("audio",bus,audio.levels[bus])
  preferences.set_value("audio","voices",audio.voices_enabled)
+ preferences.set_value("audio_effects","levels",audio.effect_levels)
  preferences.set_value("display","reduced_motion",landscape.reduced_motion)
  preferences.set_value("display","walking_style",1)
  preferences.set_value("display","outskirts_npc_design",chapters[1].landscape.npc_design)
  preferences.set_value("display","outskirts_knight_design",chapters[1].landscape.knight_design)
  preferences.set_value("display","outskirts_environment",chapters[1].landscape.environment_design)
+ preferences.set_value("display","outskirts_surface",chapters[1].landscape.environment_feel)
  preferences.save(preferences_path)
 func toggle_fullscreen():
  DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED if DisplayServer.window_get_mode()==DisplayServer.WINDOW_MODE_FULLSCREEN else DisplayServer.WINDOW_MODE_FULLSCREEN)
 func _unhandled_input(event):
  if event.is_echo(): return
  if event.is_action_pressed("knight_pause"):
-  set_paused(not paused)
+  if mixer_panel!=null and mixer_panel.visible: close_mixer()
+  else: set_paused(not paused)
   get_viewport().set_input_as_handled()
  elif event.is_action_pressed("knight_retry") and not paused: retry_room()
  elif event is InputEventKey and event.pressed:
@@ -391,16 +404,19 @@ func _unhandled_input(event):
    if audio.levels.Music>0: mute_music_level=audio.levels.Music;audio.levels.Music=0.0
    else: audio.levels.Music=mute_music_level
    audio.apply_levels()
+   sync_mixer()
    save_preferences()
 func set_paused(value):
+ if not value and mixer_panel!=null:
+  mixer_panel.hide()
+  audio.stop_previews()
  paused = value
  pause_panel.visible = value
  if value:
   for bus in volume_sliders: volume_sliders[bus].set_value_no_signal(audio.levels[bus])
  landscape.set_process(not value)
  audio.set_paused(value)
- if value: audio.effect("ui-pause",0.6)
- else: audio.effect("ui-back",0.6)
+
 func show_subtitle(who,line,seconds):
  subtitle_name.text = who.to_upper()
  subtitle_text.text = line
@@ -674,6 +690,7 @@ func switch_chapter(number):
  design_picker.disabled=number!=1
  npc_picker.disabled=number!=1
  environment_picker.disabled=number!=1
+ feel_picker.disabled=number!=1
  design_picker.select(design_picker.get_item_index(landscape.knight_design))
  npc_picker.select(npc_picker.get_item_index(landscape.npc_design))
  title.text=data.world.name.to_upper()+" · ASCEND"
@@ -694,3 +711,108 @@ func timing_stats(samples):
  var ordered=samples.duplicate()
  ordered.sort()
  return {"samples":ordered.size(),"median":ordered[int(ordered.size()*0.5)],"p95":ordered[min(ordered.size()-1,int(ordered.size()*0.95))],"p99":ordered[min(ordered.size()-1,int(ordered.size()*0.99))],"worst":ordered[-1]}
+
+func sync_mixer():
+ for bus in volume_sliders:
+  volume_sliders[bus].set_value_no_signal(audio.levels[bus])
+  mixer_level_labels[bus].text=str(roundi(audio.levels[bus]*100))+"%"
+func open_mixer():
+ set_paused(true)
+ pause_panel.hide()
+ mixer_panel.show()
+ sync_mixer()
+ update_effect_mixer()
+func close_mixer():
+ audio.stop_previews()
+ mixer_panel.hide()
+ pause_panel.show()
+func update_effect_mixer():
+ if mixer_effect_picker.selected<0: return
+ var name=mixer_effect_names[mixer_effect_picker.selected]
+ var level=float(audio.effect_levels.get(name,1.0))
+ mixer_effect_slider.set_value_no_signal(level)
+ mixer_effect_label.text=mixer_effect_picker.get_item_text(mixer_effect_picker.selected)+" · "+("Disabled" if level<=0 else str(roundi(level*100))+"%")
+ var bus="Efforts" if name.begins_with("kn-") else "Interface" if name.begins_with("ui-") else "Effects"
+ if audio.levels[bus]<=0 or audio.levels.Master<=0: mixer_effect_label.text+=" · channel muted"
+func build_mixer():
+ mixer_panel=Control.new()
+ mixer_panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+ root_ui.add_child(mixer_panel)
+ var scrim=ColorRect.new()
+ scrim.color=Color(.02,.04,.07,.92)
+ scrim.size=Vector2(1280,832)
+ mixer_panel.add_child(scrim)
+ var card=PanelContainer.new()
+ card.position=Vector2(250,20)
+ card.size=Vector2(780,792)
+ card.add_theme_stylebox_override("panel",style("#14232e","#697b77",10))
+ mixer_panel.add_child(card)
+ var scroll=ScrollContainer.new()
+ scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
+ card.add_child(scroll)
+ var column=VBoxContainer.new()
+ column.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+ column.add_theme_constant_override("separation",6)
+ scroll.add_child(column)
+ text(column,"SOUND MIXER",24,"#e4d6ad")
+ button(column,"Back to pause",close_mixer,false)
+ text(column,"Zero mutes a channel. Changes save automatically.",15,"#a8b8bc")
+ for bus in audio.levels:
+  var row=HBoxContainer.new()
+  column.add_child(row)
+  var label=text(row,{"Efforts":"Knight efforts","Interface":"Menu sounds"}.get(bus,bus),16)
+  label.custom_minimum_size.x=150
+  var slider=HSlider.new()
+  slider.custom_minimum_size=Vector2(450,30)
+  slider.max_value=1
+  slider.step=.01
+  slider.value=audio.levels[bus]
+  volume_sliders[bus]=slider
+  var percent=text(row,str(roundi(slider.value*100))+"%",14,"#a8b8bc")
+  mixer_level_labels[bus]=percent
+  slider.value_changed.connect(func(value):
+   audio.levels[bus]=value
+   audio.apply_levels()
+   percent.text=str(roundi(value*100))+"%"
+   update_effect_mixer()
+   save_preferences())
+  row.add_child(slider)
+ text(column,"INDIVIDUAL EFFECTS",18,"#e4d6ad")
+ text(column,"Pick an effect, adjust its level, then Preview. Zero disables it.",14,"#a8b8bc")
+ mixer_effect_picker=OptionButton.new()
+ mixer_effect_names=audio.manifest.effects.keys()
+ mixer_effect_names.sort()
+ for name in mixer_effect_names: mixer_effect_picker.add_item(name.replace("kn-","Knight effort · ").replace("ui-","Interface · ").replace("-"," "))
+ column.add_child(mixer_effect_picker)
+ mixer_effect_label=text(column,"",15,"#d0c19d")
+ mixer_effect_slider=HSlider.new()
+ mixer_effect_slider.max_value=1
+ mixer_effect_slider.step=.01
+ mixer_effect_slider.custom_minimum_size.y=30
+ column.add_child(mixer_effect_slider)
+ mixer_effect_picker.item_selected.connect(func(_i):audio.stop_previews();update_effect_mixer())
+ mixer_effect_slider.value_changed.connect(func(value):
+  audio.set_effect_level(mixer_effect_names[mixer_effect_picker.selected],value)
+  update_effect_mixer()
+  save_preferences())
+ var preview=HBoxContainer.new()
+ column.add_child(preview)
+ button(preview,"Preview effect / next take",func():audio.preview_effect(mixer_effect_names[mixer_effect_picker.selected]),false)
+ button(preview,"Stop preview",audio.stop_previews,false)
+ var beds=HBoxContainer.new()
+ column.add_child(beds)
+ button(beds,"Preview music",func():audio.preview_path(audio.manifest.chapters[str(chapter_number)].music,"Music"),false)
+ button(beds,"Preview ambience",func():audio.preview_path(audio.manifest.chapters[str(chapter_number)].ambience,"Ambience"),false)
+ button(beds,"Preview dialogue",func():audio.preview_path(audio.manifest.voices.values()[0].path,"Voices"),false)
+ button(column,"Restore mixer defaults",func():
+  audio.effect_levels.clear()
+  audio.refresh_effect_levels()
+  var defaults={"Master":1.0,"Music":.55,"Effects":.7,"Voices":.9,"Ambience":.4,"Efforts":.7,"Interface":.7}
+  for bus in defaults:
+   audio.levels[bus]=defaults[bus]
+   volume_sliders[bus].value=defaults[bus]
+  audio.apply_levels()
+  update_effect_mixer()
+  save_preferences(),false)
+ update_effect_mixer()
+ mixer_panel.hide()

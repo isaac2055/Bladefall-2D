@@ -136,7 +136,7 @@ func run():
  await process_frame
  app.set_physics_process(false)
  app.set_process(false)
- check(app.design_picker.item_count==8 and app.npc_picker.item_count==8,"three genuinely distinct knight renderers and three people renderers are selectable")
+ check(app.design_picker.item_count==10 and app.npc_picker.item_count==8,"ten classic-based knight designs and eight retained people designs are selectable")
  app.watch=true
  app.load_section(0)
  check(not app.sim.autonomous_sweepers and app.sim.pollen_config.is_empty(),"Watch keeps the original browser-reference fixture")

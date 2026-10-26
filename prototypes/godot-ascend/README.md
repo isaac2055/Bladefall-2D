@@ -1,6 +1,6 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.11.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, isolated from the shipping browser game on `codex/godot-outskirts-styles`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.12.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
 
 ## Play
 
@@ -14,10 +14,22 @@ The local standalone application is `exports/Bladefall Ascend Prototype.app`. Re
 
 Controls now match the browser defaults: **arrows** move/aim, **Space/C/J** jump, **D/X/K** dash, **A/Z/Shift/L** cling/climb/carry/throw, **W/V/I** strike, **F/O** parry, **P** portal and **R** retry. Each room’s original action locks still apply. **Esc** opens the pause menu; **M** toggles music and **F11** toggles fullscreen. The standard controller equivalents are mapped too (stick/d-pad, A jump, X/B dash, LB/LT cling, Y strike, RB portal and RT parry).
 
-The pause menu includes a **chapter selector** for The Outskirts, Black Woods, Broken Causeway and their three Fractured versions. All six chapters are constructed before play, and switching preserves each chapter’s progress and position. **Start world over** resets the current world, bearings, room machinery, deaths and dialogue history without closing the app. Retry resets only the current room and preserves bearings and lit stakes. The pause menu also contains the room selector, Watch/Take control, four separate volume controls, spoken dialogue toggle, reduced motion and lighting comparison. Audio and display preferences persist locally. The app starts directly in the game rather than an engine-study toolbar.
+The pause menu includes a **chapter selector** for The Outskirts, Black Woods, Broken Causeway and their three Fractured versions. All six chapters are constructed before play, and switching preserves each chapter’s progress and position. **Start world over** resets the current world, bearings, room machinery, deaths and dialogue history without closing the app. Retry resets only the current room and preserves bearings and lit stakes. The pause menu also contains the room selector, Watch/Take control, a dedicated sound mixer, spoken dialogue toggle, reduced motion and lighting comparison. Audio and display preferences persist locally. The app starts directly in the game rather than an engine-study toolbar.
 
 
-## Outskirts styles · 0.11.0
+## Classic knight, scenery treatments and mixer · 0.12.0
+
+**Esc → Sound mixer** is now near the top of pause. The dedicated panel has Master, Music, Effects, Voices, Ambience, Knight efforts and Menu sounds channels. Individual effect gains apply to live playback; zero stops and disables that sound. Preview rotates through an effect's existing takes, with separate music, ambience and dialogue previews and a Stop button. Channel levels and effect overrides save automatically. Esc returns from the mixer to pause; Back and Resume stop previews. Restore mixer defaults resets gains and channels.
+
+Opening and closing pause are silent, including the actual pause and Resume buttons. The old pause callback played `ui-pause.mp3` after the other players had been paused, making the clip particularly prominent. That recording, its import resource and its manifest entry are removed; the importer prevents its return. The prototype now reuses **124 existing files and 42 dialogue entries**. The browser audio bank remains a separate reference source.
+
+The **knight** menu now has ten close relatives of Pixel Classic: Classic, Fine, Weathered and Bold pixel variants; Contour and Crosshatch ink; Soft and Brush illustration; Folded Classic and Layered Classic paper. Every alternative retains the compact helmet, facing side visor, blue tunic, small gold crest and scarf, boots and classic proportions. The previous non-Classic knight renderers are removed. Pixel Classic's renderer is unchanged, and the eight people renderers and shared prop drawing functions are byte-for-byte preserved. The existing gradual cape settling remains.
+
+**Scenery** offers Original Watch Road, Moonlit Engraving and Purple Original Game; Dawn Ramparts is removed and its saved selection migrates to Original. Purple uses the browser Outskirts sky and stone colors. A separate **Treatment** selector offers Masonry, Smooth continuous stone and Weathered rock strata for every palette: **nine combinations**. Smooth interior tiles have identical colors and no internal grid, with exposed edge highlights and softened ridges. Weathered adds organic strata/grain and restrained atmosphere. Each palette keeps its landmarks and overall composition across treatments; physics, collision, routes and checkpoints stay unchanged. The new scenery and knight selectors remain focused on the base Outskirts.
+
+`tests/refinements.gd` exercises silent pause buttons, absent audio resources, channel mute, actual preview gain, immediate per-effect stop/disable, all ten knight choices, nine terrain combinations, seam-free smooth interiors, unchanged gameplay, and preference reload. GPU mode produces knight and nine-scenery sheets plus the mixer capture, verifies distinct knight pixels and compares each silhouette with Classic. Evidence is in `.cache/godot/refinements/`.
+
+## Outskirts styles · 0.11.0 (history)
 
 In **Esc → Outskirts appearance**, the knight and people now have independent menus with four drawing families and two designs each. The original Pixel, Ink and Illustration drawings retain their IDs and appearance; the additions are Pixel Steel, Ink Etched, Illustration Storybook, Paper Folded and Paper Cutout. The new designs change silhouettes, helmets, clothing, faces and mark-making. NPC work tools and poses and the knight's held lantern, attacks and parry remain in place.
 

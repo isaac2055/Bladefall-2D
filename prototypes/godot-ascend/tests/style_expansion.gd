@@ -28,7 +28,7 @@ func run():
  app.set_physics_process(false)
  app.set_process(false)
  for chapter in app.chapters.values(): chapter.landscape.set_process(false)
- check(app.design_picker.item_count==8 and app.npc_picker.item_count==8,"eight designs for both knight and people")
+ check(app.design_picker.item_count==10 and app.npc_picker.item_count==8,"ten classic-based knight choices and eight retained people choices")
  var others={}
  for n in [2,3,21,22,23]: others[n]=[app.chapters[n].landscape.knight_design,app.chapters[n].landscape.npc_design,app.chapters[n].landscape.environment_design]
  var baseline=state()
@@ -57,8 +57,8 @@ func run():
  for i in range(144): scene.tick_cape(1.0/144)
  check(scene.cape_flow.distance_to(slow)<.0001,"cloth settling is independent of render frame rate")
  var grids=app.world.cells.duplicate(true)
- for theme in range(3):
-  app.environment_picker.item_selected.emit(theme)
+ for theme in app.landscape.Themes.CHOICES:
+  app.environment_picker.item_selected.emit(app.environment_picker.get_item_index(theme))
   check(scene.environment_design==theme and app.world.cells==grids,"theme %d changes scenery without changing collision"%theme)
   scene._process(.016)
   await shot("outskirts-theme-"+str(theme))

@@ -20,7 +20,7 @@ cat > "$APP_DIR/Contents/Info.plist" <<'PLIST'
 <key>CFBundleIdentifier</key><string>com.bladefall.ascend.prototype</string>
 <key>CFBundleName</key><string>Bladefall Ascend Prototype</string>
 <key>CFBundlePackageType</key><string>APPL</string>
-<key>CFBundleShortVersionString</key><string>0.11.0</string>
+<key>CFBundleShortVersionString</key><string>0.12.0</string>
 <key>NSHighResolutionCapable</key><true/>
 </dict></plist>
 PLIST

@@ -19,7 +19,9 @@ var effort_time = -10.0
 var foot_clock = 0.0
 var work_clock = 0.0
 var paused = false
-var levels = {"Music":0.55,"Effects":0.7,"Voices":0.9,"Ambience":0.4}
+var levels = {"Master":1.0,"Music":0.55,"Effects":0.7,"Voices":0.9,"Ambience":0.4,"Efforts":0.7,"Interface":0.7}
+var effect_levels={}
+var last_effect=""
 var capture_effect: AudioEffectCapture
 var recorded = PackedVector2Array()
 const EVENT_CLIPS = {"pollen-slow":"rune","land-heavy":"land-hard","sentinel-bell":"bell","sentinel-stun":"stone-hit","sentinel-relocate":"shatter","oath-taken":"rune","oath-roots":"crumble","root-cut":"swing","zip-in":"zip","zip-out":"grab","hook":"grab","moving-hook":"grab","unhook":"grab","moving-unhook":"grab","mirror":"lever","shutter-open":"lever","shutter-shut":"stone-hit","feather":"gem","feather-back":"gem","anvil":"stone-hit","void-in":"portal","void-out":"portal","gravity":"rune","portal-open":"portal","portal-pass":"portal","portal-close":"lever","portal-fizzle":"stone-hit","parry":"parry","parry-success":"parry","boost":"zip","switch-high":"lever","switch-low":"lever","cart-bump":"stone-hit","cart-land":"land-hard","stone-hit":"stone-hit","stone-stop":"stone-hit","recoil-load":"lever","recoil-release":"zip","recoil-jam":"stone-hit","hinge-turn":"lever","hinge-jam":"stone-hit","brute-crack":"shatter","brute-stamp":"land-hard","enemy-tell":"stone-hit","breach":"shatter","enemy-defeat":"shatter","jump":"jump","walljump":"walljump","super":"dash","hyper":"dash","wallbounce":"walljump","dash-start":"dash","land":"land-soft","refill":"gem","death":"death","strike":"swing","stone-lit":"rune","gate-open":"gate","crumble":"crumble","crumble-shake":"crumble","shard":"gem","zip-start":"zip","zip-stop":"stone-hit","pickup":"lantern","throw":"dash","plate":"plate","held-open":"lever","held-close":"lever","lantern-lost":"shatter","climbhop":"grab","grab":"grab"}
@@ -71,18 +73,50 @@ func apply_levels():
  for bus in levels:
   AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus),linear_to_db(max(0.0001,levels[bus])))
   AudioServer.set_bus_mute(AudioServer.get_bus_index(bus),levels[bus]<=0.0001)
-func effect(name,gain = 1.0,pitch = 1.0):
+func effect(name,gain = 1.0,pitch = 1.0,preview=false):
+ if name=="ui-pause" or float(effect_levels.get(name,1.0))<=0: return
  if not manifest.effects.has(name): return
  var files = manifest.effects[name]
  var index = cycle.get(name,0)%files.size()
  cycle[name] = index+1
- var node = player("Effects")
+ var node = player("Efforts" if name.begins_with("kn-") else "Interface" if name.begins_with("ui-") else "Effects")
+ node.set_meta("preview",preview)
+ node.set_meta("effect_name",name)
+ node.set_meta("base_gain",.48*gain)
+ last_effect=name
  node.stream = stream(files[index])
- node.volume_db = linear_to_db(max(0.0001,0.48*gain))
+ node.volume_db = linear_to_db(max(0.0001,0.48*gain*float(effect_levels.get(name,1.0))))
  node.pitch_scale = pitch
  node.finished.connect(node.queue_free)
  node.play()
  counts.effects += 1
+func set_effect_level(name,value):
+ effect_levels[name]=clampf(value,0,1)
+ refresh_effect_levels()
+func refresh_effect_levels():
+ for node in get_children():
+  if node is AudioStreamPlayer and node.has_meta("effect_name"):
+   var level=float(effect_levels.get(node.get_meta("effect_name"),1.0))
+   if level<=0:
+    node.stop()
+    node.queue_free()
+   else: node.volume_db=linear_to_db(max(.0001,node.get_meta("base_gain")*level))
+func stop_previews():
+ for node in get_children():
+  if node is AudioStreamPlayer and node.get_meta("preview",false):
+   node.stop()
+   node.queue_free()
+func preview_effect(name):
+ stop_previews()
+ effect(name,1.0,1.0,true)
+func preview_path(path,bus):
+ stop_previews()
+ var node=player(bus)
+ node.set_meta("preview",true)
+ node.stream=stream(path)
+ node.volume_db=-8 if bus=="Music" else -10 if bus=="Ambience" else -1 if bus=="Voices" else 0
+ node.finished.connect(node.queue_free)
+ node.play()
 func events(types):
  for kind in types:
   if EVENT_CLIPS.has(kind): effect(EVENT_CLIPS[kind],0.32 if kind=="crumble-shake" else 1.0)

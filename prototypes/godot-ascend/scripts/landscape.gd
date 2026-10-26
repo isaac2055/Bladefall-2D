@@ -1,6 +1,7 @@
 @tool
 extends Node2D
 ## Presentation is interpolated and layered; the integer simulation is never modified here.
+const KnightStyles=preload("res://scripts/knight_styles.gd")
 const Styles=preload("res://scripts/character_styles.gd")
 const Art=preload("res://scripts/art_details.gd")
 const Room = preload("res://scripts/room_loader.gd")
@@ -8,6 +9,7 @@ var sim
 var walking_style=1
 const Themes=preload("res://scripts/outskirts_themes.gd")
 var environment_design=0
+var environment_feel=0
 var cape_flow=Vector2(0,1)
 var knight_design=0
 var npc_design=1
@@ -88,8 +90,8 @@ func configure_mood():
  accent=Color(pair[0])
  mood=Color(pair[1])
  if int(world_data.world.n)==1 and environment_design>0:
-  accent=Color("#e8bd79" if environment_design==1 else "#b8d7e3")
-  mood=Color("#d9d6c0" if environment_design==1 else "#acbdd7")
+  accent=Color("#e9c47a" if environment_design==3 else "#b8d7e3")
+  mood=Color("#c4b8dc" if environment_design==3 else "#acbdd7")
  var palette=world_data.world.get("authoring_palette",{})
  accent=Color(palette.get("accent",accent.to_html()))
  mood=Color(palette.get("ambient",mood.to_html()))
@@ -190,8 +192,8 @@ func make_tiles():
  for variant in range(20):
   for y in range(8):
    for x in range(8):
-    if int(world_data.world.n)==1 and environment_design>0:
-     image.set_pixel(variant*8+x,y,Themes.tile_color(environment_design,variant,x,y))
+    if int(world_data.world.n)==1 and (environment_design>0 or environment_feel>0):
+     image.set_pixel(variant*8+x,y,Themes.tile_color(environment_design,variant,x,y,environment_feel))
      continue
     if variant==15:
      if y<2: image.set_pixel(variant*8+x,y,Color("9d9c82") if y==0 else Color("4e5a62"))
@@ -238,12 +240,15 @@ func make_tiles():
  return result
 func set_environment_design(value):
  if int(world_data.world.n)!=1: return
- environment_design=clampi(value,0,2)
+ environment_design=value if value in Themes.CHOICES else 0
  configure_mood()
  if tiles!=null: tiles.tile_set=make_tiles()
  if ambient!=null: ambient.color=mood if lit else Color.WHITE
  if post!=null: post.material.set_shader_parameter("mood_tint",Vector3(mood.r,mood.g,mood.b))
  queue_redraw()
+func set_environment_feel(value):
+ environment_feel=clampi(value,0,2)
+ set_environment_design(environment_design)
 func tick_cape(delta):
  var motion=clamp(abs(sim.p.vx)/55.0,0,1)
  var target=Vector2(-sim.p.facing*motion,1-motion)
@@ -596,7 +601,7 @@ func _draw():
  var profile_start=Time.get_ticks_usec()
  ink = self
  if int(world_data.world.n)==1 and environment_design>0:
-  Themes.background(self,environment_design)
+  Themes.background(self,environment_design,environment_feel)
   draw_cpu_us.background=Time.get_ticks_usec()-profile_start
   return
  if causeway:
@@ -631,6 +636,7 @@ func _draw():
    var y = 87+layer*18+sin((i+floor(camera.x*parallax/35))*1.3+layer)*11+cos(i*2.4)*5-camera.y*0.02
    points.append(Vector2(x,y))
   points.append(Vector2(360,184))
+  if int(world_data.world.n)==1 and environment_feel==1: points=Themes.round_ridge(points)
   polygon(points,[Color("233042"),Color("2c3e4c"),Color("3d5059")][layer])
  # Watchtowers, arches, broken roofs and narrow distant windows.
  for i in range(-1,7):
@@ -658,6 +664,7 @@ func _draw():
   line(Vector2(x+4,138),Vector2(x+34,138),Color(0.24,0.3,0.34,0.45),2)
  draw_cpu_us.background=Time.get_ticks_usec()-profile_start
  Art.background_details(self)
+ if int(world_data.world.n)==1: Themes.finish_background(self,environment_design,environment_feel)
 
 func draw_front():
  if sim==null: return
@@ -1191,7 +1198,7 @@ func draw_knight(pose=null,at=Vector2(INF,INF),phase_override=-1.0):
  var ready_color = Color("ffb347") if p.dashes>0 else Color("56708c")
  if knight_design>0:
   var flow=cape_flow if not preview and int(world_data.world.n)==1 else Vector2(INF,INF)
-  Styles.knight(self,p,Vector2(x,y),phase,knight_design,flow)
+  KnightStyles.draw(self,p,Vector2(x,y),phase,knight_design,flow)
   draw_knight_attachments(p,Vector2(x,y))
   return
  var cloak=plume

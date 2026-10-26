@@ -20,7 +20,7 @@ func run():
  await process_frame
  app.set_physics_process(false)
  app.set_process(false)
- check(app.design_picker.item_count==8 and app.npc_picker.item_count==8,"settings offer eight Outskirts designs for knights and people")
+ check(app.design_picker.item_count==10 and app.npc_picker.item_count==8,"settings offer ten classic-based knights and eight retained people designs")
  var flowers=0
  var safe=true
  for n in app.CHAPTERS:

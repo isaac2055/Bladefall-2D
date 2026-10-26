@@ -92,9 +92,6 @@
     "ui-move": [
       "sfx/ui-move.mp3"
     ],
-    "ui-pause": [
-      "sfx/ui-pause.mp3"
-    ],
     "ui-back": [
       "sfx/ui-back.mp3"
     ],
@@ -727,12 +724,6 @@
       "source": "public/audio/sfx/ui-move.mp3",
       "sha256": "5455fc67b894206c83ed53c5a33ea214f593f5a084a27d25f5d41745c40ce196",
       "bytes": 3806
-    },
-    {
-      "path": "sfx/ui-pause.mp3",
-      "source": "public/audio/sfx/ui-pause.mp3",
-      "sha256": "eda1b6ea4f494b19cc703bf340dd264d625b8c224d7f931ef8fb5b9eb99728e8",
-      "bytes": 9135
     },
     {
       "path": "sfx/ui-back.mp3",

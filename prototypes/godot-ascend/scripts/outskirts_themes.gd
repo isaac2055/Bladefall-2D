@@ -1,85 +1,121 @@
 @tool
 extends RefCounted
-const NAMES=["Original · Watch Road","Dawn Ramparts","Moonlit Engraving"]
-static func tile_color(style,variant,x,y):
+const CHOICES=[0,2,3]
+const NAMES={0:"Original · Watch Road",2:"Moonlit Engraving",3:"Purple · Original Game"}
+const FEELS=["Masonry","Smooth · continuous stone","Weathered · rock strata"]
+static func palette(style):
+ if style==2: return [Color("#344967"),Color("#172e47"),Color("#829cad"),Color("#a4c1bb")]
+ if style==3: return [Color("#4a4658"),Color("#2b2937"),Color("#8f88a6"),Color("#6f8d5a")]
+ return [Color("#414651"),Color("#29323c"),Color("#50555e"),Color("#a4a884")]
+static func tile_color(style,variant,x,y,feel=0):
+ var p=palette(style)
  if variant==15:
   if y>1: return Color.TRANSPARENT
-  return Color("#d5b873" if style==1 else "#c0dbe0") if y==0 else Color("#676857" if style==1 else "#627d95")
+  return p[2].lightened(.12) if y==0 else p[1]
  var top=variant<4
- if style==1:
-  var color=Color("#8c806c") if variant<16 else Color("#454b4a")
-  var seam=y==7 or x==((4 if variant%2==0 else 0)+(4 if y>3 else 0))%8
-  if seam: color=Color("#534f49")
-  elif y==0 or y==4: color=Color("#b4a17f")
-  elif (x*3+y+variant)%11==0: color=Color("#9b8e76")
-  if top and y<2: color=Color("#c9bd79" if y==0 else "#879166")
-  if variant>=16: color=color.darkened(.3)
+ var color=p[0]
+ if variant>=16: color=p[1].darkened(.1)
+ if feel==1:
+  # Interior cells are identical; only exposed boundaries are drawn. No internal grid.
+  if top and y==0: return p[3]
+  if top and y==1: return p[3].lerp(p[0],.6)
+  if variant==8 and x==0 or variant==9 and x==7 or variant==10 and y==7: return p[2]
   return color
- var color=Color("#344967") if variant<16 else Color("#17283d")
- if x==0 or y==7: color=Color("#172e47")
- elif y==0: color=Color("#829cad")
- elif (x+y+variant)%5==0: color=Color("#506b88")
- if top and y<2: color=Color("#a4c1bb" if y==0 else "#627f87")
- if variant>=16: color=color.darkened(.25)
- return color
-static func background(a,style):
- if style==1:
-  a.box(0,0,320,184,"#b9b5a2")
-  for y in range(0,184,4): a.box(0,y,320,4,Color("#e6c99c").lerp(Color("#668b8c"),float(y)/230))
-  a.circle(Vector2(245-fposmod(a.camera.x*.015,25),40),19,"#f6deb0")
-  for layer in range(3):
-   var points=[Vector2(-30,184)]
-   for i in range(-2,14):
-    var index=i+floor(a.camera.x*(.025+layer*.025)/35)
-    var x=i*35-fposmod(a.camera.x*(.025+layer*.025),35)
-    points.append(Vector2(x,85+layer*21+sin(index*.63+layer)*13-a.camera.y*.012))
-   points.append(Vector2(360,184))
-   a.polygon(points,["#abb39d","#839e94","#5f8280"][layer])
-  for i in range(-1,6):
-   var x=i*76-fposmod(a.camera.x*.14,76)
-   var y=101-a.camera.y*.018
-   a.box(x,y,7,83,"#516e70")
-   a.box(x-3,y-3,13,4,"#718985")
-   a.line(Vector2(x+6,y+5),Vector2(x+70,y+5),"#718985",5)
-   for j in range(3):
-    var center=Vector2(x+17+j*18,y+17)
-    a.ink.draw_arc(center,9,PI,TAU,20,Color("#718985"),3)
-   a.box(x+68,y,7,83,"#516e70")
-  for i in range(9):
-   var x=fposmod(i*43-a.camera.x*.28,380)-30
-   var y=153+i%3*9
-   a.polygon([Vector2(x-4,y),Vector2(x,y-22-i%3*5),Vector2(x+4,y)],"#3e6465")
-   a.line(Vector2(x,y),Vector2(x,y+30),"#3e6465",1)
-  for i in range(5):
-   var x=fposmod(i*81+a.clock*1.2-a.camera.x*.04,410)-50
-   a.box(x,62+i*14,65,1,Color(.95,.86,.67,.12))
+ if feel==2:
+  var band=(y+int(sin(x*.55+variant)*1.5))%8
+  if band==2: color=color.lightened(.065)
+  if band==6: color=color.darkened(.09)
+  if (x*7+y*13+variant*17)%23==0: color=color.lightened(.11)
+  if top and y<2: color=p[3].lerp(color,.15 if y==0 else .55)
+  if top and y==2 and (x+variant)%5==0: color=p[3].darkened(.25)
+  return color
+ if style==2:
+  if x==0 or y==7: color=p[1]
+  elif y==0: color=p[2]
+  elif (x+y+variant)%5==0: color=Color("#506b88")
  else:
-  a.box(0,0,320,184,"#14223c")
-  for y in range(0,184,4): a.box(0,y,320,4,Color("#121e36").lerp(Color("#3e5267"),float(y)/190))
-  var moon=Vector2(246-fposmod(a.camera.x*.02,24),39)
-  a.circle(moon,19,"#cfb894")
-  a.circle(moon+Vector2(-6,-3),16,"#172740")
-  for i in range(60):
-   var x=fposmod(i*53.7-a.camera.x*.025,330)
-   var y=fposmod(i*23.1,105)
-   a.line(Vector2(x,y),Vector2(x+1,y),"#8fa3b4",.5)
-  for layer in range(3):
-   var points=[]
-   for i in range(-1,13):
-    var x=i*32-fposmod(a.camera.x*(.04+layer*.04),32)
-    var h=95+layer*24+sin((i+floor(a.camera.x*(.04+layer*.04)/32))*.7)*12-a.camera.y*.015
-    points.append(Vector2(x,h))
-   var fill=[Vector2(-40,184)]+points+[Vector2(360,184)]
-   a.polygon(fill,["#263950","#2f465b","#354e60"][layer])
-   for i in range(points.size()-1): a.line(points[i],points[i+1],"#738b9b",.4)
-  for i in range(-1,8):
-   var x=i*49-fposmod(a.camera.x*.18,49)
-   var y=97+i%3*11
-   a.polygon([Vector2(x-6,184),Vector2(x-5,y),Vector2(x,y-24),Vector2(x+6,y),Vector2(x+6,184)],"#223c51")
-   a.line(Vector2(x,y-24),Vector2(x+6,y),"#91a6ad",.45)
-   for j in range(4): a.line(Vector2(x-4,y+8+j*8),Vector2(x+3,y+4+j*8),"#4d6b7f",.4)
-   a.box(x,y+4,1,6,"#bba980")
-  for i in range(7):
-   var x=fposmod(i*64-a.camera.x*.33,390)-30
-   a.line(Vector2(x,156),Vector2(x,110),"#23404e",1)
-   for j in range(5): a.line(Vector2(x,112+j*7),Vector2(x-5-j,118+j*7),"#23404e",1)
+  if y==7 or x==(3 if variant%2 else 7) and y>2: color=p[1]
+  elif y==0: color=p[2]
+  elif (x*3+y+variant)%13==0: color=color.lightened(.07)
+ if top and y<2: color=p[3] if y==0 else p[3].lerp(p[0],.55)
+ return color
+static func round_ridge(points):
+ var result=[]
+ for i in range(points.size()-1):
+  var a=points[max(0,i-1)]
+  var b=points[i]
+  var c=points[i+1]
+  var d=points[min(points.size()-1,i+2)]
+  for step in range(5):
+   var t=step/5.0
+   result.append(.5*((2*b)+(-a+c)*t+(2*a-5*b+4*c-d)*t*t+(-a+3*b-3*c+d)*t*t*t))
+ result.append(points[-1])
+ return result
+static func background(a,style,feel=0):
+ if style==3:
+  purple_background(a,feel)
+ else:
+  moonlit_background(a,feel)
+ finish_background(a,style,feel)
+static func purple_background(a,feel):
+ for y in range(184):
+  var t=y/183.0
+  var col=Color("#0c1224").lerp(Color("#2a2440"),t/.7) if t<.7 else Color("#2a2440").lerp(Color("#43304a"),(t-.7)/.3)
+  a.box(0,y,320,1,col)
+ for i in range(40):
+  var x=fposmod(i*67.3-a.camera.x*.03,324)
+  var y=fposmod(i*31.7,86)
+  a.box(x,y,.7,.7,Color(.91,.89,1,.3))
+ a.circle(Vector2(270-fposmod(a.camera.x*.02,24),34),11,"#f3e6c4")
+ for layer in range(2):
+  var points=[]
+  for i in range(-2,15):
+   var index=i+floor(a.camera.x*(.1+layer*.12)/28)
+   points.append(Vector2(i*28-fposmod(a.camera.x*(.1+layer*.12),28),96+layer*24+sin(index*.64+layer)*16+cos(index*1.3)*5-a.camera.y*(.04+layer*.04)))
+  if feel==1: points=round_ridge(points)
+  a.polygon([Vector2(-40,184)]+points+[Vector2(360,184)],"#262640" if layer==0 else "#1f1d33")
+  if feel==2:
+   for i in range(points.size()-1): a.line(points[i],points[i+1],Color(.55,.47,.68,.25),.4)
+static func finish_background(a,style,feel):
+ if feel==1:
+  var color=Color("#b4b4d3" if style==3 else "#a8bdc1")
+  for i in range(4):
+   for j in range(16):
+    color.a=sin(PI*j/15.0)*.012
+    a.box(-20,90+i*24+sin(a.clock*.2+i)*2+j,360,1,color)
+ elif feel==2:
+  for i in range(19):
+   var x=fposmod(i*43.1-a.camera.x*.06+a.clock*.4,350)-15
+   var y=fposmod(i*29.4,150)
+   a.line(Vector2(x,y),Vector2(x+1,y-1),Color(.78,.7,.85,.16),.4)
+static func moonlit_background(a,feel):
+ a.box(0,0,320,184,"#14223c")
+ for y in range(0,184,4): a.box(0,y,320,4,Color("#121e36").lerp(Color("#3e5267"),float(y)/190))
+ var moon=Vector2(246-fposmod(a.camera.x*.02,24),39)
+ a.circle(moon,19,"#cfb894")
+ a.circle(moon+Vector2(-6,-3),16,"#172740")
+ for i in range(60):
+  var x=fposmod(i*53.7-a.camera.x*.025,330)
+  var y=fposmod(i*23.1,105)
+  a.line(Vector2(x,y),Vector2(x+1,y),"#8fa3b4",.5)
+ for layer in range(3):
+  var points=[]
+  for i in range(-1,13):
+   var x=i*32-fposmod(a.camera.x*(.04+layer*.04),32)
+   var h=95+layer*24+sin((i+floor(a.camera.x*(.04+layer*.04)/32))*.7)*12-a.camera.y*.015
+   points.append(Vector2(x,h))
+  if feel==1: points=round_ridge(points)
+  var fill=[Vector2(-40,184)]+points+[Vector2(360,184)]
+  a.polygon(fill,["#263950","#2f465b","#354e60"][layer])
+  for i in range(points.size()-1): a.line(points[i],points[i+1],"#738b9b",.4)
+ for i in range(-1,8):
+  var x=i*49-fposmod(a.camera.x*.18,49)
+  var y=97+i%3*11
+  a.polygon([Vector2(x-6,184),Vector2(x-5,y),Vector2(x,y-24),Vector2(x+6,y),Vector2(x+6,184)],"#223c51")
+  a.line(Vector2(x,y-24),Vector2(x+6,y),"#91a6ad",.45)
+  for j in range(4): a.line(Vector2(x-4,y+8+j*8),Vector2(x+3,y+4+j*8),"#4d6b7f",.4)
+  a.box(x,y+4,1,6,"#bba980")
+ for i in range(7):
+  var x=fposmod(i*64-a.camera.x*.33,390)-30
+  a.line(Vector2(x,156),Vector2(x,110),"#23404e",1)
+  for j in range(5): a.line(Vector2(x,112+j*7),Vector2(x-5-j,118+j*7),"#23404e",1)
