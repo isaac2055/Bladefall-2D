@@ -5,7 +5,7 @@ func check(ok,label):
  print("PASS " if ok else "FAIL ",label)
  if not ok: failures+=1
 func run():
- for number in [1,2,3,21,22,23]:
+ for number in [1,2,3,21,22,23,4]:
   var chapter=load("res://levels/world%d.tscn"%number).instantiate()
   var target=chapter.get_node("Rooms").get_child(1).room_id
   chapter.play_room_id=target

@@ -273,6 +273,7 @@ func enter(id,practice=false):
   active_id=id
   checkpoint_id=id
   var destination=active()
+  if data.world.get("workshop",false): destination.load_room(parsed[id])
   configure_live_core(destination)
   destination.world_context=self
   destination.p=data.playerDefaults.duplicate(true)

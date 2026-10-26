@@ -113,7 +113,7 @@ func generate(base):
  root_node.world_settings.erase("rooms")
  root_node.source_fingerprint=Codec.fingerprint(base)
  var colors={1:["#efbf79","#bac9dc"],2:["#b7e1a0","#a9c4ab"],3:["#f3a66d","#cfb6a7"],21:["#cbb7ff","#b6aedc"],22:["#84e6d8","#98bfc2"],23:["#e8a5dc","#c4a6cf"]}
- var pair=colors[root_node.world_number]
+ var pair=colors.get(root_node.world_number,colors[1])
  root_node.accent_color=Color(pair[0])
  root_node.ambient_color=Color(pair[1])
  root_node.flowers_color=Color("#e0c08e" if root_node.world_number in [2,22] else "#d9b37f" if root_node.world_number in [3,23] else "#c4acd5")
@@ -217,7 +217,16 @@ func generate(base):
  return root_node
 func run():
  DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path("res://levels"))
- for number in [1,2,3,21,22,23]:
+ var numbers=[1,2,3,21,22,23,4]
+ var args=OS.get_cmdline_user_args()
+ if "--world" in args:
+  var index=args.find("--world")
+  if index+1>=args.size() or not int(args[index+1]) in numbers:
+   push_error("--world requires an existing chapter number")
+   quit(1)
+   return
+  numbers=[int(args[index+1])]
+ for number in numbers:
   var base=JSON.parse_string(FileAccess.get_file_as_string("res://data/world%d.json"%number))
   base.world=Layout.build(base.world)
   if number==1: base.whiteFlowers=JSON.parse_string(FileAccess.get_file_as_string("res://data/white-flowers.json"))

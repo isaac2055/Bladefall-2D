@@ -344,6 +344,7 @@ func load_scene(core,smooth_join=false):
  if not smooth_join:
   reset_feel()
   camera_float = Vector2(actor.x-153,actor.y-133) if runtime!=null else target_camera()
+  if world_data.world.get("workshop",false): camera_float=active_position
   camera = camera_float
   fade = 0.16
   trails.clear()
@@ -471,6 +472,7 @@ func event_effect(type,point):
    wall_spark_frame=-100
    dash_ghost_frame=-100
    camera_float=Vector2(current_actor.x-153,current_actor.y-118) if runtime!=null else target_camera()
+   if world_data.world.get("workshop",false): camera_float=active_position
    camera_velocity=Vector2.ZERO
    camera_kick=Vector2.ZERO
    kick_velocity=Vector2.ZERO
@@ -493,6 +495,7 @@ func burst(point,count,color,speed):
   var a = float(i)*TAU/count+clock
   particles.append({"p":point,"v":Vector2(cos(a)*speed,sin(a)*speed*0.6-10),"life":0.3+float(i%4)*0.09,"max":0.57,"color":color})
 func target_camera():
+ if world_data.world.get("workshop",false): return active_position
  var look=camera_lead if not reduced_motion else Vector2.ZERO
  if runtime==null: return Vector2(max(0,actor.x-153+look.x),active_position.y+clamp(actor.y-active_position.y-94+look.y,0,max(0,sim.room.h-184)))
  # Continuous world coordinates keep doorway ownership out of the camera calculation.
@@ -701,6 +704,13 @@ func draw_front():
  for scene in scenes:
   var origin=scene.world_origin if runtime!=null else active_position
   if not Rect2(origin,Vector2(scene.room.w,scene.room.h)).intersects(view): continue
+  if scene.room.def.has("workshopGoal"):
+   var goal=scene.room.def.workshopGoal
+   var flag=origin+Vector2(goal[0]+goal[2]/2.0,goal[1])
+   var pole=min(22,max(10,goal[1]-10))
+   line(flag,flag+Vector2(0,-pole),"#e7c881",1)
+   box(flag.x+1,flag.y-pole,9,6,"#e7c881")
+   box(origin.x+goal[0],flag.y-1,goal[2],1,"#e7c881")
   for r in range(max(0,floori((view.position.y-origin.y)/8)),min(int(scene.room.rows),ceili((view.end.y-origin.y)/8))):
    for c in range(max(0,floori((view.position.x-origin.x)/8)),min(int(scene.room.cols),ceili((view.end.x-origin.x)/8))):
     var t=scene.room.grid[r*int(scene.room.cols)+c]
@@ -1120,7 +1130,7 @@ func draw_entity_body(e,origin):
     line(Vector2(x+e.w/2,y+2),Vector2(x+e.w/2-3,y+e.h/2),"#312c2d",1.5)
     line(Vector2(x+e.w/2-3,y+e.h/2),Vector2(x+e.w/2+2,y+e.h-2),"#312c2d",1.5)
   "zip":
-   if world_data!=null and int(world_data.world.n)==1:
+   if world_data!=null and int(world_data.world.n) in [1,4]:
     Styles.lift(self,e,origin)
     return
    line(origin+Vector2(e.ox+e.w/2,e.oy),origin+Vector2(e.tx+e.w/2,e.ty),"#8c967e",0.7)

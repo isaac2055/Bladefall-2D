@@ -1,6 +1,6 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.12.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.13.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
 
 ## Play
 
@@ -16,6 +16,22 @@ Controls now match the browser defaults: **arrows** move/aim, **Space/C/J** jump
 
 The pause menu includes a **chapter selector** for The Outskirts, Black Woods, Broken Causeway and their three Fractured versions. All six chapters are constructed before play, and switching preserves each chapter’s progress and position. **Start world over** resets the current world, bearings, room machinery, deaths and dialogue history without closing the app. Retry resets only the current room and preserves bearings and lit stakes. The pause menu also contains the room selector, Watch/Take control, a dedicated sound mixer, spoken dialogue toggle, reduced motion and lighting comparison. Audio and display preferences persist locally. The app starts directly in the game rather than an engine-study toolbar.
 
+
+## Movement Workshop · 0.13.0
+
+Double-click **Play Movement Workshop.command** for immediate access, or choose **Esc → chapter selector → Test · Movement Workshop** in the standalone app. No campaign progress is required. All six rooms are available through the room selector from the start. **N** advances to the next room (wrapping to the first); the pause menu also has Previous/Next buttons. **R** retries. **H** reveals an optional hint. **Watch solution** replays ordinary inputs from the room's spawn; Take control resumes live play. Replays do not award completion while watching.
+
+Reach the gold flag and stand on its landing to mark a room complete. Completion is session-only, survives retries and chapter switches, and clears with Start world over. Choosing a room resets its machinery. The fixed camera shows the entire puzzle before departure. Normal jump, climb, wall jump, single dash, crystals, crumble platforms and existing lifts supply every solution; movement constants and campaign layouts are unchanged. No quests or voices are added.
+
+The six rooms are Keep Something Back (save the dash), Below the Answer (approach the crystal from below), Let the Road Fall (deliberately collapse a bridge), Borrowed Height (inherit lift momentum), The Other Side (cling beneath an arch), and Return Ticket (rest across the room and reuse one crystal on the return).
+
+The workshop is chapter 4, authored separately in `levels/world4.tscn`; its original import and solution tapes are in `data/world4.json`. Select **Movement Workshop · test level** in the Ascend editor dock to edit/play it. It has no passage or gate into the campaign. Do not regenerate the scene after editing it.
+
+`tests/workshop.gd` plays all six saved rooms through the application from their actual spawns, checks deathless ordinary-input solutions and each intended interaction, rejects representative wrong plans, and checks direct launch, navigation, hints, replays, reset behavior, completion and campaign isolation. GPU mode captures every start/finish and the workshop menu. Run from the repository root:
+
+```sh
+.cache/godot/Godot.app/Contents/MacOS/Godot --headless --path prototypes/godot-ascend --script tests/workshop.gd
+```
 
 ## Classic knight, scenery treatments and mixer · 0.12.0
 
