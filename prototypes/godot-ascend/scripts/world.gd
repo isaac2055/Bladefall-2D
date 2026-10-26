@@ -43,9 +43,7 @@ var secret_hearts={}
 var secret_front_entry=false
 var award_color="#ff9fc8"
 func _init(source):
- data=source.duplicate(true)
- if int(source.world.n)==1: data.whiteFlowers=JSON.parse_string(FileAccess.get_file_as_string("res://data/white-flowers.json"))
- data.world=Layout.build(source.world)
+ data=preload("res://scripts/authoring_data.gd").read(source)
  var sections=data.world.sections.duplicate(true)
  for q in data.world.quests: sections.append_array(q.sections)
  for q in data.world.get("secrets",[]): sections.append_array(q.sections)

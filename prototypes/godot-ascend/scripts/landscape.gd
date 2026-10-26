@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 ## Presentation is interpolated and layered; the integer simulation is never modified here.
 const Styles=preload("res://scripts/character_styles.gd")
@@ -54,6 +55,8 @@ var trails = []
 var plume = []
 var ambient_counter = 0.0
 var ink_color = Color.WHITE
+var paint_transform=Transform2D.IDENTITY
+var petal_override=""
 var observed = {"bursts":0,"afterimages":0,"joins":0,"landings":0,"dash_hits":0,"wall_sparks":0,"deaths":0,"respawns":0,"awards":0}
 # All timers below are presentation seconds. No simulation clock or input is changed.
 var accent=Color("#efbf79")
@@ -81,6 +84,9 @@ func configure_mood():
  var pair=colors.get(int(world_data.world.n),colors[1])
  accent=Color(pair[0])
  mood=Color(pair[1])
+ var palette=world_data.world.get("authoring_palette",{})
+ accent=Color(palette.get("accent",accent.to_html()))
+ mood=Color(palette.get("ambient",mood.to_html()))
 func ring_at(point,color,power=1.0,kind="impact"):
  rings.append({"p":point,"color":color,"life":0.4,"max":0.4,"power":power,"kind":kind})
 func kick(velocity):
@@ -100,6 +106,7 @@ func reset_feel():
  rings.clear()
  impact_power=0
 func _ready():
+ if Engine.is_editor_hint(): return
  fractured=int(world_data.world.n)>=21
  forest=int(world_data.world.n) in [2,22]
  causeway=int(world_data.world.n) in [3,23]
@@ -497,6 +504,7 @@ func tick_feel(delta):
  for ring in rings: ring.life-=delta
  rings=rings.filter(func(r):return r.life>0)
 func _process(delta):
+ if Engine.is_editor_hint(): return
  var profile_start=Time.get_ticks_usec()
  clock += delta
  if sim==null: return
@@ -556,11 +564,12 @@ func _process(delta):
  queue_redraw()
  front.queue_redraw()
  draw_cpu_us.presentation=Time.get_ticks_usec()-profile_start
-func box(x,y,w,h,color): ink.draw_rect(Rect2(x,y,w,h),Color(color) if color is String else color)
-func line(a,b,color,width=1.0): ink.draw_line(a,b,Color(color) if color is String else color,width)
-func polygon(points,color): ink.draw_colored_polygon(PackedVector2Array(points),Color(color) if color is String else color)
-func circle(point,radius,color): ink.draw_circle(point,radius,Color(color) if color is String else color)
+func box(x,y,w,h,color): ink.draw_rect(Rect2(x,y,w,h),(Color(color) if color is String else color)*ink_color)
+func line(a,b,color,width=1.0): ink.draw_line(a,b,(Color(color) if color is String else color)*ink_color,width)
+func polygon(points,color): ink.draw_colored_polygon(PackedVector2Array(points),(Color(color) if color is String else color)*ink_color)
+func circle(point,radius,color): ink.draw_circle(point,radius,(Color(color) if color is String else color)*ink_color)
 func _draw():
+ if Engine.is_editor_hint(): return
  var profile_start=Time.get_ticks_usec()
  ink = self
  if causeway:
@@ -627,7 +636,8 @@ func draw_front():
  if sim==null: return
  var profile_start=Time.get_ticks_usec()
  ink = front
- ink.draw_set_transform(-camera)
+ paint_transform=Transform2D(0,-camera)
+ ink.draw_set_transform_matrix(paint_transform)
  var view = Rect2(camera-Vector2(20,35),Vector2(360,235))
  for surface in surfaces:
   if not view.has_point(surface): continue
@@ -636,14 +646,17 @@ func draw_front():
   for patch in runtime.data.whiteFlowers.patches:
    var at=runtime.placements[patch.room]+Vector2(patch.x,patch.y)
    if not view.has_point(at): continue
-   for i in range(3):
+   var previous=ink_color
+   ink_color*=Color(patch.get("tint","ffffffff"))
+   for i in range(max(1,ceili(float(patch.w)/2.6))):
     var top=at+Vector2(1+i*2.6,1+sin(clock*1.5+i)*.25)
-    Styles.line(self,at+Vector2(1+i*2.6,7),top,"#839b83",.5)
+    Styles.line(self,at+Vector2(1+i*2.6,patch.h),top,"#839b83",.5)
     Styles.oval(self,top,Vector2(1.5,.9),"#fffbee","#cdd8c7",.12)
     circle(top,.3,"#d0c397")
+   ink_color=previous
  for item in decorations:
   var point = item.origin+Vector2(item.d.c*8,item.d.r*8+8)
-  if view.has_point(point) and (item.d.k not in ["trumpets","fern"] or Art.flora_safe(self,point)): draw_prop(item.d.k,point)
+  if view.has_point(point) and (item.d.k not in ["trumpets","fern"] or Art.flora_safe(self,point)): draw_prop(item.d.k,point,item.d)
  for point in fires:
   if view.has_point(point): draw_fire(point)
  for item in people:
@@ -735,7 +748,19 @@ func draw_fire(point):
   var age = fposmod(clock*0.25+i*0.25,1)
   var smoke = Vector2(x-age*8+sin(age*5+x)*3,y-6-age*27)
   circle(smoke,2+age*4,Color(0.51,0.55,0.55,(1-age)*0.065))
-func draw_prop(kind,point):
+func draw_prop(kind,point,values={}):
+ var before=ink_color
+ var old_petal=petal_override
+ ink_color*=Color(values.get("tint","ffffffff"))
+ petal_override=values.get("petal_color","")
+ var dimensions=values.get("visual_scale",[1,1])
+ var transformed=values.has("visual_scale") or values.has("visual_rotation")
+ if transformed: ink.draw_set_transform_matrix(paint_transform*Transform2D(float(values.get("visual_rotation",0)),Vector2(dimensions[0],dimensions[1]),0,point))
+ draw_prop_body(kind,Vector2.ZERO if transformed else point)
+ if transformed: ink.draw_set_transform_matrix(paint_transform)
+ ink_color=before
+ petal_override=old_petal
+func draw_prop_body(kind,point):
  if kind=="trumpets":
   Art.flowers(self,point)
   return
@@ -852,6 +877,18 @@ func draw_prop(kind,point):
    for i in range(8): box(x-6+i*5,y-43,3,4,"#65746c")
    line(Vector2(x+1,y-31),Vector2(x+23,y-31),"#888e78",2)
 func draw_person(who,point,active):
+ var before=ink_color
+ var design=npc_design
+ ink_color*=Color(who.get("tint","ffffffff"))
+ npc_design=int(who.get("character_style",npc_design))
+ var dimensions=who.get("visual_scale",[1,1])
+ var transformed=who.has("visual_scale") or who.has("visual_rotation")
+ if transformed: ink.draw_set_transform_matrix(paint_transform*Transform2D(float(who.get("visual_rotation",0)),Vector2(dimensions[0],dimensions[1]),0,point))
+ draw_person_body(who,Vector2.ZERO if transformed else point,active)
+ if transformed: ink.draw_set_transform_matrix(paint_transform)
+ ink_color=before
+ npc_design=design
+func draw_person_body(who,point,active):
  var x = point.x
  var y = point.y
  var phase = clock*1.6+x*.03
@@ -915,6 +952,11 @@ func draw_person(who,point,active):
 func draw_hazard(t,point):
  Art.spikes(self,t,point)
 func draw_entity(e,origin):
+ var before=ink_color
+ ink_color*=Color(e.get("authoring_tint","ffffffff"))
+ draw_entity_body(e,origin)
+ ink_color=before
+func draw_entity_body(e,origin):
  if e.get("gone",false) or e.get("broken",false) or e.get("held",false): return
  var x = origin.x+e.x
  var y = origin.y+e.y

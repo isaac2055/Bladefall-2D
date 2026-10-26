@@ -1,3 +1,4 @@
+@tool
 extends RefCounted
 ## Drawing and decoration placement only; never changes authored maps or simulation objects.
 static func ground_clear(a,point,width=14,height=16):
@@ -67,6 +68,8 @@ static func flowers(a,point):
  var palette=["#c4acd5","#e0c08e","#d9b37f"]
  var petal=Color(palette[1 if a.forest else (2 if a.causeway else 0)])
  if a.fractured: petal=petal.lerp(a.accent,.2)
+ petal=Color(a.world_data.world.get("authoring_palette",{}).get("flowers",petal.to_html()))
+ if a.petal_override!="": petal=Color(a.petal_override)
  for i in range(3):
   var x=point.x+i*4
   var sway=sin(a.clock*1.1+x*.12)*.45
@@ -138,6 +141,8 @@ static func spikes(a,t,point):
   a.polygon([point+hazard_vertex(Vector2(x,7),t),point+hazard_vertex(Vector2(x+2,0),t),point+hazard_vertex(Vector2(x+2,7),t)],"#879b9f")
   a.line(point+hazard_vertex(Vector2(x+2,1),t),point+hazard_vertex(Vector2(x+3,5),t),"#f3f2df",.7)
 static func dust_bunny(a,e,origin):
+ var old=a.ink_color
+ a.ink_color*=Color(e.get("tint",a.world_data.world.get("authoring_palette",{}).get("bunnies","ffffffff")))
  var at=origin+Vector2(e.x,e.y)
  var r=float(e.radius)
  a.circle(at,r+2,Color(.8,.45,.4,.07))
@@ -152,6 +157,7 @@ static func dust_bunny(a,e,origin):
  for side in [-1,1]:
   a.box(at.x+side*r*.32-.5,at.y-1,1,1,"#f1dcc0")
  a.box(at.x,at.y+1,1,1,"#4f4453")
+ a.ink_color=old
 static func background_details(a):
  if a.forest:
   for i in range(8):

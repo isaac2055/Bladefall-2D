@@ -1,6 +1,6 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.9.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, isolated from the shipping browser game on `codex/godot-ascend-revision`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.10.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, isolated from the shipping browser game on `codex/godot-ascend-editor`. This is an engine comparison, not a replacement release or a full Ascend port.
 
 ## Play
 
@@ -17,6 +17,14 @@ Controls now match the browser defaults: **arrows** move/aim, **Space/C/J** jump
 The pause menu includes a **chapter selector** for The Outskirts, Black Woods, Broken Causeway and their three Fractured versions. All six chapters are constructed before play, and switching preserves each chapter’s progress and position. **Start world over** resets the current world, bearings, room machinery, deaths and dialogue history without closing the app. Retry resets only the current room and preserves bearings and lit stakes. The pause menu also contains the room selector, Watch/Take control, four separate volume controls, spoken dialogue toggle, reduced motion and lighting comparison. Audio and display preferences persist locally. The app starts directly in the game rather than an engine-study toolbar.
 
 
+## Native chapter editor · 0.10.0
+
+Double-click **Edit Ascend.command**. The Ascend dock opens all six chapters and their **197 native rooms**. Choose a room to center the 2D view, paint its TileMapLayer, move/select objects, edit Inspector values and Curve2D routes, then **Save + play this room**. Standard Godot save, duplicate, delete and undo work. The dock's Add action copies a configured object into the selected room and supports undo/redo.
+
+Saved `levels/world*.tscn` scenes feed gameplay directly. Exact no-edit round trips preserve every imported/native room, map, device setting, route, quest and reward. The browser JSON references remain unchanged, and native repairs are applied once during import. Props expose position, rotation, scale, tint and petal colors; people add per-instance style. Bunnies expose paths, timing, radius and tint. Fixture footprints control their map/collision size, and advanced dictionaries retain other device and story settings. Validation catches invalid placement, paths and missing references before the dock launches play.
+
+See [EDITOR.md](EDITOR.md) for the editing workflow, source boundaries and verification commands. Editor checks exercise saved tile collision, props, NPC styles, bunny paths/timing, mechanism coordinates and palettes in every chapter; the actual Godot UI check covers all chapters, selection, framing, layout, add/undo/redo and saved edits. The packaged game passes 27 integration cases, plus GPU checks for authored colors and transforms. All 322 browser-reference traces / 95,367 frames still match. Local evidence is in `.cache/godot/editor/`. This editor adds no quests, recordings or Explore changes.
+
 ## Outskirts hazards and character renderers · 0.9.0
 
 Outskirts dust bunnies now advance while their rooms are unvisited/asleep and during the player's freeze, death and respawn. Retry preserves their phase; world restart begins a new clock. Other machinery retains its authored wake rules. This is a native World 1 behavior change; the other chapters' bunny behavior and colors are unchanged.
@@ -25,7 +33,7 @@ Four hand-placed **white flower** patches in the Outskirts put Vey's warning int
 
 Esc → Knight appearance now offers **Pixel, Ink and Illustration**, with independent **People** styles and live previews. The two new knight renderers use continuous curves and pen/paint shapes, keeping the silver helmet, visor, blue body and golden cloth. They replace the old costume swaps. All characters render at full output resolution; pixel terrain remains crisp. Measured walking is fixed for the base knight and the other gait choices have been removed. Saved obsolete gait choices migrate to measured. NPCs have new drawn silhouettes/faces with their existing tools/poses, plus the original pixel option.
 
-The real carried lantern now uses the same handled glass/flame/cage drawing as the floor lantern, with raised hands instead of an anonymous block. Outskirts lifts have timber decking, iron straps, rivets, cables and pulleys. Causeway lift artwork is retained. No changes were made to Elsie's table placement/shape, Mirror Thicket's spike layout or Black Woods bunny colors. No level editor was built; the question about Godot authoring was answered in chat.
+The real carried lantern now uses the same handled glass/flame/cage drawing as the floor lantern, with raised hands instead of an anonymous block. Outskirts lifts have timber decking, iron straps, rivets, cables and pulleys. Causeway lift artwork is retained. No changes were made to Elsie's table placement/shape, Mirror Thicket's spike layout or Black Woods bunny colors. At 0.9.0 no editor was built; 0.10.0 adds the native chapter editor described above.
 
 **Watch reference** remains the original browser-reference room fixture, without the new live-only flower hazards or autonomous bunny clock. Take control, room entry and chapter switching restore the live rules. `tests/revision.gd` checks these transitions, all bunny clocks, freeze/death/retry, contact/expiration/cure, recovery, run/jump/dash strength, in-flight dash contact, all four patches, lethal versus clean crossings, style selection and saved preferences. `tests/art.gd` now tests all knight/people combinations and renderer pixels. The final packaged build passes 25 integration/regression cases, GPU renderer/style checks and all 322 unmodified browser-reference traces / 95,367 frames. Native mechanic tests cover the requested deviations separately. A mixed audio capture has no clipped samples; the local app signature verifies. Evidence lives in `.cache/godot/revision/`.
 

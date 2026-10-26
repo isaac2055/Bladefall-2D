@@ -1,14 +1,15 @@
+@tool
 extends RefCounted
 ## Two continuous-curve renderers alongside the original pixel knight. No actor state is changed.
 static func line(a,from,to,color,width=.3):
- a.ink.draw_line(from,to,Color(color) if color is String else color,width,false)
+ a.ink.draw_line(from,to,(Color(color) if color is String else color)*a.ink_color,width,false)
 static func disc(a,at,r,color):
- a.ink.draw_circle(at,r,Color(color) if color is String else color,true,-1,false)
+ a.ink.draw_circle(at,r,(Color(color) if color is String else color)*a.ink_color,true,-1,false)
 static func shape(a,points,color,outline="#172c40",width=.23):
- a.ink.draw_colored_polygon(PackedVector2Array(points),Color(color) if color is String else color)
+ a.ink.draw_colored_polygon(PackedVector2Array(points),(Color(color) if color is String else color)*a.ink_color)
  var border=points.duplicate()
  border.append(points[0])
- a.ink.draw_polyline(PackedVector2Array(border),Color(outline) if outline is String else outline,width,false)
+ a.ink.draw_polyline(PackedVector2Array(border),(Color(outline) if outline is String else outline)*a.ink_color,width,false)
 static func oval(a,at,radii,color,outline="",width=.25):
  var pts=[]
  for i in range(28): pts.append(at+Vector2(cos(i*TAU/28)*radii.x,sin(i*TAU/28)*radii.y))

@@ -94,6 +94,9 @@ func load_room(parsed: Dictionary, respawn = false):
  Fractured.reset(self)
  ItemDevices.reset_late(self)
  LightDevices.trace(self)
+ for entity in ents:
+  var visual=room.def.get("authoring_visuals",{}).get("%s@%.4f,%.4f"%[entity.type,entity.x,entity.y],{})
+  if visual.has("tint"): entity.authoring_tint=visual.tint
  moving_decks=ents.filter(func(e):return e.type=="deck")
  spent_footholds=ents.filter(func(e):return e.type=="foothold")
  decks_awake=false
@@ -102,6 +105,7 @@ func load_room(parsed: Dictionary, respawn = false):
  awake = not (room.def.get("study",false) or room.def.get("combat",{}).get("waitForMove",false))
  for d in room.def.get("sweepers",[]):
   var e = {"path":[],"period":d.get("period",180),"phase":d.get("phase",0),"radius":d.get("radius",4),"loop":d.get("loop",false),"lengths":[],"length":0.0}
+  if d.has("tint"): e.tint=d.tint
   for point in d.path: e.path.append([point[0]*8+4,point[1]*8+4])
   for i in range(e.path.size() if e.loop else e.path.size()-1):
    var a = e.path[i]

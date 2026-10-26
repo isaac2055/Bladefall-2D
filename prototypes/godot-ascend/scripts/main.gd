@@ -10,6 +10,8 @@ var world
 const CHAPTERS=[1,2,3,21,22,23]
 var chapters = {}
 var chapter_number = 1
+var initial_world=1
+var initial_room=""
 var chapter_picker: OptionButton
 var pause_title: Label
 var pause_description: Label
@@ -153,6 +155,8 @@ func _ready():
  audio.spoken.connect(show_subtitle)
  landscape.reduced_motion = preferences.get_value("display","reduced_motion",false)
  create_interface()
+ if initial_world!=1: switch_chapter(initial_world)
+ if initial_room!="": current=world.regions.find(initial_room)
  var args = OS.get_cmdline_user_args()
  for i in range(args.size()):
   if args[i]=="--capture" and i+1<args.size(): capture_path = args[i+1]
