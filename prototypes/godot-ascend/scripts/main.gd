@@ -9,7 +9,11 @@ var data
 var world
 const CHAPTERS=[1,2,3,21,22,23,4]
 var workshop_completed={}
+var workshop_shards={}
 var workshop_controls:HBoxContainer
+var workshop_demo_picker:OptionButton
+var workshop_previous:Button
+var workshop_next:Button
 var chapters = {}
 var chapter_number = 1
 var initial_world=1
@@ -279,10 +283,14 @@ func create_interface():
  workshop_controls=HBoxContainer.new()
  workshop_controls.add_theme_constant_override("separation",8)
  column.add_child(workshop_controls)
- button(workshop_controls,"Previous room",func():workshop_room(-1))
- button(workshop_controls,"Next room · N",func():workshop_room(1))
+ workshop_previous=button(workshop_controls,"Previous room",func():workshop_room(-1))
+ workshop_next=button(workshop_controls,"Next room · N",func():workshop_room(1))
  button(workshop_controls,"Hint · H",func():show_workshop_hint();set_paused(false))
  workshop_controls.hide()
+ workshop_demo_picker=OptionButton.new()
+ workshop_demo_picker.focus_mode=Control.FOCUS_NONE
+ column.add_child(workshop_demo_picker)
+ workshop_demo_picker.hide()
  button(column,"Sound mixer · channels and individual effects",open_mixer,false)
  restart_button=button(column,"Start world over",restart_world)
  chapter_picker=OptionButton.new()
@@ -490,7 +498,9 @@ func load_section(index,smooth_join=false):
  landscape.load_scene(sim,smooth_join)
  audio.room_changed(sim)
  tape = []
- for part in data.world.tapes.get(sim.room.id,[]):
+ var recording=data.world.tapes.get(sim.room.id,[])
+ if chapter_number==4: recording=workshop_recording()
+ for part in recording:
   for i in range(int(part[0])): tape.append(part[1])
  tape_frame = 0
  hold = 0
@@ -514,18 +524,34 @@ func show_workshop_hint():
  notice_label.text=sim.room.def.hint
  notice_time=12
 
+func workshop_recording():
+ var selected=max(0,workshop_demo_picker.selected)
+ workshop_demo_picker.clear()
+ var routes=sim.room.def.get("workshopRoutes",[])
+ for route in routes: workshop_demo_picker.add_item("Demonstration · "+route.name)
+ if routes.is_empty(): return data.world.tapes.get(sim.room.id,[])
+ workshop_demo_picker.select(min(selected,routes.size()-1))
+ return routes[workshop_demo_picker.selected].tape
+
 func workshop_goal_reached():
  if chapter_number!=4 or not sim.p.onGround or sim.p.state in ["dead","respawn"]: return false
  var goal=sim.room.def.workshopGoal
  return Rect2(goal[0],goal[1]-2,goal[2],goal[3]+4).has_point(Vector2(sim.p.x+sim.p.w/2.0,sim.p.y+sim.p.h))
 
 func tick_workshop():
- if not workshop_goal_reached() or workshop_completed.has(sim.room.id): return
+ if not workshop_goal_reached(): return
+ var first_clear=not workshop_completed.has(sim.room.id)
+ var shard_clear=workshop_has_shard() and not workshop_shards.has(sim.room.id)
+ if not first_clear and not shard_clear: return
  workshop_completed[sim.room.id]=true
- room_picker.set_item_text(current,"✓ %02d · %s"%[current+1,sim.room.name])
- notice_label.text="Landing reached · %d / 6 complete · N: next room · Esc: choose any room"%workshop_completed.size()
+ if shard_clear: workshop_shards[sim.room.id]=true
+ room_picker.set_item_text(current,("◆ " if workshop_shards.has(sim.room.id) else "✓ ")+"%02d · %s"%[current+1,sim.room.name])
+ notice_label.text="Finish reached with the shard · optional detour complete" if shard_clear else "Finish reached · the optional shard is still available"
  notice_time=8
  audio.effect("gem",.6)
+
+func workshop_has_shard():
+ return chapter_number==4 and sim.ents.any(func(e):return e.type=="shard" and e.get("gone",false))
 func input_now(): return Controls.read()
 func decode(keys):
  var raw = {}
@@ -576,8 +602,8 @@ func _physics_process(_delta):
  death_label.text = "%d DEATHS" % sim.deaths
  if watch: status.text = "ORIGINAL ROUTE     ·     Esc opens the menu     ·     Take control to play the updated world"
  else: status.text = "← → MOVE     SPACE / C JUMP     D DASH     A CLING / CARRY     W STRIKE     R RETRY"
- if chapter_number==4: status.text="← → MOVE     SPACE JUMP     D + ARROWS DASH     A CLING     R RETRY     H HINT     N NEXT     Esc ROOMS"
- if chapter_number==4 and watch: status.text="SOLUTION REPLAY     ·     Esc → Take control to play     ·     R repeats the solution     ·     N next room"
+ if chapter_number==4: status.text="← → MOVE     SPACE JUMP     D + ARROWS DASH     A CLING     R RETRY     H HINT     Esc MENU"
+ if chapter_number==4 and watch: status.text="DEMONSTRATION     ·     Esc → Take control to play     ·     R repeats the route"
  if capture_path!="" and ticks>30: measured_physics.append((Time.get_ticks_usec()-physics_start)/1000.0)
  if capture_path!="" and ticks==screenshot_after: capture.call_deferred()
 func next_section():
@@ -635,7 +661,8 @@ func close_app(code=0):
 
 func bearing_caption():
  if chapter_number==4:
-  return "%d / 6 · %s · %s"%[current+1,"COMPLETE" if workshop_completed.has(sim.room.id) else "REACH THE GOLD FLAG",sim.room.def.question]
+  var shard="SHARD BANKED" if workshop_shards.has(sim.room.id) else ("SHARD FOUND · BRING IT TO THE FLAG" if workshop_has_shard() else "OPTIONAL SHARD")
+  return ("FINISH REACHED" if workshop_completed.has(sim.room.id) else "REACH THE GOLD FLAG")+" · "+shard
  if sim.p.get("pollen",0)>0: return "WHITE FLOWER SAP · movement weakened · %.1fs"%(sim.p.pollen/60.0)
  if chapter_number>=21:
   var prefix="♥ %d · "%world.heart_count() if world.heart_count()>0 else ""
@@ -672,6 +699,7 @@ func retry_room():
 func restart_world():
  if chapter_number==4:
   workshop_completed.clear()
+  workshop_shards.clear()
   for i in range(data.world.rooms.size()): room_picker.set_item_text(i,"%02d · %s"%[i+1,data.world.rooms[i].name])
  world.restart()
  audio.restart_world()
@@ -732,7 +760,7 @@ func switch_chapter(number):
  tape_frame=0
  watch_button.text="Watch solution" if number==4 else "Watch reference"
  room_picker.clear()
- for i in range(data.world.rooms.size()): room_picker.add_item(("✓ " if number==4 and workshop_completed.has(data.world.rooms[i].id) else "")+"%02d · %s" % [i+1,data.world.rooms[i].get("name",data.world.rooms[i].id)])
+ for i in range(data.world.rooms.size()): room_picker.add_item(("◆ " if number==4 and workshop_shards.has(data.world.rooms[i].id) else ("✓ " if number==4 and workshop_completed.has(data.world.rooms[i].id) else ""))+"%02d · %s" % [i+1,data.world.rooms[i].get("name",data.world.rooms[i].id)])
  room_picker.select(current)
  chapter_picker.select(CHAPTERS.find(number))
  design_picker.disabled=number!=1
@@ -746,7 +774,12 @@ func switch_chapter(number):
  pause_description.text="A road through the old watch · Ascend" if number==1 else ("Moths, pale resin and the lantern tree · Ascend" if number==2 else "Iron, counterweights and the toll road · Ascend")
  if number>=21: pause_description.text="The remembered road · Fractured Ascend"
  workshop_controls.visible=number==4
- if number==4: pause_description.text="Six independent puzzles · choose any room · H for an optional hint"
+ workshop_demo_picker.visible=number==4
+ workshop_previous.visible=number==4 and data.world.rooms.size()>1
+ workshop_next.visible=workshop_previous.visible
+ if number==4:
+  pause_description.text="The Broken Aqueduct · optional shard · H for a hint"
+  workshop_recording()
  room_banner.text=sim.room.name.to_upper()
  banner_time=2.4
  subtitle_panel.hide()

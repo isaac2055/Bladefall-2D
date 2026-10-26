@@ -7,7 +7,8 @@ func check(ok,label):
 func run():
  for number in [1,2,3,21,22,23,4]:
   var chapter=load("res://levels/world%d.tscn"%number).instantiate()
-  var target=chapter.get_node("Rooms").get_child(1).room_id
+  var areas=chapter.get_node("Rooms")
+  var target=areas.get_child(min(1,areas.get_child_count()-1)).room_id
   chapter.play_room_id=target
   root.add_child(chapter)
   var game=chapter.get_child(-1)

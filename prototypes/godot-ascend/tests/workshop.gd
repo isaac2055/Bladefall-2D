@@ -1,147 +1,155 @@
 extends SceneTree
-## Play the actual saved workshop through the application with ordinary inputs.
+## Exercise distinct ordinary-input approaches, optional recovery, UI and isolation.
 const Main=preload("res://main.tscn")
 const Authoring=preload("res://scripts/authoring_data.gd")
 const Codec=preload("res://authoring/codec.gd")
 var app
 var failed=false
-var results=[]
+var checks=[]
 var output=""
+var screenshots={}
+var routes=[]
 func _initialize(): run.call_deferred()
 func check(ok,label):
  print("PASS " if ok else "FAIL ",label)
- results.append({"pass":bool(ok),"label":label})
+ checks.append({"passed":bool(ok),"label":label})
  failed=failed or not ok
-func goal(): return app.workshop_goal_reached()
 func key(code):
  var event=InputEventKey.new()
  event.physical_keycode=code
  event.keycode=code
  event.pressed=true
  app._unhandled_input(event)
-func route(index,parts):
- app.watch=false
- app.load_section(index)
- app.journey=[]
- app.journey_frame=0
- for part in parts:
-  for i in range(int(part[0])): app.journey.append(part[1])
- var uses=0
- var was_used=false
- var crumble=false
- var moving_cling=false
- var far_rest=false
- var boosted=false
- var advanced=false
- var dash_starts=0
- for f in range(app.journey.size()):
-  app._physics_process(1.0/60.0)
-  var core=app.sim
-  if "dash-start" in core.events: dash_starts+=1
-  for kind in ["super","hyper","wallbounce","ultra"]: advanced=advanced or kind in core.events
-  for e in core.ents:
-   if e.type=="refill":
-    var used=e.timer>0
-    if used and not was_used: uses+=1
-    was_used=used
-   elif e.type=="crumble": crumble=crumble or e.get("broken",false)
-   elif e.type=="zip":
-    moving_cling=moving_cling or (core.p.state=="climb" and e.state=="go" and e.x>e.ox+32)
-  boosted=boosted or core.p.vy< -190
-  far_rest=far_rest or (index==5 and core.p.onGround and core.p.x>=200 and core.p.y<100)
- app.journey=[]
- app.journey_frame=0
- return {"finish":goal(),"deaths":app.sim.deaths,"refill_uses":uses,"crumble":crumble,"moving_cling":moving_cling,"boosted":boosted,"far_rest":far_rest,"advanced":advanced,"dash_starts":dash_starts}
+func has_shard(): return app.workshop_has_shard()
 func shot(name):
  if output=="" or DisplayServer.get_name()=="headless": return
+ app.landscape.snap_actor()
+ for f in range(30): app.landscape._process(1.0/60.0)
  app.banner_time=0
  app.room_banner.modulate.a=0
  app.notice_time=0
  app.notice_label.modulate.a=0
- app.landscape._process(1.0/60.0)
  await process_frame
  await RenderingServer.frame_post_draw
  root.get_texture().get_image().save_png(output+"/"+name+".png")
+func journey(parts):
+ app.journey=[]
+ app.journey_frame=0
+ for part in parts:
+  for f in range(int(part[0])): app.journey.append(part[1])
+func play(route_index,capture=false):
+ app.watch=false
+ app.load_section(0)
+ journey(routes[route_index].tape)
+ var proof={"route":routes[route_index].name,"max_x":app.sim.p.x,"refills":0,"right_bank":false,"moving_cling":false,"crumble_landing":false,"shard_recovery":false,"advanced":false}
+ var start_deaths=app.sim.deaths
+ var refill_used=false
+ for f in range(app.journey.size()):
+  app._physics_process(1.0/60.0)
+  var core=app.sim
+  proof.max_x=max(proof.max_x,core.p.x)
+  for kind in ["super","hyper","wallbounce","ultra"]: proof.advanced=proof.advanced or kind in core.events
+  var bank=core.p.onGround and core.p.x>=264 and core.p.y==125
+  proof.right_bank=proof.right_bank or bank
+  var bridge=false
+  var carrier=false
+  for e in core.ents:
+   if e.type=="refill":
+    if e.timer>0 and not refill_used: proof.refills+=1
+    refill_used=e.timer>0
+   if e.type=="zip": carrier=core.p.state=="climb" and e.state=="go" and e.x>e.ox+104
+   if e.type=="crumble": bridge=core.standing(e)
+  proof.moving_cling=proof.moving_cling or carrier
+  proof.crumble_landing=proof.crumble_landing or bridge
+  var recovering=has_shard() and core.p.state=="climb" and core.p.x==256
+  proof.shard_recovery=proof.shard_recovery or recovering
+  if capture:
+   for item in [["under-the-pier",carrier],["eastern-bank",bank],["broken-span",bridge],["shard-wall-catch",recovering]]:
+    if item[1] and not screenshots.has(item[0]):
+     screenshots[item[0]]=true
+     await shot(item[0])
+ proof.finish=app.workshop_goal_reached()
+ proof.deaths=app.sim.deaths-start_deaths
+ proof.shard=has_shard()
+ proof.frames=app.journey.size()
+ app.journey=[]
+ app.journey_frame=0
+ return proof
 func run():
  if not OS.get_cmdline_user_args().is_empty():
   output=OS.get_cmdline_user_args()[0]
   DirAccess.make_dir_recursive_absolute(output)
  var source=JSON.parse_string(FileAccess.get_file_as_string("res://data/world4.json"))
- var scene=load("res://levels/world4.tscn").instantiate()
- var base=Authoring.baseline(source)
- var compiled=scene.compile_into(base)
- check(Codec.first_difference(base,compiled)=="","six-room native scene round trip preserves all authored data")
- check(scene.validate_data(compiled).is_empty(),"native scene validates")
- scene.free()
+ var chapter=load("res://levels/world4.tscn").instantiate()
+ var baseline=Authoring.baseline(source)
+ var compiled=chapter.compile_into(baseline)
+ check(Codec.first_difference(baseline,compiled)=="","native aqueduct preserves maps, route recordings and device settings")
+ check(chapter.validate_data(compiled).is_empty(),"saved aqueduct validates")
+ chapter.free()
  app=Main.instantiate()
- app.initial_world=4
  app.test_mode=true
+ app.initial_world=4
  root.add_child(app)
  await process_frame
  app.set_physics_process(false)
- check(app.chapter_number==4 and app.current==0 and app.world.regions.size()==6,"direct launch starts workshop without campaign progress")
- check(app.workshop_controls.visible and app.room_picker.item_count==6,"every room and workshop navigation immediately available")
- check(app.watch_button.text=="Watch solution","workshop offers an optional solution replay")
- check(app.world.data.constants==app.chapters[1].world.data.constants,"ordinary Outskirts movement constants unchanged")
- var outskirts=app.chapters[1].world.data.duplicate(true)
- for i in range(6):
-  app.load_section(i)
-  app.landscape._process(1.0/60.0)
-  check(app.world.active_id==source.world.rooms[i].id and not goal(),"direct room access and distinct start: "+source.world.rooms[i].name)
-  check(app.landscape.camera_float==app.world.placements[app.world.active_id],"whole puzzle visible at rest: "+source.world.rooms[i].name)
-  await shot("room-%d-start"%(i+1))
-  var proof=route(i,source.world.tapes[source.world.rooms[i].id])
-  check(proof.finish and proof.deaths==0,"ordinary-input deathless solution: "+source.world.rooms[i].name)
-  check(not proof.advanced,"no advanced movement required: "+source.world.rooms[i].name)
-  if i==0: check(proof.dash_starts==1,"Keep Something Back saves its single dash for the crossing")
-  if i==1: check(proof.refill_uses==1 and proof.dash_starts==2,"Below the Answer uses the crystal and redirects upward")
-  if i==2: check(proof.crumble,"Let the Road Fall opens the lower route by collapsing the bridge")
-  if i==3: check(proof.boosted,"Borrowed Height actually inherits upward lift momentum")
-  if i==4: check(proof.moving_cling,"The Other Side actually rides by clinging to the moving lift")
-  if i==5: check(proof.refill_uses==2 and proof.far_rest,"Return Ticket rests across the room and reuses the same crystal")
-  await shot("room-%d-finish"%(i+1))
- check(app.workshop_completed.size()==6,"all six player finishes recorded")
- # Failed plans remain failures; these are not merely wider obstacle courses.
- var spent=route(0,[[5,"lux"],[10,"l"],[125,"lgu"],[12,"rj"],[5,"rux"],[50,"r"]])
- check(not spent.finish,"spending the dash on the approach does not complete Keep Something Back")
- var straight=route(1,[[20,"rj"],[5,"rx"],[60,"r"]])
- check(not straight.finish,"following the crystal horizontally does not solve Below the Answer")
- var rushing=route(2,[[120,"r"],[30,""]])
- check(not rushing.finish,"rushing across the cracked road leaves the player above the required lower route")
- var late=route(3,[[30,"r"],[45,""],[25,"rj"],[5,"rux"],[30,"r"]])
- check(not late.finish,"jumping after the lift's momentum expires cannot reach Borrowed Height's landing")
- var top=route(4,[[22,"rj"],[55,"r"],[30,""]])
- check(not top.finish,"boarding on top cannot carry the player through The Other Side's arch")
- # Room selection resets machinery; retry preserves the player's completion tally.
- app.load_section(4)
- check(app.sim.ents.filter(func(e):return e.type=="zip")[0].state=="idle","reselecting a room resets its lift to the boarding position")
- key(KEY_H)
- check(app.notice_time>0 and app.notice_label.text==app.sim.room.def.hint,"H reveals a hint only on request")
- key(KEY_N)
- check(app.current==5 and not app.paused,"N selects the next room without a completion requirement")
- key(KEY_N)
- check(app.current==0,"next-room selection wraps back to the first room")
+ var original_campaign=app.chapters[1].world.data.duplicate(true)
+ check(app.chapter_number==4 and app.world.regions==["workshop-aqueduct"],"direct launcher opens the new room without campaign progress")
+ check(app.room_picker.item_count==1 and not app.workshop_previous.visible and not app.workshop_next.visible,"old exercise rooms are removed from the workshop menu")
+ check(app.world.data.constants==app.chapters[1].world.data.constants,"ordinary Outskirts movement constants retained")
+ check(not app.workshop_goal_reached() and not has_shard(),"spawn starts outside finish and optional pickup")
+ check(app.workshop_demo_picker.item_count==3,"all three optional demonstrations available before playing")
+ check(app.landscape.camera_float==Vector2.ZERO,"whole aqueduct visible before departure")
+ check(app.sim.ents.all(func(e):return e.has("source_room") and e.has("source_id")),"fresh workshop devices retain ownership for retry and death recovery")
+ await shot("aqueduct-start")
+ routes=app.sim.room.def.workshopRoutes
+ var proofs=[]
+ for i in range(routes.size()):
+  var proof=await play(i,true)
+  proofs.append(proof)
+  check(proof.finish and proof.deaths==0,"deathless ordinary-input route: "+routes[i].name)
+  check(not proof.advanced,"no advanced movement required: "+routes[i].name)
+  await shot("route-%d-finish"%i)
+ check(proofs[0].moving_cling and proofs[0].right_bank and proofs[0].crumble_landing,"eastern route connects carrier, far bank and temporary upper landing")
+ check(proofs[1].max_x<144 and proofs[1].refills==1 and not proofs[1].right_bank,"western approach uses refill and wall departure without visiting the far bank")
+ check(proofs[2].shard and proofs[2].shard_recovery and proofs[2].finish,"optional detour includes pickup, wall recovery and return to the flag")
+ check(app.workshop_completed.has("workshop-aqueduct") and app.workshop_shards.has("workshop-aqueduct"),"normal finish and optional finish tracked separately")
  app.retry_room()
- check(app.workshop_completed.size()==6 and not goal(),"retry returns to room spawn and retains completion tally")
- # Replays use the same spawn and physics, and do not award player completion.
- app.workshop_completed.clear()
- app.watch=true
- app.load_section(5)
- for f in range(app.tape.size()): app._physics_process(1.0/60.0)
- check(goal() and app.sim.deaths==0 and app.workshop_completed.is_empty(),"optional solution replay works without awarding player completion")
- app.toggle_watch()
- check(not app.watch and app.sim.world_context==app.world,"Take control returns the replay to live physics")
+ check(not has_shard() and not app.workshop_goal_reached() and app.workshop_shards.has("workshop-aqueduct"),"retry resets route and pickup while retaining a banked optional finish")
  app.restart_world()
- check(app.current==0 and app.workshop_completed.is_empty(),"Start world over resets the workshop")
- check(not "✓" in app.room_picker.get_item_text(0),"Start world over clears completed-room markers")
- check(Codec.first_difference(outskirts,app.chapters[1].world.data)=="","workshop play leaves the campaign's saved room data untouched")
+ check(app.workshop_completed.is_empty() and app.workshop_shards.is_empty(),"restart clears both completion records")
+ app.load_section(0)
+ journey(routes[2].tape.slice(0,5))
+ for f in range(app.journey.size()): app._physics_process(1.0/60.0)
+ app.journey=[]
+ app.journey_frame=0
+ check(has_shard() and app.workshop_shards.is_empty(),"pickup is carried until the finish, rather than awarded at touch")
+ app.sim.die()
+ for f in range(50): app._physics_process(1.0/60.0)
+ check(not has_shard() and app.workshop_shards.is_empty(),"dying after pickup restores shard without awarding the optional objective")
+ app.retry_room()
+ key(KEY_H)
+ check(app.notice_time>0 and app.notice_label.text==app.sim.room.def.hint,"hint remains optional")
+ for i in range(routes.size()):
+  app.watch=false
+  app.workshop_demo_picker.select(i)
+  app.toggle_watch()
+  var deaths=app.sim.deaths
+  for f in range(app.tape.size()): app._physics_process(1.0/60.0)
+  check(app.watch and app.workshop_goal_reached() and app.sim.deaths==deaths,"demonstration playback: "+routes[i].name)
+ check(app.workshop_completed.is_empty() and app.workshop_shards.is_empty(),"demonstrations award neither player completion nor shard completion")
+ app.toggle_watch()
+ check(not app.watch and app.sim.world_context==app.world,"Take control restores live world physics")
+ app.restart_world()
+ var carrier=app.sim.ents.filter(func(e):return e.type=="zip")[0]
+ check(carrier.state=="idle" and carrier.x==carrier.ox,"new attempt resets carrier to its starting position")
+ check(Codec.first_difference(original_campaign,app.chapters[1].world.data)=="","workshop leaves current campaign data untouched")
  app.switch_chapter(1)
- check(app.chapter_number==1 and not app.workshop_controls.visible and app.watch_button.text=="Watch reference","campaign retains its ordinary interface")
+ check(not app.workshop_controls.visible and not app.workshop_demo_picker.visible and app.watch_button.text=="Watch reference","campaign keeps its ordinary interface")
  app.switch_chapter(4)
  app.set_paused(true)
- await shot("workshop-menu")
+ await shot("aqueduct-menu")
  if output!="":
   var file=FileAccess.open(output+"/checks.json",FileAccess.WRITE)
-  file.store_string(JSON.stringify(results,"  "))
- print("WORKSHOP ","FAILED" if failed else "PASSED"," · ",results.size()," checks")
+  file.store_string(JSON.stringify({"checks":checks,"routes":proofs},"  "))
+ print("AQUEDUCT ","FAILED" if failed else "PASSED"," · ",checks.size()," checks")
  await app.close_app(1 if failed else 0)

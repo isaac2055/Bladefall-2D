@@ -1,6 +1,6 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.13.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.14.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
 
 ## Play
 
@@ -17,17 +17,17 @@ Controls now match the browser defaults: **arrows** move/aim, **Space/C/J** jump
 The pause menu includes a **chapter selector** for The Outskirts, Black Woods, Broken Causeway and their three Fractured versions. All six chapters are constructed before play, and switching preserves each chapter’s progress and position. **Start world over** resets the current world, bearings, room machinery, deaths and dialogue history without closing the app. Retry resets only the current room and preserves bearings and lit stakes. The pause menu also contains the room selector, Watch/Take control, a dedicated sound mixer, spoken dialogue toggle, reduced motion and lighting comparison. Audio and display preferences persist locally. The app starts directly in the game rather than an engine-study toolbar.
 
 
-## Movement Workshop · 0.13.0
+## Movement Workshop · 0.14.0
 
-Double-click **Play Movement Workshop.command** for immediate access, or choose **Esc → chapter selector → Test · Movement Workshop** in the standalone app. No campaign progress is required. All six rooms are available through the room selector from the start. **N** advances to the next room (wrapping to the first); the pause menu also has Previous/Next buttons. **R** retries. **H** reveals an optional hint. **Watch solution** replays ordinary inputs from the room's spawn; Take control resumes live play. Replays do not award completion while watching.
+**The Broken Aqueduct** replaces the six 0.13 exercises with one connected room. Double-click **Play Movement Workshop.command**, or choose **Esc → chapter selector → Test · Movement Workshop** in the standalone app. It starts at the room immediately; no campaign progress is needed. **R** retries and **H** reveals an optional hint. The fixed camera shows the entire room. The old exercise rooms are no longer in the menu.
 
-Reach the gold flag and stand on its landing to mark a room complete. Completion is session-only, survives retries and chapter switches, and clears with Start world over. Choosing a room resets its machinery. The fixed camera shows the entire puzzle before departure. Normal jump, climb, wall jump, single dash, crystals, crumble platforms and existing lifts supply every solution; movement constants and campaign layouts are unchanged. No quests or voices are added.
+The visible flag sits above the entrance. The western pier offers a shorter refill/wall-departure approach; the lower carrier offers a longer passage beneath the span, an eastern-bank recovery and a return across the broken upper bridge. Both use ordinary movement. An optional shard below the carrier's departure asks for a drop, dash and wall catch before returning to the same finish. It resets on death/retry and is banked only when brought to the flag. Normal completion and shard completion are tracked separately for the session; Start world over clears both. The launcher's fresh game starts with neither completed.
 
-The six rooms are Keep Something Back (save the dash), Below the Answer (approach the crystal from below), Let the Road Fall (deliberately collapse a bridge), Borrowed Height (inherit lift momentum), The Other Side (cling beneath an arch), and Return Ticket (rest across the room and reuse one crystal on the return).
+For an optional demonstration, open Esc, choose **Eastern crossing**, **Western pier** or **Shard detour** in the Demonstration dropdown, then **Watch solution**. Replays begin at spawn and award neither completion. **Take control** returns to live play. These recordings show possible routes; the room does not enforce their action sequences. The known routes use no hypers, supers or wall bounces. Normal movement constants, campaign rooms, quests and voice assets are unchanged.
 
-The workshop is chapter 4, authored separately in `levels/world4.tscn`; its original import and solution tapes are in `data/world4.json`. Select **Movement Workshop · test level** in the Ascend editor dock to edit/play it. It has no passage or gate into the campaign. Do not regenerate the scene after editing it.
+The workshop remains chapter 4 in `levels/world4.tscn`, with import data and three ordinary-input recordings in `data/world4.json`. Select **Movement Workshop · test level** in the Ascend editor dock to edit/play it. No passage or gate joins it to the campaign. Do not regenerate the scene after editing it.
 
-`tests/workshop.gd` plays all six saved rooms through the application from their actual spawns, checks deathless ordinary-input solutions and each intended interaction, rejects representative wrong plans, and checks direct launch, navigation, hints, replays, reset behavior, completion and campaign isolation. GPU mode captures every start/finish and the workshop menu. Run from the repository root:
+`tests/workshop.gd` exercises both approaches and the optional pickup/recovery/return through the actual application. It checks that the western route avoids the eastern bank, the lower route uses the carrier and temporary landing, and the shard requires a successful return. It also exercises death, retry, device ownership, demonstrations, finish tracking, direct launch and campaign isolation. GPU mode captures the room, intermediate route positions, finishes and menu. These checks establish functionality and witnessed routes, rather than judging enjoyment. Run from the repository root:
 
 ```sh
 .cache/godot/Godot.app/Contents/MacOS/Godot --headless --path prototypes/godot-ascend --script tests/workshop.gd

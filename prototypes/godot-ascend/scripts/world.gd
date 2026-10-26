@@ -216,6 +216,9 @@ func tick_inactive():
   other.room_frame+=1
   other.advance_sweepers(other.sweeper_clock+(1 if other.awake or int(data.world.n)==1 else 0))
 func collect_progress():
+ # The workshop shard is an optional round trip, banked at its finish by the UI.
+ # Death/retry resets the pickup along with the room, unlike campaign bearings.
+ if data.world.get("workshop",false): return
  # Only the active knight can collect or light a stake. Inactive machinery cannot.
  for id in [active_id]:
   var core=cores[id]
@@ -273,7 +276,9 @@ func enter(id,practice=false):
   active_id=id
   checkpoint_id=id
   var destination=active()
-  if data.world.get("workshop",false): destination.load_room(parsed[id])
+  if data.world.get("workshop",false):
+   destination.load_room(parsed[id])
+   restore_progress(destination)
   configure_live_core(destination)
   destination.world_context=self
   destination.p=data.playerDefaults.duplicate(true)
