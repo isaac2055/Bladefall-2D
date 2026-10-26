@@ -1,6 +1,6 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.16.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.17.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
 
 ## Play
 
@@ -16,6 +16,14 @@ Controls now match the browser defaults: **arrows** move/aim, **Space/C/J** jump
 
 The pause menu includes a **chapter selector** for The Outskirts, Black Woods, Broken Causeway and their three Fractured versions. All six chapters are constructed before play, and switching preserves each chapter’s progress and position. **Start world over** resets the current world, bearings, room machinery, deaths and dialogue history without closing the app. Retry resets only the current room and preserves bearings and lit stakes. The pause menu also contains the room selector, Watch/Take control, a dedicated sound mixer, spoken dialogue toggle, reduced motion and lighting comparison. Audio and display preferences persist locally. The app starts directly in the game rather than an engine-study toolbar.
 
+
+## Dedicated room editor · 0.17.0
+
+Double-click **Edit Workshop Rooms.command** for a simple local browser editor of the six workshop rooms. Choose a terrain brush, paint on the grid, or place and drag objects. Select a moving block to drag its destination, resize it, or change its pause and return timing. Select a rectangle of terrain to move ground. Undo/redo, exact positions, room settings and optional hints are available without Godot's scene tree or Inspector.
+
+**Save & play** saves directly to the native workshop scene and opens that room in the actual Godot project. Every save keeps a backup; unsaved browser drafts can be recovered after reload. Import/export provides a portable editable file. Conflicting external edits are reported before writing, and changed rooms stop offering outdated demonstrations. Campaign scenes and browser shipping files are outside this editor's write path. The packaged app is rebuilt separately; the editor's Play action always uses current project files.
+
+See [the short editor guide](room-editor/README.md), or click **How to edit** inside the editor. Node.js and the pinned Godot engine are required; both are already present on this Mac. No hosting or account is needed.
 
 ## Movement Workshop · 0.16.0
 

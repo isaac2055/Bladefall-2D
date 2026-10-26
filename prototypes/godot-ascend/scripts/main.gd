@@ -480,6 +480,7 @@ func toggle_watch():
   load_section(current)
   if tape.is_empty(): next_section()
 func load_section(index,smooth_join=false):
+ if chapter_number!=4: watch_button.disabled=false
  current = index
  var id=data.world.rooms[index].id
  world.enter(id,true)
@@ -529,6 +530,7 @@ func workshop_recording():
  workshop_demo_picker.clear()
  var routes=sim.room.def.get("workshopRoutes",[])
  for route in routes: workshop_demo_picker.add_item("Demonstration · "+route.name)
+ watch_button.disabled=routes.is_empty() and data.world.tapes.get(sim.room.id,[]).is_empty()
  if routes.is_empty(): return data.world.tapes.get(sim.room.id,[])
  workshop_demo_picker.select(min(selected,routes.size()-1))
  return routes[workshop_demo_picker.selected].tape
@@ -764,6 +766,7 @@ func switch_chapter(number):
  hold=0
  tape_frame=0
  watch_button.text="Watch solution" if number==4 else "Watch reference"
+ watch_button.disabled=false
  room_picker.clear()
  for i in range(data.world.rooms.size()): room_picker.add_item(("◆ " if number==4 and workshop_shards.has(data.world.rooms[i].id) else ("✓ " if number==4 and workshop_completed.has(data.world.rooms[i].id) else ""))+"%02d · %s" % [i+1,data.world.rooms[i].get("name",data.world.rooms[i].id)])
  room_picker.select(current)
