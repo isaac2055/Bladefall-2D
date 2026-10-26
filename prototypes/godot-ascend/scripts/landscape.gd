@@ -6,6 +6,9 @@ const Art=preload("res://scripts/art_details.gd")
 const Room = preload("res://scripts/room_loader.gd")
 var sim
 var walking_style=1
+const Themes=preload("res://scripts/outskirts_themes.gd")
+var environment_design=0
+var cape_flow=Vector2(0,1)
 var knight_design=0
 var npc_design=1
 var flora_adjusted=0
@@ -84,6 +87,9 @@ func configure_mood():
  var pair=colors.get(int(world_data.world.n),colors[1])
  accent=Color(pair[0])
  mood=Color(pair[1])
+ if int(world_data.world.n)==1 and environment_design>0:
+  accent=Color("#e8bd79" if environment_design==1 else "#b8d7e3")
+  mood=Color("#d9d6c0" if environment_design==1 else "#acbdd7")
  var palette=world_data.world.get("authoring_palette",{})
  accent=Color(palette.get("accent",accent.to_html()))
  mood=Color(palette.get("ambient",mood.to_html()))
@@ -184,6 +190,9 @@ func make_tiles():
  for variant in range(20):
   for y in range(8):
    for x in range(8):
+    if int(world_data.world.n)==1 and environment_design>0:
+     image.set_pixel(variant*8+x,y,Themes.tile_color(environment_design,variant,x,y))
+     continue
     if variant==15:
      if y<2: image.set_pixel(variant*8+x,y,Color("9d9c82") if y==0 else Color("4e5a62"))
      continue
@@ -227,6 +236,18 @@ func make_tiles():
  result.tile_size = Vector2i(8,8)
  result.add_source(atlas,0)
  return result
+func set_environment_design(value):
+ if int(world_data.world.n)!=1: return
+ environment_design=clampi(value,0,2)
+ configure_mood()
+ if tiles!=null: tiles.tile_set=make_tiles()
+ if ambient!=null: ambient.color=mood if lit else Color.WHITE
+ if post!=null: post.material.set_shader_parameter("mood_tint",Vector3(mood.r,mood.g,mood.b))
+ queue_redraw()
+func tick_cape(delta):
+ var motion=clamp(abs(sim.p.vx)/55.0,0,1)
+ var target=Vector2(-sim.p.facing*motion,1-motion)
+ cape_flow=cape_flow.lerp(target,1-exp(-delta*6.0))
 func build_terrain():
  # Build the full static map once, not at every doorway.
  for d in world_data.world.rooms:
@@ -512,6 +533,7 @@ func _process(delta):
  if sim.p.state=="dead": actor=current_actor
  if render_hold>0 and not reduced_motion: actor=held_actor
  walking += abs(sim.p.vx)*delta
+ if int(world_data.world.n)==1: tick_cape(delta)
  tick_feel(delta)
  var offset = Vector2.ZERO
  if shake>0 and not reduced_motion: offset=Vector2(sin(clock*97),cos(clock*83))*shake*4
@@ -547,9 +569,10 @@ func _process(delta):
  if plume.size()==7:
   plume[0] = actor+Vector2(3,4)
   for i in range(1,7):
-   var motion=clamp(abs(sim.p.vx)/55.0,0,1) if sim.p.state=="normal" else 1.0
+   var motion=1-cape_flow.y if int(world_data.world.n)==1 else (clamp(abs(sim.p.vx)/55.0,0,1) if sim.p.state=="normal" else 1.0)
    var rest=Vector2(-sim.p.facing*.25+sin(clock*1.8-i*.6)*.15,1.25)
-   var moving=Vector2(-sim.p.facing*1.9,sin(clock*7-i*.8)*.5-.15)
+   var direction=cape_flow.x/max(.001,1-cape_flow.y) if int(world_data.world.n)==1 else -sim.p.facing
+   var moving=Vector2(direction*1.9,sin(clock*7-i*.8)*.5-.15)
    var target=plume[i-1]+rest.lerp(moving,motion)
    plume[i] = plume[i].lerp(target,1-exp(-delta*23))
    var tether = plume[i]-plume[i-1]
@@ -572,6 +595,10 @@ func _draw():
  if Engine.is_editor_hint(): return
  var profile_start=Time.get_ticks_usec()
  ink = self
+ if int(world_data.world.n)==1 and environment_design>0:
+  Themes.background(self,environment_design)
+  draw_cpu_us.background=Time.get_ticks_usec()-profile_start
+  return
  if causeway:
   draw_causeway()
   Art.background_details(self)
@@ -1163,7 +1190,8 @@ func draw_knight(pose=null,at=Vector2(INF,INF),phase_override=-1.0):
   ink.draw_arc(Vector2(x+4,y+5.5),13,angle-1.1,angle+1.1,16,Color("#d6f4ff"),1.5)
  var ready_color = Color("ffb347") if p.dashes>0 else Color("56708c")
  if knight_design>0:
-  Styles.knight(self,p,Vector2(x,y),phase,knight_design)
+  var flow=cape_flow if not preview and int(world_data.world.n)==1 else Vector2(INF,INF)
+  Styles.knight(self,p,Vector2(x,y),phase,knight_design,flow)
   draw_knight_attachments(p,Vector2(x,y))
   return
  var cloak=plume

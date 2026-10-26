@@ -20,7 +20,7 @@ func run():
  await process_frame
  app.set_physics_process(false)
  app.set_process(false)
- check(app.design_picker.item_count==3 and app.npc_picker.item_count==3,"settings offer Pixel, Ink and Illustration for both knights and people")
+ check(app.design_picker.item_count==8 and app.npc_picker.item_count==8,"settings offer eight Outskirts designs for knights and people")
  var flowers=0
  var safe=true
  for n in app.CHAPTERS:
@@ -58,8 +58,11 @@ func run():
   for npc in range(3):
    app.apply_character_settings(design,npc)
    var shared=true
-   for chapter in app.chapters.values(): shared=shared and chapter.landscape.walking_style==1 and chapter.landscape.knight_design==design and chapter.landscape.npc_design==npc
-   check(shared,"independent knight / people styles shared by all chapters: "+str(design)+" / "+str(npc))
+   for n in app.chapters:
+    var scene_at=app.chapters[n].landscape
+    shared=shared and scene_at.walking_style==1
+    if n==1: shared=shared and scene_at.knight_design==design and scene_at.npc_design==npc
+   check(shared,"independent knight / people styles selected in Outskirts: "+str(design)+" / "+str(npc))
    app.set_paused(true)
    app.preview_clock=.17
    app.appearance_preview.queue_redraw()
@@ -75,7 +78,7 @@ func run():
  app.test_mode=false
  app.apply_character_settings(2,1)
  var config=ConfigFile.new()
- check(config.load(app.preferences_path)==OK and config.get_value("display","walking_style")==1 and config.get_value("display","knight_design")==2 and config.get_value("display","npc_design")==1,"style selections save, with measured walking fixed")
+ check(config.load(app.preferences_path)==OK and config.get_value("display","walking_style")==1 and config.get_value("display","outskirts_knight_design")==2 and config.get_value("display","outskirts_npc_design")==1,"style selections save, with measured walking fixed")
  config.set_value("display","walking_style",3)
  config.save(app.preferences_path)
  var second=Main.instantiate()

@@ -136,7 +136,7 @@ func run():
  await process_frame
  app.set_physics_process(false)
  app.set_process(false)
- check(app.design_picker.item_count==3 and app.npc_picker.item_count==3,"three genuinely distinct knight renderers and three people renderers are selectable")
+ check(app.design_picker.item_count==8 and app.npc_picker.item_count==8,"three genuinely distinct knight renderers and three people renderers are selectable")
  app.watch=true
  app.load_section(0)
  check(not app.sim.autonomous_sweepers and app.sim.pollen_config.is_empty(),"Watch keeps the original browser-reference fixture")
@@ -151,8 +151,11 @@ func run():
  for style in range(3):
   app.apply_character_settings(style,style)
   var shared=true
-  for chapter in app.chapters.values(): shared=shared and chapter.landscape.knight_design==style and chapter.landscape.npc_design==style and chapter.landscape.walking_style==1
-  check(shared,"all chapters use measured walking and selected character style "+str(style))
+  for n in app.chapters:
+   var scene_at=app.chapters[n].landscape
+   shared=shared and scene_at.walking_style==1
+   if n==1: shared=shared and scene_at.knight_design==style and scene_at.npc_design==style
+  check(shared,"all chapters retain measured walking; Outskirts uses selected style "+str(style))
   app.set_paused(true)
   app.preview_clock=.19
   app.appearance_preview.queue_redraw()
@@ -162,7 +165,7 @@ func run():
  app.test_mode=false
  app.apply_character_settings(2,1)
  var prefs=ConfigFile.new()
- check(prefs.load(app.preferences_path)==OK and prefs.get_value("display","walking_style")==1 and prefs.get_value("display","knight_design")==2 and prefs.get_value("display","npc_design")==1,"style preferences persist; obsolete gait choices migrate to measured")
+ check(prefs.load(app.preferences_path)==OK and prefs.get_value("display","walking_style")==1 and prefs.get_value("display","outskirts_knight_design")==2 and prefs.get_value("display","outskirts_npc_design")==1,"style preferences persist; obsolete gait choices migrate to measured")
  DirAccess.remove_absolute(app.preferences_path)
  app.test_mode=true
  # Show the actual carried object rather than the old anonymous rectangle.

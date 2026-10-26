@@ -1,6 +1,6 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.10.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, isolated from the shipping browser game on `codex/godot-ascend-editor`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.11.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, isolated from the shipping browser game on `codex/godot-outskirts-styles`. This is an engine comparison, not a replacement release or a full Ascend port.
 
 ## Play
 
@@ -16,6 +16,16 @@ Controls now match the browser defaults: **arrows** move/aim, **Space/C/J** jump
 
 The pause menu includes a **chapter selector** for The Outskirts, Black Woods, Broken Causeway and their three Fractured versions. All six chapters are constructed before play, and switching preserves each chapter’s progress and position. **Start world over** resets the current world, bearings, room machinery, deaths and dialogue history without closing the app. Retry resets only the current room and preserves bearings and lit stakes. The pause menu also contains the room selector, Watch/Take control, four separate volume controls, spoken dialogue toggle, reduced motion and lighting comparison. Audio and display preferences persist locally. The app starts directly in the game rather than an engine-study toolbar.
 
+
+## Outskirts styles · 0.11.0
+
+In **Esc → Outskirts appearance**, the knight and people now have independent menus with four drawing families and two designs each. The original Pixel, Ink and Illustration drawings retain their IDs and appearance; the additions are Pixel Steel, Ink Etched, Illustration Storybook, Paper Folded and Paper Cutout. The new designs change silhouettes, helmets, clothing, faces and mark-making. NPC work tools and poses and the knight's held lantern, attacks and parry remain in place.
+
+The Outskirts cape uses shared, render-time cloth direction across all eight designs. It preserves momentum when stopping and settles to hanging over about one second. Its exponential easing uses elapsed time, with matching settling at 30 and 144 fps. The pixel chain follows the same smoothed direction; draw calls and previews never advance the cloth simulation.
+
+The **Scenery** menu retains Original Watch Road and adds **Dawn Ramparts** (warm light, layered hills, aqueduct arches, cypresses and sandstone masonry) and **Moonlit Engraving** (indigo sky, crescent moon, outlined ridges, etched spires and blue hatched blocks). Both replace the background drawing and terrain atlas while preserving collision, room geometry, routes and hazards. They update while paused and persist independently of character choices. New preferences apply only to the base Outskirts; the other five chapters retain their existing appearance. Older appearance preferences migrate as the initial Outskirts selection. The controls are disabled in other chapters.
+
+`tests/style_expansion.gd` verifies actual menu choices, the other chapters' retained settings, cloth momentum/settling/frame-rate independence, unchanged gameplay/collision, and actual preference save/reload. Its GPU mode produces an eight-design knight/resident comparison and all three scenery captures, and checks distinct pixels for every design. Native source and packaged evidence lives in `.cache/godot/styles/`.
 
 ## Native chapter editor · 0.10.0
 

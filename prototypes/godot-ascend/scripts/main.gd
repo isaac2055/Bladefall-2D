@@ -55,6 +55,7 @@ var preferences = ConfigFile.new()
 var preferences_path="user://prototype-settings.cfg"
 var npc_picker: OptionButton
 var design_picker: OptionButton
+var environment_picker: OptionButton
 var appearance_preview: Control
 var preview_clock=0.0
 var preview_people=[]
@@ -137,6 +138,10 @@ func _ready():
   scene.walking_style=1
   scene.npc_design=clampi(int(preferences.get_value("display","npc_design",1)),0,2)
   scene.knight_design=clampi(int(preferences.get_value("display","knight_design",0)),0,2)
+  if number==1:
+   scene.knight_design=clampi(int(preferences.get_value("display","outskirts_knight_design",scene.knight_design)),0,7)
+   scene.npc_design=clampi(int(preferences.get_value("display","outskirts_npc_design",scene.npc_design)),0,7)
+   scene.environment_design=clampi(int(preferences.get_value("display","outskirts_environment",0)),0,2)
   scene.reduced_motion = preferences.get_value("display","reduced_motion",false)
   view.add_child(scene)
   scene.load_scene(chapter_world.active())
@@ -267,18 +272,23 @@ func create_interface():
  for i in range(data.world.rooms.size()): room_picker.add_item("%02d · %s" % [i+1,data.world.rooms[i].get("name",data.world.rooms[i].id)])
  room_picker.item_selected.connect(func(index):load_section(index);set_paused(false))
  column.add_child(room_picker)
- text(column,"KNIGHT APPEARANCE",12,"#bba984")
+ text(column,"OUTSKIRTS APPEARANCE · 4 STYLES × 2 DESIGNS",12,"#bba984")
  text(column,"Walking · Measured",14,"#a6b7bb")
  design_picker=OptionButton.new()
- for label in ["Knight · Pixel","Knight · Ink","Knight · Illustration"]: design_picker.add_item(label)
- design_picker.select(landscape.knight_design)
- design_picker.item_selected.connect(func(index):apply_character_settings(index,landscape.npc_design))
+ for id in Landscape.Styles.CHOICES: design_picker.add_item("Knight · "+Landscape.Styles.NAMES[id],id)
+ design_picker.select(design_picker.get_item_index(landscape.knight_design))
+ design_picker.item_selected.connect(func(index):apply_character_settings(design_picker.get_item_id(index),chapters[1].landscape.npc_design))
  column.add_child(design_picker)
  npc_picker=OptionButton.new()
- for label in ["People · Pixel","People · Ink","People · Illustration"]: npc_picker.add_item(label)
- npc_picker.select(landscape.npc_design)
- npc_picker.item_selected.connect(func(index):apply_character_settings(landscape.knight_design,index))
+ for id in Landscape.Styles.CHOICES: npc_picker.add_item("People · "+Landscape.Styles.NAMES[id],id)
+ npc_picker.select(npc_picker.get_item_index(landscape.npc_design))
+ npc_picker.item_selected.connect(func(index):apply_character_settings(chapters[1].landscape.knight_design,npc_picker.get_item_id(index)))
  column.add_child(npc_picker)
+ environment_picker=OptionButton.new()
+ for label in Landscape.Themes.NAMES: environment_picker.add_item("Scenery · "+label)
+ environment_picker.select(chapters[1].landscape.environment_design)
+ environment_picker.item_selected.connect(apply_environment_settings)
+ column.add_child(environment_picker)
  appearance_preview=Control.new()
  appearance_preview.custom_minimum_size=Vector2(560,168)
  appearance_preview.mouse_filter=Control.MOUSE_FILTER_IGNORE
@@ -327,15 +337,18 @@ func create_interface():
  text(column,"Native Ascend · six preloaded chapters",12,"#70888f")
  pause_panel.hide()
 func apply_character_settings(design,npc):
- for chapter in chapters.values():
-  chapter.landscape.walking_style=1
-  chapter.landscape.knight_design=design
-  chapter.landscape.npc_design=npc
-  chapter.landscape.queue_redraw()
-  chapter.landscape.front.queue_redraw()
- design_picker.select(design)
- npc_picker.select(npc)
+ var scene=chapters[1].landscape
+ scene.knight_design=clampi(design,0,7)
+ scene.npc_design=clampi(npc,0,7)
+ scene.queue_redraw()
+ scene.front.queue_redraw()
+ design_picker.select(design_picker.get_item_index(scene.knight_design))
+ npc_picker.select(npc_picker.get_item_index(scene.npc_design))
  appearance_preview.queue_redraw()
+ save_preferences()
+func apply_environment_settings(index):
+ chapters[1].landscape.set_environment_design(index)
+ environment_picker.select(index)
  save_preferences()
 func draw_appearance_preview():
  var old_ink=landscape.ink
@@ -360,8 +373,9 @@ func save_preferences():
  preferences.set_value("audio","voices",audio.voices_enabled)
  preferences.set_value("display","reduced_motion",landscape.reduced_motion)
  preferences.set_value("display","walking_style",1)
- preferences.set_value("display","npc_design",landscape.npc_design)
- preferences.set_value("display","knight_design",landscape.knight_design)
+ preferences.set_value("display","outskirts_npc_design",chapters[1].landscape.npc_design)
+ preferences.set_value("display","outskirts_knight_design",chapters[1].landscape.knight_design)
+ preferences.set_value("display","outskirts_environment",chapters[1].landscape.environment_design)
  preferences.save(preferences_path)
 func toggle_fullscreen():
  DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED if DisplayServer.window_get_mode()==DisplayServer.WINDOW_MODE_FULLSCREEN else DisplayServer.WINDOW_MODE_FULLSCREEN)
@@ -657,6 +671,11 @@ func switch_chapter(number):
  for i in range(data.world.rooms.size()): room_picker.add_item("%02d · %s" % [i+1,data.world.rooms[i].get("name",data.world.rooms[i].id)])
  room_picker.select(current)
  chapter_picker.select(CHAPTERS.find(number))
+ design_picker.disabled=number!=1
+ npc_picker.disabled=number!=1
+ environment_picker.disabled=number!=1
+ design_picker.select(design_picker.get_item_index(landscape.knight_design))
+ npc_picker.select(npc_picker.get_item_index(landscape.npc_design))
  title.text=data.world.name.to_upper()+" · ASCEND"
  pause_title.text=data.world.name.to_upper()
  pause_description.text="A road through the old watch · Ascend" if number==1 else ("Moths, pale resin and the lantern tree · Ascend" if number==2 else "Iron, counterweights and the toll road · Ascend")
