@@ -72,7 +72,7 @@ func check_native(source,fixtures):
  var compiled=chapter.compile_into(base)
  check(Codec.first_difference(base,compiled)=="","native workshop rooms preserve geometry, timings, colors and recordings")
  check(chapter.validate_data(compiled).is_empty(),"saved workshop validates")
- check(chapter.get_node("Rooms").get_child_count()==11,"eleven independently editable rooms")
+ check(chapter.get_node("Rooms").get_child_count()==13,"thirteen independently editable rooms")
  for i in range(2): check(Codec.first_difference(fixtures.acceptedRooms[i],compiled.world.rooms[i])=="","accepted room preserved: "+compiled.world.rooms[i].name)
  var timed=null
  for room in chapter.get_node("Rooms").get_children():
@@ -240,7 +240,7 @@ func check_application(data):
  await process_frame
  app.set_physics_process(false)
  var campaign=app.chapters[1].world.data.duplicate(true)
- check(app.chapter_number==4 and app.room_picker.item_count==11,"direct launch exposes all eleven workshop rooms")
+ check(app.chapter_number==4 and app.room_picker.item_count==13,"direct launch exposes all thirteen workshop rooms")
  check(app.workshop_previous.visible and app.workshop_next.visible,"previous/next room controls are available")
  check(app.world.data.constants==app.chapters[1].world.data.constants,"all rooms retain Outskirts player movement constants")
  for i in range(data.world.rooms.size()): await app_route(i)
@@ -279,7 +279,7 @@ func check_application(data):
  app.workshop_room(1)
  check(app.sim.room.id=="workshop-relay","next room wraps to Relay")
  app.workshop_room(-1)
- check(app.sim.room.id=="workshop-crown","previous room wraps to Hollow Crown")
+ check(app.sim.room.id=="workshop-returning","previous room wraps to Returning Seed")
  check(Codec.first_difference(campaign,app.chapters[1].world.data)=="","workshop leaves campaign data untouched")
  app.switch_chapter(1)
  check(not app.workshop_controls.visible and not app.workshop_demo_picker.visible,"campaign retains its ordinary interface")

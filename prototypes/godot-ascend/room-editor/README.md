@@ -37,9 +37,11 @@ node prototypes/godot-ascend/room-editor/check.mjs
 
 Requires the repository's existing Puppeteer dependency. This test uses a copy of the native scene, real browser input and the real Godot bridge. It exercises painting/erasing, terrain selection/copy, object placement/movement/size/destination/timing, undo/redo, room switching and resizing, pan/zoom, native save, draft recovery, imports/exports, external conflicts and backup restoration. A native gameplay check verifies collision/device edits, preservation of unselected rooms and no-edit round trips, outdated-demo handling and live inputs. It also verifies the real workshop and user Outskirts scene were untouched. Reports and screenshots are written under `.cache/room-editor-check/`.
 
-The workshop's existing `tests/workshop.gd` remains the regression test for all eleven workshop layouts. Its demonstration-based route checks will naturally need revisiting after intentional geometry edits.
+The workshop's existing `tests/workshop.gd` remains the regression test for all thirteen workshop layouts. Its demonstration-based route checks will naturally need revisiting after intentional geometry edits.
 
 
-Black Woods rooms are 9–11: Borrowed Branch, Crooked Orchard and Hollow Crown. The palette includes moth pods, phase bells, stakes, gates and both phase branches. Select a branch or gate to resize it. W + arrows cuts in the game; holding Space during a downward pod cut gives a higher rebound.
+Black Woods rooms are 9–13: Borrowed Branch, Crooked Orchard, Hollow Crown, Overturned Hollow and Returning Seed. The palette includes moth pods, phase bells, stakes, gates and both phase branches. Select a branch or gate to resize it. W + arrows cuts in the game; holding Space during a downward pod cut gives a higher rebound.
 
 Older six- and eight-room files merge by ID while retaining newer rooms. Older seventeen-room files restore matching active rooms, omit the six retired rooms from the active list, and retain the complete imported document in browser storage (`bladefall-editor-retired-draft-v019`). Keep your exported file if you want a portable archive of retired layouts. Unknown room IDs are rejected. Native backups from before consolidation remain available for review.
+
+Older eleven-room exports and browser drafts merge by ID while preserving Overturned Hollow and Returning Seed.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=142 format=4]
+[gd_scene load_steps=194 format=4]
 
 [ext_resource type="Script" path="res://authoring/world.gd" id="1_p5p1j"]
 [ext_resource type="Script" path="res://authoring/room.gd" id="2_0b5cq"]
@@ -912,6 +912,318 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_k3vro"]
 image = SubResource("Image_kfvxy")
 
+[sub_resource type="Image" id="Image_blcbb"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_88x5l"]
+image = SubResource("Image_blcbb")
+
+[sub_resource type="Image" id="Image_s8m1v"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_qbfrf"]
+image = SubResource("Image_s8m1v")
+
+[sub_resource type="Image" id="Image_rhvoq"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_yk8r8"]
+image = SubResource("Image_rhvoq")
+
+[sub_resource type="Image" id="Image_txvj3"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_8ofni"]
+image = SubResource("Image_txvj3")
+
+[sub_resource type="Image" id="Image_llye5"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_qrdpp"]
+image = SubResource("Image_llye5")
+
+[sub_resource type="Image" id="Image_dhihl"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_qfrx0"]
+image = SubResource("Image_dhihl")
+
+[sub_resource type="Image" id="Image_tkupo"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_a5jqn"]
+image = SubResource("Image_tkupo")
+
+[sub_resource type="Image" id="Image_8hlse"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_33tps"]
+image = SubResource("Image_8hlse")
+
+[sub_resource type="Image" id="Image_ac640"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_2yfrq"]
+image = SubResource("Image_ac640")
+
+[sub_resource type="Image" id="Image_r6o15"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_lh30q"]
+image = SubResource("Image_r6o15")
+
+[sub_resource type="Image" id="Image_v3l4k"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_wfnx0"]
+image = SubResource("Image_v3l4k")
+
+[sub_resource type="Image" id="Image_ys41t"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_37wwj"]
+image = SubResource("Image_ys41t")
+
+[sub_resource type="Image" id="Image_lklwe"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_06n1c"]
+image = SubResource("Image_lklwe")
+
+[sub_resource type="Image" id="Image_h3cdh"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_6kr5v"]
+image = SubResource("Image_h3cdh")
+
+[sub_resource type="Image" id="Image_ak8fi"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_nmlup"]
+image = SubResource("Image_ak8fi")
+
+[sub_resource type="Image" id="Image_4kl06"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_b5y23"]
+image = SubResource("Image_4kl06")
+
+[sub_resource type="Image" id="Image_g2s57"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_4njdv"]
+image = SubResource("Image_g2s57")
+
+[sub_resource type="Image" id="Image_05c6b"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_2nsmo"]
+image = SubResource("Image_05c6b")
+
+[sub_resource type="Image" id="Image_y04yf"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_xdt8i"]
+image = SubResource("Image_y04yf")
+
+[sub_resource type="Image" id="Image_tac4j"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_xfidu"]
+image = SubResource("Image_tac4j")
+
+[sub_resource type="Image" id="Image_xnfri"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_vpsab"]
+image = SubResource("Image_xnfri")
+
+[sub_resource type="Image" id="Image_1xy2p"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_37lr8"]
+image = SubResource("Image_1xy2p")
+
+[sub_resource type="Image" id="Image_ba5xq"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_ohjpc"]
+image = SubResource("Image_ba5xq")
+
+[sub_resource type="Image" id="Image_wec24"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_jw4br"]
+image = SubResource("Image_wec24")
+
+[sub_resource type="Image" id="Image_3e5y2"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_h8kh1"]
+image = SubResource("Image_3e5y2")
+
+[sub_resource type="Image" id="Image_oevs6"]
+data = {
+"data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
+"format": "RGBA8",
+"height": 8,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_vipbs"]
+image = SubResource("Image_oevs6")
+
 [node name="Ascend_4" type="Node2D"]
 script = ExtResource("1_p5p1j")
 world_number = 4
@@ -921,7 +1233,7 @@ accent_color = Color(0.9372549, 0.7490196, 0.4745098, 1)
 flowers_color = Color(0.76862746, 0.6745098, 0.8352941, 1)
 world_settings = {
 "atlasStart": "workshop-relay",
-"blurb": "Eight movement studies and three Black Woods route puzzles.",
+"blurb": "Eight movement studies and five Black Woods route puzzles.",
 "key": "movement-workshop",
 "kit": ["dash", "strike"],
 "n": 4.0,
@@ -986,6 +1298,16 @@ world_settings = {
 "room": "workshop-crown",
 "x": 640.0,
 "y": 0.0
+}, {
+"fire": null,
+"room": "workshop-overturned",
+"x": 704.0,
+"y": 0.0
+}, {
+"fire": null,
+"room": "workshop-returning",
+"x": 760.0,
+"y": 0.0
 }],
 "tapes": {
 "workshop-borrowed": [[10.0, ""], [2.0, "rj"], [12.0, "rx"], [12.0, "r"], [16.0, ""], [6.0, "lj"], [5.0, "us"], [65.0, "lgu"], [15.0, ""], [15.0, "j"], [12.0, "lux"], [45.0, "lgu"], [15.0, ""]],
@@ -996,7 +1318,9 @@ world_settings = {
 "workshop-ferry": [[17.0, "rg"], [33.0, "rg"], [6.0, "ruxg"], [12.0, "rgu"], [18.0, "rgu"], [3.0, "rjg"], [23.0, "r"], [12.0, "rj"], [25.0, "r"], [17.0, "d"], [6.0, "lxg"], [7.0, "lg"], [10.0, "lxg"], [10.0, "lg"], [10.0, "lux"], [50.0, "l"], [15.0, ""]],
 "workshop-gallery": [[30.0, "rg"], [36.0, "rgu"], [12.0, "rgu"], [12.0, "r"], [12.0, "lj"], [12.0, "ux"], [25.0, "lg"], [6.0, ""], [18.0, "ljg"], [10.0, "lgu"], [4.0, "rd"], [24.0, "d"], [12.0, "lxg"], [3.0, "lg"], [12.0, "lux"], [60.0, "l"], [15.0, ""]],
 "workshop-lintel": [[20.0, "l"], [15.0, "lj"], [65.0, ""], [10.0, "l"], [12.0, "lj"], [18.0, "lg"], [5.0, "lg"], [21.0, "lg"], [19.0, "rj"], [6.0, "ux"], [6.0, "u"], [28.0, "r"], [25.0, ""]],
+"workshop-overturned": [[10.0, ""], [12.0, "dx"], [30.0, ""], [75.0, "r"], [10.0, ""], [12.0, "rj"], [6.0, "dsj"], [22.0, "j"], [12.0, "ux"], [30.0, ""], [15.0, "rj"], [12.0, "rux"], [28.0, "rgu"], [12.0, ""]],
 "workshop-relay": [[15.0, "r"], [15.0, "rj"], [10.0, "rg"], [35.0, ""], [8.0, "rj"], [19.0, "r"], [6.0, "rxg"], [8.0, "rg"], [23.0, "rg"], [24.0, "lj"], [8.0, "l"], [20.0, ""]],
+"workshop-returning": [[10.0, ""], [30.0, "rj"], [12.0, "rx"], [45.0, "r"], [10.0, ""], [20.0, "j"], [6.0, "ldsj"], [30.0, "rj"], [81.0, "rgu"], [16.0, ""], [14.0, "lj"], [25.0, ""], [14.0, "lj"], [25.0, ""], [12.0, "lj"], [25.0, ""], [28.0, "lj"], [12.0, ""], [20.0, "l"], [10.0, ""], [6.0, "us"], [10.0, "r"], [30.0, ""], [6.0, "rdsj"], [16.0, "j"], [12.0, "ux"], [30.0, ""], [16.0, "lj"], [18.0, ""], [18.0, "lj"], [20.0, ""]],
 "workshop-smuggler": [[17.0, "rg"], [33.0, "rg"], [6.0, "ruxg"], [12.0, "rgu"], [18.0, "rgu"], [3.0, "rjg"], [23.0, "r"], [12.0, "rj"], [25.0, "r"], [17.0, "d"], [6.0, "lxg"], [7.0, "lg"], [10.0, "lxg"], [12.0, "r"], [20.0, "j"], [12.0, "ux"], [6.0, "r"], [10.0, "lxg"], [24.0, "lg"], [25.0, "rjg"], [20.0, "r"], [15.0, ""]],
 "workshop-tower": [[6.0, "r"], [15.0, "rj"], [8.0, "rg"], [25.0, "rg"], [12.0, "ljg"], [12.0, "l"], [12.0, "ux"], [12.0, "r"], [12.0, "rux"], [55.0, "r"], [45.0, ""]]
 },
@@ -1151,7 +1475,7 @@ original_palette = {
 "bunnies": "ffffffff",
 "flowers": "c4acd5ff"
 }
-source_fingerprint = "5e4f0591d4f06ec5edd7d7c7166d7a789d0c8166ce89a23f368223723192f106"
+source_fingerprint = "e5f4a5362c916b502432fc6fde62967bdb9cebed505e5396879add3c5301bf47"
 
 [node name="Rooms" type="Node2D" parent="."]
 
@@ -3485,3 +3809,955 @@ modulate = Color(1, 1, 1, 0.025)
 show_behind_parent = true
 position = Vector2(4, 4)
 texture = SubResource("ImageTexture_k3vro")
+
+[node name="workshop-overturned" type="Node2D" parent="Rooms"]
+position = Vector2(5632, 0)
+script = ExtResource("2_0b5cq")
+room_id = "workshop-overturned"
+room_title = "The Overturned Hollow"
+map_width = 48
+map_height = 34
+settings = {
+"aim8": true,
+"cols": 48.0,
+"exit": "none",
+"hint": "The amber floor opens the descent when it disappears. Go beneath the dividing root. Rebound through the absent far cap before restoring it beneath you.",
+"id": "workshop-overturned",
+"lock": ["parry", "portal"],
+"name": "The Overturned Hollow",
+"palette": "woods",
+"question": "When is a missing ceiling useful, and when should it become your floor?",
+"rows": 34.0,
+"workshopBiome": "woods",
+"workshopCameraAnchorY": 100.0,
+"workshopGoal": [256.0, 112.0, 72.0, 4.0],
+"workshopRoutes": [{
+"name": "Open the floor, pass the ceiling, restore the landing",
+"tape": [[10.0, ""], [12.0, "dx"], [30.0, ""], [75.0, "r"], [10.0, ""], [12.0, "rj"], [6.0, "dsj"], [22.0, "j"], [12.0, "ux"], [30.0, ""], [15.0, "rj"], [12.0, "rux"], [28.0, "rgu"], [12.0, ""]]
+}]
+}
+original_fields = ["id", "name", "cols", "rows", "exit", "aim8", "lock", "palette", "workshopBiome", "decor", "people", "zips", "workshopRoutes", "workshopGoal", "question", "hint", "workshopCameraAnchorY", "map"]
+original_spawn = Vector2(88, 136)
+
+[node name="Tiles" type="TileMapLayer" parent="Rooms/workshop-overturned"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAArAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAtAAAAAAAAAAAAAAAuAAAAAAAAAAAAAAAvAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAATAAEAAAAAAAAAAAAUAAEAAAAAAAAAAAAvAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAATAAIAAAAAAAAAAAAUAAIAAAAAAAAAAAAvAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAATAAMAAAAAAAAAAAAUAAMAAAAAAAAAAAAvAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAATAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAvAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAATAAUAAAAAAAAAAAAUAAUAAAAAAAAAAAAvAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAATAAYAAAAAAAAAAAAUAAYAAAAAAAAAAAAvAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAATAAcAAAAAAAAAAAAUAAcAAAAAAAAAAAAvAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAATAAgAAAAAAAAAAAAUAAgAAAAAAAAAAAAvAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAATAAkAAAAAAAAAAAAUAAkAAAAAAAAAAAAvAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAATAAoAAAAAAAAAAAAUAAoAAAAAAAAAAAAvAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAAvAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAATAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAAvAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAATAA0AAAAAAAAAAAAUAA0AAAAAAAAAAAAvAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAATAA4AAAAAAAAAAAAUAA4AAAAAAAAAAAAgAA4AAAAAAAAAAAAhAA4AAAAAAAAAAAAiAA4AAAAAAAAAAAAjAA4AAAAAAAAAAAAkAA4AAAAAAAAAAAAlAA4AAAAAAAAAAAAmAA4AAAAAAAAAAAAnAA4AAAAAAAAAAAAoAA4AAAAAAAAAAAAvAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAATAA8AAAAAAAAAAAAUAA8AAAAAAAAAAAAgAA8AAAAAAAAAAAAhAA8AAAAAAAAAAAAiAA8AAAAAAAAAAAAjAA8AAAAAAAAAAAAkAA8AAAAAAAAAAAAlAA8AAAAAAAAAAAAmAA8AAAAAAAAAAAAnAA8AAAAAAAAAAAAoAA8AAAAAAAAAAAAvAA8AAAAAAAAAAAAAABAAAAAAAAAAAAATABAAAAAAAAAAAAAUABAAAAAAAAAAAAAvABAAAAAAAAAAAAAAABEAAAAAAAAAAAATABEAAAAAAAAAAAAUABEAAAAAAAAAAAAvABEAAAAAAAAAAAAAABIAAAAAAAAAAAAEABIAAAAAAAAAAAAFABIAAAAAAAAAAAAGABIAAAAAAAAAAAAHABIAAAAAAAAAAAATABIAAAAAAAAAAAAUABIAAAAAAAAAAAAeABIAAAAAAAAAAAAvABIAAAAAAAAAAAAAABMAAAAAAAAAAAAEABMAAAAAAAAAAAAFABMAAAAAAAAAAAAGABMAAAAAAAAAAAAHABMAAAAAAAAAAAATABMAAAAAAAAAAAAUABMAAAAAAAAAAAAeABMAAAAAAAAAAAAvABMAAAAAAAAAAAAAABQAAAAAAAAAAAAEABQAAAAAAAAAAAAFABQAAAAAAAAAAAAGABQAAAAAAAAAAAAHABQAAAAAAAAAAAATABQAAAAAAAAAAAAUABQAAAAAAAAAAAAdABQAAAAFAAAAAAAeABQAAAAAAAAAAAAvABQAAAAAAAAAAAAAABUAAAAAAAAAAAAEABUAAAAAAAAAAAAFABUAAAAAAAAAAAAGABUAAAAAAAAAAAAHABUAAAAAAAAAAAAdABUAAAAFAAAAAAAeABUAAAAAAAAAAAAvABUAAAAAAAAAAAAAABYAAAAAAAAAAAAEABYAAAAAAAAAAAAFABYAAAAAAAAAAAAGABYAAAAAAAAAAAAHABYAAAAAAAAAAAAdABYAAAAFAAAAAAAeABYAAAAAAAAAAAAvABYAAAAAAAAAAAAAABcAAAAAAAAAAAAEABcAAAAAAAAAAAAFABcAAAAAAAAAAAAGABcAAAAAAAAAAAAHABcAAAAAAAAAAAAdABcAAAAFAAAAAAAeABcAAAAAAAAAAAAvABcAAAAAAAAAAAAAABgAAAAAAAAAAAAEABgAAAAAAAAAAAAFABgAAAAAAAAAAAAGABgAAAAAAAAAAAAHABgAAAAAAAAAAAAdABgAAAAFAAAAAAAeABgAAAAAAAAAAAAvABgAAAAAAAAAAAAAABkAAAAAAAAAAAAEABkAAAAAAAAAAAAFABkAAAAAAAAAAAAGABkAAAAAAAAAAAAHABkAAAAAAAAAAAAdABkAAAAFAAAAAAAeABkAAAAAAAAAAAAvABkAAAAAAAAAAAAAABoAAAAAAAAAAAAEABoAAAAAAAAAAAAFABoAAAAAAAAAAAAGABoAAAAAAAAAAAAHABoAAAAAAAAAAAAdABoAAAAFAAAAAAAeABoAAAAAAAAAAAAvABoAAAAAAAAAAAAAABsAAAAAAAAAAAAEABsAAAAAAAAAAAAFABsAAAAAAAAAAAAGABsAAAAAAAAAAAAHABsAAAAAAAAAAAAdABsAAAAFAAAAAAAeABsAAAAAAAAAAAAvABsAAAAAAAAAAAAAABwAAAAAAAAAAAAEABwAAAAAAAAAAAAFABwAAAAAAAAAAAAGABwAAAAAAAAAAAAHABwAAAAAAAAAAAAdABwAAAAFAAAAAAAeABwAAAAAAAAAAAAvABwAAAAAAAAAAAAAAB0AAAAAAAAAAAAEAB0AAAAAAAAAAAAFAB0AAAAAAAAAAAAGAB0AAAAAAAAAAAAHAB0AAAAAAAAAAAAdAB0AAAAFAAAAAAAeAB0AAAAAAAAAAAAvAB0AAAAAAAAAAAAAAB4AAAAAAAAAAAAEAB4AAAAAAAAAAAAFAB4AAAAAAAAAAAAGAB4AAAAAAAAAAAAHAB4AAAAAAAAAAAAdAB4AAAAFAAAAAAAeAB4AAAAAAAAAAAAvAB4AAAAAAAAAAAAAAB8AAAAAAAAAAAABAB8AAAADAAAAAAACAB8AAAADAAAAAAADAB8AAAADAAAAAAAEAB8AAAAAAAAAAAAFAB8AAAAAAAAAAAAGAB8AAAAAAAAAAAAHAB8AAAAAAAAAAAAIAB8AAAADAAAAAAAJAB8AAAADAAAAAAAKAB8AAAADAAAAAAALAB8AAAADAAAAAAAMAB8AAAADAAAAAAANAB8AAAADAAAAAAAOAB8AAAADAAAAAAAPAB8AAAADAAAAAAAQAB8AAAADAAAAAAARAB8AAAADAAAAAAASAB8AAAADAAAAAAATAB8AAAADAAAAAAAUAB8AAAADAAAAAAAVAB8AAAADAAAAAAAWAB8AAAADAAAAAAAXAB8AAAADAAAAAAAYAB8AAAADAAAAAAAZAB8AAAADAAAAAAAaAB8AAAADAAAAAAAbAB8AAAADAAAAAAAcAB8AAAADAAAAAAAdAB8AAAADAAAAAAAeAB8AAAAAAAAAAAAfAB8AAAADAAAAAAAgAB8AAAADAAAAAAAhAB8AAAADAAAAAAAiAB8AAAADAAAAAAAjAB8AAAADAAAAAAAkAB8AAAADAAAAAAAlAB8AAAADAAAAAAAmAB8AAAADAAAAAAAnAB8AAAADAAAAAAAoAB8AAAADAAAAAAApAB8AAAADAAAAAAAqAB8AAAADAAAAAAArAB8AAAADAAAAAAAsAB8AAAADAAAAAAAtAB8AAAADAAAAAAAuAB8AAAADAAAAAAAvAB8AAAAAAAAAAAAAACAAAAAAAAAAAAABACAAAAADAAAAAAACACAAAAADAAAAAAADACAAAAADAAAAAAAEACAAAAAAAAAAAAAFACAAAAAAAAAAAAAGACAAAAAAAAAAAAAHACAAAAAAAAAAAAAIACAAAAADAAAAAAAJACAAAAADAAAAAAAKACAAAAADAAAAAAALACAAAAADAAAAAAAMACAAAAADAAAAAAANACAAAAADAAAAAAAOACAAAAADAAAAAAAPACAAAAADAAAAAAAQACAAAAADAAAAAAARACAAAAADAAAAAAASACAAAAADAAAAAAATACAAAAADAAAAAAAUACAAAAADAAAAAAAVACAAAAADAAAAAAAWACAAAAADAAAAAAAXACAAAAADAAAAAAAYACAAAAADAAAAAAAZACAAAAADAAAAAAAaACAAAAADAAAAAAAbACAAAAADAAAAAAAcACAAAAADAAAAAAAdACAAAAADAAAAAAAeACAAAAAAAAAAAAAfACAAAAADAAAAAAAgACAAAAADAAAAAAAhACAAAAADAAAAAAAiACAAAAADAAAAAAAjACAAAAADAAAAAAAkACAAAAADAAAAAAAlACAAAAADAAAAAAAmACAAAAADAAAAAAAnACAAAAADAAAAAAAoACAAAAADAAAAAAApACAAAAADAAAAAAAqACAAAAADAAAAAAArACAAAAADAAAAAAAsACAAAAADAAAAAAAtACAAAAADAAAAAAAuACAAAAADAAAAAAAvACAAAAAAAAAAAAAAACEAAAAAAAAAAAABACEAAAAAAAAAAAACACEAAAAAAAAAAAADACEAAAAAAAAAAAAEACEAAAAAAAAAAAAFACEAAAAAAAAAAAAGACEAAAAAAAAAAAAHACEAAAAAAAAAAAAIACEAAAAAAAAAAAAJACEAAAAAAAAAAAAKACEAAAAAAAAAAAALACEAAAAAAAAAAAAMACEAAAAAAAAAAAANACEAAAAAAAAAAAAOACEAAAAAAAAAAAAPACEAAAAAAAAAAAAQACEAAAAAAAAAAAARACEAAAAAAAAAAAASACEAAAAAAAAAAAATACEAAAAAAAAAAAAUACEAAAAAAAAAAAAVACEAAAAAAAAAAAAWACEAAAAAAAAAAAAXACEAAAAAAAAAAAAYACEAAAAAAAAAAAAZACEAAAAAAAAAAAAaACEAAAAAAAAAAAAbACEAAAAAAAAAAAAcACEAAAAAAAAAAAAdACEAAAAAAAAAAAAeACEAAAAAAAAAAAAfACEAAAAAAAAAAAAgACEAAAAAAAAAAAAhACEAAAAAAAAAAAAiACEAAAAAAAAAAAAjACEAAAAAAAAAAAAkACEAAAAAAAAAAAAlACEAAAAAAAAAAAAmACEAAAAAAAAAAAAnACEAAAAAAAAAAAAoACEAAAAAAAAAAAApACEAAAAAAAAAAAAqACEAAAAAAAAAAAArACEAAAAAAAAAAAAsACEAAAAAAAAAAAAtACEAAAAAAAAAAAAuACEAAAAAAAAAAAAvACEAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_wwhx0")
+
+[node name="Objects" type="Node2D" parent="Rooms/workshop-overturned"]
+
+[node name="Spawn" type="Node2D" parent="Rooms/workshop-overturned/Objects"]
+position = Vector2(88, 136)
+script = ExtResource("3_hhdtj")
+kind = "Spawn"
+glyph = "P"
+original_position = Vector2(88, 136)
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-overturned/Objects/Spawn"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_88x5l")
+
+[node name="Fixture_A_8_18" type="Node2D" parent="Rooms/workshop-overturned/Objects"]
+position = Vector2(64, 144)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "A"
+footprint = Vector2i(11, 1)
+original_position = Vector2(64, 144)
+preview_entity = {
+&"body": 0,
+"h": 8,
+"id": 1,
+"ox": 64,
+"oy": 144,
+&"phase": 0,
+"remX": 0.0,
+"remY": 0.0,
+&"solid": true,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "toggle",
+"vx": 0.0,
+"vy": 0.0,
+"w": 88,
+"x": 64,
+"y": 144
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-overturned/Objects/Fixture_A_8_18"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_qbfrf")
+
+[node name="Fixture_A_21_19" type="Node2D" parent="Rooms/workshop-overturned/Objects"]
+position = Vector2(168, 152)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "A"
+footprint = Vector2i(9, 1)
+original_position = Vector2(168, 152)
+preview_entity = {
+&"body": 1,
+"h": 8,
+"id": 2,
+"ox": 168,
+"oy": 152,
+&"phase": 0,
+"remX": 0.0,
+"remY": 0.0,
+&"solid": true,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "toggle",
+"vx": 0.0,
+"vy": 0.0,
+"w": 72,
+"x": 168,
+"y": 152
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-overturned/Objects/Fixture_A_21_19"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_yk8r8")
+
+[node name="Fixture_B_10_23" type="Node2D" parent="Rooms/workshop-overturned/Objects"]
+position = Vector2(80, 184)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "B"
+footprint = Vector2i(7, 1)
+original_position = Vector2(80, 184)
+preview_entity = {
+&"body": 2,
+"h": 8,
+"id": 3,
+"ox": 80,
+"oy": 184,
+&"phase": 1,
+"remX": 0.0,
+"remY": 0.0,
+&"solid": false,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "toggle",
+"vx": 0.0,
+"vy": 0.0,
+"w": 56,
+"x": 80,
+"y": 184
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-overturned/Objects/Fixture_B_10_23"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_8ofni")
+
+[node name="Fixture_b_26_24" type="Node2D" parent="Rooms/workshop-overturned/Objects"]
+position = Vector2(208, 192)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "b"
+original_position = Vector2(208, 192)
+preview_entity = {
+"h": 8,
+"id": 0,
+"ox": 208,
+"oy": 192,
+"remX": 0.0,
+"remY": 0.0,
+"state": "idle",
+"t": 0,
+"timer": 0,
+"type": "pod",
+"vx": 0.0,
+"vy": 0.0,
+"w": 8,
+"x": 208,
+"y": 192
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-overturned/Objects/Fixture_b_26_24"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_qrdpp")
+
+[node name="Fixture_B_21_27" type="Node2D" parent="Rooms/workshop-overturned/Objects"]
+position = Vector2(168, 216)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "B"
+footprint = Vector2i(8, 1)
+original_position = Vector2(168, 216)
+preview_entity = {
+&"body": 3,
+"h": 8,
+"id": 4,
+"ox": 168,
+"oy": 216,
+&"phase": 1,
+"remX": 0.0,
+"remY": 0.0,
+&"solid": false,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "toggle",
+"vx": 0.0,
+"vy": 0.0,
+"w": 64,
+"x": 168,
+"y": 216
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-overturned/Objects/Fixture_B_21_27"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_qfrx0")
+
+[node name="workshop-returning" type="Node2D" parent="Rooms"]
+position = Vector2(6080, 0)
+script = ExtResource("2_0b5cq")
+room_id = "workshop-returning"
+room_title = "The Returning Seed"
+map_width = 56
+map_height = 42
+settings = {
+"aim8": true,
+"cols": 56.0,
+"exit": "none",
+"hint": "Hold jump and cut down-left through the low window, then steer right. Keep blue for the outward climb. Reach the bell from the far side before changing phase. Amber opens the roof: return to the same pod from above, then dash up to make the blue homeward landing.",
+"id": "workshop-returning",
+"lock": ["parry", "portal"],
+"name": "The Returning Seed",
+"palette": "woods",
+"question": "What changes when you return to the same pod from above?",
+"rows": 42.0,
+"workshopBiome": "woods",
+"workshopCameraAnchorY": 110.0,
+"workshopGoal": [80.0, 112.0, 48.0, 4.0],
+"workshopRoutes": [{
+"name": "Outward diagonal rebound, open the roof, return from above",
+"tape": [[10.0, ""], [30.0, "rj"], [12.0, "rx"], [45.0, "r"], [10.0, ""], [20.0, "j"], [6.0, "ldsj"], [30.0, "rj"], [81.0, "rgu"], [16.0, ""], [14.0, "lj"], [25.0, ""], [14.0, "lj"], [25.0, ""], [12.0, "lj"], [25.0, ""], [28.0, "lj"], [12.0, ""], [20.0, "l"], [10.0, ""], [6.0, "us"], [10.0, "r"], [30.0, ""], [6.0, "rdsj"], [16.0, "j"], [12.0, "ux"], [30.0, ""], [16.0, "lj"], [18.0, ""], [18.0, "lj"], [20.0, ""]]
+}]
+}
+original_fields = ["id", "name", "cols", "rows", "exit", "aim8", "lock", "palette", "workshopBiome", "decor", "people", "zips", "workshopRoutes", "workshopGoal", "question", "hint", "workshopCameraAnchorY", "map"]
+original_spawn = Vector2(64, 240)
+
+[node name="Tiles" type="TileMapLayer" parent="Rooms/workshop-returning"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAArAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAtAAAAAAAAAAAAAAAuAAAAAAAAAAAAAAAvAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAxAAAAAAAAAAAAAAAyAAAAAAAAAAAAAAAzAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA1AAAAAAAAAAAAAAA2AAAAAAAAAAAAAAA3AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA3AAEAAAAAAAAAAAAAAAIAAAAAAAAAAAA3AAIAAAAAAAAAAAAAAAMAAAAAAAAAAAA3AAMAAAAAAAAAAAAAAAQAAAAAAAAAAAA3AAQAAAAAAAAAAAAAAAUAAAAAAAAAAAA3AAUAAAAAAAAAAAAAAAYAAAAAAAAAAAA3AAYAAAAAAAAAAAAAAAcAAAAAAAAAAAA3AAcAAAAAAAAAAAAAAAgAAAAAAAAAAAA3AAgAAAAAAAAAAAAAAAkAAAAAAAAAAAA3AAkAAAAAAAAAAAAAAAoAAAAAAAAAAAA3AAoAAAAAAAAAAAAAAAsAAAAAAAAAAAA3AAsAAAAAAAAAAAAAAAwAAAAAAAAAAAA3AAwAAAAAAAAAAAAAAA0AAAAAAAAAAAA3AA0AAAAAAAAAAAAAAA4AAAAAAAAAAAA3AA4AAAAAAAAAAAAAAA8AAAAAAAAAAAA3AA8AAAAAAAAAAAAAABAAAAAAAAAAAAAbABAAAAAGAAAAAAA3ABAAAAAAAAAAAAAAABEAAAAAAAAAAAAbABEAAAAGAAAAAAA3ABEAAAAAAAAAAAAAABIAAAAAAAAAAAAbABIAAAAGAAAAAAA3ABIAAAAAAAAAAAAAABMAAAAAAAAAAAAbABMAAAAGAAAAAAA3ABMAAAAAAAAAAAAAABQAAAAAAAAAAAAbABQAAAAGAAAAAAA3ABQAAAAAAAAAAAAAABUAAAAAAAAAAAAbABUAAAAGAAAAAAA3ABUAAAAAAAAAAAAAABYAAAAAAAAAAAAbABYAAAAGAAAAAAA3ABYAAAAAAAAAAAAAABcAAAAAAAAAAAAZABcAAAAGAAAAAAAbABcAAAAGAAAAAAA3ABcAAAAAAAAAAAAAABgAAAAAAAAAAAAZABgAAAAGAAAAAAAaABgAAAAGAAAAAAA3ABgAAAAAAAAAAAAAABkAAAAAAAAAAAAZABkAAAAGAAAAAAAaABkAAAAGAAAAAAA3ABkAAAAAAAAAAAAAABoAAAAAAAAAAAAWABoAAAAAAAAAAAAZABoAAAAGAAAAAAA3ABoAAAAAAAAAAAAAABsAAAAAAAAAAAAWABsAAAAAAAAAAAAZABsAAAAAAAAAAAA3ABsAAAAAAAAAAAAAABwAAAAAAAAAAAAWABwAAAAAAAAAAAAfABwAAAAFAAAAAAA3ABwAAAAAAAAAAAAAAB0AAAAAAAAAAAAWAB0AAAAAAAAAAAAXAB0AAAAAAAAAAAAYAB0AAAAAAAAAAAAZAB0AAAAAAAAAAAAaAB0AAAAAAAAAAAAiAB0AAAAFAAAAAAA3AB0AAAAAAAAAAAAAAB4AAAAAAAAAAAA3AB4AAAAAAAAAAAAAAB8AAAAAAAAAAAAEAB8AAAAAAAAAAAAFAB8AAAAAAAAAAAAGAB8AAAAAAAAAAAAHAB8AAAAAAAAAAAAIAB8AAAAAAAAAAAAJAB8AAAAAAAAAAAAKAB8AAAAAAAAAAAALAB8AAAAAAAAAAAAMAB8AAAAAAAAAAAANAB8AAAAAAAAAAAA3AB8AAAAAAAAAAAAAACAAAAAAAAAAAAAEACAAAAAAAAAAAAAFACAAAAAAAAAAAAAGACAAAAAAAAAAAAAHACAAAAAAAAAAAAAIACAAAAAAAAAAAAAJACAAAAAAAAAAAAAKACAAAAAAAAAAAAALACAAAAAAAAAAAAAMACAAAAAAAAAAAAANACAAAAAAAAAAAAA3ACAAAAAAAAAAAAAAACEAAAAAAAAAAAAEACEAAAAAAAAAAAAFACEAAAAAAAAAAAAGACEAAAAAAAAAAAAHACEAAAAAAAAAAAAIACEAAAAAAAAAAAAJACEAAAAAAAAAAAAKACEAAAAAAAAAAAALACEAAAAAAAAAAAAMACEAAAAAAAAAAAANACEAAAAAAAAAAAA3ACEAAAAAAAAAAAAAACIAAAAAAAAAAAAEACIAAAAAAAAAAAAFACIAAAAAAAAAAAAGACIAAAAAAAAAAAAHACIAAAAAAAAAAAAIACIAAAAAAAAAAAAJACIAAAAAAAAAAAAKACIAAAAAAAAAAAALACIAAAAAAAAAAAAMACIAAAAAAAAAAAANACIAAAAAAAAAAAA3ACIAAAAAAAAAAAAAACMAAAAAAAAAAAAEACMAAAAAAAAAAAAFACMAAAAAAAAAAAAGACMAAAAAAAAAAAAHACMAAAAAAAAAAAAIACMAAAAAAAAAAAAJACMAAAAAAAAAAAAKACMAAAAAAAAAAAALACMAAAAAAAAAAAAMACMAAAAAAAAAAAANACMAAAAAAAAAAAA3ACMAAAAAAAAAAAAAACQAAAAAAAAAAAAEACQAAAAAAAAAAAAFACQAAAAAAAAAAAAGACQAAAAAAAAAAAAHACQAAAAAAAAAAAAIACQAAAAAAAAAAAAJACQAAAAAAAAAAAAKACQAAAAAAAAAAAALACQAAAAAAAAAAAAMACQAAAAAAAAAAAANACQAAAAAAAAAAAA3ACQAAAAAAAAAAAAAACUAAAAAAAAAAAAEACUAAAAAAAAAAAAFACUAAAAAAAAAAAAGACUAAAAAAAAAAAAHACUAAAAAAAAAAAAIACUAAAAAAAAAAAAJACUAAAAAAAAAAAAKACUAAAAAAAAAAAALACUAAAAAAAAAAAAMACUAAAAAAAAAAAANACUAAAAAAAAAAAA3ACUAAAAAAAAAAAAAACYAAAAAAAAAAAAEACYAAAAAAAAAAAAFACYAAAAAAAAAAAAGACYAAAAAAAAAAAAHACYAAAAAAAAAAAAIACYAAAAAAAAAAAAJACYAAAAAAAAAAAAKACYAAAAAAAAAAAALACYAAAAAAAAAAAAMACYAAAAAAAAAAAANACYAAAAAAAAAAAA3ACYAAAAAAAAAAAAAACcAAAAAAAAAAAABACcAAAADAAAAAAACACcAAAADAAAAAAADACcAAAADAAAAAAAEACcAAAAAAAAAAAAFACcAAAAAAAAAAAAGACcAAAAAAAAAAAAHACcAAAAAAAAAAAAIACcAAAAAAAAAAAAJACcAAAAAAAAAAAAKACcAAAAAAAAAAAALACcAAAAAAAAAAAAMACcAAAAAAAAAAAANACcAAAAAAAAAAAAOACcAAAADAAAAAAAPACcAAAADAAAAAAAQACcAAAADAAAAAAARACcAAAADAAAAAAASACcAAAADAAAAAAATACcAAAADAAAAAAAUACcAAAADAAAAAAAVACcAAAADAAAAAAAWACcAAAADAAAAAAAXACcAAAADAAAAAAAYACcAAAADAAAAAAAZACcAAAADAAAAAAAaACcAAAADAAAAAAAbACcAAAADAAAAAAAcACcAAAADAAAAAAAdACcAAAADAAAAAAAeACcAAAADAAAAAAAfACcAAAADAAAAAAAgACcAAAADAAAAAAAhACcAAAADAAAAAAAiACcAAAADAAAAAAAjACcAAAADAAAAAAAkACcAAAADAAAAAAAlACcAAAADAAAAAAAmACcAAAADAAAAAAAnACcAAAADAAAAAAAoACcAAAADAAAAAAApACcAAAADAAAAAAAqACcAAAADAAAAAAArACcAAAADAAAAAAAsACcAAAADAAAAAAAtACcAAAADAAAAAAAuACcAAAADAAAAAAAvACcAAAADAAAAAAAwACcAAAADAAAAAAAxACcAAAADAAAAAAAyACcAAAADAAAAAAAzACcAAAADAAAAAAA0ACcAAAADAAAAAAA1ACcAAAADAAAAAAA2ACcAAAADAAAAAAA3ACcAAAAAAAAAAAAAACgAAAAAAAAAAAABACgAAAADAAAAAAACACgAAAADAAAAAAADACgAAAADAAAAAAAEACgAAAAAAAAAAAAFACgAAAAAAAAAAAAGACgAAAAAAAAAAAAHACgAAAAAAAAAAAAIACgAAAAAAAAAAAAJACgAAAAAAAAAAAAKACgAAAAAAAAAAAALACgAAAAAAAAAAAAMACgAAAAAAAAAAAANACgAAAAAAAAAAAAOACgAAAADAAAAAAAPACgAAAADAAAAAAAQACgAAAADAAAAAAARACgAAAADAAAAAAASACgAAAADAAAAAAATACgAAAADAAAAAAAUACgAAAADAAAAAAAVACgAAAADAAAAAAAWACgAAAADAAAAAAAXACgAAAADAAAAAAAYACgAAAADAAAAAAAZACgAAAADAAAAAAAaACgAAAADAAAAAAAbACgAAAADAAAAAAAcACgAAAADAAAAAAAdACgAAAADAAAAAAAeACgAAAADAAAAAAAfACgAAAADAAAAAAAgACgAAAADAAAAAAAhACgAAAADAAAAAAAiACgAAAADAAAAAAAjACgAAAADAAAAAAAkACgAAAADAAAAAAAlACgAAAADAAAAAAAmACgAAAADAAAAAAAnACgAAAADAAAAAAAoACgAAAADAAAAAAApACgAAAADAAAAAAAqACgAAAADAAAAAAArACgAAAADAAAAAAAsACgAAAADAAAAAAAtACgAAAADAAAAAAAuACgAAAADAAAAAAAvACgAAAADAAAAAAAwACgAAAADAAAAAAAxACgAAAADAAAAAAAyACgAAAADAAAAAAAzACgAAAADAAAAAAA0ACgAAAADAAAAAAA1ACgAAAADAAAAAAA2ACgAAAADAAAAAAA3ACgAAAAAAAAAAAAAACkAAAAAAAAAAAABACkAAAAAAAAAAAACACkAAAAAAAAAAAADACkAAAAAAAAAAAAEACkAAAAAAAAAAAAFACkAAAAAAAAAAAAGACkAAAAAAAAAAAAHACkAAAAAAAAAAAAIACkAAAAAAAAAAAAJACkAAAAAAAAAAAAKACkAAAAAAAAAAAALACkAAAAAAAAAAAAMACkAAAAAAAAAAAANACkAAAAAAAAAAAAOACkAAAAAAAAAAAAPACkAAAAAAAAAAAAQACkAAAAAAAAAAAARACkAAAAAAAAAAAASACkAAAAAAAAAAAATACkAAAAAAAAAAAAUACkAAAAAAAAAAAAVACkAAAAAAAAAAAAWACkAAAAAAAAAAAAXACkAAAAAAAAAAAAYACkAAAAAAAAAAAAZACkAAAAAAAAAAAAaACkAAAAAAAAAAAAbACkAAAAAAAAAAAAcACkAAAAAAAAAAAAdACkAAAAAAAAAAAAeACkAAAAAAAAAAAAfACkAAAAAAAAAAAAgACkAAAAAAAAAAAAhACkAAAAAAAAAAAAiACkAAAAAAAAAAAAjACkAAAAAAAAAAAAkACkAAAAAAAAAAAAlACkAAAAAAAAAAAAmACkAAAAAAAAAAAAnACkAAAAAAAAAAAAoACkAAAAAAAAAAAApACkAAAAAAAAAAAAqACkAAAAAAAAAAAArACkAAAAAAAAAAAAsACkAAAAAAAAAAAAtACkAAAAAAAAAAAAuACkAAAAAAAAAAAAvACkAAAAAAAAAAAAwACkAAAAAAAAAAAAxACkAAAAAAAAAAAAyACkAAAAAAAAAAAAzACkAAAAAAAAAAAA0ACkAAAAAAAAAAAA1ACkAAAAAAAAAAAA2ACkAAAAAAAAAAAA3ACkAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_wwhx0")
+
+[node name="Objects" type="Node2D" parent="Rooms/workshop-returning"]
+
+[node name="Fixture_A_16_1" type="Node2D" parent="Rooms/workshop-returning/Objects"]
+position = Vector2(128, 8)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "A"
+footprint = Vector2i(1, 32)
+original_position = Vector2(128, 8)
+preview_entity = {
+&"body": 0,
+"h": 256,
+"id": 2,
+"ox": 128,
+"oy": 8,
+&"phase": 0,
+"remX": 0.0,
+"remY": 0.0,
+&"solid": true,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "toggle",
+"vx": 0.0,
+"vy": 0.0,
+"w": 8,
+"x": 128,
+"y": 8
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-returning/Objects/Fixture_A_16_1"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_a5jqn")
+
+[node name="Fixture_A_24_1" type="Node2D" parent="Rooms/workshop-returning/Objects"]
+position = Vector2(192, 8)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "A"
+footprint = Vector2i(1, 14)
+original_position = Vector2(192, 8)
+preview_entity = {
+&"body": 1,
+"h": 112,
+"id": 3,
+"ox": 192,
+"oy": 8,
+&"phase": 0,
+"remX": 0.0,
+"remY": 0.0,
+&"solid": true,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "toggle",
+"vx": 0.0,
+"vy": 0.0,
+"w": 8,
+"x": 192,
+"y": 8
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-returning/Objects/Fixture_A_24_1"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_33tps")
+
+[node name="Fixture_x_22_11" type="Node2D" parent="Rooms/workshop-returning/Objects"]
+position = Vector2(176, 88)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "x"
+original_position = Vector2(176, 88)
+preview_entity = {
+"h": 8,
+"id": 0,
+"ox": 176,
+"oy": 88,
+"remX": 0.0,
+"remY": 0.0,
+"state": "idle",
+"t": 0,
+"timer": 0,
+"type": "bell",
+"vx": 0.0,
+"vy": 0.0,
+"w": 8,
+"x": 176,
+"y": 88
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-returning/Objects/Fixture_x_22_11"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_2yfrq")
+
+[node name="Fixture_B_10_14" type="Node2D" parent="Rooms/workshop-returning/Objects"]
+position = Vector2(80, 112)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "B"
+footprint = Vector2i(6, 2)
+original_position = Vector2(80, 112)
+preview_entity = {
+&"body": 2,
+"h": 16,
+"id": 4,
+"ox": 80,
+"oy": 112,
+&"phase": 1,
+"remX": 0.0,
+"remY": 0.0,
+&"solid": false,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "toggle",
+"vx": 0.0,
+"vy": 0.0,
+"w": 48,
+"x": 80,
+"y": 112
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-returning/Objects/Fixture_B_10_14"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_lh30q")
+
+[node name="Fixture_B_21_15" type="Node2D" parent="Rooms/workshop-returning/Objects"]
+position = Vector2(168, 120)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "B"
+footprint = Vector2i(6, 1)
+original_position = Vector2(168, 120)
+preview_entity = {
+&"body": 3,
+"h": 8,
+"id": 5,
+"ox": 168,
+"oy": 120,
+&"phase": 1,
+"remX": 0.0,
+"remY": 0.0,
+&"solid": false,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "toggle",
+"vx": 0.0,
+"vy": 0.0,
+"w": 48,
+"x": 168,
+"y": 120
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-returning/Objects/Fixture_B_21_15"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_wfnx0")
+
+[node name="Fixture_A_24_16" type="Node2D" parent="Rooms/workshop-returning/Objects"]
+position = Vector2(192, 128)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "A"
+footprint = Vector2i(1, 11)
+original_position = Vector2(192, 128)
+preview_entity = {
+&"body": 4,
+"h": 88,
+"id": 6,
+"ox": 192,
+"oy": 128,
+&"phase": 0,
+"remX": 0.0,
+"remY": 0.0,
+&"solid": true,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "toggle",
+"vx": 0.0,
+"vy": 0.0,
+"w": 8,
+"x": 192,
+"y": 128
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-returning/Objects/Fixture_A_24_16"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_37wwj")
+
+[node name="Fixture_B_26_16" type="Node2D" parent="Rooms/workshop-returning/Objects"]
+position = Vector2(208, 128)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "B"
+footprint = Vector2i(1, 8)
+original_position = Vector2(208, 128)
+preview_entity = {
+&"body": 5,
+"h": 64,
+"id": 7,
+"ox": 208,
+"oy": 128,
+&"phase": 1,
+"remX": 0.0,
+"remY": 0.0,
+&"solid": false,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "toggle",
+"vx": 0.0,
+"vy": 0.0,
+"w": 8,
+"x": 208,
+"y": 128
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-returning/Objects/Fixture_B_26_16"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_06n1c")
+
+[node name="Fixture_B_17_17" type="Node2D" parent="Rooms/workshop-returning/Objects"]
+position = Vector2(136, 136)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "B"
+footprint = Vector2i(2, 2)
+original_position = Vector2(136, 136)
+preview_entity = {
+&"body": 6,
+"h": 16,
+"id": 8,
+"ox": 136,
+"oy": 136,
+&"phase": 1,
+"remX": 0.0,
+"remY": 0.0,
+&"solid": false,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "toggle",
+"vx": 0.0,
+"vy": 0.0,
+"w": 16,
+"x": 136,
+"y": 136
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-returning/Objects/Fixture_B_17_17"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_6kr5v")
+
+[node name="Fixture_B_30_18" type="Node2D" parent="Rooms/workshop-returning/Objects"]
+position = Vector2(240, 144)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "B"
+footprint = Vector2i(2, 2)
+original_position = Vector2(240, 144)
+preview_entity = {
+&"body": 7,
+"h": 16,
+"id": 9,
+"ox": 240,
+"oy": 144,
+&"phase": 1,
+"remX": 0.0,
+"remY": 0.0,
+&"solid": false,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "toggle",
+"vx": 0.0,
+"vy": 0.0,
+"w": 16,
+"x": 240,
+"y": 144
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-returning/Objects/Fixture_B_30_18"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_nmlup")
+
+[node name="Fixture_B_20_20" type="Node2D" parent="Rooms/workshop-returning/Objects"]
+position = Vector2(160, 160)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "B"
+footprint = Vector2i(4, 2)
+original_position = Vector2(160, 160)
+preview_entity = {
+&"body": 8,
+"h": 16,
+"id": 10,
+"ox": 160,
+"oy": 160,
+&"phase": 1,
+"remX": 0.0,
+"remY": 0.0,
+&"solid": false,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "toggle",
+"vx": 0.0,
+"vy": 0.0,
+"w": 32,
+"x": 160,
+"y": 160
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-returning/Objects/Fixture_B_20_20"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_b5y23")
+
+[node name="Fixture_B_33_20" type="Node2D" parent="Rooms/workshop-returning/Objects"]
+position = Vector2(264, 160)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "B"
+footprint = Vector2i(2, 2)
+original_position = Vector2(264, 160)
+preview_entity = {
+&"body": 9,
+"h": 16,
+"id": 11,
+"ox": 264,
+"oy": 160,
+&"phase": 1,
+"remX": 0.0,
+"remY": 0.0,
+&"solid": false,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "toggle",
+"vx": 0.0,
+"vy": 0.0,
+"w": 16,
+"x": 264,
+"y": 160
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-returning/Objects/Fixture_B_33_20"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_4njdv")
+
+[node name="Fixture_B_36_23" type="Node2D" parent="Rooms/workshop-returning/Objects"]
+position = Vector2(288, 184)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "B"
+footprint = Vector2i(2, 2)
+original_position = Vector2(288, 184)
+preview_entity = {
+&"body": 10,
+"h": 16,
+"id": 12,
+"ox": 288,
+"oy": 184,
+&"phase": 1,
+"remX": 0.0,
+"remY": 0.0,
+&"solid": false,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "toggle",
+"vx": 0.0,
+"vy": 0.0,
+"w": 16,
+"x": 288,
+"y": 184
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-returning/Objects/Fixture_B_36_23"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_2nsmo")
+
+[node name="Fixture_B_26_26" type="Node2D" parent="Rooms/workshop-returning/Objects"]
+position = Vector2(208, 208)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "B"
+footprint = Vector2i(1, 2)
+original_position = Vector2(208, 208)
+preview_entity = {
+&"body": 11,
+"h": 16,
+"id": 13,
+"ox": 208,
+"oy": 208,
+&"phase": 1,
+"remX": 0.0,
+"remY": 0.0,
+&"solid": false,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "toggle",
+"vx": 0.0,
+"vy": 0.0,
+"w": 8,
+"x": 208,
+"y": 208
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-returning/Objects/Fixture_B_26_26"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_xdt8i")
+
+[node name="Fixture_B_39_26" type="Node2D" parent="Rooms/workshop-returning/Objects"]
+position = Vector2(312, 208)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "B"
+footprint = Vector2i(2, 2)
+original_position = Vector2(312, 208)
+preview_entity = {
+&"body": 12,
+"h": 16,
+"id": 14,
+"ox": 312,
+"oy": 208,
+&"phase": 1,
+"remX": 0.0,
+"remY": 0.0,
+&"solid": false,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "toggle",
+"vx": 0.0,
+"vy": 0.0,
+"w": 16,
+"x": 312,
+"y": 208
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-returning/Objects/Fixture_B_39_26"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_xfidu")
+
+[node name="Fixture_B_23_27" type="Node2D" parent="Rooms/workshop-returning/Objects"]
+position = Vector2(184, 216)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "B"
+footprint = Vector2i(2, 1)
+original_position = Vector2(184, 216)
+preview_entity = {
+&"body": 13,
+"h": 8,
+"id": 15,
+"ox": 184,
+"oy": 216,
+&"phase": 1,
+"remX": 0.0,
+"remY": 0.0,
+&"solid": false,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "toggle",
+"vx": 0.0,
+"vy": 0.0,
+"w": 16,
+"x": 184,
+"y": 216
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-returning/Objects/Fixture_B_23_27"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_vpsab")
+
+[node name="Fixture_b_25_28" type="Node2D" parent="Rooms/workshop-returning/Objects"]
+position = Vector2(200, 224)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "b"
+original_position = Vector2(200, 224)
+preview_entity = {
+"h": 8,
+"id": 1,
+"ox": 200,
+"oy": 224,
+"remX": 0.0,
+"remY": 0.0,
+"state": "idle",
+"t": 0,
+"timer": 0,
+"type": "pod",
+"vx": 0.0,
+"vy": 0.0,
+"w": 8,
+"x": 200,
+"y": 224
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-returning/Objects/Fixture_b_25_28"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_37lr8")
+
+[node name="Fixture_B_32_28" type="Node2D" parent="Rooms/workshop-returning/Objects"]
+position = Vector2(256, 224)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "B"
+footprint = Vector2i(3, 1)
+original_position = Vector2(256, 224)
+preview_entity = {
+&"body": 14,
+"h": 8,
+"id": 16,
+"ox": 256,
+"oy": 224,
+&"phase": 1,
+"remX": 0.0,
+"remY": 0.0,
+&"solid": false,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "toggle",
+"vx": 0.0,
+"vy": 0.0,
+"w": 24,
+"x": 256,
+"y": 224
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-returning/Objects/Fixture_B_32_28"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_ohjpc")
+
+[node name="Fixture_B_35_29" type="Node2D" parent="Rooms/workshop-returning/Objects"]
+position = Vector2(280, 232)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "B"
+footprint = Vector2i(9, 2)
+original_position = Vector2(280, 232)
+preview_entity = {
+&"body": 15,
+"h": 16,
+"id": 17,
+"ox": 280,
+"oy": 232,
+&"phase": 1,
+"remX": 0.0,
+"remY": 0.0,
+&"solid": false,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "toggle",
+"vx": 0.0,
+"vy": 0.0,
+"w": 72,
+"x": 280,
+"y": 232
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-returning/Objects/Fixture_B_35_29"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_jw4br")
+
+[node name="Spawn" type="Node2D" parent="Rooms/workshop-returning/Objects"]
+position = Vector2(64, 240)
+script = ExtResource("3_hhdtj")
+kind = "Spawn"
+glyph = "P"
+original_position = Vector2(64, 240)
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-returning/Objects/Spawn"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_h8kh1")
+
+[node name="Fixture_B_18_32" type="Node2D" parent="Rooms/workshop-returning/Objects"]
+position = Vector2(144, 256)
+script = ExtResource("3_hhdtj")
+kind = "Fixture"
+glyph = "B"
+footprint = Vector2i(11, 2)
+original_position = Vector2(144, 256)
+preview_entity = {
+&"body": 16,
+"h": 16,
+"id": 18,
+"ox": 144,
+"oy": 256,
+&"phase": 1,
+"remX": 0.0,
+"remY": 0.0,
+&"solid": false,
+"state": "idle",
+"t": 0,
+"timer": 0,
+&"type": "toggle",
+"vx": 0.0,
+"vy": 0.0,
+"w": 88,
+"x": 144,
+"y": 256
+}
+world_number = 4
+metadata/_edit_group_ = true
+
+[node name="Selection" type="Sprite2D" parent="Rooms/workshop-returning/Objects/Fixture_B_18_32"]
+modulate = Color(1, 1, 1, 0.025)
+show_behind_parent = true
+position = Vector2(4, 4)
+texture = SubResource("ImageTexture_vipbs")

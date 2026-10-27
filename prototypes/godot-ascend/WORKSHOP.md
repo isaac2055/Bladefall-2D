@@ -1,6 +1,6 @@
-# Movement and Black Woods workshop · 0.20.0
+# Movement and Black Woods workshop · 0.21.0
 
-These eleven standalone chapter-4 rooms include eight Outskirts movement puzzles and three Black Woods puzzles. Native scene: `levels/world4.tscn`. Source geometry and ordinary-input demonstrations: `data/world4.json`. No campaign scenes, quests, voices or connecting passages are part of this change.
+These thirteen standalone chapter-4 rooms include eight Outskirts movement puzzles and five Black Woods puzzles. Native scene: `levels/world4.tscn`. Source geometry and ordinary-input demonstrations: `data/world4.json`. No campaign scenes, quests, voices or connecting passages are part of this change.
 
 The Broken Relay and Behind the Counterweight are preserved from 0.15. The revised Lintel and Ferry address reported shortcuts and missing preparation; Engine and Circuit combine these relationships in larger spaces. Larger rooms scroll within their boundaries. The first two retain their fixed camera.
 
@@ -66,7 +66,7 @@ A moving fixture's optional Parameters dictionary accepts `holdFrames` and `retu
 
 `tests/workshop.gd` checks six native editable rooms, preserved accepted-room definitions, timing validation/serialization/defaults, six deathless clears without advanced movement, observed contacts and resources, timing variations, causal counterfactuals and bounded shortcut searches. The search includes 270 Lintel departure variants, 288 late-gate variants, 60 return-wall jump/dash variants across Ferry and Circuit, and 48 Circuit entrance attempts. Positive controls reproduce the old Lintel shortcut and earlier late-preparation Ferry win.
 
-The application checks use the actual gameplay controller for all eleven primary routes, completion awards, pickup death/retry, demonstration playback, next/previous controls, camera bounds and campaign isolation. GPU mode writes starts, critical machinery contacts, pickups, finishes and the menu:
+The application checks use the actual gameplay controller for all thirteen primary routes, completion awards, pickup death/retry, demonstration playback, next/previous controls, camera bounds and campaign isolation. GPU mode writes starts, critical machinery contacts, pickups, finishes and the menu:
 
 ```sh
 .cache/godot/Godot.app/Contents/MacOS/Godot --path prototypes/godot-ascend --script tests/workshop.gd -- /absolute/output/directory
@@ -106,3 +106,13 @@ Fresh input searches found two actual pod skips during rebuilding: a low wall ca
 The simple editor checks Woods object roundtrips, old six/eight-room imports, seventeen-room draft consolidation and unknown-ID rejection. `tests/workshop.gd` plays every primary solution through the real application and checks completion, camera bounds and campaign isolation.
 
 Art replacement continues to use the fixed 8px gameplay grid and logical object rectangles. Rendering is separate from collision. Pods, bells and phase branches remain individual native authoring objects; terrain spikes remain grid hazards. No movement rules were changed for these rooms.
+
+## New rooms 12–13 · 0.21.0
+
+**The Overturned Hollow.** Dash to blue to remove the starting amber floor and descend to the pocket. Walk under the fixed divider. The pod rebound passes through the absent far cap; restore amber after entering the upper opening so the cap catches your feet and refills the dash. Leave from that recovered landing toward the flag. The fixed divider separates the starting and finishing halves, preventing the final floor from being reachable at the beginning. A permanent-cap counterfactual blocks the upward route.
+
+**The Returning Seed.** A low window accepts a diagonal cut while keeping the player outside. Hold jump during that cut to rebound outward without changing blue. The low canopy and guarded face prevent replacing that rebound with the discovered ordinary-jump crossing. Follow the blue branches around to the high bell, entering its side of the adjacent phase partitions first. Amber removes the pod roof and the outward branches, while closing the outside approach. Return to the same pod from above and the other side, then dash to blue to create the homeward landing. The initial side-shot sketch was revised because it allowed a direct ordinary jump to the far bank; the completed route uses the existing diagonal downward loft.
+
+These rooms retain separate retries and optional demonstrations. `tests/new_woods_rooms.gd` checks the preserved three Woods layouts, both ordinary routes, physical phase/position decisions, the single pod's two uses, multiple timings, former shortcut recordings and actual application playback. The original eight are still compared by the existing Woods suite. `tests/new_woods_shortcuts.gd` chooses fresh inputs, with positive controls, looking for a pod-free Hollow ascent, a Seed finish without its far loop, and a pod-free Seed crossing. Searches are bounded evidence, not proofs that every shortcut is impossible or that the rooms are enjoyable.
+
+The editor integration checks cover thirteen rooms and merging older eleven-room files. All gameplay geometry remains on the 8px grid, with rendering separate from collision. No simulation changes were made.

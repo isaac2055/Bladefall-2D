@@ -1,6 +1,6 @@
 # Ascend in Godot — the first three worlds and their Fractured versions
 
-Version **0.20.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
+Version **0.21.0** · A native Godot 4.5.1 prototype of **The Outskirts, Black Woods, Broken Causeway and their Fractured versions**, plus a standalone **Movement Workshop**, isolated from the shipping browser game on `codex/godot-outskirts-refinements`. This is an engine comparison, not a replacement release or a full Ascend port.
 
 ## Play
 
@@ -17,9 +17,17 @@ Controls now match the browser defaults: **arrows** move/aim, **Space/C/J** jump
 The pause menu includes a **chapter selector** for The Outskirts, Black Woods, Broken Causeway and their three Fractured versions. All six chapters are constructed before play, and switching preserves each chapter’s progress and position. **Start world over** resets the current world, bearings, room machinery, deaths and dialogue history without closing the app. Retry resets only the current room and preserves bearings and lit stakes. The pause menu also contains the room selector, Watch/Take control, a dedicated sound mixer, spoken dialogue toggle, reduced motion and lighting comparison. Audio and display preferences persist locally. The app starts directly in the game rather than an engine-study toolbar.
 
 
+## Two more Black Woods rooms · 0.21.0
+
+**The Overturned Hollow** and **The Returning Seed** are workshop rooms **12 and 13**. Open **Play New Woods Rooms.command**, or choose either room in Esc. H provides an optional hint; Esc includes a deathless ordinary-input demonstration. Both rooms are available in the simple browser editor.
+
+Overturned Hollow uses amber as starting floor, missing ceiling and restored landing. Returning Seed uses one pod twice through different faces of a phase-controlled housing: rebound outward in blue, reach the bell from the far loop, open the roof in amber, then rebound and dash to create the blue homeward landing. The outward cut is diagonal down-left with jump held, followed by steering right; the upper return approaches the same pod from the other side. This develops the proposed two-way use with the actual existing rebound rules.
+
+The previous eleven layouts, movement constants and campaign scenes are preserved. No quests, voices, art conversion or campaign connections were added. Old eleven-room editor files retain both new rooms when imported.
+
 ## Black Woods puzzle workshop · 0.20.0
 
-**Three Black Woods rooms** are available in the Movement Workshop, numbered **9–11**: The Borrowed Branch, The Crooked Orchard and The Hollow Crown. Borrowed Branch remains a short introduction; Orchard and Crown are rebuilt around phase preparation and route commitment. The original eight rooms and campaign layouts are preserved. Open **Play Black Woods Puzzles.command**, select room 9 with Esc, or launch `-- --world 4 --room 8`.
+The **three initial Black Woods rooms** are available in the Movement Workshop, numbered **9–11**: The Borrowed Branch, The Crooked Orchard and The Hollow Crown. Borrowed Branch remains a short introduction; Orchard and Crown are rebuilt around phase preparation and route commitment. The original eight rooms and campaign layouts are preserved. Open **Play Black Woods Puzzles.command**, select room 9 with Esc, or launch `-- --world 4 --room 8`.
 
 Use **W + arrows** to cut, **Space** to jump (hold it for a high downward pod rebound), **D + arrows** to dash, **A** to cling, **R** to retry, **H** for an optional hint and **N** for the next room. Esc offers solution demonstrations.
 
@@ -37,7 +45,7 @@ The new native tests compare both Tower routes under separate mechanic restricti
 
 ## Dedicated room editor · 0.17.0
 
-Double-click **Edit Workshop Rooms.command** for a simple local browser editor of all eleven workshop rooms. Choose a terrain brush, paint on the grid, or place and drag objects. Select a moving block to drag its destination, resize it, or change its pause and return timing. Select a rectangle of terrain to move ground. Undo/redo, exact positions, room settings and optional hints are available without Godot's scene tree or Inspector.
+Double-click **Edit Workshop Rooms.command** for a simple local browser editor of all thirteen workshop rooms. Choose a terrain brush, paint on the grid, or place and drag objects. Select a moving block to drag its destination, resize it, or change its pause and return timing. Select a rectangle of terrain to move ground. Undo/redo, exact positions, room settings and optional hints are available without Godot's scene tree or Inspector.
 
 **Save & play** saves directly to the native workshop scene and opens that room in the actual Godot project. Every save keeps a backup; unsaved browser drafts can be recovered after reload. Import/export provides a portable editable file. Conflicting external edits are reported before writing, and changed rooms stop offering outdated demonstrations. Campaign scenes and browser shipping files are outside this editor's write path. The packaged app is rebuilt separately; the editor's Play action always uses current project files.
 

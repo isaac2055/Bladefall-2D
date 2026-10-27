@@ -86,6 +86,7 @@ static func solve(data,index,options={}):
        if e.type=="crumble":e.broken=false;e.shaking=0
      core.step(Routes.decode(action[1]))
      if core.deaths>0 or ["super","hyper","ultra","wallbounce"].any(func(k):return k in core.events):invalid=true;break
+     if options.has("max_x") and core.p.x>options.max_x:invalid=true;break
      if Routes.at_goal(core):return {"found":true,"nodes":nodes,"depth":depth,"tape":prefix+parent.tape+[action]}
     if invalid:continue
     var state=snapshot(core)
